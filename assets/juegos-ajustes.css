@@ -1,0 +1,25 @@
+/* Juegos: mismos materiales y colores; controles utilizables en pantallas pequeñas. */
+.ig-game-page main :where(section,article,div,button,textarea,input){min-width:0}
+.ig-game-page main button:not([style*="position: absolute"]):not([style*="position:absolute"]){min-height:44px;min-width:44px}
+.ig-game-page main button:disabled{cursor:default!important;opacity:.55}
+.ig-game-page main button{scroll-margin-top:11rem}
+.ig-game-page main [style*="backdrop-filter"]{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.ig-energy-days{display:contents}
+.ig-energy-day>span{pointer-events:none}
+#ig-game-letter-close{width:44px!important;height:44px!important;min-width:44px;flex:none}
+#ig-game-letter button{min-height:44px}
+#ig-game-letter textarea{max-width:100%;min-width:0}
+#ig-game-letter [tabindex="-1"]:focus{outline:3px solid #5a49a8;outline-offset:4px}
+@media(max-width:700px){
+ .ig-game-page main{padding-left:16px!important;padding-right:16px!important}
+ .ig-game-split,.ig-game-page main section[style*="grid-template-columns: minmax("]{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+ .ig-game-split>*,.ig-game-page main section[style*="grid-template-columns: minmax("]>*{min-width:0}
+ .ig-game-page main :where(p,h2,button,span){overflow-wrap:break-word}
+ /* Do not squeeze seven absolute hit areas over a 250px illustration. The
+    same seven buttons remain in order, below the unmodified garden image. */
+ .ig-energy-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;padding:12px;background:rgba(246,248,251,.75)}
+ .ig-energy-day{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-width:44px;min-height:92px!important;padding:10px!important;border:1px solid #dfe6ef!important;gap:6px!important;overflow-wrap:anywhere}
+ .ig-energy-day>span:first-child{font-size:14px!important;max-width:100%;white-space:normal}
+ #ig-game-letter{padding:12px!important}
+ #ig-game-letter>div{padding:20px!important}
+}
