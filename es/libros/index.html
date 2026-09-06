@@ -84,8 +84,8 @@
 
     <div style="display: grid; gap: 26px;">
       <sc-for list="{{ books }}" as="b" hint-placeholder-count="2">
-        <article style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 24px; padding: 26px; display: grid; grid-template-columns: minmax(160px, 210px) 1fr; gap: 26px; align-items: start;">
-          <img src="{{ b.cover }}" alt="{{ b.coverAlt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">
+        <article class="ig-book-card" style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 24px; padding: 26px; display: grid; grid-template-columns: minmax(160px, 210px) 1fr; gap: 26px; align-items: start;">
+          <img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">
           <div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
               <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #a8336f; background: rgba(168,51,111,0.1); border-radius: 999px; padding: 4px 10px;">{{ b.badge }}</span>
@@ -118,7 +118,7 @@
 
     <section style="margin-top: 34px;">
       <h2 style="margin: 0 0 14px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 28px;">{{ tComingTitle }}</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
         <div style="display: flex; gap: 14px; align-items: center; background: rgba(255,255,255,0.6); border: 1px dashed rgba(23,57,92,0.24); border-radius: 18px; padding: 15px;">
           <img src="/assets/books/toc-es-coming-160.webp" alt="Portada provisional de Vivir con TOC en casa" style="width: 62px; border-radius: 7px; flex: none;">
           <div>

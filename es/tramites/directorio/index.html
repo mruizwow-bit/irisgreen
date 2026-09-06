@@ -99,7 +99,7 @@
         </div>
       </sc-if>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 14px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; margin-top: 14px;">
         <label style="display: grid; gap: 6px; font-size: 14px; color: #5d6779;">{{ terrLabel }}
           <sc-raw-select value="{{ terr }}" sc-camel-on-change="{{ onTerr }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.14); border-radius: 12px; padding: 12px 14px; font-size: 16px;">
             <sc-for list="{{ terrOptions }}" as="o" hint-placeholder-count="6">

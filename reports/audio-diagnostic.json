@@ -1,0 +1,147 @@
+{
+  "files": [
+    {
+      "path": "audio/un-momento-de-calma.m4a",
+      "exists": true,
+      "bytes": 1861615,
+      "signature": "0000001c667479704d344120000002004d34412069736f6d69736f320000698b"
+    },
+    {
+      "path": "audio/atmosfera.mp3",
+      "exists": true,
+      "bytes": 2286963,
+      "signature": "49443304000000002d4d545353450000000f0000034c61766636302e31362e31"
+    }
+  ],
+  "browsers": [
+    {
+      "browser": "chromium",
+      "track": "player-first-track",
+      "network": [
+        {
+          "path": "/audio/un-momento-de-calma.m4a",
+          "status": 200,
+          "type": "audio/mp4"
+        }
+      ],
+      "errors": [],
+      "supported": {
+        "aac": "",
+        "mp3": "probably",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36"
+      },
+      "media": {
+        "promiseError": {
+          "name": "NotSupportedError",
+          "message": "Failed to load because no supported source was found."
+        },
+        "exists": true,
+        "src": "http://127.0.0.1:44033/audio/un-momento-de-calma.m4a",
+        "ready": 0,
+        "network": 3,
+        "paused": false,
+        "time": 0,
+        "duration": null,
+        "error": {
+          "code": 4,
+          "message": "DEMUXER_ERROR_NO_SUPPORTED_STREAMS: FFmpegDemuxer: no supported streams"
+        },
+        "status": "No se ha podido reproducir esta pieza. Prueba otra o pulsa Escuchar de nuevo."
+      },
+      "played": false
+    },
+    {
+      "browser": "chromium",
+      "track": "/audio/atmosfera.mp3",
+      "network": [
+        {
+          "path": "/audio/atmosfera.mp3",
+          "status": 200,
+          "type": "audio/mpeg"
+        }
+      ],
+      "errors": [],
+      "supported": {
+        "aac": "",
+        "mp3": "probably",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36"
+      },
+      "media": {
+        "promiseError": null,
+        "exists": true,
+        "src": "http://127.0.0.1:44033/audio/atmosfera.mp3",
+        "ready": 4,
+        "network": 1,
+        "paused": false,
+        "time": 0.009468,
+        "duration": 190.040816,
+        "error": null,
+        "status": null
+      },
+      "played": true
+    },
+    {
+      "browser": "installed-chrome",
+      "track": "player-first-track",
+      "network": [
+        {
+          "path": "/audio/un-momento-de-calma.m4a",
+          "status": 200,
+          "type": "audio/mp4"
+        }
+      ],
+      "errors": [],
+      "supported": {
+        "aac": "probably",
+        "mp3": "probably",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+      },
+      "media": {
+        "promiseError": null,
+        "exists": true,
+        "src": "http://127.0.0.1:44033/audio/un-momento-de-calma.m4a",
+        "ready": 4,
+        "network": 1,
+        "paused": false,
+        "time": 0.012956,
+        "duration": 152.2,
+        "error": null,
+        "status": ""
+      },
+      "played": true
+    },
+    {
+      "browser": "installed-chrome",
+      "track": "/audio/atmosfera.mp3",
+      "network": [
+        {
+          "path": "/audio/atmosfera.mp3",
+          "status": 200,
+          "type": "audio/mpeg"
+        }
+      ],
+      "errors": [],
+      "supported": {
+        "aac": "probably",
+        "mp3": "probably",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+      },
+      "media": {
+        "promiseError": null,
+        "exists": true,
+        "src": "http://127.0.0.1:44033/audio/atmosfera.mp3",
+        "ready": 4,
+        "network": 1,
+        "paused": false,
+        "time": 0.011149,
+        "duration": 190.040816,
+        "error": null,
+        "status": null
+      },
+      "played": true
+    }
+  ],
+  "notes": [
+    "No se cambia ningún archivo de música. Se prueban pistas existentes."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "adaptive_grids": {
+    "es/cuestionarios/index.html": 2,
+    "es/libros/index.html": 1,
+    "es/neurodiversidad/temas/autismo/index.html": 3,
+    "es/recursos/juegos/cada-cerebro-su-camino/index.html": 1,
+    "es/recursos/juegos/el-archivo-de-capacidades/index.html": 2,
+    "es/recursos/juegos/el-detective-de-los-sentidos/index.html": 2,
+    "es/recursos/juegos/index.html": 2,
+    "es/recursos/juegos/la-cena-de-los-planes/index.html": 1,
+    "es/recursos/juegos/la-consulta/index.html": 1,
+    "es/recursos/juegos/la-maquina-de-empezar/index.html": 1,
+    "es/recursos/juegos/palabra-misteriosa/index.html": 1,
+    "es/sobre-iris-green/index.html": 2,
+    "es/taller/index.html": 3,
+    "es/tramites/directorio/index.html": 1,
+    "es/tramites/index.html": 1,
+    "index.html": 1
+  },
+  "deferred_template_urls": {
+    "es/libros/index.html": 1,
+    "es/recursos/juegos/cada-cerebro-su-camino/index.html": 1,
+    "es/taller/index.html": 1
+  },
+  "missing_cover_assets": [
+    "/assets/books/luma-es-512.webp",
+    "/assets/books/autismo-es-512.webp"
+  ],
+  "initial_filter_types": [
+    "apoyo",
+    "contexto",
+    "controvertido",
+    "desarrollo",
+    "diagnóstico",
+    "emergente",
+    "experiencia",
+    "identidad",
+    "proceso",
+    "salud física",
+    "salud mental"
+  ],
+  "initial_filter_letters": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "X"
+  ]
+}

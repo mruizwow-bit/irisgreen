@@ -85,7 +85,7 @@
     <section style="margin-bottom: 30px;">
       <h2 style="margin: 0 0 6px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(25px, 3.1vw, 33px);">{{ tHowTitle }}</h2>
       <p style="margin: 0 0 18px; font-size: 17px; color: #5a6675; max-width: 44em;">{{ tHowNote }}</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px;">
         <sc-for list="{{ method }}" as="m" hint-placeholder-count="5">
           <article style="background: rgba(255,255,255,0.82); backdrop-filter: blur(12px); border: 1px solid rgba(23,57,92,0.1); border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
             <span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #1f8ba8; font-weight: 700;">{{ m.num }}</span>
@@ -120,7 +120,7 @@
     <section>
       <h2 style="margin: 0 0 6px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(25px, 3.1vw, 33px);">{{ tWhatTitle }}</h2>
       <p style="margin: 0 0 18px; font-size: 17px; color: #5a6675; max-width: 44em;">{{ tWhatNote }}</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 14px; margin-bottom: 22px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr)); gap: 14px; margin-bottom: 22px;">
         <sc-for list="{{ collections }}" as="c" hint-placeholder-count="5">
           <a href="{{ c.href }}" style="background: rgba(255,255,255,0.82); border: 1px solid rgba(23,57,92,0.1); border-radius: 16px; padding: 18px 20px; display: block; color: #17395c;">
             <span style="display: block; font-family: 'Newsreader', serif; font-size: 34px; line-height: 1; color: #a8336f;">{{ c.num }}</span>

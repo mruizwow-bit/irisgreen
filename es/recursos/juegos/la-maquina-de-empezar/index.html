@@ -131,7 +131,7 @@
     <sc-if value="{{ hasPending }}" hint-placeholder-val="{{ true }}">
       <section style="margin-bottom: 26px;">
         <h2 style="margin: 0 0 12px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 25px;">{{ tPendingTitle }}</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 14px;">
           <sc-for list="{{ pending }}" as="c" hint-placeholder-count="6">
             <button sc-camel-on-click="{{ c.pick }}" style="display: flex; flex-direction: column; text-align: left; background: #fff; border: 2px solid rgba(23,57,92,0.12); border-radius: 16px; padding: 0; overflow: hidden; cursor: pointer;">
               <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ c.img }}" alt="" style="display: block; width: 100%; height: auto;">

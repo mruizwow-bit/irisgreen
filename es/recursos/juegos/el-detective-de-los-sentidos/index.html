@@ -123,7 +123,7 @@
     <p style="margin: 0 0 6px; font-size: 19px; color: #435268; max-width: 42em; text-wrap: pretty;">{{ tLede }}</p>
     <p style="margin: 0 0 22px; font-size: 17px; color: #5d6779; max-width: 42em;">{{ tHow }}</p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 26px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; margin-bottom: 26px;">
       <sc-for list="{{ baskets }}" as="b" hint-placeholder-count="3">
         <button sc-camel-on-click="{{ b.pick }}" style="display: flex; flex-direction: column; text-align: left; background: {{ b.bg }}; border: 3px solid {{ b.border }}; border-radius: 18px; padding: 0; overflow: hidden; cursor: {{ b.cursor }};">
           <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ b.img }}" alt="" style="display: block; width: 100%; height: auto;">
@@ -141,7 +141,7 @@
     </div>
 
     <sc-if value="{{ hasPending }}" hint-placeholder-val="{{ true }}">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 14px;">
         <sc-for list="{{ pending }}" as="c" hint-placeholder-count="12">
           <button sc-camel-on-click="{{ c.pick }}" style="display: flex; flex-direction: column; text-align: left; background: {{ c.bg }}; border: 2.5px solid {{ c.border }}; border-radius: 16px; padding: 0; overflow: hidden; cursor: pointer;">
             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ c.img }}" alt="" style="display: block; width: 100%; height: auto;">

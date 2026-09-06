@@ -62,3 +62,21 @@ button,input,select,textarea{min-width:0}
 
 /* Paneles anteriores: el único reproductor visible usa ig-music-panel. */
 #pl{display:none!important}
+
+/* IG: correcciones de anchura verificadas en 320 px */
+.sc-host main :where(article,section,div,label){min-width:0}
+.sc-host main article{overflow-wrap:anywhere}
+.sc-host main select{width:100%;max-width:100%}
+.sc-host main article [style*="display: flex"]>*{min-width:0;max-width:100%}
+#ig-music-panel .ig-m-controls button{min-width:max-content;white-space:nowrap;font-size:14px;padding:6px 7px}
+#ig-music-panel .ig-m-controls .ig-m-play{min-width:72px}
+@media(max-width:650px){
+ .sc-host main .ig-book-card{grid-template-columns:minmax(0,1fr)!important;padding:20px!important;gap:18px!important}
+ .ig-book-card>img{width:min(100%,210px)!important;justify-self:start}
+}
+@media(max-width:420px){
+ .ig-uh-right{max-width:100%;flex-wrap:wrap!important;gap:5px!important}
+ .ig-uh-tools{min-width:0;gap:4px!important}
+ .ig-uh-music,.ig-uh-reading{padding-inline:8px!important;font-size:13px!important;gap:4px!important}
+ .ig-uh-langs button{min-width:44px!important;padding:0 6px!important;font-size:12px!important}
+}

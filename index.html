@@ -268,7 +268,7 @@
             </sc-if>
             <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ false }}">
               <div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px;">
                   <sc-for list="{{ quizResults }}" as="t" hint-placeholder-count="2">
                     <div style="background: rgba(255,255,255,0.86); color: #17395c; border: 1.5px solid #6f5fc0; border-radius: 18px; padding: 22px;">
                       <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5a49a8;">{{ t.rank }}</div>

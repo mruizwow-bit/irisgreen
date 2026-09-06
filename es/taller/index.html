@@ -122,7 +122,7 @@
         <img src="/assets/runtime/3c0b258a48650684.webp" alt="" style="width: 38px; height: 38px; object-fit: contain; flex: none;">
         {{ tRulesTitle }}
       </h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 10px;">
         <sc-for list="{{ rules }}" as="r" hint-placeholder-count="6">
           <div style="display: flex; gap: 10px; align-items: flex-start;">
             <span style="width: 6px; height: 6px; border-radius: 999px; background: #a8336f; flex: none; margin-top: 10px;"></span>
@@ -168,11 +168,11 @@
       <sc-for list="{{ mesas }}" as="m" hint-placeholder-count="6">
         <section>
           <figure style="margin: 0 0 14px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(23,57,92,0.1);">
-            <img src="{{ m.img }}" alt="{{ m.note }}" style="display: block; width: 100%; height: 190px; object-fit: cover; object-position: center 58%;">
+            <img sc-camel-src="{{ m.img }}" alt="{{ m.note }}" style="display: block; width: 100%; height: 190px; object-fit: cover; object-position: center 58%;">
           </figure>
           <h2 style="margin: 0 0 2px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(25px, 3.1vw, 33px);">{{ m.name }}</h2>
           <p style="margin: 0 0 16px; font-size: 16.5px; color: #5a6675; max-width: 44em;">{{ m.note }}</p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px;">
             <sc-for list="{{ m.retos }}" as="r" hint-placeholder-count="6">
               <article style="background: rgba(255,255,255,0.82); backdrop-filter: blur(12px); border: 1px solid rgba(23,57,92,0.1); border-radius: 18px; padding: 18px 20px; display: flex; flex-direction: column; gap: 9px;">
                 <h3 style="margin: 0; font-family: 'Newsreader', serif; font-weight: 400; font-size: 23px;">{{ r.title }}</h3>
@@ -207,7 +207,7 @@
         <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path></svg>
         {{ tOpenSheets }}
       </a>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px;">
         <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
           <div style="background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px;">
             <div style="font-size: 16.5px;">{{ s.name }}</div>
