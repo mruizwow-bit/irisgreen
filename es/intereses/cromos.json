@@ -1,0 +1,1133 @@
+{
+ "nota": "Cromos de Tus intereses. Cada cromo lleva su número, su nombre, su nombre latino o técnico, los cinco campos fijos de la colección, la imagen y de dónde sale. Los cinco campos son los mismos para constelaciones, minerales y monedas. Un cromo con \"pendiente\": true no se enseña hasta que su imagen esté hecha. Para que un cromo salga en la página inglesa hace falta su bloque \"campos_en\".",
+ "formato": {
+  "n": "número del cromo dentro del tema",
+  "nombre": "el nombre de siempre",
+  "latino": "el nombre latino o técnico",
+  "campos": "los cinco campos fijos, en orden: Cómo se encuentra · Cuándo se ve · Qué es · En la historia · Dentro hay",
+  "campos_en": "los mismos cinco campos en inglés; sin esto el cromo no sale en /en/interests/",
+  "foto": "/img/intereses/<tema>/<nn>-<nombre>.webp",
+  "credito": "de dónde sale la imagen",
+  "lineas": "solo en constelaciones: pares de estrellas que forman la figura",
+  "pendiente": "true mientras no esté la imagen",
+  "total": "cuántos cromos tendrá la colección entera; null si todavía no se sabe",
+  "credito_coleccion": "crédito que va en la página de créditos del PDF"
+ },
+ "temas": [
+  {
+   "id": "constelaciones",
+   "es": "Constelaciones",
+   "en": "Constellations",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [
+    {
+     "n": 1,
+     "nombre": "La Osa Mayor",
+     "latino": "Ursa Major",
+     "foto": "/img/intereses/constelaciones/01-ursa-major.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "es el punto de partida de todo lo demás. Siete estrellas en forma de carro, altas en el norte.",
+      "Cuándo se ve": "todo el año. Nunca se pone desde España.",
+      "Qué es": "las cuatro estrellas del cajón y las tres del timón. Para los griegos era una osa; el nombre latino significa eso mismo.",
+      "En la historia": "las dos estrellas del extremo del cajón, Dubhe y Merak, apuntan a la estrella polar. Antes de la brújula, quien viajaba de noche encontraba el norte con ese gesto, y la posición del carro alrededor de la polar servía además para saber la hora.",
+      "Dentro hay": "Mizar y Alcor, dos estrellas juntas que se separan a ojo si la vista es buena. Se usaba como prueba de vista."
+     },
+     "lineas": [
+      [
+       "Dubhe",
+       "Merak"
+      ],
+      [
+       "Merak",
+       "Phecda"
+      ],
+      [
+       "Phecda",
+       "Megrez"
+      ],
+      [
+       "Megrez",
+       "Dubhe"
+      ],
+      [
+       "Megrez",
+       "Alioth"
+      ],
+      [
+       "Alioth",
+       "Mizar"
+      ],
+      [
+       "Mizar",
+       "Alkaid"
+      ]
+     ],
+     "nombre_en": "The Plough",
+     "latino_en": "Ursa Major",
+     "campos_en": {
+      "How to find it": "It is the starting point for everything else. Seven stars shaped like a plough, high in the north.",
+      "When to see it": "All year round. From Spain it never sets.",
+      "What it is": "Four stars make the body and three make the handle. To the Greeks it was a bear, which is what the Latin name means.",
+      "In history": "The two stars at the end of the body, Dubhe and Merak, point straight at the pole star. Before the compass, anyone travelling at night found north with that one gesture, and the position of the plough around the pole also told them the hour.",
+      "Inside there is": "Mizar and Alcor, two stars so close that telling them apart with the naked eye was once used as an eye test."
+     }
+    },
+    {
+     "n": 2,
+     "nombre": "La Osa Menor",
+     "latino": "Ursa Minor",
+     "foto": "/img/intereses/constelaciones/02-ursa-minor.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "siguiendo cinco veces la distancia entre Dubhe y Merak, las dos del extremo del carro.",
+      "Cuándo se ve": "todo el año.",
+      "Qué es": "un carro más pequeño y más pálido, con la estrella polar en la punta del timón.",
+      "En la historia": "la polar marca el norte porque está casi en el eje de giro de la Tierra. Los fenicios ya navegaban con ella, y por eso los griegos la llamaban «la fenicia». No siempre ha sido la polar: el eje se mueve muy despacio y hace cinco mil años el norte lo marcaba otra estrella.",
+      "Dentro hay": "Polaris, que no es la más brillante del cielo aunque casi todo el mundo lo cree."
+     },
+     "lineas": [
+      [
+       "Polaris",
+       "Yildun"
+      ],
+      [
+       "Yildun",
+       "Eps UMi"
+      ],
+      [
+       "Eps UMi",
+       "Zet UMi"
+      ],
+      [
+       "Zet UMi",
+       "Eta UMi"
+      ],
+      [
+       "Eta UMi",
+       "Pherkad"
+      ],
+      [
+       "Pherkad",
+       "Kochab"
+      ],
+      [
+       "Kochab",
+       "Zet UMi"
+      ]
+     ],
+     "nombre_en": "The Little Bear",
+     "latino_en": "Ursa Minor",
+     "campos_en": {
+      "How to find it": "Follow the line from Merak to Dubhe five times over.",
+      "When to see it": "All year round.",
+      "What it is": "A smaller, fainter plough, with the pole star at the tip of its handle.",
+      "In history": "The pole star marks north because it sits almost exactly on the axis the Earth turns around. The Phoenicians were already navigating by it, which is why the Greeks called it the Phoenician star. It has not always been the pole star: the axis shifts very slowly, and five thousand years ago north was marked by a different one.",
+      "Inside there is": "Polaris, which is not the brightest star in the sky, although almost everyone believes it is."
+     }
+    },
+    {
+     "n": 3,
+     "nombre": "Casiopea",
+     "latino": "Cassiopeia",
+     "foto": "/img/intereses/constelaciones/03-cassiopeia.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "al otro lado de la polar respecto al carro. Cuando una está alta, la otra está baja.",
+      "Cuándo se ve": "todo el año, en el norte.",
+      "Qué es": "cinco estrellas en zigzag, una W o una M según la hora. Casiopea era una reina que presumía de guapa.",
+      "En la historia": "es el recambio del carro. Cuando la Osa Mayor queda demasiado baja, Casiopea sigue alta y sirve igual para encontrar el norte. Quien navegaba de noche usaba la que estuviera arriba.",
+      "Dentro hay": "el cúmulo NGC 457, que con prismáticos parece una figura con dos ojos."
+     },
+     "lineas": [
+      [
+       "Segin",
+       "Ruchbah"
+      ],
+      [
+       "Ruchbah",
+       "Gam Cas"
+      ],
+      [
+       "Gam Cas",
+       "Schedar"
+      ],
+      [
+       "Schedar",
+       "Caph"
+      ]
+     ],
+     "nombre_en": "Cassiopeia",
+     "campos_en": {
+      "How to find it": "On the far side of the pole star from the Plough. When one is high, the other is low.",
+      "When to see it": "All year round, in the north.",
+      "What it is": "Five stars in a zigzag, a W or an M depending on the hour. Cassiopeia was a queen who boasted about her looks.",
+      "In history": "It is the Plough's stand-in. When the Plough drops too low, Cassiopeia is still high and does the same job of finding north. Anyone sailing at night used whichever of the two was up.",
+      "Inside there is": "The cluster NGC 457, which through binoculars looks like a figure with two eyes."
+     }
+    },
+    {
+     "n": 4,
+     "nombre": "Orión",
+     "latino": "Orion",
+     "foto": "/img/intereses/constelaciones/04-orion.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "por el cinturón, tres estrellas seguidas, iguales y muy juntas. No hay nada parecido en el cielo.",
+      "Cuándo se ve": "de diciembre a marzo, mirando al sur.",
+      "Qué es": "un cazador con cinturón y espada. Es la constelación más fácil de reconocer del cielo entero.",
+      "En la historia": "el cinturón es una regla que apunta a los dos lados: hacia abajo lleva a Sirio, la estrella más brillante, y hacia arriba a Aldebarán. Con ese gesto se encuentra media parte del cielo de invierno. En Egipto se asociaba a Osiris.",
+      "Dentro hay": "la nebulosa de Orión, en la espada. A ojo es una mancha borrosa; con prismáticos ya se ve que no es una estrella."
+     },
+     "lineas": [
+      [
+       "Betelgeuse",
+       "Bellatrix"
+      ],
+      [
+       "Bellatrix",
+       "Mintaka"
+      ],
+      [
+       "Mintaka",
+       "Alnilam"
+      ],
+      [
+       "Alnilam",
+       "Alnitak"
+      ],
+      [
+       "Alnitak",
+       "Betelgeuse"
+      ],
+      [
+       "Mintaka",
+       "Rigel"
+      ],
+      [
+       "Alnitak",
+       "Saiph"
+      ],
+      [
+       "Rigel",
+       "Saiph"
+      ]
+     ],
+     "nombre_en": "Orion",
+     "campos_en": {
+      "How to find it": "By the belt: three stars in a row, evenly spaced and close together. Nothing else in the sky looks like it.",
+      "When to see it": "December to March, looking south from Spain.",
+      "What it is": "A hunter with a belt and a sword. It is the easiest constellation in the whole sky to recognise.",
+      "In history": "The belt works as a ruler pointing both ways: downwards it leads to Sirius, the brightest star, and upwards to Aldebaran. That single gesture finds half the winter sky. In Egypt it was linked to Osiris.",
+      "Inside there is": "The Orion Nebula, in the sword. With the naked eye it is a smudge; through binoculars you can already tell it is not a star."
+     }
+    },
+    {
+     "n": 5,
+     "nombre": "El Can Mayor",
+     "latino": "Canis Major",
+     "foto": "/img/intereses/constelaciones/05-canis-major.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "siguiendo el cinturón de Orión hacia abajo y a la izquierda. La primera estrella muy brillante es Sirio.",
+      "Cuándo se ve": "de diciembre a marzo, bajo, hacia el sur.",
+      "Qué es": "el perro que acompaña al cazador. Sirio es su collar.",
+      "En la historia": "en Egipto, el día en que Sirio volvía a verse al amanecer anunciaba la crecida del Nilo, y con eso se organizaba el calendario agrícola entero. De ahí vienen los «días del perro» del verano.",
+      "Dentro hay": "Sirio, la estrella más brillante del cielo nocturno. Parpadea de colores cuando está baja."
+     },
+     "lineas": [
+      [
+       "Mirzam",
+       "Sirius"
+      ],
+      [
+       "Sirius",
+       "Muliphein"
+      ],
+      [
+       "Sirius",
+       "Wezen"
+      ],
+      [
+       "Wezen",
+       "Adhara"
+      ],
+      [
+       "Wezen",
+       "Aludra"
+      ],
+      [
+       "Adhara",
+       "Furud"
+      ]
+     ],
+     "nombre_en": "The Great Dog",
+     "latino_en": "Canis Major",
+     "campos_en": {
+      "How to find it": "Follow Orion's belt down and to the left. The first very bright star is Sirius.",
+      "When to see it": "December to March, low towards the south from Spain.",
+      "What it is": "The dog that follows the hunter. Sirius is its collar.",
+      "In history": "In Egypt, the day Sirius became visible again at dawn announced the flooding of the Nile, and the whole farming calendar was built around it. That is where the dog days of summer come from.",
+      "Inside there is": "Sirius, the brightest star in the night sky. It flashes in colours when it sits low."
+     }
+    },
+    {
+     "n": 6,
+     "nombre": "Tauro",
+     "latino": "Taurus",
+     "foto": "/img/intereses/constelaciones/06-taurus.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "siguiendo el cinturón de Orión hacia arriba y a la derecha, hasta una estrella naranja.",
+      "Cuándo se ve": "de noviembre a marzo, alto hacia el sur.",
+      "Qué es": "la cabeza de un toro. La V son los cuernos abiertos y Aldebarán es el ojo.",
+      "En la historia": "las Pléyades, el grupito de al lado, marcaban el momento de sembrar y el de empezar a navegar. Hesíodo lo escribió hace dos mil ochocientos años y se siguió usando durante siglos.",
+      "Dentro hay": "las Pléyades, un puñado de estrellas azules. A ojo se ven seis o siete; con prismáticos, decenas."
+     },
+     "lineas": [
+      [
+       "Elnath",
+       "Eps Tau"
+      ],
+      [
+       "Zet Tau",
+       "Aldebaran"
+      ],
+      [
+       "Aldebaran",
+       "Eps Tau"
+      ],
+      [
+       "Aldebaran",
+       "Gam Tau"
+      ],
+      [
+       "Gam Tau",
+       "Del Tau"
+      ],
+      [
+       "Del Tau",
+       "Eps Tau"
+      ]
+     ],
+     "nombre_en": "Taurus",
+     "campos_en": {
+      "How to find it": "Follow Orion's belt up and to the right, until you reach an orange star.",
+      "When to see it": "November to March, high towards the south from Spain.",
+      "What it is": "The head of a bull. The V shape is the open horns and Aldebaran is the eye.",
+      "In history": "The Pleiades, the little group nearby, marked when to sow and when to start sailing. Hesiod wrote it down two thousand eight hundred years ago and it stayed in use for centuries.",
+      "Inside there is": "The Pleiades, a handful of blue stars. Six or seven show up to the naked eye; through binoculars, dozens."
+     }
+    },
+    {
+     "n": 7,
+     "nombre": "Géminis",
+     "latino": "Gemini",
+     "foto": "/img/intereses/constelaciones/07-gemini.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "a la izquierda de Tauro, dos estrellas brillantes juntas y del mismo tamaño.",
+      "Cuándo se ve": "de diciembre a abril, alto.",
+      "Qué es": "dos hermanos cogidos de la mano. Cástor y Pólux son sus cabezas.",
+      "En la historia": "eran los protectores de los marineros. El fuego de San Telmo, esa luz que a veces aparece en los mástiles durante la tormenta, se llamaba «los gemelos» y se tomaba como señal de que el barco llegaría.",
+      "Dentro hay": "el cúmulo M35, junto al pie de Cástor."
+     },
+     "lineas": [
+      [
+       "Castor",
+       "Pollux"
+      ],
+      [
+       "Castor",
+       "Mebsuta"
+      ],
+      [
+       "Mebsuta",
+       "Alhena"
+      ],
+      [
+       "Pollux",
+       "Wasat"
+      ],
+      [
+       "Wasat",
+       "Alhena"
+      ]
+     ],
+     "nombre_en": "Gemini",
+     "campos_en": {
+      "How to find it": "To the left of Taurus, two bright stars side by side and much the same size.",
+      "When to see it": "December to April, high in the sky.",
+      "What it is": "Two brothers holding hands. Castor and Pollux are their heads.",
+      "In history": "They were the protectors of sailors. St Elmo's fire, the light that sometimes appears on a mast during a storm, was called \"the twins\" and taken as a sign that the ship would make it.",
+      "Inside there is": "The cluster M35, next to Castor's foot."
+     }
+    },
+    {
+     "n": 8,
+     "nombre": "Leo",
+     "latino": "Leo",
+     "foto": "/img/intereses/constelaciones/08-leo.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "hay un signo de interrogación al revés en el cielo. Su punto es Régulo.",
+      "Cuándo se ve": "de febrero a mayo, alto hacia el sur.",
+      "Qué es": "un león tumbado. La hoz es la melena y un triángulo detrás es la grupa.",
+      "En la historia": "Régulo era una de las cuatro estrellas reales de los persas, las que marcaban las cuatro esquinas del año. Su nombre significa «reyezuelo» y está casi exactamente sobre el camino que recorre el Sol, así que la Luna y los planetas pasan por delante y a veces la tapan.",
+      "Dentro hay": "en noviembre, alrededor del día 17, la lluvia de las Leónidas sale de esta zona. Hay que mirar de madrugada, porque a esas alturas del año Leo sale tarde."
+     },
+     "lineas": [
+      [
+       "Regulus",
+       "Eta Leo"
+      ],
+      [
+       "Eta Leo",
+       "Algieba"
+      ],
+      [
+       "Algieba",
+       "Zet Leo"
+      ],
+      [
+       "Zet Leo",
+       "Mu Leo"
+      ],
+      [
+       "Mu Leo",
+       "Eps Leo"
+      ],
+      [
+       "Regulus",
+       "Chertan"
+      ],
+      [
+       "Chertan",
+       "Denebola"
+      ],
+      [
+       "Denebola",
+       "Zosma"
+      ],
+      [
+       "Zosma",
+       "Chertan"
+      ]
+     ],
+     "nombre_en": "Leo",
+     "campos_en": {
+      "How to find it": "There is a backwards question mark in the sky. Its dot is Regulus.",
+      "When to see it": "February to May, high towards the south from Spain.",
+      "What it is": "A lion lying down. The sickle is the mane and a triangle behind it is the hindquarters.",
+      "In history": "Regulus was one of the four royal stars of Persia, the ones that marked the corners of the year. Its name means \"little king\", and it sits almost exactly on the path the Sun follows, so the Moon and the planets pass in front of it and sometimes hide it.",
+      "Inside there is": "In November, around the 17th, the Leonid meteor shower comes from this area. You have to look before dawn, because at that time of year Leo rises late."
+     }
+    },
+    {
+     "n": 9,
+     "nombre": "Escorpio",
+     "latino": "Scorpius",
+     "foto": "/img/intereses/constelaciones/09-scorpius.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "muy bajo hacia el sur en verano, con una estrella claramente roja en el centro.",
+      "Cuándo se ve": "de junio a agosto, bajo. Desde el norte de España se ve peor.",
+      "Qué es": "un escorpión con las pinzas arriba y la cola curvada. Se parece de verdad a lo que dice ser, y eso es raro.",
+      "En la historia": "su estrella roja se llama Antares, que significa «rival de Marte», porque los dos son rojos y se confunden. Cuando Marte pasa cerca, se ven dos puntos rojos casi iguales.",
+      "Dentro hay": "el cúmulo M4, al lado de Antares."
+     },
+     "lineas": [
+      [
+       "Acrab",
+       "Dschubba"
+      ],
+      [
+       "Dschubba",
+       "Fang"
+      ],
+      [
+       "Dschubba",
+       "Antares"
+      ],
+      [
+       "Antares",
+       "Paikauhale"
+      ],
+      [
+       "Paikauhale",
+       "Larawag"
+      ],
+      [
+       "Larawag",
+       "Xamidimura"
+      ],
+      [
+       "Xamidimura",
+       "Zet Sco"
+      ],
+      [
+       "Zet Sco",
+       "Eta Sco"
+      ],
+      [
+       "Eta Sco",
+       "Sargas"
+      ],
+      [
+       "Sargas",
+       "Iot Sco"
+      ],
+      [
+       "Iot Sco",
+       "Shaula"
+      ],
+      [
+       "Shaula",
+       "Lesath"
+      ]
+     ],
+     "nombre_en": "Scorpius",
+     "campos_en": {
+      "How to find it": "Very low towards the south in summer, with a clearly red star at its centre.",
+      "When to see it": "June to August, low. From northern Spain it is harder to see.",
+      "What it is": "A scorpion with its claws up and its tail curved. It really does look like what it claims to be, which is rare.",
+      "In history": "Its red star is called Antares, which means \"rival of Mars\", because both are red and get mistaken for each other. When Mars passes nearby, you see two red points that are almost identical.",
+      "Inside there is": "The cluster M4, right beside Antares."
+     }
+    },
+    {
+     "n": 10,
+     "nombre": "El Cisne",
+     "latino": "Cygnus",
+     "foto": "/img/intereses/constelaciones/10-cygnus.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "en lo alto del verano hay una cruz grande. Deneb es la cola.",
+      "Cuándo se ve": "de junio a octubre, muy alto.",
+      "Qué es": "un cisne volando con las alas abiertas. También se llama la Cruz del Norte.",
+      "En la historia": "vuela justo por encima de la Vía Láctea, y en un sitio sin luces se ve que la banda blanca se parte en dos a su altura. Eso se explicaba de mil maneras antes de saber que es polvo tapando estrellas.",
+      "Dentro hay": "Albireo, que con unos prismáticos se abre en dos estrellas, una dorada y otra azul. Es de las cosas más bonitas del cielo con poco aumento."
+     },
+     "lineas": [
+      [
+       "Deneb",
+       "Sadr"
+      ],
+      [
+       "Sadr",
+       "Albireo"
+      ],
+      [
+       "Sadr",
+       "Eps Cyg"
+      ],
+      [
+       "Sadr",
+       "Del Cyg"
+      ]
+     ],
+     "nombre_en": "The Swan",
+     "latino_en": "Cygnus",
+     "campos_en": {
+      "How to find it": "High overhead in summer there is a large cross. Deneb is the tail.",
+      "When to see it": "June to October, very high.",
+      "What it is": "A swan flying with its wings spread. It is also called the Northern Cross.",
+      "In history": "It flies straight along the Milky Way, and away from city lights you can see the white band split in two where the swan is. That was explained a thousand different ways before anyone knew it is dust blocking the starlight.",
+      "Inside there is": "Albireo, which through binoculars opens into two stars, one gold and one blue. It is one of the finest things in the sky at low magnification."
+     }
+    },
+    {
+     "n": 11,
+     "nombre": "La Lira",
+     "latino": "Lyra",
+     "foto": "/img/intereses/constelaciones/11-lyra.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "la estrella más brillante del verano, casi en el cenit. Es Vega.",
+      "Cuándo se ve": "de junio a octubre, muy alto.",
+      "Qué es": "una lira pequeña, un paralelogramo con Vega en una punta.",
+      "En la historia": "Vega fue la estrella polar hace unos catorce mil años, y volverá a serlo dentro de unos doce mil: el eje de la Tierra tarda unos veintiséis mil años en dar la vuelta. Fue también la primera estrella que alguien consiguió fotografiar, en 1850.",
+      "Dentro hay": "la nebulosa del Anillo, entre Sheliak y Sulafat. Hace falta telescopio, pero está ahí."
+     },
+     "lineas": [
+      [
+       "Vega",
+       "Eps Lyr"
+      ],
+      [
+       "Vega",
+       "Zet Lyr"
+      ],
+      [
+       "Zet Lyr",
+       "Sheliak"
+      ],
+      [
+       "Sheliak",
+       "Sulafat"
+      ],
+      [
+       "Sulafat",
+       "Del Lyr"
+      ],
+      [
+       "Del Lyr",
+       "Zet Lyr"
+      ]
+     ],
+     "nombre_en": "Lyra",
+     "campos_en": {
+      "How to find it": "The brightest star of summer, almost straight overhead. That is Vega.",
+      "When to see it": "June to October, very high.",
+      "What it is": "A small lyre, a parallelogram with Vega at one corner.",
+      "In history": "Vega was the pole star some fourteen thousand years ago, and it will be again in about twelve thousand years, because the Earth's axis turns very slowly: the full circle takes twenty-six thousand years. It was also the first star anyone managed to photograph, in 1850.",
+      "Inside there is": "The Ring Nebula, between Sheliak and Sulafat. You need a telescope, but it is there."
+     }
+    },
+    {
+     "n": 12,
+     "nombre": "El Águila",
+     "latino": "Aquila",
+     "foto": "/img/intereses/constelaciones/12-aquila.webp",
+     "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "campos": {
+      "Cómo se encuentra": "desde Vega, bajando hacia el sur. Altair es la que tiene una estrella a cada lado, como un botón con dos ojales.",
+      "Cuándo se ve": "de julio a octubre.",
+      "Qué es": "un águila con las alas extendidas. Altair es su cabeza.",
+      "En la historia": "Vega y Altair están una a cada lado de la Vía Láctea, y en China son la tejedora y el pastor, separados por un río de estrellas y autorizados a verse una noche al año. La fiesta que lo celebra se sigue haciendo cada verano.",
+      "Dentro hay": "Altair es una de las tres puntas del Triángulo de Verano, con Vega y Deneb. Los tres cromos juntos forman la figura."
+     },
+     "lineas": [
+      [
+       "Tarazed",
+       "Altair"
+      ],
+      [
+       "Altair",
+       "Alshain"
+      ],
+      [
+       "Altair",
+       "Del Aql"
+      ],
+      [
+       "Del Aql",
+       "Zet Aql"
+      ],
+      [
+       "Del Aql",
+       "The Aql"
+      ]
+     ],
+     "nombre_en": "The Eagle",
+     "latino_en": "Aquila",
+     "campos_en": {
+      "How to find it": "From Vega, heading down towards the south. Altair is the one with a star on either side, like a button with two holes.",
+      "When to see it": "July to October.",
+      "What it is": "An eagle with its wings out. Altair is its head.",
+      "In history": "Vega and Altair sit on opposite banks of the Milky Way, and in China they are the weaver and the herdsman, kept apart by a river of stars and allowed to meet one night a year. The festival that celebrates it is still held every summer.",
+      "Inside there is": "Altair is one of the three corners of the Summer Triangle, with Vega and Deneb. The three cards together make the shape."
+     }
+    }
+   ],
+   "total": 88,
+   "coleccion": "Constelaciones",
+   "coleccion_en": "Constellations",
+   "credito_coleccion": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0"
+  },
+  {
+   "id": "minerales",
+   "es": "Minerales",
+   "en": "Minerals",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "coleccion": "Minerales",
+   "coleccion_en": "Minerals",
+   "total": 22,
+   "credito_coleccion": "Ilustración propia de Iris Green",
+   "cromos": [
+    {
+     "n": 1,
+     "nombre": "Cuarzo",
+     "foto": "/img/intereses/minerales/min-cuarzo.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "transparente o blanco lechoso, con brillo de cristal. Crece en prismas de seis caras rematados en punta. Raya el acero y no se raya con una navaja.",
+      "Dónde se encuentra": "en casi todas partes. Es el mineral más común de la superficie del planeta, y la arena de playa es cuarzo molido.",
+      "De qué está hecho": "silicio y oxígeno, los dos elementos más abundantes de la corteza terrestre.",
+      "En la historia": "un cristal de cuarzo bien tallado vibra siempre al mismo ritmo cuando le pasa corriente, y eso es lo que hace que un reloj no se atrase. Antes de eso, ningún reloj de pulsera daba la hora exacta durante meses.",
+      "Con qué se confunde": "con la calcita. La calcita se raya con una moneda de cobre y el cuarzo no."
+     },
+     "nombre_en": "Quartz",
+     "campos_en": {
+      "How to recognise it": "Clear or milky white, with a glassy shine. It grows as six-sided prisms ending in a point. It scratches steel and a knife will not scratch it.",
+      "Where it is found": "Almost everywhere. It is the commonest mineral on the surface of the planet, and beach sand is ground-down quartz.",
+      "What it is made of": "Silicon and oxygen, the two most abundant elements in the Earth's crust.",
+      "In history": "A well-cut quartz crystal vibrates at exactly the same rate every time a current passes through it, and that is what stops a watch from running slow. Before that, no wristwatch kept accurate time for months on end.",
+      "What it gets mistaken for": "Calcite. Calcite can be scratched with a copper coin and quartz cannot."
+     }
+    },
+    {
+     "n": 2,
+     "nombre": "Amatista",
+     "foto": "/img/intereses/minerales/min-amatista.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "es cuarzo morado. Las puntas suelen ser más oscuras que la base, y a menudo aparece tapizando el hueco de una piedra, en forma de geoda.",
+      "Dónde se encuentra": "Brasil y Uruguay dan las geodas grandes. En España hay amatista en Asturias y en Almería.",
+      "De qué está hecha": "lo mismo que el cuarzo, con trazas de hierro que le dan el color.",
+      "En la historia": "el nombre viene del griego «no embriagado». Se creía que beber en una copa de amatista evitaba emborracharse, y por eso se tallaron copas y anillos con ella durante siglos.",
+      "Con qué se confunde": "con la fluorita morada. La fluorita hace cubos y se raya con una navaja; la amatista hace puntas y no se raya."
+     },
+     "nombre_en": "Amethyst",
+     "campos_en": {
+      "How to recognise it": "It is purple quartz. The points are usually darker than the base, and it often lines the hollow of a stone, forming a geode.",
+      "Where it is found": "Brazil and Uruguay produce the large geodes. In Spain there is amethyst in Asturias and in Almería.",
+      "What it is made of": "The same as quartz, with traces of iron that give it the colour.",
+      "In history": "The name comes from the Greek for \"not drunk\". Drinking from an amethyst cup was believed to keep you sober, and cups and rings were carved from it for centuries.",
+      "What it gets mistaken for": "Purple fluorite. Fluorite grows in cubes and a knife will scratch it; amethyst grows in points and it will not."
+     }
+    },
+    {
+     "n": 3,
+     "nombre": "Pirita",
+     "foto": "/img/intereses/minerales/min-pirita.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "color de latón, brillo de metal, y crece en cubos casi perfectos con estrías finas en las caras. Pesa mucho para lo que abulta. Rayada sobre porcelana deja polvo negro verdoso, no dorado.",
+      "Dónde se encuentra": "en toda España, y en La Rioja se encuentran cubos sueltos tan perfectos que parecen tallados.",
+      "De qué está hecha": "hierro y azufre.",
+      "En la historia": "se la llama el oro de los tontos porque engañó a muchos buscadores. El nombre viene del griego «piedra de fuego»: golpeada contra acero salta chispa, y se usó para encender fuego y para disparar las primeras armas de chispa.",
+      "Con qué se confunde": "con el oro. El oro se dobla y se aplasta; la pirita salta en trozos y deja polvo negro al rayarla."
+     },
+     "nombre_en": "Pyrite",
+     "campos_en": {
+      "How to recognise it": "Brass-coloured, with a metallic shine, growing in almost perfect cubes with fine grooves across the faces. It is heavy for its size. Scratched across porcelain it leaves a greenish-black powder, not a golden one.",
+      "Where it is found": "All over Spain, and in La Rioja you find loose cubes so perfect they look carved.",
+      "What it is made of": "Iron and sulphur.",
+      "In history": "It is known as fool's gold because it fooled a great many prospectors. The name comes from the Greek for \"fire stone\": struck against steel it throws a spark, and it was used to light fires and to fire the first flintlock weapons.",
+      "What it gets mistaken for": "Gold. Gold bends and flattens; pyrite shatters, and it leaves black powder when scratched."
+     }
+    },
+    {
+     "n": 4,
+     "nombre": "Fluorita",
+     "foto": "/img/intereses/minerales/min-fluorita.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "cubos transparentes de colores, morado, verde, azul o amarillo, a veces varios en la misma pieza. Se raya con una navaja, que es lo que la separa del cuarzo. Al romperse, se parte en planos limpios.",
+      "Dónde se encuentra": "Asturias tiene algunos de los mejores yacimientos del mundo.",
+      "De qué está hecha": "calcio y flúor.",
+      "En la historia": "de aquí sale la palabra fluorescencia: muchas fluoritas brillan con luz azulada bajo luz ultravioleta, y el fenómeno se bautizó por el mineral que primero lo enseñó.",
+      "Con qué se confunde": "con el cuarzo de color. La navaja lo dice en un segundo: la fluorita se raya, el cuarzo no."
+     },
+     "nombre_en": "Fluorite",
+     "campos_en": {
+      "How to recognise it": "Transparent coloured cubes — purple, green, blue or yellow, sometimes several shades in the same piece. A knife scratches it, which is what separates it from quartz. It breaks along clean flat planes.",
+      "Where it is found": "Asturias has some of the best deposits in the world.",
+      "What it is made of": "Calcium and fluorine.",
+      "In history": "The word fluorescence comes from here: many fluorites glow with a bluish light under ultraviolet, and the effect was named after the mineral that first showed it.",
+      "What it gets mistaken for": "Coloured quartz. A knife settles it in a second: fluorite scratches, quartz does not."
+     }
+    },
+    {
+     "n": 5,
+     "nombre": "Yeso",
+     "foto": "/img/intereses/minerales/min-yeso.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "blanco o incoloro, con brillo nacarado. Es tan blando que se raya con la uña, y no hay otro mineral común del que se pueda decir eso. A veces crece en cristales planos que se llaman rosas del desierto.",
+      "Dónde se encuentra": "en zonas que fueron mar y se secaron. En España hay yeso en el valle del Ebro, en Almería y en Toledo.",
+      "De qué está hecho": "calcio, azufre y agua.",
+      "En la historia": "cocido y molido es la escayola. Se usó para las molduras de los techos, para los moldes de escultura y para inmovilizar huesos rotos, y sigue haciendo las tres cosas.",
+      "Con qué se confunde": "con la calcita. El yeso se raya con la uña, y no hay otro mineral común del que se pueda decir eso."
+     },
+     "nombre_en": "Gypsum",
+     "campos_en": {
+      "How to recognise it": "White or colourless, with a pearly shine. It is so soft that a fingernail will scratch it, and there is no other common mineral you can say that about. It sometimes grows in flat crystals known as desert roses.",
+      "Where it is found": "In places that were once sea and dried out. In Spain there is gypsum in the Ebro valley, in Almería and in Toledo.",
+      "What it is made of": "Calcium, sulphur and water.",
+      "In history": "Baked and ground, it is plaster. It was used for ceiling mouldings, for sculptors' moulds and for setting broken bones, and it still does all three.",
+      "What it gets mistaken for": "Calcite. Gypsum can be scratched with a fingernail, and no other common mineral can."
+     }
+    },
+    {
+     "n": 6,
+     "nombre": "Malaquita",
+     "foto": "/img/intereses/minerales/min-malaquita.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "verde intenso, opaca, y con bandas de distintos verdes que forman círculos concéntricos al cortarla. No es transparente en ningún caso.",
+      "Dónde se encuentra": "allí donde hay cobre. El Congo y Rusia dan las piezas grandes; en España aparece en las minas de cobre de Huelva.",
+      "De qué está hecha": "cobre, carbono y oxígeno. El verde es el cobre.",
+      "En la historia": "molida fue el verde de los pintores durante siglos, antes de que existieran los pigmentos de fábrica. El verde de muchos cuadros del Renacimiento es malaquita machacada.",
+      "Con qué se confunde": "con la crisocola. La malaquita tiene bandas concéntricas y burbujea con una gota de vinagre; la crisocola no hace ninguna de las dos cosas."
+     },
+     "nombre_en": "Malachite",
+     "campos_en": {
+      "How to recognise it": "Deep green and opaque, with bands of different greens forming concentric rings when it is cut. It is never transparent.",
+      "Where it is found": "Wherever there is copper. The Congo and Russia produce the large pieces; in Spain it turns up in the copper mines of Huelva.",
+      "What it is made of": "Copper, carbon and oxygen. The green is the copper.",
+      "In history": "Ground down, it was the painters' green for centuries, long before factory pigments existed. The green in many Renaissance paintings is crushed malachite.",
+      "What it gets mistaken for": "Chrysocolla. Malachite has concentric bands and fizzes with a drop of vinegar; chrysocolla does neither."
+     }
+    },
+    {
+     "n": 7,
+     "nombre": "Obsidiana",
+     "foto": "/img/intereses/minerales/min-obsidiana.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "negra, brillante como el cristal, y sin cristales dentro. Al romperse deja superficies curvas, como el fondo de una concha, y los bordes quedan afiladísimos.",
+      "Dónde se encuentra": "en zonas volcánicas. México, Islandia, Italia y las islas Canarias.",
+      "De qué está hecha": "es lava que se enfrió tan deprisa que no llegó a formar cristales. Técnicamente es un vidrio, no un mineral.",
+      "En la historia": "un filo de obsidiana es más fino que un bisturí de acero. Con ella se hicieron cuchillos, puntas de flecha y espejos durante miles de años, y en el México antiguo se comerciaba a cientos de kilómetros de los volcanes que la daban.",
+      "Con qué se confunde": "con el azabache y con el vidrio de botella. El azabache es ligero y templado al tacto; la obsidiana es fría y pesada. El vidrio industrial suele llevar burbujas dentro."
+     },
+     "nombre_en": "Obsidian",
+     "campos_en": {
+      "How to recognise it": "Black, shiny as glass, with no crystals inside. It breaks leaving curved surfaces, like the inside of a shell, and the edges come out razor-sharp.",
+      "Where it is found": "In volcanic areas. Mexico, Iceland, Italy and the Canary Islands.",
+      "What it is made of": "It is lava that cooled so fast it never formed crystals. Technically it is a glass, not a mineral.",
+      "In history": "An obsidian edge is finer than a steel scalpel. Knives, arrowheads and mirrors were made from it for thousands of years, and in ancient Mexico it was traded hundreds of kilometres from the volcanoes that produced it.",
+      "What it gets mistaken for": "Jet, and bottle glass. Jet is light and warm to the touch; obsidian is cold and heavy. Industrial glass usually has bubbles inside."
+     }
+    },
+    {
+     "n": 8,
+     "nombre": "Mica",
+     "foto": "/img/intereses/minerales/min-mica.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "se separa en láminas finísimas, casi transparentes, que se pueden levantar con la uña como las hojas de un libro. Brillo plateado o dorado según la variedad.",
+      "Dónde se encuentra": "en el granito. Los puntitos que brillan en una encimera de granito son mica.",
+      "De qué está hecha": "silicatos con aluminio y potasio.",
+      "En la historia": "antes del vidrio barato, las láminas de mica fueron ventanas, mirillas de horno y visores de estufa, porque dejan pasar la luz y aguantan el calor sin romperse.",
+      "Con qué se confunde": "con el yeso en láminas. La lámina de mica se dobla y vuelve a su sitio; la de yeso se parte."
+     },
+     "nombre_en": "Mica",
+     "campos_en": {
+      "How to recognise it": "It splits into very thin, almost transparent sheets that can be lifted with a fingernail, like the pages of a book. Silver or golden sheen depending on the variety.",
+      "Where it is found": "In granite. The specks that glitter on a granite worktop are mica.",
+      "What it is made of": "Silicates with aluminium and potassium.",
+      "In history": "Before cheap glass, sheets of mica served as windows, oven windows and stove viewers, because they let light through and take heat without breaking.",
+      "What it gets mistaken for": "Gypsum in sheets. A sheet of mica bends and springs back; a sheet of gypsum snaps."
+     }
+    },
+    {
+     "n": 9,
+     "nombre": "Magnetita",
+     "foto": "/img/intereses/minerales/min-magnetita.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "negra, con brillo metálico, muy pesada, y atrae al imán. Es el único mineral común que hace eso. Crece en octaedros, como dos pirámides pegadas por la base.",
+      "Dónde se encuentra": "en Suecia, en Rusia y en el País Vasco y Almería.",
+      "De qué está hecha": "hierro y oxígeno. Es un mineral de hierro.",
+      "En la historia": "un trozo de magnetita colgado de un hilo se orienta solo hacia el norte. Esa es la primera brújula, y con ella se navegó antes de que existiera ninguna aguja imantada.",
+      "Con qué se confunde": "con la hematites. Las dos son negras y pesadas, pero la hematites deja raya roja y la magnetita negra. Y solo la magnetita pega al imán."
+     },
+     "nombre_en": "Magnetite",
+     "campos_en": {
+      "How to recognise it": "Black, with a metallic shine, very heavy, and it attracts a magnet. It is the only common mineral that does. It grows in octahedra, like two pyramids joined at the base.",
+      "Where it is found": "In Sweden, in Russia, and in the Basque Country and Almería.",
+      "What it is made of": "Iron and oxygen. It is an iron ore.",
+      "In history": "A piece of magnetite hung from a thread turns north on its own. That is the first compass, and ships were navigated with it before any magnetised needle existed.",
+      "What it gets mistaken for": "Hematite. Both are black and heavy, but hematite leaves a red streak and magnetite a black one. And only magnetite sticks to a magnet."
+     }
+    },
+    {
+     "n": 10,
+     "nombre": "Calcita",
+     "foto": "/img/intereses/minerales/min-calcita.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "blanca o incolora, se raya con una moneda de cobre, y al romperse siempre se parte en romboedros: cajitas inclinadas, nunca cubos rectos. Con una gota de vinagre burbujea.",
+      "Dónde se encuentra": "es el mineral de la caliza y del mármol, así que está en media España. Las estalactitas de las cuevas son calcita.",
+      "De qué está hecha": "calcio, carbono y oxígeno.",
+      "En la historia": "un romboedro transparente de calcita parte la luz en dos y hace ver doble lo que hay debajo. Con esa piedra se descubrió que la luz podía comportarse de dos maneras distintas a la vez, y de ahí salió medio siglo de física.",
+      "Con qué se confunde": "con el cuarzo. La calcita burbujea con vinagre, se raya con una moneda y siempre rompe en romboedros inclinados."
+     },
+     "nombre_en": "Calcite",
+     "campos_en": {
+      "How to recognise it": "White or colourless. A copper coin scratches it, and it always breaks into rhombohedra: leaning boxes, never straight cubes. A drop of vinegar makes it fizz.",
+      "Where it is found": "It is the mineral of limestone and marble, so it is all over half of Spain. Cave stalactites are calcite.",
+      "What it is made of": "Calcium, carbon and oxygen.",
+      "In history": "A clear rhombohedron of calcite splits light in two and makes whatever is underneath look double. That stone showed that light could behave in two different ways at once, and half a century of physics came out of it.",
+      "What it gets mistaken for": "Quartz. Calcite fizzes with vinegar, a coin scratches it, and it always breaks into leaning rhombohedra."
+     }
+    },
+    {
+     "n": 11,
+     "nombre": "Granate",
+     "foto": "/img/intereses/minerales/min-granate.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "rojo oscuro, casi vinoso, con brillo de vidrio. Crece en bolas de muchas caras, redondeadas, a menudo incrustadas en la roca que las rodea.",
+      "Dónde se encuentra": "dentro de rocas que han estado a mucha presión. En España aparece en Galicia y en Almería.",
+      "De qué está hecho": "silicatos con hierro, aluminio o magnesio. Hay granates verdes, naranjas y negros, pero el rojo es el que todo el mundo conoce.",
+      "En la historia": "por su dureza se ha usado como abrasivo: el papel de lija de granate y los chorros de arena para cortar metal llevan granate molido. La misma piedra que se engarza en un anillo sirve para desgastar acero.",
+      "Con qué se confunde": "con el rubí y con la espinela. El granate crece en bolas de muchas caras metidas en la roca; los otros dos no aparecen así."
+     },
+     "nombre_en": "Garnet",
+     "campos_en": {
+      "How to recognise it": "Dark red, almost wine-coloured, with a glassy shine. It grows as rounded balls with many flat faces, often set into the rock around them.",
+      "Where it is found": "Inside rocks that have been under great pressure. In Spain it turns up in Galicia and in Almería.",
+      "What it is made of": "Silicates with iron, aluminium or magnesium. There are green, orange and black garnets, but red is the one everybody knows.",
+      "In history": "Its hardness makes it an abrasive: garnet sandpaper and the sand jets used to cut metal are made of ground garnet. The same stone that is set into a ring is used to wear down steel.",
+      "What it gets mistaken for": "Ruby and spinel. Garnet grows as many-faced balls embedded in rock; the other two do not turn up that way."
+     }
+    },
+    {
+     "n": 12,
+     "nombre": "Turmalina",
+     "foto": "/img/intereses/minerales/min-turmalina.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {
+      "Cómo se reconoce": "cristales alargados, con la sección triangular de lados curvos y estrías marcadas a lo largo. Puede cambiar de color en la misma pieza: verde en un extremo y rosa en el otro.",
+      "Dónde se encuentra": "Brasil y Afganistán dan las mejores. En España hay turmalina negra en Galicia y en Extremadura.",
+      "De qué está hecha": "un silicato con boro, y con varios metales que le dan cada color.",
+      "En la historia": "al calentarla se carga de electricidad por los extremos y atrae el polvo. En Holanda la usaban en el siglo XVIII para limpiar la ceniza de las pipas, y la llamaban «la que atrae la ceniza».",
+      "Con qué se confunde": "con el berilo. La turmalina tiene sección triangular y estrías a lo largo; el berilo es hexagonal y liso."
+     },
+     "nombre_en": "Tourmaline",
+     "campos_en": {
+      "How to recognise it": "Long crystals with a triangular cross-section with curved sides, and deep grooves running along their length. The colour can change within a single piece: green at one end and pink at the other.",
+      "Where it is found": "Brazil and Afghanistan produce the best. In Spain there is black tourmaline in Galicia and in Extremadura.",
+      "What it is made of": "A silicate containing boron, with various metals giving it each colour.",
+      "In history": "Heated, it takes an electric charge at each end and attracts dust. In eighteenth-century Holland it was used to clean the ash out of pipes, and they called it the ash-puller.",
+      "What it gets mistaken for": "Beryl. Tourmaline has a triangular cross-section and grooves along its length; beryl is hexagonal and smooth."
+     }
+    }
+   ]
+  },
+  {
+   "id": "dibujar",
+   "es": "Dibujar",
+   "en": "Drawing",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "coser-y-tejer",
+   "es": "Coser y tejer",
+   "en": "Sewing and knitting",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "cocinar",
+   "es": "Cocinar",
+   "en": "Cooking",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "construir-y-reparar",
+   "es": "Construir y reparar",
+   "en": "Building and repairing",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "ceramica-y-barro",
+   "es": "Cerámica y barro",
+   "en": "Pottery and clay",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "reformas-y-restauracion-de-casas",
+   "es": "Reformas y restauración de casas",
+   "en": "Home renovation and restoration",
+   "seccion": "Hacer y crear",
+   "seccion_en": "Make and create",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "videojuegos",
+   "es": "Videojuegos",
+   "en": "Video games",
+   "seccion": "Pantallas y sonido",
+   "seccion_en": "Screens and sound",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "programar",
+   "es": "Programar",
+   "en": "Coding",
+   "seccion": "Pantallas y sonido",
+   "seccion_en": "Screens and sound",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "musica-e-instrumentos",
+   "es": "Música e instrumentos",
+   "en": "Music and instruments",
+   "seccion": "Pantallas y sonido",
+   "seccion_en": "Screens and sound",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "cine-y-como-se-hace",
+   "es": "Cine y cómo se hace",
+   "en": "Film and how it is made",
+   "seccion": "Pantallas y sonido",
+   "seccion_en": "Screens and sound",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "perros",
+   "es": "Perros",
+   "en": "Dogs",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "gatos",
+   "es": "Gatos",
+   "en": "Cats",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "caballos",
+   "es": "Caballos",
+   "en": "Horses",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "aves",
+   "es": "Aves",
+   "en": "Birds",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "vida-marina",
+   "es": "Vida marina",
+   "en": "Marine life",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "insectos",
+   "es": "Insectos",
+   "en": "Insects",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "plantas-y-huerto",
+   "es": "Plantas y huerto",
+   "en": "Plants and gardening",
+   "seccion": "Seres vivos",
+   "seccion_en": "Living things",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "astronomia",
+   "es": "Astronomía",
+   "en": "Astronomy",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "volcanes-y-terremotos",
+   "es": "Volcanes y terremotos",
+   "en": "Volcanoes and earthquakes",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "tormentas-y-nubes",
+   "es": "Tormentas y nubes",
+   "en": "Storms and clouds",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "mapas-y-geografia",
+   "es": "Mapas y geografía",
+   "en": "Maps and geography",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "minerales-y-fosiles",
+   "es": "Minerales y fósiles",
+   "en": "Minerals and fossils",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "trenes-y-transporte",
+   "es": "Trenes y transporte",
+   "en": "Trains and transport",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "idiomas",
+   "es": "Idiomas",
+   "en": "Languages",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  },
+  {
+   "id": "arquitectura",
+   "es": "Arquitectura",
+   "en": "Architecture",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "cromos": [],
+   "total": null
+  }
+ ],
+ "creditos": [
+  "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0"
+ ]
+}

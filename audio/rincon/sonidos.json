@@ -1,0 +1,89 @@
+{
+  "nota": "Sonidos del Rincón tranquilo. Añadir un sonido es añadir una línea aquí. Cada archivo va en /audio/rincon/ en AAC 96 kbps, nivelado a -20 LUFS. Nada empieza solo: siempre hace falta pulsar. Un sonido con \"pendiente\": true no se enseña todavía: quita esa marca cuando el .m4a esté subido.",
+  "grupos": [
+    {
+      "id": "lluvia",
+      "es": "Lluvia",
+      "en": "Rain",
+      "sonidos": [
+        {
+          "es": "Lluvia en una tienda",
+          "en": "Rain on a tent",
+          "file": "/audio/rincon/lluvia-en-tienda.mp3",
+          "author": "enternalrainsounds",
+          "dura": "14:59"
+        },
+        {
+          "es": "Lluvia en la ventana",
+          "en": "Rain on the window",
+          "file": "/audio/rincon/lluvia-en-ventana.mp3",
+          "author": "Eryliaa",
+          "dura": "4:15"
+        },
+        {
+          "es": "Lluvia en una habitación",
+          "en": "Rain in a room",
+          "file": "/audio/rincon/lluvia-habitacion.m4a",
+          "author": "CeleronBeats",
+          "dura": ""
+        }
+      ]
+    },
+    {
+      "id": "agua",
+      "es": "Agua y mar",
+      "en": "Water and sea",
+      "sonidos": [
+        {
+          "es": "Río lento",
+          "en": "Slow river",
+          "file": "/audio/rincon/rio-lento.mp3",
+          "author": "Nils_Vega",
+          "dura": "4:05"
+        },
+        {
+          "es": "Olas suaves",
+          "en": "Soft waves",
+          "file": "/audio/rincon/olas-suaves.mp3",
+          "author": "SoundsForYou",
+          "dura": "2:30"
+        }
+      ]
+    },
+    {
+      "id": "bosque",
+      "es": "Bosque y campo",
+      "en": "Forest and fields",
+      "sonidos": [
+        {
+          "es": "Bosque y viento",
+          "en": "Forest wind and birds",
+          "file": "/audio/rincon/bosque-y-viento.mp3",
+          "author": "freesound_community",
+          "dura": "3:16"
+        }
+      ]
+    },
+    {
+      "id": "ambiente",
+      "es": "Ambiente",
+      "en": "Ambience",
+      "sonidos": [
+        {
+          "es": "Ambiente largo",
+          "en": "Long ambience",
+          "file": "/audio/rincon/ambiente-largo.m4a",
+          "author": "Lachm",
+          "dura": ""
+        },
+        {
+          "es": "Meditación suave",
+          "en": "Soft meditation",
+          "file": "/audio/rincon/meditacion-suave.m4a",
+          "author": "Verclub_Music",
+          "dura": ""
+        }
+      ]
+    }
+  ]
+}

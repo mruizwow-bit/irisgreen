@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imprimir cromos · Iris Green</title><meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" crossorigin href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:8mm}
+:root{--ink:#17395c;--muted:#5d6877;--rose:#a8336f;--line:#c9d4e2}
+*{box-sizing:border-box}
+html,body{margin:0;background:#eef2f7;color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif}
+.barra{position:sticky;top:0;z-index:5;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid var(--line)}
+.barra p{margin:0;font-size:15px;color:var(--muted)}
+.barra button,.barra a{font:inherit;font-size:15px;min-height:44px;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;cursor:pointer}
+.barra button.on{background:#1f5f8b;border-color:#1f5f8b;color:#fff}
+.hojas{padding:22px 18px 60px}
+.hoja{width:194mm;margin:0 auto 18px;background:#fff;padding:0;box-shadow:0 10px 30px -22px rgba(23,57,92,.5)}
+.rejilla{display:grid;grid-template-columns:repeat(2,94mm);grid-auto-rows:132mm;justify-content:center;gap:3mm}
+.rejilla.uno{grid-template-columns:194mm;grid-auto-rows:266mm}
+.cromo{border:1px solid var(--line);border-radius:3mm;overflow:hidden;display:flex;flex-direction:column;break-inside:avoid;page-break-inside:avoid}
+.cromo .lam{width:100%;height:44mm;flex:0 0 44mm;object-fit:contain;display:block;background:#0e1c33}
+.rejilla.uno .cromo .lam{height:128mm;flex:0 0 128mm}
+.cuerpo{padding:2.6mm 3mm 2.2mm;display:flex;flex-direction:column;gap:.8mm;flex:1;overflow:hidden}
+.cuerpo h2{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:12.5pt;line-height:1.08;margin:0}
+.rejilla.uno .cuerpo h2{font-size:26pt}
+.lat{font-style:italic;color:var(--muted);font-size:8pt;margin:0 0 .6mm}
+.rejilla.uno .lat{font-size:14pt}
+.campo{margin:0}
+.et{display:block;font-size:6.8pt;letter-spacing:.07em;text-transform:uppercase;color:var(--rose);font-weight:700}
+.va{font-size:9pt;line-height:1.25;margin:.2mm 0 0;color:#2c3f56;text-wrap:pretty}
+.rejilla.uno .et{font-size:10pt}
+.rejilla.uno .va{font-size:12.5pt;line-height:1.45}
+.pie{margin-top:auto;padding-top:1.4mm;border-top:.4pt solid var(--line);font-size:7pt;color:var(--muted)}
+.rejilla.uno .pie{font-size:10pt}
+.piehoja{margin:2.5mm 0 0;text-align:center;font-size:6.6pt;color:var(--muted)}
+.creditos{padding:0}
+.creditos h2{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:20pt;margin:0 0 4mm}
+.creditos ul{margin:0;padding-left:5mm;font-size:10pt;line-height:1.6}
+@media print{
+ html,body{background:#fff}
+ .barra{display:none}
+ .hojas{padding:0}
+ .hoja{width:auto;margin:0;box-shadow:none;break-after:page;page-break-after:always}
+ .hoja:last-child{break-after:auto;page-break-after:auto}
+ .cromo{border-color:#9aa8ba}
+}
+</style></head><body>
+<div class="barra">
+<button id="imprimir" type="button">Imprimir o guardar en PDF</button>
+<button id="modo4" class="on" type="button">Cuatro por hoja</button>
+<button id="modo1" type="button">Uno por hoja</button>
+<p id="info"></p>
+<a href="/es/intereses/">Volver a Tus intereses</a>
+</div>
+<div class="hojas" id="hojas"></div>
+<script>(function(){"use strict";
+var q=new URLSearchParams(location.search);
+var tema=q.get("tema")||"constelaciones", uno=q.get("n"), ES=q.get("lang")!=="en";
+var por=uno?1:4, datos=null;
+function esc(s){var d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML}
+function cromo(c,t,uno){
+  var campos=(ES?c.campos:c.campos_en)||{}, filas="";
+  Object.keys(campos).forEach(function(k){ if(campos[k]) filas+='<p class="campo"><span class="et">'+esc(k)+'</span><span class="va">'+esc(campos[k])+'</span></p>' });
+  var num=String(c.n)+(t.total?" / "+t.total:"");
+  return '<article class="cromo">'
+   +'<img class="lam" src="'+esc(c.foto)+'" alt="'+esc(c.nombre)+'">'
+   +'<div class="cuerpo"><h2>'+esc(ES?c.nombre:(c.nombre_en||c.nombre))+'</h2>'
+   +((ES?c.latino:(c.latino_en||c.latino))?'<p class="lat">'+esc(ES?c.latino:(c.latino_en||c.latino))+'</p>':'')
+   +filas
+   +'<p class="pie">irisgreen.eu · '+esc(ES?(t.coleccion||t.es):(t.coleccion_en||t.en))+' '+esc(num)+' · Iris Green</p>'
+   +'</div></article>';
+}
+function pinta(){
+  var cont=document.getElementById("hojas"); cont.innerHTML="";
+  var t=(datos.temas||[]).filter(function(x){return x.id===tema})[0];
+  if(!t){ cont.innerHTML='<p class="piehoja">No se ha encontrado la colección.</p>'; return }
+  var lista=(t.cromos||[]).filter(function(c){return !c.pendiente});
+  if(uno) lista=lista.filter(function(c){return String(c.n)===String(uno)});
+  if(!ES) lista=lista.filter(function(c){return c.campos_en});
+  if(!lista.length){ cont.innerHTML='<p class="piehoja">'+(ES?"No hay cromos publicados en esta colección.":"No cards published in this collection yet.")+'</p>'; return }
+  var hojas=Math.ceil(lista.length/por)+(uno?0:1);
+  document.getElementById("info").textContent=ES
+    ? lista.length+(lista.length===1?" cromo · ":" cromos · ")+hojas+(hojas===1?" hoja A4":" hojas A4")
+    : lista.length+(lista.length===1?" card · ":" cards · ")+hojas+(hojas===1?" A4 sheet":" A4 sheets");
+  for(var i=0;i<lista.length;i+=por){
+    var trozo=lista.slice(i,i+por), h=document.createElement("div"); h.className="hoja";
+    h.innerHTML='<div class="rejilla'+(por===1?' uno':'')+'">'+trozo.map(function(c){return cromo(c,t,por===1)}).join("")+'</div>'
+      +'<p class="piehoja">'+(ES?'Cromos de irisgreen.eu · uso libre para imprimir y coleccionar · no para vender':'Cards from irisgreen.eu · free to print and collect · not for sale')+'</p>';
+    cont.appendChild(h);
+  }
+  if(!uno){
+    var cr=document.createElement("div"); cr.className="hoja";
+    var lineas=[].concat(t.credito_coleccion||[], datos.creditos||[]);
+    cr.innerHTML='<div class="creditos"><h2>'+(ES?'Créditos':'Credits')+'</h2><ul>'
+      +lineas.map(function(l){return '<li>'+esc(l)+'</li>'}).join("")
+      +'</ul></div><p class="piehoja">'+(ES?'Cromos de irisgreen.eu · uso libre para imprimir y coleccionar · no para vender':'Cards from irisgreen.eu · free to print and collect · not for sale')+'</p>';
+    cont.appendChild(cr);
+  }
+}
+document.getElementById("imprimir").onclick=function(){window.print()};
+document.getElementById("modo4").onclick=function(){por=4;this.classList.add("on");document.getElementById("modo1").classList.remove("on");pinta()};
+document.getElementById("modo1").onclick=function(){por=1;this.classList.add("on");document.getElementById("modo4").classList.remove("on");pinta()};
+if(uno){document.getElementById("modo4").classList.remove("on");document.getElementById("modo1").classList.add("on")}
+if(!ES){document.documentElement.lang="en";document.title="Print cards · Iris Green";document.getElementById("imprimir").textContent="Print or save as PDF";document.getElementById("modo4").textContent="Four per sheet";document.getElementById("modo1").textContent="One per sheet";var v=document.querySelector(".barra a");v.textContent="Back to Your interests";v.href="/en/interests/"}
+fetch("/es/intereses/cromos.json").then(function(r){return r.json()}).then(function(d){datos=d;pinta()})
+ .catch(function(){document.getElementById("hojas").innerHTML='<p class="piehoja">No se han podido cargar los cromos.</p>'});
+})();</script>
+</body></html>

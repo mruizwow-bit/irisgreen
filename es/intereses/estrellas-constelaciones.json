@@ -1,0 +1,690 @@
+{
+ "Osa Mayor": [
+  {
+   "nombre": "Dubhe",
+   "bayer": "50Alp UMa",
+   "hip": "54061",
+   "ra_h": 11.06216,
+   "dec_deg": 61.75103,
+   "mag": 1.81
+  },
+  {
+   "nombre": "Merak",
+   "bayer": "48Bet UMa",
+   "hip": "53910",
+   "ra_h": 11.03068,
+   "dec_deg": 56.38243,
+   "mag": 2.34
+  },
+  {
+   "nombre": "Phecda",
+   "bayer": "64Gam UMa",
+   "hip": "58001",
+   "ra_h": 11.89717,
+   "dec_deg": 53.69476,
+   "mag": 2.41
+  },
+  {
+   "nombre": "Megrez",
+   "bayer": "69Del UMa",
+   "hip": "59774",
+   "ra_h": 12.25709,
+   "dec_deg": 57.03262,
+   "mag": 3.32
+  },
+  {
+   "nombre": "Alioth",
+   "bayer": "77Eps UMa",
+   "hip": "62956",
+   "ra_h": 12.90047,
+   "dec_deg": 55.95982,
+   "mag": 1.76
+  },
+  {
+   "nombre": "Mizar",
+   "bayer": "79Zet UMa",
+   "hip": "65378",
+   "ra_h": 13.39875,
+   "dec_deg": 54.92536,
+   "mag": 2.23
+  },
+  {
+   "nombre": "Alkaid",
+   "bayer": "85Eta UMa",
+   "hip": "67301",
+   "ra_h": 13.79235,
+   "dec_deg": 49.31327,
+   "mag": 1.85
+  }
+ ],
+ "Osa Menor": [
+  {
+   "nombre": "Polaris",
+   "bayer": "1Alp UMi",
+   "hip": "11767",
+   "ra_h": 2.52975,
+   "dec_deg": 89.26411,
+   "mag": 1.97
+  },
+  {
+   "nombre": "Yildun",
+   "bayer": "23Del UMi",
+   "hip": "85822",
+   "ra_h": 17.53692,
+   "dec_deg": 86.58646,
+   "mag": 4.35
+  },
+  {
+   "nombre": "Eps UMi",
+   "bayer": "22Eps UMi",
+   "hip": "82080",
+   "ra_h": 16.76616,
+   "dec_deg": 82.03726,
+   "mag": 4.21
+  },
+  {
+   "nombre": "Zet UMi",
+   "bayer": "16Zet UMi",
+   "hip": "77055",
+   "ra_h": 15.7343,
+   "dec_deg": 77.79449,
+   "mag": 4.29
+  },
+  {
+   "nombre": "Eta UMi",
+   "bayer": "21Eta UMi",
+   "hip": "79822",
+   "ra_h": 16.29179,
+   "dec_deg": 75.75533,
+   "mag": 4.95
+  },
+  {
+   "nombre": "Pherkad",
+   "bayer": "13Gam UMi",
+   "hip": "75097",
+   "ra_h": 15.34548,
+   "dec_deg": 71.83402,
+   "mag": 3
+  },
+  {
+   "nombre": "Kochab",
+   "bayer": "7Bet UMi",
+   "hip": "72607",
+   "ra_h": 14.84511,
+   "dec_deg": 74.15551,
+   "mag": 2.07
+  }
+ ],
+ "Casiopea": [
+  {
+   "nombre": "Segin",
+   "bayer": "45Eps Cas",
+   "hip": "8886",
+   "ra_h": 1.90658,
+   "dec_deg": 63.6701,
+   "mag": 3.35
+  },
+  {
+   "nombre": "Ruchbah",
+   "bayer": "37Del Cas",
+   "hip": "6686",
+   "ra_h": 1.43022,
+   "dec_deg": 60.23528,
+   "mag": 2.66
+  },
+  {
+   "nombre": "Gam Cas",
+   "bayer": "27Gam Cas",
+   "hip": "4427",
+   "ra_h": 0.94514,
+   "dec_deg": 60.71674,
+   "mag": 2.15
+  },
+  {
+   "nombre": "Schedar",
+   "bayer": "18Alp Cas",
+   "hip": "3179",
+   "ra_h": 0.67512,
+   "dec_deg": 56.53733,
+   "mag": 2.24
+  },
+  {
+   "nombre": "Caph",
+   "bayer": "11Bet Cas",
+   "hip": "746",
+   "ra_h": 0.15289,
+   "dec_deg": 59.14978,
+   "mag": 2.28
+  }
+ ],
+ "Orion": [
+  {
+   "nombre": "Betelgeuse",
+   "bayer": "58Alp Ori",
+   "hip": "27989",
+   "ra_h": 5.91953,
+   "dec_deg": 7.40706,
+   "mag": 0.45
+  },
+  {
+   "nombre": "Bellatrix",
+   "bayer": "24Gam Ori",
+   "hip": "25336",
+   "ra_h": 5.41885,
+   "dec_deg": 6.3497,
+   "mag": 1.64
+  },
+  {
+   "nombre": "Mintaka",
+   "bayer": "34Del Ori",
+   "hip": "25930",
+   "ra_h": 5.53345,
+   "dec_deg": -0.29909,
+   "mag": 2.25
+  },
+  {
+   "nombre": "Alnilam",
+   "bayer": "46Eps Ori",
+   "hip": "26311",
+   "ra_h": 5.60356,
+   "dec_deg": -1.20192,
+   "mag": 1.69
+  },
+  {
+   "nombre": "Alnitak",
+   "bayer": "50Zet Ori",
+   "hip": "26727",
+   "ra_h": 5.67931,
+   "dec_deg": -1.94257,
+   "mag": 1.74
+  },
+  {
+   "nombre": "Rigel",
+   "bayer": "19Bet Ori",
+   "hip": "24436",
+   "ra_h": 5.2423,
+   "dec_deg": -8.20164,
+   "mag": 0.18
+  },
+  {
+   "nombre": "Saiph",
+   "bayer": "53Kap Ori",
+   "hip": "27366",
+   "ra_h": 5.79594,
+   "dec_deg": -9.66961,
+   "mag": 2.07
+  }
+ ],
+ "Can Mayor": [
+  {
+   "nombre": "Mirzam",
+   "bayer": "2Bet CMa",
+   "hip": "30324",
+   "ra_h": 6.37833,
+   "dec_deg": -17.95592,
+   "mag": 1.98
+  },
+  {
+   "nombre": "Sirius",
+   "bayer": "9Alp CMa",
+   "hip": "32349",
+   "ra_h": 6.75248,
+   "dec_deg": -16.71612,
+   "mag": -1.44
+  },
+  {
+   "nombre": "Muliphein",
+   "bayer": "23Gam CMa",
+   "hip": "34045",
+   "ra_h": 7.06264,
+   "dec_deg": -15.63329,
+   "mag": 4.11
+  },
+  {
+   "nombre": "Wezen",
+   "bayer": "25Del CMa",
+   "hip": "34444",
+   "ra_h": 7.13986,
+   "dec_deg": -26.3932,
+   "mag": 1.83
+  },
+  {
+   "nombre": "Adhara",
+   "bayer": "21Eps CMa",
+   "hip": "33579",
+   "ra_h": 6.9771,
+   "dec_deg": -28.97208,
+   "mag": 1.5
+  },
+  {
+   "nombre": "Aludra",
+   "bayer": "31Eta CMa",
+   "hip": "35904",
+   "ra_h": 7.40158,
+   "dec_deg": -29.3031,
+   "mag": 2.45
+  },
+  {
+   "nombre": "Furud",
+   "bayer": "1Zet CMa",
+   "hip": "30122",
+   "ra_h": 6.33855,
+   "dec_deg": -30.06337,
+   "mag": 3.02
+  }
+ ],
+ "Tauro": [
+  {
+   "nombre": "Elnath",
+   "bayer": "112Bet Tau",
+   "hip": "25428",
+   "ra_h": 5.4382,
+   "dec_deg": 28.60745,
+   "mag": 1.65
+  },
+  {
+   "nombre": "Eps Tau",
+   "bayer": "74Eps Tau",
+   "hip": "20889",
+   "ra_h": 4.47694,
+   "dec_deg": 19.18043,
+   "mag": 3.53
+  },
+  {
+   "nombre": "Zet Tau",
+   "bayer": "123Zet Tau",
+   "hip": "26451",
+   "ra_h": 5.62741,
+   "dec_deg": 21.14255,
+   "mag": 2.97
+  },
+  {
+   "nombre": "Aldebaran",
+   "bayer": "87Alp Tau",
+   "hip": "21421",
+   "ra_h": 4.59868,
+   "dec_deg": 16.5093,
+   "mag": 0.87
+  },
+  {
+   "nombre": "Gam Tau",
+   "bayer": "54Gam Tau",
+   "hip": "20205",
+   "ra_h": 4.32989,
+   "dec_deg": 15.62764,
+   "mag": 3.65
+  },
+  {
+   "nombre": "Del Tau",
+   "bayer": "61Del1Tau",
+   "hip": "20455",
+   "ra_h": 4.38225,
+   "dec_deg": 17.54251,
+   "mag": 3.77
+  }
+ ],
+ "Geminis": [
+  {
+   "nombre": "Castor",
+   "bayer": "66Alp Gem",
+   "hip": "36850",
+   "ra_h": 7.57663,
+   "dec_deg": 31.88828,
+   "mag": 1.58
+  },
+  {
+   "nombre": "Pollux",
+   "bayer": "78Bet Gem",
+   "hip": "37826",
+   "ra_h": 7.75528,
+   "dec_deg": 28.0262,
+   "mag": 1.16
+  },
+  {
+   "nombre": "Mebsuta",
+   "bayer": "27Eps Gem",
+   "hip": "32246",
+   "ra_h": 6.7322,
+   "dec_deg": 25.13112,
+   "mag": 3.06
+  },
+  {
+   "nombre": "Alhena",
+   "bayer": "24Gam Gem",
+   "hip": "31681",
+   "ra_h": 6.62853,
+   "dec_deg": 16.39925,
+   "mag": 1.93
+  },
+  {
+   "nombre": "Wasat",
+   "bayer": "55Del Gem",
+   "hip": "35550",
+   "ra_h": 7.33538,
+   "dec_deg": 21.98232,
+   "mag": 3.5
+  }
+ ],
+ "Leo": [
+  {
+   "nombre": "Regulus",
+   "bayer": "32Alp Leo",
+   "hip": "49669",
+   "ra_h": 10.13953,
+   "dec_deg": 11.96721,
+   "mag": 1.36
+  },
+  {
+   "nombre": "Eta Leo",
+   "bayer": "30Eta Leo",
+   "hip": "49583",
+   "ra_h": 10.12221,
+   "dec_deg": 16.76266,
+   "mag": 3.48
+  },
+  {
+   "nombre": "Algieba",
+   "bayer": "41Gam1Leo",
+   "hip": "50583",
+   "ra_h": 10.33287,
+   "dec_deg": 19.84149,
+   "mag": 2.01
+  },
+  {
+   "nombre": "Zet Leo",
+   "bayer": "36Zet Leo",
+   "hip": "50335",
+   "ra_h": 10.27817,
+   "dec_deg": 23.41731,
+   "mag": 3.43
+  },
+  {
+   "nombre": "Mu Leo",
+   "bayer": "24Mu  Leo",
+   "hip": "48455",
+   "ra_h": 9.8794,
+   "dec_deg": 26.00695,
+   "mag": 3.88
+  },
+  {
+   "nombre": "Eps Leo",
+   "bayer": "17Eps Leo",
+   "hip": "47908",
+   "ra_h": 9.76419,
+   "dec_deg": 23.77426,
+   "mag": 2.97
+  },
+  {
+   "nombre": "Chertan",
+   "bayer": "70The Leo",
+   "hip": "54879",
+   "ra_h": 11.23733,
+   "dec_deg": 15.42957,
+   "mag": 3.33
+  },
+  {
+   "nombre": "Denebola",
+   "bayer": "94Bet Leo",
+   "hip": "57632",
+   "ra_h": 11.81766,
+   "dec_deg": 14.57206,
+   "mag": 2.14
+  },
+  {
+   "nombre": "Zosma",
+   "bayer": "68Del Leo",
+   "hip": "54872",
+   "ra_h": 11.23514,
+   "dec_deg": 20.52372,
+   "mag": 2.56
+  }
+ ],
+ "Escorpio": [
+  {
+   "nombre": "Acrab",
+   "bayer": "Bet1Sco",
+   "hip": "78820",
+   "ra_h": 16.09062,
+   "dec_deg": -19.80545,
+   "mag": 2.56
+  },
+  {
+   "nombre": "Dschubba",
+   "bayer": "7Del Sco",
+   "hip": "78401",
+   "ra_h": 16.00556,
+   "dec_deg": -22.62171,
+   "mag": 2.29
+  },
+  {
+   "nombre": "Fang",
+   "bayer": "6Pi  Sco",
+   "hip": "78265",
+   "ra_h": 15.98086,
+   "dec_deg": -26.1141,
+   "mag": 2.89
+  },
+  {
+   "nombre": "Antares",
+   "bayer": "21Alp Sco",
+   "hip": "80763",
+   "ra_h": 16.49013,
+   "dec_deg": -26.432,
+   "mag": 1.06
+  },
+  {
+   "nombre": "Paikauhale",
+   "bayer": "23Tau Sco",
+   "hip": "81266",
+   "ra_h": 16.59804,
+   "dec_deg": -28.21602,
+   "mag": 2.82
+  },
+  {
+   "nombre": "Larawag",
+   "bayer": "26Eps Sco",
+   "hip": "82396",
+   "ra_h": 16.83608,
+   "dec_deg": -34.29323,
+   "mag": 2.29
+  },
+  {
+   "nombre": "Xamidimura",
+   "bayer": "Mu 1Sco",
+   "hip": "82514",
+   "ra_h": 16.86451,
+   "dec_deg": -38.04738,
+   "mag": 3
+  },
+  {
+   "nombre": "Zet Sco",
+   "bayer": "Zet2Sco",
+   "hip": "82729",
+   "ra_h": 16.90973,
+   "dec_deg": -42.36131,
+   "mag": 3.62
+  },
+  {
+   "nombre": "Eta Sco",
+   "bayer": "Eta Sco",
+   "hip": "84143",
+   "ra_h": 17.20255,
+   "dec_deg": -43.23919,
+   "mag": 3.32
+  },
+  {
+   "nombre": "Sargas",
+   "bayer": "The Sco",
+   "hip": "86228",
+   "ra_h": 17.62198,
+   "dec_deg": -42.99782,
+   "mag": 1.86
+  },
+  {
+   "nombre": "Iot Sco",
+   "bayer": "Iot1Sco",
+   "hip": "87073",
+   "ra_h": 17.79308,
+   "dec_deg": -40.127,
+   "mag": 2.99
+  },
+  {
+   "nombre": "Shaula",
+   "bayer": "35Lam Sco",
+   "hip": "85927",
+   "ra_h": 17.56014,
+   "dec_deg": -37.10382,
+   "mag": 1.62
+  },
+  {
+   "nombre": "Lesath",
+   "bayer": "34Ups Sco",
+   "hip": "85696",
+   "ra_h": 17.51273,
+   "dec_deg": -37.29581,
+   "mag": 2.7
+  }
+ ],
+ "Cisne": [
+  {
+   "nombre": "Deneb",
+   "bayer": "50Alp Cyg",
+   "hip": "102098",
+   "ra_h": 20.69053,
+   "dec_deg": 45.28034,
+   "mag": 1.25
+  },
+  {
+   "nombre": "Sadr",
+   "bayer": "37Gam Cyg",
+   "hip": "100453",
+   "ra_h": 20.37047,
+   "dec_deg": 40.25668,
+   "mag": 2.23
+  },
+  {
+   "nombre": "Albireo",
+   "bayer": "6Bet1Cyg",
+   "hip": "95947",
+   "ra_h": 19.51202,
+   "dec_deg": 27.95968,
+   "mag": 3.05
+  },
+  {
+   "nombre": "Eps Cyg",
+   "bayer": "53Eps Cyg",
+   "hip": "102488",
+   "ra_h": 20.77018,
+   "dec_deg": 33.97026,
+   "mag": 2.48
+  },
+  {
+   "nombre": "Del Cyg",
+   "bayer": "18Del Cyg",
+   "hip": "97165",
+   "ra_h": 19.74957,
+   "dec_deg": 45.13081,
+   "mag": 2.86
+  }
+ ],
+ "Lira": [
+  {
+   "nombre": "Vega",
+   "bayer": "3Alp Lyr",
+   "hip": "91262",
+   "ra_h": 18.61564,
+   "dec_deg": 38.78369,
+   "mag": 0.03
+  },
+  {
+   "nombre": "Eps Lyr",
+   "bayer": "5Eps2Lyr",
+   "hip": "91926",
+   "ra_h": 18.73966,
+   "dec_deg": 39.61272,
+   "mag": 4.59
+  },
+  {
+   "nombre": "Zet Lyr",
+   "bayer": "6Zet1Lyr",
+   "hip": "91971",
+   "ra_h": 18.74621,
+   "dec_deg": 37.60511,
+   "mag": 4.34
+  },
+  {
+   "nombre": "Sheliak",
+   "bayer": "10Bet Lyr",
+   "hip": "92420",
+   "ra_h": 18.83467,
+   "dec_deg": 33.36267,
+   "mag": 3.52
+  },
+  {
+   "nombre": "Sulafat",
+   "bayer": "14Gam Lyr",
+   "hip": "93194",
+   "ra_h": 18.9824,
+   "dec_deg": 32.68956,
+   "mag": 3.25
+  },
+  {
+   "nombre": "Del Lyr",
+   "bayer": "12Del2Lyr",
+   "hip": "92791",
+   "ra_h": 18.90841,
+   "dec_deg": 36.89861,
+   "mag": 4.22
+  }
+ ],
+ "Aguila": [
+  {
+   "nombre": "Tarazed",
+   "bayer": "50Gam Aql",
+   "hip": "97278",
+   "ra_h": 19.77099,
+   "dec_deg": 10.61326,
+   "mag": 2.72
+  },
+  {
+   "nombre": "Altair",
+   "bayer": "53Alp Aql",
+   "hip": "97649",
+   "ra_h": 19.84639,
+   "dec_deg": 8.86832,
+   "mag": 0.76
+  },
+  {
+   "nombre": "Alshain",
+   "bayer": "60Bet Aql",
+   "hip": "98036",
+   "ra_h": 19.92189,
+   "dec_deg": 6.40676,
+   "mag": 3.71
+  },
+  {
+   "nombre": "Del Aql",
+   "bayer": "30Del Aql",
+   "hip": "95501",
+   "ra_h": 19.42497,
+   "dec_deg": 3.11477,
+   "mag": 3.36
+  },
+  {
+   "nombre": "Zet Aql",
+   "bayer": "17Zet Aql",
+   "hip": "93747",
+   "ra_h": 19.09017,
+   "dec_deg": 13.86348,
+   "mag": 2.99
+  },
+  {
+   "nombre": "The Aql",
+   "bayer": "65The Aql",
+   "hip": "99473",
+   "ra_h": 20.18841,
+   "dec_deg": -0.82146,
+   "mag": 3.24
+  }
+ ]
+}

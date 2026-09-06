@@ -15,6 +15,21 @@
     { f: "piano-fondo.m4a",         t: "Piano de fondo",      a: "andriih",     s: 134 },
     { f: "piano-flores.m4a",        t: "Piano y flores",      a: "andriih",     s: 137 },
     { f: "entre-estrellas.m4a",     t: "Entre estrellas",     a: "The_Mountain", s: 90 },
+    { f: "atmosfera.mp3", t: "Atmósfera", a: "AtlasAudio" },
+    { f: "lluvia-en-el-cuarto.mp3", t: "Lluvia en el cuarto", a: "CeleronBeats" },
+    { f: "lluvia-y-resonancia.mp3", t: "Lluvia y resonancia", a: "CeleronBeats" },
+    { f: "meditacion.mp3", t: "Meditación", a: "DanaMusic" },
+    { f: "meditacion-larga.mp3", t: "Meditación larga", a: "DanaMusic" },
+    { f: "susurros-del-cielo.mp3", t: "Susurros del cielo", a: "Djovan" },
+    { f: "viaje-por-el-cielo.mp3", t: "Viaje por el cielo", a: "HarumachiMusic" },
+    { f: "ambiente-1.mp3", t: "Ambiente I", a: "leberch" },
+    { f: "ambiente-2.mp3", t: "Ambiente II", a: "leberch" },
+    { f: "ambiente-3.mp3", t: "Ambiente III", a: "leberch" },
+    { f: "una-estrella-pequena.mp3", t: "Una estrella pequeña", a: "M_Haroon" },
+    { f: "musica-de-lluvia.mp3", t: "Música de lluvia", a: "PaulYudin" },
+    { f: "ambiente-4.mp3", t: "Ambiente 4", a: "leberch", s: 140 },
+    { f: "ambiente-largo-1.mp3", t: "Ambiente largo I", a: "Lachm", s: 621 },
+    { f: "ambiente-largo-2.mp3", t: "Ambiente largo II", a: "Lachm", s: 750 },
   ];
 
   var STR = {
@@ -97,7 +112,16 @@
       b.className = "pieza";
       b.setAttribute("aria-current", "false");
       b.innerHTML = "<span>" + p.t + "</span><span class='aut'>" + p.a +
-                    "</span><span class='dur'>" + reloj(p.s) + "</span>";
+                    "</span><span class='dur'></span>";
+      if (p.s) { b.querySelector(".dur").textContent = reloj(p.s); }
+      else {
+        (function (btn, pieza) {
+          var son = new Audio(); son.preload = "metadata"; son.src = "/audio/" + pieza.f;
+          son.addEventListener("loadedmetadata", function () {
+            if (isFinite(son.duration)) btn.querySelector(".dur").textContent = reloj(Math.round(son.duration));
+          });
+        })(b, p);
+      }
       b.addEventListener("click", function () { pon(n); });
       li.appendChild(b);
       lista.appendChild(li);
@@ -166,6 +190,36 @@
     });
     bBucle.style.background = "#1f5f8b";
     bBucle.style.color = "#fff";
+
+    // Si la página no trae la hoja de estilo del sitio, el panel se pinta solo:
+    // tarjeta flotante abajo a la derecha, igual que en el resto de la web.
+    if (getComputedStyle(panel).position !== "fixed") {
+      panel.style.position = "fixed";
+      panel.style.right = "clamp(1rem,3vw,1.75rem)";
+      panel.style.bottom = "clamp(1rem,3vw,1.75rem)";
+      panel.style.zIndex = "60";
+      panel.style.width = "min(30rem, calc(100vw - 2rem))";
+      panel.style.maxHeight = "min(70vh, 34rem)";
+      panel.style.overflow = "auto";
+      panel.style.padding = "1rem 1.1rem";
+      panel.style.background = "#fff";
+      panel.style.border = "1px solid #dfe6ef";
+      panel.style.borderRadius = ".9rem";
+      panel.style.boxShadow = "0 24px 60px -30px rgba(23,57,92,.45)";
+      panel.style.color = "#17395c";
+      panel.style.fontFamily = '"Atkinson Hyperlegible",system-ui,sans-serif';
+    }
+
+    // El icono de música abre y cierra el panel, solo en las páginas donde
+    // el panel no lo controla ya el código de la propia página.
+    if (panel.hasAttribute("hidden")) document.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest(".ig-uh-music, [data-ig-music]") : null;
+      if (!b) return;
+      e.preventDefault();
+      var oculto = panel.hasAttribute("hidden");
+      if (oculto) { panel.removeAttribute("hidden"); } else { panel.setAttribute("hidden", ""); }
+      b.setAttribute("aria-expanded", oculto ? "true" : "false");
+    });
 
     audio.addEventListener("ended", function () { pon(actual + 1); });
     audio.addEventListener("play", marca);

@@ -497,10 +497,15 @@ body.tts [data-read]{cursor:pointer}
 
 /* V38 · La playlist cuelga de su icono, no empuja la página */
 #pl{
- position:fixed; top:calc(var(--hit) + 1.4rem); right:clamp(1rem,4vw,2.5rem); z-index:45;
+ position:fixed; bottom:clamp(1rem,3vw,1.75rem); right:clamp(1rem,3vw,1.75rem); top:auto; z-index:45;
  width:min(30rem,calc(100vw - 2rem)); max-width:none; margin:0;
  max-height:min(70vh,34rem); overflow:auto;
  padding:1rem 1.1rem; background:var(--papel);
  border:1px solid var(--linea); border-radius:.9rem;
  box-shadow:0 24px 60px -30px rgba(23,57,92,.45);
 }
+
+/* V38 · Los tres sitios se ven como el resto del menú */
+.nav a.calma{background:transparent;color:var(--tinta);border-radius:.6rem;padding:0 .75rem;white-space:nowrap}
+.nav a.calma:hover{background:rgba(31,95,139,.09);color:var(--azul)}
+.nav a.calma[aria-current=page]{background:var(--tinta);color:#fff}
