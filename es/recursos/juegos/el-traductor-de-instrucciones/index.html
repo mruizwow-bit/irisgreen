@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f8fb">
+<title>El traductor de instrucciones · Iris Green</title>
+<meta name="description" content="Un juego para la clase: convertir las instrucciones de siempre en instrucciones que se pueden comprobar. Gana la claridad, no la velocidad.">
+<link rel="canonical" href="https://irisgreen.eu/es/recursos/juegos/el-traductor-de-instrucciones/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Iris Green">
+<meta property="og:title" content="El traductor de instrucciones">
+<meta property="og:description" content="Un juego para la clase: convertir las instrucciones de siempre en instrucciones que se pueden comprobar. Gana la claridad, no la velocidad.">
+<meta property="og:url" content="https://irisgreen.eu/es/recursos/juegos/el-traductor-de-instrucciones/">
+<meta property="og:image" content="https://irisgreen.eu/img/og-condiciones.png">
+
+<script src="/assets/games/react.production.min.js"></script>
+<script src="/assets/games/react-dom.production.min.js"></script>
+<script src="/assets/games/dc-runtime.js"></script>
+
+<style id="ig-games-accessibility-fixes">
+  *:focus-visible { outline: 3px solid #5a49a8 !important; outline-offset: 3px !important; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,400;0,500;0,600&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  html { background: #fff; }
+  body { margin: 0; padding: 0; background:
+      radial-gradient(120% 80% at 88% -8%, rgba(240,179,206,0.42), transparent 60%),
+      radial-gradient(100% 70% at 4% 8%, rgba(150,133,214,0.3), transparent 62%),
+      radial-gradient(120% 90% at 60% 104%, rgba(120,175,214,0.32), transparent 66%),
+      #fff;
+    background-attachment: fixed; }
+  * { box-sizing: border-box; }
+  a { color: #1f5f8b; text-decoration: none; }
+  a:hover { color: #164a70; text-decoration: underline; text-underline-offset: 3px; }
+  input, button, textarea { font: inherit; color: inherit; }
+  ::placeholder { color: #98a1b0; }
+  html[data-ig-controls="big"] button, html[data-ig-controls="big"] textarea { min-height: 54px; font-size: 1.05em; }
+  html[data-ig-contrast="on"] body { filter: contrast(1.2) saturate(1.1); }
+  html[data-ig-motion="off"] * { animation: none !important; transition: none !important; }
+</style>
+
+<style>
+  .ig-uh{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,57,92,.09)}
+  .ig-uh *{box-sizing:border-box}
+  .ig-uh-inner{width:100%;min-height:88px;padding:12px clamp(32px,5vw,96px);display:flex;align-items:center;gap:10px}
+  .ig-uh-brand{flex:0 0 auto;color:#17395c!important;text-decoration:none!important;font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:400;line-height:1;white-space:nowrap}
+  .ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,.55vw,10px);padding:0 clamp(10px,1.6vw,28px)}
+  .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 clamp(10px,.85vw,16px);border-radius:999px;color:#17395c!important;text-decoration:none!important;font-size:16.5px;line-height:1.2;white-space:nowrap}
+  .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important;text-decoration:none!important}
+  .ig-uh-nav a[aria-current='page']{background:rgba(23,57,92,.07)}
+  .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin-left:0}
+  .ig-uh-tools{display:flex;align-items:center;gap:7px}
+  .ig-uh-music,.ig-uh-reading{min-height:46px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
+  .ig-uh-music{width:46px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(15,107,54,.35)}
+  .ig-uh-reading{display:inline-flex;align-items:center;gap:8px;padding:0 16px;color:#17395c;font-size:16px;white-space:nowrap}
+  .ig-uh-langs{display:flex;align-items:center;gap:6px;margin-left:2px}
+  .ig-uh-langs button{min-height:46px;min-width:52px;padding:0 14px;border-radius:999px;font-size:15.5px!important;font-weight:700;line-height:1.2;cursor:pointer}
+  @media(max-width:1400px){
+    .ig-uh-inner{padding-inline:28px;gap:7px}
+    .ig-uh-nav{gap:2px;padding-inline:8px}
+    .ig-uh-nav a{font-size:15px;padding-inline:9px}
+    .ig-uh-reading{font-size:15px;padding-inline:13px}
+    .ig-uh-langs button{font-size:14px!important;min-width:48px;padding-inline:11px}
+  }
+  @media(max-width:1080px){
+    .ig-uh-inner{flex-wrap:wrap;padding:11px 20px;min-height:0}
+    .ig-uh-brand{font-size:24px}
+    .ig-uh-right{margin-left:auto}
+    .ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;padding:4px 0 1px;scrollbar-width:thin}
+    .ig-uh-nav a{font-size:15px;flex:0 0 auto}
+  }
+  @media(max-width:650px){
+    .ig-uh-inner{gap:8px}
+    .ig-uh-reading{width:46px;padding:0;justify-content:center;font-size:0}
+    .ig-uh-langs{gap:4px}
+    .ig-uh-langs button{min-width:44px;padding:0 9px;font-size:12.5px!important}
+  }
+</style>
+
+</helmet>
+
+
+
+<div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #17395c; min-height: 100vh; font-size: 17px; line-height: 1.6;">
+
+  
+<style>
+.ig-uh{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(23,57,92,.09);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c}
+.ig-uh *{box-sizing:border-box}.ig-uh a{text-decoration:none!important}
+.ig-uh-inner{width:100%;min-height:88px;padding:10px clamp(24px,3vw,56px);display:flex;align-items:center;gap:7px}
+.ig-uh-brand{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;color:#17395c!important;font-family:'Newsreader',Georgia,serif;font-size:25px;line-height:1;white-space:nowrap}
+.ig-uh-brand img{width:25px;height:25px;object-fit:contain}
+.ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:1px;padding:0 5px}
+.ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
+.ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
+.ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
+.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}
+.ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
+.ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
+.ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(15,107,54,.32)}
+.ig-uh-reading{display:inline-flex;align-items:center;gap:7px;padding:0 13px;color:#17395c;font-size:14.5px;white-space:nowrap}
+.ig-uh-langs{display:flex;align-items:center;gap:4px;margin-left:2px}.ig-uh-langs button{min-height:44px;min-width:48px;padding:0 11px;border-radius:999px;font-size:13.5px!important;font-weight:700;cursor:pointer}
+.ig-subtabs{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 18px;background:rgba(255,255,255,.72);border-bottom:1px solid rgba(23,57,92,.08);overflow-x:auto;scrollbar-width:none}.ig-subtabs::-webkit-scrollbar{display:none}.ig-subtabs a{flex:0 0 auto;display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border:1px solid rgba(23,57,92,.14);border-radius:999px;background:#fff;color:#17395c!important;font-size:14px}.ig-subtabs a[aria-current='page']{background:#17395c;color:#fff!important;border-color:#17395c}
+@media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
+@media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
+</style>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><nav class="ig-uh-nav" aria-label="{{ tExploreAria }}"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/tramites/">Cómo pedirlo</a><a class="ig-nav-en" href="/es/tramites/">How to ask</a><a class="ig-nav-pt" href="/es/tramites/">Como pedir</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/" aria-current="page">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/" aria-current="page">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/" aria-current="page">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0f6b36" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 34px 28px 80px;">
+    <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #1f5f8b;">{{ tShelf }}</p>
+    <h1 style="margin: 0 0 12px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.07; letter-spacing: -0.02em; max-width: 16em;">{{ tTitle }}</h1>
+    <p style="margin: 0 0 6px; font-size: 19px; color: #435268; max-width: 44em; text-wrap: pretty;">{{ tLede }}</p>
+    <p style="margin: 0 0 18px; font-size: 17px; color: #5d6779; max-width: 44em;">{{ tHow }}</p>
+
+    <div style="background: rgba(31,95,139,0.08); border-left: 3px solid #1f5f8b; border-radius: 0 16px 16px 0; padding: 15px 18px; margin-bottom: 22px; max-width: 54em;">
+      <strong>{{ tRuleLabel }}</strong> {{ tRule }}
+    </div>
+
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 18px;">
+      <span style="font-size: 17px;">{{ progressLabel }}</span>
+      <button sc-camel-on-click="{{ reset }}" style="margin-left: auto; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 9px 17px; cursor: pointer; font-size: 15px;">{{ tReset }}</button>
+    </div>
+
+    <div style="display: grid; gap: 14px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+        <article style="background: rgba(255,255,255,0.82); backdrop-filter: blur(12px); border: 1px solid {{ r.cardBorder }}; border-radius: 18px; padding: 18px 20px;">
+          <div style="display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px;">
+            <span style="font-size: 11.5px; letter-spacing: 0.11em; text-transform: uppercase; font-weight: 700; color: #a8336f; background: rgba(168,51,111,0.11); border-radius: 999px; padding: 4px 11px;">{{ tVague }}</span>
+            <span style="font-family: 'Newsreader', serif; font-size: 25px;">{{ r.vague }}</span>
+          </div>
+
+          <textarea value="{{ r.value }}" sc-camel-on-change="{{ r.onChange }}" rows="2" placeholder="{{ tPh }}" aria-label="{{ tPh }}" style="width: 100%; border: 1.5px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px 14px; font-size: 16.5px; resize: vertical; outline: none;"></textarea>
+
+          <div style="display: flex; gap: 9px; flex-wrap: wrap; margin-top: 10px; align-items: center;">
+            <button sc-camel-on-click="{{ r.useExample }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-size: 15px;">{{ tUseExample }}</button>
+            <span style="font-size: 15px; color: {{ r.checkColor }};">{{ r.checkLabel }}</span>
+          </div>
+
+          <sc-if value="{{ r.showExample }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 11px; background: rgba(31,139,168,0.08); border-left: 3px solid #1f8ba8; border-radius: 0 12px 12px 0; padding: 11px 14px;">
+              <span style="font-size: 11.5px; letter-spacing: 0.11em; text-transform: uppercase; font-weight: 700; color: #16708a; display: block; margin-bottom: 3px;">{{ tExample }}</span>
+              <span style="font-size: 16.5px;">{{ r.example }}</span>
+            </div>
+          </sc-if>
+        </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasPoster }}" hint-placeholder-val="{{ false }}">
+      <section style="margin-top: 30px; background: #fff; border: 2px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 26px 28px;">
+        <h2 style="margin: 0 0 4px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(25px, 3vw, 33px);">{{ tPosterTitle }}</h2>
+        <p style="margin: 0 0 16px; font-size: 15.5px; color: #5a6675;">{{ tPosterNote }}</p>
+        <div style="display: grid; gap: 9px;">
+          <sc-for list="{{ poster }}" as="p" hint-placeholder-count="0">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="width: 26px; height: 26px; flex: none; border-radius: 999px; background: #1f5f8b; color: #fff; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center;">{{ p.n }}</span>
+              <span style="font-size: 17.5px; max-width: 48em;">{{ p.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <section style="margin-top: 22px; background: rgba(31,95,139,0.08); border-left: 3px solid #1f5f8b; border-radius: 0 18px 18px 0; padding: 22px 24px;">
+        <h2 style="margin: 0 0 8px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 27px;">{{ tIdeaTitle }}</h2>
+        <p style="margin: 0 0 10px; font-size: 18.5px; max-width: 46em; text-wrap: pretty;">{{ tIdea }}</p>
+        <p style="margin: 0 0 16px; font-size: 17px; color: #435268; max-width: 46em;">{{ tDare }}</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="/es/recursos/juegos/#carta-el-traductor-de-instrucciones" style="background: #a8336f; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px;">{{ tGoCard }}</a>
+          <a href="/es/recursos/juegos/el-aula-al-reves/" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 12px 20px; font-size: 16px; color: #17395c;">{{ tGoClass }}</a>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);">
+      <div style="display: flex; align-items: center; margin-bottom: 14px;">
+        <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">{{ tReadingPanel }}</strong>
+        <button sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;">×</button>
+      </div>
+      <div style="display: grid; gap: 10px;">
+        <div>
+          <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }}{{ fsLabel }}</div>
+          <div style="display: flex; gap: 8px;">
+            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;">A−</button>
+            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;">A+</button>
+          </div>
+        </div>
+        <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
+          <button sc-camel-on-click="{{ t.toggle }}" aria-pressed="{{ t.pressed }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
+            <span style="width: 34px; height: 20px; border-radius: 999px; flex: none; background: {{ t.knobTrack }}; position: relative;">
+              <span style="position: absolute; top: 2px; left: {{ t.knobLeft }}; width: 16px; height: 16px; border-radius: 999px; background: #fff;"></span>
+            </span>
+            {{ t.label }}
+          </button>
+        </sc-for>
+        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const STR = {
+  es: {
+    docTitle: "El traductor de instrucciones — Iris Green",
+    logoAlt: "Símbolo de Iris Green: una flor de iris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Lectura", languageAria: "Idioma", closeAria: "Cerrar",
+    backToPlay: "Volver a Jugar", reading: "Lectura", readingPanel: "Lectura accesible",
+    textSize: "Tamaño del texto · ", resetPanel: "Restablecer",
+    shelf: "Para tu clase",
+    title: "El traductor de instrucciones",
+    lede: "Hay instrucciones que todos decimos y nadie sabe cumplir. Aquí las traducimos.",
+    how: "Por equipos. Cada equipo escribe su traducción. Puntúa la claridad de la instrucción.",
+    ruleLabel: "Regla de la traducción:",
+    rule: "Una instrucción clara dice qué hay que hacer, cuánto tiempo y cómo se sabe que está hecho.",
+    vague: "La de siempre",
+    ph: "Escribe aquí vuestra traducción",
+    useExample: "Ver una traducción",
+    example: "Una traducción posible",
+    checkOk: "Se puede comprobar.",
+    checkSoft: "Se entiende. ¿Cómo sabéis que está hecho?",
+    checkEmpty: "",
+    progress: (n) => n + " de 8 traducidas",
+    doneLabel: "Las 8, traducidas.",
+    reset: "Empezar otra vez",
+    posterTitle: "Así damos las instrucciones en esta clase",
+    posterNote: "Este es vuestro cartel. Se imprime y se cuelga.",
+    ideaTitle: "La idea del juego",
+    idea: "Una instrucción clara se puede comprobar. «Portaos bien» no se puede comprobar. «Sentados y con las manos en la mesa», sí.",
+    dare: "El cartel manda una semana. También para el profesor.",
+    goCard: "Rellenar la carta de la clase", goClass: "Jugar a El aula al revés",
+    rows: [
+      ["«Trabajad en silencio.»", "Hablad tan bajo que solo os oiga vuestro compañero de mesa."],
+      ["«Portaos bien.»", "Quedaos sentados y con las manos en vuestra mesa."],
+      ["«Daos prisa.»", "Tenéis cinco minutos. Cuando suene el reloj, se acaba."],
+      ["«Recoged.»", "Los lápices al bote. Los papeles a la bandeja. Las sillas debajo de la mesa."],
+      ["«Atended.»", "Mirad la pizarra. Los lápices, en la mesa."],
+      ["«Sed ordenados.»", "Cada cosa vuelve a su sitio antes de coger otra."],
+      ["«Escuchad.»", "Cuando alguien habla, los demás esperan a que termine."],
+      ["«Hacedlo bien.»", "Revisad las tres cosas de la lista antes de entregar."]
+    ],
+    toggles: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"]
+  },
+  en: {
+    docTitle: "The instruction translator — Iris Green",
+    logoAlt: "Iris Green symbol: an iris flower", exploreAria: "Explore", musicAria: "Music", readingAria: "Reading", languageAria: "Language", closeAria: "Close",
+    backToPlay: "Back to Play", reading: "Reading", readingPanel: "Accessible reading",
+    textSize: "Text size · ", resetPanel: "Reset",
+    shelf: "For your class",
+    title: "The instruction translator",
+    lede: "Some instructions we all say and nobody knows how to follow. Here we translate them.",
+    how: "In teams. Each team writes its translation. Score the clarity of the instruction.",
+    ruleLabel: "Rule for translating:",
+    rule: "A clear instruction says what to do, how long for, and how you know it is done.",
+    vague: "The usual one",
+    ph: "Write your translation here",
+    useExample: "See one translation",
+    example: "One possible translation",
+    checkOk: "This one can be checked.",
+    checkSoft: "It reads well. How do you know it is done?",
+    checkEmpty: "",
+    progress: (n) => n + " of 8 translated",
+    doneLabel: "All 8 translated.",
+    reset: "Start again",
+    posterTitle: "This is how we give instructions in this class",
+    posterNote: "This is your poster. Print it and put it up.",
+    ideaTitle: "The idea of the game",
+    idea: "A clear instruction can be checked. «Behave» cannot be checked. «Sitting down with your hands on the table» can.",
+    dare: "The poster rules for a week. The teacher too.",
+    goCard: "Fill in the class card", goClass: "Play The classroom in reverse",
+    rows: [
+      ["«Work in silence.»", "Speak so quietly that only your desk partner hears you."],
+      ["«Behave.»", "Stay in your seat with your hands on your table."],
+      ["«Hurry up.»", "You have five minutes. When the clock goes, it is over."],
+      ["«Tidy up.»", "Pencils in the pot. Paper in the tray. Chairs under the table."],
+      ["«Pay attention.»", "Look at the board. Pencils down on the table."],
+      ["«Be tidy.»", "Each thing goes back before you take another one."],
+      ["«Listen.»", "When someone is talking, the rest wait until they finish."],
+      ["«Do it properly.»", "Check the three things on the list before handing it in."]
+    ],
+    toggles: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"]
+  },
+  pt: {
+    docTitle: "O tradutor de instruções — Iris Green",
+    logoAlt: "Símbolo da Iris Green: uma flor de íris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Leitura", languageAria: "Idioma", closeAria: "Fechar",
+    backToPlay: "Voltar para Jogar", reading: "Leitura", readingPanel: "Leitura acessível",
+    textSize: "Tamanho do texto · ", resetPanel: "Restaurar",
+    shelf: "Para sua turma",
+    title: "O tradutor de instruções",
+    lede: "Tem instrução que todo mundo fala e ninguém sabe cumprir. Aqui a gente traduz.",
+    how: "Em equipes. Cada equipe escreve a sua tradução. Pontua a clareza da instrução.",
+    ruleLabel: "Regra da tradução:",
+    rule: "Uma instrução clara diz o que fazer, por quanto tempo e como se sabe que está feito.",
+    vague: "A de sempre",
+    ph: "Escreva aqui a tradução de vocês",
+    useExample: "Ver uma tradução",
+    example: "Uma tradução possível",
+    checkOk: "Esta dá para verificar.",
+    checkSoft: "Dá para entender. Como vocês sabem que está feito?",
+    checkEmpty: "",
+    progress: (n) => n + " de 8 traduzidas",
+    doneLabel: "As 8, traduzidas.",
+    reset: "Começar de novo",
+    posterTitle: "É assim que damos instruções nesta turma",
+    posterNote: "Este é o cartaz de vocês. Dá para imprimir e pendurar.",
+    ideaTitle: "A ideia do jogo",
+    idea: "Uma instrução clara dá para verificar. «Comportem-se» não dá. «Sentados e com as mãos na mesa», dá.",
+    dare: "O cartaz vale por uma semana. Para o professor também.",
+    goCard: "Preencher a carta da turma", goClass: "Jogar A sala ao contrário",
+    rows: [
+      ["«Trabalhem em silêncio.»", "Falem tão baixo que só o colega da sua mesa ouça."],
+      ["«Comportem-se.»", "Fiquem sentados e com as mãos na mesa de vocês."],
+      ["«Se apressem.»", "Vocês têm cinco minutos. Quando o relógio tocar, acabou."],
+      ["«Guardem tudo.»", "Os lápis no pote. Os papéis na bandeja. As cadeiras embaixo da mesa."],
+      ["«Prestem atenção.»", "Olhem para o quadro. Os lápis, na mesa."],
+      ["«Sejam organizados.»", "Cada coisa volta para o lugar antes de pegar outra."],
+      ["«Escutem.»", "Quando alguém fala, os outros esperam a pessoa terminar."],
+      ["«Façam direito.»", "Revisem as três coisas da lista antes de entregar."]
+    ],
+    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"]
+  }
+};
+
+const CHECKABLE = /\d|minuto|minute|segundo|second|reloj|clock|relógio|antes|before|cuando|when|quando|hasta|until|até|lista|list|solo|only|só /i;
+
+class Component extends DCLogic {
+  state = { lang: "es", texts: {}, shown: {}, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
+
+  componentDidMount() {
+    try {
+      const lang = localStorage.getItem("ig_lang");
+      const use = lang && STR[lang] ? lang : "es";
+      if (use !== "es") this.setState({ lang: use });
+      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.title = STR[use].docTitle;
+    } catch (e) {}
+  }
+
+  componentDidUpdate() {
+    clearTimeout(this._titleT);
+    this._titleT = setTimeout(() => {
+      const t = (STR[this.state.lang] || STR.es).docTitle;
+      if (document.title !== t) document.title = t;
+    }, 0);
+  }
+
+  setLang(lang) {
+    try {
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+      localStorage.setItem("ig_lang", lang);
+    } catch (e) {}
+    this.setState({ lang });
+  }
+
+  applyReading(s) {
+    const b = document.body, h = document.documentElement;
+    if (!b) return;
+    b.style.zoom = (s.fs / 17).toFixed(3);
+    b.style.lineHeight = s.spacing ? "1.9" : "";
+    b.style.letterSpacing = s.spacing ? "0.045em" : "";
+    b.style.wordSpacing = s.spacing ? "0.12em" : "";
+    h.dataset.igControls = s.controls ? "big" : "";
+    h.dataset.igContrast = s.contrast ? "on" : "";
+    h.dataset.igMotion = s.motion ? "off" : "";
+    this.setGuide(s.guide);
+    this.setSpeak(s.speak);
+  }
+
+  setGuide(on) {
+    let el = document.getElementById("ig-guide");
+    if (on && !el) {
+      el = document.createElement("div");
+      el.id = "ig-guide";
+      el.style.cssText = "position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(90,73,168,0.14);border-top:2px solid rgba(90,73,168,0.5);border-bottom:2px solid rgba(90,73,168,0.5);top:0";
+      document.body.appendChild(el);
+      this._gm = (e) => { el.style.top = Math.max(0, e.clientY - 23) + "px"; };
+      window.addEventListener("pointermove", this._gm);
+    } else if (!on && el) {
+      window.removeEventListener("pointermove", this._gm);
+      el.remove();
+    }
+  }
+
+  setSpeak(on) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    if (!on) return;
+    const main = document.querySelector("main");
+    const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
+    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  }
+
+  setReading(patch) {
+    const st = this.state;
+    const next = Object.assign({ fs: st.fs, spacing: st.spacing, controls: st.controls, contrast: st.contrast, guide: st.guide, speak: st.speak, motion: st.motion }, patch);
+    this.setState(next);
+    this.applyReading(next);
+  }
+
+  renderVals() {
+    const st = this.state;
+    const L = STR[st.lang] ? st.lang : "es";
+    const T = STR[L];
+    const filled = Object.keys(st.texts).filter((k) => (st.texts[k] || "").trim().length > 3);
+
+    return {
+      langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map(([code, label]) => ({
+        label,
+        bg: st.lang === code ? "#1f5f8b" : "#fff",
+        color: st.lang === code ? "#fff" : "#17395c",
+        border: st.lang === code ? "#1f5f8b" : "rgba(23,57,92,0.16)",
+        pick: () => this.setLang(code)
+      })),
+      tLogoAlt: T.logoAlt, tExploreAria: T.exploreAria, tMusicAria: T.musicAria, tReadingAria: T.readingAria, tLanguageAria: T.languageAria, tCloseAria: T.closeAria, tBackToPlay: T.backToPlay, tReading: T.reading, tReadingPanel: T.readingPanel,
+      tTextSize: T.textSize, tResetPanel: T.resetPanel,
+      tShelf: T.shelf, tTitle: T.title, tLede: T.lede, tHow: T.how,
+      tRuleLabel: T.ruleLabel, tRule: T.rule, tVague: T.vague, tPh: T.ph,
+      tUseExample: T.useExample, tExample: T.example, tReset: T.reset,
+      tPosterTitle: T.posterTitle, tPosterNote: T.posterNote,
+      tIdeaTitle: T.ideaTitle, tIdea: T.idea, tDare: T.dare,
+      tGoCard: T.goCard, tGoClass: T.goClass,
+
+      progressLabel: filled.length === 8 ? T.doneLabel : T.progress(filled.length),
+
+      rows: T.rows.map(([vague, example], n) => {
+        const v = st.texts[n] || "";
+        const long = v.trim().length > 3;
+        const ok = long && CHECKABLE.test(v);
+        return {
+          vague, example, value: v,
+          cardBorder: ok ? "rgba(31,139,168,0.45)" : "rgba(23,57,92,0.1)",
+          checkLabel: !long ? T.checkEmpty : (ok ? T.checkOk : T.checkSoft),
+          checkColor: ok ? "#16708a" : "#8a5a12",
+          showExample: !!st.shown[n],
+          onChange: (e) => {
+            const t = Object.assign({}, this.state.texts);
+            t[n] = e.target.value;
+            this.setState({ texts: t });
+          },
+          useExample: () => {
+            const sh = Object.assign({}, this.state.shown);
+            sh[n] = !sh[n];
+            this.setState({ shown: sh });
+          }
+        };
+      }),
+
+      hasPoster: filled.length > 0,
+      poster: filled.sort((a, b) => a - b).map((k, i) => ({ n: i + 1, text: (st.texts[k] || "").trim() })),
+      done: filled.length === 8,
+      reset: () => this.setState({ texts: {}, shown: {} }),
+
+      a11yOpen: st.a11y,
+      toggleA11y: () => this.setState({ a11y: !st.a11y }),
+      fsUp: () => this.setReading({ fs: Math.min(st.fs + 2, 25) }),
+      fsDown: () => this.setReading({ fs: Math.max(st.fs - 2, 15) }),
+      fsLabel: Math.round((st.fs / 17) * 100) + "%",
+      a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((k, n) => {
+        const on = !!st[k];
+        return {
+          label: T.toggles[n],
+          pressed: on,
+          bg: on ? "rgba(90,73,168,0.12)" : "#fff",
+          border: on ? "#5a49a8" : "rgba(23,57,92,0.16)",
+          knobTrack: on ? "#5a49a8" : "rgba(23,57,92,0.22)",
+          knobLeft: on ? "16px" : "2px",
+          toggle: () => this.setReading({ [k]: !on })
+        };
+      }),
+      a11yReset: () => this.setReading({ fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false })
+    };
+  }
+}
+
+</script>
+
+
+</body></html>

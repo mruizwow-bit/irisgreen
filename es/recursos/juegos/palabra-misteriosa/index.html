@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f8fb">
+<title>Palabra misteriosa: lo que no se ve · Iris Green</title>
+<meta name="description" content="Quince palabras para nombrar lo que no se ve. Lees la definición en primera persona y adivinas cuál es.">
+<link rel="canonical" href="https://irisgreen.eu/es/recursos/juegos/palabra-misteriosa/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Iris Green">
+<meta property="og:title" content="Palabra misteriosa: lo que no se ve">
+<meta property="og:description" content="Quince palabras para nombrar lo que no se ve. Lees la definición en primera persona y adivinas cuál es.">
+<meta property="og:url" content="https://irisgreen.eu/es/recursos/juegos/palabra-misteriosa/">
+<meta property="og:image" content="https://irisgreen.eu/img/og-condiciones.png">
+
+<script src="/assets/games/react.production.min.js"></script>
+<script src="/assets/games/react-dom.production.min.js"></script>
+<script src="/assets/games/dc-runtime.js"></script>
+
+<style id="ig-games-accessibility-fixes">
+  *:focus-visible { outline: 3px solid #5a49a8 !important; outline-offset: 3px !important; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,400;0,500;0,600&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  html { background: #fff; }
+  body { margin: 0; padding: 0; background:
+      radial-gradient(120% 80% at 88% -8%, rgba(240,179,206,0.42), transparent 60%),
+      radial-gradient(100% 70% at 4% 8%, rgba(150,133,214,0.3), transparent 62%),
+      radial-gradient(120% 90% at 60% 104%, rgba(120,175,214,0.32), transparent 66%),
+      #fff;
+    background-attachment: fixed; }
+  * { box-sizing: border-box; }
+  a { color: #1f5f8b; text-decoration: none; }
+  a:hover { color: #164a70; text-decoration: underline; text-underline-offset: 3px; }
+  button { font: inherit; color: inherit; }
+  html[data-ig-controls="big"] button { min-height: 54px; font-size: 1.05em; }
+  html[data-ig-contrast="on"] body { filter: contrast(1.2) saturate(1.1); }
+  html[data-ig-motion="off"] * { animation: none !important; transition: none !important; }
+</style>
+
+<style>
+  .ig-uh{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,57,92,.09)}
+  .ig-uh *{box-sizing:border-box}
+  .ig-uh-inner{width:100%;min-height:88px;padding:12px clamp(32px,5vw,96px);display:flex;align-items:center;gap:10px}
+  .ig-uh-brand{flex:0 0 auto;color:#17395c!important;text-decoration:none!important;font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:400;line-height:1;white-space:nowrap}
+  .ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,.55vw,10px);padding:0 clamp(10px,1.6vw,28px)}
+  .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 clamp(10px,.85vw,16px);border-radius:999px;color:#17395c!important;text-decoration:none!important;font-size:16.5px;line-height:1.2;white-space:nowrap}
+  .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important;text-decoration:none!important}
+  .ig-uh-nav a[aria-current='page']{background:rgba(23,57,92,.07)}
+  .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin-left:0}
+  .ig-uh-tools{display:flex;align-items:center;gap:7px}
+  .ig-uh-music,.ig-uh-reading{min-height:46px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
+  .ig-uh-music{width:46px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(15,107,54,.35)}
+  .ig-uh-reading{display:inline-flex;align-items:center;gap:8px;padding:0 16px;color:#17395c;font-size:16px;white-space:nowrap}
+  .ig-uh-langs{display:flex;align-items:center;gap:6px;margin-left:2px}
+  .ig-uh-langs button{min-height:46px;min-width:52px;padding:0 14px;border-radius:999px;font-size:15.5px!important;font-weight:700;line-height:1.2;cursor:pointer}
+  @media(max-width:1400px){
+    .ig-uh-inner{padding-inline:28px;gap:7px}
+    .ig-uh-nav{gap:2px;padding-inline:8px}
+    .ig-uh-nav a{font-size:15px;padding-inline:9px}
+    .ig-uh-reading{font-size:15px;padding-inline:13px}
+    .ig-uh-langs button{font-size:14px!important;min-width:48px;padding-inline:11px}
+  }
+  @media(max-width:1080px){
+    .ig-uh-inner{flex-wrap:wrap;padding:11px 20px;min-height:0}
+    .ig-uh-brand{font-size:24px}
+    .ig-uh-right{margin-left:auto}
+    .ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;padding:4px 0 1px;scrollbar-width:thin}
+    .ig-uh-nav a{font-size:15px;flex:0 0 auto}
+  }
+  @media(max-width:650px){
+    .ig-uh-inner{gap:8px}
+    .ig-uh-reading{width:46px;padding:0;justify-content:center;font-size:0}
+    .ig-uh-langs{gap:4px}
+    .ig-uh-langs button{min-width:44px;padding:0 9px;font-size:12.5px!important}
+  }
+</style>
+
+</helmet>
+
+
+
+<div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #17395c; min-height: 100vh; font-size: 17px; line-height: 1.6;">
+
+  
+<style>
+.ig-uh{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(23,57,92,.09);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c}
+.ig-uh *{box-sizing:border-box}.ig-uh a{text-decoration:none!important}
+.ig-uh-inner{width:100%;min-height:88px;padding:10px clamp(24px,3vw,56px);display:flex;align-items:center;gap:7px}
+.ig-uh-brand{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;color:#17395c!important;font-family:'Newsreader',Georgia,serif;font-size:25px;line-height:1;white-space:nowrap}
+.ig-uh-brand img{width:25px;height:25px;object-fit:contain}
+.ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:1px;padding:0 5px}
+.ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
+.ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
+.ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
+.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}
+.ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
+.ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
+.ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(15,107,54,.32)}
+.ig-uh-reading{display:inline-flex;align-items:center;gap:7px;padding:0 13px;color:#17395c;font-size:14.5px;white-space:nowrap}
+.ig-uh-langs{display:flex;align-items:center;gap:4px;margin-left:2px}.ig-uh-langs button{min-height:44px;min-width:48px;padding:0 11px;border-radius:999px;font-size:13.5px!important;font-weight:700;cursor:pointer}
+.ig-subtabs{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 18px;background:rgba(255,255,255,.72);border-bottom:1px solid rgba(23,57,92,.08);overflow-x:auto;scrollbar-width:none}.ig-subtabs::-webkit-scrollbar{display:none}.ig-subtabs a{flex:0 0 auto;display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border:1px solid rgba(23,57,92,.14);border-radius:999px;background:#fff;color:#17395c!important;font-size:14px}.ig-subtabs a[aria-current='page']{background:#17395c;color:#fff!important;border-color:#17395c}
+@media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
+@media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
+</style>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><nav class="ig-uh-nav" aria-label="{{ tExploreAria }}"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/tramites/">Cómo pedirlo</a><a class="ig-nav-en" href="/es/tramites/">How to ask</a><a class="ig-nav-pt" href="/es/tramites/">Como pedir</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/" aria-current="page">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/" aria-current="page">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/" aria-current="page">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0f6b36" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 34px 28px 80px;">
+    <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a49a8;">{{ tShelf }}</p>
+    <h1 style="margin: 0 0 12px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.07; letter-spacing: -0.02em; max-width: 17em;">{{ tTitle }}</h1>
+    <p style="margin: 0 0 6px; font-size: 19px; color: #435268; max-width: 42em; text-wrap: pretty;">{{ tLede }}</p>
+    <p style="margin: 0 0 24px; font-size: 17px; color: #5d6779; max-width: 42em;">{{ tHow }}</p>
+
+    <section style="display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 26px; align-items: start;">
+      <div style="border-radius: 18px; overflow: hidden; border: 1px solid rgba(23,57,92,0.12); box-shadow: 0 20px 46px -38px rgba(23,57,92,0.6);">
+        <img src="../../../../img/j5-linterna.webp" alt="{{ tImgAlt }}" style="display: block; width: 100%; height: auto;">
+      </div>
+
+      <div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px;">
+          <span style="font-size: 17px;">{{ progressLabel }}</span>
+          <button sc-camel-on-click="{{ reset }}" style="margin-left: auto; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 9px 17px; cursor: pointer; font-size: 15px;">{{ tReset }}</button>
+        </div>
+
+        <sc-if value="{{ playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border: 1px solid rgba(23,57,92,0.1); border-radius: 20px; padding: 24px 26px;">
+            <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: #5a49a8; margin-bottom: 8px;">{{ tClue }}</div>
+            <p style="margin: 0 0 8px; font-family: 'Newsreader', serif; font-size: clamp(23px, 2.7vw, 30px); line-height: 1.28; max-width: 24em;">{{ clue }}</p>
+            <p style="margin: 0 0 20px; font-size: 15.5px; color: #5a6675;">{{ letterHint }}</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px;">
+              <sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+                <button sc-camel-on-click="{{ o.pick }}" style="text-align: left; background: {{ o.bg }}; border: 2px solid {{ o.border }}; color: {{ o.color }}; border-radius: 14px; padding: 13px 16px; font-size: 17px; cursor: pointer;">{{ o.label }}</button>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 16px; background: {{ resultBg }}; border-left: 3px solid {{ resultColor }}; border-radius: 0 14px 14px 0; padding: 14px 16px;">
+                <div style="font-size: 17px; font-weight: 700; color: {{ resultColor }}; margin-bottom: 4px;">{{ resultLabel }}</div>
+                <div style="font-size: 16.5px; max-width: 44em;">{{ resultText }}</div>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
+                <button sc-camel-on-click="{{ next }}" style="background: #5a49a8; color: #fff; border: 0; border-radius: 999px; padding: 12px 20px; font-size: 16px; cursor: pointer;">{{ tNext }}</button>
+                <button sc-camel-on-click="{{ keep }}" style="background: {{ keepBg }}; color: {{ keepColor }}; border: 1px solid {{ keepBorder }}; border-radius: 999px; padding: 12px 20px; font-size: 16px; cursor: pointer;">{{ keepLabel }}</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasKept }}" hint-placeholder-val="{{ false }}">
+          <section style="margin-top: 22px;">
+            <h2 style="margin: 0 0 4px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 25px;">{{ tKeptTitle }}</h2>
+            <p style="margin: 0 0 12px; font-size: 15.5px; color: #5a6675;">{{ keptNote }}</p>
+            <div style="display: grid; gap: 9px;">
+              <sc-for list="{{ kept }}" as="k" hint-placeholder-count="0">
+                <div style="background: rgba(255,255,255,0.82); border: 1px solid rgba(23,57,92,0.1); border-left: 4px solid #5a49a8; border-radius: 14px; padding: 12px 16px;">
+                  <div style="font-size: 17px; font-weight: 700;">{{ k.word }}</div>
+                  <div style="font-size: 16px; color: #435268;">{{ k.def }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+          <section style="margin-top: 22px; background: rgba(90,73,168,0.09); border-left: 3px solid #5a49a8; border-radius: 0 18px 18px 0; padding: 22px 24px;">
+            <h2 style="margin: 0 0 8px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 27px;">{{ tIdeaTitle }}</h2>
+            <p style="margin: 0 0 10px; font-size: 18.5px; max-width: 44em; text-wrap: pretty;">{{ tIdea }}</p>
+            <p style="margin: 0 0 16px; font-size: 17px; color: #435268; max-width: 44em;">{{ tDare }}</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="/es/recursos/juegos/#carta-palabra-misteriosa" style="background: #a8336f; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px;">{{ tGoCard }}</a>
+              <a href="/es/neurodiversidad/condiciones/" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 12px 20px; font-size: 16px; color: #17395c;">{{ tGoConditions }}</a>
+            </div>
+          </section>
+        </sc-if>
+      </div>
+    </section>
+  </main>
+
+  <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);">
+      <div style="display: flex; align-items: center; margin-bottom: 14px;">
+        <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">{{ tReadingPanel }}</strong>
+        <button sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;">×</button>
+      </div>
+      <div style="display: grid; gap: 10px;">
+        <div>
+          <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }}{{ fsLabel }}</div>
+          <div style="display: flex; gap: 8px;">
+            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;">A−</button>
+            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;">A+</button>
+          </div>
+        </div>
+        <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
+          <button sc-camel-on-click="{{ t.toggle }}" aria-pressed="{{ t.pressed }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
+            <span style="width: 34px; height: 20px; border-radius: 999px; flex: none; background: {{ t.knobTrack }}; position: relative;">
+              <span style="position: absolute; top: 2px; left: {{ t.knobLeft }}; width: 16px; height: 16px; border-radius: 999px; background: #fff;"></span>
+            </span>
+            {{ t.label }}
+          </button>
+        </sc-for>
+        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const STR = {
+  es: {
+    docTitle: "Palabra misteriosa: lo que no se ve — Iris Green",
+    logoAlt: "Símbolo de Iris Green: una flor de iris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Lectura", languageAria: "Idioma", closeAria: "Cerrar",
+    backToPlay: "Volver a Jugar", reading: "Lectura", readingPanel: "Lectura accesible",
+    textSize: "Tamaño del texto · ", resetPanel: "Restablecer",
+    shelf: "Para ti · vida adulta",
+    title: "Palabra misteriosa: lo que no se ve",
+    lede: "Hay cosas que se sienten todos los días y no tienen nombre. Aquí lo tienen.",
+    how: "Lee la definición y elige la palabra. Si te equivocas, se ve cuál era. No hay nota ni tiempo.",
+    imgAlt: "Un farolillo de papel en el alféizar de una ventana: la mitad encendida y la mitad en sombra.",
+    clue: "La definición",
+    letters: (n) => n + " letras",
+    progress: (a, b) => a + " de " + b,
+    reset: "Empezar otra vez",
+    ok: "Esa es.", no: "Era esta:",
+    next: "Otra palabra",
+    keep: "Me nombra bien", kept: "Guardada",
+    keptTitle: "Las palabras que me nombran",
+    keptNote: (n) => n <= 3 ? "Elige tres. Llevas " + n + "." : "Ya hay más de tres: quédate con las tres que más.",
+    ideaTitle: "La idea del juego",
+    idea: "Poner nombre a lo que no se ve ayuda a contarlo. Cuando algo tiene nombre, se puede pedir.",
+    dare: "Usa una de tus tres palabras esta semana en una conversación real.",
+    goCard: "Rellenar mi carta", goConditions: "Ver estos conceptos explicados",
+    words: [
+      ["Enmascaramiento", "Escondo lo que me pasa para parecer como los demás. Cuesta mucha energía."],
+      ["Recarga", "Lo que hago después de un esfuerzo para volver a tener energía: silencio, mi interés, un paseo."],
+      ["Hiperfoco", "Cuando algo me interesa tanto que el tiempo desaparece."],
+      ["Anticipación", "Saber qué va a pasar antes de que pase. Con eso, casi todo me cuesta menos."],
+      ["Sobrecarga", "Demasiadas cosas a la vez: ruido, luz, gente, prisa. Mi cuerpo dice basta."],
+      ["Desconexión", "Cuando la sobrecarga me apaga: me quedo quieto, sin palabras, hasta que pasa."],
+      ["Interés profundo", "El tema que me llena y en el que aprendo solo. Es un motor."],
+      ["Cambio de plan", "Cuando lo previsto se cambia sin avisar. Necesito un momento para reordenarme."],
+      ["Energía social", "Lo que me cuesta estar con gente, aunque me guste. Se gasta y se recupera."],
+      ["Rutina", "El orden de mi día. Me da seguridad y me deja energía para lo demás."],
+      ["Transición", "Pasar de una cosa a otra. El paso entre medias es lo que más cuesta."],
+      ["Autorregulación", "Lo que hago para volver a estar bien: moverme, balancearme, apretar algo, tararear."],
+      ["Inercia", "Me cuesta empezar y me cuesta parar. El arranque es lo difícil."],
+      ["Ajuste razonable", "Un cambio en el entorno o en la tarea que me deja hacer lo mismo que los demás."],
+      ["Diagnóstico tardío", "Ponerle nombre de adulto a lo que llevaba toda la vida."]
+    ],
+    toggles: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"]
+  },
+  en: {
+    docTitle: "Mystery word: what nobody sees — Iris Green",
+    logoAlt: "Iris Green symbol: an iris flower", exploreAria: "Explore", musicAria: "Music", readingAria: "Reading", languageAria: "Language", closeAria: "Close",
+    backToPlay: "Back to Play", reading: "Reading", readingPanel: "Accessible reading",
+    textSize: "Text size · ", resetPanel: "Reset",
+    shelf: "For you · adult life",
+    title: "Mystery word: what nobody sees",
+    lede: "Some things are felt every day and have no name. Here they have one.",
+    how: "Read the definition and pick the word. If you get it wrong, you see which it was. No mark and no clock.",
+    imgAlt: "A paper lantern on a windowsill: half lit and half in shadow.",
+    clue: "The definition",
+    letters: (n) => n + " letters",
+    progress: (a, b) => a + " of " + b,
+    reset: "Start again",
+    ok: "That's the one.", no: "It was this one:",
+    next: "Another word",
+    keep: "This names me well", kept: "Kept",
+    keptTitle: "The words that name me",
+    keptNote: (n) => n <= 3 ? "Pick three. You have " + n + "." : "More than three now: keep the three that fit best.",
+    ideaTitle: "The idea of the game",
+    idea: "Naming what nobody sees makes it tellable. Once something has a name, you can ask for it.",
+    dare: "Use one of your three words this week in a real conversation.",
+    goCard: "Fill in my card", goConditions: "See these ideas explained",
+    words: [
+      ["Masking", "I hide what is going on so I look like everyone else. It costs a lot of energy."],
+      ["Recharging", "What I do after an effort to get energy back: quiet, my interest, a walk."],
+      ["Hyperfocus", "When something interests me so much that time disappears."],
+      ["Knowing in advance", "Knowing what is going to happen before it happens. With that, almost everything is easier."],
+      ["Overload", "Too many things at once: noise, light, people, rush. My body says enough."],
+      ["Shutting down", "When overload switches me off: I go still, with no words, until it passes."],
+      ["Deep interest", "The subject that fills me up and that I learn on my own. It is an engine."],
+      ["A change of plan", "When what was planned changes with no warning. I need a moment to sort myself out."],
+      ["Social energy", "What it costs me to be with people, even when I like it. It runs out and comes back."],
+      ["Routine", "The order of my day. It makes me feel safe and leaves energy for the rest."],
+      ["Transition", "Going from one thing to another. The bit in between is the hardest part."],
+      ["Self-regulating", "What I do to feel right again: moving, rocking, squeezing something, humming."],
+      ["Inertia", "Starting is hard and stopping is hard. The start is the difficult bit."],
+      ["Reasonable adjustment", "A change in the setting or the task that lets me do the same as everyone else."],
+      ["Late diagnosis", "Giving an adult name to something you have had all your life."]
+    ],
+    toggles: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"]
+  },
+  pt: {
+    docTitle: "Palavra misteriosa: o que não se vê — Iris Green",
+    logoAlt: "Símbolo da Iris Green: uma flor de íris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Leitura", languageAria: "Idioma", closeAria: "Fechar",
+    backToPlay: "Voltar para Jogar", reading: "Leitura", readingPanel: "Leitura acessível",
+    textSize: "Tamanho do texto · ", resetPanel: "Restaurar",
+    shelf: "Para você · vida adulta",
+    title: "Palavra misteriosa: o que não se vê",
+    lede: "Tem coisa que se sente todo dia e não tem nome. Aqui tem.",
+    how: "Leia a definição e escolha a palavra. Se errar, aparece qual era. Sem nota e sem tempo.",
+    imgAlt: "Uma lanterna de papel no parapeito de uma janela: metade acesa e metade na sombra.",
+    clue: "A definição",
+    letters: (n) => n + " letras",
+    progress: (a, b) => a + " de " + b,
+    reset: "Começar de novo",
+    ok: "É essa.", no: "Era esta:",
+    next: "Outra palavra",
+    keep: "Essa me nomeia bem", kept: "Guardada",
+    keptTitle: "As palavras que me nomeiam",
+    keptNote: (n) => n <= 3 ? "Escolha três. Você tem " + n + "." : "Já são mais de três: fique com as três que mais combinam.",
+    ideaTitle: "A ideia do jogo",
+    idea: "Dar nome ao que não se vê ajuda a contar. Quando uma coisa tem nome, dá para pedir.",
+    dare: "Use uma das suas três palavras nesta semana numa conversa real.",
+    goCard: "Preencher minha carta", goConditions: "Ver estes conceitos explicados",
+    words: [
+      ["Mascaramento", "Escondo o que acontece comigo para parecer como os outros. Custa muita energia."],
+      ["Recarga", "O que faço depois de um esforço para voltar a ter energia: silêncio, meu interesse, uma caminhada."],
+      ["Hiperfoco", "Quando algo me interessa tanto que o tempo desaparece."],
+      ["Antecipação", "Saber o que vai acontecer antes de acontecer. Com isso, quase tudo fica mais fácil."],
+      ["Sobrecarga", "Coisas demais ao mesmo tempo: barulho, luz, gente, pressa. Meu corpo diz chega."],
+      ["Desligamento", "Quando a sobrecarga me apaga: fico parado, sem palavras, até passar."],
+      ["Interesse profundo", "O assunto que me preenche e no qual aprendo sozinho. É um motor."],
+      ["Mudança de plano", "Quando o que estava previsto muda sem aviso. Preciso de um tempo para me reorganizar."],
+      ["Energia social", "O que me custa estar com gente, mesmo gostando. Ela acaba e volta."],
+      ["Rotina", "A ordem do meu dia. Me dá segurança e sobra energia para o resto."],
+      ["Transição", "Passar de uma coisa para outra. O meio do caminho é o que mais custa."],
+      ["Autorregulação", "O que faço para voltar a ficar bem: me mexer, balançar, apertar algo, cantarolar."],
+      ["Inércia", "Custa começar e custa parar. A partida é o difícil."],
+      ["Ajuste razoável", "Uma mudança no ambiente ou na tarefa que me deixa fazer o mesmo que os outros."],
+      ["Diagnóstico tardio", "Dar nome de adulto ao que se tinha a vida inteira."]
+    ],
+    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"]
+  }
+};
+
+class Component extends DCLogic {
+  state = { lang: "es", order: null, at: 0, picked: null, kept: {}, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
+
+  componentDidMount() {
+    try {
+      const lang = localStorage.getItem("ig_lang");
+      const use = lang && STR[lang] ? lang : "es";
+      if (use !== "es") this.setState({ lang: use });
+      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.title = STR[use].docTitle;
+    } catch (e) {}
+    this.setState({ order: this.shuffle() });
+  }
+
+  componentDidUpdate() {
+    clearTimeout(this._titleT);
+    this._titleT = setTimeout(() => {
+      const t = (STR[this.state.lang] || STR.es).docTitle;
+      if (document.title !== t) document.title = t;
+    }, 0);
+  }
+
+  shuffle() {
+    const a = [];
+    for (let i = 0; i < 15; i++) a.push(i);
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  setLang(lang) {
+    try {
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+      localStorage.setItem("ig_lang", lang);
+    } catch (e) {}
+    this.setState({ lang });
+  }
+
+  applyReading(s) {
+    const b = document.body, h = document.documentElement;
+    if (!b) return;
+    b.style.zoom = (s.fs / 17).toFixed(3);
+    b.style.lineHeight = s.spacing ? "1.9" : "";
+    b.style.letterSpacing = s.spacing ? "0.045em" : "";
+    b.style.wordSpacing = s.spacing ? "0.12em" : "";
+    h.dataset.igControls = s.controls ? "big" : "";
+    h.dataset.igContrast = s.contrast ? "on" : "";
+    h.dataset.igMotion = s.motion ? "off" : "";
+    this.setGuide(s.guide);
+    this.setSpeak(s.speak);
+  }
+
+  setGuide(on) {
+    let el = document.getElementById("ig-guide");
+    if (on && !el) {
+      el = document.createElement("div");
+      el.id = "ig-guide";
+      el.style.cssText = "position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(90,73,168,0.14);border-top:2px solid rgba(90,73,168,0.5);border-bottom:2px solid rgba(90,73,168,0.5);top:0";
+      document.body.appendChild(el);
+      this._gm = (e) => { el.style.top = Math.max(0, e.clientY - 23) + "px"; };
+      window.addEventListener("pointermove", this._gm);
+    } else if (!on && el) {
+      window.removeEventListener("pointermove", this._gm);
+      el.remove();
+    }
+  }
+
+  setSpeak(on) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    if (!on) return;
+    const main = document.querySelector("main");
+    const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
+    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  }
+
+  setReading(patch) {
+    const st = this.state;
+    const next = Object.assign({ fs: st.fs, spacing: st.spacing, controls: st.controls, contrast: st.contrast, guide: st.guide, speak: st.speak, motion: st.motion }, patch);
+    this.setState(next);
+    this.applyReading(next);
+  }
+
+  renderVals() {
+    const st = this.state;
+    const L = STR[st.lang] ? st.lang : "es";
+    const T = STR[L];
+    const order = st.order || [0];
+    const total = order.length;
+    const idx = order[Math.min(st.at, total - 1)];
+    const target = T.words[idx];
+    const answered = st.picked !== null;
+
+    // tres distractores estables, a partir del índice de la palabra
+    const opts = [idx];
+    let step = 1;
+    while (opts.length < 4) {
+      const cand = (idx + step * 4 + 3) % 15;
+      if (opts.indexOf(cand) === -1) opts.push(cand);
+      step++;
+    }
+    const shown = opts.slice().sort((a, b) => ((a * 7 + idx) % 15) - ((b * 7 + idx) % 15));
+    const keptKeys = Object.keys(st.kept).filter((k) => st.kept[k]);
+    const isKept = !!st.kept[idx];
+
+    return {
+      langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map(([code, label]) => ({
+        label,
+        bg: st.lang === code ? "#1f5f8b" : "#fff",
+        color: st.lang === code ? "#fff" : "#17395c",
+        border: st.lang === code ? "#1f5f8b" : "rgba(23,57,92,0.16)",
+        pick: () => this.setLang(code)
+      })),
+      tLogoAlt: T.logoAlt, tExploreAria: T.exploreAria, tMusicAria: T.musicAria, tReadingAria: T.readingAria, tLanguageAria: T.languageAria, tCloseAria: T.closeAria, tBackToPlay: T.backToPlay, tReading: T.reading, tReadingPanel: T.readingPanel,
+      tTextSize: T.textSize, tResetPanel: T.resetPanel,
+      tShelf: T.shelf, tTitle: T.title, tLede: T.lede, tHow: T.how, tImgAlt: T.imgAlt,
+      tClue: T.clue, tReset: T.reset, tNext: T.next, tKeptTitle: T.keptTitle,
+      tIdeaTitle: T.ideaTitle, tIdea: T.idea, tDare: T.dare,
+      tGoCard: T.goCard, tGoConditions: T.goConditions,
+
+      playing: st.at < total,
+      progressLabel: T.progress(Math.min(st.at + 1, total), total),
+      clue: target[1],
+      letterHint: T.letters(target[0].replace(/\s/g, "").length),
+
+      options: shown.map((n) => {
+        const isTarget = n === idx;
+        const on = st.picked === n;
+        let bg = "#fff", border = "rgba(23,57,92,0.14)", color = "#17395c";
+        if (answered && isTarget) { bg = "rgba(31,139,168,0.12)"; border = "#16708a"; color = "#16708a"; }
+        else if (answered && on) { bg = "rgba(168,51,111,0.09)"; border = "#a8336f"; color = "#a8336f"; }
+        return {
+          label: T.words[n][0], bg, border, color,
+          pick: () => { if (this.state.picked === null) this.setState({ picked: n }); }
+        };
+      }),
+
+      answered,
+      resultLabel: answered ? (st.picked === idx ? T.ok : T.no) : "",
+      resultText: answered ? (st.picked === idx ? target[1] : target[0] + " · " + target[1]) : "",
+      resultColor: answered && st.picked === idx ? "#16708a" : "#a8336f",
+      resultBg: answered && st.picked === idx ? "rgba(31,139,168,0.08)" : "rgba(168,51,111,0.08)",
+      next: () => this.setState({ at: st.at + 1, picked: null }),
+      keepLabel: isKept ? T.kept : T.keep,
+      keepBg: isKept ? "#5a49a8" : "#fff",
+      keepColor: isKept ? "#fff" : "#17395c",
+      keepBorder: isKept ? "#5a49a8" : "rgba(23,57,92,0.16)",
+      keep: () => {
+        const k = Object.assign({}, this.state.kept);
+        k[idx] = !k[idx];
+        this.setState({ kept: k });
+      },
+
+      hasKept: keptKeys.length > 0,
+      keptNote: T.keptNote(keptKeys.length),
+      kept: keptKeys.map((k) => ({ word: T.words[k][0], def: T.words[k][1] })),
+      done: st.at >= total,
+      reset: () => this.setState({ order: this.shuffle(), at: 0, picked: null, kept: {} }),
+
+      a11yOpen: st.a11y,
+      toggleA11y: () => this.setState({ a11y: !st.a11y }),
+      fsUp: () => this.setReading({ fs: Math.min(st.fs + 2, 25) }),
+      fsDown: () => this.setReading({ fs: Math.max(st.fs - 2, 15) }),
+      fsLabel: Math.round((st.fs / 17) * 100) + "%",
+      a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((k, n) => {
+        const on = !!st[k];
+        return {
+          label: T.toggles[n],
+          pressed: on,
+          bg: on ? "rgba(90,73,168,0.12)" : "#fff",
+          border: on ? "#5a49a8" : "rgba(23,57,92,0.16)",
+          knobTrack: on ? "#5a49a8" : "rgba(23,57,92,0.22)",
+          knobLeft: on ? "16px" : "2px",
+          toggle: () => this.setReading({ [k]: !on })
+        };
+      }),
+      a11yReset: () => this.setReading({ fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false })
+    };
+  }
+}
+
+</script>
+
+
+</body></html>

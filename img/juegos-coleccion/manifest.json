@@ -1,0 +1,742 @@
+{
+  "generated": "2026-09-05",
+  "total": 120,
+  "own_visuals": 73,
+  "background_visuals": 47,
+  "backgrounds": {
+    "Altas capacidades": "/img/juegos-coleccion/fondo-altas-capacidades.webp",
+    "TOC": "/img/juegos-coleccion/fondo-toc-v31.webp",
+    "Autismo": "/img/juegos-coleccion/fondo-autismo.webp",
+    "Dislexia": "/img/juegos-coleccion/fondo-dislexia.webp",
+    "TDAH": "/img/juegos-coleccion/fondo-tdah.webp",
+    "Ansiedad": "/img/juegos-coleccion/fondo-ansiedad.webp",
+    "Alta sensibilidad": "/img/juegos-coleccion/fondo-alta-sensibilidad.webp",
+    "Dispraxia": "/img/juegos-coleccion/fondo-dispraxia.webp",
+    "Discalculia": "/img/juegos-coleccion/fondo-discalculia.webp",
+    "Tics y Tourette": "/img/juegos-coleccion/fondo-tics-y-tourette.webp",
+    "Identidad y trato": "/img/juegos-coleccion/fondo-identidad-y-trato.webp",
+    "Trámites y derechos": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp"
+  },
+  "games": {
+    "AC-I2": {
+      "title": "EL MUSEO DE LO QUE SÉ",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-i2.webp",
+      "type": "propia"
+    },
+    "AC-I3": {
+      "title": "LOS CINCO INTENTOS",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-i3.webp",
+      "type": "propia"
+    },
+    "AC-A2": {
+      "title": "LO QUE SÍ TERMINÉ",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-a2.webp",
+      "type": "propia"
+    },
+    "AC-A3": {
+      "title": "TRES FRASES",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-a3.webp",
+      "type": "propia"
+    },
+    "AC-F2": {
+      "title": "LA SEMANA QUE SE LLENA",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-f2.webp",
+      "type": "propia"
+    },
+    "AC-C2": {
+      "title": "LA BIBLIOTECA DEL JUEVES",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-c2.webp",
+      "type": "propia"
+    },
+    "TO-I1": {
+      "title": "PENSAMIENTOS QUE PASAN",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/fondo-toc-v31.webp",
+      "type": "fondo de carta"
+    },
+    "TO-I2": {
+      "title": "PENSAR Y HACER",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/fondo-toc-v31.webp",
+      "type": "fondo de carta"
+    },
+    "TO-I3": {
+      "title": "LA OLA QUE BAJA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/to-i3.webp",
+      "type": "propia"
+    },
+    "TO-A1": {
+      "title": "LA MEDIA HORA QUE FALTA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/to-a1.webp",
+      "type": "propia"
+    },
+    "TO-A2": {
+      "title": "QUÉ LLEVO A LA VALORACIÓN",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/to-a2.webp",
+      "type": "propia"
+    },
+    "TO-A3": {
+      "title": "LO QUE DIGO Y LO QUE NO",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/fondo-toc-v31.webp",
+      "type": "fondo de carta"
+    },
+    "TO-F1": {
+      "title": "LO QUE SE PIDE EN CASA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/fondo-toc-v31.webp",
+      "type": "fondo de carta"
+    },
+    "TO-F2": {
+      "title": "LA CASA ENTERA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/to-f2.webp",
+      "type": "propia"
+    },
+    "TO-C1": {
+      "title": "EL AULA A ÚLTIMA HORA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/to-c1.webp",
+      "type": "propia"
+    },
+    "TO-C2": {
+      "title": "INSTRUCCIONES QUE NO DEJAN DUDA",
+      "condition": "TOC",
+      "asset": "/img/juegos-coleccion/fondo-toc-v31.webp",
+      "type": "fondo de carta"
+    },
+    "AU-I1": {
+      "title": "EL PLAN B",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-i1.webp",
+      "type": "propia"
+    },
+    "AU-I2": {
+      "title": "¿CUÁNTO ES «EN UN RATO»?",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/fondo-autismo.webp",
+      "type": "fondo de carta"
+    },
+    "AU-I3": {
+      "title": "EL MAPA DEL BARRIO",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-i3.webp",
+      "type": "propia"
+    },
+    "AU-A1": {
+      "title": "CUANDO PUEDAS",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/fondo-autismo.webp",
+      "type": "fondo de carta"
+    },
+    "AU-A2": {
+      "title": "LA OFICINA QUE YA TIENE AJUSTES",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-a2.webp",
+      "type": "propia"
+    },
+    "AU-A3": {
+      "title": "LO QUE ENCAJA AL SABERLO",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-a3.webp",
+      "type": "propia"
+    },
+    "AU-F1": {
+      "title": "EL DOMINGO POR LA TARDE",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-f1.webp",
+      "type": "propia"
+    },
+    "AU-F2": {
+      "title": "LA SALIDA DEL SÁBADO",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/au-f2.webp",
+      "type": "propia"
+    },
+    "AU-C1": {
+      "title": "LO QUE HACE EL AULA",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/fondo-autismo.webp",
+      "type": "fondo de carta"
+    },
+    "AU-C2": {
+      "title": "LA SEMANA AVISADA",
+      "condition": "Autismo",
+      "asset": "/img/juegos-coleccion/fondo-autismo.webp",
+      "type": "fondo de carta"
+    },
+    "DI-I1": {
+      "title": "LO ENCUENTRO YO",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-i1.webp",
+      "type": "propia"
+    },
+    "DI-I2": {
+      "title": "LOS CINCO CAMINOS",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-i2.webp",
+      "type": "propia"
+    },
+    "DI-I3": {
+      "title": "CUÁNTO HAY QUE LEER AQUÍ",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/fondo-dislexia.webp",
+      "type": "fondo de carta"
+    },
+    "DI-A1": {
+      "title": "EL DÍA CON LECTURA DENTRO",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/fondo-dislexia.webp",
+      "type": "fondo de carta"
+    },
+    "DI-A2": {
+      "title": "¿ME LO PASAS POR ESCRITO O ME LO CUENTAS?",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/fondo-dislexia.webp",
+      "type": "fondo de carta"
+    },
+    "DI-A3": {
+      "title": "LA CASA LLENA DE LETRA PEQUEÑA",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-a3.webp",
+      "type": "propia"
+    },
+    "DI-F1": {
+      "title": "EL RECADO",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-f1.webp",
+      "type": "propia"
+    },
+    "DI-F2": {
+      "title": "LOS DEBERES DE LA SEMANA",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-f2.webp",
+      "type": "propia"
+    },
+    "DI-C1": {
+      "title": "EL TEXTO QUE REPARTE EL AULA",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/di-c1.webp",
+      "type": "propia"
+    },
+    "DI-C2": {
+      "title": "ENUNCIADOS QUE NO AÑADEN LECTURA",
+      "condition": "Dislexia",
+      "asset": "/img/juegos-coleccion/fondo-dislexia.webp",
+      "type": "fondo de carta"
+    },
+    "TD-I1": {
+      "title": "TRES TAREAS A LA VEZ",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-i1.webp",
+      "type": "propia"
+    },
+    "TD-I2": {
+      "title": "¿CUÁNTO CREES QUE TARDAS?",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-i2.webp",
+      "type": "propia"
+    },
+    "TD-I3": {
+      "title": "INSTRUCCIONES DE CUATRO PASOS",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/fondo-tdah.webp",
+      "type": "fondo de carta"
+    },
+    "TD-A1": {
+      "title": "LA CASA QUE SE ACUERDA POR TI",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-a1.webp",
+      "type": "propia"
+    },
+    "TD-A2": {
+      "title": "DÓNDE SE CAE LA TAREA",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-a2.webp",
+      "type": "propia"
+    },
+    "TD-A3": {
+      "title": "EL DÍA CON ANCLAS",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/fondo-tdah.webp",
+      "type": "fondo de carta"
+    },
+    "TD-F1": {
+      "title": "TRADUCIR «AHORA VOY»",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/fondo-tdah.webp",
+      "type": "fondo de carta"
+    },
+    "TD-F2": {
+      "title": "LOS AVISOS DE ESTA CASA",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-f2.webp",
+      "type": "propia"
+    },
+    "TD-C1": {
+      "title": "EL AULA A LAS ONCE",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/td-c1.webp",
+      "type": "propia"
+    },
+    "TD-C2": {
+      "title": "LO QUE PIDE CADA RATO DE CLASE",
+      "condition": "TDAH",
+      "asset": "/img/juegos-coleccion/fondo-tdah.webp",
+      "type": "fondo de carta"
+    },
+    "AN-I1": {
+      "title": "EL CUERPO AVISA",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/fondo-ansiedad.webp",
+      "type": "fondo de carta"
+    },
+    "AN-I2": {
+      "title": "ANTES, DURANTE O DESPUÉS",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/fondo-ansiedad.webp",
+      "type": "fondo de carta"
+    },
+    "AN-I3": {
+      "title": "EL DATO QUE FALTA",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-i3.webp",
+      "type": "propia"
+    },
+    "AN-A1": {
+      "title": "LA MAÑANA DE UN MARTES",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-a1.webp",
+      "type": "propia"
+    },
+    "AN-A2": {
+      "title": "LA AGENDA CON MARGEN",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-a2.webp",
+      "type": "propia"
+    },
+    "AN-A3": {
+      "title": "LA PREGUNTA QUE QUITA NIEBLA",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/fondo-ansiedad.webp",
+      "type": "fondo de carta"
+    },
+    "AN-F1": {
+      "title": "QUIÉN NECESITA SABER QUÉ",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-f1.webp",
+      "type": "propia"
+    },
+    "AN-F2": {
+      "title": "EL VIAJE CORTO",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-f2.webp",
+      "type": "propia"
+    },
+    "AN-C1": {
+      "title": "EL AULA EL DÍA DEL EXAMEN",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-c1.webp",
+      "type": "propia"
+    },
+    "AN-C2": {
+      "title": "LA SEMANA ANTES DEL EXAMEN",
+      "condition": "Ansiedad",
+      "asset": "/img/juegos-coleccion/an-c2.webp",
+      "type": "propia"
+    },
+    "AS-I1": {
+      "title": "LA FERIA DEL PUEBLO",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-i1.webp",
+      "type": "propia"
+    },
+    "AS-I2": {
+      "title": "LO QUE NOTO ANTES QUE NADIE",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/fondo-alta-sensibilidad.webp",
+      "type": "fondo de carta"
+    },
+    "AS-I3": {
+      "title": "ANTES DE DECIDIR",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-i3.webp",
+      "type": "propia"
+    },
+    "AS-A1": {
+      "title": "LO QUE PIDE ANTES Y LO QUE PIDE DESPUÉS",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-a1.webp",
+      "type": "propia"
+    },
+    "AS-A2": {
+      "title": "EL DÍA DE DESPUÉS",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/fondo-alta-sensibilidad.webp",
+      "type": "fondo de carta"
+    },
+    "AS-A3": {
+      "title": "LA CASA CON EL VOLUMEN BAJADO",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-a3.webp",
+      "type": "propia"
+    },
+    "AS-F1": {
+      "title": "CÓMO SE AVISA EN ESTA CASA",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/fondo-alta-sensibilidad.webp",
+      "type": "fondo de carta"
+    },
+    "AS-F2": {
+      "title": "EL FIN DE SEMANA DE TODOS",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-f2.webp",
+      "type": "propia"
+    },
+    "AS-C1": {
+      "title": "EL AULA A LAS NUEVE",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/as-c1.webp",
+      "type": "propia"
+    },
+    "AS-C2": {
+      "title": "CÓMO SE DICE UNA CORRECCIÓN",
+      "condition": "Alta sensibilidad",
+      "asset": "/img/juegos-coleccion/fondo-alta-sensibilidad.webp",
+      "type": "fondo de carta"
+    },
+    "DX-I1": {
+      "title": "LA COCINA DONDE TODO SE AGARRA BIEN",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-i1.webp",
+      "type": "propia"
+    },
+    "DX-I2": {
+      "title": "EL CAMINO DEL VASO",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-i2.webp",
+      "type": "propia"
+    },
+    "DX-I3": {
+      "title": "DILO CON SITIO",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/fondo-dispraxia.webp",
+      "type": "fondo de carta"
+    },
+    "DX-A1": {
+      "title": "DÓNDE ESTÁ LA DIFICULTAD",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-a1.webp",
+      "type": "propia"
+    },
+    "DX-A2": {
+      "title": "EL ORDEN DE LA MAÑANA",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/fondo-dispraxia.webp",
+      "type": "fondo de carta"
+    },
+    "DX-A3": {
+      "title": "EL PUESTO DE TRABAJO QUE YA ESTÁ AJUSTADO",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-a3.webp",
+      "type": "propia"
+    },
+    "DX-F1": {
+      "title": "LA COMIDA DEL DOMINGO",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-f1.webp",
+      "type": "propia"
+    },
+    "DX-F2": {
+      "title": "DÓNDE VIVE CADA COSA",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/fondo-dispraxia.webp",
+      "type": "fondo de carta"
+    },
+    "DX-C1": {
+      "title": "LO QUE PIDE CADA TAREA DE CLASE",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/dx-c1.webp",
+      "type": "propia"
+    },
+    "DX-C2": {
+      "title": "INSTRUCCIONES QUE SE PUEDEN SEGUIR",
+      "condition": "Dispraxia",
+      "asset": "/img/juegos-coleccion/fondo-dispraxia.webp",
+      "type": "fondo de carta"
+    },
+    "DC-I1": {
+      "title": "EL SÚPER POR DENTRO",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-i1.webp",
+      "type": "propia"
+    },
+    "DC-I2": {
+      "title": "LA LÍNEA DEL DÍA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-i2.webp",
+      "type": "propia"
+    },
+    "DC-I3": {
+      "title": "MIRAR, COMPARAR O CALCULAR",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/fondo-discalculia.webp",
+      "type": "fondo de carta"
+    },
+    "DC-A1": {
+      "title": "EL MES EN UNA HOJA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-a1.webp",
+      "type": "propia"
+    },
+    "DC-A2": {
+      "title": "PÍDELO EN OTRO NÚMERO",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/fondo-discalculia.webp",
+      "type": "fondo de carta"
+    },
+    "DC-A3": {
+      "title": "LOS PAPELES DE LA MESA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-a3.webp",
+      "type": "propia"
+    },
+    "DC-F1": {
+      "title": "LA COMPRA DE LA SEMANA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-f1.webp",
+      "type": "propia"
+    },
+    "DC-F2": {
+      "title": "QUIÉN LLEVA LOS NÚMEROS DE ESTA CASA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/fondo-discalculia.webp",
+      "type": "fondo de carta"
+    },
+    "DC-C1": {
+      "title": "QUÉ EVALÚA CADA EJERCICIO",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/dc-c1.webp",
+      "type": "propia"
+    },
+    "DC-C2": {
+      "title": "ENUNCIADOS CON LOS NÚMEROS A LA VISTA",
+      "condition": "Discalculia",
+      "asset": "/img/juegos-coleccion/fondo-discalculia.webp",
+      "type": "fondo de carta"
+    },
+    "TT-I1": {
+      "title": "EL SITIO DONDE CABE TODO",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-i1.webp",
+      "type": "propia"
+    },
+    "TT-I2": {
+      "title": "LO QUE DIGO CUANDO PREGUNTAN",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/fondo-tics-y-tourette.webp",
+      "type": "fondo de carta"
+    },
+    "TT-I3": {
+      "title": "AQUÍ DA IGUAL, AQUÍ NO",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/fondo-tics-y-tourette.webp",
+      "type": "fondo de carta"
+    },
+    "TT-A1": {
+      "title": "EL DÍA DE TRABAJO",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-a1.webp",
+      "type": "propia"
+    },
+    "TT-A2": {
+      "title": "ANTES DE LA CITA",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/fondo-tics-y-tourette.webp",
+      "type": "fondo de carta"
+    },
+    "TT-A3": {
+      "title": "LA SALA DE ESPERA",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-a3.webp",
+      "type": "propia"
+    },
+    "TT-F1": {
+      "title": "QUÉ SE DICE EN CASA",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/fondo-tics-y-tourette.webp",
+      "type": "fondo de carta"
+    },
+    "TT-F2": {
+      "title": "ELEGIR EL SITIO Y LA HORA",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-f2.webp",
+      "type": "propia"
+    },
+    "TT-C1": {
+      "title": "LO QUE HACE EL AULA",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-c1.webp",
+      "type": "propia"
+    },
+    "TT-C2": {
+      "title": "LO QUE YA ESTÁ PERMITIDO",
+      "condition": "Tics y Tourette",
+      "asset": "/img/juegos-coleccion/tt-c2.webp",
+      "type": "propia"
+    },
+    "IDT-J1": {
+      "title": "LA OFICINA DE LOS FORMULARIOS",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-j1.webp",
+      "type": "propia"
+    },
+    "IDT-J2": {
+      "title": "CORREGIRSE EN TRES PALABRAS",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/fondo-identidad-y-trato.webp",
+      "type": "fondo de carta"
+    },
+    "IDT-J3": {
+      "title": "EL NOMBRE QUE VIAJA",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-j3.webp",
+      "type": "propia"
+    },
+    "IDT-A1": {
+      "title": "QUIÉN TIENE QUE SABERLO",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/fondo-identidad-y-trato.webp",
+      "type": "fondo de carta"
+    },
+    "IDT-A2": {
+      "title": "EL ORDEN DE LOS PAPELES",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-a2.webp",
+      "type": "propia"
+    },
+    "IDT-A3": {
+      "title": "PEDIRLO SIN CONTAR LA HISTORIA",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/fondo-identidad-y-trato.webp",
+      "type": "fondo de carta"
+    },
+    "IDT-F1": {
+      "title": "LA COMIDA DE LOS DOMINGOS",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-f1.webp",
+      "type": "propia"
+    },
+    "IDT-F2": {
+      "title": "QUIÉN LO CUENTA Y CUÁNDO",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/fondo-identidad-y-trato.webp",
+      "type": "fondo de carta"
+    },
+    "IDT-C1": {
+      "title": "LO QUE HACE EL CENTRO",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-c1.webp",
+      "type": "propia"
+    },
+    "IDT-C2": {
+      "title": "ANTES DE QUE EMPIECE EL CURSO",
+      "condition": "Identidad y trato",
+      "asset": "/img/juegos-coleccion/idt-c2.webp",
+      "type": "propia"
+    },
+    "TR-J1": {
+      "title": "LA CARPETA DE LA CITA",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp",
+      "type": "fondo de carta"
+    },
+    "TR-J2": {
+      "title": "EL PASILLO DE LA SECRETARÍA",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/tr-j2.webp",
+      "type": "propia"
+    },
+    "TR-J3": {
+      "title": "LA AYUDA QUE HAY QUE PEDIR",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/tr-j3.webp",
+      "type": "propia"
+    },
+    "TR-A1": {
+      "title": "LA RECLAMACIÓN EN CUATRO FRASES",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp",
+      "type": "fondo de carta"
+    },
+    "TR-A2": {
+      "title": "QUIÉN RESUELVE ESTO",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/tr-a2.webp",
+      "type": "propia"
+    },
+    "TR-A3": {
+      "title": "LO QUE PUEDO HACER HOY",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp",
+      "type": "fondo de carta"
+    },
+    "TR-F1": {
+      "title": "LA OFICINA DE CORREOS",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/tr-f1.webp",
+      "type": "propia"
+    },
+    "TR-F2": {
+      "title": "QUIÉN HABLA EN LA VENTANILLA",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp",
+      "type": "fondo de carta"
+    },
+    "TR-C1": {
+      "title": "LO QUE DEPENDE DEL CENTRO",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/fondo-tramites-y-derechos.webp",
+      "type": "fondo de carta"
+    },
+    "TR-C2": {
+      "title": "EL RECORRIDO DE UNA PETICIÓN",
+      "condition": "Trámites y derechos",
+      "asset": "/img/juegos-coleccion/tr-c2.webp",
+      "type": "propia"
+    },
+    "AC-I1": {
+      "title": "LA MOCHILA DE LAS PREGUNTAS",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/fondo-altas-capacidades.webp",
+      "type": "fondo de carta"
+    },
+    "AC-A1": {
+      "title": "DIEZ COSAS EMPEZADAS",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-a1.webp",
+      "type": "propia"
+    },
+    "AC-F1": {
+      "title": "LA ESCALERA DEL EXPERTO",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/ac-f1.webp",
+      "type": "propia"
+    },
+    "AC-C1": {
+      "title": "LA CLASE QUE SE ADAPTA",
+      "condition": "Altas capacidades",
+      "asset": "/img/juegos-coleccion/fondo-altas-capacidades.webp",
+      "type": "fondo de carta"
+    }
+  }
+}

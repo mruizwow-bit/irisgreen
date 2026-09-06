@@ -1,0 +1,87 @@
+# Iris Green · configuración de despliegue
+# La carpeta que se publica es la raíz de este repositorio.
+
+[build]
+  publish = "."
+  command = ""
+
+# Las páginas viven en carpetas con index.html, así que /es/situaciones
+# y /es/situaciones/ tienen que llevar al mismo sitio.
+[[redirects]]
+  from = "/es/situaciones"
+  to = "/es/situaciones/"
+  status = 301
+
+[[redirects]]
+  from = "/es/neurodiversidad/condiciones"
+  to = "/es/neurodiversidad/condiciones/"
+  status = 301
+
+# Durante la revisión, CSS, JS e imágenes deben revalidarse en cada despliegue.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/audio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# El HTML sí cambia: que el navegador lo vuelva a pedir.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# V23 · rutas principales de navegación
+[[redirects]]
+  from = "/es/datos"
+  to = "/es/datos/"
+  status = 301
+
+[[redirects]]
+  from = "/es/biblioteca"
+  to = "/es/biblioteca/"
+  status = 301
+
+[[redirects]]
+  from = "/es/recursos/juegos"
+  to = "/es/recursos/juegos/"
+  status = 301
+
+[[redirects]]
+  from = "/es/tramites"
+  to = "/es/tramites/"
+  status = 301
+
+[[redirects]]
+  from = "/es/tramites/directorio"
+  to = "/es/tramites/directorio/"
+  status = 301
+
+[[redirects]]
+  from = "/es/vivir-fuera"
+  to = "/es/vivir-fuera/"
+  status = 301
+
+[[redirects]]
+  from = "/es/cuestionarios"
+  to = "/es/cuestionarios/"
+  status = 301
+
+[[redirects]]
+  from = "/es/neurodiversidad/temas/autismo"
+  to = "/es/neurodiversidad/temas/autismo/"
+  status = 301
+
+# Compatibilidad con el antiguo nombre del catálogo de juegos.
+[[redirects]]
+  from = "/es/recursos/juegos/juegos-86.json"
+  to = "/es/recursos/juegos/juegos-120.json"
+  status = 301
