@@ -43,11 +43,11 @@ jobs:
                       self.lines.append(self.lines[-1] + len(line))
                   self.feed(source)
                   self.close()
-              def offset(self):
+              def position_in_source(self):
                   line, column = self.getpos()
                   return self.lines[line-1] + column
               def handle_starttag(self, tag, attrs):
-                  start = self.offset()
+                  start = self.position_in_source()
                   node = Node(tag, attrs, start, start+len(self.get_starttag_text()), self.stack[-1] if self.stack else None)
                   self.nodes.append(node)
                   if tag not in self.void:
@@ -59,7 +59,7 @@ jobs:
               def handle_endtag(self, tag):
                   for i in range(len(self.stack)-1, -1, -1):
                       if self.stack[i].tag == tag:
-                          end = self.source.find('>', self.offset()) + 1
+                          end = self.source.find('>', self.position_in_source()) + 1
                           for node in self.stack[i:]:
                               node.end = end
                           del self.stack[i:]
