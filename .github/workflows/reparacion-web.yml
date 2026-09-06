@@ -31,15 +31,17 @@ jobs:
               q.parent.mkdir(parents=True,exist_ok=True)
               shutil.copy2(p,q)
           PY
-      - name: Aplicar solo los cambios definidos
-        run: /tmp/ig-venv/bin/python scripts/repair_web.py
+      - name: Aplicar la migración si falta y los ajustes de la prueba anterior
+        run: |
+          if grep -q '__bundler/template' index.html; then /tmp/ig-venv/bin/python scripts/repair_web.py; fi
+          /tmp/ig-venv/bin/python scripts/refine_web.py
       - name: Comprobar sintaxis JavaScript
         run: |
           node --check assets/musica.js
           node --check assets/buscador-comun.js
           node --check assets/interfaz-comun.js
           node --check assets/lectura-accesible.js
-      - name: Probar navegación, búsqueda y Música en escritorio y móvil
+      - name: Probar escritorio y móviles de 390 y 320 píxeles
         run: /tmp/ig-venv/bin/python scripts/test_web.py
       - name: Guardar cambios y resultados solo en la rama de revisión
         if: always()
@@ -49,5 +51,5 @@ jobs:
           git add -- index.html es en pt-br assets buscador.json netlify.toml scripts
           if [ -d reports ]; then git add -- reports; fi
           git diff --cached --stat
-          git diff --cached --quiet || git commit -m 'Corregir navegación y carga; registrar pruebas de escritorio y móvil'
+          git diff --cached --quiet || git commit -m 'Ajustar el reproductor y registrar las comprobaciones en tres tamaños'
           git push origin HEAD:ajustes/auditoria-web
