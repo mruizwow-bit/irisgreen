@@ -1,77 +1,53 @@
-name: Revisión técnica de Iris Green
+name: Reparación y pruebas de Iris Green
 on:
   push:
     branches: ['ajustes/auditoria-web']
-    paths: ['.github/workflows/reparacion-web.yml', 'tools/**']
+    paths: ['.github/workflows/reparacion-web.yml']
 permissions:
   contents: write
+concurrency:
+  group: reparacion-irisgreen
+  cancel-in-progress: false
 jobs:
-  inspeccionar:
+  reparar-y-probar:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Describir la estructura actual sin modificar la web
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar herramientas de prueba y copia de comparación
         run: |
+          python3 -m venv /tmp/ig-venv
+          /tmp/ig-venv/bin/pip install beautifulsoup4==4.13.4 playwright==1.55.0
+          /tmp/ig-venv/bin/python -m playwright install --with-deps chromium
           python3 - <<'PY'
-          import re, json, gzip, base64, hashlib, posixpath
           from pathlib import Path
-          from collections import Counter, defaultdict
-          from html.parser import HTMLParser
-          from urllib.parse import urljoin, urlsplit, unquote
-          out=Path('_audit'); out.mkdir(exist_ok=True)
-          class Tags(HTMLParser):
-              def __init__(self,text):
-                  super().__init__(); self.tags=[]; self.feed(text)
-              def handle_starttag(self,tag,attrs): self.tags.append((tag,dict(attrs)))
-          def island(text,name):
-              m=re.search(r'<script\b[^>]*type=[\"\']__bundler/'+name+r'[\"\'][^>]*>(.*?)</script\s*>',text,re.S|re.I)
-              return json.loads(m[1]) if m else None
-          files=sorted(p for p in Path('.').rglob('*.html') if '_audit' not in p.parts and '.git' not in p.parts)
-          report={'html_count':len(files),'bundles':[],'resources':{},'types':{},'missing':{},'search_index':{}}
-          missing=defaultdict(set)
-          for p in files:
-              raw=p.read_text(); template=island(raw,'template'); text=template or raw
-              man=island(raw,'manifest') or {}
-              if template:
-                  dst=out/'templates'/p; dst.parent.mkdir(parents=True,exist_ok=True); dst.write_text(text)
-                  resources=[]
-                  for key,r in man.items():
-                      data=base64.b64decode(r['data']); data=gzip.decompress(data) if r.get('compressed') else data
-                      sha=hashlib.sha256(data).hexdigest()[:16]; mime=r['mime']; ext='.js' if 'javascript' in mime else '.css' if mime=='text/css' else '.txt'
-                      dst=out/'resources'/(sha+ext); dst.parent.mkdir(exist_ok=True); dst.write_bytes(data)
-                      report['resources'][sha]={'mime':mime,'bytes':len(data),'prefix':data[:500].decode(errors='replace')}
-                      resources.append({'key':key,'sha':sha,'mime':mime,'bytes':len(data)})
-                  report['bundles'].append({'path':str(p),'bytes':len(raw.encode()),'template_bytes':len(text.encode()),'resources':resources,'page_order':island(raw,'page_order')})
-              if template or str(p) in ['es/neurodiversidad/condiciones/index.html','es/situaciones/index.html','en/neurodiversity/conditions/index.html']:
-                  if not template:
-                      dst=out/'templates'/p; dst.parent.mkdir(parents=True,exist_ok=True); dst.write_text(text)
-                  for i,m in enumerate(re.finditer(r'<script\b([^>]*)>(.*?)</script\s*>',text,re.S|re.I)):
-                      if m[2].strip():
-                          dst=out/'inline'/p.parent/(p.stem+'-'+str(i)+'.js'); dst.parent.mkdir(parents=True,exist_ok=True); dst.write_text(m[2])
-              if '/condiciones/' in '/'+str(p) and p.name=='index.html':
-                  for typ in re.findall(r'data-tipo=[\"\']([^\"\']+)',text):
-                      report['types'][typ]=report['types'].get(typ,0)+1
-              for tag,a in Tags(text).tags:
-                  for att in ['src','href']:
-                      v=a.get(att,'')
-                      if not v or '{{' in v or v in man or v.startswith(('data:','blob:','mailto:','tel:','javascript:','about:','#')): continue
-                      u=urlsplit(urljoin('https://irisgreen.eu/'+str(p),v))
-                      if u.hostname!='irisgreen.eu': continue
-                      rel=unquote(u.path).lstrip('/'); q=Path(rel or '.')
-                      if q.is_file() or (q.is_dir() and (q/'index.html').is_file()): continue
-                      missing[rel].add(str(p))
-          report['missing']={k:{'count':len(v),'examples':sorted(v)[:5]} for k,v in sorted(missing.items())}
-          search=json.loads(Path('buscador.json').read_text())
-          report['search_index']={'python_type':type(search).__name__,'sample':search[:3] if isinstance(search,list) else {k:(v[:2] if isinstance(v,list) else v) for k,v in search.items()},'keys':list(search)[:10] if isinstance(search,dict) else list(search[0]),'len':len(search)}
-          report['inline_files']=[str(p) for p in (out/'inline').rglob('*.js')]
-          (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-          print(json.dumps({k:v for k,v in report.items() if k not in ['search_index','resources','inline_files']},ensure_ascii=False,indent=2))
+          import shutil
+          for p in list(Path('.').rglob('*.html')):
+              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts):
+                  continue
+              q=Path('.baseline')/p
+              q.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(p,q)
           PY
-      - name: Guardar solo resultados de inspección en la rama
+      - name: Aplicar solo los cambios definidos
+        run: /tmp/ig-venv/bin/python scripts/repair_web.py
+      - name: Comprobar sintaxis JavaScript
+        run: |
+          node --check assets/musica.js
+          node --check assets/buscador-comun.js
+          node --check assets/interfaz-comun.js
+          node --check assets/lectura-accesible.js
+      - name: Probar navegación, búsqueda y Música en escritorio y móvil
+        run: /tmp/ig-venv/bin/python scripts/test_web.py
+      - name: Guardar cambios y resultados solo en la rama de revisión
+        if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- _audit
-          git diff --cached --quiet || git commit -m 'Registrar fuentes descomprimidas y auditoría de rutas para revisión'
+          git add -- index.html es en pt-br assets buscador.json netlify.toml scripts
+          if [ -d reports ]; then git add -- reports; fi
+          git diff --cached --stat
+          git diff --cached --quiet || git commit -m 'Corregir navegación y carga; registrar pruebas de escritorio y móvil'
           git push origin HEAD:ajustes/auditoria-web
