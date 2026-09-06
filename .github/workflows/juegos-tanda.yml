@@ -1,0 +1,53 @@
+name: Juegos · partidas y materiales
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/juegos-tanda.yml']
+permissions:
+  contents: write
+concurrency:
+  group: juegos-irisgreen
+  cancel-in-progress: false
+jobs:
+  juegos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-games
+          /tmp/ig-games/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-games/bin/python -m playwright install --with-deps chromium >/tmp/ig-games-install.log 2>&1
+      - name: Probar partidas, reinicio, cartas, idiomas y materiales
+        run: /tmp/ig-games/bin/python scripts/test_games.py --phase before
+      - name: Guardar fuentes exactas de esta prueba para diagnóstico
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-games-evidence');out.mkdir(exist_ok=True)
+          shutil.copytree('reports/games',out/'reports',dirs_exist_ok=True)
+          for parent in ['es/recursos/juegos','assets','scripts']:
+              for p in Path(parent).rglob('*'):
+                  if p.is_file() and p.suffix in {'.html','.css','.js','.json','.py'}:
+                      q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: juegos-evidencia
+          path: /tmp/ig-games-evidence
+          retention-days: 3
+      - name: Conservar informe en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          test ! -f reports/games/games-before.json || git add -- reports/games/games-before.json
+          git diff --cached --quiet || git commit -m 'Registrar resultado de las partidas y materiales de juegos'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
