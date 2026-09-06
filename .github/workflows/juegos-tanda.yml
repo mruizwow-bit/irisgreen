@@ -21,24 +21,11 @@ jobs:
           python3 -m venv /tmp/ig-games
           /tmp/ig-games/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
           /tmp/ig-games/bin/python -m playwright install --with-deps chromium >/tmp/ig-games-install.log 2>&1
-      - name: Aplicar la corrección acotada una sola vez
+      - name: Conservar la prueba anterior y corregir el cruce de idiomas
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/repair_games.py');s=p.read_text()
-          anchor="        s=once(s,'done: filled >= 2,','done: filled === Object.keys(st.picks).length,')"
-          extra="        s=s.replace('PCOLOR[owner % 4]', 'PCOLOR[(isMine ? st.who : owner[0]) % 4]')\n"
-          if extra not in s:
-              assert s.count(anchor)==1
-              s=s.replace(anchor,extra+anchor)
-          guard="if (ROOT/'reports/games/repairs.json').exists():\n    print('La migración de juegos ya está aplicada; se repiten las pruebas sin reaplicarla.')\n    raise SystemExit(0)\n"
-          anchor="\ndef once(s,old,new):"
-          if guard not in s:
-              assert anchor in s
-              s=s.replace(anchor,'\n'+guard+anchor,1)
-          p.write_text(s)
-          PY
-          /tmp/ig-games/bin/python scripts/repair_games.py
+          test -f reports/games/repairs.json
+          test -f reports/games/games-after-first-pass.json || cp reports/games/games-after.json reports/games/games-after-first-pass.json
+          python3 scripts/repair_game_languages.py
       - name: Comprobar sintaxis del código de los juegos
         run: |
           python3 - <<'PY'
@@ -46,7 +33,7 @@ jobs:
           import re,subprocess
           paths=[Path('es/recursos/juegos/index.html'),*Path('es/recursos/juegos').glob('*/index.html')]
           for path in paths:
-              for i,m in enumerate(re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',path.read_text(),re.S)):
+              for m in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',path.read_text(),re.S):
                   p=Path('/tmp/ig-game-check.js');p.write_text(m[1]);subprocess.run(['node','--check',str(p)],check=True)
           print('Sintaxis comprobada en las páginas interactivas y su índice.')
           PY
@@ -55,6 +42,37 @@ jobs:
       - name: Probar cartas con texto largo y navegación por teclado
         if: always()
         run: /tmp/ig-games/bin/python scripts/test_game_letters.py
+      - name: Capturar los controles corregidos en móvil
+        if: always()
+        run: |
+          /tmp/ig-games/bin/python - <<'PY'
+          from pathlib import Path
+          from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+          from playwright.sync_api import sync_playwright
+          import threading,functools
+          root=Path.cwd();out=root/'reports/games'
+          class Quiet(SimpleHTTPRequestHandler):
+              def log_message(self,*args):pass
+          server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(root)))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          base=f'http://127.0.0.1:{server.server_port}'
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch()
+              for slug in ['donde-se-fue-la-energia','cada-cerebro-su-camino','palabra-misteriosa']:
+                  ctx=browser.new_context(viewport={'width':390,'height':844});page=ctx.new_page()
+                  page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(base) else r.abort())
+                  page.goto(base+'/es/recursos/juegos/'+slug+'/',wait_until='domcontentloaded')
+                  page.locator('main h1').first.wait_for();page.wait_for_timeout(300)
+                  if slug=='donde-se-fue-la-energia':
+                      page.locator('.ig-energy-days').evaluate('(e)=>e.scrollIntoView({block:"center"})')
+                  else:
+                      page.locator('main section').first.evaluate('(e)=>e.scrollIntoView({block:"start"})')
+                      page.evaluate('scrollBy(0,-160)')
+                  page.screenshot(path=str(out/('mobile-controls-'+slug+'.png')))
+                  ctx.close()
+              browser.close()
+          server.shutdown()
+          PY
       - name: Guardar fuentes exactas y evidencia de las pruebas
         if: always()
         run: |
@@ -79,8 +97,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- es/recursos/juegos assets/juegos-ajustes.css scripts/repair_games.py scripts/test_games.py scripts/test_game_letters.py
+          git add -- es/recursos/juegos assets/juegos-ajustes.css scripts/repair_games.py scripts/repair_game_languages.py scripts/test_games.py scripts/test_game_letters.py
           git add -- reports/games/*.json
-          git diff --cached --quiet || git commit -m 'Corregir tableros móviles, selección familiar y cartas; guardar pruebas'
+          git diff --cached --quiet || git commit -m 'Cerrar corrección de idiomas y pruebas de juegos y cartas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
