@@ -509,3 +509,6 @@ body.tts [data-read]{cursor:pointer}
 .nav a.calma{background:transparent;color:var(--tinta);border-radius:.6rem;padding:0 .75rem;white-space:nowrap}
 .nav a.calma:hover{background:rgba(31,95,139,.09);color:var(--azul)}
 .nav a.calma[aria-current=page]{background:var(--tinta);color:#fff}
+
+/* «Cómo pedirlo» ya está en la barra de Ayudas: en la principal sobra. */
+header .nav > a[href="/es/tramites/"],header .nav > a[href="/es/tramites"]{display:none!important}
