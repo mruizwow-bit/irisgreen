@@ -777,7 +777,11 @@ class Component extends DCLogic {
       String(value).split("\n").forEach((paragraph) => {
         let line = "";
         for (const char of paragraph) {
-          if (line && x.measureText(line + char).width > width) { lines.push(line); line = ""; }
+          if (line && x.measureText(line + char).width > width) {
+            const cut = line.lastIndexOf(" ") + 1;
+            if (cut > 0) { lines.push(line.slice(0, cut)); line = line.slice(cut); }
+            else { lines.push(line); line = ""; }
+          }
           line += char;
         }
         lines.push(line);

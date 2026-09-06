@@ -10,7 +10,7 @@
     "invalid_images": [],
     "source_sha256": {
       "es/recursos/juegos/cada-cerebro-su-camino/index.html": "4fca32b3088a27af96fdc7cd420ee09931f98fbf04d35bad8d4da57a370e4c8b",
-      "es/recursos/juegos/donde-se-fue-la-energia/index.html": "bd13c1f101ac81ec8d67538e65cf8a823aed29c9d9388829485750cc5a7c59e2",
+      "es/recursos/juegos/donde-se-fue-la-energia/index.html": "40521bd6b034c591d6986252805248420ebafc7c74a9fdf3ec36f91ae5724105",
       "es/recursos/juegos/el-archivo-de-capacidades/index.html": "db8977193c16d0e69a3b300958a25a44db64f5ae45da41c712e732af3dac9b35",
       "es/recursos/juegos/el-aula-al-reves/index.html": "13336b253b3207b2b6bdd092b5cb28c90b4390c463bf161e095b5cdbf9114950",
       "es/recursos/juegos/el-detective-de-los-sentidos/index.html": "a00976a5d579503cebf5d4dcf0b1a5eeea27a3f0ccd8362ce596174ffe2a2789",
@@ -1105,17 +1105,8 @@
         "offenders": []
       },
       "image_errors": [],
-      "playthrough": {
-        "completed": true,
-        "letter_href": "/es/recursos/juegos/#carta-donde-se-fue-la-energia",
-        "reset": true
-      },
-      "final_geometry": {
-        "overflow": 0,
-        "smallTargets": [],
-        "offenders": []
-      },
-      "passed": true,
+      "passed": false,
+      "error": "Locator.focus: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"main [data-ig-test-action=\\\"t.click\\\"][data-ig-test-list=\\\"tray\\\"]:visible\").first\n",
       "javascript_errors": [],
       "http_errors": []
     },
@@ -3687,16 +3678,23 @@
       "passed": true
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "game": "donde-se-fue-la-energia",
+      "width": 390,
+      "language": "en",
+      "error": "Locator.focus: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"main [data-ig-test-action=\\\"t.click\\\"][data-ig-test-list=\\\"tray\\\"]:visible\").first\n"
+    }
+  ],
   "notes": [
     "Real button/keyboard input, not direct game-state manipulation.",
     "Only inert test selectors are added by the HTTP server.",
     "Images are requested locally, with external domains blocked.",
     "Not a clinical or pedagogical assessment; print games are checked as materials, not simulated as digital games."
   ],
-  "passed": true,
+  "passed": false,
   "summary": {
-    "games_passed": 52,
+    "games_passed": 51,
     "games_tested": 52,
     "collections_passed": 26,
     "collections_tested": 26,

@@ -1,0 +1,91 @@
+{
+  "existing_explanations_reassigned": true,
+  "spanish_labels_corrected": [
+    {
+      "before": "A cama",
+      "after": "La cama"
+    },
+    {
+      "before": "A xícara",
+      "after": "La taza"
+    },
+    {
+      "before": "O Walkman",
+      "after": "El Walkman"
+    },
+    {
+      "before": "A máquina de escrever",
+      "after": "La máquina de escribir"
+    },
+    {
+      "before": "O ônibus",
+      "after": "El autobús"
+    },
+    {
+      "before": "O prato com dois garfos",
+      "after": "El plato con dos tenedores"
+    },
+    {
+      "before": "O telefone",
+      "after": "El teléfono"
+    },
+    {
+      "before": "O livro",
+      "after": "El libro"
+    },
+    {
+      "before": "Os tênis",
+      "after": "Las zapatillas"
+    },
+    {
+      "before": "O cachorro na coleira",
+      "after": "El perro con correa"
+    }
+  ],
+  "notes": [
+    "The EN and PT explanations are copied verbatim from the original, not newly written.",
+    "Only ten short object labels are translated from the misplaced Portuguese to Spanish.",
+    "All numerical game rules and the complete 130-game catalogue remain unchanged.",
+    "The Portuguese website selector is not re-enabled."
+  ],
+  "explanations": {
+    "es": [
+      "Dormir es la recarga más grande.",
+      "Un rato tranquilo con algo caliente.",
+      "Música solo para ti.",
+      "Es el trabajo o el estudio.",
+      "Ruido, gente y esperar.",
+      "Comer con gente gusta y cansa a la vez.",
+      "Una llamada corta recarga. Una larga gasta.",
+      "Leer solo, a tu ritmo.",
+      "Andar o correr vacía la cabeza.",
+      "El paseo con el perro es para los dos."
+    ],
+    "en": [
+      "Sleep is the biggest recharge of all.",
+      "A quiet while with something warm.",
+      "Music just for you.",
+      "This is work or study.",
+      "Noise, people and waiting.",
+      "Eating with people is nice and tiring at once.",
+      "A short call recharges. A long one spends.",
+      "Reading alone, at your own pace.",
+      "Walking or running empties your head.",
+      "The walk with the dog is for both of you."
+    ],
+    "pt": [
+      "Dormir é a maior recarga de todas.",
+      "Um tempo tranquilo com algo quente.",
+      "Música só para você.",
+      "É o trabalho ou o estudo.",
+      "Barulho, gente e espera.",
+      "Comer com gente é bom e cansa ao mesmo tempo.",
+      "Uma ligação curta recarrega. Uma longa gasta.",
+      "Ler sozinho, no seu ritmo.",
+      "Andar ou correr esvazia a cabeça.",
+      "O passeio com o cachorro é para os dois."
+    ]
+  },
+  "before_sha256": "40521bd6b034c591d6986252805248420ebafc7c74a9fdf3ec36f91ae5724105",
+  "after_sha256": "bd13c1f101ac81ec8d67538e65cf8a823aed29c9d9388829485750cc5a7c59e2"
+}
