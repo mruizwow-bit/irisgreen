@@ -1,0 +1,74 @@
+name: Diagnóstico de los fallos pendientes
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/revision-pendientes.yml']
+permissions:
+  contents: read
+jobs:
+  diagnosticar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-diag
+          /tmp/ig-diag/bin/pip -q install playwright==1.55.0
+          /tmp/ig-diag/bin/python -m playwright install --with-deps chromium > /tmp/browser-install.log 2>&1
+      - name: Inspeccionar recursos y geometría real
+        run: |
+          /tmp/ig-diag/bin/python - <<'PY'
+          from pathlib import Path
+          import json,shutil,threading,functools
+          from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+          from playwright.sync_api import sync_playwright
+          root=Path.cwd();out=Path('/tmp/ig-pendientes');out.mkdir()
+          report={'covers':[],'runtime_attributes':[],'pages':[]}
+          for p in root.rglob('*'):
+              if not p.is_file() or {'.git','_audit','reports','.baseline','node_modules'}.intersection(p.parts):continue
+              rel=p.relative_to(root)
+              if p.suffix.lower() in {'.html','.css','.js','.json','.toml','.txt','.md','.py','.yml'}:
+                  q=out/'source'/rel;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+              if p.suffix.lower() in {'.png','.jpg','.jpeg','.webp','.svg'} and any(w in str(rel).lower() for w in ['luma','autismo','portada','cover','book']):
+                  report['covers'].append({'path':str(rel),'bytes':p.stat().st_size})
+                  if 'juegos' not in str(rel):
+                      q=out/'images'/rel;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          for p in (root/'assets/runtime').glob('*.js'):
+              lines=p.read_text().splitlines()
+              for i,line in enumerate(lines):
+                  if 'sc-camel-' in line:
+                      report['runtime_attributes'].append({'path':str(p.relative_to(root)),'line':i+1,'context':'\n'.join(lines[max(0,i-6):i+12])})
+          class Quiet(SimpleHTTPRequestHandler):
+              def log_message(self,*args):pass
+          server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(root)))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          base=f'http://127.0.0.1:{server.server_port}'
+          pages=['/es/recursos/juegos/','/es/tramites/','/es/vivir-fuera/','/es/libros/','/es/taller/','/es/investigacion/','/es/sobre-iris-green/','/es/neurodiversidad/temas/autismo/','/es/intereses/','/es/tramites/directorio/','/','/es/neurodiversidad/condiciones/']
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch()
+              for width in [320,1440]:
+                  for path in pages:
+                      ctx=browser.new_context(viewport={'width':width,'height':900});p=ctx.new_page()
+                      p.route('**/*',lambda r:r.continue_() if r.request.url.startswith(base) else r.abort())
+                      p.add_init_script('''window.igShifts=[];new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.igShifts.push({value:e.value,nodes:e.sources.map(s=>({html:s.node?.outerHTML?.slice(0,350),prev:s.previousRect.toJSON(),next:s.currentRect.toJSON()}))})}).observe({type:'layout-shift',buffered:true})''')
+                      p.goto(base+path,wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.wait_for_timeout(700)
+                      row={'path':path,'width':width,'overflow':p.evaluate('document.documentElement.scrollWidth-innerWidth'),'shifts':p.evaluate('window.igShifts')}
+                      row['offenders']=p.evaluate('''()=>Array.from(document.querySelectorAll('body *')).filter(e=>{const r=e.getBoundingClientRect();return r.width&&r.right>innerWidth+1&&getComputedStyle(e).position!=='fixed'}).slice(0,24).map(e=>({tag:e.tagName,id:e.id,cls:e.className,html:e.outerHTML.slice(0,400),rect:e.getBoundingClientRect().toJSON(),display:getComputedStyle(e).display,minWidth:getComputedStyle(e).minWidth,parent:e.parentElement?.outerHTML.slice(0,250)}))''')
+                      filename=path.strip('/').replace('/','-') or 'home'
+                      p.screenshot(path=str(out/f'{filename}-{width}.png'),full_page=False)
+                      if path=='/' and width==320:
+                          p.locator('#plBtn:visible,.ig-uh-music:visible,[data-ig-music]:visible').first.click()
+                          p.screenshot(path=str(out/'home-player-320.png'),full_page=False)
+                      report['pages'].append(row);ctx.close()
+              browser.close()
+          server.shutdown()
+          (out/'diagnostic.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({'covers':report['covers'],'runtime_attributes':report['runtime_attributes'],'pages':[{'path':r['path'],'width':r['width'],'overflow':r['overflow'],'shifts':len(r['shifts'])} for r in report['pages']]},ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: diagnostico-pendientes
+          path: /tmp/ig-pendientes
+          retention-days: 3
