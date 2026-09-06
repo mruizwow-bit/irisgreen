@@ -3,7 +3,8 @@
 
 [build]
   publish = "."
-  command = ""
+  # Solo genera contenido inicial desde los JSON existentes. Sin paquetes externos.
+  command = "python3 scripts/prepare_initial_data.py"
 
 # Las páginas viven en carpetas con index.html, así que /es/situaciones
 # y /es/situaciones/ tienen que llevar al mismo sitio.
