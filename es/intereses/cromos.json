@@ -902,6 +902,115 @@
    ]
   },
   {
+   "id": "monedas",
+   "es": "Monedas",
+   "en": "Coins",
+   "seccion": "El mundo",
+   "seccion_en": "The world",
+   "coleccion": "Monedas",
+   "coleccion_en": "Coins",
+   "total": 22,
+   "credito_coleccion": "Ilustración propia de Iris Green",
+   "cromos": [
+    {
+     "n": 1,
+     "nombre": "Óbolo",
+     "foto": "/img/intereses/monedas/mon-obolo.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 2,
+     "nombre": "Denario",
+     "foto": "/img/intereses/monedas/mon-denario.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 3,
+     "nombre": "Dirham",
+     "foto": "/img/intereses/monedas/mon-dirham.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 4,
+     "nombre": "Maravedí",
+     "foto": "/img/intereses/monedas/mon-maravedi.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 5,
+     "nombre": "Real de a ocho",
+     "foto": "/img/intereses/monedas/mon-real-de-a-ocho.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 6,
+     "nombre": "Ducado",
+     "foto": "/img/intereses/monedas/mon-ducado.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 7,
+     "nombre": "Papel moneda chino",
+     "foto": "/img/intereses/monedas/mon-papel-chino.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 8,
+     "nombre": "Moneda agujereada",
+     "foto": "/img/intereses/monedas/mon-moneda-agujereada.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 9,
+     "nombre": "Duro",
+     "foto": "/img/intereses/monedas/mon-duro.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 10,
+     "nombre": "Peseta",
+     "foto": "/img/intereses/monedas/mon-peseta.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 11,
+     "nombre": "Moneda de necesidad",
+     "foto": "/img/intereses/monedas/mon-moneda-de-necesidad.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    },
+    {
+     "n": 12,
+     "nombre": "Euro",
+     "foto": "/img/intereses/monedas/mon-euro.webp",
+     "credito": "Ilustración propia de Iris Green",
+     "campos": {},
+     "pendiente": true
+    }
+   ]
+  },
+  {
    "id": "dibujar",
    "es": "Dibujar",
    "en": "Drawing",

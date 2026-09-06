@@ -97,3 +97,11 @@
   from = "/es/recursos/juegos/juegos-86.json"
   to = "/es/recursos/juegos/juegos-120.json"
   status = 301
+
+# Las páginas en pt-BR se retiran. Las direcciones indexadas van a la web en castellano
+# en vez de dar error, para no dejar 375 URLs muertas.
+[[redirects]]
+  from = "/pt-br/*"
+  to = "/es/"
+  status = 301
+  force = true
