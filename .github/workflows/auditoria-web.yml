@@ -1,0 +1,71 @@
+name: Auditoría de la web
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/auditoria-web.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspeccionar las páginas actuales sin modificarlas
+        run: |
+          python3 - <<'PY'
+          import base64, gzip, json, re, shutil
+          from collections import Counter
+          from pathlib import Path
+          from html.parser import HTMLParser
+
+          root = Path.cwd()
+          out = Path('/tmp/irisgreen-audit')
+          out.mkdir()
+          counts = Counter()
+          summaries = []
+          for path in sorted(root.rglob('*')):
+              if not path.is_file() or '.git' in path.parts or '.github' in path.parts:
+                  continue
+              if path.suffix not in {'.html', '.js', '.css', '.json', '.toml', '.xml', '.txt', '.md'} and path.name not in {'_headers', '_redirects'}:
+                  continue
+              rel = path.relative_to(root)
+              target = out / 'source' / rel
+              target.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, target)
+              if path.suffix != '.html':
+                  continue
+              raw = path.read_text(encoding='utf-8')
+              counts['html'] += 1
+              match = re.search(r'<script\b[^>]*type=[\"\']__bundler/template[\"\'][^>]*>(.*?)</script\s*>', raw, re.S | re.I)
+              template = json.loads(match.group(1)) if match else raw
+              counts['bundled' if match else 'plain'] += 1
+              navs = re.findall(r'<nav\b[^>]*(?:ig-uh-nav|class=[\"\']nav[\"\'])[^>]*>.*?</nav\s*>', template, re.S | re.I)
+              internal = re.findall(r'<nav\b[^>]*ig-subtabs[^>]*>.*?</nav\s*>', template, re.S | re.I)
+              counts['global_nav'] += bool(navs)
+              counts['global_tramites'] += any('/es/tramites/' in n or '/en/apply/' in n for n in navs)
+              summaries.append({'path': str(rel), 'bytes': path.stat().st_size, 'bundled': bool(match), 'global_nav_count': len(navs), 'internal_nav_count': len(internal), 'shared_css': '/assets/site-v23.css' in template, 'loader_hides_body': 'visibility:hidden!important' in raw})
+              if str(rel) in {'index.html', 'es/tramites/index.html', 'es/libros/index.html', 'es/neurodiversidad/condiciones/index.html', 'en/index.html'}:
+                  dest = out / 'decoded' / rel
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_text(template, encoding='utf-8')
+                  print('\nPAGE', rel, 'bytes', path.stat().st_size, 'bundled', bool(match))
+                  for nav in navs + internal:
+                      print('NAV', nav[:16000])
+                  for needle in ['La pagan', 'pagan dos libros', 'free', 'sostener', 'MutationObserver', 'setInterval', 'site-v23.css', 'musica.js']:
+                      pos = template.find(needle)
+                      if pos >= 0:
+                          print('CONTEXT', needle, template[max(0, pos-400):pos+700])
+          report = {'counts': dict(counts), 'pages': summaries}
+          (out / 'audit.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+          print('\nTOTALS', json.dumps(dict(counts)))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-web-fuentes-actuales
+          path: /tmp/irisgreen-audit
+          retention-days: 3
