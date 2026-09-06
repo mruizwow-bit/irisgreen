@@ -1,0 +1,3953 @@
+{
+  "phase": "before",
+  "static": {
+    "interactive_games": 13,
+    "collection_families": 13,
+    "collection_games": 130,
+    "image_references": 130,
+    "unique_collection_images": 92,
+    "missing_images": [],
+    "invalid_images": [],
+    "source_sha256": {
+      "es/recursos/juegos/cada-cerebro-su-camino/index.html": "fae616ce126028868ae41870f908ac6eda38be4621c1ab416f2337fff4ed7398",
+      "es/recursos/juegos/donde-se-fue-la-energia/index.html": "54c196d5f453fb01242b6da008392858bae60a993e88044b118dcb44f1bae930",
+      "es/recursos/juegos/el-archivo-de-capacidades/index.html": "42bf3dde849e26e21dd615161010f2c2b75ab1f57bc5c0553f1befe07ae77465",
+      "es/recursos/juegos/el-aula-al-reves/index.html": "ad1a1454c943ef6ad8f2870cda9937e8fbf284560267a48d97ecf2d07b3c8cea",
+      "es/recursos/juegos/el-detective-de-los-sentidos/index.html": "c0a7d73e4b3e96c1c2a0f63e14d890fb1df20ed75e19215b34ba04accca48f3a",
+      "es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html": "dc751a2192ead0795be103891f824696f244462f3b000601fd5f9d7e2cf28150",
+      "es/recursos/juegos/el-traductor-de-casa/index.html": "e612ebb92e880ec11630cca0e2207fad25834c4569be58efd9599e355ee2c6c1",
+      "es/recursos/juegos/el-traductor-de-instrucciones/index.html": "787c3bc27b405ba6c23586bc282adc7b4a6506128c2231d717534e982b4168e2",
+      "es/recursos/juegos/la-cena-de-los-planes/index.html": "f5ad11c6a93d86d955fcbf3b18a6fdb100ed5628181c7469ac78259f59d92812",
+      "es/recursos/juegos/la-consulta/index.html": "c49140552f4913d005e7de8d83acb72667b71503c1ddba69a9e607cea2ef602a",
+      "es/recursos/juegos/la-maquina-de-empezar/index.html": "87e64cbed4b7d818bc6dc6e363c7da43df89978e6e31356a32117361a08f1484",
+      "es/recursos/juegos/las-cinco-cosas/index.html": "11649ce07b64b64786d756fc804def51e2efc127a6da85a7bb4e3135254d94f2",
+      "es/recursos/juegos/palabra-misteriosa/index.html": "4250df0d00a49ea6c3db152ec92a6e8c85d74d130f8562d8c7e417c9d6f3e62a"
+    }
+  },
+  "games": [
+    {
+      "game": "cada-cerebro-su-camino",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-cada-cerebro-su-camino",
+        "reset": "No reset control in this game; paths are reselectable."
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "donde-se-fue-la-energia",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-donde-se-fue-la-energia",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-archivo-de-capacidades",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-archivo-de-capacidades",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-aula-al-reves",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-aula-al-reves",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-detective-de-los-sentidos",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-detective-de-los-sentidos",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-mapa-del-tesoro-de-casa",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-mapa-del-tesoro-de-casa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-traductor-de-casa",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-traductor-de-casa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Guardar en el diccionario",
+            "w": 223.28125,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-traductor-de-instrucciones",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-traductor-de-instrucciones",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-cena-de-los-planes",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "+ Otra persona",
+            "w": 153.625,
+            "h": 42.796875
+          },
+          {
+            "text": "Empezar otra vez",
+            "w": 166.015625,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-cena-de-los-planes",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "+ Otra persona",
+            "w": 153.625,
+            "h": 42.796875
+          },
+          {
+            "text": "Empezar otra vez",
+            "w": 166.015625,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-consulta",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-consulta",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-maquina-de-empezar",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-maquina-de-empezar",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "las-cinco-cosas",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "El tubo de luz",
+            "w": 201.953125,
+            "h": 42.0625
+          },
+          {
+            "text": "La etiqueta del jersey",
+            "w": 44.875,
+            "h": 42.0625
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-las-cinco-cosas",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "El tubo de luz",
+            "w": 201.953125,
+            "h": 42.0625
+          },
+          {
+            "text": "La etiqueta del jersey",
+            "w": 44.875,
+            "h": 42.0625
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "palabra-misteriosa",
+      "width": 1440,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-palabra-misteriosa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "cada-cerebro-su-camino",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 81,
+        "smallTargets": [
+          {
+            "text": "Dibujarlo\n                Dibujar las mesas y repartir.",
+            "w": 4,
+            "h": 159.625
+          },
+          {
+            "text": "Hacer una lista\n                Hacer una lista de mesas y tachar lápices.",
+            "w": 4,
+            "h": 263.0625
+          },
+          {
+            "text": "Usar la regla\n                Usar la regla del reparto: 24 ÷ 6.",
+            "w": 4,
+            "h": 263.0625
+          },
+          {
+            "text": "Probar y ver\n                Probar con 3 y ver que sobran.",
+            "w": 4,
+            "h": 241.375
+          },
+          {
+            "text": "Decirlo en voz alta\n                Contarlo en voz alta de seis en seis.",
+            "w": 4,
+            "h": 282.25
+          }
+        ],
+        "offenders": [
+          "<span class=\"sc-interp\">Hay 24 lápices y 6 mesas. ¿Cuántos lápices van a cada mesa?</span>",
+          "<span class=\"sc-interp\">¿Por dónde lo harías tú?</span>",
+          "<span data-dc-tpl=\"87\" style=\"padding: 11px 13px 13px; display: flex; flex-direction: column; gap: 4px;\">\n                <span data-dc-tpl=\"88\" style=\"font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; col",
+          "<span class=\"sc-interp\">Dibujarlo</span>",
+          "<span class=\"sc-interp\">Dibujar las mesas y repartir.</span>",
+          "<span data-dc-tpl=\"87\" style=\"padding: 11px 13px 13px; display: flex; flex-direction: column; gap: 4px;\">\n                <span data-dc-tpl=\"88\" style=\"font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; col"
+        ]
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-cada-cerebro-su-camino",
+        "reset": "No reset control in this game; paths are reselectable."
+      },
+      "final_geometry": {
+        "overflow": 83,
+        "smallTargets": [
+          {
+            "text": "Dibujarlo\n                Dibujar el recorrido del hilo.",
+            "w": 4,
+            "h": 159.625
+          },
+          {
+            "text": "Hacer una lista\n                Lista de nudos, de fuera adentro.",
+            "w": 4,
+            "h": 219.6875
+          },
+          {
+            "text": "Usar la regla\n                La regla de «un extremo fijo, el otro se mueve».",
+            "w": 4,
+            "h": 306.4375
+          },
+          {
+            "text": "Probar y ver\n                Probar y deshacer.",
+            "w": 4,
+            "h": 154.625
+          },
+          {
+            "text": "Decirlo en voz alta\n                Contar en voz alta cada vuelta.",
+            "w": 4,
+            "h": 238.875
+          }
+        ],
+        "offenders": [
+          "<span class=\"sc-interp\">El ovillo está enredado y hace falta para tejer. ¿Por dónde se empieza?</span>",
+          "<span class=\"sc-interp\">¿Por dónde lo harías tú?</span>",
+          "<span class=\"sc-interp\">Dibujarlo</span>",
+          "<span class=\"sc-interp\">Dibujar el recorrido del hilo.</span>",
+          "<span class=\"sc-interp\">Hacer una lista</span>",
+          "<span class=\"sc-interp\">Lista de nudos, de fuera adentro.</span>"
+        ]
+      },
+      "passed": false,
+      "error": "Horizontal overflow",
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "donde-se-fue-la-energia",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Lunes",
+            "w": 29.625,
+            "h": 51.859375
+          },
+          {
+            "text": "Martes",
+            "w": 32.109375,
+            "h": 50.015625
+          },
+          {
+            "text": "Miércoles",
+            "w": 32.109375,
+            "h": 48.15625
+          },
+          {
+            "text": "Jueves",
+            "w": 32.109375,
+            "h": 46.3125
+          },
+          {
+            "text": "Viernes",
+            "w": 32.109375,
+            "h": 44.453125
+          },
+          {
+            "text": "Sábado",
+            "w": 32.109375,
+            "h": 42.59375
+          },
+          {
+            "text": "Domingo",
+            "w": 32.109375,
+            "h": 40.75
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "passed": false,
+      "error": "Locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"main [data-ig-test-action=\\\"d.click\\\"][data-ig-test-list=\\\"days\\\"]:visible\").nth(5)\n    - locator resolved to <button data-dc-tpl=\"77\" aria-label=\"Sábado\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n  3 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n",
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-archivo-de-capacidades",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-archivo-de-capacidades",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-aula-al-reves",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-aula-al-reves",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-detective-de-los-sentidos",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-detective-de-los-sentidos",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-mapa-del-tesoro-de-casa",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Balcón",
+            "w": 24.6875,
+            "h": 68.53125
+          },
+          {
+            "text": "Entrada",
+            "w": 39.515625,
+            "h": 44.453125
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-mapa-del-tesoro-de-casa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Balcón",
+            "w": 24.6875,
+            "h": 68.53125
+          },
+          {
+            "text": "Entrada",
+            "w": 39.515625,
+            "h": 44.453125
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-traductor-de-casa",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-traductor-de-casa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Sí",
+            "w": 52.15625,
+            "h": 42.796875
+          },
+          {
+            "text": "No",
+            "w": 59.078125,
+            "h": 42.796875
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "el-traductor-de-instrucciones",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-el-traductor-de-instrucciones",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          },
+          {
+            "text": "Ver una traducción",
+            "w": 175.859375,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-cena-de-los-planes",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "+ Otra persona",
+            "w": 153.625,
+            "h": 42.796875
+          },
+          {
+            "text": "Empezar otra vez",
+            "w": 166.015625,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-cena-de-los-planes",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "+ Otra persona",
+            "w": 153.625,
+            "h": 42.796875
+          },
+          {
+            "text": "Empezar otra vez",
+            "w": 166.015625,
+            "h": 42
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-consulta",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-consulta",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "la-maquina-de-empezar",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-la-maquina-de-empezar",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "las-cinco-cosas",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "El ruido de la clase",
+            "w": 39.515625,
+            "h": 48.15625
+          },
+          {
+            "text": "El tubo de luz",
+            "w": 44.453125,
+            "h": 9.25
+          },
+          {
+            "text": "El plan tachado",
+            "w": 39.515625,
+            "h": 20.375
+          },
+          {
+            "text": "La etiqueta del jersey",
+            "w": 9.875,
+            "h": 9.25
+          }
+        ],
+        "offenders": []
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-las-cinco-cosas",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 0,
+        "smallTargets": [
+          {
+            "text": "El ruido de la clase",
+            "w": 39.515625,
+            "h": 48.15625
+          },
+          {
+            "text": "El tubo de luz",
+            "w": 44.453125,
+            "h": 9.25
+          },
+          {
+            "text": "El plan tachado",
+            "w": 39.515625,
+            "h": 20.375
+          },
+          {
+            "text": "La etiqueta del jersey",
+            "w": 9.875,
+            "h": 9.25
+          }
+        ],
+        "offenders": []
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "http_errors": []
+    },
+    {
+      "game": "palabra-misteriosa",
+      "width": 320,
+      "language": "es",
+      "initial_geometry": {
+        "overflow": 156,
+        "smallTargets": [
+          {
+            "text": "Empezar otra vez",
+            "w": 36,
+            "h": 92
+          },
+          {
+            "text": "Energía social",
+            "w": 36,
+            "h": 84.375
+          },
+          {
+            "text": "Sobrecarga",
+            "w": 36,
+            "h": 57.1875
+          },
+          {
+            "text": "Enmascaramiento",
+            "w": 36,
+            "h": 57.1875
+          },
+          {
+            "text": "Autorregulación",
+            "w": 36,
+            "h": 57.1875
+          }
+        ],
+        "offenders": [
+          "<span class=\"sc-interp\">Empezar otra vez</span>",
+          "<div data-dc-tpl=\"82\" style=\"background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 20px; padding: 24px 26px;\">\n            <div data-dc-tpl=\"83\" style=\"font-size: 11.5px;",
+          "<span class=\"sc-interp\">La definición</span>",
+          "<span class=\"sc-interp\">Demasiadas cosas a la vez: ruido, luz, gente, prisa. Mi cuerpo dice basta.</span>",
+          "<span class=\"sc-interp\">10 letras</span>",
+          "<button data-dc-tpl=\"88\" data-ig-test-action=\"o.pick\" data-ig-test-list=\"options\" style=\"text-align: left; background: rgb(255, 255, 255); border: 2px solid rgba(23, 57, 92, 0.14); color: rgb(23, 57, 92); border-radius: 14px; padding: 13px "
+        ]
+      },
+      "image_errors": [],
+      "playthrough": {
+        "completed": true,
+        "letter_href": "/es/recursos/juegos/#carta-palabra-misteriosa",
+        "reset": true
+      },
+      "final_geometry": {
+        "overflow": 156,
+        "smallTargets": [
+          {
+            "text": "Empezar otra vez",
+            "w": 36,
+            "h": 92
+          },
+          {
+            "text": "Enmascaramiento",
+            "w": 36,
+            "h": 57.1875
+          },
+          {
+            "text": "Autorregulación",
+            "w": 36,
+            "h": 57.1875
+          },
+          {
+            "text": "Cambio de plan",
+            "w": 36,
+            "h": 111.5625
+          },
+          {
+            "text": "Sobrecarga",
+            "w": 36,
+            "h": 57.1875
+          }
+        ],
+        "offenders": [
+          "<span class=\"sc-interp\">La definición</span>",
+          "<span class=\"sc-interp\">Escondo lo que me pasa para parecer como los demás. Cuesta mucha energía.</span>",
+          "<span class=\"sc-interp\">Enmascaramiento</span>",
+          "<span class=\"sc-interp\">Autorregulación</span>",
+          "<span class=\"sc-interp\">Cambio de plan</span>",
+          "<span class=\"sc-interp\">Sobrecarga</span>"
+        ]
+      },
+      "passed": false,
+      "error": "Horizontal overflow",
+      "javascript_errors": [],
+      "http_errors": []
+    }
+  ],
+  "collections": [
+    {
+      "family": "dislexia",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "identidad-y-trato",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "alta-sensibilidad",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tramites-y-derechos",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tdah",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "discalculia",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "toc",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "ansiedad",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "dispraxia",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "altas-capacidades",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tics-y-tourette",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "sueno",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "autismo",
+      "width": 1440,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 312.90625,
+          "left": 151.5
+        },
+        {
+          "label": "TOC",
+          "right": 380.3125,
+          "left": 319.90625
+        },
+        {
+          "label": "Autismo",
+          "right": 476.6875,
+          "left": 387.3125
+        },
+        {
+          "label": "Dislexia",
+          "right": 570.640625,
+          "left": 483.6875
+        },
+        {
+          "label": "TDAH",
+          "right": 648.234375,
+          "left": 577.640625
+        },
+        {
+          "label": "Ansiedad",
+          "right": 752.15625,
+          "left": 655.234375
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 908.125,
+          "left": 759.15625
+        },
+        {
+          "label": "Dispraxia",
+          "right": 1013.421875,
+          "left": 915.125
+        },
+        {
+          "label": "Discalculia",
+          "right": 1128.171875,
+          "left": 1020.421875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 1270.25,
+          "left": 1135.171875
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 303,
+          "left": 151.5
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 485.96875,
+          "left": 310
+        },
+        {
+          "label": "Sueño",
+          "right": 568.359375,
+          "left": 492.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "dislexia",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Qué otra vía hay</th></tr></thead><tbody><tr><td>1</td><td>Un bote de medicamento con el prospecto doblado</td><td>Preguntar la pauta en la farmacia y anotarla en dos l",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Qué otra vía hay</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Qué otra vía hay</th></tr>",
+          "<th>Qué otra vía hay</th>",
+          "<tbody><tr><td>1</td><td>Un bote de medicamento con el prospecto doblado</td><td>Preguntar la pauta en la farmacia y anotarla en dos líneas</td></tr><tr><td>2</td><td>Una carta oficial sin abrir sobre el mueble</td><td>Pedir cita presencial",
+          "<tr><td>1</td><td>Un bote de medicamento con el prospecto doblado</td><td>Preguntar la pauta en la farmacia y anotarla en dos líneas</td></tr>"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "identidad-y-trato",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr></thead><tbody><tr><td>1</td><td>Un formulario con dos casillas de sexo y un asterisco de obligatorio</td><td>Si no se marca, el trámite no sigue</t",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Qué decide</th>",
+          "<tbody><tr><td>1</td><td>Un formulario con dos casillas de sexo y un asterisco de obligatorio</td><td>Si no se marca, el trámite no sigue</td></tr><tr><td>2</td><td>Una pantalla de turnos con un número</td><td>El nombre se dice en voz alta "
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "alta-sensibilidad",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué descansa</th></tr></thead><tbody><tr><td>1</td><td>Un banco a la sombra, detrás de las casetas</td><td>Se ve todo sin estar dentro</td></tr><tr><td>2</td><td>El",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué descansa</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Por qué descansa</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Por qué descansa</th>",
+          "<tbody><tr><td>1</td><td>Un banco a la sombra, detrás de las casetas</td><td>Se ve todo sin estar dentro</td></tr><tr><td>2</td><td>El portal abierto de una casa, con el zaguán fresco</td><td>Menos luz y menos ruido</td></tr><tr><td>3</td><"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tramites-y-derechos",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr></thead><tbody><tr><td>1</td><td>Un cartel de horario partido en dos franjas</td><td>Fuera de esas horas no hay ventanilla</td></tr><tr><td>2</td><t",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Qué decide</th></tr>",
+          "<th>Qué decide</th>",
+          "<tbody><tr><td>1</td><td>Un cartel de horario partido en dos franjas</td><td>Fuera de esas horas no hay ventanilla</td></tr><tr><td>2</td><td>Un tablón con una fecha escrita a mano</td><td>El plazo se anuncia en un solo sitio</td></tr><tr><",
+          "<tr><td>1</td><td>Un cartel de horario partido en dos franjas</td><td>Fuera de esas horas no hay ventanilla</td></tr>"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tdah",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Quién se acuerda</th></tr></thead><tbody><tr><td>1</td><td>Las llaves colgadas en un gancho junto a la puerta</td><td>La casa</td></tr><tr><td>2</td><td>Un segundo bote",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Quién se acuerda</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Quién se acuerda</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Quién se acuerda</th>",
+          "<tbody><tr><td>1</td><td>Las llaves colgadas en un gancho junto a la puerta</td><td>La casa</td></tr><tr><td>2</td><td>Un segundo bote de champú sin abrir en el armario</td><td>Nadie: se compró otra vez sin saber que había</td></tr><tr><td>"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "discalculia",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Qué pide ese número</th></tr></thead><tbody><tr><td>1</td><td>El cartel del pasillo con su número</td><td>Solo mirarlo</td></tr><tr><td>2</td><td>El precio de un produc",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Qué pide ese número</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Qué pide ese número</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Qué pide ese número</th>",
+          "<tbody><tr><td>1</td><td>El cartel del pasillo con su número</td><td>Solo mirarlo</td></tr><tr><td>2</td><td>El precio de un producto</td><td>Solo mirarlo</td></tr><tr><td>3</td><td>Dos marcas del mismo producto, una al lado de otra</td><td"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "toc",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>Lo que pensé</th><th>Lo que pasó</th></tr></thead><tbody><tr><td>Que se me iba a caer el vaso</td><td>El vaso está en la mesa</td></tr><tr><td>Que iba a suspender</td><td>Saqué un siete</td></tr><tr>",
+          "<thead><tr><th>Lo que pensé</th><th>Lo que pasó</th></tr></thead>",
+          "<tr><th>Lo que pensé</th><th>Lo que pasó</th></tr>",
+          "<th>Lo que pensé</th>",
+          "<th>Lo que pasó</th>",
+          "<tbody><tr><td>Que se me iba a caer el vaso</td><td>El vaso está en la mesa</td></tr><tr><td>Que iba a suspender</td><td>Saqué un siete</td></tr><tr><td>Que se me olvidaría el cumpleaños</td><td>Lo felicité por la mañana</td></tr><tr><td>Qu"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "ansiedad",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Una lectura</th><th>La otra</th></tr></thead><tbody><tr><td>1</td><td>Tres listas de tareas distintas, del mismo día</td><td>Método</td><td>Rehacer la lista tranquiliza",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Una lectura</th><th>La otra</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Una lectura</th><th>La otra</th></tr>",
+          "<th>Una lectura</th>",
+          "<th>La otra</th>",
+          "<tbody><tr><td>1</td><td>Tres listas de tareas distintas, del mismo día</td><td>Método</td><td>Rehacer la lista tranquiliza un rato</td></tr><tr><td>2</td><td>Un bolso preparado la noche anterior con todo doble</td><td>Previsión</td><td>Por"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "dispraxia",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué es más fácil</th></tr></thead><tbody><tr><td>1</td><td>Una jarra pequeña llena hasta la mitad</td><td>Pesa menos y cabe en una mano</td></tr><tr><td>2</td><td>U",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué es más fácil</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Por qué es más fácil</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Por qué es más fácil</th>",
+          "<tbody><tr><td>1</td><td>Una jarra pequeña llena hasta la mitad</td><td>Pesa menos y cabe en una mano</td></tr><tr><td>2</td><td>Un vaso ancho y bajo, en vez de alto y estrecho</td><td>No se vuelca al dejarlo</td></tr><tr><td>3</td><td>Una "
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "altas-capacidades",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Lo que pregunta</th></tr></thead><tbody><tr><td>1</td><td>Una estantería con los libros de un curso superior, al alcance</td><td>¿Quién puede coger un libro de otro niv",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Lo que pregunta</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Lo que pregunta</th></tr>",
+          "<th>Lo que pregunta</th>",
+          "<tbody><tr><td>1</td><td>Una estantería con los libros de un curso superior, al alcance</td><td>¿Quién puede coger un libro de otro nivel sin pedir permiso?</td></tr><tr><td>2</td><td>Una lista de temas propuestos por el alumnado, con firma",
+          "<tr><td>1</td><td>Una estantería con los libros de un curso superior, al alcance</td><td>¿Quién puede coger un libro de otro nivel sin pedir permiso?</td></tr>"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "tics-y-tourette",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué importa</th></tr></thead><tbody><tr><td>1</td><td>Una butaca al final de una fila, junto al pasillo</td><td>Se puede salir y volver sin molestar</td></tr><tr><t",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Por qué importa</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Por qué importa</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Por qué importa</th>",
+          "<tbody><tr><td>1</td><td>Una butaca al final de una fila, junto al pasillo</td><td>Se puede salir y volver sin molestar</td></tr><tr><td>2</td><td>Una puerta lateral abierta</td><td>La salida está cerca y a la vista</td></tr><tr><td>3</td><"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "sueno",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": []
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    },
+    {
+      "family": "autismo",
+      "width": 320,
+      "image_errors": [],
+      "geometry": {
+        "overflow": 0,
+        "smallTargets": [],
+        "offenders": [
+          "<table class=\"game-table\"><thead><tr><th>#</th><th>Lo que se ve</th><th>Lo que ya permite</th></tr></thead><tbody><tr><td>1</td><td>Una sala pequeña con la puerta cerrada y un cartel de ocupada</td><td>Reunirse sin ruido de fondo, y trabaja",
+          "<thead><tr><th>#</th><th>Lo que se ve</th><th>Lo que ya permite</th></tr></thead>",
+          "<tr><th>#</th><th>Lo que se ve</th><th>Lo que ya permite</th></tr>",
+          "<th>Lo que se ve</th>",
+          "<th>Lo que ya permite</th>",
+          "<tbody><tr><td>1</td><td>Una sala pequeña con la puerta cerrada y un cartel de ocupada</td><td>Reunirse sin ruido de fondo, y trabajar solo un rato</td></tr><tr><td>2</td><td>Unos auriculares grandes sobre una mesa</td><td>Bajar el ruido si"
+        ]
+      },
+      "tabs": [
+        {
+          "label": "Altas capacidades",
+          "right": 178.40625,
+          "left": 17
+        },
+        {
+          "label": "TOC",
+          "right": 245.8125,
+          "left": 185.40625
+        },
+        {
+          "label": "Autismo",
+          "right": 106.375,
+          "left": 17
+        },
+        {
+          "label": "Dislexia",
+          "right": 200.328125,
+          "left": 113.375
+        },
+        {
+          "label": "TDAH",
+          "right": 277.921875,
+          "left": 207.328125
+        },
+        {
+          "label": "Ansiedad",
+          "right": 113.921875,
+          "left": 17
+        },
+        {
+          "label": "Alta sensibilidad",
+          "right": 269.890625,
+          "left": 120.921875
+        },
+        {
+          "label": "Dispraxia",
+          "right": 115.296875,
+          "left": 17
+        },
+        {
+          "label": "Discalculia",
+          "right": 230.046875,
+          "left": 122.296875
+        },
+        {
+          "label": "Tics y Tourette",
+          "right": 152.078125,
+          "left": 17
+        },
+        {
+          "label": "Identidad y trato",
+          "right": 168.5,
+          "left": 17
+        },
+        {
+          "label": "Trámites y derechos",
+          "right": 192.96875,
+          "left": 17
+        },
+        {
+          "label": "Sueño",
+          "right": 275.359375,
+          "left": 199.96875
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "letters": [
+    {
+      "game": "cada-cerebro-su-camino",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "donde-se-fue-la-energia",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-archivo-de-capacidades",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-aula-al-reves",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-detective-de-los-sentidos",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-mapa-del-tesoro-de-casa",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-traductor-de-casa",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "el-traductor-de-instrucciones",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "la-cena-de-los-planes",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "la-consulta",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "la-maquina-de-empezar",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "las-cinco-cosas",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    },
+    {
+      "game": "palabra-misteriosa",
+      "fields": 1,
+      "download_size": [
+        900,
+        1200
+      ],
+      "escape_closes": false,
+      "passed": true
+    }
+  ],
+  "failures": [
+    {
+      "game": "cada-cerebro-su-camino",
+      "width": 320,
+      "language": "es",
+      "error": "Horizontal overflow"
+    },
+    {
+      "game": "donde-se-fue-la-energia",
+      "width": 320,
+      "language": "es",
+      "error": "Locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"main [data-ig-test-action=\\\"d.click\\\"][data-ig-test-list=\\\"days\\\"]:visible\").nth(5)\n    - locator resolved to <button data-dc-tpl=\"77\" aria-label=\"Sábado\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n  3 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-dc-tpl=\"9\" class=\"ig-uh-inner\">…</div> from <header class=\"ig-uh\" data-dc-tpl=\"8\">…</header> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <span data-dc-tpl=\"78\">…</span> from <button data-dc-tpl=\"77\" aria-label=\"Domingo\" data-ig-test-list=\"days\" data-ig-test-action=\"d.click\">…</button> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n"
+    },
+    {
+      "game": "palabra-misteriosa",
+      "width": 320,
+      "language": "es",
+      "error": "Horizontal overflow"
+    }
+  ],
+  "notes": [
+    "Real button/keyboard input, not direct game-state manipulation.",
+    "Only inert test selectors are added by the HTTP server.",
+    "Images are requested locally, with external domains blocked.",
+    "Not a clinical or pedagogical assessment; print games are checked as materials, not simulated as digital games."
+  ],
+  "passed": false,
+  "summary": {
+    "games_passed": 23,
+    "games_tested": 26,
+    "collections_passed": 26,
+    "collections_tested": 26,
+    "letters_passed": 13,
+    "letters_tested": 13
+  }
+}
