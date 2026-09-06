@@ -59,3 +59,6 @@ button,input,select,textarea{min-width:0}
  .ig-subtabs{justify-content:flex-start!important;padding:10px 13px!important}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Paneles anteriores: el único reproductor visible usa ig-music-panel. */
+#pl{display:none!important}

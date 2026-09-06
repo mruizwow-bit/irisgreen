@@ -105,3 +105,8 @@
   to = "/es/"
   status = 301
   force = true
+
+[[headers]]
+  for = "/assets/runtime/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

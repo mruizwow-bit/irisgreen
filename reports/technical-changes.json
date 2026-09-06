@@ -1,0 +1,107 @@
+{
+  "unpacked": [
+    {
+      "path": "es/cuestionarios/index.html",
+      "before_bytes": 139899,
+      "after_bytes": 29102,
+      "resource_count": 3
+    },
+    {
+      "path": "es/investigacion/index.html",
+      "before_bytes": 169726,
+      "after_bytes": 56148,
+      "resource_count": 3
+    },
+    {
+      "path": "es/libros/index.html",
+      "before_bytes": 147238,
+      "after_bytes": 34756,
+      "resource_count": 3
+    },
+    {
+      "path": "es/neurodiversidad/temas/autismo/index.html",
+      "before_bytes": 157965,
+      "after_bytes": 44332,
+      "resource_count": 3
+    },
+    {
+      "path": "es/sobre-iris-green/index.html",
+      "before_bytes": 151937,
+      "after_bytes": 40832,
+      "resource_count": 3
+    },
+    {
+      "path": "es/taller/index.html",
+      "before_bytes": 929720,
+      "after_bytes": 39502,
+      "resource_count": 7
+    },
+    {
+      "path": "es/tramites/directorio/index.html",
+      "before_bytes": 144723,
+      "after_bytes": 32038,
+      "resource_count": 3
+    },
+    {
+      "path": "es/tramites/index.html",
+      "before_bytes": 153189,
+      "after_bytes": 39899,
+      "resource_count": 3
+    },
+    {
+      "path": "es/videos/index.html",
+      "before_bytes": 164115,
+      "after_bytes": 47983,
+      "resource_count": 3
+    },
+    {
+      "path": "es/vivir-fuera/index.html",
+      "before_bytes": 147905,
+      "after_bytes": 36943,
+      "resource_count": 3
+    },
+    {
+      "path": "index.html",
+      "before_bytes": 250090,
+      "after_bytes": 99586,
+      "resource_count": 4
+    }
+  ],
+  "nav_pages": 1270,
+  "nav_links_removed": 1298,
+  "conditions": 185,
+  "types": {
+    "contexto": 48,
+    "apoyo": 5,
+    "identidad": 26,
+    "diagnóstico": 31,
+    "proceso": 11,
+    "emergente": 6,
+    "experiencia": 37,
+    "salud mental": 1,
+    "desarrollo": 15,
+    "salud física": 4,
+    "controvertido": 1
+  },
+  "warnings": [],
+  "json_sources": [
+    "videoteca-listado.json",
+    "buscador.json",
+    "en/interests/catalogue.json",
+    "es/datos/datos.json",
+    "es/biblioteca/vida-diaria.json",
+    "es/tramites/tramites-datos.json",
+    "es/taller/taller-retos.json",
+    "es/intereses/estrellas-tanda2.json",
+    "es/intereses/catalogo.json",
+    "es/intereses/cromos.json",
+    "es/intereses/videos-intereses.json",
+    "es/intereses/estrellas-constelaciones.json",
+    "es/investigacion/estudios-textos.json",
+    "es/tramites/directorio/tramites-datos.json",
+    "es/recursos/juegos/juegos-120.json",
+    "img/juegos-coleccion/manifest.json",
+    "audio/rincon/sonidos.json"
+  ],
+  "index_entries": 372
+}

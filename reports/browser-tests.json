@@ -1,0 +1,913 @@
+{
+  "static": {
+    "html": 1271,
+    "main_navigations": 1270,
+    "support_submenus_kept": 3,
+    "missing_local_paths": {}
+  },
+  "browser": [
+    {
+      "path": "/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 799,
+      "title": "Escríbelo como lo dirías en voz alta.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 702,
+      "title": "Condiciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 639,
+      "title": "Abuso y explotación",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/situaciones/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 666,
+      "title": "Situaciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/biblioteca/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 658,
+      "title": "Qué existe, cómo se pide y dónde está escrito",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 758,
+      "title": "Primero es un juego. Después enseña algo.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/cuestionarios/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 698,
+      "title": "Orientan. No diagnostican.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/videos/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 693,
+      "title": "Aquí habla quien lo vive.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 677,
+      "title": "¿Qué puedo pedir y cómo se llama?",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 725,
+      "title": "Todo lo que puedes pedir, con su nombre oficial.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 695,
+      "title": "El sistema de cada país, explicado en español.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/libros/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 697,
+      "title": "Los libros",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:37229/es/libros/%7B%7B%20b.cover%20%7D%7D",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:37229/assets/books/luma-es-512.webp",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:37229/assets/books/autismo-es-512.webp",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "path": "/es/taller/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 794,
+      "title": "Aquí se prueban cosas.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:37229/es/taller/%7B%7B%20m.img%20%7D%7D",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "path": "/es/intereses/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 771,
+      "title": "Tus intereses",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/sitio-tranquilo/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 1890,
+      "title": "Rincón tranquilo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 7,
+      "passed": false,
+      "error": "Carga audio sin abrir Música",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 802,
+      "title": "Un estudio no es la ciencia entera.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/sobre-iris-green/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 681,
+      "title": "Quién escribe esto y cómo se comprueba",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 681,
+      "title": "Autismo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 644,
+      "title": "Conditions",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 730,
+      "title": "Escríbelo como lo dirías en voz alta.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 679,
+      "title": "Condiciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 618,
+      "title": "Abuso y explotación",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/situaciones/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 653,
+      "title": "Situaciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/biblioteca/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 648,
+      "title": "Qué existe, cómo se pide y dónde está escrito",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 744,
+      "title": "Primero es un juego. Después enseña algo.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/cuestionarios/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 674,
+      "title": "Orientan. No diagnostican.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/videos/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 687,
+      "title": "Aquí habla quien lo vive.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 672,
+      "title": "¿Qué puedo pedir y cómo se llama?",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 715,
+      "title": "Todo lo que puedes pedir, con su nombre oficial.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 701,
+      "title": "El sistema de cada país, explicado en español.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/libros/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 693,
+      "title": "Los libros",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:37229/es/libros/%7B%7B%20b.cover%20%7D%7D",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:37229/assets/books/luma-es-512.webp",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:37229/assets/books/autismo-es-512.webp",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "path": "/es/taller/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 752,
+      "title": "Aquí se prueban cosas.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:37229/es/taller/%7B%7B%20m.img%20%7D%7D",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "path": "/es/intereses/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 687,
+      "title": "Tus intereses",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/sitio-tranquilo/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 697,
+      "title": "Rincón tranquilo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 7,
+      "passed": false,
+      "error": "Carga audio sin abrir Música",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 719,
+      "title": "Un estudio no es la ciencia entera.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/sobre-iris-green/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 669,
+      "title": "Quién escribe esto y cómo se comprueba",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 683,
+      "title": "Autismo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 651,
+      "title": "Conditions",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "passed": false,
+      "error": "El panel no está a la derecha",
+      "pageerrors": [],
+      "local_http_errors": []
+    }
+  ],
+  "failures": [
+    "/ (1440px): El panel no está a la derecha",
+    "/es/neurodiversidad/condiciones/ (1440px): El panel no está a la derecha",
+    "/es/neurodiversidad/condiciones/abuso-y-explotacion/ (1440px): El panel no está a la derecha",
+    "/es/situaciones/ (1440px): El panel no está a la derecha",
+    "/es/biblioteca/ (1440px): El panel no está a la derecha",
+    "/es/recursos/juegos/ (1440px): El panel no está a la derecha",
+    "/es/cuestionarios/ (1440px): El panel no está a la derecha",
+    "/es/videos/ (1440px): El panel no está a la derecha",
+    "/es/tramites/ (1440px): El panel no está a la derecha",
+    "/es/tramites/directorio/ (1440px): El panel no está a la derecha",
+    "/es/vivir-fuera/ (1440px): El panel no está a la derecha",
+    "/es/libros/ (1440px): El panel no está a la derecha",
+    "/es/taller/ (1440px): El panel no está a la derecha",
+    "/es/intereses/ (1440px): El panel no está a la derecha",
+    "/es/sitio-tranquilo/ (1440px): Carga audio sin abrir Música",
+    "/es/investigacion/ (1440px): El panel no está a la derecha",
+    "/es/sobre-iris-green/ (1440px): El panel no está a la derecha",
+    "/es/neurodiversidad/temas/autismo/ (1440px): El panel no está a la derecha",
+    "/en/neurodiversity/conditions/ (1440px): El panel no está a la derecha",
+    "/ (390px): El panel no está a la derecha",
+    "/es/neurodiversidad/condiciones/ (390px): El panel no está a la derecha",
+    "/es/neurodiversidad/condiciones/abuso-y-explotacion/ (390px): El panel no está a la derecha",
+    "/es/situaciones/ (390px): El panel no está a la derecha",
+    "/es/biblioteca/ (390px): El panel no está a la derecha",
+    "/es/recursos/juegos/ (390px): El panel no está a la derecha",
+    "/es/cuestionarios/ (390px): El panel no está a la derecha",
+    "/es/videos/ (390px): El panel no está a la derecha",
+    "/es/tramites/ (390px): El panel no está a la derecha",
+    "/es/tramites/directorio/ (390px): El panel no está a la derecha",
+    "/es/vivir-fuera/ (390px): El panel no está a la derecha",
+    "/es/libros/ (390px): El panel no está a la derecha",
+    "/es/taller/ (390px): El panel no está a la derecha",
+    "/es/intereses/ (390px): El panel no está a la derecha",
+    "/es/sitio-tranquilo/ (390px): Carga audio sin abrir Música",
+    "/es/investigacion/ (390px): El panel no está a la derecha",
+    "/es/sobre-iris-green/ (390px): El panel no está a la derecha",
+    "/es/neurodiversidad/temas/autismo/ (390px): El panel no está a la derecha",
+    "/en/neurodiversity/conditions/ (390px): El panel no está a la derecha"
+  ],
+  "notes": [
+    "Los dominios externos se bloquean en la prueba para comprobar que el funcionamiento local no depende de ellos.",
+    "No se certifica reproducción de YouTube ni revisión del contenido documental."
+  ],
+  "passed": false
+}
