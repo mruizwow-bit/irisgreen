@@ -1,0 +1,661 @@
+{
+ "fuente": "HYG Database v4.1 (hygdata_v41.csv), github.com/astronexus/HYG-Database, CC BY-SA 4.0",
+ "constelaciones": {
+  "Andrómeda": [
+   {
+    "designacion": "Alp And",
+    "nombre_propio": "Alpheratz",
+    "ra_horas": 0.13979,
+    "dec_grados": 29.09043,
+    "magnitud": 2.07
+   },
+   {
+    "designacion": "Bet And",
+    "nombre_propio": "Mirach",
+    "ra_horas": 1.16219,
+    "dec_grados": 35.62056,
+    "magnitud": 2.07
+   },
+   {
+    "designacion": "Gam1 And",
+    "nombre_propio": "Almach",
+    "ra_horas": 2.06498,
+    "dec_grados": 42.32973,
+    "magnitud": 2.1
+   },
+   {
+    "designacion": "Del And",
+    "nombre_propio": null,
+    "ra_horas": 0.65546,
+    "dec_grados": 30.86102,
+    "magnitud": 3.27
+   },
+   {
+    "designacion": "Mu And",
+    "nombre_propio": null,
+    "ra_horas": 0.94588,
+    "dec_grados": 38.49934,
+    "magnitud": 3.86
+   },
+   {
+    "designacion": "Nu And",
+    "nombre_propio": null,
+    "ra_horas": 0.83023,
+    "dec_grados": 41.07891,
+    "magnitud": 4.53
+   }
+  ],
+  "Pegaso": [
+   {
+    "designacion": "Eps Peg",
+    "nombre_propio": "Enif",
+    "ra_horas": 21.73643,
+    "dec_grados": 9.87501,
+    "magnitud": 2.38
+   },
+   {
+    "designacion": "Bet Peg",
+    "nombre_propio": "Scheat",
+    "ra_horas": 23.0629,
+    "dec_grados": 28.08279,
+    "magnitud": 2.44
+   },
+   {
+    "designacion": "Alp Peg",
+    "nombre_propio": "Markab",
+    "ra_horas": 23.07935,
+    "dec_grados": 15.20526,
+    "magnitud": 2.49
+   },
+   {
+    "designacion": "Gam Peg",
+    "nombre_propio": "Algenib",
+    "ra_horas": 0.2206,
+    "dec_grados": 15.1836,
+    "magnitud": 2.83
+   },
+   {
+    "designacion": "Eta Peg",
+    "nombre_propio": "Matar",
+    "ra_horas": 22.7167,
+    "dec_grados": 30.22124,
+    "magnitud": 2.93
+   },
+   {
+    "designacion": "Zet Peg",
+    "nombre_propio": "Homam",
+    "ra_horas": 22.69103,
+    "dec_grados": 10.83136,
+    "magnitud": 3.41
+   },
+   {
+    "designacion": "Mu Peg",
+    "nombre_propio": "Sadalbari",
+    "ra_horas": 22.83338,
+    "dec_grados": 24.60158,
+    "magnitud": 3.51
+   },
+   {
+    "designacion": "The Peg",
+    "nombre_propio": "Biham",
+    "ra_horas": 22.17,
+    "dec_grados": 6.19787,
+    "magnitud": 3.52
+   }
+  ],
+  "Perseo": [
+   {
+    "designacion": "Alp Per",
+    "nombre_propio": "Mirfak",
+    "ra_horas": 3.40538,
+    "dec_grados": 49.86118,
+    "magnitud": 1.79
+   },
+   {
+    "designacion": "Bet Per",
+    "nombre_propio": "Algol",
+    "ra_horas": 3.13615,
+    "dec_grados": 40.95565,
+    "magnitud": 2.09
+   },
+   {
+    "designacion": "Zet Per",
+    "nombre_propio": null,
+    "ra_horas": 3.9022,
+    "dec_grados": 31.88364,
+    "magnitud": 2.84
+   },
+   {
+    "designacion": "Eps Per",
+    "nombre_propio": null,
+    "ra_horas": 3.96423,
+    "dec_grados": 40.01022,
+    "magnitud": 2.9
+   },
+   {
+    "designacion": "Gam Per",
+    "nombre_propio": null,
+    "ra_horas": 3.07994,
+    "dec_grados": 53.50644,
+    "magnitud": 2.91
+   },
+   {
+    "designacion": "Del Per",
+    "nombre_propio": null,
+    "ra_horas": 3.71542,
+    "dec_grados": 47.78755,
+    "magnitud": 3.01
+   },
+   {
+    "designacion": "Rho Per",
+    "nombre_propio": null,
+    "ra_horas": 3.08627,
+    "dec_grados": 38.84027,
+    "magnitud": 3.32
+   },
+   {
+    "designacion": "Eta Per",
+    "nombre_propio": "Miram",
+    "ra_horas": 2.84495,
+    "dec_grados": 55.8955,
+    "magnitud": 3.77
+   }
+  ],
+  "Auriga": [
+   {
+    "designacion": "Alp Aur",
+    "nombre_propio": "Capella",
+    "ra_horas": 5.27815,
+    "dec_grados": 45.99799,
+    "magnitud": 0.08
+   },
+   {
+    "designacion": "Bet Aur",
+    "nombre_propio": "Menkalinan",
+    "ra_horas": 5.99215,
+    "dec_grados": 44.94743,
+    "magnitud": 1.9
+   },
+   {
+    "designacion": "The Aur",
+    "nombre_propio": "Mahasim",
+    "ra_horas": 5.99535,
+    "dec_grados": 37.21258,
+    "magnitud": 2.65
+   },
+   {
+    "designacion": "Iot Aur",
+    "nombre_propio": "Hassaleh",
+    "ra_horas": 4.94989,
+    "dec_grados": 33.16609,
+    "magnitud": 2.69
+   },
+   {
+    "designacion": "Eps Aur",
+    "nombre_propio": "Almaaz",
+    "ra_horas": 5.03282,
+    "dec_grados": 43.82331,
+    "magnitud": 3.03
+   },
+   {
+    "designacion": "Eta Aur",
+    "nombre_propio": "Haedus",
+    "ra_horas": 5.10858,
+    "dec_grados": 41.23447,
+    "magnitud": 3.18
+   },
+   {
+    "designacion": "Zet Aur",
+    "nombre_propio": "Saclateni",
+    "ra_horas": 5.0413,
+    "dec_grados": 41.07584,
+    "magnitud": 3.69
+   }
+  ],
+  "Tauro": [
+   {
+    "designacion": "Bet Tau",
+    "nombre_propio": "Elnath",
+    "ra_horas": 5.4382,
+    "dec_grados": 28.60745,
+    "magnitud": 1.65
+   }
+  ],
+  "Dragón": [
+   {
+    "designacion": "Gam Dra",
+    "nombre_propio": "Eltanin",
+    "ra_horas": 17.94344,
+    "dec_grados": 51.48889,
+    "magnitud": 2.24
+   },
+   {
+    "designacion": "Eta Dra",
+    "nombre_propio": "Athebyne",
+    "ra_horas": 16.39986,
+    "dec_grados": 61.51421,
+    "magnitud": 2.73
+   },
+   {
+    "designacion": "Bet Dra",
+    "nombre_propio": "Rastaban",
+    "ra_horas": 17.50721,
+    "dec_grados": 52.30139,
+    "magnitud": 2.79
+   },
+   {
+    "designacion": "Del Dra",
+    "nombre_propio": "Altais",
+    "ra_horas": 19.20922,
+    "dec_grados": 67.66154,
+    "magnitud": 3.07
+   },
+   {
+    "designacion": "Zet Dra",
+    "nombre_propio": "Aldhibah",
+    "ra_horas": 17.14645,
+    "dec_grados": 65.71468,
+    "magnitud": 3.17
+   },
+   {
+    "designacion": "Iot Dra",
+    "nombre_propio": "Edasich",
+    "ra_horas": 15.41549,
+    "dec_grados": 58.96607,
+    "magnitud": 3.29
+   },
+   {
+    "designacion": "Alp Dra",
+    "nombre_propio": "Thuban",
+    "ra_horas": 14.07316,
+    "dec_grados": 64.37585,
+    "magnitud": 3.67
+   },
+   {
+    "designacion": "Xi Dra",
+    "nombre_propio": "Grumium",
+    "ra_horas": 17.89213,
+    "dec_grados": 56.87264,
+    "magnitud": 3.73
+   },
+   {
+    "designacion": "Lam Dra",
+    "nombre_propio": "Giausar",
+    "ra_horas": 11.52341,
+    "dec_grados": 69.33108,
+    "magnitud": 3.82
+   },
+   {
+    "designacion": "Kap Dra",
+    "nombre_propio": null,
+    "ra_horas": 12.55806,
+    "dec_grados": 69.78824,
+    "magnitud": 3.85
+   },
+   {
+    "designacion": "Nu2 Dra",
+    "nombre_propio": null,
+    "ra_horas": 17.53777,
+    "dec_grados": 55.17296,
+    "magnitud": 4.86
+   }
+  ],
+  "Virgo": [
+   {
+    "designacion": "Alp Vir",
+    "nombre_propio": "Spica",
+    "ra_horas": 13.41988,
+    "dec_grados": -11.16132,
+    "magnitud": 0.98
+   },
+   {
+    "designacion": "Gam Vir",
+    "nombre_propio": "Porrima",
+    "ra_horas": 12.69435,
+    "dec_grados": -1.44938,
+    "magnitud": 2.74
+   },
+   {
+    "designacion": "Eps Vir",
+    "nombre_propio": "Vindemiatrix",
+    "ra_horas": 13.03628,
+    "dec_grados": 10.95915,
+    "magnitud": 2.85
+   },
+   {
+    "designacion": "Zet Vir",
+    "nombre_propio": "Heze",
+    "ra_horas": 13.57822,
+    "dec_grados": -0.59582,
+    "magnitud": 3.38
+   },
+   {
+    "designacion": "Del Vir",
+    "nombre_propio": "Minelauva",
+    "ra_horas": 12.92672,
+    "dec_grados": 3.39747,
+    "magnitud": 3.39
+   },
+   {
+    "designacion": "Bet Vir",
+    "nombre_propio": "Zavijava",
+    "ra_horas": 11.84492,
+    "dec_grados": 1.76472,
+    "magnitud": 3.59
+   },
+   {
+    "designacion": "Eta Vir",
+    "nombre_propio": "Zaniah",
+    "ra_horas": 12.33177,
+    "dec_grados": -0.6668,
+    "magnitud": 3.89
+   }
+  ],
+  "Boyero": [
+   {
+    "designacion": "Alp Boo",
+    "nombre_propio": "Arcturus",
+    "ra_horas": 14.26103,
+    "dec_grados": 19.18241,
+    "magnitud": -0.05
+   },
+   {
+    "designacion": "Eps Boo",
+    "nombre_propio": "Izar",
+    "ra_horas": 14.74978,
+    "dec_grados": 27.07422,
+    "magnitud": 2.35
+   },
+   {
+    "designacion": "Eta Boo",
+    "nombre_propio": "Muphrid",
+    "ra_horas": 13.91141,
+    "dec_grados": 18.39772,
+    "magnitud": 2.68
+   },
+   {
+    "designacion": "Gam Boo",
+    "nombre_propio": "Seginus",
+    "ra_horas": 14.53464,
+    "dec_grados": 38.30825,
+    "magnitud": 3.04
+   },
+   {
+    "designacion": "Bet Boo",
+    "nombre_propio": "Nekkar",
+    "ra_horas": 15.03244,
+    "dec_grados": 40.39057,
+    "magnitud": 3.49
+   }
+  ],
+  "Corona Boreal": [
+   {
+    "designacion": "Alp CrB",
+    "nombre_propio": "Alphecca",
+    "ra_horas": 15.57813,
+    "dec_grados": 26.71469,
+    "magnitud": 2.22
+   },
+   {
+    "designacion": "Bet CrB",
+    "nombre_propio": "Nusakan",
+    "ra_horas": 15.46382,
+    "dec_grados": 29.1057,
+    "magnitud": 3.66
+   },
+   {
+    "designacion": "Gam CrB",
+    "nombre_propio": null,
+    "ra_horas": 15.71238,
+    "dec_grados": 26.29564,
+    "magnitud": 3.81
+   },
+   {
+    "designacion": "The CrB",
+    "nombre_propio": null,
+    "ra_horas": 15.54883,
+    "dec_grados": 31.35913,
+    "magnitud": 4.14
+   },
+   {
+    "designacion": "Eps CrB",
+    "nombre_propio": null,
+    "ra_horas": 15.95979,
+    "dec_grados": 26.87788,
+    "magnitud": 4.14
+   },
+   {
+    "designacion": "Del CrB",
+    "nombre_propio": null,
+    "ra_horas": 15.82657,
+    "dec_grados": 26.06839,
+    "magnitud": 4.59
+   },
+   {
+    "designacion": "Iot CrB",
+    "nombre_propio": null,
+    "ra_horas": 16.02405,
+    "dec_grados": 29.85106,
+    "magnitud": 4.98
+   }
+  ],
+  "Hércules": [
+   {
+    "designacion": "Bet Her",
+    "nombre_propio": "Kornephoros",
+    "ra_horas": 16.50367,
+    "dec_grados": 21.48961,
+    "magnitud": 2.78
+   },
+   {
+    "designacion": "Alp1 Her",
+    "nombre_propio": "Rasalgethi",
+    "ra_horas": 17.24413,
+    "dec_grados": 14.39033,
+    "magnitud": 2.78
+   },
+   {
+    "designacion": "Zet Her",
+    "nombre_propio": null,
+    "ra_horas": 16.68811,
+    "dec_grados": 31.60273,
+    "magnitud": 2.81
+   },
+   {
+    "designacion": "Pi Her",
+    "nombre_propio": null,
+    "ra_horas": 17.25079,
+    "dec_grados": 36.80916,
+    "magnitud": 3.16
+   },
+   {
+    "designacion": "Eta Her",
+    "nombre_propio": null,
+    "ra_horas": 16.71493,
+    "dec_grados": 38.92225,
+    "magnitud": 3.48
+   },
+   {
+    "designacion": "Iot Her",
+    "nombre_propio": null,
+    "ra_horas": 17.65775,
+    "dec_grados": 46.00633,
+    "magnitud": 3.82
+   },
+   {
+    "designacion": "The Her",
+    "nombre_propio": null,
+    "ra_horas": 17.93755,
+    "dec_grados": 37.25054,
+    "magnitud": 3.86
+   },
+   {
+    "designacion": "Tau Her",
+    "nombre_propio": null,
+    "ra_horas": 16.32901,
+    "dec_grados": 46.31337,
+    "magnitud": 3.91
+   },
+   {
+    "designacion": "Eps Her",
+    "nombre_propio": null,
+    "ra_horas": 17.00483,
+    "dec_grados": 30.9264,
+    "magnitud": 3.92
+   },
+   {
+    "designacion": "Rho Her",
+    "nombre_propio": null,
+    "ra_horas": 17.39471,
+    "dec_grados": 37.14595,
+    "magnitud": 4.15
+   },
+   {
+    "designacion": "Sig Her",
+    "nombre_propio": null,
+    "ra_horas": 16.56838,
+    "dec_grados": 42.43704,
+    "magnitud": 4.2
+   }
+  ],
+  "Sagitario": [
+   {
+    "designacion": "Eps Sgr",
+    "nombre_propio": "Kaus Australis",
+    "ra_horas": 18.40287,
+    "dec_grados": -34.38462,
+    "magnitud": 1.79
+   },
+   {
+    "designacion": "Sig Sgr",
+    "nombre_propio": "Nunki",
+    "ra_horas": 18.92109,
+    "dec_grados": -26.29672,
+    "magnitud": 2.05
+   },
+   {
+    "designacion": "Zet Sgr",
+    "nombre_propio": "Ascella",
+    "ra_horas": 19.04353,
+    "dec_grados": -29.88011,
+    "magnitud": 2.6
+   },
+   {
+    "designacion": "Del Sgr",
+    "nombre_propio": "Kaus Media",
+    "ra_horas": 18.3499,
+    "dec_grados": -29.8281,
+    "magnitud": 2.72
+   },
+   {
+    "designacion": "Lam Sgr",
+    "nombre_propio": "Kaus Borealis",
+    "ra_horas": 18.46618,
+    "dec_grados": -25.4217,
+    "magnitud": 2.82
+   },
+   {
+    "designacion": "Gam2 Sgr",
+    "nombre_propio": "Alnasl",
+    "ra_horas": 18.0968,
+    "dec_grados": -30.42409,
+    "magnitud": 2.98
+   },
+   {
+    "designacion": "Phi Sgr",
+    "nombre_propio": null,
+    "ra_horas": 18.76094,
+    "dec_grados": -26.99078,
+    "magnitud": 3.17
+   },
+   {
+    "designacion": "Tau Sgr",
+    "nombre_propio": null,
+    "ra_horas": 19.11567,
+    "dec_grados": -27.67042,
+    "magnitud": 3.32
+   }
+  ],
+  "Delfín": [
+   {
+    "designacion": "Bet Del",
+    "nombre_propio": "Rotanev",
+    "ra_horas": 20.62582,
+    "dec_grados": 14.59509,
+    "magnitud": 3.64
+   },
+   {
+    "designacion": "Alp Del",
+    "nombre_propio": "Sualocin",
+    "ra_horas": 20.66063,
+    "dec_grados": 15.91207,
+    "magnitud": 3.77
+   },
+   {
+    "designacion": "Eps Del",
+    "nombre_propio": "Aldulfin",
+    "ra_horas": 20.55355,
+    "dec_grados": 11.30326,
+    "magnitud": 4.03
+   },
+   {
+    "designacion": "Gam2 Del",
+    "nombre_propio": null,
+    "ra_horas": 20.77764,
+    "dec_grados": 16.1243,
+    "magnitud": 4.27
+   },
+   {
+    "designacion": "Del Del",
+    "nombre_propio": null,
+    "ra_horas": 20.72432,
+    "dec_grados": 15.07458,
+    "magnitud": 4.43
+   }
+  ],
+  "Cefeo": [
+   {
+    "designacion": "Alp Cep",
+    "nombre_propio": "Alderamin",
+    "ra_horas": 21.30963,
+    "dec_grados": 62.58557,
+    "magnitud": 2.45
+   },
+   {
+    "designacion": "Gam Cep",
+    "nombre_propio": "Errai",
+    "ra_horas": 23.65582,
+    "dec_grados": 77.63228,
+    "magnitud": 3.21
+   },
+   {
+    "designacion": "Bet Cep",
+    "nombre_propio": "Alfirk",
+    "ra_horas": 21.47766,
+    "dec_grados": 70.56072,
+    "magnitud": 3.23
+   },
+   {
+    "designacion": "Zet Cep",
+    "nombre_propio": null,
+    "ra_horas": 22.18091,
+    "dec_grados": 58.20126,
+    "magnitud": 3.39
+   },
+   {
+    "designacion": "Iot Cep",
+    "nombre_propio": null,
+    "ra_horas": 22.82802,
+    "dec_grados": 66.20041,
+    "magnitud": 3.5
+   },
+   {
+    "designacion": "Del Cep",
+    "nombre_propio": null,
+    "ra_horas": 22.48618,
+    "dec_grados": 58.4152,
+    "magnitud": 4.07
+   }
+  ]
+ }
+}

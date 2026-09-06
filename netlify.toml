@@ -98,8 +98,8 @@
   to = "/es/recursos/juegos/juegos-120.json"
   status = 301
 
-# Las páginas en pt-BR se retiran. Las direcciones indexadas van a la web en castellano
-# en vez de dar error, para no dejar 375 URLs muertas.
+# El portugués sale de la web. Las 375 direcciones indexadas van a la versión en
+# castellano en vez de dar 404 durante meses.
 [[redirects]]
   from = "/pt-br/*"
   to = "/es/"

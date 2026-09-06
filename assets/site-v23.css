@@ -98,7 +98,7 @@ main:has(.cards)>.lede,main:has(.cards)>.notice,main:has(.cards)>h2,main:has(.ca
  background:var(--papel);text-decoration:none;color:var(--tinta)}
 .card:hover{border-color:var(--lila);color:var(--tinta)}
 .card strong{font-family:Newsreader,serif;font-size:1.1rem;font-weight:600}
-.card span:last-child{font-size:.9rem;color:var(--suave)}
+.card>span:last-child{font-size:.9rem;color:var(--suave)}
 .ft{border-top:1px solid var(--linea);background:rgba(255,255,255,.7);
  padding:2rem clamp(1rem,4vw,2.5rem);font-size:.9rem;color:var(--suave)}
 .ft p{margin:.2rem 0}
@@ -260,7 +260,7 @@ body.tts [data-read]{cursor:pointer}
   font-size:1.28rem;
   line-height:1.25;
 }
-.conditions-collection .card span:last-child{
+.conditions-collection .card>span:last-child{
   font-size:1rem;
   line-height:1.55;
 }
@@ -326,7 +326,7 @@ body.tts [data-read]{cursor:pointer}
   line-height:1.2;
   font-weight:500;
 }
-.conditions-collection .card span:last-child{
+.conditions-collection .card>span:last-child{
   max-width:56rem;
   font-size:1.06rem;
   line-height:1.58;
@@ -335,7 +335,7 @@ body.tts [data-read]{cursor:pointer}
   .conditions-collection main{width:100%;padding:1.5rem 1rem 4rem}
   .conditions-collection .card{padding:1.1rem}
   .conditions-collection .card strong{font-size:1.35rem}
-  .conditions-collection .card span:last-child{font-size:1rem}
+  .conditions-collection .card>span:last-child{font-size:1rem}
 }
 
 
@@ -432,7 +432,7 @@ body.tts [data-read]{cursor:pointer}
   line-height:1.2;
   font-weight:500;
 }
-.situations-collection .card span:last-child{
+.situations-collection .card>span:last-child{
   max-width:58rem;
   font-size:1.06rem;
   line-height:1.58;
@@ -449,7 +449,7 @@ body.tts [data-read]{cursor:pointer}
   .situation-filter{font-size:.88rem;min-height:38px;padding-inline:.75rem}
   .situations-collection .card{padding:1.1rem}
   .situations-collection .card strong{font-size:1.35rem}
-  .situations-collection .card span:last-child{font-size:1rem}
+  .situations-collection .card>span:last-child{font-size:1rem}
 }
 
 
@@ -512,3 +512,27 @@ body.tts [data-read]{cursor:pointer}
 
 /* «Cómo pedirlo» ya está en la barra de Ayudas: en la principal sobra. */
 header nav > a[href="/es/tramites/"],header nav > a[href="/es/tramites"]{display:none!important}
+
+/* Las dos etiquetas de una tarjeta van en la misma línea, no una debajo de otra. */
+.card .chiprow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}
+
+
+/* Buscador de sección: campo, filtros por tipo e índice alfabético. */
+.secfind{display:grid;gap:.7rem;margin:0 0 1.4rem}
+.secfind input[type=search]{width:100%;box-sizing:border-box;padding:.85rem 1rem;font:inherit;font-size:1.05rem;
+ color:var(--tinta);background:var(--papel);border:1px solid var(--linea);border-radius:.75rem}
+.secfind input[type=search]:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-color:var(--azul)}
+.secfind .chips{margin:0}
+.chip.lnk{border:1px solid var(--linea);cursor:pointer;font:inherit;font-size:.82rem;font-weight:400;
+ background:var(--papel);color:var(--tinta);padding:.34rem .8rem;border-radius:999px}
+.chip.lnk:hover{border-color:var(--lila)}
+.chip.lnk.on{background:rgba(90,73,168,.12);border-color:var(--lila);color:var(--lila);font-weight:700}
+.chip.lnk:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
+.azidx{display:flex;flex-wrap:wrap;gap:.3rem}
+.azl{min-width:2.1rem;min-height:2.1rem;padding:.2rem .45rem;font:inherit;font-size:.9rem;cursor:pointer;
+ background:transparent;border:1px solid transparent;border-radius:.5rem;color:var(--azul)}
+.azl:hover{border-color:var(--linea)}
+.azl.on{background:rgba(31,95,139,.10);font-weight:700}
+.azl:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#cuenta{margin:0;font-size:.95rem;color:#5a6675}
