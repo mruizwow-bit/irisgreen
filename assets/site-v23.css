@@ -494,3 +494,13 @@ body.tts [data-read]{cursor:pointer}
 
 /* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */
 .langs .lang[lang="pt-BR"]{display:none}
+
+/* V38 · La playlist cuelga de su icono, no empuja la página */
+#pl{
+ position:fixed; top:calc(var(--hit) + 1.4rem); right:clamp(1rem,4vw,2.5rem); z-index:45;
+ width:min(30rem,calc(100vw - 2rem)); max-width:none; margin:0;
+ max-height:min(70vh,34rem); overflow:auto;
+ padding:1rem 1.1rem; background:var(--papel);
+ border:1px solid var(--linea); border-radius:.9rem;
+ box-shadow:0 24px 60px -30px rgba(23,57,92,.45);
+}
