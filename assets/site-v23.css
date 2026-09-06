@@ -493,7 +493,7 @@ body.tts [data-read]{cursor:pointer}
 @media(max-width:73.99rem){.nav .sep{display:none}}
 
 /* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */
-.langs .lang[lang="pt-BR"]{display:none}
+.langs .lang[lang="pt-BR" i],.langs a.lang[href*="/pt-br/"],.langs a.lang[href*="/PT-BR/"]{display:none}
 
 /* V38 · La playlist cuelga de su icono, no empuja la página */
 #pl{
