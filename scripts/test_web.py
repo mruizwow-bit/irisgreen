@@ -48,6 +48,8 @@ for p in files:
     if rel.startswith('es/neurodiversidad/condiciones/') and rel!='es/neurodiversidad/condiciones/index.html' and before.exists():
         old=BeautifulSoup(before.read_text(),'html.parser').find('main')
         new=soup.find('main')
+        if old:
+            for back in old.select('.ig-back'):back.decompose()
         if new:
             for back in new.select('.ig-back'):back.decompose()
         if old and new and old.get_text(' ',strip=True)!=new.get_text(' ',strip=True):report['failures'].append('Cambio documental no previsto: '+rel)
@@ -57,7 +59,7 @@ if missing:report['failures'].append(f'{len(missing)} rutas locales sin resolver
 PAGES=['/','/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/abuso-y-explotacion/','/es/situaciones/','/es/biblioteca/','/es/recursos/juegos/','/es/cuestionarios/','/es/videos/','/es/tramites/','/es/tramites/directorio/','/es/vivir-fuera/','/es/libros/','/es/taller/','/es/intereses/','/es/sitio-tranquilo/','/es/investigacion/','/es/sobre-iris-green/','/es/neurodiversidad/temas/autismo/','/en/neurodiversity/conditions/']
 with sync_playwright() as pw:
     browser=pw.chromium.launch()
-    for width,height in [(1440,1000),(390,844)]:
+    for width,height in [(1440,1000),(390,844),(320,740)]:
         for path in PAGES:
             row={'path':path,'viewport':[width,height]};errors=[];audio_requests=[];bad_local=[]
             ctx=browser.new_context(viewport={'width':width,'height':height})
@@ -68,7 +70,7 @@ with sync_playwright() as pw:
                 else:r.abort()
             page.route('**/*',route)
             page.on('pageerror',lambda error:errors.append(str(error)))
-            page.on('request',lambda request:audio_requests.append(request.url) if '/audio/' in request.url else None)
+            page.on('request',lambda request:audio_requests.append(request.url) if urlsplit(request.url).path.lower().endswith(('.mp3','.m4a','.ogg','.wav','.aac')) else None)
             page.on('response',lambda response:bad_local.append({'url':response.url,'status':response.status}) if response.url.startswith(BASE) and response.status>=400 else None)
             page.add_init_script("window.__cls=0; new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.__cls+=e.value}).observe({type:'layout-shift',buffered:true});")
             try:
@@ -95,13 +97,15 @@ with sync_playwright() as pw:
                 assert abs(page.evaluate('scrollY')-scroll_before)<1,'Abrir Música ha movido el scroll'
                 assert page.evaluate('document.documentElement.scrollHeight')==await_before,'Abrir Música ha cambiado la altura de la página'
                 assert box['width']<=321 and box['height']<400,'El panel no es compacto'
-                assert abs(width-box['x']-box['width']-12)<2,'El panel no está a la derecha'
+                assert abs(page.evaluate('document.documentElement.clientWidth')-box['x']-box['width']-12)<2,'El panel no está a la derecha'
                 assert abs(height-box['y']-box['height']-12)<2,'El panel no está abajo'
                 assert not audio_requests,'Abrir Música descarga pistas antes de Escuchar'
                 page.evaluate('window.scrollTo(0,500)');page.wait_for_timeout(60)
                 moved=panel.bounding_box();assert abs(moved['y']-box['y'])<1,'El panel no permanece fijo al desplazar'
                 page.keyboard.press('Escape');assert not panel.is_visible()
                 row['music_pass']=True
+                if path in ['/es/tramites/','/es/tramites/directorio/','/es/vivir-fuera/']:
+                    assert page.locator('.ig-subtabs a[href="/es/tramites/"]').is_visible(), 'Cómo pedirlo no se ve dentro de Ayudas'
                 if path=='/es/neurodiversidad/condiciones/':
                     page.locator('#filtros button[data-type]').first.wait_for()
                     assert page.locator('.cards>a.card:visible').count()==185
@@ -131,7 +135,7 @@ with sync_playwright() as pw:
                     assert len(urls)==len(set(urls)),'Resultados duplicados'
                     assert any('/toc/' in u for u in urls),'TOC no aparece al buscar'
                     row['home_search_pass']=True
-                if width==390:
+                if width<=390:
                     page.evaluate('window.scrollTo(0,0)')
                     menu=page.locator('.ig-menu-button:visible').first
                     assert menu.count(),'No hay menú móvil'
