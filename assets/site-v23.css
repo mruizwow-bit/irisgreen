@@ -491,3 +491,6 @@ body.tts [data-read]{cursor:pointer}
 .nav a.calma:hover{background:rgba(90,73,168,.20);color:#3b3175}
 .nav a.calma[aria-current=page]{background:#4a3f8f;color:#fff}
 @media(max-width:73.99rem){.nav .sep{display:none}}
+
+/* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */
+.langs .lang[lang="pt-BR"]{display:none}
