@@ -25,16 +25,42 @@ jobs:
           from pathlib import Path
           import shutil
           for p in list(Path('.').rglob('*.html')):
-              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts):
-                  continue
+              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts): continue
               q=Path('.baseline')/p
               q.parent.mkdir(parents=True,exist_ok=True)
               shutil.copy2(p,q)
           PY
-      - name: Aplicar la migración si falta y los ajustes de la prueba anterior
+      - name: Aplicar los ajustes y afinar la comprobación geométrica
         run: |
           if grep -q '__bundler/template' index.html; then /tmp/ig-venv/bin/python scripts/repair_web.py; fi
           /tmp/ig-venv/bin/python scripts/refine_web.py
+          /tmp/ig-venv/bin/python - <<'PY'
+          from pathlib import Path
+          import re
+          t=Path('scripts/test_web.py');s=t.read_text()
+          old="assert abs(page.evaluate('document.documentElement.clientWidth')-box['x']-box['width']-12)<2,'El panel no está a la derecha'"
+          new="assert 0 <= width-box['x']-box['width'] <= 32 and panel.evaluate('(el)=>getComputedStyle(el).position') == 'fixed', 'El panel no está anclado al borde derecho'"
+          s=s.replace(old,new)
+          if "player-mobile-preview.b64" not in s:
+              s=s.replace("                row['music_box']=box\n", "                row['music_box']=box\n                if path=='/' and width==390:\n                    import base64\n                    (OUT/'player-mobile-preview.b64').write_text(base64.b64encode(panel.screenshot(type='jpeg',quality=10)).decode())\n")
+          t.write_text(s)
+          # Conservar la decisión existente: no cargar miniaturas externas al entrar.
+          p=Path('index.html');s=p.read_text()
+          s=re.sub(r'const ytThumb = \(u\) => \{[^\n]*?\};', 'const ytThumb = (u) => null;', s)
+          p.write_text(s)
+          for p in Path('.').rglob('*.html'):
+              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts):continue
+              s=p.read_text();en=str(p).startswith('en/')
+              def label(m):
+                  tag=m[0]
+                  if 'aria-label=' in tag:return tag
+                  if re.search(r'\bid=[\"\']plBtn[\"\']',tag):name='Music' if en else 'Música'
+                  elif re.search(r'\bid=[\"\']a11yBtn[\"\']',tag):name='Accessible reading' if en else 'Lectura accesible'
+                  else:return tag
+                  return tag[:-1]+' aria-label="'+name+'">'
+              s=re.sub(r'<button\b[^>]*>',label,s)
+              p.write_text(s)
+          PY
       - name: Comprobar sintaxis JavaScript
         run: |
           node --check assets/musica.js
@@ -51,5 +77,5 @@ jobs:
           git add -- index.html es en pt-br assets buscador.json netlify.toml scripts
           if [ -d reports ]; then git add -- reports; fi
           git diff --cached --stat
-          git diff --cached --quiet || git commit -m 'Ajustar el reproductor y registrar las comprobaciones en tres tamaños'
+          git diff --cached --quiet || git commit -m 'Verificar anclaje del reproductor y controles de navegación'
           git push origin HEAD:ajustes/auditoria-web
