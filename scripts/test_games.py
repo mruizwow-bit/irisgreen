@@ -122,10 +122,13 @@ def exercise(page,slug):
             else:click(page,'r.useExample','rows',n=n)
     elif slug=='la-cena-de-los-planes':
         page.locator('main input:visible').nth(0).fill('Paseo de prueba')
-        for who in range(2):
+        click(page,'addPerson');click(page,'addPerson')
+        assert actions(page,'addPerson').is_disabled()
+        for who in range(4):
             click(page,'p.pick','people',n=who)
             page.locator('main input:visible').nth(1).fill('Persona '+str(who+1))
-            for n in range(3):click(page,'c.pick','cards',n=who*3+n)
+            for n in range(3):click(page,'c.pick','cards',n=n)
+            if who<3:assert not page.locator('main a[href*="#carta-"]:visible').count()
     elif slug=='la-consulta':
         for _ in range(11):
             if not actions(page,'roll').count():break
@@ -213,9 +216,15 @@ def run():
         for p in GAME_FILES:
             slug=p.parent.name;row={'game':slug}
             try:
+                page.goto('about:blank')
                 page.goto(BASE+PREFIX+'#carta-'+slug,wait_until='domcontentloaded')
                 fields=page.locator('textarea[data-ig-test-list="cardFields"]:visible');fields.first.wait_for()
                 row['fields']=fields.count()
+                row['title']=page.locator('#ig-game-letter-title').inner_text()
+                assert page.locator('#ig-game-letter').evaluate('(e)=>e.contains(document.activeElement)')
+                for _ in range(fields.count()+5):
+                    page.keyboard.press('Tab')
+                    assert page.locator('#ig-game-letter').evaluate('(e)=>e.contains(document.activeElement)')
                 for i in range(fields.count()):fields.nth(i).fill('Texto de prueba '+str(i+1))
                 with page.expect_download() as event:page.locator('[data-ig-test-action="downloadFilled"]:visible').click()
                 download=event.value;dest=OUT/(slug+'-letter.png');download.save_as(dest)
@@ -224,6 +233,8 @@ def run():
                 assert dest.stat().st_size>1000
                 row['escape_closes']=None
                 page.keyboard.press('Escape');row['escape_closes']=not fields.count()
+                assert row['escape_closes'],'Escape must close the letter'
+                assert not page.locator('main').evaluate('(e)=>e.inert'),'Background left inert'
                 row['passed']=True
             except Exception as e:row['passed']=False;row['error']=str(e);REPORT['failures'].append({'letter':slug,'error':str(e)})
             REPORT['letters'].append(row)

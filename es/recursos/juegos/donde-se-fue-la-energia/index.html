@@ -26,8 +26,9 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
 </head>
-<body>
+<body class="ig-game-page">
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,8 +126,8 @@
 
     <div style="position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(23,57,92,0.12); box-shadow: 0 26px 60px -44px rgba(23,57,92,0.6); background: #fff;">
       <img src="../../../../img/j4-tablero.webp" alt="{{ tBoardAlt }}" style="display: block; width: 100%; height: auto;">
-      <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
-        <button sc-camel-on-click="{{ d.click }}" aria-label="{{ d.aria }}" style="position: absolute; left: {{ d.left }}; top: {{ d.top }}; width: {{ d.width }}; height: {{ d.height }}; background: {{ d.bg }}; border: {{ d.border }}; border-radius: 10px; cursor: {{ d.cursor }}; padding: 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px;">
+      <div class="ig-energy-days"><sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+        <button class="ig-energy-day" sc-camel-on-click="{{ d.click }}" aria-label="{{ d.aria }}" style="position: absolute; left: {{ d.left }}; top: {{ d.top }}; width: {{ d.width }}; height: {{ d.height }}; background: {{ d.bg }}; border: {{ d.border }}; border-radius: 10px; cursor: {{ d.cursor }}; padding: 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px;">
           <span style="font-size: 12px; font-weight: 700; color: #17395c; background: rgba(255,255,255,0.85); border-radius: 999px; padding: 1px 8px;">{{ d.name }}</span>
           <span style="font-size: 15px; font-weight: 700; color: {{ d.sumColor }};">{{ d.sumLabel }}</span>
           <span style="display: flex; flex-wrap: wrap; gap: 2px; justify-content: center;">
@@ -135,7 +136,7 @@
             </sc-for>
           </span>
         </button>
-      </sc-for>
+      </sc-for></div>
     </div>
 
     <div style="margin-top: 22px; background: rgba(255,255,255,0.8); backdrop-filter: blur(14px); border: 1px solid rgba(23,57,92,0.1); border-radius: 20px; padding: 20px 22px;">

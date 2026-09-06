@@ -26,8 +26,9 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
 </head>
-<body>
+<body class="ig-game-page">
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,7 +130,7 @@
       </sc-for>
     </div>
 
-    <section style="display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: 24px; align-items: start;">
+    <section class="ig-game-split" style="display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: 24px; align-items: start;">
       <div style="border-radius: 18px; overflow: hidden; border: 1px solid rgba(23,57,92,0.12); box-shadow: 0 20px 46px -38px rgba(23,57,92,0.6);">
         <img sc-camel-src="{{ probImg }}" alt="{{ probAlt }}" style="display: block; width: 100%; height: auto;">
       </div>

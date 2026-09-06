@@ -26,8 +26,9 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
 </head>
-<body>
+<body class="ig-game-page">
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,7 +134,7 @@
         <sc-for list="{{ people }}" as="p" hint-placeholder-count="2">
           <button sc-camel-on-click="{{ p.pick }}" style="border: 2px solid {{ p.border }}; background: {{ p.bg }}; color: {{ p.color }}; border-radius: 999px; padding: 8px 16px; font-size: 15.5px; cursor: pointer;">{{ p.label }}</button>
         </sc-for>
-        <button sc-camel-on-click="{{ addPerson }}" style="border: 1px dashed rgba(23,57,92,0.3); background: #fff; border-radius: 999px; padding: 8px 16px; font-size: 15.5px; cursor: pointer;">{{ tAddPerson }}</button>
+        <button disabled="{{ addPersonDisabled }}" sc-camel-on-click="{{ addPerson }}" style="border: 1px dashed rgba(23,57,92,0.3); background: #fff; border-radius: 999px; padding: 8px 16px; font-size: 15.5px; cursor: pointer;">{{ tAddPerson }}</button>
         <button sc-camel-on-click="{{ reset }}" style="margin-left: auto; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-size: 15px;">{{ tReset }}</button>
       </div>
 
@@ -384,24 +385,17 @@ class Component extends DCLogic {
   }
 
   ownerOf(card) {
-    const p = this.state.picks;
-    const keys = Object.keys(p);
-    for (let i = 0; i < keys.length; i++) if (p[keys[i]].indexOf(card) !== -1) return Number(keys[i]);
-    return -1;
+    return Object.keys(this.state.picks).filter((key) => this.state.picks[key].indexOf(card) !== -1).map(Number);
   }
 
   tapCard(card) {
     const st = this.state;
-    const owner = this.ownerOf(card);
     const picks = Object.assign({}, st.picks);
-    if (owner !== -1) {
-      picks[owner] = picks[owner].filter((c) => c !== card);
-      this.setState({ picks });
-      return;
-    }
-    const mine = picks[st.who] || [];
-    if (mine.length >= 3) return;
-    picks[st.who] = mine.concat([card]);
+    const mine = (picks[st.who] || []).slice();
+    const at = mine.indexOf(card);
+    if (at >= 0) mine.splice(at, 1);
+    else if (mine.length < 3) mine.push(card);
+    picks[st.who] = mine;
     this.setState({ picks });
   }
 
@@ -495,6 +489,7 @@ class Component extends DCLogic {
           pick: () => this.setState({ who: i })
         };
       }),
+      addPersonDisabled: Object.keys(st.picks).length >= 4,
       addPerson: () => {
         const i = Object.keys(st.picks).length;
         if (i >= 4) return;
@@ -509,13 +504,13 @@ class Component extends DCLogic {
 
       cards: T.cards.map(([name, text], n) => {
         const owner = this.ownerOf(n);
-        const isMine = owner === st.who;
+        const isMine = owner.indexOf(st.who) !== -1;
         return {
           img: IMG[n], name, text,
-          taken: owner !== -1,
-          takenBy: owner !== -1 ? T.takenBy(nameOf(owner)) : "",
-          bg: owner !== -1 ? (isMine ? "rgba(31,139,168,0.12)" : "rgba(23,57,92,0.05)") : "#fff",
-          border: owner !== -1 ? PCOLOR[owner % 4] : "rgba(23,57,92,0.12)",
+          taken: owner.length > 0,
+          takenBy: owner.length > 0 ? T.takenBy(owner.map(nameOf).join(", ")) : "",
+          bg: owner.length > 0 ? (isMine ? "rgba(31,139,168,0.12)" : "rgba(23,57,92,0.05)") : "#fff",
+          border: owner.length > 0 ? PCOLOR[(isMine ? st.who : owner[0]) % 4] : "rgba(23,57,92,0.12)",
           pick: () => this.tapCard(n)
         };
       }),
@@ -526,7 +521,7 @@ class Component extends DCLogic {
         name: nameOf(Number(k)),
         needs: st.picks[k].map((c) => ({ text: T.cards[c][0] + ": " + T.cards[c][1] }))
       })),
-      done: filled >= 2,
+      done: filled === Object.keys(st.picks).length,
 
       reset: () => this.setState({ outing: "", names: ["", ""], picks: { 0: [], 1: [] }, who: 0 }),
 

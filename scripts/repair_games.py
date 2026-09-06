@@ -7,6 +7,10 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 ROOT=Path.cwd();G=ROOT/'es/recursos/juegos';report={'changed':[],'preserved_dictionaries':{},'notes':[]}
 
+if (ROOT/'reports/games/repairs.json').exists():
+    print('La migración de juegos ya está aplicada; se repiten las pruebas sin reaplicarla.')
+    raise SystemExit(0)
+
 def once(s,old,new):
     if new in s:return s
     assert s.count(old)==1,(old[:100],s.count(old))
@@ -61,6 +65,7 @@ for p in [G/'index.html',*sorted(G.glob('*/index.html'))]:
         s=s[:a]+replacement+s[b:]
         s=once(s,'const isMine = owner === st.who;','const isMine = owner.indexOf(st.who) !== -1;')
         s=s.replace('owner !== -1','owner.length > 0').replace('nameOf(owner)','owner.map(nameOf).join(", ")')
+        s=s.replace('PCOLOR[owner % 4]', 'PCOLOR[(isMine ? st.who : owner[0]) % 4]')
         s=once(s,'done: filled >= 2,','done: filled === Object.keys(st.picks).length,')
         s=once(s,'      addPerson: () => {','      addPersonDisabled: Object.keys(st.picks).length >= 4,\n      addPerson: () => {')
         s=once(s,'<button sc-camel-on-click="{{ addPerson }}"','<button disabled="{{ addPersonDisabled }}" sc-camel-on-click="{{ addPerson }}"')

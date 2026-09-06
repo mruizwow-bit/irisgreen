@@ -26,8 +26,9 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
 </head>
-<body>
+<body class="ig-game-page">
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -250,13 +251,13 @@
   </footer>
 
   <sc-if value="{{ cardOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: fixed; inset: 0; z-index: 80; background: rgba(23,57,92,0.42); backdrop-filter: blur(6px); display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 28px 18px;">
+    <div id="ig-game-letter" role="dialog" aria-modal="true" aria-labelledby="ig-game-letter-title" style="position: fixed; inset: 0; z-index: 1000; background: rgba(23,57,92,0.42); backdrop-filter: blur(6px); display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 28px 18px;">
       <div style="background: #fff; border-radius: 22px; padding: 26px; width: 560px; max-width: 100%; box-shadow: 0 40px 80px -40px rgba(23,57,92,0.6);">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
           <strong style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a8336f;">{{ tCardTitle }}</strong>
-          <button sc-camel-on-click="{{ closeCard }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 30px; height: 30px; cursor: pointer;">×</button>
+          <button id="ig-game-letter-close" sc-camel-on-click="{{ closeCard }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 30px; height: 30px; cursor: pointer;">×</button>
         </div>
-        <h3 style="margin: 0 0 16px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 27px;">{{ cardGame }}</h3>
+        <h3 id="ig-game-letter-title" tabindex="-1" style="margin: 0 0 16px; font-family: 'Newsreader', serif; font-weight: 400; font-size: 27px;">{{ cardGame }}</h3>
         <div style="display: grid; gap: 14px;">
           <sc-for list="{{ cardFields }}" as="f" hint-placeholder-count="3">
             <label style="display: grid; gap: 6px;">
@@ -608,6 +609,9 @@ class Component extends DCLogic {
       this.setState({ lang: use, card });
     } catch (e) {}
     setTimeout(() => this.swapImages(), 0);
+    this._cardHashListener = () => this.openCardFromHash();
+    window.addEventListener("hashchange", this._cardHashListener);
+    this.syncCardDialog();
   }
 
   swapImages() {
@@ -620,12 +624,79 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     this.swapImages();
+    this.syncCardDialog();
     // el runtime reaplica el título del helmet tras el render: se asigna en el tick siguiente
     clearTimeout(this._titleT);
     this._titleT = setTimeout(() => {
       const t = (STR[this.state.lang] || STR.es).docTitle;
       if (document.title !== t) document.title = t;
     }, 0);
+  }
+
+  openCardFromHash() {
+    const slug = (window.location.hash || "").replace(/^#carta-/, "");
+    const T = STR[this.state.lang] || STR.es;
+    const card = T.games.findIndex((g) => {
+      const item = PLAY[g[2]];
+      return item && item[0].split("/").filter(Boolean).pop() === slug;
+    });
+    if (card >= 0) this.setState({ card });
+  }
+
+  releaseCardDialog() {
+    if (!this._cardDialog) return;
+    document.removeEventListener("keydown", this._cardKeydown, true);
+    (this._cardInert || []).forEach(([el, original]) => { el.inert = original; });
+    document.documentElement.style.overflow = this._cardOverflow;
+    const back = this._cardReturn;
+    this._cardDialog = null;
+    this._cardInert = [];
+    if (back && back.isConnected && typeof back.focus === "function") back.focus({ preventScroll: true });
+  }
+
+  syncCardDialog() {
+    const dialog = document.getElementById("ig-game-letter");
+    if (!dialog) { this.releaseCardDialog(); return; }
+    if (this._cardDialog === dialog) return;
+    this.releaseCardDialog();
+    this._cardDialog = dialog;
+    this._cardReturn = document.activeElement;
+    this._cardOverflow = document.documentElement.style.overflow;
+    this._cardInert = [];
+    let branch = dialog;
+    while (branch.parentElement) {
+      Array.from(branch.parentElement.children).forEach((el) => {
+        if (el !== branch && !["SCRIPT", "STYLE", "LINK"].includes(el.tagName)) {
+          this._cardInert.push([el, el.inert]); el.inert = true;
+        }
+      });
+      branch = branch.parentElement;
+      if (branch === document.body) break;
+    }
+    document.documentElement.style.overflow = "hidden";
+    this._cardKeydown = (event) => {
+      if (!dialog.isConnected) return;
+      if (event.key === "Escape") {
+        event.preventDefault(); event.stopImmediatePropagation(); this.setState({ card: null }); return;
+      }
+      if (event.key !== "Tab") return;
+      const all = Array.from(dialog.querySelectorAll('button:not([disabled]),textarea,input,a[href],[tabindex="0"]')).filter((el) => el.getClientRects().length);
+      const first = all[0], last = all[all.length - 1];
+      if (!first) { event.preventDefault(); return; }
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog.querySelector('h3'))) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+      }
+    };
+    document.addEventListener("keydown", this._cardKeydown, true);
+    dialog.querySelector('h3').focus({ preventScroll: true });
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._titleT);
+    window.removeEventListener("hashchange", this._cardHashListener);
+    this.releaseCardDialog();
   }
 
   setLang(lang) {
@@ -701,34 +772,50 @@ class Component extends DCLogic {
     const x = c.getContext("2d");
     x.fillStyle = "#fdf9f0"; x.fillRect(0, 0, W, H);
     if (bg) x.drawImage(bg, 0, 0, W, H);
+    const wrap = (value, width) => {
+      const lines = [];
+      String(value).split("\n").forEach((paragraph) => {
+        let line = "";
+        for (const char of paragraph) {
+          if (line && x.measureText(line + char).width > width) { lines.push(line); line = ""; }
+          line += char;
+        }
+        lines.push(line);
+      });
+      return lines;
+    };
     x.fillStyle = "#a8336f";
     x.font = "700 22px 'Atkinson Hyperlegible', sans-serif";
     x.fillText(T.cardTitle.toUpperCase(), 74, 352);
-    x.fillStyle = "#17395c";
-    x.font = "400 42px 'Newsreader', serif";
     const title = T.games[idx][2];
+    x.font = "400 42px 'Newsreader', serif";
+    const titleLines = wrap(title, W - 148);
     let ty = 412;
-    (title.match(/.{1,26}(\s|$)/g) || [title]).forEach((line) => { x.fillText(line.trim(), 74, ty); ty += 50; });
-    let y = ty + 34;
-    labels.forEach((label, n) => {
+    x.fillStyle = "#17395c";
+    titleLines.forEach((line) => { x.fillText(line, 74, ty); ty += 50; });
+    let textSize = 24, planned;
+    do {
+      x.font = "400 " + textSize + "px 'Atkinson Hyperlegible', sans-serif";
+      planned = labels.map((label, n) => ({ label, lines: wrap(filled ? (this.state.cardVals[idx + "-" + n] || "") : "", W - 160) }));
+      const needed = ty + 24 + planned.reduce((sum, field) => sum + 26 + Math.max(2, field.lines.length) * 36 + 26, 0);
+      if (needed <= H - 110 || textSize <= 18) break;
+      textSize -= 1;
+    } while (true);
+    let y = ty + 24;
+    planned.forEach((field) => {
       x.fillStyle = "#5a49a8";
       x.font = "700 21px 'Atkinson Hyperlegible', sans-serif";
-      x.fillText(label, 74, y);
-      y += 26;
-      const val = filled ? (this.state.cardVals[idx + "-" + n] || "") : "";
+      x.fillText(field.label, 74, y); y += 26;
+      const rows = Math.max(2, field.lines.length);
       x.strokeStyle = "rgba(23,57,92,0.18)"; x.lineWidth = 1.5;
-      const rows = Math.max(2, Math.min(3, Math.ceil((val.length || 1) / 40)));
-      for (let r = 0; r < rows; r++) {
-        y += 42;
-        x.beginPath(); x.moveTo(74, y); x.lineTo(W - 74, y); x.stroke();
-      }
-      if (val) {
+      x.font = "400 " + textSize + "px 'Atkinson Hyperlegible', sans-serif";
+      for (let row = 0; row < rows; row++) {
+        y += 36;
+        x.beginPath(); x.moveTo(74,y); x.lineTo(W-74,y); x.stroke();
         x.fillStyle = "#17395c";
-        x.font = "400 24px 'Atkinson Hyperlegible', sans-serif";
-        let ly = y - 42 * rows + 32;
-        (val.match(/.{1,40}(\s|$)/g) || [val]).slice(0, rows).forEach((line) => { x.fillText(line.trim(), 80, ly); ly += 42; });
+        if (field.lines[row]) x.fillText(field.lines[row],80,y-8);
       }
-      y += 40;
+      y += 26;
     });
     x.fillStyle = "#5a6675";
     x.font = "400 19px 'Atkinson Hyperlegible', sans-serif";
