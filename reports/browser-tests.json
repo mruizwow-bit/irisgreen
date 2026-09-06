@@ -12,7 +12,7 @@
         1440,
         1000
       ],
-      "ready_ms": 767,
+      "ready_ms": 800,
       "title": "Escríbelo como lo dirías en voz alta.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -36,7 +36,7 @@
         1440,
         1000
       ],
-      "ready_ms": 691,
+      "ready_ms": 677,
       "title": "Condiciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -77,7 +77,7 @@
         1440,
         1000
       ],
-      "ready_ms": 635,
+      "ready_ms": 626,
       "title": "Abuso y explotación",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -100,7 +100,7 @@
         1440,
         1000
       ],
-      "ready_ms": 662,
+      "ready_ms": 637,
       "title": "Situaciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -123,7 +123,7 @@
         1440,
         1000
       ],
-      "ready_ms": 661,
+      "ready_ms": 642,
       "title": "Qué existe, cómo se pide y dónde está escrito",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -146,7 +146,7 @@
         1440,
         1000
       ],
-      "ready_ms": 759,
+      "ready_ms": 736,
       "title": "Primero es un juego. Después enseña algo.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -169,7 +169,7 @@
         1440,
         1000
       ],
-      "ready_ms": 687,
+      "ready_ms": 676,
       "title": "Orientan. No diagnostican.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -192,7 +192,7 @@
         1440,
         1000
       ],
-      "ready_ms": 692,
+      "ready_ms": 694,
       "title": "Aquí habla quien lo vive.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -215,7 +215,7 @@
         1440,
         1000
       ],
-      "ready_ms": 672,
+      "ready_ms": 660,
       "title": "¿Qué puedo pedir y cómo se llama?",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -238,7 +238,7 @@
         1440,
         1000
       ],
-      "ready_ms": 725,
+      "ready_ms": 724,
       "title": "Todo lo que puedes pedir, con su nombre oficial.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -250,7 +250,7 @@
       },
       "music_content_shift_px": 0,
       "music_pass": true,
-      "cls": 0.10574861111111111,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -261,7 +261,7 @@
         1440,
         1000
       ],
-      "ready_ms": 695,
+      "ready_ms": 674,
       "title": "El sistema de cada país, explicado en español.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -284,7 +284,7 @@
         1440,
         1000
       ],
-      "ready_ms": 713,
+      "ready_ms": 684,
       "title": "Los libros",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -300,16 +300,16 @@
       "pageerrors": [],
       "local_http_errors": [
         {
-          "url": "http://127.0.0.1:41417/assets/books/luma-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
           "status": 404
         },
         {
-          "url": "http://127.0.0.1:41417/assets/books/autismo-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
           "status": 404
         }
       ],
       "passed": false,
-      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}]"
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
     },
     {
       "path": "/es/taller/",
@@ -317,7 +317,7 @@
         1440,
         1000
       ],
-      "ready_ms": 751,
+      "ready_ms": 747,
       "title": "Aquí se prueban cosas.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -329,7 +329,7 @@
       },
       "music_content_shift_px": 0,
       "music_pass": true,
-      "cls": 0.197169951171875,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -340,7 +340,7 @@
         1440,
         1000
       ],
-      "ready_ms": 738,
+      "ready_ms": 703,
       "title": "Tus intereses",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -352,7 +352,7 @@
       },
       "music_content_shift_px": 0.0,
       "music_pass": true,
-      "cls": 0.40689583333333335,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -363,7 +363,7 @@
         1440,
         1000
       ],
-      "ready_ms": 670,
+      "ready_ms": 661,
       "title": "Rincón tranquilo",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -386,7 +386,7 @@
         1440,
         1000
       ],
-      "ready_ms": 804,
+      "ready_ms": 813,
       "title": "Un estudio no es la ciencia entera.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -398,7 +398,7 @@
       },
       "music_content_shift_px": 0,
       "music_pass": true,
-      "cls": 0.15845277777777778,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -409,7 +409,7 @@
         1440,
         1000
       ],
-      "ready_ms": 680,
+      "ready_ms": 665,
       "title": "Quién escribe esto y cómo se comprueba",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -432,7 +432,7 @@
         1440,
         1000
       ],
-      "ready_ms": 689,
+      "ready_ms": 684,
       "title": "Autismo",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -455,7 +455,7 @@
         1440,
         1000
       ],
-      "ready_ms": 667,
+      "ready_ms": 636,
       "title": "Conditions",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -478,7 +478,7 @@
         390,
         844
       ],
-      "ready_ms": 719,
+      "ready_ms": 707,
       "title": "Escríbelo como lo dirías en voz alta.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -503,7 +503,7 @@
         390,
         844
       ],
-      "ready_ms": 678,
+      "ready_ms": 669,
       "title": "Condiciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -545,7 +545,7 @@
         390,
         844
       ],
-      "ready_ms": 617,
+      "ready_ms": 616,
       "title": "Abuso y explotación",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -569,7 +569,7 @@
         390,
         844
       ],
-      "ready_ms": 645,
+      "ready_ms": 634,
       "title": "Situaciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -593,7 +593,7 @@
         390,
         844
       ],
-      "ready_ms": 645,
+      "ready_ms": 641,
       "title": "Qué existe, cómo se pide y dónde está escrito",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -617,7 +617,7 @@
         390,
         844
       ],
-      "ready_ms": 730,
+      "ready_ms": 720,
       "title": "Primero es un juego. Después enseña algo.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -641,7 +641,7 @@
         390,
         844
       ],
-      "ready_ms": 665,
+      "ready_ms": 667,
       "title": "Orientan. No diagnostican.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -665,7 +665,7 @@
         390,
         844
       ],
-      "ready_ms": 683,
+      "ready_ms": 676,
       "title": "Aquí habla quien lo vive.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -689,7 +689,7 @@
         390,
         844
       ],
-      "ready_ms": 664,
+      "ready_ms": 660,
       "title": "¿Qué puedo pedir y cómo se llama?",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -726,7 +726,7 @@
       "music_content_shift_px": 0.0,
       "music_pass": true,
       "mobile_menu_pass": true,
-      "cls": 0.012440110371423684,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -737,7 +737,7 @@
         390,
         844
       ],
-      "ready_ms": 683,
+      "ready_ms": 672,
       "title": "El sistema de cada país, explicado en español.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -761,7 +761,7 @@
         390,
         844
       ],
-      "ready_ms": 689,
+      "ready_ms": 672,
       "title": "Los libros",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -778,16 +778,16 @@
       "pageerrors": [],
       "local_http_errors": [
         {
-          "url": "http://127.0.0.1:41417/assets/books/autismo-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
           "status": 404
         },
         {
-          "url": "http://127.0.0.1:41417/assets/books/luma-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
           "status": 404
         }
       ],
       "passed": false,
-      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}]"
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
     },
     {
       "path": "/es/taller/",
@@ -795,7 +795,7 @@
         390,
         844
       ],
-      "ready_ms": 770,
+      "ready_ms": 751,
       "title": "Aquí se prueban cosas.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -808,7 +808,7 @@
       "music_content_shift_px": 0.0,
       "music_pass": true,
       "mobile_menu_pass": true,
-      "cls": 0.08143785070600507,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -819,7 +819,7 @@
         390,
         844
       ],
-      "ready_ms": 694,
+      "ready_ms": 665,
       "title": "Tus intereses",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -832,7 +832,7 @@
       "music_content_shift_px": 0,
       "music_pass": true,
       "mobile_menu_pass": true,
-      "cls": 0.48532628508931824,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -843,7 +843,7 @@
         390,
         844
       ],
-      "ready_ms": 647,
+      "ready_ms": 641,
       "title": "Rincón tranquilo",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -867,7 +867,7 @@
         390,
         844
       ],
-      "ready_ms": 790,
+      "ready_ms": 801,
       "title": "Un estudio no es la ciencia entera.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -891,7 +891,7 @@
         390,
         844
       ],
-      "ready_ms": 663,
+      "ready_ms": 660,
       "title": "Quién escribe esto y cómo se comprueba",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -915,7 +915,7 @@
         390,
         844
       ],
-      "ready_ms": 669,
+      "ready_ms": 663,
       "title": "Autismo",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -939,7 +939,7 @@
         390,
         844
       ],
-      "ready_ms": 643,
+      "ready_ms": 635,
       "title": "Conditions",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -963,7 +963,7 @@
         320,
         740
       ],
-      "ready_ms": 714,
+      "ready_ms": 708,
       "title": "Escríbelo como lo dirías en voz alta.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -988,7 +988,7 @@
         320,
         740
       ],
-      "ready_ms": 671,
+      "ready_ms": 670,
       "title": "Condiciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1030,7 +1030,7 @@
         320,
         740
       ],
-      "ready_ms": 620,
+      "ready_ms": 615,
       "title": "Abuso y explotación",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1054,7 +1054,7 @@
         320,
         740
       ],
-      "ready_ms": 641,
+      "ready_ms": 629,
       "title": "Situaciones",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1078,7 +1078,7 @@
         320,
         740
       ],
-      "ready_ms": 646,
+      "ready_ms": 636,
       "title": "Qué existe, cómo se pide y dónde está escrito",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1102,7 +1102,7 @@
         320,
         740
       ],
-      "ready_ms": 741,
+      "ready_ms": 723,
       "title": "Primero es un juego. Después enseña algo.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1126,7 +1126,7 @@
         320,
         740
       ],
-      "ready_ms": 664,
+      "ready_ms": 657,
       "title": "Orientan. No diagnostican.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1150,7 +1150,7 @@
         320,
         740
       ],
-      "ready_ms": 678,
+      "ready_ms": 669,
       "title": "Aquí habla quien lo vive.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1174,7 +1174,7 @@
         320,
         740
       ],
-      "ready_ms": 661,
+      "ready_ms": 658,
       "title": "¿Qué puedo pedir y cómo se llama?",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1222,7 +1222,7 @@
         320,
         740
       ],
-      "ready_ms": 675,
+      "ready_ms": 668,
       "title": "El sistema de cada país, explicado en español.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1246,7 +1246,7 @@
         320,
         740
       ],
-      "ready_ms": 689,
+      "ready_ms": 674,
       "title": "Los libros",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1263,16 +1263,16 @@
       "pageerrors": [],
       "local_http_errors": [
         {
-          "url": "http://127.0.0.1:41417/assets/books/luma-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
           "status": 404
         },
         {
-          "url": "http://127.0.0.1:41417/assets/books/autismo-es-512.webp",
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
           "status": 404
         }
       ],
       "passed": false,
-      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}]"
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
     },
     {
       "path": "/es/taller/",
@@ -1280,7 +1280,7 @@
         320,
         740
       ],
-      "ready_ms": 768,
+      "ready_ms": 749,
       "title": "Aquí se prueban cosas.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1293,7 +1293,7 @@
       "music_content_shift_px": 0.0,
       "music_pass": true,
       "mobile_menu_pass": true,
-      "cls": 0.02784965645544193,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -1304,7 +1304,7 @@
         320,
         740
       ],
-      "ready_ms": 742,
+      "ready_ms": 718,
       "title": "Tus intereses",
       "overflow_px": 1,
       "audio_requests_before_open": 0,
@@ -1317,7 +1317,7 @@
       "music_content_shift_px": 0,
       "music_pass": true,
       "mobile_menu_pass": true,
-      "cls": 0.01608267896274653,
+      "cls": 0,
       "pageerrors": [],
       "local_http_errors": [],
       "passed": true
@@ -1328,7 +1328,7 @@
         320,
         740
       ],
-      "ready_ms": 671,
+      "ready_ms": 661,
       "title": "Rincón tranquilo",
       "overflow_px": 2,
       "audio_requests_before_open": 0,
@@ -1352,7 +1352,7 @@
         320,
         740
       ],
-      "ready_ms": 800,
+      "ready_ms": 798,
       "title": "Un estudio no es la ciencia entera.",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1376,7 +1376,7 @@
         320,
         740
       ],
-      "ready_ms": 659,
+      "ready_ms": 652,
       "title": "Quién escribe esto y cómo se comprueba",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1400,7 +1400,7 @@
         320,
         740
       ],
-      "ready_ms": 668,
+      "ready_ms": 667,
       "title": "Autismo",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1424,7 +1424,7 @@
         320,
         740
       ],
-      "ready_ms": 661,
+      "ready_ms": 637,
       "title": "Conditions",
       "overflow_px": 0,
       "audio_requests_before_open": 0,
@@ -1444,9 +1444,9 @@
     }
   ],
   "failures": [
-    "/es/libros/ (1440px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}]",
-    "/es/libros/ (390px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}]",
-    "/es/libros/ (320px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:41417/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:41417/assets/books/autismo-es-512.webp', 'status': 404}]"
+    "/es/libros/ (1440px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]",
+    "/es/libros/ (390px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]",
+    "/es/libros/ (320px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
   ],
   "notes": [
     "Los dominios externos se bloquean en la prueba para comprobar que el funcionamiento local no depende de ellos.",
