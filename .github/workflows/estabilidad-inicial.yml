@@ -1,0 +1,49 @@
+name: Estabilidad inicial y regresiones
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/estabilidad-inicial.yml']
+permissions:
+  contents: write
+concurrency:
+  group: estabilidad-irisgreen
+  cancel-in-progress: false
+jobs:
+  estabilidad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar el navegador de prueba
+        run: |
+          python3 -m venv /tmp/ig-stable
+          /tmp/ig-stable/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
+          /tmp/ig-stable/bin/python -m playwright install --with-deps chromium >/tmp/ig-browser-install.log 2>&1
+      - name: Medir el estado anterior con peticiones lentas
+        run: /tmp/ig-stable/bin/python scripts/test_initial_layout.py --phase before
+      - name: Generar la primera pantalla desde sus fuentes y verificar repetibilidad
+        run: |
+          python3 scripts/prepare_initial_data.py
+          python3 scripts/prepare_initial_data.py --check
+      - name: Comprobar desplazamientos y funcionamiento en 24 escenarios
+        run: /tmp/ig-stable/bin/python scripts/test_initial_layout.py --phase after
+      - name: Repetir la batería general de navegación y recursos
+        if: always()
+        run: /tmp/ig-stable/bin/python scripts/test_web.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: estabilidad-inicial-resultados
+          path: reports
+          retention-days: 3
+      - name: Conservar cambios e informes exclusivamente en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/taller/index.html es/intereses/index.html es/investigacion/index.html es/tramites/directorio/index.html
+          git add -- reports/initial-data-build.json reports/initial-layout-before.json reports/initial-layout-after.json reports/browser-tests.json
+          git diff --cached --quiet || git commit -m 'Estabilizar la primera carga y registrar la comparación y regresiones'
+          git push origin HEAD:ajustes/auditoria-web
