@@ -21,9 +21,41 @@ jobs:
           python3 -m venv /tmp/ig-games
           /tmp/ig-games/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
           /tmp/ig-games/bin/python -m playwright install --with-deps chromium >/tmp/ig-games-install.log 2>&1
-      - name: Probar partidas, reinicio, cartas, idiomas y materiales
-        run: /tmp/ig-games/bin/python scripts/test_games.py --phase before
-      - name: Guardar fuentes exactas de esta prueba para diagnóstico
+      - name: Aplicar la corrección acotada una sola vez
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/repair_games.py');s=p.read_text()
+          anchor="        s=once(s,'done: filled >= 2,','done: filled === Object.keys(st.picks).length,')"
+          extra="        s=s.replace('PCOLOR[owner % 4]', 'PCOLOR[(isMine ? st.who : owner[0]) % 4]')\n"
+          if extra not in s:
+              assert s.count(anchor)==1
+              s=s.replace(anchor,extra+anchor)
+          guard="if (ROOT/'reports/games/repairs.json').exists():\n    print('La migración de juegos ya está aplicada; se repiten las pruebas sin reaplicarla.')\n    raise SystemExit(0)\n"
+          anchor="\ndef once(s,old,new):"
+          if guard not in s:
+              assert anchor in s
+              s=s.replace(anchor,'\n'+guard+anchor,1)
+          p.write_text(s)
+          PY
+          /tmp/ig-games/bin/python scripts/repair_games.py
+      - name: Comprobar sintaxis del código de los juegos
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,subprocess
+          paths=[Path('es/recursos/juegos/index.html'),*Path('es/recursos/juegos').glob('*/index.html')]
+          for path in paths:
+              for i,m in enumerate(re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',path.read_text(),re.S)):
+                  p=Path('/tmp/ig-game-check.js');p.write_text(m[1]);subprocess.run(['node','--check',str(p)],check=True)
+          print('Sintaxis comprobada en las páginas interactivas y su índice.')
+          PY
+      - name: Completar partidas, reinicios y materiales en 52 escenarios de juego
+        run: /tmp/ig-games/bin/python scripts/test_games.py --phase after --full
+      - name: Probar cartas con texto largo y navegación por teclado
+        if: always()
+        run: /tmp/ig-games/bin/python scripts/test_game_letters.py
+      - name: Guardar fuentes exactas y evidencia de las pruebas
         if: always()
         run: |
           python3 - <<'PY'
@@ -42,12 +74,13 @@ jobs:
           name: juegos-evidencia
           path: /tmp/ig-games-evidence
           retention-days: 3
-      - name: Conservar informe en la rama de revisión
+      - name: Conservar cambios e informes solo en la rama de revisión
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          test ! -f reports/games/games-before.json || git add -- reports/games/games-before.json
-          git diff --cached --quiet || git commit -m 'Registrar resultado de las partidas y materiales de juegos'
+          git add -- es/recursos/juegos assets/juegos-ajustes.css scripts/repair_games.py scripts/test_games.py scripts/test_game_letters.py
+          git add -- reports/games/*.json
+          git diff --cached --quiet || git commit -m 'Corregir tableros móviles, selección familiar y cartas; guardar pruebas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
