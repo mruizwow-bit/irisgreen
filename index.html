@@ -87,6 +87,7 @@
 
 
 <style>x-dc{display:none!important}</style>
+
 <script defer src="/assets/buscador-comun.js"></script>
 <script defer src="/assets/runtime/d949f1c3687aedad.js"></script>
 <script defer src="/assets/runtime/35f4f974f4b2bcd4.js"></script>
@@ -785,7 +786,7 @@ const YT = (id) => "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&play
 const YTW = (id) => "https://www.youtube.com/watch?v=" + id;
 const IG = (path) => "https://www.instagram.com/" + path + "/embed/";
 const thumbImg = (u) => u ? React.createElement("img", { src: u, alt: "", loading: "lazy", decoding: "async", width: 480, height: 360, style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" } }) : null;
-const ytThumb = (u) => { const m = String(u || "").match(/youtube-nocookie\.com\/embed\/([A-Za-z0-9_-]{11})/); return m ? "https://i.ytimg.com/vi/" + m[1] + "/hqdefault.jpg" : null; };
+const ytThumb = (u) => null;
 const IGW = (path) => "https://www.instagram.com/" + path + "/";
 const y = (n, t, id) => ({ name: n, tema: t, source: "YouTube", embed: YT(id), href: YTW(id) });
 const i = (n, t, p) => ({ name: n, tema: t, source: "Instagram", embed: IG(p), href: IGW(p) });

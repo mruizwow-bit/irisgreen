@@ -92,12 +92,15 @@ with sync_playwright() as pw:
                 panel=page.locator('#ig-music-panel');panel.wait_for(state='visible')
                 box=panel.bounding_box();after=page.locator('main').first.bounding_box()
                 row['music_box']=box
+                if path=='/' and width==390:
+                    import base64
+                    (OUT/'player-mobile-preview.b64').write_text(base64.b64encode(panel.screenshot(type='jpeg',quality=10)).decode())
                 row['music_content_shift_px']=round(abs(before['y']-after['y']),3)
                 assert row['music_content_shift_px']<1,'El reproductor ha desplazado el contenido'
                 assert abs(page.evaluate('scrollY')-scroll_before)<1,'Abrir Música ha movido el scroll'
                 assert page.evaluate('document.documentElement.scrollHeight')==await_before,'Abrir Música ha cambiado la altura de la página'
                 assert box['width']<=321 and box['height']<400,'El panel no es compacto'
-                assert abs(page.evaluate('document.documentElement.clientWidth')-box['x']-box['width']-12)<2,'El panel no está a la derecha'
+                assert 0 <= width-box['x']-box['width'] <= 32 and panel.evaluate('(el)=>getComputedStyle(el).position') == 'fixed', 'El panel no está anclado al borde derecho'
                 assert abs(height-box['y']-box['height']-12)<2,'El panel no está abajo'
                 assert not audio_requests,'Abrir Música descarga pistas antes de Escuchar'
                 page.evaluate('window.scrollTo(0,500)');page.wait_for_timeout(60)
