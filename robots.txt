@@ -4,7 +4,6 @@ Allow: /
 Disallow: /*?s=
 Disallow: /borradores/
 Disallow: /*.dc.html$
-Disallow: /*.json$
 Disallow: /*.md$
 
 # Buscadores con IA: permitidos para citar la web
