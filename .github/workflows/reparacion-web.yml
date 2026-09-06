@@ -16,66 +16,72 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ajustes/auditoria-web
-      - name: Preparar herramientas de prueba y copia de comparación
+      - name: Preparar navegador y copia de comparación
         run: |
           python3 -m venv /tmp/ig-venv
-          /tmp/ig-venv/bin/pip install beautifulsoup4==4.13.4 playwright==1.55.0
-          /tmp/ig-venv/bin/python -m playwright install --with-deps chromium
+          /tmp/ig-venv/bin/pip -q install beautifulsoup4==4.13.4 playwright==1.55.0 pillow==11.3.0
+          /tmp/ig-venv/bin/python -m playwright install --with-deps chromium > /tmp/browser-install.log 2>&1
           python3 - <<'PY'
           from pathlib import Path
           import shutil
-          for p in list(Path('.').rglob('*.html')):
-              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts): continue
-              q=Path('.baseline')/p
-              q.parent.mkdir(parents=True,exist_ok=True)
-              shutil.copy2(p,q)
+          for p in Path('es/neurodiversidad/condiciones').rglob('*.html'):
+              q=Path('.baseline')/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
-      - name: Aplicar los ajustes y afinar la comprobación geométrica
-        run: |
-          if grep -q '__bundler/template' index.html; then /tmp/ig-venv/bin/python scripts/repair_web.py; fi
-          /tmp/ig-venv/bin/python scripts/refine_web.py
-          /tmp/ig-venv/bin/python - <<'PY'
-          from pathlib import Path
-          import re
-          t=Path('scripts/test_web.py');s=t.read_text()
-          old="assert abs(page.evaluate('document.documentElement.clientWidth')-box['x']-box['width']-12)<2,'El panel no está a la derecha'"
-          new="assert 0 <= width-box['x']-box['width'] <= 32 and panel.evaluate('(el)=>getComputedStyle(el).position') == 'fixed', 'El panel no está anclado al borde derecho'"
-          s=s.replace(old,new)
-          if "player-mobile-preview.b64" not in s:
-              s=s.replace("                row['music_box']=box\n", "                row['music_box']=box\n                if path=='/' and width==390:\n                    import base64\n                    (OUT/'player-mobile-preview.b64').write_text(base64.b64encode(panel.screenshot(type='jpeg',quality=10)).decode())\n")
-          t.write_text(s)
-          # Conservar la decisión existente: no cargar miniaturas externas al entrar.
-          p=Path('index.html');s=p.read_text()
-          s=re.sub(r'const ytThumb = \(u\) => \{[^\n]*?\};', 'const ytThumb = (u) => null;', s)
-          p.write_text(s)
-          for p in Path('.').rglob('*.html'):
-              if {'.git','_audit','reports','node_modules','.baseline'}.intersection(p.parts):continue
-              s=p.read_text();en=str(p).startswith('en/')
-              def label(m):
-                  tag=m[0]
-                  if 'aria-label=' in tag:return tag
-                  if re.search(r'\bid=[\"\']plBtn[\"\']',tag):name='Music' if en else 'Música'
-                  elif re.search(r'\bid=[\"\']a11yBtn[\"\']',tag):name='Accessible reading' if en else 'Lectura accesible'
-                  else:return tag
-                  return tag[:-1]+' aria-label="'+name+'">'
-              s=re.sub(r'<button\b[^>]*>',label,s)
-              p.write_text(s)
-          PY
+      - name: Corregir los fallos de anchura y las peticiones de plantillas
+        run: /tmp/ig-venv/bin/python scripts/fix_remaining_layout.py
       - name: Comprobar sintaxis JavaScript
         run: |
           node --check assets/musica.js
           node --check assets/buscador-comun.js
           node --check assets/interfaz-comun.js
           node --check assets/lectura-accesible.js
-      - name: Probar escritorio y móviles de 390 y 320 píxeles
+      - name: Probar navegación, búsqueda y música en 57 escenarios
         run: /tmp/ig-venv/bin/python scripts/test_web.py
-      - name: Guardar cambios y resultados solo en la rama de revisión
+      - name: Comprobar texto de controles, idiomas y reproducción local
+        if: always()
+        run: /tmp/ig-venv/bin/python scripts/test_ui_bounds.py
+      - name: Inventariar imágenes sin inventar las portadas que faltan
+        if: always()
+        run: |
+          /tmp/ig-venv/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          import json,math
+          out=Path('reports');out.mkdir(exist_ok=True);items=[];thumbs=[]
+          for parent in ['img','assets']:
+              for p in sorted(Path(parent).rglob('*')):
+                  if p.suffix.lower() not in {'.png','.webp','.jpg','.jpeg'}:continue
+                  try:
+                      with Image.open(p) as im:
+                          w,h=im.size;items.append({'path':str(p),'width':w,'height':h})
+                          if w>=250 and h>=350 and .55<=w/h<=.85:
+                              copy=im.convert('RGB');copy.thumbnail((138,160));thumbs.append((str(p),copy))
+                  except OSError:pass
+          (out/'image-inventory.json').write_text(json.dumps(items,ensure_ascii=False,indent=2))
+          for offset in range(0,len(thumbs),48):
+              group=thumbs[offset:offset+48];sheet=Image.new('RGB',(1200,math.ceil(len(group)/8)*200),'white');draw=ImageDraw.Draw(sheet)
+              for i,(name,thumb) in enumerate(group):
+                  x=(i%8)*150;y=(i//8)*200;sheet.paste(thumb,(x+(150-thumb.width)//2,y));draw.text((x+3,y+162),str(offset+i)+': '+name[-43:-21],fill='black');draw.text((x+3,y+176),name[-21:],fill='black')
+              sheet.save(out/f'portrait-inventory-{offset//48+1}.jpg',quality=85)
+          (out/'portrait-inventory.json').write_text(json.dumps([x[0] for x in thumbs],ensure_ascii=False,indent=2))
+          print('Inventario:',len(items),'imágenes;',len(thumbs),'verticales revisables.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pruebas-interfaz-y-recursos
+          path: reports
+          retention-days: 3
+      - name: Guardar únicamente en la rama de revisión
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- index.html es en pt-br assets buscador.json netlify.toml scripts
-          if [ -d reports ]; then git add -- reports; fi
+          git add -- index.html es en pt-br assets buscador.json scripts
+          git add -- reports/*.json
+          # Las copias de trabajo y capturas no son parte de la web publicada.
+          git rm -r --ignore-unmatch -- _audit
+          git ls-files -z 'reports/*.png' 'reports/*.jpg' 'reports/*.b64' | xargs -0 -r git rm --
           git diff --cached --stat
-          git diff --cached --quiet || git commit -m 'Verificar anclaje del reproductor y controles de navegación'
+          git diff --cached --quiet || git commit -m 'Corregir anchuras y documentar pruebas de música, filtros y recursos'
           git push origin HEAD:ajustes/auditoria-web
