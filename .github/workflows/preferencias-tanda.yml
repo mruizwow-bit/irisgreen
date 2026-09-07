@@ -1,0 +1,36 @@
+name: Preferencias de lectura compartidas
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/preferencias-tanda.yml']
+permissions:
+  contents: read
+jobs:
+  inventario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Conservar fuentes actuales e inventario de almacenamiento
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil,re,json,subprocess
+          out=Path('/tmp/ig-preferences');out.mkdir();rows=[]
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or {'.git','.github','pt-br','dist','reports','_audit','node_modules'}.intersection(p.parts):continue
+              if p.suffix in {'.html','.css','.js','.json','.py','.toml'}:
+                  q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+                  if p.suffix in {'.js','.html'}:
+                      text=p.read_text()
+                      matches=[m.group(0) for m in re.finditer(r'.{0,60}(?:ig-a11y|ig_reading|ig-reading|applyReading|setReading|localStorage).{0,140}',text)]
+                      if matches:rows.append({'path':str(p),'matches':matches})
+              if str(p) in {'img/j1-vera.webp','img/j4-casa.webp','img/v40-brand-symbol.webp'}:
+                  q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          (out/'inventory.json').write_text(json.dumps({'sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':rows},ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preferencias-fuentes
+          path: /tmp/ig-preferences
+          retention-days: 3
