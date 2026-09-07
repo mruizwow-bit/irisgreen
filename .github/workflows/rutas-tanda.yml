@@ -78,6 +78,9 @@ jobs:
           git add -- index.html es en netlify.toml _headers llms.txt sitemap.xml sitemap-1.xml scripts
           for p in _redirects .gitignore 404.html; do test ! -f "$p" || git add -- "$p"; done
           test ! -d reports/routes || git add -- reports/routes/*.json
+          # El generador ya existente también actualiza su informe; se conserva, no se descarta.
+          test ! -f reports/initial-data-build.json || git add -- reports/initial-data-build.json
           git diff --cached --quiet || git commit -m 'Corregir rutas y metadatos y separar la publicación; conservar pruebas'
+          git status --short
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
