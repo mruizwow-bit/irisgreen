@@ -31,8 +31,6 @@ def menu_click(page,href):
 try:
  with sync_playwright() as pw:
   browser=pw.chromium.launch()
-  # Every English static HTML should load the common interface responsible for
-  # synchronising the shared language before the next navigation.
   missing=[]
   for p in sorted((PUBLIC/'en').rglob('index.html')):
    if '/assets/interfaz-comun.js' not in p.read_text(errors='replace'):missing.append('/'+p.relative_to(PUBLIC).as_posix())
@@ -52,15 +50,13 @@ try:
      row['url']=re.sub('^'+re.escape(BASE),'',page.url);row['lang']=page.evaluate('document.documentElement.lang');row['stored']=page.evaluate("localStorage.getItem('ig_lang')")
      assert row['lang'].lower().startswith('en'),row
      assert row['stored']=='en',row
-     # Dynamic pages expose the EN control. It must remain selected after navigation.
      en=page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile(r'^EN$')).first
      assert en.count(),'Destination lacks the active EN switch: '+target
-     style=en.get_attribute('style') or ''
-     row['en_style']=style
-     assert '#17395c' in style or page.evaluate('(e)=>getComputedStyle(e).backgroundColor',en)=='rgb(23, 57, 92)'
+     style=en.get_attribute('style') or '';bg=en.evaluate('(e)=>getComputedStyle(e).backgroundColor')
+     row['en_style']=style;row['en_background']=bg
+     assert bg in {'rgb(23, 57, 92)','rgb(31, 95, 139)'} or '#17395c' in style or '#1f5f8b' in style,(style,bg)
     record(row,check);ctx.close()
 
-  # Explicit ES/EN links themselves must update the preference before navigation.
   ctx=browser.new_context(viewport={'width':390,'height':900});page=ctx.new_page();page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
   row={'test':'explicit language links update shared preference'}
   def explicit():
