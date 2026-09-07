@@ -1,0 +1,34 @@
+name: Coherencia de controles y listados
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/coherencia-interfaz.yml']
+permissions:
+  contents: read
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Conservar las fuentes actuales sin alterarlas
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,shutil,subprocess,hashlib
+          root=Path.cwd();out=Path('/tmp/coherencia-fuentes');out.mkdir()
+          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0');rows=[]
+          for name in paths:
+              p=root/name
+              if not name or not p.is_file():continue
+              rows.append({'path':name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+              if p.suffix in {'.html','.css','.js','.json','.xml','.toml','.txt','.md','.py','.yml'} or p.name in {'_headers','_redirects','.gitignore'}:
+                  q=out/'source'/name;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          (out/'inventory.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':rows},ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: coherencia-fuentes
+          path: /tmp/coherencia-fuentes
+          retention-days: 3
+          include-hidden-files: true
