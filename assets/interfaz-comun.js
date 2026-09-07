@@ -83,6 +83,18 @@
     if (event.key === 'Escape') closeMenu(document.querySelector('header.ig-menu-open'), true);
   });
   function ready() {
+    /* Algunas páginas antiguas conservan el disparador #mBtn junto al botón común.
+       Si ambos existen, el antiguo deja de ser visible y enfocables sin eliminarlo
+       del DOM, para no romper scripts heredados que todavía lo consulten. */
+    document.querySelectorAll('header').forEach(function (header) {
+      var modern = header.querySelector('.ig-menu-button');
+      var legacy = header.querySelector('#mBtn');
+      if (modern && legacy && modern !== legacy) {
+        legacy.hidden = true;
+        legacy.setAttribute('aria-hidden', 'true');
+        legacy.tabIndex = -1;
+      }
+    });
     document.querySelectorAll('a[data-ig-back-conditions]').forEach(function (link) {
       try {
         var saved = sessionStorage.getItem('ig-conditions-url');
