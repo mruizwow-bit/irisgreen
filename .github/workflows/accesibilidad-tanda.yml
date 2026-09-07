@@ -21,12 +21,15 @@ jobs:
           python3 -m venv /tmp/ig-a11y
           /tmp/ig-a11y/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
           /tmp/ig-a11y/bin/python -m playwright install --with-deps chromium >/tmp/ig-a11y-install.log 2>&1
-      - name: Registrar el comportamiento anterior
+      - name: Conservar la comparación anterior
         run: |
           test -f reports/accessibility/before.json || /tmp/ig-a11y/bin/python scripts/test_accessibility_batch.py --phase before
-      - name: Aplicar únicamente la corrección prevista
+          test ! -f reports/accessibility/after.json || test -f reports/accessibility/first-pass.json || cp reports/accessibility/after.json reports/accessibility/first-pass.json
+      - name: Completar las etiquetas de estado sin cambiar las opciones
         run: |
           python3 scripts/repair_accessibility.py
+          python3 scripts/refine_reading_accessibility.py
+          python3 scripts/prepare_initial_data.py --check
           node --check assets/interfaz-comun.js
           node --check assets/musica.js
           python3 - <<'PY'
@@ -36,7 +39,7 @@ jobs:
               for m in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',p.read_text(),re.S):
                   tmp=Path('/tmp/check-a11y.js');tmp.write_text(m[1]);subprocess.run(['node','--check',str(tmp)],check=True)
           PY
-      - name: Probar paneles y completar los dos juegos con los controles grandes
+      - name: Probar los seis estados, teclado, tamaño de texto y controles grandes
         run: /tmp/ig-a11y/bin/python scripts/test_accessibility_batch.py --phase after
       - name: Repetir las partidas y cartas de la tanda anterior
         if: success()
@@ -67,9 +70,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- index.html es en assets
+          git add -- index.html es en assets scripts/test_accessibility_batch.py
           test ! -d reports/accessibility || git add -- reports/accessibility/*.json
           git add -- reports/games/*.json
-          git diff --cached --quiet || git commit -m 'Guardar mejoras de acceso por teclado y controles equivalentes con pruebas'
+          git diff --cached --quiet || git commit -m 'Completar accesibilidad de paneles y verificar regresiones de juegos y cartas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
