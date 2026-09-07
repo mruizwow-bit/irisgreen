@@ -1,0 +1,70 @@
+name: Estudio aportado · fichas y trazabilidad
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/estudio-editorial.yml']
+permissions:
+  contents: write
+concurrency:
+  group: estudio-editorial-irisgreen
+  cancel-in-progress: false
+jobs:
+  revision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar pruebas e inventario de comparación
+        run: |
+          python3 -m venv /tmp/ig-study
+          /tmp/ig-study/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
+          /tmp/ig-study/bin/python -m playwright install --with-deps chromium >/tmp/ig-study-install.log 2>&1
+          /tmp/ig-study/bin/python scripts/test_study_revision.py --baseline
+      - name: Aplicar únicamente las dos fichas y sus resúmenes
+        run: |
+          python3 scripts/apply_reviewed_entries.py
+          cp reports/study-20260907/applied.json /tmp/ig-study-first-application.json
+          python3 scripts/apply_reviewed_entries.py --check
+          python3 scripts/build_site.py
+          python3 scripts/apply_reviewed_entries.py --check
+      - name: Verificar equivalencia, referencias, HTML y ausencia de regresiones
+        run: /tmp/ig-study/bin/python scripts/test_study_revision.py
+      - name: Repetir controles y listados de la tanda anterior
+        run: |
+          cd dist
+          /tmp/ig-study/bin/python ../scripts/test_coherence.py
+      - name: Conservar evidencia sin incorporarla a los archivos públicos
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil,json
+          out=Path('/tmp/ig-study-evidence');out.mkdir(exist_ok=True)
+          reports=Path('reports/study-20260907');reports.mkdir(parents=True,exist_ok=True)
+          if Path('/tmp/ig-study-first-application.json').exists():shutil.copy2('/tmp/ig-study-first-application.json',reports/'first-application.json')
+          if Path('dist/reports/coherence/tests.json').exists():shutil.copy2('dist/reports/coherence/tests.json',reports/'regression-controls.json')
+          shutil.copytree(reports,out/'reports',dirs_exist_ok=True)
+          source=Path('editorial/reviews/2026-09-07-autismo-tdl.json');shutil.copy2(source,out/'revision-documental.json')
+          data=json.loads(source.read_text())
+          for entry in data['entries']:
+              for lang,loc in entry['locales'].items():
+                  p=Path(loc['path']);q=out/'pages'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: estudio-editorial-resultados
+          path: /tmp/ig-study-evidence
+          retention-days: 7
+      - name: Guardar la revisión y sus pruebas en la rama separada
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/neurodiversidad/condiciones/autismo/index.html es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/index.html en/neurodiversity/conditions/autism/index.html en/neurodiversity/conditions/developmental-language-disorder-dld/index.html es/neurodiversidad/condiciones/index.html en/neurodiversity/conditions/index.html buscador.json videoteca-listado.json
+          for p in reports/study-20260907/*.json; do test ! -f "$p" || git add -- "$p"; done
+          git diff --cached --quiet || git commit -m 'Aplicar revisión documental de Autismo y TDL y registrar sus pruebas'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
