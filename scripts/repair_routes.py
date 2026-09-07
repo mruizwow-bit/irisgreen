@@ -77,8 +77,14 @@ def render_config(old):
         if r.get('from','').rstrip('/')==r.get('to','').rstrip('/') or r.get('from')=='/pt-br/*':removed.append(r)
         else:kept.append(r)
     assert set(data)<= {'build','redirects','headers'},'Revisar nuevas opciones de Netlify antes de migrar'
-    assert set(data['build'])<= {'publish','command','processing'},'Opciones de build no previstas'
+    assert set(data['build'])<= {'publish','command','processing','environment'},'Opciones de build no previstas'
     out=['# Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.','[build]','  publish = "dist"','  command = "python3 scripts/build_site.py"','','# Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.','[build.processing.html]','  pretty_urls = true','']
+    environment=data['build'].get('environment',{})
+    assert isinstance(environment,dict) and all(isinstance(k,str) and isinstance(v,str) for k,v in environment.items()),'Variables de build no válidas'
+    if environment:
+        out+=['[build.environment]']
+        out.extend('  '+json.dumps(k)+' = '+json.dumps(v,ensure_ascii=False) for k,v in environment.items())
+        out+=['']
     for r in kept:
         assert set(r)<= {'from','to','status','force'},'Regla condicional no prevista'
         out+=['[[redirects]]']

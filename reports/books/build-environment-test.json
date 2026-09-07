@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "regression": "build.environment previously rejected after the Python version was added",
+  "checks": [
+    "Python version preserved",
+    "Other environment values preserved",
+    "Configuration without environment accepted",
+    "Repeated generation identical",
+    "Headers and redirects preserved",
+    "Publication remains dist"
+  ]
+}

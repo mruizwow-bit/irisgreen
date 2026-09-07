@@ -1,0 +1,35 @@
+{
+  "covers": {
+    "autismo": {
+      "sha256": "0ec9636274436db44d1850fc0f6e66bc434f8418400339e55c996989234c2050",
+      "width": 512,
+      "height": 726,
+      "bytes": 27610,
+      "source": "AUTISMO_EN_LA_VIDA_DIARIA_PORTADA_KDP_A5_135P(2).pdf",
+      "crop_pt": [
+        450.48789125,
+        9.070853406,
+        870.0154503,
+        604.34644396
+      ],
+      "path": "/assets/books/autismo-es-512.webp"
+    },
+    "luma": {
+      "sha256": "03efe9d094b64ab7a8e9f95d9a29570ac3369b170cc6952e459b87ee34cd65d0",
+      "width": 512,
+      "height": 512,
+      "bytes": 30200,
+      "source": "Luma portada esp(2).pdf",
+      "crop_pt": [
+        627.4100341796875,
+        9,
+        1239.4100341796875,
+        621
+      ],
+      "path": "/assets/books/luma-es-512.webp"
+    }
+  },
+  "method": "Front cover only, cropped from the supplied original print PDF; rendered in RGB, resized to width 512px, WebP quality 80. No regenerated illustration, text or title. Original PDFs remain unchanged and are not published.",
+  "total_bytes": 57810,
+  "status": "6 browser cases passed; not yet merged or deployed"
+}
