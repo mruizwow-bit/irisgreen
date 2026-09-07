@@ -1,0 +1,33 @@
+name: Accesibilidad · controles y paneles
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/accesibilidad-tanda.yml']
+permissions:
+  contents: read
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar fuentes actuales sin modificar las páginas
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess,shutil,json
+          out=Path('/tmp/ig-a11y-source');out.mkdir()
+          wanted={'img/j1-vera.webp','img/j7-casa.webp','img/v40-brand-symbol.webp'}
+          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          for name in filter(None,paths):
+              p=Path(name)
+              if p.parts[0] in {'.github','reports','_audit'}:continue
+              if p.suffix in {'.html','.js','.css','.json','.toml','.txt','.py'} or name in wanted:
+                  q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          (out/'version.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip()}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: accesibilidad-fuentes
+          path: /tmp/ig-a11y-source
+          retention-days: 3
