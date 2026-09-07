@@ -20,6 +20,9 @@ def build():
     # sus controles no deben seguir incrustados en los HTML ES/EN ni el idioma de
     # la Home debe propagarse a otras rutas.
     subprocess.run([sys.executable,str(ROOT/'scripts/retire_portuguese_ui.py')],cwd=ROOT,check=True)
+    # Restaura el bloque de Música conocido de la Home y hace local a cada página
+    # cualquier selector dinámico de idioma heredado, evitando mezclas entre rutas.
+    subprocess.run([sys.executable,str(ROOT/'scripts/stabilize_shared_runtime.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
