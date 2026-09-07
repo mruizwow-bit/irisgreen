@@ -4,32 +4,80 @@ on:
     branches: ['ajustes/auditoria-web']
     paths: ['.github/workflows/rutas-tanda.yml']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: rutas-irisgreen
+  cancel-in-progress: false
 jobs:
-  inventario:
+  rutas:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Preparar inventario sin modificar páginas
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador y conservar una comparación exacta
+        run: |
+          python3 -m venv /tmp/ig-routes
+          /tmp/ig-routes/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 lxml==6.0.1 pillow==11.3.0
+          /tmp/ig-routes/bin/python -m playwright install --with-deps chromium >/tmp/ig-routes-install.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          root=Path.cwd();out=Path('/tmp/ig-routes-baseline');out.mkdir(exist_ok=True)
+          for p in root.rglob('*'):
+              if not p.is_file() or {'.git','dist','reports','_audit','__pycache__'}.intersection(p.relative_to(root).parts):continue
+              if p.suffix in {'.html','.json'} or p.name=='robots.txt':
+                  q=out/p.relative_to(root);q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - name: Generar únicamente los archivos públicos y comprobar repetibilidad
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/prepare_initial_data.py --check
+          python3 scripts/repair_routes.py --check
+      - name: Comprobar referencias, sitemap, redirecciones y navegador
+        run: /tmp/ig-routes/bin/python scripts/test_routes.py --baseline /tmp/ig-routes-baseline
+      - name: Repetir las pruebas de estabilidad en el directorio público
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-routes/bin/python ../scripts/test_initial_layout.py --phase after
+      - name: Repetir las cartas y el teclado en el directorio público
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-routes/bin/python ../scripts/test_game_letters.py
+      - name: Conservar la evidencia y dejar limpio el paquete público
+        if: always()
         run: |
           python3 - <<'PY'
-          import json,hashlib,subprocess,shutil
           from pathlib import Path
-          root=Path.cwd();out=Path('/tmp/ig-rutas');out.mkdir()
-          files=[]
-          for name in subprocess.check_output(['git','ls-files','-z']).decode().split('\0'):
-              if not name:continue
-              p=root/name
-              if not p.is_file():continue
-              files.append({'path':name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-              if p.suffix in {'.html','.css','.js','.json','.xml','.txt','.toml','.md','.yml','.py'} or p.name in {'_redirects','_headers'}:
-                  q=out/'source'/name;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
-          (out/'inventory.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':files},ensure_ascii=False,indent=2))
-          print('Inventariados',len(files),'archivos de la rama actual.')
+          import shutil
+          out=Path('/tmp/ig-rutas-evidence');out.mkdir(exist_ok=True)
+          shutil.copytree('reports/routes',out/'reports',dirs_exist_ok=True)
+          for src,dest in [('dist/reports/initial-layout-after.json','reports/routes/regression-stability.json'),('dist/reports/games/letter-edge-tests.json','reports/routes/regression-letters.json')]:
+              if Path(src).exists():shutil.copy2(src,dest);shutil.copy2(src,out/'reports'/Path(dest).name)
+          for name in ['sitemap.xml','sitemap-1.xml','robots.txt','_redirects','_headers','netlify.toml','404.html','scripts/repair_routes.py','scripts/build_site.py','scripts/test_routes.py']:
+              p=Path(name)
+              if p.is_file():q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
+          python3 scripts/build_site.py
+          test ! -d dist/reports
+          test ! -d dist/scripts
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
-          name: rutas-fuentes-actuales
-          path: /tmp/ig-rutas
+          name: rutas-resultados
+          path: /tmp/ig-rutas-evidence
           retention-days: 3
+      - name: Guardar los cambios en la rama, nunca en producción
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html es en netlify.toml _headers llms.txt sitemap.xml sitemap-1.xml scripts
+          for p in _redirects .gitignore 404.html; do test ! -f "$p" || git add -- "$p"; done
+          test ! -d reports/routes || git add -- reports/routes/*.json
+          git diff --cached --quiet || git commit -m 'Corregir rutas y metadatos y separar la publicación; conservar pruebas'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
