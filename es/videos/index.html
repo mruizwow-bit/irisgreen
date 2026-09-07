@@ -82,6 +82,7 @@
 <script defer src="/assets/runtime/35f4f974f4b2bcd4.js"></script>
 <script defer src="/assets/runtime/8fe7df74405f3c55.js"></script>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
 </head>
 <body>
 <x-dc>
@@ -122,19 +123,19 @@
     <p style="margin: 0 0 30px; font-size: 16px; color: #5a6675; max-width: 40em; text-wrap: pretty;">{{ tMix }}</p>
 
     <div style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 22px; padding: 18px; box-shadow: 0 22px 55px -40px rgba(23,57,92,0.5);">
-      <div style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 14px; background: #fff; padding: 2px 16px;">
+      <div class="ig-search-shell" style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 14px; background: #fff; padding: 2px 16px;">
         <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1f5f8b" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
-        <input type="search" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 18px; padding: 11px 0;">
+        <input class="ig-search-input" type="search" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 18px; padding: 11px 0;">
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+      <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
         <sc-for list="{{ temaChips }}" as="c" hint-placeholder-count="11">
-          <button sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;">{{ c.label }}</button>
+          <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;" data-ig-filter="temaChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
         </sc-for>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
+      <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
         <span style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a8698;">{{ tWhere }}</span>
         <sc-for list="{{ platChips }}" as="c" hint-placeholder-count="3">
-          <button sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;">{{ c.label }}</button>
+          <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;" data-ig-filter="platChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
         </sc-for>
       </div>
     </div>
@@ -317,7 +318,7 @@ const VIDEOS = [
   y("Yasmin Finney · representación trans", "Identidad LGTBI+", "8bzfJXGieng")
 ].map((v, n) => Object.assign({ id: "v" + n }, v));
 
-const TEMA_KEYS = ["Autismo", "TDAH", "TOC", "Ansiedad", "Tourette", "Dislexia y discalculia", "ARFID", "Tartamudez", "Síndrome de Down", "Identidad LGTBI+"];
+const TEMA_KEYS = Array.from(new Set(VIDEOS.map((v) => v.tema)));
 
 const STR = {
   es: {
@@ -336,7 +337,7 @@ const STR = {
     spotifyMissing: "Playlist · en cuanto tenga el enlace suena aquí", spotifyEyebrow: "Escuchar mientras lees",
     tagline: "Base de conocimiento sobre neurodiversidad",
     toggles: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"],
-    temas: { "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedad", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia y discalculia", "ARFID": "ARFID", "Tartamudez": "Tartamudez", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidad LGTBI+" }
+    temas: { "Misofonía": "Misofonía", "CAA": "CAA", "Discalculia": "Discalculia", "TDL": "TDL",  "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedad", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia y discalculia", "ARFID": "ARFID", "Tartamudez": "Tartamudez", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidad LGTBI+" }
   },
   en: {
     howToRead: "How to read this video:", tipos: { vivencia: "First-person experience", institucional: "Institutional source", divulgacion: "Professional outreach" },
@@ -354,7 +355,7 @@ const STR = {
     spotifyMissing: "Playlist · coming as soon as I have the link", spotifyEyebrow: "Listen while you read",
     tagline: "Knowledge base on neurodiversity",
     toggles: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"],
-    temas: { "Autismo": "Autism", "TDAH": "ADHD", "TOC": "OCD", "Ansiedad": "Anxiety", "Tourette": "Tourette's", "Dislexia y discalculia": "Dyslexia & dyscalculia", "ARFID": "ARFID", "Tartamudez": "Stuttering", "Síndrome de Down": "Down syndrome", "Identidad LGTBI+": "LGBTQ+ identity" }
+    temas: { "Misofonía": "Misophonia", "CAA": "AAC", "Discalculia": "Dyscalculia", "TDL": "DLD",  "Autismo": "Autism", "TDAH": "ADHD", "TOC": "OCD", "Ansiedad": "Anxiety", "Tourette": "Tourette's", "Dislexia y discalculia": "Dyslexia & dyscalculia", "ARFID": "ARFID", "Tartamudez": "Stuttering", "Síndrome de Down": "Down syndrome", "Identidad LGTBI+": "LGBTQ+ identity" }
   },
   pt: {
     howToRead: "Como ler este vídeo:", tipos: { vivencia: "Experiência em primeira pessoa", institucional: "Fonte institucional", divulgacion: "Divulgação profissional" },
@@ -515,9 +516,9 @@ class Component extends DCLogic {
 
       q: st.q,
       onQ: (e) => this.setState({ q: e.target.value, limit: 9 }),
-      temaChips: [{ key: "all", label: T.all }].concat(TEMA_KEYS.map((k) => ({ key: k, label: T.temas[k] })))
+      temaChips: [{ key: "all", label: T.all }].concat(TEMA_KEYS.map((k) => ({ key: k, label: T.temas[k] || k })))
         .map((t) => Object.assign({ label: t.label, pick: () => this.setState({ tema: t.key, limit: 9 }) }, chip(st.tema === t.key))),
-      platChips: [{ key: "all", label: T.all }, { key: "YouTube", label: "YouTube" }]
+      platChips: [{ key: "all", label: T.all }].concat(Array.from(new Set(VIDEOS.map((v) => v.source))).map((key) => ({ key, label: key })))
         .map((p) => Object.assign({ label: p.label, pick: () => this.setState({ plat: p.key, limit: 9 }) }, chip(st.plat === p.key))),
 
       countLabel: T.count(filtered.length),

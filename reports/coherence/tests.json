@@ -1,0 +1,353 @@
+{
+  "catalogues": [],
+  "other_sections": [
+    {
+      "path": "/es/videos/",
+      "width": 1440,
+      "actual_topics": [
+        "Todos",
+        "Autismo",
+        "Misofonía",
+        "CAA",
+        "Discalculia",
+        "TDL",
+        "TDAH",
+        "TOC",
+        "Tourette",
+        "Síndrome de Down",
+        "Ansiedad",
+        "Tartamudez",
+        "Identidad LGTBI+",
+        "Dislexia y discalculia"
+      ],
+      "passed": true
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 1440,
+      "records": 120,
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "width": 1440,
+      "expanded_records": 24,
+      "passed": true
+    },
+    {
+      "path": "/es/taller/",
+      "width": 1440,
+      "records": 72,
+      "passed": true
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "width": 1440,
+      "records": 9,
+      "passed": true
+    },
+    {
+      "path": "/es/biblioteca/",
+      "width": 1440,
+      "records": 48,
+      "passed": true
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 1440,
+      "records": 94,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "width": 320,
+      "actual_topics": [
+        "Todos",
+        "Autismo",
+        "Misofonía",
+        "CAA",
+        "Discalculia",
+        "TDL",
+        "TDAH",
+        "TOC",
+        "Tourette",
+        "Síndrome de Down",
+        "Ansiedad",
+        "Tartamudez",
+        "Identidad LGTBI+",
+        "Dislexia y discalculia"
+      ],
+      "passed": true
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 320,
+      "records": 120,
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "width": 320,
+      "expanded_records": 24,
+      "passed": true
+    },
+    {
+      "path": "/es/taller/",
+      "width": 320,
+      "records": 72,
+      "passed": true
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "width": 320,
+      "records": 9,
+      "passed": true
+    },
+    {
+      "path": "/es/biblioteca/",
+      "width": 320,
+      "records": 48,
+      "passed": true
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 320,
+      "records": 94,
+      "passed": true
+    }
+  ],
+  "recovery": [
+    {
+      "path": "/es/situaciones/",
+      "readable_on_error": true,
+      "retry_recovered": true,
+      "failed_requests": 1,
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "readable_on_error": true,
+      "retry_recovered": true,
+      "failed_requests": 1,
+      "passed": true
+    }
+  ],
+  "styles": [
+    {
+      "section": "/es/videos/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(160, 174, 188)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/investigacion/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(23, 57, 92)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/tramites/directorio/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(39, 71, 103)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 90.359375
+    },
+    {
+      "section": "/es/taller/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(57, 86, 116)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 68.796875
+    },
+    {
+      "section": "/es/vivir-fuera/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(131, 149, 168)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/biblioteca/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(146, 162, 179)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.140625
+    },
+    {
+      "section": "/es/intereses/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(87, 112, 137)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 159.71875
+    },
+    {
+      "section": "/es/videos/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(187, 197, 207)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/investigacion/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(23, 57, 92)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/tramites/directorio/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(39, 71, 103)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 90.359375
+    },
+    {
+      "section": "/es/taller/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(52, 82, 113)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 68.796875
+    },
+    {
+      "section": "/es/vivir-fuera/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(61, 89, 118)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.125
+    },
+    {
+      "section": "/es/biblioteca/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(146, 162, 179)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 77.140625
+    },
+    {
+      "section": "/es/intereses/",
+      "font": "\"Atkinson Hyperlegible\", system-ui, sans-serif",
+      "size": "16px",
+      "radius": "999px",
+      "padding": "9px 15px",
+      "border": "1px",
+      "bg": "rgb(57, 86, 116)",
+      "color": "rgb(255, 255, 255)",
+      "height": 44,
+      "width": 159.71875
+    }
+  ],
+  "failures": [
+    {
+      "section": "Condición",
+      "width": 1440,
+      "error": ""
+    },
+    {
+      "section": "Situación",
+      "width": 1440,
+      "error": ""
+    },
+    {
+      "section": "Condición",
+      "width": 390,
+      "error": ""
+    },
+    {
+      "section": "Situación",
+      "width": 390,
+      "error": ""
+    },
+    {
+      "section": "Condición",
+      "width": 320,
+      "error": ""
+    },
+    {
+      "section": "Situación",
+      "width": 320,
+      "error": ""
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#escuchar iframe\").first\n"
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#escuchar iframe\").first\n"
+    }
+  ],
+  "notes": [
+    "Controles reales con servicios externos bloqueados.",
+    "Se comprueban destinos de reproductores, no la reproducción remota.",
+    "La validación de contenido y referencias tiene un informe separado."
+  ],
+  "passed": false
+}

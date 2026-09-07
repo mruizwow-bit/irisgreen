@@ -26,8 +26,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="../../assets/site-v23.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
+<script defer src="/assets/buscador-comun.js"></script>
 </head>
-<body class="situations-collection">
+<body class="situations-collection" data-ig-catalog="situations">
 <a class="skip" href="#main">Ir al contenido</a>
 <header class="hd">
 <a class="brand" href="../../"><img alt="" height="28" onerror="this.remove()" src="/img/v40-brand-symbol.webp" width="28"/><span>Iris Green</span></a>
@@ -61,7 +63,8 @@
 <p class="crumb"><a href="../../">Inicio</a></p>
 <h1>Situaciones</h1>
 <p class="lede">Fichas de situaciones del día a día. Cada una dice qué observar, qué puede ayudar y cuándo pedir una valoración.</p>
-<p class="notice">Esta página describe una situación del día a día, no un diagnóstico. La misma situación puede tener varias explicaciones, y quien las distingue es una valoración profesional.</p><section aria-label="Áreas" class="situations-filter"><label class="situations-search"><span class="sr-only">Buscar una situación…</span><input aria-label="Buscar una situación…" autocomplete="off" id="situationsSearch" placeholder="Buscar una situación…" type="search"/></label><div aria-label="Áreas" class="situations-filter-row" role="group"><button aria-pressed="true" class="situation-filter is-active" data-filter="*" type="button">Todas las áreas</button><button aria-pressed="false" class="situation-filter" data-filter="Sentidos" type="button">Sentidos</button><button aria-pressed="false" class="situation-filter" data-filter="Sueño" type="button">Sueño</button><button aria-pressed="false" class="situation-filter" data-filter="Comunicación" type="button">Comunicación</button><button aria-pressed="false" class="situation-filter" data-filter="Alimentación" type="button">Alimentación</button><button aria-pressed="false" class="situation-filter" data-filter="Preocupación y comprobaciones" type="button">Preocupación y comprobaciones</button><button aria-pressed="false" class="situation-filter" data-filter="Relaciones" type="button">Relaciones</button><button aria-pressed="false" class="situation-filter" data-filter="Estudios y trabajo" type="button">Estudios y trabajo</button><button aria-pressed="false" class="situation-filter" data-filter="Vida diaria" type="button">Vida diaria</button></div></section><p aria-live="polite" class="situations-count" id="situationsCount">187 situaciones</p><p class="situations-empty" hidden="" id="situationsEmpty">No hay situaciones que coincidan con esta búsqueda.</p>
+<p class="notice">Esta página describe una situación del día a día, no un diagnóstico. La misma situación puede tener varias explicaciones, y quien las distingue es una valoración profesional.</p><section aria-label="Áreas" class="situations-filter"><label class="situations-search"><span class="ig-catalog-label">Buscar en las 187 situaciones</span><input aria-label="Buscar una situación…" autocomplete="off" id="situationsSearch" placeholder="Buscar una situación…" type="search"/></label><div aria-label="Áreas" class="situations-filter-row" role="group"><button aria-pressed="true" class="situation-filter is-active" data-filter="*" type="button">Todas las áreas</button><button aria-pressed="false" class="situation-filter" data-filter="Sentidos" type="button">Sentidos</button><button aria-pressed="false" class="situation-filter" data-filter="Sueño" type="button">Sueño</button><button aria-pressed="false" class="situation-filter" data-filter="Comunicación" type="button">Comunicación</button><button aria-pressed="false" class="situation-filter" data-filter="Alimentación" type="button">Alimentación</button><button aria-pressed="false" class="situation-filter" data-filter="Preocupación y comprobaciones" type="button">Preocupación y comprobaciones</button><button aria-pressed="false" class="situation-filter" data-filter="Relaciones" type="button">Relaciones</button><button aria-pressed="false" class="situation-filter" data-filter="Estudios y trabajo" type="button">Estudios y trabajo</button><button aria-pressed="false" class="situation-filter" data-filter="Vida diaria" type="button">Vida diaria</button></div><button class="ig-filter-button ig-catalog-reset" type="button" data-ig-catalog-reset hidden>Quitar filtros</button></section><p aria-live="polite" class="situations-count" id="situationsCount">187 situaciones</p><div class="ig-empty" hidden id="situationsEmpty"><p>No encontramos una situación con esas palabras.</p><p>Prueba otra forma de decirlo o <a href="/es/neurodiversidad/condiciones/">busca en Condiciones</a>.</p></div>
+<div class="ig-catalog-error" data-ig-catalog-error hidden role="status"><p>No se ha podido cargar el buscador. Puedes recorrer las fichas o volver a intentarlo.</p><button class="ig-filter-button" data-ig-catalog-retry type="button">Reintentar búsqueda</button></div>
 <div class="cards">
 <a class="card" data-area="Sentidos" href="../../es/situaciones/la-ropa-me-molesta/"><span class="chip">Sentidos</span><strong>«No aguanto las etiquetas ni las costuras de la ropa»</strong><span>Un roce que otras personas no notan puede ocupar toda la atención durante horas. La molestia es real y cansa, aunque la prenda parezca normal.</span></a>
 <a class="card" data-area="Sentidos" href="../../es/situaciones/la-luz-del-supermercado-me-agota/"><span class="chip">Sentidos</span><strong>«Salgo del supermercado agotada y sin saber por qué»</strong><span>Luz intensa, parpadeo, música y voces se suman. El cuerpo aguanta el rato de la compra y el cansancio llega después, de golpe.</span></a>
@@ -131,40 +134,8 @@
 <div hidden="" id="rguide"></div>
 <script src="../../assets/lectura-accesible.js"></script>
 
-<script>
-(function(){
-  const root=document.querySelector('.situations-collection');
-  if(!root) return;
-  const cards=[...root.querySelectorAll('.cards .card')];
-  const search=root.querySelector('#situationsSearch');
-  const buttons=[...root.querySelectorAll('.situation-filter')];
-  const count=root.querySelector('#situationsCount');
-  const empty=root.querySelector('#situationsEmpty');
-  let area='*';
-  const normalize=(s)=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-  function apply(){
-    const q=normalize(search ? search.value : '');
-    let shown=0;
-    cards.forEach(card=>{
-      const okArea=area==='*' || card.dataset.area===area;
-      const okText=!q || normalize(card.textContent).includes(q);
-      const show=okArea && okText;
-      card.hidden=!show;
-      if(show) shown++;
-    });
-    const total=cards.length;
-    const word=shown===1?"situación":"situaciones";
-    count.textContent = shown===total ? `${total} ${word}` : `${shown} de ${total} ${word} · mostradas`;
-    empty.hidden=shown!==0;
-  }
-  buttons.forEach(btn=>btn.addEventListener('click',()=>{
-    area=btn.dataset.filter;
-    buttons.forEach(x=>{const on=x===btn; x.classList.toggle('is-active',on); x.setAttribute('aria-pressed',on?'true':'false');});
-    apply();
-  }));
-  if(search) search.addEventListener('input',apply);
-})();
-</script><script defer src="/assets/interfaz-comun.js"></script>
+<script defer src="/assets/interfaz-comun.js"></script>
 <script defer src="/assets/musica.js"></script>
+<script defer src="/assets/catalogo-comun.js"></script>
 </body>
 </html>

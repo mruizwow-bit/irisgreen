@@ -94,6 +94,7 @@
 <script defer src="/assets/runtime/8fe7df74405f3c55.js"></script>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
 
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
 </head>
 <body>
 <x-dc>
@@ -202,9 +203,9 @@
 
         <sc-if value="{{ tabSearch }}" hint-placeholder-val="{{ true }}">
           <div style="padding: 22px 24px 24px; animation: igB 0.25s ease both;">
-            <div style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 16px; background: #fff; padding: 4px 16px;">
+            <div class="ig-search-shell" style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 16px; background: #fff; padding: 4px 16px;">
               <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1f5f8b" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
-              <input type="search" aria-label="{{ nav0 }}" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 19px; padding: 12px 0;">
+              <input class="ig-search-input" type="search" aria-label="{{ nav0 }}" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 19px; padding: 12px 0;">
               <span style="font-size: 14px; color: #828d9e; white-space: nowrap;">{{ resultLabel }}</span>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
@@ -352,9 +353,9 @@
           </div>
           <a href="/es/videos/" style="margin-left: auto; color: #a8336f; font-weight: 700;">{{ tVidAll }}</a>
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+        <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
           <sc-for list="{{ temaChips }}" as="c" hint-placeholder-count="8">
-            <button sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;">{{ c.label }}</button>
+            <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;" data-ig-filter="temaChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
           </sc-for>
         </div>
         <p style="margin: 0 0 18px; font-size: 15px; color: #6b6479;">{{ videoCount }}</p>
@@ -841,7 +842,7 @@ class Component extends DCLogic {
   state = { idx: [], vids: [], savedOpen: false, savedTouched: false, lang: "es", tab: "search", q: "", step: 0, tally: {}, need: "colegio", country: "es", picked: [], saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, playing: null, tema: "Todos", limit: 6 };
 
   componentDidMount() {
-    fetch("videoteca-listado.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { var a = Array.isArray(j) ? j : (j && j.videos); if (a && a.length) this.setState({ vids: a.map(function (v) { return y(v.name, v.tema, v.ref); }) }); }.bind(this)).catch(function () {});
+    fetch("videoteca-listado.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { var a = Array.isArray(j) ? j : (j && j.videos); if (a && a.length) this.setState({ vids: a.map(function (v) { return v.plataforma === "Instagram" ? i(v.name, v.tema, v.ref) : v.plataforma === "Vimeo" ? { name: v.name, tema: v.tema, source: "Vimeo", href: v.url, embed: "https://player.vimeo.com/video/" + v.ref } : y(v.name, v.tema, v.ref); }) }); }.bind(this)).catch(function () {});
     window.IGSearch.load().then((entries) => this.setState({ idx: entries })).catch(() => this.setState({ searchError: true }));
     try {
       const saved = localStorage.getItem("ig_lang");
@@ -1094,7 +1095,7 @@ class Component extends DCLogic {
       gameStarted: st.picked.length > 0,
       gameReset: () => this.setState({ picked: [] }),
 
-      temaChips: TEMAS.map((t) => ({
+      temaChips: ["Todos"].concat(Array.from(new Set(FUENTE.map((v) => v.tema)))).map((t) => ({
         label: X(t),
         bg: st.tema === t ? "#6f5fc0" : "#fff",
         color: st.tema === t ? "#fdfcff" : "#17395c",
