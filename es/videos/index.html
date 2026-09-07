@@ -83,6 +83,7 @@
 <script defer src="/assets/runtime/8fe7df74405f3c55.js"></script>
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
 <link rel="stylesheet" href="/assets/controles-comunes.css"/>
+<link rel="stylesheet" href="/assets/video-thumbnails.css">
 </head>
 <body>
 <x-dc>
@@ -150,8 +151,8 @@
               <iframe sc-camel-src="{{ v.src }}" title="{{ v.name }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" scrolling="no" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff;"></iframe>
             </sc-if>
             <sc-if value="{{ v.idle }}" hint-placeholder-val="{{ true }}">
-              <button sc-camel-on-click="{{ v.play }}" aria-label="{{ tPlay }}" style="position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(140deg, #f3eefb 0%, #eaf1fa 55%, #fdf0f6 100%); border: 0; cursor: pointer;">
-                <sc-if value="{{ v.noThumb }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; font-size: 14px; line-height: 1.3; color: #17395c; text-align: left;">{{ v.name }}</span></sc-if><sc-if value="{{ v.hasThumb }}" hint-placeholder-val="{{ false }}">{{ v.thumbImg }}<span style="position: absolute; inset: 0; background: rgba(255,255,255,0.5);"></span></sc-if><span style="position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 999px; background: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -14px rgba(23,57,92,0.8);">
+              <button class="ig-video-poster" sc-camel-on-click="{{ v.play }}" aria-label="{{ v.playLabel }}" style="position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(140deg, #f3eefb 0%, #eaf1fa 55%, #fdf0f6 100%); border: 0; cursor: pointer;" data-ig-video="{{ v.src }}">
+                <sc-if value="{{ v.noThumb }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; font-size: 14px; line-height: 1.3; color: #17395c; text-align: left;">{{ v.name }}</span></sc-if><sc-if value="{{ v.hasThumb }}" hint-placeholder-val="{{ false }}"><img class="ig-video-thumbnail" sc-camel-src="{{ v.thumb }}" sc-camel-on-error="{{ v.onThumbError }}" width="1280" height="720" loading="lazy" decoding="async" alt=""></sc-if><sc-if value="{{ v.unavailableThumb }}" hint-placeholder-val="{{ false }}"><span class="ig-thumbnail-unavailable">{{ v.thumbMessage }}</span></sc-if><span style="position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 999px; background: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -14px rgba(23,57,92,0.8);">
                   <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="#a8336f"><path d="M8 5.5l11 6.5-11 6.5z"></path></svg>
                 </span>
                 <span style="position: relative; z-index: 1; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #17395c; font-weight: 700; text-shadow: 0 1px 0 #fff;">{{ tPlay }}</span>
@@ -237,8 +238,8 @@ const VM = (id) => "https://player.vimeo.com/video/" + id;
 const VMW = (id) => "https://vimeo.com/" + id;
 const v = (n, t, id, tipo, nota) => ({ name: n, tema: t, source: "Vimeo", embed: VM(id), href: VMW(id), tipo: tipo || "vivencia", nota: nota || "" });
 const IG = (p) => "https://www.instagram.com/" + p + "/embed/";
-const thumbImg = (u) => u ? React.createElement("img", { src: u, alt: "", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" } }) : null;
-const ytThumb = (u) => (u && u.indexOf("youtube") > -1 && u.indexOf("/embed/") > -1) ? "https://i.ytimg.com/vi/" + u.split("/embed/")[1].split("?")[0] + "/hqdefault.jpg" : "";
+const IG_VIDEO_THUMBNAILS = {"74KDFWp1jK8":"/assets/video-thumbnails/74KDFWp1jK8.jpg","2ijZqgW41q8":"/assets/video-thumbnails/2ijZqgW41q8.jpg","6avzOjlOPeQ":"/assets/video-thumbnails/6avzOjlOPeQ.jpg","5n-svsAPUlE":"/assets/video-thumbnails/5n-svsAPUlE.jpg","-_ij_ZyDwVI":"/assets/video-thumbnails/-_ij_ZyDwVI.jpg","0da3Lud8aqo":"/assets/video-thumbnails/0da3Lud8aqo.jpg","7YpjdG3qTmg":"/assets/video-thumbnails/7YpjdG3qTmg.jpg","8bzfJXGieng":"/assets/video-thumbnails/8bzfJXGieng.jpg","AR-mhLGktMs":"/assets/video-thumbnails/AR-mhLGktMs.jpg","AIM2TieReU8":"/assets/video-thumbnails/AIM2TieReU8.jpg","86UnZk_tRUI":"/assets/video-thumbnails/86UnZk_tRUI.jpg","BrxAnehKjZ0":"/assets/video-thumbnails/BrxAnehKjZ0.jpg","FXuObQT10Ew":"/assets/video-thumbnails/FXuObQT10Ew.jpg","IZhswSOVNoc":"/assets/video-thumbnails/IZhswSOVNoc.jpg","EDLpUMjYoGY":"/assets/video-thumbnails/EDLpUMjYoGY.jpg","KKVxqJIJNcw":"/assets/video-thumbnails/KKVxqJIJNcw.jpg","KOHb8-xHpOU":"/assets/video-thumbnails/KOHb8-xHpOU.jpg","NdsTWfDG4n8":"/assets/video-thumbnails/NdsTWfDG4n8.jpg","Pt2v_vS2LuA":"/assets/video-thumbnails/Pt2v_vS2LuA.jpg","P1x13ntninc":"/assets/video-thumbnails/P1x13ntninc.jpg","PaT__mzkHbA":"/assets/video-thumbnails/PaT__mzkHbA.jpg","Rl3nZwxM28w":"/assets/video-thumbnails/Rl3nZwxM28w.jpg","QmxhKxJK_eU":"/assets/video-thumbnails/QmxhKxJK_eU.jpg","URzPua45sRQ":"/assets/video-thumbnails/URzPua45sRQ.jpg","U9ORbTEkmE8":"/assets/video-thumbnails/U9ORbTEkmE8.jpg","WewQesBzrmI":"/assets/video-thumbnails/WewQesBzrmI.jpg","TJtqJaTMbTk":"/assets/video-thumbnails/TJtqJaTMbTk.jpg","YsjRwpuFNiE":"/assets/video-thumbnails/YsjRwpuFNiE.jpg","kR_ZyTd2PW8":"/assets/video-thumbnails/kR_ZyTd2PW8.jpg","dtwJcwFFGIE":"/assets/video-thumbnails/dtwJcwFFGIE.jpg","dB4DzHS_P58":"/assets/video-thumbnails/dB4DzHS_P58.jpg","mlruSqK0YM4":"/assets/video-thumbnails/mlruSqK0YM4.jpg","jS2LoXykaRw":"/assets/video-thumbnails/jS2LoXykaRw.jpg","qy_6-Zhx-i0":"/assets/video-thumbnails/qy_6-Zhx-i0.jpg","qCM_mBpfkug":"/assets/video-thumbnails/qCM_mBpfkug.jpg","rUDlpO89isc":"/assets/video-thumbnails/rUDlpO89isc.jpg","rpkHylCno1s":"/assets/video-thumbnails/rpkHylCno1s.jpg","rEU5YZGvovc":"/assets/video-thumbnails/rEU5YZGvovc.jpg","roFFvyNVWtc":"/assets/video-thumbnails/roFFvyNVWtc.jpg","u-Qtf9YAlts":"/assets/video-thumbnails/u-Qtf9YAlts.jpg","t60K-XJWg9A":"/assets/video-thumbnails/t60K-XJWg9A.jpg","to77ghKeq8I":"/assets/video-thumbnails/to77ghKeq8I.jpg","xR1Brs76IEo":"/assets/video-thumbnails/xR1Brs76IEo.jpg","yNo-OBEJ-2s":"/assets/video-thumbnails/yNo-OBEJ-2s.jpg","utFNW9znXMU":"/assets/video-thumbnails/utFNW9znXMU.jpg","ZYAfjjHrI_A":"/assets/video-thumbnails/ZYAfjjHrI_A.jpg","bXHCjk_FCI4":"/assets/video-thumbnails/bXHCjk_FCI4.jpg"};
+const ytThumb = (u) => { const m = String(u || "").match(/youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{11})/); return m ? (IG_VIDEO_THUMBNAILS[m[1]] || "") : ""; };
 const IGW = (p) => "https://www.instagram.com/" + p + "/";
 const y = (n, t, id, tipo, nota) => ({ name: n, tema: t, source: "YouTube", embed: YT(id), href: YTW(id), tipo: tipo || "vivencia", nota: nota || "" });
 const g = (n, t, p, tipo, nota) => ({ name: n, tema: t, source: "Instagram", embed: IG(p), href: IGW(p), tipo: tipo || "vivencia", nota: nota || "" });
@@ -473,6 +474,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const st = this.state;
+    const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
     const L = STR[st.lang] ? st.lang : "es";
     const T = STR[L];
     const words = this.norm(st.q).trim().split(/\s+/).filter(Boolean);
@@ -524,7 +526,7 @@ class Component extends DCLogic {
       countLabel: T.count(filtered.length),
       noResults: filtered.length === 0,
       cards: filtered.slice(0, st.limit).map((v) => ({
-        name: v.name, href: v.href, src: v.embed, thumbImg: thumbImg(ytThumb(v.embed)), hasThumb: !!ytThumb(v.embed), noThumb: !ytThumb(v.embed),
+        name: v.name, href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => this.setState({ thumbnailErrors: Object.assign({}, st.thumbnailErrors, { [v.embed]: true }) }), thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + v.name,
         nota: v.nota || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,
         hasNota: true,
         notaPropia: !!v.nota,

@@ -11,6 +11,7 @@ from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
 
 def build():
+    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
