@@ -49,3 +49,26 @@ html[data-ig-preferences="2"] main :is(p,li,.valor) a:not([role="button"]):not(.
  html[data-ig-preferences="2"] :is(button[aria-pressed="true"],[role="tab"][aria-selected="true"]){border-color:Highlight!important;text-decoration-line:underline!important}
  html[data-ig-preferences="2"] :is(#rguide,#ig-guide){background:transparent!important;border-block:2px solid Highlight!important}
 }
+
+
+/* Independent text settings: absent/original values preserve the brand styles.
+   Font stacks use only fonts already available; no font files are distributed. */
+.ig-text-settings{margin:10px 0 14px;min-width:0;max-width:100%;border:1px solid #dfe6ef;border-radius:14px;padding:10px;background:rgba(246,248,251,.65);font:16px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;color:#17395c}
+.ig-text-settings>summary{min-height:44px;cursor:pointer;font-weight:700;white-space:normal;overflow-wrap:normal}
+.ig-text-settings .ig-text-field{display:block;margin:14px 0;min-width:0;max-width:100%;font:inherit}
+.ig-text-settings .ig-text-field>span{display:block;margin-bottom:6px}
+.ig-text-settings select{display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;min-height:44px;font:inherit;color:#17395c;background:#fff;border:1px solid #738396;border-radius:10px;padding:8px}
+.ig-text-settings .ig-text-note{font-size:14px!important;line-height:1.5!important;margin:8px 0!important;color:inherit!important}
+.ig-text-settings .ig-text-reset{min-height:44px;width:100%;white-space:normal;padding:10px;border:1px solid #738396;border-radius:12px;background:#fff;color:#17395c;font:inherit}
+.ig-text-settings .ig-text-preview{margin:16px 0;border-block:1px solid #dfe6ef;padding:12px 0;overflow-wrap:anywhere;font-size:16px}
+.ig-text-settings .ig-text-preview p{font:inherit;margin-top:0}
+.ig-text-settings :is(select,summary,button):focus-visible{outline:3px solid #5a49a8;outline-offset:2px}
+html[data-ig-text-font]:not([data-ig-text-font="original"]) main :is(h1,h2,h3,h4,p,li,dt,dd,td,th,span,button,a,label,summary,select,input,textarea,output){font-family:var(--ig-text-font)!important}
+html[data-ig-text-letter="set"] main,html[data-ig-text-letter="set"] main :is(h1,h2,h3,h4,p,li,dt,dd,td,th,span,button,a,label,summary,select,input,textarea){letter-spacing:var(--ig-text-letter)!important}
+html[data-ig-text-word="set"] main,html[data-ig-text-word="set"] main :is(h1,h2,h3,h4,p,li,dt,dd,td,th,span,button,a,label,summary,select,input,textarea){word-spacing:var(--ig-text-word)!important}
+html[data-ig-text-line="set"] main :is(h1,h2,h3,h4,p,li,dt,dd,td,th,button,a,label,summary,select,input,textarea){line-height:var(--ig-text-line)!important}
+html[data-ig-text-paragraph="set"] main p{margin-block-end:var(--ig-text-paragraph)!important}
+html[data-ig-text-width]:not([data-ig-text-width="original"]) main :is(.ficha,p,ul,ol){max-inline-size:min(100%,var(--ig-text-width));box-sizing:border-box}
+html[data-ig-text-width]:not([data-ig-text-width="original"]) main .ficha{margin-inline:auto}
+html[data-ig-text-font]:not([data-ig-text-font="original"]) main :is(button,a,label,summary),html[data-ig-text-letter="set"] main :is(button,a,label,summary){white-space:normal;overflow-wrap:break-word}
+@media(forced-colors:active){.ig-text-settings,.ig-text-preview{background:Canvas!important;color:CanvasText!important;border-color:CanvasText!important}.ig-text-settings select{background:Canvas!important;color:CanvasText!important}.ig-text-settings :focus-visible{outline-color:Highlight!important}}

@@ -53,6 +53,7 @@
       restore=true;return;
     }
     document.querySelectorAll(opener).forEach(function(b){b.setAttribute('aria-controls',p.id);b.setAttribute('aria-expanded','true');});
+    if(window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);
     if(active===p)return;
     active=p;
     document.dispatchEvent(new CustomEvent('ig:panel-opening',{detail:'reading'}));

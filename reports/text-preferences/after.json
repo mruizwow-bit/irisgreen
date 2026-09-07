@@ -1,0 +1,389 @@
+{
+  "phase": "after",
+  "cases": [
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 390,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 390,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 320,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 320,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    },
+    {
+      "test": "keyboard selects, route and two tabs",
+      "shared_values": {
+        "font": "sans",
+        "letter": null,
+        "word": 0.24,
+        "line": null,
+        "paragraph": null,
+        "width": "original"
+      },
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": {
+        "font": "remote-url",
+        "line": 100,
+        "letter": -0.4,
+        "word": "bad",
+        "paragraph": null,
+        "width": "http://example.org"
+      },
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": "bad",
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": null,
+      "passed": true
+    }
+  ],
+  "failures": [
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 1440,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 390,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 390,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 390,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 320,
+      "passed": false,
+      "error": "'/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/neurodiversidad/condiciones/autismo/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/neurodiversidad/condiciones/autismo/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 320,
+      "passed": false,
+      "error": "'/en/neurodiversity/conditions/autism/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/en/neurodiversity/conditions/autism/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/recursos/juegos/las-cinco-cosas/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/recursos/juegos/las-cinco-cosas/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/intereses/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/intereses/'\n"
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 320,
+      "passed": false,
+      "error": "'/es/videos/'",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 19, in result\n    try:fn();row['passed']=True\n        ^^^^\n  File \"/home/runner/work/irisgreen/irisgreen/dist/../scripts/test_text_preferences.py\", line 94, in adjustments\n    assert hashlib.sha256(text.encode()).hexdigest()==baseline[path]['text'],'Main content changed'\n                                                      ~~~~~~~~^^^^^^\nKeyError: '/es/videos/'\n"
+    }
+  ],
+  "notes": [
+    "Tested on the generated public files, with external domains blocked.",
+    "Text selectors are native select controls with labels.",
+    "Keyboard traversal uses Tab/Shift+Tab; no focus() or synthetic page-state completion.",
+    "Audio uses the real local MP3 and original play() call; time advancing is checked, not physical loudspeaker audibility.",
+    "Computed font stacks do not guarantee that a proprietary device font is installed."
+  ],
+  "passed": false,
+  "summary": {
+    "tested": 25,
+    "passed": 4
+  }
+}
