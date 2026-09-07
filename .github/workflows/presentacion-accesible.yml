@@ -1,9 +1,13 @@
 name: Presentación accesible · temas, guía y concentración
-# Reejecución: la guía se comprueba contra un control real del contenido, no contra el panel que está por encima de ella.
 on:
   push:
     branches: ['ajustes/presentacion-guia-20260907']
-    paths: ['.github/workflows/presentacion-accesible.yml']
+    paths:
+      - '.github/workflows/presentacion-accesible.yml'
+      - 'scripts/extend_presentation_accessibility.py'
+      - 'scripts/refine_presentation_accessibility.py'
+      - 'scripts/test_presentation_accessibility.py'
+      - 'scripts/diagnose_presentation_guide.py'
 permissions:
   contents: write
 concurrency:
