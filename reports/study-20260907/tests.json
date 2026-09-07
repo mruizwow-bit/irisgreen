@@ -1,0 +1,191 @@
+{
+  "entry_checks": [
+    {
+      "path": "es/neurodiversidad/condiciones/autismo/index.html",
+      "language": "es",
+      "claim_count": 7,
+      "references": 7,
+      "summary_matches_index": true,
+      "robots_unchanged": true,
+      "passed": true
+    },
+    {
+      "path": "en/neurodiversity/conditions/autism/index.html",
+      "language": "en",
+      "claim_count": 7,
+      "references": 7,
+      "summary_matches_index": true,
+      "robots_unchanged": true,
+      "passed": true
+    },
+    {
+      "path": "es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/index.html",
+      "language": "es",
+      "claim_count": 5,
+      "references": 4,
+      "summary_matches_index": true,
+      "robots_unchanged": true,
+      "passed": true
+    },
+    {
+      "path": "en/neurodiversity/conditions/developmental-language-disorder-dld/index.html",
+      "language": "en",
+      "claim_count": 5,
+      "references": 4,
+      "summary_matches_index": true,
+      "robots_unchanged": true,
+      "passed": true
+    }
+  ],
+  "browser": [
+    {
+      "id": "autismo",
+      "language": "es",
+      "width": 1440,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "en",
+      "width": 1440,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "es",
+      "width": 1440,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "en",
+      "width": 1440,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "es",
+      "width": 320,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "en",
+      "width": 320,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "es",
+      "width": 320,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "en",
+      "width": 320,
+      "javascript": false,
+      "overflow_px": 0,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "es",
+      "width": 1440,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "en",
+      "width": 1440,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "es",
+      "width": 1440,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "en",
+      "width": 1440,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "es",
+      "width": 320,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "autismo",
+      "language": "en",
+      "width": 320,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "es",
+      "width": 320,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    },
+    {
+      "id": "tdl",
+      "language": "en",
+      "width": 320,
+      "javascript": true,
+      "overflow_px": 0,
+      "music_no_shift": true,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Tests confirm implementation and synchronisation; they do not independently validate scientific claims.",
+    "External domains are blocked in browser tests. No production performance or specialist review is claimed."
+  ],
+  "unreviewed_entries_unchanged": 740,
+  "search_records": 372,
+  "video_total": 52,
+  "video_selection_unchanged": true,
+  "reference_placeholders_queued": 6,
+  "passed": true,
+  "browser_passed": 16,
+  "browser_tested": 16
+}

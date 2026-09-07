@@ -1,0 +1,107 @@
+{
+  "cases": [
+    {
+      "path": "/",
+      "width": 1440,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "width": 1440,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "width": 390,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "width": 320,
+      "language": "es",
+      "youtube_posters": 47,
+      "images_checked": 47,
+      "correct_image_ids": 47,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "language": "en",
+      "youtube_posters": 5,
+      "images_checked": 5,
+      "correct_image_ids": 5,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "width": 390,
+      "language": "en",
+      "youtube_posters": 8,
+      "images_checked": 8,
+      "correct_image_ids": 8,
+      "image_size_stable": true,
+      "play_opens_correct_provider": true,
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "scenario": "thumbnail unavailable",
+      "passed": true,
+      "fallback_visible": true,
+      "play_still_works": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Pruebas en Chromium con dominios externos bloqueados.",
+    "La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.",
+    "Se recorre el listado como visitante; no se fuerza el estado del componente."
+  ],
+  "passed": true,
+  "requested_images": 47
+}

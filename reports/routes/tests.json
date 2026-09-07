@@ -1,0 +1,2455 @@
+{
+  "static": {
+    "html_scanned": 897,
+    "local_references_checked": 28769,
+    "missing_local_references": [],
+    "sitemap_urls": 784,
+    "conditions_content_unchanged": 370,
+    "robots_preserved_pages": 897,
+    "game_fragment_routes_recognized": 13,
+    "sitemap_duplicates": 0,
+    "sitemap_noindex_urls": 0,
+    "pt_alternates": 0,
+    "protected_sources": [
+      "buscador.json",
+      "videoteca-listado.json",
+      "es/recursos/juegos/juegos-120.json",
+      "es/intereses/cromos.json"
+    ],
+    "sitemap_compatibility_identical": true
+  },
+  "redirects": {
+    "mappings_tested": 375,
+    "one_hop": true,
+    "results": [
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/",
+        "to": "/es/neurodiversidad/condiciones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/abuso-e-exploracao/",
+        "to": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/acesso-a-apoios/",
+        "to": "/es/neurodiversidad/condiciones/acceso-a-apoyos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/agenero/",
+        "to": "/es/neurodiversidad/condiciones/agenero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/agorafobia/",
+        "to": "/es/neurodiversidad/condiciones/agorafobia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/alexitimia/",
+        "to": "/es/neurodiversidad/condiciones/alexitimia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/alta-sensibilidade-sps/",
+        "to": "/es/neurodiversidad/condiciones/alta-sensibilidad-sps/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/altas-habilidades-superdotacao/",
+        "to": "/es/neurodiversidad/condiciones/altas-capacidades/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/amizade/",
+        "to": "/es/neurodiversidad/condiciones/amistad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/amnesia-dissociativa/",
+        "to": "/es/neurodiversidad/condiciones/amnesia-disociativa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/animais/",
+        "to": "/es/neurodiversidad/condiciones/animales/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/anorexia-nervosa/",
+        "to": "/es/neurodiversidad/condiciones/anorexia-nerviosa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/ansiedade/",
+        "to": "/es/neurodiversidad/condiciones/ansiedad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/apraxia-de-fala-na-infancia/",
+        "to": "/es/neurodiversidad/condiciones/apraxia-del-habla-infantil/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/arfid/",
+        "to": "/es/neurodiversidad/condiciones/arfid/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/arromanticidade/",
+        "to": "/es/neurodiversidad/condiciones/aromanticismo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/arte-e-criacao/",
+        "to": "/es/neurodiversidad/condiciones/arte-y-creacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/assexualidade/",
+        "to": "/es/neurodiversidad/condiciones/asexualidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/ataque-de-panico/",
+        "to": "/es/neurodiversidad/condiciones/ataque-de-panico/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/atendimento-odontologico/",
+        "to": "/es/neurodiversidad/condiciones/dentista/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/atividade-fisica-e-movimento/",
+        "to": "/es/neurodiversidad/condiciones/actividad-fisica-y-movimiento/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/audhd/",
+        "to": "/es/neurodiversidad/condiciones/audhd/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autismo/",
+        "to": "/es/neurodiversidad/condiciones/autismo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autoaceitacao/",
+        "to": "/es/neurodiversidad/condiciones/autoaceptacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autocompaixao/",
+        "to": "/es/neurodiversidad/condiciones/autocompasion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autoconceito/",
+        "to": "/es/neurodiversidad/condiciones/autoconcepto/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autoconfianca/",
+        "to": "/es/neurodiversidad/condiciones/autoconfianza/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autodefesa-self-advocacy/",
+        "to": "/es/neurodiversidad/condiciones/autodefensa-self-advocacy/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autoestima/",
+        "to": "/es/neurodiversidad/condiciones/autoestima/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/autonomia/",
+        "to": "/es/neurodiversidad/condiciones/autonomia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/bigenero/",
+        "to": "/es/neurodiversidad/condiciones/bigenero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/bissexualidade/",
+        "to": "/es/neurodiversidad/condiciones/bisexualidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/bulimia-nervosa/",
+        "to": "/es/neurodiversidad/condiciones/bulimia-nerviosa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/bullying-escolar/",
+        "to": "/es/neurodiversidad/condiciones/acoso-escolar-bullying/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/burnout-autista/",
+        "to": "/es/neurodiversidad/condiciones/burnout-autista/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/caa-comunicacao-aumentativa-e-alternativa/",
+        "to": "/es/neurodiversidad/condiciones/caa-comunicacion-aumentativa-y-alternativa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/carga-cognitiva/",
+        "to": "/es/neurodiversidad/condiciones/carga-cognitiva/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/cisgenero/",
+        "to": "/es/neurodiversidad/condiciones/cisgenero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/compras/",
+        "to": "/es/neurodiversidad/condiciones/compras/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/comunicacao-no-relacionamento/",
+        "to": "/es/neurodiversidad/condiciones/comunicacion-en-pareja/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/comunicacao-sem-fala-oral/",
+        "to": "/es/neurodiversidad/condiciones/comunicacion-sin-habla-oral/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/conflitos/",
+        "to": "/es/neurodiversidad/condiciones/conflictos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/consentimento/",
+        "to": "/es/neurodiversidad/condiciones/consentimiento/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/consultas-medicas/",
+        "to": "/es/neurodiversidad/condiciones/citas-medicas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/cozinhar/",
+        "to": "/es/neurodiversidad/condiciones/cocinar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/criatividade/",
+        "to": "/es/neurodiversidad/condiciones/creatividad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/culpa/",
+        "to": "/es/neurodiversidad/condiciones/culpa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/cyberbullying/",
+        "to": "/es/neurodiversidad/condiciones/ciberacoso-cyberbullying/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/deadnaming/",
+        "to": "/es/neurodiversidad/condiciones/deadnaming/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/deficiencia-intelectual/",
+        "to": "/es/neurodiversidad/condiciones/discapacidad-intelectual/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/deficiencia/",
+        "to": "/es/neurodiversidad/condiciones/discapacidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/deficiencias-do-desenvolvimento/",
+        "to": "/es/neurodiversidad/condiciones/discapacidades-del-desarrollo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dependencia-e-necessidades-de-apoio/",
+        "to": "/es/neurodiversidad/condiciones/dependencia-y-necesidades-de-apoyo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/depressao/",
+        "to": "/es/neurodiversidad/condiciones/depresion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/descanso-e-recuperacao/",
+        "to": "/es/neurodiversidad/condiciones/descanso-y-recuperacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/diagnostico-tardio/",
+        "to": "/es/neurodiversidad/condiciones/diagnostico-tardio/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/diferencas-sensoriais/",
+        "to": "/es/neurodiversidad/condiciones/diferencias-sensoriales/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dificuldades-de-frequencia-escolar/",
+        "to": "/es/neurodiversidad/condiciones/dificultades-de-asistencia-escolar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dinheiro-e-vida-cotidiana/",
+        "to": "/es/neurodiversidad/condiciones/dinero-y-vida-diaria/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dirigir/",
+        "to": "/es/neurodiversidad/condiciones/conducir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/discalculia/",
+        "to": "/es/neurodiversidad/condiciones/discalculia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/discriminacao/",
+        "to": "/es/neurodiversidad/condiciones/discriminacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/disforia-de-genero/",
+        "to": "/es/neurodiversidad/condiciones/disforia-de-genero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/disgrafia/",
+        "to": "/es/neurodiversidad/condiciones/disgrafia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dislexia/",
+        "to": "/es/neurodiversidad/condiciones/dislexia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dissociacao/",
+        "to": "/es/neurodiversidad/condiciones/disociacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dor-persistente-dor-cronica/",
+        "to": "/es/neurodiversidad/condiciones/dolor-persistente-dolor-cronico/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dor-reconhecer-e-comunicar/",
+        "to": "/es/neurodiversidad/condiciones/dolor-reconocerlo-y-comunicarlo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/dupla-excepcionalidade/",
+        "to": "/es/neurodiversidad/condiciones/doble-excepcionalidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/ecolalia/",
+        "to": "/es/neurodiversidad/condiciones/ecolalia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/educacao-sexual/",
+        "to": "/es/neurodiversidad/condiciones/educacion-sexual/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/emprego-e-neurodiversidade/",
+        "to": "/es/neurodiversidad/condiciones/empleo-y-neurodiversidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/envelhecimento-neurodivergente/",
+        "to": "/es/neurodiversidad/condiciones/envejecimiento-neurodivergente/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/epilepsia/",
+        "to": "/es/neurodiversidad/condiciones/epilepsia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/espiritualidade-crencas-e-nao-crenca/",
+        "to": "/es/neurodiversidad/condiciones/espiritualidad-creencias-y-no-creencia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/esporte/",
+        "to": "/es/neurodiversidad/condiciones/deporte/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/evitacao-persistente-de-demandas-perfil-pda/",
+        "to": "/es/neurodiversidad/condiciones/evitacion-persistente-de-demandas-perfil-pda/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/evitacao/",
+        "to": "/es/neurodiversidad/condiciones/evitacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/expressao-de-genero/",
+        "to": "/es/neurodiversidad/condiciones/expresion-de-genero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/fadiga-social/",
+        "to": "/es/neurodiversidad/condiciones/fatiga-social/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/fobias-especificas/",
+        "to": "/es/neurodiversidad/condiciones/fobias-especificas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/frustracao/",
+        "to": "/es/neurodiversidad/condiciones/frustracion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/funcoes-executivas/",
+        "to": "/es/neurodiversidad/condiciones/funciones-ejecutivas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/gagueira/",
+        "to": "/es/neurodiversidad/condiciones/tartamudez/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/gay/",
+        "to": "/es/neurodiversidad/condiciones/gay/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/genero-fluido/",
+        "to": "/es/neurodiversidad/condiciones/genero-fluido/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/higiene-e-autocuidado/",
+        "to": "/es/neurodiversidad/condiciones/higiene-y-autocuidado/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/hiperacusia/",
+        "to": "/es/neurodiversidad/condiciones/hiperacusia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/hiperfoco/",
+        "to": "/es/neurodiversidad/condiciones/hiperfoco/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/hospital-e-neurodiversidade/",
+        "to": "/es/neurodiversidad/condiciones/hospital-y-neurodiversidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/identidade-de-genero/",
+        "to": "/es/neurodiversidad/condiciones/identidad-de-genero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/identificar-emocoes/",
+        "to": "/es/neurodiversidad/condiciones/identificar-emociones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/imagem-corporal/",
+        "to": "/es/neurodiversidad/condiciones/imagen-corporal/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/inercia-autista/",
+        "to": "/es/neurodiversidad/condiciones/inercia-autista/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/insonia/",
+        "to": "/es/neurodiversidad/condiciones/insomnio/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/interesses-intensos-ou-especiais/",
+        "to": "/es/neurodiversidad/condiciones/intereses-intensos-o-especiales/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/interocepcao/",
+        "to": "/es/neurodiversidad/condiciones/interocepcion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/intersexo/",
+        "to": "/es/neurodiversidad/condiciones/intersexualidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/irmaos/",
+        "to": "/es/neurodiversidad/condiciones/hermanos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/lazer/",
+        "to": "/es/neurodiversidad/condiciones/ocio/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/lesbica/",
+        "to": "/es/neurodiversidad/condiciones/lesbiana/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/lgbtqia-e-neurodiversidade/",
+        "to": "/es/neurodiversidad/condiciones/lgtbi-y-neurodiversidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/limites-pessoais/",
+        "to": "/es/neurodiversidad/condiciones/limites-personales/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/luto/",
+        "to": "/es/neurodiversidad/condiciones/duelo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/masking-camuflagem-autista/",
+        "to": "/es/neurodiversidad/condiciones/masking-camuflaje-autista/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/maternidade-e-paternidade-neurodivergente/",
+        "to": "/es/neurodiversidad/condiciones/maternidad-y-paternidad-neurodivergente/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/meninas-e-mulheres-autistas/",
+        "to": "/es/neurodiversidad/condiciones/ninas-y-mujeres-autistas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/menopausa/",
+        "to": "/es/neurodiversidad/condiciones/menopausia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/menstruacao/",
+        "to": "/es/neurodiversidad/condiciones/menstruacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/misofonia/",
+        "to": "/es/neurodiversidad/condiciones/misofonia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/monotropismo/",
+        "to": "/es/neurodiversidad/condiciones/monotropismo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/moradia/",
+        "to": "/es/neurodiversidad/condiciones/vivienda/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/motivacao/",
+        "to": "/es/neurodiversidad/condiciones/motivacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/mudancas-familiares/",
+        "to": "/es/neurodiversidad/condiciones/cambios-familiares/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/musica/",
+        "to": "/es/neurodiversidad/condiciones/musica/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/mutismo-seletivo/",
+        "to": "/es/neurodiversidad/condiciones/mutismo-selectivo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/nao-binario/",
+        "to": "/es/neurodiversidad/condiciones/no-binario/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/nao-falar/",
+        "to": "/es/neurodiversidad/condiciones/no-hablar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/natureza-e-espacos-ao-ar-livre/",
+        "to": "/es/neurodiversidad/condiciones/naturaleza-y-espacios-al-aire-libre/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/nome-escolhido/",
+        "to": "/es/neurodiversidad/condiciones/nombre-elegido/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/orientacao-romantica/",
+        "to": "/es/neurodiversidad/condiciones/orientacion-romantica/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/orientacao-sexual/",
+        "to": "/es/neurodiversidad/condiciones/orientacion-sexual/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/outing/",
+        "to": "/es/neurodiversidad/condiciones/outing/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/outros-transtornos-alimentares-especificados-osfed/",
+        "to": "/es/neurodiversidad/condiciones/otros-trastornos-alimentarios-especificados-osfed/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pansexualidade/",
+        "to": "/es/neurodiversidad/condiciones/pansexualidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/paralisia-cerebral/",
+        "to": "/es/neurodiversidad/condiciones/paralisis-cerebral/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/perfeccionismo/",
+        "to": "/es/neurodiversidad/condiciones/perfeccionismo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pertencimento/",
+        "to": "/es/neurodiversidad/condiciones/pertenencia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pica/",
+        "to": "/es/neurodiversidad/condiciones/pica/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/planejamento-diario/",
+        "to": "/es/neurodiversidad/condiciones/planificacion-diaria/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pobreza-e-precariedade/",
+        "to": "/es/neurodiversidad/condiciones/pobreza-y-precariedad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pontos-fortes/",
+        "to": "/es/neurodiversidad/condiciones/fortalezas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pressao-social/",
+        "to": "/es/neurodiversidad/condiciones/presion-social/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/privacidade/",
+        "to": "/es/neurodiversidad/condiciones/privacidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/procrastinacao/",
+        "to": "/es/neurodiversidad/condiciones/procrastinacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/pronomes/",
+        "to": "/es/neurodiversidad/condiciones/pronombres/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/propriocepcao/",
+        "to": "/es/neurodiversidad/condiciones/propiocepcion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/queer/",
+        "to": "/es/neurodiversidad/condiciones/queer/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/questioning-em-exploracao/",
+        "to": "/es/neurodiversidad/condiciones/questioning-en-exploracion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/racismo/",
+        "to": "/es/neurodiversidad/condiciones/racismo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/raiva/",
+        "to": "/es/neurodiversidad/condiciones/enfado-e-ira/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/regulacao-emocional/",
+        "to": "/es/neurodiversidad/condiciones/regulacion-emocional/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/rejeicao-e-sensibilidade-a-rejeicao/",
+        "to": "/es/neurodiversidad/condiciones/rechazo-y-sensibilidad-al-rechazo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/relacionamentos-de-casal/",
+        "to": "/es/neurodiversidad/condiciones/relaciones-de-pareja/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/relacionamentos-seguros/",
+        "to": "/es/neurodiversidad/condiciones/relaciones-seguras/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/restaurantes-e-comer-fora/",
+        "to": "/es/neurodiversidad/condiciones/restaurantes-y-comer-fuera/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/ruminacao-mental/",
+        "to": "/es/neurodiversidad/condiciones/rumiacion-mental/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sair-do-armario/",
+        "to": "/es/neurodiversidad/condiciones/salir-del-armario/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/saude-gastrointestinal/",
+        "to": "/es/neurodiversidad/condiciones/salud-gastrointestinal/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/seguranca-on-line/",
+        "to": "/es/neurodiversidad/condiciones/seguridad-online/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/seletividade-alimentar/",
+        "to": "/es/neurodiversidad/condiciones/selectividad-alimentaria/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sexualidade/",
+        "to": "/es/neurodiversidad/condiciones/sexualidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sindrome-de-down/",
+        "to": "/es/neurodiversidad/condiciones/sindrome-de-down/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sindrome-de-tourette/",
+        "to": "/es/neurodiversidad/condiciones/sindrome-de-tourette/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sindrome-do-x-fragil/",
+        "to": "/es/neurodiversidad/condiciones/sindrome-x-fragil/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sistema-vestibular/",
+        "to": "/es/neurodiversidad/condiciones/sistema-vestibular/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sobrecarga-sensorial/",
+        "to": "/es/neurodiversidad/condiciones/sobrecarga-sensorial/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/solidao/",
+        "to": "/es/neurodiversidad/condiciones/soledad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/sono/",
+        "to": "/es/neurodiversidad/condiciones/sueno/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/stimming-autoestimulacao/",
+        "to": "/es/neurodiversidad/condiciones/stimming-autoestimulacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/tdah/",
+        "to": "/es/neurodiversidad/condiciones/tdah/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/teaf-fasd/",
+        "to": "/es/neurodiversidad/condiciones/teaf-fasd/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/tept-transtorno-de-estresse-pos-traumatico/",
+        "to": "/es/neurodiversidad/condiciones/tept-trastorno-por-estres-postraumatico/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/toc/",
+        "to": "/es/neurodiversidad/condiciones/toc/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/tomada-de-decisao/",
+        "to": "/es/neurodiversidad/condiciones/toma-de-decisiones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/trans/",
+        "to": "/es/neurodiversidad/condiciones/trans/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transicao-social/",
+        "to": "/es/neurodiversidad/condiciones/transicion-social/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transporte-publico-e-deslocamentos/",
+        "to": "/es/neurodiversidad/condiciones/transporte-publico-y-desplazamientos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-ansiedade-de-separacao/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-por-separacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-ansiedade-generalizada-tag/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-generalizada-tag/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-ansiedade-social/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-social/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-compulsao-alimentar/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-por-atracon/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-despersonalizacao-desrealizacao/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-despersonalizacion-desrealizacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-de-panico/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-panico/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-dismorfico-corporal-tdc/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-dismorfico-corporal-tdc/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-dissociativo-de-identidade-tdi/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-identidad-disociativo-tid/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-do-desenvolvimento-da-coordenacao-tdc-dispraxia/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-del-desarrollo-de-la-coordinacion-dcd-dispraxia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-do-desenvolvimento-da-linguagem-tdl/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-do-luto-prolongado/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-de-duelo-prolongado/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtorno-do-processamento-auditivo-tpa/",
+        "to": "/es/neurodiversidad/condiciones/trastorno-del-procesamiento-auditivo-tpa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtornos-alimentares/",
+        "to": "/es/neurodiversidad/condiciones/trastornos-de-la-conducta-alimentaria-tca/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtornos-de-tique/",
+        "to": "/es/neurodiversidad/condiciones/trastornos-de-tics/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/transtornos-dos-sons-da-fala/",
+        "to": "/es/neurodiversidad/condiciones/trastornos-de-los-sonidos-del-habla/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/universidade/",
+        "to": "/es/neurodiversidad/condiciones/universidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/vergonha/",
+        "to": "/es/neurodiversidad/condiciones/verguenza/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/neurodiversidade/condicoes/viagens/",
+        "to": "/es/neurodiversidad/condiciones/viajes/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/privacidade/",
+        "to": "/es/privacidad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/",
+        "to": "/es/situaciones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-agua-do-chuveiro-incomoda-minha-pele/",
+        "to": "/es/situaciones/el-agua-de-la-ducha-me-molesta-en-la-piel/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-fala-nao-sai/",
+        "to": "/es/situaciones/no-me-sale-hablar-en-algunos-sitios/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-fome-aparece-de-repente/",
+        "to": "/es/situaciones/el-hambre-aparece-de-golpe-y-ya-estoy-fatal/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-luz-da-manha-me-acorda-cedo-demais/",
+        "to": "/es/situaciones/la-luz-de-la-manana-me-despierta-demasiado-pronto/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-luz-do-mercado-me-esgota/",
+        "to": "/es/situaciones/la-luz-del-supermercado-me-agota/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-mudanca-de-horario-me-desregula-por-varios-dias/",
+        "to": "/es/situaciones/el-cambio-de-hora-me-descoloca-durante-dias/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-noite-a-ansiedade-fica-maior/",
+        "to": "/es/situaciones/por-la-noche-la-ansiedad-se-hace-mas-grande/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-preocupacao-de-nao-dormir-me-mantem-acordada/",
+        "to": "/es/situaciones/me-preocupa-no-dormir-y-eso-me-mantiene-despierta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-roupa-me-incomoda/",
+        "to": "/es/situaciones/la-ropa-me-molesta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/a-roupa-se-acumula/",
+        "to": "/es/situaciones/se-me-acumula-la-ropa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/acordo-com-o-corpo-tenso/",
+        "to": "/es/situaciones/me-despierto-con-el-cuerpo-tenso/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/acordo-de-madrugada/",
+        "to": "/es/situaciones/me-despierto-de-madrugada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/acordo-varias-vezes-por-noite/",
+        "to": "/es/situaciones/me-despierto-varias-veces-cada-noche/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/adio-ate-coisas-que-eu-realmente-quero-fazer/",
+        "to": "/es/situaciones/pospongo-incluso-cosas-que-si-quiero-hacer/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/algumas-temperaturas-da-comida-sao-insuportaveis-para-mim/",
+        "to": "/es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/alguns-sabores-sao-intensos-demais-para-mim/",
+        "to": "/es/situaciones/algunos-sabores-me-resultan-demasiado-intensos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/arrumar-uma-mala-me-sobrecarrega/",
+        "to": "/es/situaciones/preparar-una-maleta-me-desborda/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/as-luzes-brancas-me-cansam-muito-rapido/",
+        "to": "/es/situaciones/las-luces-blancas-me-cansan-muy-rapido/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/beber-agua-e-desagradavel-para-mim-por-causa-da-sensacao/",
+        "to": "/es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/certos-movimentos-ou-escadas-rolantes-me-deixam-tonta/",
+        "to": "/es/situaciones/me-mareo-con-ciertos-movimientos-o-escaleras-mecanicas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/cheiros-de-comida-tiram-minha-fome/",
+        "to": "/es/situaciones/los-olores-de-cocina-me-quitan-el-hambre/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/comeco-muitas-tarefas-e-nao-termino-nenhuma/",
+        "to": "/es/situaciones/empiezo-muchas-tareas-y-no-termino-ninguna/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/comer-fora-de-casa-e-muito-dificil/",
+        "to": "/es/situaciones/comer-fuera-de-casa-es-muy-dificil/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/comer-fora-e-imprevisivel-demais/",
+        "to": "/es/situaciones/comer-fuera-es-demasiado-impredecible/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/comer-num-restaurante-e-demais-para-mim/",
+        "to": "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/como-muito-rapido-e-so-depois-percebo-que-estou-cheia-demais/",
+        "to": "/es/situaciones/como-muy-deprisa-y-luego-noto-que-estoy-demasiado-llena/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/compartilho-informacao-e-depois-acho-que-era-privada/",
+        "to": "/es/situaciones/comparto-informacion-y-despues-me-arrepiento/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/confiro-varias-vezes-se-tranquei-a-porta/",
+        "to": "/es/situaciones/reviso-varias-veces-si-he-cerrado-la-puerta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/continuam-usando-um-nome-que-eu-nao-uso-mais/",
+        "to": "/es/situaciones/siguen-usando-un-nombre-que-ya-no-utilizo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/decidir-o-que-comer-todos-os-dias-me-esgota/",
+        "to": "/es/situaciones/me-agota-decidir-que-comer-cada-dia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/demoro-para-responder/",
+        "to": "/es/situaciones/tardo-mucho-en-contestar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-decidir-algo-comeco-a-decisao-do-zero-outra-vez/",
+        "to": "/es/situaciones/despues-de-decidir-algo-vuelvo-a-empezar-la-decision-desde-cero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-estudar-ou-trabalhar-preciso-de-horas-para-me-recuperar/",
+        "to": "/es/situaciones/despues-de-estudiar-o-trabajar-necesito-horas-para-recuperarme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-sair-preciso-de-bastante-tempo-sem-falar-com-ninguem/",
+        "to": "/es/situaciones/despues-de-salir-necesito-un-rato-largo-sin-hablar-con-nadie/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-um-dia-dificil-comer-fica-ainda-mais-dificil/",
+        "to": "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-um-dia-intenso-continuo-acelerada-a-noite/",
+        "to": "/es/situaciones/despues-de-un-dia-intenso-sigo-acelerada-por-la-noche/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/depois-de-uma-discussao-preciso-de-muito-tempo-para-voltar-a-falar/",
+        "to": "/es/situaciones/despues-de-una-discusion-necesito-mucho-tiempo-para-volver-a-hablar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/digo-sim-para-evitar-conflito-e-depois-nao-dou-conta/",
+        "to": "/es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/durmo-durante-o-dia-e-depois-nao-consigo-dormir-a-noite/",
+        "to": "/es/situaciones/me-duermo-durante-el-dia-y-luego-no-puedo-dormir-de-noche/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/durmo-melhor-quando-nao-preciso-levantar-em-um-horario-fixo/",
+        "to": "/es/situaciones/duermo-mejor-cuando-no-tengo-que-levantarme-a-una-hora-fija/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/em-grupos-grandes-nao-consigo-entrar-na-conversa/",
+        "to": "/es/situaciones/en-grupos-grandes-no-consigo-entrar-en-la-conversacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/entendo-as-palavras-mas-nao-a-intencao/",
+        "to": "/es/situaciones/entiendo-las-palabras-pero-no-la-intencion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/entendo-melhor-quando-me-mostram-um-exemplo/",
+        "to": "/es/situaciones/entiendo-mejor-si-me-ensenan-un-ejemplo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/esqueco-de-comer/",
+        "to": "/es/situaciones/se-me-olvida-comer/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/estou-explorando-meu-genero-sem-palavra-ainda/",
+        "to": "/es/situaciones/estoy-explorando-mi-genero-y-todavia-no-tengo-una-palabra/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/estou-explorando-meu-genero/",
+        "to": "/es/situaciones/estoy-explorando-mi-genero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/evito-certos-numeros-palavras-ou-imagens-porque-me-dao-medo/",
+        "to": "/es/situaciones/evito-ciertos-numeros-palabras-o-imagenes-porque-me-generan-miedo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/falo-demais-sobre-um-assunto-e-so-percebo-depois/",
+        "to": "/es/situaciones/hablo-demasiado-de-un-tema-y-luego-me-doy-cuenta-tarde/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/fazer-prova-numa-sala-barulhenta-e-insuportavel/",
+        "to": "/es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/fazer-uma-ligacao-para-marcar-uma-consulta-parece-enorme/",
+        "to": "/es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-enorme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/fico-esgotada-depois-de-estar-com-gente/",
+        "to": "/es/situaciones/me-agoto-despues-de-estar-con-gente/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/guardo-capturas-de-tela-ou-mensagens-por-medo-de-precisar-provar-algo-depois/",
+        "to": "/es/situaciones/guardo-capturas-o-mensajes-por-miedo-a-necesitar-demostrar-algo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/ha-sons-que-provocam-reacao-imediata/",
+        "to": "/es/situaciones/hay-sonidos-concretos-que-me-provocan-una-reaccion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/interrompo-sem-querer-porque-tenho-medo-de-esquecer-o-que-ia-dizer/",
+        "to": "/es/situaciones/interrumpo-sin-querer-porque-temo-olvidar-lo-que-iba-a-decir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/ir-as-compras-consome-a-energia-do-resto-do-meu-dia/",
+        "to": "/es/situaciones/ir-a-comprar-me-consume-la-energia-del-resto-del-dia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/lavar-ou-limpar-leva-muito-mais-tempo-do-que-eu-gostaria/",
+        "to": "/es/situaciones/lavarme-o-limpiar-me-lleva-mucho-mas-tiempo-del-que-quiero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/levo-muito-tempo-para-terminar-uma-refeicao/",
+        "to": "/es/situaciones/tardo-muchisimo-en-terminar-una-comida/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/minha-cabeca-fica-ativa-assim-que-vou-para-a-cama/",
+        "to": "/es/situaciones/tengo-la-cabeza-activa-justo-cuando-me-acuesto/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/minha-experiencia-de-genero-muda-com-o-tempo/",
+        "to": "/es/situaciones/mi-experiencia-de-genero-cambia-con-el-tiempo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/minha-forma-de-vestir-e-meu-genero/",
+        "to": "/es/situaciones/mi-forma-de-vestir-no-coincide-con-lo-que-esperan-de-mi/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/mudancas-de-temperatura-me-deixam-esgotada/",
+        "to": "/es/situaciones/los-cambios-de-temperatura-me-dejan-agotada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/mudar-de-uma-tarefa-para-outra-me-bloqueia/",
+        "to": "/es/situaciones/cambiar-de-una-tarea-a-otra-me-bloquea/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/mudo-de-assunto-sem-perceber-que-a-outra-pessoa-ainda-estava-falando-do-anterior/",
+        "to": "/es/situaciones/cambio-de-tema-sin-darme-cuenta-de-que-la-otra-persona-seguia-hablando-de-lo-anterior/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/multidoes-me-desorientam-mesmo-quando-nao-ha-muito-barulho/",
+        "to": "/es/situaciones/las-multitudes-me-desorientan-aunque-no-haya-mucho-ruido/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/na-cama-reviso-tudo-que-fiz-errado/",
+        "to": "/es/situaciones/repaso-en-la-cama-todo-lo-que-hice-mal/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-consigo-explicar-meus-sintomas-ao-medico/",
+        "to": "/es/situaciones/no-consigo-explicar-mis-sintomas-al-medico/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-durmo-se-nao-sei-como-sera-amanha/",
+        "to": "/es/situaciones/no-me-duermo-si-no-se-como-sera-manana/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-percebe-fome-ou-sede/",
+        "to": "/es/situaciones/no-nota-hambre-o-sed/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-percebo-que-estou-com-frio-ate-comecar-a-tremer/",
+        "to": "/es/situaciones/no-noto-que-tengo-frio-hasta-que-estoy-temblando/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-quero-que-apareca-meu-nome-anterior/",
+        "to": "/es/situaciones/no-quiero-que-aparezca-mi-nombre-anterior/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-sei-quando-alguem-espera-que-eu-mande-mensagem/",
+        "to": "/es/situaciones/no-se-cuando-alguien-espera-que-le-escriba/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-sei-que-informacao-e-privada/",
+        "to": "/es/situaciones/no-se-que-informacion-es-privada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-sei-que-pronome-usar-para-uma-pessoa/",
+        "to": "/es/situaciones/no-se-que-pronombre-usar-para-una-persona/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-sei-se-entendi-a-instrucao/",
+        "to": "/es/situaciones/no-se-si-he-entendido-la-instruccion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nao-sei-se-estou-cansada-sobrecarregada-ou-com-fome/",
+        "to": "/es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/no-trabalho-gasto-energia-para-parecer-bem/",
+        "to": "/es/situaciones/en-el-trabajo-gasto-la-energia-en-parecer-que-estoy-bien/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/nos-fins-de-semana-meu-horario-de-sono-muda-completamente/",
+        "to": "/es/situaciones/los-fines-de-semana-se-me-cambia-todo-el-horario/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-calor-me-sobrecarrega-antes-do-que-parece-acontecer-com-outras-pessoas/",
+        "to": "/es/situaciones/el-calor-me-satura-antes-que-a-otras-personas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-cheiro-de-algumas-lojas-me-faz-sair/",
+        "to": "/es/situaciones/el-olor-de-algunas-tiendas-me-obliga-a-salir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-hospital-me-sobrecarrega/",
+        "to": "/es/situaciones/el-hospital-me-sobrecarga/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-ruido-e-insuportavel-para-essa-pessoa/",
+        "to": "/es/situaciones/el-ruido-le-resulta-insoportable/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-sono-nao-vem/",
+        "to": "/es/situaciones/me-acuesto-y-el-sueno-no-llega/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/o-transporte-publico-me-sobrecarrega/",
+        "to": "/es/situaciones/el-transporte-publico-me-sobrecarga/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/organizar-compras-cozinhar-e-comer-e-demais-para-o-mesmo-dia/",
+        "to": "/es/situaciones/organizar-compra-cocinar-y-comer-es-demasiado-en-el-mismo-dia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/os-e-mails-se-acumulam-porque-nao-sei-qual-responder-primeiro/",
+        "to": "/es/situaciones/los-correos-se-acumulan-porque-no-se-cual-contestar-primero/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/paro-de-responder-depois-de-varias-horas/",
+        "to": "/es/situaciones/dejo-de-responder-despues-de-varias-horas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/perco-as-chaves-e-o-celular/",
+        "to": "/es/situaciones/pierdo-las-llaves-y-el-movil/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/perco-o-fio-nas-reunioes/",
+        "to": "/es/situaciones/pierdo-el-hilo-en-las-reuniones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/perguntas-abertas-me-bloqueiam/",
+        "to": "/es/situaciones/las-preguntas-abiertas-me-bloquean/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/pergunto-a-mesma-coisa-varias-vezes-para-ficar-tranquila/",
+        "to": "/es/situaciones/pregunto-lo-mismo-varias-veces-para-quedarme-tranquila/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/pesquiso-na-internet-por-horas-para-ter-certeza-de-que-nao-ha-nada-errado/",
+        "to": "/es/situaciones/busco-en-internet-durante-horas-para-asegurarme-de-que-no-pasa-nada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/posso-passar-horas-sem-lembrar-de-beber/",
+        "to": "/es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-da-mesma-rotina-para-conseguir-dormir/",
+        "to": "/es/situaciones/necesito-la-misma-rutina-para-poder-dormirme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-ajuda-para-uma-consulta-medica/",
+        "to": "/es/situaciones/necesito-ayuda-para-una-cita-medica/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-ajustes-no-trabalho/",
+        "to": "/es/situaciones/necesito-ajustes-en-el-trabajo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-mais-tempo-para-passar-de-uma-reuniao-para-outra/",
+        "to": "/es/situaciones/necesito-mas-tiempo-para-cambiar-de-una-reunion-a-otra/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-mais-tempo-para-processar-uma-pergunta/",
+        "to": "/es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-muito-tempo-para-desacelerar-antes-de-dormir/",
+        "to": "/es/situaciones/necesito-mucho-tiempo-para-bajar-el-ritmo-antes-de-dormir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-planos-concretos-para-encontrar-alguem/",
+        "to": "/es/situaciones/necesito-planes-concretos-para-quedar-con-alguien/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-um-ajuste-e-nao-sei-como-pedir/",
+        "to": "/es/situaciones/necesito-un-ajuste-y-no-se-como-pedirlo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-de-uma-adaptacao-na-sala-de-aula/",
+        "to": "/es/situaciones/necesito-una-adaptacion-en-clase/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-fazer-as-tarefas-de-casa-sempre-na-mesma-ordem/",
+        "to": "/es/situaciones/necesito-hacer-las-cosas-de-casa-siempre-en-el-mismo-orden/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-ficar-sozinha-depois-de-um-evento-social/",
+        "to": "/es/situaciones/necesito-estar-sola-despues-de-un-evento-social/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-me-mexer-para-conseguir-me-concentrar/",
+        "to": "/es/situaciones/necesito-moverme-para-poder-concentrarme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-me-recuperar-depois-de-uma-conversa-dificil/",
+        "to": "/es/situaciones/necesito-recuperarme-despues-de-una-conversacion-dificil/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-preparar-com-antecedencia-o-que-vou-dizer-em-uma-reuniao/",
+        "to": "/es/situaciones/necesito-preparar-con-antelacion-lo-que-voy-a-decir-en-una-reunion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-que-a-comida-tenha-sempre-a-mesma-textura/",
+        "to": "/es/situaciones/necesito-que-la-comida-tenga-siempre-la-misma-textura/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-que-as-instrucoes-sejam-dadas-por-escrito/",
+        "to": "/es/situaciones/necesito-que-me-den-las-instrucciones-por-escrito/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-que-outra-pessoa-confirme-que-nao-fiz-nada-de-errado/",
+        "to": "/es/situaciones/necesito-que-otra-persona-me-confirme-que-no-he-hecho-nada-malo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-que-repitam-as-instrucoes/",
+        "to": "/es/situaciones/necesito-que-me-repitan-las-instrucciones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-repetir-uma-acao-ate-parecer-certa/",
+        "to": "/es/situaciones/necesito-repetir-una-accion-hasta-que-se-siente-bien/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-saber-exatamente-o-que-vai-acontecer/",
+        "to": "/es/situaciones/necesito-saber-con-exactitud-que-va-a-ocurrir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-tocar-ou-apertar-coisas-para-me-regular/",
+        "to": "/es/situaciones/necesito-tocar-o-apretar-cosas-para-regularme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/preciso-ver-como-a-comida-foi-preparada-antes-de-comer/",
+        "to": "/es/situaciones/necesito-ver-como-esta-preparada-la-comida-antes-de-comerla/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/qualquer-barulho-pequeno-me-acorda/",
+        "to": "/es/situaciones/cualquier-ruido-pequeno-me-despierta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/quando-aparece-um-pensamento-horrivel-temo-que-ele-diga-algo-sobre-mim/",
+        "to": "/es/situaciones/si-aparece-un-pensamiento-horrible-temo-que-diga-algo-sobre-mi/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/quando-estou-sobrecarregada-minha-forma-de-falar-muda/",
+        "to": "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/quando-me-perguntam-como-estou-nao-sei-o-que-responder/",
+        "to": "/es/situaciones/cuando-me-preguntan-como-estoy-no-se-que-responder/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/quero-fazer-mas-nao-consigo-comecar/",
+        "to": "/es/situaciones/quiero-hacerlo-pero-no-consigo-empezar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/repito-palavras-e-frases/",
+        "to": "/es/situaciones/repito-palabras-y-frases/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/repito-palavras-ou-frases-mentalmente-para-me-sentir-segura/",
+        "to": "/es/situaciones/repito-mentalmente-palabras-o-frases-para-sentirme-segura/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/repito-uma-conversa-na-cabeca-por-horas/",
+        "to": "/es/situaciones/repaso-una-conversacion-durante-horas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/reunioes-sem-pauta-sao-muito-dificeis-para-mim/",
+        "to": "/es/situaciones/las-reuniones-sin-agenda-me-resultan-muy-dificiles/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sair-de-casa-leva-muito-mais-tempo-do-que-eu-calculo/",
+        "to": "/es/situaciones/salir-de-casa-me-lleva-mucho-mas-tiempo-de-lo-que-calculo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/se-a-comida-que-eu-esperava-nao-esta-disponivel-prefiro-nao-comer/",
+        "to": "/es/situaciones/si-no-esta-la-comida-que-esperaba-prefiero-no-comer/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/se-algo-nao-esta-colocado-como-eu-esperava-nao-consigo-parar-de-olhar/",
+        "to": "/es/situaciones/si-algo-no-esta-colocado-como-esperaba-no-puedo-dejar-de-mirarlo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/se-muda-minha-rotina-da-noite/",
+        "to": "/es/situaciones/si-cambia-mi-rutina-no-me-duermo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/se-nao-consigo-conferir-algo-tenho-dificuldade-para-pensar-em-outra-coisa/",
+        "to": "/es/situaciones/si-no-puedo-comprobar-algo-me-cuesta-pensar-en-otra-cosa/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sei-o-que-quero-dizer-mas-nao-encontro-as-palavras/",
+        "to": "/es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sinto-que-atuo-o-dia-inteiro/",
+        "to": "/es/situaciones/siento-que-actuo-todo-el-dia-para-parecer-normal/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sinto-que-preciso-esconder-partes-de-mim-para-me-encaixar/",
+        "to": "/es/situaciones/siento-que-tengo-que-ocultar-partes-de-mi-para-encajar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sinto-que-preciso-parecer-normal-para-me-encaixar/",
+        "to": "/es/situaciones/siento-que-tengo-que-parecer-normal-para-encajar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/so-consigo-comecar-quando-algo-me-interessa-muito/",
+        "to": "/es/situaciones/solo-consigo-arrancar-cuando-algo-me-interesa-mucho/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/so-consigo-comer-algumas-marcas-ou-preparacoes/",
+        "to": "/es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/so-sinto-sono-muito-tarde-mesmo-quando-acordo-cedo/",
+        "to": "/es/situaciones/me-entra-sueno-muy-tarde-aunque-me-levante-temprano/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sons-comuns-sao-dolorosos-para-mim/",
+        "to": "/es/situaciones/los-sonidos-normales-me-resultan-dolorosos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/sou-autista-e-tambem-sou-trans-ou-nao-binaria/",
+        "to": "/es/situaciones/soy-autista-y-tambien-trans-o-no-binario/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/talheres-ou-pratos-mudam-como-sinto-a-comida/",
+        "to": "/es/situaciones/los-cubiertos-o-platos-cambian-como-siento-la-comida/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tarefas-pequenas-se-acumulam-ate-parecerem-impossiveis/",
+        "to": "/es/situaciones/se-me-acumulan-tareas-pequenas-hasta-que-parecen-imposibles/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-com-transporte-por-deficiencia-fisica/",
+        "to": "/es/situaciones/me-cuesta-el-transporte-por-discapacidad-fisica/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-acordar-mesmo-depois-de-dormir-muitas-horas/",
+        "to": "/es/situaciones/me-cuesta-despertarme-aunque-haya-dormido-muchas-horas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-calcular-quanto-tempo-uma-tarefa-vai-levar/",
+        "to": "/es/situaciones/me-cuesta-calcular-cuanto-tiempo-me-llevara-una-tarea/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-colocar-limites-ate-ja-estar-esgotada/",
+        "to": "/es/situaciones/me-cuesta-poner-limites-hasta-que-ya-estoy-agotada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-comecar-uma-tarefa-quando-as-instrucoes-sao-ambiguas/",
+        "to": "/es/situaciones/me-cuesta-empezar-una-tarea-si-las-instrucciones-son-ambiguas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-comer-na-frente-de-outras-pessoas/",
+        "to": "/es/situaciones/me-cuesta-comer-delante-de-otras-personas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-comer-quando-os-alimentos-encostam-no-prato/",
+        "to": "/es/situaciones/me-cuesta-comer-si-los-alimentos-se-tocan-en-el-plato/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-deixar-uma-pergunta-sem-resposta/",
+        "to": "/es/situaciones/me-cuesta-dejar-una-pregunta-sin-respuesta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-distinguir-uma-precaucao-razoavel-de-uma-checagem-excessiva/",
+        "to": "/es/situaciones/me-cuesta-distinguir-una-precaucion-razonable-de-una-comprobacion-excesiva/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-encontrar-uma-posicao-confortavel-para-sentar/",
+        "to": "/es/situaciones/me-cuesta-encontrar-una-postura-comoda-para-sentarme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-experimentar-alimentos-novos-mesmo-quando-quero/",
+        "to": "/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-explicar-algo-quando-me-olham-enquanto-falo/",
+        "to": "/es/situaciones/me-cuesta-explicar-algo-si-me-miran-mientras-hablo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-jogar-coisas-fora-caso-eu-precise-delas-depois/",
+        "to": "/es/situaciones/me-cuesta-tirar-objetos-por-si-los-necesito-despues/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-manter-contato-com-pessoas-que-nao-vejo/",
+        "to": "/es/situaciones/me-cuesta-mantener-contacto-con-personas-que-no-veo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-manter-uma-rotina-de-higiene-quando-estou-sobrecarregada/",
+        "to": "/es/situaciones/me-cuesta-mantener-una-rutina-de-higiene-cuando-estoy-saturada/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-organizar-medicacao-consultas-e-documentos/",
+        "to": "/es/situaciones/me-cuesta-organizar-medicacion-citas-y-documentos/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-parar-uma-tarefa-se-ela-nao-parece-perfeita/",
+        "to": "/es/situaciones/me-cuesta-dejar-una-tarea-si-no-siento-que-esta-perfecta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-pedir-ajuda-antes-de-chegar-ao-limite/",
+        "to": "/es/situaciones/me-cuesta-pedir-ayuda-antes-de-estar-al-limite/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-pedir-que-repitam-algo/",
+        "to": "/es/situaciones/me-cuesta-pedir-que-repitan-algo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-perceber-quando-alguem-esta-brincando/",
+        "to": "/es/situaciones/me-cuesta-detectar-si-alguien-esta-bromeando/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-perceber-quando-preciso-descansar/",
+        "to": "/es/situaciones/me-cuesta-reconocer-cuando-necesito-descansar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-perceber-quanta-forca-estou-usando/",
+        "to": "/es/situaciones/me-cuesta-saber-cuanta-fuerza-estoy-usando/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-priorizar-quando-tudo-parece-urgente/",
+        "to": "/es/situaciones/me-cuesta-priorizar-cuando-todo-parece-urgente/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-saber-quando-e-minha-vez-de-falar/",
+        "to": "/es/situaciones/me-cuesta-saber-cuando-me-toca-hablar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-saber-que-informacoes-contar-em-uma-primeira-conversa/",
+        "to": "/es/situaciones/me-cuesta-saber-que-informacion-contar-en-una-primera-conversacion/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-saber-se-alguem-esta-com-raiva-de-mim/",
+        "to": "/es/situaciones/me-cuesta-saber-si-alguien-esta-enfadado-conmigo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-saber-se-estou-com-fome-ou-ansiosa/",
+        "to": "/es/situaciones/me-cuesta-saber-si-tengo-hambre-o-ansiedad/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-dificuldade-para-saber-se-uma-amizade-continua-bem/",
+        "to": "/es/situaciones/me-cuesta-saber-si-una-amistad-sigue-estando-bien/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-medo-de-contaminar-algo-ou-de-me-contaminar/",
+        "to": "/es/situaciones/me-preocupa-contaminar-algo-o-contaminarme/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-medo-de-ter-machucado-alguem-sem-perceber/",
+        "to": "/es/situaciones/me-preocupa-haber-hecho-dano-sin-darme-cuenta/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/tenho-sonhos-muito-intensos-e-dificuldade-para-voltar-a-dormir/",
+        "to": "/es/situaciones/tengo-suenos-muy-intensos-y-me-cuesta-volver-a-dormir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/trabalho-bem-com-prazo-e-travo-quando-nao-ha-um/",
+        "to": "/es/situaciones/trabajo-bien-con-una-fecha-limite-y-me-bloqueo-sin-ella/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/trocar-de-roupa-de-acordo-com-o-tempo-e-mais-dificil-do-que-parece/",
+        "to": "/es/situaciones/cambiar-de-ropa-segun-el-tiempo-me-resulta-mas-dificil-de-lo-que-parece/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/um-alimento-que-eu-tolerava-de-repente-fica-impossivel-de-comer/",
+        "to": "/es/situaciones/una-comida-que-antes-toleraba-de-repente-ya-no-puedo-comerla/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/um-cochilo-curto-vira-varias-horas/",
+        "to": "/es/situaciones/una-siesta-corta-se-convierte-en-varias-horas/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/um-conserto-ou-burocracia-inesperada-me-bloqueia/",
+        "to": "/es/situaciones/una-averia-o-tramite-inesperado-me-bloquea/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/um-escritorio-aberto-acaba-com-minha-energia/",
+        "to": "/es/situaciones/una-oficina-abierta-me-deja-sin-energia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/um-toque-inesperado-me-assusta-muito/",
+        "to": "/es/situaciones/el-contacto-inesperado-me-sobresalta-muchisimo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-duvida-pequena-cresce-ate-ocupar-meu-dia-inteiro/",
+        "to": "/es/situaciones/una-duda-pequena-crece-hasta-ocuparme-todo-el-dia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-interrupcao-me-faz-perder-completamente-o-fio-da-tarefa/",
+        "to": "/es/situaciones/una-interrupcion-me-hace-perder-por-completo-el-hilo/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-ligacao-telefonica-e-muito-mais-dificil-para-mim-do-que-escrever/",
+        "to": "/es/situaciones/una-llamada-telefonica-me-resulta-mucho-mas-dificil-que-escribir/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-mudanca-pequena-altera-o-meu-dia-inteiro/",
+        "to": "/es/situaciones/un-cambio-pequeno-altera-todo-el-dia/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-roupa-que-tolero-em-um-dia-me-incomoda-em-outro/",
+        "to": "/es/situaciones/la-ropa-que-tolero-un-dia-me-molesta-otro/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/uma-tarefa-grande-me-bloqueia-antes-mesmo-de-comecar/",
+        "to": "/es/situaciones/una-tarea-grande-me-bloquea-antes-de-empezar/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/usar-outro-nome-me-deixa-mais-confortavel/",
+        "to": "/es/situaciones/usar-otro-nombre-me-hace-sentir-mas-comoda/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/viajar-bagunca-completamente-meu-sono/",
+        "to": "/es/situaciones/viajar-me-rompe-por-completo-el-sueno/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/visitas-inesperadas-me-desorganizam/",
+        "to": "/es/situaciones/las-visitas-inesperadas-me-descolocan/",
+        "status": 301,
+        "final_status": 200
+      },
+      {
+        "from": "/pt-br/situacoes/volto-para-conferir-se-desliguei-alguma-coisa/",
+        "to": "/es/situaciones/vuelvo-atras-para-comprobar-si-he-apagado-algo/",
+        "status": 301,
+        "final_status": 200
+      }
+    ],
+    "guards": [
+      {
+        "path": "/es/",
+        "status": 200,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/pt-br/no-existe/",
+        "status": 200,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/direccion-que-no-existe/",
+        "status": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/reports/routes/changes.json",
+        "status": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/scripts/repair_routes.py",
+        "status": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/netlify.toml",
+        "status": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/QUE-SUBIR.md",
+        "status": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "type": "application/xml"
+      },
+      {
+        "path": "/sitemap-1.xml",
+        "status": 200,
+        "type": "application/xml"
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "type": "text/plain"
+      }
+    ]
+  },
+  "browser": [
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200,
+      "directory_link": true,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "width": 1440,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/recursos/juegos/coleccion/sueno/",
+      "width": 1440,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/sobre-iris-green/#criterios-editoriales",
+      "width": 1440,
+      "status": 200,
+      "editorial_anchor_top_px": 159.90625,
+      "editorial_anchor": true,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/intereses/imprimir/?tema=minerales",
+      "width": 1440,
+      "status": 200,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/direccion-que-no-existe/",
+      "width": 1440,
+      "status": 404,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "status": 200,
+      "directory_link": true,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "width": 320,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/recursos/juegos/coleccion/sueno/",
+      "width": 320,
+      "status": 200,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/sobre-iris-green/#criterios-editoriales",
+      "width": 320,
+      "status": 200,
+      "editorial_anchor_top_px": 159.96875,
+      "editorial_anchor": true,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/es/intereses/imprimir/?tema=minerales",
+      "width": 320,
+      "status": 200,
+      "passed": true,
+      "javascript_errors": []
+    },
+    {
+      "path": "/direccion-que-no-existe/",
+      "width": 320,
+      "status": 404,
+      "overflow_px": 0,
+      "passed": true,
+      "javascript_errors": []
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Se comprueban los archivos de dist, que es el directorio configurado para publicar.",
+    "El servidor local emula las reglas concretas del proyecto; no es el CDN de Netlify.",
+    "No se afirma inclusión en Google, revisión documental ni reproducción de vídeos externos.",
+    "Las dos portadas ausentes de Libros siguen siendo un pendiente aparte."
+  ],
+  "passed": true
+}

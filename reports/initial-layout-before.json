@@ -1,0 +1,215 @@
+{
+  "phase": "before",
+  "cases": [
+    {
+      "path": "/es/tramites/directorio/",
+      "width": 1440,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 1048.3000000000175,
+          "value": 0.040530864197530866,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "",
+              "html": "<p data-dc-tpl=\"128\" style=\"margin: 30px 0px 0px; font-size: 14px; color: rgb(90, 102, 117); max-width: 56em;\">Este directorio sirve como orientación y no tiene validez jurídica: no sustituye a la información oficial. La"
+            }
+          ]
+        }
+      ],
+      "cls": 0.040530864197530866,
+      "overflow_px": 0,
+      "initial_cards": 12,
+      "first_contentful_paint_ms": 160,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/taller/",
+      "width": 1440,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 630.8000000000175,
+          "value": 0.19510143952546297,
+          "nodes": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "html": "<section data-dc-tpl=\"70\" style=\"background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(14px); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 20px; padding: 22px 24px; margin-bottom: 24px;\">\n      <h2 data"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "html": "<div data-dc-tpl=\"78\" style=\"background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 22px; padding: 18px 20px; box-shadow: rgba(23, 57, 92, 0.5) 0px 22p"
+            }
+          ]
+        }
+      ],
+      "cls": 0.19510143952546297,
+      "overflow_px": 0,
+      "initial_cards": 72,
+      "first_contentful_paint_ms": 148,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 1440,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 989,
+          "value": 0.438912037037037,
+          "nodes": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "html": "<section class=\"finder glass\" aria-label=\"Buscar\"><label><span>Buscar un cromo o un tema</span><input id=\"q\" type=\"search\" autocomplete=\"off\" placeholder=\"mirlo, cuarzo, cúmulo…\"></label><div class=\"filters\" id=\"temaFilt"
+            },
+            {
+              "tag": "FOOTER",
+              "id": "",
+              "html": "<footer class=\"ft\"><p><strong>Iris Green</strong> · Base de conocimiento sobre neurodiversidad</p><nav aria-label=\"Explorar\" class=\"ftnav\"><a href=\"/es/sobre-iris-green/\">Sobre Iris Green</a><a href=\"/es/lectura-accesibl"
+            }
+          ]
+        }
+      ],
+      "cls": 0.438912037037037,
+      "overflow_px": 0,
+      "initial_cards": 94,
+      "first_contentful_paint_ms": 108,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 1440,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 1076,
+          "value": 0.08933024691358024,
+          "nodes": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "html": "<section data-dc-tpl=\"108\" style=\"margin-top: 40px; background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 20px; padding: 24px;\">\n      <h2 data-dc-tpl=\"109\" style=\"margin: 0px 0px "
+            }
+          ]
+        }
+      ],
+      "cls": 0.08933024691358024,
+      "overflow_px": 0,
+      "initial_cards": 120,
+      "first_contentful_paint_ms": 140,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "width": 320,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 1020,
+          "value": 0.012708333333333334,
+          "nodes": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "html": "<div data-dc-tpl=\"72\" style=\"background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 22px; padding: 18px; box-shadow: rgba(23, 57, 92, 0.5) 0px 22px 55p"
+            }
+          ]
+        }
+      ],
+      "cls": 0.012708333333333334,
+      "overflow_px": 0,
+      "initial_cards": 12,
+      "first_contentful_paint_ms": 96,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/taller/",
+      "width": 320,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 629.3999999999942,
+          "value": 0.04019255787037037,
+          "nodes": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "html": "<section data-dc-tpl=\"70\" style=\"background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(14px); border: 1px solid rgba(23, 57, 92, 0.1); border-radius: 20px; padding: 22px 24px; margin-bottom: 24px;\">\n      <h2 data"
+            }
+          ]
+        }
+      ],
+      "cls": 0.04019255787037037,
+      "overflow_px": 0,
+      "initial_cards": 72,
+      "first_contentful_paint_ms": 100,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 320,
+      "network": "slow",
+      "layout_entries": [
+        {
+          "time": 992.8000000000175,
+          "value": 0.4490277777777778,
+          "nodes": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "html": "<section class=\"finder glass\" aria-label=\"Buscar\"><label><span>Buscar un cromo o un tema</span><input id=\"q\" type=\"search\" autocomplete=\"off\" placeholder=\"mirlo, cuarzo, cúmulo…\"></label><div class=\"filters\" id=\"temaFilt"
+            },
+            {
+              "tag": "FOOTER",
+              "id": "",
+              "html": "<footer class=\"ft\"><p><strong>Iris Green</strong> · Base de conocimiento sobre neurodiversidad</p><nav aria-label=\"Explorar\" class=\"ftnav\"><a href=\"/es/sobre-iris-green/\">Sobre Iris Green</a><a href=\"/es/lectura-accesibl"
+            }
+          ]
+        }
+      ],
+      "cls": 0.4490277777777778,
+      "overflow_px": 1,
+      "initial_cards": 94,
+      "first_contentful_paint_ms": 56,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 320,
+      "network": "slow",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 120,
+      "first_contentful_paint_ms": 96,
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "External services and web fonts blocked for a reproducible local comparison.",
+    "Slow mode adds 900 ms to JSON and 600 ms to image requests.",
+    "The threshold checks unexpected first-screen shifts, not changes requested by a click or search."
+  ],
+  "passed": true
+}

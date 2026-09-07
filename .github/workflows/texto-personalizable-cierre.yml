@@ -1,0 +1,93 @@
+name: Lectura · cierre visual e inventario
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/texto-personalizable-cierre.yml']
+permissions:
+  contents: write
+concurrency:
+  group: texto-personalizable-irisgreen
+  cancel-in-progress: false
+jobs:
+  cerrar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador y rótulos que caben en móvil
+        run: |
+          python3 -m venv /tmp/ig-text-final
+          /tmp/ig-text-final/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
+          /tmp/ig-text-final/bin/python -m playwright install --with-deps chromium >/tmp/ig-text-final.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/finalize_text_preferences.py')
+          p.write_text(p.read_text().replace('temas/opaque','temas y fondo opaco'))
+          PY
+          python3 scripts/finalize_text_preferences.py
+          python3 scripts/extend_text_preferences.py
+          python3 scripts/refine_text_preferences.py
+          node --check assets/preferencias-lectura.js
+          python3 scripts/build_site.py
+          echo "IG_TEST_OUT=$GITHUB_WORKSPACE/reports/text-preferences" >> "$GITHUB_ENV"
+      - name: Comprobar las opciones nuevas y el texto dentro de los campos
+        run: |
+          cd dist
+          /tmp/ig-text-final/bin/python ../scripts/test_text_preferences.py --phase after
+      - name: Repetir Tab real y música reproduciéndose
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-text-final/bin/python ../scripts/test_text_preferences.py --phase base
+      - name: Repetir conservación de preferencias
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-text-final/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Repetir filtros, listados y recuperación de red
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-text-final/bin/python ../scripts/test_coherence.py
+      - name: Conservar resultados y actualizar el mismo inventario
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          for source,dest in [('dist/reports/preferences/after.json','reports/text-preferences/regression-preferences.json'),('dist/reports/coherence/tests.json','reports/text-preferences/regression-controls.json')]:
+              if Path(source).exists():shutil.copy2(source,dest)
+          PY
+          python3 scripts/finalize_text_preferences.py --document
+      - name: Preparar el paquete de evidencia
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-text-final-evidence');out.mkdir(exist_ok=True)
+          shutil.copytree('reports/text-preferences',out/'reports',dirs_exist_ok=True)
+          shutil.copy2('reports/system-accessibility/INVENTARIO.md',out/'INVENTARIO.md')
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js','es/lectura-accesible/index.html','scripts/extend_text_preferences.py','scripts/refine_text_preferences.py','scripts/finalize_text_preferences.py','scripts/test_text_preferences.py','scripts/test_reading_preferences.py']:
+              p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: texto-personalizable-cierre
+          path: /tmp/ig-text-final-evidence
+          retention-days: 7
+      - name: Guardar el cierre solo en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js es/lectura-accesible/index.html scripts/extend_text_preferences.py scripts/refine_text_preferences.py scripts/finalize_text_preferences.py scripts/test_text_preferences.py scripts/test_reading_preferences.py
+          find reports -name '*.json' -print0 | xargs -0 -r git add --
+          git add -- reports/system-accessibility/INVENTARIO.md
+          test ! -f reports/text-preferences/RESUMEN.md || git add -- reports/text-preferences/RESUMEN.md
+          git diff --cached --quiet || git commit -m 'Cerrar tipografías y espaciados con inventario y pruebas completas'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web

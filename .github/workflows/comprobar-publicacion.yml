@@ -1,0 +1,64 @@
+name: Comprobación previa de publicación
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/comprobar-publicacion.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-release
+          /tmp/ig-release/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-release/bin/python -m playwright install --with-deps chromium >/tmp/ig-release-install.log 2>&1
+      - name: Generar exactamente el directorio que publicará Netlify
+        run: |
+          python3 scripts/build_site.py
+          python3 - <<'PY'
+          import json,hashlib,tomllib,subprocess
+          from pathlib import Path
+          cfg=tomllib.loads(Path('netlify.toml').read_text())
+          assert cfg['build']['publish']=='dist'
+          assert cfg['build']['command']=='python3 scripts/build_site.py'
+          out=Path('/tmp/ig-release-report');out.mkdir()
+          files=[p for p in Path('dist').rglob('*') if p.is_file()]
+          assert not any({'.git','.github','editorial','reports','scripts','_audit','pt-br'} & set(p.relative_to('dist').parts) for p in files)
+          manifest=json.loads(Path('dist/assets/video-thumbnails/manifest.json').read_text())
+          for video in manifest['requested_ids']:
+              assert (Path('dist/assets/video-thumbnails')/(video+'.jpg')).is_file(),video
+          missing=[name for name in ['assets/books/luma-es-512.webp','assets/books/autismo-es-512.webp'] if not (Path('dist')/name).is_file()]
+          report={'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'publish':'dist','public_files':len(files),'working_directories_excluded':True,'thumbnails':len(manifest['requested_ids']),'known_missing_covers':missing,'note':'No nueva validación clínica ni certificación de vídeos remotos. Las portadas ausentes son un defecto previamente existente, no se inventan.'}
+          (out/'preflight.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps(report,ensure_ascii=False))
+          PY
+      - name: Comprobar filtros, listados y recuperación de errores
+        run: cd dist && /tmp/ig-release/bin/python ../scripts/test_coherence.py
+      - name: Comprobar preferencias y navegación entre secciones
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig-release/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Comprobar miniaturas y apertura de reproductores
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig-release/bin/python ../scripts/test_video_thumbnails.py
+      - name: Reunir resultados sin incorporarlos a la web
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-release-report');out.mkdir(exist_ok=True)
+          for item in ['coherence/tests.json','preferences/after.json','thumbnails/tests.json']:
+              src=Path('dist/reports')/item
+              if src.is_file():
+                  dst=out/item;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: comprobacion-previa-publicacion
+          path: /tmp/ig-release-report
+          retention-days: 7

@@ -1,0 +1,430 @@
+{
+  "phase": "after",
+  "cases": [
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 1440,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 390,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/en/neurodiversity/conditions/autism/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/intereses/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "independent settings and reset",
+      "path": "/es/videos/",
+      "width": 320,
+      "independent_values": {
+        "font": "sans",
+        "letter": 0.12,
+        "word": 0.16,
+        "line": 1.5,
+        "paragraph": 2,
+        "width": "narrow"
+      },
+      "persisted": true,
+      "reset_exactly_restores_original": true,
+      "no_auto_speech": true,
+      "combined_150_percent": true,
+      "passed": true
+    },
+    {
+      "test": "keyboard selects, route and two tabs",
+      "shared_values": {
+        "font": "sans",
+        "letter": null,
+        "word": 0.24,
+        "line": null,
+        "paragraph": null,
+        "width": "original"
+      },
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": {
+        "font": "remote-url",
+        "line": 100,
+        "letter": -0.4,
+        "word": "bad",
+        "paragraph": null,
+        "width": "http://example.org"
+      },
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": "bad",
+      "passed": true
+    },
+    {
+      "test": "invalid new preference",
+      "fixture": null,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Tested on the generated public files, with external domains blocked.",
+    "Text selectors are native select controls with labels.",
+    "Keyboard traversal uses Tab/Shift+Tab; no focus() or synthetic page-state completion.",
+    "Audio uses the real local MP3 and original play() call; time advancing is checked, not physical loudspeaker audibility.",
+    "Computed font stacks do not guarantee that a proprietary device font is installed."
+  ],
+  "passed": true,
+  "summary": {
+    "tested": 25,
+    "passed": 25
+  }
+}

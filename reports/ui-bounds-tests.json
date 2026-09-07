@@ -1,0 +1,438 @@
+{
+  "cases": [
+    {
+      "path": "/",
+      "width": 320,
+      "page_width": 305,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 244,
+          "width": 44
+        },
+        {
+          "text": "EN",
+          "right": 292,
+          "width": 44
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 82,
+          "scroll": 82
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 281
+      },
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "page_width": 305,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 55,
+          "width": 42
+        },
+        {
+          "text": "EN",
+          "right": 101.796875,
+          "width": 42
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 82,
+          "scroll": 82
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 281
+      },
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "width": 320,
+      "page_width": 305,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 59,
+          "width": 44
+        },
+        {
+          "text": "EN",
+          "right": 107,
+          "width": 44
+        },
+        {
+          "text": "PT-BR",
+          "right": 163.59375,
+          "width": 52.59375
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 82,
+          "scroll": 82
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 281
+      },
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "page_width": 375,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 314,
+          "width": 44
+        },
+        {
+          "text": "EN",
+          "right": 362,
+          "width": 44
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 390,
+      "page_width": 375,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 315.203125,
+          "width": 42
+        },
+        {
+          "text": "EN",
+          "right": 362,
+          "width": 42
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "width": 390,
+      "page_width": 375,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 257.40625,
+          "width": 44
+        },
+        {
+          "text": "EN",
+          "right": 305.40625,
+          "width": 44
+        },
+        {
+          "text": "PT-BR",
+          "right": 362,
+          "width": 52.59375
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "page_width": 1425,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 1351,
+          "width": 48
+        },
+        {
+          "text": "EN",
+          "right": 1403,
+          "width": 48
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": false,
+      "error": "Page.wait_for_function: Timeout 12000ms exceeded."
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "page_width": 1425,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 1335.625,
+          "width": 52
+        },
+        {
+          "text": "EN",
+          "right": 1393,
+          "width": 52.578125
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "width": 1440,
+      "page_width": 1425,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 1279.578125,
+          "width": 48
+        },
+        {
+          "text": "EN",
+          "right": 1331.578125,
+          "width": 48
+        },
+        {
+          "text": "PT-BR",
+          "right": 1403,
+          "width": 67.421875
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": true
+    }
+  ],
+  "failures": [
+    {
+      "path": "/",
+      "width": 1440,
+      "page_width": 1425,
+      "language_bounds": [
+        {
+          "text": "ES",
+          "right": 1351,
+          "width": 48
+        },
+        {
+          "text": "EN",
+          "right": 1403,
+          "width": 48
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Anterior",
+          "client": 71,
+          "scroll": 71
+        },
+        {
+          "text": "Escuchar",
+          "client": 121,
+          "scroll": 121
+        },
+        {
+          "text": "Siguiente",
+          "client": 80,
+          "scroll": 80
+        }
+      ],
+      "position": {
+        "position": "fixed",
+        "right": "12px",
+        "bottom": "12px",
+        "width": 320
+      },
+      "passed": false,
+      "error": "Page.wait_for_function: Timeout 12000ms exceeded."
+    }
+  ],
+  "notes": [
+    "Prueba en Chromium con recursos externos bloqueados.",
+    "La reproducción local se comprueba en una pista, no se certifica todo el catálogo."
+  ],
+  "passed": false
+}

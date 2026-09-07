@@ -1,0 +1,42 @@
+{
+  "changed": [
+    "es/recursos/juegos/index.html",
+    "es/recursos/juegos/cada-cerebro-su-camino/index.html",
+    "es/recursos/juegos/donde-se-fue-la-energia/index.html",
+    "es/recursos/juegos/el-archivo-de-capacidades/index.html",
+    "es/recursos/juegos/el-aula-al-reves/index.html",
+    "es/recursos/juegos/el-detective-de-los-sentidos/index.html",
+    "es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html",
+    "es/recursos/juegos/el-traductor-de-casa/index.html",
+    "es/recursos/juegos/el-traductor-de-instrucciones/index.html",
+    "es/recursos/juegos/la-cena-de-los-planes/index.html",
+    "es/recursos/juegos/la-consulta/index.html",
+    "es/recursos/juegos/la-maquina-de-empezar/index.html",
+    "es/recursos/juegos/las-cinco-cosas/index.html",
+    "es/recursos/juegos/palabra-misteriosa/index.html"
+  ],
+  "preserved_dictionaries": {
+    "es/recursos/juegos/index.html": "44e9d377ec466a7e732745235fb51c87e8cfea644b1d5efa28439eedc67995d2",
+    "es/recursos/juegos/cada-cerebro-su-camino/index.html": "4b8f9089909b12f8963846023e83a7c5c2a302ddb4043a8c7f295d5ec4752924",
+    "es/recursos/juegos/donde-se-fue-la-energia/index.html": "0bcf386b2eceb8b93a4cc31b88653c707cc4139d0c26c919a9c300e12bde0ff6",
+    "es/recursos/juegos/el-archivo-de-capacidades/index.html": "d41b6c356a52c916b866d82773deeada8040e583011ae699c6d1362993a8561a",
+    "es/recursos/juegos/el-aula-al-reves/index.html": "daf53ed240c7fcc66486c3e1cafc186313f72878ed519c3d21aff483c4785b03",
+    "es/recursos/juegos/el-detective-de-los-sentidos/index.html": "519b073c92e393e539f878d0eae1e53f082984a20caf57fe79dac93bae4ecde6",
+    "es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html": "e0c0db95c617b09b7fc30530d869980fb4df630055ee18de77e9f5c573d56b7d",
+    "es/recursos/juegos/el-traductor-de-casa/index.html": "d39e3bb6e62433996987fa25b43ae92647b59bf28923d6e81048b931adc56ee0",
+    "es/recursos/juegos/el-traductor-de-instrucciones/index.html": "2ec980e0d6e7b2f998aafec924d52a29a4a7f34bc1c048f0372597b3ab91cb83",
+    "es/recursos/juegos/la-cena-de-los-planes/index.html": "dfe238ccda33b30a80feaae7e731b89d60d02cf99c9aa8f6836705bed500d8d0",
+    "es/recursos/juegos/la-consulta/index.html": "eb517d0c94cbcdb0c35c6983008a3be9b0f71c6b68f889dffb65c5efeb5b8f47",
+    "es/recursos/juegos/la-maquina-de-empezar/index.html": "0d6cbc773f850b700fd279cd393e4fab73999c7ac05989b2a48fc9b054b56152",
+    "es/recursos/juegos/las-cinco-cosas/index.html": "d5c88e4dd1810518c8389cc75aae5e5d07cca86aa82d687abefa4c3cc6c9b48e",
+    "es/recursos/juegos/palabra-misteriosa/index.html": "887f6ab9c88b1c4a3d1e879b4f8bfd6b973cc3d6d517ddee51045b23c9c508c3"
+  },
+  "notes": [
+    "Catalogue content and the language dictionaries are byte-preserved.",
+    "The energy-day controls form a wrapping grid below the same illustration on small screens.",
+    "Family selections now belong to each person independently; three choices per person are preserved.",
+    "The letter dialog closes with Escape, contains keyboard focus and restores the background.",
+    "The first download test had not distinguished successive hash-only navigations; the final test now loads each letter independently."
+  ],
+  "catalogue_sha256": "5bd645e719aea87187f7770f96cc6ff1de23cc44c34053234f6579a9694c7ec9"
+}

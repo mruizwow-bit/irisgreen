@@ -1,0 +1,17 @@
+{
+  "run": "34106026048",
+  "workflow_input": "7a0a978a09715b6f2cdc91f4b817176075efa53d",
+  "passed": true,
+  "new_cases": 25,
+  "keyboard_cases": 6,
+  "playing_audio_cases": 4,
+  "preference_regressions": 45,
+  "catalogue_regressions": 24,
+  "updated_inventory": "reports/system-accessibility/INVENTARIO.md",
+  "source_hashes": {
+    "assets/preferencias-lectura.js": "2dfbf47b5d1d67ff562c46c0297566bcf522e0616b7e3d24e7b1295de0443b79",
+    "assets/preferencias-lectura.css": "254dc984d7e223412935195c9a015196691769236aa5d640378b10a7da520df1",
+    "assets/interfaz-comun.js": "61d3f5d80061f3ef11a68f180be35c4dd6da44d5702c711ef9505f5e21c5afa9"
+  },
+  "published": false
+}

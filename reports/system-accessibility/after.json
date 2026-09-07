@@ -1,0 +1,789 @@
+{
+  "phase": "after",
+  "cases": [
+    {
+      "test": "system preferences and Reset",
+      "path": "/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/situaciones/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/recursos/juegos/el-detective-de-los-sentidos/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/sitio-tranquilo/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "started_ring_animation": [
+        "none",
+        "none",
+        "none"
+      ],
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/en/neurodiversity/conditions/",
+      "width": 1440,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/situaciones/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/recursos/juegos/el-detective-de-los-sentidos/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/intereses/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 1,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/es/sitio-tranquilo/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 2,
+      "started_ring_animation": [
+        "none",
+        "none",
+        "none"
+      ],
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "system preferences and Reset",
+      "path": "/en/neurodiversity/conditions/",
+      "width": 320,
+      "initial_media": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "after_reset": {
+        "reduced": true,
+        "forced": true,
+        "system": {
+          "reducedMotion": true,
+          "forcedColors": true
+        },
+        "rootMotion": "off",
+        "animated": 0
+      },
+      "selected_style": {
+        "decoration": "underline",
+        "border": "rgb(0, 0, 0)",
+        "adjust": "auto"
+      },
+      "overflow": 0,
+      "no_auto_audio": true,
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/neurodiversidad/condiciones/",
+      "states": [
+        {
+          "text": "Todas",
+          "decoration": "underline",
+          "adjust": "auto"
+        },
+        {
+          "text": "Todas",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/situaciones/",
+      "states": [
+        {
+          "text": "Todas las áreas",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/videos/",
+      "states": [
+        {
+          "text": "Todos",
+          "decoration": "underline",
+          "adjust": "auto"
+        },
+        {
+          "text": "Todos",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/tramites/directorio/",
+      "states": [
+        {
+          "text": "España",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/taller/",
+      "states": [
+        {
+          "text": "Todo",
+          "decoration": "underline",
+          "adjust": "auto"
+        },
+        {
+          "text": "Todo",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/investigacion/",
+      "states": [
+        {
+          "text": "Todos",
+          "decoration": "underline",
+          "adjust": "auto"
+        },
+        {
+          "text": "Todos",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/intereses/",
+      "states": [
+        {
+          "text": "Todos los temas",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "selected state beyond colour",
+      "path": "/es/biblioteca/",
+      "states": [
+        {
+          "text": "Todas",
+          "decoration": "underline",
+          "adjust": "auto"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/",
+      "width": 1440,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/",
+      "width": 1440,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/intereses/",
+      "width": 1440,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/",
+      "width": 320,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/",
+      "width": 320,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/intereses/",
+      "width": 320,
+      "panel": "music",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    },
+    {
+      "test": "focused control not covered",
+      "path": "/es/intereses/",
+      "width": 320,
+      "panel": "reading",
+      "before_overlap": true,
+      "panel_collapsed": true,
+      "focus_kept": true,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Browser media emulation, not a physical-device accessibility certification.",
+    "No image filters or fictional game state are introduced.",
+    "Targeted occlusion checks focus existing controls after placing them under the panel.",
+    "External resources are blocked; audio files must not be requested by these interactions."
+  ],
+  "browser": "140.0.7339.16",
+  "passed": true,
+  "count": 36
+}

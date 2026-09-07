@@ -1,0 +1,62 @@
+name: Preferencias · comprobación visual final
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/preferencias-remate.yml']
+permissions:
+  contents: write
+concurrency:
+  group: preferencias-irisgreen
+  cancel-in-progress: false
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-prefs-final
+          /tmp/ig-prefs-final/bin/pip -q install playwright==1.55.0
+          /tmp/ig-prefs-final/bin/python -m playwright install --with-deps chromium >/tmp/ig-prefs-browser.log 2>&1
+          python3 scripts/build_site.py
+      - name: Repetir conservación, navegación y controles interiores
+        run: |
+          cd dist
+          /tmp/ig-prefs-final/bin/python ../scripts/test_reading_preferences.py --phase after
+          /tmp/ig-prefs-final/bin/python ../scripts/test_preference_panel_bounds.py
+      - name: Preparar la entrega
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-prefs-final-evidence');out.mkdir()
+          if Path('dist/reports/preferences').exists():shutil.copytree('dist/reports/preferences','reports/preferences',dirs_exist_ok=True)
+          shutil.copytree('reports/preferences',out/'reports')
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_preference_panel_bounds.py']:
+              q=out/'source'/name;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(name,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: preferencias-entrega
+          path: /tmp/ig-prefs-final-evidence
+          retention-days: 3
+      - name: Guardar evidencia solo en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- reports/preferences/*.json
+          python3 - <<'PY'
+          import subprocess
+          names=[n for n in subprocess.check_output(['git','diff','--name-only','-z']).decode().split('\0') if n]
+          assert all(n.startswith('reports/') and n.endswith('.json') for n in names),names
+          if names:subprocess.run(['git','add','--',*names],check=True)
+          PY
+          git diff --cached --quiet || git commit -m 'Confirmar preferencias y botones legibles; actualizar evidencia final'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web

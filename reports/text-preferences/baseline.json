@@ -1,0 +1,17 @@
+{
+  "phase": "baseline",
+  "cases": [],
+  "failures": [],
+  "notes": [
+    "Tested on the generated public files, with external domains blocked.",
+    "Text selectors are native select controls with labels.",
+    "Keyboard traversal uses Tab/Shift+Tab; no focus() or synthetic page-state completion.",
+    "Audio uses the real local MP3 and original play() call; time advancing is checked, not physical loudspeaker audibility.",
+    "Computed font stacks do not guarantee that a proprietary device font is installed."
+  ],
+  "passed": true,
+  "summary": {
+    "tested": 0,
+    "passed": 0
+  }
+}

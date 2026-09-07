@@ -1,0 +1,203 @@
+{
+  "cases": [
+    {
+      "width": 1440,
+      "steps": [
+        {
+          "step": "Inicio: ajustes elegidos",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Búsqueda de autismo",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Ficha",
+          "path": "/es/neurodiversidad/condiciones/autismo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Juego: alternativa de botones utilizada",
+          "path": "/es/recursos/juegos/las-cinco-cosas/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Tus intereses: minerales",
+          "path": "/es/intereses/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Rincón tranquilo: iniciar y detener",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Idioma activo: inglés",
+          "path": "/en/quiet-space/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Volver atrás",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        }
+      ],
+      "passed": true,
+      "no_audio_requests": true,
+      "javascript_errors": []
+    },
+    {
+      "width": 390,
+      "steps": [
+        {
+          "step": "Inicio: ajustes elegidos",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Búsqueda de autismo",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Ficha",
+          "path": "/es/neurodiversidad/condiciones/autismo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Juego: alternativa de botones utilizada",
+          "path": "/es/recursos/juegos/las-cinco-cosas/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Tus intereses: minerales",
+          "path": "/es/intereses/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Rincón tranquilo: iniciar y detener",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Idioma activo: inglés",
+          "path": "/en/quiet-space/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Volver atrás",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        }
+      ],
+      "passed": true,
+      "no_audio_requests": true,
+      "javascript_errors": []
+    },
+    {
+      "width": 320,
+      "steps": [
+        {
+          "step": "Inicio: ajustes elegidos",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Búsqueda de autismo",
+          "path": "/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Ficha",
+          "path": "/es/neurodiversidad/condiciones/autismo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Juego: alternativa de botones utilizada",
+          "path": "/es/recursos/juegos/las-cinco-cosas/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Tus intereses: minerales",
+          "path": "/es/intereses/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Rincón tranquilo: iniciar y detener",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Idioma activo: inglés",
+          "path": "/en/quiet-space/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        },
+        {
+          "step": "Volver atrás",
+          "path": "/es/sitio-tranquilo/",
+          "preferences_unchanged": true,
+          "no_horizontal_overflow": true,
+          "no_speech_request": true
+        }
+      ],
+      "passed": true,
+      "no_audio_requests": true,
+      "javascript_errors": []
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Actual links and form controls in Chromium; not a test with assistive technology users.",
+    "Mobile widths do not substitute for tests on a physical touch device.",
+    "Speech requests and audio network requests are recorded; no audible-voice claim."
+  ],
+  "passed": true
+}

@@ -1,0 +1,36 @@
+name: Presentación · fuentes de la tanda
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/presentacion-fuentes.yml']
+permissions:
+  contents: read
+jobs:
+  fuentes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Exportar los archivos de trabajo actuales y sus huellas
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,shutil,subprocess
+          root=Path.cwd();out=Path('/tmp/ig-presentation-source');out.mkdir()
+          files={}
+          for path in root.rglob('*'):
+              if not path.is_file() or '.git' in path.parts or path.parts[len(root.parts)] in {'audio','reports','_audit','dist'}: continue
+              rel=path.relative_to(root)
+              files[str(rel)]=hashlib.sha256(path.read_bytes()).hexdigest()
+              if path.suffix in {'.html','.css','.js','.json','.py','.md','.toml','.xml','.txt','.yml'} or path.name in {'_headers','_redirects'}:
+                  dest=out/'source'/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,dest)
+          for path in [Path('reports/system-accessibility/INVENTARIO.md')]:
+              dest=out/'source'/path;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,dest)
+          (out/'manifest.json').write_text(json.dumps(files,indent=2))
+          (out/'COMMIT.txt').write_text(subprocess.check_output(['git','rev-parse','HEAD'],text=True))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: presentacion-fuentes-actuales
+          path: /tmp/ig-presentation-source
+          retention-days: 3

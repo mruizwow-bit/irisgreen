@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "width": 1440,
+      "language": "es",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "all_input_preserved": true,
+      "hash_changes_form": true,
+      "keyboard_and_focus_pass": true,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Uses unmodified production HTML, not the selector-instrumented test server.",
+    "The canvas spy records native fillText calls and still draws the real PNG."
+  ],
+  "passed": true
+}

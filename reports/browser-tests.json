@@ -1,0 +1,1456 @@
+{
+  "static": {
+    "html": 1271,
+    "main_navigations": 1270,
+    "support_submenus_kept": 3,
+    "missing_local_paths": {}
+  },
+  "browser": [
+    {
+      "path": "/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 800,
+      "title": "Escríbelo como lo dirías en voz alta.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "home_search_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 677,
+      "title": "Condiciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "types": [
+        "Todas",
+        "apoyo",
+        "contexto",
+        "controvertido",
+        "desarrollo",
+        "diagnóstico",
+        "emergente",
+        "experiencia",
+        "identidad",
+        "proceso",
+        "salud física",
+        "salud mental"
+      ],
+      "x_titles": [
+        "Síndrome X frágil"
+      ],
+      "filters_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 626,
+      "title": "Abuso y explotación",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/situaciones/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 637,
+      "title": "Situaciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/biblioteca/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 642,
+      "title": "Qué existe, cómo se pide y dónde está escrito",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 736,
+      "title": "Primero es un juego. Después enseña algo.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/cuestionarios/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 676,
+      "title": "Orientan. No diagnostican.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 694,
+      "title": "Aquí habla quien lo vive.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 660,
+      "title": "¿Qué puedo pedir y cómo se llama?",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 724,
+      "title": "Todo lo que puedes pedir, con su nombre oficial.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 674,
+      "title": "El sistema de cada país, explicado en español.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/libros/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 684,
+      "title": "Los libros",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
+          "status": 404
+        }
+      ],
+      "passed": false,
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
+    },
+    {
+      "path": "/es/taller/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 747,
+      "title": "Aquí se prueban cosas.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/intereses/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 703,
+      "title": "Tus intereses",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sitio-tranquilo/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 661,
+      "title": "Rincón tranquilo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/investigacion/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 813,
+      "title": "Un estudio no es la ciencia entera.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sobre-iris-green/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 665,
+      "title": "Quién escribe esto y cómo se comprueba",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 684,
+      "title": "Autismo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "ready_ms": 636,
+      "title": "Conditions",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 1093,
+        "y": 634.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 707,
+      "title": "Escríbelo como lo dirías en voz alta.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "home_search_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 669,
+      "title": "Condiciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "types": [
+        "Todas",
+        "apoyo",
+        "contexto",
+        "controvertido",
+        "desarrollo",
+        "diagnóstico",
+        "emergente",
+        "experiencia",
+        "identidad",
+        "proceso",
+        "salud física",
+        "salud mental"
+      ],
+      "x_titles": [
+        "Síndrome X frágil"
+      ],
+      "filters_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 616,
+      "title": "Abuso y explotación",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/situaciones/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 634,
+      "title": "Situaciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/biblioteca/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 641,
+      "title": "Qué existe, cómo se pide y dónde está escrito",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 720,
+      "title": "Primero es un juego. Después enseña algo.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/cuestionarios/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 667,
+      "title": "Orientan. No diagnostican.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 676,
+      "title": "Aquí habla quien lo vive.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 660,
+      "title": "¿Qué puedo pedir y cómo se llama?",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 712,
+      "title": "Todo lo que puedes pedir, con su nombre oficial.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 672,
+      "title": "El sistema de cada país, explicado en español.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/libros/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 672,
+      "title": "Los libros",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0.0233971533312715,
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
+          "status": 404
+        }
+      ],
+      "passed": false,
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
+    },
+    {
+      "path": "/es/taller/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 751,
+      "title": "Aquí se prueban cosas.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/intereses/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 665,
+      "title": "Tus intereses",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sitio-tranquilo/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 641,
+      "title": "Rincón tranquilo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/investigacion/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 801,
+      "title": "Un estudio no es la ciencia entera.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sobre-iris-green/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 660,
+      "title": "Quién escribe esto y cómo se comprueba",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 663,
+      "title": "Autismo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "viewport": [
+        390,
+        844
+      ],
+      "ready_ms": 635,
+      "title": "Conditions",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 43,
+        "y": 478.21875,
+        "width": 320,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 708,
+      "title": "Escríbelo como lo dirías en voz alta.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "home_search_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 670,
+      "title": "Condiciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "types": [
+        "Todas",
+        "apoyo",
+        "contexto",
+        "controvertido",
+        "desarrollo",
+        "diagnóstico",
+        "emergente",
+        "experiencia",
+        "identidad",
+        "proceso",
+        "salud física",
+        "salud mental"
+      ],
+      "x_titles": [
+        "Síndrome X frágil"
+      ],
+      "filters_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 615,
+      "title": "Abuso y explotación",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/situaciones/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 629,
+      "title": "Situaciones",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/biblioteca/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 636,
+      "title": "Qué existe, cómo se pide y dónde está escrito",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 723,
+      "title": "Primero es un juego. Después enseña algo.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/cuestionarios/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 657,
+      "title": "Orientan. No diagnostican.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/videos/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 669,
+      "title": "Aquí habla quien lo vive.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 658,
+      "title": "¿Qué puedo pedir y cómo se llama?",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 718,
+      "title": "Todo lo que puedes pedir, con su nombre oficial.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/vivir-fuera/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 668,
+      "title": "El sistema de cada país, explicado en español.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/libros/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 674,
+      "title": "Los libros",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0.015813036431701972,
+      "pageerrors": [],
+      "local_http_errors": [
+        {
+          "url": "http://127.0.0.1:42449/assets/books/luma-es-512.webp",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:42449/assets/books/autismo-es-512.webp",
+          "status": 404
+        }
+      ],
+      "passed": false,
+      "error": "Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
+    },
+    {
+      "path": "/es/taller/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 749,
+      "title": "Aquí se prueban cosas.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/intereses/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 718,
+      "title": "Tus intereses",
+      "overflow_px": 1,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sitio-tranquilo/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 661,
+      "title": "Rincón tranquilo",
+      "overflow_px": 2,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0.035279579357651566,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/investigacion/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 798,
+      "title": "Un estudio no es la ciencia entera.",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/sobre-iris-green/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 652,
+      "title": "Quién escribe esto y cómo se comprueba",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 667,
+      "title": "Autismo",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0.0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    },
+    {
+      "path": "/en/neurodiversity/conditions/",
+      "viewport": [
+        320,
+        740
+      ],
+      "ready_ms": 637,
+      "title": "Conditions",
+      "overflow_px": 0,
+      "audio_requests_before_open": 0,
+      "music_box": {
+        "x": 12,
+        "y": 374.21875,
+        "width": 281,
+        "height": 353.78125
+      },
+      "music_content_shift_px": 0,
+      "music_pass": true,
+      "mobile_menu_pass": true,
+      "cls": 0,
+      "pageerrors": [],
+      "local_http_errors": [],
+      "passed": true
+    }
+  ],
+  "failures": [
+    "/es/libros/ (1440px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]",
+    "/es/libros/ (390px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]",
+    "/es/libros/ (320px): Recursos locales fallidos: [{'url': 'http://127.0.0.1:42449/assets/books/luma-es-512.webp', 'status': 404}, {'url': 'http://127.0.0.1:42449/assets/books/autismo-es-512.webp', 'status': 404}]"
+  ],
+  "notes": [
+    "Los dominios externos se bloquean en la prueba para comprobar que el funcionamiento local no depende de ellos.",
+    "No se certifica reproducción de YouTube ni revisión del contenido documental."
+  ],
+  "passed": false
+}

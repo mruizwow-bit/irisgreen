@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "path": "assets/preferencias-lectura.js",
+      "changed": true,
+      "before": "2a0049b923da9e2820f659c7c49f4f84ab2800a300fb5c8b7f4b70ac74e19184",
+      "after": "b3c3939161d6793f8594baea539ac84c5fd6d61387460d2f54a89dadc32bcfa4"
+    },
+    {
+      "path": "assets/preferencias-lectura.css",
+      "changed": true,
+      "before": "fa6817028291dd814d0a63d2b1d9a5dcb011bd8f2c1f7576316eaeab91c4d95a",
+      "after": "f1f20ff8721722d1cde6ae4687def270d82329f20e81993c79a14c041af5a9de"
+    },
+    {
+      "path": "assets/interfaz-comun.js",
+      "changed": true,
+      "before": "485c766fcf9f4d0aff34910cf330164c8bc5766a857a2382291ef148965fb13f",
+      "after": "b43befbe38b97164ea9da175f0de82babbe3331d6be9da5289943545021748a1"
+    },
+    {
+      "path": "assets/musica.js",
+      "changed": true,
+      "before": "ad95cf80a9516920d94856687b1da9ef72eb8127e7502036f03575eed7504e51",
+      "after": "a1e9d5ead0a9316801cd8ed46b2641a3beb3fea16bac918ee93deaa91c5925a5"
+    },
+    {
+      "path": "es/lectura-accesible/index.html",
+      "changed": true,
+      "before": "03cb3a7e7527a06590e52de69478fc575b8776711a96400f0ce7b4aa3564cfac",
+      "after": "ba836cc2e46043aa4935feeaf80ac4b236045982d8ae2bf8a5c54defec4d7a7c"
+    }
+  ],
+  "notes": [
+    "The original CSS already respected prefers-reduced-motion.",
+    "OS choices are not persisted as site settings.",
+    "Catalogue data and illustrations are outside this change.",
+    "Scientific sources are not reviewed in this accessibility batch."
+  ]
+}

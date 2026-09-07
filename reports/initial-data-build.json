@@ -1,0 +1,37 @@
+{
+  "pages": [
+    {
+      "page": "es/taller/index.html",
+      "source": "es/taller/taller-retos.json",
+      "sha256": "1a0c9d8821c430c87f7421fd0d8d44170d6a3caa79f147d253e34fdfd03e1382",
+      "original_html_bytes": 87055,
+      "new_html_bytes": 87055,
+      "records": 72
+    },
+    {
+      "page": "es/investigacion/index.html",
+      "source": "es/investigacion/estudios-textos.json",
+      "sha256": "96fb90301c962d539ea1e922a6db6262b7d1a1ff88ad92de37b51c1246f1bc0b",
+      "original_html_bytes": 221964,
+      "new_html_bytes": 221964,
+      "records": 120
+    },
+    {
+      "page": "es/tramites/directorio/index.html",
+      "source": "es/tramites/directorio/tramites-datos.json",
+      "sha256": "ed4dc4254b0edf544f7214986c7706d05003a92ea2519dbb31b23ce2026b4466",
+      "original_html_bytes": 294545,
+      "new_html_bytes": 294545,
+      "records": 2425
+    },
+    {
+      "page": "es/intereses/index.html",
+      "source": "es/intereses/cromos.json",
+      "sha256": "48d2e238fcec22d057254c59aac5de923df12771d43114ce62eae0186d2eac47",
+      "original_html_bytes": 368821,
+      "new_html_bytes": 368821,
+      "records": 94
+    }
+  ],
+  "note": "Generated from the existing JSON; no editorial changes or new review dates."
+}

@@ -43,7 +43,9 @@ html,body{margin:0;background:#eef2f7;color:var(--ink);font-family:'Atkinson Hyp
  .hoja:last-child{break-after:auto;page-break-after:auto}
  .cromo{border-color:#9aa8ba}
 }
-</style></head><body>
+</style><link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
+</head><body>
 <div class="barra">
 <button id="imprimir" type="button">Imprimir o guardar en PDF</button>
 <button id="modo4" class="on" type="button">Cuatro por hoja</button>
@@ -104,4 +106,6 @@ if(!ES){document.documentElement.lang="en";document.title="Print cards · Iris G
 fetch("/es/intereses/cromos.json").then(function(r){return r.json()}).then(function(d){datos=d;pinta()})
  .catch(function(){document.getElementById("hojas").innerHTML='<p class="piehoja">No se han podido cargar los cromos.</p>'});
 })();</script>
+<script defer src="/assets/interfaz-comun.js"></script>
+<script defer src="/assets/musica.js"></script>
 </body></html>

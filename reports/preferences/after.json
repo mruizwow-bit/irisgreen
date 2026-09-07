@@ -1,0 +1,343 @@
+{
+  "phase": "after",
+  "cases": [
+    {
+      "scenario": "restore existing preferences",
+      "path": "/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/cuestionarios/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/investigacion/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/libros/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/neurodiversidad/temas/autismo/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/cada-cerebro-su-camino/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/donde-se-fue-la-energia/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-archivo-de-capacidades/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-aula-al-reves/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-detective-de-los-sentidos/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-mapa-del-tesoro-de-casa/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-traductor-de-casa/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/el-traductor-de-instrucciones/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/la-cena-de-los-planes/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/la-consulta/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/la-maquina-de-empezar/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/recursos/juegos/palabra-misteriosa/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/sobre-iris-green/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/taller/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/tramites/directorio/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/tramites/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/videos/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/vivir-fuera/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/neurodiversidad/condiciones/autismo/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/situaciones/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/intereses/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/es/sitio-tranquilo/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "restore existing preferences",
+      "path": "/en/neurodiversity/conditions/",
+      "width": 320,
+      "overflow": 0,
+      "same_visible_state": true,
+      "passed": true
+    },
+    {
+      "scenario": "round trip and reset",
+      "width": 1440,
+      "navigation_paths": 5,
+      "unrelated_data_preserved": true,
+      "boundaries": true,
+      "passed": true
+    },
+    {
+      "scenario": "round trip and reset",
+      "width": 390,
+      "navigation_paths": 5,
+      "unrelated_data_preserved": true,
+      "boundaries": true,
+      "passed": true
+    },
+    {
+      "scenario": "round trip and reset",
+      "width": 320,
+      "navigation_paths": 5,
+      "unrelated_data_preserved": true,
+      "boundaries": true,
+      "passed": true
+    },
+    {
+      "scenario": "real synchronization between two tabs",
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 0,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 1,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 2,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 3,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 4,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 5,
+      "passed": true
+    },
+    {
+      "scenario": "invalid stored value",
+      "fixture": 6,
+      "passed": true
+    },
+    {
+      "scenario": "storage blocked",
+      "path": "/es/neurodiversidad/condiciones/",
+      "passed": true
+    },
+    {
+      "scenario": "storage blocked",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "passed": true
+    },
+    {
+      "scenario": "presentation changes do not restart narration",
+      "voice_after_reload": false,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Legacy settings are seeded only as test fixtures; interactions then use the real controls.",
+    "External domains blocked. Native speak calls are counted without replacing the page logic.",
+    "The seven existing controls are consolidated; extra typefaces and voice features are not part of this batch."
+  ],
+  "summary": {
+    "tested": 45,
+    "passed": 45,
+    "failures": 0
+  },
+  "passed": true
+}

@@ -1,0 +1,112 @@
+name: Preferencias de lectura compartidas
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/preferencias-tanda.yml']
+permissions:
+  contents: write
+concurrency:
+  group: preferencias-irisgreen
+  cancel-in-progress: false
+jobs:
+  preferencias:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador y registrar catálogos sin modificarlos
+        run: |
+          python3 -m venv /tmp/ig-prefs
+          /tmp/ig-prefs/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-prefs/bin/python -m playwright install --with-deps chromium >/tmp/ig-prefs-install.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          names=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json']
+          Path('/tmp/ig-prefs-catalogues.json').write_text(json.dumps({n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in names}))
+          p=Path('scripts/test_reading_preferences.py');s=p.read_text()
+          s=s.replace("if path in ['index.html',STATIC[0]]:","if path in ['index.html',STATIC[0],'es/intereses/index.html']:")
+          p.write_text(s)
+          PY
+      - name: Conservar el comportamiento anterior
+        run: |
+          if test ! -f reports/preferences/before.json; then
+            /tmp/ig-prefs/bin/python scripts/test_reading_preferences.py --phase before
+          fi
+      - name: Migrar los controles existentes y verificar repetibilidad
+        run: |
+          python3 scripts/unify_reading_preferences.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          files=[Path('index.html'),*Path('es').rglob('*.html'),*Path('en').rglob('*.html'),Path('assets/lectura-accesible.js')]
+          Path('/tmp/ig-prefs-files.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}))
+          PY
+          python3 scripts/unify_reading_preferences.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re,subprocess
+          for name,digest in json.loads(Path('/tmp/ig-prefs-files.json').read_text()).items():assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,'Migration changes twice: '+name
+          for name,digest in json.loads(Path('/tmp/ig-prefs-catalogues.json').read_text()).items():assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,'Catalogue changed: '+name
+          for path in [Path('index.html'),*Path('es').rglob('index.html')]:
+              s=path.read_text()
+              if 'window.IGPreferences.connect' not in s:continue
+              for m in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',s,re.S):
+                  Path('/tmp/ig-prefs-check.js').write_text(m[1]);subprocess.run(['node','--check','/tmp/ig-prefs-check.js'],check=True)
+          PY
+          node --check assets/preferencias-lectura.js
+          node --check assets/lectura-accesible.js
+          python3 scripts/build_site.py
+      - name: Probar migración, navegación, pestañas, límites, restablecer y audio
+        run: |
+          cd dist
+          /tmp/ig-prefs/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Comprobar los botones interiores y cromos al 150 por ciento
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-prefs/bin/python ../scripts/test_preference_panel_bounds.py
+      - name: Repetir la batería anterior de paneles y juegos alternativos
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-prefs/bin/python ../scripts/test_accessibility_batch.py --phase after
+      - name: Preparar evidencia completa sin incorporarla al sitio público
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-prefs-evidence');out.mkdir(exist_ok=True)
+          if Path('dist/reports/preferences').exists():shutil.copytree('dist/reports/preferences','reports/preferences',dirs_exist_ok=True)
+          if Path('dist/reports/accessibility/after.json').exists():shutil.copy2('dist/reports/accessibility/after.json','reports/preferences/regression-accessibility.json')
+          if Path('reports/preferences').exists():shutil.copytree('reports/preferences',out/'reports',dirs_exist_ok=True)
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_preference_panel_bounds.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
+              p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: preferencias-resultados
+          path: /tmp/ig-prefs-evidence
+          retention-days: 3
+      - name: Guardar cambios e informes solo en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html es en assets/lectura-accesible.js scripts/test_accessibility_batch.py scripts/test_reading_preferences.py
+          test ! -d reports/preferences || git add -- reports/preferences/*.json
+          python3 - <<'PY'
+          import subprocess
+          names=subprocess.check_output(['git','diff','--name-only','-z']).decode().split('\0')
+          names=[n for n in names if n]
+          unknown=[n for n in names if not(n.startswith('reports/') and n.endswith('.json'))]
+          assert not unknown, 'Unexpected unstaged files: '+repr(unknown)
+          if names:subprocess.run(['git','add','--',*names],check=True)
+          PY
+          git diff --cached --quiet || git commit -m 'Comprobar conservación de preferencias y controles completos en móvil'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web

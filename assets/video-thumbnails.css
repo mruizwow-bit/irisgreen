@@ -1,0 +1,7 @@
+/* Miniaturas reales; el espacio del reproductor conserva su proporción 16:9. */
+.ig-video-poster{overflow:hidden;isolation:isolate}
+.ig-video-poster .ig-video-thumbnail{display:block;position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;pointer-events:none;opacity:1;filter:none;z-index:0}
+.ig-video-poster>span:last-child:not(.ig-thumbnail-unavailable){padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.94);color:#17395c;text-shadow:none!important}
+.ig-video-poster>span:last-child:empty{display:none!important}
+.ig-video-poster:focus-visible{outline:3px solid #5a49a8;outline-offset:-4px}
+.ig-thumbnail-unavailable{position:absolute;left:12px;right:12px;top:12px;z-index:1;padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.92);color:#435268;font-size:14px;line-height:1.35;text-align:left}

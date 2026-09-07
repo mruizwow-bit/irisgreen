@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es"><head><script src="/assets/preferencias-lectura.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f6f8fb">
@@ -25,8 +25,12 @@
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   }
 </style>
+<link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
 </head>
-<body>
+<body class="ig-game-page">
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +43,7 @@
       radial-gradient(100% 70% at 4% 8%, rgba(150,133,214,0.3), transparent 62%),
       radial-gradient(120% 90% at 60% 104%, rgba(120,175,214,0.32), transparent 66%),
       #fff;
-    background-attachment: fixed; }
+    background-attachment: scroll; }
   * { box-sizing: border-box; }
   a { color: #1f5f8b; text-decoration: none; }
   a:hover { color: #164a70; text-decoration: underline; text-underline-offset: 3px; }
@@ -114,7 +118,7 @@
 @media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
 @media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
 </style>
-<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><nav class="ig-uh-nav" aria-label="{{ tExploreAria }}"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/tramites/">Cómo pedirlo</a><a class="ig-nav-en" href="/es/tramites/">How to ask</a><a class="ig-nav-pt" href="/es/tramites/">Como pedir</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/" aria-current="page">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/" aria-current="page">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/" aria-current="page">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="{{ tExploreAria }}" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a aria-current="page" class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a aria-current="page" class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a aria-current="page" class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
   <main style="max-width: 1180px; margin: 0 auto; padding: 34px 28px 80px;">
     <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a49a8;">{{ tShelf }}</p>
@@ -124,8 +128,8 @@
 
     <div style="position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(23,57,92,0.12); box-shadow: 0 26px 60px -44px rgba(23,57,92,0.6); background: #fff;">
       <img src="../../../../img/j4-tablero.webp" alt="{{ tBoardAlt }}" style="display: block; width: 100%; height: auto;">
-      <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
-        <button sc-camel-on-click="{{ d.click }}" aria-label="{{ d.aria }}" style="position: absolute; left: {{ d.left }}; top: {{ d.top }}; width: {{ d.width }}; height: {{ d.height }}; background: {{ d.bg }}; border: {{ d.border }}; border-radius: 10px; cursor: {{ d.cursor }}; padding: 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px;">
+      <div class="ig-energy-days"><sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+        <button class="ig-energy-day" sc-camel-on-click="{{ d.click }}" aria-label="{{ d.aria }}" style="position: absolute; left: {{ d.left }}; top: {{ d.top }}; width: {{ d.width }}; height: {{ d.height }}; background: {{ d.bg }}; border: {{ d.border }}; border-radius: 10px; cursor: {{ d.cursor }}; padding: 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px;">
           <span style="font-size: 12px; font-weight: 700; color: #17395c; background: rgba(255,255,255,0.85); border-radius: 999px; padding: 1px 8px;">{{ d.name }}</span>
           <span style="font-size: 15px; font-weight: 700; color: {{ d.sumColor }};">{{ d.sumLabel }}</span>
           <span style="display: flex; flex-wrap: wrap; gap: 2px; justify-content: center;">
@@ -134,7 +138,7 @@
             </sc-for>
           </span>
         </button>
-      </sc-for>
+      </sc-for></div>
     </div>
 
     <div style="margin-top: 22px; background: rgba(255,255,255,0.8); backdrop-filter: blur(14px); border: 1px solid rgba(23,57,92,0.1); border-radius: 20px; padding: 20px 22px;">
@@ -177,17 +181,17 @@
   </main>
 
   <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);">
+    <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);" id="ig-reading-panel" data-ig-reading-panel="" role="region" aria-labelledby="ig-reading-title" popover="manual">
       <div style="display: flex; align-items: center; margin-bottom: 14px;">
-        <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">{{ tReadingPanel }}</strong>
-        <button sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;">×</button>
+        <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;" id="ig-reading-title">{{ tReadingPanel }}</strong>
+        <button sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tCloseAria }}" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;" data-ig-reading-close="">×</button>
       </div>
       <div style="display: grid; gap: 10px;">
         <div>
           <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }}{{ fsLabel }}</div>
           <div style="display: flex; gap: 8px;">
-            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;">A−</button>
-            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;">A+</button>
+            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;" disabled="{{ fsDownDisabled }}">A−</button>
+            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;" disabled="{{ fsUpDisabled }}">A+</button>
           </div>
         </div>
         <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
@@ -198,7 +202,7 @@
             {{ t.label }}
           </button>
         </sc-for>
-        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button>
+        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button><p class="ig-preference-note" role="status">{{ preferenceStatus }}</p>
       </div>
     </div>
   </sc-if>
@@ -233,9 +237,7 @@ const STR = {
     kinds: ["Gasta", "Depende", "Recarga"],
     weekTotal: "Tu semana",
     reset: "Empezar otra vez",
-    tokens: ["A cama","A xícara","O Walkman","A máquina de escrever","O ônibus","O prato com dois garfos","O telefone","O livro","Os tênis","O cachorro na coleira"],
-    tokenWhy: ["Dormir é a maior recarga de todas.","Um tempo tranquilo com algo quente.","Música só para você.","É o trabalho ou o estudo.","Barulho, gente e espera.","Comer com gente é bom e cansa ao mesmo tempo.","Uma ligação curta recarrega. Uma longa gasta.","Ler sozinho, no seu ritmo.","Andar ou correr esvazia a cabeça.","O passeio com o cachorro é para os dois."],
-    tokenWhy: ["Sleep is the biggest recharge of all.","A quiet while with something warm.","Music just for you.","This is work or study.","Noise, people and waiting.","Eating with people is nice and tiring at once.","A short call recharges. A long one spends.","Reading alone, at your own pace.","Walking or running empties your head.","The walk with the dog is for both of you."],
+    tokens: ["La cama","La taza","El Walkman","La máquina de escribir","El autobús","El plato con dos tenedores","El teléfono","El libro","Las zapatillas","El perro con correa"],
     tokenWhy: ["Dormir es la recarga más grande.","Un rato tranquilo con algo caliente.","Música solo para ti.","Es el trabajo o el estudio.","Ruido, gente y esperar.","Comer con gente gusta y cansa a la vez.","Una llamada corta recarga. Una larga gasta.","Leer solo, a tu ritmo.","Andar o correr vacía la cabeza.","El paseo con el perro es para los dos."],
     msgStart: "Coloca las fichas y mira qué pasa.",
     msgGood: "Tu semana se sostiene. Hay días que gastan, pero hay días que recargan.",
@@ -266,6 +268,7 @@ const STR = {
     weekTotal: "Your week",
     reset: "Start again",
     tokens: ["Sleeping well", "A while with something warm", "Music on headphones", "Work or study", "The journey there and back", "Eating with people", "A long phone call", "Reading for a while", "Walking a bit", "Being with the dog"],
+    tokenWhy: ["Sleep is the biggest recharge of all.","A quiet while with something warm.","Music just for you.","This is work or study.","Noise, people and waiting.","Eating with people is nice and tiring at once.","A short call recharges. A long one spends.","Reading alone, at your own pace.","Walking or running empties your head.","The walk with the dog is for both of you."],
     msgStart: "Place the tokens and see what happens.",
     msgGood: "Your week holds up. Some days spend, but some days recharge.",
     msgTight: "Your week is tight. One bad day and there is nothing left.",
@@ -295,6 +298,7 @@ const STR = {
     weekTotal: "Sua semana",
     reset: "Começar de novo",
     tokens: ["Dormir bem", "Um tempo com algo quente", "Música no fone", "Trabalhar ou estudar", "A viagem de ida e volta", "Comer com gente", "Uma ligação longa", "Ler um pouco", "Caminhar um pouco", "Ficar com o cachorro"],
+    tokenWhy: ["Dormir é a maior recarga de todas.","Um tempo tranquilo com algo quente.","Música só para você.","É o trabalho ou o estudo.","Barulho, gente e espera.","Comer com gente é bom e cansa ao mesmo tempo.","Uma ligação curta recarrega. Uma longa gasta.","Ler sozinho, no seu ritmo.","Andar ou correr esvazia a cabeça.","O passeio com o cachorro é para os dois."],
     msgStart: "Coloque as fichas e veja o que acontece.",
     msgGood: "Sua semana se sustenta. Tem dia que gasta, mas tem dia que recarrega.",
     msgTight: "Sua semana está apertada. Um dia ruim e não sobra nada.",
@@ -308,9 +312,10 @@ const STR = {
 };
 
 class Component extends DCLogic {
-  state = { lang: "es", placed: {}, picked: null, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
+  state = { lang: "es", placed: {}, picked: null, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
 
   componentDidMount() {
+    this._igPreferencesDisconnect = window.IGPreferences.connect(this);
     try {
       const lang = localStorage.getItem("ig_lang");
       const use = lang && STR[lang] ? lang : "es";
@@ -353,33 +358,8 @@ class Component extends DCLogic {
     return true;
   }
 
-  applyReading(s) {
-    const b = document.body, h = document.documentElement;
-    if (!b) return;
-    b.style.zoom = (s.fs / 17).toFixed(3);
-    b.style.lineHeight = s.spacing ? "1.9" : "";
-    b.style.letterSpacing = s.spacing ? "0.045em" : "";
-    b.style.wordSpacing = s.spacing ? "0.12em" : "";
-    h.dataset.igControls = s.controls ? "big" : "";
-    h.dataset.igContrast = s.contrast ? "on" : "";
-    h.dataset.igMotion = s.motion ? "off" : "";
-    this.setGuide(s.guide);
-    this.setSpeak(s.speak);
-  }
-
-  setGuide(on) {
-    let el = document.getElementById("ig-guide");
-    if (on && !el) {
-      el = document.createElement("div");
-      el.id = "ig-guide";
-      el.style.cssText = "position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(90,73,168,0.14);border-top:2px solid rgba(90,73,168,0.5);border-bottom:2px solid rgba(90,73,168,0.5);top:0";
-      document.body.appendChild(el);
-      this._gm = (e) => { el.style.top = Math.max(0, e.clientY - 23) + "px"; };
-      window.addEventListener("pointermove", this._gm);
-    } else if (!on && el) {
-      window.removeEventListener("pointermove", this._gm);
-      el.remove();
-    }
+  applyReading() {
+    window.IGPreferences.apply();
   }
 
   setSpeak(on) {
@@ -393,11 +373,12 @@ class Component extends DCLogic {
     window.speechSynthesis.speak(u);
   }
 
+  componentWillUnmount() {
+    if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
+  }
+
   setReading(patch) {
-    const st = this.state;
-    const next = Object.assign({ fs: st.fs, spacing: st.spacing, controls: st.controls, contrast: st.contrast, guide: st.guide, speak: st.speak, motion: st.motion }, patch);
-    this.setState(next);
-    this.applyReading(next);
+    window.IGPreferences.changeComponent(this, patch);
   }
 
   renderVals() {
@@ -468,10 +449,12 @@ class Component extends DCLogic {
       complete: allPlaced,
       reset: () => this.setState({ placed: {}, picked: null }),
 
+      preferenceStatus: window.IGPreferences.status(st.lang),
+      fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
       a11yOpen: st.a11y,
       toggleA11y: () => this.setState({ a11y: !st.a11y }),
-      fsUp: () => this.setReading({ fs: Math.min(st.fs + 2, 25) }),
-      fsDown: () => this.setReading({ fs: Math.max(st.fs - 2, 15) }),
+      fsUp: () => window.IGPreferences.step(1),
+      fsDown: () => window.IGPreferences.step(-1),
       fsLabel: Math.round((st.fs / 17) * 100) + "%",
       a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((k, n) => {
         const on = !!st[k];
@@ -485,7 +468,7 @@ class Component extends DCLogic {
           toggle: () => this.setReading({ [k]: !on })
         };
       }),
-      a11yReset: () => this.setReading({ fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false })
+      a11yReset: () => window.IGPreferences.reset()
     };
   }
 }
@@ -493,4 +476,6 @@ class Component extends DCLogic {
 </script>
 
 
-<div id="pl" hidden></div><script src="/assets/musica.js"></script></body></html>
+<div id="pl" hidden></div><script defer src="/assets/interfaz-comun.js"></script>
+<script defer src="/assets/musica.js"></script>
+</body></html>

@@ -1,0 +1,82 @@
+name: Reparación y pruebas de Iris Green
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/reparacion-web.yml']
+permissions:
+  contents: write
+concurrency:
+  group: reparacion-irisgreen
+  cancel-in-progress: false
+jobs:
+  reparar-y-probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador y copia de comparación
+        run: |
+          python3 -m venv /tmp/ig-venv
+          /tmp/ig-venv/bin/pip -q install beautifulsoup4==4.13.4 playwright==1.55.0 pillow==11.3.0
+          /tmp/ig-venv/bin/python -m playwright install --with-deps chromium > /tmp/browser-install.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          for p in Path('es/neurodiversidad/condiciones').rglob('*.html'):
+              q=Path('.baseline')/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - name: Corregir los fallos de anchura y las peticiones de plantillas
+        run: /tmp/ig-venv/bin/python scripts/fix_remaining_layout.py
+      - name: Comprobar sintaxis JavaScript
+        run: |
+          node --check assets/musica.js
+          node --check assets/buscador-comun.js
+          node --check assets/interfaz-comun.js
+          node --check assets/lectura-accesible.js
+      - name: Probar navegación, búsqueda y música en 57 escenarios
+        run: /tmp/ig-venv/bin/python scripts/test_web.py
+      - name: Comprobar texto de controles, idiomas y reproducción local
+        if: always()
+        run: /tmp/ig-venv/bin/python scripts/test_ui_bounds.py
+      - name: Distinguir errores de pista y compatibilidad del navegador
+        if: always()
+        run: /tmp/ig-venv/bin/python scripts/diagnose_audio.py
+      - name: Inventariar las imágenes disponibles
+        if: always()
+        run: |
+          /tmp/ig-venv/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import json
+          out=Path('reports');out.mkdir(exist_ok=True);items=[]
+          for parent in ['img','assets']:
+              for p in sorted(Path(parent).rglob('*')):
+                  if p.suffix.lower() not in {'.png','.webp','.jpg','.jpeg'}:continue
+                  try:
+                      with Image.open(p) as im:
+                          w,h=im.size;items.append({'path':str(p),'width':w,'height':h})
+                  except OSError:pass
+          (out/'image-inventory.json').write_text(json.dumps(items,ensure_ascii=False,indent=2))
+          print('Inventario:',len(items),'imágenes.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pruebas-interfaz-y-recursos
+          path: reports
+          retention-days: 3
+      - name: Guardar únicamente en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html es en pt-br assets buscador.json scripts
+          git add -- reports/*.json
+          # Solo se retiran copias y capturas generadas, ya conservadas en el artefacto.
+          git rm -r --ignore-unmatch -- _audit
+          git ls-files -z 'reports/*.png' 'reports/*.jpg' 'reports/*.b64' | xargs -0 -r git rm -f --
+          git diff --cached --stat
+          git diff --cached --quiet || git commit -m 'Guardar correcciones móviles y pruebas con diagnóstico del audio'
+          git push origin HEAD:ajustes/auditoria-web

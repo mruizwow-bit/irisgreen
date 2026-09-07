@@ -1,0 +1,19 @@
+{
+  "requested": 47,
+  "available": 47,
+  "failed": {},
+  "total_bytes": 5493200,
+  "pages": [
+    {
+      "page": "index.html",
+      "changed": false,
+      "mapped_images": 47
+    },
+    {
+      "page": "es/videos/index.html",
+      "changed": false,
+      "mapped_images": 47
+    }
+  ],
+  "note": "Archivos JPEG originales sin reescalar. El navegador conserva el espacio 16:9 y no carga el reproductor hasta pulsar."
+}

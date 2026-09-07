@@ -1,0 +1,17 @@
+{
+  "changed": [
+    {
+      "page": "index.html",
+      "templates": 1
+    },
+    {
+      "page": "es/videos/index.html",
+      "templates": 1
+    },
+    {
+      "page": "es/neurodiversidad/temas/autismo/index.html",
+      "templates": 1
+    }
+  ],
+  "reason": "El runtime no decodifica sc-raw-iframe. Se usa iframe con src enlazado por el renderer, sin cargar la URL de plantilla."
+}
