@@ -16,28 +16,39 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ajustes/auditoria-web
-      - name: Preparar el navegador y el directorio público actual
+      - name: Preparar navegador y conservar la primera ejecución
         run: |
           python3 -m venv /tmp/ig-text
           /tmp/ig-text/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
           /tmp/ig-text/bin/python -m playwright install --with-deps chromium >/tmp/ig-text-install.log 2>&1
-          python3 scripts/build_site.py
           echo "IG_TEST_OUT=$GITHUB_WORKSPACE/reports/text-preferences" >> "$GITHUB_ENV"
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib,json
+          import hashlib,json,shutil
           files=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json','es/intereses/cromos.json']
           Path('/tmp/ig-text-catalogues.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}))
+          for name in ['after','base','regression-preferences']:
+              p=Path('reports/text-preferences')/(name+'.json');q=p.with_name('first-'+p.name)
+              if p.exists() and not q.exists():shutil.copy2(p,q)
           PY
-      - name: Registrar presentación original y cerrar pruebas pendientes de la base
+          python3 scripts/refine_text_preferences.py
+      - name: Medir el diseño predeterminado sobre la base exacta anterior a esta tanda
         run: |
+          python3 scripts/build_site.py
+          # Comparación de la misma rama antes de esta tanda; no se recupera material histórico.
+          git fetch --depth=1 origin 9a2047f151d6e877d880f85766cfe4f0b18bb98f
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js']:
+              Path('dist',name).write_bytes(subprocess.check_output(['git','show','9a2047f151d6e877d880f85766cfe4f0b18bb98f:'+name]))
+          PY
           cd dist
           /tmp/ig-text/bin/python ../scripts/test_text_preferences.py --phase baseline
-          /tmp/ig-text/bin/python ../scripts/test_text_preferences.py --phase base
-      - name: Incorporar controles independientes y comprobar repetibilidad
-        if: always()
+      - name: Aplicar la ampliación y comprobar integridad y repetibilidad
         run: |
           python3 scripts/extend_text_preferences.py
+          python3 scripts/refine_text_preferences.py
           python3 - <<'PY'
           import hashlib,json
           from pathlib import Path
@@ -45,6 +56,7 @@ jobs:
           Path('/tmp/ig-text-once.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in paths}))
           PY
           python3 scripts/extend_text_preferences.py
+          python3 scripts/refine_text_preferences.py
           python3 - <<'PY'
           import hashlib,json
           from pathlib import Path
@@ -54,18 +66,27 @@ jobs:
           node --check assets/preferencias-lectura.js
           node --check assets/interfaz-comun.js
           python3 scripts/build_site.py
-      - name: Probar opciones nuevas, combinaciones, idiomas, retorno y almacenamiento
+      - name: Probar opciones nuevas y combinaciones en la versión ampliada
         if: always()
         run: |
           cd dist
           /tmp/ig-text/bin/python ../scripts/test_text_preferences.py --phase after
-      - name: Mantener las pruebas anteriores de conservación y controles
+      - name: Comprobar Tab real y una pista reproduciéndose en la versión ampliada
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-text/bin/python ../scripts/test_text_preferences.py --phase base
+      - name: Repetir conservación de preferencias
         if: always()
         run: |
           cd dist
           /tmp/ig-text/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Repetir los controles y catálogos
+        if: always()
+        run: |
+          cd dist
           /tmp/ig-text/bin/python ../scripts/test_coherence.py
-      - name: Preparar evidencia y fuentes exactas sin publicar informes
+      - name: Conservar la evidencia y las fuentes exactas
         if: always()
         run: |
           python3 - <<'PY'
@@ -75,7 +96,7 @@ jobs:
           if Path('dist/reports/preferences/after.json').exists():shutil.copy2('dist/reports/preferences/after.json','reports/text-preferences/regression-preferences.json')
           if Path('dist/reports/coherence/tests.json').exists():shutil.copy2('dist/reports/coherence/tests.json','reports/text-preferences/regression-controls.json')
           shutil.copytree('reports/text-preferences',out/'reports',dirs_exist_ok=True)
-          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js','es/lectura-accesible/index.html','scripts/extend_text_preferences.py','scripts/test_text_preferences.py']:
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js','es/lectura-accesible/index.html','scripts/extend_text_preferences.py','scripts/refine_text_preferences.py','scripts/test_text_preferences.py','scripts/test_reading_preferences.py']:
               p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -89,8 +110,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js es/lectura-accesible/index.html
+          git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js es/lectura-accesible/index.html scripts/test_text_preferences.py scripts/test_reading_preferences.py
           find reports -name '*.json' -print0 | xargs -0 -r git add --
-          git diff --cached --quiet || git commit -m 'Incorporar tipografía y espaciados independientes con evidencia de pruebas'
+          git diff --cached --quiet || git commit -m 'Cerrar opciones independientes de lectura con controles y regresiones'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
