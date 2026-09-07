@@ -63,6 +63,11 @@ jobs:
         run: |
           cd dist
           /tmp/ig-prefs/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Comprobar los botones interiores y cromos al 150 por ciento
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-prefs/bin/python ../scripts/test_preference_panel_bounds.py
       - name: Repetir la batería anterior de paneles y juegos alternativos
         if: always()
         run: |
@@ -78,7 +83,7 @@ jobs:
           if Path('dist/reports/preferences').exists():shutil.copytree('dist/reports/preferences','reports/preferences',dirs_exist_ok=True)
           if Path('dist/reports/accessibility/after.json').exists():shutil.copy2('dist/reports/accessibility/after.json','reports/preferences/regression-accessibility.json')
           if Path('reports/preferences').exists():shutil.copytree('reports/preferences',out/'reports',dirs_exist_ok=True)
-          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_preference_panel_bounds.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
               p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -94,8 +99,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- index.html es en assets/lectura-accesible.js scripts/test_accessibility_batch.py scripts/test_reading_preferences.py
           test ! -d reports/preferences || git add -- reports/preferences/*.json
-          # The build also refreshes tracked JSON reports. Include only those;
-          # never stage dist, temporary files, captures or unknown source changes.
           python3 - <<'PY'
           import subprocess
           names=subprocess.check_output(['git','diff','--name-only','-z']).decode().split('\0')
@@ -104,6 +107,6 @@ jobs:
           assert not unknown, 'Unexpected unstaged files: '+repr(unknown)
           if names:subprocess.run(['git','add','--',*names],check=True)
           PY
-          git diff --cached --quiet || git commit -m 'Conservar ajustes entre secciones, corregir cromos ampliados y guardar pruebas'
+          git diff --cached --quiet || git commit -m 'Comprobar conservación de preferencias y controles completos en móvil'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
