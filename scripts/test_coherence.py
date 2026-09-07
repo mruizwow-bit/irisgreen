@@ -94,9 +94,12 @@ def other(p,path,width):
   p.wait_for_function('document.querySelectorAll("[data-ig-filter=temaChips]").length>11')
   topics=filters(p,'temaChips').all_text_contents();assert 'Misofonía' in topics and 'CAA' in topics and 'TDL' in topics
   assert filters(p,'platChips').all_text_contents()==['Todos','YouTube','Vimeo']
-  choose(p,'platChips','Vimeo');assert p.get_by_role('button',name='Ver aquí',exact=True).count()==1
-  filters(p,'platChips').first.click();choose(p,'temaChips','Misofonía');assert p.get_by_role('button',name='Ver aquí',exact=True).count()==1
-  p.locator('main input[type=search]').fill('zzzinexistentexxx');assert p.get_by_role('button',name='Ver aquí',exact=True).count()==0
+  choose(p,'platChips','Vimeo');assert p.locator('main button.ig-video-poster:visible').count()==1
+  assert 'vimeo.com' in p.locator('main button.ig-video-poster:visible').get_attribute('data-ig-video')
+  filters(p,'platChips').first.click();choose(p,'temaChips','Misofonía');assert p.locator('main button.ig-video-poster:visible').count()==1
+  assert 'youtube' in p.locator('main button.ig-video-poster:visible').get_attribute('data-ig-video')
+  assert p.locator('main button.ig-video-poster:visible').get_attribute('aria-label').startswith('Reproducir vídeo:')
+  p.locator('main input[type=search]').fill('zzzinexistentexxx');assert p.locator('main button.ig-video-poster:visible').count()==0
   p.locator('main input[type=search]').fill('');filters(p,'temaChips').first.click();key='temaChips';row['actual_topics']=topics
  elif path=='/':
   p.wait_for_function('document.querySelectorAll("#escuchar [data-ig-filter=temaChips]").length===15')
