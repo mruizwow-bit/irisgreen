@@ -1,3 +1,4 @@
+# Desarrollo activo: los assets compartidos se revalidan en cada carga para evitar mezclar versiones.
 /sitemap.xml
   Content-Type: application/xml; charset=UTF-8
   Cache-Control: public, max-age=0, must-revalidate
