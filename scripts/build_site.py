@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""Publica solo los recursos del sitio; no copia informes, scripts o instrucciones.
+El directorio dist se crea de cero. No se elimina ni cambia la biblioteca fuente.
+"""
+import json
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
+
+
+def build():
+    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
+    dst=ROOT/'dist'
+    if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
+    if dst.exists():shutil.rmtree(dst)
+    dst.mkdir()
+    for name in PUBLIC_DIRS:
+        p=ROOT/name
+        if not p.is_dir():raise FileNotFoundError(p)
+        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns('__pycache__','*.py','*.md','*.dc.html'))
+    for name in PUBLIC_ROOT:
+        p=ROOT/name
+        if not p.is_file():raise FileNotFoundError(p)
+        shutil.copy2(p,dst/name)
+    files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
+    assert not any(p.startswith(('scripts/','reports/','pt-br/','.github/','_audit/')) for p in files)
+    out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
+    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','pt-br','.github','_audit'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
+    print('Directorio público:',len(files),'archivos; fuentes e informes permanecen fuera de dist.')
+    return dst
+
+if __name__=='__main__':build()
