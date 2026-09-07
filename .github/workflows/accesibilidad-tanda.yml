@@ -4,30 +4,72 @@ on:
     branches: ['ajustes/auditoria-web']
     paths: ['.github/workflows/accesibilidad-tanda.yml']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: accesibilidad-irisgreen
+  cancel-in-progress: false
 jobs:
-  preparar:
+  accesibilidad:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Preparar fuentes actuales sin modificar las páginas
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-a11y
+          /tmp/ig-a11y/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-a11y/bin/python -m playwright install --with-deps chromium >/tmp/ig-a11y-install.log 2>&1
+      - name: Registrar el comportamiento anterior
+        run: |
+          test -f reports/accessibility/before.json || /tmp/ig-a11y/bin/python scripts/test_accessibility_batch.py --phase before
+      - name: Aplicar únicamente la corrección prevista
+        run: |
+          python3 scripts/repair_accessibility.py
+          node --check assets/interfaz-comun.js
+          node --check assets/musica.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,subprocess
+          for p in [Path('index.html'),*Path('es').rglob('*.html')]:
+              for m in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',p.read_text(),re.S):
+                  tmp=Path('/tmp/check-a11y.js');tmp.write_text(m[1]);subprocess.run(['node','--check',str(tmp)],check=True)
+          PY
+      - name: Probar paneles y completar los dos juegos con los controles grandes
+        run: /tmp/ig-a11y/bin/python scripts/test_accessibility_batch.py --phase after
+      - name: Repetir las partidas y cartas de la tanda anterior
+        if: success()
+        run: |
+          /tmp/ig-a11y/bin/python scripts/test_games.py --phase accessibility --full
+          /tmp/ig-a11y/bin/python scripts/test_game_letters.py
+      - name: Preparar evidencia
+        if: always()
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import subprocess,shutil,json
-          out=Path('/tmp/ig-a11y-source');out.mkdir()
-          wanted={'img/j1-vera.webp','img/j7-casa.webp','img/v40-brand-symbol.webp'}
-          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          for name in filter(None,paths):
-              p=Path(name)
-              if p.parts[0] in {'.github','reports','_audit'}:continue
-              if p.suffix in {'.html','.js','.css','.json','.toml','.txt','.py'} or name in wanted:
+          import shutil
+          out=Path('/tmp/ig-a11y-results');out.mkdir(exist_ok=True)
+          for folder in ['reports/accessibility','reports/games']:
+              if Path(folder).exists():shutil.copytree(folder,out/folder,dirs_exist_ok=True)
+          for p in [Path('index.html'),*Path('assets').rglob('*'),*Path('es/recursos/juegos').rglob('*.html')]:
+              if p.is_file() and p.suffix in {'.js','.css','.html'}:
                   q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
-          (out/'version.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip()}))
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
-          name: accesibilidad-fuentes
-          path: /tmp/ig-a11y-source
+          name: accesibilidad-resultados
+          path: /tmp/ig-a11y-results
           retention-days: 3
+      - name: Guardar los cambios e informes solo en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html es en assets
+          test ! -d reports/accessibility || git add -- reports/accessibility/*.json
+          git add -- reports/games/*.json
+          git diff --cached --quiet || git commit -m 'Guardar mejoras de acceso por teclado y controles equivalentes con pruebas'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
