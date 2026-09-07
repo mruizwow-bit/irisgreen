@@ -3,6 +3,7 @@
  try{S=JSON.parse(localStorage.getItem(K))||{}}catch(e){S={}}
  var steps=[1,1.15,1.3,1.5];
  function apply(){
+  document.documentElement.toggleAttribute('data-ig-text-enlarged',(S.fs||0)>0);
   B.style.setProperty('--fs',(steps[S.fs||0])+'rem');
   B.style.setProperty('--ls',S.ls?'.06em':'0');
   B.classList.toggle('big',!!S.big); B.classList.toggle('hc',!!S.hc);

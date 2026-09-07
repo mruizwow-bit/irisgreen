@@ -54,12 +54,15 @@ def run():
       assert opener.get_attribute('aria-expanded')=='true'
       assert panel.locator('button[aria-pressed]').count()==6,'All six reading options must expose their state'
       toggle=panel.locator('button[aria-pressed]').first
-      if toggle.count():
+      for toggle in panel.locator('button[aria-pressed]').all():
        before=toggle.get_attribute('aria-pressed');toggle.click();assert toggle.get_attribute('aria-pressed')!=before
+       toggle.click();assert toggle.get_attribute('aria-pressed')==before
+      row['six_reading_options_toggle']=True
       plus=panel.locator('button').filter(has_text=re.compile(r'^A\+$'))
       for _ in range(4):plus.click()
       row['enlarged_box']=check_box(p,panel)
       row['enlarged_content_overflow_px']=p.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)')
+      assert row['enlarged_content_overflow_px']<=2,'Content overflows when enlarged: '+str(row['enlarged_content_overflow_px'])
       reset=panel.locator('button').filter(has_text=re.compile(r'^(Restablecer|Reset)$')).last
       reset.click();check_box(p,panel)
       close=panel.locator('[data-ig-reading-close]');cbox=close.bounding_box();assert cbox['width']>=44 and cbox['height']>=44
@@ -100,6 +103,7 @@ def run():
       p.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
       try:
        p.goto(BASE+'/es/recursos/juegos/'+slug+'/',wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.locator('.ig-uh-langs button').filter(has_text=re.compile('^'+lang.upper()+'$')).click()
+       p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
        p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
        target=p.locator('main .ig-picture-target');before=rects(target)
        details=p.locator('.ig-touch-alternative');summary=details.locator('summary');summary.focus();summary.press('Space')

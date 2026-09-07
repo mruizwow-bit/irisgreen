@@ -405,6 +405,7 @@ class Component extends DCLogic {
     b.style.zoom = "";
     const readingMain = document.querySelector("main");
     if (readingMain) readingMain.style.zoom = (s.fs / 17).toFixed(3);
+    h.toggleAttribute("data-ig-text-enlarged", s.fs > 17);
     b.style.lineHeight = s.spacing ? "1.9" : "";
     b.style.letterSpacing = s.spacing ? "0.045em" : "";
     b.style.wordSpacing = s.spacing ? "0.12em" : "";

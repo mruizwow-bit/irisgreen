@@ -100,3 +100,14 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
 .ig-touch-choices>button[aria-pressed=true]{border-color:#5a49a8;background:rgba(90,73,168,.1)}
 .ig-picture-target{min-width:0!important;min-height:0!important}
 .ig-picture-target:focus-visible{outline:3px solid #5a49a8!important;outline-offset:-3px!important}
+
+/* Enlarged reading: reflow content on narrow screens, not the fixed UI. */
+@media(max-width:700px){
+ html[data-ig-text-enlarged] main :where(div,section,article,label,p,span,strong){min-width:0!important;max-width:100%}
+ html[data-ig-text-enlarged] main :where(h1,h2,h3,p,li,a,span,strong,button,label){overflow-wrap:anywhere}
+ html[data-ig-text-enlarged] main :where(button,input,select,textarea,img){max-width:100%!important}
+ html[data-ig-text-enlarged] main :where(div,section,article,label)[style*="display: flex"]{flex-wrap:wrap!important}
+ html[data-ig-text-enlarged] main :where(div,section,article)[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+ html[data-ig-text-enlarged] .qchoice{grid-template-columns:minmax(44px,72px) minmax(0,1fr)}
+ html[data-ig-text-enlarged] .qchoice img{width:72px}
+}
