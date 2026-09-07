@@ -31,6 +31,8 @@ jobs:
           node --check assets/interfaz-comun.js
           python3 scripts/build_site.py
           python3 scripts/repair_routes.py --check
+      - name: Medir la geometría de la guía
+        run: /tmp/ig-presentation/bin/python scripts/diagnose_presentation_guide.py
       - name: Probar temas, fondo, guía y vista centrada
         run: /tmp/ig-presentation/bin/python scripts/test_presentation_accessibility.py
       - name: Repetir conservación y opciones de texto existentes
@@ -64,7 +66,7 @@ jobs:
             '## Límites',
             'No se aplican filtros a fotografías o ilustraciones. Esta tanda no completa la revisión de información dependiente del color por actividad, la voz avanzada ni las alternativas textuales de todos los materiales. Las pruebas son locales en Chromium y no sustituyen lectores de pantalla, líneas braille, control por voz ni dispositivos físicos.','',
             '## Evidencia',
-            '`presentation-guide-tests.json` y capturas `presentation-dark-focus-*` y `guide-keyboard-*`. Las baterías anteriores de preferencias, panel, ajustes del sistema y recorrido se ejecutan de nuevo antes de incorporar el cambio.'
+            '`presentation-guide-tests.json`, `guide-diagnostic.json` y capturas de la tanda. Las baterías anteriores de preferencias, panel, ajustes del sistema y recorrido se ejecutan de nuevo antes de incorporar el cambio.'
           ]
           Path('reports/accessibility/presentation-guide-RESUMEN.md').write_text('\n'.join(lines)+'\n')
           PY
@@ -80,8 +82,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js es/lectura-accesible/index.html
-          git add -- scripts/extend_presentation_accessibility.py scripts/refine_presentation_accessibility.py scripts/test_presentation_accessibility.py
-          git add -- reports/accessibility/presentation-guide-changes.json reports/accessibility/presentation-guide-tests.json reports/accessibility/presentation-guide-RESUMEN.md
+          git add -- scripts/extend_presentation_accessibility.py scripts/refine_presentation_accessibility.py scripts/test_presentation_accessibility.py scripts/diagnose_presentation_guide.py
+          git add -- reports/accessibility/presentation-guide-changes.json reports/accessibility/presentation-guide-tests.json reports/accessibility/presentation-guide-RESUMEN.md reports/accessibility/guide-diagnostic.json
           git diff --cached --quiet || git commit -m 'Añadir temas, fondo opaco, guía sin ratón y vista centrada; registrar pruebas'
           git pull --rebase origin ajustes/presentacion-guia-20260907
           git push origin HEAD:ajustes/presentacion-guia-20260907
