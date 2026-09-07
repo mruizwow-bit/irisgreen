@@ -1,0 +1,100 @@
+name: Portadas reales · comprobar incorporación
+on:
+  push:
+    branches: ['ajustes/portadas-20260907']
+    paths: ['.github/workflows/portadas-publicacion.yml']
+permissions:
+  contents: write
+jobs:
+  portadas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/portadas-20260907
+      - name: Preparar navegador y verificar las portadas recibidas
+        run: |
+          python3 -m venv /tmp/ig-books
+          /tmp/ig-books/bin/pip -q install playwright==1.55.0 pillow==11.3.0
+          /tmp/ig-books/bin/python -m playwright install --with-deps chromium >/tmp/ig-books-browser.log 2>&1
+          /tmp/ig-books/bin/python - <<'PY'
+          import json,hashlib,re
+          from pathlib import Path
+          from PIL import Image
+          data=json.loads(Path('reports/books/portadas-origen.json').read_text())
+          for row in data['files']:
+              p=Path(row['path']);assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256']
+              with Image.open(p) as im:
+                  assert im.size==(row['width'],row['height']);im.verify()
+          p=Path('es/libros/index.html');s=p.read_text()
+          marker='width="{{ b.coverWidth }}" height="{{ b.coverHeight }}"'
+          if marker not in s:
+              assert hashlib.sha1(b'blob '+str(len(s.encode())).encode()+b'\0'+s.encode()).hexdigest()=='e1f9663bcce370d28e6a6348c0ef361f3536f25a'
+              old='<img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" style="width: 100%;'
+              new='<img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" '+marker+' decoding="async" style="height: auto; width: 100%;'
+              assert s.count(old)==1;s=s.replace(old,new,1)
+              old='cover: COVERS[n].cover, coverAlt: COVERS[n].alt,'
+              new=old+' coverWidth: 512, coverHeight: n === 0 ? 512 : 725,'
+              assert s.count(old)==1;s=s.replace(old,new,1)
+              p.write_text(s)
+          print('Dos imágenes verificadas. Dimensiones reservadas; textos y enlaces no cambian.')
+          PY
+          python3 scripts/build_site.py
+      - name: Probar imágenes, proporciones y anchos en ambos idiomas
+        run: |
+          /tmp/ig-books/bin/python - <<'PY'
+          import functools,json,threading,re
+          from pathlib import Path
+          from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+          from playwright.sync_api import sync_playwright
+          root=Path.cwd();out=root/'reports/books';out.mkdir(exist_ok=True)
+          class Quiet(SimpleHTTPRequestHandler):
+              def log_message(self,*args):pass
+          server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(root/'dist')))
+          threading.Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
+          report={'cases':[],'failures':[],'scope':'Libros en Chromium local: imágenes, proporciones y geometría; no se certifican precios ni destinos de compra externos.'}
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch()
+              for width in [1440,390,320]:
+                  for lang in ['es','en']:
+                      row={'width':width,'language':lang};ctx=browser.new_context(viewport={'width':width,'height':900});page=ctx.new_page();page.set_default_timeout(12000);errors=[]
+                      page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(base) else r.abort())
+                      page.on('pageerror',lambda e:errors.append(str(e)))
+                      try:
+                          page.goto(base+'/es/libros/?lang='+lang,wait_until='domcontentloaded');page.locator('main h1').first.wait_for()
+                          page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^'+lang.upper()+'$')).click()
+                          imgs=page.locator('main .ig-book-card > img');assert imgs.count()==2
+                          page.wait_for_function('Array.from(document.querySelectorAll("main .ig-book-card > img")).every(e=>e.complete&&e.naturalWidth>1)')
+                          row['covers']=imgs.evaluate_all('(els)=>els.map(e=>({src:new URL(e.currentSrc).pathname,width:e.naturalWidth,height:e.naturalHeight,displayWidth:e.getBoundingClientRect().width,displayHeight:e.getBoundingClientRect().height,alt:e.alt,attributeWidth:e.getAttribute("width"),attributeHeight:e.getAttribute("height")}))')
+                          assert [x['src'] for x in row['covers']]==['/assets/books/luma-es-512.webp','/assets/books/autismo-es-512.webp']
+                          for im in row['covers']:
+                              assert im['width']==512 and im['attributeWidth']=='512' and im['alt']
+                              assert abs(im['displayHeight']/im['displayWidth']-im['height']/im['width'])<.02
+                          row['horizontalOverflow']=page.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)');assert row['horizontalOverflow']<=2
+                          assert not errors,errors
+                          page.screenshot(path=str(out/f'libros-{width}-{lang}.png'),full_page=True)
+                          row['passed']=True
+                      except Exception as exc:
+                          row['passed']=False;row['error']=str(exc);report['failures'].append(row.copy())
+                      row['javascriptErrors']=errors;report['cases'].append(row);ctx.close()
+              browser.close()
+          server.shutdown();report['passed']=not report['failures']
+          (out/'portadas-tests.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False))
+          if not report['passed']:raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: portadas-y-pruebas
+          path: reports/books
+          retention-days: 7
+      - name: Guardar exclusivamente la página comprobada y su informe
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/libros/index.html reports/books/portadas-tests.json
+          git diff --cached --quiet || git commit -m 'Reservar el tamaño real de las dos portadas y registrar seis pruebas'
+          git push origin HEAD:ajustes/portadas-20260907
