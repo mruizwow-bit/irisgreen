@@ -1,0 +1,71 @@
+name: Verificar publicación real · portadas y correcciones
+on:
+  push:
+    branches: ['ajustes/portadas-20260907']
+    paths: ['.github/workflows/verificar-portadas-publicadas.yml']
+permissions:
+  contents: write
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: c745fd250819dda04caec1f67b489e958c90a71f
+      - name: Consultar el dominio y comparar con los archivos publicados
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures,hashlib,json,time,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          from datetime import datetime,timezone
+          from pathlib import Path
+          root='https://irisgreen.eu'
+          names=['assets/books/luma-es-512.webp','assets/books/autismo-es-512.webp','assets/preferencias-lectura.js','assets/musica.js','assets/video-thumbnails/74KDFWp1jK8.jpg']
+          expected={'/'+p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in names}
+          paths=['/','/es/libros/','/es/neurodiversidad/condiciones/','/sitemap.xml','/reports/books/portadas-origen.json',*expected]
+          def check(path):
+              row={'path':path}
+              try:
+                  req=urllib.request.Request(root+path,headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-Publication-Check/1.0'})
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      data=r.read(3000000);row.update(status=r.status,content_type=r.headers.get('Content-Type',''),bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+                  if path in expected:row['hash_matches']=row['sha256']==expected[path]
+                  if path=='/':row['books_message']=b'ig-books-message' in data;row['reading_preferences']=b'preferencias-lectura.js' in data;row['unpacked']=b'__bundler/template' not in data
+                  if path=='/es/libros/':row['new_dimensions']=b'coverWidth' in data and b'coverHeight' in data;row['both_covers_referenced']=b'luma-es-512.webp' in data and b'autismo-es-512.webp' in data
+                  if path=='/es/neurodiversidad/condiciones/':row['shared_catalogue']=b'data-ig-catalog' in data
+                  if path=='/sitemap.xml':ET.fromstring(data);row['valid_xml']=True
+              except urllib.error.HTTPError as e:row.update(status=e.code,error=str(e))
+              except Exception as e:row['error']=str(e)
+              return row
+          report={'target_commit':'c745fd250819dda04caec1f67b489e958c90a71f','netlify_deploy_confirmed_by_connector':'6a9e9ae69b9c6f0008b75690','attempts':[],'scope':'Comprobación HTTP y huellas de recursos de producción; las seis pruebas visuales de Libros son una batería distinta, local.'}
+          for attempt in range(3):
+              with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:rows=list(pool.map(check,paths))
+              by={r['path']:r for r in rows}
+              good=all(by[p].get('hash_matches') for p in expected) and by['/'].get('books_message') and by['/'].get('reading_preferences') and by['/'].get('unpacked') and by['/es/libros/'].get('new_dimensions') and by['/es/libros/'].get('both_covers_referenced') and by['/es/neurodiversidad/condiciones/'].get('shared_catalogue') and by['/sitemap.xml'].get('valid_xml') and by['/reports/books/portadas-origen.json'].get('status')==404
+              report['checks']=rows;report['passed']=bool(good);report['checked_at']=datetime.now(timezone.utc).isoformat();report['attempts'].append({'time':report['checked_at'],'passed':bool(good)})
+              if good:break
+              if attempt<2:time.sleep(15)
+          out=Path('/tmp/ig-publication');out.mkdir(exist_ok=True)
+          (out/'production-portadas.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False))
+          if not report['passed']:raise SystemExit('Comprobación pública no superada; revisar el informe, no afirmar publicación por el merge solamente.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: portadas-publicacion-http
+          path: /tmp/ig-publication
+          retention-days: 7
+      - name: Conservar evidencia en la rama de auditoría, sin tocar main
+        if: always()
+        run: |
+          test -f /tmp/ig-publication/production-portadas.json
+          git fetch origin ajustes/portadas-20260907
+          git checkout -B ajustes/portadas-20260907 FETCH_HEAD
+          mkdir -p reports/books
+          cp /tmp/ig-publication/production-portadas.json reports/books/production-portadas.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- reports/books/production-portadas.json
+          git diff --cached --quiet || git commit -m 'Registrar la comprobación HTTP del despliegue con portadas originales'
+          git push origin HEAD:ajustes/portadas-20260907
