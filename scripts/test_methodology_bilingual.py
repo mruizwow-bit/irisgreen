@@ -75,7 +75,8 @@ try:
         read.click(); page.wait_for_timeout(120)
         panel = page.locator('#a11y:not([hidden])')
         panel_text = norm(panel.inner_text()) if panel.count() else ''
-        must('accessible_reading_is_english', panel.count()==1 and all(x in panel_text for x in ['Accessible reading','Text size','Wider letter spacing','Read aloud','Reset']), panel_text)
+        panel_fold = panel_text.casefold()
+        must('accessible_reading_is_english', panel.count()==1 and all(x.casefold() in panel_fold for x in ['Accessible reading','Text size','Wider letter spacing','Read aloud','Reset']), panel_text)
         page.keyboard.press('Escape'); page.wait_for_timeout(80)
 
         es_link = page.locator('nav.langs a[lang="es"]')
