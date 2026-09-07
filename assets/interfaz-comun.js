@@ -1,3 +1,30 @@
+/* Mantener el idioma elegido al saltar entre páginas estáticas y dinámicas.
+   Las rutas /en/ y /pt-br/ son inequívocas. Las páginas /es/ que traducen
+   dentro de la misma URL siguen decidiendo su idioma desde ig_lang. */
+(function () {
+  'use strict';
+  function codeFromLang(value) {
+    value=String(value||'').toLowerCase();
+    if(value.indexOf('en')===0)return 'en';
+    if(value.indexOf('pt')===0)return 'pt';
+    if(value.indexOf('es')===0)return 'es';
+    return null;
+  }
+  function remember(code) {
+    if(!code)return;
+    try { localStorage.setItem('ig_lang',code); } catch (_) {}
+  }
+  var path=location.pathname;
+  if(/^\/en(?:\/|$)/.test(path))remember('en');
+  else if(/^\/pt-br(?:\/|$)/.test(path))remember('pt');
+  /* Explicit language links must update the shared preference before navigation.
+     This also makes EN → ES → dynamic-page round trips deterministic. */
+  document.addEventListener('click',function(event){
+    var link=event.target.closest('a[lang]');
+    if(link)remember(codeFromLang(link.getAttribute('lang')));
+  },true);
+})();
+
 /* Controles compartidos; no observa ni reconstruye el documento. */
 (function () {
   'use strict';
