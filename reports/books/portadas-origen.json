@@ -1,0 +1,8 @@
+{
+  "scope": "Solo cubiertas delanteras extraídas de los dos PDF aportados por la autora; no se publican los PDF de imprenta.",
+  "files": [
+    {"path":"assets/books/autismo-es-512.webp","title":"Autismo en la vida diaria","width":512,"height":725,"bytes":22168,"sha256":"5b30bfa18b0aa43dc3292d3e9c019860c9eb62b1678071171a13f2117184ff8a","source_pdf":"AUTISMO_EN_LA_VIDA_DIARIA_PORTADA_KDP_A5_135P(2).pdf","source_sha256":"7bff07dbf286a92b0f3b98f778f9892fc7ea2e23d61441e77bb928fa80baa086","front_crop_points":[450.4878946558194,9.07085,870.0154537109375,604.3464473632813]},
+    {"path":"assets/books/luma-es-512.webp","title":"Luma y la flor que sabía escuchar","width":512,"height":512,"bytes":25256,"sha256":"960eef437a29341e49c2baf7ee0e1fe47722ac3adaf55aaa67d4948db571d58c","source_pdf":"Luma portada esp(2).pdf","source_sha256":"18af7fefb6d1a2e44051664699932bddaac8e4939bc19c08826d29b9cffb69b7","front_crop_points":[627.4100341796875,9,1239.4100341796875,621]}
+  ],
+  "processing":"Render RGB, recorte de contraportada/lomo/sangrado, reducción a 512 px de ancho, WebP calidad 75. Sin sustitución de ilustraciones ni modificación de textos."
+}

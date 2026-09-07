@@ -87,7 +87,7 @@
     <div style="display: grid; gap: 26px;">
       <sc-for list="{{ books }}" as="b" hint-placeholder-count="2">
         <article class="ig-book-card" style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 24px; padding: 26px; display: grid; grid-template-columns: minmax(160px, 210px) 1fr; gap: 26px; align-items: start;">
-          <img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">
+          <img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" width="{{ b.coverWidth }}" height="{{ b.coverHeight }}" decoding="async" style="height: auto; width: 100%; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">
           <div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
               <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #a8336f; background: rgba(168,51,111,0.1); border-radius: 999px; padding: 4px 10px;">{{ b.badge }}</span>
@@ -360,7 +360,7 @@ class Component extends DCLogic {
 
       books: T.books.map((b, n) => ({
         title: b.title, desc: b.desc, note: b.note,
-        cover: COVERS[n].cover, coverAlt: COVERS[n].alt,
+        cover: COVERS[n].cover, coverAlt: COVERS[n].alt, coverWidth: 512, coverHeight: n === 0 ? 512 : 725,
         badge: T.published, langs: T.langs,
         prices: b.prices.map((p) => ({ where: p[0], price: p[1] })),
         links: COVERS[n].links.map((l, k) => ({
