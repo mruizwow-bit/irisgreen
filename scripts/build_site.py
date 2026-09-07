@@ -23,6 +23,9 @@ def build():
     # Restaura el bloque de Música conocido de la Home y hace local a cada página
     # cualquier selector dinámico de idioma heredado, evitando mezclas entre rutas.
     subprocess.run([sys.executable,str(ROOT/'scripts/stabilize_shared_runtime.py')],cwd=ROOT,check=True)
+    # Los catálogos EN deben enlazar únicamente páginas EN reales. Las etiquetas
+    # cruzadas de Situations usan los nombres ingleses ya existentes en el índice.
+    subprocess.run([sys.executable,str(ROOT/'scripts/normalize_english_catalogs.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
