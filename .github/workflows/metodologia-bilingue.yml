@@ -6,6 +6,7 @@ on:
       - '.github/workflows/metodologia-bilingue.yml'
       - 'scripts/build_methodology_bilingual.py'
       - 'scripts/test_methodology_bilingual.py'
+      - 'scripts/add_methodology_sitemap.py'
 permissions:
   contents: write
 concurrency:
@@ -20,11 +21,15 @@ jobs:
         with:
           ref: ajustes/metodologia-en-20260907
       - name: Crear pareja ES EN sin reescribir el contenido español
-        run: python3 scripts/build_methodology_bilingual.py
+        run: |
+          python3 scripts/build_methodology_bilingual.py
+          python3 scripts/add_methodology_sitemap.py
       - name: Generar exactamente la salida pública
         run: |
           python3 scripts/build_site.py
           python3 scripts/repair_routes.py --check
+          test "$(grep -c 'https://irisgreen.eu/en/methodology/' sitemap.xml)" -eq 1
+          test "$(grep -c 'https://irisgreen.eu/en/methodology/' sitemap-1.xml)" -eq 1
       - name: Preparar Chromium
         run: |
           python3 -m venv /tmp/ig-methodology
@@ -38,11 +43,11 @@ jobs:
           name: metodologia-bilingue-resultados
           path: reports/languages/methodology-bilingual.json
           retention-days: 7
-      - name: Guardar solo las dos páginas validadas
+      - name: Guardar solo páginas y sitemaps validados
         if: success()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- es/metodologia/index.html en/methodology/index.html
+          git add -- es/metodologia/index.html en/methodology/index.html sitemap.xml sitemap-1.xml
           git diff --cached --quiet || git commit -m 'Completar Metodología en inglés'
           git push origin HEAD:ajustes/metodologia-en-20260907
