@@ -11,3 +11,6 @@ html[data-ig-preferences="2"][data-ig-contrast="on"] main :is(p,h1,h2,h3,li,dt,d
 html[data-ig-preferences="2"][data-ig-contrast="on"] main :is(.card,article,.secfind,.notice){background:#fff!important;border-color:#17395c!important}
 html[data-ig-preferences="2"][data-ig-controls="big"] main button:not([style*="position: absolute"]):not([style*="position:absolute"]){min-height:56px;min-width:56px}
 html[data-ig-preferences="2"][data-ig-motion="off"] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+/* A card's minimum width cannot exceed the content width after enlargement.
+   Preserve the normal layout, the illustration proportions and all card text. */
+html[data-ig-preferences="2"][data-ig-text-enlarged] main .cromos{grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr))}
