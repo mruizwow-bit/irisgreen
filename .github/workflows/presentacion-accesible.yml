@@ -1,4 +1,5 @@
 name: Presentación accesible · temas, guía y concentración
+# Reejecución: la guía se comprueba contra un control real del contenido, no contra el panel que está por encima de ella.
 on:
   push:
     branches: ['ajustes/presentacion-guia-20260907']
