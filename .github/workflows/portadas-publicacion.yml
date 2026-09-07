@@ -13,15 +13,39 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ajustes/portadas-20260907
-      - name: Preparar navegador y verificar las portadas recibidas
+      - name: Preparar navegador, corregir compatibilidad del build y verificar imágenes
         run: |
           python3 -m venv /tmp/ig-books
           /tmp/ig-books/bin/pip -q install playwright==1.55.0 pillow==11.3.0
           /tmp/ig-books/bin/python -m playwright install --with-deps chromium >/tmp/ig-books-browser.log 2>&1
           /tmp/ig-books/bin/python - <<'PY'
-          import json,hashlib,re
+          import json,hashlib,re,sys,tomllib
           from pathlib import Path
           from PIL import Image
+          p=Path('scripts/repair_routes.py');s=p.read_text()
+          old="assert set(data['build'])<= {'publish','command','processing'},'Opciones de build no previstas'"
+          new="assert set(data['build'])<= {'publish','command','processing','environment'},'Opciones de build no previstas'"
+          if old in s:
+              assert s.count(old)==1;s=s.replace(old,new,1)
+          else:assert new in s
+          addition="    # Preserve explicit build environment settings, including PYTHON_VERSION.\n    environment=data['build'].get('environment',{})\n    assert isinstance(environment,dict) and all(isinstance(k,str) and isinstance(v,str) for k,v in environment.items()),'Entorno de build no válido'\n    if environment:\n        out+=['[build.environment]']\n        out.extend('  '+json.dumps(k)+' = '+json.dumps(v) for k,v in sorted(environment.items()))\n        out+=['']\n"
+          anchor='    for r in kept:\n'
+          if addition not in s:
+              assert s.count(anchor)==1;s=s.replace(anchor,addition+anchor,1)
+          p.write_text(s)
+          sys.path.insert(0,str(Path('scripts').resolve()))
+          from repair_routes import render_config
+          original=Path('netlify.toml').read_text();generated,_=render_config(original)
+          assert tomllib.loads(generated)['build']['environment']==tomllib.loads(original)['build']['environment']=={'PYTHON_VERSION':'3.12'}
+          assert render_config(generated)[0]==generated
+          legacy='[build]\npublish="."\ncommand=""\n'
+          assert tomllib.loads(render_config(legacy)[0])['build']['publish']=='dist'
+          special='[build]\npublish="dist"\ncommand="python3 scripts/build_site.py"\n[build.environment]\nPYTHON_VERSION="3.12"\n"EXAMPLE VALUE"="Texto con espacios"\n'
+          assert tomllib.loads(render_config(special)[0])['build']['environment']==tomllib.loads(special)['build']['environment']
+          try:render_config('[build]\npublish="dist"\ncommand=""\nunknown_option=true\n')
+          except AssertionError:pass
+          else:raise AssertionError('La protección ante opciones desconocidas debe mantenerse')
+          Path('reports/books/build-config-tests.json').write_text(json.dumps({'passed':True,'checks':['preserva PYTHON_VERSION=3.12','regeneración repetible','compatibilidad con configuración anterior','conserva valores de entorno con espacios','rechaza opciones desconocidas sin eliminarlas'],'cause':'El validador de rutas no admitía build.environment, añadido al fijar la versión de Python.'},ensure_ascii=False,indent=2)+'\n')
           data=json.loads(Path('reports/books/portadas-origen.json').read_text())
           for row in data['files']:
               p=Path(row['path']);assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256']
@@ -41,6 +65,7 @@ jobs:
           print('Dos imágenes verificadas. Dimensiones reservadas; textos y enlaces no cambian.')
           PY
           python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
       - name: Probar imágenes, proporciones y anchos en ambos idiomas
         run: |
           /tmp/ig-books/bin/python - <<'PY'
@@ -90,11 +115,11 @@ jobs:
           name: portadas-y-pruebas
           path: reports/books
           retention-days: 7
-      - name: Guardar exclusivamente la página comprobada y su informe
+      - name: Guardar exclusivamente los cambios comprobados y sus informes
         if: success()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- es/libros/index.html reports/books/portadas-tests.json
-          git diff --cached --quiet || git commit -m 'Reservar el tamaño real de las dos portadas y registrar seis pruebas'
+          git add -- es/libros/index.html scripts/repair_routes.py netlify.toml reports/books/portadas-tests.json reports/books/build-config-tests.json
+          git diff --cached --quiet || git commit -m 'Corregir build.environment, reservar portadas y registrar pruebas'
           git push origin HEAD:ajustes/portadas-20260907
