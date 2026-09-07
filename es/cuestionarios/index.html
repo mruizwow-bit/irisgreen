@@ -179,7 +179,7 @@
           </div>
         </div>
         <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
-          <button sc-camel-on-click="{{ t.toggle }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
+          <button aria-pressed="{{ t.pressed }}" sc-camel-on-click="{{ t.toggle }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
             <span style="width: 34px; height: 20px; border-radius: 999px; flex: none; background: {{ t.knobTrack }}; position: relative;">
               <span style="position: absolute; top: 2px; left: {{ t.knobLeft }}; width: 16px; height: 16px; border-radius: 999px; background: #fff;"></span>
             </span>
@@ -338,6 +338,7 @@ class Component extends DCLogic {
       a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((k, n) => {
         const on = !!st[k];
         return {
+          pressed: on,
           label: TOGGLES[n],
           bg: on ? "rgba(90,73,168,0.12)" : "#fff",
           border: on ? "#5a49a8" : "rgba(23,57,92,0.16)",

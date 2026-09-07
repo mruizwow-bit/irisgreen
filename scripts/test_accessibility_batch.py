@@ -47,10 +47,12 @@ def run():
       row['passed']=row['focus_entered'] and row['escape_closes'] and row['box']['x']>=0
      else:
       panel=p.locator('[data-ig-reading-panel]');panel.wait_for(state='visible');row['box']=check_box(p,panel)
+      if width==320 and path in ['index.html',STATIC[0]]:p.screenshot(path=str(OUT/('reading-'+path.replace('/','-')+'.png')))
       assert panel.get_attribute('role')=='region'
       title_id=panel.get_attribute('aria-labelledby');assert title_id and p.locator('#'+title_id).inner_text().strip()
       assert panel.evaluate('(e)=>e.contains(document.activeElement)'),'Focus did not enter Reading'
       assert opener.get_attribute('aria-expanded')=='true'
+      assert panel.locator('button[aria-pressed]').count()==6,'All six reading options must expose their state'
       toggle=panel.locator('button[aria-pressed]').first
       if toggle.count():
        before=toggle.get_attribute('aria-pressed');toggle.click();assert toggle.get_attribute('aria-pressed')!=before
@@ -98,6 +100,7 @@ def run():
       p.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
       try:
        p.goto(BASE+'/es/recursos/juegos/'+slug+'/',wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.locator('.ig-uh-langs button').filter(has_text=re.compile('^'+lang.upper()+'$')).click()
+       p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
        target=p.locator('main .ig-picture-target');before=rects(target)
        details=p.locator('.ig-touch-alternative');summary=details.locator('summary');summary.focus();summary.press('Space')
        buttons=details.locator('.ig-touch-choices>button');assert buttons.count()==(5 if slug=='las-cinco-cosas' else 8)
