@@ -1,0 +1,48 @@
+name: Vivir fuera · ES EN
+on:
+  push:
+    branches: ['ajustes/idioma-global-20260907']
+    paths:
+      - 'scripts/translate_vivir_fuera_en.py'
+      - 'scripts/test_vivir_fuera_en.py'
+      - '.github/workflows/vivir-fuera-en.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vivir-fuera-en
+  cancel-in-progress: true
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/idioma-global-20260907
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-vf
+          /tmp/ig-vf/bin/pip -q install playwright==1.55.0
+          /tmp/ig-vf/bin/python -m playwright install --with-deps chromium >/tmp/ig-vf-browser.log 2>&1
+      - name: Aplicar traducción de Vivir fuera
+        run: python3 scripts/translate_vivir_fuera_en.py
+      - name: Comprobar sintaxis y generar exactamente lo que publica Netlify
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
+      - name: Probar ES EN en Vivir fuera
+        run: /tmp/ig-vf/bin/python scripts/test_vivir_fuera_en.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: vivir-fuera-en-resultados
+          path: reports/languages/vivir-fuera-en.json
+          retention-days: 7
+      - name: Guardar solo la página probada
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/vivir-fuera/index.html
+          git diff --cached --quiet || git commit -m 'Completar Vivir fuera en inglés'
+          git push origin HEAD:ajustes/idioma-global-20260907
