@@ -1,0 +1,53 @@
+name: Home inglesa completa
+on:
+  push:
+    branches: ['ajustes/idioma-global-20260907']
+    paths:
+      - '.github/workflows/home-english.yml'
+      - 'scripts/fix_home_english.py'
+      - 'scripts/enrich_search_english.py'
+      - 'scripts/test_home_english.py'
+      - 'assets/buscador-comun.js'
+permissions:
+  contents: write
+concurrency:
+  group: home-english-irisgreen
+  cancel-in-progress: true
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/idioma-global-20260907
+      - name: Aplicar inglés de la home sobre las fuentes actuales
+        run: |
+          python3 scripts/enrich_search_english.py
+          python3 scripts/fix_home_english.py
+          node --check assets/buscador-comun.js
+      - name: Generar exactamente la salida pública
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-home-en
+          /tmp/ig-home-en/bin/pip -q install playwright==1.55.0
+          /tmp/ig-home-en/bin/python -m playwright install --with-deps chromium >/tmp/ig-home-en-browser.log 2>&1
+      - name: Probar la home en inglés
+        run: /tmp/ig-home-en/bin/python scripts/test_home_english.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: home-english-resultados
+          path: reports/languages/home-english.json
+          retention-days: 7
+      - name: Guardar solo las fuentes que han pasado
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html buscador.json
+          git diff --cached --quiet || git commit -m 'Completar la home y el buscador común en inglés'
+          git push origin HEAD:ajustes/idioma-global-20260907
