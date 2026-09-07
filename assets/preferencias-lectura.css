@@ -14,3 +14,9 @@ html[data-ig-preferences="2"][data-ig-motion="off"] *{animation:none!important;t
 /* A card's minimum width cannot exceed the content width after enlargement.
    Preserve the normal layout, the illustration proportions and all card text. */
 html[data-ig-preferences="2"][data-ig-text-enlarged] main .cromos{grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr))}
+/* The persistence note occupies a full row, never a third narrow button column. */
+html[data-ig-preferences="2"] [data-ig-reading-panel] :where(div){min-width:0;max-width:100%}
+html[data-ig-preferences="2"] [data-ig-reading-panel] [style*="display: flex"]{flex-wrap:wrap}
+html[data-ig-preferences="2"] [data-ig-reading-panel] :is(button,a){max-width:100%;overflow-wrap:anywhere;white-space:normal}
+html[data-ig-preferences="2"] [data-ig-reading-panel] .ig-preference-note{flex:1 0 100%;width:100%;order:5}
+html[data-ig-preferences="2"] [data-ig-reading-panel] button[aria-pressed]{width:100%;min-width:0}
