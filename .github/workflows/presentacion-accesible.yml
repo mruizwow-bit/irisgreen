@@ -1,0 +1,87 @@
+name: Presentación accesible · temas, guía y concentración
+on:
+  push:
+    branches: ['ajustes/presentacion-guia-20260907']
+    paths: ['.github/workflows/presentacion-accesible.yml']
+permissions:
+  contents: write
+concurrency:
+  group: presentacion-accesible-irisgreen
+  cancel-in-progress: false
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/presentacion-guia-20260907
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/ig-presentation
+          /tmp/ig-presentation/bin/pip -q install playwright==1.55.0
+          /tmp/ig-presentation/bin/python -m playwright install --with-deps chromium >/tmp/browser-install.log 2>&1
+      - name: Aplicar ampliación de presentación
+        run: python3 scripts/extend_presentation_accessibility.py
+      - name: Comprobar sintaxis y generar exactamente lo que publica Netlify
+        run: |
+          node --check assets/preferencias-lectura.js
+          node --check assets/interfaz-comun.js
+          python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
+      - name: Probar temas, fondo, guía y vista centrada
+        run: /tmp/ig-presentation/bin/python scripts/test_presentation_accessibility.py
+      - name: Repetir conservación y opciones de texto existentes
+        run: |
+          /tmp/ig-presentation/bin/python scripts/test_reading_preferences.py
+          /tmp/ig-presentation/bin/python scripts/test_text_preferences.py
+          /tmp/ig-presentation/bin/python scripts/test_preference_panel_bounds.py
+      - name: Repetir ajustes del sistema y recorrido representativo
+        run: |
+          /tmp/ig-presentation/bin/python scripts/test_system_accessibility.py
+          /tmp/ig-presentation/bin/python scripts/test_accessibility_journey.py
+      - name: Documentar esta tanda
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('reports/accessibility/presentation-guide-tests.json')
+          data=json.loads(p.read_text()) if p.exists() else {'passed':False,'summary':{'passed':0,'total':0},'failures':['La prueba nueva no produjo informe']}
+          text=f'''# Presentación accesible · temas, guía y concentración
+
+## Estado de esta tanda
+Prueba nueva: **{data.get('summary',{}).get('passed',0)}/{data.get('summary',{}).get('total',0)}** casos aprobados. Resultado global: **{'APROBADO' if data.get('passed') else 'NO APROBADO'}**.
+
+## Incorporado
+- Tema Original, Claro y Oscuro; Original sigue siendo el valor inicial.
+- Fondo opaco para retirar transparencias en las superficies preparadas.
+- Vista centrada en el contenido: reduce navegación principal y pie, conservando contenido, navegación interna y los controles para salir de la vista.
+- Guía de lectura colocable Arriba/Centro/Abajo y con tres alturas mediante botones, toque o teclado.
+- Explicación visible de que el espaciado rápido sustituye las cuatro separaciones personalizadas, pero conserva tipografía y anchura.
+
+## Límites
+No se aplican filtros a fotografías o ilustraciones. Esta tanda no completa la revisión de información dependiente del color por actividad, la lectura en voz alta avanzada ni las alternativas textuales de todos los materiales. Las pruebas son locales en Chromium y no sustituyen lectores de pantalla, líneas braille, control por voz ni dispositivos físicos.
+
+## Evidencia
+`presentation-guide-tests.json` y capturas `presentation-dark-focus-*` y `guide-keyboard-*`. Las baterías anteriores de preferencias, panel, ajustes del sistema y recorrido se ejecutan de nuevo en esta misma tarea y deben terminar correctamente para incorporar el cambio.
+'''
+          Path('reports/accessibility/presentation-guide-RESUMEN.md').write_text(text)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: presentacion-accesible-resultados
+          path: reports/accessibility
+          retention-days: 7
+      - name: Guardar solo el bloque probado
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js es/lectura-accesible/index.html
+          git add -- scripts/extend_presentation_accessibility.py scripts/test_presentation_accessibility.py
+          git add -- reports/accessibility/presentation-guide-changes.json reports/accessibility/presentation-guide-tests.json reports/accessibility/presentation-guide-RESUMEN.md
+          git diff --cached --quiet || git commit -m 'Añadir temas, fondo opaco, guía sin ratón y vista centrada; registrar pruebas'
+          git pull --rebase origin ajustes/presentacion-guia-20260907
+          git push origin HEAD:ajustes/presentacion-guia-20260907
