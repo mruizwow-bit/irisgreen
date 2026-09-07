@@ -193,9 +193,9 @@
     <main style="padding: 44px 0 70px; min-width: 0;">
       <h1 style="margin: 0 0 10px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(31px, 3.8vw, 48px); line-height: 1.06; letter-spacing: -0.02em; max-width: 640px; text-wrap: pretty;">{{ tLede }}</h1>
       <p style="margin: 0 0 10px; font-size: 19px; color: #525c70; max-width: 640px; text-wrap: pretty;">{{ tHero2 }}</p>
-      <p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p>
+      <sc-if value="{{ tSoloEs }}"><p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p></sc-if>
 
-      <p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">Todo lo de esta web es gratis. La pagan dos libros. <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">Verlos</a></p>
+      <p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">{{ tBooksMessage }} <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">{{ tBooksSee }}</a></p>
 <div id="consola" style="margin: 34px 0 40px; background: rgba(255,255,255,0.82); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.1); border-radius: 24px; box-shadow: 0 26px 60px -40px rgba(23,57,92,0.5); overflow: hidden;">
         <div style="display: flex; gap: 4px; padding: 8px; border-bottom: 1px solid rgba(23,57,92,0.08); background: rgba(243,246,251,0.6);">
           <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
@@ -239,7 +239,7 @@
                       <sc-for list="{{ savedList }}" as="s" hint-placeholder-count="2">
                         <div style="display: flex; align-items: center; gap: 12px; padding: 8px 0;">
                           <a href="{{ s.url }}" style="flex: 1; min-width: 0; color: #17395c; font-size: 15px; text-wrap: pretty;">{{ s.name }}</a>
-                          <button sc-camel-on-click="{{ s.remove }}" aria-label="{{ s.removeLabel }}" style="background: transparent; border: 0; cursor: pointer; color: #5a6675; font-size: 14px; padding: 4px 6px;">Quitar</button>
+                          <button sc-camel-on-click="{{ s.remove }}" aria-label="{{ s.removeLabel }}" style="background: transparent; border: 0; cursor: pointer; color: #5a6675; font-size: 14px; padding: 4px 6px;">{{ s.removeText }}</button>
                         </div>
                       </sc-for>
                     </div>
@@ -247,7 +247,7 @@
                 </div>
               </sc-if>
               <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-                <p style="padding: 14px 4px; margin: 0; color: #5a6675;">{{ tNoRes }} <a href="/es/situaciones/">Ver Situaciones</a></p>
+                <p style="padding: 14px 4px; margin: 0; color: #5a6675;">{{ tNoRes }} <a href="/es/situaciones/">{{ tSeeSituations }}</a></p>
               </sc-if>
             </div>
           </div>
@@ -463,10 +463,15 @@ const STR = {
     books: "Todo aquí es gratis gracias a los libros de Iris Green",
     searchPh: "me cuesta salir de casa, no consigo empezar, mi hijo no habla…",
     lede: "Escríbelo como lo dirías en voz alta.",
+    hero2: "Las situaciones están contadas en primera persona, y la tuya puede estar. También puedes responder tres preguntas o mirar qué ayuda puedes pedir.",
     directo: "O entra directo a un tema",
     escuchar: "Escuchar a quien lo vive",
     empiezo: "¿Por dónde empiezo?",
-    soloEs: "Las secciones están en castellano. La traducción está en marcha."
+    soloEs: "",
+    booksMessage: "Todo lo de esta web es gratis. La pagan dos libros.", booksSee: "Verlos",
+    tabs: ["Buscar", "Responder 3 preguntas", "¿Qué puedo pedir?"],
+    suggestions: ["no soporto el ruido", "me agoto con la gente", "no consigo dormir", "en el colegio no le entienden", "me bloqueo con los papeles"],
+    startHere: "Puedes empezar por aquí"
   },
   en: {
     nav: ["Search", "Situations", "What can I ask for?", "Listen", "Everyday life", "Data", "Play"],
@@ -474,10 +479,15 @@ const STR = {
     books: "Everything here is free thanks to Iris Green's books",
     searchPh: "noise, I can't get started, I can't sleep, school…",
     lede: "Write it as you would say it out loud.",
+    hero2: "The situations are told in the first person, and yours may be here too. You can also answer three questions or see what support you can ask for.",
     directo: "Or go straight to a topic",
     escuchar: "Hear from the people who live it",
     empiezo: "Where do I start?",
-    soloEs: "The sections are in Spanish. Translation is under way."
+    soloEs: "",
+    booksMessage: "Everything on this website is free. Two books pay for it.", booksSee: "See them",
+    tabs: ["Search", "Answer 3 questions", "What can I ask for?"],
+    suggestions: ["I can't cope with the noise", "being around people drains me", "I can't sleep", "they don't understand them at school", "paperwork makes me freeze"],
+    startHere: "You can start here"
   },
   pt: {
     nav: ["Buscar", "Situações", "O que eu posso pedir?", "Escutar", "Vida diária", "Dados", "Jogar"],
@@ -506,6 +516,13 @@ const BOOKS = {
 };
 
 const TR = {
+  "Resultados para": { en: "Results for", pt: "Resultados para" },
+  " resultados": { en: " results", pt: " resultados" },
+  "Puedes empezar por aquí": { en: "You can start here", pt: "Você pode começar por aqui" },
+  "No encontramos resultados con esas palabras. Prueba otra búsqueda.": { en: "We couldn't find results for those words. Try another search.", pt: "Não encontramos resultados com essas palavras. Tente outra busca." },
+  "Ver Situaciones": { en: "See Situations", pt: "Ver Situações" },
+  "Quitar": { en: "Remove", pt: "Remover" },
+  "Cerrar": { en: "Close", pt: "Fechar" },
       "Cuento ilustrado · ES · EN": { en: "Illustrated story · ES · EN", pt: "Conto ilustrado · ES · EN" },
   "Guía práctica · ES · EN": { en: "Practical guide · ES · EN", pt: "Guia prático · ES · EN" },
   "Toca los pasos en orden": { en: "Tap the steps in order", pt: "Toque nos passos em ordem" },
@@ -908,9 +925,9 @@ class Component extends DCLogic {
     var q = this.norm(this.state.q).trim();
     if (!q) {
       var FIJAS = [
-        { name: "Todas las fichas de Vida diaria", kind: "Vida diaria", url: "/es/biblioteca/", hint: "Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.", area: "" },
-        { name: "Todas las cifras de Datos", kind: "Datos", url: "/es/datos/", hint: "Cifras con su población, su método y su incertidumbre en la misma frase.", area: "" },
-        { name: "Todas las ayudas por país", kind: "Ayudas", url: "/es/tramites/directorio/", hint: "Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.", area: "" }
+        { name: "Todas las fichas de Vida diaria", kind: "Vida diaria", url: "/es/biblioteca/", hint: "Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.", area: "", en:{s:"Everyday life",t:"All Everyday life guides",u:"/es/biblioteca/",d:"Practical guides for daily life: shopping, cooking, paperwork, sleep and leaving home."} },
+        { name: "Todas las cifras de Datos", kind: "Datos", url: "/es/datos/", hint: "Cifras con su población, su método y su incertidumbre en la misma frase.", area: "", en:{s:"Data",t:"All Data figures",u:"/es/datos/",d:"Figures with the population measured, the method and the uncertainty stated together."} },
+        { name: "Todas las ayudas por país", kind: "Ayudas", url: "/es/tramites/directorio/", hint: "Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.", area: "", en:{s:"Support",t:"All support by country",u:"/es/tramites/directorio/",d:"What support you can ask for in your country, with its official name and a plain-language explanation."} }
       ];
       var fuente = this.state.idx || [];
       var PREFIERE = { "Condición": ["Autismo", "TDAH", "Dislexia"], "Situación": [] };
@@ -927,7 +944,7 @@ class Component extends DCLogic {
       var mezcla = sits.slice(0, 2).concat(FIJAS).filter(Boolean);
       return mezcla.length >= 3 ? mezcla.slice(0, 5) : fuente.slice(0, 5);
     }
-    return window.IGSearch.rank(fondo, this.state.q).slice(0, 9);
+    return window.IGSearch.rank(fondo, this.state.q, this.state.lang).slice(0, 9);
   }
 
   quizTop() {
@@ -942,7 +959,7 @@ class Component extends DCLogic {
     const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
     const L = st.lang;
     const T = STR[L] || STR.es;
-    const results = this.search();
+    const results = this.search().map((r) => window.IGSearch.localize ? window.IGSearch.localize(r, L) : r);
     const isSaved = (n) => st.saved.some((s) => s.name === n);
     const FUENTE = (st.vids && st.vids.length) ? st.vids : VIDEOS;
     const filtered = st.tema === "Todos" ? FUENTE : FUENTE.filter((v) => v.tema === st.tema);
@@ -965,19 +982,20 @@ class Component extends DCLogic {
       savedOpenAttr: st.savedOpen ? "true" : "false",
       savedLabel: X("Guardados") + " (" + st.saved.length + ")",
       toggleSaved: () => this.setState({ savedOpen: !st.savedOpen, savedTouched: false }),
-      savedList: st.saved.map((s) => ({ name: s.name, url: s.url, removeLabel: X("Quitar de lo guardado") + ": " + s.name, remove: () => this.toggleSave(s.name, s.url) })),
+      savedList: st.saved.map((s) => ({ name: s.name, url: s.url, removeLabel: X("Quitar de lo guardado") + ": " + s.name, removeText: X("Quitar"), remove: () => this.toggleSave(s.name, s.url) })),
       hideOnError: (e) => { e.target.style.display = "none"; },
       fallbackLuma: (e) => { const i = e.target; if (i.dataset.fb) { i.style.display = "none"; return; } i.dataset.fb = "1"; i.src = "/assets/books/luma-es-512.webp"; },
       fallbackAut: (e) => { const i = e.target; if (i.dataset.fb) { i.style.display = "none"; return; } i.dataset.fb = "1"; i.src = "/assets/books/autismo-es-512.webp"; },
       bookAut: (BOOKS.autismo[L] || BOOKS.autismo.es),
       bookLuma: (BOOKS.luma[L] || BOOKS.luma.es),
-      tHero2: X("Las situaciones están contadas en primera persona, y la tuya puede estar. También puedes responder tres preguntas o mirar qué ayuda puedes pedir."),
+      tHero2: T.hero2,
       tBooksCta: X("Leer las primeras páginas"),
       tBarLuma: (BOOKS.luma[L] || BOOKS.luma.es).title + " · " + (BOOKS.luma[L] || BOOKS.luma.es).bar,
       tBarAut: (BOOKS.autismo[L] || BOOKS.autismo.es).title + " · " + (BOOKS.autismo[L] || BOOKS.autismo.es).bar,
       tFootAbout: X("Sobre Iris Green"), tFootMethod: X("Metodología"), tFootResearch: X("Investigación"), tFootPrivacy: X("Privacidad"),
       tSavedTitle: X("Para leer luego"),
       tNoRes: st.searchError ? "No se ha podido cargar el buscador. Recarga la página o entra por un tema." : X("No encontramos resultados con esas palabras. Prueba otra búsqueda."),
+      tSeeSituations: X("Ver Situaciones"),
       tReadTopic: X("Leer el tema"), tQuizNote: X("Esto no es un diagnóstico. Es solo una idea de por dónde empezar a leer, según lo que has contado."), tQuizRestart: X("Empezar de nuevo"),
       tNeedLabel: X("Lo que necesito"), tWhereLabel: X("Dónde vivo"),
       tNeed1: X("Apoyos en el colegio o instituto"), tNeed2: X("Ajustes en el trabajo"), tNeed3: X("Una valoración o diagnóstico"), tNeed4: X("Ayuda económica"), tNeed5: X("Terapia o intervención"),
@@ -997,7 +1015,8 @@ class Component extends DCLogic {
       nav0: T.nav[0], nav1: T.nav[1], nav2: T.nav[2], nav3: T.nav[3], nav4: T.nav[4], nav5: T.nav[5], nav6: T.nav[6],
       tA11y: T.a11y, tPlaylist: T.playlist, tBooks: T.books, tSearchPh: T.searchPh,
       tLede: T.lede, tDirecto: T.directo, tEscuchar: T.escuchar, tEmpiezo: T.empiezo, tSoloEs: T.soloEs,
-      tabs: [tab("search", X("Buscar")), tab("quiz", X("Responder 3 preguntas")), tab("pedir", X("¿Qué puedo pedir?"))],
+      tBooksMessage: T.booksMessage, tBooksSee: T.booksSee,
+      tabs: [tab("search", T.tabs[0]), tab("quiz", T.tabs[1]), tab("pedir", T.tabs[2])],
       tabSearch: st.tab === "search",
       tabQuiz: st.tab === "quiz",
       tabPedir: st.tab === "pedir",
@@ -1005,10 +1024,10 @@ class Component extends DCLogic {
       q: st.q,
       onQ: (e) => this.setState({ q: e.target.value, savedTouched: false }),
       resultLabel: st.q.trim() ? results.length + X(" resultados") : "",
-      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : X("Puedes empezar por aquí"),
+      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : T.startHere,
       noResults: st.q.trim().length > 0 && results.length === 0,
-      suggestions: ["no soporto el ruido", "me agoto con la gente", "no consigo dormir", "en el colegio no le entienden", "me bloqueo con los papeles"].map((label) => ({
-        label: X(label), pick: () => this.setState({ q: label })
+      suggestions: T.suggestions.map((label) => ({
+        label, pick: () => this.setState({ q: label })
       })),
       results: results.map((r) => ({
         name: X(r.name), kind: X(r.kind), url: r.url, hint: X(r.hint),
