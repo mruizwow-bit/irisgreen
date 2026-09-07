@@ -26,6 +26,9 @@ jobs:
           import hashlib,json
           names=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json']
           Path('/tmp/ig-prefs-catalogues.json').write_text(json.dumps({n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in names}))
+          p=Path('scripts/test_reading_preferences.py');s=p.read_text()
+          s=s.replace("if path in ['index.html',STATIC[0]]:","if path in ['index.html',STATIC[0],'es/intereses/index.html']:")
+          p.write_text(s)
           PY
       - name: Conservar el comportamiento anterior
         run: |
@@ -75,7 +78,7 @@ jobs:
           if Path('dist/reports/preferences').exists():shutil.copytree('dist/reports/preferences','reports/preferences',dirs_exist_ok=True)
           if Path('dist/reports/accessibility/after.json').exists():shutil.copy2('dist/reports/accessibility/after.json','reports/preferences/regression-accessibility.json')
           if Path('reports/preferences').exists():shutil.copytree('reports/preferences',out/'reports',dirs_exist_ok=True)
-          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_accessibility_batch.py','index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
               p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -89,8 +92,18 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- index.html es en assets/lectura-accesible.js scripts/test_accessibility_batch.py
+          git add -- index.html es en assets/lectura-accesible.js scripts/test_accessibility_batch.py scripts/test_reading_preferences.py
           test ! -d reports/preferences || git add -- reports/preferences/*.json
-          git diff --cached --quiet || git commit -m 'Conservar ajustes de lectura entre secciones y registrar las pruebas'
+          # The build also refreshes tracked JSON reports. Include only those;
+          # never stage dist, temporary files, captures or unknown source changes.
+          python3 - <<'PY'
+          import subprocess
+          names=subprocess.check_output(['git','diff','--name-only','-z']).decode().split('\0')
+          names=[n for n in names if n]
+          unknown=[n for n in names if not(n.startswith('reports/') and n.endswith('.json'))]
+          assert not unknown, 'Unexpected unstaged files: '+repr(unknown)
+          if names:subprocess.run(['git','add','--',*names],check=True)
+          PY
+          git diff --cached --quiet || git commit -m 'Conservar ajustes entre secciones, corregir cromos ampliados y guardar pruebas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
