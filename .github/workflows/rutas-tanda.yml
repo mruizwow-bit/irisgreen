@@ -1,0 +1,35 @@
+name: Rutas e indexación
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/rutas-tanda.yml']
+permissions:
+  contents: read
+jobs:
+  inventario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar inventario sin modificar páginas
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,subprocess,shutil
+          from pathlib import Path
+          root=Path.cwd();out=Path('/tmp/ig-rutas');out.mkdir()
+          files=[]
+          for name in subprocess.check_output(['git','ls-files','-z']).decode().split('\0'):
+              if not name:continue
+              p=root/name
+              if not p.is_file():continue
+              files.append({'path':name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+              if p.suffix in {'.html','.css','.js','.json','.xml','.txt','.toml','.md','.yml','.py'} or p.name in {'_redirects','_headers'}:
+                  q=out/'source'/name;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          (out/'inventory.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':files},ensure_ascii=False,indent=2))
+          print('Inventariados',len(files),'archivos de la rama actual.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rutas-fuentes-actuales
+          path: /tmp/ig-rutas
+          retention-days: 3
