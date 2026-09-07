@@ -1,0 +1,3946 @@
+{
+  "phase": "base",
+  "cases": [
+    {
+      "test": "real Tab traversal",
+      "path": "/",
+      "width": 1440,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 130.625,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"6\">Iris Green</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Inicio",
+          "width": 56.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"9\" aria-current=\"page\" class=\"ig-nav-es\" href=\"/\">Inicio</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Condiciones",
+          "width": 105.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"12\" class=\"ig-nav-es\" href=\"/es/neurodiversidad/condiciones/\">Condiciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Situaciones",
+          "width": 101.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"15\" class=\"ig-nav-es\" href=\"/es/situaciones/\">Situaciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vida diaria",
+          "width": 95.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"18\" class=\"ig-nav-es\" href=\"/es/biblioteca/\">Vida diaria</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vídeos",
+          "width": 66.5,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"21\" class=\"ig-nav-es\" href=\"/es/videos/\">Vídeos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Investigación",
+          "width": 114.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"24\" class=\"ig-nav-es\" href=\"/es/investigacion/\">Investigación</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Datos",
+          "width": 60.171875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"27\" class=\"ig-nav-es\" href=\"/es/datos/\">Datos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ayudas",
+          "width": 70.359375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"30\" class=\"ig-nav-es\" href=\"/es/tramites/directorio/\">Ayudas</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Libros",
+          "width": 61.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"33\" class=\"ig-nav-es\" href=\"/es/libros/\">Libros</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Jugar",
+          "width": 55.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"36\" class=\"ig-nav-es\" href=\"/es/recursos/juegos/\">Jugar</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tus intereses",
+          "width": 112.4375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"39\" class=\"ig-nav-es ig-calma\" href=\"/es/intereses/\">Tus intereses</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "El taller",
+          "width": 73.3125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"40\" class=\"ig-nav-es ig-calma\" href=\"/es/taller/\">El taller</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Rincón tranquilo",
+          "width": 136.984375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"41\" class=\"ig-nav-es ig-calma\" href=\"/es/sitio-tranquilo/\">Rincón tranquilo</a>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Música",
+          "width": 101.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Música</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 107.453125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"60\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Verlos",
+          "width": 56.25,
+          "height": 19,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"122\" href=\"/es/libros/\" style=\"font-weight: 700; text-decoration: underline; text-underline-offset: 3px;\">Verlos</a>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Buscar",
+          "width": 399.328125,
+          "height": 51.59375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Buscar</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Responder 3 preguntas",
+          "width": 399.328125,
+          "height": 51.59375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Responder 3 preguntas</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "¿Qué puedo pedir?",
+          "width": 399.328125,
+          "height": 51.59375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">¿Qué puedo pedir?</span>"
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "label": "Buscar",
+          "width": 1095,
+          "height": 54,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<input data-dc-tpl=\"133\" class=\"ig-search-input\" type=\"search\" aria-label=\"Buscar\" placeholder=\"me cuesta salir de casa, no consigo empezar, mi hijo no habla…\" value=\"\" style=\"flex"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "no soporto el ruido",
+          "width": 160.390625,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">no soporto el ruido</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "me agoto con la gente",
+          "width": 186.21875,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">me agoto con la gente</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "no consigo dormir",
+          "width": 154.359375,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">no consigo dormir</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "en el colegio no le entienden",
+          "width": 231.015625,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">en el colegio no le entienden</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "me bloqueo con los papeles",
+          "width": 223.984375,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">me bloqueo con los papeles</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "«No aguanto las etiquetas ni las costuras de la ropa»",
+          "width": 510.8125,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">«No aguanto las etiquetas ni las costuras de la ropa»</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "«Salgo del supermercado agotada y sin saber por qué»",
+          "width": 528.953125,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">«Salgo del supermercado agotada y sin saber por qué»</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las fichas de Vida diaria",
+          "width": 289.96875,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las fichas de Vida diaria</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las cifras de Datos",
+          "width": 238.359375,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las cifras de Datos</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las ayudas por país",
+          "width": 245.59375,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las ayudas por país</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ver todos los temas, de la A a la Z →",
+          "width": 274.171875,
+          "height": 24,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ver todos los temas, de la A a la Z →</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Autismo",
+          "width": 97.46875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Autismo</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "TDAH",
+          "width": 77.390625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDAH</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "TOC",
+          "width": 66.5,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TOC</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ansiedad",
+          "width": 105.53125,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ansiedad</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Dislexia",
+          "width": 94.875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Dislexia</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Discalculia",
+          "width": 117.109375,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Discalculia</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Sueño",
+          "width": 82.515625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Sueño</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Masking",
+          "width": 97.90625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Masking</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Burnout autista",
+          "width": 154.0625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Burnout autista</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Interocepción",
+          "width": 139.5625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Interocepción</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "ARFID",
+          "width": 80.796875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ARFID</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tourette",
+          "width": 97.40625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tourette</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ir a la videoteca completa →",
+          "width": 269.40625,
+          "height": 27.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ir a la videoteca completa →</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todos",
+          "width": 77.125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todos</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Autismo",
+          "width": 97.515625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Autismo</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Misofonía",
+          "width": 108.1875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Misofonía</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "CAA",
+          "width": 65.515625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">CAA</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Discalculia",
+          "width": 117.78125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Discalculia</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TDL",
+          "width": 63.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDL</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TDAH",
+          "width": 76.796875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDAH</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TOC",
+          "width": 65.546875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TOC</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Tourette",
+          "width": 97.453125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tourette</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Síndrome de Down",
+          "width": 183.859375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Síndrome de Down</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Ansiedad",
+          "width": 105.828125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ansiedad</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Tartamudez",
+          "width": 125.71875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tartamudez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Identidad LGTBI+",
+          "width": 172.40625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Identidad LGTBI+</span>"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "real Tab traversal",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 1440,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ir al contenido",
+          "width": 147.09375,
+          "height": 47.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"skip\" href=\"#main\">Ir al contenido</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 141.046875,
+          "height": 40.9375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Iris&nbsp;Green</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Inicio",
+          "width": 61.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/\">Inicio</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Condiciones",
+          "width": 111.671875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a aria-current=\"page\" href=\"/es/neurodiversidad/condiciones/\">Condiciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Situaciones",
+          "width": 107.171875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/situaciones/\">Situaciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vida diaria",
+          "width": 100.875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/biblioteca/\">Vida diaria</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vídeos",
+          "width": 71.609375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/videos/\">Vídeos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Investigación",
+          "width": 120.21875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/investigacion/\">Investigación</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Datos",
+          "width": 65.1875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/datos/\">Datos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ayudas",
+          "width": 75.515625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/tramites/directorio/\">Ayudas</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Libros",
+          "width": 66.421875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/libros/\">Libros</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Jugar",
+          "width": 60.46875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/recursos/juegos/\">Jugar</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tus intereses",
+          "width": 119.859375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"calma ig-calma\" href=\"/es/intereses/\">Tus intereses</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "El taller",
+          "width": 80.15625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"calma ig-calma\" href=\"/es/taller/\">El taller</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Rincón tranquilo",
+          "width": 144.78125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"calma ig-calma\" href=\"/es/sitio-tranquilo/\">Rincón tranquilo</a>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "a11yBtn",
+          "label": "Lectura accesible",
+          "width": 120.46875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "plBtn",
+          "label": "Música",
+          "width": 46,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M9 18V6l11-2v12\"></path><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><circle cx=\"17\" cy=\"16\" r=\"3\"></circle></svg>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "EN",
+          "width": 52.578125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"lang\" href=\"../../../en/neurodiversity/conditions/\" lang=\"en\">EN</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Cuestionarios orientativos",
+          "width": 240.15625,
+          "height": 42,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/cuestionarios/\">Cuestionarios orientativos</a>"
+        },
+        {
+          "tag": "INPUT",
+          "id": "q",
+          "label": "Escribe una palabra: ruido, dormir, colegio…",
+          "width": 1082,
+          "height": 54,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<input autocomplete=\"off\" id=\"q\" placeholder=\"Escribe una palabra: ruido, dormir, colegio…\" type=\"search\">"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todas",
+          "width": 77.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk is-active\" data-type=\"\" aria-pressed=\"true\">Todas</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "apoyo",
+          "width": 81.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"apoyo\" aria-pressed=\"false\">apoyo</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "contexto",
+          "width": 102.09375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"contexto\" aria-pressed=\"false\">contexto</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "controvertido",
+          "width": 139.578125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"controvertido\" aria-pressed=\"false\">controvertido</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "desarrollo",
+          "width": 111.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"desarrollo\" aria-pressed=\"false\">desarrollo</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "diagnóstico",
+          "width": 124.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"diagnóstico\" aria-pressed=\"false\">diagnóstico</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "emergente",
+          "width": 119.828125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"emergente\" aria-pressed=\"false\">emergente</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "experiencia",
+          "width": 125.09375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"experiencia\" aria-pressed=\"false\">experiencia</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "identidad",
+          "width": 107.421875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"identidad\" aria-pressed=\"false\">identidad</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "proceso",
+          "width": 94.9375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"proceso\" aria-pressed=\"false\">proceso</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "salud física",
+          "width": 121.4375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"salud física\" aria-pressed=\"false\">salud física</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "salud mental",
+          "width": 136.0625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"salud mental\" aria-pressed=\"false\">salud mental</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todas",
+          "width": 77.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"\" aria-pressed=\"true\">Todas</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "A",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"A\" aria-pressed=\"false\">A</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "B",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"B\" aria-pressed=\"false\">B</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "C",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"C\" aria-pressed=\"false\">C</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "D",
+          "width": 44.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"D\" aria-pressed=\"false\">D</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "E",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"E\" aria-pressed=\"false\">E</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "F",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"F\" aria-pressed=\"false\">F</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "G",
+          "width": 44.40625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"G\" aria-pressed=\"false\">G</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "H",
+          "width": 44.03125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"H\" aria-pressed=\"false\">H</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "I",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"I\" aria-pressed=\"false\">I</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "L",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"L\" aria-pressed=\"false\">L</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "M",
+          "width": 45.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"M\" aria-pressed=\"false\">M</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "N",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"N\" aria-pressed=\"false\">N</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "O",
+          "width": 44.59375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"O\" aria-pressed=\"false\">O</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "P",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"P\" aria-pressed=\"false\">P</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Q",
+          "width": 44.59375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"Q\" aria-pressed=\"false\">Q</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "R",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"R\" aria-pressed=\"false\">R</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "S",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"S\" aria-pressed=\"false\">S</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "T",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"T\" aria-pressed=\"false\">T</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "U",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"U\" aria-pressed=\"false\">U</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "V",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"V\" aria-pressed=\"false\">V</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "X",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"X\" aria-pressed=\"false\">X</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAbuso y explotación\nAlguien se aprovecha de la confianza o de la dependencia. Qué",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/abuso-y-explotacion/\"><span class=\"chiprow\" data-grado=\"BP\"><span class=\"chip\">contexto</span></span><strong>Abuso y e"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "apoyo\nAcceso a apoyos\nPedir un apoyo y perderse en el trámite. Qué hace falta para solicit",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/acceso-a-apoyos/\"><span class=\"chiprow\" data-grado=\"B\"><span class=\"chip\">apoyo</span></span><strong>Acceso a apoyos</"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAcoso escolar / bullying\nCuando ir a clase se vuelve un problema de seguridad. Qu",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/acoso-escolar-bullying/\"><span class=\"chiprow\" data-grado=\"BP\"><span class=\"chip\">contexto</span></span><strong>Acoso "
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nActividad física y movimiento\nMoverse cuando el cuerpo y la energía no acompañan ",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/actividad-fisica-y-movimiento/\"><span class=\"chiprow\" data-grado=\"BP\"><span class=\"chip\">contexto</span></span><strong"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "identidad\nAgénero\nNo tener género, o tener una relación distinta con él. Qué describe la p",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/agenero/\"><span class=\"chiprow\" data-grado=\"sin grado\"><span class=\"chip\">identidad</span></span><strong>Agénero</stro"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nAgorafobia\nEvitar salir, el metro, las colas, los sitios sin salida fácil. Qué",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" data-capa=\"1\" href=\"../../../es/neurodiversidad/condiciones/agorafobia/\"><span class=\"chiprow\" data-grado=\"A/B\"><span class=\"chip\">diagnóstico</span></span><strong>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "proceso\nAlexitimia\nNotar algo en el cuerpo y no saber ponerle nombre. Qué describe la alex",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/alexitimia/\"><span class=\"chiprow\" data-grado=\"B/C\"><span class=\"chip\">proceso</span></span><strong>Alexitimia</strong"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "emergente\nAlta sensibilidad / SPS\nNotarlo todo antes y más fuerte que los demás. Qué descr",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/alta-sensibilidad-sps/\"><span class=\"chiprow\" data-grado=\"C\"><span class=\"chip\">emergente</span></span><strong>Alta se"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "experiencia\nAltas capacidades\nAprender rápido y aburrirse el resto del tiempo. Qué son las",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/altas-capacidades/\"><span class=\"chiprow\" data-grado=\"C\"><span class=\"chip\">experiencia</span></span><strong>Altas cap"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAmistad\nPocos amigos, contacto espaciado y la sensación de estar en deuda. Qué ha",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" href=\"../../../es/neurodiversidad/condiciones/amistad/\"><span class=\"chiprow\" data-grado=\"BP\"><span class=\"chip\">contexto</span></span><strong>Amistad</strong><span"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nAmnesia disociativa\nLagunas de memoria que no encajan con un olvido normal. Qu",
+          "width": 1124,
+          "height": 172.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"card\" data-capa=\"1\" href=\"../../../es/neurodiversidad/condiciones/amnesia-disociativa/\"><span class=\"chiprow\" data-grado=\"A/B\"><span class=\"chip\">diagnóstico</span></span"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "real Tab traversal",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 1440,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 130.625,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Inicio",
+          "width": 56.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"15\" class=\"ig-nav-es\" href=\"/\">Inicio</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Condiciones",
+          "width": 105.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"18\" class=\"ig-nav-es\" href=\"/es/neurodiversidad/condiciones/\">Condiciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Situaciones",
+          "width": 101.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"21\" class=\"ig-nav-es\" href=\"/es/situaciones/\">Situaciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vida diaria",
+          "width": 95.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"24\" class=\"ig-nav-es\" href=\"/es/biblioteca/\">Vida diaria</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vídeos",
+          "width": 66.5,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"27\" class=\"ig-nav-es\" href=\"/es/videos/\">Vídeos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Investigación",
+          "width": 114.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"30\" class=\"ig-nav-es\" href=\"/es/investigacion/\">Investigación</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Datos",
+          "width": 60.171875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"33\" class=\"ig-nav-es\" href=\"/es/datos/\">Datos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ayudas",
+          "width": 70.359375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"36\" class=\"ig-nav-es\" href=\"/es/tramites/directorio/\">Ayudas</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Libros",
+          "width": 61.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"39\" class=\"ig-nav-es\" href=\"/es/libros/\">Libros</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Jugar",
+          "width": 55.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"42\" aria-current=\"page\" class=\"ig-nav-es\" href=\"/es/recursos/juegos/\">Jugar</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tus intereses",
+          "width": 112.4375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"45\" class=\"ig-nav-es ig-calma\" href=\"/es/intereses/\">Tus intereses</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "El taller",
+          "width": 73.3125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"46\" class=\"ig-nav-es ig-calma\" href=\"/es/taller/\">El taller</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Rincón tranquilo",
+          "width": 136.984375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"47\" class=\"ig-nav-es ig-calma\" href=\"/es/sitio-tranquilo/\">Rincón tranquilo</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 107.453125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 179.515625,
+          "height": 218.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 201.953125,
+          "height": 42.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 179.515625,
+          "height": 92.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 44.875,
+          "height": 42.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 347.8125,
+          "height": 403.90625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 1122,
+          "height": 47.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 130.625,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Inicio",
+          "width": 56.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"15\" class=\"ig-nav-es\" href=\"/\">Inicio</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Condiciones",
+          "width": 105.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"18\" class=\"ig-nav-es\" href=\"/es/neurodiversidad/condiciones/\">Condiciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Situaciones",
+          "width": 101.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"21\" class=\"ig-nav-es\" href=\"/es/situaciones/\">Situaciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vida diaria",
+          "width": 95.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"24\" class=\"ig-nav-es\" href=\"/es/biblioteca/\">Vida diaria</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vídeos",
+          "width": 66.5,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"27\" class=\"ig-nav-es\" href=\"/es/videos/\">Vídeos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Investigación",
+          "width": 114.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"30\" class=\"ig-nav-es\" href=\"/es/investigacion/\">Investigación</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Datos",
+          "width": 60.171875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"33\" class=\"ig-nav-es\" href=\"/es/datos/\">Datos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ayudas",
+          "width": 70.359375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"36\" class=\"ig-nav-es\" href=\"/es/tramites/directorio/\">Ayudas</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Libros",
+          "width": 61.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"39\" class=\"ig-nav-es\" href=\"/es/libros/\">Libros</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Jugar",
+          "width": 55.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"42\" aria-current=\"page\" class=\"ig-nav-es\" href=\"/es/recursos/juegos/\">Jugar</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tus intereses",
+          "width": 112.4375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"45\" class=\"ig-nav-es ig-calma\" href=\"/es/intereses/\">Tus intereses</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "El taller",
+          "width": 73.3125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"46\" class=\"ig-nav-es ig-calma\" href=\"/es/taller/\">El taller</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Rincón tranquilo",
+          "width": 136.984375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"47\" class=\"ig-nav-es ig-calma\" href=\"/es/sitio-tranquilo/\">Rincón tranquilo</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 107.453125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 48,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 179.515625,
+          "height": 218.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 201.953125,
+          "height": 42.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 179.515625,
+          "height": 92.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 44.875,
+          "height": 42.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 347.8125,
+          "height": 403.90625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 1122,
+          "height": 47.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 130.625,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Inicio",
+          "width": 56.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"15\" class=\"ig-nav-es\" href=\"/\">Inicio</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Condiciones",
+          "width": 105.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"18\" class=\"ig-nav-es\" href=\"/es/neurodiversidad/condiciones/\">Condiciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Situaciones",
+          "width": 101.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"21\" class=\"ig-nav-es\" href=\"/es/situaciones/\">Situaciones</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vida diaria",
+          "width": 95.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"24\" class=\"ig-nav-es\" href=\"/es/biblioteca/\">Vida diaria</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Vídeos",
+          "width": 66.5,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"27\" class=\"ig-nav-es\" href=\"/es/videos/\">Vídeos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Investigación",
+          "width": 114.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"30\" class=\"ig-nav-es\" href=\"/es/investigacion/\">Investigación</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Datos",
+          "width": 60.171875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"33\" class=\"ig-nav-es\" href=\"/es/datos/\">Datos</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ayudas",
+          "width": 70.359375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"36\" class=\"ig-nav-es\" href=\"/es/tramites/directorio/\">Ayudas</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Libros",
+          "width": 61.390625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"39\" class=\"ig-nav-es\" href=\"/es/libros/\">Libros</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Jugar",
+          "width": 55.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"42\" aria-current=\"page\" class=\"ig-nav-es\" href=\"/es/recursos/juegos/\">Jugar</a>"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "real Tab traversal",
+      "path": "/",
+      "width": 320,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"6\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"7\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Música",
+          "width": 84.96875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Música</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"60\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Verlos",
+          "width": 56.25,
+          "height": 19,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"122\" href=\"/es/libros/\" style=\"font-weight: 700; text-decoration: underline; text-underline-offset: 3px;\">Verlos</a>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Buscar",
+          "width": 74.328125,
+          "height": 102.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Buscar</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Responder 3 preguntas",
+          "width": 74.328125,
+          "height": 102.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Responder 3 preguntas</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "¿Qué puedo pedir?",
+          "width": 74.328125,
+          "height": 102.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">¿Qué puedo pedir?</span>"
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "label": "Buscar",
+          "width": 120,
+          "height": 54,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<input data-dc-tpl=\"133\" class=\"ig-search-input\" type=\"search\" aria-label=\"Buscar\" placeholder=\"me cuesta salir de casa, no consigo empezar, mi hijo no habla…\" value=\"\" style=\"flex"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "no soporto el ruido",
+          "width": 160.390625,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">no soporto el ruido</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "me agoto con la gente",
+          "width": 186.21875,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">me agoto con la gente</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "no consigo dormir",
+          "width": 154.359375,
+          "height": 36.390625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">no consigo dormir</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "en el colegio no le entienden",
+          "width": 199,
+          "height": 58.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"137\" class=\"scp1\" style=\"border: 1px solid rgba(23, 57, 92, 0.14); background: rgb(255, 255, 255); border-radius: 999px; padding: 6px 13px; font-size: 14px; cu"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "me bloqueo con los papeles",
+          "width": 199,
+          "height": 58.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"137\" class=\"scp1\" style=\"border: 1px solid rgba(23, 57, 92, 0.14); background: rgb(255, 255, 255); border-radius: 999px; padding: 6px 13px; font-size: 14px; cu"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "«No aguanto las etiquetas ni las costuras de la ropa»",
+          "width": 130,
+          "height": 135.9375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"145\" href=\"/es/situaciones/la-ropa-me-molesta/\" style=\"font-weight: 700; color: rgb(23, 57, 92); text-wrap: pretty;\"><span class=\"sc-interp\">«No aguanto las etiquet"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "«Salgo del supermercado agotada y sin saber por qué»",
+          "width": 137.328125,
+          "height": 135.9375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">«Salgo del supermercado agotada y sin saber por qué»</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las fichas de Vida diaria",
+          "width": 130,
+          "height": 81.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las fichas de Vida diaria</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las cifras de Datos",
+          "width": 130,
+          "height": 81.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las cifras de Datos</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Todas las ayudas por país",
+          "width": 130,
+          "height": 81.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todas las ayudas por país</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Guardar para leer luego",
+          "width": 27,
+          "height": 35.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"148\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linejoin=\"round\"><path data-dc-tpl=\"149\" d=\"M6 3.5h12v"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ver todos los temas, de la A a la Z →",
+          "width": 122.140625,
+          "height": 72,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ver todos los temas, de la A a la Z →</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Autismo",
+          "width": 97.46875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Autismo</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "TDAH",
+          "width": 77.390625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDAH</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "TOC",
+          "width": 66.5,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TOC</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ansiedad",
+          "width": 105.53125,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ansiedad</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Dislexia",
+          "width": 94.875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Dislexia</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Discalculia",
+          "width": 117.109375,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Discalculia</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Sueño",
+          "width": 82.515625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Sueño</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Masking",
+          "width": 97.90625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Masking</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Burnout autista",
+          "width": 154.0625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Burnout autista</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Interocepción",
+          "width": 139.5625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Interocepción</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "ARFID",
+          "width": 80.796875,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ARFID</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Tourette",
+          "width": 97.40625,
+          "height": 42.796875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tourette</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ir a la videoteca completa →",
+          "width": 195,
+          "height": 54.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a data-dc-tpl=\"228\" href=\"/es/videos/\" style=\"margin-left: auto; color: rgb(168, 51, 111); font-weight: 700;\"><span class=\"sc-interp\">Ir a la videoteca completa →</span></a>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todos",
+          "width": 77.125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Todos</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Autismo",
+          "width": 97.515625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Autismo</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Misofonía",
+          "width": 108.1875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Misofonía</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "CAA",
+          "width": 65.515625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">CAA</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Discalculia",
+          "width": 117.78125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Discalculia</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TDL",
+          "width": 63.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDL</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TDAH",
+          "width": 76.796875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TDAH</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "TOC",
+          "width": 65.546875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">TOC</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Tourette",
+          "width": 97.453125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tourette</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Síndrome de Down",
+          "width": 183.859375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Síndrome de Down</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Ansiedad",
+          "width": 105.828125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Ansiedad</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Tartamudez",
+          "width": 125.71875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Tartamudez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Identidad LGTBI+",
+          "width": 172.40625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Identidad LGTBI+</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Dislexia y discalculia",
+          "width": 195,
+          "height": 64.78125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Dislexia y discalculia</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ARFID",
+          "width": 80.3125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ARFID</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Reproducir vídeo: Dan Wilkins · Embracing Neurodiversity: Dan Wilkins’ Journey",
+          "width": 193,
+          "height": 107.6875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"246\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"#a8336f\"><path data-dc-tpl=\"247\" d=\"M8 5.5l11 6.5-11 6.5z\"></path></svg>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Dan Wilkins · Embracing Neurodiversity: Dan Wilkins’ Journey",
+          "width": 195,
+          "height": 108.75,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"249\" type=\"button\" class=\"ig-video-title\"><span class=\"sc-interp\">Dan Wilkins · Embracing Neurodiversity: Dan Wilkins’ Journey</span></button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Reproducir vídeo: Cris Edwards · su historia con la misofonía",
+          "width": 193,
+          "height": 107.6875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"246\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"#a8336f\"><path data-dc-tpl=\"247\" d=\"M8 5.5l11 6.5-11 6.5z\"></path></svg>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Cris Edwards · su historia con la misofonía",
+          "width": 195,
+          "height": 81.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Cris Edwards · su historia con la misofonía</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Reproducir vídeo: Bob Williams · See Us. Hear Us.",
+          "width": 193,
+          "height": 107.6875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"246\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"#a8336f\"><path data-dc-tpl=\"247\" d=\"M8 5.5l11 6.5-11 6.5z\"></path></svg>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Bob Williams · See Us. Hear Us.",
+          "width": 195,
+          "height": 54.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"249\" type=\"button\" class=\"ig-video-title\"><span class=\"sc-interp\">Bob Williams · See Us. Hear Us.</span></button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Reproducir vídeo: Peter Cherry · vivir con discalculia",
+          "width": 193,
+          "height": 107.6875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"246\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"#a8336f\"><path data-dc-tpl=\"247\" d=\"M8 5.5l11 6.5-11 6.5z\"></path></svg>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Peter Cherry · vivir con discalculia",
+          "width": 195,
+          "height": 54.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"249\" type=\"button\" class=\"ig-video-title\"><span class=\"sc-interp\">Peter Cherry · vivir con discalculia</span></button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Reproducir vídeo: Jules Robertson · The Kennel Grandslam",
+          "width": 193,
+          "height": 107.6875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"246\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"#a8336f\"><path data-dc-tpl=\"247\" d=\"M8 5.5l11 6.5-11 6.5z\"></path></svg>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Jules Robertson · The Kennel Grandslam",
+          "width": 195,
+          "height": 81.5625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Jules Robertson · The Kennel Grandslam</span>"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "real Tab traversal",
+      "path": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Ir al contenido",
+          "width": 147.09375,
+          "height": 47.96875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"skip\" href=\"#main\">Ir al contenido</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 128.96875,
+          "height": 34.546875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Iris&nbsp;Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 74.71875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "a11yBtn",
+          "label": "Lectura accesible",
+          "width": 44.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<path d=\"M4 8.5h16M12 10.5v11M12 15h-4l-2 6M12 15h4l2 6\"></path>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "plBtn",
+          "label": "Música",
+          "width": 44.375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M9 18V6l11-2v12\"></path><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><circle cx=\"17\" cy=\"16\" r=\"3\"></circle></svg>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "EN",
+          "width": 42,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a class=\"lang\" href=\"../../../en/neurodiversity/conditions/\" lang=\"en\">EN</a>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Cuestionarios orientativos",
+          "width": 240.15625,
+          "height": 42,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<a href=\"/es/cuestionarios/\">Cuestionarios orientativos</a>"
+        },
+        {
+          "tag": "INPUT",
+          "id": "q",
+          "label": "Escribe una palabra: ruido, dormir, colegio…",
+          "width": 239,
+          "height": 54,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<input autocomplete=\"off\" id=\"q\" placeholder=\"Escribe una palabra: ruido, dormir, colegio…\" type=\"search\">"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todas",
+          "width": 77.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk is-active\" data-type=\"\" aria-pressed=\"true\">Todas</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "apoyo",
+          "width": 81.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"apoyo\" aria-pressed=\"false\">apoyo</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "contexto",
+          "width": 102.09375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"contexto\" aria-pressed=\"false\">contexto</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "controvertido",
+          "width": 139.578125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"controvertido\" aria-pressed=\"false\">controvertido</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "desarrollo",
+          "width": 111.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"desarrollo\" aria-pressed=\"false\">desarrollo</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "diagnóstico",
+          "width": 124.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"diagnóstico\" aria-pressed=\"false\">diagnóstico</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "emergente",
+          "width": 119.828125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"emergente\" aria-pressed=\"false\">emergente</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "experiencia",
+          "width": 125.09375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"experiencia\" aria-pressed=\"false\">experiencia</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "identidad",
+          "width": 107.421875,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"identidad\" aria-pressed=\"false\">identidad</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "proceso",
+          "width": 94.9375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"proceso\" aria-pressed=\"false\">proceso</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "salud física",
+          "width": 121.4375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"salud física\" aria-pressed=\"false\">salud física</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "salud mental",
+          "width": 136.0625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"chip lnk\" data-type=\"salud mental\" aria-pressed=\"false\">salud mental</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Todas",
+          "width": 77.140625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"\" aria-pressed=\"true\">Todas</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "A",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"A\" aria-pressed=\"false\">A</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "B",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"B\" aria-pressed=\"false\">B</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "C",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"C\" aria-pressed=\"false\">C</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "D",
+          "width": 44.328125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"D\" aria-pressed=\"false\">D</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "E",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"E\" aria-pressed=\"false\">E</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "F",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"F\" aria-pressed=\"false\">F</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "G",
+          "width": 44.40625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"G\" aria-pressed=\"false\">G</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "H",
+          "width": 44.03125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"H\" aria-pressed=\"false\">H</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "I",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"I\" aria-pressed=\"false\">I</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "L",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"L\" aria-pressed=\"false\">L</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "M",
+          "width": 45.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"M\" aria-pressed=\"false\">M</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "N",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"N\" aria-pressed=\"false\">N</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "O",
+          "width": 44.59375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"O\" aria-pressed=\"false\">O</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "P",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"P\" aria-pressed=\"false\">P</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Q",
+          "width": 44.59375,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"Q\" aria-pressed=\"false\">Q</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "R",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"R\" aria-pressed=\"false\">R</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "S",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"S\" aria-pressed=\"false\">S</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "T",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"T\" aria-pressed=\"false\">T</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "U",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"U\" aria-pressed=\"false\">U</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "V",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"V\" aria-pressed=\"false\">V</button>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "X",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button type=\"button\" class=\"azl\" data-letter=\"X\" aria-pressed=\"false\">X</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAbuso y explotación\nAlguien se aprovecha de la confianza o de la dependencia. Qué",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Alguien se aprovecha de la confianza o de la dependencia. Qué señales mirar, cómo pedir ayuda y por qué la culpa nunca es de quien lo sufre.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "apoyo\nAcceso a apoyos\nPedir un apoyo y perderse en el trámite. Qué hace falta para solicit",
+          "width": 273,
+          "height": 288.421875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Pedir un apoyo y perderse en el trámite. Qué hace falta para solicitarlo, qué acompañamiento existe y por qué no hay que demostrar sufrimiento para conseguirlo.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAcoso escolar / bullying\nCuando ir a clase se vuelve un problema de seguridad. Qu",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Cuando ir a clase se vuelve un problema de seguridad. Qué es acoso y qué no, qué tiene que hacer el centro y qué no funciona pese a lo que se repite.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nActividad física y movimiento\nMoverse cuando el cuerpo y la energía no acompañan ",
+          "width": 273,
+          "height": 289.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Moverse cuando el cuerpo y la energía no acompañan igual cada día. Qué opciones hay, cómo elegir según salud y preferencias, y qué no promete el ejercicio.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "identidad\nAgénero\nNo tener género, o tener una relación distinta con él. Qué describe la p",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>No tener género, o tener una relación distinta con él. Qué describe la palabra agénero y cómo se rellena un formulario o se saluda sin dar por hecho un género.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nAgorafobia\nEvitar salir, el metro, las colas, los sitios sin salida fácil. Qué",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Evitar salir, el metro, las colas, los sitios sin salida fácil. Qué es la agorafobia, cómo se reconoce y qué tratamiento ayuda, con la guía clínica citada.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "proceso\nAlexitimia\nNotar algo en el cuerpo y no saber ponerle nombre. Qué describe la alex",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Notar algo en el cuerpo y no saber ponerle nombre. Qué describe la alexitimia, cómo preguntar de otra forma y qué se sabe hasta hoy sobre este proceso.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "emergente\nAlta sensibilidad / SPS\nNotarlo todo antes y más fuerte que los demás. Qué descr",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Notarlo todo antes y más fuerte que los demás. Qué describe la alta sensibilidad, por qué no es un diagnóstico y qué se sabe hasta hoy de este rasgo.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "experiencia\nAltas capacidades\nAprender rápido y aburrirse el resto del tiempo. Qué son las",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Aprender rápido y aburrirse el resto del tiempo. Qué son las altas capacidades, qué ajustes de currículo y ritmo ayudan, y qué necesita lo emocional.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAmistad\nPocos amigos, contacto espaciado y la sensación de estar en deuda. Qué ha",
+          "width": 273,
+          "height": 288.421875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Pocos amigos, contacto espaciado y la sensación de estar en deuda. Qué hace que una amistad funcione, qué acordar y cuándo pocos vínculos no son un problema.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nAmnesia disociativa\nLagunas de memoria que no encajan con un olvido normal. Qu",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Lagunas de memoria que no encajan con un olvido normal. Qué es la amnesia disociativa, cómo se valora y por qué no se buscan recuerdos por sugestión.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nAnimales\nUn animal en casa cambia el día entero. Qué planificar antes de decidir ",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Un animal en casa cambia el día entero. Qué planificar antes de decidir y por qué las intervenciones con animales no sustituyen un tratamiento.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nAnorexia nerviosa\nComer cada vez menos y no ver el peligro. Qué es la anorexia",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Comer cada vez menos y no ver el peligro. Qué es la anorexia nerviosa, cómo se valora el riesgo y qué atención tiene respaldo, con la NICE NG69 citada.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "salud mental\nAnsiedad\nEl cuerpo en alerta sin peligro delante. Qué es la ansiedad, qué tra",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>El cuerpo en alerta sin peligro delante. Qué es la ansiedad, qué tratamientos psicológicos tienen eficacia demostrada y por qué evitar alivia y mantiene.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nTrastorno de ansiedad generalizada (TAG)\nPreocupación que no se apaga y cuerpo",
+          "width": 273,
+          "height": 289.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Preocupación que no se apaga y cuerpo en tensión todo el día. Qué es el TAG, cómo se reconoce y qué tratamientos ayudan, con la NICE CG113 citada.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nTrastorno de ansiedad por separación\nAngustia al separarse de quien da segurid",
+          "width": 273,
+          "height": 314.328125,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Angustia al separarse de quien da seguridad, más allá de lo esperable. Qué es la ansiedad por separación, cómo se reconoce y qué ayuda en casa y en el colegio.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nTrastorno de ansiedad social\nMiedo a que te miren, a hablar, a quedar en evide",
+          "width": 273,
+          "height": 289.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Miedo a que te miren, a hablar, a quedar en evidencia. Qué es la ansiedad social, en qué se distingue de la timidez y qué ayuda, con la NICE CG159.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nApraxia del habla infantil\nSabe qué quiere decir y la boca no obedece. Qué es ",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Sabe qué quiere decir y la boca no obedece. Qué es la apraxia del habla infantil, en qué se nota, cómo se valora y qué intervención ayuda, con ASHA citada.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "diagnóstico\nARFID\nComer muy poco o muy poca variedad, sin que sea por el peso. Qué es el A",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Comer muy poco o muy poca variedad, sin que sea por el peso. Qué es el ARFID, por qué la seguridad nutricional va primero y qué se sabe hasta hoy.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "identidad\nAromanticismo\nEl enamoramiento no aparece, y no falta nada. Qué describe el arom",
+          "width": 273,
+          "height": 288.421875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>El enamoramiento no aparece, y no falta nada. Qué describe el aromanticismo y qué pasa cuando un trámite pide una pareja como contacto o beneficiario.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nArte y creación\nCrear por gusto, sin que se convierta en terapia ni en rendimient",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Crear por gusto, sin que se convierta en terapia ni en rendimiento. Qué hace falta para poder crear y en qué se diferencia de una intervención profesional.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "identidad\nAsexualidad\nPoca o ninguna atracción sexual, y no es un problema por sí solo. Qu",
+          "width": 273,
+          "height": 263.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Poca o ninguna atracción sexual, y no es un problema por sí solo. Qué describe la asexualidad y por qué en consulta se parte de que es una orientación.</span>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "contexto\nDificultades de asistencia escolar\nCuando ir al colegio se hace imposible. Los ti",
+          "width": 273,
+          "height": 289.0625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span>Cuando ir al colegio se hace imposible. Los tipos de problema de asistencia, por qué la distinción cambia la respuesta y qué tiene que hacer el centro.</span>"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "real Tab traversal",
+      "path": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "visited": [
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"13\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 43.359375,
+          "height": 52.84375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 48.765625,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 43.359375,
+          "height": 22.34375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 10.828125,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 84,
+          "height": 97.546875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 271,
+          "height": 70.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"13\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 43.359375,
+          "height": 52.84375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 48.765625,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 43.359375,
+          "height": 22.34375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 10.828125,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 84,
+          "height": 97.546875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 271,
+          "height": 70.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"13\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 43.359375,
+          "height": 52.84375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 48.765625,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 43.359375,
+          "height": 22.34375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 10.828125,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 84,
+          "height": 97.546875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 271,
+          "height": 70.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"13\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "EN",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">EN</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Empezar otra vez",
+          "width": 168.015625,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Empezar otra vez</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Enseñarme las cinco",
+          "width": 190.53125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">Enseñarme las cinco</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El ruido de la clase",
+          "width": 43.359375,
+          "height": 52.84375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El ruido de la clase\" style=\"position: absolute; left: 84%; top: 20%; width: 16%; height: 26%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El tubo de luz",
+          "width": 48.765625,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El tubo de luz\" style=\"position: absolute; left: 14%; top: 7%; width: 18%; height: 5%; background: transparent; borde"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "El plan tachado",
+          "width": 43.359375,
+          "height": 22.34375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"El plan tachado\" style=\"position: absolute; left: 84%; top: 8%; width: 16%; height: 11%; background: transparent; bor"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La etiqueta del jersey",
+          "width": 10.828125,
+          "height": 10.15625,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La etiqueta del jersey\" style=\"position: absolute; left: 44%; top: 59%; width: 4%; height: 5%; background: transparen"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "La fila apretada",
+          "width": 84,
+          "height": 97.546875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"83\" class=\"ig-picture-target\" aria-label=\"La fila apretada\" style=\"position: absolute; left: 52%; top: 47%; width: 31%; height: 48%; background: transparent; b"
+        },
+        {
+          "tag": "SUMMARY",
+          "id": "",
+          "label": "Usar botones en lugar de tocar la imagen",
+          "width": 271,
+          "height": 70.375,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<summary data-dc-tpl=\"87\"><span class=\"sc-interp\">Usar botones en lugar de tocar la imagen</span></summary>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Iris Green",
+          "width": 122.578125,
+          "height": 25,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"12\">Iris Green</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Abrir menú",
+          "width": 77.46875,
+          "height": 45.1875,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<button data-dc-tpl=\"13\" type=\"button\" class=\"ig-menu-button\" aria-label=\"Abrir menú\" aria-controls=\"ig-main-nav\" aria-expanded=\"false\">Menú</button>"
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "label": "Música",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<svg data-dc-tpl=\"57\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5a49a8\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path data-dc-tpl=\"5"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "Lectura",
+          "width": 88.8125,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span data-dc-tpl=\"65\">Lectura</span>"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "label": "ES",
+          "width": 44,
+          "height": 44,
+          "visible": true,
+          "uncovered": true,
+          "hit": "<span class=\"sc-interp\">ES</span>"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "playing track while panel collapses",
+      "width": 1440,
+      "path": "/",
+      "source": "/audio/atmosfera.mp3",
+      "escape_keeps_playing": true,
+      "tab_steps_to_auto_collapse": 53,
+      "focus_collapse_keeps_playing": true,
+      "passed": true
+    },
+    {
+      "test": "playing track while panel collapses",
+      "width": 1440,
+      "path": "/es/neurodiversidad/condiciones/",
+      "source": "/audio/atmosfera.mp3",
+      "escape_keeps_playing": true,
+      "tab_steps_to_auto_collapse": 51,
+      "focus_collapse_keeps_playing": true,
+      "passed": true
+    },
+    {
+      "test": "playing track while panel collapses",
+      "width": 320,
+      "path": "/",
+      "source": "/audio/atmosfera.mp3",
+      "escape_keeps_playing": true,
+      "tab_steps_to_auto_collapse": 38,
+      "focus_collapse_keeps_playing": true,
+      "passed": true
+    },
+    {
+      "test": "playing track while panel collapses",
+      "width": 320,
+      "path": "/es/neurodiversidad/condiciones/",
+      "source": "/audio/atmosfera.mp3",
+      "escape_keeps_playing": true,
+      "tab_steps_to_auto_collapse": 38,
+      "focus_collapse_keeps_playing": true,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Tested on the generated public files, with external domains blocked.",
+    "Text selectors are native select controls with labels.",
+    "Keyboard traversal uses Tab/Shift+Tab; no focus() or synthetic page-state completion.",
+    "Audio uses the real local MP3 and original play() call; time advancing is checked, not physical loudspeaker audibility.",
+    "Computed font stacks do not guarantee that a proprietary device font is installed."
+  ],
+  "passed": true,
+  "summary": {
+    "tested": 10,
+    "passed": 10
+  }
+}

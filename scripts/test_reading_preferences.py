@@ -94,7 +94,11 @@ with sync_playwright() as pw:
      load(page,path);same_state(page)
     load(page,'index.html');panel=open_panel(page)
     page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^EN$')).click();page.wait_for_timeout(70)
-    same_state(page);assert 'remembered' in panel.inner_text()
+    same_state(page)
+    # Focus protection may close an overlapping panel when the external language
+    # control receives focus. Reopening must retain the settings and new language.
+    if not panel.is_visible():panel=open_panel(page)
+    assert 'remembered' in panel.inner_text()
     toggles(panel).nth(0).click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed
     page.reload(wait_until='domcontentloaded');page.locator('main h1').first.wait_for();same_state(page,changed)
     panel=open_panel(page);plus=panel.get_by_role('button',name='A+',exact=True);plus.click();assert prefs(page)['scale']==1.5 and plus.is_disabled()

@@ -44,7 +44,7 @@ with sync_playwright() as pw:
   snap={}
   for path in PATHS:
    c=context();p=c.new_page();load(p,path);snap[path]={'text':hashlib.sha256(main_text(p).encode()).hexdigest(),'metrics':metrics(p),'header':geometry(p)['header']};c.close()
-  (OUT/'baseline.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2));print('Baseline saved')
+  (OUT/'baseline-values.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2));print('Baseline saved')
  elif args.phase=='base':
   for width in [1440,320]:
    for path in ['/','/es/neurodiversidad/condiciones/','/es/recursos/juegos/las-cinco-cosas/']:
@@ -85,7 +85,7 @@ with sync_playwright() as pw:
      p.locator('#plBtn:visible,.ig-uh-music:visible,[data-ig-music]:visible').first.click();music.wait_for(state='visible');music.locator('.ig-m-play').click();assert p.evaluate('window.__igAudio.paused')
     result(row,audio);c.close()
  else:
-  baseline=json.loads((OUT/'baseline.json').read_text())
+  baseline=json.loads((OUT/'baseline-values.json').read_text())
   for width in [1440,390,320]:
    for path in PATHS:
     c=context(width);p=c.new_page();errors=[];p.on('pageerror',lambda e:errors.append(str(e)));row={'test':'independent settings and reset','path':path,'width':width}
