@@ -2381,8 +2381,8 @@
       "path": "/direccion-que-no-existe/",
       "width": 1440,
       "status": 404,
-      "passed": false,
-      "error": "",
+      "overflow_px": 0,
+      "passed": true,
       "javascript_errors": []
     },
     {
@@ -2439,32 +2439,17 @@
       "path": "/direccion-que-no-existe/",
       "width": 320,
       "status": 404,
-      "passed": false,
-      "error": "",
+      "overflow_px": 0,
+      "passed": true,
       "javascript_errors": []
     }
   ],
-  "failures": [
-    {
-      "path": "/direccion-que-no-existe/",
-      "width": 1440,
-      "status": 404,
-      "passed": false,
-      "error": ""
-    },
-    {
-      "path": "/direccion-que-no-existe/",
-      "width": 320,
-      "status": 404,
-      "passed": false,
-      "error": ""
-    }
-  ],
+  "failures": [],
   "notes": [
     "Se comprueban los archivos de dist, que es el directorio configurado para publicar.",
     "El servidor local emula las reglas concretas del proyecto; no es el CDN de Netlify.",
     "No se afirma inclusión en Google, revisión documental ni reproducción de vídeos externos.",
     "Las dos portadas ausentes de Libros siguen siendo un pendiente aparte."
   ],
-  "passed": false
+  "passed": true
 }

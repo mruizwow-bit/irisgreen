@@ -178,7 +178,7 @@ def browser_tests():
                         row['editorial_anchor']=True
                     if path=='/direccion-que-no-existe/':
                         assert page.locator('body').evaluate('(e)=>e.getBoundingClientRect().height>=innerHeight-1')
-                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat')=='no-repeat'
+                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat.split(",").every(value=>value.trim()==="no-repeat")'),'Una capa del fondo se repite'
                     if path=='/':
                         msg=page.locator('#ig-books-message');assert msg.count()==1
                         assert msg.bounding_box()['y']<page.locator('#consola').bounding_box()['y']
