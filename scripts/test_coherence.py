@@ -1,3 +1,4 @@
+import traceback
 #!/usr/bin/env python3
 """Prueba controles reales e integridad de los listados; no valida fuentes clínicas."""
 import functools,json,re,threading,unicodedata
@@ -21,7 +22,7 @@ def style(p,selector,name):
  x=p.locator(selector).first;assert x.count(),name+' sin controles'
  v=x.evaluate('(e)=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return {font:s.fontFamily,size:s.fontSize,radius:s.borderRadius,padding:s.padding,border:s.borderWidth,bg:s.backgroundColor,color:s.color,height:r.height,width:r.width}}')
  assert v['height']>=43.9,v
- assert v['size']=='16px' and v['radius']=='999px',v
+ assert v['size']=='16px' and v['radius']=='999px' and v['bg']=='rgb(23, 57, 92)',v
  REPORT['styles'].append({'section':name,**v});return v
 
 def bounds(p,selector):
@@ -127,13 +128,13 @@ with sync_playwright() as pw:
   for kind in ['Condición','Situación']:
    c,p=ctx_page(browser,width)
    try:REPORT['catalogues'].append(catalogue(p,kind,width))
-   except Exception as e:REPORT['failures'].append({'section':kind,'width':width,'error':str(e)})
+   except Exception as e:REPORT['failures'].append({'section':kind,'width':width,'error':traceback.format_exc()})
    c.close()
  for width in [1440,320]:
   for path in ['/','/es/videos/','/es/investigacion/','/es/tramites/directorio/','/es/taller/','/es/vivir-fuera/','/es/biblioteca/','/es/intereses/']:
    c,p=ctx_page(browser,width)
    try:REPORT['other_sections'].append(other(p,path,width))
-   except Exception as e:REPORT['failures'].append({'path':path,'width':width,'error':str(e)})
+   except Exception as e:REPORT['failures'].append({'path':path,'width':width,'error':traceback.format_exc()})
    c.close()
  for path in ['/es/situaciones/','/es/neurodiversidad/condiciones/']:
   c,p=ctx_page(browser,390);failed={'on':True};attempts=[]
@@ -147,7 +148,7 @@ with sync_playwright() as pw:
    assert p.locator('[data-ig-catalog] input[type=search]').is_disabled();assert p.locator('main .cards>a.card:visible').count()>=185
    failed['on']=False;p.locator('[data-ig-catalog-retry]').click();p.wait_for_function('!document.querySelector("[data-ig-catalog] input[type=search]").disabled');assert not p.locator('[data-ig-catalog-error]').is_visible()
    REPORT['recovery'].append({'path':path,'readable_on_error':True,'retry_recovered':True,'failed_requests':len(attempts),'passed':True})
-  except Exception as e:REPORT['failures'].append({'recovery':path,'error':str(e)})
+  except Exception as e:REPORT['failures'].append({'recovery':path,'error':traceback.format_exc()})
   c.close()
  browser.close()
 server.shutdown();REPORT['passed']=not REPORT['failures']
