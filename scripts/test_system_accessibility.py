@@ -65,7 +65,7 @@ try:
      row['overflow']=page.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)');assert row['overflow']<=2
      if path=='/es/sitio-tranquilo/':
       page.locator('#startBreath').click();page.wait_for_timeout(100)
-      row['started_ring_animation']=page.locator('.ring').evaluate('(e)=>getComputedStyle(e).animationName');assert row['started_ring_animation']=='none'
+      row['started_ring_animation']=page.locator('.ring').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).animationName)');assert len(row['started_ring_animation'])==3 and all(n=='none' for n in row['started_ring_animation'])
       page.locator('#stopBreath').click()
      if args.phase=='after' and path in ['/es/neurodiversidad/condiciones/','/es/intereses/','/']:
       page.screenshot(path=str(OUT/f'forced-{path.strip("/").replace("/","-") or "home"}-{width}.png'))
