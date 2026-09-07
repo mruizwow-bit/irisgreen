@@ -1,0 +1,56 @@
+name: Confirmar archivos publicados · solo lectura
+on:
+  push:
+    branches: ['ajustes/portadas-originales']
+    paths: ['.github/workflows/confirmar-portadas-publicadas.yml']
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: c745fd250819dda04caec1f67b489e958c90a71f
+      - name: Comparar los archivos del dominio con la versión publicada
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor
+          from datetime import datetime,timezone
+          import hashlib,json,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          site='https://irisgreen.eu'
+          assets=['/assets/books/luma-es-512.webp','/assets/books/autismo-es-512.webp','/assets/preferencias-lectura.js','/assets/musica.js','/assets/video-thumbnails/74KDFWp1jK8.jpg']
+          expected={p:hashlib.sha256(Path(p.lstrip('/')).read_bytes()).hexdigest() for p in assets}
+          paths=['/','/es/libros/','/es/neurodiversidad/condiciones/','/sitemap.xml','/reports/routes/build.json',*assets]
+          def fetch(path):
+              row={'path':path}
+              try:
+                  req=urllib.request.Request(site+path,headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-Deployment-Check/1.1'})
+                  with urllib.request.urlopen(req,timeout=20) as response:
+                      data=response.read(3000000);row.update(status=response.status,content_type=response.headers.get('Content-Type',''),bytes=len(data))
+                  if path in expected:
+                      row['sha256']=hashlib.sha256(data).hexdigest();row['matches_main']=row['sha256']==expected[path]
+                  if path=='/':row['new_home']=b'ig-books-message' in data and b'preferencias-lectura.js' in data and b'__bundler/template' not in data
+                  if path=='/es/libros/':row['cover_dimensions_present']=b'coverWidth' in data and b'coverHeight' in data
+                  if path=='/es/neurodiversidad/condiciones/':row['shared_catalogue_present']=b'data-ig-catalog' in data
+                  if path=='/sitemap.xml':ET.fromstring(data);row['xml_valid']=True
+              except urllib.error.HTTPError as error:row['status']=error.code
+              except Exception as error:row['error']=str(error)
+              return row
+          with ThreadPoolExecutor(max_workers=5) as pool:rows=list(pool.map(fetch,paths))
+          by={r['path']:r for r in rows}
+          confirmed=all(by[p].get('matches_main') for p in assets) and by['/'].get('new_home') and by['/es/libros/'].get('cover_dimensions_present') and by['/es/neurodiversidad/condiciones/'].get('shared_catalogue_present')
+          private=by['/reports/routes/build.json'].get('status')==404
+          report={'checked_at':datetime.now(timezone.utc).isoformat(),'commit':'c745fd250819dda04caec1f67b489e958c90a71f','site':site,'checks':rows,'published_version_confirmed':bool(confirmed),'working_report_not_public':private,'scope':'Real HTTPS responses from the public domain and byte comparison of five deployed assets. Does not certify all interactions or external videos.'}
+          Path('/tmp/ig-live').mkdir(exist_ok=True);Path('/tmp/ig-live/publication.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False))
+          if not confirmed or not private or not by['/sitemap.xml'].get('xml_valid'):raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: portadas-publicacion-confirmada
+          path: /tmp/ig-live
+          retention-days: 7
