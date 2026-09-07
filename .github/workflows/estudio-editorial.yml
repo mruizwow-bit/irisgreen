@@ -22,6 +22,26 @@ jobs:
           /tmp/ig-study/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
           /tmp/ig-study/bin/python -m playwright install --with-deps chromium >/tmp/ig-study-install.log 2>&1
           /tmp/ig-study/bin/python scripts/test_study_revision.py --baseline
+      - name: Mantener la regresión de vídeos tras la mejora anterior del nombre accesible
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/test_coherence.py');s=p.read_text()
+          old="p.get_by_role('button',name='Ver aquí',exact=True)"
+          new="p.locator('main button.ig-video-poster:visible')"
+          if old in s:
+              assert s.count(old)==3
+              s=s.replace(old,new)
+              # Mantener los recuentos y comprobar también el proveedor y nombre accesible.
+              anchor="  filters(p,'platChips').first.click();choose(p,'temaChips','Misofonía');"
+              assert s.count(anchor)==1
+              s=s.replace(anchor,"  assert 'vimeo.com' in p.locator('main button.ig-video-poster:visible').get_attribute('data-ig-video')\n"+anchor)
+              anchor="  p.locator('main input[type=search]').fill('zzzinexistentexxx');assert "+new+".count()==0"
+              assert s.count(anchor)==1
+              s=s.replace(anchor,"  assert 'youtube' in p.locator('main button.ig-video-poster:visible').get_attribute('data-ig-video')\n  assert p.locator('main button.ig-video-poster:visible').get_attribute('aria-label').startswith('Reproducir vídeo:')\n"+anchor)
+              p.write_text(s)
+          else:assert new in s
+          PY
       - name: Aplicar únicamente las dos fichas y sus resúmenes
         run: |
           python3 scripts/apply_reviewed_entries.py
@@ -63,8 +83,17 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- es/neurodiversidad/condiciones/autismo/index.html es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/index.html en/neurodiversity/conditions/autism/index.html en/neurodiversity/conditions/developmental-language-disorder-dld/index.html es/neurodiversidad/condiciones/index.html en/neurodiversity/conditions/index.html buscador.json videoteca-listado.json
+          git add -- es/neurodiversidad/condiciones/autismo/index.html es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/index.html en/neurodiversity/conditions/autism/index.html en/neurodiversity/conditions/developmental-language-disorder-dld/index.html es/neurodiversidad/condiciones/index.html en/neurodiversity/conditions/index.html buscador.json videoteca-listado.json scripts/test_coherence.py
           for p in reports/study-20260907/*.json; do test ! -f "$p" || git add -- "$p"; done
+          # El build regenera informes internos. Se incluyen solo sus JSON y se
+          # detiene si apareciese cualquier otro archivo modificado no previsto.
+          python3 - <<'PY'
+          import subprocess
+          remaining=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
+          for p in remaining:
+              assert p.startswith('reports/') and p.endswith('.json'),('Cambio no previsto',p)
+              subprocess.run(['git','add','--',p],check=True)
+          PY
           git diff --cached --quiet || git commit -m 'Aplicar revisión documental de Autismo y TDL y registrar sus pruebas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
