@@ -47,26 +47,24 @@ jobs:
           from pathlib import Path
           import json
           p=Path('reports/accessibility/presentation-guide-tests.json')
-          data=json.loads(p.read_text()) if p.exists() else {'passed':False,'summary':{'passed':0,'total':0},'failures':['La prueba nueva no produjo informe']}
-          text=f'''# Presentación accesible · temas, guía y concentración
-
-## Estado de esta tanda
-Prueba nueva: **{data.get('summary',{}).get('passed',0)}/{data.get('summary',{}).get('total',0)}** casos aprobados. Resultado global: **{'APROBADO' if data.get('passed') else 'NO APROBADO'}**.
-
-## Incorporado
-- Tema Original, Claro y Oscuro; Original sigue siendo el valor inicial.
-- Fondo opaco para retirar transparencias en las superficies preparadas.
-- Vista centrada en el contenido: reduce navegación principal y pie, conservando contenido, navegación interna y los controles para salir de la vista.
-- Guía de lectura colocable Arriba/Centro/Abajo y con tres alturas mediante botones, toque o teclado.
-- Explicación visible de que el espaciado rápido sustituye las cuatro separaciones personalizadas, pero conserva tipografía y anchura.
-
-## Límites
-No se aplican filtros a fotografías o ilustraciones. Esta tanda no completa la revisión de información dependiente del color por actividad, la lectura en voz alta avanzada ni las alternativas textuales de todos los materiales. Las pruebas son locales en Chromium y no sustituyen lectores de pantalla, líneas braille, control por voz ni dispositivos físicos.
-
-## Evidencia
-`presentation-guide-tests.json` y capturas `presentation-dark-focus-*` y `guide-keyboard-*`. Las baterías anteriores de preferencias, panel, ajustes del sistema y recorrido se ejecutan de nuevo en esta misma tarea y deben terminar correctamente para incorporar el cambio.
-'''
-          Path('reports/accessibility/presentation-guide-RESUMEN.md').write_text(text)
+          data=json.loads(p.read_text()) if p.exists() else {'passed':False,'summary':{'passed':0,'total':0}}
+          passed=data.get('summary',{}).get('passed',0);total=data.get('summary',{}).get('total',0)
+          lines=[
+            '# Presentación accesible · temas, guía y concentración','',
+            '## Estado de esta tanda',
+            f'Prueba nueva: **{passed}/{total}** casos aprobados. Resultado global: **'+('APROBADO' if data.get('passed') else 'NO APROBADO')+'**.','',
+            '## Incorporado',
+            '- Tema Original, Claro y Oscuro; Original sigue siendo el valor inicial.',
+            '- Fondo opaco para retirar transparencias en las superficies preparadas.',
+            '- Vista centrada: reduce navegación principal y pie, conservando contenido, navegación interna y los controles para salir.',
+            '- Guía colocable Arriba/Centro/Abajo y con tres alturas mediante botones, toque o teclado.',
+            '- Explicación visible de que el espaciado rápido sustituye las cuatro separaciones personalizadas, pero conserva tipografía y anchura.','',
+            '## Límites',
+            'No se aplican filtros a fotografías o ilustraciones. Esta tanda no completa la revisión de información dependiente del color por actividad, la voz avanzada ni las alternativas textuales de todos los materiales. Las pruebas son locales en Chromium y no sustituyen lectores de pantalla, líneas braille, control por voz ni dispositivos físicos.','',
+            '## Evidencia',
+            '`presentation-guide-tests.json` y capturas `presentation-dark-focus-*` y `guide-keyboard-*`. Las baterías anteriores de preferencias, panel, ajustes del sistema y recorrido se ejecutan de nuevo antes de incorporar el cambio.'
+          ]
+          Path('reports/accessibility/presentation-guide-RESUMEN.md').write_text('\n'.join(lines)+'\n')
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
