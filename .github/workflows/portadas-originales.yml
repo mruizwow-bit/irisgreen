@@ -1,0 +1,129 @@
+name: Portadas originales · preparación y prueba
+on:
+  push:
+    branches: ['ajustes/portadas-originales']
+    paths: ['.github/workflows/portadas-originales.yml']
+permissions:
+  contents: write
+concurrency:
+  group: portadas-originales-irisgreen
+  cancel-in-progress: false
+jobs:
+  portadas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ajustes/portadas-originales
+      - name: Incorporar imágenes de las cubiertas aportadas por la autora
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,re,urllib.request
+          from pathlib import Path
+          covers={
+            'autismo':{'parts':['d21ffb5f6f8e8e6cbbd2adb58786a15f88863793','de77ba7c79803f3ca031648e076c442d23bd4999','59701ba5aaa76374bc868072722252228e377352','fc9bac13072c301bf4ef1375e4d55a7315f51f67'],'sha256':'0ec9636274436db44d1850fc0f6e66bc434f8418400339e55c996989234c2050','width':512,'height':726,'bytes':27610,'source':'AUTISMO_EN_LA_VIDA_DIARIA_PORTADA_KDP_A5_135P(2).pdf','crop_pt':[450.48789125,9.070853406,870.01545030,604.34644396]},
+            'luma':{'parts':['030a62e6e79948117f3c9ac2ead41c56b31d8084','c8273668aeedc00a0093648f9a891f4d9f8ff706','1edbbed5a97037eeae271a6964544940cb7962ca','53537f67e023b5ba485fa0a559340fc11ebbd2c0','e534a790015fc442bfe59c0506606580ea1bb640'],'sha256':'03efe9d094b64ab7a8e9f95d9a29570ac3369b170cc6952e459b87ee34cd65d0','width':512,'height':512,'bytes':30200,'source':'Luma portada esp(2).pdf','crop_pt':[627.4100341796875,9,1239.4100341796875,621]}}
+          for name,row in covers.items():
+              pieces=[]
+              for sha in row['parts']:
+                  url='https://api.github.com/repos/mruizwow-bit/irisgreen/git/blobs/'+sha
+                  request=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+                  with urllib.request.urlopen(request,timeout=20) as response:obj=json.load(response)
+                  assert obj['encoding']=='base64'
+                  data=base64.b64decode(obj['content'])
+                  assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==sha
+                  pieces.append(data)
+              data=b''.join(pieces)
+              assert len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256']
+              target=Path('assets/books')/(name+'-es-512.webp');target.parent.mkdir(parents=True,exist_ok=True)
+              if target.exists():assert target.read_bytes()==data,'Existing cover differs; do not overwrite.'
+              else:target.write_bytes(data)
+              row['path']='/'+target.as_posix();del row['parts']
+          p=Path('es/libros/index.html');s=p.read_text()
+          old='<img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">'
+          new='<img sc-camel-src="{{ b.cover }}" alt="{{ b.coverAlt }}" width="{{ b.coverWidth }}" height="{{ b.coverHeight }}" decoding="async" style="width: 100%; height: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(23,57,92,0.6);">'
+          assert s.count(old)==1;s=s.replace(old,new,1)
+          old='cover: COVERS[n].cover, coverAlt: COVERS[n].alt,'
+          new='cover: COVERS[n].cover, coverAlt: COVERS[n].alt, coverWidth: 512, coverHeight: n === 0 ? 512 : 726,'
+          assert s.count(old)==1;s=s.replace(old,new,1);p.write_text(s)
+          report={'covers':covers,'method':'Front cover only, cropped from the supplied original print PDF; rendered in RGB, resized to width 512px, WebP quality 80. No regenerated illustration, text or title. Original PDFs remain unchanged and are not published.','total_bytes':sum(x['bytes'] for x in covers.values()),'status':'pending browser checks'}
+          Path('reports/books').mkdir(parents=True,exist_ok=True)
+          Path('reports/books/original-covers.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False))
+          PY
+      - name: Preparar navegador y generar el directorio público
+        run: |
+          python3 -m venv /tmp/ig-books
+          /tmp/ig-books/bin/pip -q install playwright==1.55.0 pillow==11.3.0
+          /tmp/ig-books/bin/python -m playwright install --with-deps chromium >/tmp/ig-books-browser.log 2>&1
+          python3 scripts/build_site.py
+      - name: Verificar imágenes, proporción, idiomas y acceso desde Inicio
+        run: |
+          /tmp/ig-books/bin/python - <<'PY'
+          import functools,json,threading
+          from pathlib import Path
+          from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+          from playwright.sync_api import sync_playwright
+          from PIL import Image
+          root=Path.cwd();out=root/'reports/books';cases=[]
+          expected={'luma-es-512.webp':(512,512),'autismo-es-512.webp':(512,726)}
+          for name,size in expected.items():
+              with Image.open(root/'dist/assets/books'/name) as im:assert im.size==size;im.verify()
+          class Quiet(SimpleHTTPRequestHandler):
+              def log_message(self,*args):pass
+          server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(root/'dist')))
+          threading.Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch()
+              for width in [1440,390,320]:
+                  for lang in ['es','en']:
+                      row={'width':width,'language':lang};errors=[];bad=[]
+                      ctx=browser.new_context(viewport={'width':width,'height':1000});page=ctx.new_page();page.set_default_timeout(12000)
+                      page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(base) else r.abort())
+                      page.on('pageerror',lambda e:errors.append(str(e)))
+                      page.on('response',lambda r:bad.append(r.url) if r.url.startswith(base) and r.status>=400 else None)
+                      try:
+                          page.goto(base+'/',wait_until='domcontentloaded')
+                          page.locator('#ig-books-message a').click();page.wait_for_url('**/es/libros/**')
+                          if lang=='en':page.get_by_role('button',name='EN',exact=True).click()
+                          images=page.locator('.ig-book-card img');assert images.count()==2
+                          page.wait_for_function('Array.from(document.querySelectorAll(".ig-book-card img")).every(e=>e.complete&&e.naturalWidth>0)')
+                          row['images']=images.evaluate_all('(els)=>els.map(e=>({src:new URL(e.src).pathname,natural:[e.naturalWidth,e.naturalHeight],rendered:[e.getBoundingClientRect().width,e.getBoundingClientRect().height],alt:e.alt,width:e.getAttribute("width"),height:e.getAttribute("height")}))')
+                          for item in row['images']:
+                              size=expected[Path(item['src']).name];assert item['natural']==list(size)
+                              assert abs(item['rendered'][0]/item['rendered'][1]-size[0]/size[1])<.005,'Cover distorted'
+                              assert item['width']==str(size[0]) and item['height']==str(size[1])
+                              assert item['alt']
+                          row['overflow']=page.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)');assert row['overflow']<=2
+                          assert not errors,errors;assert not bad,bad
+                          page.screenshot(path=str(out/f'libros-{width}-{lang}.png'),full_page=True)
+                          row['passed']=True
+                      except Exception as e:row['passed']=False;row['error']=str(e)
+                      row['javascript_errors']=errors;row['http_errors']=bad;cases.append(row);ctx.close()
+              browser.close()
+          server.shutdown()
+          result={'cases':cases,'passed':all(x['passed'] for x in cases),'scope':'Local Chromium, real original-cover images, two UI languages and three widths. External bookshop links are not validated by this test.'}
+          (out/'cover-tests.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False))
+          if not result['passed']:raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: portadas-originales-resultados
+          path: reports/books
+          retention-days: 7
+      - name: Guardar únicamente las portadas y su ajuste comprobado
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/books/luma-es-512.webp assets/books/autismo-es-512.webp es/libros/index.html reports/books/*.json
+          git diff --cached --stat
+          git diff --cached --quiet || git commit -m 'Añadir las dos portadas originales y conservar sus proporciones'
+          # El build puede regenerar informes no relacionados. Se mantienen aparte
+          # durante el rebase; no se publican ni se destruyen para forzar el push.
+          git stash push -m 'temporary-build-output' -- .
+          git pull --rebase origin ajustes/portadas-originales
+          git push origin HEAD:ajustes/portadas-originales
