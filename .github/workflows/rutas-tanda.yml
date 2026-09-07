@@ -41,40 +41,20 @@ jobs:
               assert s.count(old)==1;s=s.replace(old,new,1)
           else:assert new in s
           marker="        if rel=='index.html':"
-          block='''        if rel=='es/sobre-iris-green/index.html' and 'ig-route-editorial' not in s:
-              old_mount='  componentDidMount() {'
-              new_mount='''+repr('''  componentDidMount() {
-    // ig-route-editorial: the destination exists only after the dynamic page mounts.
-    requestAnimationFrame(() => {
-      if (window.location.hash === "#criterios-editoriales") {
-        const target = document.getElementById("criterios-editoriales");
-        if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
-      }
-    });''')+'''
-              assert s.count(old_mount)==1,'No se encuentra el arranque de la página editorial'
-              s=s.replace(old_mount,new_mount,1)
-          '''
+          mount='  componentDidMount() {\n    // ig-route-editorial: navigate after the dynamic target is mounted.\n    requestAnimationFrame(() => {\n      if (window.location.hash === "#criterios-editoriales") {\n        const target = document.getElementById("criterios-editoriales");\n        if (target) target.scrollIntoView({ block: "start", behavior: "instant" });\n      }\n    });'
+          block='\n'.join(["        if rel=='es/sobre-iris-green/index.html' and 'ig-route-editorial' not in s:","            old_mount='  componentDidMount() {'",'            new_mount='+repr(mount),"            assert s.count(old_mount)==1,'No se encuentra el arranque de la página editorial'","            s=s.replace(old_mount,new_mount,1)"])
           if "// ig-route-editorial:" not in s:
-              assert s.count(marker)==1
-              s=s.replace(marker,block.rstrip()+'\n'+marker,1)
+              assert s.count(marker)==1;s=s.replace(marker,block+'\n'+marker,1)
           p.write_text(s)
           p=Path('scripts/test_routes.py');s=p.read_text()
           old="                        row['editorial_anchor']=True"
-          new="""                        rect=anchor.bounding_box()
-                        header=page.locator('header').first.bounding_box()
-                        assert page.evaluate('scrollY')>0,'El ancla existe pero no navega al apartado'
-                        assert rect['y']>=header['y']+header['height']-2 and rect['y']<260,rect
-                        row['editorial_anchor_top_px']=rect['y']
-                        row['editorial_anchor']=True"""
-          if old in s and "row['editorial_anchor_top_px']" not in s:
-              assert s.count(old)==1;s=s.replace(old,new,1)
+          lines=["                        rect=anchor.bounding_box()","                        header=page.locator('header').first.bounding_box()","                        assert page.evaluate('scrollY')>0,'El ancla existe pero no navega al apartado'","                        assert rect['y']>=header['y']+header['height']-2 and rect['y']<260,rect","                        row['editorial_anchor_top_px']=rect['y']",old]
+          if "row['editorial_anchor_top_px']" not in s:
+              assert s.count(old)==1;s=s.replace(old,'\n'.join(lines),1)
           marker="                    if path=='/':"
-          extra="""                    if path=='/direccion-que-no-existe/':
-                        assert page.locator('body').evaluate('(e)=>e.getBoundingClientRect().height>=innerHeight-1')
-                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat')=='no-repeat'
-          """
-          if "backgroundRepeat" not in s:
-              assert s.count(marker)==1;s=s.replace(marker,extra.rstrip()+'\n'+marker,1)
+          extra='\n'.join(["                    if path=='/direccion-que-no-existe/':","                        assert page.locator('body').evaluate('(e)=>e.getBoundingClientRect().height>=innerHeight-1')","                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat')=='no-repeat'"])
+          if 'backgroundRepeat' not in s:
+              assert s.count(marker)==1;s=s.replace(marker,extra+'\n'+marker,1)
           p.write_text(s)
           PY
           python3 -m py_compile scripts/repair_routes.py scripts/test_routes.py
