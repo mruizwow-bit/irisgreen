@@ -388,7 +388,7 @@ const NAVL = {
 };
 
 class Component extends DCLogic {
-  state = { lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
+  state = { thumbnailErrors: {}, lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
 
   componentDidMount() {
     try {
@@ -526,7 +526,7 @@ class Component extends DCLogic {
       countLabel: T.count(filtered.length),
       noResults: filtered.length === 0,
       cards: filtered.slice(0, st.limit).map((v) => ({
-        name: v.name, href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => this.setState({ thumbnailErrors: Object.assign({}, st.thumbnailErrors, { [v.embed]: true }) }), thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + v.name,
+        name: v.name, href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + v.name,
         nota: v.nota || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,
         hasNota: true,
         notaPropia: !!v.nota,

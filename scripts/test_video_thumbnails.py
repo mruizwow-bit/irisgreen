@@ -34,7 +34,7 @@ with sync_playwright() as pw:
                 first=area.locator('button.ig-video-poster[data-ig-video*="youtube"]').first
                 first.wait_for(state='attached');first.scroll_into_view_if_needed()
                 first.locator('img.ig-video-thumbnail').wait_for(state='visible')
-                page.wait_for_function('(sel)=>{const im=document.querySelector(sel);return im&&im.complete&&im.naturalWidth>=320}',('#escuchar ' if path=='/' else 'main ')+'img.ig-video-thumbnail')
+                page.wait_for_function('(sel)=>{const im=document.querySelector(sel);return im&&im.complete&&im.naturalWidth>=320}',arg=('#escuchar ' if path=='/' else 'main ')+'img.ig-video-thumbnail')
                 assert not page.locator('main iframe[src]').count(),'El reproductor ya se cargaba antes de pulsarlo'
                 assert not any(re.search(r'(?:ytimg|youtube|vimeo|instagram)\.',u) for u in external),external
                 if lang=='es':
