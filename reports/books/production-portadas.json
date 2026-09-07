@@ -1,0 +1,95 @@
+{
+  "target_commit": "c745fd250819dda04caec1f67b489e958c90a71f",
+  "netlify_deploy_confirmed_by_connector": "6a9e9ae69b9c6f0008b75690",
+  "attempts": [
+    {
+      "time": "2026-09-07T11:11:54.481714+00:00",
+      "passed": true
+    }
+  ],
+  "scope": "Comprobación HTTP y huellas de recursos de producción; las seis pruebas visuales de Libros son una batería distinta, local.",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 102722,
+      "sha256": "33b08ce06c7fa4e54214a7ef1f7ae516dba5c7b48925448d396e5ee40bec798b",
+      "books_message": true,
+      "reading_preferences": true,
+      "unpacked": true
+    },
+    {
+      "path": "/es/libros/",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 34548,
+      "sha256": "becdd710178de25dfca8bebb304fc35b01d10d97aaa417baf1e09226e042c346",
+      "new_dimensions": true,
+      "both_covers_referenced": true
+    },
+    {
+      "path": "/es/neurodiversidad/condiciones/",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 79973,
+      "sha256": "b4cbb738670d37ee32f0f713a81693c1f2fbaeb42823cf2066ff82bfd7084d7b",
+      "shared_catalogue": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "content_type": "application/xml; charset=utf-8",
+      "bytes": 84026,
+      "sha256": "43b80d3f797e8de8e43003513538ef1d076d2667745a5444c59f65de84bd3b4a",
+      "valid_xml": true
+    },
+    {
+      "path": "/reports/books/portadas-origen.json",
+      "status": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/assets/books/luma-es-512.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": 25256,
+      "sha256": "960eef437a29341e49c2baf7ee0e1fe47722ac3adaf55aaa67d4948db571d58c",
+      "hash_matches": true
+    },
+    {
+      "path": "/assets/books/autismo-es-512.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": 22168,
+      "sha256": "5b30bfa18b0aa43dc3292d3e9c019860c9eb62b1678071171a13f2117184ff8a",
+      "hash_matches": true
+    },
+    {
+      "path": "/assets/preferencias-lectura.js",
+      "status": 200,
+      "content_type": "application/javascript; charset=UTF-8",
+      "bytes": 18265,
+      "sha256": "2dfbf47b5d1d67ff562c46c0297566bcf522e0616b7e3d24e7b1295de0443b79",
+      "hash_matches": true
+    },
+    {
+      "path": "/assets/musica.js",
+      "status": 200,
+      "content_type": "application/javascript; charset=UTF-8",
+      "bytes": 12009,
+      "sha256": "a1e9d5ead0a9316801cd8ed46b2641a3beb3fea16bac918ee93deaa91c5925a5",
+      "hash_matches": true
+    },
+    {
+      "path": "/assets/video-thumbnails/74KDFWp1jK8.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "bytes": 95980,
+      "sha256": "5af4df11614f86eac1d1da28fe54006b6a84283b7b0569e8d256c5f1ef7719c3",
+      "hash_matches": true
+    }
+  ],
+  "passed": true,
+  "checked_at": "2026-09-07T11:11:54.481714+00:00"
+}
