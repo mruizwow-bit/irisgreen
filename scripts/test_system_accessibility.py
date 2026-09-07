@@ -17,6 +17,7 @@ PAGES=['/','/es/neurodiversidad/condiciones/','/es/situaciones/','/es/neurodiver
 TRIGGER='#plBtn:visible,.ig-uh-music:visible,[data-ig-music]:visible'
 READING='#a11yBtn:visible,.ig-uh-reading:visible,[data-ig-reading-trigger]:visible'
 FILTER=':is(.ig-filter-button,.secfind button[data-type],.secfind button[data-letter],.situation-filter,#temaFilters .filter,.catbuttons button,.vd-filters button)[aria-pressed="true"]'
+LEGACY_TOGGLE='button[aria-pressed]:not([data-ig-presentation-toggle]):not([data-ig-guide-position])'
 def fail(row,e):row.update(passed=False,error=str(e),traceback=traceback.format_exc());REPORT['failures'].append(row.copy())
 def new(browser,width,**opts):
  ctx=browser.new_context(viewport={'width':width,'height':900},**opts);page=ctx.new_page();page.set_default_timeout(8000);audio=[];errors=[]
@@ -56,7 +57,7 @@ try:
      if args.phase=='after':assert inspect_media(page)['rootMotion']==''
      page.emulate_media(reduced_motion='reduce',forced_colors='active');page.wait_for_timeout(100)
      toggle=buttons.filter(has_text=re.compile('^(Letra más separada|More spacing|Más espacio|Espaciado|Spaced text|Spacing)$'))
-     if not toggle.count():toggle=panel.locator('button[aria-pressed]').first
+     if not toggle.count():toggle=panel.locator(LEGACY_TOGGLE).first
      toggle.click();assert toggle.get_attribute('aria-pressed')=='true'
      row['selected_style']=toggle.evaluate('(e)=>({decoration:getComputedStyle(e).textDecorationLine,border:getComputedStyle(e).borderColor,adjust:getComputedStyle(e).forcedColorAdjust})')
      if args.phase=='after':
