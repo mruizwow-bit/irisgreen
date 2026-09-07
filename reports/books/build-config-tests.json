@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "preserva PYTHON_VERSION=3.12",
+    "regeneración repetible",
+    "compatibilidad con configuración anterior",
+    "conserva valores de entorno con espacios",
+    "rechaza opciones desconocidas sin eliminarlas"
+  ],
+  "cause": "El validador de rutas no admitía build.environment, añadido al fijar la versión de Python."
+}

@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "width": 1440,
+      "language": "es",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 210,
+          "displayHeight": 210,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 210,
+          "displayHeight": 297.359375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 210,
+          "displayHeight": 210,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 210,
+          "displayHeight": 297.359375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 210,
+          "displayHeight": 210,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 210,
+          "displayHeight": 297.359375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 210,
+          "displayHeight": 210,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 210,
+          "displayHeight": 297.359375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 207,
+          "displayHeight": 207,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 207,
+          "displayHeight": 293.109375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "covers": [
+        {
+          "src": "/assets/books/luma-es-512.webp",
+          "width": 512,
+          "height": 512,
+          "displayWidth": 207,
+          "displayHeight": 207,
+          "alt": "Portada de Luma y la flor que sabía escuchar",
+          "attributeWidth": "512",
+          "attributeHeight": "512"
+        },
+        {
+          "src": "/assets/books/autismo-es-512.webp",
+          "width": 512,
+          "height": 725,
+          "displayWidth": 207,
+          "displayHeight": 293.109375,
+          "alt": "Portada de Autismo en la vida diaria",
+          "attributeWidth": "512",
+          "attributeHeight": "725"
+        }
+      ],
+      "horizontalOverflow": 0,
+      "passed": true,
+      "javascriptErrors": []
+    }
+  ],
+  "failures": [],
+  "scope": "Libros en Chromium local: imágenes, proporciones y geometría; no se certifican precios ni destinos de compra externos.",
+  "passed": true
+}
