@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Guardia de build: si queda un control PT-BR visible en ES/EN, no se publica.
 
 PT_CONTROL = re.compile(
     r'<(?P<tag>a|button|span)\b'
