@@ -112,7 +112,7 @@ with sync_playwright() as pw:
      assert geometry(p)['overflow']<=2,geometry(p)
      page_state=p.evaluate('IGPreferences.get()');p.keyboard.press('Escape');p.reload();p.locator('main h1').first.wait_for();p.wait_for_timeout(150)
      assert p.evaluate('IGPreferences.get()')==page_state
-     el=panel(p);el.locator('[data-ig-text-settings] summary').click();assert el.locator('select').count()==6
+     el=panel(p);el.locator('[data-ig-text-settings] summary').click();assert el.locator('[data-ig-text-settings] select').count()==6
      for control in el.locator('[data-ig-text-settings] select:visible,[data-ig-text-settings] button:visible').all():
       control.scroll_into_view_if_needed();a=control.bounding_box();b=el.bounding_box();assert a['x']>=b['x'] and a['x']+a['width']<=b['x']+b['width']+1
       if control.evaluate('(e)=>e.tagName')=='SELECT':
@@ -136,7 +136,7 @@ with sync_playwright() as pw:
    assert p.evaluate('document.activeElement.dataset.igTextKey')=='font';p.keyboard.press('ArrowDown');p.keyboard.press('Enter');assert stored(p)['font']=='sans'
    for path in ['/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/autismo/','/es/recursos/juegos/las-cinco-cosas/','/es/intereses/','/en/neurodiversity/conditions/autism/']:
     load(p,path);assert stored(p)['font']=='sans';assert geometry(p)['overflow']<=2
-   el=panel(p);assert el.locator('[data-ig-text-settings] summary').inner_text()=='Typeface, spacing and reading width';el.locator('summary').click()
+   el=panel(p);assert el.locator('[data-ig-text-settings] summary').inner_text()=='Typeface, spacing and reading width';el.locator('[data-ig-text-settings] summary').click()
    other=c.new_page();load(other,'/es/situaciones/');el.locator('[data-ig-text-key="word"]').select_option('0.24');other.wait_for_function('IGPreferences.getText().word===.24');assert p.evaluate('window.__igSpeech')==0;assert other.evaluate('window.__igSpeech')==0
    row['shared_values']=stored(other);other.close()
   result(row,journey);c.close()
