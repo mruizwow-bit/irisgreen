@@ -1,0 +1,37 @@
+name: Auditoría ES EN sobre main actual
+on:
+  push:
+    branches: ['auditoria/idiomas-main-20260907']
+    paths:
+      - '.github/workflows/auditoria-idiomas-main.yml'
+      - 'scripts/audit_languages_current.py'
+permissions:
+  contents: read
+concurrency:
+  group: auditoria-idiomas-main-irisgreen
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: auditoria/idiomas-main-20260907
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-lang
+          /tmp/ig-lang/bin/pip -q install playwright==1.55.0
+          /tmp/ig-lang/bin/python -m playwright install --with-deps chromium >/tmp/ig-lang-browser.log 2>&1
+      - name: Generar la misma salida pública que Netlify
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
+      - name: Auditar todos los controles ES EN
+        run: /tmp/ig-lang/bin/python scripts/audit_languages_current.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: auditoria-idiomas-main
+          path: reports/languages
+          retention-days: 7
