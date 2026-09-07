@@ -1,0 +1,13 @@
+/* These values are restored before the first render. No style change at 100%. */
+html[data-ig-preferences="2"] main{zoom:var(--ig-reading-scale,1)}
+.ig-preference-note{font-size:13px!important;line-height:1.45!important;color:#435268;margin:12px 0 0!important;max-width:100%;white-space:normal}
+#ig-preference-size{font:inherit;font-size:14px;min-width:3.5em;text-align:center}
+html[data-ig-preferences="2"] #a11y .grp{flex-wrap:wrap}
+html[data-ig-preferences="2"] #ig-guide{position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(90,73,168,.14);border-block:2px solid rgba(90,73,168,.5)}
+html[data-ig-preferences="2"] :is(#rguide,#ig-guide)[hidden]{display:none!important}
+/* Keep illustration colours intact; contrast is applied to text/surfaces. */
+html[data-ig-preferences="2"][data-ig-contrast="on"] main{filter:none!important;color:#17395c}
+html[data-ig-preferences="2"][data-ig-contrast="on"] main :is(p,h1,h2,h3,li,dt,dd,label){color:#17395c!important}
+html[data-ig-preferences="2"][data-ig-contrast="on"] main :is(.card,article,.secfind,.notice){background:#fff!important;border-color:#17395c!important}
+html[data-ig-preferences="2"][data-ig-controls="big"] main button:not([style*="position: absolute"]):not([style*="position:absolute"]){min-height:56px;min-width:56px}
+html[data-ig-preferences="2"][data-ig-motion="off"] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
