@@ -17,31 +17,45 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ajustes/auditoria-web
-      - name: Preparar navegador y conservar los catálogos actuales
+      - name: Preparar navegador y conservar la primera prueba
         run: |
           python3 -m venv /tmp/ig-thumbs
           /tmp/ig-thumbs/bin/pip -q install playwright==1.55.0 pillow==11.3.0
           /tmp/ig-thumbs/bin/python -m playwright install --with-deps chromium >/tmp/ig-thumbs-browser.log 2>&1
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib,json
+          import shutil,hashlib,json
           names=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json']
           Path('/tmp/ig-thumbs-integrity.json').write_text(json.dumps({n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in names}))
+          a=Path('reports/thumbnails/tests.json');b=Path('reports/thumbnails/first-tests.json')
+          if a.exists() and not b.exists():shutil.copy2(a,b)
           PY
-      - name: Descargar las imágenes reales de los IDs ya existentes
-        run: /tmp/ig-thumbs/bin/python scripts/prepare_video_thumbnails.py --refresh
-      - name: Incluir las miniaturas locales en el despliegue y comprobar sintaxis
+      - name: Ajustar la prueba y la recuperación de fallos simultáneos
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('scripts/test_video_thumbnails.py');s=p.read_text()
+          s=s.replace("}',('#escuchar ' if path=='/' else 'main ')","}',arg=('#escuchar ' if path=='/' else 'main ')")
+          p.write_text(s)
+          old='onThumbError: () => this.setState({ thumbnailErrors: Object.assign({}, st.thumbnailErrors, { [v.embed]: true }) })'
+          new='onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }'
+          for name in ['scripts/prepare_video_thumbnails.py','index.html','es/videos/index.html']:
+              p=Path(name);s=p.read_text()
+              if old in s:s=s.replace(old,new)
+              else:assert new in s,name
+              if name.endswith('.html') and 'state = { thumbnailErrors:' not in s:
+                  s,n=re.subn(r'state = \{', 'state = { thumbnailErrors: {},',s,count=1);assert n==1
+              p.write_text(s)
+          PY
+          /tmp/ig-thumbs/bin/python scripts/prepare_video_thumbnails.py
+      - name: Comprobar catálogos, sintaxis y despliegue
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re,subprocess,hashlib,json
-          p=Path('scripts/build_site.py');s=p.read_text()
-          step="    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)\n"
-          if step not in s:
-              assert 'def build():\n' in s;s=s.replace('def build():\n','def build():\n'+step,1);p.write_text(s)
           for name in ['index.html','es/videos/index.html']:
-              text=Path(name).read_text()
-              for match in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',text,re.S):
+              for match in re.finditer(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>',Path(name).read_text(),re.S):
                   p=Path('/tmp/ig-thumbnail-check.js');p.write_text(match[1]);subprocess.run(['node','--check',str(p)],check=True)
           for name,digest in json.loads(Path('/tmp/ig-thumbs-integrity.json').read_text()).items():assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,name
           PY
@@ -55,7 +69,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import shutil,json
+          import shutil
           out=Path('/tmp/ig-thumbnails-evidence');out.mkdir(exist_ok=True)
           if Path('dist/reports/thumbnails').exists():shutil.copytree('dist/reports/thumbnails','reports/thumbnails',dirs_exist_ok=True)
           if Path('reports/thumbnails').exists():shutil.copytree('reports/thumbnails',out/'reports',dirs_exist_ok=True)
@@ -77,10 +91,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- index.html es/videos/index.html assets/video-thumbnails assets/video-thumbnails.css scripts/build_site.py
+          git add -- index.html es/videos/index.html assets/video-thumbnails assets/video-thumbnails.css scripts/prepare_video_thumbnails.py scripts/test_video_thumbnails.py scripts/build_site.py
           test ! -d reports/thumbnails || git add -- reports/thumbnails/*.json
           test ! -d reports/routes || git add -- reports/routes/*.json
           test ! -f reports/initial-data-build.json || git add -- reports/initial-data-build.json
-          git diff --cached --quiet || git commit -m 'Mostrar miniaturas reales y documentar sus pruebas sin publicar'
+          git diff --cached --quiet || git commit -m 'Validar las miniaturas visibles y la recuperación de errores de imagen'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
