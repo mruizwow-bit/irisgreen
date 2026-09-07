@@ -16,6 +16,11 @@ if en_old in s:s=s.replace(en_old,en_new,1)
 
 # The Portuguese block remains as-is; PT-BR is not being re-enabled by this change.
 
+# Fill a small set of interface strings that the original TR dictionary did not contain.
+tr_anchor='''const TR = {\n'''
+tr_add='''const TR = {\n  "Resultados para": { en: "Results for", pt: "Resultados para" },\n  " resultados": { en: " results", pt: " resultados" },\n  "Puedes empezar por aquí": { en: "You can start here", pt: "Você pode começar por aqui" },\n  "No encontramos resultados con esas palabras. Prueba otra búsqueda.": { en: "We couldn't find results for those words. Try another search.", pt: "Não encontramos resultados com essas palavras. Tente outra busca." },\n  "Ver Situaciones": { en: "See Situations", pt: "Ver Situações" },\n  "Quitar": { en: "Remove", pt: "Remover" },\n  "Cerrar": { en: "Close", pt: "Fechar" },\n'''
+if tr_anchor in s and '"Resultados para": { en:' not in s:s=s.replace(tr_anchor,tr_add,1)
+
 # Visible book-support message must follow the selected language.
 s=s.replace('''<p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">Todo lo de esta web es gratis. La pagan dos libros. <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">Verlos</a></p>''',
 '''<p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">{{ tBooksMessage }} <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">{{ tBooksSee }}</a></p>''')
@@ -32,6 +37,12 @@ s=s.replace('''      tHero2: X("Las situaciones están contadas en primera perso
 s=s.replace('''      tLede: T.lede, tDirecto: T.directo, tEscuchar: T.escuchar, tEmpiezo: T.empiezo, tSoloEs: T.soloEs,\n      tabs: [tab("search", X("Buscar")), tab("quiz", X("Responder 3 preguntas")), tab("pedir", X("¿Qué puedo pedir?"))],''','''      tLede: T.lede, tDirecto: T.directo, tEscuchar: T.escuchar, tEmpiezo: T.empiezo, tSoloEs: T.soloEs,\n      tBooksMessage: T.booksMessage, tBooksSee: T.booksSee,\n      tabs: [tab("search", T.tabs[0]), tab("quiz", T.tabs[1]), tab("pedir", T.tabs[2])],''')
 s=s.replace('''      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : X("Puedes empezar por aquí"),''','''      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : T.startHere,''')
 s=s.replace('''      suggestions: ["no soporto el ruido", "me agoto con la gente", "no consigo dormir", "en el colegio no le entienden", "me bloqueo con los papeles"].map((label) => ({\n        label: X(label), pick: () => this.setState({ q: label })\n      })),''','''      suggestions: T.suggestions.map((label) => ({\n        label, pick: () => this.setState({ q: label })\n      })),''')
+
+# Remaining hard-coded labels inside the search/saved controls.
+s=s.replace('''<p style="padding: 14px 4px; margin: 0; color: #5a6675;">{{ tNoRes }} <a href="/es/situaciones/">Ver Situaciones</a></p>''','''<p style="padding: 14px 4px; margin: 0; color: #5a6675;">{{ tNoRes }} <a href="/es/situaciones/">{{ tSeeSituations }}</a></p>''')
+s=s.replace('''<button sc-camel-on-click="{{ s.remove }}" aria-label="{{ s.removeLabel }}" style="background: transparent; border: 0; cursor: pointer; color: #5a6675; font-size: 14px; padding: 4px 6px;">Quitar</button>''','''<button sc-camel-on-click="{{ s.remove }}" aria-label="{{ s.removeLabel }}" style="background: transparent; border: 0; cursor: pointer; color: #5a6675; font-size: 14px; padding: 4px 6px;">{{ s.removeText }}</button>''')
+s=s.replace('''      savedList: st.saved.map((s) => ({ name: s.name, url: s.url, removeLabel: X("Quitar de lo guardado") + ": " + s.name, remove: () => this.toggleSave(s.name, s.url) })),''','''      savedList: st.saved.map((s) => ({ name: s.name, url: s.url, removeLabel: X("Quitar de lo guardado") + ": " + s.name, removeText: X("Quitar"), remove: () => this.toggleSave(s.name, s.url) })),''')
+s=s.replace('''      tReadTopic: X("Leer el tema"),''','''      tSeeSituations: X("Ver Situaciones"),\n      tReadTopic: X("Leer el tema"),''')
 
 # No empty translation notice should reserve a visible line.
 s=s.replace('''      <p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p>''','''      <sc-if value="{{ tSoloEs }}"><p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p></sc-if>''')
