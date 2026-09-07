@@ -1,0 +1,23 @@
+name: Accesibilidad · preferencias del sistema
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/sistema-accesible.yml']
+permissions:
+  contents: read
+jobs:
+  inspeccionar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Conservar fuentes exactas y recursos, sin audio ni cambios en la web
+        run: |
+          mkdir -p /tmp/ig-system-source
+          git rev-parse HEAD > /tmp/ig-system-source/COMMIT.txt
+          git archive HEAD -- . ':!audio' > /tmp/ig-system-source/source.tar
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sistema-fuentes-exactas
+          path: /tmp/ig-system-source
+          retention-days: 3
