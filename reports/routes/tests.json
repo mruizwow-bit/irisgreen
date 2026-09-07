@@ -5,7 +5,7 @@
     "missing_local_references": [],
     "sitemap_urls": 784,
     "conditions_content_unchanged": 370,
-    "robots_preserved_pages": 896,
+    "robots_preserved_pages": 897,
     "game_fragment_routes_recognized": 13,
     "sitemap_duplicates": 0,
     "sitemap_noindex_urls": 0,
@@ -2364,6 +2364,7 @@
       "path": "/es/sobre-iris-green/#criterios-editoriales",
       "width": 1440,
       "status": 200,
+      "editorial_anchor_top_px": 159.90625,
       "editorial_anchor": true,
       "overflow_px": 0,
       "passed": true,
@@ -2380,8 +2381,8 @@
       "path": "/direccion-que-no-existe/",
       "width": 1440,
       "status": 404,
-      "overflow_px": 0,
-      "passed": true,
+      "passed": false,
+      "error": "",
       "javascript_errors": []
     },
     {
@@ -2421,6 +2422,7 @@
       "path": "/es/sobre-iris-green/#criterios-editoriales",
       "width": 320,
       "status": 200,
+      "editorial_anchor_top_px": 159.96875,
       "editorial_anchor": true,
       "overflow_px": 0,
       "passed": true,
@@ -2437,17 +2439,32 @@
       "path": "/direccion-que-no-existe/",
       "width": 320,
       "status": 404,
-      "overflow_px": 0,
-      "passed": true,
+      "passed": false,
+      "error": "",
       "javascript_errors": []
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "path": "/direccion-que-no-existe/",
+      "width": 1440,
+      "status": 404,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "path": "/direccion-que-no-existe/",
+      "width": 320,
+      "status": 404,
+      "passed": false,
+      "error": ""
+    }
+  ],
   "notes": [
     "Se comprueban los archivos de dist, que es el directorio configurado para publicar.",
     "El servidor local emula las reglas concretas del proyecto; no es el CDN de Netlify.",
     "No se afirma inclusión en Google, revisión documental ni reproducción de vídeos externos.",
     "Las dos portadas ausentes de Libros siguen siendo un pendiente aparte."
   ],
-  "passed": true
+  "passed": false
 }

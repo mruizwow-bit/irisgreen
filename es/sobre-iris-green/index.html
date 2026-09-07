@@ -381,6 +381,13 @@ class Component extends DCLogic {
   state = { lang: "es", a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
 
   componentDidMount() {
+    // ig-route-editorial: navigate after the dynamic target is mounted.
+    requestAnimationFrame(() => {
+      if (window.location.hash === "#criterios-editoriales") {
+        const target = document.getElementById("criterios-editoriales");
+        if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
+      }
+    });
     try {
       const lang = localStorage.getItem("ig_lang");
       const use = lang && STR[lang] ? lang : "es";

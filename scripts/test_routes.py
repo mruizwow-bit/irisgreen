@@ -170,7 +170,15 @@ def browser_tests():
                     page.wait_for_timeout(250)
                     if '/#criterios' in path:
                         anchor=page.locator('#criterios-editoriales');assert anchor.count()==1
+                        rect=anchor.bounding_box()
+                        header=page.locator('header').first.bounding_box()
+                        assert page.evaluate('scrollY')>0,'El ancla existe pero no navega al apartado'
+                        assert rect['y']>=header['y']+header['height']-2 and rect['y']<260,rect
+                        row['editorial_anchor_top_px']=rect['y']
                         row['editorial_anchor']=True
+                    if path=='/direccion-que-no-existe/':
+                        assert page.locator('body').evaluate('(e)=>e.getBoundingClientRect().height>=innerHeight-1')
+                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat')=='no-repeat'
                     if path=='/':
                         msg=page.locator('#ig-books-message');assert msg.count()==1
                         assert msg.bounding_box()['y']<page.locator('#consola').bounding_box()['y']

@@ -9,7 +9,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 12,
-      "first_contentful_paint_ms": 244,
+      "first_contentful_paint_ms": 684,
       "interaction_tests": {
         "initial_cards": 12,
         "filters": true,
@@ -27,116 +27,116 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 72,
-      "first_contentful_paint_ms": 212,
-      "interaction_tests": {
-        "initial_cards": 72,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/intereses/",
-      "width": 1440,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 94,
-      "first_contentful_paint_ms": 144,
-      "interaction_tests": {
-        "initial_cards": 94,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/investigacion/",
-      "width": 1440,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 120,
-      "first_contentful_paint_ms": 248,
-      "interaction_tests": {
-        "initial_cards": 120,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/tramites/directorio/",
-      "width": 390,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 12,
-      "first_contentful_paint_ms": 132,
-      "interaction_tests": {
-        "initial_cards": 12,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/taller/",
-      "width": 390,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 72,
-      "first_contentful_paint_ms": 196,
-      "interaction_tests": {
-        "initial_cards": 72,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/intereses/",
-      "width": 390,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 94,
-      "first_contentful_paint_ms": 104,
-      "interaction_tests": {
-        "initial_cards": 94,
-        "filters": true,
-        "music_no_shift": true
-      },
-      "passed": true,
-      "javascript_errors": [],
-      "local_http_errors": []
-    },
-    {
-      "path": "/es/investigacion/",
-      "width": 390,
-      "network": "normal",
-      "layout_entries": [],
-      "cls": 0.0,
-      "overflow_px": 0,
-      "initial_cards": 120,
       "first_contentful_paint_ms": 216,
       "interaction_tests": {
+        "initial_cards": 72,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 1440,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 94,
+      "first_contentful_paint_ms": 156,
+      "interaction_tests": {
+        "initial_cards": 94,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 1440,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 120,
+      "first_contentful_paint_ms": 256,
+      "interaction_tests": {
+        "initial_cards": 120,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/tramites/directorio/",
+      "width": 390,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 12,
+      "first_contentful_paint_ms": 132,
+      "interaction_tests": {
+        "initial_cards": 12,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/taller/",
+      "width": 390,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 72,
+      "first_contentful_paint_ms": 176,
+      "interaction_tests": {
+        "initial_cards": 72,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/intereses/",
+      "width": 390,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 94,
+      "first_contentful_paint_ms": 108,
+      "interaction_tests": {
+        "initial_cards": 94,
+        "filters": true,
+        "music_no_shift": true
+      },
+      "passed": true,
+      "javascript_errors": [],
+      "local_http_errors": []
+    },
+    {
+      "path": "/es/investigacion/",
+      "width": 390,
+      "network": "normal",
+      "layout_entries": [],
+      "cls": 0.0,
+      "overflow_px": 0,
+      "initial_cards": 120,
+      "first_contentful_paint_ms": 224,
+      "interaction_tests": {
         "initial_cards": 120,
         "filters": true,
         "music_no_shift": true
@@ -171,7 +171,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 72,
-      "first_contentful_paint_ms": 196,
+      "first_contentful_paint_ms": 176,
       "interaction_tests": {
         "initial_cards": 72,
         "filters": true,
@@ -189,7 +189,7 @@
       "cls": 0.0,
       "overflow_px": 1,
       "initial_cards": 94,
-      "first_contentful_paint_ms": 168,
+      "first_contentful_paint_ms": 160,
       "interaction_tests": {
         "initial_cards": 94,
         "filters": true,
@@ -207,7 +207,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 120,
-      "first_contentful_paint_ms": 208,
+      "first_contentful_paint_ms": 224,
       "interaction_tests": {
         "initial_cards": 120,
         "filters": true,
@@ -225,7 +225,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 12,
-      "first_contentful_paint_ms": 156,
+      "first_contentful_paint_ms": 136,
       "interaction_tests": {
         "initial_cards": 12,
         "filters": true,
@@ -243,7 +243,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 72,
-      "first_contentful_paint_ms": 188,
+      "first_contentful_paint_ms": 152,
       "interaction_tests": {
         "initial_cards": 72,
         "filters": true,
@@ -261,7 +261,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 94,
-      "first_contentful_paint_ms": 132,
+      "first_contentful_paint_ms": 140,
       "interaction_tests": {
         "initial_cards": 94,
         "filters": true,
@@ -279,7 +279,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 120,
-      "first_contentful_paint_ms": 268,
+      "first_contentful_paint_ms": 252,
       "interaction_tests": {
         "initial_cards": 120,
         "filters": true,
@@ -297,7 +297,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 12,
-      "first_contentful_paint_ms": 120,
+      "first_contentful_paint_ms": 140,
       "interaction_tests": {
         "initial_cards": 12,
         "filters": true,
@@ -315,7 +315,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 72,
-      "first_contentful_paint_ms": 136,
+      "first_contentful_paint_ms": 140,
       "interaction_tests": {
         "initial_cards": 72,
         "filters": true,
@@ -351,7 +351,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 120,
-      "first_contentful_paint_ms": 200,
+      "first_contentful_paint_ms": 208,
       "interaction_tests": {
         "initial_cards": 120,
         "filters": true,
@@ -369,7 +369,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 12,
-      "first_contentful_paint_ms": 120,
+      "first_contentful_paint_ms": 124,
       "interaction_tests": {
         "initial_cards": 12,
         "filters": true,
@@ -387,7 +387,7 @@
       "cls": 0.0,
       "overflow_px": 0,
       "initial_cards": 72,
-      "first_contentful_paint_ms": 132,
+      "first_contentful_paint_ms": 136,
       "interaction_tests": {
         "initial_cards": 72,
         "filters": true,
@@ -405,7 +405,7 @@
       "cls": 0.0,
       "overflow_px": 1,
       "initial_cards": 94,
-      "first_contentful_paint_ms": 156,
+      "first_contentful_paint_ms": 160,
       "interaction_tests": {
         "initial_cards": 94,
         "filters": true,

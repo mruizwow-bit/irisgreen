@@ -63,7 +63,7 @@ ERROR_PAGE='''<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Página no encontrada · Iris Green</title><meta name="robots" content="noindex,follow">
 <link rel="stylesheet" href="/assets/site-v23.css"><link rel="stylesheet" href="/assets/ajustes-interfaz.css">
-</head><body><main id="main" style="max-width:48rem;margin:auto;padding:clamp(2rem,8vw,6rem) 1.5rem;">
+</head><body style="min-height:100vh;background-repeat:no-repeat;"><main id="main" style="max-width:48rem;margin:auto;padding:clamp(2rem,8vw,6rem) 1.5rem;">
 <a href="/" style="font:inherit">Iris Green</a>
 <h1>No encontramos esa página</h1><p>La dirección puede haber cambiado. Puedes volver al inicio o consultar el mapa de la web.</p>
 <nav aria-label="Dónde continuar" style="display:flex;flex-wrap:wrap;gap:1rem"><a href="/" style="display:inline-flex;align-items:center;min-height:44px">Volver al inicio</a><a href="/es/neurodiversidad/mapa/" style="display:inline-flex;align-items:center;min-height:44px">Ver el mapa de la web</a></nav>
@@ -123,6 +123,11 @@ def run(check=False):
             s,n=re.subn(pattern,r'\1 id="criterios-editoriales"\2',s)
             assert n==1,'No se encuentra el apartado editorial existente'
             s=s.replace('id="criterios-editoriales" style="margin-bottom: 30px;"','id="criterios-editoriales" style="margin-bottom: 30px; scroll-margin-top: 10rem;"')
+        if rel=='es/sobre-iris-green/index.html' and 'ig-route-editorial' not in s:
+            old_mount='  componentDidMount() {'
+            new_mount='  componentDidMount() {\n    // ig-route-editorial: navigate after the dynamic target is mounted.\n    requestAnimationFrame(() => {\n      if (window.location.hash === "#criterios-editoriales") {\n        const target = document.getElementById("criterios-editoriales");\n        if (target) target.scrollIntoView({ block: "start", behavior: "instant" });\n      }\n    });'
+            assert s.count(old_mount)==1,'No se encuentra el arranque de la página editorial'
+            s=s.replace(old_mount,new_mount,1)
         if rel=='index.html':
             s,n=re.subn(r'(href=")/es/tramites/("[^>]*>\{\{ tPedirCta2 \}\})',r'\1/es/tramites/directorio/\2',s)
             if n:report['source_edits'].append('home: enlace del directorio de ayudas')
