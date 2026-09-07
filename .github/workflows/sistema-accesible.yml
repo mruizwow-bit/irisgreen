@@ -4,20 +4,99 @@ on:
     branches: ['ajustes/auditoria-web']
     paths: ['.github/workflows/sistema-accesible.yml']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: sistema-accesible-irisgreen
+  cancel-in-progress: false
 jobs:
-  inspeccionar:
+  comprobar:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Conservar fuentes exactas y recursos, sin audio ni cambios en la web
-        run: |
-          mkdir -p /tmp/ig-system-source
-          git rev-parse HEAD > /tmp/ig-system-source/COMMIT.txt
-          git archive HEAD -- . ':!audio' > /tmp/ig-system-source/source.tar
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: sistema-fuentes-exactas
-          path: /tmp/ig-system-source
-          retention-days: 3
+          ref: ajustes/auditoria-web
+      - name: Preparar navegador y conservar la integridad de los catálogos
+        run: |
+          python3 -m venv /tmp/ig-system
+          /tmp/ig-system/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4
+          /tmp/ig-system/bin/python -m playwright install --with-deps chromium >/tmp/ig-system-browser.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          files=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json','es/intereses/cromos.json']
+          Path('/tmp/ig-system-data.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}))
+          PY
+      - name: Registrar qué funcionaba antes de aplicar la devolución
+        run: |
+          python3 scripts/build_site.py
+          if test ! -f reports/system-accessibility/before.json; then
+            (cd dist && /tmp/ig-system/bin/python ../scripts/test_system_accessibility.py --phase before)
+            mkdir -p reports/system-accessibility
+            cp dist/reports/system-accessibility/before.json reports/system-accessibility/before.json
+          fi
+      - name: Aplicar cambios acotados y comprobar repetibilidad
+        run: |
+          python3 scripts/apply_system_accessibility.py
+          test -f reports/system-accessibility/first-application.json || cp reports/system-accessibility/changes.json reports/system-accessibility/first-application.json
+          python3 scripts/apply_system_accessibility.py
+          node --check assets/preferencias-lectura.js
+          node --check assets/interfaz-comun.js
+          node --check assets/musica.js
+          python3 scripts/build_site.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          changes=json.loads(Path('reports/system-accessibility/changes.json').read_text())
+          assert not any(x['changed'] for x in changes['files']), 'No es repetible'
+          for p,digest in json.loads(Path('/tmp/ig-system-data.json').read_text()).items():assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==digest,p
+          PY
+      - name: Probar ajustes del sistema, selección y foco en 36 escenarios
+        run: |
+          cd dist
+          /tmp/ig-system/bin/python ../scripts/test_system_accessibility.py --phase after
+      - name: Repetir preferencias y controles de las tandas anteriores
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-system/bin/python ../scripts/test_reading_preferences.py --phase after
+          /tmp/ig-system/bin/python ../scripts/test_preference_panel_bounds.py
+          /tmp/ig-system/bin/python ../scripts/test_coherence.py
+      - name: Conservar resultados y capturas
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-system-evidence');out.mkdir(exist_ok=True)
+          dst=Path('reports/system-accessibility');dst.mkdir(parents=True,exist_ok=True)
+          if Path('dist/reports/system-accessibility').exists():shutil.copytree('dist/reports/system-accessibility',dst,dirs_exist_ok=True)
+          for source,name in [('dist/reports/preferences/after.json','regression-preferences.json'),('dist/reports/preferences/panel-bounds.json','regression-panel-bounds.json'),('dist/reports/coherence/tests.json','regression-controls.json')]:
+              if Path(source).exists():shutil.copy2(source,dst/name)
+          shutil.copytree(dst,out/'reports',dirs_exist_ok=True)
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js','assets/musica.js','es/lectura-accesible/index.html','scripts/test_system_accessibility.py']:
+              p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sistema-accesible-resultados
+          path: /tmp/ig-system-evidence
+          retention-days: 7
+      - name: Guardar en la rama de revisión sin tocar producción
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/preferencias-lectura.js assets/preferencias-lectura.css assets/interfaz-comun.js assets/musica.js es/lectura-accesible/index.html
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          paths=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
+          for p in paths:
+              if p.startswith('reports/') and p.endswith('.json'):subprocess.run(['git','add','--',p],check=True)
+          for p in Path('reports/system-accessibility').glob('*.json'):subprocess.run(['git','add','--',str(p)],check=True)
+          PY
+          git diff --cached --quiet || git commit -m 'Respetar ajustes del dispositivo, distinguir selección y proteger foco'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
