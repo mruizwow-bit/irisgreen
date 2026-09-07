@@ -1,0 +1,64 @@
+name: Comprobar la web publicada
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/comprobar-web-publicada.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 4bde029bc84f2da2db27547d8d681d75e97b7a6b
+      - name: Comprobar archivos publicados sin modificar el alojamiento
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures,hashlib,json,time,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          from pathlib import Path
+          from datetime import datetime,timezone
+          root='https://irisgreen.eu';target='4bde029bc84f2da2db27547d8d681d75e97b7a6b'
+          manifest=json.loads(Path('assets/video-thumbnails/manifest.json').read_text())
+          video=next(iter(manifest['images'].values()))
+          expected={'/assets/preferencias-lectura.js':hashlib.sha256(Path('assets/preferencias-lectura.js').read_bytes()).hexdigest(),'/assets/musica.js':hashlib.sha256(Path('assets/musica.js').read_bytes()).hexdigest(),video['path']:video['sha256']}
+          paths=['/','/es/neurodiversidad/condiciones/','/es/lectura-accesible/','/sitemap.xml','/reports/routes/build.json',*expected]
+          report={'target_commit':target,'checks':[],'attempts':[],'scope':'HTTP y huellas de archivos públicos; no es una prueba completa de interacción ni confirmación del panel de Netlify.'}
+          def fetch(path):
+              row={'path':path}
+              try:
+                  req=urllib.request.Request(root+path,headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-Deployment-Check/1.0'})
+                  with urllib.request.urlopen(req,timeout=12) as r:
+                      data=r.read(3000000);row.update(status=r.status,content_type=r.headers.get('Content-Type',''),bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+                  if path in expected:row['expected_match']=row['sha256']==expected[path]
+                  if path=='/':row['books_message_present']=b'ig-books-message' in data;row['unpacked_html']=b'__bundler/template' not in data;row['reading_preferences_present']=b'preferencias-lectura.js' in data
+                  if path=='/sitemap.xml':ET.fromstring(data);row['valid_xml']=True
+                  if path=='/es/neurodiversidad/condiciones/':row['shared_catalogue']=b'data-ig-catalog' in data
+                  if path=='/es/lectura-accesible/':row['new_text_options_explained']=b'Tipograf' in data and b'anchura' in data
+              except urllib.error.HTTPError as e:row.update(status=e.code,error=str(e))
+              except Exception as e:row['error']=str(e)
+              return row
+          for attempt in range(4):
+              with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:rows=list(pool.map(fetch,paths))
+              by={r['path']:r for r in rows}
+              matched=all(by[p].get('expected_match') for p in expected)
+              visible=by['/'].get('books_message_present') and by['/'].get('unpacked_html') and by['/'].get('reading_preferences_present')
+              report['checks']=rows
+              report['attempts'].append({'at':datetime.now(timezone.utc).isoformat(),'assets_match':bool(matched),'home_changed':bool(visible)})
+              report['published_version_confirmed']=bool(matched and visible)
+              report['working_reports_not_public']=by['/reports/routes/build.json'].get('status')==404
+              if report['published_version_confirmed']:break
+              if attempt<3:time.sleep(20)
+          Path('/tmp/publication-check').mkdir(exist_ok=True)
+          Path('/tmp/publication-check/publication.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps(report,ensure_ascii=False))
+          if not report['published_version_confirmed']:raise SystemExit('El merge está hecho; la publicación de esos archivos aún no está confirmada por HTTP.')
+          if not report['working_reports_not_public']:raise SystemExit('Revisar exclusión de informes en el alojamiento.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: comprobacion-web-publicada
+          path: /tmp/publication-check
+          retention-days: 7
