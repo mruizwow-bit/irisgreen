@@ -9,7 +9,7 @@ permissions:
   contents: write
 concurrency:
   group: auditoria-idiomas-irisgreen
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   audit:
     runs-on: ubuntu-latest
