@@ -4,31 +4,109 @@ on:
     branches: ['ajustes/auditoria-web']
     paths: ['.github/workflows/coherencia-interfaz.yml']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: coherencia-irisgreen
+  cancel-in-progress: false
 jobs:
-  preparar:
+  comprobar:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Conservar las fuentes actuales sin alterarlas
+        with:
+          ref: ajustes/auditoria-web
+      - name: Preparar el navegador y conservar las fichas de origen
+        run: |
+          python3 -m venv /tmp/ig-coherence
+          /tmp/ig-coherence/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 lxml==6.0.1 pillow==11.3.0
+          /tmp/ig-coherence/bin/python -m playwright install --with-deps chromium >/tmp/ig-coherence-browser.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          out=Path('/tmp/ig-coherence-baseline');out.mkdir(exist_ok=True)
+          for parent in ['es/neurodiversidad/condiciones','es/situaciones']:
+              for p in Path(parent).rglob('index.html'):
+                  q=out/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
+          shutil.copy2('buscador.json',out/'buscador.json')
+          PY
+      - name: Aplicar controles, recuperar descripciones truncadas y conservar referencias
+        run: |
+          /tmp/ig-coherence/bin/python scripts/prepare_controls.py
+          /tmp/ig-coherence/bin/python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          import json,hashlib
+          base=Path('/tmp/ig-coherence-baseline');checked=0
+          for parent in ['es/neurodiversidad/condiciones','es/situaciones']:
+              for p in Path(parent).glob('*/index.html'):
+                  old=BeautifulSoup((base/p).read_text(),'html.parser').find('main')
+                  new=BeautifulSoup(p.read_text(),'html.parser').find('main')
+                  assert str(old)==str(new),str(p)
+                  checked+=1
+          before={v['u']:v for v in json.loads((base/'buscador.json').read_text())}
+          after=json.loads(Path('buscador.json').read_text());completed=[]
+          assert len(before)==len(after)==372
+          for row in after:
+              old=before[row['u']]
+              assert {k:v for k,v in old.items() if k!='d'}=={k:v for k,v in row.items() if k!='d'}
+              if old['d']!=row['d']:
+                  assert row['d'].startswith(old['d'])
+                  completed.append(row['u'])
+          Path('reports/coherence/integrity.json').write_text(json.dumps({'individual_fiches_unchanged':checked,'index_records':len(after),'descriptions_completed_from_existing_text':completed},ensure_ascii=False,indent=2))
+          files=[Path('index.html'),*Path('es').rglob('*.html'),*Path('en').rglob('*.html'),Path('assets/interfaz-comun.js'),Path('buscador.json')]
+          fingerprints={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+          Path('/tmp/ig-control-hashes.json').write_text(json.dumps(fingerprints))
+          PY
+          /tmp/ig-coherence/bin/python scripts/prepare_controls.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          for p,digest in json.loads(Path('/tmp/ig-control-hashes.json').read_text()).items():
+              assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==digest,'La migración no es repetible: '+p
+          PY
+          node --check assets/catalogo-comun.js
+          node --check assets/interfaz-comun.js
+          python3 scripts/build_site.py
+      - name: Probar controles, recuentos, igualdad visual y reintento del buscador
+        run: |
+          cd dist
+          /tmp/ig-coherence/bin/python ../scripts/test_coherence.py
+      - name: Repetir la estabilidad de carga con el nuevo estilo
+        if: always()
+        run: |
+          cd dist
+          /tmp/ig-coherence/bin/python ../scripts/test_initial_layout.py --phase after
+      - name: Conservar informes y capturas sin publicarlos
+        if: always()
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json,shutil,subprocess,hashlib
-          root=Path.cwd();out=Path('/tmp/coherencia-fuentes');out.mkdir()
-          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0');rows=[]
-          for name in paths:
-              p=root/name
-              if not name or not p.is_file():continue
-              rows.append({'path':name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-              if p.suffix in {'.html','.css','.js','.json','.xml','.toml','.txt','.md','.py','.yml'} or p.name in {'_headers','_redirects','.gitignore'}:
-                  q=out/'source'/name;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
-          (out/'inventory.json').write_text(json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':rows},ensure_ascii=False))
+          import shutil
+          out=Path('/tmp/ig-coherence-results');out.mkdir(exist_ok=True)
+          if Path('dist/reports/coherence').exists():shutil.copytree('dist/reports/coherence','reports/coherence',dirs_exist_ok=True)
+          if Path('dist/reports/initial-layout-after.json').exists():shutil.copy2('dist/reports/initial-layout-after.json','reports/coherence/regression-stability.json')
+          shutil.copytree('reports/coherence',out/'reports',dirs_exist_ok=True)
+          files=['assets/controles-comunes.css','assets/catalogo-comun.js','assets/interfaz-comun.js','scripts/prepare_controls.py','scripts/test_coherence.py','es/neurodiversidad/condiciones/index.html','es/situaciones/index.html','index.html']
+          for name in files:
+              p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
+          python3 scripts/build_site.py
+          test ! -d dist/reports
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
-          name: coherencia-fuentes
-          path: /tmp/coherencia-fuentes
+          name: coherencia-resultados
+          path: /tmp/ig-coherence-results
           retention-days: 3
-          include-hidden-files: true
+      - name: Guardar solamente en la rama de revisión
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html es en assets scripts buscador.json reports/initial-data-build.json
+          test ! -d reports/coherence || git add -- reports/coherence/*.json
+          test ! -d reports/routes || git add -- reports/routes/*.json
+          git diff --cached --quiet || git commit -m 'Unificar controles y búsqueda; conservar auditoría de descripciones y referencias'
+          git pull --rebase origin ajustes/auditoria-web
+          git push origin HEAD:ajustes/auditoria-web
