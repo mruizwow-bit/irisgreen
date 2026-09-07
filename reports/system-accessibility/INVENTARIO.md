@@ -1,5 +1,49 @@
 # Iris Green · Inventario de accesibilidad y aplicación de la devolución
 
+## Actualización · tipografía y espaciados independientes
+
+Ejecución de cierre: **34106026048**, entrada de la rama **7a0a978a09715b6f2cdc91f4b817176075efa53d**. Resultado: 25/25 casos de opciones nuevas, 10/10 comprobaciones reales de teclado y música, 45/45 regresiones de preferencias y 24/24 regresiones de controles y catálogos. El código resultante y los informes se guardan en `ajustes/auditoria-web`; esta actualización no fusiona la propuesta #2 ni publica la web.
+
+Documento atendido: devolución «Se ha pegado el markdown(20260907-085701).md». Se conserva lo ya consolidado y se añaden controles utilizables, no otra auditoría general. Los apartados históricos siguientes documentan tandas anteriores; sus pruebas no se cuentan como repetidas salvo indicación expresa.
+
+### Qué había, qué se incorpora y dónde
+
+Antes existían la tipografía original, un ajuste combinado de espaciado y la redistribución de columnas; no había selectores personales para estas funciones. Ahora el mismo panel de Lectura incorpora un desplegable **«Tipografía, espaciado y anchura»** con seis controles etiquetados:
+
+- Tipografía original o alternativas de tipo Arial, Verdana y Georgia. Se utilizan exclusivamente fuentes disponibles en el dispositivo y familias de sustitución: no se distribuyen ni se solicitan archivos de tipografía. La opción no garantiza la presencia de una fuente concreta ni un beneficio universal para dislexia.
+- Cuatro espaciados independientes: letras, palabras, líneas y párrafos. Cada uno admite «Original». Se comprueba que modificar uno conserva los otros.
+- Anchura Original, Media o Estrecha. Las líneas se limitan mediante 65ch/48ch sin reducir el tamaño elegido. `ch` es una unidad tipográfica, no una promesa de que quepan exactamente 65 o 48 caracteres de cualquier letra. Las etiquetas breves se ven completas en el móvil.
+
+Los controles están en `assets/preferencias-lectura.js`, su estilo en `assets/preferencias-lectura.css` y su incorporación al panel existente en `assets/interfaz-comun.js`. `es/lectura-accesible/index.html` explica cómo utilizarlos. No se crea un segundo panel ni otro almacén: `ig-a11y` v2 recibe un objeto `text` opcional y validado.
+
+La presentación inicial conserva el diseño anterior. Los ajustes actúan sobre el contenido principal, no sobre la cabecera o los paneles ni mediante filtros de las ilustraciones. Una muestra en el panel permite comparar letra y espaciado. Las opciones se mantienen al recargar, navegar entre tipos de página, cambiar el idioma activo y sincronizar dos pestañas.
+
+**Restablecer estos ajustes** recupera letra, separaciones y anchura originales sin modificar tamaño, contraste u otras preferencias. **Restablecer**, fuera de ese bloque, sigue reiniciando el conjunto de ajustes propios de la web. El botón antiguo de espaciado rápido continúa disponible: aplicar su combinación sustituye las separaciones personalizadas, pero no cambia la tipografía ni la anchura.
+
+### Qué se ha probado realmente
+
+**25/25 opciones y combinaciones.** Veintiún casos en Home, Condiciones, Autismo ES/EN, Vera, Tus intereses y Vídeos a 1440/390/320 píxeles. Se comprueban independencia, valores calculados, nombre de campos, recarga, retorno exacto a la presentación original y ausencia de desbordamiento, combinando letra alternativa, anchura estrecha, separaciones de 0,12em/0,16em/1,5/2em y tamaño incorporado al 150 %. Se añaden un recorrido mediante selectores nativos y teclado con sincronización entre dos pestañas y tres entradas inválidas. No se afirma haber probado todas las combinaciones matemáticamente posibles.
+
+**6/6 recorridos con Tab.** Se recorren 65 pasos de Tab consecutivos, sin asignar foco mediante código, en Home, Condiciones y Vera a 1440/320 píxeles. Se registran los controles visitados y se comprueba que sean visibles y no queden tapados. Es una muestra de esos recorridos, no una afirmación de haber recorrido cada control de las 895 páginas conectadas.
+
+**4/4 casos con una pista reproduciéndose.** En Home y Condiciones a 1440/320 píxeles se inicia mediante teclado la pista local MP3 «Atmósfera». Se utiliza el `play()` real del navegador; se verifica que el tiempo de reproducción avanza antes y después de recoger el panel con Escape y al continuar con Tab hasta provocar su cierre por superposición. El foco se conserva y Pausa detiene la pista. Se comprueba una pista, no todas; no se mide la audibilidad de un altavoz físico. Se mantiene la posición del reproductor abajo a la derecha.
+
+**Regresiones repetidas:** 45 casos de preferencias y 24 de catálogos, secciones y recuperación tras fallo de red. No se sustituye la batería anterior por las pruebas nuevas. Se comprueba además que `buscador.json`, `videoteca-listado.json`, el catálogo de juegos y `cromos.json` permanecen intactos y que ejecutar la migración dos veces no vuelve a cambiar los archivos.
+
+Las pruebas se realizan con Chromium en GitHub Actions sobre `dist`, con dominios externos bloqueados. Las de música sí usan el archivo local real. Las capturas finales de escritorio y móvil se revisan por separado de las comprobaciones automáticas de geometría; se incluyen en el artefacto de esta tanda.
+
+### Fallos del proceso que se conservan en el registro
+
+La primera ejecución 34104337898 guardó por error el resumen de pruebas encima de la referencia visual inicial. Por eso no llegó a comprobar 21 combinaciones; no se contabilizan como aprobadas. Se separaron ambos archivos y se reconstruyó la comparación a partir de los tres archivos compartidos de la misma rama inmediatamente antes de esta tanda, sin reutilizar contenido de webs antiguas.
+
+Otra prueba esperaba que el panel siguiera abierto después de enfocar el selector externo de idioma, aunque la protección contra superposiciones podía recogerlo. Se adaptó el recorrido para volver a abrirlo y comprobar tanto las preferencias como la explicación en inglés; no se eliminó esa comprobación. En la inspección de móvil se acortaron las etiquetas de anchura, que se cortaban dentro del selector; la prueba final mide también el texto elegido, no solo el tamaño del campo.
+
+### Límites que siguen abiertos
+
+Quedan temas completos y fondo opaco, guía utilizable sin ratón, vista centrada, lectura en voz alta avanzada, alternativas textuales de materiales y revisión audiovisual. El panel sigue llegando al 150 %: no se anuncia aquí una prueba real de zoom de navegador al 200 %/400 %. Tampoco se afirma evaluación con lectores de pantalla, braille, control por voz o teléfonos físicos, ni revisión documental adicional de fuentes clínicas.
+
+Evidencia de esta actualización: `reports/text-preferences/after.json`, `base.json`, `baseline-values.json`, `regression-preferences.json`, `regression-controls.json`, `first-after.json`, `first-base.json` y las capturas del artefacto `texto-personalizable-cierre`. El historial previo se mantiene a continuación.
+
 ## Versión y resultado
 Base revisada: `826925143a934f7ec0a54671922edef249a9e462`. La copia exacta se obtuvo en `cb9e9984ab41a837c5a267693caedc5e9a9533e3`; entre ambas solo se añadió el flujo de exportación. No se utiliza una versión histórica de la web.
 
@@ -61,7 +105,7 @@ Las pruebas usan Chromium sobre el directorio público generado `dist` en GitHub
 
 **Prueba y resultado:** doce superposiciones dirigidas sobre controles existentes de Home, Condiciones y Tus intereses, a 1440/320 píxeles, con ambos paneles. Se comprueban superposición inicial, cierre posterior, foco conservado y altura del documento intacta. 12/12 aprobadas.
 
-**Pendiente:** estas pruebas utilizan foco programático para reproducir la geometría; no son un barrido completo con Tab. Faltan pruebas específicas de las ramas de cabecera/guía, zoom 200 %/400 % y navegadores adicionales. Que recoger Música no pausa se determina por el código de `close(false)`; esta tanda no reproduce una pista durante esa operación.
+**Actualización posterior:** la tanda de tipografía incorpora seis recorridos reales de 65 pasos con Tab y cuatro pruebas con el MP3 «Atmósfera» reproduciéndose al recoger el panel mediante Escape y por superposición. El tiempo avanza y no se pausa; véase el alcance de esos casos al comienzo del inventario. Siguen pendientes el barrido de todos los controles, las ramas específicas de guía, zoom 200 %/400 %, otras pistas y motores y dispositivos físicos. Los doce casos descritos arriba siguen siendo los casos programáticos de la tanda anterior.
 
 ### Recorrido representativo pedido
 **Qué había:** persistencia y páginas individuales probadas, pero no esta misma secuencia de enlaces y acciones.
@@ -93,9 +137,9 @@ Todos los cambios implementados de la tabla están en la rama de revisión, no p
 |---|---|---|---|---|
 | Preferencias comunes | Estado unificado previamente en `ig-a11y` v2; se conserva. | Migración anterior conecta 25 páginas dinámicas y 870 archivos estáticos; no se afirma haber probado 895 páginas individualmente. | 45 escenarios repetidos: restauración, límites, recarga, navegación, pestañas, almacenamiento inválido/bloqueado y Reset. Aprobados. | Más navegadores y visitas reales. |
 | Tamaño del contenido | Mismos pasos 100/115/130/150 %, porcentaje y límites. Sin ampliación nueva. | Implementado hasta el 150 % incorporado. | Persistencia, límites y nueve comprobaciones de panel/cromos repetidas. Aprobadas. | Texto al 200 % y zoom de navegador 200 %/400 %. |
-| Espaciado actual | Una opción combina letras, palabras y líneas. | Implementado como combinación, no cuatro controles. | Conservación y combinación con tamaño en regresión/recorrido. Aprobadas. | Cuatro controles independientes y tolerancia conjunta a los valores de espaciado WCAG. |
-| Tipografía alternativa | Se mantiene la tipografía actual. | Selector pendiente. | No se anuncia probado. | Licencias, caracteres, carga y comparación; sin prometer una mejora universal por dislexia. |
-| Anchura de lectura | Se conserva la redistribución de columnas. | Correcciones existentes; selector personal pendiente. | Paneles/cromos y recorrido representativo. | Selector y combinación con fuentes/espaciados. |
+| Espaciado actual | Antes había una combinación única; se conserva como ajuste rápido. | Cuatro controles independientes añadidos: letras, palabras, líneas y párrafos; Original por campo y muestra. | 25/25 escenarios nuevos, incluida combinación de 0,12em/0,16em/1,5/2em al 150 %, y regresiones de preferencias/catálogos repetidas. | Más combinaciones y tolerancia a herramientas externas de espaciado; otros motores y zoom real. |
+| Tipografía alternativa | El diseño original permanece por defecto. | Selector con Arial, Verdana, Georgia o familias similares disponibles en el dispositivo, sin descargar tipografías. | Alternancia de fuentes, campos etiquetados, teclado, persistencia y retorno al original en la nueva batería. | Disponibilidad de cada fuente en dispositivos físicos, comprensión con usuarios y otras lenguas; no se promete mejora universal por dislexia. |
+| Anchura de lectura | Se conserva la redistribución anterior y se añade una elección personal. | Original, Media y Estrecha con límites tipográficos de 65ch/48ch. | Combinación con tipografías, cuatro espaciados y 150 % en siete páginas/tres anchuras; recuperación del original. | Más páginas y combinaciones, zoom real y usuarios. |
 | Temas y fondo opaco | Más contraste no es un sistema completo de temas. | Temas completos pendientes; colores forzados del sistema se tratan aparte. | Esta tanda no los da por incorporados. | Temas y contraste sobre los fondos efectivos. |
 | Guía de lectura | Sigue al puntero; se añade apartarla del foco. | Básica, sin controles propios de colocación. | Presencia/persistencia en pruebas anteriores. | Control por teclado y botones táctiles, altura/posición y geometría específica del foco. |
 | Lectura en voz alta | Fragmentos en fichas y textos preparados en algunas páginas dinámicas. | Existente; sin arranque por recordar preferencias. | Llamadas registradas; cambios de presentación no reinician y navegar no inicia voz. | Pausa, continuación, velocidad, selección, textos largos, voces/errores reales y procesamiento local/remoto. |

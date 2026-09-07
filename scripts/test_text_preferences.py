@@ -115,6 +115,9 @@ with sync_playwright() as pw:
      el=panel(p);el.locator('[data-ig-text-settings] summary').click();assert el.locator('select').count()==6
      for control in el.locator('[data-ig-text-settings] select:visible,[data-ig-text-settings] button:visible').all():
       control.scroll_into_view_if_needed();a=control.bounding_box();b=el.bounding_box();assert a['x']>=b['x'] and a['x']+a['width']<=b['x']+b['width']+1
+      if control.evaluate('(e)=>e.tagName')=='SELECT':
+       caption=control.evaluate('(e)=>{const s=getComputedStyle(e),c=document.createElement("canvas").getContext("2d");c.font=s.font;return {label:e.selectedOptions[0].textContent,needed:c.measureText(e.selectedOptions[0].textContent).width,available:e.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight)-24}}')
+       assert caption['needed']<=caption['available'],caption
      el.locator('[data-ig-text-settings]').evaluate('(e)=>e.scrollIntoView({block:"start"})')
      if path in ['/','/es/neurodiversidad/condiciones/autismo/']:
       p.screenshot(path=str(OUT/f'text-panel-{path.strip("/").replace("/","-") or "home"}-{width}.png'))

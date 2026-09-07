@@ -108,7 +108,7 @@ La prueba de base recorre 65 Tab consecutivos en tres páginas a dos tamaños. E
 
 Se ha actualizado el MISMO inventario en `reports/system-accessibility/INVENTARIO.md`, con lo incorporado, pruebas y límites. Las cuatro fuentes de catálogos mantienen su integridad. Las primeras pruebas fallidas se conservan y sus errores están explicados; no se declaran aprobadas.
 
-Continúan pendientes temas/opaque, guía sin ratón, voz avanzada, alternativas de contenido, zoom real 200 %/400 %, lectores de pantalla y braille. Pruebas locales en Chromium con dominios externos bloqueados; no certificación WCAG, prueba en teléfonos físicos o revisión de fuentes científicas.
+Continúan pendientes temas y fondo opaco, guía sin ratón, voz avanzada, alternativas de contenido, zoom real 200 %/400 %, lectores de pantalla y braille. Pruebas locales en Chromium con dominios externos bloqueados; no certificación WCAG, prueba en teléfonos físicos o revisión de fuentes científicas.
 '''
 (OUT/'RESUMEN.md').write_text(summary)
 (OUT/'delivery.json').write_text(json.dumps({'run':run,'workflow_input':start,'passed':True,'new_cases':25,'keyboard_cases':6,'playing_audio_cases':4,'preference_regressions':45,'catalogue_regressions':24,'updated_inventory':'reports/system-accessibility/INVENTARIO.md','source_hashes':{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/interfaz-comun.js']},'published':False},ensure_ascii=False,indent=2)+'\n')
