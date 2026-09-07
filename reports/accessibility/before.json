@@ -1,0 +1,83 @@
+{
+  "phase": "before",
+  "panels": [
+    {
+      "page": "/",
+      "width": 320,
+      "box": {
+        "x": -35,
+        "y": 280,
+        "width": 320,
+        "height": 544
+      },
+      "focus_entered": false,
+      "aria_expanded": null,
+      "escape_closes": false,
+      "passed": false,
+      "javascript_errors": [],
+      "audio_requests": []
+    },
+    {
+      "page": "/es/neurodiversidad/condiciones/",
+      "width": 320,
+      "box": {
+        "x": 0,
+        "y": 114,
+        "width": 305,
+        "height": 470.1875
+      },
+      "focus_entered": true,
+      "aria_expanded": "true",
+      "escape_closes": true,
+      "passed": true,
+      "javascript_errors": [],
+      "audio_requests": []
+    },
+    {
+      "page": "/es/recursos/juegos/las-cinco-cosas/",
+      "width": 320,
+      "box": {
+        "x": -35,
+        "y": 227.25,
+        "width": 320,
+        "height": 596.75
+      },
+      "focus_entered": false,
+      "aria_expanded": null,
+      "escape_closes": false,
+      "passed": false,
+      "javascript_errors": [],
+      "audio_requests": []
+    },
+    {
+      "page": "/es/recursos/juegos/el-mapa-del-tesoro-de-casa/",
+      "width": 320,
+      "box": {
+        "x": -35,
+        "y": 227.25,
+        "width": 320,
+        "height": 596.75
+      },
+      "focus_entered": false,
+      "aria_expanded": null,
+      "escape_closes": false,
+      "passed": false,
+      "javascript_errors": [],
+      "audio_requests": []
+    }
+  ],
+  "picture_games": [],
+  "failures": [],
+  "notes": [
+    "Non-modal reading and music: Tab is not trapped; Escape returns to their opener.",
+    "Large equivalent controls use the same game callbacks. Original picture rectangles are deliberately not enlarged over neighbouring objects.",
+    "External requests blocked. Not a WCAG certification or a screen-reader listening test."
+  ],
+  "summary": {
+    "panels_tested": 4,
+    "panels_passed": 1,
+    "picture_scenarios": 0,
+    "picture_passed": 0
+  },
+  "passed": true
+}

@@ -80,3 +80,23 @@ button,input,select,textarea{min-width:0}
  .ig-uh-music,.ig-uh-reading{padding-inline:8px!important;font-size:13px!important;gap:4px!important}
  .ig-uh-langs button{min-width:44px!important;padding:0 6px!important;font-size:12px!important}
 }
+
+/* Accessibility batch: non-modal reading settings, independent of page flow. */
+[data-ig-reading-panel]{position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) auto!important;width:min(340px,calc(100% - 24px))!important;max-width:calc(100% - 24px)!important;max-height:calc(100dvh - 24px)!important;box-sizing:border-box!important;overflow:auto!important;margin:0!important;z-index:10000!important;padding:18px!important;border:1px solid #dfe6ef!important;border-radius:18px!important;background:rgba(255,255,255,.98)!important;color:#17395c!important;box-shadow:0 12px 40px -16px rgba(23,57,92,.4)!important;font:16px/1.45 'Atkinson Hyperlegible',system-ui,sans-serif!important;transform:none!important;filter:none!important}
+[data-ig-reading-panel]::backdrop{background:transparent;pointer-events:none}
+[data-ig-reading-panel] *{box-sizing:border-box}
+[data-ig-reading-panel] button{min-height:44px!important;min-width:44px!important;max-width:100%;white-space:normal}
+[data-ig-reading-close]{width:44px!important;height:44px!important;min-width:44px!important;flex:none;cursor:pointer;color:#17395c!important;font-size:22px!important}
+#a11y>[data-ig-reading-close]{float:right;background:white;border:1px solid #dfe6ef;border-radius:999px}
+[data-ig-reading-panel] .ctrls{clear:both;gap:8px}
+[data-ig-reading-panel] .grp{flex-wrap:wrap}
+[data-ig-reading-panel] button:focus-visible{outline:3px solid #5a49a8!important;outline-offset:2px!important}
+html[data-ig-contrast="on"] body{filter:none!important}
+html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
+.ig-touch-alternative{margin:12px 0;border:1px solid #dfe6ef;border-radius:14px;background:rgba(255,255,255,.82)}
+.ig-touch-alternative>summary{min-height:44px;padding:12px 14px;cursor:pointer;color:#17395c;font-size:16px;line-height:1.45}
+.ig-touch-choices{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 12px}
+.ig-touch-choices>button{min-width:44px!important;min-height:44px!important;padding:10px 14px;border:1px solid #dfe6ef;border-radius:999px;background:#fff;color:#17395c;font:inherit;cursor:pointer;text-align:left;max-width:100%;white-space:normal}
+.ig-touch-choices>button[aria-pressed=true]{border-color:#5a49a8;background:rgba(90,73,168,.1)}
+.ig-picture-target{min-width:0!important;min-height:0!important}
+.ig-picture-target:focus-visible{outline:3px solid #5a49a8!important;outline-offset:-3px!important}
