@@ -16,6 +16,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
+    # PT-BR está retirado del sitio público. Las redirecciones se conservan, pero
+    # sus controles no deben seguir incrustados en los HTML ES/EN ni el idioma de
+    # la Home debe propagarse a otras rutas.
+    subprocess.run([sys.executable,str(ROOT/'scripts/retire_portuguese_ui.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
