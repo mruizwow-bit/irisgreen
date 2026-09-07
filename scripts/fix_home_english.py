@@ -1,57 +1,40 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import re
 
 p=Path('index.html')
 s=p.read_text()
 
-# Keep the existing layout and behaviour. Only move hard-coded Spanish home copy
-# into the existing language dictionary/render values so EN does not leave mixed text.
-repls={
-'''    es: {\n      navHome: "Inicio",''':'''    es: {\n      navHome: "Inicio",''',
-}
+# Expand the existing home STR object. These are interface/home-copy strings only;
+# search result content itself comes from the single bilingual buscador.json.
+es_old='''    lede: "Escríbelo como lo dirías en voz alta.",\n    directo: "O entra directo a un tema",\n    escuchar: "Escuchar a quien lo vive",\n    empiezo: "¿Por dónde empiezo?",\n    soloEs: "Las secciones están en castellano. La traducción está en marcha."'''
+es_new='''    lede: "Escríbelo como lo dirías en voz alta.",\n    hero2: "Las situaciones están contadas en primera persona, y la tuya puede estar. También puedes responder tres preguntas o mirar qué ayuda puedes pedir.",\n    directo: "O entra directo a un tema",\n    escuchar: "Escuchar a quien lo vive",\n    empiezo: "¿Por dónde empiezo?",\n    soloEs: "",\n    booksMessage: "Todo lo de esta web es gratis. La pagan dos libros.", booksSee: "Verlos",\n    tabs: ["Buscar", "Responder 3 preguntas", "¿Qué puedo pedir?"],\n    suggestions: ["no soporto el ruido", "me agoto con la gente", "no consigo dormir", "en el colegio no le entienden", "me bloqueo con los papeles"],\n    startHere: "Puedes empezar por aquí"'''
+if es_old in s:s=s.replace(es_old,es_new,1)
 
-# Add missing home strings to STR.es/STR.en immediately before the known footer key.
-anchor_es='''      tFootAbout: "Sobre Iris Green",'''
-add_es='''      intro1: "Las situaciones están contadas en primera persona, y la tuya puede estar. También puedes responder tres preguntas o mirar qué ayuda puedes pedir.",\n      translationNote: "",\n      booksSupport: "Todo lo de esta web es gratis. La pagan dos libros.",\n      booksSee: "Verlos",\n      searchTab: "Buscar",\n      askTab: "Responder 3 preguntas",\n      askForTab: "¿Qué puedo pedir?",\n      searchPlaceholder: "ruido, no consigo empezar, no consigo dormir, colegio…",\n      quickSearch: ["no soporto el ruido","me agoto con la gente","no consigo dormir","en el colegio no le entienden","me bloqueo con los papeles"],\n      startHere: "Puedes empezar por aquí",\n      allEveryday: "Todas las fichas de Vida diaria",\n      everydayDesc: "Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.",\n      allData: "Todas las cifras de Datos",\n      dataDesc: "Cifras con su población, su método y su incertidumbre en la misma frase.",\n      allSupport: "Todas las ayudas por país",\n      supportDesc: "Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.",\n'''
-if anchor_es in s and 'booksSupport:' not in s:
-    s=s.replace(anchor_es,add_es+anchor_es,1)
+en_old='''    lede: "Write it as you would say it out loud.",\n    directo: "Or go straight to a topic",\n    escuchar: "Hear from the people who live it",\n    empiezo: "Where do I start?",\n    soloEs: "The sections are in Spanish. Translation is under way."'''
+en_new='''    lede: "Write it as you would say it out loud.",\n    hero2: "The situations are told in the first person, and yours may be here too. You can also answer three questions or see what support you can ask for.",\n    directo: "Or go straight to a topic",\n    escuchar: "Hear from the people who live it",\n    empiezo: "Where do I start?",\n    soloEs: "",\n    booksMessage: "Everything on this website is free. Two books pay for it.", booksSee: "See them",\n    tabs: ["Search", "Answer 3 questions", "What can I ask for?"],\n    suggestions: ["I can't cope with the noise", "being around people drains me", "I can't sleep", "they don't understand them at school", "paperwork makes me freeze"],\n    startHere: "You can start here"'''
+if en_old in s:s=s.replace(en_old,en_new,1)
 
-anchor_en='''      tFootAbout: "About Iris Green",'''
-add_en='''      intro1: "The situations are told in the first person, and yours may be here too. You can also answer three questions or see what support you can ask for.",\n      translationNote: "",\n      booksSupport: "Everything on this website is free. Two books pay for it.",\n      booksSee: "See them",\n      searchTab: "Search",\n      askTab: "Answer 3 questions",\n      askForTab: "What can I ask for?",\n      searchPlaceholder: "noise, I can't get started, I can't sleep, school…",\n      quickSearch: ["I can't cope with the noise","being around people drains me","I can't sleep","they don't understand them at school","paperwork makes me freeze"],\n      startHere: "You can start here",\n      allEveryday: "All Everyday life guides",\n      everydayDesc: "Practical guides for daily life: shopping, cooking, paperwork, sleep and leaving home.",\n      allData: "All Data figures",\n      dataDesc: "Figures with the population measured, the method and the uncertainty stated together.",\n      allSupport: "All support by country",\n      supportDesc: "What support you can ask for in your country, with its official name and a plain-language explanation.",\n'''
-if anchor_en in s and 'booksSupport: "Everything on this website' not in s:
-    s=s.replace(anchor_en,add_en+anchor_en,1)
+# The Portuguese block remains as-is; PT-BR is not being re-enabled by this change.
 
-# Replace the visible hard-coded home copy with render variables.
-text_replacements={
-'Las situaciones están contadas en primera persona, y la tuya puede estar.<br/>También puedes responder tres preguntas o mirar qué ayuda puedes pedir.':'{{ intro1 }}',
-'<p style="margin: 0 0 12px; font-size: 14px; color: #6b6479;">The sections are in Spanish. Translation is under way.</p>':'<sc-if value="{{ translationNote }}"><p style="margin: 0 0 12px; font-size: 14px; color: #6b6479;">{{ translationNote }}</p></sc-if>',
-'Todo lo de esta web es gratis. La pagan dos libros. <a href="/es/libros/" style="font-weight:700;">Verlos</a>':'{{ booksSupport }} <a href="/es/libros/" style="font-weight:700;">{{ booksSee }}</a>',
-'>Buscar</button>':'>{{ searchTab }}</button>',
-'>Responder 3 preguntas</button>':'>{{ askTab }}</button>',
-'>¿Qué puedo pedir?</button>':'>{{ askForTab }}</button>',
-'placeholder="ruido, no consigo empezar, no consigo dormir, colegio…"':'sc-camel-placeholder="{{ searchPlaceholder }}"',
-'Puedes empezar por aquí':'{{ startHere }}',
-'Todas las fichas de Vida diaria':'{{ allEveryday }}',
-'Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.':'{{ everydayDesc }}',
-'Todas las cifras de Datos':'{{ allData }}',
-'Cifras con su población, su método y su incertidumbre en la misma frase.':'{{ dataDesc }}',
-'Todas las ayudas por país':'{{ allSupport }}',
-'Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.':'{{ supportDesc }}',
-}
-for a,b in text_replacements.items():
-    s=s.replace(a,b)
+# Visible book-support message must follow the selected language.
+s=s.replace('''<p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">Todo lo de esta web es gratis. La pagan dos libros. <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">Verlos</a></p>''',
+'''<p id="ig-books-message" style="margin:0 0 24px; font-size:16px; line-height:1.6; color:#17395c;">{{ tBooksMessage }} <a href="/es/libros/" style="font-weight:700; text-decoration:underline; text-underline-offset:3px;">{{ tBooksSee }}</a></p>''')
 
-# Replace the five hard-coded quick chips with the language-specific list.
-quick_pat=re.compile(r'''<div style="display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 12px;">\s*<button[^>]*>no soporto el ruido</button>\s*<button[^>]*>me agoto con la gente</button>\s*<button[^>]*>no consigo dormir</button>\s*<button[^>]*>en el colegio no le entienden</button>\s*<button[^>]*>me bloqueo con los papeles</button>\s*</div>''',re.S)
-quick='''<div style="display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 12px;">\n          <sc-for list="{{ quickChips }}" as="c" hint-placeholder-count="5"><button sc-camel-on-click="{{ c.pick }}" style="background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;padding:7px 13px;cursor:pointer;font-size:14px;">{{ c.label }}</button></sc-for>\n        </div>'''
-s=quick_pat.sub(quick,s,count=1)
+# Keep one index. The three fixed rows get English variants in the same object;
+# conditions/situations are localised from buscador.json.
+old_fijas='''      var FIJAS = [\n        { name: "Todas las fichas de Vida diaria", kind: "Vida diaria", url: "/es/biblioteca/", hint: "Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.", area: "" },\n        { name: "Todas las cifras de Datos", kind: "Datos", url: "/es/datos/", hint: "Cifras con su población, su método y su incertidumbre en la misma frase.", area: "" },\n        { name: "Todas las ayudas por país", kind: "Ayudas", url: "/es/tramites/directorio/", hint: "Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.", area: "" }\n      ];'''
+new_fijas='''      var FIJAS = [\n        { name: "Todas las fichas de Vida diaria", kind: "Vida diaria", url: "/es/biblioteca/", hint: "Moldes para el día a día: la compra, la cocina, el papeleo, dormir y salir de casa.", area: "", en:{s:"Everyday life",t:"All Everyday life guides",u:"/es/biblioteca/",d:"Practical guides for daily life: shopping, cooking, paperwork, sleep and leaving home."} },\n        { name: "Todas las cifras de Datos", kind: "Datos", url: "/es/datos/", hint: "Cifras con su población, su método y su incertidumbre en la misma frase.", area: "", en:{s:"Data",t:"All Data figures",u:"/es/datos/",d:"Figures with the population measured, the method and the uncertainty stated together."} },\n        { name: "Todas las ayudas por país", kind: "Ayudas", url: "/es/tramites/directorio/", hint: "Qué ayuda puedes pedir en tu país, con su nombre oficial y su explicación en llano.", area: "", en:{s:"Support",t:"All support by country",u:"/es/tramites/directorio/",d:"What support you can ask for in your country, with its official name and a plain-language explanation."} }\n      ];'''
+if old_fijas in s:s=s.replace(old_fijas,new_fijas,1)
 
-# Add render values from STR and language-specific quick-chip handlers.
-needle='''    return {\n      langButtons:'''
-insert='''    const copy = STR[st.lang] || STR.es;\n    const quickChips = (copy.quickSearch || []).map((label) => ({ label, pick: () => this.setState({ q: label, tab: "search" }) }));\n    return {\n      intro1: copy.intro1, translationNote: copy.translationNote, booksSupport: copy.booksSupport, booksSee: copy.booksSee,\n      searchTab: copy.searchTab, askTab: copy.askTab, askForTab: copy.askForTab, searchPlaceholder: copy.searchPlaceholder, quickChips, startHere: copy.startHere,\n      allEveryday: copy.allEveryday, everydayDesc: copy.everydayDesc, allData: copy.allData, dataDesc: copy.dataDesc, allSupport: copy.allSupport, supportDesc: copy.supportDesc,\n      langButtons:'''
-if needle in s and 'intro1: copy.intro1' not in s:
-    s=s.replace(needle,insert,1)
+s=s.replace('''    return window.IGSearch.rank(fondo, this.state.q).slice(0, 9);''','''    return window.IGSearch.rank(fondo, this.state.q, this.state.lang).slice(0, 9);''')
+s=s.replace('''    const results = this.search();''','''    const results = this.search().map((r) => window.IGSearch.localize ? window.IGSearch.localize(r, L) : r);''')
+s=s.replace('''      tHero2: X("Las situaciones están contadas en primera persona, y la tuya puede estar. También puedes responder tres preguntas o mirar qué ayuda puedes pedir."),''','''      tHero2: T.hero2,''')
+s=s.replace('''      tLede: T.lede, tDirecto: T.directo, tEscuchar: T.escuchar, tEmpiezo: T.empiezo, tSoloEs: T.soloEs,\n      tabs: [tab("search", X("Buscar")), tab("quiz", X("Responder 3 preguntas")), tab("pedir", X("¿Qué puedo pedir?"))],''','''      tLede: T.lede, tDirecto: T.directo, tEscuchar: T.escuchar, tEmpiezo: T.empiezo, tSoloEs: T.soloEs,\n      tBooksMessage: T.booksMessage, tBooksSee: T.booksSee,\n      tabs: [tab("search", T.tabs[0]), tab("quiz", T.tabs[1]), tab("pedir", T.tabs[2])],''')
+s=s.replace('''      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : X("Puedes empezar por aquí"),''','''      listaLabel: st.q.trim() ? X("Resultados para") + " «" + st.q.trim() + "»" : T.startHere,''')
+s=s.replace('''      suggestions: ["no soporto el ruido", "me agoto con la gente", "no consigo dormir", "en el colegio no le entienden", "me bloqueo con los papeles"].map((label) => ({\n        label: X(label), pick: () => this.setState({ q: label })\n      })),''','''      suggestions: T.suggestions.map((label) => ({\n        label, pick: () => this.setState({ q: label })\n      })),''')
+
+# No empty translation notice should reserve a visible line.
+s=s.replace('''      <p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p>''','''      <sc-if value="{{ tSoloEs }}"><p style="margin: 0 0 26px; font-size: 14.5px; color: #5a6675; max-width: 640px;">{{ tSoloEs }}</p></sc-if>''')
 
 p.write_text(s)
-print('home language copy prepared')
+print('home English presentation wired to existing language state and single search index')
