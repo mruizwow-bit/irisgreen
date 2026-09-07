@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / 'index.html'
+# Guardia de estabilización: no publicar si reaparece idioma global o falta Música.
 
 HOME_MUSIC = '''
   <sc-if value="{{ musicOpen }}" hint-placeholder-val="{{ false }}">
