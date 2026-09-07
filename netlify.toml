@@ -2,6 +2,7 @@
 [build]
   publish = "dist"
   command = "python3 scripts/build_site.py"
+  environment = { PYTHON_VERSION = "3.12" }
 
 # Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.
 [build.processing.html]
