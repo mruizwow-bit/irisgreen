@@ -1,8 +1,11 @@
-/* Iris Green · audio local. El panel se crea solo al abrirlo y el audio solo al pulsar Escuchar. */
+/* Iris Green · reproductor de audio local.
+   Un único controlador para toda la web. No usa Popover API: el panel es fijo,
+   no desplaza la página y no depende del sistema de componentes de cada sección. */
 (function () {
   'use strict';
   if (window.__igMusicReady) return;
   window.__igMusicReady = true;
+
   var TRACKS = [
     { f:'un-momento-de-calma.m4a',t:'Un momento de calma',a:'MickeysCat' },
     { f:'calma-por-dentro.m4a',t:'Calma por dentro',a:'The_Mountain' },
@@ -29,103 +32,215 @@
     { f:'ambiente-largo-1.mp3',t:'Ambiente largo I',a:'Lachm' },
     { f:'ambiente-largo-2.mp3',t:'Ambiente largo II',a:'Lachm' }
   ];
+
   var TEXT = {
-    es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. Prueba otra o pulsa Escuchar de nuevo.'},
-    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another or press Play again.'},
-    pt:{title:'Música',close:'Fechar reprodutor',play:'Ouvir',pause:'Pausa',prev:'Anterior',next:'Seguinte',list:'Escolher uma faixa',volume:'Volume',repeat:'Repetir lista',credit:'Música do Pixabay. O autor aparece em cada faixa.',error:'Não foi possível reproduzir esta faixa. Escolha outra ou pressione Ouvir novamente.'}
+    es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. Prueba otra.',loading:'Cargando…'},
+    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another.',loading:'Loading…'}
   };
-  var panel, audio, playButton, title, author, status, closeButton, lastTrigger, labels, previousButton, nextButton, listSummary, volumeLabel, volumeSlider, repeatText, creditText, selected = 0, repeat = true, open = false;
-  var selector = '#plBtn,.ig-uh-music,[data-ig-music]';
-  function language() { var lang = document.documentElement.lang || 'es'; return TEXT[lang.slice(0,2)] || TEXT.es; }
-  function el(tag, text, className) { var node=document.createElement(tag); if(text)node.textContent=text;if(className)node.className=className;return node; }
-  function button(text, callback) { var b=el('button',text);b.type='button';b.addEventListener('click',callback);return b; }
-  function sync() {
-    if(!panel)return;
-    title.textContent=TRACKS[selected].t; author.textContent=TRACKS[selected].a;
-    playButton.textContent=audio && !audio.paused ? labels.pause : labels.play;
-    panel.querySelectorAll('[data-track]').forEach(function(b){b.setAttribute('aria-current',String(Number(b.dataset.track)===selected));});
+
+  var selector='#plBtn,.ig-uh-music,[data-ig-music]';
+  var panel=null,audio=null,playButton=null,title=null,author=null,status=null,closeButton=null;
+  var previousButton=null,nextButton=null,listSummary=null,volumeLabel=null,volumeSlider=null,repeatText=null,creditText=null;
+  var lastTrigger=null,selected=0,repeat=true,open=false,errorAdvance=false;
+
+  function labels(){
+    return String(document.documentElement.lang||'es').toLowerCase().indexOf('en')===0?TEXT.en:TEXT.es;
   }
-  function updateLabels() {
+  function el(tag,text,className){
+    var node=document.createElement(tag);
+    if(text!==undefined&&text!==null&&text!=='')node.textContent=text;
+    if(className)node.className=className;
+    return node;
+  }
+  function button(text,callback){
+    var node=el('button',text);node.type='button';node.addEventListener('click',callback);return node;
+  }
+  function setExpanded(value){
+    document.querySelectorAll(selector).forEach(function(trigger){
+      trigger.setAttribute('aria-expanded',String(value));
+      if(panel)trigger.setAttribute('aria-controls',panel.id);
+    });
+  }
+  function audioURL(index){return new URL('/audio/'+TRACKS[index].f,location.origin).href;}
+  function sync(){
     if(!panel)return;
-    labels=language();
-    panel.querySelector('#ig-music-title').textContent=labels.title;
-    closeButton.setAttribute('aria-label',labels.close);
-    previousButton.textContent=labels.prev;nextButton.textContent=labels.next;
-    listSummary.textContent=labels.list;volumeLabel.textContent=labels.volume;
-    volumeSlider.setAttribute('aria-label',labels.volume);
-    repeatText.textContent=labels.repeat;creditText.textContent=labels.credit;
-    if(status.textContent)status.textContent=labels.error;
+    var L=labels();
+    title.textContent=TRACKS[selected].t;
+    author.textContent=TRACKS[selected].a;
+    playButton.textContent=audio&&!audio.paused?L.pause:L.play;
+    panel.querySelectorAll('[data-track]').forEach(function(node){
+      var current=Number(node.dataset.track)===selected;
+      node.setAttribute('aria-current',current?'true':'false');
+    });
+  }
+  function updateLabels(){
+    if(!panel)return;
+    var L=labels();
+    panel.querySelector('#ig-music-title').textContent=L.title;
+    closeButton.setAttribute('aria-label',L.close);
+    previousButton.textContent=L.prev;
+    nextButton.textContent=L.next;
+    listSummary.textContent=L.list;
+    volumeLabel.textContent=L.volume;
+    volumeSlider.setAttribute('aria-label',L.volume);
+    repeatText.textContent=L.repeat;
+    creditText.textContent=L.credit;
     sync();
   }
-  function ensureAudio() {
+  function ensureAudio(){
     if(audio)return audio;
-    audio=new Audio(); audio.preload='none';audio.volume=.6;
-    audio.addEventListener('play',sync);audio.addEventListener('pause',sync);
-    audio.addEventListener('error',function(){status.textContent=labels.error;sync();});
-    audio.addEventListener('ended',function(){if(selected<TRACKS.length-1)play(selected+1);else if(repeat)play(0);else sync();});
+    audio=new Audio();
+    audio.preload='metadata';
+    audio.volume=.6;
+    audio.addEventListener('play',function(){status.textContent='';sync();});
+    audio.addEventListener('pause',sync);
+    audio.addEventListener('waiting',function(){if(panel&&open)status.textContent=labels().loading;});
+    audio.addEventListener('canplay',function(){if(status&&status.textContent===labels().loading)status.textContent='';});
+    audio.addEventListener('ended',function(){
+      if(selected<TRACKS.length-1)play(selected+1,false);
+      else if(repeat)play(0,false);
+      else sync();
+    });
+    audio.addEventListener('error',function(){
+      if(!status)return;
+      /* Algunos navegadores no reproducen M4A aunque sí MP3. Si falla una M4A,
+         saltamos una sola vez a la primera MP3 para que el reproductor siga siendo útil. */
+      if(!errorAdvance&&/\.m4a$/i.test(TRACKS[selected].f)){
+        errorAdvance=true;
+        var fallback=TRACKS.findIndex(function(track){return /\.mp3$/i.test(track.f);});
+        if(fallback>=0){play(fallback,false);return;}
+      }
+      status.textContent=labels().error;
+      sync();
+    });
     return audio;
   }
-  function play(index) {
+  function play(index,fromUser){
     selected=(index+TRACKS.length)%TRACKS.length;
-    var a=ensureAudio(), url=new URL('/audio/'+TRACKS[selected].f,location.origin).href;
-    status.textContent=''; if(a.src!==url)a.src=url;
-    a.play().then(sync).catch(function(){status.textContent=labels.error;sync();});sync();
+    var player=ensureAudio();
+    var src=audioURL(selected);
+    status.textContent='';
+    if(player.src!==src){player.src=src;player.load();}
+    var promise=player.play();
+    if(promise&&typeof promise.catch==='function'){
+      promise.catch(function(err){
+        /* Un bloqueo de autoplay solo puede ocurrir al avanzar automáticamente.
+           No lo presentamos como archivo roto; el botón Escuchar sigue disponible. */
+        if(fromUser!==false)status.textContent=labels().error;
+        sync();
+      });
+    }
+    sync();
   }
-  function close(restore) {
+  function close(restoreFocus){
     if(!panel)return;
-    if(typeof panel.hidePopover==='function'){try{panel.hidePopover();}catch(_) {}}
-    panel.hidden=true;open=false;
-    document.querySelectorAll(selector).forEach(function(b){b.setAttribute('aria-expanded','false');});
-    if(restore&&lastTrigger&&lastTrigger.isConnected)lastTrigger.focus();
+    panel.hidden=true;
+    open=false;
+    setExpanded(false);
+    if(restoreFocus&&lastTrigger&&lastTrigger.isConnected)lastTrigger.focus({preventScroll:true});
   }
-  function create() {
-    labels=language();
-    var css=el('style');css.id='ig-music-styles';css.textContent=
-      '#ig-music-panel{position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) auto!important;margin:0!important;width:min(320px,calc(100% - 24px))!important;max-width:calc(100% - 24px)!important;max-height:min(480px,calc(100dvh - 24px))!important;height:auto!important;overflow:auto!important;box-sizing:border-box!important;padding:14px!important;z-index:10000!important;background:rgba(255,255,255,.98)!important;color:#17395c!important;border:1px solid #dfe6ef!important;border-radius:18px!important;box-shadow:0 12px 40px -16px rgba(23,57,92,.4)!important;font:15px/1.4 "Atkinson Hyperlegible",system-ui,sans-serif!important;text-align:left!important;transform:none!important;filter:none!important}' +
-      '#ig-music-panel[hidden]{display:none!important}#ig-music-panel::backdrop{background:transparent;pointer-events:none}' +
-      '#ig-music-panel *{box-sizing:border-box}#ig-music-panel button{font:inherit;cursor:pointer;color:inherit;background:white;border:1px solid #dfe6ef;border-radius:999px;min-height:44px;padding:6px 10px}#ig-music-panel button:hover{border-color:#5a49a8}#ig-music-panel :focus-visible{outline:3px solid #5a49a8;outline-offset:2px}' +
+  function create(){
+    if(panel)return;
+    var L=labels();
+    var css=el('style');
+    css.id='ig-music-styles';
+    css.textContent=
+      '#ig-music-panel{position:fixed!important;right:max(12px,env(safe-area-inset-right))!important;bottom:max(12px,env(safe-area-inset-bottom))!important;left:auto!important;top:auto!important;margin:0!important;width:min(330px,calc(100% - 24px))!important;max-height:min(500px,calc(100dvh - 24px))!important;overflow:auto!important;box-sizing:border-box!important;padding:14px!important;z-index:10000!important;background:rgba(255,255,255,.98)!important;color:#17395c!important;border:1px solid #dfe6ef!important;border-radius:18px!important;box-shadow:0 12px 40px -16px rgba(23,57,92,.4)!important;font:15px/1.4 "Atkinson Hyperlegible",system-ui,sans-serif!important;text-align:left!important;transform:none!important;filter:none!important}' +
+      '#ig-music-panel[hidden]{display:none!important}' +
+      '#ig-music-panel *{box-sizing:border-box}#ig-music-panel button{font:inherit;cursor:pointer;color:inherit;background:#fff;border:1px solid #dfe6ef;border-radius:999px;min-height:44px;padding:6px 10px}#ig-music-panel button:hover{border-color:#5a49a8}#ig-music-panel :focus-visible{outline:3px solid #5a49a8;outline-offset:2px}' +
       '#ig-music-panel .ig-m-head{display:flex;align-items:center;justify-content:space-between;gap:10px}#ig-music-panel .ig-m-head strong{font-size:17px}#ig-music-panel .ig-m-close{min-width:44px;font-size:23px;padding:0}' +
-      '#ig-music-panel .ig-m-title{display:block;margin:8px 0 2px}#ig-music-panel .ig-m-author{display:block;color:#5a6675;font-size:13px}#ig-music-panel .ig-m-controls{display:flex;gap:6px;margin:12px 0}#ig-music-panel .ig-m-play{flex:1;background:#17395c;color:white}' +
-      '#ig-music-panel .ig-m-volume{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}#ig-music-panel input[type=range]{flex:1;min-width:0;min-height:44px}#ig-music-panel summary{cursor:pointer;padding:12px 0;min-height:44px;font-weight:700}' +
-      '#ig-music-panel ol{list-style:none;margin:0;padding:0;max-height:165px;overflow:auto}#ig-music-panel ol button{width:100%;text-align:left;border-radius:10px;border-color:transparent;display:block}#ig-music-panel ol button span{display:block;font-size:12px;color:#5a6675}#ig-music-panel [aria-current=true]{background:#edf3fa;border-color:#dfe6ef}' +
-      '#ig-music-panel .ig-m-repeat{font-size:13px;display:flex;align-items:center;gap:6px;min-height:44px}#ig-music-panel .ig-m-credit{font-size:12px;color:#5a6675;margin:8px 0 0}#ig-music-panel .ig-m-status{font-size:13px;color:#8c245a;margin:4px 0}#ig-music-panel .ig-m-status:empty{display:none}';
+      '#ig-music-panel .ig-m-title{display:block;margin:8px 0 2px}#ig-music-panel .ig-m-author{display:block;color:#5a6675;font-size:13px}' +
+      '#ig-music-panel .ig-m-controls{display:flex;gap:6px;margin:12px 0}#ig-music-panel .ig-m-play{flex:1;background:#17395c;color:#fff}' +
+      '#ig-music-panel .ig-m-volume{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}#ig-music-panel input[type=range]{flex:1;min-width:0;min-height:44px}' +
+      '#ig-music-panel summary{cursor:pointer;padding:12px 0;min-height:44px;font-weight:700}' +
+      '#ig-music-panel ol{list-style:none;margin:0;padding:0;max-height:175px;overflow:auto}#ig-music-panel ol button{width:100%;text-align:left;border-radius:10px;border-color:transparent;display:block}#ig-music-panel ol button span{display:block;font-size:12px;color:#5a6675}#ig-music-panel [aria-current=true]{background:#edf3fa;border-color:#dfe6ef}' +
+      '#ig-music-panel .ig-m-repeat{font-size:13px;display:flex;align-items:center;gap:6px;min-height:44px}' +
+      '#ig-music-panel .ig-m-credit{font-size:12px;color:#5a6675;margin:8px 0 0}#ig-music-panel .ig-m-status{font-size:13px;color:#8c245a;margin:4px 0}#ig-music-panel .ig-m-status:empty{display:none}';
     document.head.appendChild(css);
-    panel=el('section');panel.id='ig-music-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-labelledby','ig-music-title');
-    if('showPopover' in HTMLElement.prototype)panel.setAttribute('popover','manual');
-    var head=el('div','', 'ig-m-head'), heading=el('strong',labels.title);heading.id='ig-music-title';
-    closeButton=button('×',function(){close(true);});closeButton.className='ig-m-close';closeButton.setAttribute('aria-label',labels.close);head.append(heading,closeButton);panel.append(head);
-    title=el('strong','', 'ig-m-title');author=el('span','', 'ig-m-author');panel.append(title,author);
+
+    panel=el('section');
+    panel.id='ig-music-panel';
+    panel.hidden=true;
+    panel.setAttribute('role','dialog');
+    panel.setAttribute('aria-labelledby','ig-music-title');
+
+    var head=el('div','', 'ig-m-head');
+    var heading=el('strong',L.title);heading.id='ig-music-title';
+    closeButton=button('×',function(){close(true);});
+    closeButton.className='ig-m-close';closeButton.setAttribute('aria-label',L.close);
+    head.append(heading,closeButton);panel.append(head);
+
+    title=el('strong','', 'ig-m-title');
+    author=el('span','', 'ig-m-author');
+    panel.append(title,author);
+
     var controls=el('div','', 'ig-m-controls');
-    playButton=button(labels.play,function(){if(audio&&!audio.paused)audio.pause();else play(selected);});playButton.className='ig-m-play';
-    previousButton=button(labels.prev,function(){play(selected-1);});nextButton=button(labels.next,function(){play(selected+1);});
+    previousButton=button(L.prev,function(){errorAdvance=false;play(selected-1,true);});
+    playButton=button(L.play,function(){
+      if(audio&&!audio.paused)audio.pause();
+      else{errorAdvance=false;play(selected,true);}
+    });
+    playButton.className='ig-m-play';
+    nextButton=button(L.next,function(){errorAdvance=false;play(selected+1,true);});
     controls.append(previousButton,playButton,nextButton);panel.append(controls);
-    var volume=el('label','', 'ig-m-volume'),slider=el('input');slider.type='range';slider.min='0';slider.max='100';slider.value='60';slider.setAttribute('aria-label',labels.volume);
-    slider.addEventListener('input',function(){ensureAudio().volume=Number(slider.value)/100;});volumeLabel=el('span',labels.volume);volumeSlider=slider;volume.append(volumeLabel,slider);panel.append(volume);
-    var details=el('details'), summary=el('summary',labels.list),list=el('ol');listSummary=summary;
-    TRACKS.forEach(function(track,i){var li=el('li'),b=button(track.t,function(){selected=i;play(i);});b.dataset.track=String(i);b.append(el('span',track.a));li.append(b);list.append(li);});details.append(summary,list);panel.append(details);
-    var loopLabel=el('label','', 'ig-m-repeat'),loop=el('input');loop.type='checkbox';loop.checked=true;loop.addEventListener('change',function(){repeat=loop.checked;});repeatText=el('span',labels.repeat);loopLabel.append(loop,repeatText);panel.append(loopLabel);
-    status=el('p','', 'ig-m-status');status.setAttribute('role','status');creditText=el('p',labels.credit,'ig-m-credit');panel.append(status,creditText);
-    /* Fuera de cabeceras con blur/transform. El popover usa la capa superior cuando está disponible. */
-    document.body.appendChild(panel);sync();
+
+    var volume=el('label','', 'ig-m-volume');
+    volumeLabel=el('span',L.volume);
+    volumeSlider=el('input');volumeSlider.type='range';volumeSlider.min='0';volumeSlider.max='100';volumeSlider.value='60';volumeSlider.setAttribute('aria-label',L.volume);
+    volumeSlider.addEventListener('input',function(){ensureAudio().volume=Number(volumeSlider.value)/100;});
+    volume.append(volumeLabel,volumeSlider);panel.append(volume);
+
+    var details=el('details'),list=el('ol');
+    listSummary=el('summary',L.list);
+    TRACKS.forEach(function(track,i){
+      var li=el('li');
+      var pick=button(track.t,function(){errorAdvance=false;selected=i;play(i,true);});
+      pick.dataset.track=String(i);pick.append(el('span',track.a));li.append(pick);list.append(li);
+    });
+    details.append(listSummary,list);panel.append(details);
+
+    var loopLabel=el('label','', 'ig-m-repeat'),loop=el('input');
+    loop.type='checkbox';loop.checked=true;
+    loop.addEventListener('change',function(){repeat=loop.checked;});
+    repeatText=el('span',L.repeat);loopLabel.append(loop,repeatText);panel.append(loopLabel);
+
+    status=el('p','', 'ig-m-status');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+    creditText=el('p',L.credit,'ig-m-credit');
+    panel.append(status,creditText);
+    document.body.appendChild(panel);
+    sync();
   }
-  document.addEventListener('click',function(event){
-    var b=event.target.closest&&event.target.closest(selector);if(!b)return;
-    event.preventDefault();event.stopImmediatePropagation();lastTrigger=b;
-    if(open){close(true);return;}
+
+  function openPlayer(trigger){
+    lastTrigger=trigger;
     if(!panel)create();
     document.dispatchEvent(new CustomEvent('ig:panel-opening',{detail:'music'}));
-    updateLabels();panel.hidden=false;
-    if(typeof panel.showPopover==='function'){try{panel.showPopover();}catch(_) {}}
-    open=true;b.setAttribute('aria-controls',panel.id);b.setAttribute('aria-expanded','true');closeButton.focus();
+    updateLabels();
+    panel.hidden=false;
+    open=true;
+    setExpanded(true);
+    closeButton.focus({preventScroll:true});
+  }
+
+  document.addEventListener('click',function(event){
+    var trigger=event.target.closest&&event.target.closest(selector);
+    if(!trigger)return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if(open){close(true);return;}
+    openPlayer(trigger);
   },true);
+
   document.addEventListener('keydown',function(event){
-    var b=event.target.closest&&event.target.closest(selector);
-    if(b&&b.tagName!=='BUTTON'&&event.key===' '){event.preventDefault();b.click();return;}
+    var trigger=event.target.closest&&event.target.closest(selector);
+    if(trigger&&trigger.tagName!=='BUTTON'&&(event.key===' '||event.key==='Enter')){
+      event.preventDefault();trigger.click();return;
+    }
     if(event.key==='Escape'&&open){event.preventDefault();event.stopImmediatePropagation();close(true);}
-  });
-  document.addEventListener('ig:panel-opening',function(e){if(e.detail==='reading'&&open)close(false);});
-  document.addEventListener('ig:uncover-focus',function(e){if(e.detail==='music'&&open)close(false);});
-  // Only one attribute is observed: language changes, never the page subtree.
+  },true);
+
+  document.addEventListener('ig:panel-opening',function(event){if(event.detail==='reading'&&open)close(false);});
+  document.addEventListener('ig:uncover-focus',function(event){if(event.detail==='music'&&open)close(false);});
   new MutationObserver(updateLabels).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   window.addEventListener('pagehide',function(){if(audio)audio.pause();});
 })();
