@@ -1,106 +1,3 @@
-/* Mantener el idioma elegido al saltar entre páginas estáticas y dinámicas.
-   La web pública usa solo ES y EN. Las rutas PT-BR se conservan únicamente
-   como redirecciones antiguas y no deben reaparecer en la interfaz. */
-(function () {
-  'use strict';
-  function codeFromLang(value) {
-    value=String(value||'').toLowerCase();
-    if(value.indexOf('en')===0)return 'en';
-    if(value.indexOf('es')===0)return 'es';
-    return null;
-  }
-  function remember(code) {
-    if(!code)return;
-    try { localStorage.setItem('ig_lang',code); } catch (_) {}
-  }
-  function english(){return codeFromLang(document.documentElement.lang)==='en';}
-  function labelElement(control,text){
-    if(!control)return;
-    var span=control.querySelector('span');
-    if(span)span.textContent=text;
-  }
-  function controlCode(control){
-    if(!control)return null;
-    var lang=(control.getAttribute('lang')||control.getAttribute('data-lang')||control.getAttribute('data-language')||'').toLowerCase();
-    var href=(control.getAttribute('href')||'').toLowerCase();
-    var text=(control.textContent||'').trim().toUpperCase();
-    if(lang.indexOf('pt')===0||href.indexOf('/pt-br/')!==-1||text==='PT'||text==='PT-BR')return 'pt';
-    if(lang.indexOf('en')===0||text==='EN')return 'en';
-    if(lang.indexOf('es')===0||text==='ES')return 'es';
-    return null;
-  }
-  function retirePortuguese(){
-    document.querySelectorAll('.ig-nav-pt, header a[href*="/pt-br/"], .langs [lang^="pt"], .ig-uh-langs [lang^="pt"]').forEach(function(control){
-      control.hidden=true;
-      control.setAttribute('aria-hidden','true');
-      if('tabIndex' in control)control.tabIndex=-1;
-    });
-    document.querySelectorAll('.langs a,.langs button,.langs span,.ig-uh-langs a,.ig-uh-langs button,.ig-uh-langs span').forEach(function(control){
-      if(controlCode(control)==='pt'){
-        control.hidden=true;
-        control.setAttribute('aria-hidden','true');
-        if('tabIndex' in control)control.tabIndex=-1;
-      }
-    });
-  }
-  function syncLanguageControls(){
-    var current=english()?'en':'es';
-    retirePortuguese();
-    document.querySelectorAll('.langs,.ig-uh-langs').forEach(function(nav){
-      nav.querySelectorAll('a,button,span').forEach(function(control){
-        var code=controlCode(control);
-        if(code!=='es'&&code!=='en')return;
-        var active=code===current;
-        control.classList.toggle('on',active);
-        if(active)control.setAttribute('aria-current','true');
-        else control.removeAttribute('aria-current');
-        if(control.tagName==='BUTTON')control.setAttribute('aria-pressed',String(active));
-      });
-    });
-  }
-  /* Small shared chrome only. This never translates article/content text and does
-     not observe or rebuild the document. It keeps the common controls coherent
-     when a dynamic page changes the html lang attribute in place. */
-  function syncChromeLanguage(){
-    var en=english();
-    document.querySelectorAll('.ig-menu-button').forEach(function(button){
-      button.textContent=en?'Menu':'Menú';
-      button.setAttribute('aria-label',en?'Open menu':'Abrir menú');
-    });
-    document.querySelectorAll('#ig-main-nav').forEach(function(nav){nav.setAttribute('aria-label',en?'Explore':'Explorar');});
-    document.querySelectorAll('.ig-uh-music,#plBtn').forEach(function(control){
-      labelElement(control,en?'Music':'Música');
-      control.setAttribute('aria-label',en?'Music':'Música');
-      if(control.hasAttribute('title'))control.setAttribute('title',en?'Music':'Música');
-    });
-    document.querySelectorAll('.ig-uh-reading,#a11yBtn').forEach(function(control){
-      labelElement(control,en?'Reading':'Lectura');
-      control.setAttribute('aria-label',en?'Accessible reading':'Lectura accesible');
-      if(control.hasAttribute('title'))control.setAttribute('title',en?'Reading':'Lectura');
-    });
-    document.querySelectorAll('.ig-uh-langs,.langs').forEach(function(nav){nav.setAttribute('aria-label',en?'Language':'Idioma');});
-    document.querySelectorAll('[data-ig-reading-close]').forEach(function(button){button.setAttribute('aria-label',en?'Close reading settings':'Cerrar opciones de lectura');});
-    syncLanguageControls();
-  }
-  function scheduleChrome(){requestAnimationFrame(syncChromeLanguage);}
-  var path=location.pathname;
-  try {
-    var saved=String(localStorage.getItem('ig_lang')||'').toLowerCase();
-    if(saved.indexOf('pt')===0)localStorage.setItem('ig_lang','es');
-  } catch (_) {}
-  if(/^\/en(?:\/|$)/.test(path))remember('en');
-  else if(/^\/es(?:\/|$)/.test(path)||path==='/')remember(codeFromLang(document.documentElement.lang)||'es');
-  /* Explicit language links must update the shared preference before navigation.
-     This also makes EN → ES → dynamic-page round trips deterministic. */
-  document.addEventListener('click',function(event){
-    var link=event.target.closest('a[lang]');
-    if(link)remember(codeFromLang(link.getAttribute('lang')));
-    if(link||event.target.closest('.ig-uh-langs button,.langs button'))scheduleChrome();
-  },true);
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',syncChromeLanguage,{once:true});else syncChromeLanguage();
-  new MutationObserver(syncChromeLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-})();
-
 /* Controles compartidos; no observa ni reconstruye el documento. */
 (function () {
   'use strict';
@@ -126,18 +23,6 @@
     if (event.key === 'Escape') closeMenu(document.querySelector('header.ig-menu-open'), true);
   });
   function ready() {
-    /* Algunas páginas antiguas conservan el disparador #mBtn junto al botón común.
-       Si ambos existen, el antiguo deja de ser visible y enfocables sin eliminarlo
-       del DOM, para no romper scripts heredados que todavía lo consulten. */
-    document.querySelectorAll('header').forEach(function (header) {
-      var modern = header.querySelector('.ig-menu-button');
-      var legacy = header.querySelector('#mBtn');
-      if (modern && legacy && modern !== legacy) {
-        legacy.hidden = true;
-        legacy.setAttribute('aria-hidden', 'true');
-        legacy.tabIndex = -1;
-      }
-    });
     document.querySelectorAll('a[data-ig-back-conditions]').forEach(function (link) {
       try {
         var saved = sessionStorage.getItem('ig-conditions-url');
@@ -174,7 +59,7 @@
     document.dispatchEvent(new CustomEvent('ig:panel-opening',{detail:'reading'}));
     if(typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();
     var close=p.querySelector('[data-ig-reading-close]');
-    if(close){close.setAttribute('aria-label',label());close.focus({preventScroll:true});}
+    if(close)close.focus({preventScroll:true});
   }
   function schedule(){if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(synchronize);}
   function closeReading(back){

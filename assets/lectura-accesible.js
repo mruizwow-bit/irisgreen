@@ -23,10 +23,10 @@
  var mb=document.getElementById('mBtn'), nv=document.getElementById('nav');
  if(mb&&nv) mb.addEventListener('click',function(){var o=mb.getAttribute('aria-expanded')==='true';mb.setAttribute('aria-expanded',String(!o));nv.classList.toggle('open',!o);});
  toggle(document.getElementById('a11yBtn'),document.getElementById('a11y'));
- // Música la controla exclusivamente assets/musica.js.
+ toggle(document.getElementById('plBtn'),document.getElementById('pl'));
  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){
   ['a11y','pl'].forEach(function(id){var p=document.getElementById(id);if(p&&!p.hidden){p.hidden=true;
-   var b=document.getElementById(id==='pl'?'plBtn':'a11yBtn'); b.setAttribute('aria-expanded','false'); b.focus();}});
+   var b=document.getElementById(id==='pl'?'plBtn':'a11yBtn'); if(b){b.setAttribute('aria-expanded','false'); b.focus();}}});
  }});
  document.querySelectorAll('main p, main li, main h1, main h2').forEach(function(el){el.setAttribute('data-read','');});
  document.addEventListener('click',function(e){

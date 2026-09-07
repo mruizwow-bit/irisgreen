@@ -7,3 +7,5 @@
 /sitemap-1.xml
   Content-Type: application/xml; charset=UTF-8
   Cache-Control: public, max-age=0, must-revalidate
+/assets/*
+  Cache-Control: public, max-age=0, must-revalidate
