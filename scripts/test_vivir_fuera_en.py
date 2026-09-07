@@ -34,15 +34,16 @@ try:
     assert page.evaluate("localStorage.getItem('ig_lang')")=='en'
     h1=clean(page.locator('main h1').inner_text());row['h1']=h1;assert h1=="Each country's system, explained clearly."
     body=clean(page.locator('main').inner_text())
+    first=page.locator('main article:visible').first
+    row['first_card_text']=clean(first.inner_text())[:2200] if first.count() else ''
+    row['main_excerpt']=body[:3000]
     required=['Portugal','France','Germany','Ireland','Italy','Switzerland and the Netherlands','Canada','Australia','New Zealand','How it works','Where to start','Reference','Latin America: who certifies disability in each country','This information is for orientation and is not legal advice.']
     missing=[x for x in required if x not in body];row['missing_required']=missing;assert not missing,missing
     spanish_forbidden=['El sistema de cada país, explicado en español.','Cómo funciona','Por dónde se empieza','Sin publicar todavía:','Hispanoamérica: quién certifica en cada país','Última revisión: 31 de agosto de 2026.']
     leftovers=[x for x in spanish_forbidden if x in body];row['spanish_leftovers']=leftovers;assert not leftovers,leftovers
     chips=[clean(x.inner_text()) for x in page.locator('.ig-filter-button:visible').all()];row['chips']=chips;assert chips[:4]==['All','Europe','Americas','Oceania'],chips
-    # Filter after switching language. Canonical internal key remains Spanish, visible output is English.
     page.get_by_role('button',name='Europe',exact=True).click();page.wait_for_timeout(160)
     cards=page.locator('main article:visible');countries=[clean(c.locator('h2').inner_text()) for c in cards.all()];row['europe_cards']=countries;assert countries==['Portugal','France','Germany','Ireland','Italy','Switzerland and the Netherlands'],countries
-    # Common chrome must follow EN too.
     menu=page.locator('.ig-menu-button').first;assert clean(menu.inner_text())=='Menu';assert menu.get_attribute('aria-label')=='Open menu'
     reading=page.locator('.ig-uh-reading').first;assert 'Reading' in clean(reading.inner_text());assert reading.get_attribute('aria-label')=='Accessible reading'
     music=page.locator('.ig-uh-music').first;assert music.get_attribute('aria-label')=='Music'
