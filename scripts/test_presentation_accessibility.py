@@ -12,7 +12,7 @@ class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'dist')))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-report={'cases':[],'failures':[],'notes':['Chromium local con dominios externos bloqueados.','Las opciones se accionan desde el panel; las comprobaciones de persistencia reutilizan el mismo contexto.','La guía puede cruzar geométricamente el panel de ajustes porque se dibuja por debajo; la prueba de no ocultación se realiza además con un control real del contenido fuera del panel.','No sustituye pruebas con lector de pantalla, braille o dispositivos físicos.']}
+report={'cases':[],'failures':[],'notes':['Chromium local con dominios externos bloqueados.','Las opciones se accionan desde el panel; las comprobaciones de persistencia reutilizan el mismo contexto.','La guía puede cruzar geométricamente el panel de ajustes porque se dibuja por debajo; la no ocultación se prueba sobre controles reales de Condiciones fuera del panel.','No sustituye pruebas con lector de pantalla, braille o dispositivos físicos.']}
 
 def open_reading(page):
     trigger=page.locator('[data-ig-reading-trigger]:visible,.ig-uh-reading:visible,#a11yBtn:visible').first
@@ -106,14 +106,20 @@ with sync_playwright() as pw:
             z=page.evaluate('''([p,g])=>{const n=e=>{const v=getComputedStyle(e).zIndex;return v==='auto'?0:(parseInt(v,10)||0)};return {panel:n(document.querySelector(p)),guide:n(document.querySelector(g))}}''',['[data-ig-reading-panel]','#ig-guide'])
             assert z['panel']>z['guide'],f'El panel debe quedar por encima de la guía: {z}'
             page.keyboard.press('Escape');page.wait_for_timeout(80)
+
+            # La posición y la altura deben conservarse en una página real con buscador,
+            # filtros y suficiente recorrido vertical para probar el foco fuera del panel.
+            page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='domcontentloaded');page.locator('main h1').first.wait_for();page.wait_for_timeout(120)
+            guide=page.locator('#ig-guide,#rguide').filter(visible=True).first;guide.wait_for()
+            s=root_state(page);assert s['guidePosition']=='lower' and s['guideHeight']=='tall','La guía no conservó posición/altura al cambiar de sección'
             controls=page.locator('main a[href]:visible,main button:visible,main input:visible,main select:visible,main textarea:visible')
-            candidates=controls.evaluate_all('''els=>{const g=document.querySelector('#ig-guide,#rguide').getBoundingClientRect(),desired=g.top+8,max=Math.max(0,document.documentElement.scrollHeight-innerHeight);return els.map((e,i)=>{const r=e.getBoundingClientRect(),pos=getComputedStyle(e).position,docTop=r.top+scrollY,y=docTop-desired;return {i,y,ok:r.width>0&&r.height>0&&pos!=='fixed'&&pos!=='sticky'&&y>=0&&y<=max};}).filter(x=>x.ok)}''')
-            assert candidates,'No hay un control del contenido que pueda alinearse con la guía en esta página'
+            candidates=controls.evaluate_all('''els=>{const g=document.querySelector('#ig-guide,#rguide').getBoundingClientRect(),desired=g.top+8,max=Math.max(0,document.documentElement.scrollHeight-innerHeight);return els.map((e,i)=>{const r=e.getBoundingClientRect(),pos=getComputedStyle(e).position,docTop=r.top+scrollY,y=docTop-desired;return {i,y,label:(e.textContent||e.value||e.getAttribute('aria-label')||'').trim().slice(0,60),ok:r.width>0&&r.height>0&&pos!=='fixed'&&pos!=='sticky'&&y>=0&&y<=max};}).filter(x=>x.ok)}''')
+            assert candidates,'Condiciones no ofreció un control real que pudiera alinearse con la guía'
             choice=min(candidates,key=lambda x:abs(x['y']-page.evaluate('scrollY')));target=controls.nth(choice['i'])
-            page.evaluate('(y)=>scrollTo(0,y)',choice['y']);page.wait_for_timeout(80)
-            before_g=guide.bounding_box();before_t=target.bounding_box();assert overlaps(before_g,before_t),f'No se pudo alinear el control elegido con la guía: {before_g} / {before_t}'
-            target.focus();page.wait_for_timeout(100);after_g=guide.bounding_box();after_t=target.bounding_box();assert not overlaps(after_g,after_t),'La guía no se apartó del control enfocado'
-            assert_local_clean(errors,bad);row.update({'upper_y':top1,'lower_y':top2,'height':box['height'],'panel_z':z['panel'],'guide_z':z['guide'],'tested_content_control':target.evaluate('(e)=>e.tagName+":"+(e.textContent||e.value||e.getAttribute("aria-label")||"").trim().slice(0,60)'),'passed':True})
+            page.evaluate('(y)=>scrollTo(0,y)',choice['y']);page.wait_for_timeout(100)
+            before_g=guide.bounding_box();before_t=target.bounding_box();assert overlaps(before_g,before_t),f'No se alineó el control real con la guía: {before_g} / {before_t}'
+            target.focus();page.wait_for_timeout(120);after_g=guide.bounding_box();after_t=target.bounding_box();assert not overlaps(after_g,after_t),'La guía no se apartó del control enfocado'
+            assert_local_clean(errors,bad);row.update({'upper_y':top1,'lower_y':top2,'height':box['height'],'panel_z':z['panel'],'guide_z':z['guide'],'tested_content_control':choice['label'],'passed':True})
             page.screenshot(path=str(OUT/f'guide-keyboard-{width}.png'),full_page=False)
         except Exception as e:row['passed']=False;row['error']=str(e);report['failures'].append(row.copy())
         report['cases'].append(row);ctx.close()
