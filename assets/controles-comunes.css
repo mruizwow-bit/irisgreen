@@ -31,3 +31,10 @@ html[data-ig-controls="big"]{--ig-control-height:56px}
 /* El mismo foco y la misma separación en los buscadores de sección. */
 :is(.secfind input[type=search],#situationsSearch,#vd-search,#q[type=search]):focus{outline:3px solid #5a49a8!important;outline-offset:3px!important}
 :is(.secfind .chips,.secfind .azidx,.situations-filter-row){margin:0!important}
+
+/* Idiomas públicos: solo ES y EN. Evita que un enlace PT-BR heredado llegue a
+   pintarse antes de que el controlador común limpie la cabecera. */
+:is(.langs,.ig-uh-langs) [lang^="pt" i],
+:is(.langs,.ig-uh-langs) a[href*="/pt-br/" i],
+.ig-nav-pt{display:none!important}
+:is(.langs,.ig-uh-langs) :is(a,button,span)[aria-current="true"]{background:#17395c!important;border-color:#17395c!important;color:#fff!important}
