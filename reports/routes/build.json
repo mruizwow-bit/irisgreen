@@ -1,0 +1,30 @@
+{
+  "publish": "dist",
+  "files": 1378,
+  "html": 897,
+  "excluded_directories": [
+    "scripts",
+    "reports",
+    "pt-br",
+    ".github",
+    "_audit"
+  ],
+  "roots": [
+    "404.html",
+    "_headers",
+    "_redirects",
+    "assets",
+    "audio",
+    "buscador.json",
+    "en",
+    "es",
+    "img",
+    "index.html",
+    "llms.txt",
+    "robots.txt",
+    "sitemap-1.xml",
+    "sitemap.xml",
+    "support.js",
+    "videoteca-listado.json"
+  ]
+}

@@ -1,113 +1,49 @@
-# Iris Green · configuración de despliegue
-# La carpeta que se publica es la raíz de este repositorio.
-
+# Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.
 [build]
-  publish = "."
-  # Solo genera contenido inicial desde los JSON existentes. Sin paquetes externos.
-  command = "python3 scripts/prepare_initial_data.py"
+  publish = "dist"
+  command = "python3 scripts/build_site.py"
 
-# Las páginas viven en carpetas con index.html, así que /es/situaciones
-# y /es/situaciones/ tienen que llevar al mismo sitio.
-[[redirects]]
-  from = "/es/situaciones"
-  to = "/es/situaciones/"
-  status = 301
+# Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.
+[build.processing.html]
+  pretty_urls = true
 
-[[redirects]]
-  from = "/es/neurodiversidad/condiciones"
-  to = "/es/neurodiversidad/condiciones/"
-  status = 301
-
-# El sitemap tiene que llegar a Google como XML, no como página.
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/robots.txt"
-  [headers.values]
-    Content-Type = "text/plain; charset=utf-8"
-
-# Durante la revisión, CSS, JS e imágenes deben revalidarse en cada despliegue.
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/audio/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/img/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# El HTML sí cambia: que el navegador lo vuelva a pedir.
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# V23 · rutas principales de navegación
-[[redirects]]
-  from = "/es/datos"
-  to = "/es/datos/"
-  status = 301
-
-[[redirects]]
-  from = "/es/biblioteca"
-  to = "/es/biblioteca/"
-  status = 301
-
-[[redirects]]
-  from = "/es/recursos/juegos"
-  to = "/es/recursos/juegos/"
-  status = 301
-
-[[redirects]]
-  from = "/es/tramites"
-  to = "/es/tramites/"
-  status = 301
-
-[[redirects]]
-  from = "/es/tramites/directorio"
-  to = "/es/tramites/directorio/"
-  status = 301
-
-[[redirects]]
-  from = "/es/vivir-fuera"
-  to = "/es/vivir-fuera/"
-  status = 301
-
-[[redirects]]
-  from = "/es/cuestionarios"
-  to = "/es/cuestionarios/"
-  status = 301
-
-[[redirects]]
-  from = "/es/neurodiversidad/temas/autismo"
-  to = "/es/neurodiversidad/temas/autismo/"
-  status = 301
-
-# Compatibilidad con el antiguo nombre del catálogo de juegos.
 [[redirects]]
   from = "/es/recursos/juegos/juegos-86.json"
   to = "/es/recursos/juegos/juegos-120.json"
   status = 301
 
-# El portugués sale de la web. Las 375 direcciones indexadas van a la versión en
-# castellano en vez de dar 404 durante meses.
-[[redirects]]
-  from = "/pt-br/*"
-  to = "/es/"
-  status = 301
-  force = true
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    "Content-Type" = "application/xml; charset=utf-8"
+    "Cache-Control" = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    "Content-Type" = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/audio/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=604800"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    "Cache-Control" = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/assets/runtime/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    "Cache-Control" = "public, max-age=31536000, immutable"
