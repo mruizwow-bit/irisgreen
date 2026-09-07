@@ -108,11 +108,11 @@
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 12px; margin-bottom: 14px;">
             <div style="background: rgba(23,57,92,0.05); border-radius: 12px; padding: 12px 14px;">
-              <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675;">Cuánto dura</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675;">{{ t.labelDuration }}</div>
               <div style="font-weight: 700;">{{ t.time }}</div>
             </div>
             <div style="background: rgba(23,57,92,0.05); border-radius: 12px; padding: 12px 14px;">
-              <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675;">Umbral orientativo</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675;">{{ t.labelThreshold }}</div>
               <div style="font-weight: 700;">{{ t.cut }}</div>
             </div>
           </div>
@@ -122,12 +122,12 @@
           </sc-if>
 
           <div style="background: rgba(23,57,92,0.05); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px;">
-            <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675; margin-bottom: 4px;">Versión que se usa y licencia</div>
+            <div style="font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6675; margin-bottom: 4px;">{{ t.labelVersion }}</div>
             <div style="font-size: 15px;">{{ t.source }}</div>
           </div>
 
           <sc-if value="{{ t.ready }}" hint-placeholder-val="{{ false }}">
-            <button sc-camel-on-click="{{ t.start }}" style="background: #5a49a8; color: #fff; border: 0; border-radius: 999px; padding: 12px 22px; font-weight: 700; cursor: pointer; font-size: 16px;">Empezar el cuestionario</button>
+            <button sc-camel-on-click="{{ t.start }}" style="background: #5a49a8; color: #fff; border: 0; border-radius: 999px; padding: 12px 22px; font-weight: 700; cursor: pointer; font-size: 16px;">{{ t.labelStart }}</button>
           </sc-if>
           <sc-if value="{{ t.pending }}" hint-placeholder-val="{{ true }}">
             <div style="display: inline-block; background: rgba(23,57,92,0.06); border: 1px dashed rgba(23,57,92,0.28); color: #5d6779; border-radius: 999px; padding: 11px 20px; font-size: 15.5px;">{{ t.pendingText }}</div>
@@ -197,6 +197,88 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{}">
 const TOGGLES = ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"];
+const TOGGLES_EN = ["Wider letter spacing", "Larger buttons", "Higher contrast", "Reading guide", "Read aloud", "Reduce motion"];
+
+const UI_ES = {
+  duration: "Cuánto dura", threshold: "Umbral orientativo", version: "Versión que se usa y licencia", start: "Empezar el cuestionario",
+  stateReady: "Disponible", stateExcluded: "No se publica", stateLoad: "Listo para cargar",
+  pendingExcluded: "Queda fuera hasta que exista una adaptación española documentada.",
+  pendingLoad: "Faltan los ítems de la versión validada para poder publicarlo. No se reescriben ni se traducen: se copian del original."
+};
+const UI_EN = {
+  duration: "How long it takes", threshold: "Screening threshold", version: "Version used and licence", start: "Start questionnaire",
+  stateReady: "Available", stateExcluded: "Not published", stateLoad: "Ready to load",
+  pendingExcluded: "It remains excluded until a documented Spanish adaptation is available.",
+  pendingLoad: "The items from the validated version still need to be added before it can be published. They are not rewritten or translated: they are copied from the original."
+};
+
+const STATIC_ES_EN = {
+  "Condiciones": "Conditions",
+  "Cuestionarios": "Questionnaires",
+  "Cuestionarios orientativos · solo adultos": "Screening questionnaires · adults only",
+  "Orientan. No diagnostican.": "They can guide you. They do not diagnose.",
+  "Tres cuestionarios en su versión española validada. Sirven para ordenar lo que ya notas y llevarlo a una consulta con algo concreto en la mano.": "Three questionnaires in their validated Spanish versions. They can help organise what you are already noticing and give you something concrete to discuss at an appointment.",
+  "Este cuestionario orienta. Ninguna puntuación diagnostica ni descarta nada. El diagnóstico lo hace un profesional con una evaluación completa.": "These questionnaires can guide you. No score diagnoses or rules anything out. Diagnosis requires a full assessment by a qualified professional.",
+  "Se calcula en tu navegador": "Calculated in your browser",
+  "Las respuestas y la puntuación no salen de tu ordenador o tu móvil. No se envía nada a ningún servidor, no se guarda al cerrar y el resultado no se puede compartir por enlace.": "Your answers and score never leave your computer or phone. Nothing is sent to a server, nothing is saved when you close the page, and the result cannot be shared by link.",
+  "Sin registro y sin prisa": "No account and no rush",
+  "No hay cuenta, ni correo, ni cookies asociadas. No hay límite de tiempo y puedes salir cuando quieras.": "There is no account, email address or questionnaire cookie. There is no time limit and you can leave whenever you want.",
+  "Solo para mayores de 18 años": "Adults aged 18 and over only",
+  "Están validados en personas adultas. Para la infancia no hay cuestionario: la ruta es «qué llevar a la valoración».": "They are validated in adults. For children, there is no questionnaire here: the route is what to take to an assessment.",
+  "Cuánto dura": "How long it takes",
+  "Umbral orientativo": "Screening threshold",
+  "Versión que se usa y licencia": "Version used and licence",
+  "Empezar el cuestionario": "Start questionnaire",
+  "Qué no vas a encontrar aquí": "What you will not find here",
+  "Sea cual sea la puntuación, el paso siguiente es el mismo:": "Whatever the score, the next step is the same:",
+  "qué llevar a la valoración": "what to take to an assessment",
+  "Última revisión: 31 de agosto de 2026.": "Last reviewed: 31 August 2026.",
+  "Base de conocimiento sobre neurodiversidad": "A knowledge base on neurodiversity",
+  "Situaciones": "Situations",
+  "Investigación": "Research",
+  "Lectura accesible": "Accessible reading",
+  "Cerrar": "Close",
+  "Tamaño del texto ·": "Text size ·",
+  "Restablecer": "Reset"
+};
+const STATIC_EN_ES = Object.fromEntries(Object.entries(STATIC_ES_EN).map(([es,en]) => [en,es]));
+
+function translateQuestionnaireStatic(lang) {
+  const toEnglish = lang === "en";
+  const dict = toEnglish ? STATIC_ES_EN : STATIC_EN_ES;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || /^(SCRIPT|STYLE|TEXTAREA)$/i.test(parent.tagName)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  for (const node of nodes) {
+    const raw = node.nodeValue || "";
+    const trimmed = raw.trim();
+    if (!trimmed) continue;
+    let replacement = dict[trimmed];
+    if (!replacement && toEnglish && trimmed.startsWith("Tamaño del texto · ")) replacement = "Text size · " + trimmed.slice("Tamaño del texto · ".length);
+    if (!replacement && !toEnglish && trimmed.startsWith("Text size · ")) replacement = "Tamaño del texto · " + trimmed.slice("Text size · ".length);
+    if (replacement) node.nodeValue = raw.replace(trimmed, replacement);
+  }
+  const conditions = toEnglish ? "/en/neurodiversity/conditions/" : "/es/neurodiversidad/condiciones/";
+  const situations = toEnglish ? "/en/situations/" : "/es/situaciones/";
+  document.querySelectorAll('a[href="/es/neurodiversidad/condiciones/"],a[href="/en/neurodiversity/conditions/"]').forEach(a => a.href = conditions);
+  document.querySelectorAll('a[href="/es/situaciones/"],a[href="/en/situations/"]').forEach(a => a.href = situations);
+  document.querySelectorAll('.ig-subtabs').forEach(n => n.setAttribute('aria-label', toEnglish ? 'Conditions' : 'Condiciones'));
+  document.querySelectorAll('[data-ig-reading-close]').forEach(b => b.setAttribute('aria-label', toEnglish ? 'Close' : 'Cerrar'));
+  document.title = toEnglish ? 'Screening questionnaires · Iris Green' : 'Cuestionarios orientativos · Iris Green';
+  const desc = toEnglish
+    ? 'AQ-10, CAT-Q-ES and ASRS v1.1 in their validated Spanish versions. They can guide you, not diagnose: scoring happens in your browser and nothing is sent or stored.'
+    : 'AQ-10, CAT-Q-ES y ASRS v1.1 en su versión española validada. Orientan, no diagnostican: se calculan en tu navegador, no se envía nada y no se guarda nada.';
+  const meta = document.querySelector('meta[name="description"]'); if (meta) meta.content = desc;
+  const ogt = document.querySelector('meta[property="og:title"]'); if (ogt) ogt.content = toEnglish ? 'Screening questionnaires — Iris Green' : 'Cuestionarios orientativos — Iris Green';
+  const ogl = document.querySelector('meta[property="og:locale"]'); if (ogl) ogl.content = toEnglish ? 'en_GB' : 'es_ES';
+}
+
 
 const TESTS = [
   { id: "aq10", topic: "Autismo", name: "AQ-10", ready: false,
@@ -223,6 +305,32 @@ const TESTS = [
     source: "Ritvo y cols. (2011), estudio internacional de validación. Pendiente de localizar una adaptación española documentada." }
 ];
 
+
+const TESTS_EN = [
+  { id: "aq10", topic: "Autism", name: "AQ-10", ready: false,
+    what: "Ten questions with four response options. It is the brief version NICE recommends to help identify possible autism in adults.",
+    time: "2 to 3 minutes", cut: "6 or more",
+    source: "Validated Spanish version by López (2020), «Tamizaje de Trastornos del Espectro Autista en adultos: una versión en español del AQ-10», with a cut-off of 6, sensitivity .89 and specificity .91. The items are taken verbatim from the appendix to the article. Instrument from the Autism Research Centre (Cambridge), free for non-commercial use with attribution." },
+
+  { id: "catq", topic: "Camouflaging", name: "CAT-Q-ES", ready: false,
+    what: "Twenty-five questions on a 1-to-7 scale, with three parts: compensation, masking and assimilation. It measures how much effort is devoted to fitting in.",
+    time: "5 to 8 minutes", cut: "100 on the total score, as an informational reference",
+    note: "A camouflaging score on its own does not establish whether a person is autistic. Camouflaging can be exhausting and affect wellbeing: if your score concerns you, take it to an appointment.",
+    source: "Spanish cultural adaptation and validation: Conde-Pumpido Zubizarreta et al. (2025), «Camouflaging Autistic Traits Questionnaire: Cultural Adaptation, Reliability, and Validity in Autistic and Non-Autistic from Spain», with 490 adults (111 autistic and 379 non-autistic), internal consistency ω=.95 and test-retest r=.99. Original instrument by Hull et al. (2019), open access." },
+
+  { id: "asrs", topic: "ADHD", name: "ASRS v1.1", ready: false,
+    what: "The World Health Organization adult self-report questionnaire. Part A has six questions and is the screener; the remaining twelve provide context for an appointment.",
+    time: "3 to 6 minutes", cut: "4 or more responses in the shaded boxes in Part A",
+    note: "ADHD and autistic traits can overlap. Distinguishing them is the clinician's job, not a questionnaire's.",
+    source: "Official WHO Spanish version distributed by Harvard (6Q and 18Q, Spanish for Spain and Mexico). The 6Q Screener may be used free of charge, including commercially, with attribution and without modifying the instrument." },
+
+  { id: "raads", topic: "Autism", name: "RAADS-R", ready: false, pendingOverride: true,
+    what: "Eighty questions for adults who reached adulthood without a diagnosis.",
+    time: "20 to 30 minutes", cut: "65 or more in the validation study",
+    note: "We do not publish it here. The original study (Ritvo et al., 2011) involved English-speaking participants and its authors specify that it was designed to be administered by a clinician during an appointment, not as an online screener. We do not use Spanish translations of unknown origin.",
+    source: "Ritvo et al. (2011), international validation study. A documented Spanish adaptation has not yet been located." }
+];
+
 const NOTS = [
   { text: "Ningún cuestionario para menores de 18 años." },
   { text: "Ningún cribado de conducta alimentaria." },
@@ -230,10 +338,18 @@ const NOTS = [
   { text: "Ningún registro, cuenta, correo ni cookie ligados a los cuestionarios." }
 ];
 
+
+const NOTS_EN = [
+  { text: "No questionnaires for people under 18." },
+  { text: "No eating-behaviour screening tools." },
+  { text: "No result with a label: no ‘consistent with’ or ‘probable’. Only the score, the sourced threshold and the next step." },
+  { text: "No registration, account, email address or cookie linked to the questionnaires." }
+];
+
 const LANGSTR = {
-  es: { aviso: "Esta página está en castellano. Los botones de idioma ya funcionan en toda la web; la traducción de esta sección está en marcha y se dice aquí para no darla por hecha." },
-  en: { aviso: "This page is in Spanish. The language buttons already work across the site; translating this section is under way, and it is said here so nobody assumes it is done." },
-  pt: { aviso: "Esta página está em castelhano. Os botões de idioma já funcionam em todo o site; a tradução desta seção está em andamento, e isso é dito aqui para não dar como pronta." }
+  es: { aviso: "Esta página está disponible en español e inglés." },
+  en: { aviso: "This page is available in Spanish and English." },
+  pt: { aviso: "Esta página ainda não está disponível em português." }
 };
 
 
@@ -272,6 +388,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    clearTimeout(this._questionnaireLangTimer);
     if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
   }
 
@@ -281,6 +398,10 @@ class Component extends DCLogic {
 
   renderVals() {
     const st = this.state;
+    const lang = st.lang || "es";
+    const labels = lang === "en" ? UI_EN : UI_ES;
+    clearTimeout(this._questionnaireLangTimer);
+    this._questionnaireLangTimer = setTimeout(() => translateQuestionnaireStatic(lang), 0);
     return {
       langButtons: [["es", "ES"], ["en", "EN"]].map(([code, label]) => ({
         label,
@@ -291,21 +412,20 @@ class Component extends DCLogic {
       })),
       langAviso: (LANGSTR[this.state.lang || "es"] || LANGSTR.es).aviso,
 
-      tests: TESTS.map((t) => ({
+      tests: (lang === "en" ? TESTS_EN : TESTS).map((t) => ({
         name: t.name, topic: t.topic, what: t.what, time: t.time, cut: t.cut, source: t.source,
+        labelDuration: labels.duration, labelThreshold: labels.threshold, labelVersion: labels.version, labelStart: labels.start,
         hasNote: !!t.note, note: t.note || "",
-        state: t.ready ? "Disponible" : t.pendingOverride ? "No se publica" : "Listo para cargar",
+        state: t.ready ? labels.stateReady : t.pendingOverride ? labels.stateExcluded : labels.stateLoad,
         stateColor: t.ready ? "#0e6480" : t.pendingOverride ? "#a8336f" : "#8a5a12",
         stateBg: t.ready ? "rgba(14,100,128,0.12)" : t.pendingOverride ? "rgba(168,51,111,0.1)" : "rgba(196,138,55,0.18)",
         border: t.ready ? "rgba(90,73,168,0.3)" : "rgba(23,57,92,0.1)",
         ready: t.ready,
         pending: !t.ready,
-        pendingText: t.pendingOverride
-          ? "Queda fuera hasta que exista una adaptación española documentada."
-          : "Faltan los ítems de la versión validada para poder publicarlo. No se reescriben ni se traducen: se copian del original.",
+        pendingText: t.pendingOverride ? labels.pendingExcluded : labels.pendingLoad,
         start: () => {}
       })),
-      nots: NOTS,
+      nots: lang === "en" ? NOTS_EN : NOTS,
 
       preferenceStatus: window.IGPreferences.status(st.lang),
       fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
@@ -318,7 +438,7 @@ class Component extends DCLogic {
         const on = !!st[k];
         return {
           pressed: on,
-          label: TOGGLES[n],
+          label: (lang === "en" ? TOGGLES_EN : TOGGLES)[n],
           bg: on ? "rgba(90,73,168,0.12)" : "#fff",
           border: on ? "#5a49a8" : "rgba(23,57,92,0.16)",
           knobTrack: on ? "#5a49a8" : "rgba(23,57,92,0.22)",
