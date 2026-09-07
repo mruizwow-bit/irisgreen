@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ajustes/auditoria-web
-      - name: Preparar el navegador y conservar las fichas de origen
+      - name: Preparar navegador y conservar la comparación documental
         run: |
           python3 -m venv /tmp/ig-coherence
           /tmp/ig-coherence/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 lxml==6.0.1 pillow==11.3.0
@@ -29,36 +29,14 @@ jobs:
               for p in Path(parent).rglob('index.html'):
                   q=out/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           shutil.copy2('buscador.json',out/'buscador.json')
-          if Path('reports/coherence/tests.json').exists() and not Path('reports/coherence/first-tests.json').exists():shutil.copy2('reports/coherence/tests.json','reports/coherence/first-tests.json')
+          for name in ['tests','regression-stability']:
+              p=Path('reports/coherence')/(name+'.json');q=p.with_name('before-alignment-'+p.name)
+              if p.exists() and not q.exists():shutil.copy2(p,q)
           PY
-      - name: Corregir los fallos encontrados por las pruebas
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re,json
-          css=Path('assets/controles-comunes.css');s=css.read_text().replace('transition:border-color .12s,background-color .12s','transition:none')
-          rule=':is(.ig-filter-button,#temaFilters .filter)[hidden]{display:none!important}'
-          if rule not in s:s+='\n'+rule+'\n'
-          css.write_text(s)
-          changed=[]
-          for p in [Path('index.html'),*Path('es').rglob('*.html'),*Path('en').rglob('*.html')]:
-              s=p.read_text()
-              if '<sc-raw-iframe' not in s:continue
-              def iframe(m):
-                  tag=m[0].replace('<sc-raw-iframe','<iframe',1)
-                  return re.sub(r'\s+src=', ' sc-camel-src=',tag,count=1)
-              s,n=re.subn(r'<sc-raw-iframe\b[^>]*>',iframe,s)
-              s=s.replace('</sc-raw-iframe>','</iframe>');p.write_text(s);changed.append({'page':str(p),'templates':n})
-          Path('reports/coherence/iframe-corrections.json').write_text(json.dumps({'changed':changed,'reason':'El runtime no decodifica sc-raw-iframe. Se usa iframe con src enlazado por el renderer, sin cargar la URL de plantilla.'},ensure_ascii=False,indent=2))
-          test=Path('scripts/test_coherence.py');s=test.read_text()
-          if 'import traceback' not in s:s='import traceback\n'+s
-          s=s.replace("'error':str(e)","'error':traceback.format_exc()")
-          s=s.replace("assert v['size']=='16px' and v['radius']=='999px',v", "assert v['size']=='16px' and v['radius']=='999px' and v['bg']=='rgb(23, 57, 92)',v")
-          test.write_text(s)
-          PY
-      - name: Aplicar controles y verificar que no se reescriben fichas
+      - name: Igualar la disposición de los dos catálogos y comprobar repetibilidad
         run: |
           /tmp/ig-coherence/bin/python scripts/prepare_controls.py
+          python3 scripts/finish_control_layout.py
           /tmp/ig-coherence/bin/python - <<'PY'
           from pathlib import Path
           from bs4 import BeautifulSoup
@@ -75,10 +53,11 @@ jobs:
               old=before[row['u']];assert {k:v for k,v in old.items() if k!='d'}=={k:v for k,v in row.items() if k!='d'}
               if old['d']!=row['d']:assert row['d'].startswith(old['d']);completed.append(row['u'])
           Path('reports/coherence/integrity.json').write_text(json.dumps({'individual_fiches_unchanged':checked,'index_records':len(after),'descriptions_completed_in_this_run':completed},ensure_ascii=False,indent=2))
-          files=[Path('index.html'),*Path('es').rglob('*.html'),*Path('en').rglob('*.html'),Path('assets/interfaz-comun.js'),Path('buscador.json')]
+          files=[Path('index.html'),*Path('es').rglob('*.html'),*Path('en').rglob('*.html'),Path('assets/interfaz-comun.js'),Path('assets/controles-comunes.css'),Path('buscador.json')]
           Path('/tmp/ig-control-hashes.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}))
           PY
           /tmp/ig-coherence/bin/python scripts/prepare_controls.py
+          python3 scripts/finish_control_layout.py
           python3 - <<'PY'
           from pathlib import Path
           import json,hashlib
@@ -87,11 +66,11 @@ jobs:
           node --check assets/catalogo-comun.js
           node --check assets/interfaz-comun.js
           python3 scripts/build_site.py
-      - name: Probar controles, recuentos, igualdad visual y reintento
+      - name: Probar controles, recuentos, igualdad visual y recuperación de errores
         run: |
           cd dist
           /tmp/ig-coherence/bin/python ../scripts/test_coherence.py
-      - name: Repetir la estabilidad de carga con el nuevo estilo
+      - name: Repetir las pruebas de estabilidad con el nuevo estilo
         if: always()
         run: |
           cd dist
@@ -106,7 +85,7 @@ jobs:
           if Path('dist/reports/coherence').exists():shutil.copytree('dist/reports/coherence','reports/coherence',dirs_exist_ok=True)
           if Path('dist/reports/initial-layout-after.json').exists():shutil.copy2('dist/reports/initial-layout-after.json','reports/coherence/regression-stability.json')
           shutil.copytree('reports/coherence',out/'reports',dirs_exist_ok=True)
-          files=['assets/controles-comunes.css','assets/catalogo-comun.js','assets/interfaz-comun.js','scripts/prepare_controls.py','scripts/test_coherence.py','es/neurodiversidad/condiciones/index.html','es/situaciones/index.html','index.html','es/videos/index.html']
+          files=['assets/controles-comunes.css','assets/catalogo-comun.js','assets/interfaz-comun.js','scripts/prepare_controls.py','scripts/finish_control_layout.py','scripts/test_coherence.py','es/neurodiversidad/condiciones/index.html','es/situaciones/index.html','index.html','es/videos/index.html']
           for name in files:
               p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
@@ -126,6 +105,6 @@ jobs:
           git add -- index.html es en assets scripts buscador.json reports/initial-data-build.json
           test ! -d reports/coherence || git add -- reports/coherence/*.json
           test ! -d reports/routes || git add -- reports/routes/*.json
-          git diff --cached --quiet || git commit -m 'Corregir controles ocultos y reproducción embebida; repetir las pruebas'
+          git diff --cached --quiet || git commit -m 'Cerrar coherencia de controles, contadores y foco; conservar pruebas'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
