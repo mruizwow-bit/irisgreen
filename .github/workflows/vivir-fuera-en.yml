@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/vivir-fuera-en.yml'
       - 'scripts/translate_vivir_fuera_en.py'
+      - 'scripts/refine_vivir_fuera_en.py'
       - 'scripts/test_vivir_fuera_en.py'
       - 'assets/interfaz-comun.js'
 permissions:
@@ -23,6 +24,7 @@ jobs:
       - name: Aplicar traducción sobre la fuente actual
         run: |
           python3 scripts/translate_vivir_fuera_en.py
+          python3 scripts/refine_vivir_fuera_en.py
           node --check assets/interfaz-comun.js
       - name: Generar exactamente lo que publica Netlify
         run: |
