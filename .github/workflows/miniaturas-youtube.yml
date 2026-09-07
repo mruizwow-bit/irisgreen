@@ -98,3 +98,4 @@ jobs:
           git diff --cached --quiet || git commit -m 'Validar las miniaturas visibles y la recuperación de errores de imagen'
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
+# Repetición tras quitar el rótulo vacío bajo el botón de la home.
