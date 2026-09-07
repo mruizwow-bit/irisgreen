@@ -94,10 +94,13 @@ with sync_playwright() as pw:
     for path in ['index.html','es/recursos/juegos/las-cinco-cosas/index.html',STATIC[2],STATIC[-1],STATIC[0]]:
      load(page,path);same_state(page)
     load(page,'index.html');panel=open_panel(page)
-    page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^EN$')).click();page.wait_for_timeout(70)
+    lang=page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^EN$'))
+    lang.focus();page.wait_for_timeout(90)
+    # On narrow layouts focus protection closes the overlapping non-modal panel.
+    # Where there is no overlap it stays open; in both cases the language button
+    # is now the actual target and must remain operable.
+    lang.click();page.wait_for_timeout(70)
     same_state(page)
-    # Focus protection may close an overlapping panel when the external language
-    # control receives focus. Reopening must retain the settings and new language.
     if not panel.is_visible():panel=open_panel(page)
     assert 'remembered' in panel.inner_text()
     toggles(panel).nth(0).click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed
