@@ -11,6 +11,8 @@ from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
 
 def build():
+    # Estas dos fichas se editan en editorial/reviews; el resto conserva su origen.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
@@ -27,9 +29,9 @@ def build():
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
-    assert not any(p.startswith(('scripts/','reports/','pt-br/','.github/','_audit/')) for p in files)
+    assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
-    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','pt-br','.github','_audit'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
+    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','editorial','pt-br','.github','_audit'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
     print('Directorio público:',len(files),'archivos; fuentes e informes permanecen fuera de dist.')
     return dst
 
