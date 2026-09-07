@@ -60,7 +60,7 @@ def catalogue(p,kind,width):
    empty=p.locator('#situationsEmpty' if situations else '#ig-search-empty');assert empty.is_visible();assert empty.locator('a[href]').count()
  p.locator('[data-ig-catalog-reset]').click();assert len(visible_paths(p))==len(subset);assert '?' not in p.url
  p.locator(q).fill('ruido');urls=visible_paths(p);p.reload();p.wait_for_function('!document.querySelector("[data-ig-catalog] input[type=search]").disabled');assert visible_paths(p)==urls
- p.locator('[data-ig-catalog-reset]').click();p.screenshot(path=str(OUT/f'{"situaciones" if situations else "condiciones"}-{width}.png'))
+ p.locator('[data-ig-catalog-reset]').click();assert p.locator(q).evaluate('(e)=>getComputedStyle(e).outlineColor')=='rgb(90, 73, 168)';p.screenshot(path=str(OUT/f'{"situaciones" if situations else "condiciones"}-{width}.png'))
  row.update({'records':len(subset),'all_filters_tested':p.locator(group+' button').count(),'query_parity':True,'reset':True,'url_restore':True,'passed':True});return row
 
 def filters(p,key):return p.locator('main [data-ig-filter="'+key+'"]:visible')

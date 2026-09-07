@@ -27,3 +27,7 @@ html[data-ig-controls="big"]{--ig-control-height:56px}
 .ig-search-shell>.ig-search-input{outline:0!important}
 
 :is(.ig-filter-button,#temaFilters .filter)[hidden]{display:none!important}
+
+/* El mismo foco y la misma separación en los buscadores de sección. */
+:is(.secfind input[type=search],#situationsSearch,#vd-search,#q[type=search]):focus{outline:3px solid #5a49a8!important;outline-offset:3px!important}
+:is(.secfind .chips,.secfind .azidx,.situations-filter-row){margin:0!important}
