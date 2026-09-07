@@ -1,0 +1,113 @@
+{
+  "phase": "before",
+  "cases": [
+    {
+      "page": "/es/neurodiversidad/condiciones/",
+      "shared_controller": false,
+      "states": [
+        {
+          "label": "Letra más separada",
+          "pressed": "true"
+        },
+        {
+          "label": "Botones más grandes",
+          "pressed": "true"
+        },
+        {
+          "label": "Más contraste",
+          "pressed": "true"
+        },
+        {
+          "label": "Guía de lectura",
+          "pressed": "true"
+        },
+        {
+          "label": "Leer en voz alta",
+          "pressed": "true"
+        },
+        {
+          "label": "Reducir movimiento",
+          "pressed": "true"
+        }
+      ],
+      "stored": "{\"fs\": 2, \"ls\": true, \"big\": true, \"hc\": true, \"guide\": true, \"rm\": true, \"tts\": true}",
+      "main_zoom": "1"
+    },
+    {
+      "page": "/",
+      "shared_controller": false,
+      "states": [
+        {
+          "label": "Letra más separada",
+          "pressed": "false"
+        },
+        {
+          "label": "Botones más grandes",
+          "pressed": "false"
+        },
+        {
+          "label": "Más contraste",
+          "pressed": "false"
+        },
+        {
+          "label": "Guía de lectura",
+          "pressed": "false"
+        },
+        {
+          "label": "Leer en voz alta",
+          "pressed": "false"
+        },
+        {
+          "label": "Reducir movimiento",
+          "pressed": "false"
+        }
+      ],
+      "stored": "{\"fs\": 2, \"ls\": true, \"big\": true, \"hc\": true, \"guide\": true, \"rm\": true, \"tts\": true}",
+      "main_zoom": "1"
+    },
+    {
+      "page": "/es/recursos/juegos/las-cinco-cosas/",
+      "shared_controller": false,
+      "states": [
+        {
+          "label": "Letra más separada",
+          "pressed": "false"
+        },
+        {
+          "label": "Botones más grandes",
+          "pressed": "false"
+        },
+        {
+          "label": "Más contraste",
+          "pressed": "false"
+        },
+        {
+          "label": "Guía de lectura",
+          "pressed": "false"
+        },
+        {
+          "label": "Leer en voz alta",
+          "pressed": "false"
+        },
+        {
+          "label": "Reducir movimiento",
+          "pressed": "false"
+        }
+      ],
+      "stored": "{\"fs\": 2, \"ls\": true, \"big\": true, \"hc\": true, \"guide\": true, \"rm\": true, \"tts\": true}",
+      "main_zoom": "1"
+    }
+  ],
+  "failures": [],
+  "notes": [
+    "Legacy settings are seeded only as test fixtures; interactions then use the real controls.",
+    "External domains blocked. Native speak calls are counted without replacing the page logic.",
+    "The seven existing controls are consolidated; extra typefaces and voice features are not part of this batch."
+  ],
+  "summary": {
+    "tested": 3,
+    "passed": 0,
+    "failures": 0
+  },
+  "passed": true
+}

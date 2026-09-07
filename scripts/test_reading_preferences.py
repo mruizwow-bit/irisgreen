@@ -73,7 +73,7 @@ with sync_playwright() as pw:
     assert page.evaluate('getComputedStyle(document.querySelector("main")).filter')=='none','Contrast changes the image colours'
     assert not errors,errors
     assert not audio,audio
-    if path in ['index.html',STATIC[0]]:page.screenshot(path=str(OUT/('restored-'+path.replace('/','-')+'.png')))
+    if path in ['index.html',STATIC[0],'es/intereses/index.html']:page.screenshot(path=str(OUT/('restored-'+path.replace('/','-')+'.png')))
     row['same_visible_state']=True
    note_result(row,restore);ctx.close()
 

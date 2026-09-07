@@ -59,7 +59,9 @@ def run():
        toggle.click();assert toggle.get_attribute('aria-pressed')==before
       row['six_reading_options_toggle']=True
       plus=panel.locator('button').filter(has_text=re.compile(r'^A\+$'))
-      for _ in range(4):plus.click()
+      for _ in range(4):
+       if plus.is_enabled():plus.click()
+      assert not plus.is_enabled(),"The maximum must be visible as a disabled increase control"
       row['enlarged_box']=check_box(p,panel)
       row['enlarged_content_overflow_px']=p.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)')
       assert row['enlarged_content_overflow_px']<=2,'Content overflows when enlarged: '+str(row['enlarged_content_overflow_px'])

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es"><head><script src="/assets/preferencias-lectura.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f6f8fb">
@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
 <link rel="stylesheet" href="/assets/juegos-ajustes.css"/>
 <link rel="stylesheet" href="/assets/controles-comunes.css"/>
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
 </head>
 <body class="ig-game-page">
 <x-dc>
@@ -204,8 +205,8 @@
         <div>
           <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }}{{ fsLabel }}</div>
           <div style="display: flex; gap: 8px;">
-            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;">A−</button>
-            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;">A+</button>
+            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;" disabled="{{ fsDownDisabled }}">A−</button>
+            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;" disabled="{{ fsUpDisabled }}">A+</button>
           </div>
         </div>
         <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
@@ -216,7 +217,7 @@
             {{ t.label }}
           </button>
         </sc-for>
-        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button>
+        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tResetPanel }}</button><p class="ig-preference-note" role="status">{{ preferenceStatus }}</p>
       </div>
     </div>
   </sc-if>
@@ -332,9 +333,10 @@ const STR = {
 };
 
 class Component extends DCLogic {
-  state = { lang: "es", at: 0, die: 0, drawn: { 0: [], 1: [], 2: [] }, last: null, checked: false, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false };
+  state = { lang: "es", at: 0, die: 0, drawn: { 0: [], 1: [], 2: [] }, last: null, checked: false, a11y: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
 
   componentDidMount() {
+    this._igPreferencesDisconnect = window.IGPreferences.connect(this);
     try {
       const lang = localStorage.getItem("ig_lang");
       const use = lang && STR[lang] ? lang : "es";
@@ -380,36 +382,8 @@ class Component extends DCLogic {
     this.setState({ die, at, drawn, last, checked: at >= 7 });
   }
 
-  applyReading(s) {
-    const b = document.body, h = document.documentElement;
-    if (!b) return;
-    b.style.zoom = "";
-    const readingMain = document.querySelector("main");
-    if (readingMain) readingMain.style.zoom = (s.fs / 17).toFixed(3);
-    h.toggleAttribute("data-ig-text-enlarged", s.fs > 17);
-    b.style.lineHeight = s.spacing ? "1.9" : "";
-    b.style.letterSpacing = s.spacing ? "0.045em" : "";
-    b.style.wordSpacing = s.spacing ? "0.12em" : "";
-    h.dataset.igControls = s.controls ? "big" : "";
-    h.dataset.igContrast = s.contrast ? "on" : "";
-    h.dataset.igMotion = s.motion ? "off" : "";
-    this.setGuide(s.guide);
-    this.setSpeak(s.speak);
-  }
-
-  setGuide(on) {
-    let el = document.getElementById("ig-guide");
-    if (on && !el) {
-      el = document.createElement("div");
-      el.id = "ig-guide";
-      el.style.cssText = "position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(90,73,168,0.14);border-top:2px solid rgba(90,73,168,0.5);border-bottom:2px solid rgba(90,73,168,0.5);top:0";
-      document.body.appendChild(el);
-      this._gm = (e) => { el.style.top = Math.max(0, e.clientY - 23) + "px"; };
-      window.addEventListener("pointermove", this._gm);
-    } else if (!on && el) {
-      window.removeEventListener("pointermove", this._gm);
-      el.remove();
-    }
+  applyReading() {
+    window.IGPreferences.apply();
   }
 
   setSpeak(on) {
@@ -423,11 +397,12 @@ class Component extends DCLogic {
     window.speechSynthesis.speak(u);
   }
 
+  componentWillUnmount() {
+    if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
+  }
+
   setReading(patch) {
-    const st = this.state;
-    const next = Object.assign({ fs: st.fs, spacing: st.spacing, controls: st.controls, contrast: st.contrast, guide: st.guide, speak: st.speak, motion: st.motion }, patch);
-    this.setState(next);
-    this.applyReading(next);
+    window.IGPreferences.changeComponent(this, patch);
   }
 
   renderVals() {
@@ -489,10 +464,12 @@ class Component extends DCLogic {
 
       reset: () => this.setState({ at: 0, die: 0, drawn: { 0: [], 1: [], 2: [] }, last: null, checked: false }),
 
+      preferenceStatus: window.IGPreferences.status(st.lang),
+      fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
       a11yOpen: st.a11y,
       toggleA11y: () => this.setState({ a11y: !st.a11y }),
-      fsUp: () => this.setReading({ fs: Math.min(st.fs + 2, 25) }),
-      fsDown: () => this.setReading({ fs: Math.max(st.fs - 2, 15) }),
+      fsUp: () => window.IGPreferences.step(1),
+      fsDown: () => window.IGPreferences.step(-1),
       fsLabel: Math.round((st.fs / 17) * 100) + "%",
       a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((k, n) => {
         const on = !!st[k];
@@ -506,7 +483,7 @@ class Component extends DCLogic {
           toggle: () => this.setReading({ [k]: !on })
         };
       }),
-      a11yReset: () => this.setReading({ fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false })
+      a11yReset: () => window.IGPreferences.reset()
     };
   }
 }

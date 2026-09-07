@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es"><head><script src="/assets/preferencias-lectura.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -96,6 +96,7 @@
 
 <link rel="stylesheet" href="/assets/controles-comunes.css"/>
 <link rel="stylesheet" href="/assets/video-thumbnails.css">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
 </head>
 <body>
 <x-dc>
@@ -432,8 +433,8 @@
         <div>
           <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tFsLabel }} · {{ fsLabel }}</div>
           <div style="display: flex; gap: 8px;">
-            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;">A−</button>
-            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;">A+</button>
+            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;" disabled="{{ fsDownDisabled }}">A−</button>
+            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;" disabled="{{ fsUpDisabled }}">A+</button>
           </div>
         </div>
         <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
@@ -445,7 +446,7 @@
           </button>
         </sc-for>
         <div style="display: flex; gap: 8px; margin-top: 4px;">
-          <button sc-camel-on-click="{{ a11yReset }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer;">{{ tReset }}</button>
+          <button sc-camel-on-click="{{ a11yReset }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer;">{{ tReset }}</button><p class="ig-preference-note" role="status">{{ preferenceStatus }}</p>
           <a href="/es/lectura-accesible/" style="flex: 1; text-align: center; background: #17395c; color: #fff; border-radius: 12px; padding: 11px; font-size: 15px;">{{ tMoreOpts }}</a>
         </div>
       </div>
@@ -840,9 +841,10 @@ const VIDEOS = [
 const TEMAS = ["Todos", "Autismo", "TDAH", "TOC", "Ansiedad", "Tourette", "Dislexia y discalculia", "ARFID", "Tartamudez", "Síndrome de Down", "Identidad LGTBI+"];
 
 class Component extends DCLogic {
-  state = { thumbnailErrors: {}, idx: [], vids: [], savedOpen: false, savedTouched: false, lang: "es", tab: "search", q: "", step: 0, tally: {}, need: "colegio", country: "es", picked: [], saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, playing: null, tema: "Todos", limit: 6 };
+  state = { thumbnailErrors: {}, idx: [], vids: [], savedOpen: false, savedTouched: false, lang: "es", tab: "search", q: "", step: 0, tally: {}, need: "colegio", country: "es", picked: [], saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, playing: null, tema: "Todos", limit: 6, ...window.IGPreferences.componentState() };
 
   componentDidMount() {
+    this._igPreferencesDisconnect = window.IGPreferences.connect(this);
     fetch("videoteca-listado.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { var a = Array.isArray(j) ? j : (j && j.videos); if (a && a.length) this.setState({ vids: a.map(function (v) { return v.plataforma === "Instagram" ? i(v.name, v.tema, v.ref) : v.plataforma === "Vimeo" ? { name: v.name, tema: v.tema, source: "Vimeo", href: v.url, embed: "https://player.vimeo.com/video/" + v.ref } : y(v.name, v.tema, v.ref); }) }); }.bind(this)).catch(function () {});
     window.IGSearch.load().then((entries) => this.setState({ idx: entries })).catch(() => this.setState({ searchError: true }));
     try {
@@ -867,36 +869,8 @@ class Component extends DCLogic {
     try { localStorage.setItem("ig_saved_b", JSON.stringify(saved)); } catch (e) {}
   }
 
-  applyReading(s) {
-    const b = document.body, h = document.documentElement;
-    if (!b) return;
-    b.style.zoom = "";
-    const readingMain = document.querySelector("main");
-    if (readingMain) readingMain.style.zoom = (s.fs / 17).toFixed(3);
-    h.toggleAttribute("data-ig-text-enlarged", s.fs > 17);
-    b.style.lineHeight = s.spacing ? "1.9" : "";
-    b.style.letterSpacing = s.spacing ? "0.045em" : "";
-    b.style.wordSpacing = s.spacing ? "0.12em" : "";
-    h.dataset.igControls = s.controls ? "big" : "";
-    h.dataset.igContrast = s.contrast ? "on" : "";
-    h.dataset.igMotion = s.motion ? "off" : "";
-    this.setGuide(s.guide);
-    this.setSpeak(s.speak);
-  }
-
-  setGuide(on) {
-    let g = document.getElementById("ig-guide");
-    if (on && !g) {
-      g = document.createElement("div");
-      g.id = "ig-guide";
-      g.style.cssText = "position:fixed;left:0;right:0;height:46px;pointer-events:none;z-index:70;background:rgba(111,95,192,0.14);border-top:2px solid rgba(111,95,192,0.5);border-bottom:2px solid rgba(111,95,192,0.5);top:0";
-      document.body.appendChild(g);
-      this._guideMove = (e) => { g.style.top = Math.max(0, e.clientY - 23) + "px"; };
-      window.addEventListener("pointermove", this._guideMove);
-    } else if (!on && g) {
-      window.removeEventListener("pointermove", this._guideMove);
-      g.remove();
-    }
+  applyReading() {
+    window.IGPreferences.apply();
   }
 
   setSpeak(on) {
@@ -906,16 +880,17 @@ class Component extends DCLogic {
     const main = document.querySelector("main");
     const text = (main ? main.innerText : "").slice(0, 4000);
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = "es-ES";
+    u.lang = document.documentElement.lang || "es-ES";
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   }
 
+  componentWillUnmount() {
+    if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
+  }
+
   setReading(patch) {
-    const st = this.state;
-    const next = Object.assign({ fs: st.fs, spacing: st.spacing, controls: st.controls, contrast: st.contrast, guide: st.guide, speak: st.speak, motion: st.motion }, patch);
-    this.setState(next);
-    this.applyReading(next);
+    window.IGPreferences.changeComponent(this, patch);
   }
 
   toggleSave(name, url) {
@@ -1129,10 +1104,12 @@ class Component extends DCLogic {
       musicOpen: st.music,
       musicBg: st.music ? "rgba(29,185,84,0.22)" : "rgba(29,185,84,0.12)",
       toggleMusic: () => this.setState({ music: !st.music }),
+      preferenceStatus: window.IGPreferences.status(st.lang),
+      fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
       a11yOpen: st.a11y,
       toggleA11y: () => this.setState({ a11y: !st.a11y }),
-      fsUp: () => this.setReading({ fs: Math.min(st.fs + 2, 25) }),
-      fsDown: () => this.setReading({ fs: Math.max(st.fs - 2, 15) }),
+      fsUp: () => window.IGPreferences.step(1),
+      fsDown: () => window.IGPreferences.step(-1),
       fsLabel: Math.round((st.fs / 17) * 100) + "%",
       a11yToggles: [
         ["spacing", "Letra más separada"],
@@ -1153,7 +1130,7 @@ class Component extends DCLogic {
           toggle: () => this.setReading({ [key]: !on })
         };
       }),
-      a11yReset: () => this.setReading({ fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false })
+      a11yReset: () => window.IGPreferences.reset()
     };
   }
 }
