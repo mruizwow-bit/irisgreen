@@ -30,6 +30,54 @@ jobs:
               if p.suffix in {'.html','.json'} or p.name=='robots.txt':
                   q=out/p.relative_to(root);q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
+      - name: Incorporar los dos ajustes observados en las capturas
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/repair_routes.py');s=p.read_text()
+          old='</head><body><main id="main"'
+          new='</head><body style="min-height:100vh;background-repeat:no-repeat;"><main id="main"'
+          if old in s:
+              assert s.count(old)==1;s=s.replace(old,new,1)
+          else:assert new in s
+          marker="        if rel=='index.html':"
+          block='''        if rel=='es/sobre-iris-green/index.html' and 'ig-route-editorial' not in s:
+              old_mount='  componentDidMount() {'
+              new_mount='''+repr('''  componentDidMount() {
+    // ig-route-editorial: the destination exists only after the dynamic page mounts.
+    requestAnimationFrame(() => {
+      if (window.location.hash === "#criterios-editoriales") {
+        const target = document.getElementById("criterios-editoriales");
+        if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
+      }
+    });''')+'''
+              assert s.count(old_mount)==1,'No se encuentra el arranque de la página editorial'
+              s=s.replace(old_mount,new_mount,1)
+          '''
+          if "// ig-route-editorial:" not in s:
+              assert s.count(marker)==1
+              s=s.replace(marker,block.rstrip()+'\n'+marker,1)
+          p.write_text(s)
+          p=Path('scripts/test_routes.py');s=p.read_text()
+          old="                        row['editorial_anchor']=True"
+          new="""                        rect=anchor.bounding_box()
+                        header=page.locator('header').first.bounding_box()
+                        assert page.evaluate('scrollY')>0,'El ancla existe pero no navega al apartado'
+                        assert rect['y']>=header['y']+header['height']-2 and rect['y']<260,rect
+                        row['editorial_anchor_top_px']=rect['y']
+                        row['editorial_anchor']=True"""
+          if old in s and "row['editorial_anchor_top_px']" not in s:
+              assert s.count(old)==1;s=s.replace(old,new,1)
+          marker="                    if path=='/':"
+          extra="""                    if path=='/direccion-que-no-existe/':
+                        assert page.locator('body').evaluate('(e)=>e.getBoundingClientRect().height>=innerHeight-1')
+                        assert page.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundRepeat')=='no-repeat'
+          """
+          if "backgroundRepeat" not in s:
+              assert s.count(marker)==1;s=s.replace(marker,extra.rstrip()+'\n'+marker,1)
+          p.write_text(s)
+          PY
+          python3 -m py_compile scripts/repair_routes.py scripts/test_routes.py
       - name: Generar únicamente los archivos públicos y comprobar repetibilidad
         run: |
           python3 scripts/build_site.py
@@ -78,9 +126,8 @@ jobs:
           git add -- index.html es en netlify.toml _headers llms.txt sitemap.xml sitemap-1.xml scripts
           for p in _redirects .gitignore 404.html; do test ! -f "$p" || git add -- "$p"; done
           test ! -d reports/routes || git add -- reports/routes/*.json
-          # El generador ya existente también actualiza su informe; se conserva, no se descarta.
           test ! -f reports/initial-data-build.json || git add -- reports/initial-data-build.json
-          git diff --cached --quiet || git commit -m 'Corregir rutas y metadatos y separar la publicación; conservar pruebas'
+          git diff --cached --quiet || git commit -m 'Cerrar la navegación al ancla editorial y la página de error; repetir pruebas'
           git status --short
           git pull --rebase origin ajustes/auditoria-web
           git push origin HEAD:ajustes/auditoria-web
