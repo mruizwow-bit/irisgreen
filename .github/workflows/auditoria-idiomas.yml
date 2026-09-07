@@ -1,0 +1,46 @@
+name: Auditoría global ES EN
+on:
+  push:
+    branches: ['auditoria/idiomas-20260907']
+    paths:
+      - '.github/workflows/auditoria-idiomas.yml'
+      - 'scripts/audit_languages.py'
+permissions:
+  contents: write
+concurrency:
+  group: auditoria-idiomas-irisgreen
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: auditoria/idiomas-20260907
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-lang
+          /tmp/ig-lang/bin/pip -q install playwright==1.55.0
+          /tmp/ig-lang/bin/python -m playwright install --with-deps chromium >/tmp/ig-lang-browser.log 2>&1
+      - name: Generar la misma salida pública que Netlify
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/repair_routes.py --check
+      - name: Auditar todos los controles ES EN
+        run: /tmp/ig-lang/bin/python scripts/audit_languages.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: auditoria-idiomas
+          path: reports/languages
+          retention-days: 7
+      - name: Guardar informe en la rama de auditoría
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- reports/languages/language-audit.json reports/languages/language-audit.md
+          git diff --cached --quiet || git commit -m 'Registrar auditoría global de idioma ES EN'
+          git pull --rebase origin auditoria/idiomas-20260907
+          git push origin HEAD:auditoria/idiomas-20260907
