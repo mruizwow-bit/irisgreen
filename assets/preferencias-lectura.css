@@ -20,3 +20,32 @@ html[data-ig-preferences="2"] [data-ig-reading-panel] [style*="display: flex"]{f
 html[data-ig-preferences="2"] [data-ig-reading-panel] :is(button,a){max-width:100%;overflow-wrap:normal;word-break:normal;white-space:normal}
 html[data-ig-preferences="2"] [data-ig-reading-panel] .ig-preference-note{flex:1 0 100%;width:100%;order:5}
 html[data-ig-preferences="2"] [data-ig-reading-panel] button[aria-pressed]{width:100%;min-width:0}
+
+/* System adjustments supplement the brand, not a diagnosis-specific overlay.
+   Underlining is an additional non-colour cue; it does not change button size. */
+html[data-ig-preferences="2"] :is(.ig-filter-button,.secfind button[data-type],.secfind button[data-letter],.situation-filter,#temaFilters .filter,.catbuttons button,.vd-filters button,[data-ig-reading-panel] button)[aria-pressed="true"],
+html[data-ig-preferences="2"] [role="tab"][aria-selected="true"],
+html[data-ig-preferences="2"] header a[aria-current="page"]{
+ text-decoration-line:underline!important;text-decoration-thickness:.12em!important;text-underline-offset:.18em!important;
+}
+html[data-ig-preferences="2"] main :is(p,li,.valor) a:not([role="button"]):not(.bajar){text-decoration:underline;text-underline-offset:.18em}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media(forced-colors:active){
+ /* Never opt out of the user's palette with forced-color-adjust:none. */
+ html[data-ig-preferences="2"] :is(main,header,footer,#ig-music-panel,[data-ig-reading-panel]){
+  background-color:Canvas!important;color:CanvasText!important;border-color:CanvasText!important;box-shadow:none!important;
+ }
+ html[data-ig-preferences="2"] :is(.secfind,.situations-filter,.ig-search-shell,main article,main .card,main .glass){background-color:Canvas!important;border-color:CanvasText!important;box-shadow:none!important}
+ html[data-ig-preferences="2"] :is(main,header,footer,#ig-music-panel,[data-ig-reading-panel]) :is(button,[role="button"],summary){
+  background-color:ButtonFace!important;background-image:none!important;color:ButtonText!important;border-color:ButtonText!important;box-shadow:none!important;
+ }
+ html[data-ig-preferences="2"] :is(main,#ig-music-panel,[data-ig-reading-panel]) :is(input,select,textarea){background:Canvas!important;color:CanvasText!important;border-color:CanvasText!important}
+ html[data-ig-preferences="2"] :is(main,header,footer) a{color:LinkText!important}
+ html[data-ig-preferences="2"] :is(#a11y,[data-ig-reading-panel],#ig-music-panel) :is(p,span,strong,h2,h3,label){color:CanvasText!important}
+ html[data-ig-preferences="2"] :is(button,a,input,select,textarea,summary):focus-visible{outline:3px solid Highlight!important;outline-offset:3px!important}
+ html[data-ig-preferences="2"] :is(button,[role="button"]):disabled{color:GrayText!important;border-color:GrayText!important;opacity:1!important}
+ html[data-ig-preferences="2"] :is(button[aria-pressed="true"],[role="tab"][aria-selected="true"]){border-color:Highlight!important;text-decoration-line:underline!important}
+ html[data-ig-preferences="2"] :is(#rguide,#ig-guide){background:transparent!important;border-block:2px solid Highlight!important}
+}

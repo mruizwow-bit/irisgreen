@@ -87,3 +87,47 @@
   window.IGReading={close:closeReading};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',prepareStatic,{once:true});else prepareStatic();
 })();
+
+/* Uncover keyboard focus without moving a floating player or rebuilding the page.
+   A panel is collapsed only when it actually overlaps focus outside that panel.
+   Collapsing music must not stop the user's current track. */
+(function(){
+ 'use strict';
+ var pending=0;
+ function visible(el){return el&&!el.hidden&&el.getClientRects().length;}
+ function overlaps(a,b){return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;}
+ function protect(){
+  pending=0;
+  var target=document.activeElement;
+  if(!target||target===document.body||!target.getClientRects().length)return;
+  var rect=target.getBoundingClientRect();
+  document.querySelectorAll('#ig-music-panel,[data-ig-reading-panel]').forEach(function(p){
+   if(!visible(p)||p.contains(target)||!overlaps(rect,p.getBoundingClientRect()))return;
+   if(p.id==='ig-music-panel')document.dispatchEvent(new CustomEvent('ig:uncover-focus',{detail:'music'}));
+   else if(window.IGReading)window.IGReading.close(false);
+  });
+  var header=document.querySelector('header.ig-menu-open');
+  if(header&&!header.contains(target)){
+   header.classList.remove('ig-menu-open');
+   var menu=header.querySelector('.ig-menu-button');if(menu)menu.setAttribute('aria-expanded','false');
+  }
+  var top=0;
+  document.querySelectorAll('header').forEach(function(h){
+   var position=getComputedStyle(h).position, box=h.getBoundingClientRect();
+   if(!h.contains(target)&&visible(h)&&(position==='fixed'||position==='sticky')&&box.top<=1&&overlaps(rect,box))top=Math.max(top,box.bottom);
+  });
+  if(top>0&&rect.top<top+8)window.scrollBy({top:rect.top-top-12,left:0,behavior:'instant'});
+  var guide=document.getElementById('rguide')||document.getElementById('ig-guide');
+  rect=target.getBoundingClientRect();
+  if(visible(guide)&&overlaps(rect,guide.getBoundingClientRect())){
+   var height=guide.getBoundingClientRect().height;
+   var next=rect.bottom+6;
+   if(next+height>window.innerHeight)next=Math.max(0,rect.top-height-6);
+   guide.style.top=next+'px';
+  }
+ }
+ document.addEventListener('focusin',function(){
+  if(pending)cancelAnimationFrame(pending);
+  pending=requestAnimationFrame(protect);
+ });
+})();

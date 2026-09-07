@@ -124,6 +124,7 @@
     if(event.key==='Escape'&&open){event.preventDefault();event.stopImmediatePropagation();close(true);}
   });
   document.addEventListener('ig:panel-opening',function(e){if(e.detail==='reading'&&open)close(false);});
+  document.addEventListener('ig:uncover-focus',function(e){if(e.detail==='music'&&open)close(false);});
   // Only one attribute is observed: language changes, never the page subtree.
   new MutationObserver(updateLabels).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   window.addEventListener('pagehide',function(){if(audio)audio.pause();});

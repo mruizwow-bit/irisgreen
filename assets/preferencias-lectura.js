@@ -24,18 +24,26 @@
   function decode(raw) { try { return normalize(typeof raw === 'string' && raw.length <= 8192 ? JSON.parse(raw) : null); } catch (_) { return defaults(); } }
   function load() { try { return decode(window.localStorage.getItem(KEY)); } catch (_) { canStore = false; return defaults(); } }
   var state = load();
+  // System preferences are observed, never written to the person's site settings.
+  var systemMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var systemColors = window.matchMedia('(forced-colors: active)');
+  function system() { return {reducedMotion:systemMotion.matches, forcedColors:systemColors.matches}; }
+  function reduceMotion() { return state.motion || systemMotion.matches; }
   function copy() { return Object.assign({}, state); }
   function persist() {
     try { window.localStorage.setItem(KEY, JSON.stringify(state)); canStore = true; }
     catch (_) { canStore = false; }
   }
   function componentState() {
-    return {fs: state.scale * 17, spacing:state.spacing, controls:state.controls, contrast:state.contrast, guide:state.guide, motion:state.motion, speak:speech};
+    return {fs: state.scale * 17, spacing:state.spacing, controls:state.controls, contrast:state.contrast, guide:state.guide, motion:state.motion, speak:speech, systemMotion:systemMotion.matches, systemColors:systemColors.matches};
   }
   function status(lang) {
     var english = String(lang || document.documentElement.lang).startsWith('en');
-    return canStore ? (english ? 'Settings are remembered in this browser. Audio never starts automatically.' : 'Los ajustes se recuerdan en este navegador. El audio no se inicia solo.') :
+    var message = canStore ? (english ? 'Settings are remembered in this browser. Audio never starts automatically.' : 'Los ajustes se recuerdan en este navegador. El audio no se inicia solo.') :
       (english ? 'Settings work on this page, but this browser cannot save them.' : 'Los ajustes funcionan en esta página, pero este navegador no permite guardarlos.');
+    if (systemMotion.matches) message += english ? ' Your device also has reduced motion enabled; Reset keeps respecting it.' : ' Tu dispositivo también tiene activada la reducción de movimiento; Restablecer sigue respetándola.';
+    if (systemColors.matches) message += english ? ' Your device’s forced colour palette is active.' : ' Está activa la paleta de colores forzados de tu dispositivo.';
+    return message;
   }
   function rootStyles() {
     var root = document.documentElement;
@@ -44,7 +52,9 @@
     root.toggleAttribute('data-ig-text-enlarged', state.scale > 1);
     root.dataset.igControls = state.controls ? 'big' : '';
     root.dataset.igContrast = state.contrast ? 'on' : '';
-    root.dataset.igMotion = state.motion ? 'off' : '';
+    root.dataset.igMotion = reduceMotion() ? 'off' : '';
+    root.dataset.igSystemMotion = systemMotion.matches ? 'reduce' : '';
+    root.dataset.igSystemColors = systemColors.matches ? 'forced' : '';
   }
   function apply() {
     rootStyles();
@@ -59,7 +69,7 @@
     body.style.wordSpacing = state.spacing ? '.12em' : '';
     body.classList.toggle('big', state.controls);
     body.classList.toggle('hc', state.contrast);
-    body.classList.toggle('rm', state.motion);
+    body.classList.toggle('rm', reduceMotion());
     body.classList.toggle('tts', speech);
     var guide = document.getElementById('rguide') || document.getElementById('ig-guide');
     if (state.guide && !guide) { guide = document.createElement('div'); guide.id = 'ig-guide'; guide.setAttribute('aria-hidden','true'); body.appendChild(guide); }
@@ -130,6 +140,10 @@
     }
     apply();
   }
+  [systemMotion, systemColors].forEach(function (query) {
+    if (query.addEventListener) query.addEventListener('change', notify);
+    else if (query.addListener) query.addListener(notify);
+  });
   window.addEventListener('storage', function (event) {
     if (event.key !== KEY && event.key !== null) return;
     state = event.key === null ? defaults() : decode(event.newValue);
@@ -146,7 +160,7 @@
     });
   }, {passive:true});
   window.addEventListener('pagehide', function () { if (speech && window.speechSynthesis) window.speechSynthesis.cancel(); });
-  window.IGPreferences = {get:copy, componentState:componentState, status:status, update:update, step:step, reset:reset, setSpeech:setSpeech,
+  window.IGPreferences = {get:copy, system:system, componentState:componentState, status:status, update:update, step:step, reset:reset, setSpeech:setSpeech,
     speechOn:function(){return speech;}, connect:connect, changeComponent:changeComponent, apply:apply};
   rootStyles();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true}); else boot();
