@@ -17,8 +17,9 @@ STATIC=['es/neurodiversidad/condiciones/index.html','es/neurodiversidad/condicio
 DYNAMIC=[p.relative_to(ROOT).as_posix() for p in [ROOT/'index.html',*sorted((ROOT/'es').rglob('index.html'))] if '  setReading(patch)' in p.read_text()]
 assert len(DYNAMIC)==25
 LEGACY={'fs':2,'ls':True,'big':True,'hc':True,'guide':True,'rm':True,'tts':True}
-EXPECTED={'version':2,'scale':1.3,'spacing':True,'controls':True,'contrast':True,'guide':True,'motion':True}
-R={'phase':args.phase,'cases':[],'failures':[],'notes':['Legacy settings are seeded only as test fixtures; interactions then use the real controls.','External domains blocked. Native speak calls are counted without replacing the page logic.','The seven existing controls are consolidated; extra typefaces and voice features are not part of this batch.']}
+PRESENTATION={'theme':'original','opaque':False,'focus':False,'guidePosition':'middle','guideHeight':'medium'}
+EXPECTED={'version':2,'scale':1.3,'spacing':True,'controls':True,'contrast':True,'guide':True,'motion':True,'presentation':PRESENTATION}
+R={'phase':args.phase,'cases':[],'failures':[],'notes':['Legacy settings are seeded only as test fixtures; interactions then use the real controls.','External domains blocked. Native speak calls are counted without replacing the page logic.','The existing reading controls are tested by identity; the newer presentation controls have their own dedicated regression batch.']}
 SPY='''window.__speechCalls=0;window.__preferenceWrites=0;
 if(window.SpeechSynthesis){const fn=SpeechSynthesis.prototype.speak;SpeechSynthesis.prototype.speak=function(u){window.__speechCalls++;return fn.call(this,u);};}
 const store=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='ig-a11y')window.__preferenceWrites++;return store.call(this,k,v);};'''
@@ -29,7 +30,7 @@ def load(page,path):
 def open_panel(page):
  page.locator('#a11yBtn:visible,.ig-uh-reading:visible').first.click()
  panel=page.locator('[data-ig-reading-panel]');panel.wait_for(state='visible');return panel
-def toggles(panel):return panel.locator('button[aria-pressed]')
+def toggles(panel):return panel.locator('button[aria-pressed]:not([data-ig-presentation-toggle]):not([data-ig-guide-position])')
 def prefs(page):return page.evaluate('window.IGPreferences.get()')
 def close(page):page.keyboard.press('Escape');page.wait_for_timeout(50)
 def same_state(page,expected=EXPECTED):
