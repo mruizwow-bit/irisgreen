@@ -106,12 +106,14 @@ with sync_playwright() as pw:
             z=page.evaluate('''([p,g])=>{const n=e=>{const v=getComputedStyle(e).zIndex;return v==='auto'?0:(parseInt(v,10)||0)};return {panel:n(document.querySelector(p)),guide:n(document.querySelector(g))}}''',['[data-ig-reading-panel]','#ig-guide'])
             assert z['panel']>z['guide'],f'El panel debe quedar por encima de la guía: {z}'
             page.keyboard.press('Escape');page.wait_for_timeout(80)
-            target=page.locator('main a[href^="mailto:"]:visible').first;target.scroll_into_view_if_needed();page.wait_for_timeout(30)
-            handle=target.element_handle()
-            page.evaluate('''e=>{const g=document.querySelector('#ig-guide,#rguide').getBoundingClientRect(),r=e.getBoundingClientRect();window.scrollBy(0,r.top-(g.top+8));}''',handle);page.wait_for_timeout(80)
-            before_g=guide.bounding_box();before_t=target.bounding_box();assert overlaps(before_g,before_t),'La prueba no logró colocar un control real bajo la guía'
+            controls=page.locator('main a[href]:visible,main button:visible,main input:visible,main select:visible,main textarea:visible')
+            candidates=controls.evaluate_all('''els=>{const g=document.querySelector('#ig-guide,#rguide').getBoundingClientRect(),desired=g.top+8,max=Math.max(0,document.documentElement.scrollHeight-innerHeight);return els.map((e,i)=>{const r=e.getBoundingClientRect(),pos=getComputedStyle(e).position,docTop=r.top+scrollY,y=docTop-desired;return {i,y,ok:r.width>0&&r.height>0&&pos!=='fixed'&&pos!=='sticky'&&y>=0&&y<=max};}).filter(x=>x.ok)}''')
+            assert candidates,'No hay un control del contenido que pueda alinearse con la guía en esta página'
+            choice=min(candidates,key=lambda x:abs(x['y']-page.evaluate('scrollY')));target=controls.nth(choice['i'])
+            page.evaluate('(y)=>scrollTo(0,y)',choice['y']);page.wait_for_timeout(80)
+            before_g=guide.bounding_box();before_t=target.bounding_box();assert overlaps(before_g,before_t),f'No se pudo alinear el control elegido con la guía: {before_g} / {before_t}'
             target.focus();page.wait_for_timeout(100);after_g=guide.bounding_box();after_t=target.bounding_box();assert not overlaps(after_g,after_t),'La guía no se apartó del control enfocado'
-            assert_local_clean(errors,bad);row.update({'upper_y':top1,'lower_y':top2,'height':box['height'],'panel_z':z['panel'],'guide_z':z['guide'],'passed':True})
+            assert_local_clean(errors,bad);row.update({'upper_y':top1,'lower_y':top2,'height':box['height'],'panel_z':z['panel'],'guide_z':z['guide'],'tested_content_control':target.evaluate('(e)=>e.tagName+":"+(e.textContent||e.value||e.getAttribute("aria-label")||"").trim().slice(0,60)'),'passed':True})
             page.screenshot(path=str(OUT/f'guide-keyboard-{width}.png'),full_page=False)
         except Exception as e:row['passed']=False;row['error']=str(e);report['failures'].append(row.copy())
         report['cases'].append(row);ctx.close()
