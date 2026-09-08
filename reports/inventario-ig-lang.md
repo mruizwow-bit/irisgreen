@@ -3,6 +3,36 @@
 Commit de main:
 ff6ca0406781b6c1bd838ed0bba514f8c5b56309
 
+## Archivos afectados
+```text
+es/cuestionarios/index.html
+es/investigacion/index.html
+es/libros/index.html
+es/neurodiversidad/temas/autismo/index.html
+es/recursos/juegos/cada-cerebro-su-camino/index.html
+es/recursos/juegos/donde-se-fue-la-energia/index.html
+es/recursos/juegos/el-archivo-de-capacidades/index.html
+es/recursos/juegos/el-aula-al-reves/index.html
+es/recursos/juegos/el-detective-de-los-sentidos/index.html
+es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html
+es/recursos/juegos/el-traductor-de-casa/index.html
+es/recursos/juegos/el-traductor-de-instrucciones/index.html
+es/recursos/juegos/index.html
+es/recursos/juegos/la-cena-de-los-planes/index.html
+es/recursos/juegos/la-consulta/index.html
+es/recursos/juegos/la-maquina-de-empezar/index.html
+es/recursos/juegos/las-cinco-cosas/index.html
+es/recursos/juegos/palabra-misteriosa/index.html
+es/sobre-iris-green/index.html
+es/taller/index.html
+es/tramites/directorio/index.html
+es/tramites/index.html
+es/videos/index.html
+es/vivir-fuera/index.html
+index.html
+```
+
+## Contextos
 ```text
 origin/main:es/cuestionarios/index.html-358-
 origin/main:es/cuestionarios/index.html-359-  setLang(l) {
