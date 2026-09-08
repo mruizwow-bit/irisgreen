@@ -453,7 +453,6 @@ class Component extends DCLogic {
  renderVals() {
  const st = this.state;
     const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
- const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
  const L = STR[st.lang] ? st.lang : "es";
  const T = STR[L];
  const videoName = (v) => L === "en" && v.name_en ? v.name_en : v.name;

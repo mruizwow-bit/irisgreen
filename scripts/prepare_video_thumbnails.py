@@ -74,7 +74,7 @@ def apply(manifest):
             assert new in text or alt in text
         anchor='  renderVals() {\n    const st = this.state;'
         helper='\n    const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);'
-        if helper not in text:
+        if helper not in text and 'const thumbURL =' not in text:
             if text.count(anchor)==1:
                 text=text.replace(anchor,anchor+helper,1)
             else:
