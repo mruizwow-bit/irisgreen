@@ -1,94 +1,54 @@
-name: Datos · selector EN visible
+name: Probar selector EN visible
 on:
   push:
-    branches: [recuperacion-estable-20260908]
+    branches:
+      - recuperacion-estable-20260908
     paths:
       - .github/workflows/fix-datos-en-visible-20260908-v1.yml
 permissions:
-  contents: write
+  contents: read
 jobs:
-  fix:
+  preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout rama de fix
-        uses: actions/checkout@v4
-        with:
-          ref: fix/datos-en-visible-20260908
-          fetch-depth: 0
-      - name: Compactar cabecera para que ES EN sean visibles
-        shell: bash
-        run: |
-          node <<'NODE'
-          const fs = require('fs');
-          const fp = 'assets/site-v23.css';
-          let css = fs.readFileSync(fp, 'utf8');
-          const oldBlock = `@media (min-width:74rem) and (max-width:88rem){
-  .hd{padding-inline:2rem;gap:.4rem}
-  .nav{gap:.1rem;padding-inline:.4rem}
-  .nav a{font-size:.92rem;padding-inline:.62rem}
-  .ico{font-size:.92rem;padding-inline:.8rem}
-  .lang{font-size:.88rem;padding-inline:.7rem;min-width:48px}
-}`;
-          const newBlock = `/* V40 · cabecera: no dejar que el selector ES · EN se salga del viewport. */
-@media (min-width:74rem) and (max-width:100rem){
-  .hd{padding-inline:clamp(1rem,2vw,2rem);gap:.25rem}
-  .brand{font-size:clamp(1.25rem,1.6vw,1.45rem)}
-  .nav{gap:0;padding-inline:.2rem}
-  .nav a{font-size:.82rem;padding-inline:.35rem}
-  .ico{font-size:.82rem;padding-inline:.5rem}
-  #plBtn{width:42px;padding:0;justify-content:center}
-  .lang{font-size:.82rem;padding-inline:.45rem;min-width:42px}
-}`;
-          if (!css.includes(oldBlock)) throw new Error('No encuentro el bloque compacto original de cabecera');
-          css = css.replace(oldBlock, newBlock);
-          fs.writeFileSync(fp, css);
-          NODE
-      - name: Probar visualmente el selector en local
-        shell: bash
+      - name: Instalar Playwright
         run: |
           npm init -y >/dev/null 2>&1
           npm install playwright >/dev/null 2>&1
           npx playwright install chromium >/dev/null 2>&1
-          python3 -m http.server 4173 >/tmp/irisgreen-http.log 2>&1 &
-          sleep 2
+      - name: Probar preview 14
+        env:
+          BASE: https://deploy-preview-14--irisgreen-home.netlify.app
+        run: |
           node <<'NODE'
           const { chromium } = require('playwright');
-          const widths = [1536, 1366, 1280, 1229];
-          const urls = ['/es/datos/','/es/datos/autismo/','/en/data/'];
-          (async()=>{
-            const browser = await chromium.launch({headless:true});
-            for (const width of widths) {
-              const page = await browser.newPage({viewport:{width,height:900}});
-              for (const url of urls) {
-                const res = await page.goto('http://127.0.0.1:4173'+url, {waitUntil:'networkidle'});
-                if (!res || res.status() >= 400) throw new Error(`${url} status ${res && res.status()}`);
-                const labels = await page.locator('nav.langs .lang').evaluateAll(els => els.map(e=>({text:e.textContent.trim(), visible:!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length), rect:e.getBoundingClientRect().toJSON()})));
-                const joined = labels.map(x=>x.text).join(' ');
-                if (joined !== 'ES EN') throw new Error(`${url} selector DOM incorrecto en ${width}: ${joined}`);
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            for (const width of [1536, 1366, 1280, 1229]) {
+              const page = await browser.newPage({ viewport: { width: width, height: 900 } });
+              for (const url of ['/es/datos/', '/es/datos/autismo/', '/en/data/', '/en/data/autism/']) {
+                const res = await page.goto(process.env.BASE + url, { waitUntil: 'networkidle' });
+                if (!res || res.status() >= 400) throw new Error(url + ' status ' + (res && res.status()));
+                const labels = await page.locator('nav.langs .lang').evaluateAll(els => els.map(e => {
+                  const r = e.getBoundingClientRect();
+                  return { text: e.textContent.trim(), visible: !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length), left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+                }));
+                if (labels.map(x => x.text).join(' ') !== 'ES EN') throw new Error(url + ' selector DOM incorrecto: ' + JSON.stringify(labels));
                 for (const l of labels) {
-                  if (!l.visible) throw new Error(`${url} ${l.text} no visible en ${width}`);
-                  if (l.rect.left < 0 || l.rect.right > width) throw new Error(`${url} ${l.text} fuera de pantalla en ${width}: ${JSON.stringify(l.rect)}`);
+                  if (!l.visible) throw new Error(url + ' ' + l.text + ' no visible');
+                  if (l.left < 0 || l.right > width || l.top < 0 || l.bottom > 900) throw new Error(url + ' ' + l.text + ' fuera de viewport ' + width + ': ' + JSON.stringify(l));
                 }
                 const html = await page.content();
-                if (html.includes('PT-BR') || html.includes('lang="pt-BR"')) throw new Error(`${url} conserva PT-BR`);
+                if (html.includes('PT-BR') || html.includes('lang="pt-BR"')) throw new Error(url + ' conserva PT-BR');
               }
-              await page.goto('http://127.0.0.1:4173/es/datos/', {waitUntil:'networkidle'});
+              await page.goto(process.env.BASE + '/es/datos/', { waitUntil: 'networkidle' });
               await page.click('nav.langs a[lang="en"]');
               await page.waitForURL('**/en/data/');
               const h1 = await page.locator('h1').first().innerText();
-              if (!/Neurodiversity/.test(h1)) throw new Error('EN no navega a la portada inglesa de Datos');
+              if (!h1.includes('Neurodiversity')) throw new Error('El click en EN no abre /en/data/');
               await page.close();
             }
             await browser.close();
-            console.log('selector-visible-local-ok');
-          })().catch(e=>{ console.error(e); process.exit(1); });
+            console.log('preview-14-selector-visible-ok');
+          })().catch(e => { console.error(e); process.exit(1); });
           NODE
-      - name: Commit CSS
-        shell: bash
-        run: |
-          git config user.name "mruizwow-bit"
-          git config user.email "mruiz.wow@gmail.com"
-          git status --short
-          git add assets/site-v23.css
-          git commit -m "Mantener visible EN en selector de Datos"
-          git push origin HEAD:fix/datos-en-visible-20260908
