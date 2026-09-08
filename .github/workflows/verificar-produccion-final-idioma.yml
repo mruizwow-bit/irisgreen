@@ -1,0 +1,51 @@
+name: Verificar producción final de idioma
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/verificar-produccion-final-idioma.yml
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-final
+          /tmp/ig-final/bin/pip -q install playwright==1.55.0
+          /tmp/ig-final/bin/python -m playwright install --with-deps chromium >/tmp/ig-final.log 2>&1
+      - name: Probar irisgreen.eu
+        run: |
+          /tmp/ig-final/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          base='https://irisgreen.eu'
+          with sync_playwright() as p:
+              b=p.chromium.launch()
+              page=b.new_page(viewport={'width':1280,'height':900})
+              errors=[]
+              page.on('pageerror',lambda e: errors.append(str(e)))
+              page.goto(base+'/',wait_until='domcontentloaded',timeout=30000)
+              page.evaluate("localStorage.setItem('ig_lang','en')")
+              page.goto(base+'/es/investigacion/',wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(1200)
+              assert (page.locator('html').get_attribute('lang') or '').startswith('es')
+              assert 'Research' not in ' '.join(page.locator('header').all_inner_texts())
+              assert page.evaluate("localStorage.getItem('ig_lang')") in (None,'es')
+              page.goto(base+'/en/neurodiversity/conditions/',wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(700)
+              assert (page.locator('html').get_attribute('lang') or '').startswith('en')
+              for route in ['/', '/es/neurodiversidad/condiciones/']:
+                  page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                  page.wait_for_timeout(900)
+                  t=page.locator('.ig-uh-music,#plBtn,[data-ig-music]').first
+                  assert t.count()
+                  t.click(); page.wait_for_timeout(300)
+                  panel=page.locator('#ig-music-panel')
+                  assert panel.count() and panel.is_visible()
+              assert not errors, errors
+              b.close()
+          PY
