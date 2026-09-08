@@ -1,0 +1,102 @@
+name: Fix tono notas videos v3
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/fix-videos-tono-notas-v3-20260908.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Reescribir notas de videos sin advertencias
+        shell: bash
+        run: |
+          set -euo pipefail
+          BR="fix/videos-tono-notas-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+          path = Path('es/videos/index.html')
+          html = path.read_text(encoding='utf-8')
+          repl = {
+            'vivencia: "Es la experiencia de una persona, no una pauta: lo que a ella le funcionó no es lo que hay que hacer."': 'vivencia: "Una persona cuenta en primera persona cómo lo vive."',
+            'institucional: "Lo publica una entidad. Describe casos frecuentes, no todas las formas de vivirlo."': 'institucional: "Publicado por una entidad. Reúne información, testimonios o ejemplos sobre el tema."',
+            'divulgacion: "Es divulgación profesional: explica en general, y no sustituye la valoración de tu caso."': 'divulgacion: "Divulgación profesional: organiza ideas y ejemplos para entender mejor el tema."',
+            'vivencia: "This is one person\'s experience, not a set of instructions: what worked for them is not what you have to do."': 'vivencia: "A person speaks in the first person about how they experience it."',
+            'institucional: "Published by an organisation. It describes common cases, not every way of living it."': 'institucional: "Published by an organisation. It brings together information, accounts or examples about the topic."',
+            'divulgacion: "This is professional explanation in general terms, and it does not replace an assessment of your own case."': 'divulgacion: "Professional outreach: it organises ideas and examples to make the topic easier to understand."',
+            'vivencia: "É a experiência de uma pessoa, não uma orientação: o que funcionou para ela não é o que se deve fazer."': 'vivencia: "Uma pessoa conta, em primeira pessoa, como vive isso."',
+            'institucional: "Publicado por uma entidade. Descreve casos frequentes, não todas as formas de viver isso."': 'institucional: "Publicado por uma entidade. Reúne informações, relatos ou exemplos sobre o tema."',
+            'divulgacion: "É divulgação profissional: explica em geral, e não substitui a avaliação do seu caso."': 'divulgacion: "Divulgação profissional: organiza ideias e exemplos para entender melhor o tema."',
+            'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Es un relato personal: sirve para escuchar cómo lo vive él, no para convertir su caso en una pauta general.': 'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad, de entenderse mejor y de lo que cambia cuando por fin encuentras un nombre para lo que llevabas años viviendo.',
+            'Lleva más de seis décadas comunicándose con CAA. Habla de su propia vida, no de cómo se implanta un sistema: la decisión sobre qué sistema necesita cada persona se toma con profesionales. Tiene subtítulos en español.': 'Lleva más de seis décadas comunicándose con CAA. Cuenta cómo la comunicación aumentativa y alternativa forma parte de su vida, de sus decisiones y de su forma de estar en el mundo. Tiene subtítulos en español.',
+            'Tiene discalculia y cuenta cómo son las matemáticas en su día a día, en el trabajo y en los estudios. Es voluntario de Dyscalculia Network, no profesional clínico.': 'Tiene discalculia y cuenta cómo son las matemáticas en su día a día, en el trabajo y en los estudios. También visibiliza la discalculia en adultos desde Dyscalculia Network.',
+            'Diagnosticado de dificultades del lenguaje desde los cinco años. Lo grabó él durante el confinamiento y cuenta qué apoyos le ayudaron y cuáles no. El TDL es de larga duración: en el vídeo no se promete ninguna cura.': 'Diagnosticado de dificultades del lenguaje desde los cinco años. Lo grabó él durante el confinamiento y cuenta qué apoyos le ayudaron, cuáles no y cómo ha sido crecer con TDL.',
+            'Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, no cómo se diagnostica: la ruta clínica está en la ficha de TDAH.': 'Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, qué empieza a encajar y cómo cambia la manera de mirarse.',
+            'Ella misma aclara que acompaña desde la experiencia vivida, no desde la terapia ni el coaching, y que convive con el TOC desde los dieciséis años. El tratamiento del TOC lo indica un profesional.': 'Convive con el TOC desde los dieciséis años y habla del pensamiento mágico desde la experiencia vivida. Cuenta cómo aparecen esos pensamientos y cómo se aprende a nombrarlos.',
+            'He shares his experience of late diagnosis, autism and adult life. It is a personal account: useful for hearing how he lives it, not for turning his case into a general rule.': 'He shares his experience of late diagnosis, autism and adult life. He talks about identity, understanding yourself better, and what changes when you finally find a name for what you have been living with for years.',
+            'He has communicated with AAC for more than six decades. He talks about his own life, not about how a system is introduced: the decision about which system each person needs is made with professionals. It has Spanish subtitles.': 'He has communicated with AAC for more than six decades. He talks about how augmentative and alternative communication is part of his life, his choices and his way of being in the world. It has Spanish subtitles.',
+            'He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He is a volunteer with Dyscalculia Network, not a clinical professional.': 'He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He also raises the visibility of dyscalculia in adults through Dyscalculia Network.',
+            'Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him and which did not. DLD is long-term: the video does not promise a cure.': 'Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him, which did not, and what it has been like to grow up with DLD.',
+            'A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, not how ADHD is diagnosed: the clinical route is in the ADHD page.': 'A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, what starts to make sense, and how the way she sees herself changes.',
+            'She clarifies that she supports others from lived experience, not through therapy or coaching, and that she has lived with OCD since she was sixteen. OCD treatment is indicated by a professional.': 'She has lived with OCD since she was sixteen and speaks about magical thinking from lived experience. She explains how those thoughts appear and how she learned to name them.',
+            'Voces, entrevistas y música elegida para acompañar la lectura. Suena en cualquier momento, mientras navegas.': 'Voces, entrevistas y música elegida para leer con calma. Suena en cualquier momento, mientras navegas.',
+            'Voices, interviews and music chosen to keep you company while you read. It plays while you browse.': 'Voices, interviews and music chosen for reading calmly. It plays while you browse.',
+            'Vozes, entrevistas e música escolhida para acompanhar a leitura. Toca enquanto você navega.': 'Vozes, entrevistas e música escolhida para ler com calma. Toca enquanto você navega.',
+          }
+          changed = 0
+          for old, new in repl.items():
+              c = html.count(old)
+              if c:
+                  html = html.replace(old, new)
+                  changed += c
+          html = re.sub(r'\s*La explicación clínica está en las fichas de tema\.\s*', ' ', html)
+          html = re.sub(r'\s*The clinical explanation is in the topic pages\.\s*', ' ', html)
+          html = re.sub(r'\s*A explicação clínica está nas fichas de tema\.\s*', ' ', html)
+          html = re.sub(r' {2,}', ' ', html)
+          if changed < 20:
+              raise SystemExit(f'Reemplazos insuficientes: {changed}')
+          path.write_text(html, encoding='utf-8')
+          forbidden = [
+            'pauta general','no una pauta','lo que a ella le funcionó','no es lo que hay que hacer','convertir su caso',
+            'general rule','not a set of instructions','what worked for them','not what you have to do','turning his case',
+            'no de cómo se implanta','not about how a system is introduced','no se promete ninguna cura','does not promise a cure',
+            'profesional clínico','clinical professional','no cómo se diagnostica','not how ADHD is diagnosed',
+            'ruta clínica','clinical route','la explicación clínica','the clinical explanation','explicação clínica',
+            'consulta ni como profesional','does not speak from a clinic',
+            'servicio de mentoría','mentoría de pago','servicio de pago','vive de acompañar',
+            'acompaña desde','accompanying other people','keep you company while you read','acompañando'
+          ]
+          txt = path.read_text(encoding='utf-8')
+          hits = {term: txt.lower().count(term.lower()) for term in forbidden if term.lower() in txt.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en videos: ' + repr(hits))
+          musts = ['Una persona cuenta en primera persona cómo lo vive.','Publicado por una entidad. Reúne información','Divulgación profesional: organiza ideas','Habla de identidad, de entenderse mejor','comunicación aumentativa y alternativa forma parte de su vida','qué empieza a encajar','cómo se aprende a nombrarlos','A person speaks in the first person','He talks about identity','what starts to make sense','Professional outreach: it organises ideas']
+          for m in musts:
+              if m not in txt:
+                  raise SystemExit('Falta texto nuevo: ' + m)
+          subprocess.run([sys.executable, 'scripts/build_site.py'], check=True)
+          dist = Path('dist/es/videos/index.html').read_text(encoding='utf-8')
+          hits = {term: dist.lower().count(term.lower()) for term in forbidden if term.lower() in dist.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en dist: ' + repr(hits))
+          print('videos-tono-notas-v3-ok', changed)
+          PY
+          git restore reports/initial-data-build.json reports/routes/build.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 1
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          git add es/videos/index.html
+          git commit -m "Reescribir notas de videos sin advertencias"
+          git push origin "$BR" --force-with-lease
