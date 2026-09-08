@@ -1,0 +1,97 @@
+name: Recuperación estable · idioma y música
+on:
+  push:
+    branches: ['recuperacion-estable-20260908']
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'assets/interfaz-comun.js'
+      - 'assets/musica.js'
+      - '.github/workflows/recuperacion-estable.yml'
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar Chromium y web local
+        run: |
+          python3 -m venv /tmp/ig-recovery
+          /tmp/ig-recovery/bin/pip -q install playwright==1.55.0
+          /tmp/ig-recovery/bin/python -m playwright install --with-deps chromium >/tmp/ig-playwright.log 2>&1
+          python3 scripts/build_site.py
+          cd dist
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/ig-http.log 2>&1 &
+          echo $! >/tmp/ig-http.pid
+      - name: Probar idioma, PT y Música
+        run: |
+          /tmp/ig-recovery/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json, re, time
+
+          base='http://127.0.0.1:8000'
+          report={'pages':{},'music':{},'failures':[]}
+
+          def exact_pt(page):
+              return page.locator('a:visible,button:visible,span:visible').filter(has_text=re.compile(r'^PT(?:-BR)?$',re.I)).count()
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              page=browser.new_page(viewport={'width':1280,'height':900})
+              js_errors=[]
+              page.on('pageerror',lambda e: js_errors.append(str(e)))
+
+              for route,expected in [('/', 'es'),('/es/investigacion/','es'),('/es/neurodiversidad/condiciones/','es'),('/en/neurodiversity/conditions/','en')]:
+                  page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                  page.wait_for_timeout(1200)
+                  lang=(page.locator('html').get_attribute('lang') or '').lower()
+                  pt=exact_pt(page)
+                  report['pages'][route]={'lang':lang,'pt_visible':pt,'title':page.title()}
+                  if not lang.startswith(expected):
+                      report['failures'].append(f'{route}: lang={lang}, esperado {expected}')
+                  if pt:
+                      report['failures'].append(f'{route}: PT visible ({pt})')
+
+              for route in ['/', '/es/neurodiversidad/condiciones/']:
+                  requests=[]
+                  def seen(req):
+                      if '/audio/' in req.url: requests.append(req.url)
+                  page.on('request',seen)
+                  page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                  page.wait_for_timeout(1200)
+                  trigger=page.locator('.ig-uh-music,#plBtn,[data-ig-music]').first
+                  exists=trigger.count()>0
+                  opened=False
+                  has_player=False
+                  if exists:
+                      trigger.click()
+                      page.wait_for_timeout(300)
+                      panel=page.locator('#pl')
+                      opened=panel.count()>0 and panel.is_visible()
+                      has_player=page.locator('#pl .ig-mus').count()>0
+                      if has_player:
+                          play=page.get_by_role('button',name=re.compile(r'^(Escuchar|Play)$')).first
+                          if play.count():
+                              play.click()
+                              page.wait_for_timeout(700)
+                  report['music'][route]={'trigger':exists,'opened':opened,'player':has_player,'audio_requests':len(requests)}
+                  if not exists: report['failures'].append(f'{route}: falta disparador de Música')
+                  elif not opened: report['failures'].append(f'{route}: Música no abre')
+                  elif not has_player: report['failures'].append(f'{route}: panel sin reproductor estable')
+
+              browser.close()
+              report['javascript_errors']=js_errors
+
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          with open('/tmp/recuperacion.json','w',encoding='utf-8') as f: json.dump(report,f,ensure_ascii=False,indent=2)
+          if report['failures']:
+              raise SystemExit('\n'.join(report['failures']))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recuperacion-estable-resultados
+          path: /tmp/recuperacion.json
+          retention-days: 7
