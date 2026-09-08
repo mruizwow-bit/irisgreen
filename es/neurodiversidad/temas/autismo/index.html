@@ -407,7 +407,7 @@ class Component extends DCLogic {
     const T = STR[L];
 
     return {
-      langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map(([code, label]) => ({
+      langButtons: [["es", "ES"], ["en", "EN"]].map(([code, label]) => ({
         label,
         bg: st.lang === code ? "#17395c" : "transparent",
         color: st.lang === code ? "#fff" : "#17395c",

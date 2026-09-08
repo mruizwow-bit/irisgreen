@@ -536,3 +536,5 @@ body.tts [data-read]{cursor:pointer}
 .azl:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #cuenta{margin:0;font-size:.95rem;color:#5a6675}
+/* V39 · PT-BR en pausa: tampoco en la cabecera generada. */
+.ig-uh-langs button[data-lang="pt" i],.ig-uh-langs button[lang="pt-BR" i]{display:none}
