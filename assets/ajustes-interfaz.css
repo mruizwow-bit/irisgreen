@@ -39,7 +39,7 @@ button,input,select,textarea{min-width:0}
 .ig-video-title:hover{text-decoration:underline}
 #consola>div:first-child{flex-wrap:wrap}
 #consola input[type=search]{min-width:0;width:100%}
-@media(max-width:1500px){
+@media(max-width:1700px){
  .hd .nav,.ig-uh .ig-uh-nav{justify-content:flex-start!important;flex-basis:100%!important}
  .hd,.ig-uh-inner{flex-wrap:wrap!important}
 }
