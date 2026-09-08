@@ -1,63 +1,3 @@
-/* Mantener el idioma elegido al saltar entre páginas estáticas y dinámicas.
-   Las rutas /en/ y /pt-br/ son inequívocas. Las páginas /es/ que traducen
-   dentro de la misma URL siguen decidiendo su idioma desde ig_lang. */
-(function () {
-  'use strict';
-  function codeFromLang(value) {
-    value=String(value||'').toLowerCase();
-    if(value.indexOf('en')===0)return 'en';
-    if(value.indexOf('pt')===0)return 'pt';
-    if(value.indexOf('es')===0)return 'es';
-    return null;
-  }
-  function remember(code) {
-    if(!code)return;
-    try { localStorage.setItem('ig_lang',code); } catch (_) {}
-  }
-  function english(){return codeFromLang(document.documentElement.lang)==='en';}
-  function labelElement(control,text){
-    if(!control)return;
-    var span=control.querySelector('span');
-    if(span)span.textContent=text;
-  }
-  /* Small shared chrome only. This never translates article/content text and does
-     not observe or rebuild the document. It keeps the common controls coherent
-     when a dynamic page changes the html lang attribute in place. */
-  function syncChromeLanguage(){
-    var en=english();
-    document.querySelectorAll('.ig-menu-button').forEach(function(button){
-      button.textContent=en?'Menu':'Menú';
-      button.setAttribute('aria-label',en?'Open menu':'Abrir menú');
-    });
-    document.querySelectorAll('#ig-main-nav').forEach(function(nav){nav.setAttribute('aria-label',en?'Explore':'Explorar');});
-    document.querySelectorAll('.ig-uh-music,#plBtn').forEach(function(control){
-      labelElement(control,en?'Music':'Música');
-      control.setAttribute('aria-label',en?'Music':'Música');
-      if(control.hasAttribute('title'))control.setAttribute('title',en?'Music':'Música');
-    });
-    document.querySelectorAll('.ig-uh-reading,#a11yBtn').forEach(function(control){
-      labelElement(control,en?'Reading':'Lectura');
-      control.setAttribute('aria-label',en?'Accessible reading':'Lectura accesible');
-      if(control.hasAttribute('title'))control.setAttribute('title',en?'Reading':'Lectura');
-    });
-    document.querySelectorAll('.ig-uh-langs,.langs').forEach(function(nav){nav.setAttribute('aria-label',en?'Language':'Idioma');});
-    document.querySelectorAll('[data-ig-reading-close]').forEach(function(button){button.setAttribute('aria-label',en?'Close reading settings':'Cerrar opciones de lectura');});
-  }
-  function scheduleChrome(){requestAnimationFrame(syncChromeLanguage);}
-  var path=location.pathname;
-  if(/^\/en(?:\/|$)/.test(path))remember('en');
-  else if(/^\/pt-br(?:\/|$)/.test(path))remember('pt');
-  /* Explicit language links must update the shared preference before navigation.
-     This also makes EN → ES → dynamic-page round trips deterministic. */
-  document.addEventListener('click',function(event){
-    var link=event.target.closest('a[lang]');
-    if(link)remember(codeFromLang(link.getAttribute('lang')));
-    if(link||event.target.closest('.ig-uh-langs button,.langs button'))scheduleChrome();
-  },true);
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',syncChromeLanguage,{once:true});else syncChromeLanguage();
-  new MutationObserver(syncChromeLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-})();
-
 /* Controles compartidos; no observa ni reconstruye el documento. */
 (function () {
   'use strict';
@@ -119,7 +59,7 @@
     document.dispatchEvent(new CustomEvent('ig:panel-opening',{detail:'reading'}));
     if(typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();
     var close=p.querySelector('[data-ig-reading-close]');
-    if(close){close.setAttribute('aria-label',label());close.focus({preventScroll:true});}
+    if(close)close.focus({preventScroll:true});
   }
   function schedule(){if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(synchronize);}
   function closeReading(back){
