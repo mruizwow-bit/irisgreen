@@ -1,0 +1,69 @@
+name: Probar preview 14 selector visible
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/probar-preview-14-selector-visible.yml
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+      - name: Probar selector visible en preview 14
+        env:
+          BASE: https://deploy-preview-14--irisgreen-home.netlify.app
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const checks = [
+            ['/es/datos/', 'ES', '/en/data/'],
+            ['/es/datos/autismo/', 'ES', '/en/data/autism/'],
+            ['/en/data/', 'EN', '/es/datos/'],
+            ['/en/data/autism/', 'EN', '/es/datos/autismo/']
+          ];
+          const widths = [1536, 1366, 1280, 1229];
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            for (const width of widths) {
+              const page = await browser.newPage({ viewport: { width: width, height: 900 } });
+              for (const item of checks) {
+                const url = item[0];
+                const activeExpected = item[1];
+                const expectedOtherHref = item[2];
+                const res = await page.goto(process.env.BASE + url, { waitUntil: 'networkidle' });
+                if (!res || res.status() >= 400) throw new Error(url + ' status ' + (res && res.status()));
+                const labels = await page.locator('nav.langs .lang').evaluateAll(els => els.map(e => {
+                  const r = e.getBoundingClientRect();
+                  return { text: e.textContent.trim(), visible: !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length), left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+                }));
+                if (labels.map(x => x.text).join(' ') !== 'ES EN') throw new Error(url + ' selector DOM: ' + JSON.stringify(labels));
+                for (const l of labels) {
+                  if (!l.visible) throw new Error(url + ' ' + l.text + ' no visible en ' + width);
+                  if (l.left < 0 || l.right > width || l.top < 0 || l.bottom > 900) throw new Error(url + ' ' + l.text + ' fuera de viewport ' + width + ': ' + JSON.stringify(l));
+                }
+                const active = await page.locator('nav.langs [aria-current="true"], nav.langs .on').innerText();
+                if (!active.includes(activeExpected)) throw new Error(url + ' activo ' + active + ', esperado ' + activeExpected);
+                const other = activeExpected === 'ES' ? page.locator('nav.langs a[lang="en"]') : page.locator('nav.langs a[lang="es"]');
+                const href = await other.getAttribute('href');
+                if (href !== expectedOtherHref) throw new Error(url + ' href incorrecto: ' + href + ' esperado ' + expectedOtherHref);
+                const content = await page.content();
+                if (content.includes('PT-BR') || content.includes('lang="pt-BR"')) throw new Error(url + ' conserva PT-BR');
+              }
+              await page.goto(process.env.BASE + '/es/datos/', { waitUntil: 'networkidle' });
+              await page.click('nav.langs a[lang="en"]');
+              await page.waitForURL('**/en/data/');
+              const h1 = await page.locator('h1').first().innerText();
+              if (!h1.includes('Neurodiversity')) throw new Error('Click EN no abre Datos EN');
+              await page.close();
+            }
+            await browser.close();
+            console.log('preview-14-selector-visible-ok');
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
