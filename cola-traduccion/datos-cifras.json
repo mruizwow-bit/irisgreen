@@ -1,0 +1,522 @@
+[
+  {
+    "id": "DAT-CIF-001",
+    "pagina": 0,
+    "campo": ".paginas[0].cifras[0].cifra",
+    "texto": "61,8 millones",
+    "title": "Autismo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-002",
+    "pagina": 0,
+    "campo": ".paginas[0].cifras[1].cifra",
+    "texto": "1 de cada 127 personas",
+    "title": "Autismo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-003",
+    "pagina": 1,
+    "campo": ".paginas[1].cifras[0].cifra",
+    "texto": "1.064,7 por 100.000",
+    "title": "Autismo: diferencias por sexo en la estimación mundial",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-004",
+    "pagina": 1,
+    "campo": ".paginas[1].cifras[1].cifra",
+    "texto": "508,1 por 100.000",
+    "title": "Autismo: diferencias por sexo en la estimación mundial",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-005",
+    "pagina": 2,
+    "campo": ".paginas[2].cifras[0].cifra",
+    "texto": "11,5 millones de DALYs",
+    "title": "Autismo: carga de salud poblacional",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-006",
+    "pagina": 3,
+    "campo": ".paginas[3].cifras[0].cifra",
+    "texto": "317 millones",
+    "title": "Discapacidad del desarrollo en niños y jóvenes",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-007",
+    "pagina": 6,
+    "campo": ".paginas[6].cifras[1].cifra",
+    "texto": "139,84 millones de adultos",
+    "title": "TDAH en adultos",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-008",
+    "pagina": 6,
+    "campo": ".paginas[6].cifras[3].cifra",
+    "texto": "366,33 millones de adultos",
+    "title": "TDAH en adultos",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-009",
+    "pagina": 9,
+    "campo": ".paginas[9].cifras[0].cifra",
+    "texto": "1 de cada 162 niños · 0,6 %",
+    "title": "Síndrome de Tourette: prevalencia estimada e identificación",
+    "territorio": "Mundo / EE. UU."
+  },
+  {
+    "id": "DAT-CIF-010",
+    "pagina": 9,
+    "campo": ".paginas[9].cifras[1].cifra",
+    "texto": "1 de cada 333 · 0,3 %",
+    "title": "Síndrome de Tourette: prevalencia estimada e identificación",
+    "territorio": "Mundo / EE. UU."
+  },
+  {
+    "id": "DAT-CIF-011",
+    "pagina": 11,
+    "campo": ".paginas[11].cifras[0].cifra",
+    "texto": "Sin cifra mundial única seleccionada",
+    "title": "Discalculia y disgrafía: por qué no damos una cifra mundial única",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-012",
+    "pagina": 12,
+    "campo": ".paginas[12].cifras[0].cifra",
+    "texto": "359 millones",
+    "title": "Trastornos de ansiedad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-013",
+    "pagina": 12,
+    "campo": ".paginas[12].cifras[2].cifra",
+    "texto": "72 millones de niños y adolescentes",
+    "title": "Trastornos de ansiedad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-014",
+    "pagina": 12,
+    "campo": ".paginas[12].cifras[3].cifra",
+    "texto": "Solo alrededor de 1 de cada 4 recibe tratamiento",
+    "title": "Trastornos de ansiedad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-015",
+    "pagina": 15,
+    "campo": ".paginas[15].cifras[0].cifra",
+    "texto": "1.300 millones",
+    "title": "Discapacidad significativa",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-016",
+    "pagina": 15,
+    "campo": ".paginas[15].cifras[1].cifra",
+    "texto": "16 % de la población mundial",
+    "title": "Discapacidad significativa",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-017",
+    "pagina": 15,
+    "campo": ".paginas[15].cifras[2].cifra",
+    "texto": "1 de cada 6",
+    "title": "Discapacidad significativa",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-018",
+    "pagina": 16,
+    "campo": ".paginas[16].cifras[0].cifra",
+    "texto": "Hasta 20 años antes",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-019",
+    "pagina": 16,
+    "campo": ".paginas[16].cifras[1].cifra",
+    "texto": "Mortalidad 2–3 veces mayor",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-020",
+    "pagina": 16,
+    "campo": ".paginas[16].cifras[2].cifra",
+    "texto": "Entre 2 y 4 veces mayor probabilidad",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-021",
+    "pagina": 16,
+    "campo": ".paginas[16].cifras[3].cifra",
+    "texto": "Hasta 6 veces más obstáculo",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-022",
+    "pagina": 16,
+    "campo": ".paginas[16].cifras[4].cifra",
+    "texto": "Hasta 15 veces más limitante",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-023",
+    "pagina": 17,
+    "campo": ".paginas[17].cifras[0].cifra",
+    "texto": "Casi 240 millones",
+    "title": "Niños con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-024",
+    "pagina": 17,
+    "campo": ".paginas[17].cifras[1].cifra",
+    "texto": "1 de cada 10 niños",
+    "title": "Niños con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-025",
+    "pagina": 18,
+    "campo": ".paginas[18].cifras[0].cifra",
+    "texto": "49 % más propensos",
+    "title": "Educación y discapacidad infantil",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-026",
+    "pagina": 18,
+    "campo": ".paginas[18].cifras[1].cifra",
+    "texto": "47 % más propensos",
+    "title": "Educación y discapacidad infantil",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-027",
+    "pagina": 18,
+    "campo": ".paginas[18].cifras[2].cifra",
+    "texto": "33 % más propensos",
+    "title": "Educación y discapacidad infantil",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-028",
+    "pagina": 18,
+    "campo": ".paginas[18].cifras[3].cifra",
+    "texto": "27 % más propensos",
+    "title": "Educación y discapacidad infantil",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-029",
+    "pagina": 18,
+    "campo": ".paginas[18].cifras[4].cifra",
+    "texto": "42 % menos propensos",
+    "title": "Educación y discapacidad infantil",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-030",
+    "pagina": 19,
+    "campo": ".paginas[19].cifras[0].cifra",
+    "texto": "51 % más propensos",
+    "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-031",
+    "pagina": 19,
+    "campo": ".paginas[19].cifras[1].cifra",
+    "texto": "41 % más propensos",
+    "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-032",
+    "pagina": 19,
+    "campo": ".paginas[19].cifras[2].cifra",
+    "texto": "32 % más propensos",
+    "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-033",
+    "pagina": 19,
+    "campo": ".paginas[19].cifras[3].cifra",
+    "texto": "24 % menos propensos",
+    "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-034",
+    "pagina": 20,
+    "campo": ".paginas[20].cifras[0].cifra",
+    "texto": "Más de 2.500 millones",
+    "title": "Tecnología y productos de apoyo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-035",
+    "pagina": 20,
+    "campo": ".paginas[20].cifras[1].cifra",
+    "texto": "Casi 1.000 millones",
+    "title": "Tecnología y productos de apoyo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-036",
+    "pagina": 20,
+    "campo": ".paginas[20].cifras[2].cifra",
+    "texto": "Entre 3 % y 90 %",
+    "title": "Tecnología y productos de apoyo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-037",
+    "pagina": 20,
+    "campo": ".paginas[20].cifras[3].cifra",
+    "texto": "3.500 millones en 2050",
+    "title": "Tecnología y productos de apoyo",
+    "territorio": "Mundo"
+  },
+  {
+    "id": "DAT-CIF-038",
+    "pagina": 21,
+    "campo": ".paginas[21].cifras[0].cifra",
+    "texto": "Aproximadamente 1 de cada 3",
+    "title": "Empleo y discapacidad",
+    "territorio": "61 países"
+  },
+  {
+    "id": "DAT-CIF-039",
+    "pagina": 21,
+    "campo": ".paginas[21].cifras[1].cifra",
+    "texto": "7 de cada 10",
+    "title": "Empleo y discapacidad",
+    "territorio": "61 países"
+  },
+  {
+    "id": "DAT-CIF-040",
+    "pagina": 22,
+    "campo": ".paginas[22].cifras[0].cifra",
+    "texto": "12 % menos por hora",
+    "title": "Brecha salarial y discapacidad",
+    "territorio": "30 países"
+  },
+  {
+    "id": "DAT-CIF-041",
+    "pagina": 22,
+    "campo": ".paginas[22].cifras[1].cifra",
+    "texto": "Tres cuartas partes de la brecha",
+    "title": "Brecha salarial y discapacidad",
+    "territorio": "30 países"
+  },
+  {
+    "id": "DAT-CIF-042",
+    "pagina": 22,
+    "campo": ".paginas[22].cifras[2].cifra",
+    "texto": "Países de ingresos bajos y medio-bajos",
+    "title": "Brecha salarial y discapacidad",
+    "territorio": "30 países"
+  },
+  {
+    "id": "DAT-CIF-043",
+    "pagina": 23,
+    "campo": ".paginas[23].cifras[0].cifra",
+    "texto": "24,2 puntos porcentuales",
+    "title": "Brecha de empleo asociada a discapacidad",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-044",
+    "pagina": 24,
+    "campo": ".paginas[24].cifras[0].cifra",
+    "texto": "Algo más del 56 %",
+    "title": "Participación laboral y discapacidad",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-045",
+    "pagina": 24,
+    "campo": ".paginas[24].cifras[1].cifra",
+    "texto": "Aproximadamente 84 %",
+    "title": "Participación laboral y discapacidad",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-046",
+    "pagina": 30,
+    "campo": ".paginas[30].cifras[0].cifra",
+    "texto": "Oficinas administrativas y servicios públicos",
+    "title": "Discriminación percibida en la vida cotidiana",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-047",
+    "pagina": 30,
+    "campo": ".paginas[30].cifras[1].cifra",
+    "texto": "Búsqueda de vivienda",
+    "title": "Discriminación percibida en la vida cotidiana",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-048",
+    "pagina": 30,
+    "campo": ".paginas[30].cifras[2].cifra",
+    "texto": "Espacios públicos",
+    "title": "Discriminación percibida en la vida cotidiana",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-049",
+    "pagina": 30,
+    "campo": ".paginas[30].cifras[3].cifra",
+    "texto": "Instituciones educativas",
+    "title": "Discriminación percibida en la vida cotidiana",
+    "territorio": "Unión Europea"
+  },
+  {
+    "id": "DAT-CIF-050",
+    "pagina": 31,
+    "campo": ".paginas[31].cifras[0].cifra",
+    "texto": "1 de cada 31 · 3,22 %",
+    "title": "Autismo identificado en niños de 8 años",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-051",
+    "pagina": 31,
+    "campo": ".paginas[31].cifras[1].cifra",
+    "texto": "Variación territorial",
+    "title": "Autismo identificado en niños de 8 años",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-052",
+    "pagina": 32,
+    "campo": ".paginas[32].cifras[0].cifra",
+    "texto": "49,2 por 1.000",
+    "title": "Diferencia por sexo en identificación de autismo",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-053",
+    "pagina": 32,
+    "campo": ".paginas[32].cifras[1].cifra",
+    "texto": "14,3 por 1.000",
+    "title": "Diferencia por sexo en identificación de autismo",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-054",
+    "pagina": 32,
+    "campo": ".paginas[32].cifras[2].cifra",
+    "texto": "3,4 veces",
+    "title": "Diferencia por sexo en identificación de autismo",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-055",
+    "pagina": 33,
+    "campo": ".paginas[33].cifras[0].cifra",
+    "texto": "47 meses",
+    "title": "Edad del diagnóstico de autismo documentado",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-056",
+    "pagina": 35,
+    "campo": ".paginas[35].cifras[0].cifra",
+    "texto": "11,4 % · 7,1 millones",
+    "title": "TDAH infantil",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-057",
+    "pagina": 35,
+    "campo": ".paginas[35].cifras[1].cifra",
+    "texto": "10,5 % · 6,5 millones",
+    "title": "TDAH infantil",
+    "territorio": "Estados Unidos"
+  },
+  {
+    "id": "DAT-CIF-058",
+    "pagina": 36,
+    "campo": ".paginas[36].cifras[0].cifra",
+    "texto": "Aproximadamente 3 de cada 10",
+    "title": "Empleo y autismo",
+    "territorio": "Reino Unido"
+  },
+  {
+    "id": "DAT-CIF-059",
+    "pagina": 37,
+    "campo": ".paginas[37].cifras[0].cifra",
+    "texto": "Aproximadamente un tercio menos",
+    "title": "Brecha salarial en autismo",
+    "territorio": "Reino Unido"
+  },
+  {
+    "id": "DAT-CIF-060",
+    "pagina": 40,
+    "campo": ".paginas[40].cifras[0].cifra",
+    "texto": "290.900 personas",
+    "title": "Autismo en la población",
+    "territorio": "Australia"
+  },
+  {
+    "id": "DAT-CIF-061",
+    "pagina": 40,
+    "campo": ".paginas[40].cifras[1].cifra",
+    "texto": "1,1 % de la población australiana",
+    "title": "Autismo en la población",
+    "territorio": "Australia"
+  },
+  {
+    "id": "DAT-CIF-062",
+    "pagina": 40,
+    "campo": ".paginas[40].cifras[2].cifra",
+    "texto": "Por sexo",
+    "title": "Autismo en la población",
+    "territorio": "Australia"
+  },
+  {
+    "id": "DAT-CIF-063",
+    "pagina": 40,
+    "campo": ".paginas[40].cifras[3].cifra",
+    "texto": "Por edad",
+    "title": "Autismo en la población",
+    "territorio": "Australia"
+  },
+  {
+    "id": "DAT-CIF-064",
+    "pagina": 44,
+    "campo": ".paginas[44].cifras[0].cifra",
+    "texto": "1 de cada 50",
+    "title": "Autismo en niños y jóvenes",
+    "territorio": "Canadá"
+  },
+  {
+    "id": "DAT-CIF-065",
+    "pagina": 44,
+    "campo": ".paginas[44].cifras[2].cifra",
+    "texto": "Por sexo",
+    "title": "Autismo en niños y jóvenes",
+    "territorio": "Canadá"
+  }
+]
