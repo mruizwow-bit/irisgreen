@@ -1,0 +1,73 @@
+name: Fix tono video Dan
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/fix-video-dan-tono-20260908.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Corregir nota y auditar tono
+        shell: bash
+        run: |
+          set -euo pipefail
+          BR="fix/video-dan-tono-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+          path = Path('es/videos/index.html')
+          html = path.read_text(encoding='utf-8')
+          replacements = {
+            'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Es un relato personal: sirve para escuchar cómo lo vive él, no para convertir su caso en una pauta general.':
+            'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad, de entenderse mejor y de lo que cambia cuando por fin encuentras un nombre para lo que llevabas años viviendo.',
+            'He shares his experience of late diagnosis, autism and adult life. It is a personal account: useful for hearing how he lives it, not for turning his case into a general rule.':
+            'He shares his experience of late diagnosis, autism and adult life. He talks about identity, understanding yourself better, and what changes when you finally find a name for what you have been living with for years.',
+          }
+          changed = False
+          for old, new in replacements.items():
+              if old in html:
+                  html = html.replace(old, new, 1)
+                  changed = True
+          if not changed:
+              raise SystemExit('No he encontrado la nota exacta de Dan para sustituirla')
+          path.write_text(html, encoding='utf-8')
+          bad_terms = [
+            'pauta general', 'general rule', 'convertir su caso', 'turning his case',
+            'servicio de mentoría', 'mentoría de pago', 'servicio de pago',
+            'acompañ', 'accompanying other people', 'lives from', 'vive de'
+          ]
+          all_text = path.read_text(encoding='utf-8')
+          found = {term: all_text.lower().count(term.lower()) for term in bad_terms if term.lower() in all_text.lower()}
+          if found:
+              raise SystemExit('Restos de tono no permitido en videos: ' + repr(found))
+          subprocess.run([sys.executable, 'scripts/build_site.py'], check=True)
+          dist = Path('dist/es/videos/index.html').read_text(encoding='utf-8')
+          for must in [
+              'Habla de identidad, de entenderse mejor',
+              'He talks about identity, understanding yourself better'
+          ]:
+              if must not in dist:
+                  raise SystemExit('No aparece en dist: ' + must)
+          for term in bad_terms:
+              if term.lower() in dist.lower():
+                  raise SystemExit('Restos en dist: ' + term)
+          print('video-dan-tono-ok')
+          PY
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          test "$(cat /tmp/changed.txt | wc -l)" -eq 1
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          git add es/videos/index.html
+          git commit -m "Corregir tono de la nota de Dan"
+          git push origin "$BR" --force-with-lease
