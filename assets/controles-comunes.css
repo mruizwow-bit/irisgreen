@@ -31,3 +31,6 @@ html[data-ig-controls="big"]{--ig-control-height:56px}
 /* El mismo foco y la misma separación en los buscadores de sección. */
 :is(.secfind input[type=search],#situationsSearch,#vd-search,#q[type=search]):focus{outline:3px solid #5a49a8!important;outline-offset:3px!important}
 :is(.secfind .chips,.secfind .azidx,.situations-filter-row){margin:0!important}
+
+/* PT-BR permanece fuera de la interfaz mientras no esté activo globalmente. */
+.langs a[lang^="pt"],.langs a[hreflang^="pt"]{display:none!important}

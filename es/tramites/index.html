@@ -359,7 +359,7 @@ class Component extends DCLogic {
     const letter = T.letterBody(T.needs[st.need].toLowerCase(), T.letterFor[st.who]);
 
     return {
-      langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map(([code, label]) => ({
+      langButtons: [["es", "ES"]].map(([code, label]) => ({
         label,
         bg: st.lang === code ? "#17395c" : "transparent",
         color: st.lang === code ? "#fff" : "#17395c",

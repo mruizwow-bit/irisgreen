@@ -314,7 +314,7 @@ class Component extends DCLogic {
     });
 
     return {
-      langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map(([code, label]) => ({
+      langButtons: [["es", "ES"]].map(([code, label]) => ({
         label,
         pick: () => this.setLang(code),
         bg: (this.state.lang || "es") === code ? "#17395c" : "#fff",
