@@ -1,0 +1,479 @@
+[
+  {
+    "n": 1,
+    "territorio": "Mundo",
+    "title": "Autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2021 se estimó que 61,8 millones de personas —aproximadamente 1 de cada 127— eran autistas en el mundo. Es una estimación modelizada del Global Burden of Disease 2021, no un recuento de diagnósticos. La OMS utiliza actualmente esta cifra y advierte de que la prevalencia observada varía mucho entre estudios y sigue siendo desconocida en numerosos países de ingresos bajos y medios."
+      }
+    ],
+    "refTemporal": "2021 · 2025; OMS actualiza la ficha en 2025.",
+    "anioDatos": "2021",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "2025; OMS actualiza la ficha en 2025",
+    "revision": "Cada año",
+    "poblacion": "personas autistas estimadas en 2021",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "61,8 millones",
+        "pie": "personas autistas estimadas en 2021",
+        "b": [
+          {
+            "t": "p",
+            "text": "El estudio Global Burden of Disease 2021 estimó 61,8 millones de personas autistas en el mundo, con un intervalo de incertidumbre de 52,1 a 72,7 millones."
+          },
+          {
+            "t": "p",
+            "text": "Eso equivale aproximadamente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "1 de cada 127 personas",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "La prevalencia mundial estandarizada por edad se estimó en 788,3 por cada 100.000 personas."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La cifra intenta estimar la prevalencia de autismo en todas las edades a escala mundial mediante modelización epidemiológica. Por eso puede aproximarse a poblaciones donde no existe un registro diagnóstico completo, pero no debe confundirse con el número de diagnósticos emitidos por los servicios sanitarios o educativos."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cítala como una estimación mundial modelizada, no como un recuento de diagnósticos. Mantén juntos 61,8 millones, 1 de cada 127, el año 2021 y la referencia GBD/OMS."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La estimación anterior del GBD 2019 era mucho menor. El propio estudio explica que una parte importante de la diferencia se debe a cambios metodológicos, incluido dejar de depender de estudios de identificación pasiva que podían infravalorar la prevalencia. Por tanto, no debe presentarse el salto entre GBD 2019 y GBD 2021 como un aumento real de autismo en solo dos años."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 0
+  },
+  {
+    "n": 2,
+    "territorio": "Mundo",
+    "title": "Autismo: diferencias por sexo en la estimación mundial",
+    "lede": [
+      {
+        "t": "p",
+        "text": "El modelo mundial GBD 2021 estimó 1.064,7 personas autistas por cada 100.000 varones y 508,1 por cada 100.000 mujeres. Son estimaciones epidemiológicas modelizadas y no equivalen a la proporción de diagnósticos registrada por los servicios sanitarios o educativos."
+      }
+    ],
+    "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+    "anioDatos": "2021",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "GBD 2021 / publicación científica 2025",
+    "revision": "Cada 2 años o cuando cambie GBD",
+    "poblacion": "prevalencia estandarizada por edad en varones",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "1.064,7 por 100.000",
+        "pie": "prevalencia estandarizada por edad en varones",
+        "b": []
+      },
+      {
+        "cifra": "508,1 por 100.000",
+        "pie": "prevalencia estandarizada por edad en mujeres",
+        "b": [
+          {
+            "t": "p",
+            "text": "El GBD 2021 estimó una prevalencia modelizada aproximadamente dos veces mayor en varones que en mujeres."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La comparación utiliza tasas estandarizadas por edad del mismo modelo mundial. Sirve para observar una diferencia estimada entre varones y mujeres y, al compararla con ratios de diagnóstico más altas, mostrar que identificación y prevalencia no son exactamente lo mismo."
+      },
+      {
+        "t": "p",
+        "text": "Las ratios de diagnóstico suelen ser más altas que esta diferencia modelizada. Una revisión de 54 estudios y más de 13,7 millones de participantes encontró que la ratio varón:mujer era 4,20:1 al agrupar todos los estudios, pero bajaba a 3,25:1 en los estudios que cribaban a la población general en lugar de partir solo de diagnósticos ya existentes."
+      },
+      {
+        "t": "p",
+        "text": "Esto es compatible con la existencia de sesgo de identificación: las cifras de diagnóstico no miden únicamente prevalencia."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita siempre que las tasas por sexo son estimaciones modelizadas estandarizadas por edad. No las presentes como ratio mundial de diagnósticos ni como una diferencia biológica cerrada."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 1
+  },
+  {
+    "n": 3,
+    "territorio": "Mundo",
+    "title": "Autismo: carga de salud poblacional",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2021, el modelo Global Burden of Disease estimó 11,5 millones de DALYs asociados al autismo. Esta medida sirve para estudiar carga de salud a escala poblacional; no describe la experiencia, la calidad de vida ni las necesidades individuales de una persona autista."
+      }
+    ],
+    "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+    "anioDatos": "2021",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "GBD 2021 / publicación científica 2025",
+    "revision": "Cada 2 años o cuando cambie GBD",
+    "poblacion": "Población del modelo GBD para 2021, no un recuento de personas",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "11,5 millones de DALYs",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "El GBD 2021 estimó que el autismo representó 11,5 millones de años de vida ajustados por discapacidad (DALYs) en 2021."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Los DALYs son una medida de carga de salud poblacional. Se usan para comparar condiciones dentro de los modelos GBD; no indican cuántos años pierde una persona concreta ni resumen su calidad de vida, autonomía, apoyos o fortalezas."
+      },
+      {
+        "t": "p",
+        "text": "Un DALY es una medida de carga de salud poblacional. No significa que una persona autista “pierda” literalmente un número concreto de años de vida. Combina años de vida perdidos por mortalidad prematura y años vividos con discapacidad según el modelo GBD."
+      },
+      {
+        "t": "p",
+        "text": "En autismo, esta cifra debe usarse con mucha cautela porque depende de los pesos de discapacidad del modelo y no describe fortalezas, calidad de vida individual ni necesidades concretas de una persona."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Si se utiliza el dato de DALYs, explica qué es un DALY. No lo traduzcas a ‘años de vida perdidos por cada persona autista’ ni lo uses como medida individual de calidad de vida."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "decisión editorial",
+    "_index": 2
+  },
+  {
+    "n": 4,
+    "territorio": "Mundo",
+    "title": "Discapacidad del desarrollo en niños y jóvenes",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2019, aproximadamente 317 millones de niños y jóvenes en el mundo vivían con condiciones de salud que contribuyen a una discapacidad del desarrollo. El informe conjunto de OMS y UNICEF señala además barreras sanitarias, estigma, prejuicio y exclusión social."
+      }
+    ],
+    "refTemporal": "2019 · OMS/UNICEF, 2023.",
+    "anioDatos": "2019",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "OMS/UNICEF, 2023",
+    "revision": "Cada año",
+    "poblacion": "niños, adolescentes y jóvenes afectados en 2019",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "317 millones",
+        "pie": "niños, adolescentes y jóvenes que viven con esas condiciones en 2019",
+        "b": [
+          {
+            "t": "p",
+            "text": "OMS y UNICEF estimaron que en 2019 aproximadamente 317 millones de niños y jóvenes vivían con condiciones de salud que contribuyen a una discapacidad del desarrollo."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El dato agrupa a niños y jóvenes con condiciones de salud que contribuyen a una discapacidad del desarrollo. El marco es más amplio que autismo, TDAH o cualquier otra condición neurodivergente concreta, por lo que no puede convertirse en un recuento mundial de neurodivergencia."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita ‘condiciones de salud que contribuyen a una discapacidad del desarrollo’. No sustituyas esa expresión por ‘317 millones de niños neurodivergentes’."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Esta cifra no significa 317 millones de niños neurodivergentes. El marco incluye un conjunto amplio de condiciones congénitas o adquiridas que pueden producir discapacidad del desarrollo."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 3
+  },
+  {
+    "n": 5,
+    "territorio": "Mundo",
+    "title": "Por qué faltan datos comparables sobre desarrollo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "No todas las cifras llamadas «mundiales» representan de la misma forma a todas las regiones. Una revisión internacional de 2023 concluyó que, para varias discapacidades del desarrollo, la cobertura geográfica era insuficiente y los métodos demasiado heterogéneos para considerar las estimaciones plenamente representativas del planeta."
+      }
+    ],
+    "refTemporal": "revisiones incluidas hasta la publicación · revisión paraguas, 2023.",
+    "anioDatos": "revisiones incluidas hasta la publicación",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "revisión paraguas, 2023",
+    "revision": "Cada 2 años",
+    "poblacion": "Estudios de países de ingresos altos, con métodos distintos entre sí",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Una revisión paraguas de 2023 examinó estimaciones mundiales de TDAH, autismo, parálisis cerebral, discapacidad intelectual del desarrollo, epilepsia, pérdida auditiva, pérdida visual y dislexia."
+      },
+      {
+        "t": "p",
+        "text": "Su conclusión es importante para la pestaña Datos:"
+      },
+      {
+        "t": "p",
+        "text": "> Muchas estimaciones denominadas «globales» proceden de muestras concentradas en países de ingresos altos y presentan gran heterogeneidad metodológica."
+      }
+    ],
+    "cifras": [],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Aquí no se cuenta población: se evalúa qué tan representativa es la evidencia disponible. La revisión muestra que una cifra llamada global puede apoyarse sobre todo en estudios de países de ingresos altos y en métodos muy distintos entre sí."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Esta página no aporta una prevalencia: documenta una limitación de la evidencia global. Debe citarse como advertencia metodológica."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 4
+  },
+  {
+    "n": 6,
+    "territorio": "Mundo",
+    "title": "TDAH en niños y adolescentes",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Una revisión paraguas internacional que reunió 588 estudios y más de 3,27 millones de participantes estimó una prevalencia agrupada de TDAH del 8,0 % en niños y adolescentes. La cifra fue del 10 % en niños y del 5 % en niñas."
+      }
+    ],
+    "refTemporal": "estudios incluidos en la revisión publicada en 2023 · revisión paraguas, 2023.",
+    "anioDatos": "estudios incluidos en la revisión publicada en 2023",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "revisión paraguas, 2023",
+    "revision": "Cada 2 años",
+    "poblacion": "prevalencia agrupada en una revisión paraguas internacional",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "8,0 %",
+        "pie": "prevalencia agrupada en una revisión paraguas internacional",
+        "b": [
+          {
+            "t": "p",
+            "text": "Una revisión paraguas publicada en 2023 reunió:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "13 revisiones sistemáticas/metaanálisis.",
+              "588 estudios primarios.",
+              "3.277.590 participantes."
+            ]
+          },
+          {
+            "t": "p",
+            "text": "La prevalencia agrupada de TDAH en niños y adolescentes fue 8,0 %, con un IC del 95 % de 6,0 % a 10,0 %."
+          },
+          {
+            "t": "p",
+            "text": "Por sexo:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "10 % en niños.",
+              "5 % en niñas."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El 8,0 % resume resultados de cientos de estudios incluidos en revisiones previas. Es una prevalencia agrupada, útil para conocer el orden de magnitud del TDAH infantil y adolescente, pero no equivale a una tasa administrativa mundial de diagnóstico."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Presenta el 8,0 % como prevalencia agrupada de una revisión paraguas, con su IC del 95 % y el tamaño de la evidencia. No como diagnóstico registrado mundial."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "No es un censo mundial ni una estadística de la OMS. Es una estimación agrupada de estudios con métodos distintos. Debe aparecer como metaanálisis, no como «el 8 % de todos los niños del mundo tiene diagnóstico de TDAH»."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 5
+  },
+  {
+    "n": 7,
+    "territorio": "Mundo",
+    "title": "TDAH en adultos",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Un metaanálisis internacional estimó para 2020 una prevalencia del 2,58 % de TDAH adulto persistente desde la infancia, equivalente a unos 139,84 millones de adultos. Cuando se utilizó una definición de TDAH adulto sintomático sin exigir demostrar inicio infantil, la estimación fue del 6,76 %, unos 366,33 millones. Son definiciones diferentes y no deben presentarse como una sola cifra."
+      }
+    ],
+    "refTemporal": "estructura demográfica mundial de 2020 · metaanálisis, 2021.",
+    "anioDatos": "estructura demográfica mundial de 2020",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "metaanálisis, 2021",
+    "revision": "Cada 2 años",
+    "poblacion": "TDAH adulto persistente desde la infancia",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Hay dos cifras distintas y no deben mezclarse."
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "2,58 %",
+        "pie": "TDAH adulto persistente desde la infancia",
+        "b": [
+          {
+            "t": "p",
+            "text": "Estimación ajustada a la estructura demográfica mundial de 2020:"
+          }
+        ]
+      },
+      {
+        "cifra": "139,84 millones de adultos",
+        "pie": "",
+        "b": []
+      },
+      {
+        "cifra": "6,76 %",
+        "pie": "TDAH adulto sintomático, con independencia de demostrar inicio infantil",
+        "b": [
+          {
+            "t": "p",
+            "text": "Equivalente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "366,33 millones de adultos",
+        "pie": "",
+        "b": []
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El metaanálisis construye dos estimaciones porque utiliza dos definiciones de TDAH adulto. Una exige persistencia desde la infancia y la otra se basa en síntomas adultos sin exigir demostrar ese inicio; por eso los porcentajes y los millones resultantes son diferentes."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Mantén separadas las dos definiciones: TDAH persistente desde la infancia (2,58 %) y TDAH adulto sintomático (6,76 %). No sumes ni promedies ambas cifras."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 6
+  }
+]

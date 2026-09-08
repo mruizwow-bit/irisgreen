@@ -1,0 +1,499 @@
+[
+  {
+    "n": 36,
+    "territorio": "Estados Unidos",
+    "title": "TDAH infantil",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Datos de la National Survey of Children’s Health 2022:"
+      }
+    ],
+    "refTemporal": "2022 · National Survey of Children’s Health / CDC, publicación 2024.",
+    "anioDatos": "2022",
+    "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+    "publicacion": "National Survey of Children’s Health / CDC, publicación 2024",
+    "revision": "Cuando se publique una nueva encuesta comparable",
+    "poblacion": "Niños y adolescentes de 3 a 17 años en Estados Unidos, diagnóstico declarado por progenitores, 2022",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "11,4 % · 7,1 millones",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de niños de 3 a 17 años habían recibido alguna vez un diagnóstico de TDAH según declaración de progenitores."
+          }
+        ]
+      },
+      {
+        "cifra": "10,5 % · 6,5 millones",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "tenían TDAH actual."
+          },
+          {
+            "t": "p",
+            "text": "Entre quienes tenían TDAH actual:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "58,1 % tenía TDAH moderado o grave.",
+              "77,9 % tenía al menos otra condición coexistente.",
+              "53,6 % recibía medicación para TDAH.",
+              "44,4 % había recibido tratamiento conductual durante el año anterior.",
+              "30,1 % no había recibido tratamiento específico para TDAH."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La National Survey of Children’s Health recoge diagnóstico declarado por progenitores. La página distingue haber recibido alguna vez un diagnóstico de TDAH de tener TDAH actual y, dentro de este último grupo, describe gravedad, coexistencia y tratamiento."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Aclara que el diagnóstico fue declarado por progenitores en la National Survey of Children’s Health y distingue ‘alguna vez diagnosticado’ de ‘TDAH actual’."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "_index": 35
+  },
+  {
+    "n": 37,
+    "territorio": "Reino Unido",
+    "title": "Empleo y autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En el Reino Unido, la Buckland Review de 2024 señaló que solo alrededor de 3 de cada 10 personas autistas en edad laboral estaban empleadas, frente a aproximadamente 5 de cada 10 personas con discapacidad y 8 de cada 10 personas sin discapacidad."
+      }
+    ],
+    "refTemporal": "principalmente 2021/22–2022/23 · Buckland Review, 28-02-2024.",
+    "anioDatos": "principalmente 2021/22–2022/23",
+    "metodo": "Revisión y datos oficiales del Reino Unido",
+    "publicacion": "Buckland Review, 28-02-2024",
+    "revision": "Buscar actualización anual",
+    "poblacion": "Personas autistas en edad laboral, frente a personas con discapacidad en conjunto y sin discapacidad",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "La Buckland Review, publicada por el Gobierno británico en febrero de 2024, resume que:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "Aproximadamente 3 de cada 10",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "personas autistas en edad laboral estaban empleadas."
+          },
+          {
+            "t": "p",
+            "text": "Comparación incluida en el informe:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "Autistas: ~3 de cada 10.",
+              "Personas con discapacidad en conjunto: ~5 de cada 10.",
+              "Personas sin discapacidad: ~8 de cada 10."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La Buckland Review compara el empleo de personas autistas en edad laboral con el de personas con discapacidad en conjunto y personas sin discapacidad. Es una fotografía del mercado laboral británico con los últimos datos disponibles para la revisión."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita ‘alrededor de 3 de cada 10’ y atribúyelo a la Buckland Review con los años de datos disponibles. No lo conviertas en tasa mundial."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El informe usa las últimas cifras oficiales disponibles en ese momento, principalmente 2021/22 y 2022/23. No convertirlo en «tasa mundial de empleo autista»."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 36
+  },
+  {
+    "n": 38,
+    "territorio": "Reino Unido",
+    "title": "Brecha salarial en autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La Buckland Review cita datos de la Office for National Statistics según los cuales las personas autistas presentaban la mayor brecha salarial de los grupos de discapacidad analizados."
+      }
+    ],
+    "refTemporal": "datos ONS citados por la Buckland Review · Buckland Review, 28-02-2024.",
+    "anioDatos": "datos ONS citados por la Buckland Review",
+    "metodo": "Revisión y datos oficiales del Reino Unido",
+    "publicacion": "Buckland Review, 28-02-2024",
+    "revision": "Buscar actualización anual",
+    "poblacion": "Personas autistas ocupadas frente a personas no discapacitadas ocupadas en Reino Unido; comparación relativa",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "Aproximadamente un tercio menos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de salario medio que las personas sin discapacidad."
+          },
+          {
+            "t": "p",
+            "text": "El informe indica que la brecha se reduce considerablemente al controlar por tipo de ocupación, lo que apunta a una menor representación en puestos de mayor nivel y remuneración."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La brecha salarial compara remuneración de personas autistas con personas sin discapacidad. El hecho de que disminuya al controlar por ocupación sugiere que la distribución entre tipos de puesto forma parte de la diferencia observada."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "La comparación salarial procede de datos citados por la revisión gubernamental. Explica que parte de la brecha disminuye al controlar por ocupación."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 37
+  },
+  {
+    "n": 39,
+    "territorio": "Reino Unido",
+    "title": "Graduados autistas",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Datos de 2022 citados por la Buckland Review:"
+      }
+    ],
+    "refTemporal": "2022 · Buckland Review, 2024.",
+    "anioDatos": "2022",
+    "metodo": "Revisión y datos oficiales del Reino Unido",
+    "publicacion": "Buckland Review, 2024",
+    "revision": "Buscar actualización anual",
+    "poblacion": "Graduados autistas del Reino Unido, quince meses después de graduarse, 2022",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "36 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de los graduados autistas había encontrado trabajo a tiempo completo 15 meses después."
+          },
+          {
+            "t": "p",
+            "text": "El informe señala que eran dos veces más propensos a estar desempleados que los graduados sin discapacidad en ese punto."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La cifra sigue a graduados autistas 15 meses después y pregunta específicamente por trabajo a tiempo completo. No describe a todos los adultos autistas ni todo tipo de empleo."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El 36 % se refiere a graduados autistas con trabajo a tiempo completo 15 meses después. No es una tasa general de empleo autista."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 38
+  },
+  {
+    "n": 40,
+    "territorio": "Reino Unido",
+    "title": "Revelar el diagnóstico y pedir ajustes en el trabajo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La Buckland Review incorpora resultados del Diverse Minds Employment Survey:"
+      }
+    ],
+    "refTemporal": "Diverse Minds Employment Survey citado por la Buckland Review · Buckland Review, 2024.",
+    "anioDatos": "Diverse Minds Employment Survey citado por la Buckland Review",
+    "metodo": "Revisión y datos oficiales del Reino Unido",
+    "publicacion": "Buckland Review, 2024",
+    "revision": "Buscar actualización anual",
+    "poblacion": "Muestra de encuesta, no censo nacional",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "ul",
+        "items": [
+          "Solo alrededor del 35 % de empleados autistas era completamente abierto sobre ser autista en toda su organización.",
+          "1 de cada 10 no lo había comunicado a nadie en el trabajo.",
+          "Casi un tercio sentía que no podía hablar de sus necesidades de ajuste.",
+          "Entre quienes solicitaron ajustes, más de una cuarta parte recibió una negativa.",
+          "Más de 1 de cada 10 consideró que el ajuste se había aplicado mal."
+        ]
+      }
+    ],
+    "cifras": [],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El Diverse Minds Employment Survey estudia comunicación del diagnóstico, posibilidad de pedir ajustes y respuesta del empleador. Sus resultados aportan experiencia laboral concreta, pero proceden de una muestra de encuesta y no de un censo nacional."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Estas cifras proceden de una encuesta específica incorporada a la Buckland Review. No las presentes como estimaciones de toda la fuerza laboral británica."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Estas cifras proceden de una encuesta específica citada por una revisión gubernamental, no de toda la población laboral británica."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 39
+  },
+  {
+    "n": 41,
+    "territorio": "Australia",
+    "title": "Autismo en la población",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Australian Bureau of Statistics · Survey of Disability, Ageing and Carers 2022:"
+      }
+    ],
+    "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+    "anioDatos": "2022",
+    "metodo": "Estadística oficial de Australia",
+    "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+    "revision": "Cuando se publique un nuevo SDAC",
+    "poblacion": "Todas las edades, con desglose por sexo y edad; comparación entre rondas de la encuesta",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "290.900 personas",
+        "pie": "",
+        "b": []
+      },
+      {
+        "cifra": "1,1 % de la población australiana",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "En 2018 eran 205.200 personas, 0,8 %."
+          },
+          {
+            "t": "p",
+            "text": "El ABS registra un aumento del 41,8 % en el número estimado entre ambas encuestas."
+          }
+        ]
+      },
+      {
+        "cifra": "Por sexo",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Varones: 1,6 %.",
+              "Mujeres: 0,7 %."
+            ]
+          }
+        ]
+      },
+      {
+        "cifra": "Por edad",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Menores de 25 años: 3,1 %.",
+              "25 años o más: 0,3 %."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El ABS estima población autista mediante la Survey of Disability, Ageing and Carers 2022. Los desgloses por sexo y edad forman parte de la misma encuesta; la comparación con 2018 muestra cambio entre rondas, no su causa."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "La cifra procede de la encuesta SDAC 2022. El aumento frente a 2018 no debe interpretarse automáticamente como aumento de incidencia."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El aumento entre encuestas puede reflejar cambios en identificación, diagnóstico, composición de la población y declaración. No debe interpretarse automáticamente como cambio biológico de incidencia."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 40
+  },
+  {
+    "n": 42,
+    "territorio": "Australia",
+    "title": "Necesidad de apoyo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En la encuesta australiana 2022:"
+      }
+    ],
+    "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+    "anioDatos": "2022",
+    "metodo": "Estadística oficial de Australia",
+    "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+    "revision": "Cuando se publique un nuevo SDAC",
+    "poblacion": "Personas autistas que viven en hogares, todas las edades, Australia, 2022",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "84 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas autistas necesitaba apoyo en al menos una actividad cotidiana."
+          }
+        ]
+      },
+      {
+        "cifra": "73 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "presentaba una discapacidad profunda o grave según la definición funcional de la encuesta."
+          }
+        ]
+      },
+      {
+        "cifra": "91,4 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas autistas cumplía la definición de discapacidad utilizada por la encuesta."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La encuesta distingue necesidad de apoyo, grado funcional de discapacidad y cumplimiento de la definición de discapacidad. Son tres indicadores relacionados pero no intercambiables."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Las tres cifras utilizan definiciones funcionales de la encuesta australiana. Necesidad de apoyo, discapacidad grave/profunda y cumplimiento de la definición de discapacidad no son categorías idénticas."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Las categorías funcionales de la encuesta no deben tratarse como si fueran diagnósticos clínicos."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "notaPoblacion": "Esta página y «Empleo y autismo» no comparten población: aquí son todas las edades; allí, 15 a 64 años. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares.",
+    "_index": 41
+  }
+]

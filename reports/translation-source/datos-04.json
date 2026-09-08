@@ -1,0 +1,516 @@
+[
+  {
+    "n": 22,
+    "territorio": "61 países",
+    "title": "Empleo y discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En una comparación de ILOSTAT basada en 61 países, alrededor de un tercio de las personas con discapacidad en edad laboral estaba empleada, aproximadamente la mitad de la proporción observada entre personas sin discapacidad. La cifra es una media internacional no ponderada, no una tasa mundial única."
+      }
+    ],
+    "refTemporal": "múltiples años en 61 países · ILOSTAT, 13-06-2022.",
+    "anioDatos": "múltiples años en 61 países",
+    "metodo": "Organización Internacional del Trabajo / comparación internacional",
+    "publicacion": "ILOSTAT, 13-06-2022",
+    "revision": "Anual",
+    "poblacion": "Personas con y sin discapacidad en 61 países",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "Aproximadamente 1 de cada 3",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "personas con discapacidad en edad de trabajar estaba empleada en la base comparativa de ILOSTAT."
+          },
+          {
+            "t": "p",
+            "text": "Esto era aproximadamente la mitad de la proporción observada entre personas sin discapacidad."
+          }
+        ]
+      },
+      {
+        "cifra": "7 de cada 10",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "personas con discapacidad estaban fuera de la población activa, frente a 4 de cada 10 personas sin discapacidad."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "ILOSTAT compara la situación laboral de personas con y sin discapacidad en 61 países. La media es no ponderada: cada país contribuye al promedio sin ajustarse por su tamaño de población."
+      },
+      {
+        "t": "p",
+        "text": "La OIT especifica que estas cifras se basan en la media no ponderada de 61 países. No son una tasa mundial ponderada por población."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "La cifra procede de la media no ponderada de 61 países. Debe decirse expresamente: no es una tasa mundial ponderada por población."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 21
+  },
+  {
+    "n": 23,
+    "territorio": "30 países",
+    "title": "Brecha salarial y discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La brecha salarial asociada a discapacidad no se limita al acceso al empleo. Un estudio internacional de la OIT encontró una diferencia media en salario por hora incluso después de considerar variables como edad, educación y ocupación."
+      }
+    ],
+    "refTemporal": "submuestra internacional de 30 países · OIT Working Paper 124, 27-08-2024.",
+    "anioDatos": "submuestra internacional de 30 países",
+    "metodo": "Organización Internacional del Trabajo / comparación internacional",
+    "publicacion": "OIT Working Paper 124, 27-08-2024",
+    "revision": "Cada 2 años",
+    "poblacion": "Salario por hora de trabajadores con y sin discapacidad, submuestra internacional",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "12 % menos por hora",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "Un estudio de la OIT publicado en 2024 encontró que, en promedio, los empleados con discapacidad ganaban 12 % menos por hora que los empleados sin discapacidad en la submuestra internacional analizada."
+          }
+        ]
+      },
+      {
+        "cifra": "Tres cuartas partes de la brecha",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "Aproximadamente 9 puntos porcentuales no podían explicarse por diferencias de edad, educación y ocupación incluidas en el modelo."
+          }
+        ]
+      },
+      {
+        "cifra": "Países de ingresos bajos y medio-bajos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "En ese subgrupo, la brecha salarial media alcanzó el 26 %."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La OIT compara salario por hora de trabajadores con y sin discapacidad en una submuestra internacional. El análisis también estima qué parte de la diferencia permanece después de considerar edad, educación y ocupación."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El 12 % es el promedio de una submuestra internacional de 30 países. No lo atribuyas a todos los países del mundo ni a todas las personas con discapacidad."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El resultado del 12 % procede de una submuestra de 30 países, no de todos los países del mundo."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 22
+  },
+  {
+    "n": 24,
+    "territorio": "Unión Europea",
+    "title": "Brecha de empleo asociada a discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En la Unión Europea, la brecha de empleo entre personas con y sin discapacidad fue de 24,2 puntos porcentuales en la última actualización publicada por Eurostat en mayo de 2026."
+      }
+    ],
+    "refTemporal": "última serie disponible en la actualización de 2026 · Eurostat, 29-05-2026.",
+    "anioDatos": "última serie disponible en la actualización de 2026",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat, 29-05-2026",
+    "revision": "Anual",
+    "poblacion": "Tasa de empleo de personas con discapacidad frente a personas sin discapacidad",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "24,2 puntos porcentuales",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "Eurostat informó en mayo de 2026 que las personas con discapacidad tenían una tasa de empleo 24,2 puntos porcentuales inferior a la de las personas sin discapacidad."
+          },
+          {
+            "t": "p",
+            "text": "Los datos se refieren a población de 20 a 64 años."
+          },
+          {
+            "t": "p",
+            "text": "La edición de 2025, con datos de 2024, situaba la brecha en 24,0 puntos; la actualización de 2026 la sitúa en 24,2 puntos."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La brecha de empleo resta la tasa de empleo de las personas con discapacidad de la tasa de quienes no tienen discapacidad. Por eso la unidad correcta es puntos porcentuales, no un porcentaje relativo."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Usa puntos porcentuales, no ‘24,2 % menos’. Una brecha de 24,2 puntos compara dos tasas de empleo."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Una diferencia expresada en puntos porcentuales no debe convertirse en un porcentaje relativo sin recalcularla."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 23
+  },
+  {
+    "n": 25,
+    "territorio": "Unión Europea",
+    "title": "Participación laboral y discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Participar en el mercado laboral significa estar trabajando o buscando trabajo. En la Unión Europea, los datos de 2024 muestran una diferencia amplia entre personas con y sin discapacidad, y una participación especialmente baja entre quienes tienen una discapacidad grave."
+      }
+    ],
+    "refTemporal": "2024 · Comisión Europea, ESDE 2025.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Comisión Europea, ESDE 2025",
+    "revision": "Anual",
+    "poblacion": "Población activa: fuera de la población activa no equivale a desempleo",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Con datos de 2024:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "Algo más del 56 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas de 20 a 64 años con discapacidad participaba en el mercado laboral."
+          },
+          {
+            "t": "p",
+            "text": "Frente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "Aproximadamente 84 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas sin discapacidad."
+          },
+          {
+            "t": "p",
+            "text": "Entre personas con discapacidad grave, participaba aproximadamente un tercio; entre quienes tenían limitación moderada, aproximadamente dos tercios."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Este indicador mide participación en el mercado laboral, es decir, estar empleado o buscando activamente empleo. Una persona fuera de la población activa no se clasifica igual que una persona desempleada que sí busca trabajo."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Distingue participación laboral de empleo: participar significa estar trabajando o buscando trabajo. No son la misma tasa."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Participación en el mercado laboral y empleo son indicadores distintos."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 24
+  },
+  {
+    "n": 26,
+    "territorio": "Unión Europea",
+    "title": "Abandono temprano de educación y formación",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2024, el 44,2 % de los jóvenes de 18 a 24 años con discapacidad grave eran personas que habían abandonado tempranamente la educación o la formación, frente al 8,0 % de los jóvenes sin discapacidad."
+      }
+    ],
+    "refTemporal": "2024 · Eurostat, 13-11-2025.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat, 13-11-2025",
+    "revision": "Anual",
+    "poblacion": "Jóvenes de 18 a 24 años",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Datos de 2024, población de 18 a 24 años:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "44,2 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre jóvenes con discapacidad grave."
+          }
+        ]
+      },
+      {
+        "cifra": "17,1 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre jóvenes con alguna discapacidad."
+          }
+        ]
+      },
+      {
+        "cifra": "8,0 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre jóvenes sin discapacidad."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Eurostat utiliza el indicador europeo de abandono temprano de educación y formación en jóvenes de 18 a 24 años. La comparación distingue discapacidad grave, alguna discapacidad y ausencia de discapacidad."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita las tres categorías —discapacidad grave, alguna discapacidad y sin discapacidad— y la edad 18–24 años. No conviertas el dato en abandono escolar de toda la población con discapacidad."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 25
+  },
+  {
+    "n": 27,
+    "territorio": "Unión Europea",
+    "title": "Jóvenes fuera del empleo, la educación y la formación",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Datos de 2024, población de 15 a 29 años:"
+      }
+    ],
+    "refTemporal": "2024 · Eurostat.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat",
+    "revision": "Anual",
+    "poblacion": "Jóvenes de 15 a 29 años",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "54,7 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de los jóvenes con discapacidad grave no estaban empleados ni participaban en educación o formación."
+          },
+          {
+            "t": "p",
+            "text": "Frente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "10,0 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de los jóvenes sin discapacidad."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El indicador NEET identifica a jóvenes de 15 a 29 años que no están empleados ni participan en educación o formación. Une dos dimensiones —trabajo y formación— y por eso no debe leerse como una tasa simple de desempleo."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El indicador es NEET: no estar empleado ni participar en educación o formación. Cita la edad 15–29 años."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El indicador combina empleo y participación educativa; no describe por separado cada una de esas dos dimensiones."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 26
+  },
+  {
+    "n": 28,
+    "territorio": "Unión Europea",
+    "title": "Educación superior y discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Datos de 2024, población de 25 a 34 años:"
+      }
+    ],
+    "refTemporal": "2024 · Eurostat.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat",
+    "revision": "Anual",
+    "poblacion": "Personas de 25 a 34 años, con y sin discapacidad",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "30,0 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas jóvenes con discapacidad tenían un nivel educativo alto."
+          },
+          {
+            "t": "p",
+            "text": "Frente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "45,9 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas jóvenes sin discapacidad."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La cifra compara el nivel educativo alcanzado por personas de 25 a 34 años con y sin discapacidad. No mide matriculación universitaria actual ni abandono de una titulación concreta."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El indicador describe nivel educativo alto en población de 25–34 años. No mide acceso universitario de estudiantes actuales."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El indicador se refiere a un grupo de edad concreto y a nivel educativo alcanzado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 27
+  }
+]

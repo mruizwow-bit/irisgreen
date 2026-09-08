@@ -1,0 +1,579 @@
+[
+  {
+    "n": 15,
+    "territorio": "Mundo",
+    "title": "Autismo y salud mental: coexistencia, no equivalencia",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Un metaanálisis de 2019 que reunió 96 estudios en sus análisis calculó las siguientes prevalencias agrupadas entre personas autistas:"
+      }
+    ],
+    "refTemporal": "estudios incluidos en metaanálisis publicado en 2019 · Lai et al., 2019.",
+    "anioDatos": "estudios incluidos en metaanálisis publicado en 2019",
+    "metodo": "Síntesis científica internacional",
+    "publicacion": "Lai et al., 2019",
+    "revision": "Cada 2 años",
+    "poblacion": "Muestras de personas autistas",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "ul",
+        "items": [
+          "TDAH: 28 %",
+          "Trastornos de ansiedad: 20 %",
+          "Trastornos del sueño-vigilia: 13 %",
+          "Trastornos disruptivos, del control de impulsos y de conducta: 12 %",
+          "Trastornos depresivos: 11 %",
+          "TOC: 9 %",
+          "Trastorno bipolar: 5 %",
+          "Trastornos del espectro de la esquizofrenia: 4 %"
+        ]
+      }
+    ],
+    "cifras": [],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Los porcentajes representan prevalencias agrupadas de condiciones coexistentes dentro de muestras de personas autistas. Sirven para mostrar que la atención no puede reducirse a una sola etiqueta, pero no predicen qué ocurrirá en una persona concreta."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Presenta los porcentajes como prevalencias agrupadas de condiciones coexistentes en un metaanálisis. No son probabilidades individuales y la heterogeneidad fue muy alta."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La heterogeneidad no explicada fue muy alta —I² superior al 95 %— y las cifras cambiaban según edad, sexo, funcionamiento intelectual, país y tipo de muestra. Los estudios clínicos daban prevalencias mayores que los poblacionales o de registros."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 14
+  },
+  {
+    "n": 16,
+    "territorio": "Mundo",
+    "title": "Discapacidad significativa",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Más de 1.300 millones de personas —alrededor del 16 % de la población mundial, 1 de cada 6— viven con una discapacidad significativa."
+      }
+    ],
+    "refTemporal": "estimación mundial vigente · OMS Europa, actualización 10-08-2026.",
+    "anioDatos": "estimación mundial vigente",
+    "metodo": "Organismo internacional",
+    "publicacion": "OMS Europa, actualización 10-08-2026",
+    "revision": "Anual",
+    "poblacion": "personas",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "1.300 millones",
+        "pie": "personas",
+        "b": []
+      },
+      {
+        "cifra": "16 % de la población mundial",
+        "pie": "",
+        "b": []
+      },
+      {
+        "cifra": "1 de cada 6",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "La OMS mantiene esta estimación en su actualización europea del 10 de agosto de 2026."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La OMS utiliza una categoría amplia de discapacidad significativa. Es un dato de contexto para estudiar barreras de salud, educación, empleo y participación; no es una estimación de población neurodivergente."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita 1.300 millones, 16 % y 1 de cada 6 como tres formas de expresar la misma estimación. No uses ‘discapacidad’ como sinónimo de ‘neurodivergencia’."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Discapacidad no es sinónimo de neurodivergencia. Esta cifra se utiliza para describir barreras de salud, educación, empleo, movilidad y participación que afectan a la población con discapacidad, dentro de la cual se encuentra una parte de la población neurodivergente."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 15
+  },
+  {
+    "n": 17,
+    "territorio": "Mundo",
+    "title": "Desigualdad en salud asociada a discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Las diferencias de salud asociadas a la discapacidad no se explican únicamente por las condiciones de base. La OMS identifica barreras sanitarias, transporte inaccesible, pobreza, estigma y exclusión de la educación y el empleo como factores que producen desigualdad evitable."
+      }
+    ],
+    "refTemporal": "evidencia internacional reunida por OMS · OMS / informe mundial de equidad; actualización 2026.",
+    "anioDatos": "evidencia internacional reunida por OMS",
+    "metodo": "Organismo internacional",
+    "publicacion": "OMS / informe mundial de equidad; actualización 2026",
+    "revision": "Anual",
+    "poblacion": "Comparación entre personas con y sin discapacidad; evidencia internacional reunida por la OMS, sin denominador poblacional único",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "La OMS resume varias brechas:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "Hasta 20 años antes",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "Algunas personas con discapacidad mueren hasta 20 años antes que las personas sin discapacidad como consecuencia de desigualdades y condiciones prevenibles."
+          },
+          {
+            "t": "p",
+            "text": "La actualización europea de 2026 señala además:"
+          }
+        ]
+      },
+      {
+        "cifra": "Mortalidad 2–3 veces mayor",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "en personas con discapacidad en determinados contextos, a menudo por afecciones no relacionadas directamente con la discapacidad."
+          }
+        ]
+      },
+      {
+        "cifra": "Entre 2 y 4 veces mayor probabilidad",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de presentar determinadas enfermedades no transmisibles en adultos con discapacidad, como enfermedad cardiovascular, diabetes, depresión y enfermedades respiratorias crónicas."
+          }
+        ]
+      },
+      {
+        "cifra": "Hasta 6 veces más obstáculo",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "pueden representar los establecimientos sanitarios inaccesibles."
+          }
+        ]
+      },
+      {
+        "cifra": "Hasta 15 veces más limitante",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "puede resultar el transporte inaccesible o inasequible."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Los indicadores resumen desigualdades evitables de salud y acceso asociadas a discapacidad. Incluyen mortalidad, enfermedades no transmisibles y obstáculos físicos o económicos; no describen consecuencias inevitables de una discapacidad."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Estas cifras describen desigualdades de salud y barreras asociadas a discapacidad. No deben interpretarse como efectos inevitables de una condición individual."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 16
+  },
+  {
+    "n": 18,
+    "territorio": "Mundo",
+    "title": "Niños con discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Casi 240 millones de niños —aproximadamente 1 de cada 10— viven con alguna discapacidad en el mundo. El análisis de UNICEF utiliza un enfoque funcional amplio y no equivale a contar diagnósticos médicos."
+      }
+    ],
+    "refTemporal": "estimación base de UNICEF; página activa en 2026 · UNICEF.",
+    "anioDatos": "estimación base de UNICEF; página activa en 2026",
+    "metodo": "Organismo internacional",
+    "publicacion": "UNICEF",
+    "revision": "Anual",
+    "poblacion": "Niños y adolescentes del mundo, medidos con el módulo de funcionamiento infantil de UNICEF y el Washington Group, que se aplica de 2 a 17 años",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "Casi 240 millones",
+        "pie": "niños con alguna discapacidad en el mundo, estimación de UNICEF",
+        "b": []
+      },
+      {
+        "cifra": "1 de cada 10 niños",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "UNICEF estima que casi 240 millones de niños viven con alguna discapacidad en el mundo."
+          },
+          {
+            "t": "p",
+            "text": "La página de UNICEF Data sigue utilizando esta estimación en 2026."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "UNICEF utiliza un enfoque funcional amplio para estimar niños con discapacidad. La cifra no depende únicamente de diagnósticos médicos registrados y permite estudiar inclusión y participación en contextos muy distintos."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita ‘casi 240 millones’ y ‘aproximadamente 1 de cada 10’. El enfoque de UNICEF es funcional y no equivale a contar diagnósticos médicos."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "_index": 17
+  },
+  {
+    "n": 19,
+    "territorio": "Mundo",
+    "title": "Educación y discapacidad infantil",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La brecha no termina en entrar en la escuela. UNICEF encontró que los niños con discapacidad eran 42 % menos propensos a alcanzar competencias fundamentales de lectura y aritmética, además de presentar mayor probabilidad de estar fuera del sistema educativo en todas las etapas analizadas."
+      }
+    ],
+    "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+    "anioDatos": "análisis internacional de UNICEF",
+    "metodo": "Organismo internacional",
+    "publicacion": "UNICEF, 10-11-2021",
+    "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+    "poblacion": "Niños con discapacidad comparados con niños sin discapacidad; las cuatro cifras son diferencias relativas",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Comparados con niños sin discapacidad, los niños con discapacidad eran:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "49 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a no haber asistido nunca a la escuela."
+          }
+        ]
+      },
+      {
+        "cifra": "47 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a estar fuera de Primaria."
+          }
+        ]
+      },
+      {
+        "cifra": "33 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a estar fuera del primer ciclo de Secundaria."
+          }
+        ]
+      },
+      {
+        "cifra": "27 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a estar fuera del segundo ciclo de Secundaria."
+          }
+        ]
+      },
+      {
+        "cifra": "42 % menos propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a alcanzar competencias fundamentales de lectura y aritmética."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Los porcentajes comparan la situación educativa de niños con y sin discapacidad mediante diferencias relativas. Describen una brecha entre grupos, no la proporción absoluta de todos los niños con discapacidad que se encuentra en cada situación."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Todos los porcentajes de esta página son diferencias relativas frente a niños sin discapacidad. No significan que ese porcentaje de todos los niños con discapacidad esté fuera de la escuela."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Son diferencias relativas, no porcentajes de todos los niños con discapacidad que están fuera de la escuela."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 18
+  },
+  {
+    "n": 20,
+    "territorio": "Mundo",
+    "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Las desigualdades también aparecen fuera del aula. UNICEF encontró mayor frecuencia de discriminación, infelicidad y castigo corporal grave entre niños con discapacidad y menor acceso a estimulación temprana y cuidados receptivos."
+      }
+    ],
+    "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+    "anioDatos": "análisis internacional de UNICEF",
+    "metodo": "Organismo internacional",
+    "publicacion": "UNICEF, 10-11-2021",
+    "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+    "poblacion": "Diferencias relativas entre grupos, no tasas de toda la infancia con discapacidad",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "En el análisis de UNICEF, frente a niños sin discapacidad:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "51 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a considerarse infelices."
+          }
+        ]
+      },
+      {
+        "cifra": "41 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a sentirse discriminados."
+          }
+        ]
+      },
+      {
+        "cifra": "32 % más propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a sufrir castigo corporal grave."
+          }
+        ]
+      },
+      {
+        "cifra": "24 % menos propensos",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "a recibir estimulación temprana y cuidados receptivos."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Los indicadores comparan bienestar, discriminación, violencia y cuidados entre niños con y sin discapacidad. Igual que en educación, expresan diferencias relativas entre grupos, no tasas absolutas de toda la población infantil con discapacidad."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Son comparaciones relativas frente a niños sin discapacidad. Conserva esa comparación cada vez que se reutilice una cifra."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 19
+  },
+  {
+    "n": 21,
+    "territorio": "Mundo",
+    "title": "Tecnología y productos de apoyo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Más de 2.500 millones de personas necesitan al menos un producto de apoyo. Casi 1.000 millones carecen del acceso que necesitan, y la OMS estima que la necesidad mundial superará los 3.500 millones de personas en 2050."
+      }
+    ],
+    "refTemporal": "base 2021–2022; proyección 2050 · OMS/UNICEF; ficha OMS 02-01-2024.",
+    "anioDatos": "base 2021–2022; proyección 2050",
+    "metodo": "Organismo internacional",
+    "publicacion": "OMS/UNICEF; ficha OMS 02-01-2024",
+    "revision": "Anual",
+    "poblacion": "personas necesitan uno o más productos de apoyo",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "Más de 2.500 millones",
+        "pie": "personas necesitan uno o más productos de apoyo",
+        "b": [
+          {
+            "t": "p",
+            "text": "Estos productos incluyen apoyos físicos y digitales: audífonos, gafas, movilidad, prótesis, reconocimiento de voz, gestión del tiempo, subtitulado y soluciones para comunicación y cognición."
+          }
+        ]
+      },
+      {
+        "cifra": "Casi 1.000 millones",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de personas que los necesitan no tienen acceso."
+          }
+        ]
+      },
+      {
+        "cifra": "Entre 3 % y 90 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "fue el rango de acceso observado en encuestas de países incluidas en el informe global, reflejando una enorme desigualdad."
+          }
+        ]
+      },
+      {
+        "cifra": "3.500 millones en 2050",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "La OMS prevé que el número de personas que necesitarán tecnología de apoyo aumente a 3.500 millones en 2050."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La OMS y UNICEF miden tanto necesidad de productos de apoyo como acceso real. La categoría incluye productos físicos y soluciones digitales para comunicación y cognición, de modo que la brecha no se limita a movilidad o audición."
+      },
+      {
+        "t": "p",
+        "text": "La definición de tecnología de apoyo de la OMS incluye expresamente soluciones digitales para cognición y comunicación, por lo que este bloque conecta directamente con CAA, apoyos visuales, gestión del tiempo y accesibilidad."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Distingue necesidad de tecnología de apoyo, falta de acceso y proyección futura. No presentes 3.500 millones como una cifra actual."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "pie de la cifra",
+    "_index": 20
+  }
+]

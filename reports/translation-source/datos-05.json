@@ -1,0 +1,558 @@
+[
+  {
+    "n": 29,
+    "territorio": "Unión Europea",
+    "title": "Formación a lo largo de la vida",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2024, entre personas de 25 a 64 años:"
+      }
+    ],
+    "refTemporal": "2024 · Eurostat.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat",
+    "revision": "Anual",
+    "poblacion": "Adultos de 25 a 64 años, cuatro semanas anteriores",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "6,4 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de quienes tenían una discapacidad grave habían participado en educación o formación durante las cuatro semanas anteriores."
+          },
+          {
+            "t": "p",
+            "text": "Frente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "15,4 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de las personas sin discapacidad."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La estadística mide participación de adultos de 25 a 64 años en educación o formación durante las cuatro semanas anteriores. Es un indicador de aprendizaje a lo largo de la vida, no de estudios reglados acumulados."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "La participación se refiere a educación o formación en las cuatro semanas anteriores entre personas de 25–64 años."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El periodo de referencia es corto: participación durante las cuatro semanas anteriores."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 28
+  },
+  {
+    "n": 30,
+    "territorio": "Unión Europea",
+    "title": "Pobreza y exclusión social",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En la UE, las personas con discapacidad presentan una mayor exposición a la pobreza y la exclusión social. En 2024, el 28,8 % estaba en riesgo de pobreza o exclusión social, frente al 17,9 % de las personas sin limitación de actividad."
+      }
+    ],
+    "refTemporal": "2024 · Eurostat.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat",
+    "revision": "Anual",
+    "poblacion": "Población de 16 años o más de la Unión Europea, 2024",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Datos de 2024, población de 16 años o más:"
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "28,8 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre personas con discapacidad/limitación de actividad."
+          }
+        ]
+      },
+      {
+        "cifra": "17,9 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre personas sin limitación."
+          },
+          {
+            "t": "p",
+            "text": "Otros indicadores:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "Riesgo de pobreza: 20,7 % vs 14,2 %.",
+              "Privación material y social grave: 10,4 % vs 4,7 %.",
+              "Hogares con intensidad laboral muy baja, menores de 65 años: 18,4 % vs 5,5 %."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El indicador europeo de riesgo de pobreza o exclusión social reúne distintas dimensiones. Los datos secundarios —riesgo de pobreza, privación material y baja intensidad laboral— ayudan a explicar el conjunto, pero se solapan y no deben sumarse."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita siempre la edad —16 años o más— y distingue riesgo de pobreza/exclusión de sus componentes. No sumes los indicadores secundarios."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Los indicadores de pobreza y exclusión se solapan; no deben sumarse."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 29
+  },
+  {
+    "n": 31,
+    "territorio": "Unión Europea",
+    "title": "Discriminación percibida en la vida cotidiana",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En la UE, la discriminación percibida por las personas con discapacidad fue más frecuente en todos los ámbitos analizados por Eurostat en 2024, desde los servicios públicos hasta la vivienda y las instituciones educativas."
+      }
+    ],
+    "refTemporal": "2024 · Eurostat, 04-05-2026.",
+    "anioDatos": "2024",
+    "metodo": "Estadística oficial de la Unión Europea",
+    "publicacion": "Eurostat, 04-05-2026",
+    "revision": "Anual",
+    "poblacion": "Personas con y sin discapacidad; no son denuncias ni resoluciones judiciales",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "p",
+        "text": "Datos de 2024."
+      }
+    ],
+    "cifras": [
+      {
+        "cifra": "Oficinas administrativas y servicios públicos",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Personas con discapacidad: 9,4 %.",
+              "Personas sin discapacidad: 4,0 %."
+            ]
+          }
+        ]
+      },
+      {
+        "cifra": "Búsqueda de vivienda",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Con discapacidad: 8,2 %.",
+              "Sin discapacidad: 5,2 %."
+            ]
+          }
+        ]
+      },
+      {
+        "cifra": "Espacios públicos",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Con discapacidad: 5,0 %.",
+              "Sin discapacidad: 3,0 %."
+            ]
+          }
+        ]
+      },
+      {
+        "cifra": "Instituciones educativas",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Con discapacidad: 4,1 %.",
+              "Sin discapacidad: 2,3 %."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Eurostat pregunta por discriminación percibida en ámbitos concretos. La comparación permite observar diferencias de experiencia entre personas con y sin discapacidad, pero no sustituye estadísticas de denuncias o resoluciones judiciales."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Son porcentajes de discriminación percibida en ámbitos concretos. No equivalen a sentencias, denuncias o discriminación jurídicamente acreditada."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 30
+  },
+  {
+    "n": 32,
+    "territorio": "Estados Unidos",
+    "title": "Autismo identificado en niños de 8 años",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En 2022, la red ADDM del CDC identificó autismo en 32,2 de cada 1.000 niños de 8 años —aproximadamente 1 de cada 31— en 16 comunidades estadounidenses. Es uno de los datos más citados sobre autismo y también uno de los que más se descontextualizan."
+      }
+    ],
+    "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+    "anioDatos": "2022",
+    "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+    "publicacion": "CDC MMWR publicado en 2025",
+    "revision": "Cuando se publique una nueva ronda ADDM",
+    "poblacion": "Niños de 8 años en comunidades concretas, no encuesta nacional de todas las edades",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "1 de cada 31 · 3,22 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "En 2022, la red ADDM del CDC identificó autismo en 32,2 por cada 1.000 niños de 8 años en 16 comunidades estadounidenses."
+          }
+        ]
+      },
+      {
+        "cifra": "Variación territorial",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "La prevalencia observada osciló entre:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "1 de cada 103 en Laredo, Texas.",
+              "1 de cada 19 en California."
+            ]
+          },
+          {
+            "t": "p",
+            "text": "El CDC indica que las diferencias en evaluación e identificación probablemente explican parte de esta variación."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "ADDM es una red de vigilancia de registros. Busca evidencia de autismo en documentación sanitaria y educativa de niños de una edad concreta y en comunidades concretas; no es una encuesta nacional de todas las edades."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Debe aparecer completo: niños de 8 años, vigilancia 2022, 16 comunidades ADDM y 32,2 por 1.000. No escribas ‘1 de cada 31 personas en EE. UU.’."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "«1 de cada 31 personas en Estados Unidos es autista»."
+      },
+      {
+        "t": "p",
+        "text": "La vigilancia se refiere a:"
+      },
+      {
+        "t": "ul",
+        "items": [
+          "Niños de 8 años.",
+          "Año de vigilancia 2022.",
+          "16 comunidades de la red ADDM.",
+          "Identificación a partir de registros y sistemas de salud/educación.",
+          "No necesariamente representa a toda la población infantil estadounidense."
+        ]
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 31
+  },
+  {
+    "n": 33,
+    "territorio": "Estados Unidos",
+    "title": "Diferencia por sexo en identificación de autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "En los datos ADDM 2022 de niños de 8 años:"
+      }
+    ],
+    "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+    "anioDatos": "2022",
+    "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+    "publicacion": "CDC MMWR publicado en 2025",
+    "revision": "Cuando se publique una nueva ronda ADDM",
+    "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "49,2 por 1.000",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "en niños."
+          }
+        ]
+      },
+      {
+        "cifra": "14,3 por 1.000",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "en niñas."
+          }
+        ]
+      },
+      {
+        "cifra": "3,4 veces",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "mayor prevalencia identificada en niños que en niñas."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La comparación usa el mismo sistema ADDM, la misma edad y el mismo año para niños y niñas. Mide una diferencia de autismo identificado dentro de esa vigilancia, no una ratio universal de prevalencia biológica."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Cita como diferencia de identificación en ADDM 2022. No conviertas 3,4 veces en una ratio biológica universal varón:mujer."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Es una diferencia de identificación observada en la red ADDM, no una prueba de que la prevalencia biológica real sea exactamente 3,4 veces mayor."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "_index": 32
+  },
+  {
+    "n": 34,
+    "territorio": "Estados Unidos",
+    "title": "Edad del diagnóstico de autismo documentado",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La edad a la que aparece documentado un diagnóstico ayuda a estudiar el acceso a evaluación e identificación. En la vigilancia ADDM 2022, la mediana del diagnóstico más temprano conocido fue de 47 meses entre los niños con información diagnóstica disponible."
+      }
+    ],
+    "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+    "anioDatos": "2022",
+    "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+    "publicacion": "CDC MMWR publicado en 2025",
+    "revision": "Cuando se publique una nueva ronda ADDM",
+    "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022; la mediana de 47 meses solo entre los que tenían un diagnóstico documentado",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "47 meses",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "fue la mediana de edad del diagnóstico de autismo más temprano conocido entre los niños de 8 años con una declaración diagnóstica disponible."
+          },
+          {
+            "t": "p",
+            "text": "Rango entre sitios:"
+          },
+          {
+            "t": "ul",
+            "items": [
+              "California: 36 meses.",
+              "Laredo, Texas: 69,5 meses."
+            ]
+          }
+        ]
+      },
+      {
+        "cifra": "50,3 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de los niños de 8 años con autismo y evaluaciones disponibles habían sido evaluados antes o a los 36 meses."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La mediana de 47 meses resume la edad del diagnóstico más temprano conocido entre quienes tenían una declaración diagnóstica disponible. La cifra de evaluados antes de 36 meses responde a otra pregunta y utiliza el grupo con evaluaciones disponibles."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "La mediana de 47 meses se refiere al diagnóstico más temprano conocido entre quienes tenían una declaración diagnóstica disponible. Mantén el denominador."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "_index": 33
+  },
+  {
+    "n": 35,
+    "territorio": "Estados Unidos",
+    "title": "Autismo y discapacidad intelectual en ADDM",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre los niños autistas de 8 años que tenían información cognitiva disponible:"
+      }
+    ],
+    "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+    "anioDatos": "2022",
+    "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+    "publicacion": "CDC MMWR publicado en 2025",
+    "revision": "Cuando se publique una nueva ronda ADDM",
+    "poblacion": "El 61,4 % de los niños identificados, los que tenían esa información disponible",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "39,6 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "fueron clasificados con discapacidad intelectual —IQ ≤70—."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El 39,6 % solo se calcula entre niños autistas con información cognitiva disponible. Como esa información existía para el 61,4 % de los identificados, el denominador debe mantenerse visible para evitar generalizar a todo el conjunto."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El 39,6 % se calcula solo entre los niños con información cognitiva disponible; esa información existía para el 61,4 % de los identificados. Ambos datos deben ir juntos."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Solo 61,4 % de los niños autistas identificados tenía información cognitiva disponible. Por tanto, el 39,6 % no debe presentarse como una proporción de todos los niños autistas estadounidenses sin explicar el denominador."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 34
+  }
+]

@@ -1,0 +1,538 @@
+[
+  {
+    "n": 43,
+    "territorio": "Australia",
+    "title": "Educación y autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre personas autistas de 15 años o más que vivían en hogares:"
+      }
+    ],
+    "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+    "anioDatos": "2022",
+    "metodo": "Estadística oficial de Australia",
+    "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+    "revision": "Cuando se publique un nuevo SDAC",
+    "poblacion": "Dos poblaciones: personas autistas de 15 años o más en hogares, y de 5 a 20 años escolarizadas",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "45,1 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "había completado el equivalente al último curso de Secundaria —Year 12—."
+          }
+        ]
+      },
+      {
+        "cifra": "5,2 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "tenía un grado universitario o nivel superior."
+          },
+          {
+            "t": "p",
+            "text": "Entre personas autistas de 5 a 20 años que asistían a la escuela:"
+          }
+        ]
+      },
+      {
+        "cifra": "97,3 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "necesitaba algún tipo de apoyo para asistir o estudiar."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La misma fuente utiliza dos poblaciones: personas autistas de 15 años o más que viven en hogares para logro educativo y personas de 5 a 20 años que asisten a la escuela para necesidad de apoyo escolar."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Mantén los denominadores: los datos de logro educativo son de personas autistas de 15 años o más que vivían en hogares; el 97,3 % se refiere a quienes tenían 5–20 años y asistían a la escuela."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Los porcentajes usan poblaciones distintas dentro de la misma encuesta; hay que conservar el denominador de cada uno."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 42
+  },
+  {
+    "n": 44,
+    "territorio": "Australia",
+    "title": "Empleo y autismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre personas autistas de 15 a 64 años que vivían en hogares:"
+      }
+    ],
+    "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+    "anioDatos": "2022",
+    "metodo": "Estadística oficial de Australia",
+    "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+    "revision": "Cuando se publique un nuevo SDAC",
+    "poblacion": "Personas autistas de 15 a 64 años que viven en hogares, Australia, 2022",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "50,2 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "estaba trabajando o buscando trabajo —participación en la fuerza laboral—."
+          }
+        ]
+      },
+      {
+        "cifra": "42,2 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "tenía empleo."
+          },
+          {
+            "t": "p",
+            "text": "En 2018 la tasa de empleo indicada por la misma serie era 27,3 %."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La participación en la fuerza laboral incluye empleo y búsqueda activa de trabajo; la tasa de empleo cuenta solo a quienes tienen trabajo. Mantener ambas cifras permite ver la diferencia entre participar y estar empleado."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Distingue participación en la fuerza laboral (50,2 %) de empleo (42,2 %). El 27,3 % de 2018 pertenece a la misma serie, pero un cambio entre encuestas no explica por sí solo la causa."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Participación laboral y empleo no son sinónimos."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "fuente comprobada",
+    "notaPoblacion": "Esta página no comparte población con «Necesidad de apoyo», que es de todas las edades. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares.",
+    "_index": 43
+  },
+  {
+    "n": 45,
+    "territorio": "Canadá",
+    "title": "Autismo en niños y jóvenes",
+    "lede": [
+      {
+        "t": "p",
+        "text": "La estimación nacional más reciente que el Gobierno de Canadá seguía utilizando en su Framework for Autism procede de la Canadian Health Survey on Children and Youth 2019."
+      }
+    ],
+    "refTemporal": "2019 · PHAC; sigue como referencia en Framework for Autism in Canada.",
+    "anioDatos": "2019",
+    "metodo": "Estadística oficial de Canadá",
+    "publicacion": "PHAC; sigue como referencia en Framework for Autism in Canada",
+    "revision": "Cuando se publique una nueva CHSCY comparable",
+    "poblacion": "Niños y jóvenes de 1 a 17 años",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "1 de cada 50",
+        "pie": "",
+        "b": []
+      },
+      {
+        "cifra": "2,0 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "de niños y jóvenes de 1 a 17 años tenía diagnóstico de autismo."
+          }
+        ]
+      },
+      {
+        "cifra": "Por sexo",
+        "pie": "",
+        "b": [
+          {
+            "t": "ul",
+            "items": [
+              "Varones: 3,1 % · 1 de cada 32.",
+              "Mujeres: 0,8 % · 1 de cada 125.",
+              "Ratio observada: aproximadamente 3,9:1."
+            ]
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La CHSCY 2019 estima diagnóstico de autismo declarado en niños y jóvenes de 1 a 17 años. Es una cifra nacional canadiense para esa franja de edad, no para toda la población."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Es diagnóstico declarado en una encuesta nacional de niños y jóvenes de 1–17 años. No es prevalencia de todas las edades de Canadá."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 44
+  },
+  {
+    "n": 46,
+    "territorio": "Canadá",
+    "title": "Edad de diagnóstico",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre los niños y jóvenes autistas de la encuesta canadiense:"
+      }
+    ],
+    "refTemporal": "2019 · PHAC.",
+    "anioDatos": "2019",
+    "metodo": "Estadística oficial de Canadá",
+    "publicacion": "PHAC",
+    "revision": "Cuando se publique una nueva CHSCY comparable",
+    "poblacion": "Niños y jóvenes autistas incluidos en la encuesta canadiense de 2019",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "53,7 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "había sido diagnosticado antes de los 5 años."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "El 53,7 % describe cuándo se produjo el diagnóstico dentro del grupo autista de la encuesta. No es una tasa de diagnóstico temprano sobre todos los niños canadienses."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "El 53,7 % se calcula entre niños y jóvenes autistas incluidos en la encuesta canadiense; no describe a toda la población autista canadiense."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Es una distribución dentro del grupo autista de la encuesta, no una prevalencia poblacional."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Cómo citar / cifra",
+    "_index": 45
+  },
+  {
+    "n": 47,
+    "territorio": "Canadá",
+    "title": "Salud general y mental",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre niños y jóvenes autistas:"
+      }
+    ],
+    "refTemporal": "2019 · PHAC.",
+    "anioDatos": "2019",
+    "metodo": "Estadística oficial de Canadá",
+    "publicacion": "PHAC",
+    "revision": "Cuando se publique una nueva CHSCY comparable",
+    "poblacion": "Comparación entre grupos, no recuento de diagnósticos",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "59,3 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "declaraba salud general óptima."
+          },
+          {
+            "t": "p",
+            "text": "Frente a:"
+          }
+        ]
+      },
+      {
+        "cifra": "89,5 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre quienes no eran autistas."
+          },
+          {
+            "t": "p",
+            "text": "En salud mental óptima:"
+          }
+        ]
+      },
+      {
+        "cifra": "39,0 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre autistas."
+          }
+        ]
+      },
+      {
+        "cifra": "84,1 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "entre no autistas."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "Las categorías de salud general y salud mental ‘óptima’ proceden del instrumento de encuesta. La comparación muestra una diferencia entre grupos, pero no equivale a contar diagnósticos médicos o psiquiátricos."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "‘Salud óptima’ y ‘salud mental óptima’ son categorías del instrumento de encuesta. No equivalen a ausencia o presencia de un diagnóstico clínico."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "Son resultados de encuesta y la valoración de «óptima» depende del instrumento utilizado. No equivalen a diagnósticos de enfermedad."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 46
+  },
+  {
+    "n": 48,
+    "territorio": "Canadá",
+    "title": "Condiciones coexistentes y necesidades educativas",
+    "lede": [
+      {
+        "t": "p",
+        "text": "Entre niños y jóvenes autistas:"
+      }
+    ],
+    "refTemporal": "2019 · PHAC.",
+    "anioDatos": "2019",
+    "metodo": "Estadística oficial de Canadá",
+    "publicacion": "PHAC",
+    "revision": "Cuando se publique una nueva CHSCY comparable",
+    "poblacion": "Cada porcentaje tiene su propio denominador",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [],
+    "cifras": [
+      {
+        "cifra": "68,7 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "tenía otra condición de salud de larga duración."
+          },
+          {
+            "t": "p",
+            "text": "Las más frecuentes incluían TDA/TDAH, dificultades o trastornos del aprendizaje y trastornos de ansiedad."
+          },
+          {
+            "t": "p",
+            "text": "Entre quienes asistían a la escuela:"
+          }
+        ]
+      },
+      {
+        "cifra": "78,1 %",
+        "pie": "",
+        "b": [
+          {
+            "t": "p",
+            "text": "tenía necesidades de educación especial."
+          }
+        ]
+      }
+    ],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La página combina dos resultados de la misma encuesta: presencia de otra condición de salud de larga duración y, entre quienes asistían a la escuela, necesidades de educación especial. Cada porcentaje tiene su propio denominador."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "Las cifras se refieren a niños y jóvenes autistas de la encuesta; el 78,1 % corresponde específicamente a quienes asistían a la escuela."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "El porcentaje educativo utiliza como denominador a quienes asistían a la escuela."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "Qué mide exactamente",
+    "_index": 47
+  },
+  {
+    "n": 49,
+    "territorio": "Comparativa internacional",
+    "title": "Cuatro cifras de autismo que no miden lo mismo",
+    "lede": [
+      {
+        "t": "p",
+        "text": "No es un ranking de prevalencia. Cada país usa edades, fuentes y métodos distintos. Una cifra más alta puede reflejar mejor identificación, diferente cobertura, distinta edad de la población, mayor acceso al diagnóstico o una metodología diferente."
+      }
+    ],
+    "refTemporal": "2021 / 2022 / 2019 / 2022, según la fuente · comparación metodológica preparada en 2026.",
+    "anioDatos": "2021 / 2022 / 2019 / 2022, según la fuente",
+    "metodo": "Comparación metodológica de fuentes oficiales y modelizadas",
+    "publicacion": "comparación metodológica preparada en 2026",
+    "revision": "Revisar cuando cambie cualquiera de las cuatro series",
+    "poblacion": "Cada cifra lleva el suyo en la tabla",
+    "cifrasH": "Las cifras",
+    "cifrasIntro": [
+      {
+        "t": "table",
+        "head": [
+          "Territorio / fuente",
+          "Cifra",
+          "Población",
+          "Año de datos",
+          "Qué mide"
+        ],
+        "rows": [
+          [
+            "Mundo · GBD/OMS",
+            "1 de cada 127",
+            "Todas las edades",
+            "2021",
+            "Prevalencia modelizada"
+          ],
+          [
+            "EE. UU. · CDC ADDM",
+            "1 de cada 31",
+            "Niños de 8 años en 16 comunidades",
+            "2022",
+            "Autismo identificado mediante vigilancia de registros"
+          ],
+          [
+            "Canadá · CHSCY",
+            "1 de cada 50",
+            "1–17 años",
+            "2019",
+            "Diagnóstico declarado en encuesta nacional"
+          ],
+          [
+            "Australia · ABS SDAC",
+            "1,1 %",
+            "Todas las edades",
+            "2022",
+            "Estimación de encuesta poblacional"
+          ]
+        ]
+      }
+    ],
+    "cifras": [],
+    "mide": [
+      {
+        "t": "p",
+        "text": "La tabla coloca juntas cuatro cifras precisamente para mostrar sus diferencias metodológicas: modelización mundial, vigilancia de registros, diagnóstico declarado en encuesta y estimación de encuesta poblacional. Su función es enseñar a comparar, no decidir qué país ‘tiene más autismo’."
+      }
+    ],
+    "citar": [
+      {
+        "t": "p",
+        "text": "No ordenes los países de mayor a menor ni llames ‘prevalencia’ a todas las columnas. Cada cifra usa edades, métodos y denominadores diferentes."
+      }
+    ],
+    "evitar": [
+      {
+        "t": "p",
+        "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+      }
+    ],
+    "notaFuentes": [],
+    "status": "borrador",
+    "by": "Iris Green",
+    "reviewedBy": "",
+    "reviewed": "",
+    "poblacionOrigen": "decisión editorial",
+    "_index": 48
+  }
+]
