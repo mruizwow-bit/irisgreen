@@ -1,0 +1,50 @@
+name: Extraer lotes Vida diaria y Datos v2
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths: ['.github/workflows/extraer-lotes-vida-datos-v2.yml']
+permissions:
+  contents: write
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+          fetch-depth: 0
+      - name: Extraer desde main y guardar en la rama forense
+        run: |
+          git fetch origin main
+          mkdir -p /tmp/ig-source/es/biblioteca /tmp/ig-source/es/datos
+          git show origin/main:es/biblioteca/vida-diaria.json > /tmp/ig-source/es/biblioteca/vida-diaria.json
+          git show origin/main:es/datos/datos.json > /tmp/ig-source/es/datos/datos.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, shutil
+          src=Path('/tmp/ig-source'); out=Path('reports/translation-source')
+          shutil.rmtree(out,ignore_errors=True); out.mkdir(parents=True)
+          vida=json.loads((src/'es/biblioteca/vida-diaria.json').read_text(encoding='utf-8'))
+          (out/'vida-header.json').write_text(json.dumps({k:vida[k] for k in ('aviso','criterio','categorias')},ensure_ascii=False,indent=2),encoding='utf-8')
+          for start in range(0,len(vida['fichas']),8):
+              rows=[]
+              for i,x in enumerate(vida['fichas'][start:start+8],start):
+                  keep={k:x[k] for k in ('cat','title','lede','sections') if k in x}; keep['_index']=i
+                  for k in ('revisarAntesDe','notaFuente','plazo','plazoDesde','plazoHasta','plazoCerrado','avisoFuente'):
+                      if x.get(k): keep[k]=x[k]
+                  rows.append(keep)
+              (out/f'vida-{start//8+1:02d}.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+          data=json.loads((src/'es/datos/datos.json').read_text(encoding='utf-8'))
+          (out/'datos-header.json').write_text(json.dumps({'cover':data['cover'],'territorios':data['territorios']},ensure_ascii=False,indent=2),encoding='utf-8')
+          for start in range(0,len(data['paginas']),7):
+              rows=[]
+              for i,x in enumerate(data['paginas'][start:start+7],start):
+                  y={k:v for k,v in x.items() if k!='sources'}; y['_index']=i; rows.append(y)
+              (out/f'datos-{start//7+1:02d}.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+          print({'vida':len(vida['fichas']),'datos':len(data['paginas']),'lotes':len(list(out.glob('*.json')))})
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/translation-source
+          git commit -m 'Guardar lotes fuente para traducción de Vida diaria y Datos'
+          git push origin HEAD:recuperacion-estable-20260908
