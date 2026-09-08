@@ -27,11 +27,18 @@ jobs:
               j = src.index(end, i)
               return src[i:j].lstrip('\n').rstrip('\n') + '\n'
           Path('/tmp/metodologia_lectura_trans.json').write_text(between("cat > /tmp/metodologia_lectura_trans.json <<'JSON_TRANSLATIONS'\n", '\nJSON_TRANSLATIONS'), encoding='utf-8')
-          Path('/tmp/apply_metodologia_lectura.py').write_text(between("cat > /tmp/apply_metodologia_lectura.py <<'PY_SCRIPT'\n", '\nPY_SCRIPT'), encoding='utf-8')
+          script_path = Path('/tmp/apply_metodologia_lectura.py')
+          script_path.write_text(between("cat > /tmp/apply_metodologia_lectura.py <<'PY_SCRIPT'\n", '\nPY_SCRIPT'), encoding='utf-8')
           import json
           data = json.loads(Path('/tmp/metodologia_lectura_trans.json').read_text(encoding='utf-8'))
           assert len(data) == 83, len(data)
-          print('cola-extraida', len(data))
+          script = script_path.read_text(encoding='utf-8')
+          old = "    if block == 'lectura-accesible':\n        html = html.replace('mailto:informacion@irisgreen.eu?subject=Dificultad%20de%20accesibilidad', 'mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty')"
+          new = "    if block == 'lectura-accesible':\n        html = html.replace('Escribe a <a href=\"mailto:informacion@irisgreen.eu?subject=Dificultad%20de%20accesibilidad\">informacion@irisgreen.eu</a> indicando la página, qué intentabas hacer, el navegador o dispositivo y los ajustes utilizados. No necesitas aportar un diagnóstico.', 'Write to <a href=\"mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty\">informacion@irisgreen.eu</a> indicating the page, what you were trying to do, the browser or device and the settings used. You do not need to provide a diagnosis.')\n        html = html.replace('mailto:informacion@irisgreen.eu?subject=Dificultad%20de%20accesibilidad', 'mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty')"
+          if old not in script:
+              raise SystemExit('No encuentro el bloque de mailto para parchear')
+          script_path.write_text(script.replace(old, new), encoding='utf-8')
+          print('cola-extraida', len(data), 'script-parcheado')
           PY
       - name: Checkout main
         uses: actions/checkout@v4
