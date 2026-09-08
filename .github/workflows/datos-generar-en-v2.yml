@@ -1,0 +1,200 @@
+name: Datos · generar inglés v2
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-generar-en-v2.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+
+      - name: Generar /en/data/ desde Datos traducido
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs'), path=require('path');
+          const ROOT='https://irisgreen.eu';
+          const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+          const strip=s=>String(s??'').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
+          const trunc=(s,n=155)=>{s=strip(s);return s.length>n?s.slice(0,n).replace(/\s+\S*$/,'')+'…':s};
+          const slugify=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'data';
+          const unesc=s=>String(s||'').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+          function walk(d){return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{const p=path.join(d,e.name);return e.isDirectory()?walk(p):[p]})}
+          function parts(p){return[...String(p).matchAll(/\.([^\.\[]+)|\[(\d+)\]/g)].map(m=>m[1]??Number(m[2]))}
+          function set(obj,p,val){const a=parts(p);let c=obj;for(let i=0;i<a.length-1;i++)c=c[a[i]];c[a.at(-1)]=val}
+
+          const base=JSON.parse(fs.readFileSync('cola-traduccion/datos.json','utf8'));
+          const tr=new Map();
+          for(const f of fs.readdirSync('cola-traduccion').filter(f=>/^datos-traducida-en-part-\d+\.json$/.test(f)).sort()){
+            for(const r of JSON.parse(fs.readFileSync(path.join('cola-traduccion',f),'utf8'))){
+              if(tr.has(r.id)) throw new Error('ID duplicado: '+r.id);
+              tr.set(r.id,r.texto_en);
+            }
+          }
+          if(tr.size!==base.length) throw new Error(`Traducciones ${tr.size}, cola ${base.length}`);
+          for(const r of base) if(!tr.has(r.id)||!String(tr.get(r.id)).trim()) throw new Error('Falta traducción: '+r.id);
+          fs.writeFileSync('cola-traduccion/datos-traducida-en.json',JSON.stringify(base.map(r=>({...r,texto_en:tr.get(r.id)})),null,2)+'\n');
+
+          const cif=JSON.parse(fs.readFileSync('cola-traduccion/datos-cifras.json','utf8'));
+          const cifTr=new Map(JSON.parse(fs.readFileSync('cola-traduccion/datos-cifras-traducida-en.json','utf8')).map(r=>[r.id,r.texto_en]));
+          if(cifTr.size!==cif.length) throw new Error(`Cifras traducidas ${cifTr.size}, cifras ${cif.length}`);
+
+          const dataEs=JSON.parse(fs.readFileSync('es/datos/datos.json','utf8'));
+          const dataEn=JSON.parse(JSON.stringify(dataEs));
+          const TPL={};
+          for(const r of base){ if(r.campo.startsWith('plantilla.')) TPL[r.campo.replace('plantilla.','')]=tr.get(r.id); else set(dataEn,r.campo,tr.get(r.id)); }
+          for(const r of cif) set(dataEn,r.campo,cifTr.get(r.id));
+
+          const esByKey=new Map(), esByTitle=new Map();
+          for(const ent of fs.readdirSync('es/datos',{withFileTypes:true})){
+            if(!ent.isDirectory()) continue;
+            const fp=`es/datos/${ent.name}/index.html`; if(!fs.existsSync(fp)) continue;
+            const h=fs.readFileSync(fp,'utf8');
+            const h1=unesc((h.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)||[])[1]||'').replace(/<[^>]+>/g,'').trim();
+            const chip=unesc((h.match(/<p class="chips">[\s\S]*?<span class="chip">([\s\S]*?)<\/span>/i)||[])[1]||'').replace(/<[^>]+>/g,'').trim();
+            if(h1){ if(chip) esByKey.set(`${h1}||${chip}`,ent.name); if(!esByTitle.has(h1)) esByTitle.set(h1,[]); esByTitle.get(h1).push(ent.name); }
+          }
+          const counts=new Map();
+          for(const p of dataEn.paginas) counts.set(slugify(p.title),(counts.get(slugify(p.title))||0)+1);
+          const used=new Set();
+          dataEn.paginas.forEach((p,i)=>{
+            const orig=dataEs.paginas[i];
+            let esSlug=esByKey.get(`${orig.title}||${orig.territorio}`);
+            if(!esSlug && esByTitle.get(orig.title)?.length===1) esSlug=esByTitle.get(orig.title)[0];
+            if(!esSlug) esSlug=slugify(orig.title);
+            if(!fs.existsSync(`es/datos/${esSlug}/index.html`)) throw new Error(`No encuentro HTML ES para ${orig.title} / ${orig.territorio} -> ${esSlug}`);
+            let enSlug=slugify(p.title);
+            if(counts.get(slugify(p.title))>1) enSlug=slugify(`${p.title} ${p.territorio}`);
+            let final=enSlug,n=2; while(used.has(final)) final=`${enSlug}-${n++}`; used.add(final);
+            p.slug_en=final; p.slug_es=esSlug; orig.slug_en=final; orig.slug_es=esSlug;
+          });
+          fs.rmSync('en/data',{recursive:true,force:true}); fs.mkdirSync('en/data',{recursive:true});
+          fs.writeFileSync('en/data/data.json',JSON.stringify(dataEn,null,2)+'\n');
+
+          const style=`<style>\n.tabla{overflow-x:auto;margin:1rem 0}\n.tabla table{border-collapse:collapse;width:100%;font-size:.94rem}\n.tabla th,.tabla td{border:1px solid var(--line,#dfe5ee);padding:.5rem .65rem;text-align:left;vertical-align:top}\n.tabla th{background:#f1f5fa;font-weight:600}\n.cifra-b{margin:1.25rem 0}\n.cifra-b .n{display:block;font-size:1.45rem;font-weight:600;line-height:1.2}\n.cifra-b .pie{display:block;color:#5a6577;font-size:.95rem;margin-bottom:.4rem}\n.tecnica{list-style:none;padding:0;margin:.5rem 0 0}\n.tecnica li{padding:.3rem 0;border-bottom:1px solid var(--line,#e6eaf1)}\n.tecnica li:last-child{border-bottom:0}\n.fuentes{margin:.25rem 0 0;padding-left:1.1rem}\n.fuentes li{margin:.3rem 0}\n</style>`;
+          function head({title,desc,url,esUrl,type='WebPage',noindex=false}){
+            const graph=[{'@type':type,name:title.replace(/ · Iris Green| · Data$/,''),description:desc,url:ROOT+url,inLanguage:'en',isPartOf:{'@type':'WebSite',name:'Iris Green',url:ROOT+'/'}}];
+            return `<!DOCTYPE html>\n<html lang="en">\n<head><script src="/assets/preferencias-lectura.js"></script>\n<meta charset="utf-8"/>\n<meta content="width=device-width,initial-scale=1" name="viewport"/>\n<title>${esc(title)}</title>\n<meta content="${esc(desc)}" name="description"/>\n${noindex?'<meta content="noindex,follow" name="robots"/>\n':''}<meta content="#f6f8fb" name="theme-color"/>\n<link href="${ROOT}${url}" rel="canonical"/>\n<link rel="alternate" hreflang="es" href="${ROOT}${esUrl}"/>\n<link rel="alternate" hreflang="en" href="${ROOT}${url}"/>\n<link rel="alternate" hreflang="x-default" href="${ROOT}${esUrl}"/>\n<meta content="Iris Green" name="author"/>\n<meta content="website" property="og:type"/>\n<meta content="en_GB" property="og:locale"/>\n<meta content="Iris Green" property="og:site_name"/>\n<meta content="${esc(title)}" property="og:title"/>\n<meta content="${esc(desc)}" property="og:description"/>\n<meta content="${ROOT}${url}" property="og:url"/>\n<meta content="${ROOT}/img/og-condiciones.png" property="og:image"/>\n<meta content="1200" property="og:image:width"/>\n<meta content="630" property="og:image:height"/>\n<meta content="summary_large_image" name="twitter:card"/>\n<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>\n<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>\n<link href="/assets/site-v23.css" rel="stylesheet"/>\n${style}\n<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script>\n<link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>\n<link rel="stylesheet" href="/assets/controles-comunes.css"/>\n<link rel="stylesheet" href="/assets/preferencias-lectura.css">\n</head>`;
+          }
+          function chrome(langNav,bodyClass=''){
+            return `<body${bodyClass?` class="${bodyClass}"`:''}>\n<a class="skip" href="#main">Skip to content</a>\n<header class="hd">\n<a class="brand" href="/"><img alt="" height="28" onerror="this.remove()" src="/img/v40-brand-symbol.webp" width="28"/><span>Iris Green</span></a>\n<button aria-controls="nav" aria-expanded="false" class="ico menu" id="mBtn"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span>Menu</span></button>\n<button type="button" class="ig-menu-button" aria-label="Open menu" aria-controls="ig-main-nav" aria-expanded="false">Menu</button><nav aria-label="Explore" class="nav" id="ig-main-nav"><a href="/">Home</a><a href="/en/neurodiversity/conditions/">Conditions</a><a href="/en/situations/">Situations</a><a href="/en/everyday-life/">Everyday life</a><a href="/es/videos/">Videos</a><a href="/es/investigacion/">Research</a><a aria-current="page" href="/en/data/">Data</a><a href="/es/tramites/directorio/">Support</a><a href="/es/libros/">Books</a><a href="/es/recursos/juegos/">Play</a><span aria-hidden="true" class="sep"></span><a class="calma ig-calma" href="/en/interests/">Your interests</a><a class="calma ig-calma" href="/es/taller/">The workshop</a><a class="calma ig-calma" href="/en/quiet-space/">Quiet space</a></nav>\n<div class="tools"><button aria-controls="a11y" aria-expanded="false" class="ico" id="a11yBtn" aria-label="Accessible reading"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 8.5h16M12 10.5v11M12 15h-4l-2 6M12 15h4l2 6"></path></svg><span>Reading</span></button><button aria-controls="pl" aria-expanded="false" class="ico" id="plBtn" aria-label="Music"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="17" cy="16" r="3"></circle></svg><span>Music</span></button></div>\n${langNav}\n</header>\n<div class="panel" hidden="" id="pl"></div>\n<div class="panel a11yp" hidden="" id="a11y"><h2>Accessible reading</h2><div class="ctrls"><div class="grp"><span>Text size</span><button aria-label="Text size −" data-a="fs-">A−</button><button aria-label="Text size +" data-a="fs+">A+</button></div><button data-a="ls">Wider letter spacing</button><button data-a="big">Bigger buttons</button><button data-a="hc">More contrast</button><button data-a="guide">Reading guide</button><button data-a="tts">Read aloud</button><button data-a="rm">Reduce motion</button><button class="reset" data-a="reset">Reset</button></div></div>`;
+          }
+          const footer=`<footer class="ft"><p><strong>Iris Green</strong> · Knowledge base on neurodiversity</p><nav aria-label="Explore" class="ftnav"><a href="/es/sobre-iris-green/?lang=en">About Iris Green</a><a href="/es/metodologia/?lang=en">Methodology</a><a href="/es/lectura-accesible/?lang=en">Accessibility</a><a href="/en/privacy/">Privacy</a><a href="mailto:informacion@irisgreen.eu?subject=Error%20on%20a%20Data%20page">Report an error</a></nav></footer><div hidden="" id="rguide"></div><script src="/assets/lectura-accesible.js"></script><script defer src="/assets/interfaz-comun.js"></script><script defer src="/assets/musica.js"></script></body></html>`;
+          const blocks=arr=>(arr||[]).map(n=>typeof n==='string'?`<p>${esc(n)}</p>`:`<p>${esc(n.text||'')}</p>`).join('');
+          function renderPage(p){
+            const enRoute=`/en/data/${p.slug_en}/`, esRoute=`/es/datos/${p.slug_es}/`, desc=trunc((p.lede||[]).map(n=>n.text||n).join(' '));
+            let out=head({title:`${p.title} · Data`,desc,url:enRoute,esUrl:esRoute,noindex:p.status==='borrador'});
+            out+=chrome(`<nav aria-label="Language" class="langs"><a class="lang" href="${esRoute}" lang="es">ES</a><span aria-current="true" class="lang on">EN</span></nav>`);
+            out+=`<main id="main"><article class="ficha"><p class="crumb"><a href="/">${esc(TPL.home||'Home')}</a> › <a href="/en/data/">${esc(TPL.collection||'Data')}</a></p><h1>${esc(p.title)}</h1>`;
+            out+=`<p class="chips"><span class="chip">${esc(p.territorio||'')}</span>${p.anioDatos?`<span class="chip alt">Data from ${esc(p.anioDatos)}</span>`:''}<span class="chip lil">${esc(TPL.borrador||'DRAFT')}</span></p><p class="notice">${esc(TPL.notice||'Draft page. The sources are named and linked; final verification is still pending.')}</p>`;
+            out+=`<section class="sec">${blocks(p.lede)}</section>`;
+            if((p.cifras||[]).length){out+=`<section class="sec"><h2>${esc(p.cifrasH||TPL.cifras||'The figures')}</h2>${blocks(p.cifrasIntro)}`;for(const c of p.cifras)out+=`<div class="cifra-b"><span class="n">${esc(c.cifra||'')}</span>${c.pie?`<span class="pie">${esc(c.pie)}</span>`:''}${blocks(c.b)}</div>`;out+=`</section>`}
+            if((p.mide||[]).length) out+=`<section class="sec"><h2>${esc(TPL.mide||'What it measures')}</h2>${blocks(p.mide)}</section>`;
+            if((p.citar||[]).length) out+=`<section class="sec helps"><h2>${esc(TPL.citar||'How to cite it')}</h2>${blocks(p.citar)}</section>`;
+            if((p.evitar||[]).length) out+=`<section class="sec"><h2>${esc(TPL.evitar||'What to avoid')}</h2>${blocks(p.evitar)}</section>`;
+            if((p.sources||[]).length){out+=`<section class="sec"><h2>${esc(TPL.fuentes||'Sources')}</h2><ul class="fuentes">`;for(const s of p.sources)out+=`<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.label)}</a></li>`;out+=`</ul>${blocks(p.notaFuentes)}</section>`}
+            out+=`<section class="sec consult"><h2>Technical sheet</h2><ul class="tecnica"><li><strong>Measured population:</strong> ${esc(p.poblacion||'')}</li><li><strong>Year of data:</strong> ${esc(p.anioDatos||'')}</li><li><strong>${esc(TPL.referencia||'Time reference:')}</strong> ${esc(p.refTemporal||'')}</li><li><strong>${esc(TPL.metodo||'Method:')}</strong> ${esc(p.metodo||'')}</li><li><strong>${esc(TPL.publicacion||'Publication:')}</strong> ${esc(p.publicacion||'')}</li><li><strong>Planned review:</strong> ${esc(p.revision||'')}</li></ul></section></article></main>${footer}`;
+            return out;
+          }
+          function renderIndex(){
+            const desc=trunc((dataEn.cover.lede||[]).join(' '));
+            let out=head({title:`${dataEn.cover.title} · Iris Green`,desc,url:'/en/data/',esUrl:'/es/datos/',type:'CollectionPage',noindex:false});
+            out+=chrome(`<nav aria-label="Language" class="langs"><a class="lang" href="/es/datos/" lang="es">ES</a><span aria-current="true" class="lang on">EN</span></nav>`,'conditions-collection');
+            out+=`<main id="main"><p class="crumb"><a href="/">${esc(TPL.home||'Home')}</a></p><h1>${esc(dataEn.cover.title)}</h1>`;
+            const lede=dataEn.cover.lede||[]; if(lede[0]) out+=`<p class="lede">${esc(lede[0])}</p>`; for(const p of lede.slice(1)) out+=`<p>${esc(p)}</p>`;
+            out+=`<p class="notice">The 49 pages in this section are mounted. All are in draft: the source is named and linked, and final verification is still pending.</p>`;
+            for(const terr of dataEn.territorios||[]){const group=dataEn.paginas.filter(p=>p.territorio===terr); if(!group.length) continue; out+=`<h2>${esc(terr)}</h2><div class="cards">`; for(const p of group){const txt=(p.lede||[]).map(n=>n.text||n).join(' '); out+=`<a class="card" href="/en/data/${p.slug_en}/"><span class="chip">${esc(p.territorio)}</span><strong>${esc(p.title)}</strong><span>${esc(trunc(txt,165))}</span></a>`} out+=`</div>`}
+            out+=`</main>${footer}`; return out;
+          }
+          fs.writeFileSync('en/data/index.html',renderIndex());
+          for(const p of dataEn.paginas){const dir=`en/data/${p.slug_en}`;fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(`${dir}/index.html`,renderPage(p))}
+
+          function patchAlternates(html,esRoute,enRoute){html=html.replace(/\n?<link rel="alternate" hreflang="(?:es|en|x-default)"[^>]*>/g,'');const alt=`\n<link rel="alternate" hreflang="es" href="${ROOT}${esRoute}"/>\n<link rel="alternate" hreflang="en" href="${ROOT}${enRoute}"/>\n<link rel="alternate" hreflang="x-default" href="${ROOT}${esRoute}"/>`;return html.replace(/(<link href="https:\/\/irisgreen\.eu\/es\/datos\/[^\"]*" rel="canonical"\/>)/,`$1${alt}`)}
+          function patchNavEs(html,enRoute){return html.replace(/<nav aria-label="Idioma" class="langs">[\s\S]*?<\/nav>/,`<nav aria-label="Idioma" class="langs">\n<span aria-current="true" class="lang on">ES</span>\n<a class="lang" href="${enRoute}" lang="en">EN</a>\n</nav>`)}
+          let idx=fs.readFileSync('es/datos/index.html','utf8'); idx=patchAlternates(patchNavEs(idx,'/en/data/'),'/es/datos/','/en/data/'); fs.writeFileSync('es/datos/index.html',idx);
+          for(const p of dataEn.paginas){const esRoute=`/es/datos/${p.slug_es}/`, enRoute=`/en/data/${p.slug_en}/`, fp=`es/datos/${p.slug_es}/index.html`;let h=fs.readFileSync(fp,'utf8');h=patchAlternates(patchNavEs(h,enRoute),esRoute,enRoute);fs.writeFileSync(fp,h)}
+
+          for(const fp of walk('en').filter(f=>f.endsWith('.html'))){let h=fs.readFileSync(fp,'utf8');h=h.replace(/<nav aria-label="Explore" class="nav" id="ig-main-nav">[\s\S]*?<\/nav>/,nav=>nav.replace(/href="\/es\/biblioteca\/"/g,'href="/en/everyday-life/"').replace(/href="\/es\/datos\/"/g,'href="/en/data/"'));fs.writeFileSync(fp,h)}
+
+          const enHtml=walk('en/data').filter(f=>f.endsWith('.html'));
+          if(enHtml.length!==50) throw new Error('HTML EN Data esperados 50, encontrados '+enHtml.length);
+          const esHtml=['es/datos/index.html',...dataEn.paginas.map(p=>`es/datos/${p.slug_es}/index.html`)];
+          const badEs=esHtml.filter(fp=>!/lang="en">EN<\/a>/.test(fs.readFileSync(fp,'utf8'))); if(badEs.length) throw new Error('ES sin selector EN: '+badEs.join(', '));
+          const badPt=[...enHtml,...esHtml].filter(fp=>/PT-BR|lang="pt-BR"/.test(fs.readFileSync(fp,'utf8'))); if(badPt.length) throw new Error('PT-BR residual en Datos: '+badPt.join(', '));
+          const forbidden=['Qué mide','Cómo citarla','Qué evitar','Página en borrador','Población medida','Año de los datos','Revisión prevista','Las cifras','Inicio › Datos','fuente comprobada','decisión editorial'];
+          const bad=[]; for(const fp of enHtml){const main=(fs.readFileSync(fp,'utf8').match(/<main[\s\S]*?<\/main>/)||[''])[0]; for(const s of forbidden) if(main.includes(s)) bad.push(`${fp}: ${s}`)}
+          if(bad.length) throw new Error('Texto español residual: '+bad.slice(0,20).join(' | '));
+          for(const p of dataEn.paginas.slice(0,12)){const h=fs.readFileSync(`en/data/${p.slug_en}/index.html`,'utf8'); if(!h.includes(`hreflang="es" href="${ROOT}/es/datos/${p.slug_es}/"`)) throw new Error('hreflang ES incorrecto en '+p.slug_en)}
+          console.log('datos-main-records='+base.length); console.log('datos-cifras='+cif.length); console.log('en-data-html='+enHtml.length); console.log('sample=/es/datos/'+dataEn.paginas[0].slug_es+'/ -> /en/data/'+dataEn.paginas[0].slug_en+'/');
+          NODE
+
+      - name: Enriquecer buscador con parejas EN
+        shell: bash
+        run: python3 scripts/enrich_search_english.py
+
+      - name: Build local
+        shell: bash
+        run: |
+          python3 scripts/build_site.py
+          test -f dist/en/data/index.html
+          test -f dist/en/data/autism/index.html
+          test -f dist/en/data/children-with-disabilities/index.html
+
+      - name: Prueba rápida en navegador
+        shell: bash
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          python3 -m http.server 4173 -d dist >/tmp/iris-server.log 2>&1 &
+          echo $! > /tmp/iris-server.pid
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage();
+            const errors=[]; page.on('pageerror', e=>errors.push(String(e)));
+            const urls=['/es/datos/','/en/data/','/es/datos/autismo/','/en/data/autism/','/en/data/children-with-disabilities/','/en/everyday-life/'];
+            for(const u of urls){
+              const res=await page.goto('http://127.0.0.1:4173'+u,{waitUntil:'domcontentloaded'});
+              if(!res||res.status()>=400) throw new Error(`${u} status ${res&&res.status()}`);
+              const labels=await page.locator('nav.langs .lang').evaluateAll(els=>els.map(e=>e.textContent.trim()).join(' '));
+              if(!labels.includes('ES')||!labels.includes('EN')) throw new Error(`${u} selector incorrecto: ${labels}`);
+              if(labels.includes('PT-BR')) throw new Error(`${u} muestra PT-BR`);
+            }
+            await page.goto('http://127.0.0.1:4173/en/data/',{waitUntil:'domcontentloaded'});
+            await page.click('#a11yBtn'); if(!await page.locator('#a11y:not([hidden])').count()) throw new Error('Lectura no abre');
+            await page.click('#plBtn'); if(!await page.locator('#pl:not([hidden])').count()) throw new Error('Música no abre');
+            if(errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close(); console.log('browser-ok');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+          kill $(cat /tmp/iris-server.pid)
+
+      - name: Limpiar temporales
+        shell: bash
+        run: |
+          rm -f .github/workflows/datos-extraer-cola.yml .github/workflows/datos-extraer-cifras.yml .github/workflows/datos-generar-en.yml .github/workflows/datos-generar-en-v2.yml
+          rm -f cola-traduccion/datos*.json cola-traduccion/datos*.md
+          rmdir cola-traduccion 2>/dev/null || true
+
+      - name: Commit final de Datos EN
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --stat
+          git commit -m "Añadir Datos en inglés" || true
+          git push origin HEAD:feat/en-datos-20260908
