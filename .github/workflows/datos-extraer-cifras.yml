@@ -1,0 +1,48 @@
+name: Datos · extraer cifras
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-extraer-cifras.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+      - name: Extraer campos cifra visibles
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('es/datos/datos.json','utf8'));
+          const rows=[];
+          (data.paginas||[]).forEach((p,pi)=>{
+            (p.cifras||[]).forEach((c,ci)=>{
+              const s = String(c.cifra||'').trim();
+              if (!s) return;
+              if (!/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(s)) return;
+              rows.push({id:`DAT-CIF-${String(rows.length+1).padStart(3,'0')}`, pagina:pi, campo:`.paginas[${pi}].cifras[${ci}].cifra`, texto:s, title:p.title, territorio:p.territorio});
+            });
+          });
+          fs.writeFileSync('cola-traduccion/datos-cifras.json', JSON.stringify(rows,null,2)+'\n');
+          const md=['# Cola de traducción · datos · campos cifra','','Campos `.cifra` con palabras visibles. Traducir solo palabras/unidades; no alterar el valor numérico.',''];
+          for (const r of rows){ md.push(`**${r.id}** · ${r.campo} · ${r.territorio} · ${r.title}`); md.push(`> ${r.texto}`); md.push(''); }
+          fs.writeFileSync('cola-traduccion/datos-cifras.md', md.join('\n'));
+          console.log(`cifras=${rows.length}`);
+          NODE
+      - name: Commit cifras
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cola-traduccion/datos-cifras.json cola-traduccion/datos-cifras.md
+          git diff --cached --stat
+          git commit -m "Extraer cifras visibles de Datos" || true
+          git push origin HEAD:feat/en-datos-20260908
