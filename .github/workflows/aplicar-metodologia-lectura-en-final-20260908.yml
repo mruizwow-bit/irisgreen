@@ -1,0 +1,173 @@
+name: Aplicar Metodología y Lectura EN final
+
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/aplicar-metodologia-lectura-en-final-20260908.yml
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main actual
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Reaplicar bloque y probar
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPO="$GITHUB_WORKSPACE"
+          BRANCH="feat/metodologia-lectura-en-final-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin feat/metodologia-lectura-en-20260908 --depth=1
+          git checkout -B "$BRANCH" origin/main
+
+          git checkout origin/feat/metodologia-lectura-en-20260908 -- \
+            en/methodology/index.html \
+            en/accessible-reading/index.html \
+            es/metodologia/index.html \
+            es/lectura-accesible/index.html
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          # Corregir breadcrumbs JSON-LD de las páginas inglesas: el último item debe ser la URL inglesa.
+          fixes = {
+              'en/methodology/index.html': [
+                  ('"item":"https://irisgreen.eu/es/metodologia/"', '"item":"https://irisgreen.eu/en/methodology/"'),
+                  ('<p><a href="/es/investigacion/">View the review work</a></p>', '<p><a href="/es/investigacion/">View the review work</a></p>'),
+              ],
+              'en/accessible-reading/index.html': [
+                  ('"item":"https://irisgreen.eu/es/lectura-accesible/"', '"item":"https://irisgreen.eu/en/accessible-reading/"'),
+              ],
+          }
+          for file, pairs in fixes.items():
+              p = Path(file)
+              txt = p.read_text(encoding='utf-8')
+              for old, new in pairs:
+                  txt = txt.replace(old, new)
+              p.write_text(txt, encoding='utf-8')
+
+          checks = [
+              ('es/metodologia/index.html', '/en/methodology/', 'hreflang="en"'),
+              ('es/lectura-accesible/index.html', '/en/accessible-reading/', 'hreflang="en"'),
+              ('en/methodology/index.html', '<html lang="en">', 'Methodology'),
+              ('en/accessible-reading/index.html', '<html lang="en">', 'Accessible reading'),
+          ]
+          for file, a, b in checks:
+              txt = Path(file).read_text(encoding='utf-8')
+              if a not in txt or b not in txt:
+                  raise SystemExit(f'Falla comprobación en {file}: faltan {a!r} o {b!r}')
+          for file, bads in {
+              'en/methodology/index.html': ['<h1>Metodología</h1>', 'Cómo se comprueba lo que hay aquí', 'profesional sanitaria'],
+              'en/accessible-reading/index.html': ['<h1>Lectura accesible</h1>', 'Tamaño del texto', 'Tipografía, espaciado y anchura'],
+          }.items():
+              txt = Path(file).read_text(encoding='utf-8')
+              for bad in bads:
+                  if bad in txt:
+                      raise SystemExit(f'Texto español residual en {file}: {bad}')
+          PY
+
+          python3 scripts/enrich_search_english.py
+          python3 scripts/build_site.py
+
+          python3 - <<'PY'
+          from pathlib import Path
+          s = Path('sitemap.xml').read_text(encoding='utf-8')
+          for url in ['https://irisgreen.eu/en/methodology/', 'https://irisgreen.eu/en/accessible-reading/']:
+              if url not in s:
+                  raise SystemExit(f'Falta en sitemap: {url}')
+          b = Path('buscador.json').read_text(encoding='utf-8')
+          for url in ['/en/methodology/', '/en/accessible-reading/']:
+              if url not in b:
+                  raise SystemExit(f'Falta en buscador: {url}')
+          for file in ['dist/en/methodology/index.html','dist/en/accessible-reading/index.html','dist/es/metodologia/index.html','dist/es/lectura-accesible/index.html']:
+              if not Path(file).exists():
+                  raise SystemExit(f'No existe en dist: {file}')
+          PY
+
+          python3 -m http.server 8787 --directory dist >/tmp/irisgreen-http.log 2>&1 &
+          echo $! >/tmp/irisgreen-http.pid
+          sleep 2
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            const page = await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[];
+            page.on('pageerror', e=>errors.push(String(e)));
+            page.on('console', msg=>{ if(msg.type()==='error') errors.push(msg.text()); });
+            async function go(path){
+              errors.length = 0;
+              await page.goto('http://127.0.0.1:8787'+path, {waitUntil:'domcontentloaded'});
+              await page.waitForTimeout(700);
+              const body = await page.locator('body').innerText();
+              const critical = errors.filter(e=>!/Failed to load resource|favicon/i.test(e));
+              if(critical.length) throw new Error(path+' JS: '+critical.join(' | '));
+              return body;
+            }
+            let body = await go('/es/metodologia/');
+            if(!body.includes('Metodología') || !body.includes('ES') || !body.includes('EN')) throw new Error('Metodología ES sin selector');
+            await page.locator('nav.langs a[lang="en"]').click();
+            await page.waitForTimeout(700);
+            if(!page.url().includes('/en/methodology/')) throw new Error('EN metodología no navega a ruta inglesa');
+            body = await page.locator('body').innerText();
+            if(!body.includes('Methodology') || !body.includes('Every claim has its document')) throw new Error('Metodología EN no muestra texto inglés');
+            if(body.includes('Cómo se comprueba lo que hay aquí')) throw new Error('Metodología EN conserva cuerpo español');
+            if(!body.includes('Reading') || body.includes('Lectura accesible\nText size')) throw new Error('Metodología EN cabecera/panel dudoso');
+
+            body = await go('/es/lectura-accesible/');
+            if(!body.includes('Lectura accesible') || !body.includes('ES') || !body.includes('EN')) throw new Error('Lectura ES sin selector');
+            await page.locator('nav.langs a[lang="en"]').click();
+            await page.waitForTimeout(700);
+            if(!page.url().includes('/en/accessible-reading/')) throw new Error('EN lectura no navega a ruta inglesa');
+            body = await page.locator('body').innerText();
+            if(!body.includes('Accessible reading') || !body.includes('What each button does') || !body.includes('Typography, spacing and width')) throw new Error('Lectura EN no muestra texto inglés');
+            if(body.includes('Qué hace cada botón') || body.includes('Tipografía, espaciado y anchura')) throw new Error('Lectura EN conserva cuerpo español');
+
+            await browser.close();
+            console.log('browser-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+          kill "$(cat /tmp/irisgreen-http.pid)" || true
+          cd "$REPO"
+
+          git restore reports/initial-data-build.json reports/routes/build.json reports/thumbnails/images.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          allowed = {
+            'en/methodology/index.html',
+            'en/accessible-reading/index.html',
+            'es/metodologia/index.html',
+            'es/lectura-accesible/index.html',
+            'buscador.json',
+            'sitemap.xml',
+          }
+          changed = set(Path('/tmp/changed.txt').read_text().splitlines())
+          extra = changed - allowed
+          missing = {'en/methodology/index.html','en/accessible-reading/index.html','es/metodologia/index.html','es/lectura-accesible/index.html'} - changed
+          if extra:
+              raise SystemExit('Cambios no permitidos: '+repr(sorted(extra)))
+          if missing:
+              raise SystemExit('Faltan cambios esperados: '+repr(sorted(missing)))
+          PY
+
+          git add en/methodology/index.html en/accessible-reading/index.html es/metodologia/index.html es/lectura-accesible/index.html buscador.json sitemap.xml
+          git commit -m "Crear EN de Metodología y Lectura accesible"
+          git push -u origin "$BRANCH" --force-with-lease
