@@ -23,6 +23,12 @@ jobs:
             echo 'Commit de main:'
             git rev-parse origin/main
             echo
+            echo '## Archivos afectados'
+            echo '```text'
+            git grep -l 'ig_lang' origin/main -- '*.html' '*.js' | sed 's#^origin/main:##' | sort
+            echo '```'
+            echo
+            echo '## Contextos'
             echo '```text'
             git grep -n -C 3 'ig_lang' origin/main -- '*.html' '*.js' || true
             echo '```'
@@ -30,5 +36,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add reports/inventario-ig-lang.md
-          git diff --cached --quiet || git commit -m 'Guardar inventario forense de ig_lang'
+          git diff --cached --quiet || git commit -m 'Actualizar inventario forense de ig_lang'
           git push origin HEAD:recuperacion-estable-20260908
