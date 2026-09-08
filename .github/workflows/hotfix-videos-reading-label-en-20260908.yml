@@ -1,0 +1,100 @@
+name: Hotfix vídeos etiqueta Reading EN
+
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/hotfix-videos-reading-label-en-20260908.yml
+
+permissions:
+  contents: write
+
+jobs:
+  hotfix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Arreglar etiqueta Lectura en EN
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPO="$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+
+          p = Path('es/videos/index.html')
+          html = p.read_text(encoding='utf-8')
+          before = html
+
+          # La página ya tiene tReading en renderVals(); el botón estaba hardcodeado como Lectura.
+          html = html.replace('aria-label="Lectura" title="Lectura" data-ig-reading-trigger=""', 'aria-label="{{ tReading }}" title="{{ tReading }}" data-ig-reading-trigger=""')
+          html = html.replace('<span>Lectura</span></button></div><div class="ig-uh-langs"', '<span>{{ tReading }}</span></button></div><div class="ig-uh-langs"')
+
+          if html == before:
+              raise SystemExit('No se encontró la etiqueta Lectura hardcodeada')
+          if 'tReading: T.reading' not in html:
+              raise SystemExit('La plantilla no expone tReading')
+          if len(re.findall(r'\bconst\s+thumbURL\s*=', html)) != 1:
+              raise SystemExit('thumbURL no está exactamente una vez antes del build')
+          p.write_text(html, encoding='utf-8')
+
+          subprocess.run([sys.executable, 'scripts/build_site.py'], check=True)
+          dist = Path('dist/es/videos/index.html').read_text(encoding='utf-8')
+          if len(re.findall(r'\bconst\s+thumbURL\s*=', dist)) != 1:
+              raise SystemExit('thumbURL no está exactamente una vez en dist')
+          if '<span>{{ tReading }}</span>' not in dist:
+              raise SystemExit('No quedó tReading en dist')
+          PY
+
+          python3 -m http.server 8787 --directory dist >/tmp/irisgreen-http.log 2>&1 &
+          echo $! >/tmp/irisgreen-http.pid
+          sleep 2
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            const page = await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[];
+            page.on('pageerror', e=>errors.push(String(e)));
+            page.on('console', msg=>{ if(msg.type()==='error') errors.push(msg.text()); });
+            await page.goto('http://127.0.0.1:8787/es/videos/', {waitUntil:'domcontentloaded'});
+            await page.waitForTimeout(2000);
+            let body = await page.locator('body').innerText();
+            if(!body.includes('Lectura')) throw new Error('En ES debe verse Lectura');
+            if(!body.includes('Dan Wilkins') && !body.includes('Ro Vitale')) throw new Error('No aparecen tarjetas');
+            if(errors.some(e=>/Identifier 'thumbURL' has already been declared|Root: Identifier/.test(e))) throw new Error(errors.join(' | '));
+            await page.getByRole('button', {name:/^EN$/}).first().click();
+            await page.waitForTimeout(900);
+            body = await page.locator('body').innerText();
+            if(!body.includes('Reading')) throw new Error('En EN no aparece Reading');
+            if(body.includes('Lectura')) throw new Error('En EN sigue visible Lectura');
+            if(!body.includes('How to read this video')) throw new Error('No aparece How to read this video');
+            await browser.close();
+            console.log('reading-label-en-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+          kill "$(cat /tmp/irisgreen-http.pid)" || true
+          cd "$REPO"
+
+          git restore reports/initial-data-build.json reports/routes/build.json reports/thumbnails/images.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 1
+          git add es/videos/index.html
+          git commit -m "Traducir botón Lectura en Vídeos"
+          git push origin main
