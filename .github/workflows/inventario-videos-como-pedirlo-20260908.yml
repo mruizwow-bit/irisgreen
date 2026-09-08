@@ -1,0 +1,26 @@
+name: Inventario vídeos y cómo pedirlo
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/inventario-videos-como-pedirlo-20260908.yml
+permissions:
+  contents: read
+jobs:
+  inventario:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Inventariar archivos
+        shell: bash
+        run: |
+          echo 'MAIN:'
+          git rev-parse HEAD
+          echo '--- videos files ---'
+          find . -maxdepth 4 -type f | grep -E 'videos|video|videoteca' | sort | sed 's#^./##'
+          echo '--- tramites files ---'
+          find es -maxdepth 4 -type f | grep -E 'tramites|pedir' | sort | sed 's#^./##'
+          echo '--- grep lang/video snippets ---'
+          grep -R "videoteca-listado\|Cómo leer este vídeo\|Como leer este video\|langButtons\|PEDIR" -n es assets scripts 2>/dev/null | head -200
