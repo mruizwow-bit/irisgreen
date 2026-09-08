@@ -1,0 +1,149 @@
+name: Hotfix vídeos thumbURL duplicado
+
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/hotfix-videos-thumburl-20260908.yml
+
+permissions:
+  contents: write
+
+jobs:
+  hotfix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Arreglar thumbURL y probar vídeos
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+
+          html_path = Path('es/videos/index.html')
+          html = html_path.read_text(encoding='utf-8')
+
+          # Mantener una sola declaración de thumbURL dentro de renderVals().
+          stmt = re.compile(r'\n[ \t]*const\s+thumbURL\s*=\s*\(video\)\s*=>\s*st\.thumbnailErrors\s*&&\s*st\.thumbnailErrors\[video\.embed\]\s*\?\s*""\s*:\s*ytThumb\(video\.embed\)\s*;')
+          matches = list(stmt.finditer(html))
+          if len(matches) == 0:
+              raise SystemExit('No encuentro const thumbURL en es/videos/index.html')
+          if len(matches) > 1:
+              out = []
+              last = 0
+              for i, m in enumerate(matches):
+                  if i == 0:
+                      out.append(html[last:m.end()])
+                  else:
+                      out.append(html[last:m.start()])
+                  last = m.end()
+              out.append(html[last:])
+              html = ''.join(out)
+
+          count = len(re.findall(r'\bconst\s+thumbURL\s*=', html))
+          if count != 1:
+              raise SystemExit(f'thumbURL debe quedar una vez, queda {count}')
+          html_path.write_text(html, encoding='utf-8')
+
+          # Hacer robusto el script de miniaturas para que no vuelva a insertar helper si ya existe thumbURL.
+          script_path = Path('scripts/prepare_video_thumbnails.py')
+          script = script_path.read_text(encoding='utf-8')
+          old = "        if helper not in text:\n"
+          new = "        if helper not in text and 'const thumbURL =' not in text:\n"
+          if new not in script:
+              if old not in script:
+                  raise SystemExit('No encuentro el guard de helper en prepare_video_thumbnails.py')
+              script = script.replace(old, new, 1)
+              script_path.write_text(script, encoding='utf-8')
+
+          # Comprobar que las notas de tono limpias siguen limpias.
+          forbidden = [
+              'pauta general','no una pauta','lo que a ella le funcionó','no es lo que hay que hacer','convertir su caso',
+              'general rule','not a set of instructions','what worked for them','not what you have to do','turning his case',
+              'no de cómo se implanta','not about how a system is introduced','no se promete ninguna cura','does not promise a cure',
+              'profesional clínico','clinical professional','no cómo se diagnostica','not how ADHD is diagnosed',
+              'ruta clínica','clinical route','explicación clínica','clinical explanation','explicação clínica',
+              'servicio de mentoría','mentoría de pago','servicio de pago','vive de acompañar','acompaña desde',
+              'accompanying other people','keep you company while you read','acompañando'
+          ]
+          txt = html_path.read_text(encoding='utf-8')
+          hits = {t: txt.lower().count(t.lower()) for t in forbidden if t.lower() in txt.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en vídeos: ' + repr(hits))
+
+          subprocess.run([sys.executable, 'scripts/build_site.py'], check=True)
+          dist = Path('dist/es/videos/index.html').read_text(encoding='utf-8')
+          count_dist = len(re.findall(r'\bconst\s+thumbURL\s*=', dist))
+          if count_dist != 1:
+              raise SystemExit(f'thumbURL en dist debe quedar una vez, queda {count_dist}')
+          hits = {t: dist.lower().count(t.lower()) for t in forbidden if t.lower() in dist.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en dist: ' + repr(hits))
+          print('patch-ok')
+          PY
+
+          python3 -m http.server 8787 --directory dist >/tmp/irisgreen-http.log 2>&1 &
+          echo $! >/tmp/irisgreen-http.pid
+          sleep 2
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const forbidden = ['pauta general','no una pauta','lo que a ella le funcionó','no es lo que hay que hacer','convertir su caso','general rule','not a set of instructions','what worked for them','not what you have to do','turning his case','no de cómo se implanta','not about how a system is introduced','no se promete ninguna cura','does not promise a cure','profesional clínico','clinical professional','no cómo se diagnostica','not how ADHD is diagnosed','ruta clínica','clinical route','explicación clínica','clinical explanation','explicação clínica'];
+            const browser = await chromium.launch({headless:true});
+            const page = await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[];
+            page.on('pageerror', e=>errors.push(String(e)));
+            page.on('console', msg=>{ if(msg.type()==='error') errors.push(msg.text()); });
+            await page.goto('http://127.0.0.1:8787/es/videos/', {waitUntil:'networkidle'});
+            const bodyES = await page.locator('body').innerText();
+            if(bodyES.includes('Root: Identifier')) throw new Error('Root error sigue visible');
+            for(const s of ['Vídeos en primera persona','Dan Wilkins','Cómo leer este vídeo','Cuenta su experiencia con el diagnóstico tardío']){
+              if(!bodyES.includes(s)) throw new Error('Falta texto ES visible: '+s);
+            }
+            for(const term of forbidden){
+              if(bodyES.toLowerCase().includes(term.toLowerCase())) throw new Error('Forbidden ES visible: '+term);
+            }
+            const enBtn = page.getByRole('button', {name:/^EN$/}).first();
+            if(!(await enBtn.count())) throw new Error('No hay botón EN');
+            await enBtn.click();
+            await page.waitForTimeout(700);
+            const bodyEN = await page.locator('body').innerText();
+            if(!bodyEN.includes('How to read this video')) throw new Error('No cambia etiqueta EN visible');
+            if(!bodyEN.includes('He talks about identity, understanding yourself better')) throw new Error('No aparece nota EN de Dan');
+            if(!bodyEN.includes('He talks about how augmentative and alternative communication is part of his life')) throw new Error('No aparece nota EN de Bob');
+            for(const term of forbidden){
+              if(bodyEN.toLowerCase().includes(term.toLowerCase())) throw new Error('Forbidden EN visible: '+term);
+            }
+            if(errors.some(e=>/Identifier 'thumbURL' has already been declared|Root: Identifier/.test(e))){
+              throw new Error('Errores JS críticos: '+errors.join(' | '));
+            }
+            await browser.close();
+            console.log('browser-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+          kill "$(cat /tmp/irisgreen-http.pid)" || true
+
+          git restore reports/initial-data-build.json reports/routes/build.json reports/thumbnails/images.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          grep -qx 'scripts/prepare_video_thumbnails.py' /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 2
+          git add es/videos/index.html scripts/prepare_video_thumbnails.py
+          git commit -m "Arreglar carga de Vídeos"
+          git push origin main
