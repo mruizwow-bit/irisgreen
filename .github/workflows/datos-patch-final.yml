@@ -1,0 +1,105 @@
+name: Datos · corregir residuos finales
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-patch-final.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+      - name: Corregir residuos finales y validar
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          function walk(d){return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{const p=path.join(d,e.name);return e.isDirectory()?walk(p):[p]})}
+          const replacements = new Map([
+            ['datos ONS citados por la Buckland Review', 'ONS data cited by the Buckland Review'],
+            ['Diverse Minds Employment Survey citado por la Buckland Review', 'Diverse Minds Employment Survey cited by the Buckland Review']
+          ]);
+          const files = ['en/data/data.json', ...walk('en/data').filter(f => f.endsWith('.html'))];
+          let changed = 0;
+          for (const fp of files) {
+            let s = fs.readFileSync(fp,'utf8');
+            const before = s;
+            for (const [a,b] of replacements) s = s.split(a).join(b);
+            if (s !== before) { fs.writeFileSync(fp,s); changed++; }
+          }
+          console.log('changed_files='+changed);
+          if (changed < 3) throw new Error('Se esperaban cambios en JSON y HTML de dos fichas');
+
+          const badWords = /\b(datos|citados|citado|seg[uú]n|fuente comprobada|decisi[oó]n editorial|m[uú]ltiples|a[nñ]os|actualizaci[oó]n|publicaci[oó]n|poblaci[oó]n|personas|ni[nñ]os|mujeres|varones|diagn[oó]sticos|prevalencia|trastorno|discapacidad|autistas|estimaci[oó]n mundial|estructura demogr[aá]fica|sin a[nñ]o|muestra de ni[nñ]os|an[aá]lisis internacional|s[ií]ntesis de estudios|promedio no ponderado|Reino Unido|Estados Unidos|Comisi[oó]n Europea)\b/i;
+          const issues = [];
+          for (const fp of walk('en/data').filter(f=>f.endsWith('.html'))) {
+            const html = fs.readFileSync(fp,'utf8');
+            const main = (html.match(/<main[\s\S]*?<\/main>/)||[''])[0]
+              .replace(/<a\b[^>]*href="[^"]*"[^>]*>[\s\S]*?<\/a>/g, '')
+              .replace(/<[^>]+>/g, ' ')
+              .replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+              .replace(/\s+/g,' ');
+            const m = main.match(badWords);
+            if (m) issues.push({file:fp, match:m[0], context:main.slice(Math.max(0,m.index-100), m.index+160)});
+          }
+          console.log(JSON.stringify(issues,null,2));
+          console.log('issues='+issues.length);
+          if (issues.length) throw new Error('Residuos finales pendientes: '+issues.length);
+
+          for (const f of ['.github/workflows/datos-auditoria-residuos-final.yml','.github/workflows/datos-patch-final.yml']) fs.rmSync(f,{force:true});
+          NODE
+      - name: Build y prueba rápida
+        shell: bash
+        run: |
+          python3 scripts/build_site.py
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          python3 -m http.server 4173 -d dist >/tmp/iris-server.log 2>&1 &
+          echo $! > /tmp/iris-server.pid
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage();
+            const urls=['/en/data/autism-pay-gap/','/en/data/disclosing-a-diagnosis-and-asking-for-adjustments-at-work/','/en/data/','/en/data/autism/'];
+            for(const u of urls){
+              const res=await page.goto('http://127.0.0.1:4173'+u,{waitUntil:'networkidle'});
+              if(!res || res.status()>=400) throw new Error(`${u} status ${res&&res.status()}`);
+              const txt=await page.locator('main').innerText();
+              for(const bad of ['datos ONS','citados por','citado por','Página en borrador','Qué mide','Cómo citarla','Qué evitar']){
+                if(txt.includes(bad)) throw new Error(`${u} conserva ${bad}`);
+              }
+              const labels=await page.locator('nav.langs .lang').evaluateAll(els=>els.map(e=>e.textContent.trim()).join(' '));
+              if(labels !== 'ES EN') throw new Error(`${u} selector ${labels}`);
+            }
+            await page.goto('http://127.0.0.1:4173/en/data/',{waitUntil:'networkidle'});
+            await page.click('#a11yBtn');
+            if(!await page.locator('#a11y:not([hidden])').count()) throw new Error('Lectura no abre');
+            await page.click('#plBtn');
+            await page.waitForSelector('#ig-music-panel:not([hidden])', {timeout:5000});
+            await browser.close();
+            console.log('final-local-browser-ok');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+          kill $(cat /tmp/iris-server.pid)
+          rm -rf node_modules package.json package-lock.json
+      - name: Commit final
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --stat
+          git commit -m "Corregir residuos finales de Datos EN" || true
+          git push origin HEAD:feat/en-datos-20260908
