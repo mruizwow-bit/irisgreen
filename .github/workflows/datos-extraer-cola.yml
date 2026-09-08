@@ -1,0 +1,132 @@
+name: Datos · extraer cola
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-extraer-cola.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+      - name: Extraer cola de traducción de Datos
+        shell: bash
+        run: |
+          mkdir -p cola-traduccion
+          node <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('es/datos/datos.json','utf8'));
+          const records = [];
+          const add = (campo, texto, ctx, rutaES='/es/datos/', rutaEN='/en/data/') => {
+            if (texto === undefined || texto === null || typeof texto !== 'string') return;
+            if (!texto.trim()) return;
+            const id = `DAT-${String(records.length + 1).padStart(4,'0')}`;
+            records.push({id, bloque:'datos', archivo:'es/datos/datos.json', rutaES, rutaEN, estado:'EN inexistente', campo, texto, ctx});
+          };
+          const slugify = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'dato';
+          const htmlSlugMap = new Map();
+          for (const name of fs.readdirSync('es/datos')) {
+            const f = `es/datos/${name}/index.html`;
+            if (!fs.existsSync(f)) continue;
+            const html = fs.readFileSync(f,'utf8');
+            const m = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+            if (m) htmlSlugMap.set(m[1].replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(), name);
+          }
+          const esSlug = p => htmlSlugMap.get(p.title) || slugify(p.title);
+          const prelimEnSlug = p => slugify(p.title);
+          // Portada
+          add('.cover.title', data.cover?.title, 'título de portada');
+          (data.cover?.lede||[]).forEach((t,i)=>add(`.cover.lede[${i}]`, t, 'entradilla de portada'));
+          (data.cover?.sections||[]).forEach((s,i)=>{
+            add(`.cover.sections[${i}].h`, s.h, 'título de apartado de portada');
+            (s.p||[]).forEach((t,j)=>add(`.cover.sections[${i}].p[${j}]`, t, 'párrafo de portada'));
+          });
+          (data.cover?.reglas||[]).forEach((t,i)=>add(`.cover.reglas[${i}]`, t, 'regla editorial de portada'));
+          (data.territorios||[]).forEach((t,i)=>add(`.territorios[${i}]`, t, 'filtro de territorio'));
+          // Fichas
+          (data.paginas||[]).forEach((p,pi)=>{
+            const routeES = `/es/datos/${esSlug(p)}/`;
+            const routeEN = `/en/data/${prelimEnSlug(p)}/`;
+            add(`.paginas[${pi}].territorio`, p.territorio, 'territorio visible', routeES, routeEN);
+            add(`.paginas[${pi}].title`, p.title, 'título de ficha', routeES, routeEN);
+            (p.lede||[]).forEach((n,i)=>add(`.paginas[${pi}].lede[${i}].text`, n.text, 'entradilla', routeES, routeEN));
+            add(`.paginas[${pi}].refTemporal`, p.refTemporal, 'referencia temporal visible', routeES, routeEN);
+            add(`.paginas[${pi}].metodo`, p.metodo, 'método visible', routeES, routeEN);
+            add(`.paginas[${pi}].publicacion`, p.publicacion, 'publicación visible', routeES, routeEN);
+            add(`.paginas[${pi}].revision`, p.revision, 'revisión visible', routeES, routeEN);
+            add(`.paginas[${pi}].poblacion`, p.poblacion, 'población visible', routeES, routeEN);
+            add(`.paginas[${pi}].cifrasH`, p.cifrasH, 'título de cifras', routeES, routeEN);
+            (p.cifrasIntro||[]).forEach((n,i)=>add(`.paginas[${pi}].cifrasIntro[${i}].text`, n.text, 'intro de cifras', routeES, routeEN));
+            (p.cifras||[]).forEach((c,ci)=>{
+              // La cifra se conserva; solo se traducen pie y textos explicativos.
+              add(`.paginas[${pi}].cifras[${ci}].pie`, c.pie, 'pie de cifra', routeES, routeEN);
+              (c.b||[]).forEach((n,i)=>add(`.paginas[${pi}].cifras[${ci}].b[${i}].text`, n.text, 'explicación de cifra', routeES, routeEN));
+            });
+            (p.mide||[]).forEach((n,i)=>add(`.paginas[${pi}].mide[${i}].text`, n.text, 'qué mide', routeES, routeEN));
+            (p.citar||[]).forEach((n,i)=>add(`.paginas[${pi}].citar[${i}].text`, n.text, 'cómo citarla', routeES, routeEN));
+            (p.evitar||[]).forEach((n,i)=>add(`.paginas[${pi}].evitar[${i}].text`, n.text, 'qué evitar', routeES, routeEN));
+            (p.sources||[]).forEach((s,i)=>add(`.paginas[${pi}].sources[${i}].label`, s.label, 'fuente: conservar organismo/nombre oficial; traducir solo lo descriptivo', routeES, routeEN));
+            (p.notaFuentes||[]).forEach((n,i)=>add(`.paginas[${pi}].notaFuentes[${i}].text`, typeof n === 'string' ? n : n.text, 'nota de fuentes', routeES, routeEN));
+            add(`.paginas[${pi}].poblacionOrigen`, p.poblacionOrigen, 'origen de población visible', routeES, routeEN);
+          });
+          // Textos de plantilla de Datos
+          [
+            ['plantilla.home','Inicio','breadcrumb'],
+            ['plantilla.collection','Datos','nombre de sección'],
+            ['plantilla.pageTitle','Neurodiversidad y discapacidad en cifras','h1 portada'],
+            ['plantilla.borrador','BORRADOR','etiqueta de estado'],
+            ['plantilla.notice','Página en borrador. Las fuentes están nombradas y enlazadas; la comprobación final sigue pendiente.','aviso de borrador'],
+            ['plantilla.territorio','Territorio:','rótulo ficha técnica'],
+            ['plantilla.referencia','Referencia temporal:','rótulo ficha técnica'],
+            ['plantilla.metodo','Método:','rótulo ficha técnica'],
+            ['plantilla.publicacion','Publicación:','rótulo ficha técnica'],
+            ['plantilla.revision','Revisión:','rótulo ficha técnica'],
+            ['plantilla.poblacion','Población:','rótulo ficha técnica'],
+            ['plantilla.cifras','Las cifras','rótulo'],
+            ['plantilla.mide','Qué mide','rótulo'],
+            ['plantilla.citar','Cómo citarla','rótulo'],
+            ['plantilla.evitar','Qué evitar','rótulo'],
+            ['plantilla.fuentes','Fuentes','rótulo'],
+            ['plantilla.buscar','Buscar','botón'],
+            ['plantilla.placeholder','Buscar una cifra, territorio o condición','placeholder'],
+            ['plantilla.filtro','Filtrar por territorio','rótulo filtro'],
+            ['plantilla.todos','Todos','botón filtro'],
+            ['plantilla.fichas','49 fichas','contador portada']
+          ].forEach(([campo,texto,ctx])=>add(campo,texto,ctx));
+          fs.writeFileSync('cola-traduccion/datos.json', JSON.stringify(records,null,2)+'\n');
+          const lines = ['# Cola de traducción · datos','','Fuente principal: `es/datos/datos.json`; al final, textos de interfaz de plantilla. '+records.length+' textos.','','Formato: **id** · `archivo` · campo · _contexto_ (la ruta ES → EN va en el encabezado de cada grupo)','',''];
+          let last='';
+          for (const r of records) {
+            const group = `${r.rutaES}  →  ${r.rutaEN}`;
+            if (group !== last) { lines.push(`\n## ${group}\n`); last = group; }
+            lines.push(`**${r.id}** · \`${r.archivo}\` · ${r.campo} · _${r.ctx}_`);
+            lines.push(`> ${r.texto}`);
+            lines.push('');
+          }
+          fs.writeFileSync('cola-traduccion/datos.md', lines.join('\n'));
+          console.log(`records=${records.length}`);
+          console.log(`words=${records.map(r=>r.texto).join(' ').split(/\s+/).filter(Boolean).length}`);
+          NODE
+      - name: Commit cola
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cola-traduccion/datos.json cola-traduccion/datos.md
+          git diff --cached --stat
+          git commit -m "Extraer cola de traducción de Datos" || true
+          git push origin HEAD:feat/en-datos-20260908
+      - name: Resumen
+        shell: bash
+        run: |
+          wc -l cola-traduccion/datos.md cola-traduccion/datos.json
+          head -40 cola-traduccion/datos.md
