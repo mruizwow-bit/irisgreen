@@ -1,0 +1,98 @@
+name: Fix tono notas videos
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/fix-videos-tono-notas-20260908.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Limpiar tono de notas de videos
+        shell: bash
+        run: |
+          set -euo pipefail
+          BR="fix/videos-tono-notas-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, subprocess, sys
+          path = Path('es/videos/index.html')
+          html = path.read_text(encoding='utf-8')
+          before = html
+          # Nota de Dan: quitar cualquier giro defensivo/advertencia.
+          replacements = {
+            'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Es un relato personal: sirve para escuchar cómo lo vive él, no para convertir su caso en una pauta general.':
+            'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad, de entenderse mejor y de lo que cambia cuando por fin encuentras un nombre para lo que llevabas años viviendo.',
+            'He shares his experience of late diagnosis, autism and adult life. It is a personal account: useful for hearing how he lives it, not for turning his case into a general rule.':
+            'He shares his experience of late diagnosis, autism and adult life. He talks about identity, understanding yourself better, and what changes when you finally find a name for what you have been living with for years.',
+          }
+          for old, new in replacements.items():
+              html = html.replace(old, new)
+          # Quitar fórmulas de advertencia clínica o de pauta general en notas. Mantiene el resto de la descripción.
+          patterns = [
+            (r'\s*No\s+habla\s+desde\s+una\s+consulta\s+ni\s+como\s+profesional\s+clínico\.?', ''),
+            (r'\s*No\s+habla\s+como\s+profesional\s+clínico\.?', ''),
+            (r'\s*No\s+es\s+un\s+profesional\s+clínico\.?', ''),
+            (r'\s*No\s+es\s+una\s+pauta\s+general\.?', ''),
+            (r'\s*No\s+es\s+una\s+guía\.?', ''),
+            (r'\s*No\s+convierte\s+su\s+caso\s+en\s+una\s+pauta\s+general\.?', ''),
+            (r'\s*No\s+lo\s+convierte\s+en\s+una\s+pauta\s+general\.?', ''),
+            (r'\s*It\s+is\s+not\s+a\s+general\s+rule\.?', ''),
+            (r'\s*It\s+is\s+not\s+a\s+guide\.?', ''),
+            (r'\s*He\s+is\s+not\s+a\s+clinical\s+professional\.?', ''),
+            (r'\s*He\s+does\s+not\s+speak\s+from\s+a\s+clinic\s+or\s+as\s+a\s+clinical\s+professional\.?', ''),
+            (r'\s*not\s+for\s+turning\s+his\s+case\s+into\s+a\s+general\s+rule\.?', ''),
+            (r',\s*not\s+for\s+turning\s+his\s+case\s+into\s+a\s+general\s+rule', ''),
+          ]
+          for pat, repl in patterns:
+              html = re.sub(pat, repl, html, flags=re.I)
+          # Limpiar dobles espacios y espacios antes de punto tras quitar frases.
+          html = re.sub(r' {2,}', ' ', html)
+          html = re.sub(r'\s+\.', '.', html)
+          html = re.sub(r'\.\s*\.', '.', html)
+          if html == before:
+              raise SystemExit('No se produjo ningún cambio en videos')
+          path.write_text(html, encoding='utf-8')
+          forbidden = [
+            'pauta general', 'general rule', 'convertir su caso', 'turning his case',
+            'profesional clínico', 'clinical professional', 'consulta ni como profesional',
+            'servicio de mentoría', 'mentoría de pago', 'servicio de pago', 'vive de acompañar',
+            'no de cómo se implanta un sistema', 'not about how to implement a system',
+            'no habla desde una consulta', 'does not speak from a clinic'
+          ]
+          txt = path.read_text(encoding='utf-8')
+          hits = {term: txt.lower().count(term.lower()) for term in forbidden if term.lower() in txt.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en videos: ' + repr(hits))
+          required = [
+            'Habla de identidad, de entenderse mejor',
+            'He talks about identity, understanding yourself better'
+          ]
+          for r in required:
+              if r not in txt:
+                  raise SystemExit('Falta texto nuevo: ' + r)
+          subprocess.run([sys.executable, 'scripts/build_site.py'], check=True)
+          dist = Path('dist/es/videos/index.html').read_text(encoding='utf-8')
+          hits = {term: dist.lower().count(term.lower()) for term in forbidden if term.lower() in dist.lower()}
+          if hits:
+              raise SystemExit('Restos prohibidos en dist: ' + repr(hits))
+          print('videos-tono-notas-ok')
+          PY
+          git restore reports/initial-data-build.json reports/routes/build.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 1
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          git add es/videos/index.html
+          git commit -m "Limpiar tono de las notas de videos"
+          git push origin "$BR" --force-with-lease
