@@ -40,7 +40,7 @@ jobs:
           import json, re
 
           base='http://127.0.0.1:8000'
-          report={'pages':{},'music':{},'failures':[]}
+          report={'pages':{},'language_journey':{},'music':{},'failures':[]}
 
           def exact_pt(page):
               return page.locator('a:visible,button:visible,span:visible').filter(has_text=re.compile(r'^PT(?:-BR)?$',re.I)).count()
@@ -62,6 +62,17 @@ jobs:
                   if pt:
                       report['failures'].append(f'{route}: PT visible ({pt})')
 
+              # Reproduce la regresión original: visitar EN y después una ruta /es/.
+              page.goto(base+'/en/neurodiversity/conditions/',wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(500)
+              page.goto(base+'/es/investigacion/',wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(1000)
+              lang_after=(page.locator('html').get_attribute('lang') or '').lower()
+              menu_text=' '.join(page.locator('header').all_inner_texts())
+              report['language_journey']={'en_then_es_lang':lang_after,'header_text':menu_text[:500]}
+              if not lang_after.startswith('es'):
+                  report['failures'].append('EN → /es/investigacion/ conserva idioma incorrecto')
+
               for route in ['/', '/es/neurodiversidad/condiciones/']:
                   requests=[]
                   def seen(req):
@@ -73,21 +84,27 @@ jobs:
                   exists=trigger.count()>0
                   opened=False
                   has_player=False
+                  mp3_requested=False
                   if exists:
                       trigger.click()
                       page.wait_for_timeout(300)
-                      panel=page.locator('#pl')
+                      panel=page.locator('#ig-music-panel')
                       opened=panel.count()>0 and panel.is_visible()
-                      has_player=page.locator('#pl .ig-mus').count()>0
+                      has_player=opened and panel.locator('.ig-m-play').count()>0
                       if has_player:
-                          play=page.get_by_role('button',name=re.compile(r'^(Escuchar|Play)$')).first
-                          if play.count():
-                              play.click()
-                              page.wait_for_timeout(700)
-                  report['music'][route]={'trigger':exists,'opened':opened,'player':has_player,'audio_requests':len(requests)}
+                          details=panel.locator('details')
+                          if details.count():
+                              details.locator('summary').click()
+                              atmosphere=panel.get_by_role('button',name=re.compile(r'^Atmósfera'))
+                              if atmosphere.count():
+                                  atmosphere.click()
+                                  page.wait_for_timeout(900)
+                                  mp3_requested=any('atmosfera.mp3' in u for u in requests)
+                  report['music'][route]={'trigger':exists,'opened':opened,'player':has_player,'audio_requests':len(requests),'atmosfera_requested':mp3_requested}
                   if not exists: report['failures'].append(f'{route}: falta disparador de Música')
                   elif not opened: report['failures'].append(f'{route}: Música no abre')
-                  elif not has_player: report['failures'].append(f'{route}: panel sin reproductor estable')
+                  elif not has_player: report['failures'].append(f'{route}: panel sin controles de Música')
+                  elif not mp3_requested: report['failures'].append(f'{route}: Atmósfera no solicita el MP3 local')
 
               browser.close()
               report['javascript_errors']=js_errors
