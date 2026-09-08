@@ -7,15 +7,15 @@
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vídeos en primera persona · Iris Green</title>
-<meta name="description" content="Personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, sin cargar nada hasta que pulsas, con tipo de fuente y cómo leer cada vídeo.">
+<meta name="description" content="Personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, sin cargar nada hasta que pulsas, con filtros por tema y plataforma.">
 <link rel="canonical" href="https://irisgreen.eu/es/videos/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vídeos en primera persona — Iris Green">
-<meta property="og:description" content="Personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, sin cargar nada hasta que pulsas, con tipo de fuente y cómo leer cada vídeo.">
+<meta property="og:description" content="Personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, sin cargar nada hasta que pulsas, con filtros por tema y plataforma.">
 <meta property="og:url" content="https://irisgreen.eu/es/videos/">
 <meta property="og:locale" content="es_ES">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Vídeos en primera persona","numberOfItems":46,"itemListOrder":"https://schema.org/ItemListUnordered","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"VideoObject","name":"Ro Vitale · La Cruda","description":"TOC contado en primera persona.","embedUrl":"https://www.youtube-nocookie.com/embed/jS2LoXykaRw"}},{"@type":"ListItem","position":2,"item":{"@type":"VideoObject","name":"Jordi Rodríguez · Roca Project","description":"Convivir con Tourette, en primera persona.","embedUrl":"https://www.youtube-nocookie.com/embed/to77ghKeq8I"}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Vídeos en primera persona — Iris Green","headline":"Vídeos en primera persona — Iris Green","description":"46 personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, con tipo de fuente y cómo leer cada vídeo.","url":"https://irisgreen.eu/es/videos/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"Iris Green","url":"https://irisgreen.eu"},"publisher":{"@type":"Organization","name":"Iris Green","url":"https://irisgreen.eu","logo":"https://irisgreen.eu/img/v40-brand-symbol.webp"},"author":{"@type":"Person","name":"Iris Green","url":"https://irisgreen.eu/es/sobre-iris-green/"},"dateModified":"2026-08-31"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Vídeos en primera persona — Iris Green","headline":"Vídeos en primera persona — Iris Green","description":"46 personas contando qué les pasó, cómo lo viven y qué cambió. Se reproducen dentro de la web, con filtros por tema y plataforma.","url":"https://irisgreen.eu/es/videos/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"Iris Green","url":"https://irisgreen.eu"},"publisher":{"@type":"Organization","name":"Iris Green","url":"https://irisgreen.eu","logo":"https://irisgreen.eu/img/v40-brand-symbol.webp"},"author":{"@type":"Person","name":"Iris Green","url":"https://irisgreen.eu/es/sobre-iris-green/"},"dateModified":"2026-08-31"}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -170,10 +170,7 @@
  <svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="{{ v.savedFill }}" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"></path></svg>
  </button>
  </div>
- <sc-if value="{{ v.hasNota }}" hint-placeholder-val="{{ false }}">
- <p style="margin: 8px 0 0; font-size: 14.5px; color: #4f5a6b; background: {{ v.notaBg }}; border-radius: 10px; padding: 10px 12px;"><strong>{{ tHowToRead }}</strong> {{ v.nota }}</p>
- </sc-if>
- </div>
+</div>
  </sc-for>
  </div>
 
@@ -507,10 +504,10 @@ class Component extends DCLogic {
  noResults: filtered.length === 0,
  cards: filtered.slice(0, st.limit).map((v) => ({
  name: videoName(v), href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + videoName(v),
- nota: videoNota(v) || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,
- hasNota: true,
- notaPropia: !!videoNota(v),
- notaBg: videoNota(v) ? "rgba(23,57,92,0.05)" : "rgba(111,95,192,0.07)",
+ nota: "",
+ hasNota: false,
+ notaPropia: false,
+ notaBg: "transparent",
  tipoLabel: (T.tipos && T.tipos[v.tipo]) || (TIPOS[v.tipo] || TIPOS.vivencia)[0],
  tipoColor: (TIPOS[v.tipo] || TIPOS.vivencia)[1],
  tipoBg: (TIPOS[v.tipo] || TIPOS.vivencia)[2],
