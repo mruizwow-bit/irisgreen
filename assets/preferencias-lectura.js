@@ -2,6 +2,7 @@
    Only presentation is persisted. Speech is always off on a new page. */
 (function (window, document) {
   'use strict';
+  if (/^\/es(?:\/|$)/.test(window.location.pathname)) { try { window.localStorage.removeItem('ig_lang'); } catch (_) {} }
   if (window.IGPreferences) return;
   var KEY = 'ig-a11y', VERSION = 2, STEPS = [1, 1.15, 1.3, 1.5];
   var FLAGS = ['spacing', 'controls', 'contrast', 'guide', 'motion'];
