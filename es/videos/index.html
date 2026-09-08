@@ -21,59 +21,59 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,400;0,500;0,600&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
-  html { background: #fff; }
-  body { margin: 0; padding: 0; background:
-      radial-gradient(120% 80% at 88% -8%, rgba(240,179,206,0.42), transparent 60%),
-      radial-gradient(100% 70% at 4% 8%, rgba(150,133,214,0.3), transparent 62%),
-      radial-gradient(120% 90% at 60% 104%, rgba(120,175,214,0.32), transparent 66%),
-      #fff;
-    background-attachment: scroll; }
-  * { box-sizing: border-box; }
-  a { color: #1f5f8b; text-decoration: none; }
-  a:hover { color: #164a70; text-decoration: underline; text-underline-offset: 3px; }
-  input, select, button { font: inherit; color: inherit; }
-  ::placeholder { color: #98a1b0; }
-  html[data-ig-controls="big"] button, html[data-ig-controls="big"] select, html[data-ig-controls="big"] input { min-height: 54px; font-size: 1.05em; }
-  html[data-ig-contrast="on"] body { filter: contrast(1.2) saturate(1.1); }
-  html[data-ig-motion="off"] * { animation: none !important; transition: none !important; }
+ html { background: #fff; }
+ body { margin: 0; padding: 0; background:
+ radial-gradient(120% 80% at 88% -8%, rgba(240,179,206,0.42), transparent 60%),
+ radial-gradient(100% 70% at 4% 8%, rgba(150,133,214,0.3), transparent 62%),
+ radial-gradient(120% 90% at 60% 104%, rgba(120,175,214,0.32), transparent 66%),
+ #fff;
+ background-attachment: scroll; }
+ * { box-sizing: border-box; }
+ a { color: #1f5f8b; text-decoration: none; }
+ a:hover { color: #164a70; text-decoration: underline; text-underline-offset: 3px; }
+ input, select, button { font: inherit; color: inherit; }
+ ::placeholder { color: #98a1b0; }
+ html[data-ig-controls="big"] button, html[data-ig-controls="big"] select, html[data-ig-controls="big"] input { min-height: 54px; font-size: 1.05em; }
+ html[data-ig-contrast="on"] body { filter: contrast(1.2) saturate(1.1); }
+ html[data-ig-motion="off"] * { animation: none !important; transition: none !important; }
 </style>
 
 <style>
-  .ig-uh{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,57,92,.09)}
-  .ig-uh *{box-sizing:border-box}
-  .ig-uh-inner{width:100%;min-height:88px;padding:12px clamp(32px,5vw,96px);display:flex;align-items:center;gap:10px}
-  .ig-uh-brand{flex:0 0 auto;color:#17395c!important;text-decoration:none!important;font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:400;line-height:1;white-space:nowrap}
-  .ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,.55vw,10px);padding:0 clamp(10px,1.6vw,28px)}
-  .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 clamp(10px,.85vw,16px);border-radius:999px;color:#17395c!important;text-decoration:none!important;font-size:16.5px;line-height:1.2;white-space:nowrap}
-  .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important;text-decoration:none!important}
-  .ig-uh-nav a[aria-current='page']{background:rgba(23,57,92,.07)}
-  .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin-left:0}
-  .ig-uh-tools{display:flex;align-items:center;gap:7px}
-  .ig-uh-music,.ig-uh-reading{min-height:46px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
-  .ig-uh-music{width:46px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.35)}
-  .ig-uh-reading{display:inline-flex;align-items:center;gap:8px;padding:0 16px;color:#17395c;font-size:16px;white-space:nowrap}
-  .ig-uh-langs{display:flex;align-items:center;gap:6px;margin-left:2px}
-  .ig-uh-langs button{min-height:46px;min-width:52px;padding:0 14px;border-radius:999px;font-size:15.5px!important;font-weight:700;line-height:1.2;cursor:pointer}
-  @media(max-width:1400px){
-    .ig-uh-inner{padding-inline:28px;gap:7px}
-    .ig-uh-nav{gap:2px;padding-inline:8px}
-    .ig-uh-nav a{font-size:15px;padding-inline:9px}
-    .ig-uh-reading{font-size:15px;padding-inline:13px}
-    .ig-uh-langs button{font-size:14px!important;min-width:48px;padding-inline:11px}
-  }
-  @media(max-width:1080px){
-    .ig-uh-inner{flex-wrap:wrap;padding:11px 20px;min-height:0}
-    .ig-uh-brand{font-size:24px}
-    .ig-uh-right{margin-left:auto}
-    .ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;padding:4px 0 1px;scrollbar-width:thin}
-    .ig-uh-nav a{font-size:15px;flex:0 0 auto}
-  }
-  @media(max-width:650px){
-    .ig-uh-inner{gap:8px}
-    .ig-uh-reading{width:46px;padding:0;justify-content:center;font-size:0}
-    .ig-uh-langs{gap:4px}
-    .ig-uh-langs button{min-width:44px;padding:0 9px;font-size:12.5px!important}
-  }
+ .ig-uh{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,57,92,.09)}
+ .ig-uh *{box-sizing:border-box}
+ .ig-uh-inner{width:100%;min-height:88px;padding:12px clamp(32px,5vw,96px);display:flex;align-items:center;gap:10px}
+ .ig-uh-brand{flex:0 0 auto;color:#17395c!important;text-decoration:none!important;font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:400;line-height:1;white-space:nowrap}
+ .ig-uh-nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,.55vw,10px);padding:0 clamp(10px,1.6vw,28px)}
+ .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 clamp(10px,.85vw,16px);border-radius:999px;color:#17395c!important;text-decoration:none!important;font-size:16.5px;line-height:1.2;white-space:nowrap}
+ .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important;text-decoration:none!important}
+ .ig-uh-nav a[aria-current='page']{background:rgba(23,57,92,.07)}
+ .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin-left:0}
+ .ig-uh-tools{display:flex;align-items:center;gap:7px}
+ .ig-uh-music,.ig-uh-reading{min-height:46px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
+ .ig-uh-music{width:46px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.35)}
+ .ig-uh-reading{display:inline-flex;align-items:center;gap:8px;padding:0 16px;color:#17395c;font-size:16px;white-space:nowrap}
+ .ig-uh-langs{display:flex;align-items:center;gap:6px;margin-left:2px}
+ .ig-uh-langs button{min-height:46px;min-width:52px;padding:0 14px;border-radius:999px;font-size:15.5px!important;font-weight:700;line-height:1.2;cursor:pointer}
+ @media(max-width:1400px){
+ .ig-uh-inner{padding-inline:28px;gap:7px}
+ .ig-uh-nav{gap:2px;padding-inline:8px}
+ .ig-uh-nav a{font-size:15px;padding-inline:9px}
+ .ig-uh-reading{font-size:15px;padding-inline:13px}
+ .ig-uh-langs button{font-size:14px!important;min-width:48px;padding-inline:11px}
+ }
+ @media(max-width:1080px){
+ .ig-uh-inner{flex-wrap:wrap;padding:11px 20px;min-height:0}
+ .ig-uh-brand{font-size:24px}
+ .ig-uh-right{margin-left:auto}
+ .ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;padding:4px 0 1px;scrollbar-width:thin}
+ .ig-uh-nav a{font-size:15px;flex:0 0 auto}
+ }
+ @media(max-width:650px){
+ .ig-uh-inner{gap:8px}
+ .ig-uh-reading{width:46px;padding:0;justify-content:center;font-size:0}
+ .ig-uh-langs{gap:4px}
+ .ig-uh-langs button{min-width:44px;padding:0 9px;font-size:12.5px!important}
+ }
 </style>
 
 
@@ -93,9 +93,9 @@
 
 <div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #17395c; min-height: 100vh; font-size: 17px; line-height: 1.6;">
 
-  
+ 
 
-  
+ 
 <style>
 .ig-uh{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(23,57,92,.09);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c}
 .ig-uh *{box-sizing:border-box}.ig-uh a{text-decoration:none!important}
@@ -118,117 +118,117 @@
 </style>
 <header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="Explorar" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/en/everyday-life/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a aria-current="page" class="ig-nav-es" href="/es/videos/">Vídeos</a><a aria-current="page" class="ig-nav-en" href="/es/videos/">Videos</a><a aria-current="page" class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/en/data/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet place</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="Música" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="Lectura" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="Idioma"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
-  <main style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 80px;">
-    <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a49a8;">{{ tEyebrow }}</p>
-    <h1 style="margin: 0 0 12px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18em;">{{ tTitle }}</h1>
-    <p style="margin: 0 0 14px; font-size: 19px; color: #435268; max-width: 36em; text-wrap: pretty;">{{ tLede }}</p>
-    <p style="margin: 0 0 30px; font-size: 16px; color: #5a6675; max-width: 40em; text-wrap: pretty;">{{ tMix }}</p>
+ <main style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 80px;">
+ <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a49a8;">{{ tEyebrow }}</p>
+ <h1 style="margin: 0 0 12px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18em;">{{ tTitle }}</h1>
+ <p style="margin: 0 0 14px; font-size: 19px; color: #435268; max-width: 36em; text-wrap: pretty;">{{ tLede }}</p>
+ <p style="margin: 0 0 30px; font-size: 16px; color: #5a6675; max-width: 40em; text-wrap: pretty;">{{ tMix }}</p>
 
-    <div style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 22px; padding: 18px; box-shadow: 0 22px 55px -40px rgba(23,57,92,0.5);">
-      <div class="ig-search-shell" style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 14px; background: #fff; padding: 2px 16px;">
-        <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1f5f8b" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
-        <input class="ig-search-input" type="search" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 18px; padding: 11px 0;">
-      </div>
-      <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
-        <sc-for list="{{ temaChips }}" as="c" hint-placeholder-count="11">
-          <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;" data-ig-filter="temaChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
-        </sc-for>
-      </div>
-      <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
-        <span style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a8698;">{{ tWhere }}</span>
-        <sc-for list="{{ platChips }}" as="c" hint-placeholder-count="3">
-          <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;" data-ig-filter="platChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
-        </sc-for>
-      </div>
-    </div>
+ <div style="background: rgba(255,255,255,0.75); backdrop-filter: blur(18px); border: 1px solid rgba(23,57,92,0.1); border-radius: 22px; padding: 18px; box-shadow: 0 22px 55px -40px rgba(23,57,92,0.5);">
+ <div class="ig-search-shell" style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(23,57,92,0.14); border-radius: 14px; background: #fff; padding: 2px 16px;">
+ <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1f5f8b" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
+ <input class="ig-search-input" type="search" value="{{ q }}" sc-camel-on-change="{{ onQ }}" placeholder="{{ tSearchPh }}" style="flex: 1; border: 0; background: transparent; outline: none; font-size: 18px; padding: 11px 0;">
+ </div>
+ <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+ <sc-for list="{{ temaChips }}" as="c" hint-placeholder-count="11">
+ <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 7px 15px; font-size: 15px; cursor: pointer;" data-ig-filter="temaChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
+ </sc-for>
+ </div>
+ <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
+ <span style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a8698;">{{ tWhere }}</span>
+ <sc-for list="{{ platChips }}" as="c" hint-placeholder-count="3">
+ <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;" data-ig-filter="platChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
+ </sc-for>
+ </div>
+ </div>
 
-    <p style="margin: 22px 0 16px; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>
+ <p style="margin: 22px 0 16px; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 22px; align-items: start;">
-      <sc-for list="{{ cards }}" as="v" hint-placeholder-count="9">
-        <div style="background: rgba(255,255,255,0.72); backdrop-filter: blur(14px); border: 1px solid rgba(23,57,92,0.1); border-radius: 20px; padding: 14px;">
-          <div style="position: relative; aspect-ratio: {{ v.ratio }}; border-radius: 14px; overflow: hidden; border: 1px solid rgba(23,57,92,0.1); background: #fbfaff;">
-            <sc-if value="{{ v.playing }}" hint-placeholder-val="{{ false }}">
-              <iframe sc-camel-src="{{ v.src }}" title="{{ v.name }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" scrolling="no" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff;"></iframe>
-            </sc-if>
-            <sc-if value="{{ v.idle }}" hint-placeholder-val="{{ true }}">
-              <button class="ig-video-poster" sc-camel-on-click="{{ v.play }}" aria-label="{{ v.playLabel }}" style="position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(140deg, #f3eefb 0%, #eaf1fa 55%, #fdf0f6 100%); border: 0; cursor: pointer;" data-ig-video="{{ v.src }}">
-                <sc-if value="{{ v.noThumb }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; font-size: 14px; line-height: 1.3; color: #17395c; text-align: left;">{{ v.name }}</span></sc-if><sc-if value="{{ v.hasThumb }}" hint-placeholder-val="{{ false }}"><img class="ig-video-thumbnail" sc-camel-src="{{ v.thumb }}" sc-camel-on-error="{{ v.onThumbError }}" width="1280" height="720" loading="lazy" decoding="async" alt=""></sc-if><sc-if value="{{ v.unavailableThumb }}" hint-placeholder-val="{{ false }}"><span class="ig-thumbnail-unavailable">{{ v.thumbMessage }}</span></sc-if><span style="position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 999px; background: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -14px rgba(23,57,92,0.8);">
-                  <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="#a8336f"><path d="M8 5.5l11 6.5-11 6.5z"></path></svg>
-                </span>
-                <span style="position: relative; z-index: 1; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #17395c; font-weight: 700; text-shadow: 0 1px 0 #fff;">{{ tPlay }}</span>
-              </button>
-            </sc-if>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <div style="flex: 1;">
-              <span style="display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ v.tipoColor }}; background: {{ v.tipoBg }}; border-radius: 999px; padding: 3px 9px; margin-bottom: 6px;">{{ v.tipoLabel }}</span>
-              <div style="font-weight: 700; line-height: 1.35;">{{ v.name }}</div>
-              <div style="font-size: 14px; color: #6b6479; margin-top: 2px;">{{ v.meta }}</div>
-            </div>
-            <button sc-camel-on-click="{{ v.save }}" aria-label="{{ tSave }}" style="background: transparent; border: 0; cursor: pointer; color: #5a49a8; padding: 2px;">
-              <svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="{{ v.savedFill }}" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"></path></svg>
-            </button>
-          </div>
-          <sc-if value="{{ v.hasNota }}" hint-placeholder-val="{{ false }}">
-            <p style="margin: 8px 0 0; font-size: 14.5px; color: #4f5a6b; background: {{ v.notaBg }}; border-radius: 10px; padding: 10px 12px;"><strong>{{ tHowToRead }}</strong> {{ v.nota }}</p>
-          </sc-if>
-        </div>
-      </sc-for>
-    </div>
+ <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 22px; align-items: start;">
+ <sc-for list="{{ cards }}" as="v" hint-placeholder-count="9">
+ <div style="background: rgba(255,255,255,0.72); backdrop-filter: blur(14px); border: 1px solid rgba(23,57,92,0.1); border-radius: 20px; padding: 14px;">
+ <div style="position: relative; aspect-ratio: {{ v.ratio }}; border-radius: 14px; overflow: hidden; border: 1px solid rgba(23,57,92,0.1); background: #fbfaff;">
+ <sc-if value="{{ v.playing }}" hint-placeholder-val="{{ false }}">
+ <iframe sc-camel-src="{{ v.src }}" title="{{ v.name }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" scrolling="no" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff;"></iframe>
+ </sc-if>
+ <sc-if value="{{ v.idle }}" hint-placeholder-val="{{ true }}">
+ <button class="ig-video-poster" sc-camel-on-click="{{ v.play }}" aria-label="{{ v.playLabel }}" style="position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(140deg, #f3eefb 0%, #eaf1fa 55%, #fdf0f6 100%); border: 0; cursor: pointer;" data-ig-video="{{ v.src }}">
+ <sc-if value="{{ v.noThumb }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; font-size: 14px; line-height: 1.3; color: #17395c; text-align: left;">{{ v.name }}</span></sc-if><sc-if value="{{ v.hasThumb }}" hint-placeholder-val="{{ false }}"><img class="ig-video-thumbnail" sc-camel-src="{{ v.thumb }}" sc-camel-on-error="{{ v.onThumbError }}" width="1280" height="720" loading="lazy" decoding="async" alt=""></sc-if><sc-if value="{{ v.unavailableThumb }}" hint-placeholder-val="{{ false }}"><span class="ig-thumbnail-unavailable">{{ v.thumbMessage }}</span></sc-if><span style="position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 999px; background: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -14px rgba(23,57,92,0.8);">
+ <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="#a8336f"><path d="M8 5.5l11 6.5-11 6.5z"></path></svg>
+ </span>
+ <span style="position: relative; z-index: 1; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #17395c; font-weight: 700; text-shadow: 0 1px 0 #fff;">{{ tPlay }}</span>
+ </button>
+ </sc-if>
+ </div>
+ <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
+ <div style="flex: 1;">
+ <span style="display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ v.tipoColor }}; background: {{ v.tipoBg }}; border-radius: 999px; padding: 3px 9px; margin-bottom: 6px;">{{ v.tipoLabel }}</span>
+ <div style="font-weight: 700; line-height: 1.35;">{{ v.name }}</div>
+ <div style="font-size: 14px; color: #6b6479; margin-top: 2px;">{{ v.meta }}</div>
+ </div>
+ <button sc-camel-on-click="{{ v.save }}" aria-label="{{ tSave }}" style="background: transparent; border: 0; cursor: pointer; color: #5a49a8; padding: 2px;">
+ <svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="{{ v.savedFill }}" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"></path></svg>
+ </button>
+ </div>
+ <sc-if value="{{ v.hasNota }}" hint-placeholder-val="{{ false }}">
+ <p style="margin: 8px 0 0; font-size: 14.5px; color: #4f5a6b; background: {{ v.notaBg }}; border-radius: 10px; padding: 10px 12px;"><strong>{{ tHowToRead }}</strong> {{ v.nota }}</p>
+ </sc-if>
+ </div>
+ </sc-for>
+ </div>
 
-    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-      <p style="margin: 8px 0 0; color: #5d6779;">{{ tNoResults }}</p>
-    </sc-if>
+ <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+ <p style="margin: 8px 0 0; color: #5d6779;">{{ tNoResults }}</p>
+ </sc-if>
 
-    <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
-      <button sc-camel-on-click="{{ showMore }}" style="margin-top: 26px; background: #fff; border: 1px solid rgba(111,95,192,0.4); color: #5a49a8; border-radius: 999px; padding: 12px 22px; font-weight: 700; cursor: pointer; font-size: 16px;">{{ moreLabel }}</button>
-    </sc-if>
+ <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+ <button sc-camel-on-click="{{ showMore }}" style="margin-top: 26px; background: #fff; border: 1px solid rgba(111,95,192,0.4); color: #5a49a8; border-radius: 999px; padding: 12px 22px; font-weight: 700; cursor: pointer; font-size: 16px;">{{ moreLabel }}</button>
+ </sc-if>
 
-  </main>
+ </main>
 
-  <footer style="border-top: 1px solid rgba(23,57,92,0.1); padding: 30px 28px 60px; background: rgba(255,255,255,0.6);">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
-      <div>
-        <div style="font-family: 'Newsreader', serif; font-size: 20px;">Iris Green</div>
-        <div style="font-size: 15px; color: #5a6675;">{{ tTagline }}</div>
-      </div>
-      <nav style="margin-left: auto; display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px;">
-        <a href="/es/sobre-iris-green/">Sobre Iris Green</a>
-        <a href="/es/metodologia/">Metodología</a>
-        <a href="/es/lectura-accesible/">Accesibilidad</a>
-        <a href="/es/privacidad">Privacidad</a>
-      </nav>
-    </div>
-  </footer>
+ <footer style="border-top: 1px solid rgba(23,57,92,0.1); padding: 30px 28px 60px; background: rgba(255,255,255,0.6);">
+ <div style="max-width: 1180px; margin: 0 auto; display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+ <div>
+ <div style="font-family: 'Newsreader', serif; font-size: 20px;">Iris Green</div>
+ <div style="font-size: 15px; color: #5a6675;">{{ tTagline }}</div>
+ </div>
+ <nav style="margin-left: auto; display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px;">
+ <a href="/es/sobre-iris-green/">Sobre Iris Green</a>
+ <a href="/es/metodologia/">Metodología</a>
+ <a href="/es/lectura-accesible/">Accesibilidad</a>
+ <a href="/es/privacidad">Privacidad</a>
+ </nav>
+ </div>
+ </footer>
 
-  
-  <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);" id="ig-reading-panel" data-ig-reading-panel="" role="region" aria-labelledby="ig-reading-title" popover="manual">
-      <div style="display: flex; align-items: center; margin-bottom: 14px;">
-        <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;" id="ig-reading-title">{{ tReadingPanel }}</strong>
-        <button sc-camel-on-click="{{ toggleA11y }}" aria-label="Cerrar" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;" data-ig-reading-close="">×</button>
-      </div>
-      <div style="display: grid; gap: 10px;">
-        <div>
-          <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }} · {{ fsLabel }}</div>
-          <div style="display: flex; gap: 8px;">
-            <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;" disabled="{{ fsDownDisabled }}">A−</button>
-            <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;" disabled="{{ fsUpDisabled }}">A+</button>
-          </div>
-        </div>
-        <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
-          <button aria-pressed="{{ t.pressed }}" sc-camel-on-click="{{ t.toggle }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
-            <span style="width: 34px; height: 20px; border-radius: 999px; flex: none; background: {{ t.knobTrack }}; position: relative;">
-              <span style="position: absolute; top: 2px; left: {{ t.knobLeft }}; width: 16px; height: 16px; border-radius: 999px; background: #fff;"></span>
-            </span>
-            {{ t.label }}
-          </button>
-        </sc-for>
-        <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tReset }}</button><p class="ig-preference-note" role="status">{{ preferenceStatus }}</p>
-      </div>
-    </div>
-  </sc-if>
+ 
+ <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
+ <div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 320px; max-height: calc(100vh - 40px); overflow: auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(23,57,92,0.14); border-radius: 20px; padding: 20px; box-shadow: 0 30px 60px -30px rgba(23,57,92,0.5);" id="ig-reading-panel" data-ig-reading-panel="" role="region" aria-labelledby="ig-reading-title" popover="manual">
+ <div style="display: flex; align-items: center; margin-bottom: 14px;">
+ <strong style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;" id="ig-reading-title">{{ tReadingPanel }}</strong>
+ <button sc-camel-on-click="{{ toggleA11y }}" aria-label="Cerrar" style="margin-left: auto; background: rgba(23,57,92,0.07); border: 0; border-radius: 999px; width: 28px; height: 28px; cursor: pointer;" data-ig-reading-close="">×</button>
+ </div>
+ <div style="display: grid; gap: 10px;">
+ <div>
+ <div style="font-size: 14px; color: #5d6779; margin-bottom: 6px;">{{ tTextSize }} · {{ fsLabel }}</div>
+ <div style="display: flex; gap: 8px;">
+ <button sc-camel-on-click="{{ fsDown }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer;" disabled="{{ fsDownDisabled }}">A−</button>
+ <button sc-camel-on-click="{{ fsUp }}" style="flex: 1; background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 10px; padding: 11px; cursor: pointer; font-size: 19px;" disabled="{{ fsUpDisabled }}">A+</button>
+ </div>
+ </div>
+ <sc-for list="{{ a11yToggles }}" as="t" hint-placeholder-count="6">
+ <button aria-pressed="{{ t.pressed }}" sc-camel-on-click="{{ t.toggle }}" style="display: flex; align-items: center; gap: 10px; text-align: left; background: {{ t.bg }}; border: 1px solid {{ t.border }}; border-radius: 12px; padding: 12px 14px; cursor: pointer; font-size: 15.5px;">
+ <span style="width: 34px; height: 20px; border-radius: 999px; flex: none; background: {{ t.knobTrack }}; position: relative;">
+ <span style="position: absolute; top: 2px; left: {{ t.knobLeft }}; width: 16px; height: 16px; border-radius: 999px; background: #fff;"></span>
+ </span>
+ {{ t.label }}
+ </button>
+ </sc-for>
+ <button sc-camel-on-click="{{ a11yReset }}" style="background: #fff; border: 1px solid rgba(23,57,92,0.16); border-radius: 12px; padding: 11px; cursor: pointer; margin-top: 4px;">{{ tReset }}</button><p class="ig-preference-note" role="status">{{ preferenceStatus }}</p>
+ </div>
+ </div>
+ </sc-if>
 </div>
 
 </x-dc>
@@ -246,312 +246,313 @@ const y = (n, t, id, tipo, nota) => ({ name: n, tema: t, source: "YouTube", embe
 const g = (n, t, p, tipo, nota) => ({ name: n, tema: t, source: "Instagram", embed: IG(p), href: IGW(p), tipo: tipo || "vivencia", nota: nota || "" });
 
 const NOTA_BASE = {
-  es: {
-    vivencia: "Es la experiencia de una persona, no una pauta: lo que a ella le funcionó no es lo que hay que hacer.",
-    institucional: "Lo publica una entidad. Describe casos frecuentes, no todas las formas de vivirlo.",
-    divulgacion: "Es divulgación profesional: explica en general, y no sustituye la valoración de tu caso."
-  },
-  en: {
-    vivencia: "This is one person's experience, not a set of instructions: what worked for them is not what you have to do.",
-    institucional: "Published by an organisation. It describes common cases, not every way of living it.",
-    divulgacion: "This is professional explanation in general terms, and it does not replace an assessment of your own case."
-  },
-  pt: {
-    vivencia: "É a experiência de uma pessoa, não uma orientação: o que funcionou para ela não é o que se deve fazer.",
-    institucional: "Publicado por uma entidade. Descreve casos frequentes, não todas as formas de viver isso.",
-    divulgacion: "É divulgação profissional: explica em geral, e não substitui a avaliação do seu caso."
-  }
+ es: {
+ vivencia: "Una persona cuenta en primera persona cómo lo vive.",
+ institucional: "Publicado por una entidad. Reúne información, testimonios o ejemplos sobre el tema.",
+ divulgacion: "Divulgación profesional: organiza ideas y ejemplos para entender mejor el tema."
+ },
+ en: {
+ vivencia: "A person speaks in the first person about how they experience it.",
+ institucional: "Published by an organisation. It brings together information, accounts or examples about the topic.",
+ divulgacion: "Professional outreach: it organises ideas and examples to make the topic easier to understand."
+ },
+ pt: {
+ vivencia: "Uma pessoa conta, em primeira pessoa, como vive isso.",
+ institucional: "Publicado por uma entidade. Reúne informações, relatos ou exemplos sobre o tema.",
+ divulgacion: "Divulgação profissional: organiza ideias e exemplos para entender melhor o tema."
+ }
 };
 
 const TIPOS = {
-  vivencia: ["Experiencia en primera persona", "#a8336f", "rgba(168,51,111,0.1)"],
-  institucional: ["Fuente institucional", "#16708a", "rgba(31,139,168,0.12)"],
-  divulgacion: ["Divulgación profesional", "#5a49a8", "rgba(111,95,192,0.12)"]
+ vivencia: ["Experiencia en primera persona", "#a8336f", "rgba(168,51,111,0.1)"],
+ institucional: ["Fuente institucional", "#16708a", "rgba(31,139,168,0.12)"],
+ divulgacion: ["Divulgación profesional", "#5a49a8", "rgba(111,95,192,0.12)"]
 };
 
 const VIDEOS = [
-  y("Dan Wilkins · Managing on the Spectrum", "Autismo", "qy_6-Zhx-i0", "vivencia", "Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Es un relato personal: sirve para escuchar cómo lo vive él, no para convertir su caso en una pauta general."),
-  y("Cris Edwards · su historia con la misofonía", "Misofonía", "AIM2TieReU8", "vivencia", "Cuenta su propia experiencia con la misofonía y cómo le afecta en el día a día. Menciona ideación suicida: si estás en un momento difícil, en España puedes llamar al 024. Publicado por Misophonia Research Fund."),
-  y("Bob Williams · See Us. Hear Us.", "CAA", "t60K-XJWg9A", "vivencia", "Lleva más de seis décadas comunicándose con CAA. Habla de su propia vida, no de cómo se implanta un sistema: la decisión sobre qué sistema necesita cada persona se toma con profesionales. Tiene subtítulos en español."),
-  y("Peter Cherry · vivir con discalculia", "Discalculia", "YsjRwpuFNiE", "vivencia", "Tiene discalculia y cuenta cómo son las matemáticas en su día a día, en el trabajo y en los estudios. Es voluntario de Dyscalculia Network, no profesional clínico."),
-  v("Jules Robertson · The Kennel Grandslam", "Autismo", "174264190", "vivencia", "Cortometraje encargado por Ambitious about Autism en el que Jules, actor autista, relata episodios reales de acoso escolar que vivió él mismo."),
-  y("Ioan Berry · Me and DLD", "TDL", "bXHCjk_FCI4", "vivencia", "Diagnosticado de dificultades del lenguaje desde los cinco años. Lo grabó él durante el confinamiento y cuenta qué apoyos le ayudaron y cuáles no. El TDL es de larga duración: en el vídeo no se promete ninguna cura."),
-  y("Gabriela Venâncio · diagnóstico en la vida adulta", "TDAH", "2ijZqgW41q8", "vivencia", "Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, no cómo se diagnostica: la ruta clínica está en la ficha de TDAH."),
-  y("Alice Moyle · pensamiento mágico", "TOC", "7YpjdG3qTmg", "vivencia", "Ella misma aclara que acompaña desde la experiencia vivida, no desde la terapia ni el coaching, y que convive con el TOC desde los dieciséis años. El tratamiento del TOC lo indica un profesional."),
-  y("Ro Vitale · La Cruda", "TOC", "jS2LoXykaRw"),
-  y("Jordi Rodríguez · Roca Project", "Tourette", "to77ghKeq8I"),
-  y("Cate Moretti · Roca Project", "Síndrome de Down", "kR_ZyTd2PW8"),
-  y("Josep Thió", "Autismo", "rEU5YZGvovc"),
-  y("Abraham Ros · Más allá del rosa", "Autismo", "KOHb8-xHpOU"),
-  y("Elisa Farías", "TDAH", "IZhswSOVNoc"),
-  y("Yessenia y Javier · Autismo Guía", "Autismo", "6avzOjlOPeQ"),
-  y("Renzo Schuller", "TDAH", "86UnZk_tRUI"),
-  y("Norma Echavarría · Inesperado Podcast", "TDAH", "P1x13ntninc"),
-  y("Jaume Aymar / Mind Sylenth", "TOC", "0da3Lud8aqo"),
-  y("Fernando · historia de TOC", "TOC", "74KDFWp1jK8"),
-  y("Lele Pons", "TOC", "utFNW9znXMU"),
-  y("Tini Stoessel", "Ansiedad", "rUDlpO89isc"),
-  y("María Becerra", "Ansiedad", "yNo-OBEJ-2s"),
-  y("Leiva", "Ansiedad", "AR-mhLGktMs"),
-  y("Beret", "Ansiedad", "TJtqJaTMbTk"),
-  y("Jely Reátegui", "Ansiedad", "FXuObQT10Ew"),
-  y("Felipe Silva Eltit · Inesperado Podcast", "Tourette", "Pt2v_vS2LuA"),
-  y("Bianca Sáez", "Tourette", "Rl3nZwxM28w"),
-  y("Wado de Pedro", "Tartamudez", "5n-svsAPUlE"),
-  y("Kenya Cuevas · Se Regalan Dudas", "Identidad LGTBI+", "NdsTWfDG4n8"),
-  y("Alex Orué · Se Regalan Dudas", "Identidad LGTBI+", "dtwJcwFFGIE"),
-  y("Aike Martín · Les Mariquites", "Identidad LGTBI+", "mlruSqK0YM4"),
-  y("Jesica y Ambar · CAMBIO", "Identidad LGTBI+", "qCM_mBpfkug"),
-  y("Izan Baptista", "Identidad LGTBI+", "KKVxqJIJNcw"),
-  y("Bea Is · Perú Intersex", "Identidad LGTBI+", "U9ORbTEkmE8"),
-  y("Luta Cruz", "Identidad LGTBI+", "rpkHylCno1s"),
-  y("Rosario Ortega", "Identidad LGTBI+", "QmxhKxJK_eU"),
-  y("Paula Gonu", "Identidad LGTBI+", "dB4DzHS_P58"),
-  y("Ellie Middleton · diagnóstico AuDHD", "TDAH", "u-Qtf9YAlts"),
-  y("Lizi Jackson-Barrett", "TDAH", "EDLpUMjYoGY"),
-  y("Orlando Bloom · Made By Dyslexia", "Dislexia y discalculia", "-_ij_ZyDwVI"),
-  y("Joyce Luz · Drauzio Varella", "Tourette", "ZYAfjjHrI_A"),
-  y("Amanda Ramalho · The Noite", "Autismo", "WewQesBzrmI"),
-  y("Bella Ramsey · autismo e identidad", "Identidad LGTBI+", "xR1Brs76IEo"),
-  y("Jessica Kellgren-Fozard · TDAH y vida queer", "Identidad LGTBI+", "BrxAnehKjZ0"),
-  y("Fern Brady · autismo y bisexualidad", "Identidad LGTBI+", "URzPua45sRQ"),
-  y("Hannah Gadsby · autismo y experiencia queer", "Identidad LGTBI+", "PaT__mzkHbA"),
-  y("Chloé Hayden · autismo, TDAH y representación", "Autismo", "roFFvyNVWtc"),
-  y("Yasmin Finney · representación trans", "Identidad LGTBI+", "8bzfJXGieng")
+ y("Dan Wilkins · Managing on the Spectrum", "Autismo", "qy_6-Zhx-i0", "vivencia", "Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad, de entenderse mejor y de lo que cambia cuando por fin encuentras un nombre para lo que llevabas años viviendo."),
+ y("Cris Edwards · su historia con la misofonía", "Misofonía", "AIM2TieReU8", "vivencia", "Cuenta su propia experiencia con la misofonía y cómo le afecta en el día a día. Menciona ideación suicida: si estás en un momento difícil, en España puedes llamar al 024. Publicado por Misophonia Research Fund."),
+ y("Bob Williams · See Us. Hear Us.", "CAA", "t60K-XJWg9A", "vivencia", "Lleva más de seis décadas comunicándose con CAA. Cuenta cómo la comunicación aumentativa y alternativa forma parte de su vida, de sus decisiones y de su forma de estar en el mundo. Tiene subtítulos en español."),
+ y("Peter Cherry · vivir con discalculia", "Discalculia", "YsjRwpuFNiE", "vivencia", "Tiene discalculia y cuenta cómo son las matemáticas en su día a día, en el trabajo y en los estudios. También visibiliza la discalculia en adultos desde Dyscalculia Network."),
+ v("Jules Robertson · The Kennel Grandslam", "Autismo", "174264190", "vivencia", "Cortometraje encargado por Ambitious about Autism en el que Jules, actor autista, relata episodios reales de acoso escolar que vivió él mismo."),
+ y("Ioan Berry · Me and DLD", "TDL", "bXHCjk_FCI4", "vivencia", "Diagnosticado de dificultades del lenguaje desde los cinco años. Lo grabó él durante el confinamiento y cuenta qué apoyos le ayudaron, cuáles no y cómo ha sido crecer con TDL."),
+ y("Gabriela Venâncio · diagnóstico en la vida adulta", "TDAH", "2ijZqgW41q8", "vivencia", "Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, qué empieza a encajar y cómo cambia la manera de mirarse."),
+ y("Alice Moyle · pensamiento mágico", "TOC", "7YpjdG3qTmg", "vivencia", "Convive con el TOC desde los dieciséis años y habla del pensamiento mágico desde la experiencia vivida. Cuenta cómo aparecen esos pensamientos y cómo se aprende a nombrarlos."),
+ y("Ro Vitale · La Cruda", "TOC", "jS2LoXykaRw"),
+ y("Jordi Rodríguez · Roca Project", "Tourette", "to77ghKeq8I"),
+ y("Cate Moretti · Roca Project", "Síndrome de Down", "kR_ZyTd2PW8"),
+ y("Josep Thió", "Autismo", "rEU5YZGvovc"),
+ y("Abraham Ros · Más allá del rosa", "Autismo", "KOHb8-xHpOU"),
+ y("Elisa Farías", "TDAH", "IZhswSOVNoc"),
+ y("Yessenia y Javier · Autismo Guía", "Autismo", "6avzOjlOPeQ"),
+ y("Renzo Schuller", "TDAH", "86UnZk_tRUI"),
+ y("Norma Echavarría · Inesperado Podcast", "TDAH", "P1x13ntninc"),
+ y("Jaume Aymar / Mind Sylenth", "TOC", "0da3Lud8aqo"),
+ y("Fernando · historia de TOC", "TOC", "74KDFWp1jK8"),
+ y("Lele Pons", "TOC", "utFNW9znXMU"),
+ y("Tini Stoessel", "Ansiedad", "rUDlpO89isc"),
+ y("María Becerra", "Ansiedad", "yNo-OBEJ-2s"),
+ y("Leiva", "Ansiedad", "AR-mhLGktMs"),
+ y("Beret", "Ansiedad", "TJtqJaTMbTk"),
+ y("Jely Reátegui", "Ansiedad", "FXuObQT10Ew"),
+ y("Felipe Silva Eltit · Inesperado Podcast", "Tourette", "Pt2v_vS2LuA"),
+ y("Bianca Sáez", "Tourette", "Rl3nZwxM28w"),
+ y("Wado de Pedro", "Tartamudez", "5n-svsAPUlE"),
+ y("Kenya Cuevas · Se Regalan Dudas", "Identidad LGTBI+", "NdsTWfDG4n8"),
+ y("Alex Orué · Se Regalan Dudas", "Identidad LGTBI+", "dtwJcwFFGIE"),
+ y("Aike Martín · Les Mariquites", "Identidad LGTBI+", "mlruSqK0YM4"),
+ y("Jesica y Ambar · CAMBIO", "Identidad LGTBI+", "qCM_mBpfkug"),
+ y("Izan Baptista", "Identidad LGTBI+", "KKVxqJIJNcw"),
+ y("Bea Is · Perú Intersex", "Identidad LGTBI+", "U9ORbTEkmE8"),
+ y("Luta Cruz", "Identidad LGTBI+", "rpkHylCno1s"),
+ y("Rosario Ortega", "Identidad LGTBI+", "QmxhKxJK_eU"),
+ y("Paula Gonu", "Identidad LGTBI+", "dB4DzHS_P58"),
+ y("Ellie Middleton · diagnóstico AuDHD", "TDAH", "u-Qtf9YAlts"),
+ y("Lizi Jackson-Barrett", "TDAH", "EDLpUMjYoGY"),
+ y("Orlando Bloom · Made By Dyslexia", "Dislexia y discalculia", "-_ij_ZyDwVI"),
+ y("Joyce Luz · Drauzio Varella", "Tourette", "ZYAfjjHrI_A"),
+ y("Amanda Ramalho · The Noite", "Autismo", "WewQesBzrmI"),
+ y("Bella Ramsey · autismo e identidad", "Identidad LGTBI+", "xR1Brs76IEo"),
+ y("Jessica Kellgren-Fozard · TDAH y vida queer", "Identidad LGTBI+", "BrxAnehKjZ0"),
+ y("Fern Brady · autismo y bisexualidad", "Identidad LGTBI+", "URzPua45sRQ"),
+ y("Hannah Gadsby · autismo y experiencia queer", "Identidad LGTBI+", "PaT__mzkHbA"),
+ y("Chloé Hayden · autismo, TDAH y representación", "Autismo", "roFFvyNVWtc"),
+ y("Yasmin Finney · representación trans", "Identidad LGTBI+", "8bzfJXGieng")
 ].map((v, n) => Object.assign({ id: "v" + n }, v));
 
-const VIDEO_EN = {"Dan Wilkins · Managing on the Spectrum":{"name":"Dan Wilkins · Managing on the Spectrum","nota":"He shares his experience of late diagnosis, autism and adult life. It is a personal account: useful for hearing how he lives it, not for turning his case into a general rule."},"Cris Edwards · su historia con la misofonía":{"name":"Cris Edwards · her story with misophonia","nota":"She shares her own experience with misophonia and how it affects her day to day. She mentions suicidal ideation: if you are in a difficult moment, in Spain you can call 024. Published by Misophonia Research Fund."},"Bob Williams · See Us. Hear Us.":{"name":"Bob Williams · See Us. Hear Us.","nota":"He has communicated with AAC for more than six decades. He talks about his own life, not about how a system is introduced: the decision about which system each person needs is made with professionals. It has Spanish subtitles."},"Peter Cherry · vivir con discalculia":{"name":"Peter Cherry · living with dyscalculia","nota":"He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He is a volunteer with Dyscalculia Network, not a clinical professional."},"Jules Robertson · The Kennel Grandslam":{"name":"Jules Robertson · The Kennel Grandslam","nota":"A short film commissioned by Ambitious about Autism in which Jules, an autistic actor, recounts real episodes of bullying that he experienced himself."},"Ioan Berry · Me and DLD":{"name":"Ioan Berry · Me and DLD","nota":"Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him and which did not. DLD is long-term: the video does not promise a cure."},"Gabriela Venâncio · diagnóstico en la vida adulta":{"name":"Gabriela Venâncio · diagnosis in adulthood","nota":"A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, not how ADHD is diagnosed: the clinical route is in the ADHD page."},"Alice Moyle · pensamiento mágico":{"name":"Alice Moyle · magical thinking","nota":"She clarifies that she supports others from lived experience, not through therapy or coaching, and that she has lived with OCD since she was sixteen. OCD treatment is indicated by a professional."},"Ro Vitale · La Cruda":{"name":"Ro Vitale · La Cruda"},"Jordi Rodríguez · Roca Project":{"name":"Jordi Rodríguez · Roca Project"},"Cate Moretti · Roca Project":{"name":"Cate Moretti · Roca Project"},"Josep Thió":{"name":"Josep Thió"},"Abraham Ros · Más allá del rosa":{"name":"Abraham Ros · Más allá del rosa"},"Elisa Farías":{"name":"Elisa Farías"},"Yessenia y Javier · Autismo Guía":{"name":"Yessenia and Javier · Autismo Guía"},"Renzo Schuller":{"name":"Renzo Schuller"},"Norma Echavarría · Inesperado Podcast":{"name":"Norma Echavarría · Inesperado Podcast"},"Jaume Aymar / Mind Sylenth":{"name":"Jaume Aymar / Mind Sylenth"},"Fernando · historia de TOC":{"name":"Fernando · OCD story"},"Lele Pons":{"name":"Lele Pons"},"Tini Stoessel":{"name":"Tini Stoessel"},"María Becerra":{"name":"María Becerra"},"Leiva":{"name":"Leiva"},"Beret":{"name":"Beret"},"Jely Reátegui":{"name":"Jely Reátegui"},"Felipe Silva Eltit · Inesperado Podcast":{"name":"Felipe Silva Eltit · Inesperado Podcast"},"Bianca Sáez":{"name":"Bianca Sáez"},"Wado de Pedro":{"name":"Wado de Pedro"},"Kenya Cuevas · Se Regalan Dudas":{"name":"Kenya Cuevas · Se Regalan Dudas"},"Alex Orué · Se Regalan Dudas":{"name":"Alex Orué · Se Regalan Dudas"},"Aike Martín · Les Mariquites":{"name":"Aike Martín · Les Mariquites"},"Jesica y Ambar · CAMBIO":{"name":"Jesica and Ambar · CAMBIO"},"Izan Baptista":{"name":"Izan Baptista"},"Bea Is · Perú Intersex":{"name":"Bea Is · Perú Intersex"},"Luta Cruz":{"name":"Luta Cruz"},"Rosario Ortega":{"name":"Rosario Ortega"},"Paula Gonu":{"name":"Paula Gonu"},"Ellie Middleton · diagnóstico AuDHD":{"name":"Ellie Middleton · AuDHD diagnosis"},"Lizi Jackson-Barrett":{"name":"Lizi Jackson-Barrett"},"Orlando Bloom · Made By Dyslexia":{"name":"Orlando Bloom · Made By Dyslexia"},"Joyce Luz · Drauzio Varella":{"name":"Joyce Luz · Drauzio Varella"},"Amanda Ramalho · The Noite":{"name":"Amanda Ramalho · The Noite"},"Bella Ramsey · autismo e identidad":{"name":"Bella Ramsey · autism and identity"},"Jessica Kellgren-Fozard · TDAH y vida queer":{"name":"Jessica Kellgren-Fozard · ADHD and queer life"},"Fern Brady · autismo y bisexualidad":{"name":"Fern Brady · autism and bisexuality"},"Hannah Gadsby · autismo y experiencia queer":{"name":"Hannah Gadsby · autism and queer experience"},"Chloé Hayden · autismo, TDAH y representación":{"name":"Chloé Hayden · autism, ADHD and representation"},"Yasmin Finney · representación trans":{"name":"Yasmin Finney · trans representation"}};
+const VIDEO_EN = {"Dan Wilkins · Managing on the Spectrum":{"name":"Dan Wilkins · Managing on the Spectrum","nota":"He shares his experience of late diagnosis, autism and adult life. He talks about identity, understanding yourself better, and what changes when you finally find a name for what you have been living with for years."},"Cris Edwards · su historia con la misofonía":{"name":"Cris Edwards · her story with misophonia","nota":"She shares her own experience with misophonia and how it affects her day to day. She mentions suicidal ideation: if you are in a difficult moment, in Spain you can call 024. Published by Misophonia Research Fund."},"Bob Williams · See Us. Hear Us.":{"name":"Bob Williams · See Us. Hear Us.","nota":"He has communicated with AAC for more than six decades. He talks about how augmentative and alternative communication is part of his life, his choices and his way of being in the world. It has Spanish subtitles."},"Peter Cherry · vivir con discalculia":{"name":"Peter Cherry · living with dyscalculia","nota":"He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He also raises the visibility of dyscalculia in adults through Dyscalculia Network."},"Jules Robertson · The Kennel Grandslam":{"name":"Jules Robertson · The Kennel Grandslam","nota":"A short film commissioned by Ambitious about Autism in which Jules, an autistic actor, recounts real episodes of bullying that he experienced himself."},"Ioan Berry · Me and DLD":{"name":"Ioan Berry · Me and DLD","nota":"Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him, which did not, and what it has been like to grow up with DLD."},"Gabriela Venâncio · diagnóstico en la vida adulta":{"name":"Gabriela Venâncio · diagnosis in adulthood","nota":"A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, what starts to make sense, and how the way she sees herself changes."},"Alice Moyle · pensamiento mágico":{"name":"Alice Moyle · magical thinking","nota":"She has lived with OCD since she was sixteen and speaks about magical thinking from lived experience. She explains how those thoughts appear and how she learned to name them."},"Ro Vitale · La Cruda":{"name":"Ro Vitale · La Cruda"},"Jordi Rodríguez · Roca Project":{"name":"Jordi Rodríguez · Roca Project"},"Cate Moretti · Roca Project":{"name":"Cate Moretti · Roca Project"},"Josep Thió":{"name":"Josep Thió"},"Abraham Ros · Más allá del rosa":{"name":"Abraham Ros · Más allá del rosa"},"Elisa Farías":{"name":"Elisa Farías"},"Yessenia y Javier · Autismo Guía":{"name":"Yessenia and Javier · Autismo Guía"},"Renzo Schuller":{"name":"Renzo Schuller"},"Norma Echavarría · Inesperado Podcast":{"name":"Norma Echavarría · Inesperado Podcast"},"Jaume Aymar / Mind Sylenth":{"name":"Jaume Aymar / Mind Sylenth"},"Fernando · historia de TOC":{"name":"Fernando · OCD story"},"Lele Pons":{"name":"Lele Pons"},"Tini Stoessel":{"name":"Tini Stoessel"},"María Becerra":{"name":"María Becerra"},"Leiva":{"name":"Leiva"},"Beret":{"name":"Beret"},"Jely Reátegui":{"name":"Jely Reátegui"},"Felipe Silva Eltit · Inesperado Podcast":{"name":"Felipe Silva Eltit · Inesperado Podcast"},"Bianca Sáez":{"name":"Bianca Sáez"},"Wado de Pedro":{"name":"Wado de Pedro"},"Kenya Cuevas · Se Regalan Dudas":{"name":"Kenya Cuevas · Se Regalan Dudas"},"Alex Orué · Se Regalan Dudas":{"name":"Alex Orué · Se Regalan Dudas"},"Aike Martín · Les Mariquites":{"name":"Aike Martín · Les Mariquites"},"Jesica y Ambar · CAMBIO":{"name":"Jesica and Ambar · CAMBIO"},"Izan Baptista":{"name":"Izan Baptista"},"Bea Is · Perú Intersex":{"name":"Bea Is · Perú Intersex"},"Luta Cruz":{"name":"Luta Cruz"},"Rosario Ortega":{"name":"Rosario Ortega"},"Paula Gonu":{"name":"Paula Gonu"},"Ellie Middleton · diagnóstico AuDHD":{"name":"Ellie Middleton · AuDHD diagnosis"},"Lizi Jackson-Barrett":{"name":"Lizi Jackson-Barrett"},"Orlando Bloom · Made By Dyslexia":{"name":"Orlando Bloom · Made By Dyslexia"},"Joyce Luz · Drauzio Varella":{"name":"Joyce Luz · Drauzio Varella"},"Amanda Ramalho · The Noite":{"name":"Amanda Ramalho · The Noite"},"Bella Ramsey · autismo e identidad":{"name":"Bella Ramsey · autism and identity"},"Jessica Kellgren-Fozard · TDAH y vida queer":{"name":"Jessica Kellgren-Fozard · ADHD and queer life"},"Fern Brady · autismo y bisexualidad":{"name":"Fern Brady · autism and bisexuality"},"Hannah Gadsby · autismo y experiencia queer":{"name":"Hannah Gadsby · autism and queer experience"},"Chloé Hayden · autismo, TDAH y representación":{"name":"Chloé Hayden · autism, ADHD and representation"},"Yasmin Finney · representación trans":{"name":"Yasmin Finney · trans representation"}};
 VIDEOS.forEach((video)=>{const tr=VIDEO_EN[video.name];if(tr){if(tr.name)video.name_en=tr.name;if(tr.nota)video.nota_en=tr.nota;}});
 
 const TEMA_KEYS = Array.from(new Set(VIDEOS.map((v) => v.tema)));
 
 const STR = {
-  es: {
-    howToRead: "Cómo leer este vídeo:", tipos: { vivencia: "Experiencia en primera persona", institucional: "Fuente institucional", divulgacion: "Divulgación profesional" },
-    all: "Todos", booksBar: "Todo aquí es gratis gracias a los libros de Iris Green", booksCta: "Leer las primeras páginas",
-    navHome: "Inicio", navAsk: "¿Qué puedo pedir?", navTopics: "Temas", navBooks: "Libros", reading: "Lectura",
-    readingPanel: "Lectura accesible", textSize: "Tamaño del texto", reset: "Restablecer",
-    eyebrow: "Videoteca · se ven aquí mismo", title: "Aquí habla quien lo vive.",
-    lede: "Aquí habla quien lo vive, en primera persona: qué le pasó, cómo lo vive y qué cambió. La explicación clínica está en las fichas. Elige un tema o busca a alguien por su nombre.",
-    mix: "Casi todo lo que hay aquí es experiencia en primera persona, y unos pocos vídeos los publica una entidad. Cada uno lo dice en su etiqueta. Nada se carga hasta que pulsas: la página no pone cookies de YouTube, Instagram ni Vimeo antes de eso.",
-    searchPh: "Busca una persona: Ro Vitale, Bianca, Jordi…", where: "Dónde está", play: "Ver aquí", save: "Guardar para luego",
-    count: (n) => n + " vídeos", noResults: "No hay vídeos con esas palabras. Prueba con otro nombre o quita los filtros.",
-    more: (n) => "Ver más vídeos (" + n + " restantes)", seeIn: "Ver en ",
-    spotify: "Playlist en Spotify", spotifyTitle: "Escucha la playlist de Iris Green",
-    spotifyText: "Voces, entrevistas y música elegida para acompañar la lectura. Suena en cualquier momento, mientras navegas.",
-    spotifyMissing: "Playlist · en cuanto tenga el enlace suena aquí", spotifyEyebrow: "Escuchar mientras lees",
-    tagline: "Base de conocimiento sobre neurodiversidad",
-    toggles: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"],
-    temas: { "Misofonía": "Misofonía", "CAA": "CAA", "Discalculia": "Discalculia", "TDL": "TDL",  "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedad", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia y discalculia", "ARFID": "ARFID", "Tartamudez": "Tartamudez", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidad LGTBI+" }
-  },
-  en: {
-    howToRead: "How to read this video:", tipos: { vivencia: "First-person experience", institucional: "Institutional source", divulgacion: "Professional outreach" },
-    all: "All", booksBar: "Everything here is free thanks to Iris Green's books", booksCta: "Read the first pages",
-    navHome: "Home", navAsk: "What can I ask for?", navTopics: "Topics", navBooks: "Books", reading: "Reading",
-    readingPanel: "Accessible reading", textSize: "Text size", reset: "Reset",
-    eyebrow: "Video library · plays right here", title: "Here, the people who live it speak.",
-    mix: "Almost everything here is first-person experience, and a few videos are published by organisations. Each one says so on its label. Nothing loads until you press play: the page sets no YouTube, Instagram or Vimeo cookies before that.",
-    lede: "Here you hear from the people who live it, in the first person: what happened, how they live it and what changed. The clinical explanation is in the topic pages. Pick a topic or search for someone by name.",
-    searchPh: "Search for a person: Ro Vitale, Bianca, Jordi…", where: "Where it lives", play: "Play here", save: "Save for later",
-    count: (n) => n + " videos", noResults: "No videos match those words. Try another name or clear the filters.",
-    more: (n) => "Show more videos (" + n + " left)", seeIn: "Watch on ",
-    spotify: "Spotify playlist", spotifyTitle: "Listen to the Iris Green playlist",
-    spotifyText: "Voices, interviews and music chosen to keep you company while you read. It plays while you browse.",
-    spotifyMissing: "Playlist · coming as soon as I have the link", spotifyEyebrow: "Listen while you read",
-    tagline: "Knowledge base on neurodiversity",
-    toggles: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"],
-    temas: { "Misofonía": "Misophonia", "CAA": "AAC", "Discalculia": "Dyscalculia", "TDL": "DLD",  "Autismo": "Autism", "TDAH": "ADHD", "TOC": "OCD", "Ansiedad": "Anxiety", "Tourette": "Tourette's", "Dislexia y discalculia": "Dyslexia & dyscalculia", "ARFID": "ARFID", "Tartamudez": "Stuttering", "Síndrome de Down": "Down syndrome", "Identidad LGTBI+": "LGBTQ+ identity" }
-  },
-  pt: {
-    howToRead: "Como ler este vídeo:", tipos: { vivencia: "Experiência em primeira pessoa", institucional: "Fonte institucional", divulgacion: "Divulgação profissional" },
-    all: "Todos", booksBar: "Tudo aqui é gratuito graças aos livros de Iris Green", booksCta: "Ler as primeiras páginas",
-    navHome: "Início", navAsk: "O que posso pedir?", navTopics: "Temas", navBooks: "Livros", reading: "Leitura",
-    readingPanel: "Leitura acessível", textSize: "Tamanho do texto", reset: "Restaurar",
-    eyebrow: "Videoteca · dá para ver aqui", title: "Aqui fala quem vive isso.",
-    lede: "Aqui fala quem vive isso, em primeira pessoa: o que aconteceu, como vive e o que mudou. A explicação clínica está nas fichas. Escolha um tema ou busque alguém pelo nome.",
-    mix: "Quase tudo aqui é experiência em primeira pessoa, e uns poucos vídeos são publicados por entidades. Cada um diz isso na etiqueta. Nada carrega até você apertar: a página não põe cookies do YouTube, do Instagram nem do Vimeo antes disso.",
-    searchPh: "Busque uma pessoa: Ro Vitale, Bianca, Jordi…", where: "Onde está", play: "Ver aqui", save: "Salvar para depois",
-    count: (n) => n + " vídeos", noResults: "Nenhum vídeo com essas palavras. Tente outro nome ou limpe os filtros.",
-    more: (n) => "Ver mais vídeos (faltam " + n + ")", seeIn: "Ver no ",
-    spotify: "Playlist no Spotify", spotifyTitle: "Ouça a playlist da Iris Green",
-    spotifyText: "Vozes, entrevistas e música escolhida para acompanhar a leitura. Toca enquanto você navega.",
-    spotifyMissing: "Playlist · em breve, quando tiver o link", spotifyEyebrow: "Ouvir enquanto lê",
-    tagline: "Base de conhecimento sobre neurodiversidade",
-    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"],
-    temas: { "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedade", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia e discalculia", "ARFID": "ARFID", "Tartamudez": "Gagueira", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidade LGBTQIA+" }
-  }
+ es: {
+ howToRead: "Cómo leer este vídeo:", tipos: { vivencia: "Experiencia en primera persona", institucional: "Fuente institucional", divulgacion: "Divulgación profesional" },
+ all: "Todos", booksBar: "Todo aquí es gratis gracias a los libros de Iris Green", booksCta: "Leer las primeras páginas",
+ navHome: "Inicio", navAsk: "¿Qué puedo pedir?", navTopics: "Temas", navBooks: "Libros", reading: "Lectura",
+ readingPanel: "Lectura accesible", textSize: "Tamaño del texto", reset: "Restablecer",
+ eyebrow: "Videoteca · se ven aquí mismo", title: "Aquí habla quien lo vive.",
+ lede: "Aquí habla quien lo vive, en primera persona: qué le pasó, cómo lo vive y qué cambió. Elige un tema o busca a alguien por su nombre.",
+ mix: "Casi todo lo que hay aquí es experiencia en primera persona, y unos pocos vídeos los publica una entidad. Cada uno lo dice en su etiqueta. Nada se carga hasta que pulsas: la página no pone cookies de YouTube, Instagram ni Vimeo antes de eso.",
+ searchPh: "Busca una persona: Ro Vitale, Bianca, Jordi…", where: "Dónde está", play: "Ver aquí", save: "Guardar para luego",
+ count: (n) => n + " vídeos", noResults: "No hay vídeos con esas palabras. Prueba con otro nombre o quita los filtros.",
+ more: (n) => "Ver más vídeos (" + n + " restantes)", seeIn: "Ver en ",
+ spotify: "Playlist en Spotify", spotifyTitle: "Escucha la playlist de Iris Green",
+ spotifyText: "Voces, entrevistas y música elegida para leer con calma. Suena en cualquier momento, mientras navegas.",
+ spotifyMissing: "Playlist · en cuanto tenga el enlace suena aquí", spotifyEyebrow: "Escuchar mientras lees",
+ tagline: "Base de conocimiento sobre neurodiversidad",
+ toggles: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"],
+ temas: { "Misofonía": "Misofonía", "CAA": "CAA", "Discalculia": "Discalculia", "TDL": "TDL", "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedad", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia y discalculia", "ARFID": "ARFID", "Tartamudez": "Tartamudez", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidad LGTBI+" }
+ },
+ en: {
+ howToRead: "How to read this video:", tipos: { vivencia: "First-person experience", institucional: "Institutional source", divulgacion: "Professional outreach" },
+ all: "All", booksBar: "Everything here is free thanks to Iris Green's books", booksCta: "Read the first pages",
+ navHome: "Home", navAsk: "What can I ask for?", navTopics: "Topics", navBooks: "Books", reading: "Reading",
+ readingPanel: "Accessible reading", textSize: "Text size", reset: "Reset",
+ eyebrow: "Video library · plays right here", title: "Here, the people who live it speak.",
+ mix: "Almost everything here is first-person experience, and a few videos are published by organisations. Each one says so on its label. Nothing loads until you press play: the page sets no YouTube, Instagram or Vimeo cookies before that.",
+ lede: "Here you hear from the people who live it, in the first person: what happened, how they live it and what changed. Pick a topic or search for someone by name.",
+ searchPh: "Search for a person: Ro Vitale, Bianca, Jordi…", where: "Where it lives", play: "Play here", save: "Save for later",
+ count: (n) => n + " videos", noResults: "No videos match those words. Try another name or clear the filters.",
+ more: (n) => "Show more videos (" + n + " left)", seeIn: "Watch on ",
+ spotify: "Spotify playlist", spotifyTitle: "Listen to the Iris Green playlist",
+ spotifyText: "Voices, interviews and music chosen for reading calmly. It plays while you browse.",
+ spotifyMissing: "Playlist · coming as soon as I have the link", spotifyEyebrow: "Listen while you read",
+ tagline: "Knowledge base on neurodiversity",
+ toggles: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"],
+ temas: { "Misofonía": "Misophonia", "CAA": "AAC", "Discalculia": "Dyscalculia", "TDL": "DLD", "Autismo": "Autism", "TDAH": "ADHD", "TOC": "OCD", "Ansiedad": "Anxiety", "Tourette": "Tourette's", "Dislexia y discalculia": "Dyslexia & dyscalculia", "ARFID": "ARFID", "Tartamudez": "Stuttering", "Síndrome de Down": "Down syndrome", "Identidad LGTBI+": "LGBTQ+ identity" }
+ },
+ pt: {
+ howToRead: "Como ler este vídeo:", tipos: { vivencia: "Experiência em primeira pessoa", institucional: "Fonte institucional", divulgacion: "Divulgação profissional" },
+ all: "Todos", booksBar: "Tudo aqui é gratuito graças aos livros de Iris Green", booksCta: "Ler as primeiras páginas",
+ navHome: "Início", navAsk: "O que posso pedir?", navTopics: "Temas", navBooks: "Livros", reading: "Leitura",
+ readingPanel: "Leitura acessível", textSize: "Tamanho do texto", reset: "Restaurar",
+ eyebrow: "Videoteca · dá para ver aqui", title: "Aqui fala quem vive isso.",
+ lede: "Aqui fala quem vive isso, em primeira pessoa: o que aconteceu, como vive e o que mudou. Escolha um tema ou busque alguém pelo nome.",
+ mix: "Quase tudo aqui é experiência em primeira pessoa, e uns poucos vídeos são publicados por entidades. Cada um diz isso na etiqueta. Nada carrega até você apertar: a página não põe cookies do YouTube, do Instagram nem do Vimeo antes disso.",
+ searchPh: "Busque uma pessoa: Ro Vitale, Bianca, Jordi…", where: "Onde está", play: "Ver aqui", save: "Salvar para depois",
+ count: (n) => n + " vídeos", noResults: "Nenhum vídeo com essas palavras. Tente outro nome ou limpe os filtros.",
+ more: (n) => "Ver mais vídeos (faltam " + n + ")", seeIn: "Ver no ",
+ spotify: "Playlist no Spotify", spotifyTitle: "Ouça a playlist da Iris Green",
+ spotifyText: "Vozes, entrevistas e música escolhida para ler com calma. Toca enquanto você navega.",
+ spotifyMissing: "Playlist · em breve, quando tiver o link", spotifyEyebrow: "Ouvir enquanto lê",
+ tagline: "Base de conhecimento sobre neurodiversidade",
+ toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"],
+ temas: { "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Ansiedad": "Ansiedade", "Tourette": "Tourette", "Dislexia y discalculia": "Dislexia e discalculia", "ARFID": "ARFID", "Tartamudez": "Gagueira", "Síndrome de Down": "Síndrome de Down", "Identidad LGTBI+": "Identidade LGBTQIA+" }
+ }
 };
 
 const SPOTIFY_URL = "https://open.spotify.com/playlist/1HyAiLbZcP9mUxetb8lF72";
 const SPOTIFY_EMBED = "https://open.spotify.com/embed/playlist/1HyAiLbZcP9mUxetb8lF72?utm_source=generator";
 
 const NAVL = {
-  es: [["/","Inicio"],["/es/neurodiversidad/condiciones/","Condiciones"],["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/investigacion/","Investigación"],["/es/datos/","Datos"],["/es/tramites/directorio/","Ayudas"],["/es/libros/","Libros"]],
-  en: [["/","Home"],["/en/neurodiversity/conditions/","Conditions"],["/en/situations/","Situations"],["/en/everyday-life/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/en/data/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]],
-  pt: [["/","Início"],["/es/neurodiversidad/condiciones/","Condições"],["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/investigacion/","Pesquisa"],["/es/datos/","Dados"],["/es/tramites/directorio/","Diretório de ajudas"],["/es/libros/","Livros"]]
+ es: [["/","Inicio"],["/es/neurodiversidad/condiciones/","Condiciones"],["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/investigacion/","Investigación"],["/es/datos/","Datos"],["/es/tramites/directorio/","Ayudas"],["/es/libros/","Libros"]],
+ en: [["/","Home"],["/en/neurodiversity/conditions/","Conditions"],["/en/situations/","Situations"],["/en/everyday-life/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/en/data/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]],
+ pt: [["/","Início"],["/es/neurodiversidad/condiciones/","Condições"],["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/investigacion/","Pesquisa"],["/es/datos/","Dados"],["/es/tramites/directorio/","Diretório de ajudas"],["/es/libros/","Livros"]]
 };
 
 class Component extends DCLogic {
-  state = { thumbnailErrors: {}, lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
+ state = { thumbnailErrors: {}, lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
 
-  componentDidMount() {
-    this._igPreferencesDisconnect = window.IGPreferences.connect(this);
-    try {
-      const n = VIDEOS.length;
-      document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
-        const d = JSON.parse(s.textContent);
-        if (d.numberOfItems) { d.numberOfItems = n; s.textContent = JSON.stringify(d); }
-      });
-    } catch (e) {}
-    try { document.documentElement.lang = document.documentElement.lang || "es"; } catch (e) {}
-    try {
-      const raw = localStorage.getItem("ig_saved_videos");
-      if (raw) this.setState({ saved: JSON.parse(raw) });
-      const lang = localStorage.getItem("ig_lang");
-      const use = lang && STR[lang] ? lang : "es";
-      if (use !== "es") this.setState({ lang: use });
-      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
-    } catch (e) {}
-  }
+ componentDidMount() {
+ this._igPreferencesDisconnect = window.IGPreferences.connect(this);
+ try {
+ const n = VIDEOS.length;
+ document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+ const d = JSON.parse(s.textContent);
+ if (d.numberOfItems) { d.numberOfItems = n; s.textContent = JSON.stringify(d); }
+ });
+ } catch (e) {}
+ try { document.documentElement.lang = document.documentElement.lang || "es"; } catch (e) {}
+ try {
+ const raw = localStorage.getItem("ig_saved_videos");
+ if (raw) this.setState({ saved: JSON.parse(raw) });
+ const lang = localStorage.getItem("ig_lang");
+ const use = lang && STR[lang] ? lang : "es";
+ if (use !== "es") this.setState({ lang: use });
+ document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+ } catch (e) {}
+ }
 
-  persist(saved) {
-    this.setState({ saved });
-    try { localStorage.setItem("ig_saved_videos", JSON.stringify(saved)); } catch (e) {}
-  }
+ persist(saved) {
+ this.setState({ saved });
+ try { localStorage.setItem("ig_saved_videos", JSON.stringify(saved)); } catch (e) {}
+ }
 
-  setLang(lang) {
-    try { document.documentElement.lang = lang === "pt" ? "pt-BR" : lang; } catch (e) {}
-    this.setState({ lang });
-    try { localStorage.setItem("ig_lang", lang); } catch (e) {}
-  }
+ setLang(lang) {
+ try { document.documentElement.lang = lang === "pt" ? "pt-BR" : lang; } catch (e) {}
+ this.setState({ lang });
+ try { localStorage.setItem("ig_lang", lang); } catch (e) {}
+ }
 
-  norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+ norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
 
-  applyReading() {
-    window.IGPreferences.apply();
-  }
+ applyReading() {
+ window.IGPreferences.apply();
+ }
 
-  setSpeak(on) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    if (!on) return;
-    const main = document.querySelector("main");
-    const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
-    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
-    u.rate = 0.95;
-    window.speechSynthesis.speak(u);
-  }
+ setSpeak(on) {
+ if (!window.speechSynthesis) return;
+ window.speechSynthesis.cancel();
+ if (!on) return;
+ const main = document.querySelector("main");
+ const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
+ u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+ u.rate = 0.95;
+ window.speechSynthesis.speak(u);
+ }
 
-  componentWillUnmount() {
-    if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
-  }
+ componentWillUnmount() {
+ if (this._igPreferencesDisconnect) this._igPreferencesDisconnect();
+ }
 
-  setReading(patch) {
-    window.IGPreferences.changeComponent(this, patch);
-  }
+ setReading(patch) {
+ window.IGPreferences.changeComponent(this, patch);
+ }
 
-  renderVals() {
-    const st = this.state;
+ renderVals() {
+ const st = this.state;
     const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
-    const L = STR[st.lang] ? st.lang : "es";
-    const T = STR[L];
-    const videoName = (v) => L === "en" && v.name_en ? v.name_en : v.name;
-    const videoNota = (v) => L === "en" && v.nota_en ? v.nota_en : v.nota;
-    const words = this.norm(st.q).trim().split(/\s+/).filter(Boolean);
-    const filtered = VIDEOS.filter((v) => {
-      if (st.tema !== "all" && v.tema !== st.tema) return false;
-      if (st.plat !== "all" && v.source !== st.plat) return false;
-      if (!words.length) return true;
-      const hay = this.norm(videoName(v) + " " + v.name + " " + (T.temas[v.tema] || v.tema) + " " + v.tema);
-      return words.every((w) => hay.indexOf(w) !== -1);
-    });
-    const isSaved = (n) => st.saved.some((s) => s.name === n);
-    const chip = (active) => ({
-      bg: active ? "#6f5fc0" : "#fff",
-      color: active ? "#fff" : "#17395c",
-      border: active ? "#6f5fc0" : "rgba(23,57,92,0.14)"
-    });
+ const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
+ const L = STR[st.lang] ? st.lang : "es";
+ const T = STR[L];
+ const videoName = (v) => L === "en" && v.name_en ? v.name_en : v.name;
+ const videoNota = (v) => L === "en" && v.nota_en ? v.nota_en : v.nota;
+ const words = this.norm(st.q).trim().split(/\s+/).filter(Boolean);
+ const filtered = VIDEOS.filter((v) => {
+ if (st.tema !== "all" && v.tema !== st.tema) return false;
+ if (st.plat !== "all" && v.source !== st.plat) return false;
+ if (!words.length) return true;
+ const hay = this.norm(videoName(v) + " " + v.name + " " + (T.temas[v.tema] || v.tema) + " " + v.tema);
+ return words.every((w) => hay.indexOf(w) !== -1);
+ });
+ const isSaved = (n) => st.saved.some((s) => s.name === n);
+ const chip = (active) => ({
+ bg: active ? "#6f5fc0" : "#fff",
+ color: active ? "#fff" : "#17395c",
+ border: active ? "#6f5fc0" : "rgba(23,57,92,0.14)"
+ });
 
-    return {
-      langButtons: [["es", "ES"], ["en", "EN"]].map(([code, label]) => ({
-        label,
-        bg: st.lang === code ? "#17395c" : "transparent",
-        color: st.lang === code ? "#fff" : "#17395c",
-        pick: () => this.setLang(code)
-      })),
+ return {
+ langButtons: [["es", "ES"], ["en", "EN"]].map(([code, label]) => ({
+ label,
+ bg: st.lang === code ? "#17395c" : "transparent",
+ color: st.lang === code ? "#fff" : "#17395c",
+ pick: () => this.setLang(code)
+ })),
 
-      navLinks: (NAVL[L] || NAVL.es).filter(([href]) => href !== "/es/videos/").map(([href, label]) => ({ href, label })),
+ navLinks: (NAVL[L] || NAVL.es).filter(([href]) => href !== "/es/videos/").map(([href, label]) => ({ href, label })),
 
-      tBooksBar: T.booksBar, tBooksCta: T.booksCta, tNavHome: T.navHome, tNavAsk: T.navAsk,
-      tNavTopics: T.navTopics, tNavBooks: T.navBooks, tReading: T.reading, tReadingPanel: T.readingPanel,
-      tTextSize: T.textSize, tReset: T.reset, tEyebrow: T.eyebrow, tTitle: T.title, tLede: T.lede, tMix: T.mix,
-      tSearchPh: T.searchPh, tWhere: T.where, tPlay: T.play, tSave: T.save, tNoResults: T.noResults,
-      tSpotify: T.spotify, tSpotifyTitle: T.spotifyTitle, tSpotifyText: T.spotifyText,
-      tSpotifyMissing: T.spotifyMissing, tSpotifyEyebrow: T.spotifyEyebrow, tTagline: T.tagline, tHowToRead: T.howToRead,
+ tBooksBar: T.booksBar, tBooksCta: T.booksCta, tNavHome: T.navHome, tNavAsk: T.navAsk,
+ tNavTopics: T.navTopics, tNavBooks: T.navBooks, tReading: T.reading, tReadingPanel: T.readingPanel,
+ tTextSize: T.textSize, tReset: T.reset, tEyebrow: T.eyebrow, tTitle: T.title, tLede: T.lede, tMix: T.mix,
+ tSearchPh: T.searchPh, tWhere: T.where, tPlay: T.play, tSave: T.save, tNoResults: T.noResults,
+ tSpotify: T.spotify, tSpotifyTitle: T.spotifyTitle, tSpotifyText: T.spotifyText,
+ tSpotifyMissing: T.spotifyMissing, tSpotifyEyebrow: T.spotifyEyebrow, tTagline: T.tagline, tHowToRead: T.howToRead,
 
-      spotifyUrl: SPOTIFY_URL || "/es/videos/",
-      hasSpotify: !!SPOTIFY_URL,
-      noSpotify: !SPOTIFY_URL,
-      spotifyEmbed: SPOTIFY_EMBED,
-      hasSpotifyEmbed: !!SPOTIFY_EMBED,
-      noSpotifyEmbed: !SPOTIFY_EMBED,
+ spotifyUrl: SPOTIFY_URL || "/es/videos/",
+ hasSpotify: !!SPOTIFY_URL,
+ noSpotify: !SPOTIFY_URL,
+ spotifyEmbed: SPOTIFY_EMBED,
+ hasSpotifyEmbed: !!SPOTIFY_EMBED,
+ noSpotifyEmbed: !SPOTIFY_EMBED,
 
-      q: st.q,
-      onQ: (e) => this.setState({ q: e.target.value, limit: 9 }),
-      temaChips: [{ key: "all", label: T.all }].concat(TEMA_KEYS.map((k) => ({ key: k, label: T.temas[k] || k })))
-        .map((t) => Object.assign({ label: t.label, pick: () => this.setState({ tema: t.key, limit: 9 }) }, chip(st.tema === t.key))),
-      platChips: [{ key: "all", label: T.all }].concat(Array.from(new Set(VIDEOS.map((v) => v.source))).map((key) => ({ key, label: key })))
-        .map((p) => Object.assign({ label: p.label, pick: () => this.setState({ plat: p.key, limit: 9 }) }, chip(st.plat === p.key))),
+ q: st.q,
+ onQ: (e) => this.setState({ q: e.target.value, limit: 9 }),
+ temaChips: [{ key: "all", label: T.all }].concat(TEMA_KEYS.map((k) => ({ key: k, label: T.temas[k] || k })))
+ .map((t) => Object.assign({ label: t.label, pick: () => this.setState({ tema: t.key, limit: 9 }) }, chip(st.tema === t.key))),
+ platChips: [{ key: "all", label: T.all }].concat(Array.from(new Set(VIDEOS.map((v) => v.source))).map((key) => ({ key, label: key })))
+ .map((p) => Object.assign({ label: p.label, pick: () => this.setState({ plat: p.key, limit: 9 }) }, chip(st.plat === p.key))),
 
-      countLabel: T.count(filtered.length),
-      noResults: filtered.length === 0,
-      cards: filtered.slice(0, st.limit).map((v) => ({
-        name: videoName(v), href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + videoName(v),
-        nota: videoNota(v) || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,
-        hasNota: true,
-        notaPropia: !!videoNota(v),
-        notaBg: videoNota(v) ? "rgba(23,57,92,0.05)" : "rgba(111,95,192,0.07)",
-        tipoLabel: (T.tipos && T.tipos[v.tipo]) || (TIPOS[v.tipo] || TIPOS.vivencia)[0],
-        tipoColor: (TIPOS[v.tipo] || TIPOS.vivencia)[1],
-        tipoBg: (TIPOS[v.tipo] || TIPOS.vivencia)[2],
-        meta: (T.temas[v.tema] || v.tema) + " · " + v.source,
-        ratio: "16 / 9",
-        playing: st.playing === v.name,
-        idle: st.playing !== v.name,
-        linkLabel: T.seeIn + v.source,
-        savedFill: isSaved(v.name) ? "#6f5fc0" : "none",
-        save: () => this.persist(isSaved(v.name) ? st.saved.filter((s) => s.name !== v.name) : st.saved.concat([{ name: v.name, url: v.href }])),
-        play: () => this.setState({ playing: v.name })
-      })),
-      hasMore: filtered.length > st.limit,
-      moreLabel: T.more(filtered.length - st.limit),
-      showMore: () => this.setState({ limit: st.limit + 9 }),
+ countLabel: T.count(filtered.length),
+ noResults: filtered.length === 0,
+ cards: filtered.slice(0, st.limit).map((v) => ({
+ name: videoName(v), href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + videoName(v),
+ nota: videoNota(v) || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,
+ hasNota: true,
+ notaPropia: !!videoNota(v),
+ notaBg: videoNota(v) ? "rgba(23,57,92,0.05)" : "rgba(111,95,192,0.07)",
+ tipoLabel: (T.tipos && T.tipos[v.tipo]) || (TIPOS[v.tipo] || TIPOS.vivencia)[0],
+ tipoColor: (TIPOS[v.tipo] || TIPOS.vivencia)[1],
+ tipoBg: (TIPOS[v.tipo] || TIPOS.vivencia)[2],
+ meta: (T.temas[v.tema] || v.tema) + " · " + v.source,
+ ratio: "16 / 9",
+ playing: st.playing === v.name,
+ idle: st.playing !== v.name,
+ linkLabel: T.seeIn + v.source,
+ savedFill: isSaved(v.name) ? "#6f5fc0" : "none",
+ save: () => this.persist(isSaved(v.name) ? st.saved.filter((s) => s.name !== v.name) : st.saved.concat([{ name: v.name, url: v.href }])),
+ play: () => this.setState({ playing: v.name })
+ })),
+ hasMore: filtered.length > st.limit,
+ moreLabel: T.more(filtered.length - st.limit),
+ showMore: () => this.setState({ limit: st.limit + 9 }),
 
-      musicOpen: st.music,
-      musicBg: st.music ? "rgba(29,185,84,0.22)" : "rgba(29,185,84,0.12)",
-      toggleMusic: () => this.setState({ music: !st.music }),
-      preferenceStatus: window.IGPreferences.status(st.lang),
-      fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
-      a11yOpen: st.a11y,
-      toggleA11y: () => this.setState({ a11y: !st.a11y }),
-      fsUp: () => window.IGPreferences.step(1),
-      fsDown: () => window.IGPreferences.step(-1),
-      fsLabel: Math.round((st.fs / 17) * 100) + "%",
-      a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((key, n) => {
-        const on = !!st[key];
-        return {
-          pressed: on,
-          label: T.toggles[n],
-          bg: on ? "rgba(111,95,192,0.12)" : "#fff",
-          border: on ? "#6f5fc0" : "rgba(23,57,92,0.16)",
-          knobTrack: on ? "#6f5fc0" : "rgba(23,57,92,0.22)",
-          knobLeft: on ? "16px" : "2px",
-          toggle: () => this.setReading({ [key]: !on })
-        };
-      }),
-      a11yReset: () => window.IGPreferences.reset()
-    };
-  }
+ musicOpen: st.music,
+ musicBg: st.music ? "rgba(29,185,84,0.22)" : "rgba(29,185,84,0.12)",
+ toggleMusic: () => this.setState({ music: !st.music }),
+ preferenceStatus: window.IGPreferences.status(st.lang),
+ fsUpDisabled: st.fs >= 25.5, fsDownDisabled: st.fs <= 17,
+ a11yOpen: st.a11y,
+ toggleA11y: () => this.setState({ a11y: !st.a11y }),
+ fsUp: () => window.IGPreferences.step(1),
+ fsDown: () => window.IGPreferences.step(-1),
+ fsLabel: Math.round((st.fs / 17) * 100) + "%",
+ a11yToggles: ["spacing", "controls", "contrast", "guide", "speak", "motion"].map((key, n) => {
+ const on = !!st[key];
+ return {
+ pressed: on,
+ label: T.toggles[n],
+ bg: on ? "rgba(111,95,192,0.12)" : "#fff",
+ border: on ? "#6f5fc0" : "rgba(23,57,92,0.16)",
+ knobTrack: on ? "#6f5fc0" : "rgba(23,57,92,0.22)",
+ knobLeft: on ? "16px" : "2px",
+ toggle: () => this.setReading({ [key]: !on })
+ };
+ }),
+ a11yReset: () => window.IGPreferences.reset()
+ };
+ }
 }
 
 </script>

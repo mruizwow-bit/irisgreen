@@ -75,7 +75,11 @@ def apply(manifest):
         anchor='  renderVals() {\n    const st = this.state;'
         helper='\n    const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);'
         if helper not in text:
-            assert text.count(anchor)==1;text=text.replace(anchor,anchor+helper,1)
+            if text.count(anchor)==1:
+                text=text.replace(anchor,anchor+helper,1)
+            else:
+                text,n=re.subn(r'(renderVals\(\)\s*\{\s*const\s+st\s*=\s*this\.state\s*;)', r'\1'+helper, text, count=1)
+                assert n==1
         picture='<sc-if value="{{ v.hasThumb }}" hint-placeholder-val="{{ false }}"><img class="ig-video-thumbnail" sc-camel-src="{{ v.thumb }}" sc-camel-on-error="{{ v.onThumbError }}" width="1280" height="720" loading="lazy" decoding="async" alt=""></sc-if><sc-if value="{{ v.unavailableThumb }}" hint-placeholder-val="{{ false }}"><span class="ig-thumbnail-unavailable">{{ v.thumbMessage }}</span></sc-if>'
         if '{{ v.thumbImg }}' in text:
             text,n=re.subn(r'<sc-if\b[^>]*value="\{\{ v\.hasThumb \}\}"[^>]*>\{\{ v\.thumbImg \}\}.*?</sc-if>',lambda _:picture,text,flags=re.S)
