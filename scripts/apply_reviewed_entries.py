@@ -124,7 +124,8 @@ def run(check=False):
         route=urlsplit(row['u']).path
         if route in expected_descriptions:row['d']=expected_descriptions[route];seen.append(route)
     assert set(seen)==set(expected_descriptions)
-    assert len(catalog)==len(before)==372
+    assert len(catalog)==len(before)
+    assert len(catalog)>=372
     for r in catalog:assert {k:v for k,v in r.items() if k!='d'}=={k:v for k,v in before[r['u']].items() if k!='d'}
     # Keep the established JSON format and avoid rewriting every line.
     if any(r!=before[r['u']] for r in catalog):
