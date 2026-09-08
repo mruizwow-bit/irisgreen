@@ -69,7 +69,9 @@ def apply(manifest):
         new='thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + v.name'
         if old in text:
             assert text.count(old)==1;text=text.replace(old,new,1)
-        else:assert new in text
+        else:
+            alt = new.replace("+ v.name", "+ videoName(v)")
+            assert new in text or alt in text
         anchor='  renderVals() {\n    const st = this.state;'
         helper='\n    const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);'
         if helper not in text:
