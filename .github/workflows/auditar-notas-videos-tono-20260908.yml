@@ -1,0 +1,45 @@
+name: Auditar tono notas videos
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/auditar-notas-videos-tono-20260908.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Extraer contextos de notas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, html
+          s = Path('es/videos/index.html').read_text(encoding='utf-8')
+          terms = ['pauta','general rule','convertir','turning','cura','cure','promete','promise','profesional clínico','clinical professional','diagnostica','diagnóstico','diagnosis','funcionó','worked','acompañ','consulta','clinic','no de cómo','not about how']
+          hits=[]
+          low=s.lower()
+          for term in terms:
+              start=0
+              while True:
+                  i=low.find(term.lower(), start)
+                  if i<0: break
+                  a=max(0,i-450); b=min(len(s), i+650)
+                  ctx=s[a:b]
+                  ctx=ctx.replace('\\n','\n')
+                  hits.append((term,i,ctx))
+                  start=i+len(term)
+          print('HITS', len(hits))
+          for n,(term,i,ctx) in enumerate(hits,1):
+              print('\n--- HIT',n,'TERM',term,'POS',i,'---')
+              print(ctx)
+          # Extrae objetos o líneas con comoLeer/nota si están legibles.
+          print('\n--- KEYS AROUND NOTE-LIKE FIELDS ---')
+          for m in re.finditer(r'(?i)(comoLeer|cómo leer|nota|note|read|leer|how)[^\n]{0,900}', s):
+              print(m.group(0)[:1000])
+          PY
