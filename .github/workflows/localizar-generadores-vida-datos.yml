@@ -1,0 +1,21 @@
+name: Localizar generadores Vida diaria y Datos
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths: ['.github/workflows/localizar-generadores-vida-datos.yml']
+jobs:
+  localizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Buscar referencias
+        run: |
+          echo '=== vida-diaria.json ==='
+          git grep -n -F 'vida-diaria.json' -- . || true
+          echo '=== datos.json ==='
+          git grep -n -F 'datos.json' -- . || true
+          echo '=== scripts candidatos ==='
+          find scripts -maxdepth 1 -type f -printf '%f\n' | sort
