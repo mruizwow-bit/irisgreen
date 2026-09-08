@@ -1,89 +1,54 @@
-name: Ajustar generador inglés de Vida diaria y Datos
+name: Probar preview 14 selector visible
 on:
   push:
     branches: [recuperacion-estable-20260908]
     paths: ['.github/workflows/ajustar-generador-en-vida-datos.yml']
 permissions:
-  contents: write
+  contents: read
 jobs:
-  ajustar:
+  preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: feat/en-vida-datos-20260908
-      - name: Reutilizar terminología EN existente y fuentes oficiales
+      - name: Instalar Playwright
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/generate_en_vida_datos.py')
-          s=p.read_text(encoding='utf-8')
-          marker='def vida_maps(es,en):\n'
-          helper=r'''def condition_map():
-              """Mapa de nombres ES→EN usando las fichas de Condiciones ya publicadas."""
-              out={}
-              for page in (ROOT/'es/neurodiversidad/condiciones').glob('*/index.html'):
-                  text=page.read_text(encoding='utf-8')
-                  mh=re.search(r'<h1>(.*?)</h1>',text,re.S)
-                  me=re.search(r'<a class="lang" href="([^"]+)" lang="en">EN</a>',text)
-                  if not mh or not me: continue
-                  es_name=html.unescape(re.sub(r'<[^>]+>','',mh.group(1))).strip()
-                  href=me.group(1)
-                  target=(page.parent / href).resolve() if not href.startswith('/') else ROOT/href.lstrip('/')
-                  if target.is_dir(): target=target/'index.html'
-                  if not target.is_file():
-                      rel=href.split('?',1)[0].split('#',1)[0].lstrip('/')
-                      target=ROOT/rel
-                      if target.is_dir(): target=target/'index.html'
-                  if not target.is_file(): continue
-                  en_text=target.read_text(encoding='utf-8')
-                  eh=re.search(r'<h1>(.*?)</h1>',en_text,re.S)
-                  if eh:
-                      out[es_name]=html.unescape(re.sub(r'<[^>]+>','',eh.group(1))).strip()
-              return out
-
-'''
-          if 'def condition_map():' not in s:
-              s=s.replace(marker,helper+marker,1)
-          s=s.replace("    # English source keeps conceptos parallel so labels are consistent.\n    ensure_parallel(es.get('conceptos',[]),en.get('conceptos',[]),'vida conceptos')\n    cats=en['categorias']; groups=[]",
-                      "    cmap=condition_map()\n    cats=en['categorias']; groups=[]",1)
-          s=s.replace("            search=' '.join([b['title'],b['lede'],b['cat']]+b.get('concepts',[])).lower()\n            cards.append(f'<a class=\"card vd-card\" data-cat=\"{esc(cat)}\" data-search=\"{esc(search)}\" href=\"/en/everyday-life/{esc(slug)}/\"><span class=\"chip\">{esc(cat)}</span><strong>{esc(b[\"title\"])}</strong><span>{esc(short(b[\"lede\"]))}</span><span class=\"meta\">{len(b.get(\"sources\",[]))} source'+('' if len(b.get('sources',[]))==1 else 's')+' · DRAFT</span></a>')",
-                      "            en_concepts=b.get('concepts') or [cmap.get(x,x) for x in e.get('concepts',[])]\n            search=' '.join([b['title'],b['lede'],b['cat']]+en_concepts).lower()\n            nsrc=len(e.get('sources',[]))\n            cards.append(f'<a class=\"card vd-card\" data-cat=\"{esc(cat)}\" data-search=\"{esc(search)}\" href=\"/en/everyday-life/{esc(slug)}/\"><span class=\"chip\">{esc(cat)}</span><strong>{esc(b[\"title\"])}</strong><span>{esc(short(b[\"lede\"]))}</span><span class=\"meta\">{nsrc} source'+('' if nsrc==1 else 's')+' · DRAFT</span></a>')",1)
-          old=r'''    concepts=[]
-              for ec,bc in zip(es.get('conceptos',[]),en.get('conceptos',[])):
-                  links=[]
-                  for es_title,en_title in zip(ec.get('fichas',[]),bc.get('fichas',[])):
-                      slug=en_slug.get(es_title)
-                      if not slug: continue
-                      links.append(f'<a href="/en/everyday-life/{esc(slug)}/">{esc(en_title)}</a>')
-                  search=' '.join([bc.get('concepto','')]+bc.get('fichas',[])).lower()
-                  concepts.append(f'<div class="concept-row vd-concept" id="concept-{slugify(bc.get("concepto",""))}" data-search="{esc(search)}"><strong>{bc.get("n",ec.get("n",""))}. {esc(bc.get("concepto",""))}</strong><div class="routes">'+ ' · '.join(links) +'</div></div>')'''.replace('              ','    ')
-          new=r'''    concepts=[]
-              for ec in es.get('conceptos',[]):
-                  en_concept=cmap.get(ec.get('concepto',''),ec.get('concepto',''))
-                  links=[]; en_titles=[]
-                  for es_title in ec.get('fichas',[]):
-                      slug=en_slug.get(es_title)
-                      en_title=title_to.get(es_title,es_title)
-                      if not slug: continue
-                      en_titles.append(en_title)
-                      links.append(f'<a href="/en/everyday-life/{esc(slug)}/">{esc(en_title)}</a>')
-                  search=' '.join([en_concept]+en_titles).lower()
-                  concepts.append(f'<div class="concept-row vd-concept" id="concept-{slugify(en_concept)}" data-search="{esc(search)}"><strong>{ec.get("n","")}. {esc(en_concept)}</strong><div class="routes">'+ ' · '.join(links) +'</div></div>')'''.replace('              ','    ')
-          if old not in s:
-              raise SystemExit('No se encuentra bloque de conceptos esperado')
-          s=s.replace(old,new,1)
-          s=s.replace("        sources='<section class=\"sec\"><h2>Sources</h2><ul class=\"fuentes\">'+''.join(f'<li><a href=\"{esc(x[\"url\"])}\" rel=\"noopener\" target=\"_blank\">{esc(x[\"label\"])}</a></li>' for x in b.get('sources',[]))+'</ul></section>'",
-                      "        source_rows=b.get('sources') or e.get('sources',[])\n        sources='<section class=\"sec\"><h2>Sources</h2><ul class=\"fuentes\">'+''.join(f'<li><a href=\"{esc(x[\"url\"])}\" rel=\"noopener\" target=\"_blank\">{esc(x[\"label\"])}</a></li>' for x in source_rows)+'</ul></section>'",1)
-          s=s.replace("        if b.get('concepts'):\n            related='<section class=\"sec\"><h2>Related to</h2><div class=\"related\">'+''.join(f'<a href=\"/en/everyday-life/#concept-{slugify(x)}\">{esc(x)}</a>' for x in b['concepts'])+'</div></section>'",
-                      "        en_related=b.get('concepts') or [cmap.get(x,x) for x in e.get('concepts',[])]\n        if en_related:\n            related='<section class=\"sec\"><h2>Related to</h2><div class=\"related\">'+''.join(f'<a href=\"/en/everyday-life/#concept-{slugify(x)}\">{esc(x)}</a>' for x in en_related)+'</div></section>'",1)
-          s=s.replace("        sources='<section class=\"sec\"><h2>Sources</h2><ul class=\"fuentes\">'+''.join(f'<li><a href=\"{esc(x[\"url\"])}\" rel=\"noopener\" target=\"_blank\">{esc(x[\"label\"])}</a></li>' for x in b.get('sources',[]))+'</ul></section>'",
-                      "        source_rows=b.get('sources') or a.get('sources',[])\n        sources='<section class=\"sec\"><h2>Sources</h2><ul class=\"fuentes\">'+''.join(f'<li><a href=\"{esc(x[\"url\"])}\" rel=\"noopener\" target=\"_blank\">{esc(x[\"label\"])}</a></li>' for x in source_rows)+'</ul></section>'",1)
-          p.write_text(s,encoding='utf-8')
-          PY
-          python3 -m py_compile scripts/generate_en_vida_datos.py
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add scripts/generate_en_vida_datos.py
-          git commit -m 'Reutilizar terminología bilingüe existente en el generador'
-          git push origin HEAD:feat/en-vida-datos-20260908
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+      - name: Probar preview 14
+        env:
+          BASE: https://deploy-preview-14--irisgreen-home.netlify.app
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const widths = [1536, 1366, 1280, 1229];
+            const urls = ['/es/datos/', '/es/datos/autismo/', '/en/data/', '/en/data/autism/'];
+            for (const width of widths) {
+              const page = await browser.newPage({ viewport: { width: width, height: 900 } });
+              for (const url of urls) {
+                const res = await page.goto(process.env.BASE + url, { waitUntil: 'networkidle' });
+                if (!res || res.status() >= 400) throw new Error(url + ' status ' + (res && res.status()));
+                const labels = await page.locator('nav.langs .lang').evaluateAll(els => els.map(e => {
+                  const r = e.getBoundingClientRect();
+                  return { text: e.textContent.trim(), visible: !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length), left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+                }));
+                if (labels.map(x => x.text).join(' ') !== 'ES EN') throw new Error(url + ' selector DOM incorrecto: ' + JSON.stringify(labels));
+                for (const l of labels) {
+                  if (!l.visible) throw new Error(url + ' ' + l.text + ' no visible');
+                  if (l.left < 0 || l.right > width || l.top < 0 || l.bottom > 900) throw new Error(url + ' ' + l.text + ' fuera de viewport ' + width + ': ' + JSON.stringify(l));
+                }
+                const html = await page.content();
+                if (html.includes('PT-BR') || html.includes('lang="pt-BR"')) throw new Error(url + ' conserva PT-BR');
+              }
+              await page.goto(process.env.BASE + '/es/datos/', { waitUntil: 'networkidle' });
+              await page.click('nav.langs a[lang="en"]');
+              await page.waitForURL('**/en/data/');
+              const h1 = await page.locator('h1').first().innerText();
+              if (!h1.includes('Neurodiversity')) throw new Error('El click en EN no abre /en/data/');
+              await page.close();
+            }
+            await browser.close();
+            console.log('preview-14-selector-visible-ok');
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
