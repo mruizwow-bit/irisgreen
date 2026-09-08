@@ -1,0 +1,48 @@
+name: Corregir nota Dan video limpia
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/corregir-nota-dan-video-limpia-20260908.yml
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Crear rama limpia y corregir nota
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -B fix/nota-dan-video-limpia-20260908 origin/main
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path('es/videos/index.html')
+          s = p.read_text(encoding='utf-8')
+          old_es = 'Dan tiene un servicio de mentoría de pago. Lo decimos aquí para que lo sepas antes de ver el vídeo: lo que cuenta es su experiencia, y además vive de acompañar a otras personas con diagnóstico tardío.'
+          new_es = 'Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Es un relato personal: sirve para escuchar cómo lo vive él, no para convertir su caso en una pauta general.'
+          old_en = 'Dan has a paid mentoring service. We say that here so you know before watching the video: what he shares is his own experience, and he also earns a living supporting other people with late diagnoses.'
+          new_en = 'He shares his experience of late diagnosis, autism and adult life. It is a personal account: useful for hearing how he lives it, not for turning his case into a general rule.'
+          if old_es not in s:
+              raise SystemExit('No encuentro la nota ES antigua de Dan')
+          if old_en not in s:
+              raise SystemExit('No encuentro la nota EN antigua de Dan')
+          s = s.replace(old_es, new_es, 1).replace(old_en, new_en, 1)
+          banned = ['servicio de mentoría de pago', 'paid mentoring service', 'vive de acompañar']
+          for bad in banned:
+              if bad in s:
+                  raise SystemExit('Queda texto antiguo: '+bad)
+          p.write_text(s, encoding='utf-8')
+          PY
+          python3 scripts/build_site.py
+          git config user.name "mruizwow-bit"
+          git config user.email "mruiz.wow@gmail.com"
+          git add es/videos/index.html
+          git diff --cached --check
+          git commit -m "Corregir nota del video de Dan"
+          git push -f origin fix/nota-dan-video-limpia-20260908
