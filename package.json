@@ -1,0 +1,23 @@
+{
+  "name": "irisgreen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "support.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mruizwow-bit/irisgreen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mruizwow-bit/irisgreen/issues"
+  },
+  "homepage": "https://github.com/mruizwow-bit/irisgreen#readme",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}
