@@ -1,0 +1,41 @@
+name: Verificar producción sin PT-BR
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths: ['.github/workflows/verificar-produccion-ptbr.yml']
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-prod-pt
+          /tmp/ig-prod-pt/bin/pip -q install playwright==1.55.0
+          /tmp/ig-prod-pt/bin/python -m playwright install --with-deps chromium >/tmp/ig-prod-pt.log 2>&1
+      - name: Comprobar selectores en producción
+        run: |
+          /tmp/ig-prod-pt/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json
+          base='https://irisgreen.eu'
+          routes=['/es/situaciones/','/en/situations/','/es/neurodiversidad/temas/autismo/','/es/tramites/','/es/tramites/directorio/']
+          failures=[]; out=[]; errors=[]
+          with sync_playwright() as p:
+            b=p.chromium.launch(); page=b.new_page(viewport={'width':1440,'height':900})
+            page.on('pageerror',lambda e: errors.append(str(e)))
+            for route in routes:
+              page.goto(base+route,wait_until='domcontentloaded',timeout=30000); page.wait_for_timeout(700)
+              labels=[]
+              for n in page.locator('header .langs a:visible, header .langs span:visible, header .ig-uh-langs button:visible').all():
+                t=(n.inner_text() or '').strip().upper()
+                if t in {'ES','EN','PT-BR'} and t not in labels: labels.append(t)
+              out.append({'url':route,'visible':labels,'lang':page.locator('html').get_attribute('lang') or ''})
+              if 'PT-BR' in labels: failures.append(route+': PT-BR visible')
+              if set(labels)!={'ES','EN'}: failures.append(route+f': idiomas {labels}')
+            b.close()
+          print(json.dumps({'routes':out,'failures':failures,'javascript_errors':errors},ensure_ascii=False,indent=2))
+          if errors: failures.append('JS: '+' | '.join(errors[:5]))
+          if failures: raise SystemExit('\n'.join(failures))
+          PY
