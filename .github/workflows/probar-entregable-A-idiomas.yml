@@ -1,0 +1,133 @@
+name: Probar entregable A de idiomas
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths: ['.github/workflows/probar-entregable-A-idiomas.yml']
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/idiomas-A-20260908
+          fetch-depth: 0
+      - name: Preparar Chromium y web local
+        run: |
+          python3 -m venv /tmp/ig-a
+          /tmp/ig-a/bin/pip -q install playwright==1.55.0
+          /tmp/ig-a/bin/python -m playwright install --with-deps chromium >/tmp/ig-a-playwright.log 2>&1
+          python3 scripts/build_site.py
+          cd dist
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/ig-a-http.log 2>&1 &
+      - name: Probar 24 rutas y regresiones
+        run: |
+          /tmp/ig-a/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json
+          base='http://127.0.0.1:8000'
+          routes=[
+            '/',
+            '/es/neurodiversidad/condiciones/',
+            '/en/neurodiversity/conditions/',
+            '/es/situaciones/',
+            '/en/situations/',
+            '/es/biblioteca/',
+            '/es/videos/',
+            '/es/investigacion/',
+            '/es/datos/',
+            '/es/tramites/directorio/',
+            '/es/tramites/',
+            '/es/libros/',
+            '/es/recursos/juegos/',
+            '/es/intereses/',
+            '/en/interests/',
+            '/es/taller/',
+            '/es/sitio-tranquilo/',
+            '/en/quiet-space/',
+            '/es/neurodiversidad/temas/autismo/',
+            '/es/cuestionarios/',
+            '/es/sobre-iris-green/',
+            '/es/vivir-fuera/',
+            '/es/metodologia/',
+            '/es/lectura-accesible/',
+          ]
+          changed_expected={
+            '/es/situaciones/': {'ES','EN'},
+            '/en/situations/': {'ES','EN'},
+            '/es/neurodiversidad/temas/autismo/': {'ES','EN'},
+            '/es/tramites/directorio/': {'ES','EN'},
+            '/es/tramites/': {'ES','EN'},
+          }
+          report=[]; failures=[]; js=[]
+          with sync_playwright() as p:
+            browser=p.chromium.launch()
+            page=browser.new_page(viewport={'width':1440,'height':900})
+            page.on('pageerror', lambda e: js.append(str(e)))
+            for route in routes:
+              page.goto(base+route, wait_until='domcontentloaded', timeout=30000)
+              page.wait_for_timeout(700)
+              labels=[]
+              for node in page.locator('header .langs a:visible, header .langs span:visible, header .ig-uh-langs button:visible').all():
+                t=(node.inner_text() or '').strip().upper()
+                if t in {'ES','EN','PT-BR'} and t not in labels: labels.append(t)
+              lang=page.locator('html').get_attribute('lang') or ''
+              active=[]
+              for node in page.locator('header .langs [aria-current]:visible, header .langs .on:visible, header .ig-uh-langs button:visible').all():
+                t=(node.inner_text() or '').strip().upper()
+                style=(node.get_attribute('style') or '').lower()
+                pressed=node.get_attribute('aria-pressed')
+                if t in {'ES','EN','PT-BR'} and (node.get_attribute('aria-current') or 'background:' in style or pressed=='true'):
+                  active.append(t)
+              report.append({'url':route,'visible':labels,'html_lang':lang,'active_candidates':active})
+              if 'PT-BR' in labels: failures.append(route+': PT-BR visible')
+              if route in changed_expected and set(labels)!=changed_expected[route]:
+                failures.append(route+f': visibles {labels}, esperado {sorted(changed_expected[route])}')
+
+            # ES -> EN -> ES en Situaciones.
+            page.goto(base+'/es/situaciones/',wait_until='domcontentloaded')
+            page.locator('header .langs a',has_text='EN').click()
+            page.wait_for_load_state('domcontentloaded')
+            if not page.url.endswith('/en/situations/'):
+              failures.append('Situaciones ES->EN no llega a /en/situations/')
+            page.locator('header .langs a',has_text='ES').click()
+            page.wait_for_load_state('domcontentloaded')
+            if not page.url.endswith('/es/situaciones/'):
+              failures.append('Situations EN->ES no vuelve a /es/situaciones/')
+
+            # ig_lang heredado no puede contaminar una ruta /es/.
+            page.goto(base+'/',wait_until='domcontentloaded')
+            page.evaluate("localStorage.setItem('ig_lang','en')")
+            page.goto(base+'/es/investigacion/',wait_until='domcontentloaded')
+            page.wait_for_timeout(500)
+            if not (page.locator('html').get_attribute('lang') or '').startswith('es'):
+              failures.append('ig_lang=en heredado contamina /es/investigacion/')
+
+            # Lectura abre.
+            page.goto(base+'/',wait_until='domcontentloaded')
+            read=page.locator('#a11yBtn, [data-ig-reading-trigger], .ig-uh-reading').first
+            if read.count():
+              read.click(); page.wait_for_timeout(250)
+              panels=page.locator('#a11y:not([hidden]), #ig-reading-panel:not([hidden]), [data-ig-reading-panel]:visible')
+              if panels.count()==0: failures.append('Lectura no abre en Home')
+            else: failures.append('No se encuentra control Lectura en Home')
+
+            # Música abre y hay reproductor.
+            music=page.locator('#plBtn, .ig-uh-music, [data-ig-music]').first
+            if music.count():
+              music.click(); page.wait_for_timeout(500)
+              if page.locator('#ig-music-panel, #pl').count()==0:
+                failures.append('No aparece panel de Música en Home')
+            else: failures.append('No se encuentra control Música en Home')
+
+            # Juego interactivo: cargar y localizar controles propios.
+            page.goto(base+'/es/recursos/juegos/cada-cerebro-su-camino/',wait_until='domcontentloaded')
+            page.wait_for_timeout(700)
+            if page.locator('main button, main [role=button]').count()==0:
+              failures.append('Juego representativo no presenta controles interactivos')
+
+            browser.close()
+          print(json.dumps({'routes':report,'failures':failures,'javascript_errors':js[:10]},ensure_ascii=False,indent=2))
+          if js: failures.append('Errores JavaScript: '+' | '.join(js[:5]))
+          if failures: raise SystemExit('\n'.join(failures))
+          PY
