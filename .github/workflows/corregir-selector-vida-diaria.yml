@@ -1,0 +1,78 @@
+name: Corregir selector Vida diaria EN
+
+on:
+  push:
+    branches:
+      - fix/selector-vida-diaria-en-20260908
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  corregir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/selector-vida-diaria-en-20260908
+          fetch-depth: 0
+      - name: Añadir EN al selector español de Vida diaria
+        run: |
+          python3 - <<'PY'
+          import html, json, re, unicodedata
+          from pathlib import Path
+          ROOT = Path.cwd()
+          def slugify(s):
+              s = unicodedata.normalize('NFKD', str(s)).encode('ascii','ignore').decode().lower()
+              s = re.sub(r'[^a-z0-9]+','-',s).strip('-')
+              return s or 'entry'
+          def title_of(path):
+              s = path.read_text(encoding='utf-8')
+              m = re.search(r'<h1>(.*?)</h1>', s, re.S)
+              return html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).strip() if m else ''
+          en_json = ROOT/'en/everyday-life/everyday-life.json'
+          es_json = ROOT/'es/biblioteca/vida-diaria.json'
+          en = json.loads(en_json.read_text(encoding='utf-8'))
+          es = json.loads(es_json.read_text(encoding='utf-8'))
+          if len(en.get('fichas', [])) != 48 or len(es.get('fichas', [])) != 48:
+              raise SystemExit('No cuadran las 48 fichas de Vida diaria')
+          pairs = {a['title']: '/en/everyday-life/' + slugify(b['title']) + '/' for a,b in zip(es['fichas'], en['fichas'])}
+          pages = [(ROOT/'es/biblioteca/index.html', '/en/everyday-life/')]
+          for p in sorted((ROOT/'es/biblioteca').glob('*/index.html')):
+              t = title_of(p)
+              if t in pairs:
+                  pages.append((p, pairs[t]))
+          if len(pages) != 49:
+              raise SystemExit(f'Páginas ES localizadas: {len(pages)}; esperado 49')
+          nav_re = re.compile(r'<nav aria-label="Idioma" class="langs">\s*<span aria-current="true" class="lang on">ES</span>\s*(?:<a class="lang" href="[^"]+" lang="en">EN</a>\s*)?</nav>')
+          changed = 0
+          for p, en_url in pages:
+              s = p.read_text(encoding='utf-8')
+              new_nav = f'<nav aria-label="Idioma" class="langs"><span aria-current="true" class="lang on">ES</span><a class="lang" href="{en_url}" lang="en">EN</a></nav>'
+              ns, n = nav_re.subn(new_nav, s, count=1)
+              if n != 1:
+                  raise SystemExit(f'No se pudo reemplazar selector en {p.relative_to(ROOT)}')
+              if ns != s:
+                  p.write_text(ns, encoding='utf-8')
+                  changed += 1
+          if changed != 49:
+              raise SystemExit(f'Selectores cambiados: {changed}; esperado 49')
+          # Verificación rápida: todas las páginas españolas de Vida diaria llevan el selector EN.
+          for p, en_url in pages:
+              s = p.read_text(encoding='utf-8')
+              if f'href="{en_url}" lang="en">EN</a>' not in s:
+                  raise SystemExit(f'Falta EN en {p.relative_to(ROOT)}')
+          wf = ROOT/'.github/workflows/corregir-selector-vida-diaria.yml'
+          if wf.exists():
+              wf.unlink()
+          print({'selector_en_vida_diaria_es': changed})
+          PY
+      - name: Commit corrección
+        run: |
+          git config user.name "mruizwow-bit"
+          git config user.email "mruiz.wow@gmail.com"
+          git status --short
+          git add -A
+          git commit -m "Añadir selector EN en Vida diaria ES" || exit 0
+          git push origin fix/selector-vida-diaria-en-20260908
