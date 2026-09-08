@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script src="/assets/preferencias-lectura.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Accessible reading · What each button does</title>
+<meta content="How to use the reading settings, keep your preferences and understand Iris Green’s accessibility checks and limitations." name="description"/>
+<meta content="index,follow" name="robots"/>
+<meta content="#f6f8fb" name="theme-color"/>
+<link href="https://irisgreen.eu/en/accessible-reading/" rel="canonical"/>
+<link href="https://irisgreen.eu/es/lectura-accesible/" hreflang="es" rel="alternate"/>
+<link href="https://irisgreen.eu/en/accessible-reading/" hreflang="en" rel="alternate"/>
+<link href="https://irisgreen.eu/es/lectura-accesible/" hreflang="x-default" rel="alternate"/>
+<meta content="Iris Green" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="Iris Green" property="og:site_name"/>
+<meta content="Accessible reading" property="og:title"/>
+<meta content="How to use the reading settings, keep your preferences and understand Iris Green’s accessibility checks and limitations." property="og:description"/>
+<meta content="https://irisgreen.eu/en/accessible-reading/" property="og:url"/>
+<meta content="https://irisgreen.eu/img/og-condiciones.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Accessible reading","description":"How to use the reading settings, keep your preferences and understand Iris Green’s accessibility checks and limitations.","url":"https://irisgreen.eu/en/accessible-reading/","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Iris Green","url":"https://irisgreen.eu/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://irisgreen.eu/"},{"@type":"ListItem","position":2,"name":"Accessible reading","item":"https://irisgreen.eu/es/lectura-accesible/"}]}]}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/site-v23.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>
+<link rel="stylesheet" href="/assets/controles-comunes.css"/>
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hd">
+<a class="brand" href="/"><img alt="" height="28" onerror="this.remove()" src="../../img/v40-brand-symbol.webp" width="28"/><span>Iris Green</span></a>
+<button aria-controls="nav" aria-expanded="false" class="ico menu" id="mBtn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span>Menu</span></button>
+<button type="button" class="ig-menu-button" aria-label="Open menu" aria-controls="ig-main-nav" aria-expanded="false">Menu</button><nav aria-label="Explore" class="nav" id="ig-main-nav"><a href="/">Home</a><a href="/en/neurodiversity/conditions/">Conditions</a><a href="/en/situations/">Situations</a><a href="/en/everyday-life/">Everyday life</a><a href="/es/videos/">Videos</a><a href="/es/investigacion/">Research</a><a href="/en/data/">Data</a><a href="/es/tramites/directorio/">Support</a><a href="/es/libros/">Books</a><a href="/es/recursos/juegos/">Play</a><span aria-hidden="true" class="sep"></span><a class="calma ig-calma" href="/en/interests/">Your interests</a><a class="calma ig-calma" href="/es/taller/">The workshop</a><a class="calma ig-calma" href="/en/quiet-space/">Quiet space</a></nav>
+<div class="tools">
+<button aria-controls="a11y" aria-expanded="false" class="ico" id="a11yBtn" aria-label="Accessible reading"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 8.5h16M12 10.5v11M12 15h-4l-2 6M12 15h4l2 6"></path></svg><span>Reading</span></button>
+<button aria-controls="pl" aria-expanded="false" class="ico" id="plBtn" aria-label="Music"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M9 18V6l11-2v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="17" cy="16" r="3"></circle></svg><span>Music</span></button>
+</div>
+<nav aria-label="Language" class="langs">
+<a class="lang" href="/es/lectura-accesible/" lang="es">ES</a>
+<span aria-current="true" class="lang on">EN</span>
+</nav>
+</header>
+<div class="panel" hidden="" id="pl"></div>
+<div class="panel a11yp" hidden="" id="a11y">
+<h2>Accessible reading</h2>
+<div class="ctrls">
+<div class="grp"><span>Text size</span><button aria-label="Text size −" data-a="fs-">A−</button><button aria-label="Text size +" data-a="fs+">A+</button></div>
+<button data-a="ls">Wider letter spacing</button><button data-a="big">Bigger buttons</button><button data-a="hc">More contrast</button>
+<button data-a="guide">Reading guide</button><button data-a="tts">Read aloud</button><button data-a="rm">Reduce motion</button>
+<button class="reset" data-a="reset">Reset</button>
+</div>
+</div>
+<main id="main">
+<p class="crumb"><a href="/">Home</a></p>
+<h1>Accessible reading</h1>
+<p class="lede">Open Reading in the header to adjust the presentation. You can combine the options and return to the original view. This page explains what the available controls do and what limitations remain.</p>
+<h2>What each button does</h2>
+<section class="sec"><h3>A− and A+ · Text size</h3><p>They change the size of the content between 100%, 115%, 130% and 150%. The percentage shows the selected value and the button is disabled when it reaches its limit. The header and floating panels are not enlarged by this setting. You can also use your browser zoom.</p></section>
+<section class="sec"><h3>Wider letter spacing</h3><p>Applies a combination of spacing between letters, words and lines. To adjust them separately, open “Typography, spacing and width”, which also lets you choose paragraph spacing. Using this combined button replaces custom spacing settings; it does not change the selected typeface or width.</p></section>
+<section class="sec"><h3>Bigger buttons</h3><p>Increases the text controls that are prepared for this setting. It does not enlarge areas overlaid on illustrations, because they could cover each other. In Vera and the home map, you can open “Use buttons instead of touching the image”.</p></section>
+<section class="sec"><h3>More contrast</h3><p>Strengthens text and reading backgrounds without applying a colour filter to photographs or illustrations. It is not a full theme selector and does not guarantee that every graphic element is adapted.</p></section>
+<section class="sec"><h3>Reading guide</h3><p>Shows a band that follows the pointer. If keyboard focus coincides with the band, it moves away from the control. The guide still does not have its own controls for positioning it with the keyboard or through touch buttons.</p></section>
+<section class="sec"><h3>Read aloud</h3><p>Activates the voice function available on the page. On text pages, it starts when you press a fragment; some interactive pages use a prepared reading text. Turn the button off to stop it. This function does not replace a screen reader and still does not offer pause, resume or speed controls.</p><p>It uses the voice service provided by the browser. Some voices may use remote services: there is no guarantee that all text processing is local. Reloading or changing page does not start a voice because other preferences have been saved.</p></section>
+<section class="sec"><h3>Reduce motion</h3><p>Disables the page’s animations and transitions controlled by its styles. If your device requests reduced motion, the website respects that even when this own option is switched off. The panel indicates when that device preference is active. This setting does not control playback inside external video services.</p></section>
+<section class="sec"><h3>Reset</h3><p>Resets only Iris Green’s reading preferences. It does not delete favourites or the chosen language. It continues to respect reduced motion and forced colours on your device.</p></section>
+<!-- ig-independent-text-help -->
+<section class="sec"><h2>Typography, spacing and width</h2><p>Open Reading and expand “Typography, spacing and width”. You can choose the original typeface or Arial-, Verdana- or Georgia-style alternatives, depending on the fonts available on your device. No new typeface is downloaded and no promise is made that one font is better for everyone.</p><p>Spacing between letters, words, lines and paragraphs has four independent controls. Values marked with × indicate a proportion of the font size. “Original” restores the usual presentation for that setting; it does not modify the others. The quick spacing button still offers a combination and replaces the four custom spacing settings when you use it.</p><p>Medium or Narrow width limits the length of text lines without reducing the chosen size. “Reset these settings” restores the original typeface, spacing and width; it keeps size, contrast and the other preferences. “Reset”, outside that block, still resets all the website’s own preferences.</p><p>Your choices are kept in the same browser when it allows them to be saved. The sample in the panel lets you compare the typeface and spacing. Header, panels and illustrations keep their presentation; pages and boards still need their own usability checks. These settings are not an accessibility certification or a replacement for assistive technologies.</p></section>
+<h2>Saving the settings</h2>
+<p>Presentation preferences are saved in this browser and restored when you move between pages connected to the reading system. No account is needed. If the browser does not allow them to be saved, they work on the current page and the panel warns you about that limitation. Deleting site data or using another browser may mean you need to choose them again.</p>
+<h2>Colours and selected controls</h2>
+<p>The selected shared filters have underlined text, as well as the colour change. When the browser activates a forced-colours palette, its colours are used for controls, fields and panels. There is no need to activate a “colour-blind mode”. The review of information conveyed by colour in all graphics and games is not finished.</p>
+<h2>Music and keyboard</h2>
+<p>Music opens a small player at the bottom right. It does not start playing when you open it: playback starts when you press Listen, choose a track or use Previous or Next. You can close it with Escape or its close button. If the player or the Reading panel covers a control that receives keyboard focus outside the panel, it collapses to leave it visible. Collapsing the player does not stop a track you have already started; open Music again to pause it.</p>
+<h2>Scope of the checks</h2>
+<p>Technical tests of controls and navigation have been carried out in a test browser, at desktop and mobile sizes, and with emulated device preferences. They are not the same as testing every device, every voice or every combination of settings.</p>
+<p>Testing with people who use screen readers, braille displays and voice control is still pending. A guide usable without a mouse, full themes, advanced read-aloud controls and text alternatives for some materials are still pending. The actual availability of alternative fonts depends on the device. No full WCAG certification is declared.</p>
+<h2>Report a difficulty</h2>
+<p>Write to <a href="mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty">informacion@irisgreen.eu</a> indicating the page, what you were trying to do, the browser or device and the settings used. You do not need to provide a diagnosis.</p>
+
+</main>
+<script defer="" src="../../assets/lectura-accesible.js"></script>
+
+<script defer src="/assets/interfaz-comun.js"></script>
+<script defer src="/assets/musica.js"></script>
+</body>
+</html>
