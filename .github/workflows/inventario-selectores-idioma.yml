@@ -1,0 +1,37 @@
+name: Inventario de selectores de idioma
+on:
+  push:
+    branches: ['recuperacion-estable-20260908']
+    paths: ['.github/workflows/inventario-selectores-idioma.yml']
+permissions:
+  contents: write
+jobs:
+  inventario:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+          fetch-depth: 0
+      - name: Buscar controles y referencias PT/EN
+        run: |
+          git fetch origin main
+          mkdir -p reports
+          {
+            echo '# Selectores de idioma en main'
+            echo
+            echo '## Archivos con PT-BR, ig-nav-pt o langButtons'
+            echo '```text'
+            git grep -l -E 'PT-BR|ig-nav-pt|langButtons' origin/main -- '*.html' '*.js' '*.css' || true
+            echo '```'
+            echo
+            echo '## Contextos relevantes'
+            echo '```text'
+            git grep -n -C 2 -E 'PT-BR|langButtons:|ig-nav-pt' origin/main -- '*.html' '*.js' '*.css' || true
+            echo '```'
+          } > reports/inventario-selectores-idioma.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/inventario-selectores-idioma.md
+          git diff --cached --quiet || git commit -m 'Guardar inventario de selectores de idioma'
+          git push origin HEAD:recuperacion-estable-20260908
