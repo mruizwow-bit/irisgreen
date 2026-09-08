@@ -1,0 +1,43 @@
+{
+  "pages": {
+    "/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Iris Green · Base de conocimiento sobre neurodiversidad"
+    },
+    "/es/investigacion/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Investigación, con contexto · Iris Green"
+    },
+    "/es/neurodiversidad/condiciones/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Condiciones"
+    },
+    "/en/neurodiversity/conditions/": {
+      "lang": "en",
+      "pt_visible": 0,
+      "title": "Conditions"
+    }
+  },
+  "music": {
+    "/": {
+      "trigger": true,
+      "opened": false,
+      "player": false,
+      "audio_requests": 0
+    },
+    "/es/neurodiversidad/condiciones/": {
+      "trigger": true,
+      "opened": false,
+      "player": true,
+      "audio_requests": 18
+    }
+  },
+  "failures": [
+    "/: Música no abre",
+    "/es/neurodiversidad/condiciones/: Música no abre"
+  ],
+  "javascript_errors": []
+}
