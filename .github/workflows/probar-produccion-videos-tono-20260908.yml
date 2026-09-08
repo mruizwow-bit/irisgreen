@@ -1,0 +1,45 @@
+name: Probar produccion videos tono
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/probar-produccion-videos-tono-20260908.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar irisgreen.eu videos tono
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const base='https://irisgreen.eu';
+            const forbidden=['pauta general','no una pauta','lo que a ella le funcionó','no es lo que hay que hacer','convertir su caso','general rule','not a set of instructions','what worked for them','not what you have to do','turning his case','no de cómo se implanta','not about how a system is introduced','no se promete ninguna cura','does not promise a cure','profesional clínico','clinical professional','no cómo se diagnostica','not how ADHD is diagnosed','ruta clínica','clinical route','explicación clínica','clinical explanation','explicação clínica','servicio de mentoría','mentoría de pago','servicio de pago','vive de acompañar','acompaña desde','accompanying other people','keep you company while you read','acompañando'];
+            const required=['Una persona cuenta en primera persona cómo lo vive.','Publicado por una entidad. Reúne información, testimonios o ejemplos sobre el tema.','Divulgación profesional: organiza ideas y ejemplos para entender mejor el tema.','Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad','Lleva más de seis décadas comunicándose con CAA. Cuenta cómo la comunicación aumentativa y alternativa forma parte de su vida','Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, qué empieza a encajar','Convive con el TOC desde los dieciséis años y habla del pensamiento mágico desde la experiencia vivida.','A person speaks in the first person about how they experience it.','Professional outreach: it organises ideas and examples to make the topic easier to understand.','He talks about identity, understanding yourself better','what starts to make sense, and how the way she sees herself changes'];
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[]; page.on('pageerror',e=>errors.push(String(e)));
+            await page.goto(base+'/es/videos/',{waitUntil:'networkidle'});
+            const all=(await page.locator('body').innerText())+'\n'+await page.content();
+            for(const term of forbidden){ if(all.toLowerCase().includes(term.toLowerCase())) throw new Error('forbidden in production: '+term); }
+            for(const text of required){ if(!all.includes(text)) throw new Error('missing in production: '+text); }
+            const enBtn=page.getByRole('button',{name:/^EN$/}).first();
+            if(await enBtn.count()){
+              await enBtn.click(); await page.waitForTimeout(500);
+              const visible=await page.locator('body').innerText();
+              if(!visible.includes('How to read this video')) throw new Error('EN visible label not active');
+              for(const term of forbidden){ if(visible.toLowerCase().includes(term.toLowerCase())) throw new Error('forbidden visible EN production: '+term); }
+            }
+            if(errors.length) throw new Error('JS errors: '+errors.join(' | '));
+            await browser.close();
+            console.log('produccion-videos-tono-ok');
+          })().catch(e=>{console.error(e);process.exit(1);});
+          NODE
