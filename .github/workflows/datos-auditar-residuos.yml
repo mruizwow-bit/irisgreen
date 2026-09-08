@@ -1,0 +1,54 @@
+name: Datos · auditar residuos EN
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-auditar-residuos.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+      - name: Buscar residuos de campos visibles no traducidos
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const dataEs = JSON.parse(fs.readFileSync('es/datos/datos.json','utf8'));
+          const dataEn = JSON.parse(fs.readFileSync('en/data/data.json','utf8'));
+          const spanishish = /[áéíóúÁÉÍÓÚñÑ¿¡]|\b(estructura|demográfica|mundial|síntesis|científica|publicación|actualización|cada año|cada 2 años|fuente comprobada|decisión editorial|población|personas|niños|mujeres|varones|prevalencia|diagnósticos|trastorno|discapacidad|autistas|datos de|sin proceder|no procede)\b/i;
+          const fields = ['anioDatos','territorio','refTemporal','metodo','publicacion','revision','poblacion','poblacionOrigen'];
+          const issues=[];
+          for (let i=0;i<dataEn.paginas.length;i++) {
+            for (const f of fields) {
+              const v = dataEn.paginas[i][f];
+              if (typeof v === 'string' && v.trim() && spanishish.test(v)) issues.push({page:i, title:dataEn.paginas[i].title, slug:dataEn.paginas[i].slug_en, field:f, value:v});
+            }
+            (dataEn.paginas[i].cifras||[]).forEach((c,ci)=>{
+              ['cifra','pie'].forEach(f=>{ const v=c[f]; if(typeof v==='string' && v.trim() && spanishish.test(v)) issues.push({page:i,title:dataEn.paginas[i].title,slug:dataEn.paginas[i].slug_en,field:`cifras[${ci}].${f}`,value:v}); });
+            });
+          }
+          console.log(JSON.stringify(issues,null,2));
+          console.log('issues='+issues.length);
+          fs.rmSync('.github/workflows/datos-auditar-residuos.yml', {force:true});
+          if (issues.length) process.exit(2);
+          NODE
+      - name: Limpiar workflow si no hay residuos
+        if: success()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m "Retirar auditoría temporal de Datos" || true
+          git push origin HEAD:feat/en-datos-20260908
