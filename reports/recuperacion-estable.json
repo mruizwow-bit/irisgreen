@@ -21,23 +21,26 @@
       "title": "Conditions"
     }
   },
+  "language_journey": {
+    "en_then_es_lang": "es",
+    "header_text": "Iris Green\nInicio\nCondiciones\nSituaciones\nVida diaria\nVídeos\nInvestigación\nDatos\nAyudas\nLibros\nJugar\nTus intereses\nEl taller\nRincón tranquilo\nLectura\nES\nEN"
+  },
   "music": {
     "/": {
       "trigger": true,
-      "opened": false,
-      "player": false,
-      "audio_requests": 0
+      "opened": true,
+      "player": true,
+      "audio_requests": 1,
+      "atmosfera_requested": true
     },
     "/es/neurodiversidad/condiciones/": {
       "trigger": true,
-      "opened": false,
+      "opened": true,
       "player": true,
-      "audio_requests": 18
+      "audio_requests": 2,
+      "atmosfera_requested": true
     }
   },
-  "failures": [
-    "/: Música no abre",
-    "/es/neurodiversidad/condiciones/: Música no abre"
-  ],
+  "failures": [],
   "javascript_errors": []
 }
