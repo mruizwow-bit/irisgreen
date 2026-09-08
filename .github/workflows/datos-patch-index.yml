@@ -1,0 +1,50 @@
+name: Datos · ajustar portada EN
+
+on:
+  push:
+    branches: [feat/en-datos-20260908]
+    paths:
+      - .github/workflows/datos-patch-index.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/en-datos-20260908
+          fetch-depth: 0
+      - name: Insertar secciones de portada en EN
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+          const data = JSON.parse(fs.readFileSync('en/data/data.json','utf8'));
+          const sections = (data.cover.sections || []).map(sec => `<section class="sec"><h2>${esc(sec.h)}</h2>${(sec.p||[]).map(p => `<p>${esc(p)}</p>`).join('')}</section>`).join('');
+          if (!sections.includes('Areas included') || !sections.includes('How to read this section')) throw new Error('Faltan secciones traducidas en data.json');
+          const fp = 'en/data/index.html';
+          let html = fs.readFileSync(fp,'utf8');
+          html = html.replace(/<section class="sec"><h2>Areas included<\/h2>[\s\S]*?<\/section><section class="sec"><h2>How to read this section<\/h2>[\s\S]*?<\/section><section class="sec"><h2>Sources and maintenance<\/h2>[\s\S]*?<\/section>/, '');
+          const marker = '<p class="notice">The 49 pages in this section are mounted. All are in draft: the source is named and linked, and final verification is still pending.</p>';
+          if (!html.includes(marker)) throw new Error('No encuentro aviso de portada para insertar secciones');
+          html = html.replace(marker, marker + sections);
+          fs.writeFileSync(fp, html);
+          NODE
+          rm -f .github/workflows/datos-patch-index.yml
+      - name: Validar y commit
+        shell: bash
+        run: |
+          grep -q 'Areas included' en/data/index.html
+          grep -q 'How to read this section' en/data/index.html
+          grep -q 'Sources and maintenance' en/data/index.html
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --stat
+          git commit -m "Mostrar secciones de portada en Datos EN" || true
+          git push origin HEAD:feat/en-datos-20260908
