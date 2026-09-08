@@ -1,0 +1,70 @@
+name: Verificar preview entregable A
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths: ['.github/workflows/verificar-preview-entregable-A.yml']
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-ap
+          /tmp/ig-ap/bin/pip -q install playwright==1.55.0
+          /tmp/ig-ap/bin/python -m playwright install --with-deps chromium >/tmp/ig-ap-playwright.log 2>&1
+      - name: Probar preview real
+        run: |
+          /tmp/ig-ap/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json
+          base='https://deploy-preview-10--irisgreen-home.netlify.app'
+          routes=['/','/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/','/es/situaciones/','/en/situations/','/es/biblioteca/','/es/videos/','/es/investigacion/','/es/datos/','/es/tramites/directorio/','/es/tramites/','/es/libros/','/es/recursos/juegos/','/es/intereses/','/en/interests/','/es/taller/','/es/sitio-tranquilo/','/en/quiet-space/','/es/neurodiversidad/temas/autismo/','/es/cuestionarios/','/es/sobre-iris-green/','/es/vivir-fuera/','/es/metodologia/','/es/lectura-accesible/']
+          expected={'/es/situaciones/':{'ES','EN'},'/en/situations/':{'ES','EN'},'/es/neurodiversidad/temas/autismo/':{'ES','EN'},'/es/tramites/directorio/':{'ES','EN'},'/es/tramites/':{'ES','EN'}}
+          failures=[]; report=[]; js=[]
+          with sync_playwright() as p:
+            b=p.chromium.launch()
+            page=b.new_page(viewport={'width':1440,'height':900})
+            page.on('pageerror',lambda e: js.append(str(e)))
+            for route in routes:
+              page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(700)
+              labels=[]
+              for n in page.locator('header .langs a:visible, header .langs span:visible, header .ig-uh-langs button:visible').all():
+                t=(n.inner_text() or '').strip().upper()
+                if t in {'ES','EN','PT-BR'} and t not in labels: labels.append(t)
+              report.append({'url':route,'visible':labels,'lang':page.locator('html').get_attribute('lang') or ''})
+              if 'PT-BR' in labels: failures.append(route+': PT-BR visible')
+              if route in expected and set(labels)!=expected[route]: failures.append(route+f': visibles={labels}')
+
+            # navegación y aislamiento
+            page.goto(base+'/es/situaciones/',wait_until='domcontentloaded')
+            en=page.locator('header .langs a',has_text='EN')
+            if en.count():
+              en.click(); page.wait_for_load_state('domcontentloaded')
+              if not page.url.endswith('/en/situations/'): failures.append('ES->EN Situaciones falla')
+            else: failures.append('No hay EN en Situaciones ES')
+            page.goto(base+'/',wait_until='domcontentloaded')
+            page.evaluate("localStorage.setItem('ig_lang','en')")
+            page.goto(base+'/es/investigacion/',wait_until='domcontentloaded'); page.wait_for_timeout(400)
+            if not (page.locator('html').get_attribute('lang') or '').startswith('es'): failures.append('ig_lang contamina /es/investigacion/')
+
+            # controles comunes
+            page.goto(base+'/',wait_until='domcontentloaded')
+            read=page.locator('#a11yBtn, [data-ig-reading-trigger], .ig-uh-reading').first
+            if not read.count(): failures.append('Lectura no encontrada')
+            else:
+              read.click(); page.wait_for_timeout(200)
+            music=page.locator('#plBtn, .ig-uh-music, [data-ig-music]').first
+            if not music.count(): failures.append('Música no encontrada')
+            else:
+              music.click(); page.wait_for_timeout(400)
+              if page.locator('#ig-music-panel, #pl').count()==0: failures.append('Panel Música no aparece')
+            page.goto(base+'/es/recursos/juegos/cada-cerebro-su-camino/',wait_until='domcontentloaded'); page.wait_for_timeout(500)
+            if page.locator('main button, main [role=button]').count()==0: failures.append('Juego sin controles')
+            b.close()
+          print(json.dumps({'routes':report,'failures':failures,'javascript_errors':js[:10]},ensure_ascii=False,indent=2))
+          if js: failures.append('Errores JavaScript: '+' | '.join(js[:5]))
+          if failures: raise SystemExit('\n'.join(failures))
+          PY
