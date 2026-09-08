@@ -1,0 +1,222 @@
+name: Generar Vida diaria EN
+
+on:
+  push:
+    branches:
+      - feat/vida-diaria-en-20260908
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/vida-diaria-en-20260908
+          fetch-depth: 0
+      - name: Generar Vida diaria EN y limpiar PT-BR residual
+        run: |
+          python3 - <<'PY'
+          import base64, gzip, html, json, re, unicodedata
+          from copy import deepcopy
+          from pathlib import Path
+
+          ROOT = Path.cwd()
+          ES = ROOT / 'es/biblioteca/vida-diaria.json'
+          OUT = ROOT / 'en/everyday-life'
+          MAP_PARTS = sorted((ROOT / 'cola-traduccion').glob('vida-diaria-en.b64.part*'))
+          if len(MAP_PARTS) != 8:
+              raise SystemExit(f'Faltan partes de traducción: {len(MAP_PARTS)}')
+          mapping = json.loads(gzip.decompress(base64.b64decode(''.join(p.read_text().strip() for p in MAP_PARTS))).decode('utf-8'))
+          if len(mapping) != 700:
+              raise SystemExit(f'Mapa de traducción incompleto: {len(mapping)}')
+
+          data = json.loads(ES.read_text(encoding='utf-8'))
+          used = []
+          def tid(n): return f'VD-{n:04d}'
+          def tr(n):
+              k = tid(n)
+              if k not in mapping:
+                  raise KeyError(k)
+              used.append(k)
+              return mapping[k]
+          def esc(x): return html.escape(str(x), quote=True)
+          def text_only(x): return re.sub(r'<[^>]+>', '', str(x))
+          def short(x, n=170):
+              s = ' '.join(str(x).split())
+              return s if len(s) <= n else s[:n-1].rstrip() + '…'
+          def slugify(s):
+              s = unicodedata.normalize('NFKD', str(s)).encode('ascii', 'ignore').decode().lower()
+              s = re.sub(r'[^a-z0-9]+', '-', s).strip('-')
+              return s or 'entry'
+
+          en = deepcopy(data)
+          en['aviso'] = tr(1)
+          en['criterio'] = tr(2)
+          cat_map = {}
+          for i, old in enumerate(data.get('categorias', [])):
+              new = tr(3+i)
+              en['categorias'][i] = new
+              cat_map[old] = new
+          concept_map = {}
+          for i, oldc in enumerate(data.get('conceptos', [])):
+              newc = tr(9+i)
+              en['conceptos'][i]['concepto'] = newc
+              concept_map[oldc.get('concepto', '')] = newc
+
+          cur = 194
+          title_map, slug_map = {}, {}
+          single_keys = {'notaFuente', 'avisoFuente', 'plazo', 'plazoCerrado'}
+          for i, f in enumerate(data.get('fichas', [])):
+              b = en['fichas'][i]
+              b['cat'] = cat_map.get(f.get('cat'), f.get('cat'))
+              title_en = tr(cur); cur += 1
+              b['title'] = title_en
+              title_map[f.get('title', '')] = title_en
+              slug_map[f.get('title', '')] = slugify(title_en)
+              if 'lede' in f:
+                  b['lede'] = tr(cur); cur += 1
+              for si, sec in enumerate(f.get('sections', [])):
+                  if 'h' in sec:
+                      b['sections'][si]['h'] = tr(cur); cur += 1
+                  for pi, _ in enumerate(sec.get('p', [])):
+                      b['sections'][si]['p'][pi] = tr(cur); cur += 1
+              for sj, src in enumerate(f.get('sources', [])):
+                  if 'label' in src:
+                      b['sources'][sj]['label'] = tr(cur); cur += 1
+              for key in f.keys():
+                  if key in single_keys and isinstance(f[key], str):
+                      b[key] = tr(cur); cur += 1
+              if 'concepts' in f:
+                  b['concepts'] = [concept_map.get(x, x) for x in f.get('concepts', [])]
+          for ci, c in enumerate(data.get('conceptos', [])):
+              if 'fichas' in c:
+                  en['conceptos'][ci]['fichas'] = [title_map.get(x, x) for x in c.get('fichas', [])]
+          if cur != 677:
+              raise SystemExit(f'Secuencia inesperada en Vida diaria: siguiente id {cur}; esperado 677')
+
+          OUT.mkdir(parents=True, exist_ok=True)
+          (OUT / 'everyday-life.json').write_text(json.dumps(en, ensure_ascii=False, indent=2), encoding='utf-8')
+
+          NAV_EN = '''<header class="hd"><a class="brand" href="/"><img alt="" height="28" onerror="this.remove()" src="/img/v40-brand-symbol.webp" width="28"/><span>Iris Green</span></a><button aria-controls="nav" aria-expanded="false" class="ico menu" id="mBtn"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span>Menu</span></button><button type="button" class="ig-menu-button" aria-label="Open menu" aria-controls="ig-main-nav" aria-expanded="false">Menu</button><nav aria-label="Explore" class="nav" id="ig-main-nav"><a href="/">Home</a><a href="/en/neurodiversity/conditions/">Conditions</a><a href="/en/situations/">Situations</a><a aria-current="page" href="/en/everyday-life/">Everyday life</a><a href="/es/videos/">Videos</a><a href="/es/investigacion/">Research</a><a href="/es/datos/">Data</a><a href="/es/tramites/directorio/">Support</a><a href="/es/libros/">Books</a><a href="/es/recursos/juegos/">Play</a><span aria-hidden="true" class="sep"></span><a class="calma ig-calma" href="/en/interests/">Your interests</a><a class="calma ig-calma" href="/es/taller/">The workshop</a><a class="calma ig-calma" href="/en/quiet-space/">Quiet space</a></nav><div class="tools"><button aria-controls="a11y" aria-expanded="false" class="ico" id="a11yBtn" aria-label="Accessible reading"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 8.5h16M12 10.5v11M12 15h-4l-2 6M12 15h4l2 6"></path></svg><span>Reading</span></button><button aria-controls="pl" aria-expanded="false" class="ico" id="plBtn" aria-label="Music"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="17" cy="16" r="3"></circle></svg><span>Music</span></button></div>'''
+          PANELS = '''<div class="panel" hidden id="pl"></div><div class="panel a11yp" hidden id="a11y"><h2>Accessible reading</h2><div class="ctrls"><div class="grp"><span>Text size</span><button aria-label="Text size −" data-a="fs-">A−</button><button aria-label="Text size +" data-a="fs+">A+</button></div><button data-a="ls">Wider letter spacing</button><button data-a="big">Bigger buttons</button><button data-a="hc">More contrast</button><button data-a="guide">Reading guide</button><button data-a="tts">Read aloud</button><button data-a="rm">Reduce motion</button><button class="reset" data-a="reset">Reset</button></div></div>'''
+          FOOT = '''<footer class="ft"><p><strong>Iris Green</strong> · Knowledge base on neurodiversity</p><nav aria-label="Explore" class="ftnav"><a href="/es/sobre-iris-green/">About Iris Green</a><a href="/es/sobre-iris-green/#criterios-editoriales">Methodology</a><a href="/es/lectura-accesible/">Accessibility</a><a href="/en/privacy/">Privacy</a><a href="mailto:informacion@irisgreen.eu?subject=Error%20on%20an%20Iris%20Green%20page">Report an error</a></nav></footer><div hidden id="rguide"></div><script src="/assets/lectura-accesible.js"></script><script defer src="/assets/interfaz-comun.js"></script><script defer src="/assets/musica.js"></script>'''
+          CSS = '''<style>.filter-tools{margin:1.25rem 0 1.5rem;display:grid;gap:.8rem}.searchrow{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.searchrow input{min-height:46px;border:1px solid var(--line,#dfe5ee);border-radius:999px;padding:.7rem 1rem;min-width:min(100%,380px);font:inherit;background:#fff;color:inherit}.catbuttons{display:flex;gap:.5rem;flex-wrap:wrap}.catbuttons button{border:1px solid var(--line,#dfe5ee);background:#fff;color:inherit;border-radius:999px;padding:.55rem .9rem;font:inherit;cursor:pointer;min-height:42px}.catbuttons button[aria-pressed="true"]{background:#1f5f8b;color:#fff;border-color:#1f5f8b}.group-title{margin-top:2rem}.card .meta{font-size:.88rem;color:#667085}.concepts-box{margin-top:2.5rem;padding:1.2rem;border:1px solid var(--line,#e1e6ee);border-radius:20px;background:rgba(255,255,255,.72)}.concept-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:.55rem 1rem;max-height:520px;overflow:auto;padding:.25rem}.concept-row{padding:.55rem .65rem;border-radius:10px;background:rgba(23,57,92,.04)}.concept-row strong{display:block;font-size:.96rem;margin-bottom:.2rem}.concept-row .routes{font-size:.88rem;line-height:1.45}.concept-row .routes a{display:inline}.deadline{margin:1rem 0;padding:1rem;border-radius:14px;background:rgba(168,51,111,.08);border:1px solid rgba(168,51,111,.28)}.source-note{margin:.8rem 0;padding:.8rem 1rem;border-radius:12px;background:rgba(212,151,63,.13);color:#6e491e}.related{display:flex;flex-wrap:wrap;gap:.45rem;margin:.5rem 0 0}.related a{display:inline-block;border-radius:999px;padding:.35rem .65rem;background:rgba(90,73,168,.09);text-decoration:none}@media(max-width:700px){.concept-list{grid-template-columns:1fr}.searchrow input{width:100%}}</style>'''
+          JS = '''<script>(()=>{const q=document.getElementById('vd-search'),count=document.getElementById('vd-count'),cards=[...document.querySelectorAll('.vd-card')],concepts=[...document.querySelectorAll('.vd-concept')],buttons=[...document.querySelectorAll('.catbuttons button')];let cat='';function run(){const t=(q?.value||'').toLowerCase().trim();let n=0;cards.forEach(c=>{const okCat=!cat||c.dataset.cat===cat,okText=!t||(c.dataset.search||'').includes(t);c.hidden=!(okCat&&okText);if(!c.hidden)n++});concepts.forEach(c=>{c.hidden=!!t&&!(c.dataset.search||'').includes(t)});if(count)count.textContent=n+' '+(n===1?'entry':'entries')}buttons.forEach(b=>b.addEventListener('click',()=>{cat=b.dataset.cat||'';buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));run()}));q?.addEventListener('input',run);run();})();</script>'''
+
+          def head(title, desc, canonical, es_url):
+              return f'''<script src="/assets/preferencias-lectura.js"></script><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>{esc(title)}</title><meta name="description" content="{esc(short(desc,160))}"/><meta name="robots" content="noindex,follow"/><meta name="theme-color" content="#f6f8fb"/><link rel="canonical" href="https://irisgreen.eu{canonical}"/><link rel="alternate" hreflang="es" href="https://irisgreen.eu{es_url}"/><link rel="alternate" hreflang="en" href="https://irisgreen.eu{canonical}"/><link rel="alternate" hreflang="x-default" href="https://irisgreen.eu{es_url}"/><meta name="author" content="Iris Green"/><meta property="og:type" content="website"/><meta property="og:locale" content="en_GB"/><meta property="og:site_name" content="Iris Green"/><meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(short(desc,160))}"/><meta property="og:url" content="https://irisgreen.eu{canonical}"/><meta property="og:image" content="https://irisgreen.eu/img/og-condiciones.png"/><meta name="twitter:card" content="summary_large_image"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link crossorigin href="https://fonts.gstatic.com"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="/assets/site-v23.css" rel="stylesheet"/><link rel="stylesheet" href="/assets/ajustes-interfaz.css"/><link rel="stylesheet" href="/assets/controles-comunes.css"/><link rel="stylesheet" href="/assets/preferencias-lectura.css">'''
+          def page_html(title, desc, canonical, es_url, body):
+              langs = f'<nav aria-label="Language" class="langs"><a class="lang" href="{esc(es_url)}" lang="es">ES</a><span aria-current="true" class="lang on">EN</span></nav>'
+              return f'<!DOCTYPE html>\n<html lang="en"><head>{head(title,desc,canonical,es_url)}{CSS}</head><body class="conditions-collection"><a class="skip" href="#main">Skip to content</a>{NAV_EN}{langs}</header>{PANELS}<main id="main">{body}</main>{FOOT}{JS}</body></html>'
+
+          cards_by_cat = []
+          for cat in en['categorias']:
+              cards = []
+              for f in en['fichas']:
+                  if f.get('cat') != cat: continue
+                  slug = slugify(f['title'])
+                  search = ' '.join([f.get('title',''), f.get('lede',''), f.get('cat','')] + f.get('concepts', [])).lower()
+                  cards.append(f'<a class="card vd-card" data-cat="{esc(cat)}" data-search="{esc(search)}" href="/en/everyday-life/{slug}/"><span class="chip">{esc(cat)}</span><strong>{esc(f["title"])}</strong><span>{esc(short(f.get("lede","")))}</span><span class="meta">{len(f.get("sources",[]))} source{"" if len(f.get("sources",[]))==1 else "s"} · DRAFT</span></a>')
+              if cards:
+                  cards_by_cat.append(f'<section class="vd-group" data-group="{esc(cat)}"><h2 class="group-title">{esc(cat)}</h2><div class="cards">'+''.join(cards)+'</div></section>')
+          concepts = []
+          for c in en.get('conceptos', []):
+              links=[]
+              for t in c.get('fichas', []):
+                  links.append(f'<a href="/en/everyday-life/{slugify(t)}/">{esc(t)}</a>')
+              search = ' '.join([c.get('concepto','')] + c.get('fichas', [])).lower()
+              concepts.append(f'<div class="concept-row vd-concept" id="concept-{slugify(c.get("concepto",""))}" data-search="{esc(search)}"><strong>{esc(c.get("n",""))}. {esc(c.get("concepto",""))}</strong><div class="routes">{" · ".join(links)}</div></div>')
+          body = f'''<p class="crumb"><a href="/">{esc(mapping['VD-0677'])}</a></p><h1>{esc(mapping['VD-0678'])}</h1><p class="lede">{esc(mapping['VD-0701'])}</p><p class="notice">{esc(en['aviso'])}</p><details class="sec"><summary><strong>{esc(mapping['VD-0679'])}</strong></summary><p>{esc(en['criterio'])}</p></details><div class="filter-tools"><div class="searchrow"><label for="vd-search"><strong>{esc(mapping['VD-0702'])}</strong></label><input id="vd-search" type="search" placeholder="{esc(mapping['VD-0703'])}" autocomplete="off"/><span id="vd-count">48 entries</span></div><div class="catbuttons" aria-label="{esc(mapping['VD-0704'])}"><button type="button" data-cat="" aria-pressed="true">{esc(mapping['VD-0681'])}</button>{''.join(f'<button type="button" data-cat="{esc(c)}" aria-pressed="false">{esc(c)}</button>' for c in en['categorias'])}</div></div>{''.join(cards_by_cat)}<section class="concepts-box"><h2>{esc(mapping['VD-0685'])}</h2><p>{esc(mapping['VD-0686'])}</p><div class="concept-list">{''.join(concepts)}</div></section>'''
+          (OUT/'index.html').write_text(page_html('Everyday life · Iris Green', mapping['VD-0701'], '/en/everyday-life/', '/es/biblioteca/', body), encoding='utf-8')
+
+          def render_ficha(f, es_path):
+              slug = slugify(f['title'])
+              sec = ''.join('<section class="sec"><h2>'+esc(s.get('h',''))+'</h2>'+''.join('<p>'+esc(p)+'</p>' for p in s.get('p',[]))+'</section>' for s in f.get('sections',[]))
+              if f.get('plazo'):
+                  sec += '<div class="deadline">'+esc(f['plazo'])+'</div>'
+              if f.get('plazoCerrado'):
+                  sec += '<div class="deadline">'+esc(f['plazoCerrado'])+'</div>'
+              if f.get('notaFuente'):
+                  sec += '<p class="source-note">'+esc(f['notaFuente'])+'</p>'
+              if f.get('avisoFuente'):
+                  sec += '<p class="source-note">'+esc(f['avisoFuente'])+'</p>'
+              sources = ''.join(f'<li><a href="{esc(x.get("url",""))}" rel="noopener" target="_blank">{esc(x.get("label",""))}</a></li>' for x in f.get('sources',[]))
+              rel = ''.join(f'<a href="/en/everyday-life/#concept-{slugify(c)}">{esc(c)}</a>' for c in f.get('concepts',[]))
+              body = f'''<article class="ficha"><p class="crumb"><a href="/">{esc(mapping['VD-0677'])}</a> › <a href="/en/everyday-life/">Everyday life</a></p><h1>{esc(f['title'])}</h1><p class="chips"><span class="chip">{esc(f.get('cat',''))}</span><span class="chip lil">DRAFT</span></p><p class="notice">{esc(mapping['VD-0691'])}</p><p class="lede">{esc(f.get('lede',''))}</p>{sec}<section class="sec"><h2>{esc(mapping['VD-0692'])}</h2><ul>{sources}</ul></section><section class="sec"><h2>{esc(mapping['VD-0693'])}</h2><div class="related">{rel}</div></section><section class="sec consult"><h2>{esc(mapping['VD-0694'])}</h2><ul><li><strong>{esc(mapping['VD-0696'])}</strong> {esc(f.get('cat',''))}</li><li><strong>{esc(mapping['VD-0698'])}</strong> DRAFT</li><li><strong>{esc(mapping['VD-0700'])}</strong> Iris Green</li></ul></section></article>'''
+              d = OUT / slug; d.mkdir(parents=True, exist_ok=True)
+              (d/'index.html').write_text(page_html(f'{f["title"]} · Everyday life', f.get('lede',''), f'/en/everyday-life/{slug}/', es_path, body), encoding='utf-8')
+          for esf, enf in zip(data['fichas'], en['fichas']):
+              es_page = '/' + next((p.relative_to(ROOT).parent.as_posix() for p in (ROOT/'es/biblioteca').glob('*/index.html') if html.unescape(text_only(re.search(r'<h1>(.*?)</h1>', p.read_text(encoding='utf-8'), re.S).group(1))).strip() == esf['title']), f'es/biblioteca/{slugify(esf["title"])}') + '/'
+              render_ficha(enf, es_page)
+
+          def add_hreflang_and_selector(path, en_url):
+              s = path.read_text(encoding='utf-8')
+              es_url = '/' + path.relative_to(ROOT).parent.as_posix() + '/'
+              if 'hreflang="en"' not in s:
+                  alts = f'\n<link rel="alternate" hreflang="es" href="https://irisgreen.eu{es_url}"/>\n<link rel="alternate" hreflang="en" href="https://irisgreen.eu{en_url}"/>\n<link rel="alternate" hreflang="x-default" href="https://irisgreen.eu{es_url}"/>\n'
+                  s = s.replace('</head>', alts + '</head>', 1)
+              if '/en/everyday-life/' not in s:
+                  s = re.sub(r'<nav aria-label="Idioma" class="langs">\s*<span aria-current="true" class="lang on">ES</span>\s*</nav>', f'<nav aria-label="Idioma" class="langs"><span aria-current="true" class="lang on">ES</span><a class="lang" href="{en_url}" lang="en">EN</a></nav>', s, count=1)
+              path.write_text(s, encoding='utf-8')
+          add_hreflang_and_selector(ROOT/'es/biblioteca/index.html','/en/everyday-life/')
+          title_to_enurl = {esf['title']: '/en/everyday-life/'+slugify(enf['title'])+'/' for esf,enf in zip(data['fichas'], en['fichas'])}
+          changed_es = 1
+          for p in sorted((ROOT/'es/biblioteca').glob('*/index.html')):
+              s = p.read_text(encoding='utf-8')
+              m = re.search(r'<h1>(.*?)</h1>', s, re.S)
+              if not m: continue
+              title = html.unescape(text_only(m.group(1))).strip()
+              if title in title_to_enurl:
+                  add_hreflang_and_selector(p, title_to_enurl[title]); changed_es += 1
+          if changed_es != 49:
+              raise SystemExit(f'No cuadran páginas ES actualizadas: {changed_es}')
+
+          menu_count = 0
+          for p in (ROOT/'en').rglob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              ns = s.replace('href="/es/biblioteca/">Everyday life</a>', 'href="/en/everyday-life/">Everyday life</a>')
+              if ns != s:
+                  p.write_text(ns, encoding='utf-8'); menu_count += 1
+
+          pt_count = 0
+          pat = re.compile(r'\s*<a class="lang" href="[^"]*/pt-br/situacoes/[^"]*" lang="pt-BR">PT-BR</a>')
+          for base in [ROOT/'es/situaciones', ROOT/'en/situations']:
+              for p in base.rglob('index.html'):
+                  s = p.read_text(encoding='utf-8')
+                  ns, n = pat.subn('', s)
+                  if n:
+                      p.write_text(ns, encoding='utf-8')
+                      pt_count += n
+          if pt_count != 374:
+              raise SystemExit(f'PT-BR residual eliminado: {pt_count}; esperado 374')
+
+          import subprocess, sys
+          script = ROOT / 'scripts/enrich_search_english.py'
+          if script.exists():
+              subprocess.run([sys.executable, str(script)], check=True)
+
+          for p in MAP_PARTS:
+              p.unlink()
+          wf = ROOT/'.github/workflows/generar-vida-diaria-en.yml'
+          if wf.exists():
+              wf.unlink()
+
+          n_html = len(list((ROOT/'en/everyday-life').rglob('index.html')))
+          if n_html != 49:
+              raise SystemExit(f'HTML EN generados: {n_html}; esperado 49')
+          if any('lang="pt-BR"' in p.read_text(encoding='utf-8') for p in list((ROOT/'es/situaciones').rglob('index.html'))+list((ROOT/'en/situations').rglob('index.html'))):
+              raise SystemExit('Sigue habiendo lang="pt-BR" en Situaciones')
+          print(json.dumps({'vida_en_html': n_html, 'es_biblioteca_actualizadas': changed_es, 'ptbr_situaciones_quitado': pt_count, 'menu_en_actualizado': menu_count, 'traducciones': len(mapping)}, ensure_ascii=False))
+          PY
+      - name: Commit generado
+        run: |
+          git config user.name "mruizwow-bit"
+          git config user.email "mruiz.wow@gmail.com"
+          git status --short
+          git add -A
+          git commit -m "Crear Vida diaria en inglés y limpiar PT-BR residual" || exit 0
+          git push origin feat/vida-diaria-en-20260908
