@@ -1,0 +1,91 @@
+name: Probar preview Datos EN 13
+
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/probar-preview-datos-13.yml
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+      - name: Probar Deploy Preview
+        env:
+          BASE: https://deploy-preview-13--irisgreen-home.netlify.app
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const expected = [
+            ['/es/datos/', 'es'],
+            ['/en/data/', 'en'],
+            ['/es/datos/autismo/', 'es'],
+            ['/en/data/autism/', 'en'],
+            ['/en/data/children-with-disabilities/', 'en'],
+            ['/en/data/autism-pay-gap/', 'en'],
+            ['/en/everyday-life/', 'en'],
+            ['/en/situations/', 'en']
+          ];
+          (async()=>{
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage();
+            const errors = [];
+            page.on('pageerror', e => errors.push(String(e)));
+            page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+            const rows = [];
+            for (const [url, lang] of expected) {
+              const res = await page.goto(process.env.BASE + url, { waitUntil: 'networkidle' });
+              if (!res || res.status() >= 400) throw new Error(`${url} status ${res && res.status()}`);
+              const htmlLang = await page.evaluate(() => document.documentElement.lang);
+              if (!htmlLang.startsWith(lang)) throw new Error(`${url} lang=${htmlLang}, esperado ${lang}`);
+              const labels = await page.locator('nav.langs .lang').evaluateAll(els => els.map(e => e.textContent.trim()));
+              if (!labels.includes('ES') || !labels.includes('EN')) throw new Error(`${url} selector sin ES/EN: ${labels.join(' ')}`);
+              if (labels.includes('PT-BR')) throw new Error(`${url} muestra PT-BR`);
+              const content = await page.content();
+              if (content.includes('lang="pt-BR"') || content.includes('PT-BR')) throw new Error(`${url} contiene PT-BR en HTML`);
+              const active = await page.locator('nav.langs [aria-current="true"], nav.langs .on').evaluateAll(els => els.map(e => e.textContent.trim()).join(' '));
+              rows.push(`${url} | labels=${labels.join(' ')} | active=${active} | lang=${htmlLang}`);
+            }
+
+            await page.goto(process.env.BASE + '/en/data/', { waitUntil: 'networkidle' });
+            const mainText = await page.locator('main').innerText();
+            for (const s of ['Neurodiversity and disability in figures','Areas included','How to read this section']) {
+              if (!mainText.includes(s)) throw new Error('/en/data/ no contiene '+s);
+            }
+            for (const s of ['Ámbitos incluidos','Cómo leer esta sección','Página en borrador']) {
+              if (mainText.includes(s)) throw new Error('/en/data/ conserva español: '+s);
+            }
+
+            await page.goto(process.env.BASE + '/en/data/autism/', { waitUntil: 'networkidle' });
+            const dataText = await page.locator('main').innerText();
+            for (const s of ['Autism','The figures','What it measures','How to cite it','What to avoid','61.8 million','1 in 127 people']) {
+              if (!dataText.includes(s)) throw new Error('/en/data/autism/ no contiene '+s);
+            }
+            for (const s of ['Qué mide','Cómo citarla','Qué evitar','millones','personas autistas estimadas']) {
+              if (dataText.includes(s)) throw new Error('/en/data/autism/ conserva español: '+s);
+            }
+            const esHref = await page.locator('nav.langs a[lang="es"]').getAttribute('href');
+            if (esHref !== '/es/datos/autismo/') throw new Error('EN autism -> ES incorrecto: '+esHref);
+
+            await page.goto(process.env.BASE + '/es/datos/autismo/', { waitUntil: 'networkidle' });
+            const enHref = await page.locator('nav.langs a[lang="en"]').getAttribute('href');
+            if (enHref !== '/en/data/autism/') throw new Error('ES autismo -> EN incorrecto: '+enHref);
+
+            await page.goto(process.env.BASE + '/en/data/', { waitUntil: 'networkidle' });
+            await page.click('#a11yBtn');
+            if (!await page.locator('#a11y:not([hidden])').count()) throw new Error('Lectura no abre en preview');
+            await page.click('#plBtn');
+            await page.waitForSelector('#ig-music-panel:not([hidden])', { timeout: 5000 });
+
+            if (errors.length) throw new Error('Errores JS/console: '+errors.join(' | '));
+            console.log(rows.join('\n'));
+            console.log('preview-browser-ok');
+            await browser.close();
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
