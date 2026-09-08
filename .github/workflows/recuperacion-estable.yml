@@ -2,6 +2,10 @@ name: Recuperación estable · idioma y música
 on:
   push:
     branches: ['recuperacion-estable-20260908']
+    paths:
+      - 'assets/interfaz-comun.js'
+      - 'assets/musica.js'
+      - '.github/workflows/recuperacion-estable.yml'
   pull_request:
     branches: ['main']
     paths:
@@ -9,13 +13,15 @@ on:
       - 'assets/musica.js'
       - '.github/workflows/recuperacion-estable.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   comprobar:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
       - name: Preparar Chromium y web local
         run: |
           python3 -m venv /tmp/ig-recovery
@@ -26,10 +32,12 @@ jobs:
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/ig-http.log 2>&1 &
           echo $! >/tmp/ig-http.pid
       - name: Probar idioma, PT y Música
+        id: smoke
+        continue-on-error: true
         run: |
           /tmp/ig-recovery/bin/python - <<'PY'
           from playwright.sync_api import sync_playwright
-          import json, re, time
+          import json, re
 
           base='http://127.0.0.1:8000'
           report={'pages':{},'music':{},'failures':[]}
@@ -89,9 +97,28 @@ jobs:
           if report['failures']:
               raise SystemExit('\n'.join(report['failures']))
           PY
+      - name: Guardar informe en la rama
+        if: always()
+        run: |
+          mkdir -p reports
+          cp /tmp/recuperacion.json reports/recuperacion-estable.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/recuperacion-estable.json
+          git diff --cached --quiet || git commit -m 'Guardar resultado de recuperación estable'
+          git push origin HEAD:recuperacion-estable-20260908
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: recuperacion-estable-resultados
           path: /tmp/recuperacion.json
           retention-days: 7
+      - name: Exigir que las comprobaciones críticas pasen
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open('/tmp/recuperacion.json',encoding='utf-8'))
+          if r.get('failures'):
+              raise SystemExit('\n'.join(r['failures']))
+          PY
