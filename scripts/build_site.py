@@ -31,6 +31,8 @@ def build():
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
+    # Publish only the homepage and instructions-entry presentation approved by the author.
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
