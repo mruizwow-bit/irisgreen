@@ -1,0 +1,121 @@
+name: Verificar reparacion Ayudas EN
+
+on:
+  push:
+    branches: [reparacion/ayudas-en-json-20260909]
+    paths:
+      - .github/workflows/verificar-ayudas-en-json.yml
+      - scripts/apply_pending_support_english.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verificar-ayudas-en-json-20260909
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+      - name: Recuperar el JSON aprobado y comprobar sus bytes
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin bfe7d642bf3e442e409ed7cb79352f766eb9d0fd
+          python3 - <<'PY'
+          import base64, bz2, hashlib, json, subprocess
+          from pathlib import Path
+          ref = 'bfe7d642bf3e442e409ed7cb79352f766eb9d0fd'
+          fixes = {
+              5: ('199d739556b6baa6897d89515924acd83c3a4db5593281729af2a1665d34a744', '935eef9a3cb91d6b024811b65c295cc236a59b48baff2aca5f77921a83150ef9', [(1712, 1714, b'qq'), (3654, 3658, b'oqKi')]),
+              10: ('b5e9f012f7aaeebe95bc3f89c1b8262ade871cdf1097231d5ca1263e060bf642', '53aabf9974afaedc25bc0a729cf0e459bbe886144f9c604db054248825f35496', [(2992, 2993, b'X')]),
+          }
+          parts = []
+          for i in range(1, 22):
+              raw = subprocess.check_output(['git', 'show', f'{ref}:.rescue-data/transfer-{i:02d}.txt'])
+              if i in fixes:
+                  before, after, edits = fixes[i]
+                  assert hashlib.sha256(raw).hexdigest() == before, f'Unexpected transfer part {i}'
+                  for start, end, old in reversed(edits):
+                      assert raw[start:end] == old
+                      raw = raw[:start] + raw[end:]
+                  assert hashlib.sha256(raw).hexdigest() == after, f'Incorrect transfer repair {i}'
+              parts.append(raw)
+          encoded = b''.join(parts)
+          assert len(encoded) == 163116
+          assert hashlib.sha256(encoded).hexdigest() == '0e73f6627127ed758ee03c1caf8e7997da190fd79d8432239d0183bbaf296bfb'
+          raw = bz2.decompress(base64.b64decode(encoded, validate=True))
+          assert hashlib.sha256(raw).hexdigest() == 'c91272ad8c0ae76903b7de1b613c86d4adf9ffe0fec14669aa451497b7034dc9'
+          patch = json.loads(raw)
+          patch['m']['protected'] = ['id', 'name', 'terr', 'region', 'cat', 'country', 'nivel', 'ambito', 'pais', 'org', 'fuente', 'que', 'cuantia', 'quien', 'docs', 'obs', 'tags']
+          patch['m']['source_sha256'] = '6ff8c493d951df0fe33aae9ed5c03d0606b3eab663d4b6855efdbc46f28395c8'
+          final = (json.dumps(patch, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+          assert len(final) == 1413421
+          assert hashlib.sha256(final).hexdigest() == '86179f5a78789bf6d9a803ccccef861b5c014facadeb2c2e03adc4b08ffc2252'
+          target = Path('scripts/data/ayudas-support-pendientes-en.json')
+          assert not target.exists(), 'Refuse to overwrite another repair'
+          target.write_bytes(final)
+          script = Path('scripts/apply_pending_support_english.py').read_bytes()
+          assert hashlib.sha256(script).hexdigest() == 'd70439dc09a4dc6f422a0b33a2de7b29fb29cbbe0ac89e34612fb56dfe6075db'
+          print('JSON and script match the approved correction ZIP byte for byte.')
+          Path('/tmp/ayudas-before.json').write_bytes(Path('es/tramites/directorio/tramites-datos.json').read_bytes())
+          PY
+      - name: Ejecutar la construccion completa con imagenes y audios
+        run: python3 scripts/build_site.py
+      - name: Verificar originales, traducciones y segunda ejecucion
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, subprocess, sys
+          from pathlib import Path
+          before = json.loads(Path('/tmp/ayudas-before.json').read_bytes())
+          after = json.loads(Path('es/tramites/directorio/tramites-datos.json').read_bytes())
+          published = json.loads(Path('dist/es/tramites/directorio/tramites-datos.json').read_bytes())
+          patch = json.loads(Path('scripts/data/ayudas-support-pendientes-en.json').read_bytes())
+          def originals(data):
+              return {g: [{k: v for k, v in row.items() if not k.endswith('_en')} for row in rows] if isinstance(rows, list) else rows for g, rows in data.items()}
+          assert originals(before) == originals(after) == originals(published), 'Original fields changed'
+          fields = ('que', 'cuantia', 'quien', 'docs', 'obs', 'tags')
+          counts = {'es': 258, 'uk': 234, 'br': 148, 'us': 362, 'mundo': 1423}
+          for group, count in counts.items():
+              assert len(published[group]) == count
+              for row in published[group]:
+                  assert all(isinstance(row.get(k + '_en'), str) and row[k + '_en'].strip() for k in fields)
+          for group, additions in patch['g'].items():
+              for row, item in zip(published[group], additions):
+                  assert [row['id'], row['cat_en']] + [row[k + '_en'] for k in fields] == item
+          checked = [Path('es/tramites/directorio/tramites-datos.json'), Path('es/tramites/directorio/index.html')]
+          first = [hashlib.sha256(p.read_bytes()).hexdigest() for p in checked]
+          subprocess.run([sys.executable, 'scripts/apply_pending_support_english.py'], check=True)
+          assert first == [hashlib.sha256(p.read_bytes()).hexdigest() for p in checked], 'Repeat execution changed output'
+          asset_counts = {}
+          for name in ('audio', 'img', 'assets'):
+              source = [p for p in Path(name).rglob('*') if p.is_file() and not p.name.endswith(('.py', '.md', '.dc.html')) and '__pycache__' not in p.parts]
+              assert source, f'Missing source assets: {name}'
+              assert all((Path('dist') / p).is_file() for p in source), f'Missing published assets: {name}'
+              asset_counts[name] = len(source)
+          result = {'full_build_passed': True, 'original_fields_preserved': True, 'records': 2425, 'english_fields': 14550, 'international_english_fields_exact': 13002, 'repeat_execution_unchanged': True, 'source_and_published_assets': asset_counts, 'json_git_blob': 'abac24af68b6d7deaf64500ba7106353b9f16207', 'script_git_blob': '06ef2b693e3af0ebbf79224da8b48a0e6707cec1'}
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          Path('/tmp/ayudas-verificacion.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+          PY
+      - name: Guardar unicamente el JSON validado en la rama de reparacion
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- scripts/data/ayudas-support-pendientes-en.json
+          test "$(git diff --cached --name-only)" = 'scripts/data/ayudas-support-pendientes-en.json'
+          test "$(git rev-parse :scripts/data/ayudas-support-pendientes-en.json)" = 'abac24af68b6d7deaf64500ba7106353b9f16207'
+          git commit -m 'Recuperar JSON EN integro y verificar construccion [skip netlify]'
+          git push origin HEAD:reparacion/ayudas-en-json-20260909
+          git rev-parse HEAD
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ayudas-en-verificacion-completa
+          path: /tmp/ayudas-verificacion.json
+          if-no-files-found: error
+          retention-days: 7

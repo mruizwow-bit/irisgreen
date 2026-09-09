@@ -7,8 +7,6 @@ en la interfaz visible, conservando el valor estructural español del filtro.
 El paquete aprobado contiene 2.167 fichas y 13.002 campos EN completos.
 """
 from __future__ import annotations
-import base64
-import bz2
 import hashlib
 import json
 from pathlib import Path
@@ -16,16 +14,17 @@ from pathlib import Path
 ROOT = Path.cwd()
 DATA = ROOT / 'es/tramites/directorio/tramites-datos.json'
 PAGE = ROOT / 'es/tramites/directorio/index.html'
-PARTS = [ROOT / 'scripts/data' / f'ayudas-support-pendientes-en-{i:02d}.b64' for i in range(1, 11)]
-EXPECTED_PATCH_SHA256 = '9f4890df7635ac464833362122bb81781fd335a6e5e877f59c70b47599599a35'
-EXPECTED_SOURCE_SHA256 = '1fc6aa371850c95f942a1da8772d469a1f327b097d425fc0e35efdb1f715a64d'
+PATCH_FILE = ROOT / 'scripts/data/ayudas-support-pendientes-en.json'
+EXPECTED_PATCH_SHA256 = '86179f5a78789bf6d9a803ccccef861b5c014facadeb2c2e03adc4b08ffc2252'
+EXPECTED_SOURCE_SHA256 = '6ff8c493d951df0fe33aae9ed5c03d0606b3eab663d4b6855efdbc46f28395c8'
 GROUP_COUNTS = {'uk': 234, 'br': 148, 'us': 362, 'mundo': 1423}
 FIELDS = ('que', 'cuantia', 'quien', 'docs', 'obs', 'tags')
+PROTECTED_FIELDS = ('id', 'name', 'terr', 'region', 'cat', 'country', 'nivel', 'ambito', 'pais', 'org', 'fuente', 'que', 'cuantia', 'quien', 'docs', 'obs', 'tags')
 
 
 def load_patch():
-    encoded = ''.join(p.read_text(encoding='ascii').strip() for p in PARTS)
-    raw = bz2.decompress(base64.b64decode(encoded))
+    # JSON íntegro recuperado del archivo aprobado; nunca usar fragmentos dañados.
+    raw = PATCH_FILE.read_bytes()
     digest = hashlib.sha256(raw).hexdigest()
     if digest != EXPECTED_PATCH_SHA256:
         raise ValueError(f'Pending support translation package changed: {digest}')
@@ -36,6 +35,23 @@ def load_patch():
         raise ValueError('Pending support translated fields differ from the approved package')
     if patch.get('m', {}).get('source_sha256') != EXPECTED_SOURCE_SHA256:
         raise ValueError('Approved source fingerprint is inconsistent')
+    if patch.get('m', {}).get('protected') != list(PROTECTED_FIELDS):
+        raise ValueError('Protected source fields differ from the approved package')
+    if set(patch.get('g', {})) != set(GROUP_COUNTS):
+        raise ValueError('Pending support groups differ from the approved package')
+    for group, expected in GROUP_COUNTS.items():
+        items = patch['g'][group]
+        if len(items) != expected:
+            raise ValueError(f'{group}: translation row count changed')
+        seen = set()
+        for item in items:
+            if not isinstance(item, list) or len(item) != len(FIELDS) + 2:
+                raise ValueError(f'{group}: each translation must have an ID, category and six fields')
+            if any(not isinstance(v, str) or not v.strip() for v in item):
+                raise ValueError(f'{group}: empty or invalid translation value')
+            if item[0] in seen:
+                raise ValueError(f'{group}: duplicate translation ID: {item[0]}')
+            seen.add(item[0])
     return patch
 
 
