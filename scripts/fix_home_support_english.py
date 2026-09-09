@@ -100,5 +100,10 @@ if sentinel not in s:
         lines.append('  ' + json.dumps(es, ensure_ascii=False) + ': { en: ' + json.dumps(en, ensure_ascii=False) + ', pt: ' + json.dumps(es, ensure_ascii=False) + ' },')
     s = s.replace(anchor, '\n'.join(lines) + '\n};\nconst tr = (s, L) =>', 1)
 
+# The header Reading control was still hard-coded in Spanish while EN was active.
+s = s.replace('aria-label="Lectura" title="Lectura" data-ig-reading-trigger=""', 'aria-label="{{ tReadingButton }}" title="{{ tReadingButton }}" data-ig-reading-trigger=""')
+s = s.replace('<span>Lectura</span></button></div><div class="ig-uh-langs"', '<span>{{ tReadingButton }}</span></button></div><div class="ig-uh-langs"')
+s = s.replace('tA11y: T.a11y, tPlaylist: T.playlist,', 'tA11y: T.a11y, tReadingButton: L === "en" ? "Reading" : "Lectura", tPlaylist: T.playlist,')
+
 p.write_text(s, encoding='utf-8')
 print('Home support block English translations applied:', len(translations))
