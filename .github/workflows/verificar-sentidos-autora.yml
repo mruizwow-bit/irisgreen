@@ -42,24 +42,7 @@ jobs:
           assert s.count(anchor)==1
           s=s.replace(anchor,"    # Verify the author's approved wording; never regenerate or rewrite it.\n    subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"+anchor)
           p.write_text(s)
-          Path('editorial/reviews/SENTIDOS-README.md').write_text('''# Sentidos: texto aprobado de la autora
-
-El original situaciones_sentidos_ES_EN.md se conserva exactamente como fue enviado.
-Se importan sus 24 títulos españoles y 48 descripciones ES/EN, sin resumen adicional.
-Las descripciones se sincronizan en cada ficha, las tarjetas del listado, el índice
-buscador.json y los metadatos. Los títulos ingleses no figuran en el documento y
-se conservan los existentes. Las rutas no cambian.
-
-El resto de los apartados, fuentes, fechas de revisión documental, avisos, robots,
-colores, tipografías y controles no se modifican. Esta importación no acredita
-una revisión completa de las fichas ni una nueva comprobación de las fuentes.
-
-scripts/sentidos_author.py --apply se utilizó una sola vez para incorporar el texto.
-Durante la construcción se ejecuta únicamente la comprobación de igualdad exacta.
-Si otra tarea altera las descripciones protegidas, la publicación se detiene:
-no se restaura ni reescribe contenido automáticamente. Una nueva corrección
-aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
-''')
+          Path('editorial/reviews/SENTIDOS-README.md').write_text('# Sentidos: texto aprobado de la autora\n\nEl original situaciones_sentidos_ES_EN.md se conserva exactamente como fue enviado. Se importan sus 24 títulos españoles y 48 descripciones ES/EN, sin resumen adicional. Las descripciones se sincronizan en cada ficha, las tarjetas del listado, el índice buscador.json y los metadatos. Los títulos ingleses no figuran en el documento y se conservan los existentes. Las rutas no cambian.\n\nEl resto de los apartados, fuentes, fechas de revisión documental, avisos, robots, colores, tipografías y controles no se modifican. Esta importación no acredita una revisión completa de las fichas ni una nueva comprobación de las fuentes.\n\nscripts/sentidos_author.py --apply se utilizó una sola vez para incorporar el texto. Durante la construcción se ejecuta únicamente la comprobación de igualdad exacta. Si otra tarea altera las descripciones protegidas, la publicación se detiene: no se restaura ni reescribe contenido automáticamente. Una nueva corrección aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.\n')
           PY
           python3 scripts/build_site.py > /tmp/iris-senses/build-after.log 2>&1
           python3 scripts/sentidos_author.py --root dist > /tmp/iris-senses/exact-text.json
@@ -107,7 +90,6 @@ aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
           assert count==24
           (out/'after.json').write_text(json.dumps(after))
           (out/'public-diff.json').write_text(json.dumps({'before_files':len(before),'after_files':len(after),'changed':changed,'added':[],'removed':[],'unrelated_public_files_unchanged':len(before)-len(changed),'other_sections_dates_styles_controls_preserved':True,'search_rows_changed':count,'exact_descriptions':48,'source_sha256':a.SOURCE_SHA256},indent=2))
-          # A deliberate unwanted edit must be detected, not silently repaired.
           p=root/rows[0]['es_path'];original=p.read_bytes()
           p.write_text(p.read_text().replace(a.esc(rows[0]['es']),'WRONG CONTENT',1))
           try:a.check(root)
@@ -168,13 +150,11 @@ aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
                       spans=card.locator(':scope > span:not(.chip):not(.chiprow)')
                       assert spans.inner_text()==row[lang]
                       report['catalogue_cards_exact']+=1
-              # The shared search API supplies the author text to the approved homepage.
               page.goto(base+'/',wait_until='load');page.wait_for_function('window.IGSearch && window.IGSearch.load')
               data=page.evaluate('async()=>{await IGSearch.load();return await (await fetch("/buscador.json")).json()}')
               indexed={x['u']:x for x in data}
               for row in rows:
                   item=indexed[a.route(row['es_path'])];assert item['d']==row['es'] and item['en']['d']==row['en']
-              # Follow the actual ES/EN link on a final page.
               row=rows[0];page.goto(base+a.route(row['es_path']),wait_until='load')
               page.locator('.langs a[lang=en]').click();page.wait_for_url('**'+a.route(row['en_path']))
               assert page.locator('article.ficha p.lede').inner_text()==row['en']
