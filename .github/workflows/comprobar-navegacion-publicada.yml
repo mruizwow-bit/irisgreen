@@ -1,0 +1,66 @@
+name: Comprobar navegacion publicada
+on:
+  push:
+    branches: ['mejora/portada-ficha-aprobadas-20260909']
+    paths: ['.github/workflows/comprobar-navegacion-publicada.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: e2ed7c87cc131539597aa8e79c2fce9bd3ecfc53
+      - name: Verificar las tres paginas y los dos recursos publicados
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-live-tests
+          python3 - <<'PY'
+          import hashlib,json,time,urllib.request
+          from pathlib import Path
+          expected={'/':'90b691b20f29ee7d','/es/situaciones/necesito-que-me-repitan-las-instrucciones/':'c424366dd7bd725e','/en/situations/i-need-instructions-repeated/':'61c658005fc37393'}
+          report={}
+          for path,version in expected.items():
+              for attempt in range(24):
+                  try:
+                      request=urllib.request.Request('https://irisgreen.eu'+path,headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-Deployment-Verification'})
+                      with urllib.request.urlopen(request,timeout=30) as response:
+                          raw=response.read();code=response.status
+                      text=raw.decode('utf-8')
+                      if 'name="ig-navigation-build" content="'+version+'"' in text:
+                          report[path]={'status':code,'build':version,'sha256':hashlib.sha256(raw).hexdigest()}
+                          break
+                  except Exception as error:
+                      print(path,repr(error))
+                  time.sleep(5)
+              else:
+                  raise AssertionError('Approved page not yet published: '+path)
+          for path in ('assets/navigation-approved.css','assets/navigation-approved.js'):
+              with urllib.request.urlopen('https://irisgreen.eu/'+path,timeout=30) as response:raw=response.read()
+              assert hashlib.sha256(raw).digest()==hashlib.sha256(Path(path).read_bytes()).digest(),path
+              report['/'+path]={'sha256':hashlib.sha256(raw).hexdigest(),'exact':True}
+          Path('/tmp/iris-live-tests/publication.json').write_text(json.dumps({'commit':'e2ed7c87cc131539597aa8e79c2fce9bd3ecfc53','verified':report},indent=2))
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Preparar navegador
+        shell: bash
+        run: |
+          python3 -m venv /tmp/iris-live-browser
+          /tmp/iris-live-browser/bin/pip install playwright==1.55.0
+          /tmp/iris-live-browser/bin/python -m playwright install --with-deps chromium
+      - name: Probar el recorrido en irisgreen.eu
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/iris-live-browser/bin/python scripts/test_approved_navigation.py --base-url https://irisgreen.eu --out /tmp/iris-live-tests 2>&1 | tee /tmp/iris-live-tests/browser.log
+      - name: Guardar comprobacion publicada
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-navigation-live
+          path: /tmp/iris-live-tests
+          retention-days: 7
+          if-no-files-found: error
