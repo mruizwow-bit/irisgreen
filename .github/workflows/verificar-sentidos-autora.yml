@@ -1,0 +1,216 @@
+name: Verificar Sentidos de la autora
+on:
+  push:
+    branches: ['contenido/sentidos-texto-autora-20260909']
+    paths: ['.github/workflows/verificar-sentidos-autora.yml']
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir la referencia sin modificar el contenido
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-senses/before
+          python3 scripts/build_site.py > /tmp/iris-senses/build-before.log 2>&1
+          python3 - <<'PY'
+          import hashlib,json,shutil
+          from pathlib import Path
+          root=Path('dist');out=Path('/tmp/iris-senses')
+          files={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          (out/'before.json').write_text(json.dumps(files))
+          for p in root.rglob('*'):
+              if p.is_file() and (p.relative_to(root).as_posix().startswith(('es/situaciones/','en/situations/')) or p.name=='buscador.json'):
+                  target=out/'before'/p.relative_to(root);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
+          assert any(k.startswith('img/') for k in files)
+          assert any(k.startswith('audio/') for k in files)
+          PY
+          git restore --worktree .
+      - name: Incorporar la redaccion exacta y activar solo su comprobacion
+        run: |
+          set -euo pipefail
+          python3 scripts/sentidos_author.py --apply > /tmp/iris-senses/import.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('scripts/build_site.py');raw=p.read_bytes()
+          assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()=='ff8f6dbc94afffdb8f804e24ba84a6c70c9ed352'
+          s=raw.decode();anchor="    files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())"
+          assert s.count(anchor)==1
+          s=s.replace(anchor,"    # Verify the author's approved wording; never regenerate or rewrite it.\n    subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"+anchor)
+          p.write_text(s)
+          Path('editorial/reviews/SENTIDOS-README.md').write_text('''# Sentidos: texto aprobado de la autora
+
+El original situaciones_sentidos_ES_EN.md se conserva exactamente como fue enviado.
+Se importan sus 24 títulos españoles y 48 descripciones ES/EN, sin resumen adicional.
+Las descripciones se sincronizan en cada ficha, las tarjetas del listado, el índice
+buscador.json y los metadatos. Los títulos ingleses no figuran en el documento y
+se conservan los existentes. Las rutas no cambian.
+
+El resto de los apartados, fuentes, fechas de revisión documental, avisos, robots,
+colores, tipografías y controles no se modifican. Esta importación no acredita
+una revisión completa de las fichas ni una nueva comprobación de las fuentes.
+
+scripts/sentidos_author.py --apply se utilizó una sola vez para incorporar el texto.
+Durante la construcción se ejecuta únicamente la comprobación de igualdad exacta.
+Si otra tarea altera las descripciones protegidas, la publicación se detiene:
+no se restaura ni reescribe contenido automáticamente. Una nueva corrección
+aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
+''')
+          PY
+          python3 scripts/build_site.py > /tmp/iris-senses/build-after.log 2>&1
+          python3 scripts/sentidos_author.py --root dist > /tmp/iris-senses/exact-text.json
+      - name: Verificar alcance, apartados intactos y segunda construccion
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys,hashlib,json,copy
+          from pathlib import Path
+          sys.path.insert(0,'scripts');import sentidos_author as a
+          out=Path('/tmp/iris-senses');root=Path('dist');before=json.loads((out/'before.json').read_text())
+          after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          rows=a.approved_rows();targets={r[k] for r in rows for k in ['es_path','en_path']}
+          expected=targets|set(a.INDEXES.values())|{'buscador.json'}
+          changed=sorted(k for k in before.keys()&after.keys() if before[k]!=after[k])
+          assert set(changed)==expected,(changed,expected)
+          assert before.keys()==after.keys(),'Unexpected added or removed public files'
+          for path in targets:
+              old=(out/'before'/path).read_text();new=(root/path).read_text()
+              def protected(text):
+                  t,art,h,p=a.page_nodes(text)
+                  s=a.edits(text,[a.inside(text,p,'DESCRIPTION'),a.inside(text,h,'TITLE')])
+                  return s[s.index('<body'):]
+              assert protected(old)==protected(new),'Non-authorised body change: '+path
+              def immutable_head(text):
+                  t=a.Tree(text)
+                  return [(n.tag,n.attrs,text[n.start:n.end]) for n in t.nodes if n.tag in ['style','link'] or n.tag=='meta' and (n.attrs.get('name')=='robots' or n.attrs.get('property')=='article:modified_time')]
+              assert immutable_head(old)==immutable_head(new),'Format, routes, dates or robots changed: '+path
+          for lang,path in a.INDEXES.items():
+              old=(out/'before'/path).read_text();new=(root/path).read_text()
+              def mask(text):
+                  t,cards=a.card_nodes(text,path);patch=[]
+                  for row in rows:
+                      _,h,p=cards[a.route(row[lang+'_path'])]
+                      patch.extend([a.inside(text,h,'TITLE'),a.inside(text,p,'DESCRIPTION')])
+                  return a.edits(text,patch)
+              assert mask(old)==mask(new),'Unrelated catalogue content changed'
+          b=json.loads((out/'before/buscador.json').read_text());c=json.loads((root/'buscador.json').read_text());assert len(b)==len(c)
+          urls={a.route(r['es_path']) for r in rows};count=0
+          for old,new in zip(b,c):
+              assert old['u']==new['u']
+              if old['u'] not in urls:assert old==new
+              else:
+                  count+=1;x=copy.deepcopy(new);x['t']=old['t'];x['d']=old['d'];x['en']['d']=old['en']['d'];assert x==old
+          assert count==24
+          (out/'after.json').write_text(json.dumps(after))
+          (out/'public-diff.json').write_text(json.dumps({'before_files':len(before),'after_files':len(after),'changed':changed,'added':[],'removed':[],'unrelated_public_files_unchanged':len(before)-len(changed),'other_sections_dates_styles_controls_preserved':True,'search_rows_changed':count,'exact_descriptions':48,'source_sha256':a.SOURCE_SHA256},indent=2))
+          # A deliberate unwanted edit must be detected, not silently repaired.
+          p=root/rows[0]['es_path'];original=p.read_bytes()
+          p.write_text(p.read_text().replace(a.esc(rows[0]['es']),'WRONG CONTENT',1))
+          try:a.check(root)
+          except ValueError:pass
+          else:raise AssertionError('Guard did not detect changed text')
+          finally:p.write_bytes(original)
+          a.check(root)
+          PY
+          python3 scripts/build_site.py > /tmp/iris-senses/build-second.log 2>&1
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('dist');after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          assert after==json.loads(Path('/tmp/iris-senses/after.json').read_text()),'Second build changed the output'
+          Path('/tmp/iris-senses/idempotence.json').write_text(json.dumps({'second_complete_build_identical':True,'altered_description_rejected':True}))
+          PY
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/senses-browser
+          /tmp/senses-browser/bin/pip install playwright==1.55.0
+          /tmp/senses-browser/bin/python -m playwright install --with-deps chromium
+      - name: Comprobar las 48 fichas visibles, catalogos y buscador
+        run: |
+          /tmp/senses-browser/bin/python - <<'PY' > /tmp/iris-senses/browser.log 2>&1
+          import sys,json,threading
+          from pathlib import Path
+          from functools import partial
+          from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+          from playwright.sync_api import sync_playwright
+          sys.path.insert(0,'scripts');import sentidos_author as a
+          server=ThreadingHTTPServer(('127.0.0.1',8765),partial(SimpleHTTPRequestHandler,directory='dist'))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          base='http://127.0.0.1:8765';rows=a.approved_rows();report={'pages':[],'javascript_errors':[],'catalogue_cards_exact':0}
+          with sync_playwright() as p:
+              browser=p.chromium.launch();context=browser.new_context(viewport={'width':1280,'height':900})
+              context.route('https://fonts.googleapis.com/**',lambda r:r.abort());context.route('https://fonts.gstatic.com/**',lambda r:r.abort())
+              page=context.new_page();page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
+              for row in rows:
+                  for lang in ['es','en']:
+                      path=row[lang+'_path'];response=page.goto(base+a.route(path),wait_until='load');assert response.status==200
+                      assert page.locator('article.ficha p.lede').inner_text()==row[lang]
+                      assert page.locator('article.ficha h1').inner_text()==(row['title_es'] if lang=='es' else row['retained_title_en'])
+                      layout=[]
+                      for width in [320,390,1600]:
+                          page.set_viewport_size({'width':width,'height':900})
+                          for scale in [1,1.5]:
+                              page.evaluate('(scale)=>IGPreferences.update({scale:scale,text:{width:"original"}})',scale)
+                              assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,width,scale)
+                              assert page.locator('article.ficha p.lede').inner_text()==row[lang]
+                              layout.append({'width':width,'scale':scale,'no_horizontal_overflow':True})
+                      page.evaluate('IGPreferences.reset()');report['pages'].append({'path':path,'description_exact':True,'layout':layout})
+              for lang,path in a.INDEXES.items():
+                  page.goto(base+a.route(path),wait_until='load')
+                  for row in rows:
+                      slug=row[lang+'_path'].split('/')[-2]
+                      card=page.locator('a.card[href$="/'+slug+'/"]')
+                      assert card.count()==1
+                      spans=card.locator(':scope > span:not(.chip):not(.chiprow)')
+                      assert spans.inner_text()==row[lang]
+                      report['catalogue_cards_exact']+=1
+              # The shared search API supplies the author text to the approved homepage.
+              page.goto(base+'/',wait_until='load');page.wait_for_function('window.IGSearch && window.IGSearch.load')
+              data=page.evaluate('async()=>{await IGSearch.load();return await (await fetch("/buscador.json")).json()}')
+              indexed={x['u']:x for x in data}
+              for row in rows:
+                  item=indexed[a.route(row['es_path'])];assert item['d']==row['es'] and item['en']['d']==row['en']
+              # Follow the actual ES/EN link on a final page.
+              row=rows[0];page.goto(base+a.route(row['es_path']),wait_until='load')
+              page.locator('.langs a[lang=en]').click();page.wait_for_url('**'+a.route(row['en_path']))
+              assert page.locator('article.ficha p.lede').inner_text()==row['en']
+              assert not report['javascript_errors'],report['javascript_errors']
+              report['language_link_works']=True;report['search_entries_exact']=24
+              browser.close()
+          server.shutdown()
+          Path('/tmp/iris-senses/browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({'pages_tested':len(report['pages']),'cards_tested':report['catalogue_cards_exact'],'errors':report['javascript_errors']}))
+          PY
+      - name: Guardar solo los cambios autorizados en la rama de trabajo
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys,json,subprocess
+          from pathlib import Path
+          sys.path.insert(0,'scripts');import sentidos_author as a
+          rows=a.approved_rows();paths=[r[k] for r in rows for k in ['es_path','en_path']]+list(a.INDEXES.values())+['buscador.json','scripts/build_site.py',a.MANIFEST,'editorial/reviews/SENTIDOS-README.md']
+          subprocess.run(['git','add','--',*paths],check=True)
+          changed=subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines()
+          assert set(changed)==set(paths),(changed,paths)
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','commit','-m','Sentidos ES EN exacto de la autora: 48 descripciones verificadas [skip netlify]'],check=True)
+          subprocess.run(['git','push','origin','HEAD:contenido/sentidos-texto-autora-20260909'],check=True)
+          full=paths+[a.SOURCE,'scripts/sentidos_author.py']
+          report={'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}']).decode().strip(),'paths':sorted(full),'source_sha256':a.SOURCE_SHA256}
+          Path('/tmp/iris-senses/validated.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+          PY
+      - name: Guardar pruebas sin duplicar las paginas de referencia
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-sentidos-author-verification
+          path: |
+            /tmp/iris-senses/*.json
+            /tmp/iris-senses/*.log
+          retention-days: 7
+          if-no-files-found: error
