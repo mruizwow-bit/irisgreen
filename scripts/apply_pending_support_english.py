@@ -92,14 +92,9 @@ def apply_regions(patch):
     regions = patch['r']
     if len(regions) != 8 or any(not es or not en for es, en in regions.items()):
         raise ValueError('The approved region map must contain 8 complete translations')
-    declaration = 'const SUPPORT_REGION_EN = ' + json.dumps(regions, ensure_ascii=False, separators=(',', ':')) + ';\n'
-    if 'const SUPPORT_REGION_EN = ' not in text:
-        anchor = 'const LANGSTR = {'
-        if anchor not in text:
-            raise ValueError('Cannot locate directory language dictionary')
-        text = text.replace(anchor, declaration + anchor, 1)
+    mapping = json.dumps(regions, ensure_ascii=False, separators=(',', ':'))
     old = 'label: r === "all" ? T.allRegions : r,'
-    new = 'label: r === "all" ? T.allRegions : (L === "en" ? (SUPPORT_REGION_EN[r] || r) : r),'
+    new = 'label: r === "all" ? T.allRegions : (L === "en" ? ((' + mapping + ')[r] || r) : r),'
     if new not in text:
         if text.count(old) != 1:
             raise ValueError(f'Cannot locate region chip renderer; found {text.count(old)} occurrences')
