@@ -1,41 +1,84 @@
-name: Recuperar paginas del historial sin publicar
+name: Recuperacion parcial verificada, sin publicar
 on:
   push:
     branches: ['reparacion/zip-verificado-20260909']
     paths: ['.github/workflows/recuperar-zip-verificado.yml']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  fuentes:
+  recuperar:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 0
-          persist-credentials: false
-      - name: Recuperar versiones de las paginas pendientes
+      - name: Recuperar y comprobar archivos
+        run: python3 .github/recuperar_zip.py
+      - name: Comprobar JavaScript y registrar el bloqueo del build
         run: |
-          mkdir -p /tmp/iris-paginas
           python3 - <<'PY'
-          import hashlib, json, subprocess, zipfile
-          paths = ['en/accessible-reading/index.html', 'en/methodology/index.html', 'es/metodologia/index.html', 'es/lectura-accesible/index.html', 'cola-traduccion']
-          objects = subprocess.check_output(['git','rev-list','--objects','--all','--',*paths], text=True).splitlines()
-          manifest = []
-          with zipfile.ZipFile('/tmp/iris-paginas/paginas.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for line in objects:
-                  sha, _, name = line.partition(' ')
-                  if not name or subprocess.check_output(['git','cat-file','-t',sha],text=True).strip() != 'blob':
-                      continue
-                  data = subprocess.check_output(['git','cat-file','blob',sha])
-                  z.writestr('blobs/'+sha, data)
-                  manifest.append({'sha':sha,'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-              z.writestr('manifest.json', json.dumps(manifest,ensure_ascii=False,indent=2))
-          print('Versiones recuperadas:',len(manifest))
-          print('No se ejecuta ni publica el sitio.')
+          import json, shutil, subprocess, zipfile
+          from html.parser import HTMLParser
+          from pathlib import Path
+          root = Path.cwd()
+          out = Path('/tmp/iris-recuperacion-verificada')
+          targets = (out/'targets.txt').read_text().splitlines()
+          class Scripts(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.active = False; self.parts = []; self.scripts = []
+              def handle_starttag(self, tag, attrs):
+                  if tag != 'script': return
+                  a = dict(attrs)
+                  self.active = not a.get('src') and a.get('type','').lower() in ('','text/javascript','application/javascript','module')
+                  self.parts = []
+              def handle_data(self, data):
+                  if self.active: self.parts.append(data)
+              def handle_endtag(self, tag):
+                  if tag == 'script' and self.active:
+                      self.scripts.append(''.join(self.parts)); self.active = False
+          checked = 0
+          for name in targets:
+              if name.endswith('.js'):
+                  subprocess.run(['node','--check',name],check=True); checked += 1
+              if name.endswith('.html'):
+                  parser = Scripts(); parser.feed((root/name).read_text())
+                  for code in parser.scripts:
+                      subprocess.run(['node','--check'],input=code,text=True,check=True,capture_output=True); checked += 1
+          changed = subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()
+          untracked = subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines()
+          assert set(changed + untracked) == set(targets), 'Unexpected changed files'
+          with zipfile.ZipFile(out/'recuperacion-34-archivos.zip','w',zipfile.ZIP_DEFLATED) as archive:
+              for name in targets: archive.write(root/name,name)
+          testroot = Path('/tmp/iris-build-aislado')
+          shutil.copytree(root,testroot,ignore=shutil.ignore_patterns('.git','dist'))
+          result = subprocess.run(['python3','scripts/build_site.py'],cwd=testroot,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+          (out/'build.log').write_text(result.stdout)
+          report = json.loads((out/'verificacion.json').read_text())
+          report['javascript_syntax_checks'] = checked
+          report['build_exit_code'] = result.returncode
+          report['full_build'] = 'passed' if result.returncode == 0 else 'BLOCKED: Support translation package remains corrupt'
+          if result.returncode != 0:
+              assert 'Invalid base64-encoded string' in result.stdout, result.stdout[-4000:]
+          (out/'verificacion.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print('JavaScript checks:',checked)
+          print('Full build:',report['full_build'])
+          print('No Netlify deployment requested.')
           PY
+      - name: Guardar solo los 34 archivos recuperados en la rama aislada
+        run: |
+          set -euo pipefail
+          mapfile -t targets < /tmp/iris-recuperacion-verificada/targets.txt
+          git add -- "${targets[@]}"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Recuperar 32 archivos exactos y 2 paginas del historial; Ayudas pendiente [skip netlify]'
+          git push origin HEAD:reparacion/zip-verificado-20260909
+          git rev-parse HEAD > /tmp/iris-recuperacion-verificada/commit.txt
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
-          name: iris-paginas-historicas
-          path: /tmp/iris-paginas
-          retention-days: 3
+          name: iris-recuperacion-parcial-verificada
+          path: /tmp/iris-recuperacion-verificada
+          retention-days: 7
