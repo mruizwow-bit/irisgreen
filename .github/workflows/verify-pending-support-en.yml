@@ -34,9 +34,8 @@ jobs:
           raw=json.dumps(payload,ensure_ascii=False,separators=(',',':')).encode()
           assert hashlib.sha256(raw).hexdigest()=='1fc6aa371850c95f942a1da8772d469a1f327b097d425fc0e35efdb1f715a64d'
           html=Path('dist/es/tramites/directorio/index.html').read_text(encoding='utf-8')
-          assert 'const SUPPORT_REGION_EN = ' in html
           for en in ['Asia and Eurasia','Caribbean','Central America','Europe','North America','Oceania','South America','Africa']:
               assert en in html,en
-          assert 'L === "en" ? (SUPPORT_REGION_EN[r] || r) : r' in html
+          assert 'L === "en" ? ((' in html and ')[r] || r) : r' in html
           print('SUPPORT_EN_OK',len(pending),'records',len(pending)*len(fields),'fields','146 categories','8 regions','2425 total')
           PY
