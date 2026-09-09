@@ -1,4 +1,4 @@
-name: Diagnostico de rescate 2026-09-09
+name: Recuperar fuentes de rescate sin desplegar
 on:
   push:
     branches: ['rescate/publicacion-20260909']
@@ -6,40 +6,39 @@ on:
 permissions:
   contents: read
 jobs:
-  diagnostico:
+  fuentes:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Conservar fuentes exactas para comparacion
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Recuperar archivos exactos sin ejecutar ni modificar el sitio
         run: |
           mkdir -p /tmp/iris-rescate
+          git archive --format=zip --output=/tmp/iris-rescate/arreglos.zip 78cd2c7ddfabe0d95300072bf4976d4234ca5507 .upload-arreglos .github/workflows/apply-reviewed-fixes.yml es/neurodiversidad/mapa/index.html
           python3 - <<'PY'
-          import json, subprocess, zipfile, hashlib
+          import hashlib, json, subprocess, zipfile
           from pathlib import Path
-          files = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          suffixes = {'.html','.js','.css','.json','.py','.toml','.yml','.yaml','.md','.b64','.txt','.xml','.svg'}
-          inventory = []
-          with zipfile.ZipFile('/tmp/iris-rescate/fuentes.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for name in files:
-                  p=Path(name)
-                  if not name or not p.is_file(): continue
-                  b=p.read_bytes()
-                  inventory.append({'path':name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
-                  if p.suffix.lower() in suffixes or p.name in {'_headers','_redirects','.gitignore'}:
-                      z.writestr(name,b)
-          Path('/tmp/iris-rescate/inventario.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2))
-          print('Commit:',subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
-          print('Archivos inventariados:',len(inventory))
+          paths = ['scripts/data', 'scripts/apply_pending_support_english.py', '.upload-arreglos']
+          objects = subprocess.check_output(['git','rev-list','--objects','--all','--',*paths], text=True).splitlines()
+          manifest = []
+          with zipfile.ZipFile('/tmp/iris-rescate/historico.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for line in objects:
+                  sha, _, name = line.partition(' ')
+                  if not name or subprocess.check_output(['git','cat-file','-t',sha],text=True).strip() != 'blob':
+                      continue
+                  data = subprocess.check_output(['git','cat-file','blob',sha])
+                  z.writestr('blobs/'+sha, data)
+                  manifest.append({'sha':sha,'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+              z.writestr('manifest.json', json.dumps(manifest,ensure_ascii=False,indent=2))
+              z.writestr('commits.txt',subprocess.check_output(['git','log','--all','--format=%H %s','--',*paths]))
+          print('Versiones de archivos recuperadas:',len(manifest))
+          print('No se ejecuta build ni se publica el sitio.')
           PY
-      - name: Reproducir el build configurado en Netlify
-        run: |
-          set -o pipefail
-          python3 --version
-          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-rescate/build.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
         with:
-          name: iris-rescate-diagnostico
+          name: iris-rescate-fuentes-historicas
           path: /tmp/iris-rescate
           retention-days: 3
