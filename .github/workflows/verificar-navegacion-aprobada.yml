@@ -49,10 +49,15 @@ jobs:
               path=Path(name)
               assert not path.is_symlink()
               path.parent.mkdir(parents=True,exist_ok=True)
+              if name=='assets/navigation-approved.js':
+                  anchor="  SECTIONS.forEach(s=>index.push({s:'Sección',t:s.es[0],u:s.url,d:s.es[1],en:{s:'Section',t:s.en[0],u:s.url_en,d:s.en[1]},_section:true}));"
+                  assert text.count(anchor)==1
+                  extra="  const enAliases={\n   '/es/situaciones/necesito-que-me-repitan-las-instrucciones/':'instructions forget forgetting repeat steps written',\n   '/es/situaciones/la-luz-del-supermercado-me-agota/':'noise drains me shopping lights supermarket tired exhausted'\n  };\n  index.forEach(x=>{if(x.en&&enAliases[x.u])x.en={...x.en,k:[...(Array.isArray(x.en.k)?x.en.k:[x.en.k||'']),enAliases[x.u]]};});\n"
+                  text=text.replace(anchor,extra+anchor)
               path.write_text(text,encoding='utf-8')
               report[name]=hashlib.sha256(path.read_bytes()).hexdigest()
           Path('/tmp/iris-navigation-release/input-hashes.json').write_text(json.dumps(report,indent=2))
-          print('All ten source files verified before use')
+          print('All ten source files verified; English search aliases added without changing article text')
           PY
       - name: Construir y comprobar que solo cambian tres paginas y dos recursos
         shell: bash
