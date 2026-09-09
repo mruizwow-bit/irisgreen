@@ -1,0 +1,99 @@
+name: Diagnostico home musica y buscador
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnostico-home-musica-buscador.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Auditar traducciones del indice
+        run: |
+          python3 - <<'PY'
+          import json
+          from collections import Counter, defaultdict
+          data=json.load(open('buscador.json',encoding='utf-8'))
+          required=('s','t','u','d')
+          missing=[]; equal=[]; by_kind=Counter(); by_kind_missing=Counter()
+          for i,row in enumerate(data):
+              by_kind[row.get('s','')]+=1
+              en=row.get('en')
+              miss=[]
+              if not isinstance(en,dict):
+                  miss=list(required)
+              else:
+                  miss=[k for k in required if not str(en.get(k,'')).strip()]
+                  for k in ('s','t','d'):
+                      if str(en.get(k,'')).strip() and str(en.get(k,'')).strip()==str(row.get(k,'')).strip():
+                          equal.append((i,k,row.get('t',''),row.get(k,'')))
+              if miss:
+                  missing.append((i,row.get('s'),row.get('t'),miss))
+                  by_kind_missing[row.get('s','')]+=1
+          print('TOTAL',len(data))
+          print('BY_KIND',dict(by_kind))
+          print('MISSING_COUNT',len(missing))
+          print('MISSING_BY_KIND',dict(by_kind_missing))
+          print('MISSING_EXAMPLES',missing[:30])
+          print('IDENTICAL_EN_FIELDS_COUNT',len(equal))
+          print('IDENTICAL_EN_FIELDS_EXAMPLES',equal[:40])
+          PY
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-home
+          /tmp/ig-home/bin/pip -q install playwright==1.55.0
+          /tmp/ig-home/bin/python -m playwright install --with-deps chromium >/tmp/ig-browser-install.log 2>&1
+      - name: Probar home en navegador real
+        run: |
+          python3 -m http.server 8123 >/tmp/ig-home-server.log 2>&1 &
+          echo $! >/tmp/ig-home-server.pid
+          /tmp/ig-home/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          BASE='http://127.0.0.1:8123'
+          with sync_playwright() as pw:
+              b=pw.chromium.launch()
+              p=b.new_page(viewport={'width':1440,'height':1000})
+              errors=[]; p.on('pageerror',lambda e: errors.append(str(e)))
+              r=p.goto(BASE+'/',wait_until='domcontentloaded'); print('HTTP',r.status if r else None)
+              p.locator('main h1').first.wait_for(state='visible')
+              p.wait_for_timeout(500)
+              print('LANG_INITIAL',p.locator('html').get_attribute('lang'))
+              music=p.locator('.ig-uh-music:visible').first
+              print('MUSIC_TRIGGER_COUNT',music.count())
+              music.click()
+              panel=p.locator('#ig-music-panel')
+              try:
+                  panel.wait_for(state='visible',timeout=3000)
+                  print('MUSIC_VISIBLE',True)
+                  print('MUSIC_TEXT',panel.inner_text()[:500].replace('\n',' | '))
+              except Exception as e:
+                  print('MUSIC_VISIBLE',False)
+                  print('MUSIC_HTML',p.locator('body').inner_text()[:1200].replace('\n',' | '))
+                  raise
+              p.keyboard.press('Escape')
+              en=p.locator('.ig-uh-langs button:has-text("EN")').first
+              print('EN_TRIGGER_COUNT',en.count())
+              en.click(); p.wait_for_timeout(300)
+              print('LANG_AFTER_EN',p.locator('html').get_attribute('lang'))
+              search=p.locator('.ig-search-input').first
+              print('PLACEHOLDER_EN',search.get_attribute('placeholder'))
+              search.fill('noise'); p.wait_for_timeout(300)
+              cards=p.locator('#consola sc-for').nth(2) if False else p.locator('#consola a[href]').filter(has_not=p.locator('x-dummy'))
+              result_links=p.locator('#consola .ig-search-shell').locator('xpath=following::a[1]')
+              rows=p.locator('#consola div').filter(has=p.locator('a[href]'))
+              # Extract only links inside the visible search result block, excluding saved/no-results links.
+              vals=p.eval_on_selector_all('#consola a[href]','els=>els.filter(a=>a.offsetParent!==null).map(a=>({text:a.textContent.trim(),href:a.getAttribute("href")}))')
+              print('VISIBLE_LINKS_AFTER_NOISE',vals[:20])
+              print('PAGEERRORS',errors)
+              assert p.locator('html').get_attribute('lang')=='en'
+              assert 'noise' in (search.get_attribute('placeholder') or '').lower() or "can't" in (search.get_attribute('placeholder') or '').lower()
+              assert any((x['href'] or '').startswith('/en/') for x in vals), vals[:20]
+              b.close()
+          PY
