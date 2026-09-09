@@ -1,0 +1,98 @@
+name: Verificar presentacion y metodologia
+on:
+  push:
+    branches: ['mejora/presentacion-metodologia-20260909']
+    paths: ['.github/workflows/verificar-presentacion-metodologia.yml']
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir referencia completa
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-editorial-tests /tmp/iris-editorial-approved
+          python3 scripts/build_site.py > /tmp/iris-editorial-tests/baseline-build.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          d=Path('dist')
+          h={p.relative_to(d).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in d.rglob('*') if p.is_file()}
+          Path('/tmp/iris-editorial-tests/baseline.json').write_text(json.dumps(h))
+          PY
+          git restore --worktree .
+      - name: Aplicar solo las dos paginas solicitadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .staging-editorial/apply.py > /tmp/iris-editorial-tests/applied.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,shutil
+          expected={'es/sobre-iris-green/index.html':'77dc520ba4736b4cf426073c6147952b24fda6a272336ef5bb9592ce24d0b56b','es/metodologia/index.html':'f9b4b3f28e3c601fb6d22f70b96391f750d1bd09f226d2f439ba9d65a7d42a67'}
+          for name,sha in expected.items():
+              p=Path(name)
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==sha, name
+              dst=Path('/tmp/iris-editorial-approved')/name
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(p,dst)
+          PY
+      - name: Construir y comprobar el alcance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_site.py > /tmp/iris-editorial-tests/updated-build.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          d=Path('dist');before=json.loads(Path('/tmp/iris-editorial-tests/baseline.json').read_text())
+          after={p.relative_to(d).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in d.rglob('*') if p.is_file()}
+          changed=sorted(k for k in before if before[k]!=after.get(k))
+          expected=['es/metodologia/index.html','es/sobre-iris-green/index.html']
+          report={'changed':changed,'added':sorted(set(after)-set(before)),'removed':sorted(set(before)-set(after)),'expected':expected,'public_files':len(after)}
+          Path('/tmp/iris-editorial-tests/public-diff.json').write_text(json.dumps(report,indent=2))
+          assert changed==expected,report
+          assert set(before)==set(after),report
+          hashes={k:after[k] for k in expected}
+          Path('/tmp/iris-editorial-tests/public-hashes.json').write_text(json.dumps(hashes))
+          PY
+      - name: Preparar navegador de prueba
+        run: |
+          python3 -m venv /tmp/iris-browser
+          /tmp/iris-browser/bin/pip install playwright==1.55.0
+          /tmp/iris-browser/bin/python -m playwright install --with-deps chromium
+      - name: Probar textos idiomas ancho movil y lectura
+        run: /tmp/iris-browser/bin/python .staging-editorial/test.py > /tmp/iris-editorial-tests/browser.log 2>&1
+      - name: Guardar exclusivamente los dos archivos validados
+        shell: bash
+        run: |
+          set -euo pipefail
+          git restore --worktree .
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,subprocess,shutil
+          files=['es/metodologia/index.html','es/sobre-iris-green/index.html']
+          for f in files:shutil.copy2(Path('/tmp/iris-editorial-approved')/f,Path(f))
+          subprocess.run(['git','add','--',*files],check=True)
+          staged=subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines()
+          assert sorted(staged)==sorted(files),staged
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','commit','-m','Validar presentación profesional y metodología más ancha [skip netlify]'],check=True)
+          commit=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip()
+          blobs={f:subprocess.check_output(['git','rev-parse','HEAD:'+f]).decode().strip() for f in files}
+          Path('/tmp/iris-editorial-tests/validated.json').write_text(json.dumps({'commit':commit,'files':blobs},indent=2))
+          subprocess.run(['git','push','origin','HEAD:mejora/presentacion-metodologia-20260909'],check=True)
+          PY
+      - name: Guardar resultados de las pruebas
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-editorial-verification
+          path: /tmp/iris-editorial-tests
+          retention-days: 7
+          if-no-files-found: error
