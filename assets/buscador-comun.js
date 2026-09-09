@@ -5,6 +5,7 @@
   var pending;
   var stopEs = new Set('no me con el la que de del a y o en un una lo los las al se su mi te les nos por para es son ser estoy esta este eso hay muy mas pero si ya cuando donde como todo toda'.split(' '));
   var stopEn = new Set('i me my the a an and or of to in on for with is are am be been being this that these those it its at as from by can could would should do does did have has had'.split(' '));
+  var routeEn = {'/es/biblioteca':'/en/everyday-life'};
   function norm(value) {
     return String(value == null ? '' : value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   }
@@ -22,6 +23,10 @@
     try { return new URL(value, location.origin).pathname.replace(/\/+$/, '') || '/'; }
     catch (_) { return ''; }
   }
+  function englishRoute(value) {
+    var clean=path(value);
+    return routeEn[clean] ? routeEn[clean]+'/' : value;
+  }
   function source(item) { return item && item._raw ? item._raw : item; }
   function localizedRaw(item, lang) {
     var raw = source(item) || {};
@@ -30,7 +35,7 @@
     return Object.assign({}, raw, {
       s: en.s || raw.s,
       t: en.t || raw.t,
-      u: en.u || raw.u,
+      u: englishRoute(en.u || raw.u),
       d: en.d || raw.d,
       a: Object.prototype.hasOwnProperty.call(en, 'a') ? en.a : raw.a,
       k: Object.prototype.hasOwnProperty.call(en, 'k') ? en.k : raw.k,
@@ -73,7 +78,7 @@
     if (pending) return pending;
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 10000);
-    pending = fetch('/buscador.json', { signal: controller.signal })
+    pending = fetch('/buscador.json', { signal: controller.signal, cache: 'no-cache' })
       .then(function (response) {
         if (!response.ok) throw new Error('No se ha podido cargar el índice (' + response.status + ').');
         return response.json();
