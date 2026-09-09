@@ -4,6 +4,7 @@
 No traduce ni reescribe contenido: valida los originales exportados y añade solo
 cat_en y los seis campos *_en entregados. Las 8 regiones se localizan únicamente
 en la interfaz visible, conservando el valor estructural español del filtro.
+El paquete aprobado contiene 2.167 fichas y 13.002 campos EN completos.
 """
 from __future__ import annotations
 import base64
