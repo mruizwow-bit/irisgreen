@@ -1,4 +1,4 @@
-name: Recuperar fuentes de rescate sin desplegar
+name: Verificar transferencia aislada
 on:
   push:
     branches: ['rescate/publicacion-20260909']
@@ -6,39 +6,17 @@ on:
 permissions:
   contents: read
 jobs:
-  fuentes:
+  verificar:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Recuperar archivos exactos sin ejecutar ni modificar el sitio
-        run: |
-          mkdir -p /tmp/iris-rescate
-          git archive --format=zip --output=/tmp/iris-rescate/arreglos.zip 78cd2c7ddfabe0d95300072bf4976d4234ca5507 .upload-arreglos .github/workflows/apply-reviewed-fixes.yml es/neurodiversidad/mapa/index.html
-          python3 - <<'PY'
-          import hashlib, json, subprocess, zipfile
-          from pathlib import Path
-          paths = ['scripts/data', 'scripts/apply_pending_support_english.py', '.upload-arreglos']
-          objects = subprocess.check_output(['git','rev-list','--objects','--all','--',*paths], text=True).splitlines()
-          manifest = []
-          with zipfile.ZipFile('/tmp/iris-rescate/historico.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for line in objects:
-                  sha, _, name = line.partition(' ')
-                  if not name or subprocess.check_output(['git','cat-file','-t',sha],text=True).strip() != 'blob':
-                      continue
-                  data = subprocess.check_output(['git','cat-file','blob',sha])
-                  z.writestr('blobs/'+sha, data)
-                  manifest.append({'sha':sha,'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-              z.writestr('manifest.json', json.dumps(manifest,ensure_ascii=False,indent=2))
-              z.writestr('commits.txt',subprocess.check_output(['git','log','--all','--format=%H %s','--',*paths]))
-          print('Versiones de archivos recuperadas:',len(manifest))
-          print('No se ejecuta build ni se publica el sitio.')
-          PY
+      - run: |
+          mkdir -p /tmp/iris-transfer
+          cp .rescue-data/transfer-*.txt /tmp/iris-transfer/
+          sha256sum /tmp/iris-transfer/*
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: iris-rescate-fuentes-historicas
-          path: /tmp/iris-rescate
-          retention-days: 3
+          name: iris-transfer-verificar
+          path: /tmp/iris-transfer
+          retention-days: 1
