@@ -1,0 +1,45 @@
+name: Diagnostico de rescate 2026-09-09
+on:
+  push:
+    branches: ['rescate/publicacion-20260909']
+    paths: ['.github/workflows/rescate-publicacion-20260909.yml']
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Conservar fuentes exactas para comparacion
+        run: |
+          mkdir -p /tmp/iris-rescate
+          python3 - <<'PY'
+          import json, subprocess, zipfile, hashlib
+          from pathlib import Path
+          files = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          suffixes = {'.html','.js','.css','.json','.py','.toml','.yml','.yaml','.md','.b64','.txt','.xml','.svg'}
+          inventory = []
+          with zipfile.ZipFile('/tmp/iris-rescate/fuentes.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in files:
+                  p=Path(name)
+                  if not name or not p.is_file(): continue
+                  b=p.read_bytes()
+                  inventory.append({'path':name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+                  if p.suffix.lower() in suffixes or p.name in {'_headers','_redirects','.gitignore'}:
+                      z.writestr(name,b)
+          Path('/tmp/iris-rescate/inventario.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2))
+          print('Commit:',subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+          print('Archivos inventariados:',len(inventory))
+          PY
+      - name: Reproducir el build configurado en Netlify
+        run: |
+          set -o pipefail
+          python3 --version
+          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-rescate/build.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: iris-rescate-diagnostico
+          path: /tmp/iris-rescate
+          retention-days: 3
