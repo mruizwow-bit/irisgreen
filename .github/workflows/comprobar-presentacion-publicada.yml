@@ -1,0 +1,49 @@
+name: Comprobar presentacion publicada
+on:
+  push:
+    branches: ['mejora/presentacion-metodologia-20260909']
+    paths: ['.github/workflows/comprobar-presentacion-publicada.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Verificar los archivos publicados
+        run: |
+          mkdir -p /tmp/iris-editorial-tests
+          python3 - <<'PY'
+          from pathlib import Path
+          import urllib.request,time,hashlib,json
+          expected={'es/metodologia/':'f9b4b3f28e3c601fb6d22f70b96391f750d1bd09f226d2f439ba9d65a7d42a67','es/sobre-iris-green/':'77dc520ba4736b4cf426073c6147952b24fda6a272336ef5bb9592ce24d0b56b'}
+          report={}
+          for route,sha in expected.items():
+              for attempt in range(24):
+                  req=urllib.request.Request('https://irisgreen.eu/'+route+'?editorial=3db8c03',headers={'Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=25) as response:raw=response.read()
+                  actual=hashlib.sha256(raw).hexdigest()
+                  if actual==sha:break
+                  time.sleep(5)
+              assert actual==sha,(route,actual)
+              report[route]={'sha256':actual,'matches':True}
+          Path('/tmp/iris-editorial-tests/published.json').write_text(json.dumps(report,indent=2))
+          PY
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/iris-browser
+          /tmp/iris-browser/bin/pip install playwright==1.55.0
+          /tmp/iris-browser/bin/python -m playwright install --with-deps chromium
+      - name: Probar las paginas reales
+        env:
+          BASE_URL: https://irisgreen.eu
+        run: /tmp/iris-browser/bin/python .staging-editorial/test.py > /tmp/iris-editorial-tests/live-browser.log 2>&1
+      - name: Guardar comprobaciones
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-editorial-live
+          path: /tmp/iris-editorial-tests
+          retention-days: 7
+          if-no-files-found: error
