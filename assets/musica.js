@@ -3,7 +3,7 @@
   'use strict';
   if (window.__igMusicReady) return;
   window.__igMusicReady = true;
-  var TRACKS = [
+  var ALL_TRACKS = [
     { f:'un-momento-de-calma.m4a',t:'Un momento de calma',a:'MickeysCat' },
     { f:'calma-por-dentro.m4a',t:'Calma por dentro',a:'The_Mountain' },
     { f:'piano-tranquilo.m4a',t:'Piano tranquilo',a:'leberch' },
@@ -29,6 +29,13 @@
     { f:'ambiente-largo-1.mp3',t:'Ambiente largo I',a:'Lachm' },
     { f:'ambiente-largo-2.mp3',t:'Ambiente largo II',a:'Lachm' }
   ];
+  /* Algunos navegadores Chromium no incluyen decodificador AAC. En ellos las
+     pistas .m4a daban respuesta HTTP correcta pero terminaban en error de audio.
+     Mostramos solo formatos que el propio navegador declara reproducibles. */
+  var probe=document.createElement('audio');
+  var aac=!!(probe.canPlayType&&probe.canPlayType('audio/mp4; codecs="mp4a.40.2"'));
+  var TRACKS=ALL_TRACKS.filter(function(track){return !/\.m4a$/i.test(track.f)||aac;});
+  if(!TRACKS.length)TRACKS=ALL_TRACKS.slice();
   var TEXT = {
     es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. Prueba otra o pulsa Escuchar de nuevo.'},
     en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another or press Play again.'},
