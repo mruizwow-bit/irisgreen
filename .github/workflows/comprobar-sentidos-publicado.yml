@@ -1,0 +1,88 @@
+name: Comprobar Sentidos publicado
+on:
+  push:
+    branches: ['contenido/sentidos-texto-autora-20260909']
+    paths: ['.github/workflows/comprobar-sentidos-publicado.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: f14ad41dc99e497abe3bc774373658fecbe8b2a0
+      - name: Comprobar los 51 recursos y los 48 textos publicados
+        run: |
+          python3 - <<'PY'
+          import sys,hashlib,json,time,urllib.request
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor
+          sys.path.insert(0,'scripts');import sentidos_author as a
+          root=Path('/tmp/sentidos-live/site');root.mkdir(parents=True,exist_ok=True)
+          rows=a.approved_rows();paths=[r[k] for r in rows for k in ['es_path','en_path']]+list(a.INDEXES.values())+['buscador.json']
+          def fetch(path):
+              expected=hashlib.sha256(Path(path).read_bytes()).hexdigest();error='Not checked'
+              url='https://irisgreen.eu/'+path.removesuffix('index.html')
+              for attempt in range(16):
+                  try:
+                      request=urllib.request.Request(url+'?sentidos=f14ad41&check='+str(attempt),headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-approved-text-check'})
+                      with urllib.request.urlopen(request,timeout=25) as response:body=response.read();status=response.status
+                      actual=hashlib.sha256(body).hexdigest()
+                      if actual==expected:
+                          dest=root/path;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(body)
+                          return {'path':path,'http_status':status,'sha256':actual,'matches_tested_source':True}
+                      error='Another version is still being served'
+                  except Exception as e:error=str(e)
+                  time.sleep(4)
+              raise AssertionError(path+': '+error)
+          with ThreadPoolExecutor(max_workers=4) as pool:published=list(pool.map(fetch,paths))
+          report={'commit':'f14ad41dc99e497abe3bc774373658fecbe8b2a0','source_sha256':a.SOURCE_SHA256,'resources':published,'exact_wording':a.check(root)}
+          Path('/tmp/sentidos-live/published.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({'resources':len(published),'exact_descriptions':report['exact_wording']['exact_descriptions'],'source_sha256':a.SOURCE_SHA256}))
+          PY
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/live-browser
+          /tmp/live-browser/bin/pip install playwright==1.55.0
+          /tmp/live-browser/bin/python -m playwright install --with-deps chromium
+      - name: Comprobar navegación y presentación en la web publicada
+        run: |
+          /tmp/live-browser/bin/python - <<'PY'
+          import sys,json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          sys.path.insert(0,'scripts');import sentidos_author as a
+          rows=a.approved_rows();report={'browser_samples':[],'javascript_errors':[]}
+          with sync_playwright() as p:
+              browser=p.chromium.launch();context=browser.new_context(viewport={'width':1600,'height':950})
+              page=context.new_page();page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
+              for i in [0,1,5,23]:
+                  row=rows[i]
+                  for lang in ['es','en']:
+                      url='https://irisgreen.eu'+a.route(row[lang+'_path']);page.goto(url,wait_until='load')
+                      assert page.locator('article.ficha p.lede').inner_text()==row[lang]
+                      for width in [390,1600]:
+                          page.set_viewport_size({'width':width,'height':950})
+                          for scale in [1,1.5]:
+                              page.evaluate('(scale)=>IGPreferences.update({scale})',scale)
+                              assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(url,width,scale)
+                      page.evaluate('IGPreferences.reset()')
+                      report['browser_samples'].append({'path':row[lang+'_path'],'exact':True,'mobile_desktop_and_enlarged_text':True})
+              page.goto('https://irisgreen.eu'+a.route(rows[0]['es_path']),wait_until='load')
+              page.locator('.langs a[lang=en]').click();page.wait_for_url('**'+a.route(rows[0]['en_path']))
+              assert page.locator('article.ficha p.lede').inner_text()==rows[0]['en']
+              report['language_link_works']=True
+              assert not report['javascript_errors'],report['javascript_errors']
+              browser.close()
+          Path('/tmp/sentidos-live/browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report))
+          PY
+      - name: Conservar comprobaciones
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-sentidos-live
+          path: /tmp/sentidos-live/*.json
+          retention-days: 7
+          if-no-files-found: error
