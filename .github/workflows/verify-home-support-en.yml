@@ -1,0 +1,44 @@
+name: Verify home support English
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verify-home-support-en.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 -m venv /tmp/ig-verify
+          /tmp/ig-verify/bin/pip -q install playwright==1.55.0
+          /tmp/ig-verify/bin/python -m playwright install --with-deps chromium >/tmp/ig-browser.log 2>&1
+      - run: |
+          /tmp/ig-verify/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          bad=['Informe psicopedagógico','Adaptaciones metodológicas','Dictamen de escolarización','Directorio de ayudas','Derivación desde atención primaria','Prestación por hijo con discapacidad','Terapia por la vía pública','Ajustes razonables en el aula','Proyecto Pedagógico Individual','Programa de Integración Escolar']
+          needs=['colegio','trabajo','diagnostico','economica','terapia']
+          countries=['es','mx','ar','cl','otro']
+          with sync_playwright() as pw:
+              b=pw.chromium.launch();p=b.new_page(viewport={'width':1440,'height':1000})
+              p.goto('https://irisgreen.eu/',wait_until='domcontentloaded');p.locator('main h1').first.wait_for(state='visible');p.wait_for_timeout(700)
+              p.locator('.ig-uh-langs button:has-text("EN")').first.click();p.wait_for_timeout(250)
+              assert p.locator('html').get_attribute('lang')=='en'
+              assert p.locator('.ig-uh-reading:visible').first.inner_text().strip()=='Reading', p.locator('.ig-uh-reading:visible').first.inner_text()
+              p.get_by_role('button',name='What can I ask for?').click();p.wait_for_timeout(200)
+              selects=p.locator('#consola select')
+              assert selects.count()>=2
+              for need in needs:
+                  selects.nth(0).select_option(need)
+                  for country in countries:
+                      selects.nth(1).select_option(country);p.wait_for_timeout(60)
+                      text=p.locator('#consola').inner_text()
+                      hits=[x for x in bad if x in text]
+                      assert not hits,(need,country,hits,text)
+              text=p.locator('#consola').inner_text()
+              assert 'Support directory →' in text
+              print('HOME_SUPPORT_EN_OK 25 combinations; Reading label OK')
+              b.close()
+          PY
