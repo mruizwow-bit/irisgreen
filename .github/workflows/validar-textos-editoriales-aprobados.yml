@@ -1,0 +1,188 @@
+name: Validar textos editoriales aprobados
+on:
+  push:
+    branches: ['editorial/textos-aprobados-sobre-metodologia-20260909']
+    paths: ['.github/workflows/validar-textos-editoriales-aprobados.yml']
+permissions:
+  contents: write
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construccion completa de referencia
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-editorial-final
+          python3 scripts/build_site.py > /tmp/iris-editorial-final/build-before.log 2>&1
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('dist')
+          data={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          Path('/tmp/iris-editorial-final/before.json').write_text(json.dumps(data))
+          PY
+          git restore --worktree .
+      - name: Incorporar solo los textos aprobados
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.editorial-approved/apply.py');s=p.read_text()
+          s=s.replace("T['docTitle']=a['title']+' · Iris Green'", "T['docTitle']={'es':'Sobre Iris Green · Autora y proyecto','en':'About Iris Green · Author and project','pt':'Sobre Iris Green · Autora e projeto'}[lang]")
+          s=s.replace('Sobre Iris Green · Iris Green','Sobre Iris Green · Autora y proyecto')
+          p.write_text(s)
+          PY
+          python3 .editorial-approved/apply.py > /tmp/iris-editorial-final/input-hashes.json
+          python3 scripts/build_site.py > /tmp/iris-editorial-final/build-after.log 2>&1
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('dist')
+          before=json.loads(Path('/tmp/iris-editorial-final/before.json').read_text())
+          after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          changed=sorted(p for p in before.keys()&after.keys() if before[p]!=after[p])
+          added=sorted(after.keys()-before.keys());removed=sorted(before.keys()-after.keys())
+          assert changed==['es/metodologia/index.html','es/sobre-iris-green/index.html'],changed
+          assert not added and not removed,(added,removed)
+          report={'before':len(before),'after':len(after),'changed':changed,'added':added,'removed':removed,'home_unchanged':before['index.html']==after['index.html'],'instructions_unchanged':before['es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html']==after['es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html']}
+          Path('/tmp/iris-editorial-final/public-diff.json').write_text(json.dumps(report,indent=2))
+          for p in changed:
+              assert Path(p).read_bytes()==(root/p).read_bytes(),'Build rewrote '+p
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Preparar pruebas de navegador
+        run: |
+          python3 -m venv /tmp/editorial-browser
+          /tmp/editorial-browser/bin/pip install playwright==1.55.0
+          /tmp/editorial-browser/bin/python -m playwright install --with-deps chromium
+      - name: Comprobar textos idiomas lectura y ancho
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/editorial-browser/bin/python - <<'PY' 2>&1 | tee /tmp/iris-editorial-final/browser.log
+          from playwright.sync_api import sync_playwright
+          from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+          from functools import partial
+          import threading,json
+          from pathlib import Path
+          server=ThreadingHTTPServer(('127.0.0.1',8765),partial(SimpleHTTPRequestHandler,directory='dist'))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          report={'checks':[],'layout':[],'javascript_errors':[]}
+          base='http://127.0.0.1:8765'
+          about='/es/sobre-iris-green/'
+          method='/es/metodologia/'
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              context=browser.new_context(viewport={'width':1600,'height':1000})
+              page=context.new_page()
+              page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
+              page.goto(base+about,wait_until='networkidle')
+              page.wait_for_selector('main h1',state='visible')
+              assert page.locator('main h1').inner_text()=='Sobre Iris Green'
+              assert page.locator('main h2').all_text_contents()==['El proyecto','Una forma de trabajar','Contacto']
+              text=page.locator('main').inner_text()
+              assert 'Iris Green es autora y creadora de este proyecto' in text
+              assert 'Su propósito es facilitar el acceso a la información sin exigir conocimientos previos' in text
+              assert 'no un equipo ni una máquina' not in text
+              assert 'Colaboraciones en los libros' not in text
+              assert '185' not in text and '199' not in text
+              assert page.locator('main #criterios-editoriales a').get_attribute('href')=='/es/metodologia/?lang=es'
+              page.locator('.ig-uh-langs button').filter(has_text='EN').click()
+              page.wait_for_function("document.documentElement.lang==='en'")
+              assert page.locator('main h1').inner_text()=='About Iris Green'
+              assert page.locator('main h2').all_text_contents()==['The project','An approach to the work','Contact']
+              assert 'Information and resources for understanding neurodiversity' in page.locator('main').inner_text()
+              assert json.loads(page.locator('#ig-schema').text_content())['inLanguage']=='en-GB'
+              assert 'neurodiversity' in page.locator('meta[name=description]').get_attribute('content')
+              report['checks'].append('About: approved ES/EN content, headings, links, metadata and old text removed')
+              page.locator('[data-ig-reading-trigger]').click()
+              page.wait_for_selector('#ig-reading-panel',state='visible')
+              assert page.locator('#ig-reading-panel button').count()>=9
+              page.keyboard.press('Escape')
+              report['checks'].append('About: reading controls and keyboard close')
+              page.goto(base+method+'?lang=en',wait_until='networkidle')
+              assert page.locator('main h1').inner_text()=='Methodology'
+              assert page.locator('main h2').count()==6
+              assert 'These features should not be confused with accessibility certification' in page.locator('main').inner_text()
+              page.locator('[data-method-lang=es]').click()
+              assert page.locator('main h1').inner_text()=='Metodología'
+              assert page.locator('main h2').all_text_contents()==['Fuentes y alcance','Investigación, experiencias y recursos prácticos','Las etiquetas A, B y C','Revisión y actualizaciones','Lenguaje y presentación','Autoría y correcciones']
+              assert 'Cómo se selecciona, prepara y revisa el contenido de Iris Green.' in page.locator('main').inner_text()
+              assert 'No equivalen a una evaluación GRADE' in page.locator('main').inner_text()
+              assert 'NG69' not in page.locator('main').inner_text()
+              assert json.loads(page.locator('#method-schema').text_content())['@graph'][0]['inLanguage']=='es'
+              assert page.locator('[data-method-lang=es]').get_attribute('aria-pressed')=='true'
+              page.locator('#a11yBtn').click()
+              page.wait_for_selector('#a11y',state='visible')
+              page.locator('#a11y [data-a="hc"]').click()
+              assert page.evaluate("IGPreferences.get().contrast") is True
+              page.locator('#a11y [data-a="hc"]').click()
+              page.keyboard.press('Escape')
+              report['checks'].append('Methodology: equivalent ES/EN, six approved sections, metadata, contrast and keyboard controls')
+              for path in [about,method+'?lang=es']:
+                  page.goto(base+path,wait_until='networkidle')
+                  page.wait_for_selector('main h1',state='visible')
+                  for width in [320,390,768,1280,1600]:
+                      page.set_viewport_size({'width':width,'height':950})
+                      for scale in [1,1.5]:
+                          page.evaluate('(scale)=>IGPreferences.update({scale:scale,text:{width:"original"}})',scale)
+                          page.wait_for_timeout(70)
+                          data=page.evaluate('''()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,main:document.querySelector('main').getBoundingClientRect().width})''')
+                          assert data['scroll']<=width+1,(path,width,scale,data)
+                          report['layout'].append({'page':path,'scale':scale,**data})
+              page.set_viewport_size({'width':1600,'height':950})
+              page.evaluate('IGPreferences.reset()')
+              wide=page.locator('main').bounding_box()['width']
+              assert 1119<=wide<=1121,wide
+              page.evaluate('IGPreferences.update({text:{width:"narrow"}})')
+              narrow=page.locator('main').bounding_box()['width']
+              assert narrow<wide-100,(narrow,wide)
+              report['methodology_width']={'default':wide,'narrow_preference':narrow}
+              report['checks'].append('Responsive 320–1600px and 100/150%; 1120px method width; user-selected narrow width preserved')
+              page.evaluate('IGPreferences.reset()')
+              # ES remains readable when scripts are disabled; the EN control is not advertised as working without JS.
+              plain=browser.new_context(java_script_enabled=False,viewport={'width':390,'height':900})
+              np=plain.new_page();np.goto(base+method)
+              assert np.locator('main h2').count()==6
+              assert np.locator('[data-method-lang=en]').is_hidden()
+              report['checks'].append('Methodology static Spanish fallback without JavaScript')
+              assert not report['javascript_errors'],report['javascript_errors']
+              browser.close()
+          server.shutdown()
+          Path('/tmp/iris-editorial-final/browser-tests.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Guardar solo los dos archivos comprobados en la rama de trabajo
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/sobre-iris-green/index.html es/metodologia/index.html
+          python3 - <<'PY'
+          import subprocess
+          assert set(subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines())=={'es/sobre-iris-green/index.html','es/metodologia/index.html'}
+          PY
+          git commit -m 'Textos aprobados de Sobre Iris Green y Metodología verificados [skip netlify]'
+          git push origin HEAD:editorial/textos-aprobados-sobre-metodologia-20260909
+          python3 - <<'PY'
+          import hashlib,json,subprocess,shutil
+          from pathlib import Path
+          files=['es/sobre-iris-green/index.html','es/metodologia/index.html']
+          report={'base':'3db8c033b0d91e47e50634e87b2f511d390451a1','commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'blobs':{p:subprocess.check_output(['git','rev-parse','HEAD:'+p]).decode().strip() for p in files},'sha256':{p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}}
+          out=Path('/tmp/iris-editorial-final');(out/'validated.json').write_text(json.dumps(report,indent=2))
+          for p in files: shutil.copy2(p,out/('about.html' if 'sobre' in p else 'methodology.html'))
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Conservar registros de comprobacion
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-editorial-approved-verification
+          path: /tmp/iris-editorial-final
+          retention-days: 7
+          if-no-files-found: error
