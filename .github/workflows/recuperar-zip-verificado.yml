@@ -1,0 +1,41 @@
+name: Recuperar paginas del historial sin publicar
+on:
+  push:
+    branches: ['reparacion/zip-verificado-20260909']
+    paths: ['.github/workflows/recuperar-zip-verificado.yml']
+permissions:
+  contents: read
+jobs:
+  fuentes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Recuperar versiones de las paginas pendientes
+        run: |
+          mkdir -p /tmp/iris-paginas
+          python3 - <<'PY'
+          import hashlib, json, subprocess, zipfile
+          paths = ['en/accessible-reading/index.html', 'en/methodology/index.html', 'es/metodologia/index.html', 'es/lectura-accesible/index.html', 'cola-traduccion']
+          objects = subprocess.check_output(['git','rev-list','--objects','--all','--',*paths], text=True).splitlines()
+          manifest = []
+          with zipfile.ZipFile('/tmp/iris-paginas/paginas.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for line in objects:
+                  sha, _, name = line.partition(' ')
+                  if not name or subprocess.check_output(['git','cat-file','-t',sha],text=True).strip() != 'blob':
+                      continue
+                  data = subprocess.check_output(['git','cat-file','blob',sha])
+                  z.writestr('blobs/'+sha, data)
+                  manifest.append({'sha':sha,'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+              z.writestr('manifest.json', json.dumps(manifest,ensure_ascii=False,indent=2))
+          print('Versiones recuperadas:',len(manifest))
+          print('No se ejecuta ni publica el sitio.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-paginas-historicas
+          path: /tmp/iris-paginas
+          retention-days: 3
