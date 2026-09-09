@@ -1,0 +1,125 @@
+name: Verificar portada y ficha aprobadas
+on:
+  push:
+    branches: ['mejora/portada-ficha-aprobadas-20260909']
+    paths: ['.github/workflows/verificar-navegacion-aprobada.yml']
+permissions:
+  contents: write
+concurrency:
+  group: verificar-navegacion-aprobada
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir la version anterior completa como referencia
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-navigation-release /tmp/iris-navigation-tests
+          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-navigation-release/baseline-build.log
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('dist')
+          files={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          Path('/tmp/iris-navigation-release/baseline.json').write_text(json.dumps(files))
+          assert any(p.startswith('audio/') for p in files)
+          assert any(p.startswith('img/') for p in files)
+          print('Baseline public files:',len(files))
+          PY
+          git restore --worktree .
+      - name: Recuperar exclusivamente los diez archivos aprobados
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64,hashlib,json,lzma
+          from pathlib import Path
+          expected={'scripts/build_site.py','scripts/build_approved_navigation.py','scripts/test_approved_navigation.py','assets/navigation-approved.css','assets/navigation-approved.js','editorial/navigation/home-es.html','editorial/navigation/instructions-es.html','editorial/navigation/instructions-en.html','editorial/navigation/manifest.json','editorial/navigation/README.md'}
+          encoded=''.join(Path(f'.staging-navigation/part-{i:02d}.txt').read_text(encoding='ascii').strip() for i in range(1,8))
+          raw=lzma.decompress(base64.b64decode(encoded,validate=True))
+          assert hashlib.sha256(raw).hexdigest()=='1814973c3b75f96ab6c63b7febd96751828ed087f0dee01e50448c283bcaf504','Payload was altered in transfer'
+          payload=json.loads(raw)
+          assert set(payload)==expected
+          report={}
+          for name,text in payload.items():
+              path=Path(name)
+              assert not path.is_symlink()
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_text(text,encoding='utf-8')
+              report[name]=hashlib.sha256(path.read_bytes()).hexdigest()
+          Path('/tmp/iris-navigation-release/input-hashes.json').write_text(json.dumps(report,indent=2))
+          print('All ten source files verified before use')
+          PY
+      - name: Construir y comprobar que solo cambian tres paginas y dos recursos
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-navigation-release/integrated-build.log
+          python3 scripts/build_approved_navigation.py --check | tee /tmp/iris-navigation-release/renderer-check.json
+          cp reports/approved-navigation-build.json /tmp/iris-navigation-release/
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('dist')
+          before=json.loads(Path('/tmp/iris-navigation-release/baseline.json').read_text())
+          after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          added=sorted(set(after)-set(before))
+          removed=sorted(set(before)-set(after))
+          changed=sorted(p for p in set(before)&set(after) if before[p]!=after[p])
+          expected=['index.html','es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html','en/situations/i-need-instructions-repeated/index.html']
+          data=json.loads((root/'es/tramites/directorio/tramites-datos.json').read_text())
+          rows=[row for group in data.values() if isinstance(group,list) for row in group]
+          assert len(rows)==2425
+          assert all(isinstance(r.get(k+'_en'),str) and r[k+'_en'].strip() for r in rows for k in ('que','cuantia','quien','docs','obs','tags'))
+          report={'before_files':len(before),'after_files':len(after),'added':added,'removed':removed,'changed':changed,'support_records':len(rows),'support_en_fields':len(rows)*6,'audio_files':sum(p.startswith('audio/') for p in after),'image_files':sum(p.startswith('img/') for p in after)}
+          Path('/tmp/iris-navigation-release/public-diff.json').write_text(json.dumps(report,indent=2))
+          print(json.dumps(report,indent=2))
+          assert not removed
+          assert added==['assets/navigation-approved.css','assets/navigation-approved.js']
+          assert changed==sorted(expected)
+          PY
+      - name: Preparar navegador de pruebas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/iris-browser
+          /tmp/iris-browser/bin/pip install playwright==1.55.0
+          /tmp/iris-browser/bin/python -m playwright install --with-deps chromium
+      - name: Probar busqueda idiomas mensaje lectura movil y teclado
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/iris-browser/bin/python scripts/test_approved_navigation.py 2>&1 | tee /tmp/iris-navigation-release/browser-tests.log
+      - name: Guardar solo los archivos validados en la rama de trabajo
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          files=list(json.loads(Path('/tmp/iris-navigation-release/input-hashes.json').read_text()))
+          subprocess.run(['git','add','--',*files],check=True)
+          staged=subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines()
+          assert set(staged)==set(files),(staged,files)
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','commit','-m','Integrar portada y ficha aprobadas tras verificar el recorrido completo [skip netlify]'],check=True)
+          commit=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip()
+          blobs={p:subprocess.check_output(['git','rev-parse','HEAD:'+p]).decode().strip() for p in files}
+          Path('/tmp/iris-navigation-release/validated-git-files.json').write_text(json.dumps({'commit':commit,'base':'6b655ed3061b6c375d71eac34e0b28846012d530','files':blobs},indent=2))
+          subprocess.run(['git','push','origin','HEAD:mejora/portada-ficha-aprobadas-20260909'],check=True)
+          PY
+      - name: Guardar pruebas y diagnostico
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-navigation-verification
+          path: |
+            /tmp/iris-navigation-release
+            /tmp/iris-navigation-tests
+          retention-days: 7
+          if-no-files-found: error
