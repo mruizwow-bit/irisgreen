@@ -1,0 +1,42 @@
+name: Verify pending Support English
+on:
+  push:
+    branches: [integrar-ayudas-en]
+    paths: ['.github/workflows/verify-pending-support-en.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construir el sitio con las traducciones
+        run: python3 scripts/build_site.py
+      - name: Comprobar datos y la interfaz generada
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          data=json.load(open('dist/es/tramites/directorio/tramites-datos.json',encoding='utf-8'))
+          groups={'uk':234,'br':148,'us':362,'mundo':1423}
+          fields=('que','cuantia','quien','docs','obs','tags')
+          protected=['id','name','terr','region','cat','country','nivel','ambito','pais','org','fuente','que','cuantia','quien','docs','obs','tags']
+          assert {g:len(data[g]) for g in groups}==groups
+          assert len(data['es'])==258
+          assert sum(len(v) for v in data.values() if isinstance(v,list))==2425
+          pending=[r for g in groups for r in data[g]]
+          assert len(pending)==2167
+          assert all(r.get('cat_en','').strip() for r in pending)
+          assert all(str(r.get(k+'_en','')).strip() for r in pending for k in fields)
+          assert not any('name_en' in r for r in pending)
+          payload={g:[[r.get(k) for k in protected] for r in data[g]] for g in groups}
+          raw=json.dumps(payload,ensure_ascii=False,separators=(',',':')).encode()
+          assert hashlib.sha256(raw).hexdigest()=='1fc6aa371850c95f942a1da8772d469a1f327b097d425fc0e35efdb1f715a64d'
+          html=Path('dist/es/tramites/directorio/index.html').read_text(encoding='utf-8')
+          assert 'const SUPPORT_REGION_EN = ' in html
+          for en in ['Asia and Eurasia','Caribbean','Central America','Europe','North America','Oceania','South America','Africa']:
+              assert en in html,en
+          assert 'L === "en" ? (SUPPORT_REGION_EN[r] || r) : r' in html
+          print('SUPPORT_EN_OK',len(pending),'records',len(pending)*len(fields),'fields','146 categories','8 regions','2425 total')
+          PY
