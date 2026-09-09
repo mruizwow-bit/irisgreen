@@ -1,0 +1,103 @@
+name: Comprobar textos editoriales publicados
+on:
+  push:
+    branches: ['editorial/textos-aprobados-sobre-metodologia-20260909']
+    paths: ['.github/workflows/comprobar-editorial-publicado.yml']
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '893a007b68908539f616568350789b7d86a3aab2'
+      - name: Comprobar que se publicaron los mismos dos archivos
+        run: |
+          mkdir -p /tmp/iris-editorial-live
+          python3 - <<'PY'
+          import urllib.request,time,json,hashlib
+          from pathlib import Path
+          files=['es/sobre-iris-green/index.html','es/metodologia/index.html']
+          report={'commit':'893a007b68908539f616568350789b7d86a3aab2','pages':[]}
+          for path in files:
+              expected=hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              url='https://irisgreen.eu/'+path[:-10]
+              error='Not checked'
+              for attempt in range(36):
+                  try:
+                      req=urllib.request.Request(url+'?editorial-check=893a007&n='+str(attempt),headers={'Cache-Control':'no-cache','User-Agent':'IrisGreen-publication-check'})
+                      with urllib.request.urlopen(req,timeout=25) as r:
+                          body=r.read();status=r.status
+                      actual=hashlib.sha256(body).hexdigest()
+                      if actual==expected:
+                          report['pages'].append({'path':path,'status':status,'sha256':actual,'matches_tested_file':True});break
+                      error='The site is still serving another version'
+                  except Exception as e:error=str(e)
+                  time.sleep(5)
+              else: raise AssertionError(path+': '+error)
+          Path('/tmp/iris-editorial-live/published-hashes.json').write_text(json.dumps(report,indent=2))
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Preparar navegador
+        run: |
+          python3 -m venv /tmp/live-browser
+          /tmp/live-browser/bin/pip install playwright==1.55.0
+          /tmp/live-browser/bin/python -m playwright install --with-deps chromium
+      - name: Leer y probar ambas paginas en produccion
+        run: |
+          /tmp/live-browser/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          report={'checks':[],'javascript_errors':[],'widths':[]}
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              c=browser.new_context(viewport={'width':1600,'height':950})
+              page=c.new_page();page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
+              page.goto('https://irisgreen.eu/es/sobre-iris-green/',wait_until='networkidle')
+              page.wait_for_selector('main h1',state='visible')
+              assert page.locator('main h1').inner_text()=='Sobre Iris Green'
+              assert page.locator('main h2').all_text_contents()==['El proyecto','Una forma de trabajar','Contacto']
+              assert 'Iris Green es autora y creadora de este proyecto' in page.locator('main').inner_text()
+              page.locator('.ig-uh-langs button').filter(has_text='EN').click()
+              assert page.locator('main h1').inner_text()=='About Iris Green'
+              assert 'Information and resources for understanding neurodiversity in everyday life.' in page.locator('main').inner_text()
+              page.locator('main #criterios-editoriales a').click()
+              page.wait_for_url('**/es/metodologia/?lang=en')
+              assert page.locator('main h1').inner_text()=='Methodology'
+              assert page.locator('main h2').count()==6
+              assert 'They do not amount to a GRADE assessment' in page.locator('main').inner_text()
+              assert json.loads(page.locator('#method-schema').text_content())['@graph'][0]['inLanguage']=='en'
+              page.locator('[data-method-lang=es]').click()
+              assert page.locator('main h1').inner_text()=='Metodología'
+              assert page.locator('main h2').all_text_contents()==['Fuentes y alcance','Investigación, experiencias y recursos prácticos','Las etiquetas A, B y C','Revisión y actualizaciones','Lenguaje y presentación','Autoría y correcciones']
+              assert 'no ofrece diagnósticos ni tratamientos personalizados' in page.locator('main').inner_text()
+              page.locator('#a11yBtn').click();page.wait_for_selector('#a11y',state='visible')
+              page.locator('#a11y [data-a="fs+"]').click()
+              assert page.evaluate('IGPreferences.get().scale')>1
+              page.keyboard.press('Escape');page.evaluate('IGPreferences.reset()')
+              wide=page.locator('main').bounding_box()['width'];assert 1119<=wide<=1121,wide
+              report['methodology_default_width']=wide
+              for path in ['/es/sobre-iris-green/','/es/metodologia/?lang=es','/es/metodologia/?lang=en']:
+                  page.goto('https://irisgreen.eu'+path,wait_until='networkidle')
+                  for w in [320,390,1600]:
+                      page.set_viewport_size({'width':w,'height':950})
+                      for scale in [1,1.5]:
+                          page.evaluate('(scale)=>IGPreferences.update({scale})',scale)
+                          assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,w,scale)
+                          report['widths'].append({'page':path,'viewport':w,'scale':scale,'no_horizontal_overflow':True})
+              report['checks']=['Spanish approved content on both pages','English about and methodology, including the link between them','Methodology language controls and structured metadata','Reading controls and keyboard close','1120px desktop methodology width','Mobile and desktop layouts with enlarged text']
+              assert not report['javascript_errors'],report['javascript_errors']
+              browser.close()
+          Path('/tmp/iris-editorial-live/browser-live.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print(json.dumps(report,indent=2,ensure_ascii=False))
+          PY
+      - name: Guardar comprobacion
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-editorial-approved-live
+          path: /tmp/iris-editorial-live
+          retention-days: 7
