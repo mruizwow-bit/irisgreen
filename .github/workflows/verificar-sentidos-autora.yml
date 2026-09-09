@@ -46,11 +46,11 @@ jobs:
           PY
           python3 scripts/build_site.py > /tmp/iris-senses/build-after.log 2>&1
           python3 scripts/sentidos_author.py --root dist > /tmp/iris-senses/exact-text.json
-      - name: Verificar alcance, apartados intactos y segunda construccion
+      - name: Verificar alcance, apartados intactos y segunda construccion limpia
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import sys,hashlib,json,copy
+          import sys,hashlib,json,copy,subprocess
           from pathlib import Path
           sys.path.insert(0,'scripts');import sentidos_author as a
           out=Path('/tmp/iris-senses');root=Path('dist');before=json.loads((out/'before.json').read_text())
@@ -97,14 +97,19 @@ jobs:
           else:raise AssertionError('Guard did not detect changed text')
           finally:p.write_bytes(original)
           a.check(root)
+          # Netlify starts each build from clean sources. Stage only this change,
+          # then discard generated worktree edits in unrelated source files.
+          paths=sorted(expected)+['scripts/build_site.py',a.MANIFEST,'editorial/reviews/SENTIDOS-README.md']
+          subprocess.run(['git','add','--',*paths],check=True)
+          subprocess.run(['git','restore','--worktree','.'],check=True)
           PY
           python3 scripts/build_site.py > /tmp/iris-senses/build-second.log 2>&1
           python3 - <<'PY'
           import hashlib,json
           from pathlib import Path
           root=Path('dist');after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
-          assert after==json.loads(Path('/tmp/iris-senses/after.json').read_text()),'Second build changed the output'
-          Path('/tmp/iris-senses/idempotence.json').write_text(json.dumps({'second_complete_build_identical':True,'altered_description_rejected':True}))
+          assert after==json.loads(Path('/tmp/iris-senses/after.json').read_text()),'Second clean build changed the output'
+          Path('/tmp/iris-senses/idempotence.json').write_text(json.dumps({'second_clean_build_identical':True,'altered_description_rejected':True,'unrelated_build_scripts_unchanged':True}))
           PY
       - name: Preparar navegador
         run: |
