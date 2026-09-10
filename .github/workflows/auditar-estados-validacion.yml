@@ -1,0 +1,52 @@
+name: Auditar estados visibles antes de validar
+on:
+  push:
+    branches:
+      - trabajo/validacion-global-accesibilidad-20260910
+    paths:
+      - .github/workflows/auditar-estados-validacion.yml
+permissions:
+  contents: read
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir la web completa
+        run: python3 scripts/build_site.py
+      - name: Buscar estados no definitivos en la salida pública
+        shell: bash
+        run: |
+          mkdir -p /tmp/iris-validacion
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('dist')
+          patterns={
+            'borrador':re.compile(r'\b(?:borrador(?:a|es)?|drafts?)\b',re.I),
+            'pendiente':re.compile(r'\b(?:pendiente(?:s)?|pending)\b',re.I),
+            'revisado':re.compile(r'\b(?:revisad[oa]s?|reviewed)\b',re.I),
+          }
+          matches=[]
+          for p in root.rglob('*'):
+            if not p.is_file() or p.suffix.lower() not in {'.html','.json','.xml','.txt','.js','.css'}: continue
+            try: text=p.read_text('utf-8')
+            except Exception: continue
+            for line_no,line in enumerate(text.splitlines(),1):
+              for state,rx in patterns.items():
+                if rx.search(line):
+                  matches.append({'state':state,'path':p.relative_to(root).as_posix(),'line':line_no,'text':line.strip()[:500]})
+          by={k:sum(1 for x in matches if x['state']==k) for k in patterns}
+          files={k:len({x['path'] for x in matches if x['state']==k}) for k in patterns}
+          report={'matches':len(matches),'occurrences':by,'files':files,'items':matches}
+          Path('/tmp/iris-validacion/estados-publicos.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({'matches':len(matches),'occurrences':by,'files':files},ensure_ascii=False,indent=2))
+          for x in matches[:500]: print(f"{x['state']}\t{x['path']}:{x['line']}\t{x['text']}")
+          PY
+      - name: Guardar auditoría
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-estados-publicos-antes-validacion
+          path: /tmp/iris-validacion
+          retention-days: 14
