@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 import apply_accessibility_descriptions_part1 as core
 import sentidos_author as sentidos
+import sueno_author as sueno
 
 SPECIAL_COUNTERPARTS={
     '/es/situaciones/necesito-que-me-repitan-las-instrucciones/':
@@ -90,13 +91,17 @@ _generic_rows = core.rows
 
 
 def combined_rows():
-    """El paquete general conserva el resto; Sentidos usa su fuente editorial protegida."""
+    """Sentidos y Sueño usan sus fuentes editoriales protegidas; el resto conserva el paquete general."""
     approved = _generic_rows()
     sensory = {row['number']: row for row in sentidos.approved_rows()}
+    sleep = {row['number']: row for row in sueno.approved_rows()}
     for row in approved:
-        if row.get('area') != 'Sentidos':
+        if row.get('area') == 'Sentidos':
+            src = sensory[row['number']]
+        elif row.get('area') == 'Sueño':
+            src = sleep[row['number']]
+        else:
             continue
-        src = sensory[row['number']]
         row['title_es'] = src['title_es']
         row['es'] = src['es']
         row['en'] = src['en']

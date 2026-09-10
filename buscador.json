@@ -157,13 +157,13 @@
     "s": "Situación",
     "t": "Me despierto varias veces cada noche",
     "u": "/es/situaciones/me-despierto-varias-veces-cada-noche/",
-    "d": "Me duermo, pero me despierto varias veces durante la noche. Después de cada despertar paso un rato sin dormir antes de volver a dormirme. Por la mañana tengo sueño y siento que no he descansado lo suficiente.",
+    "d": "Me duermo, pero me despierto varias veces durante la noche. Después de cada despertar paso un rato sin dormir antes de volver a dormirme. Por la mañana sigo teniendo sueño aunque haya pasado muchas horas en la cama.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I wake up several times every night”",
       "u": "/en/situations/i-wake-up-several-times-a-night/",
-      "d": "I fall asleep, but I wake up several times during the night. After each awakening, I stay awake for a while before falling asleep again. In the morning I feel sleepy and feel that I have not rested enough.",
+      "d": "I fall asleep, but I wake up several times during the night. After each awakening I stay awake for a while before falling asleep again. In the morning I still feel sleepy even after spending many hours in bed.",
       "a": "Sleep"
     }
   },
@@ -171,13 +171,13 @@
     "s": "Situación",
     "t": "Si cambia algo de mi rutina de noche, no me duermo",
     "u": "/es/situaciones/si-cambia-mi-rutina-no-me-duermo/",
-    "d": "Antes de acostarme hago las mismas cosas y en el mismo orden cada noche. Si cambia la hora, el lugar o uno de esos pasos, tardo mucho más en dormirme.",
+    "d": "Antes de acostarme hago las mismas cosas y en el mismo orden cada noche. Si cambia la hora, el lugar o alguna de las cosas que hago antes de acostarme, tardo mucho más en dormirme.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“If anything changes in my night-time routine, I can't sleep”",
       "u": "/en/situations/any-change-to-my-night-routine/",
-      "d": "Before going to bed, I do the same things in the same order every night. If the time, the place or one of those steps changes, it takes me much longer to fall asleep.",
+      "d": "Before going to bed, I do the same things in the same order every night. If the time, place or something I normally do before bed changes, it takes me much longer to fall asleep.",
       "a": "Sleep"
     }
   },
@@ -185,27 +185,27 @@
     "s": "Situación",
     "t": "Por la noche siento más ansiedad",
     "u": "/es/situaciones/por-la-noche-la-ansiedad-se-hace-mas-grande/",
-    "d": "Durante el día trabajo, estudio, hago tareas o hablo con otras personas. Al acostarme empiezo a pensar en problemas, tareas pendientes o cosas que me preocupan. Sigo pensando en esas cosas y pasa mucho tiempo antes de que me duerma.",
+    "d": "Durante el día trabajo, estudio, hago tareas o hablo con otras personas. Al acostarme empiezo a pensar en problemas y en cosas que tengo pendientes. Sigo pensando en ellas y tardo mucho en dormirme.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“At night my anxiety gets bigger”",
       "u": "/en/situations/at-night-the-anxiety-gets-bigger/",
-      "d": "During the day I work, study, do tasks or talk to other people. When I go to bed, I start thinking about problems, things I still have to do or things that worry me. I keep thinking about them and it takes a long time before I fall asleep.",
+      "d": "During the day I work, study, do tasks or talk to other people. When I go to bed, I start thinking about problems and things I still have to do. I keep thinking about them and take a long time to fall asleep.",
       "a": "Sleep"
     }
   },
   {
     "s": "Situación",
-    "t": "No me duermo si no sé cómo será mañana",
+    "t": "No me duermo si no sé qué voy a hacer al día siguiente",
     "u": "/es/situaciones/no-me-duermo-si-no-se-como-sera-manana/",
-    "d": "Antes de acostarme quiero saber qué voy a hacer al día siguiente, a qué hora y con quién. Si hay algo importante que todavía no sé, sigo pensando en ello y no me duermo.",
+    "d": "Antes de acostarme quiero saber qué voy a hacer al día siguiente, a qué hora y con quién. Si falta un dato importante, sigo pensando en ello y no me duermo.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I can't sleep if I don't know what tomorrow will be like”",
       "u": "/en/situations/i-cant-sleep-until-i-know-about-tomorrow/",
-      "d": "Before going to bed, I want to know what I am going to do the next day, at what time and with whom. If there is something important I still do not know, I keep thinking about it and cannot fall asleep.",
+      "d": "Before going to bed, I want to know what I am going to do the next day, at what time and with whom. If an important detail is missing, I keep thinking about it and cannot fall asleep.",
       "a": "Sleep"
     }
   },
@@ -1045,7 +1045,7 @@
       "s": "Situation",
       "t": "“I only feel sleepy very late even when I get up early”",
       "u": "/en/situations/i-only-feel-sleepy-very-late-even-when-i-get-up-early/",
-      "d": "I get up early in the morning, but at night I do not feel sleepy until very late. By the time I fall asleep, it is already very late and I only sleep for a few hours before the alarm goes off.",
+      "d": "I get up early in the morning, but at night I do not feel sleepy until very late. By the time I fall asleep, it is already very late and I sleep only a few hours before the alarm goes off.",
       "a": "Sleep"
     }
   },
@@ -1053,13 +1053,13 @@
     "s": "Situación",
     "t": "Aunque duerma muchas horas, tardo mucho en despertarme",
     "u": "/es/situaciones/me-cuesta-despertarme-aunque-haya-dormido-muchas-horas/",
-    "d": "Cuando suena la alarma tardo en abrir los ojos y levantarme. Después sigo con sueño durante un buen rato y voy más despacio al vestirme, desayunar o prepararme para salir.",
+    "d": "Cuando suena la alarma tardo en abrir los ojos y levantarme. Después sigo con sueño durante un buen rato. Voy más despacio al vestirme, desayunar o prepararme para salir.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I struggle to wake up even after many hours of sleep”",
       "u": "/en/situations/i-struggle-to-wake-up-even-after-many-hours-of-sleep/",
-      "d": "When the alarm goes off, it takes me a while to open my eyes and get out of bed. I still feel sleepy for quite some time afterwards and I move more slowly when getting dressed, having breakfast or getting ready to go out.",
+      "d": "When the alarm goes off, it takes me a while to open my eyes and get out of bed. I still feel sleepy for quite some time afterwards. I move more slowly when getting dressed, having breakfast or getting ready to go out.",
       "a": "Sleep"
     }
   },
@@ -1067,13 +1067,13 @@
     "s": "Situación",
     "t": "Los fines de semana mi horario de sueño cambia por completo",
     "u": "/es/situaciones/los-fines-de-semana-se-me-cambia-todo-el-horario/",
-    "d": "Durante la semana me levanto a una hora fija. El fin de semana me acuesto y me levanto mucho más tarde. El domingo por la noche no tengo sueño a la hora habitual y el lunes me levanto después de haber dormido pocas horas.",
+    "d": "Durante la semana me levanto a una hora fija. El fin de semana me acuesto y me levanto mucho más tarde. El domingo por la noche no tengo sueño a la hora habitual y el lunes duermo pocas horas.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“My sleep schedule shifts completely at weekends”",
       "u": "/en/situations/my-sleep-schedule-shifts-completely-at-weekends/",
-      "d": "During the week I get up at a fixed time. At the weekend I go to bed and get up much later. On Sunday night I am not sleepy at my usual bedtime, and on Monday I get up after only a few hours of sleep.",
+      "d": "During the week I get up at a fixed time. At the weekend I go to bed and get up much later. On Sunday night I am not sleepy at my usual bedtime, and on Monday I get only a few hours of sleep.",
       "a": "Sleep"
     }
   },
@@ -1081,7 +1081,7 @@
     "s": "Situación",
     "t": "Hago la misma rutina antes de dormir",
     "u": "/es/situaciones/necesito-la-misma-rutina-para-poder-dormirme/",
-    "d": "Antes de acostarme hago las mismas actividades y las hago en el mismo orden. Esa rutina me ayuda a relajarme y a dormirme a la hora habitual.",
+    "d": "Antes de acostarme hago las mismas actividades y en el mismo orden. Esa rutina me ayuda a relajarme y a dormirme a la hora habitual.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
@@ -1123,13 +1123,13 @@
     "s": "Situación",
     "t": "Me duermo durante el día y luego no puedo dormir de noche",
     "u": "/es/situaciones/me-duermo-durante-el-dia-y-luego-no-puedo-dormir-de-noche/",
-    "d": "Durante el día tengo tanto sueño que termino durmiendo una siesta. Si duermo una o varias horas por la tarde, por la noche no tengo sueño a la hora habitual y me duermo mucho más tarde.",
+    "d": "Durante el día tengo tanto sueño que termino durmiendo una siesta. Si duermo una o varias horas por la tarde, por la noche no tengo sueño a la hora habitual. Me duermo mucho más tarde.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I fall asleep during the day and then cannot sleep at night”",
       "u": "/en/situations/i-fall-asleep-during-the-day-and-then-cannot-sleep-at-night/",
-      "d": "During the day I feel so sleepy that I end up taking a nap. If I sleep for one or several hours in the afternoon, I am not sleepy at my usual bedtime and I fall asleep much later.",
+      "d": "During the day I feel so sleepy that I end up taking a nap. If I sleep for one or several hours in the afternoon, I am not sleepy at my usual bedtime. I fall asleep much later.",
       "a": "Sleep"
     }
   },
@@ -1137,13 +1137,13 @@
     "s": "Situación",
     "t": "Al acostarme sigo pensando en muchas cosas",
     "u": "/es/situaciones/tengo-la-cabeza-activa-justo-cuando-me-acuesto/",
-    "d": "Al meterme en la cama empiezo a recordar conversaciones, pensar en lo que tengo que hacer al día siguiente o repasar cosas que han pasado durante el día. Sigo pensando durante mucho tiempo y me duermo más tarde de lo que quería.",
+    "d": "Al meterme en la cama empiezo a recordar conversaciones y cosas que han pasado durante el día. También pienso en lo que tengo que hacer al día siguiente. Sigo pensando durante mucho tiempo y me duermo más tarde de lo que quería.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“My mind becomes active as soon as I go to bed”",
       "u": "/en/situations/my-mind-becomes-active-as-soon-as-i-go-to-bed/",
-      "d": "When I get into bed, I start remembering conversations, thinking about what I have to do the next day or going over things that happened during the day. I keep thinking for a long time and fall asleep later than I wanted to.",
+      "d": "When I get into bed, I start remembering conversations and things that happened during the day. I also think about what I have to do the next day. I keep thinking for a long time and fall asleep later than I wanted to.",
       "a": "Sleep"
     }
   },
@@ -1151,13 +1151,13 @@
     "s": "Situación",
     "t": "Me preocupa no dormir y tardo aún más en dormirme",
     "u": "/es/situaciones/me-preocupa-no-dormir-y-eso-me-mantiene-despierta/",
-    "d": "Miro la hora y calculo cuántas horas quedan hasta que suene la alarma. Pienso que al día siguiente tendré sueño y vuelvo a mirar el reloj. Cuanto más miro la hora y pienso en dormir, más tiempo paso sin dormir.",
+    "d": "Miro la hora y calculo cuántas horas quedan hasta que suene la alarma. Pienso que al día siguiente tendré sueño. Vuelvo a mirar el reloj una y otra vez y sigo sin dormirme.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“Worrying about not sleeping keeps me awake”",
       "u": "/en/situations/worrying-about-not-sleeping-keeps-me-awake/",
-      "d": "I look at the time and work out how many hours are left before the alarm goes off. I think about how sleepy I will feel the next day and look at the clock again. The more I check the time and think about sleeping, the longer I stay awake.",
+      "d": "I look at the time and work out how many hours are left before the alarm goes off. I think about how sleepy I will feel the next day. I check the clock again and again and remain awake.",
       "a": "Sleep"
     }
   },
@@ -1179,13 +1179,13 @@
     "s": "Situación",
     "t": "Si termino una actividad y me acuesto enseguida, no me duermo",
     "u": "/es/situaciones/necesito-mucho-tiempo-para-bajar-el-ritmo-antes-de-dormir/",
-    "d": "Cuando termino una actividad y me meto en la cama enseguida, sigo pensando en lo que estaba haciendo. Paso mucho rato sin dormir antes de que empiece a entrarme sueño.",
+    "d": "Cuando termino una actividad y me meto en la cama enseguida, sigo pensando en lo que estaba haciendo. Paso mucho rato sin dormir hasta que me entra sueño.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I need a long time to wind down before sleep”",
       "u": "/en/situations/i-need-a-long-time-to-wind-down-before-sleep/",
-      "d": "When I finish an activity and get into bed straight away, I keep thinking about what I was doing. I stay awake for a long time before I start to feel sleepy.",
+      "d": "When I finish an activity and get into bed straight away, I keep thinking about what I was doing. I stay awake for a long time until I begin to feel sleepy.",
       "a": "Sleep"
     }
   },
@@ -1193,13 +1193,13 @@
     "s": "Situación",
     "t": "Duermo mejor cuando no tengo que levantarme a una hora fija",
     "u": "/es/situaciones/duermo-mejor-cuando-no-tengo-que-levantarme-a-una-hora-fija/",
-    "d": "Cuando no pongo alarma, me acuesto cuando tengo sueño y me despierto sin alarma. Duermo más horas seguidas y por la mañana siento que he descansado mejor.",
+    "d": "Cuando no pongo alarma, me acuesto cuando tengo sueño y me despierto sin alarma. Duermo más horas seguidas y por la mañana tengo menos sueño.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“I sleep better when I do not have to get up at a fixed time”",
       "u": "/en/situations/i-sleep-better-when-i-do-not-have-to-get-up-at-a-fixed-time/",
-      "d": "When I do not set an alarm, I go to bed when I feel sleepy and wake up without an alarm. I sleep for more hours without waking and feel better rested in the morning.",
+      "d": "When I do not set an alarm, I go to bed when I feel sleepy and wake up without an alarm. I sleep for more hours without waking and feel less sleepy in the morning.",
       "a": "Sleep"
     }
   },
@@ -1213,7 +1213,7 @@
       "s": "Situation",
       "t": "“I wake up with my body tense”",
       "u": "/en/situations/i-wake-up-with-my-body-tense/",
-      "d": "When I wake up, I notice that my muscles are stiff, my jaw is clenched or my shoulders are raised. I start the day with pain or discomfort even after sleeping for several hours.",
+      "d": "When I wake up, I notice stiff muscles, a clenched jaw or raised shoulders. I start the day with pain or discomfort even after sleeping for several hours.",
       "a": "Sleep"
     }
   },
@@ -1235,13 +1235,13 @@
     "s": "Situación",
     "t": "El cambio de hora altera mi sueño durante varios días",
     "u": "/es/situaciones/el-cambio-de-hora-me-descoloca-durante-dias/",
-    "d": "Cuando adelantan o atrasan la hora, durante varios días sigo teniendo sueño y despertándome según el horario anterior. Por la noche no tengo sueño a la nueva hora de acostarme o me despierto antes de la hora que ahora marca el reloj.",
+    "d": "Cuando adelantan o atrasan el reloj una hora, sigo teniendo sueño a la misma hora que antes del cambio. También me despierto según el horario anterior. Durante varios días me duermo o me despierto una hora antes o después de lo que necesito.",
     "a": "Sueño",
     "en": {
       "s": "Situation",
       "t": "“The clock change throws me off for days”",
       "u": "/en/situations/the-clock-change-throws-me-off-for-days/",
-      "d": "When the clocks move forward or back, for several days I still feel sleepy and wake up according to the previous schedule. At night I am not sleepy at the new bedtime, or I wake up earlier than the new time on the clock.",
+      "d": "When the clocks move forward or back by an hour, I still feel sleepy at the same time as before the change. I also wake according to the previous schedule. For several days I fall asleep or wake an hour earlier or later than I need to.",
       "a": "Sleep"
     }
   },
@@ -1255,7 +1255,7 @@
       "s": "Situation",
       "t": "“Travel completely disrupts my sleep”",
       "u": "/en/situations/travel-completely-disrupts-my-sleep/",
-      "d": "When I travel, the bed, schedules, noises and daily activities all change. During the trip I fall asleep later, wake up several times or end up sleeping at different times from usual.",
+      "d": "When I travel, the bed, schedules, noises and daily activities change. During the trip I fall asleep later, wake up several times or sleep at different times from usual.",
       "a": "Sleep"
     }
   },

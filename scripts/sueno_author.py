@@ -12,7 +12,7 @@ from apply_reviewed_entries import Tree, has, within, edits
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = 'editorial/reviews/situaciones_sueno_ES_EN.md'
 MANIFEST = 'editorial/reviews/situaciones-sueno-manifest.json'
-SOURCE_SHA256 = 'd8df5797d04c1c854a6dbb01c222ab51d8f88bc987037adb9bd1c05b13400a9e'
+SOURCE_SHA256 = '6ef36a3fcd0c8d88b7158ebc398214a7c2d396a3b5ec3b1dd010d18ca41f7762'
 INDEXES = {'es':'es/situaciones/index.html','en':'en/situations/index.html'}
 AREA = {'es':'Sueño','en':'Sleep'}
 

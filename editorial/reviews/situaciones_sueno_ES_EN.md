@@ -34,40 +34,40 @@ I go to bed feeling very tired, but I cannot fall asleep. An hour or more passes
 ## 3. Me despierto varias veces cada noche
 
 ### ES
-Me duermo, pero me despierto varias veces durante la noche. Después de cada despertar paso un rato sin dormir antes de volver a dormirme. Por la mañana tengo sueño y siento que no he descansado lo suficiente.
+Me duermo, pero me despierto varias veces durante la noche. Después de cada despertar paso un rato sin dormir antes de volver a dormirme. Por la mañana sigo teniendo sueño aunque haya pasado muchas horas en la cama.
 
 ### EN
-I fall asleep, but I wake up several times during the night. After each awakening, I stay awake for a while before falling asleep again. In the morning I feel sleepy and feel that I have not rested enough.
+I fall asleep, but I wake up several times during the night. After each awakening I stay awake for a while before falling asleep again. In the morning I still feel sleepy even after spending many hours in bed.
 
 ---
 
 ## 4. Si cambia algo de mi rutina de noche, no me duermo
 
 ### ES
-Antes de acostarme hago las mismas cosas y en el mismo orden cada noche. Si cambia la hora, el lugar o uno de esos pasos, tardo mucho más en dormirme.
+Antes de acostarme hago las mismas cosas y en el mismo orden cada noche. Si cambia la hora, el lugar o alguna de las cosas que hago antes de acostarme, tardo mucho más en dormirme.
 
 ### EN
-Before going to bed, I do the same things in the same order every night. If the time, the place or one of those steps changes, it takes me much longer to fall asleep.
+Before going to bed, I do the same things in the same order every night. If the time, place or something I normally do before bed changes, it takes me much longer to fall asleep.
 
 ---
 
 ## 5. Por la noche siento más ansiedad
 
 ### ES
-Durante el día trabajo, estudio, hago tareas o hablo con otras personas. Al acostarme empiezo a pensar en problemas, tareas pendientes o cosas que me preocupan. Sigo pensando en esas cosas y pasa mucho tiempo antes de que me duerma.
+Durante el día trabajo, estudio, hago tareas o hablo con otras personas. Al acostarme empiezo a pensar en problemas y en cosas que tengo pendientes. Sigo pensando en ellas y tardo mucho en dormirme.
 
 ### EN
-During the day I work, study, do tasks or talk to other people. When I go to bed, I start thinking about problems, things I still have to do or things that worry me. I keep thinking about them and it takes a long time before I fall asleep.
+During the day I work, study, do tasks or talk to other people. When I go to bed, I start thinking about problems and things I still have to do. I keep thinking about them and take a long time to fall asleep.
 
 ---
 
-## 6. No me duermo si no sé cómo será mañana
+## 6. No me duermo si no sé qué voy a hacer al día siguiente
 
 ### ES
-Antes de acostarme quiero saber qué voy a hacer al día siguiente, a qué hora y con quién. Si hay algo importante que todavía no sé, sigo pensando en ello y no me duermo.
+Antes de acostarme quiero saber qué voy a hacer al día siguiente, a qué hora y con quién. Si falta un dato importante, sigo pensando en ello y no me duermo.
 
 ### EN
-Before going to bed, I want to know what I am going to do the next day, at what time and with whom. If there is something important I still do not know, I keep thinking about it and cannot fall asleep.
+Before going to bed, I want to know what I am going to do the next day, at what time and with whom. If an important detail is missing, I keep thinking about it and cannot fall asleep.
 
 ---
 
@@ -77,34 +77,34 @@ Before going to bed, I want to know what I am going to do the next day, at what 
 Me levanto temprano por la mañana, pero por la noche no tengo sueño hasta muy tarde. Cuando consigo dormirme, ya es muy tarde y duermo pocas horas antes de que suene la alarma.
 
 ### EN
-I get up early in the morning, but at night I do not feel sleepy until very late. By the time I fall asleep, it is already very late and I only sleep for a few hours before the alarm goes off.
+I get up early in the morning, but at night I do not feel sleepy until very late. By the time I fall asleep, it is already very late and I sleep only a few hours before the alarm goes off.
 
 ---
 
 ## 8. Aunque duerma muchas horas, tardo mucho en despertarme
 
 ### ES
-Cuando suena la alarma tardo en abrir los ojos y levantarme. Después sigo con sueño durante un buen rato y voy más despacio al vestirme, desayunar o prepararme para salir.
+Cuando suena la alarma tardo en abrir los ojos y levantarme. Después sigo con sueño durante un buen rato. Voy más despacio al vestirme, desayunar o prepararme para salir.
 
 ### EN
-When the alarm goes off, it takes me a while to open my eyes and get out of bed. I still feel sleepy for quite some time afterwards and I move more slowly when getting dressed, having breakfast or getting ready to go out.
+When the alarm goes off, it takes me a while to open my eyes and get out of bed. I still feel sleepy for quite some time afterwards. I move more slowly when getting dressed, having breakfast or getting ready to go out.
 
 ---
 
 ## 9. Los fines de semana mi horario de sueño cambia por completo
 
 ### ES
-Durante la semana me levanto a una hora fija. El fin de semana me acuesto y me levanto mucho más tarde. El domingo por la noche no tengo sueño a la hora habitual y el lunes me levanto después de haber dormido pocas horas.
+Durante la semana me levanto a una hora fija. El fin de semana me acuesto y me levanto mucho más tarde. El domingo por la noche no tengo sueño a la hora habitual y el lunes duermo pocas horas.
 
 ### EN
-During the week I get up at a fixed time. At the weekend I go to bed and get up much later. On Sunday night I am not sleepy at my usual bedtime, and on Monday I get up after only a few hours of sleep.
+During the week I get up at a fixed time. At the weekend I go to bed and get up much later. On Sunday night I am not sleepy at my usual bedtime, and on Monday I get only a few hours of sleep.
 
 ---
 
 ## 10. Hago la misma rutina antes de dormir
 
 ### ES
-Antes de acostarme hago las mismas actividades y las hago en el mismo orden. Esa rutina me ayuda a relajarme y a dormirme a la hora habitual.
+Antes de acostarme hago las mismas actividades y en el mismo orden. Esa rutina me ayuda a relajarme y a dormirme a la hora habitual.
 
 ### EN
 Before going to bed, I do the same activities in the same order. That routine helps me relax and fall asleep at my usual time.
@@ -134,30 +134,30 @@ When light comes through the window, I wake up even though there are still hours
 ## 13. Me duermo durante el día y luego no puedo dormir de noche
 
 ### ES
-Durante el día tengo tanto sueño que termino durmiendo una siesta. Si duermo una o varias horas por la tarde, por la noche no tengo sueño a la hora habitual y me duermo mucho más tarde.
+Durante el día tengo tanto sueño que termino durmiendo una siesta. Si duermo una o varias horas por la tarde, por la noche no tengo sueño a la hora habitual. Me duermo mucho más tarde.
 
 ### EN
-During the day I feel so sleepy that I end up taking a nap. If I sleep for one or several hours in the afternoon, I am not sleepy at my usual bedtime and I fall asleep much later.
+During the day I feel so sleepy that I end up taking a nap. If I sleep for one or several hours in the afternoon, I am not sleepy at my usual bedtime. I fall asleep much later.
 
 ---
 
 ## 14. Al acostarme sigo pensando en muchas cosas
 
 ### ES
-Al meterme en la cama empiezo a recordar conversaciones, pensar en lo que tengo que hacer al día siguiente o repasar cosas que han pasado durante el día. Sigo pensando durante mucho tiempo y me duermo más tarde de lo que quería.
+Al meterme en la cama empiezo a recordar conversaciones y cosas que han pasado durante el día. También pienso en lo que tengo que hacer al día siguiente. Sigo pensando durante mucho tiempo y me duermo más tarde de lo que quería.
 
 ### EN
-When I get into bed, I start remembering conversations, thinking about what I have to do the next day or going over things that happened during the day. I keep thinking for a long time and fall asleep later than I wanted to.
+When I get into bed, I start remembering conversations and things that happened during the day. I also think about what I have to do the next day. I keep thinking for a long time and fall asleep later than I wanted to.
 
 ---
 
 ## 15. Me preocupa no dormir y tardo aún más en dormirme
 
 ### ES
-Miro la hora y calculo cuántas horas quedan hasta que suene la alarma. Pienso que al día siguiente tendré sueño y vuelvo a mirar el reloj. Cuanto más miro la hora y pienso en dormir, más tiempo paso sin dormir.
+Miro la hora y calculo cuántas horas quedan hasta que suene la alarma. Pienso que al día siguiente tendré sueño. Vuelvo a mirar el reloj una y otra vez y sigo sin dormirme.
 
 ### EN
-I look at the time and work out how many hours are left before the alarm goes off. I think about how sleepy I will feel the next day and look at the clock again. The more I check the time and think about sleeping, the longer I stay awake.
+I look at the time and work out how many hours are left before the alarm goes off. I think about how sleepy I will feel the next day. I check the clock again and again and remain awake.
 
 ---
 
@@ -174,20 +174,20 @@ After a day with many activities, conversations, noises or journeys, I go to bed
 ## 17. Si termino una actividad y me acuesto enseguida, no me duermo
 
 ### ES
-Cuando termino una actividad y me meto en la cama enseguida, sigo pensando en lo que estaba haciendo. Paso mucho rato sin dormir antes de que empiece a entrarme sueño.
+Cuando termino una actividad y me meto en la cama enseguida, sigo pensando en lo que estaba haciendo. Paso mucho rato sin dormir hasta que me entra sueño.
 
 ### EN
-When I finish an activity and get into bed straight away, I keep thinking about what I was doing. I stay awake for a long time before I start to feel sleepy.
+When I finish an activity and get into bed straight away, I keep thinking about what I was doing. I stay awake for a long time until I begin to feel sleepy.
 
 ---
 
 ## 18. Duermo mejor cuando no tengo que levantarme a una hora fija
 
 ### ES
-Cuando no pongo alarma, me acuesto cuando tengo sueño y me despierto sin alarma. Duermo más horas seguidas y por la mañana siento que he descansado mejor.
+Cuando no pongo alarma, me acuesto cuando tengo sueño y me despierto sin alarma. Duermo más horas seguidas y por la mañana tengo menos sueño.
 
 ### EN
-When I do not set an alarm, I go to bed when I feel sleepy and wake up without an alarm. I sleep for more hours without waking and feel better rested in the morning.
+When I do not set an alarm, I go to bed when I feel sleepy and wake up without an alarm. I sleep for more hours without waking and feel less sleepy in the morning.
 
 ---
 
@@ -197,7 +197,7 @@ When I do not set an alarm, I go to bed when I feel sleepy and wake up without a
 Al despertarme noto los músculos rígidos, la mandíbula apretada o los hombros levantados. Empiezo el día con dolor o molestias aunque haya dormido varias horas.
 
 ### EN
-When I wake up, I notice that my muscles are stiff, my jaw is clenched or my shoulders are raised. I start the day with pain or discomfort even after sleeping for several hours.
+When I wake up, I notice stiff muscles, a clenched jaw or raised shoulders. I start the day with pain or discomfort even after sleeping for several hours.
 
 ---
 
@@ -214,10 +214,10 @@ I have very intense dreams and wake up suddenly. I remember many details of what
 ## 21. El cambio de hora altera mi sueño durante varios días
 
 ### ES
-Cuando adelantan o atrasan la hora, durante varios días sigo teniendo sueño y despertándome según el horario anterior. Por la noche no tengo sueño a la nueva hora de acostarme o me despierto antes de la hora que ahora marca el reloj.
+Cuando adelantan o atrasan el reloj una hora, sigo teniendo sueño a la misma hora que antes del cambio. También me despierto según el horario anterior. Durante varios días me duermo o me despierto una hora antes o después de lo que necesito.
 
 ### EN
-When the clocks move forward or back, for several days I still feel sleepy and wake up according to the previous schedule. At night I am not sleepy at the new bedtime, or I wake up earlier than the new time on the clock.
+When the clocks move forward or back by an hour, I still feel sleepy at the same time as before the change. I also wake according to the previous schedule. For several days I fall asleep or wake an hour earlier or later than I need to.
 
 ---
 
@@ -227,7 +227,7 @@ When the clocks move forward or back, for several days I still feel sleepy and w
 Al viajar cambian la cama, los horarios, los ruidos y las actividades del día. Durante el viaje me duermo más tarde, me despierto varias veces o termino durmiendo a horas distintas de las habituales.
 
 ### EN
-When I travel, the bed, schedules, noises and daily activities all change. During the trip I fall asleep later, wake up several times or end up sleeping at different times from usual.
+When I travel, the bed, schedules, noises and daily activities change. During the trip I fall asleep later, wake up several times or sleep at different times from usual.
 
 ---
 
@@ -238,3 +238,5 @@ Me tumbo para dormir un rato y pongo una alarma. Cuando me despierto han pasado 
 
 ### EN
 I lie down to sleep for a short while and set an alarm. When I wake up, several hours have passed, or I turn off the alarm and go back to sleep. That night I fall asleep much later than usual.
+
+---
