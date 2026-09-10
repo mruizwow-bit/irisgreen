@@ -1,0 +1,49 @@
+name: Ajustar validador de estados
+on:
+  push:
+    branches:
+      - trabajo/validacion-global-accesibilidad-20260910
+    paths:
+      - .github/workflows/ajustar-validador-estados.yml
+permissions:
+  contents: write
+jobs:
+  ajustar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Ajustar casos especiales sin tocar contenido editorial
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/validate_publication_statuses.py');s=p.read_text()
+          old='''        for p in collection:\n            before = after = read(p)\n            if lang == "es":'''
+          new='''        for p in collection:\n            before = after = read(p)\n            after = after.replace('data-editorial-status="generated-draft"', 'data-editorial-status="validated"')\n            if lang == "es":'''
+          assert s.count(old)==1
+          s=s.replace(old,new)
+          old='''                    f'<p class="muted">Validación editorial: {DATE_ES}. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.</p>')'''
+          new=old+'''\n                after = after.replace('La ficha fuente indica revisión editorial el 4 de septiembre de 2026 y citas pendientes de comprobación. Este cambio de presentación no añade una validación clínica ni una nueva fecha de revisión.', f'La ficha está validada editorialmente para esta edición. Este cambio de presentación no añade una validación clínica.')\n                after = after.replace('<h3>Base documental y revisión</h3>', '<h3>Base documental y validación</h3>').replace('<h3>Revisión editorial</h3>', '<h3>Validación editorial</h3>')\n                after = after.replace('Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.', f'Validación editorial: {DATE_ES}. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.')'''
+          assert s.count(old)==1;s=s.replace(old,new)
+          old='''                    f'<p class="muted">Editorial validation: {DATE_EN}. The cited sources and the limits of the entry remain identified to support checking and future updates.</p>')'''
+          new=old+'''\n                after = after.replace('The source entry states an editorial review on 4 September 2026 and citations awaiting checking. This presentation change does not add clinical validation or a new review date.', 'The entry is editorially validated for this edition. This presentation change does not add clinical validation.')\n                after = after.replace('<h3>Sources and review</h3>', '<h3>Sources and validation</h3>').replace('<h3>Editorial review</h3>', '<h3>Editorial validation</h3>')\n                after = after.replace('Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.', f'Editorial validation: {DATE_EN}. The cited sources and the limits of the entry remain identified to support checking and future updates.')'''
+          assert s.count(old)==1;s=s.replace(old,new)
+          old="""        after = after.replace('Pendiente de localizar una adaptación española documentada.', 'No se ha incorporado en esta ficha una adaptación española documentada.')"""
+          new=old+"""\n        after = after.replace('Última revisión: 31 de agosto de 2026.', f'Última validación: {DATE_ES}.')\n        after = after.replace('Queda fuera hasta que exista una adaptación española documentada.', 'No se publica en esta edición porque no se ha incorporado una adaptación española documentada.')\n        after = after.replace('Faltan los ítems de la versión validada para poder publicarlo. No se reescriben ni se traducen: se copian del original.', 'No se publica en esta edición porque no se han incorporado los ítems de la versión validada. No se reescriben ni se traducen: se copian del original.')\n        after = after.replace('Excluded until there is a documented Spanish adaptation.', 'Not published in this edition because a documented Spanish adaptation has not been included.')\n        after = after.replace('The items from the validated version are still missing. They are not rewritten or translated: they are copied from the original.', 'Not published in this edition because the items from the validated version have not been included. They are not rewritten or translated: they are copied from the original.')"""
+          assert s.count(old)==1;s=s.replace(old,new)
+          p.write_text(s)
+
+          p=Path('scripts/publish_biblioteca.py');s=p.read_text()
+          s=s.replace('después de la revisión editorial y de fuentes del 10-09-2026','tras la validación editorial y de fuentes del 10-09-2026')
+          s=s.replace("review_li = f'<li><strong>Revisión:</strong> {REVIEW_DATE}</li>'", "review_li = f'<li><strong>Validación:</strong> {REVIEW_DATE}</li>'")
+          s=s.replace("f'<span class=\"meta\">{source_count} {unit} · REVISADA</span>'", "f'<span class=\"meta\">{source_count} {unit} · VALIDADA</span>'")
+          s=s.replace('f"Biblioteca ES publicada: {len(detail_pages)} fichas; revisión {REVIEW_DATE}."','f"Biblioteca ES publicada y validada: {len(detail_pages)} fichas; validación {REVIEW_DATE}."')
+          p.write_text(s)
+          PY
+      - name: Guardar ajustes en la rama de trabajo
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/validate_publication_statuses.py scripts/publish_biblioteca.py
+          git commit -m 'Ajustar estados especiales a validado [skip netlify]'
+          git push origin HEAD:trabajo/validacion-global-accesibilidad-20260910
