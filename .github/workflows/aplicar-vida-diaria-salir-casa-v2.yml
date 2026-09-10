@@ -44,12 +44,14 @@ jobs:
           if card_changed != 1:
               raise SystemExit(f'No se pudo aislar el selector de tarjeta: {card_changed}')
 
-          meta_replacement = '''    escaped_meta = html.escape(new_meta, quote=True)
-    text, meta_count = re.subn(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)
-    text, og_count = re.subn(r'(<meta property="og:description" content=")[^"]*(")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)
-    text, jsonld_count = re.subn(r'("description":\\s*)"[^"]*"', lambda m: m.group(1) + json.dumps(new_meta, ensure_ascii=False), text, count=1)
-    if (meta_count, og_count, jsonld_count) != (1, 1, 1):
-        raise AssertionError(f'{path}: metadatos descriptivos inesperados: {(meta_count, og_count, jsonld_count)}')'''
+          meta_replacement = (
+              "    escaped_meta = html.escape(new_meta, quote=True)\n"
+              "    text, meta_count = re.subn(r'(<meta name=\"description\" content=\")[^\"]*(\")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)\n"
+              "    text, og_count = re.subn(r'(<meta property=\"og:description\" content=\")[^\"]*(\")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)\n"
+              "    text, jsonld_count = re.subn(r'(\"description\":\\s*)\"[^\"]*\"', lambda m: m.group(1) + json.dumps(new_meta, ensure_ascii=False), text, count=1)\n"
+              "    if (meta_count, og_count, jsonld_count) != (1, 1, 1):\n"
+              "        raise AssertionError(f'{path}: metadatos descriptivos inesperados: {(meta_count, og_count, jsonld_count)}')"
+          )
           code, meta_changed = re.subn(
               r'(?m)^    text = text\.replace\(meta\.group\(1\), html\.escape\(new_meta, quote=True\)\)$',
               lambda _: meta_replacement,
@@ -68,7 +70,7 @@ jobs:
           git diff --check
           echo 'Archivos modificados por la integración:'
           git diff --name-only
-          git config user.name "github-actions[bot]]"
+          git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add es/biblioteca en/everyday-life scripts/publish_biblioteca.py
           test "$(git diff --cached --name-only | wc -l)" -eq 21
