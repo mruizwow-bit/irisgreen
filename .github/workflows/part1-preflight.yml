@@ -1,0 +1,16 @@
+name: Preflight temporal · descripciones parte 1
+on:
+  push:
+    branches: ['integracion/2026-09-10-descripciones-parte-1']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Compilar integrador
+        run: python3 -m py_compile scripts/apply_accessibility_descriptions_part1.py
+      - name: Construir sitio
+        run: python3 scripts/build_site.py
