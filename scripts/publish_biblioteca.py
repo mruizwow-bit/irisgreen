@@ -60,7 +60,6 @@ def add_source(slug, html_li):
     save(p, text)
 
 edit("viajar-en-avion-con-una-discapacidad-no-visible", [
-    ("Es gratuito, se solicita en su web y sirve", "Se solicita en su web y sirve"),
     (
         "La asistencia Sin Barreras (PMR) es un servicio diferente, pensado para quienes necesitan asistencia durante el recorrido aeroportuario. Conviene solicitarla con antelación a través de la aerolínea o de Aena.",
         "La asistencia Sin Barreras (PMR) es un servicio diferente, pensado para quienes necesitan asistencia durante el recorrido aeroportuario. Es gratuita. Aena indica que debe solicitarse al menos 48 horas antes de la salida del vuelo para garantizar la calidad del servicio."
