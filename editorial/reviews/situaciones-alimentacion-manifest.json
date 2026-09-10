@@ -1,0 +1,214 @@
+{
+  "source": "editorial/reviews/situaciones_alimentacion_ES_EN.md",
+  "source_sha256": "02bba44e8c94d955561cdb0bbf9158a05529b46a91c7c930ffb03c71c2ed16ba",
+  "scope": "23 títulos ES y 46 descripciones ES/EN. Títulos EN, rutas, fuentes, controles y demás secciones permanecen como estaban.",
+  "entries": [
+    {
+      "number": 1,
+      "title_es": "Se me olvida comer y después me encuentro mal",
+      "es_route": "/es/situaciones/se-me-olvida-comer/",
+      "es_path": "es/situaciones/se-me-olvida-comer/index.html",
+      "en_route": "/en/situations/i-forget-to-eat/",
+      "en_path": "en/situations/i-forget-to-eat/index.html",
+      "retained_title_en": "“I forget to eat and then I crash”"
+    },
+    {
+      "number": 2,
+      "title_es": "Comer fuera de casa es muy difícil",
+      "es_route": "/es/situaciones/comer-fuera-de-casa-es-muy-dificil/",
+      "es_path": "es/situaciones/comer-fuera-de-casa-es-muy-dificil/index.html",
+      "en_route": "/en/situations/eating-away-from-home-is-very-difficult/",
+      "en_path": "en/situations/eating-away-from-home-is-very-difficult/index.html",
+      "retained_title_en": "“Eating away from home is very difficult”"
+    },
+    {
+      "number": 3,
+      "title_es": "En un restaurante me agotan el ruido, los olores y la gente",
+      "es_route": "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado/",
+      "es_path": "es/situaciones/comer-en-un-restaurante-me-resulta-demasiado/index.html",
+      "en_route": "/en/situations/eating-in-a-restaurant-is-too-much-for-me/",
+      "en_path": "en/situations/eating-in-a-restaurant-is-too-much-for-me/index.html",
+      "retained_title_en": "“Eating in a restaurant is too much for me”"
+    },
+    {
+      "number": 4,
+      "title_es": "Comer fuera me preocupa porque no sé qué va a pasar",
+      "es_route": "/es/situaciones/comer-fuera-es-demasiado-impredecible/",
+      "es_path": "es/situaciones/comer-fuera-es-demasiado-impredecible/index.html",
+      "en_route": "/en/situations/eating-out-is-too-unpredictable/",
+      "en_path": "en/situations/eating-out-is-too-unpredictable/index.html",
+      "retained_title_en": "“Eating out is too unpredictable”"
+    },
+    {
+      "number": 5,
+      "title_es": "Solo puedo comer unas pocas marcas o preparaciones",
+      "es_route": "/es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones/",
+      "es_path": "es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones/index.html",
+      "en_route": "/en/situations/i-can-only-eat-a-few-brands-or-preparations/",
+      "en_path": "en/situations/i-can-only-eat-a-few-brands-or-preparations/index.html",
+      "retained_title_en": "“I can only eat a few brands or preparations”"
+    },
+    {
+      "number": 6,
+      "title_es": "Una comida que antes comía sin problema deja de resultarme aceptable",
+      "es_route": "/es/situaciones/una-comida-que-antes-toleraba-de-repente-ya-no-puedo-comerla/",
+      "es_path": "es/situaciones/una-comida-que-antes-toleraba-de-repente-ya-no-puedo-comerla/index.html",
+      "en_route": "/en/situations/a-food-i-used-to-tolerate-suddenly-becomes-impossible-to-eat/",
+      "en_path": "en/situations/a-food-i-used-to-tolerate-suddenly-becomes-impossible-to-eat/index.html",
+      "retained_title_en": "“A food I used to tolerate suddenly becomes impossible to eat”"
+    },
+    {
+      "number": 7,
+      "title_es": "Si los alimentos se mezclan en el plato, dejo parte de la comida",
+      "es_route": "/es/situaciones/me-cuesta-comer-si-los-alimentos-se-tocan-en-el-plato/",
+      "es_path": "es/situaciones/me-cuesta-comer-si-los-alimentos-se-tocan-en-el-plato/index.html",
+      "en_route": "/en/situations/i-struggle-to-eat-when-foods-touch-on-the-plate/",
+      "en_path": "en/situations/i-struggle-to-eat-when-foods-touch-on-the-plate/index.html",
+      "retained_title_en": "“I struggle to eat when foods touch on the plate”"
+    },
+    {
+      "number": 8,
+      "title_es": "Quiero que la comida tenga siempre la misma textura",
+      "es_route": "/es/situaciones/necesito-que-la-comida-tenga-siempre-la-misma-textura/",
+      "es_path": "es/situaciones/necesito-que-la-comida-tenga-siempre-la-misma-textura/index.html",
+      "en_route": "/en/situations/i-need-food-to-have-the-same-texture-every-time/",
+      "en_path": "en/situations/i-need-food-to-have-the-same-texture-every-time/index.html",
+      "retained_title_en": "“I need food to have the same texture every time”"
+    },
+    {
+      "number": 9,
+      "title_es": "Los olores de cocina me quitan el hambre",
+      "es_route": "/es/situaciones/los-olores-de-cocina-me-quitan-el-hambre/",
+      "es_path": "es/situaciones/los-olores-de-cocina-me-quitan-el-hambre/index.html",
+      "en_route": "/en/situations/cooking-smells-take-away-my-appetite/",
+      "en_path": "en/situations/cooking-smells-take-away-my-appetite/index.html",
+      "retained_title_en": "“Cooking smells take away my appetite”"
+    },
+    {
+      "number": 10,
+      "title_es": "No sé si tengo hambre o ansiedad",
+      "es_route": "/es/situaciones/me-cuesta-saber-si-tengo-hambre-o-ansiedad/",
+      "es_path": "es/situaciones/me-cuesta-saber-si-tengo-hambre-o-ansiedad/index.html",
+      "en_route": "/en/situations/i-find-it-hard-to-tell-whether-i-am-hungry-or-anxious/",
+      "en_path": "en/situations/i-find-it-hard-to-tell-whether-i-am-hungry-or-anxious/index.html",
+      "retained_title_en": "“I find it hard to tell whether I am hungry or anxious”"
+    },
+    {
+      "number": 11,
+      "title_es": "Paso horas sin acordarme de beber",
+      "es_route": "/es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/",
+      "es_path": "es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/index.html",
+      "en_route": "/en/situations/i-can-go-for-hours-without-remembering-to-drink/",
+      "en_path": "en/situations/i-can-go-for-hours-without-remembering-to-drink/index.html",
+      "retained_title_en": "“I can go for hours without remembering to drink”"
+    },
+    {
+      "number": 12,
+      "title_es": "El sabor, la temperatura o la sensación del agua me desagradan",
+      "es_route": "/es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/",
+      "es_path": "es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/index.html",
+      "en_route": "/en/situations/drinking-water-feels-unpleasant-because-of-the-sensation/",
+      "en_path": "en/situations/drinking-water-feels-unpleasant-because-of-the-sensation/index.html",
+      "retained_title_en": "“Drinking water feels unpleasant because of the sensation”"
+    },
+    {
+      "number": 13,
+      "title_es": "Decidir qué comer cada día me agota",
+      "es_route": "/es/situaciones/me-agota-decidir-que-comer-cada-dia/",
+      "es_path": "es/situaciones/me-agota-decidir-que-comer-cada-dia/index.html",
+      "en_route": "/en/situations/deciding-what-to-eat-every-day-exhausts-me/",
+      "en_path": "en/situations/deciding-what-to-eat-every-day-exhausts-me/index.html",
+      "retained_title_en": "“Deciding what to eat every day exhausts me”"
+    },
+    {
+      "number": 14,
+      "title_es": "Si no está la comida que esperaba, termino sin comer",
+      "es_route": "/es/situaciones/si-no-esta-la-comida-que-esperaba-prefiero-no-comer/",
+      "es_path": "es/situaciones/si-no-esta-la-comida-que-esperaba-prefiero-no-comer/index.html",
+      "en_route": "/en/situations/if-the-food-i-expected-is-not-there-i-would-rather-not-eat/",
+      "en_path": "en/situations/if-the-food-i-expected-is-not-there-i-would-rather-not-eat/index.html",
+      "retained_title_en": "“If the food I expected is not there, I would rather not eat”"
+    },
+    {
+      "number": 15,
+      "title_es": "Comer delante de otras personas cambia cuánto como",
+      "es_route": "/es/situaciones/me-cuesta-comer-delante-de-otras-personas/",
+      "es_path": "es/situaciones/me-cuesta-comer-delante-de-otras-personas/index.html",
+      "en_route": "/en/situations/i-find-it-hard-to-eat-in-front-of-other-people/",
+      "en_path": "en/situations/i-find-it-hard-to-eat-in-front-of-other-people/index.html",
+      "retained_title_en": "“I find it hard to eat in front of other people”"
+    },
+    {
+      "number": 16,
+      "title_es": "Tardo muchísimo en terminar una comida",
+      "es_route": "/es/situaciones/tardo-muchisimo-en-terminar-una-comida/",
+      "es_path": "es/situaciones/tardo-muchisimo-en-terminar-una-comida/index.html",
+      "en_route": "/en/situations/it-takes-me-a-very-long-time-to-finish-a-meal/",
+      "en_path": "en/situations/it-takes-me-a-very-long-time-to-finish-a-meal/index.html",
+      "retained_title_en": "“It takes me a very long time to finish a meal”"
+    },
+    {
+      "number": 17,
+      "title_es": "Como muy deprisa y después noto que he comido demasiado",
+      "es_route": "/es/situaciones/como-muy-deprisa-y-luego-noto-que-estoy-demasiado-llena/",
+      "es_path": "es/situaciones/como-muy-deprisa-y-luego-noto-que-estoy-demasiado-llena/index.html",
+      "en_route": "/en/situations/i-eat-very-quickly-and-only-afterwards-notice-i-am-too-full/",
+      "en_path": "en/situations/i-eat-very-quickly-and-only-afterwards-notice-i-am-too-full/index.html",
+      "retained_title_en": "“I eat very quickly and only afterwards notice I am too full”"
+    },
+    {
+      "number": 18,
+      "title_es": "No puedo comer si la comida está demasiado caliente o demasiado fría",
+      "es_route": "/es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables/",
+      "es_path": "es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables/index.html",
+      "en_route": "/en/situations/some-food-temperatures-are-unbearable-for-me/",
+      "en_path": "en/situations/some-food-temperatures-are-unbearable-for-me/index.html",
+      "retained_title_en": "“Some food temperatures are unbearable for me”"
+    },
+    {
+      "number": 19,
+      "title_es": "Quiero probar alimentos nuevos, pero el olor, el aspecto o la textura me frenan",
+      "es_route": "/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera/",
+      "es_path": "es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera/index.html",
+      "en_route": "/en/situations/i-struggle-to-try-new-foods-even-when-i-want-to/",
+      "en_path": "en/situations/i-struggle-to-try-new-foods-even-when-i-want-to/index.html",
+      "retained_title_en": "“I struggle to try new foods even when I want to”"
+    },
+    {
+      "number": 20,
+      "title_es": "Quiero ver cómo está preparada la comida antes de comerla",
+      "es_route": "/es/situaciones/necesito-ver-como-esta-preparada-la-comida-antes-de-comerla/",
+      "es_path": "es/situaciones/necesito-ver-como-esta-preparada-la-comida-antes-de-comerla/index.html",
+      "en_route": "/en/situations/i-need-to-see-how-food-is-prepared-before-i-can-eat-it/",
+      "en_path": "en/situations/i-need-to-see-how-food-is-prepared-before-i-can-eat-it/index.html",
+      "retained_title_en": "“I need to see how food is prepared before I can eat it”"
+    },
+    {
+      "number": 21,
+      "title_es": "Los cubiertos o los platos cambian cómo siento la comida",
+      "es_route": "/es/situaciones/los-cubiertos-o-platos-cambian-como-siento-la-comida/",
+      "es_path": "es/situaciones/los-cubiertos-o-platos-cambian-como-siento-la-comida/index.html",
+      "en_route": "/en/situations/cutlery-or-plates-change-how-food-feels-to-me/",
+      "en_path": "en/situations/cutlery-or-plates-change-how-food-feels-to-me/index.html",
+      "retained_title_en": "“Cutlery or plates change how food feels to me”"
+    },
+    {
+      "number": 22,
+      "title_es": "Después de un día con mucho ruido o muchas tareas, como menos",
+      "es_route": "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer/",
+      "es_path": "es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer/index.html",
+      "en_route": "/en/situations/after-a-difficult-day-eating-becomes-even-harder/",
+      "en_path": "en/situations/after-a-difficult-day-eating-becomes-even-harder/index.html",
+      "retained_title_en": "“After a difficult day, eating becomes even harder”"
+    },
+    {
+      "number": 23,
+      "title_es": "Hacer la compra, cocinar y comer el mismo día me deja sin energía",
+      "es_route": "/es/situaciones/organizar-compra-cocinar-y-comer-es-demasiado-en-el-mismo-dia/",
+      "es_path": "es/situaciones/organizar-compra-cocinar-y-comer-es-demasiado-en-el-mismo-dia/index.html",
+      "en_route": "/en/situations/shopping-cooking-and-eating-are-too-much-to-organise-in-one-day/",
+      "en_path": "en/situations/shopping-cooking-and-eating-are-too-much-to-organise-in-one-day/index.html",
+      "retained_title_en": "“Shopping, cooking and eating are too much to organise in one day”"
+    }
+  ]
+}
