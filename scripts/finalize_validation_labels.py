@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Cierra rótulos editoriales provisionales en la salida pública.
+"""Cierra rótulos editoriales provisionales en la salida pública y los audita.
 
 No cambia descripciones, explicaciones, fuentes, resultados de investigación ni
-clasificaciones A/B/C. Se ejecuta sobre ``dist`` al final del build y también
-comprueba los activos públicos para impedir que un texto provisional reaparezca.
+clasificaciones A/B/C. Los activos fuente deben llegar ya sin estados provisionales;
+si reaparecen, esta comprobación detiene el build en vez de corregirlos en silencio.
 """
 from __future__ import annotations
 
@@ -57,45 +57,9 @@ def main() -> None:
             raise AssertionError("No se encontró el rótulo esperado de Investigación")
     research.write_text(text, encoding="utf-8")
 
-    # La ficha especial de instrucciones usa un activo compartido que conserva
-    # una copia de la redacción histórica. Se cambian solo sus estados/editorial
-    # labels; la explicación, referencias y texto editable permanecen intactos.
-    navigation = root / "assets/navigation-approved.js"
-    nav = navigation.read_text(encoding="utf-8")
-    nav_pairs = [
-        ("Base documental y revisión", "Base documental y validación"),
-        ("Revisión editorial", "Validación editorial"),
-        (
-            "Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.",
-            f"Validación editorial: {DATE_ES}. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.",
-        ),
-        ("Sources and review", "Sources and validation"),
-        ("Editorial review", "Editorial validation"),
-        (
-            "Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.",
-            f"Editorial validation: {DATE_EN}. The cited sources and the limits of the entry remain identified to support checking and future updates.",
-        ),
-        (
-            "La ficha fuente indica revisión editorial el 4 de septiembre de 2026 y citas pendientes de comprobación. Este cambio de presentación no añade una validación clínica ni una nueva fecha de revisión.",
-            "La ficha está validada editorialmente para esta edición. Este cambio de presentación no añade una validación clínica.",
-        ),
-        (
-            "The source entry states an editorial review on 4 September 2026 and citations awaiting checking. This presentation change does not add clinical validation or a new review date.",
-            "The entry is editorially validated for this edition. This presentation change does not add clinical validation.",
-        ),
-    ]
-    navigation_changes = 0
-    for old, new in nav_pairs:
-        n = nav.count(old)
-        if n:
-            nav = nav.replace(old, new)
-            navigation_changes += n
-    if navigation_changes not in (0, 8):
-        raise AssertionError(f"Cambios de estado inesperados en navigation-approved.js: {navigation_changes}")
-    navigation.write_text(nav, encoding="utf-8")
-
-    # Guardias estructurales. No se buscan palabras normales como «revisión
-    # sistemática», «tareas pendientes», `pending` de JavaScript o `peer-reviewed`.
+    # Guardias estructurales para TODO archivo de texto publicado. No se buscan
+    # usos normales como «revisión sistemática», «tareas pendientes», variables
+    # `pending`, un borrador escrito por la propia persona o `peer-reviewed`.
     patterns = {
         "draft_badge": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*(?:BORRADOR|DRAFT)\s*</span>', re.I),
         "draft_or_reviewed_card": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>[^<]*\b(?:BORRADOR|DRAFT|REVISADA|REVIEWED)\b[^<]*</span>', re.I),
@@ -135,7 +99,6 @@ def main() -> None:
         "conditions_es_pages": 185,
         "condition_review_labels_changed": condition_labels,
         "research_review_labels_changed": research_labels,
-        "navigation_status_strings_changed": navigation_changes,
         "public_text_files_scanned": scanned,
         "remaining_structural_provisional_markers": 0,
     }, ensure_ascii=False))
