@@ -62,6 +62,23 @@ jobs:
               raise SystemExit(f'No se pudo limitar la actualización de metadatos: {meta_changed}')
 
           exec(compile(code, '<aplicar-vida-diaria>', 'exec'), {'__name__': '__main__'})
+
+          # El nuevo lede validado de Perros sustituye el párrafo sobre el que
+          # actuaba esta corrección histórica. Se retira solo esa guardia; el
+          # resto de publish_biblioteca.py permanece intacto.
+          pub_path = Path('scripts/publish_biblioteca.py')
+          pub_text = pub_path.read_text(encoding='utf-8')
+          dog_anchor = '# Perros de asistencia: umbral estatal y margen autonómico.\nedit("perros-de-asistencia-que-reconoce-la-ley", ['
+          start = pub_text.find(dog_anchor)
+          if start >= 0:
+              end = pub_text.find('\n])', start)
+              if end < 0:
+                  raise AssertionError('No se encontró el final de la guardia histórica de Perros')
+              replacement = '# Perros de asistencia: el lede validado se mantiene desde la fuente editorial.\n'
+              pub_text = pub_text[:start] + replacement + pub_text[end + len('\n])'):]
+              pub_path.write_text(pub_text, encoding='utf-8')
+          elif 'edit("perros-de-asistencia-que-reconoce-la-ley"' in pub_text:
+              raise AssertionError('La guardia de Perros existe con una estructura inesperada')
           PY
 
       - name: Comprobar y preparar commit sin desplegar
