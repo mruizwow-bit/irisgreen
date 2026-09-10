@@ -42,9 +42,18 @@ def file_from_route(route):
 
 def page_nodes(text):
     t=Tree(text)
-    article=one((n for n in t.nodes if n.tag=='article' and has(n,'ficha')),'article')
-    title=one((n for n in t.nodes if n.tag=='h1' and within(n,article)),'page h1')
-    lead=one((n for n in t.nodes if n.tag=='p' and has(n,'lede') and within(n,article)),'page description')
+    articles=[n for n in t.nodes if n.tag=='article' and has(n,'ficha')]
+    if len(articles)==1:
+        article=articles[0]
+        title=one((n for n in t.nodes if n.tag=='h1' and within(n,article)),'page h1')
+        lead=one((n for n in t.nodes if n.tag=='p' and has(n,'lede') and within(n,article)),'page description')
+        return t,title,lead
+    # The approved navigation template for the instructions entry deliberately
+    # uses a different presentation shell. Treat its visible brief as the lede
+    # without touching the rest of the approved interactive page.
+    title=one((n for n in t.nodes if n.tag=='h1' and n.attrs.get('id')=='instruction-title'),'approved navigation h1')
+    brief=one((n for n in t.nodes if n.tag=='section' and has(n,'brief-box')),'approved navigation brief')
+    lead=one((n for n in t.nodes if n.tag=='p' and within(n,brief)),'approved navigation description')
     return t,title,lead
 
 def inside(text,node,value):
@@ -69,7 +78,9 @@ def page_update(text,row,lang):
         if n.tag=='script' and n.attrs.get('type')=='application/ld+json':
             stop=text.rfind('</script',n.start,n.end)
             obj=json.loads(text[n.opening_end:stop]); touched=False
-            for item in obj.get('@graph',[]):
+            items=obj.get('@graph',[]) if isinstance(obj,dict) and '@graph' in obj else [obj]
+            for item in items:
+                if not isinstance(item,dict): continue
                 if item.get('@type')=='WebPage':
                     item['description']=row[lang]
                     if lang=='es': item['name']=row['title_es']
