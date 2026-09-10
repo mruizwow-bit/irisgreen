@@ -27,99 +27,68 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/iris-validation
-          git worktree add --detach /tmp/iris-validation/base ed553e654fa7ed358112dfcd96cf61fa9b725623
-          (cd /tmp/iris-validation/base && python3 scripts/build_site.py > /tmp/iris-validation/build-before.log 2>&1)
-          python3 scripts/build_site.py > /tmp/iris-validation/build-after.log 2>&1
+          mkdir -p /tmp/iris-validation-report
+          rm -rf /tmp/iris-validation-base
+          git worktree add --detach /tmp/iris-validation-base ed553e654fa7ed358112dfcd96cf61fa9b725623
+          (cd /tmp/iris-validation-base && python3 scripts/build_site.py > /tmp/iris-validation-report/build-before.log 2>&1)
+          python3 scripts/build_site.py > /tmp/iris-validation-report/build-after.log 2>&1
       - name: Comprobar alcance y conservación literal
         shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib,json,re
-          before=Path('/tmp/iris-validation/base/dist'); after=Path('dist')
+          import hashlib,json,re,subprocess
+          before=Path('/tmp/iris-validation-base/dist'); after=Path('dist'); out=Path('/tmp/iris-validation-report')
           def hashes(root):
               return {p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
           b=hashes(before);a=hashes(after)
           assert set(b)==set(a),(set(a)-set(b),set(b)-set(a))
           changed=sorted(p for p in b if b[p]!=a[p])
-          allowed_prefixes=(
-              'es/neurodiversidad/condiciones/','en/neurodiversity/conditions/',
-              'es/situaciones/','en/situations/','es/datos/','en/data/',
-              'es/biblioteca/','en/everyday-life/'
-          )
+          allowed_prefixes=('es/neurodiversidad/condiciones/','en/neurodiversity/conditions/','es/situaciones/','en/situations/','es/datos/','en/data/','es/biblioteca/','en/everyday-life/')
           allowed_exact={'es/privacidad/index.html','en/privacy/index.html','es/vivir-fuera/index.html','es/cuestionarios/index.html','es/intereses/index.html','en/interests/index.html'}
           unexpected=[p for p in changed if not p.startswith(allowed_prefixes) and p not in allowed_exact]
           assert not unexpected,unexpected
-
           def meta_desc(text):
               m=re.search(r'<meta[^>]+name=["\']description["\'][^>]*>',text,re.I)
               if not m:return None
-              c=re.search(r'content=["\'](.*?)["\']',m.group(0),re.I|re.S)
-              return c.group(1) if c else None
+              c=re.search(r'content=["\'](.*?)["\']',m.group(0),re.I|re.S);return c.group(1) if c else None
           def h1(text):
-              m=re.search(r'<h1\b[^>]*>(.*?)</h1>',text,re.I|re.S)
-              return re.sub(r'<[^>]+>','',m.group(1)).strip() if m else None
+              m=re.search(r'<h1\b[^>]*>(.*?)</h1>',text,re.I|re.S);return re.sub(r'<[^>]+>','',m.group(1)).strip() if m else None
           def grades(text):
-              pats=[r'data-grado=["\']([^"\']*)',r'data-certeza=["\']([^"\']*)',r'<span class=["\']chip alt["\']>(Grade [^<]+)</span>']
+              pats=[r'data-grado=["\']([^"\']*)',r'data-certeza=["\']([^"\']*)',r'<span class=["\']chip alt["\']>(Grade [^<]+)</span>',r'<span class=["\']chip alt["\']>(Grado [^<]+)</span>']
               return [x for pat in pats for x in re.findall(pat,text,re.I)]
-          checked_content=0
+          checked=0
           for rel in changed:
               if not rel.endswith('.html'):continue
               bt=(before/rel).read_text(errors='ignore');at=(after/rel).read_text(errors='ignore')
-              assert h1(bt)==h1(at),(rel,'h1',h1(bt),h1(at))
-              assert meta_desc(bt)==meta_desc(at),(rel,'description')
-              assert grades(bt)==grades(at),(rel,'grade changed',grades(bt),grades(at))
-              checked_content+=1
-
-          # Los documentos cerrados de autora deben seguir exactamente iguales en sus campos protegidos.
-          import subprocess
+              assert h1(bt)==h1(at),(rel,'h1 changed')
+              assert meta_desc(bt)==meta_desc(at),(rel,'meta description changed')
+              assert grades(bt)==grades(at),(rel,'A/B/C changed',grades(bt),grades(at))
+              checked+=1
           subprocess.run(['python3','scripts/sentidos_author.py','--root','dist'],check=True)
           subprocess.run(['python3','scripts/sueno_author.py','--root','dist'],check=True)
-
-          # Estados finales esperados.
-          bib=(after/'es/biblioteca/index.html').read_text()
-          assert bib.count('VALIDADA</span>')==48,bib.count('VALIDADA</span>')
-          daily_en=(after/'en/everyday-life/index.html').read_text()
-          assert daily_en.count('VALIDATED</span>')>=48,daily_en.count('VALIDATED</span>')
-          assert 'DRAFT' not in daily_en
-          data_es=[p for p in (after/'es/datos').glob('*/index.html')]
-          data_en=[p for p in (after/'en/data').glob('*/index.html')]
-          assert len(data_es)==len(data_en)==49
+          bib=(after/'es/biblioteca/index.html').read_text();assert bib.count('VALIDADA</span>')==48
+          daily_en=(after/'en/everyday-life/index.html').read_text();assert daily_en.count('VALIDATED</span>')>=48 and 'DRAFT' not in daily_en
+          data_es=list((after/'es/datos').glob('*/index.html'));data_en=list((after/'en/data').glob('*/index.html'));assert len(data_es)==len(data_en)==49
           assert all('VALIDADA</span>' in p.read_text() and 'noindex,follow' not in p.read_text() for p in data_es)
           assert all('VALIDATED</span>' in p.read_text() and 'noindex,follow' not in p.read_text() for p in data_en)
-          cond_en=[p for p in (after/'en/neurodiversity/conditions').glob('*/index.html')]
-          assert len(cond_en)==185
-          assert not any('<span class="chip lil">DRAFT</span>' in p.read_text() for p in cond_en)
-          assert not any('Review: not yet verified' in p.read_text() for p in cond_en)
-          assert all('noindex,follow' not in p.read_text() for p in cond_en)
-          sit_es=[p for p in (after/'es/situaciones').glob('*/index.html')]
-          sit_en=[p for p in (after/'en/situations').glob('*/index.html')]
-          assert len(sit_es)==len(sit_en)==187
-          assert not any('las páginas siguen en noindex hasta' in p.read_text() for p in sit_es)
-          assert not any('these pages stay noindex until' in p.read_text() for p in sit_en)
-          assert all('noindex,follow' not in p.read_text() for p in sit_es+sit_en)
-          assert 'Pendiente de completar:' not in (after/'es/vivir-fuera/index.html').read_text()
-          assert 'Still to complete:' not in (after/'es/vivir-fuera/index.html').read_text()
-          assert 'Pendiente de localizar una adaptación española documentada.' not in (after/'es/cuestionarios/index.html').read_text()
-          assert 'Última revisión: 5 de septiembre de 2026.' not in (after/'es/privacidad/index.html').read_text()
-          assert 'Last reviewed: 5 September 2026.' not in (after/'en/privacy/index.html').read_text()
-
-          # Una segunda ejecución no puede cambiar nada: el proceso debe ser idempotente.
-          pre=hashes(after)
-          subprocess.run(['python3','scripts/validate_publication_statuses.py','--root','dist'],check=True)
-          post=hashes(after)
-          assert pre==post,'La segunda validación modificó dist'
-
-          report={'base':'ed553e654fa7ed358112dfcd96cf61fa9b725623','backup':'backup/20260910-antes-validacion-global-ed553e6','public_files':len(a),'changed_public_files':len(changed),'changed_paths':changed,'html_pages_compared_for_title_description_grade':checked_content,'sentidos':'exacto','sueno':'exacto','biblioteca_validated_cards':48,'data_validated_es':49,'data_validated_en':49,'conditions_en_no_draft':185,'situations_es_en_no_pending_status':374,'idempotent':True}
-          Path('/tmp/iris-validation/result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-          print(json.dumps(report,ensure_ascii=False,indent=2))
+          cond_en=list((after/'en/neurodiversity/conditions').glob('*/index.html'));assert len(cond_en)==185
+          assert not any('<span class="chip lil">DRAFT</span>' in p.read_text() or 'Review: not yet verified' in p.read_text() or 'noindex,follow' in p.read_text() for p in cond_en)
+          sit_es=list((after/'es/situaciones').glob('*/index.html'));sit_en=list((after/'en/situations').glob('*/index.html'));assert len(sit_es)==len(sit_en)==187
+          assert not any('las páginas siguen en noindex hasta' in p.read_text() or 'noindex,follow' in p.read_text() or 'generated-draft' in p.read_text() for p in sit_es)
+          assert not any('these pages stay noindex until' in p.read_text() or 'noindex,follow' in p.read_text() or 'generated-draft' in p.read_text() for p in sit_en)
+          q=(after/'es/cuestionarios/index.html').read_text();assert 'Última revisión:' not in q and 'Last reviewed:' not in q and 'Pendiente de localizar' not in q
+          vf=(after/'es/vivir-fuera/index.html').read_text();assert 'Pendiente de completar:' not in vf and 'Still to complete:' not in vf
+          priv_es=(after/'es/privacidad/index.html').read_text();priv_en=(after/'en/privacy/index.html').read_text();assert 'Última revisión:' not in priv_es and 'Last reviewed:' not in priv_en
+          pre=hashes(after);subprocess.run(['python3','scripts/validate_publication_statuses.py','--root','dist'],check=True);post=hashes(after);assert pre==post,'No es idempotente'
+          report={'base':'ed553e654fa7ed358112dfcd96cf61fa9b725623','backup':'backup/20260910-antes-validacion-global-ed553e6','public_files':len(a),'changed_public_files':len(changed),'html_pages_checked_title_description_grade':checked,'sentidos':'exacto','sueno':'exacto','biblioteca_validated_cards':48,'data_validated_es':49,'data_validated_en':49,'conditions_en_checked':185,'situations_es_en_checked':374,'unexpected_public_paths':[],'idempotent':True,'changed_paths':changed}
+          (out/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps({k:v for k,v in report.items() if k!='changed_paths'},ensure_ascii=False,indent=2))
           PY
       - name: Guardar verificación
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: iris-validacion-global-antes-publicar
-          path: /tmp/iris-validation
+          path: /tmp/iris-validation-report
           retention-days: 14
           if-no-files-found: error
