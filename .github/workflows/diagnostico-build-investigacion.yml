@@ -20,3 +20,18 @@ jobs:
       - uses: actions/checkout@v4
       - name: Ejecutar exactamente el build de Netlify
         run: python3 scripts/build_site.py
+      - name: Capturar muestra local de Tarjeta Iris
+        if: startsWith(github.ref_name, 'test/')
+        run: |
+          python3 -m http.server 8765 -d dist >/tmp/iris-http.log 2>&1 &
+          sleep 2
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$BROWSER"
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1100 --screenshot=tarjeta-etiquetas.png http://127.0.0.1:8765/es/situaciones/la-ropa-me-molesta/
+          test -s tarjeta-etiquetas.png
+      - uses: actions/upload-artifact@v4
+        if: startsWith(github.ref_name, 'test/')
+        with:
+          name: tarjeta-iris-muestra
+          path: tarjeta-etiquetas.png
+          retention-days: 1
