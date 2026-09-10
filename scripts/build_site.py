@@ -21,6 +21,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
     # Estados documentales y referencias normativas: no reescribe el contenido de las fichas.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_validation_framework.py')],cwd=ROOT,check=True)
+    # Conserva las letras fijadas y alinea solo los nombres del registro con los títulos reales del catálogo.
+    subprocess.run([sys.executable,str(ROOT/'scripts/align_condition_classification_titles.py')],cwd=ROOT,check=True)
     # Distribución editorial final de las 185 fichas: 21 A, 40 B, 44 C, 54 BP y 26 SG.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_condition_classifications.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
