@@ -53,6 +53,9 @@ def build():
     # No reconstruirla aquí desde un segundo payload: evitar dos fuentes para la misma página.
     # Cerrar los rótulos antiguos de revisión que sobreviven en plantillas históricas.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Vida diaria no muestra estados editoriales al público. Esta última pasada
+    # elimina rótulos que publicadores antiguos puedan haber vuelto a introducir.
+    subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)

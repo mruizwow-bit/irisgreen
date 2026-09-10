@@ -17,6 +17,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'editorial/navigation'
 ASSETS = ('assets/navigation-approved.css', 'assets/navigation-approved.js')
+HOME_CORRECTIONS = '''<style id="ig-home-corrections">
+/* Condiciones vuelve al estilo neutro de las tarjetas secundarias. */
+.small-card[data-section="condiciones"]{background:rgba(255,255,255,.8);border-color:#c4cede}
+.small-card[data-section="condiciones"]>.icon,.small-card[data-section="condiciones"]>.external{color:var(--lilac)}
+.small-card[data-section="condiciones"]:hover{border-color:var(--lilac);outline-color:var(--lilac)}
+</style>'''
 
 
 def digest(data: bytes) -> str:
@@ -49,6 +55,11 @@ def build(check: bool = False) -> dict:
         text = (SOURCE/template).read_text(encoding='utf-8')
         if 'noindex,nofollow,noarchive' in text or 'iris-review-route' in text:
             raise ValueError('A review wrapper must not be published')
+        if target == 'index.html':
+            # "Secciones" es un ancla normal. No debe depender del router JS.
+            text = text.replace(' data-route="secciones"', '')
+            # Condiciones no tiene color propio en la portada.
+            text = text.replace('</head>', HOME_CORRECTIONS + '</head>', 1)
         for asset, version in versions.items():
             text = text.replace('"/'+asset+'"', '"/'+asset+'?v='+version+'"')
         version = digest(text.encode('utf-8'))[:16]

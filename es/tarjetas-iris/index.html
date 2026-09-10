@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tarjetas Iris Â· Iris Green</title>
+<meta name="description" content="Prepara una tarjeta breve para explicar quÃ© te cuesta, quÃ© te ayuda y quÃ© necesitas.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://irisgreen.eu/es/tarjetas-iris/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site-v23.css">
+<link rel="stylesheet" href="/assets/ajustes-interfaz.css">
+<link rel="stylesheet" href="/assets/controles-comunes.css">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
+<style>
+:root{
+  --ink:#17395c;
+  --muted:#52647a;
+  --body:"Atkinson Hyperlegible",Arial,sans-serif;
+  --display:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--body)}
+.iris-shell{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:34px 0 64px}
+.iris-head{max-width:800px;margin-bottom:28px}
+.iris-kicker{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#6554A8;margin:0 0 8px}
+.iris-head h1{font-family:var(--display);font-size:clamp(38px,5vw,54px);font-weight:400;line-height:1.08;margin:0 0 10px}
+.iris-head p{font-size:18px;line-height:1.55;color:var(--muted);margin:0}
+.iris-layout{display:grid;grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);gap:30px;align-items:start}
+.iris-panel{background:#fff;border:1px solid #d9deea;border-radius:22px;padding:22px;box-shadow:0 10px 34px rgba(23,57,92,.05)}
+.iris-panel h2{font-family:var(--display);font-weight:400;font-size:30px;margin:0 0 18px}
+.iris-step{border:0;padding:0;margin:0 0 22px}
+.iris-step legend{font-weight:700;margin-bottom:10px}
+.iris-sections{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.iris-section{--swatch:#6554A8;--soft:#EEEBF8;min-height:52px;border:1px solid color-mix(in srgb,var(--swatch) 28%, white);background:var(--soft);border-radius:13px;padding:10px 12px;text-align:left;display:flex;align-items:center;gap:9px}
+.iris-section[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--swatch);font-weight:700}
+.iris-dot{width:12px;height:12px;border-radius:50%;background:var(--swatch);flex:0 0 auto}
+.iris-section[data-section-choice="situaciones"]{--swatch:#6554A8;--soft:#EEEBF8}
+.iris-section[data-section-choice="vida"]{--swatch:#855B87;--soft:#F1E8F1}
+.iris-section[data-section-choice="ayudas"]{--swatch:#586B9D;--soft:#E9ECF7}
+.iris-section[data-section-choice="condiciones"]{--swatch:#626A82;--soft:#ECEEF4}
+.iris-field{display:grid;gap:7px;margin-bottom:14px}
+.iris-field label{font-weight:700;font-size:15px}
+.iris-field input,.iris-field textarea{width:100%;border:1px solid #aeb8c8;border-radius:12px;background:#fff;padding:11px 12px;line-height:1.45;font:inherit;color:inherit}
+.iris-field textarea{min-height:86px;resize:vertical}
+.iris-helper{font-size:13px;line-height:1.45;color:var(--muted);margin-top:-3px}
+.iris-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.iris-btn{min-height:46px;border-radius:12px;border:1px solid var(--ink);padding:9px 15px;background:var(--ink);color:#fff;font-weight:700;font:inherit;cursor:pointer}
+.iris-btn.secondary{background:#fff;color:var(--ink);border-color:#9caabd}
+.iris-btn.ghost{background:transparent;color:var(--ink);border-color:#ccd2de}
+.iris-preview{position:sticky;top:18px}
+.iris-preview-label{display:flex;justify-content:space-between;gap:12px;margin:0 0 10px;color:var(--muted);font-size:14px}
+.iris-card{
+  --accent:#6554A8;
+  --soft:#EEEBF8;
+  --line:#cbc4e8;
+  position:relative;
+  min-height:520px;
+  background:#fff;
+  border:2px solid var(--line);
+  border-radius:28px;
+  padding:42px 46px 30px;
+  box-shadow:0 14px 42px rgba(23,57,92,.08);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  isolation:isolate;
+}
+.iris-card[data-section="situaciones"]{--accent:#6554A8;--soft:#EEEBF8;--line:#cbc4e8}
+.iris-card[data-section="vida"]{--accent:#855B87;--soft:#F1E8F1;--line:#d8c7d9}
+.iris-card[data-section="ayudas"]{--accent:#586B9D;--soft:#E9ECF7;--line:#c8cee5}
+.iris-card[data-section="condiciones"]{--accent:#626A82;--soft:#ECEEF4;--line:#ccd0db}
+.iris-card::before{
+  content:"";
+  position:absolute;
+  inset:18% 24%;
+  background:url("/img/v40-brand-symbol.webp") center/contain no-repeat;
+  opacity:.045;
+  filter:grayscale(1);
+  pointer-events:none;
+  z-index:-2;
+}
+.iris-card::after{
+  content:"IRIS GREEN Â· irisgreen.eu";
+  position:absolute;
+  left:7%;
+  right:7%;
+  top:49%;
+  text-align:center;
+  font-family:var(--display);
+  font-size:clamp(29px,4.1vw,54px);
+  letter-spacing:.08em;
+  white-space:nowrap;
+  color:var(--accent);
+  opacity:.055;
+  transform:rotate(-18deg);
+  transform-origin:center;
+  pointer-events:none;
+  z-index:-1;
+}
+.iris-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.iris-card-brand{font-family:var(--display);font-size:24px}
+.iris-card-type{text-align:right;color:var(--accent);font-size:12px;line-height:1.35;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.iris-card-title{font-family:var(--display);font-size:clamp(36px,4.2vw,50px);font-weight:400;line-height:1.08;color:#273645;margin:25px 0 20px}
+.iris-block{margin-bottom:15px}
+.iris-block h3{font-family:var(--body);font-size:17px;margin:0 0 5px;color:#2b3947}
+.iris-block p{font-size:17px;line-height:1.5;margin:0;color:#263542;white-space:pre-wrap}
+.iris-need{background:var(--soft);border:1px solid var(--line);border-radius:17px;padding:15px 18px}
+.iris-card-foot{margin-top:auto;padding-top:18px;border-top:1px solid #e2e5ec;display:flex;justify-content:space-between;gap:14px;color:#68778a;font-size:12px}
+.iris-privacy{font-size:13px;color:var(--muted);margin:15px 0 0}
+@media(max-width:900px){.iris-layout{grid-template-columns:1fr}.iris-preview{position:static}.iris-card{min-height:500px}}
+@media(max-width:560px){.iris-shell{width:calc(100% - 20px);padding-top:22px}.iris-sections{grid-template-columns:1fr}.iris-panel{padding:17px}.iris-card{min-height:590px;padding:29px 23px 23px;border-radius:22px}.iris-card-title{font-size:38px}.iris-block p{font-size:16px}.iris-card-foot{display:block}.iris-card-foot span{display:block;margin-top:3px}}
+@media print{
+  @page{size:landscape;margin:10mm}
+  body{background:#fff!important}
+  .hd,.panel,.ft,.iris-head,.iris-panel,.iris-preview-label{display:none!important}
+  .iris-shell{width:100%;padding:0;margin:0}
+  .iris-layout{display:block}
+  .iris-preview{position:static}
+  .iris-card{width:100%;height:calc(100vh - 20mm);min-height:0;box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="hd">
+<a class="brand" href="/"><img alt="" height="28" onerror="this.remove()" src="/img/v40-brand-symbol.webp" width="28"><span>Iris Green</span></a>
+<button type="button" class="ig-menu-button" aria-label="Abrir menÃº" aria-controls="ig-main-nav" aria-expanded="false">MenÃº</button>
+<nav aria-label="Explorar" class="nav" id="ig-main-nav">
+<a href="/">Inicio</a><a href="/es/neurodiversidad/²È="25„¡É•˜ôˆ½•Ì½Í¥ÑÕ…¥½¹•Ì¼ˆùM¥ÑÕ…¥½¹•Ìð½„øñ„¡É•˜ôˆ½•Ì½‰¥‰±¥½Ñ•„¼ˆùY¥‘„‘¥…É¥„ð½„øñ„¡É•˜ôˆ½•Ì½Ù¥‘•½Ì¼ˆù[µ‘•½Ìð½„øñ„¡É•˜ôˆ½•Ì½¥¹Ù•ÍÑ¥…¥½¸¼ˆù%¹Ù•ÍÑ¥…§Í¸ð½„øñ„¡É•˜ôˆ½•Ì½‘…Ñ½Ì¼ˆù…Ñ½Ìð½„øñ„¡É•˜ôˆ½•Ì½ÑÉ…µ¥Ñ•Ì½‘¥É•Ñ½É¥¼¼ˆùåÕ‘…Ìð½„øñ„¡É•˜ôˆ½•Ì½±¥‰É½Ì¼ˆù1¥‰É½Ìð½„øñ„¡É•˜ôˆ½•Ì½É•ÕÉÍ½Ì½©Õ•½Ì¼ˆù)Õ…Èð½„ø(ð½¹…Øø(ð½¡•…‘•Èø(ñµ…¥¸¥ô‰µ…¥¸ˆ±…ÍÌô‰¥É¥ÌµÍ¡•±°ˆø(€€ñÍ•Ñ¥½¸±…ÍÌô‰¥É¥Ìµ¡•…ˆø(€€€€ñÀ±…ÍÌô‰¥É¥Ìµ­¥­•Èˆù!•ÉÉ…µ¥•¹Ñ„Á•ÉÍ½¹…°ð½Àø(€€€€ñ ÄùQ…É©•Ñ…Ì%É¥Ìð½ Äø(€€€€ñÀùAÉ•Á…É„Õ¹„Ñ…É©•Ñ„‰É•Ù”Á…É„•áÁ±¥…ÈÅ×¤Ñ”Õ•ÍÑ„°Å×¤Ñ”…åÕ‘„äÅ×¤¹••Í¥Ñ…Ì¸AÕ•‘•Ì…µ‰¥…ÈÑ½‘¼•°Ñ•áÑ¼…¹Ñ•Ì‘”¥µÁÉ¥µ¥É±„¼Õ…É‘…É±„½µ¼A¸ð½Àø(€€ð½Í•Ñ¥½¸ø((€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ±…å½ÕÐˆø(€€€€ñ™½É´±…ÍÌô‰¥É¥ÌµÁ…¹•°ˆ¥ô‰•‘¥Ñ½Èˆ…ÕÑ½½µÁ±•Ñ”ô‰½™˜ˆø(€€€€€€ñ ÈùAÉ•Á…É„ÑÔÑ…É©•Ñ„ð½ Èø(€€€€€€ñ™¥•±‘Í•Ð±…ÍÌô‰¥É¥ÌµÍÑ•Àˆø(€€€€€€€€ñ±••¹û
+ý•Í‘”Å×¤Í•§Í¸±±•…Ìüð½±••¹ø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥ÌµÍ•Ñ¥½¹Ìˆø(€€€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥ÌµÍ•Ñ¥½¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ‘…Ñ„µÍ•Ñ¥½¸µ¡½¥”ô‰Í¥ÑÕ…¥½¹•Ìˆ…É¥„µÁÉ•ÍÍ•ô‰ÑÉÕ”ˆøñÍÁ…¸±…ÍÌô‰¥É¥Ìµ‘½Ðˆøð½ÍÁ…¸ùM¥ÑÕ…¥½¹•Ìð½‰ÕÑÑ½¸ø(€€€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥ÌµÍ•Ñ¥½¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ‘…Ñ„µÍ•Ñ¥½¸µ¡½¥”ô‰Ù¥‘„ˆ…É¥„µÁÉ•ÍÍ•ô‰™…±Í”ˆøñÍÁ…¸±…ÍÌô‰¥É¥Ìµ‘½Ðˆøð½ÍÁ…¸ùY¥‘„‘¥…É¥„ð½‰ÕÑÑ½¸ø(€€€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥ÌµÍ•Ñ¥½¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ‘…Ñ„µÍ•Ñ¥½¸µ¡½¥”ô‰…åÕ‘…Ìˆ…É¥„µÁÉ•ÍÍ•ô‰™…±Í”ˆøñÍÁ…¸±…ÍÌô‰¥É¥Ìµ‘½Ðˆøð½ÍÁ…¸ùåÕ‘…ÌäÑË…µ¥Ñ•Ìð½‰ÕÑÑ½¸ø(€€€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥ÌµÍ•Ñ¥½¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ‘…Ñ„µÍ•Ñ¥½¸µ¡½¥”ô‰½¹‘¥¥½¹•Ìˆ…É¥„µÁÉ•ÍÍ•ô‰™…±Í”ˆøñÍÁ…¸±…ÍÌô‰¥É¥Ìµ‘½Ðˆøð½ÍÁ…¸ù½¹‘¥¥½¹•Ìð½‰ÕÑÑ½¸ø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½™¥•±‘Í•Ðø((€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰Ñ¥Ñ±”ˆùSµÑÕ±¼‘”±„Ñ…É©•Ñ„ð½±…‰•°ø(€€€€€€€€ñ¥¹ÁÕÐ¥ô‰Ñ¥Ñ±”ˆÙ…±Õ”ô‰A…É„µ¤¥Ñ„ˆµ…á±•¹Ñ ôˆØÀˆø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰‘¥™¥Õ±Ñ…ˆùÍÑ¼µ”Õ•ÍÑ„ð½±…‰•°ø(€€€€€€€€ñÑ•áÑ…É•„¥ô‰‘¥™¥Õ±Ñ…ˆµ…á±•¹Ñ ôˆÈÐÀˆùI•½É‘…ÈÙ…É¥…Ì¥¹‘¥…¥½¹•ÌÍ•Õ¥‘…ÌÕ…¹‘¼µ”±…Ì•áÁ±¥…¸Í½±¼‘”Á…±…‰É„¸ð½Ñ•áÑ…É•„ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰…åÕ‘„ˆù5”…åÕ‘„ð½±…‰•°ø(€€€€€€€€ñÑ•áÑ…É•„¥ô‰…åÕ‘„ˆµ…á±•¹Ñ ôˆÈÐÀˆùEÕ”µ”•áÁ±¥ÅÕ•¸Õ¹„½Í„…‘„Ù•èäÁ½‘•È½¹ÍÕ±Ñ…È±½ÌÁ…Í½ÌÁ½È•ÍÉ¥Ñ¼¸ð½Ñ•áÑ…É•„ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰¹••Í¥Ñ¼ˆù9••Í¥Ñ¼ð½±…‰•°ø(€€€€€€€€ñÑ•áÑ…É•„¥ô‰¹••Í¥Ñ¼ˆµ…á±•¹Ñ ôˆÈÐÀˆù1±•Ù…Éµ”Á½È•ÍÉ¥Ñ¼±…Ì¥¹‘¥…¥½¹•Ì¥µÁ½ÉÑ…¹Ñ•ÌÅÕ”Ñ•¹¼ÅÕ”Í•Õ¥È‘•ÍÁ×¥Ì‘”±„¥Ñ„¸ð½Ñ•áÑ…É•„ø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ…Ñ¥½¹Ìˆø(€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥Ìµ‰Ñ¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ¥ô‰ÁÉ¥¹Ðˆù%µÁÉ¥µ¥È€¼Õ…É‘…ÈAð½‰ÕÑÑ½¸ø(€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥Ìµ‰Ñ¸Í•½¹‘…ÉäˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ¥ô‰½Áäˆù½Á¥…ÈÑ•áÑ¼ð½‰ÕÑÑ½¸ø(€€€€€€€€ñ‰ÕÑÑ½¸±…ÍÌô‰¥É¥Ìµ‰Ñ¸¡½ÍÐˆÑåÁ”ô‰‰ÕÑÑ½¸ˆ¥ô‰É•Í•ÐˆùI•ÍÑ…‰±••È•©•µÁ±¼ð½‰ÕÑÑ½¸ø(€€€€€€ð½‘¥Øø(€€€€€€ñÀ±…ÍÌô‰¥É¥ÌµÁÉ¥Ù…äˆù1¼ÅÕ”•ÍÉ¥‰•Ì¹¼Í”Õ…É‘„•¸±„Ý•ˆ¸ð½Àø(€€€€ð½™½É´ø((€€€€ñ‘¥Ø±…ÍÌô‰¥É¥ÌµÁÉ•Ù¥•Üˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥ÌµÁÉ•Ù¥•Üµ±…‰•°ˆøñÍÁ…¸ùY¥ÍÑ„ÁÉ•Ù¥„ð½ÍÁ…¸øñÍÁ…¸¥ô‰½±½Èµ¹…µ”ˆùM¥ÑÕ…¥½¹•Ìƒ
+Ü±¥±„ð½ÍÁ…¸øð½‘¥Øø(€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰¥É¥Ìµ…Éˆ¥ô‰…Éˆ‘…Ñ„µÍ•Ñ¥½¸ô‰Í¥ÑÕ…¥½¹•Ìˆ…É¥„µ±…‰•°ô‰Y¥ÍÑ„ÁÉ•Ù¥„‘”Q…É©•Ñ„%É¥Ìˆø(€€€€€€€€ñ¡•…‘•È±…ÍÌô‰¥É¥Ìµ…Éµ¡•…ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ…Éµ‰É…¹ˆù%É¥ÌÉ••¸ð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰¥É¥Ìµ…ÉµÑåÁ”ˆøñÍÁ…¸¥ô‰Í•Ñ¥½¸µ±…‰•°ˆùM%QU%=9Lð½ÍÁ…¸øñ‰ÈùQI)QAIM=90ð½‘¥Øø(€€€€€€€€ð½¡•…‘•Èø(€€€€€€€€ñ È±…ÍÌô‰¥É¥Ìµ…ÉµÑ¥Ñ±”ˆ¥ô‰ÁÉ•Ù¥•ÜµÑ¥Ñ±”ˆùA…É„µ¤¥Ñ„ð½ Èø(€€€€€€€€ñÍ•Ñ¥½¸±…ÍÌô‰¥É¥Ìµ‰±½¬ˆøñ ÌùÍÑ¼µ”Õ•ÍÑ„ð½ ÌøñÀ¥ô‰ÁÉ•Ù¥•Üµ‘¥™¥Õ±Ñ…ˆøð½Àøð½Í•Ñ¥½¸ø(€€€€€€€€ñÍ•Ñ¥½¸±…ÍÌô‰¥É¥Ìµ‰±½¬ˆøñ Ìù5”…åÕ‘„ð½ ÌøñÀ¥ô‰ÁÉ•Ù¥•Üµ…åÕ‘„ˆøð½Àøð½Í•Ñ¥½¸ø(€€€€€€€€ñÍ•Ñ¥½¸±…ÍÌô‰¥É¥Ìµ‰±½¬¥É¥Ìµ¹••ˆøñ Ìù9••Í¥Ñ¼ð½ ÌøñÀ¥ô‰ÁÉ•Ù¥•Üµ¹••Í¥Ñ¼ˆøð½Àøð½Í•Ñ¥½¸ø(€€€€€€€€ñ™½½Ñ•È±…ÍÌô‰¥É¥Ìµ…Éµ™½½ÐˆøñÍÁ…¸ù¥É¥ÍÉ••¸¹•Ôð½ÍÁ…¸øñÍÁ…¸ù©•µÁ±¼ƒ
+ÜA•ÉÍ½¹…±¥é„•°Ñ•áÑ¼ð½ÍÁ…¸øð½™½½Ñ•Èø(€€€€€€ð½…ÉÑ¥±”ø(€€€€ð½‘¥Øø(€€ð½‘¥Øø(ð½µ…¥¸ø(ñÍÉ¥ÁÐø(¡™Õ¹Ñ¥½¸ ¥ì(€€‰ÕÍ”ÍÑÉ¥Ðˆì(€Ù…È±…‰•±Ìõì(€€€Í¥ÑÕ…¥½¹•Ìéí±…‰•°è‰M%QU%=9Lˆ±¹…µ”è‰M¥ÑÕ…¥½¹•Ìƒ
+Ü±¥±„‰ô°(€€€Ù¥‘„éí±…‰•°è‰Y%%I%ˆ±¹…µ”è‰Y¥‘„‘¥…É¥„ƒ
+Üµ…±Ù„‰ô°(€€€…åÕ‘…Ìéí±…‰•°è‰eULdQK5%QLˆ±¹…µ”è‰åÕ‘…Ìƒ
+Ü…éÕ°±…Ù…¹‘„‰ô°(€€€½¹‘¥¥½¹•Ìéí±…‰•°è‰=9%%=9Lˆ±¹…µ”è‰½¹‘¥¥½¹•Ìƒ
+ÜÉ¥Ì±…Ù…¹‘„‰ô(€ôì(€Ù…È‘•™…Õ±ÑÌõì(€€€Í•Ñ¥½¸è‰Í¥ÑÕ…¥½¹•Ìˆ°(€€€Ñ¥Ñ±”è‰A…É„µ¤¥Ñ„ˆ°(€€€‘¥™¥Õ±Ñ…è‰I•½É‘…ÈÙ…É¥…Ì¥¹‘¥…¥½¹•ÌÍ•Õ¥‘…ÌÕ…¹‘¼µ”±…Ì•áÁ±¥…¸Í½±¼‘”Á…±…‰É„¸ˆ°(€€€…åÕ‘„è‰EÕ”µ”•áÁ±¥ÅÕ•¸Õ¹„½Í„…‘„Ù•èäÁ½‘•È½¹ÍÕ±Ñ…È±½ÌÁ…Í½ÌÁ½È•ÍÉ¥Ñ¼¸ˆ°(€€€¹••Í¥Ñ¼è‰1±•Ù…Éµ”Á½È•ÍÉ¥Ñ¼±…Ì¥¹‘¥…¥½¹•Ì¥µÁ½ÉÑ…¹Ñ•ÌÅÕ”Ñ•¹¼ÅÕ”Í•Õ¥È‘•ÍÁ×¥Ì‘”±„¥Ñ„¸ˆ(€ôì(€Ù…ÈÕÉÉ•¹Ðõ‘•™…Õ±ÑÌ¹Í•Ñ¥½¸ì(€Ù…È¥‘Ìõl‰Ñ¥Ñ±”ˆ°‰‘¥™¥Õ±Ñ…ˆ°‰…åÕ‘„ˆ°‰¹••Í¥Ñ¼‰tì(€™Õ¹Ñ¥½¸Ù…±Õ”¡¥¥íÉ•ÑÕÉ¸‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å%¡¥¤¹Ù…±Õ”¹ÑÉ¥´ ¤íô(€™Õ¹Ñ¥½¸Í•ÑM•Ñ¥½¸¡Í•Ñ¥½¸¥ì(€€€¥˜ …±…‰•±ÍmÍ•Ñ¥½¹t¥Í•Ñ¥½¸ô‰Í¥ÑÕ…¥½¹•Ìˆì(€€€ÕÉÉ•¹ÐõÍ•Ñ¥½¸ì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰…Éˆ¤¹‘…Ñ…Í•Ð¹Í•Ñ¥½¸õÍ•Ñ¥½¸ì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰Í•Ñ¥½¸µ±…‰•°ˆ¤¹Ñ•áÑ½¹Ñ•¹Ðõ±…‰•±ÍmÍ•Ñ¥½¹t¹±…‰•°ì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰½±½Èµ¹…µ”ˆ¤¹Ñ•áÑ½¹Ñ•¹Ðõ±…‰•±ÍmÍ•Ñ¥½¹t¹¹…µ”ì(€€€‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° ‰m‘…Ñ„µÍ•Ñ¥½¸µ¡½¥•tˆ¤¹™½É… ¡™Õ¹Ñ¥½¸¡‰ÕÑÑ½¸¥ì(€€€€€‰ÕÑÑ½¸¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µÁÉ•ÍÍ•ˆ±MÑÉ¥¹œ¡‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹Í•Ñ¥½¹¡½¥”ôôõÍ•Ñ¥½¸¤¤ì(€€€ô¤ì(€ô(€™Õ¹Ñ¥½¸Íå¹Œ ¥ì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰ÁÉ•Ù¥•ÜµÑ¥Ñ±”ˆ¤¹Ñ•áÑ½¹Ñ•¹ÐõÙ…±Õ” ‰Ñ¥Ñ±”ˆ¥ñð‰Q…É©•Ñ„%É¥Ìˆì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰ÁÉ•Ù¥•Üµ‘¥™¥Õ±Ñ…ˆ¤¹Ñ•áÑ½¹Ñ•¹ÐõÙ…±Õ” ‰‘¥™¥Õ±Ñ…ˆ¥ñð‹ŠPˆì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰ÁÉ•Ù¥•Üµ…åÕ‘„ˆ¤¹Ñ•áÑ½¹Ñ•¹ÐõÙ…±Õ” ‰…åÕ‘„ˆ¥ñð‹ŠPˆì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰ÁÉ•Ù¥•Üµ¹••Í¥Ñ¼ˆ¤¹Ñ•áÑ½¹Ñ•¹ÐõÙ…±Õ” ‰¹••Í¥Ñ¼ˆ¥ñð‹ŠPˆì(€ô(€™Õ¹Ñ¥½¸½ÁåQ•áÐ¡Ñ•áÐ¥ì(€€€¥˜¡¹…Ù¥…Ñ½È¹±¥Á‰½…É˜™¹…Ù¥…Ñ½È¹±¥Á‰½…É¹ÝÉ¥Ñ•Q•áÐ¥É•ÑÕÉ¸¹…Ù¥…Ñ½È¹±¥Á‰½…É¹ÝÉ¥Ñ•Q•áÐ¡Ñ•áÐ¤ì(€€€É•ÑÕÉ¸¹•ÜAÉ½µ¥Í”¡™Õ¹Ñ¥½¸¡É•Í½±Ù”±É•©•Ð¥ì(€€€€€Ù…È…É•„õ‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Ñ•áÑ…É•„ˆ¤ì(€€€€€…É•„¹Ù…±Õ”õÑ•áÐí…É•„¹Í•ÑÑÑÉ¥‰ÕÑ” ‰É•…‘½¹±äˆ°ˆˆ¤í…É•„¹ÍÑå±”¹Á½Í¥Ñ¥½¸ô‰™¥á•ˆí…É•„¹ÍÑå±”¹½Á…¥ÑäôˆÀˆì(€€€€€‘½Õµ•¹Ð¹‰½‘ä¹…ÁÁ•¹‘¡¥±¡…É•„¤í…É•„¹Í•±•Ð ¤ì(€€€€€ÑÉåí‘½Õµ•¹Ð¹•á•½µµ…¹ ‰½Áäˆ¤ýÉ•Í½±Ù” ¤éÉ•©•Ð ¤íõ…Ñ ¡•ÉÈ¥íÉ•©•Ð¡•ÉÈ¤íô(€€€€€…É•„¹É•µ½Ù” ¤ì(€€€ô¤ì(€ô(€‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° ‰m‘…Ñ„µÍ•Ñ¥½¸µ¡½¥•tˆ¤¹™½É… ¡™Õ¹Ñ¥½¸¡‰ÕÑÑ½¸¥ì(€€€‰ÕÑÑ½¸¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ±™Õ¹Ñ¥½¸ ¥íÍ•ÑM•Ñ¥½¸¡‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹Í•Ñ¥½¹¡½¥”¤íô¤ì(€ô¤ì(€¥‘Ì¹™½É… ¡™Õ¹Ñ¥½¸¡¥¥í‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å%¡¥¤¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¥¹ÁÕÐˆ±Íå¹Œ¤íô¤ì(€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰ÁÉ¥¹Ðˆ¤¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ±™Õ¹Ñ¥½¸ ¥íÝ¥¹‘½Ü¹ÁÉ¥¹Ð ¤íô¤ì(€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰½Áäˆ¤¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ±™Õ¹Ñ¥½¸ ¥ì(€€€Ù…ÈÑ•áÐô‰Q…É©•Ñ„%É¥Ìƒ
+Ü€ˆ­±…‰•±ÍmÕÉÉ•¹Ñt¹±…‰•°¬‰q¸ˆ­Ù…±Õ” ‰Ñ¥Ñ±”ˆ¤¬‰q¹q¹ÍÑ¼µ”Õ•ÍÑ…q¸ˆ­Ù…±Õ” ‰‘¥™¥Õ±Ñ…ˆ¤¬‰q¹q¹5”…åÕ‘…q¸ˆ­Ù…±Õ” ‰…åÕ‘„ˆ¤¬‰q¹q¹9••Í¥Ñ½q¸ˆ­Ù…±Õ” ‰¹••Í¥Ñ¼ˆ¤¬‰q¹q¹¥É¥ÍÉ••¸¹•Ôˆì(€€€½ÁåQ•áÐ¡Ñ•áÐ¤¹Ñ¡•¸¡™Õ¹Ñ¥½¸ ¥ì(€€€€€Ù…È‰ÕÑÑ½¸õ‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰½Áäˆ¤í‰ÕÑÑ½¸¹Ñ•áÑ½¹Ñ•¹Ðô‰½Á¥…‘¼ˆì(€€€€€Í•ÑQ¥µ•½ÕÐ¡™Õ¹Ñ¥½¸ ¥í‰ÕÑÑ½¸¹Ñ•áÑ½¹Ñ•¹Ðô‰½Á¥…ÈÑ•áÑ¼ˆíô°ÄÐÀÀ¤ì(€€€ô¤¹…Ñ ¡™Õ¹Ñ¥½¸ ¥íô¤ì(€ô¤ì(€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰É•Í•Ðˆ¤¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ±™Õ¹Ñ¥½¸ ¥ì(€€€¥‘Ì¹™½É… ¡™Õ¹Ñ¥½¸¡¥¥í‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å%¡¥¤¹Ù…±Õ”õ‘•™…Õ±ÑÍm¥‘tíô¤ì(€€€Í•ÑM•Ñ¥½¸¡‘•™…Õ±ÑÌ¹Í•Ñ¥½¸¤íÍå¹Œ ¤ì(€ô¤ì(€Ù…ÈÁ…É…µÌõ¹•ÜUI1M•…É¡A…É…µÌ¡±½…Ñ¥½¸¹Í•…É ¤ì(€¥˜¡Á…É…µÌ¹•Ð ‰Í•Ñ¥½¸ˆ¤¥Í•ÑM•Ñ¥½¸¡Á…É…µÌ¹•Ð ‰Í•Ñ¥½¸ˆ¤¤ì(€¥‘Ì¹™½É… ¡™Õ¹Ñ¥½¸¡¥¥í¥˜¡Á…É…µÌ¹¡…Ì¡¥¤¥‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å%¡¥¤¹Ù…±Õ”õÁ…É…µÌ¹•Ð¡¥¤¹Í±¥” À°ÈÐÀ¤íô¤ì(€Íå¹Œ ¤ì)ô¤ ¤ì(ð½ÍÉ¥ÁÐø(ñÍÉ¥ÁÐ‘•™•ÈÍÉŒôˆ½…ÍÍ•ÑÌ½¥¹Ñ•É™…èµ½µÕ¸¹©Ìˆøð½ÍÉ¥ÁÐø(ñÍÉ¥ÁÐ‘•™•ÈÍÉŒôˆ½…ÍÍ•ÑÌ½µÕÍ¥„¹©Ìˆøð½ÍÉ¥ÁÐø(ð½‰½‘äø(ð½¡Ñµ°ø(
