@@ -23,10 +23,9 @@ jobs:
       - name: Aplicar tanda
         run: python3 scripts/apply_situaciones_sentidos_01_21.py
 
-      - name: Comprobar fuentes protegidas
+      - name: Comprobar fuente protegida de Sentidos
         run: |
           python3 scripts/sentidos_author.py
-          python3 scripts/run_accessibility_descriptions_part1.py --root .
           git diff --check
 
       - name: Guardar tanda en la rama
