@@ -5,6 +5,7 @@ import argparse, json
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 import apply_accessibility_descriptions_part1 as core
+import sentidos_author as sentidos
 
 SPECIAL_COUNTERPARTS={
     '/es/situaciones/necesito-que-me-repitan-las-instrucciones/':
@@ -85,6 +86,24 @@ def check(root: Path, approved=None):
         'search_records_checked':141,
     }
 
+_generic_rows = core.rows
+
+
+def combined_rows():
+    """El paquete general conserva el resto; Sentidos usa su fuente editorial protegida."""
+    approved = _generic_rows()
+    sensory = {row['number']: row for row in sentidos.approved_rows()}
+    for row in approved:
+        if row.get('area') != 'Sentidos':
+            continue
+        src = sensory[row['number']]
+        row['title_es'] = src['title_es']
+        row['es'] = src['es']
+        row['en'] = src['en']
+    return approved
+
+
+core.rows=combined_rows
 core.map_routes=map_routes
 core.check=check
 

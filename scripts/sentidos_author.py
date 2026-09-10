@@ -12,7 +12,7 @@ from apply_reviewed_entries import Tree, has, within, edits
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = 'editorial/reviews/situaciones_sentidos_ES_EN.md'
 MANIFEST = 'editorial/reviews/situaciones-sentidos-manifest.json'
-SOURCE_SHA256 = 'aa3dfe924b5897c3686ac4a332267fbb034c47cb83eb1af47dbe4e6608d81b78'
+SOURCE_SHA256 = '494fd25f81f1f362ac49f89e138e196498e10eaa9136dafb19535eb37be8dee8'
 SLUGS = [
  'la-ropa-me-molesta', 'la-luz-del-supermercado-me-agota', 'no-nota-hambre-o-sed',
  'no-se-si-estoy-cansada-saturada-o-tengo-hambre', 'el-hambre-aparece-de-golpe-y-ya-estoy-fatal',

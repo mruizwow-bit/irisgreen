@@ -53,6 +53,8 @@ def build():
     # No reconstruirla aquí desde un segundo payload: evitar dos fuentes para la misma página.
     # Cerrar los rótulos antiguos de revisión que sobreviven en plantillas históricas.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Los estados editoriales de Condiciones/Situaciones son internos.
+    subprocess.run([sys.executable,str(ROOT/'scripts/hide_internal_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
