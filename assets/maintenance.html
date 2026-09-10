@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="color-scheme" content="light">
+  <title>Sitio en mantenimiento · Iris Green</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #26232a;
+      --muted: #625d68;
+      --mauve: #8d718d;
+      --lavender-blue: #8c9acb;
+      --line: #e8e4eb;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(141,113,141,.12), transparent 30%),
+        radial-gradient(circle at 86% 82%, rgba(140,154,203,.14), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      width: min(680px, 100%);
+      padding: clamp(32px, 6vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 18px 60px rgba(42,34,48,.08);
+      text-align: center;
+    }
+    .brand {
+      margin: 0 0 30px;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--mauve);
+    }
+    .mark {
+      width: 72px;
+      height: 6px;
+      margin: 0 auto 30px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--mauve), var(--lavender-blue));
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      line-height: 1.08;
+      font-weight: 650;
+      letter-spacing: -.035em;
+    }
+    p {
+      margin: 20px auto 0;
+      max-width: 540px;
+      font-size: clamp(1rem, 2.4vw, 1.12rem);
+      color: var(--muted);
+    }
+    .en {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      font-size: .96rem;
+    }
+    strong { color: var(--text); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="brand">Iris Green</p>
+    <div class="mark" aria-hidden="true"></div>
+    <h1>Estamos revisando la web</h1>
+    <p>El sitio está temporalmente cerrado mientras revisamos y corregimos su contenido.</p>
+    <p><strong>Gracias por tu comprensión.</strong> Volveremos a abrirlo cuando la revisión esté terminada.</p>
+    <p class="en" lang="en"><strong>Website under maintenance.</strong><br>The site is temporarily closed while we review and correct its content. Thank you for your understanding.</p>
+  </main>
+</body>
+</html>
