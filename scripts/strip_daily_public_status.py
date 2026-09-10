@@ -54,7 +54,7 @@ def clean_detail(path: Path, lang: str) -> int:
             flags=re.I,
         )
         text = re.sub(
-            r'<li><strong>\s*(?:Estado|Validación|Revisión)\s*:</strong>[^<]*(?:</li>)',
+            r'<li><strong>\s*(?:Estado|Validación|Revisión)\s*:</strong>[^<]*</li>',
             "",
             text,
             flags=re.I,
@@ -73,7 +73,7 @@ def clean_detail(path: Path, lang: str) -> int:
             flags=re.I,
         )
         text = re.sub(
-            r'<li><strong>\s*(?:Status|Validation|Review)\s*:</strong>[^<]*(?:</li>)',
+            r'<li><strong>\s*(?:Status|Validation|Review)\s*:</strong>[^<]*</li>',
             "",
             text,
             flags=re.I,
@@ -132,7 +132,7 @@ def assert_clean(root: Path) -> None:
     for base in [root / "es/biblioteca", root / "en/everyday-life"]:
         for path in base.rglob("*.html"):
             text = path.read_text(encoding="utf-8")
-            for rh, label in checks:
+            for rx, label in checks:
                 if rx.search(text):
                     problems.append(f"{path.relative_to(root)}: {label}")
     for rel in ["es/biblioteca/vida-diaria.json", "en/everyday-life/everyday-life.json"]:
