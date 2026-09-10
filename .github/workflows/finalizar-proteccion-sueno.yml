@@ -1,0 +1,95 @@
+name: Finalizar protección de Sueño
+on:
+  push:
+    branches:
+      - mejora/formato-y-sueno-sobre-biblioteca-20260910
+    paths:
+      - .github/workflows/finalizar-proteccion-sueno.yml
+permissions:
+  contents: write
+jobs:
+  finalizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Obtener rama validada
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Confirmar base y copia de seguridad
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main backup/20260910-0836-antes-formato-y-sueno-sobre-biblioteca --quiet
+          test "$(git rev-parse origin/main)" = "9b4021e7bce1fdf3f76a2a542483874d7776de1f"
+          test "$(git rev-parse origin/backup/20260910-0836-antes-formato-y-sueno-sobre-biblioteca)" = "9b4021e7bce1fdf3f76a2a542483874d7776de1f"
+      - name: Crear manifiesto y README de protección
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e editorial/reviews/situaciones-sueno-manifest.json
+          python3 scripts/sueno_author.py --apply > /tmp/sueno-import-final.json
+          # La importación debe ser idempotente sobre las páginas ya validadas: solo crea el manifiesto no versionado.
+          test -z "$(git diff --name-only)"
+          cat > editorial/reviews/SUENO-README.md <<'EOF'
+          # Sueño: texto aprobado de la autora
+
+          El original situaciones_sueno_ES_EN.md se conserva exactamente como fue enviado. Se importan sus 23 títulos españoles y 46 descripciones ES/EN, sin resumen adicional. Las descripciones se sincronizan en cada ficha, las tarjetas del listado, el índice buscador.json y los metadatos. Los títulos ingleses no figuran en el documento y se conservan los existentes. Las rutas no cambian.
+
+          El resto de los apartados, fuentes, fechas de revisión documental, avisos, robots, colores, tipografías y controles no se modifican. Esta importación no acredita una revisión completa de las fichas ni una nueva comprobación de las fuentes.
+
+          scripts/sueno_author.py --apply se utilizó una sola vez para incorporar el texto. Durante la construcción se ejecuta únicamente la comprobación de igualdad exacta. Si otra tarea altera las descripciones protegidas, la publicación se detiene: no se restaura ni reescribe contenido automáticamente. Una nueva corrección aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
+          EOF
+          sed -i 's/^          //' editorial/reviews/SUENO-README.md
+      - name: Construir y verificar todo antes de guardar
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-sueno-final
+          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-sueno-final/build.log
+          grep -Fq 'Biblioteca ES publicada: 48 fichas; revisión 10 de septiembre de 2026.' /tmp/iris-sueno-final/build.log
+          python3 scripts/sentidos_author.py --root dist > /tmp/iris-sueno-final/sentidos.json
+          python3 scripts/sueno_author.py --root dist > /tmp/iris-sueno-final/sueno.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('dist/es/biblioteca')
+          pages=sorted(root.glob('*/index.html'))
+          assert len(pages)==48,len(pages)
+          index=(root/'index.html').read_text()
+          assert index.count('REVISADA')==48,index.count('REVISADA')
+          for p in pages:
+              s=p.read_text()
+              assert 'BORRADOR' not in s
+              assert 'Página en borrador' not in s
+              assert 'Estado:</strong> borrador' not in s
+              assert 'content="noindex,follow"' not in s
+              assert 'content="index,follow"' in s
+              assert 'Estado:</strong> publicada' in s
+              assert 'Revisión:</strong> 10 de septiembre de 2026' in s
+          report={'biblioteca_pages':48,'revisada_cards':48,'index_follow':48,'published':48,'borrrador_markers':0,'sentidos_verified':48,'sueno_verified':46}
+          Path('/tmp/iris-sueno-final/check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print(json.dumps(report,indent=2,ensure_ascii=False))
+          PY
+          # El build modifica temporalmente fuentes de Biblioteca; no se guardan en este commit.
+          git restore --worktree .
+          test -f editorial/reviews/situaciones-sueno-manifest.json
+          test -f editorial/reviews/SUENO-README.md
+      - name: Guardar solo la protección editorial
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- editorial/reviews/situaciones-sueno-manifest.json editorial/reviews/SUENO-README.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 2
+          git commit -m 'Guardar protección editorial del texto aprobado de Sueño [skip netlify]'
+          git push origin HEAD:mejora/formato-y-sueno-sobre-biblioteca-20260910
+      - name: Guardar comprobaciones
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-sueno-proteccion-final
+          path: /tmp/iris-sueno-final
+          retention-days: 14
+          if-no-files-found: warn
