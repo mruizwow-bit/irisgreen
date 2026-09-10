@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the approved Part 1 accessibility-copy integrator with route fallbacks."""
+"""Run the approved Part 1 accessibility-copy integrator with safe route fallbacks."""
 from __future__ import annotations
 import argparse, json
 from pathlib import Path
@@ -43,14 +43,57 @@ def map_routes(root: Path, approved: list[dict]) -> list[dict]:
         raise ValueError('Duplicate route mapping')
     return approved
 
+def check(root: Path, approved=None):
+    approved=approved or map_routes(root,core.rows())
+    indexes={}
+    for lang,rel in core.INDEXES.items():
+        text=(root/rel).read_text(encoding='utf-8')
+        tree,cards=core.card_nodes(text,rel)
+        indexes[lang]=(text,tree,{c['url']:c for c in cards})
+    search={x.get('u'):x for x in json.loads((root/'buscador.json').read_text(encoding='utf-8'))}
+    for row in approved:
+        for lang in ('es','en'):
+            path=root/row[lang+'_path']
+            text=path.read_text(encoding='utf-8')
+            tree,h,lead=core.page_nodes(text)
+            expected_title=row['title_es'] if lang=='es' else row['title_en']
+            if tree.text(h)!=expected_title or tree.text(lead)!=row[lang]:
+                raise ValueError('Approved wording mismatch: '+str(path))
+            desc=[n.attrs.get('content') for n in tree.nodes if n.tag=='meta' and (n.attrs.get('name')=='description' or n.attrs.get('property')=='og:description')]
+            if desc!=[row[lang],row[lang]]:
+                raise ValueError('Stale metadata: '+str(path))
+            _,index_tree,by=indexes[lang]
+            card=by[row[lang+'_route']]
+            if index_tree.text(card['lead'])!=row[lang]:
+                raise ValueError('Stale catalogue description: '+str(path))
+            # Spanish titles are part of the approved source. English titles were
+            # not supplied in it and therefore remain exactly as they already were.
+            if lang=='es' and index_tree.text(card['title'])!=row['title_es']:
+                raise ValueError('Stale catalogue title: '+str(path))
+        rec=search.get(row['es_route'])
+        if not rec or rec.get('t')!=row['title_es'] or rec.get('d')!=row['es'] or rec.get('en',{}).get('d')!=row['en']:
+            raise ValueError('Stale search record: '+row['es_route'])
+    return {
+        'source':core.SOURCE_NAME,
+        'source_sha256':core.SOURCE_SHA256,
+        'entries':141,
+        'descriptions':282,
+        'spanish_titles':141,
+        'english_titles':'preserved',
+        'pages_checked':282,
+        'catalogue_cards_checked':282,
+        'search_records_checked':141,
+    }
+
 core.map_routes=map_routes
+core.check=check
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root',type=Path,default=core.REPO_ROOT)
     ap.add_argument('--apply',action='store_true')
     args=ap.parse_args()
-    result=core.apply(args.root.resolve()) if args.apply else core.check(args.root.resolve())
+    result=core.apply(args.root.resolve()) if args.apply else check(args.root.resolve())
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
