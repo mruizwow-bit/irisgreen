@@ -1,0 +1,133 @@
+name: Verificar producción formato Sueño Biblioteca
+on:
+  push:
+    branches:
+      - mejora/formato-y-sueno-sobre-biblioteca-20260910
+    paths:
+      - .github/workflows/verificar-produccion-formato-sueno-biblioteca.yml
+permissions:
+  contents: read
+jobs:
+  produccion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Obtener fuentes de comprobación
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Comprobar HTML público completo
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/iris-live-final
+          python3 - <<'PY'
+          import html,json,re,time,urllib.request
+          from pathlib import Path
+          from urllib.parse import urljoin
+          BASE='https://irisgreen.eu'
+          def get(path):
+              last=None
+              for i in range(6):
+                  try:
+                      req=urllib.request.Request(BASE+path+('?' if '?' not in path else '&')+'igverify=4314430-'+str(i),headers={'User-Agent':'IrisGreen-publication-verification','Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(req,timeout=25) as r:
+                          body=r.read().decode('utf-8'); status=r.status
+                      if status==200:return body
+                  except Exception as e:last=e;time.sleep(3)
+              raise RuntimeError((path,last))
+          def plain(v):
+              return html.unescape(re.sub(r'<[^>]*>','',v)).strip()
+          # Biblioteca: todas las rutas reales existentes en el repositorio.
+          paths=sorted('/es/biblioteca/'+p.parent.name+'/' for p in Path('es/biblioteca').glob('*/index.html'))
+          assert len(paths)==48,len(paths)
+          idx=get('/es/biblioteca/')
+          assert idx.count('REVISADA')==48,idx.count('REVISADA')
+          bib=[]
+          for path in paths:
+              s=get(path)
+              assert 'BORRADOR' not in s,(path,'BORRADOR')
+              assert 'Página en borrador' not in s,(path,'Página en borrador')
+              assert 'Estado:</strong> borrador' not in s,(path,'estado borrador')
+              assert 'content="noindex,follow"' not in s,(path,'noindex')
+              assert 'content="index,follow"' in s,(path,'index')
+              assert 'Estado:</strong> publicada' in s,(path,'publicada')
+              assert 'Revisión:</strong> 10 de septiembre de 2026' in s,(path,'revision')
+              bib.append(path)
+          # Source documents: exact Sueño and Sentidos descriptions in both languages.
+          def author_rows(file,count):
+              s=Path(file).read_text()
+              rows=re.findall(r'^## (\d+)\. ([^\n]+)\n\n### ES\n([^\n]+)\n\n### EN\n([^\n]+)',s,re.M)
+              assert len(rows)==count
+              return rows
+          def verify_collection(source,manifest_path,count):
+              rows=author_rows(source,count); m=json.loads(Path(manifest_path).read_text()); out=[]
+              assert len(m['entries'])==count
+              for row,e in zip(rows,m['entries']):
+                  n,title_es,desc_es,desc_en=row
+                  for lang,desc in [('es',desc_es),('en',desc_en)]:
+                      rel=e[lang+'_path']; path='/'+rel[:-10]
+                      s=get(path)
+                      h1=re.search(r'<h1[^>]*>(.*?)</h1>',s,re.S); lede=re.search(r'<p[^>]*class="[^"]*\blede\b[^"]*"[^>]*>(.*?)</p>',s,re.S)
+                      assert h1 and lede,(path,'missing fields')
+                      assert plain(lede.group(1))==desc,(path,plain(lede.group(1)),desc)
+                      expected=title_es if lang=='es' else e['retained_title_en']
+                      assert plain(h1.group(1))==expected,(path,plain(h1.group(1)),expected)
+                      out.append(path)
+              return out
+          sleep=verify_collection('editorial/reviews/situaciones_sueno_ES_EN.md','editorial/reviews/situaciones-sueno-manifest.json',23)
+          senses=verify_collection('editorial/reviews/situaciones_sentidos_ES_EN.md','editorial/reviews/situaciones-sentidos-manifest.json',24)
+          report={'production':'https://irisgreen.eu','commit':'431443039db2bd47cac0a9d6d1ed9d7280bcb9c9','biblioteca':{'pages':len(bib),'revisada':48,'index_follow':48,'published':48,'review_date':48,'draft_markers':0},'sueno':{'pages':len(sleep),'exact_descriptions':46,'spanish_titles':23,'english_titles':'preserved'},'sentidos':{'pages':len(senses),'exact_descriptions':48,'spanish_titles':24,'english_titles':'preserved'}}
+          Path('/tmp/iris-live-final/html.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print(json.dumps(report,indent=2,ensure_ascii=False))
+          PY
+      - name: Instalar navegador de prueba
+        run: |
+          python3 -m venv /tmp/live-browser
+          /tmp/live-browser/bin/pip install playwright==1.55.0
+          /tmp/live-browser/bin/python -m playwright install --with-deps chromium
+      - name: Comprobar formato real y controles
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/live-browser/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          report={'javascript_errors':[],'pages':[]}
+          samples=['/es/neurodiversidad/condiciones/autismo/','/en/neurodiversity/conditions/autism/','/es/situaciones/me-despierto-de-madrugada/','/es/datos/autismo/','/es/biblioteca/el-sueno-que-observar-y-por-donde-empezar/','/en/everyday-life/reasonable-adjustments-at-work/']
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              ctx=browser.new_context(viewport={'width':1600,'height':950})
+              page=ctx.new_page();page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
+              for path in samples:
+                  page.goto('https://irisgreen.eu'+path+'?igverify=4314430',wait_until='networkidle')
+                  page.evaluate('IGPreferences.reset()')
+                  page.set_viewport_size({'width':1600,'height':950});page.wait_for_timeout(80)
+                  box=page.locator('main').bounding_box();fs=float(page.locator('article.ficha').evaluate('el=>parseFloat(getComputedStyle(el).fontSize)'))
+                  assert box and 1118<=box['width']<=1122,(path,box)
+                  assert 17.9<=fs<=18.1,(path,fs)
+                  for width in [320,390,768,1600]:
+                      page.set_viewport_size({'width':width,'height':950})
+                      for scale in [1,1.5]:
+                          page.evaluate('(x)=>IGPreferences.update({scale:x,text:{width:"original"}})',scale)
+                          page.wait_for_timeout(50)
+                          assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,width,scale)
+                  page.set_viewport_size({'width':1600,'height':950});page.evaluate('IGPreferences.update({scale:1,text:{width:"narrow"}})');page.wait_for_timeout(40)
+                  assert page.locator('article.ficha').bounding_box()['width']<900,path
+                  report['pages'].append({'path':path,'desktop_main_width':box['width'],'body_px':fs,'responsive_320_to_1600':True,'text_150_percent':True,'narrow_preference':True})
+              page.goto('https://irisgreen.eu/es/situaciones/necesito-que-me-repitan-las-instrucciones/?igverify=4314430',wait_until='networkidle')
+              assert page.locator('article.ficha').count()==0
+              assert page.locator('#request-text').count()==1
+              report['approved_instructions_separate']=True
+              assert not report['javascript_errors'],report['javascript_errors']
+              browser.close()
+          Path('/tmp/iris-live-final/browser.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print(json.dumps(report,indent=2,ensure_ascii=False))
+          PY
+      - name: Guardar comprobación pública
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-publicacion-formato-sueno-biblioteca
+          path: /tmp/iris-live-final
+          retention-days: 14
+          if-no-files-found: error
