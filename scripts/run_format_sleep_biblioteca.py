@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Run the Format + Sleep verification on top of the current Biblioteca publication."""
 from __future__ import annotations
-import argparse, json, re
+import argparse, json
 from pathlib import Path
 import work_format_sleep as w
 
 ROOT=Path(__file__).resolve().parents[1]
 w.BASE='9b4021e7bce1fdf3f76a2a542483874d7776de1f'
 w.BACKUP='backup/20260910-0836-antes-formato-y-sueno-sobre-biblioteca'
-
+TARGET_BRANCH='mejora/formato-y-sueno-sobre-biblioteca-20260910'
 EXPECTED_BUILD_LINE='Biblioteca ES publicada: 48 fichas; revisión 10 de septiembre de 2026.'
 
 def verify_biblioteca():
@@ -37,13 +37,18 @@ def verify_biblioteca():
 def prepare():
     w.prepare()
     report=verify_biblioteca()
-    # The source build must keep the two safety passes for Biblioteca.
     build=(ROOT/'scripts/build_site.py').read_text()
     assert build.count("scripts/publish_biblioteca.py") == 2
     print(json.dumps({'biblioteca':report},indent=2,ensure_ascii=False))
 
 def commit():
     verify_biblioteca()
+    original_run=w.run
+    def branch_safe_run(*args, capture=False):
+        if len(args)>=4 and args[0:3]==('git','push','origin'):
+            args=('git','push','origin','HEAD:'+TARGET_BRANCH)
+        return original_run(*args,capture=capture)
+    w.run=branch_safe_run
     w.commit()
 
 if __name__=='__main__':
