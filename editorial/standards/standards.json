@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "policy_date": "2026-09-10",
   "scope": "Iris Green: páginas web, fichas informativas y estados editoriales públicos.",
   "principle": "Ninguna etiqueta pública puede afirmar una certificación externa que no exista. Las comprobaciones propias se identifican como evaluación interna o revisión editorial.",
@@ -52,9 +52,18 @@
     "A": "Las afirmaciones principales revisadas se apoyan directamente en guías clínicas vigentes, revisiones sistemáticas o síntesis de evidencia pertinentes, con límites declarados.",
     "B": "Las afirmaciones principales revisadas se apoyan en documentación institucional pertinente, consensos y/o estudios individuales revisados por pares, con límites declarados.",
     "C": "Existe investigación pertinente, pero es emergente, limitada, heterogénea o indirecta para algunas de las afirmaciones; la ficha debe decirlo de forma explícita.",
-    "not_applicable": "La clasificación A/B/C no se usa para identidades, derechos, testimonios o recursos prácticos cuando no pretende resumir evidencia de eficacia o asociación.",
-    "deprecated_legacy_values": ["D", "BP", "sin grado"],
-    "rule": "A, B y C son una clasificación editorial de respaldo documental. No son GRADE, no son categorías ISO y no garantizan eficacia. Una ficha sin revisión individual no publica una letra como si estuviera validada."
+    "BP": "Ficha centrada en práctica, derechos, seguridad, organización o apoyos. BP no es un grado de eficacia y las afirmaciones factuales siguen necesitando fuentes.",
+    "SG": "No se aplica una jerarquía A/B/C, por ejemplo en identidades, terminología o definiciones no terapéuticas. Las afirmaciones factuales siguen necesitando fuentes.",
+    "deprecated_legacy_values": ["D", "A/B", "B/C", "sin grado"],
+    "rule": "A, B y C clasifican el respaldo documental; BP identifica práctica, derechos, seguridad o apoyos; SG indica que no se aplica una jerarquía A/B/C. No son categorías ISO ni GRADE y no garantizan eficacia. La clasificación editorial y la revisión documental individual se registran por separado."
+  },
+  "condition_classification_audit": {
+    "review_date": "2026-09-10",
+    "entries": 185,
+    "distribution": {"A": 21, "B": 40, "C": 44, "BP": 54, "SG": 26},
+    "legacy_reclassifications": 55,
+    "legacy_values_remaining": 0,
+    "data_file": "editorial/standards/condition-classifications-2026-09-10.json"
   },
   "reviewed_entries": {
     "es/neurodiversidad/condiciones/autismo/index.html": {"review_date": "2026-09-07", "classification": "A", "manifest": "editorial/reviews/2026-09-07-autismo-tdl.json"},
