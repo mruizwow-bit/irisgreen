@@ -17,8 +17,13 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
+    # Las 48 fichas españolas de Vida diaria fueron revisadas y contrastadas el 10-09-2026.
+    # Publicarlas antes de generar datos/rutas permite que sitemap y metadatos usen el estado final.
+    subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
+    # Segunda pasada idempotente: garantiza que ninguna reparación posterior reintroduzca BORRADOR/noindex.
+    subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
@@ -38,7 +43,7 @@ def build():
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
-    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','editorial','pt-br','.github','_audit'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
+    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','editorial','pt-br','.github/','_audit/'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
     print('Directorio público:',len(files),'archivos; fuentes e informes permanecen fuera de dist.')
     return dst
 
