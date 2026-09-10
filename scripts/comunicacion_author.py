@@ -26,6 +26,12 @@ SPECIAL_COUNTERPARTS = {
     '/es/situaciones/necesito-que-me-repitan-las-instrucciones/':
         '/en/situations/i-need-instructions-repeated/'
 }
+# Esta ruta tiene una presentación pública aprobada independiente. El título del
+# HTML fuente se conserva; al comprobar dist se acepta el h1 de esa plantilla.
+SPECIAL_PUBLIC_TITLES_EN = {
+    '/en/situations/i-need-instructions-repeated/':
+        "They explain it to me and two minutes later I don't know what I was meant to do"
+}
 
 
 def sha(data: bytes) -> str:
@@ -166,6 +172,7 @@ def apply() -> dict:
 
 
 def check(root: Path) -> dict:
+    root = root.resolve()
     rows = approved_rows()
     search = {x.get('u'): x for x in json.loads((root / 'buscador.json').read_text(encoding='utf-8'))}
     indexes = {}
@@ -174,13 +181,19 @@ def check(root: Path) -> dict:
         tree, cards = core.card_nodes(text, rel)
         indexes[lang] = (tree, {c['url']: c for c in cards})
 
+    checking_source_tree = root == ROOT.resolve()
     checked = []
     for row in rows:
         for lang in ('es', 'en'):
             path = root / row[lang + '_path']
             text = path.read_text(encoding='utf-8')
             tree, title, lead = core.page_nodes(text)
-            expected_title = row['title_es'] if lang == 'es' else row['retained_title_en']
+            if lang == 'es':
+                expected_title = row['title_es']
+            elif not checking_source_tree and row['en_route'] in SPECIAL_PUBLIC_TITLES_EN:
+                expected_title = SPECIAL_PUBLIC_TITLES_EN[row['en_route']]
+            else:
+                expected_title = row['retained_title_en']
             if tree.text(title) != expected_title or tree.text(lead) != row[lang]:
                 raise ValueError('Texto aprobado no coincide: ' + str(path))
             metas = [
@@ -207,7 +220,7 @@ def check(root: Path) -> dict:
         'entries': 23,
         'exact_descriptions': 46,
         'spanish_titles': 23,
-        'english_titles': 'preserved',
+        'english_titles': 'preserved; special approved public template retained',
         'checked_pages': checked,
         'catalogue_cards': 46,
         'search_entries': 23,
