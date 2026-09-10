@@ -7,7 +7,7 @@ clasificación se integra y audita en un paso independiente. Las 8 descripciones
 Vida diaria · Salir de casa usan la versión final posterior al paquete 420.
 
 Sin --check aplica solo resúmenes/metadatos/tarjetas/buscador. Con --check no escribe
-y falla si cualquier una de las 420 descripciones deja de coincidir.
+y falla si cualquiera de las 420 descripciones deja de coincidir.
 """
 from __future__ import annotations
 
@@ -26,6 +26,7 @@ ESTADO = DATA / "estado-integracion.json"
 KEYS = {"situations":"situaciones", "conditions":"condiciones", "daily":"vida_diaria"}
 EXPECTED = {"situations":187, "conditions":185, "daily":48}
 BLOCK = re.compile(r"^##\s+\d+\.\s+([^\n]+)\n\n### ES\n([^\n]+)\n\n### EN\n([^\n]+)", re.M)
+LEDE = re.compile(r'<p\b[^>]*class=["\'][^"\']*\blede\b', re.I)
 
 
 def load_route_map():
@@ -138,13 +139,14 @@ def main():
             en_route = legacy.route_for(en_path, ROOT)
             en_text = en_path.read_text(encoding="utf-8")
 
-            # Las descripciones y los grados son dos integraciones distintas.
-            a = legacy.update_detail(es_path, kind, entry["es"], None, args.check)
-            b = legacy.update_detail(en_path, kind, entry["en"], None, args.check)
+            # Vida diaria tiene dos plantillas históricas: ES suele usar <section><p> y EN usa <p class="lede">.
+            es_detail_kind = "conditions" if kind == "daily" and LEDE.search(es_text) else kind
+            en_detail_kind = "conditions" if kind == "daily" and LEDE.search(en_text) else kind
+            a = legacy.update_detail(es_path, es_detail_kind, entry["es"], None, args.check)
+            b = legacy.update_detail(en_path, en_detail_kind, entry["en"], None, args.check)
             total_changes["detail_es"] += a["changed"]
             total_changes["detail_en"] += b["changed"]
 
-            # El catálogo actual de Situaciones usa el mismo <a class="card"> que Condiciones.
             card_kind = "conditions" if kind == "situations" else kind
             es_index, _ = legacy.update_card(es_index, es_route, entry["es"], card_kind, None)
             en_index, _ = legacy.update_card(en_index, en_route, entry["en"], card_kind, None)
