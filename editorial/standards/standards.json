@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "policy_date": "2026-09-10",
+  "scope": "Iris Green: páginas web, fichas informativas y estados editoriales públicos.",
+  "principle": "Ninguna etiqueta pública puede afirmar una certificación externa que no exista. Las comprobaciones propias se identifican como evaluación interna o revisión editorial.",
+  "standards": {
+    "web_accessibility": {
+      "reference": "ISO/IEC 40500:2025",
+      "equivalent_content": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+      "target": "AA",
+      "evaluation_method": "WCAG-EM 2.0",
+      "complementary_reference": "UNE-EN 301549:2022",
+      "public_claim_when_passed": "Autoevaluación de conformidad con ISO/IEC 40500:2025 (WCAG 2.2), nivel AA",
+      "certification_claim": false
+    },
+    "plain_language": {
+      "reference": "ISO 24495-1:2023",
+      "public_claim_when_passed": "Texto revisado con los principios y directrices de lenguaje claro de ISO 24495-1:2023",
+      "certification_claim": false
+    },
+    "human_centred_design": {
+      "reference": "ISO 9241-210:2019",
+      "scope": "proceso de diseño y mejora, no sello individual de una página",
+      "certification_claim": false
+    },
+    "easy_read_es": {
+      "references": ["UNE 153101:2018 EX", "UNE 153102:2018 EX"],
+      "required_before_public_claim": "validación con personas con dificultades de comprensión lectora según el proceso de la norma",
+      "public_claim_before_human_validation": false
+    },
+    "html_semantics": {
+      "reference": "WHATWG HTML / validación técnica de marcado",
+      "is_iso": false
+    }
+  },
+  "documentary_statuses": {
+    "published_pending_review": {
+      "es": "Publicado · revisión documental individual pendiente",
+      "en": "Published · individual documentary review pending"
+    },
+    "documentary_reviewed": {
+      "es": "Revisado documentalmente",
+      "en": "Documentary review completed",
+      "requires": ["fecha real de revisión", "afirmaciones vinculadas a fuentes identificadas", "alcance y límites comprobados"]
+    },
+    "review_required_after_change": {
+      "es": "Revisión documental necesaria tras actualización",
+      "en": "Documentary review required after update"
+    }
+  },
+  "editorial_evidence_classification": {
+    "A": "Las afirmaciones principales revisadas se apoyan directamente en guías clínicas vigentes, revisiones sistemáticas o síntesis de evidencia pertinentes, con límites declarados.",
+    "B": "Las afirmaciones principales revisadas se apoyan en documentación institucional pertinente, consensos y/o estudios individuales revisados por pares, con límites declarados.",
+    "C": "Existe investigación pertinente, pero es emergente, limitada, heterogénea o indirecta para algunas de las afirmaciones; la ficha debe decirlo de forma explícita.",
+    "not_applicable": "La clasificación A/B/C no se usa para identidades, derechos, testimonios o recursos prácticos cuando no pretende resumir evidencia de eficacia o asociación.",
+    "deprecated_legacy_values": ["D", "BP", "sin grado"],
+    "rule": "A, B y C son una clasificación editorial de respaldo documental. No son GRADE, no son categorías ISO y no garantizan eficacia. Una ficha sin revisión individual no publica una letra como si estuviera validada."
+  },
+  "reviewed_entries": {
+    "es/neurodiversidad/condiciones/autismo/index.html": {"review_date": "2026-09-07", "classification": "A", "manifest": "editorial/reviews/2026-09-07-autismo-tdl.json"},
+    "en/neurodiversity/conditions/autism/index.html": {"review_date": "2026-09-07", "classification": "A", "manifest": "editorial/reviews/2026-09-07-autismo-tdl.json"},
+    "es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/index.html": {"review_date": "2026-09-07", "classification": "B", "manifest": "editorial/reviews/2026-09-07-autismo-tdl.json"},
+    "en/neurodiversity/conditions/developmental-language-disorder-dld/index.html": {"review_date": "2026-09-07", "classification": "B", "manifest": "editorial/reviews/2026-09-07-autismo-tdl.json"}
+  },
+  "forbidden_public_wording_without_external_evidence": [
+    "certificado por ISO",
+    "certificada por ISO",
+    "validado por ISO",
+    "validada por ISO",
+    "ISO certified"
+  ]
+}
