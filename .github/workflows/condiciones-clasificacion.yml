@@ -9,6 +9,7 @@ on:
       - '.github/workflows/condiciones-clasificacion.yml'
       - 'editorial/standards/condition-classifications-2026-09-10.json'
       - 'editorial/standards/standards.json'
+      - 'scripts/align_condition_classification_titles.py'
       - 'scripts/apply_condition_classifications.py'
       - 'scripts/apply_validation_framework.py'
       - 'scripts/build_site.py'
@@ -20,6 +21,7 @@ on:
     paths:
       - 'editorial/standards/condition-classifications-2026-09-10.json'
       - 'editorial/standards/standards.json'
+      - 'scripts/align_condition_classification_titles.py'
       - 'scripts/apply_condition_classifications.py'
       - 'scripts/apply_validation_framework.py'
       - 'scripts/build_site.py'
