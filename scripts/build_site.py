@@ -10,20 +10,29 @@ from pathlib import Path
 from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
 
+def run(script,*args):
+    subprocess.run([sys.executable,str(ROOT/'scripts'/script),*map(str,args)],cwd=ROOT,check=True)
+
+
 def build():
     # Estas dos fichas se editan en editorial/reviews; el resto conserva su origen.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
-    # Las 48 fichas españolas de Vida diaria fueron revisadas y contrastadas el 10-09-2026.
-    # Publicarlas antes de generar datos/rutas permite que sitemap y metadatos usen el estado final.
-    subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
-    # Segunda pasada idempotente: garantiza que ninguna reparación posterior reintroduzca BORRADOR/noindex.
-    subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
+    run('apply_reviewed_entries.py')
+    run('prepare_video_thumbnails.py','--apply-only')
+    run('apply_language_updates.py')
+    run('apply_pending_support_english.py')
+    run('fix_home_support_english.py')
+
+    # Las correcciones factuales de Vida diaria se aplican antes de la entrega
+    # editorial de 420 descripciones para no sobrescribir los textos aprobados.
+    run('publish_biblioteca.py')
+    run('prepare_initial_data.py')
+    run('repair_routes.py')
+    run('publish_biblioteca.py')
+
+    # Fuente única de los 420 resúmenes aprobados ES/EN y de las 185 letras finales.
+    # El script falla si una ficha no encuentra una correspondencia uno-a-uno.
+    run('apply_accessible_descriptions_420.py')
+
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
@@ -36,18 +45,21 @@ def build():
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
-    # Publish only the homepage and instructions-entry presentation approved by the author.
-    subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
-    # Verify the author's approved wording; never regenerate or rewrite it.
-    subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Normalizar únicamente el atributo técnico de estado de las fichas de Situaciones.
-    subprocess.run([sys.executable,str(ROOT/'scripts/normalize_situation_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Los estados editoriales se normalizan DESPUÉS de comprobar los textos protegidos.
-    # Esta tarea no modifica descripciones, fuentes ni grados A/B/C.
-    subprocess.run([sys.executable,str(ROOT/'scripts/validate_publication_statuses.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Cerrar los rótulos antiguos de revisión que sobreviven en plantillas históricas.
-    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # Navegación aprobada. Se vuelve a aplicar la fuente editorial después porque
+    # este paso histórico también reconstruye una ficha de Situaciones.
+    run('build_approved_navigation.py')
+    run('apply_accessible_descriptions_420.py','--root',str(dst))
+
+    # El normalizador antiguo conserva la indexabilidad, pero el estado editorial
+    # ya no debe mostrarse al público. El último paso elimina esos rótulos/estados.
+    run('normalize_situation_status.py','--root',str(dst))
+    run('validate_publication_statuses.py','--root',str(dst))
+    run('finalize_validation_labels.py','--root',str(dst))
+
+    # Comprobación final literal: 420 ES + 420 EN, tarjetas, buscador y 185 grados.
+    run('apply_accessible_descriptions_420.py','--root',str(dst),'--check')
+
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
