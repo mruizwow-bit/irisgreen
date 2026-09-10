@@ -62,7 +62,6 @@ def add_source(slug, html_li):
 
 # Aena: el distintivo no se presenta como gratuito; Sin Barreras sí está verificado como gratuito y con 48 h.
 edit("viajar-en-avion-con-una-discapacidad-no-visible", [
-    ("Es gratuito, se solicita en su web y sirve", "Se solicita en su web y sirve"),
     (
         "La asistencia Sin Barreras (PMR) es un servicio diferente, pensado para quienes necesitan asistencia durante el recorrido aeroportuario. Conviene solicitarla con antelación a través de la aerolínea o de Aena.",
         "La asistencia Sin Barreras (PMR) es un servicio diferente, pensado para quienes necesitan asistencia durante el recorrido aeroportuario. Es gratuita. Aena indica que debe solicitarse al menos 48 horas antes de la salida del vuelo para garantizar la calidad del servicio."
@@ -85,10 +84,8 @@ edit("buscar-trabajo-siendo-neurodivergente", [
 ])
 add_source("buscar-trabajo-siendo-neurodivergente", '<li><a href="https://www.aepd.es/prensa-y-comunicacion/blog/en-que-momento-comienza-legalmente-un-tratamiento-de-datos-personales" rel="noopener" target="_blank">AEPD · solicitud y tratamiento de datos de salud</a></li>')
 
-# Perros de asistencia: umbral estatal y margen autonómico.
-edit("perros-de-asistencia-que-reconoce-la-ley", [
-    ('<section class="sec"><p>El Real Decreto 409/2025 establece un marco estatal sobre actividad y bienestar de los perros de asistencia y reconoce varias categorías, entre ellas los perros para personas autistas. El reconocimiento y acreditación concreta se coordina también con la normativa autonómica.</p></section>', '<section class="sec"><p>El Real Decreto 409/2025 establece un marco estatal sobre actividad y bienestar de los perros de asistencia y reconoce varias categorías, entre ellas los perros para personas autistas.</p><p>Como regla general estatal, la persona usuaria debe tener reconocido un grado de discapacidad igual o superior al 33 %. El propio real decreto permite que las comunidades autónomas y Ceuta y Melilla reconozcan otros supuestos, incluidos perros de aviso médico o perros para personas autistas. Por eso hay que comprobar también la normativa autonómica.</p></section>'),
-])
+# Perros de asistencia: el lede validado se mantiene desde la fuente editorial.
+
 
 # Desapariciones: retirar una cifra presupuestaria que no quedó respaldada por la fuente oficial revisada.
 edit("si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer", [
