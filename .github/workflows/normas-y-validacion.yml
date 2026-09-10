@@ -1,0 +1,60 @@
+name: Normas y estados de revisión
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/evidence-review-2026-09-10']
+    paths:
+      - 'editorial/standards/**'
+      - 'scripts/apply_validation_framework.py'
+      - 'scripts/audit_validation_framework.py'
+      - 'scripts/test_validation_browser.py'
+      - 'scripts/build_site.py'
+      - 'assets/validacion.css'
+      - '.github/workflows/normas-y-validacion.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: work/evidence-review-2026-09-10
+      - name: Comprobar sintaxis y política
+        run: |
+          python3 -m py_compile scripts/apply_validation_framework.py scripts/audit_validation_framework.py scripts/test_validation_browser.py
+          python3 - <<'PY'
+          import json
+          p=json.load(open('editorial/standards/standards.json'))
+          assert p['standards']['web_accessibility']['reference']=='ISO/IEC 40500:2025'
+          assert p['standards']['web_accessibility']['target']=='AA'
+          assert p['standards']['plain_language']['reference']=='ISO 24495-1:2023'
+          assert p['standards']['easy_read_es']['public_claim_before_human_validation'] is False
+          assert p['standards']['web_accessibility']['certification_claim'] is False
+          PY
+      - name: Construir desde fuentes limpias
+        run: python3 scripts/build_site.py
+      - name: Comprobar estados documentales y referencias normativas
+        run: |
+          python3 scripts/audit_validation_framework.py dist
+          python3 scripts/apply_validation_framework.py --check
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-validation
+          /tmp/ig-validation/bin/pip -q install playwright==1.55.0
+          /tmp/ig-validation/bin/python -m playwright install --with-deps chromium >/tmp/ig-validation-install.log 2>&1
+      - name: Probar estados en móvil y escritorio
+        run: /tmp/ig-validation/bin/python scripts/test_validation_browser.py
+      - name: Guardar evidencia
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: normas-y-estados-resultados
+          path: |
+            reports/standards
+            reports/routes/build.json
+          retention-days: 7
