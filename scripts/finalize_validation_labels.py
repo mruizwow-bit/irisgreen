@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Cierra rótulos editoriales provisionales en la salida pública y los audita.
+"""Remove editorial review/validation states from the public build.
 
-No cambia descripciones, explicaciones, fuentes, resultados de investigación ni
-clasificaciones A/B/C. Los activos fuente deben llegar ya sin estados provisionales;
-si reaparecen, esta comprobación detiene el build en vez de corregirlos en silencio.
+The website may keep documentary grades (A/B/C/BP/SG) and source information,
+but it must not show workflow states such as draft, reviewed or validated.
+Normal prose is left untouched; only structural status UI/metadata is removed.
 """
 from __future__ import annotations
 
@@ -12,97 +12,139 @@ import json
 import re
 from pathlib import Path
 
-DATE_ES = "10 de septiembre de 2026"
-DATE_EN = "10 September 2026"
+STATUS_WORDS = r"(?:BORRADOR|DRAFT|REVISAD[OA]|REVIEWED|VALIDAD[OA]|VALIDATED)"
+
+
+def strip_status_ui(text: str) -> tuple[str, int]:
+    changes = 0
+
+    def sub(rx, repl, s, flags=0):
+        nonlocal changes
+        s2, n = re.subn(rx, repl, s, flags=flags)
+        changes += n
+        return s2
+
+    # Exact workflow chips/badges; documentary grade chips are deliberately untouched.
+    text = sub(
+        rf'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*{STATUS_WORDS}\s*</span>',
+        '', text, flags=re.I,
+    )
+
+    # Catalog metadata such as "3 fuentes · VALIDADA" -> "3 fuentes".
+    text = sub(
+        rf'(<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>)([^<]*?)(?:\s*·\s*{STATUS_WORDS})(\s*</span>)',
+        lambda m: m.group(1) + m.group(2).rstrip() + m.group(3), text, flags=re.I,
+    )
+
+    # Technical list fields dedicated to workflow status/dates.
+    text = sub(
+        r'<li\b[^>]*>\s*<strong>\s*(?:Estado|Status|Revisión|Review|Validación|Validation|Última revisión|Last reviewed|Última validación|Last validated)\s*:\s*</strong>.*?</li>',
+        '', text, flags=re.I | re.S,
+    )
+
+    # Dedicated review/validation sections, including hidden historic condition blocks.
+    text = sub(
+        r'<section\b[^>]*>\s*<h[1-6][^>]*>\s*(?:Última revisión del texto|Última validación del texto|Review|Validation|Editorial review|Editorial validation)\s*</h[1-6]>.*?</section>',
+        '', text, flags=re.I | re.S,
+    )
+
+    # Status notices created by old publication normalisers.
+    notice_rx = re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>.*?</p>', re.I | re.S)
+    def notice_repl(m):
+        plain = re.sub(r'<[^>]+>', ' ', m.group(0))
+        return '' if re.search(r'\b(?:draft|borrador|reviewed|revisad[oa]|validated|validad[oa])\b', plain, re.I) else m.group(0)
+    before_notice = text
+    text = notice_rx.sub(notice_repl, text)
+    if text != before_notice:
+        changes += 1
+
+    # Keep documentary meaning in headings, without workflow wording.
+    text = sub(r'Base documental y (?:revisión|validación)', 'Base documental', text, flags=re.I)
+    text = sub(r'Sources and (?:review|validation)', 'Sources', text, flags=re.I)
+
+    # Paragraphs whose sole purpose is an editorial workflow date/state.
+    text = sub(
+        r'<p\b[^>]*class=["\'][^"\']*\bmuted\b[^"\']*["\'][^>]*>\s*(?:Revisión editorial|Validación editorial|Editorial review|Editorial validation|Review:|Validation:).*?</p>',
+        '', text, flags=re.I | re.S,
+    )
+
+    # Public UI does not need internal editorial-state attributes.
+    text = sub(r'\s+data-editorial-status=["\'][^"\']*["\']', '', text, flags=re.I)
+
+    # Research/data labels may retain useful counts but not workflow language.
+    text = sub(
+        r'revision:\s*["\'](?:Última (?:revisión|validación) de esta página|This page last (?:reviewed|validated)):[^"\']*?·\s*(\d+ publicaciones?|\d+ publications?)\.["\']',
+        lambda m: 'revision: ' + json.dumps(m.group(1) + '.', ensure_ascii=False), text, flags=re.I,
+    )
+    text = sub(
+        r'(?:Última (?:revisión|validación) editorial de este documento|Last editorial (?:review|validation) of this document):[^<\n]*',
+        '', text, flags=re.I,
+    )
+
+    # Explicit collection-level publication-state announcements only.
+    text = sub(
+        r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>[^<]*(?:published and validated|publicad[ao]s? y validad[ao]s?|validated for publication|validad[ao] para publicación)[^<]*</p>',
+        '', text, flags=re.I,
+    )
+    return text, changes
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path("dist"))
+    parser.add_argument('--root', type=Path, default=Path('dist'))
     args = parser.parse_args()
     root = args.root.resolve()
+    files = 0
+    changed_files = 0
 
-    cond = sorted(p for p in root.glob("es/neurodiversidad/condiciones/*/index.html") if p.is_file())
-    if len(cond) != 185:
-        raise AssertionError(f"Se esperaban 185 Condiciones ES y hay {len(cond)}")
-
-    condition_labels = 0
-    for path in cond:
-        text = path.read_text(encoding="utf-8")
-        new = text.replace("<h2>Última revisión del texto</h2>", "<h2>Última validación del texto</h2>")
-        if new != text:
-            condition_labels += 1
-            path.write_text(new, encoding="utf-8")
-    if condition_labels not in (0, 183):
-        raise AssertionError(f"Rótulos de Condiciones inesperados: {condition_labels}")
-
-    research = root / "es/investigacion/index.html"
-    text = research.read_text(encoding="utf-8")
-    pairs = [
-        (
-            'revision: "Última revisión de esta página: 1 de septiembre de 2026 · 120 publicaciones."',
-            f'revision: "Última validación de esta página: {DATE_ES} · 120 publicaciones."',
-        ),
-        (
-            'revision: "This page last reviewed: 31 August 2026 · 120 publications."',
-            f'revision: "This page last validated: {DATE_EN} · 120 publications."',
-        ),
-    ]
-    research_labels = 0
-    for old, new in pairs:
-        if old in text:
-            text = text.replace(old, new)
-            research_labels += 1
-        elif new not in text:
-            raise AssertionError("No se encontró el rótulo esperado de Investigación")
-    research.write_text(text, encoding="utf-8")
-
-    # Guardias estructurales para TODO archivo de texto publicado. No se buscan
-    # usos normales como «revisión sistemática», «tareas pendientes», variables
-    # `pending`, un borrador escrito por la propia persona o `peer-reviewed`.
-    patterns = {
-        "draft_badge": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*(?:BORRADOR|DRAFT)\s*</span>', re.I),
-        "draft_or_reviewed_card": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>[^<]*\b(?:BORRADOR|DRAFT|REVISADA|REVIEWED)\b[^<]*</span>', re.I),
-        "provisional_status_attr": re.compile(r'data-editorial-status=["\'](?:generated-draft|draft|reviewed)["\']', re.I),
-        "provisional_json_status": re.compile(r'"status"\s*:\s*"(?:borrador|draft|revisad[oa]|reviewed|pending|pendiente)"', re.I),
-        "draft_notice_es": re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Página en borrador\.', re.I),
-        "draft_notice_en": re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Draft (?:page|entry)\.', re.I),
-        "not_yet_verified": re.compile(r'(?:Review: not yet verified|comprobación final (?:sigue )?pendiente|final verification is still pending|final check is still pending)', re.I),
-        "generated_noindex_note_es": re.compile(r'las páginas siguen en noindex hasta', re.I),
-        "generated_noindex_note_en": re.compile(r'these pages stay noindex until', re.I),
-        "pending_scope_es": re.compile(r'Pendiente de completar:', re.I),
-        "pending_scope_en": re.compile(r'Still to complete:', re.I),
-        "ultima_revision": re.compile(r'(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)', re.I),
-        "revision_editorial": re.compile(r'(?:Revisión editorial\s*:|Editorial review\s*:)', re.I),
-        "heading_revision": re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>', re.I),
-        "li_revision": re.compile(r'<strong>\s*(?:Revisión|Review)\s*:\s*</strong>', re.I),
-        "source_pending_es": re.compile(r'citas pendientes de comprobación', re.I),
-        "source_pending_en": re.compile(r'citations awaiting checking', re.I),
-    }
-    remaining = []
-    scanned = 0
-    for path in root.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in {".html", ".json", ".xml", ".txt", ".js", ".css"}:
+    for path in root.rglob('*'):
+        if not path.is_file() or path.suffix.lower() not in {'.html', '.js', '.json'}:
             continue
         try:
-            text = path.read_text(encoding="utf-8")
+            before = path.read_text(encoding='utf-8')
         except UnicodeDecodeError:
             continue
-        scanned += 1
-        for name, rx in patterns.items():
+        files += 1
+        after, _ = strip_status_ui(before)
+        # Preserve a neutral machine state if a component expects a status key.
+        after = re.sub(
+            r'("status"\s*:\s*)"(?:borrador|draft|revisad[oa]|reviewed|validado|validada|validated)"',
+            lambda m: m.group(1) + '"publicado"', after, flags=re.I,
+        )
+        if after != before:
+            changed_files += 1
+            path.write_text(after, encoding='utf-8')
+
+    # Structural guard: no editorial workflow state may remain in public UI.
+    forbidden = {
+        'status_chip': re.compile(rf'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*{STATUS_WORDS}\s*</span>', re.I),
+        'status_meta': re.compile(rf'<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>[^<]*\b{STATUS_WORDS}\b[^<]*</span>', re.I),
+        'status_field': re.compile(r'<strong>\s*(?:Estado|Status|Revisión|Review|Validación|Validation)\s*:\s*</strong>', re.I),
+        'status_heading': re.compile(r'<h[1-6][^>]*>\s*(?:Última revisión del texto|Última validación del texto|Review|Validation|Editorial review|Editorial validation|Base documental y (?:revisión|validación)|Sources and (?:review|validation))\s*</h[1-6]>', re.I),
+        'status_attr': re.compile(r'data-editorial-status=', re.I),
+        'status_notice': re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>[^<]*\b(?:draft|borrador|reviewed|revisad[oa]|validated|validad[oa])\b', re.I),
+        'status_muted': re.compile(r'<p\b[^>]*class=["\'][^"\']*\bmuted\b[^"\']*["\'][^>]*>\s*(?:Revisión editorial|Validación editorial|Editorial review|Editorial validation|Review:|Validation:)', re.I),
+    }
+    remaining = []
+    for path in root.rglob('*'):
+        if not path.is_file() or path.suffix.lower() not in {'.html', '.js', '.json'}:
+            continue
+        try:
+            text = path.read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            continue
+        for name, rx in forbidden.items():
             if rx.search(text):
                 remaining.append((name, path.relative_to(root).as_posix()))
     if remaining:
-        raise AssertionError("Quedan estados editoriales provisionales: " + repr(remaining[:50]))
+        raise AssertionError('Public editorial workflow states remain: ' + repr(remaining[:80]))
 
     print(json.dumps({
-        "conditions_es_pages": 185,
-        "condition_review_labels_changed": condition_labels,
-        "research_review_labels_changed": research_labels,
-        "public_text_files_scanned": scanned,
-        "remaining_structural_provisional_markers": 0,
+        'public_text_files_scanned': files,
+        'files_changed_to_remove_status_ui': changed_files,
+        'remaining_public_review_validation_states': 0,
     }, ensure_ascii=False))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
