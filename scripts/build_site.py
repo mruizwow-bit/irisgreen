@@ -15,8 +15,15 @@ from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
 
 def build():
-    # Estas dos fichas se editan en editorial/reviews; el resto conserva su origen.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
+    estado=ROOT/'editorial/integration/2026-09-10/estado-integracion.json'
+    integrado=json.loads(estado.read_text(encoding='utf-8')) if estado.is_file() else {}
+
+    # Las dos fichas históricamente gestionadas desde editorial/reviews se aplican
+    # solo mientras no exista la integración completa de 420 descripciones. Una vez
+    # integrada, volver a ejecutar ese publicador reintroduce los resúmenes antiguos.
+    if 'descripciones_420' not in integrado:
+        subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
+
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
@@ -24,8 +31,6 @@ def build():
 
     # Las integraciones editoriales completas se aplican una sola vez. En cada build
     # posterior solo se comprueba que no hayan sido alteradas ni mezcladas de nuevo.
-    estado=ROOT/'editorial/integration/2026-09-10/estado-integracion.json'
-    integrado=json.loads(estado.read_text(encoding='utf-8')) if estado.is_file() else {}
     if 'descripciones_420' in integrado:
         subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessible_descriptions_420.py'),'--check'],cwd=ROOT,check=True)
     if 'condiciones_185' in integrado:
