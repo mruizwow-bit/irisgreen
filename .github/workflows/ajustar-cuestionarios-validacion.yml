@@ -1,0 +1,28 @@
+name: Ajustar validación de Cuestionarios
+on:
+  push:
+    branches:
+      - trabajo/validacion-global-accesibilidad-20260910
+    paths:
+      - .github/workflows/ajustar-cuestionarios-validacion.yml
+permissions:
+  contents: write
+jobs:
+  ajustar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/validate_publication_statuses.py');s=p.read_text()
+          old="after = after.replace('Última revisión: 31 de agosto de 2026.', f'Última validación: {DATE_ES}.')"
+          new=old+"\n        after = after.replace('Last reviewed: 31 August 2026.', f'Last validated: {DATE_EN}.')"
+          assert s.count(old)==1
+          p.write_text(s.replace(old,new))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/validate_publication_statuses.py
+          git commit -m 'Completar rótulo validado de Cuestionarios [skip netlify]'
+          git push origin HEAD:trabajo/validacion-global-accesibilidad-20260910
