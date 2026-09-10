@@ -251,6 +251,7 @@ def validate_tree(root: Path) -> dict:
         before = after = read(p)
         after = after.replace('Pendiente de localizar una adaptación española documentada.', 'No se ha incorporado en esta ficha una adaptación española documentada.')
         after = after.replace('Última revisión: 31 de agosto de 2026.', f'Última validación: {DATE_ES}.')
+        after = after.replace('Last reviewed: 31 August 2026.', f'Last validated: {DATE_EN}.')
         after = after.replace('Queda fuera hasta que exista una adaptación española documentada.', 'No se publica en esta edición porque no se ha incorporado una adaptación española documentada.')
         after = after.replace('Faltan los ítems de la versión validada para poder publicarlo. No se reescriben ni se traducen: se copian del original.', 'No se publica en esta edición porque no se han incorporado los ítems de la versión validada. No se reescriben ni se traducen: se copian del original.')
         after = after.replace('Excluded until there is a documented Spanish adaptation.', 'Not published in this edition because a documented Spanish adaptation has not been included.')
