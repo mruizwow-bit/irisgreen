@@ -36,9 +36,9 @@ jobs:
           if len(data) != 120 or [x.get('n') for x in data] != list(range(1, 121)):
               raise SystemExit('La colección no contiene exactamente las publicaciones 1–120')
 
-          required = ('heading','titleOrig','authors','year','design','sample','studied','means','limitations','notProven','doi')
+          required = ('heading','titleOrig','authors','year','design','sample','text','means','notProven','doi','heading_en','text_en','means_en','notProven_en')
           for item in data:
-              missing = [k for k in required if not str(item.get(k, '')).strip()]
+              missing = [k for k in required if not item.get(k)]
               if missing:
                   raise SystemExit(f'Ficha {item["n"]}: faltan campos {missing}')
 
@@ -50,18 +50,15 @@ jobs:
           page = root / 'index.html'
           html = page.read_text(encoding='utf-8')
 
-          # Metadatos: la colección publicada es de 120, no de 20.
           html = html.replace('20 estudios', '120 publicaciones')
           html = html.replace('20 studies', '120 publications')
           html = html.replace('20 estudos', '120 publicações')
           html = re.sub(r'("numberOfItems"\s*:\s*)20\b', r'\g<1>120', html)
 
-          # Etiquetas de las fichas.
           html = html.replace('means: "Qué significa"', 'means: "Qué encontraron"')
           html = html.replace('means: "What it means"', 'means: "What the researchers found"')
           html = html.replace('means: "O que significa"', 'means: "O que foi encontrado"')
 
-          # Metodología: no asignar una certeza GRADE editorial a cada publicación.
           html = html.replace(
               'howText: "Usamos los cuatro niveles de certeza de GRADE (alta, moderada, baja, muy baja) tal como los emplea Cochrane, pero aplicados a la afirmación concreta que publicamos: es una valoración editorial, no una evaluación GRADE formal de novo. Depende del diseño, la consistencia, el riesgo de sesgo, la precisión y de cuánta inferencia causal exige la frase."',
               'howText: "No asignamos una calificación GRADE a cada publicación. Cuando una revisión o una guía haya utilizado GRADE, indicamos la valoración publicada por sus autores y a qué resultado se refiere."'
@@ -91,24 +88,20 @@ jobs:
           html = html.replace('This page last reviewed: 31 August 2026 · 120 publications.', 'This page last reviewed: 10 September 2026 · 120 publications.')
           html = html.replace('Última revisão desta página: 31 de agosto de 2026 · 120 publicações.', 'Última revisão desta página: 10 de setembro de 2026 · 120 publicações.')
 
-          # Eliminar del interfaz las etiquetas y la leyenda de certeza editorial.
           html = re.sub(r'\s*<span[^>]*>\{\{\s*c\.confLabel\s*\}\}</span>', '', html)
           html = re.sub(
               r'\s*<div style="display: grid; gap: 8px;">\s*<sc-for list="\{\{ levels \}\}" as="l" hint-placeholder-count="4">.*?</sc-for>\s*</div>',
               '', html, flags=re.S
           )
 
-          # En español mostrar el tipo exacto del documento; no forzarlo a una categoría genérica.
           html = html.replace('(T.designs[s.designKey] || s.design)', '(L === "es" ? s.design : (T.designs[s.designKey] || s.design))')
 
-          # Sustituir la copia incrustada para que la página funcione también sin fetch externo.
           pattern = re.compile(r'<script id="ig-initial-data" type="application/json" data-source="/es/investigacion/estudios-textos\.json" data-sha256="[^"]*">.*?</script>', re.S)
           replacement = '<script id="ig-initial-data" type="application/json" data-source="/es/investigacion/estudios-textos.json" data-sha256="' + digest + '">' + compact.replace('</', '<\\/') + '</script>'
           html, count = pattern.subn(lambda m: replacement, html, count=1)
           if count != 1:
               raise SystemExit('No se encontró de forma única ig-initial-data')
 
-          # Validación final de producción.
           if '{{ c.confLabel }}' in html or 'list="{{ levels }}"' in html:
               raise SystemExit('Queda UI de certeza editorial en la página')
           if 'valoración editorial' in html or 'editorial judgement' in html or 'valoração editorial' in html:
