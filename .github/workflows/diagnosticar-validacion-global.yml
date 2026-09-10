@@ -13,5 +13,5 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Construir después de normalizar todos los estados de Situaciones
+      - name: Construir y comprobar todos los estados finales
         run: python3 scripts/build_site.py
