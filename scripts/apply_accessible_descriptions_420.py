@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-"""Integración segura de las 420 descripciones aprobadas.
+"""Integra de forma segura las 420 descripciones aprobadas (ES/EN).
 
-Usa el payload editorial existente, pero resuelve cada texto por la ruta pública
-registrada en el mapa explícito. No cambia títulos ni cuerpos. Actualiza únicamente
-resúmenes ES/EN, metadatos equivalentes, tarjetas, buscador y grados finales de las
-185 Condiciones. Las ocho fichas finales de «Salir de casa» prevalecen sobre el
-payload anterior. --check no escribe y falla ante cualquier diferencia.
+Resuelve cada texto mediante un mapa explícito ruta→título aprobado. No cambia los
+H1, no toca el cuerpo clínico ni las fuentes y no cambia grados de Condiciones: esa
+clasificación se integra y audita en un paso independiente. Las 8 descripciones de
+Vida diaria · Salir de casa usan la versión final posterior al paquete 420.
+
+Sin --check aplica solo resúmenes/metadatos/tarjetas/buscador. Con --check no escribe
+y falla si cualquier una de las 420 descripciones deja de coincidir.
 """
 from __future__ import annotations
 
 import argparse, base64, bz2, html, json, re
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 import _legacy_apply_accessible_descriptions_420 as legacy
 
@@ -18,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "editorial" / "integration" / "2026-09-10"
 ROUTE_MAP = DATA / "route-title-map.bz2.b64"
 OVERRIDE = DATA / "vida_diaria_salir_de_casa_ES_EN.md"
+ESTADO = DATA / "estado-integracion.json"
 
 KEYS = {"situations":"situaciones", "conditions":"condiciones", "daily":"vida_diaria"}
 EXPECTED = {"situations":187, "conditions":185, "daily":48}
@@ -53,8 +57,7 @@ def first_chip(text):
 
 
 def update_collection_json(path: Path, updates: dict[str,str], check: bool):
-    before = path.read_text(encoding="utf-8")
-    data = json.loads(before)
+    data = json.loads(path.read_text(encoding="utf-8"))
     arr = data.get("fichas") or data.get("entries") or data.get("items")
     if not isinstance(arr, list):
         raise AssertionError(f"JSON de colección sin lista reconocible: {path}")
@@ -69,10 +72,9 @@ def update_collection_json(path: Path, updates: dict[str,str], check: bool):
             rec["lede"] = value; changed += 1
     if missing:
         raise AssertionError(f"JSON {path}: faltan títulos {missing[:5]}")
-    if check:
-        if changed:
-            raise AssertionError(f"{path}: {changed} ledes todavía difieren")
-    elif changed:
+    if check and changed:
+        raise AssertionError(f"{path}: {changed} ledes todavía difieren")
+    if not check and changed:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return changed
 
@@ -101,19 +103,16 @@ def main():
         by_kind["daily"][key]["es"] = values["es"]
         by_kind["daily"][key]["en"] = values["en"]
 
-    grade_map = legacy.build_grade_map(payload, list(by_kind["conditions"].values()))
     route_data = {}
     total_changes = Counter()
     daily_json = {"es": {}, "en": {}}
 
     for kind, cfg in legacy.COLLECTIONS.items():
-        key = KEYS[kind]
-        mapping = route_map[key]
+        mapping = route_map[KEYS[kind]]
         pages = sorted(p for p in ROOT.glob(cfg["es_glob"]) if p.is_file())
         if len(pages) != EXPECTED[kind]:
             raise AssertionError(f"{kind}: esperadas {EXPECTED[kind]} páginas ES, hay {len(pages)}")
-        page_routes = {legacy.route_for(p, ROOT) for p in pages}
-        if page_routes != set(mapping):
+        if {legacy.route_for(p, ROOT) for p in pages} != set(mapping):
             raise AssertionError(f"{kind}: las rutas públicas ya no coinciden con el mapa aprobado")
 
         es_index_path = ROOT / cfg["es_index"]
@@ -138,16 +137,17 @@ def main():
             en_path = legacy.english_page(es_path, es_text, ROOT, cfg["en_prefix"])
             en_route = legacy.route_for(en_path, ROOT)
             en_text = en_path.read_text(encoding="utf-8")
-            grade = grade_map[k] if kind == "conditions" else None
 
-            a = legacy.update_detail(es_path, kind, entry["es"], grade, args.check)
-            b = legacy.update_detail(en_path, kind, entry["en"], grade, args.check)
+            # Las descripciones y los grados son dos integraciones distintas.
+            a = legacy.update_detail(es_path, kind, entry["es"], None, args.check)
+            b = legacy.update_detail(en_path, kind, entry["en"], None, args.check)
             total_changes["detail_es"] += a["changed"]
             total_changes["detail_en"] += b["changed"]
 
+            # El catálogo actual de Situaciones usa el mismo <a class="card"> que Condiciones.
             card_kind = "conditions" if kind == "situations" else kind
-            es_index, _ = legacy.update_card(es_index, es_route, entry["es"], card_kind, grade)
-            en_index, _ = legacy.update_card(en_index, en_route, entry["en"], card_kind, grade)
+            es_index, _ = legacy.update_card(es_index, es_route, entry["es"], card_kind, None)
+            en_index, _ = legacy.update_card(en_index, en_route, entry["en"], card_kind, None)
 
             add = None
             if kind == "daily":
@@ -155,7 +155,7 @@ def main():
                        "en":{"s":"Everyday life","t":h1(en_text),"u":en_route,"d":entry["en"],"a":first_chip(en_text)}}
                 daily_json["es"][h1(es_text)] = entry["es"]
                 daily_json["en"][h1(en_text)] = entry["en"]
-            route_data[es_route] = {"es":entry["es"],"en":entry["en"],"en_route":en_route,"kind":kind,"grade":grade,"add":add}
+            route_data[es_route] = {"es":entry["es"],"en":entry["en"],"en_route":en_route,"kind":kind,"add":add}
 
         if used != set(by_kind[kind]):
             raise AssertionError(f"{kind}: no se han usado exactamente los {EXPECTED[kind]} textos aprobados")
@@ -169,10 +169,8 @@ def main():
             if en_index != en_before_index:
                 en_index_path.write_text(en_index, encoding="utf-8"); total_changes["index_files"] += 1
 
-    # Buscador global: Situaciones/Condiciones deben existir; Vida diaria puede estar ausente y se añade sin inventar datos.
     sp = ROOT / "buscador.json"
-    before = sp.read_text(encoding="utf-8")
-    catalog = json.loads(before)
+    catalog = json.loads(sp.read_text(encoding="utf-8"))
     by_route = {x.get("u"): x for x in catalog}
     changed = 0; added = 0
     for route, d in route_data.items():
@@ -190,10 +188,9 @@ def main():
             en["d"] = d["en"]; changed += 1
     if len({r for r in route_data if r in by_route}) != 420:
         raise AssertionError("buscador.json no cubre las 420 rutas")
-    if args.check:
-        if changed or added:
-            raise AssertionError(f"buscador.json todavía difiere: {changed} campos, {added} altas")
-    elif changed or added:
+    if args.check and (changed or added):
+        raise AssertionError(f"buscador.json todavía difiere: {changed} campos, {added} altas")
+    if not args.check and (changed or added):
         sp.write_text(json.dumps(catalog, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     total_changes["search_fields"] = changed
     total_changes["search_records_added"] = added
@@ -204,6 +201,17 @@ def main():
     if args.check and (total_changes["detail_es"] or total_changes["detail_en"]):
         raise AssertionError(f"Las fichas todavía difieren: ES={total_changes['detail_es']} EN={total_changes['detail_en']}")
 
+    if not args.check:
+        estado = json.loads(ESTADO.read_text(encoding="utf-8")) if ESTADO.is_file() else {}
+        estado["descripciones_420"] = {
+            "aplicado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "situaciones": 187,
+            "condiciones": 185,
+            "vida_diaria": 48,
+            "idiomas": ["es", "en"],
+        }
+        ESTADO.write_text(json.dumps(estado, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+
     print(json.dumps({
         "mode":"check" if args.check else "apply",
         "approved_descriptions":420,
@@ -211,7 +219,6 @@ def main():
         "conditions":185,
         "daily":48,
         "routes":len(route_data),
-        "final_condition_grades":dict(sorted(Counter(grade_map.values()).items())),
         "daily_overrides":len(overrides),
         "changes":dict(total_changes),
     }, ensure_ascii=False, indent=2))
