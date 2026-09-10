@@ -19,6 +19,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
+    # Repara los siete pares ES/EN de Condiciones que carecían de hreflang recíproco.
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_condition_hreflang.py')],cwd=ROOT,check=True)
     # Estados documentales y referencias normativas: no reescribe el contenido de las fichas.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_validation_framework.py')],cwd=ROOT,check=True)
     # Conserva las letras fijadas y alinea solo los nombres del registro con los títulos reales del catálogo.
