@@ -38,22 +38,28 @@ def main() -> None:
 
     research = root / "es/investigacion/index.html"
     text = research.read_text(encoding="utf-8")
-    pairs = [
+    # La fecha de Investigación cambia cuando se publica una colección revisada.
+    # No la fijamos como condición de entrada: comprobamos el rótulo por su forma
+    # y lo cerramos con la fecha de validación actual. Así una actualización
+    # legítima de fecha no vuelve a romper el build.
+    research_rules = [
         (
-            'revision: "Última revisión de esta página: 1 de septiembre de 2026 · 120 publicaciones."',
+            re.compile(r'revision: "Última revisión de esta página: [^"]+? · 120 publicaciones\."'),
             f'revision: "Última validación de esta página: {DATE_ES} · 120 publicaciones."',
+            re.compile(r'revision: "Última validación de esta página: [^"]+? · 120 publicaciones\."'),
         ),
         (
-            'revision: "This page last reviewed: 31 August 2026 · 120 publications."',
+            re.compile(r'revision: "This page last reviewed: [^"]+? · 120 publications\."'),
             f'revision: "This page last validated: {DATE_EN} · 120 publications."',
+            re.compile(r'revision: "This page last validated: [^"]+? · 120 publications\."'),
         ),
     ]
     research_labels = 0
-    for old, new in pairs:
-        if old in text:
-            text = text.replace(old, new)
+    for reviewed_rx, new, validated_rx in research_rules:
+        if reviewed_rx.search(text):
+            text = reviewed_rx.sub(new, text)
             research_labels += 1
-        elif new not in text:
+        elif not validated_rx.search(text):
             raise AssertionError("No se encontró el rótulo esperado de Investigación")
     research.write_text(text, encoding="utf-8")
 

@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - '.github/workflows/diagnostico-build-investigacion.yml'
+      - 'netlify.toml'
+      - 'scripts/build_site.py'
+      - 'scripts/finalize_validation_labels.py'
+      - 'scripts/publish_investigacion.py'
   workflow_dispatch:
 
 permissions:
@@ -15,4 +19,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Ejecutar exactamente el build de Netlify
-        run: python3 scripts/build_site.py && python3 scripts/publish_investigacion.py
+        run: python3 scripts/build_site.py

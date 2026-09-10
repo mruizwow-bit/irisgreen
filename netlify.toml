@@ -1,7 +1,7 @@
 # Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.
 [build]
   publish = "dist"
-  command = "python3 scripts/build_site.py && python3 scripts/publish_investigacion.py"
+  command = "python3 scripts/build_site.py"
 
 # Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.
 [build.processing.html]
