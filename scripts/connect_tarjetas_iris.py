@@ -37,7 +37,7 @@ def card(section,v):
       '<div class="iris-inline-top"><span>Tarjeta Iris</span><button type="button" class="iris-inline-print" data-iris-print>Imprimir / guardar PDF</button></div>'
       '<section class="iris-personal-card"><header class="iris-personal-head"><strong>Iris Green</strong>'
       f'<span><b>{LABEL[section]}</b><br>TARJETA PERSONAL</span></header>'
-      f'<input class="iris-card-title-input" data-iris-field="title" maxlength="80" aria-label="Título de la tarjeta" value="{html.escape(t,quote=True)}">'
+      f'<textarea class="iris-card-title-input" rows="2" data-iris-field="title" maxlength="80" aria-label="Título de la tarjeta">{html.escape(t)}</textarea>'
       +field("Esto me cuesta","difficulty",d)+field("Me ayuda","help",a)+field("Necesito","need",n)
       +'<footer class="iris-personal-foot"><span>irisgreen.eu</span><span>Personaliza el texto</span></footer></section>'
       '<p class="iris-inline-help">Puedes cambiar todo el texto. Lo que escribes no se guarda en la web.</p></aside>')
@@ -94,7 +94,7 @@ def main():
     for section,rel in INDEX.items():
         p=root/rel;text=p.read_text(encoding="utf-8");out=assets(add_index(text,section));p.write_text(out,encoding="utf-8");changed.append(rel)
     sample=(root/'es/situaciones/la-ropa-me-molesta/index.html').read_text(encoding="utf-8")
-    for token in ('data-iris-section="situaciones"','Una etiqueta, una costura o una tela me rozan la piel','Cortar etiquetas y usar prendas del revés','class="iris-ficha-body-grid"'):
+    for token in ('data-iris-section="situaciones"','Una etiqueta, una costura o una tela me rozan la piel','Cortar etiquetas y usar prendas del revés','class="iris-ficha-body-grid"','class="iris-card-title-input"'):
         if token not in sample: raise AssertionError("Muestra etiquetas incorrecta: "+token)
     print(json.dumps({"detail_cards_inline":counts,"index_accesses":4,"sample_checked":"es/situaciones/la-ropa-me-molesta/","desktop_layout":"descripción izquierda / Tarjeta Iris derecha","home_untouched":True,"english_untouched":True},ensure_ascii=False))
 if __name__=="__main__": main()
