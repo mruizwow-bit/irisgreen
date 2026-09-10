@@ -101,6 +101,12 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
 .ig-picture-target{min-width:0!important;min-height:0!important}
 .ig-picture-target:focus-visible{outline:3px solid #5a49a8!important;outline-offset:-3px!important}
 
+/* Keep the page-header controls reachable while the non-modal Reading panel is open.
+   On small screens the panel starts below the compact header and scrolls internally. */
+@media(max-width:700px){
+ [data-ig-reading-panel]{top:max(120px,env(safe-area-inset-top))!important;right:max(12px,env(safe-area-inset-right))!important;bottom:auto!important;left:auto!important;max-height:calc(100dvh - 132px - env(safe-area-inset-bottom))!important}
+}
+
 /* Enlarged reading: reflow content on narrow screens, not the fixed UI. */
 @media(max-width:700px){
  html[data-ig-text-enlarged] main :where(div,section,article,label,p,span,strong){min-width:0!important;max-width:100%}
