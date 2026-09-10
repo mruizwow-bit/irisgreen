@@ -1,0 +1,93 @@
+name: Validar Vida diaria · Salir de casa v2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/aplicar-vida-diaria-salir-casa-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar-validar-publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aplicar las 8 parejas ES/EN con selector de tarjeta exacto
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, textwrap
+
+          source = Path('.github/workflows/aplicar-vida-diaria-salir-casa.yml').read_text(encoding='utf-8')
+          marker = "          python3 - <<'PY'\n"
+          if source.count(marker) != 1:
+              raise SystemExit('No se encontró de forma única el aplicador fuente')
+          block = source.split(marker, 1)[1].split('\n          PY', 1)[0]
+          code = textwrap.dedent(block)
+
+          replacement = '''    pattern = re.compile(r'<a\\b(?=[^>]*\\bclass="[^"]*\\bvd-card\\b[^"]*")(?=[^>]*\\bhref="' + re.escape(href) + r'")[^>]*>.*?</a>', re.S)'''
+          code, changed = re.subn(
+              r'(?m)^    pattern = re\.compile\(.*re\.escape\(href\).*$',
+              lambda _: replacement,
+              code,
+              count=1,
+          )
+          if changed != 1:
+              raise SystemExit(f'No se pudo aislar el selector de tarjeta: {changed}')
+          exec(compile(code, '<aplicar-vida-diaria>', 'exec'), {'__name__': '__main__'})
+          PY
+
+      - name: Comprobar y preparar commit sin desplegar
+        shell: bash
+        run: |
+          git diff --check
+          echo 'Archivos modificados por la integración:'
+          git diff --name-only
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add es/biblioteca en/everyday-life scripts/publish_biblioteca.py
+          test "$(git diff --cached --name-only | wc -l)" -eq 21
+          git commit -m "Actualizar Vida diaria · Salir de casa ES/EN [skip netlify]"
+
+      - name: Ejecutar build completo antes de tocar producción
+        shell: bash
+        run: python3 scripts/build_site.py
+
+      - name: Verificar las 16 páginas de la salida pública
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          checks = {
+            'dist/es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html': 'En un aeropuerto hay que orientarse, esperar, pasar controles y seguir posibles cambios de puerta o de horario.',
+            'dist/es/biblioteca/transporte-publico-y-desplazamientos/index.html': 'Viajar en autobús, metro o tren implica consultar horarios, usar un billete y orientarse.',
+            'dist/es/biblioteca/compras-recados-y-esperas/index.html': 'Hacer la compra incluye preparar una lista, desplazarse, buscar productos, comparar precios y pagar.',
+            'dist/es/biblioteca/restaurantes-y-comer-fuera/index.html': 'Comer fuera implica elegir en un menú, esperar y estar en un lugar con olores, ruido y otras personas.',
+            'dist/es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/index.html': 'Algunos cines, teatros y museos ofrecen sesiones o visitas con menos estímulos.',
+            'dist/es/biblioteca/actividad-fisica-deporte-y-piscina/index.html': 'La actividad física no se limita al deporte.',
+            'dist/es/biblioteca/ocio-arte-musica-animales-y-naturaleza/index.html': 'El ocio no tiene que ser terapéutico ni productivo.',
+            'dist/es/biblioteca/perros-de-asistencia-que-reconoce-la-ley/index.html': 'Un perro de asistencia está entrenado para realizar tareas concretas relacionadas con la discapacidad de una persona.',
+            'dist/en/everyday-life/flying-with-a-non-visible-disability/index.html': 'At an airport, people need to find their way around, wait, go through security checks and follow possible gate or schedule changes.',
+            'dist/en/everyday-life/public-transport-and-getting-around/index.html': 'Travelling by bus, metro or train involves checking schedules, using a ticket and finding the way.',
+            'dist/en/everyday-life/shopping-errands-and-waiting/index.html': 'Shopping includes preparing a list, travelling, finding products, comparing prices and paying.',
+            'dist/en/everyday-life/restaurants-and-eating-out/index.html': 'Eating out involves choosing from a menu, waiting and being in a place with smells, noise and other people.',
+            'dist/en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/index.html': 'Some cinemas, theatres and museums offer sessions or visits with fewer sensory demands.',
+            'dist/en/everyday-life/physical-activity-sport-and-swimming/index.html': 'Physical activity is not limited to sport.',
+            'dist/en/everyday-life/leisure-art-music-animals-and-nature/index.html': 'Leisure does not have to be therapeutic or productive.',
+            'dist/en/everyday-life/assistance-dogs-what-the-law-recognises/index.html': "An assistance dog is trained to carry out specific tasks related to a person's disability.",
+          }
+          for path, expected in checks.items():
+              text = Path(path).read_text(encoding='utf-8')
+              if expected not in text:
+                  raise SystemExit(f'No aparece el texto validado en {path}')
+          print('OK: 16/16 páginas contienen la versión validada')
+          PY
+
+      - name: Subir a main solo después de superar todo
+        shell: bash
+        run: git push origin HEAD:main
