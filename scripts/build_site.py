@@ -56,6 +56,8 @@ def build():
     # Vida diaria no muestra estados editoriales al público. Esta última pasada
     # elimina de la salida pública cualquier rótulo que un publicador antiguo reintroduzca.
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Tarjetas Iris se conecta desde sus contextos, nunca desde la portada.
+    subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
