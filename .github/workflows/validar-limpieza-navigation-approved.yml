@@ -1,0 +1,94 @@
+name: Validar limpieza final de navigation-approved
+on:
+  push:
+    branches:
+      - trabajo/limpiar-navigation-approved-20260910
+    paths:
+      - .github/workflows/validar-limpieza-navigation-approved.yml
+permissions:
+  contents: write
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Confirmar main y copia nueva
+        run: |
+          git fetch origin main backup/20260910-antes-limpiar-navigation-approved-c3ac14d --quiet
+          test "$(git rev-parse origin/main)" = "c3ac14d5cd0868b74ec74fdb5f5a761fec79108f"
+          test "$(git rev-parse origin/backup/20260910-antes-limpiar-navigation-approved-c3ac14d)" = "c3ac14d5cd0868b74ec74fdb5f5a761fec79108f"
+      - name: Construir referencia anterior
+        run: |
+          mkdir -p /tmp/iris-nav-clean
+          rm -rf /tmp/iris-nav-clean/base
+          git worktree add --detach /tmp/iris-nav-clean/base c3ac14d5cd0868b74ec74fdb5f5a761fec79108f
+          (cd /tmp/iris-nav-clean/base && python3 scripts/build_site.py >/tmp/iris-nav-clean/build-before.log 2>&1)
+      - name: Limpiar únicamente los ocho textos de estado del activo fuente
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('assets/navigation-approved.js');s=p.read_text()
+          pairs=[
+            ('Base documental y revisión','Base documental y validación'),
+            ('Revisión editorial','Validación editorial'),
+            ('Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.','Validación editorial: 10 de septiembre de 2026. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.'),
+            ('Sources and review','Sources and validation'),
+            ('Editorial review','Editorial validation'),
+            ('Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.','Editorial validation: 10 September 2026. The cited sources and the limits of the entry remain identified to support checking and future updates.'),
+            ('La ficha fuente indica revisión editorial el 4 de septiembre de 2026 y citas pendientes de comprobación. Este cambio de presentación no añade una validación clínica ni una nueva fecha de revisión.','La ficha está validada editorialmente para esta edición. Este cambio de presentación no añade una validación clínica.'),
+            ('The source entry states an editorial review on 4 September 2026 and citations awaiting checking. This presentation change does not add clinical validation or a new review date.','The entry is editorially validated for this edition. This presentation change does not add clinical validation.'),
+          ]
+          counts=[]
+          # Replace longer strings first so shorter labels do not consume them.
+          for old,new in sorted(pairs,key=lambda x:len(x[0]),reverse=True):
+              n=s.count(old);counts.append((old,n));assert n>=1,(old,n);s=s.replace(old,new)
+          p.write_text(s)
+          print('replacements:',sum(n for _,n in counts),counts)
+          PY
+      - name: Construir y comparar
+        run: |
+          python3 scripts/build_site.py >/tmp/iris-nav-clean/build-after.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re,subprocess
+          before=Path('/tmp/iris-nav-clean/base/dist');after=Path('dist');out=Path('/tmp/iris-nav-clean')
+          def hashes(root):return {p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          b=hashes(before);a=hashes(after);assert set(b)==set(a)
+          changed=sorted(x for x in b if b[x]!=a[x])
+          expected=sorted(['assets/navigation-approved.js','index.html','es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html','en/situations/i-need-instructions-repeated/index.html'])
+          assert changed==expected,(changed,expected)
+          # The only content differences in the two entry pages are the versioned asset URL;
+          # author-facing title/description and protected lede remain unchanged.
+          def field(text,pat):
+              m=re.search(pat,text,re.I|re.S);return m.group(1) if m else None
+          for rel in expected[1:]:
+              bt=(before/rel).read_text();at=(after/rel).read_text()
+              assert field(bt,r'<h1\b[^>]*>(.*?)</h1>')==field(at,r'<h1\b[^>]*>(.*?)</h1>'),rel
+              assert field(bt,r'<meta[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\']')==field(at,r'<meta[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\']'),rel
+          subprocess.run(['python3','scripts/sentidos_author.py','--root','dist'],check=True)
+          subprocess.run(['python3','scripts/sueno_author.py','--root','dist'],check=True)
+          # Permanent guard has already scanned every public text file during the build.
+          asset=(after/'assets/navigation-approved.js').read_text()
+          forbidden=['las páginas siguen en noindex hasta','these pages stay noindex until','Revisión editorial:','Editorial review:','citas pendientes de comprobación','citations awaiting checking']
+          assert not any(x in asset for x in forbidden),[x for x in forbidden if x in asset]
+          report={'base':'c3ac14d5cd0868b74ec74fdb5f5a761fec79108f','backup':'backup/20260910-antes-limpiar-navigation-approved-c3ac14d','changed_public_files':changed,'only_navigation_status_source_changed':True,'protected_descriptions':'unchanged','sentidos':'exacto','sueno':'exacto','global_public_status_guard':'passed'}
+          (out/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Guardar el activo fuente ya validado en la rama de trabajo
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/navigation-approved.js
+          test "$(git diff --cached --name-only)" = "assets/navigation-approved.js"
+          git commit -m 'Limpiar estados provisionales del activo de navegación [skip netlify]'
+          git push origin HEAD:trabajo/limpiar-navigation-approved-20260910
+      - name: Guardar comprobación
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-navigation-status-clean
+          path: /tmp/iris-nav-clean
+          retention-days: 14
