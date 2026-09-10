@@ -1,0 +1,186 @@
+name: Verificar producción validada completa v2
+on:
+  push:
+    branches:
+      - verificacion/produccion-validada-20260910-c3ac14d
+    paths:
+      - .github/workflows/verificar-produccion-validada-completa-v2.yml
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: c3ac14d5cd0868b74ec74fdb5f5a761fec79108f
+      - name: Construir referencia exacta
+        run: |
+          mkdir -p /tmp/iris-production-validation-v2
+          python3 scripts/build_site.py >/tmp/iris-production-validation-v2/build.log 2>&1
+          python3 scripts/sentidos_author.py --root dist >/tmp/iris-production-validation-v2/sentidos-local.json
+          python3 scripts/sueno_author.py --root dist >/tmp/iris-production-validation-v2/sueno-local.json
+      - name: Verificar producción completa
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures, hashlib, html, json, re, time, urllib.request
+          from pathlib import Path
+
+          ROOT=Path('dist'); OUT=Path('/tmp/iris-production-validation-v2'); BASE='https://irisgreen.eu'
+          groups={
+            'conditions_es':sorted(ROOT.glob('es/neurodiversidad/condiciones/*/index.html')),
+            'conditions_en':sorted(ROOT.glob('en/neurodiversity/conditions/*/index.html')),
+            'situations_es':sorted(ROOT.glob('es/situaciones/*/index.html')),
+            'situations_en':sorted(ROOT.glob('en/situations/*/index.html')),
+            'data_es':sorted(ROOT.glob('es/datos/*/index.html')),
+            'data_en':sorted(ROOT.glob('en/data/*/index.html')),
+            'daily_es':sorted(ROOT.glob('es/biblioteca/*/index.html')),
+            'daily_en':sorted(ROOT.glob('en/everyday-life/*/index.html')),
+          }
+          expected={'conditions_es':185,'conditions_en':185,'situations_es':187,'situations_en':187,'data_es':49,'data_en':49,'daily_es':48,'daily_en':48}
+          assert {k:len(v) for k,v in groups.items()}==expected
+          def rel(p): return p.relative_to(ROOT).as_posix()
+          details=[rel(p) for ps in groups.values() for p in ps]
+          assert len(details)==938
+          specials=[
+            'es/neurodiversidad/condiciones/index.html','en/neurodiversity/conditions/index.html',
+            'es/situaciones/index.html','en/situations/index.html','es/datos/index.html','en/data/index.html',
+            'es/biblioteca/index.html','en/everyday-life/index.html','es/investigacion/index.html',
+            'es/cuestionarios/index.html','es/vivir-fuera/index.html','es/privacidad/index.html','en/privacy/index.html',
+            'es/intereses/index.html','en/interests/index.html',
+            'es/datos/datos.json','en/data/data.json','es/biblioteca/vida-diaria.json','en/everyday-life/everyday-life.json'
+          ]
+          targets=details+specials
+          def url_for(r):
+            path='/'+(r[:-10] if r.endswith('index.html') else r)
+            return BASE+path+('?igverify=c3ac14d-v2' if '?' not in path else '&igverify=c3ac14d-v2')
+          def fetch(r):
+            last=None
+            for attempt in range(5):
+              try:
+                req=urllib.request.Request(url_for(r),headers={'User-Agent':'IrisGreen-production-validation-v2','Cache-Control':'no-cache','Pragma':'no-cache'})
+                with urllib.request.urlopen(req,timeout=30) as resp:
+                  data=resp.read()
+                  if resp.status!=200: raise RuntimeError((r,resp.status))
+                return r,data
+              except Exception as e:
+                last=e;time.sleep(1+attempt)
+            raise RuntimeError((r,last))
+          live={};errors=[]
+          with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
+            futures=[pool.submit(fetch,r) for r in targets]
+            for f in concurrent.futures.as_completed(futures):
+              try:r,data=f.result();live[r]=data
+              except Exception as e:errors.append(repr(e))
+          assert not errors,errors[:20]
+          assert len(live)==len(targets)
+
+          # Netlify debe servir exactamente el dist generado por el commit de producción.
+          mismatches=[]
+          for r in targets:
+            local=(ROOT/r).read_bytes()
+            if hashlib.sha256(local).digest()!=hashlib.sha256(live[r]).digest(): mismatches.append(r)
+          assert not mismatches,('production differs from dist',mismatches[:30])
+
+          stale=[
+            re.compile(rb'<span class="chip lil">(?:BORRADOR|DRAFT)</span>',re.I),
+            re.compile(rb'<span class="meta">[^<]*\b(?:BORRADOR|DRAFT|REVISADA)\b[^<]*</span>',re.I),
+            re.compile(rb'data-editorial-status="generated-draft"',re.I),
+            re.compile(rb'Review: not yet verified',re.I),
+            re.compile('las páginas siguen en noindex hasta'.encode(),re.I),
+            re.compile(rb'these pages stay noindex until',re.I),
+            re.compile('Pendiente de completar:'.encode(),re.I),
+            re.compile(rb'Still to complete:',re.I),
+            re.compile('Última revisión'.encode(),re.I),
+            re.compile(rb'Last reviewed\s*:',re.I),
+            re.compile('Revisión editorial\s*:'.encode(),re.I),
+            re.compile(rb'Editorial review\s*:',re.I),
+            re.compile(rb'<strong>\s*(?:Review)\s*:\s*</strong>',re.I),
+            re.compile('<strong>\s*Revisión\s*:\s*</strong>'.encode(),re.I),
+          ]
+          detail_stale=[];detail_noindex=[]
+          for r in details:
+            data=live[r]
+            if b'content="noindex,follow"' in data: detail_noindex.append(r)
+            if any(rx.search(data) for rx in stale): detail_stale.append(r)
+          assert not detail_noindex,detail_noindex[:30]
+          assert not detail_stale,detail_stale[:30]
+
+          # Estados finales visibles y rótulos cerrados.
+          txt=lambda r:live[r].decode('utf-8')
+          assert txt('es/biblioteca/index.html').count('VALIDADA</span>')==48
+          assert txt('en/everyday-life/index.html').count('VALIDATED</span>')>=48
+          assert 'published and validated for this edition' in txt('en/neurodiversity/conditions/index.html')
+          assert 'publicadas y validadas para esta edición' in txt('es/datos/index.html')
+          assert 'published and validated for this edition' in txt('en/data/index.html')
+          cond_labels=sum(txt(rel(p)).count('<h2>Última validación del texto</h2>') for p in groups['conditions_es'])
+          assert cond_labels==183,cond_labels
+          research=txt('es/investigacion/index.html')
+          assert 'Última validación de esta página: 10 de septiembre de 2026 · 120 publicaciones.' in research
+          assert 'This page last validated: 10 September 2026 · 120 publications.' in research
+          assert 'Última validación: 10 de septiembre de 2026.' in txt('es/privacidad/index.html')
+          assert 'Last validated: 10 September 2026.' in txt('en/privacy/index.html')
+          assert 'Pendiente de localizar una adaptación española documentada.' not in txt('es/cuestionarios/index.html')
+          assert 'Pendiente de completar:' not in txt('es/vivir-fuera/index.html') and 'Still to complete:' not in txt('es/vivir-fuera/index.html')
+
+          # JSON: buscar todos los campos status recursivamente, sin asumir una lista plana.
+          def statuses(value):
+            found=[]
+            if isinstance(value,dict):
+              for k,v in value.items():
+                if k=='status': found.append(v)
+                found.extend(statuses(v))
+            elif isinstance(value,list):
+              for v in value: found.extend(statuses(v))
+            return found
+          json_expect={
+            'es/datos/datos.json':'validado','en/data/data.json':'validated',
+            'es/biblioteca/vida-diaria.json':'validado','en/everyday-life/everyday-life.json':'validated'
+          }
+          json_counts={}
+          for r,want in json_expect.items():
+            values=statuses(json.loads(txt(r)))
+            assert values,(r,'no status fields')
+            assert all(v==want for v in values),(r,set(values))
+            json_counts[r]=len(values)
+
+          # Texto aprobado por la autora, comprobado directamente contra los MD.
+          def first_lede(text):
+            m=re.search(r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>',text,re.I|re.S)
+            assert m
+            return ' '.join(html.unescape(re.sub(r'<[^>]*>',' ',m.group(1))).split())
+          exact={}
+          for name,md,mf,n in [
+            ('sentidos','editorial/reviews/situaciones_sentidos_ES_EN.md','editorial/reviews/situaciones-sentidos-manifest.json',24),
+            ('sueno','editorial/reviews/situaciones_sueno_ES_EN.md','editorial/reviews/situaciones-sueno-manifest.json',23),
+          ]:
+            rows=re.findall(r'^## (\d+)\. ([^\n]+)\n\n### ES\n([^\n]+)\n\n### EN\n([^\n]+)',Path(md).read_text(),re.M)
+            manifest=json.loads(Path(mf).read_text());assert len(rows)==len(manifest['entries'])==n
+            checked=0
+            for row,e in zip(rows,manifest['entries']):
+              for lang,desc in [('es',row[2]),('en',row[3])]:
+                r=e[lang+'_path'];assert first_lede(txt(r))==desc,(name,r);checked+=1
+            exact[name]=checked
+
+          report={
+            'production':BASE,'commit':'c3ac14d5cd0868b74ec74fdb5f5a761fec79108f',
+            'files_compared_byte_exact':len(targets),'detail_pages_checked':938,
+            'production_matches_generated_dist':True,'all_938_detail_pages_indexable':True,
+            'stale_structural_status_markers_in_detail_pages':0,
+            'conditions_es_validation_labels':cond_labels,'biblioteca_validada_cards':48,
+            'daily_en_validated_cards':48,'json_status_counts':json_counts,
+            'sentidos_exact_public_pages':exact['sentidos'],'sueno_exact_public_pages':exact['sueno']
+          }
+          (OUT/'production-v2.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Guardar resultado
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-produccion-validada-c3ac14d-v2
+          path: /tmp/iris-production-validation-v2
+          retention-days: 14
+          if-no-files-found: error
