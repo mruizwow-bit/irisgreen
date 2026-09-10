@@ -1,0 +1,38 @@
+name: Diagnóstico temporal integración 420
+on:
+  push:
+    branches: ['ajustes/auditoria-web']
+    paths: ['.github/workflows/diagnostico-420.yml']
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+jobs:
+  diagnosticar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir y capturar salida
+        id: build
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 scripts/build_site.py 2>&1 | tee /tmp/build-420.log
+      - name: Dejar diagnóstico en PR 19 si falla
+        if: steps.build.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '### Diagnóstico automático del preflight 420'
+            echo '```text'
+            tail -n 120 /tmp/build-420.log
+            echo '```'
+          } >/tmp/build-420-comment.md
+          gh pr comment 19 --body-file /tmp/build-420-comment.md
+          exit 1
+      - name: Confirmar construcción
+        if: steps.build.outcome == 'success'
+        run: echo 'build_site.py completado correctamente'
