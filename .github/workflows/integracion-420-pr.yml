@@ -1,0 +1,106 @@
+name: Integración 420 · prueba temporal
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar entorno de pruebas
+        run: |
+          python3 -m venv /tmp/ig420
+          /tmp/ig420/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig420/bin/python -m playwright install --with-deps chromium >/tmp/ig420-playwright.log 2>&1
+      - name: Compilar scripts nuevos
+        run: |
+          python3 -m py_compile scripts/apply_accessible_descriptions_420.py scripts/finalize_validation_labels.py scripts/build_site.py
+      - name: Construir exactamente dist
+        run: python3 scripts/build_site.py
+      - name: Comprobar bloqueadores estructurales del dossier
+        run: |
+          /tmp/ig420/bin/python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+
+          root = Path('dist')
+          failures = []
+
+          def soup(rel):
+              p = root / rel
+              if not p.is_file():
+                  failures.append(f'{rel}: no existe')
+                  return BeautifulSoup('', 'html.parser')
+              return BeautifulSoup(p.read_text(encoding='utf-8'), 'html.parser')
+
+          def accessible_name(el, doc):
+              label = (el.get('aria-label') or '').strip()
+              if label:
+                  return label
+              ids = (el.get('aria-labelledby') or '').split()
+              if ids:
+                  txt = ' '.join((doc.find(id=i).get_text(' ', strip=True) if doc.find(id=i) else '') for i in ids).strip()
+                  if txt:
+                      return txt
+              if el.name == 'input' and el.get('id'):
+                  lab = doc.find('label', attrs={'for': el.get('id')})
+                  if lab and lab.get_text(' ', strip=True):
+                      return lab.get_text(' ', strip=True)
+              txt = el.get_text(' ', strip=True)
+              if txt:
+                  return txt
+              img = el.find('img', alt=True)
+              if img and img.get('alt','').strip():
+                  return img.get('alt','').strip()
+              return (el.get('title') or '').strip()
+
+          # 1,4,5,8: search controls need a programmatic name.
+          for rel in ['en/interests/index.html','es/intereses/index.html','es/investigacion/index.html','es/videos/index.html']:
+              doc = soup(rel)
+              fields = doc.find_all('input', attrs={'type':'search'})
+              if not fields:
+                  failures.append(f'{rel}: no se encontró input type=search')
+              for i, field in enumerate(fields, 1):
+                  if not accessible_name(field, doc):
+                      failures.append(f'{rel}: búsqueda {i} sin nombre accesible')
+
+          # 2,7,9: every button on the previously failing pages needs a name.
+          for rel in ['en/situations/i-need-instructions-repeated/index.html','es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html','index.html']:
+              doc = soup(rel)
+              for i, button in enumerate(doc.find_all('button'), 1):
+                  if not accessible_name(button, doc):
+                      failures.append(f'{rel}: botón {i} sin nombre accesible')
+
+          # 3: printable interests page needs main and h1.
+          rel = 'es/intereses/imprimir/index.html'
+          doc = soup(rel)
+          if not doc.find('main'):
+              failures.append(f'{rel}: falta main')
+          if not doc.find('h1'):
+              failures.append(f'{rel}: falta h1')
+
+          # 6: every link on games page needs an accessible name.
+          rel = 'es/recursos/juegos/index.html'
+          doc = soup(rel)
+          for i, link in enumerate(doc.find_all('a'), 1):
+              if not accessible_name(link, doc):
+                  failures.append(f'{rel}: enlace {i} sin nombre accesible')
+
+          if failures:
+              raise SystemExit('\n'.join(failures))
+          print('9 páginas / 13 bloqueadores históricos: 0 fallos detectados')
+          PY
+      - name: Comprobar coherencia global
+        run: cd dist && /tmp/ig420/bin/python ../scripts/test_coherence.py
+      - name: Comprobar preferencias y navegación
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig420/bin/python ../scripts/test_reading_preferences.py --phase after
+      - name: Comprobar miniaturas y reproductores
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig420/bin/python ../scripts/test_video_thumbnails.py
