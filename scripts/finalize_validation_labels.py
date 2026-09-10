@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Sustituye únicamente rótulos editoriales antiguos de revisión por validación.
+"""Cierra rótulos editoriales provisionales en la salida pública y los audita.
 
 No cambia descripciones, explicaciones, fuentes, resultados de investigación ni
-clasificaciones A/B/C. Se ejecuta sobre ``dist`` al final del build.
+clasificaciones A/B/C. Los activos fuente deben llegar ya sin estados provisionales;
+si reaparecen, esta comprobación detiene el build en vez de corregirlos en silencio.
 """
 from __future__ import annotations
 
@@ -56,28 +57,50 @@ def main() -> None:
             raise AssertionError("No se encontró el rótulo esperado de Investigación")
     research.write_text(text, encoding="utf-8")
 
-    # Solo buscamos rótulos de estado, no usos normales como "revisión sistemática".
+    # Guardias estructurales para TODO archivo de texto publicado. No se buscan
+    # usos normales como «revisión sistemática», «tareas pendientes», variables
+    # `pending`, un borrador escrito por la propia persona o `peer-reviewed`.
     patterns = {
-        "ultima_revision": re.compile(r"(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)", re.I),
-        "revision_editorial": re.compile(r"(?:Revisión editorial\s*:|Editorial review\s*:)", re.I),
-        "heading_revision": re.compile(r"<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>", re.I),
-        "li_revision": re.compile(r"<strong>\s*(?:Revisión|Review)\s*:\s*</strong>", re.I),
-        "card_revisada": re.compile(r'<span class="meta">[^<]*\bREVISADA\b[^<]*</span>', re.I),
+        "draft_badge": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*(?:BORRADOR|DRAFT)\s*</span>', re.I),
+        "draft_or_reviewed_card": re.compile(r'<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>[^<]*\b(?:BORRADOR|DRAFT|REVISADA|REVIEWED)\b[^<]*</span>', re.I),
+        "provisional_status_attr": re.compile(r'data-editorial-status=["\'](?:generated-draft|draft|reviewed)["\']', re.I),
+        "provisional_json_status": re.compile(r'"status"\s*:\s*"(?:borrador|draft|revisad[oa]|reviewed|pending|pendiente)"', re.I),
+        "draft_notice_es": re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Página en borrador\.', re.I),
+        "draft_notice_en": re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Draft (?:page|entry)\.', re.I),
+        "not_yet_verified": re.compile(r'(?:Review: not yet verified|comprobación final (?:sigue )?pendiente|final verification is still pending|final check is still pending)', re.I),
+        "generated_noindex_note_es": re.compile(r'las páginas siguen en noindex hasta', re.I),
+        "generated_noindex_note_en": re.compile(r'these pages stay noindex until', re.I),
+        "pending_scope_es": re.compile(r'Pendiente de completar:', re.I),
+        "pending_scope_en": re.compile(r'Still to complete:', re.I),
+        "ultima_revision": re.compile(r'(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)', re.I),
+        "revision_editorial": re.compile(r'(?:Revisión editorial\s*:|Editorial review\s*:)', re.I),
+        "heading_revision": re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>', re.I),
+        "li_revision": re.compile(r'<strong>\s*(?:Revisión|Review)\s*:\s*</strong>', re.I),
+        "source_pending_es": re.compile(r'citas pendientes de comprobación', re.I),
+        "source_pending_en": re.compile(r'citations awaiting checking', re.I),
     }
     remaining = []
-    for path in root.rglob("*.html"):
-        text = path.read_text(errors="ignore")
+    scanned = 0
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in {".html", ".json", ".xml", ".txt", ".js", ".css"}:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        scanned += 1
         for name, rx in patterns.items():
             if rx.search(text):
                 remaining.append((name, path.relative_to(root).as_posix()))
     if remaining:
-        raise AssertionError("Quedan rótulos editoriales de revisión: " + repr(remaining[:50]))
+        raise AssertionError("Quedan estados editoriales provisionales: " + repr(remaining[:50]))
 
     print(json.dumps({
         "conditions_es_pages": 185,
         "condition_review_labels_changed": condition_labels,
         "research_review_labels_changed": research_labels,
-        "remaining_structural_review_labels": 0,
+        "public_text_files_scanned": scanned,
+        "remaining_structural_provisional_markers": 0,
     }, ensure_ascii=False))
 
 
