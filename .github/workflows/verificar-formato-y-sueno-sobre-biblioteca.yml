@@ -1,0 +1,37 @@
+name: Verificar formato y Sueño sobre Biblioteca
+on:
+  push:
+    branches:
+      - mejora/formato-y-sueno-sobre-biblioteca-20260910
+    paths:
+      - .github/workflows/verificar-formato-y-sueno-sobre-biblioteca.yml
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Preparar y comprobar cambio sobre main actual
+        run: python3 scripts/run_format_sleep_biblioteca.py prepare
+      - name: Instalar navegador de prueba
+        run: |
+          python3 -m venv /tmp/iris-format-browser
+          /tmp/iris-format-browser/bin/pip install playwright==1.55.0
+          /tmp/iris-format-browser/bin/python -m playwright install --with-deps chromium
+      - name: Probar formato y textos en navegador
+        run: /tmp/iris-format-browser/bin/python scripts/test_format_sleep_workflow.py
+      - name: Guardar solo los archivos validados
+        run: python3 scripts/run_format_sleep_biblioteca.py commit
+      - name: Guardar registros
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-formato-sueno-biblioteca-verification
+          path: /tmp/iris-format-sleep
+          retention-days: 14
+          if-no-files-found: error
