@@ -21,7 +21,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import html, json
+          import html, json, re
 
           pairs = [
               (
@@ -91,12 +91,12 @@ jobs:
           ]
 
           roots = {
-              'es': (Path('es/biblioteca/vida-diaria.json'), Path('es/biblioteca/index.html'), Path('es/biblioteca')),
-              'en': (Path('en/everyday-life/everyday-life.json'), Path('en/everyday-life/index.html'), Path('en/everyday-life')),
+              'es': (Path('es/biblioteca/vida-diaria.json'), Path('es/biblioteca/index.html'), Path('es/biblioteca'), 190),
+              'en': (Path('en/everyday-life/everyday-life.json'), Path('en/everyday-life/index.html'), Path('en/everyday-life'), 170),
           }
 
-          def excerpt(s):
-              return s if len(s) <= 170 else s[:169].rstrip() + '…'
+          def clip(s, limit):
+              return s if len(s) <= limit else s[:limit-1].rstrip() + '…'
 
           def update_json(path, title, new_lede):
               raw = path.read_text(encoding='utf-8')
@@ -105,42 +105,54 @@ jobs:
               if len(rows) != 1:
                   raise AssertionError(f'{path}: título no único: {title!r}')
               old = rows[0]['lede']
-              old_json = json.dumps(old, ensure_ascii=False)
-              new_json = json.dumps(new_lede, ensure_ascii=False)
-              needle = '"lede": ' + old_json
+              needle = '"lede": ' + json.dumps(old, ensure_ascii=False)
+              replacement = '"lede": ' + json.dumps(new_lede, ensure_ascii=False)
               if raw.count(needle) != 1:
                   raise AssertionError(f'{path}: lede antiguo no localizado una vez para {title!r}')
-              path.write_text(raw.replace(needle, '"lede": ' + new_json, 1), encoding='utf-8')
+              path.write_text(raw.replace(needle, replacement, 1), encoding='utf-8')
               return old
 
           def update_detail(path, old, new):
               text = path.read_text(encoding='utf-8')
+
+              # Mantener la longitud de las metadescripciones que ya usa cada ficha.
+              meta = re.search(r'<meta name="description" content="([^"]*)"\s*/?>', text)
+              if not meta:
+                  raise AssertionError(f'{path}: meta description ausente')
+              old_meta = html.unescape(meta.group(1))
+              limit = len(old_meta) if old_meta.endswith('…') else 158
+              new_meta = clip(new, limit)
+              text = text.replace(meta.group(1), html.escape(new_meta, quote=True))
+
               old_full = html.escape(old, quote=False)
               new_full = html.escape(new, quote=False)
-              old_short = html.escape(excerpt(old), quote=False)
-              new_short = html.escape(excerpt(new), quote=False)
               if old_full not in text and new_full not in text:
-                  raise AssertionError(f'{path}: no aparece la descripción completa esperada')
+                  raise AssertionError(f'{path}: descripción completa esperada ausente')
               text = text.replace(old_full, new_full)
-              if old_short != old_full:
-                  text = text.replace(old_short, new_short)
               path.write_text(text, encoding='utf-8')
 
-          def update_card(index_path, href, old, new):
+          def update_card(index_path, href, old, new, limit):
               text = index_path.read_text(encoding='utf-8')
-              if href not in text:
-                  raise AssertionError(f'{index_path}: tarjeta ausente {href}')
+              pattern = re.compile(r'<a\b[^>]*\bhref="' + re.escape(href) + r'"[^>]*>.*?</a>', re.S)
+              matches = list(pattern.finditer(text))
+              if len(matches) != 1:
+                  raise AssertionError(f'{index_path}: tarjeta no única para {href}: {len(matches)}')
+              card = matches[0].group(0)
+
               old_search = html.escape(old.lower(), quote=False)
               new_search = html.escape(new.lower(), quote=False)
-              old_short = html.escape(excerpt(old), quote=False)
-              new_short = html.escape(excerpt(new), quote=False)
-              if old_search not in text and new_search not in text:
+              if old_search in card:
+                  card = card.replace(old_search, new_search, 1)
+              elif new_search not in card:
                   raise AssertionError(f'{index_path}: texto de búsqueda ausente {href}')
-              text = text.replace(old_search, new_search, 1)
-              if old_short in text:
-                  text = text.replace(old_short, new_short, 1)
-              elif new_short not in text:
-                  raise AssertionError(f'{index_path}: resumen visible ausente {href}')
+
+              vis_pattern = re.compile(r'(<strong>.*?</strong><span>).*?(</span><span class="meta">)', re.S)
+              new_visible = html.escape(clip(new, limit), quote=False)
+              card, n = vis_pattern.subn(lambda m: m.group(1) + new_visible + m.group(2), card, count=1)
+              if n != 1:
+                  raise AssertionError(f'{index_path}: resumen visible no localizado {href}')
+
+              text = text[:matches[0].start()] + card + text[matches[0].end():]
               index_path.write_text(text, encoding='utf-8')
 
           for es_title, en_title, es_slug, en_slug, es_new, en_new in pairs:
@@ -148,11 +160,11 @@ jobs:
                   ('es', es_title, es_slug, es_new),
                   ('en', en_title, en_slug, en_new),
               ):
-                  json_path, index_path, page_root = roots[lang]
+                  json_path, index_path, page_root, card_limit = roots[lang]
                   old = update_json(json_path, title, new)
                   update_detail(page_root / slug / 'index.html', old, new)
                   href = f'/{"es/biblioteca" if lang == "es" else "en/everyday-life"}/{slug}/'
-                  update_card(index_path, href, old, new)
+                  update_card(index_path, href, old, new, card_limit)
 
           # El corrector histórico de Aena buscaba una frase del lede antiguo.
           # El nuevo lede ya no contiene esa afirmación, así que esa sustitución queda obsoleta.
@@ -169,14 +181,14 @@ jobs:
                   ('es', es_title, es_slug, es_new),
                   ('en', en_title, en_slug, en_new),
               ):
-                  json_path, index_path, page_root = roots[lang]
+                  json_path, index_path, page_root, card_limit = roots[lang]
                   data = json.loads(json_path.read_text(encoding='utf-8'))
                   row = next(x for x in data['fichas'] if x['title'] == title)
                   assert row['lede'] == new
                   assert html.escape(new, quote=False) in (page_root / slug / 'index.html').read_text(encoding='utf-8')
                   idx = index_path.read_text(encoding='utf-8')
                   assert html.escape(new.lower(), quote=False) in idx
-                  assert html.escape(excerpt(new), quote=False) in idx
+                  assert html.escape(clip(new, card_limit), quote=False) in idx
 
           print('OK fuente: 8 fichas ES + 8 fichas EN, catálogos e índices actualizados literalmente')
           PY
