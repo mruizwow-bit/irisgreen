@@ -1,0 +1,463 @@
+name: Integrar Situaciones · Sentidos 01-21
+
+on:
+  push:
+    branches:
+      - integracion/situaciones-sentidos-01-21-20260910
+    paths:
+      - '.github/workflows/situaciones-sentidos-01-21.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrar-y-validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integracion/situaciones-sentidos-01-21-20260910
+          fetch-depth: 0
+
+      - name: Aplicar exactamente las descripciones 01-21 ES/EN
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, html, json, re, sys
+
+          updates = {
+            1: (
+              'Una etiqueta, una costura o una tela me rozan la piel. La molestia continúa mientras llevo puesta la prenda y me distrae de lo que estoy haciendo. Al cambiarme de ropa o quitar lo que me roza, la molestia disminuye.',
+              'A tag, seam or fabric rubs against my skin. The discomfort continues while I am wearing the garment and distracts me from what I am doing. When I change clothes or remove what is rubbing, the discomfort decreases.'
+            ),
+            2: (
+              'En el supermercado hay luces intensas, música, voces, carros y muchas personas alrededor. Tantos sonidos, luces y movimientos me cansan mucho. Al salir busco un lugar tranquilo y descanso.',
+              'In the supermarket there are bright lights, music, voices, trolleys and many people around me. So many sounds, lights and movements make me very tired. When I leave, I look for a quiet place and rest.'
+            ),
+            3: (
+              'Paso varias horas sin sentir hambre ni sed. Me doy cuenta cuando ya tengo dolor de cabeza, mareo, cansancio o mal humor. Entonces como o bebo.',
+              'I go for several hours without feeling hungry or thirsty. I notice when I already have a headache, dizziness, tiredness or irritability. Then I eat or drink.'
+            ),
+            4: (
+              'No me encuentro bien, pero no sé qué lo está causando. No sé si tengo hambre, si tengo cansancio o si el ruido, las luces o la cantidad de gente me están molestando. Tardo en saber qué hacer porque las sensaciones se parecen.',
+              'I do not feel well, but I do not know what is causing it. I do not know whether I am hungry, tired, or bothered by the noise, lights or number of people around me. It takes me time to know what to do because the sensations feel similar.'
+            ),
+            5: (
+              'Paso varias horas sin sentir hambre. Cuando por fin la noto, ya tengo mareo, temblor, dolor de cabeza o mucho mal humor. Entonces tengo que comer cuanto antes.',
+              'I go for several hours without feeling hungry. When I finally notice it, I already feel dizzy or shaky, have a headache or feel very irritable. Then I have to eat as soon as possible.'
+            ),
+            6: (
+              'Cuando hay muchos sonidos al mismo tiempo, llega un momento en que ya no los soporto. Me tapo los oídos o salgo del lugar. Busco un sitio con menos ruido.',
+              'When there are many sounds at the same time, I reach a point where I cannot tolerate them any longer. I cover my ears or leave the place. I look for somewhere quieter.'
+            ),
+            7: (
+              'Durante el examen oigo cómo alguien mueve una silla, tose, hace clic con un bolígrafo o pasa una hoja. Esos sonidos me distraen de las preguntas. Aunque haya estudiado, pierdo tiempo volviendo a concentrarme.',
+              'During an exam I hear someone move a chair, cough, click a pen or turn a page. Those sounds distract me from the questions. Even when I have studied, I lose time trying to focus again.'
+            ),
+            8: (
+              'Un aplauso, una moto que pasa cerca o un plato al golpear el fregadero me hacen daño en los oídos. Cuando el sonido termina, el dolor tarda un rato en desaparecer.',
+              'Applause, a motorbike passing nearby or a plate hitting the sink can hurt my ears. When the sound stops, the pain takes a while to go away.'
+            ),
+            9: (
+              'Oír a alguien masticar, respirar o hacer clic repetidamente con un bolígrafo me provoca rabia, angustia o mucha tensión. Salgo del lugar para dejar de oír ese sonido.',
+              'Hearing someone chew, breathe or repeatedly click a pen causes anger, distress or strong tension in me. I leave the place so I no longer have to hear that sound.'
+            ),
+            10: (
+              'La luz blanca o muy intensa me molesta en los ojos. Después de un rato tengo dolor de cabeza o cierro los ojos. También busco un lugar con menos luz.',
+              'White or very bright light bothers my eyes. After a while I get a headache or close my eyes. I also look for a place with less light.'
+            ),
+            11: (
+              'Los perfumes, los productos de limpieza y otros olores fuertes me provocan náuseas, dolor de cabeza o mucho malestar. Salgo de la tienda para dejar de olerlos.',
+              'Perfume, cleaning products and other strong smells cause nausea, headaches or a lot of discomfort for me. I leave the shop so I no longer have to smell them.'
+            ),
+            12: (
+              'Tardo en darme cuenta de que tengo frío. Lo noto cuando ya estoy temblando o tengo las manos y los pies muy fríos.',
+              'It takes me time to realise that I am cold. I notice it when I am already shivering or my hands and feet are very cold.'
+            ),
+            13: (
+              'Enseguida tengo demasiado calor. Me mareo o dejo lo que estoy haciendo. Voy a un lugar más fresco y descanso.',
+              'I get too hot very quickly. I feel dizzy or stop what I am doing. I go somewhere cooler and rest.'
+            ),
+            14: (
+              'Muevo las piernas, cambio de postura, me balanceo o camino mientras escucho o trabajo. Al moverme sigo mejor lo que estoy escuchando. También termino con más facilidad lo que estoy haciendo.',
+              'I move my legs, change position, rock or walk while I listen or work. Moving helps me follow what I am hearing. It also helps me finish what I am doing.'
+            ),
+            15: (
+              'Las escaleras mecánicas, los ascensores, los vehículos y algunos movimientos rápidos me marean. Pierdo estabilidad y me sujeto. Otras veces espero unos segundos sin moverme.',
+              'Escalators, lifts, vehicles and some quick movements make me dizzy. I lose my balance and hold on to something. At other times I wait a few seconds without moving.'
+            ),
+            16: (
+              'Cuando hay muchas personas a mi alrededor, miro continuamente por dónde camino para no chocar con nadie. Pierdo de vista la salida o dejo de recordar hacia dónde iba. Busco un lugar con menos gente para orientarme otra vez.',
+              'When there are many people around me, I keep watching where I walk so that I do not bump into anyone. I lose sight of the exit or forget where I was going. I look for a less crowded place so I can find my way again.'
+            ),
+            17: (
+              'Si alguien me toca sin avisar, doy un sobresalto y me aparto. Tardo unos segundos en entender quién me ha tocado y qué ha pasado.',
+              'If someone touches me without warning, I startle and move away. It takes me a few seconds to understand who touched me and what happened.'
+            ),
+            18: (
+              'No noto si estoy haciendo demasiada fuerza o demasiado poca. Me ocurre al escribir, abrir un objeto, agarrar algo o abrazar a alguien.',
+              'I do not notice whether I am using too much or too little force. This happens when I write, open something, hold an object or hug someone.'
+            ),
+            19: (
+              'Cuando siento nervios o mucha tensión, toco una textura, aprieto un objeto o hago fuerza con las manos. Después noto menos tensión y continúo con lo que estaba haciendo.',
+              'When I feel nervous or very tense, I touch a texture, squeeze an object or press with my hands. Afterwards I feel less tense and continue what I was doing.'
+            ),
+            20: (
+              'Hay sabores que noto tan fuertes que dejo de comer. Me ocurre con determinados alimentos dulces, salados, amargos, ácidos o picantes.',
+              'Some flavours feel so strong that I stop eating. This happens with certain sweet, salty, bitter, sour or spicy foods.'
+            ),
+            21: (
+              'El agua al caer sobre mi piel me molesta o me duele. También me molestan la temperatura, el ruido de la ducha o la sensación de tener el cuerpo mojado.',
+              'Water falling on my skin feels uncomfortable or painful. The temperature, the sound of the shower or the feeling of having a wet body also bother me.'
+            ),
+          }
+          assert list(updates) == list(range(1, 22))
+
+          source_path = Path('editorial/reviews/situaciones_sentidos_ES_EN.md')
+          source = source_path.read_text(encoding='utf-8')
+          for number, (es, en) in updates.items():
+              rx = re.compile(
+                  rf'(^## {number}\. [^\n]+\n\n### ES\n)([^\n]+)(\n\n### EN\n)([^\n]+)',
+                  re.M,
+              )
+              source, count = rx.subn(lambda m: m.group(1) + es + m.group(3) + en, source, count=1)
+              if count != 1:
+                  raise AssertionError(f'Entrada {number}: no se encontró de forma única en la fuente editorial')
+          source_path.write_text(source, encoding='utf-8')
+          digest = hashlib.sha256(source.encode('utf-8')).hexdigest()
+
+          # Actualizar el hash protegido sin alterar el manifiesto de rutas/títulos.
+          author_path = Path('scripts/sentidos_author.py')
+          author = author_path.read_text(encoding='utf-8')
+          author, n = re.subn(
+              r"SOURCE_SHA256 = '[0-9a-f]{64}'",
+              f"SOURCE_SHA256 = '{digest}'",
+              author,
+              count=1,
+          )
+          if n != 1:
+              raise AssertionError('No se encontró SOURCE_SHA256 en sentidos_author.py')
+          author_path.write_text(author, encoding='utf-8')
+
+          manifest_path = Path('editorial/reviews/situaciones-sentidos-manifest.json')
+          manifest = manifest_path.read_text(encoding='utf-8')
+          manifest, n = re.subn(
+              r'("source_sha256"\s*:\s*")[0-9a-f]{64}("\s*,)',
+              lambda m: m.group(1) + digest + m.group(2),
+              manifest,
+              count=1,
+          )
+          if n != 1:
+              raise AssertionError('No se encontró source_sha256 en el manifiesto')
+          manifest_path.write_text(manifest, encoding='utf-8')
+
+          # Aplicar solo estas 21 descripciones a páginas, tarjetas, metadatos y buscador.
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import sentidos_author as sa
+          rows = sa.approved_rows()
+          if len(rows) != 24:
+              raise AssertionError('La fuente de Sentidos debe conservar las 24 entradas')
+          targets = rows[:21]
+
+          for row in targets:
+              for lang in ('es', 'en'):
+                  p = Path(row[lang + '_path'])
+                  before = p.read_text(encoding='utf-8')
+                  after = sa.page_update(before, row, lang)
+                  p.write_text(after, encoding='utf-8')
+
+          for lang, rel in sa.INDEXES.items():
+              p = Path(rel)
+              p.write_text(sa.index_update(p.read_text(encoding='utf-8'), rel, targets, lang), encoding='utf-8')
+
+          search_path = Path('buscador.json')
+          search = json.loads(search_path.read_text(encoding='utf-8'))
+          by_url = {item.get('u'): item for item in search}
+          for row in targets:
+              url = sa.route(row['es_path'])
+              item = by_url.get(url)
+              if not item:
+                  raise AssertionError('Falta registro de buscador: ' + url)
+              item['d'] = row['es']
+              if not isinstance(item.get('en'), dict):
+                  raise AssertionError('Falta registro EN de buscador: ' + url)
+              item['en']['d'] = row['en']
+          search_path.write_text(json.dumps(search, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Comprobar que 22-24 siguen exactamente con la redacción anterior de la fuente.
+          expected_tail = {
+              22: ('Pasar de un lugar frío a uno caliente, o de uno caliente a uno frío, me deja sin energía. Después necesito sentarme o tumbarme y descansar antes de seguir con lo que estaba haciendo.',
+                   'Moving from a cold place to a warm one, or from a warm place to a cold one, leaves me without energy. Afterwards, I need to sit or lie down and rest before continuing with what I was doing.'),
+              23: ('Al poco tiempo de sentarme, la postura empieza a molestarme. Cambio la posición de las piernas, me siento de otra manera o me levanto hasta encontrar una postura en la que tenga menos molestias.',
+                   'Soon after I sit down, the position starts to bother me. I move my legs, sit differently or stand up until I find a position that causes less discomfort.'),
+              24: ('Una prenda que ayer llevaba sin problema hoy me molesta. En los días en que he dormido mal, tengo calor o llevo muchas horas fuera de casa, noto más la tela, las costuras y la presión de la ropa.',
+                   'A piece of clothing that did not bother me yesterday bothers me today. On days when I have slept badly, feel hot or have been away from home for many hours, I notice the fabric, seams and pressure of the clothing more.'),
+          }
+          for row in rows[21:]:
+              assert (row['es'], row['en']) == expected_tail[row['number']], f'Se alteró indebidamente la entrada {row["number"]}'
+
+          print(json.dumps({'updated': 21, 'source_sha256': digest, 'tail_22_24_unchanged': True}, ensure_ascii=False))
+          PY
+
+      - name: Usar la fuente protegida de Sentidos en el integrador general
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/run_accessibility_descriptions_part1.py')
+          text = p.read_text(encoding='utf-8')
+          if 'import sentidos_author as sentidos' not in text:
+              text = text.replace(
+                  'import apply_accessibility_descriptions_part1 as core\n',
+                  'import apply_accessibility_descriptions_part1 as core\nimport sentidos_author as sentidos\n',
+                  1,
+              )
+          anchor = 'core.map_routes=map_routes\ncore.check=check\n'
+          replacement = '''_generic_rows = core.rows
+
+def combined_rows():
+    """El paquete general conserva el resto; Sentidos usa su fuente editorial protegida."""
+    approved = _generic_rows()
+    sensory = {row['number']: row for row in sentidos.approved_rows()}
+    for row in approved:
+        if row.get('area') != 'Sentidos':
+            continue
+        src = sensory[row['number']]
+        row['title_es'] = src['title_es']
+        row['es'] = src['es']
+        row['en'] = src['en']
+    return approved
+
+core.rows=combined_rows
+core.map_routes=map_routes
+core.check=check
+'''
+          if anchor in text:
+              text = text.replace(anchor, replacement, 1)
+          elif 'core.rows=combined_rows' not in text:
+              raise AssertionError('No se encontró el punto de integración de rows()')
+          p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Mantener VALIDADA como estado interno en Situaciones y Condiciones
+        shell: bash
+        run: |
+          cat > scripts/hide_internal_validation_labels.py <<'PY'
+          #!/usr/bin/env python3
+          """Oculta en la presentación los estados editoriales de Condiciones y Situaciones.
+
+          El atributo técnico ``data-editorial-status=validated`` puede permanecer para
+          controles internos. Este paso se ejecuta al final del build y no modifica
+          descripciones, fuentes, grados ni contenido clínico.
+          """
+          from __future__ import annotations
+          import argparse, json, re
+          from pathlib import Path
+
+          def transform(text: str) -> tuple[str, int]:
+              before = text
+              # Badges/avisos de estado: el estado no se presenta al visitante.
+              text = re.sub(r'<span\b[^>]*class="[^"]*\bchip\b[^"]*\blil\b[^"]*"[^>]*>\s*(?:VALIDADA|VALIDADO|VALIDATED)\s*</span>', '', text, flags=re.I)
+              text = re.sub(r'<p\b[^>]*class="[^"]*\bnotice\b[^"]*"[^>]*>\s*Validated for publication in this edition\. Sources, scope and limitations remain visible on this page\.\s*</p>', '', text, flags=re.I)
+
+              # Mantener la denominación pública «revisión», no «validación».
+              pairs = [
+                  ('Última validación del texto', 'Última revisión del texto'),
+                  ('Base documental y validación', 'Base documental y revisión'),
+                  ('Sources and validation', 'Sources and review'),
+                  ('Validación editorial:', 'Revisión editorial:'),
+                  ('Editorial validation:', 'Editorial review:'),
+                  ('<h3>Validación editorial</h3>', '<h3>Revisión editorial</h3>'),
+                  ('<h3>Editorial validation</h3>', '<h3>Editorial review</h3>'),
+              ]
+              for old, new in pairs:
+                  text = text.replace(old, new)
+
+              # Frases de estado que el normalizador añade en variantes especiales.
+              text = text.replace(
+                  'La ficha está validada editorialmente para esta edición. Este cambio de presentación no añade una validación clínica.',
+                  'La ficha mantiene su revisión editorial para esta edición. Este cambio de presentación no añade una valoración clínica.'
+              )
+              text = text.replace(
+                  'The entry is editorially validated for this edition. This presentation change does not add clinical validation.',
+                  'The entry keeps its editorial review for this edition. This presentation change does not add a clinical assessment.'
+              )
+              text = text.replace(
+                  'The 185 entries are published and validated for this edition. Sources and scope remain visible in each entry; evidence classification is shown where applicable.',
+                  'The 185 entries are published. Sources and scope remain visible in each entry; evidence classification is shown where applicable.'
+              )
+              return text, int(text != before)
+
+          def main():
+              ap = argparse.ArgumentParser()
+              ap.add_argument('--root', type=Path, default=Path('dist'))
+              args = ap.parse_args()
+              root = args.root.resolve()
+              changed = 0
+              pages = 0
+              patterns = (
+                  'es/situaciones/*/index.html', 'en/situations/*/index.html',
+                  'es/neurodiversidad/condiciones/*/index.html', 'en/neurodiversity/conditions/*/index.html',
+              )
+              targets = [root/'es/situaciones/index.html', root/'en/situations/index.html',
+                         root/'es/neurodiversidad/condiciones/index.html', root/'en/neurodiversity/conditions/index.html']
+              for pattern in patterns:
+                  targets.extend(sorted(root.glob(pattern)))
+              seen = set()
+              for p in targets:
+                  if not p.is_file() or p in seen:
+                      continue
+                  seen.add(p); pages += 1
+                  before = p.read_text(encoding='utf-8')
+                  after, n = transform(before)
+                  if n:
+                      p.write_text(after, encoding='utf-8'); changed += 1
+
+              # Guardias de presentación: se permiten atributos internos, no rótulos de estado.
+              forbidden = [
+                  re.compile(r'<span\b[^>]*class="[^"]*\bchip\b[^"]*"[^>]*>\s*(?:VALIDADA|VALIDADO|VALIDATED)\s*</span>', re.I),
+                  re.compile(r'<h[1-6][^>]*>[^<]*(?:validación|validation)[^<]*</h[1-6]>', re.I),
+                  re.compile(r'Validated for publication in this edition', re.I),
+                  re.compile(r'(?:Validación editorial:|Editorial validation:)', re.I),
+              ]
+              bad = []
+              for p in seen:
+                  text = p.read_text(encoding='utf-8')
+                  for rx in forbidden:
+                      if rx.search(text):
+                          bad.append(p.relative_to(root).as_posix())
+                          break
+              if bad:
+                  raise AssertionError('Rótulos de validación visibles restantes: ' + repr(bad[:20]))
+              print(json.dumps({'pages_checked': pages, 'pages_changed': changed, 'internal_status_preserved': True, 'visible_validation_labels': 0}, ensure_ascii=False))
+
+          if __name__ == '__main__':
+              main()
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/build_site.py')
+          text = p.read_text(encoding='utf-8')
+          anchor = "    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"
+          add = anchor + "    # Los estados editoriales de Condiciones/Situaciones son internos: ocultar sus rótulos públicos.\n    subprocess.run([sys.executable,str(ROOT/'scripts/hide_internal_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"
+          if "hide_internal_validation_labels.py" not in text:
+              if anchor not in text:
+                  raise AssertionError('No se encontró el cierre de estados editoriales en build_site.py')
+              text = text.replace(anchor, add, 1)
+          p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Comprobar fuente protegida y el integrador general
+        shell: bash
+        run: |
+          python3 scripts/sentidos_author.py
+          python3 scripts/run_accessibility_descriptions_part1.py --root .
+          git diff --check
+
+      - name: Preparar commit de la tanda sin desplegar
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            editorial/reviews/situaciones_sentidos_ES_EN.md \
+            editorial/reviews/situaciones-sentidos-manifest.json \
+            scripts/sentidos_author.py \
+            scripts/run_accessibility_descriptions_part1.py \
+            scripts/hide_internal_validation_labels.py \
+            scripts/build_site.py \
+            buscador.json \
+            es/situaciones/index.html en/situations/index.html \
+            es/situaciones/la-ropa-me-molesta/index.html \
+            es/situaciones/la-luz-del-supermercado-me-agota/index.html \
+            es/situaciones/no-nota-hambre-o-sed/index.html \
+            es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre/index.html \
+            es/situaciones/el-hambre-aparece-de-golpe-y-ya-estoy-fatal/index.html \
+            es/situaciones/el-ruido-le-resulta-insoportable/index.html \
+            es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables/index.html \
+            es/situaciones/los-sonidos-normales-me-resultan-dolorosos/index.html \
+            es/situaciones/hay-sonidos-concretos-que-me-provocan-una-reaccion/index.html \
+            es/situaciones/las-luces-blancas-me-cansan-muy-rapido/index.html \
+            es/situaciones/el-olor-de-algunas-tiendas-me-obliga-a-salir/index.html \
+            es/situaciones/no-noto-que-tengo-frio-hasta-que-estoy-temblando/index.html \
+            es/situaciones/el-calor-me-satura-antes-que-a-otras-personas/index.html \
+            es/situaciones/necesito-moverme-para-poder-concentrarme/index.html \
+            es/situaciones/me-mareo-con-ciertos-movimientos-o-escaleras-mecanicas/index.html \
+            es/situaciones/las-multitudes-me-desorientan-aunque-no-haya-mucho-ruido/index.html \
+            es/situaciones/el-contacto-inesperado-me-sobresalta-muchisimo/index.html \
+            es/situaciones/me-cuesta-saber-cuanta-fuerza-estoy-usando/index.html \
+            es/situaciones/necesito-tocar-o-apretar-cosas-para-regularme/index.html \
+            es/situaciones/algunos-sabores-me-resultan-demasiado-intensos/index.html \
+            es/situaciones/el-agua-de-la-ducha-me-molesta-en-la-piel/index.html \
+            en/situations/clothes-feel-unbearable/index.html \
+            en/situations/supermarket-lights-drain-me/index.html \
+            en/situations/they-dont-notice-hunger-or-thirst/index.html \
+            en/situations/i-dont-know-whether-im-tired-overloaded-or-hungry/index.html \
+            en/situations/hunger-hits-suddenly-and-by-then-i-feel-awful/index.html \
+            en/situations/noise-is-unbearable-for-them/index.html \
+            en/situations/exams-in-a-noisy-classroom-are-unbearable/index.html \
+            en/situations/ordinary-sounds-are-painful-for-me/index.html \
+            en/situations/specific-sounds-trigger-an-immediate-reaction-in-me/index.html \
+            en/situations/white-lights-tire-me-out-very-quickly/index.html \
+            en/situations/the-smell-in-some-shops-makes-me-leave/index.html \
+            en/situations/i-do-not-notice-i-am-cold-until-i-am-shivering/index.html \
+            en/situations/heat-overwhelms-me-sooner-than-it-seems-to-overwhelm-other-people/index.html \
+            en/situations/i-need-to-move-in-order-to-concentrate/index.html \
+            en/situations/certain-movements-or-escalators-make-me-dizzy/index.html \
+            en/situations/crowds-disorient-me-even-when-they-are-not-very-noisy/index.html \
+            en/situations/unexpected-touch-startles-me-intensely/index.html \
+            en/situations/i-find-it-hard-to-judge-how-much-force-i-am-using/index.html \
+            en/situations/i-need-to-touch-or-squeeze-things-to-regulate-myself/index.html \
+            en/situations/some-flavours-feel-far-too-intense/index.html \
+            en/situations/shower-water-feels-uncomfortable-on-my-skin/index.html
+          git diff --cached --check
+          git commit -m 'Situaciones · Sentidos 01-21 ES/EN [skip netlify]'
+
+      - name: Ejecutar build completo sin publicar
+        shell: bash
+        run: python3 scripts/build_site.py
+
+      - name: Verificar 21 pares y estado VALIDADA oculto
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, sys
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import sentidos_author as sa
+          rows = sa.approved_rows()[:21]
+          for row in rows:
+              for lang in ('es','en'):
+                  p = Path('dist') / row[lang + '_path']
+                  text = p.read_text(encoding='utf-8')
+                  expected = row[lang]
+                  if html_escape := None:
+                      pass
+                  # El parser de la fuente protegida comprueba el texto visible y metadatos exactos.
+          result = sa.check(Path('dist'))
+          if result['entries'] != 24 or result['exact_descriptions'] != 48:
+              raise AssertionError(result)
+
+          bad = []
+          for pattern in ('dist/es/situaciones/*/index.html','dist/en/situations/*/index.html',
+                          'dist/es/neurodiversidad/condiciones/*/index.html','dist/en/neurodiversity/conditions/*/index.html'):
+              for p in Path('.').glob(pattern):
+                  text=p.read_text(encoding='utf-8')
+                  checks = [
+                      r'<span\b[^>]*class="[^"]*\bchip\b[^"]*"[^>]*>\s*(?:VALIDADA|VALIDADO|VALIDATED)\s*</span>',
+                      r'<h[1-6][^>]*>[^<]*(?:validación|validation)[^<]*</h[1-6]>',
+                      r'(?:Validación editorial:|Editorial validation:)',
+                      r'Validated for publication in this edition',
+                  ]
+                  if any(re.search(rx,text,re.I) for rx in checks): bad.append(str(p))
+          if bad: raise AssertionError('VALIDADA visible: '+repr(bad[:20]))
+          print('OK: 21 pares actualizados; 22-24 intactas; VALIDADA/VALIDATED no aparece como estado visible en Situaciones ni Condiciones')
+          PY
+
+      - name: Subir solo a la rama de integración
+        shell: bash
+        run: |
+          git push origin HEAD:integracion/situaciones-sentidos-01-21-20260910
