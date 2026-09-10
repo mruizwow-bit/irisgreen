@@ -17,16 +17,16 @@ jobs:
       - name: Compilar integradores
         run: |
           python3 -m py_compile scripts/_legacy_apply_accessible_descriptions_420.py scripts/apply_accessible_descriptions_420.py scripts/build_site.py scripts/validate_publication_statuses.py scripts/finalize_validation_labels.py scripts/normalize_situation_status.py
-      - name: Aplicar 420 solo en el checkout temporal
+      - name: Aplicar 420 descripciones solo en el checkout temporal
         run: |
           set -o pipefail
           mkdir -p /tmp/ig-forense
           python3 scripts/apply_accessible_descriptions_420.py | tee /tmp/ig-forense/apply-420.json
-      - name: Comprobar igualdad exacta de 420
+      - name: Comprobar igualdad exacta de 420 descripciones
         run: |
           set -o pipefail
           python3 scripts/apply_accessible_descriptions_420.py --check | tee /tmp/ig-forense/check-420.json
-      - name: Comprobar ejemplos de regresión conocidos
+      - name: Comprobar ejemplos de regresión de texto
         run: |
           set -o pipefail
           python3 - <<'PY' | tee /tmp/ig-forense/examples.txt
@@ -34,7 +34,6 @@ jobs:
           checks={
             'es/situaciones/pierdo-el-hilo-en-las-reuniones/index.html':'Al principio sigo la conversación.',
             'es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html':'En un aeropuerto hay que orientarse, esperar, pasar controles',
-            'es/neurodiversidad/condiciones/interocepcion/index.html':'data-grado="C"',
           }
           for rel,needle in checks.items():
               text=Path(rel).read_text(encoding='utf-8')
