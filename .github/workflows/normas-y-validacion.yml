@@ -11,6 +11,7 @@ on:
       - 'scripts/test_validation_browser.py'
       - 'scripts/build_site.py'
       - 'assets/validacion.css'
+      - 'assets/ajustes-interfaz.css'
       - '.github/workflows/normas-y-validacion.yml'
 
 permissions:
