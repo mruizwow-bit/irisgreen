@@ -1,0 +1,56 @@
+name: Reparación forense · no despliega
+
+on:
+  push:
+    branches: ['reparacion/forense-20260910']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Compilar integradores
+        run: |
+          python3 -m py_compile scripts/_legacy_apply_accessible_descriptions_420.py scripts/apply_accessible_descriptions_420.py scripts/build_site.py scripts/validate_publication_statuses.py scripts/finalize_validation_labels.py scripts/normalize_situation_status.py
+      - name: Aplicar 420 solo en el checkout temporal
+        run: |
+          mkdir -p /tmp/ig-forense
+          python3 scripts/apply_accessible_descriptions_420.py | tee /tmp/ig-forense/apply-420.json
+      - name: Comprobar igualdad exacta de 420
+        run: python3 scripts/apply_accessible_descriptions_420.py --check | tee /tmp/ig-forense/check-420.json
+      - name: Comprobar ejemplos de regresión conocidos
+        run: |
+          python3 - <<'PY' | tee /tmp/ig-forense/examples.txt
+          from pathlib import Path
+          checks={
+            'es/situaciones/pierdo-el-hilo-en-las-reuniones/index.html':'Al principio sigo la conversación.',
+            'es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html':'En un aeropuerto hay que orientarse, esperar, pasar controles',
+            'es/neurodiversidad/condiciones/interocepcion/index.html':'data-grado="C"',
+          }
+          for rel,needle in checks.items():
+              text=Path(rel).read_text(encoding='utf-8')
+              assert needle in text,(rel,needle)
+              print('OK',rel,needle)
+          PY
+      - name: Construir dist sin desplegar
+        run: python3 scripts/build_site.py | tee /tmp/ig-forense/build.txt
+      - name: Comprobar que el build no reescribe las 420
+        run: python3 scripts/apply_accessible_descriptions_420.py --check | tee /tmp/ig-forense/check-after-build.json
+      - name: Guardar diff para revisión humana
+        if: always()
+        run: |
+          git status --short > /tmp/ig-forense/status.txt
+          git diff --check > /tmp/ig-forense/diff-check.txt || true
+          git diff --stat > /tmp/ig-forense/diff-stat.txt
+          git diff > /tmp/ig-forense/changes.diff
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reparacion-forense-420
+          path: /tmp/ig-forense
+          retention-days: 7
