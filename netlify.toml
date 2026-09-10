@@ -1,4 +1,5 @@
 # Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.
+# El build de producción usa una única fuente para Investigación y fue validado en CI.
 [build]
   publish = "dist"
   command = "python3 scripts/build_site.py"
