@@ -1,0 +1,70 @@
+name: Auditar todos los estados públicos definitivos
+on:
+  push:
+    branches:
+      - verificacion/produccion-validada-20260910-c3ac14d
+    paths:
+      - .github/workflows/auditar-todos-estados-publicos-c3ac14d.yml
+permissions:
+  contents: read
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: c3ac14d5cd0868b74ec74fdb5f5a761fec79108f
+      - name: Construir salida pública exacta
+        run: |
+          mkdir -p /tmp/iris-final-state-audit
+          python3 scripts/build_site.py >/tmp/iris-final-state-audit/build.log 2>&1
+      - name: Exigir cero estados editoriales provisionales en todo dist
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('dist');out=Path('/tmp/iris-final-state-audit')
+          rules={
+            'draft_badge':re.compile(r'<span\b[^>]*class=["\'][^"\']*\bchip\b[^"\']*["\'][^>]*>\s*(?:BORRADOR|DRAFT)\s*</span>',re.I),
+            'draft_or_reviewed_card':re.compile(r'<span\b[^>]*class=["\'][^"\']*\bmeta\b[^"\']*["\'][^>]*>[^<]*\b(?:BORRADOR|DRAFT|REVISADA|REVIEWED)\b[^<]*</span>',re.I),
+            'provisional_status_attr':re.compile(r'data-editorial-status=["\'](?:generated-draft|draft|reviewed)["\']',re.I),
+            'provisional_json_status':re.compile(r'"status"\s*:\s*"(?:borrador|draft|revisad[oa]|reviewed|pending|pendiente)"',re.I),
+            'draft_notice_es':re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Página en borrador\.',re.I),
+            'draft_notice_en':re.compile(r'<p\b[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'][^>]*>\s*Draft (?:page|entry)\.',re.I),
+            'not_yet_verified':re.compile(r'(?:Review: not yet verified|comprobación final (?:sigue )?pendiente|final verification is still pending|final check is still pending)',re.I),
+            'generated_noindex_note_es':re.compile(r'las páginas siguen en noindex hasta',re.I),
+            'generated_noindex_note_en':re.compile(r'these pages stay noindex until',re.I),
+            'pending_scope_es':re.compile(r'Pendiente de completar:',re.I),
+            'pending_scope_en':re.compile(r'Still to complete:',re.I),
+            'last_review_label_es':re.compile(r'(?:Última revisión(?: del texto)?\s*:|<h[1-6][^>]*>\s*Última revisión del texto\s*</h[1-6]>)',re.I),
+            'last_review_label_en':re.compile(r'Last reviewed\s*:',re.I),
+            'editorial_review_label_es':re.compile(r'Revisión editorial\s*:',re.I),
+            'editorial_review_label_en':re.compile(r'Editorial review\s*:',re.I),
+            'review_heading_es':re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Base documental y revisión)\s*</h[1-6]>',re.I),
+            'review_heading_en':re.compile(r'<h[1-6][^>]*>\s*(?:Review|Sources and review)\s*</h[1-6]>',re.I),
+            'review_list_label_es':re.compile(r'<strong>\s*Revisión\s*:\s*</strong>',re.I),
+            'review_list_label_en':re.compile(r'<strong>\s*Review\s*:\s*</strong>',re.I),
+          }
+          hits=[];scanned=0
+          for p in root.rglob('*'):
+            if not p.is_file() or p.suffix.lower() not in {'.html','.json','.xml','.txt','.js','.css'}:continue
+            try:text=p.read_text('utf-8')
+            except UnicodeDecodeError:continue
+            scanned+=1
+            for name,rx in rules.items():
+              for m in rx.finditer(text):
+                hits.append({'rule':name,'path':p.relative_to(root).as_posix(),'match':m.group(0)[:240]})
+          report={'scanned_public_text_files':scanned,'structural_provisional_markers':len(hits),'by_rule':{k:sum(x['rule']==k for x in hits) for k in rules},'hits':hits}
+          (out/'all-public-statuses.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({k:v for k,v in report.items() if k!='hits'},ensure_ascii=False,indent=2))
+          if hits:
+            for x in hits[:100]:print(x)
+            raise SystemExit('Quedan marcadores editoriales provisionales estructurales')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: iris-auditoria-global-estados-c3ac14d
+          path: /tmp/iris-final-state-audit
+          retention-days: 14
