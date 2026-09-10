@@ -1,0 +1,214 @@
+{
+  "source": "editorial/reviews/situaciones_comunicacion_ES_EN.md",
+  "source_sha256": "397ff84dc1099a5ba1ca3b71ebd3a2868dc2b48abceeadd6af406ed85df43694",
+  "scope": "23 títulos ES y 46 descripciones ES/EN. Títulos EN, rutas, fuentes, controles y demás secciones permanecen como estaban.",
+  "entries": [
+    {
+      "number": 1,
+      "title_es": "Me lo explican y a los dos minutos no sé qué tenía que hacer",
+      "es_route": "/es/situaciones/necesito-que-me-repitan-las-instrucciones/",
+      "es_path": "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html",
+      "en_route": "/en/situations/i-need-instructions-repeated/",
+      "en_path": "en/situations/i-need-instructions-repeated/index.html",
+      "retained_title_en": "“They explain it to me and two minutes later I don't know what I was meant to do”"
+    },
+    {
+      "number": 2,
+      "title_es": "Hay sitios en los que no me sale hablar",
+      "es_route": "/es/situaciones/no-me-sale-hablar-en-algunos-sitios/",
+      "es_path": "es/situaciones/no-me-sale-hablar-en-algunos-sitios/index.html",
+      "en_route": "/en/situations/speech-doesnt-come-out/",
+      "en_path": "en/situations/speech-doesnt-come-out/index.html",
+      "retained_title_en": "“There are places where I can't get speech out”"
+    },
+    {
+      "number": 3,
+      "title_es": "Después de varias horas dejo de responder con la voz",
+      "es_route": "/es/situaciones/dejo-de-responder-despues-de-varias-horas/",
+      "es_path": "es/situaciones/dejo-de-responder-despues-de-varias-horas/index.html",
+      "en_route": "/en/situations/after-a-few-hours-i-stop-answering/",
+      "en_path": "en/situations/after-a-few-hours-i-stop-answering/index.html",
+      "retained_title_en": "“After several hours I stop responding”"
+    },
+    {
+      "number": 4,
+      "title_es": "Tardo mucho en contestar y alguien contesta por mí",
+      "es_route": "/es/situaciones/tardo-mucho-en-contestar/",
+      "es_path": "es/situaciones/tardo-mucho-en-contestar/index.html",
+      "en_route": "/en/situations/i-take-a-long-time-to-answer/",
+      "en_path": "en/situations/i-take-a-long-time-to-answer/index.html",
+      "retained_title_en": "“I take a long time to answer and someone answers for me”"
+    },
+    {
+      "number": 5,
+      "title_es": "Repito palabras y frases",
+      "es_route": "/es/situaciones/repito-palabras-y-frases/",
+      "es_path": "es/situaciones/repito-palabras-y-frases/index.html",
+      "en_route": "/en/situations/i-repeat-words-and-phrases/",
+      "en_path": "en/situations/i-repeat-words-and-phrases/index.html",
+      "retained_title_en": "“I repeat words and phrases”"
+    },
+    {
+      "number": 6,
+      "title_es": "Me dan una instrucción y no sé si la he entendido",
+      "es_route": "/es/situaciones/no-se-si-he-entendido-la-instruccion/",
+      "es_path": "es/situaciones/no-se-si-he-entendido-la-instruccion/index.html",
+      "en_route": "/en/situations/i-dont-know-if-i-understood/",
+      "en_path": "en/situations/i-dont-know-if-i-understood/index.html",
+      "retained_title_en": "“I'm given an instruction and I don't know whether I understood it”"
+    },
+    {
+      "number": 7,
+      "title_es": "Sé lo que quiero decir pero no encuentro las palabras",
+      "es_route": "/es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras/",
+      "es_path": "es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras/index.html",
+      "en_route": "/en/situations/i-know-what-i-want-to-say-but-cannot-find-the-words/",
+      "en_path": "en/situations/i-know-what-i-want-to-say-but-cannot-find-the-words/index.html",
+      "retained_title_en": "“I know what I want to say but cannot find the words”"
+    },
+    {
+      "number": 8,
+      "title_es": "Entiendo las palabras, pero no sé qué quiere decir la otra persona",
+      "es_route": "/es/situaciones/entiendo-las-palabras-pero-no-la-intencion/",
+      "es_path": "es/situaciones/entiendo-las-palabras-pero-no-la-intencion/index.html",
+      "en_route": "/en/situations/i-understand-the-words-but-not-the-intention/",
+      "en_path": "en/situations/i-understand-the-words-but-not-the-intention/index.html",
+      "retained_title_en": "“I understand the words but not the intention”"
+    },
+    {
+      "number": 9,
+      "title_es": "No sé cuándo me toca hablar",
+      "es_route": "/es/situaciones/me-cuesta-saber-cuando-me-toca-hablar/",
+      "es_path": "es/situaciones/me-cuesta-saber-cuando-me-toca-hablar/index.html",
+      "en_route": "/en/situations/i-find-it-hard-to-know-when-it-is-my-turn-to-speak/",
+      "en_path": "en/situations/i-find-it-hard-to-know-when-it-is-my-turn-to-speak/index.html",
+      "retained_title_en": "“I find it hard to know when it is my turn to speak”"
+    },
+    {
+      "number": 10,
+      "title_es": "Interrumpo sin querer porque temo olvidar lo que iba a decir",
+      "es_route": "/es/situaciones/interrumpo-sin-querer-porque-temo-olvidar-lo-que-iba-a-decir/",
+      "es_path": "es/situaciones/interrumpo-sin-querer-porque-temo-olvidar-lo-que-iba-a-decir/index.html",
+      "en_route": "/en/situations/i-interrupt-without-meaning-to-because-i-am-afraid-i-will-forget-what-i-wanted-to-say/",
+      "en_path": "en/situations/i-interrupt-without-meaning-to-because-i-am-afraid-i-will-forget-what-i-wanted-to-say/index.html",
+      "retained_title_en": "“I interrupt without meaning to because I am afraid I will forget what I wanted to say”"
+    },
+    {
+      "number": 11,
+      "title_es": "Prefiero que me den las instrucciones por escrito",
+      "es_route": "/es/situaciones/necesito-que-me-den-las-instrucciones-por-escrito/",
+      "es_path": "es/situaciones/necesito-que-me-den-las-instrucciones-por-escrito/index.html",
+      "en_route": "/en/situations/i-need-instructions-in-writing/",
+      "en_path": "en/situations/i-need-instructions-in-writing/index.html",
+      "retained_title_en": "“I need instructions in writing”"
+    },
+    {
+      "number": 12,
+      "title_es": "No sé qué responder a las preguntas abiertas",
+      "es_route": "/es/situaciones/las-preguntas-abiertas-me-bloquean/",
+      "es_path": "es/situaciones/las-preguntas-abiertas-me-bloquean/index.html",
+      "en_route": "/en/situations/open-ended-questions-make-me-freeze/",
+      "en_path": "en/situations/open-ended-questions-make-me-freeze/index.html",
+      "retained_title_en": "“Open-ended questions make me freeze”"
+    },
+    {
+      "number": 13,
+      "title_es": "Cuando me preguntan cómo estoy, no encuentro qué responder",
+      "es_route": "/es/situaciones/cuando-me-preguntan-como-estoy-no-se-que-responder/",
+      "es_path": "es/situaciones/cuando-me-preguntan-como-estoy-no-se-que-responder/index.html",
+      "en_route": "/en/situations/when-someone-asks-how-i-am-i-do-not-know-what-to-answer/",
+      "en_path": "en/situations/when-someone-asks-how-i-am-i-do-not-know-what-to-answer/index.html",
+      "retained_title_en": "“When someone asks how I am, I do not know what to answer”"
+    },
+    {
+      "number": 14,
+      "title_es": "Si me miran mientras hablo, pierdo parte de lo que quería decir",
+      "es_route": "/es/situaciones/me-cuesta-explicar-algo-si-me-miran-mientras-hablo/",
+      "es_path": "es/situaciones/me-cuesta-explicar-algo-si-me-miran-mientras-hablo/index.html",
+      "en_route": "/en/situations/i-struggle-to-explain-something-when-people-look-at-me-while-i-speak/",
+      "en_path": "en/situations/i-struggle-to-explain-something-when-people-look-at-me-while-i-speak/index.html",
+      "retained_title_en": "“I struggle to explain something when people look at me while I speak”"
+    },
+    {
+      "number": 15,
+      "title_es": "En grupos grandes, cuando voy a hablar ya han cambiado de tema",
+      "es_route": "/es/situaciones/en-grupos-grandes-no-consigo-entrar-en-la-conversacion/",
+      "es_path": "es/situaciones/en-grupos-grandes-no-consigo-entrar-en-la-conversacion/index.html",
+      "en_route": "/en/situations/in-large-groups-i-cannot-get-into-the-conversation/",
+      "en_path": "en/situations/in-large-groups-i-cannot-get-into-the-conversation/index.html",
+      "retained_title_en": "“In large groups I cannot get into the conversation”"
+    },
+    {
+      "number": 16,
+      "title_es": "Hablo mucho de un tema y me doy cuenta después",
+      "es_route": "/es/situaciones/hablo-demasiado-de-un-tema-y-luego-me-doy-cuenta-tarde/",
+      "es_path": "es/situaciones/hablo-demasiado-de-un-tema-y-luego-me-doy-cuenta-tarde/index.html",
+      "en_route": "/en/situations/i-talk-too-much-about-one-topic-and-only-realise-later/",
+      "en_path": "en/situations/i-talk-too-much-about-one-topic-and-only-realise-later/index.html",
+      "retained_title_en": "“I talk too much about one topic and only realise later”"
+    },
+    {
+      "number": 17,
+      "title_es": "No siempre sé cuándo alguien está bromeando",
+      "es_route": "/es/situaciones/me-cuesta-detectar-si-alguien-esta-bromeando/",
+      "es_path": "es/situaciones/me-cuesta-detectar-si-alguien-esta-bromeando/index.html",
+      "en_route": "/en/situations/i-find-it-hard-to-tell-when-someone-is-joking/",
+      "en_path": "en/situations/i-find-it-hard-to-tell-when-someone-is-joking/index.html",
+      "retained_title_en": "“I find it hard to tell when someone is joking”"
+    },
+    {
+      "number": 18,
+      "title_es": "Tardo más en responder a algunas preguntas",
+      "es_route": "/es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta/",
+      "es_path": "es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta/index.html",
+      "en_route": "/en/situations/i-need-more-time-to-process-a-question/",
+      "en_path": "en/situations/i-need-more-time-to-process-a-question/index.html",
+      "retained_title_en": "“I need more time to process a question”"
+    },
+    {
+      "number": 19,
+      "title_es": "Cambio de tema sin darme cuenta de que la otra persona seguía hablando de lo anterior",
+      "es_route": "/es/situaciones/cambio-de-tema-sin-darme-cuenta-de-que-la-otra-persona-seguia-hablando-de-lo-anterior/",
+      "es_path": "es/situaciones/cambio-de-tema-sin-darme-cuenta-de-que-la-otra-persona-seguia-hablando-de-lo-anterior/index.html",
+      "en_route": "/en/situations/i-change-topic-without-realising-the-other-person-was-still-on-the-previous-one/",
+      "en_path": "en/situations/i-change-topic-without-realising-the-other-person-was-still-on-the-previous-one/index.html",
+      "retained_title_en": "“I change topic without realising the other person was still on the previous one”"
+    },
+    {
+      "number": 20,
+      "title_es": "No pido que repitan algo aunque no lo haya entendido",
+      "es_route": "/es/situaciones/me-cuesta-pedir-que-repitan-algo/",
+      "es_path": "es/situaciones/me-cuesta-pedir-que-repitan-algo/index.html",
+      "en_route": "/en/situations/i-find-it-hard-to-ask-someone-to-repeat-something/",
+      "en_path": "en/situations/i-find-it-hard-to-ask-someone-to-repeat-something/index.html",
+      "retained_title_en": "“I find it hard to ask someone to repeat something”"
+    },
+    {
+      "number": 21,
+      "title_es": "Me comunico mejor por escrito que por teléfono",
+      "es_route": "/es/situaciones/una-llamada-telefonica-me-resulta-mucho-mas-dificil-que-escribir/",
+      "es_path": "es/situaciones/una-llamada-telefonica-me-resulta-mucho-mas-dificil-que-escribir/index.html",
+      "en_route": "/en/situations/a-phone-call-is-much-harder-for-me-than-writing/",
+      "en_path": "en/situations/a-phone-call-is-much-harder-for-me-than-writing/index.html",
+      "retained_title_en": "“A phone call is much harder for me than writing”"
+    },
+    {
+      "number": 22,
+      "title_es": "Entiendo mejor si me enseñan un ejemplo",
+      "es_route": "/es/situaciones/entiendo-mejor-si-me-ensenan-un-ejemplo/",
+      "es_path": "es/situaciones/entiendo-mejor-si-me-ensenan-un-ejemplo/index.html",
+      "en_route": "/en/situations/i-understand-better-when-i-am-shown-an-example/",
+      "en_path": "en/situations/i-understand-better-when-i-am-shown-an-example/index.html",
+      "retained_title_en": "“I understand better when I am shown an example”"
+    },
+    {
+      "number": 23,
+      "title_es": "Después de muchas horas de ruido, conversaciones o tareas, hablo menos",
+      "es_route": "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia/",
+      "es_path": "es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia/index.html",
+      "en_route": "/en/situations/when-i-am-overloaded-the-way-i-speak-changes/",
+      "en_path": "en/situations/when-i-am-overloaded-the-way-i-speak-changes/index.html",
+      "retained_title_en": "“When I am overloaded, the way I speak changes”"
+    }
+  ]
+}
