@@ -1,0 +1,70 @@
+name: Validar clasificación de Condiciones
+
+on:
+  push:
+    branches:
+      - main
+      - work/evidence-review-2026-09-10
+    paths:
+      - '.github/workflows/condiciones-clasificacion.yml'
+      - 'editorial/standards/condition-classifications-2026-09-10.json'
+      - 'editorial/standards/standards.json'
+      - 'scripts/apply_condition_classifications.py'
+      - 'scripts/apply_validation_framework.py'
+      - 'scripts/build_site.py'
+      - 'es/neurodiversidad/condiciones/**'
+      - 'en/neurodiversity/conditions/**'
+      - 'es/metodologia/index.html'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'editorial/standards/condition-classifications-2026-09-10.json'
+      - 'editorial/standards/standards.json'
+      - 'scripts/apply_condition_classifications.py'
+      - 'scripts/apply_validation_framework.py'
+      - 'scripts/build_site.py'
+      - 'es/neurodiversidad/condiciones/**'
+      - 'en/neurodiversity/conditions/**'
+      - 'es/metodologia/index.html'
+
+permissions:
+  contents: read
+
+jobs:
+  clasificacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compilar el sitio completo
+        run: python3 scripts/build_site.py
+      - name: Comprobar las 185 clasificaciones ES y EN
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from collections import Counter
+          from pathlib import Path
+
+          root=Path('dist')
+          expected=Counter({'A':21,'B':40,'C':44,'BP':54,'SG':26})
+          es=(root/'es/neurodiversidad/condiciones/index.html').read_text(encoding='utf-8')
+          en=(root/'en/neurodiversity/conditions/index.html').read_text(encoding='utf-8')
+          es_grades=re.findall(r'class="chiprow"[^>]*data-grado="(A|B|C|BP|SG)"',es)
+          en_grades=re.findall(r'<a\s+class="card"[^>]*data-grado="(A|B|C|BP|SG)"',en)
+          assert len(es_grades)==185, len(es_grades)
+          assert len(en_grades)==185, len(en_grades)
+          assert Counter(es_grades)==expected, Counter(es_grades)
+          assert Counter(en_grades)==expected, Counter(en_grades)
+          forbidden=[r'data-grado="D"',r'data-grado="A/B"',r'data-grado="B/C"',r'Grade\s+(?:D|A/B|B/C)',r'>DRAFT<']
+          for page in [es,en]:
+              for pat in forbidden: assert not re.search(pat,page),pat
+          pages=list((root/'es/neurodiversidad/condiciones').glob('*/index.html'))+list((root/'en/neurodiversity/conditions').glob('*/index.html'))
+          assert len(pages)==370,len(pages)
+          for p in pages:
+              text=p.read_text(encoding='utf-8')
+              assert re.search(r'<p class="chips"[^>]*data-grado="(?:A|B|C|BP|SG)"',text),p
+              assert 'DRAFT' not in text,p
+          data=json.loads(Path('editorial/standards/condition-classifications-2026-09-10.json').read_text())
+          assert Counter(g for _,g in data['entries'])==expected
+          print('OK: 185 ES + 185 EN; 21 A, 40 B, 44 C, 54 BP, 26 SG; 0 D/A-B/B-C/DRAFT')
+          PY
