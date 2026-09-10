@@ -39,9 +39,11 @@ def build():
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
-    # Publish only the homepage and instructions-entry presentation approved by the author.
+    # Publica únicamente la portada y la ficha de instrucciones con la presentación aprobada.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
-    # Verify the author's approved wording; never regenerate or rewrite it.
+    # Corrige bloqueadores estructurales objetivos del HTML final sin tocar la redacción editorial.
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_public_accessibility.py')],cwd=ROOT,check=True)
+    # Verifica la redacción aprobada de Sentidos; nunca la regenera ni la reescribe.
     subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
