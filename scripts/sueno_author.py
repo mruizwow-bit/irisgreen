@@ -5,7 +5,6 @@ that source and its manifest together. English headings were not supplied: retai
 """
 from __future__ import annotations
 import argparse, hashlib, html, json, re
-from difflib import SequenceMatcher
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from apply_reviewed_entries import Tree, has, within, edits
@@ -115,12 +114,14 @@ def search_update(text, rows):
     if count!=23: raise ValueError('Missing search records')
     return edits(text,patches)
 
-def norm_title(s):
-    s=html.unescape(re.sub(r'<[^>]+>',' ',s)).lower()
-    s=''.join(c for c in s if c.isalnum() or c.isspace())
-    return ' '.join(s.split())
-
 def discover_sleep_routes(index_text, index_path):
+    """Return the 23 existing Sueño cards in their editorial order.
+
+    The author's closed document is explicitly numbered 1–23 and follows this same
+    catalogue order. Titles may have been rewritten substantially, so wording
+    similarity is not used as an identity test. Routes, area, count and reciprocal
+    ES/EN links are verified before any write and then frozen in the manifest.
+    """
     t=Tree(index_text); rows=[]
     for n in t.nodes:
         if n.tag!='a' or not has(n,'card') or n.attrs.get('data-area')!='Sueño': continue
@@ -129,6 +130,7 @@ def discover_sleep_routes(index_text, index_path):
         url=urlsplit(urljoin('https://irisgreen.eu/'+index_path,n.attrs.get('href',''))).path
         rows.append((url,t.text(title)))
     if len(rows)!=23: raise ValueError(f'Expected 23 Sueño cards, got {len(rows)}')
+    if len({u for u,_ in rows})!=23: raise ValueError('Duplicate Sueño routes')
     return rows
 
 def import_once():
@@ -137,10 +139,9 @@ def import_once():
     rows=load_source(); staged={}; preserved={}
     discovered=discover_sleep_routes((ROOT/INDEXES['es']).read_text(),INDEXES['es'])
     for row,(esroute,old_es_title) in zip(rows,discovered):
-        ratio=SequenceMatcher(None,norm_title(old_es_title),norm_title(row['title_es'])).ratio()
-        if ratio < .36: raise ValueError(f'Order/title mismatch for item {row["number"]}: {old_es_title!r} vs {row["title_es"]!r} ({ratio:.2f})')
         row['es_path']=esroute.lstrip('/')+'index.html'
         row['retained_title_es_before']=old_es_title
+        row['source_order']=row['number']
         es=(ROOT/row['es_path']).read_text();t,a,title,lead=page_nodes(es)
         chip=one((n for n in t.nodes if n.tag=='p' and has(n,'chips') and n.parent==a),'area')
         if t.text(chip)!='Sueño':raise ValueError('Not a Sueño entry')
@@ -163,7 +164,7 @@ def import_once():
             preserved[path]=sha(protected(text).encode());staged[path]=new
     for lang,path in INDEXES.items():staged[path]=index_update((ROOT/path).read_text(),path,rows,lang)
     staged['buscador.json']=search_update((ROOT/'buscador.json').read_text(),rows)
-    m={'source':SOURCE,'source_sha256':SOURCE_SHA256,'scope':'23 Spanish titles and 46 submitted ES/EN descriptions only. English titles not supplied: retained. Other fields, sections, references, dates, controls, styles and URLs unchanged.','entries':[{k:v for k,v in r.items() if k not in ['es','en']} for r in rows],'unmodified_body_sha256':preserved}
+    m={'source':SOURCE,'source_sha256':SOURCE_SHA256,'scope':'23 Spanish titles and 46 submitted ES/EN descriptions only. The numbered author source maps to the existing Sueño catalogue order. English titles not supplied: retained. Other fields, sections, references, dates, controls, styles and URLs unchanged.','entries':[{k:v for k,v in r.items() if k not in ['es','en']} for r in rows],'unmodified_body_sha256':preserved}
     for path,new in staged.items(): (ROOT/path).write_text(new)
     (ROOT/MANIFEST).write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
     check(ROOT)
@@ -172,7 +173,7 @@ def approved_rows():
     rows=load_source();m=json.loads((ROOT/MANIFEST).read_text())
     if m['source_sha256']!=SOURCE_SHA256 or len(m['entries'])!=23:raise ValueError('Invalid approval manifest')
     for row,entry in zip(rows,m['entries']):
-        if entry['number']!=row['number'] or entry['title_es']!=row['title_es']:raise ValueError('Title or entry mapping mismatch')
+        if entry['number']!=row['number'] or entry['title_es']!=row['title_es'] or entry.get('source_order')!=row['number']:raise ValueError('Title, order or entry mapping mismatch')
         row.update(entry)
     if len({r['es_path'] for r in rows})!=23 or len({r['en_path'] for r in rows})!=23:raise ValueError('Duplicate mapping')
     return rows
@@ -198,7 +199,7 @@ def check(root):
             record=index[route(row['es_path'])]; record=record if lang=='es' else record['en']
             if record['d']!=row[lang] or record['t']!=expected_title:raise ValueError('Stale search entry: '+path)
             checked.append(path)
-    return {'entries':23,'exact_descriptions':46,'spanish_titles':23,'english_titles':'preserved; absent from submitted source','checked_pages':checked,'catalogue_cards':46,'search_entries':23,'source_sha256':SOURCE_SHA256,'mode':'read-only verification; no automatic rewriting'}
+    return {'entries':23,'exact_descriptions':46,'spanish_titles':23,'english_titles':'preserved; absent from submitted source','checked_pages':checked,'catalogue_cards':46,'search_entries':23,'source_sha256':SOURCE_SHA256,'mapping':'numbered author source -> existing Sueño catalogue order; routes frozen in manifest','mode':'read-only verification; no automatic rewriting'}
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--apply',action='store_true');ap.add_argument('--root',type=Path,default=ROOT);args=ap.parse_args()
