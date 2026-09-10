@@ -9,6 +9,7 @@ on:
       - 'scripts/apply_validation_framework.py'
       - 'scripts/audit_validation_framework.py'
       - 'scripts/test_validation_browser.py'
+      - 'scripts/test_accessibility_batch.py'
       - 'scripts/build_site.py'
       - 'assets/validacion.css'
       - 'assets/ajustes-interfaz.css'
@@ -27,7 +28,7 @@ jobs:
           ref: work/evidence-review-2026-09-10
       - name: Comprobar sintaxis y política
         run: |
-          python3 -m py_compile scripts/apply_validation_framework.py scripts/audit_validation_framework.py scripts/test_validation_browser.py
+          python3 -m py_compile scripts/apply_validation_framework.py scripts/audit_validation_framework.py scripts/test_validation_browser.py scripts/test_accessibility_batch.py
           python3 - <<'PY'
           import json
           p=json.load(open('editorial/standards/standards.json'))
