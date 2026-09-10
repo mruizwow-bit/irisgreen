@@ -145,8 +145,9 @@ def main():
             total_changes["detail_es"] += a["changed"]
             total_changes["detail_en"] += b["changed"]
 
-            es_index, _ = legacy.update_card(es_index, es_route, entry["es"], kind, grade)
-            en_index, _ = legacy.update_card(en_index, en_route, entry["en"], kind, grade)
+            card_kind = "conditions" if kind == "situations" else kind
+            es_index, _ = legacy.update_card(es_index, es_route, entry["es"], card_kind, grade)
+            en_index, _ = legacy.update_card(en_index, en_route, entry["en"], card_kind, grade)
 
             add = None
             if kind == "daily":
