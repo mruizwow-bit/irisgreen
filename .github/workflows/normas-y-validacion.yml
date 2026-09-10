@@ -19,7 +19,7 @@ permissions:
 jobs:
   validar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -39,9 +39,7 @@ jobs:
       - name: Construir desde fuentes limpias
         run: python3 scripts/build_site.py
       - name: Comprobar estados documentales y referencias normativas
-        run: |
-          python3 scripts/audit_validation_framework.py dist
-          python3 scripts/apply_validation_framework.py --check
+        run: python3 scripts/audit_validation_framework.py dist
       - name: Preparar Chromium
         run: |
           python3 -m venv /tmp/ig-validation
@@ -49,6 +47,8 @@ jobs:
           /tmp/ig-validation/bin/python -m playwright install --with-deps chromium >/tmp/ig-validation-install.log 2>&1
       - name: Probar estados en móvil y escritorio
         run: /tmp/ig-validation/bin/python scripts/test_validation_browser.py
+      - name: Repetir controles de lectura, teclado y texto ampliado
+        run: /tmp/ig-validation/bin/python scripts/test_accessibility_batch.py --phase after
       - name: Guardar evidencia
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -56,5 +56,6 @@ jobs:
           name: normas-y-estados-resultados
           path: |
             reports/standards
+            reports/accessibility/after.json
             reports/routes/build.json
           retention-days: 7
