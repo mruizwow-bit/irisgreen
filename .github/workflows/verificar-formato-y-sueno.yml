@@ -1,8 +1,10 @@
 name: Verificar formato y Sueño
 on:
   push:
-    branches: ['mejora/formato-y-sueno-20260910']
-    paths: ['.github/workflows/verificar-formato-y-sueno.yml']
+    branches:
+      - mejora/formato-y-sueno-20260910
+    paths:
+      - .github/workflows/verificar-formato-y-sueno.yml
 permissions:
   contents: write
 jobs:
@@ -10,238 +12,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 18
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Obtener repositorio
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
-      - name: Comprobar copia y fuente de autora
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/iris-format-sleep
-          git fetch origin main backup/20260910-0711-antes-formato-sentidos-sueno --quiet
-          test "$(git rev-parse origin/main)" = "f14ad41dc99e497abe3bc774373658fecbe8b2a0"
-          test "$(git rev-parse origin/backup/20260910-0711-antes-formato-sentidos-sueno)" = "f14ad41dc99e497abe3bc774373658fecbe8b2a0"
-          printf '%s  %s\n' 'd8df5797d04c1c854a6dbb01c222ab51d8f88bc987037adb9bd1c05b13400a9e' 'editorial/reviews/situaciones_sueno_ES_EN.md' | sha256sum -c -
-          printf '%s  %s\n' 'aa3dfe924b5897c3686ac4a332267fbb034c47cb83eb1af47dbe4e6608d81b78' 'editorial/reviews/situaciones_sentidos_ES_EN.md' | sha256sum -c -
-          echo 'Backup complete at f14ad41 and both author files are exact.' | tee /tmp/iris-format-sleep/preflight.txt
-      - name: Construir referencia completa antes del cambio
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-format-sleep/baseline-build.log
-          python3 - <<'PY'
-          import hashlib,json
-          from pathlib import Path
-          root=Path('dist')
-          files={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
-          Path('/tmp/iris-format-sleep/baseline.json').write_text(json.dumps(files,indent=2))
-          assert len(files)>1500
-          assert 'assets/site-v23.css' in files
-          print('Baseline:',len(files),'public files')
-          PY
-          git restore --worktree .
-      - name: Incorporar Sueño y aplicar solo formato compartido
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/sueno_author.py --apply 2>&1 | tee /tmp/iris-format-sleep/sueno-import.log
-          python3 - <<'PY'
-          from pathlib import Path
-          css=Path('assets/site-v23.css')
-          s=css.read_text()
-          marker='/* V24 · fichas finales: ancho y escala de lectura */'
-          assert marker not in s
-          block=r'''
-
-/* V24 · fichas finales: ancho y escala de lectura */
-/* Solo las páginas finales que usan article.ficha. Los listados, la portada,
-   Metodología y la ficha nueva de instrucciones conservan su propio diseño. */
-main:has(>article.ficha){
-  width:min(calc((100vw - 2rem)/var(--ig-reading-scale,1)),70rem);
-  max-width:70rem;
-  padding:clamp(1.75rem,4vw,3rem) clamp(1.125rem,3vw,2rem) 4.5rem;
-}
-main:has(>article.ficha)>article.ficha{
-  width:100%;
-  max-width:none;
-  font-size:1.125rem;
-  line-height:1.72;
-}
-main:has(>article.ficha)>article.ficha>h1{
-  font-size:clamp(2rem,1.45rem + 2vw,3rem);
-  line-height:1.12;
-  margin:.2em 0 .45em;
-}
-main:has(>article.ficha) .crumb{font-size:.95rem;line-height:1.55}
-main:has(>article.ficha) .chip{font-size:.88rem}
-main:has(>article.ficha) .notice{font-size:1.02rem;line-height:1.65;margin-bottom:2rem}
-main:has(>article.ficha) .lede{font-size:1.1em;line-height:1.7}
-main:has(>article.ficha) .sec{padding:1.45rem 0}
-main:has(>article.ficha) .sec h2{font-size:1.42rem;line-height:1.32;margin-bottom:.65rem}
-main:has(>article.ficha) .sec :is(p,li){line-height:1.72}
-main:has(>article.ficha) .muted{font-size:1rem;line-height:1.65}
-@media(max-width:43.99rem){
-  main:has(>article.ficha){padding:1.5rem 1.125rem 3.5rem}
-  main:has(>article.ficha)>article.ficha{font-size:1.0625rem}
-  main:has(>article.ficha)>article.ficha>h1{font-size:clamp(1.9rem,9vw,2.45rem)}
-  main:has(>article.ficha) .sec h2{font-size:1.32rem}
-  main:has(>article.ficha) .notice{font-size:1rem}
-}
-'''
-          css.write_text(s+block)
-
-          p=Path('scripts/build_site.py');s=p.read_text()
-          needle="    subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"
-          assert s.count(needle)==1
-          s=s.replace(needle,needle+"    subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)\n")
-          p.write_text(s)
-          PY
-          cat > editorial/reviews/SUENO-README.md <<'EOF'
-          # Sueño: texto aprobado de la autora
-
-          El original situaciones_sueno_ES_EN.md se conserva exactamente como fue enviado. Se importan sus 23 títulos españoles y 46 descripciones ES/EN, sin resumen adicional. Las descripciones se sincronizan en cada ficha, las tarjetas del listado, el índice buscador.json y los metadatos. Los títulos ingleses no figuran en el documento y se conservan los existentes. Las rutas no cambian.
-
-          El resto de los apartados, fuentes, fechas de revisión documental, avisos, robots, colores, tipografías y controles no se modifican. Esta importación no acredita una revisión completa de las fichas ni una nueva comprobación de las fuentes.
-
-          scripts/sueno_author.py --apply se utiliza una sola vez para incorporar el texto. Durante la construcción se ejecuta únicamente la comprobación de igualdad exacta. Si otra tarea altera las descripciones protegidas, la publicación se detiene: no se restaura ni reescribe contenido automáticamente. Una nueva corrección aprobada debe actualizar el documento, su huella y el manifiesto conjuntamente.
-          EOF
-          sed -i 's/^          //' editorial/reviews/SUENO-README.md
-      - name: Construir y comprobar el alcance exacto
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/build_site.py 2>&1 | tee /tmp/iris-format-sleep/changed-build.log
-          python3 scripts/sentidos_author.py --root dist > /tmp/iris-format-sleep/sentidos-check.json
-          python3 scripts/sueno_author.py --root dist > /tmp/iris-format-sleep/sueno-check.json
-          python3 - <<'PY'
-          import hashlib,json
-          from pathlib import Path
-          root=Path('dist')
-          before=json.loads(Path('/tmp/iris-format-sleep/baseline.json').read_text())
-          after={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
-          manifest=json.loads(Path('editorial/reviews/situaciones-sueno-manifest.json').read_text())
-          sleep_pages=sorted([x[k] for x in manifest['entries'] for k in ('es_path','en_path')])
-          expected=sorted(sleep_pages+['es/situaciones/index.html','en/situations/index.html','buscador.json','assets/site-v23.css'])
-          changed=sorted(p for p in before.keys()&after.keys() if before[p]!=after[p])
-          added=sorted(after.keys()-before.keys());removed=sorted(before.keys()-after.keys())
-          assert changed==expected, {'unexpected':sorted(set(changed)-set(expected)),'missing':sorted(set(expected)-set(changed))}
-          assert not added and not removed,(added,removed)
-          # The already approved instruction presentation and all Sentidos files must remain byte-identical.
-          protected=['es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html','en/situations/i-need-instructions-repeated/index.html']
-          assert all(before[p]==after[p] for p in protected)
-          senses=json.loads(Path('editorial/reviews/situaciones-sentidos-manifest.json').read_text())
-          for e in senses['entries']:
-              assert before[e['es_path']]==after[e['es_path']]
-              assert before[e['en_path']]==after[e['en_path']]
-          # Inventory every legacy final-page template affected by CSS, without changing its HTML.
-          groups={'conditions':0,'situations':0,'data':0,'daily':0}; outside=[]
-          for p in root.rglob('*.html'):
-              rel=p.relative_to(root).as_posix(); text=p.read_text(errors='ignore')
-              if '<article class="ficha">' not in text: continue
-              if rel.startswith(('es/neurodiversidad/condiciones/','en/neurodiversity/conditions/')): groups['conditions']+=1
-              elif rel.startswith(('es/situaciones/','en/situations/')): groups['situations']+=1
-              elif rel.startswith(('es/datos/','en/data/')): groups['data']+=1
-              elif rel.startswith(('es/biblioteca/','en/everyday-life/')): groups['daily']+=1
-              else: outside.append(rel)
-          assert not outside,outside
-          assert groups=={'conditions':370,'situations':372,'data':98,'daily':96},groups
-          report={'before_files':len(before),'after_files':len(after),'changed_public_files':len(changed),'changed':changed,'added':added,'removed':removed,'legacy_detail_pages_using_shared_format':sum(groups.values()),'groups':groups,'sentidos_unchanged':48,'approved_instruction_unchanged':2}
-          Path('/tmp/iris-format-sleep/public-diff.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
-          print(json.dumps(report,indent=2,ensure_ascii=False))
-          PY
-      - name: Preparar navegador de pruebas
-        shell: bash
+      - name: Preparar y comprobar el cambio
+        run: python3 scripts/work_format_sleep.py prepare
+      - name: Instalar navegador de prueba
         run: |
           python3 -m venv /tmp/iris-format-browser
           /tmp/iris-format-browser/bin/pip install playwright==1.55.0
           /tmp/iris-format-browser/bin/python -m playwright install --with-deps chromium
-      - name: Probar formato, móvil, lectura y Sueño ES EN
-        shell: bash
-        run: |
-          set -euo pipefail
-          /tmp/iris-format-browser/bin/python - <<'PY' 2>&1 | tee /tmp/iris-format-sleep/browser.log
-          from playwright.sync_api import sync_playwright
-          from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
-          from functools import partial
-          import threading,json
-          from pathlib import Path
-          server=ThreadingHTTPServer(('127.0.0.1',8765),partial(SimpleHTTPRequestHandler,directory='dist'))
-          threading.Thread(target=server.serve_forever,daemon=True).start()
-          manifest=json.loads(Path('editorial/reviews/situaciones-sueno-manifest.json').read_text())
-          author=Path('editorial/reviews/situaciones_sueno_ES_EN.md').read_text()
-          rows=[]
-          import re
-          for i,title,es,en in re.findall(r'^## (\d+)\. ([^\n]+)\n\n### ES\n([^\n]+)\n\n### EN\n([^\n]+)',author,re.M): rows.append({'n':int(i),'title':title,'es':es,'en':en})
-          report={'checks':[],'layout':[],'javascript_errors':[]}
-          with sync_playwright() as p:
-              browser=p.chromium.launch()
-              context=browser.new_context(viewport={'width':1600,'height':950})
-              page=context.new_page(); page.on('pageerror',lambda e:report['javascript_errors'].append(str(e)))
-              # Every submitted Sueño phrase must be exact in the mapped page and list card.
-              for src,entry in zip(rows,manifest['entries']):
-                  for lang,key in [('es','es'),('en','en')]:
-                      rel=entry[lang+'_path'];page.goto('http://127.0.0.1:8765/'+rel[:-10],wait_until='domcontentloaded')
-                      assert page.locator('article.ficha .lede').inner_text()==src[key],(src['n'],lang)
-                      expected_title=src['title'] if lang=='es' else entry['retained_title_en']
-                      assert page.locator('article.ficha h1').inner_text()==expected_title,(src['n'],lang)
-              report['checks'].append('All 46 Sueño descriptions and 23 Spanish titles are exact; English titles retained')
-              samples=[
-                '/es/neurodiversidad/condiciones/autismo/',
-                '/en/neurodiversity/conditions/autism/',
-                '/es/situaciones/me-despierto-de-madrugada/',
-                '/es/datos/autismo/',
-                '/es/biblioteca/el-sueno-que-observar-y-por-donde-empezar/',
-                '/en/everyday-life/reasonable-adjustments-at-work/'
-              ]
-              for path in samples:
-                  page.goto('http://127.0.0.1:8765'+path,wait_until='networkidle')
-                  page.evaluate('IGPreferences.reset()')
-                  page.set_viewport_size({'width':1600,'height':950}); page.wait_for_timeout(50)
-                  main=page.locator('main').bounding_box(); ficha=page.locator('article.ficha')
-                  assert main and 1118<=main['width']<=1122,(path,main)
-                  fs=float(ficha.evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")); assert 17.9<=fs<=18.1,(path,fs)
-                  h2=float(page.locator('article.ficha h2').first.evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")); assert h2>=22,(path,h2)
-                  report['layout'].append({'path':path,'desktop_main_width':main['width'],'body_text_px':fs,'h2_px':h2})
-                  for width in [320,390,768,1600]:
-                      page.set_viewport_size({'width':width,'height':950})
-                      for scale in [1,1.5]:
-                          page.evaluate('(scale)=>IGPreferences.update({scale:scale,text:{width:"original"}})',scale)
-                          page.wait_for_timeout(60)
-                          assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,width,scale,page.evaluate('document.documentElement.scrollWidth'))
-                  page.evaluate('IGPreferences.update({scale:1,text:{width:"narrow"}})'); page.set_viewport_size({'width':1600,'height':950});page.wait_for_timeout(30)
-                  assert page.locator('article.ficha').bounding_box()['width'] < 900
-              report['checks'].append('Shared format: 1120px desktop container, 18px body, larger headings; 320–1600px and 150% without page overflow; narrow reading preference preserved')
-              # The newly approved instructions page is excluded from the old shared template.
-              page.goto('http://127.0.0.1:8765/es/situaciones/necesito-que-me-repitan-las-instrucciones/',wait_until='networkidle')
-              assert page.locator('article.ficha').count()==0
-              assert page.locator('#request-text').count()==1
-              report['checks'].append('Approved instructions page remains on its separate design')
-              assert not report['javascript_errors'],report['javascript_errors']
-              browser.close()
-          server.shutdown()
-          Path('/tmp/iris-format-sleep/browser-tests.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
-          print(json.dumps(report,indent=2,ensure_ascii=False))
-          PY
+      - name: Probar formato y textos en navegador
+        run: /tmp/iris-format-browser/bin/python scripts/test_format_sleep_workflow.py
       - name: Guardar solo los archivos validados
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          python3 - <<'PY'
-          import json,subprocess
-          from pathlib import Path
-          m=json.loads(Path('editorial/reviews/situaciones-sueno-manifest.json').read_text())
-          files=['assets/site-v23.css','scripts/build_site.py','editorial/reviews/situaciones-sueno-manifest.json','editorial/reviews/SUENO-README.md','buscador.json','es/situaciones/index.html','en/situations/index.html']+[e[k] for e in m['entries'] for k in ('es_path','en_path')]
-          subprocess.run(['git','add','--',*files],check=True)
-          staged=subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines()
-          assert set(staged)==set(files),(set(staged)-set(files),set(files)-set(staged))
-          Path('/tmp/iris-format-sleep/final-files.json').write_text(json.dumps(sorted(files+['scripts/sueno_author.py','editorial/reviews/situaciones_sueno_ES_EN.md']),indent=2))
-          PY
-          git commit -m 'Integrar Sueño ES EN y ampliar las fichas finales tras verificar [skip netlify]'
-          git push origin HEAD:mejora/formato-y-sueno-20260910
-          git rev-parse HEAD | tee /tmp/iris-format-sleep/validated-commit.txt
-      - name: Guardar registros de verificación
+        run: python3 scripts/work_format_sleep.py commit
+      - name: Guardar registros
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
