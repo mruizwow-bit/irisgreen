@@ -2,9 +2,9 @@
 """Publica solo los recursos del sitio; no copia informes, scripts o instrucciones.
 El directorio dist se crea de cero. No se elimina ni cambia la biblioteca fuente.
 
-Rama de reparación forense: el build NO debe reescribir, reclasificar ni marcar como
-validados contenidos editoriales mientras se reconstruye la fuente correcta de las
-420 fichas y las 185 condiciones.
+La salida pública no convierte estados de trabajo en «VALIDADO». Los textos completos
+aprobados se aplican una sola vez fuera del build; durante la construcción solo se
+comprueba su igualdad exacta cuando su integración está registrada.
 """
 import json
 import shutil
@@ -21,7 +21,17 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
-    # Las 48 fichas españolas de Vida diaria fueron revisadas y contrastadas el 10-09-2026.
+
+    # Las integraciones editoriales completas se aplican una sola vez. En cada build
+    # posterior solo se comprueba que no hayan sido alteradas ni mezcladas de nuevo.
+    estado=ROOT/'editorial/integration/2026-09-10/estado-integracion.json'
+    integrado=json.loads(estado.read_text(encoding='utf-8')) if estado.is_file() else {}
+    if 'descripciones_420' in integrado:
+        subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessible_descriptions_420.py'),'--check'],cwd=ROOT,check=True)
+    if 'condiciones_185' in integrado:
+        subprocess.run([sys.executable,str(ROOT/'scripts/apply_condition_grades_185.py'),'--check'],cwd=ROOT,check=True)
+
+    # Vida diaria conserva su publicador factual ya revisado.
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
@@ -40,22 +50,22 @@ def build():
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
 
-    # Presentaciones ya aprobadas: se conservan.
+    # Presentaciones ya aprobadas: se conservan; estas tareas comprueban, no regeneran.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    # IMPORTANTE: durante la reparación no se ejecutan aquí los antiguos procesos
-    # run_accessibility_descriptions_part1.py, normalize_situation_status.py,
-    # validate_publication_statuses.py ni finalize_validation_labels.py. Esos procesos
-    # podían combinar texto nuevo con cuerpos/fuentes antiguos y después mostrar
-    # VALIDADO sin haber integrado primero las correcciones editoriales completas.
-    # La integración definitiva se aplicará desde una única fuente completa y auditada.
+    # Estados editoriales: retirar, nunca convertir en una afirmación de validación.
+    subprocess.run([sys.executable,str(ROOT/'scripts/normalize_situation_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/validate_publication_statuses.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # Vida diaria no muestra estados editoriales al público.
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Tarjetas Iris se conecta desde sus contextos, nunca desde la portada.
+    # Tarjetas Iris conserva la integración actual desde sus contextos, nunca desde portada.
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # Última barrera: el build falla si cualquier estado provisional o grado retirado reaparece.
+    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
