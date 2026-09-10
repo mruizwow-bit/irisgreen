@@ -49,9 +49,8 @@ def build():
     # Los estados editoriales se normalizan DESPUÉS de comprobar los textos protegidos.
     # Esta tarea no modifica descripciones, fuentes ni grados A/B/C.
     subprocess.run([sys.executable,str(ROOT/'scripts/validate_publication_statuses.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Investigación se reconstruye dentro de dist. Debe publicarse ANTES de la
-    # auditoría final para que esa auditoría compruebe exactamente lo que Netlify servirá.
-    subprocess.run([sys.executable,str(ROOT/'scripts/publish_investigacion.py')],cwd=ROOT,check=True)
+    # Investigación ya está publicada en es/investigacion y se copia a dist con el resto del sitio.
+    # No reconstruirla aquí desde un segundo payload: evitar dos fuentes para la misma página.
     # Cerrar los rótulos antiguos de revisión que sobreviven en plantillas históricas.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
