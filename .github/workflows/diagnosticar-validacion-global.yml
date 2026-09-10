@@ -1,0 +1,16 @@
+name: Diagnosticar validación global
+on:
+  push:
+    branches:
+      - trabajo/validacion-global-accesibilidad-20260910
+    paths:
+      - .github/workflows/diagnosticar-validacion-global.yml
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - run: python3 scripts/build_site.py
