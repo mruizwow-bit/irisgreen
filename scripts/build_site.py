@@ -41,6 +41,9 @@ def build():
     # Verify the author's approved wording; never regenerate or rewrite it.
     subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Aplicar literalmente la copia de accesibilidad aprobada para la parte 1 de Situaciones.
+    # El integrador preserva títulos ingleses, rutas, fuentes, controles y secciones clínicas.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_descriptions_part1.py'),'--root',str(dst),'--apply'],cwd=ROOT,check=True)
     # Normalizar únicamente el atributo técnico de estado de las fichas de Situaciones.
     subprocess.run([sys.executable,str(ROOT/'scripts/normalize_situation_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Los estados editoriales se normalizan DESPUÉS de comprobar los textos protegidos.
