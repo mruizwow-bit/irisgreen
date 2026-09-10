@@ -46,6 +46,8 @@ def build():
     # Los estados editoriales se normalizan DESPUÉS de comprobar los textos protegidos.
     # Esta tarea no modifica descripciones, fuentes ni grados A/B/C.
     subprocess.run([sys.executable,str(ROOT/'scripts/validate_publication_statuses.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Cerrar los rótulos antiguos de revisión que sobreviven en plantillas históricas.
+    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
