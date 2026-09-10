@@ -6,6 +6,7 @@ on:
       - integracion/situaciones-sentidos-sueno-comunicacion-20260910
     paths:
       - .github/workflows/situaciones-comunicacion-01-23.yml
+      - scripts/comunicacion_author.py
 
 permissions:
   contents: write
