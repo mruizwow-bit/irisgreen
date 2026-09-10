@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publica las 48 fichas ES de Vida diaria después de la revisión editorial y de fuentes del 10-09-2026.
+"""Publica las 48 fichas ES de Vida diaria tras la validación editorial y de fuentes del 10-09-2026.
 
 No reescribe la colección. Aplica correcciones factuales puntuales, añade fuentes
 que faltaban, cambia BORRADOR a publicado y falla si queda algún marcador de borrador.
@@ -128,7 +128,7 @@ for p in detail_pages:
     text = text.replace('<span class="chip lil">BORRADOR</span>', '')
     text = text.replace('<p class="notice">Página en borrador. Las fuentes están nombradas y enlazadas; la comprobación final sigue pendiente.</p>', '')
     text = text.replace('<li><strong>Estado:</strong> borrador</li>', '<li><strong>Estado:</strong> publicada</li>')
-    review_li = f'<li><strong>Revisión:</strong> {REVIEW_DATE}</li>'
+    review_li = f'<li><strong>Validación:</strong> {REVIEW_DATE}</li>'
     if review_li not in text:
         text = text.replace('<li><strong>Autoría:</strong> Iris Green</li>', '<li><strong>Autoría:</strong> Iris Green</li>' + review_li)
     save(p, text)
@@ -153,7 +153,7 @@ for p in detail_pages:
     if meta_start < 0 or meta_end < 0:
         raise AssertionError(f"Meta de tarjeta no encontrada: {slug}")
     unit = "fuente" if source_count == 1 else "fuentes"
-    new_meta = f'<span class="meta">{source_count} {unit} · REVISADA</span>'
+    new_meta = f'<span class="meta">{source_count} {unit} · VALIDADA</span>'
     index = index[:meta_start] + new_meta + index[meta_end + len("</span>"):]
 save(index_path, index)
 
@@ -165,4 +165,4 @@ for p in detail_pages + [index_path]:
     if found:
         raise AssertionError(f"Marcadores de borrador restantes en {p.relative_to(ROOT)}: {found}")
 
-print(f"Biblioteca ES publicada: {len(detail_pages)} fichas; revisión {REVIEW_DATE}.")
+print(f"Biblioteca ES publicada y validada: {len(detail_pages)} fichas; validación {REVIEW_DATE}.")

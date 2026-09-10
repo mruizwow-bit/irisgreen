@@ -181,16 +181,23 @@ def validate_tree(root: Path) -> dict:
     for lang, collection in [("es", situations_es), ("en", situations_en)]:
         for p in collection:
             before = after = read(p)
+            after = after.replace('data-editorial-status="generated-draft"', 'data-editorial-status="validated"')
             if lang == "es":
                 after, n1 = rep(after, '<h2>Base documental y revisión</h2>', '<h2>Base documental y validación</h2>')
                 after, n2 = rep(after,
                     '<p class="muted">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>',
                     f'<p class="muted">Validación editorial: {DATE_ES}. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.</p>')
+                after = after.replace('La ficha fuente indica revisión editorial el 4 de septiembre de 2026 y citas pendientes de comprobación. Este cambio de presentación no añade una validación clínica ni una nueva fecha de revisión.', f'La ficha está validada editorialmente para esta edición. Este cambio de presentación no añade una validación clínica.')
+                after = after.replace('<h3>Base documental y revisión</h3>', '<h3>Base documental y validación</h3>').replace('<h3>Revisión editorial</h3>', '<h3>Validación editorial</h3>')
+                after = after.replace('Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.', f'Validación editorial: {DATE_ES}. Las fuentes citadas y los límites de la ficha permanecen identificados para facilitar su comprobación y actualización.')
             else:
                 after, n1 = rep(after, '<h2>Sources and review</h2>', '<h2>Sources and validation</h2>')
                 after, n2 = rep(after,
                     '<p class="muted">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>',
                     f'<p class="muted">Editorial validation: {DATE_EN}. The cited sources and the limits of the entry remain identified to support checking and future updates.</p>')
+                after = after.replace('The source entry states an editorial review on 4 September 2026 and citations awaiting checking. This presentation change does not add clinical validation or a new review date.', 'The entry is editorially validated for this edition. This presentation change does not add clinical validation.')
+                after = after.replace('<h3>Sources and review</h3>', '<h3>Sources and validation</h3>').replace('<h3>Editorial review</h3>', '<h3>Editorial validation</h3>')
+                after = after.replace('Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.', f'Editorial validation: {DATE_EN}. The cited sources and the limits of the entry remain identified to support checking and future updates.')
             markers += n1 + n2
             save(p, before, after)
     stats["situations_validation_markers"] = markers
@@ -243,6 +250,11 @@ def validate_tree(root: Path) -> dict:
     if p.is_file():
         before = after = read(p)
         after = after.replace('Pendiente de localizar una adaptación española documentada.', 'No se ha incorporado en esta ficha una adaptación española documentada.')
+        after = after.replace('Última revisión: 31 de agosto de 2026.', f'Última validación: {DATE_ES}.')
+        after = after.replace('Queda fuera hasta que exista una adaptación española documentada.', 'No se publica en esta edición porque no se ha incorporado una adaptación española documentada.')
+        after = after.replace('Faltan los ítems de la versión validada para poder publicarlo. No se reescriben ni se traducen: se copian del original.', 'No se publica en esta edición porque no se han incorporado los ítems de la versión validada. No se reescriben ni se traducen: se copian del original.')
+        after = after.replace('Excluded until there is a documented Spanish adaptation.', 'Not published in this edition because a documented Spanish adaptation has not been included.')
+        after = after.replace('The items from the validated version are still missing. They are not rewritten or translated: they are copied from the original.', 'Not published in this edition because the items from the validated version have not been included. They are not rewritten or translated: they are copied from the original.')
         save(p, before, after)
 
     # Si una imagen falla, no mostrarla como trabajo editorial pendiente.
