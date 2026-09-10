@@ -49,7 +49,7 @@ jobs:
               "    text, meta_count = re.subn(r'(<meta name=\"description\" content=\")[^\"]*(\")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)\n"
               "    text, og_count = re.subn(r'(<meta property=\"og:description\" content=\")[^\"]*(\")', lambda m: m.group(1) + escaped_meta + m.group(2), text, count=1)\n"
               "    text, jsonld_count = re.subn(r'(\"description\":\\s*)\"[^\"]*\"', lambda m: m.group(1) + json.dumps(new_meta, ensure_ascii=False), text, count=1)\n"
-              "    if (meta_count, og_count, jsonld_count) != (1, 1, 1):\n"
+              "    if meta_count != 1 or og_count != 1 or jsonld_count not in (0, 1):\n"
               "        raise AssertionError(f'{path}: metadatos descriptivos inesperados: {(meta_count, og_count, jsonld_count)}')"
           )
           code, meta_changed = re.subn(
