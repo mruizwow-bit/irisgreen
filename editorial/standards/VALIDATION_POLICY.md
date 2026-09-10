@@ -40,15 +40,31 @@ Estados permitidos:
 
 La fecha de revisión es la fecha real de la comprobación documental. No se hereda de una exportación, un cambio de diseño, una traducción ni una compilación.
 
-## Clasificación editorial A, B y C
+## Clasificación editorial A, B, C, BP y SG
+
+La clasificación editorial y la revisión documental individual son registros distintos. Una ficha puede tener su clasificación editorial ya fijada y seguir pendiente de la comprobación afirmación por afirmación. Esto permite mostrar la distribución real sin presentar como revisado un contenido que todavía no lo está.
+
+- **A:** las afirmaciones principales se encuadran en un tema con respaldo directo en guías clínicas vigentes, revisiones sistemáticas u otras síntesis de evidencia pertinentes. Cuando la ficha se marque como revisada, sus afirmaciones concretas deben estar vinculadas a esas fuentes y a sus límites.
+- **B:** el respaldo principal procede de documentación institucional pertinente, consensos y/o estudios individuales revisados por pares. Los límites de población, contexto y diseño deben conservarse.
+- **C:** existe investigación pertinente, pero es emergente, limitada, heterogénea o indirecta para alguna de las afirmaciones. C no significa «no existe investigación».
+- **BP:** ficha centrada en práctica, derechos, seguridad, organización o apoyos. BP no es un grado de eficacia. Las afirmaciones factuales concretas siguen necesitando fuentes.
+- **SG:** no se aplica una jerarquía A/B/C, por ejemplo en identidades, terminología o definiciones no terapéuticas. Las afirmaciones factuales concretas siguen necesitando fuentes.
+
+D, A/B, B/C y «sin grado» son valores antiguos y ya no deben aparecer como clasificación final.
+
+### Distribución revisada el 10 de septiembre de 2026
+
+La distribución editorial de las 185 fichas queda fijada en:
+
+- **A: 21**
+- **B: 40**
+- **C: 44**
+- **BP: 54**
+- **SG: 26**
+
+Total: **185**. Se han reclasificado **55** fichas respecto al sistema anterior. El archivo de control es `editorial/standards/condition-classifications-2026-09-10.json`.
 
 Las letras no son una escala ISO ni GRADE y no garantizan eficacia.
-
-- **A:** las afirmaciones principales revisadas se apoyan directamente en guías clínicas vigentes, revisiones sistemáticas u otras síntesis de evidencia pertinentes, con sus límites declarados.
-- **B:** las afirmaciones principales revisadas se apoyan en documentación institucional pertinente, consensos y/o estudios individuales revisados por pares, con sus límites declarados.
-- **C:** existe investigación pertinente, pero es emergente, limitada, heterogénea o indirecta para alguna de las afirmaciones; la ficha debe decirlo de forma explícita.
-
-Las identidades, derechos, testimonios y recursos prácticos no reciben una letra cuando esa letra no tendría un significado documental válido.
 
 ## Registros y puertas de publicación
 
