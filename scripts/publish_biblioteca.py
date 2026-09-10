@@ -59,6 +59,8 @@ def add_source(slug, html_li):
     text = text[:end] + html_li + text[end:]
     save(p, text)
 
+# Correcciones factuales del cuerpo. Las descripciones/resúmenes aprobados de las 420
+# fichas no se reescriben aquí: los gestiona apply_accessible_descriptions_420.py.
 edit("viajar-en-avion-con-una-discapacidad-no-visible", [
     (
         "La asistencia Sin Barreras (PMR) es un servicio diferente, pensado para quienes necesitan asistencia durante el recorrido aeroportuario. Conviene solicitarla con antelación a través de la aerolínea o de Aena.",
@@ -74,9 +76,8 @@ edit("la-beca-del-ministerio-para-apoyo-educativo-neae", [
 
 add_source("estudiar-en-la-universidad-con-apoyos", '<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500" rel="noopener" target="_blank">Ley Orgánica 2/2023 del Sistema Universitario · art. 37</a></li>')
 
-edit("buscar-trabajo-siendo-neurodivergente", [
-    ("Esta ficha reúne puertas de entrada y recuerda que revelar un diagnóstico en un proceso de selección no es una obligación general.", "Esta ficha reúne puertas de entrada. En una selección ordinaria no existe una obligación general de contar un diagnóstico; algunos puestos, procesos o programas sí pueden exigir documentación concreta sobre aptitud o discapacidad."),
-])
+# La descripción de «Buscar trabajo...» pertenece al lote 420. Aquí solo se añade
+# la fuente factual que respalda el tratamiento de datos de salud.
 add_source("buscar-trabajo-siendo-neurodivergente", '<li><a href="https://www.aepd.es/prensa-y-comunicacion/blog/en-que-momento-comienza-legalmente-un-tratamiento-de-datos-personales" rel="noopener" target="_blank">AEPD · solicitud y tratamiento de datos de salud</a></li>')
 
 edit("perros-de-asistencia-que-reconoce-la-ley", [
@@ -90,9 +91,8 @@ edit("si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer", [
 add_source("dolor-salud-gastrointestinal-y-senales-corporales", '<li><a href="https://medlineplus.gov/spanish/ency/article/003120.htm" rel="noopener" target="_blank">MedlinePlus · dolor abdominal y signos de alarma</a></li>')
 add_source("epilepsia-y-otras-crisis-recurrentes-que-preparar", '<li><a href="https://medlineplus.gov/spanish/ency/article/000694.htm" rel="noopener" target="_blank">MedlinePlus · epilepsia y cuándo pedir ayuda urgente</a></li>')
 
-edit("menstruacion-menopausia-y-salud-sexual", [
-    ("Los cambios hormonales pueden modificar dolor, sueño, temperatura, energía, estado de ánimo y tolerancia sensorial. No todo cambio debe atribuirse a neurodivergencia.", "Los cambios del ciclo menstrual, la perimenopausia y la menopausia pueden acompañarse de dolor, cambios de sueño, temperatura, energía y estado de ánimo. No todo cambio debe atribuirse a neurodivergencia."),
-])
+# La descripción de «Menstruación, menopausia...» pertenece al lote 420. La fuente
+# se conserva aquí sin volver a modificar ese resumen.
 add_source("menstruacion-menopausia-y-salud-sexual", '<li><a href="https://www.nhs.uk/conditions/menopause-and-perimenopause/symptoms/" rel="noopener" target="_blank">NHS · síntomas de perimenopausia y menopausia</a></li>')
 
 add_source("arfid-tca-y-pica-cuando-el-apoyo-cotidiano-necesita-atencion-clinica", '<li><a href="https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/eating-disorders/overview/" rel="noopener" target="_blank">NHS · trastornos alimentarios y ARFID</a></li>')
