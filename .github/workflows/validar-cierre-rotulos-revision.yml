@@ -1,0 +1,81 @@
+name: Validar cierre de rótulos de revisión
+on:
+  push:
+    branches:
+      - trabajo/cerrar-rotulos-revision-20260910
+    paths:
+      - .github/workflows/validar-cierre-rotulos-revision.yml
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Confirmar backup y main
+        run: |
+          git fetch origin main backup/20260910-antes-cerrar-rotulos-revision-25d4221 --quiet
+          test "$(git rev-parse origin/main)" = "25d42217b099b6d3a031d1ca8b5221247f01fe6e"
+          test "$(git rev-parse origin/backup/20260910-antes-cerrar-rotulos-revision-25d4221)" = "25d42217b099b6d3a031d1ca8b5221247f01fe6e"
+      - name: Construir antes y después
+        run: |
+          mkdir -p /tmp/iris-review-labels
+          rm -rf /tmp/iris-review-labels/base
+          git worktree add --detach /tmp/iris-review-labels/base 25d42217b099b6d3a031d1ca8b5221247f01fe6e
+          (cd /tmp/iris-review-labels/base && python3 scripts/build_site.py >/tmp/iris-review-labels/before.log 2>&1)
+          python3 scripts/build_site.py >/tmp/iris-review-labels/after.log 2>&1
+      - name: Exigir cero rótulos y contenido intacto
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,re,subprocess
+          from pathlib import Path
+          b=Path('/tmp/iris-review-labels/base/dist');a=Path('dist');out=Path('/tmp/iris-review-labels')
+          def h(root):return {p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+          bh,ah=h(b),h(a);assert set(bh)==set(ah)
+          changed=sorted(x for x in bh if bh[x]!=ah[x]);assert len(changed)==184,len(changed)
+          cond=[x for x in changed if x.startswith('es/neurodiversidad/condiciones/')]
+          assert len(cond)==183,(len(cond),changed[:10])
+          assert [x for x in changed if x=='es/investigacion/index.html']==['es/investigacion/index.html']
+          def field(text,pat):
+              m=re.search(pat,text,re.I|re.S);return m.group(1) if m else None
+          def grades(text):
+              pats=[r'data-grado=["\']([^"\']*)',r'data-certeza=["\']([^"\']*)',r'<span class=["\']chip alt["\']>(Grade [^<]+)</span>',r'<span class=["\']chip alt["\']>(Grado [^<]+)</span>']
+              return [v for p in pats for v in re.findall(p,text,re.I)]
+          for rel in changed:
+              bt=(b/rel).read_text(errors='ignore');at=(a/rel).read_text(errors='ignore')
+              assert field(bt,r'<h1\b[^>]*>(.*?)</h1>')==field(at,r'<h1\b[^>]*>(.*?)</h1>'),rel
+              assert field(bt,r'<meta[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\']')==field(at,r'<meta[^>]*name=["\']description["\'][^>]*content=["\'](.*?)["\']'),rel
+              assert grades(bt)==grades(at),(rel,'grade')
+          pats=[
+            re.compile(r'(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)',re.I),
+            re.compile(r'(?:Revisión editorial\s*:|Editorial review\s*:)',re.I),
+            re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>',re.I),
+            re.compile(r'<strong>\s*(?:Revisión|Review)\s*:\s*</strong>',re.I),
+            re.compile(r'<span class="meta">[^<]*\bREVISADA\b[^<]*</span>',re.I),
+          ]
+          remaining=[]
+          for p in a.rglob('*.html'):
+              t=p.read_text(errors='ignore')
+              if any(rx.search(t) for rx in pats):remaining.append(p.relative_to(a).as_posix())
+          assert not remaining,remaining[:30]
+          assert sum((a/x).read_text().count('<h2>Última validación del texto</h2>') for x in cond)==183
+          research=(a/'es/investigacion/index.html').read_text()
+          assert 'Última validación de esta página: 10 de septiembre de 2026 · 120 publicaciones.' in research
+          assert 'This page last validated: 10 September 2026 · 120 publications.' in research
+          subprocess.run(['python3','scripts/sentidos_author.py','--root','dist'],check=True)
+          subprocess.run(['python3','scripts/sueno_author.py','--root','dist'],check=True)
+          # La normalización completa de estados sigue pasando sin cambios sustantivos.
+          subprocess.run(['python3','scripts/validate_publication_statuses.py','--root','dist'],check=True)
+          subprocess.run(['python3','scripts/finalize_validation_labels.py','--root','dist'],check=True)
+          report={'base':'25d42217b099b6d3a031d1ca8b5221247f01fe6e','backup':'backup/20260910-antes-cerrar-rotulos-revision-25d4221','changed_public_pages':184,'conditions_es_labels':183,'research_labels':2,'remaining_structural_review_labels':0,'titles_descriptions_grades_unchanged':True,'sentidos':'exacto','sueno':'exacto'}
+          (out/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: iris-cierre-rotulos-revision
+          path: /tmp/iris-review-labels
+          retention-days: 14
