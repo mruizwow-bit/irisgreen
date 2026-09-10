@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Real keyboard/pointer tests; no replacement of game state or callbacks.
-Non-modal reading/music panels permit Tab to leave; Escape returns to the opener.
+Non-modal reading/music panels permit Tab to leave; Escape returns to the opener
+when Reading remains open. If Reading closes itself to uncover the newly focused
+page control, focus must stay on that control instead of being stolen back.
 External services blocked. This is not an accessibility certification.
 """
 import argparse,functools,json,threading,re
@@ -13,7 +15,7 @@ class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-R={'phase':args.phase,'panels':[],'picture_games':[],'failures':[],'notes':['Non-modal reading and music: Tab is not trapped; Escape returns to their opener.','Large equivalent controls use the same game callbacks. Original picture rectangles are deliberately not enlarged over neighbouring objects.','External requests blocked. Not a WCAG certification or a screen-reader listening test.']}
+R={'phase':args.phase,'panels':[],'picture_games':[],'failures':[],'notes':['Non-modal reading and music: Tab is not trapped; Escape returns to the opener when the panel remains open. If Reading auto-closes to uncover external focus, focus remains on the destination control.','Large equivalent controls use the same game callbacks. Original picture rectangles are deliberately not enlarged over neighbouring objects.','External requests blocked. Not a WCAG certification or a screen-reader listening test.']}
 DYNAMIC=[p.relative_to(ROOT).as_posix() for p in [ROOT/'index.html',*sorted((ROOT/'es').rglob('*.html'))] if '<sc-if value="{{ a11yOpen }}"' in p.read_text()]
 assert len(DYNAMIC)==25
 STATIC=['es/neurodiversidad/condiciones/index.html','es/neurodiversidad/condiciones/abuso-y-explotacion/index.html','es/situaciones/index.html','es/intereses/index.html','es/sitio-tranquilo/index.html','en/neurodiversity/conditions/index.html']
@@ -69,8 +71,17 @@ def run():
       reset.click();check_box(p,panel)
       close=panel.locator('[data-ig-reading-close]');cbox=close.bounding_box();assert cbox['width']>=44 and cbox['height']>=44
       focusables=panel.locator('button:visible,a[href]:visible,input:visible,select:visible')
-      focusables.last.focus();p.keyboard.press('Tab');assert not panel.evaluate('(e)=>e.contains(document.activeElement)')
-      p.keyboard.press('Escape');p.wait_for_timeout(60);assert not panel.is_visible();assert opener.evaluate('(e)=>e===document.activeElement');assert opener.get_attribute('aria-expanded')=='false'
+      focusables.last.focus();p.keyboard.press('Tab');p.wait_for_timeout(60)
+      assert not panel.evaluate('(e)=>e.contains(document.activeElement)'),'Tab remained trapped in Reading'
+      if panel.is_visible():
+       p.keyboard.press('Escape');p.wait_for_timeout(60)
+       assert not panel.is_visible(),'Escape did not close Reading'
+       assert opener.evaluate('(e)=>e===document.activeElement'),'Escape did not restore focus to Reading opener'
+       assert opener.get_attribute('aria-expanded')=='false'
+      else:
+       assert opener.get_attribute('aria-expanded')=='false','Auto-closed Reading still reports expanded'
+       assert not opener.evaluate('(e)=>e===document.activeElement'),'Auto-close stole focus from the destination control'
+       row['reading_auto_closed_to_uncover_focus']=True
       music=p.locator('#plBtn:visible,.ig-uh-music:visible,[data-ig-music]:visible').first
       music.focus();music.press('Space');m=p.locator('#ig-music-panel');m.wait_for(state='visible');row['music_box']=check_box(p,m)
       langs=p.locator('.ig-uh-langs button:visible')
@@ -85,8 +96,8 @@ def run():
        row['player_language_switch']=True
       opener.click();panel.wait_for(state='visible');assert not m.is_visible(),'Two overlapping panels'
       music.click();m.wait_for(state='visible');p.wait_for_timeout(50);assert not panel.is_visible(),'Reading remained over Music'
-      assert m.evaluate('(e)=>e.contains(document.activeElement)')
-      p.keyboard.press('Escape');assert not m.is_visible();assert music.evaluate('(e)=>e===document.activeElement')
+      assert m.evaluate('(e)=>e.contains(document.activeElement)'),'Focus did not enter Music'
+      p.keyboard.press('Escape');assert not m.is_visible(),'Escape did not close Music';assert music.evaluate('(e)=>e===document.activeElement'),'Escape did not restore focus to Music opener'
       opener.click();panel.wait_for(state='visible');panel.locator('[data-ig-reading-close]').click();p.wait_for_timeout(60);assert not panel.is_visible();assert opener.evaluate('(e)=>e===document.activeElement')
       menu=p.locator('.ig-menu-button:visible')
       if menu.count():
@@ -105,7 +116,6 @@ def run():
       p.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
       try:
        p.goto(BASE+'/es/recursos/juegos/'+slug+'/',wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.locator('.ig-uh-langs button').filter(has_text=re.compile('^'+lang.upper()+'$')).click()
-       p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
        p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
        target=p.locator('main .ig-picture-target');before=rects(target)
        details=p.locator('.ig-touch-alternative');summary=details.locator('summary');summary.focus();summary.press('Space')
