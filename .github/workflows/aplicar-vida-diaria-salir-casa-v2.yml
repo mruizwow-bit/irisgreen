@@ -24,10 +24,14 @@ jobs:
           import re, textwrap
 
           source = Path('.github/workflows/aplicar-vida-diaria-salir-casa.yml').read_text(encoding='utf-8')
+          anchor = '      - name: Aplicar literalmente las 8 descripciones ES/EN\n'
+          if source.count(anchor) != 1:
+              raise SystemExit('No se encontró de forma única el paso aplicador')
+          section = source.split(anchor, 1)[1]
           marker = "          python3 - <<'PY'\n"
-          if source.count(marker) != 1:
-              raise SystemExit('No se encontró de forma única el aplicador fuente')
-          block = source.split(marker, 1)[1].split('\n          PY', 1)[0]
+          if marker not in section:
+              raise SystemExit('No se encontró el bloque Python del aplicador')
+          block = section.split(marker, 1)[1].split('\n          PY', 1)[0]
           code = textwrap.dedent(block)
 
           replacement = '''    pattern = re.compile(r'<a\\b(?=[^>]*\\bclass="[^"]*\\bvd-card\\b[^"]*")(?=[^>]*\\bhref="' + re.escape(href) + r'")[^>]*>.*?</a>', re.S)'''
