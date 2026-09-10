@@ -1,0 +1,57 @@
+name: Integrar Situaciones Sueño 01-23
+
+on:
+  push:
+    branches:
+      - integracion/situaciones-sentidos-sueno-20260910
+    paths:
+      - .github/workflows/situaciones-sueno-01-23.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integracion/situaciones-sentidos-sueno-20260910
+          fetch-depth: 0
+
+      - name: Aplicar Sueño 01-23
+        run: python3 scripts/apply_situaciones_sueno_01_23.py
+
+      - name: Comprobar fuentes protegidas
+        run: |
+          python3 scripts/sentidos_author.py
+          python3 scripts/sueno_author.py
+          git diff --check
+
+      - name: Guardar tanda en la rama
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            editorial/incoming/situaciones_sueno_20260910.txt \
+            editorial/reviews/situaciones_sueno_ES_EN.md \
+            editorial/reviews/situaciones-sueno-manifest.json \
+            scripts/sueno_author.py \
+            scripts/run_accessibility_descriptions_part1.py \
+            scripts/apply_situaciones_sueno_01_23.py \
+            buscador.json \
+            es/situaciones \
+            en/situations
+          git diff --cached --check
+          git diff --cached --quiet && { echo 'No hay cambios que guardar'; exit 1; } || true
+          git commit -m 'Situaciones Sueño 01-23 ES-EN [skip netlify]'
+
+      - name: Probar build completo sin publicar
+        run: python3 scripts/build_site.py
+
+      - name: Verificar Sueño y conservar Sentidos
+        run: python3 scripts/apply_situaciones_sueno_01_23.py --verify-dist
+
+      - name: Subir solo a rama de integración
+        run: git push origin HEAD:integracion/situaciones-sentidos-sueno-20260910
