@@ -5,6 +5,8 @@ on:
       - mejora/formato-y-sueno-20260910
     paths:
       - .github/workflows/verificar-formato-y-sueno.yml
+      - scripts/sueno_author.py
+      - editorial/reviews/situaciones_sueno_ES_EN.md
 permissions:
   contents: write
 jobs:
