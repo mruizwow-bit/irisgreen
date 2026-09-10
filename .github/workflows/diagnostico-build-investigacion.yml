@@ -1,0 +1,18 @@
+name: Diagnóstico build investigación
+
+on:
+  push:
+    paths:
+      - '.github/workflows/diagnostico-build-investigacion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproducir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ejecutar exactamente el build de Netlify
+        run: python3 scripts/build_site.py && python3 scripts/publish_investigacion.py
