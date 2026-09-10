@@ -1,0 +1,46 @@
+name: Auditar rótulos de revisión restantes
+on:
+  push:
+    branches:
+      - verificacion/produccion-validada-20260910-25d4221
+    paths:
+      - .github/workflows/auditar-rotulos-revision.yml
+permissions:
+  contents: read
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 25d42217b099b6d3a031d1ca8b5221247f01fe6e
+      - run: python3 scripts/build_site.py >/tmp/build.log 2>&1
+      - name: Buscar solo rótulos editoriales de revisión
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          pats={
+            'ultima_revision':re.compile(r'(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)',re.I),
+            'revision_editorial':re.compile(r'(?:Revisión editorial\s*:|Editorial review\s*:)',re.I),
+            'heading_revision':re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>',re.I),
+            'li_revision':re.compile(r'<strong>\s*(?:Revisión|Review)\s*:\s*</strong>',re.I),
+            'card_revisada':re.compile(r'<span class="meta">[^<]*\bREVISADA\b[^<]*</span>',re.I),
+          }
+          rows=[]
+          for p in Path('dist').rglob('*.html'):
+            text=p.read_text(errors='ignore')
+            for name,rx in pats.items():
+              for m in rx.finditer(text):
+                rows.append({'type':name,'path':p.relative_to('dist').as_posix(),'match':m.group(0)[:180]})
+          report={'total':len(rows),'by_type':{k:sum(x['type']==k for x in rows) for k in pats},'files':len({x['path'] for x in rows}),'items':rows}
+          Path('/tmp/revision-labels.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({'total':report['total'],'by_type':report['by_type'],'files':report['files']},ensure_ascii=False,indent=2))
+          for x in rows[:400]:print(x['type'],x['path'],x['match'])
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-rotulos-revision-restantes
+          path: /tmp/revision-labels.json
+          retention-days: 14
