@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, subprocess, sys
+import argparse, hashlib, json, re, subprocess, sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -85,7 +85,6 @@ def prepare():
     before=hashes(ROOT/'dist'); (OUT/'baseline.json').write_text(json.dumps(before,indent=2))
     assert len(before)>1500
     run('git','restore','--worktree','.')
-    # Restore committed work-branch files after resetting generated build changes.
     assert (ROOT/SOURCE).exists() and (ROOT/'scripts/sueno_author.py').exists()
     run(sys.executable,'scripts/sueno_author.py','--apply')
     css=ROOT/'assets/site-v23.css'; s=css.read_text()
@@ -115,9 +114,10 @@ def prepare():
         assert before[e['es_path']]==after[e['es_path']]
         assert before[e['en_path']]==after[e['en_path']]
     groups={'conditions':0,'situations':0,'data':0,'daily':0};outside=[]
+    ficha_pattern=re.compile(r'<article\b[^>]*\bclass=["\'][^"\']*\bficha\b[^"\']*["\'][^>]*>',re.I)
     for p in (ROOT/'dist').rglob('*.html'):
         rel=p.relative_to(ROOT/'dist').as_posix();text=p.read_text(errors='ignore')
-        if '<article class="ficha">' not in text:continue
+        if not ficha_pattern.search(text):continue
         if rel.startswith(('es/neurodiversidad/condiciones/','en/neurodiversity/conditions/')):groups['conditions']+=1
         elif rel.startswith(('es/situaciones/','en/situations/')):groups['situations']+=1
         elif rel.startswith(('es/datos/','en/data/')):groups['data']+=1
@@ -133,7 +133,6 @@ def prepare():
 
 def commit():
     files=json.loads((OUT/'final-files.json').read_text())
-    # Source and importer were committed earlier on this work branch; generated changes are staged now.
     generated=[p for p in files if subprocess.run(['git','diff','--quiet','HEAD','--',p],cwd=ROOT).returncode!=0]
     run('git','config','user.name','github-actions[bot]');run('git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com')
     run('git','add','--',*generated)
