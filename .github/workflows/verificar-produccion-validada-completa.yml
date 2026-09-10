@@ -1,0 +1,191 @@
+name: Verificar producción validada completa
+on:
+  push:
+    branches:
+      - verificacion/produccion-validada-20260910-c3ac14d
+    paths:
+      - .github/workflows/verificar-produccion-validada-completa.yml
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: c3ac14d5cd0868b74ec74fdb5f5a761fec79108f
+      - name: Construir referencia exacta
+        run: |
+          mkdir -p /tmp/iris-production-validation
+          python3 scripts/build_site.py >/tmp/iris-production-validation/build.log 2>&1
+          python3 scripts/sentidos_author.py --root dist >/tmp/iris-production-validation/sentidos.json
+          python3 scripts/sueno_author.py --root dist >/tmp/iris-production-validation/sueno.json
+      - name: Comparar 938 fichas con producción
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures, html, json, re, time, urllib.request
+          from pathlib import Path
+          from urllib.parse import quote
+
+          ROOT=Path('dist'); OUT=Path('/tmp/iris-production-validation'); BASE='https://irisgreen.eu'
+          groups={
+            'conditions_es':sorted(ROOT.glob('es/neurodiversidad/condiciones/*/index.html')),
+            'conditions_en':sorted(ROOT.glob('en/neurodiversity/conditions/*/index.html')),
+            'situations_es':sorted(ROOT.glob('es/situaciones/*/index.html')),
+            'situations_en':sorted(ROOT.glob('en/situations/*/index.html')),
+            'data_es':sorted(ROOT.glob('es/datos/*/index.html')),
+            'data_en':sorted(ROOT.glob('en/data/*/index.html')),
+            'daily_es':sorted(ROOT.glob('es/biblioteca/*/index.html')),
+            'daily_en':sorted(ROOT.glob('en/everyday-life/*/index.html')),
+          }
+          expected={'conditions_es':185,'conditions_en':185,'situations_es':187,'situations_en':187,'data_es':49,'data_en':49,'daily_es':48,'daily_en':48}
+          assert {k:len(v) for k,v in groups.items()}==expected,{k:len(v) for k,v in groups.items()}
+
+          def rel(p):return p.relative_to(ROOT).as_posix()
+          def route(r):return '/'+r[:-10] if r.endswith('index.html') else '/'+r
+          all_detail=[rel(p) for ps in groups.values() for p in ps]
+          assert len(all_detail)==938
+          extra=[
+            'es/neurodiversidad/condiciones/index.html','en/neurodiversity/conditions/index.html',
+            'es/situaciones/index.html','en/situations/index.html','es/datos/index.html','en/data/index.html',
+            'es/biblioteca/index.html','en/everyday-life/index.html','es/investigacion/index.html',
+            'es/cuestionarios/index.html','es/vivir-fuera/index.html','es/privacidad/index.html','en/privacy/index.html',
+            'es/intereses/index.html','en/interests/index.html',
+            'es/datos/datos.json','en/data/data.json','es/biblioteca/vida-diaria.json','en/everyday-life/everyday-life.json'
+          ]
+          targets=all_detail+extra
+
+          def fetch(r):
+            url=BASE+route(r)+('?igverify=c3ac14d' if '?' not in route(r) else '&igverify=c3ac14d')
+            last=None
+            for i in range(4):
+              try:
+                req=urllib.request.Request(url,headers={'User-Agent':'IrisGreen-production-validation','Cache-Control':'no-cache','Pragma':'no-cache'})
+                with urllib.request.urlopen(req,timeout=30) as resp:
+                  body=resp.read().decode('utf-8');status=resp.status
+                if status!=200:raise RuntimeError((r,status))
+                return r,body
+              except Exception as e:
+                last=e;time.sleep(1+i)
+            raise RuntimeError((r,last))
+
+          public={}
+          errors=[]
+          with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:
+            futs=[ex.submit(fetch,r) for r in targets]
+            for fut in concurrent.futures.as_completed(futs):
+              try:r,b=fut.result();public[r]=b
+              except Exception as e:errors.append(repr(e))
+          assert not errors,errors[:20]
+          assert len(public)==len(targets),(len(public),len(targets))
+
+          def plain(s):return ' '.join(html.unescape(re.sub(r'<[^>]*>',' ',s)).split())
+          def first(text,pat):
+            m=re.search(pat,text,re.I|re.S);return plain(m.group(1)) if m else None
+          def meta_description(text):
+            for m in re.finditer(r'<meta\b[^>]*>',text,re.I|re.S):
+              tag=m.group(0)
+              n=re.search(r'name=["\']description["\']',tag,re.I)
+              if not n:continue
+              c=re.search(r'content=["\'](.*?)["\']',tag,re.I|re.S)
+              return html.unescape(c.group(1)) if c else None
+            return None
+          def grades(text):
+            pats=[r'data-grado=["\']([^"\']*)',r'data-certeza=["\']([^"\']*)',r'<span class=["\']chip alt["\']>(Grade [^<]+)</span>',r'<span class=["\']chip alt["\']>(Grado [^<]+)</span>']
+            return [html.unescape(v) for p in pats for v in re.findall(p,text,re.I)]
+
+          stale=[
+            re.compile(r'<span class="chip lil">(?:BORRADOR|DRAFT)</span>',re.I),
+            re.compile(r'<span class="meta">[^<]*\b(?:BORRADOR|DRAFT|REVISADA)\b[^<]*</span>',re.I),
+            re.compile(r'data-editorial-status="generated-draft"',re.I),
+            re.compile(r'Review: not yet verified',re.I),
+            re.compile(r'las páginas siguen en noindex hasta',re.I),re.compile(r'these pages stay noindex until',re.I),
+            re.compile(r'Pendiente de completar:',re.I),re.compile(r'Still to complete:',re.I),
+            re.compile(r'(?:Última revisión(?: del texto)?\s*:|Last reviewed\s*:)',re.I),
+            re.compile(r'(?:Revisión editorial\s*:|Editorial review\s*:)',re.I),
+            re.compile(r'<h[1-6][^>]*>\s*(?:Revisión|Review|Sources and review|Base documental y revisión|Última revisión del texto)\s*</h[1-6]>',re.I),
+            re.compile(r'<strong>\s*(?:Revisión|Review)\s*:\s*</strong>',re.I),
+          ]
+
+          content_checks=0; noindex=[]; stale_hits=[]
+          for r in all_detail:
+            local=(ROOT/r).read_text(errors='ignore');live=public[r]
+            assert first(local,r'<h1\b[^>]*>(.*?)</h1>')==first(live,r'<h1\b[^>]*>(.*?)</h1>'),(r,'h1')
+            assert meta_description(local)==meta_description(live),(r,'meta description')
+            assert first(local,r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>')==first(live,r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>'),(r,'lede')
+            assert grades(local)==grades(live),(r,'grades')
+            if 'content="noindex,follow"' in live:noindex.append(r)
+            if any(rx.search(live) for rx in stale):stale_hits.append(r)
+            content_checks+=1
+          assert not noindex,noindex[:30]
+          assert not stale_hits,stale_hits[:30]
+
+          # Índices y páginas especiales: buscar solo marcadores estructurales, no palabras normales.
+          special_hits=[]
+          for r in extra[:15]:
+            if any(rx.search(public[r]) for rx in stale):special_hits.append(r)
+          assert not special_hits,special_hits
+
+          bib=public['es/biblioteca/index.html'];assert bib.count('VALIDADA</span>')==48,bib.count('VALIDADA</span>')
+          den=public['en/everyday-life/index.html'];assert den.count('VALIDATED</span>')>=48,den.count('VALIDATED</span>')
+          assert 'published and validated for this edition' in public['en/neurodiversity/conditions/index.html']
+          assert 'publicadas y validadas para esta edición' in public['es/datos/index.html']
+          assert 'published and validated for this edition' in public['en/data/index.html']
+          assert public['es/investigacion/index.html'].count('<h2>Última validación del texto</h2>')==0
+          assert 'Última validación de esta página: 10 de septiembre de 2026 · 120 publicaciones.' in public['es/investigacion/index.html']
+          assert 'This page last validated: 10 September 2026 · 120 publications.' in public['es/investigacion/index.html']
+          cond_validation=sum(public[r].count('<h2>Última validación del texto</h2>') for r in [rel(p) for p in groups['conditions_es']])
+          assert cond_validation==183,cond_validation
+          assert 'Última validación: 10 de septiembre de 2026.' in public['es/privacidad/index.html']
+          assert 'Last validated: 10 September 2026.' in public['en/privacy/index.html']
+          assert 'Pendiente de localizar una adaptación española documentada.' not in public['es/cuestionarios/index.html']
+          assert 'Última revisión:' not in public['es/cuestionarios/index.html'] and 'Last reviewed:' not in public['es/cuestionarios/index.html']
+          assert 'Pendiente de completar:' not in public['es/vivir-fuera/index.html'] and 'Still to complete:' not in public['es/vivir-fuera/index.html']
+
+          # JSON públicos de estado.
+          assert all(x.get('status')=='validado' for x in json.loads(public['es/datos/datos.json']))
+          assert all(x.get('status')=='validated' for x in json.loads(public['en/data/data.json']))
+          assert all(x.get('status')=='validado' for x in json.loads(public['es/biblioteca/vida-diaria.json']))
+          assert all(x.get('status')=='validated' for x in json.loads(public['en/everyday-life/everyday-life.json']))
+
+          # Comprobación directa de los textos cerrados de autora contra sus fuentes, no solo contra dist.
+          def author_rows(md,n):
+            blocks=re.findall(r'^## (\d+)\. ([^\n]+)\n\n### ES\n([^\n]+)\n\n### EN\n([^\n]+)',Path(md).read_text(),re.M)
+            assert len(blocks)==n
+            return blocks
+          exact={}
+          for name,md,mf,n in [
+            ('sentidos','editorial/reviews/situaciones_sentidos_ES_EN.md','editorial/reviews/situaciones-sentidos-manifest.json',24),
+            ('sueno','editorial/reviews/situaciones_sueno_ES_EN.md','editorial/reviews/situaciones-sueno-manifest.json',23),
+          ]:
+            rows=author_rows(md,n);manifest=json.loads(Path(mf).read_text());count=0
+            for row,e in zip(rows,manifest['entries']):
+              _,title_es,desc_es,desc_en=row
+              for lang,desc in [('es',desc_es),('en',desc_en)]:
+                r=e[lang+'_path'];live=public[r]
+                assert first(live,r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>')==desc,(name,r)
+                count+=1
+            exact[name]=count
+
+          report={
+            'production':BASE,'commit':'c3ac14d5cd0868b74ec74fdb5f5a761fec79108f',
+            'detail_pages_checked':content_checks,'all_detail_pages_indexable':True,
+            'stale_structural_status_markers':0,'conditions_es_validation_labels':cond_validation,
+            'biblioteca_validada_cards':48,'daily_en_validated_cards':48,
+            'data_es_validated':49,'data_en_validated':49,
+            'sentidos_exact_public_pages':exact['sentidos'],'sueno_exact_public_pages':exact['sueno'],
+            'titles_descriptions_grades_match_deployed_build':True,
+            'special_status_pages_checked':15,
+          }
+          (OUT/'production.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Guardar comprobación pública
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: iris-produccion-validada-c3ac14d
+          path: /tmp/iris-production-validation
+          retention-days: 14
+          if-no-files-found: error
