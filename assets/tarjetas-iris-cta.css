@@ -14,7 +14,7 @@ main:has(.iris-ficha-body-grid){width:min(100%,82rem);max-width:82rem;padding-in
 .iris-personal-head>strong{font:400 1.8rem/1.15 Newsreader,Georgia,serif;color:#26352f}
 .iris-personal-head>span{text-align:right;font-size:.72rem;line-height:1.35;letter-spacing:.08em;color:#59626b}
 .iris-personal-head b{color:var(--iris-accent);font-weight:700}
-.iris-card-title-input{display:block;width:100%;margin:1.65rem 0 1.55rem;padding:.1rem 0;border:0;background:transparent;font:400 clamp(2.3rem,4vw,3.55rem)/1.06 Newsreader,Georgia,serif;color:#27352f}
+.iris-card-title-input{display:block;width:100%;margin:1.65rem 0 1.55rem;padding:.1rem 0;border:0;resize:none;overflow:hidden;background:transparent;font:400 clamp(2.3rem,4vw,3.55rem)/1.06 Newsreader,Georgia,serif;color:#27352f}
 .iris-card-title-input:focus-visible,.iris-card-field textarea:focus-visible{outline:2px solid var(--iris-accent);outline-offset:4px;border-radius:.25rem}
 .iris-card-field{display:block;margin:0 0 1.25rem}
 .iris-card-field>span{display:block;margin:0 0 .35rem;font-weight:700;font-size:1.05rem;color:#2c3a34}
