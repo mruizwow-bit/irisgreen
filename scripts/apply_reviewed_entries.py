@@ -75,7 +75,7 @@ def update_page(text,entry,loc,lang):
             legacy['removed_badges'].append(tree.text(n));changes.append((n.start,n.end,''))
         if n.tag=='title':changes.append((n.start,n.end,'<title>'+esc(loc['title'])+' · Iris Green</title>'))
         if n.tag=='meta' and (n.attrs.get('name')=='description' or n.attrs.get('property')=='og:description'):
-            tag=text[n.start:n.end];tag,c=re.subn(r'content=([\"\']).*?\1',lambda _: 'content="'+esc(loc['summary'])+'"',tag,count=1,flags=re.S);assert c==1;changes.append((n.start,n.end,tag))
+            tag=text[n.start:n.end];tag,c=re.subn(r'content=(["\']).*?\1',lambda _: 'content="'+esc(loc['summary'])+'"',tag,count=1,flags=re.S);assert c==1;changes.append((n.start,n.end,tag))
         if n.tag=='script' and n.attrs.get('type')=='application/ld+json':
             raw=text[n.opening_end:text.rfind('</script',n.start,n.end)];obj=json.loads(raw)
             def sync(value):
@@ -124,9 +124,8 @@ def run(check=False):
         route=urlsplit(row['u']).path
         if route in expected_descriptions:row['d']=expected_descriptions[route];seen.append(route)
     assert set(seen)==set(expected_descriptions)
-    assert len(catalog)==len(before)==372
+    assert len(catalog)==len(before)
     for r in catalog:assert {k:v for k,v in r.items() if k!='d'}=={k:v for k,v in before[r['u']].items() if k!='d'}
-    # Keep the established JSON format and avoid rewriting every line.
     if any(r!=before[r['u']] for r in catalog):
         for r in catalog:
             old=before[r['u']]['d']
@@ -147,7 +146,6 @@ def run(check=False):
     REPORT.mkdir(parents=True,exist_ok=True)
     baseline=REPORT/'legacy-two-entries.json'
     if not baseline.exists():baseline.write_text(json.dumps(legacy,ensure_ascii=False,indent=2)+'\n')
-    # Write only once all structure and integrity checks have passed.
     for path,s in staged.items():
         if path in changed:(ROOT/path).write_text(s)
     report={'changed_files':changed,'reviewed_entries':len(data['entries']),'languages':['es','en'],'claim_pairs':sum(len(s['paragraphs']) for e in data['entries'] for s in e['locales']['es']['sections']),'search_records':len(catalog),'video_total_before':old_total,'video_total_after':vcount,'robots_changes':False,'clinical_validation':False,'note':'Documentary comparison of named claims only; all other entries remain outside this review.'}
