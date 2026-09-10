@@ -8,6 +8,7 @@ import apply_accessibility_descriptions_part1 as core
 import sentidos_author as sentidos
 import sueno_author as sueno
 import comunicacion_author as comunicacion
+import alimentacion_author as alimentacion
 
 SPECIAL_COUNTERPARTS={
     '/es/situaciones/necesito-que-me-repitan-las-instrucciones/':
@@ -69,8 +70,6 @@ def check(root: Path, approved=None):
             card=by[row[lang+'_route']]
             if index_tree.text(card['lead'])!=row[lang]:
                 raise ValueError('Stale catalogue description: '+str(path))
-            # Spanish titles are part of the approved source. English titles were
-            # not supplied in it and therefore remain exactly as they already were.
             if lang=='es' and index_tree.text(card['title'])!=row['title_es']:
                 raise ValueError('Stale catalogue title: '+str(path))
         rec=search.get(row['es_route'])
@@ -92,11 +91,12 @@ _generic_rows = core.rows
 
 
 def combined_rows():
-    """Sentidos, Sueño y Comunicación usan sus fuentes editoriales protegidas; el resto conserva el paquete general."""
+    """Sentidos, Sueño, Comunicación y Alimentación usan sus fuentes protegidas; el resto conserva el paquete general."""
     approved = _generic_rows()
     sensory = {row['number']: row for row in sentidos.approved_rows()}
     sleep = {row['number']: row for row in sueno.approved_rows()}
     communication = {row['number']: row for row in comunicacion.approved_rows()}
+    food = {row['number']: row for row in alimentacion.approved_rows()}
     for row in approved:
         if row.get('area') == 'Sentidos':
             src = sensory[row['number']]
@@ -104,6 +104,8 @@ def combined_rows():
             src = sleep[row['number']]
         elif row.get('area') == 'Comunicación':
             src = communication[row['number']]
+        elif row.get('area') == 'Alimentación':
+            src = food[row['number']]
         else:
             continue
         row['title_es'] = src['title_es']
