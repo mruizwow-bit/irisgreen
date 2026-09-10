@@ -11,10 +11,35 @@
 [build.environment]
   "PYTHON_VERSION" = "3.12"
 
+# MODO MANTENIMIENTO TEMPORAL: retirar estas dos reglas para reabrir el sitio.
+[[redirects]]
+  from = "/mantenimiento/"
+  to = "/assets/maintenance.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/mantenimiento/"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/es/recursos/juegos/juegos-86.json"
   to = "/es/recursos/juegos/juegos-120.json"
   status = 301
+
+[[headers]]
+  for = "/mantenimiento/*"
+  [headers.values]
+    "Cache-Control" = "no-store, max-age=0"
+    "X-Robots-Tag" = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/assets/maintenance.html"
+  [headers.values]
+    "Cache-Control" = "no-store, max-age=0"
+    "X-Robots-Tag" = "noindex, nofollow, noarchive"
 
 [[headers]]
   for = "/sitemap.xml"
