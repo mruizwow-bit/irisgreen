@@ -8,7 +8,7 @@ permissions:
 jobs:
   comprobar:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Preparar navegador
@@ -16,11 +16,14 @@ jobs:
           python3 -m venv /tmp/ig-release
           /tmp/ig-release/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
           /tmp/ig-release/bin/python -m playwright install --with-deps chromium >/tmp/ig-release-install.log 2>&1
+      - name: Compilar scripts de integración
+        run: |
+          python3 -m py_compile scripts/apply_accessible_descriptions_420.py scripts/finalize_validation_labels.py scripts/build_site.py
       - name: Generar exactamente el directorio que publicará Netlify
         run: |
           python3 scripts/build_site.py
           python3 - <<'PY'
-          import json,hashlib,tomllib,subprocess
+          import json,tomllib,subprocess
           from pathlib import Path
           cfg=tomllib.loads(Path('netlify.toml').read_text())
           assert cfg['build']['publish']=='dist'
@@ -32,9 +35,52 @@ jobs:
           for video in manifest['requested_ids']:
               assert (Path('dist/assets/video-thumbnails')/(video+'.jpg')).is_file(),video
           missing=[name for name in ['assets/books/luma-es-512.webp','assets/books/autismo-es-512.webp'] if not (Path('dist')/name).is_file()]
-          report={'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'publish':'dist','public_files':len(files),'working_directories_excluded':True,'thumbnails':len(manifest['requested_ids']),'known_missing_covers':missing,'note':'No nueva validación clínica ni certificación de vídeos remotos. Las portadas ausentes son un defecto previamente existente, no se inventan.'}
+          report={'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'publish':'dist','public_files':len(files),'working_directories_excluded':True,'thumbnails':len(manifest['requested_ids']),'known_missing_covers':missing}
           (out/'preflight.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
           print(json.dumps(report,ensure_ascii=False))
+          PY
+      - name: Repetir los 13 bloqueadores estructurales históricos
+        run: |
+          /tmp/ig-release/bin/python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          root=Path('dist'); failures=[]
+          def doc(rel):
+              p=root/rel
+              if not p.is_file():
+                  failures.append(f'{rel}: no existe')
+                  return BeautifulSoup('', 'html.parser')
+              return BeautifulSoup(p.read_text(encoding='utf-8'), 'html.parser')
+          def name(el,soup):
+              if (el.get('aria-label') or '').strip(): return el.get('aria-label').strip()
+              ids=(el.get('aria-labelledby') or '').split()
+              if ids:
+                  text=' '.join((soup.find(id=i).get_text(' ',strip=True) if soup.find(id=i) else '') for i in ids).strip()
+                  if text: return text
+              if el.name=='input' and el.get('id'):
+                  lab=soup.find('label',attrs={'for':el.get('id')})
+                  if lab and lab.get_text(' ',strip=True): return lab.get_text(' ',strip=True)
+              if el.get_text(' ',strip=True): return el.get_text(' ',strip=True)
+              img=el.find('img',alt=True)
+              if img and img.get('alt','').strip(): return img.get('alt').strip()
+              return (el.get('title') or '').strip()
+          for rel in ['en/interests/index.html','es/intereses/index.html','es/investigacion/index.html','es/videos/index.html']:
+              s=doc(rel); fields=s.find_all('input',attrs={'type':'search'})
+              if not fields: failures.append(f'{rel}: falta input de búsqueda')
+              for i,e in enumerate(fields,1):
+                  if not name(e,s): failures.append(f'{rel}: búsqueda {i} sin nombre accesible')
+          for rel in ['en/situations/i-need-instructions-repeated/index.html','es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html','index.html']:
+              s=doc(rel)
+              for i,e in enumerate(s.find_all('button'),1):
+                  if not name(e,s): failures.append(f'{rel}: botón {i} sin nombre accesible')
+          rel='es/intereses/imprimir/index.html'; s=doc(rel)
+          if not s.find('main'): failures.append(f'{rel}: falta main')
+          if not s.find('h1'): failures.append(f'{rel}: falta h1')
+          rel='es/recursos/juegos/index.html'; s=doc(rel)
+          for i,e in enumerate(s.find_all('a'),1):
+              if not name(e,s): failures.append(f'{rel}: enlace {i} sin nombre accesible')
+          if failures: raise SystemExit('\n'.join(failures))
+          print('9 páginas históricas comprobadas: 0 bloqueadores')
           PY
       - name: Comprobar filtros, listados y recuperación de errores
         run: cd dist && /tmp/ig-release/bin/python ../scripts/test_coherence.py
