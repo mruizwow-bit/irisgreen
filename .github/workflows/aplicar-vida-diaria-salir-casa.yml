@@ -1,0 +1,248 @@
+name: Aplicar Vida diaria · Salir de casa
+
+on:
+  push:
+    paths:
+      - '.github/workflows/aplicar-vida-diaria-salir-casa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar-y-validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aplicar literalmente las 8 descripciones ES/EN
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, json
+
+          pairs = [
+              (
+                  'Viajar en avión con una discapacidad no visible',
+                  'Flying with a non-visible disability',
+                  'viajar-en-avion-con-una-discapacidad-no-visible',
+                  'flying-with-a-non-visible-disability',
+                  'En un aeropuerto hay que orientarse, esperar, pasar controles y seguir posibles cambios de puerta o de horario. Aena ofrece un distintivo para personas con discapacidades no visibles. El distintivo indica al personal que la persona puede necesitar más tiempo o apoyo durante el paso por el aeropuerto.',
+                  'At an airport, people need to find their way around, wait, go through security checks and follow possible gate or schedule changes. Aena offers a badge for people with non-visible disabilities. The badge tells staff that the person may need more time or support while moving through the airport.'
+              ),
+              (
+                  'Transporte público y desplazamientos',
+                  'Public transport and getting around',
+                  'transporte-publico-y-desplazamientos',
+                  'public-transport-and-getting-around',
+                  'Viajar en autobús, metro o tren implica consultar horarios, usar un billete y orientarse. Durante el trayecto también hay que seguir avisos y reaccionar si cambia el andén, la línea o el horario. El ruido, las esperas y la cantidad de gente también pueden dificultar el viaje.',
+                  'Travelling by bus, metro or train involves checking schedules, using a ticket and finding the way. During the journey, people also need to follow announcements and respond if the platform, line or schedule changes. Noise, waiting and crowds can also make the journey more difficult.'
+              ),
+              (
+                  'Compras, recados y esperas',
+                  'Shopping, errands and waiting',
+                  'compras-recados-y-esperas',
+                  'shopping-errands-and-waiting',
+                  'Hacer la compra incluye preparar una lista, desplazarse, buscar productos, comparar precios y pagar. Durante la compra también hay luces, ruido, conversaciones y esperas. Si un producto no está disponible, hay que elegir otro o cambiar lo que estaba previsto.',
+                  'Shopping includes preparing a list, travelling, finding products, comparing prices and paying. There are also lights, noise, conversations and waiting during the shopping trip. If a product is not available, another one has to be chosen or the original plan has to change.'
+              ),
+              (
+                  'Restaurantes y comer fuera',
+                  'Restaurants and eating out',
+                  'restaurantes-y-comer-fuera',
+                  'restaurants-and-eating-out',
+                  'Comer fuera implica elegir en un menú, esperar y estar en un lugar con olores, ruido y otras personas. La comida puede estar preparada de una forma distinta a la de casa y llegar con una textura, un ingrediente o una presentación diferente de la esperada. Consultar el menú y preguntar por los ingredientes antes de pedir ayuda a saber mejor qué comida llegará.',
+                  'Eating out involves choosing from a menu, waiting and being in a place with smells, noise and other people. The food may be prepared differently from at home and may arrive with a different texture, ingredient or presentation from what was expected. Checking the menu and asking about ingredients before ordering helps people know more clearly what food will arrive.'
+              ),
+              (
+                  'Cine, teatro y museos con menos estímulos',
+                  'Cinema, theatre and museums with fewer stimuli',
+                  'cine-teatro-y-museos-con-menos-estimulos',
+                  'cinema-theatre-and-museums-with-fewer-stimuli',
+                  'Algunos cines, teatros y museos ofrecen sesiones o visitas con menos estímulos. Reducen, por ejemplo, el volumen o la intensidad de la luz y permiten moverse con más libertad. Estas opciones también sirven a personas con ansiedad, hiperacusia, misofonía u otras necesidades sensoriales; no son exclusivas del autismo.',
+                  'Some cinemas, theatres and museums offer sessions or visits with fewer sensory demands. For example, they may reduce sound levels or the intensity of lighting and allow people to move more freely. These options can also help people with anxiety, hyperacusis, misophonia or other sensory needs; they are not only for autistic people.'
+              ),
+              (
+                  'Actividad física, deporte y piscina',
+                  'Physical activity, sport and swimming',
+                  'actividad-fisica-deporte-y-piscina',
+                  'physical-activity-sport-and-swimming',
+                  'La actividad física no se limita al deporte. También incluye caminar, bailar, nadar, montar en bicicleta, jugar o moverse de otras formas. La actividad se elige según la salud, la movilidad, las preferencias y las necesidades sensoriales de cada persona.',
+                  "Physical activity is not limited to sport. It also includes walking, dancing, swimming, cycling, playing or moving in other ways. The activity is chosen according to each person's health, mobility, preferences and sensory needs."
+              ),
+              (
+                  'Ocio, arte, música, animales y naturaleza',
+                  'Leisure, art, music, animals and nature',
+                  'ocio-arte-musica-animales-y-naturaleza',
+                  'leisure-art-music-animals-and-nature',
+                  'El ocio no tiene que ser terapéutico ni productivo. Leer, crear, escuchar música, estar con animales o pasar tiempo al aire libre tienen valor si la persona los disfruta o le ayudan a descansar.',
+                  'Leisure does not have to be therapeutic or productive. Reading, creating, listening to music, spending time with animals or being outdoors have value when the person enjoys them or they help the person rest.'
+              ),
+              (
+                  'Perros de asistencia: qué reconoce la ley',
+                  'Assistance dogs: what the law recognises',
+                  'perros-de-asistencia-que-reconoce-la-ley',
+                  'assistance-dogs-what-the-law-recognises',
+                  'Un perro de asistencia está entrenado para realizar tareas concretas relacionadas con la discapacidad de una persona. La normativa estatal reconoce varias categorías y regula en qué lugares puede entrar el perro y qué condiciones deben proteger su bienestar. El reconocimiento oficial del perro y algunos trámites también dependen de la comunidad autónoma.',
+                  "An assistance dog is trained to carry out specific tasks related to a person's disability. National rules recognise several categories and regulate where the dog may enter and which conditions must protect its welfare. Official recognition of the dog and some procedures also depend on the autonomous community."
+              ),
+          ]
+
+          roots = {
+              'es': (Path('es/biblioteca/vida-diaria.json'), Path('es/biblioteca/index.html'), Path('es/biblioteca')),
+              'en': (Path('en/everyday-life/everyday-life.json'), Path('en/everyday-life/index.html'), Path('en/everyday-life')),
+          }
+
+          def excerpt(s):
+              return s if len(s) <= 170 else s[:169].rstrip() + '…'
+
+          def update_json(path, title, new_lede):
+              raw = path.read_text(encoding='utf-8')
+              data = json.loads(raw)
+              rows = [x for x in data['fichas'] if x.get('title') == title]
+              if len(rows) != 1:
+                  raise AssertionError(f'{path}: título no único: {title!r}')
+              old = rows[0]['lede']
+              old_json = json.dumps(old, ensure_ascii=False)
+              new_json = json.dumps(new_lede, ensure_ascii=False)
+              needle = '"lede": ' + old_json
+              if raw.count(needle) != 1:
+                  raise AssertionError(f'{path}: lede antiguo no localizado una vez para {title!r}')
+              path.write_text(raw.replace(needle, '"lede": ' + new_json, 1), encoding='utf-8')
+              return old
+
+          def update_detail(path, old, new):
+              text = path.read_text(encoding='utf-8')
+              old_full = html.escape(old, quote=False)
+              new_full = html.escape(new, quote=False)
+              old_short = html.escape(excerpt(old), quote=False)
+              new_short = html.escape(excerpt(new), quote=False)
+              if old_full not in text and new_full not in text:
+                  raise AssertionError(f'{path}: no aparece la descripción completa esperada')
+              text = text.replace(old_full, new_full)
+              if old_short != old_full:
+                  text = text.replace(old_short, new_short)
+              path.write_text(text, encoding='utf-8')
+
+          def update_card(index_path, href, old, new):
+              text = index_path.read_text(encoding='utf-8')
+              if href not in text:
+                  raise AssertionError(f'{index_path}: tarjeta ausente {href}')
+              old_search = html.escape(old.lower(), quote=False)
+              new_search = html.escape(new.lower(), quote=False)
+              old_short = html.escape(excerpt(old), quote=False)
+              new_short = html.escape(excerpt(new), quote=False)
+              if old_search not in text and new_search not in text:
+                  raise AssertionError(f'{index_path}: texto de búsqueda ausente {href}')
+              text = text.replace(old_search, new_search, 1)
+              if old_short in text:
+                  text = text.replace(old_short, new_short, 1)
+              elif new_short not in text:
+                  raise AssertionError(f'{index_path}: resumen visible ausente {href}')
+              index_path.write_text(text, encoding='utf-8')
+
+          for es_title, en_title, es_slug, en_slug, es_new, en_new in pairs:
+              for lang, title, slug, new in (
+                  ('es', es_title, es_slug, es_new),
+                  ('en', en_title, en_slug, en_new),
+              ):
+                  json_path, index_path, page_root = roots[lang]
+                  old = update_json(json_path, title, new)
+                  update_detail(page_root / slug / 'index.html', old, new)
+                  href = f'/{"es/biblioteca" if lang == "es" else "en/everyday-life"}/{slug}/'
+                  update_card(index_path, href, old, new)
+
+          # El corrector histórico de Aena buscaba una frase del lede antiguo.
+          # El nuevo lede ya no contiene esa afirmación, así que esa sustitución queda obsoleta.
+          pub = Path('scripts/publish_biblioteca.py')
+          text = pub.read_text(encoding='utf-8')
+          obsolete = '    ("Es gratuito, se solicita en su web y sirve", "Se solicita en su web y sirve"),\n'
+          if obsolete in text:
+              text = text.replace(obsolete, '', 1)
+          pub.write_text(text, encoding='utf-8')
+
+          # Verificación de fuente antes del build.
+          for es_title, en_title, es_slug, en_slug, es_new, en_new in pairs:
+              for lang, title, slug, new in (
+                  ('es', es_title, es_slug, es_new),
+                  ('en', en_title, en_slug, en_new),
+              ):
+                  json_path, index_path, page_root = roots[lang]
+                  data = json.loads(json_path.read_text(encoding='utf-8'))
+                  row = next(x for x in data['fichas'] if x['title'] == title)
+                  assert row['lede'] == new
+                  assert html.escape(new, quote=False) in (page_root / slug / 'index.html').read_text(encoding='utf-8')
+                  idx = index_path.read_text(encoding='utf-8')
+                  assert html.escape(new.lower(), quote=False) in idx
+                  assert html.escape(excerpt(new), quote=False) in idx
+
+          print('OK fuente: 8 fichas ES + 8 fichas EN, catálogos e índices actualizados literalmente')
+          PY
+
+      - name: Preparar commit validable sin desplegar
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            es/biblioteca/vida-diaria.json es/biblioteca/index.html \
+            en/everyday-life/everyday-life.json en/everyday-life/index.html \
+            scripts/publish_biblioteca.py \
+            es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html \
+            es/biblioteca/transporte-publico-y-desplazamientos/index.html \
+            es/biblioteca/compras-recados-y-esperas/index.html \
+            es/biblioteca/restaurantes-y-comer-fuera/index.html \
+            es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/index.html \
+            es/biblioteca/actividad-fisica-deporte-y-piscina/index.html \
+            es/biblioteca/ocio-arte-musica-animales-y-naturaleza/index.html \
+            es/biblioteca/perros-de-asistencia-que-reconoce-la-ley/index.html \
+            en/everyday-life/flying-with-a-non-visible-disability/index.html \
+            en/everyday-life/public-transport-and-getting-around/index.html \
+            en/everyday-life/shopping-errands-and-waiting/index.html \
+            en/everyday-life/restaurants-and-eating-out/index.html \
+            en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/index.html \
+            en/everyday-life/physical-activity-sport-and-swimming/index.html \
+            en/everyday-life/leisure-art-music-animals-and-nature/index.html \
+            en/everyday-life/assistance-dogs-what-the-law-recognises/index.html
+          git diff --cached --check
+          git commit -m "Actualizar Vida diaria · Salir de casa ES/EN [skip netlify]"
+
+      - name: Ejecutar build completo antes de publicar
+        shell: bash
+        run: python3 scripts/build_site.py
+
+      - name: Comprobar salida pública exacta
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          checks = {
+            'dist/es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html': 'En un aeropuerto hay que orientarse, esperar, pasar controles y seguir posibles cambios de puerta o de horario.',
+            'dist/es/biblioteca/transporte-publico-y-desplazamientos/index.html': 'Viajar en autobús, metro o tren implica consultar horarios, usar un billete y orientarse.',
+            'dist/es/biblioteca/compras-recados-y-esperas/index.html': 'Hacer la compra incluye preparar una lista, desplazarse, buscar productos, comparar precios y pagar.',
+            'dist/es/biblioteca/restaurantes-y-comer-fuera/index.html': 'Comer fuera implica elegir en un menú, esperar y estar en un lugar con olores, ruido y otras personas.',
+            'dist/es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/index.html': 'Algunos cines, teatros y museos ofrecen sesiones o visitas con menos estímulos.',
+            'dist/es/biblioteca/actividad-fisica-deporte-y-piscina/index.html': 'La actividad física no se limita al deporte.',
+            'dist/es/biblioteca/ocio-arte-musica-animales-y-naturaleza/index.html': 'El ocio no tiene que ser terapéutico ni productivo.',
+            'dist/es/biblioteca/perros-de-asistencia-que-reconoce-la-ley/index.html': 'Un perro de asistencia está entrenado para realizar tareas concretas relacionadas con la discapacidad de una persona.',
+            'dist/en/everyday-life/flying-with-a-non-visible-disability/index.html': 'At an airport, people need to find their way around, wait, go through security checks and follow possible gate or schedule changes.',
+            'dist/en/everyday-life/public-transport-and-getting-around/index.html': 'Travelling by bus, metro or train involves checking schedules, using a ticket and finding the way.',
+            'dist/en/everyday-life/shopping-errands-and-waiting/index.html': 'Shopping includes preparing a list, travelling, finding products, comparing prices and paying.',
+            'dist/en/everyday-life/restaurants-and-eating-out/index.html': 'Eating out involves choosing from a menu, waiting and being in a place with smells, noise and other people.',
+            'dist/en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/index.html': 'Some cinemas, theatres and museums offer sessions or visits with fewer sensory demands.',
+            'dist/en/everyday-life/physical-activity-sport-and-swimming/index.html': 'Physical activity is not limited to sport.',
+            'dist/en/everyday-life/leisure-art-music-animals-and-nature/index.html': 'Leisure does not have to be therapeutic or productive.',
+            'dist/en/everyday-life/assistance-dogs-what-the-law-recognises/index.html': 'An assistance dog is trained to carry out specific tasks related to a person\'s disability.'
+          }
+          for path, text in checks.items():
+              body = Path(path).read_text(encoding='utf-8')
+              if text not in body:
+                  raise SystemExit(f'FALTA en {path}: {text}')
+          print('OK dist: las 16 fichas contienen el texto validado')
+          PY
+
+      - name: Publicar en GitHub solo después de validar
+        shell: bash
+        run: git push origin HEAD:main
