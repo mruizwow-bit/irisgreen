@@ -39,6 +39,50 @@ jobs:
           p.write_text(text,encoding='utf-8')
           PY
 
+      - name: Actualizar la plantilla especial de la ficha 1
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, html, json, re
+
+          es_old='Puedes escuchar una indicación y olvidarla antes de usarla, sobre todo si estás haciendo otra cosa. Tener los pasos por escrito te permite volver a consultarlos.'
+          es_new='Escucho la explicación y en ese momento la entiendo. Cuando voy a empezar la tarea, ya no recuerdo todos los pasos o no sé cuál va primero. Si la instrucción está escrita, vuelvo a leerla para recordar el siguiente paso.'
+          en_old='You may hear an instruction and forget it before using it, especially if you are doing something else. Having the steps in writing lets you look back at them.'
+          en_new='I listen to the explanation and understand it at the time. When I am about to start the task, I no longer remember all the steps or which one comes first. If the instruction is written down, I read it again to remember the next step.'
+
+          for rel, old, new in [
+              ('editorial/navigation/instructions-es.html', es_old, es_new),
+              ('editorial/navigation/instructions-en.html', en_old, en_new),
+          ]:
+              p=Path(rel); text=p.read_text(encoding='utf-8')
+              count=text.count(old)
+              if count != 4:
+                  raise AssertionError(f'{rel}: se esperaban 4 copias de la descripción anterior y hay {count}')
+              text=text.replace(old,new)
+              p.write_text(text,encoding='utf-8')
+
+          p=Path('editorial/navigation/instructions-es.html')
+          text=p.read_text(encoding='utf-8')
+          old_title='Se me olvidan las instrucciones · Iris Green'
+          new_title='Me lo explican y a los dos minutos no sé qué tenía que hacer · Iris Green'
+          if text.count(old_title) != 2:
+              raise AssertionError('No se encontraron los dos títulos abreviados de la plantilla ES')
+          p.write_text(text.replace(old_title,new_title),encoding='utf-8')
+
+          def fingerprint(text: str) -> str:
+              match=re.search(r'<article\b[^>]*>(.*?)</article>',text,flags=re.S)
+              if not match:
+                  raise AssertionError('Falta article en la ficha fuente')
+              plain=html.unescape(re.sub(r'<[^>]*>',' ',match[1]))
+              return hashlib.sha256(' '.join(plain.split()).encode('utf-8')).hexdigest()
+
+          mp=Path('editorial/navigation/manifest.json')
+          manifest=json.loads(mp.read_text(encoding='utf-8'))
+          for rel in list(manifest['source_articles']):
+              manifest['source_articles'][rel]=fingerprint(Path(rel).read_text(encoding='utf-8'))
+          mp.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+
       - name: Comprobar fuentes protegidas
         run: |
           python3 scripts/sentidos_author.py
@@ -53,6 +97,9 @@ jobs:
           git add -- \
             editorial/reviews/situaciones_comunicacion_ES_EN.md \
             editorial/reviews/situaciones-comunicacion-manifest.json \
+            editorial/navigation/instructions-es.html \
+            editorial/navigation/instructions-en.html \
+            editorial/navigation/manifest.json \
             scripts/comunicacion_author.py \
             scripts/run_accessibility_descriptions_part1.py \
             buscador.json \
