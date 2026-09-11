@@ -1,0 +1,19 @@
+{
+ "nota": "Páginas que todavía se rellenan con JavaScript y llegan con variables sin resolver. Cada una tiene que pasar a HTML escrito. La lista solo puede encogerse: audit_sin_js.py falla si aparece una página nueva o si una declarada ya está bien.",
+ "revisado": "2026-09-11",
+ "como_se_arregla": "Las cinco de la tanda 1 ya están: llevan su bloque <noscript> entre marcas ig-sin-js, generado por arreglar_sin_js.py. Libros la lleva la autora.",
+ "resuelto_el_11_de_septiembre": [
+  "es/investigacion/index.html",
+  "es/videos/index.html",
+  "es/recursos/juegos/index.html",
+  "es/cuestionarios/index.html",
+  "es/sobre-iris-green/index.html"
+ ],
+ "pendientes": [
+  {
+   "pagina": "es/libros/index.html",
+   "por_que": "Además del texto, el enlace de la muestra sale como /es/libros/{{ b.previewUrl }} y no abre nada. La página la lleva la autora: no se toca sin su indicación.",
+   "prioridad": 1
+  }
+ ]
+}
