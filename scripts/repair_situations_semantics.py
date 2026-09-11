@@ -2,7 +2,7 @@
 """Aplica únicamente correcciones semánticas revisadas de Situaciones.
 
 Los títulos y las descripciones del lote 420 están fuera de alcance. Cada cambio debe
-estar registrado de forma literal en editorial/reviews/situaciones-semantica-2026-09-11.json,
+estar registrado de forma literal en un archivo editorial/reviews/situaciones-semantica-*.json,
 con sus fuentes y su motivo. El script es idempotente y falla ante cualquier texto
 inesperado para impedir sustituciones por proximidad o mezcla entre fichas.
 """
@@ -13,7 +13,30 @@ import json
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-DATA = REPO / "editorial/reviews/situaciones-semantica-2026-09-11.json"
+DATA_GLOB = "situaciones-semantica-*.json"
+
+
+def load_reviews() -> tuple[list[dict], list[str]]:
+    files = sorted((REPO / "editorial/reviews").glob(DATA_GLOB))
+    if not files:
+        raise FileNotFoundError(f"No hay archivos {DATA_GLOB}")
+    entries: list[dict] = []
+    dates: list[str] = []
+    ids: set[str] = set()
+    routes: set[tuple[str, str]] = set()
+    for path in files:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        dates.append(data["review_date"])
+        for entry in data["entries"]:
+            if entry["id"] in ids:
+                raise AssertionError(f"Id de revisión duplicado: {entry['id']}")
+            ids.add(entry["id"])
+            pair = (entry["es_path"], entry["en_path"])
+            if pair in routes:
+                raise AssertionError(f"Pareja de rutas revisada dos veces: {pair}")
+            routes.add(pair)
+            entries.append(entry)
+    return entries, sorted(set(dates))
 
 
 def replace_once_or_done(text: str, old: str, new: str, label: str, check: bool) -> tuple[str, bool]:
@@ -35,12 +58,12 @@ def replace_once_or_done(text: str, old: str, new: str, label: str, check: bool)
 
 
 def run(root: Path, check: bool = False) -> dict:
-    data = json.loads(DATA.read_text(encoding="utf-8"))
+    entries, dates = load_reviews()
     changed_files: list[str] = []
     checked_files: list[str] = []
     replacements = 0
 
-    for entry in data["entries"]:
+    for entry in entries:
         for lang in ("es", "en"):
             rel = entry[f"{lang}_path"]
             path = root / rel
@@ -60,8 +83,8 @@ def run(root: Path, check: bool = False) -> dict:
 
     result = {
         "mode": "check" if check else "apply",
-        "review_date": data["review_date"],
-        "entries": len(data["entries"]),
+        "review_dates": dates,
+        "entries": len(entries),
         "checked_files": checked_files,
         "changed_files": changed_files,
         "replacements_applied": replacements,
