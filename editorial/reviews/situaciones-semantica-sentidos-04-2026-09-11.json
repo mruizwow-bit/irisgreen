@@ -1,0 +1,86 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 4. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-no-se-que-necesito",
+      "es_path": "es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre/index.html",
+      "en_path": "en/situations/i-dont-know-whether-im-tired-overloaded-or-hungry/index.html",
+      "reason": "La ficha trataba de distinguir hambre, descanso y carga sensorial, pero terminaba con una alerta genérica de pérdida de audición, visión, ictus y anafilaxia. Se mantiene el foco en identificar necesidades y reducir estímulos, sin asociar esta dificultad a una urgencia médica concreta.",
+      "sources": [
+        {
+          "name": "Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40909407/",
+          "supports": "La relación entre autismo e interocepción es heterogénea y no permite atribuir automáticamente una dificultad concreta al autismo."
+        },
+        {
+          "name": "National Autistic Society · Autism and sensory processing",
+          "url": "https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing",
+          "supports": "Describe diferencias sensoriales variables, sobrecarga por luz, ruido u otros estímulos y estrategias de identificar desencadenantes y reducirlos."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Una experiencia sensorial intensa no permite concluir por sí sola autismo ni un trastorno sensorial.</li>",
+            "new": "<li>No saber de inmediato si necesitas comer, descansar o alejarte del ruido no significa por sí solo autismo. El hambre, el cansancio, la temperatura y el efecto del ruido o la luz pueden sentirse con distinta intensidad.</li>"
+          },
+          {
+            "old": "<li>Cuánto tiempo pasa desde el «algo va mal» hasta saber qué era.</li>",
+            "new": "<li>Qué cambia al probar una cosa cada vez: beber, comer, descansar o reducir ruido y luz; cuánto tarda en bajar el malestar; y en qué lugares o momentos ocurre.</li>"
+          },
+          {
+            "old": "<li>Revisar una necesidad cada vez si es seguro hacerlo: descanso, agua, comida, dolor, temperatura o carga sensorial.</li>",
+            "new": "<li>Comprobar una necesidad cada vez: beber agua, comer algo, descansar, cambiar la temperatura o reducir ruido y luz. Anotar qué hace que el malestar baje.</li>"
+          },
+          {
+            "old": "Pide valoración si la molestia es nueva, persistente, dolorosa o limita de forma importante la vida diaria, o si aparecen síntomas específicos de oído, visión, piel, dolor de cabeza u otra causa médica.",
+            "new": "Pide valoración si te ocurre con frecuencia y hace difícil comer, beber, descansar o continuar con actividades habituales, o si el malestar ha cambiado claramente respecto a lo habitual."
+          },
+          {
+            "old": "Si aparece de forma súbita pérdida de audición o visión, un dolor de cabeza muy intenso de inicio brusco, debilidad o alteración del habla, o dificultad para respirar con hinchazón de labios, boca o garganta, busca atención urgente.",
+            "new": "Esta dificultad, por sí sola, no es una urgencia. Si además aparece un síntoma físico nuevo e intenso, busca atención sanitaria por ese síntoma."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Se separan las necesidades internas y la carga sensorial de alertas médicas que no corresponden a esta situación.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>An intense sensory experience does not establish autism or a sensory disorder on its own.</li>",
+            "new": "<li>Not knowing straight away whether you need food, rest or less noise does not by itself mean autism. Hunger, tiredness, temperature and the effect of noise or light can be felt with different levels of intensity.</li>"
+          },
+          {
+            "old": "<li>How long it takes from ‘something is wrong’ to identifying what was needed.</li>",
+            "new": "<li>What changes when you try one thing at a time: drinking, eating, resting or reducing noise and light; how long it takes for the discomfort to ease; and where or when it happens.</li>"
+          },
+          {
+            "old": "<li>Check one need at a time when it is safe to do so: rest, water, food, pain, temperature or sensory load.</li>",
+            "new": "<li>Check one need at a time: drink some water, eat something, rest, change the temperature or reduce noise and light. Note what makes the discomfort ease.</li>"
+          },
+          {
+            "old": "Seek an assessment if the discomfort is new, persistent, painful or substantially limits daily life, or if specific symptoms involving hearing, vision, skin, headache or another possible medical cause appear.",
+            "new": "Seek an assessment if this happens often and makes it difficult to eat, drink, rest or continue with usual activities, or if the discomfort has clearly changed from what is usual for you."
+          },
+          {
+            "old": "If sudden hearing or vision loss, a very severe sudden-onset headache, weakness or a speech change, or difficulty breathing with swelling of the lips, mouth or throat appears, seek urgent medical attention.",
+            "new": "This difficulty is not, by itself, an emergency. If a new and severe physical symptom appears as well, seek medical help for that symptom."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Internal needs and sensory load are kept separate from medical warnings that do not belong to this situation.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
