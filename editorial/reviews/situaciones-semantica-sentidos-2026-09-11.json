@@ -1,0 +1,99 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Revisión semántica de Situaciones · Sentidos. No modifica títulos ni descripciones aprobadas del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-hambre-sed-interocepcion",
+      "es_path": "es/situaciones/no-nota-hambre-o-sed/index.html",
+      "en_path": "en/situations/they-dont-notice-hunger-or-thirst/index.html",
+      "reason": "La ficha mezclaba hambre y sed con alertas de audición, visión, ictus y anafilaxia. Se limita la explicación a señales internas del cuerpo, se mantiene la cautela sobre la relación con autismo y las señales de alarma pasan a referirse a deshidratación.",
+      "sources": [
+        {
+          "name": "Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40909407/",
+          "supports": "La evidencia sobre interocepción en autismo es heterogénea; la revisión no encontró una asociación sistemática en todas las medidas."
+        },
+        {
+          "name": "Fiene & Brownlow 2015 · Investigating interoception and body awareness in adults with and without autism spectrum disorder",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25808391/",
+          "supports": "En una muestra de adultos, el grupo autista informó menor conciencia corporal y de la sed; es un estudio concreto y no sustituye la evidencia más amplia."
+        },
+        {
+          "name": "NHS · Dehydration",
+          "url": "https://www.nhs.uk/conditions/dehydration/",
+          "supports": "Síntomas de deshidratación y señales que requieren atención urgente o inmediata."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>No notar o no comunicar hambre o sed no demuestra por sí solo una alteración interoceptiva ni autismo.</li>",
+            "new": "<li>No notar hambre o sed no significa automáticamente que la causa sea el autismo. Las señales internas del cuerpo varían entre personas y pueden cambiar por distintos motivos.</li>"
+          },
+          {
+            "old": "<li>Cuántas horas pasan sin comer ni beber sin que aparezca la señal.</li>",
+            "new": "<li>Si ocurre con el hambre, con la sed o con ambas; cuánto tiempo pasa; y qué señales aparecen después, como boca seca, orina más oscura o escasa, dolor de cabeza, mareo o cansancio.</li>"
+          },
+          {
+            "old": "<li>Ofrecer oportunidades regulares de comer y beber sin depender únicamente de que la persona diga que tiene hambre o sed.</li>",
+            "new": "<li>Usar horarios o recordatorios para comer y beber y tener agua a mano ayuda a no depender solo de notar hambre o sed.</li>"
+          },
+          {
+            "old": "<li>Esperar siempre a que la persona pida comida o bebida.</li>",
+            "new": "<li>Esperar a tener mucha hambre o mucha sed antes de comer o beber.</li>"
+          },
+          {
+            "old": "Pide valoración si la molestia es nueva, persistente, dolorosa o limita de forma importante la vida diaria, o si aparecen síntomas específicos de oído, visión, piel, dolor de cabeza u otra causa médica.",
+            "new": "Pide valoración si es un cambio nuevo o persistente, si hace que comas o bebas muy poco o si aparecen signos repetidos de deshidratación."
+          },
+          {
+            "old": "Si aparece de forma súbita pérdida de audición o visión, un dolor de cabeza muy intenso de inicio brusco, debilidad o alteración del habla, o dificultad para respirar con hinchazón de labios, boca o garganta, busca atención urgente.",
+            "new": "Busca atención urgente si hay mareo al ponerse de pie que no desaparece, orina muy oscura o escasa, somnolencia inusual, respiración rápida o latidos muy rápidos. La confusión, la dificultad para despertar o la dificultad para respirar requieren atención inmediata."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/25808391/\" rel=\"noopener\" target=\"_blank\">Fiene &amp; Brownlow 2015 · Interoception and body awareness in adults with and without autism</a></li><li><a href=\"https://www.nhs.uk/conditions/dehydration/\" rel=\"noopener\" target=\"_blank\">NHS · Dehydration</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La relación entre autismo e interocepción se presenta con cautela y las señales de alarma se limitan a la deshidratación.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>Not noticing or not communicating hunger or thirst does not by itself prove an interoceptive difference or autism.</li>",
+            "new": "<li>Not noticing hunger or thirst does not automatically mean autism is the cause. Internal body signals vary between people and can change for different reasons.</li>"
+          },
+          {
+            "old": "<li>How long the person goes without eating or drinking without an obvious signal appearing.</li>",
+            "new": "<li>Whether it affects hunger, thirst or both; how long it lasts; and which signs appear later, such as a dry mouth, darker or less frequent urine, headache, dizziness or tiredness.</li>"
+          },
+          {
+            "old": "<li>Offer regular opportunities to eat and drink without relying only on the person saying they feel hungry or thirsty.</li>",
+            "new": "<li>Use regular times or reminders for meals and drinks, and keep water within reach, so you do not have to rely only on noticing hunger or thirst.</li>"
+          },
+          {
+            "old": "<li>Always waiting for the person to ask for food or drink.</li>",
+            "new": "<li>Waiting until hunger or thirst is intense before eating or drinking.</li>"
+          },
+          {
+            "old": "Seek an assessment if the discomfort is new, persistent, painful or substantially limits daily life, or if specific symptoms involving hearing, vision, skin, headache or another possible medical cause appear.",
+            "new": "Seek an assessment if this is a new or persistent change, if it leads you to eat or drink very little, or if signs of dehydration keep recurring."
+          },
+          {
+            "old": "If sudden hearing or vision loss, a very severe sudden-onset headache, weakness or a speech change, or difficulty breathing with swelling of the lips, mouth or throat appears, seek urgent medical attention.",
+            "new": "Seek urgent medical advice if dizziness on standing does not go away, urine is very dark or much less frequent, there is unusual drowsiness, rapid breathing or a fast heart rate. Confusion, difficulty waking or difficulty breathing need immediate medical help."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/25808391/\" rel=\"noopener\" target=\"_blank\">Fiene &amp; Brownlow 2015 · Interoception and body awareness in adults with and without autism</a></li><li><a href=\"https://www.nhs.uk/conditions/dehydration/\" rel=\"noopener\" target=\"_blank\">NHS · Dehydration</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. The link between autism and interoception is presented cautiously, and warning signs are limited to dehydration.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
