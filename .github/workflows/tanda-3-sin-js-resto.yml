@@ -201,7 +201,11 @@ jobs:
 
       - name: Preparar la lista de pendientes ya reducida
         run: |
-          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist --informe-solo || true
+          # audit_sin_js.py escribe sin-js.json antes de fallar por la lista vigente.
+          # No tiene modo "informe-solo": aquí se tolera ese fallo únicamente para
+          # leer el informe y calcular la lista reducida; la auditoría real corre
+          # después, sin || true, contra esa lista.
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist || true
           python3 - <<'PY'
           import json
           from pathlib import Path
