@@ -8,14 +8,20 @@ from playwright.sync_api import sync_playwright
 ROOT=Path.cwd();OUT=ROOT/'reports/thumbnails';OUT.mkdir(parents=True,exist_ok=True)
 manifest=json.loads((ROOT/'assets/video-thumbnails/manifest.json').read_text())
 expected=set(manifest['requested_ids'])
-REPORT={'cases':[],'failures':[],'notes':['Pruebas en Chromium con dominios externos bloqueados.','La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.','Se recorre el listado como visitante; no se fuerza el estado del componente.']}
+REPORT={'cases':[],'failures':[],'expectativas_antiguas':[],'notes':['Pruebas en Chromium con dominios externos bloqueados.','La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.','Se recorre el listado como visitante; no se fuerza el estado del componente.']}
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
 
+# Expectativas antiguas, estrictas: ver la nota de scripts/test_coherence.py.
+ESPERADO_FALLA={'/':'describe la portada anterior, con su seccion #escuchar de videos y sus chips de tema. La portada aprobada no lleva videos: es una expectativa vieja, no un fallo del sitio. Informe 2026-09-11, pregunta 4.'}
+
 def record_failure(row,error):
-    row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc();REPORT['failures'].append(row.copy())
+    row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc()
+    if row.get('path') in ESPERADO_FALLA:
+        row['expectativa_antigua']=ESPERADO_FALLA[row['path']];REPORT['expectativas_antiguas'].append(row.copy())
+    else:REPORT['failures'].append(row.copy())
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch()
@@ -69,6 +75,7 @@ with sync_playwright() as pw:
                 row['play_opens_correct_provider']=True
                 assert not errors,errors
                 row['passed']=True
+                if path in ESPERADO_FALLA:REPORT['failures'].append(dict(row,error='Esta prueba ya pasa: retira su marca de ESPERADO_FALLA en scripts/test_video_thumbnails.py'))
             except Exception as error:record_failure(row,error)
             REPORT['cases'].append(row);context.close()
     # La imagen puede fallar sin anular el botón ni dejar un icono roto.
@@ -89,6 +96,7 @@ with sync_playwright() as pw:
     except Exception as error:record_failure(row,error)
     REPORT['cases'].append(row);context.close();browser.close()
 server.shutdown();REPORT['passed']=not REPORT['failures'];REPORT['requested_images']=len(expected)
+REPORT['resumen']={'casos':len(REPORT['cases']),'expectativas_antiguas':len(REPORT['expectativas_antiguas']),'fallos':len(REPORT['failures'])}
 (OUT/'tests.json').write_text(json.dumps(REPORT,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(REPORT,ensure_ascii=False))
 if not REPORT['passed']:raise SystemExit(1)
