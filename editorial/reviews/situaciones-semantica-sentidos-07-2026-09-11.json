@@ -1,0 +1,104 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 7. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-examen-aula-ruidosa",
+      "es_path": "es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables/index.html",
+      "en_path": "en/situations/exams-in-a-noisy-classroom-are-unbearable/index.html",
+      "reason": "La ficha mezclaba una dificultad de concentración por ruido con una lista presentada como si todos los ajustes fueran automáticos y terminaba con alertas médicas ajenas. Se explica que los ajustes deben responder a la necesidad concreta y a la normativa aplicable, y se limita la parte sanitaria a la audición.",
+      "sources": [
+        {
+          "name": "BOE · Real Decreto Legislativo 1/2013 · artículo 18",
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-12632",
+          "supports": "En España reconoce el derecho a una educación inclusiva y la regulación de apoyos y ajustes razonables para el alumnado con discapacidad."
+        },
+        {
+          "name": "NICE CG142 · Autism spectrum disorder in adults: diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/cg142/chapter/Recommendations",
+          "supports": "Recomienda adaptar el entorno cuando hay sensibilidades sensoriales, incluido reducir el ruido y, cuando sea necesario, usar protección auditiva o modificar la duración o naturaleza de una actividad."
+        },
+        {
+          "name": "NHS · Noise sensitivity (hyperacusis)",
+          "url": "https://www.nhs.uk/conditions/hyperacusis/",
+          "supports": "Los sonidos cotidianos excesivamente fuertes o dolorosos justifican valoración médica de la sensibilidad al sonido."
+        },
+        {
+          "name": "NHS · Hearing loss",
+          "url": "https://www.nhs.uk/conditions/hearing-loss/",
+          "supports": "La pérdida auditiva repentina en uno o ambos oídos necesita atención urgente."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Una experiencia sensorial intensa no permite concluir por sí sola autismo ni un trastorno sensorial.</li>",
+            "new": "<li>Que el ruido dificulte un examen no significa automáticamente autismo ni un trastorno sensorial. La atención puede cambiar según el tipo de ruido, la tarea y el esfuerzo que exige concentrarse.</li>"
+          },
+          {
+            "old": "<li>Si en clase normal se aguanta y en examen no: eso ya es el dato.</li>",
+            "new": "<li>Si ocurre solo en exámenes o también en clases, estudio y otros lugares; qué sonidos distraen; y cuánto tiempo se pierde al tener que volver a leer o recuperar la concentración.</li>"
+          },
+          {
+            "old": "<li>Pedir el ajuste por escrito y con nombre: aula separada, tapones, cascos, o tiempo adicional si el ruido obliga a releer.</li>",
+            "new": "<li>Si necesitas un ajuste, pide por escrito qué dificultad provoca el ruido y qué medida podría reducirla. Puede ser otra ubicación, menos ruido, protección auditiva permitida o más tiempo cuando esté justificado. La medida concreta depende de la prueba, el centro y la normativa aplicable.</li>"
+          },
+          {
+            "old": "<li>Aceptar «todos hacen el examen igual» como respuesta: el ajuste no cambia lo que se evalúa.</li>",
+            "new": "<li>Esperar al día del examen para explicar la dificultad. Si es posible, solicita y acuerda los ajustes con antelación.</li>"
+          },
+          {
+            "old": "Pide valoración si la molestia es nueva, persistente, dolorosa o limita de forma importante la vida diaria, o si aparecen síntomas específicos de oído, visión, piel, dolor de cabeza u otra causa médica.",
+            "new": "Si el ruido también dificulta las clases, el estudio u otras actividades, puede ser útil valorar qué apoyo o ajuste necesitas. Si los sonidos cotidianos parecen demasiado fuertes o dolorosos, conviene además consultar por la sensibilidad auditiva."
+          },
+          {
+            "old": "Si aparece de forma súbita pérdida de audición o visión, un dolor de cabeza muy intenso de inicio brusco, debilidad o alteración del habla, o dificultad para respirar con hinchazón de labios, boca o garganta, busca atención urgente.",
+            "new": "La distracción por ruido durante un examen no es una urgencia médica. Si aparece una pérdida repentina de audición en uno o ambos oídos, pide atención médica urgente."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F32 · BOE · RDL 1/2013, derechos de las personas con discapacidad</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.boe.es/buscar/act.php?id=BOE-A-2013-12632\" rel=\"noopener\" target=\"_blank\">BOE · Real Decreto Legislativo 1/2013 · artículo 18</a></li><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Los ajustes se presentan como medidas que deben responder a una necesidad concreta, no como una lista automática para cualquier examen.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>An intense sensory experience does not establish autism or a sensory disorder on its own.</li>",
+            "new": "<li>Finding noise distracting during an exam does not automatically mean autism or a sensory disorder. Attention can change with the type of noise, the task and the effort needed to concentrate.</li>"
+          },
+          {
+            "old": "<li>Whether the same noise is manageable in an ordinary lesson but not during an exam.</li>",
+            "new": "<li>Whether it happens only in exams or also in lessons, study and other places; which sounds are distracting; and how much time is lost when you have to reread or regain concentration.</li>"
+          },
+          {
+            "old": "<li>Request the adjustment in writing and name it clearly: a separate room, earplugs, headphones where permitted, or additional time if noise repeatedly forces rereading.</li>",
+            "new": "<li>If you need an adjustment, explain in writing what difficulty the noise causes and what measure may reduce it. This might be a different location, less noise, permitted hearing protection or extra time where justified. The specific measure depends on the assessment, the institution and the rules that apply.</li>"
+          },
+          {
+            "old": "<li>Accepting ‘everyone takes the exam in the same conditions’ as the end of the discussion; an adjustment does not necessarily change what is being assessed.</li>",
+            "new": "<li>Waiting until the day of the exam to explain the difficulty. Where possible, request and agree adjustments in advance.</li>"
+          },
+          {
+            "old": "Seek an assessment if the discomfort is new, persistent, painful or substantially limits daily life, or if specific symptoms involving hearing, vision, skin, headache or another possible medical cause appear.",
+            "new": "If noise also makes lessons, study or other activities difficult, it may help to assess what support or adjustment you need. If everyday sounds seem excessively loud or painful, it is also worth seeking advice about sound sensitivity."
+          },
+          {
+            "old": "If sudden hearing or vision loss, a very severe sudden-onset headache, weakness or a speech change, or difficulty breathing with swelling of the lips, mouth or throat appears, seek urgent medical attention.",
+            "new": "Being distracted by noise during an exam is not a medical emergency. If there is sudden hearing loss in one or both ears, seek urgent medical help."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F32 · BOE · Royal Legislative Decree 1/2013, rights of persons with disabilities</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.boe.es/buscar/act.php?id=BOE-A-2013-12632\" rel=\"noopener\" target=\"_blank\">BOE · Royal Legislative Decree 1/2013 · Article 18</a></li><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Adjustments are presented as measures that must respond to an individual need, not as an automatic list for every exam.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
