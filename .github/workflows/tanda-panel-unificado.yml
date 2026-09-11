@@ -125,6 +125,9 @@ jobs:
           def language_en(page):
            b=page.locator('[data-lang="en"]:visible,.ig-uh-langs button:visible').filter(has_text=re.compile(r'^EN$')).first
            assert b.count()==1;return b
+
+          def panel_states(panel):
+           return {k:pref_button(panel,k).get_attribute('aria-pressed') for k in ['spacing','controls','contrast','guide','motion']}
           """
           text=once(text,old,new,test)
 
@@ -139,6 +142,9 @@ jobs:
           text=text[:start]+replacement+text[end:]
           text=text.replace("'expectativas_antiguas':[],",'')
           text=text.replace(",'expectativas_antiguas':len(R['expectativas_antiguas'])",'')
+          text=once(text,
+              "   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':toggles(panel).evaluate_all('(els)=>els.map(e=>({label:e.textContent.trim(),pressed:e.getAttribute(\"aria-pressed\")}))'),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n",
+              "   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':panel_states(panel),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n",test)
 
           text=once(text,
               "    panel=open_panel(page);states=toggles(panel).get_attribute('aria-pressed') if toggles(panel).count()==1 else toggles(panel).evaluate_all('(els)=>els.map(e=>e.getAttribute(\"aria-pressed\"))')\n"
