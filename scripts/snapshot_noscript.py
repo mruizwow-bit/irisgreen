@@ -15,6 +15,11 @@ Dos pasadas, y en este orden:
   2. python3 scripts/snapshot_noscript.py   → abre dist y escribe el <noscript> en las fuentes
   3. python3 scripts/build_site.py          → publica ya con el contenido dentro
 
+El mínimo de caracteres se declara con --minimo, y existe para detectar una
+captura a medias. No todas las páginas tienen el mismo tamaño: una ficha de
+juego corta puede ser legítima con 1.900 caracteres. Se baja el mínimo cuando
+está justificado, no se quita.
+
 Necesita playwright, el mismo que usan las pruebas (.github/workflows/comprobar-publicacion.yml).
 """
 from __future__ import annotations
@@ -31,6 +36,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INICIO = '<!-- ig-sin-js:start -->'
 FIN = '<!-- ig-sin-js:end -->'
 BLOQUE = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
+MINIMO = 2000
 
 PAGINAS = [
     'es/videos/index.html',
@@ -77,6 +83,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=ROOT / 'dist')
     ap.add_argument('--paginas', nargs='*', default=PAGINAS)
+    ap.add_argument('--minimo', type=int, default=MINIMO,
+                    help='caracteres mínimos del contenido montado; por debajo se considera captura a medias')
     ap.add_argument('--check', action='store_true')
     args = ap.parse_args()
 
@@ -105,8 +113,10 @@ def main() -> None:
                     raise RuntimeError(rel + ': la página da errores de guion: ' + repr(errores[:3]))
                 if not marcado or '{{' in marcado:
                     raise RuntimeError(rel + ': el contenido no se ha montado del todo')
-                if len(marcado) < 2000:
-                    raise RuntimeError(rel + f': el contenido montado es sospechosamente corto ({len(marcado)} caracteres)')
+                if len(marcado) < args.minimo:
+                    raise RuntimeError(
+                        rel + f': el contenido montado mide {len(marcado)} caracteres y el mínimo es {args.minimo}. '
+                        'Si la página es legítimamente corta, baja --minimo para ese grupo; no lo quites.')
                 bloque = INICIO + '<noscript>' + marcado + '</noscript>' + FIN
                 texto = fuente.read_text(encoding='utf-8')
                 if BLOQUE.search(texto):
@@ -123,7 +133,8 @@ def main() -> None:
     finally:
         servicio.shutdown()
 
-    print(json.dumps({'paginas': filas, 'escrito': not args.check}, ensure_ascii=False, indent=1))
+    print(json.dumps({'paginas': filas, 'minimo': args.minimo, 'escrito': not args.check},
+                     ensure_ascii=False, indent=1))
     if args.check and any(f['cambia'] for f in filas):
         raise SystemExit('Hay que regenerar la versión sin JavaScript')
 

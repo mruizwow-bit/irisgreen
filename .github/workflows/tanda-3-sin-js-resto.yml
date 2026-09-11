@@ -26,12 +26,17 @@ jobs:
       - name: Construir, capturar las 18 y volver a construir
         run: |
           /tmp/ig-b3/bin/python scripts/build_site.py
+          # Las cinco páginas de contenido, con el mínimo de siempre.
           /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --paginas \
             es/tramites/index.html \
             es/tramites/directorio/index.html \
             es/vivir-fuera/index.html \
             es/taller/index.html \
-            es/neurodiversidad/temas/autismo/index.html \
+            es/neurodiversidad/temas/autismo/index.html
+          # Los trece juegos, con el mínimo bajado y justificado: una ficha de juego
+          # completa puede medir menos de 2.000 caracteres. El archivo de capacidades
+          # mide 1.976 y está entera.
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --minimo 900 --paginas \
             es/recursos/juegos/cada-cerebro-su-camino/index.html \
             es/recursos/juegos/donde-se-fue-la-energia/index.html \
             es/recursos/juegos/el-archivo-de-capacidades/index.html \
