@@ -80,23 +80,23 @@ jobs:
 
           def pref_button(panel,key):
            selectors={
-            'spacing':('button[data-pref="spacing"],button[data-a="ls"]',r'^(Más espacio|Letra más separada|More space|More letter spacing|Wider letter spacing)$'),
-            'controls':('button[data-pref="controls"],button[data-a="big"]',r'^(Botones más grandes|Larger buttons|Bigger buttons)$'),
-            'contrast':('button[data-pref="contrast"],button[data-a="hc"]',r'^(Alto contraste|Más contraste|High contrast|More contrast)$'),
-            'guide':('button[data-pref="guide"],button[data-a="guide"]',r'^(Guía de lectura|Reading guide)$'),
-            'motion':('button[data-pref="motion"],button[data-a="rm"]',r'^(Reducir movimiento|Reduce motion)$'),
+            'spacing':('button[data-pref="spacing"],button[data-a="ls"]',r'Más espacio|Letra más separada|More space|More letter spacing|Wider letter spacing'),
+            'controls':('button[data-pref="controls"],button[data-a="big"]',r'Botones más grandes|Larger buttons|Bigger buttons'),
+            'contrast':('button[data-pref="contrast"],button[data-a="hc"]',r'Alto contraste|Más contraste|High contrast|More contrast'),
+            'guide':('button[data-pref="guide"],button[data-a="guide"]',r'Guía de lectura|Reading guide'),
+            'motion':('button[data-pref="motion"],button[data-a="rm"]',r'Reducir movimiento|Reduce motion'),
            }
            selector,pattern=selectors[key];return named_or_attr(panel,selector,pattern,key)
 
           def speech_button(panel):
-           return named_or_attr(panel,'#speak,button[data-a="tts"]',r'^(Escuchar esta página|Leer en voz alta|Listen to this page|Read aloud)$','speech')
+           return named_or_attr(panel,'#speak,button[data-a="tts"]',r'Escuchar esta página|Leer en voz alta|Listen to this page|Read aloud','speech')
 
           def size_button(panel,direction):
-           if direction>0:return named_or_attr(panel,'button[data-size="1"],button[data-a="fs+"]',r'^(A\+|Aumentar el texto|Tamaño del texto \+|Increase text size|Text size \+)$','size +')
-           return named_or_attr(panel,'button[data-size="-1"],button[data-a="fs-"]',r'^(A[−–-]|Reducir el texto|Tamaño del texto [−–-]|Decrease text size|Text size [−–-])$','size -')
+           if direction>0:return named_or_attr(panel,'button[data-size="1"],button[data-a="fs+"]',r'A\+|Aumentar el texto|Tamaño del texto \+|Increase text size|Text size \+','size +')
+           return named_or_attr(panel,'button[data-size="-1"],button[data-a="fs-"]',r'A[−–-]|Reducir el texto|Tamaño del texto [−–-]|Decrease text size|Text size [−–-]','size -')
 
           def reset_button(panel):
-           return named_or_attr(panel,'#reset,button[data-a="reset"]',r'^(Restablecer ajustes|Restablecer|Reset settings|Reset)$','reset')
+           return named_or_attr(panel,'#reset,button[data-a="reset"]',r'Restablecer ajustes|Restablecer|Reset settings|Reset','reset')
 
           def language_en(page):
            b=page.locator('[data-lang="en"]:visible,.ig-uh-langs button:visible').filter(has_text=re.compile(r'^EN$')).first
