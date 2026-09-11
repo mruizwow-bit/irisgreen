@@ -1,0 +1,107 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 10. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-luces-blancas",
+      "es_path": "es/situaciones/las-luces-blancas-me-cansan-muy-rapido/index.html",
+      "en_path": "en/situations/white-lights-tire-me-out-very-quickly/index.html",
+      "reason": "La ficha seguía marcada como borrador generado, sin fuente específica y con una alerta médica genérica que mezclaba visión, audición, desmayo y respiración. Se documenta la sensibilidad visual, se distingue de la migraña y se dejan solo señales de alarma relacionadas con dolor de cabeza y visión.",
+      "sources": [
+        {
+          "name": "National Autistic Society · Autism and sensory processing",
+          "url": "https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing",
+          "supports": "Describe la luz brillante o fluorescente como posible desencadenante de hipersensibilidad visual y sobrecarga sensorial."
+        },
+        {
+          "name": "NHS · Migraine",
+          "url": "https://www.nhs.uk/conditions/migraine/",
+          "supports": "La migraña puede incluir dolor de cabeza intenso, náuseas y sensibilidad marcada a la luz y al sonido, pero la sensibilidad a la luz por sí sola no establece el diagnóstico."
+        },
+        {
+          "name": "NHS · Headaches",
+          "url": "https://www.nhs.uk/symptoms/headaches/",
+          "supports": "Detalla cuándo un dolor de cabeza con pérdida de visión, debilidad, confusión, problemas de habla o inicio súbito y muy intenso necesita atención urgente o inmediata."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<article class=\"ficha\" data-editorial-status=\"generated-draft\">",
+            "new": "<article class=\"ficha\">"
+          },
+          {
+            "old": "<li>Una respuesta sensorial intensa o poco clara, por sí sola, no identifica una condición concreta.</li>",
+            "new": "<li>Que la luz blanca o intensa moleste no significa automáticamente autismo ni migraña. La sensibilidad visual puede formar parte de diferencias sensoriales, y la migraña suele incluir otros síntomas además de sensibilidad a la luz.</li>"
+          },
+          {
+            "old": "<li>Cuándo aparece, qué estímulo pesa más, cuánto tarda en acumularse y qué cambia al reducir intensidad, duración o cantidad de estímulos.</li>",
+            "new": "<li>Qué tipo de luz molesta más —blanca, fluorescente, muy intensa o con reflejos—, cuánto tiempo pasa hasta que aparece el malestar y si también hay dolor de cabeza, náuseas o cambios en la visión.</li>"
+          },
+          {
+            "old": "<li>Reducir el estímulo que más pesa, permitir pausas y ofrecer una alternativa sensorial más tolerable cuando sea posible.</li>",
+            "new": "<li>Reducir la intensidad de la luz, alejarte de reflejos o fluorescentes cuando sea posible y hacer una pausa en un lugar con menos luz si empieza el malestar.</li>"
+          },
+          {
+            "old": "<li>Forzar la exposición, minimizar la molestia o asumir que acostumbrarse siempre es la solución.</li>",
+            "new": "<li>Seguir bajo una luz que está aumentando el dolor o el cansancio solo para intentar «acostumbrarte».</li>"
+          },
+          {
+            "old": "Conviene pedir valoración si la reacción es nueva, dolorosa, progresiva, limita actividades necesarias o se acompaña de síntomas físicos que también necesitan explorarse.",
+            "new": "Pide valoración si la sensibilidad a la luz es nueva, ha empeorado, provoca dolores de cabeza repetidos o está limitando actividades necesarias. Si aparecen náuseas, aura u otros cambios visuales, anota esos síntomas para comentarlos en la valoración."
+          },
+          {
+            "old": "Pérdida brusca de visión o audición, debilidad, desmayo, confusión, dolor muy intenso o dificultad respiratoria requieren atención sanitaria urgente.",
+            "new": "Busca atención urgente si aparece un dolor de cabeza súbito y extremadamente intenso, pérdida de visión, debilidad o entumecimiento, confusión o dificultad para hablar."
+          },
+          {
+            "old": "<ul class=\"list\"><li>Borrador editorial generado el 5 de septiembre de 2026 a partir de la estructura de Situaciones de la nueva web. Fuente específica pendiente de comprobación antes de publicar.</li></ul><p class=\"muted\">Estado: borrador generado · noindex hasta revisión editorial y documental.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://www.nhs.uk/conditions/migraine/\" rel=\"noopener\" target=\"_blank\">NHS · Migraine</a></li><li><a href=\"https://www.nhs.uk/symptoms/headaches/\" rel=\"noopener\" target=\"_blank\">NHS · Headaches</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La sensibilidad visual se separa de un diagnóstico de migraña y las señales de alarma se limitan a síntomas relacionados con dolor de cabeza y visión.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-05\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<article class=\"ficha\" data-editorial-status=\"generated-draft\">",
+            "new": "<article class=\"ficha\">"
+          },
+          {
+            "old": "<li>An intense or unclear sensory response does not, by itself, identify a specific condition.</li>",
+            "new": "<li>Finding white or bright light uncomfortable does not automatically mean autism or migraine. Visual sensitivity can be part of sensory differences, while migraine usually includes other symptoms as well as sensitivity to light.</li>"
+          },
+          {
+            "old": "<li>When it appears, which stimulus weighs most, how quickly it builds up, and what changes when intensity, duration or the number of stimuli is reduced.</li>",
+            "new": "<li>Which type of light is hardest — white, fluorescent, very bright or reflective —, how long it takes for discomfort to start, and whether headache, nausea or visual changes occur as well.</li>"
+          },
+          {
+            "old": "<li>Reduce the stimulus that weighs most, allow breaks, and offer a more tolerable sensory alternative where possible.</li>",
+            "new": "<li>Reduce the light intensity, move away from glare or fluorescent lighting where possible, and take a break somewhere dimmer when discomfort starts to build.</li>"
+          },
+          {
+            "old": "<li>Forcing exposure, minimising the discomfort, or assuming that getting used to it is always the answer.</li>",
+            "new": "<li>Staying under a light that is increasing pain or tiredness simply to try to ‘get used to it’.</li>"
+          },
+          {
+            "old": "Seek an assessment if the response is new, painful, progressive, limits necessary activities, or comes with physical symptoms that also need exploring.",
+            "new": "Seek an assessment if light sensitivity is new, has become worse, causes repeated headaches or is limiting necessary activities. If nausea, aura or other visual changes occur, note those symptoms and mention them during the assessment."
+          },
+          {
+            "old": "Sudden loss of vision or hearing, weakness, fainting, confusion, very severe pain or breathing difficulty need urgent medical attention.",
+            "new": "Seek urgent medical help if there is a sudden extremely severe headache, loss of vision, weakness or numbness, confusion or difficulty speaking."
+          },
+          {
+            "old": "<ul class=\"list\"><li>Editorial draft generated on 5 September 2026 from the structure of the new website’s Situations collection. A specific source still needs to be checked before publication.</li></ul><p class=\"muted\">Status: generated draft · noindex until editorial and source review.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://www.nhs.uk/conditions/migraine/\" rel=\"noopener\" target=\"_blank\">NHS · Migraine</a></li><li><a href=\"https://www.nhs.uk/symptoms/headaches/\" rel=\"noopener\" target=\"_blank\">NHS · Headaches</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Visual sensitivity is kept separate from a migraine diagnosis, and warning signs are limited to symptoms related to headache and vision.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-05\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
