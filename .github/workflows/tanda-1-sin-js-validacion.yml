@@ -1,0 +1,133 @@
+name: Tanda 1 · contenido sin JavaScript
+
+on:
+  push:
+    branches: ['integracion/20260911-sin-js']
+
+permissions:
+  contents: write
+
+jobs:
+  validar-y-guardar:
+    if: ${{ !contains(github.event.head_commit.message, '[batch1-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-b1
+          /tmp/ig-b1/bin/pip -q install playwright==1.55.0
+          /tmp/ig-b1/bin/python -m playwright install --with-deps chromium >/tmp/ig-b1-install.log 2>&1
+
+      - name: Tanda 1 · primera construcción y captura
+        run: |
+          /tmp/ig-b1/bin/python scripts/prerender_noscript.py
+          /tmp/ig-b1/bin/python scripts/build_site.py
+          /tmp/ig-b1/bin/python scripts/snapshot_noscript.py
+          mkdir -p /tmp/tanda1-src/es/recursos/juegos /tmp/tanda1-src/es/investigacion /tmp/tanda1-src/es/videos /tmp/tanda1-src/es/cuestionarios /tmp/tanda1-src/es/sobre-iris-green
+          cp es/investigacion/index.html /tmp/tanda1-src/es/investigacion/index.html
+          cp es/videos/index.html /tmp/tanda1-src/es/videos/index.html
+          cp es/recursos/juegos/index.html /tmp/tanda1-src/es/recursos/juegos/index.html
+          cp es/cuestionarios/index.html /tmp/tanda1-src/es/cuestionarios/index.html
+          cp es/sobre-iris-green/index.html /tmp/tanda1-src/es/sobre-iris-green/index.html
+
+      - name: Limpiar efectos laterales del primer build y construir de nuevo
+        run: |
+          git restore --worktree -- .
+          cp /tmp/tanda1-src/es/investigacion/index.html es/investigacion/index.html
+          cp /tmp/tanda1-src/es/videos/index.html es/videos/index.html
+          cp /tmp/tanda1-src/es/recursos/juegos/index.html es/recursos/juegos/index.html
+          cp /tmp/tanda1-src/es/cuestionarios/index.html es/cuestionarios/index.html
+          cp /tmp/tanda1-src/es/sobre-iris-green/index.html es/sobre-iris-green/index.html
+          rm -rf dist
+          /tmp/ig-b1/bin/python scripts/build_site.py
+
+      - name: Comprobar que las cinco fuentes solo añaden el bloque sin JS
+        run: |
+          python3 - <<'PY'
+          import re, subprocess
+          from pathlib import Path
+          mark=re.compile(r'<!-- ig-sin-js:start -->.*?<!-- ig-sin-js:end -->',re.S)
+          paths=[
+            'es/investigacion/index.html','es/videos/index.html','es/recursos/juegos/index.html',
+            'es/cuestionarios/index.html','es/sobre-iris-green/index.html'
+          ]
+          bad=[]
+          for rel in paths:
+              before=subprocess.check_output(['git','show','HEAD:'+rel],text=True)
+              saved=Path('/tmp/tanda1-src')/rel
+              after=saved.read_text(encoding='utf-8')
+              if mark.sub('',after,1) != mark.sub('',before,1):
+                  bad.append(rel)
+          if bad:
+              raise SystemExit('Cambios fuera del bloque ig-sin-js: '+', '.join(bad))
+          print('OK: las cinco fuentes solo añaden su bloque <noscript>.')
+          PY
+
+      - name: Probar las cinco páginas con JavaScript desactivado y activado
+        run: |
+          /tmp/ig-b1/bin/python - <<'PY'
+          import functools, json, threading
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          root=Path('dist').resolve()
+          handler=functools.partial(SimpleHTTPRequestHandler,directory=str(root))
+          server=ThreadingHTTPServer(('127.0.0.1',0),handler)
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          base=f'http://127.0.0.1:{server.server_port}'
+          routes=['/es/investigacion/','/es/videos/','/es/recursos/juegos/','/es/cuestionarios/','/es/sobre-iris-green/']
+          report=[]
+          try:
+            with sync_playwright() as pw:
+              browser=pw.chromium.launch()
+              for route in routes:
+                row={'ruta':route}
+                ctx=browser.new_context(java_script_enabled=False,viewport={'width':1280,'height':900})
+                page=ctx.new_page(); resp=page.goto(base+route,wait_until='domcontentloaded')
+                h1=page.locator('main h1').first.text_content(timeout=10000) or ''
+                text=page.locator('main').first.inner_text(timeout=10000)
+                row.update({'sin_js_status':resp.status if resp else None,'sin_js_h1':h1.strip(),'sin_js_caracteres':len(text.strip())})
+                if not resp or resp.status != 200 or not h1.strip() or len(text.strip()) < 200:
+                    raise RuntimeError('Fallo sin JS '+json.dumps(row,ensure_ascii=False))
+                ctx.close()
+                ctx=browser.new_context(java_script_enabled=True,viewport={'width':1280,'height':900})
+                page=ctx.new_page(); errors=[]; page.on('pageerror',lambda e: errors.append(str(e)))
+                resp=page.goto(base+route,wait_until='domcontentloaded'); page.wait_for_timeout(900)
+                h1=page.locator('main h1').first.text_content(timeout=10000) or ''
+                row.update({'con_js_status':resp.status if resp else None,'con_js_h1':h1.strip(),'pageerrors':errors[:5]})
+                if not resp or resp.status != 200 or not h1.strip() or errors:
+                    raise RuntimeError('Fallo con JS '+json.dumps(row,ensure_ascii=False))
+                ctx.close(); report.append(row)
+              browser.close()
+          finally:
+            server.shutdown()
+          out=Path('/tmp/tanda1');out.mkdir(exist_ok=True)
+          (out/'sin-js.json').write_text(json.dumps({'paginas':report},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Guardar únicamente las cinco fuentes generadas
+        run: |
+          git restore --worktree -- .
+          cp /tmp/tanda1-src/es/investigacion/index.html es/investigacion/index.html
+          cp /tmp/tanda1-src/es/videos/index.html es/videos/index.html
+          cp /tmp/tanda1-src/es/recursos/juegos/index.html es/recursos/juegos/index.html
+          cp /tmp/tanda1-src/es/cuestionarios/index.html es/cuestionarios/index.html
+          cp /tmp/tanda1-src/es/sobre-iris-green/index.html es/sobre-iris-green/index.html
+          git config user.name 'Iris Green validation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add es/investigacion/index.html es/videos/index.html es/recursos/juegos/index.html es/cuestionarios/index.html es/sobre-iris-green/index.html
+          git commit -m 'Tanda 1: contenido legible sin JavaScript [batch1-generated]'
+          git push origin HEAD:integracion/20260911-sin-js
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: tanda-1-sin-js
+          path: /tmp/tanda1
+          retention-days: 14
