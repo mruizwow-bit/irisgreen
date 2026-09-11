@@ -40,10 +40,17 @@ jobs:
           fetch-depth: 0
 
       - name: Preparar Chromium
+        timeout-minutes: 8
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
+          # Sin --with-deps y sin redirigir la salida: la imagen de ubuntu-latest ya
+          # trae las bibliotecas que Chromium necesita, y con --with-deps la
+          # instalación del sistema se queda esperando sin que se vea dónde.
           python3 -m venv /tmp/ig-b3
           /tmp/ig-b3/bin/pip -q install playwright==1.55.0
-          /tmp/ig-b3/bin/python -m playwright install --with-deps chromium >/tmp/ig-b3-install.log 2>&1
+          /tmp/ig-b3/bin/python -m playwright install chromium
+          /tmp/ig-b3/bin/python -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); print('Chromium listo:', b.version); b.close(); p.stop()"
 
       - name: Construir y capturar las 18
         run: |
