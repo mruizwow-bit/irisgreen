@@ -45,7 +45,7 @@
           },
           {
             "old": "<ul class=\"list\"><li>F07 · NHS · Contact dermatitis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
-            "new": "<ul class=\"list\"><li>National Autistic Society · Autism and sensory processing</li><li>Children and Family Health Devon · Dressing techniques for sensory differences</li><li>NHS · Contact dermatitis</li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Las fuentes sobre sensibilidad táctil y ropa se separan de la información dermatológica.</p>"
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://childrenandfamilyhealthdevon.nhs.uk/resources/dressing-techniques-for-sensory-differences/\" rel=\"noopener\" target=\"_blank\">Children and Family Health Devon · Dressing techniques for sensory differences</a></li><li><a href=\"https://www.nhs.uk/conditions/contact-dermatitis/\" rel=\"noopener\" target=\"_blank\">NHS · Contact dermatitis</a></li><li><a href=\"https://www.nhs.uk/conditions/contact-dermatitis/symptoms/\" rel=\"noopener\" target=\"_blank\">NHS · Contact dermatitis: symptoms</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Las fuentes sobre sensibilidad táctil y ropa se separan de la información dermatológica.</p>"
           },
           {
             "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
@@ -67,7 +67,105 @@
           },
           {
             "old": "<ul class=\"list\"><li>F07 · NHS · Contact dermatitis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
-            "new": "<ul class=\"list\"><li>National Autistic Society · Autism and sensory processing</li><li>Children and Family Health Devon · Dressing techniques for sensory differences</li><li>NHS · Contact dermatitis</li></ul><p class=\"muted\">Documentary review: 11 September 2026. Sources on tactile sensitivity and clothing are kept separate from dermatological information.</p>"
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://childrenandfamilyhealthdevon.nhs.uk/resources/dressing-techniques-for-sensory-differences/\" rel=\"noopener\" target=\"_blank\">Children and Family Health Devon · Dressing techniques for sensory differences</a></li><li><a href=\"https://www.nhs.uk/conditions/contact-dermatitis/\" rel=\"noopener\" target=\"_blank\">NHS · Contact dermatitis</a></li><li><a href=\"https://www.nhs.uk/conditions/contact-dermatitis/symptoms/\" rel=\"noopener\" target=\"_blank\">NHS · Contact dermatitis: symptoms</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Sources on tactile sensitivity and clothing are kept separate from dermatological information.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comunicacion-instrucciones-memoria-trabajo",
+      "es_path": "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html",
+      "en_path": "en/situations/i-need-instructions-repeated/index.html",
+      "reason": "Separar la dificultad para retener instrucciones de problemas de audición y de urgencias neurológicas que se habían mezclado en la ficha. La ayuda de instrucciones escritas sí está respaldada y la memoria de trabajo es una relación pertinente.",
+      "sources": [
+        {
+          "name": "NHS · ADHD in adults",
+          "url": "https://www.nhs.uk/conditions/adhd-adults/",
+          "supports": "Entre los ajustes razonables cita recibir instrucciones escritas además de habladas."
+        },
+        {
+          "name": "University of Cambridge · Following instructions from working memory",
+          "url": "https://www.repository.cam.ac.uk/items/117106f9-1cc0-4aa2-b351-db33f5079c68",
+          "supports": "Estudia el seguimiento de secuencias de instrucciones habladas desde la memoria de trabajo."
+        },
+        {
+          "name": "PubMed · ADHD and working memory in adults: a meta-analytic review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23688211/",
+          "supports": "Revisión meta-analítica sobre memoria de trabajo en adultos con TDAH; no implica que la dificultad sea específica del TDAH."
+        },
+        {
+          "name": "NHS · Sudden confusion (delirium)",
+          "url": "https://www.nhs.uk/symptoms/confusion/",
+          "supports": "La confusión repentina requiere atención médica inmediata; la distingue de una dificultad habitual para recordar instrucciones."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Memoria de trabajo: la instrucción entra y se pierde antes de usarla.</li>",
+            "new": "<li>Olvidar una instrucción no permite saber por sí solo cuál es la causa.</li>"
+          },
+          {
+            "old": "<li>Si pasa con instrucciones largas o también con las cortas.</li>",
+            "new": "<li>Si pasa solo con instrucciones largas, también con las cortas, o sobre todo cuando hay distracciones o ya estás haciendo otra tarea.</li>"
+          },
+          {
+            "old": "<li>Dar tres cosas seguidas de pasillo.</li>",
+            "new": "<li>Dar varias instrucciones seguidas mientras la persona está haciendo otra cosa.</li>"
+          },
+          {
+            "old": "Pide valoración si ocurre de forma frecuente y limita estudios o trabajo. Si también cuesta entender conversaciones con ruido, se pierden palabras o existe sospecha de pérdida auditiva, conviene valorar la audición; si el patrón es de larga evolución y aparece en varios ámbitos, también puede formar parte de una valoración de atención, lenguaje o funciones ejecutivas.",
+            "new": "Pide valoración si ocurre con frecuencia y dificulta los estudios, el trabajo o tareas habituales. Conviene anotar cuándo pasa: si las instrucciones son largas, si hay distracciones o si tienes que recordar varios pasos a la vez. Esa información puede ayudar a valorar atención, lenguaje y memoria de trabajo."
+          },
+          {
+            "old": "Una pérdida súbita del habla o de la comprensión, especialmente junto con debilidad facial o de un brazo, es una urgencia médica. La pérdida súbita de audición, sobre todo de un solo oído, también necesita atención inmediata.",
+            "new": "Olvidar una instrucción habitual no es una urgencia médica. Si aparece de repente una confusión que no es habitual —por ejemplo, la persona no sabe dónde está, no puede pensar o hablar con claridad o no recuerda datos básicos—, busca atención médica inmediata."
+          },
+          {
+            "old": "<span class=\"chip lil\">TDAH</span><span class=\"chip lil\">Audición</span>",
+            "new": "<span class=\"chip lil\">Memoria de trabajo</span><span class=\"chip lil\">TDAH</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F13 · ASHA · Augmentative and Alternative Communication</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/adhd-adults/\" rel=\"noopener\" target=\"_blank\">NHS · ADHD in adults</a></li><li><a href=\"https://www.repository.cam.ac.uk/items/117106f9-1cc0-4aa2-b351-db33f5079c68\" rel=\"noopener\" target=\"_blank\">University of Cambridge · Following instructions from working memory</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/23688211/\" rel=\"noopener\" target=\"_blank\">PubMed · ADHD and working memory in adults</a></li><li><a href=\"https://www.nhs.uk/symptoms/confusion/\" rel=\"noopener\" target=\"_blank\">NHS · Sudden confusion</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La dificultad para retener instrucciones se separa de los problemas de audición y de las urgencias que no corresponden a esta situación.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>Working memory may be involved when an instruction is heard but is lost before it can be used.</li>",
+            "new": "<li>Forgetting an instruction does not, by itself, show what is causing the difficulty.</li>"
+          },
+          {
+            "old": "<li>Whether it happens only with long instructions or with short ones too.</li>",
+            "new": "<li>Whether it happens only with long instructions, with short ones too, or mainly when there are distractions or another task is already under way.</li>"
+          },
+          {
+            "old": "<li>Giving three instructions in a row while passing in a corridor.</li>",
+            "new": "<li>Giving several instructions in a row while the person is already doing something else.</li>"
+          },
+          {
+            "old": "Seek an assessment if this happens frequently and limits education or work. If conversations are also hard to follow in noise, words are missed or hearing loss is suspected, hearing should be assessed; if the pattern is long-standing and appears in several settings, attention, language or executive-function assessment may also be relevant.",
+            "new": "Seek an assessment if this happens frequently and makes study, work or everyday tasks difficult. It can help to note when it happens: whether instructions are long, there are distractions, or several steps have to be held in mind at once. That information can help when attention, language and working memory are assessed."
+          },
+          {
+            "old": "A sudden loss of speech or understanding, especially with facial or arm weakness, is a medical emergency. Sudden hearing loss, particularly in one ear, also needs immediate medical attention.",
+            "new": "Forgetting a routine instruction is not a medical emergency. If someone suddenly becomes unusually confused — for example, they do not know where they are, cannot think or speak clearly, or cannot remember basic information — seek immediate medical help."
+          },
+          {
+            "old": "<span class=\"chip lil\">TDAH</span><span class=\"chip lil\">Audición</span>",
+            "new": "<span class=\"chip lil\">Working memory</span><span class=\"chip lil\">ADHD</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F13 · ASHA · Augmentative and Alternative Communication</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/adhd-adults/\" rel=\"noopener\" target=\"_blank\">NHS · ADHD in adults</a></li><li><a href=\"https://www.repository.cam.ac.uk/items/117106f9-1cc0-4aa2-b351-db33f5079c68\" rel=\"noopener\" target=\"_blank\">University of Cambridge · Following instructions from working memory</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/23688211/\" rel=\"noopener\" target=\"_blank\">PubMed · ADHD and working memory in adults</a></li><li><a href=\"https://www.nhs.uk/symptoms/confusion/\" rel=\"noopener\" target=\"_blank\">NHS · Sudden confusion</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Difficulty retaining instructions is kept separate from hearing problems and unrelated emergency warnings.</p>"
           },
           {
             "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
