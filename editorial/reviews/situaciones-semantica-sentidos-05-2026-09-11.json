@@ -1,0 +1,78 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 5. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-hambre-aparece-de-golpe",
+      "es_path": "es/situaciones/el-hambre-aparece-de-golpe-y-ya-estoy-fatal/index.html",
+      "en_path": "en/situations/hunger-hits-suddenly-and-by-then-i-feel-awful/index.html",
+      "reason": "La ficha describe hambre que se nota tarde junto con mareo, temblor e irritabilidad. La versión anterior añadía pérdida de peso, deglución, vómitos y otras alertas sin una fuente que las respaldara. Se mantiene el foco en el patrón de hambre y se distingue de la hipoglucemia sin diagnosticarla.",
+      "sources": [
+        {
+          "name": "NHS · Low blood sugar (hypoglycaemia)",
+          "url": "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/",
+          "supports": "La hipoglucemia suele afectar a personas con diabetes que usan insulina u otros medicamentos; es rara sin diabetes. Entre sus síntomas están hambre, mareo, irritabilidad, sudor, temblor, palpitaciones y confusión. Los episodios repetidos con síntomas compatibles requieren valoración."
+        },
+        {
+          "name": "Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40909407/",
+          "supports": "La evidencia sobre interocepción en autismo es heterogénea y no permite atribuir automáticamente esta experiencia al autismo."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Una experiencia sensorial intensa no permite concluir por sí sola autismo ni un trastorno sensorial.</li>",
+            "new": "<li>Mareo, temblor o irritabilidad después de pasar muchas horas sin comer no demuestran por sí solos hipoglucemia ni autismo. La hipoglucemia suele afectar a personas con diabetes que usan insulina o algunos medicamentos y es rara en personas sin diabetes.</li>"
+          },
+          {
+            "old": "<li>Cuántas horas suelen pasar antes del golpe, y si el número se repite.</li>",
+            "new": "<li>Cuánto tiempo ha pasado desde la última comida, qué síntomas aparecen y si el mismo patrón se repite. Si tienes diabetes, comprueba la glucosa siguiendo tu plan habitual cuando aparezcan síntomas compatibles.</li>"
+          },
+          {
+            "old": "Pide valoración si hay pérdida de peso no buscada, crecimiento afectado, mareos o desmayos, dolor, problemas de deglución, miedo intenso relacionado con comer, restricción persistente, signos de deshidratación o una interferencia importante con la vida diaria.",
+            "new": "Si no tienes diabetes y se repiten episodios con temblor, sudor, palpitaciones o confusión, pide valoración. Si tienes diabetes y las bajadas de glucosa son frecuentes, graves o aparecen de noche, coméntalo con tu equipo de diabetes."
+          },
+          {
+            "old": "Desmayo, confusión, deshidratación importante, vómitos repetidos, dificultad para tragar con riesgo de atragantamiento o un deterioro físico rápido necesitan atención sanitaria urgente.",
+            "new": "El hambre intensa no es una urgencia por sí sola. Si hay convulsiones o pérdida de conciencia, busca atención urgente. Si la persona está inconsciente, no le des comida ni bebida porque puede no tragar con seguridad."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/\" rel=\"noopener\" target=\"_blank\">NHS · Low blood sugar (hypoglycaemia)</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Los síntomas se describen sin asumir hipoglucemia ni atribuirlos automáticamente al autismo.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>An intense sensory experience does not establish autism or a sensory disorder on its own.</li>",
+            "new": "<li>Dizziness, shaking or irritability after going a long time without food do not by themselves prove hypoglycaemia or autism. Low blood sugar usually affects people with diabetes who use insulin or some other diabetes medicines and is rare in people without diabetes.</li>"
+          },
+          {
+            "old": "<li>Roughly how long tends to pass before the sudden crash and whether the pattern repeats.</li>",
+            "new": "<li>How long it has been since the last meal, which symptoms appear and whether the same pattern keeps recurring. If you have diabetes, check your blood glucose according to your usual plan when compatible symptoms appear.</li>"
+          },
+          {
+            "old": "Seek an assessment if there is unintended weight loss, affected growth, dizziness or fainting, pain, swallowing problems, intense fear related to eating, persistent restriction, signs of dehydration or substantial interference with daily life.",
+            "new": "If you do not have diabetes and episodes with shaking, sweating, palpitations or confusion keep recurring, seek an assessment. If you have diabetes and low blood sugar happens often, is severe or occurs at night, speak to your diabetes care team."
+          },
+          {
+            "old": "Fainting, confusion, significant dehydration, repeated vomiting, difficulty swallowing with a choking risk, or rapid physical deterioration need urgent healthcare.",
+            "new": "Intense hunger is not an emergency by itself. If there is a seizure or loss of consciousness, seek urgent medical help. If the person is unconscious, do not give them food or drink because they may not be able to swallow safely."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F35 · Klein et al. 2025 · Interoception in autism, systematic review/meta-analysis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/\" rel=\"noopener\" target=\"_blank\">NHS · Low blood sugar (hypoglycaemia)</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/40909407/\" rel=\"noopener\" target=\"_blank\">Klein et al. 2025 · Interoception in individuals with autism spectrum disorder: systematic review and meta-analysis</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Symptoms are described without assuming hypoglycaemia or automatically attributing them to autism.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
