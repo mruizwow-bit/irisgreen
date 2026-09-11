@@ -81,7 +81,10 @@ add_source("estudiar-en-la-universidad-con-apoyos", '<li><a href="https://www.bo
 add_source("buscar-trabajo-siendo-neurodivergente", '<li><a href="https://www.aepd.es/prensa-y-comunicacion/blog/en-que-momento-comienza-legalmente-un-tratamiento-de-datos-personales" rel="noopener" target="_blank">AEPD · solicitud y tratamiento de datos de salud</a></li>')
 
 edit("perros-de-asistencia-que-reconoce-la-ley", [
-    ('<section class="sec"><p>El Real Decreto 409/2025 establece un marco estatal sobre actividad y bienestar de los perros de asistencia y reconoce varias categorías, entre ellas los perros para personas autistas. El reconocimiento y acreditación concreta se coordina también con la normativa autonómica.</p></section>', '<section class="sec"><p>El Real Decreto 409/2025 establece un marco estatal sobre actividad y bienestar de los perros de asistencia y reconoce varias categorías, entre ellas los perros para personas autistas.</p><p>Como regla general estatal, la persona usuaria debe tener reconocido un grado de discapacidad igual o superior al 33 %. El propio real decreto permite que las comunidades autónomas y Ceuta y Melilla reconozcan otros supuestos, incluidos perros de aviso médico o perros para personas autistas. Por eso hay que comprobar también la normativa autonómica.</p></section>'),
+    (
+        "El real decreto regula requisitos básicos, formación, identificación, bienestar y acceso al entorno. La categoría de perro de asistencia no se obtiene simplemente comprando o entrenando un perro de compañía por cuenta propia: existe un procedimiento y entidades o profesionales que deben cumplir requisitos.",
+        "El real decreto regula requisitos básicos, formación, identificación, bienestar y acceso al entorno. La categoría de perro de asistencia no se obtiene simplemente comprando o entrenando un perro de compañía por cuenta propia: existe un procedimiento y entidades o profesionales que deben cumplir requisitos. Como regla general estatal, la persona usuaria debe tener reconocido un grado de discapacidad igual o superior al 33 %. Las comunidades autónomas y Ceuta y Melilla pueden reconocer otros supuestos, entre ellos personas que necesiten perros de aviso de alerta médica o perros para personas con trastorno del espectro autista."
+    ),
 ])
 
 edit("si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer", [
