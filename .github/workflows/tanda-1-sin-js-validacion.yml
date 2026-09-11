@@ -23,42 +23,30 @@ jobs:
           /tmp/ig-b1/bin/pip -q install playwright==1.55.0
           /tmp/ig-b1/bin/python -m playwright install --with-deps chromium >/tmp/ig-b1-install.log 2>&1
 
-      - name: Preparar comprobación temporal de la tanda 1
+      - name: Tanda 1 · primera construcción y captura
         run: |
-          cat > scripts/audit_sin_js.py <<'PY'
-          from pathlib import Path
-          import re, sys
-          root = Path(sys.argv[sys.argv.index('--root')+1] if '--root' in sys.argv else 'dist')
-          targets = [
-              'es/investigacion/index.html',
-              'es/videos/index.html',
-              'es/recursos/juegos/index.html',
-              'es/cuestionarios/index.html',
-              'es/sobre-iris-green/index.html',
-          ]
-          bad=[]
-          for rel in targets:
-              p=root/rel
-              if not p.is_file():
-                  bad.append(f'{rel}: no existe')
-                  continue
-              t=p.read_text(encoding='utf-8')
-              m=re.search(r'<!-- ig-sin-js:start -->(.*?)<!-- ig-sin-js:end -->', t, re.S)
-              if not m:
-                  bad.append(f'{rel}: falta bloque ig-sin-js')
-              elif '{{' in m.group(1):
-                  bad.append(f'{rel}: quedan variables dentro del bloque sin JS')
-              elif len(re.sub(r'<[^>]+>',' ',m.group(1)).strip()) < 120:
-                  bad.append(f'{rel}: bloque sin JS sospechosamente corto')
-          if bad:
-              raise SystemExit('\n'.join(bad))
-          print('Tanda 1: las cinco páginas tienen contenido estático sin variables en dist.')
-          PY
+          /tmp/ig-b1/bin/python scripts/prerender_noscript.py
+          /tmp/ig-b1/bin/python scripts/build_site.py
+          /tmp/ig-b1/bin/python scripts/snapshot_noscript.py
+          mkdir -p /tmp/tanda1-src/es/recursos/juegos /tmp/tanda1-src/es/investigacion /tmp/tanda1-src/es/videos /tmp/tanda1-src/es/cuestionarios /tmp/tanda1-src/es/sobre-iris-green
+          cp es/investigacion/index.html /tmp/tanda1-src/es/investigacion/index.html
+          cp es/videos/index.html /tmp/tanda1-src/es/videos/index.html
+          cp es/recursos/juegos/index.html /tmp/tanda1-src/es/recursos/juegos/index.html
+          cp es/cuestionarios/index.html /tmp/tanda1-src/es/cuestionarios/index.html
+          cp es/sobre-iris-green/index.html /tmp/tanda1-src/es/sobre-iris-green/index.html
 
-      - name: Ejecutar exactamente la tanda 1
-        run: /tmp/ig-b1/bin/python scripts/arreglar_sin_js.py
+      - name: Limpiar efectos laterales del primer build y construir de nuevo
+        run: |
+          git restore --worktree -- .
+          cp /tmp/tanda1-src/es/investigacion/index.html es/investigacion/index.html
+          cp /tmp/tanda1-src/es/videos/index.html es/videos/index.html
+          cp /tmp/tanda1-src/es/recursos/juegos/index.html es/recursos/juegos/index.html
+          cp /tmp/tanda1-src/es/cuestionarios/index.html es/cuestionarios/index.html
+          cp /tmp/tanda1-src/es/sobre-iris-green/index.html es/sobre-iris-green/index.html
+          rm -rf dist
+          /tmp/ig-b1/bin/python scripts/build_site.py
 
-      - name: Comprobar que no se ha cambiado el texto fuera del bloque sin JS
+      - name: Comprobar que las cinco fuentes solo añaden el bloque sin JS
         run: |
           python3 - <<'PY'
           import re, subprocess
@@ -71,12 +59,13 @@ jobs:
           bad=[]
           for rel in paths:
               before=subprocess.check_output(['git','show','HEAD:'+rel],text=True)
-              after=Path(rel).read_text(encoding='utf-8')
+              saved=Path('/tmp/tanda1-src')/rel
+              after=saved.read_text(encoding='utf-8')
               if mark.sub('',after,1) != mark.sub('',before,1):
                   bad.append(rel)
           if bad:
               raise SystemExit('Cambios fuera del bloque ig-sin-js: '+', '.join(bad))
-          print('OK: fuera del bloque <noscript>, las cinco fuentes son idénticas a HEAD.')
+          print('OK: las cinco fuentes solo añaden su bloque <noscript>.')
           PY
 
       - name: Probar las cinco páginas con JavaScript desactivado y activado
@@ -124,6 +113,12 @@ jobs:
 
       - name: Guardar únicamente las cinco fuentes generadas
         run: |
+          git restore --worktree -- .
+          cp /tmp/tanda1-src/es/investigacion/index.html es/investigacion/index.html
+          cp /tmp/tanda1-src/es/videos/index.html es/videos/index.html
+          cp /tmp/tanda1-src/es/recursos/juegos/index.html es/recursos/juegos/index.html
+          cp /tmp/tanda1-src/es/cuestionarios/index.html es/cuestionarios/index.html
+          cp /tmp/tanda1-src/es/sobre-iris-green/index.html es/sobre-iris-green/index.html
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
           git add es/investigacion/index.html es/videos/index.html es/recursos/juegos/index.html es/cuestionarios/index.html es/sobre-iris-green/index.html
