@@ -65,6 +65,8 @@ def build():
     # ya no se comprueban contra documentos históricos: la autoridad única de los
     # resúmenes es el lote central de 420. Aquí se protegen solo los títulos cerrados.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_navigation_descriptions_420.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_navigation_descriptions_420.py'),'--root',str(dst),'--check'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/validate_author_titles.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # Estados editoriales: retirar, nunca convertir en una afirmación de validación.
