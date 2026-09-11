@@ -8,7 +8,8 @@ un <noscript> del archivo fuente. El texto es, letra por letra, el que la págin
 ya escribe hoy: este guion no redacta nada.
 
 Del contenido guardado se retiran los guiones y los controles de formulario, que
-sin JavaScript no harían nada. Los enlaces se conservan: son navegación real.
+sin JavaScript no harían nada. Los enlaces cuyo destino siga siendo una variable
+sin resolver se convierten en texto: sin destino real no son navegación.
 
 Dos pasadas, y en este orden:
   1. python3 scripts/build_site.py          → genera dist con las páginas de hoy
@@ -59,12 +60,19 @@ LIMPIEZA = """(() => {
     t.textContent = n.getAttribute('title') || '';
     n.replaceWith(t);
   });
+  let enlacesRetirados = 0;
+  copia.querySelectorAll('a[href]').forEach(n => {
+    const href = n.getAttribute('href') || '';
+    if (!href.includes('{{')) return;
+    n.replaceWith(...n.childNodes);
+    enlacesRetirados += 1;
+  });
   copia.removeAttribute('id');
   const envoltorio = document.createElement('main');
   envoltorio.id = 'main';
   envoltorio.setAttribute('style', 'padding:28px 22px 60px;max-width:68em;margin:0 auto');
   while (copia.firstChild) envoltorio.appendChild(copia.firstChild);
-  return envoltorio.outerHTML;
+  return {html: envoltorio.outerHTML, enlacesRetirados};
 })()"""
 
 
@@ -107,10 +115,14 @@ def main() -> None:
                 pagina.goto(base + ruta_web(rel), wait_until='domcontentloaded')
                 pagina.locator('main h1').first.wait_for()
                 pagina.wait_for_timeout(600)
-                marcado = pagina.evaluate(LIMPIEZA)
+                resultado = pagina.evaluate(LIMPIEZA)
                 contexto.close()
                 if errores:
                     raise RuntimeError(rel + ': la página da errores de guion: ' + repr(errores[:3]))
+                if not resultado:
+                    raise RuntimeError(rel + ': no se ha podido capturar el contenido')
+                marcado = resultado['html']
+                enlaces_retirados = int(resultado.get('enlacesRetirados', 0))
                 if not marcado or '{{' in marcado:
                     raise RuntimeError(rel + ': el contenido no se ha montado del todo')
                 if len(marcado) < args.minimo:
@@ -128,7 +140,12 @@ def main() -> None:
                 cambia = nuevo != texto
                 if cambia and not args.check:
                     fuente.write_text(nuevo, encoding='utf-8')
-                filas.append({'pagina': rel, 'caracteres': len(marcado), 'cambia': cambia})
+                filas.append({
+                    'pagina': rel,
+                    'caracteres': len(marcado),
+                    'enlaces_con_variable_retirados': enlaces_retirados,
+                    'cambia': cambia,
+                })
             navegador.close()
     finally:
         servicio.shutdown()
