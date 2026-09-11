@@ -36,61 +36,31 @@ jobs:
                   raise SystemExit(f'{where}: esperaba una aparición y hay {n}: {old[:120]}')
               return text.replace(old,new,1)
 
-          # 1) Portada aprobada: solo contrato y carga del controlador compartido.
           home=Path('editorial/navigation/home-es.html')
           original=home.read_text(encoding='utf-8')
           text=original
-          text=once(text,
-              'data-dialog="reading-dialog" id="reading-open"',
-              'data-dialog="reading-dialog" data-ig-reading-trigger="" aria-expanded="false" id="reading-open"',home)
-          text=once(text,
-              '<dialog aria-labelledby="reading-title" id="reading-dialog">',
-              '<dialog aria-labelledby="reading-title" data-ig-reading-panel="" id="reading-dialog">',home)
+          text=once(text,'data-dialog="reading-dialog" id="reading-open"','data-dialog="reading-dialog" data-ig-reading-trigger="" aria-expanded="false" id="reading-open"',home)
+          text=once(text,'<dialog aria-labelledby="reading-title" id="reading-dialog">','<dialog aria-labelledby="reading-title" data-ig-reading-panel="" id="reading-dialog">',home)
           start=text.index('<dialog aria-labelledby="reading-title" data-ig-reading-panel="" id="reading-dialog">')
           end=text.index('</dialog>',start)+len('</dialog>')
           before,dialog,after=text[:start],text[start:end],text[end:]
-          if dialog.count('data-close=""') != 2:
-              raise SystemExit('home-es.html: el diálogo de lectura ya no tiene exactamente dos cierres')
+          if dialog.count('data-close=""') != 2: raise SystemExit('home-es.html: el diálogo de lectura ya no tiene exactamente dos cierres')
           dialog=dialog.replace('data-close=""','data-close="" data-ig-reading-close=""')
           text=before+dialog+after
-          text=once(text,
-              '<script defer="" src="/assets/buscador-comun.js"></script><script defer="" src="/assets/musica.js"></script><script defer="" src="/assets/navigation-approved.js"></script>',
-              '<script defer="" src="/assets/buscador-comun.js"></script><script defer="" src="/assets/musica.js"></script><script defer="" src="/assets/interfaz-comun.js"></script><script defer="" src="/assets/navigation-approved.js"></script>',home)
+          text=once(text,'<script defer="" src="/assets/buscador-comun.js"></script><script defer="" src="/assets/musica.js"></script><script defer="" src="/assets/navigation-approved.js"></script>','<script defer="" src="/assets/buscador-comun.js"></script><script defer="" src="/assets/musica.js"></script><script defer="" src="/assets/interfaz-comun.js"></script><script defer="" src="/assets/navigation-approved.js"></script>',home)
           for required in ['Leer a tu manera','Vista compacta','Escuchar esta página','Restablecer ajustes']:
-              if required not in text or required not in original:
-                  raise SystemExit('home-es.html: se ha perdido texto aprobado: '+required)
+              if required not in text or required not in original: raise SystemExit('home-es.html: se ha perdido texto aprobado: '+required)
           home.write_text(text,encoding='utf-8')
 
-          # 2) El controlador compartido reconoce un <dialog> nativo y no confunde
-          #    el #a11y interior de la portada con el panel estático de otras páginas.
           common=Path('assets/interfaz-comun.js')
           text=common.read_text(encoding='utf-8')
-          text=once(text,
-              "  function shown(p){return p&&p.isConnected&&!p.hidden;}\n",
-              "  function isDialog(p){return typeof HTMLDialogElement!=='undefined'&&p instanceof HTMLDialogElement;}\n"
-              "  function shown(p){return p&&p.isConnected&&(isDialog(p)?p.open:!p.hidden);}\n",common)
-          text=once(text,
-              "    if(window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);\n",
-              "    // La portada conserva su diálogo aprobado: no se le inyectan controles nuevos.\n"
-              "    if(!isDialog(p)&&window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);\n",common)
-          text=once(text,
-              "    if(typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();\n",
-              "    if(!isDialog(p)&&typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();\n",common)
-          text=once(text,
-              "    if(p.id==='a11y'){p.hidden=true;schedule();}\n"
-              "    else {var b=p.querySelector('[data-ig-reading-close]');if(b)b.click();}\n",
-              "    if(isDialog(p)){if(p.open)p.close();schedule();}\n"
-              "    else if(p.id==='a11y'){p.hidden=true;schedule();}\n"
-              "    else {var b=p.querySelector('[data-ig-reading-close]');if(b)b.click();}\n",common)
-          text=once(text,
-              "    var p=document.getElementById('a11y');if(!p||p.hasAttribute('data-ig-reading-panel'))return;\n",
-              "    var p=document.getElementById('a11y');\n"
-              "    // En la portada #a11y vive dentro del <dialog> aprobado: no es el panel.\n"
-              "    if(!p||p.closest('[data-ig-reading-panel]')||p.hasAttribute('data-ig-reading-panel'))return;\n",common)
+          text=once(text,"  function shown(p){return p&&p.isConnected&&!p.hidden;}\n","  function isDialog(p){return typeof HTMLDialogElement!=='undefined'&&p instanceof HTMLDialogElement;}\n  function shown(p){return p&&p.isConnected&&(isDialog(p)?p.open:!p.hidden);}\n",common)
+          text=once(text,"    if(window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);\n","    // La portada conserva su diálogo aprobado: no se le inyectan controles nuevos.\n    if(!isDialog(p)&&window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);\n",common)
+          text=once(text,"    if(typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();\n","    if(!isDialog(p)&&typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();\n",common)
+          text=once(text,"    if(p.id==='a11y'){p.hidden=true;schedule();}\n    else {var b=p.querySelector('[data-ig-reading-close]');if(b)b.click();}\n","    if(isDialog(p)){if(p.open)p.close();schedule();}\n    else if(p.id==='a11y'){p.hidden=true;schedule();}\n    else {var b=p.querySelector('[data-ig-reading-close]');if(b)b.click();}\n",common)
+          text=once(text,"    var p=document.getElementById('a11y');if(!p||p.hasAttribute('data-ig-reading-panel'))return;\n","    var p=document.getElementById('a11y');\n    // En la portada #a11y vive dentro del <dialog> aprobado: no es el panel.\n    if(!p||p.closest('[data-ig-reading-panel]')||p.hasAttribute('data-ig-reading-panel'))return;\n",common)
           common.write_text(text,encoding='utf-8')
 
-          # 3) La prueba deja de conocer posiciones. Usa el mismo contrato y los nombres
-          #    semánticos de los controles, tanto en el panel histórico como en el diálogo.
           test=Path('scripts/test_reading_preferences.py')
           text=test.read_text(encoding='utf-8')
           old="""def open_panel(page):
@@ -102,25 +72,31 @@ jobs:
            page.locator('[data-ig-reading-trigger]:visible,#a11yBtn:visible,.ig-uh-reading:visible').first.click()
            panel=page.locator('[data-ig-reading-panel]');panel.wait_for(state='visible');return panel
 
+          def named_or_attr(panel,selector,pattern,label):
+           b=panel.locator(selector).first
+           if b.count():return b
+           b=panel.get_by_role('button',name=re.compile(pattern,re.I)).first
+           assert b.count()==1,(label,panel.inner_text());return b
+
           def pref_button(panel,key):
            selectors={
-            'spacing':'button[data-pref="spacing"],button[data-a="ls"]',
-            'controls':'button[data-pref="controls"],button[data-a="big"]',
-            'contrast':'button[data-pref="contrast"],button[data-a="hc"]',
-            'guide':'button[data-pref="guide"],button[data-a="guide"]',
-            'motion':'button[data-pref="motion"],button[data-a="rm"]',
+            'spacing':('button[data-pref="spacing"],button[data-a="ls"]',r'^(Más espacio|Letra más separada|More space|More letter spacing|Wider letter spacing)$'),
+            'controls':('button[data-pref="controls"],button[data-a="big"]',r'^(Botones más grandes|Larger buttons|Bigger buttons)$'),
+            'contrast':('button[data-pref="contrast"],button[data-a="hc"]',r'^(Alto contraste|Más contraste|High contrast|More contrast)$'),
+            'guide':('button[data-pref="guide"],button[data-a="guide"]',r'^(Guía de lectura|Reading guide)$'),
+            'motion':('button[data-pref="motion"],button[data-a="rm"]',r'^(Reducir movimiento|Reduce motion)$'),
            }
-           b=panel.locator(selectors[key]).first;assert b.count()==1,(key,panel.inner_text());return b
+           selector,pattern=selectors[key];return named_or_attr(panel,selector,pattern,key)
 
           def speech_button(panel):
-           b=panel.locator('#speak,button[data-a="tts"]').first;assert b.count()==1,panel.inner_text();return b
+           return named_or_attr(panel,'#speak,button[data-a="tts"]',r'^(Escuchar esta página|Leer en voz alta|Listen to this page|Read aloud)$','speech')
 
           def size_button(panel,direction):
-           sel='button[data-size="1"],button[data-a="fs+"]' if direction>0 else 'button[data-size="-1"],button[data-a="fs-"]'
-           b=panel.locator(sel).first;assert b.count()==1,(direction,panel.inner_text());return b
+           if direction>0:return named_or_attr(panel,'button[data-size="1"],button[data-a="fs+"]',r'^(A\+|Aumentar el texto|Tamaño del texto \+|Increase text size|Text size \+)$','size +')
+           return named_or_attr(panel,'button[data-size="-1"],button[data-a="fs-"]',r'^(A[−–-]|Reducir el texto|Tamaño del texto [−–-]|Decrease text size|Text size [−–-])$','size -')
 
           def reset_button(panel):
-           b=panel.locator('#reset,button[data-a="reset"]').first;assert b.count()==1,panel.inner_text();return b
+           return named_or_attr(panel,'#reset,button[data-a="reset"]',r'^(Restablecer ajustes|Restablecer|Reset settings|Reset)$','reset')
 
           def language_en(page):
            b=page.locator('[data-lang="en"]:visible,.ig-uh-langs button:visible').filter(has_text=re.compile(r'^EN$')).first
@@ -142,68 +118,17 @@ jobs:
           text=text[:start]+replacement+text[end:]
           text=text.replace("'expectativas_antiguas':[],",'')
           text=text.replace(",'expectativas_antiguas':len(R['expectativas_antiguas'])",'')
-          text=once(text,
-              "   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':toggles(panel).evaluate_all('(els)=>els.map(e=>({label:e.textContent.trim(),pressed:e.getAttribute(\"aria-pressed\")}))'),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n",
-              "   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':panel_states(panel),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n",test)
-
-          text=once(text,
-              "    panel=open_panel(page);states=toggles(panel).get_attribute('aria-pressed') if toggles(panel).count()==1 else toggles(panel).evaluate_all('(els)=>els.map(e=>e.getAttribute(\"aria-pressed\"))')\n"
-              "    assert states==['true','true','true','true','false','true'],states\n",
-              "    panel=open_panel(page);states=[pref_button(panel,k).get_attribute('aria-pressed') for k in ['spacing','controls','contrast','guide','motion']]\n"
-              "    assert states==['true','true','true','true','true'],states\n"
-              "    assert not page.evaluate('window.IGPreferences.speechOn()')\n",test)
-          text=once(text,
-              "    panel=open_panel(page);plus=panel.get_by_role('button',name=re.compile(r'^Tamaño del texto \\+$'))\n"
-              "    assert plus.count()==1\n"
-              "    plus.click();plus.click()\n"
-              "    for n in [0,1,2,3,5]:toggles(panel).nth(n).click()\n",
-              "    panel=open_panel(page);plus=size_button(panel,1);plus.click();plus.click()\n"
-              "    for key in ['spacing','controls','contrast','guide','motion']:pref_button(panel,key).click()\n",test)
-          text=once(text,
-              "    page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^EN$')).click();page.wait_for_timeout(70)\n",
-              "    language_en(page).click();page.wait_for_timeout(70)\n",test)
-          text=once(text,"    toggles(panel).nth(0).click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed\n",
-                         "    pref_button(panel,'spacing').click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed\n",test)
-          text=once(text,
-              "    panel=open_panel(page);plus=panel.get_by_role('button',name='A+',exact=True);plus.click();assert prefs(page)['scale']==1.5 and plus.is_disabled()\n"
-              "    minus=panel.get_by_role('button',name='A−',exact=True)\n"
-              "    if not minus.count():minus=panel.get_by_role('button',name='A−')\n"
-              "    # All existing templates use a Unicode minus sign or a simple hyphen.\n"
-              "    if not minus.count():minus=panel.locator('button').filter(has_text=re.compile(r'^A[−–-]$'))\n",
-              "    panel=open_panel(page);plus=size_button(panel,1);plus.click();assert prefs(page)['scale']==1.5 and plus.is_disabled()\n"
-              "    minus=size_button(panel,-1)\n",test)
-          text=once(text,"    panel.get_by_role('button',name='Reset',exact=True).click()\n",
-                         "    reset_button(panel).click()\n",test)
-          text=once(text,
-              "   load(a,STATIC[0]);load(b,'index.html');pa=open_panel(a);pb=open_panel(b)\n"
-              "   toggles(pa).nth(0).click()\n"
-              "   b.wait_for_function('window.IGPreferences.get().spacing===true')\n"
-              "   assert toggles(pb).nth(0).get_attribute('aria-pressed')=='true'\n"
-              "   assert b.evaluate('window.__preferenceWrites')==0,'Storage event wrote back in a loop'\n"
-              "   toggles(pb).nth(1).click();a.wait_for_function('window.IGPreferences.get().controls===true')\n"
-              "   assert toggles(pa).nth(1).get_attribute('aria-pressed')=='true'\n"
-              "   pb.get_by_role('button',name='Restablecer',exact=True).click();a.wait_for_function('window.IGPreferences.get().spacing===false')\n"
-              "   assert toggles(pa).nth(0).get_attribute('aria-pressed')=='false'\n",
-              "   load(a,STATIC[0]);load(b,'index.html');pa=open_panel(a);pb=open_panel(b)\n"
-              "   pref_button(pa,'spacing').click()\n"
-              "   b.wait_for_function('window.IGPreferences.get().spacing===true')\n"
-              "   assert pref_button(pb,'spacing').get_attribute('aria-pressed')=='true'\n"
-              "   assert b.evaluate('window.__preferenceWrites')==0,'Storage event wrote back in a loop'\n"
-              "   pref_button(pb,'controls').click();a.wait_for_function('window.IGPreferences.get().controls===true')\n"
-              "   assert pref_button(pa,'controls').get_attribute('aria-pressed')=='true'\n"
-              "   reset_button(pb).click();a.wait_for_function('window.IGPreferences.get().spacing===false')\n"
-              "   assert pref_button(pa,'spacing').get_attribute('aria-pressed')=='false'\n",test)
-          text=text.replace("panel=open_panel(page);toggles(panel).first.click();assert prefs(page)['spacing'] is True",
-                            "panel=open_panel(page);pref_button(panel,'spacing').click();assert prefs(page)['spacing'] is True")
-          text=once(text,
-              "   load(page,'index.html');panel=open_panel(page);toggles(panel).nth(4).click()\n"
-              "   assert page.evaluate('window.__speechCalls')==1\n"
-              "   toggles(panel).nth(0).click();toggles(panel).nth(2).click()\n",
-              "   load(page,'index.html');panel=open_panel(page);speech_button(panel).click()\n"
-              "   assert page.evaluate('window.__speechCalls')==1\n"
-              "   pref_button(panel,'spacing').click();pref_button(panel,'contrast').click()\n",test)
-          if 'ESPERADO_FALLA' in text or 'expectativas_antiguas' in text or 'toggles(' in text:
-              raise SystemExit('test_reading_preferences.py: quedan marcas o selectores posicionales antiguos')
+          text=once(text,"   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':toggles(panel).evaluate_all('(els)=>els.map(e=>({label:e.textContent.trim(),pressed:e.getAttribute(\"aria-pressed\")}))'),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n","   R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':panel_states(panel),'stored':page.evaluate('localStorage.getItem(\"ig-a11y\")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector(\"main\")).zoom')})\n",test)
+          text=once(text,"    panel=open_panel(page);states=toggles(panel).get_attribute('aria-pressed') if toggles(panel).count()==1 else toggles(panel).evaluate_all('(els)=>els.map(e=>e.getAttribute(\"aria-pressed\"))')\n    assert states==['true','true','true','true','false','true'],states\n","    panel=open_panel(page);states=[pref_button(panel,k).get_attribute('aria-pressed') for k in ['spacing','controls','contrast','guide','motion']]\n    assert states==['true','true','true','true','true'],states\n    assert not page.evaluate('window.IGPreferences.speechOn()')\n",test)
+          text=once(text,"    panel=open_panel(page);plus=panel.get_by_role('button',name=re.compile(r'^Tamaño del texto \\+$'))\n    assert plus.count()==1\n    plus.click();plus.click()\n    for n in [0,1,2,3,5]:toggles(panel).nth(n).click()\n","    panel=open_panel(page);plus=size_button(panel,1);plus.click();plus.click()\n    for key in ['spacing','controls','contrast','guide','motion']:pref_button(panel,key).click()\n",test)
+          text=once(text,"    page.locator('.ig-uh-langs button:visible').filter(has_text=re.compile('^EN$')).click();page.wait_for_timeout(70)\n","    if panel.evaluate('p=>p.tagName===\"DIALOG\"'):close(page)\n    language_en(page).click();page.wait_for_timeout(70)\n    if not panel.is_visible():panel=open_panel(page)\n",test)
+          text=once(text,"    toggles(panel).nth(0).click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed\n","    pref_button(panel,'spacing').click();changed=dict(EXPECTED,spacing=False);assert prefs(page)==changed\n",test)
+          text=once(text,"    panel=open_panel(page);plus=panel.get_by_role('button',name='A+',exact=True);plus.click();assert prefs(page)['scale']==1.5 and plus.is_disabled()\n    minus=panel.get_by_role('button',name='A−',exact=True)\n    if not minus.count():minus=panel.get_by_role('button',name='A−')\n    # All existing templates use a Unicode minus sign or a simple hyphen.\n    if not minus.count():minus=panel.locator('button').filter(has_text=re.compile(r'^A[−–-]$'))\n","    panel=open_panel(page);plus=size_button(panel,1);plus.click();assert prefs(page)['scale']==1.5 and plus.is_disabled()\n    minus=size_button(panel,-1)\n",test)
+          text=once(text,"    panel.get_by_role('button',name='Reset',exact=True).click()\n","    reset_button(panel).click()\n",test)
+          text=once(text,"   load(a,STATIC[0]);load(b,'index.html');pa=open_panel(a);pb=open_panel(b)\n   toggles(pa).nth(0).click()\n   b.wait_for_function('window.IGPreferences.get().spacing===true')\n   assert toggles(pb).nth(0).get_attribute('aria-pressed')=='true'\n   assert b.evaluate('window.__preferenceWrites')==0,'Storage event wrote back in a loop'\n   toggles(pb).nth(1).click();a.wait_for_function('window.IGPreferences.get().controls===true')\n   assert toggles(pa).nth(1).get_attribute('aria-pressed')=='true'\n   pb.get_by_role('button',name='Restablecer',exact=True).click();a.wait_for_function('window.IGPreferences.get().spacing===false')\n   assert toggles(pa).nth(0).get_attribute('aria-pressed')=='false'\n","   load(a,STATIC[0]);load(b,'index.html');pa=open_panel(a);pb=open_panel(b)\n   pref_button(pa,'spacing').click()\n   b.wait_for_function('window.IGPreferences.get().spacing===true')\n   assert pref_button(pb,'spacing').get_attribute('aria-pressed')=='true'\n   assert b.evaluate('window.__preferenceWrites')==0,'Storage event wrote back in a loop'\n   pref_button(pb,'controls').click();a.wait_for_function('window.IGPreferences.get().controls===true')\n   assert pref_button(pa,'controls').get_attribute('aria-pressed')=='true'\n   reset_button(pb).click();a.wait_for_function('window.IGPreferences.get().spacing===false')\n   assert pref_button(pa,'spacing').get_attribute('aria-pressed')=='false'\n",test)
+          text=text.replace("panel=open_panel(page);toggles(panel).first.click();assert prefs(page)['spacing'] is True","panel=open_panel(page);pref_button(panel,'spacing').click();assert prefs(page)['spacing'] is True")
+          text=once(text,"   load(page,'index.html');panel=open_panel(page);toggles(panel).nth(4).click()\n   assert page.evaluate('window.__speechCalls')==1\n   toggles(panel).nth(0).click();toggles(panel).nth(2).click()\n","   load(page,'index.html');panel=open_panel(page);speech_button(panel).click()\n   assert page.evaluate('window.__speechCalls')==1\n   pref_button(panel,'spacing').click();pref_button(panel,'contrast').click()\n",test)
+          if 'ESPERADO_FALLA' in text or 'expectativas_antiguas' in text or 'toggles(' in text: raise SystemExit('test_reading_preferences.py: quedan marcas o selectores posicionales antiguos')
           test.write_text(text,encoding='utf-8')
 
           for rel in ['editorial/navigation/home-es.html','assets/interfaz-comun.js','scripts/test_reading_preferences.py']:
@@ -213,12 +138,10 @@ jobs:
           python3 -m py_compile scripts/test_reading_preferences.py
 
       - name: Construir la salida pública
-        run: |
-          python3 scripts/build_site.py
+        run: python3 scripts/build_site.py
 
       - name: Probar las preferencias, incluida la portada
-        run: |
-          cd dist && /tmp/ig-panel/bin/python ../scripts/test_reading_preferences.py --phase after
+        run: cd dist && /tmp/ig-panel/bin/python ../scripts/test_reading_preferences.py --phase after
 
       - name: Comprobar el diálogo aprobado en escritorio y móvil
         run: |
@@ -251,9 +174,7 @@ jobs:
       - name: Guardar solo las tres fuentes comprobadas
         run: |
           git restore --worktree -- .
-          for rel in editorial/navigation/home-es.html assets/interfaz-comun.js scripts/test_reading_preferences.py; do
-            cp "/tmp/panel-final/$rel" "$rel"
-          done
+          for rel in editorial/navigation/home-es.html assets/interfaz-comun.js scripts/test_reading_preferences.py; do cp "/tmp/panel-final/$rel" "$rel"; done
           git --no-pager diff --stat
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
