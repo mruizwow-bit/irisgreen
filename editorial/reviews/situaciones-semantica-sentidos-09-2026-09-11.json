@@ -1,0 +1,54 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 9. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-sonidos-concretos-misofonia",
+      "es_path": "es/situaciones/hay-sonidos-concretos-que-me-provocan-una-reaccion/index.html",
+      "en_path": "en/situations/specific-sounds-trigger-an-immediate-reaction-in-me/index.html",
+      "reason": "La ficha es coherente con la definición de misofonía, pero la fuente no estaba enlazada y la afirmación sobre tratamiento necesitaba una revisión específica. Se mantiene la cautela diagnóstica y se documenta que la evidencia terapéutica sigue siendo limitada.",
+      "sources": [
+        {
+          "name": "Swedo et al. 2022 · Consensus Definition of Misophonia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35368272/",
+          "supports": "Define la misofonía como una tolerancia reducida a sonidos específicos o estímulos asociados y documenta respuestas intensas ante desencadenantes concretos."
+        },
+        {
+          "name": "Mattson et al. 2023 · A systematic review of treatments for misophonia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37333720/",
+          "supports": "La investigación sobre tratamientos es limitada; la TCC es la aproximación más estudiada, pero la evidencia disponible todavía tiene importantes limitaciones metodológicas."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Poner el sonido a propósito como exposición o «desensibilización» sin una intervención clínica indicada.</li>",
+            "new": "<li>Forzar por cuenta propia la exposición repetida al sonido como prueba o «desensibilización». Las intervenciones estudiadas son variadas y no existe una pauta única que sirva para todas las personas.</li>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F40 · Swedo et al. 2022 · Consensus definition of misophonia</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/35368272/\" rel=\"noopener\" target=\"_blank\">Swedo et al. 2022 · Consensus Definition of Misophonia</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/37333720/\" rel=\"noopener\" target=\"_blank\">Mattson et al. 2023 · A systematic review of treatments for misophonia</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La definición y la información sobre tratamiento se han comprobado con la literatura citada.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>Playing the sound deliberately as self-directed exposure or ‘desensitisation’ without an indicated clinical intervention.</li>",
+            "new": "<li>Forcing repeated exposure to the sound on your own as a test or as ‘desensitisation’. The interventions that have been studied vary, and there is no single approach that works for everyone.</li>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F40 · Swedo et al. 2022 · Consensus definition of misophonia</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/35368272/\" rel=\"noopener\" target=\"_blank\">Swedo et al. 2022 · Consensus Definition of Misophonia</a></li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/37333720/\" rel=\"noopener\" target=\"_blank\">Mattson et al. 2023 · A systematic review of treatments for misophonia</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. The definition and treatment information have been checked against the cited literature.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
