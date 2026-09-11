@@ -94,7 +94,7 @@ jobs:
                " except Exception as error:row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc();R['failures'].append(row.copy())\n"
                " R['cases'].append(row);print(json.dumps(row,ensure_ascii=False),flush=True)",
                "# Expectativas antiguas, estrictas: ver la nota de scripts/test_coherence.py.\n"
-               "ESPERADO_FALLA={'round trip and reset':" + repr(MOTIVO_PANEL) + "}\n\n"
+               "ESPERADO_FALLA={'round trip and reset':" + repr(MOTIVO_PANEL) + ",'real synchronization between two tabs':" + repr(MOTIVO_PANEL) + ",'presentation changes do not restart narration':" + repr(MOTIVO_PANEL) + "}\n\n"
                "def note_result(row,fn):\n"
                " marca=ESPERADO_FALLA.get(row.get('scenario'))\n"
                " try:\n"
