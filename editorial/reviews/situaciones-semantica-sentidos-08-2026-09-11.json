@@ -1,0 +1,86 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 8. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-sonidos-dolorosos",
+      "es_path": "es/situaciones/los-sonidos-normales-me-resultan-dolorosos/index.html",
+      "en_path": "en/situations/ordinary-sounds-are-painful-for-me/index.html",
+      "reason": "La ficha ya apuntaba correctamente hacia la hiperacusia, pero la fuente no estaba enlazada y la pérdida auditiva repentina se describía como una emergencia inmediata en lugar de la recomendación del NHS de atención urgente. Se ajusta también el uso de protección auditiva a la guía sobre hiperacusia.",
+      "sources": [
+        {
+          "name": "NHS · Noise sensitivity (hyperacusis)",
+          "url": "https://www.nhs.uk/conditions/hyperacusis/",
+          "supports": "La hiperacusia hace que sonidos cotidianos parezcan demasiado fuertes y a veces dolorosos. Aconseja consultar si los ruidos cotidianos son demasiado fuertes o dolorosos y evitar usar tapones o protectores todo el tiempo; el uso breve puede ayudar en entornos muy ruidosos."
+        },
+        {
+          "name": "NHS · Hearing loss",
+          "url": "https://www.nhs.uk/conditions/hearing-loss/",
+          "supports": "La pérdida auditiva repentina en uno o ambos oídos requiere atención urgente."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Si es dolor, presión en el oído o punzada, y cuánto dura después.</li>",
+            "new": "<li>Qué sonidos duelen, si ocurre en uno o ambos oídos, si el sonido parece mucho más fuerte de lo esperado y cuánto dura el dolor después.</li>"
+          },
+          {
+            "old": "<li>Reducir exposiciones claramente molestas y usar protección auditiva cuando el nivel de ruido sea potencialmente dañino.</li>",
+            "new": "<li>Alejarte de un sonido que está resultando doloroso. En lugares muy ruidosos, la protección auditiva puede ayudar durante un tiempo corto.</li>"
+          },
+          {
+            "old": "<li>Usar tapones todo el día como única estrategia sin haber valorado el problema.</li>",
+            "new": "<li>Usar tapones o protectores todo el día. En la hiperacusia, evitar el sonido de forma constante puede aumentar la sensibilidad.</li>"
+          },
+          {
+            "old": "Pide valoración audiológica o médica si los sonidos cotidianos resultan dolorosos, si el problema es nuevo o progresivo, si aparece tinnitus, sensación de oído tapado, vértigo o una diferencia de audición entre oídos.",
+            "new": "Pide valoración si sonidos cotidianos parecen demasiado fuertes o dolorosos, especialmente si el problema es nuevo, ha empeorado o está limitando tus actividades habituales."
+          },
+          {
+            "old": "La pérdida súbita de audición, especialmente en un oído, es una urgencia médica y debe valorarse de inmediato.",
+            "new": "Si aparece una pérdida repentina de audición en uno o ambos oídos, pide una cita médica urgente o utiliza el servicio de atención urgente de tu zona."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F05 · ASHA · Tinnitus and Hyperacusis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La información sobre dolor ante sonidos y protección auditiva se ajusta a la guía del NHS sobre hiperacusia.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>Whether it feels like pain, pressure in the ear or a sharp sensation, and how long it lasts afterwards.</li>",
+            "new": "<li>Which sounds are painful, whether it affects one or both ears, whether the sound seems much louder than expected, and how long the pain lasts afterwards.</li>"
+          },
+          {
+            "old": "<li>Reduce clearly distressing exposures and use hearing protection when noise levels may be harmful.</li>",
+            "new": "<li>Move away from a sound that is becoming painful. In very noisy places, hearing protection may help for a short period.</li>"
+          },
+          {
+            "old": "<li>Using earplugs all day as the only strategy without having the problem assessed.</li>",
+            "new": "<li>Using earplugs or ear defenders all day. With hyperacusis, constantly avoiding sound can increase sensitivity.</li>"
+          },
+          {
+            "old": "Seek audiology or medical assessment if everyday sounds are painful, the problem is new or progressive, or tinnitus, a blocked-ear sensation, vertigo or a difference in hearing between ears appears.",
+            "new": "Seek an assessment if everyday sounds seem excessively loud or painful, especially if the problem is new, has become worse or is limiting your usual activities."
+          },
+          {
+            "old": "Sudden hearing loss, especially in one ear, is a medical emergency and should be assessed immediately.",
+            "new": "If sudden hearing loss appears in one or both ears, ask for an urgent medical appointment or use your local urgent-care service."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F05 · ASHA · Tinnitus and Hyperacusis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Information about painful everyday sounds and hearing protection follows NHS guidance on hyperacusis.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
