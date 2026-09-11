@@ -228,9 +228,10 @@ jobs:
         run: |
           # Sin reconstruir: la auditoría lee dist, que ya está, y la lista desde el
           # árbol. Así la lista reducida no se guarda sin haberla comprobado.
-          cp /tmp/tanda3/pendientes-sin-js.jsom editorial/pendientes-sin-js.json
+          cp /tmp/tanda3/pendientes-sin-js.json editorial/pendientes-sin-js.json
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist
 
-        - name: Guardar solo las fuentes y la lista
+      - name: Guardar solo las fuentes y la lista
         run: |
           # Otra vez: el segundo build también ha reescrito fuentes. Se deshace todo y
           # se guarda únicamente lo que esta tanda debe cambiar.
