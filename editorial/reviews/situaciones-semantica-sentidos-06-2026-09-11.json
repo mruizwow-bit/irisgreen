@@ -1,0 +1,83 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 6. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-ruido-insoportable",
+      "es_path": "es/situaciones/el-ruido-le-resulta-insoportable/index.html",
+      "en_path": "en/situations/noise-is-unbearable-for-them/index.html",
+      "reason": "La ficha trata de muchos sonidos simultáneos, pero la versión anterior terminaba con alertas ajenas sobre visión, ictus y anafilaxia. Se distingue la sobrecarga por ruido de la hiperacusia y se dejan solo señales auditivas pertinentes.",
+      "sources": [
+        {
+          "name": "NICE CG142 · Autism spectrum disorder in adults: diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/cg142/chapter/Recommendations",
+          "supports": "Reconoce las sensibilidades sensoriales en adultos autistas y recomienda reducir sonidos externos o usar protección auditiva cuando el entorno lo requiera."
+        },
+        {
+          "name": "NHS · Noise sensitivity (hyperacusis)",
+          "url": "https://www.nhs.uk/conditions/hyperacusis/",
+          "supports": "La hiperacusia hace que sonidos cotidianos parezcan demasiado fuertes y a veces dolorosos; aconseja valoración si los ruidos cotidianos resultan demasiado fuertes o dolorosos."
+        },
+        {
+          "name": "NHS · Hearing loss",
+          "url": "https://www.nhs.uk/conditions/hearing-loss/",
+          "supports": "La pérdida auditiva repentina en uno o ambos oídos necesita atención urgente."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Una experiencia sensorial intensa no permite concluir por sí sola autismo ni un trastorno sensorial.</li>",
+            "new": "<li>Que muchos sonidos juntos resulten insoportables no significa automáticamente autismo ni hiperacusia. En la hiperacusia, sonidos cotidianos pueden parecer mucho más fuertes de lo esperado y llegar a doler.</li>"
+          },
+          {
+            "old": "<li>En qué sitios pasa y en cuáles no, y qué tienen de distinto: eco, gente, música, secador, obras.</li>",
+            "new": "<li>Si ocurre sobre todo cuando se juntan varios sonidos o también con un solo sonido cotidiano; qué ruidos influyen más; si hay dolor; y si el cambio es nuevo o lleva mucho tiempo presente.</li>"
+          },
+          {
+            "old": "Pide valoración si la molestia es nueva, persistente, dolorosa o limita de forma importante la vida diaria, o si aparecen síntomas específicos de oído, visión, piel, dolor de cabeza u otra causa médica.",
+            "new": "Pide valoración si los sonidos cotidianos parecen demasiado fuertes o dolorosos, si la sensibilidad es nueva o ha empeorado, o si está limitando de forma importante los estudios, el trabajo o las actividades habituales."
+          },
+          {
+            "old": "Si aparece de forma súbita pérdida de audición o visión, un dolor de cabeza muy intenso de inicio brusco, debilidad o alteración del habla, o dificultad para respirar con hinchazón de labios, boca o garganta, busca atención urgente.",
+            "new": "La sensibilidad al ruido, por sí sola, no es una urgencia. Si aparece una pérdida repentina de audición en uno o ambos oídos, pide atención médica urgente."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F03 · NICE CG142 · Autism in adults</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Se separa la sobrecarga por varios sonidos de la hiperacusia y se retiran alertas médicas ajenas a la audición.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>An intense sensory experience does not establish autism or a sensory disorder on its own.</li>",
+            "new": "<li>Finding many sounds at once unbearable does not automatically mean autism or hyperacusis. With hyperacusis, everyday sounds can seem much louder than expected and can sometimes be painful.</li>"
+          },
+          {
+            "old": "<li>Where it happens and where it does not, and what is different: echo, crowds, music, a hair dryer or building work.</li>",
+            "new": "<li>Whether it happens mainly when several sounds overlap or also with a single everyday sound; which noises have the greatest effect; whether there is pain; and whether this is new or has been present for a long time.</li>"
+          },
+          {
+            "old": "Seek an assessment if the discomfort is new, persistent, painful or substantially limits daily life, or if specific symptoms involving hearing, vision, skin, headache or another possible medical cause appear.",
+            "new": "Seek an assessment if everyday sounds seem excessively loud or painful, if the sensitivity is new or has become worse, or if it substantially limits study, work or usual activities."
+          },
+          {
+            "old": "If sudden hearing or vision loss, a very severe sudden-onset headache, weakness or a speech change, or difficulty breathing with swelling of the lips, mouth or throat appears, seek urgent medical attention.",
+            "new": "Noise sensitivity by itself is not an emergency. If there is sudden hearing loss in one or both ears, seek urgent medical help."
+          },
+          {
+            "old": "<ul class=\"list\"><li>F03 · NICE CG142 · Autism in adults</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li><li><a href=\"https://www.nhs.uk/conditions/hyperacusis/\" rel=\"noopener\" target=\"_blank\">NHS · Noise sensitivity (hyperacusis)</a></li><li><a href=\"https://www.nhs.uk/conditions/hearing-loss/\" rel=\"noopener\" target=\"_blank\">NHS · Hearing loss</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. Overload from several sounds is kept separate from hyperacusis, and medical warnings unrelated to hearing are removed.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
