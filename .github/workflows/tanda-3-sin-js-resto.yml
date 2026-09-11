@@ -166,9 +166,12 @@ jobs:
                 ctx = navegador.new_context(java_script_enabled=False, viewport={'width':1280,'height':900})
                 pagina = ctx.new_page()
                 respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded')
-                h1 = (pagina.locator('main h1').first.text_content(timeout=10000) or '').strip()
-                texto = pagina.locator('main').first.inner_text(timeout=10000).strip()
-                enlaces = pagina.evaluate("Array.from(document.querySelectorAll('main a[href]')).filter(a=>a.getAttribute('href').includes('{{')).length")
+                h1 = (pagina.locator('main:not(x-dc main) h1').first.text_content(timeout=10000) or '').strip()
+                texto = pagina.locator('main:not(x-dc main)').first.inner_text(timeout=10000).strip()
+                # Solo la versión que ve quien no tiene JavaScript. El <x-dc> oculto
+                # conserva a propósito sus enlaces con variable: son los que el
+                # guion resuelve al abrir una ficha, y retirarlos rompería la página.
+                enlaces = pagina.evaluate("Array.from(document.querySelectorAll('main a[href]')).filter(a=>!a.closest('x-dc') && a.getAttribute('href').includes('{{')).length")
                 fila.update({'sin_js_estado':respuesta.status if respuesta else None,'sin_js_h1':h1,'sin_js_caracteres':len(texto),'enlaces_con_variable':enlaces})
                 if not respuesta or respuesta.status != 200 or not h1 or len(texto) < 200 or enlaces:
                     raise RuntimeError('Fallo sin JS: '+json.dumps(fila, ensure_ascii=False))
