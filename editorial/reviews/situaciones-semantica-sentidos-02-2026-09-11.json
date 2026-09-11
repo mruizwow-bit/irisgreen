@@ -1,0 +1,102 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Situaciones · Sentidos · ficha 2. No modifica título ni descripción aprobada del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-supermercado-agotamiento",
+      "es_path": "es/situaciones/la-luz-del-supermercado-me-agota/index.html",
+      "en_path": "en/situations/supermarket-lights-drain-me/index.html",
+      "reason": "El resumen describe una combinación de luces, sonidos, movimiento y gente, pero el cuerpo de la ficha se había desplazado casi por completo a migraña y alertas neurológicas. Se devuelve el foco a la carga sensorial del entorno y se eliminan asociaciones médicas que no corresponden a la situación general.",
+      "sources": [
+        {
+          "name": "National Autistic Society · Autism and sensory processing",
+          "url": "https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing",
+          "supports": "Describe hipersensibilidad e hiposensibilidad a distintos estímulos, sobrecarga sensorial y estrategias como identificar desencadenantes, reducir estímulos y disponer de un espacio tranquilo."
+        },
+        {
+          "name": "NICE CG142 · Autism spectrum disorder in adults: diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/cg142/chapter/Recommendations",
+          "supports": "Reconoce el efecto del entorno físico en personas autistas y recomienda adaptar luz, ruido y duración de las actividades cuando existen sensibilidades sensoriales."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "<li>Salir agotada de un supermercado no permite concluir por sí solo sobrecarga sensorial ni autismo.</li>",
+            "new": "<li>Salir agotada de un supermercado no significa automáticamente autismo. Si el cansancio aparece sobre todo en lugares con mucha luz, ruido, movimiento o gente, esos estímulos pueden estar influyendo.</li>"
+          },
+          {
+            "old": "<li>Cuánto rato pasa hasta que empieza el malestar.</li>",
+            "new": "<li>Qué influye más: la luz, el ruido, las voces, el movimiento, la cantidad de gente o el tiempo dentro; cuándo empieza el cansancio; y cuánto tardas en recuperarte al salir.</li>"
+          },
+          {
+            "old": "<li>Ir a horas de poca gente y con lista cerrada.</li>",
+            "new": "<li>Ir a una hora con menos gente, llevar una lista clara y reducir el tiempo dentro si el cansancio empieza a subir. También puede ayudar disminuir el ruido o la luz cuando sea posible.</li>"
+          },
+          {
+            "old": "<li>Aguantar hasta el final «ya que estamos».</li>",
+            "new": "<li>Seguir hasta terminar la compra aunque el malestar esté aumentando. Hacer una pausa o salir antes puede evitar que el agotamiento siga creciendo.</li>"
+          },
+          {
+            "old": "Pide valoración si la luz provoca cefaleas repetidas, náuseas, aura, alteraciones visuales o una evitación importante de actividades necesarias. No hace falta alcanzar un número concreto de episodios para consultarlo si está limitando tu vida.",
+            "new": "Pide valoración si este agotamiento ocurre con frecuencia en supermercados u otros lugares con muchos estímulos y está haciendo difícil comprar, estudiar, trabajar o realizar otras actividades necesarias. Anotar qué estímulos aparecen y qué cambios ayudan puede orientar mejor el apoyo."
+          },
+          {
+            "old": "Un dolor de cabeza súbito que alcanza máxima intensidad en pocos minutos, una pérdida nueva de visión, debilidad, confusión o alteración del habla necesita atención urgente.",
+            "new": "Salir agotada de un lugar con muchos estímulos no es una urgencia médica por sí sola. Si aparece además un síntoma físico nuevo e intenso, busca atención sanitaria por ese síntoma."
+          },
+          {
+            "old": "<span class=\"chip lil\">Migraña</span><span class=\"chip lil\">Autismo</span>",
+            "new": "<span class=\"chip lil\">Diferencias sensoriales</span><span class=\"chip lil\">Autismo</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F06 · NICE CG150 · Headaches in over 12s</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. La ficha vuelve a centrarse en la combinación de luz, ruido, movimiento y gente descrita en la situación.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "<li>Leaving a supermarket exhausted is not enough on its own to conclude that sensory overload or autism is involved.</li>",
+            "new": "<li>Leaving a supermarket exhausted does not automatically mean autism. If the tiredness appears mainly in places with intense light, noise, movement or crowds, those stimuli may be contributing.</li>"
+          },
+          {
+            "old": "<li>How long it takes before the discomfort starts.</li>",
+            "new": "<li>Which factors have the greatest effect: light, noise, voices, movement, crowds or time spent inside; when the tiredness starts; and how long recovery takes after leaving.</li>"
+          },
+          {
+            "old": "<li>Go at quieter times and use a finished shopping list.</li>",
+            "new": "<li>Go at a quieter time, take a clear shopping list and shorten the time inside if the tiredness starts to build. Reducing noise or light where possible may also help.</li>"
+          },
+          {
+            "old": "<li>Pushing through to the end ‘since we're already here’.</li>",
+            "new": "<li>Continuing until the whole shop is finished even when the discomfort is increasing. Taking a break or leaving earlier can stop the exhaustion from building further.</li>"
+          },
+          {
+            "old": "Seek an assessment if light triggers repeated headaches, nausea, aura, visual changes or substantial avoidance of activities you need to do. You do not need to reach a specific number of episodes before asking for help if it is limiting your life.",
+            "new": "Seek an assessment if this exhaustion happens frequently in supermarkets or other highly stimulating places and is making shopping, study, work or other necessary activities difficult. Noting which stimuli are present and which changes help can make support more specific."
+          },
+          {
+            "old": "A sudden headache that reaches maximum intensity within minutes, new loss of vision, weakness, confusion or a new speech problem needs urgent medical attention.",
+            "new": "Leaving a highly stimulating place exhausted is not a medical emergency by itself. If a new and severe physical symptom appears as well, seek medical help for that symptom."
+          },
+          {
+            "old": "<span class=\"chip lil\">Migraña</span><span class=\"chip lil\">Autismo</span>",
+            "new": "<span class=\"chip lil\">Sensory differences</span><span class=\"chip lil\">Autism</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F06 · NICE CG150 · Headaches in over 12s</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li><a href=\"https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing\" rel=\"noopener\" target=\"_blank\">National Autistic Society · Autism and sensory processing</a></li><li><a href=\"https://www.nice.org.uk/guidance/cg142/chapter/Recommendations\" rel=\"noopener\" target=\"_blank\">NICE CG142 · Autism spectrum disorder in adults: diagnosis and management</a></li></ul><p class=\"muted\">Documentary review: 11 September 2026. The entry is again centred on the combination of light, noise, movement and crowds described in the situation.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
