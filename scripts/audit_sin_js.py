@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Comprueba que el contenido publicado se lee sin JavaScript.
 
-Busca variables de plantilla sin resolver en la salida pública: {{ algo }} en el
+Busca variables de plantilla sin resolver en la salida pública: \u007b\u007b algo \u007d\u007d en el
 texto o dentro de un atributo. Una página así llega vacía a quien navega sin
 JavaScript y a cualquier rastreador, y contradice lo que promete la portada.
 
