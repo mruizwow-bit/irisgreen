@@ -61,10 +61,11 @@ def build():
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
 
-    # Presentaciones ya aprobadas: se conservan; estas tareas comprueban, no regeneran.
+    # Presentaciones ya aprobadas: se conservan. Las descripciones de Sentidos y Sueño
+    # ya no se comprueban contra documentos históricos: la autoridad única de los
+    # resúmenes es el lote central de 420. Aquí se protegen solo los títulos cerrados.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/validate_author_titles.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # Estados editoriales: retirar, nunca convertir en una afirmación de validación.
     subprocess.run([sys.executable,str(ROOT/'scripts/normalize_situation_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
