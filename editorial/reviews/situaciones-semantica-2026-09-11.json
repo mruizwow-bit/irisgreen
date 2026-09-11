@@ -1,0 +1,80 @@
+{
+  "review_date": "2026-09-11",
+  "scope": "Correcciones semánticas explícitas de Situaciones. No modifica títulos ni descripciones aprobadas del lote 420.",
+  "entries": [
+    {
+      "id": "sentidos-ropa-etiquetas-costuras",
+      "es_path": "es/situaciones/la-ropa-me-molesta/index.html",
+      "en_path": "en/situations/clothes-feel-unbearable/index.html",
+      "reason": "Separar sensibilidad táctil, posibles problemas cutáneos y señales de alarma. La alerta previa sobre hinchazón de labios/boca/garganta procedía de anafilaxia y no correspondía a esta situación. Interocepción tampoco era la relación sensorial adecuada.",
+      "sources": [
+        {
+          "name": "National Autistic Society · Autism and sensory processing",
+          "url": "https://www.autism.org.uk/advice-and-guidance/about-autism/sensory-processing",
+          "supports": "Diferencias de procesamiento sensorial, incluida hipersensibilidad al tacto y a texturas de ropa."
+        },
+        {
+          "name": "Children and Family Health Devon · Dressing techniques for sensory differences",
+          "url": "https://childrenandfamilyhealthdevon.nhs.uk/resources/dressing-techniques-for-sensory-differences/",
+          "supports": "Adaptaciones prácticas para etiquetas, costuras, texturas y prendas; el recurso está dirigido a población infantil."
+        },
+        {
+          "name": "NHS · Contact dermatitis",
+          "url": "https://www.nhs.uk/conditions/contact-dermatitis/",
+          "supports": "Irritación cutánea, cuándo consultar y distinción de problemas dermatológicos."
+        },
+        {
+          "name": "NHS · Contact dermatitis: symptoms",
+          "url": "https://www.nhs.uk/conditions/contact-dermatitis/symptoms/",
+          "supports": "Empeoramiento rápido, secreción, aumento del dolor y malestar general como posibles signos de infección."
+        }
+      ],
+      "replacements": {
+        "es": [
+          {
+            "old": "Pide valoración si hay lesiones, síntomas persistentes o recurrentes, dolor importante o si la molestia limita vestirse, dormir o salir. Si la piel se irrita con frecuencia, conviene revisar también productos, detergentes y materiales concretos.",
+            "new": "Pide valoración si aparecen lesiones en la piel, irritación persistente o recurrente, dolor importante o si la molestia hace muy difícil vestirse. Si hay cambios visibles en la piel, conviene valorar también causas dermatológicas y revisar qué materiales, productos o detergentes entran en contacto con ella."
+          },
+          {
+            "old": "Hinchazón repentina de labios, boca, lengua o garganta, o dificultad para respirar, es una urgencia médica.",
+            "new": "La molestia de una etiqueta o una costura, sin cambios en la piel, no es una urgencia médica. Si la piel empeora rápidamente, supura, duele cada vez más o aparece fiebre o malestar general, busca atención sanitaria porque puede haber una infección."
+          },
+          {
+            "old": "<span class=\"chip lil\">Autismo</span><span class=\"chip lil\">Interocepción</span>",
+            "new": "<span class=\"chip lil\">Diferencias sensoriales</span><span class=\"chip lil\">Autismo</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F07 · NHS · Contact dermatitis</li></ul><p class=\"muted\">Revisión editorial: 4 de septiembre de 2026. Las fuentes se citan por su nombre; las páginas siguen en noindex hasta que cada cita esté comprobada.</p>",
+            "new": "<ul class=\"list\"><li>National Autistic Society · Autism and sensory processing</li><li>Children and Family Health Devon · Dressing techniques for sensory differences</li><li>NHS · Contact dermatitis</li></ul><p class=\"muted\">Revisión documental: 11 de septiembre de 2026. Las fuentes sobre sensibilidad táctil y ropa se separan de la información dermatológica.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ],
+        "en": [
+          {
+            "old": "Seek an assessment if there are skin lesions, persistent or recurring symptoms, significant pain, or if the discomfort limits getting dressed, sleeping or going out. If the skin is frequently irritated, it is also worth reviewing specific products, detergents and materials.",
+            "new": "Seek an assessment if there are skin lesions, persistent or recurring irritation, significant pain, or if the discomfort makes getting dressed very difficult. If there are visible skin changes, it is also worth considering dermatological causes and reviewing which materials, products or detergents come into contact with the skin."
+          },
+          {
+            "old": "Sudden swelling of the lips, mouth, tongue or throat, or difficulty breathing, is a medical emergency.",
+            "new": "Discomfort from a clothing tag or seam, without skin changes, is not a medical emergency. If the skin gets worse quickly, starts oozing, becomes increasingly painful, or you develop a fever or feel generally unwell, seek medical advice because the skin may be infected."
+          },
+          {
+            "old": "<span class=\"chip lil\">Autismo</span><span class=\"chip lil\">Interocepción</span>",
+            "new": "<span class=\"chip lil\">Sensory differences</span><span class=\"chip lil\">Autism</span>"
+          },
+          {
+            "old": "<ul class=\"list\"><li>F07 · NHS · Contact dermatitis</li></ul><p class=\"muted\">Editorial review: 4 September 2026. Sources are cited by name; these pages stay noindex until every citation has been checked.</p>",
+            "new": "<ul class=\"list\"><li>National Autistic Society · Autism and sensory processing</li><li>Children and Family Health Devon · Dressing techniques for sensory differences</li><li>NHS · Contact dermatitis</li></ul><p class=\"muted\">Documentary review: 11 September 2026. Sources on tactile sensitivity and clothing are kept separate from dermatological information.</p>"
+          },
+          {
+            "old": "<meta content=\"2026-09-04\" property=\"article:modified_time\"/>",
+            "new": "<meta content=\"2026-09-11\" property=\"article:modified_time\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}
