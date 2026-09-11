@@ -66,6 +66,8 @@ def clean_known(root: Path) -> dict[str, int]:
 
     # La ficha de instrucciones aprobada tiene una presentación propia. Se quitan
     # únicamente el estado y su fecha; F13 y el contenido de la ficha se conservan.
+    # validate_publication_statuses puede haber quitado ya el <h3> del estado, así que
+    # el limpiador acepta ambas formas y no deja el párrafo huérfano.
     specials = [
         ("es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html", "es"),
         ("en/situations/i-need-instructions-repeated/index.html", "en"),
@@ -77,11 +79,11 @@ def clean_known(root: Path) -> dict[str, int]:
         before = after = p.read_text(encoding="utf-8")
         if lang == "es":
             after, n1 = re.subn(r'<p class="source-meta">La ficha fuente indica revisión editorial[^<]*</p>', '', after)
-            after, n2 = re.subn(r'<section class="original-section"><h3>Revisión editorial</h3><p>Revisión editorial:[^<]*</p></section>', '', after)
+            after, n2 = re.subn(r'<section class="original-section">(?:<h3>Revisión editorial</h3>)?<p>Revisión editorial:[^<]*</p></section>', '', after)
             after = after.replace('<h3>Base documental y revisión</h3>', '<h3>Base documental</h3>')
         else:
             after, n1 = re.subn(r'<p class="source-meta">The source entry states an editorial review[^<]*</p>', '', after)
-            after, n2 = re.subn(r'<section class="original-section"><h3>Editorial review</h3><p>Editorial review:[^<]*</p></section>', '', after)
+            after, n2 = re.subn(r'<section class="original-section">(?:<h3>Editorial review</h3>)?<p>Editorial review:[^<]*</p></section>', '', after)
             after = after.replace('<h3>Sources and review</h3>', '<h3>Sources</h3>')
         if write(p, before, after):
             fixed[rel] = n1 + n2
