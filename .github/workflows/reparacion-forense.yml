@@ -41,7 +41,7 @@ jobs:
           retention-days: 7
       - name: Compilar integradores
         run: |
-          python3 -m py_compile scripts/_legacy_apply_accessible_descriptions_420.py scripts/apply_accessible_descriptions_420.py scripts/build_site.py scripts/validate_publication_statuses.py scripts/finalize_validation_labels.py scripts/normalize_situation_status.py
+          python3 -m py_compile scripts/_legacy_apply_accessible_descriptions_420.py scripts/apply_accessible_descriptions_420.py scripts/repair_situations_semantics.py scripts/build_site.py scripts/validate_publication_statuses.py scripts/finalize_validation_labels.py scripts/normalize_situation_status.py
       - name: Aplicar 420 descripciones solo en el checkout temporal
         run: |
           set -o pipefail
@@ -51,6 +51,11 @@ jobs:
         run: |
           set -o pipefail
           python3 scripts/apply_accessible_descriptions_420.py --check | tee /tmp/ig-forense/check-420.json
+      - name: Aplicar correcciones semánticas revisadas solo en el checkout temporal
+        run: |
+          set -o pipefail
+          python3 scripts/repair_situations_semantics.py --root . | tee /tmp/ig-forense/apply-semantica.json
+          python3 scripts/repair_situations_semantics.py --root . --check | tee /tmp/ig-forense/check-semantica.json
       - name: Comprobar ejemplos de regresión de texto
         run: |
           set -o pipefail
@@ -58,6 +63,8 @@ jobs:
           from pathlib import Path
           checks={
             'es/situaciones/pierdo-el-hilo-en-las-reuniones/index.html':'Al principio sigo la conversación.',
+            'es/situaciones/la-ropa-me-molesta/index.html':'La molestia de una etiqueta o una costura, sin cambios en la piel, no es una urgencia médica.',
+            'en/situations/clothes-feel-unbearable/index.html':'Sensory differences</span><span class="chip lil">Autism',
             'es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/index.html':'En un aeropuerto hay que orientarse, esperar, pasar controles',
           }
           for rel,needle in checks.items():
