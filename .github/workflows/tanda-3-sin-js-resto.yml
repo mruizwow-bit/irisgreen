@@ -8,9 +8,13 @@ permissions:
   contents: write
 
 env:
+  # El Directorio de trámites queda fuera a propósito: su bloque mete 27.000
+  # caracteres de contenido renderizado en la fuente, y apply_language_updates.py
+  # busca fragmentos de HTML plano exigiendo exactamente una aparición. Con el
+  # bloque dentro aparecerían dos. Va en su propia tanda, después de anclar esas
+  # sustituciones del build.
   PAGINAS_CONTENIDO: >-
     es/tramites/index.html
-    es/tramites/directorio/index.html
     es/vivir-fuera/index.html
     es/taller/index.html
     es/neurodiversidad/temas/autismo/index.html
@@ -52,7 +56,7 @@ jobs:
           /tmp/ig-b3/bin/python -m playwright install chromium
           /tmp/ig-b3/bin/python -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); print('Chromium listo:', b.version); b.close(); p.stop()"
 
-      - name: Construir y capturar las 18
+      - name: Construir y capturar las páginas de la tanda
         run: |
           /tmp/ig-b3/bin/python scripts/build_site.py
           # Las cinco de contenido, con el mínimo de siempre.
@@ -116,7 +120,7 @@ jobs:
           rm -rf dist
           /tmp/ig-b3/bin/python scripts/build_site.py
 
-      - name: Guardar las 18 injertadas antes de que el build vuelva a tocarlas
+      - name: Guardar las injertadas antes de que el build vuelva a tocarlas
         run: |
           for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
             mkdir -p "/tmp/tanda3-limpio/$(dirname "$rel")"
@@ -143,7 +147,7 @@ jobs:
           print('Guardadas ' + str(len(paginas)) + ' páginas: HEAD + su bloque, sin nada del build.')
           PY
 
-      - name: Probar las 18 con JavaScript desactivado y activado
+      - name: Probar las páginas con JavaScript desactivado y activado
         run: |
           /tmp/ig-b3/bin/python - <<'PY'
           import functools, json, os, threading
@@ -166,12 +170,14 @@ jobs:
                 ctx = navegador.new_context(java_script_enabled=False, viewport={'width':1280,'height':900})
                 pagina = ctx.new_page()
                 respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded')
-                h1 = (pagina.locator('main:not(x-dc main) h1').first.text_content(timeout=10000) or '').strip()
-                texto = pagina.locator('main:not(x-dc main)').first.inner_text(timeout=10000).strip()
-                # Solo la versión que ve quien no tiene JavaScript. El <x-dc> oculto
-                # conserva a propósito sus enlaces con variable: son los que el
-                # guion resuelve al abrir una ficha, y retirarlos rompería la página.
-                enlaces = pagina.evaluate("Array.from(document.querySelectorAll('main a[href]')).filter(a=>!a.closest('x-dc') && a.getAttribute('href').includes('{{')).length")
+                # Las tres medidas, sobre el mismo nodo: el main que ve quien no
+                # tiene JavaScript. Los contenedores ocultos conservan a propósito
+                # sus enlaces con variable, porque el guion los resuelve al abrir
+                # una ficha y retirarlos rompería la página con JavaScript.
+                principal = pagina.locator('main:not(x-dc main)').first
+                h1 = (principal.locator('h1').first.text_content(timeout=10000) or '').strip()
+                texto = principal.inner_text(timeout=10000).strip()
+                enlaces = principal.evaluate("m => [...m.querySelectorAll('a[href]')].filter(a => a.getAttribute('href').includes('{{')).length")
                 fila.update({'sin_js_estado':respuesta.status if respuesta else None,'sin_js_h1':h1,'sin_js_caracteres':len(texto),'enlaces_con_variable':enlaces})
                 if not respuesta or respuesta.status != 200 or not h1 or len(texto) < 200 or enlaces:
                     raise RuntimeError('Fallo sin JS: '+json.dumps(fila, ensure_ascii=False))
@@ -218,7 +224,13 @@ jobs:
           print(json.dumps({'resueltas':resueltas,'siguen':quedan}, ensure_ascii=False, indent=1))
           PY
 
-      - name: Guardar solo las 18 fuentes y la lista
+      - name: Comprobar la auditoría con la lista ya reducida
+        run: |
+          # Sin reconstruir: la auditoría lee dist, que ya está, y la lista desde el
+          # árbol. Así la lista reducida no se guarda sin haberla comprobado.
+          cp /tmp/tanda3/pendientes-sin-js.jsom editorial/pendientes-sin-js.json
+
+        - name: Guardar solo las fuentes y la lista
         run: |
           # Otra vez: el segundo build también ha reescrito fuentes. Se deshace todo y
           # se guarda únicamente lo que esta tanda debe cambiar.
@@ -231,7 +243,7 @@ jobs:
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
           git add -- $PAGINAS_CONTENIDO $PAGINAS_JUEGOS editorial/pendientes-sin-js.json
-          git commit -m 'Tanda 3: el resto de páginas se leen sin JavaScript [batch3-generated]'
+          git commit -m 'Tanda 3: 17 páginas más se leen sin JavaScript [batch3-generated]'
           git push origin HEAD:integracion/20260911-sin-js-resto
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

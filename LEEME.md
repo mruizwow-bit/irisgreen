@@ -1,0 +1,55 @@
+# Tanda 3b · 17 páginas más, legibles sin JavaScript
+
+**Tres archivos**, y van los tres a la misma rama `integracion/20260911-sin-js-resto`:
+
+| Archivo | Qué es |
+| --- | --- |
+| `repo/.github/workflows/tanda-3-sin-js-resto.yml` | El proceso completo: capturar, injertar, construir, probar y guardar. |
+| `repo/scripts/snapshot_noscript.py` | El capturador, con dos cambios: el mínimo se declara con `--minimo` y los enlaces sin destino pasan a ser texto. |
+| Este `LEEME.md` | Lo que hace y, sobre todo, lo que **no** hace. |
+
+## Qué páginas
+
+**17**: Trámites, Vivir fuera, El taller, Tema Autismo y los trece juegos.
+
+**El Directorio de trámites queda fuera**, y no por capricho. Su bloque mete 27.000 caracteres de contenido renderizado dentro del archivo fuente, y `apply_language_updates.py` busca ahí fragmentos de HTML plano —`>Quién puede pedirlo</div>` y once más— exigiendo **exactamente una aparición**. Con el bloque dentro aparecerían dos, y el build fallaría por 2 igual que antes fallaba por 0.
+
+Es el mismo defecto de fondo, visto desde el otro lado: **un paso de publicación que hace sustituciones de texto sobre la fuente no puede convivir con contenido añadido a esa fuente**. El Directorio va en su propia tanda, después de anclar esas sustituciones a la región del guion donde deben ocurrir. Libros está en la misma situación y también está fuera.
+
+## El orden, y por qué es así
+
+1. **Construir** con el árbol limpio.
+2. **Capturar** las 17 desde el navegador: las cuatro de contenido con el mínimo de siempre, los trece juegos con **900**, que es lo que mide una ficha de juego completa.
+3. **Devolver el árbol a como estaba.** El build reescribe fuentes al publicar y algunos de esos pasos no se pueden repetir.
+4. **Injertar solo el bloque** `<noscript>` sobre la versión de `HEAD`. Esto es lo que hace que el commit contenga lo prometido: el paso comprueba, página por página, que **fuera del bloque el archivo es idéntico a `HEAD`**, y se detiene si cambia una coma.
+5. **Construir de nuevo**, ya con el contenido dentro.
+6. **Probar** cada página sin JavaScript y con JavaScript. Las tres medidas —título, texto y enlaces sin destino— se toman **sobre el mismo nodo**: el `main` que ve quien no tiene JavaScript. Los contenedores ocultos conservan a propósito sus enlaces con variable: son los que el guion resuelve al abrir una ficha.
+7. **Comprobar la lista reducida antes de guardarla**, ejecutando la auditoría contra el `dist` que ya existe.
+8. **Guardar** las 17 páginas y la lista, y nada más.
+
+## Lo que hay que mirar en el deploy preview
+
+Con JavaScript desactivado:
+
+- `/es/tramites/` — que se lean los trámites y su nombre oficial.
+- `/es/recursos/juegos/la-consulta/` — el juego no se podrá jugar, y está bien; lo que tiene que llegar es qué es y cómo se juega.
+- `/es/neurodiversidad/temas/autismo/` — ojo: su texto se genera en cada build desde `editorial/reviews/`. El bloque guarda lo que la página escribe hoy; si esa fuente cambia, hay que regenerarlo.
+
+## Lo que no hace
+
+- No redacta ni cambia ningún texto: guarda, letra por letra, lo que la página ya escribe.
+- No toca el Directorio ni Libros.
+- No convierte los juegos en jugables sin JavaScript.
+- No arregla el defecto del build. Lo esquiva devolviendo el árbol a su sitio, y lo deja escrito en el propio workflow para que no se olvide.
+
+## Historial de esta tanda
+
+Siete intentos, y cada uno enseñó algo que conviene no perder:
+
+1. Un mínimo de 2.000 caracteres igual para todas: una ficha de juego corta lo suspendía. → El mínimo se declara por grupo.
+2. Dos construcciones sobre el mismo árbol: `apply_language_updates.py` no se puede repetir. → Se devuelve el árbol entre construcciones.
+3. Devolver el archivo entero capturado: volvía a meter la traducción que el build había escrito. → Se injerta **solo el bloque** sobre `HEAD`.
+4. `--with-deps` colgado 10 minutos sin salida visible. → Sin `--with-deps`, con límite de 8 minutos y salida a la vista.
+5. La prueba contaba enlaces del `<x-dc>` oculto. → Acotada al `main` visible.
+6. Título y texto se medían en un nodo y los enlaces en otro. → Las tres medidas, sobre el mismo nodo.
+7. El bloque del Directorio rompería la siguiente construcción por duplicar fragmentos. → El Directorio sale de la tanda.

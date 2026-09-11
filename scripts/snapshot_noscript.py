@@ -8,8 +8,10 @@ un <noscript> del archivo fuente. El texto es, letra por letra, el que la págin
 ya escribe hoy: este guion no redacta nada.
 
 Del contenido guardado se retiran los guiones y los controles de formulario, que
-sin JavaScript no harían nada. Los enlaces cuyo destino siga siendo una variable
-sin resolver se convierten en texto: sin destino real no son navegación.
+sin JavaScript no harían nada. Los enlaces se conservan, porque son navegación
+real, **salvo** los que tienen por destino una variable sin resolver: de esos se
+guarda su texto y se retira el enlace, porque no llevan a ninguna parte. Cuántos
+se han retirado en cada página se dice en el informe.
 
 Dos pasadas, y en este orden:
   1. python3 scripts/build_site.py          → genera dist con las páginas de hoy
@@ -55,24 +57,27 @@ LIMPIEZA = """(() => {
   copia.querySelectorAll('[onclick],[onchange],[oninput]').forEach(n => {
     n.removeAttribute('onclick'); n.removeAttribute('onchange'); n.removeAttribute('oninput');
   });
+  // Un enlace cuyo destino sigue siendo una variable no lleva a ninguna parte.
+  // Sin JavaScript queda su texto, que sí dice algo, y no un enlace muerto.
+  let muertos = 0;
+  copia.querySelectorAll('a[href]').forEach(n => {
+    if (!n.getAttribute('href').includes('{{')) return;
+    muertos += 1;
+    const t = document.createElement('span');
+    t.textContent = (n.textContent || '').trim();
+    n.replaceWith(t);
+  });
   copia.querySelectorAll('iframe').forEach(n => {
     const t = document.createElement('p');
     t.textContent = n.getAttribute('title') || '';
     n.replaceWith(t);
-  });
-  let enlacesRetirados = 0;
-  copia.querySelectorAll('a[href]').forEach(n => {
-    const href = n.getAttribute('href') || '';
-    if (!href.includes('{{')) return;
-    n.replaceWith(...n.childNodes);
-    enlacesRetirados += 1;
   });
   copia.removeAttribute('id');
   const envoltorio = document.createElement('main');
   envoltorio.id = 'main';
   envoltorio.setAttribute('style', 'padding:28px 22px 60px;max-width:68em;margin:0 auto');
   while (copia.firstChild) envoltorio.appendChild(copia.firstChild);
-  return {html: envoltorio.outerHTML, enlacesRetirados};
+  return { marcado: envoltorio.outerHTML, enlaces_sin_destino: muertos };
 })()"""
 
 
@@ -116,13 +121,11 @@ def main() -> None:
                 pagina.locator('main h1').first.wait_for()
                 pagina.wait_for_timeout(600)
                 resultado = pagina.evaluate(LIMPIEZA)
+                marcado = resultado['marcado'] if resultado else None
+                sin_destino = resultado['enlaces_sin_destino'] if resultado else 0
                 contexto.close()
                 if errores:
                     raise RuntimeError(rel + ': la página da errores de guion: ' + repr(errores[:3]))
-                if not resultado:
-                    raise RuntimeError(rel + ': no se ha podido capturar el contenido')
-                marcado = resultado['html']
-                enlaces_retirados = int(resultado.get('enlacesRetirados', 0))
                 if not marcado or '{{' in marcado:
                     raise RuntimeError(rel + ': el contenido no se ha montado del todo')
                 if len(marcado) < args.minimo:
@@ -140,12 +143,8 @@ def main() -> None:
                 cambia = nuevo != texto
                 if cambia and not args.check:
                     fuente.write_text(nuevo, encoding='utf-8')
-                filas.append({
-                    'pagina': rel,
-                    'caracteres': len(marcado),
-                    'enlaces_con_variable_retirados': enlaces_retirados,
-                    'cambia': cambia,
-                })
+                filas.append({'pagina': rel, 'caracteres': len(marcado),
+                              'enlaces_sin_destino_retirados': sin_destino, 'cambia': cambia})
             navegador.close()
     finally:
         servicio.shutdown()
