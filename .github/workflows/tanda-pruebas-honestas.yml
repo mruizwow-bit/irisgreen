@@ -1,0 +1,177 @@
+name: Tanda · pruebas honestas
+
+on:
+  push:
+    branches: ['integracion/20260911-pruebas-honestas']
+
+permissions:
+  contents: write
+
+jobs:
+  marcar-y-comprobar:
+    if: ${{ !contains(github.event.head_commit.message, '[pruebas-generado]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Preparar navegador
+        timeout-minutes: 8
+        run: |
+          python3 -m venv /tmp/ig-pruebas
+          /tmp/ig-pruebas/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-pruebas/bin/python -m playwright install --with-deps chromium
+          /tmp/ig-pruebas/bin/python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); b=p.chromium.launch(); print(b.version); b.close(); p.stop()"
+
+      - name: Marcar las expectativas antiguas dentro del propio código
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          MOTIVO_VIDEOS = ('describe la portada anterior, con su seccion #escuchar de videos y sus chips de tema. '
+                           'La portada aprobada no lleva videos: es una expectativa vieja, no un fallo del sitio. '
+                           'Informe 2026-09-11, pregunta 4.')
+          MOTIVO_PANEL = ('la portada aprobada abre su propio dialogo de lectura (#reading-dialog) con otro orden de '
+                          'controles, y esta prueba esta escrita contra el panel compartido. Las dos formas usan '
+                          'IGPreferences y la clave ig_lang, asi que la preferencia y el idioma si se recuerdan. '
+                          'Hay que reescribirla contra las dos formas. Informe 2026-09-11, pregunta 4.')
+
+          EDICIONES = {
+            'scripts/test_coherence.py': [
+              ("REPORT={'catalogues':[],'other_sections':[],'recovery':[],'styles':[],'failures':[],'notes':[",
+               "REPORT={'catalogues':[],'other_sections':[],'recovery':[],'styles':[],'failures':[],'expectativas_antiguas':[],'notes':["),
+              ("class Quiet(SimpleHTTPRequestHandler):",
+               "# Expectativas antiguas: fallan por una expectativa vieja y no por un fallo del sitio.\n"
+               "# Estrictas a proposito: el dia que se reescriban y pasen, la comprobacion falla hasta\n"
+               "# que se retire la marca, para que el recordatorio no dependa de la memoria de nadie.\n"
+               "ESPERADO_FALLA={'/':" + repr(MOTIVO_VIDEOS) + "}\n"
+               "class Quiet(SimpleHTTPRequestHandler):"),
+              ("   try:REPORT['other_sections'].append(other(p,path,width))\n"
+               "   except Exception as e:REPORT['failures'].append({'path':path,'width':width,'error':traceback.format_exc()})",
+               "   try:\n"
+               "    fila=other(p,path,width)\n"
+               "    if path in ESPERADO_FALLA:REPORT['failures'].append({'path':path,'width':width,'error':'Esta prueba ya pasa: retira su marca de ESPERADO_FALLA en scripts/test_coherence.py','motivo_marcado':ESPERADO_FALLA[path]})\n"
+               "    else:REPORT['other_sections'].append(fila)\n"
+               "   except Exception as e:\n"
+               "    fila={'path':path,'width':width,'error':traceback.format_exc()}\n"
+               "    if path in ESPERADO_FALLA:fila['expectativa_antigua']=ESPERADO_FALLA[path];REPORT['expectativas_antiguas'].append(fila)\n"
+               "    else:REPORT['failures'].append(fila)"),
+              ("print(json.dumps({'catalogues':len(REPORT['catalogues']),'other_sections':len(REPORT['other_sections']),'recovery':len(REPORT['recovery']),'failures':REPORT['failures']},ensure_ascii=False))",
+               "print(json.dumps({'catalogues':len(REPORT['catalogues']),'other_sections':len(REPORT['other_sections']),'recovery':len(REPORT['recovery']),'expectativas_antiguas':len(REPORT['expectativas_antiguas']),'failures':REPORT['failures']},ensure_ascii=False))"),
+            ],
+            'scripts/test_video_thumbnails.py': [
+              ("REPORT={'cases':[],'failures':[],'notes':[",
+               "REPORT={'cases':[],'failures':[],'expectativas_antiguas':[],'notes':["),
+              ("def record_failure(row,error):\n"
+               "    row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc();REPORT['failures'].append(row.copy())",
+               "# Expectativas antiguas, estrictas: ver la nota de scripts/test_coherence.py.\n"
+               "ESPERADO_FALLA={'/':" + repr(MOTIVO_VIDEOS) + "}\n\n"
+               "def record_failure(row,error):\n"
+               "    row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc()\n"
+               "    if row.get('path') in ESPERADO_FALLA:\n"
+               "        row['expectativa_antigua']=ESPERADO_FALLA[row['path']];REPORT['expectativas_antiguas'].append(row.copy())\n"
+               "    else:REPORT['failures'].append(row.copy())"),
+              ("                row['passed']=True\n"
+               "            except Exception as error:record_failure(row,error)",
+               "                row['passed']=True\n"
+               "                if path in ESPERADO_FALLA:REPORT['failures'].append(dict(row,error='Esta prueba ya pasa: retira su marca de ESPERADO_FALLA en scripts/test_video_thumbnails.py'))\n"
+               "            except Exception as error:record_failure(row,error)"),
+              ("server.shutdown();REPORT['passed']=not REPORT['failures'];REPORT['requested_images']=len(expected)",
+               "server.shutdown();REPORT['passed']=not REPORT['failures'];REPORT['requested_images']=len(expected)\n"
+               "REPORT['resumen']={'casos':len(REPORT['cases']),'expectativas_antiguas':len(REPORT['expectativas_antiguas']),'fallos':len(REPORT['failures'])}"),
+            ],
+            'scripts/test_reading_preferences.py': [
+              ("assert len(DYNAMIC)==25",
+               "# Cuantas paginas traen su propia implementacion del panel de lectura. Depende de los\n"
+               "# datos y baja cuando una pagina pasa al controlador compartido, que es una mejora, asi\n"
+               "# que se informa y no se afirma con un numero. Un 25 escrito aqui suspendia la\n"
+               "# comprobacion entera cada vez que eso pasaba. Informe 2026-09-11, pregunta 4.\n"
+               "assert DYNAMIC,'No encuentro ninguna pagina con implementacion propia del panel de lectura'"),
+              ("R={'phase':args.phase,'cases':[],'failures':[],'notes':[",
+               "R={'phase':args.phase,'paginas_con_panel_propio':len(DYNAMIC),'cases':[],'failures':[],'expectativas_antiguas':[],'notes':["),
+              ("def note_result(row,fn):\n"
+               " try:fn();row['passed']=True\n"
+               " except Exception as error:row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc();R['failures'].append(row.copy())\n"
+               " R['cases'].append(row);print(json.dumps(row,ensure_ascii=False),flush=True)",
+               "# Expectativas antiguas, estrictas: ver la nota de scripts/test_coherence.py.\n"
+               "ESPERADO_FALLA={'round trip and reset':" + repr(MOTIVO_PANEL) + ",'real synchronization between two tabs':" + repr(MOTIVO_PANEL) + ",'presentation changes do not restart narration':" + repr(MOTIVO_PANEL) + "}\n\n"
+               "def note_result(row,fn):\n"
+               " marca=ESPERADO_FALLA.get(row.get('scenario'))\n"
+               " try:\n"
+               "  fn();row['passed']=True\n"
+               "  if marca:row['error']='Esta prueba ya pasa: retira su marca de ESPERADO_FALLA en scripts/test_reading_preferences.py';R['failures'].append(row.copy())\n"
+               " except Exception as error:\n"
+               "  row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc()\n"
+               "  if marca:row['expectativa_antigua']=marca;R['expectativas_antiguas'].append(row.copy())\n"
+               "  else:R['failures'].append(row.copy())\n"
+               " R['cases'].append(row);print(json.dumps(row,ensure_ascii=False),flush=True)"),
+              ("R['summary']={'tested':len(R['cases']),'passed':sum(c.get('passed',False) for c in R['cases']),'failures':len(R['failures'])}",
+               "R['summary']={'tested':len(R['cases']),'passed':sum(c.get('passed',False) for c in R['cases']),'expectativas_antiguas':len(R['expectativas_antiguas']),'failures':len(R['failures'])}"),
+            ],
+          }
+
+          for rel, pares in EDICIONES.items():
+              ruta = Path(rel)
+              texto = ruta.read_text(encoding='utf-8')
+              for buscar, poner in pares:
+                  n = texto.count(buscar)
+                  if n != 1:
+                      raise SystemExit(f'{rel}: esperaba una aparicion y hay {n} de:\n{buscar[:120]}')
+                  texto = texto.replace(buscar, poner, 1)
+              ruta.write_text(texto, encoding='utf-8')
+              print(f'{rel}: {len(pares)} ediciones aplicadas')
+          PY
+          python3 -m py_compile scripts/test_coherence.py scripts/test_video_thumbnails.py scripts/test_reading_preferences.py
+          echo 'Los tres guiones compilan.'
+
+      - name: Construir
+        run: python3 scripts/build_site.py
+
+      - name: Filtros, listados y recuperación de errores
+        run: cd dist && /tmp/ig-pruebas/bin/python ../scripts/test_coherence.py
+
+      - name: Miniaturas y apertura de reproductores
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig-pruebas/bin/python ../scripts/test_video_thumbnails.py
+
+      - name: Preferencias y navegación entre secciones
+        if: ${{ !cancelled() }}
+        run: cd dist && /tmp/ig-pruebas/bin/python ../scripts/test_reading_preferences.py --phase after
+
+      - name: Reunir los informes
+        if: always()
+        run: |
+          mkdir -p /tmp/pruebas
+          for item in coherence/tests.json thumbnails/tests.json preferences/after.json; do
+            [ -f "dist/reports/$item" ] && install -D "dist/reports/$item" "/tmp/pruebas/$item"
+          done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for rel in ['coherence/tests.json','thumbnails/tests.json','preferences/after.json']:
+              p = Path('/tmp/pruebas')/rel
+              if not p.is_file():
+                  print(rel, 'no existe'); continue
+              d = json.loads(p.read_text(encoding='utf-8'))
+              print(rel, '· expectativas antiguas:', len(d.get('expectativas_antiguas', [])),
+                    '· fallos:', len(d.get('failures', [])))
+              for f in d.get('failures', []):
+                  print('   FALLO:', json.dumps({k: v for k, v in f.items() if k != 'traceback'}, ensure_ascii=False)[:300])
+          PY
+
+      - name: Guardar solo los tres guiones
+        run: |
+          git restore --worktree -- . ':!scripts/test_coherence.py' ':!scripts/test_video_thumbnails.py' ':!scripts/test_reading_preferences.py'
+          git config user.name 'Iris Green validation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- scripts/test_coherence.py scripts/test_video_thumbnails.py scripts/test_reading_preferences.py
+          git --no-pager diff --cached --stat
+          git commit -m 'Pruebas: expectativas antiguas marcadas en el codigo, estrictas [pruebas-generado]'
+          git push origin HEAD:integracion/20260911-pruebas-honestas
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pruebas-honestas
+          path: /tmp/pruebas
+          retention-days: 14
