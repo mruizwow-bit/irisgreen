@@ -66,35 +66,81 @@ jobs:
             cp "$rel" "/tmp/tanda3-src/$rel"
           done
 
-      - name: Deshacer lo que el build escribe en las fuentes y construir de nuevo
+      - name: Devolver el árbol a como estaba
         run: |
           # El build reescribe archivos fuente al publicar y algunos de esos pasos no
           # se pueden aplicar dos veces: apply_language_updates.py busca un texto que
-          # él mismo ya sustituyó. Así que se devuelve el árbol a como estaba y se
-          # vuelven a poner solo las 18 capturas.
+          # él mismo ya sustituyó, y prepare_initial_data.py reescribe después ese
+          # mismo archivo. Con el árbol limpio, la segunda construcción parte de cero.
           git restore --worktree -- .
-          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
-            cp "/tmp/tanda3-src/$rel" "$rel"
-          done
-          rm -rf dist
-          /tmp/ig-b3/bin/python scripts/build_site.py
+          git status --porcelain
 
-      - name: Comprobar que solo se ha añadido el bloque sin JavaScript
+      - name: Injertar solo el bloque sin JavaScript sobre la versión limpia
         run: |
+          # La captura se hace después de construir, así que las fuentes guardadas
+          # llevan también lo que el build les escribió. De cada una se toma solo su
+          # bloque <noscript> y se injerta en la versión de HEAD, que está limpia.
+          # Así el commit contiene exactamente lo que esta tanda promete.
           python3 - <<'PY'
           import os, re, subprocess
           from pathlib import Path
-          marca = re.compile(r'<!-- ig-sin-js:start -->.*?<!-- ig-sin-js:end -->', re.S)
+          INICIO, FIN = '<!-- ig-sin-js:start -->', '<!-- ig-sin-js:end -->'
+          bloque_re = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
           paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
-          mal = []
+          hecho = []
           for rel in paginas:
-              antes = subprocess.check_output(['git','show','HEAD:'+rel], text=True)
-              ahora = Path('/tmp/tanda3-src')/rel
-              if marca.sub('', ahora.read_text(encoding='utf-8'), 1) != marca.sub('', antes, 1):
-                  mal.append(rel)
-          if mal:
-              raise SystemExit('Cambios fuera del bloque ig-sin-js: ' + ', '.join(mal))
-          print('OK: las ' + str(len(paginas)) + ' fuentes solo añaden su bloque <noscript>.')
+              capturado = (Path('/tmp/tanda3-src') / rel).read_text(encoding='utf-8')
+              encontrado = bloque_re.search(capturado)
+              if not encontrado:
+                  raise SystemExit(rel + ': la captura no tiene bloque ig-sin-js')
+              bloque = encontrado.group(0)
+              limpio = subprocess.check_output(['git', 'show', 'HEAD:' + rel], text=True)
+              if bloque_re.search(limpio):
+                  nuevo = bloque_re.sub(lambda _: bloque, limpio, count=1)
+              else:
+                  nuevo, n = re.subn(r'(<body[^>]*>)', lambda m: m.group(1) + bloque, limpio, count=1)
+                  if n != 1:
+                      raise SystemExit(rel + ': no encuentro el cuerpo de la página')
+              # Comprobación en el sitio donde importa: fuera del bloque, idéntico a HEAD.
+              if bloque_re.sub('', nuevo, 1) != bloque_re.sub('', limpio, 1):
+                  raise SystemExit(rel + ': el injerto cambia algo fuera del bloque')
+              Path(rel).write_text(nuevo, encoding='utf-8')
+              hecho.append({'pagina': rel, 'bloque': len(bloque)})
+          print(str(len(hecho)) + ' páginas injertadas sobre la versión limpia')
+          for f in hecho:
+              print(' · ' + f['pagina'] + ' · ' + str(f['bloque']) + ' caracteres')
+          PY
+
+      - name: Construir de nuevo, ya con el contenido dentro
+        run: |
+          rm -rf dist
+          /tmp/ig-b3/bin/python scripts/build_site.py
+
+      - name: Guardar las 18 injertadas antes de que el build vuelva a tocarlas
+        run: |
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            mkdir -p "/tmp/tanda3-limpio/$(dirname "$rel")"
+            git show "HEAD:$rel" > "/tmp/tanda3-limpio/$rel.head"
+          done
+          python3 - <<'PY'
+          import os, re, shutil
+          from pathlib import Path
+          INICIO, FIN = '<!-- ig-sin-js:start -->', '<!-- ig-sin-js:end -->'
+          bloque_re = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
+          for rel in paginas:
+              limpio = Path('/tmp/tanda3-limpio')/(rel + '.head')
+              capturado = (Path('/tmp/tanda3-src')/rel).read_text(encoding='utf-8')
+              bloque = bloque_re.search(capturado).group(0)
+              base = limpio.read_text(encoding='utf-8')
+              if bloque_re.search(base):
+                  nuevo = bloque_re.sub(lambda _: bloque, base, count=1)
+              else:
+                  nuevo = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + bloque, base, count=1)
+              destino = Path('/tmp/tanda3-final')/rel
+              destino.parent.mkdir(parents=True, exist_ok=True)
+              destino.write_text(nuevo, encoding='utf-8')
+          print('Guardadas ' + str(len(paginas)) + ' páginas: HEAD + su bloque, sin nada del build.')
           PY
 
       - name: Probar las 18 con JavaScript desactivado y activado
@@ -175,9 +221,10 @@ jobs:
           # se guarda únicamente lo que esta tanda debe cambiar.
           git restore --worktree -- .
           for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
-            cp "/tmp/tanda3-src/$rel" "$rel"
+            cp "/tmp/tanda3-final/$rel" "$rel"
           done
           cp /tmp/tanda3/pendientes-sin-js.json editorial/pendientes-sin-js.json
+          git --no-pager diff --stat
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
           git add -- $PAGINAS_CONTENIDO $PAGINAS_JUEGOS editorial/pendientes-sin-js.json
