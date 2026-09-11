@@ -29,7 +29,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SALIDA = ROOT / "reports/publicacion/sin-estados.md"
 
-# Estados en la estructura de la página: prohibidos sin excepción.
 ESTRUCTURA = {
     "pastilla de estado": re.compile(r'<span\b[^>]*class=["\'][^"\']*\b(?:chip|meta|badge|pill)\b[^"\']*["\'][^>]*>[^<]*\b(?:BORRADOR|DRAFT|REVISAD[OA]|REVIEWED|VALIDAD[OA]|VALIDATED|VERIFICAD[OA]|VERIFIED|APROBAD[OA]|APPROVED|PENDIENTE|PENDING)\b', re.I),
     "línea de estado": re.compile(r'<strong>\s*(?:Estado|Status|Validaci[óo]n|Validation|Verificaci[óo]n|Revisi[óo]n|Review|Aprobaci[óo]n)\s*:', re.I),
@@ -41,7 +40,6 @@ ESTRUCTURA = {
     "sello en el texto": re.compile(r'\b(?:texto|ficha|p[áa]gina|contenido|informaci[óo]n)\s+(?:ya\s+)?(?:verificad[oa]|validad[oa]|aprobad[oa])\b', re.I),
 }
 
-# Usos legítimos: son contenido, no estado.
 PERMITIDO = [
     re.compile(r"revisi[óo]n(?:es)? sistem[áa]tica", re.I),
     re.compile(r"revisi[óo]n de revisiones", re.I),
@@ -52,7 +50,6 @@ PERMITIDO = [
     re.compile(r"tareas? pendientes?|revisi[óo]n prevista", re.I),
 ]
 
-# Palabras sueltas que, fuera de los usos de arriba, hay que mirar a mano.
 A_MIRAR = re.compile(r"\b(?:verificad[oa]s?|validad[oa]s?|aprobad[oa]s?|revisad[oa]s?|borrador(?:es)?|draft)\b", re.I)
 SIN_ETIQUETAS = re.compile(r"<(script|style)\b[^>]*>.*?</\1>|<[^>]+>", re.S)
 
@@ -123,6 +120,10 @@ def main() -> None:
         "palabras_a_mirar": len(a_mirar),
         "informe": SALIDA.relative_to(ROOT).as_posix(),
     }, ensure_ascii=False, indent=1))
+    for item in prohibidos:
+        print("PROHIBIDO " + json.dumps(item, ensure_ascii=False), flush=True)
+    for item in a_mirar:
+        print("A_MIRAR " + json.dumps(item, ensure_ascii=False), flush=True)
     if prohibidos and not args.informe_solo:
         raise SystemExit(1)
 
