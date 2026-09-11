@@ -14,14 +14,30 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Guardar copia íntegra para revisión local
+      - name: Guardar copia textual íntegra para revisión local
         run: |
           mkdir -p /tmp/ig-snapshot
-          tar --exclude=.git --exclude=dist -czf /tmp/ig-snapshot/repo-snapshot.tar.gz .
+          tar \
+            --exclude=.git \
+            --exclude=dist \
+            --exclude='*.webp' \
+            --exclude='*.jpg' \
+            --exclude='*.jpeg' \
+            --exclude='*.png' \
+            --exclude='*.gif' \
+            --exclude='*.svg' \
+            --exclude='*.mp4' \
+            --exclude='*.mp3' \
+            --exclude='*.wav' \
+            --exclude='*.pdf' \
+            --exclude='*.zip' \
+            --exclude='*.woff' \
+            --exclude='*.woff2' \
+            -czf /tmp/ig-snapshot/repo-texto-snapshot.tar.gz .
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: reparacion-forense-snapshot
-          path: /tmp/ig-snapshot/repo-snapshot.tar.gz
+          name: reparacion-forense-texto-snapshot
+          path: /tmp/ig-snapshot/repo-texto-snapshot.tar.gz
           retention-days: 7
       - name: Compilar integradores
         run: |
