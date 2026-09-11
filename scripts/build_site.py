@@ -36,6 +36,12 @@ def build():
     if 'condiciones_185' in integrado:
         subprocess.run([sys.executable,str(ROOT/'scripts/apply_condition_grades_185.py'),'--check'],cwd=ROOT,check=True)
 
+    # Las reparaciones semánticas de Situaciones son una capa explícita y revisada.
+    # Se aplican con sustituciones literales, son idempotentes y fallan si el texto
+    # de partida cambia: así el build no puede recuperar bloques clínicos antiguos.
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_situations_semantics.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/repair_situations_semantics.py'),'--root',str(ROOT),'--check'],cwd=ROOT,check=True)
+
     # Vida diaria conserva su publicador factual ya revisado.
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
