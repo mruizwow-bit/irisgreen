@@ -7,11 +7,33 @@ on:
 permissions:
   contents: write
 
+env:
+  PAGINAS_CONTENIDO: >-
+    es/tramites/index.html
+    es/tramites/directorio/index.html
+    es/vivir-fuera/index.html
+    es/taller/index.html
+    es/neurodiversidad/temas/autismo/index.html
+  PAGINAS_JUEGOS: >-
+    es/recursos/juegos/cada-cerebro-su-camino/index.html
+    es/recursos/juegos/donde-se-fue-la-energia/index.html
+    es/recursos/juegos/el-archivo-de-capacidades/index.html
+    es/recursos/juegos/el-aula-al-reves/index.html
+    es/recursos/juegos/el-detective-de-los-sentidos/index.html
+    es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html
+    es/recursos/juegos/el-traductor-de-casa/index.html
+    es/recursos/juegos/el-traductor-de-instrucciones/index.html
+    es/recursos/juegos/la-cena-de-los-planes/index.html
+    es/recursos/juegos/la-consulta/index.html
+    es/recursos/juegos/la-maquina-de-empezar/index.html
+    es/recursos/juegos/las-cinco-cosas/index.html
+    es/recursos/juegos/palabra-misteriosa/index.html
+
 jobs:
   arreglar-y-comprobar:
     if: ${{ !contains(github.event.head_commit.message, '[batch3-generated]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -23,74 +45,60 @@ jobs:
           /tmp/ig-b3/bin/pip -q install playwright==1.55.0
           /tmp/ig-b3/bin/python -m playwright install --with-deps chromium >/tmp/ig-b3-install.log 2>&1
 
-      - name: Construir, capturar las 18 y volver a construir
+      - name: Construir y capturar las 18
         run: |
           /tmp/ig-b3/bin/python scripts/build_site.py
-          # Las cinco páginas de contenido, con el mínimo de siempre.
-          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --paginas \
-            es/tramites/index.html \
-            es/tramites/directorio/index.html \
-            es/vivir-fuera/index.html \
-            es/taller/index.html \
-            es/neurodiversidad/temas/autismo/index.html
+          # Las cinco de contenido, con el mínimo de siempre.
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --paginas $PAGINAS_CONTENIDO
           # Los trece juegos, con el mínimo bajado y justificado: una ficha de juego
-          # completa puede medir menos de 2.000 caracteres. El archivo de capacidades
-          # mide 1.976 y está entera.
-          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --minimo 900 --paginas \
-            es/recursos/juegos/cada-cerebro-su-camino/index.html \
-            es/recursos/juegos/donde-se-fue-la-energia/index.html \
-            es/recursos/juegos/el-archivo-de-capacidades/index.html \
-            es/recursos/juegos/el-aula-al-reves/index.html \
-            es/recursos/juegos/el-detective-de-los-sentidos/index.html \
-            es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html \
-            es/recursos/juegos/el-traductor-de-casa/index.html \
-            es/recursos/juegos/el-traductor-de-instrucciones/index.html \
-            es/recursos/juegos/la-cena-de-los-planes/index.html \
-            es/recursos/juegos/la-consulta/index.html \
-            es/recursos/juegos/la-maquina-de-empezar/index.html \
-            es/recursos/juegos/las-cinco-cosas/index.html \
-            es/recursos/juegos/palabra-misteriosa/index.html
+          # completa puede medir menos de 2.000 caracteres.
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --minimo 900 --paginas $PAGINAS_JUEGOS
+          # Se guardan las 18 fuentes capturadas antes de deshacer nada.
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            mkdir -p "/tmp/tanda3-src/$(dirname "$rel")"
+            cp "$rel" "/tmp/tanda3-src/$rel"
+          done
+
+      - name: Deshacer lo que el build escribe en las fuentes y construir de nuevo
+        run: |
+          # El build reescribe archivos fuente al publicar y algunos de esos pasos no
+          # se pueden aplicar dos veces: apply_language_updates.py busca un texto que
+          # él mismo ya sustituyó. Así que se devuelve el árbol a como estaba y se
+          # vuelven a poner solo las 18 capturas.
+          git restore --worktree -- .
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            cp "/tmp/tanda3-src/$rel" "$rel"
+          done
           rm -rf dist
           /tmp/ig-b3/bin/python scripts/build_site.py
 
       - name: Comprobar que solo se ha añadido el bloque sin JavaScript
         run: |
           python3 - <<'PY'
-          import re, subprocess
+          import os, re, subprocess
           from pathlib import Path
           marca = re.compile(r'<!-- ig-sin-js:start -->.*?<!-- ig-sin-js:end -->', re.S)
-          cambiadas = subprocess.check_output(['git','diff','--name-only'], text=True).split()
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
           mal = []
-          for rel in cambiadas:
-              if not rel.endswith('.html'):
-                  continue
+          for rel in paginas:
               antes = subprocess.check_output(['git','show','HEAD:'+rel], text=True)
-              ahora = Path(rel).read_text(encoding='utf-8')
-              if marca.sub('', ahora, 1) != marca.sub('', antes, 1):
+              ahora = Path('/tmp/tanda3-src')/rel
+              if marca.sub('', ahora.read_text(encoding='utf-8'), 1) != marca.sub('', antes, 1):
                   mal.append(rel)
           if mal:
               raise SystemExit('Cambios fuera del bloque ig-sin-js: ' + ', '.join(mal))
-          print('OK: ' + str(len(cambiadas)) + ' archivos, todos solo con su bloque <noscript>.')
+          print('OK: las ' + str(len(paginas)) + ' fuentes solo añaden su bloque <noscript>.')
           PY
 
       - name: Probar las 18 con JavaScript desactivado y activado
         run: |
           /tmp/ig-b3/bin/python - <<'PY'
-          import functools, json, threading
+          import functools, json, os, threading
           from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
           from pathlib import Path
           from playwright.sync_api import sync_playwright
-          rutas = [
-            '/es/tramites/','/es/tramites/directorio/','/es/vivir-fuera/','/es/taller/',
-            '/es/neurodiversidad/temas/autismo/',
-            '/es/recursos/juegos/cada-cerebro-su-camino/','/es/recursos/juegos/donde-se-fue-la-energia/',
-            '/es/recursos/juegos/el-archivo-de-capacidades/','/es/recursos/juegos/el-aula-al-reves/',
-            '/es/recursos/juegos/el-detective-de-los-sentidos/','/es/recursos/juegos/el-mapa-del-tesoro-de-casa/',
-            '/es/recursos/juegos/el-traductor-de-casa/','/es/recursos/juegos/el-traductor-de-instrucciones/',
-            '/es/recursos/juegos/la-cena-de-los-planes/','/es/recursos/juegos/la-consulta/',
-            '/es/recursos/juegos/la-maquina-de-empezar/','/es/recursos/juegos/las-cinco-cosas/',
-            '/es/recursos/juegos/palabra-misteriosa/',
-          ]
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
+          rutas = ['/' + p[:-len('index.html')] for p in paginas]
           raiz = Path('dist').resolve()
           manejador = functools.partial(SimpleHTTPRequestHandler, directory=str(raiz))
           servicio = ThreadingHTTPServer(('127.0.0.1',0), manejador)
@@ -129,42 +137,43 @@ jobs:
           print(json.dumps(informe, ensure_ascii=False, indent=2))
           PY
 
-      - name: Dejar en la lista solo lo que siga pendiente
+      - name: Preparar la lista de pendientes ya reducida
         run: |
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist --informe-solo || true
           python3 - <<'PY'
           import json
           from pathlib import Path
           informe = Path('dist/reports/publicacion/sin-js.json')
-          detalle = {}
-          if informe.is_file():
-              detalle = json.loads(informe.read_text(encoding='utf-8')).get('detalle', {}) or {}
-          lista = Path('editorial/pendientes-sin-js.json')
-          datos = json.loads(lista.read_text(encoding='utf-8'))
-          antes = {p['pagina'] for p in datos['pendientes']}
-          siguen = [p for p in datos['pendientes'] if p['pagina'] in detalle]
-          resueltas = sorted(antes - {p['pagina'] for p in siguen})
-          datos['pendientes'] = siguen
+          detalle = json.loads(informe.read_text(encoding='utf-8')).get('detalle', {}) if informe.is_file() else {}
+          datos = json.loads(Path('editorial/pendientes-sin-js.json').read_text(encoding='utf-8'))
+          antes = [p['pagina'] for p in datos['pendientes']]
+          datos['pendientes'] = [p for p in datos['pendientes'] if p['pagina'] in detalle]
+          quedan = [p['pagina'] for p in datos['pendientes']]
+          resueltas = [p for p in antes if p not in quedan]
           datos['revisado'] = '2026-09-11'
           datos.setdefault('resuelto_el_11_de_septiembre', [])
           for pagina in resueltas:
               if pagina not in datos['resuelto_el_11_de_septiembre']:
                   datos['resuelto_el_11_de_septiembre'].append(pagina)
           datos['aviso'] = 'Los enlaces cuyo destino era una variable se comprueban en cada ejecución: la prueba falla si queda uno.'
-          lista.write_text(json.dumps(datos, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
-          print(json.dumps({'resueltas':resueltas,'siguen':[p['pagina'] for p in siguen]}, ensure_ascii=False, indent=1))
+          Path('/tmp/tanda3').mkdir(exist_ok=True)
+          Path('/tmp/tanda3/pendientes-sin-js.json').write_text(json.dumps(datos, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+          Path('/tmp/tanda3/resumen.json').write_text(json.dumps({'resueltas':resueltas,'siguen':quedan}, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+          print(json.dumps({'resueltas':resueltas,'siguen':quedan}, ensure_ascii=False, indent=1))
           PY
 
-      - name: Comprobar la lista ya reducida
+      - name: Guardar solo las 18 fuentes y la lista
         run: |
-          rm -rf dist
-          /tmp/ig-b3/bin/python scripts/build_site.py
-          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist
-
-      - name: Guardar el resultado
-        run: |
+          # Otra vez: el segundo build también ha reescrito fuentes. Se deshace todo y
+          # se guarda únicamente lo que esta tanda debe cambiar.
+          git restore --worktree -- .
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            cp "/tmp/tanda3-src/$rel" "$rel"
+          done
+          cp /tmp/tanda3/pendientes-sin-js.json editorial/pendientes-sin-js.json
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
-          git add -A -- '*.html' editorial/pendientes-sin-js.json
+          git add -- $PAGINAS_CONTENIDO $PAGINAS_JUEGOS editorial/pendientes-sin-js.json
           git commit -m 'Tanda 3: el resto de páginas se leen sin JavaScript [batch3-generated]'
           git push origin HEAD:integracion/20260911-sin-js-resto
 
