@@ -1,0 +1,171 @@
+name: Tanda 3 · el resto de páginas sin JavaScript
+
+on:
+  push:
+    branches: ['integracion/20260911-sin-js-resto']
+
+permissions:
+  contents: write
+
+jobs:
+  arreglar-y-comprobar:
+    if: ${{ !contains(github.event.head_commit.message, '[batch3-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-b3
+          /tmp/ig-b3/bin/pip -q install playwright==1.55.0
+          /tmp/ig-b3/bin/python -m playwright install --with-deps chromium >/tmp/ig-b3-install.log 2>&1
+
+      - name: Construir, capturar las 18 y volver a construir
+        run: |
+          /tmp/ig-b3/bin/python scripts/build_site.py
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --paginas \
+            es/tramites/index.html \
+            es/tramites/directorio/index.html \
+            es/vivir-fuera/index.html \
+            es/taller/index.html \
+            es/neurodiversidad/temas/autismo/index.html \
+            es/recursos/juegos/cada-cerebro-su-camino/index.html \
+            es/recursos/juegos/donde-se-fue-la-energia/index.html \
+            es/recursos/juegos/el-archivo-de-capacidades/index.html \
+            es/recursos/juegos/el-aula-al-reves/index.html \
+            es/recursos/juegos/el-detective-de-los-sentidos/index.html \
+            es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html \
+            es/recursos/juegos/el-traductor-de-casa/index.html \
+            es/recursos/juegos/el-traductor-de-instrucciones/index.html \
+            es/recursos/juegos/la-cena-de-los-planes/index.html \
+            es/recursos/juegos/la-consulta/index.html \
+            es/recursos/juegos/la-maquina-de-empezar/index.html \
+            es/recursos/juegos/las-cinco-cosas/index.html \
+            es/recursos/juegos/palabra-misteriosa/index.html
+          rm -rf dist
+          /tmp/ig-b3/bin/python scripts/build_site.py
+
+      - name: Comprobar que solo se ha añadido el bloque sin JavaScript
+        run: |
+          python3 - <<'PY'
+          import re, subprocess
+          from pathlib import Path
+          marca = re.compile(r'<!-- ig-sin-js:start -->.*?<!-- ig-sin-js:end -->', re.S)
+          cambiadas = subprocess.check_output(['git','diff','--name-only'], text=True).split()
+          mal = []
+          for rel in cambiadas:
+              if not rel.endswith('.html'):
+                  continue
+              antes = subprocess.check_output(['git','show','HEAD:'+rel], text=True)
+              ahora = Path(rel).read_text(encoding='utf-8')
+              if marca.sub('', ahora, 1) != marca.sub('', antes, 1):
+                  mal.append(rel)
+          if mal:
+              raise SystemExit('Cambios fuera del bloque ig-sin-js: ' + ', '.join(mal))
+          print('OK: ' + str(len(cambiadas)) + ' archivos, todos solo con su bloque <noscript>.')
+          PY
+
+      - name: Probar las 18 con JavaScript desactivado y activado
+        run: |
+          /tmp/ig-b3/bin/python - <<'PY'
+          import functools, json, threading
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          rutas = [
+            '/es/tramites/','/es/tramites/directorio/','/es/vivir-fuera/','/es/taller/',
+            '/es/neurodiversidad/temas/autismo/',
+            '/es/recursos/juegos/cada-cerebro-su-camino/','/es/recursos/juegos/donde-se-fue-la-energia/',
+            '/es/recursos/juegos/el-archivo-de-capacidades/','/es/recursos/juegos/el-aula-al-reves/',
+            '/es/recursos/juegos/el-detective-de-los-sentidos/','/es/recursos/juegos/el-mapa-del-tesoro-de-casa/',
+            '/es/recursos/juegos/el-traductor-de-casa/','/es/recursos/juegos/el-traductor-de-instrucciones/',
+            '/es/recursos/juegos/la-cena-de-los-planes/','/es/recursos/juegos/la-consulta/',
+            '/es/recursos/juegos/la-maquina-de-empezar/','/es/recursos/juegos/las-cinco-cosas/',
+            '/es/recursos/juegos/palabra-misteriosa/',
+          ]
+          raiz = Path('dist').resolve()
+          manejador = functools.partial(SimpleHTTPRequestHandler, directory=str(raiz))
+          servicio = ThreadingHTTPServer(('127.0.0.1',0), manejador)
+          threading.Thread(target=servicio.serve_forever, daemon=True).start()
+          base = f'http://127.0.0.1:{servicio.server_port}'
+          informe = []
+          try:
+            with sync_playwright() as pw:
+              navegador = pw.chromium.launch()
+              for ruta in rutas:
+                fila = {'ruta': ruta}
+                ctx = navegador.new_context(java_script_enabled=False, viewport={'width':1280,'height':900})
+                pagina = ctx.new_page()
+                respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded')
+                h1 = (pagina.locator('main h1').first.text_content(timeout=10000) or '').strip()
+                texto = pagina.locator('main').first.inner_text(timeout=10000).strip()
+                enlaces = pagina.evaluate("Array.from(document.querySelectorAll('main a[href]')).filter(a=>a.getAttribute('href').includes('{{')).length")
+                fila.update({'sin_js_estado':respuesta.status if respuesta else None,'sin_js_h1':h1,'sin_js_caracteres':len(texto),'enlaces_con_variable':enlaces})
+                if not respuesta or respuesta.status != 200 or not h1 or len(texto) < 200 or enlaces:
+                    raise RuntimeError('Fallo sin JS: '+json.dumps(fila, ensure_ascii=False))
+                ctx.close()
+                ctx = navegador.new_context(java_script_enabled=True, viewport={'width':1280,'height':900})
+                pagina = ctx.new_page(); errores=[]
+                pagina.on('pageerror', lambda e: errores.append(str(e)))
+                respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded'); pagina.wait_for_timeout(900)
+                h1 = (pagina.locator('main h1').first.text_content(timeout=10000) or '').strip()
+                fila.update({'con_js_estado':respuesta.status if respuesta else None,'con_js_h1':h1,'errores':errores[:3]})
+                if not respuesta or respuesta.status != 200 or not h1 or errores:
+                    raise RuntimeError('Fallo con JS: '+json.dumps(fila, ensure_ascii=False))
+                ctx.close(); informe.append(fila)
+              navegador.close()
+          finally:
+            servicio.shutdown()
+          salida = Path('/tmp/tanda3'); salida.mkdir(exist_ok=True)
+          (salida/'sin-js-resto.json').write_text(json.dumps({'paginas':informe}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print(json.dumps(informe, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Dejar en la lista solo lo que siga pendiente
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          informe = Path('dist/reports/publicacion/sin-js.json')
+          detalle = {}
+          if informe.is_file():
+              detalle = json.loads(informe.read_text(encoding='utf-8')).get('detalle', {}) or {}
+          lista = Path('editorial/pendientes-sin-js.json')
+          datos = json.loads(lista.read_text(encoding='utf-8'))
+          antes = {p['pagina'] for p in datos['pendientes']}
+          siguen = [p for p in datos['pendientes'] if p['pagina'] in detalle]
+          resueltas = sorted(antes - {p['pagina'] for p in siguen})
+          datos['pendientes'] = siguen
+          datos['revisado'] = '2026-09-11'
+          datos.setdefault('resuelto_el_11_de_septiembre', [])
+          for pagina in resueltas:
+              if pagina not in datos['resuelto_el_11_de_septiembre']:
+                  datos['resuelto_el_11_de_septiembre'].append(pagina)
+          datos['aviso'] = 'Los enlaces cuyo destino era una variable se comprueban en cada ejecución: la prueba falla si queda uno.'
+          lista.write_text(json.dumps(datos, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+          print(json.dumps({'resueltas':resueltas,'siguen':[p['pagina'] for p in siguen]}, ensure_ascii=False, indent=1))
+          PY
+
+      - name: Comprobar la lista ya reducida
+        run: |
+          rm -rf dist
+          /tmp/ig-b3/bin/python scripts/build_site.py
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist
+
+      - name: Guardar el resultado
+        run: |
+          git config user.name 'Iris Green validation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A -- '*.html' editorial/pendientes-sin-js.json
+          git commit -m 'Tanda 3: el resto de páginas se leen sin JavaScript [batch3-generated]'
+          git push origin HEAD:integracion/20260911-sin-js-resto
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: tanda-3-sin-js-resto
+          path: /tmp/tanda3
+          retention-days: 14
