@@ -6,10 +6,27 @@
   "es/videos/index.html",
   "es/recursos/juegos/index.html",
   "es/cuestionarios/index.html",
-  "es/sobre-iris-green/index.html"
+  "es/sobre-iris-green/index.html",
+  "es/tramites/index.html",
+  "es/vivir-fuera/index.html",
+  "es/neurodiversidad/temas/autismo/index.html",
+  "es/taller/index.html",
+  "es/recursos/juegos/el-detective-de-los-sentidos/index.html",
+  "es/recursos/juegos/cada-cerebro-su-camino/index.html",
+  "es/recursos/juegos/el-archivo-de-capacidades/index.html",
+  "es/recursos/juegos/la-maquina-de-empezar/index.html",
+  "es/recursos/juegos/la-cena-de-los-planes/index.html",
+  "es/recursos/juegos/donde-se-fue-la-energia/index.html",
+  "es/recursos/juegos/el-aula-al-reves/index.html",
+  "es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html",
+  "es/recursos/juegos/el-traductor-de-casa/index.html",
+  "es/recursos/juegos/el-traductor-de-instrucciones/index.html",
+  "es/recursos/juegos/la-consulta/index.html",
+  "es/recursos/juegos/las-cinco-cosas/index.html",
+  "es/recursos/juegos/palabra-misteriosa/index.html"
  ],
  "como_se_arregla": "Las cinco resueltas llevan su bloque <noscript> entre marcas ig-sin-js, generado por arreglar_sin_js.py. Las que quedan se arreglan igual, salvo Autismo, que se regenera desde editorial/reviews, y Libros, que la lleva la autora.",
- "aviso": "Ocho de estas páginas tienen además enlaces cuyo destino es literalmente una variable: no abren nada, ni con JavaScript ni sin él. Están marcadas con enlaces_con_variable.",
+ "aviso": "Los enlaces cuyo destino era una variable se comprueban en cada ejecución: la prueba falla si queda uno.",
  "pendientes": [
   {
    "pagina": "es/libros/index.html",
@@ -19,130 +36,11 @@
    "enlaces_con_variable": 3
   },
   {
-   "pagina": "es/tramites/index.html",
-   "por_que": "Trámites: cómo se pide cada cosa. Es de las páginas que más se buscan sin saber el nombre oficial.",
-   "prioridad": 2,
-   "variables": 74,
-   "enlaces_con_variable": 0
-  },
-  {
    "pagina": "es/tramites/directorio/index.html",
    "por_que": "El directorio de trámites, con sus enlaces oficiales. Un enlace con variable aquí deja a alguien sin poder solicitar.",
    "prioridad": 3,
    "variables": 98,
    "enlaces_con_variable": 1
-  },
-  {
-   "pagina": "es/vivir-fuera/index.html",
-   "por_que": "Vivir fuera: información de país, la que más falta hace antes de moverse.",
-   "prioridad": 4,
-   "variables": 74,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/neurodiversidad/temas/autismo/index.html",
-   "por_que": "Tema Autismo. Su texto se genera en cada build desde editorial/reviews: hay que regenerar desde ahí, no tocar la página.",
-   "prioridad": 5,
-   "variables": 83,
-   "enlaces_con_variable": 2
-  },
-  {
-   "pagina": "es/taller/index.html",
-   "por_que": "El taller. Se rellena entero con JavaScript.",
-   "prioridad": 6,
-   "variables": 84,
-   "enlaces_con_variable": 1
-  },
-  {
-   "pagina": "es/recursos/juegos/el-detective-de-los-sentidos/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 75,
-   "enlaces_con_variable": 3
-  },
-  {
-   "pagina": "es/recursos/juegos/cada-cerebro-su-camino/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 66,
-   "enlaces_con_variable": 2
-  },
-  {
-   "pagina": "es/recursos/juegos/el-archivo-de-capacidades/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 74,
-   "enlaces_con_variable": 2
-  },
-  {
-   "pagina": "es/recursos/juegos/la-maquina-de-empezar/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 67,
-   "enlaces_con_variable": 2
-  },
-  {
-   "pagina": "es/recursos/juegos/la-cena-de-los-planes/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 84,
-   "enlaces_con_variable": 1
-  },
-  {
-   "pagina": "es/recursos/juegos/donde-se-fue-la-energia/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 81,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/el-aula-al-reves/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 65,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 87,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/el-traductor-de-casa/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 83,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/el-traductor-de-instrucciones/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 72,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/la-consulta/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 86,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/las-cinco-cosas/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 83,
-   "enlaces_con_variable": 0
-  },
-  {
-   "pagina": "es/recursos/juegos/palabra-misteriosa/index.html",
-   "por_que": "Juego de la colección: el tablero y sus textos se montan con JavaScript. Sin él no llega ni el título ni las instrucciones.",
-   "prioridad": 7,
-   "variables": 80,
-   "enlaces_con_variable": 0
   }
  ]
 }

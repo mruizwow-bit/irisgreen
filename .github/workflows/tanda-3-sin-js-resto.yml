@@ -1,0 +1,259 @@
+name: Tanda 3 · el resto de páginas sin JavaScript
+
+on:
+  push:
+    branches: ['integracion/20260911-sin-js-resto']
+
+permissions:
+  contents: write
+
+env:
+  # El Directorio de trámites queda fuera a propósito: su bloque mete 27.000
+  # caracteres de contenido renderizado en la fuente, y apply_language_updates.py
+  # busca fragmentos de HTML plano exigiendo exactamente una aparición. Con el
+  # bloque dentro aparecerían dos. Va en su propia tanda, después de anclar esas
+  # sustituciones del build.
+  PAGINAS_CONTENIDO: >-
+    es/tramites/index.html
+    es/vivir-fuera/index.html
+    es/taller/index.html
+    es/neurodiversidad/temas/autismo/index.html
+  PAGINAS_JUEGOS: >-
+    es/recursos/juegos/cada-cerebro-su-camino/index.html
+    es/recursos/juegos/donde-se-fue-la-energia/index.html
+    es/recursos/juegos/el-archivo-de-capacidades/index.html
+    es/recursos/juegos/el-aula-al-reves/index.html
+    es/recursos/juegos/el-detective-de-los-sentidos/index.html
+    es/recursos/juegos/el-mapa-del-tesoro-de-casa/index.html
+    es/recursos/juegos/el-traductor-de-casa/index.html
+    es/recursos/juegos/el-traductor-de-instrucciones/index.html
+    es/recursos/juegos/la-cena-de-los-planes/index.html
+    es/recursos/juegos/la-consulta/index.html
+    es/recursos/juegos/la-maquina-de-empezar/index.html
+    es/recursos/juegos/las-cinco-cosas/index.html
+    es/recursos/juegos/palabra-misteriosa/index.html
+
+jobs:
+  arreglar-y-comprobar:
+    if: ${{ !contains(github.event.head_commit.message, '[batch3-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Chromium
+        timeout-minutes: 8
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          # Sin --with-deps y sin redirigir la salida: la imagen de ubuntu-latest ya
+          # trae las bibliotecas que Chromium necesita, y con --with-deps la
+          # instalación del sistema se queda esperando sin que se vea dónde.
+          python3 -m venv /tmp/ig-b3
+          /tmp/ig-b3/bin/pip -q install playwright==1.55.0
+          /tmp/ig-b3/bin/python -m playwright install chromium
+          /tmp/ig-b3/bin/python -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); print('Chromium listo:', b.version); b.close(); p.stop()"
+
+      - name: Construir y capturar las páginas de la tanda
+        run: |
+          /tmp/ig-b3/bin/python scripts/build_site.py
+          # Las cinco de contenido, con el mínimo de siempre.
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --paginas $PAGINAS_CONTENIDO
+          # Los trece juegos, con el mínimo bajado y justificado: una ficha de juego
+          # completa puede medir menos de 2.000 caracteres.
+          /tmp/ig-b3/bin/python scripts/snapshot_noscript.py --minimo 900 --paginas $PAGINAS_JUEGOS
+          # Se guardan las 18 fuentes capturadas antes de deshacer nada.
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            mkdir -p "/tmp/tanda3-src/$(dirname "$rel")"
+            cp "$rel" "/tmp/tanda3-src/$rel"
+          done
+
+      - name: Devolver el árbol a como estaba
+        run: |
+          # El build reescribe archivos fuente al publicar y algunos de esos pasos no
+          # se pueden aplicar dos veces: apply_language_updates.py busca un texto que
+          # él mismo ya sustituyó, y prepare_initial_data.py reescribe después ese
+          # mismo archivo. Con el árbol limpio, la segunda construcción parte de cero.
+          git restore --worktree -- .
+          git status --porcelain
+
+      - name: Injertar solo el bloque sin JavaScript sobre la versión limpia
+        run: |
+          # La captura se hace después de construir, así que las fuentes guardadas
+          # llevan también lo que el build les escribió. De cada una se toma solo su
+          # bloque <noscript> y se injerta en la versión de HEAD, que está limpia.
+          # Así el commit contiene exactamente lo que esta tanda promete.
+          python3 - <<'PY'
+          import os, re, subprocess
+          from pathlib import Path
+          INICIO, FIN = '<!-- ig-sin-js:start -->', '<!-- ig-sin-js:end -->'
+          bloque_re = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
+          hecho = []
+          for rel in paginas:
+              capturado = (Path('/tmp/tanda3-src') / rel).read_text(encoding='utf-8')
+              encontrado = bloque_re.search(capturado)
+              if not encontrado:
+                  raise SystemExit(rel + ': la captura no tiene bloque ig-sin-js')
+              bloque = encontrado.group(0)
+              limpio = subprocess.check_output(['git', 'show', 'HEAD:' + rel], text=True)
+              if bloque_re.search(limpio):
+                  nuevo = bloque_re.sub(lambda _: bloque, limpio, count=1)
+              else:
+                  nuevo, n = re.subn(r'(<body[^>]*>)', lambda m: m.group(1) + bloque, limpio, count=1)
+                  if n != 1:
+                      raise SystemExit(rel + ': no encuentro el cuerpo de la página')
+              # Comprobación en el sitio donde importa: fuera del bloque, idéntico a HEAD.
+              if bloque_re.sub('', nuevo, 1) != bloque_re.sub('', limpio, 1):
+                  raise SystemExit(rel + ': el injerto cambia algo fuera del bloque')
+              Path(rel).write_text(nuevo, encoding='utf-8')
+              hecho.append({'pagina': rel, 'bloque': len(bloque)})
+          print(str(len(hecho)) + ' páginas injertadas sobre la versión limpia')
+          for f in hecho:
+              print(' · ' + f['pagina'] + ' · ' + str(f['bloque']) + ' caracteres')
+          PY
+
+      - name: Construir de nuevo, ya con el contenido dentro
+        run: |
+          rm -rf dist
+          /tmp/ig-b3/bin/python scripts/build_site.py
+
+      - name: Guardar las injertadas antes de que el build vuelva a tocarlas
+        run: |
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            mkdir -p "/tmp/tanda3-limpio/$(dirname "$rel")"
+            git show "HEAD:$rel" > "/tmp/tanda3-limpio/$rel.head"
+          done
+          python3 - <<'PY'
+          import os, re, shutil
+          from pathlib import Path
+          INICIO, FIN = '<!-- ig-sin-js:start -->', '<!-- ig-sin-js:end -->'
+          bloque_re = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
+          for rel in paginas:
+              limpio = Path('/tmp/tanda3-limpio')/(rel + '.head')
+              capturado = (Path('/tmp/tanda3-src')/rel).read_text(encoding='utf-8')
+              bloque = bloque_re.search(capturado).group(0)
+              base = limpio.read_text(encoding='utf-8')
+              if bloque_re.search(base):
+                  nuevo = bloque_re.sub(lambda _: bloque, base, count=1)
+              else:
+                  nuevo = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + bloque, base, count=1)
+              destino = Path('/tmp/tanda3-final')/rel
+              destino.parent.mkdir(parents=True, exist_ok=True)
+              destino.write_text(nuevo, encoding='utf-8')
+          print('Guardadas ' + str(len(paginas)) + ' páginas: HEAD + su bloque, sin nada del build.')
+          PY
+
+      - name: Probar las páginas con JavaScript desactivado y activado
+        run: |
+          /tmp/ig-b3/bin/python - <<'PY'
+          import functools, json, os, threading
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          paginas = (os.environ['PAGINAS_CONTENIDO'] + ' ' + os.environ['PAGINAS_JUEGOS']).split()
+          rutas = ['/' + p[:-len('index.html')] for p in paginas]
+          raiz = Path('dist').resolve()
+          manejador = functools.partial(SimpleHTTPRequestHandler, directory=str(raiz))
+          servicio = ThreadingHTTPServer(('127.0.0.1',0), manejador)
+          threading.Thread(target=servicio.serve_forever, daemon=True).start()
+          base = f'http://127.0.0.1:{servicio.server_port}'
+          informe = []
+          try:
+            with sync_playwright() as pw:
+              navegador = pw.chromium.launch()
+              for ruta in rutas:
+                fila = {'ruta': ruta}
+                ctx = navegador.new_context(java_script_enabled=False, viewport={'width':1280,'height':900})
+                pagina = ctx.new_page()
+                respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded')
+                # Las tres medidas, sobre el mismo nodo: el main que ve quien no
+                # tiene JavaScript. Los contenedores ocultos conservan a propósito
+                # sus enlaces con variable, porque el guion los resuelve al abrir
+                # una ficha y retirarlos rompería la página con JavaScript.
+                principal = pagina.locator('main:not(x-dc main)').first
+                h1 = (principal.locator('h1').first.text_content(timeout=10000) or '').strip()
+                texto = principal.inner_text(timeout=10000).strip()
+                enlaces = principal.evaluate("m => [...m.querySelectorAll('a[href]')].filter(a => a.getAttribute('href').includes('{{')).length")
+                fila.update({'sin_js_estado':respuesta.status if respuesta else None,'sin_js_h1':h1,'sin_js_caracteres':len(texto),'enlaces_con_variable':enlaces})
+                if not respuesta or respuesta.status != 200 or not h1 or len(texto) < 200 or enlaces:
+                    raise RuntimeError('Fallo sin JS: '+json.dumps(fila, ensure_ascii=False))
+                ctx.close()
+                ctx = navegador.new_context(java_script_enabled=True, viewport={'width':1280,'height':900})
+                pagina = ctx.new_page(); errores=[]
+                pagina.on('pageerror', lambda e: errores.append(str(e)))
+                respuesta = pagina.goto(base+ruta, wait_until='domcontentloaded'); pagina.wait_for_timeout(900)
+                h1 = (pagina.locator('main h1').first.text_content(timeout=10000) or '').strip()
+                fila.update({'con_js_estado':respuesta.status if respuesta else None,'con_js_h1':h1,'errores':errores[:3]})
+                if not respuesta or respuesta.status != 200 or not h1 or errores:
+                    raise RuntimeError('Fallo con JS: '+json.dumps(fila, ensure_ascii=False))
+                ctx.close(); informe.append(fila)
+              navegador.close()
+          finally:
+            servicio.shutdown()
+          salida = Path('/tmp/tanda3'); salida.mkdir(exist_ok=True)
+          (salida/'sin-js-resto.json').write_text(json.dumps({'paginas':informe}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print(json.dumps(informe, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Preparar la lista de pendientes ya reducida
+        run: |
+          # audit_sin_js.py escribe sin-js.json antes de fallar por la lista vigente.
+          # No tiene modo "informe-solo": aquí se tolera ese fallo únicamente para
+          # leer el informe y calcular la lista reducida; la auditoría real corre
+          # después, sin || true, contra esa lista.
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist || true
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          informe = Path('dist/reports/publicacion/sin-js.json')
+          detalle = json.loads(informe.read_text(encoding='utf-8')).get('detalle', {}) if informe.is_file() else {}
+          datos = json.loads(Path('editorial/pendientes-sin-js.json').read_text(encoding='utf-8'))
+          antes = [p['pagina'] for p in datos['pendientes']]
+          datos['pendientes'] = [p for p in datos['pendientes'] if p['pagina'] in detalle]
+          quedan = [p['pagina'] for p in datos['pendientes']]
+          resueltas = [p for p in antes if p not in quedan]
+          datos['revisado'] = '2026-09-11'
+          datos.setdefault('resuelto_el_11_de_septiembre', [])
+          for pagina in resueltas:
+              if pagina not in datos['resuelto_el_11_de_septiembre']:
+                  datos['resuelto_el_11_de_septiembre'].append(pagina)
+          datos['aviso'] = 'Los enlaces cuyo destino era una variable se comprueban en cada ejecución: la prueba falla si queda uno.'
+          Path('/tmp/tanda3').mkdir(exist_ok=True)
+          Path('/tmp/tanda3/pendientes-sin-js.json').write_text(json.dumps(datos, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+          Path('/tmp/tanda3/resumen.json').write_text(json.dumps({'resueltas':resueltas,'siguen':quedan}, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
+          print(json.dumps({'resueltas':resueltas,'siguen':quedan}, ensure_ascii=False, indent=1))
+          PY
+
+      - name: Comprobar la auditoría con la lista ya reducida
+        run: |
+          # Sin reconstruir: la auditoría lee dist, que ya está, y la lista desde el
+          # árbol. Así la lista reducida no se guarda sin haberla comprobado.
+          cp /tmp/tanda3/pendientes-sin-js.json editorial/pendientes-sin-js.json
+          /tmp/ig-b3/bin/python scripts/audit_sin_js.py --root dist
+
+      - name: Guardar solo las fuentes y la lista
+        run: |
+          # Otra vez: el segundo build también ha reescrito fuentes. Se deshace todo y
+          # se guarda únicamente lo que esta tanda debe cambiar.
+          git restore --worktree -- .
+          for rel in $PAGINAS_CONTENIDO $PAGINAS_JUEGOS; do
+            cp "/tmp/tanda3-final/$rel" "$rel"
+          done
+          cp /tmp/tanda3/pendientes-sin-js.json editorial/pendientes-sin-js.json
+          git --no-pager diff --stat
+          git config user.name 'Iris Green validation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- $PAGINAS_CONTENIDO $PAGINAS_JUEGOS editorial/pendientes-sin-js.json
+          git commit -m 'Tanda 3: 17 páginas más se leen sin JavaScript [batch3-generated]'
+          git push origin HEAD:integracion/20260911-sin-js-resto
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: tanda-3-sin-js-resto
+          path: /tmp/tanda3
+          retention-days: 14

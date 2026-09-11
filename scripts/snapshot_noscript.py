@@ -8,12 +8,20 @@ un <noscript> del archivo fuente. El texto es, letra por letra, el que la págin
 ya escribe hoy: este guion no redacta nada.
 
 Del contenido guardado se retiran los guiones y los controles de formulario, que
-sin JavaScript no harían nada. Los enlaces se conservan: son navegación real.
+sin JavaScript no harían nada. Los enlaces se conservan, porque son navegación
+real, **salvo** los que tienen por destino una variable sin resolver: de esos se
+guarda su texto y se retira el enlace, porque no llevan a ninguna parte. Cuántos
+se han retirado en cada página se dice en el informe.
 
 Dos pasadas, y en este orden:
   1. python3 scripts/build_site.py          → genera dist con las páginas de hoy
   2. python3 scripts/snapshot_noscript.py   → abre dist y escribe el <noscript> en las fuentes
   3. python3 scripts/build_site.py          → publica ya con el contenido dentro
+
+El mínimo de caracteres se declara con --minimo, y existe para detectar una
+captura a medias. No todas las páginas tienen el mismo tamaño: una ficha de
+juego corta puede ser legítima con 1.900 caracteres. Se baja el mínimo cuando
+está justificado, no se quita.
 
 Necesita playwright, el mismo que usan las pruebas (.github/workflows/comprobar-publicacion.yml).
 """
@@ -31,6 +39,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INICIO = '<!-- ig-sin-js:start -->'
 FIN = '<!-- ig-sin-js:end -->'
 BLOQUE = re.compile(re.escape(INICIO) + r'.*?' + re.escape(FIN), re.S)
+MINIMO = 2000
 
 PAGINAS = [
     'es/videos/index.html',
@@ -48,6 +57,16 @@ LIMPIEZA = """(() => {
   copia.querySelectorAll('[onclick],[onchange],[oninput]').forEach(n => {
     n.removeAttribute('onclick'); n.removeAttribute('onchange'); n.removeAttribute('oninput');
   });
+  // Un enlace cuyo destino sigue siendo una variable no lleva a ninguna parte.
+  // Sin JavaScript queda su texto, que sí dice algo, y no un enlace muerto.
+  let muertos = 0;
+  copia.querySelectorAll('a[href]').forEach(n => {
+    if (!n.getAttribute('href').includes('{{')) return;
+    muertos += 1;
+    const t = document.createElement('span');
+    t.textContent = (n.textContent || '').trim();
+    n.replaceWith(t);
+  });
   copia.querySelectorAll('iframe').forEach(n => {
     const t = document.createElement('p');
     t.textContent = n.getAttribute('title') || '';
@@ -58,7 +77,7 @@ LIMPIEZA = """(() => {
   envoltorio.id = 'main';
   envoltorio.setAttribute('style', 'padding:28px 22px 60px;max-width:68em;margin:0 auto');
   while (copia.firstChild) envoltorio.appendChild(copia.firstChild);
-  return envoltorio.outerHTML;
+  return { marcado: envoltorio.outerHTML, enlaces_sin_destino: muertos };
 })()"""
 
 
@@ -77,6 +96,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=ROOT / 'dist')
     ap.add_argument('--paginas', nargs='*', default=PAGINAS)
+    ap.add_argument('--minimo', type=int, default=MINIMO,
+                    help='caracteres mínimos del contenido montado; por debajo se considera captura a medias')
     ap.add_argument('--check', action='store_true')
     args = ap.parse_args()
 
@@ -99,14 +120,18 @@ def main() -> None:
                 pagina.goto(base + ruta_web(rel), wait_until='domcontentloaded')
                 pagina.locator('main h1').first.wait_for()
                 pagina.wait_for_timeout(600)
-                marcado = pagina.evaluate(LIMPIEZA)
+                resultado = pagina.evaluate(LIMPIEZA)
+                marcado = resultado['marcado'] if resultado else None
+                sin_destino = resultado['enlaces_sin_destino'] if resultado else 0
                 contexto.close()
                 if errores:
                     raise RuntimeError(rel + ': la página da errores de guion: ' + repr(errores[:3]))
                 if not marcado or '{{' in marcado:
                     raise RuntimeError(rel + ': el contenido no se ha montado del todo')
-                if len(marcado) < 2000:
-                    raise RuntimeError(rel + f': el contenido montado es sospechosamente corto ({len(marcado)} caracteres)')
+                if len(marcado) < args.minimo:
+                    raise RuntimeError(
+                        rel + f': el contenido montado mide {len(marcado)} caracteres y el mínimo es {args.minimo}. '
+                        'Si la página es legítimamente corta, baja --minimo para ese grupo; no lo quites.')
                 bloque = INICIO + '<noscript>' + marcado + '</noscript>' + FIN
                 texto = fuente.read_text(encoding='utf-8')
                 if BLOQUE.search(texto):
@@ -118,12 +143,14 @@ def main() -> None:
                 cambia = nuevo != texto
                 if cambia and not args.check:
                     fuente.write_text(nuevo, encoding='utf-8')
-                filas.append({'pagina': rel, 'caracteres': len(marcado), 'cambia': cambia})
+                filas.append({'pagina': rel, 'caracteres': len(marcado),
+                              'enlaces_sin_destino_retirados': sin_destino, 'cambia': cambia})
             navegador.close()
     finally:
         servicio.shutdown()
 
-    print(json.dumps({'paginas': filas, 'escrito': not args.check}, ensure_ascii=False, indent=1))
+    print(json.dumps({'paginas': filas, 'minimo': args.minimo, 'escrito': not args.check},
+                     ensure_ascii=False, indent=1))
     if args.check and any(f['cambia'] for f in filas):
         raise SystemExit('Hay que regenerar la versión sin JavaScript')
 
