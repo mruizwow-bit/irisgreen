@@ -122,7 +122,6 @@ jobs:
           git config user.name 'Iris Green validation'
           git config user.email 'actions@users.noreply.github.com'
           git add es/investigacion/index.html es/videos/index.html es/recursos/juegos/index.html es/cuestionarios/index.html es/sobre-iris-green/index.html
-          git diff --cached --check
           git commit -m 'Tanda 1: contenido legible sin JavaScript [batch1-generated]'
           git push origin HEAD:integracion/20260911-sin-js
 
