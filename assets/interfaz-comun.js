@@ -41,7 +41,8 @@
   var opener='[data-ig-reading-trigger],.ig-uh-reading,#a11yBtn';
   function panel(){return document.querySelector('[data-ig-reading-panel]');}
   function label(){return (document.documentElement.lang||'es').startsWith('en')?'Close reading settings':'Cerrar opciones de lectura';}
-  function shown(p){return p&&p.isConnected&&!p.hidden;}
+  function isDialog(p){return typeof HTMLDialogElement!=='undefined'&&p instanceof HTMLDialogElement;}
+  function shown(p){return p&&p.isConnected&&(isDialog(p)?p.open:!p.hidden);}
   function isPopover(p){return typeof p.hidePopover==='function'&&p.matches(':popover-open');}
   function focusBack(){if(restore&&trigger&&trigger.isConnected)trigger.focus({preventScroll:true});}
   function synchronize(){
@@ -53,11 +54,12 @@
       restore=true;return;
     }
     document.querySelectorAll(opener).forEach(function(b){b.setAttribute('aria-controls',p.id);b.setAttribute('aria-expanded','true');});
-    if(window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);
+    // La portada conserva su diálogo aprobado: no se le inyectan controles nuevos.
+    if(!isDialog(p)&&window.IGPreferences&&window.IGPreferences.mountTextOptions)window.IGPreferences.mountTextOptions(p);
     if(active===p)return;
     active=p;
     document.dispatchEvent(new CustomEvent('ig:panel-opening',{detail:'reading'}));
-    if(typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();
+    if(!isDialog(p)&&typeof p.showPopover==='function'&&!isPopover(p))p.showPopover();
     var close=p.querySelector('[data-ig-reading-close]');
     if(close)close.focus({preventScroll:true});
   }
@@ -65,11 +67,14 @@
   function closeReading(back){
     var p=panel();if(!shown(p))return;
     restore=back!==false;
-    if(p.id==='a11y'){p.hidden=true;schedule();}
+    if(isDialog(p)){if(p.open)p.close();schedule();}
+    else if(p.id==='a11y'){p.hidden=true;schedule();}
     else {var b=p.querySelector('[data-ig-reading-close]');if(b)b.click();}
   }
   function prepareStatic(){
-    var p=document.getElementById('a11y');if(!p||p.hasAttribute('data-ig-reading-panel'))return;
+    var p=document.getElementById('a11y');
+    // En la portada #a11y vive dentro del <dialog> aprobado: no es el panel.
+    if(!p||p.closest('[data-ig-reading-panel]')||p.hasAttribute('data-ig-reading-panel'))return;
     p.setAttribute('data-ig-reading-panel','');p.setAttribute('role','region');p.setAttribute('popover','manual');
     var h=p.querySelector('h2');if(h){h.id='ig-reading-title';p.setAttribute('aria-labelledby',h.id);}
     var b=document.createElement('button');b.type='button';b.setAttribute('data-ig-reading-close','');b.setAttribute('aria-label',label());b.textContent='×';p.insertBefore(b,p.firstChild);
