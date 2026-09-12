@@ -168,7 +168,7 @@
 .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
 .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
 .ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
-.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
+.ig-nav-en{display:none!important}html[lang^='en'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
 .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
 .ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
 .ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.32)}
@@ -178,7 +178,7 @@
 @media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
 @media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
 </style>
-<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="{{ tExploreAria }}" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a aria-current="page" class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a aria-current="page" class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a aria-current="page" class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="{{ tExploreAria }}" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a aria-current="page" class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a aria-current="page" class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><a class="ig-uh-music" href="/#escuchar" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></a><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
   <main style="max-width: 1180px; margin: 0 auto; padding: 34px 28px 80px;">
     <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #a8336f;">{{ tShelf }}</p>
@@ -345,32 +345,6 @@ const STR = {
       ["The jumper label", "A label is sticking out of the collar of Vera's jumper.", "The label rubs her neck all day. Vera feels the rubbing the whole time. That is tiring and distracting.", "Cutting the label off. Or wearing clothes with no label and no seams."],
       ["The tight queue", "The children are very close together. Their shoulders touch.", "Vera feels every touch. Nobody warns her first. Every touch is a surprise. Many surprises in a row are tiring.", "Standing first or last in the queue. Then she has space."]
     ]
-  },
-  pt: {
-    docTitle: "As cinco coisas que cansam a Vera — Iris Green",
-    logoAlt: "Símbolo da Iris Green: uma flor de íris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Leitura", languageAria: "Idioma", closeAria: "Fechar",
-    backToPlay: "Voltar para Jogar", reading: "Leitura", readingPanel: "Leitura acessível",
-    textSize: "Tamanho do texto · ", resetPanel: "Restaurar",
-    shelf: "Para você · infância",
-    title: "As cinco coisas que cansam a Vera",
-    lede: "É um dia comum de escola. Há cinco coisas cansando a Vera e nenhuma se vê. Procure no desenho: ao encontrar cada uma, ela se explica.",
-    imgAlt: "Corredor de uma escola dos anos noventa cheio de gente: uma fila de crianças junto à porta da sala, casacos nos cabides, uma professora com pastas, um zelador passando pano e uma menina com mochila no centro.",
-    imgNote: "Toque no desenho onde você acha que está cada coisa. Sem tempo e sem pontuação: pode olhar o quanto quiser.",
-    reset: "Começar de novo", reveal: "Me mostrar as cinco",
-    progress: (n) => n + " de 5 encontradas",
-    done: "As cinco, encontradas.",
-    see: "O que se vê", maybe: "O que acontece", helps: "O que ajuda",
-    ideaTitle: "A ideia do jogo",
-    idea: "Hoje a Vera aguentou cinco coisas pequenas em vinte minutos. De fora não dá para ver. Mas elas se somam. Cada uma tem um ajuste fácil. Agora escreva a sua carta: «O que me cansa…». «O que me ajuda…».",
-    goCard: "Preencher minha carta", goSituations: "Ver as situações parecidas",
-    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"],
-    spots: [
-      ["O barulho da sala", "A porta está aberta. Dentro, muitas crianças gritam e levantam os braços.", "O barulho sai pela porta. A Vera ouve todos os gritos ao mesmo tempo. Ela não consegue separar um som do outro. Isso cansa.", "Entrar quando a sala estiver mais calma. Ou colocar os fones até sentar."],
-      ["A lâmpada do teto", "Uma lâmpada do teto é diferente. Está mais amarela e pisca.", "A Vera vê o piscar o tempo todo. Outras pessoas não percebem. Incomoda os olhos dela e dá dor de cabeça.", "Sentar longe dessa lâmpada. Ou pedir para trocar."],
-      ["O plano riscado", "No quadro há desenhos com o plano do dia. Um desenho está riscado.", "Hoje houve uma mudança. A Vera tinha se preparado para o plano de sempre. Agora precisa pensar tudo de novo.", "Avisar da mudança antes. E dizer o que vai ser feito no lugar."],
-      ["A etiqueta da blusa", "Uma etiqueta aparece na gola da blusa da Vera.", "A etiqueta roça o pescoço o dia todo. A Vera sente o atrito o tempo inteiro. Isso cansa e distrai.", "Cortar a etiqueta. Ou usar roupa sem etiqueta e sem costura."],
-      ["A fila apertada", "As crianças estão muito juntas. Os ombros se encostam.", "A Vera sente cada esbarrão. Ninguém avisa antes. Cada esbarrão é uma surpresa. Muitas surpresas seguidas cansam.", "Ficar em primeiro ou em último na fila. Assim ela tem espaço."]
-    ]
   }
 };
 
@@ -383,7 +357,7 @@ class Component extends DCLogic {
       const lang = localStorage.getItem("ig_lang");
       const use = lang && STR[lang] ? lang : "es";
       if (use !== "es") this.setState({ lang: use });
-      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.documentElement.lang = use;
       document.title = STR[use].docTitle;
     } catch (e) {}
   }
@@ -399,7 +373,7 @@ class Component extends DCLogic {
 
   setLang(lang) {
     try {
-      document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+      document.documentElement.lang = lang;
       localStorage.setItem("ig_lang", lang);
     } catch (e) {}
     this.setState({ lang });
@@ -420,7 +394,7 @@ class Component extends DCLogic {
     if (!on) return;
     const main = document.querySelector("main");
     const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
-    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.lang = { es: "es-ES", en: "en-GB" }[this.state.lang] || "es-ES";
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   }
@@ -440,7 +414,7 @@ class Component extends DCLogic {
     const isFound = (n) => st.found.indexOf(n) !== -1;
 
     return {
-      tTouchControls: ({es:"Usar botones en lugar de tocar la imagen",en:"Use buttons instead of tapping the picture",pt:"Usar botões em vez de tocar na imagem"})[L] || "Usar botones en lugar de tocar la imagen",
+      tTouchControls: ({es:"Usar botones en lugar de tocar la imagen",en:"Use buttons instead of tapping the picture"})[L] || "Usar botones en lugar de tocar la imagen",
       langButtons: [["es", "ES"], ["en", "EN"]].map(([code, label]) => ({
         label,
         bg: st.lang === code ? "#1f5f8b" : "#fff",

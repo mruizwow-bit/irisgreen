@@ -792,7 +792,7 @@
 .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
 .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
 .ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
-.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
+.ig-nav-en{display:none!important}html[lang^='en'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
 .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
 .ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
 .ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.32)}
@@ -802,7 +802,7 @@
 @media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
 @media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
 </style>
-<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="{{ tExploreAria }}" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a aria-current="page" class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a aria-current="page" class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a aria-current="page" class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="{{ tExploreAria }}" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a aria-current="page" class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a aria-current="page" class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet space</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="{{ tMusicAria }}" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="{{ tReadingAria }}" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="{{ tLanguageAria }}"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
   <nav class="ig-subtabs" aria-label="Juegos"><a href="/es/recursos/juegos/" aria-current="page">{{ tPlayTab }}</a><a href="/es/recursos/juegos/coleccion/">{{ tCollectionTab }}</a></nav>
 
@@ -1002,13 +1002,11 @@
 <script type="text/x-dc" data-dc-script="">
 const NAVL = {
   es: [["/","Inicio"],["/es/neurodiversidad/condiciones/","Condiciones"],["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/datos/","Datos"],["/es/tramites/","Ayudas"],["/es/libros/","Libros"]],
-  en: [["/","Home"],["/es/neurodiversidad/condiciones/","Conditions"],["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/datos/","Figures"],["/es/tramites/","Support directory"],["/es/libros/","Books"]],
-  pt: [["/","Início"],["/es/neurodiversidad/condiciones/","Condições"],["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/datos/","Dados"],["/es/tramites/","Diretório de ajudas"],["/es/libros/","Livros"]]
+  en: [["/","Home"],["/es/neurodiversidad/condiciones/","Conditions"],["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/datos/","Figures"],["/es/tramites/","Support directory"],["/es/libros/","Books"]]
 };
 const FOOTL = {
   es: [["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/libros/","Libros"]],
-  en: [["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/libros/","Books"]],
-  pt: [["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/libros/","Livros"]]
+  en: [["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/libros/","Books"]]
 };
 
 const SHELF_STYLE = [
@@ -1134,64 +1132,6 @@ const STR = {
       [3, 3, "The instruction translator", "In teams: turn vague instructions into clear, checkable ones. «Work in silence» becomes «speak so quietly that only your desk partner hears you». Score the clarity of the instruction.", "A clear instruction can be checked.", "The class poster: «this is how we give instructions».", "The poster rules for a week, teachers included."],
       [3, 1, "Every brain, its own route", "The same problem and several routes on cards: drawing, listing, the rule, trial and error, explaining out loud. Each team gets there a different way and all of them count.", "Different routes are the normal state of a classroom.", "The class mural of routes.", "Next task, everyone takes a route that is not their usual one."]
     ]
-  },
-  pt: {
-    docTitle: "Jogar — Iris Green",
-    goWorkshop: "Ir para a oficina", logoAlt: "Símbolo da Iris Green: uma flor de íris", exploreAria: "Explorar", musicAria: "Música", readingAria: "Leitura", languageAria: "Idioma", closeAria: "Fechar",
-    readyNoArt: "Dá para jogar aqui.",
-    play: "Jogar agora", ready: "Joga-se aqui e cada achado se explica.",
-    fillCard: "Preencher minha carta", blankCard: "Baixar em branco", cardTitle: "Minha carta", cardNote: "A carta é baixada como uma imagem, pronta para imprimir. O que você escreve fica no seu computador ou celular. Não enviamos para lugar nenhum. Cada campo aceita até 120 caracteres.", downloadFilled: "Baixar minha carta",
-    reading: "Leitura", readingPanel: "Leitura acessível", textSize: "Tamanho do texto · ", reset: "Restaurar",
-    tagline: "Base de conhecimento sobre neurodiversidade",
-    eyebrow: "Jogar",
-    title: "Primeiro é um jogo. Depois ensina alguma coisa.",
-    lede: "Nunca ao contrário. São treze jogos. Todos têm três partes: você entende algo jogando, leva uma carta para que te entendam e sai com algo pequeno para experimentar.",
-    playTab: "Jogos interativos", collectionTab: "Coleção · 130 jogos",
-    collectionTitle: "A coleção completa", collectionLede: "A coleção de 130 jogos está disponível por enquanto em espanhol, em treze blocos com situações, materiais, instruções, solução e explicação.", collectionCTA: "Ver os 130 jogos em espanhol",
-    partsTitle: "As três partes de cada jogo",
-    parts: [
-      ["Me entender · o jogo", "Jogando se entende algo do que acontece: o que cansa, o que ajuda, como uma tarefa começa, o que recarrega."],
-      ["Que me entendam · a carta", "No final fica uma carta preenchida com as suas palavras. Dá para imprimir, guardar e mostrar em casa, na escola ou na consulta."],
-      ["Me atrever a experimentar · o desafio", "Um desafio pequeno para hoje ou esta semana, com mais de um jeito válido de fazer."]
-    ],
-    shelves: ["Todos", "Para você · infância", "Para você · vida adulta", "Para sua família", "Para sua turma"],
-    shelfRuleLabel: "Aqui há uma regra:",
-    shelfRules: ["", "", "", "aqui quem manda é a criança. Ela sabe a resposta e o adulto descobre jogando.", "ninguém é apontado. Observa-se a sala e a tarefa, nunca um aluno: a turma toda joga e a turma toda entende algo."],
-    families: ["Observação", "Relações e classificação", "Planejamento", "Linguagem e vocabulário", "Jogo de tabuleiro"],
-    understand: "Você entende", card: "Você leva", dare: "Você experimenta",
-    soon: "Em preparação · versão para jogar aqui e download para imprimir, com solução e explicação.",
-    giftTitle: "Três lugares que não pedem nada de você",
-    giftLede: "Aqui não tem lição, nem carta, nem nota. Estão aqui porque fazem bem.",
-    giftRule: "Aqui ninguém vem para melhorar. Vem para ficar à vontade.",
-    gifts: [
-      ["Seus interesses", "Aqui você procura o assunto de que gosta. Cada assunto tem três partes.", ["Para olhar: fotos, mapas e vídeos desse assunto.", "Para aprender mais: por onde seguir, sozinho e no seu ritmo.", "Para contar: como mostrar para alguém que queira ouvir.", "São centenas de assuntos. Se faltar o seu, você acrescenta."]],
-      ["A oficina", "Aqui você cria o que quiser. Sem prazos. Sem níveis. Sem concurso.", ["Coisas para fazer: desenhar, inventar, escrever, fazer vozes, construir.", "Modelos para imprimir: um quadrinho vazio, um personagem pela metade, uma história sem final.", "Cada modelo diz a mesma coisa: faça do seu jeito."]],
-      ["O lugar tranquilo", "Um lugar para descansar. Nada se move nem toca até você pedir.", ["Vídeos de animais em loop. Só começam se você apertar.", "Sons suaves e respiração guiada. Os dois, se quiser.", "A música, aqui dentro.", "Fique o tempo que quiser. Quase não há nada para ler."]]
-    ],
-    notTitle: "O que esta biblioteca não é",
-    nots: [
-      "Fichas escolares disfarçadas de jogo.",
-      "Testes que pontuam a pessoa: o jogo pontua o jogo, a carta descreve.",
-      "Jogos em que a pessoa neurodivergente é «o problema» a adivinhar.",
-      "Materiais que explicam a teoria antes de deixar jogar.",
-      "Cronômetros por padrão: o tempo, se existir, é você quem liga."
-    ],
-    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"],
-    games: [
-      [1, 4, "A consulta", "Um jogo de tabuleiro para preparar uma consulta médica: dez casas, um dado e três tipos de carta. Ganha-se com uma carta de cada tipo.", "Uma consulta se prepara como uma viagem.", "Para a minha consulta eu levo… · pergunto… · me cuida…", "Marque a consulta nesta semana. Ou prepare a pasta."],
-      [0, 0, "As cinco coisas que cansam a Vera", "Uma cena de um dia de escola: é preciso achar as cinco coisas que estão cansando a personagem. O barulho do corredor, a luz piscando, a mudança de plano, a etiqueta da blusa, a fila apertada.", "O que cansa nem sempre se vê, e em cada pessoa é diferente.", "«O que me cansa… / O que me ajuda…»", "Escolha uma coisa que te cansa e experimente hoje uma das suas ajudas."],
-      [0, 1, "O detetive dos sentidos", "Cartas de situações para classificar em três cestas: me acalma, me agita, depende.", "A cesta «depende» é a protagonista: a mesma coisa acalma às vezes e transborda outras.", "Meu mapa dos sentidos.", "Monte seu cantinho com uma coisa da sua cesta «me acalma»."],
-      [0, 2, "A máquina de começar", "Colocar em ordem a sequência para começar uma tarefa. Tem pegadinha: há duas ordens válidas, e o jogo comemora isso.", "Começar tem passos, e cada pessoa tem a sua ordem boa.", "Meu jeito de começar, com os passos na ordem.", "Use amanhã numa tarefa pequena."],
-      [1, 2, "Para onde foi a energia?", "O tabuleiro da semana e as fichas de atividades: cada uma gasta ou recarrega, e a semana precisa fechar sem ficar no vermelho.", "Como se administra a energia, sem teoria.", "Meu orçamento de energia.", "Mude uma única ficha de lugar nesta semana e veja o que acontece."],
-      [1, 3, "Palavra misteriosa: o que não se vê", "A palavra escondida se descobre com pistas: o mascaramento, a recarga, o hiperfoco, a antecipação…", "Cada palavra com sua definição em linguagem clara e em primeira pessoa.", "As três palavras que melhor me nomeiam.", "Use uma delas nesta semana numa conversa real."],
-      [1, 1, "O arquivo de capacidades", "Cartas de capacidades concretas para classificar em «eu tenho» e «quero experimentar». O arquivo só cataloga capacidades.", "O que você faz bem, com nome.", "Meu arquivo: eu tenho / quero experimentar.", "Vinte minutos nesta semana para uma carta de «quero experimentar»."],
-      [2, 4, "O mapa do tesouro da casa", "A criança marca em segredo, na planta da casa, os lugares de calma e os lugares de carga. Os adultos adivinham com perguntas de sim ou não.", "Onde cada pessoa da casa descansa e onde se sobrecarrega.", "O mapa assinado por todos.", "Uma semana respeitando o lugar de calma: só entra quem for convidado."],
-      [2, 3, "Tradutor de casa", "Um adulto diz uma instrução das de sempre e a criança pontua: dá para entender o que fazer, sim ou não? Depois traduzem juntos. Na metade da partida, os papéis se invertem.", "Quais instruções são realmente entendidas.", "O dicionário da casa: as cinco traduções que ficam.", "Usar só as versões traduzidas durante três dias."],
-      [2, 2, "O jantar dos planos", "Planejar juntos um passeio real com as cartas de necessidades de todos: o descanso, o aviso prévio, a comida, o tempo sozinho.", "Todo mundo tem condições para se divertir.", "O plano do passeio, com as necessidades de cada um.", "Fazer o passeio exatamente como foi planejado."],
-      [3, 0, "A sala ao contrário", "A lâmina da sala, para projetar, e a turma inteira procurando o que na sala ajuda e o que atrapalha: a luz, o barulho, o lugar da lixeira, o horário no quadro.", "O ambiente pode ser mudado.", "As três coisas que a turma decide mudar.", "Mudar uma nesta semana e revisar na sexta."],
-      [3, 3, "O tradutor de instruções", "Em equipes: transformar instruções vagas em instruções claras e verificáveis. «Trabalhem em silêncio» vira «falem tão baixo que só o colega da sua mesa ouça». Pontua a clareza da instrução.", "Uma instrução clara pode ser verificada.", "O cartaz da turma: «é assim que damos instruções».", "O cartaz vale por uma semana, para os professores também."],
-      [3, 1, "Cada cérebro, seu caminho", "O mesmo problema e vários caminhos em cartas: o desenho, a lista, a regra, a tentativa e erro, a explicação em voz alta. Cada equipe chega por um caminho diferente e todos valem.", "Caminhos diferentes são o estado normal de uma turma.", "O mural dos caminhos da turma.", "Na próxima tarefa, cada um por um caminho que não seja o de sempre."]
-    ]
   }
 };
 
@@ -1253,21 +1193,6 @@ const CARD_FIELDS = {
     ["The three things our class changes…"],
     ["This is how we give instructions…"],
     ["My route for working things out…"]
-  ],
-  pt: [
-    ["Para a minha consulta eu levo…", "Pergunto…", "O que me cuida…"],
-    ["O que me cansa…", "O que me ajuda…"],
-    ["O que me acalma…", "O que me agita…", "Depende de…"],
-    ["Meu jeito de começar é…"],
-    ["O que mais me recarrega…", "O que mais me gasta…"],
-    ["As três palavras que melhor me nomeiam…"],
-    ["Eu tenho…", "Quero experimentar…"],
-    ["Meu lugar de calma em casa…", "Meu lugar de carga…"],
-    ["As traduções que ficam em casa…"],
-    ["O que eu preciso para me divertir…"],
-    ["As três coisas que a turma muda…"],
-    ["É assim que damos instruções…"],
-    ["Meu caminho para resolver as coisas…"]
   ]
 };
 
@@ -1281,7 +1206,7 @@ class Component extends DCLogic {
       const savedLang = localStorage.getItem("ig_lang");
       const use = qlang && STR[qlang] ? qlang : (savedLang && STR[savedLang] ? savedLang : "es");
       if (qlang && STR[qlang]) localStorage.setItem("ig_lang", qlang);
-      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.documentElement.lang = use;
       document.title = STR[use].docTitle;
       let card = null;
       const hash = (window.location.hash || "").replace(/^#carta-/, "");
@@ -1389,7 +1314,7 @@ class Component extends DCLogic {
 
   setLang(lang) {
     try {
-      document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+      document.documentElement.lang = lang;
       localStorage.setItem("ig_lang", lang);
     } catch (e) {}
     this.setState({ lang });
@@ -1405,7 +1330,7 @@ class Component extends DCLogic {
     if (!on) return;
     const main = document.querySelector("main");
     const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
-    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.lang = { es: "es-ES", en: "en-GB" }[this.state.lang] || "es-ES";
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   }
@@ -1560,8 +1485,7 @@ class Component extends DCLogic {
       gifts: T.gifts.map(([name, text, points], n) => {
         const links = {
           es: [["/es/intereses/", "Abrir tus intereses"], ["/es/taller/", "Ir al taller"], ["/es/sitio-tranquilo/", "Entrar al sitio tranquilo"]],
-          en: [["/es/intereses/", "Open your interests"], ["/es/taller/", "Go to the workshop"], ["/es/sitio-tranquilo/", "Enter the quiet place"]],
-          pt: [["/es/intereses/", "Abrir seus interesses"], ["/es/taller/", "Ir para a oficina"], ["/es/sitio-tranquilo/", "Entrar no lugar tranquilo"]]
+          en: [["/es/intereses/", "Open your interests"], ["/es/taller/", "Go to the workshop"], ["/es/sitio-tranquilo/", "Enter the quiet place"]]
         };
         const link = (links[L] || links.es)[n];
         return { name, text, points: points.map((t) => ({ text: t })), hasLink: true, href: link[0], linkLabel: link[1] };

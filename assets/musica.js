@@ -38,8 +38,7 @@
   if(!TRACKS.length)TRACKS=ALL_TRACKS.slice();
   var TEXT = {
     es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. Prueba otra o pulsa Escuchar de nuevo.'},
-    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another or press Play again.'},
-    pt:{title:'Música',close:'Fechar reprodutor',play:'Ouvir',pause:'Pausa',prev:'Anterior',next:'Seguinte',list:'Escolher uma faixa',volume:'Volume',repeat:'Repetir lista',credit:'Música do Pixabay. O autor aparece em cada faixa.',error:'Não foi possível reproduzir esta faixa. Escolha outra ou pressione Ouvir novamente.'}
+    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another or press Play again.'}
   };
   var panel, audio, playButton, title, author, status, closeButton, lastTrigger, labels, previousButton, nextButton, listSummary, volumeLabel, volumeSlider, repeatText, creditText, selected = 0, repeat = true, open = false;
   var selector = '#plBtn,.ig-uh-music,[data-ig-music]';

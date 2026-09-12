@@ -70,7 +70,7 @@
 .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
 .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
 .ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
-.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
+.ig-nav-en{display:none!important}html[lang^='en'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
 .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
 .ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
 .ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.32)}
@@ -80,7 +80,7 @@
 @media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
 @media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
 </style>
-<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="Explorar" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/en/everyday-life/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a aria-current="page" class="ig-nav-es" href="/es/investigacion/">Investigación</a><a aria-current="page" class="ig-nav-en" href="/es/investigacion/">Research</a><a aria-current="page" class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/en/data/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet place</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="Música" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="Lectura" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="Idioma"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="Explorar" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/en/everyday-life/">Everyday life</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a aria-current="page" class="ig-nav-es" href="/es/investigacion/">Investigación</a><a aria-current="page" class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/en/data/">Data</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-es" href="/es/libros/">Libros</a><a class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/en/interests/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/en/quiet-space/">Quiet place</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="Música" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="Lectura" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="Idioma"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
   <main style="max-width: 1180px; margin: 0 auto; padding: 40px 28px 80px;">
     <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5a49a8;">{{ tEyebrow }}</p>
@@ -215,7 +215,6 @@ const CONF = {
 };
 
 const TOPIC_LABELS = {
-  pt: { "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Salud mental": "Saúde mental", "Alimentación": "Alimentação", "Aprendizaje": "Aprendizagem", "Lenguaje y comunicación": "Linguagem e comunicação", "Cómo se percibe el mundo": "Como se percebe o mundo", "Enmascaramiento": "Mascaramento", "Identidad y diagnóstico": "Identidade e diagnóstico", "Estudios y trabajo": "Estudos e trabalho", "Salud física": "Saúde física", "Sueño": "Sono", "Tourette": "Tourette", "Otros perfiles": "Outros perfis", "Neurodiversidad": "Neurodiversidade" },
   en: { "Autismo": "Autism", "TDAH": "ADHD", "TOC": "OCD", "Salud mental": "Mental health", "Alimentación": "Eating", "Aprendizaje": "Learning", "Lenguaje y comunicación": "Language and communication", "Cómo se percibe el mundo": "How the world is perceived", "Enmascaramiento": "Masking", "Identidad y diagnóstico": "Identity and diagnosis", "Estudios y trabajo": "Study and work", "Salud física": "Physical health", "Sueño": "Sleep", "Tourette": "Tourette", "Otros perfiles": "Other profiles", "Neurodiversidad": "Neurodiversity" },
   es: { "Autismo": "Autismo", "TDAH": "TDAH", "TOC": "TOC", "Salud mental": "Salud mental", "Alimentación": "Alimentación", "Aprendizaje": "Aprendizaje", "Lenguaje y comunicación": "Lenguaje y comunicación", "Cómo se percibe el mundo": "Cómo se percibe el mundo", "Enmascaramiento": "Enmascaramiento", "Identidad y diagnóstico": "Identidad y diagnóstico", "Estudios y trabajo": "Estudios y trabajo", "Salud física": "Salud física", "Sueño": "Sueño", "Tourette": "Tourette", "Otros perfiles": "Otros perfiles", "Neurodiversidad": "Neurodiversidad" }
 };
@@ -275,45 +274,17 @@ const STR = {
       ["media", "Further research may well change it. Useful, not conclusive."],
       ["baja", "Any conclusion is provisional: exploratory or very small samples."]
     ]
-  },
-  pt: {
-    all: "Todos", navHome: "Início", navVideos: "Vídeos", navAsk: "Ajudas", navBooks: "Livros",
-    reading: "Leitura", readingPanel: "Leitura acessível", textSize: "Tamanho do texto", reset: "Restaurar",
-    method: "Metodologia", tagline: "Base de conhecimento sobre neurodiversidade",
-    eyebrow: "Pesquisa, com contexto",
-    title: "Um estudo não é a ciência inteira.",
-    lede: "Reunimos estudos, revisões e metanálises e explicamos o que foi investigado, o que foi encontrado, o que não permite concluir e onde está a fonte original. Cada ficha mostra o desenho, o tamanho da amostra e o nosso nível de certeza.",
-    searchPh: "sono, estigma, prevalência, tiques, camuflagem…",
-    byDesign: "Tipo de estudo", byTopic: "Tema",
-    count: (n) => n + (n === 1 ? " publicação" : " publicações"),
-    noResults: "Nenhuma publicação com essas palavras. Tente outro termo ou limpe os filtros.",
-    reference: "Referência e DOI", means: "O que foi encontrado", spanishTitle: "Título em espanhol: ", details: "Ver a leitura crítica", close: "Fechar",
-    studied: "O que foi estudado", cannot: "O que NÃO demonstra", limits: "Limitações e risco de viés",
-    howTitle: "Como lemos o nível de certeza",
-    howText: "Não atribuímos uma classificação GRADE a cada publicação. Quando uma revisão ou diretriz utiliza GRADE, mostramos a avaliação publicada pelos autores e indicamos a que resultado ela se refere.",
-    gradeNote: "Quando o artigo não inclui uma avaliação GRADE, não criamos uma por conta própria. Explicamos o desenho, a amostra, os resultados e as limitações para mostrar até onde a evidência permite chegar.",
-    revision: "Última revisão desta página: 10 de setembro de 2026 · 120 publicações.",
-    designs: { metaanalisis: "Metanálise", revision: "Revisão sistemática", ensayo: "Ensaio randomizado", transversal: "Estudo transversal (uma foto num momento)", cualitativo: "Estudo qualitativo", neuroimagen: "Neuroimagem", mixto: "Métodos mistos", guia: "Diretriz clínica" },
-    confs: { alta: "Certeza alta", moderada: "Certeza moderada", media: "Certeza baixa", baja: "Certeza muito baixa" },
-    levels: [
-      ["alta", "É muito improvável que novas pesquisas mudem esta conclusão."],
-      ["moderada", "Novas pesquisas podem matizá-la, mas a direção é estável."],
-      ["media", "Novas pesquisas podem mudá-la. Útil, não conclusiva."],
-      ["baja", "Qualquer conclusão é provisória: exploratório ou amostras muito pequenas."]
-    ]
   }
 };
 
 const TOGGLES = {
   es: ["Letra más separada", "Botones más grandes", "Más contraste", "Guía de lectura", "Leer en voz alta", "Reducir movimiento"],
-  en: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"],
-  pt: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"]
+  en: ["Wider letter spacing", "Bigger buttons", "More contrast", "Reading guide", "Read aloud", "Reduce motion"]
 };
 
 const NAVL = {
   es: [["/","Inicio"],["/es/neurodiversidad/condiciones/","Condiciones"],["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/investigacion/","Investigación"],["/es/datos/","Datos"],["/es/tramites/directorio/","Ayudas"],["/es/libros/","Libros"]],
-  en: [["/","Home"],["/en/neurodiversity/conditions/","Conditions"],["/en/situations/","Situations"],["/en/everyday-life/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/en/data/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]],
-  pt: [["/","Início"],["/es/neurodiversidad/condiciones/","Condições"],["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/investigacion/","Pesquisa"],["/es/datos/","Dados"],["/es/tramites/directorio/","Diretório de ajudas"],["/es/libros/","Livros"]]
+  en: [["/","Home"],["/en/neurodiversity/conditions/","Conditions"],["/en/situations/","Situations"],["/en/everyday-life/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/en/data/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]]
 };
 
 const IG_INITIAL = JSON.parse(document.getElementById("ig-initial-data").textContent);
@@ -328,13 +299,13 @@ class Component extends DCLogic {
       const lang = localStorage.getItem("ig_lang");
       const use = STR[lang] ? lang : "es";
       if (use !== "es") this.setState({ lang: use });
-      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.documentElement.lang = use;
     } catch (e) {}
   }
 
   setLang(lang) {
     this.setState({ lang });
-    try { document.documentElement.lang = lang === "pt" ? "pt-BR" : lang; } catch (e) {}
+    try { document.documentElement.lang = lang; } catch (e) {}
     try { localStorage.setItem("ig_lang", lang); } catch (e) {}
   }
 
@@ -350,7 +321,7 @@ class Component extends DCLogic {
     if (!on) return;
     const main = document.querySelector("main");
     const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
-    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.lang = { es: "es-ES", en: "en-GB" }[this.state.lang] || "es-ES";
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   }
@@ -416,7 +387,7 @@ class Component extends DCLogic {
 
       cards: rows.map((s) => {
         const c = CONF[s.conf] || CONF.media;
-        const nSample = (L === "en" ? s.sample_en : L === "pt" ? s.sample_pt : s.sample) || "";
+        const nSample = (L === "en" ? s.sample_en : s.sample) || "";
         const bodyText = pickText(s);
         const originalTitle = (s.titleOrig || s.titleEs || "").replace(/\*$/, "");
         return {
