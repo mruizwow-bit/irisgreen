@@ -1,0 +1,26 @@
+name: Comprobar CSP
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  csp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-csp
+          /tmp/ig-csp/bin/pip -q install playwright==1.55.0
+          /tmp/ig-csp/bin/python -m playwright install --with-deps chromium >/tmp/ig-csp-install.log 2>&1
+      - name: Construir la salida pública
+        run: python3 scripts/build_site.py
+      - name: Inventariar dependencias de la política
+        run: python3 scripts/audit_csp_dependencies.py --root dist
+      - name: Probar la CSP real en navegador
+        run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_csp_runtime.py
