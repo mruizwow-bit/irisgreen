@@ -22,7 +22,7 @@ PAGES={
 'new_cite':'Esta página no ofrece una prevalencia global. Explica que las estimaciones disponibles no son directamente comparables y por qué no se combinan en un único porcentaje.',
 'old_avoid':'La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado.',
 'new_avoid':'No uses un rango de prevalencia como si procediera de una única estimación mundial. Las cifras dependen de la definición, la prueba, la edad y el punto de corte de cada estudio.',
-'anchor':'<section class="sec consult"><h2>Ficha técnica</h2>',
+'anchor':'<section class="sec consult"><h2>Ficha técnica</h2>','source_heading':'<h2>Fuentes</h2>',
 'sources':'<section class="sec"><h2>Fuentes</h2><ul class="fuentes"><li><a href="https://pubmed.ncbi.nlm.nih.gov/38929203/" rel="noopener" target="_blank">Dowker, A. · Developmental Dyscalculia in Relation to Individual Differences in Mathematical Abilities · 2024</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/42470314/" rel="noopener" target="_blank">Blenis, R. C. · Developmental Dysgraphia in Child and Adolescent Psychiatric-Mental Health Nursing: An Integrative Review · 2026</a></li></ul></section>'},
 'en/data/dyscalculia-and-dysgraphia-why-we-do-not-give-a-single-global-figure/index.html':{
 'old_intro':'The literature uses different definitions, tests, ages and thresholds. Widely repeated ranges exist, but the search carried out for this expansion did not find a recent international estimate with robustness comparable to the sources selected for ADHD, dyslexia or developmental coordination disorder.',
@@ -34,7 +34,7 @@ PAGES={
 'new_cite':'This page does not provide a global prevalence estimate. It explains why the available estimates are not directly comparable and why they are not combined into one percentage.',
 'old_avoid':'The figure must remain linked to its population, territory, year and method. Separating it from that context can change its meaning.',
 'new_avoid':'Do not treat a prevalence range as if it came from one worldwide estimate. Figures depend on the definition, test, age group and cut-off used in each study.',
-'anchor':'<section class="sec consult"><h2>Technical sheet</h2>',
+'anchor':'<section class="sec consult"><h2>Technical sheet</h2>','source_heading':'<h2>Sources</h2>',
 'sources':'<section class="sec"><h2>Sources</h2><ul class="fuentes"><li><a href="https://pubmed.ncbi.nlm.nih.gov/38929203/" rel="noopener" target="_blank">Dowker, A. · Developmental Dyscalculia in Relation to Individual Differences in Mathematical Abilities · 2024</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/42470314/" rel="noopener" target="_blank">Blenis, R. C. · Developmental Dysgraphia in Child and Adolescent Psychiatric-Mental Health Nursing: An Integrative Review · 2026</a></li></ul></section>'}}
 
 def once(text,old,new,rel):
@@ -49,7 +49,7 @@ def main():
         if not p.is_file():raise FileNotFoundError(p)
         old=p.read_text(encoding='utf-8');text=old
         for key in ('intro','heading','conclusion','cite','avoid'):text=once(text,cfg['old_'+key],cfg['new_'+key],rel)
-        if cfg['sources'] not in text:
+        if cfg['source_heading'] not in text:
             if text.count(cfg['anchor'])!=1:raise ValueError(f'Punto de inserción no encontrado en {rel}')
             text=text.replace(cfg['anchor'],cfg['sources']+cfg['anchor'],1)
         if text!=old:p.write_text(text,encoding='utf-8');changed.append(rel)
