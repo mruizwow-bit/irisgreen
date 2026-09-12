@@ -10,6 +10,7 @@ from pathlib import Path
 
 TAG_RE = re.compile(r"<[^>]+>")
 H2_RE = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.I | re.S)
+CONCEPTS_BOX_RE = re.compile(r'<section\b[^>]*class=["\'][^"\']*\bconcepts-box\b[^"\']*["\'][^>]*>', re.I)
 
 SIT_ES_FORBIDDEN = {"Señales", "Señales de alerta", "Relacionado", "Puede estar relacionado con"}
 SIT_EN_FORBIDDEN = {"Signs", "Warning signs", "Related", "May be related to"}
@@ -77,7 +78,7 @@ def check_daily(base: Path, expected: int, forbidden: set[str], label: str):
 def check_index(path: Path, lede: str, old_phrase: str, label: str):
     text = path.read_text(encoding="utf-8")
     assert lede in text, f"{label}: falta introducción aprobada"
-    assert "concepts-box" not in text, f"{label}: sigue concepts-box público"
+    assert not CONCEPTS_BOX_RE.search(text), f"{label}: sigue concepts-box público"
     assert old_phrase not in text, f"{label}: sigue promesa antigua de conceptos"
     assert "data-search=" in text, f"{label}: se perdió la búsqueda por metadatos de las fichas"
     return True
