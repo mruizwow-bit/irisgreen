@@ -16,66 +16,29 @@ jobs:
         with:
           ref: cierre/20260912-sale-portugues
           fetch-depth: 0
-      - name: Aplicar retirada mecánica
-        id: aplicar
+      - name: Desacoplar los 301 de las fuentes retiradas
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re, subprocess
-          root=Path('.')
-          marker=Path('.paso1-portugues-aplicado')
-          if marker.exists():
-              print('already=1')
-              raise SystemExit(0)
-
-          pt=Path('pt-br')
-          files=[p for p in pt.rglob('*') if p.is_file()] if pt.exists() else []
-          print('Fuentes pt-br antes:', len(files))
-          if len(files) != 375:
-              raise SystemExit(f'Se esperaban 375 fuentes en pt-br y hay {len(files)}')
-          subprocess.run(['rm','-rf','pt-br'],check=True)
-
-          # V38/V39: quitar únicamente las dos reglas que ocultaban un idioma que deja de existir.
-          css=Path('assets/site-v23.css')
-          text=css.read_text(encoding='utf-8')
-          old1='''/* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */\n.langs .lang[lang="pt-BR" i],.langs a.lang[href*="/pt-br/"],.langs a.lang[href*="/PT-BR/"]{display:none}\n\n'''
-          old2='''/* V39 · PT-BR en pausa: tampoco en la cabecera generada. */\n.ig-uh-langs button[data-lang="pt" i],.ig-uh-langs button[lang="pt-BR" i]{display:none}\n\n'''
-          if old1 not in text or old2 not in text:
-              raise SystemExit('No se localizaron exactamente las reglas V38/V39 de PT-BR')
-          text=text.replace(old1,'').replace(old2,'')
-          css.write_text(text,encoding='utf-8')
-
-          # Retirar alternates/hreflang y controles/enlaces PT que aún vivan en ES/EN o assets.
-          exts={'.html','.js','.json','.xml','.py','.css'}
-          skip={'_redirects'}
-          changed=0
-          for p in list(Path('es').rglob('*'))+list(Path('en').rglob('*'))+list(Path('assets').rglob('*'))+list(Path('editorial').rglob('*')):
-              if not p.is_file() or p.suffix.lower() not in exts or p.name in skip:
-                  continue
-              try: s=p.read_text(encoding='utf-8')
-              except UnicodeDecodeError: continue
-              before=s
-              # link alternate/hreflang pt o pt-BR
-              s=re.sub(r'\s*<link\b(?=[^>]*\bhreflang=["\']pt(?:-BR)?["\'])(?=[^>]*\brel=["\']alternate["\'])[^>]*>\s*','\n',s,flags=re.I)
-              s=re.sub(r'\s*<link\b(?=[^>]*\brel=["\']alternate["\'])(?=[^>]*\bhreflang=["\']pt(?:-BR)?["\'])[^>]*>\s*','\n',s,flags=re.I)
-              # enlaces/botones/opciones explícitos del selector o menú PT
-              s=re.sub(r'<a\b[^>]*href=["\'][^"\']*/pt-br/(?:[^"\']*)["\'][^>]*>.*?</a>','',s,flags=re.I|re.S)
-              s=re.sub(r'<button\b(?=[^>]*(?:data-lang|lang)=["\']pt(?:-BR)?["\'])[^>]*>.*?</button>','',s,flags=re.I|re.S)
-              s=re.sub(r'<option\b[^>]*value=["\']pt(?:-BR)?["\'][^>]*>.*?</option>','',s,flags=re.I|re.S)
-              if s!=before:
-                  p.write_text(s,encoding='utf-8'); changed+=1
-          print('Archivos ES/EN/assets/editorial limpiados:', changed)
-          marker.write_text('375 fuentes pt-br retiradas; V38/V39 retiradas; alternates y controles PT limpiados.\n',encoding='utf-8')
+          p=Path('scripts/repair_routes.py')
+          s=p.read_text(encoding='utf-8')
+          old='''    assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'\n    if (ROOT/'_redirects').exists():\n        assert (ROOT/'_redirects').read_text().startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'\n    red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']\n    red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))\n    red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']\n    staged[ROOT/'_redirects']='\\n'.join(red)\n'''
+          new='''    redirects_path=ROOT/'_redirects'\n    assert redirects_path.exists(), 'Falta _redirects con el mapa histórico PT-BR → ES'\n    existing_redirects=redirects_path.read_text()\n    assert existing_redirects.startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'\n    if report['redirects']:\n        # Compatibilidad si se ejecuta sobre un árbol antiguo que todavía conserva las fuentes PT-BR.\n        assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'\n        red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']\n        red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))\n        red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']\n        staged[redirects_path]='\\n'.join(red)\n    else:\n        # Las 375 fuentes PT-BR ya no existen. El mapa 301 es ahora el registro histórico\n        # que preserva enlaces antiguos; se valida pero no se regenera ni se modifica.\n        for line in existing_redirects.splitlines():\n            parts=line.split()\n            if len(parts)!=3 or not parts[0].startswith('/pt-br/') or parts[0] in ('/pt-br/','/pt-br/*'):\n                continue\n            source,target,status=parts\n            assert status=='301!' and target.startswith('/es/'), (source,target,status)\n            assert resolve(ROOT,target) is not None, (source,target,'Destino español inexistente')\n            report['redirects'].append({'from':source,'to':target,'status':301,'source':'_redirects histórico'})\n        assert len(report['redirects'])==375,'El mapa histórico PT-BR debe conservar exactamente 375 redirecciones ficha a ficha'\n        staged[redirects_path]=existing_redirects\n'''
+          if old not in s:
+              if '_redirects histórico' in s:
+                  print('El desacoplamiento ya estaba aplicado.')
+              else:
+                  raise SystemExit('No se encontró el bloque esperado de repair_routes.py')
+          else:
+              p.write_text(s.replace(old,new,1),encoding='utf-8')
           PY
           git diff --check
-          git status --short
-          if [ -f .paso1-portugues-aplicado ]; then
+          if ! git diff --quiet -- scripts/repair_routes.py; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add -A
-            git commit -m '[paso1-aplicado] Sale el portugués de las fuentes y la interfaz'
+            git add scripts/repair_routes.py
+            git commit -m '[paso1-rutas] Conservar los 301 sin depender de fuentes PT-BR'
             git push origin HEAD:cierre/20260912-sale-portugues
-            exit 0
           fi
       - name: Construir y comprobar ausencia de portugués publicado
         run: |
