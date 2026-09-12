@@ -122,6 +122,21 @@
 }
 .iris-mini-button:hover{filter:brightness(.94);color:#fff!important}
 .iris-mini-button:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
+.iris-mini-own{
+  display:block;
+  margin:.72rem 0;
+  min-height:40px;
+  padding:.5rem 0;
+  color:var(--iris-accent)!important;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1.35;
+  text-align:center;
+  text-decoration:underline!important;
+  text-underline-offset:3px;
+}
+.iris-mini-own:hover{text-decoration-thickness:2px!important}
+.iris-mini-own:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
 .iris-mini-foot{
   display:flex;
   justify-content:space-between;
@@ -158,6 +173,7 @@
 html[data-ig-contrast="on"] .iris-cta{background:#fff!important;border-color:#111!important;color:#111!important}
 html[data-ig-contrast="on"] .iris-cta :is(h2,h3,p,a,span){color:#111!important}
 html[data-ig-contrast="on"] .iris-mini-button{background:#111!important;color:#fff!important;border-color:#111!important}
+html[data-ig-contrast="on"] .iris-mini-own{color:#111!important}
 html[data-ig-contrast="on"] .iris-mini-need{background:#fff!important;border-color:#111!important}
 
 @media(max-width:63.99rem){
