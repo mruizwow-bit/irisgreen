@@ -1,4 +1,4 @@
-/* Controles compartidos; no observa ni reconstruye el documento. */
+/* Controles compartidos; no reconstruye el documento. */
 (function () {
   'use strict';
   if (window.__igInterfaceReady) return;
@@ -22,6 +22,29 @@
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') closeMenu(document.querySelector('header.ig-menu-open'), true);
   });
+  function visibleMain(main) {
+    return main && !main.hidden && getComputedStyle(main).display !== 'none' && getComputedStyle(main).visibility !== 'hidden' && main.getClientRects().length;
+  }
+  function ensureMainAnchor() {
+    var current = document.getElementById('main');
+    if (visibleMain(current)) return true;
+    if (current) current.removeAttribute('id');
+    var mains = Array.from(document.querySelectorAll('main'));
+    var visible = mains.find(visibleMain);
+    if (visible) { visible.id = 'main'; return true; }
+    return false;
+  }
+  var mainObserver = null;
+  function watchMainAnchor() {
+    if (ensureMainAnchor()) return;
+    if (mainObserver || !document.documentElement) return;
+    mainObserver = new MutationObserver(function () {
+      if (!ensureMainAnchor()) return;
+      mainObserver.disconnect();
+      mainObserver = null;
+    });
+    mainObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
   function ready() {
     document.querySelectorAll('a[data-ig-back-conditions]').forEach(function (link) {
       try {
@@ -29,8 +52,11 @@
         if (saved && new URL(saved, location.origin).pathname === '/es/neurodiversidad/condiciones/') link.href = saved;
       } catch (_) {}
     });
+    watchMainAnchor();
+    requestAnimationFrame(watchMainAnchor);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, { once: true }); else ready();
+  window.addEventListener('load', watchMainAnchor, { once: true });
 })();
 
 /* Reading accessibility: one controller for the existing controls, no DOM polling. */
