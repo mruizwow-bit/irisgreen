@@ -34,6 +34,7 @@ PT_LANGUAGE_JSON = {
 }
 PT_LANGUAGE_TEXT = {
     'assets/musica.js',
+    'es/cuestionarios/index.html',
     'es/investigacion/index.html',
     'es/libros/index.html',
     'es/neurodiversidad/temas/autismo/index.html',
@@ -53,6 +54,7 @@ PT_LANGUAGE_TEXT = {
     'es/recursos/juegos/palabra-misteriosa/index.html',
     'es/sobre-iris-green/index.html',
     'es/taller/index.html',
+    'es/tramites/directorio/index.html',
     'es/tramites/index.html',
     'es/videos/index.html',
 }
@@ -203,16 +205,24 @@ def clean_text(text: str, *, drop_language_objects: bool) -> tuple[str, int]:
     ):
         text = text.replace(old, new)
 
-    # Si queda una preferencia local antigua con valor pt, la página vuelve a ES; no
-    # conserva un estado de idioma que ya no existe.
-    text = text.replace('document.documentElement.lang = l === "pt" ? "pt-BR" : l;',
-                        'document.documentElement.lang = l === "en" ? "en" : "es";')
-    text = text.replace("document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;",
-                        "document.documentElement.lang = l === 'en' ? 'en' : 'es';")
-    text = text.replace('document.documentElement.lang = sv === "pt" ? "pt-BR" : (sv || "es");',
-                        'document.documentElement.lang = sv === "en" ? "en" : "es";')
-    text = text.replace("document.documentElement.lang = sv === 'pt' ? 'pt-BR' : (sv || 'es');",
-                        "document.documentElement.lang = sv === 'en' ? 'en' : 'es';")
+    # Si queda una preferencia local antigua con valor pt, no conserva un idioma
+    # que ya no existe. Como los diccionarios PT ya han sido retirados, `use`
+    # solo puede ser ES o EN; `lang` también llega solo desde esos dos botones.
+    for old, new in (
+        ('use === "pt" ? "pt-BR" : use', 'use'),
+        ("use === 'pt' ? 'pt-BR' : use", 'use'),
+        ('lang === "pt" ? "pt-BR" : lang', 'lang'),
+        ("lang === 'pt' ? 'pt-BR' : lang", 'lang'),
+        ('document.documentElement.lang = l === "pt" ? "pt-BR" : l;',
+         'document.documentElement.lang = l === "en" ? "en" : "es";'),
+        ("document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;",
+         "document.documentElement.lang = l === 'en' ? 'en' : 'es';"),
+        ('document.documentElement.lang = sv === "pt" ? "pt-BR" : (sv || "es");',
+         'document.documentElement.lang = sv === "en" ? "en" : "es";'),
+        ("document.documentElement.lang = sv === 'pt' ? 'pt-BR' : (sv || 'es');",
+         "document.documentElement.lang = sv === 'en' ? 'en' : 'es';"),
+    ):
+        text = text.replace(old, new)
     return text, removed_objects
 
 
