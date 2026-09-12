@@ -24,20 +24,26 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           from bs4 import BeautifulSoup
+          special='es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html'
           groups=[('situaciones','es/situaciones/*/index.html',187),('vida','es/biblioteca/*/index.html',48),('condiciones','es/neurodiversidad/condiciones/*/index.html',185)]
           total=0
           for section,pattern,expected in groups:
               pages=sorted(Path('dist').glob(pattern)); assert len(pages)==expected,(section,len(pages))
               for p in pages:
+                  rel=p.relative_to('dist').as_posix()
                   soup=BeautifulSoup(p.read_text(encoding='utf-8'),'html.parser')
                   cards=soup.select('aside.iris-inline-card[data-iris-card-cta="true"]')
                   assert len(cards)==1,(p,len(cards))
                   card=cards[0]
                   assert card.get('data-iris-section')==section,(p,card.get('data-iris-section'))
-                  main=card.find_parent('main'); article=soup.select_one('article.ficha')
-                  assert main is not None and article is not None,(p,'estructura')
-                  assert card.parent is main,(p,'tarjeta no es hija directa de main')
-                  assert article.parent is main,(p,'article no es hijo directo de main')
+                  if rel==special:
+                      assert card.parent and 'detail-grid' in (card.parent.get('class') or []),(p,'tarjeta especial fuera de detail-grid')
+                      assert soup.select_one('.detail-grid>.request-panel') is not None,(p,'panel especial perdido')
+                  else:
+                      main=card.find_parent('main'); article=soup.select_one('article.ficha')
+                      assert main is not None and article is not None,(p,'estructura')
+                      assert card.parent is main,(p,'tarjeta no es hija directa de main')
+                      assert article.parent is main,(p,'article no es hijo directo de main')
                   assert card.find('form',action='/es/tarjetas-iris/',method='get'),(p,'sin formulario')
                   for name in ('title','dificultad','ayuda','necesito'):
                       assert card.find(attrs={'name':name}),(p,name)
@@ -45,7 +51,7 @@ jobs:
                   total+=1
           assert total==420,total
           css=Path('dist/assets/tarjetas-iris-cta.css').read_text(encoding='utf-8')
-          for token in ('#6554A8','#855B87','#626A82','grid-column:2','top:6.5rem'):
+          for token in ('#6554A8','#855B87','#626A82','grid-column:2','top:6.5rem','.detail-grid>.iris-inline-card'):
               assert token in css,token
           print('Tarjetas editables comprobadas:',total)
           PY
