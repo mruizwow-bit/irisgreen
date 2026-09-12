@@ -1,3 +1,9 @@
+/* Cero sin barra: solo U+0030 usa una sans del sistema; el resto conserva Atkinson. */
+@font-face{
+ font-family:"IG Zero";
+ src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");
+ unicode-range:U+0030;
+}
 :root{
  --tinta:#17395c; --azul:#1f5f8b; --lila:#5a49a8; --rosa:#a8336f; --turq:#1f8ba8;
  --papel:#ffffff; --niebla:#f6f8fb; --linea:#dfe6ef; --suave:#5c7391;
@@ -6,7 +12,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
- margin:0; font-family:"Atkinson Hyperlegible",system-ui,sans-serif;
+ margin:0; font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important;
  font-size:var(--fs); letter-spacing:var(--ls); line-height:1.6; color:var(--tinta);
  background:
   radial-gradient(60rem 40rem at 8% -10%, rgba(168,51,111,.10), transparent 60%),
