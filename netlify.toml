@@ -39,27 +39,42 @@
   [headers.values]
     "Content-Type" = "text/plain; charset=utf-8"
 
+# CSS/JS e imágenes con nombre estable pueden cambiar entre publicaciones.
+# Una hora mejora las revisitas sin dejar una versión antigua fijada durante días.
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    "Cache-Control" = "public, max-age=0, must-revalidate"
+    "Cache-Control" = "public, max-age=3600, stale-while-revalidate=86400"
 
 [[headers]]
   for = "/audio/*"
   [headers.values]
-    "Cache-Control" = "public, max-age=604800"
+    "Cache-Control" = "public, max-age=2592000, stale-while-revalidate=604800"
 
 [[headers]]
   for = "/img/*"
   [headers.values]
-    "Cache-Control" = "public, max-age=0, must-revalidate"
+    "Cache-Control" = "public, max-age=604800, stale-while-revalidate=2592000"
 
 [[headers]]
   for = "/*.html"
   [headers.values]
     "Cache-Control" = "public, max-age=0, must-revalidate"
 
+# Los runtimes llevan hash en el nombre: sí pueden ser inmutables.
 [[headers]]
   for = "/assets/runtime/*"
   [headers.values]
     "Cache-Control" = "public, max-age=31536000, immutable"
+
+# Los nombres de los archivos de fuente identifican versión/peso y no cambian en cada build.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=31536000, immutable"
+
+# Las miniaturas se guardan por ID de vídeo y se descargan localmente durante el build.
+[[headers]]
+  for = "/assets/video-thumbnails/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=2592000, stale-while-revalidate=604800"
