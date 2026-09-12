@@ -62,7 +62,11 @@ class Audit(HTMLParser):
             self.labels_for.add(a["for"])
         if tag in FIELDS:
             if not (tag == "input" and a.get("type", "text").lower() in SKIP_INPUT_TYPES):
-                a["_inside_label"] = any(t == "label" for t, _, _ in self.stack[:-1])
+                # Los elementos void (input) no se apilan, así que el <label>
+                # padre sigue estando en self.stack. Select/textarea sí se han
+                # apilado y deben ignorar su propia entrada al mirar ancestros.
+                ancestors = self.stack if tag in VOID else self.stack[:-1]
+                a["_inside_label"] = any(t == "label" for t, _, _ in ancestors)
                 self.fields.append(a)
         if tag == "img":
             self.images.append(a)
@@ -143,7 +147,6 @@ def check(rel: str, text: str) -> list[str]:
     for snapshot in snapshots:
         for item in check_view(snapshot):
             problems.append("sin JS: " + item)
-    # Quitar duplicados conservando orden facilita localizar la fuente real.
     return list(dict.fromkeys(problems))
 
 
