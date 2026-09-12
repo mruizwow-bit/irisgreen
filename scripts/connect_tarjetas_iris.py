@@ -16,6 +16,7 @@ from urllib.parse import urlencode
 
 CSS_LINK = '<link rel="stylesheet" href="/assets/tarjetas-iris-cta.css">'
 MARKER = 'data-iris-card-cta="true"'
+SPECIAL_INSTRUCTIONS = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
 
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
@@ -158,10 +159,18 @@ def insert_detail(text: str, section: str, path: Path) -> str:
     title = plain_h1(text)
     block = inline_card(section, title)
     article_pos = text.rfind("</article>")
-    if article_pos < 0:
-        raise AssertionError(f"No se encontró </article> en {path}")
-    corte = article_pos + len("</article>")
-    return text[:corte] + "\n" + block + text[corte:]
+    if article_pos >= 0:
+        corte = article_pos + len("</article>")
+        return text[:corte] + "\n" + block + text[corte:]
+
+    rel = path.as_posix().replace("\\", "/")
+    if rel.endswith(SPECIAL_INSTRUCTIONS):
+        request = re.search(r'<section\b[^>]*class="request-panel"[^>]*>', text, flags=re.I)
+        if not request:
+            raise AssertionError("Ficha especial sin panel derecho")
+        return text[: request.start()] + block + "\n" + text[request.start():]
+
+    raise AssertionError(f"No se encontró punto de inserción en {path}")
 
 
 def insert_index(text: str, section: str, path: Path) -> str:
