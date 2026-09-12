@@ -8,7 +8,7 @@
 - Corrige el reflow móvil de la cuadrícula de cromos de Tus intereses.
 - Garantiza un salto al contenido en todas las páginas HTML.
 - Corrige el turquesa común para alcanzar contraste AA sobre blanco.
-- Mantiene la explicación pública de privacidad coherente con las fuentes locales.
+- Mantiene la explicación pública de privacidad coherente con fuentes y audio locales.
 
 No modifica títulos, descripciones, robots ni enlaces canónicos.
 No escribe informes dentro de ``dist``: la salida pública no contiene directorios de trabajo.
@@ -49,6 +49,16 @@ PRIVACY_FONT_COPY = {
     'en/privacy/index.html': (
         '<p>These typefaces are currently loaded from Google Fonts. Your browser therefore connects to Google&#8217;s servers to request the font files.</p>',
         '<p>These typefaces are served directly from irisgreen.eu. Your browser does not need to connect to Google to download the font files.</p>',
+    ),
+}
+PRIVACY_MUSIC_COPY = {
+    'es/privacidad/index.html': (
+        '<h2>Música de Spotify</h2>\n<p>Spotify no se carga hasta que abres la función de música.</p>\n<p>Cuando se carga el reproductor, tu navegador se conecta con Spotify y se aplican las condiciones de privacidad de ese servicio.</p>',
+        '<h2>Música</h2>\n<p>La función de música utiliza archivos de audio alojados en irisgreen.eu.</p>\n<p>Cuando escuchas una pieza, el navegador solicita ese archivo a irisgreen.eu y no necesita conectarse con Spotify.</p>',
+    ),
+    'en/privacy/index.html': (
+        '<h2>Spotify music</h2>\n<p>Spotify is not loaded until you open the music feature.</p>\n<p>When the player loads, your browser connects to Spotify and that service&#8217;s privacy terms apply.</p>',
+        '<h2>Music</h2>\n<p>The music feature uses audio files hosted on irisgreen.eu.</p>\n<p>When you play a track, your browser requests that file from irisgreen.eu and does not need to connect to Spotify.</p>',
     ),
 }
 
@@ -123,17 +133,18 @@ def patch_turquoise(root: Path) -> bool:
 
 def patch_privacy_copy(root: Path) -> int:
     changed = 0
-    for rel, (old, new) in PRIVACY_FONT_COPY.items():
-        path = root / rel
-        if not path.is_file():
-            raise FileNotFoundError(path)
-        text = path.read_text(encoding='utf-8')
-        if new in text:
-            continue
-        if text.count(old) != 1:
-            raise ValueError(f'La explicación de tipografías de Privacidad cambió: {rel}')
-        path.write_text(text.replace(old, new, 1), encoding='utf-8')
-        changed += 1
+    for mapping in (PRIVACY_FONT_COPY, PRIVACY_MUSIC_COPY):
+        for rel, (old, new) in mapping.items():
+            path = root / rel
+            if not path.is_file():
+                raise FileNotFoundError(path)
+            text = path.read_text(encoding='utf-8')
+            if new in text:
+                continue
+            if text.count(old) != 1:
+                raise ValueError(f'La explicación de Privacidad cambió: {rel}')
+            path.write_text(text.replace(old, new, 1), encoding='utf-8')
+            changed += 1
     return changed
 
 
@@ -192,6 +203,7 @@ def main() -> None:
         "google_fonts": 0,
         "fuentes_locales": [p.name for p in required[:4]],
         "privacidad_fuentes_locales": True,
+        "privacidad_musica_local": True,
         "privacidad_paginas_actualizadas": privacy_changed,
         "impresion_comun": True,
         "ancho_secundarias": "70rem",
