@@ -24,6 +24,10 @@ PT_OBJECT_LINE = re.compile(
 EXACT_TEXT_REPLACEMENTS = {
     'Sigue pendiente la traducción completa de las 120 fichas a EN y PT-BR si la colección se publica también en esos idiomas.':
         'Sigue pendiente la traducción completa de las 120 fichas a EN si la colección se publica también en ese idioma.',
+    'No queda ningún bloqueo por imágenes en la colección. Sigue pendiente la traducción completa de las 120 fichas a EN y PT-BR si la colección se publica también en esos idiomas.':
+        'No queda ningún bloqueo por imágenes en la colección. Sigue pendiente la traducción completa de las 120 fichas a EN si la colección se publica también en ese idioma.',
+    'Pendiente editorial: traducción de las 120 fichas a EN y PT-BR.':
+        'Pendiente editorial: traducción de las 120 fichas a EN.',
 }
 PT_LANGUAGE_JSON = {'es/taller/taller-retos.json'}
 
@@ -47,14 +51,28 @@ def clean_text(text: str) -> str:
     text = PT_ALTERNATE.sub('', text)
     text = INTERNAL_PT_ANCHOR.sub('', text)
     text = PT_OBJECT_LINE.sub('', text)
+
+    # Cabecera antigua: después de retirar el enlace PT no debe quedar CSS para ocultarlo
+    # ni reglas que cambien la navegación cuando el documento tenga lang=pt.
+    text = text.replace('.ig-nav-en,.ig-nav-pt{display:none!important}',
+                        '.ig-nav-en{display:none!important}')
+    text = text.replace("html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es",
+                        "html[lang^='en'] .ig-nav-es")
+    text = text.replace('html[lang^="en"] .ig-nav-es,html[lang^="pt"] .ig-nav-es',
+                        'html[lang^="en"] .ig-nav-es')
+    text = text.replace("html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}", '')
+    text = text.replace('html[lang^="pt"] .ig-nav-pt{display:inline-flex!important}', '')
+
+    # Si queda una preferencia local antigua con valor pt, la página vuelve a ES; no
+    # conserva un estado de idioma que ya no existe.
     text = text.replace('document.documentElement.lang = l === "pt" ? "pt-BR" : l;',
-                        'document.documentElement.lang = l;')
+                        'document.documentElement.lang = l === "en" ? "en" : "es";')
     text = text.replace("document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;",
-                        'document.documentElement.lang = l;')
+                        "document.documentElement.lang = l === 'en' ? 'en' : 'es';")
     text = text.replace('document.documentElement.lang = sv === "pt" ? "pt-BR" : (sv || "es");',
-                        'document.documentElement.lang = (sv || "es");')
+                        'document.documentElement.lang = sv === "en" ? "en" : "es";')
     text = text.replace("document.documentElement.lang = sv === 'pt' ? 'pt-BR' : (sv || 'es');",
-                        "document.documentElement.lang = (sv || 'es');")
+                        "document.documentElement.lang = sv === 'en' ? 'en' : 'es';")
     return text
 
 
