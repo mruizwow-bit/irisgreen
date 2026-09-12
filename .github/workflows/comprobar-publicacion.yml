@@ -54,6 +54,10 @@ jobs:
               counts[value if value in counts else 'otro_o_ninguno'] += 1
           sitemap=Path('dist/sitemap.xml').read_text(encoding='utf-8')
           sitemap_urls=len(re.findall(r'<url(?:\s|>)',sitemap))
+          # Contrato deliberadamente congelado. Si se publica, retira o cambia la
+          # indexación de una página, este paso debe ponerse en rojo hasta revisar
+          # conscientemente estos cinco números y el sitemap. No debilitar la prueba
+          # para hacerla pasar: actualizar expected solo junto al cambio editorial.
           expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':995}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
