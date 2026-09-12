@@ -29,7 +29,10 @@ EXACT_TEXT_REPLACEMENTS = {
     'Pendiente editorial: traducción de las 120 fichas a EN y PT-BR.':
         'Pendiente editorial: traducción de las 120 fichas a EN.',
 }
-PT_LANGUAGE_JSON = {'es/taller/taller-retos.json'}
+PT_LANGUAGE_JSON = {
+    'es/taller/taller-retos.json',
+    'es/recursos/juegos/juegos-120.json',
+}
 
 
 def clean_json_value(value, *, drop_language_keys: bool):
