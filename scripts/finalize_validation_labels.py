@@ -4,7 +4,8 @@
 Solo actúa sobre estados públicos conocidos: fechas de revisión/validación, el bloque
 editorial de la ficha de instrucciones y su copia en navigation-approved.js. Después
 recorre toda la salida pública y falla si encuentra otro estado. No toca robots,
-descripciones, fuentes ni grados A/B/C/BP/SG.
+descripciones, fuentes ni grados A/B/C/BP/SG. En Conditions EN conserva además la
+explicación sustantiva del grado aunque desaparezcan el rótulo Review y su fecha.
 """
 from __future__ import annotations
 
@@ -40,6 +41,45 @@ def write(path: Path, before: str, after: str) -> bool:
         return False
     path.write_text(after, encoding="utf-8")
     return True
+
+
+def restore_condition_evidence(root: Path) -> int:
+    """Conserva el párrafo de evidencia/grado de Conditions EN.
+
+    La fuente antigua mezclaba en el mismo bloque `Review` dos cosas distintas:
+    un párrafo sustantivo que explica el grado y una línea `.muted` de estado
+    editorial. validate_publication_statuses retira el bloque público; aquí se
+    recupera únicamente el párrafo sustantivo desde la fuente, sin recuperar
+    `Review`, fechas ni estados.
+    """
+    restored = 0
+    public_dir = root / "en/neurodiversity/conditions"
+    for public in sorted(public_dir.glob("*/index.html")):
+        rel = public.relative_to(root)
+        source = ROOT / rel
+        if not source.is_file():
+            continue
+        source_text = source.read_text(encoding="utf-8")
+        match = re.search(r'<section class="sec consult"><h2>Review</h2>(.*?)</section>', source_text, re.S)
+        if not match:
+            continue
+        body = match.group(1)
+        paragraphs = [
+            m.group(0) for m in re.finditer(r'<p(?![^>]*class="muted")[^>]*>.*?</p>', body, re.S)
+        ]
+        if not paragraphs:
+            continue
+        public_text = public.read_text(encoding="utf-8")
+        missing = [p for p in paragraphs if p not in public_text]
+        if not missing:
+            continue
+        if "</article>" not in public_text:
+            raise AssertionError(f"No se encontró </article> para conservar el grado: {rel}")
+        block = '<section class="sec consult">' + ''.join(missing) + '</section>\n'
+        public_text = public_text.replace("</article>", block + "</article>", 1)
+        public.write_text(public_text, encoding="utf-8")
+        restored += len(missing)
+    return restored
 
 
 def clean_known(root: Path) -> dict[str, int]:
@@ -100,6 +140,7 @@ def clean_known(root: Path) -> dict[str, int]:
         if write(p, before, after):
             fixed["navigation-approved.js"] = 1
 
+    fixed["condition_evidence_paragraphs_preserved"] = restore_condition_evidence(root)
     return fixed
 
 
