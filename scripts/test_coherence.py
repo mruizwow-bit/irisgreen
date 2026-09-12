@@ -87,7 +87,7 @@ def other(p,path,width):
  elif path=='/es/tramites/directorio/':
   cards=p.locator('main article:visible');assert cards.count()==12;old=cards.first.inner_text()
   choose(p,'countryChips','Reino Unido')
-  p.wait_for_function('(old)=>{const rows=[...document.querySelectorAll("main article")].filter(e=>getComputedStyle(e).display!=="none");return rows.length===12 && rows[0].innerText!==old}',old)
+  p.wait_for_function('(old)=>{const rows=[...document.querySelectorAll("main article")].filter(e=>getComputedStyle(e).display!=="none");return rows.length===12 && rows[0].innerText!==old}',arg=old)
   assert cards.count()==12 and cards.first.inner_text()!=old
   choose(p,'countryChips','España');p.get_by_role('button',name=re.compile('^Ver más fichas')).click();assert cards.count()==24
   p.locator('main input[type=search]').fill('zzzinexistentexxx');assert cards.count()==0
