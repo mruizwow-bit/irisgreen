@@ -137,3 +137,14 @@
   pending=requestAnimationFrame(protect);
  });
 })();
+
+/* Mis libros: carga el visor de muestras solo en su propia página. */
+(function(){
+  'use strict';
+  if(location.pathname !== '/es/libros/' || window.__igBooksFlipLoader) return;
+  window.__igBooksFlipLoader = true;
+  var s = document.createElement('script');
+  s.src = '/assets/libros-flipbooks.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
