@@ -17,138 +17,28 @@ jobs:
           ref: cierre/20260912-sale-portugues
           fetch-depth: 0
 
-      - name: Retirar i18n portugués residual de Trámites
+      - name: Diagnosticar portugués residual de Trámites
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, re
+          import json
 
-          def drop_named_object(text: str, key: str) -> tuple[str, int]:
-              rx = re.compile(r',\s*"' + re.escape(key) + r'"\s*:\s*\{')
-              removed = 0
-              pos = 0
-              while True:
-                  m = rx.search(text, pos)
-                  if not m:
-                      break
-                  brace = text.find('{', m.start())
-                  depth = 0
-                  in_string = False
-                  escaped = False
-                  end = None
-                  for i in range(brace, len(text)):
-                      ch = text[i]
-                      if in_string:
-                          if escaped:
-                              escaped = False
-                          elif ch == '\\':
-                              escaped = True
-                          elif ch == '"':
-                              in_string = False
-                          continue
-                      if ch == '"':
-                          in_string = True
-                      elif ch == '{':
-                          depth += 1
-                      elif ch == '}':
-                          depth -= 1
-                          if depth == 0:
-                              end = i + 1
-                              break
-                  if end is None:
-                      raise SystemExit(f'Objeto {key!r} sin cierre')
-                  text = text[:m.start()] + text[end:]
-                  removed += 1
-                  pos = m.start()
-              return text, removed
+          def walk(value, path='$'):
+              if isinstance(value, dict):
+                  for k, v in value.items():
+                      p=f'{path}.{k}'
+                      if k.lower() == 'pt':
+                          print('PT_KEY', p)
+                      yield from walk(v, p)
+              elif isinstance(value, list):
+                  for i, v in enumerate(value):
+                      yield from walk(v, f'{path}[{i}]')
+              elif isinstance(value, str) and ('/pt-br/' in value.lower() or value.lower() in {'pt','pt-br'}):
+                  print('PT_VALUE', path, repr(value))
 
-          paths = [
-              Path('es/tramites/tramites-datos.json'),
-              Path('es/tramites/directorio/tramites-datos.json'),
-          ]
-          total = 0
-          for p in paths:
-              before = p.read_text(encoding='utf-8')
-              after, n = drop_named_object(before, 'pt')
-              data = json.loads(after)
-              for item in data:
-                  i18n = item.get('i18n', {}) if isinstance(item, dict) else {}
-                  if 'pt' in i18n:
-                      raise SystemExit(f'Queda i18n.pt en {p}')
-              if '/pt-br/' in after or re.search(r'"pt"\s*:', after):
-                  raise SystemExit(f'Queda contenido PT-BR en {p}')
-              if after != before:
-                  p.write_text(after, encoding='utf-8')
-                  total += n
-                  print(f'{p}: {n} objetos pt retirados')
-          if total == 0:
-              print('Los datos PT-BR de Trámites ya estaban retirados.')
+          for p in [Path('es/tramites/tramites-datos.json'), Path('es/tramites/directorio/tramites-datos.json')]:
+              data=json.loads(p.read_text(encoding='utf-8'))
+              print('ARCHIVO', p)
+              list(walk(data))
+          raise SystemExit('Diagnóstico deliberado: revisar PT_KEY/PT_VALUE antes de borrar')
           PY
-          git diff --check
-          if ! git diff --quiet -- es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json
-            git commit -m '[paso1-datos] Retirar traducciones PT-BR residuales de Trámites'
-            git push origin HEAD:cierre/20260912-sale-portugues
-            exit 0
-          fi
-
-      - name: Construir y comprobar ausencia de portugués publicado
-        run: |
-          rm -rf dist
-          python3 scripts/build_site.py
-          python3 - <<'PY'
-          from pathlib import Path
-          import re, json
-          root = Path('dist')
-          patterns = {
-              'ruta_pt_br': re.compile(r'/pt-br/', re.I),
-              'hreflang_pt': re.compile(r'hreflang\s*=\s*["\']pt(?:-BR)?["\']', re.I),
-              'lang_pt': re.compile(r'(?:data-lang|lang)\s*=\s*["\']pt(?:-BR)?["\']', re.I),
-              'portugues_visible': re.compile(r'>\s*(?:PT(?:-BR)?|Portugu[eê]s)\s*<', re.I),
-          }
-          hits = []
-          for p in root.rglob('*'):
-              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.json','.xml','.css','.txt'}:
-                  continue
-              try:
-                  text = p.read_text(encoding='utf-8')
-              except UnicodeDecodeError:
-                  continue
-              for name, rx in patterns.items():
-                  m = rx.search(text)
-                  if m:
-                      hits.append((name, p.relative_to(root).as_posix(), m.group(0)))
-          if hits:
-              for hit in hits[:100]:
-                  print('PT_RESIDUAL', hit)
-              raise SystemExit(f'Quedan {len(hits)} referencias públicas al portugués')
-
-          pages = list(root.rglob('*.html'))
-          counts = {'index,follow':0, 'noindex,follow':0, 'otro_o_ninguno':0}
-          for p in pages:
-              text = p.read_text(encoding='utf-8', errors='ignore')
-              m = (re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']', text, re.I)
-                   or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']', text, re.I))
-              value = m.group(1).strip().lower() if m else None
-              counts[value if value in counts else 'otro_o_ninguno'] += 1
-          sitemap = Path('dist/sitemap.xml').read_text(encoding='utf-8')
-          got = {
-              'html': len(pages),
-              **counts,
-              'sitemap_urls': len(re.findall(r'<url(?:\s|>)', sitemap)),
-          }
-          expected = {
-              'html': 998,
-              'index,follow': 982,
-              'noindex,follow': 2,
-              'otro_o_ninguno': 14,
-              'sitemap_urls': 995,
-          }
-          print(json.dumps(got, ensure_ascii=False))
-          if got != expected:
-              raise SystemExit(f'Contrato cambió: {got} != {expected}')
-          PY
-          python3 scripts/audit_sin_estados_publicos.py --root dist
-          python3 scripts/audit_sin_js.py --root dist
