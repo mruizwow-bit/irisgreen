@@ -391,11 +391,11 @@ class Component extends DCLogic {
         const bodyText = pickText(s);
         const originalTitle = (s.titleOrig || s.titleEs || "").replace(/\*$/, "");
         return {
-          heading: L === "en" ? (s.heading_en || s.titleOrig || s.heading) : (L === "pt" ? (s.heading_pt || s.titleOrig || s.heading) : s.heading),
-          titleEs: L === "en" ? (originalTitle ? "Original title: " + originalTitle : "") : (L === "pt" ? T.spanishTitle + s.titleEs : s.titleEs),
+          heading: L === "en" ? (s.heading_en || s.titleOrig || s.heading) : s.heading,
+          titleEs: L === "en" ? (originalTitle ? "Original title: " + originalTitle : "") : s.titleEs,
           titleOrig: s.titleOrig,
-          authors: (L === "en" ? s.authors_en : L === "pt" ? s.authors_pt : s.authors) || s.authors,
-          year: s.year, authorLine: ((L === "en" ? s.authors_en : L === "pt" ? s.authors_pt : s.authors) || s.authors) + (s.year ? " · " + s.year : ""),
+          authors: (L === "en" ? s.authors_en : s.authors) || s.authors,
+          year: s.year, authorLine: ((L === "en" ? s.authors_en : s.authors) || s.authors) + (s.year ? " · " + s.year : ""),
           topic: TOPIC_LABELS[L][s.topic] || s.topic,
           design: T.designs[s.designKey] || s.design,
           nLabel: nSample,
@@ -403,7 +403,7 @@ class Component extends DCLogic {
           confLabel: T.confs[s.conf], confColor: c[0], confBg: c[1],
           paragraphs: bodyText.map((p, i) => ({ key: "p" + i, text: p })),
           means: L === "en" ? (s.means_en || s.means || "") : s.means, notProven: pick(s, "notProven", "notProven_en"),
-          reference: ((L === "en" ? s.authors_en : L === "pt" ? s.authors_pt : s.authors) || s.authors) + (s.year ? " (" + s.year + ")" : "") + ". " + s.titleOrig + ". " + (L === "es" ? s.design : (T.designs[s.designKey] || s.design)) + (nSample ? ", " + nSample : "") + ". " + (s.doi || "")
+          reference: ((L === "en" ? s.authors_en : s.authors) || s.authors) + (s.year ? " (" + s.year + ")" : "") + ". " + s.titleOrig + ". " + (L === "es" ? s.design : (T.designs[s.designKey] || s.design)) + (nSample ? ", " + nSample : "") + ". " + (s.doi || "")
         };
       }),
 
