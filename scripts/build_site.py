@@ -22,8 +22,16 @@ def _copy_repo_to_staging(stage: Path) -> None:
     shutil.copytree(ROOT,stage,ignore=ignore)
 
 
+def _git_state(root: Path) -> bytes:
+    """Estado exacto del árbol real para demostrar que el build no lo altera."""
+    return subprocess.check_output(
+        ['git','status','--porcelain=v1','--untracked-files=all'],cwd=root
+    )
+
+
 def _build_in_staging():
     """Ejecuta este mismo build sobre una copia temporal y devuelve solo dist."""
+    before=_git_state(ROOT)
     with tempfile.TemporaryDirectory(prefix='irisgreen-build-') as tmp:
         stage=Path(tmp)/'repo'
         _copy_repo_to_staging(stage)
@@ -35,7 +43,10 @@ def _build_in_staging():
         if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
         if dst.exists():shutil.rmtree(dst)
         shutil.copytree(staged_dist,dst)
-        return dst
+    after=_git_state(ROOT)
+    if after!=before:
+        raise AssertionError('El build ha modificado la fuente real:\n'+after.decode('utf-8',errors='replace'))
+    return ROOT/'dist'
 
 
 def build():
