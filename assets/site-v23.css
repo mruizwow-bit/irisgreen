@@ -575,3 +575,11 @@ main:has(>article.ficha) .muted{font-size:1rem;line-height:1.65}
   main:has(>article.ficha) .sec h2{font-size:1.32rem}
   main:has(>article.ficha) .notice{font-size:1rem}
 }
+
+/* V40 · escala mínima de lectura y navegación · 12-09-2026 */
+/* Las fichas finales ya están a 18px/17px mediante V24. Aquí solo se
+   corrigen secundarios y controles que habían vuelto a quedar pequeños. */
+.hd :is(.nav a,.ico,.lang){font-size:1rem!important}
+.situation-filter{font-size:1rem!important}
+main:has(>article.ficha) .crumb{font-size:1rem}
+[style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}

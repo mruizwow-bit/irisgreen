@@ -111,3 +111,22 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
  html[data-ig-text-enlarged] .qchoice{grid-template-columns:minmax(44px,72px) minmax(0,1fr)}
  html[data-ig-text-enlarged] .qchoice img{width:72px}
 }
+
+/* STEP2_READABLE_TYPE · páginas de componente */
+[style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}
+.ig-uh-nav a,.ig-uh-langs button,.ig-subtabs a{font-size:16px!important}
+@media(min-width:651px){.ig-uh-reading{font-size:16px!important}}
+/* Texto principal inline de las páginas nuevas: 17px pasa a la escala
+   de lectura aprobada. Las etiquetas breves nunca bajan de 14px. */
+main [style*="font-size: 17px"],main [style*="font-size:17px"]{font-size:18px!important}
+main [style*="font-size: 17.5px"],main [style*="font-size:17.5px"]{font-size:18px!important}
+main [style*="font-size: 15px"],main [style*="font-size:15px"],
+main [style*="font-size: 15.5px"],main [style*="font-size:15.5px"],
+main [style*="font-size: 14px"],main [style*="font-size:14px"],
+main [style*="font-size: 14.5px"],main [style*="font-size:14.5px"]{font-size:16px!important}
+main [style*="font-size: 11px"],main [style*="font-size:11px"],
+main [style*="font-size: 11.5px"],main [style*="font-size:11.5px"],
+main [style*="font-size: 12px"],main [style*="font-size:12px"],
+main [style*="font-size: 12.5px"],main [style*="font-size:12.5px"],
+main [style*="font-size: 13px"],main [style*="font-size:13px"],
+main [style*="font-size: 13.5px"],main [style*="font-size:13.5px"]{font-size:14px!important}
