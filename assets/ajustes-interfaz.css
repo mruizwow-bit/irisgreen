@@ -111,3 +111,18 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
  html[data-ig-text-enlarged] .qchoice{grid-template-columns:minmax(44px,72px) minmax(0,1fr)}
  html[data-ig-text-enlarged] .qchoice img{width:72px}
 }
+
+/* WCAG 1.4.12: keep narrow layouts flexible when text spacing is increased. */
+@media(max-width:420px){
+ #reading-open.reading-button{min-width:0!important;max-width:100%!important;width:auto!important;flex:1 1 auto!important;white-space:normal!important}
+ header .language{min-width:0!important;max-width:100%!important;flex-wrap:wrap!important}
+ header .language>*{min-width:0!important;max-width:100%!important}
+ .hd>*{min-width:0;max-width:100%}
+ .hd .tools,.hd .langs{min-width:0;max-width:100%;flex-wrap:wrap}
+ .conditions-collection .cards{grid-template-columns:minmax(0,1fr)!important;min-width:0}
+ .conditions-collection .card{min-width:0!important;max-width:100%;overflow-wrap:anywhere}
+ .qgrid{grid-template-columns:minmax(0,1fr)!important;min-width:0}
+ .qcard{min-width:0!important;max-width:100%;overflow-wrap:anywhere}
+ .qcard :where(.watch-list,.audio-list,.audio-now,.stage,.qbuttons,.agrupo,.qchoice){min-width:0;max-width:100%}
+ .qcard audio{min-width:0;max-width:100%;width:100%}
+}
