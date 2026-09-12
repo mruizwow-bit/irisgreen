@@ -45,15 +45,6 @@ jobs:
           print('Fuentes limpiadas:',len(changed))
           for p in changed: print('-',p)
           PY
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('.github/workflows/reparacion-web.yml')
-          s=p.read_text(encoding='utf-8')
-          old="git add -- index.html es en pt-br assets buscador.json scripts"
-          new="git add -- index.html es en assets buscador.json scripts"
-          assert old in s, 'No se encontró el git add con pt-br esperado'
-          p.write_text(s.replace(old,new,1),encoding='utf-8')
-          PY
           after="$(sha256sum _redirects | cut -d' ' -f1)"
           test "$before" = "$after"
           test ! -d pt-br
@@ -64,7 +55,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- es assets .github/workflows/reparacion-web.yml
+          git add -- es assets
           git diff --cached --stat
           git diff --cached --quiet || git commit -m 'Paso 1: retirar PT-BR de las fuentes españolas'
           git push origin HEAD:integracion/20260912-sale-portugues
