@@ -5,7 +5,8 @@ Comprueba, página a página y solo con la biblioteca estándar:
   · que hay un <main> y un único <h1> visible con texto;
   · que cada campo de formulario visible tiene nombre accesible;
   · que cada botón y cada enlace visibles tienen texto o nombre accesible;
-  · que cada imagen visible declara alt.
+  · que cada imagen visible declara alt;
+  · que no hay ids duplicados en la vista visible.
 
 La auditoría estructural representa la vista con JavaScript: no suma contenido de
 <noscript>, <template>, diálogos cerrados ni subárboles hidden/aria-hidden=true.
@@ -37,6 +38,7 @@ class Audit(HTMLParser):
         self.fields: list[dict] = []
         self.controls: list[tuple[str, dict, str]] = []
         self.images: list[dict] = []
+        self.ids: dict[str, int] = {}
         self.open_control: list[tuple[str, dict, list[str]]] = []
         self.feed(text)
 
@@ -56,6 +58,8 @@ class Audit(HTMLParser):
         ignored = inherited or hidden_here
 
         if not ignored:
+            if a.get("id"):
+                self.ids[a["id"]] = self.ids.get(a["id"], 0) + 1
             if tag == "main" or a.get("role") == "main":
                 self.has_main = True
             if tag == "label" and a.get("for"):
@@ -112,6 +116,9 @@ def check(rel: str, text: str) -> list[str]:
         problems.append("el <h1> está vacío")
     elif len(doc.h1_text) > 1:
         problems.append(f"hay {len(doc.h1_text)} <h1>")
+    for ident, count in sorted(doc.ids.items()):
+        if count > 1:
+            problems.append(f"id duplicado: {ident} ({count})")
     for field in doc.fields:
         if named(field) or field.get("id", "") in doc.labels_for or field.get("_inside_label"):
             continue
@@ -152,7 +159,7 @@ def main() -> None:
         "html_revisados": scanned,
         "paginas_con_fallos": len(findings),
         "fallos": total,
-        "limites": "Comprobación mecánica de estructura y nombres accesibles en la vista con JavaScript. No mide contraste, foco, teclado ni lectores de pantalla; la vista sin JavaScript se audita por separado.",
+        "limites": "Comprobación mecánica de estructura, ids y nombres accesibles en la vista con JavaScript. No mide contraste, foco, teclado ni lectores de pantalla; la vista sin JavaScript se audita por separado.",
         "detalle": findings,
     }
     (out / "accesibilidad.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
