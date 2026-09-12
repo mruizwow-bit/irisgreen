@@ -1,0 +1,108 @@
+name: Verificar producción recuperada
+on:
+  push:
+    branches: ['recuperacion-estable-20260908']
+    paths: ['.github/workflows/verificar-produccion-recuperada.yml']
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-prod
+          /tmp/ig-prod/bin/pip -q install playwright==1.55.0
+          /tmp/ig-prod/bin/python -m playwright install --with-deps chromium >/tmp/ig-prod-playwright.log 2>&1
+      - name: Verificar irisgreen.eu
+        id: smoke
+        continue-on-error: true
+        run: |
+          /tmp/ig-prod/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json,re
+          base='https://irisgreen.eu'
+          report={'pages':{},'stale_language':{},'music':{},'failures':[]}
+          def pt_visible(page):
+              return page.locator('a:visible,button:visible,span:visible').filter(has_text=re.compile(r'^PT(?:-BR)?$',re.I)).count()
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              ctx=browser.new_context(viewport={'width':1280,'height':900})
+              page=ctx.new_page()
+              errors=[]
+              page.on('pageerror',lambda e: errors.append(str(e)))
+              for route,expected in [('/', 'es'),('/es/investigacion/','es'),('/es/neurodiversidad/condiciones/','es'),('/en/neurodiversity/conditions/','en')]:
+                  page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                  page.wait_for_timeout(1200)
+                  lang=(page.locator('html').get_attribute('lang') or '').lower()
+                  pt=pt_visible(page)
+                  report['pages'][route]={'lang':lang,'pt_visible':pt,'title':page.title()}
+                  if not lang.startswith(expected): report['failures'].append(f'{route}: lang={lang}, esperado {expected}')
+                  if pt: report['failures'].append(f'{route}: PT visible ({pt})')
+
+              page.goto(base+'/',wait_until='domcontentloaded',timeout=30000)
+              page.evaluate("localStorage.setItem('ig_lang','en')")
+              page.goto(base+'/es/investigacion/',wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(1200)
+              stale_lang=(page.locator('html').get_attribute('lang') or '').lower()
+              header=' '.join(page.locator('header').all_inner_texts())[:500]
+              report['stale_language']={'lang':stale_lang,'header_text':header}
+              if not stale_lang.startswith('es'): report['failures'].append('ig_lang=en antiguo cambia una ruta /es/ a otro idioma')
+
+              for route in ['/', '/es/neurodiversidad/condiciones/']:
+                  requests=[]
+                  def seen(req):
+                      if '/audio/' in req.url: requests.append(req.url)
+                  page.on('request',seen)
+                  page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+                  page.wait_for_timeout(1200)
+                  trigger=page.locator('.ig-uh-music,#plBtn,[data-ig-music]').first
+                  opened=player=mp3=False
+                  if trigger.count():
+                      trigger.click(); page.wait_for_timeout(300)
+                      panel=page.locator('#ig-music-panel')
+                      opened=panel.count()>0 and panel.is_visible()
+                      player=opened and panel.locator('.ig-m-play').count()>0
+                      if player:
+                          details=panel.locator('details')
+                          if details.count():
+                              details.locator('summary').click()
+                              b=panel.get_by_role('button',name=re.compile(r'^Atmósfera'))
+                              if b.count():
+                                  b.click(); page.wait_for_timeout(900)
+                                  mp3=any('atmosfera.mp3' in u for u in requests)
+                  report['music'][route]={'trigger':trigger.count()>0,'opened':opened,'player':player,'atmosfera_requested':mp3}
+                  if not opened: report['failures'].append(f'{route}: Música no abre en producción')
+                  elif not player: report['failures'].append(f'{route}: faltan controles de Música en producción')
+                  elif not mp3: report['failures'].append(f'{route}: no se solicita atmosfera.mp3 en producción')
+              report['javascript_errors']=errors
+              browser.close()
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          with open('/tmp/produccion-recuperada.json','w',encoding='utf-8') as f:
+              json.dump(report,f,ensure_ascii=False,indent=2)
+          if report['failures']:
+              raise SystemExit('\n'.join(report['failures']))
+          PY
+      - name: Guardar diagnóstico
+        if: always()
+        run: |
+          mkdir -p reports
+          cp /tmp/produccion-recuperada.json reports/produccion-recuperada.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/produccion-recuperada.json
+          git diff --cached --quiet || git commit -m 'Guardar diagnóstico de producción recuperada'
+          git push origin HEAD:recuperacion-estable-20260908
+      - name: Exigir producción correcta
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open('/tmp/produccion-recuperada.json',encoding='utf-8'))
+          if r.get('failures'):
+              raise SystemExit('\n'.join(r['failures']))
+          PY

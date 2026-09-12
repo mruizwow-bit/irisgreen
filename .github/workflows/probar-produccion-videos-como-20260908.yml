@@ -1,0 +1,45 @@
+name: Probar producción Videos y Como pedirlo
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/probar-produccion-videos-como-20260908.yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar irisgreen.eu
+        shell: bash
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          const base = 'https://irisgreen.eu';
+          (async()=>{
+            const browser = await chromium.launch({ headless:true });
+            const page = await browser.newPage({ viewport:{ width:1536, height:900 } });
+            const errors=[]; page.on('pageerror', e => errors.push(String(e)));
+            await page.goto(base + '/es/videos/', { waitUntil:'networkidle' });
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click(); await page.waitForTimeout(1000);
+            let txt = await page.locator('main').innerText();
+            for (const s of ['Here, the people who live it speak.','Cris Edwards · her story with misophonia','Peter Cherry · living with dyscalculia','Dan has a paid mentoring service']) if (!txt.includes(s)) throw new Error('Videos EN no contiene: '+s);
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click(); await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Aquí habla quien lo vive.')) throw new Error('Videos ES se rompió');
+            await page.goto(base + '/es/tramites/', { waitUntil:'networkidle' });
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click(); await page.waitForTimeout(1000);
+            txt = await page.locator('main').innerText();
+            for (const s of ['What can I ask for, and what is it called?','Prepared by the school guidance team','More time, an exam in another format','Letter ready to send']) if (!txt.includes(s)) throw new Error('Como pedirlo EN no contiene: '+s);
+            await page.locator('select').nth(0).selectOption('diagnostico'); await page.waitForTimeout(400);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Ask for it in writing if it is refused.')) throw new Error('Diagnostico EN no traduce datos');
+            await page.locator('[aria-label="Música"], [title="Música"]').first().click(); await page.waitForTimeout(500);
+            if (!await page.locator('#ig-music-panel, [data-ig-music-panel]').count()) throw new Error('Música no abre');
+            await page.locator('[data-ig-reading-trigger], [aria-label="Lectura"]').first().click(); await page.waitForTimeout(500);
+            if (!await page.locator('[data-ig-reading-panel], #a11y').count()) throw new Error('Lectura no abre');
+            if (errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close();
+            console.log('produccion-videos-como-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE

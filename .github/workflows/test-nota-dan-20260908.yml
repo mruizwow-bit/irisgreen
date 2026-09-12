@@ -1,0 +1,13 @@
+name: Probar nota Dan preview
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/test-nota-dan-20260908.yml
+permissions:
+  contents: read
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ready

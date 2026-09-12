@@ -1,0 +1,67 @@
+name: Probar preview 15 Videos y Como pedirlo
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/probar-preview-15-videos-como-20260908.yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar Deploy Preview 15
+        shell: bash
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          const base = 'https://deploy-preview-15--irisgreen-home.netlify.app';
+          (async()=>{
+            const browser = await chromium.launch({ headless:true });
+            const page = await browser.newPage({ viewport:{ width:1536, height:900 } });
+            const errors=[]; page.on('pageerror', e => errors.push(String(e)));
+
+            await page.goto(base + '/es/videos/', { waitUntil:'networkidle' });
+            let langs = await page.locator('.ig-uh-langs button').evaluateAll(bs => bs.map(b => b.textContent.trim()).join(' '));
+            if (langs !== 'ES EN') throw new Error('Videos selector incorrecto: '+langs);
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click();
+            await page.waitForTimeout(1000);
+            let txt = await page.locator('main').innerText();
+            for (const s of ['Here, the people who live it speak.','Cris Edwards · her story with misophonia','Peter Cherry · living with dyscalculia','Dan has a paid mentoring service']) if (!txt.includes(s)) throw new Error('Videos EN no contiene: '+s);
+            for (const s of ['su historia con la misofonía','vivir con discalculia','diagnóstico en la vida adulta','pensamiento mágico','Es la experiencia de una persona']) if (txt.includes(s)) throw new Error('Videos EN conserva español: '+s);
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click();
+            await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText();
+            if (!txt.includes('Aquí habla quien lo vive.')) throw new Error('Videos ES se rompió');
+
+            await page.goto(base + '/es/tramites/', { waitUntil:'networkidle' });
+            langs = await page.locator('.ig-uh-langs button').evaluateAll(bs => bs.map(b => b.textContent.trim()).join(' '));
+            if (langs !== 'ES EN') throw new Error('Como pedirlo selector incorrecto: '+langs);
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click();
+            await page.waitForTimeout(1000);
+            txt = await page.locator('main').innerText();
+            for (const s of ['What can I ask for, and what is it called?','Prepared by the school guidance team','More time, an exam in another format','Letter ready to send']) if (!txt.includes(s)) throw new Error('Como pedirlo EN no contiene: '+s);
+            for (const s of ['Lo hace el equipo de orientación','Más tiempo, examen en otro formato','Pide constancia por escrito','La espera suele ser larga']) if (txt.includes(s)) throw new Error('Como pedirlo EN conserva español: '+s);
+            await page.locator('select').nth(0).selectOption('diagnostico'); await page.waitForTimeout(400);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Ask for it in writing if it is refused.')) throw new Error('Diagnostico EN no traduce datos');
+            await page.locator('select').nth(0).selectOption('trabajo'); await page.locator('select').nth(1).selectOption('cl'); await page.waitForTimeout(400);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Requires 1% of posts to be reserved')) throw new Error('Chile/trabajo EN no traduce datos');
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click(); await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText(); if (!txt.includes('¿Qué puedo pedir y cómo se llama?')) throw new Error('Como pedirlo ES se rompió');
+
+            await page.goto(base + '/', { waitUntil:'networkidle' });
+            await page.locator('[aria-label="Música"], [title="Música"]').first().click();
+            await page.waitForTimeout(500);
+            const music = await page.locator('#ig-music-panel, [data-ig-music-panel]').count();
+            if (!music) throw new Error('Música no abre');
+            await page.locator('[data-ig-reading-trigger], [aria-label="Lectura"]').first().click();
+            await page.waitForTimeout(500);
+            const reading = await page.locator('[data-ig-reading-panel], #a11y').count();
+            if (!reading) throw new Error('Lectura no abre');
+            if (errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close();
+            console.log('preview-15-videos-como-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE

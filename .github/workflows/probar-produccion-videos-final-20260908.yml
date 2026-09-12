@@ -1,0 +1,53 @@
+name: Probar producción Vídeos final
+
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/probar-produccion-videos-final-20260908.yml
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar irisgreen.eu vídeos
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            const page = await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[];
+            page.on('pageerror', e=>errors.push(String(e)));
+            page.on('console', msg=>{ if(msg.type()==='error') errors.push(msg.text()); });
+            await page.goto('https://irisgreen.eu/es/videos/?check='+Date.now(), {waitUntil:'domcontentloaded'});
+            await page.waitForTimeout(3000);
+            const bodyES = await page.locator('body').innerText();
+            if(bodyES.includes('Root: Identifier')) throw new Error('Root error visible');
+            if(errors.some(e=>/Identifier 'thumbURL' has already been declared|Root: Identifier/.test(e))) throw new Error('thumbURL error: '+errors.join(' | '));
+            if(!bodyES.includes('Dan Wilkins') && !bodyES.includes('Ro Vitale')) throw new Error('No aparecen tarjetas en ES');
+            if(!bodyES.includes('Cómo leer este vídeo')) throw new Error('No aparece Cómo leer este vídeo en ES');
+            if(!bodyES.includes('Lectura')) throw new Error('En ES no aparece Lectura');
+            const enBtn = page.getByRole('button', {name:/^EN$/}).first();
+            if(!(await enBtn.count())) throw new Error('No hay botón EN');
+            await enBtn.click();
+            await page.waitForTimeout(1000);
+            const bodyEN = await page.locator('body').innerText();
+            if(!bodyEN.includes('How to read this video')) throw new Error('No aparece How to read this video en EN');
+            if(!bodyEN.includes('Reading')) throw new Error('No aparece Reading en EN');
+            if(bodyEN.includes('Cómo leer este vídeo')) throw new Error('Sigue visible Cómo leer este vídeo en EN');
+            if(bodyEN.includes('Lectura')) throw new Error('Sigue visible Lectura en EN');
+            await browser.close();
+            console.log('produccion-videos-final-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE

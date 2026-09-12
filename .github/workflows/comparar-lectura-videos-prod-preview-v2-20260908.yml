@@ -1,0 +1,55 @@
+name: Comparar lectura videos prod preview v2
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/comparar-lectura-videos-prod-preview-v2-20260908.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comparar boton lectura
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            async function test(base){
+              const page=await browser.newPage({viewport:{width:1536,height:900}});
+              await page.goto(base+'/es/videos/',{waitUntil:'networkidle'});
+              const buttons=[];
+              const loc=page.locator('#a11yBtn, .ig-uh-reading');
+              const count=await loc.count();
+              for(let i=0;i<count;i++){
+                const el=loc.nth(i);
+                buttons.push({i, visible: await el.isVisible(), text: (await el.innerText().catch(()=>'')), tag: await el.evaluate(e=>e.outerHTML.slice(0,180)).catch(()=> '')});
+              }
+              let clicked=false;
+              for(let i=0;i<count;i++){
+                const el=loc.nth(i);
+                if(await el.isVisible()){
+                  await el.click().catch(e=>console.log(base,'click failed',e.message));
+                  clicked=true; break;
+                }
+              }
+              await page.waitForTimeout(600);
+              const text=await page.locator('body').innerText();
+              const ok=!!((await page.locator('#ig-reading-panel').count()) || (await page.locator('#a11y:not([hidden])').count()) || text.includes('Tamaño del texto') || text.includes('Text size') || text.includes('A−'));
+              await page.close();
+              return {base, clicked, ok, buttons};
+            }
+            const res=[];
+            res.push(await test('https://irisgreen.eu'));
+            res.push(await test('https://deploy-preview-17--irisgreen-home.netlify.app'));
+            console.log(JSON.stringify(res,null,2));
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1);});
+          NODE

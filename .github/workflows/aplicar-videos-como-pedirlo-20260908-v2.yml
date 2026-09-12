@@ -1,0 +1,193 @@
+name: Aplicar EN Videos y Como pedirlo v2
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/aplicar-videos-como-pedirlo-20260908-v2.yml
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout rama de trabajo
+        uses: actions/checkout@v4
+        with:
+          ref: feat/en-videos-como-pedirlo-20260908
+          fetch-depth: 0
+      - name: Aplicar traducciones EN sin tocar ES
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import json
+
+          def replace_once(text, old, new, label):
+              if old not in text:
+                  raise SystemExit(f'No encuentro bloque: {label}')
+              return text.replace(old, new, 1)
+
+          def fix_available_en_routes(s):
+              repl = {
+                'href="/es/neurodiversidad/condiciones/">Conditions': 'href="/en/neurodiversity/conditions/">Conditions',
+                'href="/es/situaciones/">Situations': 'href="/en/situations/">Situations',
+                'href="/es/biblioteca/">Everyday life': 'href="/en/everyday-life/">Everyday life',
+                'href="/es/datos/">Data': 'href="/en/data/">Data',
+                'href="/es/datos/">Figures': 'href="/en/data/">Figures',
+                'href="/es/intereses/">Your interests': 'href="/en/interests/">Your interests',
+                'href="/es/sitio-tranquilo/">Quiet place': 'href="/en/quiet-space/">Quiet place',
+                'href="/es/sitio-tranquilo/">Quiet space': 'href="/en/quiet-space/">Quiet space',
+                '["/es/neurodiversidad/condiciones/","Conditions"]': '["/en/neurodiversity/conditions/","Conditions"]',
+                '["/es/situaciones/","Situations"]': '["/en/situations/","Situations"]',
+                '["/es/biblioteca/","Everyday life"]': '["/en/everyday-life/","Everyday life"]',
+                '["/es/datos/","Figures"]': '["/en/data/","Figures"]',
+                '["/es/datos/","Data"]': '["/en/data/","Data"]'
+              }
+              for a,b in repl.items():
+                  s = s.replace(a,b)
+              return s
+
+          video_path = Path('es/videos/index.html')
+          s = video_path.read_text(encoding='utf-8')
+          video_en = {
+            "Dan Wilkins · Managing on the Spectrum": {"name":"Dan Wilkins · Managing on the Spectrum","nota":"Dan has a paid mentoring service. We say that here so you know before watching the video: what he shares is his own experience, and he also earns a living supporting other people with late diagnoses."},
+            "Cris Edwards · su historia con la misofonía": {"name":"Cris Edwards · her story with misophonia","nota":"She shares her own experience with misophonia and how it affects her day to day. She mentions suicidal ideation: if you are in a difficult moment, in Spain you can call 024. Published by Misophonia Research Fund."},
+            "Bob Williams · See Us. Hear Us.": {"name":"Bob Williams · See Us. Hear Us.","nota":"He has communicated with AAC for more than six decades. He talks about his own life, not about how a system is introduced: the decision about which system each person needs is made with professionals. It has Spanish subtitles."},
+            "Peter Cherry · vivir con discalculia": {"name":"Peter Cherry · living with dyscalculia","nota":"He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He is a volunteer with Dyscalculia Network, not a clinical professional."},
+            "Jules Robertson · The Kennel Grandslam": {"name":"Jules Robertson · The Kennel Grandslam","nota":"A short film commissioned by Ambitious about Autism in which Jules, an autistic actor, recounts real episodes of bullying that he experienced himself."},
+            "Ioan Berry · Me and DLD": {"name":"Ioan Berry · Me and DLD","nota":"Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him and which did not. DLD is long-term: the video does not promise a cure."},
+            "Gabriela Venâncio · diagnóstico en la vida adulta": {"name":"Gabriela Venâncio · diagnosis in adulthood","nota":"A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, not how ADHD is diagnosed: the clinical route is in the ADHD page."},
+            "Alice Moyle · pensamiento mágico": {"name":"Alice Moyle · magical thinking","nota":"She clarifies that she supports others from lived experience, not through therapy or coaching, and that she has lived with OCD since she was sixteen. OCD treatment is indicated by a professional."},
+            "Ro Vitale · La Cruda": {"name":"Ro Vitale · La Cruda"},
+            "Jordi Rodríguez · Roca Project": {"name":"Jordi Rodríguez · Roca Project"},
+            "Cate Moretti · Roca Project": {"name":"Cate Moretti · Roca Project"},
+            "Josep Thió": {"name":"Josep Thió"},
+            "Abraham Ros · Más allá del rosa": {"name":"Abraham Ros · Más allá del rosa"},
+            "Elisa Farías": {"name":"Elisa Farías"},
+            "Yessenia y Javier · Autismo Guía": {"name":"Yessenia and Javier · Autismo Guía"},
+            "Renzo Schuller": {"name":"Renzo Schuller"},
+            "Norma Echavarría · Inesperado Podcast": {"name":"Norma Echavarría · Inesperado Podcast"},
+            "Jaume Aymar / Mind Sylenth": {"name":"Jaume Aymar / Mind Sylenth"},
+            "Fernando · historia de TOC": {"name":"Fernando · OCD story"},
+            "Lele Pons": {"name":"Lele Pons"},
+            "Tini Stoessel": {"name":"Tini Stoessel"},
+            "María Becerra": {"name":"María Becerra"},
+            "Leiva": {"name":"Leiva"},
+            "Beret": {"name":"Beret"},
+            "Jely Reátegui": {"name":"Jely Reátegui"},
+            "Felipe Silva Eltit · Inesperado Podcast": {"name":"Felipe Silva Eltit · Inesperado Podcast"},
+            "Bianca Sáez": {"name":"Bianca Sáez"},
+            "Wado de Pedro": {"name":"Wado de Pedro"},
+            "Kenya Cuevas · Se Regalan Dudas": {"name":"Kenya Cuevas · Se Regalan Dudas"},
+            "Alex Orué · Se Regalan Dudas": {"name":"Alex Orué · Se Regalan Dudas"},
+            "Aike Martín · Les Mariquites": {"name":"Aike Martín · Les Mariquites"},
+            "Jesica y Ambar · CAMBIO": {"name":"Jesica and Ambar · CAMBIO"},
+            "Izan Baptista": {"name":"Izan Baptista"},
+            "Bea Is · Perú Intersex": {"name":"Bea Is · Perú Intersex"},
+            "Luta Cruz": {"name":"Luta Cruz"},
+            "Rosario Ortega": {"name":"Rosario Ortega"},
+            "Paula Gonu": {"name":"Paula Gonu"},
+            "Ellie Middleton · diagnóstico AuDHD": {"name":"Ellie Middleton · AuDHD diagnosis"},
+            "Lizi Jackson-Barrett": {"name":"Lizi Jackson-Barrett"},
+            "Orlando Bloom · Made By Dyslexia": {"name":"Orlando Bloom · Made By Dyslexia"},
+            "Joyce Luz · Drauzio Varella": {"name":"Joyce Luz · Drauzio Varella"},
+            "Amanda Ramalho · The Noite": {"name":"Amanda Ramalho · The Noite"},
+            "Bella Ramsey · autismo e identidad": {"name":"Bella Ramsey · autism and identity"},
+            "Jessica Kellgren-Fozard · TDAH y vida queer": {"name":"Jessica Kellgren-Fozard · ADHD and queer life"},
+            "Fern Brady · autismo y bisexualidad": {"name":"Fern Brady · autism and bisexuality"},
+            "Hannah Gadsby · autismo y experiencia queer": {"name":"Hannah Gadsby · autism and queer experience"},
+            "Chloé Hayden · autismo, TDAH y representación": {"name":"Chloé Hayden · autism, ADHD and representation"},
+            "Yasmin Finney · representación trans": {"name":"Yasmin Finney · trans representation"}
+          }
+          if 'const VIDEO_EN =' not in s:
+              insert = 'const VIDEO_EN = ' + json.dumps(video_en, ensure_ascii=False, separators=(',', ':')) + ';\nVIDEOS.forEach((video)=>{const tr=VIDEO_EN[video.name];if(tr){if(tr.name)video.name_en=tr.name;if(tr.nota)video.nota_en=tr.nota;}});\n\n'
+              marker = '].map((v, n) => Object.assign({ id: "v" + n }, v));\n\nconst TEMA_KEYS = Array.from(new Set(VIDEOS.map((v) => v.tema)));'
+              s = replace_once(s, marker, '].map((v, n) => Object.assign({ id: "v" + n }, v));\n\n' + insert + 'const TEMA_KEYS = Array.from(new Set(VIDEOS.map((v) => v.tema)));', 'VIDEO_EN')
+          s = fix_available_en_routes(s)
+          s = replace_once(s, '    const T = STR[L];\n    const words = this.norm(st.q).trim().split(/\\s+/).filter(Boolean);', '    const T = STR[L];\n    const videoName = (v) => L === "en" && v.name_en ? v.name_en : v.name;\n    const videoNota = (v) => L === "en" && v.nota_en ? v.nota_en : v.nota;\n    const words = this.norm(st.q).trim().split(/\\s+/).filter(Boolean);', 'video helpers')
+          s = replace_once(s, '      const hay = this.norm(v.name + " " + v.tema);', '      const hay = this.norm(videoName(v) + " " + v.name + " " + (T.temas[v.tema] || v.tema) + " " + v.tema);', 'video search')
+          s = replace_once(s, '        name: v.name, href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + v.name,', '        name: videoName(v), href: v.href, src: v.embed, thumb: thumbURL(v), hasThumb: !!thumbURL(v), noThumb: !thumbURL(v), unavailableThumb: v.source === "YouTube" && !thumbURL(v), onThumbError: () => { this._igThumbFailures = Object.assign({}, this._igThumbFailures, { [v.embed]: true }); this.setState({ thumbnailErrors: this._igThumbFailures }); }, thumbMessage: L === "en" ? "Thumbnail unavailable" : "Miniatura no disponible", playLabel: (L === "en" ? "Play video: " : "Reproducir vídeo: ") + videoName(v),', 'video card name')
+          s = replace_once(s, '        nota: v.nota || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,', '        nota: videoNota(v) || (NOTA_BASE[L] || NOTA_BASE.es)[v.tipo] || (NOTA_BASE[L] || NOTA_BASE.es).vivencia,', 'video nota')
+          s = replace_once(s, '        notaPropia: !!v.nota,', '        notaPropia: !!videoNota(v),', 'video notaPropia')
+          s = replace_once(s, '        notaBg: v.nota ? "rgba(23,57,92,0.05)" : "rgba(111,95,192,0.07)",', '        notaBg: videoNota(v) ? "rgba(23,57,92,0.05)" : "rgba(111,95,192,0.07)",', 'video notaBg')
+          video_path.write_text(s, encoding='utf-8')
+
+          tram_path = Path('es/tramites/index.html')
+          t = tram_path.read_text(encoding='utf-8')
+          pedir_en = {
+            "colegio":{"es":[["Informe psicopedagógico","Prepared by the school guidance team. Without it, it is hard to request almost anything else."],["Adaptaciones en clase","More time, an exam in another format, a place with less noise."],["Dictamen de escolarización","Only if specific support or a change in placement is being considered."]],"mx":[["Evaluación psicopedagógica (USAER)","Requested through the school. It gives access to the USAER support team."],["Ajustes razonables en el aula","Recognised by the Ley General de Educación."]],"ar":[["Proyecto Pedagógico Individual (PPI)","Agreed between the school, the family and the treating team."],["Maestra o maestro de apoyo a la inclusión","Usually requires a certificate from the team supporting the person."]],"cl":[["Programa de Integración Escolar (PIE)","Requires a comprehensive diagnostic assessment by the school."],["Decreto 83: adecuaciones curriculares","Allows learning objectives and assessment methods to be adjusted."]],"otro":[["Request the assessment in writing","With a date and a copy. Almost every system starts there."],["Look for your country's inclusive education law","The name changes; the right usually exists."]]},
+            "trabajo":{"es":[["Ajustes razonables","Request them from the employer. You do not have to explain your whole diagnosis."],["Certificado de discapacidad","From 33%, it opens access to bonuses and reserved posts."],["Adaptación del puesto por prevención de riesgos","A little-known route, and often faster."]],"mx":[["Ajustes razonables","Ask Human Resources for them in writing."]],"ar":[["Certificado Único de Discapacidad (CUD)","Gives access to employment quotas and coverage."]],"cl":[["Ley 21.015 de inclusión laboral","Requires 1% of posts to be reserved in companies with 100 people or more."]],"otro":[["Written request for adjustments","Explain what is difficult and what you need, not your diagnosis."]]},
+            "diagnostico":{"es":[["Derivación desde el médico de cabecera","Ask for it in writing if it is refused."],["Unidad de salud mental o neuropediatría","The wait is often long. Ask for your request number."],["Valoración privada con informe","Ask first whether it will be accepted by the school or workplace."]],"mx":[["Valoración en centro de salud","Ask for the referral sheet."]],"ar":[["Turno con equipo interdisciplinario","This is the necessary step for the CUD."]],"cl":[["Evaluación en CESFAM o COSAM","Access is through the local clinic."]],"otro":[["Start with primary care","This is the entry point in almost every system."]]},
+            "economica":{"es":[["Prestación por hijo con discapacidad","Compatible with other family supports."],["Grado de discapacidad del 33% o más","Gives access to deductions, transport and leisure benefits."],["Ayudas de tu comunidad autónoma","They vary a lot: check the one for your own community."]],"mx":[["Pensión para personas con discapacidad","Requirements depend on age and state."]],"ar":[["Asignación por hijo con discapacidad (ANSES)","Requires a current CUD."]],"cl":[["Subsidio de discapacidad mental","Requested with registration in the Registro Nacional."]],"otro":[["Look for the national disability register","It is usually the previous step before any support."]]},
+            "terapia":{"es":[["Terapia por la vía pública","Ask for child or adult clinical psychology."],["Atención temprana (0 a 6 años)","Free and prioritised. Requested through paediatrics."],["Ayudas para tratamiento privado","Some autonomous communities and mutual insurance providers reimburse part of the cost."]],"mx":[["Centros de rehabilitación","Fees adjusted to income."]],"ar":[["Cobertura por Ley 24.901","With a CUD, the health insurance provider must cover the services."]],"cl":[["Salud mental en atención primaria","Access is through the local clinic."],],"otro":[["Ask what your insurance or public system covers","And ask for any refusal in writing."]]}
+          }
+          if 'const PEDIR_EN =' not in t:
+              t = replace_once(t, '\nconst STR = {', '\nconst PEDIR_EN = ' + json.dumps(pedir_en, ensure_ascii=False, separators=(',', ':')) + ';\n\nconst STR = {', 'PEDIR_EN')
+          t = fix_available_en_routes(t)
+          t = replace_once(t, '    const rows = (PEDIR[st.need] || {})[st.country] || [];', '    const ROW_DATA = L === "en" ? PEDIR_EN : PEDIR;\n    const rows = (ROW_DATA[st.need] || {})[st.country] || [];', 'PEDIR rows')
+          tram_path.write_text(t, encoding='utf-8')
+
+          # El build aplica thumbnails y espera una línea exacta de Videos; ahora aceptará videoName(v) también.
+          p = Path('scripts/prepare_video_thumbnails.py')
+          ps = p.read_text(encoding='utf-8')
+          old = '        else:assert new in text\n'
+          new = '        else:\n            alt = new.replace("+ v.name", "+ videoName(v)")\n            assert new in text or alt in text\n'
+          if old in ps:
+              ps = ps.replace(old, new, 1)
+              p.write_text(ps, encoding='utf-8')
+          elif 'alt = new.replace("+ v.name", "+ videoName(v)")' not in ps:
+              raise SystemExit('No puedo actualizar prepare_video_thumbnails.py')
+
+          assert 'const VIDEO_EN' in video_path.read_text(encoding='utf-8')
+          assert 'const PEDIR_EN' in tram_path.read_text(encoding='utf-8')
+          PY
+      - name: Prueba local en navegador
+        shell: bash
+        run: |
+          python3 scripts/build_site.py
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          cd "$GITHUB_WORKSPACE"
+          python3 -m http.server 4173 >/tmp/irisgreen-videos-como.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({ headless:true });
+            const page = await browser.newPage({ viewport:{ width:1536, height:900 } });
+            const errors=[]; page.on('pageerror', e => errors.push(String(e)));
+            await page.goto('http://127.0.0.1:4173/es/videos/', { waitUntil:'networkidle' });
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click();
+            await page.waitForTimeout(800);
+            let txt = await page.locator('main').innerText();
+            for (const s of ['Here, the people who live it speak.','Cris Edwards · her story with misophonia','Peter Cherry · living with dyscalculia','Dan has a paid mentoring service']) if (!txt.includes(s)) throw new Error('/es/videos/ EN no contiene: '+s);
+            for (const s of ['su historia con la misofonía','vivir con discalculia','diagnóstico en la vida adulta','pensamiento mágico','Es la experiencia de una persona']) if (txt.includes(s)) throw new Error('/es/videos/ EN conserva español: '+s);
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click(); await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Aquí habla quien lo vive.')) throw new Error('/es/videos/ ES se rompió');
+            await page.goto('http://127.0.0.1:4173/es/tramites/', { waitUntil:'networkidle' });
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click(); await page.waitForTimeout(800);
+            txt = await page.locator('main').innerText();
+            for (const s of ['What can I ask for, and what is it called?','Prepared by the school guidance team','More time, an exam in another format','Letter ready to send']) if (!txt.includes(s)) throw new Error('/es/tramites/ EN no contiene: '+s);
+            for (const s of ['Lo hace el equipo de orientación','Más tiempo, examen en otro formato','Pide constancia por escrito','La espera suele ser larga']) if (txt.includes(s)) throw new Error('/es/tramites/ EN conserva español: '+s);
+            await page.locator('select').nth(0).selectOption('diagnostico'); await page.waitForTimeout(300);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Ask for it in writing if it is refused.')) throw new Error('/es/tramites/ EN diagnostico no cambia datos');
+            await page.locator('select').nth(0).selectOption('trabajo'); await page.locator('select').nth(1).selectOption('cl'); await page.waitForTimeout(300);
+            txt = await page.locator('main').innerText(); if (!txt.includes('Requires 1% of posts to be reserved')) throw new Error('/es/tramites/ EN Chile trabajo no traducido');
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click(); await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText(); if (!txt.includes('¿Qué puedo pedir y cómo se llama?')) throw new Error('/es/tramites/ ES se rompió');
+            if (errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close(); console.log('videos-como-pedirlo-local-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+      - name: Commit en rama
+        shell: bash
+        run: |
+          git config user.name "mruizwow-bit"
+          git config user.email "mruiz.wow@gmail.com"
+          git status --short
+          git add es/videos/index.html es/tramites/index.html scripts/prepare_video_thumbnails.py
+          git diff --cached --check
+          git commit -m "Completar EN en Videos y Como pedirlo"
+          git push origin HEAD:feat/en-videos-como-pedirlo-20260908

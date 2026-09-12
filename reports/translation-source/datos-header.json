@@ -1,0 +1,54 @@
+{
+  "cover": {
+    "title": "Neurodiversidad y discapacidad en cifras",
+    "lede": [
+      "No existe una única cifra oficial de «personas neurodivergentes en el mundo». Los grandes organismos internacionales no utilizan neurodivergencia como una categoría estadística homogénea: miden condiciones concretas, discapacidad, funcionamiento, necesidad de apoyo, diagnóstico, identificación o participación social.",
+      "Esta sección reúne cifras que sí pueden citarse con precisión. Cada página indica qué se midió, a quién, dónde, cuándo y con qué fuente. Cuando dos datos parecen contradictorios, antes de compararlos hay que comprobar si realmente están midiendo lo mismo."
+    ],
+    "sections": [
+      {
+        "h": "Ámbitos incluidos",
+        "p": [
+          "Autismo · prevalencia mundial modelizada, diferencias de identificación, diagnóstico y comparación entre países. TDAH y aprendizaje · TDAH infantil y adulto, dislexia, coordinación, Tourette, lenguaje, discalculia y disgrafía. Salud mental · ansiedad, TOC y coexistencia con autismo. Discapacidad e infancia · salud, educación, bienestar, discriminación y acceso a apoyos. Trabajo e ingresos · empleo, participación laboral y brecha salarial. Unión Europea · empleo, educación, formación, pobreza y discriminación. Países · Estados Unidos, Reino Unido, Australia y Canadá con fuentes oficiales nacionales. Comparación metodológica · cómo leer cifras internacionales sin construir rankings falsos."
+        ]
+      },
+      {
+        "h": "Cómo leer esta sección",
+        "p": [
+          "Una cifra alta o baja no dice por sí sola que una condición sea más o menos frecuente en un país. Puede cambiar porque cambian la edad estudiada, el acceso al diagnóstico, los registros disponibles, la definición, la encuesta o el método estadístico. Por eso cada página conserva su contexto y explica qué no debe concluirse de ella."
+        ]
+      },
+      {
+        "h": "Fuentes y mantenimiento",
+        "p": [
+          "Las fuentes principales son OMS, UNICEF, OIT/ILOSTAT, Eurostat, CDC, GOV.UK, Australian Bureau of Statistics, Public Health Agency of Canada y revisiones científicas internacionales seleccionadas en la investigación base.",
+          "Última revisión editorial de este documento: 1 de septiembre de 2026.",
+          "Iris Green",
+          "---"
+        ]
+      }
+    ],
+    "reglas": [
+      "Cada bloque `PÁGINA` puede convertirse en una página independiente dentro de la pestaña Datos.",
+      "Mantener siempre juntos territorio + población + año de los datos + método + fuente.",
+      "No sumar prevalencias de condiciones neurodivergentes: existe solapamiento entre ellas.",
+      "No utilizar discapacidad como sinónimo de neurodivergencia.",
+      "No convertir datos infantiles en cifras de toda la población.",
+      "No mezclar diagnóstico registrado, identificación, encuesta, metaanálisis y prevalencia modelizada.",
+      "No redondear ni cambiar denominadores salvo que la propia ficha lo indique.",
+      "Las cifras de salud mental aparecen porque forman parte de la base de conocimiento y pueden coexistir con condiciones neurodivergentes; no se presentan como sinónimo de neurodivergencia."
+    ]
+  },
+  "territorios": [
+    "Mundo",
+    "Mundo / EE. UU.",
+    "Reino Unido",
+    "61 países",
+    "30 países",
+    "Unión Europea",
+    "Estados Unidos",
+    "Australia",
+    "Canadá",
+    "Comparativa internacional"
+  ]
+}

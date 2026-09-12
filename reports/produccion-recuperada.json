@@ -1,0 +1,47 @@
+{
+  "pages": {
+    "/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Iris Green · Base de conocimiento sobre neurodiversidad"
+    },
+    "/es/investigacion/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Investigación, con contexto · Iris Green"
+    },
+    "/es/neurodiversidad/condiciones/": {
+      "lang": "es",
+      "pt_visible": 0,
+      "title": "Condiciones"
+    },
+    "/en/neurodiversity/conditions/": {
+      "lang": "en",
+      "pt_visible": 0,
+      "title": "Conditions"
+    }
+  },
+  "stale_language": {
+    "lang": "en",
+    "header_text": "Iris Green\nHome\nConditions\nSituations\nEveryday life\nVideos\nResearch\nData\nSupport\nBooks\nPlay\nYour interests\nThe workshop\nQuiet place\nLectura\nES\nEN"
+  },
+  "music": {
+    "/": {
+      "trigger": true,
+      "opened": true,
+      "player": true,
+      "atmosfera_requested": true
+    },
+    "/es/neurodiversidad/condiciones/": {
+      "trigger": true,
+      "opened": true,
+      "player": true,
+      "atmosfera_requested": false
+    }
+  },
+  "failures": [
+    "ig_lang=en antiguo cambia una ruta /es/ a otro idioma",
+    "/es/neurodiversidad/condiciones/: no se solicita atmosfera.mp3 en producción"
+  ],
+  "javascript_errors": []
+}

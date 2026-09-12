@@ -1,0 +1,99 @@
+name: Aplicar selectores de idioma coherentes
+on:
+  push:
+    branches: ['recuperacion-estable-20260908']
+    paths: ['.github/workflows/aplicar-selectores-idioma-coherentes.yml']
+permissions:
+  contents: write
+jobs:
+  aplicar-y-probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/selectores-idioma-20260908
+          fetch-depth: 0
+      - name: Aplicar política de idiomas
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          css=Path('assets/controles-comunes.css')
+          s=css.read_text(encoding='utf-8')
+          rule='\n/* PT-BR permanece fuera de la interfaz mientras no esté activo globalmente. */\n.langs a[lang^="pt"],.langs a[hreflang^="pt"]{display:none!important}\n'
+          if rule.strip() not in s:
+              s += rule
+              css.write_text(s,encoding='utf-8')
+
+          replacements={
+            'es/neurodiversidad/temas/autismo/index.html':(
+              'langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map',
+              'langButtons: [["es", "ES"], ["en", "EN"]].map'
+            ),
+            'es/tramites/directorio/index.html':(
+              'langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map',
+              'langButtons: [["es", "ES"]].map'
+            ),
+            'es/tramites/index.html':(
+              'langButtons: [["es", "ES"], ["en", "EN"], ["pt", "PT-BR"]].map',
+              'langButtons: [["es", "ES"]].map'
+            ),
+          }
+          for name,(old,new) in replacements.items():
+              p=Path(name); text=p.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'No se encontró patrón esperado en {name}')
+              p.write_text(text.replace(old,new,1),encoding='utf-8')
+          PY
+      - name: Preparar Chromium y web local
+        run: |
+          python3 -m venv /tmp/ig-lang-ui
+          /tmp/ig-lang-ui/bin/pip -q install playwright==1.55.0
+          /tmp/ig-lang-ui/bin/python -m playwright install --with-deps chromium >/tmp/ig-lang-ui-playwright.log 2>&1
+          python3 scripts/build_site.py
+          cd dist
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/ig-lang-ui-http.log 2>&1 &
+      - name: Probar cabeceras e idiomas
+        run: |
+          /tmp/ig-lang-ui/bin/python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import re
+          base='http://127.0.0.1:8000'
+          cases=[
+            ('/es/situaciones/', {'ES','EN'}),
+            ('/es/videos/', {'ES','EN'}),
+            ('/es/biblioteca/', {'ES'}),
+            ('/es/datos/', {'ES'}),
+            ('/es/tramites/directorio/', {'ES'}),
+            ('/es/tramites/', {'ES'}),
+            ('/es/neurodiversidad/temas/autismo/', {'ES','EN'}),
+            ('/en/situations/', {'ES','EN'}),
+          ]
+          failures=[]
+          with sync_playwright() as p:
+            browser=p.chromium.launch()
+            page=browser.new_page(viewport={'width':1440,'height':900})
+            errors=[]; page.on('pageerror',lambda e: errors.append(str(e)))
+            for route,expected in cases:
+              page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
+              page.wait_for_timeout(900)
+              labels=set()
+              for node in page.locator('header .langs a:visible, header .langs span:visible, header .ig-uh-langs button:visible').all():
+                t=(node.inner_text() or '').strip().upper()
+                if t in {'ES','EN','PT-BR'}: labels.add(t)
+              if labels != expected:
+                failures.append(f'{route}: idiomas visibles {sorted(labels)}, esperado {sorted(expected)}')
+              if 'PT-BR' in labels:
+                failures.append(f'{route}: PT-BR sigue visible')
+            browser.close()
+          if errors: failures.append('Errores JS: '+' | '.join(errors[:5]))
+          if failures: raise SystemExit('\n'.join(failures))
+          PY
+      - name: Guardar solo si las pruebas pasan
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/controles-comunes.css es/neurodiversidad/temas/autismo/index.html es/tramites/directorio/index.html es/tramites/index.html
+          git diff --cached --quiet || git commit -m 'Hacer coherentes los selectores de idioma visibles'
+          git push origin HEAD:fix/selectores-idioma-20260908

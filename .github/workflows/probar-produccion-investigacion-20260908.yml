@@ -1,0 +1,66 @@
+name: Probar producción Investigación
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/probar-produccion-investigacion-20260908.yml
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar irisgreen.eu investigación
+        shell: bash
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const base = 'https://irisgreen.eu';
+            const browser = await chromium.launch({ headless:true });
+            const page = await browser.newPage({ viewport:{ width:1536, height:900 } });
+            const errors=[];
+            page.on('pageerror', e => errors.push(String(e)));
+            await page.goto(base + '/es/investigacion/?v=ig-final-20260908', { waitUntil:'networkidle' });
+            const langs = await page.locator('.ig-uh-langs button').allInnerTexts();
+            if (langs.join(' · ') !== 'ES · EN') throw new Error('Selector incorrecto: '+langs.join(' · '));
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click();
+            await page.waitForTimeout(900);
+            let txt = await page.locator('main').innerText();
+            for (const s of [
+              'RESEARCH, WITH CONTEXT',
+              'Autistic masking or camouflaging describes',
+              'This study analysed a related but different phenomenon',
+              'It does not show that all autistic people should stop masking',
+              'Original title: Unmasking: A Mixed-Methods Study'
+            ]) if (!txt.includes(s)) throw new Error('/es/investigacion/ EN no contiene: '+s);
+            for (const s of [
+              'El enmascaramiento o camuflaje autista describe',
+              'Este estudio analizó un fenómeno relacionado',
+              'No demuestra que todas las personas autistas deban dejar de enmascarar',
+              'The study texts are, for now, in Spanish'
+            ]) if (txt.includes(s)) throw new Error('/es/investigacion/ EN conserva español: '+s);
+            await page.locator('input[type="search"]').fill('misophonia');
+            await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText();
+            if (!txt.includes('Misophonia: current and future trends')) throw new Error('Busqueda EN no encuentra misophonia');
+            await page.locator('input[type="search"]').fill('');
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click();
+            await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText();
+            if (!txt.includes('El enmascaramiento o camuflaje autista describe')) throw new Error('ES se rompió');
+            await page.locator('.ig-uh-music').click();
+            await page.waitForTimeout(700);
+            if (await page.locator('#ig-music-panel').count() === 0) throw new Error('Música no abre');
+            await page.locator('[data-ig-reading-trigger]').click();
+            await page.waitForTimeout(500);
+            if (await page.locator('#ig-reading-panel').count() === 0) throw new Error('Lectura no abre');
+            if (errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close();
+            console.log('produccion-investigacion-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE

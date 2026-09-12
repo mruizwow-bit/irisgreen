@@ -1,0 +1,285 @@
+name: Ejecutar EN Metodologia Lectura v3
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/ejecutar-metodologia-lectura-en-20260908-v3.yml'
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cola
+        uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+          path: meta
+      - name: Extraer traducciones
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          src = Path('meta/.github/workflows/aplicar-metodologia-lectura-en-20260908.yml').read_text(encoding='utf-8')
+          start = "cat > /tmp/metodologia_lectura_trans.json <<'JSON_TRANSLATIONS'\n"
+          end = '\nJSON_TRANSLATIONS'
+          i = src.index(start) + len(start)
+          j = src.index(end, i)
+          data = src[i:j].lstrip('\n').rstrip('\n') + '\n'
+          records = json.loads(data)
+          assert len(records) == 83, len(records)
+          Path('/tmp/metodologia_lectura_trans.json').write_text(data, encoding='utf-8')
+          print('traducciones', len(records))
+          PY
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: site
+      - name: Montar páginas EN
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd site
+          BR="feat/metodologia-lectura-en-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, subprocess, sys
+          ROOT = Path.cwd()
+          records = json.loads(Path('/tmp/metodologia_lectura_trans.json').read_text(encoding='utf-8'))
+          by = {}
+          for r in records:
+              by.setdefault(r['bloque'], []).append(r)
+          assert len(by.get('metodologia', [])) == 42
+          assert len(by.get('lectura-accesible', [])) == 41
+          PAGES = {
+              'metodologia': {
+                  'es_path': Path('es/metodologia/index.html'),
+                  'en_path': Path('en/methodology/index.html'),
+                  'es_url': '/es/metodologia/',
+                  'en_url': '/en/methodology/',
+              },
+              'lectura-accesible': {
+                  'es_path': Path('es/lectura-accesible/index.html'),
+                  'en_path': Path('en/accessible-reading/index.html'),
+                  'es_url': '/es/lectura-accesible/',
+                  'en_url': '/en/accessible-reading/',
+              }
+          }
+          HEADER = [
+              ('<a href="/">Inicio</a>', '<a href="/">Home</a>'),
+              ('<a href="/es/neurodiversidad/condiciones/">Condiciones</a>', '<a href="/en/neurodiversity/conditions/">Conditions</a>'),
+              ('<a href="/es/situaciones/">Situaciones</a>', '<a href="/en/situations/">Situations</a>'),
+              ('<a href="/es/biblioteca/">Vida diaria</a>', '<a href="/en/everyday-life/">Everyday life</a>'),
+              ('<a href="/es/videos/">Vídeos</a>', '<a href="/es/videos/">Videos</a>'),
+              ('<a href="/es/investigacion/">Investigación</a>', '<a href="/es/investigacion/">Research</a>'),
+              ('<a href="/es/datos/">Datos</a>', '<a href="/en/data/">Data</a>'),
+              ('<a href="/es/tramites/directorio/">Ayudas</a>', '<a href="/es/tramites/directorio/">Support</a>'),
+              ('<a href="/es/libros/">Libros</a>', '<a href="/es/libros/">Books</a>'),
+              ('<a href="/es/recursos/juegos/">Jugar</a>', '<a href="/es/recursos/juegos/">Play</a>'),
+              ('<a class="calma ig-calma" href="/es/intereses/">Tus intereses</a>', '<a class="calma ig-calma" href="/en/interests/">Your interests</a>'),
+              ('<a class="calma ig-calma" href="/es/taller/">El taller</a>', '<a class="calma ig-calma" href="/es/taller/">The workshop</a>'),
+              ('<a class="calma ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a>', '<a class="calma ig-calma" href="/en/quiet-space/">Quiet space</a>'),
+          ]
+          COMMON = [
+              ('Ir al contenido', 'Skip to content'),
+              ('Abrir menú', 'Open menu'),
+              ('Menú', 'Menu'),
+              ('Explorar', 'Explore'),
+              ('Lectura accesible', 'Accessible reading'),
+              ('Tamaño del texto −', 'Text size −'),
+              ('Tamaño del texto +', 'Text size +'),
+              ('Tamaño del texto', 'Text size'),
+              ('Letra más separada', 'Wider letter spacing'),
+              ('Botones más grandes', 'Bigger buttons'),
+              ('Más contraste', 'More contrast'),
+              ('Guía de lectura', 'Reading guide'),
+              ('Leer en voz alta', 'Read aloud'),
+              ('Reducir movimiento', 'Reduce motion'),
+              ('Restablecer', 'Reset'),
+              ('Música', 'Music'),
+              ('Lectura', 'Reading'),
+              ('Sobre Iris Green', 'About Iris Green'),
+              ('Metodología', 'Methodology'),
+              ('Accesibilidad', 'Accessibility'),
+              ('Privacidad', 'Privacy'),
+          ]
+          LINK_PATHS = [
+              ('href="/es/neurodiversidad/condiciones/amnesia-disociativa/"', 'href="/en/neurodiversity/conditions/dissociative-amnesia/"'),
+              ('href="/es/neurodiversidad/condiciones/"', 'href="/en/neurodiversity/conditions/"'),
+              ('href="/es/datos/"', 'href="/en/data/"'),
+              ('href="/es/metodologia/"', 'href="/en/methodology/"'),
+              ('href="/es/lectura-accesible/"', 'href="/en/accessible-reading/"'),
+              ('href="/es/privacidad"', 'href="/en/privacy/"'),
+          ]
+          def replace_once(text, old, new, label):
+              if new in text:
+                  return text
+              if old not in text:
+                  raise SystemExit('No encuentro ' + label)
+              return text.replace(old, new, 1)
+          def set_alt_links_es(html, es_url, en_url):
+              es_abs = 'https://irisgreen.eu' + es_url
+              en_abs = 'https://irisgreen.eu' + en_url
+              old = f'<link href="{es_abs}" hreflang="es" rel="alternate"/>'
+              new = old + f'\n<link href="{en_abs}" hreflang="en" rel="alternate"/>'
+              return replace_once(html, old, new, 'alternate EN en página ES')
+          def set_lang_nav(html, es_url, en_url, active):
+              if active == 'es':
+                  nav = f'<nav aria-label="Idioma" class="langs">\n<span aria-current="true" class="lang on">ES</span>\n<a class="lang" href="{en_url}" lang="en">EN</a>\n</nav>'
+              else:
+                  nav = f'<nav aria-label="Language" class="langs">\n<a class="lang" href="{es_url}" lang="es">ES</a>\n<span aria-current="true" class="lang on">EN</span>\n</nav>'
+              if re.search(r'<nav aria-label="Idioma" class="langs">.*?</nav>', html, re.S):
+                  return re.sub(r'<nav aria-label="Idioma" class="langs">.*?</nav>', nav, html, count=1, flags=re.S)
+              if re.search(r'<nav aria-label="Language" class="langs">.*?</nav>', html, re.S):
+                  return re.sub(r'<nav aria-label="Language" class="langs">.*?</nav>', nav, html, count=1, flags=re.S)
+              return replace_once(html, '</header>', nav + '\n</header>', 'insertar selector')
+          def special_markup_replacements(html, block):
+              # Textos partidos por <strong> o <a>, que no existen como texto plano en el HTML.
+              html = html.replace('<strong>Ejemplo.</strong>', '<strong>Example.</strong>')
+              for a, b in [
+                  ('La NG69 de NICE, de 2017, cubre anorexia, bulimia, trastorno por atracón y OSFED. No cubre ARFID ni pica, así que esas dos fichas no la citan.', 'NICE guideline NG69, from 2017, covers anorexia, bulimia, binge-eating disorder and OSFED. It does not cover ARFID or pica, so those two pages do not cite it.'),
+                  ('La de amnesia disociativa dice que la evidencia de tratamiento es escasa: no se nombra documento porque no lo hay, no por descuido.', 'The dissociative amnesia page says that treatment evidence is scarce: no document is named because there is none, not because it was overlooked.'),
+                  ('Las cuatro cifras de autismo de la colección de datos no miden lo mismo, y cada una lleva su población y su método en la misma frase.', 'The four autism figures in the data collection do not measure the same thing, and each one gives its population and method in the same sentence.'),
+                  ('La CG31 está vigente y en actualización. La ficha lo dice y lleva la fecha en la que hay que volver a mirarla.', 'CG31 is current and under update. The page says so and includes the date when it needs to be checked again.'),
+                  ('Lo respalda una guía clínica o una revisión sistemática, nombrada y con año.', 'It is supported by a clinical guideline or a systematic review, named and dated.'),
+                  ('Lo respalda un documento institucional o estudios sueltos, con sus límites dichos.', 'It is supported by an institutional document or individual studies, with their limits stated.'),
+                  ('Es práctica razonable, no resultado de investigación. La ficha lo dice con esas palabras.', 'It is reasonable practice, not a research finding. The page says so in those words.'),
+              ]:
+                  html = html.replace(a, b)
+              html = html.replace('<strong>Grado A.</strong>', '<strong>Grade A.</strong>')
+              html = html.replace('<strong>Grado B.</strong>', '<strong>Grade B.</strong>')
+              html = html.replace('<strong>Grado C.</strong>', '<strong>Grade C.</strong>')
+              if block == 'metodologia':
+                  html = re.sub(r'Cada\s+ficha\s+lleva\s+la\s+fecha\s+de\s+su\s+última\s+revisión\s+y\s+un\s+enlace\s+a\s+esta\s+página\.\s+Si\s+una\s+cifra\s+o\s+un\s+documento\s+no\s+cuadra,\s+escribe\s+a\s*<a\s+href="mailto:informacion@irisgreen\.eu">informacion@irisgreen\.eu</a>:\s+llega\s+a\s+quien\s+lo\s+escribió\.', 'Each page carries the date of its last review and a link to this page. If a figure or document does not add up, write to <a href="mailto:informacion@irisgreen.eu">informacion@irisgreen.eu</a>: it reaches the person who wrote it.', html, count=1)
+              if block == 'lectura-accesible':
+                  html = re.sub(r'Escribe\s+a\s*<a\s+href="mailto:informacion@irisgreen\.eu\?subject=[^"]*">informacion@irisgreen\.eu</a>\s*indicando\s+la\s+página,\s+qué\s+intentabas\s+hacer,\s+el\s+navegador\s+o\s+dispositivo\s+y\s+los\s+ajustes\s+utilizados\.\s+No\s+necesitas\s+aportar\s+un\s+diagnóstico\.', 'Write to <a href="mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty">informacion@irisgreen.eu</a> indicating the page, what you were trying to do, the browser or device and the settings used. You do not need to provide a diagnosis.', html, count=1)
+                  html = html.replace('mailto:informacion@irisgreen.eu?subject=Dificultad%20de%20accesibilidad', 'mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty')
+              return html
+          def make_en(es_html, block, cfg):
+              es_url, en_url = cfg['es_url'], cfg['en_url']
+              es_abs, en_abs = 'https://irisgreen.eu' + es_url, 'https://irisgreen.eu' + en_url
+              html = es_html.replace('<html lang="es">', '<html lang="en">', 1)
+              html = html.replace(f'<link href="{es_abs}" rel="canonical"/>', f'<link href="{en_abs}" rel="canonical"/>')
+              html = html.replace(f'<meta content="{es_abs}" property="og:url"/>', f'<meta content="{en_abs}" property="og:url"/>')
+              html = html.replace(f'"url":"{es_abs}"', f'"url":"{en_abs}"')
+              old_alt = f'<link href="{es_abs}" hreflang="es" rel="alternate"/>\n<link href="{es_abs}" hreflang="x-default" rel="alternate"/>'
+              new_alt = f'<link href="{es_abs}" hreflang="es" rel="alternate"/>\n<link href="{en_abs}" hreflang="en" rel="alternate"/>\n<link href="{es_abs}" hreflang="x-default" rel="alternate"/>'
+              html = replace_once(html, old_alt, new_alt, 'alternates EN page')
+              html = html.replace('"inLanguage":"es"', '"inLanguage":"en"')
+              html = html.replace('"name":"Inicio"', '"name":"Home"')
+              # Primero los textos completos de la cola, de más largo a más corto.
+              for r in sorted(by[block], key=lambda x: len(x['texto']), reverse=True):
+                  if r.get('texto_en') and r['texto'] in html:
+                      html = html.replace(r['texto'], r['texto_en'])
+              html = special_markup_replacements(html, block)
+              for old, new in HEADER:
+                  html = html.replace(old, new)
+              for old, new in COMMON:
+                  html = html.replace(old, new)
+              for old, new in LINK_PATHS:
+                  html = html.replace(old, new)
+              html = set_lang_nav(html, es_url, en_url, 'en')
+              return html
+          for block, cfg in PAGES.items():
+              es_path = ROOT / cfg['es_path']
+              en_path = ROOT / cfg['en_path']
+              es_html = es_path.read_text(encoding='utf-8')
+              es_new = set_alt_links_es(es_html, cfg['es_url'], cfg['en_url'])
+              es_new = set_lang_nav(es_new, cfg['es_url'], cfg['en_url'], 'es')
+              if es_new != es_html:
+                  es_path.write_text(es_new, encoding='utf-8')
+              en_path.parent.mkdir(parents=True, exist_ok=True)
+              en_path.write_text(make_en(es_html, block, cfg), encoding='utf-8')
+          subprocess.run([sys.executable, 'scripts/build_site.py'], cwd=ROOT, check=True)
+          subprocess.run([sys.executable, 'scripts/enrich_search_english.py'], cwd=ROOT, check=True)
+          checks = [
+              ('en/methodology/index.html', ['Methodology · How the information here is checked','Iris Green is not a healthcare professional','NICE guideline NG69','Grade A.','write to <a href="mailto:informacion@irisgreen.eu">informacion@irisgreen.eu</a>','<a class="lang" href="/es/metodologia/" lang="es">ES</a>','<span aria-current="true" class="lang on">EN</span>'], ['Cómo se comprueba lo que hay aquí','Iris Green no es profesional sanitaria','Grado A.','Cada ficha lleva']),
+              ('en/accessible-reading/index.html', ['Accessible reading · What each button does','Open Reading in the header','Typography, spacing and width','Write to <a href="mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty">informacion@irisgreen.eu</a>','<a class="lang" href="/es/lectura-accesible/" lang="es">ES</a>','<span aria-current="true" class="lang on">EN</span>'], ['Qué hace cada botón','Abre Lectura en la cabecera','Escribe a <a']),
+              ('es/metodologia/index.html', ['<span aria-current="true" class="lang on">ES</span>','href="/en/methodology/"'], ['href="/pt-br/']),
+              ('es/lectura-accesible/index.html', ['<span aria-current="true" class="lang on">ES</span>','href="/en/accessible-reading/"'], ['href="/pt-br/']),
+          ]
+          for rel, yes, no in checks:
+              s = (ROOT/rel).read_text(encoding='utf-8')
+              for needle in yes:
+                  if needle not in s:
+                      raise SystemExit(f'Missing in {rel}: {needle}')
+              for needle in no:
+                  if needle in s:
+                      raise SystemExit(f'Unexpected in {rel}: {needle}')
+          print('metodologia-lectura-files-ok')
+          PY
+      - name: Prueba local en navegador
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          cd "$GITHUB_WORKSPACE/site/dist"
+          python3 -m http.server 4173 >/tmp/irisgreen-metodologia-lectura.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const base='http://127.0.0.1:4173';
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[]; page.on('pageerror',e=>errors.push(String(e)));
+            async function checkPage(path, expected, forbidden){
+              await page.goto(base+path,{waitUntil:'networkidle'});
+              const langs=await page.locator('.langs .lang').allInnerTexts();
+              if(langs.join(' · ')!=='ES · EN') throw new Error(path+' selector: '+langs.join(' · '));
+              const txt=await page.locator('main').innerText();
+              for(const s of expected) if(!txt.includes(s)) throw new Error(path+' missing '+s);
+              for(const s of forbidden) if(txt.includes(s)) throw new Error(path+' still has '+s);
+              const enBox=await page.locator('.langs .lang').filter({hasText:'EN'}).first().boundingBox();
+              if(!enBox || enBox.x<0 || enBox.x>1536) throw new Error(path+' EN not visible');
+              await page.locator('#plBtn').click(); await page.waitForTimeout(300);
+              const musicOk=await page.locator('#ig-music-panel').count() || await page.locator('#pl:not([hidden])').count();
+              if(!musicOk) throw new Error(path+' music does not open');
+              await page.keyboard.press('Escape').catch(()=>{});
+              await page.locator('#a11yBtn').click(); await page.waitForTimeout(300);
+              const readingOk=await page.locator('#ig-reading-panel').count() || await page.locator('#a11y:not([hidden])').count();
+              if(!readingOk) throw new Error(path+' reading does not open');
+              await page.keyboard.press('Escape').catch(()=>{});
+            }
+            await checkPage('/en/methodology/',['Methodology','Iris Green is not a healthcare professional','NICE guideline NG69','Who writes this','write to informacion@irisgreen.eu'],['Cómo se comprueba lo que hay aquí','Iris Green no es profesional sanitaria','Cada ficha lleva']);
+            await checkPage('/en/accessible-reading/',['Accessible reading','What each button does','Typography, spacing and width','Write to informacion@irisgreen.eu','Report a difficulty'],['Qué hace cada botón','Abre Lectura en la cabecera','Escribe a informacion@irisgreen.eu']);
+            await page.goto(base+'/es/metodologia/',{waitUntil:'networkidle'});
+            if((await page.locator('.langs .lang').allInnerTexts()).join(' · ')!=='ES · EN') throw new Error('ES metodologia selector bad');
+            await page.locator('.langs .lang').filter({hasText:'EN'}).click(); await page.waitForLoadState('networkidle');
+            if(!page.url().includes('/en/methodology/')) throw new Error('ES metodologia EN link failed: '+page.url());
+            await page.goto(base+'/es/lectura-accesible/',{waitUntil:'networkidle'});
+            if((await page.locator('.langs .lang').allInnerTexts()).join(' · ')!=='ES · EN') throw new Error('ES lectura selector bad');
+            await page.locator('.langs .lang').filter({hasText:'EN'}).click(); await page.waitForLoadState('networkidle');
+            if(!page.url().includes('/en/accessible-reading/')) throw new Error('ES lectura EN link failed: '+page.url());
+            if(errors.length) throw new Error('JS errors: '+errors.join(' | '));
+            await browser.close(); console.log('metodologia-lectura-local-browser-ok');
+          })().catch(e=>{console.error(e);process.exit(1);});
+          NODE
+      - name: Commit en rama
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd site
+          BR="feat/metodologia-lectura-en-20260908"
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          grep -qx 'es/metodologia/index.html' /tmp/changed.txt
+          grep -qx 'es/lectura-accesible/index.html' /tmp/changed.txt
+          grep -qx 'en/methodology/index.html' /tmp/changed.txt
+          grep -qx 'en/accessible-reading/index.html' /tmp/changed.txt
+          grep -qx 'buscador.json' /tmp/changed.txt
+          grep -qx 'sitemap.xml' /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 6
+          git add es/metodologia/index.html es/lectura-accesible/index.html en/methodology/index.html en/accessible-reading/index.html buscador.json sitemap.xml
+          git commit -m "Crear EN de Metodología y Lectura accesible"
+          git push origin "$BR" --force-with-lease

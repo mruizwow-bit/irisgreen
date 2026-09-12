@@ -1,0 +1,59 @@
+name: Fix tono notas videos v6
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/fix-videos-tono-notas-v6-20260908.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout meta
+        uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+          path: meta
+      - name: Extraer script v5
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          src = Path('meta/.github/workflows/fix-videos-tono-notas-v5-20260908.yml').read_text(encoding='utf-8')
+          marker = "          python3 - <<'PY'\n"
+          i = src.index(marker) + len(marker)
+          j = src.index('\n          PY\n          git restore', i)
+          block = src[i:j]
+          lines=[]
+          for line in block.splitlines():
+              lines.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/fix_videos_tono.py').write_text('\n'.join(lines)+'\n', encoding='utf-8')
+          print('script-v5-extraido')
+          PY
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: site
+      - name: Aplicar y commitear limpio
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd site
+          BR="fix/videos-tono-notas-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 /tmp/fix_videos_tono.py
+          git restore reports/initial-data-build.json reports/routes/build.json reports/thumbnails/images.json 2>/dev/null || true
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          grep -qx 'es/videos/index.html' /tmp/changed.txt
+          grep -qx 'scripts/prepare_video_thumbnails.py' /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 2
+          git add es/videos/index.html scripts/prepare_video_thumbnails.py
+          git commit -m "Reescribir notas de videos sin advertencias"
+          git push origin "$BR" --force-with-lease

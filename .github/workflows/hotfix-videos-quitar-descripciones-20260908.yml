@@ -1,0 +1,55 @@
+name: Probar producción vídeos sin descripciones definitivo
+
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/hotfix-videos-quitar-descripciones-20260908.yml
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probar irisgreen.eu videos sin descripciones
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            const page = await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[];
+            page.on('pageerror', e=>errors.push(String(e)));
+            page.on('console', msg=>{ if(msg.type()==='error') errors.push(msg.text()); });
+            await page.goto('https://irisgreen.eu/es/videos/?v=' + Date.now(), {waitUntil:'domcontentloaded'});
+            await page.waitForTimeout(3000);
+            let body = await page.locator('body').innerText();
+            if(body.includes("Root: Identifier")) throw new Error('Root error visible');
+            if(!body.includes('Dan Wilkins') && !body.includes('Ro Vitale')) throw new Error('No aparecen tarjetas');
+            for (const term of ['Cómo leer este vídeo','Una persona cuenta en primera persona','Cuenta su experiencia con el diagnóstico tardío','Lleva más de seis décadas comunicándose','Tiene discalculia y cuenta','Diagnosticado de dificultades del lenguaje']) {
+              if(body.toLowerCase().includes(term.toLowerCase())) throw new Error('Descripción visible en ES: '+term);
+            }
+            if(errors.some(e=>/Identifier 'thumbURL' has already been declared|Root: Identifier/.test(e))) throw new Error(errors.join(' | '));
+            const enBtn = page.getByRole('button', {name:/^EN$/}).first();
+            if(!(await enBtn.count())) throw new Error('No hay botón EN');
+            await enBtn.click();
+            await page.waitForTimeout(1000);
+            body = await page.locator('body').innerText();
+            if(!body.includes('VIDEO LIBRARY')) throw new Error('No cambia a EN');
+            if(!body.includes('Reading')) throw new Error('No aparece Reading');
+            for (const term of ['How to read this video','A person speaks in the first person','He shares his experience of late diagnosis','He has communicated with AAC','He has dyscalculia and talks','Diagnosed with language difficulties']) {
+              if(body.toLowerCase().includes(term.toLowerCase())) throw new Error('Descripción visible en EN: '+term);
+            }
+            await browser.close();
+            console.log('production-videos-no-descriptions-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE

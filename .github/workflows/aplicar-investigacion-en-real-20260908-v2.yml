@@ -1,0 +1,204 @@
+name: Aplicar EN Investigacion real v2
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - .github/workflows/aplicar-investigacion-en-real-20260908-v2.yml
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout rama de trabajo
+        uses: actions/checkout@v4
+        with:
+          ref: feat/investigacion-en-real-20260908
+          fetch-depth: 0
+      - name: Incorporar traducciones EN sin tocar ES
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import json, re, subprocess, sys
+
+          ROOT = Path.cwd()
+          data_path = ROOT / "es/investigacion/estudios-textos.json"
+          page_path = ROOT / "es/investigacion/index.html"
+
+          subprocess.run(["git", "fetch", "origin", "recuperacion-estable-20260908"], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+          wf = subprocess.check_output(["git", "show", "origin/recuperacion-estable-20260908:.github/workflows/aplicar-investigacion-en-real-20260908.yml"], cwd=ROOT, text=True)
+          m = re.search(r"translations = json\.loads\(r'''(.*?)'''\)", wf, re.S)
+          if not m:
+              raise SystemExit("No encuentro traducciones en workflow anterior")
+          translations = json.loads(m.group(1))
+
+          data = json.loads(data_path.read_text(encoding="utf-8"))
+          ids = [str(item.get("id")) for item in data]
+          missing = sorted(set(ids) - set(translations))
+          extra = sorted(set(translations) - set(ids))
+          if missing or extra:
+              raise SystemExit(f"IDs no cuadran. missing={missing[:10]} extra={extra[:10]}")
+
+          design_labels = {
+              "metaanalisis": "Meta-analysis",
+              "revision": "Systematic review",
+              "ensayo": "Randomised trial",
+              "transversal": "Cross-sectional study",
+              "cualitativo": "Qualitative study",
+              "neuroimagen": "Neuroimaging study",
+              "mixto": "Mixed methods",
+              "guia": "Clinical guideline"
+          }
+
+          def clean_author(value):
+              value = value or ""
+              value = value.replace(" y cols.", " et al.").replace(" e cols.", " et al.")
+              value = re.sub(r"\s+y\s+", " and ", value)
+              return value
+
+          for item in data:
+              tr = translations[item["id"]]
+              item["heading_en"] = tr["heading_en"]
+              item["text_en"] = tr["text_en"]
+              item["notProven_en"] = tr["notProven_en"]
+              item["sample_en"] = tr["sample_en"]
+              item["authors_en"] = clean_author(item.get("authors_en") or item.get("authors") or "")
+              design = design_labels.get(item.get("designKey"), item.get("design") or "Study")
+              sample = item.get("sample_en") or ""
+              item["linea_en"] = (design + ((" with " + sample) if sample else "") + ". " + item["notProven_en"]).strip()
+          data_path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+          def replace_once(text, old, new, label):
+              if new in text:
+                  return text
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"No encuentro bloque {label}: {count} apariciones")
+              return text.replace(old, new, 1)
+
+          html = page_path.read_text(encoding="utf-8")
+          for old, new in {
+              'href="/es/neurodiversidad/condiciones/">Conditions': 'href="/en/neurodiversity/conditions/">Conditions',
+              'href="/es/situaciones/">Situations': 'href="/en/situations/">Situations',
+              'href="/es/biblioteca/">Everyday life': 'href="/en/everyday-life/">Everyday life',
+              'href="/es/datos/">Data': 'href="/en/data/">Data',
+              'href="/es/datos/">Figures': 'href="/en/data/">Figures',
+              'href="/es/intereses/">Your interests': 'href="/en/interests/">Your interests',
+              'href="/es/sitio-tranquilo/">Quiet place': 'href="/en/quiet-space/">Quiet place',
+              'href="/es/sitio-tranquilo/">Quiet space': 'href="/en/quiet-space/">Quiet space',
+              '["/es/neurodiversidad/condiciones/","Conditions"]': '["/en/neurodiversity/conditions/","Conditions"]',
+              '["/es/situaciones/","Situations"]': '["/en/situations/","Situations"]',
+              '["/es/biblioteca/","Everyday life"]': '["/en/everyday-life/","Everyday life"]',
+              '["/es/datos/","Figures"]': '["/en/data/","Figures"]',
+              '["/es/datos/","Data"]': '["/en/data/","Data"]',
+              '["/es/intereses/","Your interests"]': '["/en/interests/","Your interests"]',
+              '["/es/sitio-tranquilo/","Quiet place"]': '["/en/quiet-space/","Quiet place"]'
+          }.items():
+              html = html.replace(old, new)
+
+          html = html.replace(
+              'gradeNote: "Editorial adaptation inspired by GRADE. A screening scale does not diagnose; a correlation does not prove cause; lived experience is not a prevalence. The study texts are, for now, in Spanish.",',
+              'gradeNote: "Editorial adaptation inspired by GRADE. A screening scale does not diagnose; a correlation does not prove cause; lived experience is not a prevalence.",'
+          )
+          html = replace_once(
+              html,
+              '    const T = STR[L];\n    const words = this.norm(st.q).trim().split(/\\s+/).filter(Boolean);',
+              '    const T = STR[L];\n    const pick = (s, esKey, enKey) => (L === "en" && s[enKey]) ? s[enKey] : s[esKey];\n    const pickText = (s) => (L === "en" && Array.isArray(s.text_en)) ? s.text_en : (s.text || []);\n    const words = this.norm(st.q).trim().split(/\\s+/).filter(Boolean);',
+              'helpers EN investigacion'
+          )
+          html = replace_once(
+              html,
+              '      const hay = this.norm([s.titleEs, s.titleOrig, s.authors, s.topic, s.heading, s.means, s.notProven, (s.text || []).join(" ")].join(" "));',
+              '      const hay = this.norm([s.titleEs, s.titleOrig, s.authors, s.authors_en, s.topic, pick(s, "heading", "heading_en"), s.means, pick(s, "notProven", "notProven_en"), (pickText(s) || []).join(" ")].join(" "));',
+              'busqueda EN investigacion'
+          )
+          html = replace_once(
+              html,
+              '        const nSample = (L === "en" ? s.sample_en : L === "pt" ? s.sample_pt : s.sample) || "";\n        return {\n          heading: L === "es" ? s.heading : s.titleOrig,\n          titleEs: L === "es" ? s.titleEs : T.spanishTitle + s.titleEs,',
+              '        const nSample = (L === "en" ? s.sample_en : L === "pt" ? s.sample_pt : s.sample) || "";\n        const bodyText = pickText(s);\n        const originalTitle = (s.titleOrig || s.titleEs || "").replace(/\\*$/, "");\n        return {\n          heading: L === "en" ? (s.heading_en || s.titleOrig || s.heading) : (L === "pt" ? (s.heading_pt || s.titleOrig || s.heading) : s.heading),\n          titleEs: L === "en" ? (originalTitle ? "Original title: " + originalTitle : "") : (L === "pt" ? T.spanishTitle + s.titleEs : s.titleEs),',
+              'tarjeta titulo EN investigacion'
+          )
+          html = replace_once(
+              html,
+              '          paragraphs: (s.text || []).map((p, i) => ({ key: "p" + i, text: p })),\n          means: s.means, notProven: s.notProven,',
+              '          paragraphs: bodyText.map((p, i) => ({ key: "p" + i, text: p })),\n          means: L === "en" ? (s.means_en || s.means || "") : s.means, notProven: pick(s, "notProven", "notProven_en"),',
+              'cuerpo EN investigacion'
+          )
+          page_path.write_text(html, encoding="utf-8")
+
+          subprocess.run([sys.executable, "scripts/build_site.py"], cwd=ROOT, check=True)
+
+          html2 = page_path.read_text(encoding="utf-8")
+          for needle in ["Autistic masking or camouflaging describes", "The study found no uniform alteration", "It does not validate a universal diagnosis", "Original title: "]:
+              if needle not in html2:
+                  raise SystemExit("No aparece en HTML: " + needle)
+          print("investigacion-en-data-ok")
+          PY
+      - name: Prueba local en navegador
+        shell: bash
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          cd "$GITHUB_WORKSPACE"
+          python3 -m http.server 4173 >/tmp/irisgreen-investigacion.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser = await chromium.launch({ headless:true });
+            const page = await browser.newPage({ viewport:{ width:1536, height:900 } });
+            const errors=[];
+            page.on('pageerror', e => errors.push(String(e)));
+            await page.goto('http://127.0.0.1:4173/es/investigacion/', { waitUntil:'networkidle' });
+            const langs = await page.locator('.ig-uh-langs button').allInnerTexts();
+            if (langs.join(' · ') !== 'ES · EN') throw new Error('Selector incorrecto: '+langs.join(' · '));
+            await page.locator('.ig-uh-langs button').filter({hasText:'EN'}).click();
+            await page.waitForTimeout(800);
+            let txt = await page.locator('main').innerText();
+            for (const s of [
+              'RESEARCH, WITH CONTEXT',
+              'Autistic masking or camouflaging describes',
+              'This study analysed a related but different phenomenon',
+              'It does not show that all autistic people should stop masking',
+              'Original title: Unmasking: A Mixed-Methods Study'
+            ]) if (!txt.includes(s)) throw new Error('/es/investigacion/ EN no contiene: '+s);
+            for (const s of [
+              'El enmascaramiento o camuflaje autista describe',
+              'Este estudio analizó un fenómeno relacionado',
+              'No demuestra que todas las personas autistas deban dejar de enmascarar',
+              'The study texts are, for now, in Spanish'
+            ]) if (txt.includes(s)) throw new Error('/es/investigacion/ EN conserva español: '+s);
+            await page.locator('input[type="search"]').fill('misophonia');
+            await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText();
+            if (!txt.includes('Misophonia: current and future trends')) throw new Error('Busqueda EN no encuentra misophonia');
+            await page.locator('input[type="search"]').fill('');
+            await page.locator('.ig-uh-langs button').filter({hasText:'ES'}).click();
+            await page.waitForTimeout(500);
+            txt = await page.locator('main').innerText();
+            if (!txt.includes('El enmascaramiento o camuflaje autista describe')) throw new Error('ES se rompió');
+            if (txt.includes('Autistic masking or camouflaging describes')) throw new Error('ES mezcló EN');
+            await page.locator('.ig-uh-music').click();
+            await page.waitForTimeout(700);
+            if (await page.locator('#ig-music-panel').count() === 0) throw new Error('Música no abre');
+            await page.locator('[data-ig-reading-trigger]').click();
+            await page.waitForTimeout(500);
+            if (await page.locator('#ig-reading-panel').count() === 0) throw new Error('Lectura no abre');
+            if (errors.length) throw new Error('Errores JS: '+errors.join(' | '));
+            await browser.close();
+            console.log('investigacion-local-ok');
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+      - name: Commit en rama
+        shell: bash
+        run: |
+          git config user.name "mruizwow-bit"
+          git config user.email "mruiz.wow@gmail.com"
+          git status --short
+          git add es/investigacion/estudios-textos.json es/investigacion/index.html
+          git diff --cached --check
+          git commit -m "Completar EN real en Investigacion"
+          git push origin HEAD:feat/investigacion-en-real-20260908

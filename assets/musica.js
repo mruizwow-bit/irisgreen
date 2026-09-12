@@ -112,7 +112,6 @@
     TRACKS.forEach(function(track,i){var li=el('li'),b=button(track.t,function(){selected=i;play(i);});b.dataset.track=String(i);b.append(el('span',track.a));li.append(b);list.append(li);});details.append(summary,list);panel.append(details);
     var loopLabel=el('label','', 'ig-m-repeat'),loop=el('input');loop.type='checkbox';loop.checked=true;loop.addEventListener('change',function(){repeat=loop.checked;});repeatText=el('span',labels.repeat);loopLabel.append(loop,repeatText);panel.append(loopLabel);
     status=el('p','', 'ig-m-status');status.setAttribute('role','status');creditText=el('p',labels.credit,'ig-m-credit');panel.append(status,creditText);
-    /* Fuera de cabeceras con blur/transform. El popover usa la capa superior cuando está disponible. */
     document.body.appendChild(panel);sync();
   }
   document.addEventListener('click',function(event){
@@ -132,7 +131,6 @@
   });
   document.addEventListener('ig:panel-opening',function(e){if(e.detail==='reading'&&open)close(false);});
   document.addEventListener('ig:uncover-focus',function(e){if(e.detail==='music'&&open)close(false);});
-  // Only one attribute is observed: language changes, never the page subtree.
   new MutationObserver(updateLabels).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   window.addEventListener('pagehide',function(){if(audio)audio.pause();});
 })();

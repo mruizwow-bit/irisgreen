@@ -1,0 +1,134 @@
+name: Ejecutar EN Metodologia Lectura v2
+on:
+  push:
+    branches: [recuperacion-estable-20260908]
+    paths:
+      - '.github/workflows/ejecutar-metodologia-lectura-en-20260908-v2.yml'
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fuente de cola
+        uses: actions/checkout@v4
+        with:
+          ref: recuperacion-estable-20260908
+          path: meta
+      - name: Extraer cola y parchear script
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          src = Path('meta/.github/workflows/aplicar-metodologia-lectura-en-20260908.yml').read_text(encoding='utf-8')
+          def between(start, end):
+              i = src.index(start) + len(start)
+              j = src.index(end, i)
+              return src[i:j].lstrip('\n').rstrip('\n') + '\n'
+          Path('/tmp/metodologia_lectura_trans.json').write_text(between("cat > /tmp/metodologia_lectura_trans.json <<'JSON_TRANSLATIONS'\n", '\nJSON_TRANSLATIONS'), encoding='utf-8')
+          script_path = Path('/tmp/apply_metodologia_lectura.py')
+          script = between("cat > /tmp/apply_metodologia_lectura.py <<'PY_SCRIPT'\n", '\nPY_SCRIPT')
+          data = json.loads(Path('/tmp/metodologia_lectura_trans.json').read_text(encoding='utf-8'))
+          assert len(data) == 83, len(data)
+          anchor = "    html = set_language_nav(html, es_url, en_url, 'en')"
+          insert = r'''    if block == 'lectura-accesible':
+        html = re.sub(
+            r'Escribe\s+a\s*<a\s+href="mailto:informacion@irisgreen\.eu\?subject=[^"]*">informacion@irisgreen\.eu</a>\s*indicando\s+la\s+página,\s+qué\s+intentabas\s+hacer,\s+el\s+navegador\s+o\s+dispositivo\s+y\s+los\s+ajustes\s+utilizados\.\s+No\s+necesitas\s+aportar\s+un\s+diagnóstico\.',
+            'Write to <a href="mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty">informacion@irisgreen.eu</a> indicating the page, what you were trying to do, the browser or device and the settings used. You do not need to provide a diagnosis.',
+            html,
+            count=1,
+        )
+        html = html.replace('mailto:informacion@irisgreen.eu?subject=Dificultad%20de%20accesibilidad', 'mailto:informacion@irisgreen.eu?subject=Accessibility%20difficulty')
+'''
+          if anchor not in script:
+              raise SystemExit('No encuentro punto de inserción para selector EN')
+          script = script.replace(anchor, insert + anchor, 1)
+          script_path.write_text(script, encoding='utf-8')
+          print('cola-extraida', len(data), 'regex-mailto-insertado')
+          PY
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: site
+      - name: Aplicar traducción en rama limpia
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd site
+          BR="feat/metodologia-lectura-en-20260908"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          python3 /tmp/apply_metodologia_lectura.py
+      - name: Prueba local en navegador
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install chromium >/dev/null 2>&1
+          cd "$GITHUB_WORKSPACE/site/dist"
+          python3 -m http.server 4173 >/tmp/irisgreen-metodologia-lectura.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/pw/node_modules node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const base='http://127.0.0.1:4173';
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:1536,height:900}});
+            const errors=[]; page.on('pageerror',e=>errors.push(String(e)));
+            async function checkPage(path, expected, forbidden){
+              await page.goto(base+path,{waitUntil:'networkidle'});
+              const langs=await page.locator('.langs .lang').allInnerTexts();
+              if(langs.join(' · ')!=='ES · EN') throw new Error(path+' selector: '+langs.join(' · '));
+              const txt=await page.locator('main').innerText();
+              for(const s of expected) if(!txt.includes(s)) throw new Error(path+' missing '+s);
+              for(const s of forbidden) if(txt.includes(s)) throw new Error(path+' still has '+s);
+              const enBox=await page.locator('.langs .lang').filter({hasText:'EN'}).first().boundingBox();
+              if(!enBox || enBox.x<0 || enBox.x>1536) throw new Error(path+' EN not visible');
+              await page.locator('#plBtn').click(); await page.waitForTimeout(300);
+              const musicOk=await page.locator('#ig-music-panel').count() || await page.locator('#pl:not([hidden])').count();
+              if(!musicOk) throw new Error(path+' music does not open');
+              await page.keyboard.press('Escape').catch(()=>{});
+              await page.locator('#a11yBtn').click(); await page.waitForTimeout(300);
+              const readingOk=await page.locator('#ig-reading-panel').count() || await page.locator('#a11y:not([hidden])').count();
+              if(!readingOk) throw new Error(path+' reading does not open');
+              await page.keyboard.press('Escape').catch(()=>{});
+            }
+            await checkPage('/en/methodology/',['Methodology','Iris Green is not a healthcare professional','Every claim has its document','Who writes this'],['Cómo se comprueba lo que hay aquí','Iris Green no es profesional sanitaria']);
+            await checkPage('/en/accessible-reading/',['Accessible reading','What each button does','Typography, spacing and width','Write to informacion@irisgreen.eu','Report a difficulty'],['Qué hace cada botón','Abre Lectura en la cabecera','Escribe a informacion@irisgreen.eu']);
+            await page.goto(base+'/es/metodologia/',{waitUntil:'networkidle'});
+            if((await page.locator('.langs .lang').allInnerTexts()).join(' · ')!=='ES · EN') throw new Error('ES metodologia selector bad');
+            await page.locator('.langs .lang').filter({hasText:'EN'}).click(); await page.waitForLoadState('networkidle');
+            if(!page.url().includes('/en/methodology/')) throw new Error('ES metodologia EN link failed: '+page.url());
+            await page.goto(base+'/es/lectura-accesible/',{waitUntil:'networkidle'});
+            if((await page.locator('.langs .lang').allInnerTexts()).join(' · ')!=='ES · EN') throw new Error('ES lectura selector bad');
+            await page.locator('.langs .lang').filter({hasText:'EN'}).click(); await page.waitForLoadState('networkidle');
+            if(!page.url().includes('/en/accessible-reading/')) throw new Error('ES lectura EN link failed: '+page.url());
+            if(errors.length) throw new Error('JS errors: '+errors.join(' | '));
+            await browser.close(); console.log('metodologia-lectura-local-browser-ok');
+          })().catch(e=>{console.error(e);process.exit(1);});
+          NODE
+      - name: Commit en rama
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd site
+          BR="feat/metodologia-lectura-en-20260908"
+          git diff --name-only | sort > /tmp/changed.txt
+          cat /tmp/changed.txt
+          grep -qx 'es/metodologia/index.html' /tmp/changed.txt
+          grep -qx 'es/lectura-accesible/index.html' /tmp/changed.txt
+          grep -qx 'en/methodology/index.html' /tmp/changed.txt
+          grep -qx 'en/accessible-reading/index.html' /tmp/changed.txt
+          grep -qx 'buscador.json' /tmp/changed.txt
+          grep -qx 'sitemap.xml' /tmp/changed.txt
+          test "$(wc -l < /tmp/changed.txt)" -eq 6
+          git add es/metodologia/index.html es/lectura-accesible/index.html en/methodology/index.html en/accessible-reading/index.html buscador.json sitemap.xml
+          git commit -m "Crear EN de Metodología y Lectura accesible"
+          git push origin "$BR" --force-with-lease

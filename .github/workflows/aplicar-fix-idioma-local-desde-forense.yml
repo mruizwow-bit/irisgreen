@@ -1,0 +1,35 @@
+name: Aplicar fix de idioma local desde forense
+on:
+  push:
+    branches:
+      - recuperacion-estable-20260908
+    paths:
+      - .github/workflows/aplicar-fix-idioma-local-desde-forense.yml
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/idioma-local-20260908
+      - name: Aplicar migración temprana
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('assets/preferencias-lectura.js')
+          s=p.read_text(encoding='utf-8')
+          marker="  if (window.IGPreferences) return;"
+          line="  if (/^\\/es(?:\\/|$)/.test(window.location.pathname)) { try { window.localStorage.removeItem('ig_lang'); } catch (_) {} }\n"
+          if line not in s:
+              if marker not in s:
+                  raise SystemExit('No aparece el punto de inserción')
+              s=s.replace(marker,line+marker,1)
+              p.write_text(s,encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/preferencias-lectura.js
+          git diff --cached --quiet || git commit -m 'Limpiar idioma global heredado al entrar en rutas españolas'
+          git push origin HEAD:fix/idioma-local-20260908
