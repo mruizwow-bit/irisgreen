@@ -2,14 +2,18 @@
 """Auditoría global de accesibilidad estructural sobre la salida pública.
 
 Comprueba, página a página y solo con la biblioteca estándar:
-  · que hay un <main> y un único <h1> con texto;
-  · que cada campo de formulario tiene nombre accesible (el marcador de texto no cuenta);
+  · que cada vista pública tiene un <main> y un único <h1> con texto;
+  · que cada campo de formulario tiene nombre accesible (el marcador no cuenta);
   · que cada botón y cada enlace tienen texto o nombre accesible;
   · que cada imagen declara alt.
 
+Las páginas que incluyen una instantánea <noscript> se auditan en dos modos
+separados. El contenido oculto con ``hidden`` / ``aria-hidden=true`` no cuenta
+como estructura visible. Así no se suman como dos encabezados la vista con
+JavaScript y su alternativa sin JavaScript, que nunca aparecen a la vez.
+
 No corrige nada y no juzga contenido. No es una certificación WCAG: no mide
-contraste, ni foco, ni lectores de pantalla. Es la comprobación mecánica que
-hoy no se ejecuta antes de publicar.
+contraste, ni foco, ni teclado, ni lectores de pantalla.
 """
 from __future__ import annotations
 
@@ -22,62 +26,72 @@ from pathlib import Path
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 FIELDS = {"input", "select", "textarea"}
 SKIP_INPUT_TYPES = {"hidden", "submit", "reset", "button", "image"}
+NOSCRIPT = re.compile(r"<noscript\b[^>]*>(.*?)</noscript\s*>", re.I | re.S)
 
 
 class Audit(HTMLParser):
     def __init__(self, text: str):
         super().__init__(convert_charrefs=True)
-        self.stack: list[tuple[str, dict]] = []
-        self.text_of: list[str] = []
+        self.stack: list[tuple[str, dict, bool]] = []
+        self.hidden_depth = 0
         self.has_main = False
         self.h1_text: list[str] = []
         self.labels_for: set[str] = set()
-        self.label_wrapped: list[dict] = []
         self.fields: list[dict] = []
-        self.controls: list[tuple[str, dict, list[str]]] = []
+        self.controls: list[tuple[str, dict, str]] = []
         self.images: list[dict] = []
-        self.ids: set[str] = set()
-        self.open_control: list[tuple[str, dict, int]] = []
-        self.collected: list[str] = []
+        self.open_control: list[tuple[str, dict, list[str]]] = []
         self.feed(text)
+
+    def _hidden(self, attrs: dict) -> bool:
+        return "hidden" in attrs or attrs.get("aria-hidden", "").lower() == "true"
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
-        if "id" in a:
-            self.ids.add(a["id"])
+        starts_hidden = self._hidden(a)
+        hidden = self.hidden_depth > 0 or starts_hidden
+        if tag not in VOID:
+            self.stack.append((tag, a, starts_hidden))
+            if starts_hidden:
+                self.hidden_depth += 1
+        if hidden:
+            return
         if tag == "main" or a.get("role") == "main":
             self.has_main = True
-        if tag == "label":
-            if a.get("for"):
-                self.labels_for.add(a["for"])
-            self.label_wrapped.append(a)
+        if tag == "label" and a.get("for"):
+            self.labels_for.add(a["for"])
         if tag in FIELDS:
-            if not (tag == "input" and (a.get("type", "text").lower() in SKIP_INPUT_TYPES)):
-                a["_inside_label"] = bool(self.label_wrapped and self.stack and any(t == "label" for t, _ in self.stack))
+            if not (tag == "input" and a.get("type", "text").lower() in SKIP_INPUT_TYPES):
+                a["_inside_label"] = any(t == "label" for t, _, _ in self.stack[:-1])
                 self.fields.append(a)
         if tag == "img":
             self.images.append(a)
         if tag in {"button", "a", "h1"}:
-            self.open_control.append((tag, a, len(self.collected)))
-        if tag not in VOID:
-            self.stack.append((tag, a))
+            self.open_control.append((tag, a, []))
 
     def handle_endtag(self, tag):
-        while self.stack and self.stack[-1][0] != tag:
-            self.stack.pop()
-        if self.stack:
-            self.stack.pop()
-        if self.open_control and self.open_control[-1][0] == tag:
-            name, attrs, mark = self.open_control.pop()
-            inner = "".join(self.collected[mark:]).strip()
+        if self.hidden_depth == 0 and self.open_control and self.open_control[-1][0] == tag:
+            name, attrs, pieces = self.open_control.pop()
+            inner = " ".join(" ".join(pieces).split())
             if name == "h1":
                 self.h1_text.append(inner)
             else:
-                self.controls.append((name, attrs, [inner]))
+                self.controls.append((name, attrs, inner))
+        while self.stack and self.stack[-1][0] != tag:
+            _, _, hidden_start = self.stack.pop()
+            if hidden_start:
+                self.hidden_depth = max(0, self.hidden_depth - 1)
+        if self.stack:
+            _, _, hidden_start = self.stack.pop()
+            if hidden_start:
+                self.hidden_depth = max(0, self.hidden_depth - 1)
 
     def handle_data(self, data):
-        if data.strip():
-            self.collected.append(data)
+        if self.hidden_depth or not data.strip():
+            return
+        if self.open_control:
+            for _, _, pieces in self.open_control:
+                pieces.append(data)
 
 
 def named(attrs: dict, inner: str = "") -> bool:
@@ -89,9 +103,9 @@ def named(attrs: dict, inner: str = "") -> bool:
     return bool(attrs.get("aria-labelledby", "").strip())
 
 
-def check(rel: str, text: str) -> list[str]:
+def check_view(text: str) -> list[str]:
     doc = Audit(text)
-    problems = []
+    problems: list[str] = []
     if not doc.has_main:
         problems.append("no hay <main>")
     if not doc.h1_text:
@@ -108,15 +122,29 @@ def check(rel: str, text: str) -> list[str]:
     for tag, attrs, inner in doc.controls:
         if tag == "a" and not attrs.get("href"):
             continue
-        if named(attrs, inner[0]):
-            continue
-        if attrs.get("aria-hidden") == "true":
+        if named(attrs, inner):
             continue
         problems.append(f"{'botón' if tag == 'button' else 'enlace'} sin nombre accesible: {attrs.get('class','') or attrs.get('href','')}"[:120])
     for img in doc.images:
         if "alt" not in img:
-            problems.append("imagen sin alt: " + (img.get("src", "")[:70]))
+            problems.append("imagen sin alt: " + img.get("src", "")[:70])
     return problems
+
+
+def check(rel: str, text: str) -> list[str]:
+    problems: list[str] = []
+    # Vista normal: la alternativa noscript no forma parte del árbol visible.
+    normal = NOSCRIPT.sub("", text)
+    problems.extend(check_view(normal))
+    # Solo auditamos una vista sin JS separada cuando el noscript contiene su
+    # propio contenido principal. Los mensajes noscript breves complementan la
+    # misma página y no son documentos independientes.
+    snapshots = [m.group(1) for m in NOSCRIPT.finditer(text) if re.search(r"<main\b", m.group(1), re.I)]
+    for snapshot in snapshots:
+        for item in check_view(snapshot):
+            problems.append("sin JS: " + item)
+    # Quitar duplicados conservando orden facilita localizar la fuente real.
+    return list(dict.fromkeys(problems))
 
 
 def main() -> None:
@@ -131,7 +159,7 @@ def main() -> None:
     for path in sorted(root.rglob("*.html")):
         rel = path.relative_to(root).as_posix()
         scanned += 1
-        problems = check(rel, path.read_text(encoding="utf-8"))
+        problems = check(rel, path.read_text(encoding="utf-8", errors="replace"))
         if problems:
             findings[rel] = problems
 
@@ -142,6 +170,7 @@ def main() -> None:
         "html_revisados": scanned,
         "paginas_con_fallos": len(findings),
         "fallos": total,
+        "modos": "La vista normal y las instantáneas <noscript> con <main> se comprueban por separado; el contenido hidden no cuenta como visible.",
         "limites": "Comprobación mecánica de estructura y nombres accesibles. No mide contraste, foco, teclado ni lectores de pantalla.",
         "detalle": findings,
     }
