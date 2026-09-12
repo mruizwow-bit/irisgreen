@@ -33,82 +33,148 @@
   font:inherit;
   font-weight:700;
   text-decoration:none!important;
-  cursor:pointer;
 }
 .iris-cta-button:hover{background:var(--iris-soft);text-decoration:none!important}
 .iris-cta-button:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
 .iris-cta-compact{margin:1rem 0 1.4rem}
 
-/* Fichas finales: la Tarjeta Iris es el editor, no una banda al final. */
-.iris-inline-card{
-  align-items:stretch;
-  flex-direction:column;
-  gap:.9rem;
-  padding:1.15rem;
-  border-left-width:5px;
-  box-shadow:0 16px 36px -28px rgba(23,57,92,.45);
-}
-.iris-inline-card .iris-cta-copy{padding-bottom:.75rem;border-bottom:1px solid var(--iris-line)}
-.iris-inline-form{display:grid;gap:.75rem}
-.iris-inline-field{display:grid;gap:.3rem;min-width:0}
-.iris-inline-field>span{font-size:.9rem;font-weight:700;color:#17395c}
-.iris-inline-field :is(input,textarea){
-  width:100%;
-  min-width:0;
-  border:1px solid color-mix(in srgb,var(--iris-accent) 34%,#b8c1cf);
-  border-radius:10px;
-  background:rgba(255,255,255,.95);
+/* Tarjeta compacta aprobada para las fichas. No es un formulario. */
+.iris-mini-card{
+  display:block;
+  margin:0;
+  padding:1.25rem 1.2rem 1rem;
+  border:1px solid var(--iris-line);
+  border-left:4px solid var(--iris-accent);
+  border-radius:15px;
+  background:#fff;
   color:#17395c;
-  padding:.65rem .7rem;
-  font:inherit;
-  font-size:.95rem;
-  line-height:1.45;
+  box-shadow:0 14px 34px -25px rgba(23,57,92,.4);
 }
-.iris-inline-field textarea{min-height:5.2rem;resize:vertical}
-.iris-inline-field :is(input,textarea):focus-visible{outline:3px solid var(--iris-accent);outline-offset:2px;border-color:var(--iris-accent)}
-.iris-inline-card .iris-cta-button{width:100%;text-align:center;margin-top:.1rem}
-.iris-inline-privacy{font-size:.8rem!important;color:#5a6675!important}
+.iris-mini-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.8rem;
+  padding-bottom:.7rem;
+  border-bottom:1px solid var(--iris-line);
+}
+.iris-mini-brand{
+  font-family:Newsreader,Georgia,serif;
+  font-size:1.15rem;
+  line-height:1.2;
+  color:#17395c;
+}
+.iris-mini-type{
+  color:var(--iris-accent);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  line-height:1.25;
+  text-align:right;
+}
+.iris-mini-title{
+  margin:.72rem 0 .72rem!important;
+  font-family:Newsreader,Georgia,serif!important;
+  font-size:1.48rem!important;
+  font-weight:400!important;
+  line-height:1.12!important;
+  color:#17395c!important;
+}
+.iris-mini-block{margin:0 0 .7rem}
+.iris-mini-block h3{
+  margin:0 0 .18rem!important;
+  font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
+  font-size:.86rem!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+  color:#17395c!important;
+}
+.iris-mini-block p{
+  margin:0!important;
+  font-size:.9rem!important;
+  line-height:1.48!important;
+  color:#17395c!important;
+}
+.iris-mini-need{
+  margin-top:.12rem;
+  padding:.72rem .78rem;
+  border:1px solid var(--iris-line);
+  border-radius:12px;
+  background:var(--iris-soft);
+}
+.iris-mini-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:46px;
+  margin:.72rem 0 .72rem;
+  padding:.65rem .8rem;
+  border:1px solid var(--iris-accent);
+  border-radius:11px;
+  background:var(--iris-accent);
+  color:#fff!important;
+  font-size:.9rem;
+  font-weight:700;
+  line-height:1.3;
+  text-align:center;
+  text-decoration:none!important;
+}
+.iris-mini-button:hover{filter:brightness(.94);color:#fff!important}
+.iris-mini-button:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
+.iris-mini-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:.75rem;
+  padding-top:.7rem;
+  border-top:1px solid var(--iris-line);
+  color:#647288;
+  font-size:.73rem;
+  line-height:1.35;
+}
+.iris-mini-foot span:last-child{text-align:right}
 
-/* Debajo de la cabecera sticky real, no pegada al borde superior. */
+/* La tarjeta queda visible arriba a la derecha, debajo de la cabecera sticky. */
 @media(min-width:64rem){
-  main:has(>article.ficha)>.iris-inline-card{
+  main:has(>article.ficha)>.iris-mini-card{
     grid-column:2;
     grid-row:1;
     position:sticky;
     top:6.5rem;
-    margin:0;
-    max-height:calc(100vh - 7.5rem);
-    overflow:auto;
-    overscroll-behavior:contain;
   }
 }
 
-/* La ficha especial de instrucciones ya tenía un panel propio a la derecha.
-   Tarjeta Iris ocupa la primera posición y ese panel continúa debajo. */
+/* La ficha especial tiene otra rejilla, pero usa la misma tarjeta. */
 @media(min-width:901px){
-  .detail-grid>.iris-inline-card{
+  .detail-grid>.iris-mini-card{
     grid-column:2;
     grid-row:1;
     position:sticky;
     top:6.5rem;
-    margin:0;
-    max-height:calc(100vh - 7.5rem);
-    overflow:auto;
-    overscroll-behavior:contain;
   }
   .detail-grid>.request-panel{grid-column:2;grid-row:2}
 }
 
 html[data-ig-contrast="on"] .iris-cta{background:#fff!important;border-color:#111!important;color:#111!important}
-html[data-ig-contrast="on"] .iris-cta :is(h2,p,.iris-cta-button,label,span){color:#111!important}
-html[data-ig-contrast="on"] .iris-cta-button{border-color:#111!important;background:#fff!important}
-html[data-ig-contrast="on"] .iris-inline-field :is(input,textarea){border-color:#111!important;background:#fff!important;color:#111!important}
+html[data-ig-contrast="on"] .iris-cta :is(h2,h3,p,a,span){color:#111!important}
+html[data-ig-contrast="on"] .iris-mini-button{background:#111!important;color:#fff!important;border-color:#111!important}
+html[data-ig-contrast="on"] .iris-mini-need{background:#fff!important;border-color:#111!important}
 
 @media(max-width:63.99rem){
-  main:has(>article.ficha)>.iris-inline-card{position:static!important;grid-column:1!important;grid-row:auto!important;max-height:none!important;overflow:visible!important;margin-top:1.4rem!important}
+  main:has(>article.ficha)>.iris-mini-card{
+    position:static!important;
+    grid-column:1!important;
+    grid-row:auto!important;
+    margin-top:1.4rem!important;
+  }
 }
 @media(max-width:900px){
-  .detail-grid>.iris-inline-card{position:static!important;grid-column:1!important;grid-row:auto!important;max-height:none!important;overflow:visible!important;margin:0!important}
+  .detail-grid>.iris-mini-card{
+    position:static!important;
+    grid-column:1!important;
+    grid-row:auto!important;
+    margin:0!important;
+  }
   .detail-grid>.request-panel{grid-column:1;grid-row:auto}
 }
 @media(max-width:700px){
