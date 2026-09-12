@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 TAG_RE = re.compile(r"<[^>]+>")
-H2_RE = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.I | re.S)
+LABEL_RE = re.compile(r"<(?:h2|h3|summary)\b[^>]*>(.*?)</(?:h2|h3|summary)>", re.I | re.S)
 CONCEPTS_BOX_RE = re.compile(r'<section\b[^>]*class=["\'][^"\']*\bconcepts-box\b[^"\']*["\'][^>]*>', re.I)
 
 SIT_ES_FORBIDDEN = {"Señales", "Señales de alerta", "Relacionado", "Puede estar relacionado con"}
@@ -30,8 +30,8 @@ def plain(fragment: str) -> str:
     return " ".join(html.unescape(TAG_RE.sub(" ", fragment)).split())
 
 
-def headings(text: str) -> set[str]:
-    return {plain(m.group(1)) for m in H2_RE.finditer(text)}
+def labels(text: str) -> set[str]:
+    return {plain(m.group(1)) for m in LABEL_RE.finditer(text)}
 
 
 def detail_files(base: Path) -> list[Path]:
@@ -44,12 +44,12 @@ def check_collection(base: Path, expected: int, forbidden: set[str], required: s
     failures = []
     for p in files:
         text = p.read_text(encoding="utf-8")
-        hs = headings(text)
-        bad = sorted(hs & forbidden)
+        page_labels = labels(text)
+        bad = sorted(page_labels & forbidden)
         if bad:
-            failures.append(f"{p}: encabezados prohibidos {bad}")
+            failures.append(f"{p}: rótulos prohibidos {bad}")
         if required:
-            missing = sorted(required - hs)
+            missing = sorted(required - page_labels)
             if missing:
                 failures.append(f"{p}: faltan {missing}")
     if failures:
@@ -63,9 +63,9 @@ def check_daily(base: Path, expected: int, forbidden: set[str], label: str):
     failures = []
     for p in files:
         text = p.read_text(encoding="utf-8")
-        bad = sorted(headings(text) & forbidden)
+        bad = sorted(labels(text) & forbidden)
         if bad:
-            failures.append(f"{p}: encabezados prohibidos {bad}")
+            failures.append(f"{p}: rótulos prohibidos {bad}")
         if re.search(r'<div\b[^>]*class=["\'][^"\']*\brelated\b', text, re.I):
             failures.append(f"{p}: queda div.related")
         if re.search(r'href=["\'][^"\']*#concept(?:o)?-', text, re.I):
