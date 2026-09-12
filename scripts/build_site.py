@@ -64,6 +64,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_auditoria_420_relaciones.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
+    # España ya va incrustada en la pantalla inicial del Directorio. Los otros países
+    # se solicitan únicamente cuando la persona los elige.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
 
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
