@@ -1,0 +1,37 @@
+/* Iris Green · ancho aprobado para páginas secundarias y fichas con Tarjeta Iris */
+main:has(>article.ficha){
+  width:min(calc((100vw - 2rem)/var(--ig-reading-scale,1)),70rem);
+  max-width:70rem;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 21rem;
+  gap:2.5rem;
+  align-items:start;
+}
+main:has(>article.ficha)>article.ficha{
+  grid-column:1;
+  min-width:0;
+  width:100%;
+  max-width:none;
+}
+main:has(>article.ficha)>.ig-back{grid-column:1}
+main:has(>article.ficha):not(:has(>.iris-cta)){grid-template-columns:minmax(0,1fr)}
+
+/* Páginas secundarias de texto que no son listados. */
+main:not(:has(.cards)):not(:has(>article.ficha)){
+  width:min(calc(100% - 2rem),70rem);
+  max-width:70rem;
+  margin-inline:auto;
+}
+
+@media(max-width:63.99rem){
+  main:has(>article.ficha){
+    width:min(calc(100% - 1rem),70rem);
+    grid-template-columns:minmax(0,1fr);
+    gap:1.5rem;
+  }
+  main:has(>article.ficha)>.iris-cta{
+    grid-column:1;
+    grid-row:auto;
+    position:static;
+  }
+}
