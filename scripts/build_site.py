@@ -63,6 +63,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris se conecta desde sus contextos, nunca desde la portada.
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Las tarjetas interiores no son formularios: quedan rellenas con los pasos de la ficha
+    # y no ofrecen edición. La herramienta personal independiente sigue siendo editable.
+    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_tarjetas_iris_static.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Fuentes locales, impresión común y retirada definitiva de Google Fonts.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Contrato permanente: ningún estado editorial puede reaparecer en la salida pública.
