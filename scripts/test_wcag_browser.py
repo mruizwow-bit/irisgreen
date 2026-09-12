@@ -40,6 +40,11 @@ JS_OUTSIDE='''() => Array.from(document.querySelectorAll('body *')).filter(el=>{
  if(el.tagName==='SVG'||el.closest('svg'))return false;
  return r.right>innerWidth+2||r.left<-2;
 }).slice(0,15).map(el=>({tag:el.tagName,id:el.id,cls:String(el.className||'').slice(0,90),text:(el.innerText||el.getAttribute('aria-label')||'').trim().slice(0,100),rect:Array.from([el.getBoundingClientRect().x,el.getBoundingClientRect().width,el.getBoundingClientRect().right])}))'''
+JS_WIDE='''() => Array.from(document.querySelectorAll('body *')).filter(el=>{
+ const cs=getComputedStyle(el),r=el.getBoundingClientRect();
+ if(cs.display==='none'||cs.visibility==='hidden'||r.width<2||r.height<2||el.closest('[hidden],[aria-hidden="true"]'))return false;
+ return el.scrollWidth>el.clientWidth+2;
+}).sort((a,b)=>(b.scrollWidth-b.clientWidth)-(a.scrollWidth-a.clientWidth)).slice(0,15).map(el=>{const cs=getComputedStyle(el),r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id,cls:String(el.className||'').slice(0,90),text:(el.innerText||el.getAttribute('aria-label')||'').trim().slice(0,100),sw:el.scrollWidth,cw:el.clientWidth,overflowX:cs.overflowX,rect:[r.x,r.width,r.right]}})'''
 JS_FOCUS='''() => {const e=document.activeElement;if(!e||e===document.body)return {ok:false,tag:'BODY'};const r=e.getBoundingClientRect();let owner=e,ring=null;while(owner&&owner!==document.body){const c=getComputedStyle(owner);if(parseFloat(c.outlineWidth||0)>0||c.boxShadow!=='none'){ring={tag:owner.tagName,id:owner.id,cls:String(owner.className||'').slice(0,80),outline:c.outline,boxShadow:c.boxShadow};break}owner=owner.parentElement}return {ok:!!ring,tag:e.tagName,id:e.id,cls:String(e.className||'').slice(0,80),text:(e.innerText||e.getAttribute('aria-label')||e.placeholder||'').trim().slice(0,80),ringOwner:ring,rect:[r.x,r.y,r.width,r.height]}}'''
 JS_DOUBLE_TEXT='''() => {for(const el of document.querySelectorAll('body *')){if(el.closest('svg,[hidden],[aria-hidden="true"]'))continue;const direct=Array.from(el.childNodes).some(n=>n.nodeType===3&&(n.textContent||'').trim());if(!direct&&!/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(el.tagName))continue;const size=parseFloat(getComputedStyle(el).fontSize);if(Number.isFinite(size)&&size>0)el.style.setProperty('font-size',(size*2)+'px','important')}}'''
 
@@ -63,7 +68,7 @@ with sync_playwright() as pw:
   add(row,reflow)
   row={'scenario':'text spacing','route':route}
   def spacing():
-   load(320);page.add_style_tag(content=TEXT_SPACING);page.wait_for_timeout(100);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
+   load(320);page.add_style_tag(content=TEXT_SPACING);page.wait_for_timeout(100);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);row['wide']=page.evaluate(JS_WIDE);assert o['overflow']<=2,(o,row['outside'],row['wide']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
   add(row,spacing)
   row={'scenario':'text resize 200%','route':route,'viewport':1280}
   def resize():
