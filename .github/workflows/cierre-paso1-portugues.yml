@@ -17,28 +17,99 @@ jobs:
           ref: cierre/20260912-sale-portugues
           fetch-depth: 0
 
-      - name: Diagnosticar portugués residual de Trámites
+      - name: Retirar objetos i18n.pt de Trámites
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import json
 
-          def walk(value, path='$'):
+          def remove_pt(value):
               if isinstance(value, dict):
-                  for k, v in value.items():
-                      p=f'{path}.{k}'
-                      if k.lower() == 'pt':
-                          print('PT_KEY', p)
-                      yield from walk(v, p)
-              elif isinstance(value, list):
-                  for i, v in enumerate(value):
-                      yield from walk(v, f'{path}[{i}]')
-              elif isinstance(value, str) and ('/pt-br/' in value.lower() or value.lower() in {'pt','pt-br'}):
-                  print('PT_VALUE', path, repr(value))
+                  removed = 1 if 'pt' in value else 0
+                  value = {k: v for k, v in value.items() if k != 'pt'}
+                  for k in list(value):
+                      value[k], n = remove_pt(value[k]); removed += n
+                  return value, removed
+              if isinstance(value, list):
+                  out=[]; removed=0
+                  for v in value:
+                      v,n=remove_pt(v); out.append(v); removed+=n
+                  return out, removed
+              return value, 0
 
-          for p in [Path('es/tramites/tramites-datos.json'), Path('es/tramites/directorio/tramites-datos.json')]:
-              data=json.loads(p.read_text(encoding='utf-8'))
-              print('ARCHIVO', p)
-              list(walk(data))
-          raise SystemExit('Diagnóstico deliberado: revisar PT_KEY/PT_VALUE antes de borrar')
+          paths=[Path('es/tramites/tramites-datos.json'),Path('es/tramites/directorio/tramites-datos.json')]
+          changed=[]
+          for p in paths:
+              before=p.read_text(encoding='utf-8')
+              data=json.loads(before)
+              data,n=remove_pt(data)
+              # Los enlaces oficiales de Brasil pueden contener /pt-br/ en gov.br y se conservan.
+              def has_pt_key(v):
+                  if isinstance(v,dict): return 'pt' in v or any(has_pt_key(x) for x in v.values())
+                  if isinstance(v,list): return any(has_pt_key(x) for x in v)
+                  return False
+              if has_pt_key(data): raise SystemExit(f'Queda una clave pt en {p}')
+              after=json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n'
+              if after!=before:
+                  p.write_text(after,encoding='utf-8'); changed.append(p)
+                  print(f'{p}: {n} claves pt retiradas')
+          if changed:
+              import subprocess
+              subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+              subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+              subprocess.run(['git','add',*map(str,changed)],check=True)
+              subprocess.run(['git','commit','-m','[paso1-datos] Retirar i18n PT-BR residual de Trámites'],check=True)
+              subprocess.run(['git','push','origin','HEAD:cierre/20260912-sale-portugues'],check=True)
+              raise SystemExit(78)
+          print('No quedan claves i18n.pt en Trámites.')
           PY
+        continue-on-error: true
+      - name: Detener esta ejecución si se acaba de guardar la limpieza
+        run: |
+          if git log -1 --pretty=%B | grep -q '^\[paso1-datos\]'; then
+            echo 'La rama cambió; la siguiente ejecución comprobará el build limpio.'
+            exit 1
+          fi
+
+      - name: Construir y comprobar ausencia de portugués publicado
+        run: |
+          rm -rf dist
+          python3 scripts/build_site.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          root=Path('dist')
+          # Solo idioma/rutas internas de Iris. No confundir fuentes oficiales brasileñas
+          # (p. ej. https://www.gov.br/.../pt-br/...) con una versión PT-BR de Iris.
+          patterns={
+            'ruta_interna_pt':re.compile(r'["\']/pt-br/',re.I),
+            'url_iris_pt':re.compile(r'https?://(?:www\.)?irisgreen\.eu/pt-br/',re.I),
+            'hreflang_pt':re.compile(r'hreflang\s*=\s*["\']pt(?:-BR)?["\']',re.I),
+            'lang_pt':re.compile(r'(?:data-lang|lang)\s*=\s*["\']pt(?:-BR)?["\']',re.I),
+            'selector_pt':re.compile(r'>\s*(?:PT(?:-BR)?|Portugu[eê]s)\s*<',re.I),
+          }
+          hits=[]
+          for p in root.rglob('*'):
+            if not p.is_file() or p.suffix.lower() not in {'.html','.js','.json','.xml','.css','.txt'}: continue
+            try:s=p.read_text(encoding='utf-8')
+            except UnicodeDecodeError:continue
+            for name,rx in patterns.items():
+              for m in rx.finditer(s): hits.append((name,p.relative_to(root).as_posix(),m.group(0)))
+          if hits:
+            for h in hits[:100]: print('PT_RESIDUAL',h)
+            raise SystemExit(f'Quedan {len(hits)} referencias internas/selector al portugués')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+            s=p.read_text(encoding='utf-8',errors='ignore')
+            m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',s,re.I) or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',s,re.I))
+            v=m.group(1).strip().lower() if m else None
+            counts[v if v in counts else 'otro_o_ninguno']+=1
+          sm=Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          got={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sm))}
+          expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':995}
+          print(json.dumps(got,ensure_ascii=False))
+          if got!=expected: raise SystemExit(f'Contrato cambió: {got} != {expected}')
+          PY
+          python3 scripts/audit_sin_estados_publicos.py --root dist
+          python3 scripts/audit_sin_js.py --root dist
