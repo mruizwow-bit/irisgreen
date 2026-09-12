@@ -1,0 +1,125 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 0,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 24,
+      "focus_failures": [],
+      "findings": [],
+      "passed_without_findings": true
+    },
+    {
+      "route": "/es/situaciones/la-luz-del-supermercado-me-agota/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 0,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 22,
+      "focus_failures": [
+        {
+          "tag": "A",
+          "id": "",
+          "cls": "skip",
+          "visible": true,
+          "covered": true,
+          "top": 12,
+          "bottom": 59.96875
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "cls": "skip",
+          "visible": true,
+          "covered": true,
+          "top": 12,
+          "bottom": 59.96875
+        }
+      ],
+      "findings": [
+        "2 focos no visibles o tapados"
+      ],
+      "passed_without_findings": false
+    },
+    {
+      "route": "/es/libros/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 0,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 23,
+      "focus_failures": [],
+      "findings": [],
+      "passed_without_findings": true
+    },
+    {
+      "route": "/es/tramites/directorio/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 0,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 24,
+      "focus_failures": [],
+      "findings": [],
+      "passed_without_findings": true
+    },
+    {
+      "route": "/es/recursos/juegos/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 0,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 24,
+      "focus_failures": [],
+      "findings": [],
+      "passed_without_findings": true
+    },
+    {
+      "route": "/es/intereses/",
+      "browser_zoom_200_equivalent_width": 640,
+      "overflow_px": 0,
+      "text_200_overflow_px": 8,
+      "print_overflow_px": 0,
+      "tab_stops_checked": 24,
+      "focus_failures": [
+        {
+          "tag": "A",
+          "id": "",
+          "cls": "skip",
+          "visible": true,
+          "covered": true,
+          "top": 12,
+          "bottom": 59.96875
+        }
+      ],
+      "findings": [
+        "desbordamiento con texto al 200 %: 8px",
+        "1 focos no visibles o tapados"
+      ],
+      "passed_without_findings": false
+    }
+  ],
+  "summary": {
+    "routes": 6,
+    "routes_with_findings": 2,
+    "findings": [
+      {
+        "route": "/es/situaciones/la-luz-del-supermercado-me-agota/",
+        "findings": [
+          "2 focos no visibles o tapados"
+        ]
+      },
+      {
+        "route": "/es/intereses/",
+        "findings": [
+          "desbordamiento con texto al 200 %: 8px",
+          "1 focos no visibles o tapados"
+        ]
+      }
+    ]
+  },
+  "method": "Viewport CSS 640 px como aproximación de zoom de navegador 200 % sobre 1280 px; además font-size raíz 200 %, hasta 24 tabulaciones y medio print.",
+  "limits": "Informe automático en Chromium; no es una certificación WCAG ni una prueba con lector de pantalla. Los hallazgos no bloquean este PR salvo que otra prueba muestre una página rota."
+}
