@@ -167,7 +167,11 @@ def insert_detail(text: str, section: str, path: Path) -> str:
     block = cta(section, url_for(section, title))
     article_pos = text.rfind("</article>")
     if article_pos >= 0:
-        return text[:article_pos] + block + "\n" + text[article_pos:]
+        # Hermana del artículo, no dentro: así la rejilla de site-v23.css la
+        # coloca en la columna derecha. Dentro del artículo caía al final de la
+        # página, justo donde no llega quien no lee la ficha entera.
+        corte = article_pos + len("</article>")
+        return text[:corte] + "\n" + block + text[corte:]
 
     if path.as_posix().endswith(
         "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
