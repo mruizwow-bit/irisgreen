@@ -1,0 +1,35 @@
+name: Temporal · inspeccionar muestra Luma
+on:
+  push:
+    branches: ['integracion/20260912-accesibilidad-tipografia-libros-tarjeta']
+    paths: ['.github/workflows/tmp-inspect-luma-sprite.yml']
+permissions:
+  contents: read
+jobs:
+  reconstruir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260912-accesibilidad-tipografia-libros-tarjeta
+      - name: Reconstruir AVIF
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,re
+          root=Path('assets/books/samples/luma-es')
+          data=''.join(p.read_text().strip() for p in sorted(root.glob('sprite.part*.txt')))
+          raw=base64.b64decode(''.join(data.split()))
+          assert raw[4:12]==b'ftypavif', raw[:16]
+          pos=raw.find(b'ispe')
+          assert pos>=0
+          w=int.from_bytes(raw[pos+8:pos+12],'big'); h=int.from_bytes(raw[pos+12:pos+16],'big')
+          assert (w,h)==(440,3576),(w,h)
+          Path('/tmp/luma-sprite.avif').write_bytes(raw)
+          print({'bytes':len(raw),'width':w,'height':h,'segments_if_447':h//447})
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: luma-sprite-inspeccion
+          path: /tmp/luma-sprite.avif
+          retention-days: 2
