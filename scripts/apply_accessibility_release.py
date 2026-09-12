@@ -4,6 +4,7 @@
 - Retira conexiones y hojas de Google Fonts del HTML publicado.
 - Carga las tipografías locales de Iris Green.
 - Añade la hoja de impresión común.
+- Añade el ancho común aprobado para páginas secundarias.
 - Corrige el reflow móvil de la cuadrícula de cromos de Tus intereses.
 
 No modifica títulos, descripciones, robots, enlaces canónicos ni contenido editorial.
@@ -22,6 +23,7 @@ GOOGLE_LINK = re.compile(
 )
 FONT_LINK = '<link rel="stylesheet" href="/assets/ig-fonts.css">'
 PRINT_LINK = '<link rel="stylesheet" href="/assets/print.css" media="print">'
+LAYOUT_LINK = '<link rel="stylesheet" href="/assets/secondary-layout.css">'
 INTERESTS_REFLOW_MARKER = "/* IG: Tus intereses · reflow 320 px */"
 INTERESTS_REFLOW_CSS = r'''
 /* IG: Tus intereses · reflow 320 px */
@@ -41,6 +43,8 @@ def patch_html(path: Path) -> bool:
         additions.append(FONT_LINK)
     if "/assets/print.css" not in text:
         additions.append(PRINT_LINK)
+    if "/assets/secondary-layout.css" not in text:
+        additions.append(LAYOUT_LINK)
     if additions:
         if "</head>" not in text.lower():
             raise ValueError(f"HTML sin </head>: {path}")
@@ -76,6 +80,7 @@ def main() -> None:
         fonts / "newsreader-latin-wght-italic.woff2",
         root / "assets/ig-fonts.css",
         root / "assets/print.css",
+        root / "assets/secondary-layout.css",
     ]
     missing = [str(p.relative_to(root)) for p in required if not p.is_file()]
     if missing:
@@ -104,6 +109,7 @@ def main() -> None:
         "google_fonts": 0,
         "fuentes_locales": [p.name for p in required[:4]],
         "impresion_comun": True,
+        "ancho_secundarias": "70rem",
         "intereses_reflow_320": True,
         "intereses_reflow_actualizado": interests_reflow,
     }
