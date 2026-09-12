@@ -91,6 +91,9 @@ def build():
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
     # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
+    # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
