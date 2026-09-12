@@ -25,6 +25,10 @@ def build():
     # Segunda pasada idempotente: conserva las correcciones editoriales de Biblioteca
     # si una reparación intermedia reescribe alguna de sus páginas.
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
+    # Decisión editorial final 12-09-2026: las relaciones clínicas/taxonómicas automáticas
+    # y los avisos genéricos dejan de formar parte de Situaciones y Vida diaria.
+    # Se aplica sobre la fuente real después de cualquier publicador que pudiera reintroducirlos.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_auditoria_420_relaciones.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
@@ -63,6 +67,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Contrato permanente: ningún estado editorial puede reaparecer en la salida pública.
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # La auditoría 420 es bloqueante: ES/EN deben conservar sus recuentos, Situaciones no pueden
+    # sugerir diagnósticos mediante chips y Vida diaria no puede volver a publicar la nube taxonómica.
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
