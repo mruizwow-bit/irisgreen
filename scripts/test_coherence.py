@@ -86,7 +86,9 @@ def other(p,path,width):
   p.locator('main input[type=search]').fill('');assert cards.count()==len(d);key='topicChips';row['records']=len(d)
  elif path=='/es/tramites/directorio/':
   cards=p.locator('main article:visible');assert cards.count()==12;old=cards.first.inner_text()
-  choose(p,'countryChips','Reino Unido');assert cards.count()==12 and cards.first.inner_text()!=old
+  choose(p,'countryChips','Reino Unido')
+  p.wait_for_function('(old)=>{const rows=[...document.querySelectorAll("main article")].filter(e=>getComputedStyle(e).display!=="none");return rows.length===12 && rows[0].innerText!==old}',old)
+  assert cards.count()==12 and cards.first.inner_text()!=old
   choose(p,'countryChips','España');p.get_by_role('button',name=re.compile('^Ver más fichas')).click();assert cards.count()==24
   p.locator('main input[type=search]').fill('zzzinexistentexxx');assert cards.count()==0
   p.locator('main input[type=search]').fill('');assert cards.count()>=12;key='countryChips';row['expanded_records']=24
