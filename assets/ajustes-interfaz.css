@@ -114,6 +114,8 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
 
 /* WCAG 1.4.12: keep narrow layouts flexible when text spacing is increased. */
 @media(max-width:420px){
+ header{max-width:100vw!important;min-width:0!important;box-sizing:border-box!important}
+ header>*{min-width:0;max-width:100%}
  #reading-open.reading-button{min-width:0!important;max-width:100%!important;width:auto!important;flex:1 1 auto!important;white-space:normal!important}
  header .language{min-width:0!important;max-width:100%!important;flex-wrap:wrap!important}
  header .language>*{min-width:0!important;max-width:100%!important}
