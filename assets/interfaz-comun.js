@@ -1,4 +1,4 @@
-/* Controles compartidos; no observa ni reconstruye el documento. */
+/* Controles compartidos; no reconstruye el documento. */
 (function () {
   'use strict';
   if (window.__igInterfaceReady) return;
@@ -22,6 +22,17 @@
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') closeMenu(document.querySelector('header.ig-menu-open'), true);
   });
+  function visibleMain(main) {
+    return main && !main.hidden && getComputedStyle(main).display !== 'none' && getComputedStyle(main).visibility !== 'hidden' && main.getClientRects().length;
+  }
+  function ensureMainAnchor() {
+    var current = document.getElementById('main');
+    if (visibleMain(current)) return;
+    if (current) current.removeAttribute('id');
+    var mains = Array.from(document.querySelectorAll('main'));
+    var visible = mains.find(visibleMain);
+    if (visible) visible.id = 'main';
+  }
   function ready() {
     document.querySelectorAll('a[data-ig-back-conditions]').forEach(function (link) {
       try {
@@ -29,8 +40,11 @@
         if (saved && new URL(saved, location.origin).pathname === '/es/neurodiversidad/condiciones/') link.href = saved;
       } catch (_) {}
     });
+    ensureMainAnchor();
+    requestAnimationFrame(ensureMainAnchor);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, { once: true }); else ready();
+  window.addEventListener('load', ensureMainAnchor, { once: true });
 })();
 
 /* Reading accessibility: one controller for the existing controls, no DOM polling. */
