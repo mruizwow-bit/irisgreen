@@ -8,6 +8,7 @@
 :root{--ink:#17395c;--muted:#5d6877;--rose:#a8336f;--line:#c9d4e2}
 *{box-sizing:border-box}
 html,body{margin:0;background:#eef2f7;color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif}
+.ig-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .barra{position:sticky;top:0;z-index:5;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid var(--line)}
 .barra p{margin:0;font-size:15px;color:var(--muted)}
 .barra button,.barra a{font:inherit;font-size:15px;min-height:44px;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;cursor:pointer}
@@ -53,7 +54,7 @@ html,body{margin:0;background:#eef2f7;color:var(--ink);font-family:'Atkinson Hyp
 <p id="info"></p>
 <a href="/es/intereses/">Volver a Tus intereses</a>
 </div>
-<div class="hojas" id="hojas"></div>
+<main id="main"><h1 class="ig-sr-only" id="print-title">Cromos para imprimir</h1><div class="hojas" id="hojas"></div></main>
 <script>(function(){"use strict";
 var q=new URLSearchParams(location.search);
 var tema=q.get("tema")||"constelaciones", uno=q.get("n"), ES=q.get("lang")!=="en";
@@ -102,7 +103,7 @@ document.getElementById("imprimir").onclick=function(){window.print()};
 document.getElementById("modo4").onclick=function(){por=4;this.classList.add("on");document.getElementById("modo1").classList.remove("on");pinta()};
 document.getElementById("modo1").onclick=function(){por=1;this.classList.add("on");document.getElementById("modo4").classList.remove("on");pinta()};
 if(uno){document.getElementById("modo4").classList.remove("on");document.getElementById("modo1").classList.add("on")}
-if(!ES){document.documentElement.lang="en";document.title="Print cards · Iris Green";document.getElementById("imprimir").textContent="Print or save as PDF";document.getElementById("modo4").textContent="Four per sheet";document.getElementById("modo1").textContent="One per sheet";var v=document.querySelector(".barra a");v.textContent="Back to Your interests";v.href="/en/interests/"}
+if(!ES){document.documentElement.lang="en";document.title="Print cards · Iris Green";document.getElementById("imprimir").textContent="Print or save as PDF";document.getElementById("modo4").textContent="Four per sheet";document.getElementById("modo1").textContent="One per sheet";document.getElementById("print-title").textContent="Cards to print";var v=document.querySelector(".barra a");v.textContent="Back to Your interests";v.href="/en/interests/"}
 fetch("/es/intereses/cromos.json").then(function(r){return r.json()}).then(function(d){datos=d;pinta()})
  .catch(function(){document.getElementById("hojas").innerHTML='<p class="piehoja">No se han podido cargar los cromos.</p>'});
 })();</script>
