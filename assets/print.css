@@ -1,0 +1,19 @@
+/* Iris Green · impresión legible y sin controles de interfaz. */
+@page{margin:16mm}
+@media print{
+  *,*::before,*::after{box-shadow:none!important;text-shadow:none!important;animation:none!important;transition:none!important}
+  html{background:#fff!important}
+  body{background:#fff!important;color:#000!important;font-size:12pt!important;line-height:1.5!important}
+  header,footer,nav,.site-header,.site-footer,.hd,.ig-uh,.tools,.ig-uh-right,
+  [data-ig-reading-panel],[data-ig-music-panel],#ig-music-panel,.ig-menu-button,.skip,.ig-skip,
+  button:not(.print-keep),.no-print{display:none!important}
+  main{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important}
+  article,section,.card,.brief-box,.request-panel,.detail-more{break-inside:avoid-page}
+  h1,h2,h3{break-after:avoid-page;color:#000!important}
+  p,li{orphans:3;widows:3}
+  a,a:visited{color:#000!important;text-decoration:underline!important}
+  img,svg{max-width:100%!important;page-break-inside:avoid}
+  details{display:block!important}
+  details>*{display:block!important}
+  input,textarea,select{border:1px solid #777!important;background:#fff!important;color:#000!important}
+}
