@@ -1,0 +1,89 @@
+name: Temporal · corregir navegación de portada
+on:
+  push:
+    branches: ['integracion/20260912-sale-portugues']
+    paths: ['.github/workflows/tmp-home-navigation-fixes.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260912-sale-portugues
+      - name: Corregir solo las fuentes aprobadas de navegación
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p=Path(path); s=p.read_text(encoding='utf-8')
+              count=s.count(old)
+              assert count==1, f'{path}: esperado 1, encontrado {count}: {old[:80]}'
+              p.write_text(s.replace(old,new,1), encoding='utf-8')
+
+          # Quitar el enlace superior «Secciones / Sections». El bloque #secciones sigue existiendo.
+          replace_once('editorial/navigation/home-es.html',
+              '<a data-route="secciones" data-t="nav" href="/#secciones">Secciones</a>', '')
+          replace_once('editorial/navigation/instructions-es.html',
+              '<a data-route="secciones" data-t="nav" href="/#secciones">Secciones</a>', '')
+          replace_once('editorial/navigation/instructions-en.html',
+              '<a data-route="secciones" data-t="nav" href="/#secciones">Sections</a>', '')
+
+          # Quitar solo Música del pie. El control de Música de la cabecera se conserva.
+          for path,label in [
+              ('editorial/navigation/home-es.html','Música'),
+              ('editorial/navigation/instructions-es.html','Música'),
+              ('editorial/navigation/instructions-en.html','Music')]:
+              replace_once(path, f'<button data-ig-music="" data-t="music" type="button">{label}</button>', '')
+
+          # Texto aprobado del pie, en los HTML estáticos y en el diccionario que aplica al cambiar idioma.
+          for path in ['editorial/navigation/home-es.html','editorial/navigation/instructions-es.html']:
+              replace_once(path,
+                  '<p class="footer-description" data-t="footer">Información y recursos sobre neurodiversidad.</p>',
+                  '<p class="footer-description" data-t="footer">Base de conocimiento sobre neurodiversidad</p>')
+          replace_once('editorial/navigation/instructions-en.html',
+              '<p class="footer-description" data-t="footer">Information and resources about neurodiversity.</p>',
+              '<p class="footer-description" data-t="footer">Neurodiversity knowledge base</p>')
+
+          path=Path('assets/navigation-approved.js'); s=path.read_text(encoding='utf-8')
+          pairs=[
+              ('"home":"Inicio","nav":"Secciones","quiet"','"home":"Inicio","quiet"'),
+              ('"home":"Home","nav":"Sections","quiet"','"home":"Home","quiet"'),
+              ('"footer":"Información y recursos sobre neurodiversidad."','"footer":"Base de conocimiento sobre neurodiversidad"'),
+              ('"footer":"Information and resources about neurodiversity."','"footer":"Neurodiversity knowledge base"')]
+          for old,new in pairs:
+              count=s.count(old); assert count==1, f'navigation-approved.js: esperado 1, encontrado {count}: {old}'
+              s=s.replace(old,new,1)
+          path.write_text(s,encoding='utf-8')
+
+          replace_once('assets/ajustes-interfaz.css',
+              '.card,.situations-filter,.ig-subtabs,#consola,#escuchar,#jugar',
+              '.card,.situations-filter,.ig-subtabs,#consola,#jugar')
+          PY
+      - name: Construir y comprobar las tres correcciones
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/build_approved_navigation.py --check
+          python3 - <<'PY'
+          from pathlib import Path
+          pages=[Path('dist/index.html'),Path('dist/es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html'),Path('dist/en/situations/i-need-instructions-repeated/index.html')]
+          for p in pages:
+              s=p.read_text(encoding='utf-8')
+              assert 'data-route="secciones" data-t="nav"' not in s, p
+              footer=s.split('<footer',1)[1].split('</footer>',1)[0]
+              assert 'data-ig-music' not in footer, p
+          home=pages[0].read_text(encoding='utf-8')
+          assert 'Base de conocimiento sobre neurodiversidad' in home
+          assert '#escuchar' not in Path('assets/ajustes-interfaz.css').read_text(encoding='utf-8')
+          print('Portada: Secciones fuera de cabecera; Música fuera del pie; pie correcto; #escuchar retirado.')
+          PY
+      - name: Guardar cambios en la rama del PR 32
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- editorial/navigation/home-es.html editorial/navigation/instructions-es.html editorial/navigation/instructions-en.html assets/navigation-approved.js assets/ajustes-interfaz.css
+          git diff --cached --quiet || git commit -m 'Corregir navegación y texto del pie de la portada'
+          git push origin HEAD:integracion/20260912-sale-portugues
