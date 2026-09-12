@@ -19,6 +19,9 @@ PT_ALTERNATE = re.compile(
 )
 SCRIPT_BLOCK = re.compile(r'(<script\b[^>]*>)(.*?)(</script>)', re.I | re.S)
 PT_PROPERTY = re.compile(r'(?P<prefix>[{,])(?P<space>\s*)(?P<key>"pt"|\'pt\'|pt)\s*:\s*')
+PT_BR_PAIR = re.compile(
+    r',?\s*\[\s*["\'][^"\']*PT-BR[^"\']*["\']\s*,\s*["\'][^"\']*["\']\s*\]', re.I
+)
 
 EXACT_TEXT_REPLACEMENTS = {
     'Sigue pendiente la traducción completa de las 120 fichas a EN y PT-BR si la colección se publica también en esos idiomas.':
@@ -185,6 +188,17 @@ def clean_text(text: str, *, drop_language_objects: bool) -> tuple[str, int]:
         else:
             text, removed_objects = remove_pt_properties(text)
 
+    # PT-BR también aparecía como edición comprable dentro de los datos de Libros.
+    # Se retiran esas parejas de etiqueta/enlace y las frases de disponibilidad.
+    text = PT_BR_PAIR.sub('', text)
+    for old, new in (
+        (' PT-BR está en revisión.', ''),
+        (' PT-BR is under review.', ''),
+        (' La edición en portugués de Brasil ya está publicada, en tapa blanda y en ebook.', ''),
+        (' The Brazilian Portuguese edition is now published, in paperback and ebook.', ''),
+    ):
+        text = text.replace(old, new)
+
     # Cabecera antigua: después de retirar el enlace PT no debe quedar CSS para ocultarlo
     # ni reglas que cambien la navegación cuando el documento tenga lang=pt.
     for old, new in (
@@ -209,6 +223,10 @@ def clean_text(text: str, *, drop_language_objects: bool) -> tuple[str, int]:
     # que ya no existe. Como los diccionarios PT ya han sido retirados, `use`
     # solo puede ser ES o EN; `lang` también llega solo desde esos dos botones.
     for old, new in (
+        ('L === "en" ? s.sample_en : L === "pt" ? s.sample_pt : s.sample',
+         'L === "en" ? s.sample_en : s.sample'),
+        ("L === 'en' ? s.sample_en : L === 'pt' ? s.sample_pt : s.sample",
+         "L === 'en' ? s.sample_en : s.sample"),
         ('use === "pt" ? "pt-BR" : use', 'use'),
         ("use === 'pt' ? 'pt-BR' : use", 'use'),
         ('lang === "pt" ? "pt-BR" : lang', 'lang'),
