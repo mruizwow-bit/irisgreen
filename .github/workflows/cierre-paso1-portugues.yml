@@ -40,6 +40,36 @@ jobs:
             git commit -m '[paso1-rutas] Conservar los 301 sin depender de fuentes PT-BR'
             git push origin HEAD:cierre/20260912-sale-portugues
           fi
+      - name: Retirar i18n portugués residual de Trámites
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, json
+          paths=[Path('es/tramites/tramites-datos.json'),Path('es/tramites/directorio/tramites-datos.json')]
+          total=0
+          for p in paths:
+              s=p.read_text(encoding='utf-8')
+              before=s
+              # Cada objeto pt de i18n solo contiene cadenas planas; quitarlo sin reformatear el JSON evita ruido en el diff.
+              s,n=re.subn(r',\s*"pt"\s*:\s*\{[^{}]*\}', '', s)
+              json.loads(s)
+              if '/pt-br/' in s or re.search(r'"pt"\s*:',s):
+                  raise SystemExit(f'Quedan datos PT en {p}')
+              if s!=before:
+                  p.write_text(s,encoding='utf-8')
+                  print(p, 'objetos pt retirados:', n)
+                  total+=n
+          if total==0:
+              print('Los datos portugueses de Trámites ya estaban retirados.')
+          PY
+          git diff --check
+          if ! git diff --quiet -- es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json
+            git commit -m '[paso1-datos] Retirar traducciones PT-BR residuales de Trámites'
+            git push origin HEAD:cierre/20260912-sale-portugues
+          fi
       - name: Construir y comprobar ausencia de portugués publicado
         run: |
           rm -rf dist
