@@ -4,7 +4,7 @@
 Comprueba en rutas representativas:
 - reflow a 320 CSS px sin scroll horizontal global (aproxima 400 % a 1280 px);
 - espaciado de texto de WCAG 1.4.12 sin scroll global ni texto recortado;
-- texto al 200 % duplicando el tamaño computado de elementos textuales;
+- texto al 200 % a 1280 CSS px duplicando el tamaño computado de elementos textuales;
 - enlace de salto al contenido y foco visible durante navegación por teclado.
 
 No certifica lectores de pantalla, voz, braille, comprensión ni pruebas con personas.
@@ -43,7 +43,7 @@ JS_OUTSIDE='''() => Array.from(document.querySelectorAll('body *')).filter(el=>{
 JS_FOCUS='''() => {const e=document.activeElement;if(!e||e===document.body)return {ok:false,tag:'BODY'};const r=e.getBoundingClientRect();let owner=e,ring=null;while(owner&&owner!==document.body){const c=getComputedStyle(owner);if(parseFloat(c.outlineWidth||0)>0||c.boxShadow!=='none'){ring={tag:owner.tagName,id:owner.id,cls:String(owner.className||'').slice(0,80),outline:c.outline,boxShadow:c.boxShadow};break}owner=owner.parentElement}return {ok:!!ring,tag:e.tagName,id:e.id,cls:String(e.className||'').slice(0,80),text:(e.innerText||e.getAttribute('aria-label')||e.placeholder||'').trim().slice(0,80),ringOwner:ring,rect:[r.x,r.y,r.width,r.height]}}'''
 JS_DOUBLE_TEXT='''() => {for(const el of document.querySelectorAll('body *')){if(el.closest('svg,[hidden],[aria-hidden="true"]'))continue;const direct=Array.from(el.childNodes).some(n=>n.nodeType===3&&(n.textContent||'').trim());if(!direct&&!/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(el.tagName))continue;const size=parseFloat(getComputedStyle(el).fontSize);if(Number.isFinite(size)&&size>0)el.style.setProperty('font-size',(size*2)+'px','important')}}'''
 
-report={'routes':ROUTES,'cases':[],'failures':[],'limits':['No screen-reader or assistive-technology certification.','320 CSS px is used for reflow; browser UI zoom itself is not programmatically certified.','The 200% text test doubles each computed textual font size; it is a regression test for WCAG 1.4.4, not a browser-specific zoom implementation.']}
+report={'routes':ROUTES,'cases':[],'failures':[],'limits':['No screen-reader or assistive-technology certification.','320 CSS px is used for reflow; browser UI zoom itself is not programmatically certified.','The 200% text test doubles each computed textual font size at a 1280 CSS px viewport; it is a regression test for WCAG 1.4.4, not a browser-specific zoom implementation.']}
 def add(row,fn):
  try:fn();row['passed']=True
  except Exception as exc:row['passed']=False;row['error']=str(exc);row['traceback']=traceback.format_exc();report['failures'].append(dict(row))
@@ -54,24 +54,25 @@ with sync_playwright() as pw:
  for route in ROUTES:
   ctx=browser.new_context(viewport={'width':320,'height':900},reduced_motion='reduce');ctx.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-  def load():page.goto(BASE+route,wait_until='domcontentloaded');page.locator('main h1').first.wait_for(timeout=15000);page.wait_for_timeout(160)
+  def load(width=320):
+   page.set_viewport_size({'width':width,'height':900});page.goto(BASE+route,wait_until='domcontentloaded');page.locator('main h1').first.wait_for(timeout=15000);page.wait_for_timeout(160)
   row={'scenario':'reflow 320','route':route}
   def reflow():
-   load();o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);assert not errors,errors
+   load(320);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);assert not errors,errors
    skip=page.locator('a[href="#main"]:visible').first;assert skip.count()==1,'sin salto visible al contenido';assert page.locator('#main').count()==1,'sin destino #main'
   add(row,reflow)
   row={'scenario':'text spacing','route':route}
   def spacing():
-   page.add_style_tag(content=TEXT_SPACING);page.wait_for_timeout(100);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
+   load(320);page.add_style_tag(content=TEXT_SPACING);page.wait_for_timeout(100);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
   add(row,spacing)
-  row={'scenario':'text resize 200%','route':route}
+  row={'scenario':'text resize 200%','route':route,'viewport':1280}
   def resize():
-   load();page.evaluate(JS_DOUBLE_TEXT);page.wait_for_timeout(120);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
+   load(1280);page.evaluate(JS_DOUBLE_TEXT);page.wait_for_timeout(120);o=page.evaluate(JS_OVERFLOW);row.update(o);row['outside']=page.evaluate(JS_OUTSIDE);assert o['overflow']<=2,(o,row['outside']);clipped=page.evaluate(JS_CLIPPED);row['clipped']=clipped;assert not clipped,clipped
   add(row,resize)
   if route in ['/','/es/situaciones/','/es/neurodiversidad/condiciones/','/es/tramites/directorio/','/es/libros/']:
    row={'scenario':'keyboard focus','route':route,'steps':[]}
    def keyboard():
-    load();seen=[]
+    load(320);seen=[]
     for _ in range(12):
      page.keyboard.press('Tab');f=page.evaluate(JS_FOCUS);row['steps'].append(f)
      if f['tag']!='BODY':seen.append((f['tag'],f.get('id'),f.get('text')))
