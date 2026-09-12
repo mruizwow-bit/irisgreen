@@ -1,0 +1,44 @@
+name: Aplicar avisos urgentes revisados
+
+on:
+  push:
+    branches:
+      - integracion/20260912-senales-relaciones-final
+
+permissions:
+  contents: write
+
+jobs:
+  integrar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260912-senales-relaciones-final
+          fetch-depth: 1
+      - name: Integrar los cuatro avisos aprobados ES EN
+        run: python3 scripts/integrate_reviewed_urgent_notices.py
+      - name: Comprobar auditoría de Señales y relaciones
+        run: python3 scripts/audit_420_relaciones.py --root .
+      - name: Guardar solo las ocho fichas revisadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/index.html \
+            en/situations/drinking-water-feels-unpleasant-because-of-the-sensation/index.html \
+            es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/index.html \
+            en/situations/i-can-go-for-hours-without-remembering-to-drink/index.html \
+            es/situaciones/se-me-olvida-comer/index.html \
+            en/situations/i-forget-to-eat/index.html \
+            es/situaciones/no-nota-hambre-o-sed/index.html \
+            en/situations/they-dont-notice-hunger-or-thirst/index.html
+          if git diff --cached --quiet; then
+            echo "Los avisos ya estaban integrados."
+            exit 0
+          fi
+          git commit -m "Auditoría 420: integrar cuatro avisos urgentes revisados"
+          git push origin HEAD:integracion/20260912-senales-relaciones-final
