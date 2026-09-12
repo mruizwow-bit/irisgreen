@@ -73,11 +73,9 @@ jobs:
       - name: Auditoría global de accesibilidad estructural
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_accesibilidad.py --root dist --informe-solo
-      # El paso del portugués entra con su propia tanda; mientras pt-br siga en el
-      # repositorio, esta comprobación fallaría siempre y no aportaría nada.
-      # - name: Comprobar que no queda portugués
-      #   if: ${{ !cancelled() }}
-      #   run: python3 scripts/audit_sin_portugues.py --root dist
+      - name: Comprobar que no queda portugués
+        if: ${{ !cancelled() }}
+        run: python3 scripts/audit_sin_portugues.py --root dist
       # Los tres pasos siguientes vuelven a frenar. Las pruebas que describen la portada
       # anterior están marcadas una a una dentro de cada guion, en ESPERADO_FALLA, con su
       # motivo y de forma estricta: informan sin frenar, y el día que se reescriban y
