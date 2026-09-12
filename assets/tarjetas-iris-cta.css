@@ -83,13 +83,33 @@
   }
 }
 
+/* La ficha especial de instrucciones ya tenía un panel propio a la derecha.
+   Tarjeta Iris ocupa la primera posición y ese panel continúa debajo. */
+@media(min-width:901px){
+  .detail-grid>.iris-inline-card{
+    grid-column:2;
+    grid-row:1;
+    position:sticky;
+    top:6.5rem;
+    margin:0;
+    max-height:calc(100vh - 7.5rem);
+    overflow:auto;
+    overscroll-behavior:contain;
+  }
+  .detail-grid>.request-panel{grid-column:2;grid-row:2}
+}
+
 html[data-ig-contrast="on"] .iris-cta{background:#fff!important;border-color:#111!important;color:#111!important}
 html[data-ig-contrast="on"] .iris-cta :is(h2,p,.iris-cta-button,label,span){color:#111!important}
 html[data-ig-contrast="on"] .iris-cta-button{border-color:#111!important;background:#fff!important}
 html[data-ig-contrast="on"] .iris-inline-field :is(input,textarea){border-color:#111!important;background:#fff!important;color:#111!important}
 
 @media(max-width:63.99rem){
-  .iris-inline-card{position:static!important;grid-column:1!important;grid-row:auto!important;max-height:none!important;overflow:visible!important;margin-top:1.4rem!important}
+  main:has(>article.ficha)>.iris-inline-card{position:static!important;grid-column:1!important;grid-row:auto!important;max-height:none!important;overflow:visible!important;margin-top:1.4rem!important}
+}
+@media(max-width:900px){
+  .detail-grid>.iris-inline-card{position:static!important;grid-column:1!important;grid-row:auto!important;max-height:none!important;overflow:visible!important;margin:0!important}
+  .detail-grid>.request-panel{grid-column:1;grid-row:auto}
 }
 @media(max-width:700px){
   .iris-cta{align-items:flex-start;flex-direction:column;gap:.8rem}
