@@ -94,6 +94,9 @@ def build():
     # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
     # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # La ficha de discalculia/disgrafía explica por qué no ofrece una prevalencia global;
+    # sus dos revisiones de respaldo se aplican a la salida pública ES/EN.
+    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_data_dyscalculia_dysgraphia.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
