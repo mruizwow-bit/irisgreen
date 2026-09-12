@@ -38,6 +38,8 @@ def global_csp(root: Path) -> str:
     value = m.group(1).splitlines()[0].strip()
     if "default-src 'self'" not in value:
         raise RuntimeError('La CSP de prueba no tiene default-src self')
+    if "'unsafe-eval'" in value:
+        raise RuntimeError('La CSP no debe permitir unsafe-eval')
     return value
 
 
