@@ -3,6 +3,7 @@
 
 No reescribe la colección. Aplica correcciones factuales puntuales, añade fuentes
 que faltaban, cambia BORRADOR a publicado y falla si queda algún marcador de borrador.
+La indexación no se decide aquí: cada ficha conserva su meta robots de fuente.
 """
 from pathlib import Path
 import re
@@ -86,7 +87,6 @@ add_source("buscar-trabajo-siendo-neurodivergente", '<li><a href="https://www.ae
 
 # Perros de asistencia: el lede validado se mantiene desde la fuente editorial.
 
-
 # Desapariciones: retirar una cifra presupuestaria que no quedó respaldada por la fuente oficial revisada.
 edit("si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer", [
     ('<p class="source-note">El II Plan Estratégico en materia de Personas Desaparecidas está vigente de 2026 a 2029, con 5,1 millones de dotación, cinco líneas de acción, trece objetivos y 102 medidas.</p>', '<p class="source-note">El II Plan Estratégico en materia de Personas Desaparecidas está vigente de 2026 a 2029.</p>'),
@@ -121,7 +121,8 @@ if len(detail_pages) != 48:
 
 for p in detail_pages:
     text = load(p)
-    text = text.replace('<meta name="robots" content="noindex,follow"/>', '<meta name="robots" content="index,follow"/>')
+    # La indexación no se decide aquí. Se conserva exactamente el meta robots
+    # que ya tenga la ficha; publicar y etiquetar son decisiones distintas.
     text = text.replace('<span class="chip lil">BORRADOR</span>', '')
     text = text.replace('<p class="notice">Página en borrador. Las fuentes están nombradas y enlazadas; la comprobación final sigue pendiente.</p>', '')
     text = text.replace('<li><strong>Estado:</strong> borrador</li>', '<li><strong>Estado:</strong> publicada</li>')
@@ -157,7 +158,7 @@ save(index_path, index)
 # Control final: nada de la colección ES puede conservar estado de borrador.
 for p in detail_pages + [index_path]:
     text = load(p)
-    forbidden = ["BORRADOR", "Página en borrador", "Estado:</strong> borrador", 'content="noindex,follow"']
+    forbidden = ["BORRADOR", "Página en borrador", "Estado:</strong> borrador"]
     found = [x for x in forbidden if x in text]
     if found:
         raise AssertionError(f"Marcadores de borrador restantes en {p.relative_to(ROOT)}: {found}")

@@ -1,0 +1,306 @@
+name: Tanda · fuera el estado público
+
+on:
+  push:
+    branches: ['integracion/20260911-estado-publico']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: estado-publico-integracion
+  cancel-in-progress: false
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Comprobar canonical y aplicar la decisión C en las fuentes
+        id: fuentes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os, re, subprocess
+
+          ROOT = Path('.')
+          ES_COND = [
+              'es/neurodiversidad/condiciones/arfid/index.html',
+              'es/neurodiversidad/condiciones/autismo/index.html',
+              'es/neurodiversidad/condiciones/dislexia/index.html',
+              'es/neurodiversidad/condiciones/evitacion-persistente-de-demandas-perfil-pda/index.html',
+              'es/neurodiversidad/condiciones/sueno/index.html',
+              'es/neurodiversidad/condiciones/tdah/index.html',
+              'es/neurodiversidad/condiciones/trastorno-del-desarrollo-de-la-coordinacion-dcd-dispraxia/index.html',
+          ]
+          EN_COND = [
+              'en/neurodiversity/conditions/arfid/index.html',
+              'en/neurodiversity/conditions/autism/index.html',
+              'en/neurodiversity/conditions/dyslexia/index.html',
+              'en/neurodiversity/conditions/persistent-demand-avoidance-pda-profile/index.html',
+              'en/neurodiversity/conditions/sleep/index.html',
+              'en/neurodiversity/conditions/adhd/index.html',
+              'en/neurodiversity/conditions/developmental-coordination-disorder-dcd-dyspraxia/index.html',
+          ]
+
+          groups = {
+              'vida_es': sorted(Path('es/biblioteca').glob('*/index.html')),
+              'datos_es': sorted(Path('es/datos').glob('*/index.html')),
+              'data_en': sorted(Path('en/data').glob('*/index.html')),
+              'daily_en_detalle': sorted(Path('en/everyday-life').glob('*/index.html')),
+          }
+          expected_counts = {'vida_es':48, 'datos_es':49, 'data_en':49, 'daily_en_detalle':48}
+          for name, expected in expected_counts.items():
+              if len(groups[name]) != expected:
+                  raise SystemExit(f'{name}: se esperaban {expected} páginas y hay {len(groups[name])}')
+
+          targets = (
+              groups['vida_es'] + groups['datos_es'] + groups['data_en'] +
+              groups['daily_en_detalle'] + [Path('en/everyday-life/index.html')] +
+              [Path(x) for x in ES_COND + EN_COND]
+          )
+          if len(targets) != 209 or len({p.as_posix() for p in targets}) != 209:
+              raise SystemExit(f'La lista de la decisión C no contiene exactamente 209 páginas únicas: {len(targets)}')
+          missing = [p.as_posix() for p in targets if not p.is_file()]
+          if missing:
+              raise SystemExit('Faltan páginas de la decisión C: ' + ', '.join(missing))
+
+          TAG = re.compile(r'<(?:meta|link)\b[^>]*>', re.I)
+          ATTR = re.compile(r'([:\w-]+)\s*=\s*(["\'])(.*?)\2', re.S)
+          CONTENT = re.compile(r'(\bcontent\s*=\s*)(["\'])(.*?)\2', re.I | re.S)
+
+          def attrs(tag):
+              return {m.group(1).lower(): m.group(3) for m in ATTR.finditer(tag)}
+
+          states = {}
+          prepared = []
+          for p in targets:
+              text = p.read_text(encoding='utf-8')
+              expected_url = 'https://irisgreen.eu/' + p.as_posix()[:-len('index.html')]
+              canonicals = []
+              robots = []
+              for m in TAG.finditer(text):
+                  a = attrs(m.group(0))
+                  if m.group(0).lower().startswith('<link') and 'canonical' in a.get('rel','').lower().split():
+                      canonicals.append(a.get('href'))
+                  if m.group(0).lower().startswith('<meta') and a.get('name','').lower() == 'robots':
+                      robots.append((m, a.get('content','').strip().lower()))
+              if canonicals != [expected_url]:
+                  raise SystemExit(f'{p}: canonical incorrecta. Esperada {expected_url}; encontrada {canonicals}')
+              if len(robots) != 1:
+                  raise SystemExit(f'{p}: se esperaba exactamente un meta robots y hay {len(robots)}')
+              m, state = robots[0]
+              if state not in {'noindex,follow','index,follow'}:
+                  raise SystemExit(f'{p}: robots inesperado: {state!r}')
+              states[p] = state
+              prepared.append((p, text, m))
+
+          noindex = [p for p, state in states.items() if state == 'noindex,follow']
+          if len(noindex) not in {0, 209}:
+              sample = ', '.join(p.as_posix() for p in noindex[:12])
+              raise SystemExit(f'Estado mixto: {len(noindex)} de 209 siguen en noindex. Primeras: {sample}')
+
+          expected_changed = set()
+          if len(noindex) == 209:
+              for p, text, m in prepared:
+                  old_tag = m.group(0)
+                  def repl(cm):
+                      if cm.group(3).strip().lower() != 'noindex,follow':
+                          raise SystemExit(f'{p}: el content del meta robots cambió durante la preparación')
+                      return cm.group(1) + cm.group(2) + 'index,follow' + cm.group(2)
+                  new_tag, n = CONTENT.subn(repl, old_tag, count=1)
+                  if n != 1:
+                      raise SystemExit(f'{p}: no se pudo sustituir el content del meta robots')
+                  new_text = text[:m.start()] + new_tag + text[m.end():]
+                  p.write_text(new_text, encoding='utf-8')
+                  expected_changed.add(p.as_posix())
+
+          # Autismo: dateModified se conserva; lastReviewed y reviewedBy desaparecen enteros.
+          autismo = Path('es/neurodiversidad/temas/autismo/index.html')
+          text = autismo.read_text(encoding='utf-8')
+          has_last = '"lastReviewed"' in text
+          has_by = '"reviewedBy"' in text
+          if has_last != has_by:
+              raise SystemExit('Autismo: lastReviewed y reviewedBy no están en el mismo estado')
+          if has_last:
+              new_text, n = re.subn(r',"lastReviewed":"[^"]+","reviewedBy":\{[^{}]*\}', '', text, count=1)
+              if n != 1 or '"lastReviewed"' in new_text or '"reviewedBy"' in new_text:
+                  raise SystemExit('Autismo: no se pudieron retirar por completo lastReviewed y reviewedBy')
+              if '"dateModified":"2026-08-31"' not in new_text:
+                  raise SystemExit('Autismo: dateModified no se ha conservado')
+              autismo.write_text(new_text, encoding='utf-8')
+              expected_changed.add(autismo.as_posix())
+
+          actual = set(subprocess.check_output(['git','diff','--name-only'], text=True).splitlines())
+          if actual != expected_changed:
+              extra = sorted(actual - expected_changed)
+              faltan = sorted(expected_changed - actual)
+              raise SystemExit(f'Diff inesperado antes de guardar fuentes. Extra={extra}; faltan={faltan}')
+
+          Path('/tmp/estado-targets.txt').write_text('\n'.join(sorted(expected_changed)) + ('\n' if expected_changed else ''), encoding='utf-8')
+          changed = bool(expected_changed)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as fh:
+              fh.write(f'changed={str(changed).lower()}\n')
+              fh.write(f'robots_changed={len(noindex)}\n')
+              fh.write(f'files_changed={len(expected_changed)}\n')
+          print({'decision_C_pages':209, 'noindex_before':len(noindex), 'files_changed':len(expected_changed)})
+          PY
+
+      - name: Guardar las fuentes ancladas y volver a comprobar el commit resultante
+        if: steps.fuentes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          while IFS= read -r path; do
+            [ -n "$path" ] && git add -- "$path"
+          done < /tmp/estado-targets.txt
+          staged="$(git diff --cached --name-only | wc -l | tr -d ' ')"
+          expected="${{ steps.fuentes.outputs.files_changed }}"
+          test "$staged" = "$expected"
+          git commit -m '[estado-fuentes] Anclar el estado público y retirar metadatos de revisión'
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo 'Se ha creado un nuevo commit de fuentes. Esta ejecución termina aquí; el push lanza una segunda ejecución sobre ese commit.'
+
+      - name: Construir la línea base actual de main
+        if: steps.fuentes.outputs.changed == 'false'
+        shell: bash
+        run: |
+          rm -rf /tmp/estado-base /tmp/estado
+          mkdir -p /tmp/estado
+          git worktree add --detach /tmp/estado-base origin/main
+          (
+            cd /tmp/estado-base
+            python3 scripts/build_site.py
+          )
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('/tmp/estado-base/dist')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+              t=p.read_text(encoding='utf-8',errors='ignore')
+              m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',t,re.I)
+                 or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',t,re.I))
+              value=m.group(1).strip().lower() if m else None
+              counts[value if value in counts else 'otro_o_ninguno'] += 1
+          sitemap=Path('/tmp/estado-base/dist/sitemap.xml').read_text(encoding='utf-8')
+          result={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sitemap))}
+          expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':834}
+          if result != expected:
+              raise SystemExit(f'La línea base de main ya no es la esperada. Esperado {expected}; obtenido {result}')
+          Path('/tmp/estado/indexacion-antes.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('línea base:',json.dumps(result,ensure_ascii=False))
+          PY
+
+      - name: Construir la rama con el estado público retirado
+        if: steps.fuentes.outputs.changed == 'false'
+        run: python3 scripts/build_site.py
+
+      - name: Demostrar que robots no cambia y que el sitemap incorpora solo las 161 direcciones previstas
+        if: steps.fuentes.outputs.changed == 'false'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          before=json.loads(Path('/tmp/estado/indexacion-antes.json').read_text())
+          root=Path('dist')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+              t=p.read_text(encoding='utf-8',errors='ignore')
+              m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',t,re.I)
+                 or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',t,re.I))
+              value=m.group(1).strip().lower() if m else None
+              counts[value if value in counts else 'otro_o_ninguno'] += 1
+          sitemap=Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          after={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sitemap))}
+          for key in ['html','index,follow','noindex,follow','otro_o_ninguno']:
+              if after[key] != before[key]:
+                  raise SystemExit(f'La indexación cambió en {key}: antes={before[key]}, después={after[key]}')
+          if after['sitemap_urls'] != before['sitemap_urls'] + 161:
+              raise SystemExit(f'El sitemap no cambió exactamente +161: antes={before["sitemap_urls"]}, después={after["sitemap_urls"]}')
+          if after['sitemap_urls'] != 995:
+              raise SystemExit(f'El sitemap final debería tener 995 direcciones y tiene {after["sitemap_urls"]}')
+          Path('/tmp/estado/indexacion-despues.json').write_text(json.dumps(after,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('después:',json.dumps(after,ensure_ascii=False))
+          PY
+          python3 scripts/audit_sin_estados_publicos.py --root dist
+
+      - name: Comprobar lectura sin JavaScript y accesibilidad estructural
+        if: steps.fuentes.outputs.changed == 'false'
+        shell: bash
+        run: |
+          python3 scripts/audit_sin_js.py --root dist
+          python3 scripts/audit_accesibilidad.py --root dist --informe-solo
+
+      - name: Preparar el informe de cambios de texto visible frente a main
+        if: steps.fuentes.outputs.changed == 'false'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html import unescape
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import difflib, json, re
+
+          class Visible(HTMLParser):
+              BLOCK={'p','h1','h2','h3','h4','h5','h6','li','dt','dd','summary','button','a','label','legend','figcaption','td','th','div','section','article','main','nav','footer','header','br'}
+              SKIP={'script','style','svg','template'}
+              def __init__(self):
+                  super().__init__(convert_charrefs=True); self.skip=0; self.parts=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag in self.SKIP: self.skip += 1
+                  elif not self.skip and tag in self.BLOCK: self.parts.append('\n')
+              def handle_endtag(self, tag):
+                  if tag in self.SKIP and self.skip: self.skip -= 1
+                  elif not self.skip and tag in self.BLOCK: self.parts.append('\n')
+              def handle_data(self, data):
+                  if not self.skip: self.parts.append(data)
+
+          def visible(path):
+              p=Visible(); p.feed(path.read_text(encoding='utf-8',errors='ignore'))
+              text=unescape(''.join(p.parts))
+              lines=[]
+              for line in text.splitlines():
+                  line=re.sub(r'\s+',' ',line).strip()
+                  if line: lines.append(line)
+              return lines
+
+          base=Path('/tmp/estado-base/dist'); now=Path('dist')
+          rels=sorted({p.relative_to(base).as_posix() for p in base.rglob('*.html')} | {p.relative_to(now).as_posix() for p in now.rglob('*.html')})
+          changed=[]; sections=[]
+          for rel in rels:
+              a=base/rel; b=now/rel
+              old=visible(a) if a.is_file() else []
+              new=visible(b) if b.is_file() else []
+              if old == new: continue
+              changed.append(rel)
+              diff=list(difflib.unified_diff(old,new,fromfile='main/'+rel,tofile='rama/'+rel,lineterm=''))
+              sections.append('## '+rel+'\n\n```diff\n'+'\n'.join(diff[:120])+'\n```\n')
+          out=Path('/tmp/estado/texto-visible.md')
+          out.write_text('# Cambios de texto visible frente a main\n\nPáginas con alguna diferencia visible: '+str(len(changed))+'.\n\n'+'\n'.join(sections),encoding='utf-8')
+          Path('/tmp/estado/texto-visible.json').write_text(json.dumps({'paginas_con_cambios':len(changed),'paginas':changed},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('páginas con cambios visibles:',len(changed))
+          PY
+          mkdir -p /tmp/estado/publicacion
+          for item in publicacion/sin-estados.md publicacion/sin-js.json publicacion/accesibilidad.json; do
+            [ -f "reports/$item" ] && install -D "reports/$item" "/tmp/estado/$item"
+            [ -f "dist/reports/$item" ] && install -D "dist/reports/$item" "/tmp/estado/$item"
+          done
+          [ -f reports/validation/labels.json ] && install -D reports/validation/labels.json /tmp/estado/labels.json
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: steps.fuentes.outputs.changed == 'false' && always()
+        with:
+          name: estado-publico
+          path: /tmp/estado
+          retention-days: 14

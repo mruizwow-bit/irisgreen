@@ -38,6 +38,35 @@ jobs:
           (out/'preflight.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
           print(json.dumps(report,ensure_ascii=False))
           PY
+      - name: Proteger la indexación y el sitemap publicados
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('dist')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+              text=p.read_text(encoding='utf-8',errors='ignore')
+              m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',text,re.I)
+                 or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',text,re.I))
+              value=m.group(1).strip().lower() if m else None
+              counts[value if value in counts else 'otro_o_ninguno'] += 1
+          sitemap=Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          sitemap_urls=len(re.findall(r'<url(?:\s|>)',sitemap))
+          # Contrato deliberadamente congelado. Si se publica, retira o cambia la
+          # indexación de una página, este paso debe ponerse en rojo hasta revisar
+          # conscientemente estos cinco números y el sitemap. No debilitar la prueba
+          # para hacerla pasar: actualizar expected solo junto al cambio editorial.
+          expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':995}
+          got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
+          if got != expected:
+              raise SystemExit(f'Contrato público de indexación alterado. Esperado {expected}; obtenido {got}')
+          out=Path('/tmp/ig-release-report/publicacion');out.mkdir(parents=True,exist_ok=True)
+          (out/'indexacion.json').write_text(json.dumps(got,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(got,ensure_ascii=False))
+          PY
+          python3 scripts/audit_sin_estados_publicos.py --root dist
       - name: Comprobar que el contenido se lee sin JavaScript
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_sin_js.py --root dist
