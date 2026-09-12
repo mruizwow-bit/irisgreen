@@ -116,7 +116,16 @@ html[data-ig-contrast="on"] main{filter:contrast(1.2) saturate(1.1)}
 @media(max-width:420px){
  header{max-width:100vw!important;min-width:0!important;box-sizing:border-box!important}
  header>*{min-width:0;max-width:100%}
- #reading-open.reading-button{min-width:0!important;max-width:100%!important;width:auto!important;flex:1 1 auto!important;white-space:normal!important}
+ main h1{max-width:100%!important;min-width:0!important;overflow-wrap:anywhere!important}
+ .site-header .header-grid{width:100%!important;max-width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:8px!important;padding:10px 12px!important}
+ .site-header .header-grid>*{min-width:0!important;max-width:100%!important}
+ .site-header .brand{grid-column:1;grid-row:1;white-space:normal!important}
+ .site-header .nav{grid-column:1/-1;grid-row:2;display:flex!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:8px!important}
+ .site-header .music-header{grid-column:2;grid-row:1;justify-self:end}
+ .site-header .reading-button{grid-column:1;grid-row:3;justify-self:start;width:auto!important;white-space:normal!important}
+ .site-header .language{grid-column:2;grid-row:3;justify-self:end;margin:0!important;min-width:0!important;max-width:100%!important;flex-wrap:wrap!important}
+ .site-header .language>*{min-width:0!important;max-width:100%!important}
+ #reading-open.reading-button{min-width:0!important;max-width:100%!important;width:auto!important;white-space:normal!important}
  header .language{min-width:0!important;max-width:100%!important;flex-wrap:wrap!important}
  header .language>*{min-width:0!important;max-width:100%!important}
  .hd>*{min-width:0;max-width:100%}
