@@ -1,0 +1,93 @@
+name: Temporal · Paso 2 tipografía y nombres
+on:
+  push:
+    branches: ['integracion/20260912-accesibilidad-tipografia-libros-tarjeta']
+    paths: ['.github/workflows/tmp-step2-typography-names.yml']
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260912-accesibilidad-tipografia-libros-tarjeta
+      - name: Aplicar correcciones
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def append_once(path, marker, block):
+              p=Path(path); s=p.read_text(encoding='utf-8')
+              if marker not in s:
+                  s=s.rstrip()+"\n\n"+block.strip()+"\n"
+                  p.write_text(s,encoding='utf-8')
+
+          append_once('assets/site-v23.css','V40 · escala mínima de lectura y navegación','''
+          /* V40 · escala mínima de lectura y navegación · 12-09-2026 */
+          /* Las fichas finales ya están a 18px/17px mediante V24. Aquí solo se
+             corrigen secundarios y controles que habían vuelto a quedar pequeños. */
+          .hd :is(.nav a,.ico,.lang){font-size:1rem!important}
+          .situation-filter{font-size:1rem!important}
+          main:has(>article.ficha) .crumb{font-size:1rem}
+          [style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}
+          ''')
+
+          append_once('assets/ajustes-interfaz.css','STEP2_READABLE_TYPE','''
+          /* STEP2_READABLE_TYPE · páginas de componente */
+          [style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}
+          .ig-uh-nav a,.ig-uh-langs button,.ig-subtabs a{font-size:16px!important}
+          @media(min-width:651px){.ig-uh-reading{font-size:16px!important}}
+          /* Texto principal inline de las páginas nuevas: 17px pasa a la escala
+             de lectura aprobada. Las etiquetas breves nunca bajan de 14px. */
+          main [style*="font-size: 17px"],main [style*="font-size:17px"]{font-size:18px!important}
+          main [style*="font-size: 17.5px"],main [style*="font-size:17.5px"]{font-size:18px!important}
+          main [style*="font-size: 15px"],main [style*="font-size:15px"],
+          main [style*="font-size: 15.5px"],main [style*="font-size:15.5px"],
+          main [style*="font-size: 14px"],main [style*="font-size:14px"],
+          main [style*="font-size: 14.5px"],main [style*="font-size:14.5px"]{font-size:16px!important}
+          main [style*="font-size: 11px"],main [style*="font-size:11px"],
+          main [style*="font-size: 11.5px"],main [style*="font-size:11.5px"],
+          main [style*="font-size: 12px"],main [style*="font-size:12px"],
+          main [style*="font-size: 12.5px"],main [style*="font-size:12.5px"],
+          main [style*="font-size: 13px"],main [style*="font-size:13px"],
+          main [style*="font-size: 13.5px"],main [style*="font-size:13.5px"]{font-size:14px!important}
+          ''')
+
+          # La portada y la ficha especial usan su hoja propia: 18px de cuerpo,
+          # secundarios 16px y etiquetas breves 14px.
+          p=Path('assets/navigation-approved.css'); s=p.read_text(encoding='utf-8')
+          s=s.replace('font:17px/1.6 var(--body)','font:18px/1.6 var(--body)')
+          s=s.replace('font-size:13px','font-size:14px')
+          s=s.replace('font-size:15px','font-size:16px')
+          s=s.replace('font-size:17px','font-size:18px')
+          p.write_text(s,encoding='utf-8')
+
+          # Nombres visibles de respaldo: siguen siendo correctos aunque JS no llegue.
+          replacements={
+            'editorial/navigation/home-es.html':[
+              ('id="return-edit" type="button"></button>','id="return-edit" type="button">Volver a editar</button>'),
+              ('id="manual-done" type="button"></button>','id="manual-done" type="button">Cerrar</button>')],
+            'editorial/navigation/instructions-es.html':[
+              ('id="return-edit" type="button"></button>','id="return-edit" type="button">Volver a editar</button>'),
+              ('id="manual-done" type="button"></button>','id="manual-done" type="button">Cerrar</button>')],
+            'editorial/navigation/instructions-en.html':[
+              ('id="return-edit" type="button"></button>','id="return-edit" type="button">Back to editing</button>'),
+              ('id="manual-done" type="button"></button>','id="manual-done" type="button">Close</button>')],
+          }
+          for path,pairs in replacements.items():
+              p=Path(path); s=p.read_text(encoding='utf-8')
+              for old,new in pairs:
+                  if new not in s:
+                      c=s.count(old); assert c==1,(path,old,c)
+                      s=s.replace(old,new,1)
+              p.write_text(s,encoding='utf-8')
+          PY
+          git diff --check
+      - name: Guardar cambios
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/site-v23.css assets/ajustes-interfaz.css assets/navigation-approved.css editorial/navigation/home-es.html editorial/navigation/instructions-es.html editorial/navigation/instructions-en.html
+          git diff --cached --quiet || git commit -m 'Paso 2: recuperar escala legible y nombres accesibles'
+          git push origin HEAD:integracion/20260912-accesibilidad-tipografia-libros-tarjeta
