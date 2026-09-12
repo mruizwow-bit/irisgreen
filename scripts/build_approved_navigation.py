@@ -22,6 +22,11 @@ HOME_CORRECTIONS = '''<style id="ig-home-corrections">
 .small-card[data-section="condiciones"]{background:rgba(255,255,255,.8);border-color:#c4cede}
 .small-card[data-section="condiciones"]>.icon,.small-card[data-section="condiciones"]>.external{color:var(--lilac)}
 .small-card[data-section="condiciones"]:hover{border-color:var(--lilac);outline-color:var(--lilac)}
+/* Con espaciado WCAG, Lectura e idioma necesitan filas propias a 320 px. */
+@media(max-width:420px){
+.site-header .reading-button{grid-column:1/-1!important;grid-row:3!important;justify-self:start!important;min-width:0!important;max-width:100%!important;white-space:normal!important}
+.site-header .language{grid-column:1/-1!important;grid-row:4!important;justify-self:start!important;margin:0!important;min-width:0!important;max-width:100%!important;flex-wrap:wrap!important}
+}
 </style>'''
 
 
