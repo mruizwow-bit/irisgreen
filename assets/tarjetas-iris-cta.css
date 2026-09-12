@@ -1,47 +1,64 @@
+/* Tarjeta Iris · accesos de índices */
 .iris-cta{
-  --iris-accent:#6554A8;
-  --iris-soft:#EEEBF8;
-  --iris-line:#cbc4e8;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1.25rem;
-  margin:1.6rem 0;
-  padding:1rem 1.1rem;
-  border:1px solid var(--iris-line);
-  border-left:4px solid var(--iris-accent);
-  border-radius:15px;
+  --iris-accent:#6554A8;--iris-soft:#EEEBF8;--iris-line:#cbc4e8;
+  display:flex;align-items:center;justify-content:space-between;gap:1.25rem;
+  margin:1.6rem 0;padding:1rem 1.1rem;border:1px solid var(--iris-line);
+  border-left:4px solid var(--iris-accent);border-radius:15px;
   background:linear-gradient(90deg,var(--iris-soft),rgba(255,255,255,.94) 72%);
 }
 .iris-cta[data-iris-section="vida"]{--iris-accent:#855B87;--iris-soft:#F1E8F1;--iris-line:#d8c7d9}
 .iris-cta[data-iris-section="ayudas"]{--iris-accent:#586B9D;--iris-soft:#E9ECF7;--iris-line:#c8cee5}
 .iris-cta[data-iris-section="condiciones"]{--iris-accent:#626A82;--iris-soft:#ECEEF4;--iris-line:#ccd0db}
-.iris-cta-copy{min-width:0}
-.iris-cta h2{margin:0 0 .25rem;font:600 1.18rem/1.3 "Atkinson Hyperlegible",Arial,sans-serif;color:#17395c}
-.iris-cta p{margin:0;max-width:48rem;font-size:.96rem;line-height:1.5;color:#43566d}
-.iris-cta-button{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:44px;
-  padding:.62rem .9rem;
-  border:1px solid var(--iris-accent);
-  border-radius:11px;
-  background:#fff;
-  color:#17395c!important;
-  font-weight:700;
-  text-decoration:none!important;
+.iris-cta-copy{min-width:0}.iris-cta h2{margin:0 0 .25rem;font:700 1.18rem/1.3 "IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;color:#17395c}
+.iris-cta p{margin:0;max-width:48rem;font-size:1rem;line-height:1.55;color:#43566d}
+.iris-cta-button,.iris-card-jump{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+  padding:.65rem .95rem;border:1px solid var(--iris-accent,#6554A8);border-radius:11px;
+  background:#fff;color:#17395c!important;font:700 1rem/1.35 "IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
+  text-decoration:none!important;cursor:pointer;
 }
-.iris-cta-button:hover{background:var(--iris-soft);text-decoration:none!important}
-.iris-cta-button:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
-.iris-cta-compact{margin:1rem 0 1.4rem}
-.iris-cta-special{padding-bottom:1px}
-html[data-ig-contrast="on"] .iris-cta{background:#fff!important;border-color:#111!important;color:#111!important}
-html[data-ig-contrast="on"] .iris-cta :is(h2,p,.iris-cta-button){color:#111!important}
-html[data-ig-contrast="on"] .iris-cta-button{border-color:#111!important;background:#fff!important}
-@media(max-width:700px){
-  .iris-cta{align-items:flex-start;flex-direction:column;gap:.8rem}
-  .iris-cta-button{width:100%}
+.iris-cta-button:hover,.iris-card-jump:hover{background:var(--iris-soft,#EEEBF8);text-decoration:none!important}
+.iris-cta-button:focus-visible,.iris-card-jump:focus-visible{outline:3px solid var(--iris-accent,#6554A8);outline-offset:3px}
+.iris-cta-compact{margin:1rem 0 1.4rem}.iris-cta-special{padding-bottom:1px}
+
+/* Fichas finales: el artículo conserva su escala aprobada y la tarjeta ocupa
+   un rail propio, visible al entrar y separado de la cabecera sticky. */
+main:has(>article.ficha):has(>.ficha-rail){
+  width:min(calc((100vw - 2rem)/var(--ig-reading-scale,1)),73.75rem)!important;
+  max-width:73.75rem!important;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(17rem,21rem);gap:2.25rem;align-items:start;
 }
-@media print{.iris-cta{display:none!important}}
+main:has(>article.ficha):has(>.ficha-rail)>article.ficha{min-width:0}
+.ficha-rail{position:sticky;top:var(--iris-sticky-top,7rem);align-self:start;min-width:0;scroll-margin-top:var(--iris-sticky-top,7rem)}
+.iris-mini-card{
+  --iris-accent:#6554A8;--iris-soft:#EEEBF8;--iris-line:#cbc4e8;
+  position:relative;overflow:hidden;isolation:isolate;background:#fff;border:2px solid var(--iris-line);
+  border-radius:24px;padding:24px 23px 21px;box-shadow:0 14px 38px rgba(23,57,92,.09);
+  color:#263542;font:1rem/1.55 "IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
+}
+.iris-mini-card[data-iris-section="vida"]{--iris-accent:#855B87;--iris-soft:#F1E8F1;--iris-line:#d8c7d9}
+.iris-mini-card[data-iris-section="condiciones"]{--iris-accent:#626A82;--iris-soft:#ECEEF4;--iris-line:#ccd0db}
+.iris-mini-card::before{content:"";position:absolute;inset:24% 18%;background:url("/img/v40-brand-symbol.webp") center/contain no-repeat;opacity:.035;filter:grayscale(1);z-index:-1}
+.iris-mini-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--iris-line)}
+.iris-mini-brand{font-family:Newsreader,Georgia,serif;font-size:1.32rem}.iris-mini-type{text-align:right;color:var(--iris-accent);font-size:.875rem;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.iris-mini-title{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:1.85rem;line-height:1.08;margin:18px 0 15px;color:#273645}
+.iris-mini-block{margin:0 0 12px}.iris-mini-block h3{font:700 1rem/1.4 "IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;margin:0 0 4px;color:#2b3947}.iris-mini-block p{margin:0;font-size:1rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.iris-mini-need{background:var(--iris-soft);border:1px solid var(--iris-line);border-radius:14px;padding:12px 13px}.iris-mini-empty{color:#66778a}
+.iris-mini-actions{display:grid;gap:8px;margin-top:16px}.iris-mini-actions a,.iris-mini-actions button{width:100%}
+.iris-mini-foot{display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid #e2e5ec;color:#68778a;font-size:.875rem;line-height:1.4}
+
+/* La ficha aprobada de instrucciones ya usa una columna derecha para su mensaje;
+   allí la Tarjeta Iris se coloca después del contenido principal y no compite con
+   el editor. */
+.iris-cta-special .iris-mini-card{max-width:34rem;margin:1.5rem auto}
+
+html[data-ig-contrast="on"] :is(.iris-cta,.iris-mini-card){background:#fff!important;border-color:#111!important;color:#111!important}
+html[data-ig-contrast="on"] :is(.iris-cta,.iris-mini-card) :is(h2,h3,p,a,button){color:#111!important;border-color:#111!important}
+html[data-ig-motion="off"] .iris-mini-card,html[data-ig-motion="off"] .iris-mini-card *{animation:none!important;transition:none!important}
+
+@media(max-width:880px){
+  main:has(>article.ficha):has(>.ficha-rail){display:grid;grid-template-columns:1fr!important;gap:1.35rem;width:100%!important}
+  .ficha-rail{position:static;top:auto;order:2}.iris-mini-card{max-width:38rem;margin-inline:auto}
+}
+@media(max-width:700px){.iris-cta{align-items:flex-start;flex-direction:column;gap:.8rem}.iris-cta-button{width:100%}.iris-mini-foot{display:block}.iris-mini-foot span{display:block;margin-top:3px}}
+@media print{.iris-cta,.ficha-rail{display:none!important}}
