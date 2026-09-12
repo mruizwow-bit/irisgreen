@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Conecta Tarjetas Iris con las secciones españolas sin tocar contenido editorial.
 
-En las fichas de Situaciones, Vida diaria y Condiciones muestra la Tarjeta Iris
-completa en la columna derecha, como en la referencia aprobada. El botón
-«Personalizar el texto» abre la herramienta completa con el ejemplo ya cargado.
-La personalización se conserva solo en el navegador de la persona.
-En los índices conserva un acceso compacto a la herramienta.
+En los índices de Situaciones, Vida diaria, Condiciones y Ayudas mantiene la
+Tarjeta Iris libre. Dentro de cada ficha crea una tarjeta terminada a partir
+del contenido de esa entrada: título, dificultad y apoyos ya están escritos.
+La ficha no se convierte en formulario ni exige redactar nada para poder usarla.
 """
 from __future__ import annotations
 
@@ -37,7 +36,7 @@ INDEX_PAGES = {
 COPY = {
     "situaciones": {"title":"Tarjeta Iris","text":"Escribe qué te cuesta, qué te ayuda y qué necesitas.","button":"Preparar una Tarjeta Iris"},
     "vida": {"title":"Tarjeta Iris","text":"Prepara una tarjeta breve para esta situación cotidiana.","button":"Preparar una Tarjeta Iris"},
-    "condiciones": {"title":"Tarjeta Iris","text":"Escribe tus necesidades concretas. La tarjeta no las deduce de una condición.","button":"Preparar una Tarjeta Iris"},
+    "condiciones": {"title":"Tarjeta Iris","text":"Crea una tarjeta con tus necesidades concretas.","button":"Preparar una Tarjeta Iris"},
     "ayudas": {"title":"Tarjeta Iris","text":"Lleva por escrito lo que necesitas pedir o explicar.","button":"Preparar una Tarjeta Iris"},
 }
 
@@ -48,12 +47,11 @@ INDEX_PARAMS = {
     "ayudas": {"section":"ayudas","title":"Para un trámite o una ayuda","dificultad":"","ayuda":"","necesito":""},
 }
 
-SAMPLE = {
-    "title": "Para mi cita",
-    "dificultad": "Me cuesta recordar las indicaciones cuando recibo mucha información seguida.",
-    "ayuda": "Me ayuda que me expliquen una cosa cada vez y me den tiempo para preguntar.",
-    "necesito": "Necesito llevarme por escrito los pasos que debo seguir.",
-}
+SKIP_HEADINGS = (
+    "base documental", "fuentes", "dónde está escrito", "ficha técnica",
+    "urgencias", "cuándo pedir ayuda", "señales de alerta", "enlaza con",
+    "puede relacionarse", "links with",
+)
 
 
 def read(path: Path) -> str:
@@ -70,6 +68,129 @@ def url_for(section: str, params: dict[str,str] | None = None) -> str:
     return "/es/tarjetas-iris/?" + urlencode(values)
 
 
+def clean(fragment: str) -> str:
+    fragment = re.sub(r"<br\s*/?>", " ", fragment, flags=re.I)
+    fragment = re.sub(r"<[^>]+>", " ", fragment)
+    return re.sub(r"\s+", " ", html.unescape(fragment)).strip()
+
+
+def clip(text: str, limit: int = 360) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    out: list[str] = []
+    size = 0
+    for sentence in sentences:
+        extra = len(sentence) + (1 if out else 0)
+        if out and size + extra > limit:
+            break
+        if not out and len(sentence) > limit:
+            cut = sentence[:limit].rsplit(" ", 1)[0].rstrip(" ,;:")
+            return cut + "…"
+        out.append(sentence)
+        size += extra
+    return " ".join(out) if out else text[:limit].rstrip() + "…"
+
+
+def section_blocks(text: str) -> list[tuple[str,str,str]]:
+    blocks: list[tuple[str,str,str]] = []
+    for match in re.finditer(r"<section\b([^>]*)>(.*?)</section>", text, flags=re.I | re.S):
+        attrs, body = match.group(1), match.group(2)
+        hm = re.search(r"<h2\b[^>]*>(.*?)</h2>", body, flags=re.I | re.S)
+        heading = clean(hm.group(1)) if hm else ""
+        blocks.append((attrs, heading, body))
+    return blocks
+
+
+def body_texts(body: str) -> list[str]:
+    found = re.findall(r"<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>", body, flags=re.I | re.S)
+    values = []
+    for fragment in found:
+        value = clean(fragment)
+        if value:
+            values.append(value)
+    return values
+
+
+def first_h1(text: str) -> str:
+    m = re.search(r"<h1\b[^>]*>(.*?)</h1>", text, flags=re.I | re.S)
+    if not m:
+        raise AssertionError("Ficha sin h1")
+    return clean(m.group(1)).strip("«»“”")
+
+
+def find_heading(blocks: list[tuple[str,str,str]], names: tuple[str,...]) -> list[str]:
+    targets = tuple(n.casefold() for n in names)
+    for attrs, heading, body in blocks:
+        h = heading.casefold()
+        if any(h == t or t in h for t in targets):
+            return body_texts(body)
+    return []
+
+
+def find_helps(blocks: list[tuple[str,str,str]]) -> list[str]:
+    for attrs, heading, body in blocks:
+        if re.search(r'class=["\'][^"\']*\bhelps\b', attrs, flags=re.I):
+            vals = body_texts(body)
+            if vals:
+                return vals
+    return find_heading(blocks, ("qué puede ayudar ahora", "qué ayuda", "qué puede ayudar"))
+
+
+def fallback_practical(blocks: list[tuple[str,str,str]]) -> list[str]:
+    out: list[str] = []
+    for attrs, heading, body in blocks[1:]:
+        h = heading.casefold()
+        if any(word in h for word in SKIP_HEADINGS):
+            continue
+        vals = body_texts(body)
+        if not vals:
+            continue
+        out.extend(vals[:1])
+        if len(out) >= 2:
+            break
+    return out
+
+
+def card_data(text: str, section: str) -> dict[str,str]:
+    title = first_h1(text)
+    blocks = section_blocks(text)
+
+    if section == "situaciones":
+        difficulty = find_heading(blocks, ("en pocas palabras",))
+        helps = find_helps(blocks)
+    elif section == "condiciones":
+        difficulty = find_heading(blocks, ("descripción",))
+        helps = find_helps(blocks)
+    else:
+        difficulty = body_texts(blocks[0][2]) if blocks else []
+        helps = find_helps(blocks) or fallback_practical(blocks)
+
+    if not difficulty:
+        lede = re.search(r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>', text, flags=re.I | re.S)
+        difficulty = [clean(lede.group(1))] if lede else []
+    if not helps:
+        helps = fallback_practical(blocks)
+
+    if not difficulty or not helps:
+        raise AssertionError(f"No se pudo preparar Tarjeta Iris: {title}")
+
+    dificultad = clip(" ".join(difficulty[:1]), 320)
+    ayuda = clip(" ".join(helps[:2]), 360)
+    necesito = clip("Necesito que se tenga en cuenta este apoyo: " + ayuda, 420)
+
+    if section == "condiciones":
+        dificultad = clip("Mis necesidades pueden estar en algunas de estas áreas: " + dificultad, 340)
+
+    return {
+        "title": title,
+        "dificultad": dificultad,
+        "ayuda": ayuda,
+        "necesito": necesito,
+    }
+
+
 def cta(section: str, href: str, compact: bool = False) -> str:
     item = COPY[section]
     cls = "iris-cta iris-cta-compact" if compact else "iris-cta"
@@ -82,23 +203,24 @@ def cta(section: str, href: str, compact: bool = False) -> str:
     )
 
 
-def full_card(section: str) -> str:
+def full_card(section: str, text: str) -> str:
     e = lambda value: html.escape(value, quote=True)
-    href = url_for(section, SAMPLE)
+    data = card_data(text, section)
+    href = url_for(section)
     return (
         f'<aside class="iris-cta iris-mini-card" data-iris-section="{section}" {MARKER} '
-        'aria-label="Tarjeta Iris de ejemplo">'
+        'aria-label="Tarjeta Iris preparada para esta entrada">'
         '<header class="iris-mini-head"><span class="iris-mini-brand">Iris Green</span>'
-        '<span class="iris-mini-type">TARJETA PERSONAL</span></header>'
-        f'<h2 class="iris-mini-title">{e(SAMPLE["title"])}</h2>'
+        '<span class="iris-mini-type">TARJETA IRIS</span></header>'
+        f'<h2 class="iris-mini-title">{e(data["title"])}</h2>'
         '<section class="iris-mini-block"><h3>Esto me cuesta</h3>'
-        f'<p>{e(SAMPLE["dificultad"])}</p></section>'
+        f'<p>{e(data["dificultad"])}</p></section>'
         '<section class="iris-mini-block"><h3>Me ayuda</h3>'
-        f'<p>{e(SAMPLE["ayuda"])}</p></section>'
+        f'<p>{e(data["ayuda"])}</p></section>'
         '<section class="iris-mini-block iris-mini-need"><h3>Necesito</h3>'
-        f'<p>{e(SAMPLE["necesito"])}</p></section>'
-        f'<a class="iris-mini-button" href="{e(href)}">Personalizar el texto</a>'
-        '<footer class="iris-mini-foot"><span>irisgreen.eu</span><span>Se guarda en tu navegador</span></footer>'
+        f'<p>{e(data["necesito"])}</p></section>'
+        f'<a class="iris-mini-own" href="{e(href)}">Crear mi propia tarjeta</a>'
+        '<footer class="iris-mini-foot"><span>irisgreen.eu</span><span>Lista para enseñar o guardar</span></footer>'
         '</aside>'
     )
 
@@ -114,7 +236,7 @@ def add_css(text: str) -> str:
 def insert_detail(text: str, section: str, path: Path) -> str:
     if MARKER in text:
         return text
-    block = full_card(section)
+    block = full_card(section, text)
     article_pos = text.rfind("</article>")
     if article_pos >= 0:
         corte = article_pos + len("</article>")
@@ -198,6 +320,8 @@ def main() -> None:
                 changed.append(path.relative_to(root).as_posix())
             if after.count(MARKER) != 1 or "iris-mini-card" not in after:
                 raise AssertionError(f"Tarjeta Iris duplicada o ausente: {path}")
+            if "Personalizar el texto" in after:
+                raise AssertionError(f"Botón antiguo todavía presente: {path}")
         detail_counts[section] = len(pages)
 
     index_count = 0
@@ -227,8 +351,10 @@ def main() -> None:
         "detail_pages_connected": detail_counts,
         "section_indexes_connected": index_count,
         "total_pages_connected": expected_total,
-        "detail_card": "approved-compact-right-rail",
-        "browser_storage": True,
+        "detail_card": "prefilled-from-entry",
+        "detail_editing": False,
+        "free_card_on_indexes": True,
+        "browser_storage_free_tool": True,
         "tool_route": "/es/tarjetas-iris/",
         "home_untouched": True,
         "english_untouched": True,
