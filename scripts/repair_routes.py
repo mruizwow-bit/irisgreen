@@ -140,13 +140,30 @@ def run(check=False):
             if n:report['source_edits'].append('home: enlace del directorio de ayudas')
         assert Page(s).robots==doc.robots,'Cambio no autorizado de robots: '+rel
         if s!=old:staged[p]=s
-    assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'
-    if (ROOT/'_redirects').exists():
-        assert (ROOT/'_redirects').read_text().startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'
-    red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']
-    red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))
-    red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']
-    staged[ROOT/'_redirects']='\n'.join(red)
+    redirects_path=ROOT/'_redirects'
+    assert redirects_path.exists(), 'Falta _redirects con el mapa histórico PT-BR → ES'
+    existing_redirects=redirects_path.read_text()
+    assert existing_redirects.startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'
+    if report['redirects']:
+        # Compatibilidad si se ejecuta sobre un árbol antiguo que todavía conserva las fuentes PT-BR.
+        assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'
+        red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']
+        red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))
+        red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']
+        staged[redirects_path]='\n'.join(red)
+    else:
+        # Las 375 fuentes PT-BR ya no existen. El mapa 301 es ahora el registro histórico
+        # que preserva enlaces antiguos; se valida pero no se regenera ni se modifica.
+        for line in existing_redirects.splitlines():
+            parts=line.split()
+            if len(parts)!=3 or not parts[0].startswith('/pt-br/') or parts[0] in ('/pt-br/','/pt-br/*'):
+                continue
+            source,target,status=parts
+            assert status=='301!' and target.startswith('/es/'), (source,target,status)
+            assert resolve(ROOT,target) is not None, (source,target,'Destino español inexistente')
+            report['redirects'].append({'from':source,'to':target,'status':301,'source':'_redirects histórico'})
+        assert len(report['redirects'])==375,'El mapa histórico PT-BR debe conservar exactamente 375 redirecciones ficha a ficha'
+        staged[redirects_path]=existing_redirects
     cfg,removed=render_config((ROOT/'netlify.toml').read_text());staged[ROOT/'netlify.toml']=cfg;report['config_rules_removed']=removed
     staged[ROOT/'404.html']=ERROR_PAGE
     gitignore=ROOT/'.gitignore';ign=gitignore.read_text() if gitignore.exists() else ''
