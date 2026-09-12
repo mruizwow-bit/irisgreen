@@ -81,7 +81,8 @@ def rel(p: Path) -> str:
 
 
 def main():
-    report = {"counts": {}, "warnings": [], "condition_signs": [], "daily_relations": [], "all_matches": []}
+    report = {"counts": {}, "warnings": [], "condition_signs": [], "daily_relations": []}
+    situation_matches = []
     for name, base in SCOPES.items():
         files = detail_files(base)
         report["counts"][name] = {"detail_files": len(files), "matches": 0}
@@ -91,8 +92,8 @@ def main():
             report["counts"][name]["matches"] += len(found)
             ctype = condition_type(text) if name.startswith("condiciones") else ""
             for heading, _s, _e, body in found:
-                row = {"path": rel(p), "heading": heading}
-                report["all_matches"].append(row)
+                if name.startswith("situaciones"):
+                    situation_matches.append({"path": rel(p), "heading": heading})
                 if heading in {"Señales de alerta", "Warning signs"}:
                     report["warnings"].append({"path": rel(p), "heading": heading, "text": body[:900]})
                 if name.startswith("condiciones") and heading in {"Señales", "Signs"}:
@@ -109,7 +110,16 @@ def main():
                 "mentions_end_concepts": ("Al final de cada ficha" in text) if lang == "es" else ("At the end of each" in text),
             }
 
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    print("COUNTS " + json.dumps(report["counts"], ensure_ascii=False, sort_keys=True))
+    print("DAILY_INDEX_ES " + json.dumps(report.get("daily_index_es", {}), ensure_ascii=False, sort_keys=True))
+    print("DAILY_INDEX_EN " + json.dumps(report.get("daily_index_en", {}), ensure_ascii=False, sort_keys=True))
+    print("CONDITION_SIGNS " + json.dumps(report["condition_signs"], ensure_ascii=False))
+    print("SITUATION_MATCHES")
+    for row in situation_matches:
+        print(f"{row['path']}\t{row['heading']}")
+    print("WARNINGS")
+    for row in report["warnings"]:
+        print(f"{row['path']}\t{row['heading']}\t{row['text']}")
 
 
 if __name__ == "__main__":
