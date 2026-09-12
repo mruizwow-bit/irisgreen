@@ -498,9 +498,6 @@ body.tts [data-read]{cursor:pointer}
 .nav a.calma[aria-current=page]{background:#4a3f8f;color:#fff}
 @media(max-width:73.99rem){.nav .sep{display:none}}
 
-/* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */
-.langs .lang[lang="pt-BR" i],.langs a.lang[href*="/pt-br/"],.langs a.lang[href*="/PT-BR/"]{display:none}
-
 /* V38 · La playlist cuelga de su icono, no empuja la página */
 #pl{
  position:fixed; bottom:clamp(1rem,3vw,1.75rem); right:clamp(1rem,3vw,1.75rem); top:auto; z-index:45;
@@ -542,9 +539,6 @@ body.tts [data-read]{cursor:pointer}
 .azl:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #cuenta{margin:0;font-size:.95rem;color:#5a6675}
-/* V39 · PT-BR en pausa: tampoco en la cabecera generada. */
-.ig-uh-langs button[data-lang="pt" i],.ig-uh-langs button[lang="pt-BR" i]{display:none}
-
 
 /* V24 · fichas finales: ancho y escala de lectura */
 /* Solo las páginas finales que usan article.ficha. Los listados, la portada,
