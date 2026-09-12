@@ -18,11 +18,12 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
     # Las 48 fichas españolas de Vida diaria fueron revisadas y contrastadas el 10-09-2026.
-    # Publicarlas antes de generar datos/rutas permite que sitemap y metadatos usen el estado final.
+    # Este publicador ya no decide robots: la indexación vive en la fuente de cada ficha.
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
-    # Segunda pasada idempotente: garantiza que ninguna reparación posterior reintroduzca BORRADOR/noindex.
+    # Segunda pasada idempotente: conserva las correcciones editoriales de Biblioteca
+    # si una reparación intermedia reescribe alguna de sus páginas.
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
@@ -46,7 +47,7 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/run_accessibility_descriptions_part1.py'),'--root',str(dst),'--apply'],cwd=ROOT,check=True)
     # Normalizar únicamente el atributo técnico de estado de las fichas de Situaciones.
     subprocess.run([sys.executable,str(ROOT/'scripts/normalize_situation_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Los estados editoriales se normalizan DESPUÉS de comprobar los textos protegidos.
+    # Los estados editoriales se retiran DESPUÉS de comprobar los textos protegidos.
     # Esta tarea no modifica descripciones, fuentes ni grados A/B/C.
     subprocess.run([sys.executable,str(ROOT/'scripts/validate_publication_statuses.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Investigación ya está publicada en es/investigacion y se copia a dist con el resto del sitio.
@@ -58,6 +59,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris se conecta desde sus contextos, nunca desde la portada.
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Contrato permanente: ningún estado editorial puede reaparecer en la salida pública.
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
