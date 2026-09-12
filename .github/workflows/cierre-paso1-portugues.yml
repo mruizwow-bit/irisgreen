@@ -16,51 +16,73 @@ jobs:
         with:
           ref: cierre/20260912-sale-portugues
           fetch-depth: 0
-      - name: Desacoplar los 301 de las fuentes retiradas
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/repair_routes.py')
-          s=p.read_text(encoding='utf-8')
-          old='''    assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'\n    if (ROOT/'_redirects').exists():\n        assert (ROOT/'_redirects').read_text().startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'\n    red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']\n    red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))\n    red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']\n    staged[ROOT/'_redirects']='\\n'.join(red)\n'''
-          new='''    redirects_path=ROOT/'_redirects'\n    assert redirects_path.exists(), 'Falta _redirects con el mapa histórico PT-BR → ES'\n    existing_redirects=redirects_path.read_text()\n    assert existing_redirects.startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'\n    if report['redirects']:\n        # Compatibilidad si se ejecuta sobre un árbol antiguo que todavía conserva las fuentes PT-BR.\n        assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'\n        red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']\n        red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))\n        red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']\n        staged[redirects_path]='\\n'.join(red)\n    else:\n        # Las 375 fuentes PT-BR ya no existen. El mapa 301 es ahora el registro histórico\n        # que preserva enlaces antiguos; se valida pero no se regenera ni se modifica.\n        for line in existing_redirects.splitlines():\n            parts=line.split()\n            if len(parts)!=3 or not parts[0].startswith('/pt-br/') or parts[0] in ('/pt-br/','/pt-br/*'):\n                continue\n            source,target,status=parts\n            assert status=='301!' and target.startswith('/es/'), (source,target,status)\n            assert resolve(ROOT,target) is not None, (source,target,'Destino español inexistente')\n            report['redirects'].append({'from':source,'to':target,'status':301,'source':'_redirects histórico'})\n        assert len(report['redirects'])==375,'El mapa histórico PT-BR debe conservar exactamente 375 redirecciones ficha a ficha'\n        staged[redirects_path]=existing_redirects\n'''
-          if old not in s:
-              if '_redirects histórico' in s:
-                  print('El desacoplamiento ya estaba aplicado.')
-              else:
-                  raise SystemExit('No se encontró el bloque esperado de repair_routes.py')
-          else:
-              p.write_text(s.replace(old,new,1),encoding='utf-8')
-          PY
-          git diff --check
-          if ! git diff --quiet -- scripts/repair_routes.py; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add scripts/repair_routes.py
-            git commit -m '[paso1-rutas] Conservar los 301 sin depender de fuentes PT-BR'
-            git push origin HEAD:cierre/20260912-sale-portugues
-          fi
+
       - name: Retirar i18n portugués residual de Trámites
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re, json
-          paths=[Path('es/tramites/tramites-datos.json'),Path('es/tramites/directorio/tramites-datos.json')]
-          total=0
+          import json, re
+
+          def drop_named_object(text: str, key: str) -> tuple[str, int]:
+              rx = re.compile(r',\s*"' + re.escape(key) + r'"\s*:\s*\{')
+              removed = 0
+              pos = 0
+              while True:
+                  m = rx.search(text, pos)
+                  if not m:
+                      break
+                  brace = text.find('{', m.start())
+                  depth = 0
+                  in_string = False
+                  escaped = False
+                  end = None
+                  for i in range(brace, len(text)):
+                      ch = text[i]
+                      if in_string:
+                          if escaped:
+                              escaped = False
+                          elif ch == '\\':
+                              escaped = True
+                          elif ch == '"':
+                              in_string = False
+                          continue
+                      if ch == '"':
+                          in_string = True
+                      elif ch == '{':
+                          depth += 1
+                      elif ch == '}':
+                          depth -= 1
+                          if depth == 0:
+                              end = i + 1
+                              break
+                  if end is None:
+                      raise SystemExit(f'Objeto {key!r} sin cierre')
+                  text = text[:m.start()] + text[end:]
+                  removed += 1
+                  pos = m.start()
+              return text, removed
+
+          paths = [
+              Path('es/tramites/tramites-datos.json'),
+              Path('es/tramites/directorio/tramites-datos.json'),
+          ]
+          total = 0
           for p in paths:
-              s=p.read_text(encoding='utf-8')
-              before=s
-              # Cada objeto pt de i18n solo contiene cadenas planas; quitarlo sin reformatear el JSON evita ruido en el diff.
-              s,n=re.subn(r',\s*"pt"\s*:\s*\{[^{}]*\}', '', s)
-              json.loads(s)
-              if '/pt-br/' in s or re.search(r'"pt"\s*:',s):
-                  raise SystemExit(f'Quedan datos PT en {p}')
-              if s!=before:
-                  p.write_text(s,encoding='utf-8')
-                  print(p, 'objetos pt retirados:', n)
-                  total+=n
-          if total==0:
-              print('Los datos portugueses de Trámites ya estaban retirados.')
+              before = p.read_text(encoding='utf-8')
+              after, n = drop_named_object(before, 'pt')
+              data = json.loads(after)
+              for item in data:
+                  i18n = item.get('i18n', {}) if isinstance(item, dict) else {}
+                  if 'pt' in i18n:
+                      raise SystemExit(f'Queda i18n.pt en {p}')
+              if '/pt-br/' in after or re.search(r'"pt"\s*:', after):
+                  raise SystemExit(f'Queda contenido PT-BR en {p}')
+              if after != before:
+                  p.write_text(after, encoding='utf-8')
+                  total += n
+                  print(f'{p}: {n} objetos pt retirados')
+          if total == 0:
+              print('Los datos PT-BR de Trámites ya estaban retirados.')
           PY
           git diff --check
           if ! git diff --quiet -- es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json; then
@@ -69,7 +91,9 @@ jobs:
             git add es/tramites/tramites-datos.json es/tramites/directorio/tramites-datos.json
             git commit -m '[paso1-datos] Retirar traducciones PT-BR residuales de Trámites'
             git push origin HEAD:cierre/20260912-sale-portugues
+            exit 0
           fi
+
       - name: Construir y comprobar ausencia de portugués publicado
         run: |
           rm -rf dist
@@ -77,36 +101,54 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re, json
-          root=Path('dist')
-          pats={
-            'ruta_pt_br': re.compile(r'/pt-br/',re.I),
-            'hreflang_pt': re.compile(r'hreflang\s*=\s*["\']pt(?:-BR)?["\']',re.I),
-            'lang_pt': re.compile(r'(?:data-lang|lang)\s*=\s*["\']pt(?:-BR)?["\']',re.I),
-            'portugues_visible': re.compile(r'>\s*(?:PT(?:-BR)?|Portugu[eê]s)\s*<',re.I),
+          root = Path('dist')
+          patterns = {
+              'ruta_pt_br': re.compile(r'/pt-br/', re.I),
+              'hreflang_pt': re.compile(r'hreflang\s*=\s*["\']pt(?:-BR)?["\']', re.I),
+              'lang_pt': re.compile(r'(?:data-lang|lang)\s*=\s*["\']pt(?:-BR)?["\']', re.I),
+              'portugues_visible': re.compile(r'>\s*(?:PT(?:-BR)?|Portugu[eê]s)\s*<', re.I),
           }
-          hits=[]
+          hits = []
           for p in root.rglob('*'):
-            if not p.is_file() or p.suffix.lower() not in {'.html','.js','.json','.xml','.css','.txt'}: continue
-            try: s=p.read_text(encoding='utf-8')
-            except UnicodeDecodeError: continue
-            for name,rx in pats.items():
-              m=rx.search(s)
-              if m: hits.append((name,p.relative_to(root).as_posix(),m.group(0)))
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.json','.xml','.css','.txt'}:
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              for name, rx in patterns.items():
+                  m = rx.search(text)
+                  if m:
+                      hits.append((name, p.relative_to(root).as_posix(), m.group(0)))
           if hits:
-            for h in hits[:100]: print('PT_RESIDUAL',h)
-            raise SystemExit(f'Quedan {len(hits)} referencias públicas al portugués')
-          pages=list(root.rglob('*.html'))
-          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+              for hit in hits[:100]:
+                  print('PT_RESIDUAL', hit)
+              raise SystemExit(f'Quedan {len(hits)} referencias públicas al portugués')
+
+          pages = list(root.rglob('*.html'))
+          counts = {'index,follow':0, 'noindex,follow':0, 'otro_o_ninguno':0}
           for p in pages:
-            s=p.read_text(encoding='utf-8',errors='ignore')
-            m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',s,re.I) or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',s,re.I))
-            v=m.group(1).strip().lower() if m else None
-            counts[v if v in counts else 'otro_o_ninguno']+=1
-          sm=Path('dist/sitemap.xml').read_text(encoding='utf-8')
-          got={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sm))}
-          expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':995}
-          print(json.dumps(got,ensure_ascii=False))
-          if got!=expected: raise SystemExit(f'Contrato cambió: {got} != {expected}')
+              text = p.read_text(encoding='utf-8', errors='ignore')
+              m = (re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']', text, re.I)
+                   or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']', text, re.I))
+              value = m.group(1).strip().lower() if m else None
+              counts[value if value in counts else 'otro_o_ninguno'] += 1
+          sitemap = Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          got = {
+              'html': len(pages),
+              **counts,
+              'sitemap_urls': len(re.findall(r'<url(?:\s|>)', sitemap)),
+          }
+          expected = {
+              'html': 998,
+              'index,follow': 982,
+              'noindex,follow': 2,
+              'otro_o_ninguno': 14,
+              'sitemap_urls': 995,
+          }
+          print(json.dumps(got, ensure_ascii=False))
+          if got != expected:
+              raise SystemExit(f'Contrato cambió: {got} != {expected}')
           PY
           python3 scripts/audit_sin_estados_publicos.py --root dist
           python3 scripts/audit_sin_js.py --root dist
