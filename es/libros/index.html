@@ -67,7 +67,7 @@
 .ig-uh-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 9px;border-radius:999px;color:#17395c!important;font-size:14.5px;white-space:nowrap}
 .ig-uh-nav a:hover{background:rgba(31,95,139,.07);color:#164a70!important}
 .ig-uh-nav a[aria-current='page']{background:#17395c;color:#fff!important}
-.ig-nav-en,.ig-nav-pt{display:none!important}html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
+.ig-nav-en{display:none!important}html[lang^='en'] .ig-nav-es{display:none!important}html[lang^='en'] .ig-nav-en{display:inline-flex!important}
 .ig-uh-right{flex:0 0 auto;display:flex;align-items:center;gap:6px;margin-left:0}.ig-uh-tools{display:flex;align-items:center;gap:5px}
 .ig-uh-music,.ig-uh-reading{min-height:44px;background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:999px;cursor:pointer;text-decoration:none!important}
 .ig-uh-music{width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-color:rgba(90,73,168,.32)}
@@ -77,7 +77,7 @@
 @media(max-width:1500px){.ig-uh-inner{flex-wrap:wrap;padding:9px 22px}.ig-uh-brand{font-size:24px}.ig-uh-right{margin-left:auto}.ig-uh-nav{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:4px 0 0;border-top:1px solid rgba(23,57,92,.07)}.ig-uh-nav::-webkit-scrollbar{display:none}.ig-uh-nav a{flex:0 0 auto}}
 @media(max-width:650px){.ig-uh-inner{padding:8px 13px;gap:5px}.ig-uh-brand span{font-size:22px}.ig-uh-reading{width:44px;padding:0;justify-content:center;font-size:0}.ig-uh-langs button{min-width:42px;padding:0 8px;font-size:12px!important}.ig-uh-nav a{font-size:13.5px;padding:0 8px}}
 </style>
-<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="Explorar" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-pt" href="/">Início</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-pt" href="/pt-br/neurodiversidade/condicoes/">Condições</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-pt" href="/pt-br/situacoes/">Situações</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-pt" href="/es/biblioteca/">Vida diária</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-pt" href="/es/videos/">Vídeos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-pt" href="/es/investigacion/">Pesquisa</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-pt" href="/es/datos/">Dados</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a class="ig-nav-pt" href="/es/tramites/directorio/">Apoios</a><a aria-current="page" class="ig-nav-es" href="/es/libros/">Libros</a><a aria-current="page" class="ig-nav-en" href="/es/libros/">Books</a><a aria-current="page" class="ig-nav-pt" href="/es/libros/">Livros</a><a class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-pt" href="/es/recursos/juegos/">Jogar</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/es/intereses/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/es/sitio-tranquilo/">Quiet place</a><a class="ig-nav-pt ig-calma" href="/es/intereses/">Seus interesses</a><a class="ig-nav-pt ig-calma" href="/es/taller/">A oficina</a><a class="ig-nav-pt ig-calma" href="/es/sitio-tranquilo/">Lugar tranquilo</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="Música" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="Lectura" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="Idioma"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
+<header class="ig-uh"><div class="ig-uh-inner"><a class="ig-uh-brand" href="/"><img src="/img/v40-brand-symbol.webp" alt=""><span>Iris Green</span></a><button type="button" class="ig-menu-button" aria-label="Abrir menú" aria-controls="ig-main-nav" aria-expanded="false">Menú</button><nav aria-label="Explorar" class="ig-uh-nav" id="ig-main-nav"><a class="ig-nav-es" href="/">Inicio</a><a class="ig-nav-en" href="/">Home</a><a class="ig-nav-es" href="/es/neurodiversidad/condiciones/">Condiciones</a><a class="ig-nav-en" href="/en/neurodiversity/conditions/">Conditions</a><a class="ig-nav-es" href="/es/situaciones/">Situaciones</a><a class="ig-nav-en" href="/en/situations/">Situations</a><a class="ig-nav-es" href="/es/biblioteca/">Vida diaria</a><a class="ig-nav-en" href="/es/biblioteca/">Everyday life</a><a class="ig-nav-es" href="/es/videos/">Vídeos</a><a class="ig-nav-en" href="/es/videos/">Videos</a><a class="ig-nav-es" href="/es/investigacion/">Investigación</a><a class="ig-nav-en" href="/es/investigacion/">Research</a><a class="ig-nav-es" href="/es/datos/">Datos</a><a class="ig-nav-en" href="/es/datos/">Data</a><a class="ig-nav-es" href="/es/tramites/directorio/">Ayudas</a><a class="ig-nav-en" href="/es/tramites/directorio/">Support</a><a aria-current="page" class="ig-nav-es" href="/es/libros/">Libros</a><a aria-current="page" class="ig-nav-en" href="/es/libros/">Books</a><a class="ig-nav-es" href="/es/recursos/juegos/">Jugar</a><a class="ig-nav-en" href="/es/recursos/juegos/">Play</a><a class="ig-nav-es ig-calma" href="/es/intereses/">Tus intereses</a><a class="ig-nav-es ig-calma" href="/es/taller/">El taller</a><a class="ig-nav-es ig-calma" href="/es/sitio-tranquilo/">Rincón tranquilo</a><a class="ig-nav-en ig-calma" href="/es/intereses/">Your interests</a><a class="ig-nav-en ig-calma" href="/es/taller/">The workshop</a><a class="ig-nav-en ig-calma" href="/es/sitio-tranquilo/">Quiet place</a></nav><div class="ig-uh-right"><div class="ig-uh-tools"><button class="ig-uh-music" sc-camel-on-click="{{ toggleMusic }}" aria-label="Música" title="Música"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6.5l10-2V16"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg></button><button class="ig-uh-reading" sc-camel-on-click="{{ toggleA11y }}" aria-label="Lectura" title="Lectura" data-ig-reading-trigger="" aria-controls="ig-reading-panel" aria-expanded="{{ a11yOpen }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#5a49a8" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M4.5 8.5h15M12 8.5v6M12 14.5l-3.5 6M12 14.5l3.5 6"></path></svg><span>Lectura</span></button></div><div class="ig-uh-langs" aria-label="Idioma"><sc-for list="{{ langButtons }}" as="l" hint-placeholder-count="3"><button sc-camel-on-click="{{ l.pick }}" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid rgba(23,57,92,.16);">{{ l.label }}</button></sc-for></div></div></div></header>
 
   <main style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 80px;">
     <p style="margin: 0 0 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #a8336f;">{{ tEyebrow }}</p>
@@ -214,13 +214,13 @@ const STR = {
         title: "Luma y la flor que sabía escuchar",
         desc: "Cuento ilustrado sobre sensibilidad, sobrecarga sensorial y emociones intensas. Para leer con un niño o una niña que lo vive, sin explicar de más.",
         prices: [["Amazon.es · tapa blanda", "14,99 €"], ["Lulu · tapa dura", "24,95 €"], ["Kindle", "según tienda"], ["Edición japonesa · 日本語", "según tienda"]],
-        note: "También puede pedirse en librerías conectadas a la distribución internacional de Ingram. La edición japonesa ya está publicada. PT-BR está en revisión.",
+        note: "También puede pedirse en librerías conectadas a la distribución internacional de Ingram. La edición japonesa ya está publicada.",
       },
       {
         title: "Autismo en la vida diaria",
         desc: "Guía práctica construida a partir de escenas cotidianas: qué observar, qué ayuda y qué conviene evitar. Sin teoría de más.",
-        prices: [["Amazon.es · impreso", "13,95 €"], ["Kindle ES", "5,95 €"], ["Edición EN", "según tienda"], ["PT-BR · tapa blanda", "según tienda"], ["Kindle PT-BR", "según tienda"]],
-        note: "Kindle Unlimited disponible. La edición en portugués de Brasil ya está publicada, en tapa blanda y en ebook. Lulu e IngramSpark se incorporarán cuando estén activas las nuevas ediciones.",
+        prices: [["Amazon.es · impreso", "13,95 €"], ["Kindle ES", "5,95 €"], ["Edición EN", "según tienda"]],
+        note: "Kindle Unlimited disponible. Lulu e IngramSpark se incorporarán cuando estén activas las nuevas ediciones.",
       }
     ]
   },
@@ -242,41 +242,13 @@ const STR = {
         title: "Luma and the Flower That Knew How to Listen",
         desc: "An illustrated story about sensitivity, sensory overload and intense emotions. To read with a child who lives it, without over-explaining.",
         prices: [["Amazon · paperback", "€14.99"], ["Lulu · hardcover", "€24.95"], ["Kindle", "store price"], ["Japanese edition · 日本語", "store price"]],
-        note: "It can also be ordered from bookshops connected to Ingram international distribution. The Japanese edition is already published. PT-BR is under review.",
+        note: "It can also be ordered from bookshops connected to Ingram international distribution. The Japanese edition is already published.",
       },
       {
         title: "Autism in Everyday Life",
         desc: "A practical guide built from everyday scenes: what to look for, what helps and what to avoid. No extra theory.",
-        prices: [["Amazon · print", "€13.95"], ["Kindle", "€5.95"], ["EN edition", "store price"], ["PT-BR · paperback", "store price"], ["Kindle PT-BR", "store price"]],
-        note: "Available on Kindle Unlimited. The Brazilian Portuguese edition is now published, in paperback and ebook. Lulu and IngramSpark will be added once the new editions are live.",
-      }
-    ]
-  },
-  pt: {
-    creditsTitle: "Quem faz o quê",
-    credits: "Os livros são escritos por Iris Green, a partir do que acontece na sua casa, e ela mesma os adapta para leitura fácil. A revisão profissional é de Natalia. As ilustrações, de Mary. As traduções, de Patricia, Wataru e Iris.",
-    navHome: "Início", navVideos: "Vídeos", navAsk: "O que posso pedir?", navTopics: "Temas", reading: "Leitura",
-    readingPanel: "Leitura acessível", textSize: "Tamanho do texto", reset: "Restaurar",
-    eyebrow: "Livros de Iris Green", title: "Os livros que mantêm este site de pé.",
-    lede: "Todo o resto aqui é gratuito. Estes livros são o que mantém o site: você pode ler as primeiras páginas antes de decidir.",
-    coming: "Em breve", comingTitle: "Em preparação",
-    whyTitle: "Por que um site gratuito tem livros",
-    whyText: "A base de conhecimento, a videoteca, os jogos e os guias de trâmites não custam nada e não têm publicidade. Os livros são a única fonte de renda: cada compra paga a hospedagem, a revisão das fontes e as traduções.",
-    tagline: "Base de conhecimento sobre neurodiversidade",
-    toggles: ["Letras mais separadas", "Botões maiores", "Mais contraste", "Guia de leitura", "Ler em voz alta", "Reduzir movimento"],
-    published: "Publicado", langs: "ES · EN publicados",
-    books: [
-      {
-        title: "Luma e a flor que sabia escutar",
-        desc: "Conto ilustrado sobre sensibilidade, sobrecarga sensorial e emoções intensas. Para ler junto com uma criança que vive isso, sem explicar demais.",
-        prices: [["Amazon · capa comum", "14,99 €"], ["Lulu · capa dura", "24,95 €"], ["Kindle", "preço da loja"], ["Edição japonesa · 日本語", "preço da loja"]],
-        note: "Também pode ser pedido em livrarias ligadas à distribuição internacional da Ingram. A edição japonesa já está publicada. PT-BR está em revisão.",
-      },
-      {
-        title: "Autismo na vida diária",
-        desc: "Guia prático construído a partir de cenas do dia a dia: o que observar, o que ajuda e o que é melhor evitar. Sem teoria demais.",
-        prices: [["Amazon · impresso", "13,95 €"], ["Kindle", "5,95 €"], ["Edição EN", "preço da loja"], ["PT-BR · capa comum", "preço da loja"], ["Kindle PT-BR", "preço da loja"]],
-        note: "Disponível no Kindle Unlimited. A edição em português do Brasil já está publicada, em capa comum e em ebook. Lulu e IngramSpark entram quando as novas edições estiverem ativas.",
+        prices: [["Amazon · print", "€13.95"], ["Kindle", "€5.95"], ["EN edition", "store price"]],
+        note: "Available on Kindle Unlimited. Lulu and IngramSpark will be added once the new editions are live.",
       }
     ]
   }
@@ -284,13 +256,12 @@ const STR = {
 
 const COVERS = [
   { cover: A + "/assets/books/luma-es-512.webp", alt: "Portada de Luma y la flor que sabía escuchar", muestra: A + "/es/libros/#luma", links: [["Amazon ES", "https://www.amazon.es/Luma-flor-sab%C3%ADa-escuchar-sensibilidad/dp/8409805855"], ["Amazon EN", "https://www.amazon.es/Luma-Flower-That-Knew-Listen/dp/8409805944"], ["Kindle", "https://www.amazon.es/Luma-flor-sab%C3%ADa-escuchar-sensibilidad-ebook/dp/B0G7MDRGRQ"], ["Amazon 日本語", "https://www.amazon.es/dp/B0HHK6MLJW"], ["Lulu", "https://www.lulu.com/es/shop/iris-green-and-mary-illustrafavole/luma-y-la-flor-que-sab%C3%ADa-escuchar/hardcover/product-2mepvn5.html"]] },
-  { cover: A + "/assets/books/autismo-es-512.webp", alt: "Portada de Autismo en la vida diaria", muestra: A + "/es/libros/#autismo", links: [["Amazon ES", "https://www.amazon.es/dp/8409892839"], ["Amazon EN", "https://www.amazon.es/dp/B0HGXRS29W"], ["Kindle", "https://www.amazon.es/s?k=Autismo+en+la+vida+diaria+Iris+Green&i=digital-text"], ["Kindle PT-BR", "https://www.amazon.es/dp/B0HHN9537P"], ["PT-BR impreso", "https://www.amazon.es/dp/B0HHN5B6HS"]] }
+  { cover: A + "/assets/books/autismo-es-512.webp", alt: "Portada de Autismo en la vida diaria", muestra: A + "/es/libros/#autismo", links: [["Amazon ES", "https://www.amazon.es/dp/8409892839"], ["Amazon EN", "https://www.amazon.es/dp/B0HGXRS29W"], ["Kindle", "https://www.amazon.es/s?k=Autismo+en+la+vida+diaria+Iris+Green&i=digital-text"]] }
 ];
 
 const NAVL = {
   es: [["/","Inicio"],["/es/neurodiversidad/condiciones/","Condiciones"],["/es/situaciones/","Situaciones"],["/es/biblioteca/","Vida diaria"],["/es/videos/","Vídeos"],["/es/investigacion/","Investigación"],["/es/datos/","Datos"],["/es/tramites/directorio/","Ayudas"],["/es/libros/","Libros"]],
-  en: [["/","Home"],["/es/neurodiversidad/condiciones/","Conditions"],["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/es/datos/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]],
-  pt: [["/","Início"],["/es/neurodiversidad/condiciones/","Condições"],["/es/situaciones/","Situações"],["/es/biblioteca/","Vida diária"],["/es/videos/","Vídeos"],["/es/investigacion/","Pesquisa"],["/es/datos/","Dados"],["/es/tramites/directorio/","Diretório de ajudas"],["/es/libros/","Livros"]]
+  en: [["/","Home"],["/es/neurodiversidad/condiciones/","Conditions"],["/es/situaciones/","Situations"],["/es/biblioteca/","Everyday life"],["/es/videos/","Videos"],["/es/investigacion/","Research"],["/es/datos/","Figures"],["/es/tramites/directorio/","Support directory"],["/es/libros/","Books"]]
 };
 
 class Component extends DCLogic {
@@ -303,12 +274,12 @@ class Component extends DCLogic {
       const lang = localStorage.getItem("ig_lang");
       const use = lang && STR[lang] ? lang : "es";
       if (use !== "es") this.setState({ lang: use });
-      document.documentElement.lang = use === "pt" ? "pt-BR" : use;
+      document.documentElement.lang = use;
     } catch (e) {}
   }
 
   setLang(lang) {
-    try { document.documentElement.lang = lang === "pt" ? "pt-BR" : lang; } catch (e) {}
+    try { document.documentElement.lang = lang; } catch (e) {}
     this.setState({ lang });
     try { localStorage.setItem("ig_lang", lang); } catch (e) {}
   }
@@ -323,7 +294,7 @@ class Component extends DCLogic {
     if (!on) return;
     const main = document.querySelector("main");
     const u = new SpeechSynthesisUtterance((main ? main.innerText : "").slice(0, 4000));
-    u.lang = { es: "es-ES", en: "en-GB", pt: "pt-BR" }[this.state.lang] || "es-ES";
+    u.lang = { es: "es-ES", en: "en-GB" }[this.state.lang] || "es-ES";
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   }

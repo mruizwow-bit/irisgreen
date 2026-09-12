@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rutas/SEO técnico, sin cambiar fichas, reglas, ilustraciones o decisiones noindex.
-La correspondencia portuguesa procede exclusivamente de los enlaces ES existentes.
+El portugués ya no forma parte de las fuentes; sus redirecciones históricas se conservan en _redirects.
 """
 from __future__ import annotations
 import argparse
@@ -12,7 +12,7 @@ import tomllib
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import unquote, urljoin, urlsplit
+from urllib.parse import unquote, urlsplit
 
 SITE='https://irisgreen.eu'
 SITEMAP_NS='http://www.sitemaps.org/schemas/sitemap/0.9'
@@ -43,9 +43,9 @@ class Page(HTMLParser):
 def route(rel):
     return '/'+(rel[:-10] if rel.endswith('index.html') else rel)
 
-def web_pages(root=ROOT,portuguese=True):
+def web_pages(root=ROOT):
     files=[root/'index.html']
-    for lang in ('es','en','pt-br') if portuguese else ('es','en'):
+    for lang in ('es','en'):
         files.extend(sorted((root/lang).rglob('*.html')))
     return [p for p in files if p.is_file()]
 
@@ -96,7 +96,7 @@ def render_config(old):
     return '\n'.join(out),removed
 
 def run(check=False):
-    report={'metadata_alternates_removed':{},'breadcrumbs_removed':[],'redirects':[],'source_edits':[],'existing_noindex_preserved':True}
+    report={'metadata_alternates_removed':{},'breadcrumbs_removed':[],'source_edits':[],'existing_noindex_preserved':True}
     before_sitemap=ET.parse(ROOT/'sitemap.xml')
     before_urls=[e.text for e in before_sitemap.findall('.//{'+SITEMAP_NS+'}loc')]
     report['before_sitemap_count']=len(before_urls)
@@ -104,16 +104,6 @@ def run(check=False):
     staged={}
     for p in web_pages():
         rel=p.relative_to(ROOT).as_posix();old=p.read_text();doc=Page(old)
-        if rel.startswith('pt-br/'):
-            refs=[u for lang,u in doc.alternates if lang.lower()=='es'] or doc.es_links
-            assert refs,'Falta correspondencia española: '+rel
-            target=urljoin(SITE+route(rel),refs[0]);parts=urlsplit(target)
-            assert parts.netloc=='irisgreen.eu' and parts.path.startswith('/es/'),(rel,target)
-            dest=resolve(ROOT,parts.path);assert dest is not None,(rel,target)
-            canonical=Page(dest.read_text()).canonical
-            assert canonical==[SITE+parts.path],(rel,canonical,target)
-            report['redirects'].append({'from':route(rel),'to':parts.path,'status':301,'source':refs[0]})
-            continue
         s,n=re.subn(r'<link\b(?=[^>]*\bhreflang=["\']pt(?:-br)?["\'])[^>]*>\s*','',old,flags=re.I)
         if n:report['metadata_alternates_removed'][rel]=n
         if rel in ('es/neurodiversidad/condiciones/index.html','en/neurodiversity/conditions/index.html'):
@@ -140,13 +130,14 @@ def run(check=False):
             if n:report['source_edits'].append('home: enlace del directorio de ayudas')
         assert Page(s).robots==doc.robots,'Cambio no autorizado de robots: '+rel
         if s!=old:staged[p]=s
-    assert len(report['redirects'])==375,'El inventario portugués ha cambiado: revisar el mapeo'
-    if (ROOT/'_redirects').exists():
-        assert (ROOT/'_redirects').read_text().startswith('# Generado desde los enlaces españoles'), 'No sobrescribir reglas manuales no revisadas'
-    red=['# Generado desde los enlaces españoles de las 375 páginas existentes.','# PT-BR sigue retirado: se mantiene el destino equivalente, no se publica su contenido.','/es/ / 301!','/pt-br/ / 301!']
-    red.extend(r['from']+' '+r['to']+' 301!' for r in sorted(report['redirects'],key=lambda x:x['from']))
-    red+=['# Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.','/pt-br/* / 301!','']
-    staged[ROOT/'_redirects']='\n'.join(red)
+    redirects=ROOT/'_redirects'
+    assert redirects.is_file(),'Falta _redirects con las rutas históricas de PT-BR'
+    redirects_bytes=redirects.read_bytes()
+    redirect_text=redirects_bytes.decode('utf-8')
+    assert redirect_text.startswith('# Generado desde los enlaces españoles de las 375 páginas existentes.'),'No sustituir los 301 históricos sin revisión explícita'
+    assert len(re.findall(r'^/pt-br/(?!\*\s)',redirect_text,flags=re.M))==376,'El inventario de redirecciones PT-BR ha cambiado'
+    assert '/pt-br/* / 301!' in redirect_text,'Falta la redirección de reserva PT-BR'
+    report['redirects_preserved_sha256']=hashlib.sha256(redirects_bytes).hexdigest()
     cfg,removed=render_config((ROOT/'netlify.toml').read_text());staged[ROOT/'netlify.toml']=cfg;report['config_rules_removed']=removed
     staged[ROOT/'404.html']=ERROR_PAGE
     gitignore=ROOT/'.gitignore';ign=gitignore.read_text() if gitignore.exists() else ''
@@ -159,7 +150,7 @@ def run(check=False):
     if '/sitemap-1.xml\n' not in hdr:hdr+='/sitemap-1.xml\n  Content-Type: application/xml; charset=UTF-8\n  Cache-Control: public, max-age=0, must-revalidate\n'
     staged[ROOT/'_headers']=hdr
     urls=[]
-    for p in web_pages(portuguese=False):
+    for p in web_pages():
         s=staged.get(p,p.read_text());d=Page(s);rel=p.relative_to(ROOT).as_posix();u=SITE+route(rel)
         if d.noindex:continue
         assert d.canonical==[u],(rel,d.canonical,'Canonical indexable no coincide')
@@ -170,7 +161,7 @@ def run(check=False):
     ET.indent(xml,space='  ');serialized='<?xml version="1.0" encoding="UTF-8"?>\n'+ET.tostring(xml,encoding='unicode')+'\n'
     staged[ROOT/'sitemap.xml']=serialized;staged[ROOT/'sitemap-1.xml']=serialized
     report['sitemap_count']=len(urls);report['sitemap_added']=sorted(set(urls)-set(before_urls));report['sitemap_removed']=sorted(set(before_urls)-set(urls))
-    report['notes']=['No se modifica ningún noindex ni se oculta una ficha por su estado documental.','No se añaden fechas lastmod o fechas de revisión ficticias.','Las fechas uniformes de sitemap se omiten: no se ha establecido una modificación sustancial individual.','La copia sitemap-1.xml se conserva por compatibilidad, idéntica al sitemap principal.','No se certifica indexación ni rastreo por Google; las comprobaciones son técnicas.']
+    report['notes']=['No se modifica ningún noindex ni se oculta una ficha por su estado documental.','No se añaden fechas lastmod o fechas de revisión ficticias.','Las fechas uniformes de sitemap se omiten: no se ha establecido una modificación sustancial individual.','La copia sitemap-1.xml se conserva por compatibilidad, idéntica al sitemap principal.','Los 301 históricos de PT-BR se conservan en _redirects y ya no se derivan de fuentes portuguesas.','No se certifica indexación ni rastreo por Google; las comprobaciones son técnicas.']
     changed=[p for p,s in staged.items() if not p.exists() or p.read_text()!=s]
     report['changed_files']=[p.relative_to(ROOT).as_posix() for p in changed]
     if check:
@@ -179,7 +170,7 @@ def run(check=False):
         for p in changed:p.write_text(staged[p],encoding='utf-8')
         out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
         if not (out/'changes.json').exists():(out/'changes.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-    print(compact({'changed_files':len(changed),'sitemap_urls':len(urls),'portuguese_mappings':len(report['redirects']),'removed_alternates':sum(report['metadata_alternates_removed'].values())}))
+    print(compact({'changed_files':len(changed),'sitemap_urls':len(urls),'redirects_preserved':True,'removed_alternates':sum(report['metadata_alternates_removed'].values())}))
     return report
 
 if __name__=='__main__':
