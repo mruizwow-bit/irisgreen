@@ -57,14 +57,23 @@ def clean_text(text: str) -> str:
 
     # Cabecera antigua: después de retirar el enlace PT no debe quedar CSS para ocultarlo
     # ni reglas que cambien la navegación cuando el documento tenga lang=pt.
-    text = text.replace('.ig-nav-en,.ig-nav-pt{display:none!important}',
-                        '.ig-nav-en{display:none!important}')
-    text = text.replace("html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es",
-                        "html[lang^='en'] .ig-nav-es")
-    text = text.replace('html[lang^="en"] .ig-nav-es,html[lang^="pt"] .ig-nav-es',
-                        'html[lang^="en"] .ig-nav-es')
-    text = text.replace("html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}", '')
-    text = text.replace('html[lang^="pt"] .ig-nav-pt{display:inline-flex!important}', '')
+    for old, new in (
+        ('.ig-nav-en,.ig-nav-pt{display:none!important}',
+         '.ig-nav-en{display:none!important}'),
+        ('a.ig-nav-en,a.ig-nav-pt{display:none!important}',
+         'a.ig-nav-en{display:none!important}'),
+        ("html[lang^='en'] .ig-nav-es,html[lang^='pt'] .ig-nav-es",
+         "html[lang^='en'] .ig-nav-es"),
+        ('html[lang^="en"] .ig-nav-es,html[lang^="pt"] .ig-nav-es',
+         'html[lang^="en"] .ig-nav-es'),
+        ("html[lang^='en'] .ig-nav-en,html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}",
+         "html[lang^='en'] .ig-nav-en{display:inline-flex!important}"),
+        ('html[lang^="en"] .ig-nav-en,html[lang^="pt"] .ig-nav-pt{display:inline-flex!important}',
+         'html[lang^="en"] .ig-nav-en{display:inline-flex!important}'),
+        ("html[lang^='pt'] .ig-nav-pt{display:inline-flex!important}", ''),
+        ('html[lang^="pt"] .ig-nav-pt{display:inline-flex!important}', ''),
+    ):
+        text = text.replace(old, new)
 
     # Si queda una preferencia local antigua con valor pt, la página vuelve a ES; no
     # conserva un estado de idioma que ya no existe.
