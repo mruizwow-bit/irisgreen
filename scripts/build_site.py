@@ -88,6 +88,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # La utilidad de impresión es noindex, pero conserva metadatos y semántica propios.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
     # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
