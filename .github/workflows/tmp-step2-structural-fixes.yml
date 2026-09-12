@@ -1,0 +1,60 @@
+name: Temporal · Paso 2 estructura real
+on:
+  push:
+    branches: ['integracion/20260912-accesibilidad-tipografia-libros-tarjeta']
+    paths: ['.github/workflows/tmp-step2-structural-fixes.yml']
+permissions:
+  contents: write
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260912-accesibilidad-tipografia-libros-tarjeta
+      - name: Corregir impresión y enlaces redundantes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          # Página de impresión: landmark y encabezado accesible, sin alterar
+          # la maqueta impresa. El título se traduce junto con el resto de UI.
+          p=Path('es/intereses/imprimir/index.html')
+          s=p.read_text(encoding='utf-8')
+          if '.ig-sr-only{' not in s:
+              s=s.replace('.barra{position:sticky;', '.ig-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}\n.barra{position:sticky;', 1)
+          old='<div class="hojas" id="hojas"></div>'
+          new='<main id="main"><h1 class="ig-sr-only" id="print-title">Cromos para imprimir</h1><div class="hojas" id="hojas"></div></main>'
+          assert old in s or new in s
+          s=s.replace(old,new,1)
+          marker='document.getElementById("modo1").textContent="One per sheet";'
+          replacement=marker+'document.getElementById("print-title").textContent="Cards to print";'
+          if replacement not in s:
+              assert s.count(marker)==1
+              s=s.replace(marker,replacement,1)
+          p.write_text(s,encoding='utf-8')
+
+          # Las imágenes de las tarjetas de Juegos son enlaces redundantes: cada
+          # tarjeta ya tiene su enlace textual «Jugar ahora». Se conservan
+          # clicables visualmente con ratón, pero se quitan del orden de foco y
+          # del árbol accesible para no ofrecer un enlace vacío duplicado.
+          p=Path('es/recursos/juegos/index.html')
+          s=p.read_text(encoding='utf-8')
+          pattern=re.compile(r'<a(?![^>]*aria-hidden=)([^>]*?)>\s*(<img[^>]*\balt=["\']["\'][^>]*>)\s*</a>',re.I|re.S)
+          def repl(m):
+              return '<a aria-hidden="true" tabindex="-1"'+m.group(1)+'>'+m.group(2)+'</a>'
+          s2,n=pattern.subn(repl,s)
+          # En la fuente actual hay la plantilla y sus instantáneas sin JS.
+          assert n>=11 or 'aria-hidden="true" tabindex="-1"' in s, n
+          p.write_text(s2,encoding='utf-8')
+          print({'redundant_game_image_links_fixed':n})
+          PY
+          git diff --check
+      - name: Guardar cambios
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- es/intereses/imprimir/index.html es/recursos/juegos/index.html
+          git diff --cached --quiet || git commit -m 'Paso 2: corregir estructura accesible restante'
+          git push origin HEAD:integracion/20260912-accesibilidad-tipografia-libros-tarjeta
