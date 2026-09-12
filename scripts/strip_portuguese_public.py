@@ -25,18 +25,19 @@ EXACT_TEXT_REPLACEMENTS = {
     'Sigue pendiente la traducción completa de las 120 fichas a EN y PT-BR si la colección se publica también en esos idiomas.':
         'Sigue pendiente la traducción completa de las 120 fichas a EN si la colección se publica también en ese idioma.',
 }
+PT_LANGUAGE_JSON = {'es/taller/taller-retos.json'}
 
 
-def clean_json_value(value):
+def clean_json_value(value, *, drop_language_keys: bool):
     if isinstance(value, dict):
         out = {}
         for key, item in value.items():
-            if str(key).lower().replace('_', '-') in {'pt', 'pt-br'}:
+            if drop_language_keys and str(key).lower().replace('_', '-') in {'pt', 'pt-br'}:
                 continue
-            out[key] = clean_json_value(item)
+            out[key] = clean_json_value(item, drop_language_keys=drop_language_keys)
         return out
     if isinstance(value, list):
-        return [clean_json_value(item) for item in value]
+        return [clean_json_value(item, drop_language_keys=drop_language_keys) for item in value]
     if isinstance(value, str):
         return EXACT_TEXT_REPLACEMENTS.get(value, value)
     return value
@@ -71,9 +72,10 @@ def run(root: Path) -> dict:
                 original = json.loads(path.read_text(encoding='utf-8'))
             except (UnicodeDecodeError, json.JSONDecodeError):
                 continue
-            before_keys = sum(1 for _ in _walk_pt_keys(original))
-            cleaned = clean_json_value(original)
-            after_keys = sum(1 for _ in _walk_pt_keys(cleaned))
+            drop_language_keys = rel in PT_LANGUAGE_JSON
+            before_keys = sum(1 for _ in _walk_pt_keys(original)) if drop_language_keys else 0
+            cleaned = clean_json_value(original, drop_language_keys=drop_language_keys)
+            after_keys = sum(1 for _ in _walk_pt_keys(cleaned)) if drop_language_keys else 0
             removed_json_keys += before_keys - after_keys
             if cleaned != original:
                 path.write_text(json.dumps(cleaned, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
