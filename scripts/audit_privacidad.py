@@ -49,12 +49,12 @@ TRACKER_PATTERNS = {
     "Matomo": re.compile(r"\bmatomo\.js\b|\b_paq\.push\s*\(", re.I),
 }
 
+# Estas referencias sí contradicen que las tipografías se sirvan localmente.
+# Spotify puede aparecer como enlace editorial saliente (por ejemplo, en Vídeos)
+# sin que el reproductor de música del sitio cargue nada desde Spotify.
 FORBIDDEN_RUNTIME_DOMAINS = {
     "fonts.googleapis.com",
     "fonts.gstatic.com",
-    "open.spotify.com",
-    "spotify.com",
-    "www.spotify.com",
 }
 
 LOAD_ATTRS = {
@@ -66,7 +66,6 @@ LOAD_ATTRS = {
     "video": ("src", "poster"),
     "embed": ("src",),
     "object": ("data",),
-    "form": ("action",),
 }
 
 LOAD_LINK_RELS = {
@@ -127,14 +126,12 @@ def main() -> None:
 
     errors: list[str] = []
     privacy_checks: dict[str, dict[str, bool]] = {}
-    privacy_texts: dict[str, str] = {}
     for rel, expected in PRIVACY_PAGES.items():
         path = root / rel
         if not path.is_file():
             errors.append(f"Falta la página de privacidad: {rel}")
             continue
         text = path.read_text(encoding="utf-8", errors="strict")
-        privacy_texts[rel] = text
         checks = {name: phrase in text for name, phrase in expected.items()}
         privacy_checks[rel] = checks
         for name, ok in checks.items():
@@ -146,7 +143,6 @@ def main() -> None:
 
     html_files = sorted(root.rglob("*.html"))
     third_party_initial: list[dict[str, str]] = []
-    youtube_iframes: list[str] = []
     for path in html_files:
         parser = ResourceParser()
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -157,8 +153,6 @@ def main() -> None:
             if h == "irisgreen.eu" or h.endswith(".irisgreen.eu"):
                 continue
             third_party_initial.append({"page": rel, "tag": tag, "url": url})
-            if tag == "iframe" and "youtube" in h:
-                youtube_iframes.append(url)
 
     # Las páginas afirman que los vídeos no se cargan hasta que la persona pulsa.
     # Una carga remota en el HTML inicial contradice esa afirmación, aunque no sea analítica.
@@ -185,6 +179,23 @@ def main() -> None:
             youtube_standard_embed_hits.append({"file": rel, "url": url})
         youtube_nocookie_refs += len(re.findall(r"https?://www\.youtube-nocookie\.com/embed/[A-Za-z0-9_-]+", text, re.I))
 
+    music_script = root / "assets/musica.js"
+    music_check = {
+        "exists": music_script.is_file(),
+        "local_audio_path": False,
+        "absolute_http_urls": [],
+    }
+    if music_script.is_file():
+        music_text = music_script.read_text(encoding="utf-8", errors="strict")
+        music_check["local_audio_path"] = "new URL('/audio/'" in music_text
+        music_check["absolute_http_urls"] = sorted(set(re.findall(r"https?://[^\s\"'<>]+", music_text, re.I)))
+    if not music_check["exists"]:
+        errors.append("Falta assets/musica.js en la salida pública")
+    elif not music_check["local_audio_path"]:
+        errors.append("El reproductor de música no construye sus pistas desde /audio/ en el origen propio")
+    if music_check["absolute_http_urls"]:
+        errors.append("El reproductor de música contiene URLs HTTP externas: " + ", ".join(music_check["absolute_http_urls"][:12]))
+
     if tracker_hits:
         errors.append("Se detectaron firmas de analítica/rastreo: " + ", ".join(f"{x['tracker']} en {x['file']}" for x in tracker_hits[:12]))
     if forbidden_runtime_hits:
@@ -200,10 +211,12 @@ def main() -> None:
         "recursos_terceros_en_html_inicial": third_party_initial,
         "firmas_analitica_rastreo": tracker_hits,
         "referencias_runtime_prohibidas": forbidden_runtime_hits,
+        "reproductor_musica_local": music_check,
         "youtube_embeds_estandar": youtube_standard_embed_hits,
         "youtube_nocookie_embed_referencias": youtube_nocookie_refs,
         "alcance": [
             "Comprueba hechos técnicos observables en dist; no es una auditoría jurídica.",
+            "Los enlaces editoriales salientes no cuentan como cargas de terceros hasta que la persona decide abrirlos.",
             "No determina qué hace internamente el navegador con las voces de lectura en voz alta.",
             "No sustituye la revisión de proveedores externos después de una interacción voluntaria.",
         ],
