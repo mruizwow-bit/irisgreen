@@ -11,19 +11,6 @@
 [build.environment]
   "PYTHON_VERSION" = "3.12"
 
-# MODO MANTENIMIENTO TEMPORAL: retirar estas dos reglas para reabrir el sitio.
-[[redirects]]
-  from = "/mantenimiento/"
-  to = "/assets/maintenance.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/mantenimiento/"
-  status = 302
-  force = true
-
 [[redirects]]
   from = "/es/recursos/juegos/juegos-86.json"
   to = "/es/recursos/juegos/juegos-120.json"
