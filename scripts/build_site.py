@@ -1,16 +1,48 @@
 #!/usr/bin/env python3
 """Publica solo los recursos del sitio; no copia informes, scripts o instrucciones.
-El directorio dist se crea de cero. No se elimina ni cambia la biblioteca fuente.
+El directorio dist se crea de cero. La construcción normal se ejecuta dentro de
+una copia temporal del repositorio para que ningún script de publicación pueda
+modificar la fuente real.
 """
 import json
+import os
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
+STAGING_ENV='IRISGREEN_BUILD_STAGING'
+
+
+def _copy_repo_to_staging(stage: Path) -> None:
+    """Copia los insumos del repositorio a una raíz temporal desechable."""
+    ignore=shutil.ignore_patterns('.git','dist','.baseline','__pycache__','*.pyc')
+    shutil.copytree(ROOT,stage,ignore=ignore)
+
+
+def _build_in_staging():
+    """Ejecuta este mismo build sobre una copia temporal y devuelve solo dist."""
+    with tempfile.TemporaryDirectory(prefix='irisgreen-build-') as tmp:
+        stage=Path(tmp)/'repo'
+        _copy_repo_to_staging(stage)
+        env=os.environ.copy();env[STAGING_ENV]='1'
+        subprocess.run([sys.executable,str(stage/'scripts/build_site.py')],cwd=stage,env=env,check=True)
+        staged_dist=stage/'dist'
+        if not staged_dist.is_dir():raise FileNotFoundError(staged_dist)
+        dst=ROOT/'dist'
+        if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
+        if dst.exists():shutil.rmtree(dst)
+        shutil.copytree(staged_dist,dst)
+        return dst
+
 
 def build():
+    if os.environ.get(STAGING_ENV)!='1':
+        return _build_in_staging()
+
+    # A partir de aquí cualquier escritura ocurre únicamente dentro de staging.
     # Estas dos fichas se editan en editorial/reviews; el resto conserva su origen.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
@@ -27,7 +59,6 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     # Decisión editorial final 12-09-2026: las relaciones clínicas/taxonómicas automáticas
     # y los avisos genéricos dejan de formar parte de Situaciones y Vida diaria.
-    # Se aplica sobre la fuente real después de cualquier publicador que pudiera reintroducirlos.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_auditoria_420_relaciones.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
