@@ -1,3 +1,4 @@
+# retry 2: el remate no escribe informes dentro de dist
 name: Temporal · aplicar Paso 2
 on:
   push:
@@ -32,12 +33,6 @@ jobs:
           from pathlib import Path
           import re
 
-          def replace_once(path, old, new):
-              p=Path(path); s=p.read_text(encoding='utf-8')
-              n=s.count(old); assert n==1, f'{path}: esperado 1, encontrado {n}'
-              p.write_text(s.replace(old,new,1),encoding='utf-8')
-
-          # El remate de fuentes/impresión actúa al final, cuando todo dist ya existe.
           p=Path('scripts/build_site.py'); s=p.read_text(encoding='utf-8')
           marker="    # Contrato permanente: ningún estado editorial puede reaparecer en la salida pública.\n"
           call="    # Fuentes locales, impresión común y retirada definitiva de Google Fonts.\n    subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)\n"
@@ -45,21 +40,17 @@ jobs:
           if call not in s:s=s.replace(marker,call+marker,1)
           p.write_text(s,encoding='utf-8')
 
-          # La comprobación estructural pasa a ser bloqueante cuando ya puede distinguir lo visible.
           p=Path('.github/workflows/comprobar-publicacion.yml'); s=p.read_text(encoding='utf-8')
           s=s.replace('python3 scripts/audit_accesibilidad.py --root dist --informe-solo','python3 scripts/audit_accesibilidad.py --root dist')
           p.write_text(s,encoding='utf-8')
 
-          # Cero sin barra también cuando una página trae Atkinson en style="...".
           p=Path('assets/site-v23.css'); s=p.read_text(encoding='utf-8')
           rule='[style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}'
           if rule not in s:
-              anchor='body{\n'
-              assert anchor in s
+              anchor='body{\n'; assert anchor in s
               s=s.replace(anchor,rule+'\n'+anchor,1)
           p.write_text(s,encoding='utf-8')
 
-          # Los controles compartidos dejan de bajar a 12–14 px en móvil.
           p=Path('assets/ajustes-interfaz.css'); s=p.read_text(encoding='utf-8')
           changes={
             '.ig-uh-reading{font-size:14px!important;width:auto!important;padding:0 10px!important}':'.ig-uh-reading{font-size:16px!important;width:auto!important;padding:0 10px!important}',
@@ -72,7 +63,6 @@ jobs:
               else:assert new in s, old
           p.write_text(s,encoding='utf-8')
 
-          # La página de impresión tiene región principal y encabezado real.
           p=Path('es/intereses/imprimir/index.html'); s=p.read_text(encoding='utf-8')
           if 'id="print-title"' not in s:
               s=s.replace('.barra{position:sticky;', '.print-page-title{width:194mm;max-width:calc(100% - 36px);margin:22px auto 0;font-family:\'Newsreader\',Georgia,serif;font-weight:600;font-size:28px;line-height:1.2}\n.barra{position:sticky;',1)
@@ -84,7 +74,6 @@ jobs:
               assert old in s;s=s.replace(old,new,1)
           p.write_text(s,encoding='utf-8')
 
-          # Las imágenes de las tarjetas de Juegos son decorativas: el enlace de jugar ya está justo debajo.
           p=Path('es/recursos/juegos/index.html'); s=p.read_text(encoding='utf-8')
           pat=re.compile(r'<a(?P<a>[^>]*(?:data-dc-tpl="112"|href="\{\{ g\.href \}\}")[^>]*)>\s*(?P<img><img[^>]*\balt=""[^>]*>)\s*</a>')
           s,n=pat.subn(lambda m:m.group('img'),s)
