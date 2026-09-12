@@ -73,6 +73,9 @@ jobs:
       - name: Auditoría global de accesibilidad estructural
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_accesibilidad.py --root dist
+      - name: Inventariar dependencias para CSP
+        if: ${{ !cancelled() }}
+        run: python3 scripts/audit_csp_dependencies.py --root dist
       - name: Comprobar que no queda portugués
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_sin_portugues.py --root dist
@@ -98,7 +101,7 @@ jobs:
           from pathlib import Path
           import shutil
           out=Path('/tmp/ig-release-report');out.mkdir(exist_ok=True)
-          for item in ['coherence/tests.json','preferences/after.json','thumbnails/tests.json','publicacion/sin-js.json','publicacion/accesibilidad.json']:
+          for item in ['coherence/tests.json','preferences/after.json','thumbnails/tests.json','publicacion/sin-js.json','publicacion/accesibilidad.json','publicacion/csp-inventario.json']:
               src=Path('dist/reports')/item
               if src.is_file():
                   dst=out/item;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
