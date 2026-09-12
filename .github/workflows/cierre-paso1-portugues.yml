@@ -1,0 +1,119 @@
+name: Cierre · paso 1 · sale el portugués
+
+on:
+  push:
+    branches:
+      - cierre/20260912-sale-portugues
+
+permissions:
+  contents: write
+
+jobs:
+  retirar-portugues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: cierre/20260912-sale-portugues
+          fetch-depth: 0
+      - name: Aplicar retirada mecánica
+        id: aplicar
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess
+          root=Path('.')
+          marker=Path('.paso1-portugues-aplicado')
+          if marker.exists():
+              print('already=1')
+              raise SystemExit(0)
+
+          pt=Path('pt-br')
+          files=[p for p in pt.rglob('*') if p.is_file()] if pt.exists() else []
+          print('Fuentes pt-br antes:', len(files))
+          if len(files) != 375:
+              raise SystemExit(f'Se esperaban 375 fuentes en pt-br y hay {len(files)}')
+          subprocess.run(['rm','-rf','pt-br'],check=True)
+
+          # V38/V39: quitar únicamente las dos reglas que ocultaban un idioma que deja de existir.
+          css=Path('assets/site-v23.css')
+          text=css.read_text(encoding='utf-8')
+          old1='''/* V38 · PT-BR en pausa: el selector no lo ofrece hasta que las páginas existan */\n.langs .lang[lang="pt-BR" i],.langs a.lang[href*="/pt-br/"],.langs a.lang[href*="/PT-BR/"]{display:none}\n\n'''
+          old2='''/* V39 · PT-BR en pausa: tampoco en la cabecera generada. */\n.ig-uh-langs button[data-lang="pt" i],.ig-uh-langs button[lang="pt-BR" i]{display:none}\n\n'''
+          if old1 not in text or old2 not in text:
+              raise SystemExit('No se localizaron exactamente las reglas V38/V39 de PT-BR')
+          text=text.replace(old1,'').replace(old2,'')
+          css.write_text(text,encoding='utf-8')
+
+          # Retirar alternates/hreflang y controles/enlaces PT que aún vivan en ES/EN o assets.
+          exts={'.html','.js','.json','.xml','.py','.css'}
+          skip={'_redirects'}
+          changed=0
+          for p in list(Path('es').rglob('*'))+list(Path('en').rglob('*'))+list(Path('assets').rglob('*'))+list(Path('editorial').rglob('*')):
+              if not p.is_file() or p.suffix.lower() not in exts or p.name in skip:
+                  continue
+              try: s=p.read_text(encoding='utf-8')
+              except UnicodeDecodeError: continue
+              before=s
+              # link alternate/hreflang pt o pt-BR
+              s=re.sub(r'\s*<link\b(?=[^>]*\bhreflang=["\']pt(?:-BR)?["\'])(?=[^>]*\brel=["\']alternate["\'])[^>]*>\s*','\n',s,flags=re.I)
+              s=re.sub(r'\s*<link\b(?=[^>]*\brel=["\']alternate["\'])(?=[^>]*\bhreflang=["\']pt(?:-BR)?["\'])[^>]*>\s*','\n',s,flags=re.I)
+              # enlaces/botones/opciones explícitos del selector o menú PT
+              s=re.sub(r'<a\b[^>]*href=["\'][^"\']*/pt-br/(?:[^"\']*)["\'][^>]*>.*?</a>','',s,flags=re.I|re.S)
+              s=re.sub(r'<button\b(?=[^>]*(?:data-lang|lang)=["\']pt(?:-BR)?["\'])[^>]*>.*?</button>','',s,flags=re.I|re.S)
+              s=re.sub(r'<option\b[^>]*value=["\']pt(?:-BR)?["\'][^>]*>.*?</option>','',s,flags=re.I|re.S)
+              if s!=before:
+                  p.write_text(s,encoding='utf-8'); changed+=1
+          print('Archivos ES/EN/assets/editorial limpiados:', changed)
+          marker.write_text('375 fuentes pt-br retiradas; V38/V39 retiradas; alternates y controles PT limpiados.\n',encoding='utf-8')
+          PY
+          git diff --check
+          git status --short
+          if [ -f .paso1-portugues-aplicado ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -A
+            git commit -m '[paso1-aplicado] Sale el portugués de las fuentes y la interfaz'
+            git push origin HEAD:cierre/20260912-sale-portugues
+            exit 0
+          fi
+      - name: Construir y comprobar ausencia de portugués publicado
+        run: |
+          rm -rf dist
+          python3 scripts/build_site.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, json
+          root=Path('dist')
+          pats={
+            'ruta_pt_br': re.compile(r'/pt-br/',re.I),
+            'hreflang_pt': re.compile(r'hreflang\s*=\s*["\']pt(?:-BR)?["\']',re.I),
+            'lang_pt': re.compile(r'(?:data-lang|lang)\s*=\s*["\']pt(?:-BR)?["\']',re.I),
+            'portugues_visible': re.compile(r'>\s*(?:PT(?:-BR)?|Portugu[eê]s)\s*<',re.I),
+          }
+          hits=[]
+          for p in root.rglob('*'):
+            if not p.is_file() or p.suffix.lower() not in {'.html','.js','.json','.xml','.css','.txt'}: continue
+            try: s=p.read_text(encoding='utf-8')
+            except UnicodeDecodeError: continue
+            for name,rx in pats.items():
+              m=rx.search(s)
+              if m: hits.append((name,p.relative_to(root).as_posix(),m.group(0)))
+          if hits:
+            for h in hits[:100]: print('PT_RESIDUAL',h)
+            raise SystemExit(f'Quedan {len(hits)} referencias públicas al portugués')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+            s=p.read_text(encoding='utf-8',errors='ignore')
+            m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',s,re.I) or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',s,re.I))
+            v=m.group(1).strip().lower() if m else None
+            counts[v if v in counts else 'otro_o_ninguno']+=1
+          sm=Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          got={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sm))}
+          expected={'html':998,'index,follow':982,'noindex,follow':2,'otro_o_ninguno':14,'sitemap_urls':995}
+          print(json.dumps(got,ensure_ascii=False))
+          if got!=expected: raise SystemExit(f'Contrato cambió: {got} != {expected}')
+          PY
+          python3 scripts/audit_sin_estados_publicos.py --root dist
+          python3 scripts/audit_sin_js.py --root dist
