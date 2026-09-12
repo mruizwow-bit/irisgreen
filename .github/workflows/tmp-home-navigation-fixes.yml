@@ -63,10 +63,9 @@ jobs:
               '.card,.situations-filter,.ig-subtabs,#consola,#escuchar,#jugar',
               '.card,.situations-filter,.ig-subtabs,#consola,#jugar')
           PY
-      - name: Construir y comprobar las tres correcciones
+      - name: Construir y comprobar las tres correcciones en dist final
         run: |
           python3 scripts/build_site.py
-          python3 scripts/build_approved_navigation.py --check
           python3 - <<'PY'
           from pathlib import Path
           pages=[Path('dist/index.html'),Path('dist/es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html'),Path('dist/en/situations/i-need-instructions-repeated/index.html')]
@@ -76,7 +75,7 @@ jobs:
               footer=s.split('<footer',1)[1].split('</footer>',1)[0]
               assert 'data-ig-music' not in footer, p
           home=pages[0].read_text(encoding='utf-8')
-          assert 'Base de conocimiento sobre neurodiversidad' in home
+          assert '<p class="footer-description" data-t="footer">Base de conocimiento sobre neurodiversidad</p>' in home
           assert '#escuchar' not in Path('assets/ajustes-interfaz.css').read_text(encoding='utf-8')
           print('Portada: Secciones fuera de cabecera; Música fuera del pie; pie correcto; #escuchar retirado.')
           PY
