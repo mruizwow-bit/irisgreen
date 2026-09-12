@@ -59,6 +59,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris se conecta desde sus contextos, nunca desde la portada.
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Fuentes locales, impresión común y retirada definitiva de Google Fonts.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Contrato permanente: ningún estado editorial puede reaparecer en la salida pública.
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())

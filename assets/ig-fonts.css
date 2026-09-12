@@ -1,0 +1,29 @@
+/* Iris Green · tipografías servidas desde el propio sitio. */
+@font-face{
+  font-family:"Atkinson Hyperlegible";
+  src:url("/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
+  font-style:normal;font-weight:400;font-display:swap;
+}
+@font-face{
+  font-family:"Atkinson Hyperlegible";
+  src:url("/assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");
+  font-style:normal;font-weight:700;font-display:swap;
+}
+@font-face{
+  font-family:"Newsreader";
+  src:url("/assets/fonts/newsreader-latin-wght-normal.woff2") format("woff2");
+  font-style:normal;font-weight:200 800;font-display:swap;
+}
+@font-face{
+  font-family:"Newsreader";
+  src:url("/assets/fonts/newsreader-latin-wght-italic.woff2") format("woff2");
+  font-style:italic;font-weight:200 800;font-display:swap;
+}
+/* Solo U+0030 usa una sans del sistema para conservar el cero sin barra. */
+@font-face{
+  font-family:"IG Zero";
+  src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");
+  unicode-range:U+0030;
+}
+/* Los estilos inline antiguos no pueden saltarse el cero sin barra. */
+[style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}

@@ -72,7 +72,7 @@ jobs:
         run: python3 scripts/audit_sin_js.py --root dist
       - name: Auditoría global de accesibilidad estructural
         if: ${{ !cancelled() }}
-        run: python3 scripts/audit_accesibilidad.py --root dist --informe-solo
+        run: python3 scripts/audit_accesibilidad.py --root dist
       - name: Comprobar que no queda portugués
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_sin_portugues.py --root dist

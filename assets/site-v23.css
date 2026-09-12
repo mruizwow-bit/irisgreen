@@ -11,6 +11,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
+[style*="Atkinson"]{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}
 body{
  margin:0; font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important;
  font-size:var(--fs); letter-spacing:var(--ls); line-height:1.6; color:var(--tinta);

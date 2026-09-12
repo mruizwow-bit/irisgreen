@@ -2,65 +2,75 @@
 """Auditoría global de accesibilidad estructural sobre la salida pública.
 
 Comprueba, página a página y solo con la biblioteca estándar:
-  · que hay un <main> y un único <h1> con texto;
-  · que cada campo de formulario tiene nombre accesible (el marcador de texto no cuenta);
-  · que cada botón y cada enlace tienen texto o nombre accesible;
-  · que cada imagen declara alt.
+  · que hay un <main> y un único <h1> visible con texto;
+  · que cada campo de formulario visible tiene nombre accesible;
+  · que cada botón y cada enlace visibles tienen texto o nombre accesible;
+  · que cada imagen visible declara alt.
+
+La auditoría estructural representa la vista con JavaScript: no suma contenido de
+<noscript>, <template>, diálogos cerrados ni subárboles hidden/aria-hidden=true.
+La lectura sin JavaScript se comprueba por separado con audit_sin_js.py.
 
 No corrige nada y no juzga contenido. No es una certificación WCAG: no mide
-contraste, ni foco, ni lectores de pantalla. Es la comprobación mecánica que
-hoy no se ejecuta antes de publicar.
+contraste, foco, teclado ni lectores de pantalla.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import re
 from html.parser import HTMLParser
 from pathlib import Path
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 FIELDS = {"input", "select", "textarea"}
 SKIP_INPUT_TYPES = {"hidden", "submit", "reset", "button", "image"}
+IGNORED_CONTAINERS = {"noscript", "template"}
 
 
 class Audit(HTMLParser):
     def __init__(self, text: str):
         super().__init__(convert_charrefs=True)
-        self.stack: list[tuple[str, dict]] = []
-        self.text_of: list[str] = []
+        self.stack: list[tuple[str, dict, bool]] = []
         self.has_main = False
         self.h1_text: list[str] = []
         self.labels_for: set[str] = set()
-        self.label_wrapped: list[dict] = []
         self.fields: list[dict] = []
-        self.controls: list[tuple[str, dict, list[str]]] = []
+        self.controls: list[tuple[str, dict, str]] = []
         self.images: list[dict] = []
-        self.ids: set[str] = set()
-        self.open_control: list[tuple[str, dict, int]] = []
-        self.collected: list[str] = []
+        self.open_control: list[tuple[str, dict, list[str]]] = []
         self.feed(text)
+
+    @property
+    def ignored(self) -> bool:
+        return bool(self.stack and self.stack[-1][2])
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
-        if "id" in a:
-            self.ids.add(a["id"])
-        if tag == "main" or a.get("role") == "main":
-            self.has_main = True
-        if tag == "label":
-            if a.get("for"):
+        inherited = self.ignored
+        hidden_here = (
+            tag in IGNORED_CONTAINERS
+            or (tag == "dialog" and "open" not in a)
+            or "hidden" in a
+            or a.get("aria-hidden", "").lower() == "true"
+        )
+        ignored = inherited or hidden_here
+
+        if not ignored:
+            if tag == "main" or a.get("role") == "main":
+                self.has_main = True
+            if tag == "label" and a.get("for"):
                 self.labels_for.add(a["for"])
-            self.label_wrapped.append(a)
-        if tag in FIELDS:
-            if not (tag == "input" and (a.get("type", "text").lower() in SKIP_INPUT_TYPES)):
-                a["_inside_label"] = bool(self.label_wrapped and self.stack and any(t == "label" for t, _ in self.stack))
-                self.fields.append(a)
-        if tag == "img":
-            self.images.append(a)
-        if tag in {"button", "a", "h1"}:
-            self.open_control.append((tag, a, len(self.collected)))
+            if tag in FIELDS:
+                if not (tag == "input" and a.get("type", "text").lower() in SKIP_INPUT_TYPES):
+                    a["_inside_label"] = any(t == "label" and not skip for t, _, skip in self.stack)
+                    self.fields.append(a)
+            if tag == "img":
+                self.images.append(a)
+            if tag in {"button", "a", "h1"}:
+                self.open_control.append((tag, a, []))
+
         if tag not in VOID:
-            self.stack.append((tag, a))
+            self.stack.append((tag, a, ignored))
 
     def handle_endtag(self, tag):
         while self.stack and self.stack[-1][0] != tag:
@@ -68,16 +78,18 @@ class Audit(HTMLParser):
         if self.stack:
             self.stack.pop()
         if self.open_control and self.open_control[-1][0] == tag:
-            name, attrs, mark = self.open_control.pop()
-            inner = "".join(self.collected[mark:]).strip()
+            name, attrs, chunks = self.open_control.pop()
+            inner = "".join(chunks).strip()
             if name == "h1":
                 self.h1_text.append(inner)
             else:
-                self.controls.append((name, attrs, [inner]))
+                self.controls.append((name, attrs, inner))
 
     def handle_data(self, data):
-        if data.strip():
-            self.collected.append(data)
+        if self.ignored or not data.strip():
+            return
+        for _, _, chunks in self.open_control:
+            chunks.append(data)
 
 
 def named(attrs: dict, inner: str = "") -> bool:
@@ -91,7 +103,7 @@ def named(attrs: dict, inner: str = "") -> bool:
 
 def check(rel: str, text: str) -> list[str]:
     doc = Audit(text)
-    problems = []
+    problems: list[str] = []
     if not doc.has_main:
         problems.append("no hay <main>")
     if not doc.h1_text:
@@ -108,14 +120,12 @@ def check(rel: str, text: str) -> list[str]:
     for tag, attrs, inner in doc.controls:
         if tag == "a" and not attrs.get("href"):
             continue
-        if named(attrs, inner[0]):
-            continue
-        if attrs.get("aria-hidden") == "true":
+        if named(attrs, inner):
             continue
         problems.append(f"{'botón' if tag == 'button' else 'enlace'} sin nombre accesible: {attrs.get('class','') or attrs.get('href','')}"[:120])
     for img in doc.images:
         if "alt" not in img:
-            problems.append("imagen sin alt: " + (img.get("src", "")[:70]))
+            problems.append("imagen sin alt: " + img.get("src", "")[:70])
     return problems
 
 
@@ -142,7 +152,7 @@ def main() -> None:
         "html_revisados": scanned,
         "paginas_con_fallos": len(findings),
         "fallos": total,
-        "limites": "Comprobación mecánica de estructura y nombres accesibles. No mide contraste, foco, teclado ni lectores de pantalla.",
+        "limites": "Comprobación mecánica de estructura y nombres accesibles en la vista con JavaScript. No mide contraste, foco, teclado ni lectores de pantalla; la vista sin JavaScript se audita por separado.",
         "detalle": findings,
     }
     (out / "accesibilidad.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
