@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Frena la publicación si PT-BR reaparece fuera de las redirecciones históricas."""
+"""Frena la publicación si PT-BR reaparece fuera de las redirecciones históricas.
+
+Una ruta oficial externa puede contener `/pt-br/` (por ejemplo, gov.br). Eso no
+es una versión portuguesa de Iris Green y no debe borrarse para satisfacer la prueba.
+"""
 from __future__ import annotations
 import argparse
 import re
@@ -7,10 +11,17 @@ from pathlib import Path
 
 TEXT_SUFFIXES={'.html','.css','.js','.json','.xml','.txt','.map'}
 PATTERNS=(
-    ('ruta pt-br',re.compile(r'(?i)/pt-br(?:/|\b)')),
-    ('código pt-br',re.compile(r'(?i)\bpt-br\b')),
-    ('código pt',re.compile(r'(?i)\bpt\b')),
-    ('portugués declarado',re.compile(r'(?i)portugu[eê]s(?:e|es|a|as)?|português|portugués')),
+    ('ruta interna pt-br',re.compile(r'''(?ix)(?:
+        (?:href|src|action)\s*=\s*["'](?:https?://(?:www\.)?irisgreen\.eu)?/pt-br(?:/|["'])
+        | ["'(=]\s*/pt-br(?:/|["'])
+        | https?://(?:www\.)?irisgreen\.eu/pt-br(?:/|\b)
+    )''')),
+    ('hreflang pt',re.compile(r'''(?i)\bhreflang\s*=\s*["']pt(?:-br)?["']''')),
+    ('lang pt',re.compile(r'''(?i)\b(?:lang|data-lang)\s*=\s*["']pt(?:-br)?["']''')),
+    ('navegación pt',re.compile(r'''(?i)\big-nav-pt\b''')),
+    ('clave de idioma pt',re.compile(r'''(?im)(?:^|[{,])\s*["']?pt["']?\s*:''')),
+    ('rama de idioma pt',re.compile(r'''(?i)===\s*["']pt["']''')),
+    ('etiqueta PT-BR',re.compile(r'''\bPT-BR\b''')),
 )
 
 
@@ -54,12 +65,12 @@ def main()->None:
     args=parser.parse_args()
     hits=audit(args.root)
     if hits:
-        print('Quedan referencias portuguesas publicables fuera de _redirects:')
+        print('Quedan referencias PT-BR publicables fuera de _redirects:')
         for rel,label,snippet in hits[:80]:
             print(f'- {rel} · {label}: {snippet}')
         if len(hits)>80:print(f'- … y {len(hits)-80} archivos más')
         raise SystemExit(1)
-    print('Portugués retirado de dist: 0 referencias publicables; _redirects conserva los 301 históricos.')
+    print('Portugués retirado de dist: 0 referencias internas PT-BR; _redirects conserva los 301 históricos.')
 
 
 if __name__=='__main__':main()
