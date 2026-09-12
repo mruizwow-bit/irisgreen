@@ -4,6 +4,7 @@
 En las fichas de Situaciones, Vida diaria y Condiciones muestra la Tarjeta Iris
 completa en la columna derecha, como en la referencia aprobada. El botón
 «Personalizar el texto» abre la herramienta completa con el ejemplo ya cargado.
+La personalización se conserva solo en el navegador de la persona.
 En los índices conserva un acceso compacto a la herramienta.
 """
 from __future__ import annotations
@@ -17,6 +18,7 @@ from urllib.parse import urlencode
 
 CSS_LINK = '<link rel="stylesheet" href="/assets/tarjetas-iris-cta.css">'
 MARKER = 'data-iris-card-cta="true"'
+STORAGE_MARKER = 'data-iris-card-storage="true"'
 SPECIAL_INSTRUCTIONS = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
 
 DETAIL_SETS = (
@@ -157,6 +159,24 @@ def insert_index(text: str, section: str, path: Path) -> str:
     raise AssertionError(f"No se encontró punto de inserción en {path}")
 
 
+def enable_browser_storage(tool: Path) -> None:
+    text = read(tool)
+    if STORAGE_MARKER in text:
+        return
+    script = r'''<script data-iris-card-storage="true">(function(){"use strict";
+var KEY="iris-green-tarjeta-v1",ids=["title","dificultad","ayuda","necesito"];
+function safeGet(){try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}}
+function snapshot(){var data={};ids.forEach(function(id){var el=document.getElementById(id);if(el)data[id]=el.value});var chosen=document.querySelector("[data-section-choice][aria-pressed=true]");data.section=chosen?chosen.dataset.sectionChoice:"situaciones";return data}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(snapshot()))}catch(e){}}
+var params=new URLSearchParams(location.search),incoming=params.has("section")||ids.some(function(id){return params.has(id)}),saved=safeGet();
+if(!incoming&&saved){ids.forEach(function(id){var el=document.getElementById(id);if(el&&typeof saved[id]==="string")el.value=saved[id].slice(0,240)});if(saved.section){var b=document.querySelector('[data-section-choice="'+saved.section+'"]');if(b)b.click()}ids.forEach(function(id){var el=document.getElementById(id);if(el)el.dispatchEvent(new Event("input",{bubbles:true}))})}
+ids.forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("input",save)});document.querySelectorAll("[data-section-choice]").forEach(function(b){b.addEventListener("click",function(){setTimeout(save,0)})});var reset=document.getElementById("reset");if(reset)reset.addEventListener("click",function(){setTimeout(save,0)});save();
+})();</script>'''
+    if "</body>" not in text:
+        raise AssertionError("Tarjetas Iris sin </body>")
+    write(tool, text.replace("</body>", script + "</body>", 1))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path("dist"))
@@ -197,6 +217,7 @@ def main() -> None:
     tool = root / "es/tarjetas-iris/index.html"
     if not tool.is_file():
         raise AssertionError("No existe /es/tarjetas-iris/ en dist")
+    enable_browser_storage(tool)
 
     expected_total = sum(v for _,_,v in DETAIL_SETS) + len(INDEX_PAGES)
     if len(set(changed)) != expected_total:
@@ -207,6 +228,7 @@ def main() -> None:
         "section_indexes_connected": index_count,
         "total_pages_connected": expected_total,
         "detail_card": "approved-compact-right-rail",
+        "browser_storage": True,
         "tool_route": "/es/tarjetas-iris/",
         "home_untouched": True,
         "english_untouched": True,
