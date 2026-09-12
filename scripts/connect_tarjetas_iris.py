@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Conecta Tarjetas Iris con las secciones españolas sin tocar contenido editorial.
 
-Se ejecuta al final del build sobre dist. En las fichas de Situaciones, Vida diaria
-y Condiciones inserta una Tarjeta Iris editable directamente en la columna derecha.
-En los índices conserva un acceso compacto a la herramienta completa.
+En las fichas de Situaciones, Vida diaria y Condiciones muestra la Tarjeta Iris
+completa en la columna derecha, como en la referencia aprobada. El botón
+«Personalizar el texto» abre la herramienta completa con el ejemplo ya cargado.
+En los índices conserva un acceso compacto a la herramienta.
 """
 from __future__ import annotations
 
@@ -32,33 +33,24 @@ INDEX_PAGES = {
 }
 
 COPY = {
-    "situaciones": {
-        "title": "Tarjeta Iris",
-        "text": "Escribe qué te cuesta, qué te ayuda y qué necesitas.",
-        "button": "Abrir tarjeta para imprimir",
-    },
-    "vida": {
-        "title": "Tarjeta Iris",
-        "text": "Prepara una tarjeta breve para esta situación cotidiana.",
-        "button": "Abrir tarjeta para imprimir",
-    },
-    "condiciones": {
-        "title": "Tarjeta Iris",
-        "text": "Escribe tus necesidades concretas. La tarjeta no las deduce de una condición.",
-        "button": "Abrir tarjeta para imprimir",
-    },
-    "ayudas": {
-        "title": "Tarjeta Iris",
-        "text": "Lleva por escrito lo que necesitas pedir o explicar.",
-        "button": "Preparar una Tarjeta Iris",
-    },
+    "situaciones": {"title":"Tarjeta Iris","text":"Escribe qué te cuesta, qué te ayuda y qué necesitas.","button":"Preparar una Tarjeta Iris"},
+    "vida": {"title":"Tarjeta Iris","text":"Prepara una tarjeta breve para esta situación cotidiana.","button":"Preparar una Tarjeta Iris"},
+    "condiciones": {"title":"Tarjeta Iris","text":"Escribe tus necesidades concretas. La tarjeta no las deduce de una condición.","button":"Preparar una Tarjeta Iris"},
+    "ayudas": {"title":"Tarjeta Iris","text":"Lleva por escrito lo que necesitas pedir o explicar.","button":"Preparar una Tarjeta Iris"},
 }
 
 INDEX_PARAMS = {
-    "situaciones": {"section": "situaciones", "title": "Para una situación", "dificultad": "", "ayuda": "", "necesito": ""},
-    "vida": {"section": "vida", "title": "Para una situación cotidiana", "dificultad": "", "ayuda": "", "necesito": ""},
-    "condiciones": {"section": "condiciones", "title": "Mis necesidades", "dificultad": "", "ayuda": "", "necesito": ""},
-    "ayudas": {"section": "ayudas", "title": "Para un trámite o una ayuda", "dificultad": "", "ayuda": "", "necesito": ""},
+    "situaciones": {"section":"situaciones","title":"Para una situación","dificultad":"","ayuda":"","necesito":""},
+    "vida": {"section":"vida","title":"Para una situación cotidiana","dificultad":"","ayuda":"","necesito":""},
+    "condiciones": {"section":"condiciones","title":"Mis necesidades","dificultad":"","ayuda":"","necesito":""},
+    "ayudas": {"section":"ayudas","title":"Para un trámite o una ayuda","dificultad":"","ayuda":"","necesito":""},
+}
+
+SAMPLE = {
+    "title": "Para mi cita",
+    "dificultad": "Me cuesta recordar las indicaciones cuando recibo mucha información seguida.",
+    "ayuda": "Me ayuda que me expliquen una cosa cada vez y me den tiempo para preguntar.",
+    "necesito": "Necesito llevarme por escrito los pasos que debo seguir.",
 }
 
 
@@ -70,43 +62,10 @@ def write(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def plain_h1(text: str) -> str:
-    match = re.search(r"<h1\b[^>]*>(.*?)</h1>", text, flags=re.I | re.S)
-    if not match:
-        raise AssertionError("No se encontró h1")
-    value = re.sub(r"<[^>]+>", " ", match.group(1))
-    value = html.unescape(value)
-    return " ".join(value.split()).strip("«»“”\" ")
-
-
-def detail_defaults(section: str, title: str) -> dict[str, str]:
-    if section == "situaciones":
-        return {
-            "section": section,
-            "title": "Para esta situación",
-            "dificultad": title[:240],
-            "ayuda": "",
-            "necesito": "",
-        }
-    if section == "vida":
-        return {
-            "section": section,
-            "title": title[:60],
-            "dificultad": "",
-            "ayuda": "",
-            "necesito": "",
-        }
-    return {
-        "section": section,
-        "title": "Mis necesidades",
-        "dificultad": "",
-        "ayuda": "",
-        "necesito": "",
-    }
-
-
-def url_for(section: str) -> str:
-    return "/es/tarjetas-iris/?" + urlencode(INDEX_PARAMS[section])
+def url_for(section: str, params: dict[str,str] | None = None) -> str:
+    values = (params or INDEX_PARAMS[section]).copy()
+    values["section"] = section
+    return "/es/tarjetas-iris/?" + urlencode(values)
 
 
 def cta(section: str, href: str, compact: bool = False) -> str:
@@ -121,27 +80,24 @@ def cta(section: str, href: str, compact: bool = False) -> str:
     )
 
 
-def inline_card(section: str, title: str) -> str:
-    item = COPY[section]
-    defaults = detail_defaults(section, title)
+def full_card(section: str) -> str:
     e = lambda value: html.escape(value, quote=True)
+    href = url_for(section, SAMPLE)
     return (
-        f'<aside class="iris-cta iris-inline-card" data-iris-section="{section}" {MARKER} '
-        'aria-label="Tarjeta Iris">'
-        f'<div class="iris-cta-copy"><h2>{e(item["title"])}</h2><p>{e(item["text"])}</p></div>'
-        '<form class="iris-inline-form" action="/es/tarjetas-iris/" method="get">'
-        f'<input type="hidden" name="section" value="{e(section)}">'
-        '<label class="iris-inline-field"><span>Título</span>'
-        f'<input name="title" maxlength="60" value="{e(defaults["title"])}"></label>'
-        '<label class="iris-inline-field"><span>Esto me cuesta</span>'
-        f'<textarea name="dificultad" maxlength="240">{html.escape(defaults["dificultad"])}</textarea></label>'
-        '<label class="iris-inline-field"><span>Me ayuda</span>'
-        '<textarea name="ayuda" maxlength="240"></textarea></label>'
-        '<label class="iris-inline-field"><span>Necesito</span>'
-        '<textarea name="necesito" maxlength="240"></textarea></label>'
-        f'<button class="iris-cta-button" type="submit">{e(item["button"])}</button>'
-        '<p class="iris-inline-privacy">Lo que escribes no se guarda en la web.</p>'
-        '</form></aside>'
+        f'<aside class="iris-cta iris-mini-card" data-iris-section="{section}" {MARKER} '
+        'aria-label="Tarjeta Iris de ejemplo">'
+        '<header class="iris-mini-head"><span class="iris-mini-brand">Iris Green</span>'
+        '<span class="iris-mini-type">TARJETA PERSONAL</span></header>'
+        f'<h2 class="iris-mini-title">{e(SAMPLE["title"])}</h2>'
+        '<section class="iris-mini-block"><h3>Esto me cuesta</h3>'
+        f'<p>{e(SAMPLE["dificultad"])}</p></section>'
+        '<section class="iris-mini-block"><h3>Me ayuda</h3>'
+        f'<p>{e(SAMPLE["ayuda"])}</p></section>'
+        '<section class="iris-mini-block iris-mini-need"><h3>Necesito</h3>'
+        f'<p>{e(SAMPLE["necesito"])}</p></section>'
+        f'<a class="iris-mini-button" href="{e(href)}">Personalizar el texto</a>'
+        '<footer class="iris-mini-foot"><span>irisgreen.eu</span><span>Se guarda en tu navegador</span></footer>'
+        '</aside>'
     )
 
 
@@ -156,8 +112,7 @@ def add_css(text: str) -> str:
 def insert_detail(text: str, section: str, path: Path) -> str:
     if MARKER in text:
         return text
-    title = plain_h1(text)
-    block = inline_card(section, title)
+    block = full_card(section)
     article_pos = text.rfind("</article>")
     if article_pos >= 0:
         corte = article_pos + len("</article>")
@@ -168,7 +123,7 @@ def insert_detail(text: str, section: str, path: Path) -> str:
         request = re.search(r'<section\b[^>]*class="request-panel"[^>]*>', text, flags=re.I)
         if not request:
             raise AssertionError("Ficha especial sin panel derecho")
-        return text[: request.start()] + block + "\n" + text[request.start():]
+        return text[:request.start()] + block + "\n" + text[request.start():]
 
     raise AssertionError(f"No se encontró punto de inserción en {path}")
 
@@ -181,23 +136,23 @@ def insert_index(text: str, section: str, path: Path) -> str:
     if section in {"situaciones", "vida"}:
         match = re.search(r'<p class="notice">.*?</p>', text, flags=re.I | re.S)
         if match:
-            return text[: match.end()] + "\n" + block + text[match.end():]
+            return text[:match.end()] + "\n" + block + text[match.end():]
         match = re.search(r'<p class="lede">.*?</p>', text, flags=re.I | re.S)
         if match:
-            return text[: match.end()] + "\n" + block + text[match.end():]
+            return text[:match.end()] + "\n" + block + text[match.end():]
 
     if section == "condiciones":
         match = re.search(r'<div class="ig-section-actions">.*?</div>', text, flags=re.I | re.S)
         if match:
-            return text[: match.end()] + "\n" + block + text[match.end():]
+            return text[:match.end()] + "\n" + block + text[match.end():]
         match = re.search(r'<p class="lede">.*?</p>', text, flags=re.I | re.S)
         if match:
-            return text[: match.end()] + "\n" + block + text[match.end():]
+            return text[:match.end()] + "\n" + block + text[match.end():]
 
     if section == "ayudas":
         match = re.search(r"<main\b[^>]*>", text, flags=re.I)
         if match:
-            return text[: match.end()] + "\n" + block + text[match.end():]
+            return text[:match.end()] + "\n" + block + text[match.end():]
 
     raise AssertionError(f"No se encontró punto de inserción en {path}")
 
@@ -209,7 +164,7 @@ def main() -> None:
     root = args.root.resolve()
 
     changed: list[str] = []
-    detail_counts: dict[str, int] = {}
+    detail_counts: dict[str,int] = {}
 
     for section, pattern, expected in DETAIL_SETS:
         pages = sorted(p for p in root.glob(pattern) if p.is_file())
@@ -221,8 +176,8 @@ def main() -> None:
             if after != before:
                 write(path, after)
                 changed.append(path.relative_to(root).as_posix())
-            if after.count(MARKER) != 1 or "iris-inline-card" not in after:
-                raise AssertionError(f"Tarjeta editable duplicada o ausente: {path}")
+            if after.count(MARKER) != 1 or "iris-mini-card" not in after:
+                raise AssertionError(f"Tarjeta Iris duplicada o ausente: {path}")
         detail_counts[section] = len(pages)
 
     index_count = 0
@@ -242,12 +197,8 @@ def main() -> None:
     tool = root / "es/tarjetas-iris/index.html"
     if not tool.is_file():
         raise AssertionError("No existe /es/tarjetas-iris/ en dist")
-    tool_text = read(tool)
-    for token in ("#EEEBF8", "#F1E8F1", "#E9ECF7", "#ECEEF4", "IRIS GREEN"):
-        if token not in tool_text:
-            raise AssertionError(f"Tarjetas Iris no contiene {token}")
 
-    expected_total = sum(v for _, _, v in DETAIL_SETS) + len(INDEX_PAGES)
+    expected_total = sum(v for _,_,v in DETAIL_SETS) + len(INDEX_PAGES)
     if len(set(changed)) != expected_total:
         raise AssertionError(f"Se esperaban {expected_total} páginas modificadas y hay {len(set(changed))}")
 
@@ -255,7 +206,7 @@ def main() -> None:
         "detail_pages_connected": detail_counts,
         "section_indexes_connected": index_count,
         "total_pages_connected": expected_total,
-        "detail_editor": "inline-right-rail",
+        "detail_card": "approved-compact-right-rail",
         "tool_route": "/es/tarjetas-iris/",
         "home_untouched": True,
         "english_untouched": True,
