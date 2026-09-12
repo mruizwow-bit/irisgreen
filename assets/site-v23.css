@@ -546,8 +546,6 @@ body.tts [data-read]{cursor:pointer}
 /* Solo las páginas finales que usan article.ficha. Los listados, la portada,
    Metodología y la ficha nueva de instrucciones conservan su propio diseño. */
 main:has(>article.ficha){
-  width:min(calc((100vw - 2rem)/var(--ig-reading-scale,1)),70rem);
-  max-width:70rem;
   padding:clamp(1.75rem,4vw,3rem) clamp(1.125rem,3vw,2rem) 4.5rem;
 }
 main:has(>article.ficha)>article.ficha{
@@ -576,3 +574,68 @@ main:has(>article.ficha) .muted{font-size:1rem;line-height:1.65}
   main:has(>article.ficha) .sec h2{font-size:1.32rem}
   main:has(>article.ficha) .notice{font-size:1rem}
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   V25 · 12 de septiembre de 2026
+   La ficha a dos columnas y la Tarjeta Iris en la derecha.
+   Antes, main{max-width:46rem} dejaba el texto en una cinta de 736 px con la
+   cabecera y el pie a sangre: por eso todo parecía mal encuadrado.
+   ───────────────────────────────────────────────────────────────────────── */
+main:has(>article.ficha){
+  width:min(calc((100vw - 2rem)/var(--ig-reading-scale,1)),70rem);
+  max-width:70rem;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 21rem;
+  gap:2.5rem;
+  align-items:start;
+}
+main:has(>article.ficha)>article.ficha{grid-column:1;min-width:0}
+main:has(>article.ficha)>.ig-back{grid-column:1}
+/* La tarjeta: primera de la columna derecha y visible sin bajar. */
+main:has(>article.ficha)>.iris-cta{
+  grid-column:2;
+  grid-row:1;
+  position:sticky;
+  top:1.25rem;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:.75rem;
+  margin:0;
+  min-width:0;
+}
+main:has(>article.ficha)>.iris-cta .iris-cta-button{width:100%;text-align:center}
+/* Sin tarjeta, una sola columna: no se deja un hueco vacío a la derecha. */
+main:has(>article.ficha):not(:has(>.iris-cta)){grid-template-columns:minmax(0,1fr)}
+
+/* Páginas de texto sin ficha (Privacidad, Metodología, Lectura accesible…):
+   el mismo contenedor, para que no queden flotando en medio de la pantalla. */
+main:not(:has(.cards)):not(:has(>article.ficha)){
+  width:min(calc(100% - 2rem),70rem);
+  max-width:70rem;
+  margin-inline:auto;
+}
+
+@media(max-width:63.99rem){
+  main:has(>article.ficha){grid-template-columns:minmax(0,1fr)}
+  main:has(>article.ficha)>.iris-cta{grid-column:1;grid-row:auto;position:static}
+}
+
+/* «Enlaza con»: las etiquetas que sean enlace, con su área de pulsación. */
+.ig-related a.chip,.chip.lnk[href]{
+  min-height:var(--hit);
+  display:inline-flex;
+  align-items:center;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.ig-related a.chip:hover{border-color:var(--lila);color:var(--lila)}
+
+/* El cero sin barra también donde la tipografía se declara en el atributo
+   style o en otra hoja. Provisional: el definitivo es el archivo de fuente
+   con el glifo sin trazo, y llega con la tanda 10. */
+[style*="Atkinson"],
+main :is(h1,h2,h3,h4,p,li,dt,dd,td,th,span,strong,em,button,a,label,summary,output,figcaption){
+  font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
+}
+h1,h2,h3,.brand,.card strong{font-family:"IG Zero",Newsreader,Georgia,serif}
