@@ -6,6 +6,7 @@
 - Añade la hoja de impresión común.
 
 No modifica títulos, descripciones, robots, enlaces canónicos ni contenido editorial.
+No escribe informes dentro de ``dist``: la salida pública no contiene directorios de trabajo.
 """
 from __future__ import annotations
 
@@ -81,9 +82,6 @@ def main() -> None:
         "fuentes_locales": [p.name for p in required[:4]],
         "impresion_comun": True,
     }
-    out = root / "reports/publicacion"
-    out.mkdir(parents=True, exist_ok=True)
-    (out / "fuentes-impresion.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False))
 
 
