@@ -7,6 +7,7 @@ staging desechable del build y no cambia contenido editorial.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +46,10 @@ METHODS = '''  // ig-directory-lazy-v1: España está local; el resto se carga a
 
 '''
 
+COUNT_BLOCK = '''      countLabel: st.fullLoading ? (st.lang === "en" ? "Loading entries…" : "Cargando fichas…") : st.fullError ? (st.lang === "en" ? "Other countries could not be loaded. Spain remains available." : "No se han podido cargar otros países. España sigue disponible.") : rows.length + (rows.length === 1 ? " ficha" : " fichas"),
+      noResults: !st.fullLoading && !st.fullError && !!st.data && rows.length === 0,
+'''
+
 
 def replace_once(text: str, old: str, new: str, label: str) -> str:
     if new in text:
@@ -54,10 +59,20 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
     return text.replace(old, new, 1)
 
 
+def replace_count_block(text: str) -> str:
+    if COUNT_BLOCK in text:
+        return text
+    pattern = re.compile(r'^\s*countLabel:\s*.*?,$\n^\s*noResults:\s*.*?,$\n', re.M)
+    text, n = pattern.subn(COUNT_BLOCK, text, count=1)
+    if n != 1:
+        raise ValueError(f'contador/estado sin resultados: se esperaba un bloque y hay {n}')
+    return text
+
+
 def main() -> None:
     text = PAGE.read_text(encoding='utf-8')
     if MARKER in text:
-        if text.count('fetch("tramites-datos.json")') != 1 or 'pick: () => this.pickCountry(code)' not in text:
+        if text.count('fetch("tramites-datos.json")') != 1 or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text:
             raise AssertionError('La carga perezosa del Directorio está incompleta')
         print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'ya_aplicada': True})
         return
@@ -80,22 +95,11 @@ def main() -> None:
         'pick: () => this.pickCountry(code)',
         'selector de país',
     )
-    text = replace_once(
-        text,
-        'countLabel: st.data ? rows.length + (rows.length === 1 ? " ficha" : " fichas") : "Cargando…",',
-        'countLabel: st.fullLoading ? (st.lang === "en" ? "Loading entries…" : "Cargando fichas…") : st.fullError ? (st.lang === "en" ? "Other countries could not be loaded. Spain remains available." : "No se han podido cargar otros países. España sigue disponible.") : rows.length + (rows.length === 1 ? " ficha" : " fichas"),',
-        'contador',
-    )
-    text = replace_once(
-        text,
-        'noResults: !!st.data && rows.length === 0,',
-        'noResults: !st.fullLoading && !st.fullError && !!st.data && rows.length === 0,',
-        'estado sin resultados',
-    )
+    text = replace_count_block(text)
 
     if text.count('fetch("tramites-datos.json")') != 1:
         raise AssertionError('Debe quedar una única descarga, dentro de loadAllData')
-    if MARKER not in text or 'pick: () => this.pickCountry(code)' not in text:
+    if MARKER not in text or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text:
         raise AssertionError('No se ha completado la carga perezosa')
     PAGE.write_text(text, encoding='utf-8')
     print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'descarga_inicial_completa': False})
