@@ -8,8 +8,8 @@ Comprueba, página a página y solo con la biblioteca estándar:
   · que cada imagen visible declara alt.
 
 La auditoría estructural representa la vista con JavaScript: no suma contenido de
-<noscript>, <template> ni subárboles marcados hidden/aria-hidden=true. La lectura
-sin JavaScript se comprueba por separado con audit_sin_js.py.
+<noscript>, <template>, diálogos cerrados ni subárboles hidden/aria-hidden=true.
+La lectura sin JavaScript se comprueba por separado con audit_sin_js.py.
 
 No corrige nada y no juzga contenido. No es una certificación WCAG: no mide
 contraste, foco, teclado ni lectores de pantalla.
@@ -49,6 +49,7 @@ class Audit(HTMLParser):
         inherited = self.ignored
         hidden_here = (
             tag in IGNORED_CONTAINERS
+            or (tag == "dialog" and "open" not in a)
             or "hidden" in a
             or a.get("aria-hidden", "").lower() == "true"
         )
