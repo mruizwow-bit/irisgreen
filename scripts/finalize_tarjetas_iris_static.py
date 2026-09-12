@@ -99,6 +99,18 @@ def details_text(text: str, details_id: str) -> str:
     return " ".join(dict.fromkeys(values))
 
 
+def special_options_text(text: str) -> str:
+    """Extrae los pasos de la lista de opciones de la ficha especial aprobada."""
+    match = re.search(
+        r'<ul\b[^>]*class=["\'][^"\']*\boption-list\b[^"\']*["\'][^>]*>(.*?)</ul>',
+        text, re.I | re.S,
+    )
+    if not match:
+        return ""
+    items = [plain(x) for x in LI_RE.findall(match.group(1)) if plain(x)]
+    return " ".join(dict.fromkeys(items))
+
+
 def title(text: str) -> str:
     match = H1_RE.search(text)
     if not match:
@@ -111,7 +123,7 @@ def blocks(section: str, text: str, rel: str) -> list[tuple[str,str]]:
     if rel == SPECIAL and "help-details" in text:
         values = [
             ("En pocas palabras", sec.get("En pocas palabras", "")),
-            ("Qué puedes probar", sec.get("Qué puedes probar", "")),
+            ("Qué puedes probar", special_options_text(text)),
             ("Cuándo pedir ayuda", details_text(text, "help-details")),
         ]
     elif section == "situaciones":
