@@ -37,6 +37,16 @@ def article_fingerprint(text: str) -> str:
     return digest(' '.join(plain.split()).encode('utf-8'))
 
 
+def accessible_dialog_defaults(text: str, target: str) -> str:
+    """Da nombre inicial al botón del diálogo antes de que JavaScript lo traduzca."""
+    label = 'Back to editing' if target.startswith('en/') else 'Volver a editar'
+    pattern = r'(<button\b(?=[^>]*\bid="return-edit")[^>]*>)\s*(</button>)'
+    text, count = re.subn(pattern, lambda m: m.group(1) + label + m.group(2), text, count=1)
+    if count != 1:
+        raise ValueError('No se encuentra exactamente un botón #return-edit en ' + target)
+    return text
+
+
 def build(check: bool = False) -> dict:
     manifest = json.loads((SOURCE / 'manifest.json').read_text(encoding='utf-8'))
     for path, expected in manifest['source_articles'].items():
@@ -55,6 +65,7 @@ def build(check: bool = False) -> dict:
         text = (SOURCE/template).read_text(encoding='utf-8')
         if 'noindex,nofollow,noarchive' in text or 'iris-review-route' in text:
             raise ValueError('A review wrapper must not be published')
+        text = accessible_dialog_defaults(text, target)
         if target == 'index.html':
             # "Secciones" es un ancla normal. No debe depender del router JS.
             text = text.replace(' data-route="secciones"', '')
@@ -73,7 +84,7 @@ def build(check: bool = False) -> dict:
         rendered.append({'path': target, 'template': template, 'sha256': digest(raw), 'bytes': len(raw)})
     report = {'pages':rendered, 'assets':versions, 'original_article_text_preserved':True,
               'scope':'Homepage and one entry in Spanish and English; all other routes unchanged',
-              'clinical_review_added':False}
+              'clinical_review_added':False, 'return_edit_named':True}
     if not check:
         (ROOT/'reports').mkdir(exist_ok=True)
         (ROOT/'reports/approved-navigation-build.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
