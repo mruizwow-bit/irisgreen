@@ -1,0 +1,53 @@
+name: Parche temporal · cero sin barra portada
+
+on:
+  push:
+    branches:
+      - integracion/20260911-estado-publico
+
+permissions:
+  contents: write
+
+jobs:
+  parchear:
+    if: ${{ !contains(github.event.head_commit.message, '[zero-nav-patch]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: integracion/20260911-estado-publico
+      - name: Sustituir solo el glifo 0 en la portada aprobada
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('assets/navigation-approved.css')
+          text=p.read_text(encoding='utf-8')
+          marker=':root{'
+          if text.count(marker) != 1:
+              raise SystemExit(f'Se esperaba un único :root y hay {text.count(marker)}')
+          face='''/* Cero sin barra: solo U+0030 usa una sans del sistema; el resto conserva Atkinson. */\n@font-face{font-family:"IG Zero";src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");unicode-range:U+0030;}\n'''
+          if 'font-family:"IG Zero"' not in text:
+              text=text.replace(marker,face+marker,1)
+          old="--body:'Atkinson Hyperlegible',Arial,sans-serif;"
+          new="--body:'IG Zero','Atkinson Hyperlegible',Arial,sans-serif;"
+          if old in text:
+              if text.count(old) != 1:
+                  raise SystemExit(f'Se esperaba una sola variable --body y hay {text.count(old)}')
+              text=text.replace(old,new,1)
+          elif new not in text:
+              raise SystemExit('No se encontró la variable --body esperada')
+          p.write_text(text,encoding='utf-8')
+          PY
+          git diff --check
+          git diff -- assets/navigation-approved.css
+      - name: Guardar el cambio
+        run: |
+          if git diff --quiet -- assets/navigation-approved.css; then
+            echo 'El parche ya estaba aplicado.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/navigation-approved.css
+          git commit -m '[zero-nav-patch] Cero sin barra en la portada aprobada'
+          git push origin HEAD:integracion/20260911-estado-publico
