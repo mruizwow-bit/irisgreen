@@ -55,7 +55,7 @@ METHODS = r'''  // ig-directory-spain-seed-v1: 24 fichas de España bastan para 
   showMoreRows() {
     const next = this.state.limit + 12;
     this.setState({ limit: next, fullError: false });
-    if (this.state.country === "es" && this.spainIsPartial() && next >= this.state.data.es.length) {
+    if (this.state.country === "es" && this.spainIsPartial() && next > this.state.data.es.length) {
       this.loadSpainData().catch(() => {});
     }
   }
