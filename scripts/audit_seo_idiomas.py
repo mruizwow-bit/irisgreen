@@ -17,6 +17,9 @@ from xml.etree import ElementTree
 
 SITE_HOST = "irisgreen.eu"
 SITE = "https://irisgreen.eu"
+# Estas dos páginas técnicas no representan documentos indexables del sitio.
+# Cualquier otra página sin canonical debe revisarse como regresión SEO.
+CANONICAL_MISSING_ALLOWED = {"/404.html", "/assets/maintenance.html"}
 
 
 class HeadParser(HTMLParser):
@@ -108,8 +111,10 @@ def main() -> None:
                 if not target or not target.is_file():
                     failures.append({"type": "canonical_target_missing", "route": route, "canonical": canonical})
                 canonical_owners[canonical].append(route)
+        elif route in CANONICAL_MISSING_ALLOWED:
+            warnings.append({"type": "canonical_missing_expected", "route": route})
         else:
-            warnings.append({"type": "canonical_missing", "route": route})
+            failures.append({"type": "canonical_missing", "route": route})
 
         if meta.alternates:
             pages_with_hreflang += 1
@@ -137,7 +142,7 @@ def main() -> None:
                 if back == source_url:
                     reciprocal_pairs += 1
                 else:
-                    warnings.append({"type": "hreflang_not_reciprocal", "route": route, "target": href, "expected_back": source_url, "actual_back": back})
+                    failures.append({"type": "hreflang_not_reciprocal", "route": route, "target": href, "expected_back": source_url, "actual_back": back})
 
         xdefault = seen_lang.get("x-default")
         if xdefault and xdefault not in {href for lang, href in meta.alternates if lang != "x-default"}:
@@ -178,11 +183,13 @@ def main() -> None:
         "pages_with_hreflang": pages_with_hreflang,
         "reciprocal_language_links": reciprocal_pairs,
         "sitemap_urls": len(sitemap_urls),
+        "canonical_missing_allowed": sorted(CANONICAL_MISSING_ALLOWED),
         "failures": failures,
         "warnings": warnings,
         "limits": [
             "No evalúa la calidad de las traducciones ni modifica contenido editorial.",
-            "La reciprocidad hreflang se informa como advertencia para poder revisar excepciones antes de convertirla en bloqueo.",
+            "Las parejas ES/EN declaradas con hreflang deben ser recíprocas; una relación unilateral se trata como regresión.",
+            "La ausencia de canonical solo se tolera en 404.html y la pantalla técnica de mantenimiento.",
             "No sustituye una inspección en Search Console ni una prueba del índice real de un buscador.",
         ],
         "passed": not failures,
