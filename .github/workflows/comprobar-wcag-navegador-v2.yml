@@ -1,0 +1,30 @@
+name: Comprobar WCAG en navegador v2
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wcag-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-wcag
+          /tmp/ig-wcag/bin/pip -q install playwright==1.55.0
+          /tmp/ig-wcag/bin/python -m playwright install --with-deps chromium >/tmp/ig-wcag-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Reflow, espaciado, resize, foco y salto al contenido
+        run: |
+          cd dist
+          /tmp/ig-wcag/bin/python ../scripts/test_wcag_browser_v2.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-navegador-v2
+          path: dist/reports/wcag-browser-v2
+          retention-days: 14
