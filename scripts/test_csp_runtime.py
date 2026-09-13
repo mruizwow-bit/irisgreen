@@ -112,8 +112,8 @@ def test_video_frames(browser, base: str, failures: list[str]) -> list[str]:
         messages = csp_console_bag(page)
         attempts: list[str] = []
 
-        def abort_provider(route, bag=attempts):
-            bag.append(route.request.url)
+        def abort_provider(route, request, bag=attempts):
+            bag.append(request.url)
             route.abort()
 
         page.route(source + '/**', abort_provider)
