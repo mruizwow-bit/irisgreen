@@ -154,13 +154,18 @@ def main() -> None:
       noResults: !st.fullLoading && !st.fullError && !!st.data && rows.length === 0,'''
     text = replace_once(text, old_count, new_count, 'contador')
 
-    old_more = '''      hasMore: rows.length > st.limit,
-      moreLabel: "Ver más fichas (" + Math.max(0, rows.length - st.limit) + " restantes)",
-      showMore: () => this.setState({ limit: st.limit + 12 }),'''
-    new_more = '''      hasMore: !st.fullLoading && this.countRows(rows) > st.limit,
-      moreLabel: "Ver más fichas (" + Math.max(0, this.countRows(rows) - st.limit) + " restantes)",
-      showMore: () => this.showMoreRows(),'''
-    text = replace_once(text, old_more, new_more, 'ver más')
+    text = replace_once(text,
+        'hasMore: rows.length > st.limit,',
+        'hasMore: !st.fullLoading && this.countRows(rows) > st.limit,',
+        'ver más disponible')
+    text = replace_once(text,
+        'moreLabel: "Ver más fichas (" + Math.max(0, rows.length - st.limit) + " restantes)",',
+        'moreLabel: "Ver más fichas (" + Math.max(0, this.countRows(rows) - st.limit) + " restantes)",',
+        'etiqueta ver más')
+    text = replace_once(text,
+        'showMore: () => this.setState({ limit: st.limit + 12 }),',
+        'showMore: () => this.showMoreRows(),',
+        'acción ver más')
 
     page.write_text(text, encoding='utf-8')
     print({
