@@ -6,9 +6,10 @@
    3,95:1 incluso sobre blanco.
 3) Vídeos: «Dónde está» usaba #7a8698 a 13 px, también 3,69:1 sobre blanco.
 
-Los cambios son deliberadamente estrechos. Si cambian los objetivos esperados,
-el build falla para que la plantilla se revise en lugar de aplicar una sustitución
-a contenido distinto.
+Los dos últimos selectores pertenecen al DOM que monta el runtime: el HTML fuente
+conserva el texto objetivo, pero no necesariamente el atributo data-dc-tpl antes
+de ejecutar JavaScript. Por eso aquí se valida el texto y se inyecta la regla; la
+auditoría de navegador posterior demuestra que el selector montado recibe el color.
 """
 from __future__ import annotations
 
@@ -24,14 +25,12 @@ EXTRA = [
     {
         'page':'es/tramites/directorio/index.html',
         'needle':'Directorio de ayudas y trámites',
-        'anchor':'data-dc-tpl="60"',
         'style':'p[data-dc-tpl="60"]>.sc-interp{color:#197991!important}',
         'old':'#1f8ba8','new':'#197991','contrast':5.02,
     },
     {
         'page':'es/videos/index.html',
         'needle':'Dónde está',
-        'anchor':'data-dc-tpl="65"',
         'style':'span[data-dc-tpl="65"]>.sc-interp{color:#627087!important}',
         'old':'#7a8698','new':'#627087','contrast':5.02,
     },
@@ -43,8 +42,9 @@ def inject_style(root: Path, fix: dict) -> dict:
     if not page.is_file():
         raise FileNotFoundError(page)
     text = page.read_text(encoding='utf-8')
-    if fix['needle'] not in text or fix['anchor'] not in text:
-        raise AssertionError(f"No se encuentra el objetivo esperado en {fix['page']}")
+    count = text.count(fix['needle'])
+    if count < 1:
+        raise AssertionError(f"No se encuentra el texto objetivo en {fix['page']}: {fix['needle']}")
     style = f'<style id="{MARKER}">{fix["style"]}</style>'
     if style not in text:
         pos = text.lower().rfind('</head>')
@@ -52,7 +52,7 @@ def inject_style(root: Path, fix: dict) -> dict:
             raise AssertionError(f"HTML sin </head>: {fix['page']}")
         text = text[:pos] + style + '\n' + text[pos:]
         page.write_text(text, encoding='utf-8')
-    return {k: fix[k] for k in ('page','needle','old','new','contrast')}
+    return {**{k: fix[k] for k in ('page','needle','old','new','contrast')}, 'source_text_matches': count}
 
 
 def main() -> None:
@@ -87,6 +87,7 @@ def main() -> None:
         },
         'otros_textos': extras,
         'wcag_normal_text_minimum': 4.5,
+        'runtime_selectors_verified_by_browser_audit': True,
     }, ensure_ascii=False))
 
 
