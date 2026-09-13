@@ -2,8 +2,8 @@
 """Audita coherencia técnica de SEO e idiomas en la salida pública.
 
 No modifica contenido ni decide si una traducción es correcta. Comprueba relaciones
-estructurales verificables: lang de HTML, canonicals, hreflang, sitemap y diagnósticos
-de títulos/descripciones duplicados en páginas indexables.
+estructurales verificables: lang de HTML, canonicals, hreflang, sitemap y duplicados
+de títulos/descripciones en páginas indexables.
 """
 from __future__ import annotations
 
@@ -17,8 +17,6 @@ from xml.etree import ElementTree
 
 SITE_HOST = "irisgreen.eu"
 SITE = "https://irisgreen.eu"
-# Estas dos páginas técnicas no representan documentos indexables del sitio.
-# Cualquier otra página sin canonical debe revisarse como regresión SEO.
 CANONICAL_MISSING_ALLOWED = {"/404.html", "/assets/maintenance.html"}
 
 
@@ -171,18 +169,24 @@ def main() -> None:
         source_url = meta.canonical[0] if len(meta.canonical) == 1 else SITE + route
         if source_lang:
             other_lang = "en" if source_lang == "es" else "es"
-            if meta.alternates and other_lang not in seen_lang:
+            normalized_alt_langs = {lang.split("-", 1)[0] for lang in seen_lang if lang != "x-default"}
+            if meta.alternates and other_lang not in normalized_alt_langs:
                 hreflang_without_language_peer.append({
                     "route": route,
                     "lang": source_lang,
                     "alternates": dict(meta.alternates),
                 })
             for lang, href in meta.alternates:
+                lang_base = lang.split("-", 1)[0]
                 target = to_file(root, href)
-                if lang not in {"es", "en"} or lang == source_lang or not target or not target.is_file():
+                if lang_base not in {"es", "en"} or lang_base == source_lang or not target or not target.is_file():
                     continue
                 target_meta = parsed.get(target) or parse(target)
-                back = {k: v for k, v in target_meta.alternates}.get(source_lang)
+                back = None
+                for back_lang, back_href in target_meta.alternates:
+                    if back_lang.split("-", 1)[0] == source_lang:
+                        back = back_href
+                        break
                 if back == source_url:
                     reciprocal_pairs += 1
                 else:
@@ -204,6 +208,25 @@ def main() -> None:
         {"value": key, "routes": routes, "count": len(routes)}
         for key, routes in sorted(description_owners.items()) if len(routes) > 1
     ]
+
+    if hreflang_without_language_peer:
+        failures.append({
+            "type": "hreflang_without_language_peer",
+            "count": len(hreflang_without_language_peer),
+            "pages": hreflang_without_language_peer,
+        })
+    if duplicate_titles:
+        failures.append({
+            "type": "duplicate_indexable_titles",
+            "count": len(duplicate_titles),
+            "groups": duplicate_titles,
+        })
+    if duplicate_descriptions:
+        failures.append({
+            "type": "duplicate_indexable_descriptions",
+            "count": len(duplicate_descriptions),
+            "groups": duplicate_descriptions,
+        })
 
     sitemap_path = root / "sitemap.xml"
     sitemap_urls: list[str] = []
@@ -245,8 +268,8 @@ def main() -> None:
         "limits": [
             "No evalúa la calidad de las traducciones ni modifica contenido editorial.",
             "Las parejas ES/EN declaradas con hreflang deben ser recíprocas; una relación unilateral se trata como regresión.",
-            "Las páginas con hreflang solo a sí mismas se informan aparte: no se inventa una traducción inexistente.",
-            "Los títulos y descripciones duplicados se diagnostican, pero este auditor no los reescribe automáticamente.",
+            "No se permite publicar hreflang solo a la propia lengua: si no existe pareja real, no se inventa y se omite hreflang.",
+            "No se permiten títulos ni meta descriptions duplicados entre páginas indexables.",
             "La ausencia de canonical solo se tolera en 404.html y la pantalla técnica de mantenimiento.",
             "No sustituye una inspección en Search Console ni una prueba del índice real de un buscador.",
         ],
@@ -265,12 +288,6 @@ def main() -> None:
         "sitemap_urls": report["sitemap_urls"],
         "passed": report["passed"],
     }, ensure_ascii=False))
-    if hreflang_without_language_peer:
-        print(json.dumps({"hreflang_without_language_peer": hreflang_without_language_peer}, ensure_ascii=False))
-    if duplicate_titles:
-        print(json.dumps({"duplicate_title_groups": duplicate_titles[:20]}, ensure_ascii=False))
-    if duplicate_descriptions:
-        print(json.dumps({"duplicate_description_groups": duplicate_descriptions[:20]}, ensure_ascii=False))
     if warnings:
         print(json.dumps({"warnings": len(warnings), "sample": warnings[:8]}, ensure_ascii=False))
     if failures:
