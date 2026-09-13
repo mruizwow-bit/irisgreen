@@ -3,11 +3,12 @@
 
 Cubre de forma reproducible dos riesgos WCAG:
 - 1.4.2 Audio Control: ningún audio/TTS debe empezar sin acción de la persona.
-- 2.2.2 Pause, Stop, Hide: inventaría animaciones persistentes que empiezan solas
+- 2.2.2 Pause, Stop, Hide: detecta animaciones persistentes que empiezan solas
   para revisión; autoplay/marquee son errores objetivos en este sitio.
 
-No decide automáticamente si una animación persistente es esencial. El baseline
-actual debe quedar sin candidatos visibles persistentes tras estabilizar la página.
+No decide automáticamente si una animación persistente es esencial. Como el
+baseline actual es cero, cualquier candidato nuevo detiene CI para que se revise
+explícitamente antes de publicar.
 """
 from __future__ import annotations
 
@@ -77,7 +78,7 @@ class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-report={'routes':[],'objective_errors':[],'manual_motion':[],'limits':['Persistent CSS animations are candidates for review; essential loading indicators may be valid exceptions.','The sample covers initial page load, not every state revealed by interaction.']}
+report={'routes':[],'objective_errors':[],'manual_motion':[],'limits':['Persistent CSS animations require explicit review because an essential loading indicator can be a valid exception.','The sample covers initial page load, not every state revealed by interaction.']}
 with sync_playwright() as pw:
  browser=pw.chromium.launch()
  for route in ROUTES:
@@ -98,4 +99,5 @@ server.shutdown()
 report['summary']={'routes':len(report['routes']),'objective_errors':len(report['objective_errors']),'persistent_motion_candidates':len(report['manual_motion'])}
 (OUT/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report['summary'],ensure_ascii=False))
-if report['objective_errors']:raise SystemExit(1)
+if report['objective_errors'] or report['manual_motion']:
+ raise SystemExit(1)
