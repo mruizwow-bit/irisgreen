@@ -121,6 +121,9 @@ def build():
     # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
     # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Vídeos conserva el reproductor diferido, pero cada tarjeta ofrece además el enlace
+    # explícito al proveedor original como salida alternativa.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_video_external_links.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Metadatos finales: no inventa traducciones; usa solo parejas y textos ya existentes.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_seo_metadata.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
