@@ -38,6 +38,10 @@ VIDEO_PROVIDERS = [
     ('Vimeo', 'https://player.vimeo.com', True),
     ('Instagram', 'https://www.instagram.com', False),
 ]
+DC_ASSET_RE = re.compile(
+    r'<script\b[^>]*\bsrc=["\'](/assets/dc-logic/[^"\']+\.js)["\'][^>]*>',
+    re.I,
+)
 
 
 def global_csp(root: Path) -> str:
@@ -78,6 +82,20 @@ def dc_routes(root: Path) -> list[str]:
     if len(routes) != 24:
         raise AssertionError(f'Inventario DC externalizado inesperado: {len(routes)} != 24')
     return routes
+
+
+def page_component_source(path: Path) -> str:
+    """Devuelve HTML + assets DC locales que contienen la plantilla/lógica extraída."""
+    html = path.read_text(encoding='utf-8', errors='strict')
+    refs = DC_ASSET_RE.findall(html)
+    if len(refs) != 1:
+        raise AssertionError(
+            f'{path.relative_to(ROOT)}: esperaba 1 asset dc-logic y encontré {len(refs)}'
+        )
+    asset = ROOT / refs[0].lstrip('/')
+    if not asset.is_file():
+        raise FileNotFoundError(asset)
+    return html + '\n' + asset.read_text(encoding='utf-8', errors='strict')
 
 
 def server(root: Path, csp: str):
@@ -151,12 +169,14 @@ def test_all_dc_pages(browser, base: str, failures: list[str]) -> list[str]:
 
 
 def test_video_frames(browser, base: str, failures: list[str]) -> list[str]:
-    """Activa cada proveedor actualmente presente sin efectuar una carga remota real."""
+    """Activa cada proveedor presente sin efectuar una carga remota real."""
     tested: list[str] = []
-    html = (ROOT / 'es/videos/index.html').read_text(encoding='utf-8', errors='strict')
+    source_text = page_component_source(ROOT / 'es/videos/index.html')
     for _, source, _ in VIDEO_PROVIDERS:
-        if source not in html:
-            failures.append(f'/es/videos/: el componente ya no declara el proveedor revisado {source}')
+        if source not in source_text:
+            failures.append(
+                f'/es/videos/: ni el HTML ni su asset DC declaran el proveedor revisado {source}'
+            )
 
     for label, source, required_card in VIDEO_PROVIDERS:
         page = browser.new_page(viewport={'width': 1280, 'height': 900})
