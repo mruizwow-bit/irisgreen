@@ -20,6 +20,8 @@ jobs:
           /tmp/ig-csp/bin/python -m playwright install --with-deps chromium >/tmp/ig-csp-install.log 2>&1
       - name: Construir la salida pública
         run: python3 scripts/build_site.py
+      - name: Inventariar plantillas y runtime dinámico
+        run: python3 scripts/audit_template_runtime_scope.py --root dist
       - name: Inventariar dependencias de la política
         run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 4
       - name: Comprobar cabeceras de seguridad
