@@ -1,0 +1,23 @@
+name: Auditar WCAG semántica de tablas
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tables:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Auditar relaciones de encabezados en tablas
+        run: python3 scripts/audit_table_semantics.py --root dist
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-tablas
+          path: dist/reports/wcag-tables
+          retention-days: 14
