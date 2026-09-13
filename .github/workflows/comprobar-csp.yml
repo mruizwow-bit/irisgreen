@@ -20,11 +20,15 @@ jobs:
           /tmp/ig-csp/bin/python -m playwright install --with-deps chromium >/tmp/ig-csp-install.log 2>&1
       - name: Construir la salida pública
         run: python3 scripts/build_site.py
+      - name: Inventariar plantillas y runtime dinámico
+        run: python3 scripts/audit_template_runtime_scope.py --root dist
       - name: Inventariar dependencias de la política
-        run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 4
+        run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 0
       - name: Comprobar cabeceras de seguridad
         run: python3 scripts/audit_security_headers.py --root dist
-      - name: Acotar la deuda unsafe-eval
+      - name: Impedir unsafe-eval y evaluación dinámica
         run: python3 scripts/check_csp_eval_scope.py --root dist
+      - name: Probar las 24 interfaces DC sin unsafe-eval
+        run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_dc_runtime_csp.py
       - name: Probar la CSP real en navegador
         run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_csp_runtime.py
