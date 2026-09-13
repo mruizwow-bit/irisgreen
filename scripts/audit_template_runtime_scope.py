@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Inventaría la deuda de plantillas/runtime en la salida pública.
 
-No modifica archivos. Separa expresiones {{...}} que quedan en el HTML inicial de
-las que están dentro de <noscript>, cuenta atributos de enlace sin resolver y registra
-qué copia del runtime dinámico carga cada página. Sirve como mapa previo al refactor
-CSP; no considera un <noscript> como deuda de runtime porque no lo ejecuta JavaScript.
+No modifica archivos. Distingue expresiones ``{{...}}`` que quedan como markup en la
+respuesta HTML inicial de llaves que forman parte de código JavaScript o de un
+``<noscript>`` ya resuelto. También cuenta enlaces con atributos de plantilla y registra
+qué runtime DC carga cada página. El objetivo es detectar plantilla cruda visible o
+parseable como HTML, no literales internos del código precompilado.
 """
 from __future__ import annotations
 
@@ -15,13 +16,20 @@ from pathlib import Path
 
 MUSTACHE = re.compile(r"\{\{.*?\}\}", re.S)
 NOSCRIPT = re.compile(r"<noscript\b[^>]*>.*?</noscript\s*>", re.I | re.S)
-LINK_MUSTACHE = re.compile(r"<(?:a|link)\b[^>]*(?:href|sc-camel-href)=[\"'][^\"']*\{\{.*?\}\}[^\"']*[\"'][^>]*>", re.I | re.S)
+SCRIPT_BLOCK = re.compile(r"<script\b[^>]*>.*?</script\s*>", re.I | re.S)
+LINK_MUSTACHE = re.compile(
+    r"<(?:a|link)\b[^>]*(?:href|sc-camel-href)=[\"'][^\"']*\{\{.*?\}\}[^\"']*[\"'][^>]*>",
+    re.I | re.S,
+)
 SCRIPT_SRC = re.compile(r"<script\b[^>]*\bsrc=[\"']([^\"']+)[\"'][^>]*>", re.I)
-DATA_DC_SCRIPT = re.compile(r"<script\b[^>]*\bdata-dc-script\b[^>]*>(.*?)</script\s*>", re.I | re.S)
+DATA_DC_SCRIPT = re.compile(
+    r"<script\b[^>]*\bdata-dc-script\b[^>]*>(.*?)</script\s*>", re.I | re.S
+)
 X_DC = re.compile(r"<x-dc\b", re.I)
 RUNTIMES = (
     "/assets/games/dc-runtime.js",
     "/assets/runtime/8fe7df74405f3c55.js",
+    "/assets/runtime/dc-runtime-csp.js",
 )
 
 
@@ -46,16 +54,20 @@ def main() -> None:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
         active = NOSCRIPT.sub("", text)
-        active_expr = MUSTACHE.findall(active)
-        if not active_expr and not any(runtime in text for runtime in RUNTIMES) and not X_DC.search(text):
-            continue
+        # Los scripts se inspeccionan por separado. Sus literales {{...}} no son
+        # plantilla HTML pendiente y no deben reabrir el hallazgo 2.
+        markup = SCRIPT_BLOCK.sub("", active)
+        active_expr = MUSTACHE.findall(markup)
         scripts = SCRIPT_SRC.findall(text)
         runtime_refs = [r for r in RUNTIMES if r in scripts or r in text]
+        if not active_expr and not runtime_refs and not X_DC.search(active):
+            continue
         rows.append({
             "route": route(root, path),
             "active_mustache": len(active_expr),
-            "active_link_mustache": len(LINK_MUSTACHE.findall(active)),
+            "active_link_mustache": len(LINK_MUSTACHE.findall(markup)),
             "noscript_mustache": len(MUSTACHE.findall("\n".join(NOSCRIPT.findall(text)))),
+            "script_mustache": len(MUSTACHE.findall("\n".join(SCRIPT_BLOCK.findall(active)))),
             "has_x_dc": bool(X_DC.search(active)),
             "data_dc_script_blocks": len(DATA_DC_SCRIPT.findall(active)),
             "runtime_refs": runtime_refs,
@@ -75,6 +87,14 @@ def main() -> None:
         "pages": rows,
     }
     print(json.dumps(report, ensure_ascii=False, indent=2))
+
+    # Una vez integrado en publicación, este inventario funciona también como
+    # guardarraíl: ninguna expresión de plantilla puede volver al markup inicial.
+    if debt:
+        raise AssertionError(
+            "Quedan plantillas {{ }} activas en el HTML inicial: "
+            + ", ".join(r["route"] for r in debt[:20])
+        )
 
 
 if __name__ == "__main__":
