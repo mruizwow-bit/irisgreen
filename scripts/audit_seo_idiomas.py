@@ -2,8 +2,8 @@
 """Audita coherencia técnica de SEO e idiomas en la salida pública.
 
 No modifica contenido ni decide si una traducción es correcta. Comprueba relaciones
-estructurales verificables: lang de HTML, canonicals, hreflang, sitemap y duplicados
-de títulos/descripciones en páginas indexables.
+estructurales verificables: lang de HTML, canonicals, hreflang, sitemap y metadatos
+básicos de páginas indexables.
 """
 from __future__ import annotations
 
@@ -114,6 +114,8 @@ def main() -> None:
     canonical_owners: dict[str, list[str]] = defaultdict(list)
     title_owners: dict[str, list[str]] = defaultdict(list)
     description_owners: dict[str, list[str]] = defaultdict(list)
+    missing_titles: list[str] = []
+    missing_descriptions: list[str] = []
     pages_with_hreflang = 0
     reciprocal_pairs = 0
     hreflang_without_language_peer: list[dict] = []
@@ -142,14 +144,18 @@ def main() -> None:
         else:
             failures.append({"type": "canonical_missing", "route": route})
 
-        indexable = not any("noindex" in value for value in meta.robots)
+        indexable = route not in CANONICAL_MISSING_ALLOWED and not any("noindex" in value for value in meta.robots)
         if indexable:
             if meta.title:
                 title_owners[normalized(meta.title)].append(route)
+            else:
+                missing_titles.append(route)
             if len(meta.descriptions) > 1:
                 failures.append({"type": "meta_description_duplicate_tag", "route": route, "values": meta.descriptions})
             if meta.descriptions and meta.descriptions[0]:
                 description_owners[normalized(meta.descriptions[0])].append(route)
+            else:
+                missing_descriptions.append(route)
 
         if meta.alternates:
             pages_with_hreflang += 1
@@ -209,6 +215,10 @@ def main() -> None:
         for key, routes in sorted(description_owners.items()) if len(routes) > 1
     ]
 
+    if missing_titles:
+        failures.append({"type": "indexable_title_missing", "count": len(missing_titles), "routes": missing_titles})
+    if missing_descriptions:
+        failures.append({"type": "indexable_meta_description_missing", "count": len(missing_descriptions), "routes": missing_descriptions})
     if hreflang_without_language_peer:
         failures.append({
             "type": "hreflang_without_language_peer",
@@ -258,6 +268,8 @@ def main() -> None:
         "pages_with_canonical": sum(bool(m.canonical) for m in parsed.values()),
         "pages_with_hreflang": pages_with_hreflang,
         "reciprocal_language_links": reciprocal_pairs,
+        "missing_indexable_titles": missing_titles,
+        "missing_indexable_descriptions": missing_descriptions,
         "hreflang_without_language_peer": hreflang_without_language_peer,
         "duplicate_indexable_titles": duplicate_titles,
         "duplicate_indexable_descriptions": duplicate_descriptions,
@@ -269,6 +281,7 @@ def main() -> None:
             "No evalúa la calidad de las traducciones ni modifica contenido editorial.",
             "Las parejas ES/EN declaradas con hreflang deben ser recíprocas; una relación unilateral se trata como regresión.",
             "No se permite publicar hreflang solo a la propia lengua: si no existe pareja real, no se inventa y se omite hreflang.",
+            "Toda página indexable debe tener title y meta description no vacíos.",
             "No se permiten títulos ni meta descriptions duplicados entre páginas indexables.",
             "La ausencia de canonical solo se tolera en 404.html y la pantalla técnica de mantenimiento.",
             "No sustituye una inspección en Search Console ni una prueba del índice real de un buscador.",
@@ -282,6 +295,8 @@ def main() -> None:
         "pages_with_canonical": report["pages_with_canonical"],
         "pages_with_hreflang": report["pages_with_hreflang"],
         "reciprocal_language_links": report["reciprocal_language_links"],
+        "missing_indexable_titles": len(missing_titles),
+        "missing_indexable_descriptions": len(missing_descriptions),
         "hreflang_without_language_peer": len(hreflang_without_language_peer),
         "duplicate_indexable_titles": len(duplicate_titles),
         "duplicate_indexable_descriptions": len(duplicate_descriptions),
