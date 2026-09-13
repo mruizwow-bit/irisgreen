@@ -92,6 +92,16 @@ class PageAudit(HTMLParser):
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=Path('dist'))
+    ap.add_argument(
+        '--max-eval-like',
+        type=int,
+        default=6,
+        help=(
+            'Máximo temporal de usos de eval()/new Function() permitido en la salida. '
+            'El baseline 6 corresponde a la deuda técnica ya inventariada en el runtime; '
+            'el límite solo puede mantenerse o reducirse, nunca aumentarse para hacer pasar CI.'
+        ),
+    )
     args = ap.parse_args()
     root = args.root.resolve()
 
@@ -144,9 +154,11 @@ def main() -> None:
             for o, n in sorted(remote_calls.items())
         ],
         'eval_o_new_function': eval_like,
+        'limite_eval_o_new_function': args.max_eval_like,
         'origenes_http_inseguros': insecure,
         'conclusion': (
             'No retirar unsafe-inline hasta migrar los scripts/estilos inline que este inventario contabiliza. '
+            'unsafe-eval sigue siendo deuda técnica conocida del runtime: este control impide que aumente mientras se migra. '
             'Los orígenes externos listados deben revisarse antes de fijar script-src, style-src, img-src, frame-src o connect-src.'
         ),
     }
@@ -164,8 +176,14 @@ def main() -> None:
         'origenes_externos': len(origins),
         'llamadas_remotas_js': len(remote_calls),
         'eval_o_new_function': eval_like,
+        'limite_eval_o_new_function': args.max_eval_like,
         'http_inseguro': len(insecure),
     }, ensure_ascii=False))
+    if eval_like > args.max_eval_like:
+        raise AssertionError(
+            f'La salida pública ha aumentado eval()/new Function(): {eval_like} > {args.max_eval_like}. '
+            'No ampliar el límite; localizar la regresión o reducir la dependencia del runtime.'
+        )
 
 
 if __name__ == '__main__':
