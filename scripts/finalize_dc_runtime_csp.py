@@ -9,7 +9,7 @@ Estrategia de publicación, sin reescribir interfaces:
    resolver en el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
    24 páginas la usen;
-5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
+5. elimina las dos copias antiguas del artefacto y exige una CSP sin ``unsafe-eval``.
 
 El script falla si aparece x-import/dc-import, más de un bloque de lógica o cualquier
 otra forma que exija volver a ampliar el contrato. No toca archivos fuente fuera de
@@ -165,10 +165,20 @@ def update_csp(root: Path) -> None:
     headers = root / "_headers"
     text = headers.read_text(encoding="utf-8", errors="strict")
     old = "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    new = "script-src 'self' 'unsafe-inline'"
-    if text.count(old) != 1:
-        raise AssertionError("La CSP no contiene exactamente el script-src con unsafe-eval esperado")
-    headers.write_text(text.replace(old, new, 1), encoding="utf-8")
+    clean = "script-src 'self' 'unsafe-inline'"
+    old_count = text.count(old)
+    if old_count == 1:
+        text = text.replace(old, clean, 1)
+        headers.write_text(text, encoding="utf-8")
+    elif old_count == 0 and text.count(clean) == 1:
+        # La fuente ya nace endurecida: no volver a exigir una CSP débil para poder
+        # construir el artefacto seguro.
+        pass
+    else:
+        raise AssertionError("La CSP no contiene exactamente un script-src seguro conocido")
+    final = headers.read_text(encoding="utf-8", errors="strict")
+    if "'unsafe-eval'" in final:
+        raise AssertionError("La CSP final todavía contiene unsafe-eval")
 
 
 def markup_without_scripts_or_noscript(text: str) -> str:

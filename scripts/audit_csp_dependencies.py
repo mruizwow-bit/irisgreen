@@ -74,10 +74,10 @@ def parse_csp(policy: str) -> dict[str, list[str]]:
 def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
     """Impide ampliar permisos activos sin una revisión explícita del guardarraíl.
 
-    La deuda ya conocida (``unsafe-inline`` y ``unsafe-eval``) puede reducirse sin
-    tocar esta prueba. Lo que no puede ocurrir silenciosamente es añadir comodines,
-    orígenes de scripts, ``data:``/``blob:`` para scripts, marcos fuera de la lista
-    cerrada de proveedores de vídeo o nuevas palabras ``unsafe-*``.
+    La deuda conocida de ``unsafe-inline`` puede reducirse sin tocar esta prueba.
+    ``unsafe-eval`` ya fue eliminado y no puede reaparecer. Tampoco pueden añadirse
+    silenciosamente comodines, orígenes de scripts, ``data:``/``blob:`` para scripts,
+    marcos fuera de la lista cerrada de proveedores de vídeo o nuevos permisos unsafe.
     """
     policy = global_csp(root)
     directives = parse_csp(policy)
@@ -130,8 +130,11 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
             f'CSP amplía frame-ancestors fuera de self/none: {sorted(ancestors)}'
         )
 
+    if "'unsafe-eval'" in directives['script-src']:
+        raise AssertionError("La CSP ha reintroducido 'unsafe-eval'")
+
     script_allowed = {
-        "'self'", "'unsafe-inline'", "'unsafe-eval'", "'strict-dynamic'", "'report-sample'",
+        "'self'", "'unsafe-inline'", "'strict-dynamic'", "'report-sample'",
     }
     style_allowed = {"'self'", "'unsafe-inline'", "'report-sample'"}
 
@@ -158,7 +161,7 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
         )
 
     unsafe_allowed = {
-        'script-src': {"'unsafe-inline'", "'unsafe-eval'"},
+        'script-src': {"'unsafe-inline'"},
         'style-src': {"'unsafe-inline'"},
     }
     unexpected_unsafe: list[str] = []
@@ -237,14 +240,17 @@ def main() -> None:
     ap.add_argument(
         '--max-eval-like',
         type=int,
-        default=6,
+        default=0,
         help=(
-            'Máximo temporal de usos de eval()/new Function() permitido en la salida. '
-            'El baseline 6 corresponde a la deuda técnica ya inventariada en el runtime; '
-            'el límite solo puede mantenerse o reducirse, nunca aumentarse para hacer pasar CI.'
+            'Compatibilidad con el workflow CSP. El único valor permitido es 0: '
+            'eval()/new Function() ya fueron eliminados y no pueden volver a admitirse.'
         ),
     )
     args = ap.parse_args()
+    if args.max_eval_like != 0:
+        raise AssertionError(
+            'El límite de eval()/new Function() está congelado en 0; no puede ampliarse.'
+        )
     root = args.root.resolve()
 
     policy, directives = validate_csp_policy(root)
@@ -298,7 +304,7 @@ def main() -> None:
             for o, n in sorted(remote_calls.items())
         ],
         'eval_o_new_function': eval_like,
-        'limite_eval_o_new_function': args.max_eval_like,
+        'limite_eval_o_new_function': 0,
         'origenes_http_inseguros': insecure,
         'csp_publicada': policy,
         'csp_directivas': directives,
@@ -309,11 +315,11 @@ def main() -> None:
             'style_src_unsafe_inline': "'unsafe-inline'" in directives.get('style-src', []),
         },
         'conclusion': (
-            'No retirar unsafe-inline hasta migrar los scripts/estilos inline que este inventario contabiliza. '
-            'unsafe-eval sigue siendo deuda técnica conocida del runtime: este control impide que aumente mientras se migra. '
-            'La CSP queda además protegida contra comodines, nuevos permisos unsafe, fuentes de script no revisadas, '
-            'iframes fuera de la lista cerrada de la videoteca y ampliaciones silenciosas de connect-src. '
-            'Los orígenes externos listados deben revisarse antes de ampliar cualquier directiva.'
+            'eval()/new Function() y unsafe-eval deben permanecer en cero. '
+            'La deuda CSP restante es unsafe-inline: no retirarla hasta migrar los scripts/estilos inline '
+            'que este inventario contabiliza. La CSP queda además protegida contra comodines, nuevos permisos unsafe, '
+            'fuentes de script no revisadas, iframes fuera de la lista cerrada de la videoteca y ampliaciones silenciosas '
+            'de connect-src. Los orígenes externos listados deben revisarse antes de ampliar cualquier directiva.'
         ),
     }
     out = root / 'reports/publicacion'
@@ -330,15 +336,15 @@ def main() -> None:
         'origenes_externos': len(origins),
         'llamadas_remotas_js': len(remote_calls),
         'eval_o_new_function': eval_like,
-        'limite_eval_o_new_function': args.max_eval_like,
+        'limite_eval_o_new_function': 0,
         'http_inseguro': len(insecure),
         'csp_guardada': True,
         'csp_directivas': len(directives),
     }, ensure_ascii=False))
-    if eval_like > args.max_eval_like:
+    if eval_like:
         raise AssertionError(
-            f'La salida pública ha aumentado eval()/new Function(): {eval_like} > {args.max_eval_like}. '
-            'No ampliar el límite; localizar la regresión o reducir la dependencia del runtime.'
+            f'La salida pública ha reintroducido eval()/new Function(): {eval_like}. '
+            'El límite es 0 y no puede ampliarse.'
         )
 
 
