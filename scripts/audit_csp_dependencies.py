@@ -30,6 +30,7 @@ VIDEO_FRAME_SOURCES = {
     'https://player.vimeo.com',
     'https://www.instagram.com',
 }
+INLINE_KEYS = ('inline_scripts', 'style_blocks', 'style_attrs', 'event_attrs')
 
 
 def origin(value: str) -> str | None:
@@ -40,6 +41,20 @@ def origin(value: str) -> str | None:
     if p.scheme not in {'http', 'https'} or not p.netloc:
         return None
     return f'{p.scheme}://{p.netloc.lower()}'
+
+
+def route_family(rel: str) -> str:
+    """Agrupa rutas por sección estable para priorizar la migración de inline."""
+    parts = Path(rel).parts
+    if rel == 'index.html':
+        return 'raiz'
+    if not parts:
+        return 'raiz'
+    if len(parts) >= 3 and parts[0] in {'es', 'en'} and parts[1] in {'neurodiversidad', 'neurodiversity', 'recursos'}:
+        return '/'.join(parts[:3])
+    if len(parts) >= 2 and parts[0] in {'es', 'en'}:
+        return '/'.join(parts[:2])
+    return parts[0]
 
 
 def global_csp(root: Path) -> str:
@@ -106,8 +121,6 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
     }
     for name, expected in fixed.items():
         got = set(directives[name])
-        # Se permite endurecer connect-src a 'none'; el resto debe conservar el
-        # límite revisado hasta que exista un cambio funcional deliberado.
         if name == 'connect-src' and got == {"'none'"}:
             continue
         if got != expected:
@@ -234,6 +247,12 @@ class PageAudit(HTMLParser):
             self.in_style = False
 
 
+def top_pages(rows: list[dict], key: str, limit: int = 20) -> list[dict]:
+    selected = [row for row in rows if row[key]]
+    selected.sort(key=lambda row: (-row[key], row['path']))
+    return [{'path': row['path'], key: row[key]} for row in selected[:limit]]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=Path('dist'))
@@ -258,20 +277,48 @@ def main() -> None:
     totals = Counter()
     origins: Counter[str] = Counter()
     examples: dict[str, list[str]] = {}
+    inline_rows: list[dict] = []
+    family_totals: dict[str, Counter[str]] = {}
     html_files = sorted(root.rglob('*.html'))
     for path in html_files:
         doc = PageAudit(path.read_text(encoding='utf-8', errors='strict'))
-        totals['inline_scripts'] += doc.inline_scripts
-        totals['data_scripts'] += doc.data_scripts
-        totals['style_blocks'] += doc.style_blocks
-        totals['style_attrs'] += doc.style_attrs
-        totals['event_attrs'] += doc.event_attrs
+        rel = path.relative_to(root).as_posix()
+        row = {
+            'path': rel,
+            'family': route_family(rel),
+            'inline_scripts': doc.inline_scripts,
+            'data_scripts': doc.data_scripts,
+            'style_blocks': doc.style_blocks,
+            'style_attrs': doc.style_attrs,
+            'event_attrs': doc.event_attrs,
+        }
+        if any(row[key] for key in INLINE_KEYS):
+            inline_rows.append(row)
+        family = family_totals.setdefault(row['family'], Counter())
+        for key in (*INLINE_KEYS, 'data_scripts'):
+            totals[key] += row[key]
+            family[key] += row[key]
         origins.update(doc.resource_origins)
         for o, rows in doc.resource_examples.items():
             dst = examples.setdefault(o, [])
-            for row in rows:
-                if row not in dst and len(dst) < 8:
-                    dst.append(row)
+            for item in rows:
+                if item not in dst and len(dst) < 8:
+                    dst.append(item)
+
+    family_rows = []
+    for family, counts in family_totals.items():
+        if any(counts[key] for key in INLINE_KEYS):
+            family_rows.append({'family': family, **{key: counts[key] for key in (*INLINE_KEYS, 'data_scripts')}})
+    family_rows.sort(
+        key=lambda row: (
+            -row['inline_scripts'], -row['event_attrs'], -row['style_attrs'], -row['style_blocks'], row['family']
+        )
+    )
+
+    pages_affected = {
+        key: sum(1 for row in inline_rows if row[key]) for key in INLINE_KEYS
+    }
+    tops = {key: top_pages(inline_rows, key) for key in INLINE_KEYS}
 
     js_files = sorted(root.rglob('*.js'))
     remote_calls: Counter[str] = Counter()
@@ -295,6 +342,10 @@ def main() -> None:
         'html_revisados': len(html_files),
         'js_revisados': len(js_files),
         'inline': dict(totals),
+        'paginas_afectadas_inline': pages_affected,
+        'inline_por_pagina': inline_rows,
+        'inline_por_familia': family_rows,
+        'top_paginas_inline': tops,
         'recursos_externos': [
             {'origin': o, 'referencias': n, 'ejemplos': examples.get(o, [])}
             for o, n in sorted(origins.items())
@@ -316,10 +367,10 @@ def main() -> None:
         },
         'conclusion': (
             'eval()/new Function() y unsafe-eval deben permanecer en cero. '
-            'La deuda CSP restante es unsafe-inline: no retirarla hasta migrar los scripts/estilos inline '
-            'que este inventario contabiliza. La CSP queda además protegida contra comodines, nuevos permisos unsafe, '
-            'fuentes de script no revisadas, iframes fuera de la lista cerrada de la videoteca y ampliaciones silenciosas '
-            'de connect-src. Los orígenes externos listados deben revisarse antes de ampliar cualquier directiva.'
+            'La deuda CSP restante es unsafe-inline: migrar por familias y separar primero scripts/eventos de CSS inline. '
+            'El informe detalla todas las rutas afectadas y los mayores concentradores para evitar una reescritura masiva a ciegas. '
+            'La CSP queda además protegida contra comodines, nuevos permisos unsafe, fuentes de script no revisadas, '
+            'iframes fuera de la lista cerrada de la videoteca y ampliaciones silenciosas de connect-src.'
         ),
     }
     out = root / 'reports/publicacion'
@@ -333,6 +384,12 @@ def main() -> None:
         'style_blocks': totals['style_blocks'],
         'style_attrs': totals['style_attrs'],
         'event_attrs': totals['event_attrs'],
+        'paginas_afectadas_inline': pages_affected,
+        'top_inline_scripts': tops['inline_scripts'][:10],
+        'top_event_attrs': tops['event_attrs'][:10],
+        'top_style_attrs': tops['style_attrs'][:10],
+        'top_style_blocks': tops['style_blocks'][:10],
+        'top_familias_inline': family_rows[:15],
         'origenes_externos': len(origins),
         'llamadas_remotas_js': len(remote_calls),
         'eval_o_new_function': eval_like,
