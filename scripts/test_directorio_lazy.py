@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Prueba real de la carga inicial y perezosa del Directorio.
+"""Prueba real de la primera carga y de la carga perezosa del Directorio.
 
-La primera pantalla debe usar exclusivamente los datos de España ya incrustados,
-sin un desplazamiento grande durante la hidratación. El JSON completo se descarga
+La primera pantalla debe usar exclusivamente los datos de España ya incrustados y
+publicar las precargas de las tres tipografías críticas. El JSON completo se descarga
 al elegir el primer país extranjero y se reutiliza para los siguientes cambios.
+Lighthouse mantiene la comprobación de CLS con throttling móvil realista.
 """
 from __future__ import annotations
 
@@ -29,7 +30,7 @@ errors=[]
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch()
-    ctx=browser.new_context(viewport={'width':1280,'height':900})
+    ctx=browser.new_context(viewport={'width':412,'height':823})
     page=ctx.new_page()
     page.add_init_script('''() => {
       window.__igDirectoryCLS = 0;
@@ -49,7 +50,9 @@ with sync_playwright() as pw:
     page.get_by_text(DATA['es'][0]['name'],exact=True).first.wait_for(timeout=15000)
     page.wait_for_timeout(700)
     cls=float(page.evaluate('window.__igDirectoryCLS || 0'))
-    assert cls < 0.1,f'CLS inicial del Directorio demasiado alto: {cls:.4f}'
+    preloads=page.locator('link[data-ig-directory-font-preload][rel="preload"][as="font"]')
+    assert preloads.count()==3,f'Se esperaban 3 precargas tipográficas; hay {preloads.count()}'
+    assert cls < 0.1,f'CLS sin throttling del Directorio demasiado alto: {cls:.4f}'
     assert requests==[],f'El JSON internacional se descargó al abrir la página: {requests}'
 
     page.get_by_role('button',name='Reino Unido',exact=True).click()
@@ -64,4 +67,4 @@ with sync_playwright() as pw:
     assert not errors,errors
     ctx.close();browser.close()
 server.shutdown()
-print(json.dumps({'cls_inicial':round(cls,4),'limite_cls':0.1,'inicial_json_completo':0,'tras_reino_unido':1,'tras_brasil':1,'reutiliza_datos':True},ensure_ascii=False))
+print(json.dumps({'viewport':'412x823','cls_sin_throttling':round(cls,4),'precargas_fuente':3,'inicial_json_completo':0,'tras_reino_unido':1,'tras_brasil':1,'reutiliza_datos':True},ensure_ascii=False))
