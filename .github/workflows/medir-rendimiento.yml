@@ -37,32 +37,79 @@ jobs:
               --output=json --output-path="/tmp/ig-lighthouse/${name}.json" \
               --only-categories=performance,accessibility,best-practices,seo --quiet
           done
-      - name: Resumir baseline y vigilar CLS
+      - name: Resumir baseline y bloquear regresiones CWV de laboratorio
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
+
+          # Techo de no-regresión derivado de tres ejecuciones verdes consecutivas
+          # del 13-09-2026. No equivale a afirmar que las rutas actuales sean rápidas:
+          # Investigación, Directorio y Libros parten de LCP de laboratorio >4 s.
+          LCP_CEILING_MS={
+              'home':4000,
+              'situaciones':4000,
+              'ficha':4000,
+              'investigacion':7500,
+              'directorio':9000,
+              'libros':5600,
+          }
+          TBT_CEILING_MS=600
+          CLS_CEILING=0.1
+
+          def lcp_status(value):
+              return 'good' if value<=2500 else 'needs-improvement' if value<=4000 else 'poor'
+          def tbt_status(value):
+              return 'good' if value<=200 else 'needs-improvement' if value<=600 else 'poor'
+
           out={}
+          failures=[]
           for p in sorted(Path('/tmp/ig-lighthouse').glob('*.json')):
               data=json.loads(p.read_text())
               cats=data['categories'];a=data['audits']
-              out[p.stem]={
+              lcp=round(a['largest-contentful-paint']['numericValue'])
+              tbt=round(a['total-blocking-time']['numericValue'])
+              cls=round(a['cumulative-layout-shift']['numericValue'],4)
+              vals={
                 'performance':round(cats['performance']['score']*100),
                 'accessibility':round(cats['accessibility']['score']*100),
                 'best_practices':round(cats['best-practices']['score']*100),
                 'seo':round(cats['seo']['score']*100),
                 'fcp_ms':round(a['first-contentful-paint']['numericValue']),
-                'lcp_ms':round(a['largest-contentful-paint']['numericValue']),
-                'tbt_ms':round(a['total-blocking-time']['numericValue']),
-                'cls':round(a['cumulative-layout-shift']['numericValue'],4),
+                'lcp_ms':lcp,
+                'lcp_status':lcp_status(lcp),
+                'lcp_ceiling_ms':LCP_CEILING_MS[p.stem],
+                'tbt_ms':tbt,
+                'tbt_status':tbt_status(tbt),
+                'tbt_ceiling_ms':TBT_CEILING_MS,
+                'cls':cls,
+                'cls_ceiling':CLS_CEILING,
                 'speed_index_ms':round(a['speed-index']['numericValue']),
                 'transfer_bytes':a.get('total-byte-weight',{}).get('numericValue'),
               }
-          Path('/tmp/ig-lighthouse/summary.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps(out,ensure_ascii=False,indent=2))
-          bad_cls={name:vals['cls'] for name,vals in out.items() if vals['cls']>0.1}
-          if bad_cls:
-              raise SystemExit('CLS por encima del umbral bueno (0,1): '+json.dumps(bad_cls,ensure_ascii=False))
+              out[p.stem]=vals
+              if lcp>LCP_CEILING_MS[p.stem]:
+                  failures.append({'route':p.stem,'metric':'lcp_ms','value':lcp,'ceiling':LCP_CEILING_MS[p.stem]})
+              if tbt>TBT_CEILING_MS:
+                  failures.append({'route':p.stem,'metric':'tbt_ms','value':tbt,'ceiling':TBT_CEILING_MS})
+              if cls>CLS_CEILING:
+                  failures.append({'route':p.stem,'metric':'cls','value':cls,'ceiling':CLS_CEILING})
+
+          report={
+              'measurement':'Lighthouse laboratory run; not real-user CrUX/Core Web Vitals data',
+              'routes':out,
+              'known_poor_lcp':[name for name,vals in out.items() if vals['lcp_status']=='poor'],
+              'failures':failures,
+              'limits':[
+                  'The ceilings are no-regression limits, not performance targets.',
+                  'Poor LCP routes remain explicit technical debt and are not reclassified as passing CWV.',
+                  'TBT is a Lighthouse lab proxy for main-thread blocking; it is not INP.',
+              ],
+          }
+          Path('/tmp/ig-lighthouse/summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if failures:
+              raise SystemExit('Regresión de rendimiento por encima del contrato de laboratorio: '+json.dumps(failures,ensure_ascii=False))
           PY
       - name: Cerrar servidor
         if: always()
