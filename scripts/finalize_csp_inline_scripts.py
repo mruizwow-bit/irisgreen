@@ -32,7 +32,7 @@ SCRIPT_BLOCK = re.compile(
 SRC_ATTR = re.compile(r'\bsrc\s*=\s*(["\']).*?\1', re.I | re.S)
 TYPE_ATTR = re.compile(r'\btype\s*=\s*(["\'])(.*?)\1', re.I | re.S)
 BRAND_ONERROR = re.compile(
-    r'\s+onerror\s*=\s*(["\'])this\.remove\(\)\1', re.I
+    r"\s+onerror\s*=\s*(?:\"this\.remove\(\)\"|'this\.remove\(\)')", re.I
 )
 CSP_LINE = re.compile(
     r'^(?P<prefix>\s*Content-Security-Policy:\s*)(?P<policy>.+)$', re.M
