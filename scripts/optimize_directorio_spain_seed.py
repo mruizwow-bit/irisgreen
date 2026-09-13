@@ -77,6 +77,28 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
     return text.replace(old, new, 1)
 
 
+def add_complete_filter_options(text: str) -> str:
+    """Añade metadatos completos sin depender de la indentación del template."""
+    addition = '''
+    if (st.country === "es" && this.spainIsPartial()) {
+      terrs.splice(0, terrs.length, ...(IG_INITIAL._esTerrs || []));
+      cats.splice(0, cats.length, ...(IG_INITIAL._esCats || []));
+    }'''
+    if addition.strip() in text:
+        return text
+    pattern = re.compile(
+        r'(all\.forEach\(\(f\)\s*=>\s*\{\s*'
+        r'if\s*\(terrs\.indexOf\(f\.terr\)\s*===\s*-1\)\s*terrs\.push\(f\.terr\);\s*'
+        r'if\s*\(cats\.indexOf\(f\.cat\)\s*===\s*-1\)\s*cats\.push\(f\.cat\);\s*'
+        r'\}\);)',
+        re.S,
+    )
+    text, count = pattern.subn(lambda m: m.group(1) + addition, text, count=1)
+    if count != 1:
+        raise ValueError(f'opciones completas de España: se esperaba una estructura y hay {count}')
+    return text
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=ROOT / 'dist')
@@ -114,18 +136,7 @@ def main() -> None:
     text = text[:match.start(2)] + payload + text[match.end(2):]
 
     text = replace_once(text, '  loadAllData() {', METHODS + '  loadAllData() {', 'métodos España')
-
-    # Las opciones de filtro siguen completas aunque el HTML solo lleve 24 fichas.
-    anchor = '''    all.forEach((f) => {
-      if (terrs.indexOf(f.terr) === -1) terrs.push(f.terr);
-      if (cats.indexOf(f.cat) === -1) cats.push(f.cat);
-    });'''
-    enhanced = anchor + '''
-    if (st.country === "es" && this.spainIsPartial()) {
-      terrs.splice(0, terrs.length, ...(IG_INITIAL._esTerrs || []));
-      cats.splice(0, cats.length, ...(IG_INITIAL._esCats || []));
-    }'''
-    text = replace_once(text, anchor, enhanced, 'opciones completas de España')
+    text = add_complete_filter_options(text)
 
     text = replace_once(text,
         'onTerr: (e) => this.setState({ terr: e.target.value, limit: 12 }),',
