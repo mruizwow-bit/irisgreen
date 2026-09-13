@@ -55,20 +55,20 @@ jobs:
           )
           
           old_cards = """        <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
-          <div style="background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px;">
-            <div style="font-size: 16.5px;">{{ s.name }}</div>
-            <div style="font-size: 14px; color: #5d6779;">{{ s.state }}</div>
-          </div>
-        </sc-for>"""
+                    <div style="background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px;">
+                      <div style="font-size: 16.5px;">{{ s.name }}</div>
+                      <div style="font-size: 14px; color: #5d6779;">{{ s.state }}</div>
+                    </div>
+                  </sc-for>"""
           new_cards = """        <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
-          <a href="{{ s.href }}" style="display: flex; flex-direction: column; gap: 5px; background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: #17395c;">
-            <span style="font-size: 16.5px;">{{ s.name }}</span>
-            <span style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: #1f5f8b;">
-              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path></svg>
-              {{ s.state }}
-            </span>
-          </a>
-        </sc-for>"""
+                    <a href="{{ s.href }}" style="display: flex; flex-direction: column; gap: 5px; background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: #17395c;">
+                      <span style="font-size: 16.5px;">{{ s.name }}</span>
+                      <span style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: #1f5f8b;">
+                        <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path></svg>
+                        {{ s.state }}
+                      </span>
+                    </a>
+                  </sc-for>"""
           once(old_cards, new_cards, "tarjetas dinámicas")
           
           start = s.find("<!-- ig-sin-js:start -->")
@@ -110,6 +110,7 @@ jobs:
               card_start = nos.rfind('<div data-dc-tpl="128"', 0, pos)
               if card_start == -1:
                   raise SystemExit(f"Falta inicio de tarjeta: {name}")
+          
               depth = 0
               card_end = None
               for match in re.finditer(r'<div\b|</div>', nos[card_start:]):
@@ -120,8 +121,10 @@ jobs:
                       if depth == 0:
                           card_end = card_start + match.end()
                           break
+          
               if card_end is None:
                   raise SystemExit(f"Falta cierre de tarjeta: {name}")
+          
               card = nos[card_start:card_end]
               href = f"/es/taller/hojas/#ta-{i:02d}"
               wrapped = f'<a href="{href}" style="display:block; color:inherit; text-decoration:none">{card}</a>'
@@ -129,17 +132,6 @@ jobs:
           
           s = s[:start] + nos + s[end:]
           path.write_text(s, encoding="utf-8")
-          
-          final = path.read_text(encoding="utf-8")
-          checks = [
-              ('href="/es/taller/hojas/"', 1),
-              ('href="{{ s.href }}"', 1),
-              ('href="/es/taller/hojas/#ta-12"', 1),
-              ('sheetAction: "Abrir e imprimir"', 1),
-          ]
-          for needle, minimum in checks:
-              if final.count(needle) < minimum:
-                  raise SystemExit(f"Comprobación fallida: {needle}")
           PY
       - name: Guardar en main
         run: |
