@@ -2,8 +2,9 @@
 """Corrige metadatos SEO acotados en el artefacto final de publicación.
 
 No crea traducciones ni contenido editorial nuevo. Quita hreflang sin pareja real,
-diferencia títulos que identificaban páginas distintas con el mismo texto y sustituye
-descripciones genéricas por texto ya existente en la propia ficha o en buscador.json.
+diferencia títulos que identificaban páginas distintas con el mismo texto y sincroniza
+descripciones con texto ya existente en buscador.json o, cuando allí sigue la frase
+genérica, con el párrafo específico «En pocas palabras / In brief» de la propia ficha.
 """
 from __future__ import annotations
 
@@ -95,6 +96,30 @@ OG_DESCRIPTION = re.compile(
     r"<meta\b(?=[^>]*\bproperty=[\"']og:description[\"'])[^>]*>", re.I
 )
 CONTENT_ATTR = re.compile(r"\bcontent=([\"']).*?\1", re.I | re.S)
+CONTENT_VALUE = re.compile(r"\bcontent=([\"'])(.*?)\1", re.I | re.S)
+LEDE = re.compile(
+    r"<p\b(?=[^>]*\bclass=[\"'][^\"']*\blede\b[^\"']*[\"'])[^>]*>(.*?)</p>",
+    re.I | re.S,
+)
+TAG = re.compile(r"<[^>]+>")
+
+
+def normalize(value: str) -> str:
+    return " ".join(value.split()).strip()
+
+
+def plain_text(fragment: str) -> str:
+    return normalize(html.unescape(TAG.sub(" ", fragment)))
+
+
+def extract_lede(text: str, rel: str) -> str:
+    match = LEDE.search(text)
+    if not match:
+        raise AssertionError(f"{rel}: descripción genérica sin párrafo .lede específico")
+    value = plain_text(match.group(1))
+    if len(value) < 40:
+        raise AssertionError(f"{rel}: párrafo .lede demasiado corto para usar como descripción: {value!r}")
+    return value
 
 
 def replace_content(tag: str, value: str) -> str:
@@ -102,6 +127,14 @@ def replace_content(tag: str, value: str) -> str:
     if CONTENT_ATTR.search(tag):
         return CONTENT_ATTR.sub(f'content="{escaped}"', tag, count=1)
     return tag[:-1] + f' content="{escaped}">'
+
+
+def meta_description_value(text: str) -> str:
+    tag = META_DESCRIPTION.search(text)
+    if not tag:
+        return ""
+    value = CONTENT_VALUE.search(tag.group(0))
+    return normalize(html.unescape(value.group(2))) if value else ""
 
 
 def patch_description(text: str, description: str) -> str:
@@ -137,9 +170,9 @@ def situation_descriptions() -> dict[str, tuple[str, str]]:
         en = row.get("en") or {}
         en_url, en_desc = en.get("u"), en.get("d")
         if es_url and es_desc:
-            out[es_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["es"], es_desc)
+            out[es_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["es"], normalize(es_desc))
         if en_url and en_desc:
-            out[en_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["en"], en_desc)
+            out[en_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["en"], normalize(en_desc))
     if len(out) != 374:
         raise AssertionError(f"Inventario inesperado de descripciones de Situaciones: {len(out)}")
     return out
@@ -156,6 +189,7 @@ def main() -> None:
     title_changes = 0
     data_description_changes = 0
     situation_description_changes = 0
+    situation_lede_fallbacks = 0
 
     for rel in sorted(ORPHAN_HREFLANG):
         path = root / rel
@@ -192,33 +226,32 @@ def main() -> None:
             changed.add(rel)
             data_description_changes += 1
 
-    for rel, (generic, specific) in situation_descriptions().items():
+    expected_situations: dict[str, str] = {}
+    for rel, (generic, source_description) in situation_descriptions().items():
         path = root / rel
         if not path.is_file():
             raise FileNotFoundError(path)
         old = path.read_text(encoding="utf-8", errors="strict")
-        # Solo sustituimos las fichas que todavía conservan la frase genérica.
-        # Las descripciones editoriales ya específicas se dejan intactas.
-        if generic not in old:
-            continue
-        text = patch_description(old, specific)
+        description = source_description
+        if normalize(source_description) == normalize(generic):
+            description = extract_lede(old, rel)
+            situation_lede_fallbacks += 1
+        expected_situations[rel] = description
+        text = patch_description(old, description)
         if text != old:
             path.write_text(text, encoding="utf-8")
             changed.add(rel)
             situation_description_changes += 1
 
-    # Verificación acotada: no debe quedar la descripción genérica en ninguna
-    # Situación que esté indexada en buscador.json.
-    remaining_generic: list[str] = []
-    for rel, (generic, _) in situation_descriptions().items():
+    mismatches: list[str] = []
+    for rel, expected in expected_situations.items():
         path = root / rel
-        text = path.read_text(encoding="utf-8", errors="strict")
-        tag = META_DESCRIPTION.search(text)
-        if tag and generic in tag.group(0):
-            remaining_generic.append(rel)
-    if remaining_generic:
+        got = meta_description_value(path.read_text(encoding="utf-8", errors="strict"))
+        if got != normalize(expected):
+            mismatches.append(f"{rel}: {got!r} != {normalize(expected)!r}")
+    if mismatches:
         raise AssertionError(
-            "Quedan meta descriptions genéricas en Situaciones: " + ", ".join(remaining_generic[:20])
+            "Meta descriptions de Situaciones fuera de sincronía: " + " | ".join(mismatches[:12])
         )
 
     print(json.dumps({
@@ -227,6 +260,8 @@ def main() -> None:
         "titulos_diferenciados": title_changes,
         "descripciones_datos_actualizadas": data_description_changes,
         "descripciones_situaciones_actualizadas": situation_description_changes,
+        "situaciones_desde_lede_existente": situation_lede_fallbacks,
+        "situaciones_sincronizadas": len(expected_situations),
         "contenido_nuevo_inventado": False,
     }, ensure_ascii=False))
 
