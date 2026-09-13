@@ -78,18 +78,14 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
 
 
 def add_complete_filter_options(text: str) -> str:
-    """Completa opciones españolas justo antes del ordenado de categorías."""
-    addition = '''    if (st.country === "es" && this.spainIsPartial()) {
-      terrs.splice(0, terrs.length, ...(IG_INITIAL._esTerrs || []));
-      cats.splice(0, cats.length, ...(IG_INITIAL._esCats || []));
-    }
-'''
-    if addition.strip() in text:
-        return text
-    anchor = '    cats.sort((a, b) => a.localeCompare(b, "es"));'
-    if text.count(anchor) != 1:
-        raise ValueError(f'opciones completas de España: se esperaba un punto de ordenado y hay {text.count(anchor)}')
-    return text.replace(anchor, addition + anchor, 1)
+    """Inicializa filtros desde metadatos completos cuando España es parcial."""
+    terr_old = 'const terrs = [];'
+    cat_old = 'const cats = [];'
+    terr_new = 'const terrs = (st.country === "es" && this.spainIsPartial()) ? [...(IG_INITIAL._esTerrs || [])] : [];'
+    cat_new = 'const cats = (st.country === "es" && this.spainIsPartial()) ? [...(IG_INITIAL._esCats || [])] : [];'
+    text = replace_once(text, terr_old, terr_new, 'lista de territorios')
+    text = replace_once(text, cat_old, cat_new, 'lista de categorías')
+    return text
 
 
 def main() -> None:
@@ -117,7 +113,6 @@ def main() -> None:
     if not isinstance(full_es, list) or len(full_es) != counts.get('es') or len(full_es) <= LIMIT:
         raise ValueError('La semilla española no contiene la colección completa esperada')
 
-    # El JSON separado contiene solo datos ya públicos y se genera únicamente en dist.
     shard = page.parent / 'tramites-es.json'
     shard.write_text(json.dumps(full_es, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
 
