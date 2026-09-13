@@ -99,6 +99,9 @@ def build():
     # Lighthouse detectó contraste insuficiente en las dos etiquetas de filtro de
     # Investigación; esta corrección acotada actúa sobre el artefacto final.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_investigacion_contrast.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Investigación conserva el fallback completo sin JavaScript, pero la interfaz
+    # activa carga los 120 registros desde el JSON canónico tras montar el shell.
+    subprocess.run([sys.executable,str(ROOT/'scripts/defer_investigacion_data.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # La utilidad de impresión es noindex, pero conserva metadatos y semántica propios.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además

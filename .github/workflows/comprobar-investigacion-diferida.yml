@@ -1,0 +1,31 @@
+name: Comprobar carga diferida de Investigación
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  investigacion-diferida:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-investigacion-deferred
+          /tmp/ig-investigacion-deferred/bin/pip -q install playwright==1.55.0
+          /tmp/ig-investigacion-deferred/bin/python -m playwright install --with-deps chromium >/tmp/ig-investigacion-deferred-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Probar idioma durante carga y fallo del JSON
+        run: |
+          cd dist
+          /tmp/ig-investigacion-deferred/bin/python ../scripts/test_investigacion_deferred.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: investigacion-diferida
+          path: dist/reports/publicacion/investigacion-diferida.json
+          retention-days: 14
