@@ -1,4 +1,4 @@
-name: Comprobar WCAG en navegador
+name: Comprobar WCAG en navegador v2
 on:
   pull_request:
     branches: [main]
@@ -18,11 +18,13 @@ jobs:
           /tmp/ig-wcag/bin/python -m playwright install --with-deps chromium >/tmp/ig-wcag-install.log 2>&1
       - name: Construir salida pública
         run: python3 scripts/build_site.py
-      - name: Reflow, espaciado, tamaño y foco
-        run: cd dist && /tmp/ig-wcag/bin/python ../scripts/test_wcag_browser.py
+      - name: Reflow, espaciado, resize, foco y salto al contenido
+        run: |
+          cd dist
+          /tmp/ig-wcag/bin/python ../scripts/test_wcag_browser_v2.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: wcag-navegador
-          path: dist/reports/wcag-browser
+          name: wcag-navegador-v2
+          path: dist/reports/wcag-browser-v2
           retention-days: 14
