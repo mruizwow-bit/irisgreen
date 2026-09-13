@@ -4,6 +4,11 @@
 No redacta contenido editorial. Libros se extrae de los datos ES que ya contiene
 su propia página; Directorio se construye con las entradas de España del JSON
 que forma la pantalla inicial. El bloque se escribe solo en ``dist``.
+
+Además, Libros publica en ``dist`` una cabecera ES ya renderizada con el mismo
+título y entradilla de la plantilla. Así el contenido principal no espera al
+runtime para aparecer; al cambiar a inglés se vuelve a mostrar la cabecera de
+la plantilla. No se crea una segunda fuente editorial.
 """
 from __future__ import annotations
 
@@ -17,6 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 START = '<!-- ig-sin-js:start -->'
 END = '<!-- ig-sin-js:end -->'
 BLOCK = re.compile(re.escape(START) + r'.*?' + re.escape(END), re.S)
+HERO_START = '<!-- ig-libros-prerender:start -->'
+HERO_END = '<!-- ig-libros-prerender:end -->'
+HERO_BLOCK = re.compile(re.escape(HERO_START) + r'.*?' + re.escape(HERO_END), re.S)
 JS_STRING = r'"(?:\\.|[^"\\])*"'
 PAIR_RE = re.compile(r'\[\s*(' + JS_STRING + r')\s*,\s*(' + JS_STRING + r')\s*\]')
 BOOK_RE = re.compile(
@@ -62,6 +70,30 @@ def inject(path: Path, markup: str) -> None:
     path.write_text(text, encoding='utf-8')
 
 
+def inject_books_hero(path: Path, markup: str) -> None:
+    """Inserta una cabecera ES estática sin duplicar semántica visible.
+
+    Con JavaScript, la copia estática es la cabecera visible en ES y la cabecera
+    de la plantilla queda oculta. Si ``html[lang]`` cambia a inglés, la copia
+    estática desaparece y la plantilla recupera su cabecera dinámica. Sin
+    JavaScript, el bloque ``noscript`` completo sigue siendo la versión legible.
+    """
+    text = path.read_text(encoding='utf-8')
+    block = HERO_START + markup + HERO_END
+    if HERO_BLOCK.search(text):
+        text = HERO_BLOCK.sub(lambda _: block, text, count=1)
+    else:
+        skip = re.search(r'<a\b[^>]*class=["\'][^"\']*\bskip\b[^"\']*["\'][^>]*>.*?</a>', text, re.I | re.S)
+        if skip:
+            text = text[:skip.end()] + '\n' + block + text[skip.end():]
+        else:
+            body = re.search(r'<body\b[^>]*>', text, re.I)
+            if not body:
+                raise ValueError(f'No se encuentra <body> en {path}')
+            text = text[:body.end()] + '\n' + block + text[body.end():]
+    path.write_text(text, encoding='utf-8')
+
+
 def extract_scalar(block: str, key: str) -> str:
     m = re.search(r'\b' + re.escape(key) + r':\s*(' + JS_STRING + r')', block)
     if not m:
@@ -69,12 +101,46 @@ def extract_scalar(block: str, key: str) -> str:
     return js(m.group(1))
 
 
-def books_markup(page: Path) -> tuple[str, int]:
+def books_es_block(page: Path) -> str:
     text = page.read_text(encoding='utf-8')
     es = re.search(r'\bes:\s*\{(.*?)\n\s*\},\s*\n\s*en:\s*\{', text, re.S)
     if not es:
         raise ValueError('No se encuentra el bloque ES de Libros')
-    es_block = es.group(1)
+    return es.group(1)
+
+
+def books_hero_markup(page: Path) -> str:
+    es_block = books_es_block(page)
+    eyebrow = extract_scalar(es_block, 'eyebrow')
+    title = extract_scalar(es_block, 'title')
+    lede = extract_scalar(es_block, 'lede')
+    return (
+        '<style>'
+        '.ig-books-prerender{max-width:1180px;margin:0 auto;padding:44px 28px 0;'
+        "font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c}"
+        '.ig-books-prerender-eyebrow{margin:0 0 10px;font-size:12px;letter-spacing:.18em;'
+        'text-transform:uppercase;color:#a8336f}'
+        '.ig-books-prerender-title{margin:0 0 12px;font-family:\'Newsreader\',serif;font-weight:400;'
+        'font-size:clamp(36px,4.6vw,56px);line-height:1.06;letter-spacing:-.02em;max-width:20em}'
+        '.ig-books-prerender-lede{margin:0;font-size:19px;color:#435268;max-width:36em;text-wrap:pretty}'
+        "html[lang^='en'] .ig-books-prerender{display:none!important}"
+        "html:not([lang^='en']) div.sc-host>div>main#main>p:first-child,"
+        "html:not([lang^='en']) div.sc-host>div>main#main>h1,"
+        "html:not([lang^='en']) div.sc-host>div>main#main>h1+p{display:none!important}"
+        "html:not([lang^='en']) div.sc-host>div>main#main{padding-top:34px!important}"
+        '</style>'
+        '<section class="ig-books-prerender" lang="es" aria-labelledby="ig-books-prerender-title">'
+        f'<p class="ig-books-prerender-eyebrow">{esc(eyebrow)}</p>'
+        f'<div class="ig-books-prerender-title" id="ig-books-prerender-title" role="heading" aria-level="1">{esc(title)}</div>'
+        f'<p class="ig-books-prerender-lede">{esc(lede)}</p>'
+        '</section>'
+        '<noscript><style>.ig-books-prerender{display:none!important}</style></noscript>'
+    )
+
+
+def books_markup(page: Path) -> tuple[str, int]:
+    text = page.read_text(encoding='utf-8')
+    es_block = books_es_block(page)
     books_block = re.search(r'\bbooks:\s*\[(.*?)\n\s*\]\s*$', es_block, re.S)
     if not books_block:
         raise ValueError('No se encuentra books[] en Libros ES')
@@ -168,12 +234,14 @@ def main() -> None:
             raise FileNotFoundError(path)
 
     books_html, book_count = books_markup(books)
+    inject_books_hero(books, books_hero_markup(books))
     directory_html, directory_count = directory_markup(ROOT / 'es/tramites/directorio/tramites-datos.json')
     inject(books, books_html)
     inject(directory, directory_html)
 
     print(json.dumps({
         'libros': book_count,
+        'libros_hero_prerender': True,
         'directorio_espana': directory_count,
         'paginas': ['es/libros/index.html', 'es/tramites/directorio/index.html'],
         'fuente_editorial_nueva': False,
