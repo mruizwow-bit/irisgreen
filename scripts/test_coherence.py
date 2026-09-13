@@ -37,35 +37,40 @@ def bounds(p,selector):
 def visible_paths(p):return p.locator('main .cards>a.card:visible').evaluate_all('(els)=>els.map(e=>new URL(e.href).pathname)')
 def check_counter(p,selector,count):
  text=p.locator(selector).inner_text();assert int(re.match(r'\d+',text)[0])==count,text
+def wait_catalogue(p):
+ p.wait_for_function('document.querySelector("[data-ig-catalog]").getAttribute("aria-busy")!=="true"')
 
 def catalogue(p,kind,width):
  situations=kind=='Situación';url='/es/situaciones/' if situations else '/es/neurodiversidad/condiciones/'
  row={'section':kind,'width':width};subset=[x for x in DATA if x['s']==kind];q='#situationsSearch' if situations else '#q';group='.situations-filter-row' if situations else '#filtros';counter='#situationsCount' if situations else '#cuenta'
- p.goto(BASE+url,wait_until='domcontentloaded');p.wait_for_function('document.querySelector("[data-ig-catalog]").getAttribute("aria-busy")==="false" && !document.querySelector("[data-ig-catalog] input[type=search]").disabled')
+ p.goto(BASE+url,wait_until='domcontentloaded')
+ # El listado ya es util antes de cargar el indice global: no debe estar ocupado ni
+ # deshabilitar el buscador hasta que la persona pida buscar o filtrar.
+ assert p.locator('[data-ig-catalog]').get_attribute('aria-busy')!='true';assert not p.locator(q).is_disabled()
  assert len(visible_paths(p))==len(subset);check_counter(p,counter,len(subset));assert not p.locator('[data-ig-catalog-reset]').is_visible()
  style(p,group+' button[aria-pressed=true]',kind);bounds(p,group+' button')
  for b in p.locator(group+' button').all():
   value=b.get_attribute('data-filter' if situations else 'data-type');value='' if value=='*' else value
-  b.focus();b.press('Enter');expected=[r['u'] for r in subset if not value or r.get('a' if situations else 'tipo')==value]
+  b.focus();b.press('Enter');wait_catalogue(p);expected=[r['u'] for r in subset if not value or r.get('a' if situations else 'tipo')==value]
   assert visible_paths(p)==expected,(kind,value)
   assert b.get_attribute('aria-pressed')=='true';check_counter(p,counter,len(expected))
- p.locator(group+' button').first.click()
+ p.locator(group+' button').first.click();wait_catalogue(p)
  if not situations:
   letters=p.locator('#az button').all_text_contents();assert 'X' in letters and 'J' not in letters,letters
   for b in p.locator('#az button').all():
-   value=b.get_attribute('data-letter') or '';b.click();expected=[r['u'] for r in subset if not value or norm(r.get('indexKey') or r['t'])[0].upper()==value]
+   value=b.get_attribute('data-letter') or '';b.click();wait_catalogue(p);expected=[r['u'] for r in subset if not value or norm(r.get('indexKey') or r['t'])[0].upper()==value]
    assert visible_paths(p)==expected,value
-  p.locator('#az button').first.click();bounds(p,'#az button')
+  p.locator('#az button').first.click();wait_catalogue(p);bounds(p,'#az button')
  for term in ['ruido','sueño','hipoglucemia','zzzinexistentexxx']:
-  p.locator(q).fill(term)
+  p.locator(q).fill(term);wait_catalogue(p)
   expected=p.evaluate('([term,kind])=>IGSearch.load().then(data=>IGSearch.rank(data.filter(x=>x.kind===kind),term).map(x=>IGSearch.path(x.url)+"/"))',[term,kind])
   assert visible_paths(p)==expected,(term,kind);check_counter(p,counter,len(expected))
   if term=='zzzinexistentexxx':
    empty=p.locator('#situationsEmpty' if situations else '#ig-search-empty');assert empty.is_visible();assert empty.locator('a[href]').count()
- p.locator('[data-ig-catalog-reset]').click();assert len(visible_paths(p))==len(subset);assert '?' not in p.url
- p.locator(q).fill('ruido');urls=visible_paths(p);p.reload();p.wait_for_function('!document.querySelector("[data-ig-catalog] input[type=search]").disabled');assert visible_paths(p)==urls
+ p.locator('[data-ig-catalog-reset]').click();wait_catalogue(p);assert len(visible_paths(p))==len(subset);assert '?' not in p.url
+ p.locator(q).fill('ruido');wait_catalogue(p);urls=visible_paths(p);p.reload();wait_catalogue(p);assert not p.locator(q).is_disabled();assert visible_paths(p)==urls
  p.locator('[data-ig-catalog-reset]').click();assert p.locator(q).evaluate('(e)=>getComputedStyle(e).outlineColor')=='rgb(90, 73, 168)';p.screenshot(path=str(OUT/f'{"situaciones" if situations else "condiciones"}-{width}.png'))
- row.update({'records':len(subset),'all_filters_tested':p.locator(group+' button').count(),'query_parity':True,'reset':True,'url_restore':True,'passed':True});return row
+ row.update({'records':len(subset),'all_filters_tested':p.locator(group+' button').count(),'query_parity':True,'reset':True,'url_restore':True,'lazy_initial_index':True,'passed':True});return row
 
 def filters(p,key):return p.locator('main [data-ig-filter="'+key+'"]:visible')
 def bylabel(p,key,label):return filters(p,key).filter(has_text=re.compile('^'+re.escape(label)+'$'))
@@ -159,10 +164,13 @@ with sync_playwright() as pw:
    else:r.continue_()
   p.unroute('**/*');p.route('**/*',route)
   try:
-   p.goto(BASE+path,wait_until='domcontentloaded');p.locator('[data-ig-catalog-error]').wait_for(state='visible')
-   assert p.locator('[data-ig-catalog] input[type=search]').is_disabled();assert p.locator('main .cards>a.card:visible').count()>=185
-   failed['on']=False;p.locator('[data-ig-catalog-retry]').click();p.wait_for_function('!document.querySelector("[data-ig-catalog] input[type=search]").disabled');assert not p.locator('[data-ig-catalog-error]').is_visible()
-   REPORT['recovery'].append({'path':path,'readable_on_error':True,'retry_recovered':True,'failed_requests':len(attempts),'passed':True})
+   p.goto(BASE+path,wait_until='domcontentloaded')
+   # Carga perezosa: entrar no debe pedir el indice ni mostrar un error de red.
+   assert not attempts;assert not p.locator('[data-ig-catalog-error]').is_visible();assert not p.locator('[data-ig-catalog] input[type=search]').is_disabled()
+   p.locator('[data-ig-catalog] input[type=search]').fill('ruido');p.locator('[data-ig-catalog-error]').wait_for(state='visible')
+   assert attempts==['failed'];assert p.locator('[data-ig-catalog] input[type=search]').is_disabled();assert p.locator('main .cards>a.card:visible').count()>=185
+   failed['on']=False;p.locator('[data-ig-catalog-retry]').click();wait_catalogue(p);assert not p.locator('[data-ig-catalog] input[type=search]').is_disabled();assert not p.locator('[data-ig-catalog-error]').is_visible()
+   REPORT['recovery'].append({'path':path,'no_initial_request':True,'readable_on_error':True,'retry_recovered':True,'failed_requests':len(attempts),'passed':True})
   except Exception as e:REPORT['failures'].append({'recovery':path,'error':traceback.format_exc()})
   c.close()
  browser.close()
