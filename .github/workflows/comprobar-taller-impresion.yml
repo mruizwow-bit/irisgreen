@@ -1,0 +1,24 @@
+name: Comprobar impresión del Taller
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  taller-print:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-taller-print
+          /tmp/ig-taller-print/bin/pip -q install playwright==1.55.0
+          /tmp/ig-taller-print/bin/python -m playwright install --with-deps chromium >/tmp/ig-taller-print-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Comprobar las doce hojas A4
+        run: /tmp/ig-taller-print/bin/python scripts/test_taller_print.py --root dist
