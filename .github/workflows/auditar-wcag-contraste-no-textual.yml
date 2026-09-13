@@ -1,0 +1,30 @@
+name: Auditar WCAG contraste no textual
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contraste-no-textual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-nontext
+          /tmp/ig-nontext/bin/pip -q install playwright==1.55.0
+          /tmp/ig-nontext/bin/python -m playwright install --with-deps chromium >/tmp/ig-nontext-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Medir campos y foco
+        run: |
+          cd dist
+          /tmp/ig-nontext/bin/python ../scripts/audit_nontext_contrast.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-nontext-contrast
+          path: dist/reports/wcag-nontext-contrast
+          retention-days: 14
