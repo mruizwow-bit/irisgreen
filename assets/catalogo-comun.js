@@ -16,6 +16,7 @@ function start(){
  function letter(e){return api.norm(e.indexKey||e.name).charAt(0).toLocaleUpperCase('es');}
  function kind(e){return situation?e.area:e.tipo;}
  function busy(on){root.setAttribute('aria-busy',String(on));}
+ function controls(enabled){query.disabled=!enabled;group.querySelectorAll('button').forEach(function(b){b.disabled=!enabled;});if(az)az.querySelectorAll('button').forEach(function(b){b.disabled=!enabled;});}
  function pickValue(b){return situation?(b.dataset.filter==='*'?'':b.dataset.filter):b.dataset.type;}
  function paint(){
   if(!ready)return;
@@ -38,15 +39,15 @@ function start(){
  }
  function load(){
   if(ready){paint();return;}if(loading)return;
-  loading=true;busy(true);failure.hidden=true;counter.textContent='Cargando el buscador…';
+  loading=true;controls(true);busy(true);failure.hidden=true;counter.textContent='Cargando el buscador…';
   api.load().then(function(data){
    entries=data.filter(function(e){return cards.has(api.path(e.url));});
    if(entries.length!==cards.size)throw new Error('El catálogo y el índice no coinciden.');
    var kinds=new Set(entries.map(kind));if(!kinds.has(state.kind))state.kind='';
    if(az&&!entries.some(function(e){return letter(e)===state.letter;}))state.letter='';
-   ready=true;loading=false;busy(false);paint();
+   ready=true;loading=false;controls(true);busy(false);paint();
   }).catch(function(error){
-   loading=false;busy(false);query.disabled=true;group.querySelectorAll('button').forEach(function(b){b.disabled=true;});if(az)az.querySelectorAll('button').forEach(function(b){b.disabled=true;});
+   loading=false;busy(false);controls(false);
    counter.textContent=cards.size+(situation?' situaciones':' fichas');failure.hidden=false;empty.hidden=true;
    console.warn('[Iris Green]',error.message);
   });
