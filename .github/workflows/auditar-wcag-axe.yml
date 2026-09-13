@@ -1,0 +1,29 @@
+name: Auditar WCAG con axe-core
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium y axe-core
+        run: |
+          python3 -m venv /tmp/ig-axe
+          /tmp/ig-axe/bin/pip -q install playwright==1.55.0
+          /tmp/ig-axe/bin/python -m playwright install --with-deps chromium >/tmp/ig-axe-install.log 2>&1
+          npm install --no-save --ignore-scripts axe-core@4.13.0
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Auditar rutas representativas
+        run: /tmp/ig-axe/bin/python scripts/audit_axe_wcag.py --root dist --axe node_modules/axe-core/axe.min.js
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-axe
+          path: dist/reports/wcag-axe
+          retention-days: 14
