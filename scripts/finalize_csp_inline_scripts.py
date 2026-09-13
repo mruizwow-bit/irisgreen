@@ -5,9 +5,12 @@ Este paso actúa solo sobre el artefacto final ``dist`` y se ejecuta después de
 las transformaciones HTML, incluida la precompilación de las 24 interfaces DC.
 
 Contrato:
-- cualquier atributo ``on*`` debe ser exactamente el fallback histórico del símbolo
-  de marca: ``<img src=/img/v40-brand-symbol.webp onerror=\"this.remove()\">``;
-- ese fallback se retira del HTML final (el recurso está alojado localmente);
+- cualquier atributo ``on*`` debe pertenecer al símbolo local de marca
+  ``v40-brand-symbol.webp`` y usar uno de los dos fallbacks históricos exactos:
+  ``this.remove()`` o ``this.hidden=true``;
+- la ruta del símbolo solo puede ser ``/img/...`` o la misma ruta local precedida por
+  uno o más ``../``; no se aceptan otros recursos ni URLs externas;
+- esos fallbacks se retiran del HTML final;
 - cada ``<script>`` ejecutable sin ``src`` recibe autorización únicamente mediante su
   hash SHA-256 exacto en ``script-src``;
 - ``script-src 'unsafe-inline'`` y ``unsafe-eval`` quedan prohibidos;
@@ -31,6 +34,8 @@ SCRIPT_BLOCK = re.compile(
 )
 SRC_ATTR = re.compile(r'\bsrc\s*=\s*(["\']).*?\1', re.I | re.S)
 TYPE_ATTR = re.compile(r'\btype\s*=\s*(["\'])(.*?)\1', re.I | re.S)
+BRAND_SRC = re.compile(r'^(?:/|(?:\.\./)+)img/v40-brand-symbol\.webp$')
+BRAND_FALLBACKS = {'this.remove()', 'this.hidden=true'}
 # El valor permitido se valida antes con HTMLParser. Esta regex solo elimina el
 # atributo ya validado, con independencia de comillas/espaciado de la serialización.
 ONERROR_ATTR = re.compile(
@@ -89,15 +94,16 @@ def validate_and_remove_event_handlers(root: Path) -> tuple[int, int]:
             if not (
                 event['tag'] == 'img'
                 and event['name'] == 'onerror'
-                and event['value'].strip() == 'this.remove()'
-                and event['src'] == '/img/v40-brand-symbol.webp'
+                and event['value'].strip() in BRAND_FALLBACKS
+                and BRAND_SRC.fullmatch(event['src']) is not None
             ):
                 unexpected.append({'path': rel, **event})
         count = len(audit.events)
         if count:
             occurrences += count
             # Llegados aquí todos los event attrs de esta página ya han sido
-            # validados como el fallback exacto permitido. Borramos su serialización.
+            # validados como uno de los fallbacks exactos permitidos del mismo
+            # recurso local. Borramos únicamente su serialización onerror.
             patched, removed = ONERROR_ATTR.subn('', text)
             if removed != count:
                 raise AssertionError(
@@ -108,7 +114,7 @@ def validate_and_remove_event_handlers(root: Path) -> tuple[int, int]:
 
     if unexpected:
         raise AssertionError(
-            'Aparecieron manejadores inline distintos del fallback de marca: '
+            'Aparecieron manejadores inline fuera del fallback de marca permitido: '
             + json.dumps(unexpected[:20], ensure_ascii=False)
         )
     if occurrences == 0:
