@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Comprueba que los sprites de las muestras de Libros solo se piden al hojear."""
+"""Comprueba carga diferida y avance visual real de las muestras de Libros."""
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright
 
@@ -10,6 +10,12 @@ SAMPLE = "/assets/books/samples/flip-"
 def sample_path(url: str) -> str | None:
     path = urlparse(url).path
     return path if SAMPLE in path else None
+
+
+def sprite_position(viewer) -> str:
+    return viewer.locator(".ig-flip-sprite").evaluate(
+        "el => getComputedStyle(el).backgroundPosition"
+    )
 
 
 def main() -> None:
@@ -25,17 +31,30 @@ def main() -> None:
 
         luma = page.locator('[data-ig-flipbook="luma"]')
         autism = page.locator('[data-ig-flipbook="autismo"]')
-        luma.locator('[data-ig-flip-next]').click()
+        luma_next = luma.locator('[data-ig-flip-next]')
+
+        luma_next.click()
         page.wait_for_function("document.querySelector('[data-ig-flipbook=\"luma\"] .ig-flip-counter').textContent.trim() === '2 / 9'")
         luma_requests = [x for x in requested if "flip-luma-es." in x]
         autism_requests = [x for x in requested if "flip-autismo-es." in x]
         assert len(luma_requests) == 3, luma_requests
         assert autism_requests == [], autism_requests
 
+        # Regresión: no basta con que cambie el contador. Cada hoja interior debe
+        # mover de verdad el sprite; el fallo anterior dejaba siempre visible la
+        # primera hoja interior aunque el contador siguiera avanzando.
+        positions = [sprite_position(luma)]
         before = list(requested)
-        luma.locator('[data-ig-flip-next]').click()
-        page.wait_for_function("document.querySelector('[data-ig-flipbook=\"luma\"] .ig-flip-counter').textContent.trim() === '3 / 9'")
-        assert requested == before, "Cambiar a otra página de Luma volvió a descargar chunks"
+        for expected_page in range(3, 10):
+            luma_next.click()
+            page.wait_for_function(
+                f"document.querySelector('[data-ig-flipbook=\"luma\"] .ig-flip-counter').textContent.trim() === '{expected_page} / 9'"
+            )
+            positions.append(sprite_position(luma))
+
+        assert len(set(positions)) == 8, f"El sprite no avanzó por las 8 hojas interiores: {positions}"
+        assert requested == before, "Cambiar de hoja de Luma volvió a descargar chunks"
+        assert luma_next.is_disabled(), "La flecha siguiente debe desactivarse al llegar a la última hoja"
 
         autism.locator('.ig-flip-stage').focus()
         page.keyboard.press("ArrowRight")
@@ -62,6 +81,8 @@ def main() -> None:
         print({
             "initial_sample_requests": 0,
             "luma_requests_on_first_open": 3,
+            "luma_distinct_interior_pages": len(set(positions)),
+            "luma_reached_last_page": True,
             "autism_requests_on_first_open": 4,
             "repeat_downloads": 0,
             "keyboard_open": True,
