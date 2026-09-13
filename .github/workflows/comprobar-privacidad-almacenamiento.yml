@@ -1,0 +1,27 @@
+name: Comprobar almacenamiento y privacidad
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  privacidad-almacenamiento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir la salida pública
+        run: python3 scripts/build_site.py
+      - name: Auditar almacenamiento del navegador
+        run: python3 scripts/audit_privacidad_almacenamiento.py --root dist
+      - name: Conservar el inventario técnico
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: privacidad-almacenamiento
+          path: dist/reports/publicacion/privacidad-almacenamiento.json
+          if-no-files-found: warn
+          retention-days: 14
