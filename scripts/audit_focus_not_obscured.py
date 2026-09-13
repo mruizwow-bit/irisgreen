@@ -2,16 +2,20 @@
 """Guardarraíl reproducible para WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum).
 
 Recorre con Tab el foco real del navegador en rutas representativas, tanto en
-escritorio como en móvil. Para cada elemento enfocado comprueba que alguna parte
-de su caja queda dentro del viewport y que al menos un punto de esa parte sigue
+escritorio como en móvil. Para cada elemento enfocado comprueba, una vez
+estabilizado el desplazamiento provocado por el propio foco, que alguna parte de
+su caja queda dentro del viewport y que al menos un punto de esa parte sigue
 siendo alcanzable por hit-testing, es decir, no está completamente tapado por
 contenido creado por la página.
 
-El baseline ampliado completó 26 ciclos de foco y comprobó 2.102 elementos sin
-candidatos. Ese cero pasa a ser contrato de no regresión: la auditoría falla ante
-un elemento completamente oculto, un error de página o un ciclo que no llegue a
-completarse dentro del límite. No sustituye una revisión manual de todos los
-estados que solo aparecen después de una interacción.
+Si la primera medición encuentra el foco fuera de vista o tapado, la auditoría
+vuelve a medir durante un máximo de 500 ms. Esto evita confundir el movimiento
+transitorio del viewport con una barrera: un elemento que siga oculto al terminar
+ese margen continúa siendo candidato y hace fallar la auditoría. Las
+recuperaciones transitorias quedan registradas en el informe.
+
+No sustituye una revisión manual de todos los estados que solo aparecen después
+de una interacción.
 """
 from __future__ import annotations
 
@@ -37,6 +41,9 @@ VIEWPORTS = {
     'mobile': {'width': 390, 'height': 844},
 }
 MAX_TABS = 260
+INITIAL_FOCUS_WAIT_MS = 25
+FOCUS_SETTLE_MS = 500
+FOCUS_POLL_MS = 50
 
 CHECK = r'''() => {
  const el=document.activeElement;
@@ -71,6 +78,43 @@ class Quiet(SimpleHTTPRequestHandler):
         pass
 
 
+def measure_settled_focus(page):
+    """Devuelve la medición final del foco sin ocultar fallos persistentes.
+
+    Tab puede iniciar un desplazamiento del viewport. La primera lectura se toma
+    pronto para detectar ese caso; solo si aún no es visible/alcanzable se da al
+    navegador un margen acotado para terminar su desplazamiento normal.
+    """
+    page.wait_for_timeout(INITIAL_FOCUS_WAIT_MS)
+    row = page.evaluate(CHECK)
+    if not row or (row['visible'] and row['hit']):
+        return row
+
+    initial = {
+        'rect': row['rect'],
+        'intersection': row['intersection'],
+        'visible': row['visible'],
+        'hit': row['hit'],
+        'blockers': row['blockers'],
+    }
+    waited = 0
+    while waited < FOCUS_SETTLE_MS:
+        page.wait_for_timeout(FOCUS_POLL_MS)
+        waited += FOCUS_POLL_MS
+        current = page.evaluate(CHECK)
+        if not current:
+            return current
+        row = current
+        if row['visible'] and row['hit']:
+            row['settled_after_ms'] = INITIAL_FOCUS_WAIT_MS + waited
+            row['initial_measurement'] = initial
+            return row
+
+    row['settled_after_ms'] = INITIAL_FOCUS_WAIT_MS + waited
+    row['initial_measurement'] = initial
+    return row
+
+
 def main() -> None:
     server = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(ROOT)))
     threading.Thread(target=server.serve_forever, daemon=True).start()
@@ -79,9 +123,11 @@ def main() -> None:
         'criterion': 'WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum)',
         'routes': [],
         'candidates': [],
+        'transient_recoveries': [],
         'page_errors': [],
         'limits': [
             'Forward Tab traversal covers the initial page state; dialogs, menus and other states opened by interaction need separate flow tests.',
+            'A suspicious first measurement is rechecked for up to 500 ms so viewport motion caused by keyboard focus is not misclassified as obscuration.',
             'Hit-testing detects complete visual occlusion of the focused element, not every possible partial-obscuration usability issue.',
             'The sample covers representative routes at desktop and mobile viewport sizes.',
         ],
@@ -103,8 +149,7 @@ def main() -> None:
                 wrapped = False
                 for _ in range(MAX_TABS):
                     page.keyboard.press('Tab')
-                    page.wait_for_timeout(25)
-                    row = page.evaluate(CHECK)
+                    row = measure_settled_focus(page)
                     if not row:
                         continue
                     key = '|'.join([row['tag'], row['id'], row['href'], row['text'][:60]])
@@ -115,6 +160,8 @@ def main() -> None:
                         break
                     row.update({'route': route, 'viewport_name': viewport_name})
                     visited.append(row)
+                    if row.get('initial_measurement') and row['visible'] and row['hit']:
+                        report['transient_recoveries'].append(row)
                     if not row['visible'] or not row['hit']:
                         report['candidates'].append(row)
                 if errors:
@@ -125,6 +172,7 @@ def main() -> None:
                     'focused_elements_checked': len(visited),
                     'focus_cycle_completed': wrapped,
                     'candidates': sum(1 for x in visited if not x['visible'] or not x['hit']),
+                    'transient_recoveries': sum(1 for x in visited if x.get('initial_measurement') and x['visible'] and x['hit']),
                 })
                 print(json.dumps(report['routes'][-1], ensure_ascii=False), flush=True)
                 ctx.close()
@@ -135,6 +183,7 @@ def main() -> None:
         'focused_elements_checked': sum(x['focused_elements_checked'] for x in report['routes']),
         'focus_cycles_completed': sum(1 for x in report['routes'] if x['focus_cycle_completed']),
         'candidates': len(report['candidates']),
+        'transient_recoveries': len(report['transient_recoveries']),
         'page_errors': len(report['page_errors']),
     }
     (OUT / 'results.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
