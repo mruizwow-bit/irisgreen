@@ -99,6 +99,9 @@ def build():
     # Lighthouse detectó contraste insuficiente en las dos etiquetas de filtro de
     # Investigación; esta corrección acotada actúa sobre el artefacto final.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_investigacion_contrast.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Los 120 estudios siguen completos y accesibles; el navegador puede posponer
+    # el layout de tarjetas lejanas al viewport hasta que se acercan a pantalla.
+    subprocess.run([sys.executable,str(ROOT/'scripts/optimize_investigacion_layout.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # La utilidad de impresión es noindex, pero conserva metadatos y semántica propios.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
