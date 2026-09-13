@@ -100,6 +100,13 @@ def add_complete_filter_options(text: str) -> str:
     return text
 
 
+def add_count_status(text: str) -> str:
+    """El contador también comunica carga/errores: debe anunciar sus cambios."""
+    old = '<p style="margin: 0; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>'
+    new = '<p role="status" style="margin: 0; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>'
+    return replace_once(text, old, new, 'estado del contador')
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=ROOT / 'dist')
@@ -137,6 +144,7 @@ def main() -> None:
 
     text = replace_once(text, '  loadAllData() {', METHODS + '  loadAllData() {', 'métodos España')
     text = add_complete_filter_options(text)
+    text = add_count_status(text)
 
     text = replace_once(text,
         'onTerr: (e) => this.setState({ terr: e.target.value, limit: 12 }),',
@@ -174,6 +182,7 @@ def main() -> None:
         'categorias': len(small['_esCats']),
         'json_espana': 'es/tramites/directorio/tramites-es.json',
         'fallback_nojs_intacto': True,
+        'estado_dinamico_anunciado': True,
     })
 
 
