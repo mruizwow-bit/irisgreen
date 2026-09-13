@@ -5,13 +5,19 @@ La CSP pública aún conserva ``'unsafe-eval'`` por una deuda técnica ya invent
 El control global existente limita el número total de usos; este segundo guardarraíl
 fija además los archivos concretos y el máximo permitido en cada uno. Reducir la deuda
 sigue estando permitido; moverla o ampliarla exige una revisión explícita.
+
+El informe añade también las páginas HTML que cargan cada archivo con evaluación
+dinámica y las páginas que contienen ``<x-dc>``. Estas listas son diagnósticas: no
+amplían excepciones ni convierten el número de páginas actual en una cuota permitida.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 
 EVAL_LIKE = re.compile(r'\beval\s*\(|\bnew\s+Function\s*\(')
 ALLOWED_MAX = {
@@ -20,6 +26,34 @@ ALLOWED_MAX = {
     'support.js': 2,
 }
 MAX_TOTAL = sum(ALLOWED_MAX.values())
+
+
+class ScriptSources(HTMLParser):
+    def __init__(self, text: str):
+        super().__init__(convert_charrefs=True)
+        self.sources: list[str] = []
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() != 'script':
+            return
+        src = dict(attrs).get('src')
+        if src:
+            self.sources.append(src)
+
+
+def local_script_path(src: str) -> str | None:
+    """Normaliza solo scripts locales para poder compararlos con rutas de ``dist``."""
+    try:
+        parsed = urlsplit(src)
+    except ValueError:
+        return None
+    if parsed.scheme or parsed.netloc:
+        return None
+    path = parsed.path.lstrip('/')
+    if not path or path.startswith('../'):
+        return None
+    return path
 
 
 def main() -> None:
@@ -43,14 +77,38 @@ def main() -> None:
         if path in ALLOWED_MAX and count > ALLOWED_MAX[path]
     }
 
-    print(json.dumps({
+    pages_by_runtime: dict[str, list[str]] = {path: [] for path in sorted(by_file)}
+    x_dc_pages: list[str] = []
+    html_files = sorted(root.rglob('*.html'))
+    for page in html_files:
+        text = page.read_text(encoding='utf-8', errors='strict')
+        rel = page.relative_to(root).as_posix()
+        if re.search(r'<x-dc(?:\s|>)', text, re.I):
+            x_dc_pages.append(rel)
+        scripts = {
+            path for src in ScriptSources(text).sources
+            if (path := local_script_path(src)) is not None
+        }
+        for runtime in pages_by_runtime:
+            if runtime in scripts:
+                pages_by_runtime[runtime].append(rel)
+
+    report = {
         'eval_o_new_function_total': total,
         'limite_total': MAX_TOTAL,
         'maximos_revisados_por_archivo': ALLOWED_MAX,
         'por_archivo': by_file,
+        'paginas_que_cargan_cada_archivo': pages_by_runtime,
+        'paginas_x_dc': x_dc_pages,
+        'total_paginas_x_dc': len(x_dc_pages),
         'archivos_no_aprobados': unapproved,
         'archivos_sobre_limite': over_file_limit,
-    }, ensure_ascii=False, indent=2))
+        'nota_paginas': (
+            'Las listas de páginas son inventario diagnóstico, no excepciones permitidas. '
+            'Reducirlas es válido sin cambiar este guardarraíl.'
+        ),
+    }
+    print(json.dumps(report, ensure_ascii=False, indent=2))
 
     if total > MAX_TOTAL:
         raise AssertionError(
