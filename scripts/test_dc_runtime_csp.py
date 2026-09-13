@@ -5,6 +5,8 @@ Descubre las páginas por la referencia al runtime CSP-safe, las sirve con la ca
 real de ``_headers`` y exige que el componente monte, muestre un h1 legible, no deje
 plantillas sin resolver ni errores de lógica. Cuando existe un botón dentro de main,
 activa uno para comprobar que la clase precompilada responde a una interacción básica.
+En la portada comprueba además el contrato real de Música: el botón abre el reproductor
+y Escuchar solicita una pista local de ``/audio/``.
 """
 from __future__ import annotations
 
@@ -72,6 +74,7 @@ def main() -> None:
     httpd, base = server(csp)
     failures: list[str] = []
     checked = []
+    music_checked = False
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch()
@@ -103,6 +106,24 @@ def main() -> None:
                     if "{{" in body_text or "}}" in body_text:
                         raise AssertionError("quedan expresiones de plantilla visibles")
 
+                    if route == "/":
+                        music = page.locator(".ig-uh-music:visible").first
+                        if not music.count():
+                            raise AssertionError("no existe el botón visible de Música")
+                        music.click()
+                        panel = page.locator("#ig-music-panel")
+                        panel.wait_for(state="visible")
+                        play = panel.locator(".ig-m-play")
+                        with page.expect_request(
+                            lambda request: "/audio/" in request.url,
+                            timeout=10000,
+                        ) as audio_request:
+                            play.click()
+                        audio_url = audio_request.value.url
+                        if not re.search(r"/audio/[^/?]+\.(?:mp3|m4a)(?:\?|$)", audio_url, re.I):
+                            raise AssertionError(f"Música solicita una URL inesperada: {audio_url}")
+                        music_checked = True
+
                     # Interacción mínima: evita enlaces y controles globales; si la
                     # interfaz tiene un botón propio en main, activar el primero no
                     # debe romper la clase precompilada.
@@ -133,10 +154,13 @@ def main() -> None:
 
     if failures:
         raise AssertionError("Fallos DC CSP-safe:\n" + "\n".join(failures[:30]))
+    if not music_checked:
+        raise AssertionError("La portada no completó la prueba de Música")
     print({
         "pages_checked": len(checked),
         "unsafe_eval": False,
         "raw_templates_visible": 0,
+        "music_local_audio_checked": music_checked,
         "pages_with_basic_interaction": sum(x["interaction"] for x in checked),
         "routes": [x["route"] for x in checked],
     })
