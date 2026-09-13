@@ -1,0 +1,25 @@
+name: Comprobar SEO e idiomas
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seo-idiomas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Auditar canonicals, hreflang, lang y sitemap
+        run: python3 scripts/audit_seo_idiomas.py --root dist
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: seo-idiomas
+          path: dist/reports/publicacion/seo-idiomas.json
+          retention-days: 14
