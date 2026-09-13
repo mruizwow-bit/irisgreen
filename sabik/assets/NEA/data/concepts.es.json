@@ -52,14 +52,5 @@
     "category": "riesgo",
     "risk_level": "crisis",
     "editorial_status": "PUBLICABLE"
-  },
-  {
-    "id": "tema_borrador_demo",
-    "label": "tema borrador demo",
-    "language": "es",
-    "aliases": ["tema pendiente"],
-    "category": "investigacion",
-    "risk_level": "low",
-    "editorial_status": "BORRADOR"
   }
 ]
