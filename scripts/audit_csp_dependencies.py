@@ -2,7 +2,8 @@
 """Inventaría lo que la salida pública necesita antes de endurecer Content-Security-Policy.
 
 No modifica la web ni certifica seguridad. Separa scripts/estilos inline de recursos
-externos para evitar desplegar una CSP que rompa páginas dinámicas.
+externos para evitar desplegar una CSP que rompa páginas dinámicas y bloquea que la
+política publicada se debilite silenciosamente respecto al baseline revisado.
 """
 from __future__ import annotations
 
@@ -34,6 +35,135 @@ def origin(value: str) -> str | None:
     if p.scheme not in {'http', 'https'} or not p.netloc:
         return None
     return f'{p.scheme}://{p.netloc.lower()}'
+
+
+def global_csp(root: Path) -> str:
+    """Lee la CSP global exactamente como se publicará desde ``_headers``."""
+    headers = root / '_headers'
+    if not headers.is_file():
+        raise AssertionError(f'No existe _headers en la salida pública: {headers}')
+    text = headers.read_text(encoding='utf-8', errors='strict')
+    match = re.search(
+        r'^/\*\s*$.*?^\s*Content-Security-Policy:\s*(.+)$',
+        text,
+        re.M | re.S,
+    )
+    if not match:
+        raise AssertionError('No se encuentra la Content-Security-Policy global en _headers')
+    return match.group(1).splitlines()[0].strip()
+
+
+def parse_csp(policy: str) -> dict[str, list[str]]:
+    directives: dict[str, list[str]] = {}
+    for chunk in policy.split(';'):
+        parts = chunk.strip().split()
+        if not parts:
+            continue
+        name = parts[0].lower()
+        if name in directives:
+            raise AssertionError(f'Directiva CSP duplicada: {name}')
+        directives[name] = parts[1:]
+    return directives
+
+
+def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
+    """Impide ampliar permisos activos sin una revisión explícita del guardarraíl.
+
+    La deuda ya conocida (``unsafe-inline`` y ``unsafe-eval``) puede reducirse sin
+    tocar esta prueba. Lo que no puede ocurrir silenciosamente es añadir comodines,
+    orígenes de scripts, ``data:``/``blob:`` para scripts, marcos remotos o nuevas
+    palabras ``unsafe-*``.
+    """
+    policy = global_csp(root)
+    directives = parse_csp(policy)
+
+    required = {
+        'default-src', 'script-src', 'style-src', 'connect-src', 'frame-src',
+        'object-src', 'base-uri', 'form-action', 'frame-ancestors',
+    }
+    missing = sorted(required - directives.keys())
+    if missing:
+        raise AssertionError(f'CSP incompleta; faltan directivas críticas: {missing}')
+
+    wildcards = sorted(
+        name for name, tokens in directives.items()
+        if '*' in tokens
+    )
+    if wildcards:
+        raise AssertionError(f'CSP debilitada con comodín * en: {wildcards}')
+
+    fixed = {
+        'default-src': {"'self'"},
+        'object-src': {"'none'"},
+        'base-uri': {"'self'"},
+        'form-action': {"'self'"},
+        'frame-src': {"'none'"},
+        'connect-src': {"'self'"},
+    }
+    for name, expected in fixed.items():
+        got = set(directives[name])
+        # Se permite endurecer connect-src a 'none'; el resto debe conservar el
+        # límite revisado hasta que exista un cambio funcional deliberado.
+        if name == 'connect-src' and got == {"'none'"}:
+            continue
+        if got != expected:
+            raise AssertionError(
+                f'CSP cambia el perímetro revisado de {name}: esperado {sorted(expected)}, '
+                f'obtenido {sorted(got)}. Revisar explícitamente antes de ampliar permisos.'
+            )
+
+    ancestors = set(directives['frame-ancestors'])
+    if ancestors not in ({"'self'"}, {"'none'"}):
+        raise AssertionError(
+            f'CSP amplía frame-ancestors fuera de self/none: {sorted(ancestors)}'
+        )
+
+    script_allowed = {
+        "'self'", "'unsafe-inline'", "'unsafe-eval'", "'strict-dynamic'", "'report-sample'",
+    }
+    style_allowed = {"'self'", "'unsafe-inline'", "'report-sample'"}
+
+    def cryptographic_source(token: str) -> bool:
+        return token.startswith(("'nonce-", "'sha256-", "'sha384-", "'sha512-")) and token.endswith("'")
+
+    bad_script = sorted(
+        token for token in directives['script-src']
+        if token not in script_allowed and not cryptographic_source(token)
+    )
+    if bad_script:
+        raise AssertionError(
+            'CSP añade fuentes de script no revisadas (orígenes/data/blob/etc.): '
+            + ', '.join(bad_script)
+        )
+
+    bad_style = sorted(
+        token for token in directives['style-src']
+        if token not in style_allowed and not cryptographic_source(token)
+    )
+    if bad_style:
+        raise AssertionError(
+            'CSP añade fuentes de estilo no revisadas: ' + ', '.join(bad_style)
+        )
+
+    unsafe_allowed = {
+        'script-src': {"'unsafe-inline'", "'unsafe-eval'"},
+        'style-src': {"'unsafe-inline'"},
+    }
+    unexpected_unsafe: list[str] = []
+    for name, tokens in directives.items():
+        allowed = unsafe_allowed.get(name, set())
+        for token in tokens:
+            if token.startswith("'unsafe-") and token not in allowed:
+                unexpected_unsafe.append(f'{name} {token}')
+    if unexpected_unsafe:
+        raise AssertionError(
+            'CSP incorpora permisos unsafe nuevos: ' + ', '.join(sorted(unexpected_unsafe))
+        )
+
+    if 'upgrade-insecure-requests' not in directives:
+        raise AssertionError('La CSP ha perdido upgrade-insecure-requests')
+
+    return policy, directives
 
 
 class PageAudit(HTMLParser):
@@ -105,6 +235,8 @@ def main() -> None:
     args = ap.parse_args()
     root = args.root.resolve()
 
+    policy, directives = validate_csp_policy(root)
+
     totals = Counter()
     origins: Counter[str] = Counter()
     examples: dict[str, list[str]] = {}
@@ -156,10 +288,19 @@ def main() -> None:
         'eval_o_new_function': eval_like,
         'limite_eval_o_new_function': args.max_eval_like,
         'origenes_http_inseguros': insecure,
+        'csp_publicada': policy,
+        'csp_directivas': directives,
+        'csp_deuda_conocida': {
+            'script_src_unsafe_inline': "'unsafe-inline'" in directives.get('script-src', []),
+            'script_src_unsafe_eval': "'unsafe-eval'" in directives.get('script-src', []),
+            'style_src_unsafe_inline': "'unsafe-inline'" in directives.get('style-src', []),
+        },
         'conclusion': (
             'No retirar unsafe-inline hasta migrar los scripts/estilos inline que este inventario contabiliza. '
             'unsafe-eval sigue siendo deuda técnica conocida del runtime: este control impide que aumente mientras se migra. '
-            'Los orígenes externos listados deben revisarse antes de fijar script-src, style-src, img-src, frame-src o connect-src.'
+            'La CSP queda además protegida contra comodines, nuevos permisos unsafe, fuentes de script no revisadas, '
+            'marcos remotos y ampliaciones silenciosas de connect-src. '
+            'Los orígenes externos listados deben revisarse antes de ampliar cualquier directiva.'
         ),
     }
     out = root / 'reports/publicacion'
@@ -178,6 +319,8 @@ def main() -> None:
         'eval_o_new_function': eval_like,
         'limite_eval_o_new_function': args.max_eval_like,
         'http_inseguro': len(insecure),
+        'csp_guardada': True,
+        'csp_directivas': len(directives),
     }, ensure_ascii=False))
     if eval_like > args.max_eval_like:
         raise AssertionError(
