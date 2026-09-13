@@ -18,7 +18,7 @@ jobs:
           cd dist
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/ig-lighthouse-server.log 2>&1 &
           echo $! >/tmp/ig-lighthouse-server.pid
-      - name: Medir seis rutas
+      - name: Medir seis rutas en tres pasadas
         run: |
           mkdir -p /tmp/ig-lighthouse
           routes=(
@@ -29,23 +29,28 @@ jobs:
             "directorio:/es/tramites/directorio/"
             "libros:/es/libros/"
           )
-          for item in "${routes[@]}"; do
-            name="${item%%:*}"
-            route="${item#*:}"
-            npx --yes lighthouse@13.4.1 "http://127.0.0.1:8765${route}" \
-              --chrome-flags="--headless --no-sandbox --disable-gpu" \
-              --output=json --output-path="/tmp/ig-lighthouse/${name}.json" \
-              --only-categories=performance,accessibility,best-practices,seo --quiet
+          for pass in 1 2 3; do
+            for item in "${routes[@]}"; do
+              name="${item%%:*}"
+              route="${item#*:}"
+              npx --yes lighthouse@13.4.1 "http://127.0.0.1:8765${route}" \
+                --chrome-flags="--headless --no-sandbox --disable-gpu" \
+                --output=json --output-path="/tmp/ig-lighthouse/${name}-${pass}.json" \
+                --only-categories=performance,accessibility,best-practices,seo --quiet
+            done
           done
-      - name: Resumir baseline y bloquear regresiones CWV de laboratorio
+      - name: Resumir mediana y bloquear regresiones CWV de laboratorio
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
+          from statistics import median
 
-          # Techo de no-regresión derivado de tres ejecuciones verdes consecutivas
-          # del 13-09-2026. No equivale a afirmar que las rutas actuales sean rápidas:
-          # Investigación, Directorio y Libros parten de LCP de laboratorio >4 s.
+          # Techo de no-regresión derivado de ejecuciones verdes del 13-09-2026.
+          # Se usa la mediana de tres pasadas para que un runner ruidoso no convierta
+          # una sola medición atípica en una regresión falsa. No equivale a afirmar
+          # que las rutas actuales sean rápidas: Investigación, Directorio y Libros
+          # parten de LCP de laboratorio >4 s.
           LCP_CEILING_MS={
               'home':4000,
               'situaciones':4000,
@@ -56,52 +61,76 @@ jobs:
           }
           TBT_CEILING_MS=600
           CLS_CEILING=0.1
+          ROUTES=tuple(LCP_CEILING_MS)
 
           def lcp_status(value):
               return 'good' if value<=2500 else 'needs-improvement' if value<=4000 else 'poor'
           def tbt_status(value):
               return 'good' if value<=200 else 'needs-improvement' if value<=600 else 'poor'
+          def med(values, digits=0):
+              value=median(values)
+              return round(value, digits)
 
           out={}
           failures=[]
-          for p in sorted(Path('/tmp/ig-lighthouse').glob('*.json')):
-              data=json.loads(p.read_text())
-              cats=data['categories'];a=data['audits']
-              lcp=round(a['largest-contentful-paint']['numericValue'])
-              tbt=round(a['total-blocking-time']['numericValue'])
-              cls=round(a['cumulative-layout-shift']['numericValue'],4)
+          raw={}
+          for name in ROUTES:
+              runs=[]
+              for pass_no in (1,2,3):
+                  p=Path(f'/tmp/ig-lighthouse/{name}-{pass_no}.json')
+                  data=json.loads(p.read_text())
+                  cats=data['categories'];a=data['audits']
+                  runs.append({
+                    'pass':pass_no,
+                    'performance':round(cats['performance']['score']*100),
+                    'accessibility':round(cats['accessibility']['score']*100),
+                    'best_practices':round(cats['best-practices']['score']*100),
+                    'seo':round(cats['seo']['score']*100),
+                    'fcp_ms':round(a['first-contentful-paint']['numericValue']),
+                    'lcp_ms':round(a['largest-contentful-paint']['numericValue']),
+                    'tbt_ms':round(a['total-blocking-time']['numericValue']),
+                    'cls':round(a['cumulative-layout-shift']['numericValue'],4),
+                    'speed_index_ms':round(a['speed-index']['numericValue']),
+                    'transfer_bytes':a.get('total-byte-weight',{}).get('numericValue'),
+                  })
+              raw[name]=runs
+              lcp=med([x['lcp_ms'] for x in runs])
+              tbt=med([x['tbt_ms'] for x in runs])
+              cls=med([x['cls'] for x in runs],4)
               vals={
-                'performance':round(cats['performance']['score']*100),
-                'accessibility':round(cats['accessibility']['score']*100),
-                'best_practices':round(cats['best-practices']['score']*100),
-                'seo':round(cats['seo']['score']*100),
-                'fcp_ms':round(a['first-contentful-paint']['numericValue']),
+                'performance':med([x['performance'] for x in runs]),
+                'accessibility':med([x['accessibility'] for x in runs]),
+                'best_practices':med([x['best_practices'] for x in runs]),
+                'seo':med([x['seo'] for x in runs]),
+                'fcp_ms':med([x['fcp_ms'] for x in runs]),
                 'lcp_ms':lcp,
                 'lcp_status':lcp_status(lcp),
-                'lcp_ceiling_ms':LCP_CEILING_MS[p.stem],
+                'lcp_ceiling_ms':LCP_CEILING_MS[name],
                 'tbt_ms':tbt,
                 'tbt_status':tbt_status(tbt),
                 'tbt_ceiling_ms':TBT_CEILING_MS,
                 'cls':cls,
                 'cls_ceiling':CLS_CEILING,
-                'speed_index_ms':round(a['speed-index']['numericValue']),
-                'transfer_bytes':a.get('total-byte-weight',{}).get('numericValue'),
+                'speed_index_ms':med([x['speed_index_ms'] for x in runs]),
+                'transfer_bytes':med([x['transfer_bytes'] for x in runs if x['transfer_bytes'] is not None]) if any(x['transfer_bytes'] is not None for x in runs) else None,
               }
-              out[p.stem]=vals
-              if lcp>LCP_CEILING_MS[p.stem]:
-                  failures.append({'route':p.stem,'metric':'lcp_ms','value':lcp,'ceiling':LCP_CEILING_MS[p.stem]})
+              out[name]=vals
+              if lcp>LCP_CEILING_MS[name]:
+                  failures.append({'route':name,'metric':'median_lcp_ms','value':lcp,'ceiling':LCP_CEILING_MS[name]})
               if tbt>TBT_CEILING_MS:
-                  failures.append({'route':p.stem,'metric':'tbt_ms','value':tbt,'ceiling':TBT_CEILING_MS})
+                  failures.append({'route':name,'metric':'median_tbt_ms','value':tbt,'ceiling':TBT_CEILING_MS})
               if cls>CLS_CEILING:
-                  failures.append({'route':p.stem,'metric':'cls','value':cls,'ceiling':CLS_CEILING})
+                  failures.append({'route':name,'metric':'median_cls','value':cls,'ceiling':CLS_CEILING})
 
           report={
-              'measurement':'Lighthouse laboratory run; not real-user CrUX/Core Web Vitals data',
+              'measurement':'Median of three Lighthouse laboratory runs; not real-user CrUX/Core Web Vitals data',
               'routes':out,
+              'raw_runs':raw,
               'known_poor_lcp':[name for name,vals in out.items() if vals['lcp_status']=='poor'],
               'failures':failures,
               'limits':[
                   'The ceilings are no-regression limits, not performance targets.',
+                  'Three passes and the median reduce single-run CI noise; they do not eliminate lab variance.',
                   'Poor LCP routes remain explicit technical debt and are not reclassified as passing CWV.',
                   'TBT is a Lighthouse lab proxy for main-thread blocking; it is not INP.',
               ],
