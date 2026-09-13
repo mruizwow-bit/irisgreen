@@ -7,9 +7,9 @@ plantillas sin resolver ni errores de lógica. Cuando existe un botón dentro de
 activa uno para comprobar que la clase precompilada responde a una interacción básica.
 
 Música se prueba como contrato de navegador en dos superficies históricas: la portada
-y Condiciones. El panel debe abrir, Escuchar debe recibir una respuesta de audio local
-y el elemento debe entrar realmente en estado de reproducción, no limitarse a pedir
-el fichero.
+y Condiciones. El panel debe conservar las 24 piezas originales y su orden. Para la
+prueba de reproducción se elige explícitamente Atmósfera (MP3), de modo que Chromium
+sin decodificador AAC no obligue a retirar las pistas M4A del catálogo visible.
 """
 from __future__ import annotations
 
@@ -80,16 +80,31 @@ def check_music(browser, base: str, route: str) -> dict:
         music.click()
         panel = page.locator("#ig-music-panel")
         panel.wait_for(state="visible")
-        play = panel.locator(".ig-m-play")
+
+        tracks = panel.locator("ol [data-track]")
+        track_count = tracks.count()
+        if track_count != 24:
+            raise AssertionError(f"La lista de Música tiene {track_count} piezas; esperaba 24")
+        first_track = tracks.first.inner_text().strip()
+        if not first_track.startswith("Un momento de calma"):
+            raise AssertionError(f"La primera pieza cambió: {first_track!r}")
+        current_title = panel.locator(".ig-m-title").inner_text().strip()
+        if current_title != "Un momento de calma":
+            raise AssertionError(f"La pieza inicial cambió: {current_title!r}")
+
+        # El Chromium de CI puede carecer de AAC aunque la web deba conservar las
+        # nueve piezas M4A. Para probar audio real sin falsear el catálogo, activamos
+        # una pista MP3 conocida que ocupa la posición histórica 10 (índice 9).
+        atmosphere = panel.locator('[data-track="9"]')
+        if not atmosphere.inner_text().strip().startswith("Atmósfera"):
+            raise AssertionError("Atmósfera ya no ocupa la posición histórica esperada")
         with page.expect_response(
-            lambda response: "/audio/" in response.url,
+            lambda response: "/audio/atmosfera.mp3" in response.url,
             timeout=10000,
         ) as audio_response:
-            play.click()
+            atmosphere.click()
         response = audio_response.value
         audio_url = response.url
-        if not re.search(r"/audio/[^/?]+\.(?:mp3|m4a)(?:\?|$)", audio_url, re.I):
-            raise AssertionError(f"Música solicita una URL inesperada: {audio_url}")
         if not (200 <= response.status < 300):
             raise AssertionError(f"El audio responde HTTP {response.status}: {audio_url}")
         content_type = response.headers.get("content-type", "")
@@ -97,7 +112,7 @@ def check_music(browser, base: str, route: str) -> dict:
             raise AssertionError(f"Tipo MIME de audio inesperado: {content_type!r}")
 
         # La petición HTTP por sí sola no demuestra reproducción. musica.js cambia
-        # el texto a Pausa/ Pause únicamente cuando el elemento <audio> emite play.
+        # el texto a Pausa/Pause únicamente cuando el elemento <audio> emite play.
         page.wait_for_function(
             """() => {
               const b = document.querySelector('#ig-music-panel .ig-m-play');
@@ -120,7 +135,10 @@ def check_music(browser, base: str, route: str) -> dict:
         return {
             "route": route,
             "panel": True,
+            "playlist_count": track_count,
+            "first_track": "Un momento de calma",
             "playing": True,
+            "played_track": "Atmósfera",
             "audio_status": response.status,
             "content_type": content_type,
             "audio_url": audio_url,
