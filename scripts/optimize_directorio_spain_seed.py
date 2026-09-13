@@ -162,7 +162,7 @@ def main() -> None:
     text = replace_once(text, old_count, new_count, 'contador')
 
     text = replace_property_line(text, 'hasMore', '!st.fullLoading && this.countRows(rows) > st.limit')
-    text = replace_property_line(text, 'moreLabel', '"Ver más fichas (" + Math.max(0, this.countRows(rows) - st.limit) + " restantes)"')
+    text = replace_property_line(text, 'moreLabel', 'T.moreStart + Math.max(0, this.countRows(rows) - st.limit) + T.moreEnd')
     text = replace_property_line(text, 'showMore', '() => this.showMoreRows()')
 
     page.write_text(text, encoding='utf-8')
