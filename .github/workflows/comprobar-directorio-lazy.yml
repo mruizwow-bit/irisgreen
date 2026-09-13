@@ -1,0 +1,22 @@
+name: Comprobar carga del Directorio
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  directorio-lazy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-directory
+          /tmp/ig-directory/bin/pip -q install playwright==1.55.0
+          /tmp/ig-directory/bin/python -m playwright install --with-deps chromium >/tmp/ig-directory-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Verificar carga perezosa
+        run: cd dist && /tmp/ig-directory/bin/python ../scripts/test_directorio_lazy.py
