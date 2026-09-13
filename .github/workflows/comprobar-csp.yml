@@ -21,7 +21,7 @@ jobs:
       - name: Construir la salida pública
         run: python3 scripts/build_site.py
       - name: Inventariar dependencias de la política
-        run: python3 scripts/audit_csp_dependencies.py --root dist
+        run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 4
       - name: Comprobar cabeceras de seguridad
         run: python3 scripts/audit_security_headers.py --root dist
       - name: Acotar la deuda unsafe-eval
