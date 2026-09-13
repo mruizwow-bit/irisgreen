@@ -6,10 +6,13 @@
    3,95:1 incluso sobre blanco.
 3) Vídeos: «Dónde está» usaba #7a8698 a 13 px, también 3,69:1 sobre blanco.
 
-Los dos últimos selectores pertenecen al DOM que monta el runtime: el HTML fuente
-conserva el texto objetivo, pero no necesariamente el atributo data-dc-tpl antes
-de ejecutar JavaScript. Por eso aquí se valida el texto y se inyecta la regla; la
-auditoría de navegador posterior demuestra que el selector montado recibe el color.
+Los dos últimos objetivos pertenecen al DOM que monta el runtime. La salida HTML
+estática puede no conservar ni el texto ni el atributo data-dc-tpl después de los
+pasos de prerender/lazy-load, así que el build solo inyecta una regla de alcance
+muy estrecho en la ruta correspondiente. La auditoría de navegador posterior es
+la que verifica que el selector existe en el DOM montado y que el color corregido
+elimina el fallo de contraste. Si el runtime cambia y el selector deja de existir,
+el guardarraíl de contraste vuelve a fallar en vez de dar el caso por aprobado.
 """
 from __future__ import annotations
 
@@ -42,9 +45,7 @@ def inject_style(root: Path, fix: dict) -> dict:
     if not page.is_file():
         raise FileNotFoundError(page)
     text = page.read_text(encoding='utf-8')
-    count = text.count(fix['needle'])
-    if count < 1:
-        raise AssertionError(f"No se encuentra el texto objetivo en {fix['page']}: {fix['needle']}")
+    source_matches = text.count(fix['needle'])
     style = f'<style id="{MARKER}">{fix["style"]}</style>'
     if style not in text:
         pos = text.lower().rfind('</head>')
@@ -52,7 +53,11 @@ def inject_style(root: Path, fix: dict) -> dict:
             raise AssertionError(f"HTML sin </head>: {fix['page']}")
         text = text[:pos] + style + '\n' + text[pos:]
         page.write_text(text, encoding='utf-8')
-    return {**{k: fix[k] for k in ('page','needle','old','new','contrast')}, 'source_text_matches': count}
+    return {
+        **{k: fix[k] for k in ('page','needle','old','new','contrast')},
+        'source_text_matches': source_matches,
+        'runtime_selector': fix['style'].split('{', 1)[0],
+    }
 
 
 def main() -> None:
