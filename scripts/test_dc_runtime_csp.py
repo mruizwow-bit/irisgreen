@@ -85,7 +85,7 @@ def check_music(browser, base: str, route: str) -> dict:
         track_count = tracks.count()
         if track_count != 24:
             raise AssertionError(f"La lista de Música tiene {track_count} piezas; esperaba 24")
-        first_track = tracks.first.inner_text().strip()
+        first_track = (tracks.first.text_content() or "").strip()
         if not first_track.startswith("Un momento de calma"):
             raise AssertionError(f"La primera pieza cambió: {first_track!r}")
         current_title = panel.locator(".ig-m-title").inner_text().strip()
@@ -96,7 +96,7 @@ def check_music(browser, base: str, route: str) -> dict:
         # nueve piezas M4A. Para probar audio real sin falsear el catálogo, activamos
         # una pista MP3 conocida que ocupa la posición histórica 10 (índice 9).
         atmosphere = panel.locator('[data-track="9"]')
-        if not atmosphere.inner_text().strip().startswith("Atmósfera"):
+        if not (atmosphere.text_content() or "").strip().startswith("Atmósfera"):
             raise AssertionError("Atmósfera ya no ocupa la posición histórica esperada")
         with page.expect_response(
             lambda response: "/audio/atmosfera.mp3" in response.url,
