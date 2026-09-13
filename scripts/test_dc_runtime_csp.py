@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Prueba en Chromium las 24 interfaces DC tras la migración sin unsafe-eval.
+"""Prueba en Chromium las interfaces DC y la Música publicada bajo la CSP real.
 
 Descubre las páginas por la referencia al runtime CSP-safe, las sirve con la cabecera
 real de ``_headers`` y exige que el componente monte, muestre un h1 legible, no deje
 plantillas sin resolver ni errores de lógica. Cuando existe un botón dentro de main,
 activa uno para comprobar que la clase precompilada responde a una interacción básica.
-En la portada comprueba además el contrato real de Música: el botón abre el reproductor
-y Escuchar solicita una pista local de ``/audio/``.
+La portada se prueba aparte porque el build la sustituye por la plantilla de navegación
+aprobada: Música debe abrir su reproductor y Escuchar solicitar una pista de ``/audio/``.
 """
 from __future__ import annotations
 
@@ -56,6 +56,48 @@ def server(csp: str):
     return httpd, f"http://127.0.0.1:{httpd.server_port}"
 
 
+def check_home_music(browser, base: str) -> dict:
+    page = browser.new_page(viewport={"width": 1280, "height": 900})
+    page.set_default_timeout(15000)
+    page_errors: list[str] = []
+    console_errors: list[str] = []
+    page.on("pageerror", lambda exc: page_errors.append(str(exc)))
+    page.on(
+        "console",
+        lambda msg: console_errors.append(msg.text)
+        if msg.type == "error" or "Content Security Policy" in msg.text or "Refused to" in msg.text
+        else None,
+    )
+    try:
+        page.goto(base + "/", wait_until="domcontentloaded")
+        music = page.locator("[data-ig-music]:visible, .ig-uh-music:visible").first
+        if not music.count():
+            raise AssertionError("no existe el botón visible de Música en la portada publicada")
+        music.click()
+        panel = page.locator("#ig-music-panel")
+        panel.wait_for(state="visible")
+        play = panel.locator(".ig-m-play")
+        with page.expect_request(
+            lambda request: "/audio/" in request.url,
+            timeout=10000,
+        ) as audio_request:
+            play.click()
+        audio_url = audio_request.value.url
+        if not re.search(r"/audio/[^/?]+\.(?:mp3|m4a)(?:\?|$)", audio_url, re.I):
+            raise AssertionError(f"Música solicita una URL inesperada: {audio_url}")
+        if page_errors:
+            raise AssertionError("pageerror: " + " | ".join(page_errors[:4]))
+        bad_console = [
+            x for x in console_errors
+            if "favicon" not in x.lower() and "404" not in x.lower()
+        ]
+        if bad_console:
+            raise AssertionError("console: " + " | ".join(bad_console[:4]))
+        return {"panel": True, "audio_url": audio_url}
+    finally:
+        page.close()
+
+
 def main() -> None:
     pages = []
     for path in sorted(ROOT.rglob("*.html")):
@@ -74,10 +116,15 @@ def main() -> None:
     httpd, base = server(csp)
     failures: list[str] = []
     checked = []
-    music_checked = False
+    music_result = None
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch()
+            try:
+                music_result = check_home_music(browser, base)
+            except Exception as exc:
+                failures.append(f"/: Música: {exc}")
+
             for path, route in pages:
                 page = browser.new_page(viewport={"width": 1280, "height": 900})
                 page.set_default_timeout(15000)
@@ -106,27 +153,6 @@ def main() -> None:
                     if "{{" in body_text or "}}" in body_text:
                         raise AssertionError("quedan expresiones de plantilla visibles")
 
-                    if route == "/":
-                        music = page.locator(".ig-uh-music:visible").first
-                        if not music.count():
-                            raise AssertionError("no existe el botón visible de Música")
-                        music.click()
-                        panel = page.locator("#ig-music-panel")
-                        panel.wait_for(state="visible")
-                        play = panel.locator(".ig-m-play")
-                        with page.expect_request(
-                            lambda request: "/audio/" in request.url,
-                            timeout=10000,
-                        ) as audio_request:
-                            play.click()
-                        audio_url = audio_request.value.url
-                        if not re.search(r"/audio/[^/?]+\.(?:mp3|m4a)(?:\?|$)", audio_url, re.I):
-                            raise AssertionError(f"Música solicita una URL inesperada: {audio_url}")
-                        music_checked = True
-
-                    # Interacción mínima: evita enlaces y controles globales; si la
-                    # interfaz tiene un botón propio en main, activar el primero no
-                    # debe romper la clase precompilada.
                     button = page.locator("main button:visible").first
                     interacted = False
                     if button.count() and button.is_enabled():
@@ -153,14 +179,14 @@ def main() -> None:
         httpd.shutdown()
 
     if failures:
-        raise AssertionError("Fallos DC CSP-safe:\n" + "\n".join(failures[:30]))
-    if not music_checked:
+        raise AssertionError("Fallos CSP/browser:\n" + "\n".join(failures[:30]))
+    if not music_result:
         raise AssertionError("La portada no completó la prueba de Música")
     print({
         "pages_checked": len(checked),
         "unsafe_eval": False,
         "raw_templates_visible": 0,
-        "music_local_audio_checked": music_checked,
+        "music": music_result,
         "pages_with_basic_interaction": sum(x["interaction"] for x in checked),
         "routes": [x["route"] for x in checked],
     })
