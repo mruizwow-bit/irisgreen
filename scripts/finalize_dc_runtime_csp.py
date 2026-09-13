@@ -4,9 +4,9 @@
 Estrategia de publicación, sin reescribir interfaces:
 1. precompila cada bloque ``data-dc-script`` como una función JavaScript normal;
 2. deja un marcador no ejecutable para que el runtime conserve su contrato;
-3. codifica ``{{``/``}}`` dentro de ``<x-dc>`` como entidades HTML: el navegador
-   reconstruye las llaves en el DOM, pero ya no quedan plantillas sin resolver en
-   el markup de la respuesta inicial;
+3. codifica las expresiones ``{{...}}`` dentro de ``<x-dc>`` como entidades HTML:
+   el navegador reconstruye las llaves en el DOM, pero ya no quedan plantillas sin
+   resolver en el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
    24 páginas la usen;
 5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
@@ -35,6 +35,7 @@ LOGIC = re.compile(
 )
 NOSCRIPT = re.compile(r"<noscript\b[^>]*>.*?</noscript\s*>", re.I | re.S)
 SCRIPT_BLOCK = re.compile(r"<script\b[^>]*>.*?</script\s*>", re.I | re.S)
+MUSTACHE = re.compile(r"\{\{.*?\}\}", re.S)
 LINK_MUSTACHE = re.compile(
     r"<(?:a|link)\b[^>]*(?:href|sc-camel-href)=[\"'][^\"']*\{\{.*?\}\}[^\"']*[\"'][^>]*>",
     re.I | re.S,
@@ -72,8 +73,15 @@ EXTERNAL_NEW = '''        throw new Error(
 
 
 def encode_template(match: re.Match[str]) -> str:
-    inner = match.group(2)
-    inner = inner.replace("{{", "&#123;&#123;").replace("}}", "&#125;&#125;")
+    # Solo las expresiones de plantilla son deuda de publicación. Secuencias ``}}``
+    # normales de CSS (por ejemplo al cerrar una regla dentro de @media) no lo son y
+    # no deben convertirse en entidades dentro de <style>.
+    inner = MUSTACHE.sub(
+        lambda token: token.group(0)
+        .replace("{{", "&#123;&#123;", 1)
+        .replace("}}", "&#125;&#125;", 1),
+        match.group(2),
+    )
     return match.group(1) + inner + match.group(3)
 
 
@@ -128,8 +136,8 @@ def transform_page(path: Path) -> dict:
     if not logic_source or "class Component" not in logic_source:
         raise AssertionError(f"{path}: el bloque de lógica no define class Component")
 
-    # Codificar únicamente la plantilla: el navegador convierte entidades de nuevo
-    # en llaves cuando el runtime consulta x-dc.innerHTML.
+    # Codificar únicamente expresiones de plantilla: el navegador convierte esas
+    # entidades de nuevo en llaves cuando el runtime consulta x-dc.innerHTML.
     text, xdc_count = XDC.subn(encode_template, text, count=1)
     if xdc_count != 1:
         raise AssertionError(f"{path}: no se pudo codificar x-dc")
@@ -149,7 +157,7 @@ def transform_page(path: Path) -> dict:
     return {
         "path": path.as_posix(),
         "old_runtime": refs[0],
-        "template_expressions_encoded": template.count("{{"),
+        "template_expressions_encoded": len(MUSTACHE.findall(template)),
     }
 
 
@@ -203,14 +211,14 @@ def main() -> None:
 
     update_csp(root)
 
-    # Guardarraíles finales de este hallazgo. Los scripts pueden contener llaves como
-    # literales de código; lo que debe quedar a cero es la plantilla cruda en markup.
+    # Guardarraíles finales de este hallazgo. Los scripts y CSS pueden contener llaves
+    # normales; lo que debe quedar a cero es una expresión {{...}} de plantilla en markup.
     active_mustache = []
     active_link_mustache = []
     for path in pages:
         text = path.read_text(encoding="utf-8", errors="strict")
         markup = markup_without_scripts_or_noscript(text)
-        if "{{" in markup or "}}" in markup:
+        if MUSTACHE.search(markup):
             active_mustache.append(path.relative_to(root).as_posix())
         if LINK_MUSTACHE.search(markup):
             active_link_mustache.append(path.relative_to(root).as_posix())
