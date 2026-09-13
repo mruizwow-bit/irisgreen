@@ -93,6 +93,8 @@ def build():
     # Tarjetas Iris afirma públicamente que lo escrito no se guarda. El conector
     # histórico añadía persistencia local; se retira del artefacto antes de publicar.
     subprocess.run([sys.executable,str(ROOT/'scripts/remove_tarjetas_storage.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Copiar texto mantiene una etiqueta estable y anuncia éxito/error mediante role=status.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_tarjetas_copy_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Las 420 tarjetas que viven dentro de fichas son resúmenes de esa ficha, no
     # formularios: quedan rellenas y sin edición. La herramienta personal sigue editable.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_tarjetas_iris_static.py'),'--root',str(dst)],cwd=ROOT,check=True)
