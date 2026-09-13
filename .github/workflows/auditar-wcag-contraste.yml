@@ -21,40 +21,33 @@ jobs:
         run: python3 scripts/build_site.py
       - name: Agrupar y medir casos de contraste indeterminado
         run: /tmp/ig-contrast/bin/python scripts/audit_contrast_signatures.py --root dist --axe node_modules/axe-core/axe.min.js
-      - name: Bloquear colores que no llegan a AA ni sobre blanco
+      - name: Bloquear regresiones de contraste
         run: |
           python3 - <<'PY'
           import json,re
           from pathlib import Path
-          p=Path('dist/reports/wcag-contrast-signatures/results.json')
-          data=json.loads(p.read_text())
+          p=Path('dist/reports/wcag-contrast-signatures/results.json');data=json.loads(p.read_text())
           def lum(rgb):
-              out=[]
+              vals=[]
               for x in rgb:
-                  c=x/255
-                  out.append(c/12.92 if c<=0.04045 else ((c+0.055)/1.055)**2.4)
-              return .2126*out[0]+.7152*out[1]+.0722*out[2]
+                  c=x/255;vals.append(c/12.92 if c<=0.04045 else ((c+0.055)/1.055)**2.4)
+              return .2126*vals[0]+.7152*vals[1]+.0722*vals[2]
           def ratio(a,b=(255,255,255)):
-              x,y=sorted((lum(a),lum(b)),reverse=True)
-              return (x+.05)/(y+.05)
+              x,y=sorted((lum(a),lum(b)),reverse=True);return (x+.05)/(y+.05)
           bad=[]
           for row in data['signatures']:
-              s=row['style']
-              m=re.fullmatch(r'rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)',s['color'])
+              s=row['style'];m=re.fullmatch(r'rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)',s['color'])
               if not m: continue
-              rgb=tuple(float(x) for x in m.group(1,2,3));alpha=float(m.group(4) or s.get('opacity') or 1)
-              fg=tuple(c*alpha+255*(1-alpha) for c in rgb)
+              rgb=tuple(float(x) for x in m.group(1,2,3));alpha=float(m.group(4) or s.get('opacity') or 1);fg=tuple(c*alpha+255*(1-alpha) for c in rgb)
               size=float(s['fontSize'].replace('px',''));weight=float(s['fontWeight']) if str(s['fontWeight']).replace('.','',1).isdigit() else 400
-              required=3.0 if size>=24 or (size>=18.666 and weight>=700) else 4.5
-              value=ratio(fg)
+              required=3.0 if size>=24 or (size>=18.666 and weight>=700) else 4.5;value=ratio(fg)
               row['best_case_white_ratio']=round(value,3);row['required_ratio']=required
-              if value+1e-6<required:
-                  bad.append({'count':row['count'],'ratio':round(value,3),'required':required,'style':s,'examples':row['examples'][:3]})
-          data['best_case_white_failures']=bad
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps({'unique_signatures':data['unique_style_signatures'],'best_case_white_failures':len(bad),'conservative_pass':data['conservative_pass_signatures'],'pixel_probe_signatures':data['pixel_probe_signatures'],'pixel_probe_failures':data['pixel_probe_signatures_with_failures']},ensure_ascii=False))
-          if bad:
-              raise SystemExit('Hay texto que no alcanza AA ni sobre blanco: '+json.dumps(bad,ensure_ascii=False)[:3000])
+              if value+1e-6<required:bad.append({'count':row['count'],'ratio':round(value,3),'required':required,'style':s,'examples':row['examples'][:3]})
+          data['best_case_white_failures']=bad;p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+          pixel_failures=data['pixel_probe_signatures_with_failures']
+          print(json.dumps({'unique_signatures':data['unique_style_signatures'],'best_case_white_failures':len(bad),'conservative_pass':data['conservative_pass_signatures'],'pixel_probe_signatures':data['pixel_probe_signatures'],'pixel_probe_failures':pixel_failures},ensure_ascii=False))
+          if bad: raise SystemExit('Hay texto que no alcanza AA ni sobre blanco: '+json.dumps(bad,ensure_ascii=False)[:3000])
+          if pixel_failures: raise SystemExit(f'Hay {pixel_failures} firmas con muestras renderizadas por debajo del mínimo; requieren revisión explícita')
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
