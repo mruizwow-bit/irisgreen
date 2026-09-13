@@ -77,6 +77,18 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
     return text.replace(old, new, 1)
 
 
+def replace_property_line(text: str, prop: str, expression: str) -> str:
+    """Sustituye una única propiedad de render sin depender de espacios internos."""
+    expected = f'{prop}: {expression},'
+    if expected in text:
+        return text
+    pattern = re.compile(r'^(\s*)' + re.escape(prop) + r':\s*.*?,\s*$', re.M)
+    text, count = pattern.subn(lambda m: f'{m.group(1)}{prop}: {expression},', text, count=1)
+    if count != 1:
+        raise ValueError(f'{prop}: se esperaba una propiedad y hay {count}')
+    return text
+
+
 def add_complete_filter_options(text: str) -> str:
     """Inicializa filtros desde metadatos completos cuando España es parcial."""
     terr_old = 'const terrs = [];'
@@ -149,18 +161,9 @@ def main() -> None:
       noResults: !st.fullLoading && !st.fullError && !!st.data && rows.length === 0,'''
     text = replace_once(text, old_count, new_count, 'contador')
 
-    text = replace_once(text,
-        'hasMore: rows.length > st.limit,',
-        'hasMore: !st.fullLoading && this.countRows(rows) > st.limit,',
-        'ver más disponible')
-    text = replace_once(text,
-        'moreLabel: "Ver más fichas (" + Math.max(0, rows.length - st.limit) + " restantes)",',
-        'moreLabel: "Ver más fichas (" + Math.max(0, this.countRows(rows) - st.limit) + " restantes)",',
-        'etiqueta ver más')
-    text = replace_once(text,
-        'showMore: () => this.setState({ limit: st.limit + 12 }),',
-        'showMore: () => this.showMoreRows(),',
-        'acción ver más')
+    text = replace_property_line(text, 'hasMore', '!st.fullLoading && this.countRows(rows) > st.limit')
+    text = replace_property_line(text, 'moreLabel', '"Ver más fichas (" + Math.max(0, this.countRows(rows) - st.limit) + " restantes)"')
+    text = replace_property_line(text, 'showMore', '() => this.showMoreRows()')
 
     page.write_text(text, encoding='utf-8')
     print({
