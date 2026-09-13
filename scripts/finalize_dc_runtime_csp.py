@@ -6,7 +6,7 @@ Estrategia de publicación, sin reescribir interfaces:
 2. deja un marcador no ejecutable para que el runtime conserve su contrato;
 3. codifica ``{{``/``}}`` dentro de ``<x-dc>`` como entidades HTML: el navegador
    reconstruye las llaves en el DOM, pero ya no quedan plantillas sin resolver en
-   el HTML fuente;
+   el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
    24 páginas la usen;
 5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
@@ -31,6 +31,12 @@ SAFE_RUNTIME = "/assets/runtime/dc-runtime-csp.js"
 XDC = re.compile(r"(<x-dc\b[^>]*>)(.*?)(</x-dc\s*>)", re.I | re.S)
 LOGIC = re.compile(
     r"(<script\b(?=[^>]*\bdata-dc-script\b)[^>]*>)(.*?)(</script\s*>)",
+    re.I | re.S,
+)
+NOSCRIPT = re.compile(r"<noscript\b[^>]*>.*?</noscript\s*>", re.I | re.S)
+SCRIPT_BLOCK = re.compile(r"<script\b[^>]*>.*?</script\s*>", re.I | re.S)
+LINK_MUSTACHE = re.compile(
+    r"<(?:a|link)\b[^>]*(?:href|sc-camel-href)=[\"'][^\"']*\{\{.*?\}\}[^\"']*[\"'][^>]*>",
     re.I | re.S,
 )
 ACTIVE_DYNAMIC_IMPORT = re.compile(r"<(?:x-import|dc-import)\b", re.I)
@@ -157,6 +163,11 @@ def update_csp(root: Path) -> None:
     headers.write_text(text.replace(old, new, 1), encoding="utf-8")
 
 
+def markup_without_scripts_or_noscript(text: str) -> str:
+    active = NOSCRIPT.sub("", text)
+    return SCRIPT_BLOCK.sub("", active)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--root", type=Path, default=Path("dist"))
@@ -192,18 +203,27 @@ def main() -> None:
 
     update_csp(root)
 
-    # Guardarraíles finales de este hallazgo.
+    # Guardarraíles finales de este hallazgo. Los scripts pueden contener llaves como
+    # literales de código; lo que debe quedar a cero es la plantilla cruda en markup.
     active_mustache = []
+    active_link_mustache = []
     for path in pages:
         text = path.read_text(encoding="utf-8", errors="strict")
-        # Las entidades &#123; no cuentan como plantilla cruda en la respuesta inicial.
-        if "{{" in text:
-            # El noscript se genera ya resuelto; cualquier {{ restante es deuda activa.
+        markup = markup_without_scripts_or_noscript(text)
+        if "{{" in markup or "}}" in markup:
             active_mustache.append(path.relative_to(root).as_posix())
+        if LINK_MUSTACHE.search(markup):
+            active_link_mustache.append(path.relative_to(root).as_posix())
         if SAFE_RUNTIME not in text or "data-dc-precompiled" not in text:
             raise AssertionError(f"{path}: falta runtime seguro o lógica precompilada")
     if active_mustache:
-        raise AssertionError("Quedan expresiones {{ }} crudas: " + ", ".join(active_mustache[:20]))
+        raise AssertionError(
+            "Quedan expresiones {{ }} crudas en markup: " + ", ".join(active_mustache[:20])
+        )
+    if active_link_mustache:
+        raise AssertionError(
+            "Quedan enlaces con plantilla cruda: " + ", ".join(active_link_mustache[:20])
+        )
 
     runtime_text = target_runtime.read_text(encoding="utf-8", errors="strict")
     if re.search(r"\b(?:eval|Function)\s*\(", runtime_text):
@@ -215,7 +235,8 @@ def main() -> None:
             runtime: sum(r["old_runtime"] == runtime for r in rows) for runtime in OLD_RUNTIMES
         },
         "encoded_template_expressions": sum(r["template_expressions_encoded"] for r in rows),
-        "raw_mustache_remaining": 0,
+        "raw_markup_mustache_remaining": 0,
+        "raw_link_mustache_remaining": 0,
         "old_runtimes_removed": list(OLD_RUNTIMES),
         "safe_runtime": SAFE_RUNTIME,
         "unsafe_eval_removed_from_csp": True,
