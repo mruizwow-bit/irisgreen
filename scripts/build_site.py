@@ -104,6 +104,9 @@ def build():
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
     # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # La primera pantalla del Directorio solo necesita 12 fichas. Conservamos 24 en
+    # el HTML y publicamos la colección española completa como recurso bajo demanda.
+    subprocess.run([sys.executable,str(ROOT/'scripts/optimize_directorio_spain_seed.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
     # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
