@@ -102,8 +102,9 @@ def build():
     # Investigación conserva el fallback completo sin JavaScript, pero la interfaz
     # activa carga los 120 registros desde el JSON canónico tras montar el shell.
     subprocess.run([sys.executable,str(ROOT/'scripts/defer_investigacion_data.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # La utilidad de impresión es noindex, pero conserva metadatos y semántica propios.
+    # Las utilidades de impresión son noindex, pero conservan metadatos y semántica propios.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_taller_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
     # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
