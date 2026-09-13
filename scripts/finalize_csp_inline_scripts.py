@@ -31,8 +31,10 @@ SCRIPT_BLOCK = re.compile(
 )
 SRC_ATTR = re.compile(r'\bsrc\s*=\s*(["\']).*?\1', re.I | re.S)
 TYPE_ATTR = re.compile(r'\btype\s*=\s*(["\'])(.*?)\1', re.I | re.S)
-BRAND_ONERROR = re.compile(
-    r"\s+onerror\s*=\s*(?:\"this\.remove\(\)\"|'this\.remove\(\)')", re.I
+# El valor permitido se valida antes con HTMLParser. Esta regex solo elimina el
+# atributo ya validado, con independencia de comillas/espaciado de la serialización.
+ONERROR_ATTR = re.compile(
+    r'\s+onerror\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+)', re.I
 )
 CSP_LINE = re.compile(
     r'^(?P<prefix>\s*Content-Security-Policy:\s*)(?P<policy>.+)$', re.M
@@ -94,7 +96,9 @@ def validate_and_remove_event_handlers(root: Path) -> tuple[int, int]:
         count = len(audit.events)
         if count:
             occurrences += count
-            patched, removed = BRAND_ONERROR.subn('', text)
+            # Llegados aquí todos los event attrs de esta página ya han sido
+            # validados como el fallback exacto permitido. Borramos su serialización.
+            patched, removed = ONERROR_ATTR.subn('', text)
             if removed != count:
                 raise AssertionError(
                     f'{rel}: se auditaron {count} manejadores pero solo se retiraron {removed}'
