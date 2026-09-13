@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Bloquea la expansión de eval()/new Function() fuera del runtime de juegos.
+"""Bloquea la expansión de eval()/new Function() fuera de su deuda conocida.
 
 La CSP pública aún conserva ``'unsafe-eval'`` por una deuda técnica ya inventariada.
 El control global existente limita el número total de usos; este segundo guardarraíl
-impide que esa excepción se propague silenciosamente a otras partes de la web.
+fija además los archivos concretos y el máximo permitido en cada uno. Reducir la deuda
+sigue estando permitido; moverla o ampliarla exige una revisión explícita.
 """
 from __future__ import annotations
 
@@ -13,8 +14,12 @@ import re
 from pathlib import Path
 
 EVAL_LIKE = re.compile(r'\beval\s*\(|\bnew\s+Function\s*\(')
-ALLOWED_PREFIX = 'assets/games/'
-MAX_TOTAL = 6
+ALLOWED_MAX = {
+    'assets/games/dc-runtime.js': 2,
+    'assets/runtime/8fe7df74405f3c55.js': 2,
+    'support.js': 2,
+}
+MAX_TOTAL = sum(ALLOWED_MAX.values())
 
 
 def main() -> None:
@@ -31,14 +36,20 @@ def main() -> None:
             by_file[path.relative_to(root).as_posix()] = count
 
     total = sum(by_file.values())
-    outside_scope = sorted(path for path in by_file if not path.startswith(ALLOWED_PREFIX))
+    unapproved = sorted(path for path in by_file if path not in ALLOWED_MAX)
+    over_file_limit = {
+        path: {'actual': count, 'maximo': ALLOWED_MAX[path]}
+        for path, count in sorted(by_file.items())
+        if path in ALLOWED_MAX and count > ALLOWED_MAX[path]
+    }
 
     print(json.dumps({
         'eval_o_new_function_total': total,
         'limite_total': MAX_TOTAL,
-        'ambito_temporal_permitido': ALLOWED_PREFIX,
+        'maximos_revisados_por_archivo': ALLOWED_MAX,
         'por_archivo': by_file,
-        'fuera_del_ambito': outside_scope,
+        'archivos_no_aprobados': unapproved,
+        'archivos_sobre_limite': over_file_limit,
     }, ensure_ascii=False, indent=2))
 
     if total > MAX_TOTAL:
@@ -46,10 +57,15 @@ def main() -> None:
             f'La salida pública ha aumentado eval()/new Function(): {total} > {MAX_TOTAL}. '
             'No ampliar el límite para hacer pasar CI.'
         )
-    if outside_scope:
+    if unapproved:
         raise AssertionError(
-            'La excepción CSP unsafe-eval se ha extendido fuera del runtime de juegos: '
-            + ', '.join(outside_scope)
+            'La excepción CSP unsafe-eval ha aparecido en archivos no revisados: '
+            + ', '.join(unapproved)
+        )
+    if over_file_limit:
+        raise AssertionError(
+            'Ha aumentado eval()/new Function() dentro de un archivo ya revisado: '
+            + json.dumps(over_file_limit, ensure_ascii=False, sort_keys=True)
         )
 
 
