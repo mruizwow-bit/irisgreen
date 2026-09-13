@@ -1,4 +1,4 @@
-name: Aplicar hojas del taller temporal
+name: Preparar cambio del taller
 
 on:
   push:
@@ -11,17 +11,17 @@ permissions:
   contents: write
 
 jobs:
-  aplicar:
+  preparar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Aplicar enlaces de las hojas
+      - name: Aplicar los dos archivos del taller
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
+          import base64, gzip, re
           
           path = Path("es/taller/index.html")
           s = path.read_text(encoding="utf-8")
@@ -29,30 +29,17 @@ jobs:
           def once(old, new, label):
               global s
               n = s.count(old)
-              if n != 1:
-                  raise SystemExit(f"{label}: esperada 1 coincidencia, encontradas {n}")
-              s = s.replace(old, new, 1)
+              if n == 1:
+                  s = s.replace(old, new, 1)
+              elif new in s:
+                  return
+              else:
+                  raise SystemExit(f"{label}: no se encontró el estado esperado")
           
-          once(
-              'soon: "Lista para imprimir", openSheets:',
-              'sheetAction: "Abrir e imprimir", openSheets:',
-              "texto español"
-          )
-          once(
-              'soon: "Ready to print", openSheets:',
-              'sheetAction: "Open and print", openSheets:',
-              "texto inglés"
-          )
-          once(
-              '<a href="/es/taller/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">',
-              '<a href="/es/taller/hojas/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">',
-              "botón principal"
-          )
-          once(
-              '      sheets: T.sheets.map((name) => ({ name, state: T.soon })),',
-              '      sheets: T.sheets.map((name, n) => ({ name, state: T.sheetAction, href: "/es/taller/hojas/#ta-" + String(n + 1).padStart(2, "0") })),',
-              "datos de tarjetas"
-          )
+          once('soon: "Lista para imprimir", openSheets:', 'sheetAction: "Abrir e imprimir", openSheets:', "texto español")
+          once('soon: "Ready to print", openSheets:', 'sheetAction: "Open and print", openSheets:', "texto inglés")
+          once('<a href="/es/taller/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">', '<a href="/es/taller/hojas/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">', "botón principal")
+          once('      sheets: T.sheets.map((name) => ({ name, state: T.soon })),', '      sheets: T.sheets.map((name, n) => ({ name, state: T.sheetAction, href: "/es/taller/hojas/#ta-" + String(n + 1).padStart(2, "0") })),', "datos de tarjetas")
           
           old_cards = """        <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
                     <div style="background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px;">
@@ -76,67 +63,60 @@ jobs:
           if start == -1 or end == -1 or end <= start:
               raise SystemExit("No se encontró el bloque sin JavaScript")
           nos = s[start:end]
-          
-          old_button = 'data-dc-tpl="123" href="/es/taller/"'
-          if nos.count(old_button) != 1:
+          if 'data-dc-tpl="123" href="/es/taller/"' in nos:
+              nos = nos.replace('data-dc-tpl="123" href="/es/taller/"', 'data-dc-tpl="123" href="/es/taller/hojas/"', 1)
+          elif 'data-dc-tpl="123" href="/es/taller/hojas/"' not in nos:
               raise SystemExit("Botón sin JS inesperado")
-          nos = nos.replace(old_button, 'data-dc-tpl="123" href="/es/taller/hojas/"', 1)
           
           old_status = '<span class="sc-interp">Lista para imprimir</span>'
-          if nos.count(old_status) != 12:
-              raise SystemExit(f"Estados sin JS: esperados 12, encontrados {nos.count(old_status)}")
-          nos = nos.replace(old_status, '<span class="sc-interp">Abrir e imprimir</span>')
+          if nos.count(old_status) == 12:
+              nos = nos.replace(old_status, '<span class="sc-interp">Abrir e imprimir</span>')
+          elif nos.count('<span class="sc-interp">Abrir e imprimir</span>') < 12:
+              raise SystemExit("Estados sin JS inesperados")
           
-          sheet_names = [
-              "La cuadrícula de nueve casillas",
-              "Las cuatro viñetas",
-              "El cuaderno de campo",
-              "El mapa en blanco",
-              "El tablero de seis casillas",
-              "La ficha de criatura",
-              "La hoja de colección",
-              "La hoja de instrucciones",
-              "La ficha de invento",
-              "La hoja de ritmo",
-              "La ficha de personaje",
-              "La hoja libre",
-          ]
-          
-          for i, name in enumerate(sheet_names, 1):
-              needle = f'<span class="sc-interp">{name}</span>'
-              pos = nos.find(needle)
-              if pos == -1:
-                  raise SystemExit(f"Falta tarjeta sin JS: {name}")
-              card_start = nos.rfind('<div data-dc-tpl="128"', 0, pos)
-              if card_start == -1:
-                  raise SystemExit(f"Falta inicio de tarjeta: {name}")
-          
-              depth = 0
-              card_end = None
-              for match in re.finditer(r'<div\b|</div>', nos[card_start:]):
-                  if match.group(0).startswith("<div"):
-                      depth += 1
-                  else:
-                      depth -= 1
-                      if depth == 0:
-                          card_end = card_start + match.end()
-                          break
-          
-              if card_end is None:
-                  raise SystemExit(f"Falta cierre de tarjeta: {name}")
-          
-              card = nos[card_start:card_end]
-              href = f"/es/taller/hojas/#ta-{i:02d}"
-              wrapped = f'<a href="{href}" style="display:block; color:inherit; text-decoration:none">{card}</a>'
-              nos = nos[:card_start] + wrapped + nos[card_end:]
+          sheet_names = ["La cuadrícula de nueve casillas", "Las cuatro viñetas", "El cuaderno de campo", "El mapa en blanco", "El tablero de seis casillas", "La ficha de criatura", "La hoja de colección", "La hoja de instrucciones", "La ficha de invento", "La hoja de ritmo", "La ficha de personaje", "La hoja libre"]
+          if '/es/taller/hojas/#ta-12' not in nos:
+              for i, name in enumerate(sheet_names, 1):
+                  needle = f'<span class="sc-interp">{name}</span>'
+                  pos = nos.find(needle)
+                  if pos == -1:
+                      raise SystemExit(f"Falta tarjeta sin JS: {name}")
+                  card_start = nos.rfind('<div data-dc-tpl="128"', 0, pos)
+                  if card_start == -1:
+                      raise SystemExit(f"Falta inicio de tarjeta: {name}")
+                  depth = 0
+                  card_end = None
+                  for match in re.finditer(r'<div\b|</div>', nos[card_start:]):
+                      if match.group(0).startswith("<div"):
+                          depth += 1
+                      else:
+                          depth -= 1
+                          if depth == 0:
+                              card_end = card_start + match.end()
+                              break
+                  if card_end is None:
+                      raise SystemExit(f"Falta cierre de tarjeta: {name}")
+                  card = nos[card_start:card_end]
+                  href = f"/es/taller/hojas/#ta-{i:02d}"
+                  nos = nos[:card_start] + f'<a href="{href}" style="display:block; color:inherit; text-decoration:none">{card}</a>' + nos[card_end:]
           
           s = s[:start] + nos + s[end:]
           path.write_text(s, encoding="utf-8")
+          
+          payload = "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"
+          out = gzip.decompress(base64.b64decode(payload))
+          Path("es/taller/hojas").mkdir(parents=True, exist_ok=True)
+          Path("es/taller/hojas/index.html").write_bytes(out)
+          
+          if Path("es/taller/hojas/index.html").stat().st_size != 30230:
+              raise SystemExit("La página de hojas no coincide con el ZIP")
+          if '/es/taller/hojas/#ta-12' not in path.read_text(encoding="utf-8"):
+              raise SystemExit("No quedó enlazada la hoja 12")
           PY
-      - name: Guardar en main
+      - name: Guardar en una rama para revisión
         run: |
           git config user.name "Iris Green Web"
           git config user.email "actions@users.noreply.github.com"
-          git add es/taller/index.html
-          git commit -m "Enlazar las hojas imprimibles del taller"
-          git push origin HEAD:main
+          git add es/taller/index.html es/taller/hojas/index.html
+          git commit -m "Publicar las hojas imprimibles del taller"
+          git push origin HEAD:refs/heads/taller-hojas-20260913
