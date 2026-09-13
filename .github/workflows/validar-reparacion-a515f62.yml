@@ -1,0 +1,79 @@
+name: Validar reparación desde a515f62
+on:
+  pull_request:
+    branches: [repair-base/a515f62-validation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Congelar alcance visual
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$BASE_SHA...$HEAD_SHA" | tee /tmp/repair-files.txt
+          if grep -E '^(assets/.*\.(css|woff2?|ttf|otf)|es/.*\.html|en/.*\.html|img/|audio/)' /tmp/repair-files.txt; then
+            echo 'La reparación intenta modificar presentación o contenido visible fuera del alcance.' >&2
+            exit 1
+          fi
+      - name: Preparar Chromium y axe-core
+        run: |
+          python3 -m venv /tmp/ig-validate
+          /tmp/ig-validate/bin/pip -q install playwright==1.55.0
+          /tmp/ig-validate/bin/python -m playwright install --with-deps chromium >/tmp/ig-playwright-install.log 2>&1
+          npm install --no-save --ignore-scripts axe-core@4.13.0
+      - name: Construir una sola vez
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          python3 scripts/build_site.py
+          git diff --exit-code
+      - name: Comprobar publicación, plantillas, CSP y SEO
+        run: |
+          set -euo pipefail
+          python3 scripts/audit_template_runtime_scope.py --root dist
+          python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 0
+          python3 scripts/check_csp_eval_scope.py --root dist
+          python3 scripts/audit_security_headers.py --root dist
+          python3 scripts/audit_seo_idiomas.py --root dist
+          python3 scripts/audit_table_semantics.py --root dist
+      - name: Probar CSP, 24 interfaces y vídeos
+        run: |
+          set -euo pipefail
+          cd dist
+          /tmp/ig-validate/bin/python ../scripts/test_dc_runtime_csp.py
+          /tmp/ig-validate/bin/python ../scripts/test_csp_runtime.py
+          /tmp/ig-validate/bin/python ../scripts/test_video_layout_stability.py
+      - name: Auditar WCAG 2.2 con axe-core
+        run: /tmp/ig-validate/bin/python scripts/audit_axe_wcag.py --root dist --axe node_modules/axe-core/axe.min.js
+      - name: Reflow, zoom, texto, orientación y teclado
+        run: |
+          set -euo pipefail
+          cd dist
+          /tmp/ig-validate/bin/python ../scripts/test_wcag_browser_v2.py
+          /tmp/ig-validate/bin/python ../scripts/test_wcag_orientation.py
+          /tmp/ig-validate/bin/python ../scripts/test_keyboard_flows.py
+          /tmp/ig-validate/bin/python ../scripts/audit_target_size.py
+          /tmp/ig-validate/bin/python ../scripts/audit_nontext_contrast.py
+          /tmp/ig-validate/bin/python ../scripts/audit_autoplay_motion.py
+          /tmp/ig-validate/bin/python ../scripts/audit_focus_not_obscured.py
+      - name: Informe adicional de zoom y foco
+        if: always()
+        run: /tmp/ig-validate/bin/python scripts/test_zoom_keyboard_focus.py --root dist --out dist/reports/accessibility/zoom-keyboard-focus.json || true
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reparacion-a515f62-informes
+          path: |
+            dist/reports
+            /tmp/repair-files.txt
+          retention-days: 14
