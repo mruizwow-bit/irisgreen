@@ -72,7 +72,9 @@ jobs:
         run: python3 scripts/audit_sin_js.py --root dist
       - name: Auditoría global de accesibilidad estructural
         if: ${{ !cancelled() }}
-        run: python3 scripts/audit_accesibilidad.py --root dist
+        run: |
+          python3 scripts/test_audit_accesibilidad_refs.py
+          python3 scripts/audit_accesibilidad.py --root dist
       - name: Auditar estructura documental de Datos
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_datos_documental.py --root dist
