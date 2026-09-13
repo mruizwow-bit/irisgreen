@@ -78,7 +78,7 @@ def ensure_skip_link(text: str, path: Path) -> tuple[str, bool]:
         if not body:
             raise ValueError(f"HTML sin <body> tras preparar salto: {path}")
     label = "Skip to content" if HTML_LANG_EN.search(text) else "Ir al contenido"
-    link = f'<a class="skip" href="#main">{label}</a>'
+    link = f'<a class="skip ig-skip" href="#main">{label}</a>'
     text = text[:body.end()] + "\n" + link + text[body.end():]
     return text, True
 
