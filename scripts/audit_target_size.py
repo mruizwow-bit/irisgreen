@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inventario reproducible para WCAG 2.2 SC 2.5.8 Target Size (Minimum).
+"""Guardarraíl reproducible para WCAG 2.2 SC 2.5.8 Target Size (Minimum).
 
 Mide objetivos interactivos visibles en una muestra representativa de rutas, en
 escritorio y móvil. Clasifica automáticamente:
@@ -9,8 +9,9 @@ escritorio y móvil. Clasifica automáticamente:
 - excepción Spacing usando el círculo de 24 CSS px descrito por W3C.
 
 Los casos restantes se marcan para revisión manual porque las excepciones
-Equivalent y Essential no pueden inferirse con seguridad desde el DOM.
-Esta primera versión informa; no bloquea el build por candidatos.
+Equivalent y Essential no pueden inferirse con seguridad desde el DOM. El baseline
+actual es cero candidatos: cualquier candidato futuro detiene CI para revisión
+explícita, sin etiquetarlo automáticamente como incumplimiento WCAG.
 """
 from __future__ import annotations
 
@@ -165,4 +166,6 @@ report['summary']={
 (OUT/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report['summary'],ensure_ascii=False))
 if report['summary']['page_errors']:
-    raise SystemExit(1)
+    raise SystemExit('La auditoría encontró errores de JavaScript en las rutas medidas')
+if report['summary']['manual_candidates']:
+    raise SystemExit('Aparecieron objetivos que requieren revisión explícita de las excepciones Equivalent/Essential')
