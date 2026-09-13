@@ -1,0 +1,116 @@
+name: Aplicar hojas del taller (temporal)
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/aplicar-hojas-taller-temporal.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Aplicar cambios del taller sin pisar la página actual
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64, re
+
+          path = Path("es/taller/index.html")
+          s = path.read_text(encoding="utf-8")
+
+          def replace_once(old, new, label):
+              global s
+              n = s.count(old)
+              if n != 1:
+                  raise SystemExit(f"{label}: se esperaba 1 coincidencia y hay {n}")
+              s = s.replace(old, new, 1)
+
+          replace_once(
+              'soon: "Lista para imprimir", openSheets:',
+              'sheetAction: "Abrir e imprimir", openSheets:',
+              "texto ES de hojas"
+          )
+          replace_once(
+              'soon: "Ready to print", openSheets:',
+              'sheetAction: "Open and print", openSheets:',
+              "texto EN de hojas"
+          )
+          replace_once(
+              '<a href="/es/taller/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">',
+              '<a href="/es/taller/hojas/" style="display: inline-flex; align-items: center; gap: 9px; background: #17395c; color: #fff; border-radius: 999px; padding: 12px 20px; font-size: 16px; margin-bottom: 18px; text-decoration: none;">',
+              "botón de hojas"
+          )
+          replace_once(
+              '      sheets: T.sheets.map((name) => ({ name, state: T.soon })),',
+              '      sheets: T.sheets.map((name, n) => ({ name, state: T.sheetAction, href: "/es/taller/hojas/#ta-" + String(n + 1).padStart(2, "0") })),',
+              "datos de tarjetas"
+          )
+
+          old_cards = '''        <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
+          <div style="background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px;">
+            <div style="font-size: 16.5px;">{{ s.name }}</div>
+            <div style="font-size: 14px; color: #5d6779;">{{ s.state }}</div>
+          </div>
+        </sc-for>'''
+          new_cards = '''        <sc-for list="{{ sheets }}" as="s" hint-placeholder-count="12">
+          <a href="{{ s.href }}" style="display: flex; flex-direction: column; gap: 5px; background: rgba(255,255,255,0.8); border: 1px solid rgba(23,57,92,0.1); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: #17395c;">
+            <span style="font-size: 16.5px;">{{ s.name }}</span>
+            <span style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: #1f5f8b;">
+              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path></svg>
+              {{ s.state }}
+            </span>
+          </a>
+        </sc-for>'''
+          replace_once(old_cards, new_cards, "tarjetas dinámicas")
+
+          start = s.find("<!-- ig-sin-js:start -->")
+          end = s.find("<!-- ig-sin-js:end -->")
+          if start < 0 or end < 0 or end <= start:
+              raise SystemExit("No se encontró el bloque sin JavaScript")
+          nos = s[start:end]
+          if nos.count('data-dc-tpl="123" href="/es/taller/"') != 1:
+              raise SystemExit("El botón sin JS no tiene la forma esperada")
+          nos = nos.replace('data-dc-tpl="123" href="/es/taller/"',
+                            'data-dc-tpl="123" href="/es/taller/hojas/"', 1)
+          status_old = '<span class="sc-interp">Lista para imprimir</span>'
+          if nos.count(status_old) != 12:
+              raise SystemExit(f"Se esperaban 12 estados sin JS y hay {nos.count(status_old)}")
+          nos = nos.replace(status_old, '<span class="sc-interp">Abrir e imprimir</span>')
+
+          sheet_names = ["La cuadrícula de nueve casillas", "Las cuatro viñetas", "El cuaderno de campo", "El mapa en blanco", "El tablero de seis casillas", "La ficha de criatura", "La hoja de colección", "La hoja de instrucciones", "La ficha de invento", "La hoja de ritmo", "La ficha de personaje", "La hoja libre"]
+          for i, name in enumerate(sheet_names, 1):
+              needle = f'<span class="sc-interp">{name}</span>'
+              pos = nos.find(needle)
+              if pos < 0:
+                  raise SystemExit(f"No se encontró la tarjeta sin JS: {name}")
+              card_start = nos.rfind('<div data-dc-tpl="128"', 0, pos)
+              if card_start < 0:
+                  raise SystemExit(f"No se encontró el inicio de la tarjeta: {name}")
+              depth = 0
+              card_end = None
+              for m in re.finditer(r'<div\b|</div>', nos[card_start:]):
+                  if m.group(0).startswith('<div'):
+                      depth += 1
+                  else:
+                      depth -= 1
+                      if depth == 0:
+                          card_end = card_start + m.end()
+                          break
+              if card_end is None:
+                  raise SystemExit(f"No se encontró el cierre de la tarjeta: {name}")
+              card = nos[card_start:card_end]
+              href = f'/es/taller/hojas/#ta-{i:02d}'
+              wrapped = f'<a href="{href}" style="display:block; color:inherit; text-decoration:none">{card}</a>'
+              nos = nos[:card_start] + wrapped + nos[card_end:]
+
+          s = s[:start] + nos + s[end:]
+          path.write_text(s, encoding="utf-8")
+
+          hojas = base64.b64decode("PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVzIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIj4KPHRpdGxlPkhvamFzIHBhcmEgaW1wcmltaXIgwrcgSXJpcyBHcmVlbjwvdGl0bGU+CjxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSJEb2NlIGhvamFzIEE0IGVuIGJsYW5jbyBwYXJhIGxvcyByZXRvcyBkZWwgVGFsbGVyIGRlIElyaXMgR3JlZW4uIEluY2x1eWUgaG9qYXMgZGUgY3VhZHLDrWN1bGEsIHZpw7FldGFzLCBtYXBhLCB0YWJsZXJvLCBmaWNoYXMgZGUgY3JlYXR1cmEsIGNvbGVjY2nDs24sIGluc3RydWNjaW9uZXMsIGludmVudG8sIHJpdG1vLCBwZXJzb25hamUgeSBob2phIGxpYnJlLiI+CjxtZXRhIG5hbWU9InRoZW1lLWNvbG9yIiBjb250ZW50PSIjZjZmOGZiIj4KPGxpbmsgcmVsPSJwcmVjb25uZWN0IiBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tIj4KPGxpbmsgcmVsPSJwcmVjb25uZWN0IiBocmVmPSJodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tIiBjcm9zc29yaWdpbj4KPGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1BdGtpbnNvbitIeXBlcmxlZ2libGU6d2dodEA0MDA7NzAwJmZhbWlseT1OZXdzcmVhZGVyOm9wc3osd2dodEA2Li43Miw0MDA7Ni4uNzIsNjAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0Ij4KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvYXNzZXRzL2FqdXN0ZXMtaW50ZXJmYXouY3NzIj4KPHN0eWxlPgogIDpyb290ewogICAgLS1pbms6IzE3Mzk1YzsKICAgIC0tbXV0ZWQ6IzVhNjY3NTsKICAgIC0tYmx1ZTojMWY1ZjhiOwogICAgLS1saWxhOiM1YTQ5YTg7CiAgICAtLXBpbms6I2YwYjNjZTsKICAgIC0tbGluZTojZGVlNmYwOwogICAgLS1zb2Z0OiNmNmY4ZmI7CiAgICAtLXBhZ2U6I2ZmZmZmZjsKICB9CiAgKXtib3gtc2l6aW5nOmJvcmRlci1ib3h9CiAgaHRtbHtmb250LWZhbWlseTonQXRraW5zb24gSHlwZXJsZWdpYmxlJyxBcmlhbCxzYW5zLXNlcmlmO2NvbG9yOnZhcigtLWluayk7YmFja2dyb3VuZDp2YXIoLS1zb2Z0KX0KICBib2R5e21hcmdpbjowO2JhY2tncm91bmQ6CiAgICByYWRpYWwtZ3JhZGllbnQoMTIwJSA4MCUgYXQgODglIC04JSxyZ2JhKDI0MCwxNzksMjA2LC40MiksdHJhbnNwYXJlbnQgNjAlKSwKICAgIHJhZGlhbC1ncmFkaWVudCgxMDAlIDcwJSBhdCA0JSA4JSxyZ2JhKDE1MCwxMzMsMjE0LC4zKSx0cmFuc3BhcmVudCA2MiUpLAogICAgcmFkaWFsLWdyYWRpZW50KDEyMCUgOTAlIGF0IDYwJSAxMDQlLHJnYmEoMTIwLDE3NSwyMTQsLjMyKSx0cmFuc3BhcmVudCA2NiUpLAogICAgI2ZmZn0KICBhIHRleHQtZGVjb3JhdGlvbjp0aGlja25lc3MgZnJvbSBmb250fQogIC53cmFwe21heC13aWR0aDoxMTgwcHg7bWFyZ2luOjAgYXV0bztwYWRkaW5nOjM2cHggMjRweCA2MHB4fQogIC5oZWFke2Rpc3BsYXk6ZmxleDtnYXA6MjBweDthbGlnbi1pdGVtczpmbGV4LXN0YXJ0O2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2ZsZXgtd3JhcDp3cmFwO21hcmdpbi1ib3R0b206MjRweH0KICAuaGVhZCBhe2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo4cHg7Y29sb3I6dmFyKC0tYmx1ZSk7dGV4dC1kZWNvcmF0aW9uOm5vbmU7Zm9udC13ZWlnaHQ6NzAwfQogICBoMXtmb250LWZhbWlseTonTmV3c3JlYWRlcicsR2VvcmdpYSxzZXJpZjttYXJnaW46MDtmb250LXdlaWdodDo0MDA7Zm9udC1zaXplOmNsYW1wKDM2cHgsNnZ3LDY0cHgpO2xpbmUtaGVpZ2h0OjF9CiAgLnN1YnttYXJnaW46MThweCAwIDA7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQtc2l6ZToxN3B4O21heC13aWR0aDo3MGVtfQogIC50b29sc3tkaXNwbGF5OmZsZXg7Z2FwOjEycHg7ZmxleC13cmFwOndyYXA7bWFyZ2luOjIycHggMCAzMHB4fQogIC5idG57Ym9yZGVyOjEpxIHNvbGlkIHJnYmEoMjMsNTcsOTIsLjE4KTtiYWNrZ3JvdW5kOiNmZmY7Y29sb3I6dmFyKC0taW5rKTtib3JkZXItcmFkaXVzOjk5OXB4O3BhZGRpbmc6MTFweCAxNnB4O2ZvbnQ6aW5oZXJpdDtmb250LXdlaWdodDo3MDA7Y3Vyc29yOnBvaW50ZXJ9CiAgLmJ0bjo6aG92ZXJ7YmFja2dyb3VuZDojZjZmOGZifQogIC5idG4tcHJpbWFyeXtiYWNrZ3JvdW5kOnZhcigtLWluayk7Y29sb3I6I2ZmZjtib3JkZXItY29sb3I6dmFyKC0taW5rKX0KICAuYnRuLXByaW1hcnk6aG92ZXJ7YmFja2dyb3VuZDojMWY0ZjczfQogIC5ncmlke2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDI0LG1pbm1heCgwLDFmcikpO2dhcDoyMHB4fQogIC5jYXJke2dyaWQtY29sdW1uOnNwYW4gMTI7YmFja2dyb3VuZDpyZ2JhKDI1NSwyNTUsMjU1LC44Nik7Ym9yZGVyOjFweCBzb2xpZCByZ2JhKDIzLDU3LDkyLC4xMik7Ym9yZGVyLXJhZGl1czoyMHB4O3BhZGRpbmc6MjBweDtib3gtc2hhZG93OjAgMTRweCAzNnB4IHJnYmEoMjMsNTcsOTIsLjA4KTtkaXNwbGF5OmdyaWQ7Z2FwOjE0cHg7YnJlYWstaW5zaWRlOmF2b2lkfQogIC5jYXJkIGgye2ZvbnQtZmFtaWx5OidOZXdzcmVhZGVyJyxHZW9yZ2lhLHNlcmlmO2ZvbnQtc2l6ZToyNnB4O2ZvbnQtd2VpZ2h0OjQwMDttYXJnaW46MH0KICAuY2FyZCAuc2hvcnR7bWFyZ2luOjA7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQtc2l6ZToxNXB4fQogIC5zaGVldHtiYWNrZ3JvdW5kOiNmZmY7Ym9yZGVyOjFweCBzb2xpZCAjY2ZkYWU3O2JvcmRlci1yYWRpdXM6MTRweDtwYWRkaW5nOjE2cHg7bWluLWhlaWdodDo0NDBweDtkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1yb3dzOmF1dG8gMWZyIGF1dG87Z2FwOjEycHg7b3ZlcmZsb3c6aGlkZGVufQogIC5zaGVldCAuaGVhZHtkaXNwbGF5OmZsZXg7Z2FwOjEycHg7YWxpZ24taXRlbXM6ZmxleC1zdGFydDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbixtYXJnaW4tYm90dG9tOjZweH0KICAuc2hlZXQgLm51bXtkaXNwbGF5OmlubGluZS1mbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ7d2lkdGg6MzRweDtoZWlnaHQ6MzRweDtib3JkZXItcmFkaXVzOjk5OXB4O2JhY2tncm91bmQ6cmdiYSgxNTAsMTMzLDIxNCwuMTQpO2NvbG9yOnZhcigtLWxpbGEpO2ZvbnQtd2VpZ2h0OjcwMDtmbGV4Om5vbmV9CiAgLnNoZWV0IC5kZXNjeyBtYXJnaW46NHB4IDAgMDtjb2xvcjp2YXIoLS1tdXRlZCk7Zm9udC1zaXplOjE0LjVweH0KICAuc2hlZXQgLmZvb3R7ZGlzcGxheTpmbGV4O2dhcDo4cHg7ZmxleC13cmFwOndyYXAiPgo=
