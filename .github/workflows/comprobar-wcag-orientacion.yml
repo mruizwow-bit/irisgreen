@@ -1,0 +1,30 @@
+name: Comprobar WCAG orientación
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  orientacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-orientation
+          /tmp/ig-orientation/bin/pip -q install playwright==1.55.0
+          /tmp/ig-orientation/bin/python -m playwright install --with-deps chromium >/tmp/ig-orientation-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Probar portrait y landscape
+        run: |
+          cd dist
+          /tmp/ig-orientation/bin/python ../scripts/test_wcag_orientation.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-orientation
+          path: dist/reports/wcag-orientation
+          retention-days: 14
