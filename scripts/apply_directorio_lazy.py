@@ -2,8 +2,9 @@
 """Optimiza la primera carga del Directorio sin cambiar su contenido editorial.
 
 España ya está disponible en IG_INITIAL. El JSON completo se solicita una sola vez
-cuando la persona elige otro país. Además, se reserva la altura inicial del componente
-antes de que arranque el runtime para evitar desplazar la página durante la hidratación.
+cuando la persona elige otro país. Las tres tipografías usadas en la primera pantalla
+se precargan para que Lighthouse no tenga que sustituir la fuente de reserva después
+de pintar un documento muy largo, causa comprobada del CLS del Directorio.
 Este guion se ejecuta únicamente dentro del staging desechable del build.
 """
 from __future__ import annotations
@@ -14,9 +15,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / 'es/tramites/directorio/index.html'
 MARKER = 'ig-directory-lazy-v1'
+FONT_MARKER = 'ig-directory-font-preload'
 
-DC_HIDDEN = '<style>x-dc{display:none!important}</style>'
-DC_RESERVED = '<style id="ig-directory-layout-reservation">x-dc{display:block!important;height:100vh!important;min-height:100vh!important;overflow:hidden!important;visibility:hidden!important}</style>'
+FONT_PRELOADS = '''<link rel="preload" href="/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin data-ig-directory-font-preload>
+<link rel="preload" href="/assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin data-ig-directory-font-preload>
+<link rel="preload" href="/assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin data-ig-directory-font-preload>
+'''
 
 EAGER = '''    fetch("tramites-datos.json")
       .then((r) => r.json())
@@ -73,17 +77,28 @@ def replace_count_block(text: str) -> str:
     return text
 
 
+def add_font_preloads(text: str) -> str:
+    if FONT_MARKER in text:
+        if text.count('data-ig-directory-font-preload') != 3:
+            raise AssertionError('La precarga de tipografías del Directorio está incompleta')
+        return text
+    anchor = '<meta charset="utf-8">\n'
+    if text.count(anchor) != 1:
+        raise ValueError(f'cabecera para precarga: se esperaba una aparición y hay {text.count(anchor)}')
+    return text.replace(anchor, anchor + FONT_PRELOADS, 1)
+
+
 def main() -> None:
     text = PAGE.read_text(encoding='utf-8')
     original = text
-    text = replace_once(text, DC_HIDDEN, DC_RESERVED, 'reserva de espacio inicial')
+    text = add_font_preloads(text)
 
     if MARKER in text:
-        if text.count('fetch("tramites-datos.json")') != 1 or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text or DC_RESERVED not in text:
-            raise AssertionError('La optimización del Directorio está incompleta')
+        if text.count('fetch("tramites-datos.json")') != 1 or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text:
+            raise AssertionError('La carga perezosa del Directorio está incompleta')
         if text != original:
             PAGE.write_text(text, encoding='utf-8')
-        print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'reserva_layout': True, 'ya_aplicada': True})
+        print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'precargas_fuente': 3, 'ya_aplicada': True})
         return
 
     text = replace_once(
@@ -108,10 +123,12 @@ def main() -> None:
 
     if text.count('fetch("tramites-datos.json")') != 1:
         raise AssertionError('Debe quedar una única descarga, dentro de loadAllData')
-    if MARKER not in text or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text or DC_RESERVED not in text:
-        raise AssertionError('No se ha completado la optimización del Directorio')
+    if MARKER not in text or 'pick: () => this.pickCountry(code)' not in text or COUNT_BLOCK not in text:
+        raise AssertionError('No se ha completado la carga perezosa')
+    if text.count('data-ig-directory-font-preload') != 3:
+        raise AssertionError('Deben quedar tres precargas de tipografías críticas')
     PAGE.write_text(text, encoding='utf-8')
-    print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'reserva_layout': True, 'descarga_inicial_completa': False})
+    print({'pagina': str(PAGE.relative_to(ROOT)), 'carga_perezosa': True, 'precargas_fuente': 3, 'descarga_inicial_completa': False})
 
 
 if __name__ == '__main__':
