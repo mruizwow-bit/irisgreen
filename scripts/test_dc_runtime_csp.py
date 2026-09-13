@@ -5,8 +5,11 @@ Descubre las páginas por la referencia al runtime CSP-safe, las sirve con la ca
 real de ``_headers`` y exige que el componente monte, muestre un h1 legible, no deje
 plantillas sin resolver ni errores de lógica. Cuando existe un botón dentro de main,
 activa uno para comprobar que la clase precompilada responde a una interacción básica.
-La portada se prueba aparte porque el build la sustituye por la plantilla de navegación
-aprobada: Música debe abrir su reproductor y Escuchar solicitar una pista de ``/audio/``.
+
+Música se prueba como contrato de navegador en dos superficies históricas: la portada
+y Condiciones. El panel debe abrir, Escuchar debe recibir una respuesta de audio local
+y el elemento debe entrar realmente en estado de reproducción, no limitarse a pedir
+el fichero.
 """
 from __future__ import annotations
 
@@ -20,6 +23,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path.cwd().resolve()
 SAFE_RUNTIME = "/assets/runtime/dc-runtime-csp.js"
+MUSIC_ROUTES = ("/", "/es/neurodiversidad/condiciones/")
 
 
 def global_csp() -> str:
@@ -56,7 +60,7 @@ def server(csp: str):
     return httpd, f"http://127.0.0.1:{httpd.server_port}"
 
 
-def check_home_music(browser, base: str) -> dict:
+def check_music(browser, base: str, route: str) -> dict:
     page = browser.new_page(viewport={"width": 1280, "height": 900})
     page.set_default_timeout(15000)
     page_errors: list[str] = []
@@ -69,22 +73,42 @@ def check_home_music(browser, base: str) -> dict:
         else None,
     )
     try:
-        page.goto(base + "/", wait_until="domcontentloaded")
-        music = page.locator("[data-ig-music]:visible, .ig-uh-music:visible").first
+        page.goto(base + route, wait_until="domcontentloaded")
+        music = page.locator("#plBtn:visible, .ig-uh-music:visible, [data-ig-music]:visible").first
         if not music.count():
-            raise AssertionError("no existe el botón visible de Música en la portada publicada")
+            raise AssertionError("no existe un botón visible de Música")
         music.click()
         panel = page.locator("#ig-music-panel")
         panel.wait_for(state="visible")
         play = panel.locator(".ig-m-play")
-        with page.expect_request(
-            lambda request: "/audio/" in request.url,
+        with page.expect_response(
+            lambda response: "/audio/" in response.url,
             timeout=10000,
-        ) as audio_request:
+        ) as audio_response:
             play.click()
-        audio_url = audio_request.value.url
+        response = audio_response.value
+        audio_url = response.url
         if not re.search(r"/audio/[^/?]+\.(?:mp3|m4a)(?:\?|$)", audio_url, re.I):
             raise AssertionError(f"Música solicita una URL inesperada: {audio_url}")
+        if not (200 <= response.status < 300):
+            raise AssertionError(f"El audio responde HTTP {response.status}: {audio_url}")
+        content_type = response.headers.get("content-type", "")
+        if not content_type.lower().startswith("audio/"):
+            raise AssertionError(f"Tipo MIME de audio inesperado: {content_type!r}")
+
+        # La petición HTTP por sí sola no demuestra reproducción. musica.js cambia
+        # el texto a Pausa/ Pause únicamente cuando el elemento <audio> emite play.
+        page.wait_for_function(
+            """() => {
+              const b = document.querySelector('#ig-music-panel .ig-m-play');
+              return b && /^(Pausa|Pause)$/.test((b.textContent || '').trim());
+            }""",
+            timeout=5000,
+        )
+        status_text = panel.locator(".ig-m-status").inner_text().strip()
+        if status_text:
+            raise AssertionError(f"El reproductor muestra error: {status_text}")
+
         if page_errors:
             raise AssertionError("pageerror: " + " | ".join(page_errors[:4]))
         bad_console = [
@@ -93,7 +117,14 @@ def check_home_music(browser, base: str) -> dict:
         ]
         if bad_console:
             raise AssertionError("console: " + " | ".join(bad_console[:4]))
-        return {"panel": True, "audio_url": audio_url}
+        return {
+            "route": route,
+            "panel": True,
+            "playing": True,
+            "audio_status": response.status,
+            "content_type": content_type,
+            "audio_url": audio_url,
+        }
     finally:
         page.close()
 
@@ -116,14 +147,15 @@ def main() -> None:
     httpd, base = server(csp)
     failures: list[str] = []
     checked = []
-    music_result = None
+    music_results = []
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch()
-            try:
-                music_result = check_home_music(browser, base)
-            except Exception as exc:
-                failures.append(f"/: Música: {exc}")
+            for route in MUSIC_ROUTES:
+                try:
+                    music_results.append(check_music(browser, base, route))
+                except Exception as exc:
+                    failures.append(f"{route}: Música: {exc}")
 
             for path, route in pages:
                 page = browser.new_page(viewport={"width": 1280, "height": 900})
@@ -180,13 +212,13 @@ def main() -> None:
 
     if failures:
         raise AssertionError("Fallos CSP/browser:\n" + "\n".join(failures[:30]))
-    if not music_result:
-        raise AssertionError("La portada no completó la prueba de Música")
+    if len(music_results) != len(MUSIC_ROUTES):
+        raise AssertionError("No se completaron todas las pruebas de Música")
     print({
         "pages_checked": len(checked),
         "unsafe_eval": False,
         "raw_templates_visible": 0,
-        "music": music_result,
+        "music": music_results,
         "pages_with_basic_interaction": sum(x["interaction"] for x in checked),
         "routes": [x["route"] for x in checked],
     })
