@@ -126,6 +126,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_video_external_links.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Metadatos finales: no inventa traducciones; usa solo parejas y textos ya existentes.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_seo_metadata.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Las 24 páginas DC publican su lógica como JavaScript propio; el runtime deja de
+    # recibir código en texto y ya no necesita evaluarlo dinámicamente.
+    subprocess.run([sys.executable,str(ROOT/'scripts/externalize_dc_logic.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
