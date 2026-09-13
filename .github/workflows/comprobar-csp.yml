@@ -23,10 +23,10 @@ jobs:
       - name: Exigir HTML sin expresiones de plantilla
         run: python3 scripts/audit_runtime_templates.py --root dist --fail-on-placeholders
       - name: Inventariar dependencias de la política
-        run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 4
+        run: python3 scripts/audit_csp_dependencies.py --root dist --max-eval-like 0
       - name: Comprobar cabeceras de seguridad
         run: python3 scripts/audit_security_headers.py --root dist
-      - name: Acotar código dinámico residual del runtime
+      - name: Prohibir eval y new Function
         run: python3 scripts/check_csp_eval_scope.py --root dist
       - name: Probar las páginas DC y la CSP real en navegador
         run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_csp_runtime.py
