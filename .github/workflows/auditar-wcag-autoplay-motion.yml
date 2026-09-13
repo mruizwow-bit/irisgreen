@@ -1,0 +1,30 @@
+name: Auditar WCAG audio y movimiento
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  autoplay-motion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-motion
+          /tmp/ig-motion/bin/pip -q install playwright==1.55.0
+          /tmp/ig-motion/bin/python -m playwright install --with-deps chromium >/tmp/ig-motion-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Comprobar audio automático y movimiento persistente
+        run: |
+          cd dist
+          /tmp/ig-motion/bin/python ../scripts/audit_autoplay_motion.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wcag-autoplay-motion
+          path: dist/reports/wcag-autoplay-motion
+          retention-days: 14
