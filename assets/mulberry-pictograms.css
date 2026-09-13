@@ -1,0 +1,28 @@
+/* Mulberry acompaña al texto; no lo sustituye. */
+.iris-mini-support{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+}
+.iris-mini-support>p{
+  flex:1 1 auto;
+  min-width:0;
+}
+.iris-mini-picto{
+  display:block;
+  flex:0 0 64px;
+  width:64px;
+  height:64px;
+  object-fit:contain;
+}
+.iris-mini-picto-credit{
+  margin:.68rem 0 0!important;
+  font-size:.72rem!important;
+  line-height:1.35!important;
+  color:#647288!important;
+}
+html[data-ig-contrast="on"] .iris-mini-picto-credit{color:#111!important}
+@media(max-width:360px){
+  .iris-mini-support{gap:.55rem}
+  .iris-mini-picto{flex-basis:56px;width:56px;height:56px}
+}
