@@ -1,0 +1,42 @@
+name: Ejecutar cambio final del taller
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/ejecutar-taller-temporal.yml
+
+permissions:
+  contents: write
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Ejecutar la preparación corregida
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          p = Path('.github/workflows/aplicar-hojas-taller-temporal.yml')
+          text = p.read_text(encoding='utf-8')
+          marker = '      - name: Aplicar los dos archivos del taller\n        run: |\n'
+          start = text.index(marker) + len(marker)
+          end = text.index('      - name: Guardar en una rama para revisión\n', start)
+          block = text[start:end]
+          lines = block.splitlines()
+          script = '\n'.join(line[10:] if line.startswith('          ') else line for line in lines)
+          script = script.replace('!= 30230', '!= 30287')
+          subprocess.run(['bash', '-lc', script], check=True)
+          PY
+      - name: Guardar los dos archivos en rama
+        run: |
+          git config user.name "Iris Green Web"
+          git config user.email "actions@users.noreply.github.com"
+          git add es/taller/index.html es/taller/hojas/index.html
+          git commit -m "Publicar las hojas imprimibles del taller"
+          git push origin HEAD:refs/heads/taller-hojas-20260913
