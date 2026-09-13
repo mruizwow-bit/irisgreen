@@ -30,6 +30,13 @@ DRAFT_STATUSES = {'borrador', 'draft'}
 KNOWN_CATALOG_SOURCE_GAPS = {
     12: 'Discalculia y disgrafía: por qué no damos una cifra mundial única',
 }
+# Excepción histórica congelada: la ficha 12 publica estas dos fuentes HTTPS,
+# pero datos.json todavía no las replica. Son las únicas URLs que pueden aparecer
+# solo en la publicación sin detener CI. No se consideran verificadas por esta lista.
+KNOWN_PUBLIC_ONLY_SOURCE_URLS = Counter({
+    'https://www.mdpi.com/2227-9067/11/6/623': 1,
+    'https://pmc.ncbi.nlm.nih.gov/articles/PMC13379932/': 1,
+})
 
 
 def plain(fragment: str) -> str:
@@ -240,11 +247,23 @@ def main() -> None:
             f"{catalog['registros_catalogo']} frente a {len(pages)}"
         )
 
-    # Esta comparación es informativa por ahora: detecta deriva entre el catálogo y el
-    # HTML publicado sin declarar como error una diferencia histórica hasta revisarla.
+    only_catalog = catalog_source_urls - public_source_urls
+    only_public = public_source_urls - catalog_source_urls
+    known_public_only = only_public & KNOWN_PUBLIC_ONLY_SOURCE_URLS
+    unexpected_public = only_public - KNOWN_PUBLIC_ONLY_SOURCE_URLS
+    if only_catalog or unexpected_public:
+        global_findings.append(
+            'deriva de fuentes fuera del baseline conocido: ' + json.dumps({
+                'solo_catalogo': sorted(only_catalog.elements()),
+                'solo_publicacion_inesperado': sorted(unexpected_public.elements()),
+            }, ensure_ascii=False)
+        )
+
     source_drift = {
-        'solo_catalogo': sorted((catalog_source_urls - public_source_urls).elements()),
-        'solo_publicacion': sorted((public_source_urls - catalog_source_urls).elements()),
+        'solo_catalogo': sorted(only_catalog.elements()),
+        'solo_publicacion': sorted(only_public.elements()),
+        'solo_publicacion_excepcion_conocida': sorted(known_public_only.elements()),
+        'solo_publicacion_inesperado': sorted(unexpected_public.elements()),
     }
 
     all_findings = dict(findings)
@@ -268,7 +287,8 @@ def main() -> None:
         'limite_de_esta_auditoria': (
             'Comprueba estructura, trazabilidad del estado editorial y enlaces declarados; '
             'no confirma que cada cifra reproduzca fielmente la fuente externa. Las fichas '
-            'en borrador permanecen en la cola de contraste externo.'
+            'en borrador permanecen en la cola de contraste externo. Las dos URLs de la '
+            'excepción histórica de la ficha 12 tampoco se consideran verificadas por CI.'
         ),
     }
     out = root / 'reports/publicacion'
@@ -283,6 +303,7 @@ def main() -> None:
         'pendientes_contraste_externo': len(catalog['pendientes_contraste_externo']),
         'no_borrador': len(catalog['registros_no_borrador']),
         'deriva_fuentes': len(source_drift['solo_catalogo']) + len(source_drift['solo_publicacion']),
+        'deriva_inesperada': len(source_drift['solo_catalogo']) + len(source_drift['solo_publicacion_inesperado']),
         'huecos_fuentes_catalogo_conocidos': len(catalog['huecos_fuentes_catalogo_conocidos']),
     }, ensure_ascii=False))
     if all_findings and not args.informe_solo:

@@ -1,0 +1,25 @@
+name: Comprobar carga diferida de muestras de Libros
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  libros-flipbooks-lazy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-books-lazy
+          /tmp/ig-books-lazy/bin/pip -q install playwright==1.55.0
+          /tmp/ig-books-lazy/bin/python -m playwright install --with-deps chromium >/tmp/ig-books-lazy-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Comprobar que los chunks solo cargan al hojear
+        run: |
+          python3 -m http.server 4173 --directory dist >/tmp/ig-books-server.log 2>&1 &
+          server=$!
+          trap 'kill $server 2>/dev/null || true' EXIT
+          /tmp/ig-books-lazy/bin/python scripts/test_libros_flipbooks_lazy.py
