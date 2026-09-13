@@ -93,6 +93,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Mulberry acompaña al texto solo cuando existe una asociación editorial explícita.
+    # Los pictogramas no se deducen por palabras y el texto sigue siendo principal.
+    subprocess.run([sys.executable,str(ROOT/'scripts/add_mulberry_pictograms.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris afirma públicamente que lo escrito no se guarda. El conector
     # histórico añadía persistencia local; se retira del artefacto antes de publicar.
     subprocess.run([sys.executable,str(ROOT/'scripts/remove_tarjetas_storage.py'),'--root',str(dst)],cwd=ROOT,check=True)
