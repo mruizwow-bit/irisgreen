@@ -62,6 +62,13 @@
     if (node) node.textContent = value;
   }
 
+  function ensurePanelPlacement() {
+    const composition = document.querySelector(".sabik-iris-root") || document.querySelector(".sabik-iris-composition");
+    const panel = document.querySelector(".sabik-panel");
+    if (!composition || !panel || panel.parentElement === composition) return;
+    composition.appendChild(panel);
+  }
+
   function setStatus(message, visual = "base") {
     text("#sabik-status-text", message);
     const presence = document.querySelector("#sabik-presence");
@@ -237,15 +244,16 @@
       document.body.classList.toggle("sabik-panel-collapsed", collapsed);
       button.setAttribute("aria-expanded", String(!collapsed));
       button.textContent = collapsed ? "Mostrar" : "Ocultar";
-      setStatus(collapsed ? "Sabik queda oculto. Iris Green sigue disponible." : "Sabik está disponible.");
+      setStatus(collapsed ? "Sabik queda oculto. Iris Green sigue disponible." : "Estoy aquí si quieres ayuda.");
     });
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
+    ensurePanelPlacement();
     bind();
     try {
       await loadCore();
-      renderSabikState(state.session.sabik_state, "Sabik está disponible.");
+      renderSabikState(state.session.sabik_state, "Estoy aquí si quieres ayuda.");
     } catch (error) {
       setStatus("Sabik no pudo cargar el Core.", "minimal");
       text("#sabik-notice", error.message);

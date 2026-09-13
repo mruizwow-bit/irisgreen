@@ -77,11 +77,15 @@ async function run() {
   const data = await window.NEACoreV1.loadData(DATA_PATHS);
 
   assert(
-    "V7-001 manual search remains independent from Sabik",
-    /<form[^>]+class="sabik-search"[^>]+action="\/es\/biblioteca\/"[^>]+method="get"/u.test(html) &&
-      /id="sabik-manual-search"[^>]+name="q"/u.test(html) &&
-      !pageJs.includes("#sabik-manual-search"),
-    "manual search must submit to Iris Green without Sabik JS"
+    "V7-001 real Iris Green shell remains independent from Sabik",
+    html.includes("class=\"ig-uh\"") &&
+      html.includes("class=\"ig-uh-reading\"") &&
+      html.includes("class=\"ig-uh-langs\"") &&
+      html.includes("class=\"ig-search-input\"") &&
+      html.includes("id=\"consola\"") &&
+      !pageJs.includes("ig-search-input") &&
+      !html.includes("/iris-green-logo.png"),
+    "Iris shell/search must be real ig-* UI, not Sabik JS or broken logo"
   );
 
   assert(
@@ -95,10 +99,10 @@ async function run() {
   assert(
     "V7-003 no-memory state is informational, not a persistence switch",
     html.includes("id=\"sabik-memory-note\"") &&
-      window.NEACoreV1.normalizeText(html).includes("no guarda historial en v1") &&
+      window.NEACoreV1.normalizeText(html).includes("no guarda historial entre sesiones") &&
       !html.includes("id=\"sabik-no-save\"") &&
-      !html.includes("aria-pressed"),
-    "v1 has no persistence toggle"
+      !/<button[^>]+id="sabik-[^"]*"[^>]+aria-pressed/u.test(html),
+    "no persistence toggle should be shown"
   );
 
   const baseSession = window.NEACoreV1.createSessionState();
@@ -165,9 +169,10 @@ async function run() {
     "V7-010 Sabik can be hidden while Iris Green remains available",
     html.includes("id=\"sabik-toggle\"") &&
       html.includes("aria-controls=\"sabik-widget-body\"") &&
+      html.includes("class=\"sabik-panel\"") &&
       css.includes(".sabik-panel.is-collapsed .sabik-widget-body") &&
       pageJs.includes("sabik-panel-collapsed") &&
-      html.includes("id=\"sabik-manual-search\""),
+      html.includes("class=\"ig-search-input\""),
     "collapse must affect only Sabik widget body"
   );
 

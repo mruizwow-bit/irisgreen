@@ -81,10 +81,23 @@ a:focus-visible {
   font-size: 1.55rem;
 }
 
-.sabik-brand img {
+.sabik-brand-mark {
   width: 36px;
   height: 36px;
-  object-fit: contain;
+  border: 1px solid rgba(111, 85, 217, .24);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 68% 32%, #fff 0 14%, transparent 15%),
+    radial-gradient(circle at 38% 62%, rgba(111, 85, 217, .35), transparent 38%),
+    linear-gradient(135deg, #f8f5f2, #e9f1ff);
+  color: var(--sabik-iris);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 .sabik-nav {
@@ -381,7 +394,7 @@ a:focus-visible {
 
 .sabik-widget-body {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .sabik-panel.is-collapsed {
@@ -397,12 +410,15 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-hologram {
-  width: min(100%, 300px);
+  width: min(100%, 230px);
+  height: auto;
+  max-height: 230px;
   aspect-ratio: 1;
   justify-self: center;
   display: block;
   object-fit: contain;
   filter: drop-shadow(0 18px 34px rgba(92, 91, 190, .16));
+  margin: 2px 0 0;
 }
 
 .sabik-status {
