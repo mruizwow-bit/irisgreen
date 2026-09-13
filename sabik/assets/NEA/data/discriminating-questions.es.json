@@ -1,0 +1,24 @@
+[
+  {
+    "id": "q_durante_o_despues",
+    "language": "es",
+    "concept_a": "carga_atencional",
+    "concept_b": "recuperacion_posterior",
+    "text": "Te pesa mas mientras estas alli o sobre todo al volver?",
+    "contexts_allowed": ["exploracion", "claridad"],
+    "risk_max": "medium",
+    "gender_neutral": true,
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "q_riesgo_ambiguo_demo",
+    "language": "es",
+    "concept_a": "sobrecarga_sensorial",
+    "concept_b": "riesgo_suicida",
+    "text": "Quieres decir que estas al limite, o que podrias hacerte dano?",
+    "contexts_allowed": ["riesgo_ambiguo"],
+    "risk_max": "crisis",
+    "gender_neutral": true,
+    "editorial_status": "BORRADOR"
+  }
+]

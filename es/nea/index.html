@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es" data-source-lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NEA / Sabik · Iris Green</title>
+    <meta name="description" content="Sabik es la presencia web de NEA en Iris Green. Responde desde contenido publicado, sin API externa y sin memoria persistente." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://irisgreen.eu/es/nea/" />
+    <link rel="alternate" hreflang="es" href="https://irisgreen.eu/es/nea/" />
+    <link rel="alternate" hreflang="x-default" href="https://irisgreen.eu/es/nea/" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/sabik/sabik-page.css" />
+    <meta name="theme-color" content="#f8f5f2" />
+  </head>
+  <body>
+    <div class="sabik-page">
+      <header class="sabik-top">
+        <a class="sabik-brand" href="/es/" aria-label="Iris Green">
+          <img src="/iris-green-logo.png" alt="" aria-hidden="true" />
+          <span>Iris Green</span>
+        </a>
+        <nav class="sabik-nav" aria-label="Navegación principal">
+          <a aria-current="page" href="/es/">Inicio</a>
+          <a href="/es/lectura-accesible/">Lectura</a>
+          <a href="/es/biblioteca/">Biblioteca</a>
+        </nav>
+      </header>
+
+      <main class="sabik-hero" id="main">
+        <section class="sabik-main" aria-labelledby="sabik-page-title">
+          <p class="sabik-kicker">Neurodiversidad · información y recursos</p>
+          <h1 class="sabik-title" id="sabik-page-title">Empieza por lo que te pasa</h1>
+          <p class="sabik-lead">Escribe lo que buscas o entra por una sección.</p>
+
+          <form class="sabik-search" action="/es/biblioteca/" method="get" role="search">
+            <label class="sabik-label" for="sabik-manual-search">Buscar en Iris Green</label>
+            <div class="sabik-search-row">
+              <input id="sabik-manual-search" name="q" type="search" autocomplete="off" placeholder="Por ejemplo: ruido" />
+              <button class="sabik-button primary" type="submit">Buscar</button>
+            </div>
+            <div class="sabik-examples" aria-label="Ejemplos de búsqueda">
+              <span>Por ejemplo:</span>
+              <a href="/es/biblioteca/?q=El%20ruido%20me%20agota">El ruido me agota</a>
+              <a href="/es/biblioteca/?q=Olvido%20las%20instrucciones">Olvido las instrucciones</a>
+              <a href="/es/biblioteca/?q=Ayudas">Ayudas</a>
+            </div>
+          </form>
+
+          <h2 class="sabik-section-title">Explora Iris Green</h2>
+          <div class="sabik-links" aria-label="Rutas de Iris Green">
+            <a class="featured" href="/es/situaciones/"><span><strong>Situaciones</strong><small>Lo que te pasa, explicado con ejemplos.</small></span><b aria-hidden="true">→</b></a>
+            <a class="featured rose" href="/es/situaciones/?q=vida%20diaria"><span><strong>Vida diaria</strong><small>Recursos para las tareas de cada día.</small></span><b aria-hidden="true">→</b></a>
+            <a class="featured blue" href="/es/biblioteca/?q=Ayudas"><span><strong>Ayudas</strong><small>Qué puedes pedir y dónde solicitarlo.</small></span><b aria-hidden="true">→</b></a>
+          </div>
+
+          <h2 class="sabik-subsection-title">También en Iris Green</h2>
+          <div class="sabik-grid" aria-label="Secciones de Iris Green">
+            <a href="/es/neurodiversidad/condiciones/"><span><strong>Condiciones</strong><small>Información organizada por temas.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/videos/"><span><strong>Vídeos</strong><small>Experiencias en primera persona.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/investigacion/"><span><strong>Investigación</strong><small>Estudios y explicaciones.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/biblioteca/?q=Datos"><span><strong>Datos</strong><small>Cifras para consultar.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/libros/"><span><strong>Libros</strong><small>Los libros de Iris Green.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/recursos/juegos/"><span><strong>Jugar</strong><small>Juegos y actividades.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/neurodiversidad/mapa/"><span><strong>Tus intereses</strong><small>Explora los temas que te gustan.</small></span><b aria-hidden="true">→</b></a>
+            <a href="/es/biblioteca/?q=crear"><span><strong>El taller</strong><small>Un espacio para crear.</small></span><b aria-hidden="true">→</b></a>
+            <a class="quiet" href="/es/lectura-accesible/"><span><strong>Rincón tranquilo</strong><small>Un espacio para hacer una pausa.</small></span><b aria-hidden="true">→</b></a>
+          </div>
+        </section>
+
+        <aside class="sabik-panel" aria-label="Sabik">
+          <section class="sabik-widget" aria-labelledby="sabik-widget-title">
+            <div class="sabik-widget-head">
+              <span class="sabik-presence" id="sabik-presence" data-state="base" aria-hidden="true"></span>
+              <div>
+                <div class="sabik-name-row">
+                  <h2 id="sabik-widget-title">Sabik</h2>
+                  <span>Asistente de Iris Green</span>
+                </div>
+                <p class="sabik-status" id="sabik-status-text" role="status" aria-live="polite" aria-atomic="true">Estoy aquí si quieres ayuda.</p>
+              </div>
+              <button class="sabik-icon-button" id="sabik-toggle" type="button" aria-expanded="true" aria-controls="sabik-widget-body">Ocultar</button>
+            </div>
+
+            <div class="sabik-widget-body" id="sabik-widget-body">
+              <img class="sabik-hologram" src="/sabik/sabik-hologram-v1.png" alt="" aria-hidden="true" width="1024" height="1024" />
+
+              <form id="sabik-form" class="sabik-widget-form">
+                <label class="sabik-widget-label" for="sabik-input">¿Qué necesitas?</label>
+                <textarea id="sabik-input" name="need" autocomplete="off" spellcheck="true" placeholder="Ejemplo: cuando vuelvo de comprar no puedo con nadie"></textarea>
+                <p class="sabik-memory-note" id="sabik-memory-note">No guarda historial en v1.</p>
+                <div class="sabik-actions">
+                  <button class="sabik-button primary" id="sabik-submit" type="submit">Enviar</button>
+                  <button class="sabik-button" id="sabik-low" type="button">Bajar intensidad</button>
+                  <button class="sabik-button danger" id="sabik-clear" type="button">Parar</button>
+                </div>
+              </form>
+
+              <section class="sabik-output" id="sabik-output" aria-labelledby="sabik-output-title" hidden>
+                <h3 id="sabik-output-title">Respuesta</h3>
+                <p class="sabik-answer" id="sabik-answer"></p>
+                <h4 class="sabik-source-title" id="sabik-source-title" hidden>Fuentes</h4>
+                <ul class="sabik-source-list" id="sabik-sources"></ul>
+                <p class="sabik-notice" id="sabik-notice"></p>
+                <div class="sabik-response-actions">
+                  <button class="sabik-button" id="sabik-shorter" type="button">Más corto</button>
+                  <button class="sabik-button" id="sabik-not-this" type="button">No es esto</button>
+                  <button class="sabik-button" id="sabik-other-way" type="button">Buscar por otra vía</button>
+                </div>
+              </section>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/sabik/sabik-page.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "rel_supermercado_ruido",
+    "from": "supermercado",
+    "to": "ruido",
+    "language": "es",
+    "relation_type": "can_involve",
+    "strength": 2,
+    "show_as_expansion": true,
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "rel_supermercado_carga_atencional",
+    "from": "supermercado",
+    "to": "carga_atencional",
+    "language": "es",
+    "relation_type": "can_involve",
+    "strength": 2,
+    "show_as_expansion": true,
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "rel_supermercado_decisiones",
+    "from": "supermercado",
+    "to": "decisiones",
+    "language": "es",
+    "relation_type": "can_involve",
+    "strength": 2,
+    "show_as_expansion": true,
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "rel_no_puedo_pensar_baja_demanda",
+    "from": "no_puedo_pensar",
+    "to": "baja_demanda",
+    "language": "es",
+    "relation_type": "may_help_with",
+    "strength": 3,
+    "show_as_expansion": false,
+    "editorial_status": "PUBLICABLE"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "languages": [
+    {
+      "language": "es",
+      "label": "Espanol",
+      "has_public_corpus": true,
+      "index_path": "assets/NEA/data/fragments-index.es.json",
+      "editorial_status": "PUBLICABLE"
+    },
+    {
+      "language": "en",
+      "label": "English",
+      "has_public_corpus": false,
+      "index_path": null,
+      "editorial_status": "BORRADOR"
+    },
+    {
+      "language": "fr",
+      "label": "Francais",
+      "has_public_corpus": false,
+      "index_path": null,
+      "editorial_status": "BORRADOR"
+    }
+  ]
+}
