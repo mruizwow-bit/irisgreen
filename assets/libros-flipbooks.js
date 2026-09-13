@@ -38,7 +38,7 @@
 
   var CSS = '\
 .ig-flipbook{margin-top:18px;padding:18px;border:1px solid rgba(90,73,168,.22);border-radius:18px;background:rgba(255,255,255,.82)}\
-.ig-flipbook-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 12px}.ig-flipbook-head div{min-width:0}.ig-flipbook-kicker{margin:0 0 2px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6f5fc0}.ig-flipbook-head h3{margin:0;font-family:Newsreader,Georgia,serif;font-size:24px;font-weight:500;line-height:1.15;color:#17395c}.ig-flipbook-badge{flex:0 0 auto;padding:5px 9px;border-radius:999px;background:rgba(111,95,192,.09);color:#5a49a8;font-size:12px;font-weight:700}.ig-flip-stage{position:relative;margin:0 auto;max-width:520px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;background:#f5f7fa;box-shadow:0 12px 30px -22px rgba(23,57,92,.65);outline:none;touch-action:pan-y}.ig-flip-stage:focus-visible{outline:3px solid #6f5fc0;outline-offset:3px}.ig-flip-page{display:block;width:100%;height:auto;max-height:68vh;object-fit:contain;background:#fff}.ig-flip-sprite{width:min(100%,420px);background-repeat:no-repeat;background-size:100% var(--sprite-scale);background-position:0 var(--sprite-y);aspect-ratio:var(--ratio);background-color:#fff}.ig-flip-page,.ig-flip-sprite{animation:igBookPageIn .18s ease-out}@keyframes igBookPageIn{from{opacity:.45;transform:translateX(7px)}to{opacity:1;transform:none}}.ig-flip-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}.ig-flip-controls button{width:44px;height:44px;padding:0;border-radius:999px;border:1px solid rgba(90,73,168,.35);background:#fff;color:#5a49a8;font-size:27px;line-height:1;cursor:pointer}.ig-flip-controls button:hover:not(:disabled){background:rgba(111,95,192,.07)}.ig-flip-controls button:focus-visible{outline:3px solid rgba(90,73,168,.35);outline-offset:2px}.ig-flip-controls button:disabled{opacity:.35;cursor:default}.ig-flip-counter{min-width:76px;text-align:center;font-weight:700;color:#435268;font-size:14px}.ig-flip-note{margin:11px 0 0;color:#5a6675;font-size:13px;line-height:1.45}.ig-flip-error{margin:0;padding:16px;color:#7a3857;text-align:center}.ig-flipbook[data-loading="true"] .ig-flip-stage:after{content:"";width:26px;height:26px;border:3px solid rgba(90,73,168,.18);border-top-color:#6f5fc0;border-radius:50%;animation:igBookSpin .8s linear infinite}@keyframes igBookSpin{to{transform:rotate(360deg)}}@media(max-width:640px){.ig-flipbook{padding:14px}.ig-flip-stage{max-width:100%}.ig-flip-page{max-height:62vh}.ig-flipbook-head h3{font-size:21px}}@media(prefers-reduced-motion:reduce){.ig-flip-page,.ig-flip-sprite,.ig-flipbook[data-loading="true"] .ig-flip-stage:after{animation:none!important}}';
+.ig-flipbook-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 12px}.ig-flipbook-head div{min-width:0}.ig-flipbook-kicker{margin:0 0 2px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6f5fc0}.ig-flipbook-head h3{margin:0;font-family:Newsreader,Georgia,serif;font-size:24px;font-weight:500;line-height:1.15;color:#17395c}.ig-flipbook-badge{flex:0 0 auto;padding:5px 9px;border-radius:999px;background:rgba(111,95,192,.09);color:#5a49a8;font-size:12px;font-weight:700}.ig-flip-stage{position:relative;margin:0 auto;max-width:520px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;background:#f5f7fa;box-shadow:0 12px 30px -22px rgba(23,57,92,.65);outline:none;touch-action:pan-y}.ig-flip-stage:focus-visible{outline:3px solid #6f5fc0;outline-offset:3px}.ig-flip-page{display:block;width:100%;height:auto;max-height:68vh;object-fit:contain;background:#fff}.ig-flip-sprite{width:min(100%,420px);background-repeat:no-repeat;background-size:100% var(--sprite-scale);background-position:0 var(--sprite-y);aspect-ratio:var(--ratio);background-color:#fff}.ig-flip-page,.ig-flip-sprite{animation:igBookPageIn .18s ease-out}@keyframes igBookPageIn{from{opacity:.45;transform:translateX(7px)}to{opacity:1;transform:none}}.ig-flip-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}.ig-flip-controls button{width:44px;height:44px;padding:0;border-radius:999px;border:1px solid rgba(90,73,168,.35);background:#fff;color:#5a49a8;font-size:27px;line-height:1;cursor:pointer}.ig-flip-controls button:hover:not(:disabled){background:rgba(111,95,192,.07)}.ig-flip-controls button:focus-visible{outline:3px solid rgba(90,73,168,.35);outline-offset:2px}.ig-flip-controls button:disabled{opacity:.35;cursor:default}.ig-flip-counter{min-width:76px;text-align:center;font-weight:700;color:#435268;font-size:14px}.ig-flip-note{margin:11px 0 0;color:#5a6675;font-size:13px;line-height:1.45}.ig-flip-error{margin:0;padding:16px;color:#7a3857;text-align:center}.ig-flipbook[data-loading="true"] .ig-flip-stage:after{content:"";position:absolute;width:26px;height:26px;border:3px solid rgba(90,73,168,.18);border-top-color:#6f5fc0;border-radius:50%;animation:igBookSpin .8s linear infinite}@keyframes igBookSpin{to{transform:rotate(360deg)}}@media(max-width:640px){.ig-flipbook{padding:14px}.ig-flip-stage{max-width:100%}.ig-flip-page{max-height:62vh}.ig-flipbook-head h3{font-size:21px}}@media(prefers-reduced-motion:reduce){.ig-flip-page,.ig-flip-sprite,.ig-flipbook[data-loading="true"] .ig-flip-stage:after{animation:none!important}}';
 
   var spriteCache = new Map();
   var scheduled = 0;
@@ -139,15 +139,48 @@
     section.id = book.id + '-muestra';
     section.dataset.igFlipbook = book.id;
     section.dataset.page = '0';
-    section.dataset.loading = 'true';
+    section.dataset.loading = 'false';
     section.innerHTML = '<div class="ig-flipbook-head"><div><p class="ig-flipbook-kicker">'+L.kicker+'</p><h3>'+(book.id==='luma'?L.lumaTitle:L.autismTitle)+'</h3></div><span class="ig-flipbook-badge">'+total+' '+L.pages+'</span></div><div class="ig-flip-stage" role="group" tabindex="0" aria-label="'+L.stage+'"></div><div class="ig-flip-controls"><button type="button" data-ig-flip-prev aria-label="'+L.prev+'">‹</button><span class="ig-flip-counter" aria-live="polite">1 / '+total+'</span><button type="button" data-ig-flip-next aria-label="'+L.next+'">›</button></div><p class="ig-flip-note">'+(book.id==='luma'?L.noteLuma:L.noteAutism)+'</p>';
     return section;
   }
 
-  function attachEvents(viewer, book, sprite){
+  function showLoadError(viewer, error){
+    console.error('[Iris Green flipbook]', error);
+    viewer.dataset.loading = 'false';
+    var stage = viewer.querySelector('.ig-flip-stage');
+    if (stage) stage.innerHTML = '<p class="ig-flip-error">'+labels().failed+'</p>';
+    viewer.querySelectorAll('.ig-flip-controls button').forEach(function(button){button.disabled=true;});
+  }
+
+  function attachEvents(viewer, book){
     var stage = viewer.querySelector('.ig-flip-stage');
     var startX = null;
-    function go(delta){ render(viewer, book, sprite, Number(viewer.dataset.page || 0) + delta); }
+    var sprite = null;
+    var loading = null;
+
+    function go(delta){
+      var current = Number(viewer.dataset.page || 0);
+      var target = Math.max(0, Math.min(current + delta, book.count));
+      if (target === current) return;
+      if (target === 0) {
+        render(viewer, book, sprite, 0);
+        return;
+      }
+      if (sprite) {
+        render(viewer, book, sprite, target);
+        return;
+      }
+      if (!loading) {
+        viewer.dataset.loading = 'true';
+        loading = loadSprite(book).then(function(value){
+          sprite = value;
+          viewer.dataset.loading = 'false';
+          return value;
+        });
+      }
+      loading.then(function(){ render(viewer, book, sprite, target); }).catch(function(error){ showLoadError(viewer, error); });
+    }
+
     viewer.querySelector('[data-ig-flip-prev]').addEventListener('click', function(){ go(-1); });
     viewer.querySelector('[data-ig-flip-next]').addEventListener('click', function(){ go(1); });
     stage.addEventListener('keydown', function(event){
@@ -195,17 +228,9 @@
         });
       });
     }
-    return loadSprite(book).then(function(sprite){
-      viewer.dataset.loading = 'false';
-      attachEvents(viewer, book, sprite);
-      render(viewer, book, sprite, 0);
-    }).catch(function(error){
-      console.error('[Iris Green flipbook]', error);
-      viewer.dataset.loading = 'false';
-      var stage = viewer.querySelector('.ig-flip-stage');
-      if (stage) stage.innerHTML = '<p class="ig-flip-error">'+labels().failed+'</p>';
-      viewer.querySelectorAll('.ig-flip-controls button').forEach(function(button){button.disabled=true;});
-    });
+    attachEvents(viewer, book);
+    render(viewer, book, null, 0);
+    return Promise.resolve();
   }
 
   function mount(){
