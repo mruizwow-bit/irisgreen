@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Comprueba imágenes reales locales y controles, no la reproducción remota."""
+"""Comprueba miniaturas, controles, enlace externo y reproducción diferida de Vídeos."""
 import functools,json,re,threading,traceback
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 ROOT=Path.cwd();OUT=ROOT/'reports/thumbnails';OUT.mkdir(parents=True,exist_ok=True)
 manifest=json.loads((ROOT/'assets/video-thumbnails/manifest.json').read_text())
 expected=set(manifest['requested_ids'])
-REPORT={'cases':[],'failures':[],'notes':['Pruebas en Chromium con dominios externos bloqueados.','La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.','Se recorre la videoteca como visitante; no se fuerza el estado del componente.','La portada aprobada ya no contiene videoteca; sus miniaturas se prueban únicamente en /es/videos/.']}
+REPORT={'cases':[],'failures':[],'notes':['Pruebas en Chromium con dominios externos bloqueados.','La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.','Se recorre la videoteca como visitante; no se fuerza el estado del componente.','Cada tarjeta visible debe conservar un enlace explícito al proveedor original sin cargarlo automáticamente.','La portada aprobada ya no contiene videoteca; sus miniaturas se prueban únicamente en /es/videos/.']}
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
@@ -16,6 +16,12 @@ threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://
 
 def record_failure(row,error):
     row['passed']=False;row['error']=str(error);row['traceback']=traceback.format_exc();REPORT['failures'].append(row.copy())
+
+def valid_external_href(href):
+    if not href:return False
+    p=urlsplit(href);host=(p.hostname or '').lower()
+    if p.scheme!='https':return False
+    return host=='youtu.be' or host.endswith('.youtube.com') or host=='youtube.com' or host.endswith('.vimeo.com') or host=='vimeo.com' or host.endswith('.instagram.com') or host=='instagram.com'
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch()
@@ -42,8 +48,16 @@ with sync_playwright() as pw:
                     more=area.get_by_role('button',name=re.compile('^Ver más')).last
                     if not more.count() or not more.is_visible():break
                     more.click()
+            links=area.locator('a.ig-video-external:visible');link_count=links.count()
+            assert link_count>0,'No se renderiza ningún enlace externo de respaldo'
+            for n in range(link_count):
+                link=links.nth(n);href=link.get_attribute('href');rel=(link.get_attribute('rel') or '').split()
+                assert valid_external_href(href),href
+                assert link.get_attribute('target')=='_blank'
+                assert 'noopener' in rel and 'noreferrer' in rel,rel
+                assert link.inner_text().strip(),n
             posters=area.locator('button.ig-video-poster[data-ig-video*="youtube"]')
-            count=posters.count();row['youtube_posters']=count
+            count=posters.count();row['youtube_posters']=count;row['external_fallback_links']=link_count
             if lang=='es':assert count==len(expected),(count,len(expected))
             checked=[]
             for n in range(count):
@@ -84,8 +98,9 @@ with sync_playwright() as pw:
         poster=page.locator('button.ig-video-poster[data-ig-video*="youtube"]').first;poster.scroll_into_view_if_needed()
         poster.locator('.ig-thumbnail-unavailable').wait_for(state='visible');assert blocked
         assert not poster.locator('img.ig-video-thumbnail').count()
+        assert page.locator('main a.ig-video-external:visible').first.get_attribute('href')
         poster.click();page.locator('main iframe[src*="youtube"]').first.wait_for(state='attached')
-        row.update({'passed':True,'fallback_visible':True,'play_still_works':True})
+        row.update({'passed':True,'fallback_visible':True,'external_link_preserved':True,'play_still_works':True})
     except Exception as error:record_failure(row,error)
     REPORT['cases'].append(row);context.close();browser.close()
 server.shutdown();REPORT['passed']=not REPORT['failures'];REPORT['requested_images']=len(expected)

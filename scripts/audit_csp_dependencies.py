@@ -25,6 +25,11 @@ URL_ATTRS = {
 }
 HTTP = re.compile(r'https?://[^\s\"\'<>`)]+', re.I)
 REMOTE_CALL = re.compile(r'\b(?:fetch|open|sendBeacon)\s*\(\s*[\"\'](https?://[^\"\']+)', re.I)
+VIDEO_FRAME_SOURCES = {
+    'https://www.youtube-nocookie.com',
+    'https://player.vimeo.com',
+    'https://www.instagram.com',
+}
 
 
 def origin(value: str) -> str | None:
@@ -71,8 +76,8 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
 
     La deuda ya conocida (``unsafe-inline`` y ``unsafe-eval``) puede reducirse sin
     tocar esta prueba. Lo que no puede ocurrir silenciosamente es añadir comodines,
-    orígenes de scripts, ``data:``/``blob:`` para scripts, marcos remotos o nuevas
-    palabras ``unsafe-*``.
+    orígenes de scripts, ``data:``/``blob:`` para scripts, marcos fuera de la lista
+    cerrada de proveedores de vídeo o nuevas palabras ``unsafe-*``.
     """
     policy = global_csp(root)
     directives = parse_csp(policy)
@@ -97,7 +102,6 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
         'object-src': {"'none'"},
         'base-uri': {"'self'"},
         'form-action': {"'self'"},
-        'frame-src': {"'none'"},
         'connect-src': {"'self'"},
     }
     for name, expected in fixed.items():
@@ -111,6 +115,14 @@ def validate_csp_policy(root: Path) -> tuple[str, dict[str, list[str]]]:
                 f'CSP cambia el perímetro revisado de {name}: esperado {sorted(expected)}, '
                 f'obtenido {sorted(got)}. Revisar explícitamente antes de ampliar permisos.'
             )
+
+    frame_sources = set(directives['frame-src'])
+    if frame_sources != VIDEO_FRAME_SOURCES:
+        raise AssertionError(
+            'CSP cambia los proveedores de iframe revisados: esperado '
+            f'{sorted(VIDEO_FRAME_SOURCES)}, obtenido {sorted(frame_sources)}. '
+            'Solo la videoteca puede justificar ampliar esta lista.'
+        )
 
     ancestors = set(directives['frame-ancestors'])
     if ancestors not in ({"'self'"}, {"'none'"}):
@@ -290,6 +302,7 @@ def main() -> None:
         'origenes_http_inseguros': insecure,
         'csp_publicada': policy,
         'csp_directivas': directives,
+        'proveedores_iframe_revisados': sorted(VIDEO_FRAME_SOURCES),
         'csp_deuda_conocida': {
             'script_src_unsafe_inline': "'unsafe-inline'" in directives.get('script-src', []),
             'script_src_unsafe_eval': "'unsafe-eval'" in directives.get('script-src', []),
@@ -299,7 +312,7 @@ def main() -> None:
             'No retirar unsafe-inline hasta migrar los scripts/estilos inline que este inventario contabiliza. '
             'unsafe-eval sigue siendo deuda técnica conocida del runtime: este control impide que aumente mientras se migra. '
             'La CSP queda además protegida contra comodines, nuevos permisos unsafe, fuentes de script no revisadas, '
-            'marcos remotos y ampliaciones silenciosas de connect-src. '
+            'iframes fuera de la lista cerrada de la videoteca y ampliaciones silenciosas de connect-src. '
             'Los orígenes externos listados deben revisarse antes de ampliar cualquier directiva.'
         ),
     }
