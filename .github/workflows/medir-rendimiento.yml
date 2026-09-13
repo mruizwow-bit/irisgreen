@@ -37,7 +37,7 @@ jobs:
               --output=json --output-path="/tmp/ig-lighthouse/${name}.json" \
               --only-categories=performance,accessibility,best-practices,seo --quiet
           done
-      - name: Resumir baseline
+      - name: Resumir baseline y vigilar CLS
         run: |
           python3 - <<'PY'
           import json
@@ -60,6 +60,9 @@ jobs:
               }
           Path('/tmp/ig-lighthouse/summary.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
           print(json.dumps(out,ensure_ascii=False,indent=2))
+          bad_cls={name:vals['cls'] for name,vals in out.items() if vals['cls']>0.1}
+          if bad_cls:
+              raise SystemExit('CLS por encima del umbral bueno (0,1): '+json.dumps(bad_cls,ensure_ascii=False))
           PY
       - name: Cerrar servidor
         if: always()
