@@ -99,6 +99,8 @@ def build():
     # formularios: quedan rellenas y sin edición. La herramienta personal sigue editable.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_tarjetas_iris_static.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # El placeholder ayuda visualmente, pero no sustituye un nombre accesible estable.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_search_accessible_names.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Contenedores con aria-label deben exponer un rol que soporte ese nombre.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_named_group_roles.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Lighthouse detectó contraste insuficiente en las dos etiquetas de filtro de
