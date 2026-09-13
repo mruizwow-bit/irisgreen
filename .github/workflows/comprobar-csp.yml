@@ -22,6 +22,8 @@ jobs:
         run: python3 scripts/build_site.py
       - name: Inventariar dependencias de la política
         run: python3 scripts/audit_csp_dependencies.py --root dist
+      - name: Comprobar cabeceras de seguridad
+        run: python3 scripts/audit_security_headers.py --root dist
       - name: Acotar la deuda unsafe-eval
         run: python3 scripts/check_csp_eval_scope.py --root dist
       - name: Probar la CSP real en navegador
