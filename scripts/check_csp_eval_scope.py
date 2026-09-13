@@ -2,9 +2,10 @@
 """Bloquea la expansión de eval()/new Function() fuera de su deuda conocida.
 
 La CSP pública aún conserva ``'unsafe-eval'`` por una deuda técnica ya inventariada.
-El control global existente limita el número total de usos; este segundo guardarraíl
-fija además los archivos concretos y el máximo permitido en cada uno. Reducir la deuda
-sigue estando permitido; moverla o ampliarla exige una revisión explícita.
+El control fija los archivos concretos y el máximo permitido en cada uno. La salida
+pública ya no debe incluir ``support.js``: la auditoría de alcance confirmó que no
+tenía consumidores en HTML ni JavaScript. Reducir la deuda sigue estando permitido;
+moverla o ampliarla exige una revisión explícita.
 """
 from __future__ import annotations
 
@@ -17,9 +18,9 @@ EVAL_LIKE = re.compile(r'\beval\s*\(|\bnew\s+Function\s*\(')
 ALLOWED_MAX = {
     'assets/games/dc-runtime.js': 2,
     'assets/runtime/8fe7df74405f3c55.js': 2,
-    'support.js': 2,
 }
 MAX_TOTAL = sum(ALLOWED_MAX.values())
+ORPHAN_RUNTIME = 'support.js'
 
 
 def main() -> None:
@@ -27,6 +28,19 @@ def main() -> None:
     parser.add_argument('--root', type=Path, default=Path('dist'))
     args = parser.parse_args()
     root = args.root.resolve()
+
+    if (root / ORPHAN_RUNTIME).exists():
+        raise AssertionError('support.js ha reaparecido en la salida pública; no tiene consumidores revisados')
+
+    references: list[str] = []
+    for path in sorted(list(root.rglob('*.html')) + list(root.rglob('*.js'))):
+        text = path.read_text(encoding='utf-8', errors='ignore')
+        if ORPHAN_RUNTIME in text or '/' + ORPHAN_RUNTIME in text:
+            references.append(path.relative_to(root).as_posix())
+    if references:
+        raise AssertionError(
+            'La salida pública vuelve a referenciar support.js: ' + ', '.join(references[:20])
+        )
 
     by_file: dict[str, int] = {}
     for path in sorted(root.rglob('*.js')):
@@ -50,6 +64,8 @@ def main() -> None:
         'por_archivo': by_file,
         'archivos_no_aprobados': unapproved,
         'archivos_sobre_limite': over_file_limit,
+        'support_runtime_publicado': False,
+        'referencias_support_runtime': references,
     }, ensure_ascii=False, indent=2))
 
     if total > MAX_TOTAL:
