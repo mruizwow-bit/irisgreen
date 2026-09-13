@@ -4,7 +4,6 @@
 La página conserva el fallback completo sin JavaScript. Con JavaScript activo,
 el componente carga el mismo JSON canónico después de montar la interfaz, por
 lo que el documento inicial no transporta dos copias completas de los 120 estudios.
-En la rama combinada se aplica además la optimización de layout ya validada.
 No modifica la fuente editorial ni el JSON maestro.
 """
 from __future__ import annotations
@@ -61,7 +60,7 @@ def main() -> None:
     text = text.replace(OLD_NO_RESULTS, NEW_NO_RESULTS, 1)
 
     page.write_text(text, encoding="utf-8")
-    layout_changed = apply_layout(page)
+    legacy_layout_removed = apply_layout(page)
     after = len(page.read_bytes())
     print(json.dumps({
         "page": PAGE.as_posix(),
@@ -71,8 +70,9 @@ def main() -> None:
         "html_bytes_after": after,
         "data_source": "/es/investigacion/estudios-textos.json",
         "no_js_fallback_preserved": "<noscript>" in text,
-        "content_visibility": True,
-        "layout_changed": layout_changed,
+        "content_visibility": False,
+        "legacy_layout_removed": legacy_layout_removed,
+        "lazy_data_preserved": True,
     }, ensure_ascii=False))
 
 
