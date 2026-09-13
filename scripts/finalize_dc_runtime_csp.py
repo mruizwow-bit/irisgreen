@@ -136,14 +136,10 @@ def transform_page(path: Path) -> dict:
     if not logic_source or "class Component" not in logic_source:
         raise AssertionError(f"{path}: el bloque de lógica no define class Component")
 
-    # Codificar únicamente expresiones de plantilla: el navegador convierte esas
-    # entidades de nuevo en llaves cuando el runtime consulta x-dc.innerHTML.
     text, xdc_count = XDC.subn(encode_template, text, count=1)
     if xdc_count != 1:
         raise AssertionError(f"{path}: no se pudo codificar x-dc")
 
-    # El bloque ejecutable se inserta junto al marcador original. Al llegar
-    # DOMContentLoaded, el runtime toma la clase ya precompilada sin eval/new Function.
     def replace_logic(match: re.Match[str]) -> str:
         marker = match.group(1) + "/* logic precompiled by build */" + match.group(3)
         return precompiled_script(logic_source) + marker
@@ -162,20 +158,26 @@ def transform_page(path: Path) -> dict:
 
 
 def update_csp(root: Path) -> None:
+    """Acepta el estado histórico y los dos estados fuente ya endurecidos.
+
+    Este paso solo es responsable de eliminar ``unsafe-eval``. La retirada de
+    ``script-src unsafe-inline`` y la inserción de hashes se hacen después, cuando
+    ya no queda ninguna transformación HTML pendiente.
+    """
     headers = root / "_headers"
     text = headers.read_text(encoding="utf-8", errors="strict")
-    old = "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    clean = "script-src 'self' 'unsafe-inline'"
-    old_count = text.count(old)
-    if old_count == 1:
-        text = text.replace(old, clean, 1)
+    legacy = "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    transitional = "script-src 'self' 'unsafe-inline'"
+    hardened = "script-src 'self'"
+
+    if text.count(legacy) == 1:
+        text = text.replace(legacy, transitional, 1)
         headers.write_text(text, encoding="utf-8")
-    elif old_count == 0 and text.count(clean) == 1:
-        # La fuente ya nace endurecida: no volver a exigir una CSP débil para poder
-        # construir el artefacto seguro.
+    elif text.count(legacy) == 0 and (text.count(transitional) == 1 or text.count(hardened) == 1):
         pass
     else:
         raise AssertionError("La CSP no contiene exactamente un script-src seguro conocido")
+
     final = headers.read_text(encoding="utf-8", errors="strict")
     if "'unsafe-eval'" in final:
         raise AssertionError("La CSP final todavía contiene unsafe-eval")
@@ -205,7 +207,6 @@ def main() -> None:
 
     rows = [transform_page(path) for path in pages]
 
-    # Ninguna página pública debe seguir apuntando a las copias antiguas.
     lingering = []
     for path in root.rglob("*.html"):
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -221,8 +222,6 @@ def main() -> None:
 
     update_csp(root)
 
-    # Guardarraíles finales de este hallazgo. Los scripts y CSS pueden contener llaves
-    # normales; lo que debe quedar a cero es una expresión {{...}} de plantilla en markup.
     active_mustache = []
     active_link_mustache = []
     for path in pages:
