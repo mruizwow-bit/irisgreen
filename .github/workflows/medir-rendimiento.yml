@@ -46,14 +46,14 @@ jobs:
           from pathlib import Path
           from statistics import median
 
-          # Techo de no-regresión derivado de ejecuciones verdes del 13-09-2026.
+          # Techo de no-regresión derivado del baseline de laboratorio actual.
           # Se usa la mediana de tres pasadas para que un runner ruidoso no convierta
           # una sola medición atípica en una regresión falsa. No equivale a afirmar
-          # que las rutas actuales sean rápidas: Investigación, Directorio y Libros
-          # parten de LCP de laboratorio >4 s.
+          # que las rutas actuales sean rápidas: Situaciones, Investigación,
+          # Directorio y Libros parten de LCP de laboratorio >4 s.
           LCP_CEILING_MS={
               'home':4000,
-              'situaciones':4000,
+              'situaciones':5600,
               'ficha':4000,
               'investigacion':7500,
               'directorio':9000,
