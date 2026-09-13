@@ -4,11 +4,6 @@
 No redacta contenido editorial. Libros se extrae de los datos ES que ya contiene
 su propia página; Directorio se construye con las entradas de España del JSON
 que forma la pantalla inicial. El bloque se escribe solo en ``dist``.
-
-En Libros también se sustituye, solo en ``dist``, el script síncrono completo de
-preferencias por un inicializador visual pequeño y el script completo diferido.
-El estado guardado sigue aplicándose antes del primer render, pero el panel y sus
-eventos dejan de bloquear la pintura inicial.
 """
 from __future__ import annotations
 
@@ -34,11 +29,6 @@ COVER_RE = re.compile(
     r'\{\s*cover:\s*A\s*\+\s*(' + JS_STRING + r'),\s*'
     r'alt:\s*(' + JS_STRING + r'),\s*'
     r'muestra:.*?links:\s*\[(.*?)\]\s*\}', re.S)
-PREF_FULL = '<script src="/assets/preferencias-lectura.js"></script>'
-PREF_SPLIT = (
-    '<script src="/assets/preferencias-iniciales.js"></script>'
-    '<script defer src="/assets/preferencias-lectura.js"></script>'
-)
 
 
 def js(literal: str) -> str:
@@ -70,17 +60,6 @@ def inject(path: Path, markup: str) -> None:
                 raise ValueError(f'No se encuentra <body> en {path}')
             text = text[:body.end()] + '\n' + block + text[body.end():]
     path.write_text(text, encoding='utf-8')
-
-
-def optimize_books_preferences(path: Path) -> None:
-    """Mantiene la restauración temprana y difiere el panel completo en Libros."""
-    text = path.read_text(encoding='utf-8')
-    if PREF_SPLIT in text:
-        return
-    count = text.count(PREF_FULL)
-    if count != 1:
-        raise ValueError(f'Libros cambió de carga de preferencias: {count} coincidencias')
-    path.write_text(text.replace(PREF_FULL, PREF_SPLIT, 1), encoding='utf-8')
 
 
 def extract_scalar(block: str, key: str) -> str:
@@ -188,7 +167,6 @@ def main() -> None:
         if not path.is_file():
             raise FileNotFoundError(path)
 
-    optimize_books_preferences(books)
     books_html, book_count = books_markup(books)
     directory_html, directory_count = directory_markup(ROOT / 'es/tramites/directorio/tramites-datos.json')
     inject(books, books_html)
@@ -196,7 +174,6 @@ def main() -> None:
 
     print(json.dumps({
         'libros': book_count,
-        'libros_preferencias_diferidas': True,
         'directorio_espana': directory_count,
         'paginas': ['es/libros/index.html', 'es/tramites/directorio/index.html'],
         'fuente_editorial_nueva': False,
