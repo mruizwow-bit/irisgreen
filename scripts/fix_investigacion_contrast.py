@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Corrige el contraste de las etiquetas de filtro de Investigación en ``dist``.
+"""Corrige contrastes de texto verificados en el artefacto público.
 
-Lighthouse detectó en /es/investigacion/ un contraste 3,69:1 para las etiquetas
-«TIPO DE ESTUDIO» y «TEMA» (13 px, peso normal) sobre blanco. WCAG 2.x exige
-4,5:1 para texto normal. El nuevo tono conserva el carácter gris azulado y ofrece
-aprox. 5,02:1 sobre #fff.
+1) Investigación: Lighthouse detectó dos etiquetas de filtro a 3,69:1.
+2) Directorio: el inventario WCAG encontró «Directorio de ayudas y trámites» a
+   3,95:1 incluso sobre blanco.
+3) Vídeos: «Dónde está» usaba #7a8698 a 13 px, también 3,69:1 sobre blanco.
 
-El cambio es deliberadamente estrecho: solo sustituye las dos declaraciones
-inline exactas de esas etiquetas en el artefacto público. Si cambia la plantilla,
-la construcción falla para que la corrección se vuelva a revisar en lugar de
-aplicarse a otro contenido por accidente.
+Los cambios son deliberadamente estrechos. Si cambian los objetivos esperados,
+el build falla para que la plantilla se revise en lugar de aplicar una sustitución
+a contenido distinto.
 """
 from __future__ import annotations
 
@@ -20,6 +19,40 @@ from pathlib import Path
 OLD = 'font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a8698;'
 NEW = 'font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #627087;'
 EXPECTED = 2
+MARKER = 'ig-final-text-contrast'
+EXTRA = [
+    {
+        'page':'es/tramites/directorio/index.html',
+        'needle':'Directorio de ayudas y trámites',
+        'anchor':'data-dc-tpl="60"',
+        'style':'p[data-dc-tpl="60"]>.sc-interp{color:#197991!important}',
+        'old':'#1f8ba8','new':'#197991','contrast':5.02,
+    },
+    {
+        'page':'es/videos/index.html',
+        'needle':'Dónde está',
+        'anchor':'data-dc-tpl="65"',
+        'style':'span[data-dc-tpl="65"]>.sc-interp{color:#627087!important}',
+        'old':'#7a8698','new':'#627087','contrast':5.02,
+    },
+]
+
+
+def inject_style(root: Path, fix: dict) -> dict:
+    page = root / fix['page']
+    if not page.is_file():
+        raise FileNotFoundError(page)
+    text = page.read_text(encoding='utf-8')
+    if fix['needle'] not in text or fix['anchor'] not in text:
+        raise AssertionError(f"No se encuentra el objetivo esperado en {fix['page']}")
+    style = f'<style id="{MARKER}">{fix["style"]}</style>'
+    if style not in text:
+        pos = text.lower().rfind('</head>')
+        if pos < 0:
+            raise AssertionError(f"HTML sin </head>: {fix['page']}")
+        text = text[:pos] + style + '\n' + text[pos:]
+        page.write_text(text, encoding='utf-8')
+    return {k: fix[k] for k in ('page','needle','old','new','contrast')}
 
 
 def main() -> None:
@@ -27,10 +60,10 @@ def main() -> None:
     parser.add_argument('--root', type=Path, default=Path('dist'))
     args = parser.parse_args()
     root = args.root.resolve()
+
     page = root / 'es/investigacion/index.html'
     if not page.is_file():
         raise FileNotFoundError(page)
-
     text = page.read_text(encoding='utf-8')
     count = text.count(OLD)
     if count != EXPECTED:
@@ -43,12 +76,16 @@ def main() -> None:
         raise AssertionError('No se pudo aplicar de forma completa la corrección de contraste')
     page.write_text(fixed, encoding='utf-8')
 
+    extras = [inject_style(root, fix) for fix in EXTRA]
     print(json.dumps({
-        'page': page.relative_to(root).as_posix(),
-        'labels_fixed': count,
-        'old_color': '#7a8698',
-        'new_color': '#627087',
-        'contrast_on_white': 5.02,
+        'investigacion': {
+            'page': page.relative_to(root).as_posix(),
+            'labels_fixed': count,
+            'old_color': '#7a8698',
+            'new_color': '#627087',
+            'contrast_on_white': 5.02,
+        },
+        'otros_textos': extras,
         'wcag_normal_text_minimum': 4.5,
     }, ensure_ascii=False))
 
