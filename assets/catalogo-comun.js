@@ -15,7 +15,7 @@ function start(){
  var entries=[],ready=false,loading=false;query.value=state.q;
  function letter(e){return api.norm(e.indexKey||e.name).charAt(0).toLocaleUpperCase('es');}
  function kind(e){return situation?e.area:e.tipo;}
- function busy(on){root.setAttribute('aria-busy',String(on));query.disabled=on;group.querySelectorAll('button').forEach(function(b){b.disabled=on;});if(az)az.querySelectorAll('button').forEach(function(b){b.disabled=on;});}
+ function busy(on){root.setAttribute('aria-busy',String(on));}
  function pickValue(b){return situation?(b.dataset.filter==='*'?'':b.dataset.filter):b.dataset.type;}
  function paint(){
   if(!ready)return;
