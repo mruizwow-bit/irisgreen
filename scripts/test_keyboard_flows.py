@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Prueba flujos representativos de teclado para WCAG 2.1.1/2.1.2/2.4.3.
+"""Prueba flujos representativos de teclado para WCAG 2.1.1/2.1.2/2.4.3/4.1.3.
 
 No pretende cubrir todas las interacciones del sitio. Comprueba que controles clave
-pueden abrirse, cerrarse y recorrerse sin ratón, que Escape no atrapa el foco y que
-los visores de libros responden a las flechas como anuncia su interfaz.
+pueden abrirse, cerrarse y recorrerse sin ratón, que Escape no atrapa el foco, que
+los visores responden a las flechas y que un estado dinámico clave se anuncia sin
+cambiar el foco ni el nombre del control.
 """
 from __future__ import annotations
 
@@ -11,7 +12,7 @@ import functools
 import json
 import threading
 import traceback
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -37,8 +38,8 @@ def record(name,route,fn):
 with sync_playwright() as pw:
  browser=pw.chromium.launch()
 
- def page_for(route,width=1280):
-  ctx=browser.new_context(viewport={'width':width,'height':900},reduced_motion='reduce')
+ def page_for(route,width=1280,permissions=None):
+  ctx=browser.new_context(viewport={'width':width,'height':900},reduced_motion='reduce',permissions=permissions or [])
   ctx.route('**/*',lambda req:req.continue_() if req.request.url.startswith(BASE) else req.abort())
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(BASE+route,wait_until='domcontentloaded');page.locator('main h1').first.wait_for(timeout=15000);page.wait_for_timeout(350)
@@ -94,6 +95,18 @@ with sync_playwright() as pw:
   assert page.evaluate('document.activeElement.classList.contains("ig-flip-stage")') is True;assert not errors,errors
   ctx.close();return {'before':before,'after_right':after,'after_left':back}
  record('Libros · visor controlable con flechas sin perder foco','/es/libros/',flipbook_arrows)
+
+ def tarjetas_copy_status():
+  ctx,page,errors=page_for('/es/tarjetas-iris/',permissions=['clipboard-read','clipboard-write'])
+  button=page.locator('#copy');status=page.locator('#copy-status')
+  assert status.get_attribute('role')=='status';assert status.get_attribute('aria-live')=='polite'
+  button.focus();before=button.inner_text();assert before=='Copiar texto'
+  page.keyboard.press('Enter');page.wait_for_function("document.querySelector('#copy-status')?.textContent === 'Texto copiado'",timeout=5000)
+  assert button.inner_text()=='Copiar texto'
+  assert page.evaluate("document.activeElement?.id")=='copy'
+  announced=status.inner_text();assert announced=='Texto copiado';assert not errors,errors
+  ctx.close();return {'button_label':before,'announced':announced,'focus_remained_on':'copy'}
+ record('Tarjetas Iris · Copiar texto anuncia estado sin mover foco','/es/tarjetas-iris/',tarjetas_copy_status)
 
  browser.close()
 server.shutdown()
