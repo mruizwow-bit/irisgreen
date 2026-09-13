@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Externaliza plantilla y lógica de las páginas DC antes de publicar.
+"""Externaliza plantilla/lógica DC y elimina evaluación dinámica del runtime publicado.
 
 El HTML histórico incluía la plantilla con expresiones ``{{...}}`` y un
 ``data-dc-script`` cuyo cuerpo se ejecutaba como texto mediante ``new Function``.
 Esta migración mueve ambos a un asset JS local por página: la plantilla se registra
-como dato y la lógica como una factoría JavaScript normal. El fallback ``noscript``
+como dato y la lógica como una factoría JavaScript normal. También neutraliza las dos
+rutas genéricas de ejecución dinámica del runtime público. El fallback ``noscript``
 permanece en el HTML y no se modifica contenido editorial.
 """
 from __future__ import annotations
@@ -30,6 +31,7 @@ URL_BRACES = re.compile(
     r"\b(?:href|src|action|formaction)\s*=\s*([\"'])[^\"']*{{.*?}}[^\"']*\1",
     re.I | re.S,
 )
+EVAL_LIKE = re.compile(r"\beval\s*\(|\bnew\s+Function\s*\(")
 RUNTIME_HOOK = "runtime.adoptParsed(rootName, parsed);\n    if (!window.__resources) {"
 RUNTIME_REPLACEMENT = """if (typeof window.__dcPageTemplate === \"string\") parsed.template = window.__dcPageTemplate;
     runtime.adoptParsed(rootName, parsed);
@@ -42,10 +44,53 @@ RUNTIME_REPLACEMENT = """if (typeof window.__dcPageTemplate === \"string\") pars
       logicEntry.logicError = null;
     }
     if (!window.__resources) {"""
+EVAL_LOGIC_FUNCTION = re.compile(
+    r"  function evalDcLogic\(src\) \{.*?\n  \}\n\n  // src/",
+    re.S,
+)
+DYNAMIC_MODULE_EXEC = re.compile(
+    r"new Function\(\s*[\"']React[\"']\s*,\s*[\"']module[\"']\s*,\s*[\"']exports[\"']\s*,\s*[\"']require[\"']\s*,\s*code\s*\)\s*\(\s*getReact\(\)\s*,\s*module\s*,\s*module\.exports\s*,\s*\(\)\s*=>\s*\(\{\}\)\s*\)\s*;",
+    re.S,
+)
 RUNTIMES = (
     "assets/runtime/8fe7df74405f3c55.js",
     "assets/games/dc-runtime.js",
 )
+
+
+def normalize_runtime(text: str, path: Path) -> tuple[str, dict]:
+    changes = {"page_factory_hook": 0, "inline_logic_executor_removed": 0, "dynamic_module_executor_removed": 0}
+
+    if RUNTIME_REPLACEMENT not in text:
+        count = text.count(RUNTIME_HOOK)
+        if count != 1:
+            raise AssertionError(f"{path}: punto de registro del runtime inesperado ({count})")
+        text = text.replace(RUNTIME_HOOK, RUNTIME_REPLACEMENT, 1)
+        changes["page_factory_hook"] = 1
+
+    replacement = (
+        '  function evalDcLogic(src) {\n'
+        '    throw new Error("dc-runtime: lógica embebida desactivada; usar factoría externa");\n'
+        '  }\n\n  // src/'
+    )
+    text, count = EVAL_LOGIC_FUNCTION.subn(replacement, text, count=1)
+    if count != 1:
+        raise AssertionError(f"{path}: no se pudo retirar evalDcLogic ({count})")
+    changes["inline_logic_executor_removed"] = count
+
+    text, count = DYNAMIC_MODULE_EXEC.subn(
+        '(() => { throw new Error("dc-runtime: módulos dinámicos de texto desactivados"); })();',
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise AssertionError(f"{path}: no se pudo retirar el ejecutor dinámico de módulos ({count})")
+    changes["dynamic_module_executor_removed"] = count
+
+    remaining = len(EVAL_LIKE.findall(text))
+    if remaining:
+        raise AssertionError(f"{path}: quedan {remaining} usos eval/new Function tras la migración")
+    return text, changes
 
 
 def factory_asset(template: str, body: str, rel: str) -> tuple[str, str]:
@@ -74,6 +119,8 @@ def factory_asset(template: str, body: str, rel: str) -> tuple[str, str]:
         "  };\n"
         "})();\n"
     )
+    if EVAL_LIKE.search(wrapped):
+        raise AssertionError(f"{rel}: la lógica de página contiene eval/new Function")
     return name, wrapped
 
 
@@ -101,13 +148,9 @@ def externalize_page(path: Path, root: Path, asset_dir: Path) -> dict:
     asset_path.parent.mkdir(parents=True, exist_ok=True)
     asset_path.write_text(asset_text, encoding="utf-8")
 
-    # Vaciamos x-dc, manteniendo sus atributos, para que el HTML inicial no publique
-    # expresiones de plantilla. El runtime recibe el mismo template desde el asset local.
     xdc_empty = f'<x-dc{xdc_match.group("attrs")}></x-dc>'
     text = text[: xdc_match.start()] + xdc_empty + text[xdc_match.end() :]
 
-    # Tras cambiar x-dc, buscamos de nuevo el script porque sus offsets originales ya
-    # no son válidos.
     script_match = SCRIPT.search(text)
     if not script_match:
         raise AssertionError(f"{rel}: se perdió data-dc-script durante la migración")
@@ -128,15 +171,11 @@ def externalize_page(path: Path, root: Path, asset_dir: Path) -> dict:
     }
 
 
-def patch_runtime(path: Path) -> bool:
+def patch_runtime(path: Path) -> dict:
     text = path.read_text(encoding="utf-8", errors="strict")
-    if RUNTIME_REPLACEMENT in text:
-        return False
-    count = text.count(RUNTIME_HOOK)
-    if count != 1:
-        raise AssertionError(f"{path}: punto de registro del runtime inesperado ({count})")
-    path.write_text(text.replace(RUNTIME_HOOK, RUNTIME_REPLACEMENT, 1), encoding="utf-8")
-    return True
+    text, changes = normalize_runtime(text, path)
+    path.write_text(text, encoding="utf-8")
+    return changes
 
 
 def main() -> None:
@@ -178,6 +217,12 @@ def main() -> None:
         if URL_BRACES.search(text):
             dynamic_url_expressions.append(path.relative_to(root).as_posix())
 
+    eval_files = []
+    for path in sorted(root.rglob("*.js")):
+        count = len(EVAL_LIKE.findall(path.read_text(encoding="utf-8", errors="ignore")))
+        if count:
+            eval_files.append((path.relative_to(root).as_posix(), count))
+
     if remaining_logic:
         raise AssertionError("Queda lógica DC embebida: " + ", ".join(remaining_logic))
     if html_template_expressions:
@@ -190,14 +235,17 @@ def main() -> None:
             "Quedan URLs con expresiones de plantilla: "
             + ", ".join(dynamic_url_expressions[:30])
         )
+    if eval_files:
+        raise AssertionError("Queda evaluación dinámica en JS público: " + repr(eval_files))
 
     print(json.dumps({
         "paginas_externalizadas": len(pages),
         "assets_dc": len(list(asset_dir.glob("*.js"))),
-        "runtime_hook": runtime_changes,
+        "runtime": runtime_changes,
         "logica_dc_embebida_restante": 0,
         "expresiones_template_html_restantes": 0,
         "urls_template_html_restantes": 0,
+        "eval_o_new_function_restantes": 0,
         "expresiones_template_extraidas": sum(p["template_expressions_removed"] for p in pages),
         "urls_template_extraidas": sum(p["dynamic_url_expressions_removed"] for p in pages),
         "pages": pages,
