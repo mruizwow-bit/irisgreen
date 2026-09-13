@@ -1,0 +1,43 @@
+/* Mulberry acompaña al texto; no lo sustituye. */
+.iris-mini-support{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+}
+.iris-mini-support>p{
+  flex:1 1 auto;
+  min-width:0;
+}
+.iris-mini-picto{
+  display:block;
+  flex:0 0 64px;
+  width:64px;
+  height:64px;
+  object-fit:contain;
+}
+/* La variante C contiene varios conceptos: usa la escala compacta comparada por Design. */
+.iris-mini-card[data-iris-picto-variant="C"] .iris-mini-picto{
+  flex-basis:48px;
+  width:48px;
+  height:48px;
+}
+.iris-mini-picto-credit{
+  margin:.68rem 0 0!important;
+  font-size:.72rem!important;
+  line-height:1.35!important;
+  color:#647288!important;
+}
+.iris-mini-picto-credit a{color:inherit;text-decoration:underline}
+html[data-ig-contrast="on"] .iris-mini-picto-credit{color:#111!important}
+@media(max-width:360px){
+  .iris-mini-support{gap:.55rem}
+  .iris-mini-card[data-iris-picto-variant="B"] .iris-mini-picto{
+    flex-basis:56px;
+    width:56px;
+    height:56px;
+  }
+}
+@media print{
+  .iris-mini-picto{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .iris-mini-picto-credit{color:#111!important}
+}

@@ -1,0 +1,24 @@
+{
+  "coleccion": "Mulberry Symbols",
+  "autor": "Steve Lee",
+  "licencia": "CC BY-SA 4.0",
+  "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "pictogramas": {
+    "hablar": {"archivo": "hablar.svg", "estado": "PUBLICABLE"},
+    "escribir": {"archivo": "escribir.svg", "estado": "PUBLICABLE"},
+    "esperar": {"archivo": "esperar.svg", "estado": "PUBLICABLE"},
+    "preguntar": {"archivo": "preguntar.svg", "estado": "PUBLICABLE"},
+    "carpeta": {"archivo": "carpeta.svg", "estado": "PUBLICABLE"},
+    "uno-cada-vez": {"archivo": "uno-cada-vez__queue.svg", "estado": "CANDIDATO"},
+    "confirmar": {"archivo": "confirmar__correct.svg", "estado": "CANDIDATO"}
+  },
+  "asignaciones": {
+    "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html": {
+      "variante": "C",
+      "bloques": {
+        "Esto me cuesta": "hablar",
+        "Me ayuda": "escribir"
+      }
+    }
+  }
+}
