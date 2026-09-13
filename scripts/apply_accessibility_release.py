@@ -48,7 +48,7 @@ PRIVACY_FONT_COPY = {
     ),
     'en/privacy/index.html': (
         '<p>These typefaces are currently loaded from Google Fonts. Your browser therefore connects to Google&#8217;s servers to request the font files.</p>',
-        '<p>These typefaces are served directly from irisgreen.eu. Your browser does not need to connect with Google to download the font files.</p>',
+        '<p>These typefaces are served directly from irisgreen.eu. Your browser does not need to connect to Google to download the font files.</p>',
     ),
 }
 PRIVACY_MUSIC_COPY = {
@@ -57,8 +57,8 @@ PRIVACY_MUSIC_COPY = {
         '<h2>Música</h2>\n<p>La función de música utiliza archivos de audio alojados en irisgreen.eu.</p>\n<p>Cuando escuchas una pieza, el navegador solicita ese archivo a irisgreen.eu y no necesita conectarse con Spotify.</p>',
     ),
     'en/privacy/index.html': (
-        '<h2>Spotify music</h2>\n<p>Spotify is not loaded until you open the music feature.</p>\n<p>When the player loads, your browser connects with Spotify and that service&#8217;s privacy terms apply.</p>',
-        '<h2>Music</h2>\n<p>The music feature uses audio files hosted in irisgreen.eu.</p>\n<p>When you play a track, the browser requests that file from irisgreen.eu and does not need to connect with Spotify.</p>',
+        '<h2>Spotify music</h2>\n<p>Spotify is not loaded until you open the music feature.</p>\n<p>When the player loads, your browser connects to Spotify and that service&#8217;s privacy terms apply.</p>',
+        '<h2>Music</h2>\n<p>The music feature uses audio files hosted on irisgreen.eu.</p>\n<p>When you play a track, your browser requests that file from irisgreen.eu and does not need to connect to Spotify.</p>',
     ),
 }
 
