@@ -7,9 +7,10 @@ de su caja queda dentro del viewport y que al menos un punto de esa parte sigue
 siendo alcanzable por hit-testing, es decir, no está completamente tapado por
 contenido creado por la página.
 
-Esta primera pasada es diagnóstica: registra candidatos y errores de página. Una
-vez medido el baseline, el propio PR puede convertir cero candidatos en contrato
-de no regresión. No sustituye una revisión manual de todos los estados abiertos.
+La primera pasada corta (70 Tab) midió 1.340 elementos sin candidatos. Esta pasada
+amplía el límite a 260 para completar también catálogos largos antes de convertir
+cero candidatos en contrato de no regresión. No sustituye una revisión manual de
+todos los estados que solo aparecen después de una interacción.
 """
 from __future__ import annotations
 
@@ -34,7 +35,7 @@ VIEWPORTS = {
     'desktop': {'width': 1280, 'height': 900},
     'mobile': {'width': 390, 'height': 844},
 }
-MAX_TABS = 70
+MAX_TABS = 260
 
 CHECK = r'''() => {
  const el=document.activeElement;
@@ -98,7 +99,7 @@ def main() -> None:
                 page.wait_for_timeout(250)
                 visited: list[dict] = []
                 first_key = None
-                wraps = 0
+                wrapped = False
                 for _ in range(MAX_TABS):
                     page.keyboard.press('Tab')
                     page.wait_for_timeout(25)
@@ -109,9 +110,8 @@ def main() -> None:
                     if first_key is None:
                         first_key = key
                     elif key == first_key and len(visited) > 3:
-                        wraps += 1
-                        if wraps >= 1:
-                            break
+                        wrapped = True
+                        break
                     row.update({'route': route, 'viewport_name': viewport_name})
                     visited.append(row)
                     if not row['visible'] or not row['hit']:
@@ -122,6 +122,7 @@ def main() -> None:
                     'route': route,
                     'viewport_name': viewport_name,
                     'focused_elements_checked': len(visited),
+                    'focus_cycle_completed': wrapped,
                     'candidates': sum(1 for x in visited if not x['visible'] or not x['hit']),
                 })
                 print(json.dumps(report['routes'][-1], ensure_ascii=False), flush=True)
@@ -131,6 +132,7 @@ def main() -> None:
     report['summary'] = {
         'route_viewports': len(report['routes']),
         'focused_elements_checked': sum(x['focused_elements_checked'] for x in report['routes']),
+        'focus_cycles_completed': sum(1 for x in report['routes'] if x['focus_cycle_completed']),
         'candidates': len(report['candidates']),
         'page_errors': len(report['page_errors']),
     }
