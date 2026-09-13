@@ -78,25 +78,18 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
 
 
 def add_complete_filter_options(text: str) -> str:
-    """Añade metadatos completos sin depender de la indentación del template."""
-    addition = '''
-    if (st.country === "es" && this.spainIsPartial()) {
+    """Completa opciones españolas justo antes del ordenado de categorías."""
+    addition = '''    if (st.country === "es" && this.spainIsPartial()) {
       terrs.splice(0, terrs.length, ...(IG_INITIAL._esTerrs || []));
       cats.splice(0, cats.length, ...(IG_INITIAL._esCats || []));
-    }'''
+    }
+'''
     if addition.strip() in text:
         return text
-    pattern = re.compile(
-        r'(all\.forEach\(\(f\)\s*=>\s*\{\s*'
-        r'if\s*\(terrs\.indexOf\(f\.terr\)\s*===\s*-1\)\s*terrs\.push\(f\.terr\);\s*'
-        r'if\s*\(cats\.indexOf\(f\.cat\)\s*===\s*-1\)\s*cats\.push\(f\.cat\);\s*'
-        r'\}\);)',
-        re.S,
-    )
-    text, count = pattern.subn(lambda m: m.group(1) + addition, text, count=1)
-    if count != 1:
-        raise ValueError(f'opciones completas de España: se esperaba una estructura y hay {count}')
-    return text
+    anchor = '    cats.sort((a, b) => a.localeCompare(b, "es"));'
+    if text.count(anchor) != 1:
+        raise ValueError(f'opciones completas de España: se esperaba un punto de ordenado y hay {text.count(anchor)}')
+    return text.replace(anchor, addition + anchor, 1)
 
 
 def main() -> None:
