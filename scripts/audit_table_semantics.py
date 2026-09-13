@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inventario WCAG 1.3.1 para tablas de la salida pública.
+"""Guardarraíl WCAG 1.3.1 para tablas de la salida pública.
 
 No impone requisitos ajenos a WCAG: la ausencia de <caption> se informa, pero no
 se considera fallo. Clasifica cada tabla según su estructura y deja para revisión
@@ -11,8 +11,9 @@ Comprueba mecánicamente:
 - si hay celdas de encabezado;
 - si la tabla es simple o compleja (rowspan/colspan > 1).
 
-La primera pasada es informativa. Solo falla por referencias headers rotas o
-valores scope inválidos, que sí son errores estructurales objetivos.
+El baseline actual tiene cero errores objetivos y cero tablas pendientes de revisión.
+Cualquier caso futuro de revisión manual detiene CI para que se evalúe explícitamente,
+sin convertirlo automáticamente en una declaración de incumplimiento WCAG.
 """
 from __future__ import annotations
 
@@ -92,8 +93,6 @@ def classify(table):
         explicit_scope = all((th.get('scope') or '').lower() in VALID_SCOPE for th in table.th)
         explicit_headers = any((cell.get('headers') or '').strip() for cell in table.td)
         return ('complex_explicit' if explicit_scope or explicit_headers else 'manual_complex'), []
-    if all((th.get('scope') or '').lower() in VALID_SCOPE for th in table.th if th.get('scope')):
-        return 'simple_inferred_or_scoped', []
     return 'simple_inferred_or_scoped', []
 
 
@@ -129,13 +128,14 @@ def main():
             if status == 'objective_error':
                 objective.append(row)
 
+    manual = [r for r in rows if r['status'] in {'manual_no_headers','manual_complex'}]
     report = {
         'criterion':'WCAG 2.2 SC 1.3.1 Info and Relationships',
         'html_scanned': scanned,
         'tables': len(rows),
         'counts': counts,
         'objective_errors': objective,
-        'manual_review': [r for r in rows if r['status'] in {'manual_no_headers','manual_complex'}],
+        'manual_review': manual,
         'tables_detail': rows,
         'notes': [
             'caption absence is reported but is not treated as an automatic WCAG failure.',
@@ -146,9 +146,11 @@ def main():
     out = root / 'reports' / 'wcag-tables'
     out.mkdir(parents=True, exist_ok=True)
     (out/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(json.dumps({'html_scanned':scanned,'tables':len(rows),'counts':counts,'objective_errors':len(objective),'manual_review':len(report['manual_review'])},ensure_ascii=False))
+    print(json.dumps({'html_scanned':scanned,'tables':len(rows),'counts':counts,'objective_errors':len(objective),'manual_review':len(manual)},ensure_ascii=False))
     if objective:
-        raise SystemExit(1)
+        raise SystemExit('Hay referencias headers rotas o scope inválido en tablas públicas')
+    if manual:
+        raise SystemExit('Aparecieron tablas que requieren revisión explícita de sus relaciones de encabezado')
 
 
 if __name__ == '__main__':
