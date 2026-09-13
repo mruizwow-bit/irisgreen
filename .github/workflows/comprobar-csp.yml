@@ -28,5 +28,7 @@ jobs:
         run: python3 scripts/audit_security_headers.py --root dist
       - name: Impedir unsafe-eval y evaluación dinámica
         run: python3 scripts/check_csp_eval_scope.py --root dist
+      - name: Probar las 24 interfaces DC sin unsafe-eval
+        run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_dc_runtime_csp.py
       - name: Probar la CSP real en navegador
         run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_csp_runtime.py
