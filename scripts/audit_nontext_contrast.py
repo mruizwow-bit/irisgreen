@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Diagnóstico reproducible para WCAG 1.4.11 Non-text Contrast.
+"""Guardarraíl reproducible para WCAG 1.4.11 Non-text Contrast en campos.
 
 Mide campos de formulario visibles y su contenedor visual efectivo. Para cada uno
-registra el contraste del borde contra blanco como caso conservador y, al darle
-foco, el contraste del indicador de foco contra blanco. Un borde <3:1 se marca
-para revisión porque puede seguir existiendo otra señal visual suficiente; no se
-etiqueta automáticamente como incumplimiento.
+registra el contraste del borde y, al darle foco, el contraste del indicador de
+foco contra blanco. Tras corregir el baseline, cualquier borde o foco por debajo
+de 3:1 detiene CI para revisión explícita.
+
+Esta prueba cubre campos de formulario en rutas representativas; no equivale a una
+auditoría completa de todos los objetos gráficos del sitio.
 """
 from __future__ import annotations
 
@@ -60,7 +62,7 @@ class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-report={'criterion':'WCAG 2.2 SC 1.4.11 Non-text Contrast','routes':[],'fields':[],'border_review':[],'focus_review':[],'page_errors':[],'limits':['A border below 3:1 is a review candidate, not automatically a failure if other visual information is sufficient to identify the control.','White is used as a conservative adjacent-color reference for the initial inventory.','Graphical objects beyond form controls are not covered by this first pass.']}
+report={'criterion':'WCAG 2.2 SC 1.4.11 Non-text Contrast','routes':[],'fields':[],'border_review':[],'focus_review':[],'page_errors':[],'limits':['White is used as the adjacent-color reference for this field-control guard.','Graphical objects beyond form controls are not covered by this test.','A future candidate stops CI for review rather than being labelled automatically as a full-site conformance failure.']}
 with sync_playwright() as pw:
  browser=pw.chromium.launch()
  for route in ROUTES:
@@ -87,4 +89,5 @@ with sync_playwright() as pw:
 server.shutdown()
 report['summary']={'routes':len(ROUTES),'fields':len(report['fields']),'border_review':len(report['border_review']),'focus_review':len(report['focus_review']),'page_errors':len(report['page_errors'])}
 (OUT/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report['summary'],ensure_ascii=False))
-if report['page_errors']:raise SystemExit(1)
+if report['page_errors'] or report['border_review'] or report['focus_review']:
+ raise SystemExit(1)
