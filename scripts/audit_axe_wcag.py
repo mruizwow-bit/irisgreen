@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Segunda opinión automática WCAG con axe-core sobre rutas representativas.
+"""Guardarraíl WCAG con axe-core sobre rutas representativas.
 
-Esta primera pasada es informativa respecto a resultados de axe: registra
-violations e incomplete para revisión antes de convertirlos en guardarraíl.
-Sí falla por errores JavaScript de la propia página o si axe no puede ejecutarse.
+Baseline actual: cero violations. Los resultados ``incomplete`` de contraste se
+conservan para revisión porque axe no puede resolver de forma fiable algunos fondos
+y gradientes. La portada tiene un único incomplete conocido sobre aria-controls;
+el propio auditor verifica en DOM que el botón apunta al dialog real.
 
-Axe no sustituye una evaluación manual WCAG ni pruebas con tecnologías de asistencia.
+Cualquier violation, error de página o incomplete nuevo fuera de esas categorías
+detiene CI. Axe no sustituye una evaluación manual WCAG ni tecnologías de asistencia.
 """
 from __future__ import annotations
 
@@ -69,6 +71,28 @@ def compact_result(item):
     }
 
 
+def known_home_relation(page) -> dict:
+    return page.evaluate("""() => {
+      const b=document.getElementById('reading-open');
+      if(!b)return {ok:false,reason:'missing-button'};
+      const id=b.getAttribute('aria-controls');
+      const target=id?document.getElementById(id):null;
+      return {
+        ok:id==='reading-dialog' && !!target && target.tagName==='DIALOG' && b.getAttribute('aria-haspopup')==='dialog',
+        controls:id,
+        targetTag:target&&target.tagName,
+        haspopup:b.getAttribute('aria-haspopup')
+      };
+    }""")
+
+
+def is_known_home_incomplete(route, item, relation):
+    if route != '/' or item.get('id') != 'aria-valid-attr-value' or not relation.get('ok'):
+        return False
+    nodes=item.get('nodes', [])
+    return bool(nodes) and all('#reading-open' in (node.get('target') or []) for node in nodes)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=Path('dist'))
@@ -95,10 +119,12 @@ def main():
         'violation_nodes_total':0,
         'incomplete_total':0,
         'incomplete_nodes_total':0,
+        'color_contrast_incomplete_nodes':0,
+        'unexpected_incomplete':[],
         'page_errors':[],
         'limits':[
             'Automated axe results do not establish complete WCAG conformance.',
-            'Incomplete results require human review.',
+            'Color-contrast incomplete results remain manual-review items because backgrounds/gradients can be indeterminate to axe.',
             'The audit covers representative routes and their initial visible state.',
         ],
     }
@@ -114,6 +140,9 @@ def main():
             page.goto(base+route, wait_until='domcontentloaded')
             page.locator('main h1').first.wait_for(timeout=15000)
             page.wait_for_timeout(350)
+            relation = known_home_relation(page) if route == '/' else {'ok':False}
+            if route == '/' and not relation.get('ok'):
+                errors.append('La relación reading-open -> dialog#reading-dialog no es válida: '+json.dumps(relation,ensure_ascii=False))
             page.add_script_tag(content=axe_source)
             result = page.evaluate("""async (tags) => {
               if (!window.axe) throw new Error('axe no disponible');
@@ -124,14 +153,26 @@ def main():
             }""", TAGS)
             violations=[compact_result(v) for v in result.get('violations', [])]
             incomplete=[compact_result(v) for v in result.get('incomplete', [])]
+            unexpected=[]
+            color_nodes=0
+            for item in incomplete:
+                if item.get('id') == 'color-contrast':
+                    color_nodes += item.get('node_count',0)
+                    continue
+                if is_known_home_incomplete(route,item,relation):
+                    continue
+                unexpected.append(item)
             row={
                 'route':route,
                 'violations':violations,
                 'incomplete':incomplete,
+                'unexpected_incomplete':unexpected,
+                'known_home_relation':relation if route=='/' else None,
                 'violations_count':len(violations),
                 'violation_nodes':sum(v['node_count'] for v in violations),
                 'incomplete_count':len(incomplete),
                 'incomplete_nodes':sum(v['node_count'] for v in incomplete),
+                'color_contrast_incomplete_nodes':color_nodes,
                 'page_errors':errors,
             }
             report['routes'].append(row)
@@ -139,9 +180,12 @@ def main():
             report['violation_nodes_total'] += row['violation_nodes']
             report['incomplete_total'] += row['incomplete_count']
             report['incomplete_nodes_total'] += row['incomplete_nodes']
+            report['color_contrast_incomplete_nodes'] += color_nodes
+            if unexpected:
+                report['unexpected_incomplete'].append({'route':route,'items':unexpected})
             if errors:
                 report['page_errors'].append({'route':route,'errors':errors})
-            print(json.dumps({k:row[k] for k in ['route','violations_count','violation_nodes','incomplete_count','incomplete_nodes']},ensure_ascii=False),flush=True)
+            print(json.dumps({'route':route,'violations_count':row['violations_count'],'incomplete_count':row['incomplete_count'],'unexpected_incomplete':len(unexpected),'color_contrast_nodes':color_nodes},ensure_ascii=False),flush=True)
             ctx.close()
         browser.close()
     server.shutdown()
@@ -152,12 +196,18 @@ def main():
         'violation_nodes':report['violation_nodes_total'],
         'incomplete':report['incomplete_total'],
         'incomplete_nodes':report['incomplete_nodes_total'],
+        'color_contrast_incomplete_nodes':report['color_contrast_incomplete_nodes'],
+        'unexpected_incomplete':len(report['unexpected_incomplete']),
         'page_errors':len(report['page_errors']),
     }
     (out/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report['summary'],ensure_ascii=False))
     if report['page_errors']:
-        raise SystemExit(1)
+        raise SystemExit('Hay errores de página o una relación ARIA conocida dejó de ser válida')
+    if report['violations_total']:
+        raise SystemExit('axe-core encontró violations WCAG en la muestra')
+    if report['unexpected_incomplete']:
+        raise SystemExit('axe-core encontró resultados incomplete nuevos que requieren revisión')
 
 
 if __name__ == '__main__':
