@@ -5,12 +5,15 @@ Comprueba, página a página y solo con la biblioteca estándar:
   · que hay un <main> y un único <h1> visible con texto;
   · que cada campo de formulario visible tiene nombre accesible;
   · que cada botón y cada enlace visibles tienen texto o nombre accesible;
+  · que aria-labelledby aporta un nombre solo si referencia un id real del DOM activo;
   · que cada imagen visible declara alt;
   · que no hay ids duplicados en la vista visible.
 
 La auditoría estructural representa la vista con JavaScript: no suma contenido de
 <noscript>, <template>, diálogos cerrados ni subárboles hidden/aria-hidden=true.
-La lectura sin JavaScript se comprueba por separado con audit_sin_js.py.
+Los elementos ocultos normales siguen pudiendo aportar un nombre mediante
+aria-labelledby, como permite el cálculo de nombre accesible. La lectura sin
+JavaScript se comprueba por separado con audit_sin_js.py.
 
 No corrige nada y no juzga contenido. No es una certificación WCAG: no mide
 contraste, foco, teclado ni lectores de pantalla.
@@ -39,6 +42,7 @@ class Audit(HTMLParser):
         self.controls: list[tuple[str, dict, str]] = []
         self.images: list[dict] = []
         self.ids: dict[str, int] = {}
+        self.all_ids: set[str] = set()
         self.open_control: list[tuple[str, dict, list[str]]] = []
         self.feed(text)
 
@@ -56,6 +60,12 @@ class Audit(HTMLParser):
             or a.get("aria-hidden", "").lower() == "true"
         )
         ignored = inherited or hidden_here
+
+        # aria-labelledby puede referenciar elementos ocultos que sí están en el DOM,
+        # pero no contenido inerte de <template> ni el <noscript> de la vista con JS.
+        inside_inert = any(t in IGNORED_CONTAINERS for t, _, _ in self.stack)
+        if a.get("id") and tag not in IGNORED_CONTAINERS and not inside_inert:
+            self.all_ids.add(a["id"])
 
         if not ignored:
             if a.get("id"):
@@ -96,13 +106,14 @@ class Audit(HTMLParser):
             chunks.append(data)
 
 
-def named(attrs: dict, inner: str = "") -> bool:
+def named(attrs: dict, known_ids: set[str], inner: str = "") -> bool:
     if inner.strip():
         return True
     for key in ("aria-label", "title", "alt", "value"):
         if attrs.get(key, "").strip():
             return True
-    return bool(attrs.get("aria-labelledby", "").strip())
+    labelledby = attrs.get("aria-labelledby", "").split()
+    return any(ident in known_ids for ident in labelledby)
 
 
 def check(rel: str, text: str) -> list[str]:
@@ -120,14 +131,14 @@ def check(rel: str, text: str) -> list[str]:
         if count > 1:
             problems.append(f"id duplicado: {ident} ({count})")
     for field in doc.fields:
-        if named(field) or field.get("id", "") in doc.labels_for or field.get("_inside_label"):
+        if named(field, doc.all_ids) or field.get("id", "") in doc.labels_for or field.get("_inside_label"):
             continue
         kind = field.get("type", "text")
         problems.append(f"campo sin nombre accesible: {kind} {field.get('class','')[:40]}".strip())
     for tag, attrs, inner in doc.controls:
         if tag == "a" and not attrs.get("href"):
             continue
-        if named(attrs, inner):
+        if named(attrs, doc.all_ids, inner):
             continue
         problems.append(f"{'botón' if tag == 'button' else 'enlace'} sin nombre accesible: {attrs.get('class','') or attrs.get('href','')}"[:120])
     for img in doc.images:
@@ -159,7 +170,7 @@ def main() -> None:
         "html_revisados": scanned,
         "paginas_con_fallos": len(findings),
         "fallos": total,
-        "limites": "Comprobación mecánica de estructura, ids y nombres accesibles en la vista con JavaScript. No mide contraste, foco, teclado ni lectores de pantalla; la vista sin JavaScript se audita por separado.",
+        "limites": "Comprobación mecánica de estructura, ids, referencias aria-labelledby y nombres accesibles en la vista con JavaScript. No mide contraste, foco, teclado ni lectores de pantalla; la vista sin JavaScript se audita por separado.",
         "detalle": findings,
     }
     (out / "accesibilidad.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
