@@ -54,6 +54,9 @@ def build():
         return _build_in_staging()
 
     # A partir de aquí cualquier escritura ocurre únicamente dentro de staging.
+    # La ficha 12 de Datos ya publica dos fuentes científicas; sincronizarlas también
+    # en el catálogo elimina la excepción histórica antes de construir el artefacto.
+    subprocess.run([sys.executable,str(ROOT/'scripts/sync_datos_catalog_sources.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)

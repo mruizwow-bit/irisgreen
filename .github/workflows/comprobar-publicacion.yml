@@ -54,12 +54,6 @@ jobs:
               counts[value if value in counts else 'otro_o_ninguno'] += 1
           sitemap=Path('dist/sitemap.xml').read_text(encoding='utf-8')
           sitemap_urls=len(re.findall(r'<url(?:\s|>)',sitemap))
-          # Contrato deliberadamente congelado. Si se publica, retira o cambia la
-          # indexación de una página, este paso debe ponerse en rojo hasta revisar
-          # conscientemente estos cinco números y el sitemap. No debilitar la prueba
-          # para hacerla pasar: actualizar expected solo junto al cambio editorial.
-          # La tercera utilidad noindex es /es/taller/hojas/: se enlaza para imprimir,
-          # pero no se añade al sitemap como contenido editorial independiente.
           expected={'html':999,'index,follow':982,'noindex,follow':3,'otro_o_ninguno':14,'sitemap_urls':995}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
@@ -79,7 +73,9 @@ jobs:
           python3 scripts/audit_accesibilidad.py --root dist
       - name: Auditar estructura documental de Datos
         if: ${{ !cancelled() }}
-        run: python3 scripts/audit_datos_documental.py --root dist
+        run: |
+          python3 scripts/sync_datos_catalog_sources.py
+          python3 scripts/audit_datos_documental.py --root dist
       - name: Inventariar dependencias para CSP
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_csp_dependencies.py --root dist
@@ -92,12 +88,6 @@ jobs:
       - name: Comprobar que no queda portugués
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_sin_portugues.py --root dist
-      # Los tres pasos siguientes vuelven a frenar. Las pruebas que describen la portada
-      # anterior están marcadas una a una dentro de cada guion, en ESPERADO_FALLA, con su
-      # motivo y de forma estricta: informan sin frenar, y el día que se reescriban y
-      # pasen, la comprobación falla hasta que se retire la marca. Silenciar el paso
-      # entero, como estaba antes, apagaba también los catálogos, la recuperación de
-      # errores y los estilos, que sí son comprobaciones reales.
       - name: Comprobar filtros, listados y recuperación de errores
         if: ${{ !cancelled() }}
         run: cd dist && /tmp/ig-release/bin/python ../scripts/test_coherence.py
