@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = Path("es/investigacion/index.html")
-SEED_RE = re.compile(r'(<script\s+id="ig-initial-data"\b[^>]*>)(.*?)(</script>)', re.S)
+SEED_RE = re.compile(r'(<script\s+id="ig-initial-data"[^>]*>)(.*?)(</script>)', re.S)
 OLD_INIT = 'const IG_INITIAL = JSON.parse(document.getElementById("ig-initial-data").textContent);'
 NEW_INIT = 'const IG_DATA_NODE = document.getElementById("ig-initial-data");\nconst IG_INITIAL = null;'
 OLD_MOUNT = '''  componentDidMount() {\n    this._igPreferencesDisconnect = window.IGPreferences.connect(this);'''
