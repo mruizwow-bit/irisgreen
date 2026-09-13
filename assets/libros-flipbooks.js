@@ -140,7 +140,7 @@
     section.dataset.igFlipbook = book.id;
     section.dataset.page = '0';
     section.dataset.loading = 'true';
-    section.innerHTML = '<div class="ig-flipbook-head"><div><p class="ig-flipbook-kicker">'+L.kicker+'</p><h3>'+(book.id==='luma'?L.lumaTitle:L.autismTitle)+'</h3></div><span class="ig-flipbook-badge">'+total+' '+L.pages+'</span></div><div class="ig-flip-stage" tabindex="0" aria-label="'+L.stage+'"></div><div class="ig-flip-controls"><button type="button" data-ig-flip-prev aria-label="'+L.prev+'">‹</button><span class="ig-flip-counter" aria-live="polite">1 / '+total+'</span><button type="button" data-ig-flip-next aria-label="'+L.next+'">›</button></div><p class="ig-flip-note">'+(book.id==='luma'?L.noteLuma:L.noteAutism)+'</p>';
+    section.innerHTML = '<div class="ig-flipbook-head"><div><p class="ig-flipbook-kicker">'+L.kicker+'</p><h3>'+(book.id==='luma'?L.lumaTitle:L.autismTitle)+'</h3></div><span class="ig-flipbook-badge">'+total+' '+L.pages+'</span></div><div class="ig-flip-stage" role="group" tabindex="0" aria-label="'+L.stage+'"></div><div class="ig-flip-controls"><button type="button" data-ig-flip-prev aria-label="'+L.prev+'">‹</button><span class="ig-flip-counter" aria-live="polite">1 / '+total+'</span><button type="button" data-ig-flip-next aria-label="'+L.next+'">›</button></div><p class="ig-flip-note">'+(book.id==='luma'?L.noteLuma:L.noteAutism)+'</p>';
     return section;
   }
 
