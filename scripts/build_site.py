@@ -94,6 +94,9 @@ def build():
     # histórico añadía persistencia local; se retira del artefacto antes de publicar.
     subprocess.run([sys.executable,str(ROOT/'scripts/remove_tarjetas_storage.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Lighthouse detectó contraste insuficiente en las dos etiquetas de filtro de
+    # Investigación; esta corrección acotada actúa sobre el artefacto final.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_investigacion_contrast.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # La utilidad de impresión es noindex, pero conserva metadatos y semántica propios.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
