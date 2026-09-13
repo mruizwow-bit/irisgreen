@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Diagnóstico reproducible para WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum).
+"""Guardarraíl reproducible para WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum).
 
 Recorre con Tab el foco real del navegador en rutas representativas, tanto en
 escritorio como en móvil. Para cada elemento enfocado comprueba que alguna parte
@@ -7,10 +7,11 @@ de su caja queda dentro del viewport y que al menos un punto de esa parte sigue
 siendo alcanzable por hit-testing, es decir, no está completamente tapado por
 contenido creado por la página.
 
-La primera pasada corta (70 Tab) midió 1.340 elementos sin candidatos. Esta pasada
-amplía el límite a 260 para completar también catálogos largos antes de convertir
-cero candidatos en contrato de no regresión. No sustituye una revisión manual de
-todos los estados que solo aparecen después de una interacción.
+El baseline ampliado completó 26 ciclos de foco y comprobó 2.102 elementos sin
+candidatos. Ese cero pasa a ser contrato de no regresión: la auditoría falla ante
+un elemento completamente oculto, un error de página o un ciclo que no llegue a
+completarse dentro del límite. No sustituye una revisión manual de todos los
+estados que solo aparecen después de una interacción.
 """
 from __future__ import annotations
 
@@ -138,7 +139,8 @@ def main() -> None:
     }
     (OUT / 'results.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report['summary'], ensure_ascii=False))
-    if report['page_errors']:
+    incomplete = [x for x in report['routes'] if not x['focus_cycle_completed']]
+    if report['page_errors'] or report['candidates'] or incomplete:
         raise SystemExit(1)
 
 
