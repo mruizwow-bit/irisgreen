@@ -140,7 +140,7 @@ def main() -> None:
         "variants": variants,
         "max_block_chars": MAX_BLOCK_CHARS,
         "max_title_chars": MAX_TITLE_CHARS,
-        "concise_cards": True,
+        "compact_reading_rule": "una idea breve por bloque; nunca pegar varios apoyos en un párrafo",
         "mulberry_svgs": sorted(svgs),
         "editorial_assignment": ASSIGNED,
         "discarded_candidates_published": 0,
