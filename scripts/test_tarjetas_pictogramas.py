@@ -34,7 +34,7 @@ def main() -> None:
             if len(cards) != 1:
                 raise AssertionError(f"Tarjeta v2 ausente o duplicada: {path}")
             card = cards[0]
-            if len(re.findall(r'\bclass=["\'][^"\']*\biris-mini-action\b', card, re.I)) != 2:
+            if len(re.findall(r'<button\b[^>]*\bclass=["\'][^"\']*\biris-mini-action\b', card, re.I)) != 2:
                 raise AssertionError(f"Acciones v2 incorrectas: {path}")
             if not re.search(r'data-iris-card-status[^>]*role=["\']status["\'][^>]*aria-live=["\']polite["\']', card, re.I):
                 raise AssertionError(f"Estado accesible ausente: {path}")
