@@ -61,6 +61,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_initial_data.py')],cwd=ROOT,check=True)
+    # La colección de juegos se normaliza solo dentro del staging del build:
+    # 130 juegos, bloques, 7/7 y sin campos Prompt públicos.
+    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_games_collection.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/repair_routes.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/publish_biblioteca.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_auditoria_420_relaciones.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
@@ -123,6 +126,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_condition_hreflang.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # SEO técnico: solo metadatos; no modifica el contenido visible.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_seo_metadata.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Juegos v1: aplicar únicamente el marco y las mecánicas aprobadas a las 13 rutas,
+    # y fallar aquí si se introduce juicio, arrastre, color retirado o una colección incoherente.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_games_v1.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_games_v1.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Último paso: cerrar la deuda de las 24 plantillas sin cambiar sus interfaces.
