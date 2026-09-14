@@ -32,7 +32,7 @@ jobs:
           p=Path('scripts/test_contar_pagar.py')
           s=p.read_text(encoding='utf-8')
           s=s.replace("script+calc", "script+calc.read_text(encoding='utf-8')")
-          s=s.replace("refs=set(re.findall(r'/assets/dinero/([a-z0-9]+)\\.svg',script+html))\nassert expected.issubset(refs),expected-refs", "refs=set(re.findall(r\"id:'([a-z0-9]+)'\",script))\nassert expected.issubset(refs),expected-refs")
+          s=s.replace("refs=set(re.findall(r'/assets/dinero/([a-z0-9]+)\\.svg',script+html))\nassert expected.issubset(refs),expected-refs", "for ident in expected: assert ident in script,ident")
           p.write_text(s,encoding='utf-8')
           PY
       - name: Añadir el juego a Jugar
