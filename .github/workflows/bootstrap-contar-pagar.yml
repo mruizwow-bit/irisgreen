@@ -24,7 +24,7 @@ jobs:
           ref: integracion/juego-contar-y-pagar-20260914
       - name: Reconstruir los archivos del juego
         run: |
-          cat scripts/contar-pagar-bundle/part-* | base64 -d > /tmp/contar-pagar.tar.gz
+          cat scripts/contar-pagar-bundle/part-* | base64 -d -i > /tmp/contar-pagar.tar.gz
           echo '55010f903bc5b97678bd62bd5956eda8d446ed11407fbdc6e7c278266d730925  /tmp/contar-pagar.tar.gz' | sha256sum -c -
           tar -xzf /tmp/contar-pagar.tar.gz -C .
       - name: Añadir el juego a Jugar
