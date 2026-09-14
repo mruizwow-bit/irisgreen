@@ -18,6 +18,9 @@ COLOR_MAP={
  '#1f8ba8':'var(--turq,#197991)', '#16708a':'var(--turq,#197991)', '#8a5a12':'var(--rosa,#a8336f)',
  '#435268':'var(--muted,#43566d)', '#5d6779':'var(--suave,#5c7391)', '#5a6675':'var(--suave,#5c7391)'}
 
+JS_STRING=r'"(?:\\.|[^"\\])*"'
+HOW_OL='<ol class="how" data-rol="orientacion"><li>{{ tHow1 }}</li><li>{{ tHow2 }}</li><li>{{ tHow3 }}</li></ol>'
+
 def icon(symbol):
     return f'<svg class="ig-game-icon" aria-hidden="true" focusable="false"><use href="{SPRITE}#{symbol}"></use></svg>'
 
@@ -39,42 +42,96 @@ def replace_once(text,old,new,label,required=True):
     if n!=1:raise AssertionError(f'{label}: se esperaban 1 coincidencia; hay {n}')
     return text.replace(old,new,1)
 
+def sentences(value):
+    return [p.strip() for p in re.split(r'(?<=[.!?…])\s+',value.strip()) if p.strip()]
+
 def split_how_steps(value,slug):
-    """Separa el texto editorial existente; no reescribe ni traduce instrucciones."""
-    parts=[p.strip() for p in re.split(r'(?<=[.!?…])\s+',value.strip()) if p.strip()]
-    if len(parts)!=3:
-        raise AssertionError(f'{slug}: Cómo se juega debe tener tres frases; hay {len(parts)} en {value!r}')
-    return parts
+    """Agrupa únicamente el texto editorial existente en tres pasos; no añade contenido."""
+    parts=sentences(value)
+    if len(parts)==3:return parts
+    if slug=='el-traductor-de-casa' and len(parts)==4:
+        return [parts[0],parts[1],parts[2]+' '+parts[3]]
+    if slug=='la-cena-de-los-planes' and len(parts)==2:
+        first=parts[0]
+        if ',' not in first:raise AssertionError(f'{slug}: no se puede separar el primer paso sin inventar texto')
+        a,b=first.split(',',1)
+        b=b.strip()
+        return [a.strip()+'.', b[:1].upper()+b[1:]+('.' if not b.endswith(('.', '!', '?', '…')) else ''), parts[1]]
+    raise AssertionError(f'{slug}: Cómo se juega no se puede agrupar en tres pasos sin revisión: {value!r}')
 
-def ensure_how_list(text,slug):
-    """Convierte el párrafo tHow existente en un ol de tres pasos usando el mismo STR ES/EN."""
-    how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
-    if how:
-        if 'data-rol="orientacion"' not in how.group(0):
-            text,n=re.subn(r'<ol\b([^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*)>',r'<ol\1 data-rol="orientacion">',text,count=1,flags=re.I)
-            if n!=1:raise AssertionError(f'{slug}: no se pudo etiquetar Cómo se juega')
-        how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
-        if not how or len(re.findall(r'<li\b',how.group(1),re.I))!=3:
-            raise AssertionError(f'{slug}: Cómo se juega debe conservar exactamente tres pasos reales')
-        return text
-
-    paragraph=r'<p\b[^>]*>\s*\{\{\s*tHow\s*\}\}\s*</p>'
-    replacement='<ol class="how" data-rol="orientacion"><li>{{ tHow1 }}</li><li>{{ tHow2 }}</li><li>{{ tHow3 }}</li></ol>'
-    text,n=re.subn(paragraph,replacement,text,count=1,flags=re.I|re.S)
-    if n!=1:raise AssertionError(f'{slug}: no se encontró el texto existente de Cómo se juega')
-
-    def add_steps(match):
-        value=json.loads(match.group(2))
-        steps=split_how_steps(value,slug)
-        return match.group(1)+match.group(2)+', howSteps: '+json.dumps(steps,ensure_ascii=False)
-
-    text,nsteps=re.subn(r'(\bhow\s*:\s*)("(?:\\.|[^"\\])*")(?=\s*,)',add_steps,text)
-    if nsteps<2:raise AssertionError(f'{slug}: faltan las instrucciones ES/EN en STR')
+def expose_steps(text,slug):
     text,n=re.subn(r'\btHow\s*:\s*T\.how\s*,',
                    'tHow: T.how, tHow1: T.howSteps[0], tHow2: T.howSteps[1], tHow3: T.howSteps[2],',
                    text,count=1)
-    if n!=1:raise AssertionError(f'{slug}: no se encontró la salida tHow del runtime')
+    if n==1:return text
+    # Páginas sin T.how: se añaden junto a tLede, que existe en el marco común.
+    text,n=re.subn(r'(\btLede\s*:\s*T\.lede\s*,)',
+                   r'\1 tHow1: T.howSteps[0], tHow2: T.howSteps[1], tHow3: T.howSteps[2],',
+                   text,count=1)
+    if n!=1:raise AssertionError(f'{slug}: no se pudo exponer tHow1/2/3')
     return text
+
+def inject_after_lede(text,slug):
+    pattern=r'(<p\b[^>]*>\s*\{\{\s*tLede\s*\}\}\s*</p>)'
+    text,n=re.subn(pattern,r'\1'+HOW_OL,text,count=1,flags=re.I|re.S)
+    if n!=1:raise AssertionError(f'{slug}: no se encontró el lede para colocar Cómo se juega')
+    return text
+
+def add_steps_after_key(text,slug,key,step_builder):
+    """Añade howSteps después de cada literal de la clave indicada, ES y EN, usando solo ese texto."""
+    pattern=rf'(\b{re.escape(key)}\s*:\s*)({JS_STRING})(?=\s*,)'
+    count=0
+    def repl(m):
+        nonlocal count
+        value=json.loads(m.group(2));steps=step_builder(value,count);count+=1
+        if len(steps)!=3:raise AssertionError(f'{slug}: {key} no produjo tres pasos')
+        return m.group(1)+m.group(2)+', howSteps: '+json.dumps(steps,ensure_ascii=False)
+    text,n=re.subn(pattern,repl,text)
+    if n<2:raise AssertionError(f'{slug}: faltan las versiones ES/EN de {key}')
+    return text
+
+def ensure_how_list(text,slug):
+    existing=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
+    if existing:
+        if 'data-rol="orientacion"' not in existing.group(0):
+            text,n=re.subn(r'<ol\b([^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*)>',r'<ol\1 data-rol="orientacion">',text,count=1,flags=re.I)
+            if n!=1:raise AssertionError(f'{slug}: no se pudo etiquetar Cómo se juega')
+        existing=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
+        if not existing or len(re.findall(r'<li\b',existing.group(1),re.I))!=3:
+            raise AssertionError(f'{slug}: Cómo se juega debe conservar exactamente tres pasos reales')
+        return text
+
+    # Dos juegos no tenían propiedad how: sus instrucciones ya estaban en otros campos.
+    if slug=='el-mapa-del-tesoro-de-casa':
+        text=add_steps_after_key(text,slug,'hintMark',lambda value,_: split_how_steps(value,slug))
+        text=inject_after_lede(text,slug)
+        return expose_steps(text,slug)
+
+    if slug=='las-cinco-cosas':
+        ledes=[json.loads(v) for v in re.findall(r'\blede\s*:\s*('+JS_STRING+r')(?=\s*,)',text)]
+        notes=[json.loads(v) for v in re.findall(r'\bimgNote\s*:\s*('+JS_STRING+r')(?=\s*,)',text)]
+        if len(ledes)<2 or len(notes)<2:raise AssertionError(f'{slug}: faltan lede/imgNote ES/EN')
+        built=[]
+        for lede,note in zip(ledes,notes):
+            lp=sentences(lede);np=sentences(note)
+            if not lp or len(np)!=2:raise AssertionError(f'{slug}: instrucciones existentes no tienen la forma esperada')
+            built.append([lp[-1],np[0],np[1]])
+        idx=0
+        pattern=rf'(\bimgNote\s*:\s*)({JS_STRING})(?=\s*,)'
+        def repl_note(m):
+            nonlocal idx
+            steps=built[idx];idx+=1
+            return m.group(1)+m.group(2)+', howSteps: '+json.dumps(steps,ensure_ascii=False)
+        text,n=re.subn(pattern,repl_note,text)
+        if n<2:raise AssertionError(f'{slug}: no se pudieron asociar los pasos ES/EN')
+        text=inject_after_lede(text,slug)
+        return expose_steps(text,slug)
+
+    paragraph=r'<p\b[^>]*>\s*\{\{\s*tHow\s*\}\}\s*</p>'
+    text,n=re.subn(paragraph,HOW_OL,text,count=1,flags=re.I|re.S)
+    if n!=1:raise AssertionError(f'{slug}: no se encontró el texto existente de Cómo se juega')
+    text=add_steps_after_key(text,slug,'how',lambda value,_: split_how_steps(value,slug))
+    return expose_steps(text,slug)
 
 def apply_common(text,slug):
     for link in (TOKENS,CSS):
@@ -93,7 +150,6 @@ def apply_common(text,slug):
     if 'Juego interactivo · sin tiempo · sin puntuación' not in text:
         text,n=re.subn(r'(</h1>)',r'\1<p class="ig-game-meta">Juego interactivo · sin tiempo · sin puntuación</p>',text,count=1,flags=re.I)
         if n!=1:raise AssertionError(f'{slug}: falta h1')
-    # El marco aporta una sola región de estado. Si la página ya tenía una, se conserva.
     status_count=len(re.findall(r'role=["\']status["\']',text,re.I))
     if status_count==0:
         text=text.replace('</main>',bar_html()+'</main>',1)
@@ -103,7 +159,6 @@ def apply_common(text,slug):
         raise AssertionError(f'{slug}: hay {status_count} regiones role=status antes del marco')
     for old,new in COLOR_MAP.items():
         text=re.sub(re.escape(old),new,text,flags=re.I)
-    # Revisión editorial común: no convertir una ronda en examen ni pedir insistir.
     text=re.sub(r'\bprueba otra vez\b','si te sirve, puedes probar otra forma',text,flags=re.I)
     text=re.sub(r'\btry again\b','if it helps, you can try another way',text,flags=re.I)
     return text
