@@ -39,6 +39,43 @@ def replace_once(text,old,new,label,required=True):
     if n!=1:raise AssertionError(f'{label}: se esperaban 1 coincidencia; hay {n}')
     return text.replace(old,new,1)
 
+def split_how_steps(value,slug):
+    """Separa el texto editorial existente; no reescribe ni traduce instrucciones."""
+    parts=[p.strip() for p in re.split(r'(?<=[.!?…])\s+',value.strip()) if p.strip()]
+    if len(parts)!=3:
+        raise AssertionError(f'{slug}: Cómo se juega debe tener tres frases; hay {len(parts)} en {value!r}')
+    return parts
+
+def ensure_how_list(text,slug):
+    """Convierte el párrafo tHow existente en un ol de tres pasos usando el mismo STR ES/EN."""
+    how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
+    if how:
+        if 'data-rol="orientacion"' not in how.group(0):
+            text,n=re.subn(r'<ol\b([^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*)>',r'<ol\1 data-rol="orientacion">',text,count=1,flags=re.I)
+            if n!=1:raise AssertionError(f'{slug}: no se pudo etiquetar Cómo se juega')
+        how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
+        if not how or len(re.findall(r'<li\b',how.group(1),re.I))!=3:
+            raise AssertionError(f'{slug}: Cómo se juega debe conservar exactamente tres pasos reales')
+        return text
+
+    paragraph=r'<p\b[^>]*>\s*\{\{\s*tHow\s*\}\}\s*</p>'
+    replacement='<ol class="how" data-rol="orientacion"><li>{{ tHow1 }}</li><li>{{ tHow2 }}</li><li>{{ tHow3 }}</li></ol>'
+    text,n=re.subn(paragraph,replacement,text,count=1,flags=re.I|re.S)
+    if n!=1:raise AssertionError(f'{slug}: no se encontró el texto existente de Cómo se juega')
+
+    def add_steps(match):
+        value=json.loads(match.group(2))
+        steps=split_how_steps(value,slug)
+        return match.group(1)+match.group(2)+', howSteps: '+json.dumps(steps,ensure_ascii=False)
+
+    text,nsteps=re.subn(r'(\bhow\s*:\s*)("(?:\\.|[^"\\])*")(?=\s*,)',add_steps,text)
+    if nsteps<2:raise AssertionError(f'{slug}: faltan las instrucciones ES/EN en STR')
+    text,n=re.subn(r'\btHow\s*:\s*T\.how\s*,',
+                   'tHow: T.how, tHow1: T.howSteps[0], tHow2: T.howSteps[1], tHow3: T.howSteps[2],',
+                   text,count=1)
+    if n!=1:raise AssertionError(f'{slug}: no se encontró la salida tHow del runtime')
+    return text
+
 def apply_common(text,slug):
     for link in (TOKENS,CSS):
         if link not in text:text=text.replace('</head>',link+'\n</head>',1)
@@ -49,9 +86,7 @@ def apply_common(text,slug):
     if 'data-ig-game-v1=' not in text:
         text,n=re.subn(r'<main\b([^>]*)>',lambda m:'<main'+m.group(1)+flags+'>',text,count=1,flags=re.I)
         if n!=1:raise AssertionError(f'{slug}: falta <main>')
-    if 'data-rol="orientacion"' not in text:
-        text,n=re.subn(r'<ol\b([^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*)>',r'<ol\1 data-rol="orientacion">',text,count=1,flags=re.I)
-        if n!=1:raise AssertionError(f'{slug}: falta el <ol> real de Cómo se juega')
+    text=ensure_how_list(text,slug)
     how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
     if not how or len(re.findall(r'<li\b',how.group(1),re.I))!=3:
         raise AssertionError(f'{slug}: Cómo se juega debe conservar exactamente tres pasos reales')
