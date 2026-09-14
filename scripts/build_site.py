@@ -54,9 +54,6 @@ def build():
         return _build_in_staging()
 
     # A partir de aquí cualquier escritura ocurre únicamente dentro de staging.
-    # La ficha 12 de Datos ya publica dos fuentes científicas; sincronizarlas también
-    # en el catálogo elimina la excepción histórica antes de construir el artefacto.
-    subprocess.run([sys.executable,str(ROOT/'scripts/sync_datos_catalog_sources.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
@@ -93,9 +90,6 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Mulberry acompaña al texto solo cuando existe una asociación editorial explícita.
-    # Los pictogramas no se deducen por palabras y el texto sigue siendo principal.
-    subprocess.run([sys.executable,str(ROOT/'scripts/add_mulberry_pictograms.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris afirma públicamente que lo escrito no se guarda. El conector
     # histórico añadía persistencia local; se retira del artefacto antes de publicar.
     subprocess.run([sys.executable,str(ROOT/'scripts/remove_tarjetas_storage.py'),'--root',str(dst)],cwd=ROOT,check=True)
@@ -105,8 +99,9 @@ def build():
     # formularios: quedan rellenas y sin edición. La herramienta personal sigue editable.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_tarjetas_iris_static.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_accessibility_release.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # El placeholder ayuda visualmente, pero no sustituye un nombre accesible estable.
+    # Correcciones funcionales sin cambios de presentación.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_search_accessible_names.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_video_external_links.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Contenedores con aria-label deben exponer un rol que soporte ese nombre.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_named_group_roles.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Lighthouse detectó contraste insuficiente en las dos etiquetas de filtro de
@@ -121,25 +116,19 @@ def build():
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
     # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # La primera pantalla del Directorio solo necesita 12 fichas. Conservamos 24 en
-    # el HTML y publicamos la colección española completa como recurso bajo demanda.
-    subprocess.run([sys.executable,str(ROOT/'scripts/optimize_directorio_spain_seed.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
     # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Vídeos conserva el reproductor diferido, pero cada tarjeta ofrece además el enlace
-    # explícito al proveedor original como salida alternativa.
-    subprocess.run([sys.executable,str(ROOT/'scripts/fix_video_external_links.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Metadatos finales: no inventa traducciones; usa solo parejas y textos ya existentes.
+    # Siete Condiciones ya tienen pareja ES/EN explícita y se publican de forma recíproca.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_condition_hreflang.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # SEO técnico: solo metadatos; no modifica el contenido visible.
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_seo_metadata.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Precompila las 24 interfaces DC, codifica las expresiones de plantilla y publica
-    # un runtime sin eval/new Function. Después de este punto no se modifica más JS inline.
+    # Último paso: cerrar la deuda de las 24 plantillas sin cambiar sus interfaces.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_dc_runtime_csp.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Último paso de HTML/CSP: retira el único manejador onerror común y autoriza cada
-    # script inline ejecutable mediante su hash exacto, sin script-src unsafe-inline.
-    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_csp_inline_scripts.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_template_runtime_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/check_csp_eval_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)

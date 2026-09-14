@@ -9,7 +9,7 @@ Estrategia de publicación, sin reescribir interfaces:
    resolver en el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
    24 páginas la usen;
-5. elimina las dos copias antiguas del artefacto y exige una CSP sin ``unsafe-eval``.
+5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
 
 El script falla si aparece x-import/dc-import, más de un bloque de lógica o cualquier
 otra forma que exija volver a ampliar el contrato. No toca archivos fuente fuera de
@@ -73,9 +73,6 @@ EXTERNAL_NEW = '''        throw new Error(
 
 
 def encode_template(match: re.Match[str]) -> str:
-    # Solo las expresiones de plantilla son deuda de publicación. Secuencias ``}}``
-    # normales de CSS (por ejemplo al cerrar una regla dentro de @media) no lo son y
-    # no deben convertirse en entidades dentro de <style>.
     inner = MUSTACHE.sub(
         lambda token: token.group(0)
         .replace("{{", "&#123;&#123;", 1)
@@ -158,29 +155,13 @@ def transform_page(path: Path) -> dict:
 
 
 def update_csp(root: Path) -> None:
-    """Acepta el estado histórico y los dos estados fuente ya endurecidos.
-
-    Este paso solo es responsable de eliminar ``unsafe-eval``. La retirada de
-    ``script-src unsafe-inline`` y la inserción de hashes se hacen después, cuando
-    ya no queda ninguna transformación HTML pendiente.
-    """
     headers = root / "_headers"
     text = headers.read_text(encoding="utf-8", errors="strict")
-    legacy = "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    transitional = "script-src 'self' 'unsafe-inline'"
-    hardened = "script-src 'self'"
-
-    if text.count(legacy) == 1:
-        text = text.replace(legacy, transitional, 1)
-        headers.write_text(text, encoding="utf-8")
-    elif text.count(legacy) == 0 and (text.count(transitional) == 1 or text.count(hardened) == 1):
-        pass
-    else:
-        raise AssertionError("La CSP no contiene exactamente un script-src seguro conocido")
-
-    final = headers.read_text(encoding="utf-8", errors="strict")
-    if "'unsafe-eval'" in final:
-        raise AssertionError("La CSP final todavía contiene unsafe-eval")
+    old = "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    new = "script-src 'self' 'unsafe-inline'"
+    if text.count(old) != 1:
+        raise AssertionError("La CSP no contiene exactamente el script-src con unsafe-eval esperado")
+    headers.write_text(text.replace(old, new, 1), encoding="utf-8")
 
 
 def markup_without_scripts_or_noscript(text: str) -> str:

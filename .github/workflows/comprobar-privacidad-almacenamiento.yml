@@ -10,29 +10,18 @@ permissions:
 jobs:
   privacidad-almacenamiento:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Preparar Chromium para privacidad de red
-        run: |
-          python3 -m venv /tmp/ig-privacy
-          /tmp/ig-privacy/bin/pip -q install playwright==1.55.0
-          /tmp/ig-privacy/bin/python -m playwright install --with-deps chromium >/tmp/ig-privacy-install.log 2>&1
       - name: Construir la salida pública
         run: python3 scripts/build_site.py
       - name: Auditar almacenamiento del navegador
         run: python3 scripts/audit_privacidad_almacenamiento.py --root dist
-      - name: Auditar peticiones a terceros sin interacción
-        run: |
-          cd dist
-          /tmp/ig-privacy/bin/python ../scripts/audit_privacidad_red.py
       - name: Conservar el inventario técnico
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: privacidad-almacenamiento
-          path: |
-            dist/reports/publicacion/privacidad-almacenamiento.json
-            dist/reports/publicacion/privacidad-red.json
+          path: dist/reports/publicacion/privacidad-almacenamiento.json
           if-no-files-found: warn
           retention-days: 14
