@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 88" role="img" aria-labelledby="t-b20">
+<title id="t-b20">Billete esquemático de 20 euros · no es dinero real</title>
+<defs><pattern id="tr-b20" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#17395c" stroke-opacity=".16" stroke-width="1.6"></line></pattern></defs>
+<rect x="2.5" y="2.5" width="171" height="83" rx="7" fill="#8fa8c4" stroke="#17395c" stroke-width="2.6"></rect>
+<rect x="2.5" y="2.5" width="171" height="83" rx="7" fill="url(#tr-b20)"></rect>
+<rect x="9" y="9" width="158" height="70" rx="4" fill="none" stroke="#17395c" stroke-width="1.2" stroke-opacity=".5"></rect>
+<rect x="14" y="19.36" width="5" height="49.28" rx="2" fill="#17395c" fill-opacity=".55"></rect><rect x="23" y="19.36" width="5" height="49.28" rx="2" fill="#17395c" fill-opacity=".55"></rect><rect x="32" y="19.36" width="5" height="49.28" rx="2" fill="#17395c" fill-opacity=".55"></rect>
+<text x="109.12" y="49.28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="36.96" fill="#17395c">20</text>
+<text x="109.12" y="68.64" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="13.2" letter-spacing="1.2" fill="#17395c">EURO</text>
+<text x="164" y="78" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8.8" fill="#17395c">NO ES DINERO REAL · IRIS GREEN</text>
+</svg>

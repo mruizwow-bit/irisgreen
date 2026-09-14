@@ -86,6 +86,7 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_svg_metadata.py'),'--source',str(ROOT/'assets'),'--dest',str(dst/'assets')],cwd=ROOT,check=True)
 
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_resources_navigation.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/run_accessibility_descriptions_part1.py'),'--root',str(dst),'--apply'],cwd=ROOT,check=True)
