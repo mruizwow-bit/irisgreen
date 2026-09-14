@@ -6,7 +6,7 @@ Este informe no cambia producción. `reports/` está fuera de `dist` por contrat
 
 ## Resultado
 
-Los cinco tickets del encargo ya estaban resueltos en el `main` restaurado antes de abrir esta rama. Conforme a la regla «si alguno se cerró por otra vía, se anota y no se toca», no se modifica ninguna de sus implementaciones.
+Cuatro partes funcionales del encargo ya estaban resueltas en el `main` restaurado antes de abrir esta rama. Conforme a la regla «si alguno se cerró por otra vía, se anota y no se toca», no se modifica ninguna de esas implementaciones. B.5 sí conserva una entrega pendiente: documentar el plan de retirada completa de `unsafe-inline`; `unsafe-eval` ya fue eliminado de la salida pública por una implementación anterior.
 
 ### B.1 · `frame-src` y reproductores — CERRADO
 
@@ -60,11 +60,11 @@ El historial contiene `c4f88d6ce9beec36dbc11a8b37b61f5a84b6b7dd` (`Corrige metad
 
 No se toca SEO en este PR.
 
-### B.5 · Retirada de `unsafe-inline` / `unsafe-eval` — CERRADO MÁS ALLÁ DEL PLAN
+### B.5 · Retirada de `unsafe-inline` / `unsafe-eval` — PARCIALMENTE CERRADO
 
-El encargo pedía solo un plan, pero el `main` actual ya contiene y ejecuta la migración de `unsafe-eval`:
+La parte `unsafe-eval` del ticket fue ejecutada antes de este encargo y no se reabre:
 
-- `scripts/finalize_dc_runtime_csp.py` inventaría exactamente 24 páginas DC;
+- `scripts/finalize_dc_runtime_csp.py` identifica exactamente 24 páginas DC;
 - precompila el bloque de lógica de cada una durante el build;
 - publica un runtime CSP-safe sin `eval()` ni `new Function()`;
 - retira los runtimes antiguos de `dist`;
@@ -73,13 +73,12 @@ El encargo pedía solo un plan, pero el `main` actual ya contiene y ejecuta la m
 
 `scripts/check_csp_eval_scope.py` impide reintroducir `eval()`, `new Function()` o `unsafe-eval` en la salida pública.
 
-La fuente `_headers` conserva todavía la CSP transicional con `unsafe-eval`; la endurece el último paso del build. Esa es la arquitectura ya restaurada en `main` y este PR no la modifica.
-
-No se escribe un segundo plan ni se cambia CSP en este PR.
+La salida pública sigue necesitando `script-src 'unsafe-inline'`. La entrega pendiente de B.5 es únicamente el plan escrito para retirarlo con seguridad. Ese plan se añade en `reports/plan-csp-unsafe-inline-2026-09-14.md`; **no se ejecuta en este PR y no se modifica la CSP**.
 
 ## Archivos tocados
 
-- `reports/tickets-web-2026-09-14.md` — este informe únicamente.
+- `reports/tickets-web-2026-09-14.md` — este informe.
+- `reports/plan-csp-unsafe-inline-2026-09-14.md` — plan de B.5, sin ejecución.
 
 ## Comprobaciones
 
@@ -95,4 +94,4 @@ No proceden: este PR no cambia ninguna interfaz ni producción.
 
 ## Decisiones pendientes para la propietaria
 
-Ninguna.
+Ninguna para este PR. La ejecución del plan B.5 requiere un PR separado y revisión previa, tal como pide el encargo.
