@@ -1,0 +1,16 @@
+name: Comprobar rutinas visuales
+on:
+  pull_request:
+    paths:
+      - 'es/taller/rutinas/**'
+      - 'assets/rutinas-visuales*'
+      - 'assets/mulberry-rutinas/**'
+      - 'scripts/test_rutinas_visuales.py'
+      - '.github/workflows/rutinas-visuales.yml'
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar estructura y decisiones cerradas
+        run: python3 scripts/test_rutinas_visuales.py .
