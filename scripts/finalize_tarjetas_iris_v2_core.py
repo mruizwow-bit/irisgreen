@@ -108,18 +108,23 @@ def make_static(match: re.Match[str], rel: str) -> str:
 
 
 def tool_is_editable(tool_text: str) -> bool:
-    """Comprueba función editable, no una clase CSS concreta del diseño anterior."""
+    """La herramienta personal es editable y no expone controles editoriales A/B/C."""
     required = (
         'data-ti-tool',
         'id="ti-title"',
         'id="ti-dificultad"',
         'id="ti-ayuda"',
         'id="ti-necesito"',
-        'data-ti-variant="A"',
-        'data-ti-variant="B"',
-        'data-ti-variant="C"',
+        'id="ti-print"',
+        'id="ti-copy"',
+        'id="ti-reset"',
     )
-    return all(marker in tool_text for marker in required) and tool_text.count('<textarea') >= 3
+    forbidden = ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos=')
+    return (
+        all(marker in tool_text for marker in required)
+        and tool_text.count('<textarea') == 3
+        and not any(marker in tool_text for marker in forbidden)
+    )
 
 
 def main() -> None:
@@ -165,7 +170,7 @@ def main() -> None:
     tool = root / "es/tarjetas-iris/index.html"
     tool_text = tool.read_text(encoding="utf-8")
     if not tool_is_editable(tool_text):
-        raise AssertionError("La herramienta personal Tarjetas Iris debe seguir siendo editable")
+        raise AssertionError("La herramienta personal Tarjetas Iris debe seguir siendo editable y sencilla")
 
     print(json.dumps({
         "interior_cards": counts,
@@ -178,6 +183,7 @@ def main() -> None:
         "print_action": True,
         "status_initially_empty": True,
         "personal_tool_editable": True,
+        "personal_tool_exposes_variants": False,
         "result": "accepted",
     }, ensure_ascii=False))
 
