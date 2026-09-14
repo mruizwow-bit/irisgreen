@@ -28,8 +28,6 @@ def main() -> None:
         raise FileNotFoundError(page)
     text = page.read_text(encoding='utf-8')
 
-    # Herramienta visual v2: el estado ya está presente y el runtime externo se
-    # encarga de éxito/error sin cambiar la etiqueta del botón.
     if 'id="ti-copy"' in text:
         if not re.search(r'id=["\']ti-status["\'][^>]*role=["\']status["\'][^>]*aria-live=["\']polite["\']', text, re.I):
             raise ValueError('La nueva Tarjeta Iris no tiene región de estado accesible para copiar')
@@ -37,7 +35,13 @@ def main() -> None:
         if not runtime.is_file():
             raise FileNotFoundError(runtime)
         js = runtime.read_text(encoding='utf-8')
-        if "$('#ti-copy').addEventListener('click'" not in js or 'navigator.clipboard' not in js or 'copyFail' not in js:
+        required = (
+            "$('#ti-copy').addEventListener('click'",
+            'navigator.clipboard',
+            'Texto copiado.',
+            'No se ha podido copiar.',
+        )
+        if not all(marker in js for marker in required):
             raise ValueError('La nueva Tarjeta Iris no contiene la lógica accesible de copia')
         print({'pagina':'es/tarjetas-iris/index.html','copy_status':True,'button_label_stable':True,'runtime':'tarjetas-iris-tool.js'})
         return
