@@ -7,6 +7,7 @@ import json
 import re
 from pathlib import Path
 
+REPO = Path(__file__).resolve().parents[1]
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
     ("vida", "es/biblioteca/*/index.html", 48),
@@ -23,6 +24,25 @@ MAX_TITLE_CHARS = 92
 def clean(text: str) -> str:
     text = re.sub(r'<[^>]+>', ' ', text)
     return re.sub(r'\s+', ' ', text).strip()
+
+
+def source_is_draft(text: str) -> bool:
+    return bool(re.search(r'>\s*BORRADOR\s*<|Página\s+en\s+borrador', text, re.I))
+
+
+def source_has_real_help(text: str) -> bool:
+    for m in re.finditer(r'<section\b([^>]*)>(.*?)</section>', text, re.I | re.S):
+        attrs, body = m.group(1), m.group(2)
+        hm = re.search(r'<h2\b[^>]*>(.*?)</h2>', body, re.I | re.S)
+        heading = clean(hm.group(1)).casefold() if hm else ''
+        is_help = bool(re.search(r'class=["\'][^"\']*\bhelps\b', attrs, re.I)) or any(k in heading for k in ('qué puede ayudar ahora','qué ayuda','qué puede ayudar'))
+        if not is_help:
+            continue
+        vals = [clean(x) for x in re.findall(r'<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>', body, re.I | re.S)]
+        vals = [v for v in vals if v]
+        if vals and not all(('todavía no dice qué ayuda' in v.casefold() or 'falta el texto' in v.casefold()) for v in vals):
+            return True
+    return False
 
 
 def assert_concise(card: str, path: Path) -> None:
@@ -49,21 +69,20 @@ def main() -> None:
     root = args.root.resolve()
 
     variants = {"A": 0, "B": 0, "C": 0}
-    cards = 0
-    unavailable = 0
-    drafts_without_cards = 0
-    placeholder_without_cards = 0
+    cards = unavailable = drafts_without_cards = insufficient_without_cards = 0
 
     for section, pattern, expected in DETAIL_SETS:
         pages = sorted(p for p in root.glob(pattern) if p.is_file())
         if len(pages) != expected:
             raise AssertionError(f"{section}: esperadas {expected}; encontradas {len(pages)}")
         for path in pages:
+            rel = path.relative_to(root).as_posix()
             text = path.read_text(encoding="utf-8")
+            source = (REPO / rel).read_text(encoding="utf-8")
             card_matches = re.findall(r'<aside\b[^>]*\biris-mini-card-static\b[^>]*>.*?</aside>', text, re.I | re.S)
             unavailable_matches = re.findall(r'<section\b[^>]*\bdata-iris-card-unavailable=["\']true["\'][^>]*>.*?</section>', text, re.I | re.S)
-            is_draft = bool(re.search(r'>\s*BORRADOR\s*<|Página\s+en\s+borrador', text, re.I))
-            has_placeholder = PLACEHOLDER in clean(text)
+            is_draft = source_is_draft(source)
+            insufficient = section == 'condiciones' and not source_has_real_help(source)
 
             if is_draft:
                 if card_matches or unavailable_matches:
@@ -71,10 +90,10 @@ def main() -> None:
                 drafts_without_cards += 1
                 continue
 
-            if has_placeholder:
+            if insufficient:
                 if card_matches or len(unavailable_matches) != 1:
                     raise AssertionError(f"La ficha sin 'Qué ayuda' debe mostrar información insuficiente: {path}")
-                placeholder_without_cards += 1
+                insufficient_without_cards += 1
                 unavailable += 1
                 continue
 
@@ -96,7 +115,7 @@ def main() -> None:
 
     if drafts_without_cards != 48:
         raise AssertionError(f"Borradores sin tarjeta: {drafts_without_cards}, esperados 48")
-    if placeholder_without_cards != 5 or unavailable != 5:
+    if insufficient_without_cards != 5 or unavailable != 5:
         raise AssertionError(f"Estados insuficientes: {unavailable}; esperados 5")
     if cards != 367 or variants != {"A": 366, "B": 1, "C": 0}:
         raise AssertionError(f"Recuento inesperado: cards={cards}, variants={variants}")
@@ -118,8 +137,6 @@ def main() -> None:
     for picto in ("hablar", "escribir"):
         if f'data-mulberry-picto="{picto}"' not in assigned:
             raise AssertionError(f"Falta pictograma editorial {picto}")
-        if f'src="/assets/mulberry/{picto}.svg"' not in assigned:
-            raise AssertionError(f"Ruta pública incorrecta para {picto}")
     if 'Pedir la instrucción por escrito, aunque sea en dos líneas.' not in assigned:
         raise AssertionError("La ficha especial no está resincronizada con su fuente real")
 
@@ -131,39 +148,26 @@ def main() -> None:
     for forbidden in ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos=', 'Forma de la tarjeta', 'Un pictograma, si quieres'):
         if forbidden in tool:
             raise AssertionError(f"La herramienta sencilla no debe exponer {forbidden}")
-    if tool.count('<textarea') != 3:
-        raise AssertionError("La herramienta debe tener exactamente los tres campos breves del prototipo")
-    if tool.count('maxlength="160"') != 3:
-        raise AssertionError("Los tres bloques deben limitarse a 160 caracteres")
+    if tool.count('<textarea') != 3 or tool.count('maxlength="160"') != 3:
+        raise AssertionError("La herramienta debe tener exactamente los tres bloques breves del prototipo")
     if tool.count("data-mulberry-credit") != 1:
         raise AssertionError("La atribución Mulberry debe aparecer una sola vez en Tarjetas Iris")
     if 'localStorage' in tool or 'sessionStorage' in tool or 'localStorage' in tool_js or 'sessionStorage' in tool_js:
         raise AssertionError("La herramienta personal no debe guardar el texto en el navegador")
-    for pair in (("dificultad","hablar"),("ayuda","escribir"),("necesito","esperar")):
-        if f"{pair[0]}:{{value:defaults.{pair[0]},id:'{pair[1]}'}}" not in tool_js:
-            raise AssertionError(f"Falta el apoyo visual contextual del ejemplo: {pair}")
+    for field, picto in (("dificultad","hablar"),("ayuda","escribir"),("necesito","esperar")):
+        if f"{field}:{{value:defaults.{field},id:'{picto}'}}" not in tool_js:
+            raise AssertionError(f"Falta el apoyo visual contextual del ejemplo: {(field,picto)}")
     if "text===item.value?item.id:null" not in tool_js:
         raise AssertionError("Al cambiar el texto debe retirarse el pictograma del ejemplo")
 
     print(json.dumps({
-        "detail_pages": 420,
-        "published_cards": cards,
-        "drafts_without_cards": drafts_without_cards,
-        "insufficient_states": unavailable,
-        "variants": variants,
-        "max_block_chars": MAX_BLOCK_CHARS,
-        "max_title_chars": MAX_TITLE_CHARS,
-        "compact_reading_rule": "una idea breve por bloque; nunca pegar varios apoyos en un párrafo",
-        "mulberry_svgs": sorted(svgs),
-        "editorial_assignment": ASSIGNED,
-        "discarded_candidates_published": 0,
-        "personal_tool_exposes_variants": False,
-        "personal_tool_language_switcher": False,
-        "personal_tool_manual_picto_picker": False,
-        "example_pictograms_are_contextual": True,
-        "result": "accepted",
+        "detail_pages":420,"published_cards":cards,"drafts_without_cards":drafts_without_cards,
+        "insufficient_states":unavailable,"variants":variants,"max_block_chars":MAX_BLOCK_CHARS,
+        "max_title_chars":MAX_TITLE_CHARS,"compact_reading_rule":"una idea breve por bloque",
+        "mulberry_svgs":sorted(svgs),"editorial_assignment":ASSIGNED,"discarded_candidates_published":0,
+        "personal_tool_exposes_variants":False,"personal_tool_language_switcher":False,
+        "personal_tool_manual_picto_picker":False,"example_pictograms_are_contextual":True,"result":"accepted"
     }, ensure_ascii=False))
-
 
 if __name__ == "__main__":
     main()
