@@ -1,0 +1,35 @@
+name: Preparar juego Contar y pagar
+on:
+  push:
+    branches:
+      - integracion/juego-contar-y-pagar-20260914
+    paths:
+      - 'scripts/contar-pagar-bundle/**'
+      - '.github/workflows/bootstrap-contar-pagar.yml'
+permissions:
+  contents: write
+jobs:
+  preparar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integracion/juego-contar-y-pagar-20260914
+      - name: Reconstruir los archivos del juego
+        run: |
+          cat scripts/contar-pagar-bundle/part-* | base64 -d > /tmp/contar-pagar.tar.gz
+          echo '55010f903bc5b97678bd62bd5956eda8d446ed11407fbdc6e7c278266d730925  /tmp/contar-pagar.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/contar-pagar.tar.gz -C .
+      - name: Añadir el juego a Jugar
+        run: python3 scripts/patch_jugar_contar_pagar.py
+      - name: Comprobar el juego
+        run: python3 scripts/test_contar_pagar.py .
+      - name: Guardar la integración y retirar el bootstrap
+        run: |
+          rm -rf scripts/contar-pagar-bundle scripts/patch_jugar_contar_pagar.py .github/workflows/bootstrap-contar-pagar.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'Jugar: integrar Contar y pagar'
+          git push origin HEAD:integracion/juego-contar-y-pagar-20260914
