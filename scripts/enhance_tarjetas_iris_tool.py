@@ -15,7 +15,7 @@ CSS = '<link rel="stylesheet" href="/assets/tarjetas-iris-pictogramas.css">'
 JS = '<script defer src="/assets/tarjetas-iris-pictogramas.js"></script>'
 NOTE = ('<p class="iris-picto-note" data-iris-picto-note>'
         'El ejemplo incluye apoyos visuales elegidos para estos textos. '
-        'Si cambias un texto, su pictograma se quita para no asignar un símbolo que no corresponda.'</p>)
+        'Si cambias un texto, su pictograma se quita para no asignar un símbolo que no corresponda.</p>')
 
 APPROVED = {
     'dificultad': {
