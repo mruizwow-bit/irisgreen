@@ -180,11 +180,21 @@ def apply_vera(text):
     return text.replace('listOpen: "Ver lista"','listOpen: "Prefiero la lista"')
 
 def apply_machine(text):
-    text=re.sub(r'\nconst VALID = \[\[0,1,2,3,4,5\], \[0,1,3,2,4,5\]\];\n','\n',text,count=1)
-    text=re.sub(r'\n\s*const isValid = complete && VALID\.some\(\(v\) => v\.every\(\(x, i\) => x === order\[i\]\)\);','',text,count=1)
+    text,n=re.subn(r'\nconst VALID\s*=\s*\[\[0,1,2,3,4,5\],\s*\[0,1,3,2,4,5\]\];\s*\n','\n',text,count=1)
+    if n!=1:raise AssertionError('Máquina: no se encontró la constante VALID para retirarla')
+    text,n=re.subn(r'\n\s*const isValid\s*=\s*complete\s*&&\s*VALID\.some\(\(v\)\s*=>\s*v\.every\(\(x,\s*i\)\s*=>\s*x\s*===\s*order\[i\]\)\);\s*','\n',text,count=1)
+    if n!=1:raise AssertionError('Máquina: no se encontró el cálculo isValid para retirarlo')
     text=text.replace('okTitle: "Tu orden funciona",','okTitle: "Tu orden",').replace('okText: "Empezar tiene pasos. Cada persona tiene su orden bueno. Tú acabas de encontrar el tuyo.",','okText: "Este es el orden que has creado. Si te sirve, puedes probarlo con una tarea pequeña.",').replace('otherTitle: "Este orden es otro",','otherTitle: "Tu orden",').replace('otherText: "Hay dos órdenes que funcionan siempre: el de la lista y el que prepara la mesa antes de cortar el trabajo. El tuyo es distinto. Pruébalo mañana y mira si te sirve: si te sirve, es bueno.",','otherText: "Este es el orden que has creado. Si te sirve, puedes probarlo con una tarea pequeña.",')
     text=text.replace('okTitle: "Your order works",','okTitle: "Your order",').replace('okText: "Starting has steps. Each person has their own good order. You have just found yours.",','okText: "This is the order you created. If it helps, you can try it with a small task.",').replace('otherTitle: "This order is a different one",','otherTitle: "Your order",').replace('otherText: "Two orders always work: the list order, and the one that gets the table ready before cutting the work up. Yours is different. Try it tomorrow and see: if it works for you, it is good.",','otherText: "This is the order you created. If it helps, you can try it with a small task.",')
-    text=text.replace('resultTitle: isValid ? T.okTitle : T.otherTitle,\n      resultText: isValid ? T.okText : T.otherText,\n      resultColor: isValid ? "#16708a" : "#5a49a8",\n      resultBg: isValid ? "rgba(31,139,168,0.08)" : "rgba(90,73,168,0.09)",','resultTitle: T.okTitle,\n      resultText: T.okText,\n      resultColor: "#5a49a8",\n      resultBg: "rgba(90,73,168,0.09)",')
+    result_pattern=(
+        r'resultTitle:\s*isValid\s*\?\s*T\.okTitle\s*:\s*T\.otherTitle,[^\n]*\n'
+        r'\s*resultText:\s*isValid\s*\?\s*T\.okText\s*:\s*T\.otherText,[^\n]*\n'
+        r'\s*resultColor:\s*isValid\s*\?[^\n]*\n'
+        r'\s*resultBg:\s*isValid\s*\?[^\n]*'
+    )
+    replacement='resultTitle: T.okTitle,\n      resultText: T.okText,\n      resultColor: "#5a49a8",\n      resultBg: "rgba(90,73,168,0.09)",'
+    text,n=re.subn(result_pattern,replacement,text,count=1)
+    if n!=1:raise AssertionError('Máquina: no se pudo retirar la bifurcación de resultado isValid')
     text=text.replace('<p style="margin: 0 0 16px; font-size: 17px; color: var(--muted,#43566d); max-width: 46em;">{{ tDare }}</p>','<details class="ig-game-other-ways"><summary>Otras maneras que hemos visto</summary><p>{{ tDare }}</p></details>')
     return text
 
