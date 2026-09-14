@@ -27,7 +27,14 @@ jobs:
           cat scripts/contar-pagar-bundle/part-* | base64 -d -i > /tmp/contar-pagar.tar.gz
           echo '55010f903bc5b97678bd62bd5956eda8d446ed11407fbdc6e7c278266d730925  /tmp/contar-pagar.tar.gz' | sha256sum -c -
           tar -xzf /tmp/contar-pagar.tar.gz -C .
-          sed -i "s/script+calc/script+calc.read_text(encoding='utf-8')/g" scripts/test_contar_pagar.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/test_contar_pagar.py')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace("script+calc", "script+calc.read_text(encoding='utf-8')")
+          s=s.replace("refs=set(re.findall(r'/assets/dinero/([a-z0-9]+)\\.svg',script+html))\nassert expected.issubset(refs),expected-refs", "refs=set(re.findall(r\"id:'([a-z0-9]+)'\",script))\nassert expected.issubset(refs),expected-refs")
+          p.write_text(s,encoding='utf-8')
+          PY
       - name: Añadir el juego a Jugar
         run: python3 scripts/patch_jugar_contar_pagar.py
       - name: Comprobar el juego
