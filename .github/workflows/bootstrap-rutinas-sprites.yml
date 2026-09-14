@@ -1,0 +1,35 @@
+name: Preparar pictogramas de Rutinas
+on:
+  push:
+    branches:
+      - integracion/recursos-rutinas-visuales-20260914
+    paths:
+      - 'assets/mulberry-rutinas/sources.csv'
+      - 'scripts/generate_rutinas_sprites.py'
+      - '.github/workflows/bootstrap-rutinas-sprites.yml'
+permissions:
+  contents: write
+jobs:
+  generar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integracion/recursos-rutinas-visuales-20260914
+      - name: Descargar Mulberry 3.6.1
+        run: curl -fL --retry 3 -o /tmp/mulberry-symbols.zip https://github.com/mulberrysymbols/mulberry-symbols/releases/download/v3.6.1/mulberry-symbols.zip
+      - name: Generar los ocho sprites
+        run: python3 scripts/generate_rutinas_sprites.py /tmp/mulberry-symbols.zip
+      - name: Actualizar la URL impresa del recurso
+        run: sed -i 's#irisgreen.eu/es/taller/rutinas/#irisgreen.eu/es/recursos/rutinas-visuales/#g' assets/rutinas-visuales.js
+      - name: Comprobar el recurso completo
+        run: python3 scripts/test_rutinas_visuales.py .
+      - name: Guardar los pictogramas en la rama y retirar este bootstrap
+        run: |
+          rm .github/workflows/bootstrap-rutinas-sprites.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add assets/mulberry-rutinas/sprite-*.svg assets/rutinas-visuales.js .github/workflows/bootstrap-rutinas-sprites.yml
+          git commit -m "Rutinas visuales: incorporar los 58 pictogramas Mulberry"
+          git push origin HEAD:integracion/recursos-rutinas-visuales-20260914
