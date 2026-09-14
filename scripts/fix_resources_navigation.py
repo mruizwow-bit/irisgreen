@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Hace visible la familia Recursos en la navegación pública.
+"""Hace visible y coherente la familia Recursos en la navegación pública.
 
-No mueve rutas ni contenido. En el artefacto ``dist`` sustituye el acceso principal
-que apuntaba directamente a Jugar por el índice ampliable ``/es/recursos/`` y
-actualiza la tarjeta equivalente de la portada aprobada.
+No mueve rutas. En ``dist`` sustituye el acceso principal que apuntaba directamente
+a Jugar por el índice ampliable ``/es/recursos/`` y aplica las correcciones cerradas
+de Rutinas visuales y Tarjetas Iris.
 """
 from __future__ import annotations
 
 import argparse
 import re
 from pathlib import Path
+
+from enhance_tarjetas_iris_tool import run as enhance_tarjetas_tool
+from fix_rutinas_privacy import run as fix_rutinas
 
 
 def fix_header(header: str) -> str:
@@ -45,13 +48,15 @@ def run(root: Path) -> dict:
     hub = root / 'es/recursos/index.html'
     routines = root / 'es/recursos/rutinas-visuales/index.html'
     games = root / 'es/recursos/juegos/index.html'
-    for path in (hub, routines, games):
+    tarjetas = root / 'es/tarjetas-iris/index.html'
+    for path in (hub, routines, games, tarjetas):
         if not path.is_file():
             raise FileNotFoundError(path)
 
     hub_text = hub.read_text(encoding='utf-8')
     assert 'href="/es/recursos/juegos/"' in hub_text
     assert 'href="/es/recursos/rutinas-visuales/"' in hub_text
+    assert 'href="/es/tarjetas-iris/"' in hub_text
 
     changed_headers = 0
     for path in sorted(root.rglob('*.html')):
@@ -95,11 +100,16 @@ def run(root: Path) -> dict:
                 old_header_links.append(path.relative_to(root).as_posix())
     assert not old_header_links, 'Cabeceras que aún saltan directamente a Jugar: ' + ', '.join(old_header_links[:10])
 
+    rutinas_result = fix_rutinas(root)
+    tarjetas_result = enhance_tarjetas_tool(root)
+
     result = {
         'resources_hub': '/es/recursos/',
-        'children': ['/es/recursos/juegos/', '/es/recursos/rutinas-visuales/'],
+        'children': ['/es/recursos/juegos/', '/es/recursos/rutinas-visuales/', '/es/tarjetas-iris/'],
         'headers_updated': changed_headers,
         'home_section': 'Recursos',
+        'rutinas': rutinas_result,
+        'tarjetas_iris': tarjetas_result,
         'result': 'accepted',
     }
     print(result)
