@@ -44,7 +44,7 @@ def main() -> None:
             variants[vm.group(1).upper()] += 1
             total += 1
 
-    if total != 420 or variants != {"A": 419, "B": 0, "C": 1}:
+    if total != 420 or variants != {"A": 419, "B": 1, "C": 0}:
         raise AssertionError(f"Recuento Tarjetas Iris inesperado: total={total}, variantes={variants}")
 
     mulberry = root / "assets/mulberry"
@@ -56,18 +56,20 @@ def main() -> None:
     if (root / "assets/pictos").exists():
         raise AssertionError("No debe existir el antiguo directorio assets/pictos")
     if any("queue" in p.name or "correct" in p.name for p in mulberry.iterdir()):
-        raise AssertionError("Se han publicado candidatos descartados")
+        raise AssertionError("Se han publicado pictogramas descartados")
 
     assigned = (root / ASSIGNED).read_text(encoding="utf-8")
-    if 'data-iris-picto-variant="C"' not in assigned:
-        raise AssertionError("La ficha editorial no conserva variante C")
+    if 'data-iris-picto-variant="B"' not in assigned:
+        raise AssertionError("La ficha editorial debe usar variante B: pictogramas junto a bloques")
+    if 'data-iris-picto-variant="C"' in assigned:
+        raise AssertionError("La variante C se reserva a secuencias reales")
     for picto in ("hablar", "escribir"):
         if f'data-mulberry-picto="{picto}"' not in assigned:
             raise AssertionError(f"Falta pictograma editorial {picto}")
         if f'src="/assets/mulberry/{picto}.svg"' not in assigned:
             raise AssertionError(f"Ruta pública incorrecta para {picto}")
     if assigned.count('alt="" aria-hidden="true"') < 2:
-        raise AssertionError("Los pictogramas deben ser decorativos para tecnologías de apoyo")
+        raise AssertionError("Los pictogramas deben ser decorativos junto al texto visible")
     if "Esto me cuesta" not in assigned or "Me ayuda" not in assigned:
         raise AssertionError("El texto visible no puede ser sustituido por pictogramas")
 
@@ -80,7 +82,7 @@ def main() -> None:
 
     css = (root / "assets/mulberry-pictograms.css").read_text(encoding="utf-8")
     if 'data-mulberry-picto="escribir"' not in css or "48px" not in css:
-        raise AssertionError("Falta la excepción de 48 px solo para escribir en variante C")
+        raise AssertionError("Falta la regla compacta de 48 px para escribir en futuras secuencias C")
 
     print(json.dumps({
         "tarjetas_v2": total,
