@@ -128,12 +128,12 @@ def main() -> None:
     for marker in ('data-ti-tool','id="ti-title"','id="ti-dificultad"','id="ti-ayuda"','id="ti-necesito"','id="ti-print"','id="ti-copy"','id="ti-reset"'):
         if marker not in tool:
             raise AssertionError(f"Falta control esencial de herramienta: {marker}")
-    for forbidden in ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos='):
+    for forbidden in ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos=', 'Forma de la tarjeta', 'Un pictograma, si quieres'):
         if forbidden in tool:
             raise AssertionError(f"La herramienta sencilla no debe exponer {forbidden}")
     if tool.count('<textarea') != 3:
         raise AssertionError("La herramienta debe tener exactamente los tres campos breves del prototipo")
-    if 'maxlength="160"' not in tool or tool.count('maxlength="160"') != 3:
+    if tool.count('maxlength="160"') != 3:
         raise AssertionError("Los tres bloques deben limitarse a 160 caracteres")
     if tool.count("data-mulberry-credit") != 1:
         raise AssertionError("La atribución Mulberry debe aparecer una sola vez en Tarjetas Iris")
@@ -159,6 +159,7 @@ def main() -> None:
         "discarded_candidates_published": 0,
         "personal_tool_exposes_variants": False,
         "personal_tool_language_switcher": False,
+        "personal_tool_manual_picto_picker": False,
         "example_pictograms_are_contextual": True,
         "result": "accepted",
     }, ensure_ascii=False))
