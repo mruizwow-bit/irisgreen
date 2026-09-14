@@ -2,8 +2,9 @@
 """Integra pictogramas editoriales y finaliza las 420 Tarjetas Iris v2.
 
 Este orquestador mantiene el build general sin cambios: primero añade únicamente
-los apoyos visuales aprobados, después ejecuta el finalizador v2 ya validado y,
-por último, comprueba el alcance completo de esta entrega.
+los apoyos visuales aprobados, después ejecuta el finalizador v2 ya validado,
+comprueba las 420 tarjetas interiores y por último aplica a la herramienta
+personal el ejemplo pictográfico aprobado del sistema visual.
 """
 from pathlib import Path
 import sys
@@ -11,6 +12,7 @@ import sys
 from add_mulberry_pictograms import main as add_pictograms
 from finalize_tarjetas_iris_v2_core import main as finalize_v2
 from test_tarjetas_pictogramas import main as validate_delivery
+from enhance_tarjetas_iris_tool import run as enhance_personal_tool
 
 
 ACTION_GROUP_OLD = '<div class="iris-mini-actions" aria-label="Acciones de la Tarjeta Iris">'
@@ -52,5 +54,7 @@ def ensure_action_group_roles(root: Path) -> None:
 if __name__ == "__main__":
     add_pictograms()
     finalize_v2()
-    ensure_action_group_roles(_root_from_argv())
+    root = _root_from_argv()
+    ensure_action_group_roles(root)
     validate_delivery()
+    enhance_personal_tool(root)
