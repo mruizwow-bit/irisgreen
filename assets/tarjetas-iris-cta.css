@@ -137,42 +137,6 @@
 }
 .iris-mini-own:hover{text-decoration-thickness:2px!important}
 .iris-mini-own:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
-
-/* Tarjeta Iris v2: acciones sobre la tarjeta terminada, no edición. */
-.iris-mini-actions{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:.55rem;
-  margin:.85rem 0 .68rem;
-}
-.iris-mini-action{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:44px;
-  padding:.6rem .72rem;
-  border:1px solid var(--iris-accent);
-  border-radius:10px;
-  background:#fff;
-  color:#17395c;
-  font:inherit;
-  font-size:.84rem;
-  font-weight:700;
-  line-height:1.25;
-  cursor:pointer;
-}
-.iris-mini-action:hover{background:var(--iris-soft)}
-.iris-mini-action:focus-visible{outline:3px solid var(--iris-accent);outline-offset:3px}
-.iris-mini-action-status{
-  grid-column:1/-1;
-  min-height:1.3em;
-  margin:0!important;
-  color:#43566d!important;
-  font-size:.78rem!important;
-  line-height:1.35!important;
-}
-.iris-card-print-root{display:none}
-
 .iris-mini-foot{
   display:flex;
   justify-content:space-between;
@@ -207,11 +171,10 @@
 }
 
 html[data-ig-contrast="on"] .iris-cta{background:#fff!important;border-color:#111!important;color:#111!important}
-html[data-ig-contrast="on"] .iris-cta :is(h2,h3,p,a,span,button){color:#111!important}
+html[data-ig-contrast="on"] .iris-cta :is(h2,h3,p,a,span){color:#111!important}
 html[data-ig-contrast="on"] .iris-mini-button{background:#111!important;color:#fff!important;border-color:#111!important}
 html[data-ig-contrast="on"] .iris-mini-own{color:#111!important}
 html[data-ig-contrast="on"] .iris-mini-need{background:#fff!important;border-color:#111!important}
-html[data-ig-contrast="on"] .iris-mini-action{background:#fff!important;border-color:#111!important;color:#111!important}
 
 @media(max-width:63.99rem){
   main:has(>article.ficha)>.iris-mini-card{
@@ -234,30 +197,4 @@ html[data-ig-contrast="on"] .iris-mini-action{background:#fff!important;border-c
   .iris-cta{align-items:flex-start;flex-direction:column;gap:.8rem}
   .iris-cta-button{width:100%}
 }
-
-/* La impresión normal de una página no imprime los CTA. El botón Imprimir de
-   Tarjeta Iris crea una copia aislada y activa iris-card-printing. */
-@media print{
-  body:not(.iris-card-printing) .iris-cta{display:none!important}
-  body.iris-card-printing>:not(.iris-card-print-root){display:none!important}
-  body.iris-card-printing .iris-card-print-root{display:block!important}
-  body.iris-card-printing .iris-card-print-root .iris-mini-card{
-    display:block!important;
-    position:static!important;
-    width:100%!important;
-    max-width:none!important;
-    margin:0!important;
-    padding:12mm!important;
-    border:1px solid #111!important;
-    border-left:4px solid #111!important;
-    border-radius:0!important;
-    box-shadow:none!important;
-    background:#fff!important;
-    color:#000!important;
-    break-inside:avoid;
-  }
-  body.iris-card-printing .iris-card-print-root .iris-mini-actions{display:none!important}
-  body.iris-card-printing .iris-card-print-root :is(.iris-mini-title,.iris-mini-block h3,.iris-mini-block p,.iris-mini-brand,.iris-mini-type,.iris-mini-foot,.iris-mini-picto-credit){color:#000!important}
-  body.iris-card-printing .iris-card-print-root .iris-mini-need{background:#fff!important;border-color:#444!important}
-  body.iris-card-printing .iris-card-print-root .iris-mini-picto{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-}
+@media print{.iris-cta{display:none!important}}

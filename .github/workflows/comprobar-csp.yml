@@ -32,3 +32,5 @@ jobs:
         run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_dc_runtime_csp.py
       - name: Probar la CSP real en navegador
         run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_csp_runtime.py
+      - name: Comprobar que los vídeos no saltan al reproducirse
+        run: cd dist && /tmp/ig-csp/bin/python ../scripts/test_video_layout_stability.py
