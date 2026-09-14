@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guardarraíl de Tarjetas Iris: contenido real, variantes y Mulberry editorial."""
+"""Guardarraíl de Tarjetas Iris: contenido real, lectura breve y Mulberry editorial."""
 from __future__ import annotations
 
 import argparse
@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+DAILY_DATA = REPO / "es/biblioteca/vida-diaria.json"
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
     ("vida", "es/biblioteca/*/index.html", 48),
@@ -15,32 +16,39 @@ DETAIL_SETS = (
 )
 EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "carpeta.svg"}
 ASSIGNED = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
-PLACEHOLDER = "Esta ficha todavía no dice qué ayuda. Falta el texto, no se rellena con suposiciones."
 NEED_PREFIX = "Necesito que se tenga en cuenta este apoyo:"
 MAX_BLOCK_CHARS = 160
 MAX_TITLE_CHARS = 92
 
 
 def clean(text: str) -> str:
-    text = re.sub(r'<[^>]+>', ' ', text)
-    return re.sub(r'\s+', ' ', text).strip()
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', text)).strip()
 
 
-def source_is_draft(text: str) -> bool:
-    return bool(re.search(r'>\s*BORRADOR\s*<|Página\s+en\s+borrador', text, re.I))
+def daily_is_all_draft() -> bool:
+    data = json.loads(DAILY_DATA.read_text(encoding="utf-8"))
+    rows = data.get("fichas")
+    return isinstance(rows, list) and len(rows) == 48 and all(
+        str(row.get("status", "")).casefold() == "borrador" for row in rows
+    )
 
 
 def source_has_real_help(text: str) -> bool:
-    for m in re.finditer(r'<section\b([^>]*)>(.*?)</section>', text, re.I | re.S):
-        attrs, body = m.group(1), m.group(2)
+    for match in re.finditer(r'<section\b([^>]*)>(.*?)</section>', text, re.I | re.S):
+        attrs, body = match.group(1), match.group(2)
         hm = re.search(r'<h2\b[^>]*>(.*?)</h2>', body, re.I | re.S)
-        heading = clean(hm.group(1)).casefold() if hm else ''
-        is_help = bool(re.search(r'class=["\'][^"\']*\bhelps\b', attrs, re.I)) or any(k in heading for k in ('qué puede ayudar ahora','qué ayuda','qué puede ayudar'))
+        heading = clean(hm.group(1)).casefold() if hm else ""
+        is_help = bool(re.search(r'class=["\'][^"\']*\bhelps\b', attrs, re.I)) or any(
+            key in heading for key in ("qué puede ayudar ahora", "qué ayuda", "qué puede ayudar")
+        )
         if not is_help:
             continue
-        vals = [clean(x) for x in re.findall(r'<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>', body, re.I | re.S)]
-        vals = [v for v in vals if v]
-        if vals and not all(('todavía no dice qué ayuda' in v.casefold() or 'falta el texto' in v.casefold()) for v in vals):
+        values = [clean(x) for x in re.findall(r'<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>', body, re.I | re.S)]
+        values = [value for value in values if value]
+        if values and not all(
+            "todavía no dice qué ayuda" in value.casefold() or "falta el texto" in value.casefold()
+            for value in values
+        ):
             return True
     return False
 
@@ -50,23 +58,23 @@ def assert_concise(card: str, path: Path) -> None:
     if title and len(clean(title.group(1))) > MAX_TITLE_CHARS + 1:
         raise AssertionError(f"Título demasiado largo en {path}")
     for block in re.findall(r'<section\b[^>]*\biris-mini-block\b[^>]*>.*?</section>', card, re.I | re.S):
-        heading_match = re.search(r'<h3\b[^>]*>(.*?)</h3>', block, re.I | re.S)
-        text_match = re.search(r'<p\b[^>]*>(.*?)</p>', block, re.I | re.S)
-        if not heading_match or not text_match:
+        heading = re.search(r'<h3\b[^>]*>(.*?)</h3>', block, re.I | re.S)
+        text = re.search(r'<p\b[^>]*>(.*?)</p>', block, re.I | re.S)
+        if not heading or not text:
             continue
-        heading = clean(heading_match.group(1))
-        value = clean(text_match.group(1))
-        if heading not in {"Esto me cuesta", "Me ayuda", "Necesito"}:
-            continue
-        if len(value) > MAX_BLOCK_CHARS + 1:
-            raise AssertionError(f"Bloque «{heading}» demasiado largo en {path}: {len(value)}")
+        name, value = clean(heading.group(1)), clean(text.group(1))
+        if name in {"Esto me cuesta", "Me ayuda", "Necesito"} and len(value) > MAX_BLOCK_CHARS + 1:
+            raise AssertionError(f"Bloque «{name}» demasiado largo en {path}: {len(value)}")
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--root", type=Path, default=Path("dist"))
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=Path("dist"))
+    args = parser.parse_args()
     root = args.root.resolve()
+
+    if not daily_is_all_draft():
+        raise AssertionError("Vida diaria debe mantener sus 48 fichas canónicas en estado borrador")
 
     variants = {"A": 0, "B": 0, "C": 0}
     cards = unavailable = drafts_without_cards = insufficient_without_cards = 0
@@ -79,27 +87,26 @@ def main() -> None:
             rel = path.relative_to(root).as_posix()
             text = path.read_text(encoding="utf-8")
             source = (REPO / rel).read_text(encoding="utf-8")
-            card_matches = re.findall(r'<aside\b[^>]*\biris-mini-card-static\b[^>]*>.*?</aside>', text, re.I | re.S)
-            unavailable_matches = re.findall(r'<section\b[^>]*\bdata-iris-card-unavailable=["\']true["\'][^>]*>.*?</section>', text, re.I | re.S)
-            is_draft = source_is_draft(source)
-            insufficient = section == 'condiciones' and not source_has_real_help(source)
+            cards_here = re.findall(r'<aside\b[^>]*\biris-mini-card-static\b[^>]*>.*?</aside>', text, re.I | re.S)
+            unavailable_here = re.findall(r'<section\b[^>]*\bdata-iris-card-unavailable=["\']true["\'][^>]*>.*?</section>', text, re.I | re.S)
 
-            if is_draft:
-                if card_matches or unavailable_matches:
-                    raise AssertionError(f"Una página BORRADOR no puede publicar Tarjeta Iris: {path}")
+            if section == "vida":
+                if cards_here or unavailable_here:
+                    raise AssertionError(f"Vida diaria borrador no puede publicar Tarjeta Iris: {path}")
                 drafts_without_cards += 1
                 continue
 
+            insufficient = section == "condiciones" and not source_has_real_help(source)
             if insufficient:
-                if card_matches or len(unavailable_matches) != 1:
-                    raise AssertionError(f"La ficha sin 'Qué ayuda' debe mostrar información insuficiente: {path}")
+                if cards_here or len(unavailable_here) != 1:
+                    raise AssertionError(f"La ficha sin «Qué ayuda» debe mostrar información insuficiente: {path}")
                 insufficient_without_cards += 1
                 unavailable += 1
                 continue
 
-            if len(card_matches) != 1 or unavailable_matches:
-                raise AssertionError(f"Tarjeta publicable ausente/duplicada: {path}")
-            card = card_matches[0]
+            if len(cards_here) != 1 or unavailable_here:
+                raise AssertionError(f"Tarjeta publicable ausente o duplicada: {path}")
+            card = cards_here[0]
             assert_concise(card, path)
             if len(re.findall(r'<button\b[^>]*\bclass=["\'][^"\']*\biris-mini-action\b', card, re.I)) != 2:
                 raise AssertionError(f"Acciones incorrectas: {path}")
@@ -109,7 +116,7 @@ def main() -> None:
                 raise AssertionError(f"Necesito sigue duplicando Me ayuda: {path}")
             vm = re.search(r'data-iris-picto-variant=["\']([ABC])["\']', card, re.I)
             if not vm:
-                raise AssertionError(f"Variante A/B/C ausente: {path}")
+                raise AssertionError(f"Variante interna A/B/C ausente: {path}")
             variants[vm.group(1).upper()] += 1
             cards += 1
 
@@ -121,14 +128,14 @@ def main() -> None:
         raise AssertionError(f"Recuento inesperado: cards={cards}, variants={variants}")
 
     mulberry = root / "assets/mulberry"
-    svgs = {p.name for p in mulberry.glob("*.svg")}
+    svgs = {path.name for path in mulberry.glob("*.svg")}
     if svgs != EXPECTED_SVGS:
         raise AssertionError(f"Pictogramas publicados inesperados: {sorted(svgs)}")
     if not (mulberry / "LICENSE-MULBERRY.txt").is_file():
         raise AssertionError("Falta LICENSE-MULBERRY.txt")
     if (root / "assets/pictos").exists():
         raise AssertionError("No debe existir assets/pictos en el artefacto público")
-    if any("queue" in p.name or "correct" in p.name for p in mulberry.iterdir()):
+    if any("queue" in path.name or "correct" in path.name for path in mulberry.iterdir()):
         raise AssertionError("Se han publicado candidatos descartados")
 
     assigned = (root / ASSIGNED).read_text(encoding="utf-8")
@@ -152,22 +159,33 @@ def main() -> None:
         raise AssertionError("La herramienta debe tener exactamente los tres bloques breves del prototipo")
     if tool.count("data-mulberry-credit") != 1:
         raise AssertionError("La atribución Mulberry debe aparecer una sola vez en Tarjetas Iris")
-    if 'localStorage' in tool or 'sessionStorage' in tool or 'localStorage' in tool_js or 'sessionStorage' in tool_js:
+    if any(token in tool or token in tool_js for token in ("localStorage", "sessionStorage")):
         raise AssertionError("La herramienta personal no debe guardar el texto en el navegador")
-    for field, picto in (("dificultad","hablar"),("ayuda","escribir"),("necesito","esperar")):
+    for field, picto in (("dificultad", "hablar"), ("ayuda", "escribir"), ("necesito", "esperar")):
         if f"{field}:{{value:defaults.{field},id:'{picto}'}}" not in tool_js:
-            raise AssertionError(f"Falta el apoyo visual contextual del ejemplo: {(field,picto)}")
+            raise AssertionError(f"Falta el apoyo visual contextual del ejemplo: {(field, picto)}")
     if "text===item.value?item.id:null" not in tool_js:
         raise AssertionError("Al cambiar el texto debe retirarse el pictograma del ejemplo")
 
     print(json.dumps({
-        "detail_pages":420,"published_cards":cards,"drafts_without_cards":drafts_without_cards,
-        "insufficient_states":unavailable,"variants":variants,"max_block_chars":MAX_BLOCK_CHARS,
-        "max_title_chars":MAX_TITLE_CHARS,"compact_reading_rule":"una idea breve por bloque",
-        "mulberry_svgs":sorted(svgs),"editorial_assignment":ASSIGNED,"discarded_candidates_published":0,
-        "personal_tool_exposes_variants":False,"personal_tool_language_switcher":False,
-        "personal_tool_manual_picto_picker":False,"example_pictograms_are_contextual":True,"result":"accepted"
+        "detail_pages": 420,
+        "published_cards": cards,
+        "drafts_without_cards": drafts_without_cards,
+        "insufficient_states": unavailable,
+        "variants": variants,
+        "max_block_chars": MAX_BLOCK_CHARS,
+        "max_title_chars": MAX_TITLE_CHARS,
+        "compact_reading_rule": "una idea breve por bloque",
+        "mulberry_svgs": sorted(svgs),
+        "editorial_assignment": ASSIGNED,
+        "discarded_candidates_published": 0,
+        "personal_tool_exposes_variants": False,
+        "personal_tool_language_switcher": False,
+        "personal_tool_manual_picto_picker": False,
+        "example_pictograms_are_contextual": True,
+        "result": "accepted",
     }, ensure_ascii=False))
+
 
 if __name__ == "__main__":
     main()
