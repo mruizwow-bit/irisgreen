@@ -16,11 +16,32 @@ EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "
 ASSIGNED = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
 PLACEHOLDER = "Esta ficha todavía no dice qué ayuda. Falta el texto, no se rellena con suposiciones."
 NEED_PREFIX = "Necesito que se tenga en cuenta este apoyo:"
+MAX_BLOCK_CHARS = 160
+MAX_TITLE_CHARS = 92
 
 
 def clean(text: str) -> str:
     text = re.sub(r'<[^>]+>', ' ', text)
     return re.sub(r'\s+', ' ', text).strip()
+
+
+def assert_concise(card: str, path: Path) -> None:
+    title = re.search(r'<h2\b[^>]*\biris-mini-title\b[^>]*>(.*?)</h2>', card, re.I | re.S)
+    if title and len(clean(title.group(1))) > MAX_TITLE_CHARS + 1:
+        raise AssertionError(f"Título demasiado largo en {path}")
+    for block in re.findall(r'<section\b[^>]*\biris-mini-block\b[^>]*>.*?</section>', card, re.I | re.S):
+        heading_match = re.search(r'<h3\b[^>]*>(.*?)</h3>', block, re.I | re.S)
+        text_match = re.search(r'<p\b[^>]*>(.*?)</p>', block, re.I | re.S)
+        if not heading_match or not text_match:
+            continue
+        heading = clean(heading_match.group(1))
+        value = clean(text_match.group(1))
+        if heading not in {"Esto me cuesta", "Me ayuda", "Necesito"}:
+            continue
+        if len(value) > MAX_BLOCK_CHARS + 1:
+            raise AssertionError(f"Bloque «{heading}» demasiado largo en {path}: {len(value)}")
+        if len(re.split(r'(?<=[.!?])\s+', value)) > 1:
+            raise AssertionError(f"Bloque «{heading}» contiene más de una frase en {path}")
 
 
 def main() -> None:
@@ -62,9 +83,10 @@ def main() -> None:
             if len(card_matches) != 1 or unavailable_matches:
                 raise AssertionError(f"Tarjeta publicable ausente/duplicada: {path}")
             card = card_matches[0]
+            assert_concise(card, path)
             if len(re.findall(r'<button\b[^>]*\bclass=["\'][^"\']*\biris-mini-action\b', card, re.I)) != 2:
                 raise AssertionError(f"Acciones incorrectas: {path}")
-            if not re.search(r'data-iris-card-status[^>]*role=["\']status["\'][^>]*aria-live=["\']polite["\']', card, re.I)):
+            if not re.search(r'data-iris-card-status[^>]*role=["\']status["\'][^>]*aria-live=["\']polite["\']', card, re.I):
                 raise AssertionError(f"Estado accesible ausente: {path}")
             if NEED_PREFIX in clean(card):
                 raise AssertionError(f"Necesito sigue duplicando Me ayuda: {path}")
@@ -118,6 +140,9 @@ def main() -> None:
         "drafts_without_cards": drafts_without_cards,
         "insufficient_states": unavailable,
         "variants": variants,
+        "max_block_chars": MAX_BLOCK_CHARS,
+        "max_title_chars": MAX_TITLE_CHARS,
+        "one_idea_per_block": True,
         "mulberry_svgs": sorted(svgs),
         "editorial_assignment": ASSIGNED,
         "discarded_candidates_published": 0,
