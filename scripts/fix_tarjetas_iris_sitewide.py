@@ -5,6 +5,7 @@
 - No publica una tarjeta utilizable cuando la propia ficha dice que falta "Qué ayuda".
 - Retira el bloque "Necesito" generado por plantilla cuando solo repite "Me ayuda".
 - Resincroniza la ficha especial de instrucciones con la fuente real del repositorio.
+- Mantiene cada bloque breve: una sola idea y una sola frase corta.
 - B significa apoyo pictográfico contextual; C queda reservado a secuencias reales.
 """
 from __future__ import annotations
@@ -29,6 +30,8 @@ BLOCK_RE = re.compile(
 )
 PLACEHOLDER = "Esta ficha todavía no dice qué ayuda. Falta el texto, no se rellena con suposiciones."
 NEED_PREFIX = "Necesito que se tenga en cuenta este apoyo:"
+MAX_BLOCK_CHARS = 160
+MAX_TITLE_CHARS = 92
 
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
@@ -41,6 +44,27 @@ def clean(fragment: str) -> str:
     fragment = re.sub(r"<br\s*/?>", " ", fragment, flags=re.I)
     fragment = re.sub(r"<[^>]+>", " ", fragment)
     return re.sub(r"\s+", " ", html.unescape(fragment)).strip()
+
+
+def compact_sentence(value: str, limit: int = MAX_BLOCK_CHARS) -> str:
+    """Conserva una sola idea legible sin inventar ni parafrasear contenido."""
+    value = re.sub(r"\s+", " ", value).strip()
+    if not value:
+        return value
+    parts = re.split(r"(?<=[.!?])\s+", value, maxsplit=1)
+    sentence = parts[0].strip()
+    if len(sentence) <= limit:
+        return sentence
+    cut = sentence[:limit].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return (cut or sentence[:limit].rstrip()) + "…"
+
+
+def compact_title(value: str) -> str:
+    value = re.sub(r"\s+", " ", value).strip().strip("«»“”")
+    if len(value) <= MAX_TITLE_CHARS:
+        return value
+    cut = value[:MAX_TITLE_CHARS].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return (cut or value[:MAX_TITLE_CHARS].rstrip()) + "…"
 
 
 def is_draft(text: str) -> bool:
@@ -66,10 +90,30 @@ def replace_block_text(card: str, heading: str, value: str) -> str:
     if not match:
         raise AssertionError(f'No se encuentra bloque «{heading}» en Tarjeta Iris')
     middle = match.group('middle')
-    middle, n = re.subn(r'(<p\b[^>]*>).*?(</p>)', lambda m: m.group(1) + html.escape(value) + m.group(2), middle, count=1, flags=re.I | re.S)
+    middle, n = re.subn(
+        r'(<p\b[^>]*>).*?(</p>)',
+        lambda m: m.group(1) + html.escape(value) + m.group(2),
+        middle,
+        count=1,
+        flags=re.I | re.S,
+    )
     if n != 1:
         raise AssertionError(f'No se encuentra texto de «{heading}»')
     return card[:match.start()] + match.group(1) + middle + match.group(3) + card[match.end():]
+
+
+def compact_card(card: str) -> str:
+    title_match = re.search(r'<h2\b[^>]*\bclass=["\'][^"\']*\biris-mini-title\b[^"\']*["\'][^>]*>(.*?)</h2>', card, re.I | re.S)
+    if title_match:
+        new_title = compact_title(clean(title_match.group(1)))
+        card = card[:title_match.start(1)] + html.escape(new_title) + card[title_match.end(1):]
+    for block in list(BLOCK_RE.finditer(card)):
+        heading, value = heading_and_text(block.group(0))
+        if heading in {"Esto me cuesta", "Me ayuda", "Necesito"} and value:
+            short = compact_sentence(value)
+            if short != value:
+                card = replace_block_text(card, heading, short)
+    return card
 
 
 def remove_generated_need(card: str) -> tuple[str, bool]:
@@ -92,7 +136,6 @@ def remove_generated_need(card: str) -> tuple[str, bool]:
 
 
 def extract_source_card_data(source: str) -> tuple[str, str]:
-    # Fuente canónica de la ficha, no el prototipo de navegación que sustituye su presentación en dist.
     brief = re.search(
         r'<section\b[^>]*>\s*<h2\b[^>]*>\s*En pocas palabras\s*</h2>(.*?)</section>',
         source, re.I | re.S,
@@ -109,7 +152,7 @@ def extract_source_card_data(source: str) -> tuple[str, str]:
     help_values = [x for x in help_values if x]
     if not brief_values or not help_values:
         raise AssertionError('La ficha especial no contiene texto suficiente')
-    return brief_values[0], help_values[0]
+    return compact_sentence(brief_values[0]), compact_sentence(help_values[0])
 
 
 def unavailable(section: str) -> str:
@@ -132,6 +175,19 @@ def normalize_variant(card: str) -> str:
             f'data-iris-picto-variant="{variant}"', card, count=1, flags=re.I,
         )
     return card.replace('<aside', f'<aside data-iris-picto-variant="{variant}"', 1)
+
+
+def validate_concise(card: str, rel: str) -> None:
+    title_match = re.search(r'<h2\b[^>]*\biris-mini-title\b[^>]*>(.*?)</h2>', card, re.I | re.S)
+    if title_match and len(clean(title_match.group(1))) > MAX_TITLE_CHARS + 1:
+        raise AssertionError(f'Título demasiado largo en Tarjeta Iris: {rel}')
+    for block in BLOCK_RE.finditer(card):
+        heading, value = heading_and_text(block.group(0))
+        if heading in {"Esto me cuesta", "Me ayuda", "Necesito"}:
+            if len(value) > MAX_BLOCK_CHARS + 1:
+                raise AssertionError(f'Bloque «{heading}» demasiado largo en {rel}: {len(value)} caracteres')
+            if len(re.split(r'(?<=[.!?])\s+', value)) > 1:
+                raise AssertionError(f'Bloque «{heading}» contiene más de una frase en {rel}')
 
 
 def run(root: Path) -> dict:
@@ -162,7 +218,7 @@ def run(root: Path) -> dict:
             match = matches[0]
 
             if is_draft(text):
-                text = text[:match.start()] + text[match.end()9]
+                text = text[:match.start()] + text[match.end():]
                 path.write_text(text, encoding='utf-8')
                 draft_removed += 1
                 continue
@@ -170,7 +226,7 @@ def run(root: Path) -> dict:
             card = match.group(0)
             if PLACEHOLDER in clean(card):
                 replacement = unavailable(section)
-                text = text[:match.start()] + replacement + text[match.end()9]
+                text = text[:match.start()] + replacement + text[match.end():]
                 path.write_text(text, encoding='utf-8')
                 insufficient += 1
                 continue
@@ -184,13 +240,15 @@ def run(root: Path) -> dict:
                 card = replace_block_text(card, 'Me ayuda', source_help)
                 special_synced = True
 
+            card = compact_card(card)
             card = normalize_variant(card)
+            validate_concise(card, rel)
             vm = re.search(r'data-iris-picto-variant=["\']([ABC])["\']', card, re.I)
             if not vm:
                 raise AssertionError(f'Variante ausente después del saneado: {rel}')
             variants[vm.group(1).upper()] += 1
             cards += 1
-            text = text[:match.start()] + card + text[match.end()9]
+            text = text[:match.start()] + card + text[match.end():]
             path.write_text(text, encoding='utf-8')
 
     if draft_removed != 48:
@@ -206,7 +264,6 @@ def run(root: Path) -> dict:
     if not special_synced:
         raise AssertionError('No se resincronizó la ficha especial')
 
-    # Guardarriíles finales de contenido.
     all_cards = []
     for _, pattern, _ in DETAIL_SETS:
         for path in root.glob(pattern):
@@ -223,6 +280,9 @@ def run(root: Path) -> dict:
         'draft_cards_removed': draft_removed,
         'insufficient_states': insufficient,
         'generated_need_blocks_removed': need_removed,
+        'max_block_chars': MAX_BLOCK_CHARS,
+        'max_title_chars': MAX_TITLE_CHARS,
+        'one_idea_per_block': True,
         'variants': variants,
         'special_entry_resynced': special_synced,
         'result': 'accepted',
