@@ -6,6 +6,12 @@ on:
     paths:
       - 'scripts/contar-pagar-bundle/**'
       - '.github/workflows/bootstrap-contar-pagar.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'scripts/contar-pagar-bundle/**'
+      - '.github/workflows/bootstrap-contar-pagar.yml'
 permissions:
   contents: write
 jobs:
