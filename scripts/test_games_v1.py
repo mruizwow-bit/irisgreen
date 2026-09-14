@@ -9,23 +9,26 @@ GAMES=(
 'el-detective-de-los-sentidos','el-mapa-del-tesoro-de-casa','el-traductor-de-casa','el-traductor-de-instrucciones',
 'la-cena-de-los-planes','la-consulta','la-maquina-de-empezar','las-cinco-cosas','palabra-misteriosa')
 BANNED_COLORS=('#1f8ba8','#16708a','#8a5a12','#435268','#5d6779','#5a6675')
-VERA_ES=('Armario de material','Rincón de lectura','Pared de corcho','Caja de juegos','Mochila')
-VERA_EN=('Supply cabinet','Reading corner','Cork notice board','Games box','Backpack')
+VERA_ES=('El ruido de la clase','El tubo de luz','El plan tachado','La etiqueta del jersey','La fila apretada')
+VERA_EN=('The noise from the classroom','The light tube','The crossed-out plan','The jumper label','The tight queue')
+NOJS_END='<!-- ig-sin-js:end -->'
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,default=Path('dist'));args=ap.parse_args();root=args.root.resolve()
     pages=[]
     for slug in GAMES:
         path=root/'es/recursos/juegos'/slug/'index.html';text=path.read_text(encoding='utf-8');pages.append((slug,text))
+        if NOJS_END not in text:raise AssertionError(f'{slug}: falta límite del fallback')
+        active=text.split(NOJS_END,1)[1]
         for asset in ('/assets/tokens-accesibilidad.css','/assets/games-v1.css','/assets/games-v1.js'):
             if asset not in text:raise AssertionError(f'{slug}: falta {asset}')
-        if 'data-ig-game-v1="true"' not in text or 'data-rol="principal"' not in text:raise AssertionError(f'{slug}: marco o rol principal ausente')
-        how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*data-rol=["\']orientacion["\'][^>]*>(.*?)</ol>',text,re.I|re.S)
+        if 'data-ig-game-v1="true"' not in active or 'data-rol="principal"' not in active:raise AssertionError(f'{slug}: marco o rol principal ausente del runtime activo')
+        how=re.search(r'<ol\b[^>]*\bclass=["\'][^"\']*\bhow\b[^"\']*["\'][^>]*data-rol=["\']orientacion["\'][^>]*>(.*?)</ol>',active,re.I|re.S)
         if not how or len(re.findall(r'<li\b',how.group(1),re.I))!=3:raise AssertionError(f'{slug}: Cómo se juega no tiene tres pasos reales')
-        if 'data-rol="decision"' not in text or 'data-ig-game-bar' not in text:raise AssertionError(f'{slug}: barra de decisión ausente')
-        if len(re.findall(r'role=["\']status["\']',text,re.I))!=1:raise AssertionError(f'{slug}: debe haber una región role=status')
-        if re.search(r'role=["\']progressbar["\']|\bsetInterval\s*\(|\bdraggable\s*=',text,re.I):raise AssertionError(f'{slug}: patrón de juicio/tiempo/arrastre prohibido')
-        low=text.casefold()
+        if 'data-rol="decision"' not in active or 'data-ig-game-bar' not in active:raise AssertionError(f'{slug}: barra de decisión ausente del runtime activo')
+        if len(re.findall(r'role=["\']status["\']',active,re.I))!=1:raise AssertionError(f'{slug}: debe haber una región role=status en el runtime activo')
+        if re.search(r'role=["\']progressbar["\']|\bsetInterval\s*\(|\bdraggable\s*=',active,re.I):raise AssertionError(f'{slug}: patrón de juicio/tiempo/arrastre prohibido')
+        low=active.casefold()
         if 'prueba otra vez' in low or 'try again' in low or 'eso es lo normal' in low or 'that is normal' in low:raise AssertionError(f'{slug}: lenguaje de juicio pendiente')
         for color in BANNED_COLORS:
             if color in low:raise AssertionError(f'{slug}: color retirado {color}')
@@ -41,7 +44,7 @@ def main():
     vera=dict(pages)['las-cinco-cosas']
     for name in VERA_ES+VERA_EN:
         if name not in vera:raise AssertionError(f'Vera: nombre real ausente: {name}')
-    if 'Prefiero la lista' not in vera or 'data-ig-list="true"' not in vera:raise AssertionError('Vera: falta alternativa de lista')
+    if 'Prefiero la lista' not in vera or 'data-ig-list="true"' not in vera.split(NOJS_END,1)[1]:raise AssertionError('Vera: falta alternativa de lista')
     machine=dict(pages)['la-maquina-de-empezar']
     if 'const VALID' in machine or 'isValid' in machine:raise AssertionError('Máquina: sigue existiendo un orden modelo VALID')
     if 'Otras maneras que hemos visto' not in machine:raise AssertionError('Máquina: falta bloque bajo demanda')
