@@ -124,13 +124,26 @@ def main() -> None:
         raise AssertionError("La ficha especial no está resincronizada con su fuente real")
 
     tool = (root / "es/tarjetas-iris/index.html").read_text(encoding="utf-8")
-    for marker in ('data-ti-variant="A"','data-ti-variant="B"','data-ti-variant="C"','data-ti-lang="es"','data-ti-lang="en"'):
+    tool_js = (root / "assets/tarjetas-iris-tool.js").read_text(encoding="utf-8")
+    for marker in ('data-ti-tool','id="ti-title"','id="ti-dificultad"','id="ti-ayuda"','id="ti-necesito"','id="ti-print"','id="ti-copy"','id="ti-reset"'):
         if marker not in tool:
-            raise AssertionError(f"Falta control aprobado de herramienta: {marker}")
+            raise AssertionError(f"Falta control esencial de herramienta: {marker}")
+    for forbidden in ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos='):
+        if forbidden in tool:
+            raise AssertionError(f"La herramienta sencilla no debe exponer {forbidden}")
+    if tool.count('<textarea') != 3:
+        raise AssertionError("La herramienta debe tener exactamente los tres campos breves del prototipo")
+    if 'maxlength="160"' not in tool or tool.count('maxlength="160"') != 3:
+        raise AssertionError("Los tres bloques deben limitarse a 160 caracteres")
     if tool.count("data-mulberry-credit") != 1:
         raise AssertionError("La atribución Mulberry debe aparecer una sola vez en Tarjetas Iris")
-    if 'localStorage' in tool or 'sessionStorage' in tool:
+    if 'localStorage' in tool or 'sessionStorage' in tool or 'localStorage' in tool_js or 'sessionStorage' in tool_js:
         raise AssertionError("La herramienta personal no debe guardar el texto en el navegador")
+    for pair in (("dificultad","hablar"),("ayuda","escribir"),("necesito","esperar")):
+        if f"{pair[0]}:{{value:defaults.{pair[0]},id:'{pair[1]}'}}" not in tool_js:
+            raise AssertionError(f"Falta el apoyo visual contextual del ejemplo: {pair}")
+    if "text===item.value?item.id:null" not in tool_js:
+        raise AssertionError("Al cambiar el texto debe retirarse el pictograma del ejemplo")
 
     print(json.dumps({
         "detail_pages": 420,
@@ -144,7 +157,9 @@ def main() -> None:
         "mulberry_svgs": sorted(svgs),
         "editorial_assignment": ASSIGNED,
         "discarded_candidates_published": 0,
-        "personal_tool_variants": ["A","B","C"],
+        "personal_tool_exposes_variants": False,
+        "personal_tool_language_switcher": False,
+        "example_pictograms_are_contextual": True,
         "result": "accepted",
     }, ensure_ascii=False))
 
