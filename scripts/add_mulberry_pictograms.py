@@ -5,6 +5,9 @@ Los cinco SVG aprobados viven en assets/mulberry y se publican con su nombre
 estable. El texto de la Tarjeta Iris permanece visible y los pictogramas son
 decorativos para tecnologías de apoyo (alt=""). No existe selección automática
 por palabras ni se publican candidatos descartados.
+
+La variante B admite apoyo contextual junto a uno o varios bloques. La variante C
+queda reservada a una secuencia real y ordenada y no se infiere por cantidad.
 """
 from __future__ import annotations
 
@@ -145,11 +148,11 @@ def apply_page(root: Path, rel: str, assignment: dict, urls: dict[str, str]) -> 
     blocks = assignment.get("bloques")
     if not isinstance(blocks, dict) or not blocks:
         raise AssertionError(f"Asignación sin bloques: {rel}")
-    expected_variant = "B" if len(blocks) == 1 else "C"
-    variant = assignment.get("variante", expected_variant)
-    if variant != expected_variant:
+    variant = assignment.get("variante", "B")
+    if variant != "B":
         raise AssertionError(
-            f"{rel}: {len(blocks)} pictograma(s) exige variante {expected_variant}, no {variant}"
+            f"{rel}: el apoyo junto a bloques corresponde a variante B; "
+            "la variante C necesita una secuencia editorial explícita"
         )
 
     updated = add_css(text)
@@ -216,8 +219,8 @@ def main() -> None:
         "mulberry_publicables": len(EXPECTED),
         "mulberry_candidates_published": 0,
         "pages_with_editorial_pictograms": len(changed),
-        "variant_b": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "B"),
-        "variant_c": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "C"),
+        "variant_b": sum(1 for a in data["asignaciones"].values() if a.get("variante", "B") == "B"),
+        "variant_c": 0,
         "automatic_keyword_mapping": False,
         "single_credit_page": True,
         "credit_added": credit_added,
