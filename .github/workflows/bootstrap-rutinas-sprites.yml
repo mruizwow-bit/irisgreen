@@ -18,7 +18,21 @@ jobs:
         with:
           ref: integracion/recursos-rutinas-visuales-20260914
       - name: Descargar Mulberry 3.6.1
-        run: curl -fL --retry 3 -o /tmp/mulberry-symbols.zip https://github.com/mulberrysymbols/mulberry-symbols/releases/download/v3.6.1/mulberry-symbols.zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl --fail --location --retry 5 --retry-all-errors \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/octet-stream" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -o /tmp/mulberry-symbols.zip \
+            https://api.github.com/repos/mulberrysymbols/mulberry-symbols/releases/assets/523979773
+          python3 - <<'PY'
+          import zipfile
+          z=zipfile.ZipFile('/tmp/mulberry-symbols.zip')
+          assert 'EN-symbols/wake_up_,_to.svg' in z.namelist()
+          print('Mulberry zip OK:', len(z.namelist()), 'entries')
+          PY
       - name: Generar los ocho sprites
         run: python3 scripts/generate_rutinas_sprites.py /tmp/mulberry-symbols.zip
       - name: Actualizar la URL impresa del recurso
