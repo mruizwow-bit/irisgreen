@@ -81,6 +81,10 @@ def build():
         if not p.is_file():raise FileNotFoundError(p)
         shutil.copy2(p,dst/name)
 
+    # Los SVG se publican limpios en dist. La fuente permanece intacta y el propio
+    # saneador falla si cambia fill/stroke, reaparece C2PA/metadata o no es idempotente.
+    subprocess.run([sys.executable,str(ROOT/'scripts/strip_svg_metadata.py'),'--source',str(ROOT/'assets'),'--dest',str(dst/'assets')],cwd=ROOT,check=True)
+
     subprocess.run([sys.executable,str(ROOT/'scripts/build_approved_navigation.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sentidos_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/sueno_author.py'),'--root',str(dst)],cwd=ROOT,check=True)
