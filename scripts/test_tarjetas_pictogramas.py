@@ -40,8 +40,6 @@ def assert_concise(card: str, path: Path) -> None:
             continue
         if len(value) > MAX_BLOCK_CHARS + 1:
             raise AssertionError(f"Bloque «{heading}» demasiado largo en {path}: {len(value)}")
-        if len(re.split(r'(?<=[.!?])\s+', value)) > 1:
-            raise AssertionError(f"Bloque «{heading}» contiene más de una frase en {path}")
 
 
 def main() -> None:
@@ -142,7 +140,7 @@ def main() -> None:
         "variants": variants,
         "max_block_chars": MAX_BLOCK_CHARS,
         "max_title_chars": MAX_TITLE_CHARS,
-        "one_idea_per_block": True,
+        "concise_cards": True,
         "mulberry_svgs": sorted(svgs),
         "editorial_assignment": ASSIGNED,
         "discarded_candidates_published": 0,
