@@ -1,31 +1,46 @@
 #!/usr/bin/env python3
-"""Añade a la herramienta personal Tarjetas Iris el apoyo visual aprobado.
+"""Aplica a la herramienta personal el ejemplo editorial B de Tarjeta Iris.
 
-No asigna pictogramas automáticamente. La persona elige ninguno, uno o varios de
-los cinco Mulberry ya aprobados. El texto sigue siendo la información principal.
+La asociación símbolo–texto no se adivina. Los tres pictogramas corresponden
+únicamente a los textos del ejemplo aprobado. Si la persona modifica uno de esos
+textos, el runtime retira ese pictograma y conserva el texto completo.
 """
 from __future__ import annotations
 
 import argparse
-import re
+import html
 from pathlib import Path
 
 CSS = '<link rel="stylesheet" href="/assets/tarjetas-iris-pictogramas.css">'
 JS = '<script defer src="/assets/tarjetas-iris-pictogramas.js"></script>'
-PICKER = '''<fieldset class="iris-step iris-picto-step" data-iris-tool-pictograms>
-<legend>Apoyo visual (opcional)</legend>
-<p class="iris-picto-intro">Puedes dejar la tarjeta solo con texto o elegir los pictogramas que te ayuden. No se añaden automáticamente.</p>
-<div class="iris-picto-picker" data-iris-picto-picker role="group" aria-label="Pictogramas opcionales">
-<button class="iris-picto-choice" type="button" data-iris-picto="hablar" aria-pressed="false"><img src="/assets/mulberry/hablar.svg" width="56" height="56" alt="" aria-hidden="true"><span>Hablar</span></button>
-<button class="iris-picto-choice" type="button" data-iris-picto="escribir" aria-pressed="false"><img src="/assets/mulberry/escribir.svg" width="56" height="56" alt="" aria-hidden="true"><span>Escribir</span></button>
-<button class="iris-picto-choice" type="button" data-iris-picto="esperar" aria-pressed="false"><img src="/assets/mulberry/esperar.svg" width="56" height="56" alt="" aria-hidden="true"><span>Esperar</span></button>
-<button class="iris-picto-choice" type="button" data-iris-picto="preguntar" aria-pressed="false"><img src="/assets/mulberry/preguntar.svg" width="56" height="56" alt="" aria-hidden="true"><span>Preguntar</span></button>
-<button class="iris-picto-choice" type="button" data-iris-picto="carpeta" aria-pressed="false"><img src="/assets/mulberry/carpeta.svg" width="56" height="56" alt="" aria-hidden="true"><span>Carpeta</span></button>
-</div>
-<p class="iris-picto-hint">Un pictograma crea una tarjeta con un apoyo principal; varios crean una tarjeta con varios apoyos. Las palabras permanecen siempre visibles.</p>
-<p class="iris-picto-status" id="iris-picto-status" role="status" aria-live="polite"></p>
-</fieldset>'''
-PREVIEW = '<div class="iris-card-pictos" id="iris-card-pictos" aria-label="Apoyos visuales seleccionados" hidden></div>'
+NOTE = ('<p class="iris-picto-note" data-iris-picto-note>'
+        'El ejemplo incluye apoyos visuales elegidos para estos textos. '
+        'Si cambias un texto, su pictograma se quita para no asignar un símbolo que no corresponda.'</p>)
+
+APPROVED = {
+    'dificultad': {
+        'picto': 'hablar',
+        'text': 'Recordar varias indicaciones seguidas cuando me las explican solo de palabra.',
+    },
+    'ayuda': {
+        'picto': 'escribir',
+        'text': 'Que me expliquen una cosa cada vez y poder consultar los pasos por escrito.',
+    },
+    'necesito': {
+        'picto': 'esperar',
+        'text': 'Llevarme por escrito las indicaciones importantes que tengo que seguir después de la cita.',
+    },
+}
+
+
+def support_markup(field: str, picto: str, approved_text: str) -> str:
+    return (
+        f'<div class="iris-tool-support has-picto" data-iris-approved-field="{field}" '
+        f'data-iris-approved-text="{html.escape(approved_text, quote=True)}">'
+        f'<img class="iris-tool-picto" src="/assets/mulberry/{picto}.svg" '
+        'width="64" height="64" alt="" aria-hidden="true">'
+        f'<p id="preview-{field}"></p></div>'
+    )
 
 
 def run(root: Path) -> dict:
@@ -33,56 +48,72 @@ def run(root: Path) -> dict:
     page = root / 'es/tarjetas-iris/index.html'
     if not page.is_file():
         raise FileNotFoundError(page)
-    for asset in ('tarjetas-iris-pictogramas.css','tarjetas-iris-pictogramas.js'):
-        if not (root/'assets'/asset).is_file():
-            raise FileNotFoundError(root/'assets'/asset)
-    for filename in ('hablar.svg','escribir.svg','esperar.svg','preguntar.svg','carpeta.svg'):
-        if not (root/'assets/mulberry'/filename).is_file():
-            raise FileNotFoundError(root/'assets/mulberry'/filename)
+    for asset in ('tarjetas-iris-pictogramas.css', 'tarjetas-iris-pictogramas.js'):
+        if not (root / 'assets' / asset).is_file():
+            raise FileNotFoundError(root / 'assets' / asset)
+    for spec in APPROVED.values():
+        picto_path = root / 'assets/mulberry' / f"{spec['picto']}.svg"
+        if not picto_path.is_file():
+            raise FileNotFoundError(picto_path)
 
     text = page.read_text(encoding='utf-8')
     original = text
     if CSS not in text:
-        if '</head>' not in text: raise AssertionError('Tarjetas Iris sin </head>')
-        text = text.replace('</head>', CSS+'\n</head>',1)
-    if 'data-iris-tool-pictograms' not in text:
+        if '</head>' not in text:
+            raise AssertionError('Tarjetas Iris sin </head>')
+        text = text.replace('</head>', CSS + '\n</head>', 1)
+
+    for field, spec in APPROVED.items():
+        old = f'<p id="preview-{field}"></p>'
+        if f'data-iris-approved-field="{field}"' not in text:
+            if text.count(old) != 1:
+                raise AssertionError(f'Vista previa inesperada para {field}')
+            text = text.replace(old, support_markup(field, spec['picto'], spec['text']), 1)
+
+    if 'data-iris-picto-note' not in text:
         marker = '<div class="iris-actions">'
         if text.count(marker) != 1:
             raise AssertionError('No se encuentra el bloque de acciones de la herramienta personal')
-        text = text.replace(marker, PICKER+marker,1)
-    if 'id="iris-card-pictos"' not in text:
-        pattern = re.compile(r'(<h2 class="iris-card-title"\b[^>]*>.*?</h2>)',re.S)
-        text,n = pattern.subn(r'\1'+PREVIEW,text,count=1)
-        if n != 1: raise AssertionError('No se encuentra el título de la vista previa')
+        text = text.replace(marker, NOTE + marker, 1)
+
     if JS not in text:
-        if '</body>' not in text: raise AssertionError('Tarjetas Iris sin </body>')
-        text = text.replace('</body>', JS+'\n</body>',1)
+        if '</body>' not in text:
+            raise AssertionError('Tarjetas Iris sin </body>')
+        text = text.replace('</body>', JS + '\n</body>', 1)
 
     if text != original:
-        page.write_text(text,encoding='utf-8')
+        page.write_text(text, encoding='utf-8')
 
     final = page.read_text(encoding='utf-8')
-    assert final.count('data-iris-tool-pictograms') == 1
-    assert final.count('data-iris-picto=') == 5
-    assert 'id="iris-card-pictos"' in final
+    for field, spec in APPROVED.items():
+        assert final.count(f'data-iris-approved-field="{field}"') == 1
+        assert f'src="/assets/mulberry/{spec["picto"]}.svg"' in final
+    assert 'data-iris-picto-picker' not in final
+    assert 'queue' not in final and 'confirmar__correct' not in final
     assert '/assets/tarjetas-iris-pictogramas.js' in final
     assert '/assets/tarjetas-iris-pictogramas.css' in final
 
     result = {
-        'route':'/es/tarjetas-iris/',
-        'variants':['A','B','C'],
-        'approved_pictograms':['hablar','escribir','esperar','preguntar','carpeta'],
-        'automatic_assignment':False,
-        'browser_storage':False,
-        'text_always_visible':True,
-        'result':'accepted',
+        'route': '/es/tarjetas-iris/',
+        'default_variant': 'B',
+        'approved_example': {
+            'Esto me cuesta': 'hablar',
+            'Me ayuda': 'escribir',
+            'Necesito': 'esperar',
+        },
+        'pictogram_size_px': 64,
+        'automatic_keyword_mapping': False,
+        'custom_text_removes_unvalidated_picto': True,
+        'browser_storage': False,
+        'text_always_visible': True,
+        'result': 'accepted',
     }
     print(result)
     return result
 
 
-if __name__=='__main__':
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--root',type=Path,default=Path('dist'))
-    args=parser.parse_args()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=Path, default=Path('dist'))
+    args = parser.parse_args()
     run(args.root)
