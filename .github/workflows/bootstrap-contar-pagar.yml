@@ -27,6 +27,7 @@ jobs:
           cat scripts/contar-pagar-bundle/part-* | base64 -d -i > /tmp/contar-pagar.tar.gz
           echo '55010f903bc5b97678bd62bd5956eda8d446ed11407fbdc6e7c278266d730925  /tmp/contar-pagar.tar.gz' | sha256sum -c -
           tar -xzf /tmp/contar-pagar.tar.gz -C .
+          sed -i "s/script+calc/script+calc.read_text(encoding='utf-8')/g" scripts/test_contar_pagar.py
       - name: Añadir el juego a Jugar
         run: python3 scripts/patch_jugar_contar_pagar.py
       - name: Comprobar el juego
