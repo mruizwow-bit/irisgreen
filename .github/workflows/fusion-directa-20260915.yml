@@ -49,6 +49,71 @@ jobs:
           cat direct/release-source/direct/connect-*.txt > repo/scripts/connect_tarjetas_iris.py
           cat direct/release-source/direct/finalize-*.txt > repo/scripts/finalize_tarjetas_iris_v2_core.py
 
+      - name: Apply the 13 final Necesito corrections
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          fixes = {
+              'tarjetas-necesito-condiciones.json': {
+                  'es/neurodiversidad/condiciones/alta-sensibilidad-sps/index.html': {
+                      'es': 'Menos ruido y luz a mi alrededor. Pregúntame cómo estoy hoy.',
+                      'en': 'Less noise and light around me. Ask how I am today.'},
+                  'es/neurodiversidad/condiciones/autodefensa-self-advocacy/index.html': {
+                      'es': 'Conocer mis derechos con palabras claras. Ensayemos cómo pedir un apoyo.',
+                      'en': "To know my rights in clear words. Let's practise asking for support."},
+                  'es/neurodiversidad/condiciones/deporte/index.html': {
+                      'es': 'Elegir el deporte y el lugar. Adapta las reglas cuando lo pida.',
+                      'en': 'To choose the sport and the place. Adapt the rules when I ask.'},
+                  'es/neurodiversidad/condiciones/diferencias-sensoriales/index.html': {
+                      'es': 'Ajustar la luz, el ruido y la ropa. Pregúntame qué me viene bien hoy.',
+                      'en': 'Adjustments to light, noise and clothing. Ask what suits me today.'},
+                  'es/neurodiversidad/condiciones/ecolalia/index.html': {
+                      'es': 'Repetir palabras para entenderlas mejor. Dame tiempo antes de responder.',
+                      'en': 'To repeat words to understand them better. Give me time before I reply.'},
+                  'es/neurodiversidad/condiciones/genero-fluido/index.html': {
+                      'es': 'Poder cambiar mi dato de género cuando lo pida.',
+                      'en': 'To change my gender information whenever I ask.'},
+                  'es/neurodiversidad/condiciones/ninas-y-mujeres-autistas/index.html': {
+                      'es': 'Que me preguntes a mí directamente. Escucha lo que cuento sobre mis dificultades.',
+                      'en': 'Ask me directly. Listen to what I say about my difficulties.'},
+                  'es/neurodiversidad/condiciones/sindrome-de-down/index.html': {
+                      'es': 'Revisiones de salud y apoyos en el colegio. Pregúntame a mí primero.',
+                      'en': 'Health checks and support at school. Ask me first.'},
+                  'es/neurodiversidad/condiciones/stimming-autoestimulacion/index.html': {
+                      'es': 'Moverme o repetir gestos para estar bien. Deja que lo haga.',
+                      'en': 'To move or repeat gestures to feel settled. Let me do it.'},
+                  'es/neurodiversidad/condiciones/teaf-fasd/index.html': {
+                      'es': 'Instrucciones concretas y rutinas estables. Repite la información las veces que haga falta.',
+                      'en': 'Specific instructions and stable routines. Repeat information as many times as necessary.'},
+                  'es/neurodiversidad/condiciones/vivienda/index.html': {
+                      'es': 'Una casa estable y tranquila. Ayuda para organizar los apoyos en casa.',
+                      'en': 'A stable, quiet home. Help to organise support at home.'},
+              },
+              'tarjetas-necesito-vida-diaria.json': {
+                  'es/biblioteca/actividad-fisica-deporte-y-piscina/index.html': {
+                      'es': 'Saber antes qué vamos a hacer. Poder salir del agua en cualquier momento.',
+                      'en': 'To know the plan in advance. To leave the water at any time.'},
+                  'es/biblioteca/compras-recados-y-esperas/index.html': {
+                      'es': 'Una lista corta. Poder salir de la tienda en cualquier momento.',
+                      'en': 'A short list. To leave the shop at any time.'},
+              },
+          }
+          for filename, entries in fixes.items():
+              path = Path('editorial') / filename
+              data = json.loads(path.read_text(encoding='utf-8'))
+              for key, value in entries.items():
+                  if key not in data:
+                      raise SystemExit(f'No existe la entrada final: {key}')
+                  data[key] = value
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('13 correcciones finales aplicadas')
+          PY
+
       - name: Sync final public files from production
         shell: bash
         run: |
@@ -62,7 +127,7 @@ jobs:
                 mkdir -p "$(dirname "$path")"
                 curl --fail --location --silent --show-error \
                   -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
-                  "https://irisgreen.eu/$path?main-sync=20260915-final3" -o "$path"
+                  "https://irisgreen.eu/$path?main-sync=20260915-final4" -o "$path"
                 ;;
             esac
           done < ../payload/release-source/blob-manifest-final.txt
