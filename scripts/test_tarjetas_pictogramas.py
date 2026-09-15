@@ -29,7 +29,7 @@ DETAIL_SETS = (
 EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "carpeta.svg"}
 ASSIGNED = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
 TOOL = "es/recursos/tarjeta-iris/index.html"
-LICENSE_HREF = 'href="/assets/mulberry/LICENSE-MULBERRY.txt"'
+LICENSE_HREF = 'href="/assets/mulberry-rutinas/LICENSE-MULBERRY.txt"'
 CREDIT_TEXT = "Pictogramas: Mulberry Symbols"
 
 PLACEHOLDER_HELPS = "todavía no dice qué ayuda"
