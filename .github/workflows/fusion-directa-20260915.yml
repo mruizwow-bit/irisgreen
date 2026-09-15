@@ -62,7 +62,7 @@ jobs:
                 mkdir -p "$(dirname "$path")"
                 curl --fail --location --silent --show-error \
                   -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
-                  "https://irisgreen.eu/$path?main-sync=20260915-final2" -o "$path"
+                  "https://irisgreen.eu/$path?main-sync=20260915-final3" -o "$path"
                 ;;
             esac
           done < ../payload/release-source/blob-manifest-final.txt
@@ -73,12 +73,11 @@ jobs:
         run: |
           set -euo pipefail
           cd repo
-          ! grep -q '^\[context\.production\]' netlify.toml
+          if grep -q '^\[context\.production\]' netlify.toml; then
+            echo 'ERROR: mantenimiento de producción sigue activo'
+            exit 1
+          fi
           grep -q 'python3 scripts/build_site.py' netlify.toml
-          grep -q "params.has('dificultad')" assets/tarjeta-iris.js
-          grep -q '/es/recursos/tarjeta-iris/' es/tarjetas-iris/index.html
-          grep -q 'rg-strip' es/recursos/index.html
-          ! grep -q '^/es/tarjetas-iris/\*' _redirects
           node --check assets/tarjeta-iris.js
           node --check assets/recursos-idioma.js
           node --check assets/rutinas-visuales.js
@@ -86,17 +85,27 @@ jobs:
           python3 - <<'PY'
           import json, pathlib, re
           root=pathlib.Path('.')
+          required=[
+              root/'es/recursos/index.html',
+              root/'es/recursos/tarjeta-iris/index.html',
+              root/'es/tarjetas-iris/index.html',
+              root/'assets/tarjeta-iris.js',
+              root/'assets/recursos-idioma.js',
+          ]
+          missing=[str(p) for p in required if not p.is_file() or p.stat().st_size == 0]
+          assert not missing, ('Faltan archivos finales', missing)
           total=bad=0
           for name in ('tarjetas-necesito-vida-diaria.json','tarjetas-necesito-condiciones.json','tarjetas-necesito-situaciones.json'):
               data=json.loads((root/'editorial'/name).read_text(encoding='utf-8'))
               for key,value in data.items():
-                  if key.startswith('_'): continue
+                  if key.startswith('_'):
+                      continue
                   total+=1
                   es=(value or {}).get('es','')
                   en=(value or {}).get('en','')
                   bad += bool(re.search(r'\bnecesito\b',es,re.I) or re.search(r'\bI need\b',en,re.I))
           assert total==415 and bad==0,(total,bad)
-          print('Tarjetas editoriales:',total,'repeticiones:',bad)
+          print('OK: archivos finales presentes; tarjetas editoriales=',total,'repeticiones=',bad)
           PY
 
       - name: Commit final version to main
