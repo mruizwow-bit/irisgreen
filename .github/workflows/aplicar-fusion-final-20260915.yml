@@ -25,36 +25,77 @@ jobs:
           path: repo
           fetch-depth: 0
 
-      - name: Inventory exact recoverable files
+      - name: Rebuild verified source patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat payload/release-source/nonpub-*.txt | base64 -d > /tmp/nonpublic.tar.xz
+          echo "6662808589d8a31605cd8e2d5d0f3bc677a2507d0b167acd95f19fcaecc77475  /tmp/nonpublic.tar.xz" | sha256sum -c -
+          tar -xJf /tmp/nonpublic.tar.xz -C repo
+          cd repo
+          python3 scripts/promote_daily_48_final.py
+
+      - name: Recover every exact final file
         shell: bash
         run: |
           set -euo pipefail
           cd repo
           git fetch origin '+refs/heads/*:refs/remotes/origin/*'
-          hist=0
-          web=0
           miss=0
           while read -r expected path; do
             [ -n "$expected" ] || continue
+            if [ -f "$path" ] && [ "$(git hash-object "$path")" = "$expected" ]; then
+              echo "READY $path"
+              continue
+            fi
             if git cat-file -e "$expected^{blob}" 2>/dev/null; then
+              mkdir -p "$(dirname "$path")"
+              git cat-file blob "$expected" > "$path"
               echo "HISTORY $path"
-              hist=$((hist+1))
               continue
             fi
             tmp="$(mktemp)"
-            if curl --fail --location --silent --show-error -H 'Cache-Control: no-cache' "https://irisgreen.eu/$path?main-sync=20260915b" -o "$tmp"; then
-              got="$(git hash-object "$tmp")"
-              if [ "$got" = "$expected" ]; then
+            if curl --fail --location --silent --show-error -H 'Cache-Control: no-cache' "https://irisgreen.eu/$path?main-sync=20260915c" -o "$tmp"; then
+              if [ "$(git hash-object "$tmp")" = "$expected" ]; then
+                mkdir -p "$(dirname "$path")"
+                mv "$tmp" "$path"
                 echo "WEB $path"
-                web=$((web+1))
-                rm -f "$tmp"
                 continue
               fi
-              echo "MISMATCH $path expected=$expected got=$got"
-            else
-              echo "NOURL $path"
             fi
             rm -f "$tmp"
+            echo "MISSING $expected $path"
             miss=$((miss+1))
           done < ../payload/release-source/blob-manifest-final.txt
-          echo "TOTAL history=$hist web=$web unresolved=$miss"
+          echo "UNRESOLVED=$miss"
+          exit "$miss"
+
+      - name: Validate critical release invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          ! grep -q '^\[context\.production\]' netlify.toml
+          grep -q 'python3 scripts/build_site.py' netlify.toml
+          grep -q "params.has('dificultad')" assets/tarjeta-iris.js
+          grep -q '/es/recursos/tarjeta-iris/' es/tarjetas-iris/index.html
+          grep -q 'rg-strip' es/recursos/index.html
+          ! grep -q '^/es/tarjetas-iris/\*' _redirects
+          node --check assets/tarjeta-iris.js
+          node --check assets/recursos-idioma.js
+          python3 -m py_compile scripts/build_site.py scripts/connect_tarjetas_iris.py scripts/connect_tarjetas_iris_en.py
+
+      - name: Commit final version to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          git config user.name "Iris Green release"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
+          git push origin HEAD:main
