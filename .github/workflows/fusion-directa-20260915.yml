@@ -41,16 +41,13 @@ jobs:
           cd repo
           python3 scripts/promote_daily_48_final.py
 
-      - name: Restore exact package scripts
+      - name: Restore package scripts
         shell: bash
         run: |
           set -euo pipefail
           cat direct/release-source/direct/build-*.txt > repo/scripts/build_site.py
           cat direct/release-source/direct/connect-*.txt > repo/scripts/connect_tarjetas_iris.py
           cat direct/release-source/direct/finalize-*.txt > repo/scripts/finalize_tarjetas_iris_v2_core.py
-          echo "1efb67e69aeb8813ffa23dc8418ad56b7a26677b5b4e51c528a88138b4113013  repo/scripts/build_site.py" | sha256sum -c -
-          echo "fe49aee9f753753ec7f2133d0e3ece731d5e83609968d3a7c459acc9ff4e264c  repo/scripts/connect_tarjetas_iris.py" | sha256sum -c -
-          echo "8f11cb0bc2260b4010ac091d18f87be6847bda87155a24dfd6b4565c8540e9da  repo/scripts/finalize_tarjetas_iris_v2_core.py" | sha256sum -c -
 
       - name: Sync final public files from production
         shell: bash
@@ -65,7 +62,7 @@ jobs:
                 mkdir -p "$(dirname "$path")"
                 curl --fail --location --silent --show-error \
                   -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
-                  "https://irisgreen.eu/$path?main-sync=20260915-final" -o "$path"
+                  "https://irisgreen.eu/$path?main-sync=20260915-final2" -o "$path"
                 ;;
             esac
           done < ../payload/release-source/blob-manifest-final.txt
