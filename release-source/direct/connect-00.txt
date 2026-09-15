@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""Conecta Tarjetas Iris con las secciones españolas sin tocar contenido editorial.
+
+En los índices de Situaciones, Vida diaria, Condiciones y Ayudas mantiene la
+Tarjeta Iris libre. Dentro de cada ficha crea una tarjeta terminada a partir
+del contenido de esa entrada: título, dificultad y apoyos ya están escritos.
+La ficha no se convierte en formulario ni exige redactar nada para poder usarla.
+
+Reglas incorporadas el 15 de septiembre de 2026 (revisión de las 420 tarjetas):
+
+1. El estado editorial BORRADOR es una marca interna de trabajo, no un aviso al
+   público: no decide si una ficha genera tarjeta. Las fichas marcadas la
+   generan igual que el resto.
+2. Si «Qué ayuda» es el texto de marcador de posición («esta ficha todavía no
+   dice qué ayuda»), no se genera tarjeta: se publica el mismo estado de
+   información insuficiente que usa el resto del sitio.
+3. «Necesito» ya no se deriva de «Me ayuda». Tiene fuente propia: texto
+   editorial explícito en editorial/tarjetas-necesito.json o una sección
+   distinta de la ficha. Si no hay ninguna, el bloque queda para escribir a
+   mano y nunca repite «Me ayuda».
+4. El contenido se extrae del cuerpo canónico de la ficha. El descarte de
+   paneles de prototipo (request-panel) se mantiene como salvaguarda: hoy no
+   hay ninguna ficha que lo necesite. No corrige ningún defecto conocido.
+"""
+from __future__ import annotations
+
+import argparse
+import html
+import json
+import re
+from pathlib import Path
+from urllib.parse import urlencode
+
+REPO = Path(__file__).resolve().parents[1]
+# Una tanda editorial por archivo: tarjetas-necesito-vida-diaria.json,
+# tarjetas-necesito-condiciones.json, tarjetas-necesito-situaciones.json…
+NECESITO_DIR = REPO / "editorial"
+NECESITO_GLOB = "tarjetas-necesito*.json"
+
+CSS_LINK = '<link rel="stylesheet" href="/assets/tarjetas-iris-cta.css">'
+MARKER = 'data-iris-card-cta="true"'
+STORAGE_MARKER = 'data-iris-card-storage="true"'
+SPECIAL_INSTRUCTIONS = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
+
+DETAIL_SETS = (
+    ("situaciones", "es/situaciones/*/index.html", 187),
+    ("vida", "es/biblioteca/*/index.html", 48),
+    ("condiciones", "es/neurodiversidad/condiciones/*/index.html", 185),
+)
+
+INDEX_PAGES = {
+    "situaciones": "es/situaciones/index.html",
+    "vida": "es/biblioteca/index.html",
+    "condiciones": "es/neurodiversidad/condiciones/index.html",
+    "ayudas": "es/tramites/directorio/index.html",
+}
+
+COPY = {
+    "situaciones": {"title":"Tarjeta Iris","text":"Escribe qué te cuesta, qué te ayuda y qué necesitas.","button":"Preparar una Tarjeta Iris"},
+    "vida": {"title":"Tarjeta Iris","text":"Prepara una tarjeta breve para esta situación cotidiana.","button":"Preparar una Tarjeta Iris"},
+    "condiciones": {"title":"Tarjeta Iris","text":"Crea una tarjeta con tus necesidades concretas.","button":"Preparar una Tarjeta Iris"},
+    "ayudas": {"title":"Tarjeta Iris","text":"Lleva por escrito lo que necesitas pedir o explicar.","button":"Preparar una Tarjeta Iris"},
+}
+
+INDEX_PARAMS = {
+    "situaciones": {"section":"situaciones","title":"Para una situación","dificultad":"","ayuda":"","necesito":""},
+    "vida": {"section":"vida","title":"Para una situación cotidiana","dificultad":"","ayuda":"","necesito":""},
+    "condiciones": {"section":"condiciones","title":"Mis necesidades","dificultad":"","ayuda":"","necesito":""},
+    "ayudas": {"section":"ayudas","title":"Para un trámite o una ayuda","dificultad":"","ayuda":"","necesito":""},
+}
+
+SKIP_HEADINGS = (
+    "base documental", "fuentes", "dónde está escrito", "ficha técnica",
+    "urgencias", "cuándo pedir ayuda", "señales de alerta", "enlaza con",
+    "puede relacionarse", "links with",
+)
+
+# Secciones con voz propia para «Necesito». Nunca se usa «Qué ayuda».
+NECESITO_HEADINGS = (
+    "qué necesito", "que necesito", "qué puedo pedir", "que puedo pedir",
+    "cómo pedirlo", "como pedirlo", "qué pedir", "que pedir",
+    "qué puedo decir", "que puedo decir",
+)
+
+# Texto de «no inventamos contenido»: la ficha no dice todavía qué ayuda.
+PLACEHOLDER_HELPS = (
+    "todavía no dice qué ayuda",
+    "todavia no dice que ayuda",
+)
+
+# Paneles de prototipo que no son contenido canónico de la ficha.
+PROTOTYPE_BLOCKS = (
+    re.compile(r'<section\b[^>]*class=["\'][^"\']*\brequest-panel\b[^"\']*["\'][^>]*>.*?</section>', re.I | re.S),
+    re.compile(r'<section\b[^>]*\bdata-prototipo=["\'][^"\']*["\'][^>]*>.*?</section>', re.I | re.S),
+)
+
+NEED_OPEN_TEXT = "Esto lo escribo yo antes de enseñar la tarjeta."
+NEED_OPEN_LINE = "________________________________"
+
+EMPTY_STATE = (
+    '<aside class="iris-cta iris-mini-empty" data-iris-section="{section}" ' + MARKER + ' '
+    'aria-label="Tarjeta Iris no disponible para esta entrada">'
+    '<h2>Tarjeta Iris</h2>'
+    '<p>Esta ficha todavía no dice qué ayuda, así que no se prepara una tarjeta con su contenido. '
+    'Cuando el texto esté escrito, la tarjeta aparecerá aquí.</p>'
+    '<a class="iris-cta-button" href="{href}">Preparar mi propia Tarjeta Iris</a>'
+    '</aside>'
+)
+
+
+def read(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def write(path: Path, text: str) -> None:
+    path.write_text(text, encoding="utf-8")
+
+
+def load_necesito() -> dict[str, dict[str, str]]:
+    """Textos editoriales de «Necesito», por ruta de ficha y por idioma.
+
+    Se leen todos los archivos editorial/tarjetas-necesito*.json: una tanda
+    editorial por archivo. Si dos tandas repiten la misma ficha, el build falla
+    y dice en qué dos archivos está.
+
+    Forma del archivo (la que escribe la autora):
+
+        {"es/biblioteca/…/index.html": {"es": "…", "en": "…"}}
+
+    Se admite además la forma anterior, con una cadena por ruta, dentro o fuera
+    de una clave «textos». Las claves que empiezan por «_» son notas y reglas
+    editoriales, no textos.
+
+    El inglés se guarda aunque todavía no exista ninguna Tarjeta Iris en inglés:
+    los textos se escribieron antes que las páginas que los van a usar. Cuando
+    esas páginas existan, basta con pasar el idioma a card_data().
+    """
+    out: dict[str, dict[str, str]] = {}
+    origen: dict[str, str] = {}
+    for path in sorted(NECESITO_DIR.glob(NECESITO_GLOB)):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise AssertionError(f"{path.name}: la raíz debe ser un objeto")
+        raw = data["textos"] if isinstance(data.get("textos"), dict) else data
+        out.update(_read_batch(path.name, raw, out, origen))
+    return out
+
+
+def _read_batch(nombre: str, raw: dict, ya: dict[str, dict[str, str]],
+                origen: dict[str, str]) -> dict[str, dict[str, str]]:
+    lote: dict[str, dict[str, str]] = {}
+    for rel, value in raw.items():
+        if rel.startswith("_"):
+            continue
+        if isinstance(value, str):
+            value = {"es": value}
+        if not isinstance(value, dict):
+            raise AssertionError(f"{nombre}: {rel} debe ser un texto o un objeto por idioma")
+        textos: dict[str, str] = {}
+        for lang in ("es", "en"):
+            texto = value.get(lang)
+            if texto is None:
+                continue
+            if not isinstance(texto, str) or not texto.strip():
+                raise AssertionError(f"{nombre}: texto vacío en {rel} ({lang})")
+            textos[lang] = texto.strip()
+        if "es" not in textos:
+            raise AssertionError(f"{nombre}: falta el texto en español en {rel}")
+        if rel in ya:
+            raise AssertionError(
+                f"{rel} tiene texto en dos tandas: {origen[rel]} y {nombre}. "
+                "Cada ficha va en una sola."
+            )
+        origen[rel] = nombre
+        lote[rel] = textos
+    return lote
+
+
+def long_texts(overrides: dict[str, dict[str, str]]) -> list[str]:
+    """Textos que se salen de la regla editorial: 2 frases y unas 14 palabras.
+
+    No rompe el build: la regla es editorial, no técnica. Se informa para que
+    la autora los revise cuando qui
