@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Convierte las 420 Tarjetas Iris interiores en Tarjeta Iris v2 estática.
+"""Convierte las Tarjetas Iris interiores en Tarjeta Iris v2 estática.
 
 `connect_tarjetas_iris.py` prepara el contenido de cada tarjeta a partir de su
-ficha. Este paso conserva esos tres bloques, retira la edición, fija la variante
-A cuando no existe un apoyo pictográfico editorial y añade las dos acciones de
-v2: copiar e imprimir. La herramienta personal `/es/tarjetas-iris/` continúa
-siendo editable.
+ficha. Este paso conserva esos tres bloques, retira la edición, deja la tarjeta
+sin apoyos (data-iris-apoyos="0") cuando no existe una asignación pictográfica
+editorial y añade las dos acciones de v2: copiar e imprimir. La herramienta
+personal `/es/tarjetas-iris/` continúa siendo editable.
+
+Desde el 15 de septiembre de 2026 el número de tarjetas no está fijado a 420:
+las fichas en borrador y las que todavía no dicen qué ayuda no generan tarjeta.
+Este paso cuenta lo que hay y comprueba además que «Necesito» no repite
+«Me ayuda» en ninguna tarjeta publicada.
 """
 from __future__ import annotations
 
@@ -28,6 +33,10 @@ CARD_RE = re.compile(
 )
 OWN_LINK_RE = re.compile(
     r'<a\b[^>]*\bclass=["\'][^"\']*\biris-mini-own\b[^"\']*["\'][^>]*>.*?</a>',
+    re.I | re.S,
+)
+BLOCK_RE = re.compile(
+    r'<section class="iris-mini-block(?: [^"]*)?">\s*<h3>(?P<head>[^<]+)</h3>\s*(?P<body>.*?)</section>',
     re.I | re.S,
 )
 
@@ -64,6 +73,22 @@ def add_actions(body: str, rel: str) -> str:
     return body[:anchor.start()] + ACTIONS + body[anchor.start():]
 
 
+def plain(fragment: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", fragment)).strip()
+
+
+def check_blocks(body: str, rel: str) -> None:
+    blocks = {m.group("head").strip(): plain(m.group("body")) for m in BLOCK_RE.finditer(body)}
+    if len(blocks) != 3:
+        raise AssertionError(f"Tarjeta Iris interior sin tres bloques con título: {rel}")
+    ayuda = blocks.get("Me ayuda", "").casefold()
+    necesito = blocks.get("Necesito", "").casefold()
+    if not ayuda or not necesito:
+        raise AssertionError(f"Tarjeta Iris sin «Me ayuda» o sin «Necesito»: {rel}")
+    if ayuda in necesito or necesito in ayuda:
+        raise AssertionError(f"«Necesito» repite «Me ayuda» en {rel}")
+
+
 def make_static(match: re.Match[str], rel: str) -> str:
     attrs = match.group("attrs")
     body = match.group("body")
@@ -72,6 +97,7 @@ def make_static(match: re.Match[str], rel: str) -> str:
         raise AssertionError(f"Tarjeta Iris interior sin marcador: {rel}")
     if len(re.findall(r'class=["\'][^"\']*\biris-mini-block\b', body, re.I)) != 3:
         raise AssertionError(f"Tarjeta Iris interior sin tres bloques: {rel}")
+    check_blocks(body, rel)
     if not OWN_LINK_RE.search(body):
         raise AssertionError(f"Tarjeta Iris interior sin acción esperada antes de fijarla: {rel}")
 
@@ -85,8 +111,8 @@ def make_static(match: re.Match[str], rel: str) -> str:
         flags=re.I,
     )
     attrs += ' data-iris-card-static="true"'
-    if 'data-iris-picto-variant=' not in attrs:
-        attrs += ' data-iris-picto-variant="A"'
+    if 'data-iris-apoyos=' not in attrs:
+        attrs += ' data-iris-apoyos="0"'
     attrs = re.sub(
         r'aria-label=(["\']).*?\1',
         'aria-label="Tarjeta Iris con el contenido de esta ficha"',
@@ -116,34 +142,41 @@ def main() -> None:
     root = args.root.resolve()
 
     counts: dict[str, int] = {}
-    variants = {"A": 0, "B": 0, "C": 0}
+    supports = {"0": 0, "1": 0, "2": 0}
     changed = 0
+    without_card: list[str] = []
     for section, pattern, expected in DETAIL_SETS:
         pages = sorted(p for p in root.glob(pattern) if p.is_file())
         if len(pages) != expected:
             raise AssertionError(f"{section}: esperadas {expected} fichas; encontradas {len(pages)}")
+        made = 0
         for path in pages:
             rel = path.relative_to(root).as_posix()
             text = path.read_text(encoding="utf-8")
             matches = list(CARD_RE.finditer(text))
+            if not matches:
+                # Ficha sin tarjeta: borrador o sin contenido de «Qué ayuda».
+                without_card.append(rel)
+                continue
             if len(matches) != 1:
-                raise AssertionError(f"Tarjeta Iris interior ausente o duplicada: {rel}")
+                raise AssertionError(f"Tarjeta Iris interior duplicada: {rel}")
             new = CARD_RE.sub(lambda m: make_static(m, rel), text, count=1)
             new = add_runtime(new, rel)
             if new == text:
                 raise AssertionError(f"La tarjeta no cambió: {rel}")
-            vm = re.search(r'data-iris-picto-variant=["\']([ABC])["\']', new, re.I)
-            if not vm:
-                raise AssertionError(f"Tarjeta Iris sin variante A/B/C: {rel}")
-            variants[vm.group(1).upper()] += 1
+            sm = re.search(r'data-iris-apoyos=["\']([012])["\']', new, re.I)
+            if not sm:
+                raise AssertionError(f"Tarjeta Iris sin número de apoyos: {rel}")
+            supports[sm.group(1)] += 1
             path.write_text(new, encoding="utf-8")
             changed += 1
-        counts[section] = len(pages)
+            made += 1
+        counts[section] = made
 
-    if changed != 420:
-        raise AssertionError(f"Se esperaban 420 tarjetas convertidas; se cambiaron {changed}")
-    if sum(variants.values()) != 420:
-        raise AssertionError(f"Recuento de variantes inconsistente: {variants}")
+    if changed == 0:
+        raise AssertionError("No se ha convertido ninguna Tarjeta Iris")
+    if sum(supports.values()) != changed:
+        raise AssertionError(f"Recuento de apoyos inconsistente: {supports}")
 
     runtime = root / "assets/tarjetas-iris-static.js"
     if not runtime.is_file() or runtime.stat().st_size == 0:
@@ -156,11 +189,14 @@ def main() -> None:
 
     print(json.dumps({
         "interior_cards": counts,
-        "total": 420,
-        "variants": variants,
+        "total": changed,
+        "supports": supports,
+        "pages_without_card": len(without_card),
+        "pages_without_card_examples": without_card[:5],
         "kept_generated_content": True,
         "editable": False,
         "blocks_per_card": 3,
+        "necesito_equals_ayuda": 0,
         "copy_action": True,
         "print_action": True,
         "status_initially_empty": True,

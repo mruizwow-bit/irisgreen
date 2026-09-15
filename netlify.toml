@@ -4,12 +4,6 @@
   publish = "dist"
   command = "python3 scripts/build_site.py"
 
-# Mientras la web pública está cerrada, producción publica únicamente el cartel de mantenimiento.
-# Deploy previews y branch deploys siguen usando el build normal para poder revisar cambios.
-[context.production]
-  publish = "maintenance-dist"
-  command = "python3 scripts/build_maintenance.py"
-
 # Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.
 [build.processing.html]
   pretty_urls = true
@@ -21,18 +15,6 @@
   from = "/es/recursos/juegos/juegos-86.json"
   to = "/es/recursos/juegos/juegos-120.json"
   status = 301
-
-[[headers]]
-  for = "/mantenimiento/*"
-  [headers.values]
-    "Cache-Control" = "no-store, max-age=0"
-    "X-Robots-Tag" = "noindex, nofollow, noarchive"
-
-[[headers]]
-  for = "/assets/maintenance.html"
-  [headers.values]
-    "Cache-Control" = "no-store, max-age=0"
-    "X-Robots-Tag" = "noindex, nofollow, noarchive"
 
 [[headers]]
   for = "/sitemap.xml"

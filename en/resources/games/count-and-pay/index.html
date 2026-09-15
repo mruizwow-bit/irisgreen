@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="/assets/preferencias-lectura.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f8fb">
+  <title>Count and pay · Iris Green</title>
+  <meta name="description" content="A game to practise different ways of paying, counting the change, checking whether the money is enough and finding the important information in an example letter.">
+  <link rel="canonical" href="https://irisgreen.eu/en/resources/games/count-and-pay/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Iris Green">
+  <meta property="og:title" content="Count and pay">
+  <meta property="og:description" content="Practise different ways of paying, the change, a budget and an example letter, with no timer and no score.">
+  <meta property="og:url" content="https://irisgreen.eu/en/resources/games/count-and-pay/">
+  <meta property="og:image" content="https://irisgreen.eu/img/og-condiciones.png">
+  <link rel="stylesheet" href="/assets/ig-fonts.css">
+  <link rel="stylesheet" href="/assets/site-v23.css">
+  <link rel="stylesheet" href="/assets/ajustes-interfaz.css">
+  <link rel="stylesheet" href="/assets/controles-comunes.css">
+  <link rel="stylesheet" href="/assets/preferencias-lectura.css">
+  <link rel="stylesheet" href="/assets/juego-contar-pagar.css">
+  <link rel="stylesheet" href="/assets/calculadora-iris.css">
+  <link rel="stylesheet" href="/assets/dinero-impresion.css" media="print">
+  <link rel="alternate" hreflang="es" href="https://irisgreen.eu/es/recursos/juegos/contar-y-pagar/">
+  <link rel="alternate" hreflang="en" href="https://irisgreen.eu/en/resources/games/count-and-pay/">
+  <script defer src="/assets/ig-idioma.js"></script>
+  <script defer src="/assets/calculadora-iris.js"></script>
+  <script defer src="/assets/juego-contar-pagar.js"></script>
+
+<link rel="stylesheet" href="/assets/print.css" media="print">
+<link rel="stylesheet" href="/assets/secondary-layout.css">
+</head>
+<body class="ig-game-page cp-body">
+<a class="skip ig-skip" href="#main">Skip to content</a>
+  <header class="hd">
+    <a class="brand" href="/"><img alt="" height="28" src="/img/v40-brand-symbol.webp" width="28"><span>Iris Green</span></a>
+    <button aria-controls="nav" aria-expanded="false" class="ico menu" id="mBtn"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span>Menu</span></button>
+    <button type="button" class="ig-menu-button" aria-label="Open menu" aria-controls="ig-main-nav" aria-expanded="false">Menu</button>
+    <nav aria-label="Explore" class="nav" id="ig-main-nav"><a href="/">Home</a><a href="/en/neurodiversity/conditions/">Conditions</a><a href="/en/situations/">Situations</a><a href="/en/everyday-life/">Everyday life</a><a href="/es/videos/">Videos</a><a href="/es/investigacion/">Research</a><a href="/es/datos/">Data</a><a href="/es/tramites/directorio/">Help</a><a href="/es/libros/">Books</a><a href="/es/recursos/" aria-current="page">Resources</a><span aria-hidden="true" class="sep"></span><a class="calma ig-calma" href="/en/interests/">Your interests</a><a class="calma ig-calma" href="/es/taller/">The workshop</a><a class="calma ig-calma" href="/en/quiet-space/">Quiet space</a></nav>
+    <div class="tools"><button aria-controls="a11y" aria-expanded="false" class="ico" id="a11yBtn" aria-label="Accessible reading"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 8.5h16M12 10.5v11M12 15h-4l-2 6M12 15h4l2 6"></path></svg><span>Reading</span></button><button aria-controls="pl" aria-expanded="false" class="ico" id="plBtn" aria-label="Music"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="17" cy="16" r="3"></circle></svg><span>Music</span></button></div>
+    <div class="langs" role="group" aria-label="Idioma · Language"><button class="lang" type="button" data-ig-lang="es" aria-pressed="false" lang="es">ES</button><button class="lang on" type="button" data-ig-lang="en" aria-pressed="true">EN</button></div>
+  </header>
+  <div class="panel" hidden id="pl"></div><div class="panel a11yp" hidden id="a11y"><h2>Accessible reading</h2><div class="ctrls"><div class="grp"><span>Text size</span><button data-a="fs-" aria-label="Text size −">A−</button><button data-a="fs+" aria-label="Text size +">A+</button></div><button data-a="ls">More letter spacing</button><button data-a="big">Bigger buttons</button><button data-a="hc">More contrast</button><button data-a="guide">Reading guide</button><button data-a="tts">Read aloud</button><button data-a="rm">Reduce motion</button><button class="reset" data-a="reset">Reset</button></div></div>
+  <p class="crumb"><a href="/es/recursos/juegos/">← Play</a> · <a href="/es/recursos/">Free resources</a></p>
+
+  <main id="main" class="cp-page">
+    <div class="cp-lang-sync" hidden aria-hidden="true"><button type="button" data-lang="es" aria-pressed="false" tabindex="-1">ES</button><button type="button" data-lang="en" aria-pressed="true" tabindex="-1">EN</button></div>
+    <section class="cp-hero" aria-labelledby="cp-title">
+      <div>
+        <p class="cp-eyebrow">Doing things in the world · interactive game</p>
+        <h1 id="cp-title">Count and pay</h1>
+        <p class="cp-lede">Practise a strategy that works for you at the till. Paying the exact amount, handing over a note and waiting for the change, or paying by card are all equally valid.</p>
+      </div>
+    </section>
+
+    <p class="cp-note" data-i18n="exampleNote">Amounts, prices and text are examples. They do not represent any real shop, bank or public body.</p>
+
+    <div class="cp-gamebar" aria-label="Game controls">
+      <div class="cp-tabs" role="tablist" aria-label="Parts of the game">
+        <button type="button" role="tab" aria-selected="true" aria-controls="panel-caja" id="tab-caja" data-panel="caja" data-i18n="tabTill">The till</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="panel-cambio" id="tab-cambio" data-panel="cambio" data-i18n="tabChange">The change</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="panel-llega" id="tab-llega" data-panel="llega" data-i18n="tabBudget">Can I afford it?</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="panel-carta" id="tab-carta" data-panel="carta" data-i18n="tabLetter">The letter</button>
+      </div>
+      <button class="cp-calc-button" type="button" id="calc-toggle" aria-expanded="false" aria-controls="calc-wrap" data-i18n="calculator">Use the calculator</button>
+    </div>
+
+    <section id="calc-wrap" class="cp-calc-wrap" hidden>
+      <ig-calculadora lang="en"></ig-calculadora>
+    </section>
+
+    <section class="cp-panel" id="panel-caja" role="tabpanel" aria-labelledby="tab-caja">
+      <div class="cp-panel-head">
+        <p class="cp-kicker">1 · <span data-i18n="tillKicker">The supermarket till</span></p>
+        <h2 data-i18n="tillTitle">Choose a way to pay</h2>
+        <p data-i18n="tillIntro">You need to pay <strong>€6.80</strong>. No strategy is better than another.</p>
+      </div>
+
+      <div class="cp-pay-grid">
+        <section class="cp-card" aria-labelledby="wallet-title">
+          <h3 id="wallet-title" data-i18n="myMoney">My money</h3>
+          <p class="cp-small" data-i18n="walletHelp">Press a coin or note to put it on the tray.</p>
+          <div id="wallet" class="cp-wallet" aria-label="My money"></div>
+        </section>
+
+        <section class="cp-card cp-tray-card" aria-labelledby="tray-title">
+          <div class="cp-total-row">
+            <h3 id="tray-title" data-i18n="tray">What I am giving</h3>
+            <strong id="tray-total">0,00 €</strong>
+          </div>
+          <div id="tray" class="cp-tray" aria-live="polite"></div>
+          <p id="tray-empty" class="cp-small" data-i18n="trayEmpty">You have not put anything on the tray yet.</p>
+        </section>
+      </div>
+
+      <fieldset class="cp-strategies">
+        <legend data-i18n="threeWays">Three ways to pay</legend>
+        <div class="cp-strategy-buttons">
+          <button type="button" data-pay-mode="exact" aria-pressed="true" data-i18n="exact">Pay the exact amount</button>
+          <button type="button" data-pay-mode="note" aria-pressed="false" data-i18n="withNote">Pay with a note</button>
+          <button type="button" data-pay-mode="card" aria-pressed="false" data-i18n="withCard">Pay by card</button>
+        </div>
+        <p class="cp-small" data-i18n="waysEqual">All three are equally valid. You can change your mind at any time.</p>
+      </fieldset>
+
+      <div id="mode-exact" class="cp-mode">
+        <button type="button" class="cp-primary" id="check-exact" data-i18n="checkAmount">Check the amount</button>
+      </div>
+
+      <div id="mode-note" class="cp-mode" hidden>
+        <h3 data-i18n="chooseNote">Choose the note you pay with</h3>
+        <div id="note-options" class="cp-note-options"></div>
+        <div id="note-result" class="cp-result" hidden>
+          <p id="note-result-text"></p>
+          <div id="change-pieces" class="cp-change-pieces"></div>
+        </div>
+      </div>
+
+      <div id="mode-card" class="cp-mode" hidden>
+        <div class="cp-card-reader" aria-labelledby="reader-title">
+          <div>
+            <p class="cp-kicker" id="reader-title" data-i18n="reader">Card reader</p>
+            <p class="cp-reader-amount">6,80 €</p>
+            <p id="card-step" class="cp-reader-step" data-i18n="tapCard">Tap or insert the card</p>
+            <div id="pin-dots" class="cp-pin-dots" hidden aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <button type="button" class="cp-primary" id="card-next" data-i18n="tapButton">Tap the card</button>
+          <p class="cp-small" id="card-note" data-i18n="tapNote">Hold the card next to the screen. If it does not read, you can insert it.</p>
+          <div id="receipt" class="cp-receipt" hidden>
+            <strong data-i18n="receipt">Example receipt</strong>
+            <span>6,80 €</span>
+            <span data-i18n="paidByCard">Paid by card</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="status-caja" class="cp-status" role="status" aria-live="polite"></div>
+      <div class="cp-actions">
+        <button type="button" id="undo-pay" data-i18n="undo">Undo</button>
+        <button type="button" id="reset-pay" data-i18n="startAgain">Start again</button>
+        <button type="button" id="print-money" data-i18n="printMoney">Print coins and notes</button>
+      </div>
+    </section>
+
+    <section class="cp-panel" id="panel-cambio" role="tabpanel" aria-labelledby="tab-cambio" hidden>
+      <div class="cp-panel-head">
+        <p class="cp-kicker">2 · <span data-i18n="changeKicker">The change</span></p>
+        <h2 data-i18n="changeTitle">Count what they give back</h2>
+        <p data-i18n="changeIntro">Press each piece to count it. The check tells you the total, not whether you were right or wrong.</p>
+      </div>
+      <section class="cp-card">
+        <div class="cp-total-row"><h3 data-i18n="inHand">What I have in my hand</h3><strong id="change-counted">0,00 €</strong></div>
+        <div id="change-hand" class="cp-change-hand"></div>
+        <div class="cp-actions">
+          <button type="button" class="cp-primary" id="check-change" data-i18n="checkChange">Check what they gave me</button>
+          <button type="button" id="next-change" data-i18n="anotherHand">Another handful</button>
+        </div>
+        <div id="status-cambio" class="cp-status" role="status" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section class="cp-panel" id="panel-llega" role="tabpanel" aria-labelledby="tab-llega" hidden>
+      <div class="cp-panel-head">
+        <p class="cp-kicker">3 · <span data-i18n="budgetKicker">Can I afford it?</span></p>
+        <h2 data-i18n="budgetTitle">A shop with €10</h2>
+        <p data-i18n="budgetIntro">Mark what you are taking. You can look at the real total or count high.</p>
+      </div>
+      <section class="cp-card">
+        <div class="cp-budget-head"><span data-i18n="budget">Budget</span><strong>10,00 €</strong></div>
+        <div id="product-list" class="cp-products"></div>
+        <div class="cp-budget-totals">
+          <p><span data-i18n="realTotal">Total</span> <strong id="basket-total">0,00 €</strong></p>
+          <p><span data-i18n="highTotal">Counted high</span> <strong id="basket-high">0,00 €</strong></p>
+        </div>
+        <div class="cp-actions">
+          <button type="button" class="cp-primary" id="check-budget" data-i18n="checkBudget">Check the budget</button>
+          <button type="button" id="clear-basket" data-i18n="emptyBasket">Empty the basket</button>
+        </div>
+        <div id="status-llega" class="cp-status" role="status" aria-live="polite"></div>
+        <p class="cp-small" data-i18n="pricesExample">Example prices, not from any shop.</p>
+      </section>
+    </section>
+
+    <section class="cp-panel" id="panel-carta" role="tabpanel" aria-labelledby="tab-carta" hidden>
+      <div class="cp-panel-head">
+        <p class="cp-kicker">4 · <span data-i18n="letterKicker">The letter I do not understand</span></p>
+        <h2 data-i18n="letterTitle">Find four pieces of information</h2>
+        <p data-i18n="letterIntro">This letter is an example. Iris does not read or interpret real letters.</p>
+      </div>
+      <div class="cp-letter-tools">
+        <button type="button" id="letter-list-toggle" aria-pressed="false" data-i18n="preferList">I prefer the list</button>
+        <button type="button" id="letter-hints" aria-pressed="false" data-i18n="showHints">Show hints</button>
+      </div>
+      <div id="letter-visual" class="cp-letter-wrap">
+        <article class="cp-letter" aria-label="Example letter">
+          <div class="cp-letter-head"><div class="cp-lines cp-lines-short" aria-hidden="true"></div><span class="cp-example" data-i18n="example">Example</span></div>
+          <div class="cp-lines cp-lines-wide" aria-hidden="true"></div>
+          <div class="cp-lines cp-lines-wide" aria-hidden="true"></div>
+          <div class="cp-date">00/00/0000 · 00:00</div>
+          <div class="cp-lines cp-lines-medium" aria-hidden="true"></div>
+          <div class="cp-lines cp-lines-wide" aria-hidden="true"></div>
+          <button class="cp-hotspot hs1" type="button" data-letter-point="sender" aria-label="Who sends the letter. Point 1 of 4."><span>1</span></button>
+          <button class="cp-hotspot hs2" type="button" data-letter-point="asks" aria-label="What the letter asks for. Point 2 of 4."><span>2</span></button>
+          <button class="cp-hotspot hs3" type="button" data-letter-point="when" aria-label="By when. Point 3 of 4."><span>3</span></button>
+          <button class="cp-hotspot hs4" type="button" data-letter-point="where" aria-label="Where it happens. Point 4 of 4."><span>4</span></button>
+        </article>
+        <aside id="letter-detail" class="cp-letter-detail" hidden>
+          <h3 id="letter-detail-title"></h3>
+          <h4 data-i18n="whatMeans">What this means</h4>
+          <p id="letter-detail-means"></p>
+          <h4 data-i18n="whatDo">What I can do about it</h4>
+          <p id="letter-detail-do"></p>
+          <button type="button" id="letter-close" data-i18n="close">Close</button>
+        </aside>
+      </div>
+      <div id="letter-list" class="cp-letter-list" hidden></div>
+      <div id="status-carta" class="cp-status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="cp-outcomes" aria-labelledby="outcomes-title">
+      <p class="cp-kicker" data-i18n="afterPurchase">After the shop</p>
+      <h2 id="outcomes-title" class="cp-visually-hidden">What you take from the game</h2>
+      <div class="cp-outcome-grid">
+        <article class="cp-outcome cp-understand"><h3 data-i18n="understand">You learn</h3><p data-i18n="understandText">Paying is not about calculating quickly: it is about having a way that works for you at the till.</p><div class="cp-empty-region" role="status" aria-live="polite"></div></article>
+        <article class="cp-outcome cp-keep"><h3 data-i18n="keep">You keep</h3><p data-i18n="keepText">Your way to pay, in one line: “I give a €20 note and wait for the change.”</p><div class="cp-empty-region" role="status" aria-live="polite"></div></article>
+        <article class="cp-outcome cp-dare"><h3 data-i18n="dare">You try</h3><p data-i18n="dareText">If it helps, pay for the next shop yourself using the way you chose.</p><div class="cp-empty-region" role="status" aria-live="polite"></div></article>
+      </div>
+    </section>
+
+    <section id="money-sheet" class="cp-money-sheet" aria-label="Printable sheet of coins and notes">
+      <h2 data-i18n="moneySheet">Coins and notes for practice</h2>
+      <div id="money-sheet-grid"></div>
+      <p data-i18n="notTender">Not legal tender · Iris Green · irisgreen.eu</p>
+    </section>
+
+    <noscript><p class="cp-note">Playing here needs JavaScript. The information and the example amounts are still visible.</p></noscript>
+  </main>
+
+  <script defer src="/assets/lectura-accesible.js"></script><script defer src="/assets/interfaz-comun.js"></script><script defer src="/assets/musica.js"></script>
+  <footer class="cp-footer"><a href="/es/recursos/juegos/">Play</a><span>·</span><a href="/en/privacy/">Privacy</a><span>·</span><span>Iris Green</span></footer>
+</body>
+</html>

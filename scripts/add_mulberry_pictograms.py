@@ -5,6 +5,12 @@ Los cinco SVG aprobados viven en assets/mulberry y se publican con su nombre
 estable. El texto de la Tarjeta Iris permanece visible y los pictogramas son
 decorativos para tecnologías de apoyo (alt=""). No existe selección automática
 por palabras ni se publican candidatos descartados.
+
+Nombres de variante (revisión del 15 de septiembre de 2026): las letras B y C
+nunca midieron «secuencia», solo cuántos bloques llevan apoyo. Se nombran por lo
+que son —«un apoyo» y «dos apoyos»— y se publican como data-iris-apoyos="1|2".
+Una tarjeta sin apoyos es data-iris-apoyos="0". Si algún día hace falta una
+variante de secuencia real, se construye sobre una lista <ol>; no se reutiliza C.
 """
 from __future__ import annotations
 
@@ -27,6 +33,16 @@ EXPECTED = {
     "preguntar": "preguntar.svg",
     "carpeta": "carpeta.svg",
 }
+
+# Nombre editorial -> número de apoyos. Las letras antiguas se aceptan para no
+# romper entregas anteriores, pero no se publican.
+VARIANT_NAMES = {
+    "un apoyo": 1,
+    "dos apoyos": 2,
+    "B": 1,
+    "C": 2,
+}
+LEGACY_NAMES = {"B": "un apoyo", "C": "dos apoyos"}
 
 
 def load_config() -> dict:
@@ -80,9 +96,9 @@ def add_css(text: str) -> str:
     return text.replace("</head>", CSS_LINK + "\n</head>", 1)
 
 
-def mark_variant(text: str, variant: str) -> str:
-    if variant not in {"B", "C"}:
-        raise AssertionError(f"Variante de pictogramas no válida: {variant}")
+def mark_supports(text: str, supports: int) -> str:
+    if supports not in {1, 2}:
+        raise AssertionError(f"Número de apoyos no válido: {supports}")
     pattern = re.compile(
         r'(<aside\b[^>]*\bclass=["\'][^"\']*\biris-mini-card\b[^"\']*["\'][^>]*)>',
         re.I,
@@ -92,16 +108,16 @@ def mark_variant(text: str, variant: str) -> str:
         raise AssertionError(f"Se esperaba una Tarjeta Iris y se encontraron {len(matches)}")
     m = matches[0]
     attrs = m.group(1)
-    if re.search(r'\bdata-iris-picto-variant=["\'][ABC]["\']', attrs, re.I):
+    if re.search(r'\bdata-iris-apoyos=["\']\d["\']', attrs, re.I):
         attrs = re.sub(
-            r'\bdata-iris-picto-variant=["\'][ABC]["\']',
-            f'data-iris-picto-variant="{variant}"',
+            r'\bdata-iris-apoyos=["\']\d["\']',
+            f'data-iris-apoyos="{supports}"',
             attrs,
             count=1,
             flags=re.I,
         )
     else:
-        attrs += f' data-iris-picto-variant="{variant}"'
+        attrs += f' data-iris-apoyos="{supports}"'
     return text[:m.start()] + attrs + ">" + text[m.end():]
 
 
@@ -113,7 +129,7 @@ def decorate_block(text: str, heading: str, picto_id: str, src: str) -> str:
         r'(<section class="iris-mini-block(?: [^"]*)?">\s*'
         r'<h3>' + re.escape(heading) + r'</h3>\s*)'
         r'(<p>.*?</p>)'
-        r'(\s*</section>)',
+        r'(\s*(?:<p\b[^>]*>.*?</p>\s*)?</section>)',
         flags=re.S,
     )
     matches = list(pattern.finditer(text))
@@ -134,35 +150,46 @@ def decorate_block(text: str, heading: str, picto_id: str, src: str) -> str:
     return text[:matches[0].start()] + replacement + text[matches[0].end():]
 
 
-def apply_page(root: Path, rel: str, assignment: dict, urls: dict[str, str]) -> bool:
+def apply_page(root: Path, rel: str, assignment: dict, urls: dict[str, str]) -> str:
+    """Devuelve «aplicada», «sin cambios» o «sin tarjeta»."""
     path = root / rel
     if not path.is_file():
         raise FileNotFoundError(path)
     text = path.read_text(encoding="utf-8")
-    if CARD_MARKER not in text:
-        raise AssertionError(f"Tarjeta Iris no generada en {rel}")
+    if CARD_MARKER not in text or "iris-mini-card" not in text:
+        # La ficha no publica tarjeta (borrador o sin contenido de ayuda).
+        # La asignación editorial queda pendiente, no se fuerza.
+        return "sin tarjeta"
 
     blocks = assignment.get("bloques")
     if not isinstance(blocks, dict) or not blocks:
         raise AssertionError(f"Asignación sin bloques: {rel}")
-    expected_variant = "B" if len(blocks) == 1 else "C"
-    variant = assignment.get("variante", expected_variant)
-    if variant != expected_variant:
+
+    declared = assignment.get("variante")
+    if declared is None:
+        raise AssertionError(f"Asignación sin variante: {rel}")
+    if declared not in VARIANT_NAMES:
         raise AssertionError(
-            f"{rel}: {len(blocks)} pictograma(s) exige variante {expected_variant}, no {variant}"
+            f"{rel}: variante «{declared}» no reconocida. Usa «un apoyo» o «dos apoyos»"
+        )
+    supports = VARIANT_NAMES[declared]
+    if supports != len(blocks):
+        expected = "un apoyo" if len(blocks) == 1 else "dos apoyos"
+        raise AssertionError(
+            f"{rel}: {len(blocks)} pictograma(s) exige «{expected}», no «{declared}»"
         )
 
     updated = add_css(text)
-    updated = mark_variant(updated, variant)
+    updated = mark_supports(updated, supports)
     for heading, picto_id in blocks.items():
         if picto_id not in urls:
             raise AssertionError(f"{rel}: pictograma no aprobado: {picto_id}")
         updated = decorate_block(updated, heading, picto_id, urls[picto_id])
 
     if updated == text:
-        return False
+        return "sin cambios"
     path.write_text(updated, encoding="utf-8")
-    return True
+    return "aplicada"
 
 
 def add_credit(root: Path, data: dict) -> bool:
@@ -205,19 +232,34 @@ def main() -> None:
 
     data = load_config()
     urls = validate_public_assets(root)
-    changed: list[str] = []
+    applied: list[str] = []
+    pending: list[str] = []
+    legacy: list[str] = []
+    supports_count = {1: 0, 2: 0}
+
     for rel, assignment in data["asignaciones"].items():
-        if apply_page(root, rel, assignment, urls):
-            changed.append(rel)
+        declared = assignment.get("variante")
+        if declared in LEGACY_NAMES:
+            legacy.append(f"{rel}: «{declared}» -> «{LEGACY_NAMES[declared]}»")
+        result = apply_page(root, rel, assignment, urls)
+        if result == "sin tarjeta":
+            pending.append(rel)
+            continue
+        supports_count[VARIANT_NAMES[declared]] += 1
+        if result == "aplicada":
+            applied.append(rel)
+
     credit_added = add_credit(root, data)
     validate_references(root, urls)
 
     print(json.dumps({
         "mulberry_publicables": len(EXPECTED),
         "mulberry_candidates_published": 0,
-        "pages_with_editorial_pictograms": len(changed),
-        "variant_b": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "B"),
-        "variant_c": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "C"),
+        "pages_with_editorial_pictograms": len(applied),
+        "un_apoyo": supports_count[1],
+        "dos_apoyos": supports_count[2],
+        "legacy_variant_names": legacy,
+        "pending_without_card": pending,
         "automatic_keyword_mapping": False,
         "single_credit_page": True,
         "credit_added": credit_added,

@@ -11,6 +11,12 @@ import argparse
 import re
 from pathlib import Path
 
+CHILDREN = (
+    '/es/recursos/juegos/',
+    '/es/recursos/rutinas-visuales/',
+    '/es/recursos/tarjeta-iris/',
+)
+
 
 def fix_header(header: str) -> str:
     if '/es/recursos/juegos/' not in header:
@@ -43,15 +49,14 @@ def run(root: Path) -> dict:
         raise SystemExit(f'No existe el directorio público: {root}')
 
     hub = root / 'es/recursos/index.html'
-    routines = root / 'es/recursos/rutinas-visuales/index.html'
-    games = root / 'es/recursos/juegos/index.html'
-    for path in (hub, routines, games):
+    pages = [hub] + [root / child.strip('/') / 'index.html' for child in CHILDREN]
+    for path in pages:
         if not path.is_file():
             raise FileNotFoundError(path)
 
     hub_text = hub.read_text(encoding='utf-8')
-    assert 'href="/es/recursos/juegos/"' in hub_text
-    assert 'href="/es/recursos/rutinas-visuales/"' in hub_text
+    for child in CHILDREN:
+        assert f'href="{child}"' in hub_text, f'El índice de Recursos no enlaza {child}'
 
     changed_headers = 0
     for path in sorted(root.rglob('*.html')):
@@ -97,7 +102,7 @@ def run(root: Path) -> dict:
 
     result = {
         'resources_hub': '/es/recursos/',
-        'children': ['/es/recursos/juegos/', '/es/recursos/rutinas-visuales/'],
+        'children': list(CHILDREN),
         'headers_updated': changed_headers,
         'home_section': 'Recursos',
         'result': 'accepted',
