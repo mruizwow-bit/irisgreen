@@ -57,50 +57,23 @@ jobs:
           python3 - <<'PY'
           import json
           from pathlib import Path
-
           fixes = {
               'tarjetas-necesito-condiciones.json': {
-                  'es/neurodiversidad/condiciones/alta-sensibilidad-sps/index.html': {
-                      'es': 'Menos ruido y luz a mi alrededor. Pregúntame cómo estoy hoy.',
-                      'en': 'Less noise and light around me. Ask how I am today.'},
-                  'es/neurodiversidad/condiciones/autodefensa-self-advocacy/index.html': {
-                      'es': 'Conocer mis derechos con palabras claras. Ensayemos cómo pedir un apoyo.',
-                      'en': "To know my rights in clear words. Let's practise asking for support."},
-                  'es/neurodiversidad/condiciones/deporte/index.html': {
-                      'es': 'Elegir el deporte y el lugar. Adapta las reglas cuando lo pida.',
-                      'en': 'To choose the sport and the place. Adapt the rules when I ask.'},
-                  'es/neurodiversidad/condiciones/diferencias-sensoriales/index.html': {
-                      'es': 'Ajustar la luz, el ruido y la ropa. Pregúntame qué me viene bien hoy.',
-                      'en': 'Adjustments to light, noise and clothing. Ask what suits me today.'},
-                  'es/neurodiversidad/condiciones/ecolalia/index.html': {
-                      'es': 'Repetir palabras para entenderlas mejor. Dame tiempo antes de responder.',
-                      'en': 'To repeat words to understand them better. Give me time before I reply.'},
-                  'es/neurodiversidad/condiciones/genero-fluido/index.html': {
-                      'es': 'Poder cambiar mi dato de género cuando lo pida.',
-                      'en': 'To change my gender information whenever I ask.'},
-                  'es/neurodiversidad/condiciones/ninas-y-mujeres-autistas/index.html': {
-                      'es': 'Que me preguntes a mí directamente. Escucha lo que cuento sobre mis dificultades.',
-                      'en': 'Ask me directly. Listen to what I say about my difficulties.'},
-                  'es/neurodiversidad/condiciones/sindrome-de-down/index.html': {
-                      'es': 'Revisiones de salud y apoyos en el colegio. Pregúntame a mí primero.',
-                      'en': 'Health checks and support at school. Ask me first.'},
-                  'es/neurodiversidad/condiciones/stimming-autoestimulacion/index.html': {
-                      'es': 'Moverme o repetir gestos para estar bien. Deja que lo haga.',
-                      'en': 'To move or repeat gestures to feel settled. Let me do it.'},
-                  'es/neurodiversidad/condiciones/teaf-fasd/index.html': {
-                      'es': 'Instrucciones concretas y rutinas estables. Repite la información las veces que haga falta.',
-                      'en': 'Specific instructions and stable routines. Repeat information as many times as necessary.'},
-                  'es/neurodiversidad/condiciones/vivienda/index.html': {
-                      'es': 'Una casa estable y tranquila. Ayuda para organizar los apoyos en casa.',
-                      'en': 'A stable, quiet home. Help to organise support at home.'},
+                  'es/neurodiversidad/condiciones/alta-sensibilidad-sps/index.html': {'es': 'Menos ruido y luz a mi alrededor. Pregúntame cómo estoy hoy.', 'en': 'Less noise and light around me. Ask how I am today.'},
+                  'es/neurodiversidad/condiciones/autodefensa-self-advocacy/index.html': {'es': 'Conocer mis derechos con palabras claras. Ensayemos cómo pedir un apoyo.', 'en': "To know my rights in clear words. Let's practise asking for support."},
+                  'es/neurodiversidad/condiciones/deporte/index.html': {'es': 'Elegir el deporte y el lugar. Adapta las reglas cuando lo pida.', 'en': 'To choose the sport and the place. Adapt the rules when I ask.'},
+                  'es/neurodiversidad/condiciones/diferencias-sensoriales/index.html': {'es': 'Ajustar la luz, el ruido y la ropa. Pregúntame qué me viene bien hoy.', 'en': 'Adjustments to light, noise and clothing. Ask what suits me today.'},
+                  'es/neurodiversidad/condiciones/ecolalia/index.html': {'es': 'Repetir palabras para entenderlas mejor. Dame tiempo antes de responder.', 'en': 'To repeat words to understand them better. Give me time before I reply.'},
+                  'es/neurodiversidad/condiciones/genero-fluido/index.html': {'es': 'Poder cambiar mi dato de género cuando lo pida.', 'en': 'To change my gender information whenever I ask.'},
+                  'es/neurodiversidad/condiciones/ninas-y-mujeres-autistas/index.html': {'es': 'Que me preguntes a mí directamente. Escucha lo que cuento sobre mis dificultades.', 'en': 'Ask me directly. Listen to what I say about my difficulties.'},
+                  'es/neurodiversidad/condiciones/sindrome-de-down/index.html': {'es': 'Revisiones de salud y apoyos en el colegio. Pregúntame a mí primero.', 'en': 'Health checks and support at school. Ask me first.'},
+                  'es/neurodiversidad/condiciones/stimming-autoestimulacion/index.html': {'es': 'Moverme o repetir gestos para estar bien. Deja que lo haga.', 'en': 'To move or repeat gestures to feel settled. Let me do it.'},
+                  'es/neurodiversidad/condiciones/teaf-fasd/index.html': {'es': 'Instrucciones concretas y rutinas estables. Repite la información las veces que haga falta.', 'en': 'Specific instructions and stable routines. Repeat information as many times as necessary.'},
+                  'es/neurodiversidad/condiciones/vivienda/index.html': {'es': 'Una casa estable y tranquila. Ayuda para organizar los apoyos en casa.', 'en': 'A stable, quiet home. Help to organise support at home.'},
               },
               'tarjetas-necesito-vida-diaria.json': {
-                  'es/biblioteca/actividad-fisica-deporte-y-piscina/index.html': {
-                      'es': 'Saber antes qué vamos a hacer. Poder salir del agua en cualquier momento.',
-                      'en': 'To know the plan in advance. To leave the water at any time.'},
-                  'es/biblioteca/compras-recados-y-esperas/index.html': {
-                      'es': 'Una lista corta. Poder salir de la tienda en cualquier momento.',
-                      'en': 'A short list. To leave the shop at any time.'},
+                  'es/biblioteca/actividad-fisica-deporte-y-piscina/index.html': {'es': 'Saber antes qué vamos a hacer. Poder salir del agua en cualquier momento.', 'en': 'To know the plan in advance. To leave the water at any time.'},
+                  'es/biblioteca/compras-recados-y-esperas/index.html': {'es': 'Una lista corta. Poder salir de la tienda en cualquier momento.', 'en': 'A short list. To leave the shop at any time.'},
               },
           }
           for filename, entries in fixes.items():
@@ -127,7 +100,7 @@ jobs:
                 mkdir -p "$(dirname "$path")"
                 curl --fail --location --silent --show-error \
                   -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
-                  "https://irisgreen.eu/$path?main-sync=20260915-final4" -o "$path"
+                  "https://irisgreen.eu/$path?main-sync=20260915-final5" -o "$path"
                 ;;
             esac
           done < ../payload/release-source/blob-manifest-final.txt
@@ -150,30 +123,22 @@ jobs:
           python3 - <<'PY'
           import json, pathlib, re
           root=pathlib.Path('.')
-          required=[
-              root/'es/recursos/index.html',
-              root/'es/recursos/tarjeta-iris/index.html',
-              root/'es/tarjetas-iris/index.html',
-              root/'assets/tarjeta-iris.js',
-              root/'assets/recursos-idioma.js',
-          ]
+          required=[root/'es/recursos/index.html',root/'es/recursos/tarjeta-iris/index.html',root/'es/tarjetas-iris/index.html',root/'assets/tarjeta-iris.js',root/'assets/recursos-idioma.js']
           missing=[str(p) for p in required if not p.is_file() or p.stat().st_size == 0]
           assert not missing, ('Faltan archivos finales', missing)
           total=bad=0
           for name in ('tarjetas-necesito-vida-diaria.json','tarjetas-necesito-condiciones.json','tarjetas-necesito-situaciones.json'):
               data=json.loads((root/'editorial'/name).read_text(encoding='utf-8'))
               for key,value in data.items():
-                  if key.startswith('_'):
-                      continue
+                  if key.startswith('_'): continue
                   total+=1
-                  es=(value or {}).get('es','')
-                  en=(value or {}).get('en','')
+                  es=(value or {}).get('es',''); en=(value or {}).get('en','')
                   bad += bool(re.search(r'\bnecesito\b',es,re.I) or re.search(r'\bI need\b',en,re.I))
           assert total==415 and bad==0,(total,bad)
           print('OK: archivos finales presentes; tarjetas editoriales=',total,'repeticiones=',bad)
           PY
 
-      - name: Commit final version to main
+      - name: Commit validated candidate branch
         shell: bash
         run: |
           set -euo pipefail
@@ -187,4 +152,4 @@ jobs:
             exit 0
           fi
           git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
-          git push origin HEAD:main
+          git push origin HEAD:refs/heads/release/final-main-20260915
