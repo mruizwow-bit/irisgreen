@@ -1,0 +1,167 @@
+str | None]) -> str:
+    e = lambda value: html.escape(value, quote=True)
+    href = url_for(section)
+    return (
+        f'<aside class="iris-cta iris-mini-card" data-iris-section="{section}" {MARKER} '
+        'aria-label="Tarjeta Iris preparada para esta entrada">'
+        '<header class="iris-mini-head"><span class="iris-mini-brand">Iris Green</span>'
+        '<span class="iris-mini-type">TARJETA IRIS</span></header>'
+        f'<h2 class="iris-mini-title">{e(str(data["title"]))}</h2>'
+        '<section class="iris-mini-block"><h3>Esto me cuesta</h3>'
+        f'<p>{e(str(data["dificultad"]))}</p></section>'
+        '<section class="iris-mini-block"><h3>Me ayuda</h3>'
+        f'<p>{e(str(data["ayuda"]))}</p></section>'
+        '<section class="iris-mini-block iris-mini-need"><h3>Necesito</h3>'
+        f'{need_block(data["necesito"])}</section>'
+        f'<a class="iris-mini-own" href="{e(href)}">Crear mi propia tarjeta</a>'
+        '<footer class="iris-mini-foot"><span>irisgreen.eu</span><span>Lista para enseñar o guardar</span></footer>'
+        '</aside>'
+    )
+
+
+def add_css(text: str) -> str:
+    if CSS_LINK in text:
+        return text
+    if "</head>" not in text:
+        raise AssertionError("Página sin </head>")
+    return text.replace("</head>", CSS_LINK + "\n</head>", 1)
+
+
+def insertion_point(text: str, path: Path) -> int:
+    article_pos = text.rfind("</article>")
+    if article_pos >= 0:
+        return article_pos + len("</article>")
+    rel = path.as_posix().replace("\\", "/")
+    if rel.endswith(SPECIAL_INSTRUCTIONS):
+        request = re.search(r'<section\b[^>]*class="request-panel"[^>]*>', text, flags=re.I)
+        if not request:
+            raise AssertionError("Ficha especial sin panel derecho")
+        return request.start()
+    raise AssertionError(f"No se encontró punto de inserción en {path}")
+
+
+def insert_block(text: str, block: str, path: Path) -> str:
+    if MARKER in text:
+        return text
+    cut = insertion_point(text, path)
+    return text[:cut] + "\n" + block + text[cut:]
+
+
+def insert_index(text: str, section: str, path: Path) -> str:
+    if MARKER in text:
+        return text
+    block = cta(section, url_for(section), compact=True)
+
+    if section in {"situaciones", "vida"}:
+        match = re.search(r'<p class="notice">.*?</p>', text, flags=re.I | re.S)
+        if match:
+            return text[:match.end()] + "\n" + block + text[match.end():]
+        match = re.search(r'<p class="lede">.*?</p>', text, flags=re.I | re.S)
+        if match:
+            return text[:match.end()] + "\n" + block + text[match.end():]
+
+    if section == "condiciones":
+        match = re.search(r'<div class="ig-section-actions">.*?</div>', text, flags=re.I | re.S)
+        if match:
+            return text[:match.end()] + "\n" + block + text[match.end():]
+        match = re.search(r'<p class="lede">.*?</p>', text, flags=re.I | re.S)
+        if match:
+            return text[:match.end()] + "\n" + block + text[match.end():]
+
+    if section == "ayudas":
+        match = re.search(r"<main\b[^>]*>", text, flags=re.I)
+        if match:
+            return text[:match.end()] + "\n" + block + text[match.end():]
+
+    raise AssertionError(f"No se encontró punto de inserción en {path}")
+
+
+def enable_browser_storage(tool: Path) -> None:
+    text = read(tool)
+    if STORAGE_MARKER in text:
+        return
+    script = r'''<script data-iris-card-storage="true">(function(){"use strict";
+var KEY="iris-green-tarjeta-v1",ids=["title","dificultad","ayuda","necesito"];
+function safeGet(){try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}}
+function snapshot(){var data={};ids.forEach(function(id){var el=document.getElementById(id);if(el)data[id]=el.value});var chosen=document.querySelector("[data-section-choice][aria-pressed=true]");data.section=chosen?chosen.dataset.sectionChoice:"situaciones";return data}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(snapshot()))}catch(e){}}
+var params=new URLSearchParams(location.search),incoming=params.has("section")||ids.some(function(id){return params.has(id)}),saved=safeGet();
+if(!incoming&&saved){ids.forEach(function(id){var el=document.getElementById(id);if(el&&typeof saved[id]==="string")el.value=saved[id].slice(0,240)});if(saved.section){var b=document.querySelector('[data-section-choice="'+saved.section+'"]');if(b)b.click()}ids.forEach(function(id){var el=document.getElementById(id);if(el)el.dispatchEvent(new Event("input",{bubbles:true}))})}
+ids.forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("input",save)});document.querySelectorAll("[data-section-choice]").forEach(function(b){b.addEventListener("click",function(){setTimeout(save,0)})});var reset=document.getElementById("reset");if(reset)reset.addEventListener("click",function(){setTimeout(save,0)});save();
+})();</script>'''
+    if "</body>" not in text:
+        raise AssertionError("Tarjetas Iris sin </body>")
+    write(tool, text.replace("</body>", script + "</body>", 1))
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=Path("dist"))
+    args = parser.parse_args()
+    root = args.root.resolve()
+
+    overrides = load_necesito()
+
+    changed: list[str] = []
+    connected: dict[str,int] = {}
+    skipped_placeholder: list[str] = []
+    read_with_prototype: list[str] = []
+    need_sources = {"editorial": 0, "ficha": 0, "por escribir": 0}
+
+    for section, pattern, expected in DETAIL_SETS:
+        pages = sorted(p for p in root.glob(pattern) if p.is_file())
+        if len(pages) != expected:
+            raise AssertionError(f"{section}: se esperaban {expected} fichas y hay {len(pages)}")
+        made = 0
+        for path in pages:
+            rel = path.relative_to(root).as_posix()
+            before = read(path)
+
+            data, origen, canon = card_data(before, section, rel, overrides)
+            if not canon:
+                read_with_prototype.append(rel)
+
+            if origen == "sin contenido":
+                skipped_placeholder.append(rel)
+                block = EMPTY_STATE.format(section=section, href=html.escape(url_for(section), quote=True))
+            else:
+                need_sources[origen] += 1
+                block = full_card(section, data)
+                made += 1
+
+            after = add_css(insert_block(before, block, path))
+            if after != before:
+                write(path, after)
+                changed.append(rel)
+            if after.count(MARKER) != 1:
+                raise AssertionError(f"Tarjeta Iris duplicada o ausente: {path}")
+            if origen != "sin contenido" and "iris-mini-card" not in after:
+                raise AssertionError(f"Tarjeta Iris no insertada: {path}")
+            if "Personalizar el texto" in after:
+                raise AssertionError(f"Botón antiguo todavía presente: {path}")
+        connected[section] = made
+
+    # Las portadas de sección ya no llevan aviso de Tarjeta Iris.
+    index_count = 0
+    for section, rel in INDEX_PAGES.items():
+        path = root / rel
+        if path.is_file() and "Preparar una Tarjeta Iris" in read(path):
+            raise AssertionError(f"Aviso antiguo de Tarjeta Iris en {rel}")
+
+    tool = root / "es/recursos/tarjeta-iris/index.html"
+    if not tool.is_file():
+        raise AssertionError("No existe /es/recursos/tarjeta-iris/ en dist")
+    old_tool = root / "es/tarjetas-iris/index.html"
+    if old_tool.is_file():
+        enable_browser_storage(old_tool)
+
+    expected_changed = sum(connected.values()) + len(skipped_placeholder) + index_count
+    if len(set(changed)) != expected_changed:
+        raise AssertionError(
+            f"Se esperaban {expected_changed} páginas modificadas y hay {len(set(changed))}"
+        )
+
+    languages = sorted({lang for textos in overrides.values() for lang in textos})
+    print(json.dumps({
+        "necesito_textos_editoriales": len(overrides),
+        "necesito_idiomas_en_e
