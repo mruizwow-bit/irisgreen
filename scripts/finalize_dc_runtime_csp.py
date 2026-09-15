@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publica las 24 páginas DC sin plantillas crudas ni ``unsafe-eval``.
+"""Publica las 23 páginas DC actuales sin plantillas crudas ni ``unsafe-eval``.
 
 Estrategia de publicación, sin reescribir interfaces:
 1. precompila cada bloque ``data-dc-script`` como una función JavaScript normal;
@@ -8,12 +8,14 @@ Estrategia de publicación, sin reescribir interfaces:
    el navegador reconstruye las llaves en el DOM, pero ya no quedan plantillas sin
    resolver en el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
-   24 páginas la usen;
+   23 páginas la usen;
 5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
 
-El script falla si aparece x-import/dc-import, más de un bloque de lógica o cualquier
-otra forma que exija volver a ampliar el contrato. No toca archivos fuente fuera de
-``--root`` salvo para leer el runtime generado original.
+El inventario bajó de 24 a 23 al simplificarse la página de Recursos: esa página
+ya no usa el runtime DC. El script sigue fallando si el inventario vuelve a cambiar,
+si aparece x-import/dc-import, más de un bloque de lógica o cualquier otra forma que
+exija ampliar el contrato. No toca archivos fuente fuera de ``--root`` salvo para
+leer el runtime generado original.
 """
 from __future__ import annotations
 
@@ -183,8 +185,8 @@ def main() -> None:
         text = path.read_text(encoding="utf-8", errors="ignore")
         if any(runtime in text for runtime in OLD_RUNTIMES):
             pages.append(path)
-    if len(pages) != 24:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 24, encontré {len(pages)}")
+    if len(pages) != 23:
+        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 23, encontré {len(pages)}")
 
     rows = [transform_page(path) for path in pages]
 

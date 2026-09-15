@@ -5,7 +5,8 @@
 ficha. Este paso conserva esos tres bloques, retira la edición, deja la tarjeta
 sin apoyos (data-iris-apoyos="0") cuando no existe una asignación pictográfica
 editorial y añade las dos acciones de v2: copiar e imprimir. La herramienta
-personal `/es/tarjetas-iris/` continúa siendo editable.
+personal canónica ``/es/recursos/tarjeta-iris/`` continúa siendo editable; la
+ruta antigua ``/es/tarjetas-iris/`` es solo un puente de compatibilidad.
 
 Desde el 15 de septiembre de 2026 el número de tarjetas no está fijado a 420:
 las fichas en borrador y las que todavía no dicen qué ayuda no generan tarjeta.
@@ -61,8 +62,6 @@ def add_runtime(text: str, rel: str) -> str:
 def add_actions(body: str, rel: str) -> str:
     if 'data-iris-card-copy' in body or 'data-iris-card-print' in body:
         raise AssertionError(f"Tarjeta Iris ya contiene acciones v2 antes de finalizar: {rel}")
-    # Si existe atribución pictográfica, las acciones quedan antes de ella. Si no,
-    # se colocan antes del pie de la tarjeta.
     anchors = (
         re.search(r'<p\b[^>]*\bclass=["\'][^"\']*\biris-mini-picto-credit\b[^"\']*["\'][^>]*>', body, re.I),
         re.search(r'<footer\b[^>]*\bclass=["\'][^"\']*\biris-mini-foot\b[^"\']*["\'][^>]*>', body, re.I),
@@ -155,7 +154,6 @@ def main() -> None:
             text = path.read_text(encoding="utf-8")
             matches = list(CARD_RE.finditer(text))
             if not matches:
-                # Ficha sin tarjeta: borrador o sin contenido de «Qué ayuda».
                 without_card.append(rel)
                 continue
             if len(matches) != 1:
@@ -182,10 +180,19 @@ def main() -> None:
     if not runtime.is_file() or runtime.stat().st_size == 0:
         raise AssertionError("Falta el runtime de acciones de Tarjeta Iris v2")
 
-    tool = root / "es/tarjetas-iris/index.html"
+    tool = root / "es/recursos/tarjeta-iris/index.html"
+    if not tool.is_file():
+        raise FileNotFoundError(tool)
     tool_text = tool.read_text(encoding="utf-8")
-    if '<form class="iris-panel"' not in tool_text:
-        raise AssertionError("La herramienta personal Tarjetas Iris debe seguir siendo editable")
+    editable_markers = (
+        'id="ti-cuesta"',
+        'id="ti-ayuda"',
+        'id="ti-necesito"',
+        'id="ti-reset"',
+        'id="ti-copy"',
+    )
+    if tool_text.count("<textarea") != 3 or any(marker not in tool_text for marker in editable_markers):
+        raise AssertionError("La herramienta personal Tarjeta Iris canónica debe seguir siendo editable")
 
     print(json.dumps({
         "interior_cards": counts,
@@ -201,6 +208,7 @@ def main() -> None:
         "print_action": True,
         "status_initially_empty": True,
         "personal_tool_editable": True,
+        "personal_tool_route": "/es/recursos/tarjeta-iris/",
         "result": "accepted",
     }, ensure_ascii=False))
 
