@@ -1,0 +1,24 @@
+ # una versión legible sin JavaScript construida desde sus propios datos.
+    subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
+    # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_hreflang_pairs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Siete Condiciones ya tienen pareja ES/EN explícita y se publican de forma recíproca.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_condition_hreflang.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # SEO técnico: solo metadatos; no modifica el contenido visible.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_seo_metadata.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_sin_estados_publicos.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Último paso: cerrar la deuda de las 24 plantillas sin cambiar sus interfaces.
+    subprocess.run([sys.executable,str(ROOT/'scripts/finalize_dc_runtime_csp.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/audit_template_runtime_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/check_csp_eval_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
+    assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
+    out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
+    (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','editorial','pt-br','.github/','_audit/'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
+    print('Directorio público:',len(files),'archivos; fuentes e informes permanecen fuera de dist.')
+    return dst
+
+if __name__=='__main__':build()
