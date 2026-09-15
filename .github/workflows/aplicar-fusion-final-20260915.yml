@@ -99,3 +99,5 @@ jobs:
           fi
           git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
           git push origin HEAD:main
+
+# Reejecución directa: 2026-09-15
