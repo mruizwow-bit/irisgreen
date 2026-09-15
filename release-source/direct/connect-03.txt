@@ -1,0 +1,23 @@
+l_archivo": languages,
+        "necesito_textos_fuera_de_regla": long_texts(overrides),
+        "detail_cards_connected": connected,
+        "detail_cards_total": sum(connected.values()),
+        "editorial_draft_state": "marca interna; no decide la tarjeta",
+        "skipped_placeholder_pages": len(skipped_placeholder),
+        "skipped_placeholder_list": skipped_placeholder,
+        "read_with_prototype_panel": read_with_prototype,
+        "necesito_sources": need_sources,
+        "necesito_derived_from_ayuda": 0,
+        "section_indexes_connected": index_count,
+        "detail_card": "prefilled-from-entry",
+        "detail_editing": False,
+        "free_card_on_indexes": True,
+        "browser_storage_free_tool": True,
+        "tool_route": "/es/tarjetas-iris/",
+        "home_untouched": True,
+        "english_untouched": True,
+    }, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
