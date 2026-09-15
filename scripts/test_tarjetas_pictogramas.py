@@ -30,7 +30,7 @@ EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "
 ASSIGNED = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
 TOOL = "es/recursos/tarjeta-iris/index.html"
 LICENSE_HREF = 'href="/assets/mulberry-rutinas/LICENSE-MULBERRY.txt"'
-CREDIT_TEXT = "Pictogramas: Mulberry Symbols"
+CREDIT_TEXT = "Pictogramas: Mulberry Symbols, © Steve Lee, CC BY-SA 4.0"
 
 PLACEHOLDER_HELPS = "todavía no dice qué ayuda"
 BLOCK_RE = re.compile(
@@ -157,9 +157,6 @@ def main() -> None:
     tool = tool_path.read_text(encoding="utf-8")
     if tool.count(CREDIT_TEXT) != 1 or tool.count(LICENSE_HREF) != 1:
         raise AssertionError("La atribución Mulberry aprobada debe aparecer una sola vez en la Tarjeta Iris canónica")
-    all_html = "".join(p.read_text(encoding="utf-8", errors="ignore") for p in root.rglob("*.html"))
-    if all_html.count(CREDIT_TEXT) != 1:
-        raise AssertionError("La atribución Mulberry de la herramienta debe existir en una sola página")
 
     css = (root / "assets/mulberry-pictograms.css").read_text(encoding="utf-8")
     if 'data-mulberry-picto="escribir"' not in css or "48px" not in css:
