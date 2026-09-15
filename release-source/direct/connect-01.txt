@@ -1,0 +1,227 @@
+era.
+    """
+    flagged = []
+    for rel, textos in overrides.items():
+        texto = textos["es"]
+        frases = [p for p in re.split(r"(?<=[.!?])\s+", texto) if p.strip()]
+        if len(frases) > 2 or len(texto.split()) > 18:
+            flagged.append(rel)
+    return flagged
+
+
+def url_for(section: str, params: dict[str,str] | None = None) -> str:
+    values = (params or INDEX_PARAMS[section]).copy()
+    values["section"] = section
+    return "/es/recursos/tarjeta-iris/?" + urlencode(values)
+
+
+def clean(fragment: str) -> str:
+    """Texto plano de un fragmento, con las frases separadas.
+
+    Un <li> de la ficha puede llevar dentro el título del consejo y su
+    explicación. Al quitar las etiquetas sin más, los dos textos quedaban
+    pegados («Pide los pasos por escrito Una nota de dos líneas…»). El cierre
+    de cada bloque se convierte en punto y espacio.
+    """
+    fragment = re.sub(r"<br\s*/?>", " ", fragment, flags=re.I)
+    fragment = re.sub(r"</(?:h[1-6]|p|div)\s*>", ". ", fragment, flags=re.I)
+    fragment = re.sub(r"<[^>]+>", " ", fragment)
+    text = re.sub(r"\s+", " ", html.unescape(fragment)).strip()
+    text = re.sub(r"\s+([.,;:!?])", r"\1", text)
+    text = re.sub(r"([.,;:!?])\s*\.", r"\1", text)
+    text = re.sub(r"\.{2,}", ".", text)
+    return text.strip()
+
+
+def clip(text: str, limit: int = 360) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    out: list[str] = []
+    size = 0
+    for sentence in sentences:
+        extra = len(sentence) + (1 if out else 0)
+        if out and size + extra > limit:
+            break
+        if not out and len(sentence) > limit:
+            cut = sentence[:limit].rsplit(" ", 1)[0].rstrip(" ,;:")
+            return cut + "…"
+        out.append(sentence)
+        size += extra
+    return " ".join(out) if out else text[:limit].rstrip() + "…"
+
+
+def canonical(text: str) -> str:
+    """Cuerpo de la ficha sin paneles de prototipo."""
+    for rx in PROTOTYPE_BLOCKS:
+        text = rx.sub("", text)
+    return text
+
+
+def section_blocks(text: str) -> list[tuple[str,str,str]]:
+    blocks: list[tuple[str,str,str]] = []
+    for match in re.finditer(r"<section\b([^>]*)>(.*?)</section>", text, flags=re.I | re.S):
+        attrs, body = match.group(1), match.group(2)
+        hm = re.search(r"<h2\b[^>]*>(.*?)</h2>", body, flags=re.I | re.S)
+        heading = clean(hm.group(1)) if hm else ""
+        blocks.append((attrs, heading, body))
+    return blocks
+
+
+def body_texts(body: str) -> list[str]:
+    found = re.findall(r"<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>", body, flags=re.I | re.S)
+    values = []
+    for fragment in found:
+        value = clean(fragment)
+        if value:
+            values.append(value)
+    return values
+
+
+def first_h1(text: str) -> str:
+    m = re.search(r"<h1\b[^>]*>(.*?)</h1>", text, flags=re.I | re.S)
+    if not m:
+        raise AssertionError("Ficha sin h1")
+    return clean(m.group(1)).strip("«»“”")
+
+
+def find_heading(blocks: list[tuple[str,str,str]], names: tuple[str,...]) -> list[str]:
+    targets = tuple(n.casefold() for n in names)
+    for attrs, heading, body in blocks:
+        h = heading.casefold()
+        if any(h == t or t in h for t in targets):
+            return body_texts(body)
+    return []
+
+
+def find_helps(blocks: list[tuple[str,str,str]]) -> list[str]:
+    for attrs, heading, body in blocks:
+        if re.search(r'class=["\'][^"\']*\bhelps\b', attrs, flags=re.I):
+            vals = body_texts(body)
+            if vals:
+                return vals
+    return find_heading(blocks, ("qué puede ayudar ahora", "qué ayuda", "qué puede ayudar"))
+
+
+def fallback_practical(blocks: list[tuple[str,str,str]]) -> list[str]:
+    out: list[str] = []
+    for attrs, heading, body in blocks[1:]:
+        h = heading.casefold()
+        if any(word in h for word in SKIP_HEADINGS):
+            continue
+        vals = body_texts(body)
+        if not vals:
+            continue
+        out.extend(vals[:1])
+        if len(out) >= 2:
+            break
+    return out
+
+
+def is_placeholder(helps: list[str]) -> bool:
+    joined = " ".join(helps).casefold()
+    return any(mark in joined for mark in PLACEHOLDER_HELPS)
+
+
+def distinct(candidate: str, ayuda: str) -> bool:
+    """«Necesito» no puede ser subcadena de «Me ayuda» ni al revés."""
+    a, b = candidate.casefold().strip(), ayuda.casefold().strip()
+    if not a:
+        return False
+    return a not in b and b not in a
+
+
+def necesito_for(rel: str, blocks: list[tuple[str,str,str]], ayuda: str,
+                 overrides: dict[str, dict[str, str]], lang: str = "es") -> tuple[str | None, str]:
+    texto = overrides.get(rel, {}).get(lang)
+    if texto:
+        return clip(texto, 420), "editorial"
+    vals = find_heading(blocks, NECESITO_HEADINGS)
+    if vals:
+        candidate = clip(" ".join(vals[:1]), 360)
+        if distinct(candidate, ayuda):
+            return candidate, "ficha"
+    return None, "por escribir"
+
+
+def extract(text: str, section: str) -> tuple[str, list[str], list[tuple[str,str,str]]]:
+    title = first_h1(text)
+    blocks = section_blocks(text)
+
+    if section == "situaciones":
+        difficulty = find_heading(blocks, ("en pocas palabras",))
+        helps = find_helps(blocks)
+    elif section == "condiciones":
+        difficulty = find_heading(blocks, ("descripción",))
+        helps = find_helps(blocks)
+    else:
+        difficulty = body_texts(blocks[0][2]) if blocks else []
+        helps = find_helps(blocks) or fallback_practical(blocks)
+
+    if not difficulty:
+        lede = re.search(r'<p\b[^>]*class=["\'][^"\']*\blede\b[^"\']*["\'][^>]*>(.*?)</p>', text, flags=re.I | re.S)
+        difficulty = [clean(lede.group(1))] if lede else []
+    if not helps:
+        helps = fallback_practical(blocks)
+    return title, [difficulty, helps], blocks
+
+
+def card_data(text: str, section: str, rel: str,
+              overrides: dict[str, dict[str, str]]) -> tuple[dict[str,str | None], str, bool]:
+    """Devuelve (datos, origen_de_necesito, leido_del_cuerpo_canonico)."""
+    body = canonical(text)
+    canon = True
+    title, (difficulty, helps), blocks = extract(body, section)
+    if not difficulty or not helps:
+        # La ficha no se puede leer sin sus paneles: se lee entera y se registra.
+        canon = False
+        title, (difficulty, helps), blocks = extract(text, section)
+
+    if not difficulty or not helps:
+        raise AssertionError(f"No se pudo preparar Tarjeta Iris: {rel}")
+
+    if is_placeholder(helps):
+        return {}, "sin contenido", canon
+
+    dificultad = clip(" ".join(difficulty[:1]), 320)
+    ayuda = clip(" ".join(helps[:2]), 360)
+    necesito, origen = necesito_for(rel, blocks, ayuda, overrides)
+
+    if section == "condiciones":
+        dificultad = clip("Mis necesidades pueden estar en algunas de estas áreas: " + dificultad, 340)
+
+    if necesito and not distinct(necesito, ayuda):
+        raise AssertionError(f"«Necesito» repite «Me ayuda» en {rel}")
+
+    return {
+        "title": title,
+        "dificultad": dificultad,
+        "ayuda": ayuda,
+        "necesito": necesito,
+    }, origen, canon
+
+
+def cta(section: str, href: str, compact: bool = False) -> str:
+    item = COPY[section]
+    cls = "iris-cta iris-cta-compact" if compact else "iris-cta"
+    return (
+        f'<section class="{cls}" data-iris-section="{section}" {MARKER}>'
+        f'<div class="iris-cta-copy"><h2>{html.escape(item["title"])}</h2>'
+        f'<p>{html.escape(item["text"])}</p></div>'
+        f'<a class="iris-cta-button" href="{html.escape(href, quote=True)}">{html.escape(item["button"])}</a>'
+        "</section>"
+    )
+
+
+def need_block(necesito: str | None) -> str:
+    e = lambda value: html.escape(value, quote=True)
+    if necesito:
+        return f'<p>{e(necesito)}</p>'
+    return (
+        f'<p>{e(NEED_OPEN_TEXT)}</p>'
+        f'<p class="iris-mini-write" aria-hidden="true">{NEED_OPEN_LINE}</p>'
+    )
+
+
+def full_card(section: str, data: dict[str,
