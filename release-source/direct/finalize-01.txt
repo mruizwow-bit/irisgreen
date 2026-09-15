@@ -1,0 +1,22 @@
+erramienta personal Tarjetas Iris debe seguir siendo editable")
+
+    print(json.dumps({
+        "interior_cards": counts,
+        "total": changed,
+        "supports": supports,
+        "pages_without_card": len(without_card),
+        "pages_without_card_examples": without_card[:5],
+        "kept_generated_content": True,
+        "editable": False,
+        "blocks_per_card": 3,
+        "necesito_equals_ayuda": 0,
+        "copy_action": True,
+        "print_action": True,
+        "status_initially_empty": True,
+        "personal_tool_editable": True,
+        "result": "accepted",
+    }, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
