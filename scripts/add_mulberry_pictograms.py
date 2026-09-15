@@ -193,21 +193,31 @@ def apply_page(root: Path, rel: str, assignment: dict, urls: dict[str, str]) -> 
 
 
 def add_credit(root: Path, data: dict) -> bool:
-    path = root / "es/tarjetas-iris/index.html"
+    """Garantiza el crédito en la herramienta canónica sin duplicar el texto aprobado."""
+    path = root / "es/recursos/tarjeta-iris/index.html"
+    if not path.is_file():
+        raise FileNotFoundError(path)
     text = path.read_text(encoding="utf-8")
+
+    approved_license = f'href="/assets/mulberry/{LICENSE_NAME}"'
+    if approved_license in text and "Pictogramas: Mulberry Symbols" in text:
+        # La versión final de la herramienta ya trae el crédito y la licencia dentro
+        # de su bloque propio. No añadimos un segundo párrafo ni tocamos el diseño.
+        return False
     if "data-mulberry-credit" in text:
         return False
+
     collection = html.escape(str(data["coleccion"]))
     author = html.escape(str(data["autor"]))
     license_name = html.escape(str(data["licencia"]))
     credit = (
-        '<p class="iris-privacy" data-mulberry-credit>'
+        '<p class="ti-license" data-mulberry-credit>'
         f'Créditos de pictogramas: {collection} · {author} · '
         f'<a href="/assets/mulberry/{LICENSE_NAME}">{license_name}</a>.'
         '</p>'
     )
     if "</main>" not in text:
-        raise AssertionError("Tarjetas Iris sin </main> para créditos Mulberry")
+        raise AssertionError("Tarjeta Iris canónica sin </main> para créditos Mulberry")
     path.write_text(text.replace("</main>", credit + "</main>", 1), encoding="utf-8")
     return True
 
