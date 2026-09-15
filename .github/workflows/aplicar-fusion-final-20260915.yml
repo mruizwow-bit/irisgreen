@@ -25,36 +25,13 @@ jobs:
           path: repo
           fetch-depth: 0
 
-      - name: Rebuild source archive
+      - name: Rebuild exact source archive
         shell: bash
         run: |
           set -euo pipefail
           cat payload/release-source/part-*.txt | base64 -d > /tmp/source.tar.xz
           echo "feba705dfc1e1e9b1053c691955aee082cbbac371ca456f39d0be8595bd815c5  /tmp/source.tar.xz" | sha256sum -c -
           tar -xJf /tmp/source.tar.xz -C repo
-
-      - name: Download and verify public files
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd repo
-          while read -r expected path; do
-            [ -n "$expected" ] || continue
-            mkdir -p "$(dirname "$path")"
-            tmp="$(mktemp)"
-            url="https://irisgreen.eu/$path"
-            curl --fail --location --silent --show-error \
-              -H 'Cache-Control: no-cache' \
-              -H 'Pragma: no-cache' \
-              "${url}?main-sync=20260915" -o "$tmp"
-            got="$(sha256sum "$tmp" | awk '{print $1}')"
-            if [ "$got" != "$expected" ]; then
-              echo "SHA mismatch: $path"
-              echo "expected=$expected got=$got"
-              exit 1
-            fi
-            mv "$tmp" "$path"
-          done < ../payload/release-source/public-sha256.txt
 
       - name: Validate critical release invariants
         shell: bash
