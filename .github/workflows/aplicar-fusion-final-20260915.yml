@@ -30,7 +30,7 @@ jobs:
         run: |
           set -euo pipefail
           cat payload/release-source/nonpub-*.txt | base64 -d > /tmp/nonpublic.tar.xz
-          echo "6662808589d8a31605cd8e2d5d0f3bc677a2507d0b167acd95f19fcaecc77475  /tmp/nonpublic.tar.xz" | sha256sum -c -
+          echo "807083d3d67d82edfc0d6df386081774650961b75b7e268397e5aa486f240078  /tmp/nonpublic.tar.xz" | sha256sum -c -
           tar -xJf /tmp/nonpublic.tar.xz -C repo
           cd repo
           python3 scripts/promote_daily_48_final.py
