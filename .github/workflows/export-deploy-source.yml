@@ -1,0 +1,23 @@
+name: Export deployment source
+
+on:
+  push:
+    branches:
+      - deploy/export-main
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Package source for deployment
+        run: |
+          tar --exclude=.git --exclude=dist -czf /tmp/irisgreen-source.tar.gz .
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: irisgreen-source
+          path: /tmp/irisgreen-source.tar.gz
+          retention-days: 1
