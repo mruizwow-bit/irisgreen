@@ -9,6 +9,8 @@ Revisión del 15 de septiembre de 2026:
 - «Necesito» no puede repetir «Me ayuda» en ninguna tarjeta publicada.
 - Ningún bloque puede llevar dos textos pegados sin puntuación.
 - La variante se publica como número de apoyos (0, 1 o 2), no como letra.
+- El crédito Mulberry se valida en la herramienta canónica de Recursos; la ruta
+  antigua de Tarjeta Iris es solo un puente y no contiene la herramienta.
 """
 from __future__ import annotations
 
@@ -26,15 +28,16 @@ DETAIL_SETS = (
 )
 EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "carpeta.svg"}
 ASSIGNED = "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html"
+TOOL = "es/recursos/tarjeta-iris/index.html"
+LICENSE_HREF = 'href="/assets/mulberry/LICENSE-MULBERRY.txt"'
+CREDIT_TEXT = "Pictogramas: Mulberry Symbols"
 
 PLACEHOLDER_HELPS = "todavía no dice qué ayuda"
 BLOCK_RE = re.compile(
     r'<section class="iris-mini-block(?: [^"]*)?">\s*<h3>(?P<head>[^<]+)</h3>\s*(?P<body>.*?)</section>',
     re.I | re.S,
 )
-# Dos textos pegados sin puntuación: «…por escrito Una nota de dos líneas…».
 GLUED_RE = re.compile(r"\b[a-záéíóúüñ]{3,}\b ([A-ZÁÉÍÓÚÑ][a-záéíóúüñ]{2,})")
-# Nombres propios y siglas que sí empiezan por mayúscula a mitad de frase.
 PROPER_NOUNS = {
     "Iris", "España", "Espana", "Madrid", "Europa", "Europea", "Internet",
     "Seguridad", "Social", "Real", "Decreto", "Ley", "Estado", "Salud",
@@ -148,12 +151,15 @@ def main() -> None:
     elif 'iris-mini-card-static' in assigned:
         raise AssertionError("La ficha con asignación editorial no publica sus dos apoyos")
 
-    tool = (root / "es/tarjetas-iris/index.html").read_text(encoding="utf-8")
-    if tool.count("data-mulberry-credit") != 1:
-        raise AssertionError("La atribución Mulberry debe aparecer una sola vez en Tarjetas Iris")
+    tool_path = root / TOOL
+    if not tool_path.is_file():
+        raise FileNotFoundError(tool_path)
+    tool = tool_path.read_text(encoding="utf-8")
+    if tool.count(CREDIT_TEXT) != 1 or tool.count(LICENSE_HREF) != 1:
+        raise AssertionError("La atribución Mulberry aprobada debe aparecer una sola vez en la Tarjeta Iris canónica")
     all_html = "".join(p.read_text(encoding="utf-8", errors="ignore") for p in root.rglob("*.html"))
-    if all_html.count("data-mulberry-credit") != 1:
-        raise AssertionError("La atribución Mulberry debe existir en una sola página")
+    if all_html.count(CREDIT_TEXT) != 1:
+        raise AssertionError("La atribución Mulberry de la herramienta debe existir en una sola página")
 
     css = (root / "assets/mulberry-pictograms.css").read_text(encoding="utf-8")
     if 'data-mulberry-picto="escribir"' not in css or "48px" not in css:
@@ -171,6 +177,7 @@ def main() -> None:
         "editorial_assignment_applied": assignment_applied,
         "discarded_candidates_published": 0,
         "credit_pages": 1,
+        "credit_route": TOOL,
         "result": "accepted",
     }, ensure_ascii=False))
 
