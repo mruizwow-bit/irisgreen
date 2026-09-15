@@ -77,15 +77,22 @@ async function run() {
   const data = await window.NEACoreV1.loadData(DATA_PATHS);
 
   assert(
-    "V7-001 real Iris Green shell remains independent from Sabik",
-    html.includes("class=\"ig-uh\"") &&
-      html.includes("class=\"ig-uh-reading\"") &&
-      html.includes("class=\"ig-uh-langs\"") &&
-      html.includes("class=\"ig-search-input\"") &&
-      html.includes("id=\"consola\"") &&
-      !pageJs.includes("ig-search-input") &&
-      !html.includes("/iris-green-logo.png"),
-    "Iris shell/search must be real ig-* UI, not Sabik JS or broken logo"
+    "V7-001 current Iris Green home remains independent from Sabik",
+    html.includes("class=\"site-header\"") &&
+      html.includes("class=\"brand\"") &&
+      html.includes("id=\"search-form\"") &&
+      html.includes("id=\"q\"") &&
+      html.includes("Empieza por lo que te pasa") &&
+      html.includes("data-section=\"situaciones\"") &&
+      html.includes("data-section=\"vida\"") &&
+      html.includes("data-section=\"ayudas\"") &&
+      html.includes("/assets/navigation-approved.css") &&
+      html.includes("/assets/navigation-approved.js") &&
+      !pageJs.includes("#q") &&
+      !pageJs.includes("search-form") &&
+      !html.includes("class=\"ig-uh\"") &&
+      !html.includes("Escríbelo como lo dirías en voz alta"),
+    "Iris shell/search must be the approved current home, not an old ig-* shell or Sabik-owned search"
   );
 
   assert(
@@ -172,8 +179,110 @@ async function run() {
       html.includes("class=\"sabik-panel\"") &&
       css.includes(".sabik-panel.is-collapsed .sabik-widget-body") &&
       pageJs.includes("sabik-panel-collapsed") &&
-      html.includes("class=\"ig-search-input\""),
+      html.includes("id=\"search-form\"") &&
+      html.includes("id=\"q\""),
     "collapse must affect only Sabik widget body"
+  );
+
+  assert(
+    "V7-011 Sabik uses layered 2D/2.5D assets, not Meshy GLB",
+    html.includes("id=\"sabik-hologram\"") &&
+      html.includes("src=\"/sabik/assets/sabik-base-640.webp\"") &&
+      html.includes("class=\"sabik-back\"") &&
+      html.includes("class=\"sabik-front\"") &&
+      !html.includes("sabik-hologram-v1.png") &&
+      !html.includes(".glb") &&
+      css.includes("isolation: isolate") &&
+      css.includes("#rings-back") &&
+      css.includes("#rings-front") &&
+      css.includes("624.4px 609.4px"),
+    "Sabik visual must use measured inline SVG orbits plus one measured base raster, without model swapping"
+  );
+
+  assert(
+    "V7-012 Sabik does not embed SVG layers as img files",
+    html.includes("class=\"sabik-back\"") &&
+      html.includes("class=\"sabik-front\"") &&
+      !/<img[^>]+\.svg/u.test(html),
+    "orbits must be inline SVG so rings and dots remain addressable by CSS/JS"
+  );
+
+  assert(
+    "V7-013 Sabik exposes all measured ring ids",
+    Array.from({ length: 12 }, (_, index) => `id=\"ring-${index + 1}\"`).every((id) => html.includes(id)),
+    "ring-1 through ring-12 must exist in the inline SVG"
+  );
+
+  assert(
+    "V7-014 Sabik keeps one base raster across states",
+    html.includes("src=\"/sabik/assets/sabik-base-640.webp\"") &&
+      !/sabik-hologram[\s\S]{0,300}\.src\s*=/u.test(pageJs) &&
+      !pageJs.includes("setAttribute(\"src\"") &&
+      !pageJs.includes("sabik-base-640"),
+    "states may change visual parameters, not swap the avatar base image"
+  );
+
+  assert(
+    "V7-015 reduced motion stops measured orbit groups",
+    css.includes("@media (prefers-reduced-motion: reduce)") &&
+      css.includes("#rings-back") &&
+      css.includes("#rings-front") &&
+      css.includes("animation: none !important"),
+    "prefers-reduced-motion must remove continuous motion from the measured orbit layers"
+  );
+
+  assert(
+    "V7-016 cognitive states map to visual parameters",
+    css.includes('[data-cognitive-state="NucleoBase"]') &&
+      css.includes('[data-cognitive-state="Hiperfoco"]') &&
+      css.includes('[data-cognitive-state="Sobrecarga"]') &&
+      css.includes('[data-cognitive-state="Vinculo"]') &&
+      css.includes('[data-cognitive-state="VozInterior"]') &&
+      css.includes('[data-cognitive-state="Creatividad"]') &&
+      pageJs.includes("normalizeCognitiveState") &&
+      pageJs.includes("applySabikVisual"),
+    "all six NEA cognitive states must be visual states of the same component"
+  );
+
+  assert(
+    "V7-017 low intensity is a modifier and keeps cognitive state",
+    lowSession.cognitive_state === baseSession.cognitive_state &&
+      lowSession.sabik_state.low_intensity === true &&
+      css.includes('[data-low-intensity="true"]'),
+    `cognitive_state=${lowSession.cognitive_state}`
+  );
+
+  assert(
+    "V7-018 processing and pause are functional visual states",
+    pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
+      pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
+      css.includes('[data-interaction-state="procesando"]') &&
+      css.includes('[data-interaction-state="pausa"]'),
+    "Enviar and Parar must affect functional motion without creating another Sabik"
+  );
+
+  assert(
+    "V7-019 risk visual is stable, not alarm red",
+    css.includes('[data-protection-state="riesgo"]') &&
+      !/sabik-hologram[\s\S]{0,400}#(?:f00|ff0000|8f1d1d|d00)/iu.test(css) &&
+      !css.includes("blink") &&
+      !css.includes("shake"),
+    "risk must simplify and stabilize the hologram without alarm colors or effects"
+  );
+
+  assert(
+    "V7-020 reduced motion removes continuous orbital movement",
+    css.includes("@media (prefers-reduced-motion: reduce)") &&
+      css.includes(".sabik-hologram *") &&
+      css.includes("animation: none !important"),
+    "reduced motion must stop continuous rotation and pulsing"
+  );
+
+  assert(
+    "V7-021 Sabik ignores passive behavioral signals",
+    !/addEventListener\(\s*["'](?:keydown|keyup|input|beforeinput|composition|scroll|mousemove|pointermove|touchmove|visibilitychange|deviceorientation)["']/u.test(pageJs) &&
+      !/(getUserMedia|SpeechRecognition|webkitSpeechRecognition)/u.test(pageJs),
+    "visual changes may only come from Core state, explicit buttons/forms, or functional interaction"
   );
 
   const failures = results.filter((item) => !item.ok);

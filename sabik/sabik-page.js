@@ -63,10 +63,28 @@
   }
 
   function ensurePanelPlacement() {
-    const composition = document.querySelector(".sabik-iris-root") || document.querySelector(".sabik-iris-composition");
+    const composition =
+      document.querySelector(".sabik-home-with-panel") ||
+      document.querySelector(".sabik-iris-root") ||
+      document.querySelector(".sabik-iris-composition");
     const panel = document.querySelector(".sabik-panel");
     if (!composition || !panel || panel.parentElement === composition) return;
     composition.appendChild(panel);
+  }
+
+  function normalizeCognitiveState(value) {
+    const allowed = new Set(["NucleoBase", "Hiperfoco", "Sobrecarga", "Vinculo", "VozInterior", "Creatividad"]);
+    return allowed.has(value) ? value : "NucleoBase";
+  }
+
+  function applySabikVisual(sabikState, interaction = "espera") {
+    const hologram = document.querySelector("#sabik-hologram");
+    if (!hologram) return;
+    const lowIntensity = Boolean(sabikState && sabikState.low_intensity);
+    hologram.dataset.cognitiveState = normalizeCognitiveState(sabikState && sabikState.cognitive_state);
+    hologram.dataset.interactionState = interaction;
+    hologram.dataset.protectionState = sabikState && sabikState.protection === "riesgo" ? "riesgo" : "normal";
+    hologram.dataset.lowIntensity = String(lowIntensity);
   }
 
   function setStatus(message, visual = "base") {
@@ -82,15 +100,19 @@
     return "base";
   }
 
-  function renderSabikState(sabikState, fallbackText) {
+  function renderSabikState(sabikState, fallbackText, interaction = "espera") {
     document.body.classList.toggle("sabik-low-stim", Boolean(sabikState && sabikState.low_intensity));
+    applySabikVisual(sabikState, interaction);
     setStatus(fallbackText, visualState(sabikState));
   }
 
   function setLoading(isLoading) {
     const submit = document.querySelector("#sabik-submit");
     if (submit) submit.disabled = isLoading;
-    if (isLoading) setStatus("Sabik está buscando en Iris Green.", "minimal");
+    if (isLoading) {
+      applySabikVisual(state.session && state.session.sabik_state, "procesando");
+      setStatus("Sabik está buscando en Iris Green.", "minimal");
+    }
   }
 
   function clearSources() {
@@ -128,12 +150,12 @@
     answer.className = "sabik-answer";
     if (plan.type === "risk_accompaniment" || plan.type === "ambiguous_risk_clarification") {
       answer.classList.add("is-risk");
-      renderSabikState(plan.sabik_state, "Sabik mantiene acompañamiento y escucha.");
+      renderSabikState(plan.sabik_state, "Sabik mantiene acompañamiento y escucha.", "respuesta");
     } else if (plan.type === "insufficient_information") {
       answer.classList.add("is-warning");
-      renderSabikState(plan.sabik_state, "Sabik no tiene fuente suficiente.");
+      renderSabikState(plan.sabik_state, "Sabik no tiene fuente suficiente.", "respuesta");
     } else {
-      renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.");
+      renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.", "respuesta");
     }
     answer.textContent = window.NEACoreV1.renderControlledText(plan);
     notice.textContent = [plan.privacy_notice, plan.limits_notice].filter(Boolean).join(" ");
@@ -197,6 +219,7 @@
       state.session = window.NEACoreV1.createSessionState();
       state.lastInput = "";
       state.lastPlan = null;
+      applySabikVisual(state.session.sabik_state, "pausa");
       setStatus("Sabik queda en pausa. No se ha guardado historial.", "minimal");
     });
 
@@ -218,7 +241,7 @@
       answer.textContent = "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.";
       notice.textContent = "La corrección explícita pesa más que la inferencia.";
       clearSources();
-      renderSabikState(state.session.sabik_state, "Sabik espera una corrección.");
+      renderSabikState(state.session.sabik_state, "Sabik espera una corrección.", "correccion");
     });
 
     document.querySelector("#sabik-other-way")?.addEventListener("click", async () => {
@@ -233,7 +256,7 @@
       answer.textContent = "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.";
       notice.textContent = "No repito la misma respuesta si no hay una vía real que cambiar.";
       clearSources();
-      renderSabikState(state.session.sabik_state, "Sabik necesita una aclaración para cambiar de vía.");
+      renderSabikState(state.session.sabik_state, "Sabik necesita una aclaración para cambiar de vía.", "correccion");
     });
 
     document.querySelector("#sabik-toggle")?.addEventListener("click", (event) => {
@@ -244,6 +267,7 @@
       document.body.classList.toggle("sabik-panel-collapsed", collapsed);
       button.setAttribute("aria-expanded", String(!collapsed));
       button.textContent = collapsed ? "Mostrar" : "Ocultar";
+      applySabikVisual(state.session && state.session.sabik_state, collapsed ? "pausa" : "espera");
       setStatus(collapsed ? "Sabik queda oculto. Iris Green sigue disponible." : "Estoy aquí si quieres ayuda.");
     });
   }
