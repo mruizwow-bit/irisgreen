@@ -5,6 +5,10 @@ Los cinco SVG aprobados viven en assets/mulberry y se publican con su nombre
 estable. El texto de la Tarjeta Iris permanece visible y los pictogramas son
 decorativos para tecnologías de apoyo (alt=""). No existe selección automática
 por palabras ni se publican candidatos descartados.
+
+Variante B significa apoyo pictográfico contextual en uno o varios bloques de la
+tarjeta. Variante C queda reservada para una secuencia real y ordenada y no se
+puede producir con este decorador de bloques.
 """
 from __future__ import annotations
 
@@ -81,8 +85,8 @@ def add_css(text: str) -> str:
 
 
 def mark_variant(text: str, variant: str) -> str:
-    if variant not in {"B", "C"}:
-        raise AssertionError(f"Variante de pictogramas no válida: {variant}")
+    if variant != "B":
+        raise AssertionError("Este decorador solo publica variante B; C requiere una secuencia <ol> real")
     pattern = re.compile(
         r'(<aside\b[^>]*\bclass=["\'][^"\']*\biris-mini-card\b[^"\']*["\'][^>]*)>',
         re.I,
@@ -95,13 +99,13 @@ def mark_variant(text: str, variant: str) -> str:
     if re.search(r'\bdata-iris-picto-variant=["\'][ABC]["\']', attrs, re.I):
         attrs = re.sub(
             r'\bdata-iris-picto-variant=["\'][ABC]["\']',
-            f'data-iris-picto-variant="{variant}"',
+            'data-iris-picto-variant="B"',
             attrs,
             count=1,
             flags=re.I,
         )
     else:
-        attrs += f' data-iris-picto-variant="{variant}"'
+        attrs += ' data-iris-picto-variant="B"'
     return text[:m.start()] + attrs + ">" + text[m.end():]
 
 
@@ -145,11 +149,10 @@ def apply_page(root: Path, rel: str, assignment: dict, urls: dict[str, str]) -> 
     blocks = assignment.get("bloques")
     if not isinstance(blocks, dict) or not blocks:
         raise AssertionError(f"Asignación sin bloques: {rel}")
-    expected_variant = "B" if len(blocks) == 1 else "C"
-    variant = assignment.get("variante", expected_variant)
-    if variant != expected_variant:
+    variant = assignment.get("variante", "B")
+    if variant != "B":
         raise AssertionError(
-            f"{rel}: {len(blocks)} pictograma(s) exige variante {expected_variant}, no {variant}"
+            f"{rel}: una asignación por bloques debe ser B. C queda reservada a secuencias reales."
         )
 
     updated = add_css(text)
@@ -216,8 +219,8 @@ def main() -> None:
         "mulberry_publicables": len(EXPECTED),
         "mulberry_candidates_published": 0,
         "pages_with_editorial_pictograms": len(changed),
-        "variant_b": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "B"),
-        "variant_c": sum(1 for a in data["asignaciones"].values() if a.get("variante") == "C"),
+        "variant_b": sum(1 for a in data["asignaciones"].values() if a.get("variante", "B") == "B"),
+        "variant_c": 0,
         "automatic_keyword_mapping": False,
         "single_credit_page": True,
         "credit_added": credit_added,

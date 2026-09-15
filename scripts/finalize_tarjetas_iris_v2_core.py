@@ -52,8 +52,6 @@ def add_runtime(text: str, rel: str) -> str:
 def add_actions(body: str, rel: str) -> str:
     if 'data-iris-card-copy' in body or 'data-iris-card-print' in body:
         raise AssertionError(f"Tarjeta Iris ya contiene acciones v2 antes de finalizar: {rel}")
-    # Si existe atribución pictográfica, las acciones quedan antes de ella. Si no,
-    # se colocan antes del pie de la tarjeta.
     anchors = (
         re.search(r'<p\b[^>]*\bclass=["\'][^"\']*\biris-mini-picto-credit\b[^"\']*["\'][^>]*>', body, re.I),
         re.search(r'<footer\b[^>]*\bclass=["\'][^"\']*\biris-mini-foot\b[^"\']*["\'][^>]*>', body, re.I),
@@ -109,6 +107,26 @@ def make_static(match: re.Match[str], rel: str) -> str:
     return card
 
 
+def tool_is_editable(tool_text: str) -> bool:
+    """La herramienta personal es editable y no expone controles editoriales A/B/C."""
+    required = (
+        'data-ti-tool',
+        'id="ti-title"',
+        'id="ti-dificultad"',
+        'id="ti-ayuda"',
+        'id="ti-necesito"',
+        'id="ti-print"',
+        'id="ti-copy"',
+        'id="ti-reset"',
+    )
+    forbidden = ('data-ti-variant=', 'data-ti-lang=', 'data-ti-pictos=')
+    return (
+        all(marker in tool_text for marker in required)
+        and tool_text.count('<textarea') == 3
+        and not any(marker in tool_text for marker in forbidden)
+    )
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--root", type=Path, default=Path("dist"))
@@ -151,8 +169,8 @@ def main() -> None:
 
     tool = root / "es/tarjetas-iris/index.html"
     tool_text = tool.read_text(encoding="utf-8")
-    if '<form class="iris-panel"' not in tool_text:
-        raise AssertionError("La herramienta personal Tarjetas Iris debe seguir siendo editable")
+    if not tool_is_editable(tool_text):
+        raise AssertionError("La herramienta personal Tarjetas Iris debe seguir siendo editable y sencilla")
 
     print(json.dumps({
         "interior_cards": counts,
@@ -165,6 +183,7 @@ def main() -> None:
         "print_action": True,
         "status_initially_empty": True,
         "personal_tool_editable": True,
+        "personal_tool_exposes_variants": False,
         "result": "accepted",
     }, ensure_ascii=False))
 

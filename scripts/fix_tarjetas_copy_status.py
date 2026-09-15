@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Anuncia el resultado de «Copiar texto» sin cambiar el nombre del botón.
+"""Garantiza un estado accesible para la acción «Copiar texto» de Tarjetas Iris.
 
-Se aplica solo al artefacto público. El estado usa ``role=status`` para que un
-lector de pantalla reciba la confirmación o el error sin mover el foco.
+La herramienta nueva ya incorpora una región ``role=status`` estable y mantiene el
+nombre del botón. El código histórico sigue siendo compatible mientras exista en
+algún artefacto antiguo.
 """
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,10 +22,30 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, default=ROOT / 'dist')
     args = ap.parse_args()
-    page = args.root.resolve() / 'es/tarjetas-iris/index.html'
+    root = args.root.resolve()
+    page = root / 'es/tarjetas-iris/index.html'
     if not page.is_file():
         raise FileNotFoundError(page)
     text = page.read_text(encoding='utf-8')
+
+    if 'id="ti-copy"' in text:
+        if not re.search(r'id=["\']ti-status["\'][^>]*role=["\']status["\'][^>]*aria-live=["\']polite["\']', text, re.I):
+            raise ValueError('La nueva Tarjeta Iris no tiene región de estado accesible para copiar')
+        runtime = root / 'assets/tarjetas-iris-tool.js'
+        if not runtime.is_file():
+            raise FileNotFoundError(runtime)
+        js = runtime.read_text(encoding='utf-8')
+        required = (
+            "$('#ti-copy').addEventListener('click'",
+            'navigator.clipboard',
+            'Texto copiado.',
+            'No se ha podido copiar.',
+        )
+        if not all(marker in js for marker in required):
+            raise ValueError('La nueva Tarjeta Iris no contiene la lógica accesible de copia')
+        print({'pagina':'es/tarjetas-iris/index.html','copy_status':True,'button_label_stable':True,'runtime':'tarjetas-iris-tool.js'})
+        return
+
     if BUTTON_WITH_STATUS in text and NEW_SUCCESS in text:
         print({'pagina': 'es/tarjetas-iris/index.html', 'copy_status': True, 'ya_aplicado': True})
         return
