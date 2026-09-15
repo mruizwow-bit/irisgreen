@@ -1,0 +1,87 @@
+name: Aplicar fusion final 20260915
+
+on:
+  push:
+    branches:
+      - release/aplicar-fusion-final-20260915
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout payload branch
+        uses: actions/checkout@v4
+        with:
+          ref: release/aplicar-fusion-final-20260915
+          path: payload
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: repo
+          fetch-depth: 0
+
+      - name: Rebuild source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat payload/release-source/part-*.txt | base64 -d > /tmp/source.tar.xz
+          echo "feba705dfc1e1e9b1053c691955aee082cbbac371ca456f39d0be8595bd815c5  /tmp/source.tar.xz" | sha256sum -c -
+          tar -xJf /tmp/source.tar.xz -C repo
+
+      - name: Download and verify public files
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          while read -r expected path; do
+            [ -n "$expected" ] || continue
+            mkdir -p "$(dirname "$path")"
+            tmp="$(mktemp)"
+            url="https://irisgreen.eu/$path"
+            curl --fail --location --silent --show-error \
+              -H 'Cache-Control: no-cache' \
+              -H 'Pragma: no-cache' \
+              "${url}?main-sync=20260915" -o "$tmp"
+            got="$(sha256sum "$tmp" | awk '{print $1}')"
+            if [ "$got" != "$expected" ]; then
+              echo "SHA mismatch: $path"
+              echo "expected=$expected got=$got"
+              exit 1
+            fi
+            mv "$tmp" "$path"
+          done < ../payload/release-source/public-sha256.txt
+
+      - name: Validate critical release invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          ! grep -q '^\[context\.production\]' netlify.toml
+          grep -q 'python3 scripts/build_site.py' netlify.toml
+          grep -q "params.has('dificultad')" assets/tarjeta-iris.js
+          grep -q '/es/recursos/tarjeta-iris/' es/tarjetas-iris/index.html
+          grep -q 'rg-strip' es/recursos/index.html
+          ! grep -q '^/es/tarjetas-iris/\*' _redirects
+          node --check assets/tarjeta-iris.js
+          node --check assets/recursos-idioma.js
+          python3 -m py_compile scripts/build_site.py scripts/connect_tarjetas_iris.py scripts/connect_tarjetas_iris_en.py
+
+      - name: Commit final version to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          git config user.name "Iris Green release"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
+          git push origin HEAD:main
