@@ -225,20 +225,6 @@ function restore(){
   }catch(e){}
 }
 
-function fromURL(){
-  try{
-    var q=new URLSearchParams(location.search);
-    var any=false;
-    KEYS.forEach(function(k){
-      var v=q.get(k);
-      if(typeof v==='string'&&v.trim()){state[k]=v.trim().slice(0,400);any=true;}
-    });
-    var lang=q.get('lang');
-    if(lang==='en'||lang==='es'){state.lang=lang;any=true;}
-    if(any)state.example=false;
-  }catch(e){}
-}
-
 function values(){
   if(!state.example)return {cuesta:state.cuesta,ayuda:state.ayuda,necesito:state.necesito,pasos:state.pasos.slice()};
   var e=EXAMPLE[state.lang];
@@ -466,9 +452,25 @@ function printCard(){
   setTimeout(cleanup,1500);
 }
 
+function applyPrefillParams(){
+  var params=new URLSearchParams(window.location.search);
+  var hasCuesta=params.has('cuesta')||params.has('dificultad');
+  var hasAyuda=params.has('ayuda');
+  var hasNecesito=params.has('necesito');
+  if(!hasCuesta&&!hasAyuda&&!hasNecesito)return;
+
+  state.example=false;
+  state.cuesta=(params.has('cuesta')?params.get('cuesta'):params.get('dificultad')||'').slice(0,240);
+  state.ayuda=(params.get('ayuda')||'').slice(0,240);
+  state.necesito=(params.get('necesito')||'').slice(0,240);
+  state.pasos=['','',''];
+  state.copy=null;state.printed=false;state.notice='';
+  save();
+}
+
 function init(){
   restore();
-  fromURL();
+  applyPrefillParams();
 
   /* El conmutador ES/EN vive en la cabecera del sitio, no en el contenido. */
   var applyLang=function(lang){
