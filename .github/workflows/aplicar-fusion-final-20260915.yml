@@ -25,56 +25,36 @@ jobs:
           path: repo
           fetch-depth: 0
 
-      - name: Materialize exact blobs from repository history
+      - name: Inventory exact recoverable files
         shell: bash
         run: |
           set -euo pipefail
           cd repo
           git fetch origin '+refs/heads/*:refs/remotes/origin/*'
-          missing=0
-          while read -r blob path; do
-            [ -n "$blob" ] || continue
-            if git cat-file -e "$blob^{blob}" 2>/dev/null; then
-              mkdir -p "$(dirname "$path")"
-              git cat-file blob "$blob" > "$path"
-            else
-              echo "MISSING $blob $path"
-              missing=1
-            fi
-          done < ../payload/release-source/blob-manifest-final.txt
-          exit "$missing"
-
-      - name: Verify exact hashes and release invariants
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd repo
+          hist=0
+          web=0
+          miss=0
           while read -r expected path; do
             [ -n "$expected" ] || continue
-            got="$(git hash-object "$path")"
-            test "$got" = "$expected" || { echo "HASH MISMATCH $path expected=$expected got=$got"; exit 1; }
+            if git cat-file -e "$expected^{blob}" 2>/dev/null; then
+              echo "HISTORY $path"
+              hist=$((hist+1))
+              continue
+            fi
+            tmp="$(mktemp)"
+            if curl --fail --location --silent --show-error -H 'Cache-Control: no-cache' "https://irisgreen.eu/$path?main-sync=20260915b" -o "$tmp"; then
+              got="$(git hash-object "$tmp")"
+              if [ "$got" = "$expected" ]; then
+                echo "WEB $path"
+                web=$((web+1))
+                rm -f "$tmp"
+                continue
+              fi
+              echo "MISMATCH $path expected=$expected got=$got"
+            else
+              echo "NOURL $path"
+            fi
+            rm -f "$tmp"
+            miss=$((miss+1))
           done < ../payload/release-source/blob-manifest-final.txt
-          ! grep -q '^\[context\.production\]' netlify.toml
-          grep -q 'python3 scripts/build_site.py' netlify.toml
-          grep -q "params.has('dificultad')" assets/tarjeta-iris.js
-          grep -q '/es/recursos/tarjeta-iris/' es/tarjetas-iris/index.html
-          grep -q 'rg-strip' es/recursos/index.html
-          ! grep -q '^/es/tarjetas-iris/\*' _redirects
-          node --check assets/tarjeta-iris.js
-          node --check assets/recursos-idioma.js
-          python3 -m py_compile scripts/build_site.py scripts/connect_tarjetas_iris.py scripts/connect_tarjetas_iris_en.py
-
-      - name: Commit final version to main
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd repo
-          git config user.name "Iris Green release"
-          git config user.email "actions@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
-          git push origin HEAD:main
+          echo "TOTAL history=$hist web=$web unresolved=$miss"
