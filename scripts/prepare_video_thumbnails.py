@@ -18,11 +18,11 @@ ID=re.compile(r'^[A-Za-z0-9_-]{11}$')
 
 def video_ids():
     found=set()
-    data=json.loads((ROOT/'videoteca-listado.json').read_text())
+    data=json.loads((ROOT/'videoteca-listado.json').read_text(encoding='utf-8'))
     for v in data['videos']:
         if v.get('plataforma')=='YouTube' and ID.fullmatch(str(v.get('ref',''))):found.add(v['ref'])
     for name in PAGES:
-        text=(ROOT/name).read_text()
+        text=(ROOT/name).read_text(encoding='utf-8')
         for match in re.finditer(r'\by\(\s*"(?:[^"\\]|\\.)*"\s*,\s*"(?:[^"\\]|\\.)*"\s*,\s*"([A-Za-z0-9_-]{11})"',text):found.add(match[1])
     if not found or len(found)>200:raise ValueError('Número de vídeos no previsto; revisar sin modificar.')
     return sorted(found)
@@ -55,7 +55,7 @@ def apply(manifest):
     thumb_function='const ytThumb = (u) => { const m = String(u || "").match(/youtube(?:-nocookie)?\\.com\\/embed\\/([A-Za-z0-9_-]{11})/); return m ? (IG_VIDEO_THUMBNAILS[m[1]] || "") : ""; };'
     rows=[]
     for name in PAGES:
-        path=ROOT/name;text=path.read_text();before=text
+        path=ROOT/name;text=path.read_text(encoding='utf-8');before=text
         if 'const IG_VIDEO_THUMBNAILS =' in text:
             text,n=re.subn(r'const IG_VIDEO_THUMBNAILS = [^\n]+;',lambda _:thumb_const,text)
             assert n==1
@@ -71,7 +71,13 @@ def apply(manifest):
             assert text.count(old)==1;text=text.replace(old,new,1)
         else:
             alt = new.replace("+ v.name", "+ videoName(v)")
-            assert new in text or alt in text
+            already_migrated = (
+                "thumbURL(v)" in text
+                and "unavailableThumb:" in text
+                and "onThumbError:" in text
+                and "playLabel:" in text
+            )
+            assert new in text or alt in text or already_migrated
         anchor='  renderVals() {\n    const st = this.state;'
         helper='\n    const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);'
         if helper not in text and 'const thumbURL =' not in text:
@@ -95,7 +101,7 @@ def apply(manifest):
         text=re.sub(r'<button\b[^>]*sc-camel-on-click="\{\{ v\.play \}\}"[^>]*>',poster,text)
         css='<link rel="stylesheet" href="/assets/video-thumbnails.css">'
         if css not in text:text=text.replace('</head>',css+'\n</head>',1)
-        if text!=before:path.write_text(text)
+        if text!=before:path.write_text(text,encoding='utf-8')
         rows.append({'page':name,'changed':text!=before,'mapped_images':len(mapping)})
     return rows
 
@@ -103,7 +109,7 @@ def apply(manifest):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--refresh',action='store_true');parser.add_argument('--apply-only',action='store_true');args=parser.parse_args()
     ASSETS.mkdir(parents=True,exist_ok=True)
-    manifest=json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {'images':{},'failed':{},'note':'Copia de miniaturas; no certifica disponibilidad ni permisos de reproducción de los vídeos.'}
+    manifest=json.loads(MANIFEST.read_text(encoding='utf-8')) if MANIFEST.exists() else {'images':{},'failed':{},'note':'Copia de miniaturas; no certifica disponibilidad ni permisos de reproducción de los vídeos.'}
     ids=video_ids()
     if not args.apply_only:
         wanted=ids if args.refresh else [key for key in ids if key not in manifest['images'] or not (ROOT/manifest['images'][key]['path'].lstrip('/')).exists()]
@@ -113,11 +119,11 @@ def main():
                 if image:manifest['images'][key]=image;manifest['failed'].pop(key,None)
                 else:manifest['failed'][key]=error
         manifest['requested_ids']=ids
-        MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+        MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if not MANIFEST.exists():raise ValueError('No hay manifest de miniaturas comprobadas.')
     changes=apply(manifest)
     report={'requested':len(ids),'available':sum(key in manifest['images'] and (ROOT/manifest['images'][key]['path'].lstrip('/')).is_file() for key in ids),'failed':{key:manifest['failed'][key] for key in ids if key in manifest['failed']},'total_bytes':sum(image['bytes'] for key,image in manifest['images'].items() if key in ids),'pages':changes,'note':'Archivos JPEG originales sin reescalar. El navegador conserva el espacio 16:9 y no carga el reproductor hasta pulsar.'}
-    out=ROOT/'reports/thumbnails';out.mkdir(parents=True,exist_ok=True);(out/'images.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    out=ROOT/'reports/thumbnails';out.mkdir(parents=True,exist_ok=True);(out/'images.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
 
 if __name__=='__main__':main()

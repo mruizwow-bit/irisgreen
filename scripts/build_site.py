@@ -35,7 +35,7 @@ def _build_in_staging():
     with tempfile.TemporaryDirectory(prefix='irisgreen-build-') as tmp:
         stage=Path(tmp)/'repo'
         _copy_repo_to_staging(stage)
-        env=os.environ.copy();env[STAGING_ENV]='1'
+        env=os.environ.copy();env[STAGING_ENV]='1';env.setdefault('PYTHONIOENCODING','utf-8')
         subprocess.run([sys.executable,str(stage/'scripts/build_site.py')],cwd=stage,env=env,check=True)
         staged_dist=stage/'dist'
         if not staged_dist.is_dir():raise FileNotFoundError(staged_dist)

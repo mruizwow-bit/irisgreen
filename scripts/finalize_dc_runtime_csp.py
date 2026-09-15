@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publica las 25 páginas DC sin plantillas crudas ni ``unsafe-eval``.
+"""Publica las 24 páginas DC sin plantillas crudas ni ``unsafe-eval``.
 
 Estrategia de publicación, sin reescribir interfaces:
 1. precompila cada bloque ``data-dc-script`` como una función JavaScript normal;
@@ -8,7 +8,7 @@ Estrategia de publicación, sin reescribir interfaces:
    el navegador reconstruye las llaves en el DOM, pero ya no quedan plantillas sin
    resolver en el markup de la respuesta inicial;
 4. genera una única copia pública del runtime sin ``new Function`` y hace que las
-   25 páginas la usen;
+   24 páginas la usen;
 5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
 
 El script falla si aparece x-import/dc-import, más de un bloque de lógica o cualquier
@@ -27,7 +27,7 @@ OLD_RUNTIMES = (
     "/assets/runtime/8fe7df74405f3c55.js",
 )
 SAFE_RUNTIME = "/assets/runtime/dc-runtime-csp.js"
-EXPECTED_DC_PAGES = 25
+EXPECTED_DC_PAGES = 24
 
 XDC = re.compile(r"(<x-dc\b[^>]*>)(.*?)(</x-dc\s*>)", re.I | re.S)
 LOGIC = re.compile(
