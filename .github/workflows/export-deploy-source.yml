@@ -15,12 +15,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Build production site
         run: python3 scripts/build_site.py
-      - name: Package Netlify upload
-        run: |
-          cd dist
-          zip -qr /tmp/irisgreen-netlify-upload.zip .
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: irisgreen-netlify-upload
-          path: /tmp/irisgreen-netlify-upload.zip
+          name: irisgreen-netlify-ready
+          path: dist
           retention-days: 1
