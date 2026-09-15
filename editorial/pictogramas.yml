@@ -3,6 +3,7 @@
   "autor": "Steve Lee",
   "licencia": "CC BY-SA 4.0",
   "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "_nombres": "La variante se llama por lo que es: «un apoyo» (un bloque con pictograma) o «dos apoyos» (dos bloques). No existe variante de secuencia: una secuencia real necesitaría una lista <ol> dentro de la tarjeta y sería una construcción nueva.",
   "pictogramas": {
     "hablar": {"archivo": "hablar.svg", "estado": "PUBLICABLE"},
     "escribir": {"archivo": "escribir.svg", "estado": "PUBLICABLE"},
@@ -12,11 +13,38 @@
   },
   "asignaciones": {
     "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html": {
-      "variante": "C",
+      "variante": "dos apoyos",
       "bloques": {
         "Esto me cuesta": "hablar",
         "Me ayuda": "escribir"
       }
+    }
+  },
+  "candidatos": {
+    "_nota": "Lectura del contenido ya publicado, sin aplicar. Pasan por BORRADOR → REVISADO → PUBLICABLE antes de moverse a «asignaciones». La asignación automática por palabra clave está prohibida.",
+    "preguntar": {
+      "pagina": "es/situaciones/no-se-que-pronombre-usar-para-una-persona/index.html",
+      "bloque": "Me ayuda",
+      "motivo": "El texto de la ficha empieza literalmente por «Preguntar en corto y a solas».",
+      "estado": "BORRADOR"
+    },
+    "escribir": {
+      "grupo": "Las 17 páginas que comparten «Dar tiempo, usar lenguaje concreto, comprobar comprensión…»",
+      "bloque": "Me ayuda",
+      "motivo": "El texto menciona ofrecer escritura como apoyo. Si se asigna, se asigna al grupo entero, no a una página sola.",
+      "estado": "BORRADOR"
+    },
+    "esperar": {
+      "grupo": "Mismo grupo de 17 páginas",
+      "bloque": "Me ayuda",
+      "motivo": "«Dar tiempo» se parece a esperar, pero el sujeto es quien acompaña, no quien espera. Revisar si el pictograma comunica lo correcto antes de asignar.",
+      "estado": "BORRADOR"
+    },
+    "carpeta": {
+      "pagina": "es/biblioteca/dinero-contratos-formularios-y-tramites/index.html",
+      "bloque": "Me ayuda",
+      "motivo": "«Guardar contratos» encaja con el concepto. No asignar mientras la página siga sin revisar: una ficha en borrador no genera tarjeta.",
+      "estado": "BORRADOR"
     }
   }
 }

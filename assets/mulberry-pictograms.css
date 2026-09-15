@@ -15,13 +15,18 @@
   height:64px;
   object-fit:contain;
 }
-/* Solo “escribir” baja a 48 px en la secuencia compacta C. */
-.iris-mini-card[data-iris-picto-variant="C"]
+/* Solo “escribir” baja a 48 px cuando la tarjeta lleva dos apoyos. */
+.iris-mini-card[data-iris-apoyos="2"]
 .iris-mini-support[data-mulberry-picto="escribir"]
 .iris-mini-picto{
   flex-basis:48px;
   width:48px;
   height:48px;
+}
+/* Línea para escribir a mano cuando «Necesito» no tiene texto propio. */
+.iris-mini-write{
+  letter-spacing:.08em;
+  color:#43566d;
 }
 @media(max-width:360px){
   .iris-mini-support{gap:.55rem}

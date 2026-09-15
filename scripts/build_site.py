@@ -95,6 +95,7 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_validation_labels.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/strip_daily_public_status.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/connect_tarjetas_iris_en.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Tarjetas Iris afirma públicamente que lo escrito no se guarda. El conector
     # histórico añadía persistencia local; se retira del artefacto antes de publicar.
     subprocess.run([sys.executable,str(ROOT/'scripts/remove_tarjetas_storage.py'),'--root',str(dst)],cwd=ROOT,check=True)
@@ -119,7 +120,7 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_interests_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_taller_print_page.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Libros y Directorio conservan sus plantillas interactivas, pero publican además
-    # una versión legible sin JavaScript construida desde sus propios datos.
+ # una versión legible sin JavaScript construida desde sus propios datos.
     subprocess.run([sys.executable,str(ROOT/'scripts/prerender_remaining_nojs.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Las parejas ES/EN de Situaciones ya están declaradas en buscador.json.
     # Publicar hreflang desde esa relación explícita; nunca deducir parejas por título.

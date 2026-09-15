@@ -1,0 +1,758 @@
+{
+  "_nota": {
+    "es": "Bloque «Necesito» de la Tarjeta Iris. Tanda 3 de 3: Situaciones (187). Con esta quedan las 415.",
+    "en": "«I need» block of the Iris Card. Batch 3 of 3: Situations (187). This completes all 415."
+  },
+  "_reglas": {
+    "es": "El título del apartado ya es «Necesito», así que no se repite en el texto. Máximo 2 frases y unas 14 palabras. Frases cortas, una idea por frase, verbos claros y palabras de todos los días. Todo en positivo: digo qué necesito. Sin etiquetas, defensas, abstracciones ni palabras vagas. Sin muletillas. La segunda frase no empieza por «Y». Evitar «a veces», «así», «luego», «cuando lo pida» y «un poco». No usar «Me ayuda».",
+    "en": "The section title is already «I need», so it is not repeated in the text. Maximum 2 sentences and about 14 words. Use short sentences, one idea per sentence, clear verbs and everyday words. State what is needed in positive terms. Avoid labels, defensive wording, abstract language, vague words and filler phrases. The second sentence does not start with «And». Do not use «It helps me»."
+  },
+  "es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables/index.html": {
+    "es": "La comida templada. Dime cuánto tiempo debe esperar antes de servirla.",
+    "en": "Lukewarm food. Tell me how long it should cool before serving."
+  },
+  "es/situaciones/algunos-sabores-me-resultan-demasiado-intensos/index.html": {
+    "es": "Platos de sabor suave. Sirve la salsa aparte.",
+    "en": "Mild-tasting food. Serve the sauce separately."
+  },
+  "es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/index.html": {
+    "es": "Agua muy fría o con gas. También puedo beberla en una botella pequeña.",
+    "en": "Very cold or sparkling water. A small bottle works for me too."
+  },
+  "es/situaciones/busco-en-internet-durante-horas-para-asegurarme-de-que-no-pasa-nada/index.html": {
+    "es": "Terminar la búsqueda y pasar a otra actividad. Ayúdame a fijar un tiempo.",
+    "en": "To stop searching and move to another activity. Help me set a time limit."
+  },
+  "es/situaciones/cambiar-de-ropa-segun-el-tiempo-me-resulta-mas-dificil-de-lo-que-parece/index.html": {
+    "es": "Dejar la ropa preparada la noche anterior. Dime qué tiempo hará.",
+    "en": "Prepare my clothes the night before. Tell me what the weather will be."
+  },
+  "es/situaciones/cambiar-de-una-tarea-a-otra-me-bloquea/index.html": {
+    "es": "Un aviso antes de cambiar de tarea. Tiempo para terminar lo que estoy haciendo.",
+    "en": "Notice before changing tasks. Time to finish what I am doing."
+  },
+  "es/situaciones/cambio-de-tema-sin-darme-cuenta-de-que-la-otra-persona-seguia-hablando-de-lo-anterior/index.html": {
+    "es": "Que me avises si cambio de tema demasiado pronto. Volvamos al tema anterior.",
+    "en": "Tell me if I change topic too soon. Let's return to the previous topic."
+  },
+  "es/situaciones/comer-en-un-restaurante-me-resulta-demasiado/index.html": {
+    "es": "Una mesa alejada del ruido. Poder salir un rato si me canso.",
+    "en": "A table away from noise. To step outside if I get tired."
+  },
+  "es/situaciones/comer-fuera-de-casa-es-muy-dificil/index.html": {
+    "es": "Saber qué habrá para comer antes de ir. Llevar una comida que ya conozco.",
+    "en": "Know what food will be available. Bring food I already know."
+  },
+  "es/situaciones/comer-fuera-es-demasiado-impredecible/index.html": {
+    "es": "Ver el menú antes de ir. Dime cómo sirven el plato.",
+    "en": "To see the menu beforehand. Tell me how the dish is served."
+  },
+  "es/situaciones/como-muy-deprisa-y-luego-noto-que-estoy-demasiado-llena/index.html": {
+    "es": "Comer más despacio. Sirve el plato en dos partes.",
+    "en": "To eat more slowly. Serve the meal in two parts."
+  },
+  "es/situaciones/comparto-informacion-y-despues-me-arrepiento/index.html": {
+    "es": "Tiempo para pensar antes de contar información personal. Guarda en privado lo que comparto.",
+    "en": "Time to think before sharing personal information. Keep what I share private."
+  },
+  "es/situaciones/cualquier-ruido-pequeno-me-despierta/index.html": {
+    "es": "Dormir con tapones o un sonido suave. Mantén bajo el volumen por la noche.",
+    "en": "To sleep with earplugs or soft background sound. Keep the volume low at night."
+  },
+  "es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia/index.html": {
+    "es": "Hablar menos si llevo muchas horas saturada. Escríbeme si hablar me cuesta.",
+    "en": "To speak less after many overwhelming hours. Message me if speaking becomes difficult."
+  },
+  "es/situaciones/cuando-me-preguntan-como-estoy-no-se-que-responder/index.html": {
+    "es": "Preguntas concretas. Dame dos o tres opciones para responder.",
+    "en": "Specific questions. Give me two or three options to answer."
+  },
+  "es/situaciones/dejo-de-responder-despues-de-varias-horas/index.html": {
+    "es": "Responder por escrito al final del día. Espera mi mensaje.",
+    "en": "To reply in writing at the end of the day. Wait for my message."
+  },
+  "es/situaciones/despues-de-decidir-algo-vuelvo-a-empezar-la-decision-desde-cero/index.html": {
+    "es": "Mantener la decisión que ya tomé. Recuérdame cuál elegí.",
+    "en": "To keep the decision I already made. Remind me what I chose."
+  },
+  "es/situaciones/despues-de-estudiar-o-trabajar-necesito-horas-para-recuperarme/index.html": {
+    "es": "Horas de descanso después de estudiar o trabajar. Dejemos otros planes para más tarde.",
+    "en": "Hours to rest after studying or working. Leave other plans until later."
+  },
+  "es/situaciones/despues-de-salir-necesito-un-rato-largo-sin-hablar-con-nadie/index.html": {
+    "es": "Un rato largo en silencio al llegar a casa. Hablamos después de descansar.",
+    "en": "A long quiet period when I get home. We can talk after I rest."
+  },
+  "es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer/index.html": {
+    "es": "Comida sencilla después de un día difícil. Prepárame algo que ya conozco.",
+    "en": "Simple food after a difficult day. Prepare something I already know."
+  },
+  "es/situaciones/despues-de-un-dia-intenso-sigo-acelerada-por-la-noche/index.html": {
+    "es": "Una hora tranquila antes de acostarme. Baja las luces.",
+    "en": "A quiet hour before bed. Lower the lights."
+  },
+  "es/situaciones/despues-de-una-discusion-necesito-mucho-tiempo-para-volver-a-hablar/index.html": {
+    "es": "Tiempo antes de volver a hablar. Retomaré la conversación cuando esté preparada.",
+    "en": "Time before talking again. I will return to the conversation when I am ready."
+  },
+  "es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello/index.html": {
+    "es": "Pensar antes de comprometerme. Vuelve a preguntármelo mañana.",
+    "en": "Time to think before I commit. Ask me again tomorrow."
+  },
+  "es/situaciones/duermo-mejor-cuando-no-tengo-que-levantarme-a-una-hora-fija/index.html": {
+    "es": "Levantarme sin una hora fija cuando sea posible. Avisaré cuando esté preparada.",
+    "en": "To wake without a fixed time when possible. I will tell you when ready."
+  },
+  "es/situaciones/el-agua-de-la-ducha-me-molesta-en-la-piel/index.html": {
+    "es": "El agua a una temperatura cómoda. Déjame elegir la presión.",
+    "en": "Water at a comfortable temperature. Let me choose the pressure."
+  },
+  "es/situaciones/el-calor-me-satura-antes-que-a-otras-personas/index.html": {
+    "es": "Sombra y agua fresca. Quedemos a una hora con menos calor.",
+    "en": "Shade and cool water. Let's meet when it is less hot."
+  },
+  "es/situaciones/el-cambio-de-hora-me-descoloca-durante-dias/index.html": {
+    "es": "Unos días para adaptarme al cambio de hora. Mantengamos esa semana más tranquila.",
+    "en": "A few days to adjust to the time change. Keep that week calmer."
+  },
+  "es/situaciones/el-contacto-inesperado-me-sobresalta-muchisimo/index.html": {
+    "es": "Que me avises antes de tocarme. Espera mi respuesta.",
+    "en": "Tell me before touching me. Wait for my response."
+  },
+  "es/situaciones/el-hambre-aparece-de-golpe-y-ya-estoy-fatal/index.html": {
+    "es": "Comer a horas regulares. Ofréceme algo a media mañana.",
+    "en": "Regular meal times. Offer me something mid-morning."
+  },
+  "es/situaciones/el-hospital-me-sobrecarga/index.html": {
+    "es": "Saber qué ocurrirá en cada paso del hospital. Acompáñame si puedes.",
+    "en": "Know each hospital step beforehand. Come with me if you can."
+  },
+  "es/situaciones/el-olor-de-algunas-tiendas-me-obliga-a-salir/index.html": {
+    "es": "Poder salir si el olor de la tienda es fuerte. Espérame fuera.",
+    "en": "To leave if the shop smell is strong. Wait for me outside."
+  },
+  "es/situaciones/el-ruido-le-resulta-insoportable/index.html": {
+    "es": "Un lugar con menos sonidos al mismo tiempo. Llevar mis cascos.",
+    "en": "A place with fewer sounds at the same time. To carry my headphones."
+  },
+  "es/situaciones/el-transporte-publico-me-sobrecarga/index.html": {
+    "es": "Viajar en horas tranquilas. Elegir el vagón menos lleno.",
+    "en": "To travel at quieter times. To choose the least crowded carriage."
+  },
+  "es/situaciones/empiezo-muchas-tareas-y-no-termino-ninguna/index.html": {
+    "es": "Terminar una tarea antes de empezar otra. Ayúdame a elegir cuál va primero.",
+    "en": "To finish one task before starting another. Help me choose which comes first."
+  },
+  "es/situaciones/en-el-trabajo-gasto-la-energia-en-parecer-que-estoy-bien/index.html": {
+    "es": "Descansos cortos durante la jornada. Poder decir si estoy cansada o saturada.",
+    "en": "Short breaks during the workday. To say when I am tired or overwhelmed."
+  },
+  "es/situaciones/en-grupos-grandes-no-consigo-entrar-en-la-conversacion/index.html": {
+    "es": "Que me des paso para hablar. Reserva un turno para mí.",
+    "en": "Give me a clear chance to speak. Keep a turn for me."
+  },
+  "es/situaciones/entiendo-las-palabras-pero-no-la-intencion/index.html": {
+    "es": "Que me digas directamente qué quieres decir. Usa palabras claras.",
+    "en": "Tell me directly what you mean. Use clear words."
+  },
+  "es/situaciones/entiendo-mejor-si-me-ensenan-un-ejemplo/index.html": {
+    "es": "Ver un ejemplo terminado. Enséñame cómo queda.",
+    "en": "To see a finished example. Show me what the result looks like."
+  },
+  "es/situaciones/estoy-explorando-mi-genero-y-todavia-no-tengo-una-palabra/index.html": {
+    "es": "Tiempo para encontrar una palabra para mi género. Pregúntame cómo quiero que me llames.",
+    "en": "Time to find a word for my gender. Ask what name I want today."
+  },
+  "es/situaciones/estoy-explorando-mi-genero/index.html": {
+    "es": "Explorar mi género sin prisa. Mantén en privado lo que te cuento.",
+    "en": "To explore my gender without rushing. Keep what I tell you private."
+  },
+  "es/situaciones/evito-ciertos-numeros-palabras-o-imagenes-porque-me-generan-miedo/index.html": {
+    "es": "Hablar de estos miedos con calma. Ayúdame a volver a mi actividad.",
+    "en": "To talk about these fears calmly. Help me return to my activity."
+  },
+  "es/situaciones/guardo-capturas-o-mensajes-por-miedo-a-necesitar-demostrar-algo/index.html": {
+    "es": "Guardar los mensajes importantes en una carpeta. Revisemos cuáles guardar.",
+    "en": "To keep important messages in one folder. Let's review which ones to keep."
+  },
+  "es/situaciones/hablo-demasiado-de-un-tema-y-luego-me-doy-cuenta-tarde/index.html": {
+    "es": "Que me avises con una señal si hablo demasiado. Cambiaré de tema.",
+    "en": "Give me a signal if I talk too long. I will change topic."
+  },
+  "es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-enorme/index.html": {
+    "es": "Preparar la llamada antes. Escribe conmigo lo que voy a decir.",
+    "en": "To prepare the call beforehand. Write down what I will say with me."
+  },
+  "es/situaciones/hay-sonidos-concretos-que-me-provocan-una-reaccion/index.html": {
+    "es": "Alejarme de ese sonido. Déjame sentarme en otro lugar.",
+    "en": "To move away from that sound. Let me sit somewhere else."
+  },
+  "es/situaciones/interrumpo-sin-querer-porque-temo-olvidar-lo-que-iba-a-decir/index.html": {
+    "es": "Apuntar mi idea mientras espero mi turno. Dame papel.",
+    "en": "To write down my idea while I wait my turn. Give me paper."
+  },
+  "es/situaciones/ir-a-comprar-me-consume-la-energia-del-resto-del-dia/index.html": {
+    "es": "Hacer la compra en dos veces. Acompáñame la primera.",
+    "en": "To split the shopping into two trips. Come with me the first time."
+  },
+  "es/situaciones/la-luz-de-la-manana-me-despierta-demasiado-pronto/index.html": {
+    "es": "Una persiana que bloquee bien la luz. Mantén la habitación oscura.",
+    "en": "A blind that blocks the light well. Keep the room dark."
+  },
+  "es/situaciones/la-luz-del-supermercado-me-agota/index.html": {
+    "es": "Ir al supermercado a una hora tranquila. Llevar una lista corta.",
+    "en": "To visit the supermarket at a quiet time. Take a short list."
+  },
+  "es/situaciones/la-ropa-me-molesta/index.html": {
+    "es": "Ropa sin etiquetas molestas. Elegir prendas con costuras planas.",
+    "en": "Clothes without irritating labels. Choose items with flat seams."
+  },
+  "es/situaciones/la-ropa-que-tolero-un-dia-me-molesta-otro/index.html": {
+    "es": "Elegir la ropa cada día. Ten dos opciones preparadas.",
+    "en": "To choose my clothes each day. Have two options ready."
+  },
+  "es/situaciones/las-luces-blancas-me-cansan-muy-rapido/index.html": {
+    "es": "Luz cálida donde trabajo. Apaga el fluorescente si puedes.",
+    "en": "Warm light where I work. Turn off fluorescent lighting if possible."
+  },
+  "es/situaciones/las-multitudes-me-desorientan-aunque-no-haya-mucho-ruido/index.html": {
+    "es": "Un punto de encuentro fijo. Quedemos donde haya menos gente.",
+    "en": "A fixed meeting point. Let's meet where there are fewer people."
+  },
+  "es/situaciones/las-preguntas-abiertas-me-bloquean/index.html": {
+    "es": "Preguntas con opciones. Dame dos para elegir.",
+    "en": "Questions with options. Give me two to choose from."
+  },
+  "es/situaciones/las-reuniones-sin-agenda-me-resultan-muy-dificiles/index.html": {
+    "es": "El orden del día antes de la reunión. Envíamelo la tarde anterior.",
+    "en": "The agenda before the meeting. Send it the afternoon before."
+  },
+  "es/situaciones/las-visitas-inesperadas-me-descolocan/index.html": {
+    "es": "Saber con tiempo quién viene a casa. Avísame por mensaje.",
+    "en": "To know in advance who is coming to my home. Message me beforehand."
+  },
+  "es/situaciones/lavarme-o-limpiar-me-lleva-mucho-mas-tiempo-del-que-quiero/index.html": {
+    "es": "Hacer la higiene por pasos y con tiempo. Cuenta con que puedo tardar más.",
+    "en": "Hygiene tasks step by step, with time. Expect me to take longer."
+  },
+  "es/situaciones/los-cambios-de-temperatura-me-dejan-agotada/index.html": {
+    "es": "Ropa por capas. Dame un rato al llegar para adaptarme a la temperatura.",
+    "en": "Layers of clothing. Give me time to adjust to the temperature when I arrive."
+  },
+  "es/situaciones/los-correos-se-acumulan-porque-no-se-cual-contestar-primero/index.html": {
+    "es": "Saber qué correo responder primero. Marca el más urgente.",
+    "en": "To know which email to answer first. Mark the most urgent one."
+  },
+  "es/situaciones/los-cubiertos-o-platos-cambian-como-siento-la-comida/index.html": {
+    "es": "Mis cubiertos y mi plato habituales. Sirve la comida en ellos.",
+    "en": "My usual cutlery and plate. Serve my food on them."
+  },
+  "es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables/index.html": {
+    "es": "Hacer el examen en un aula tranquila. Poder usar tapones durante el examen.",
+    "en": "To take the exam in a quiet room. To use earplugs during the exam."
+  },
+  "es/situaciones/los-fines-de-semana-se-me-cambia-todo-el-horario/index.html": {
+    "es": "Mantener horarios parecidos el fin de semana. Recuérdame la hora de acostarme.",
+    "en": "To keep similar weekend times. Remind me when it is time for bed."
+  },
+  "es/situaciones/los-olores-de-cocina-me-quitan-el-hambre/index.html": {
+    "es": "Comer antes de que haya mucho olor a comida. Abre la ventana.",
+    "en": "To eat before the house fills with cooking smells. Open the window."
+  },
+  "es/situaciones/los-sonidos-normales-me-resultan-dolorosos/index.html": {
+    "es": "Bajar el volumen. Poder usar cascos en lugares ruidosos.",
+    "en": "Lower volume. To use headphones in noisy places."
+  },
+  "es/situaciones/me-acuesto-y-el-sueno-no-llega/index.html": {
+    "es": "Un rato tranquilo antes de acostarme. Mantén la luz baja.",
+    "en": "Quiet time before bed. Keep the light low."
+  },
+  "es/situaciones/me-agota-decidir-que-comer-cada-dia/index.html": {
+    "es": "Un menú fijo para la semana. Decidámoslo juntos un día concreto.",
+    "en": "A fixed weekly menu. Let's choose it together on a set day."
+  },
+  "es/situaciones/me-agoto-despues-de-estar-con-gente/index.html": {
+    "es": "Descansar después de estar con gente. Dejar tiempo libre después de los planes.",
+    "en": "To rest after being with people. Leave free time after social plans."
+  },
+  "es/situaciones/me-cuesta-calcular-cuanto-tiempo-me-llevara-una-tarea/index.html": {
+    "es": "Saber cuánto tiempo puede durar una tarea. Ayúdame a poner una alarma.",
+    "en": "To know how long a task may take. Help me set an alarm."
+  },
+  "es/situaciones/me-cuesta-comer-delante-de-otras-personas/index.html": {
+    "es": "Comer en un lugar tranquilo y pequeño.",
+    "en": "To eat somewhere quiet and small."
+  },
+  "es/situaciones/me-cuesta-comer-si-los-alimentos-se-tocan-en-el-plato/index.html": {
+    "es": "La comida separada en el plato. Sírvela sin mezclar.",
+    "en": "Food separated on the plate. Serve it without mixing."
+  },
+  "es/situaciones/me-cuesta-dejar-una-pregunta-sin-respuesta/index.html": {
+    "es": "Dejar la pregunta para otro momento. Ayúdame a pasar a otra actividad.",
+    "en": "To leave the question for another time. Help me move to another activity."
+  },
+  "es/situaciones/me-cuesta-dejar-una-tarea-si-no-siento-que-esta-perfecta/index.html": {
+    "es": "Saber cuándo una tarea está suficientemente bien. Dime cuándo puedo terminarla.",
+    "en": "To know when a task is good enough. Tell me when I can stop."
+  },
+  "es/situaciones/me-cuesta-despertarme-aunque-haya-dormido-muchas-horas/index.html": {
+    "es": "Tiempo para despertarme y empezar el día. Espera media hora antes de hablarme.",
+    "en": "Time to wake and start the day. Wait half an hour before talking."
+  },
+  "es/situaciones/me-cuesta-detectar-si-alguien-esta-bromeando/index.html": {
+    "es": "Que me digas cuándo estás bromeando. Avísame con una señal.",
+    "en": "Tell me when you are joking. Give me a signal."
+  },
+  "es/situaciones/me-cuesta-distinguir-una-precaucion-razonable-de-una-comprobacion-excesiva/index.html": {
+    "es": "Ayuda para saber cuándo dejar de comprobar. Hablarlo con un profesional.",
+    "en": "Help to know when to stop checking. To discuss it with a professional."
+  },
+  "es/situaciones/me-cuesta-el-transporte-por-discapacidad-fisica/index.html": {
+    "es": "Un transporte accesible. Comprueba antes que funciona el ascensor.",
+    "en": "Accessible transport. Check beforehand that the lift is working."
+  },
+  "es/situaciones/me-cuesta-empezar-una-tarea-si-las-instrucciones-son-ambiguas/index.html": {
+    "es": "La tarea explicada en una frase clara. Dime cuál es el primer paso.",
+    "en": "The task explained in one clear sentence. Tell me the first step."
+  },
+  "es/situaciones/me-cuesta-encontrar-una-postura-comoda-para-sentarme/index.html": {
+    "es": "Espacio para levantarme y cambiar de postura.",
+    "en": "Space to stand up and change position."
+  },
+  "es/situaciones/me-cuesta-explicar-algo-si-me-miran-mientras-hablo/index.html": {
+    "es": "Hablar sin que me mires directamente. Mira a otro lado mientras me explico.",
+    "en": "To speak without direct eye contact. Look elsewhere while I explain."
+  },
+  "es/situaciones/me-cuesta-mantener-contacto-con-personas-que-no-veo/index.html": {
+    "es": "Recordatorios para escribir a personas que no veo. Escríbeme tú también.",
+    "en": "Reminders to message people I do not see. Message me too."
+  },
+  "es/situaciones/me-cuesta-mantener-una-rutina-de-higiene-cuando-estoy-saturada/index.html": {
+    "es": "Una rutina de higiene más corta si estoy saturada. Empezar por cara y dientes.",
+    "en": "A shorter hygiene routine when I am overwhelmed. Start with my face and teeth."
+  },
+  "es/situaciones/me-cuesta-organizar-medicacion-citas-y-documentos/index.html": {
+    "es": "Un pastillero y una carpeta. Revisemos las citas una vez por semana.",
+    "en": "A pill organiser and one folder. Let's review appointments once a week."
+  },
+  "es/situaciones/me-cuesta-pedir-ayuda-antes-de-estar-al-limite/index.html": {
+    "es": "Pedir ayuda antes de estar agotada. Pregúntame cómo estoy.",
+    "en": "To ask for help before I am exhausted. Ask how I am doing."
+  },
+  "es/situaciones/me-cuesta-pedir-que-repitan-algo/index.html": {
+    "es": "Que repitas la información. Dila otra vez con calma.",
+    "en": "Repeat the information for me. Say it again calmly."
+  },
+  "es/situaciones/me-cuesta-poner-limites-hasta-que-ya-estoy-agotada/index.html": {
+    "es": "Decir mis límites antes de agotarme. Acéptalos cuando los exprese.",
+    "en": "To state my limits before I am exhausted. Accept them when I express them."
+  },
+  "es/situaciones/me-cuesta-priorizar-cuando-todo-parece-urgente/index.html": {
+    "es": "Saber qué tarea va primero. Ordena la lista conmigo.",
+    "en": "To know which task comes first. Sort the list with me."
+  },
+  "es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera/index.html": {
+    "es": "Probar alimentos nuevos poco a poco. Pon un trozo pequeño junto a mi comida.",
+    "en": "To try new foods gradually. Put a small piece beside my usual food."
+  },
+  "es/situaciones/me-cuesta-reconocer-cuando-necesito-descansar/index.html": {
+    "es": "Parar antes de agotarme. Recuérdame cuándo toca descansar.",
+    "en": "To stop before I am exhausted. Remind me when it is time to rest."
+  },
+  "es/situaciones/me-cuesta-saber-cuando-me-toca-hablar/index.html": {
+    "es": "Que me des la palabra. Dime cuándo es mi turno.",
+    "en": "Give me the floor. Tell me when it is my turn."
+  },
+  "es/situaciones/me-cuesta-saber-cuanta-fuerza-estoy-usando/index.html": {
+    "es": "Objetos resistentes. Dime si estoy usando demasiada fuerza.",
+    "en": "Strong objects. Tell me if I am using too much force."
+  },
+  "es/situaciones/me-cuesta-saber-que-informacion-contar-en-una-primera-conversacion/index.html": {
+    "es": "Un ejemplo de qué contar al conocer a alguien. Empieza tú.",
+    "en": "An example of what to share when meeting someone. You start."
+  },
+  "es/situaciones/me-cuesta-saber-si-alguien-esta-enfadado-conmigo/index.html": {
+    "es": "Que me digas si algo te ha molestado. Prefiero saberlo directamente.",
+    "en": "Tell me if something has upset you. I prefer to know directly."
+  },
+  "es/situaciones/me-cuesta-saber-si-tengo-hambre-o-ansiedad/index.html": {
+    "es": "Comer a horas regulares. Pregúntame cuándo comí por última vez.",
+    "en": "Regular meal times. Ask when I last ate."
+  },
+  "es/situaciones/me-cuesta-saber-si-una-amistad-sigue-estando-bien/index.html": {
+    "es": "Que me digas cómo está nuestra amistad. Yo también te lo diré.",
+    "en": "Tell me how our friendship is going. I will tell you too."
+  },
+  "es/situaciones/me-cuesta-tirar-objetos-por-si-los-necesito-despues/index.html": {
+    "es": "Tiempo para decidir qué objetos guardar. Ayúdame a hacer una caja para decidir después.",
+    "en": "Time to decide which objects to keep. Help me make a box for later."
+  },
+  "es/situaciones/me-despierto-con-el-cuerpo-tenso/index.html": {
+    "es": "Estirarme al levantarme. Dame unos minutos antes de empezar el día.",
+    "en": "Stretching after I get up. Give me a few minutes before starting the day."
+  },
+  "es/situaciones/me-despierto-de-madrugada/index.html": {
+    "es": "Levantarme un rato si no vuelvo a dormirme. Deja una luz baja.",
+    "en": "To get up briefly if I cannot sleep. Leave a low light on."
+  },
+  "es/situaciones/me-despierto-varias-veces-cada-noche/index.html": {
+    "es": "Una habitación con poco ruido y poca luz. Anotar cuántas horas duermo.",
+    "en": "A room with little noise and light. Record how many hours I sleep."
+  },
+  "es/situaciones/me-duermo-durante-el-dia-y-luego-no-puedo-dormir-de-noche/index.html": {
+    "es": "Una siesta corta con alarma. Despiértame a los veinte minutos.",
+    "en": "A short nap with an alarm. Wake me after twenty minutes."
+  },
+  "es/situaciones/me-entra-sueno-muy-tarde-aunque-me-levante-temprano/index.html": {
+    "es": "Acostarme cuando aparezca el sueño. Ajustar el horario poco a poco.",
+    "en": "To go to bed when I feel sleepy. Adjust the schedule gradually."
+  },
+  "es/situaciones/me-mareo-con-ciertos-movimientos-o-escaleras-mecanicas/index.html": {
+    "es": "Usar el ascensor o moverme despacio. Dame el brazo en las escaleras.",
+    "en": "To use the lift or move slowly. Give me your arm on the stairs."
+  },
+  "es/situaciones/me-preocupa-contaminar-algo-o-contaminarme/index.html": {
+    "es": "Apoyo profesional para esta preocupación. Acompáñame a la consulta.",
+    "en": "Professional support for this worry. Come with me to the appointment."
+  },
+  "es/situaciones/me-preocupa-haber-hecho-dano-sin-darme-cuenta/index.html": {
+    "es": "Hablar de esta preocupación con un profesional. Escúchame una vez y cambiemos de actividad.",
+    "en": "To discuss this worry with a professional. Listen once, then let's change activity."
+  },
+  "es/situaciones/me-preocupa-no-dormir-y-eso-me-mantiene-despierta/index.html": {
+    "es": "Quitar el reloj de la vista. Hablemos del sueño por la mañana.",
+    "en": "To keep the clock out of sight. Let's talk about sleep in the morning."
+  },
+  "es/situaciones/mi-experiencia-de-genero-cambia-con-el-tiempo/index.html": {
+    "es": "Que me preguntes qué nombre y pronombres uso hoy. Respeta los cambios.",
+    "en": "Ask which name and pronouns I use today. Respect any changes."
+  },
+  "es/situaciones/mi-forma-de-vestir-no-coincide-con-lo-que-esperan-de-mi/index.html": {
+    "es": "Vestirme con ropa cómoda para mí. Dime si hay una norma concreta.",
+    "en": "Comfortable clothes. Tell me if there is a specific rule."
+  },
+  "es/situaciones/necesito-ajustes-en-el-trabajo/index.html": {
+    "es": "Ayuda para pedir ajustes en mi puesto. Dime a quién debo solicitarlos.",
+    "en": "Help to request adjustments at work. Tell me who to ask."
+  },
+  "es/situaciones/necesito-ayuda-para-una-cita-medica/index.html": {
+    "es": "Preparar la cita médica antes. Acompáñame si puedes.",
+    "en": "To prepare for the medical appointment. Come with me if you can."
+  },
+  "es/situaciones/necesito-estar-sola-despues-de-un-evento-social/index.html": {
+    "es": "Un rato a solas después del evento. Volveré a hablar cuando haya descansado.",
+    "en": "Time alone after the event. I will talk again after I have rested."
+  },
+  "es/situaciones/necesito-hacer-las-cosas-de-casa-siempre-en-el-mismo-orden/index.html": {
+    "es": "Hacer las tareas de casa en mi orden. Avísame antes de mover las cosas.",
+    "en": "To do household tasks in my own order. Tell me before moving things."
+  },
+  "es/situaciones/necesito-la-misma-rutina-para-poder-dormirme/index.html": {
+    "es": "Completar mi rutina antes de acostarme. Respeta ese tiempo.",
+    "en": "To complete my routine before bed. Respect that time."
+  },
+  "es/situaciones/necesito-mas-tiempo-para-cambiar-de-una-reunion-a-otra/index.html": {
+    "es": "Diez minutos entre reuniones. Déjalos libres en el calendario.",
+    "en": "Ten minutes between meetings. Keep them free in the calendar."
+  },
+  "es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta/index.html": {
+    "es": "Unos segundos para pensar antes de responder. Espera mi respuesta.",
+    "en": "A few seconds to think before answering. Wait for my response."
+  },
+  "es/situaciones/necesito-moverme-para-poder-concentrarme/index.html": {
+    "es": "Moverme mientras pienso. Poder levantarme durante la tarea.",
+    "en": "To move while I think. To stand up during the task."
+  },
+  "es/situaciones/necesito-mucho-tiempo-para-bajar-el-ritmo-antes-de-dormir/index.html": {
+    "es": "Una hora tranquila antes de dormir. Terminar con las pantallas con tiempo.",
+    "en": "A quiet hour before sleep. Finish using screens well beforehand."
+  },
+  "es/situaciones/necesito-planes-concretos-para-quedar-con-alguien/index.html": {
+    "es": "Saber la hora, el lugar y el plan. Envíamelo por mensaje.",
+    "en": "To know the time, place and plan. Send it to me in a message."
+  },
+  "es/situaciones/necesito-preparar-con-antelacion-lo-que-voy-a-decir-en-una-reunion/index.html": {
+    "es": "Preparar antes lo que voy a decir. Envíame los puntos con tiempo.",
+    "en": "To prepare what I will say beforehand. Send me the meeting points in advance."
+  },
+  "es/situaciones/necesito-que-la-comida-tenga-siempre-la-misma-textura/index.html": {
+    "es": "La comida con la textura habitual. Cocínala de la misma forma.",
+    "en": "Food with the usual texture. Cook it in the same way."
+  },
+  "es/situaciones/necesito-que-me-den-las-instrucciones-por-escrito/index.html": {
+    "es": "Las instrucciones por escrito. Envíamelas en un mensaje.",
+    "en": "Instructions in writing. Send them to me in a message."
+  },
+  "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html": {
+    "es": "Los pasos por escrito y de uno en uno.",
+    "en": "The steps in writing, one at a time."
+  },
+  "es/situaciones/necesito-que-otra-persona-me-confirme-que-no-he-hecho-nada-malo/index.html": {
+    "es": "Una respuesta clara. Después podemos cerrar el tema.",
+    "en": "One clear answer. Then we can close the topic."
+  },
+  "es/situaciones/necesito-recuperarme-despues-de-una-conversacion-dificil/index.html": {
+    "es": "Tiempo después de una conversación difícil. Dejemos el tema hasta otro día.",
+    "en": "Time after a difficult conversation. Leave the topic until another day."
+  },
+  "es/situaciones/necesito-repetir-una-accion-hasta-que-se-siente-bien/index.html": {
+    "es": "Unos segundos para terminar el movimiento que estoy repitiendo.",
+    "en": "A few seconds to finish the movement I am repeating."
+  },
+  "es/situaciones/necesito-saber-con-exactitud-que-va-a-ocurrir/index.html": {
+    "es": "El plan con detalle. Dime también qué ocurrirá si cambia.",
+    "en": "A detailed plan. Tell me what will happen if it changes."
+  },
+  "es/situaciones/necesito-tocar-o-apretar-cosas-para-regularme/index.html": {
+    "es": "Un objeto para tocar o apretar. Poder llevarlo conmigo.",
+    "en": "An object to touch or squeeze. To carry it with me."
+  },
+  "es/situaciones/necesito-un-ajuste-y-no-se-como-pedirlo/index.html": {
+    "es": "Ayuda para pedir un ajuste. Escribamos juntos la petición.",
+    "en": "Help to ask for an adjustment. Let's write the request together."
+  },
+  "es/situaciones/necesito-una-adaptacion-en-clase/index.html": {
+    "es": "Una adaptación en clase. Déjala por escrito.",
+    "en": "A classroom adjustment. Put it in writing."
+  },
+  "es/situaciones/necesito-ver-como-esta-preparada-la-comida-antes-de-comerla/index.html": {
+    "es": "Ver cómo preparan la comida. Cocinemos juntos.",
+    "en": "To see how the food is prepared. Let's cook together."
+  },
+  "es/situaciones/no-consigo-explicar-mis-sintomas-al-medico/index.html": {
+    "es": "Llevar mis síntomas apuntados. Léelos conmigo durante la consulta.",
+    "en": "To bring my symptoms written down. Read them with me during the appointment."
+  },
+  "es/situaciones/no-me-duermo-si-no-se-como-sera-manana/index.html": {
+    "es": "Saber el plan de mañana antes de acostarme. Déjamelo por escrito.",
+    "en": "To know tomorrow's plan before bed. Leave it in writing."
+  },
+  "es/situaciones/no-me-sale-hablar-en-algunos-sitios/index.html": {
+    "es": "Responder por escrito en los lugares donde hablar me cuesta. Acepta mi mensaje.",
+    "en": "To reply in writing where speaking is difficult. Accept my message."
+  },
+  "es/situaciones/no-nota-hambre-o-sed/index.html": {
+    "es": "Recordatorios para comer y beber. Deja el vaso a la vista.",
+    "en": "Reminders to eat and drink. Keep the glass where I can see it."
+  },
+  "es/situaciones/no-noto-que-tengo-frio-hasta-que-estoy-temblando/index.html": {
+    "es": "Que me recuerdes llevar abrigo. Dime qué temperatura hará.",
+    "en": "Remind me to take a coat. Tell me what the temperature will be."
+  },
+  "es/situaciones/no-quiero-que-aparezca-mi-nombre-anterior/index.html": {
+    "es": "Que uses solo mi nombre actual. Mantén el anterior en privado.",
+    "en": "Use only my current name. Keep my previous name private."
+  },
+  "es/situaciones/no-se-cuando-alguien-espera-que-le-escriba/index.html": {
+    "es": "Que me digas si esperas una respuesta. Escríbeme cuando quieras hablar.",
+    "en": "Tell me if you expect a reply. Message me when you want to talk."
+  },
+  "es/situaciones/no-se-que-informacion-es-privada/index.html": {
+    "es": "Saber qué información es privada. Pregúntame antes de contarla a otra persona.",
+    "en": "To know what information is private. Ask before telling someone else."
+  },
+  "es/situaciones/no-se-que-pronombre-usar-para-una-persona/index.html": {
+    "es": "Preguntarlo brevemente y en privado. Dime qué pronombres usas.",
+    "en": "To ask briefly and in private. Tell me which pronouns you use."
+  },
+  "es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre/index.html": {
+    "es": "Revisar si he comido, descansado y cuánto ruido hay.",
+    "en": "To check whether I have eaten, rested and how much noise there is."
+  },
+  "es/situaciones/no-se-si-he-entendido-la-instruccion/index.html": {
+    "es": "Repetir lo que he entendido. Corrígeme si falta información.",
+    "en": "To repeat what I understood. Correct me if information is missing."
+  },
+  "es/situaciones/organizar-compra-cocinar-y-comer-es-demasiado-en-el-mismo-dia/index.html": {
+    "es": "Repartir compra, cocina y comida en días distintos. Ayúdame con una tarea.",
+    "en": "To spread shopping, cooking and eating across different days. Help me with one task."
+  },
+  "es/situaciones/pierdo-el-hilo-en-las-reuniones/index.html": {
+    "es": "Un resumen durante la reunión. Dime en qué punto estamos.",
+    "en": "A summary during the meeting. Tell me where we are."
+  },
+  "es/situaciones/pierdo-las-llaves-y-el-movil/index.html": {
+    "es": "Un sitio fijo para las llaves y el móvil. Déjalos cerca de la puerta.",
+    "en": "A fixed place for my keys and phone. Keep them near the door."
+  },
+  "es/situaciones/por-la-noche-la-ansiedad-se-hace-mas-grande/index.html": {
+    "es": "Compañía tranquila por la noche. Hablemos de otro tema un rato.",
+    "en": "Quiet company at night. Let's talk about something else for a while."
+  },
+  "es/situaciones/pospongo-incluso-cosas-que-si-quiero-hacer/index.html": {
+    "es": "Empezar solo durante dos minutos. Quédate conmigo al principio.",
+    "en": "To start for just two minutes. Stay with me at the beginning."
+  },
+  "es/situaciones/pregunto-lo-mismo-varias-veces-para-quedarme-tranquila/index.html": {
+    "es": "Una respuesta clara y corta. Dímela una vez para poder apuntarla.",
+    "en": "One clear, short answer. Tell me once so I can write it down."
+  },
+  "es/situaciones/preparar-una-maleta-me-desborda/index.html": {
+    "es": "Una lista para la maleta. Prepárala conmigo el día anterior.",
+    "en": "A packing list. Prepare it with me the day before."
+  },
+  "es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/index.html": {
+    "es": "La botella siempre a la vista. Recuérdame beber con regularidad.",
+    "en": "To keep my bottle in sight. Remind me to drink regularly."
+  },
+  "es/situaciones/quiero-hacerlo-pero-no-consigo-empezar/index.html": {
+    "es": "Un primer paso muy pequeño. Empiézalo conmigo.",
+    "en": "One very small first step. Start it with me."
+  },
+  "es/situaciones/repaso-en-la-cama-todo-lo-que-hice-mal/index.html": {
+    "es": "Dejar para mañana el repaso de mis errores. Anotar lo importante en un papel.",
+    "en": "Leave reviewing my mistakes until tomorrow. Write down anything important."
+  },
+  "es/situaciones/repaso-una-conversacion-durante-horas/index.html": {
+    "es": "Contar una vez la conversación. Escúchame cinco minutos y cambiemos de actividad.",
+    "en": "To talk through the conversation once. Listen for five minutes, then let's change activity."
+  },
+  "es/situaciones/repito-mentalmente-palabras-o-frases-para-sentirme-segura/index.html": {
+    "es": "Unos segundos para terminar la frase que estoy repitiendo mentalmente.",
+    "en": "A few seconds to finish the phrase I am repeating in my head."
+  },
+  "es/situaciones/repito-palabras-y-frases/index.html": {
+    "es": "Repetir palabras o frases para entender mejor. Sigue hablando con normalidad.",
+    "en": "To repeat words or phrases to understand better. Keep speaking normally."
+  },
+  "es/situaciones/reviso-varias-veces-si-he-cerrado-la-puerta/index.html": {
+    "es": "Comprobar una vez que la puerta está cerrada. Después podemos marcharnos.",
+    "en": "To check once that the door is locked. Then we can leave."
+  },
+  "es/situaciones/salir-de-casa-me-lleva-mucho-mas-tiempo-de-lo-que-calculo/index.html": {
+    "es": "Empezar a prepararme con más tiempo. Avísame media hora antes de salir.",
+    "en": "To start getting ready earlier. Tell me half an hour before we leave."
+  },
+  "es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras/index.html": {
+    "es": "Un momento para encontrar la palabra. Espera antes de terminar mi frase.",
+    "en": "A moment to find the word. Wait before finishing my sentence."
+  },
+  "es/situaciones/se-me-acumula-la-ropa/index.html": {
+    "es": "Empezar por una cesta de ropa. Hazlo conmigo la primera vez.",
+    "en": "To start with one basket of clothes. Do it with me the first time."
+  },
+  "es/situaciones/se-me-acumulan-tareas-pequenas-hasta-que-parecen-imposibles/index.html": {
+    "es": "Una lista con tres tareas. Ayúdame a elegir cuáles van primero.",
+    "en": "A list with three tasks. Help me choose which come first."
+  },
+  "es/situaciones/se-me-olvida-comer/index.html": {
+    "es": "Alarmas para las comidas. Come conmigo cuando puedas.",
+    "en": "Alarms for meals. Eat with me when you can."
+  },
+  "es/situaciones/si-algo-no-esta-colocado-como-esperaba-no-puedo-dejar-de-mirarlo/index.html": {
+    "es": "Colocarlo como esperaba antes de continuar. Dame un minuto.",
+    "en": "To put it where I expected before continuing. Give me a minute."
+  },
+  "es/situaciones/si-aparece-un-pensamiento-horrible-temo-que-diga-algo-sobre-mi/index.html": {
+    "es": "Hablar de este pensamiento con un profesional. Recuérdame que pensar algo no me define.",
+    "en": "Discuss this thought with a professional. Remind me that thoughts do not define me."
+  },
+  "es/situaciones/si-cambia-mi-rutina-no-me-duermo/index.html": {
+    "es": "Mantener mi rutina de noche. Avísame con tiempo si habrá cambios.",
+    "en": "To keep my night routine. Tell me in advance if there will be changes."
+  },
+  "es/situaciones/si-no-esta-la-comida-que-esperaba-prefiero-no-comer/index.html": {
+    "es": "Saber qué habrá de comer. Guarda una comida que ya conozco.",
+    "en": "To know what food will be available. Keep a food I already know."
+  },
+  "es/situaciones/si-no-puedo-comprobar-algo-me-cuesta-pensar-en-otra-cosa/index.html": {
+    "es": "Apoyo profesional para dejar de comprobar. Acompáñame mientras lo practico.",
+    "en": "Professional support to stop checking. Stay with me while I practise."
+  },
+  "es/situaciones/siento-que-actuo-todo-el-dia-para-parecer-normal/index.html": {
+    "es": "Un lugar donde pueda hablar, moverme y descansar sin aparentar.",
+    "en": "A place where I can talk, move and rest without pretending."
+  },
+  "es/situaciones/siento-que-tengo-que-ocultar-partes-de-mi-para-encajar/index.html": {
+    "es": "Un lugar donde pueda hablar de mis gustos, identidad y necesidades. Escúchame.",
+    "en": "A place to talk about my interests, identity and needs. Listen to me."
+  },
+  "es/situaciones/siento-que-tengo-que-parecer-normal-para-encajar/index.html": {
+    "es": "Tiempo sin vigilar cómo hablo, me muevo o respondo. Trátame con naturalidad.",
+    "en": "Time without monitoring how I speak, move or respond. Treat me naturally."
+  },
+  "es/situaciones/siguen-usando-un-nombre-que-ya-no-utilizo/index.html": {
+    "es": "Que uses mi nombre actual. Si te equivocas, corrige y continúa.",
+    "en": "Use my current name. If you make a mistake, correct it and continue."
+  },
+  "es/situaciones/solo-consigo-arrancar-cuando-algo-me-interesa-mucho/index.html": {
+    "es": "Relacionar la tarea con algo que me interese. Ayúdame a encontrar esa relación.",
+    "en": "To connect the task with something that interests me. Help me find that connection."
+  },
+  "es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones/index.html": {
+    "es": "Esas marcas o preparaciones concretas. Apúntalas en la lista de la compra.",
+    "en": "Those specific brands or preparations. Add them to the shopping list."
+  },
+  "es/situaciones/soy-autista-y-tambien-trans-o-no-binario/index.html": {
+    "es": "Que respetes mi autismo y mi identidad de género. Pregúntame antes de hacer suposiciones.",
+    "en": "Respect my autism and my gender identity. Ask before making assumptions."
+  },
+  "es/situaciones/tardo-muchisimo-en-terminar-una-comida/index.html": {
+    "es": "Comer a mi ritmo. Puedes empezar o terminar antes que yo.",
+    "en": "To eat at my own pace. You can start or finish before me."
+  },
+  "es/situaciones/tardo-mucho-en-contestar/index.html": {
+    "es": "Responder por mí misma. Espera mi respuesta aunque tarde.",
+    "en": "To answer for myself. Wait for my reply even if it takes time."
+  },
+  "es/situaciones/tengo-la-cabeza-activa-justo-cuando-me-acuesto/index.html": {
+    "es": "Escribir mis ideas antes de dormir. Deja papel y bolígrafo en la mesilla.",
+    "en": "Write down my ideas before sleep. Leave paper and a pen by the bed."
+  },
+  "es/situaciones/tengo-suenos-muy-intensos-y-me-cuesta-volver-a-dormir/index.html": {
+    "es": "Levantarme un rato después de un sueño intenso. Deja una luz baja.",
+    "en": "Get up briefly after an intense dream. Leave a low light on."
+  },
+  "es/situaciones/trabajo-bien-con-una-fecha-limite-y-me-bloqueo-sin-ella/index.html": {
+    "es": "Una fecha límite concreta. Pon una fecha aunque la tarea sea pequeña.",
+    "en": "A clear deadline. Set a date even for a small task."
+  },
+  "es/situaciones/un-cambio-pequeno-altera-todo-el-dia/index.html": {
+    "es": "Saber los cambios en cuanto los conozcas. Dame tiempo para adaptarme.",
+    "en": "To know about changes as soon as you do. Give me time to adjust."
+  },
+  "es/situaciones/una-averia-o-tramite-inesperado-me-bloquea/index.html": {
+    "es": "Los pasos por escrito ante una avería o trámite. Hagamos juntos la llamada.",
+    "en": "Written steps for an unexpected repair or form. Let's make the call together."
+  },
+  "es/situaciones/una-comida-que-antes-toleraba-de-repente-ya-no-puedo-comerla/index.html": {
+    "es": "Cambiar a otra comida que ya tolero. Mantén disponibles las que sí como.",
+    "en": "To switch to another food I already tolerate. Keep my usual foods available."
+  },
+  "es/situaciones/una-duda-pequena-crece-hasta-ocuparme-todo-el-dia/index.html": {
+    "es": "Un tiempo concreto para pensar en la duda. Si vuelve, hablarlo con un profesional.",
+    "en": "A set time for the doubt. If it returns, discuss it with a professional."
+  },
+  "es/situaciones/una-interrupcion-me-hace-perder-por-completo-el-hilo/index.html": {
+    "es": "Terminar lo que estoy haciendo antes de responder. Apunta tu pregunta para después.",
+    "en": "To finish what I am doing before replying. Write down your question for later."
+  },
+  "es/situaciones/una-llamada-telefonica-me-resulta-mucho-mas-dificil-que-escribir/index.html": {
+    "es": "Escribir en lugar de llamar. Envíame un mensaje.",
+    "en": "To write instead of calling. Send me a message."
+  },
+  "es/situaciones/una-oficina-abierta-me-deja-sin-energia/index.html": {
+    "es": "Trabajar en un lugar con menos gente. Dame una mesa apartada.",
+    "en": "To work somewhere with fewer people. Give me a desk away from others."
+  },
+  "es/situaciones/una-siesta-corta-se-convierte-en-varias-horas/index.html": {
+    "es": "Una alarma para la siesta. Despiértame si sigo durmiendo.",
+    "en": "An alarm for my nap. Wake me if I am still sleeping."
+  },
+  "es/situaciones/una-tarea-grande-me-bloquea-antes-de-empezar/index.html": {
+    "es": "Dividir una tarea grande en partes pequeñas. Dime cuál va primero.",
+    "en": "To split a large task into small parts. Tell me which comes first."
+  },
+  "es/situaciones/usar-otro-nombre-me-hace-sentir-mas-comoda/index.html": {
+    "es": "Que uses ese nombre conmigo. Úsalo también delante de otras personas.",
+    "en": "Use that name for me. Use it in front of other people too."
+  },
+  "es/situaciones/viajar-me-rompe-por-completo-el-sueno/index.html": {
+    "es": "Unos días para recuperar mi horario de sueño. Mantén tranquilo el primer día.",
+    "en": "A few days to recover my sleep schedule. Keep the first day quiet."
+  },
+  "es/situaciones/vuelvo-atras-para-comprobar-si-he-apagado-algo/index.html": {
+    "es": "Comprobar una vez que está apagado. Después podemos seguir con lo que hacíamos.",
+    "en": "Check once that it is switched off. Then continue what we were doing."
+  }
+}
