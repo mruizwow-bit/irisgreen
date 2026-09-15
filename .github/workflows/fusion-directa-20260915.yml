@@ -1,0 +1,119 @@
+name: Fusion directa final 20260915
+
+on:
+  push:
+    branches:
+      - release/fusion-directa-20260915
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout direct payload
+        uses: actions/checkout@v4
+        with:
+          ref: release/fusion-directa-20260915
+          path: direct
+
+      - name: Checkout prepared payload
+        uses: actions/checkout@v4
+        with:
+          ref: release/aplicar-fusion-final-20260915
+          path: payload
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: repo
+          fetch-depth: 0
+
+      - name: Apply package source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat payload/release-source/nonpub-*.txt | base64 -d > /tmp/nonpublic.tar.xz
+          echo "807083d3d67d82edfc0d6df386081774650961b75b7e268397e5aa486f240078  /tmp/nonpublic.tar.xz" | sha256sum -c -
+          tar -xJf /tmp/nonpublic.tar.xz -C repo
+          cd repo
+          python3 scripts/promote_daily_48_final.py
+
+      - name: Restore exact package scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat direct/release-source/direct/build-*.txt > repo/scripts/build_site.py
+          cat direct/release-source/direct/connect-*.txt > repo/scripts/connect_tarjetas_iris.py
+          cat direct/release-source/direct/finalize-*.txt > repo/scripts/finalize_tarjetas_iris_v2_core.py
+          echo "1efb67e69aeb8813ffa23dc8418ad56b7a26677b5b4e51c528a88138b4113013  repo/scripts/build_site.py" | sha256sum -c -
+          echo "fe49aee9f753753ec7f2133d0e3ece731d5e83609968d3a7c459acc9ff4e264c  repo/scripts/connect_tarjetas_iris.py" | sha256sum -c -
+          echo "8f11cb0bc2260b4010ac091d18f87be6847bda87155a24dfd6b4565c8540e9da  repo/scripts/finalize_tarjetas_iris_v2_core.py" | sha256sum -c -
+
+      - name: Sync final public files from production
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          while read -r expected path; do
+            [ -n "$path" ] || continue
+            case "$path" in
+              scripts/*|editorial/*|netlify.toml|_redirects|es/biblioteca/*) continue ;;
+              es/*|en/*|assets/*|img/*)
+                mkdir -p "$(dirname "$path")"
+                curl --fail --location --silent --show-error \
+                  -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
+                  "https://irisgreen.eu/$path?main-sync=20260915-final" -o "$path"
+                ;;
+            esac
+          done < ../payload/release-source/blob-manifest-final.txt
+          rm -f assets/maintenance.html assets/muestras/luma/p01.avif MAINTENANCE_ACTIVE.txt
+
+      - name: Validate final source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          ! grep -q '^\[context\.production\]' netlify.toml
+          grep -q 'python3 scripts/build_site.py' netlify.toml
+          grep -q "params.has('dificultad')" assets/tarjeta-iris.js
+          grep -q '/es/recursos/tarjeta-iris/' es/tarjetas-iris/index.html
+          grep -q 'rg-strip' es/recursos/index.html
+          ! grep -q '^/es/tarjetas-iris/\*' _redirects
+          node --check assets/tarjeta-iris.js
+          node --check assets/recursos-idioma.js
+          node --check assets/rutinas-visuales.js
+          python3 -m py_compile scripts/build_site.py scripts/connect_tarjetas_iris.py scripts/connect_tarjetas_iris_en.py scripts/finalize_tarjetas_iris_v2_core.py
+          python3 - <<'PY'
+          import json, pathlib, re
+          root=pathlib.Path('.')
+          total=bad=0
+          for name in ('tarjetas-necesito-vida-diaria.json','tarjetas-necesito-condiciones.json','tarjetas-necesito-situaciones.json'):
+              data=json.loads((root/'editorial'/name).read_text(encoding='utf-8'))
+              for key,value in data.items():
+                  if key.startswith('_'): continue
+                  total+=1
+                  es=(value or {}).get('es','')
+                  en=(value or {}).get('en','')
+                  bad += bool(re.search(r'\bnecesito\b',es,re.I) or re.search(r'\bI need\b',en,re.I))
+          assert total==415 and bad==0,(total,bad)
+          print('Tarjetas editoriales:',total,'repeticiones:',bad)
+          PY
+
+      - name: Commit final version to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd repo
+          git config user.name "Iris Green release"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Publicar Tarjeta Iris, Recursos y apoyos finales"
+          git push origin HEAD:main
