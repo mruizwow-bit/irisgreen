@@ -125,9 +125,32 @@ function run() {
     serializedInitial
   );
 
+  [EVENTS.SUBMIT, EVENTS.PAUSE_ASSISTANT, EVENTS.RESET_SESSION, EVENTS.SPEECH_REQUEST, EVENTS.SPEECH_START].forEach((eventName) => {
+    expectThrowNoChange(
+      `S0-006 booting rejects ordinary event ${eventName}`,
+      initial,
+      eventName,
+      /Invalid Sabik state transition/u
+    );
+  });
+
+  const bootError = step(initial, { type: EVENTS.TECHNICAL_ERROR, message: "fallo de arranque" });
+  const bootRetry = step(bootError, EVENTS.RETRY);
+  const bootReady = step(bootRetry, EVENTS.BOOT_OK);
+  assert(
+    "S0-007 boot technical error retries to booting before ready",
+    bootError.operation === OPERATION.ERROR &&
+      bootError.error_meta.origin_operation === OPERATION.BOOTING &&
+      bootRetry.operation === OPERATION.BOOTING &&
+      bootRetry.motion === MOTION.OFF &&
+      !Object.prototype.hasOwnProperty.call(bootRetry, "error_meta") &&
+      bootReady.operation === OPERATION.READY,
+    `${bootError.operation}/${bootError.error_meta && bootError.error_meta.origin_operation}/${bootRetry.operation}/${bootReady.operation}`
+  );
+
   const ready = step(initial, EVENTS.BOOT_OK);
   assert(
-    "S0-006 booting to ready",
+    "S0-008 booting to ready",
     ready.operation === OPERATION.READY && ready.motion === MOTION.AMBIENT && ready.dialogue === DIALOGUE.NONE,
     `${ready.operation}/${ready.motion}/${ready.dialogue}`
   );
@@ -137,7 +160,7 @@ function run() {
   const composing = step(retrieving, EVENTS.RETRIEVAL_OK);
   const presentingInfo = step(composing, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.INFORMATION });
   assert(
-    "S0-007 ready to retrieving to composing to presenting",
+    "S0-009 ready to retrieving to composing to presenting",
     retrieving.operation === OPERATION.RETRIEVING &&
       retrieving.motion === MOTION.PROCESSING &&
       composing.operation === OPERATION.COMPOSING &&
@@ -151,7 +174,7 @@ function run() {
   const ordinaryClarification = step(presentingInfo, EVENTS.ASK_CLARIFICATION);
   const clarificationSubmit = step(ordinaryClarification, EVENTS.SUBMIT);
   assert(
-    "S0-008 ordinary clarification submit returns to retrieval without changing safety",
+    "S0-010 ordinary clarification submit returns to retrieval without changing safety",
     ordinaryClarification.operation === OPERATION.AWAITING_CLARIFICATION &&
       ordinaryClarification.dialogue === DIALOGUE.CLARIFICATION &&
       clarificationSubmit.operation === OPERATION.RETRIEVING &&
@@ -162,7 +185,7 @@ function run() {
 
   const empty = step(retrieving, EVENTS.RETRIEVAL_EMPTY);
   assert(
-    "S0-009 retrieval empty presents insufficient",
+    "S0-011 retrieval empty presents insufficient",
     empty.operation === OPERATION.PRESENTING && empty.dialogue === DIALOGUE.INSUFFICIENT,
     `${empty.operation}/${empty.dialogue}`
   );
@@ -172,7 +195,7 @@ function run() {
   const uncertainReset = step(uncertainSubmit, EVENTS.RESET_SESSION);
   const cleared = step(uncertainReset, EVENTS.RISK_CLEARED);
   assert(
-    "S0-010 uncertain safety survives submit and reset until RISK_CLEARED",
+    "S0-012 uncertain safety survives submit and reset until RISK_CLEARED",
     uncertain.safety === SAFETY.UNCERTAIN &&
       uncertain.operation === OPERATION.AWAITING_CLARIFICATION &&
       uncertain.dialogue === DIALOGUE.CLARIFICATION &&
@@ -188,8 +211,40 @@ function run() {
   );
 
   expectThrowNoChange(
-    "S0-011 RISK_CLEARED is rejected from normal without revision change",
+    "S0-013 RISK_CLEARED is rejected from normal without revision change",
     ready,
+    EVENTS.RISK_CLEARED,
+    /Invalid Sabik state transition/u
+  );
+
+  const uncertainPaused = step(uncertain, EVENTS.PAUSE_ASSISTANT);
+  const resumedUncertain = step(uncertainPaused, EVENTS.RESUME_ASSISTANT);
+  const uncertainError = step(uncertain, { type: EVENTS.TECHNICAL_ERROR, message: "fallo en aclaracion" });
+  const uncertainRetry = step(uncertainError, EVENTS.RETRY);
+  assert(
+    "S0-014 uncertain safety preserves protection across pause, technical error, and retry",
+    uncertainPaused.operation === OPERATION.PAUSED &&
+      uncertainPaused.dialogue === DIALOGUE.CLARIFICATION &&
+      uncertainPaused.safety === SAFETY.UNCERTAIN &&
+      uncertainPaused.motion === MOTION.PROTECTION_STATIC &&
+      resumedUncertain.operation === OPERATION.AWAITING_CLARIFICATION &&
+      resumedUncertain.dialogue === DIALOGUE.CLARIFICATION &&
+      resumedUncertain.motion === MOTION.PROTECTION_STATIC &&
+      uncertainError.operation === OPERATION.ERROR &&
+      uncertainError.dialogue === DIALOGUE.CLARIFICATION &&
+      uncertainError.safety === SAFETY.UNCERTAIN &&
+      uncertainError.motion === MOTION.PROTECTION_STATIC &&
+      uncertainError.error_meta.origin_operation === OPERATION.AWAITING_CLARIFICATION &&
+      uncertainRetry.operation === OPERATION.AWAITING_CLARIFICATION &&
+      uncertainRetry.dialogue === DIALOGUE.CLARIFICATION &&
+      uncertainRetry.safety === SAFETY.UNCERTAIN &&
+      uncertainRetry.motion === MOTION.PROTECTION_STATIC,
+    `${uncertainPaused.operation}/${uncertainError.operation}/${uncertainRetry.operation}`
+  );
+
+  expectThrowNoChange(
+    "S0-015 RISK_CLEARED is rejected from paused uncertain without revision change",
+    uncertainPaused,
     EVENTS.RISK_CLEARED,
     /Invalid Sabik state transition/u
   );
@@ -198,7 +253,7 @@ function run() {
   const speechStarted = step(speechRequested, EVENTS.SPEECH_START);
   const boundary = step(speechStarted, { type: EVENTS.SPEECH_BOUNDARY, energy: 0.82 });
   assert(
-    "S0-012 speech request, real start, and boundary are distinct",
+    "S0-016 speech request, real start, and boundary are distinct",
     speechRequested.speech === SPEECH.STARTING &&
       speechRequested.speech_meta.energy === 0 &&
       speechRequested.motion === MOTION.AMBIENT &&
@@ -216,7 +271,7 @@ function run() {
   const naturalSpeech = step(step(speechRequested, EVENTS.SPEECH_START), EVENTS.SPEECH_END);
   const speechError = step(step(speechRequested, EVENTS.SPEECH_START), EVENTS.SPEECH_ERROR);
   assert(
-    "S0-013 speech pause, resume, stop, end, and error update motion and metadata",
+    "S0-017 speech pause, resume, stop, end, and error update motion and metadata",
     speechPaused.speech === SPEECH.PAUSED &&
       speechPaused.speech_meta.energy === 0 &&
       speechPaused.motion === MOTION.OFF &&
@@ -237,8 +292,12 @@ function run() {
   const resetRisk = step(activeRisk, EVENTS.RESET_SESSION);
   const resetHandoff = step(handoff, EVENTS.RESET_SESSION);
   const riskSpeechError = step(activeRisk, EVENTS.SPEECH_ERROR);
+  const pausedRisk = step(activeRisk, EVENTS.PAUSE_ASSISTANT);
+  const resumedRisk = step(pausedRisk, EVENTS.RESUME_ASSISTANT);
+  const pausedHandoff = step(handoff, EVENTS.PAUSE_ASSISTANT);
+  const resumedHandoff = step(pausedHandoff, EVENTS.RESUME_ASSISTANT);
   assert(
-    "S0-014 confirmed risk preempts active voice and reset preserves protection",
+    "S0-018 confirmed risk preempts active voice and pause/reset preserve protection",
     activeRisk.safety === SAFETY.RISK &&
       activeRisk.dialogue === DIALOGUE.HUMAN_HANDOFF &&
       activeRisk.speech === SPEECH.SILENT &&
@@ -249,26 +308,34 @@ function run() {
       resetRisk.dialogue === DIALOGUE.HUMAN_HANDOFF &&
       resetHandoff.safety === SAFETY.HUMAN_HANDOFF &&
       riskSpeechError.speech === SPEECH.ERROR &&
-      riskSpeechError.motion === MOTION.PROTECTION_STATIC,
-    `${activeRisk.safety}/${handoff.safety}/${riskSpeechError.motion}`
+      riskSpeechError.motion === MOTION.PROTECTION_STATIC &&
+      pausedRisk.operation === OPERATION.PAUSED &&
+      pausedRisk.motion === MOTION.PROTECTION_STATIC &&
+      resumedRisk.operation === OPERATION.PRESENTING &&
+      resumedRisk.motion === MOTION.PROTECTION_STATIC &&
+      pausedHandoff.operation === OPERATION.PAUSED &&
+      pausedHandoff.motion === MOTION.PROTECTION_STATIC &&
+      resumedHandoff.operation === OPERATION.PRESENTING &&
+      resumedHandoff.motion === MOTION.PROTECTION_STATIC,
+    `${activeRisk.safety}/${handoff.safety}/${riskSpeechError.motion}/${pausedRisk.motion}/${pausedHandoff.motion}`
   );
 
   expectThrowNoChange(
-    "S0-015 RISK_CLEARED is rejected from confirmed risk without revision change",
+    "S0-019 RISK_CLEARED is rejected from confirmed risk without revision change",
     activeRisk,
     EVENTS.RISK_CLEARED,
     /Invalid Sabik state transition/u
   );
 
   expectThrowNoChange(
-    "S0-016 RISK_CLEARED is rejected from human handoff without revision change",
+    "S0-020 RISK_CLEARED is rejected from human handoff without revision change",
     handoff,
     EVENTS.RISK_CLEARED,
     /Invalid Sabik state transition/u
   );
 
   expectThrow(
-    "S0-017 ordinary speech is blocked during safety attention",
+    "S0-021 ordinary speech is blocked during safety attention",
     () => transitionSabikState(activeRisk, EVENTS.SPEECH_REQUEST),
     /Invalid Sabik state transition/u
   );
@@ -276,7 +343,7 @@ function run() {
   const riskError = step(activeRisk, { type: EVENTS.TECHNICAL_ERROR, message: "fallo durante riesgo" });
   const retryRisk = step(riskError, EVENTS.RETRY);
   assert(
-    "S0-018 technical error preserves active protection",
+    "S0-022 technical error preserves active protection",
     riskError.operation === OPERATION.ERROR &&
       riskError.safety === SAFETY.RISK &&
       riskError.dialogue === DIALOGUE.HUMAN_HANDOFF &&
@@ -291,7 +358,7 @@ function run() {
   const expanded = step(collapsed, EVENTS.EXPAND);
   const resumedAssistant = step(expanded, EVENTS.RESUME_ASSISTANT);
   assert(
-    "S0-019 pause is operational and visibility does not change pause",
+    "S0-023 pause is operational and visibility does not change pause",
     pauseAssistant.operation === OPERATION.PAUSED &&
       collapsed.operation === OPERATION.PAUSED &&
       collapsed.visibility === VISIBILITY.COLLAPSED &&
@@ -303,7 +370,7 @@ function run() {
   const hidden = step(presentingInfo, EVENTS.HIDE);
   const shown = step(hidden, EVENTS.SHOW);
   assert(
-    "S0-020 hide and show only affect visibility",
+    "S0-024 hide and show only affect visibility",
     hidden.visibility === VISIBILITY.HIDDEN &&
       hidden.operation === OPERATION.PRESENTING &&
       shown.visibility === VISIBILITY.EXPANDED &&
@@ -315,7 +382,7 @@ function run() {
   const reducedSpeech = step(step(reducedMotion, EVENTS.SPEECH_REQUEST), EVENTS.SPEECH_START);
   const restoredMotion = step(reducedSpeech, { type: EVENTS.SET_REDUCED_MOTION, enabled: false });
   assert(
-    "S0-021 voice works with reduced motion and motion recovers explicitly",
+    "S0-025 voice works with reduced motion and motion recovers explicitly",
     reducedMotion.motion === MOTION.OFF &&
       reducedMotion.motion_meta.reduced === true &&
       reducedSpeech.speech === SPEECH.SPEAKING &&
@@ -335,7 +402,7 @@ function run() {
   });
   const english = step(exactAdaptation, { type: EVENTS.SET_LANGUAGE, language: "en" });
   assert(
-    "S0-022 exact QA payloads update adaptation and language",
+    "S0-026 exact QA payloads update adaptation and language",
     exactAdaptation.adaptation.response_length === "short" &&
       exactAdaptation.adaptation.max_options === 1 &&
       exactAdaptation.adaptation.question_policy === "low" &&
@@ -347,7 +414,7 @@ function run() {
   );
 
   assert(
-    "S0-023 preferences remain adaptation, not diagnosis",
+    "S0-027 preferences remain adaptation, not diagnosis",
     deriveSabikPresentation(exactAdaptation).labels.no_diagnosis === true && exactAdaptation.safety === SAFETY.NORMAL,
     JSON.stringify(deriveSabikPresentation(exactAdaptation).labels)
   );
@@ -355,19 +422,19 @@ function run() {
   const deterministicA = [EVENTS.SUBMIT, EVENTS.RETRIEVAL_OK, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.PRACTICAL }, EVENTS.SPEECH_REQUEST, EVENTS.SPEECH_START].reduce(step, ready);
   const deterministicB = [EVENTS.SUBMIT, EVENTS.RETRIEVAL_OK, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.PRACTICAL }, EVENTS.SPEECH_REQUEST, EVENTS.SPEECH_START].reduce(step, ready);
   assert(
-    "S0-024 same input and event sequence produce same result",
+    "S0-028 same input and event sequence produce same result",
     JSON.stringify(deterministicA) === JSON.stringify(deterministicB),
     "transition must be deterministic"
   );
 
   expectThrow(
-    "S0-025 invalid event fails explicitly",
+    "S0-029 invalid event fails explicitly",
     () => transitionSabikState(ready, "NOT_A_REAL_EVENT"),
     /Invalid Sabik state event/u
   );
 
   expectThrow(
-    "S0-026 impossible event from state is rejected",
+    "S0-030 impossible event from state is rejected",
     () => transitionSabikState(ready, EVENTS.RETRIEVAL_OK),
     /Invalid Sabik state transition/u
   );
@@ -384,10 +451,31 @@ function run() {
   invalidRiskDialogue.dialogue = DIALOGUE.INFORMATION;
   const invalidEnergy = clone(ready);
   invalidEnergy.speech_meta.energy = 1;
+  const validPartialErrorMeta = clone(ready);
+  validPartialErrorMeta.error_meta = { origin_operation: OPERATION.BOOTING };
+  const validEmptyErrorMeta = clone(ready);
+  validEmptyErrorMeta.error_meta = {};
+  const invalidErrorMetaType = clone(ready);
+  invalidErrorMetaType.error_meta = "fallo";
+  const invalidErrorMetaOrigin = clone(ready);
+  invalidErrorMetaOrigin.error_meta = { origin_operation: "not_real" };
+  const invalidErrorMetaMessage = clone(ready);
+  invalidErrorMetaMessage.error_meta = { message: 42 };
   const invalidExtra = clone(ready);
   invalidExtra.error = "not public";
   assert(
-    "S0-027 validate rejects stale values and incoherent public states",
+    "S0-031 validate accepts optional error_meta and rejects invalid metadata",
+    validateSabikState(ready).ok === true &&
+      validateSabikState(validPartialErrorMeta).ok === true &&
+      validateSabikState(validEmptyErrorMeta).ok === true &&
+      validateSabikState(invalidErrorMetaType).ok === false &&
+      validateSabikState(invalidErrorMetaOrigin).ok === false &&
+      validateSabikState(invalidErrorMetaMessage).ok === false,
+    "error_meta must be optional, partial, and validated when explicit"
+  );
+
+  assert(
+    "S0-032 validate rejects stale values and incoherent public states",
     validateSabikState(invalidOldOperation).ok === false &&
       validateSabikState(invalidOldSafety).ok === false &&
       validateSabikState(invalidOldSpeech).ok === false &&

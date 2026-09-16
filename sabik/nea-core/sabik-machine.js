@@ -133,7 +133,8 @@ const CONTRACT_KEYS = new Set([
   "language",
   "revision",
   "speech_meta",
-  "motion_meta"
+  "motion_meta",
+  "error_meta"
 ]);
 
 function clone(value) {
@@ -154,10 +155,18 @@ function defaultMotionMeta(meta = {}) {
   };
 }
 
+function defaultErrorMeta(meta = {}) {
+  return {
+    origin_operation: hasOwn(meta, "origin_operation") ? meta.origin_operation : null,
+    message: hasOwn(meta, "message") ? meta.message : null
+  };
+}
+
 function normalizeSabikState(state) {
   const normalized = clone(state);
   normalized.speech_meta = defaultSpeechMeta(normalized.speech_meta);
   normalized.motion_meta = defaultMotionMeta(normalized.motion_meta);
+  if (hasOwn(normalized, "error_meta")) normalized.error_meta = defaultErrorMeta(normalized.error_meta);
   return normalized;
 }
 
@@ -210,6 +219,26 @@ function operationForSafety(safety) {
   if (safety === SAFETY.UNCERTAIN) return OPERATION.AWAITING_CLARIFICATION;
   if (safety === SAFETY.RISK || safety === SAFETY.HUMAN_HANDOFF) return OPERATION.PRESENTING;
   return OPERATION.READY;
+}
+
+function dialogueForTechnicalError(previous) {
+  if (previous.safety === SAFETY.UNCERTAIN) return DIALOGUE.CLARIFICATION;
+  if (activeProtection(previous)) return DIALOGUE.HUMAN_HANDOFF;
+  return DIALOGUE.NONE;
+}
+
+function canPause(previous) {
+  return [
+    OPERATION.READY,
+    OPERATION.RETRIEVING,
+    OPERATION.COMPOSING,
+    OPERATION.PRESENTING,
+    OPERATION.AWAITING_CLARIFICATION
+  ].includes(previous.operation);
+}
+
+function clearErrorMeta(state) {
+  delete state.error_meta;
 }
 
 function createInitialSabikState(options = {}) {
@@ -282,6 +311,14 @@ function validateSabikState(state) {
     errors.push("invalid motion_meta");
   } else if (hasOwn(state, "motion_meta") && typeof state.motion_meta.reduced !== "boolean") {
     errors.push("invalid reduced motion flag");
+  }
+
+  if (hasOwn(state, "error_meta") && (!state.error_meta || typeof state.error_meta !== "object")) {
+    errors.push("invalid error_meta");
+  } else if (hasOwn(state, "error_meta")) {
+    const errorMeta = defaultErrorMeta(state.error_meta);
+    if (errorMeta.origin_operation !== null && !OPERATIONS.has(errorMeta.origin_operation)) errors.push("invalid error origin_operation");
+    if (errorMeta.message !== null && typeof errorMeta.message !== "string") errors.push("invalid error message");
   }
 
   if (state.motion === MOTION.VOICE_REACTIVE && state.speech !== SPEECH.SPEAKING) errors.push("voice_reactive motion requires speaking speech");
@@ -420,9 +457,9 @@ function transitionSabikState(currentState, event) {
       break;
 
     case EVENTS.PAUSE_ASSISTANT:
-      assertTransition(previous.operation !== OPERATION.ERROR, type, previous);
+      assertTransition(canPause(previous), type, previous);
       next.operation = OPERATION.PAUSED;
-      next.motion = MOTION.OFF;
+      next.motion = safetyAttention(previous) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
       withSpeech(next, SPEECH.SILENT, 0, "assistant_pause");
       break;
 
@@ -434,6 +471,7 @@ function transitionSabikState(currentState, event) {
       break;
 
     case EVENTS.RESET_SESSION:
+      assertTransition(previous.operation !== OPERATION.BOOTING, type, previous);
       next.operation = operationForSafety(previous.safety);
       next.dialogue = dialogueForSafety(previous.safety);
       next.visibility = VISIBILITY.EXPANDED;
@@ -528,7 +566,13 @@ function transitionSabikState(currentState, event) {
       break;
 
     case EVENTS.RISK_CLEARED:
-      assertTransition(previous.safety === SAFETY.UNCERTAIN, type, previous);
+      assertTransition(
+        previous.safety === SAFETY.UNCERTAIN &&
+          previous.operation === OPERATION.AWAITING_CLARIFICATION &&
+          previous.dialogue === DIALOGUE.CLARIFICATION,
+        type,
+        previous
+      );
       next.safety = SAFETY.NORMAL;
       next.operation = OPERATION.RETRIEVING;
       next.dialogue = DIALOGUE.CLARIFICATION;
@@ -538,17 +582,22 @@ function transitionSabikState(currentState, event) {
 
     case EVENTS.TECHNICAL_ERROR:
       next.operation = OPERATION.ERROR;
-      next.dialogue = activeProtection(previous) ? DIALOGUE.HUMAN_HANDOFF : DIALOGUE.NONE;
+      next.dialogue = dialogueForTechnicalError(previous);
+      next.error_meta = defaultErrorMeta({
+        origin_operation: previous.operation,
+        message: typeof eventValue(event, "message", null) === "string" ? eventValue(event, "message", null) : null
+      });
       withSpeech(next, SPEECH.SILENT, 0, "technical_error");
       next.motion = safetyAttention(previous) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
       break;
 
     case EVENTS.RETRY:
       assertTransition(previous.operation === OPERATION.ERROR, type, previous);
-      next.operation = operationForSafety(previous.safety);
+      next.operation = defaultErrorMeta(previous.error_meta).origin_operation === OPERATION.BOOTING ? OPERATION.BOOTING : operationForSafety(previous.safety);
       next.dialogue = dialogueForSafety(previous.safety);
       withSpeech(next, SPEECH.SILENT, 0, null);
-      next.motion = previous.safety === SAFETY.NORMAL ? ordinaryMotionFor(next) : MOTION.PROTECTION_STATIC;
+      next.motion = next.operation === OPERATION.BOOTING ? MOTION.OFF : previous.safety === SAFETY.NORMAL ? ordinaryMotionFor(next) : MOTION.PROTECTION_STATIC;
+      clearErrorMeta(next);
       break;
 
     case EVENTS.SET_ADAPTATION: {

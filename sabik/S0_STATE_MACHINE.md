@@ -6,7 +6,7 @@ Branch: `sabik/s0-state-machine`
 
 Target PR: draft #161 into `sabik-preview`
 
-Normative QA addendum SHA: `e69929b4b88128c4c935435987f35532f37d2df0` from PR #164.
+Normative consolidated QA SHA: `1c3205fbb0fac8ccb5f2c946d73e4e038a479a0b` from PR #164.
 
 ## Scope
 
@@ -18,7 +18,7 @@ The pure module is `sabik/nea-core/sabik-machine.js`. It exports CommonJS functi
 
 ## Public State Contract
 
-The public state uses the QA scalar fields. The two metadata objects are allowed but optional:
+The public state uses the QA scalar fields. Metadata objects are allowed but optional:
 
 ```js
 {
@@ -44,20 +44,25 @@ Canonical scalar values:
 - `motion`: `off`, `ambient`, `processing`, `voice_reactive`, `protection_static`
 - `language`: `es`, `en`
 
-Speech and motion details may be stored in metadata, but metadata omission is valid at the public boundary and is normalized internally:
+Speech, motion, and technical error details may be stored in metadata, but metadata omission is valid at the public boundary and is normalized internally:
 
 ```js
 speech_meta: { energy, boundary_count, end_reason }
 motion_meta: { reduced }
+error_meta: { origin_operation, message }
 ```
 
 ## B06/B07 Semantics
 
 - Ordinary `awaiting_clarification + SUBMIT` returns to retrieval with dialogue `clarification` and safety `normal`.
 - Safety `uncertain` is not cleared by `SUBMIT` or `RESET_SESSION`.
-- `RISK_CLEARED` is accepted only from safety `uncertain`.
+- During `booting`, ordinary events are rejected; only `BOOT_OK` may move `booting` to `ready`.
+- A technical error from `booting` records `error_meta.origin_operation: "booting"`; `RETRY` returns to `booting`, not `ready`.
+- `RISK_CLEARED` is accepted only from active clarification: `operation: "awaiting_clarification"`, `dialogue: "clarification"`, `safety: "uncertain"`.
 - `RISK_CLEARED` from safety `uncertain` returns to `operation: "retrieving"`, `dialogue: "clarification"`, `speech: "silent"`, and `motion: "processing"`.
-- `RISK_CLEARED` from `normal`, `risk`, or `human_handoff` is rejected without changing the previous state or incrementing `revision`.
+- `RISK_CLEARED` from `normal`, `risk`, `human_handoff`, or paused `uncertain` is rejected without changing the previous state or incrementing `revision`.
+- `PAUSE_ASSISTANT` preserves `motion: "protection_static"` during `uncertain`, `risk`, and `human_handoff`.
+- A technical error during `uncertain` preserves `dialogue: "clarification"`, `safety: "uncertain"`, and `motion: "protection_static"`.
 - `SPEECH_REQUEST` sets `speech: "starting"` and energy `0`.
 - `SPEECH_START` means audible start and is only valid from `starting`.
 - `SPEECH_BOUNDARY` is only valid while `speaking` and updates metadata/energy.
@@ -97,7 +102,7 @@ python3 scripts/build_site.py
 Current local results in this Windows environment:
 
 ```text
-node tools/test-sabik-machine-s0.js  -> 27/27
+node tools/test-sabik-machine-s0.js  -> 36/36
 node tools/test-sabik-page-v7.js     -> 28/28
 ```
 
