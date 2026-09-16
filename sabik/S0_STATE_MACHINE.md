@@ -18,7 +18,7 @@ The pure module is `sabik/nea-core/sabik-machine.js`. It exports CommonJS functi
 
 ## Public State Contract
 
-The public state uses the QA scalar fields plus the two allowed metadata objects:
+The public state uses the QA scalar fields. The two metadata objects are allowed but optional:
 
 ```js
 {
@@ -30,9 +30,7 @@ The public state uses the QA scalar fields plus the two allowed metadata objects
   speech,
   motion,
   language,
-  revision,
-  speech_meta,
-  motion_meta
+  revision
 }
 ```
 
@@ -46,7 +44,7 @@ Canonical scalar values:
 - `motion`: `off`, `ambient`, `processing`, `voice_reactive`, `protection_static`
 - `language`: `es`, `en`
 
-Speech and motion details are stored only in metadata:
+Speech and motion details may be stored in metadata, but metadata omission is valid at the public boundary and is normalized internally:
 
 ```js
 speech_meta: { energy, boundary_count, end_reason }
@@ -57,10 +55,15 @@ motion_meta: { reduced }
 
 - Ordinary `awaiting_clarification + SUBMIT` returns to retrieval with dialogue `clarification` and safety `normal`.
 - Safety `uncertain` is not cleared by `SUBMIT` or `RESET_SESSION`.
-- `RISK_CLEARED` is the explicit event that returns safety to `normal`.
+- `RISK_CLEARED` is accepted only from safety `uncertain`.
+- `RISK_CLEARED` from safety `uncertain` returns to `operation: "retrieving"`, `dialogue: "clarification"`, `speech: "silent"`, and `motion: "processing"`.
+- `RISK_CLEARED` from `normal`, `risk`, or `human_handoff` is rejected without changing the previous state or incrementing `revision`.
 - `SPEECH_REQUEST` sets `speech: "starting"` and energy `0`.
 - `SPEECH_START` means audible start and is only valid from `starting`.
 - `SPEECH_BOUNDARY` is only valid while `speaking` and updates metadata/energy.
+- `SPEECH_PAUSE` sets `speech: "paused"` and `motion: "off"`.
+- Ordinary `SPEECH_ERROR` sets `speech: "error"` and `motion: "off"`.
+- `SPEECH_ERROR` during `risk` or `human_handoff` preserves `motion: "protection_static"`.
 - Pause, stop, end and error all leave speech energy `0`.
 - Reduced motion can turn motion `off` without blocking speech or text.
 - Confirmed risk interrupts ordinary operation, stops speech, sets `dialogue: "human_handoff"`, and uses `motion: "protection_static"`.
@@ -94,7 +97,7 @@ python3 scripts/build_site.py
 Current local results in this Windows environment:
 
 ```text
-node tools/test-sabik-machine-s0.js  -> 23/23
+node tools/test-sabik-machine-s0.js  -> 27/27
 node tools/test-sabik-page-v7.js     -> 28/28
 ```
 

@@ -140,6 +140,27 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function defaultSpeechMeta(meta = {}) {
+  return {
+    energy: typeof meta.energy === "number" ? meta.energy : 0,
+    boundary_count: Number.isInteger(meta.boundary_count) ? meta.boundary_count : 0,
+    end_reason: hasOwn(meta, "end_reason") ? meta.end_reason : null
+  };
+}
+
+function defaultMotionMeta(meta = {}) {
+  return {
+    reduced: Boolean(meta.reduced)
+  };
+}
+
+function normalizeSabikState(state) {
+  const normalized = clone(state);
+  normalized.speech_meta = defaultSpeechMeta(normalized.speech_meta);
+  normalized.motion_meta = defaultMotionMeta(normalized.motion_meta);
+  return normalized;
+}
+
 function eventType(event) {
   return typeof event === "string" ? event : event && event.type;
 }
@@ -173,7 +194,7 @@ function safetyAttention(state) {
 function ordinaryMotionFor(state, operation = state.operation, speech = state.speech) {
   if (state.safety === SAFETY.UNCERTAIN || activeProtection(state)) return MOTION.PROTECTION_STATIC;
   if (operation === OPERATION.PAUSED) return MOTION.OFF;
-  if (state.motion_meta.reduced) return MOTION.OFF;
+  if (defaultMotionMeta(state.motion_meta).reduced) return MOTION.OFF;
   if (speech === SPEECH.SPEAKING) return MOTION.VOICE_REACTIVE;
   if (operation === OPERATION.RETRIEVING || operation === OPERATION.COMPOSING) return MOTION.PROCESSING;
   return MOTION.AMBIENT;
@@ -247,17 +268,19 @@ function validateSabikState(state) {
     if (!DEPTHS.has(state.adaptation.depth)) errors.push("invalid depth");
   }
 
-  if (!state.speech_meta || typeof state.speech_meta !== "object") {
+  if (hasOwn(state, "speech_meta") && (!state.speech_meta || typeof state.speech_meta !== "object")) {
     errors.push("invalid speech_meta");
-  } else {
+  } else if (hasOwn(state, "speech_meta")) {
     if (typeof state.speech_meta.energy !== "number" || state.speech_meta.energy < 0 || state.speech_meta.energy > 1) errors.push("invalid speech energy");
     if (!Number.isInteger(state.speech_meta.boundary_count) || state.speech_meta.boundary_count < 0) errors.push("invalid speech boundary_count");
-    if (state.speech !== SPEECH.SPEAKING && state.speech_meta.energy !== 0) errors.push("inactive speech must have zero energy");
   }
 
-  if (!state.motion_meta || typeof state.motion_meta !== "object") {
+  const speechMeta = defaultSpeechMeta(state.speech_meta);
+  if (state.speech !== SPEECH.SPEAKING && speechMeta.energy !== 0) errors.push("inactive speech must have zero energy");
+
+  if (hasOwn(state, "motion_meta") && (!state.motion_meta || typeof state.motion_meta !== "object")) {
     errors.push("invalid motion_meta");
-  } else if (typeof state.motion_meta.reduced !== "boolean") {
+  } else if (hasOwn(state, "motion_meta") && typeof state.motion_meta.reduced !== "boolean") {
     errors.push("invalid reduced motion flag");
   }
 
@@ -284,6 +307,7 @@ function incrementRevision(state, type) {
 }
 
 function withSpeech(next, speech, energy, endReason = null) {
+  next.speech_meta = defaultSpeechMeta(next.speech_meta);
   next.speech = speech;
   next.speech_meta.energy = energy;
   next.speech_meta.end_reason = endReason;
@@ -296,21 +320,22 @@ function stopSpeech(next, reason) {
 
 function deriveSabikPresentation(state) {
   assertValidState(state);
+  const normalized = normalizeSabikState(state);
   return {
-    visible: state.visibility !== VISIBILITY.HIDDEN,
-    collapsed: state.visibility === VISIBILITY.COLLAPSED,
+    visible: normalized.visibility !== VISIBILITY.HIDDEN,
+    collapsed: normalized.visibility === VISIBILITY.COLLAPSED,
     text_available: true,
-    safety_priority: activeProtection(state),
-    operation: state.operation,
-    dialogue: state.dialogue,
-    speech: state.speech,
-    speech_energy: state.speech === SPEECH.SPEAKING ? state.speech_meta.energy : 0,
-    motion: state.motion,
-    motion_reduced: state.motion_meta.reduced,
-    language: state.language,
-    adaptation: clone(state.adaptation),
+    safety_priority: activeProtection(normalized),
+    operation: normalized.operation,
+    dialogue: normalized.dialogue,
+    speech: normalized.speech,
+    speech_energy: normalized.speech === SPEECH.SPEAKING ? normalized.speech_meta.energy : 0,
+    motion: normalized.motion,
+    motion_reduced: normalized.motion_meta.reduced,
+    language: normalized.language,
+    adaptation: clone(normalized.adaptation),
     labels: {
-      status: activeProtection(state) ? "human_support_first" : state.operation,
+      status: activeProtection(normalized) ? "human_support_first" : normalized.operation,
       no_diagnosis: true
     }
   };
@@ -334,8 +359,9 @@ function transitionSabikState(currentState, event) {
   const type = eventType(event);
   assertEvent(type);
 
-  const previous = currentState || createInitialSabikState();
-  assertValidState(previous);
+  const rawPrevious = currentState || createInitialSabikState();
+  assertValidState(rawPrevious);
+  const previous = normalizeSabikState(rawPrevious);
 
   const next = clone(previous);
   incrementRevision(next, type);
@@ -461,7 +487,7 @@ function transitionSabikState(currentState, event) {
     case EVENTS.SPEECH_PAUSE:
       assertTransition(previous.speech === SPEECH.SPEAKING || previous.speech === SPEECH.STARTING, type, previous);
       withSpeech(next, SPEECH.PAUSED, 0, null);
-      next.motion = ordinaryMotionFor(next, next.operation, next.speech);
+      next.motion = MOTION.OFF;
       break;
 
     case EVENTS.SPEECH_RESUME:
@@ -483,7 +509,7 @@ function transitionSabikState(currentState, event) {
 
     case EVENTS.SPEECH_ERROR:
       withSpeech(next, SPEECH.ERROR, 0, "error");
-      next.motion = safetyAttention(next) ? MOTION.PROTECTION_STATIC : ordinaryMotionFor(next, next.operation, next.speech);
+      next.motion = activeProtection(next) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
       break;
 
     case EVENTS.RISK_UNCERTAIN:
@@ -502,12 +528,12 @@ function transitionSabikState(currentState, event) {
       break;
 
     case EVENTS.RISK_CLEARED:
-      assertTransition(previous.safety === SAFETY.UNCERTAIN || previous.safety === SAFETY.RISK || previous.safety === SAFETY.HUMAN_HANDOFF, type, previous);
+      assertTransition(previous.safety === SAFETY.UNCERTAIN, type, previous);
       next.safety = SAFETY.NORMAL;
-      next.operation = OPERATION.READY;
-      next.dialogue = DIALOGUE.NONE;
+      next.operation = OPERATION.RETRIEVING;
+      next.dialogue = DIALOGUE.CLARIFICATION;
       withSpeech(next, SPEECH.SILENT, 0, null);
-      next.motion = ordinaryMotionFor(next, OPERATION.READY, next.speech);
+      next.motion = MOTION.PROCESSING;
       break;
 
     case EVENTS.TECHNICAL_ERROR:
