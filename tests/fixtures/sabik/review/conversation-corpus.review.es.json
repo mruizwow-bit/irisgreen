@@ -1,0 +1,3691 @@
+{
+  "meta": {
+    "version": "2026-09-16",
+    "base_auditada": "sabik-preview@efa4ed9",
+    "estado": "no_ejecutable",
+    "descripcion": "Corpus conversacional de Sabik para S3/S6. Las expectativas son propuestas de diseño salvo que se indique; el comportamiento actual se obtuvo ejecutando el Core real.",
+    "vocabulario": {
+      "intencion_esperada": [
+        "informacion",
+        "situacion_personal",
+        "peticion_practica",
+        "acompanamiento",
+        "correccion",
+        "continuacion",
+        "rechazo_respuesta",
+        "otra_via",
+        "preferencia",
+        "fuera_de_alcance"
+      ],
+      "conservar_tema_anterior": "true = mantener concepto activo; false = abandonarlo; null = no hay tema previo",
+      "entrada_es_control": "true = la entrada representa la pulsación de un botón del panel, no texto escrito",
+      "contexto_previo.rol": [
+        "persona",
+        "sabik",
+        "control"
+      ],
+      "campos_opcionales": {
+        "conceptos_a_vetar": "deben quedar vetados o rechazados en la sesión tras el turno",
+        "conceptos_que_no_deben_vetarse": "no pueden quedar vetados ni rechazados",
+        "fuentes_prohibidas_patron": "subcadena de ruta que no puede aparecer en las fuentes",
+        "no_debe_cambiar_adaptacion": "el turno no puede alterar estado inferido ni baja intensidad",
+        "debe_mantener_capa_seguridad": "la capa de seguridad sigue activa tras el turno",
+        "preferencias_esperadas": "valores de preferencias de sesión tras el turno",
+        "primera_fuente_patron": "subcadena que debe contener la primera fuente citada"
+      },
+      "comprobacion_automatica_evidencia": "si hay conceptos esperados existentes y la respuesta cita fragmentos, el primer fragmento debe estar etiquetado con alguno de ellos",
+      "tipo_respuesta_detallado_existente": [
+        "direct_information",
+        "source_answer",
+        "practical_steps",
+        "clarifying_question",
+        "insufficient_information",
+        "accompaniment_presence",
+        "risk_accompaniment",
+        "ambiguous_risk_clarification"
+      ],
+      "tipo_respuesta_detallado_propuesto": [
+        "correction_with_new_route",
+        "correction_prompt",
+        "preference_acknowledged",
+        "shortened_reformulation",
+        "out_of_scope"
+      ]
+    },
+    "conceptos_existentes": [
+      "sobrecarga_sensorial",
+      "carga_atencional",
+      "decisiones",
+      "ruido",
+      "baja_demanda",
+      "riesgo_suicida"
+    ],
+    "compatibilidad_qa": {
+      "contrato": "tests/fixtures/sabik/README.md y conversation-corpus.v1.json de la rama sabik/qa-contract (PR #164)",
+      "campos_qa_presentes": [
+        "id",
+        "idioma",
+        "entrada",
+        "contexto_anterior",
+        "intencion",
+        "objetivo",
+        "conceptos_esperados",
+        "conceptos_prohibidos",
+        "tipo_salida",
+        "accion_permitida",
+        "accion_prohibida",
+        "pregunta_si_no",
+        "recurso_humano_si_no",
+        "fuentes_aceptables",
+        "estado_final",
+        "incertidumbre"
+      ],
+      "diferencia_semantica": "conceptos_esperados y conceptos_prohibidos contienen IDs de sabik/assets/NEA/data/concepts.es.json. Los IDs propuestos que no existen se repiten en conceptos_no_existentes_en_dataset. Las prohibiciones de conducta (diagnosticar, etc.) van en accion_prohibida.",
+      "campos_de_la_orden": {
+        "contexto previo": "contexto_anterior",
+        "intención esperada": "intencion",
+        "tipo de respuesta esperado": "tipo_respuesta_detallado (y tipo_salida para QA)",
+        "si debe preguntar": "pregunta_si_no",
+        "si debe reconocer insuficiencia": "debe_reconocer_insuficiencia",
+        "si debe conservar el tema anterior": "conservar_tema_anterior"
+      },
+      "estado_final": "valores del enum operation del contrato QA",
+      "tipo_salida": "valores de allowed_output_types del contrato QA"
+    },
+    "comportamiento_actual": "Generado ejecutando el Core de sabik-preview@efa4ed9 con los datasets reales (método en docs/sabik/reviews/evidencia/sondeo-runtime.md). 'cumple' resume comprobaciones automáticas; observacion_revisor señala falsos cumplimientos.",
+    "resumen_actual": {
+      "casos": 48,
+      "cumplen_automatico": 11,
+      "fallan": 37,
+      "falsos_cumplimientos_detectados": 2
+    }
+  },
+  "casos": [
+    {
+      "id": "CONV-NOES-001",
+      "idioma": "es",
+      "categoria": "primera_consulta_no_es",
+      "polaridad": "positivo",
+      "entrada": "No es fácil pedir cita con el psicólogo",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "tratar la frase como consulta, no como corrección sin referente",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "cita_sanitaria",
+        "atencion_psicologica"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Sin respuesta previa no hay nada que corregir. Debe tratarse como situación personal sobre pedir cita.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-enorme",
+          "/es/situaciones/necesito-ayuda-para-una-cita-medica",
+          "/es/biblioteca/ir-al-medico-al-dentista-o-a-urgencias"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NOES-002",
+      "idioma": "es",
+      "categoria": "primera_consulta_no_es",
+      "polaridad": "positivo",
+      "entrada": "No es la primera vez que el ruido del trabajo me deja agotada",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "tratar la frase como consulta, no como corrección sin referente",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "«No es la primera vez» es una locución; no niega ningún concepto.",
+      "conceptos_que_no_deben_vetarse": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/el-ruido-le-resulta-insoportable",
+          "/es/biblioteca",
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NOES-003",
+      "idioma": "es",
+      "categoria": "primera_consulta_no_es",
+      "polaridad": "negativo",
+      "entrada": "No es normal que me cueste tanto decidir qué comer",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "tratar la frase como consulta, no como corrección sin referente",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "No debe clasificarse como corrección ni vetar «decisiones».",
+      "conceptos_que_no_deben_vetarse": [
+        "decisiones"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/me-agota-decidir-que-comer-cada-dia",
+          "/es/biblioteca/restaurantes-y-comer-fuera",
+          "/es/neurodiversidad/condiciones/restaurantes-y-comer-fuera"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NOES-004",
+      "idioma": "es",
+      "categoria": "primera_consulta_no_es",
+      "polaridad": "positivo",
+      "entrada": "No es por el ruido, es que tengo que elegir demasiadas cosas",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "tratar la frase como consulta, no como corrección sin referente",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Negación explícita en primera frase: veta «ruido» aunque no haya respuesta previa, pero la respuesta no es un acuse de corrección.",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "decisiones",
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer",
+          "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado",
+          "/es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": false,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": false,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORR-001",
+      "idioma": "es",
+      "categoria": "correccion_real",
+      "polaridad": "positivo",
+      "entrada": "no es eso, es el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "en el supermercado me bloqueo"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "decisiones"
+          ]
+        }
+      ],
+      "intencion": "correccion",
+      "objetivo": "aplicar la corrección al referente previo y presentar la nueva vía",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [
+        "decisiones"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "correction_with_new_route",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "El pronombre «eso» remite al concepto de la respuesta anterior; debe vetarse y presentar la nueva vía, no solo acusar recibo.",
+      "conceptos_a_vetar": [
+        "decisiones"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+          "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer",
+          "/es/situaciones/el-ruido-le-resulta-insoportable"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": false,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORR-002",
+      "idioma": "es",
+      "categoria": "correccion_real",
+      "polaridad": "positivo",
+      "entrada": "No, no es el ruido, son las decisiones",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "correccion",
+      "objetivo": "aplicar la corrección al referente previo y presentar la nueva vía",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "correction_with_new_route",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "decisiones"
+        ],
+        "vetados": [
+          "ruido"
+        ],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/neurodiversidad/condiciones/toma-de-decisiones",
+          "/es/biblioteca/cocinar-y-seguridad-domestica",
+          "/es/biblioteca/descanso-fatiga-masking-y-recuperacion"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORR-003",
+      "idioma": "es",
+      "categoria": "correccion_real",
+      "polaridad": "negativo",
+      "entrada": "no es solo el ruido, también la luz",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "continuacion",
+      "objetivo": "aplicar la corrección al referente previo y presentar la nueva vía",
+      "conceptos_esperados": [
+        "ruido",
+        "sobrecarga_sensorial"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "Ampliación, no rechazo: «no es solo X» no veta X.",
+      "conceptos_que_no_deben_vetarse": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/taller",
+          "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado",
+          "/es/situaciones/cualquier-ruido-pequeno-me-despierta"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORR-004",
+      "idioma": "es",
+      "categoria": "correccion_real",
+      "polaridad": "negativo",
+      "entrada": "sí, es eso",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "en el supermercado me bloqueo"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "decisiones"
+          ]
+        }
+      ],
+      "intencion": "continuacion",
+      "objetivo": "aplicar la corrección al referente previo y presentar la nueva vía",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "Confirmación: no es corrección y no debe cambiar de vía.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "insufficient_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "No tengo información suficiente en Iris Green para responder con seguridad.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NEG-001",
+      "idioma": "es",
+      "categoria": "negacion_orden",
+      "polaridad": "positivo",
+      "entrada": "El ruido no es el problema, son las decisiones",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "reconocer la negación con independencia del orden de palabras",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [
+          "decisiones",
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer",
+          "/es/biblioteca",
+          "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": false,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": false,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NEG-002",
+      "idioma": "es",
+      "categoria": "negacion_orden",
+      "polaridad": "positivo",
+      "entrada": "Eso no tiene nada que ver con el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "correccion",
+      "objetivo": "reconocer la negación con independencia del orden de palabras",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Rechaza el concepto sin proponer otro: una sola pregunta breve.",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/biblioteca",
+          "/es/taller",
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Durante la compra también hay luces, ruido, conversaciones y esperas. ¶ Fuente: https://irisgreen.eu/es/biblioteca",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": false,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true,
+          "vetos": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NEG-003",
+      "idioma": "es",
+      "categoria": "negacion_orden",
+      "polaridad": "positivo",
+      "entrada": "Ruido no, lo que me pesa es elegir",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "reconocer la negación con independencia del orden de palabras",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "decisiones"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado",
+          "/es/biblioteca/compras-recados-y-esperas",
+          "/es/biblioteca/restaurantes-y-comer-fuera"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Qué puede ayudar ahora Elegir horarios menos concurridos o espacios con menos ruido si eso reduce la carga. ¶ Fuente: htt",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": false,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NEG-004",
+      "idioma": "es",
+      "categoria": "negacion_orden",
+      "polaridad": "negativo",
+      "entrada": "No quiero elegir entre tantas marcas, me agota",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "reconocer la negación con independencia del orden de palabras",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "«No quiero elegir» expresa la dificultad; no veta «decisiones».",
+      "conceptos_que_no_deben_vetarse": [
+        "decisiones"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [
+          "decisiones"
+        ],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera",
+          "/es/situaciones/necesito-estar-sola-despues-de-un-evento-social",
+          "/es/situaciones/necesito-saber-con-exactitud-que-va-a-ocurrir"
+        ],
+        "texto": "Quiero probar un alimento que no conozco. ¶ Fuente: https://irisgreen.eu/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": false,
+          "evidencia_con_concepto": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NEG-005",
+      "idioma": "es",
+      "categoria": "negacion_orden",
+      "polaridad": "negativo",
+      "entrada": "No quiero más ruido en casa por las noches",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "reconocer la negación con independencia del orden de palabras",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "«No quiero más ruido» describe la necesidad; no veta «ruido».",
+      "conceptos_que_no_deben_vetarse": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa",
+          "/es/biblioteca",
+          "/es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Una vivienda puede ser inaccesible por ruido, distribución, transporte, convivencia o por las tareas que exige mantenerla",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-CONT-001",
+      "idioma": "es",
+      "categoria": "continuacion",
+      "polaridad": "positivo",
+      "entrada": "¿y qué hago después?",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido del supermercado me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "continuacion",
+      "objetivo": "resolver la continuación con el tema activo o pedir referente",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "practical_steps",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Debe usar el concepto activo de la sesión.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+          "/es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello",
+          "/es/situaciones/se-me-olvida-comer"
+        ],
+        "texto": "Después de muchas horas de ruido, conversaciones o tareas, empiezo a usar menos palabras. ¶ Fuente: https://irisgreen.eu/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CONT-002",
+      "idioma": "es",
+      "categoria": "continuacion",
+      "polaridad": "positivo",
+      "entrada": "¿y eso cómo se prepara?",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "en el supermercado me bloqueo"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "decisiones"
+          ]
+        }
+      ],
+      "intencion": "continuacion",
+      "objetivo": "resolver la continuación con el tema activo o pedir referente",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "practical_steps",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "insufficient_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "No tengo información suficiente en Iris Green para responder con seguridad.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CONT-003",
+      "idioma": "es",
+      "categoria": "continuacion",
+      "polaridad": "negativo",
+      "entrada": "¿y qué hago después?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "continuacion",
+      "objetivo": "resolver la continuación con el tema activo o pedir referente",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Sin referente previo no puede continuar: pregunta breve, no fragmento al azar.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+          "/es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello",
+          "/es/situaciones/se-me-olvida-comer"
+        ],
+        "texto": "Después de muchas horas de ruido, conversaciones o tareas, empiezo a usar menos palabras. ¶ Fuente: https://irisgreen.eu/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-TEMA-001",
+      "idioma": "es",
+      "categoria": "cambio_de_tema",
+      "polaridad": "positivo",
+      "entrada": "otra cosa: ¿qué es la dislexia?",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "informacion",
+      "objetivo": "abandonar el tema previo sin vetarlo y atender la nueva petición",
+      "conceptos_esperados": [
+        "dislexia"
+      ],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [
+        "dislexia"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "direct_information",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "El marcador «otra cosa» no debe impedir reconocer la petición informativa.",
+      "primera_fuente_patron": "/dislexia",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/entiendo-las-palabras-pero-no-la-intencion",
+          "/es/situaciones/si-algo-no-esta-colocado-como-esperaba-no-puedo-dejar-de-mirarlo",
+          "/es/taller"
+        ],
+        "texto": "Respondo de forma literal y después descubro que quería decir otra cosa. ¶ Fuente: https://irisgreen.eu/es/situaciones/entiendo-las-palabras-pero-no-la-intencion",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "primera_fuente": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-TEMA-002",
+      "idioma": "es",
+      "categoria": "cambio_de_tema",
+      "polaridad": "positivo",
+      "entrada": "cambiando de tema, ¿dónde pido una ayuda para el transporte?",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "peticion_practica",
+      "objetivo": "abandonar el tema previo sin vetarlo y atender la nueva petición",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [
+        "ayuda_transporte"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "practical_steps",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/biblioteca/crisis-de-ansiedad-panico-y-salud-mental-que-hacer-y-donde-pedir-ayuda",
+          "/es/biblioteca/transporte-publico-y-desplazamientos",
+          "/es/neurodiversidad/condiciones/transporte-publico-y-desplazamientos"
+        ],
+        "texto": "Me ayuda Reducir preguntas, ofrecer un lugar más seguro o menos estimulante, hablar con frases breves y evitar discutir si “hay motivos” para sentir miedo. ¶ Fuente: https://irisgreen.eu/es/biblioteca",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-TEMA-003",
+      "idioma": "es",
+      "categoria": "cambio_de_tema",
+      "polaridad": "negativo",
+      "entrada": "¿y en el trabajo también pasa con el ruido?",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "continuacion",
+      "objetivo": "abandonar el tema previo sin vetarlo y atender la nueva petición",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables",
+          "/es/situaciones/necesito-que-me-repitan-las-instrucciones",
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Durante el examen oigo cómo alguien mueve una silla, tose, hace clic con un bolígrafo o pasa una hoja. ¶ Fuente: https://",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-NOESTO-001",
+      "idioma": "es",
+      "categoria": "no_es_esto",
+      "polaridad": "positivo",
+      "entrada": "No es esto",
+      "entrada_es_control": true,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "rechazo_respuesta",
+      "objetivo": "retirar la vía mostrada y pedir una corrección concreta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "correction_prompt",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Control de interfaz. Retira la vía mostrada y pide una corrección concreta.",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": null,
+        "tipo": "correction_prompt",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [
+          "ruido"
+        ],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "vetos": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-NOESTO-002",
+      "idioma": "es",
+      "categoria": "no_es_esto",
+      "polaridad": "negativo",
+      "entrada": "No es esto",
+      "entrada_es_control": true,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "Tengo pensamientos suicidas"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "risk_accompaniment"
+        }
+      ],
+      "intencion": "rechazo_respuesta",
+      "objetivo": "retirar la vía mostrada y pedir una corrección concreta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "ambiguous_risk_clarification",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "retirar_capa_de_seguridad",
+        "vetar_concepto_de_riesgo",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": true,
+      "fuentes_aceptables": [
+        "recurso_humano_verificado"
+      ],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Control de interfaz sobre una respuesta de riesgo: no puede retirar la capa de seguridad ni vetar «riesgo_suicida». Ver SAFE-NEG-004.",
+      "conceptos_que_no_deben_vetarse": [
+        "riesgo_suicida"
+      ],
+      "debe_mantener_capa_seguridad": true,
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": null,
+        "tipo": "correction_prompt",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [
+          "riesgo_suicida"
+        ],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "acompanamiento_en_riesgo",
+        "estado_cognitivo": "Sobrecarga",
+        "fuentes": [],
+        "texto": "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": false,
+          "seguridad": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NOESTO-003",
+      "idioma": "es",
+      "categoria": "no_es_esto",
+      "polaridad": "positivo",
+      "entrada": "no es esto lo que busco",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "rechazo_respuesta",
+      "objetivo": "retirar la vía mostrada y pedir una corrección concreta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [
+        "ruido"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "correction_prompt",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": false,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Equivalente escrito del control.",
+      "conceptos_a_vetar": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "correction",
+        "tipo": "correction_acknowledged",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/busco-en-internet-durante-horas-para-asegurarme-de-que-no-pasa-nada"
+        ],
+        "texto": "Entendido. Retiro esa vía. ¶ Probamos otra sin defender la anterior.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true,
+          "vetos": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-VIA-001",
+      "idioma": "es",
+      "categoria": "otra_via",
+      "polaridad": "positivo",
+      "entrada": "Buscar por otra vía",
+      "entrada_es_control": true,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "otra_via",
+      "objetivo": "cambiar de fragmento manteniendo el concepto",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Control de interfaz. Mantiene el concepto y excluye solo los fragmentos ya mostrados (#147: pedir otra vía sin rechazar el concepto).",
+      "conceptos_que_no_deben_vetarse": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "insufficient_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [
+          "ruido"
+        ],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "No tengo información suficiente en Iris Green para responder con seguridad.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": false,
+          "sin_vetos_indebidos": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-VIA-002",
+      "idioma": "es",
+      "categoria": "otra_via",
+      "polaridad": "positivo",
+      "entrada": "búscalo por otro lado, pero sigue siendo el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "otra_via",
+      "objetivo": "cambiar de fragmento manteniendo el concepto",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "conceptos_que_no_deben_vetarse": [
+        "ruido"
+      ],
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/investigacion/",
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+          "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: La validez de algunas herramientas en niños sigue siendo discutida. ¶ Fuente: https://irisgreen.eu/es/investigacion/",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "sin_vetos_indebidos": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-VIA-003",
+      "idioma": "es",
+      "categoria": "otra_via",
+      "polaridad": "negativo",
+      "entrada": "Buscar por otra vía",
+      "entrada_es_control": true,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "¿Cuál es la capital de Mongolia?"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "insufficient_information"
+        }
+      ],
+      "intencion": "otra_via",
+      "objetivo": "cambiar de fragmento manteniendo el concepto",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "No hay vía previa que cambiar; la insuficiencia ya se reconoció en el turno anterior.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": null,
+        "tipo": "clarifying_question",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "Para buscar por otra vía necesito una aclaración breve…",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-NOPREG-001",
+      "idioma": "es",
+      "categoria": "no_me_preguntes",
+      "polaridad": "positivo",
+      "entrada": "No me preguntes, dime algo sobre el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "respetar la preferencia de no recibir preguntas no esenciales",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "question_threshold": "high"
+      },
+      "notas": "Debe fijar la preferencia y responder sin pregunta.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "high",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/biblioteca/estudiar-en-la-universidad-con-apoyos",
+          "/es/situaciones/el-agua-de-la-ducha-me-molesta-en-la-piel",
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Conviene aportar el informe o certificado disponible y, sobre todo, explicar qué barrera concreta aparece: lectura, escri",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": true,
+          "preferencias": true
+        },
+        "cumple": true,
+        "observacion_revisor": "Cumple las comprobaciones automáticas, pero el texto trata de apoyos en la universidad. El fragmento está etiquetado con «ruido» por coincidencia léxica. No pertinente."
+      }
+    },
+    {
+      "id": "CONV-NOPREG-002",
+      "idioma": "es",
+      "categoria": "no_me_preguntes",
+      "polaridad": "positivo",
+      "entrada": "No me preguntes nada",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "en el supermercado me bloqueo"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "decisiones"
+          ]
+        }
+      ],
+      "intencion": "preferencia",
+      "objetivo": "respetar la preferencia de no recibir preguntas no esenciales",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "preference_acknowledged",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "question_threshold": "high"
+      },
+      "notas": "Los turnos siguientes no deben preguntar salvo la aclaración de seguridad (ver SAFE-AMB-003).",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "high",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/necesito-que-otra-persona-me-confirme-que-no-he-hecho-nada-malo"
+        ],
+        "texto": "Recuerdo lo ocurrido, pero sigo dudando de si hice algo incorrecto. ¶ Fuente: https://irisgreen.eu/es/situaciones/necesito-que-otra-persona-me-confirme-que-no-he-hecho-nada-malo",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "preferencias": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-NOPREG-003",
+      "idioma": "es",
+      "categoria": "no_me_preguntes",
+      "polaridad": "negativo",
+      "entrada": "¿Por qué no me preguntas qué me pasa?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "acompanamiento",
+      "objetivo": "respetar la preferencia de no recibir preguntas no esenciales",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "preferencias_esperadas": {
+        "question_threshold": "normal"
+      },
+      "notas": "No es la preferencia: la persona pide que se le pregunte.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables",
+          "/es/situaciones/las-preguntas-abiertas-me-bloquean",
+          "/es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta"
+        ],
+        "texto": "Durante el examen oigo cómo alguien mueve una silla, tose, hace clic con un bolígrafo o pasa una hoja. ¶ Fuente: https://irisgreen.eu/es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true,
+          "preferencias": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-UNA-001",
+      "idioma": "es",
+      "categoria": "una_sola_opcion",
+      "polaridad": "positivo",
+      "entrada": "Dame una sola opción para el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "limitar a una opción",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "max_options": 1
+      },
+      "notas": "Una fuente y una opción.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 1,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/taller"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: La colección de una sola cosa Fotografía veinte puertas, veinte manchas o veinte matrículas de tu calle. ¶ Fuente: https:",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": true,
+          "preferencias": true
+        },
+        "cumple": true,
+        "observacion_revisor": "Cumple las comprobaciones automáticas, pero el texto procede de /es/taller («La colección de una sola cosa…»): coincidencia léxica con «una sola». No pertinente."
+      }
+    },
+    {
+      "id": "CONV-UNA-002",
+      "idioma": "es",
+      "categoria": "una_sola_opcion",
+      "polaridad": "negativo",
+      "entrada": "no quiero que me des una sola opción",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "Dame una sola opción"
+        }
+      ],
+      "intencion": "preferencia",
+      "objetivo": "limitar a una opción",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "preference_acknowledged",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "preferencias_esperadas": {
+        "max_options": 3
+      },
+      "notas": "La negación revierte la preferencia.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 1,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera"
+        ],
+        "texto": "No significa automáticamente Una preferencia, una textura difícil o una comida saltada no permite concluir por sí sola un trastorno alimentario. ¶ Fuente: https://irisgreen.eu/es/situaciones/me-cuesta",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "preferencias": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-UNA-003",
+      "idioma": "es",
+      "categoria": "una_sola_opcion",
+      "polaridad": "positivo",
+      "entrada": "dame solo una",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "preferencia",
+      "objetivo": "limitar a una opción",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "shortened_reformulation",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "max_options": 1
+      },
+      "notas": "Reduce la respuesta anterior a una opción sin buscar de nuevo.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones",
+          "/es/situaciones/solo-consigo-arrancar-cuando-algo-me-interesa-mucho"
+        ],
+        "texto": "Como algunos alimentos solo si son de una marca concreta o están preparados de una forma determinada. ¶ Fuente: https://irisgreen.eu/es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": false,
+          "preferencias": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORTO-001",
+      "idioma": "es",
+      "categoria": "mas_corto",
+      "polaridad": "positivo",
+      "entrada": "Explícamelo más corto",
+      "entrada_es_control": false,
+      "contexto_anterior": [
+        {
+          "rol": "persona",
+          "texto": "el ruido me agota"
+        },
+        {
+          "rol": "sabik",
+          "tipo": "source_answer",
+          "conceptos": [
+            "ruido"
+          ]
+        }
+      ],
+      "intencion": "preferencia",
+      "objetivo": "acortar la respuesta previa sin nueva búsqueda",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "shortened_reformulation",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": true,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "response_length": "short"
+      },
+      "notas": "Reformula la respuesta anterior; no reejecuta la búsqueda.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/investigacion/"
+        ],
+        "texto": "Varios medicamentos redujeron síntomas de TDAH a corto plazo frente a placebo. ¶ Fuente: https://irisgreen.eu/es/investigacion/",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": false,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": false,
+          "preferencias": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORTO-002",
+      "idioma": "es",
+      "categoria": "mas_corto",
+      "polaridad": "negativo",
+      "entrada": "Explícamelo más corto",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "preferencia",
+      "objetivo": "acortar la respuesta previa sin nueva búsqueda",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "preferencias_esperadas": {
+        "response_length": "short"
+      },
+      "notas": "Sin respuesta previa no hay nada que acortar; nunca un fragmento al azar.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/investigacion/"
+        ],
+        "texto": "Varios medicamentos redujeron síntomas de TDAH a corto plazo frente a placebo. ¶ Fuente: https://irisgreen.eu/es/investigacion/",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true,
+          "preferencias": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-CORTO-003",
+      "idioma": "es",
+      "categoria": "mas_corto",
+      "polaridad": "positivo",
+      "entrada": "con menos texto, ¿qué es la sobrecarga sensorial?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "informacion",
+      "objetivo": "acortar la respuesta previa sin nueva búsqueda",
+      "conceptos_esperados": [
+        "sobrecarga_sensorial"
+      ],
+      "conceptos_prohibidos": [
+        "baja_demanda"
+      ],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "direct_information",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "preferencias_esperadas": {
+        "response_length": "short"
+      },
+      "notas": "«menos texto» es preferencia, no concepto. No debe cambiar el estado inferido.",
+      "no_debe_cambiar_adaptacion": true,
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "source_answer",
+        "conceptos": [
+          "sobrecarga_sensorial"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "short",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "Sobrecarga",
+        "fuentes": [
+          "/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo",
+          "/es/neurodiversidad/condiciones/sobrecarga-sensorial",
+          "/es/investigacion/"
+        ],
+        "texto": "Una posibilidad es que esto se relacione con algo que Iris Green describe así: Hiperacusia, misofonía, TPA y sobrecarga sensorial no son sinónimos, aunque… ¶ Fuente: https://irisgreen.eu/es/biblioteca",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "adaptacion": false,
+          "evidencia_con_concepto": true,
+          "preferencias": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-INFO-001",
+      "idioma": "es",
+      "categoria": "informativa",
+      "polaridad": "positivo",
+      "entrada": "¿Qué es la sobrecarga sensorial?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "informacion",
+      "objetivo": "responder con contenido publicable sin adaptar por inferencia",
+      "conceptos_esperados": [
+        "sobrecarga_sensorial"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "direct_information",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Responder sin activar baja intensidad ni estados inferidos.",
+      "no_debe_cambiar_adaptacion": true,
+      "primera_fuente_patron": "sobrecarga-sensorial",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [
+          "sobrecarga_sensorial"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "Sobrecarga",
+        "fuentes": [
+          "/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo",
+          "/es/neurodiversidad/condiciones/sobrecarga-sensorial",
+          "/es/biblioteca"
+        ],
+        "texto": "Hiperacusia, misofonía, TPA y sobrecarga sensorial no son sinónimos, aunque… ¶ Fuente: https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "adaptacion": false,
+          "primera_fuente": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-INFO-002",
+      "idioma": "es",
+      "categoria": "informativa",
+      "polaridad": "positivo",
+      "entrada": "¿Qué es la dislexia?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "informacion",
+      "objetivo": "responder con contenido publicable sin adaptar por inferencia",
+      "conceptos_esperados": [
+        "dislexia"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "dislexia"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "direct_information",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "primera_fuente_patron": "/neurodiversidad/condiciones/dislexia",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/neurodiversidad/condiciones/dislexia",
+          "/es/investigacion/",
+          "/es/recursos/juegos/coleccion/dislexia"
+        ],
+        "texto": "Qué es la dislexia, qué enseñanza tiene respaldo y por qué las lentes y el entrenamiento cerebral no lo tienen. ¶ Fuente: https://irisgreen.eu/es/neurodiversidad/condiciones/dislexia",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "primera_fuente": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-INFO-003",
+      "idioma": "es",
+      "categoria": "informativa",
+      "polaridad": "negativo",
+      "entrada": "Explícame por qué me agota tanto el ruido",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "situacion_personal",
+      "objetivo": "responder con contenido publicable sin adaptar por inferencia",
+      "conceptos_esperados": [
+        "ruido"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "El prefijo «explícame» no convierte una situación personal en petición informativa.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [
+          "ruido"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+          "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer",
+          "/es/situaciones/el-ruido-le-resulta-insoportable"
+        ],
+        "texto": "Después de muchas horas de ruido, conversaciones o tareas, empiezo a usar menos palabras. ¶ Fuente: https://irisgreen.eu/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-PRAC-001",
+      "idioma": "es",
+      "categoria": "practica",
+      "polaridad": "positivo",
+      "entrada": "¿Cómo pido cita?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "peticion_practica",
+      "objetivo": "ofrecer pasos procedentes de contenido práctico o pedir el dato que falta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "cita_sanitaria"
+      ],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Sin contexto, una pregunta: ¿para qué servicio? No una frase meta de la ficha.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-enorme",
+          "/es/situaciones/necesito-ayuda-para-una-cita-medica",
+          "/es/situaciones/me-cuesta-pedir-que-repitan-algo"
+        ],
+        "texto": "Esta ficha parte de la situación cotidiana «Hacer una llamada para pedir una cita se me hace enorme». ¶ Fuente: https://irisgreen.eu/es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-eno",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-PRAC-002",
+      "idioma": "es",
+      "categoria": "practica",
+      "polaridad": "positivo",
+      "entrada": "necesito prepararme para ir al supermercado",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "peticion_practica",
+      "objetivo": "ofrecer pasos procedentes de contenido práctico o pedir el dato que falta",
+      "conceptos_esperados": [
+        "decisiones"
+      ],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "compras"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "practical_steps",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Los pasos deben proceder de un procedimiento o ficha práctica, no de la ficha de una condición.",
+      "fuentes_prohibidas_patron": "/neurodiversidad/condiciones/",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "practical_request",
+        "tipo": "practical_steps",
+        "conceptos": [
+          "decisiones"
+        ],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/neurodiversidad/condiciones/autismo"
+        ],
+        "texto": "Podemos empezar por esto: Necesito Elegir contigo mis apoyos. ¶ Fuente: https://irisgreen.eu/es/neurodiversidad/condiciones/autismo",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "fuentes": false,
+          "evidencia_con_concepto": true
+        },
+        "cumple": false,
+        "observacion_revisor": "El paso propuesto procede de la ficha de autismo («Necesito Elegir contigo mis apoyos»)."
+      }
+    },
+    {
+      "id": "CONV-PRAC-003",
+      "idioma": "es",
+      "categoria": "practica",
+      "polaridad": "positivo",
+      "entrada": "¿Dónde solicito esta ayuda?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "peticion_practica",
+      "objetivo": "ofrecer pasos procedentes de contenido práctico o pedir el dato que falta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "«esta ayuda» no tiene referente: pregunta breve.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/biblioteca/crisis-de-ansiedad-panico-y-salud-mental-que-hacer-y-donde-pedir-ayuda",
+          "/es/situaciones/me-cuesta-pedir-ayuda-antes-de-estar-al-limite",
+          "/es/situaciones/necesito-ayuda-para-una-cita-medica"
+        ],
+        "texto": "Me ayuda Reducir preguntas, ofrecer un lugar más seguro o menos estimulante, hablar con frases breves y evitar discutir si “hay motivos” para sentir miedo. ¶ Fuente: https://irisgreen.eu/es/biblioteca",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-PRAC-004",
+      "idioma": "es",
+      "categoria": "practica",
+      "polaridad": "negativo",
+      "entrada": "¿Qué puedo hacer ahora?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "peticion_practica",
+      "objetivo": "ofrecer pasos procedentes de contenido práctico o pedir el dato que falta",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "aclaracion",
+      "tipo_respuesta_detallado": "clarifying_question",
+      "accion_permitida": [
+        "hacer_una_pregunta_breve"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": true,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "awaiting_clarification",
+      "incertidumbre": "alta",
+      "notas": "Sin contexto no debe elegir una ficha por coincidencia de «ahora».",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables",
+          "/es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello",
+          "/es/situaciones/me-cuesta-poner-limites-hasta-que-ya-estoy-agotada"
+        ],
+        "texto": "Qué puede ayudar ahora Hacer la comida más predecible, mantener opciones tolerables, separar decisiones y preparación cuando sea posible y facilitar acceso regular a bebida y comida. ¶ Fuente: https:/",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": false,
+          "insuficiencia": true
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-ACOMP-001",
+      "idioma": "es",
+      "categoria": "acompanamiento",
+      "polaridad": "positivo",
+      "entrada": "Quédate conmigo un rato",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "acompanamiento",
+      "objetivo": "acompañar sin buscar ni inferir estado mental",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "accompaniment_presence",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Sin búsqueda ni acciones con fuente.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "accompaniment",
+        "tipo": "accompaniment_presence",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "Vinculo",
+        "fuentes": [],
+        "texto": "Estoy aquí. ¶ No hace falta ordenar todo ahora.",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-ACOMP-002",
+      "idioma": "es",
+      "categoria": "acompanamiento",
+      "polaridad": "negativo",
+      "entrada": "¿Puedes quedarte con la lista de la compra y recordármela?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "fuera_de_alcance",
+      "objetivo": "acompañar sin buscar ni inferir estado mental",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "insuficiencia",
+      "tipo_respuesta_detallado": "out_of_scope",
+      "accion_permitida": [
+        "reconocer_limite",
+        "sugerir_navegacion_convencional"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": true,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "Contiene «puedes quedarte» pero pide persistencia, que el contrato prohíbe.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "accompaniment",
+        "tipo": "accompaniment_presence",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "Estoy aquí. ¶ No hace falta ordenar todo ahora.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-ACOMP-003",
+      "idioma": "es",
+      "categoria": "acompanamiento",
+      "polaridad": "positivo",
+      "entrada": "Acompáñame, hoy no estoy bien",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "acompanamiento",
+      "objetivo": "acompañar sin buscar ni inferir estado mental",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "accompaniment_presence",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "[E] Si la capa de seguridad debe ofrecer una comprobación suave. No debe inferir estado mental.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "accompaniment",
+        "tipo": "accompaniment_presence",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "Vinculo",
+        "fuentes": [],
+        "texto": "Estoy aquí. ¶ No hace falta ordenar todo ahora.",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-FUERA-001",
+      "idioma": "es",
+      "categoria": "fuera_de_conocimiento",
+      "polaridad": "positivo",
+      "entrada": "¿Cuál es la capital de Mongolia?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "fuera_de_alcance",
+      "objetivo": "reconocer el límite sin rellenar con fragmentos",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "insuficiencia",
+      "tipo_respuesta_detallado": "insufficient_information",
+      "accion_permitida": [
+        "reconocer_limite",
+        "sugerir_navegacion_convencional"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": true,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "insufficient_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "No tengo información suficiente en Iris Green para responder con seguridad.",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true
+        },
+        "cumple": true
+      }
+    },
+    {
+      "id": "CONV-FUERA-002",
+      "idioma": "es",
+      "categoria": "fuera_de_conocimiento",
+      "polaridad": "positivo",
+      "entrada": "¿Qué medicación debería tomar para el TDAH?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "fuera_de_alcance",
+      "objetivo": "reconocer el límite sin rellenar con fragmentos",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [],
+      "tipo_salida": "insuficiencia",
+      "tipo_respuesta_detallado": "out_of_scope",
+      "accion_permitida": [
+        "reconocer_limite",
+        "sugerir_navegacion_convencional"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion",
+        "responder_con_fragmento_no_pertinente"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": true,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "Decisión clínica: remitir a profesional. No citar resultados de ensayos como recomendación.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/neurodiversidad/condiciones/tdah",
+          "/es/situaciones/pierdo-el-hilo-en-las-reuniones",
+          "/es/neurodiversidad/condiciones/empleo-y-neurodiversidad"
+        ],
+        "texto": "Qué ayuda Psicoeducación, apoyos escolares y de organización, intervención familiar y medicación cuando está indicada. ¶ Fuente: https://irisgreen.eu/es/neurodiversidad/condiciones/tdah",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": false
+        },
+        "cumple": false
+      }
+    },
+    {
+      "id": "CONV-FUERA-003",
+      "idioma": "es",
+      "categoria": "fuera_de_conocimiento",
+      "polaridad": "negativo",
+      "entrada": "¿Qué es el autismo?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "informacion",
+      "objetivo": "reconocer el límite sin rellenar con fragmentos",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "autismo"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "direct_information",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "media",
+      "notas": "Está en Iris Green: no debe reconocer insuficiencia.",
+      "primera_fuente_patron": "/neurodiversidad/condiciones/autismo",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "information_request",
+        "tipo": "direct_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [
+          "/es/investigacion/",
+          "/es/neurodiversidad/condiciones/autismo",
+          "/es/neurodiversidad/temas/autismo"
+        ],
+        "texto": "Qué se estudió: La revisión analizó la relación entre las funciones ejecutivas y la regulación emocional en autismo, TDAH y coexistencia de ambas condiciones. ¶ Fuente: https://irisgreen.eu/es/investi",
+        "comprobaciones": {
+          "tipo": true,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": true,
+          "primera_fuente": false
+        },
+        "cumple": false,
+        "observacion_revisor": "La primera fuente es un registro de investigación, no la ficha de autismo."
+      }
+    },
+    {
+      "id": "CONV-FUNC-001",
+      "idioma": "es",
+      "categoria": "indice_funcional",
+      "polaridad": "positivo",
+      "entrada": "¿Necesitaría un psicólogo?",
+      "entrada_es_control": false,
+      "contexto_anterior": [],
+      "intencion": "peticion_practica",
+      "objetivo": "responder a la intención funcional, no a la coincidencia léxica",
+      "conceptos_esperados": [],
+      "conceptos_prohibidos": [],
+      "conceptos_no_existentes_en_dataset": [
+        "atencion_psicologica"
+      ],
+      "tipo_salida": "respuesta",
+      "tipo_respuesta_detallado": "source_answer",
+      "accion_permitida": [
+        "responder_con_contenido_publicable",
+        "enlazar_seccion_publicable"
+      ],
+      "accion_prohibida": [
+        "diagnosticar",
+        "inferir_estado_mental",
+        "inventar_fuente_o_recurso",
+        "persistir_conversacion"
+      ],
+      "pregunta_si_no": false,
+      "debe_reconocer_insuficiencia": false,
+      "conservar_tema_anterior": null,
+      "recurso_humano_si_no": false,
+      "fuentes_aceptables": [
+        "contenido_publicable_iris_green"
+      ],
+      "estado_final": "presenting",
+      "incertidumbre": "baja",
+      "notas": "No decide por la persona ni diagnostica. Ofrece la sección publicada sobre cuándo pedir ayuda profesional y cómo acceder. [E] contenido aprobado.",
+      "comportamiento_actual": {
+        "commit": "efa4ed9",
+        "intencion": "personal_situation",
+        "tipo": "insufficient_information",
+        "conceptos": [],
+        "vetados": [],
+        "rechazados": [],
+        "preferencias": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_threshold": "normal",
+          "low_intensity": false
+        },
+        "riesgo": "normal",
+        "estado_cognitivo": "NucleoBase",
+        "fuentes": [],
+        "texto": "No tengo información suficiente en Iris Green para responder con seguridad.",
+        "comprobaciones": {
+          "tipo": false,
+          "sin_conceptos_prohibidos": true,
+          "conceptos_esperados": true,
+          "pregunta": true,
+          "insuficiencia": false
+        },
+        "cumple": false
+      }
+    }
+  ]
+}
