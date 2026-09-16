@@ -338,22 +338,22 @@ async function run() {
 
   assert(
     "V7-027 Sabik has living motion and voice waves",
-    css.includes("--sabik-layer-speed: 96s;") &&
+      css.includes("--sabik-layer-speed: 36s;") &&
       css.includes("sabikAvatarBreath") &&
       css.includes("sabikVoiceRipple") &&
       css.includes("sabikPresenceWave") &&
       css.includes('[data-cognitive-state="Hiperfoco"]') &&
-      css.includes("--sabik-layer-speed: 64s;") &&
+      css.includes("--sabik-layer-speed: 24s;") &&
       css.includes('[data-interaction-state="procesando"]') &&
-      css.includes("--sabik-layer-speed: 30s;") &&
-      css.includes("--sabik-wave-speed: 1.9s;") &&
+      css.includes("--sabik-layer-speed: 14s;") &&
+      css.includes("--sabik-wave-speed: 1.35s;") &&
       css.includes('[data-interaction-state="pausa"],') &&
       css.includes('[data-protection-state="riesgo"],') &&
       css.includes("--sabik-layer-motion: paused;") &&
       css.includes('[data-low-intensity="true"]') &&
-      css.includes("--sabik-layer-speed: 180s;") &&
-      css.includes("--sabik-base-pulse-speed: 10s;") &&
-      css.includes("--sabik-wave-opacity: .16;"),
+      css.includes("--sabik-layer-speed: 64s;") &&
+      css.includes("--sabik-base-pulse-speed: 7.8s;") &&
+      css.includes("--sabik-wave-opacity: .28;"),
     "base motion and voice waves must be visible; low intensity softens instead of killing Sabik"
   );
 
