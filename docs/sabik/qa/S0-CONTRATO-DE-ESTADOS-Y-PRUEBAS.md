@@ -1,347 +1,220 @@
-# S0 · Contrato QA de estados y transiciones
+# S0 · Contrato QA de estados, eventos y puerta de salida
 
-**Issue:** #149  
-**Implementación revisada:** #146 / PR #161  
+**Issue QA:** #149  
+**Implementación a revisar:** #146 / PR #161  
+**Revisión semántica:** #147 / PR #162  
+**Diseño dependiente:** #148 / PR #163  
 **Destino:** `sabik-preview`
 
-## 1. Propósito
+## 1. Regla de autoridad
 
-Esta especificación define lo que debe demostrar S0 antes de que empiece S1. S0 no cambia deliberadamente la interfaz: crea una máquina de estados pura, serializable y verificable sobre la que después se conectarán panel, voz, movimiento, seguridad y conversación.
+Este documento y `tests/specs/sabik/s0-state-contract.json` forman el contrato QA de S0. La implementación debe cumplir el contrato; QA no modifica expectativas para hacer pasar una implementación defectuosa.
 
-## 2. Capas obligatorias
+Un build verde, una importación correcta o un test aislado en verde no significan que S0 esté aceptado.
 
-El estado no puede reducirse a una sola cadena. Debe contener capas independientes.
+## 2. Capas de estado
 
-### `operation`
+La máquina usa capas ortogonales, no una enumeración monolítica:
 
-Valores mínimos:
+| Capa | Valores contractuales |
+|---|---|
+| `operation` | `booting`, `ready`, `retrieving`, `composing`, `presenting`, `awaiting_clarification`, `paused`, `error` |
+| `dialogue` | `none`, `information`, `practical`, `clarification`, `accompaniment`, `correction`, `insufficient`, `human_handoff` |
+| `safety` | `normal`, `uncertain`, `risk`, `human_handoff` |
+| `visibility` | `expanded`, `collapsed`, `hidden` |
+| `speech` | `silent`, `starting`, `speaking`, `paused`, `ended`, `error` |
+| `motion` | `off`, `ambient`, `processing`, `voice_reactive`, `protection_static` |
+| `language` | `es`, `en` |
 
-- `booting`
-- `ready`
-- `retrieving`
-- `composing`
-- `presenting`
-- `awaiting_clarification`
-- `paused`
-- `error`
+`adaptation` contiene al menos `response_length`, `max_options`, `question_policy`, `intensity` y `depth`. `revision` es un entero no negativo y no implica persistencia.
 
-### `dialogue`
+## 3. Interfaz mínima
 
-Valores mínimos:
-
-- `none`
-- `information`
-- `practical`
-- `clarification`
-- `accompaniment`
-- `correction`
-- `insufficient`
-- `human_handoff`
-
-### `adaptation`
-
-Objeto mínimo:
-
-```json
-{
-  "response_length": "normal",
-  "max_options": 3,
-  "question_policy": "normal",
-  "intensity": "normal",
-  "depth": "normal"
-}
-```
-
-### `safety`
-
-Valores mínimos:
-
-- `normal`
-- `uncertain`
-- `risk`
-- `human_handoff`
-
-### `visibility`
-
-Valores mínimos:
-
-- `expanded`
-- `collapsed`
-- `hidden`
-
-### `speech`
-
-Valores mínimos:
-
-- `silent`
-- `starting`
-- `speaking`
-- `paused`
-- `ended`
-- `error`
-
-### `motion`
-
-Valores mínimos:
-
-- `off`
-- `ambient`
-- `processing`
-- `voice_reactive`
-- `protection_static`
-
-### `language`
-
-Valores mínimos:
-
-- `es`
-- `en`
-
-S0 puede declarar `en` aunque el producto inglés no esté completo; lo que no puede hacer es confundir idioma de estado con disponibilidad funcional.
-
-## 3. Forma mínima
+La transición contractual es:
 
 ```js
-{
-  operation,
-  dialogue,
-  adaptation,
-  safety,
-  visibility,
-  speech,
-  motion,
-  language,
-  revision
-}
+transitionSabikState(previousState, event)
 ```
 
-`revision` es un entero creciente o identificador equivalente útil para descartar efectos obsoletos. No implica persistencia.
+Para eventos permitidos puede devolver directamente el nuevo estado o `{ state, accepted, reason }`.
 
-## 4. Interfaz de la máquina
+Para eventos **prohibidos** el rechazo debe ser explícito: `{ accepted: false, state: previousState, reason }` o una excepción identificable. Devolver silenciosamente el mismo estado sin indicar rechazo no cumple el contrato, porque impide distinguir una no-op válida de una transición inválida.
 
-La transición debe ser pura y no lanzar efectos:
+## 4. Invariantes bloqueantes
 
-```js
-const result = transitionSabikState(previousState, event);
+1. **Pureza.** La transición no consulta ni modifica DOM, red, almacenamiento, reloj, aleatoriedad, voz ni globals mutables.
+2. **Determinismo.** Mismo estado + mismo evento + mismo payload = mismo resultado estructural.
+3. **Inmutabilidad.** No muta el estado ni el evento recibidos.
+4. **Serialización.** Todo estado válido sobrevive a `JSON.stringify`/`JSON.parse` sin pérdida semántica.
+5. **Valores cerrados.** Todas las capas usan únicamente valores registrados.
+6. **Pausa ≠ reset.** Pausar no borra sesión, adaptación, idioma ni seguridad.
+7. **Visibilidad ≠ pausa.** Plegar, ocultar o expandir no reanuda ni pausa por accidente.
+8. **Reset independiente.** `RESET_SESSION` reinicia la sesión ordinaria sin depender del estado visual. Si existe riesgo confirmado, el reset no lo rebaja.
+9. **Voz ≠ movimiento.** Voz y movimiento pueden cambiar por separado. Con reducción de movimiento, la voz puede seguir activa con `motion: off`.
+10. **Seguridad prevalece.** Riesgo o derivación humana no pueden quedar anulados por eventos decorativos, errores técnicos, voz, visibilidad o reset.
+11. **Error técnico ≠ insuficiencia.** Un fallo de carga no se presenta como «no tengo información».
+12. **Idioma estable.** Eventos no lingüísticos no cambian `language`.
+13. **Sin estados imposibles.** Entre otros: `human_handoff` exige diálogo de derivación; `voice_reactive` exige voz activa; riesgo no admite movimiento reactivo de voz; `error + insufficient` no representa un error técnico.
+14. **Doble envío.** Un segundo `SUBMIT` durante `retrieving` se rechaza explícitamente y no crea una segunda sesión, respuesta o revisión silenciosa.
+15. **Anuncio único.** El contrato observable de respuesta es una única unidad coherente. Nunca se anuncia palabra por palabra ni token por token.
+
+## 5. Matriz ejecutable
+
+La fuente canónica es `tests/specs/sabik/s0-state-contract.json`. Cada fila declara obligatoriamente:
+
+- estado anterior;
+- evento;
+- payload;
+- estado esperado;
+- evento permitido o prohibido;
+- controles activos;
+- controles desactivados;
+- texto visible;
+- anuncio accesible;
+- foco esperado;
+- voz esperada;
+- movimiento esperado;
+- sesión conservada o reiniciada;
+- seguridad esperada.
+
+La matriz incluye tanto recorridos permitidos como rechazos necesarios. Los textos visibles y anuncios usan **tokens semánticos**, no copy editorial final. S1/S2 deberán materializarlos sin alterar su función.
+
+### Eventos cubiertos
+
+La matriz cubre los eventos base de S0 y los eventos necesarios para hacer verificables las capas:
+
+- `BOOT_OK`
+- `SUBMIT`
+- `RETRIEVAL_OK`
+- `RETRIEVAL_EMPTY`
+- `RESPONSE_READY`
+- `ASK_CLARIFICATION`
+- `PAUSE_ASSISTANT`
+- `RESUME_ASSISTANT`
+- `RESET_SESSION`
+- `COLLAPSE`
+- `EXPAND`
+- `HIDE`
+- `SPEECH_START`
+- `SPEECH_BOUNDARY`
+- `SPEECH_PAUSE`
+- `SPEECH_RESUME`
+- `SPEECH_STOP`
+- `SPEECH_END`
+- `SPEECH_ERROR`
+- `RISK_UNCERTAIN`
+- `RISK_CONFIRMED`
+- `HUMAN_HANDOFF`
+- `TECHNICAL_ERROR`
+- `RETRY`
+- `SET_LANGUAGE`
+- `SET_ADAPTATION`
+- `SET_REDUCED_MOTION`
+
+`SPEECH_STOP` y `SPEECH_END` son distintos: el primero representa una acción explícita de detener; el segundo, fin natural de la locución.
+
+## 6. Recorridos canónicos
+
+`tests/specs/sabik/s0-transition-cases.json` contiene recorridos bloqueantes que combinan filas de la matriz. Deben cubrir, como mínimo:
+
+- arranque;
+- respuesta normal;
+- recuperación vacía;
+- pausa + plegado + expansión;
+- ocultar sin alterar pausa;
+- reanudar conservando adaptación/idioma/seguridad;
+- reset desde pausa;
+- reset durante riesgo sin rebajar seguridad;
+- voz: iniciar, boundary, pausar, reanudar, detener, terminar y error;
+- voz con movimiento reducido;
+- texto sin voz;
+- riesgo incierto;
+- riesgo confirmado;
+- derivación humana;
+- error técnico normal;
+- error técnico durante riesgo;
+- reintento;
+- doble envío;
+- evento fuera de secuencia;
+- cambio de idioma;
+- adaptación;
+- determinismo;
+- inmutabilidad;
+- serialización;
+- ausencia de estados imposibles.
+
+## 7. Runner canónico
+
+`tests/specs/sabik/run-s0-contract.mjs` no importa una ruta de runtime fija. Recibe la implementación por CLI:
+
+```bash
+node tests/specs/sabik/run-s0-contract.mjs --module sabik/nea-core/sabik-machine.js
 ```
 
-El resultado puede ser el nuevo estado o una forma explícita como:
+Sin `--module`, el runner valida únicamente esquemas, referencias de fixtures y corpus, e imprime `NO_IMPLEMENTATION_EXECUTED`. Ese modo **no** acepta S0.
 
-```js
-{
-  state: nextState,
-  accepted: true,
-  reason: null
-}
-```
+Con implementación, la puerta automática comprueba:
 
-Si un evento no es válido en el estado actual, debe ocurrir una de estas dos cosas, decidida y documentada para todo el sistema:
+- pureza observable y patrones estáticos prohibidos;
+- determinismo;
+- inmutabilidad de estado y evento;
+- esquema y valores cerrados;
+- transiciones permitidas;
+- rechazo explícito de eventos prohibidos;
+- invariantes;
+- serialización;
+- estados imposibles;
+- recorridos canónicos completos.
 
-1. rechazo explícito sin modificar estado;
-2. normalización explícita con razón.
+## 8. Revisión de PR #161
 
-No se admite una mutación parcial silenciosa.
+Cuando exista implementación:
 
-## 5. Invariantes bloqueantes
+1. comprobar diff y alcance;
+2. ejecutar las pruebas propias de PR #161;
+3. ejecutar `node tools/test-sabik-page-v7.js`;
+4. ejecutar `python3 scripts/build_site.py`;
+5. ejecutar el runner canónico;
+6. comprobar pureza, determinismo e invariantes;
+7. verificar que ocultar no altera pausa;
+8. verificar que reset es independiente y no rebaja seguridad;
+9. verificar independencia voz/movimiento;
+10. verificar prioridad de seguridad;
+11. revisar observaciones semánticas de PR #162;
+12. comparar con contrato visual de PR #163 cuando aplique;
+13. comprobar que no se han tocado archivos prohibidos.
 
-### I-01 · Pureza
+## 9. Veredicto de S0
 
-La transición no accede a DOM, `window`, `document`, `fetch`, almacenamiento, reloj, voz, música ni red.
+QA publicará exactamente uno:
 
-### I-02 · Inmutabilidad
+- `ACEPTADO_S0`
+- `ACEPTADO_S0_CON_PENDIENTES_NO_BLOQUEANTES`
+- `BLOQUEADO_S0`
 
-El estado recibido no se modifica. El estado devuelto es una nueva estructura o comparte únicamente valores inmutables.
+`ACEPTADO_S0_CON_PENDIENTES_NO_BLOQUEANTES` solo puede usarse cuando todos los criterios bloqueantes están cumplidos y los pendientes están identificados individualmente como no bloqueantes.
 
-### I-03 · Pausa separada de borrado
-
-`PAUSE_ASSISTANT` no vacía conversación, entrada, respuesta, fuentes ni preferencias. S0 no necesita guardar esos valores; sí debe impedir que el evento represente un reset.
-
-### I-04 · Visibilidad separada de pausa
-
-`COLLAPSE`, `EXPAND` y cualquier transición a `hidden` no cambian `operation: paused` ni lo reanudan.
-
-### I-05 · Reset explícito
-
-Solo `RESET_SESSION` devuelve las capas conversacionales a sus valores iniciales. Las preferencias de presentación que deban sobrevivir a un reset deberán definirse explícitamente; no se decide por accidente mediante clonación parcial.
-
-### I-06 · Voz separada de movimiento
-
-- `SPEECH_START` cambia voz y puede solicitar movimiento `voice_reactive`.
-- reducción de movimiento puede mantener `speech: speaking` con `motion: off`.
-- detener movimiento no equivale a pausar voz.
-- pausar voz lleva energía visual a cero en fases posteriores.
-
-### I-07 · Seguridad prevalente
-
-Con `safety: risk` o `human_handoff`:
-
-- no se inicia una respuesta normal;
-- el movimiento no supera `protection_static`;
-- una transición decorativa no devuelve seguridad a `normal`;
-- solo un evento de seguridad documentado puede reducir el nivel.
-
-### I-08 · Error diferenciado
-
-`TECHNICAL_ERROR` no se representa como `insufficient`. El usuario debe poder distinguir fallo técnico de falta de contenido.
-
-### I-09 · Idioma estable
-
-Un evento no lingüístico no cambia `language`.
-
-### I-10 · Valores cerrados
-
-No quedan valores libres como `espera`, `respuesta`, `correccion` o `procesando` fuera de las constantes aprobadas. Si se necesitan, deben mapearse a las capas definidas.
-
-## 6. Matriz mínima de eventos
-
-| Evento | Estado previo principal | Cambio obligatorio | No debe cambiar |
-|---|---|---|---|
-| `BOOT_OK` | `booting` | `operation → ready` | idioma, visibilidad |
-| `SUBMIT` | `ready` o `presenting` | `operation → retrieving`, revisión aumenta | visibilidad, idioma |
-| `RETRIEVAL_OK` | `retrieving` | `operation → composing` | seguridad |
-| `RETRIEVAL_EMPTY` | `retrieving` | `operation → presenting`, `dialogue → insufficient` | idioma |
-| `RESPONSE_READY` | `composing` | `operation → presenting` | visibilidad |
-| `ASK_CLARIFICATION` | `composing`/`presenting` | `operation → awaiting_clarification`, `dialogue → clarification` | sesión reiniciada |
-| `PAUSE_ASSISTANT` | estado no terminal | `operation → paused` | visibilidad, idioma, seguridad |
-| `RESUME_ASSISTANT` | `paused` | vuelve a estado estable documentado | visibilidad |
-| `RESET_SESSION` | estable | capas conversacionales a inicial | preferencia persistente no definida |
-| `COLLAPSE` | cualquiera permitido | `visibility → collapsed` | operación, voz, seguridad |
-| `EXPAND` | `collapsed`/`hidden` | `visibility → expanded` | operación, voz, seguridad |
-| `SPEECH_START` | `presenting` | `speech → starting/speaking` | operación normal, visibilidad |
-| `SPEECH_BOUNDARY` | `speaking` | revisión/energía futura; voz sigue | diálogo, seguridad |
-| `SPEECH_PAUSE` | `speaking` | `speech → paused` | operación, visibilidad |
-| `SPEECH_RESUME` | `speech: paused` | `speech → speaking` | operación |
-| `SPEECH_END` | hablando/pausado | `speech → ended` y luego silencio documentado | respuesta |
-| `SPEECH_ERROR` | voz activa | `speech → error` | texto y respuesta |
-| `RISK_UNCERTAIN` | cualquiera no confirmado | `safety → uncertain`, aclaración | idioma |
-| `RISK_CONFIRMED` | cualquiera | `safety → risk`, diálogo de ayuda | visibilidad no solicitada |
-| `HUMAN_HANDOFF` | riesgo | `safety/dialogue → human_handoff` | texto de usuario no persiste |
-| `TECHNICAL_ERROR` | cualquiera | `operation → error` | seguridad no se rebaja |
-| `RETRY` | `error` | estado de reintento documentado | preferencias |
-
-## 7. Casos bloqueantes
-
-Los casos canónicos se publican también en `tests/specs/sabik/s0-transition-cases.json`.
-
-### S0-001 · arranque
+Cada bloqueo incluirá:
 
 ```text
-initial.booting + BOOT_OK → ready
+caso
+evidencia
+riesgo
+criterio incumplido
+corrección mínima esperada
 ```
 
-### S0-002 · respuesta normal
+## 10. Dependencia de S1
 
-```text
-ready + SUBMIT → retrieving
-retrieving + RETRIEVAL_OK → composing
-composing + RESPONSE_READY → presenting
-```
+S1 permanece cerrado mientras falte cualquiera de estos elementos:
 
-### S0-003 · insuficiencia
+- S0 aceptado por QA;
+- revisión semántica de Claude emitida;
+- casos canónicos ejecutados contra la implementación;
+- ausencia de contradicciones de contrato.
 
-```text
-ready + SUBMIT → retrieving
-retrieving + RETRIEVAL_EMPTY → presenting + insufficient
-```
+S2, además, no puede empezar sin especificación de Design.
 
-### S0-004 · pausa y visibilidad
+## 11. Estado actual de la puerta
 
-```text
-presenting + PAUSE_ASSISTANT → paused
-paused + COLLAPSE → paused + collapsed
-paused/collapsed + EXPAND → paused + expanded
-paused + RESUME_ASSISTANT → estado reanudado documentado
-```
-
-### S0-005 · pausa no es reset
-
-Después de pausar y reanudar, `revision`, idioma, seguridad, adaptación y estado de voz no deben volver silenciosamente a valores iniciales salvo regla expresa.
-
-### S0-006 · voz normal
-
-```text
-presenting + SPEECH_START → speaking
-speaking + SPEECH_BOUNDARY → speaking
-speaking + SPEECH_PAUSE → speech paused
-speech paused + SPEECH_RESUME → speaking
-speaking + SPEECH_END → ended/silent documentado
-```
-
-### S0-007 · voz con movimiento reducido
-
-Partiendo de movimiento apagado, `SPEECH_START` mantiene `motion: off` y permite `speech: speaking`.
-
-### S0-008 · error de voz
-
-`SPEECH_ERROR` no elimina respuesta ni cambia el diálogo a insuficiencia.
-
-### S0-009 · riesgo incierto
-
-`RISK_UNCERTAIN` conduce a seguridad incierta y aclaración; no activa automáticamente derivación humana confirmada.
-
-### S0-010 · riesgo confirmado
-
-`RISK_CONFIRMED` prevalece sobre operación y movimiento normales. Después, `HUMAN_HANDOFF` produce el estado de derivación.
-
-### S0-011 · error técnico durante riesgo
-
-Un error técnico no rebaja `safety: risk` ni sustituye la ayuda humana por un mensaje genérico de fallo.
-
-### S0-012 · reset
-
-`RESET_SESSION` funciona desde `ready`, `presenting`, `paused`, `awaiting_clarification`, `error` y estados de voz finalizados. Si se prohíbe durante riesgo, el rechazo debe ser explícito y probado.
-
-### S0-013 · evento inválido
-
-Ejemplo: `SPEECH_RESUME` desde `silent`. Debe rechazarse sin mutación o normalizarse con razón documentada.
-
-### S0-014 · determinismo
-
-Mismo estado + mismo evento = mismo resultado estructural.
-
-### S0-015 · estado serializable
-
-`JSON.stringify` y clonación segura no pierden información ni funciones, símbolos o nodos DOM.
-
-## 8. Pruebas estáticas
-
-Deben fallar si:
-
-- aparecen cadenas antiguas fuera de un adaptador de compatibilidad documentado;
-- la máquina importa o usa DOM/almacenamiento/red;
-- falta una constante o capa requerida;
-- una capa adopta un valor no registrado;
-- `sabik-state.js` conserva una segunda fuente de verdad contradictoria.
-
-## 9. Puerta automática S0
-
-Bloqueante:
-
-1. test específico de máquina en verde;
-2. `node tools/test-sabik-page-v7.js` en verde o actualizado únicamente para aceptar el contrato nuevo sin debilitar expectativas;
-3. `python3 scripts/build_site.py` en verde;
-4. cero cambios deliberados en HTML/CSS/panel/datasets;
-5. diff limitado al alcance de #146;
-6. todos los casos S0-001 a S0-015 cubiertos.
-
-Informativo:
-
-- cobertura de ramas de la transición;
-- tamaño del nuevo módulo;
-- lista de adaptadores temporales.
-
-Manual:
-
-- revisión de nombres para evitar inferencias psicológicas;
-- comprobación de que los estados permiten S1/S2/S3 sin combinaciones imposibles;
-- revisión independiente contra #147 y #148 cuando estén disponibles.
-
-## 10. Resultado de revisión
-
-La revisión de PR #161 debe terminar con uno de estos estados:
-
-- `ACEPTADO_S0`: puede comenzar S1;
-- `CAMBIOS_REQUERIDOS`: contrato incompleto o contradictorio;
-- `BLOQUEADO_POR_DECISION`: falta una decisión editorial o de diseño que no debe inventar Codex.
-
-No se utilizará «el build pasa» como equivalente de `ACEPTADO_S0`.
+En la revisión inicial de esta rama, PR #161 solo contiene las instrucciones de alcance y todavía no ofrece una implementación de máquina de estados. Por ello no corresponde emitir un veredicto S0 todavía. La puerta se mantiene **pendiente de implementación**, no aprobada ni fallida.
