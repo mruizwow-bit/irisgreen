@@ -123,6 +123,16 @@
     title.hidden = true;
   }
 
+  // Texto del enlace: la ruta de la ficha, no la URL completa, que rompe la columna.
+  // Cuando el Core exponga source_titles, este enlace mostrará el título de la ficha.
+  function readableSource(url) {
+    try {
+      return new URL(url, location.origin).pathname;
+    } catch (_) {
+      return url;
+    }
+  }
+
   function renderSources(plan) {
     clearSources();
     const list = document.querySelector("#sabik-sources");
@@ -133,7 +143,7 @@
       const item = document.createElement("li");
       const link = document.createElement("a");
       link.href = url;
-      link.textContent = url;
+      link.textContent = readableSource(url);
       item.appendChild(link);
       list.appendChild(item);
     });
@@ -157,8 +167,12 @@
     } else {
       renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.", "respuesta");
     }
-    answer.textContent = window.NEACoreV1.renderControlledText(plan);
-    notice.textContent = [plan.privacy_notice, plan.limits_notice].filter(Boolean).join(" ");
+    // La fuente va abajo como enlace: el texto no la repite en crudo.
+    answer.textContent = window.NEACoreV1.renderControlledText(plan)
+      .replace(/\s*Fuente:\s*\S+\s*$/, "")
+      .trim();
+    // La memoria ya se dice bajo el campo; aquí solo el límite, si lo hay.
+    notice.textContent = plan.limits_notice || "";
     renderSources(plan);
   }
 
@@ -261,13 +275,17 @@
     document.querySelector("#sabik-toggle")?.addEventListener("click", (event) => {
       const button = event.currentTarget;
       const panel = document.querySelector(".sabik-panel");
+      const widgetBody = document.querySelector("#sabik-widget-body");
       const collapsed = !panel.classList.contains("is-collapsed");
       panel.classList.toggle("is-collapsed", collapsed);
+      if (widgetBody) widgetBody.hidden = collapsed;
       document.body.classList.toggle("sabik-panel-collapsed", collapsed);
       button.setAttribute("aria-expanded", String(!collapsed));
       button.textContent = collapsed ? "Mostrar" : "Ocultar";
       applySabikVisual(state.session && state.session.sabik_state, collapsed ? "pausa" : "espera");
-      setStatus(collapsed ? "Sabik queda oculto. Iris Green sigue disponible." : "Estoy aquí si quieres ayuda.");
+      // Plegado, el estado vive en la cabecera: es lo único que queda visible.
+      text("#sabik-state-label", collapsed ? "Oculto" : "Disponible");
+      if (!collapsed) setStatus("Estoy aquí si quieres ayuda.");
     });
   }
 
