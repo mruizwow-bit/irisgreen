@@ -437,6 +437,12 @@ body.sabik-panel-collapsed .sabik-hero {
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: 1;
   --sabik-avatar-brightness: 1;
+  --sabik-base-motion: running;
+  --sabik-base-pulse-speed: 6.8s;
+  --sabik-wave-motion: running;
+  --sabik-wave-speed: 4.8s;
+  --sabik-wave-opacity: .44;
+  --sabik-core-wave-opacity: .34;
   position: relative;
   isolation: isolate;
   overflow: visible;
@@ -456,6 +462,49 @@ body.sabik-panel-collapsed .sabik-hero {
   display: block;
   object-fit: contain;
   filter: brightness(var(--sabik-avatar-brightness)) saturate(1.02);
+  animation: sabikAvatarBreath var(--sabik-base-pulse-speed) ease-in-out infinite;
+  animation-play-state: var(--sabik-base-motion);
+  transform-origin: 50% 50%;
+  transition: filter 520ms ease, opacity 520ms ease, transform 520ms ease;
+}
+
+.sabik-layered-avatar::before,
+.sabik-layered-avatar::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 999px;
+  transform-origin: 50% 50%;
+  mix-blend-mode: screen;
+}
+
+.sabik-layered-avatar::before {
+  z-index: 4;
+  inset: 30%;
+  background:
+    repeating-radial-gradient(circle,
+      rgba(255, 255, 255, 0) 0 18%,
+      rgba(255, 255, 255, calc(var(--sabik-core-wave-opacity) * .78)) 19% 20%,
+      rgba(126, 221, 255, calc(var(--sabik-core-wave-opacity) * .7)) 21% 22%,
+      rgba(255, 255, 255, 0) 24% 31%);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, calc(var(--sabik-core-wave-opacity) * .55)),
+    0 0 34px rgba(98, 204, 255, calc(var(--sabik-core-wave-opacity) * .45));
+  opacity: var(--sabik-core-wave-opacity);
+  animation: sabikVoiceRipple var(--sabik-wave-speed) ease-in-out infinite;
+  animation-play-state: var(--sabik-wave-motion);
+}
+
+.sabik-layered-avatar::after {
+  z-index: 0;
+  inset: 5%;
+  border: 1px solid rgba(155, 143, 255, calc(var(--sabik-wave-opacity) * .55));
+  box-shadow:
+    0 0 26px rgba(111, 95, 192, calc(var(--sabik-wave-opacity) * .22)),
+    inset 0 0 32px rgba(106, 210, 255, calc(var(--sabik-wave-opacity) * .22));
+  opacity: var(--sabik-wave-opacity);
+  animation: sabikPresenceWave calc(var(--sabik-wave-speed) * 1.28) ease-in-out infinite;
+  animation-play-state: var(--sabik-wave-motion);
 }
 
 .sabik-back,
@@ -532,6 +581,54 @@ body.sabik-panel-collapsed .sabik-hero {
 @keyframes sabikMeasuredPrecession {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes sabikAvatarBreath {
+  0%,
+  100% {
+    transform: scale(.992);
+    opacity: .94;
+  }
+
+  46% {
+    transform: scale(1.018);
+    opacity: 1;
+  }
+}
+
+@keyframes sabikVoiceRipple {
+  0% {
+    transform: scale(.82);
+    opacity: calc(var(--sabik-core-wave-opacity) * .42);
+  }
+
+  36% {
+    transform: scale(1.08);
+    opacity: var(--sabik-core-wave-opacity);
+  }
+
+  72% {
+    transform: scale(1.28);
+    opacity: calc(var(--sabik-core-wave-opacity) * .2);
+  }
+
+  100% {
+    transform: scale(.82);
+    opacity: calc(var(--sabik-core-wave-opacity) * .42);
+  }
+}
+
+@keyframes sabikPresenceWave {
+  0%,
+  100% {
+    transform: scale(.96) rotate(-2deg);
+    opacity: calc(var(--sabik-wave-opacity) * .42);
+  }
+
+  50% {
+    transform: scale(1.035) rotate(2deg);
+    opacity: var(--sabik-wave-opacity);
   }
 }
 
@@ -614,6 +711,9 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-layered-avatar[data-cognitive-state="Hiperfoco"] {
   --sabik-layer-speed: 64s;
+  --sabik-base-pulse-speed: 5.2s;
+  --sabik-wave-speed: 3.8s;
+  --sabik-wave-opacity: .52;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: .96;
@@ -621,7 +721,11 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-layered-avatar[data-cognitive-state="Sobrecarga"] {
-  --sabik-layer-speed: 300s;
+  --sabik-layer-speed: 180s;
+  --sabik-base-pulse-speed: 10s;
+  --sabik-wave-speed: 10s;
+  --sabik-wave-opacity: .14;
+  --sabik-core-wave-opacity: .12;
   --sabik-ring-opacity-layer: .6;
   --sabik-ring-front-opacity: .6;
   --sabik-dot-opacity-layer: 0;
@@ -630,6 +734,9 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-layered-avatar[data-cognitive-state="Vinculo"] {
   --sabik-layer-speed: 200s;
+  --sabik-base-pulse-speed: 6s;
+  --sabik-wave-speed: 4.2s;
+  --sabik-wave-opacity: .5;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: .8;
@@ -637,7 +744,10 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-layered-avatar[data-cognitive-state="VozInterior"] {
-  --sabik-layer-speed: 300s;
+  --sabik-layer-speed: 180s;
+  --sabik-base-pulse-speed: 8.8s;
+  --sabik-wave-speed: 8s;
+  --sabik-wave-opacity: .22;
   --sabik-ring-opacity-layer: .7;
   --sabik-ring-front-opacity: .7;
   --sabik-dot-opacity-layer: .35;
@@ -647,6 +757,9 @@ body.sabik-panel-collapsed .sabik-hero {
 .sabik-layered-avatar[data-cognitive-state="Creatividad"] {
   --sabik-layer-speed: 120s;
   --sabik-layer-direction: reverse;
+  --sabik-base-pulse-speed: 5.4s;
+  --sabik-wave-speed: 3.4s;
+  --sabik-wave-opacity: .56;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: .98;
@@ -655,6 +768,10 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-layered-avatar[data-interaction-state="procesando"] {
   --sabik-layer-speed: 30s;
+  --sabik-base-pulse-speed: 3.2s;
+  --sabik-wave-speed: 1.9s;
+  --sabik-wave-opacity: .72;
+  --sabik-core-wave-opacity: .64;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: 1;
@@ -663,6 +780,9 @@ body.sabik-panel-collapsed .sabik-hero {
 .sabik-layered-avatar[data-interaction-state="correccion"] {
   --sabik-layer-speed: 110s;
   --sabik-layer-direction: reverse;
+  --sabik-base-pulse-speed: 5.8s;
+  --sabik-wave-speed: 2.8s;
+  --sabik-wave-opacity: .5;
   --sabik-ring-opacity-layer: .88;
   --sabik-ring-front-opacity: .88;
   --sabik-dot-opacity-layer: .72;
@@ -670,9 +790,10 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-layered-avatar[data-interaction-state="pausa"],
 .sabik-layered-avatar[data-protection-state="riesgo"],
-.sabik-layered-avatar[data-low-intensity="true"],
 .sabik-panel.is-collapsed .sabik-layered-avatar {
   --sabik-layer-motion: paused;
+  --sabik-base-motion: paused;
+  --sabik-wave-motion: paused;
   --sabik-layer-speed: 300s;
   --sabik-ring-opacity-layer: .5;
   --sabik-ring-front-opacity: .5;
@@ -681,10 +802,37 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-layered-avatar[data-low-intensity="true"] {
+  --sabik-layer-motion: running;
+  --sabik-base-motion: running;
+  --sabik-wave-motion: running;
+  --sabik-layer-speed: 180s;
+  --sabik-base-pulse-speed: 10s;
+  --sabik-wave-speed: 9s;
   --sabik-ring-opacity-layer: .35;
   --sabik-ring-front-opacity: .35;
   --sabik-dot-opacity-layer: 0;
   --sabik-avatar-brightness: .94;
+  --sabik-wave-opacity: .16;
+  --sabik-core-wave-opacity: .16;
+}
+
+.sabik-layered-avatar[data-interaction-state="pausa"] {
+  --sabik-avatar-brightness: .82;
+  --sabik-wave-opacity: .08;
+  --sabik-core-wave-opacity: .07;
+}
+
+.sabik-layered-avatar[data-protection-state="riesgo"] {
+  --sabik-avatar-brightness: .86;
+  --sabik-wave-opacity: .1;
+  --sabik-core-wave-opacity: .1;
+}
+
+.sabik-layered-avatar[data-interaction-state="pausa"] .sabik-avatar-base,
+.sabik-panel.is-collapsed .sabik-avatar-base {
+  opacity: .62;
+  filter: brightness(.82) saturate(.7);
+  transform: scale(.965);
 }
 
 @keyframes sabikOrbitClock {

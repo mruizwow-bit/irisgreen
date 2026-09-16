@@ -337,17 +337,24 @@ async function run() {
   );
 
   assert(
-    "V7-027 resting orbital motion remains perceptible",
+    "V7-027 Sabik has living motion and voice waves",
     css.includes("--sabik-layer-speed: 96s;") &&
+      css.includes("sabikAvatarBreath") &&
+      css.includes("sabikVoiceRipple") &&
+      css.includes("sabikPresenceWave") &&
       css.includes('[data-cognitive-state="Hiperfoco"]') &&
       css.includes("--sabik-layer-speed: 64s;") &&
       css.includes('[data-interaction-state="procesando"]') &&
       css.includes("--sabik-layer-speed: 30s;") &&
+      css.includes("--sabik-wave-speed: 1.9s;") &&
       css.includes('[data-interaction-state="pausa"],') &&
       css.includes('[data-protection-state="riesgo"],') &&
-      css.includes('[data-low-intensity="true"],') &&
-      css.includes("--sabik-layer-motion: paused;"),
-    "base motion must be visible while pause, risk, overload and low intensity can still stop it"
+      css.includes("--sabik-layer-motion: paused;") &&
+      css.includes('[data-low-intensity="true"]') &&
+      css.includes("--sabik-layer-speed: 180s;") &&
+      css.includes("--sabik-base-pulse-speed: 10s;") &&
+      css.includes("--sabik-wave-opacity: .16;"),
+    "base motion and voice waves must be visible; low intensity softens instead of killing Sabik"
   );
 
   const failures = results.filter((item) => !item.ok);
