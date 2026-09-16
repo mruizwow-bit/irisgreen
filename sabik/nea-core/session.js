@@ -19,7 +19,8 @@
       session_preferences: {
         response_length: "normal",
         max_options: 3,
-        question_threshold: "normal"
+        question_threshold: "normal",
+        low_intensity: false
       },
       cognitive_state: COGNITIVE_STATES.NUCLEO_BASE,
       sabik_state: defaultSabikState(),

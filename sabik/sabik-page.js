@@ -205,8 +205,7 @@
     document.querySelector("#sabik-low")?.addEventListener("click", () => {
       if (!state.coreReady) return;
       state.session = window.NEACoreV1.setSessionPreferences(state.session, {
-        response_length: "short",
-        max_options: 1
+        low_intensity: true
       });
       renderSabikState(state.session.sabik_state, "Baja intensidad activada.");
     });

@@ -28,7 +28,7 @@
 
   function sabikStateFromLayers(cognitiveState, riskState, preferences) {
     const isRisk = riskState !== "normal";
-    const isLowDemand = cognitiveState === COGNITIVE_STATES.SOBRECARGA || preferences.response_length === "short";
+    const isLowDemand = cognitiveState === COGNITIVE_STATES.SOBRECARGA || preferences.low_intensity === true;
     const state = defaultSabikState();
     state.cognitive_state = cognitiveState;
     state.functional_state = isRisk ? FUNCTIONAL_STATES.LISTENING : FUNCTIONAL_STATES.AVAILABLE;

@@ -114,6 +114,9 @@ async function run() {
 
   const baseSession = window.NEACoreV1.createSessionState();
   const lowSession = window.NEACoreV1.setSessionPreferences(baseSession, {
+    low_intensity: true
+  });
+  const shortSession = window.NEACoreV1.setSessionPreferences(baseSession, {
     response_length: "short",
     max_options: 1
   });
@@ -123,20 +126,27 @@ async function run() {
       lowSession.sabik_state.low_intensity === true,
     `cognitive_state=${lowSession.cognitive_state}`
   );
+  assert(
+    "V7-005 shorter preference does not lower Sabik presence",
+    shortSession.cognitive_state === baseSession.cognitive_state &&
+      shortSession.sabik_state.low_intensity === false &&
+      shortSession.sabik_state.visual_presence === baseSession.sabik_state.visual_presence,
+    `short_presence=${shortSession.sabik_state.visual_presence} low=${shortSession.sabik_state.low_intensity}`
+  );
 
   const normalInfo = window.NEACoreV1.buildResponsePlan("Que es el autismo?", baseSession, data).plan;
-  const shortInfo = window.NEACoreV1.buildResponsePlan("Que es el autismo?", lowSession, data).plan;
+  const shortInfo = window.NEACoreV1.buildResponsePlan("Que es el autismo?", shortSession, data).plan;
   const normalText = window.NEACoreV1.renderControlledText(normalInfo);
   const shortText = window.NEACoreV1.renderControlledText(shortInfo);
   assert(
-    "V7-005 shorter changes length, not source route",
+    "V7-006 shorter changes length, not source route",
     paragraphCount(shortText) <= paragraphCount(normalText) &&
       normalInfo.source_urls[0] === shortInfo.source_urls[0],
     `normal=${paragraphCount(normalText)} short=${paragraphCount(shortText)}`
   );
 
   assert(
-    "V7-006 Parar clears interaction and keeps page usable",
+    "V7-007 Parar clears interaction and keeps page usable",
     pageJs.includes("state.session = window.NEACoreV1.createSessionState();") &&
       pageJs.includes("output.hidden = true;") &&
       !/(localStorage|sessionStorage|indexedDB|document\.cookie)/u.test(pageJs),
@@ -145,7 +155,7 @@ async function run() {
 
   const correction = window.NEACoreV1.buildResponsePlan("No es el ruido, es decidir demasiadas cosas", baseSession, data).plan;
   assert(
-    "V7-007 explicit correction vetoes the corrected route",
+    "V7-008 explicit correction vetoes the corrected route",
     correction.type === "correction_acknowledged" &&
       correction.vetoed_concepts.includes("ruido") &&
       !correction.concepts_used.includes("ruido"),
@@ -154,7 +164,7 @@ async function run() {
 
   const risk = window.NEACoreV1.buildResponsePlan("Tengo pensamientos suicidas", baseSession, data).plan;
   assert(
-    "V7-008 risk replaces ordinary retrieval with accompaniment",
+    "V7-009 risk replaces ordinary retrieval with accompaniment",
     risk.type === "risk_accompaniment" &&
       risk.normal_flow_disabled === true &&
       risk.communication_open === true &&
@@ -164,7 +174,7 @@ async function run() {
   );
 
   assert(
-    "V7-009 rendered sources match approved evidence",
+    "V7-010 rendered sources match approved evidence",
     normalInfo.evidence.length > 0 &&
       normalInfo.source_urls.length > 0 &&
       normalInfo.evidence.every((item) => normalInfo.source_urls.includes(item.source_url)) &&
@@ -173,7 +183,7 @@ async function run() {
   );
 
   assert(
-    "V7-010 Sabik can be hidden while Iris Green remains available",
+    "V7-011 Sabik can be hidden while Iris Green remains available",
     html.includes("id=\"sabik-toggle\"") &&
       html.includes("aria-controls=\"sabik-widget-body\"") &&
       html.includes("class=\"sabik-panel\"") &&
@@ -185,7 +195,7 @@ async function run() {
   );
 
   assert(
-    "V7-011 Sabik uses layered 2D/2.5D assets, not Meshy GLB",
+    "V7-012 Sabik uses layered 2D/2.5D assets, not Meshy GLB",
     html.includes("id=\"sabik-hologram\"") &&
       html.includes("src=\"/sabik/assets/sabik-base-640.webp\"") &&
       html.includes("class=\"sabik-back\"") &&
@@ -200,7 +210,7 @@ async function run() {
   );
 
   assert(
-    "V7-012 Sabik does not embed SVG layers as img files",
+    "V7-013 Sabik does not embed SVG layers as img files",
     html.includes("class=\"sabik-back\"") &&
       html.includes("class=\"sabik-front\"") &&
       !/<img[^>]+\.svg/u.test(html),
@@ -208,13 +218,13 @@ async function run() {
   );
 
   assert(
-    "V7-013 Sabik exposes all measured ring ids",
+    "V7-014 Sabik exposes all measured ring ids",
     Array.from({ length: 12 }, (_, index) => `id=\"ring-${index + 1}\"`).every((id) => html.includes(id)),
     "ring-1 through ring-12 must exist in the inline SVG"
   );
 
   assert(
-    "V7-014 Sabik keeps one base raster across states",
+    "V7-015 Sabik keeps one base raster across states",
     html.includes("src=\"/sabik/assets/sabik-base-640.webp\"") &&
       !/sabik-hologram[\s\S]{0,300}\.src\s*=/u.test(pageJs) &&
       !pageJs.includes("setAttribute(\"src\"") &&
@@ -223,7 +233,7 @@ async function run() {
   );
 
   assert(
-    "V7-015 reduced motion stops measured orbit groups",
+    "V7-016 reduced motion stops measured orbit groups",
     css.includes("@media (prefers-reduced-motion: reduce)") &&
       css.includes("#rings-back") &&
       css.includes("#rings-front") &&
@@ -232,7 +242,7 @@ async function run() {
   );
 
   assert(
-    "V7-016 cognitive states map to visual parameters",
+    "V7-017 cognitive states map to visual parameters",
     css.includes('[data-cognitive-state="NucleoBase"]') &&
       css.includes('[data-cognitive-state="Hiperfoco"]') &&
       css.includes('[data-cognitive-state="Sobrecarga"]') &&
@@ -245,7 +255,7 @@ async function run() {
   );
 
   assert(
-    "V7-017 low intensity is a modifier and keeps cognitive state",
+    "V7-018 low intensity is a modifier and keeps cognitive state",
     lowSession.cognitive_state === baseSession.cognitive_state &&
       lowSession.sabik_state.low_intensity === true &&
       css.includes('[data-low-intensity="true"]'),
@@ -253,7 +263,7 @@ async function run() {
   );
 
   assert(
-    "V7-018 processing and pause are functional visual states",
+    "V7-019 processing and pause are functional visual states",
     pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
       pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
       css.includes('[data-interaction-state="procesando"]') &&
@@ -262,7 +272,7 @@ async function run() {
   );
 
   assert(
-    "V7-019 risk visual is stable, not alarm red",
+    "V7-020 risk visual is stable, not alarm red",
     css.includes('[data-protection-state="riesgo"]') &&
       !/sabik-hologram[\s\S]{0,400}#(?:f00|ff0000|8f1d1d|d00)/iu.test(css) &&
       !css.includes("blink") &&
@@ -271,7 +281,7 @@ async function run() {
   );
 
   assert(
-    "V7-020 reduced motion removes continuous orbital movement",
+    "V7-021 reduced motion removes continuous orbital movement",
     css.includes("@media (prefers-reduced-motion: reduce)") &&
       css.includes(".sabik-hologram *") &&
       css.includes("animation: none !important"),
@@ -279,10 +289,27 @@ async function run() {
   );
 
   assert(
-    "V7-021 Sabik ignores passive behavioral signals",
+    "V7-022 Sabik ignores passive behavioral signals",
     !/addEventListener\(\s*["'](?:keydown|keyup|input|beforeinput|composition|scroll|mousemove|pointermove|touchmove|visibilitychange|deviceorientation)["']/u.test(pageJs) &&
       !/(getUserMedia|SpeechRecognition|webkitSpeechRecognition)/u.test(pageJs),
     "visual changes may only come from Core state, explicit buttons/forms, or functional interaction"
+  );
+
+  const shortPreferenceOnly = window.NEACoreV1.buildResponsePlan("Quiero informacion corta sobre apoyos", lowSession, data);
+  const tooManyOptions = window.NEACoreV1.buildResponsePlan("Hay demasiadas opciones aqui", baseSession, data);
+  assert(
+    "V7-023 preferences and loose words do not infer Sobrecarga",
+    shortPreferenceOnly.session.cognitive_state === baseSession.cognitive_state &&
+      tooManyOptions.session.cognitive_state === baseSession.cognitive_state,
+    `short=${shortPreferenceOnly.session.cognitive_state} loose=${tooManyOptions.session.cognitive_state}`
+  );
+
+  assert(
+    "V7-024 Sabik preview page is noindex until approved for publication",
+    html.includes('name="robots"') &&
+      html.includes('content="noindex,follow"') &&
+      !html.includes('content="index,follow"'),
+    "the preview page must not be indexable while Sabik remains under review"
   );
 
   const failures = results.filter((item) => !item.ok);

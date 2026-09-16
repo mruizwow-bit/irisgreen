@@ -60,10 +60,7 @@
     if (
       normalized.includes("no puedo pensar") ||
       normalized.includes("estoy saturad") ||
-      normalized.includes("sobrecarga") ||
-      normalized.includes("demasiado") ||
-      preferences.response_length === "short" ||
-      preferences.max_options === 1
+      normalized.includes("sobrecarga")
     ) {
       return COGNITIVE_STATES.SOBRECARGA;
     }
