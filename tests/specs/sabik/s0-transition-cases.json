@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "purpose": "Casos canónicos y bloqueantes para la máquina de estados de Sabik S0",
+  "source_issue": 149,
+  "implementation_issue": 146,
+  "rules": {
+    "pure_transition": true,
+    "no_dom": true,
+    "no_storage": true,
+    "no_network": true,
+    "no_persistence": true,
+    "visibility_does_not_change_pause": true,
+    "speech_is_independent_from_motion": true,
+    "technical_error_is_not_insufficient_information": true
+  },
+  "cases": [
+    {
+      "id": "S0-001",
+      "name": "arranque correcto",
+      "initial": {"operation": "booting"},
+      "events": [{"type": "BOOT_OK"}],
+      "expect": {"operation": "ready"}
+    },
+    {
+      "id": "S0-002",
+      "name": "respuesta normal",
+      "initial": {"operation": "ready", "dialogue": "none"},
+      "events": [
+        {"type": "SUBMIT"},
+        {"type": "RETRIEVAL_OK"},
+        {"type": "RESPONSE_READY", "dialogue": "information"}
+      ],
+      "expect": {"operation": "presenting", "dialogue": "information"}
+    },
+    {
+      "id": "S0-003",
+      "name": "recuperación vacía es insuficiencia editorial",
+      "initial": {"operation": "ready", "dialogue": "none"},
+      "events": [
+        {"type": "SUBMIT"},
+        {"type": "RETRIEVAL_EMPTY"}
+      ],
+      "expect": {"operation": "presenting", "dialogue": "insufficient"}
+    },
+    {
+      "id": "S0-004",
+      "name": "pausa sobrevive a plegar y desplegar",
+      "initial": {"operation": "presenting", "visibility": "expanded"},
+      "events": [
+        {"type": "PAUSE_ASSISTANT"},
+        {"type": "COLLAPSE"},
+        {"type": "EXPAND"}
+      ],
+      "expect": {"operation": "paused", "visibility": "expanded"}
+    },
+    {
+      "id": "S0-005",
+      "name": "pausa no reinicia adaptación ni idioma",
+      "initial": {
+        "operation": "presenting",
+        "language": "es",
+        "adaptation": {
+          "response_length": "short",
+          "max_options": 1,
+          "question_policy": "high",
+          "intensity": "low",
+          "depth": "normal"
+        }
+      },
+      "events": [
+        {"type": "PAUSE_ASSISTANT"},
+        {"type": "RESUME_ASSISTANT"}
+      ],
+      "expect_preserved": ["language", "adaptation"]
+    },
+    {
+      "id": "S0-006",
+      "name": "ciclo de voz completo",
+      "initial": {"operation": "presenting", "speech": "silent"},
+      "events": [
+        {"type": "SPEECH_START"},
+        {"type": "SPEECH_BOUNDARY", "char_index": 10},
+        {"type": "SPEECH_PAUSE"},
+        {"type": "SPEECH_RESUME"},
+        {"type": "SPEECH_END"}
+      ],
+      "expect": {"operation": "presenting", "speech": "ended"}
+    },
+    {
+      "id": "S0-007",
+      "name": "voz permitida con movimiento apagado",
+      "initial": {"operation": "presenting", "speech": "silent", "motion": "off"},
+      "events": [{"type": "SPEECH_START", "reduced_motion": true}],
+      "expect": {"speech": "speaking", "motion": "off"}
+    },
+    {
+      "id": "S0-008",
+      "name": "error de voz conserva respuesta",
+      "initial": {"operation": "presenting", "dialogue": "information", "speech": "speaking"},
+      "events": [{"type": "SPEECH_ERROR", "code": "voice-unavailable"}],
+      "expect": {"operation": "presenting", "dialogue": "information", "speech": "error"}
+    },
+    {
+      "id": "S0-009",
+      "name": "riesgo incierto pide aclaración",
+      "initial": {"operation": "ready", "safety": "normal", "dialogue": "none"},
+      "events": [{"type": "RISK_UNCERTAIN"}],
+      "expect": {"operation": "awaiting_clarification", "safety": "uncertain", "dialogue": "clarification"}
+    },
+    {
+      "id": "S0-010",
+      "name": "riesgo confirmado conduce a ayuda humana",
+      "initial": {"operation": "ready", "safety": "normal", "motion": "ambient"},
+      "events": [
+        {"type": "RISK_CONFIRMED"},
+        {"type": "HUMAN_HANDOFF"}
+      ],
+      "expect": {"safety": "human_handoff", "dialogue": "human_handoff", "motion": "protection_static"}
+    },
+    {
+      "id": "S0-011",
+      "name": "error técnico no rebaja riesgo",
+      "initial": {"operation": "presenting", "safety": "risk", "dialogue": "human_handoff"},
+      "events": [{"type": "TECHNICAL_ERROR", "code": "resource-load"}],
+      "expect": {"operation": "error", "safety": "risk", "dialogue": "human_handoff"}
+    },
+    {
+      "id": "S0-012",
+      "name": "reset explícito desde pausa",
+      "initial": {
+        "operation": "paused",
+        "dialogue": "information",
+        "speech": "ended",
+        "visibility": "expanded",
+        "language": "es"
+      },
+      "events": [{"type": "RESET_SESSION"}],
+      "expect": {
+        "operation": "ready",
+        "dialogue": "none",
+        "speech": "silent",
+        "visibility": "expanded",
+        "language": "es"
+      }
+    },
+    {
+      "id": "S0-013",
+      "name": "evento de voz inválido no muta",
+      "initial": {"operation": "ready", "speech": "silent"},
+      "events": [{"type": "SPEECH_RESUME"}],
+      "expect_rejected": true,
+      "expect_unchanged": true
+    },
+    {
+      "id": "S0-014",
+      "name": "determinismo",
+      "initial": {"operation": "ready", "visibility": "expanded"},
+      "events": [{"type": "COLLAPSE"}],
+      "expect_same_result_on_repeat": true
+    },
+    {
+      "id": "S0-015",
+      "name": "estado serializable",
+      "initial": {
+        "operation": "ready",
+        "dialogue": "none",
+        "adaptation": {
+          "response_length": "normal",
+          "max_options": 3,
+          "question_policy": "normal",
+          "intensity": "normal",
+          "depth": "normal"
+        },
+        "safety": "normal",
+        "visibility": "expanded",
+        "speech": "silent",
+        "motion": "ambient",
+        "language": "es",
+        "revision": 0
+      },
+      "events": [],
+      "expect_json_round_trip": true,
+      "forbidden_value_types": ["function", "symbol", "dom-node"]
+    }
+  ]
+}
