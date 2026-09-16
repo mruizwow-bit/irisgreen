@@ -1,361 +1,53 @@
 {
-  "schema_version": 1,
-  "revision": "B06-B07-FROZEN-2026-09-16",
-  "status": "NORMATIVE_FROZEN",
-  "source_issue": 149,
-  "implementation_pr": 161,
-  "semantics_pr": 162,
-  "design_pr": 163,
-  "extends": "tests/specs/sabik/s0-state-contract.json",
-  "freeze_rule": "Codex debe programar contra el SHA de PR #164 que publique esta adenda. Durante el siguiente ciclo no se cambiarán valores ni eventos salvo defecto de seguridad crítico documentado.",
-  "canonical_public_shape": {
-    "required": {
-      "operation": "scalar",
-      "dialogue": "scalar",
-      "adaptation": "complete_object",
-      "safety": "scalar",
-      "visibility": "scalar",
-      "speech": "scalar",
-      "motion": "scalar",
-      "language": "scalar",
-      "revision": "integer"
-    },
-    "optional_metadata": {
-      "speech_meta": "object",
-      "motion_meta": "object"
-    },
-    "rule": "speech_meta, motion_meta o deriveSabikPresentation() pueden contener energía, límites o razón de finalización, pero nunca sustituyen speech o motion escalares."
-  },
-  "revision_policy": {
-    "allowed_transition": "next.revision = previous.revision + 1",
-    "rejected_transition": "revision y estado completos permanecen sin cambios"
-  },
-  "session_context_policy": "El contexto conversacional no vive dentro de la máquina S0. SUBMIT tras una aclaración conserva ese contexto en la capa de sesión/controlador; S0 no debe representarlo como reset ni como nueva sesión desligada.",
-  "security_resolution_policy": {
-    "submit_while_uncertain": "SUBMIT registra la respuesta a la aclaración pero mantiene safety=uncertain y operation=awaiting_clarification hasta un evento de resolución explícito.",
-    "RISK_CONFIRMED": "Solo resolución explícita de riesgo hacia protección: safety=risk, dialogue=human_handoff, motion=protection_static.",
-    "RISK_CLEARED": "Solo resolución explícita de una aclaración de seguridad desde safety=uncertain; vuelve a safety=normal y reanuda flujo ordinario controlado. No es reset genérico."
-  },
-  "speech_semantics": {
-    "SPEECH_REQUEST": "La persona pulsa Escuchar: speech=starting, energía lógica 0, sin onda de voz.",
-    "SPEECH_START": "Evento real speechSynthesis.onstart: speech=speaking y motion=voice_reactive, salvo movimiento reducido.",
-    "SPEECH_BOUNDARY": "Actualiza una voz ya iniciada. Nunca convierte starting en speaking.",
-    "SPEECH_PAUSE": "speech=paused y motion=off.",
-    "SPEECH_RESUME": "speech=speaking y motion=voice_reactive, o off con movimiento reducido.",
-    "SPEECH_STOP": "speech=ended y motion=ambient, o off con movimiento reducido.",
-    "SPEECH_END": "speech=ended y motion=ambient, o off con movimiento reducido.",
-    "SPEECH_ERROR": "speech=error y motion=off.",
-    "safety_rule": "Con safety=risk o safety=human_handoff, la voz ordinaria no puede solicitarse ni iniciarse y motion permanece protection_static."
-  },
-  "rows": [
-    {
-      "id": "B06-SUBMIT-AFTER-CLARIFICATION",
-      "previous_state": {"operation":"awaiting_clarification","dialogue":"clarification","safety":"normal"},
-      "event": "SUBMIT",
-      "payload": {},
-      "expected_state": {"operation":"retrieving","dialogue":"clarification","safety":"normal"},
-      "allowed": true,
-      "preserve": ["adaptation","language","visibility"],
-      "revision": "increment_one",
-      "session": "preserve_external_context",
-      "note": "La respuesta a una aclaración continúa el mismo contexto; no se convierte en una consulta desligada."
-    },
-    {
-      "id": "B07-SUBMIT-SAFETY-UNCERTAIN",
-      "previous_state": {"operation":"awaiting_clarification","dialogue":"clarification","safety":"uncertain"},
-      "event": "SUBMIT",
-      "payload": {},
-      "expected_state": {"operation":"awaiting_clarification","dialogue":"clarification","safety":"uncertain","speech":"silent","motion":"protection_static"},
-      "allowed": true,
-      "preserve": ["adaptation","language","visibility"],
-      "revision": "increment_one",
-      "session": "preserve_external_context",
-      "note": "SUBMIT por sí solo no resuelve ni rebaja una aclaración de seguridad."
-    },
-    {
-      "id": "B07-RISK-CONFIRMED-FROM-UNCERTAIN",
-      "previous_state": {"operation":"awaiting_clarification","dialogue":"clarification","safety":"uncertain"},
-      "event": "RISK_CONFIRMED",
-      "payload": {},
-      "expected_state": {"operation":"presenting","dialogue":"human_handoff","safety":"risk","speech":"silent","motion":"protection_static"},
-      "allowed": true,
-      "preserve": ["adaptation","language","visibility"],
-      "revision": "increment_one",
-      "session": "preserved",
-      "note": "La confirmación explícita de riesgo sustituye el flujo ordinario por protección y ayuda humana."
-    },
-    {
-      "id": "B07-RISK-CLEARED-FROM-UNCERTAIN",
-      "previous_state": {"operation":"awaiting_clarification","dialogue":"clarification","safety":"uncertain"},
-      "event": "RISK_CLEARED",
-      "payload": {},
-      "expected_state": {"operation":"retrieving","dialogue":"clarification","safety":"normal","speech":"silent","motion":"processing"},
-      "allowed": true,
-      "preserve": ["adaptation","language","visibility"],
-      "revision": "increment_one",
-      "session": "preserve_external_context",
-      "note": "La aclaración de seguridad queda resuelta y la respuesta ya enviada continúa hacia recuperación ordinaria."
-    },
-    {
-      "id": "B07-RISK-CLEARED-FROM-NORMAL-FORBIDDEN",
-      "previous_state": {"safety":"normal"},
-      "event": "RISK_CLEARED",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged",
-      "note": "RISK_CLEARED no es un reset genérico."
-    },
-    {
-      "id": "B07-RISK-CLEARED-FROM-RISK-FORBIDDEN",
-      "previous_state": {"safety":"risk"},
-      "event": "RISK_CLEARED",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged",
-      "note": "Un riesgo confirmado no se rebaja mediante RISK_CLEARED."
-    },
-    {
-      "id": "B07-RISK-CLEARED-FROM-HANDOFF-FORBIDDEN",
-      "previous_state": {"safety":"human_handoff"},
-      "event": "RISK_CLEARED",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged",
-      "note": "Una derivación humana confirmada no se revierte mediante RISK_CLEARED."
-    },
-    {
-      "id": "VOICE-SPEECH-REQUEST",
-      "previous_state": {"operation":"presenting","safety":"normal","speech":"silent","motion":"ambient"},
-      "event": "SPEECH_REQUEST",
-      "payload": {},
-      "expected_state": {"speech":"starting","motion":"ambient"},
-      "allowed": true,
-      "preserve": ["operation","dialogue","adaptation","safety","visibility","language"],
-      "revision": "increment_one",
-      "meta_expectation": {"speech_energy":0,"voice_wave":false},
-      "note": "El clic no significa que haya empezado a sonar audio."
-    },
-    {
-      "id": "VOICE-SPEECH-REQUEST-REDUCED",
-      "previous_state": {"operation":"presenting","safety":"normal","speech":"silent","motion":"off"},
-      "event": "SPEECH_REQUEST",
-      "payload": {"reduced_motion":true},
-      "expected_state": {"speech":"starting","motion":"off"},
-      "allowed": true,
-      "preserve": ["operation","dialogue","adaptation","safety","visibility","language"],
-      "revision": "increment_one",
-      "meta_expectation": {"speech_energy":0,"voice_wave":false}
-    },
-    {
-      "id": "VOICE-SPEECH-START",
-      "previous_state": {"operation":"presenting","safety":"normal","speech":"starting","motion":"ambient"},
-      "event": "SPEECH_START",
-      "payload": {},
-      "expected_state": {"speech":"speaking","motion":"voice_reactive"},
-      "allowed": true,
-      "preserve": ["operation","dialogue","adaptation","safety","visibility","language"],
-      "revision": "increment_one",
-      "note": "Solo speechSynthesis.onstart activa la voz real y la onda."
-    },
-    {
-      "id": "VOICE-SPEECH-START-REDUCED",
-      "previous_state": {"operation":"presenting","safety":"normal","speech":"starting","motion":"off"},
-      "event": "SPEECH_START",
-      "payload": {"reduced_motion":true},
-      "expected_state": {"speech":"speaking","motion":"off"},
-      "allowed": true,
-      "preserve": ["operation","dialogue","adaptation","safety","visibility","language"],
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-BOUNDARY-WHILE-SPEAKING",
-      "previous_state": {"speech":"speaking","motion":"voice_reactive","safety":"normal"},
-      "event": "SPEECH_BOUNDARY",
-      "payload": {"char_index":10},
-      "expected_state": {"speech":"speaking","motion":"voice_reactive"},
-      "allowed": true,
-      "preserve": ["operation","dialogue","adaptation","safety","visibility","language"],
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-BOUNDARY-FROM-STARTING-FORBIDDEN",
-      "previous_state": {"speech":"starting","safety":"normal"},
-      "event": "SPEECH_BOUNDARY",
-      "payload": {"char_index":0},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged",
-      "note": "BOUNDARY nunca sustituye a SPEECH_START."
-    },
-    {
-      "id": "VOICE-SPEECH-PAUSE",
-      "previous_state": {"speech":"speaking","safety":"normal"},
-      "event": "SPEECH_PAUSE",
-      "payload": {},
-      "expected_state": {"speech":"paused","motion":"off"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-RESUME",
-      "previous_state": {"speech":"paused","motion":"off","safety":"normal"},
-      "event": "SPEECH_RESUME",
-      "payload": {"reduced_motion":false},
-      "expected_state": {"speech":"speaking","motion":"voice_reactive"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-RESUME-REDUCED",
-      "previous_state": {"speech":"paused","motion":"off","safety":"normal"},
-      "event": "SPEECH_RESUME",
-      "payload": {"reduced_motion":true},
-      "expected_state": {"speech":"speaking","motion":"off"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-STOP",
-      "previous_state": {"speech":"speaking","motion":"voice_reactive","safety":"normal"},
-      "event": "SPEECH_STOP",
-      "payload": {"reduced_motion":false},
-      "expected_state": {"speech":"ended","motion":"ambient"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-STOP-REDUCED",
-      "previous_state": {"speech":"speaking","motion":"off","safety":"normal"},
-      "event": "SPEECH_STOP",
-      "payload": {"reduced_motion":true},
-      "expected_state": {"speech":"ended","motion":"off"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-END",
-      "previous_state": {"speech":"speaking","motion":"voice_reactive","safety":"normal"},
-      "event": "SPEECH_END",
-      "payload": {"reduced_motion":false},
-      "expected_state": {"speech":"ended","motion":"ambient"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-END-REDUCED",
-      "previous_state": {"speech":"speaking","motion":"off","safety":"normal"},
-      "event": "SPEECH_END",
-      "payload": {"reduced_motion":true},
-      "expected_state": {"speech":"ended","motion":"off"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-SPEECH-ERROR",
-      "previous_state": {"speech":"starting","safety":"normal"},
-      "event": "SPEECH_ERROR",
-      "payload": {"code":"voice-unavailable"},
-      "expected_state": {"speech":"error","motion":"off"},
-      "allowed": true,
-      "revision": "increment_one"
-    },
-    {
-      "id": "VOICE-REQUEST-RISK-FORBIDDEN",
-      "previous_state": {"safety":"risk","speech":"silent","motion":"protection_static"},
-      "event": "SPEECH_REQUEST",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged"
-    },
-    {
-      "id": "VOICE-START-RISK-FORBIDDEN",
-      "previous_state": {"safety":"risk","speech":"starting","motion":"protection_static"},
-      "event": "SPEECH_START",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged"
-    },
-    {
-      "id": "VOICE-REQUEST-HANDOFF-FORBIDDEN",
-      "previous_state": {"safety":"human_handoff","dialogue":"human_handoff","speech":"silent","motion":"protection_static"},
-      "event": "SPEECH_REQUEST",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged"
-    },
-    {
-      "id": "VOICE-START-HANDOFF-FORBIDDEN",
-      "previous_state": {"safety":"human_handoff","dialogue":"human_handoff","speech":"starting","motion":"protection_static"},
-      "event": "SPEECH_START",
-      "payload": {},
-      "expected_state": {},
-      "allowed": false,
-      "revision": "unchanged"
-    }
+  "schema_version": 2,
+  "status": "HISTORICAL_SUBSET_INDEX",
+  "historical_revision": "B06-B07-FROZEN-2026-09-16",
+  "historical_contract_sha": "e69929b4b88128c4c935435987f35532f37d2df0",
+  "normative_source": "tests/specs/sabik/s0-state-contract.json",
+  "scenario_source": "tests/specs/sabik/s0-transition-cases.json",
+  "note": "La adenda ya no contiene expectativas independientes. Este archivo identifica el subconjunto histórico B06/B07 dentro de la única fuente normativa consolidada.",
+  "row_ids": [
+    "EV-SUBMIT-AFTER-CLARIFICATION",
+    "EV-SUBMIT-SAFETY-UNCERTAIN",
+    "EV-RISK-CONFIRMED-FROM-UNCERTAIN",
+    "EV-RISK-CLEARED-FROM-UNCERTAIN",
+    "EV-RISK-CLEARED-FROM-NORMAL-FORBIDDEN",
+    "EV-RISK-CLEARED-FROM-RISK-FORBIDDEN",
+    "EV-RISK-CLEARED-FROM-HANDOFF-FORBIDDEN",
+    "EV-RISK-CLEARED-FROM-PAUSED-UNCERTAIN-FORBIDDEN",
+    "EV-SPEECH-REQUEST",
+    "EV-SPEECH-START",
+    "EV-SPEECH-START-FROM-SILENT-FORBIDDEN",
+    "EV-SPEECH-BOUNDARY",
+    "EV-SPEECH-BOUNDARY-FROM-STARTING-FORBIDDEN",
+    "EV-SPEECH-PAUSE",
+    "EV-SPEECH-RESUME",
+    "EV-SPEECH-STOP",
+    "EV-SPEECH-END",
+    "EV-SPEECH-ERROR",
+    "EV-SET-REDUCED-MOTION-ON",
+    "EV-SPEECH-REQUEST-REDUCED",
+    "EV-SPEECH-START-REDUCED",
+    "EV-SPEECH-BOUNDARY-REDUCED",
+    "EV-SPEECH-PAUSE-REDUCED",
+    "EV-SPEECH-RESUME-REDUCED",
+    "EV-SPEECH-STOP-REDUCED",
+    "EV-SPEECH-END-REDUCED",
+    "EV-SPEECH-ERROR-REDUCED",
+    "EV-RISK-CONFIRMED-SPEAKING"
   ],
-  "scenarios": [
-    {
-      "id": "B06-C01",
-      "name": "respuesta a aclaración normal continúa la misma sesión",
-      "initial": {"operation":"awaiting_clarification","dialogue":"clarification","adaptation":{"response_length":"short","max_options":1,"question_policy":"low","intensity":"low","depth":"normal"},"safety":"normal","visibility":"expanded","speech":"silent","motion":"ambient","language":"en","revision":7},
-      "steps": ["B06-SUBMIT-AFTER-CLARIFICATION"],
-      "final_expect": {"operation":"retrieving","dialogue":"clarification","safety":"normal","language":"en","revision":8},
-      "preserve": ["adaptation","language","visibility"]
-    },
-    {
-      "id": "B07-C01",
-      "name": "respuesta de seguridad no rebaja uncertain antes de resolver",
-      "initial": {"operation":"awaiting_clarification","dialogue":"clarification","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"uncertain","visibility":"expanded","speech":"silent","motion":"protection_static","language":"es","revision":12},
-      "steps": ["B07-SUBMIT-SAFETY-UNCERTAIN","B07-RISK-CONFIRMED-FROM-UNCERTAIN"],
-      "final_expect": {"operation":"presenting","dialogue":"human_handoff","safety":"risk","speech":"silent","motion":"protection_static","revision":14}
-    },
-    {
-      "id": "B07-C02",
-      "name": "aclaración de seguridad despejada vuelve a flujo ordinario controlado",
-      "initial": {"operation":"awaiting_clarification","dialogue":"clarification","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"uncertain","visibility":"expanded","speech":"silent","motion":"protection_static","language":"es","revision":20},
-      "steps": ["B07-SUBMIT-SAFETY-UNCERTAIN","B07-RISK-CLEARED-FROM-UNCERTAIN"],
-      "final_expect": {"operation":"retrieving","dialogue":"clarification","safety":"normal","speech":"silent","motion":"processing","revision":22}
-    },
-    {
-      "id": "B07-C03",
-      "name": "RISK_CLEARED no funciona como reset genérico",
-      "initial": {"operation":"ready","dialogue":"none","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"normal","visibility":"expanded","speech":"silent","motion":"ambient","language":"es","revision":3},
-      "steps": ["B07-RISK-CLEARED-FROM-NORMAL-FORBIDDEN"],
-      "final_expect": {"safety":"normal","revision":3}
-    },
-    {
-      "id": "VOICE-C01",
-      "name": "clic, onstart, boundary, pausa, reanudación y stop son eventos distintos",
-      "initial": {"operation":"presenting","dialogue":"information","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"normal","visibility":"expanded","speech":"silent","motion":"ambient","language":"es","revision":30},
-      "steps": ["VOICE-SPEECH-REQUEST","VOICE-SPEECH-START","VOICE-BOUNDARY-WHILE-SPEAKING","VOICE-SPEECH-PAUSE","VOICE-SPEECH-RESUME","VOICE-SPEECH-STOP"],
-      "final_expect": {"speech":"ended","motion":"ambient","revision":36}
-    },
-    {
-      "id": "VOICE-C02",
-      "name": "boundary no puede sustituir a onstart",
-      "initial": {"operation":"presenting","dialogue":"information","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"normal","visibility":"expanded","speech":"starting","motion":"ambient","language":"es","revision":40},
-      "steps": ["VOICE-BOUNDARY-FROM-STARTING-FORBIDDEN"],
-      "final_expect": {"speech":"starting","motion":"ambient","revision":40}
-    },
-    {
-      "id": "VOICE-C03",
-      "name": "movimiento reducido permite voz pero nunca onda reactiva",
-      "initial": {"operation":"presenting","dialogue":"information","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"normal","visibility":"expanded","speech":"silent","motion":"off","language":"es","revision":50},
-      "steps": ["VOICE-SPEECH-REQUEST-REDUCED","VOICE-SPEECH-START-REDUCED","VOICE-SPEECH-PAUSE","VOICE-SPEECH-RESUME-REDUCED","VOICE-SPEECH-END-REDUCED"],
-      "final_expect": {"speech":"ended","motion":"off","revision":55}
-    },
-    {
-      "id": "VOICE-C04",
-      "name": "riesgo y derivación humana bloquean voz ordinaria",
-      "initial": {"operation":"presenting","dialogue":"human_handoff","adaptation":{"response_length":"normal","max_options":3,"question_policy":"normal","intensity":"normal","depth":"normal"},"safety":"human_handoff","visibility":"expanded","speech":"silent","motion":"protection_static","language":"es","revision":60},
-      "steps": ["VOICE-REQUEST-HANDOFF-FORBIDDEN"],
-      "final_expect": {"safety":"human_handoff","speech":"silent","motion":"protection_static","revision":60}
-    }
+  "scenario_ids": [
+    "S0-C06",
+    "S0-C08",
+    "S0-C09",
+    "S0-C10",
+    "S0-C11",
+    "S0-C12",
+    "S0-C13",
+    "S0-C14",
+    "S0-C15",
+    "S0-C16",
+    "S0-C17",
+    "S0-C18"
   ]
 }
