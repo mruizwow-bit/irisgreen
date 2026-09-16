@@ -379,3 +379,6 @@
 /pt-br/situacoes/volto-para-conferir-se-desliguei-alguma-coisa/ /es/situaciones/vuelvo-atras-para-comprobar-si-he-apagado-algo/ 301!
 # Una dirección portuguesa desconocida lleva al inicio, no a /es/ inexistente.
 /pt-br/* / 301!
+
+# La herramienta de Tarjeta Iris vive en Recursos
+/es/tarjetas-iris/*  /es/recursos/tarjeta-iris/  301

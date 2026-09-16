@@ -225,6 +225,20 @@ function restore(){
   }catch(e){}
 }
 
+function fromURL(){
+  try{
+    var q=new URLSearchParams(location.search);
+    var any=false;
+    KEYS.forEach(function(k){
+      var v=q.get(k);
+      if(typeof v==='string'&&v.trim()){state[k]=v.trim().slice(0,400);any=true;}
+    });
+    var lang=q.get('lang');
+    if(lang==='en'||lang==='es'){state.lang=lang;any=true;}
+    if(any)state.example=false;
+  }catch(e){}
+}
+
 function values(){
   if(!state.example)return {cuesta:state.cuesta,ayuda:state.ayuda,necesito:state.necesito,pasos:state.pasos.slice()};
   var e=EXAMPLE[state.lang];
@@ -470,6 +484,7 @@ function applyPrefillParams(){
 
 function init(){
   restore();
+  fromURL();
   applyPrefillParams();
 
   /* El conmutador ES/EN vive en la cabecera del sitio, no en el contenido. */
