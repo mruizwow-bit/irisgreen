@@ -335,7 +335,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 48px 1fr auto;
   gap: 12px;
-  align-items: center;
+  align-items: start;
 }
 
 .sabik-presence {
@@ -370,15 +370,23 @@ a:focus-visible {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .sabik-name-row span {
   border-radius: 999px;
   background: var(--sabik-periwinkle);
   color: #3851aa;
-  padding: 5px 10px;
-  font-size: .82rem;
+  padding: 4px 9px;
+  font-size: .78rem;
   font-weight: 700;
+}
+
+.sabik-subtitle {
+  margin: 2px 0 0;
+  color: var(--sabik-muted);
+  font-size: .92rem;
+  line-height: 1.35;
 }
 
 .sabik-icon-button {
@@ -410,8 +418,8 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-hologram {
-  width: min(100%, 260px);
-  max-width: 260px;
+  width: min(100%, 232px);
+  max-width: 232px;
   height: auto;
   min-height: 0;
   aspect-ratio: 1;
@@ -918,8 +926,15 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-status {
-  margin: 4px 0 0;
+  margin: 5px 0 0;
   color: var(--sabik-muted);
+  line-height: 1.4;
+}
+
+.sabik-capability {
+  margin: 5px 0 0;
+  color: var(--sabik-muted);
+  font-size: .9rem;
   line-height: 1.4;
 }
 
@@ -931,14 +946,11 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-memory-note {
-  margin: 8px 0 0;
-  border: 1px solid rgba(111, 85, 217, .18);
-  border-radius: var(--sabik-radius);
-  background: rgba(255, 255, 255, .62);
+  margin: 6px 0 0;
   color: var(--sabik-muted);
-  padding: 8px 10px;
-  font-size: .92rem;
-  line-height: 1.35;
+  padding: 0;
+  font-size: .88rem;
+  line-height: 1.4;
 }
 
 .sabik-actions,
@@ -952,6 +964,17 @@ body.sabik-panel-collapsed .sabik-hero {
   cursor: pointer;
 }
 
+.sabik-button:not(.primary) {
+  border-color: #8492a5;
+  background: rgba(255, 255, 255, .72);
+  color: var(--sabik-ink);
+}
+
+.sabik-button:not(.primary):hover {
+  border-color: var(--sabik-ink);
+  background: rgba(255, 255, 255, .92);
+}
+
 .sabik-button.primary {
   border-color: var(--sabik-ink);
   background: var(--sabik-ink);
@@ -959,8 +982,8 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-button.danger {
-  border-color: var(--sabik-danger);
-  color: var(--sabik-danger);
+  border-color: #8492a5;
+  color: var(--sabik-ink);
 }
 
 .sabik-button[disabled] {
