@@ -65,7 +65,8 @@ function partialMismatch(actual, expected, path = "") {
   return null;
 }
 
-function validateCanonicalShape(state, enums) {
+function validateCanonicalShape(state, enums, options = {}) {
+  const { enforceSafetyInvariants = true } = options;
   const scalarKeys = ["operation", "dialogue", "safety", "visibility", "speech", "motion", "language"];
   for (const key of scalarKeys) {
     if (!(key in state)) throw new Error(`forma pública: falta ${key}`);
@@ -87,11 +88,13 @@ function validateCanonicalShape(state, enums) {
       throw new Error(`forma pública: ${metaKey} debe ser objeto opcional`);
     }
   }
-  if (["risk", "human_handoff"].includes(state.safety) && state.motion !== "protection_static") {
-    throw new Error(`seguridad: ${state.safety} exige motion=protection_static`);
-  }
-  if (["risk", "human_handoff"].includes(state.safety) && ["starting", "speaking", "paused"].includes(state.speech)) {
-    throw new Error(`seguridad: voz ordinaria activa durante ${state.safety}`);
+  if (enforceSafetyInvariants) {
+    if (["risk", "human_handoff"].includes(state.safety) && state.motion !== "protection_static") {
+      throw new Error(`seguridad: ${state.safety} exige motion=protection_static`);
+    }
+    if (["risk", "human_handoff"].includes(state.safety) && ["starting", "speaking", "paused"].includes(state.speech)) {
+      throw new Error(`seguridad: voz ordinaria activa durante ${state.safety}`);
+    }
   }
   JSON.parse(JSON.stringify(state));
 }
@@ -130,7 +133,9 @@ function assertMetaSemantics(row, state) {
 
 async function runRow(row, base, enums, transition) {
   const input = mergeState(base, row.previous_state);
-  validateCanonicalShape(input, enums);
+  // Las filas prohibidas pueden representar callbacks obsoletos o combinaciones hostiles.
+  // Se exige forma pública válida, pero los invariantes de seguridad se validan en estados alcanzables/salidas permitidas.
+  validateCanonicalShape(input, enums, { enforceSafetyInvariants: row.allowed });
   const before = clone(input);
   const event = { type: row.event, ...clone(row.payload || {}) };
   const result = await guardedTransition(transition, input, event);
