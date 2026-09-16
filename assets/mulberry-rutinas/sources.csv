@@ -1,0 +1,94 @@
+id,sprite,archivo_mulberry,categoria,clave_es,clave_en,estado
+afeitarse,sprite-9.svg,"shave_,_to.svg",Higiene,Afeitarse,Shave,CANDIDATO
+banarse,sprite-1.svg,bath.svg,Higiene,Bañarse,Bath,CANDIDATO
+bano,sprite-2.svg,toilet.svg,Higiene,Baño,Toilet,CANDIDATO
+cortarse-las-unas,sprite-9.svg,"clip_nails_,_to.svg",Higiene,Cortarse las uñas,Clip your nails,CANDIDATO
+ducharse,sprite-1.svg,"shower_1_,_to.svg",Higiene,Ducharse,Shower,CANDIDATO
+ir-al-bano,sprite-9.svg,"toilet_,_go_to_the.svg",Higiene,Ir al baño,To go to the toilet,CANDIDATO
+lavarse-el-pelo,sprite-9.svg,"shampoo_hair_,_to.svg",Higiene,Lavarse el pelo,Wash your hair,CANDIDATO
+lavarse-la-cara,sprite-1.svg,"wash_face_,_to.svg",Higiene,Lavarse la cara,Wash face,CANDIDATO
+lavarse-las-manos,sprite-1.svg,"wash_hands_,_to.svg",Higiene,Lavarse las manos,Wash hands,CANDIDATO
+lavarse-los-dientes,sprite-1.svg,"brush_teeth_,_to.svg",Higiene,Lavarse los dientes,Brush teeth,CANDIDATO
+peinarse,sprite-1.svg,"brush_hair_,_to.svg",Higiene,Peinarse,Brush hair,CANDIDATO
+secarse-el-pelo,sprite-9.svg,"dry_hair_,_to.svg",Higiene,Secarse el pelo,Dry your hair,CANDIDATO
+secarse-la-cara,sprite-9.svg,"dry_face_,_to.svg",Higiene,Secarse la cara,Dry your face,CANDIDATO
+tirar-de-la-cadena,sprite-9.svg,"flush_toilet_,_to.svg",Higiene,Tirar de la cadena,Flush the toilet,CANDIDATO
+abrigo,sprite-4.svg,coat.svg,Vestirse,Abrigo,Coat,CANDIDATO
+gafas,sprite-2.svg,glasses.svg,Vestirse,Gafas,Glasses,CANDIDATO
+ponerse-el-abrigo,sprite-10.svg,"put_on_coat_,_to.svg",Vestirse,Ponerse el abrigo,Put on your coat,CANDIDATO
+quitarse-la-ropa,sprite-10.svg,"undress_,_to.svg",Vestirse,Quitarse la ropa,Take off your clothes,CANDIDATO
+vestirse,sprite-2.svg,"get_dressed_,_to.svg",Vestirse,Vestirse,Get dressed,CANDIDATO
+zapatos,sprite-10.svg,shoe_-_mans.svg,Vestirse,Zapatos,Shoes,CANDIDATO
+agua,sprite-3.svg,water.svg,Comidas,Agua,Water,CANDIDATO
+beber,sprite-3.svg,"drink_,_to.svg",Comidas,Beber,Drink,CANDIDATO
+cenar,sprite-3.svg,dinner.svg,Comidas,Cenar,Dinner,CANDIDATO
+comer,sprite-2.svg,"eat_,_to.svg",Comidas,Comer,Eat,CANDIDATO
+comida,sprite-2.svg,lunch_1.svg,Comidas,Comida,Lunch,CANDIDATO
+desayunar,sprite-2.svg,breakfast_1.svg,Comidas,Desayunar,Breakfast,CANDIDATO
+preparar-la-comida,sprite-10.svg,"cook_,_to.svg",Comidas,Preparar la comida,Make the food,CANDIDATO
+colegio,sprite-6.svg,school.svg,Colegio / trabajo,Colegio,School,CANDIDATO
+hora-de-comer,sprite-10.svg,lunch_time.svg,Colegio / trabajo,Hora de comer,Lunch time,CANDIDATO
+mochila,sprite-4.svg,school_bag.svg,Colegio / trabajo,Mochila,School bag,CANDIDATO
+recreo,sprite-10.svg,break_time_2.svg,Colegio / trabajo,Recreo,Break time,CANDIDATO
+usar-el-ordenador,sprite-10.svg,"use_computer_,_to.svg",Colegio / trabajo,Usar el ordenador,Use the computer,CANDIDATO
+aspirar,sprite-11.svg,"hoover_,_to.svg",Casa y autonomía,Aspirar,Hoover,CANDIDATO
+doblar-la-ropa,sprite-11.svg,"fold_clothes_,_to.svg",Casa y autonomía,Doblar la ropa,Fold the clothes,CANDIDATO
+hacer-la-cama,sprite-11.svg,"make_the_bed_,_to.svg",Casa y autonomía,Hacer la cama,Make the bed,CANDIDATO
+lavar-la-ropa,sprite-11.svg,"wash_clothes_,_to.svg",Casa y autonomía,Lavar la ropa,Wash the clothes,CANDIDATO
+lavar-los-platos,sprite-11.svg,"wash_up_,_to.svg",Casa y autonomía,Lavar los platos,Wash up,CANDIDATO
+limpiar-la-mesa,sprite-12.svg,"wipe_table_,_to.svg",Casa y autonomía,Limpiar la mesa,Wipe the table,CANDIDATO
+planchar,sprite-11.svg,"iron_,_to.svg",Casa y autonomía,Planchar,Iron,CANDIDATO
+poner-la-mesa,sprite-12.svg,"set_the_table_,_to.svg",Casa y autonomía,Poner la mesa,Set the table,CANDIDATO
+quitar-el-polvo,sprite-11.svg,"dust_,_to.svg",Casa y autonomía,Quitar el polvo,Dust,CANDIDATO
+recoger,sprite-3.svg,"tidy_up_,_to.svg",Casa y autonomía,Recoger,Tidy up,CANDIDATO
+regar-las-plantas,sprite-12.svg,"water_plants_,_to.svg",Casa y autonomía,Regar las plantas,Water the plants,CANDIDATO
+sacar-la-basura,sprite-12.svg,"put_out_rubbish_,_to.svg",Casa y autonomía,Sacar la basura,Put out the rubbish,CANDIDATO
+basura,sprite-3.svg,"put_in_bin_,_to.svg",Casa y autonomía,Tirar a la basura,Put in bin,CANDIDATO
+andar,sprite-5.svg,"walk_,_to.svg",Salir y transporte,Andar,Walk,CANDIDATO
+autobus,sprite-5.svg,bus.svg,Salir y transporte,Autobús,Bus,CANDIDATO
+bici,sprite-5.svg,bicycle.svg,Salir y transporte,Bici,Bicycle,CANDIDATO
+coche,sprite-5.svg,car.svg,Salir y transporte,Coche,Car,CANDIDATO
+dinero,sprite-5.svg,money.svg,Salir y transporte,Dinero,Money,CANDIDATO
+entrar,sprite-12.svg,"enter_door_,_to.svg",Salir y transporte,Entrar,Go in,CANDIDATO
+llaves,sprite-4.svg,key_1.svg,Salir y transporte,Llaves,Keys,CANDIDATO
+lluvia,sprite-6.svg,rain.svg,Salir y transporte,Lluvia,Rain,CANDIDATO
+paraguas,sprite-6.svg,umbrella.svg,Salir y transporte,Paraguas,Umbrella,CANDIDATO
+puerta,sprite-4.svg,front_door.svg,Salir y transporte,Puerta de casa,Front door,CANDIDATO
+salir,sprite-5.svg,"exit_door_,_to.svg",Salir y transporte,Salir,Go out,CANDIDATO
+sol,sprite-6.svg,sun.svg,Salir y transporte,Sol,Sun,CANDIDATO
+telefono,sprite-7.svg,mobile_phone.svg,Salir y transporte,Teléfono,Phone,CANDIDATO
+tienda,sprite-5.svg,shop.svg,Salir y transporte,Tienda,Shop,CANDIDATO
+tren,sprite-5.svg,train.svg,Salir y transporte,Tren,Train,CANDIDATO
+abrazo,sprite-8.svg,"hug_,_to.svg",Ocio,Abrazo,Hug,CANDIDATO
+hacer-ejercicio,sprite-12.svg,"exercise_,_to.svg",Ocio,Hacer ejercicio,Exercise,CANDIDATO
+jugar,sprite-4.svg,"play_,_to.svg",Ocio,Jugar,Play,CANDIDATO
+leer,sprite-4.svg,"read_,_to.svg",Ocio,Leer,Read,CANDIDATO
+ordenador,sprite-4.svg,computer_1.svg,Ocio,Ordenador,Computer,CANDIDATO
+sentarse-al-ordenador,sprite-12.svg,"sit_at_computer_,_to.svg",Ocio,Sentarse al ordenador,Sit at the computer,CANDIDATO
+tele,sprite-3.svg,"switch_on_television_,_to.svg",Ocio,Ver la tele,Watch TV,CANDIDATO
+descansar,sprite-3.svg,"relax_,_to.svg",Noche,Descansar,Rest,CANDIDATO
+despertarse,sprite-1.svg,"wake_up_,_to.svg",Noche,Despertarse,Wake up,CANDIDATO
+cama,sprite-3.svg,bed_time.svg,Noche,Ir a la cama,Bedtime,CANDIDATO
+levantarse,sprite-1.svg,"get_up_,_to.svg",Noche,Levantarse,Get up,CANDIDATO
+pijama,sprite-2.svg,pyjamas.svg,Noche,Pijama,Pyjamas,CANDIDATO
+dar-de-comer-al-gato,sprite-13.svg,"feed_cat_,_to.svg",Animales,Dar de comer al gato,Feed the cat,CANDIDATO
+dar-de-comer-al-perro,sprite-13.svg,"feed_dog_,_to.svg",Animales,Dar de comer al perro,Feed the dog,CANDIDATO
+pasear-al-perro,sprite-13.svg,"walk_dog_,_to.svg",Animales,Pasear al perro,Walk the dog,CANDIDATO
+perro,sprite-4.svg,dog.svg,Animales,Perro,Dog,CANDIDATO
+auriculares,sprite-7.svg,headphones.svg,Necesidades,Auriculares,Headphones,CANDIDATO
+botiquin,sprite-6.svg,first_aid_box.svg,Necesidades,Botiquín,First aid,CANDIDATO
+medicacion,sprite-2.svg,medicine.svg,Necesidades,Medicación,Medicine,CANDIDATO
+necesito-ir-al-bano,sprite-13.svg,need_toilet.svg,Necesidades,Necesito ir al baño,I need the toilet,CANDIDATO
+sala-sensorial,sprite-13.svg,sensory_room.svg,Necesidades,Sala sensorial,Sensory room,CANDIDATO
+sentarse,sprite-8.svg,"sit_,_to.svg",Necesidades,Sentarse,Sit down,CANDIDATO
+silencio,sprite-7.svg,quiet.svg,Necesidades,Silencio,Quiet,CANDIDATO
+tengo-hambre,sprite-13.svg,hungry.svg,Necesidades,Tengo hambre,I am hungry,CANDIDATO
+tengo-sed,sprite-13.svg,thirsty.svg,Necesidades,Tengo sed,I am thirsty,CANDIDATO
+calendario,sprite-6.svg,calendar.svg,Tiempo y orden,Calendario,Calendar,CANDIDATO
+despues,sprite-7.svg,next.svg,Tiempo y orden,Después,Next,CANDIDATO
+esperar,sprite-7.svg,"wait_,_to.svg",Tiempo y orden,Esperar,Wait,CANDIDATO
+hoy,sprite-6.svg,today.svg,Tiempo y orden,Hoy,Today,CANDIDATO
+manana,sprite-7.svg,tomorrow.svg,Tiempo y orden,Mañana,Tomorrow,CANDIDATO
+primero,sprite-7.svg,first.svg,Tiempo y orden,Primero,First,CANDIDATO
+reloj,sprite-6.svg,clock.svg,Tiempo y orden,Reloj,Clock,CANDIDATO
+terminado,sprite-7.svg,finish.svg,Tiempo y orden,Terminado,Finished,CANDIDATO

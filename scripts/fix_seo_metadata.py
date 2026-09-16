@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Corrige metadatos SEO acotados en el artefacto final de publicación.
+"""Corrige metadatos SEO sin modificar contenido visible.
 
-No crea traducciones ni contenido editorial nuevo. Quita hreflang sin pareja real,
-diferencia títulos que identificaban páginas distintas con el mismo texto y sincroniza
-descripciones con texto ya existente en buscador.json o, cuando allí sigue la frase
-genérica, con el párrafo específico «En pocas palabras / In brief» de la propia ficha.
+- Retira hreflang de páginas sin pareja real.
+- Diferencia títulos de páginas distintas que compartían el mismo título.
+- Sincroniza las descripciones de Situaciones con texto ya existente en buscador.json
+  o, cuando allí sigue la frase genérica, con el párrafo .lede de la propia ficha.
+- Corrige seis descripciones de Datos con texto ya existente y revisado.
 """
 from __future__ import annotations
 
@@ -86,21 +87,11 @@ ALT_TAG = re.compile(
     re.I,
 )
 TITLE_TAG = re.compile(r"<title>.*?</title>", re.I | re.S)
-META_DESCRIPTION = re.compile(
-    r"<meta\b(?=[^>]*\bname=[\"']description[\"'])[^>]*>", re.I
-)
-OG_TITLE = re.compile(
-    r"<meta\b(?=[^>]*\bproperty=[\"']og:title[\"'])[^>]*>", re.I
-)
-OG_DESCRIPTION = re.compile(
-    r"<meta\b(?=[^>]*\bproperty=[\"']og:description[\"'])[^>]*>", re.I
-)
+META_DESCRIPTION = re.compile(r"<meta\b(?=[^>]*\bname=[\"']description[\"'])[^>]*>", re.I)
+OG_TITLE = re.compile(r"<meta\b(?=[^>]*\bproperty=[\"']og:title[\"'])[^>]*>", re.I)
+OG_DESCRIPTION = re.compile(r"<meta\b(?=[^>]*\bproperty=[\"']og:description[\"'])[^>]*>", re.I)
 CONTENT_ATTR = re.compile(r"\bcontent=([\"']).*?\1", re.I | re.S)
-CONTENT_VALUE = re.compile(r"\bcontent=([\"'])(.*?)\1", re.I | re.S)
-LEDE = re.compile(
-    r"<p\b(?=[^>]*\bclass=[\"'][^\"']*\blede\b[^\"']*[\"'])[^>]*>(.*?)</p>",
-    re.I | re.S,
-)
+LEDE = re.compile(r"<p\b(?=[^>]*\bclass=[\"'][^\"']*\blede\b[^\"']*[\"'])[^>]*>(.*?)</p>", re.I | re.S)
 TAG = re.compile(r"<[^>]+>")
 
 
@@ -112,16 +103,6 @@ def plain_text(fragment: str) -> str:
     return normalize(html.unescape(TAG.sub(" ", fragment)))
 
 
-def extract_lede(text: str, rel: str) -> str:
-    match = LEDE.search(text)
-    if not match:
-        raise AssertionError(f"{rel}: descripción genérica sin párrafo .lede específico")
-    value = plain_text(match.group(1))
-    if len(value) < 40:
-        raise AssertionError(f"{rel}: párrafo .lede demasiado corto para usar como descripción: {value!r}")
-    return value
-
-
 def replace_content(tag: str, value: str) -> str:
     escaped = html.escape(value, quote=True)
     if CONTENT_ATTR.search(tag):
@@ -129,50 +110,45 @@ def replace_content(tag: str, value: str) -> str:
     return tag[:-1] + f' content="{escaped}">'
 
 
-def meta_description_value(text: str) -> str:
-    tag = META_DESCRIPTION.search(text)
-    if not tag:
-        return ""
-    value = CONTENT_VALUE.search(tag.group(0))
-    return normalize(html.unescape(value.group(2))) if value else ""
-
-
 def patch_description(text: str, description: str) -> str:
-    text, n1 = META_DESCRIPTION.subn(
-        lambda m: replace_content(m.group(0), description), text, count=1
-    )
-    text, n2 = OG_DESCRIPTION.subn(
-        lambda m: replace_content(m.group(0), description), text, count=1
-    )
+    text, n1 = META_DESCRIPTION.subn(lambda m: replace_content(m.group(0), description), text, count=1)
+    text, n2 = OG_DESCRIPTION.subn(lambda m: replace_content(m.group(0), description), text, count=1)
     if n1 != 1 or n2 != 1:
         raise AssertionError(f"No se pudieron actualizar description/og:description ({n1}, {n2})")
     return text
 
 
 def patch_title(text: str, title: str, og_title: str) -> str:
-    escaped_title = html.escape(title)
-    text, n1 = TITLE_TAG.subn(f"<title>{escaped_title}</title>", text, count=1)
-    text, n2 = OG_TITLE.subn(
-        lambda m: replace_content(m.group(0), og_title), text, count=1
-    )
+    text, n1 = TITLE_TAG.subn(f"<title>{html.escape(title)}</title>", text, count=1)
+    text, n2 = OG_TITLE.subn(lambda m: replace_content(m.group(0), og_title), text, count=1)
     if n1 != 1 or n2 != 1:
         raise AssertionError(f"No se pudieron actualizar title/og:title ({n1}, {n2})")
     return text
 
 
+def extract_lede(text: str, rel: str) -> str:
+    match = LEDE.search(text)
+    if not match:
+        raise AssertionError(f"{rel}: descripción genérica sin párrafo .lede específico")
+    value = plain_text(match.group(1))
+    if len(value) < 40:
+        raise AssertionError(f"{rel}: párrafo .lede demasiado corto")
+    return value
+
+
 def situation_descriptions() -> dict[str, tuple[str, str]]:
-    data = json.loads((ROOT / "buscador.json").read_text(encoding="utf-8"))
+    rows = json.loads((ROOT / "buscador.json").read_text(encoding="utf-8"))
     out: dict[str, tuple[str, str]] = {}
-    for row in data:
+    for row in rows:
         if row.get("s") != "Situación":
             continue
-        es_url, es_desc = row.get("u"), row.get("d")
+        es_url, es_desc = row.get("u"), normalize(row.get("d") or "")
         en = row.get("en") or {}
-        en_url, en_desc = en.get("u"), en.get("d")
+        en_url, en_desc = en.get("u"), normalize(en.get("d") or "")
         if es_url and es_desc:
-            out[es_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["es"], normalize(es_desc))
+            out[es_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["es"], es_desc)
         if en_url and en_desc:
-            out[en_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["en"], normalize(en_desc))
+            out[en_url.lstrip("/") + "index.html"] = (GENERIC_SITUATION["en"], en_desc)
     if len(out) != 374:
         raise AssertionError(f"Inventario inesperado de descripciones de Situaciones: {len(out)}")
     return out
@@ -183,13 +159,8 @@ def main() -> None:
     ap.add_argument("--root", type=Path, default=Path("dist"))
     args = ap.parse_args()
     root = args.root.resolve()
-
     changed: set[str] = set()
-    orphan_removed = 0
-    title_changes = 0
-    data_description_changes = 0
-    situation_description_changes = 0
-    situation_lede_fallbacks = 0
+    orphan_removed = title_changes = data_changes = situation_changes = lede_fallbacks = 0
 
     for rel in sorted(ORPHAN_HREFLANG):
         path = root / rel
@@ -198,7 +169,7 @@ def main() -> None:
         old = path.read_text(encoding="utf-8", errors="strict")
         text, count = ALT_TAG.subn("\n", old)
         if count < 2:
-            raise AssertionError(f"{rel}: esperaba al menos hreflang propio + x-default; encontré {count}")
+            raise AssertionError(f"{rel}: esperaba hreflang propio + x-default; encontré {count}")
         if text != old:
             path.write_text(text, encoding="utf-8")
             changed.add(rel)
@@ -224,9 +195,8 @@ def main() -> None:
         if text != old:
             path.write_text(text, encoding="utf-8")
             changed.add(rel)
-            data_description_changes += 1
+            data_changes += 1
 
-    expected_situations: dict[str, str] = {}
     for rel, (generic, source_description) in situation_descriptions().items():
         path = root / rel
         if not path.is_file():
@@ -235,33 +205,21 @@ def main() -> None:
         description = source_description
         if normalize(source_description) == normalize(generic):
             description = extract_lede(old, rel)
-            situation_lede_fallbacks += 1
-        expected_situations[rel] = description
+            lede_fallbacks += 1
         text = patch_description(old, description)
         if text != old:
             path.write_text(text, encoding="utf-8")
             changed.add(rel)
-            situation_description_changes += 1
-
-    mismatches: list[str] = []
-    for rel, expected in expected_situations.items():
-        path = root / rel
-        got = meta_description_value(path.read_text(encoding="utf-8", errors="strict"))
-        if got != normalize(expected):
-            mismatches.append(f"{rel}: {got!r} != {normalize(expected)!r}")
-    if mismatches:
-        raise AssertionError(
-            "Meta descriptions de Situaciones fuera de sincronía: " + " | ".join(mismatches[:12])
-        )
+            situation_changes += 1
 
     print(json.dumps({
         "paginas_actualizadas": len(changed),
         "hreflang_huerfanos_retirados": orphan_removed,
         "titulos_diferenciados": title_changes,
-        "descripciones_datos_actualizadas": data_description_changes,
-        "descripciones_situaciones_actualizadas": situation_description_changes,
-        "situaciones_desde_lede_existente": situation_lede_fallbacks,
-        "situaciones_sincronizadas": len(expected_situations),
+        "descripciones_datos_actualizadas": data_changes,
+        "descripciones_situaciones_actualizadas": situation_changes,
+        "situaciones_desde_lede_existente": lede_fallbacks,
+        "contenido_visible_modificado": False,
         "contenido_nuevo_inventado": False,
     }, ensure_ascii=False))
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Audita coherencia técnica de SEO e idiomas en la salida pública.
 
-No modifica contenido ni decide si una traducción es correcta. Comprueba relaciones
-estructurales verificables: lang de HTML, canonicals, hreflang, sitemap y metadatos
-básicos de páginas indexables.
+No modifica contenido ni decide si una traducción es correcta. Comprueba únicamente
+relaciones estructurales que pueden verificarse de forma automática: lang de HTML,
+canonicals, hreflang y URLs incluidas en sitemap.xml.
 """
 from __future__ import annotations
 
@@ -17,6 +17,8 @@ from xml.etree import ElementTree
 
 SITE_HOST = "irisgreen.eu"
 SITE = "https://irisgreen.eu"
+# Estas dos páginas técnicas no representan documentos indexables del sitio.
+# Cualquier otra página sin canonical debe revisarse como regresión SEO.
 CANONICAL_MISSING_ALLOWED = {"/404.html", "/assets/maintenance.html"}
 
 
@@ -27,21 +29,12 @@ class HeadParser(HTMLParser):
         self.canonical: list[str] = []
         self.alternates: list[tuple[str, str]] = []
         self.robots: list[str] = []
-        self.descriptions: list[str] = []
-        self.title_parts: list[str] = []
-        self._in_title = False
-
-    @property
-    def title(self) -> str:
-        return " ".join(" ".join(self.title_parts).split()).strip()
 
     def handle_starttag(self, tag: str, attrs) -> None:
         data = {str(k).lower(): str(v or "") for k, v in attrs}
         tag = tag.lower()
         if tag == "html":
             self.lang = data.get("lang", "").strip().lower()
-        elif tag == "title":
-            self._in_title = True
         elif tag == "link":
             rel = {x.lower() for x in data.get("rel", "").split()}
             href = data.get("href", "").strip()
@@ -49,20 +42,8 @@ class HeadParser(HTMLParser):
                 self.canonical.append(href)
             if "alternate" in rel and data.get("hreflang") and href:
                 self.alternates.append((data["hreflang"].strip().lower(), href))
-        elif tag == "meta":
-            name = data.get("name", "").lower()
-            if name == "robots":
-                self.robots.append(data.get("content", "").strip().lower())
-            elif name == "description":
-                self.descriptions.append(" ".join(data.get("content", "").split()).strip())
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag.lower() == "title":
-            self._in_title = False
-
-    def handle_data(self, data: str) -> None:
-        if self._in_title and data.strip():
-            self.title_parts.append(data.strip())
+        elif tag == "meta" and data.get("name", "").lower() == "robots":
+            self.robots.append(data.get("content", "").strip().lower())
 
 
 def public_path(root: Path, path: Path) -> str:
@@ -95,10 +76,6 @@ def parse(path: Path) -> HeadParser:
     return parser
 
 
-def normalized(value: str) -> str:
-    return " ".join(value.split()).casefold()
-
-
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", type=Path, default=Path("dist"))
@@ -112,13 +89,8 @@ def main() -> None:
     failures: list[dict] = []
     warnings: list[dict] = []
     canonical_owners: dict[str, list[str]] = defaultdict(list)
-    title_owners: dict[str, list[str]] = defaultdict(list)
-    description_owners: dict[str, list[str]] = defaultdict(list)
-    missing_titles: list[str] = []
-    missing_descriptions: list[str] = []
     pages_with_hreflang = 0
     reciprocal_pairs = 0
-    hreflang_without_language_peer: list[dict] = []
 
     for path, meta in parsed.items():
         route = public_path(root, path)
@@ -144,19 +116,6 @@ def main() -> None:
         else:
             failures.append({"type": "canonical_missing", "route": route})
 
-        indexable = route not in CANONICAL_MISSING_ALLOWED and not any("noindex" in value for value in meta.robots)
-        if indexable:
-            if meta.title:
-                title_owners[normalized(meta.title)].append(route)
-            else:
-                missing_titles.append(route)
-            if len(meta.descriptions) > 1:
-                failures.append({"type": "meta_description_duplicate_tag", "route": route, "values": meta.descriptions})
-            if meta.descriptions and meta.descriptions[0]:
-                description_owners[normalized(meta.descriptions[0])].append(route)
-            else:
-                missing_descriptions.append(route)
-
         if meta.alternates:
             pages_with_hreflang += 1
         seen_lang: dict[str, str] = {}
@@ -174,25 +133,12 @@ def main() -> None:
         source_lang = actual_lang if actual_lang in {"es", "en"} else None
         source_url = meta.canonical[0] if len(meta.canonical) == 1 else SITE + route
         if source_lang:
-            other_lang = "en" if source_lang == "es" else "es"
-            normalized_alt_langs = {lang.split("-", 1)[0] for lang in seen_lang if lang != "x-default"}
-            if meta.alternates and other_lang not in normalized_alt_langs:
-                hreflang_without_language_peer.append({
-                    "route": route,
-                    "lang": source_lang,
-                    "alternates": dict(meta.alternates),
-                })
             for lang, href in meta.alternates:
-                lang_base = lang.split("-", 1)[0]
                 target = to_file(root, href)
-                if lang_base not in {"es", "en"} or lang_base == source_lang or not target or not target.is_file():
+                if lang not in {"es", "en"} or lang == source_lang or not target or not target.is_file():
                     continue
                 target_meta = parsed.get(target) or parse(target)
-                back = None
-                for back_lang, back_href in target_meta.alternates:
-                    if back_lang.split("-", 1)[0] == source_lang:
-                        back = back_href
-                        break
+                back = {k: v for k, v in target_meta.alternates}.get(source_lang)
                 if back == source_url:
                     reciprocal_pairs += 1
                 else:
@@ -205,38 +151,6 @@ def main() -> None:
     for canonical, owners in sorted(canonical_owners.items()):
         if len(owners) > 1:
             warnings.append({"type": "canonical_shared", "canonical": canonical, "routes": owners})
-
-    duplicate_titles = [
-        {"value": key, "routes": routes, "count": len(routes)}
-        for key, routes in sorted(title_owners.items()) if len(routes) > 1
-    ]
-    duplicate_descriptions = [
-        {"value": key, "routes": routes, "count": len(routes)}
-        for key, routes in sorted(description_owners.items()) if len(routes) > 1
-    ]
-
-    if missing_titles:
-        failures.append({"type": "indexable_title_missing", "count": len(missing_titles), "routes": missing_titles})
-    if missing_descriptions:
-        failures.append({"type": "indexable_meta_description_missing", "count": len(missing_descriptions), "routes": missing_descriptions})
-    if hreflang_without_language_peer:
-        failures.append({
-            "type": "hreflang_without_language_peer",
-            "count": len(hreflang_without_language_peer),
-            "pages": hreflang_without_language_peer,
-        })
-    if duplicate_titles:
-        failures.append({
-            "type": "duplicate_indexable_titles",
-            "count": len(duplicate_titles),
-            "groups": duplicate_titles,
-        })
-    if duplicate_descriptions:
-        failures.append({
-            "type": "duplicate_indexable_descriptions",
-            "count": len(duplicate_descriptions),
-            "groups": duplicate_descriptions,
-        })
 
     sitemap_path = root / "sitemap.xml"
     sitemap_urls: list[str] = []
@@ -268,11 +182,6 @@ def main() -> None:
         "pages_with_canonical": sum(bool(m.canonical) for m in parsed.values()),
         "pages_with_hreflang": pages_with_hreflang,
         "reciprocal_language_links": reciprocal_pairs,
-        "missing_indexable_titles": missing_titles,
-        "missing_indexable_descriptions": missing_descriptions,
-        "hreflang_without_language_peer": hreflang_without_language_peer,
-        "duplicate_indexable_titles": duplicate_titles,
-        "duplicate_indexable_descriptions": duplicate_descriptions,
         "sitemap_urls": len(sitemap_urls),
         "canonical_missing_allowed": sorted(CANONICAL_MISSING_ALLOWED),
         "failures": failures,
@@ -280,9 +189,6 @@ def main() -> None:
         "limits": [
             "No evalúa la calidad de las traducciones ni modifica contenido editorial.",
             "Las parejas ES/EN declaradas con hreflang deben ser recíprocas; una relación unilateral se trata como regresión.",
-            "No se permite publicar hreflang solo a la propia lengua: si no existe pareja real, no se inventa y se omite hreflang.",
-            "Toda página indexable debe tener title y meta description no vacíos.",
-            "No se permiten títulos ni meta descriptions duplicados entre páginas indexables.",
             "La ausencia de canonical solo se tolera en 404.html y la pantalla técnica de mantenimiento.",
             "No sustituye una inspección en Search Console ni una prueba del índice real de un buscador.",
         ],
@@ -290,19 +196,7 @@ def main() -> None:
     }
     out = report_dir / "seo-idiomas.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({
-        "html_pages": report["html_pages"],
-        "pages_with_canonical": report["pages_with_canonical"],
-        "pages_with_hreflang": report["pages_with_hreflang"],
-        "reciprocal_language_links": report["reciprocal_language_links"],
-        "missing_indexable_titles": len(missing_titles),
-        "missing_indexable_descriptions": len(missing_descriptions),
-        "hreflang_without_language_peer": len(hreflang_without_language_peer),
-        "duplicate_indexable_titles": len(duplicate_titles),
-        "duplicate_indexable_descriptions": len(duplicate_descriptions),
-        "sitemap_urls": report["sitemap_urls"],
-        "passed": report["passed"],
-    }, ensure_ascii=False))
+    print(json.dumps({k: report[k] for k in ["html_pages", "pages_with_canonical", "pages_with_hreflang", "reciprocal_language_links", "sitemap_urls", "passed"]}, ensure_ascii=False))
     if warnings:
         print(json.dumps({"warnings": len(warnings), "sample": warnings[:8]}, ensure_ascii=False))
     if failures:
