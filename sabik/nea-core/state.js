@@ -64,7 +64,7 @@
   };
 
   const SABIK_MACHINE = {
-    OPERATIONAL: {
+    OPERATION: {
       BOOTING: "booting",
       READY: "ready",
       RETRIEVING: "retrieving",
@@ -79,11 +79,25 @@
       ANSWERING: "answering",
       AWAITING_CLARIFICATION: "awaiting_clarification",
       INSUFFICIENT: "insufficient",
-      HUMAN_HANDOFF: "human_handoff"
+      HUMAN_HANDOFF: "human_handoff",
+      ERROR: "error"
     },
     ADAPTATION: {
-      STANDARD: "standard",
-      LOW_INTENSITY: "low_intensity"
+      INTENSITY: {
+        STANDARD: "standard",
+        LOW: "low"
+      },
+      DEPTH: {
+        NORMAL: "normal",
+        SHORT: "short",
+        DETAILED: "detailed"
+      },
+      QUESTION_POLICY: {
+        NORMAL: "normal",
+        LOW: "low",
+        ONE_USEFUL_QUESTION: "one_useful_question",
+        NONE: "none"
+      }
     },
     SAFETY: {
       NORMAL: "normal",
@@ -96,7 +110,7 @@
       COLLAPSED: "collapsed",
       HIDDEN: "hidden"
     },
-    VOICE: {
+    SPEECH: {
       SILENT: "silent",
       STARTING: "speech_starting",
       SPEAKING: "speaking",
@@ -105,9 +119,11 @@
       ERROR: "speech_error"
     },
     MOTION: {
-      ENABLED: "motion_enabled",
-      REDUCED: "motion_reduced",
-      PAUSED: "motion_paused"
+      IDLE: "idle",
+      REDUCED: "reduced",
+      REACTIVE: "reactive",
+      PROTECTION: "protection",
+      PAUSED: "paused"
     },
     LANGUAGE: {
       ES: "es",
@@ -125,10 +141,13 @@
       RESET_SESSION: "RESET_SESSION",
       COLLAPSE: "COLLAPSE",
       EXPAND: "EXPAND",
+      HIDE: "HIDE",
+      SHOW: "SHOW",
       SPEECH_START: "SPEECH_START",
       SPEECH_BOUNDARY: "SPEECH_BOUNDARY",
       SPEECH_PAUSE: "SPEECH_PAUSE",
       SPEECH_RESUME: "SPEECH_RESUME",
+      SPEECH_STOP: "SPEECH_STOP",
       SPEECH_END: "SPEECH_END",
       SPEECH_ERROR: "SPEECH_ERROR",
       RISK_UNCERTAIN: "RISK_UNCERTAIN",
@@ -136,14 +155,13 @@
       HUMAN_HANDOFF: "HUMAN_HANDOFF",
       TECHNICAL_ERROR: "TECHNICAL_ERROR",
       RETRY: "RETRY",
+      SET_ADAPTATION: "SET_ADAPTATION",
       SET_LOW_INTENSITY: "SET_LOW_INTENSITY",
       SET_RESPONSE_LENGTH: "SET_RESPONSE_LENGTH",
       SET_MAX_OPTIONS: "SET_MAX_OPTIONS",
       SET_QUESTION_POLICY: "SET_QUESTION_POLICY",
       SET_REDUCED_MOTION: "SET_REDUCED_MOTION",
-      SET_LANGUAGE: "SET_LANGUAGE",
-      HIDE: "HIDE",
-      SHOW: "SHOW"
+      SET_LANGUAGE: "SET_LANGUAGE"
     }
   };
 
