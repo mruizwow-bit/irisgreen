@@ -273,8 +273,8 @@ async function run() {
       pageJs.includes('button.textContent = paused ? "Reanudar" : "Parar"') &&
       css.includes('[data-interaction-state="procesando"]') &&
       css.includes('[data-interaction-state="pausa"]') &&
-      css.includes("--sabik-layer-speed: 128s;") &&
-      css.includes("--sabik-wave-opacity: .2;"),
+      css.includes("--sabik-layer-speed: 72s;") &&
+      css.includes("--sabik-wave-opacity: .42;"),
     "Enviar and Parar must affect functional motion, pause must stay gently alive, and Reanudar must recover"
   );
 
@@ -352,14 +352,16 @@ async function run() {
       css.includes("--sabik-layer-speed: 14s;") &&
       css.includes("--sabik-wave-speed: 1.35s;") &&
       css.includes('.sabik-layered-avatar[data-interaction-state="pausa"]') &&
-      css.includes("--sabik-layer-speed: 128s;") &&
-      css.includes("--sabik-base-pulse-speed: 9.2s;") &&
+      css.includes("--sabik-layer-speed: 72s;") &&
+      css.includes("--sabik-base-pulse-speed: 6.2s;") &&
       css.includes('[data-protection-state="riesgo"],') &&
       css.includes("--sabik-layer-motion: paused;") &&
       css.includes('[data-low-intensity="true"]') &&
-      css.includes("--sabik-layer-speed: 64s;") &&
-      css.includes("--sabik-base-pulse-speed: 7.8s;") &&
-      css.includes("--sabik-wave-opacity: .28;"),
+      css.includes("--sabik-layer-speed: 52s;") &&
+      css.includes("--sabik-base-pulse-speed: 5.8s;") &&
+      css.includes("--sabik-wave-opacity: .42;") &&
+      css.includes("body.sabik-low-stim .sabik-hologram") &&
+      css.includes("opacity: .96;"),
     "base motion and voice waves must be visible; low intensity softens instead of killing Sabik"
   );
 

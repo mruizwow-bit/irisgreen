@@ -556,7 +556,7 @@
   0%,
   100% {
     transform: scale(.975);
-    opacity: .88;
+    opacity: .96;
   }
 
   46% {
@@ -682,7 +682,7 @@
   --sabik-base-pulse-speed: 2.4s;
   --sabik-wave-speed: 1.35s;
   --sabik-wave-opacity: .9;
-  --sabik-core-wave-opacity: .82;
+  --sabik-core-wave-opacity: .96;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: 1;
@@ -695,7 +695,7 @@
   --sabik-wave-speed: 1.8s;
   --sabik-wave-opacity: .76;
   --sabik-ring-opacity-layer: .88;
-  --sabik-ring-front-opacity: .88;
+  --sabik-ring-front-opacity: .96;
   --sabik-dot-opacity-layer: .72;
 }
 
@@ -715,30 +715,30 @@
   --sabik-layer-motion: running;
   --sabik-base-motion: running;
   --sabik-wave-motion: running;
-  --sabik-layer-speed: 128s;
-  --sabik-base-pulse-speed: 9.2s;
-  --sabik-wave-speed: 7.2s;
-  --sabik-ring-opacity-layer: .46;
-  --sabik-ring-front-opacity: .46;
-  --sabik-dot-opacity-layer: .18;
-  --sabik-avatar-brightness: .92;
-  --sabik-wave-opacity: .2;
-  --sabik-core-wave-opacity: .18;
+  --sabik-layer-speed: 72s;
+  --sabik-base-pulse-speed: 6.2s;
+  --sabik-wave-speed: 4.8s;
+  --sabik-ring-opacity-layer: .66;
+  --sabik-ring-front-opacity: .66;
+  --sabik-dot-opacity-layer: .36;
+  --sabik-avatar-brightness: .98;
+  --sabik-wave-opacity: .42;
+  --sabik-core-wave-opacity: .34;
 }
 
 .sabik-layered-avatar[data-low-intensity="true"] {
   --sabik-layer-motion: running;
   --sabik-base-motion: running;
   --sabik-wave-motion: running;
-  --sabik-layer-speed: 64s;
-  --sabik-base-pulse-speed: 7.8s;
-  --sabik-wave-speed: 5.8s;
-  --sabik-ring-opacity-layer: .35;
-  --sabik-ring-front-opacity: .35;
-  --sabik-dot-opacity-layer: 0;
-  --sabik-avatar-brightness: .94;
-  --sabik-wave-opacity: .28;
-  --sabik-core-wave-opacity: .26;
+  --sabik-layer-speed: 52s;
+  --sabik-base-pulse-speed: 5.8s;
+  --sabik-wave-speed: 4.2s;
+  --sabik-ring-opacity-layer: .64;
+  --sabik-ring-front-opacity: .64;
+  --sabik-dot-opacity-layer: .32;
+  --sabik-avatar-brightness: .98;
+  --sabik-wave-opacity: .42;
+  --sabik-core-wave-opacity: .34;
 }
 
 .sabik-layered-avatar[data-protection-state="riesgo"] {
@@ -748,9 +748,9 @@
 }
 
 .sabik-layered-avatar[data-interaction-state="pausa"] .sabik-avatar-base {
-  opacity: .86;
-  filter: brightness(.93) saturate(.9);
-  transform: scale(.985);
+  opacity: .96;
+  filter: brightness(.98) saturate(.95);
+  transform: scale(.992);
 }
 
 .sabik-panel.is-collapsed .sabik-avatar-base {
@@ -925,13 +925,13 @@
 .sabik-hologram[data-interaction-state="pausa"],
 .sabik-panel.is-collapsed .sabik-hologram {
   opacity: .72;
-  filter: saturate(.72) brightness(.98);
+  filter: saturate(.94) brightness(.99);
   animation-play-state: paused;
 }
 
 .sabik-hologram[data-interaction-state="pausa"] {
-  opacity: .88;
-  filter: drop-shadow(0 16px 32px rgba(92, 91, 190, .16)) saturate(.9) brightness(.98);
+  opacity: .96;
+  filter: drop-shadow(0 18px 36px rgba(92, 91, 190, .18)) saturate(.95) brightness(.99);
   animation-play-state: running;
 }
 
@@ -942,9 +942,9 @@
 }
 
 .sabik-hologram[data-low-intensity="true"] {
-  opacity: .74;
-  filter: saturate(.72) brightness(.98);
-  animation-duration: 12s;
+  opacity: .96;
+  filter: saturate(.94) brightness(.99);
+  animation-duration: 8.5s;
 }
 
 @keyframes sabikImageBreath {
@@ -1071,8 +1071,8 @@
 }
 
 body.sabik-low-stim .sabik-hologram {
-  filter: none;
-  opacity: .82;
+  filter: saturate(.94) brightness(.99);
+  opacity: .96;
 }
 
 @media (prefers-reduced-motion: reduce) {
