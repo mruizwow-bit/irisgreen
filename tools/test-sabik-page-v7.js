@@ -336,6 +336,20 @@ async function run() {
     "the full canonical hologram must not be reduced to the header identity mark"
   );
 
+  assert(
+    "V7-027 resting orbital motion remains perceptible",
+    css.includes("--sabik-layer-speed: 96s;") &&
+      css.includes('[data-cognitive-state="Hiperfoco"]') &&
+      css.includes("--sabik-layer-speed: 64s;") &&
+      css.includes('[data-interaction-state="procesando"]') &&
+      css.includes("--sabik-layer-speed: 30s;") &&
+      css.includes('[data-interaction-state="pausa"],') &&
+      css.includes('[data-protection-state="riesgo"],') &&
+      css.includes('[data-low-intensity="true"],') &&
+      css.includes("--sabik-layer-motion: paused;"),
+    "base motion must be visible while pause, risk, overload and low intensity can still stop it"
+  );
+
   const failures = results.filter((item) => !item.ok);
   results.forEach((item) => {
     console.log(`${item.ok ? "PASS" : "FAIL"} ${item.name}${item.detail ? ` - ${item.detail}` : ""}`);

@@ -431,7 +431,7 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-layered-avatar {
   --sabik-layer-motion: running;
-  --sabik-layer-speed: 240s;
+  --sabik-layer-speed: 96s;
   --sabik-layer-direction: normal;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
@@ -613,7 +613,7 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-layered-avatar[data-cognitive-state="Hiperfoco"] {
-  --sabik-layer-speed: 96s;
+  --sabik-layer-speed: 64s;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: .96;
@@ -654,7 +654,7 @@ body.sabik-panel-collapsed .sabik-hero {
 }
 
 .sabik-layered-avatar[data-interaction-state="procesando"] {
-  --sabik-layer-speed: 90s;
+  --sabik-layer-speed: 30s;
   --sabik-ring-opacity-layer: 1;
   --sabik-ring-front-opacity: 1;
   --sabik-dot-opacity-layer: 1;
