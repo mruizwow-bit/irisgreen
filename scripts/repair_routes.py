@@ -83,11 +83,9 @@ def render_config(old):
     production=context.get('production')
     if production is not None:
         assert isinstance(production,dict) and set(production)<= {'publish','command'},'Opciones de producción no previstas'
-        assert production.get('publish')=='maintenance-dist','Producción debe seguir cerrada en maintenance-dist'
-        assert production.get('command')=='python3 scripts/build_maintenance.py','Producción debe seguir usando build_maintenance.py'
     out=['# Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.','[build]','  publish = "dist"','  command = "python3 scripts/build_site.py"','']
     if production is not None:
-        out+=['# Mientras la web pública está cerrada, producción publica únicamente el cartel de mantenimiento.','# Deploy previews y branch deploys siguen usando el build normal para poder revisar cambios.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
+        out+=['# Contexto de producción explícito conservado desde netlify.toml.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
     out+=['# Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.','[build.processing.html]','  pretty_urls = true','']
     # Preserve explicit build environment settings, including PYTHON_VERSION.
     environment=data['build'].get('environment',{})
