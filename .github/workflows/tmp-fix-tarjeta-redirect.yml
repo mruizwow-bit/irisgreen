@@ -1,0 +1,30 @@
+name: Temporary fix Tarjeta Iris redirect
+
+on:
+  push:
+    branches:
+      - fix/tarjeta-iris-prefill-redirect-20260916
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore redirects from main and append approved rule
+        shell: bash
+        run: |
+          git fetch origin main
+          git checkout origin/main -- _redirects
+          printf '\n# La herramienta de Tarjeta Iris vive en Recursos\n/es/tarjetas-iris/*  /es/recursos/tarjeta-iris/  301\n' >> _redirects
+          git rm .github/workflows/tmp-fix-tarjeta-redirect.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _redirects
+          git commit -m "Tarjeta Iris: restore redirects and add legacy route"
+          git push origin HEAD:fix/tarjeta-iris-prefill-redirect-20260916
