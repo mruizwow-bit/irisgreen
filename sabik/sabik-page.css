@@ -382,6 +382,7 @@
   color: var(--sabik-ink);
   cursor: pointer;
   font-weight: 750;
+  white-space: nowrap;
 }
 
 .sabik-widget-body {
@@ -393,20 +394,8 @@
   align-self: start;
 }
 
-.sabik-panel.is-collapsed .sabik-widget-head {
-  grid-template-columns: 48px auto;
-}
-
-.sabik-panel.is-collapsed .sabik-widget-head > div {
-  display: none;
-}
-
 .sabik-panel.is-collapsed .sabik-widget-body {
   display: none;
-}
-
-body.sabik-panel-collapsed .sabik-hero {
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
 }
 
 .sabik-hologram {
@@ -553,29 +542,8 @@ body.sabik-panel-collapsed .sabik-hero {
   transition: opacity 520ms ease, filter 520ms ease, transform 620ms ease;
 }
 
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-2,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-4,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-6,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-8,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-10,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #ring-12 {
-  opacity: 0;
-}
-
-.sabik-layered-avatar[data-cognitive-state="VozInterior"] #dots-back,
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] #dots-back,
 .sabik-layered-avatar[data-low-intensity="true"] #dots-back {
   opacity: 0;
-}
-
-.sabik-layered-avatar[data-cognitive-state="Hiperfoco"] #rings-back,
-.sabik-layered-avatar[data-cognitive-state="Hiperfoco"] #rings-front {
-  transform: rotate(-18deg);
-}
-
-.sabik-layered-avatar[data-cognitive-state="Creatividad"] #rings-back,
-.sabik-layered-avatar[data-cognitive-state="Creatividad"] #rings-front {
-  transform: scale(1.055);
 }
 
 @keyframes sabikMeasuredPrecession {
@@ -707,63 +675,6 @@ body.sabik-panel-collapsed .sabik-hero {
 
 .sabik-orbits .sabik-dot-front {
   fill: rgba(131, 99, 255, var(--sabik-dot-opacity-layer));
-}
-
-.sabik-layered-avatar[data-cognitive-state="Hiperfoco"] {
-  --sabik-layer-speed: 24s;
-  --sabik-base-pulse-speed: 3.4s;
-  --sabik-wave-speed: 2.2s;
-  --sabik-wave-opacity: .72;
-  --sabik-ring-opacity-layer: 1;
-  --sabik-ring-front-opacity: 1;
-  --sabik-dot-opacity-layer: .96;
-  --sabik-avatar-brightness: 1.04;
-}
-
-.sabik-layered-avatar[data-cognitive-state="Sobrecarga"] {
-  --sabik-layer-speed: 72s;
-  --sabik-base-pulse-speed: 7.6s;
-  --sabik-wave-speed: 6.8s;
-  --sabik-wave-opacity: .22;
-  --sabik-core-wave-opacity: .2;
-  --sabik-ring-opacity-layer: .6;
-  --sabik-ring-front-opacity: .6;
-  --sabik-dot-opacity-layer: 0;
-  --sabik-avatar-brightness: .95;
-}
-
-.sabik-layered-avatar[data-cognitive-state="Vinculo"] {
-  --sabik-layer-speed: 44s;
-  --sabik-base-pulse-speed: 3.8s;
-  --sabik-wave-speed: 2.4s;
-  --sabik-wave-opacity: .72;
-  --sabik-ring-opacity-layer: 1;
-  --sabik-ring-front-opacity: 1;
-  --sabik-dot-opacity-layer: .8;
-  --sabik-avatar-brightness: 1.01;
-}
-
-.sabik-layered-avatar[data-cognitive-state="VozInterior"] {
-  --sabik-layer-speed: 80s;
-  --sabik-base-pulse-speed: 6.8s;
-  --sabik-wave-speed: 5.8s;
-  --sabik-wave-opacity: .34;
-  --sabik-ring-opacity-layer: .7;
-  --sabik-ring-front-opacity: .7;
-  --sabik-dot-opacity-layer: .35;
-  --sabik-avatar-brightness: .97;
-}
-
-.sabik-layered-avatar[data-cognitive-state="Creatividad"] {
-  --sabik-layer-speed: 30s;
-  --sabik-layer-direction: reverse;
-  --sabik-base-pulse-speed: 3.2s;
-  --sabik-wave-speed: 2s;
-  --sabik-wave-opacity: .78;
-  --sabik-ring-opacity-layer: 1;
-  --sabik-ring-front-opacity: 1;
-  --sabik-dot-opacity-layer: .98;
-  --sabik-avatar-brightness: 1.02;
 }
 
 .sabik-layered-avatar[data-interaction-state="procesando"] {
@@ -986,42 +897,6 @@ body.sabik-panel-collapsed .sabik-hero {
 .sabik-point-d { left: 18%; bottom: 5%; transform: scale(.74); }
 .sabik-point-e { right: 16%; bottom: 8%; transform: scale(.58); }
 
-.sabik-hologram[data-cognitive-state="NucleoBase"] {
-  opacity: .98;
-  filter: drop-shadow(0 18px 34px rgba(92, 91, 190, .18));
-}
-
-.sabik-hologram[data-cognitive-state="Hiperfoco"] {
-  opacity: 1;
-  filter: drop-shadow(0 18px 36px rgba(83, 94, 210, .24)) saturate(1.06);
-}
-
-.sabik-hologram[data-cognitive-state="Hiperfoco"] .sabik-orbit-3 {
-  opacity: calc(.38 * var(--sabik-overall-intensity));
-}
-
-.sabik-hologram[data-cognitive-state="Sobrecarga"] {
-  opacity: .72;
-  filter: saturate(.74) brightness(.96);
-  animation-play-state: paused;
-}
-
-.sabik-hologram[data-cognitive-state="Vinculo"] {
-  filter: drop-shadow(0 18px 34px rgba(133, 91, 135, .22)) hue-rotate(8deg) saturate(.98);
-}
-
-.sabik-hologram[data-cognitive-state="VozInterior"] {
-  opacity: .86;
-  filter: drop-shadow(0 14px 26px rgba(92, 91, 190, .12)) brightness(1.02);
-  transform: scale(.96);
-}
-
-.sabik-hologram[data-cognitive-state="Creatividad"] {
-  opacity: 1;
-  filter: drop-shadow(0 20px 42px rgba(132, 105, 232, .24)) saturate(1.08);
-  transform: scale(1.03);
-}
-
 .sabik-hologram[data-interaction-state="procesando"] {
   opacity: 1;
   filter: drop-shadow(0 20px 44px rgba(92, 91, 190, .26)) brightness(1.05) saturate(1.08);
@@ -1216,10 +1091,6 @@ body.sabik-low-stim .sabik-hologram {
     grid-template-columns: 1fr;
   }
 
-  body.sabik-panel-collapsed .sabik-hero {
-    grid-template-columns: 1fr;
-  }
-
   .sabik-main,
   .sabik-panel {
     padding: 18px;
@@ -1355,8 +1226,9 @@ body.sabik-iris-page .sabik-widget-head .sabik-hologram {
 
 /* Plegado: solo queda la cabecera. */
 .sabik-panel.is-collapsed .sabik-widget-head {
-  grid-template-columns: 44px minmax(0, 1fr) auto;
+  grid-template-columns: 44px auto;
   align-items: center;
+  justify-content: space-between;
 }
 
 body.sabik-iris-page .sabik-panel.is-collapsed .sabik-widget-head .sabik-hologram {
@@ -1364,11 +1236,7 @@ body.sabik-iris-page .sabik-panel.is-collapsed .sabik-widget-head .sabik-hologra
   max-width: 44px;
 }
 
-.sabik-panel.is-collapsed .sabik-widget-head > .sabik-identity {
-  display: flex;
-}
-
-.sabik-panel.is-collapsed .sabik-subtitle {
+.sabik-panel.is-collapsed .sabik-identity {
   display: none;
 }
 
@@ -1422,6 +1290,8 @@ body.sabik-iris-page .sabik-panel {
 }
 
 body.sabik-iris-page .sabik-panel.is-collapsed {
+  width: min(100%, 220px);
+  margin-left: auto;
   overflow: visible;
 }
 

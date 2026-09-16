@@ -188,11 +188,14 @@ async function run() {
       html.includes("aria-controls=\"sabik-widget-body\"") &&
       html.includes("class=\"sabik-panel\"") &&
       css.includes(".sabik-panel.is-collapsed .sabik-widget-body") &&
-      css.includes(".sabik-panel.is-collapsed .sabik-widget-head > div") &&
-      pageJs.includes("sabik-panel-collapsed") &&
+      css.includes(".sabik-panel.is-collapsed .sabik-identity") &&
+      css.includes("white-space: nowrap") &&
+      !pageJs.includes("sabik-panel-collapsed") &&
+      !css.includes("body.sabik-panel-collapsed") &&
+      !html.includes("body.sabik-panel-collapsed") &&
       html.includes("id=\"search-form\"") &&
       html.includes("id=\"q\""),
-    "collapse must affect only Sabik and hide its header copy"
+    "collapse must affect only Sabik, keep the button readable, and avoid global body layout side effects"
   );
 
   assert(
@@ -243,16 +246,12 @@ async function run() {
   );
 
   assert(
-    "V7-017 cognitive states map to visual parameters",
-    css.includes('[data-cognitive-state="NucleoBase"]') &&
-      css.includes('[data-cognitive-state="Hiperfoco"]') &&
-      css.includes('[data-cognitive-state="Sobrecarga"]') &&
-      css.includes('[data-cognitive-state="Vinculo"]') &&
-      css.includes('[data-cognitive-state="VozInterior"]') &&
-      css.includes('[data-cognitive-state="Creatividad"]') &&
+    "V7-017 cognitive states do not drive Sabik visual presence",
+    html.includes('data-cognitive-state="NucleoBase"') &&
       pageJs.includes("normalizeCognitiveState") &&
-      pageJs.includes("applySabikVisual"),
-    "all six NEA cognitive states must be visual states of the same component"
+      pageJs.includes("dataset.cognitiveState") &&
+      !css.includes("data-cognitive-state"),
+    "cognitive_state may be carried for audit, but CSS must not style the hologram from inferred state"
   );
 
   assert(
@@ -267,9 +266,11 @@ async function run() {
     "V7-019 processing and pause are functional visual states",
     pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
       pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
+      pageJs.includes("state.paused = true;") &&
+      pageJs.includes("state.paused = false;") &&
       css.includes('[data-interaction-state="procesando"]') &&
       css.includes('[data-interaction-state="pausa"]'),
-    "Enviar and Parar must affect functional motion without creating another Sabik"
+    "Enviar and Parar must affect functional motion, and a new interaction must recover from pause"
   );
 
   assert(
@@ -342,8 +343,6 @@ async function run() {
       css.includes("sabikAvatarBreath") &&
       css.includes("sabikVoiceRipple") &&
       css.includes("sabikPresenceWave") &&
-      css.includes('[data-cognitive-state="Hiperfoco"]') &&
-      css.includes("--sabik-layer-speed: 24s;") &&
       css.includes('[data-interaction-state="procesando"]') &&
       css.includes("--sabik-layer-speed: 14s;") &&
       css.includes("--sabik-wave-speed: 1.35s;") &&
@@ -355,6 +354,15 @@ async function run() {
       css.includes("--sabik-base-pulse-speed: 7.8s;") &&
       css.includes("--sabik-wave-opacity: .28;"),
     "base motion and voice waves must be visible; low intensity softens instead of killing Sabik"
+  );
+
+  assert(
+    "V7-028 low intensity is explicit and reversible",
+    pageJs.includes("low_intensity: !isLowIntensity") &&
+      pageJs.includes('button.textContent = lowIntensity ? "Subir intensidad" : "Bajar intensidad"') &&
+      pageJs.includes('button.setAttribute("aria-pressed", String(lowIntensity))') &&
+      pageJs.includes("Intensidad normal activada."),
+    "Bajar intensidad must toggle back to normal instead of permanently dimming Sabik"
   );
 
   const failures = results.filter((item) => !item.ok);

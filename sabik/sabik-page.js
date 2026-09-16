@@ -30,7 +30,8 @@
     session: null,
     lastInput: "",
     lastPlan: null,
-    coreReady: false
+    coreReady: false,
+    paused: false
   };
 
   function loadScript(src) {
@@ -87,6 +88,14 @@
     hologram.dataset.lowIntensity = String(lowIntensity);
   }
 
+  function syncLowIntensityButton(sabikState) {
+    const button = document.querySelector("#sabik-low");
+    if (!button) return;
+    const lowIntensity = Boolean(sabikState && sabikState.low_intensity);
+    button.textContent = lowIntensity ? "Subir intensidad" : "Bajar intensidad";
+    button.setAttribute("aria-pressed", String(lowIntensity));
+  }
+
   function setStatus(message, visual = "base") {
     text("#sabik-status-text", message);
     const presence = document.querySelector("#sabik-presence");
@@ -101,8 +110,10 @@
   }
 
   function renderSabikState(sabikState, fallbackText, interaction = "espera") {
+    if (interaction !== "pausa") state.paused = false;
     document.body.classList.toggle("sabik-low-stim", Boolean(sabikState && sabikState.low_intensity));
     applySabikVisual(sabikState, interaction);
+    syncLowIntensityButton(sabikState);
     setStatus(fallbackText, visualState(sabikState));
   }
 
@@ -110,6 +121,7 @@
     const submit = document.querySelector("#sabik-submit");
     if (submit) submit.disabled = isLoading;
     if (isLoading) {
+      state.paused = false;
       applySabikVisual(state.session && state.session.sabik_state, "procesando");
       setStatus("Sabik está buscando en Iris Green.", "minimal");
     }
@@ -218,10 +230,14 @@
 
     document.querySelector("#sabik-low")?.addEventListener("click", () => {
       if (!state.coreReady) return;
+      const isLowIntensity = Boolean(state.session && state.session.sabik_state && state.session.sabik_state.low_intensity);
       state.session = window.NEACoreV1.setSessionPreferences(state.session, {
-        low_intensity: true
+        low_intensity: !isLowIntensity
       });
-      renderSabikState(state.session.sabik_state, "Baja intensidad activada.");
+      renderSabikState(
+        state.session.sabik_state,
+        isLowIntensity ? "Intensidad normal activada." : "Baja intensidad activada."
+      );
     });
 
     document.querySelector("#sabik-clear")?.addEventListener("click", () => {
@@ -232,6 +248,8 @@
       state.session = window.NEACoreV1.createSessionState();
       state.lastInput = "";
       state.lastPlan = null;
+      state.paused = true;
+      syncLowIntensityButton(state.session.sabik_state);
       applySabikVisual(state.session.sabik_state, "pausa");
       setStatus("Sabik queda en pausa. No se ha guardado historial.", "minimal");
     });
@@ -279,9 +297,9 @@
       const collapsed = !panel.classList.contains("is-collapsed");
       panel.classList.toggle("is-collapsed", collapsed);
       if (widgetBody) widgetBody.hidden = collapsed;
-      document.body.classList.toggle("sabik-panel-collapsed", collapsed);
       button.setAttribute("aria-expanded", String(!collapsed));
       button.textContent = collapsed ? "Mostrar" : "Ocultar";
+      if (!collapsed) state.paused = false;
       applySabikVisual(state.session && state.session.sabik_state, collapsed ? "pausa" : "espera");
       // Plegado, el estado vive en la cabecera: es lo único que queda visible.
       text("#sabik-state-label", collapsed ? "Oculto" : "Disponible");
