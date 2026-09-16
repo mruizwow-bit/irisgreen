@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Regenera el índice local de Iris que consume Sabik desde el artefacto público.
 
-Solo usa contenido español publicable del build, excluye Datos y páginas noindex,
-y añade los 120 registros de Investigación como fragmentos con fuente pública
-/es/investigacion/. No escribe fuera del archivo de salida indicado.
+Extrae texto de ``dist`` pero decide la publicabilidad leyendo la fuente
+editorial correspondiente en ``es/...``. Esto evita que el índice acepte como
+publicable una página cuyo marcador de borrador fue retirado por el build
+antes de publicar. Excluye Datos y páginas noindex, y añade los 120 registros
+de Investigación como fragmentos con fuente pública /es/investigacion/.
+No escribe fuera del archivo de salida indicado.
 """
 from __future__ import annotations
 
@@ -65,6 +68,21 @@ def file_for_url(root: Path, url: str) -> Path:
     if path.endswith("/"):
         return root / rel / "index.html"
     return root / rel
+
+
+def source_file_for_url(source_root: Path, url: str) -> Path:
+    return file_for_url(source_root, url)
+
+
+def has_explicit_draft_marker(raw: str) -> bool:
+    return any(
+        marker in raw
+        for marker in (
+            '<span class="chip lil">BORRADOR</span>',
+            "Página en borrador",
+            "<li><strong>Estado:</strong> borrador</li>",
+        )
+    )
 
 
 class PageParser(HTMLParser):
@@ -188,7 +206,7 @@ def add_research_fragments(root: Path, fragments: list[dict[str, object]]) -> No
         })
 
 
-def build_index(root: Path, output: Path) -> dict[str, object]:
+def build_index(root: Path, output: Path, source_root: Path) -> dict[str, object]:
     sitemap = root / "sitemap.xml"
     tree = ET.parse(sitemap)
     urls = [node.text for node in tree.findall(f".//{{{SITEMAP_NS}}}loc") if node.text]
@@ -202,6 +220,17 @@ def build_index(root: Path, output: Path) -> dict[str, object]:
         if not path.is_file():
             skipped.append({"url": url, "reason": "missing_file"})
             continue
+        source_path = source_file_for_url(source_root, url)
+        if source_path.is_file():
+            source_raw = source_path.read_text(encoding="utf-8", errors="replace")
+            source_page = PageParser()
+            source_page.feed(source_raw)
+            if "noindex" in source_page.robots.lower():
+                skipped.append({"url": url, "reason": "source_noindex"})
+                continue
+            if has_explicit_draft_marker(source_raw):
+                skipped.append({"url": url, "reason": "source_draft_marker"})
+                continue
         raw = path.read_text(encoding="utf-8", errors="replace")
         if re.search(r"\bBORRADOR\b", raw, flags=re.I):
             skipped.append({"url": url, "reason": "draft_marker"})
@@ -253,7 +282,7 @@ def build_index(root: Path, output: Path) -> dict[str, object]:
 
     payload: dict[str, object] = {
         "generated_at": None,
-        "source_label": "irisgreen-main-dist",
+        "source_label": "irisgreen-main-dist-with-source-editorial-state",
         "language": "es",
         "base_url": BASE_URL,
         "url_count": len(included_urls),
@@ -284,9 +313,10 @@ def build_index(root: Path, output: Path) -> dict[str, object]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("dist"))
+    parser.add_argument("--source-root", type=Path, default=Path("."))
     parser.add_argument("--output", type=Path, default=Path("sabik/assets/NEA/generated/iris-fragments-index.es.json"))
     args = parser.parse_args()
-    result = build_index(args.root.resolve(), args.output.resolve())
+    result = build_index(args.root.resolve(), args.output.resolve(), args.source_root.resolve())
     print(json.dumps(result, ensure_ascii=False))
 
 
