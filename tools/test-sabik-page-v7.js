@@ -184,14 +184,15 @@ async function run() {
 
   assert(
     "V7-011 Sabik can be hidden while Iris Green remains available",
-    html.includes("id=\"sabik-toggle\"") &&
+      html.includes("id=\"sabik-toggle\"") &&
       html.includes("aria-controls=\"sabik-widget-body\"") &&
       html.includes("class=\"sabik-panel\"") &&
       css.includes(".sabik-panel.is-collapsed .sabik-widget-body") &&
+      css.includes(".sabik-panel.is-collapsed .sabik-widget-head > div") &&
       pageJs.includes("sabik-panel-collapsed") &&
       html.includes("id=\"search-form\"") &&
       html.includes("id=\"q\""),
-    "collapse must affect only Sabik widget body"
+    "collapse must affect only Sabik and hide its header copy"
   );
 
   assert(
@@ -310,6 +311,16 @@ async function run() {
       html.includes('content="noindex,follow"') &&
       !html.includes('content="index,follow"'),
     "the preview page must not be indexable while Sabik remains under review"
+  );
+
+  assert(
+    "V7-025 Sabik CSS is panel-scoped and does not restyle Iris home",
+    !/(^|\n)html,\s*\r?\nbody\s*\{/u.test(css) &&
+      !/(^|\n)body\s*\{[\s\S]{0,180}background\s*:/u.test(css) &&
+      !/(^|\n)a\s*\{/u.test(css) &&
+      css.includes(".sabik-panel {") &&
+      css.includes(".sabik-panel button"),
+    "Sabik CSS must not redefine global body, link, or page background styles"
   );
 
   const failures = results.filter((item) => !item.ok);
