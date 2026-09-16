@@ -49,7 +49,7 @@ Speech, motion, and technical error details may be stored in metadata, but metad
 ```js
 speech_meta: { energy, boundary_count, end_reason }
 motion_meta: { reduced }
-error_meta: { origin_operation, message }
+error_meta: { origin_operation, layer, code, message }
 ```
 
 ## B06/B07 Semantics
@@ -58,6 +58,9 @@ error_meta: { origin_operation, message }
 - Safety `uncertain` is not cleared by `SUBMIT` or `RESET_SESSION`.
 - During `booting`, ordinary events are rejected; only `BOOT_OK` may move `booting` to `ready`.
 - A technical error from `booting` records `error_meta.origin_operation: "booting"`; `RETRY` returns to `booting`, not `ready`.
+- Technical and speech errors preserve contractual metadata: `origin_operation`, `layer`, `code`, and `message` when present.
+- `RETRY` preserves `error_meta` for ordinary, uncertain, risk, and human handoff errors. Boot errors are the only retry path that drops `error_meta`.
+- When `motion_meta` is absent and the current state has `motion: "off"`, motion stays `off` until an explicit `SET_REDUCED_MOTION { enabled: false }` re-enables ordinary motion.
 - `RISK_CLEARED` is accepted only from active clarification: `operation: "awaiting_clarification"`, `dialogue: "clarification"`, `safety: "uncertain"`.
 - `RISK_CLEARED` from safety `uncertain` returns to `operation: "retrieving"`, `dialogue: "clarification"`, `speech: "silent"`, and `motion: "processing"`.
 - `RISK_CLEARED` from `normal`, `risk`, `human_handoff`, or paused `uncertain` is rejected without changing the previous state or incrementing `revision`.
@@ -102,7 +105,7 @@ python3 scripts/build_site.py
 Current local results in this Windows environment:
 
 ```text
-node tools/test-sabik-machine-s0.js  -> 36/36
+node tools/test-sabik-machine-s0.js  -> 37/37
 node tools/test-sabik-page-v7.js     -> 28/28
 ```
 

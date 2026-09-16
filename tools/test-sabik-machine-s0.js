@@ -134,13 +134,14 @@ function run() {
     );
   });
 
-  const bootError = step(initial, { type: EVENTS.TECHNICAL_ERROR, message: "fallo de arranque" });
+  const bootError = step(initial, { type: EVENTS.TECHNICAL_ERROR, code: "boot-failure", message: "fallo de arranque" });
   const bootRetry = step(bootError, EVENTS.RETRY);
   const bootReady = step(bootRetry, EVENTS.BOOT_OK);
   assert(
     "S0-007 boot technical error retries to booting before ready",
     bootError.operation === OPERATION.ERROR &&
       bootError.error_meta.origin_operation === OPERATION.BOOTING &&
+      bootError.error_meta.code === "boot-failure" &&
       bootRetry.operation === OPERATION.BOOTING &&
       bootRetry.motion === MOTION.OFF &&
       !Object.prototype.hasOwnProperty.call(bootRetry, "error_meta") &&
@@ -159,6 +160,8 @@ function run() {
   const retrieving = step(ready, EVENTS.SUBMIT);
   const composing = step(retrieving, EVENTS.RETRIEVAL_OK);
   const presentingInfo = step(composing, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.INFORMATION });
+  const presentingError = step(presentingInfo, { type: EVENTS.TECHNICAL_ERROR, code: "resource-load" });
+  const retryPresentingError = step(presentingError, EVENTS.RETRY);
   assert(
     "S0-009 ready to retrieving to composing to presenting",
     retrieving.operation === OPERATION.RETRIEVING &&
@@ -167,6 +170,12 @@ function run() {
       composing.motion === MOTION.PROCESSING &&
       presentingInfo.operation === OPERATION.PRESENTING &&
       presentingInfo.dialogue === DIALOGUE.INFORMATION &&
+      presentingError.operation === OPERATION.ERROR &&
+      presentingError.error_meta.origin_operation === OPERATION.PRESENTING &&
+      presentingError.error_meta.code === "resource-load" &&
+      retryPresentingError.operation === OPERATION.READY &&
+      retryPresentingError.error_meta.origin_operation === OPERATION.PRESENTING &&
+      retryPresentingError.error_meta.code === "resource-load" &&
       JSON.stringify(ready) === readySnapshot,
     `${retrieving.operation} -> ${composing.operation} -> ${presentingInfo.operation}/${presentingInfo.dialogue}`
   );
@@ -219,7 +228,7 @@ function run() {
 
   const uncertainPaused = step(uncertain, EVENTS.PAUSE_ASSISTANT);
   const resumedUncertain = step(uncertainPaused, EVENTS.RESUME_ASSISTANT);
-  const uncertainError = step(uncertain, { type: EVENTS.TECHNICAL_ERROR, message: "fallo en aclaracion" });
+  const uncertainError = step(uncertain, { type: EVENTS.TECHNICAL_ERROR, code: "resource-load", message: "fallo en aclaracion" });
   const uncertainRetry = step(uncertainError, EVENTS.RETRY);
   assert(
     "S0-014 uncertain safety preserves protection across pause, technical error, and retry",
@@ -235,10 +244,13 @@ function run() {
       uncertainError.safety === SAFETY.UNCERTAIN &&
       uncertainError.motion === MOTION.PROTECTION_STATIC &&
       uncertainError.error_meta.origin_operation === OPERATION.AWAITING_CLARIFICATION &&
+      uncertainError.error_meta.code === "resource-load" &&
       uncertainRetry.operation === OPERATION.AWAITING_CLARIFICATION &&
       uncertainRetry.dialogue === DIALOGUE.CLARIFICATION &&
       uncertainRetry.safety === SAFETY.UNCERTAIN &&
-      uncertainRetry.motion === MOTION.PROTECTION_STATIC,
+      uncertainRetry.motion === MOTION.PROTECTION_STATIC &&
+      uncertainRetry.error_meta.origin_operation === OPERATION.AWAITING_CLARIFICATION &&
+      uncertainRetry.error_meta.code === "resource-load",
     `${uncertainPaused.operation}/${uncertainError.operation}/${uncertainRetry.operation}`
   );
 
@@ -269,7 +281,7 @@ function run() {
   const speechResumed = step(speechPaused, EVENTS.SPEECH_RESUME);
   const speechStopped = step(speechResumed, EVENTS.SPEECH_STOP);
   const naturalSpeech = step(step(speechRequested, EVENTS.SPEECH_START), EVENTS.SPEECH_END);
-  const speechError = step(step(speechRequested, EVENTS.SPEECH_START), EVENTS.SPEECH_ERROR);
+  const speechError = step(step(speechRequested, EVENTS.SPEECH_START), { type: EVENTS.SPEECH_ERROR, code: "voice-unavailable" });
   assert(
     "S0-017 speech pause, resume, stop, end, and error update motion and metadata",
     speechPaused.speech === SPEECH.PAUSED &&
@@ -283,19 +295,22 @@ function run() {
       naturalSpeech.speech_meta.end_reason === "natural_end" &&
       speechError.speech === SPEECH.ERROR &&
       speechError.speech_meta.energy === 0 &&
-      speechError.motion === MOTION.OFF,
-    `${speechPaused.speech}/${speechPaused.motion}/${speechError.motion}`
+      speechError.motion === MOTION.OFF &&
+      speechError.error_meta.layer === "speech" &&
+      speechError.error_meta.code === "voice-unavailable",
+    `${speechPaused.speech}/${speechPaused.motion}/${speechError.motion}/${speechError.error_meta && speechError.error_meta.code}`
   );
 
   const activeRisk = step(boundary, EVENTS.RISK_CONFIRMED);
   const handoff = step(activeRisk, EVENTS.HUMAN_HANDOFF);
   const resetRisk = step(activeRisk, EVENTS.RESET_SESSION);
   const resetHandoff = step(handoff, EVENTS.RESET_SESSION);
-  const riskSpeechError = step(activeRisk, EVENTS.SPEECH_ERROR);
+  const riskSpeechError = step(activeRisk, { type: EVENTS.SPEECH_ERROR, code: "voice-unavailable" });
   const pausedRisk = step(activeRisk, EVENTS.PAUSE_ASSISTANT);
   const resumedRisk = step(pausedRisk, EVENTS.RESUME_ASSISTANT);
   const pausedHandoff = step(handoff, EVENTS.PAUSE_ASSISTANT);
   const resumedHandoff = step(pausedHandoff, EVENTS.RESUME_ASSISTANT);
+  const handoffSpeechError = step(handoff, { type: EVENTS.SPEECH_ERROR, code: "voice-unavailable" });
   assert(
     "S0-018 confirmed risk preempts active voice and pause/reset preserve protection",
     activeRisk.safety === SAFETY.RISK &&
@@ -309,6 +324,12 @@ function run() {
       resetHandoff.safety === SAFETY.HUMAN_HANDOFF &&
       riskSpeechError.speech === SPEECH.ERROR &&
       riskSpeechError.motion === MOTION.PROTECTION_STATIC &&
+      riskSpeechError.error_meta.layer === "speech" &&
+      riskSpeechError.error_meta.code === "voice-unavailable" &&
+      handoffSpeechError.speech === SPEECH.ERROR &&
+      handoffSpeechError.motion === MOTION.PROTECTION_STATIC &&
+      handoffSpeechError.error_meta.layer === "speech" &&
+      handoffSpeechError.error_meta.code === "voice-unavailable" &&
       pausedRisk.operation === OPERATION.PAUSED &&
       pausedRisk.motion === MOTION.PROTECTION_STATIC &&
       resumedRisk.operation === OPERATION.PRESENTING &&
@@ -340,17 +361,31 @@ function run() {
     /Invalid Sabik state transition/u
   );
 
-  const riskError = step(activeRisk, { type: EVENTS.TECHNICAL_ERROR, message: "fallo durante riesgo" });
+  const riskError = step(activeRisk, { type: EVENTS.TECHNICAL_ERROR, code: "resource-load", message: "fallo durante riesgo" });
   const retryRisk = step(riskError, EVENTS.RETRY);
+  const handoffError = step(handoff, { type: EVENTS.TECHNICAL_ERROR, code: "resource-load" });
+  const retryHandoff = step(handoffError, EVENTS.RETRY);
   assert(
     "S0-022 technical error preserves active protection",
     riskError.operation === OPERATION.ERROR &&
       riskError.safety === SAFETY.RISK &&
       riskError.dialogue === DIALOGUE.HUMAN_HANDOFF &&
+      riskError.error_meta.origin_operation === OPERATION.PRESENTING &&
+      riskError.error_meta.code === "resource-load" &&
       retryRisk.operation === OPERATION.PRESENTING &&
       retryRisk.safety === SAFETY.RISK &&
-      retryRisk.motion === MOTION.PROTECTION_STATIC,
-    `${riskError.operation}/${riskError.safety}/${retryRisk.operation}`
+      retryRisk.motion === MOTION.PROTECTION_STATIC &&
+      retryRisk.error_meta.origin_operation === OPERATION.PRESENTING &&
+      retryRisk.error_meta.code === "resource-load" &&
+      handoffError.operation === OPERATION.ERROR &&
+      handoffError.safety === SAFETY.HUMAN_HANDOFF &&
+      handoffError.error_meta.origin_operation === OPERATION.PRESENTING &&
+      handoffError.error_meta.code === "resource-load" &&
+      retryHandoff.operation === OPERATION.PRESENTING &&
+      retryHandoff.dialogue === DIALOGUE.HUMAN_HANDOFF &&
+      retryHandoff.motion === MOTION.PROTECTION_STATIC &&
+      retryHandoff.error_meta.code === "resource-load",
+    `${riskError.operation}/${riskError.safety}/${retryRisk.operation}/${retryHandoff.operation}`
   );
 
   const pauseAssistant = step(presentingInfo, EVENTS.PAUSE_ASSISTANT);
@@ -381,6 +416,7 @@ function run() {
   const reducedMotion = step(presentingInfo, { type: EVENTS.SET_REDUCED_MOTION, enabled: true });
   const reducedSpeech = step(step(reducedMotion, EVENTS.SPEECH_REQUEST), EVENTS.SPEECH_START);
   const restoredMotion = step(reducedSpeech, { type: EVENTS.SET_REDUCED_MOTION, enabled: false });
+  const reducedSpeechError = step(reducedSpeech, { type: EVENTS.SPEECH_ERROR, code: "voice-unavailable" });
   assert(
     "S0-025 voice works with reduced motion and motion recovers explicitly",
     reducedMotion.motion === MOTION.OFF &&
@@ -388,8 +424,36 @@ function run() {
       reducedSpeech.speech === SPEECH.SPEAKING &&
       reducedSpeech.motion === MOTION.OFF &&
       restoredMotion.motion_meta.reduced === false &&
-      restoredMotion.motion === MOTION.VOICE_REACTIVE,
-    `${reducedSpeech.speech}/${reducedSpeech.motion}/${restoredMotion.motion}`
+      restoredMotion.motion === MOTION.VOICE_REACTIVE &&
+      reducedSpeechError.speech === SPEECH.ERROR &&
+      reducedSpeechError.motion === MOTION.OFF &&
+      reducedSpeechError.error_meta.layer === "speech" &&
+      reducedSpeechError.error_meta.code === "voice-unavailable",
+    `${reducedSpeech.speech}/${reducedSpeech.motion}/${restoredMotion.motion}/${reducedSpeechError.motion}`
+  );
+
+  const noMotionMeta = clone(presentingInfo);
+  delete noMotionMeta.motion_meta;
+  noMotionMeta.motion = MOTION.OFF;
+  const noMotionSpeechRequest = step(noMotionMeta, EVENTS.SPEECH_REQUEST);
+  const noMotionSpeechStart = step(noMotionSpeechRequest, EVENTS.SPEECH_START);
+  const noMotionBoundary = step(noMotionSpeechStart, { type: EVENTS.SPEECH_BOUNDARY, energy: 0.4 });
+  const explicitMotionAllowed = step(noMotionMeta, { type: EVENTS.SET_REDUCED_MOTION, enabled: false });
+  assert(
+    "S0-026 omitted motion_meta keeps off until motion is explicitly re-enabled",
+    validateSabikState(noMotionMeta).ok &&
+      noMotionSpeechRequest.speech === SPEECH.STARTING &&
+      noMotionSpeechRequest.motion === MOTION.OFF &&
+      !Object.prototype.hasOwnProperty.call(noMotionSpeechRequest, "motion_meta") &&
+      noMotionSpeechStart.speech === SPEECH.SPEAKING &&
+      noMotionSpeechStart.motion === MOTION.OFF &&
+      !Object.prototype.hasOwnProperty.call(noMotionSpeechStart, "motion_meta") &&
+      noMotionBoundary.speech === SPEECH.SPEAKING &&
+      noMotionBoundary.motion === MOTION.OFF &&
+      !Object.prototype.hasOwnProperty.call(noMotionBoundary, "motion_meta") &&
+      explicitMotionAllowed.motion_meta.reduced === false &&
+      explicitMotionAllowed.motion === MOTION.AMBIENT,
+    `${noMotionSpeechRequest.motion}/${noMotionSpeechStart.motion}/${noMotionBoundary.motion}/${explicitMotionAllowed.motion}`
   );
 
   const exactAdaptation = step(ready, {
@@ -402,7 +466,7 @@ function run() {
   });
   const english = step(exactAdaptation, { type: EVENTS.SET_LANGUAGE, language: "en" });
   assert(
-    "S0-026 exact QA payloads update adaptation and language",
+    "S0-027 exact QA payloads update adaptation and language",
     exactAdaptation.adaptation.response_length === "short" &&
       exactAdaptation.adaptation.max_options === 1 &&
       exactAdaptation.adaptation.question_policy === "low" &&
@@ -414,7 +478,7 @@ function run() {
   );
 
   assert(
-    "S0-027 preferences remain adaptation, not diagnosis",
+    "S0-028 preferences remain adaptation, not diagnosis",
     deriveSabikPresentation(exactAdaptation).labels.no_diagnosis === true && exactAdaptation.safety === SAFETY.NORMAL,
     JSON.stringify(deriveSabikPresentation(exactAdaptation).labels)
   );
@@ -422,19 +486,19 @@ function run() {
   const deterministicA = [EVENTS.SUBMIT, EVENTS.RETRIEVAL_OK, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.PRACTICAL }, EVENTS.SPEECH_REQUEST, EVENTS.SPEECH_START].reduce(step, ready);
   const deterministicB = [EVENTS.SUBMIT, EVENTS.RETRIEVAL_OK, { type: EVENTS.RESPONSE_READY, dialogue: DIALOGUE.PRACTICAL }, EVENTS.SPEECH_REQUEST, EVENTS.SPEECH_START].reduce(step, ready);
   assert(
-    "S0-028 same input and event sequence produce same result",
+    "S0-029 same input and event sequence produce same result",
     JSON.stringify(deterministicA) === JSON.stringify(deterministicB),
     "transition must be deterministic"
   );
 
   expectThrow(
-    "S0-029 invalid event fails explicitly",
+    "S0-030 invalid event fails explicitly",
     () => transitionSabikState(ready, "NOT_A_REAL_EVENT"),
     /Invalid Sabik state event/u
   );
 
   expectThrow(
-    "S0-030 impossible event from state is rejected",
+    "S0-031 impossible event from state is rejected",
     () => transitionSabikState(ready, EVENTS.RETRIEVAL_OK),
     /Invalid Sabik state transition/u
   );
@@ -452,30 +516,42 @@ function run() {
   const invalidEnergy = clone(ready);
   invalidEnergy.speech_meta.energy = 1;
   const validPartialErrorMeta = clone(ready);
-  validPartialErrorMeta.error_meta = { origin_operation: OPERATION.BOOTING };
+  validPartialErrorMeta.error_meta = { origin_operation: OPERATION.BOOTING, layer: "speech", code: "voice-unavailable" };
   const validEmptyErrorMeta = clone(ready);
   validEmptyErrorMeta.error_meta = {};
+  const validPartialMotionMeta = clone(ready);
+  validPartialMotionMeta.motion_meta = {};
+  const invalidMotionMeta = clone(ready);
+  invalidMotionMeta.motion_meta = { reduced: "false" };
   const invalidErrorMetaType = clone(ready);
   invalidErrorMetaType.error_meta = "fallo";
   const invalidErrorMetaOrigin = clone(ready);
   invalidErrorMetaOrigin.error_meta = { origin_operation: "not_real" };
+  const invalidErrorMetaLayer = clone(ready);
+  invalidErrorMetaLayer.error_meta = { layer: 4 };
+  const invalidErrorMetaCode = clone(ready);
+  invalidErrorMetaCode.error_meta = { code: "" };
   const invalidErrorMetaMessage = clone(ready);
   invalidErrorMetaMessage.error_meta = { message: 42 };
   const invalidExtra = clone(ready);
   invalidExtra.error = "not public";
   assert(
-    "S0-031 validate accepts optional error_meta and rejects invalid metadata",
+    "S0-032 validate accepts optional metadata and rejects invalid metadata",
     validateSabikState(ready).ok === true &&
       validateSabikState(validPartialErrorMeta).ok === true &&
       validateSabikState(validEmptyErrorMeta).ok === true &&
+      validateSabikState(validPartialMotionMeta).ok === true &&
+      validateSabikState(invalidMotionMeta).ok === false &&
       validateSabikState(invalidErrorMetaType).ok === false &&
       validateSabikState(invalidErrorMetaOrigin).ok === false &&
+      validateSabikState(invalidErrorMetaLayer).ok === false &&
+      validateSabikState(invalidErrorMetaCode).ok === false &&
       validateSabikState(invalidErrorMetaMessage).ok === false,
-    "error_meta must be optional, partial, and validated when explicit"
+    "metadata must be optional, partial, and validated when explicit"
   );
 
   assert(
-    "S0-032 validate rejects stale values and incoherent public states",
+    "S0-033 validate rejects stale values and incoherent public states",
     validateSabikState(invalidOldOperation).ok === false &&
       validateSabikState(invalidOldSafety).ok === false &&
       validateSabikState(invalidOldSpeech).ok === false &&

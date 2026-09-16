@@ -122,6 +122,7 @@ const INTENSITIES = new Set(Object.values(ADAPTATION.INTENSITY));
 const DEPTHS = new Set(Object.values(ADAPTATION.DEPTH));
 const RESPONSE_LENGTHS = new Set(Object.values(ADAPTATION.RESPONSE_LENGTH));
 const QUESTION_POLICIES = new Set(Object.values(ADAPTATION.QUESTION_POLICY));
+const ERROR_LAYERS = new Set(["operation", "speech"]);
 const CONTRACT_KEYS = new Set([
   "operation",
   "dialogue",
@@ -158,6 +159,8 @@ function defaultMotionMeta(meta = {}) {
 function defaultErrorMeta(meta = {}) {
   return {
     origin_operation: hasOwn(meta, "origin_operation") ? meta.origin_operation : null,
+    layer: hasOwn(meta, "layer") ? meta.layer : null,
+    code: hasOwn(meta, "code") ? meta.code : null,
     message: hasOwn(meta, "message") ? meta.message : null
   };
 }
@@ -165,7 +168,7 @@ function defaultErrorMeta(meta = {}) {
 function normalizeSabikState(state) {
   const normalized = clone(state);
   normalized.speech_meta = defaultSpeechMeta(normalized.speech_meta);
-  normalized.motion_meta = defaultMotionMeta(normalized.motion_meta);
+  if (hasOwn(normalized, "motion_meta")) normalized.motion_meta = defaultMotionMeta(normalized.motion_meta);
   if (hasOwn(normalized, "error_meta")) normalized.error_meta = defaultErrorMeta(normalized.error_meta);
   return normalized;
 }
@@ -203,7 +206,8 @@ function safetyAttention(state) {
 function ordinaryMotionFor(state, operation = state.operation, speech = state.speech) {
   if (state.safety === SAFETY.UNCERTAIN || activeProtection(state)) return MOTION.PROTECTION_STATIC;
   if (operation === OPERATION.PAUSED) return MOTION.OFF;
-  if (defaultMotionMeta(state.motion_meta).reduced) return MOTION.OFF;
+  if (hasOwn(state, "motion_meta") && defaultMotionMeta(state.motion_meta).reduced) return MOTION.OFF;
+  if (!hasOwn(state, "motion_meta") && state.motion === MOTION.OFF) return MOTION.OFF;
   if (speech === SPEECH.SPEAKING) return MOTION.VOICE_REACTIVE;
   if (operation === OPERATION.RETRIEVING || operation === OPERATION.COMPOSING) return MOTION.PROCESSING;
   return MOTION.AMBIENT;
@@ -309,7 +313,7 @@ function validateSabikState(state) {
 
   if (hasOwn(state, "motion_meta") && (!state.motion_meta || typeof state.motion_meta !== "object")) {
     errors.push("invalid motion_meta");
-  } else if (hasOwn(state, "motion_meta") && typeof state.motion_meta.reduced !== "boolean") {
+  } else if (hasOwn(state, "motion_meta") && hasOwn(state.motion_meta, "reduced") && typeof state.motion_meta.reduced !== "boolean") {
     errors.push("invalid reduced motion flag");
   }
 
@@ -318,6 +322,8 @@ function validateSabikState(state) {
   } else if (hasOwn(state, "error_meta")) {
     const errorMeta = defaultErrorMeta(state.error_meta);
     if (errorMeta.origin_operation !== null && !OPERATIONS.has(errorMeta.origin_operation)) errors.push("invalid error origin_operation");
+    if (errorMeta.layer !== null && (typeof errorMeta.layer !== "string" || !ERROR_LAYERS.has(errorMeta.layer))) errors.push("invalid error layer");
+    if (errorMeta.code !== null && (typeof errorMeta.code !== "string" || errorMeta.code.trim() === "")) errors.push("invalid error code");
     if (errorMeta.message !== null && typeof errorMeta.message !== "string") errors.push("invalid error message");
   }
 
@@ -368,7 +374,7 @@ function deriveSabikPresentation(state) {
     speech: normalized.speech,
     speech_energy: normalized.speech === SPEECH.SPEAKING ? normalized.speech_meta.energy : 0,
     motion: normalized.motion,
-    motion_reduced: normalized.motion_meta.reduced,
+    motion_reduced: defaultMotionMeta(normalized.motion_meta).reduced,
     language: normalized.language,
     adaptation: clone(normalized.adaptation),
     labels: {
@@ -548,6 +554,11 @@ function transitionSabikState(currentState, event) {
     case EVENTS.SPEECH_ERROR:
       withSpeech(next, SPEECH.ERROR, 0, "error");
       next.motion = activeProtection(next) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
+      next.error_meta = defaultErrorMeta({
+        layer: "speech",
+        code: typeof eventValue(event, "code", null) === "string" ? eventValue(event, "code", null) : null,
+        message: typeof eventValue(event, "message", null) === "string" ? eventValue(event, "message", null) : null
+      });
       break;
 
     case EVENTS.RISK_UNCERTAIN:
@@ -585,6 +596,8 @@ function transitionSabikState(currentState, event) {
       next.dialogue = dialogueForTechnicalError(previous);
       next.error_meta = defaultErrorMeta({
         origin_operation: previous.operation,
+        layer: "operation",
+        code: typeof eventValue(event, "code", null) === "string" ? eventValue(event, "code", null) : null,
         message: typeof eventValue(event, "message", null) === "string" ? eventValue(event, "message", null) : null
       });
       withSpeech(next, SPEECH.SILENT, 0, "technical_error");
@@ -597,7 +610,7 @@ function transitionSabikState(currentState, event) {
       next.dialogue = dialogueForSafety(previous.safety);
       withSpeech(next, SPEECH.SILENT, 0, null);
       next.motion = next.operation === OPERATION.BOOTING ? MOTION.OFF : previous.safety === SAFETY.NORMAL ? ordinaryMotionFor(next) : MOTION.PROTECTION_STATIC;
-      clearErrorMeta(next);
+      if (next.operation === OPERATION.BOOTING) clearErrorMeta(next);
       break;
 
     case EVENTS.SET_ADAPTATION: {
@@ -654,6 +667,7 @@ function transitionSabikState(currentState, event) {
 
     case EVENTS.SET_REDUCED_MOTION: {
       const enabled = Boolean(eventValue(event, "enabled", eventValue(event, "value", false)));
+      next.motion_meta = defaultMotionMeta(next.motion_meta);
       next.motion_meta.reduced = enabled;
       next.motion = safetyAttention(next) ? MOTION.PROTECTION_STATIC : ordinaryMotionFor(next, next.operation, next.speech);
       break;
