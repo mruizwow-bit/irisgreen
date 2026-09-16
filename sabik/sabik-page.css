@@ -699,7 +699,6 @@
   --sabik-dot-opacity-layer: .72;
 }
 
-.sabik-layered-avatar[data-interaction-state="pausa"],
 .sabik-layered-avatar[data-protection-state="riesgo"],
 .sabik-panel.is-collapsed .sabik-layered-avatar {
   --sabik-layer-motion: paused;
@@ -710,6 +709,21 @@
   --sabik-ring-front-opacity: .5;
   --sabik-dot-opacity-layer: .2;
   --sabik-avatar-brightness: .96;
+}
+
+.sabik-layered-avatar[data-interaction-state="pausa"] {
+  --sabik-layer-motion: running;
+  --sabik-base-motion: running;
+  --sabik-wave-motion: running;
+  --sabik-layer-speed: 128s;
+  --sabik-base-pulse-speed: 9.2s;
+  --sabik-wave-speed: 7.2s;
+  --sabik-ring-opacity-layer: .46;
+  --sabik-ring-front-opacity: .46;
+  --sabik-dot-opacity-layer: .18;
+  --sabik-avatar-brightness: .92;
+  --sabik-wave-opacity: .2;
+  --sabik-core-wave-opacity: .18;
 }
 
 .sabik-layered-avatar[data-low-intensity="true"] {
@@ -727,19 +741,18 @@
   --sabik-core-wave-opacity: .26;
 }
 
-.sabik-layered-avatar[data-interaction-state="pausa"] {
-  --sabik-avatar-brightness: .82;
-  --sabik-wave-opacity: .08;
-  --sabik-core-wave-opacity: .07;
-}
-
 .sabik-layered-avatar[data-protection-state="riesgo"] {
   --sabik-avatar-brightness: .86;
   --sabik-wave-opacity: .1;
   --sabik-core-wave-opacity: .1;
 }
 
-.sabik-layered-avatar[data-interaction-state="pausa"] .sabik-avatar-base,
+.sabik-layered-avatar[data-interaction-state="pausa"] .sabik-avatar-base {
+  opacity: .86;
+  filter: brightness(.93) saturate(.9);
+  transform: scale(.985);
+}
+
 .sabik-panel.is-collapsed .sabik-avatar-base {
   opacity: .62;
   filter: brightness(.82) saturate(.7);
@@ -914,6 +927,12 @@
   opacity: .72;
   filter: saturate(.72) brightness(.98);
   animation-play-state: paused;
+}
+
+.sabik-hologram[data-interaction-state="pausa"] {
+  opacity: .88;
+  filter: drop-shadow(0 16px 32px rgba(92, 91, 190, .16)) saturate(.9) brightness(.98);
+  animation-play-state: running;
 }
 
 .sabik-hologram[data-protection-state="riesgo"] {

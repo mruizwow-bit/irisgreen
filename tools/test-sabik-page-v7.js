@@ -264,13 +264,18 @@ async function run() {
 
   assert(
     "V7-019 processing and pause are functional visual states",
-    pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
+      pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
       pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
       pageJs.includes("state.paused = true;") &&
       pageJs.includes("state.paused = false;") &&
+      pageJs.includes("syncPauseButton(true)") &&
+      pageJs.includes("syncPauseButton(false)") &&
+      pageJs.includes('button.textContent = paused ? "Reanudar" : "Parar"') &&
       css.includes('[data-interaction-state="procesando"]') &&
-      css.includes('[data-interaction-state="pausa"]'),
-    "Enviar and Parar must affect functional motion, and a new interaction must recover from pause"
+      css.includes('[data-interaction-state="pausa"]') &&
+      css.includes("--sabik-layer-speed: 128s;") &&
+      css.includes("--sabik-wave-opacity: .2;"),
+    "Enviar and Parar must affect functional motion, pause must stay gently alive, and Reanudar must recover"
   );
 
   assert(
@@ -346,7 +351,9 @@ async function run() {
       css.includes('[data-interaction-state="procesando"]') &&
       css.includes("--sabik-layer-speed: 14s;") &&
       css.includes("--sabik-wave-speed: 1.35s;") &&
-      css.includes('[data-interaction-state="pausa"],') &&
+      css.includes('.sabik-layered-avatar[data-interaction-state="pausa"]') &&
+      css.includes("--sabik-layer-speed: 128s;") &&
+      css.includes("--sabik-base-pulse-speed: 9.2s;") &&
       css.includes('[data-protection-state="riesgo"],') &&
       css.includes("--sabik-layer-motion: paused;") &&
       css.includes('[data-low-intensity="true"]') &&

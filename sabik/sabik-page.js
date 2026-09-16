@@ -96,6 +96,13 @@
     button.setAttribute("aria-pressed", String(lowIntensity));
   }
 
+  function syncPauseButton(paused) {
+    const button = document.querySelector("#sabik-clear");
+    if (!button) return;
+    button.textContent = paused ? "Reanudar" : "Parar";
+    button.setAttribute("aria-pressed", String(paused));
+  }
+
   function setStatus(message, visual = "base") {
     text("#sabik-status-text", message);
     const presence = document.querySelector("#sabik-presence");
@@ -110,7 +117,10 @@
   }
 
   function renderSabikState(sabikState, fallbackText, interaction = "espera") {
-    if (interaction !== "pausa") state.paused = false;
+    if (interaction !== "pausa") {
+      state.paused = false;
+      syncPauseButton(false);
+    }
     document.body.classList.toggle("sabik-low-stim", Boolean(sabikState && sabikState.low_intensity));
     applySabikVisual(sabikState, interaction);
     syncLowIntensityButton(sabikState);
@@ -122,6 +132,7 @@
     if (submit) submit.disabled = isLoading;
     if (isLoading) {
       state.paused = false;
+      syncPauseButton(false);
       applySabikVisual(state.session && state.session.sabik_state, "procesando");
       setStatus("Sabik está buscando en Iris Green.", "minimal");
     }
@@ -242,6 +253,14 @@
 
     document.querySelector("#sabik-clear")?.addEventListener("click", () => {
       if (!window.NEACoreV1) return;
+      if (state.paused) {
+        state.paused = false;
+        syncPauseButton(false);
+        applySabikVisual(state.session && state.session.sabik_state, "espera");
+        setStatus("Sabik vuelve a estar disponible.", "base");
+        text("#sabik-state-label", "Disponible");
+        return;
+      }
       input.value = "";
       output.hidden = true;
       clearSources();
@@ -250,6 +269,7 @@
       state.lastPlan = null;
       state.paused = true;
       syncLowIntensityButton(state.session.sabik_state);
+      syncPauseButton(true);
       applySabikVisual(state.session.sabik_state, "pausa");
       setStatus("Sabik queda en pausa. No se ha guardado historial.", "minimal");
     });
