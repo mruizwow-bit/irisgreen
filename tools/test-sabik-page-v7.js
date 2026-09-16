@@ -323,6 +323,19 @@ async function run() {
     "Sabik CSS must not redefine global body, link, or page background styles"
   );
 
+  const headIndex = html.indexOf('class="sabik-widget-head"');
+  const bodyIndex = html.indexOf('id="sabik-widget-body"');
+  const hologramIndex = html.indexOf('id="sabik-hologram"');
+  assert(
+    "V7-026 canonical hologram stays in the panel body",
+    headIndex >= 0 &&
+      bodyIndex > headIndex &&
+      hologramIndex > bodyIndex &&
+      !html.slice(headIndex, bodyIndex).includes('id="sabik-hologram"') &&
+      html.includes('class="sabik-head-mark"'),
+    "the full canonical hologram must not be reduced to the header identity mark"
+  );
+
   const failures = results.filter((item) => !item.ok);
   results.forEach((item) => {
     console.log(`${item.ok ? "PASS" : "FAIL"} ${item.name}${item.detail ? ` - ${item.detail}` : ""}`);

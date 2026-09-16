@@ -1227,3 +1227,59 @@ body.sabik-iris-page .sabik-panel.is-collapsed .sabik-widget-head .sabik-hologra
 .sabik-panel.is-collapsed .sabik-widget-body {
   display: none;
 }
+/* Sabik panel coupling fix: keep the canonical hologram in the panel body. */
+body.sabik-iris-page .sabik-widget-head {
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.sabik-head-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 48% 45%, rgba(255, 255, 255, .96) 0 9%, rgba(89, 184, 255, .78) 10% 21%, rgba(93, 78, 231, .72) 33%, rgba(184, 141, 255, .48) 51%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(circle, rgba(246, 248, 255, .96), rgba(223, 229, 255, .18) 62%, rgba(255, 255, 255, 0) 78%);
+  box-shadow:
+    0 0 0 1px rgba(123, 104, 238, .16),
+    0 10px 24px rgba(68, 73, 170, .16),
+    inset 0 0 18px rgba(255, 255, 255, .8);
+  flex: none;
+}
+
+body.sabik-iris-page .sabik-widget-body > .sabik-hologram {
+  width: min(100%, 232px);
+  max-width: 232px;
+  min-height: 0;
+  margin: 0 auto 8px;
+}
+
+body.sabik-iris-page .sabik-widget-body > .sabik-layered-avatar {
+  aspect-ratio: 1;
+  position: relative;
+  display: block;
+  isolation: isolate;
+  overflow: visible;
+}
+
+body.sabik-iris-page .sabik-panel.is-collapsed .sabik-head-mark {
+  width: 44px;
+  height: 44px;
+  opacity: .76;
+}
+body.sabik-iris-page .sabik-panel {
+  max-height: calc(100vh - 128px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+body.sabik-iris-page .sabik-panel.is-collapsed {
+  overflow: visible;
+}
+
+@media (max-width: 1280px) {
+  body.sabik-iris-page .sabik-panel {
+    max-height: none;
+    overflow: visible;
+  }
+}
