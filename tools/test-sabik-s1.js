@@ -35,8 +35,30 @@ async function fresh(options = {}) {
   await context.addInitScript(() => {
     const OriginalWorker = window.Worker;
     window.__s1States = []; window.__s1Announcements = []; window.__s1Errors = [];
+    window.__s1Events = []; window.__s1CoreCalls = []; window.__s1Sessions = [];
+    // Test-only observation: preserve return values/references and call the real Core.
+    let observedCore;
+    Object.defineProperty(window, 'NEACoreV1', {
+      configurable: true,
+      get: () => observedCore,
+      set(api) {
+        for (const name of ['createSessionState', 'setSessionPreferences', 'registerPlanRejection', 'buildResponsePlan']) {
+          const original = api[name];
+          api[name] = function (...args) {
+            window.__s1CoreCalls.push(name);
+            const result = original.apply(this, args);
+            const session = name === 'buildResponsePlan' ? result.session : result;
+            window.__s1Session = session;
+            if (!window.__s1Sessions.includes(session)) window.__s1Sessions.push(session);
+            return result;
+          };
+        }
+        observedCore = api;
+      }
+    });
     window.Worker = class extends OriginalWorker {
       constructor(...args) { super(...args); this.addEventListener("message", e => { if(e.data.state) window.__s1States.push(e.data.state); }); }
+      postMessage(data, ...args) { window.__s1Events.push(data.event); return super.postMessage(data, ...args); }
     };
     document.addEventListener("DOMContentLoaded", () => {
       new MutationObserver(() => window.__s1Announcements.push(document.querySelector("#sabik-announcement").textContent))
@@ -163,6 +185,86 @@ async function main() {
   await el('input').fill('Consulta con error tardío'); await el('submit').click(); await seen;
   await reset(); releaseFailure(); await page.waitForLoadState('networkidle');
   extra.push({id:'X02',check:'Reset ignores late load errors',pass:await el('output').isHidden() && (await state()).operation==='ready'});
+  async function contract(id, check, fn) {
+    try { await fn(); extra.push({id,check,pass:true}); }
+    catch(error) { extra.push({id,check,pass:false,detail:error.message}); }
+  }
+  // Snapshot the full actual session, not only visual data-* attributes. This
+  // catches cognitive/profile/risk mutations even if no response is rendered.
+  const behavior = () => page.evaluate(() => ({
+    machine: window.__s1States.at(-1), session: window.__s1Session,
+    calls: window.__s1CoreCalls.slice(), events: window.__s1Events.slice(),
+    sessionIndex: window.__s1Sessions.indexOf(window.__s1Session),
+    answer: document.querySelector('#sabik-answer').textContent,
+    sources: document.querySelector('#sabik-sources').innerHTML,
+    cognitive: document.querySelector('#sabik-hologram').dataset.cognitiveState,
+    protection: document.querySelector('#sabik-hologram').dataset.protectionState,
+    intensity: document.querySelector('#sabik-hologram').dataset.lowIntensity
+  }));
+  await contract('X03', 'V7-019: S0 controls preserve the same session and processing/pause presentation', async () => {
+    await fresh();
+    const held = await holdData();
+    await el('input').fill('Qué es la sobrecarga sensorial'); await el('submit').click(); await held.seen;
+    assert.equal((await state()).operation, 'retrieving');
+    assert.equal(await el('hologram').getAttribute('data-interaction-state'), 'procesando');
+    held.release(); await op('presenting'); await enabled('submit');
+    await el('low').click(); // Non-default preference must survive pause/resume too.
+    const before = await behavior(), input = await el('input').inputValue();
+    await pause();
+    assert.equal(await el('hologram').getAttribute('data-interaction-state'), 'pausa');
+    assert.equal(await el('clear').isHidden(), true); assert.equal(await el('resume').isEnabled(), true);
+    assert.equal(await el('submit').isDisabled(), true); assert.equal(await el('reset-session').isEnabled(), true);
+    await resume();
+    assert.equal(await el('clear').isEnabled(), true); assert.equal(await el('resume').isHidden(), true);
+    const after = await behavior();
+    for (const key of ['session','calls','sessionIndex','answer','sources','cognitive','protection','intensity']) assert.deepEqual(after[key],before[key],key);
+    assert.equal(await el('input').inputValue(),input);
+    assert.deepEqual(after.events.slice(before.events.length),[{type:'PAUSE_ASSISTANT'},{type:'RESUME_ASSISTANT'}]);
+    assert.equal(after.machine.operation,'ready');
+    assert.equal(after.machine.revision,before.machine.revision+2);
+  });
+  await contract('X04', 'V7-022: typing and validation cannot infer cognition, diagnosis, risk or profile', async () => {
+    await fresh();
+    const before = await behavior();
+    // Synthetic strings intentionally include risk/diagnostic terms but are NOT submitted.
+    await el('input').fill('Estoy en peligro. Dislexia, autismo, sobrecarga.');
+    await page.keyboard.press('End'); await page.keyboard.press('Enter');
+    await page.keyboard.press('Shift+Enter'); await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('a');
+    assert.deepEqual(await behavior(),before);
+    await el('input').fill('x'.repeat(2001)); await el('submit').click();
+    assert.equal(await el('input').getAttribute('aria-invalid'),'true');
+    assert.deepEqual(await behavior(),before);
+    await el('input').fill('Texto corregido');
+    assert.equal(await el('input').getAttribute('aria-invalid'),'false');
+    assert.deepEqual(await behavior(),before);
+  });
+  await contract('X05', 'V7-022: passive signals have no Core, S0 or presentation effect', async () => {
+    const before = await behavior();
+    await page.evaluate(() => {
+      for (const type of ['scroll','mousemove','pointermove','touchmove','visibilitychange','deviceorientation']) {
+        for (const target of [window,document,document.querySelector('#sabik-input')]) target.dispatchEvent(new Event(type,{bubbles:true}));
+      }
+    });
+    await page.mouse.move(20,20); await page.mouse.move(200,100); await page.mouse.wheel(0,120);
+    assert.deepEqual(await behavior(),before);
+  });
+  await contract('X06', 'V7-022: Escape changes only visibility; Ctrl Enter submits explicitly', async () => {
+    const before = await behavior();
+    await el('input').focus(); await page.keyboard.press('Escape');
+    await page.waitForFunction(() => document.querySelector('#sabik-widget-body').hidden); await enabled('toggle');
+    const collapsed = await behavior();
+    assert.deepEqual(collapsed.machine,{...before.machine,visibility:'collapsed',revision:before.machine.revision+1});
+    for (const key of ['session','calls','sessionIndex','answer','sources','cognitive','protection','intensity']) assert.deepEqual(collapsed[key],before[key],key);
+    assert.deepEqual(collapsed.events.slice(before.events.length),[{type:'COLLAPSE'}]);
+    await toggle();
+    const ready = await behavior();
+    await el('input').fill('Qué es el autismo'); await page.keyboard.press('Control+Enter');
+    await op('presenting'); await enabled('submit');
+    const submitted = await behavior();
+    assert.equal(submitted.events.slice(ready.events.length).filter(e=>e.type==='SUBMIT').length,1);
+    assert.deepEqual(submitted.calls.slice(ready.calls.length),['buildResponsePlan']);
+  });
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));
   if(results.some(r=>r.automated==='FAIL')) process.exitCode=1;
