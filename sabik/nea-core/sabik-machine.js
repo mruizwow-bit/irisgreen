@@ -310,13 +310,13 @@ function validateSabikState(state) {
     if (state.speech !== SPEECH.SPEAKING && speechMeta.energy !== 0) errors.push("inactive speech must have zero energy");
   }
 
-  if (hasOwn(state, "motion_meta") && (!state.motion_meta || typeof state.motion_meta !== "object")) {
+  if (hasOwn(state, "motion_meta") && (!state.motion_meta || typeof state.motion_meta !== "object" || Array.isArray(state.motion_meta))) {
     errors.push("invalid motion_meta");
   } else if (hasOwn(state, "motion_meta") && hasOwn(state.motion_meta, "reduced") && typeof state.motion_meta.reduced !== "boolean") {
     errors.push("invalid reduced motion flag");
   }
 
-  if (hasOwn(state, "error_meta") && (!state.error_meta || typeof state.error_meta !== "object")) {
+  if (hasOwn(state, "error_meta") && (!state.error_meta || typeof state.error_meta !== "object" || Array.isArray(state.error_meta))) {
     errors.push("invalid error_meta");
   } else if (hasOwn(state, "error_meta")) {
     const errorMeta = defaultErrorMeta(state.error_meta);

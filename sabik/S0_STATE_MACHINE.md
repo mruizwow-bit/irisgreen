@@ -131,10 +131,50 @@ The B06/B07 subset is contained in the consolidated matrix; it is not additional
 
 Separate stdout, stderr and command/exit-code records are in `C:\Users\mruiz\AppData\Local\Temp\sabik-s0-cycle7-evidence`: `00-before-contract.*` for the reproduction and `01-machine.*` through `05-addendum.*` for the final runs.
 
+## Eighth-Cycle Validation
+
+Parent implementation: `81b44a5b8bfdcb3f662b8d7de3385cbce8090f63`. The normative contract is still `1c3205fbb0fac8ccb5f2c946d73e4e038a479a0b`.
+
+`validateSabikState()` now rejects arrays in `motion_meta` and `error_meta` before normalization, using the same non-null, non-array object check as `speech_meta`. Empty and populated arrays return `ok: false` with an identifiable metadata error. Transitions and presentation derivation reject those inputs through the same validation boundary without changing the input, event or revision.
+
+Metadata omission, empty objects, valid partial objects and error profiles E0/E1/E2/E3 remain accepted. Defaults, `speech_meta.end_reason`, transition behavior and the conservative motion rule are unchanged. The runtime change is limited to the two array checks.
+
+The seven intact QA inputs from the prior verified package were reused in `C:\Users\mruiz\AppData\Local\Temp\sabik-s0-cycle7-qa\inputs\qa`. All seven hashes were verified against the package manifest before and after execution. The newer `EVIDENCIA_QA_S0_81B44A5B.zip` was not available locally; no reconstruction or download was needed because these QA inputs already match the same normative SHA.
+
+From the implementation root:
+
+```bash
+node tools/test-sabik-machine-s0.js
+node tools/test-sabik-page-v7.js
+```
+
+From the QA root above, each command was executed separately:
+
+```powershell
+node tests/specs/sabik/validate-s0-contract-consistency.mjs
+node tests/specs/sabik/run-s0-contract.mjs
+node tests/specs/sabik/run-s0-contract.mjs --module "C:\Users\mruiz\Documents\NEAlabs-GitHub-Limpio\projects\irisgreen\sabik\nea-core\sabik-machine.js"
+node tests/specs/sabik/run-s0-addendum-b06-b07.mjs --module "C:\Users\mruiz\Documents\NEAlabs-GitHub-Limpio\projects\irisgreen\sabik\nea-core\sabik-machine.js"
+```
+
+| Check | Result | Exit code |
+| --- | --- | --- |
+| Own S0 suite | 117/117, including 50 new checks (S0-039 through S0-043) | 0 |
+| V7 | 28/28 | 0 |
+| Contract consistency | 84 rows / 32 scenarios; no contradictions, impossible initial states or broken references | 0 |
+| Runner without implementation | 20 corpus cases validated structurally, not integrated conversations | 0 |
+| Canonical runner with implementation | 84 rows / 32 scenarios / 3 invalid inputs; `ACEPTA_PUERTA_AUTOMATICA_S0` | 0 |
+| B06/B07 subset | 28 rows / 12 scenarios; `ACEPTA_SUBCONJUNTO_B06_B07` | 0 |
+| External array contrast | 12/12 agree with the unchanged contractual validator | 0 |
+
+Own tests cover both `BOOT_OK` and `SPEECH_REQUEST` with frozen, otherwise valid states/events. They check empty/populated arrays, both arrays together, the existing speech-array rejection, all three public entry points and preservation of valid metadata. Before the fix, the external contrast reproduced 10 disagreements in motion/error metadata; only the two existing speech-array rejections agreed. After the fix all 12 agree. These are regression checks for the existing rule, not new normative rows; B06/B07 is also contained in the main matrix.
+
+Full commands, stdout, stderr, exit codes and QA integrity records are outside the repository in `C:\Users\mruiz\AppData\Local\Temp\sabik-s0-cycle8-evidence`. The external `compare-array-metadata.mjs` uses the frozen QA validator without importing QA into runtime or changing the canonical runners.
+
 ## Build and Handoff
 
-The verified Linux build exit 0 and dist inventory for parent `5b022061...` remain historical evidence. B05 is not pending for lack of evidence on that parent. No build was executed in this seventh cycle; the known Windows `WinError 5` was not retried. A new Linux build and per-file dist size check must run against the new published SHA. The prior build result must not be attributed to it.
+The accepted Linux build for `81b44a5b...` remains historical evidence. No build was executed in this eighth cycle; the known Windows `WinError 5` was not retried. A fresh Linux build and per-file dist size check belong to the subsequent review on the new published SHA. The prior build result must not be attributed to it.
 
 This change remains limited to the machine, its own tests and this document. PR #161 stays draft into `sabik-preview`; independent QA retains the S0 verdict. S1/S2 remain closed. There is no merge or deploy.
 
-Rollback: revert only the seventh-cycle correction commit to recover `5b022061...`; the QA contract and other branches do not need changes.
+Rollback: revert only the eighth-cycle correction commit to recover `81b44a5b...`; the QA contract and other branches do not need changes.

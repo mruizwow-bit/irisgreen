@@ -681,6 +681,103 @@ function run() {
     );
   });
 
+  const arrayMetadataCases = [
+    ["motion-empty", { motion_meta: [] }],
+    ["motion-populated", { motion_meta: [false] }],
+    ["error-empty", { error_meta: [] }],
+    ["error-populated", { error_meta: ["resource-load"] }],
+    ["both-arrays", { motion_meta: [], error_meta: [] }],
+    ["speech-array", { speech_meta: [] }]
+  ];
+  for (const [baseState, eventType] of [[initial, EVENTS.BOOT_OK], [partialSpeechBefore, EVENTS.SPEECH_REQUEST]]) {
+    const validBase = deepFreeze(clone(baseState));
+    const event = deepFreeze({ type: eventType });
+    const beforeValid = clone(validBase);
+    const beforeValidEvent = clone(event);
+    assert(
+      `S0-039 ${eventType} is allowed before introducing an array`,
+      validateSabikState(validBase).ok && step(validBase, event).revision === validBase.revision + 1 &&
+        isDeepStrictEqual(validBase, beforeValid) && isDeepStrictEqual(event, beforeValidEvent),
+      "the regression must reject metadata, not an already forbidden event"
+    );
+    for (const [id, overrides] of arrayMetadataCases) {
+      const inputState = deepFreeze({ ...clone(baseState), ...clone(overrides) });
+      const keys = Object.keys(overrides);
+      const beforeValidation = clone(inputState);
+      const validation = validateSabikState(inputState);
+      assert(
+        `S0-040 ${eventType}/${id} validation rejects array metadata`,
+        !validation.ok && keys.every((key) => validation.errors.includes(`invalid ${key}`)) &&
+          isDeepStrictEqual(inputState, beforeValidation),
+        validation.errors.join(", ")
+      );
+
+      const beforeTransition = clone(inputState);
+      const beforeEvent = clone(event);
+      let transitionError = "";
+      try { step(inputState, event); } catch (error) { transitionError = error.message; }
+      assert(
+        `S0-041 ${eventType}/${id} transition rejects array metadata without mutation`,
+        transitionError.startsWith("Invalid Sabik state:") &&
+          keys.every((key) => transitionError.includes(`invalid ${key}`)) &&
+          isDeepStrictEqual(inputState, beforeTransition) && isDeepStrictEqual(event, beforeEvent),
+        transitionError
+      );
+
+      const beforePresentation = clone(inputState);
+      let presentationError = "";
+      try { deriveSabikPresentation(inputState); } catch (error) { presentationError = error.message; }
+      assert(
+        `S0-042 ${eventType}/${id} presentation rejects array metadata without mutation`,
+        presentationError.startsWith("Invalid Sabik state:") &&
+          keys.every((key) => presentationError.includes(`invalid ${key}`)) &&
+          isDeepStrictEqual(inputState, beforePresentation),
+        presentationError
+      );
+    }
+  }
+
+  const validMetadataCases = [
+    ["motion-absent", "motion_meta", undefined, undefined],
+    ["error-absent", "error_meta", undefined, undefined],
+    ["motion-empty-object", "motion_meta", {}, { reduced: false }],
+    ["error-empty-object", "error_meta", {}, { origin_operation: null, layer: null, code: null, message: null }],
+    ["motion-reduced", "motion_meta", { reduced: true }, { reduced: true }],
+    ["motion-enabled", "motion_meta", { reduced: false }, { reduced: false }],
+    ["error-code-only", "error_meta", { code: "resource-load" }, { origin_operation: null, layer: null, code: "resource-load", message: null }],
+    ["error-E0", "error_meta", { origin_operation: "booting", code: "boot-failure" }, { origin_operation: "booting", layer: null, code: "boot-failure", message: null }],
+    ["error-E1", "error_meta", { layer: "speech", code: "voice-unavailable" }, { origin_operation: null, layer: "speech", code: "voice-unavailable", message: null }],
+    ["error-E2", "error_meta", { origin_operation: "presenting", code: "resource-load" }, { origin_operation: "presenting", layer: null, code: "resource-load", message: null }],
+    ["error-E3", "error_meta", { origin_operation: "awaiting_clarification", code: "resource-load" }, { origin_operation: "awaiting_clarification", layer: null, code: "resource-load", message: null }],
+    ["speech-partial", "speech_meta", { energy: 0 }, { energy: 0, boundary_count: 0, end_reason: null }]
+  ];
+  for (const [id, key, metadata, expected] of validMetadataCases) {
+    const inputState = clone(partialSpeechBefore);
+    if (metadata === undefined) delete inputState[key];
+    else inputState[key] = clone(metadata);
+    const event = deepFreeze({ type: EVENTS.COLLAPSE });
+    deepFreeze(inputState);
+    const beforeValidation = clone(inputState);
+    const validation = validateSabikState(inputState);
+    const validationUnchanged = isDeepStrictEqual(inputState, beforeValidation);
+    const beforeTransition = clone(inputState);
+    const beforeEvent = clone(event);
+    const result = step(inputState, event);
+    const transitionUnchanged = isDeepStrictEqual(inputState, beforeTransition) && isDeepStrictEqual(event, beforeEvent);
+    const beforePresentation = clone(inputState);
+    const presentation = deriveSabikPresentation(inputState);
+    const expectedState = { ...beforeTransition, visibility: VISIBILITY.COLLAPSED, revision: inputState.revision + 1,
+      speech_meta: { energy: 0, boundary_count: 0, end_reason: null } };
+    if (expected !== undefined) expectedState[key] = expected;
+    assert(
+      `S0-043 valid metadata remains accepted and normalized: ${id}`,
+      validation.ok && validateSabikState(result).ok && validationUnchanged && transitionUnchanged &&
+        isDeepStrictEqual(inputState, beforePresentation) && isDeepStrictEqual(result, expectedState) &&
+        presentation.motion === MOTION.OFF && presentation.text_available,
+      "optional and partial objects preserve values, revision semantics and motion off"
+    );
+  }
+
   const failures = results.filter((item) => !item.ok);
   results.forEach((item) => {
     console.log(`${item.ok ? "PASS" : "FAIL"} ${item.name}${item.detail ? ` - ${item.detail}` : ""}`);
