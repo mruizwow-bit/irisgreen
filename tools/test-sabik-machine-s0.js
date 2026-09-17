@@ -778,6 +778,75 @@ function run() {
     );
   }
 
+  // Ninth cycle: regression coverage for the existing boot and safety rules.
+  function rejectBootEvent(name, state, type) {
+    const event = { type };
+    const beforeState = clone(state), beforeEvent = clone(event);
+    let rejected = false;
+    try { step(state, event); } catch (error) { rejected = /Invalid Sabik state transition:/u.test(error.message); }
+    assert(name, rejected && isDeepStrictEqual(state, beforeState) &&
+      isDeepStrictEqual(event, beforeEvent) && state.revision === beforeState.revision,
+      "rejection preserves state, event and revision");
+  }
+
+  const ninthBoot = createInitialSabikState();
+  const ninthError = step(ninthBoot, { type: EVENTS.TECHNICAL_ERROR, code: "boot-first" });
+  rejectBootEvent("S0-044 SB-1A boot error cannot reset to ready", ninthError, EVENTS.RESET_SESSION);
+  const ninthRepeated = step(ninthError, { type: EVENTS.TECHNICAL_ERROR, code: "boot-second" });
+  const ninthRetry = step(ninthRepeated, EVENTS.RETRY);
+  assert("S0-045 SB-1B repeated boot errors retain the first origin and retry booting",
+    ninthRepeated.error_meta.origin_operation === OPERATION.BOOTING &&
+      ninthRepeated.error_meta.code === "boot-second" && ninthRetry.operation === OPERATION.BOOTING &&
+      validateSabikState(ninthRetry).ok);
+  rejectBootEvent("S0-046 SB-1B submit remains forbidden before BOOT_OK", ninthRetry, EVENTS.SUBMIT);
+  const ninthReady = step(ninthRetry, EVENTS.BOOT_OK);
+  assert("S0-047 SB-1B BOOT_OK alone enables ordinary submit after retry",
+    ninthReady.operation === OPERATION.READY && step(ninthReady, EVENTS.SUBMIT).operation === OPERATION.RETRIEVING);
+  const ninthSingleRetry = step(ninthError, EVENTS.RETRY);
+  assert("S0-048 a single boot error retries booting",
+    ninthSingleRetry.operation === OPERATION.BOOTING && ninthSingleRetry.motion === MOTION.OFF &&
+      validateSabikState(ninthSingleRetry).ok);
+
+  for (const [label, bootState] of [["booting", ninthBoot], ["boot error", ninthError], ["repeated boot error", ninthRepeated]]) {
+    for (const type of [EVENTS.RISK_UNCERTAIN, EVENTS.RISK_CONFIRMED, EVENTS.HUMAN_HANDOFF, EVENTS.RISK_CLEARED]) {
+      rejectBootEvent(`S0-049 SB-1C ${label} rejects ${type} without mutation`, bootState, type);
+    }
+  }
+
+  // Speech metadata is shared with technical errors: an intervening voice
+  // failure must not let RESET_SESSION, RETRY or risk bypass the boot gate.
+  const ninthVoiceError = step(ninthError, EVENTS.SPEECH_ERROR);
+  assert("S0-050 a speech error cannot discard an outstanding boot origin",
+    ninthVoiceError.error_meta.origin_operation === OPERATION.BOOTING &&
+      ninthVoiceError.error_meta.layer === "speech" && step(ninthVoiceError, EVENTS.RETRY).operation === OPERATION.BOOTING &&
+      step(step(ninthVoiceError, EVENTS.TECHNICAL_ERROR), EVENTS.RETRY).operation === OPERATION.BOOTING);
+  for (const type of [EVENTS.RESET_SESSION, EVENTS.SUBMIT, EVENTS.RISK_UNCERTAIN, EVENTS.RISK_CONFIRMED, EVENTS.HUMAN_HANDOFF, EVENTS.RISK_CLEARED]) {
+    rejectBootEvent(`S0-051 boot error plus speech error rejects ${type}`, ninthVoiceError, type);
+  }
+
+  const ninthNormal = step(createInitialSabikState(), EVENTS.BOOT_OK);
+  const ninthUncertain = step(ninthNormal, EVENTS.RISK_UNCERTAIN);
+  const ninthRisk = step(ninthNormal, EVENTS.RISK_CONFIRMED);
+  const ninthHandoff = step(ninthRisk, EVENTS.HUMAN_HANDOFF);
+  for (const state of [ninthNormal, ninthUncertain, ninthRisk, ninthHandoff]) {
+    const event = { type: EVENTS.SPEECH_ERROR, code: "voice-unavailable" };
+    const beforeState = clone(state), beforeEvent = clone(event);
+    const result = step(state, event);
+    assert(`S0-052 SB-2 speech error preserves ${state.safety} protection and dialogue`,
+      result.speech === SPEECH.ERROR && result.speech_meta.energy === 0 &&
+        result.motion === (state.safety === SAFETY.NORMAL ? MOTION.OFF : MOTION.PROTECTION_STATIC) &&
+        result.operation === state.operation && result.dialogue === state.dialogue && result.safety === state.safety &&
+        result.error_meta.layer === "speech" && result.revision === state.revision + 1 &&
+        validateSabikState(result).ok && isDeepStrictEqual(state, beforeState) && isDeepStrictEqual(event, beforeEvent));
+  }
+  const ninthOrdinaryError = step(ninthNormal, EVENTS.TECHNICAL_ERROR);
+  const ninthOrdinaryRepeated = step(ninthOrdinaryError, EVENTS.TECHNICAL_ERROR);
+  assert("S0-053 repeated ordinary errors preserve their valid origin and normal recovery",
+    ninthOrdinaryRepeated.error_meta.origin_operation === OPERATION.READY &&
+      step(ninthOrdinaryRepeated, EVENTS.RETRY).operation === OPERATION.READY &&
+      step(ninthOrdinaryRepeated, EVENTS.RESET_SESSION).operation === OPERATION.READY);
+
+
   const failures = results.filter((item) => !item.ok);
   results.forEach((item) => {
     console.log(`${item.ok ? "PASS" : "FAIL"} ${item.name}${item.detail ? ` - ${item.detail}` : ""}`);

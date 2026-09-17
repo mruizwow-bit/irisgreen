@@ -231,6 +231,11 @@ function dialogueForTechnicalError(previous) {
   return DIALOGUE.NONE;
 }
 
+function bootPending(state) {
+  return state.operation === OPERATION.BOOTING ||
+    (state.operation === OPERATION.ERROR && defaultErrorMeta(state.error_meta).origin_operation === OPERATION.BOOTING);
+}
+
 function canPause(previous) {
   return [
     OPERATION.READY,
@@ -405,6 +410,11 @@ function transitionSabikState(currentState, event) {
   assertValidState(rawPrevious);
   const previous = normalizeSabikState(rawPrevious);
 
+  // Safety recovery cannot become an alternative bootstrap completion path.
+  if ([EVENTS.RISK_UNCERTAIN, EVENTS.RISK_CONFIRMED, EVENTS.HUMAN_HANDOFF, EVENTS.RISK_CLEARED].includes(type)) {
+    assertTransition(!bootPending(previous), type, previous);
+  }
+
   const next = clone(previous);
   incrementRevision(next, type);
 
@@ -476,7 +486,7 @@ function transitionSabikState(currentState, event) {
       break;
 
     case EVENTS.RESET_SESSION:
-      assertTransition(previous.operation !== OPERATION.BOOTING, type, previous);
+      assertTransition(!bootPending(previous), type, previous);
       next.operation = operationForSafety(previous.safety);
       next.dialogue = dialogueForSafety(previous.safety);
       next.visibility = VISIBILITY.EXPANDED;
@@ -552,8 +562,10 @@ function transitionSabikState(currentState, event) {
 
     case EVENTS.SPEECH_ERROR:
       withSpeech(next, SPEECH.ERROR, 0, "error");
-      next.motion = activeProtection(next) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
+      next.motion = safetyAttention(next) ? MOTION.PROTECTION_STATIC : MOTION.OFF;
       next.error_meta = defaultErrorMeta({
+        // A voice error must not erase the origin of an outstanding boot error.
+        origin_operation: previous.operation === OPERATION.ERROR ? defaultErrorMeta(previous.error_meta).origin_operation : null,
         layer: "speech",
         code: typeof eventValue(event, "code", null) === "string" ? eventValue(event, "code", null) : null,
         message: typeof eventValue(event, "message", null) === "string" ? eventValue(event, "message", null) : null
@@ -594,7 +606,8 @@ function transitionSabikState(currentState, event) {
       next.operation = OPERATION.ERROR;
       next.dialogue = dialogueForTechnicalError(previous);
       next.error_meta = defaultErrorMeta({
-        origin_operation: previous.operation,
+        origin_operation: previous.operation === OPERATION.ERROR && OPERATIONS.has(defaultErrorMeta(previous.error_meta).origin_operation)
+          ? previous.error_meta.origin_operation : previous.operation,
         layer: "operation",
         code: typeof eventValue(event, "code", null) === "string" ? eventValue(event, "code", null) : null,
         message: typeof eventValue(event, "message", null) === "string" ? eventValue(event, "message", null) : null

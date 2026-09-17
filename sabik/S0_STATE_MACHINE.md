@@ -178,3 +178,10 @@ The accepted Linux build for `81b44a5b...` remains historical evidence. No build
 This change remains limited to the machine, its own tests and this document. PR #161 stays draft into `sabik-preview`; independent QA retains the S0 verdict. S1/S2 remain closed. There is no merge or deploy.
 
 Rollback: revert only the eighth-cycle correction commit to recover `81b44a5b...`; the QA contract and other branches do not need changes.
+
+## Ninth Cycle: Boot Gate and Uncertain Speech Protection
+
+- `BOOT_OK` remains the only transition out of bootstrap into ordinary flow. `RESET_SESSION` rejects both `booting` and an outstanding technical error originating in `booting`; `RETRY` returns that error to `booting`, where `SUBMIT` remains forbidden until `BOOT_OK`.
+- Repeated `TECHNICAL_ERROR` events preserve a valid original `error_meta.origin_operation` instead of replacing it with `error`. An intervening `SPEECH_ERROR` also preserves the origin of an outstanding operational error, so it cannot erase the boot gate.
+- `RISK_UNCERTAIN`, `RISK_CONFIRMED`, `HUMAN_HANDOFF` and `RISK_CLEARED` reject during bootstrap or an outstanding boot error. Safety events never substitute for `BOOT_OK`; rejection leaves the input state, event and revision unchanged.
+- `SPEECH_ERROR` uses safety attention, including `uncertain`, to retain `motion: "protection_static"`. During uncertainty it preserves `dialogue: "clarification"` and `safety: "uncertain"`, sets `speech: "error"`, zero energy and `error_meta.layer: "speech"`. Normal safety still uses `motion: "off"`; risk and human handoff keep static protection.
