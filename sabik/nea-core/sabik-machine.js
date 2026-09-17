@@ -144,8 +144,8 @@ function clone(value) {
 
 function defaultSpeechMeta(meta = {}) {
   return {
-    energy: typeof meta.energy === "number" ? meta.energy : 0,
-    boundary_count: Number.isInteger(meta.boundary_count) ? meta.boundary_count : 0,
+    energy: hasOwn(meta, "energy") ? meta.energy : 0,
+    boundary_count: hasOwn(meta, "boundary_count") ? meta.boundary_count : 0,
     end_reason: hasOwn(meta, "end_reason") ? meta.end_reason : null
   };
 }
@@ -301,15 +301,14 @@ function validateSabikState(state) {
     if (!DEPTHS.has(state.adaptation.depth)) errors.push("invalid depth");
   }
 
-  if (hasOwn(state, "speech_meta") && (!state.speech_meta || typeof state.speech_meta !== "object")) {
+  if (hasOwn(state, "speech_meta") && (!state.speech_meta || typeof state.speech_meta !== "object" || Array.isArray(state.speech_meta))) {
     errors.push("invalid speech_meta");
-  } else if (hasOwn(state, "speech_meta")) {
-    if (typeof state.speech_meta.energy !== "number" || state.speech_meta.energy < 0 || state.speech_meta.energy > 1) errors.push("invalid speech energy");
-    if (!Number.isInteger(state.speech_meta.boundary_count) || state.speech_meta.boundary_count < 0) errors.push("invalid speech boundary_count");
+  } else {
+    const speechMeta = defaultSpeechMeta(state.speech_meta);
+    if (!Number.isFinite(speechMeta.energy) || speechMeta.energy < 0 || speechMeta.energy > 1) errors.push("invalid speech energy");
+    if (!Number.isInteger(speechMeta.boundary_count) || speechMeta.boundary_count < 0) errors.push("invalid speech boundary_count");
+    if (state.speech !== SPEECH.SPEAKING && speechMeta.energy !== 0) errors.push("inactive speech must have zero energy");
   }
-
-  const speechMeta = defaultSpeechMeta(state.speech_meta);
-  if (state.speech !== SPEECH.SPEAKING && speechMeta.energy !== 0) errors.push("inactive speech must have zero energy");
 
   if (hasOwn(state, "motion_meta") && (!state.motion_meta || typeof state.motion_meta !== "object")) {
     errors.push("invalid motion_meta");

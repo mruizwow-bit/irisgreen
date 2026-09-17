@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { isDeepStrictEqual } = require("node:util");
 
 const root = path.resolve(__dirname, "..");
 const machinePath = path.join(root, "sabik", "nea-core", "sabik-machine.js");
@@ -38,6 +39,14 @@ function expectThrowNoChange(name, state, event, pattern) {
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
+}
+
+function deepFreeze(value) {
+  if (value && typeof value === "object") {
+    Object.values(value).forEach(deepFreeze);
+    Object.freeze(value);
+  }
+  return value;
 }
 
 function keysOf(value) {
@@ -561,6 +570,116 @@ function run() {
       validateSabikState(invalidExtra).ok === false,
     "stale or incoherent state must fail validation"
   );
+
+  const partialSpeechState = {
+    ...clone(presentingInfo),
+    speech: SPEECH.SILENT,
+    motion: MOTION.OFF,
+    revision: 0,
+    speech_meta: { energy: 0 },
+    motion_meta: { reduced: true }
+  };
+  const partialSpeechBefore = clone(partialSpeechState);
+  const requestEvent = { type: EVENTS.SPEECH_REQUEST };
+  const requestEventBefore = clone(requestEvent);
+  deepFreeze(partialSpeechState);
+  deepFreeze(requestEvent);
+  const partialSpeechRequest = step(partialSpeechState, requestEvent);
+  assert(
+    "S0-034 partial speech metadata accepts the contractual request from frozen input",
+    validateSabikState(partialSpeechState).ok &&
+      validateSabikState(partialSpeechRequest).ok &&
+      isDeepStrictEqual(partialSpeechRequest, {
+        ...partialSpeechBefore,
+        speech: SPEECH.STARTING,
+        revision: 1,
+        speech_meta: { energy: 0, boundary_count: 0, end_reason: null }
+      }) &&
+      isDeepStrictEqual(partialSpeechState, partialSpeechBefore) &&
+      isDeepStrictEqual(requestEvent, requestEventBefore) &&
+      isDeepStrictEqual(step(partialSpeechState, requestEvent), partialSpeechRequest),
+    "EV-SPEECH-REQUEST-PARTIAL-META / S0-C29: starting, off, revision +1, no mutation"
+  );
+
+  const partialSpeechCases = [
+    [{}, { energy: 0, boundary_count: 0, end_reason: null }],
+    [{ boundary_count: 4 }, { energy: 0, boundary_count: 4, end_reason: null }],
+    [{ end_reason: "natural_end" }, { energy: 0, boundary_count: 0, end_reason: "natural_end" }],
+    [{ energy: 0, boundary_count: 7 }, { energy: 0, boundary_count: 7, end_reason: null }],
+    [{ energy: 0, end_reason: null }, { energy: 0, boundary_count: 0, end_reason: null }],
+    [{ boundary_count: 2, end_reason: "explicit_stop" }, { energy: 0, boundary_count: 2, end_reason: "explicit_stop" }]
+  ];
+  partialSpeechCases.forEach(([metadata, expected], index) => {
+    const inputState = { ...clone(partialSpeechBefore), speech_meta: metadata };
+    const beforeState = clone(inputState);
+    const event = { type: EVENTS.HIDE };
+    const beforeEvent = clone(event);
+    const result = step(inputState, event);
+    assert(
+      `S0-035 partial speech metadata fills only omissions (${index + 1})`,
+      validateSabikState(inputState).ok && validateSabikState(result).ok &&
+        isDeepStrictEqual(result.speech_meta, expected) &&
+        result.motion === MOTION.OFF && result.revision === inputState.revision + 1 &&
+        isDeepStrictEqual(inputState, beforeState) && isDeepStrictEqual(event, beforeEvent),
+      JSON.stringify(expected)
+    );
+  });
+
+  const omittedSpeechState = clone(partialSpeechBefore);
+  delete omittedSpeechState.speech_meta;
+  delete omittedSpeechState.motion_meta;
+  const omittedBefore = clone(omittedSpeechState);
+  const omittedRequest = step(omittedSpeechState, requestEvent);
+  assert(
+    "S0-036 absent speech metadata defaults without enabling omitted motion",
+    validateSabikState(omittedSpeechState).ok && validateSabikState(omittedRequest).ok &&
+      isDeepStrictEqual(omittedRequest.speech_meta, { energy: 0, boundary_count: 0, end_reason: null }) &&
+      omittedRequest.speech === SPEECH.STARTING && omittedRequest.motion === MOTION.OFF &&
+      !Object.prototype.hasOwnProperty.call(omittedRequest, "motion_meta") &&
+      isDeepStrictEqual(omittedSpeechState, omittedBefore),
+    "speech defaults do not grant motion permission"
+  );
+
+  const completeSpeechState = {
+    ...clone(partialSpeechBefore),
+    speech: SPEECH.SPEAKING,
+    speech_meta: { energy: 0.4, boundary_count: 7, end_reason: null }
+  };
+  const completeBefore = clone(completeSpeechState);
+  const completeHidden = step(completeSpeechState, EVENTS.HIDE);
+  const completeBoundary = step(completeSpeechState, { type: EVENTS.SPEECH_BOUNDARY, energy: 0.3 });
+  assert(
+    "S0-037 complete speech metadata survives normalization and advances the existing counter",
+    isDeepStrictEqual(completeHidden.speech_meta, completeBefore.speech_meta) &&
+      isDeepStrictEqual(completeBoundary.speech_meta, { energy: 0.3, boundary_count: 8, end_reason: null }) &&
+      completeBoundary.motion === MOTION.OFF &&
+      isDeepStrictEqual(completeSpeechState, completeBefore),
+    "normalization must not reset valid energy or boundary_count"
+  );
+
+  const invalidSpeechCases = [
+    ...[null, "0", true, undefined, NaN, Infinity, -0.1, 1.1].map((energy) => ({ energy })),
+    ...[null, "0", false, undefined, NaN, Infinity, -1, 0.5].map((boundary_count) => ({ boundary_count })),
+    null, "invalid", [], false, undefined
+  ];
+  invalidSpeechCases.forEach((metadata, index) => {
+    const inputState = { ...clone(completeBefore), speech_meta: metadata };
+    const beforeState = { ...clone(completeBefore), speech_meta: Array.isArray(metadata) ? [...metadata] : metadata && typeof metadata === "object" ? { ...metadata } : metadata };
+    const event = { type: EVENTS.SPEECH_REQUEST };
+    const beforeEvent = { ...event };
+    let rejected = false;
+    try {
+      step(inputState, event);
+    } catch (error) {
+      rejected = /Invalid Sabik state:/u.test(error.message);
+    }
+    assert(
+      `S0-038 invalid speech metadata is rejected without sanitizing or mutation (${index + 1})`,
+      !validateSabikState(inputState).ok && rejected &&
+        isDeepStrictEqual(inputState, beforeState) && isDeepStrictEqual(event, beforeEvent),
+      "explicit invalid values are not defaults; original revision is unchanged"
+    );
+  });
 
   const failures = results.filter((item) => !item.ok);
   results.forEach((item) => {

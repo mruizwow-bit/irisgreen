@@ -52,6 +52,10 @@ motion_meta: { reduced }
 error_meta: { origin_operation, layer, code, message }
 ```
 
+Absent or partial `speech_meta` is completed with `{ energy: 0, boundary_count: 0, end_reason: null }`. Only omitted fields receive defaults. Explicit energy and counter values are validated before cloning or normalization: invalid types, non-finite numbers, out-of-range energy and negative or fractional counters are rejected. Inactive speech still requires zero energy. Valid counters and end reasons survive normalization; events update only their existing responsibilities.
+
+Validation, presentation derivation and transitions accept valid partial metadata without mutating the state or event, including frozen inputs. Completing speech metadata does not create `motion_meta` or authorize motion.
+
 ## B06/B07 Semantics
 
 - Ordinary `awaiting_clarification + SUBMIT` returns to retrieval with dialogue `clarification` and safety `normal`.
@@ -92,36 +96,45 @@ error_meta: { origin_operation, layer, code, message }
 - Invalid or impossible events throw instead of creating partial state.
 - Equal state plus equal event returns equal next state.
 
-## Commands
+## Seventh-Cycle Validation
+
+Parent implementation: `5b0220612404d400cbf9de35240a3dacf98868a5`.
+
+The unchanged QA files come from `inputs/qa` in `EVIDENCIA_QA_S0_5B022061.zip`, SHA-256 `90c99e9976476702ee262f360171bc44a88e1589d4448b5b23a7caa786b0425b`. The archive hash and all seven QA file hashes were checked against its manifest. The normative commit remains `1c3205fbb0fac8ccb5f2c946d73e4e038a479a0b`.
+
+Before the correction, the original runner reproduced `EV-SPEECH-REQUEST-PARTIAL-META: permitido rechazado: Invalid Sabik state: invalid speech boundary_count` with exit code 1. After the correction, that row and `S0-C29` pass as part of the complete canonical run. The output is `speech: "starting"`, `motion: "off"`, revision 1 and complete default speech metadata.
+
+Commands executed from `C:\Users\mruiz\Documents\NEAlabs-GitHub-Limpio\projects\irisgreen`:
 
 ```bash
 node tools/test-sabik-machine-s0.js
 node tools/test-sabik-page-v7.js
-node tests/specs/sabik/run-s0-contract.mjs --module sabik/nea-core/sabik-machine.js
-node tests/specs/sabik/run-s0-addendum-b06-b07.mjs --module sabik/nea-core/sabik-machine.js
-python3 scripts/build_site.py
 ```
 
-Current local results in this Windows environment:
-
-```text
-node tools/test-sabik-machine-s0.js  -> 37/37
-node tools/test-sabik-page-v7.js     -> 28/28
-```
-
-The canonical PR #164 runners are not present in this branch checkout, so they were not run locally here. They are expected to run in QA against the pushed SHA.
-
-On this Windows environment, `python3` is not on PATH. The equivalent local command used was:
+Commands executed from `C:\Users\mruiz\AppData\Local\Temp\sabik-s0-cycle7-qa\inputs\qa`, using the corrected module in the working clone (not `inputs/impl`):
 
 ```powershell
-& 'C:\Users\mruiz\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' scripts\build_site.py
+node tests/specs/sabik/validate-s0-contract-consistency.mjs
+node tests/specs/sabik/run-s0-contract.mjs --module "C:\Users\mruiz\Documents\NEAlabs-GitHub-Limpio\projects\irisgreen\sabik\nea-core\sabik-machine.js"
+node tests/specs/sabik/run-s0-addendum-b06-b07.mjs --module "C:\Users\mruiz\Documents\NEAlabs-GitHub-Limpio\projects\irisgreen\sabik\nea-core\sabik-machine.js"
 ```
 
-The build reaches the final staging cleanup and fails on a Windows file lock:
+| Check | Result | Exit code |
+| --- | --- | --- |
+| Own S0 suite | 67/67 | 0 |
+| V7 | 28/28 | 0 |
+| Contract consistency | 0 contradictions, 0 impossible initial states, 0 broken references | 0 |
+| Canonical runner | 84 rows, 32 scenarios, 3 invalid inputs; `ACEPTA_PUERTA_AUTOMATICA_S0` | 0 |
+| B06/B07 subset | 28 rows, 12 scenarios; `ACEPTA_SUBCONJUNTO_B06_B07` | 0 |
 
-```text
-PermissionError: [WinError 5] Acceso denegado:
-dist\assets\books\samples\luma-es\sprite.part1.txt
-```
+The B06/B07 subset is contained in the consolidated matrix; it is not additional coverage. The original runners, matrix, scenarios and fixtures remain outside this branch and unchanged. Own regression tests additionally cover empty and partial metadata, preservation of valid fields, explicit invalid values, frozen inputs, determinism and motion staying off. Previous B14/B15 cases remain in the suite.
 
-B05 must be resolved by the Linux QA build on the exact pushed SHA; this local Windows run is not marked as a clean build.
+Separate stdout, stderr and command/exit-code records are in `C:\Users\mruiz\AppData\Local\Temp\sabik-s0-cycle7-evidence`: `00-before-contract.*` for the reproduction and `01-machine.*` through `05-addendum.*` for the final runs.
+
+## Build and Handoff
+
+The verified Linux build exit 0 and dist inventory for parent `5b022061...` remain historical evidence. B05 is not pending for lack of evidence on that parent. No build was executed in this seventh cycle; the known Windows `WinError 5` was not retried. A new Linux build and per-file dist size check must run against the new published SHA. The prior build result must not be attributed to it.
+
+This change remains limited to the machine, its own tests and this document. PR #161 stays draft into `sabik-preview`; independent QA retains the S0 verdict. S1/S2 remain closed. There is no merge or deploy.
+
+Rollback: revert only the seventh-cycle correction commit to recover `5b022061...`; the QA contract and other branches do not need changes.
