@@ -146,11 +146,13 @@ async function run() {
   );
 
   assert(
-    "V7-007 Parar clears interaction and keeps page usable",
-    pageJs.includes("state.session = window.NEACoreV1.createSessionState();") &&
-      pageJs.includes("output.hidden = true;") &&
+    "V7-007 pause and explicit reset are separate S1 actions",
+    pageJs.includes('control("PAUSE_ASSISTANT"') &&
+      pageJs.includes('control("RESUME_ASSISTANT"') &&
+      pageJs.includes('control("RESET_SESSION"') &&
+      html.includes('id="sabik-reset-session"') &&
       !/(localStorage|sessionStorage|indexedDB|document\.cookie)/u.test(pageJs),
-    "Parar must reset session-only state without persistent storage"
+    "Issue #150: pause preserves the session; only explicit reset clears it. Behavior is tested in test-sabik-s1.js."
   );
 
   const correction = window.NEACoreV1.buildResponsePlan("No es el ruido, es decidir demasiadas cosas", baseSession, data).plan;
