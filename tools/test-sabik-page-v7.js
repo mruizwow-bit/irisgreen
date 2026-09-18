@@ -146,11 +146,13 @@ async function run() {
   );
 
   assert(
-    "V7-007 Parar clears interaction and keeps page usable",
-    pageJs.includes("state.session = window.NEACoreV1.createSessionState();") &&
-      pageJs.includes("output.hidden = true;") &&
+    "V7-007 pause and explicit reset are separate S1 actions",
+    pageJs.includes('control("PAUSE_ASSISTANT"') &&
+      pageJs.includes('control("RESUME_ASSISTANT"') &&
+      pageJs.includes('control("RESET_SESSION"') &&
+      html.includes('id="sabik-reset-session"') &&
       !/(localStorage|sessionStorage|indexedDB|document\.cookie)/u.test(pageJs),
-    "Parar must reset session-only state without persistent storage"
+    "Issue #150: pause preserves the session; only explicit reset clears it. Behavior is tested in test-sabik-s1.js."
   );
 
   const correction = window.NEACoreV1.buildResponsePlan("No es el ruido, es decidir demasiadas cosas", baseSession, data).plan;
@@ -263,19 +265,26 @@ async function run() {
   );
 
   assert(
-    "V7-019 processing and pause are functional visual states",
+    "V7-019 explicit S1 controls follow accepted S0 presentation",
+      pageJs.includes('/sabik/nea-core/sabik-browser-adapter.js') &&
+      pageJs.includes('window.SabikBrowserAdapter.create()') &&
+      pageJs.includes('state.adapter.dispatch(event)') &&
+      read(path.join(root, 'sabik/nea-core/sabik-browser-adapter.js')).includes('api.transitionSabikState(current, data.event)') &&
+      read(path.join(root, 'sabik/nea-core/sabik-browser-adapter.js')).includes('api.deriveSabikPresentation(next)') &&
+      /<button\b[^>]*id="sabik-clear"[^>]*>Pausar Sabik<\/button>/u.test(html) &&
+      /<button\b[^>]*id="sabik-resume"[^>]*>Reanudar<\/button>/u.test(html) &&
+      /<button\b[^>]*id="sabik-reset-session"[^>]*>Empezar de nuevo<\/button>/u.test(html) &&
+      pageJs.includes('control("PAUSE_ASSISTANT"') &&
+      pageJs.includes('control("RESUME_ASSISTANT"') &&
+      pageJs.includes('control("RESET_SESSION"') &&
+      pageJs.includes('state.paused = state.presentation.operation === "paused"') &&
+      !/state\.paused\s*=\s*(?:true|false)\s*;/u.test(pageJs) &&
+      pageJs.includes('panel.dataset.operation = state.presentation.operation') &&
       pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
       pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
-      pageJs.includes("state.paused = true;") &&
-      pageJs.includes("state.paused = false;") &&
-      pageJs.includes("syncPauseButton(true)") &&
-      pageJs.includes("syncPauseButton(false)") &&
-      pageJs.includes('button.textContent = paused ? "Reanudar" : "Parar"') &&
       css.includes('[data-interaction-state="procesando"]') &&
-      css.includes('[data-interaction-state="pausa"]') &&
-      css.includes("--sabik-layer-speed: 72s;") &&
-      css.includes("--sabik-wave-opacity: .42;"),
-    "Enviar and Parar must affect functional motion, pause must stay gently alive, and Reanudar must recover"
+      css.includes('[data-interaction-state="pausa"]'),
+    "Issue #150: S0 authority and separate actions; session preservation and processing/pause behavior run in S1 A04-A14/X03. No S2 timing requirement."
   );
 
   assert(
@@ -297,9 +306,10 @@ async function run() {
 
   assert(
     "V7-022 Sabik ignores passive behavioral signals",
-    !/addEventListener\(\s*["'](?:keydown|keyup|input|beforeinput|composition|scroll|mousemove|pointermove|touchmove|visibilitychange|deviceorientation)["']/u.test(pageJs) &&
+    !/addEventListener\(\s*["'](?:scroll|mousemove|pointermove|touchmove|visibilitychange|deviceorientation)["']/u.test(pageJs) &&
+      !/\bon(?:scroll|mousemove|pointermove|touchmove|visibilitychange|deviceorientation)\s*=/u.test(pageJs) &&
       !/(getUserMedia|SpeechRecognition|webkitSpeechRecognition)/u.test(pageJs),
-    "visual changes may only come from Core state, explicit buttons/forms, or functional interaction"
+    "Passive inference remains forbidden. Explicit input/keyboard handling is behaviorally checked by S1 X04-X06 (session, cognitive state, safety, adaptation and S0 events), not inferred from this source guard."
   );
 
   const shortPreferenceOnly = window.NEACoreV1.buildResponsePlan("Quiero informacion corta sobre apoyos", lowSession, data);
@@ -368,7 +378,9 @@ async function run() {
   assert(
     "V7-028 low intensity is explicit and reversible",
     pageJs.includes("low_intensity: !isLowIntensity") &&
-      pageJs.includes('button.textContent = lowIntensity ? "Subir intensidad" : "Bajar intensidad"') &&
+      pageJs.includes('uiText(button, lowIntensity ? "Subir intensidad" : "Bajar intensidad")') &&
+      pageJs.includes('"Subir intensidad": "Raise intensity"') &&
+      pageJs.includes('"Bajar intensidad": "Lower intensity"') &&
       pageJs.includes('button.setAttribute("aria-pressed", String(lowIntensity))') &&
       pageJs.includes("Intensidad normal activada."),
     "Bajar intensidad must toggle back to normal instead of permanently dimming Sabik"
