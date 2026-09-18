@@ -1,8 +1,8 @@
 # S1 · Controles, foco y accesibilidad del panel
 
-Actualizado: 2026-09-18. Candidato de producto con registro de mensajes accesibles;
+Actualizado: 2026-09-18. Candidato de producto con foco en la respuesta visible;
 pendiente de UNA revalidación real con Narrator. No es una fase aceptada.
-El nuevo cambio parte de `1a05dc3b35effa74982da7b21c864e88863d210f`.
+El nuevo cambio parte de `7bc3d31b48987015d7251309927462e01798e662`.
 
 Base obligatoria: `sabik-preview@1181f6f7af6c784d71d58860f7db9928bc0cff89`.
 Rama: `sabik/s1-panel-controls-a11y`. Contrato: issue #150 y
@@ -29,7 +29,7 @@ permanecen intactos.
 | Acción | Evento S0 | Efecto / foco |
 | --- | --- | --- |
 | Bootstrap | BOOT_OK | Habilita controles sin robar foco inicial |
-| Enviar | SUBMIT, RETRIEVAL_OK/EMPTY, RESPONSE_READY/ASK_CLARIFICATION | Una operación; conserva foco de entrada |
+| Enviar | SUBMIT, RETRIEVAL_OK/EMPTY, RESPONSE_READY/ASK_CLARIFICATION | Una operación; foco de entrada durante carga y un foco final en respuesta visible |
 | Pausar Sabik | PAUSE_ASSISTANT | Conserva entrada, sesión, respuesta y fuentes; foco en Reanudar |
 | Reanudar | RESUME_ASSISTANT | No reenvía; foco en Pausar Sabik |
 | Empezar de nuevo | RESET_SESSION | Acción explícita; limpia conversación y conserva preferencias; foco en entrada |
@@ -57,40 +57,48 @@ Enter y Shift+Enter insertan salto de línea en el textarea. Ctrl/Cmd+Enter env�
 Enter y Space conservan la activación nativa de los botones. Tab y Shift+Tab
 siguen el orden DOM, sin trampas de foco.
 
-La respuesta completa y su aviso no vacío se añaden juntos en un nodo nuevo a
-una región permanente `#sabik-announcement`: `role=log`, `aria-live=polite` y
-`aria-relevant=additions`, sin `aria-atomic=true`. El párrafo se completa fuera
-del DOM, normaliza espacios preservando puntuación y se inserta una sola vez.
-No se utiliza `replaceChildren()` para publicar. El idioma español se hereda
-del documento y se conserva la técnica CSS `sabik-sr-only` existente.
-El estado visual y la respuesta visible no duplican regiones vivas.
-Pausar y reanudar no vuelven a publicar la respuesta anterior. El anuncio DOM
-único está comprobado automáticamente; no equivale a haber escuchado un lector
-de pantalla real.
+La respuesta y su aviso complementario se renderizan en nodos normales dentro
+del bloque visible `#sabik-response-message`, con `tabindex=-1`, `role=group`,
+nombre corto por `aria-labelledby=sabik-output-title` y descripción mediante los
+textos reales `sabik-answer sabik-notice`. No hay un aria-label con la respuesta
+duplicada. Se hereda español. Las fuentes y los botones quedan fuera del bloque.
 
-La prueba manual comunicada el 18/09/2026 sobre el candidato `a14dc4be` produjo
-FAIL_REAL / ANUNCIO_RESPUESTA_NO_COMPRENSIBLE: sin bucle ni repetición, pero la
-respuesta no se oyó completa y comprensible. No se confunde este fallo con voz
-propia de Sabik. Ese mecanismo anterior conserva su FAIL_REAL histórico.
-La orden posterior autoriza sustituirlo por un patrón de mensajes secuenciales,
-sin exigir otro A/B del eco. No se afirma que la causa interna de Narrator haya
-quedado demostrada ni que el nuevo candidato ya tenga PASS_REAL.
+Después de un envío explícito por Enviar o Ctrl/Cmd+Enter, se termina de escribir
+la respuesta, se finaliza carga (`aria-busy=false`) y se enfoca una sola vez el
+bloque visible. No se mueve el foco durante retrieval/composing ni se reescribe
+el texto después de enfocarlo. No se devuelve automáticamente al textarea.
+Se usa `focus({preventScroll:true})`; solo si queda fuera del viewport se hace
+`scrollIntoView` mínimo, instantáneo y sin animación. Se añade contorno visible.
 
-La investigación del mecanismo anterior registró el texto exacto, una mutación por anuncio y una región
-persistente expuesta en Chromium con live=polite y atomic=true. `announce()` usa
-en ese candidato `replaceChildren(Text)` después de `renderPlan()` y antes del `setLoading(false)`
-del finally. Ese finally no borra ni reescribe el anuncio. `aria-busy` pertenece
-a `#sabik-output`, que no es ancestro de la región de anuncio: su valor true no
-demuestra por sí solo que se suprima o interrumpa la locución.
+`Escribir otra consulta` es el siguiente control en el orden DOM después del
+bloque: Tab y Enter permiten volver al textarea sin borrar contenido, cambiar
+sesión ni volver a anunciarlo. También se puede activar con ratón.
 
-El nuevo mecanismo sustituye `status/replacement` por `log/addition`, adecuado
-al contrato de mensajes conversacionales secuenciales solicitado. Pausa,
-reanudación, reset y error usan el mismo mecanismo, con una entrada por acción.
-Primero se añade el mensaje nuevo y luego se retiran entradas antiguas hasta
-conservar ocho. Reset deja solo su nuevo mensaje; las retiradas están excluidas
-de los anuncios por `aria-relevant=additions`. No hay persistencia ni reenvío de
-la respuesta anterior. El foco de Enviar permanece en el textarea; el log nunca
-recibe foco. No se introduce TTS, Web Speech API, temporizador ni anuncio assertive.
+La región oculta `#sabik-announcement` queda exclusivamente para mensajes breves
+de pausa, reanudación, reset, validación de entrada o inicio. Nunca recibe la
+respuesta normal ni el error final de una petición. Mantiene su límite de ocho
+entradas; no se usa como segundo mecanismo de respuesta. El error final se
+presenta en el mismo bloque visible, limpia fuentes/aviso obsoletos y recibe un
+solo foco después de busy=false, sin anunciarse además en el log.
+
+Un resultado invalidado por pausa/reset no enfoca. Si la persona ha ocultado
+el panel durante la petición, el resultado no lo reabre ni roba foco al botón
+Mostrar; expandir posteriormente tampoco encola un foco. Las acciones Más corto
+y Buscar por otra vía no se equiparan a un nuevo envío del formulario para
+provocar foco automático de respuesta. No se añade TTS ni Web Speech API.
+
+Cronología de QA real comunicada por María/coordinación:
+
+1. `a14dc4be...`: status/polite/atomic con reemplazo → **FAIL_REAL**.
+2. `7bc3d31b...`: log/polite/additions con mensaje completo → **FAIL_REAL**.
+3. Nuevo hijo de `7bc3d31b...`: foco en contenido visible → **PENDIENTE_QA_REAL**.
+
+En ambos mecanismos anteriores se comunicaron sonidos/letras aislados, sin
+palabras comprensibles, sin bucle ni repetición continua; el DOM/AX conservaba
+el texto completo. La nueva orden permite cambiar el destino de foco anterior.
+No se solicitan A/B del eco ni repeticiones de status/log. El foco es comprobable
+automáticamente; que Narrator lo pronuncie correctamente exige la única prueba
+real posterior. No se atribuye una causa interna de Windows ni se declara PASS_REAL.
 
 El HTML contiene búsqueda → panel Sabik → resto, sin recolocación por JS. Las
 reglas añadidas permiten controles multilínea, reflow y foco visible. No se han
@@ -102,8 +110,8 @@ La navegación convencional y el meta `noindex,follow` se conservan.
 - `node tools/test-sabik-machine-s0.js`: 146/146 PASS.
 - `node tools/test-sabik-page-v7.js`: 28/28 PASS, exit 0.
 - `node tools/test-sabik-s1.js`: 37/37 comprobaciones automáticas PASS y dos
-  grupos adicionales: X01–X06 (6/6 PASS) y N01–N12 (12/12 PASS), ejecutados
-  en Chrome con la CSP de dist. El total de controles adicionales es 18.
+  grupos adicionales: X01–X06 (6/6 PASS) y N01–N18 (18/18 PASS), ejecutados
+  en Chrome con la CSP de dist. El total de controles adicionales es 24.
 - `python scripts/build_site.py`: exit 0.
 
 La suite S1 requiere Playwright y Chrome disponibles en el entorno de pruebas;
@@ -118,25 +126,25 @@ prohibición de inferencia pasiva conservada y eventos explícitos input/keydown
 permitidos. X03–X06 comprueban conservación de sesión y comportamiento sin
 inferencia; no se confía solo en expresiones regulares.
 
-N01–N12 verifican una adición por respuesta, igualdad del texto completo, aviso
-una sola vez, silencio durante recuperación, conservación al terminar carga,
-dos consultas consecutivas, ausencia de repetición al pausar/reanudar/reset,
-error técnico único, foco conservado y ausencia de la antigua región viva del
-estado visual, límite de ocho entradas y limpieza sin reconstrucción de hijos.
-Se cuentan registros de mutación, no solo callbacks del observer. Se comprueba
-que el texto está completo antes de insertar el nodo y que dos respuestas crean
-dos hijos distintos en orden. La consulta exacta `Qué es el autismo` genera la
-evidencia AX posterior `narrator-log-autismo-ax.json` fuera del repositorio.
-Estas pruebas exigen el nuevo contrato log/adición, pero no prueban la
-comprensibilidad de la locución ni compatibilidad validada con Narrator.
+N01–N18 verifican foco único final, texto visible completo, árbol AX enfocado,
+ausencia de respuesta duplicada en regiones vivas, busy=false antes de foco,
+dos envíos, error visible, controles sin relectura, retorno sin mutar la sesión,
+teclado, aviso completo, cancelación tras reset y panel oculto sin robo de foco.
+La consulta exacta `Qué es el autismo` guarda la evidencia AX posterior
+`narrator-focus-autismo-ax.json` fuera del repositorio. Se registran tanto llamadas
+a focus como eventos, texto, visibilidad y busy en el instante de foco.
 
-Revalidación única pendiente: abrir el dist del nuevo candidato con Chrome y
-Narrator habituales, escribir `Qué es el autismo` y pulsar Enviar. Mantener la
-ventana sin Tab ni cambios de foco y escuchar la respuesta completa. Debe
-anunciarse una sola vez como palabras/frases comprensibles, sin deletreo,
-fragmentación ni bucle, con foco en el textarea. Registrar SHA probado y
-PASS_REAL o FAIL_REAL según lo escuchado por María. No se exige cambiar el eco
-de caracteres ni hacer un A/B previo. El criterio real sigue pendiente.
+A02/A17/A18 se actualizan por el nuevo contrato autorizado: durante carga se
+conserva entrada y la respuesta final de un envío explícito sí recibe foco.
+Los restantes casos A y X mantienen sus invariantes. La automatización no prueba
+la comprensibilidad de la locución ni acepta los casos manuales pendientes.
+
+Única revalidación pendiente: abrir el dist del nuevo SHA en Chrome y Narrator,
+escribir `Qué es el autismo` y pulsar Enviar. Sin Tab ni cambio de ventana,
+comprobar una lectura completa e inteligible del bloque visible, sin deletreo,
+fragmentación o doble anuncio. El foco debe quedar en la respuesta. Después,
+Tab → Escribir otra consulta → Enter debe volver al campo conservando respuesta
+y sesión. Registrar SHA y PASS_REAL o FAIL_REAL de María. No es un A/B.
 
 Se ha operado el panel en navegador con Tab/Shift+Tab, Enter/Space, Escape,
 pausa/ocultar/mostrar, reanudar, reset y límite. La revisión visual de capturas
@@ -154,8 +162,8 @@ La rama sigue sin integración autorizada. La orden actual identifica el candida
 como PR #165; esta investigación local no modifica ni verifica el estado remoto.
 
 La rama contiene commits sucesivos de implementación, alineación, diagnóstico
-y ahora sustitución del mecanismo de anuncio. El nuevo commit de producto es
-hijo de `1a05dc3b...`; no reescribe los candidatos anteriores.
+y sustituciones del mecanismo de anuncio y de foco. El nuevo commit de producto es
+hijo de `7bc3d31b...`; no reescribe los candidatos anteriores.
 Para revertir una integración posterior, identificar y revertir los commits
 correspondientes en una rama autorizada; no ejecutar reset
 destructivo ni tocar worktrees ajenos. No se requiere migración de datos porque

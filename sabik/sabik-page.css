@@ -1355,6 +1355,11 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
   outline-offset: 3px;
 }
 .sabik-panel :is(button, textarea, a) { scroll-margin-block: 9rem 2rem; }
+#sabik-response-message:focus {
+  outline: 3px solid #17395c;
+  outline-offset: 3px;
+}
+#sabik-response-message { scroll-margin-block: 2rem; }
 .sabik-panel .sabik-sr-only {
   position: absolute;
   width: 1px;

@@ -62,10 +62,13 @@ body.sabik-iris-page .sabik-panel{position:static;max-width:64rem;margin:1.5rem 
       </form>
       <section class="sabik-output" id="sabik-output" aria-labelledby="sabik-output-title" hidden>
         <h3 id="sabik-output-title">Respuesta</h3>
-        <p class="sabik-answer" id="sabik-answer"></p>
+        <div id="sabik-response-message" role="group" tabindex="-1" aria-labelledby="sabik-output-title" aria-describedby="sabik-answer sabik-notice">
+          <p class="sabik-answer" id="sabik-answer"></p>
+          <p class="sabik-notice" id="sabik-notice"></p>
+        </div>
+        <button class="sabik-button" id="sabik-write-again" type="button">Escribir otra consulta</button>
         <h4 class="sabik-source-title" id="sabik-source-title" hidden>De dónde sale</h4>
         <ul class="sabik-source-list" id="sabik-sources"></ul>
-        <p class="sabik-notice" id="sabik-notice"></p>
         <div class="sabik-response-actions" role="group" aria-label="Si esta respuesta no encaja">
           <button class="sabik-button" id="sabik-not-this" disabled type="button">No es esto</button>
           <button class="sabik-button" id="sabik-other-way" disabled type="button">Buscar por otra vía</button>

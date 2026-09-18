@@ -67,6 +67,16 @@
     while (log.childElementCount > limit) log.firstElementChild.remove();
   }
 
+  function focusFinalResponse() {
+    const node = document.querySelector("#sabik-response-message");
+    if (!node || node.closest("[hidden], [inert], [aria-hidden='true']") || !node.getClientRects().length) return;
+    node.focus({ preventScroll: true });
+    const rect = node.getBoundingClientRect();
+    if (rect.top < 0 || rect.bottom > window.innerHeight || rect.left < 0 || rect.right > window.innerWidth) {
+      node.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
+    }
+  }
+
   function syncControls() {
     const disabled = unavailable();
     for (const id of ["submit", "low", "shorter", "not-this", "other-way"]) {
@@ -267,12 +277,13 @@
     state.data = await state.dataPromise;
   }
 
-  async function runNeed(value) {
+  async function runNeed(value, { focusResponse = false } = {}) {
     if (unavailable()) return;
     const generation = ++state.generation;
     // Lock synchronously, before any await: disabled styling is not a mutex.
     setLoading(true);
     const current = () => generation === state.generation && !state.paused;
+    let focusFinal = false;
     try {
       if (state.machine.operation === "error") await dispatch({ type: "RETRY" });
       if (!current()) return;
@@ -293,17 +304,26 @@
       state.session = result.session;
       state.lastInput = value;
       renderPlan(result.plan);
-      const answer = document.querySelector("#sabik-answer");
-      const notice = document.querySelector("#sabik-notice");
-      announce([answer.textContent, notice.textContent].filter(Boolean).join(" "));
+      focusFinal = focusResponse;
     } catch (error) {
       if (!current()) return;
       await dispatch({ type: "TECHNICAL_ERROR" });
       if (!current()) return;
-      setStatus("No he podido cargar los datos locales. Puedes volver a enviar tu consulta.", "minimal");
-      announce("No he podido cargar los datos locales. Puedes volver a enviar tu consulta.");
+      const message = "No he podido cargar los datos locales. Puedes volver a enviar tu consulta.";
+      setStatus(message, "minimal");
+      document.querySelector("#sabik-output").hidden = false;
+      const answer = document.querySelector("#sabik-answer");
+      answer.className = "sabik-answer is-warning";
+      answer.textContent = message;
+      document.querySelector("#sabik-notice").textContent = "";
+      clearSources();
+      focusFinal = true;
     } finally {
-      if (generation === state.generation) setLoading(false);
+      if (generation === state.generation) {
+        setLoading(false);
+        // Complete the DOM and clear busy before the single final focus.
+        if (focusFinal && current() && state.machine.visibility === "expanded") focusFinalResponse();
+      }
     }
   }
 
@@ -330,7 +350,7 @@
         return;
       }
       focus("#sabik-input");
-      await runNeed(value);
+      await runNeed(value, { focusResponse: true });
     });
     input.addEventListener("input", () => {
       if (Array.from(input.value).length <= INPUT_LIMIT) {
@@ -338,6 +358,7 @@
         document.querySelector("#sabik-input-error").hidden = true;
       }
     });
+    document.querySelector("#sabik-write-again")?.addEventListener("click", () => focus("#sabik-input"));
     input.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
         event.preventDefault();
