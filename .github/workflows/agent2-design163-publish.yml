@@ -159,7 +159,7 @@ jobs:
               echo "Design file leaked to dist: $f"; exit 1
             fi
           done
-          max=$(find dist -type f -printf '%s\n' | sort -nr | head -1)
+          max=$(find dist -type f -printf '%s\n' | awk 'BEGIN{m=0} {if($1>m)m=$1} END{print m}')
           test "$max" -lt 49000000
           count=$(find dist -type f | wc -l)
           bytes=$(du -sb dist | awk '{print $1}')
