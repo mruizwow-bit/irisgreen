@@ -1,6 +1,7 @@
 # S1 · Controles, foco y accesibilidad del panel
 
-Fecha: 2026-09-17. Candidato local pendiente de QA; no es una fase aceptada.
+Actualizado: 2026-09-18. Candidato con fallo manual real de anuncio Narrator;
+no es una fase aceptada. Investigación: S1_NARRATOR_FIX_BLOQUEADO.
 
 Base obligatoria: `sabik-preview@1181f6f7af6c784d71d58860f7db9928bc0cff89`.
 Rama: `sabik/s1-panel-controls-a11y`. Contrato: issue #150 y
@@ -61,6 +62,19 @@ Pausar y reanudar no vuelven a publicar la respuesta anterior. El anuncio DOM
 único está comprobado automáticamente; no equivale a haber escuchado un lector
 de pantalla real.
 
+La prueba manual comunicada el 18/09/2026 sobre el candidato `a14dc4be` produjo
+FAIL_REAL / ANUNCIO_RESPUESTA_NO_COMPRENSIBLE: sin bucle ni repetición, pero la
+respuesta no se oyó completa y comprensible. No se confunde este fallo con voz
+propia de Sabik. Sigue sin causa atribuida y requiere nueva QA real con Narrator.
+
+La investigación registró el texto exacto, una mutación por anuncio y una región
+persistente expuesta en Chromium con live=polite y atomic=true. `announce()` usa
+`replaceChildren(Text)` después de `renderPlan()` y antes del `setLoading(false)`
+del finally. Ese finally no borra ni reescribe el anuncio. `aria-busy` pertenece
+a `#sabik-output`, que no es ancestro de la región de anuncio: su valor true no
+demuestra por sí solo que se suprima o interrumpa la locución. No se ha cambiado
+runtime sin evidencia suficiente ni se presenta esta cobertura como un arreglo.
+
 El HTML contiene búsqueda → panel Sabik → resto, sin recolocación por JS. Las
 reglas añadidas permiten controles multilínea, reflow y foco visible. No se han
 modificado ondas, animaciones, TTS, avatar ni reglas existentes de movimiento.
@@ -69,9 +83,10 @@ La navegación convencional y el meta `noindex,follow` se conservan.
 ## Pruebas y límites de aceptación
 
 - `node tools/test-sabik-machine-s0.js`: 146/146 PASS.
-- `node tools/test-sabik-page-v7.js`: 26/28 PASS, exit 1.
+- `node tools/test-sabik-page-v7.js`: 28/28 PASS, exit 0.
 - `node tools/test-sabik-s1.js`: 37/37 comprobaciones automáticas PASS y dos
-  controles adicionales X01/X02 PASS, ejecutados en Chrome con la CSP de dist.
+  grupos adicionales: X01–X06 (6/6 PASS) y N01–N10 (10/10 PASS), ejecutados
+  en Chrome con la CSP de dist. El total de controles adicionales es 16.
 - `python scripts/build_site.py`: exit 0.
 
 La suite S1 requiere Playwright y Chrome disponibles en el entorno de pruebas;
@@ -80,12 +95,20 @@ no añade dependencias al producto. `S1_WEB_ROOT` permite probar `dist` y
 automáticas son evidencia parcial de los casos mixtos: los casos manuales no
 quedan aceptados por el código de salida cero.
 
-V7 conserva dos expectativas antiguas sin alterar: V7-019 exige el botón literal
-Parar/Reanudar y asignaciones de pausa que ahora pertenecen a S0; V7-022 prohíbe
-todos los listeners input/keydown, incluidos el límite y Escape funcionales de
-S1. La orden solo autoriza adaptar V7-007. Se documentan los fallos, sin introducir
-código ficticio ni debilitar esas otras expectativas. Su resolución requiere
-coordinación del contrato de regresión.
+V7-019 y V7-022 se alinearon por la orden posterior del microciclo V7, en
+`a14dc4be`: controles separados bajo autoridad de S0, sin imponer movimiento S2;
+prohibición de inferencia pasiva conservada y eventos explícitos input/keydown
+permitidos. X03–X06 comprueban conservación de sesión y comportamiento sin
+inferencia; no se confía solo en expresiones regulares.
+
+N01–N10 verifican una mutación por respuesta, igualdad del texto completo, aviso
+una sola vez, silencio durante recuperación, conservación al terminar carga,
+dos consultas consecutivas, ausencia de repetición al pausar/reanudar/reset,
+error técnico único, foco conservado y ausencia de la antigua región viva del
+estado visual. Se cuentan registros de mutación, no solo callbacks del observer.
+Estas pruebas pasan también con el runtime que falló manualmente: prueban el
+contrato DOM, no comprensibilidad de la locución ni compatibilidad validada con
+Narrator. El fallo manual permanece abierto.
 
 Se ha operado el panel en navegador con Tab/Shift+Tab, Enter/Space, Escape,
 pausa/ocultar/mostrar, reanudar, reset y límite. La revisión visual de capturas
@@ -99,9 +122,12 @@ PENDIENTE_ENTORNO. No se declara 37/37 aceptación completa.
 
 Sin cambios en S0, S2/S3/S4/S5, datos, fixtures, API, Educación, Unity, Netlify,
 dominios, main, producción ni noindex. El worktree antiguo es solo referencia.
-La rama es un candidato aislado, no integrado ni desplegado.
+La rama sigue sin integración autorizada. La orden actual identifica el candidato
+como PR #165; esta investigación local no modifica ni verifica el estado remoto.
 
-El cambio se entrega como un commit cohesivo. Para revertir una integración
-posterior, revertir ese commit completo en una rama autorizada; no ejecutar reset
+La rama contiene commits sucesivos de implementación, alineación y diagnóstico.
+El último añade únicamente cobertura y documentación, sin corrección de runtime.
+Para revertir una integración posterior, identificar y revertir los commits
+correspondientes en una rama autorizada; no ejecutar reset
 destructivo ni tocar worktrees ajenos. No se requiere migración de datos porque
 S1 no añade persistencia.

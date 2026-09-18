@@ -61,8 +61,22 @@ async function fresh(options = {}) {
       postMessage(data, ...args) { window.__s1Events.push(data.event); return super.postMessage(data, ...args); }
     };
     document.addEventListener("DOMContentLoaded", () => {
-      new MutationObserver(() => window.__s1Announcements.push(document.querySelector("#sabik-announcement").textContent))
-        .observe(document.querySelector("#sabik-announcement"), { childList: true, subtree: true, characterData: true });
+      const region = document.querySelector("#sabik-announcement");
+      window.__s1AnnouncementRegion = region;
+      window.__s1AnnouncementRecords = [];
+      new MutationObserver(records => {
+        window.__s1Announcements.push(region.textContent);
+        // Count mutation records, not only observer callbacks: multiple writes
+        // in the same microtask must not look like one complete announcement.
+        for (const record of records) window.__s1AnnouncementRecords.push({
+          type: record.type,
+          addedText: [...record.addedNodes].map(n => n.textContent).join(''),
+          removedText: [...record.removedNodes].map(n => n.textContent).join(''),
+          text: region.textContent,
+          busy: document.querySelector('#sabik-output').getAttribute('aria-busy'),
+          active: document.activeElement.id
+        });
+      }).observe(region, { childList: true, subtree: true, characterData: true });
     });
   });
   page = await context.newPage();
@@ -264,6 +278,98 @@ async function main() {
     const submitted = await behavior();
     assert.equal(submitted.events.slice(ready.events.length).filter(e=>e.type==='SUBMIT').length,1);
     assert.deepEqual(submitted.calls.slice(ready.calls.length),['buildResponsePlan']);
+  });
+  const announcements = () => page.evaluate(() => window.__s1AnnouncementRecords);
+  const finalMessage = () => page.evaluate(() => [document.querySelector('#sabik-answer').textContent, document.querySelector('#sabik-notice').textContent].filter(Boolean).join(' '));
+  await contract('N01', 'one response causes exactly one announcement mutation in the existing region', async () => {
+    await fresh();
+    assert.deepEqual(await announcements(), []);
+    await submit();
+    assert.equal((await announcements()).length, 1);
+    assert.equal(await page.evaluate(() => window.__s1AnnouncementRegion === document.querySelector('#sabik-announcement')), true);
+  });
+  await contract('N02', 'announcement equals the complete final visible answer', async () => {
+    const expected = await finalMessage();
+    assert.ok(expected.length > 20);
+    assert.equal(await el('announcement').textContent(), expected);
+    assert.equal((await announcements())[0].text, expected);
+  });
+  await contract('N03', 'complementary notice is appended exactly once when present', async () => {
+    await fresh(); await submit('zzqxv'.repeat(20));
+    const answer = await el('answer').textContent(), notice = await el('notice').textContent();
+    assert.ok(notice.trim(), 'scenario must exercise a real nonempty limits notice');
+    const message = await el('announcement').textContent();
+    assert.equal(message, answer + ' ' + notice);
+    assert.equal(message.split(notice).length - 1, 1);
+    assert.equal((await announcements()).length, 1);
+  });
+  await contract('N04', 'retrieval does not announce an intermediate response', async () => {
+    await fresh(); const held = await holdData();
+    await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
+    try {
+      assert.equal((await state()).operation, 'retrieving');
+      assert.equal(await el('output').getAttribute('aria-busy'), 'true');
+      assert.deepEqual(await announcements(), []);
+      assert.equal(await el('announcement').textContent(), '');
+    } finally { held.release(); }
+    await op('presenting'); await enabled('submit');
+    assert.equal((await announcements()).length, 1);
+  });
+  await contract('N05', 'completion clears busy without erasing or rewriting the announcement', async () => {
+    assert.equal(await el('output').getAttribute('aria-busy'), 'false');
+    const before = await announcements(), expected = await finalMessage();
+    await page.waitForLoadState('networkidle');
+    assert.deepEqual(await announcements(), before);
+    assert.equal(await el('announcement').textContent(), expected);
+    assert.equal(before.length, 1);
+  });
+  await contract('N06', 'two identical valid queries each publish one complete response', async () => {
+    await fresh(); await submit('Qué es la sobrecarga sensorial');
+    const first = await finalMessage();
+    assert.equal((await announcements()).length, 1);
+    await submit('Qué es la sobrecarga sensorial');
+    const records = await announcements();
+    assert.equal(records.length, 2);
+    assert.equal(records[0].text, first);
+    assert.equal(records[1].text, await finalMessage());
+  });
+  await contract('N07', 'pause resume and reset announce their actions without replaying the answer', async () => {
+    await fresh(); await submit();
+    const response = await finalMessage();
+    await pause(); await resume(); await reset();
+    assert.deepEqual((await announcements()).map(r => r.text), [response, 'Sabik está en pausa.', 'Sabik vuelve a estar disponible.', 'Conversación reiniciada.']);
+  });
+  await contract('N08', 'technical failure publishes one appropriate announcement', async () => {
+    await fresh();
+    await page.route('**/sabik/assets/NEA/data/concepts.es.json', r => r.abort('failed'));
+    await el('input').fill('Consulta de prueba de error'); await el('submit').click();
+    await op('error'); await enabled('submit'); await page.waitForLoadState('networkidle');
+    const message = 'No he podido cargar los datos locales. Puedes volver a enviar tu consulta.';
+    assert.deepEqual((await announcements()).map(r => r.text), [message]);
+    assert.equal(await el('output').getAttribute('aria-busy'), 'false');
+    assert.equal(await el('output').isHidden(), true);
+  });
+  await contract('N09', 'response announcement needs no focus change or tab navigation', async () => {
+    await fresh(); const held = await holdData();
+    await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
+    assert.equal(await active(), 'sabik-input');
+    await page.evaluate(() => {
+      window.__s1ResponseFocusEvents = [];
+      document.addEventListener('focusin', e => window.__s1ResponseFocusEvents.push(e.target.id), true);
+    });
+    held.release(); await op('presenting'); await enabled('submit');
+    assert.equal(await active(), 'sabik-input');
+    assert.deepEqual(await page.evaluate(() => window.__s1ResponseFocusEvents), []);
+    assert.equal((await announcements()).length, 1);
+  });
+  await contract('N10', 'one polite atomic Sabik region exists and visible status is not live', async () => {
+    assert.equal(await el('announcement').getAttribute('role'), 'status');
+    assert.equal(await el('announcement').getAttribute('aria-live'), 'polite');
+    assert.equal(await el('announcement').getAttribute('aria-atomic'), 'true');
+    assert.equal(await el('status-text').getAttribute('role'), null);
+    assert.equal(await el('status-text').getAttribute('aria-live'), null);
+    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="status"], .sabik-panel [role="alert"]').count(), 1);
+    assert.equal(await page.evaluate(() => !!document.querySelector('#sabik-announcement').closest('[hidden], [aria-hidden="true"], [inert]')), false);
   });
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));
