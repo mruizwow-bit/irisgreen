@@ -1,8 +1,8 @@
 # S1 · Controles, foco y accesibilidad del panel
 
-Actualizado: 2026-09-18. Candidato de producto con foco en la respuesta visible;
+Actualizado: 2026-09-18. Candidato con ariaNotify como mejora progresiva;
 pendiente de UNA revalidación real con Narrator. No es una fase aceptada.
-El nuevo cambio parte de `7bc3d31b48987015d7251309927462e01798e662`.
+El nuevo cambio parte de `8dbba49403c9970847d211b38fde5bb88ed828fd`.
 
 Base obligatoria: `sabik-preview@1181f6f7af6c784d71d58860f7db9928bc0cff89`.
 Rama: `sabik/s1-panel-controls-a11y`. Contrato: issue #150 y
@@ -29,7 +29,7 @@ permanecen intactos.
 | Acción | Evento S0 | Efecto / foco |
 | --- | --- | --- |
 | Bootstrap | BOOT_OK | Habilita controles sin robar foco inicial |
-| Enviar | SUBMIT, RETRIEVAL_OK/EMPTY, RESPONSE_READY/ASK_CLARIFICATION | Una operación; foco de entrada durante carga y un foco final en respuesta visible |
+| Enviar | SUBMIT, RETRIEVAL_OK/EMPTY, RESPONSE_READY/ASK_CLARIFICATION | Una operación; conserva foco de entrada y notifica por un solo canal |
 | Pausar Sabik | PAUSE_ASSISTANT | Conserva entrada, sesión, respuesta y fuentes; foco en Reanudar |
 | Reanudar | RESUME_ASSISTANT | No reenvía; foco en Pausar Sabik |
 | Empezar de nuevo | RESET_SESSION | Acción explícita; limpia conversación y conserva preferencias; foco en entrada |
@@ -57,48 +57,53 @@ Enter y Shift+Enter insertan salto de línea en el textarea. Ctrl/Cmd+Enter env�
 Enter y Space conservan la activación nativa de los botones. Tab y Shift+Tab
 siguen el orden DOM, sin trampas de foco.
 
-La respuesta y su aviso complementario se renderizan en nodos normales dentro
-del bloque visible `#sabik-response-message`, con `tabindex=-1`, `role=group`,
-nombre corto por `aria-labelledby=sabik-output-title` y descripción mediante los
-textos reales `sabik-answer sabik-notice`. No hay un aria-label con la respuesta
-duplicada. Se hereda español. Las fuentes y los botones quedan fuera del bloque.
+La respuesta y su aviso complementario permanecen visibles en nodos normales
+dentro de `#sabik-response-message`. No cambia el texto editorial del Core.
+`announceToAT()` normaliza espacios/saltos redundantes, descarta cadenas vacías
+y selecciona una sola vía mediante `typeof document.ariaNotify === "function"`:
 
-Después de un envío explícito por Enviar o Ctrl/Cmd+Enter, se termina de escribir
-la respuesta, se finaliza carga (`aria-busy=false`) y se enfoca una sola vez el
-bloque visible. No se mueve el foco durante retrieval/composing ni se reescribe
-el texto después de enfocarlo. No se devuelve automáticamente al textarea.
-Se usa `focus({preventScroll:true})`; solo si queda fuera del viewport se hace
-`scrollIntoView` mínimo, instantáneo y sin animación. Se añade contorno visible.
+- Si existe: una llamada `document.ariaNotify(textoCompleto, {priority:"normal"})`.
+  La región fallback no se actualiza.
+- Si no existe: una actualización completa del nodo de texto en la región
+  permanente `#sabik-announcement`, `role=status`, `aria-live=polite`,
+  `aria-atomic=true`. No se usa simultáneamente el canal ariaNotify.
 
-`Escribir otra consulta` es el siguiente control en el orden DOM después del
-bloque: Tab y Enter permiten volver al textarea sin borrar contenido, cambiar
-sesión ni volver a anunciarlo. También se puede activar con ratón.
+Se notifica el texto visible completo de respuesta y aviso no vacío, después de
+renderizar y finalizar busy. Se excluyen fuentes, botones, navegación, textarea
+y estados intermedios. Pausa, reanudación, reset, validación y error usan la misma
+función con su propio mensaje, sin republicar la respuesta anterior. El error
+final permanece visible. Los resultados invalidados por pausa/reset no notifican.
+El fallback conserva solo el último mensaje; no se añade historial persistente.
 
-La región oculta `#sabik-announcement` queda exclusivamente para mensajes breves
-de pausa, reanudación, reset, validación de entrada o inicio. Nunca recibe la
-respuesta normal ni el error final de una petición. Mantiene su límite de ocho
-entradas; no se usa como segundo mecanismo de respuesta. El error final se
-presenta en el mismo bloque visible, limpia fuentes/aviso obsoletos y recibe un
-solo foco después de busy=false, sin anunciarse además en el log.
+Se elimina `focusFinalResponse()` y el foco/scroll automático de locución. Tras
+Enviar el textarea conserva el foco; si el usuario lo mueve durante la petición,
+la notificación no lo devuelve ni lo roba. La respuesta admite navegación por
+teclado con `tabindex=0`. El botón `Escribir otra consulta` se conserva porque
+permite volver al campo después de recorrer respuesta y fuentes, sin borrar
+contenido ni alterar la sesión. Desde el bloque, Tab y Enter vuelven al campo;
+entrar al bloque por Tab es una acción voluntaria, no el canal de notificación.
 
-Un resultado invalidado por pausa/reset no enfoca. Si la persona ha ocultado
-el panel durante la petición, el resultado no lo reabre ni roba foco al botón
-Mostrar; expandir posteriormente tampoco encola un foco. Las acciones Más corto
-y Buscar por otra vía no se equiparan a un nuevo envío del formulario para
-provocar foco automático de respuesta. No se añade TTS ni Web Speech API.
+No hay detección por navegador/OS, prioridad high, temporizadores para forzar
+voz, role=application ni Web Speech API. La interfaz siempre conserva el texto
+visible independientemente del canal. `ariaNotify` es una API emergente, no
+universal en 2026; se utiliza como mejora progresiva experimental, sin asumir
+soporte de todas las combinaciones de navegador y tecnología asistencial.
+La técnica W3C ARIA27 recomienda esa cautela:
+https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA27.html
+La especificación WAI-ARIA 1.3 continúa como borrador:
+https://w3c.github.io/aria/#ARIANotifyMixin
 
 Cronología de QA real comunicada por María/coordinación:
 
-1. `a14dc4be...`: status/polite/atomic con reemplazo → **FAIL_REAL**.
-2. `7bc3d31b...`: log/polite/additions con mensaje completo → **FAIL_REAL**.
-3. Nuevo hijo de `7bc3d31b...`: foco en contenido visible → **PENDIENTE_QA_REAL**.
+1. `a14dc4be...`: status/replacement → **FAIL_REAL**.
+2. `7bc3d31b...`: log/addition → **FAIL_REAL**.
+3. `8dbba494...`: foco en respuesta visible → **FAIL_REAL**.
+4. Nuevo hijo de `8dbba494...`: ariaNotify con fallback → **PENDIENTE_QA_REAL**.
 
-En ambos mecanismos anteriores se comunicaron sonidos/letras aislados, sin
-palabras comprensibles, sin bucle ni repetición continua; el DOM/AX conservaba
-el texto completo. La nueva orden permite cambiar el destino de foco anterior.
-No se solicitan A/B del eco ni repeticiones de status/log. El foco es comprobable
-automáticamente; que Narrator lo pronuncie correctamente exige la única prueba
-real posterior. No se atribuye una causa interna de Windows ni se declara PASS_REAL.
+No se revalidan por separado los tres mecanismos anteriores. El fallback es
+compatibilidad para navegadores sin la API; no se declara que cure el FAIL_REAL
+histórico de status. Detectar la función y realizar una llamada no demuestra que
+Narrator la haya pronunciado, ni identifica el origen del fallo anterior.
 
 El HTML contiene búsqueda → panel Sabik → resto, sin recolocación por JS. Las
 reglas añadidas permiten controles multilínea, reflow y foco visible. No se han
@@ -110,8 +115,8 @@ La navegación convencional y el meta `noindex,follow` se conservan.
 - `node tools/test-sabik-machine-s0.js`: 146/146 PASS.
 - `node tools/test-sabik-page-v7.js`: 28/28 PASS, exit 0.
 - `node tools/test-sabik-s1.js`: 37/37 comprobaciones automáticas PASS y dos
-  grupos adicionales: X01–X06 (6/6 PASS) y N01–N18 (18/18 PASS), ejecutados
-  en Chrome con la CSP de dist. El total de controles adicionales es 24.
+  grupos adicionales: X01–X06 (6/6 PASS) y N01–N25 (25/25 PASS), ejecutados
+  en Chrome con la CSP de dist. El total de controles adicionales es 31.
 - `python scripts/build_site.py`: exit 0.
 
 La suite S1 requiere Playwright y Chrome disponibles en el entorno de pruebas;
@@ -126,25 +131,36 @@ prohibición de inferencia pasiva conservada y eventos explícitos input/keydown
 permitidos. X03–X06 comprueban conservación de sesión y comportamiento sin
 inferencia; no se confía solo en expresiones regulares.
 
-N01–N18 verifican foco único final, texto visible completo, árbol AX enfocado,
-ausencia de respuesta duplicada en regiones vivas, busy=false antes de foco,
-dos envíos, error visible, controles sin relectura, retorno sin mutar la sesión,
-teclado, aviso completo, cancelación tras reset y panel oculto sin robo de foco.
-La consulta exacta `Qué es el autismo` guarda la evidencia AX posterior
-`narrator-focus-autismo-ax.json` fuera del repositorio. Se registran tanto llamadas
-a focus como eventos, texto, visibilidad y busy en el instante de foco.
+N01–N25 ejercitan ambas ramas: mock explícito disponible y API deshabilitada
+solo en el test. Comprueban una llamada o una actualización completa por
+respuesta, prioridad normal, exclusión mutua, foco conservado, errores, controles,
+dos envíos, aviso complementario, normalización, mensajes vacíos, teclado y
+cancelación de notificaciones tardías. No se equipara un mock con soporte nativo.
 
-A02/A17/A18 se actualizan por el nuevo contrato autorizado: durante carga se
-conserva entrada y la respuesta final de un envío explícito sí recibe foco.
-Los restantes casos A y X mantienen sus invariantes. La automatización no prueba
-la comprensibilidad de la locución ni acepta los casos manuales pendientes.
+N21 registra `typeof document.ariaNotify` ANTES de cualquier sustitución en un
+contexto nuevo. Si existe, su observador llama al método nativo original y prueba
+`Qué es el autismo` con una llamada completa. Si no existe, registra undefined y
+prueba el fallback. Guarda `arianotify-native-autismo.json` con versión de Chrome,
+tipo nativo, argumentos, mutaciones, foco y AX. La detección corresponde al Chrome
+de automatización de Codex; no certifica el perfil ni la voz de María.
 
-Única revalidación pendiente: abrir el dist del nuevo SHA en Chrome y Narrator,
-escribir `Qué es el autismo` y pulsar Enviar. Sin Tab ni cambio de ventana,
-comprobar una lectura completa e inteligible del bloque visible, sin deletreo,
-fragmentación o doble anuncio. El foco debe quedar en la respuesta. Después,
-Tab → Escribir otra consulta → Enter debe volver al campo conservando respuesta
-y sesión. Registrar SHA y PASS_REAL o FAIL_REAL de María. No es un A/B.
+Resultado de esta ejecución: Chrome `152.0.7977.83`, tipo nativo **function**.
+La consulta real produjo una llamada al método nativo con texto completo y
+`priority=normal`, cero mutaciones fallback y foco en `sabik-input`.
+Esto verifica la invocación, no la entrega audible a Narrator.
+
+A02/A18 vuelven al contrato de notificación sin foco forzado. A17 conserva foco
+en entrada durante recuperación. Los 37 casos y X01–X06 mantienen su cobertura;
+el código cero no acepta los casos manuales pendientes.
+
+Única revalidación pendiente: abrir el dist del nuevo SHA en Chrome/Narrator,
+escribir `Qué es el autismo` y pulsar Enviar. Sin Tab ni cambiar de ventana,
+comprobar una lectura completa e inteligible, una sola vez, sin deletreo ni
+duplicidad, manteniendo el foco en el campo. Registrar SHA, disponibilidad real
+de la API en ese Chrome y PASS_REAL o FAIL_REAL de María. No pedir A/B del eco,
+status, log ni foco otra vez. Si falla también con ariaNotify disponible, detener
+la experimentación de S1 y escalar la incompatibilidad AT/navegador a investigación
+especializada, sin encadenar otro mecanismo especulativo.
 
 Se ha operado el panel en navegador con Tab/Shift+Tab, Enter/Space, Escape,
 pausa/ocultar/mostrar, reanudar, reset y límite. La revisión visual de capturas
@@ -162,8 +178,8 @@ La rama sigue sin integración autorizada. La orden actual identifica el candida
 como PR #165; esta investigación local no modifica ni verifica el estado remoto.
 
 La rama contiene commits sucesivos de implementación, alineación, diagnóstico
-y sustituciones del mecanismo de anuncio y de foco. El nuevo commit de producto es
-hijo de `7bc3d31b...`; no reescribe los candidatos anteriores.
+y sustituciones del anuncio/foco; ahora incluye ariaNotify progresivo. El nuevo commit de producto es
+hijo de `8dbba494...`; no reescribe los candidatos anteriores.
 Para revertir una integración posterior, identificar y revertir los commits
 correspondientes en una rama autorizada; no ejecutar reset
 destructivo ni tocar worktrees ajenos. No se requiere migración de datos porque

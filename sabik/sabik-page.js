@@ -43,7 +43,6 @@
     generation: 0
   };
   const INPUT_LIMIT = 2000;
-  const ANNOUNCEMENT_LIMIT = 8;
   const canPause = () => state.machine && ["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(state.machine.operation);
   const unavailable = () => !state.coreReady || state.paused || state.pending || state.controlBusy;
 
@@ -54,27 +53,17 @@
     node.scrollIntoView({ block: "nearest" });
   }
 
-  function announce(message, { reset = false } = {}) {
-    const log = document.querySelector("#sabik-announcement");
+  function announceToAT(message) {
     const complete = message.replace(/\s+/gu, " ").trim();
-    if (!log || !complete) return;
-    const entry = document.createElement("p");
-    entry.textContent = complete;
-    // Publish a complete message as one addition; never rewrite an old entry.
-    log.append(entry);
-    // Removals are excluded by aria-relevant=additions, including session reset.
-    const limit = reset ? 1 : ANNOUNCEMENT_LIMIT;
-    while (log.childElementCount > limit) log.firstElementChild.remove();
-  }
-
-  function focusFinalResponse() {
-    const node = document.querySelector("#sabik-response-message");
-    if (!node || node.closest("[hidden], [inert], [aria-hidden='true']") || !node.getClientRects().length) return;
-    node.focus({ preventScroll: true });
-    const rect = node.getBoundingClientRect();
-    if (rect.top < 0 || rect.bottom > window.innerHeight || rect.left < 0 || rect.right > window.innerWidth) {
-      node.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
+    if (!complete) return;
+    if (typeof document.ariaNotify === "function") {
+      document.ariaNotify(complete, { priority: "normal" });
+      return "ariaNotify";
     }
+    const fallback = document.querySelector("#sabik-announcement");
+    if (!fallback) return;
+    fallback.replaceChildren(document.createTextNode(complete));
+    return "live-region";
   }
 
   function syncControls() {
@@ -277,13 +266,13 @@
     state.data = await state.dataPromise;
   }
 
-  async function runNeed(value, { focusResponse = false } = {}) {
+  async function runNeed(value) {
     if (unavailable()) return;
     const generation = ++state.generation;
     // Lock synchronously, before any await: disabled styling is not a mutex.
     setLoading(true);
     const current = () => generation === state.generation && !state.paused;
-    let focusFinal = false;
+    let finalMessage = "";
     try {
       if (state.machine.operation === "error") await dispatch({ type: "RETRY" });
       if (!current()) return;
@@ -304,7 +293,7 @@
       state.session = result.session;
       state.lastInput = value;
       renderPlan(result.plan);
-      focusFinal = focusResponse;
+      finalMessage = [document.querySelector("#sabik-answer").textContent, document.querySelector("#sabik-notice").textContent].filter(Boolean).join(" ");
     } catch (error) {
       if (!current()) return;
       await dispatch({ type: "TECHNICAL_ERROR" });
@@ -317,12 +306,12 @@
       answer.textContent = message;
       document.querySelector("#sabik-notice").textContent = "";
       clearSources();
-      focusFinal = true;
+      finalMessage = message;
     } finally {
       if (generation === state.generation) {
         setLoading(false);
-        // Complete the DOM and clear busy before the single final focus.
-        if (focusFinal && current() && state.machine.visibility === "expanded") focusFinalResponse();
+        // Finish the visual result before selecting one notification channel.
+        if (finalMessage && current()) announceToAT(finalMessage);
       }
     }
   }
@@ -346,11 +335,11 @@
       input.setAttribute("aria-invalid", String(tooLong));
       if (tooLong) {
         focus("#sabik-input");
-        announce(error.textContent);
+        announceToAT(error.textContent);
         return;
       }
       focus("#sabik-input");
-      await runNeed(value, { focusResponse: true });
+      await runNeed(value);
     });
     input.addEventListener("input", () => {
       if (Array.from(input.value).length <= INPUT_LIMIT) {
@@ -388,7 +377,7 @@
         state.pending = false;
         after();
       } catch (_) {
-        announce("Esta acción no está disponible en el estado actual.");
+        announceToAT("Esta acción no está disponible en el estado actual.");
       } finally {
         state.controlBusy = false;
         syncControls();
@@ -400,7 +389,7 @@
         applySabikVisual(state.session.sabik_state, "pausa");
         text("#sabik-state-label", "En pausa");
         setStatus("Sabik está en pausa. Tu entrada y tu respuesta siguen aquí.");
-        announce("Sabik está en pausa.");
+        announceToAT("Sabik está en pausa.");
       });
       focus("#sabik-resume");
     });
@@ -410,7 +399,7 @@
         applySabikVisual(state.session.sabik_state, "espera");
         text("#sabik-state-label", "Disponible");
         setStatus("Sabik vuelve a estar disponible.");
-        announce("Sabik vuelve a estar disponible.");
+        announceToAT("Sabik vuelve a estar disponible.");
       });
       focus("#sabik-clear");
     });
@@ -433,7 +422,7 @@
       text("#sabik-state-label", "Disponible");
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
-      announce("Conversación reiniciada.", { reset: true });
+      announceToAT("Conversación reiniciada.");
       });
       focus("#sabik-input");
     });
@@ -517,7 +506,7 @@
       renderSabikState(state.session.sabik_state, "Estoy aquí si quieres ayuda.");
     } catch (error) {
       setStatus("Sabik no pudo cargar el Core.", "minimal");
-      announce("Sabik no pudo iniciarse. Puedes seguir usando la navegación de Iris Green.");
+      announceToAT("Sabik no pudo iniciarse. Puedes seguir usando la navegación de Iris Green.");
     }
   });
 })();
