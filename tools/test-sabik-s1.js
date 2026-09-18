@@ -145,11 +145,11 @@ async function main() {
   origin = `http://127.0.0.1:${server.address().port}`;
   browser = await chromium.launch({ channel: process.env.S1_BROWSER_CHANNEL || "chrome", headless: true });
   await test("A01", "boot to ready", async () => { await fresh(); assert.equal((await state()).operation, "ready"); assert.equal(await el("submit").isEnabled(), true); });
-  await test("A02", "one submission focuses the complete visible response without a live announcement", async () => {
+  await test("A02", "one submission keeps input focus and announces only availability", async () => {
     await submit(); const answer = await el("answer").textContent(); assert.ok(answer.length > 20);
-    assert.equal(await active(), 'sabik-response-message');
-    assert.equal(await page.evaluate(() => window.__s1ResultFocusCalls.length), 1);
-    assert.deepEqual(await page.evaluate(() => window.__s1Announcements), []);
+    assert.equal(await active(), 'sabik-input');
+    assert.equal(await page.evaluate(() => window.__s1ResultFocusCalls.length), 0);
+    assert.deepEqual(await page.evaluate(() => window.__s1Announcements), ['Respuesta de Sabik disponible.']);
   });
   await test("A03", "double submit creates one retrieval", async () => {
     await reset(); const before = await page.evaluate(() => window.__s1States.filter(s => s.operation === "retrieving").length);
@@ -180,7 +180,7 @@ async function main() {
     try { assert.equal(await active(), 'sabik-input'); } finally { held.release(); }
     await op('presenting'); await enabled('submit');
   });
-  await test("A18", "explicit submission focuses its final visible result", async () => { await submit(); assert.equal(await active(), "sabik-response-message"); });
+  await test("A18", "explicit submission retains focus in the input", async () => { await submit(); assert.equal(await active(), "sabik-input"); });
   await test("A19", "hide/show focus stays on visible invoker", async () => { await toggle(); assert.equal(await active(), "sabik-toggle"); await toggle(); assert.equal(await active(), "sabik-toggle"); });
   await test("A20", "control focus destinations", async () => { await pause(); assert.equal(await active(), "sabik-resume"); await resume(); assert.equal(await active(), "sabik-clear"); await reset(); assert.equal(await active(), "sabik-input"); });
   await test("A21", "Tab moves forward", async () => { await el("input").focus(); await page.keyboard.press("Tab"); assert.equal(await active(), "sabik-submit"); });
@@ -305,137 +305,253 @@ async function main() {
     assert.equal(submitted.events.slice(ready.events.length).filter(e=>e.type==='SUBMIT').length,1);
     assert.deepEqual(submitted.calls.slice(ready.calls.length),['buildResponsePlan']);
   });
-  const resultFocus = () => page.evaluate(() => window.__s1ResultFocus);
   const focusCalls = () => page.evaluate(() => window.__s1ResultFocusCalls);
   const announcements = () => page.evaluate(() => window.__s1Announcements);
   const finalMessage = () => page.evaluate(() => [document.querySelector('#sabik-answer').textContent, document.querySelector('#sabik-notice').textContent].filter(Boolean).join(' ').replace(/\s+/gu, ' ').trim());
-  await contract('N01', 'visible final response is programmatically focusable with Spanish semantics', async () => {
+  const language = async value => {
+    await page.locator(`[data-lang="${value}"]`).click();
+    await page.waitForFunction(value => document.documentElement.lang === value && document.querySelector('.sabik-panel').lang === value, value);
+  };
+  const ES_READY = 'Respuesta de Sabik disponible.', EN_READY = 'Sabik response available.';
+  await contract('N01', 'complete visible response is semantic and keyboard reachable', async () => {
     await fresh(); await submit('Qué es el autismo');
-    assert.equal(await el('response-message').getAttribute('tabindex'), '-1');
+    assert.equal(await el('response-message').getAttribute('tabindex'), '0');
     assert.equal(await el('response-message').getAttribute('role'), 'group');
     assert.equal(await el('response-message').isVisible(), true);
-    assert.equal(await el('response-message').evaluate(n => n.closest('[lang]').lang), 'es');
+    assert.equal(await el('response-message').getAttribute('aria-labelledby'), 'sabik-output-title');
+    assert.equal(await el('response-message').getAttribute('aria-describedby'), null);
+    assert.equal(await el('output-title').textContent(), 'Respuesta de Sabik');
+    assert.equal(await el('answer').getAttribute('lang'), 'es');
+    assert.ok((await finalMessage()).length > 20);
   });
-  await contract('N02', 'one final response makes exactly one result focus call and event', async () => {
-    assert.equal((await focusCalls()).length, 1);
-    assert.equal((await resultFocus()).length, 1);
+  await contract('N02', 'one completed response makes exactly one short Spanish status update', async () => {
+    assert.deepEqual(await announcements(), [ES_READY]);
+    const records = await page.evaluate(() => window.__s1AnnouncementRecords);
+    assert.equal(records.length, 1);
+    assert.equal(records[0].type, 'childList'); assert.equal(records[0].addedCount, 1);
+    assert.equal(records[0].text, ES_READY); assert.equal(records[0].busy, 'false');
+    assert.equal(await el('announcement').getAttribute('role'), 'status');
+    assert.equal(await el('announcement').getAttribute('aria-live'), 'polite');
+    assert.equal(await el('announcement').getAttribute('aria-atomic'), 'true');
   });
-  await contract('N03', 'active element is the visible final message', async () => {
-    assert.equal(await active(), 'sabik-response-message');
-    assert.equal((await resultFocus())[0].visible, true);
+  await contract('N03', 'input retains focus and final response is never automatically focused', async () => {
+    assert.equal(await active(), 'sabik-input');
+    assert.deepEqual(await focusCalls(), []);
+    assert.deepEqual(await page.evaluate(() => window.__s1ResultFocus), []);
   });
-  await contract('N04', 'focused content and AX description contain the complete final response', async () => {
-    const expected = await finalMessage(); assert.ok(expected.length > 20);
-    assert.equal((await resultFocus())[0].text, expected);
+  await contract('N04', 'AX exposes the complete response as content, not an automatic description', async () => {
+    const expected = await el('answer').textContent();
     const cdp = await page.context().newCDPSession(page);
     try {
       const ax = await cdp.send('Accessibility.getFullAXTree');
-      const focused = ax.nodes.find(n => n.role?.value === 'group' && n.properties?.some(p => p.name === 'focused' && p.value.value));
-      assert.ok(focused, 'visible response group has AX focus');
-      assert.equal(focused.description.value, expected);
+      const group = ax.nodes.find(n => n.role?.value === 'group' && n.name?.value === 'Respuesta de Sabik');
+      assert.ok(group && !group.ignored);
+      assert.ok(!group.description?.value);
+      assert.ok(!group.properties?.some(p => p.name === 'focused' && p.value.value));
       const descendants = [];
       const walk = id => { const n = ax.nodes.find(n => n.nodeId === id); if (!n) return; descendants.push(n); (n.childIds || []).forEach(walk); };
-      walk(focused.nodeId);
+      walk(group.nodeId);
       assert.ok(descendants.some(n => n.role?.value === 'StaticText' && n.name?.value === expected));
-      if (evidence) fs.writeFileSync(path.join(evidence, 'narrator-focus-autismo-ax.json'), JSON.stringify({ query:'Qué es el autismo', expected, active:await active(), focus:await resultFocus(), calls:await focusCalls(), announcements:await announcements(), ax },null,2));
+      if (evidence) fs.writeFileSync(path.join(evidence, 's1-short-status-autismo-ax.json'), JSON.stringify({expected,active:await active(),announcements:await announcements(),ax},null,2));
     } finally { await cdp.detach(); }
   });
-  await contract('N05', 'normal response never publishes in the hidden control log', async () => {
-    assert.deepEqual(await announcements(), []);
-    assert.equal(await el('announcement').textContent(), '');
-    assert.equal(await page.locator('#sabik-announcement-log').count(), 0);
+  await contract('N05', 'exactly one Sabik live region contains neither response nor controls', async () => {
+    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="status"], .sabik-panel [role="log"], .sabik-panel [role="alert"]').count(), 1);
+    const expected = await el('answer').textContent();
+    assert.equal(await page.evaluate(text => [...document.querySelectorAll('[aria-live], [role="status"], [role="log"], [role="alert"]')].some(n => n.textContent.includes(text)), expected), false);
+    assert.equal(await el('response-message').evaluate(n => !!n.closest('[aria-live], [role="status"], [role="log"], [role="alert"]')), false);
+    assert.equal(await el('announcement').locator('*').count(), 0);
+    assert.equal(await el('status-text').getAttribute('aria-live'), null);
+    assert.equal(await el('status-text').getAttribute('role'), null);
+    assert.equal(await el('response-message').getAttribute('aria-hidden'), null);
   });
-  await contract('N06', 'loading retrieval and composing cannot focus the result', async () => {
+  await contract('N06', 'loading neither announces the answer nor moves focus; completion notifies once', async () => {
     await fresh(); const held = await holdData();
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
     try {
       assert.equal(await active(), 'sabik-input');
       assert.equal(await el('output').getAttribute('aria-busy'), 'true');
-      assert.deepEqual(await focusCalls(), []);
+      assert.deepEqual(await focusCalls(), []); assert.deepEqual(await announcements(), []);
     } finally { held.release(); }
     await op('presenting'); await enabled('submit');
-    assert.deepEqual(await focusCalls(), [{busy:'false',operation:'presenting'}]);
-  });
-  await contract('N07', 'busy completion leaves focused text intact without a second focus', async () => {
-    const before = await resultFocus(), message = await finalMessage();
-    await page.waitForLoadState('networkidle');
-    assert.deepEqual(await resultFocus(), before);
-    assert.equal((await focusCalls()).length, 1);
-    assert.equal(await finalMessage(), message);
-    assert.equal(before[0].text, message);
-    assert.equal(await active(), 'sabik-response-message');
-  });
-  await contract('N08', 'two explicit submissions each focus the complete result once', async () => {
-    await fresh(); await submit('Qué es el autismo'); await submit('Qué es el autismo');
-    assert.equal((await focusCalls()).length, 2); assert.equal((await resultFocus()).length, 2);
-    assert.ok((await resultFocus()).every(f => f.busy === 'false' && f.visible));
-    assert.deepEqual(await announcements(), []);
-  });
-  await contract('N09', 'technical failure focuses one visible error without a live announcement', async () => {
-    await fresh(); await page.route('**/sabik/assets/NEA/data/concepts.es.json', r => r.abort('failed'));
-    await el('input').fill('Qué es el autismo'); await el('submit').click(); await op('error'); await enabled('submit');
-    assert.equal(await active(), 'sabik-response-message');
-    assert.equal(await el('output').isVisible(), true);
-    assert.deepEqual(await focusCalls(), [{busy:'false',operation:'error'}]);
-    assert.equal((await resultFocus())[0].text, 'No he podido cargar los datos locales. Puedes volver a enviar tu consulta.');
-    assert.deepEqual(await announcements(), []);
-    assert.equal(await el('sources').textContent(), '');
-  });
-  await contract('N10', 'pause resume reset never refocus or republish the previous answer', async () => {
-    await fresh(); await submit(); const before = await resultFocus();
-    await pause(); await resume(); await reset();
-    assert.deepEqual(await resultFocus(), before); assert.equal((await focusCalls()).length, 1);
-    assert.deepEqual(await announcements(), ['Sabik está en pausa.','Sabik vuelve a estar disponible.','Conversación reiniciada.']);
+    assert.deepEqual(await focusCalls(), []); assert.deepEqual(await announcements(), [ES_READY]);
     assert.equal(await active(), 'sabik-input');
   });
-  await contract('N11', 'visible return action focuses input without changing response or session', async () => {
+  await contract('N07', 'two explicit answers each notify once through the same persistent region', async () => {
+    await fresh(); await submit(); await submit();
+    assert.deepEqual(await announcements(), [ES_READY, ES_READY]);
+    assert.equal(await page.evaluate(() => window.__s1AnnouncementRegion === document.querySelector('#sabik-announcement')), true);
+    assert.equal(await page.evaluate(() => window.__s1AnnouncementRecords.length), 2);
+    assert.deepEqual(await focusCalls(), []);
+  });
+  await contract('N08', 'technical failure exposes one brief error and preserves input focus', async () => {
+    await fresh(); await page.route('**/sabik/assets/NEA/data/concepts.es.json', r => r.abort('failed'));
+    await el('input').fill('Qué es el autismo'); await el('submit').click(); await op('error'); await enabled('submit');
+    const message = 'No he podido cargar los datos locales. Puedes volver a enviar tu consulta.';
+    assert.equal(await el('answer').textContent(), message);
+    assert.deepEqual(await announcements(), [message]);
+    assert.equal(await el('output').isVisible(), true); assert.equal(await el('sources').textContent(), '');
+    assert.equal(await active(), 'sabik-input'); assert.deepEqual(await focusCalls(), []);
+  });
+  await contract('N09', 'pause resume reset produce one own brief state each, never the old response', async () => {
+    await fresh(); await submit(); await pause(); await resume(); await reset();
+    assert.deepEqual(await announcements(), [ES_READY,'Sabik está en pausa.','Sabik vuelve a estar disponible.','Conversación reiniciada.']);
+    assert.deepEqual(await focusCalls(), []); assert.equal(await active(), 'sabik-input');
+  });
+  await contract('N10', 'keyboard reaches response and optional return action without a focus trap', async () => {
     await fresh(); await submit(); const before = await behavior(), value = await el('input').inputValue();
-    assert.equal(await page.getByRole('button',{name:'Escribir otra consulta',exact:true}).count(),1);
-    await el('write-again').click();
-    assert.equal(await active(), 'sabik-input'); assert.deepEqual(await behavior(), before);
-    assert.equal(await el('input').inputValue(), value); assert.deepEqual(await announcements(), []);
+    await el('reset-session').focus(); await page.keyboard.press('Tab');
+    assert.equal(await active(), 'sabik-response-message');
+    await page.keyboard.press('Tab'); assert.equal(await active(), 'sabik-write-again');
+    await page.keyboard.press('Enter'); assert.equal(await active(), 'sabik-input');
+    await page.keyboard.press('Tab'); assert.equal(await active(), 'sabik-submit');
+    await page.keyboard.press('Shift+Tab'); assert.equal(await active(), 'sabik-input');
+    assert.deepEqual(await behavior(), before); assert.equal(await el('input').inputValue(), value);
+    assert.deepEqual(await announcements(), [ES_READY]);
   });
-  await contract('N12', 'fallback has no Web Speech API or scripted voice', async () => {
-    assert.doesNotMatch(fs.readFileSync(path.join(root,'sabik/sabik-page.js'),'utf8'), /speechSynthesis|SpeechSynthesisUtterance/u);
+  await contract('N11', 'product has no ariaNotify, Web Speech, application role or response focus calls', async () => {
+    const product = fs.readFileSync(path.join(root,'sabik/sabik-page.js'),'utf8');
+    assert.doesNotMatch(product, /ariaNotify|speechSynthesis|SpeechSynthesisUtterance|focusFinalResponse/u);
+    assert.equal(await page.locator('.sabik-panel [role="application"]').count(), 0);
+    assert.equal(await el('response-message').getAttribute('aria-label'), null);
   });
-  await contract('N13', 'focus target has no application role or duplicated aria label', async () => {
-    assert.equal(await page.locator('.sabik-panel [role="application"]').count(),0);
-    assert.equal(await el('response-message').getAttribute('aria-label'),null);
-    assert.equal(await el('response-message').getAttribute('aria-hidden'),null);
-  });
-  await contract('N14', 'no response text in any live region and visible status stays non-live', async () => {
-    const expected = await finalMessage();
-    assert.equal(await page.evaluate(text => [...document.querySelectorAll('[aria-live], [role="status"], [role="log"], [role="alert"]')].some(n => n.textContent.includes(text)),expected),false);
-    assert.equal(await el('response-message').evaluate(n => !!n.closest('[aria-live], [role="status"], [role="log"], [role="alert"]')),false);
-    assert.equal(await el('status-text').getAttribute('aria-live'), null);
-    assert.equal(await el('status-text').getAttribute('role'), null);
-  });
-  await contract('N15', 'Ctrl Enter focuses result and Tab Enter returns to typing without trap', async () => {
-    await el('input').fill('Qué es el autismo'); await page.keyboard.press('Control+Enter');
-    await op('presenting'); await enabled('submit'); assert.equal(await active(),'sabik-response-message');
-    await page.keyboard.press('Tab'); assert.equal(await active(),'sabik-write-again');
-    await page.keyboard.press('Enter'); assert.equal(await active(),'sabik-input');
-    await page.keyboard.press('Tab'); assert.equal(await active(),'sabik-submit');
-    await page.keyboard.press('Shift+Tab'); assert.equal(await active(),'sabik-input');
-  });
-  await contract('N16', 'nonempty complementary notice is inside the single focused message', async () => {
+  await contract('N12', 'complementary editorial notice remains complete, visible and outside live region', async () => {
     await fresh(); await submit('zzqxv'.repeat(20));
     assert.ok((await el('notice').textContent()).trim());
-    assert.equal((await resultFocus())[0].text, await finalMessage());
-    assert.equal((await focusCalls()).length,1); assert.deepEqual(await announcements(),[]);
+    assert.equal(await el('notice').isVisible(), true);
+    assert.equal(await el('response-message').textContent().then(s=>s.replace(/\s+/gu,' ').trim()), await finalMessage());
+    assert.deepEqual(await announcements(), [ES_READY]); assert.deepEqual(await focusCalls(), []);
   });
-  await contract('N17', 'late results after reset never move focus', async () => {
+  await contract('N13', 'invalidated results never notify completion after reset', async () => {
     await fresh(); const held=await holdData();
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
     await reset(); held.release(); await page.waitForLoadState('networkidle');
-    assert.deepEqual(await focusCalls(),[]); assert.equal(await active(),'sabik-input');
+    assert.deepEqual(await announcements(), ['Conversación reiniciada.']);
+    assert.deepEqual(await focusCalls(), []); assert.equal(await active(), 'sabik-input');
   });
-  await contract('N18', 'collapsed result does not steal focus or queue focus on expansion', async () => {
+  await contract('N14', 'collapsed result never steals focus and expansion does not replay the status', async () => {
     await fresh(); const held=await holdData();
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
     await toggle(); held.release(); await op('presenting'); await enabled('submit');
-    assert.deepEqual(await focusCalls(),[]); assert.equal(await active(),'sabik-toggle');
-    await toggle(); assert.deepEqual(await focusCalls(),[]); assert.equal(await active(),'sabik-toggle');
+    assert.equal(await active(), 'sabik-toggle'); assert.deepEqual(await announcements(), [ES_READY]);
+    await toggle(); assert.deepEqual(await focusCalls(), []); assert.equal(await active(), 'sabik-toggle');
+    assert.deepEqual(await announcements(), [ES_READY]);
+  });
+  const englishUI = {
+    '#sabik-widget-title':'Sabik', '.sabik-badge':'AI', '.sabik-subtitle':'Iris Green assistant',
+    '#sabik-state-label':'Available', '#sabik-toggle':'Hide', '#sabik-status-text':'I am here if you would like help.',
+    '.sabik-capability':'I can search Iris Green and explain things more simply. I do not diagnose.',
+    'label[for="sabik-input"]':'What do you need?', '#sabik-input-help':'Up to 2000 characters. Enter adds a line; Ctrl+Enter sends.',
+    '#sabik-input-error':'Your question exceeds 2000 characters. Shorten it to send; your text is kept.',
+    '#sabik-submit':'Send', '#sabik-low':'Lower intensity', '#sabik-shorter':'Shorter', '#sabik-clear':'Pause Sabik',
+    '#sabik-resume':'Resume', '#sabik-reset-session':'Start again', '#sabik-output-title':'Sabik response',
+    '#sabik-write-again':'Write another question', '#sabik-source-title':'Sources', '#sabik-not-this':'Not this',
+    '#sabik-other-way':'Try another approach', '#sabik-memory-note':'No conversation history is kept between sessions.',
+    '.sabik-limits':'Sabik can make mistakes. Check important information against official sources.'
+  };
+  await contract('N15', 'real page language selector translates every static panel label and restores Spanish', async () => {
+    await fresh();
+    const spanish = {};
+    for (const selector of Object.keys(englishUI)) spanish[selector] = await page.locator(selector).textContent();
+    const before = await behavior(); await language('en');
+    for (const [selector, expected] of Object.entries(englishUI)) assert.equal(await page.locator(selector).textContent(), expected, selector);
+    assert.equal(await el('content-language').isVisible(), true);
+    assert.equal(await el('content-language').textContent(), 'Answers and source titles are currently available in Spanish.');
+    assert.deepEqual(await behavior(), before);
+    await language('es');
+    for (const [selector, expected] of Object.entries(spanish)) assert.equal(await page.locator(selector).textContent(), expected, selector);
+    assert.equal(await el('content-language').isHidden(), true); assert.deepEqual(await behavior(), before);
+  });
+  await contract('N16', 'English accessible names, labels, placeholder and effective language are coherent', async () => {
+    await language('en');
+    assert.equal(await page.getByRole('textbox',{name:'What do you need?',exact:true}).count(), 1);
+    for (const name of ['Send','Pause Sabik','Start again','Shorter','Lower intensity','Hide']) assert.equal(await page.getByRole('button',{name,exact:true}).count(), 1);
+    assert.equal(await el('input').getAttribute('placeholder'), 'Example: when I get back from shopping, I cannot cope with anyone');
+    assert.equal(await page.locator('.sabik-response-actions').getAttribute('aria-label'), 'If this response does not fit');
+    assert.equal(await el('hologram').getAttribute('aria-label'), 'Sabik, iris and lavender holographic sphere');
+    assert.equal(await el('input').evaluate(n=>n.closest('[lang]').lang), 'en');
+    assert.equal(await el('announcement').evaluate(n=>n.closest('[lang]').lang), 'en');
+    await language('es');
+    assert.equal(await page.locator('.sabik-response-actions').getAttribute('aria-label'), 'Si esta respuesta no encaja');
+    assert.equal(await el('hologram').getAttribute('aria-label'), 'Sabik, esfera holográfica iris y lavanda');
+    assert.equal(await el('input').getAttribute('placeholder'), 'Ejemplo: cuando vuelvo de comprar no puedo con nadie');
+  });
+  await contract('N17', 'English completion is one exact brief status; original approved answer remains Spanish', async () => {
+    await fresh(); await submit('Qué es el autismo');
+    const original = await finalMessage(), before = await behavior();
+    await language('en'); assert.equal(await finalMessage(), original); assert.deepEqual(await behavior(), before);
+    assert.equal(await el('announcement').textContent(), ''); // No replay on language change.
+    await reset(); const start = (await announcements()).length; await submit('Qué es el autismo');
+    assert.deepEqual((await announcements()).slice(start), [EN_READY]);
+    assert.equal(await finalMessage(), original); assert.equal(await active(), 'sabik-input');
+    for (const id of ['answer','notice','sources']) assert.equal(await el(id).getAttribute('lang'), 'es');
+    assert.equal(await el('status-text').textContent(), 'Sabik has prepared a response.');
+    assert.equal(await page.getByRole('group',{name:'Sabik response',exact:true}).count(), 1);
+    if(evidence) await page.locator('.sabik-panel').screenshot({path:path.join(evidence,'N17-English-panel.png')});
+  });
+  await contract('N18', 'English pause resume hide show and reset localize their own states only', async () => {
+    const count = (await announcements()).length;
+    await pause(); assert.equal(await el('state-label').textContent(),'Paused');
+    assert.equal(await el('status-text').textContent(),'Sabik is paused. Your input and response are still here.');
+    await toggle(); assert.equal(await el('toggle').textContent(),'Show'); assert.equal(await el('state-label').textContent(),'Hidden');
+    await toggle(); assert.equal(await el('toggle').textContent(),'Hide'); assert.equal(await el('state-label').textContent(),'Paused');
+    await resume(); assert.equal(await el('state-label').textContent(),'Available');
+    await reset(); assert.equal(await el('status-text').textContent(),'Conversation restarted. You can write a new question.');
+    assert.deepEqual((await announcements()).slice(count),['Sabik is paused.','Sabik is available again.','Conversation restarted.']);
+  });
+  await contract('N19', 'English validation and technical errors are single brief localized announcements', async () => {
+    await el('input').fill('x'.repeat(2001)); const count = (await announcements()).length;
+    await el('submit').click();
+    assert.deepEqual((await announcements()).slice(count), ['Your question exceeds 2000 characters. Shorten it to send; your text is kept.']);
+    await fresh(); await language('en'); await page.route('**/sabik/assets/NEA/data/concepts.es.json',r=>r.abort('failed'));
+    await el('input').fill('Qué es el autismo'); await el('submit').click(); await op('error'); await enabled('submit');
+    const message='I could not load the local data. You can send your question again.';
+    assert.deepEqual(await announcements(), [message]); assert.equal(await el('answer').textContent(),message);
+    assert.equal(await el('answer').evaluate(n=>n.closest('[lang]').lang),'en');
+    assert.equal(await active(),'sabik-input'); assert.deepEqual(await focusCalls(),[]);
+  });
+  await contract('N20', 'English intensity, shorter-response state and correction prompts translate', async () => {
+    await fresh(); await language('en'); await el('low').click();
+    assert.equal(await el('low').textContent(),'Raise intensity');
+    assert.equal(await el('low').getAttribute('aria-pressed'),'true');
+    assert.equal((await behavior()).intensity,'true');
+    assert.equal(await el('status-text').textContent(),'Low intensity enabled.');
+    await el('low').click(); assert.equal(await el('status-text').textContent(),'Normal intensity enabled.');
+    assert.equal(await el('low').getAttribute('aria-pressed'),'false');
+    assert.equal((await behavior()).intensity,'false');
+    await el('shorter').click(); assert.equal(await el('status-text').textContent(),'Shorter responses enabled.');
+    await submit('zzqxv'.repeat(20));
+    assert.equal(await el('status-text').textContent(),'Sabik does not have sufficient source information.');
+    await el('other-way').click();
+    assert.equal(await el('answer').textContent(),'To try another approach, I need a brief clarification: what would you like to withdraw or try now?');
+    assert.equal(await el('notice').textContent(),'I will not repeat the same response if there is no different approach to try.');
+    assert.equal(await el('status-text').textContent(),'Sabik needs clarification to try another approach.');
+    await el('not-this').click();
+    assert.equal(await el('answer').textContent(),'Understood. I will withdraw this approach. You can write a specific correction.');
+    assert.equal(await el('notice').textContent(),'An explicit correction takes precedence over an inference.');
+    assert.equal(await el('status-text').textContent(),'Sabik is waiting for a correction.');
+    assert.equal(await el('answer').evaluate(n=>n.closest('[lang]').lang),'en');
+    await language('es');
+    assert.equal(await el('answer').textContent(),'Entendido. Retiro esta vía. Puedes escribir una corrección concreta.');
+  });
+  await contract('N21', 'language change during retrieval preserves S0 and uses new language at completion', async () => {
+    await fresh(); const held=await holdData();
+    await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
+    try {
+      const before=await behavior(); await language('en'); assert.deepEqual(await behavior(),before);
+      assert.equal(await el('status-text').textContent(),'Sabik is searching Iris Green.');
+      // Restore typing voluntarily; completion must not steal focus from any user destination.
+      await el('input').focus();
+    } finally { held.release(); }
+    await op('presenting'); await enabled('submit'); assert.deepEqual(await announcements(),[EN_READY]);
+    assert.equal(await active(),'sabik-input'); assert.deepEqual(await focusCalls(),[]);
+  });
+  await contract('N22', 'English panel reflows at mobile width with full response and conventional navigation', async () => {
+    await page.setViewportSize({width:320,height:900}); await noHorizontalOverflow();
+    assert.equal(await el('content-language').isVisible(),true);
+    assert.equal(await el('response-message').isVisible(),true);
+    assert.equal(await page.locator('#search-form').count(),1);
+    if(evidence) await page.locator('.sabik-panel').screenshot({path:path.join(evidence,'N22-English-mobile-panel.png')});
   });
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));

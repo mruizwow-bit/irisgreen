@@ -42,8 +42,98 @@
     controlBusy: false,
     generation: 0
   };
+  const EN = {
+    "Sabik": "Sabik",
+    "IA": "AI",
+    "Asistente de Iris Green": "Iris Green assistant",
+    "Disponible": "Available",
+    "En pausa": "Paused",
+    "Oculto": "Hidden",
+    "Ocultar": "Hide",
+    "Mostrar": "Show",
+    "¿Qué necesitas?": "What do you need?",
+    "Hasta 2000 caracteres. Enter añade una línea; Ctrl+Enter envía.": "Up to 2000 characters. Enter adds a line; Ctrl+Enter sends.",
+    "Enviar": "Send",
+    "Bajar intensidad": "Lower intensity",
+    "Subir intensidad": "Raise intensity",
+    "Más corto": "Shorter",
+    "Pausar Sabik": "Pause Sabik",
+    "Reanudar": "Resume",
+    "Empezar de nuevo": "Start again",
+    "No es esto": "Not this",
+    "Buscar por otra vía": "Try another approach",
+    "Escribir otra consulta": "Write another question",
+    "Respuesta de Sabik": "Sabik response",
+    "De dónde sale": "Sources",
+    "Si esta respuesta no encaja": "If this response does not fit",
+    "Sabik, esfera holográfica iris y lavanda": "Sabik, iris and lavender holographic sphere",
+    "Ejemplo: cuando vuelvo de comprar no puedo con nadie": "Example: when I get back from shopping, I cannot cope with anyone",
+    "La consulta supera los 2000 caracteres. Acórtala para enviarla; tu texto se conserva.": "Your question exceeds 2000 characters. Shorten it to send; your text is kept.",
+    "Puedo buscar en Iris Green y explicarlo más simple. No hago diagnósticos.": "I can search Iris Green and explain things more simply. I do not diagnose.",
+    "No guarda historial entre sesiones.": "No conversation history is kept between sessions.",
+    "Sabik puede cometer errores. Comprueba la información importante en las fuentes oficiales.": "Sabik can make mistakes. Check important information against official sources.",
+    "Estoy aquí si quieres ayuda.": "I am here if you would like help.",
+    "Sabik está buscando en Iris Green.": "Sabik is searching Iris Green.",
+    "Sabik mantiene acompañamiento y escucha.": "Sabik continues to offer support and listen.",
+    "Sabik no tiene fuente suficiente.": "Sabik does not have sufficient source information.",
+    "Sabik ha preparado una respuesta.": "Sabik has prepared a response.",
+    "Respuesta de Sabik disponible.": "Sabik response available.",
+    "No he podido cargar los datos locales. Puedes volver a enviar tu consulta.": "I could not load the local data. You can send your question again.",
+    "Intensidad normal activada.": "Normal intensity enabled.",
+    "Baja intensidad activada.": "Low intensity enabled.",
+    "Esta acción no está disponible en el estado actual.": "This action is not available in the current state.",
+    "Sabik está en pausa. Tu entrada y tu respuesta siguen aquí.": "Sabik is paused. Your input and response are still here.",
+    "Sabik está en pausa.": "Sabik is paused.",
+    "Sabik vuelve a estar disponible.": "Sabik is available again.",
+    "Conversación reiniciada. Puedes escribir una nueva consulta.": "Conversation restarted. You can write a new question.",
+    "Conversación reiniciada.": "Conversation restarted.",
+    "Respuesta más corta activada.": "Shorter responses enabled.",
+    "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.": "Understood. I will withdraw this approach. You can write a specific correction.",
+    "La corrección explícita pesa más que la inferencia.": "An explicit correction takes precedence over an inference.",
+    "Sabik espera una corrección.": "Sabik is waiting for a correction.",
+    "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.": "To try another approach, I need a brief clarification: what would you like to withdraw or try now?",
+    "No repito la misma respuesta si no hay una vía real que cambiar.": "I will not repeat the same response if there is no different approach to try.",
+    "Sabik necesita una aclaración para cambiar de vía.": "Sabik needs clarification to try another approach.",
+    "Sabik no pudo cargar el Core.": "Sabik could not load its local engine.",
+    "Sabik no pudo iniciarse. Puedes seguir usando la navegación de Iris Green.": "Sabik could not start. You can still use Iris Green navigation."
+  };
+  const uiStrings = new Map();
+  const uiAttributes = [];
+  const pageLanguage = () => document.documentElement.lang.toLowerCase().startsWith("en") ? "en" : "es";
+  const translate = value => pageLanguage() === "en" ? (EN[value] || value) : value;
+  function uiText(node, value) {
+    if (!node) return;
+    uiStrings.set(node, value);
+    node.removeAttribute("lang");
+    node.textContent = translate(value);
+  }
+  function localizePanel() {
+    const panel = document.querySelector(".sabik-panel");
+    panel.lang = pageLanguage();
+    document.querySelector("#sabik-content-language").hidden = pageLanguage() !== "en";
+    for (const [node, value] of uiStrings) node.textContent = translate(value);
+    for (const item of uiAttributes) item.node.setAttribute(item.name, translate(item.value));
+  }
+  function bindPanelLanguage() {
+    const panel = document.querySelector(".sabik-panel");
+    const selectors = "#sabik-widget-title, .sabik-badge, .sabik-subtitle, #sabik-state-label, #sabik-status-text, .sabik-capability, label[for='sabik-input'], #sabik-input-help, #sabik-input-error, #sabik-output-title, #sabik-source-title, .sabik-memory-note, .sabik-limits, button";
+    for (const node of panel.querySelectorAll(selectors)) {
+      if (node.id !== "sabik-content-language") uiText(node, node.textContent);
+    }
+    for (const node of [panel, ...panel.querySelectorAll('[aria-label], [placeholder]')]) {
+      for (const name of ['aria-label', 'placeholder']) if (node.hasAttribute(name)) uiAttributes.push({node,name,value:node.getAttribute(name)});
+    }
+    localizePanel();
+    let previous = pageLanguage();
+    new MutationObserver(() => {
+      if (pageLanguage() === previous) return;
+      previous = pageLanguage();
+      // Clear the old brief status instead of replaying it in another language.
+      document.querySelector('#sabik-announcement').replaceChildren();
+      localizePanel();
+    }).observe(document.documentElement, {attributes:true,attributeFilter:['lang']});
+  }
   const INPUT_LIMIT = 2000;
-  const ANNOUNCEMENT_LIMIT = 8;
   const canPause = () => state.machine && ["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(state.machine.operation);
   const unavailable = () => !state.coreReady || state.paused || state.pending || state.controlBusy;
 
@@ -54,27 +144,11 @@
     node.scrollIntoView({ block: "nearest" });
   }
 
-  function announce(message, { reset = false } = {}) {
-    const log = document.querySelector("#sabik-announcement");
-    const complete = message.replace(/\s+/gu, " ").trim();
-    if (!log || !complete) return;
-    const entry = document.createElement("p");
-    entry.textContent = complete;
-    // Publish a complete message as one addition; never rewrite an old entry.
-    log.append(entry);
-    // Removals are excluded by aria-relevant=additions, including session reset.
-    const limit = reset ? 1 : ANNOUNCEMENT_LIMIT;
-    while (log.childElementCount > limit) log.firstElementChild.remove();
-  }
-
-  function focusFinalResponse() {
-    const node = document.querySelector("#sabik-response-message");
-    if (!node || node.closest("[hidden], [inert], [aria-hidden='true']") || !node.getClientRects().length) return;
-    node.focus({ preventScroll: true });
-    const rect = node.getBoundingClientRect();
-    if (rect.top < 0 || rect.bottom > window.innerHeight || rect.left < 0 || rect.right > window.innerWidth) {
-      node.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
-    }
+  function announce(message) {
+    const complete = translate(message).replace(/\s+/gu, " ").trim();
+    if (!complete) return;
+    const region = document.querySelector("#sabik-announcement");
+    if (region) region.replaceChildren(document.createTextNode(complete));
   }
 
   function syncControls() {
@@ -140,7 +214,7 @@
 
   function text(selector, value) {
     const node = document.querySelector(selector);
-    if (node) node.textContent = value;
+    uiText(node, value);
   }
 
   function ensurePanelPlacement() {
@@ -166,14 +240,14 @@
     const button = document.querySelector("#sabik-low");
     if (!button) return;
     const lowIntensity = Boolean(sabikState && sabikState.low_intensity);
-    button.textContent = lowIntensity ? "Subir intensidad" : "Bajar intensidad";
+    uiText(button, lowIntensity ? "Subir intensidad" : "Bajar intensidad");
     button.setAttribute("aria-pressed", String(lowIntensity));
   }
 
   function syncPauseButton(paused) {
     const button = document.querySelector("#sabik-clear");
     if (!button) return;
-    button.textContent = "Pausar Sabik";
+    uiText(button, "Pausar Sabik");
     button.hidden = paused;
   }
 
@@ -260,6 +334,10 @@
       renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.", "respuesta");
     }
     // La fuente va abajo como enlace: el texto no la repite en crudo.
+    uiStrings.delete(answer);
+    uiStrings.delete(notice);
+    answer.lang = "es";
+    notice.lang = "es";
     answer.textContent = window.NEACoreV1.renderControlledText(plan)
       .replace(/\s*Fuente:\s*\S+\s*$/, "")
       .trim();
@@ -277,13 +355,13 @@
     state.data = await state.dataPromise;
   }
 
-  async function runNeed(value, { focusResponse = false } = {}) {
+  async function runNeed(value) {
     if (unavailable()) return;
     const generation = ++state.generation;
     // Lock synchronously, before any await: disabled styling is not a mutex.
     setLoading(true);
     const current = () => generation === state.generation && !state.paused;
-    let focusFinal = false;
+    let finalStatus = "";
     try {
       if (state.machine.operation === "error") await dispatch({ type: "RETRY" });
       if (!current()) return;
@@ -304,7 +382,7 @@
       state.session = result.session;
       state.lastInput = value;
       renderPlan(result.plan);
-      focusFinal = focusResponse;
+      finalStatus = "Respuesta de Sabik disponible.";
     } catch (error) {
       if (!current()) return;
       await dispatch({ type: "TECHNICAL_ERROR" });
@@ -314,15 +392,14 @@
       document.querySelector("#sabik-output").hidden = false;
       const answer = document.querySelector("#sabik-answer");
       answer.className = "sabik-answer is-warning";
-      answer.textContent = message;
-      document.querySelector("#sabik-notice").textContent = "";
+      uiText(answer, message);
+      uiText(document.querySelector("#sabik-notice"), "");
       clearSources();
-      focusFinal = true;
+      finalStatus = message;
     } finally {
       if (generation === state.generation) {
         setLoading(false);
-        // Complete the DOM and clear busy before the single final focus.
-        if (focusFinal && current() && state.machine.visibility === "expanded") focusFinalResponse();
+        if (finalStatus && current()) announce(finalStatus);
       }
     }
   }
@@ -350,7 +427,7 @@
         return;
       }
       focus("#sabik-input");
-      await runNeed(value, { focusResponse: true });
+      await runNeed(value);
     });
     input.addEventListener("input", () => {
       if (Array.from(input.value).length <= INPUT_LIMIT) {
@@ -418,8 +495,8 @@
       await control("RESET_SESSION", () => {
       input.value = "";
       output.hidden = true;
-      answer.textContent = "";
-      notice.textContent = "";
+      uiText(answer, "");
+      uiText(notice, "");
       document.querySelector("#sabik-input-error").hidden = true;
       input.setAttribute("aria-invalid", "false");
       clearSources();
@@ -433,7 +510,7 @@
       text("#sabik-state-label", "Disponible");
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
-      announce("Conversación reiniciada.", { reset: true });
+      announce("Conversación reiniciada.");
       });
       focus("#sabik-input");
     });
@@ -453,8 +530,8 @@
       state.session = window.NEACoreV1.registerPlanRejection(state.session, state.lastPlan, "no_es_esto");
       output.hidden = false;
       answer.className = "sabik-answer";
-      answer.textContent = "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.";
-      notice.textContent = "La corrección explícita pesa más que la inferencia.";
+      uiText(answer, "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.");
+      uiText(notice, "La corrección explícita pesa más que la inferencia.");
       clearSources();
       renderSabikState(state.session.sabik_state, "Sabik espera una corrección.", "correccion");
     });
@@ -468,8 +545,8 @@
       }
       output.hidden = false;
       answer.className = "sabik-answer";
-      answer.textContent = "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.";
-      notice.textContent = "No repito la misma respuesta si no hay una vía real que cambiar.";
+      uiText(answer, "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.");
+      uiText(notice, "No repito la misma respuesta si no hay una vía real que cambiar.");
       clearSources();
       renderSabikState(state.session.sabik_state, "Sabik necesita una aclaración para cambiar de vía.", "correccion");
     });
@@ -482,7 +559,7 @@
       panel.classList.toggle("is-collapsed", collapsed);
       if (widgetBody) widgetBody.hidden = collapsed;
       button.setAttribute("aria-expanded", String(!collapsed));
-      button.textContent = collapsed ? "Mostrar" : "Ocultar";
+      uiText(button, collapsed ? "Mostrar" : "Ocultar");
       // Plegado, el estado vive en la cabecera: es lo único que queda visible.
       text("#sabik-state-label", collapsed ? "Oculto" : state.paused ? "En pausa" : "Disponible");
     }
@@ -510,6 +587,7 @@
 
   document.addEventListener("DOMContentLoaded", async () => {
     ensurePanelPlacement();
+    bindPanelLanguage();
     bind();
     syncControls();
     try {

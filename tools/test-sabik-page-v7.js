@@ -378,7 +378,9 @@ async function run() {
   assert(
     "V7-028 low intensity is explicit and reversible",
     pageJs.includes("low_intensity: !isLowIntensity") &&
-      pageJs.includes('button.textContent = lowIntensity ? "Subir intensidad" : "Bajar intensidad"') &&
+      pageJs.includes('uiText(button, lowIntensity ? "Subir intensidad" : "Bajar intensidad")') &&
+      pageJs.includes('"Subir intensidad": "Raise intensity"') &&
+      pageJs.includes('"Bajar intensidad": "Lower intensity"') &&
       pageJs.includes('button.setAttribute("aria-pressed", String(lowIntensity))') &&
       pageJs.includes("Intensidad normal activada."),
     "Bajar intensidad must toggle back to normal instead of permanently dimming Sabik"
