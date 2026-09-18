@@ -33,6 +33,33 @@ async function fresh(options = {}) {
   if (page) await page.context().close();
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, ...options });
   await context.addInitScript(() => {
+    // Test-only timeline: observe native focus events separately from script calls.
+    window.__s1FocusCalls = []; window.__s1FocusTimeline = [];
+    window.__s1SubmitStarted = null;
+    const focusId = node => node?.id || node?.tagName || null;
+    const traceFocus = (type, details = {}) => {
+      if (window.__s1SubmitStarted !== null) window.__s1FocusTimeline.push({
+        type, ms: performance.now() - window.__s1SubmitStarted,
+        active: focusId(document.activeElement), ...details
+      });
+    };
+    window.__s1TraceFocus = traceFocus;
+    const nativeElementFocus = HTMLElement.prototype.focus;
+    HTMLElement.prototype.focus = function (...args) {
+      if (window.__s1SubmitStarted !== null) {
+        const call = {target:focusId(this),before:focusId(document.activeElement)};
+        window.__s1FocusCalls.push(call); traceFocus('focus-call',call);
+      }
+      return nativeElementFocus.apply(this,args);
+    };
+    document.addEventListener('submit', event => {
+      if (event.target.id !== 'sabik-form') return;
+      window.__s1SubmitStarted = performance.now();
+      window.__s1FocusCalls = []; window.__s1FocusTimeline = [];
+      traceFocus('submit',{target:event.target.id});
+    }, true);
+    for (const type of ['focus','focusin','blur','focusout']) document.addEventListener(type,
+      event => traceFocus(type,{target:focusId(event.target),related:focusId(event.relatedTarget)}),true);
     const OriginalWorker = window.Worker;
     window.__s1States = []; window.__s1Announcements = []; window.__s1Errors = [];
     window.__s1Events = []; window.__s1CoreCalls = []; window.__s1Sessions = [];
@@ -78,9 +105,19 @@ async function fresh(options = {}) {
       const region = document.querySelector("#sabik-announcement");
       window.__s1AnnouncementRegion = region;
       window.__s1AnnouncementRecords = [];
+      const output = document.querySelector('#sabik-output');
+      let lastBusy = output.getAttribute('aria-busy');
+      new MutationObserver(() => {
+        const busy = output.getAttribute('aria-busy');
+        if (busy !== lastBusy) window.__s1TraceFocus(busy === 'true' ? 'loading-start' : 'loading-end');
+        lastBusy = busy;
+      }).observe(output,{attributes:true,attributeFilter:['aria-busy']});
       new MutationObserver(records => {
         for (const record of records) {
-          if (record.target === region) for (const node of record.addedNodes) window.__s1Announcements.push(node.textContent);
+          if (record.target === region) for (const node of record.addedNodes) {
+            window.__s1Announcements.push(node.textContent);
+            window.__s1TraceFocus('status-update',{text:node.textContent});
+          }
         }
         // Count mutation records, not only observer callbacks: multiple writes
         // in the same microtask must not look like one complete announcement.
@@ -120,6 +157,12 @@ async function toggle() {
 }
 const active = () => page.evaluate(() => document.activeElement.id);
 const state = () => page.evaluate(() => window.__s1States.at(-1));
+const submissionFocusCalls = () => page.evaluate(() => window.__s1FocusCalls);
+async function naturalButtonFocus() {
+  // Chromium blurs a natively disabled button to BODY; no product focus target.
+  assert.ok(['', 'sabik-submit'].includes(await active()), 'button activation must not refocus input or response');
+  assert.deepEqual(await submissionFocusCalls(), []);
+}
 async function test(id, name, fn) {
   try { await fn(); results.push({ id, name, automated: "AUTOMATIZADO_PASS", manual: manualGates.has(id) ? "PENDIENTE_ENTORNO" : "NO_REQUERIDO" }); }
   catch (e) { results.push({ id, name, automated: "FAIL", detail: e.message, manual: manualGates.has(id) ? "PENDIENTE_ENTORNO" : "NO_REQUERIDO" }); }
@@ -145,9 +188,9 @@ async function main() {
   origin = `http://127.0.0.1:${server.address().port}`;
   browser = await chromium.launch({ channel: process.env.S1_BROWSER_CHANNEL || "chrome", headless: true });
   await test("A01", "boot to ready", async () => { await fresh(); assert.equal((await state()).operation, "ready"); assert.equal(await el("submit").isEnabled(), true); });
-  await test("A02", "one submission keeps input focus and announces only availability", async () => {
+  await test("A02", "one click keeps browser focus behavior and announces only availability", async () => {
     await submit(); const answer = await el("answer").textContent(); assert.ok(answer.length > 20);
-    assert.equal(await active(), 'sabik-input');
+    await naturalButtonFocus();
     assert.equal(await page.evaluate(() => window.__s1ResultFocusCalls.length), 0);
     assert.deepEqual(await page.evaluate(() => window.__s1Announcements), ['Respuesta de Sabik disponible.']);
   });
@@ -174,13 +217,13 @@ async function main() {
   await test("A14", "incompatible controls disabled", async () => { await pause(); for(const id of ['submit','shorter','not-this','other-way','low']) assert.equal(await el(id).isDisabled(), true); await resume(); });
   await test("A15", "maximum input accepted", async () => { await reset(); await submit("x".repeat(2000)); assert.equal(await el("input").getAttribute("aria-invalid"), "false"); });
   await test("A16", "over limit preserves input and announces", async () => { await reset(); await el("input").fill("x".repeat(2001)); const before = await state(); await el("submit").click(); assert.equal((await state()).revision, before.revision); assert.equal(await el("input").inputValue(), "x".repeat(2001)); assert.equal(await el("input").getAttribute("aria-invalid"), "true"); assert.equal(await el("input-error").isVisible(), true); assert.equal(await active(), "sabik-input"); });
-  await test("A17", "input retains focus while submit retrieves", async () => {
+  await test("A17", "click does not artificially focus input during retrieval", async () => {
     await fresh(); const held = await holdData();
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
-    try { assert.equal(await active(), 'sabik-input'); } finally { held.release(); }
+    try { await naturalButtonFocus(); } finally { held.release(); }
     await op('presenting'); await enabled('submit');
   });
-  await test("A18", "explicit submission retains focus in the input", async () => { await submit(); assert.equal(await active(), "sabik-input"); });
+  await test("A18", "button submission preserves natural focus instead of imposing the input", async () => { await submit(); await naturalButtonFocus(); });
   await test("A19", "hide/show focus stays on visible invoker", async () => { await toggle(); assert.equal(await active(), "sabik-toggle"); await toggle(); assert.equal(await active(), "sabik-toggle"); });
   await test("A20", "control focus destinations", async () => { await pause(); assert.equal(await active(), "sabik-resume"); await resume(); assert.equal(await active(), "sabik-clear"); await reset(); assert.equal(await active(), "sabik-input"); });
   await test("A21", "Tab moves forward", async () => { await el("input").focus(); await page.keyboard.press("Tab"); assert.equal(await active(), "sabik-submit"); });
@@ -334,8 +377,8 @@ async function main() {
     assert.equal(await el('announcement').getAttribute('aria-live'), 'polite');
     assert.equal(await el('announcement').getAttribute('aria-atomic'), 'true');
   });
-  await contract('N03', 'input retains focus and final response is never automatically focused', async () => {
-    assert.equal(await active(), 'sabik-input');
+  await contract('N03', 'button submission does not refocus input or final response', async () => {
+    await naturalButtonFocus();
     assert.deepEqual(await focusCalls(), []);
     assert.deepEqual(await page.evaluate(() => window.__s1ResultFocus), []);
   });
@@ -369,13 +412,13 @@ async function main() {
     await fresh(); const held = await holdData();
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await held.seen;
     try {
-      assert.equal(await active(), 'sabik-input');
+      await naturalButtonFocus();
       assert.equal(await el('output').getAttribute('aria-busy'), 'true');
       assert.deepEqual(await focusCalls(), []); assert.deepEqual(await announcements(), []);
     } finally { held.release(); }
     await op('presenting'); await enabled('submit');
     assert.deepEqual(await focusCalls(), []); assert.deepEqual(await announcements(), [ES_READY]);
-    assert.equal(await active(), 'sabik-input');
+    await naturalButtonFocus();
   });
   await contract('N07', 'two explicit answers each notify once through the same persistent region', async () => {
     await fresh(); await submit(); await submit();
@@ -384,14 +427,14 @@ async function main() {
     assert.equal(await page.evaluate(() => window.__s1AnnouncementRecords.length), 2);
     assert.deepEqual(await focusCalls(), []);
   });
-  await contract('N08', 'technical failure exposes one brief error and preserves input focus', async () => {
+  await contract('N08', 'technical failure exposes one brief error and does not artificially refocus input', async () => {
     await fresh(); await page.route('**/sabik/assets/NEA/data/concepts.es.json', r => r.abort('failed'));
     await el('input').fill('Qué es el autismo'); await el('submit').click(); await op('error'); await enabled('submit');
     const message = 'No he podido cargar los datos locales. Puedes volver a enviar tu consulta.';
     assert.equal(await el('answer').textContent(), message);
     assert.deepEqual(await announcements(), [message]);
     assert.equal(await el('output').isVisible(), true); assert.equal(await el('sources').textContent(), '');
-    assert.equal(await active(), 'sabik-input'); assert.deepEqual(await focusCalls(), []);
+    await naturalButtonFocus(); assert.deepEqual(await focusCalls(), []);
   });
   await contract('N09', 'pause resume reset produce one own brief state each, never the old response', async () => {
     await fresh(); await submit(); await pause(); await resume(); await reset();
@@ -483,7 +526,7 @@ async function main() {
     assert.equal(await el('announcement').textContent(), ''); // No replay on language change.
     await reset(); const start = (await announcements()).length; await submit('Qué es el autismo');
     assert.deepEqual((await announcements()).slice(start), [EN_READY]);
-    assert.equal(await finalMessage(), original); assert.equal(await active(), 'sabik-input');
+    assert.equal(await finalMessage(), original); await naturalButtonFocus();
     for (const id of ['answer','notice','sources']) assert.equal(await el(id).getAttribute('lang'), 'es');
     assert.equal(await el('status-text').textContent(), 'Sabik has prepared a response.');
     assert.equal(await page.getByRole('group',{name:'Sabik response',exact:true}).count(), 1);
@@ -508,7 +551,7 @@ async function main() {
     const message='I could not load the local data. You can send your question again.';
     assert.deepEqual(await announcements(), [message]); assert.equal(await el('answer').textContent(),message);
     assert.equal(await el('answer').evaluate(n=>n.closest('[lang]').lang),'en');
-    assert.equal(await active(),'sabik-input'); assert.deepEqual(await focusCalls(),[]);
+    await naturalButtonFocus(); assert.deepEqual(await focusCalls(),[]);
   });
   await contract('N20', 'English intensity, shorter-response state and correction prompts translate', async () => {
     await fresh(); await language('en'); await el('low').click();
@@ -553,6 +596,89 @@ async function main() {
     assert.equal(await page.locator('#search-form').count(),1);
     if(evidence) await page.locator('.sabik-panel').screenshot({path:path.join(evidence,'N22-English-mobile-panel.png')});
   });
+  const naturalFocusCases = [];
+  async function naturalActivation(mode, lang = 'es', hold = false) {
+    await fresh(); if (lang === 'en') await language('en');
+    const held = hold ? await holdData() : null;
+    await el('input').fill('Qué es el autismo');
+    if (mode.startsWith('keyboard')) await page.keyboard.press('Tab');
+    if (mode === 'mouse') await el('submit').click();
+    else await page.keyboard.press(mode === 'ctrl-enter' ? 'Control+Enter' : mode === 'keyboard-enter' ? 'Enter' : 'Space');
+    if (held) await held.seen;
+    return held;
+  }
+  async function saveNaturalCase(mode) {
+    const observed = await page.evaluate(() => ({active:document.activeElement.id||document.activeElement.tagName,calls:window.__s1FocusCalls,timeline:window.__s1FocusTimeline,announcements:window.__s1Announcements}));
+    naturalFocusCases.push({mode,...observed}); return observed;
+  }
+  await contract('N-F1','mouse click has no programmatic input or response focus',async()=>{
+    await naturalActivation('mouse'); await op('presenting'); await enabled('submit');
+    await naturalButtonFocus();
+    const observed=await saveNaturalCase('mouse');
+    assert.equal(observed.timeline.find(e=>e.type==='submit').active,'sabik-submit');
+    assert.ok(!observed.timeline.some(e=>['focus','focusin'].includes(e.type)&&e.target==='sabik-input'));
+  });
+  await contract('N-F2','Ctrl Enter retains input by continuity without even a redundant focus call',async()=>{
+    await naturalActivation('ctrl-enter'); await op('presenting'); await enabled('submit');
+    assert.equal(await active(),'sabik-input'); assert.deepEqual(await submissionFocusCalls(),[]);
+    const observed=await saveNaturalCase('ctrl-enter');
+    assert.ok(!observed.timeline.some(e=>['focus','focusin','blur','focusout'].includes(e.type)));
+  });
+  await contract('N-F3','Enter and Space on Send respect browser button focus behavior',async()=>{
+    for(const mode of ['keyboard-enter','keyboard-space']) {
+      await naturalActivation(mode); await op('presenting'); await enabled('submit');
+      await naturalButtonFocus(); const observed=await saveNaturalCase(mode);
+      assert.equal(observed.timeline.find(e=>e.type==='submit').active,'sabik-submit');
+      assert.ok(!observed.timeline.some(e=>['focus','focusin'].includes(e.type)&&e.target==='sabik-input'));
+    }
+  });
+  await contract('N-F4','pending load emits no script focus or loading announcement',async()=>{
+    const held=await naturalActivation('mouse','es',true);
+    try {
+      assert.equal(await el('output').getAttribute('aria-busy'),'true');
+      assert.deepEqual(await submissionFocusCalls(),[]); assert.deepEqual(await announcements(),[]);
+      assert.ok(!(await page.evaluate(()=>window.__s1FocusTimeline)).some(e=>['focus','focusin'].includes(e.type)));
+    } finally {held.release();}
+    await op('presenting'); await enabled('submit');
+  });
+  await contract('N-F5','completion publishes one status without moving focus at or after completion',async()=>{
+    const observed=await saveNaturalCase('mouse-held');
+    assert.deepEqual(observed.announcements,[ES_READY]); assert.deepEqual(observed.calls,[]);
+    const end=observed.timeline.findIndex(e=>e.type==='loading-end');assert.ok(end>=0);
+    assert.equal(observed.timeline.filter(e=>e.type==='status-update').length,1);
+    assert.ok(!observed.timeline.slice(end).some(e=>['focus','focusin','blur','focusout','focus-call'].includes(e.type)));
+    assert.equal(await page.evaluate(()=>window.__s1AnnouncementRecords.length),1);
+  });
+  await contract('N-F6','Spanish notification stays exact, persistent polite atomic status',async()=>{
+    assert.deepEqual(await announcements(),[ES_READY]);
+    assert.equal(await el('announcement').getAttribute('role'),'status');
+    assert.equal(await el('announcement').getAttribute('aria-live'),'polite');
+    assert.equal(await el('announcement').getAttribute('aria-atomic'),'true');
+    assert.equal(await page.evaluate(()=>document.querySelector('#sabik-announcement')===window.__s1AnnouncementRegion),true);
+  });
+  await contract('N-F7','English click publishes one exact localized status without refocus',async()=>{
+    await naturalActivation('mouse','en');await op('presenting');await enabled('submit');
+    assert.deepEqual(await announcements(),[EN_READY]);await naturalButtonFocus();
+    await saveNaturalCase('mouse-en');
+  });
+  await contract('N-F8','complete answer remains outside the single brief live region',async()=>{
+    const answer=await el('answer').textContent();assert.ok(answer.length>20);
+    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="status"], .sabik-panel [role="log"], .sabik-panel [role="alert"]').count(),1);
+    assert.ok(!(await el('announcement').textContent()).includes(answer));
+    assert.equal(await el('answer').evaluate(n=>!!n.closest('[aria-live], [role="status"], [role="log"], [role="alert"]')),false);
+  });
+  await contract('N-F9','all activation modes have no response focus calls or response focus events',async()=>{
+    for(const observed of naturalFocusCases) {
+      assert.deepEqual(observed.calls,[]);
+      assert.ok(!observed.timeline.some(e=>['focus','focusin'].includes(e.type)&&e.target==='sabik-response-message'));
+    }
+  });
+  await contract('N-F10','no speculative voice, notification timer or application role is added',async()=>{
+    const product=fs.readFileSync(path.join(root,'sabik/sabik-page.js'),'utf8');
+    assert.doesNotMatch(product,/ariaNotify|speechSynthesis|SpeechSynthesisUtterance|setTimeout|focusFinalResponse/u);
+    assert.equal(await page.locator('.sabik-panel [role="application"]').count(),0);
+  });
+  if(evidence)fs.writeFileSync(path.join(evidence,'natural-focus-cases.json'),JSON.stringify(naturalFocusCases,null,2));
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));
   if(results.some(r=>r.automated==='FAIL')) process.exitCode=1;

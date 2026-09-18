@@ -426,7 +426,6 @@
         announce(error.textContent);
         return;
       }
-      focus("#sabik-input");
       await runNeed(value);
     });
     input.addEventListener("input", () => {
