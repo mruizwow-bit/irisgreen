@@ -1,7 +1,8 @@
 # S1 · Controles, foco y accesibilidad del panel
 
-Actualizado: 2026-09-18. Candidato con fallo manual real de anuncio Narrator;
-no es una fase aceptada. Investigación: S1_NARRATOR_FIX_BLOQUEADO.
+Actualizado: 2026-09-18. Candidato de producto con registro de mensajes accesibles;
+pendiente de UNA revalidación real con Narrator. No es una fase aceptada.
+El nuevo cambio parte de `1a05dc3b35effa74982da7b21c864e88863d210f`.
 
 Base obligatoria: `sabik-preview@1181f6f7af6c784d71d58860f7db9928bc0cff89`.
 Rama: `sabik/s1-panel-controls-a11y`. Contrato: issue #150 y
@@ -56,8 +57,13 @@ Enter y Shift+Enter insertan salto de línea en el textarea. Ctrl/Cmd+Enter env�
 Enter y Space conservan la activación nativa de los botones. Tab y Shift+Tab
 siguen el orden DOM, sin trampas de foco.
 
-La respuesta completa y su aviso se escriben una vez en una única región viva
-dedicada. El estado visual y la respuesta visible no duplican regiones vivas.
+La respuesta completa y su aviso no vacío se añaden juntos en un nodo nuevo a
+una región permanente `#sabik-announcement`: `role=log`, `aria-live=polite` y
+`aria-relevant=additions`, sin `aria-atomic=true`. El párrafo se completa fuera
+del DOM, normaliza espacios preservando puntuación y se inserta una sola vez.
+No se utiliza `replaceChildren()` para publicar. El idioma español se hereda
+del documento y se conserva la técnica CSS `sabik-sr-only` existente.
+El estado visual y la respuesta visible no duplican regiones vivas.
 Pausar y reanudar no vuelven a publicar la respuesta anterior. El anuncio DOM
 único está comprobado automáticamente; no equivale a haber escuchado un lector
 de pantalla real.
@@ -65,15 +71,26 @@ de pantalla real.
 La prueba manual comunicada el 18/09/2026 sobre el candidato `a14dc4be` produjo
 FAIL_REAL / ANUNCIO_RESPUESTA_NO_COMPRENSIBLE: sin bucle ni repetición, pero la
 respuesta no se oyó completa y comprensible. No se confunde este fallo con voz
-propia de Sabik. Sigue sin causa atribuida y requiere nueva QA real con Narrator.
+propia de Sabik. Ese mecanismo anterior conserva su FAIL_REAL histórico.
+La orden posterior autoriza sustituirlo por un patrón de mensajes secuenciales,
+sin exigir otro A/B del eco. No se afirma que la causa interna de Narrator haya
+quedado demostrada ni que el nuevo candidato ya tenga PASS_REAL.
 
-La investigación registró el texto exacto, una mutación por anuncio y una región
+La investigación del mecanismo anterior registró el texto exacto, una mutación por anuncio y una región
 persistente expuesta en Chromium con live=polite y atomic=true. `announce()` usa
-`replaceChildren(Text)` después de `renderPlan()` y antes del `setLoading(false)`
+en ese candidato `replaceChildren(Text)` después de `renderPlan()` y antes del `setLoading(false)`
 del finally. Ese finally no borra ni reescribe el anuncio. `aria-busy` pertenece
 a `#sabik-output`, que no es ancestro de la región de anuncio: su valor true no
-demuestra por sí solo que se suprima o interrumpa la locución. No se ha cambiado
-runtime sin evidencia suficiente ni se presenta esta cobertura como un arreglo.
+demuestra por sí solo que se suprima o interrumpa la locución.
+
+El nuevo mecanismo sustituye `status/replacement` por `log/addition`, adecuado
+al contrato de mensajes conversacionales secuenciales solicitado. Pausa,
+reanudación, reset y error usan el mismo mecanismo, con una entrada por acción.
+Primero se añade el mensaje nuevo y luego se retiran entradas antiguas hasta
+conservar ocho. Reset deja solo su nuevo mensaje; las retiradas están excluidas
+de los anuncios por `aria-relevant=additions`. No hay persistencia ni reenvío de
+la respuesta anterior. El foco de Enviar permanece en el textarea; el log nunca
+recibe foco. No se introduce TTS, Web Speech API, temporizador ni anuncio assertive.
 
 El HTML contiene búsqueda → panel Sabik → resto, sin recolocación por JS. Las
 reglas añadidas permiten controles multilínea, reflow y foco visible. No se han
@@ -85,8 +102,8 @@ La navegación convencional y el meta `noindex,follow` se conservan.
 - `node tools/test-sabik-machine-s0.js`: 146/146 PASS.
 - `node tools/test-sabik-page-v7.js`: 28/28 PASS, exit 0.
 - `node tools/test-sabik-s1.js`: 37/37 comprobaciones automáticas PASS y dos
-  grupos adicionales: X01–X06 (6/6 PASS) y N01–N10 (10/10 PASS), ejecutados
-  en Chrome con la CSP de dist. El total de controles adicionales es 16.
+  grupos adicionales: X01–X06 (6/6 PASS) y N01–N12 (12/12 PASS), ejecutados
+  en Chrome con la CSP de dist. El total de controles adicionales es 18.
 - `python scripts/build_site.py`: exit 0.
 
 La suite S1 requiere Playwright y Chrome disponibles en el entorno de pruebas;
@@ -101,14 +118,25 @@ prohibición de inferencia pasiva conservada y eventos explícitos input/keydown
 permitidos. X03–X06 comprueban conservación de sesión y comportamiento sin
 inferencia; no se confía solo en expresiones regulares.
 
-N01–N10 verifican una mutación por respuesta, igualdad del texto completo, aviso
+N01–N12 verifican una adición por respuesta, igualdad del texto completo, aviso
 una sola vez, silencio durante recuperación, conservación al terminar carga,
 dos consultas consecutivas, ausencia de repetición al pausar/reanudar/reset,
 error técnico único, foco conservado y ausencia de la antigua región viva del
-estado visual. Se cuentan registros de mutación, no solo callbacks del observer.
-Estas pruebas pasan también con el runtime que falló manualmente: prueban el
-contrato DOM, no comprensibilidad de la locución ni compatibilidad validada con
-Narrator. El fallo manual permanece abierto.
+estado visual, límite de ocho entradas y limpieza sin reconstrucción de hijos.
+Se cuentan registros de mutación, no solo callbacks del observer. Se comprueba
+que el texto está completo antes de insertar el nodo y que dos respuestas crean
+dos hijos distintos en orden. La consulta exacta `Qué es el autismo` genera la
+evidencia AX posterior `narrator-log-autismo-ax.json` fuera del repositorio.
+Estas pruebas exigen el nuevo contrato log/adición, pero no prueban la
+comprensibilidad de la locución ni compatibilidad validada con Narrator.
+
+Revalidación única pendiente: abrir el dist del nuevo candidato con Chrome y
+Narrator habituales, escribir `Qué es el autismo` y pulsar Enviar. Mantener la
+ventana sin Tab ni cambios de foco y escuchar la respuesta completa. Debe
+anunciarse una sola vez como palabras/frases comprensibles, sin deletreo,
+fragmentación ni bucle, con foco en el textarea. Registrar SHA probado y
+PASS_REAL o FAIL_REAL según lo escuchado por María. No se exige cambiar el eco
+de caracteres ni hacer un A/B previo. El criterio real sigue pendiente.
 
 Se ha operado el panel en navegador con Tab/Shift+Tab, Enter/Space, Escape,
 pausa/ocultar/mostrar, reanudar, reset y límite. La revisión visual de capturas
@@ -125,8 +153,9 @@ dominios, main, producción ni noindex. El worktree antiguo es solo referencia.
 La rama sigue sin integración autorizada. La orden actual identifica el candidato
 como PR #165; esta investigación local no modifica ni verifica el estado remoto.
 
-La rama contiene commits sucesivos de implementación, alineación y diagnóstico.
-El último añade únicamente cobertura y documentación, sin corrección de runtime.
+La rama contiene commits sucesivos de implementación, alineación, diagnóstico
+y ahora sustitución del mecanismo de anuncio. El nuevo commit de producto es
+hijo de `1a05dc3b...`; no reescribe los candidatos anteriores.
 Para revertir una integración posterior, identificar y revertir los commits
 correspondientes en una rama autorizada; no ejecutar reset
 destructivo ni tocar worktrees ajenos. No se requiere migración de datos porque

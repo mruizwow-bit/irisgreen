@@ -43,6 +43,7 @@
     generation: 0
   };
   const INPUT_LIMIT = 2000;
+  const ANNOUNCEMENT_LIMIT = 8;
   const canPause = () => state.machine && ["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(state.machine.operation);
   const unavailable = () => !state.coreReady || state.paused || state.pending || state.controlBusy;
 
@@ -53,9 +54,17 @@
     node.scrollIntoView({ block: "nearest" });
   }
 
-  function announce(message) {
-    const node = document.querySelector("#sabik-announcement");
-    if (node) node.replaceChildren(document.createTextNode(message));
+  function announce(message, { reset = false } = {}) {
+    const log = document.querySelector("#sabik-announcement");
+    const complete = message.replace(/\s+/gu, " ").trim();
+    if (!log || !complete) return;
+    const entry = document.createElement("p");
+    entry.textContent = complete;
+    // Publish a complete message as one addition; never rewrite an old entry.
+    log.append(entry);
+    // Removals are excluded by aria-relevant=additions, including session reset.
+    const limit = reset ? 1 : ANNOUNCEMENT_LIMIT;
+    while (log.childElementCount > limit) log.firstElementChild.remove();
   }
 
   function syncControls() {
@@ -403,7 +412,7 @@
       text("#sabik-state-label", "Disponible");
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
-      announce("Conversación reiniciada.");
+      announce("Conversación reiniciada.", { reset: true });
       });
       focus("#sabik-input");
     });

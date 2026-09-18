@@ -65,14 +65,19 @@ async function fresh(options = {}) {
       window.__s1AnnouncementRegion = region;
       window.__s1AnnouncementRecords = [];
       new MutationObserver(records => {
-        window.__s1Announcements.push(region.textContent);
+        for (const record of records) {
+          if (record.target === region) for (const node of record.addedNodes) window.__s1Announcements.push(node.textContent);
+        }
         // Count mutation records, not only observer callbacks: multiple writes
         // in the same microtask must not look like one complete announcement.
         for (const record of records) window.__s1AnnouncementRecords.push({
           type: record.type,
+          targetIsLog: record.target === region,
+          addedCount: record.addedNodes.length,
+          removedCount: record.removedNodes.length,
           addedText: [...record.addedNodes].map(n => n.textContent).join(''),
           removedText: [...record.removedNodes].map(n => n.textContent).join(''),
-          text: region.textContent,
+          text: [...record.addedNodes].map(n => n.textContent).join(''),
           busy: document.querySelector('#sabik-output').getAttribute('aria-busy'),
           active: document.activeElement.id
         });
@@ -279,13 +284,23 @@ async function main() {
     assert.equal(submitted.events.slice(ready.events.length).filter(e=>e.type==='SUBMIT').length,1);
     assert.deepEqual(submitted.calls.slice(ready.calls.length),['buildResponsePlan']);
   });
-  const announcements = () => page.evaluate(() => window.__s1AnnouncementRecords);
-  const finalMessage = () => page.evaluate(() => [document.querySelector('#sabik-answer').textContent, document.querySelector('#sabik-notice').textContent].filter(Boolean).join(' '));
-  await contract('N01', 'one response causes exactly one announcement mutation in the existing region', async () => {
+  const mutations = () => page.evaluate(() => window.__s1AnnouncementRecords);
+  const announcements = async () => (await mutations()).filter(r => r.addedCount);
+  const finalMessage = () => page.evaluate(() => [document.querySelector('#sabik-answer').textContent, document.querySelector('#sabik-notice').textContent].filter(Boolean).join(' ').replace(/\s+/gu, ' ').trim());
+  await contract('N01', 'one complete addition in a permanent log present from load', async () => {
     await fresh();
+    assert.equal(await el('announcement').getAttribute('role'), 'log');
+    assert.equal(await el('announcement').getAttribute('aria-live'), 'polite');
+    assert.equal(await el('announcement').getAttribute('aria-relevant'), 'additions');
+    assert.notEqual(await el('announcement').getAttribute('aria-atomic'), 'true');
     assert.deepEqual(await announcements(), []);
-    await submit();
+    await submit('Qué es el autismo');
     assert.equal((await announcements()).length, 1);
+    assert.equal((await mutations()).length, 1);
+    assert.equal((await mutations())[0].targetIsLog, true);
+    assert.equal((await mutations())[0].addedCount, 1);
+    assert.equal((await mutations())[0].removedCount, 0);
+    assert.equal(await el('announcement').locator(':scope > p').count(), 1);
     assert.equal(await page.evaluate(() => window.__s1AnnouncementRegion === document.querySelector('#sabik-announcement')), true);
   });
   await contract('N02', 'announcement equals the complete final visible answer', async () => {
@@ -293,6 +308,19 @@ async function main() {
     assert.ok(expected.length > 20);
     assert.equal(await el('announcement').textContent(), expected);
     assert.equal((await announcements())[0].text, expected);
+    const cdp = await page.context().newCDPSession(page);
+    try {
+      const ax = await cdp.send('Accessibility.getFullAXTree');
+      const log = ax.nodes.find(n => n.role?.value === 'log');
+      assert.ok(log, 'log must be exposed in Chromium AX');
+      assert.ok(log.properties.some(p => p.name === 'live' && p.value.value === 'polite'));
+      assert.ok(log.properties.some(p => p.name === 'relevant' && p.value.value === 'additions'));
+      const descendants = [];
+      const walk = id => { const node = ax.nodes.find(n => n.nodeId === id); if (!node) return; descendants.push(node); (node.childIds || []).forEach(walk); };
+      walk(log.nodeId);
+      assert.ok(descendants.some(n => n.role?.value === 'StaticText' && n.name?.value === expected));
+      if (evidence) fs.writeFileSync(path.join(evidence, 'narrator-log-autismo-ax.json'), JSON.stringify({ query: 'Qué es el autismo', expected, mutations: await mutations(), ax }, null, 2));
+    } finally { await cdp.detach(); }
   });
   await contract('N03', 'complementary notice is appended exactly once when present', async () => {
     await fresh(); await submit('zzqxv'.repeat(20));
@@ -327,17 +355,26 @@ async function main() {
     await fresh(); await submit('Qué es la sobrecarga sensorial');
     const first = await finalMessage();
     assert.equal((await announcements()).length, 1);
+    await page.evaluate(() => window.__s1FirstEntry = document.querySelector('#sabik-announcement').firstElementChild);
     await submit('Qué es la sobrecarga sensorial');
     const records = await announcements();
     assert.equal(records.length, 2);
     assert.equal(records[0].text, first);
     assert.equal(records[1].text, await finalMessage());
+    assert.deepEqual(await el('announcement').locator(':scope > p').allTextContents(), [first, await finalMessage()]);
+    assert.equal(await page.evaluate(() => {
+      const log = document.querySelector('#sabik-announcement');
+      return log.firstElementChild === window.__s1FirstEntry && log.lastElementChild !== window.__s1FirstEntry;
+    }), true);
+    assert.equal((await mutations()).length, 2);
   });
   await contract('N07', 'pause resume and reset announce their actions without replaying the answer', async () => {
     await fresh(); await submit();
     const response = await finalMessage();
     await pause(); await resume(); await reset();
     assert.deepEqual((await announcements()).map(r => r.text), [response, 'Sabik está en pausa.', 'Sabik vuelve a estar disponible.', 'Conversación reiniciada.']);
+    assert.deepEqual(await el('announcement').locator(':scope > p').allTextContents(), ['Conversación reiniciada.']);
+    assert.ok((await mutations()).every(r => r.type === 'childList' && r.targetIsLog && (r.addedCount === 1 || r.removedCount === 1)));
   });
   await contract('N08', 'technical failure publishes one appropriate announcement', async () => {
     await fresh();
@@ -362,14 +399,50 @@ async function main() {
     assert.deepEqual(await page.evaluate(() => window.__s1ResponseFocusEvents), []);
     assert.equal((await announcements()).length, 1);
   });
-  await contract('N10', 'one polite atomic Sabik region exists and visible status is not live', async () => {
-    assert.equal(await el('announcement').getAttribute('role'), 'status');
+  await contract('N10', 'one polite additions log exists and visible status is not live', async () => {
+    assert.equal(await el('announcement').getAttribute('role'), 'log');
     assert.equal(await el('announcement').getAttribute('aria-live'), 'polite');
-    assert.equal(await el('announcement').getAttribute('aria-atomic'), 'true');
+    assert.equal(await el('announcement').getAttribute('aria-relevant'), 'additions');
+    assert.notEqual(await el('announcement').getAttribute('aria-atomic'), 'true');
     assert.equal(await el('status-text').getAttribute('role'), null);
     assert.equal(await el('status-text').getAttribute('aria-live'), null);
-    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="status"], .sabik-panel [role="alert"]').count(), 1);
+    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="log"], .sabik-panel [role="status"], .sabik-panel [role="alert"]').count(), 1);
     assert.equal(await page.evaluate(() => !!document.querySelector('#sabik-announcement').closest('[hidden], [aria-hidden="true"], [inert]')), false);
+    assert.equal(await el('announcement').evaluate(n => getComputedStyle(n).display === 'none' || getComputedStyle(n).visibility === 'hidden'), false);
+    assert.equal(await el('announcement').evaluate(n => n.closest('[lang]').lang), 'es');
+  });
+  await contract('N11', 'bounded history appends first, prunes removals only and never rewrites entries', async () => {
+    await fresh();
+    for (let i = 0; i < 10; i++) await submit('Qué es el autismo');
+    const records = await mutations(), additions = await announcements();
+    assert.equal(additions.length, 10);
+    assert.equal(records.length, 12);
+    assert.ok(records.every(r => r.type === 'childList' && r.targetIsLog));
+    assert.ok(additions.every(r => r.addedCount === 1 && r.removedCount === 0 && r.text.length > 20));
+    assert.deepEqual(records.slice(-4).map(r => [r.addedCount, r.removedCount]), [[1,0],[0,1],[1,0],[0,1]]);
+    assert.deepEqual(await el('announcement').locator(':scope > p').allTextContents(), additions.slice(-8).map(r => r.text));
+    assert.equal(await el('announcement').getAttribute('aria-relevant'), 'additions');
+  });
+  await contract('N12', 'message is complete at insertion, whitespace normalized and no speech API used', async () => {
+    await fresh();
+    await page.evaluate(() => {
+      const log = document.querySelector('#sabik-announcement');
+      window.__s1Insertions = [];
+      const append = log.append;
+      log.append = function (...nodes) {
+        window.__s1Insertions.push(nodes.map(n => ({ text: n.textContent, connected: n.isConnected })));
+        return append.apply(this, nodes);
+      };
+      // Exercise normalization without replacing Core output or changing product text.
+      document.querySelector('#sabik-input-error').textContent = '  Mensaje\n completo.   Otra frase.  ';
+    });
+    await el('input').fill('x'.repeat(2001)); await el('submit').click();
+    assert.deepEqual(await page.evaluate(() => window.__s1Insertions), [[{text:'Mensaje completo. Otra frase.',connected:false}]]);
+    assert.deepEqual((await announcements()).map(r => r.text), ['Mensaje completo. Otra frase.']);
+    const code = fs.readFileSync(path.join(root, 'sabik/sabik-page.js'), 'utf8');
+    const publish = code.slice(code.indexOf('function announce('), code.indexOf('function syncControls('));
+    assert.doesNotMatch(publish, /replaceChildren|\.focus\s*\(/u);
+    assert.doesNotMatch(code, /speechSynthesis|SpeechSynthesisUtterance/u);
   });
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));
