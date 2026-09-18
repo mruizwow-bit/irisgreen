@@ -1347,7 +1347,8 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
   font: inherit;
 }
 .sabik-panel button { min-height: 2.75rem; }
-.sabik-panel button:disabled { opacity: .65; cursor: not-allowed; }
+.sabik-panel button:disabled,
+.sabik-panel #sabik-submit[aria-disabled="true"] { opacity: .65; cursor: not-allowed; }
 .sabik-panel textarea { box-sizing: border-box; width: 100%; min-height: 7rem; }
 .sabik-panel p, .sabik-panel a { overflow-wrap: anywhere; }
 .sabik-panel :is(button, textarea, a):focus-visible {

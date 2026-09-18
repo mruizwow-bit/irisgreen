@@ -153,9 +153,16 @@
 
   function syncControls() {
     const disabled = unavailable();
-    for (const id of ["submit", "low", "shorter", "not-this", "other-way"]) {
+    for (const id of ["low", "shorter", "not-this", "other-way"]) {
       const node = document.querySelector(`#sabik-${id}`);
       if (node) node.disabled = disabled;
+    }
+    const submit = document.querySelector("#sabik-submit");
+    if (submit) {
+      // Pending must not blur Send. The submit handler's state guard blocks retries.
+      submit.disabled = !state.coreReady || state.paused || state.controlBusy;
+      if (state.pending && !submit.disabled) submit.setAttribute("aria-disabled", "true");
+      else submit.removeAttribute("aria-disabled");
     }
     const pause = document.querySelector("#sabik-clear");
     const resume = document.querySelector("#sabik-resume");

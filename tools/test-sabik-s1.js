@@ -28,7 +28,10 @@ const server = http.createServer((req, res) => {
 let browser, page, origin;
 const el = id => page.locator("#sabik-" + id);
 const op = value => page.waitForFunction(v => document.querySelector(".sabik-panel").dataset.operation === v, value);
-const enabled = id => page.waitForFunction(id => !document.querySelector("#sabik-" + id).disabled, id);
+const enabled = id => page.waitForFunction(id => {
+  const node = document.querySelector("#sabik-" + id);
+  return !node.disabled && node.getAttribute('aria-disabled') !== 'true';
+}, id);
 async function fresh(options = {}) {
   if (page) await page.context().close();
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, ...options });
@@ -159,8 +162,7 @@ const active = () => page.evaluate(() => document.activeElement.id);
 const state = () => page.evaluate(() => window.__s1States.at(-1));
 const submissionFocusCalls = () => page.evaluate(() => window.__s1FocusCalls);
 async function naturalButtonFocus() {
-  // Chromium blurs a natively disabled button to BODY; no product focus target.
-  assert.ok(['', 'sabik-submit'].includes(await active()), 'button activation must not refocus input or response');
+  assert.equal(await active(), 'sabik-submit', 'pending must preserve Send rather than blur to BODY');
   assert.deepEqual(await submissionFocusCalls(), []);
 }
 async function test(id, name, fn) {
@@ -678,6 +680,126 @@ async function main() {
     assert.doesNotMatch(product,/ariaNotify|speechSynthesis|SpeechSynthesisUtterance|setTimeout|focusFinalResponse/u);
     assert.equal(await page.locator('.sabik-panel [role="application"]').count(),0);
   });
+  let sendHeld, pendingBehavior;
+  const sendState = () => page.evaluate(() => {
+    const button=document.querySelector('#sabik-submit');
+    return {active:document.activeElement.id||document.activeElement.tagName,
+      disabled:button.disabled,ariaDisabled:button.getAttribute('aria-disabled'),
+      sameNode:button===window.__s1SendNode,tabIndex:button.tabIndex,
+      busy:document.querySelector('#sabik-output').getAttribute('aria-busy'),
+      submitEvents:window.__s1Events.filter(e=>e.type==='SUBMIT').length,
+      retrievals:window.__s1States.filter(s=>s.operation==='retrieving').length,
+      plans:window.__s1CoreCalls.filter(name=>name==='buildResponsePlan').length};
+  });
+  const sendFocusEvidence=[];
+  await contract('F01','mouse Send retains its DOM identity, tab position and focus throughout pending',async()=>{
+    await fresh();sendHeld=await holdData();
+    await page.evaluate(()=>window.__s1SendNode=document.querySelector('#sabik-submit'));
+    await el('input').fill('Qué es el autismo');await el('submit').click();await sendHeld.seen;
+    pendingBehavior=await behavior();
+    const observed=await sendState();sendFocusEvidence.push({phase:'pending-es',...observed});
+    assert.equal(observed.active,'sabik-submit');assert.equal(observed.sameNode,true);
+    assert.equal(observed.tabIndex,0);assert.equal(observed.busy,'true');
+    assert.equal(observed.submitEvents,1);assert.equal(observed.retrievals,1);
+    assert.equal(await el('submit').getAttribute('aria-hidden'),null);
+  });
+  await contract('F02','pending Send is not natively disabled',async()=>{
+    assert.equal((await sendState()).disabled,false);
+    assert.equal(await el('submit').getAttribute('disabled'),null);
+  });
+  await contract('F03','pending Send exposes aria-disabled with unavailable styling and accessible state',async()=>{
+    assert.equal((await sendState()).ariaDisabled,'true');
+    const style=await el('submit').evaluate(n=>({opacity:getComputedStyle(n).opacity,cursor:getComputedStyle(n).cursor}));
+    assert.deepEqual(style,{opacity:'0.65',cursor:'not-allowed'});
+    const cdp=await page.context().newCDPSession(page);
+    try {
+      const ax=await cdp.send('Accessibility.getFullAXTree');
+      const send=ax.nodes.find(n=>n.role?.value==='button'&&n.name?.value==='Enviar');
+      assert.ok(send&&!send.ignored);
+      for(const prop of ['disabled','focusable','focused']) assert.ok(send.properties.some(p=>p.name===prop&&p.value.value===true),prop);
+      if(evidence)fs.writeFileSync(path.join(evidence,'send-pending-ax.json'),JSON.stringify(ax,null,2));
+    } finally {await cdp.detach();}
+  });
+  await contract('F04','second physical click on aria-disabled Send starts no new retrieval',async()=>{
+    // Native pointer input deliberately bypasses Playwright's aria-disabled actionability wait.
+    const rect=await el('submit').boundingBox();await page.mouse.click(rect.x+rect.width/2,rect.y+rect.height/2);
+    assert.deepEqual(await behavior(),pendingBehavior);assert.equal((await sendState()).submitEvents,1);
+    assert.equal(await active(),'sabik-submit');
+  });
+  await contract('F05','Enter on aria-disabled Send starts no new retrieval',async()=>{
+    await page.keyboard.press('Enter');assert.deepEqual(await behavior(),pendingBehavior);
+    assert.equal((await sendState()).submitEvents,1);assert.equal(await active(),'sabik-submit');
+  });
+  await contract('F06','Space on aria-disabled Send starts no new retrieval',async()=>{
+    await page.keyboard.press('Space');assert.deepEqual(await behavior(),pendingBehavior);
+    assert.equal((await sendState()).submitEvents,1);assert.equal(await active(),'sabik-submit');
+  });
+  await contract('F07','Ctrl Enter and repeated requestSubmit during pending cannot bypass the state guard',async()=>{
+    await page.keyboard.press('Shift+Tab');assert.equal(await active(),'sabik-input');
+    await page.keyboard.press('Control+Enter');assert.deepEqual(await behavior(),pendingBehavior);
+    await page.keyboard.press('Tab');assert.equal(await active(),'sabik-submit');
+    await page.evaluate(()=>{const f=document.querySelector('#sabik-form');f.requestSubmit();f.requestSubmit();});
+    assert.deepEqual(await behavior(),pendingBehavior);
+    const observed=await sendState();assert.equal(observed.submitEvents,1);assert.equal(observed.retrievals,1);
+    assert.equal(observed.plans,0);assert.deepEqual(await announcements(),[]);
+  });
+  await contract('F08','completion removes aria-disabled while keeping Send focus and identity',async()=>{
+    sendHeld.release();await op('presenting');await enabled('submit');
+    const observed=await sendState();sendFocusEvidence.push({phase:'complete-es',...observed});
+    assert.equal(observed.disabled,false);assert.equal(observed.ariaDisabled,null);
+    assert.equal(observed.active,'sabik-submit');assert.equal(observed.sameNode,true);
+    assert.equal(observed.plans,1);assert.equal(observed.submitEvents,1);
+    assert.deepEqual(await submissionFocusCalls(),[]);
+    assert.ok(!(await page.evaluate(()=>window.__s1FocusTimeline)).some(e=>['blur','focusout'].includes(e.type)&&e.target==='sabik-submit'));
+  });
+  await contract('F09','completion updates the same brief status once with no loading announcements',async()=>{
+    assert.equal((await announcements()).length,1);
+    assert.equal(await page.evaluate(()=>window.__s1AnnouncementRecords.length),1);
+    assert.equal(await page.evaluate(()=>window.__s1AnnouncementRegion===document.querySelector('#sabik-announcement')),true);
+    for(const [name,value] of [['role','status'],['aria-live','polite'],['aria-atomic','true']])assert.equal(await el('announcement').getAttribute(name),value);
+  });
+  await contract('F10','Spanish final status is exact',async()=>{
+    assert.deepEqual(await announcements(),[ES_READY]);
+  });
+  await contract('F11','English Send preserves pending focus and publishes the exact English status',async()=>{
+    await fresh();await language('en');const held=await holdData();
+    await page.evaluate(()=>window.__s1SendNode=document.querySelector('#sabik-submit'));
+    await el('input').fill('Qué es el autismo');await el('submit').click();await held.seen;
+    try {
+      const observed=await sendState();sendFocusEvidence.push({phase:'pending-en',...observed});
+      assert.equal(observed.active,'sabik-submit');assert.equal(observed.disabled,false);
+      assert.equal(observed.ariaDisabled,'true');assert.equal(observed.sameNode,true);
+      assert.equal(await el('submit').textContent(),'Send');assert.deepEqual(await announcements(),[]);
+      if(evidence)await page.locator('.sabik-panel').screenshot({path:path.join(evidence,'F11-send-pending-en.png')});
+    } finally {held.release();}
+    await op('presenting');await enabled('submit');await naturalButtonFocus();
+    assert.deepEqual(await announcements(),[EN_READY]);assert.equal(await el('answer').getAttribute('lang'),'es');
+    assert.equal(await page.locator('.sabik-panel').getAttribute('lang'),'en');
+    sendFocusEvidence.push({phase:'complete-en',...await sendState()});
+  });
+  await contract('F12','no automatic textarea refocus is introduced in any activation mode',async()=>{
+    assert.deepEqual(await submissionFocusCalls(),[]);
+    for(const observed of naturalFocusCases) {
+      assert.deepEqual(observed.calls,[]);
+      assert.ok(!observed.timeline.some(e=>['focus','focusin'].includes(e.type)&&e.target==='sabik-input'));
+      assert.equal(observed.active,observed.mode==='ctrl-enter'?'sabik-input':'sabik-submit');
+    }
+  });
+  await contract('F13','response receives no automatic focus',async()=>{
+    assert.deepEqual(await focusCalls(),[]);assert.deepEqual(await page.evaluate(()=>window.__s1ResultFocus),[]);
+  });
+  await contract('F14','no alternate announcement mechanism or application role',async()=>{
+    assert.doesNotMatch(fs.readFileSync(path.join(root,'sabik/sabik-page.js'),'utf8'),/ariaNotify|speechSynthesis|SpeechSynthesisUtterance|setTimeout/u);
+    assert.equal(await page.locator('.sabik-panel [role="application"]').count(),0);
+    assert.equal(await page.locator('.sabik-panel [aria-live], .sabik-panel [role="status"], .sabik-panel [role="log"], .sabik-panel [role="alert"]').count(),1);
+  });
+  await contract('F15','pause still uses native disabled for incompatible controls and resume restores Send',async()=>{
+    await pause();for(const id of ['submit','shorter','not-this','other-way','low'])assert.equal(await el(id).evaluate(n=>n.disabled),true,id);
+    assert.equal(await el('submit').getAttribute('aria-disabled'),null);
+    await resume();assert.equal(await el('submit').evaluate(n=>n.disabled),false);
+    assert.equal(await el('submit').getAttribute('aria-disabled'),null);
+  });
+  if(evidence)fs.writeFileSync(path.join(evidence,'send-focus-cases.json'),JSON.stringify(sendFocusEvidence,null,2));
   if(evidence)fs.writeFileSync(path.join(evidence,'natural-focus-cases.json'),JSON.stringify(naturalFocusCases,null,2));
   console.log(JSON.stringify({extra}));
   if (evidence) fs.writeFileSync(path.join(evidence,'s1-results.json'),JSON.stringify({root,browser:await browser.version(),policy,results,summary,extra},null,2));

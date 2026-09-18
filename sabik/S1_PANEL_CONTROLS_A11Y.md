@@ -1,8 +1,8 @@
 # S1 · Foco natural y aviso breve accesible
 
-Actualizado: 2026-09-18. Orden vigente: corregir conflicto entre foco del textarea y aviso breve.
+Actualizado: 2026-09-18. Orden vigente: preservar foco de Enviar/Send durante loading.
 Candidato para QA; no se declara aceptación real ni producción.
-Padre obligatorio: `706a639dcc620080bf870a3438a2c89b6b530e10`.
+Padre obligatorio: `cae4fec2d99000e90f487af77be17a410c2b7504`.
 Rama local: `sabik/s1-accessibility-closure`, en un worktree independiente.
 Base S0: `sabik-preview@1181f6f7af6c784d71d58860f7db9928bc0cff89`.
 Referencia de coordinación: PR #165; este cierre no modifica el remoto.
@@ -41,15 +41,24 @@ propio. El error también permanece visible y accesible en el panel.
 
 ## Foco y controles
 
-**Preservar foco natural, no re-enfocar artificialmente.** Un envío válido no
-llama a focus antes, durante ni después de runNeed. Ctrl/Cmd+Enter conserva el
-textarea por continuidad; click o Enter/Space sobre Enviar respetan el foco del
-botón/navegador. En Chromium instrumentado, al quedar disabled el botón durante
-loading, el navegador produce blur/focusout hacia BODY. No se fuerza un destino
-para compensarlo ni se restaura un control al completar. Si la persona navega
-durante la carga, el resultado tampoco le roba el foco.
-El foco para validación inválida, reset y retorno explícito permanece intacto:
-son acciones distintas de un envío válido.
+**Preservar foco natural, sin re-enfoque.** Un envío válido no llama a focus
+antes, durante ni después de runNeed. Click o Enter/Space sobre Enviar mantienen
+el mismo botón enfocado durante pending y al terminar. Ctrl/Cmd+Enter conserva
+el textarea por continuidad. Si la persona navega durante la carga, completar
+el resultado no le roba el foco ni restaura un destino por código.
+
+Enviar se trata separadamente en syncControls: durante pending operativo permanece
+con `disabled=false` y `aria-disabled="true"`. Conserva identidad DOM, tabindex
+nativo y estilo de indisponibilidad (opacidad .65 y cursor not-allowed). Al terminar
+se retira aria-disabled, sin enfocar nada. El handler mantiene el guard síncrono
+`unavailable()` antes de runNeed; pending se fija antes del primer await.
+Los reenvíos se bloquean por estado, no por el atributo visual.
+
+El bloqueo nativo sigue activo cuando Core no está listo, durante controlBusy o
+pausa. Los demás controles conservan disabled real según su contrato. Tampoco
+cambia el foco de validación inválida, pausa/reanudación/reset o retorno explícito.
+No se usan tabindex negativo, reemplazo del botón, aria-hidden, display:none,
+delays ni nuevos mecanismos de anuncio.
 
 Se conserva `Escribir otra consulta` / `Write another question`: permite volver
 al campo tras navegar voluntariamente por el resultado, sin borrar nada, alterar
@@ -66,7 +75,8 @@ la sesión o provocar otro anuncio. Su utilidad no depende de un foco artificial
 | Escape | COLLAPSE | Sin pausa ni reset implícitos; foco en Mostrar |
 
 Pausa y reanudación son controles separados. Intensidad conserva su aria-pressed
-y es reversible. Disabled es nativo; aria-expanded coincide con hidden y S0.
+y es reversible. El bloqueo estructural es nativo; el pending de Enviar usa
+aria-disabled y guard funcional. aria-expanded coincide con hidden y S0.
 La generación de interfaz invalida resultados y errores tardíos tras pausa/reset.
 Ocultar no cancela la consulta ni reinicia la sesión; un resultado oculto no
 reabre el panel, no roba foco y no vuelve a anunciarse al expandirlo.
@@ -95,7 +105,34 @@ Los errores técnicos y las instrucciones de corrección, que son interfaz, sí
 cambian de idioma. No se presenta este cierre como traducción editorial completa
 ni como ampliación de la comprensión del Core al inglés.
 
-## FAIL_REAL A02 e instrumentación
+## FAIL_REAL cae4fec2 y causa de pérdida de foco
+
+El candidato `cae4fec2d99000e90f487af77be17a410c2b7504` tiene **FAIL_REAL**:
+el aviso breve existe, pero Enviar/Send pierde el foco al recibir disabled durante
+loading. María comunica que Narrator empieza a releer desde BODY; en EN vuelve
+a «Iris Green / Neurodiversity / What do you need...» y cambia de idioma al llegar
+al contenido editorial marcado ES. La política editorial no se altera.
+
+La causa DOM está demostrada en ES y EN mediante el setter nativo y stack:
+`syncControls` línea 158 aplica `node.disabled = disabled` a submit; se llega
+desde `setLoading` línea 277, tras fijar pending=true y antes del primer await de
+runNeed. En el padre, click ES: submit a 32,8 ms, disabled=true a 33,1 ms,
+blur/focusout del botón hacia BODY a 86,8 ms, aviso a 204,7 ms. En EN: submit a
+21,5 ms, disabled=true a 21,7 ms, blur/focusout a 27,3 ms, aviso a 149,3 ms.
+Tiempos relativos de capturas concretas, no garantías de latencia.
+
+Después se registra aria-disabled=true al empezar y su retirada al finalizar,
+sin cambiar disabled ni producir blur/focusout del botón durante la operación.
+El foco sigue en Enviar/Send al publicar el status; Ctrl+Enter conserva textarea.
+Hay un único aviso final ES/EN, sin loading announcements. La respuesta, la
+estructura HTML y la región persistente permanecen idénticas.
+
+Se instrumentan activeElement, focus/focusin/blur/focusout, submit, setter disabled,
+aria-disabled, inicio/fin de pending (reflejado por aria-busy) y actualización de
+status. Las trazas prueban la causa y corrección DOM, no la locución de Narrator.
+QA real pendiente. No se vuelve a mecanismos anteriores.
+
+## Antecedente: FAIL_REAL A02 y retirada del refocus
 
 El candidato `706a639dcc620080bf870a3438a2c89b6b530e10` tiene **A02 = FAIL_REAL**,
 comunicado con Windows, Chrome/Chromium, Microsoft Narrator y página local HTTP.
@@ -110,9 +147,9 @@ En la traza de click: submit con foco en Enviar a 38,9 ms; llamada a focus a
 38,9 ms; focus/focusin en textarea a 39,0 ms; loading a 39,4 ms; aviso a 169,2 ms.
 Los tiempos son relativos a la activación registrada, no latencias garantizadas.
 
-Se elimina únicamente esa llamada del camino válido. Antes/después se observan
+En cae4fec2 se eliminó únicamente esa llamada del camino válido. Antes/después se observan
 activeElement, focus, focusin, blur, focusout, llamadas focus, submit, loading y
-status. Después: cero llamadas focus en los cuatro modos (click, Ctrl+Enter,
+status. Después de aquella corrección: cero llamadas focus en los cuatro modos (click, Ctrl+Enter,
 Enter y Space sobre Enviar), cero refocus al textarea y un aviso por respuesta.
 Ctrl+Enter conserva el textarea sin eventos de foco; los otros modos quedan
 en BODY por el disabled nativo. La respuesta y los textos del status no cambian.
@@ -128,7 +165,8 @@ Los eventos operativos siguen pasando por el adaptador y el Worker local de S0.
 El shim CommonJS no contamina window. No se cambia el contrato ni la máquina,
 `response.js`, `risk.js`, los datos editoriales, noindex o la navegación ordinaria.
 No se introducen inferencias a partir de tecleo, scroll u otras señales pasivas.
-No se cambian movimiento, avatar ni CSS; se conserva reduced motion existente.
+No se cambian movimiento ni avatar. El único ajuste CSS extiende el estilo de
+indisponibilidad a Enviar con aria-disabled; reduced motion permanece intacto.
 La integración avanzada de seguridad pertenece a S3, fuera de este cierre.
 
 ## Verificación automática
@@ -160,28 +198,33 @@ SHA entregado contiene resultados y comprobación de integridad/build.
   antiguos de foco en textarea tras click.
 - N-F1–N-F10: click, Ctrl+Enter, Enter/Space, carga y fin sin foco artificial;
   status único exacto ES/EN, sin contenido completo ni mecanismos descartados.
+- F01–F15: foco e identidad del botón durante pending, disabled=false,
+  aria-disabled=true, estado accesible/estilo, bloqueo de click/Enter/Space/
+  Ctrl+Enter/requestSubmit, fin sin salto a BODY, status ES/EN y pausa nativa.
+  A05/A36/A37/X02 mantienen comprobaciones de resultados/errores tardíos.
+  Las esperas de disponibilidad en tests reconocen tanto disabled como aria-disabled.
 
 Se guardan árbol AX de `Qué es el autismo`, mutaciones del aviso, llamadas de
 foco, capturas ES/EN y resultados. Estas pruebas no simulan oído humano ni
 acreditan interoperabilidad con Narrator. Las simulaciones de texto 200% y
 viewport equivalente a zoom 400% tampoco sustituyen la comprobación nativa.
 
-## QA manual posterior: una sola revalidación
+## QA manual posterior: una sola revalidación ES y aviso EN
 
-Sobre el dist del nuevo SHA, con Narrator real:
+Sobre el dist del SHA nuevo exacto, con Narrator real:
 
-1. Escribir `Qué es el autismo`.
-2. Pulsar Enviar con el ratón.
-3. Comprobar únicamente si se percibe `Respuesta de Sabik disponible.`.
+1. En modo ES, escribir `Qué es el autismo` y pulsar Enviar con ratón.
+2. Comprobar que Narrator no vuelve a leer la página desde Iris Green.
+3. Comprobar que al final se percibe `Respuesta de Sabik disponible.`.
+4. Después repetir solo el aviso en EN: `Sabik response available.`.
 
-Registrar SHA, navegador/lector y PASS_REAL/FAIL_REAL. No pedir A/B ni forzar
-lectura completa. La instrumentación no sustituye esta única revalidación.
-La aceptación manual general restante no se transforma en PASS por pruebas
-automáticas; esta orden solicita únicamente el caso de aviso breve anterior.
+Registrar SHA, navegador/lector y PASS_REAL/FAIL_REAL. No A/B ni lectura completa
+automática. Las trazas DOM y los tests no sustituyen esta revalidación.
+El candidato anterior conserva FAIL_REAL; el nuevo queda PENDIENTE_QA_REAL.
 
 ## Historial y límites
 
-Un único commit nuevo parte directamente de `706a639d...`, sin rebase, squash ni
+Un único commit nuevo parte directamente de `cae4fec2...`, sin rebase, squash ni
 reescritura. La rama anterior y el candidato ariaNotify quedan conservados como
 histórico separado; no se integra ariaNotify en este candidato. Se entrega bundle
 para transporte local; no push con credenciales ajenas, merge ni modificación de
