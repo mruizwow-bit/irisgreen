@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "estado": "no_ejecutable",
+    "base_auditada": "sabik-preview@efa4ed9",
+    "documento": "docs/sabik/reviews/01-inventario-estados.md"
+  },
+  "declarados_state_js": {
+    "COGNITIVE_STATES": {
+      "NucleoBase": "alcanzable",
+      "Hiperfoco": "alcanzable_lexico",
+      "Sobrecarga": "alcanzable_lexico_y_por_riesgo",
+      "Vinculo": "alcanzable_lexico",
+      "VozInterior": "alcanzable_lexico",
+      "Creatividad": "alcanzable_lexico_subcadena"
+    },
+    "FUNCTIONAL_STATES": {
+      "Available": "alcanzable",
+      "Listening": "solo_riesgo",
+      "Processing": "inalcanzable",
+      "Learning": "inalcanzable",
+      "Calm": "inalcanzable",
+      "Waiting": "inalcanzable"
+    },
+    "VISUAL_MODES": {
+      "Abstracta": "alcanzable",
+      "Invisible": "inalcanzable",
+      "CompaneraNoHumana": "inalcanzable",
+      "Humana": "inalcanzable"
+    },
+    "MOTION_LEVELS": {
+      "Low": "alcanzable_no_representado",
+      "Off": "alcanzable_contradicho_por_css",
+      "Soft": "inalcanzable"
+    },
+    "INTERACTION_STATES": {
+      "base": "alcanzable_no_representado",
+      "claridad": "solo_riesgo_no_representado",
+      "pausa": "baja_demanda_significado_distinto_a_pagina",
+      "exploracion": "inalcanzable",
+      "error": "inalcanzable",
+      "cierre": "inalcanzable"
+    },
+    "RESPONSE_MODES": {
+      "busqueda": "alcanzable_no_leido",
+      "practico": "solo_riesgo_no_leido",
+      "aprendizaje": "inalcanzable",
+      "reformulacion": "inalcanzable"
+    },
+    "PROTECTION_STATES": {
+      "normal": "alcanzable",
+      "riesgo": "riesgo_confirmado_y_ambiguo",
+      "privacidad": "inalcanzable",
+      "limites": "inalcanzable"
+    },
+    "PRESENCE_STATES": {
+      "visible": "alcanzable",
+      "minima": "alcanzable",
+      "estatica": "solo_riesgo",
+      "suave": "inalcanzable",
+      "oculta": "inalcanzable"
+    }
+  },
+  "recuento": {
+    "declarados": 38,
+    "inalcanzables": 17,
+    "campos_sabik_state_sin_dom": [
+      "functional_state",
+      "visual_mode",
+      "motion_level",
+      "interaction",
+      "mode",
+      "stimulation",
+      "memory"
+    ]
+  },
+  "cadenas_libres": {
+    "risk_state": [
+      "normal",
+      "acompanamiento_en_riesgo",
+      "riesgo_ambiguo"
+    ],
+    "intent": [
+      "information_request",
+      "personal_situation",
+      "correction",
+      "practical_request",
+      "accompaniment"
+    ],
+    "plan_type": [
+      "direct_information",
+      "source_answer",
+      "practical_steps",
+      "clarifying_question",
+      "insufficient_information",
+      "correction_acknowledged",
+      "accompaniment_presence",
+      "risk_accompaniment",
+      "ambiguous_risk_clarification"
+    ],
+    "decision": [
+      "accompany",
+      "respond",
+      "offer",
+      "ask",
+      "insufficient"
+    ],
+    "reason": [
+      "risk_priority",
+      "accompaniment_requested",
+      "lexical_evidence",
+      "explicit_correction",
+      "no_supported_possibilities",
+      "close_supported_possibilities",
+      "dominant_relation"
+    ],
+    "answer_mode": [
+      "information",
+      "situational",
+      "practical",
+      "none"
+    ],
+    "stimulation": [
+      "normal",
+      "baja"
+    ],
+    "memory": [
+      "session"
+    ],
+    "privacy_state": [
+      "session_only"
+    ],
+    "preferencias": {
+      "response_length": [
+        "normal",
+        "short"
+      ],
+      "question_threshold": [
+        "normal",
+        "high"
+      ],
+      "max_options": [
+        3,
+        1
+      ],
+      "low_intensity": [
+        false,
+        true
+      ]
+    },
+    "rechazo": [
+      "rejected_by_user",
+      "no_es_esto",
+      "buscar_otra_via"
+    ],
+    "estilo": [
+      "nea_language_v6",
+      "short_preference",
+      "overload_brevity",
+      "protection_first"
+    ],
+    "data_interaction_state": [
+      "espera",
+      "procesando",
+      "respuesta",
+      "pausa",
+      "correccion"
+    ],
+    "data_state_indicador": [
+      "base",
+      "minimal",
+      "risk"
+    ],
+    "data_protection_state": [
+      "normal",
+      "riesgo"
+    ],
+    "etiqueta_visible": [
+      "Disponible",
+      "Oculto"
+    ],
+    "clases": [
+      "sabik-low-stim",
+      "is-collapsed",
+      "is-risk",
+      "is-warning"
+    ],
+    "local_pagina": [
+      "state.paused"
+    ]
+  },
+  "muertos": [
+    "plan.type=clarifying_question (dataset)",
+    "decision=ask (dataset)",
+    "question_threshold",
+    "active_concepts",
+    "asked_questions",
+    "shown_fragments",
+    "rejected_response_types",
+    "data.resources",
+    "data.procedures",
+    "data.corpora",
+    "plan.actions",
+    "css .sabik-presence[data-state]",
+    "data-interaction-state=respuesta|espera sin css",
+    "data-cognitive-state sin css (V7-017)"
+  ],
+  "significados_contradictorios": {
+    "pausa": [
+      "adaptacion_baja_demanda (core)",
+      "pausa_de_la_persona (pagina)",
+      "panel_oculto (pagina)"
+    ],
+    "Parar": [
+      "texto: detener",
+      "accion: borrar sesion y pausar"
+    ],
+    "Reanudar": [
+      "texto: reanudar",
+      "tras mostrar: pausar y borrar"
+    ],
+    "motion_level_Off": [
+      "core: sin movimiento",
+      "css: 52s"
+    ],
+    "protection_riesgo": [
+      "riesgo_confirmado",
+      "riesgo_ambiguo"
+    ],
+    "Sobrecarga": [
+      "inferencia lexica",
+      "efecto de riesgo",
+      "efecto de pregunta informativa"
+    ]
+  },
+  "mapa_a_s0_codex": {
+    "commit": "e8bcedf",
+    "correspondencias": {
+      "state.paused": "operational=assistant_paused",
+      "is-collapsed": "visibility=collapsed",
+      "low_intensity (preferencia)": "adaptation.low_intensity",
+      "response_length/max_options": "adaptation.response_length/max_options",
+      "question_threshold": "adaptation.question_policy",
+      "risk_state=riesgo_ambiguo": "safety=risk_uncertain",
+      "risk_state=acompanamiento_en_riesgo": "safety=risk_confirmed",
+      "insufficient_information": "dialogue=insufficient",
+      "error de carga/consulta": "operational=error",
+      "espera/procesando/respuesta": "operational=ready/retrieving|composing/presenting",
+      "prefers-reduced-motion": "motion.reduced"
+    },
+    "sin_correspondencia": [
+      "correction_acknowledged / «No es esto»",
+      "«Buscar por otra vía»",
+      "accompaniment_presence",
+      "out_of_scope",
+      "practical_steps vs respuesta (dialogue no distingue)",
+      "fallo de datos vs fallo de runtime",
+      "salida de riesgo (RISK_CLEARED / respuesta a la aclaración)",
+      "origen de la preferencia (persona vs sistema)"
+    ],
+    "retirados_correctamente": [
+      "COGNITIVE_STATES no forman parte de la máquina",
+      "VISUAL_MODES antropomórficos no forman parte de la máquina"
+    ],
+    "declarados_inalcanzables": [
+      "voice.state=speech_starting",
+      "motion.state=motion_paused"
+    ]
+  },
+  "mapa_a_contrato_qa": {
+    "commit": "2bb36af",
+    "nota": "El contrato QA usa operation/speech/revision/adaptation.intensity/adaptation.depth, dialogue con information|practical|clarification|accompaniment|correction, safety uncertain|risk, motion off|ambient|processing|voice_reactive|protection_static y eventos SET_ADAPTATION y SPEECH_STOP. La máquina de Codex usa otros nombres. Ver 08-revision-s0.md."
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "estado": "no_ejecutable",
+    "advertencia": "⚠ COMPROBAR — NO PUBLICAR",
+    "descripcion": "Candidatos para que el equipo editorial verifique contra la fuente oficial. Ningún registro es publicable. Los datos proceden de conocimiento general y de una ficha de Iris Green; no se han contrastado con la fuente oficial en esta revisión.",
+    "origen_en_iris": "https://irisgreen.eu/es/biblioteca/crisis-de-ansiedad-panico-y-salud-mental-que-hacer-y-donde-pedir-ayuda (sección «Riesgo suicida») menciona el 024 y las emergencias vitales. Es contenido editorial propio, no fuente oficial del recurso."
+  },
+  "recursos": [
+    {
+      "id": "hr_es_emergencias_112",
+      "territorio": {
+        "ambito": "estatal",
+        "codigo": "ES",
+        "nombre_visible": "España"
+      },
+      "idioma": [
+        "es"
+      ],
+      "tipo_de_recurso": "emergencias",
+      "nombre": "Emergencias 112 ⚠ COMPROBAR — NO PUBLICAR",
+      "finalidad": "Emergencias con peligro inmediato. ⚠ COMPROBAR — NO PUBLICAR",
+      "telefono": "112",
+      "url": null,
+      "disponibilidad": {
+        "modo": "24h",
+        "gratuito": null,
+        "confidencial": null
+      },
+      "fuente_oficial": {
+        "url": "https://COMPROBAR.invalid/",
+        "organismo": "⚠ COMPROBAR — NO PUBLICAR: identificar organismo oficial responsable"
+      },
+      "fecha_verificacion": null,
+      "verificado_por": null,
+      "editorial_status": "PENDIENTE_VERIFICACION",
+      "texto_visible": "⚠ COMPROBAR — NO PUBLICAR",
+      "condiciones_de_uso": [
+        "riesgo_inmediato",
+        "riesgo_confirmado"
+      ],
+      "aviso_interno": "⚠ COMPROBAR — NO PUBLICAR. Número recordado de conocimiento general y citado en la ficha de Iris Green. Verificar número, idiomas y canales accesibles (p. ej. para personas sordas) en la fuente oficial.",
+      "advertencia": "⚠ COMPROBAR — NO PUBLICAR",
+      "campos_sin_verificar": [
+        "nombre",
+        "finalidad",
+        "telefono",
+        "disponibilidad",
+        "fuente_oficial",
+        "idioma",
+        "texto_visible"
+      ]
+    },
+    {
+      "id": "hr_es_linea_024",
+      "territorio": {
+        "ambito": "estatal",
+        "codigo": "ES",
+        "nombre_visible": "España"
+      },
+      "idioma": [
+        "es"
+      ],
+      "tipo_de_recurso": "linea_crisis_suicidio",
+      "nombre": "Línea 024 ⚠ COMPROBAR — NO PUBLICAR",
+      "finalidad": "Atención a personas con ideación o conducta suicida y a su entorno. ⚠ COMPROBAR — NO PUBLICAR",
+      "telefono": "024",
+      "url": null,
+      "disponibilidad": {
+        "modo": "24h",
+        "gratuito": null,
+        "confidencial": null
+      },
+      "fuente_oficial": {
+        "url": "https://COMPROBAR.invalid/",
+        "organismo": "⚠ COMPROBAR — NO PUBLICAR: identificar la página oficial del Ministerio competente"
+      },
+      "fecha_verificacion": null,
+      "verificado_por": null,
+      "editorial_status": "PENDIENTE_VERIFICACION",
+      "texto_visible": "⚠ COMPROBAR — NO PUBLICAR",
+      "condiciones_de_uso": [
+        "riesgo_confirmado",
+        "riesgo_incierto",
+        "riesgo_tercero",
+        "informativo"
+      ],
+      "aviso_interno": "⚠ COMPROBAR — NO PUBLICAR. La ficha de Iris Green lo describe como gratuito, confidencial y 24/7; esas tres propiedades quedan a null hasta verificarlas en la fuente oficial. Comprobar idiomas y canales alternativos.",
+      "advertencia": "⚠ COMPROBAR — NO PUBLICAR",
+      "campos_sin_verificar": [
+        "nombre",
+        "finalidad",
+        "telefono",
+        "disponibilidad",
+        "fuente_oficial",
+        "idioma",
+        "texto_visible"
+      ]
+    }
+  ],
+  "datos_que_no_pueden_inventarse": [
+    "teléfonos, extensiones y prefijos",
+    "URL de servicios y de fuentes oficiales",
+    "organismo responsable",
+    "territorio de cobertura",
+    "horario y disponibilidad 24 h",
+    "gratuidad y confidencialidad",
+    "idiomas y canales accesibles",
+    "fecha de verificación y persona que verifica",
+    "importes, plazos y requisitos de ayudas",
+    "nombres de asociaciones y su ámbito",
+    "texto visible del recurso"
+  ]
+}

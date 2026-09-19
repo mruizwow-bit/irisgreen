@@ -1,0 +1,309 @@
+{
+  "meta": {
+    "estado": "no_ejecutable",
+    "implementacion": "sabik/s0-state-machine@e8bcedf",
+    "documento": "docs/sabik/reviews/08-revision-s0.md",
+    "descripcion": "Secuencias ejecutadas contra transitionSabikState(). 'observado' es el resultado real; 'esperado_propuesto' es la propuesta de la revisión."
+  },
+  "casos": [
+    {
+      "id": "S0R-01",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_UNCERTAIN",
+        "SUBMIT"
+      ],
+      "observado": "lanza: SUBMIT from awaiting_clarification",
+      "esperado_propuesto": "acepta; operational=retrieving; safety=risk_uncertain se conserva hasta que la capa de seguridad resuelva",
+      "invariante": "la persona puede contestar una aclaración"
+    },
+    {
+      "id": "S0R-02",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RESPONSE_READY",
+        "ASK_CLARIFICATION",
+        "SUBMIT"
+      ],
+      "observado": "lanza: SUBMIT from awaiting_clarification",
+      "esperado_propuesto": "acepta",
+      "invariante": "la persona puede contestar una aclaración"
+    },
+    {
+      "id": "S0R-03",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RISK_UNCERTAIN"
+      ],
+      "observado": "lanza: RISK_UNCERTAIN from retrieving",
+      "esperado_propuesto": "acepta; la detección de riesgo ocurre sobre el texto enviado",
+      "invariante": "riesgo prevalece"
+    },
+    {
+      "id": "S0R-04",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RISK_CONFIRMED"
+      ],
+      "observado": "lanza: RISK_CONFIRMED from composing",
+      "esperado_propuesto": "acepta y descarta la composición normal",
+      "invariante": "riesgo prevalece"
+    },
+    {
+      "id": "S0R-05",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RESPONSE_READY",
+        "RISK_CONFIRMED"
+      ],
+      "observado": "lanza: RISK_CONFIRMED from presenting",
+      "esperado_propuesto": "acepta; riesgo en el segundo mensaje",
+      "invariante": "riesgo prevalece"
+    },
+    {
+      "id": "S0R-06",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_CONFIRMED",
+        "HUMAN_HANDOFF",
+        "SUBMIT"
+      ],
+      "observado": "lanza: human handoff safety requires human handoff dialogue",
+      "esperado_propuesto": "acepta; comunicación abierta tras derivar",
+      "invariante": "mantener comunicación"
+    },
+    {
+      "id": "S0R-07",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_CONFIRMED",
+        "HUMAN_HANDOFF",
+        "TECHNICAL_ERROR",
+        "RETRY"
+      ],
+      "observado": "lanza en RETRY; queda en error con safety=human_handoff",
+      "esperado_propuesto": "RETRY vuelve a un estado operativo conservando la derivación",
+      "invariante": "error técnico conserva seguridad y no bloquea"
+    },
+    {
+      "id": "S0R-08",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_CONFIRMED",
+        "RISK_UNCERTAIN"
+      ],
+      "observado": "safety=risk_uncertain; safety_priority=false",
+      "esperado_propuesto": "rechaza o conserva risk_confirmed",
+      "invariante": "riesgo confirmado no se rebaja por inferencia"
+    },
+    {
+      "id": "S0R-09",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_CONFIRMED",
+        "HUMAN_HANDOFF",
+        "PAUSE_ASSISTANT",
+        "RESUME_ASSISTANT",
+        "RISK_UNCERTAIN"
+      ],
+      "observado": "safety=risk_uncertain",
+      "esperado_propuesto": "rechaza",
+      "invariante": "riesgo confirmado no se rebaja por inferencia"
+    },
+    {
+      "id": "S0R-10",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "PAUSE_ASSISTANT",
+        "RESUME_ASSISTANT"
+      ],
+      "observado": "operational=ready sin BOOT_OK",
+      "esperado_propuesto": "RESUME devuelve a booting o se rechaza la pausa durante el arranque",
+      "invariante": "no se anuncia disponibilidad sin Core"
+    },
+    {
+      "id": "S0R-11",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "RESET_SESSION"
+      ],
+      "observado": "operational=ready sin BOOT_OK",
+      "esperado_propuesto": "conserva booting",
+      "invariante": "no se anuncia disponibilidad sin Core"
+    },
+    {
+      "id": "S0R-12",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "TECHNICAL_ERROR",
+        "RETRY"
+      ],
+      "observado": "operational=ready sin BOOT_OK",
+      "esperado_propuesto": "RETRY desde fallo de arranque vuelve a booting",
+      "invariante": "no se anuncia disponibilidad sin Core"
+    },
+    {
+      "id": "S0R-13",
+      "severidad": "bloqueante",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_CONFIRMED"
+      ],
+      "observado": "deriveSabikPresentation.motion_state=motion_enabled con safety_priority=true",
+      "esperado_propuesto": "presentación estable (equivalente a protection_static del contrato QA)",
+      "invariante": "riesgo prevalece sobre decoración (hallazgo C-05)"
+    },
+    {
+      "id": "S0R-14",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        "RISK_UNCERTAIN",
+        "PAUSE_ASSISTANT",
+        "RESUME_ASSISTANT"
+      ],
+      "observado": "operational=ready con dialogue=awaiting_clarification",
+      "esperado_propuesto": "RESUME restaura el estado operativo previo",
+      "invariante": "sin estados mezclados"
+    },
+    {
+      "id": "S0R-15",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RESPONSE_READY",
+        "SPEECH_START",
+        "PAUSE_ASSISTANT"
+      ],
+      "observado": "assistant_paused con voice=speaking, energy=1",
+      "esperado_propuesto": "pausar el asistente pausa o detiene su voz",
+      "invariante": "pausa coherente"
+    },
+    {
+      "id": "S0R-16",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "PAUSE_ASSISTANT",
+        "RETRIEVAL_OK"
+      ],
+      "observado": "lanza: RETRIEVAL_OK from assistant_paused",
+      "esperado_propuesto": "definir si el resultado se descarta o se conserva para reanudar",
+      "invariante": "efectos asíncronos definidos"
+    },
+    {
+      "id": "S0R-17",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        "COLLAPSE",
+        "RISK_CONFIRMED",
+        "RESET_SESSION"
+      ],
+      "observado": "safety=normal y visibility=expanded",
+      "esperado_propuesto": "reset no cambia visibilidad; [E] si puede borrar la capa de seguridad",
+      "invariante": "capas independientes"
+    },
+    {
+      "id": "S0R-18",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RESPONSE_READY",
+        "PAUSE_ASSISTANT",
+        "TECHNICAL_ERROR",
+        "RETRY"
+      ],
+      "observado": "ready; la pausa se pierde",
+      "esperado_propuesto": "conservar pausa tras reintento",
+      "invariante": "pausa solo cambia por la persona"
+    },
+    {
+      "id": "S0R-19",
+      "severidad": "mayor",
+      "secuencia": [
+        "BOOT_OK",
+        {
+          "type": "SET_QUESTION_POLICY",
+          "value": "none"
+        },
+        "ASK_CLARIFICATION"
+      ],
+      "observado": "awaiting_clarification",
+      "esperado_propuesto": "rechazar aclaraciones no de seguridad con policy=none",
+      "invariante": "preferencia «no me preguntes» efectiva"
+    },
+    {
+      "id": "S0R-20",
+      "severidad": "menor",
+      "secuencia": [
+        "BOOT_OK",
+        {
+          "type": "SET_LOW_INTENSITY",
+          "value": "false"
+        }
+      ],
+      "observado": "low_intensity=true",
+      "esperado_propuesto": "rechazar valores no booleanos",
+      "invariante": "evento inválido falla explícitamente"
+    },
+    {
+      "id": "S0R-21",
+      "severidad": "menor",
+      "secuencia": [
+        "BOOT_OK",
+        "SUBMIT",
+        "RETRIEVAL_OK",
+        "RESPONSE_READY",
+        "HIDE",
+        "SPEECH_START"
+      ],
+      "observado": "voice=speaking con visibility=hidden",
+      "esperado_propuesto": "[E] decidir",
+      "invariante": "—"
+    },
+    {
+      "id": "S0R-22",
+      "severidad": "menor",
+      "secuencia": [
+        "BOOT_OK",
+        {
+          "type": "SET_LANGUAGE",
+          "value": "en"
+        }
+      ],
+      "observado": "language=en aceptado",
+      "esperado_propuesto": "aceptar solo idiomas con corpus publicable",
+      "invariante": "—"
+    },
+    {
+      "id": "S0R-23",
+      "severidad": "menor",
+      "secuencia": "exploración exhaustiva (1644 combinaciones)",
+      "observado": "voice.state=speech_starting y motion.state=motion_paused inalcanzables",
+      "esperado_propuesto": "usar o retirar",
+      "invariante": "sin estados muertos"
+    }
+  ]
+}
