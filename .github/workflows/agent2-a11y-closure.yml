@@ -91,6 +91,8 @@ jobs:
                 minimal.dataset.state='minimal';
                 const icon = document.querySelector('#sabik-toggle');
                 const source = document.querySelector('#sabik-sources');
+                document.querySelector('#sabik-output').hidden=false;
+                source.hidden=false;
                 const li=document.createElement('li');
                 const a=document.createElement('a'); a.href='#'; a.textContent='Fuente de prueba'; li.append(a); source.append(li);
                 const sourceStyle=getComputedStyle(source), linkStyle=getComputedStyle(a);
