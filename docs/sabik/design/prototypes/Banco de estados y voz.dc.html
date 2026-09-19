@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="page">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #f2f0ee; }
+  a { color: #5a49a8; }
+  a:hover { color: #17395c; }
+  @keyframes benchSpin { to { transform: rotate(360deg); } }
+</style>
+</helmet>
+
+<div style="font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c;padding:24px;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+
+  <header style="display:flex;flex-direction:column;gap:10px;border-bottom:1px solid #cfd6e2;padding-bottom:18px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span style="border:2px solid #8f1d1d;border-radius:999px;color:#8f1d1d;padding:3px 11px;font-size:.75rem;font-weight:700;letter-spacing:.06em">NO PUBLICAR</span>
+      <span style="border:2px solid #8f1d1d;border-radius:999px;color:#8f1d1d;padding:3px 11px;font-size:.75rem;font-weight:700;letter-spacing:.06em">NO RUNTIME</span>
+      <span style="border:2px solid #6E7E93;border-radius:999px;color:#43566d;padding:3px 11px;font-size:.75rem;font-weight:700;letter-spacing:.06em">REFERENCIA DE IMPLEMENTACIÓN</span>
+    </div>
+    <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.9rem,1.6rem+1.6vw,2.7rem);font-weight:500;line-height:1.1">Banco de estados y voz</h1>
+    <p style="margin:0;max-width:78ch;color:#43566d;line-height:1.55">Los seis ejes de <code>STATE-VISUAL-MATRIX.md</code> y el motor de energía de <code>VOICE-WAVE-SPEC.md</code>, en vivo. No se carga desde ninguna página del sitio y no es runtime: los valores mandan, no los píxeles.</p>
+  </header>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px;align-items:start">
+
+    <section aria-labelledby="bench-panel-title" style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <h2 id="bench-panel-title" style="margin:0;font-family:Georgia,serif;font-size:1.15rem;font-weight:600">Panel</h2>
+
+      <div style="border:1px solid rgba(164,147,221,.32);border-radius:8px;background:linear-gradient(160deg,rgba(255,255,255,.93),rgba(248,246,255,.82));box-shadow:0 16px 42px rgba(38,58,88,.055),0 3px 12px rgba(38,58,88,.04);padding:20px;display:grid;gap:14px;min-width:0">
+
+        <div style="display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:start">
+          <div role="img" aria-label="Holograma de Sabik, réplica de tokens" style="position:relative;width:72px;height:72px;isolation:isolate">
+            <div ref="{{ sphereRef }}" style="position:absolute;inset:14%;border-radius:999px;background:radial-gradient(circle at 50% 51%,rgba(255,255,255,.95) 0 3%,transparent 4%),radial-gradient(circle at 36% 24%,rgba(128,229,255,.95),transparent 22%),radial-gradient(circle at 65% 30%,rgba(170,116,255,.74),transparent 26%),radial-gradient(circle at 49% 52%,rgba(42,137,255,.95) 0 29%,rgba(82,60,220,.96) 52%,rgba(194,173,255,.46) 73%,rgba(255,255,255,.64) 100%);box-shadow:inset 0 0 12px rgba(255,255,255,.86),inset 0 -8px 20px rgba(62,49,178,.32);opacity:.98"></div>
+            <div ref="{{ ringsRef }}" style="position:absolute;inset:0;animation:benchSpin var(--s,96s) linear infinite;animation-play-state:var(--m,running);opacity:1;--s:{{ layerSpeed }};--m:{{ layerMotion }}">
+              <span style="position:absolute;inset:2% 0;border:1.5px solid rgba(137,115,230,.85);border-radius:999px;transform:rotate(-16deg) scaleY(.36);display:block"></span>
+              <span style="position:absolute;inset:0;border:1.5px solid rgba(122,194,255,.8);border-radius:999px;transform:rotate(31deg) scaleY(.4);display:block"></span>
+              <span style="position:absolute;inset:6% 0;border:1.5px solid rgba(178,135,255,.75);border-radius:999px;transform:rotate(74deg) scaleY(.32);display:block"></span>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:7px;min-width:0">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px">
+              <h3 style="margin:0;font-family:Georgia,serif;font-size:1.6rem;font-weight:600;line-height:1.1">Sabik</h3>
+              <span style="border:1px solid #6E7E93;border-radius:999px;background:#fff;color:#43566d;padding:2px 9px;font-size:.8125rem;font-weight:700;letter-spacing:.06em">IA</span>
+            </div>
+            <p style="margin:0;color:#43566d;font-size:.9375rem;line-height:1.35">Asistente de Iris Green</p>
+            <p style="display:inline-flex;align-items:center;gap:6px;margin:0;color:#43566d;font-size:.9375rem;line-height:1.35;min-height:22px">
+              <span aria-hidden="true" style="flex:0 0 auto;width:10px;height:10px;border-radius:999px;background:{{ dotFill }};border:2px solid {{ dotRing }};box-shadow:{{ dotInset }}"></span>
+              <span>{{ stateLabel }}</span>
+              <span aria-hidden="true" style="display:inline-flex;align-items:center;gap:4px;height:22px;margin-left:4px">
+                <sc-for list="{{ bars }}" as="bar" hint-placeholder-count="5">
+                  <span ref="{{ bar.ref }}" style="display:block;width:3px;height:6px;border-radius:999px;background:#5a49a8;opacity:.38;transform:scaleY(1);will-change:transform,opacity"></span>
+                </sc-for>
+              </span>
+            </p>
+          </div>
+
+          <button type="button" onClick="{{ onToggle }}" aria-expanded="{{ expanded }}" style="min-width:108px;min-height:44px;border:2px solid #6E7E93;border-radius:999px;background:rgba(255,255,255,.76);color:#17395c;padding:9px 14px;font:inherit;font-weight:750;cursor:pointer;transition:border-color 180ms,background 180ms" style-hover="border-color:#17395c;background:#E9ECF7" style-focus="outline:3px solid #5a49a8;outline-offset:3px">{{ toggleLabel }}</button>
+        </div>
+
+        <sc-if value="{{ bodyOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="margin:0;color:#43566d;line-height:1.4">{{ statusText }}</p>
+            <p style="margin:0;color:#43566d;font-size:.9375rem;line-height:1.4">Puedo buscar en Iris Green y explicarlo más simple. No hago diagnósticos.</p>
+
+            <div style="display:grid;gap:8px">
+              <span style="color:#17395c;font-weight:750">¿Qué necesitas?</span>
+              <div style="min-height:58px;border:1px solid #6E7E93;border-radius:8px;background:#fff;padding:12px;color:#43566d;line-height:1.5">Ejemplo: cuando vuelvo de comprar no puedo con nadie</div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span style="min-height:44px;border:1px solid #17395c;border-radius:8px;background:{{ sendBg }};color:{{ sendInk }};opacity:{{ sendOpacity }};display:inline-flex;align-items:center;padding:10px 14px;font-weight:650">Enviar</span>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span style="min-width:168px;min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;font-weight:650;font-size:.9375rem">{{ lowLabel }}</span>
+              <sc-if value="{{ showFormat }}" hint-placeholder-val="{{ true }}">
+                <span style="min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);display:inline-flex;align-items:center;padding:10px 14px;font-weight:650;font-size:.9375rem">Más corto</span>
+              </sc-if>
+              <sc-if value="{{ showFormat }}" hint-placeholder-val="{{ true }}">
+                <span style="min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);display:inline-flex;align-items:center;padding:10px 14px;font-weight:650;font-size:.9375rem">Una opción</span>
+              </sc-if>
+              <sc-if value="{{ showQuestions }}" hint-placeholder-val="{{ true }}">
+                <span style="min-width:156px;min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;font-weight:650;font-size:.9375rem">Evitar preguntas</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ quiet }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.45">Bajo protección se retiran «Más corto» y «Una opción» — son formato. «Bajar intensidad» se queda: la protección no revoca una preferencia de reducción de estímulo.</p>
+            </sc-if>
+
+            <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid #dfe6ef">
+              <button type="button" onClick="{{ onListen }}" disabled="{{ listenDisabled }}" style="min-width:132px;min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);color:#17395c;padding:10px 14px;font:inherit;font-weight:650;cursor:pointer;transition:border-color 180ms,background 180ms" style-hover="border-color:#17395c;background:rgba(255,255,255,.92)" style-focus="outline:3px solid #5a49a8;outline-offset:3px">{{ listenLabel }}</button>
+              <button type="button" onClick="{{ onVoicePause }}" disabled="{{ vpDisabled }}" style="min-width:144px;min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);color:#17395c;padding:10px 14px;font:inherit;font-weight:650;cursor:pointer;opacity:{{ vpOpacity }};transition:border-color 180ms,background 180ms" style-hover="border-color:#17395c;background:rgba(255,255,255,.92)" style-focus="outline:3px solid #5a49a8;outline-offset:3px">{{ vpLabel }}</button>
+              <button type="button" onClick="{{ onVoiceStop }}" disabled="{{ vsDisabled }}" style="min-height:44px;border:1px solid #6E7E93;border-radius:8px;background:rgba(255,255,255,.72);color:#17395c;padding:10px 14px;font:inherit;font-weight:650;cursor:pointer;opacity:{{ vsOpacity }};transition:border-color 180ms,background 180ms" style-hover="border-color:#17395c;background:rgba(255,255,255,.92)" style-focus="outline:3px solid #5a49a8;outline-offset:3px">Detener voz</button>
+            </div>
+
+            <p style="margin:0;color:#43566d;font-size:.9375rem;line-height:1.4">No guarda historial entre sesiones.</p>
+          </div>
+        </sc-if>
+      </div>
+
+      <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.5">El holograma es una réplica de tokens, no el activo real: el de producción es el SVG de 1254×1254 con doce aros y treinta y ocho puntos. Aquí sirve para leer velocidad de precesión, opacidad y parada, que es lo que cambia por estado.</p>
+      <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.5">La opacidad cambia <strong>de golpe</strong>, a propósito. Los 520 ms de transición están en <code>STATE-VISUAL-MATRIX.md § Tokens de tiempo</code> y son el valor que manda; aquí no se demuestran porque una transición pendiente fija el valor calculado en su origen y el banco acabaría mostrando <code>.98</code> en todos los estados. El banco existe para que el número y el píxel coincidan.</p>
+    </section>
+
+    <section aria-labelledby="bench-axes-title" style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <h2 id="bench-axes-title" style="margin:0;font-family:Georgia,serif;font-size:1.15rem;font-weight:600">Ejes</h2>
+
+      <div style="border:1px solid #cfd6e2;border-radius:8px;background:#fff;padding:16px;display:grid;gap:16px;min-width:0">
+        <div style="display:grid;gap:8px">
+          <span style="font-weight:750;font-size:.9375rem">data-interaction-state</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ interactionOptions }}" as="opt" hint-placeholder-count="10">
+              <button type="button" onClick="{{ opt.pick }}" aria-pressed="{{ opt.on }}" style="min-height:44px;border-width:{{ opt.bw }};border-style:solid;border-color:{{ opt.bc }};border-radius:8px;background:{{ opt.bg }};color:#17395c;padding:8px 12px;font:inherit;font-size:.875rem;font-weight:{{ opt.fw }};cursor:pointer" style-focus="outline:3px solid #5a49a8;outline-offset:3px">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:grid;gap:8px">
+          <span style="font-weight:750;font-size:.9375rem">data-protection-state</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ protectionOptions }}" as="opt" hint-placeholder-count="3">
+              <button type="button" onClick="{{ opt.pick }}" aria-pressed="{{ opt.on }}" style="min-height:44px;border-width:{{ opt.bw }};border-style:solid;border-color:{{ opt.bc }};border-radius:8px;background:{{ opt.bg }};color:#17395c;padding:8px 12px;font:inherit;font-size:.875rem;font-weight:{{ opt.fw }};cursor:pointer" style-focus="outline:3px solid #5a49a8;outline-offset:3px">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:grid;gap:8px">
+          <span style="font-weight:750;font-size:.9375rem">Modificadores</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <button type="button" onClick="{{ onLow }}" aria-pressed="{{ low }}" style="min-height:44px;border-width:{{ lowBw }};border-style:solid;border-color:{{ lowBc }};border-radius:8px;background:{{ lowBg }};color:#17395c;padding:8px 12px;font:inherit;font-size:.875rem;font-weight:{{ lowFw }};cursor:pointer" style-focus="outline:3px solid #5a49a8;outline-offset:3px">Baja intensidad</button>
+            <button type="button" onClick="{{ onMotion }}" aria-pressed="{{ reduced }}" style="min-height:44px;border-width:{{ motionBw }};border-style:solid;border-color:{{ motionBc }};border-radius:8px;background:{{ motionBg }};color:#17395c;padding:8px 12px;font:inherit;font-size:.875rem;font-weight:{{ motionFw }};cursor:pointer" style-focus="outline:3px solid #5a49a8;outline-offset:3px">Movimiento reducido</button>
+          </div>
+        </div>
+
+        <div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid #dfe6ef">
+          <span style="font-weight:750;font-size:.9375rem">Atributos resueltos</span>
+          <pre style="margin:0;padding:12px;border:1px solid #dfe6ef;border-radius:8px;background:#f8f6ff;color:#17395c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8125rem;line-height:1.65;overflow-x:auto;white-space:pre-wrap;word-break:break-word">{{ resolved }}</pre>
+        </div>
+
+        <div style="display:grid;gap:6px">
+          <span style="font-weight:750;font-size:.9375rem">Energía de la voz</span>
+          <pre style="margin:0;padding:12px;border:1px solid #dfe6ef;border-radius:8px;background:#f8f6ff;color:#17395c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8125rem;line-height:1.65;overflow-x:auto;white-space:pre-wrap;word-break:break-word" ref="{{ readoutRef }}">E = 0.00 · silencio · animation: none</pre>
+          <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.5">{{ sourceNote }}</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid #cfd6e2;border-radius:8px;background:#fff;padding:16px;display:grid;gap:10px;min-width:0">
+        <span style="font-weight:750;font-size:.9375rem">Lo que hay que comprobar aquí</span>
+        <ul style="margin:0;padding-left:20px;display:grid;gap:7px;color:#43566d;font-size:.9375rem;line-height:1.5">
+          <li>Pulsar «Escuchar» no mueve las barras: se quedan a <code>scaleY(1)</code> hasta el arranque real de la locución.</li>
+          <li>En pausa y al terminar, <code>E = 0</code> exacto y sin animación declarada. Ninguna barra respira en silencio.</li>
+          <li>Con «Movimiento reducido», la voz sigue y las barras quedan estáticas: lo que decían lo dice el texto de estado.</li>
+          <li>«Riesgo» y «Derivación» paran los aros y no usan rojo pulsante ni movimiento urgente.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section aria-labelledby="bench-fixed-title" style="display:flex;flex-direction:column;gap:14px;border-top:1px solid #cfd6e2;padding-top:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 id="bench-fixed-title" style="margin:0;font-family:Georgia,serif;font-size:1.15rem;font-weight:600">Vistas fijas</h2>
+      <p style="margin:0;max-width:78ch;color:#43566d;font-size:.9375rem;line-height:1.5">Pasivas, sin lógica: se revisan sin ir pulsando ejes. Los aros están detenidos en las dos, que es su estado especificado.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <span style="color:#43566d;font-size:.875rem;font-weight:750;letter-spacing:.04em;text-transform:uppercase">Plegado</span>
+        <div style="border:1px solid rgba(164,147,221,.32);border-radius:8px;background:linear-gradient(160deg,rgba(255,255,255,.93),rgba(248,246,255,.82));box-shadow:0 16px 42px rgba(38,58,88,.055);padding:20px;min-width:0">
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center">
+            <div role="img" aria-label="Holograma de Sabik, plegado" style="position:relative;width:44px;height:44px">
+              <div style="position:absolute;inset:14%;border-radius:999px;background:radial-gradient(circle at 50% 51%,rgba(255,255,255,.95) 0 3%,transparent 4%),radial-gradient(circle at 36% 24%,rgba(128,229,255,.95),transparent 22%),radial-gradient(circle at 65% 30%,rgba(170,116,255,.74),transparent 26%),radial-gradient(circle at 49% 52%,rgba(42,137,255,.95) 0 29%,rgba(82,60,220,.96) 52%,rgba(194,173,255,.46) 73%,rgba(255,255,255,.64) 100%);opacity:.72;filter:saturate(.72)"></div>
+              <div style="position:absolute;inset:0;opacity:.5">
+                <span style="position:absolute;inset:2% 0;border:1.5px solid rgba(137,115,230,.85);border-radius:999px;transform:rotate(-16deg) scaleY(.36);display:block"></span>
+                <span style="position:absolute;inset:0;border:1.5px solid rgba(122,194,255,.8);border-radius:999px;transform:rotate(31deg) scaleY(.4);display:block"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px">
+                <h3 style="margin:0;font-family:Georgia,serif;font-size:1.35rem;font-weight:600;line-height:1.1">Sabik</h3>
+                <span style="border:1px solid #6E7E93;border-radius:999px;background:#fff;color:#43566d;padding:2px 9px;font-size:.8125rem;font-weight:700;letter-spacing:.06em">IA</span>
+              </div>
+              <p style="display:inline-flex;align-items:center;gap:6px;margin:0;color:#43566d;font-size:.9375rem;line-height:1.35">
+                <span aria-hidden="true" style="flex:0 0 auto;width:10px;height:10px;border-radius:999px;background:#6E7E93"></span>
+                <span>Oculto</span>
+              </p>
+            </div>
+            <span style="min-width:108px;min-height:44px;border:2px solid #6E7E93;border-radius:999px;background:rgba(255,255,255,.76);color:#17395c;display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;font-weight:750">Mostrar</span>
+          </div>
+        </div>
+        <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.5">Solo la cabecera. Sin subtítulo, sin cuerpo, holograma a 44 px. El botón no cambia de sitio ni de ancho al cambiar de etiqueta: <code>min-width: 108px</code>.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <span style="color:#43566d;font-size:.875rem;font-weight:750;letter-spacing:.04em;text-transform:uppercase">Derivación humana</span>
+        <div style="border:1px solid rgba(164,147,221,.32);border-radius:8px;background:linear-gradient(160deg,rgba(255,255,255,.93),rgba(248,246,255,.82));box-shadow:0 16px 42px rgba(38,58,88,.055);padding:20px;display:grid;gap:14px;min-width:0">
+          <div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start">
+            <div role="img" aria-label="Holograma de Sabik, protección" style="position:relative;width:72px;height:72px">
+              <div style="position:absolute;inset:14%;border-radius:999px;background:radial-gradient(circle at 50% 51%,rgba(255,255,255,.95) 0 3%,transparent 4%),radial-gradient(circle at 36% 24%,rgba(128,229,255,.95),transparent 22%),radial-gradient(circle at 65% 30%,rgba(170,116,255,.74),transparent 26%),radial-gradient(circle at 49% 52%,rgba(42,137,255,.95) 0 29%,rgba(82,60,220,.96) 52%,rgba(194,173,255,.46) 73%,rgba(255,255,255,.64) 100%);opacity:.76;filter:saturate(.68)"></div>
+              <div style="position:absolute;inset:0;opacity:.5">
+                <span style="position:absolute;inset:2% 0;border:1.5px solid rgba(137,115,230,.85);border-radius:999px;transform:rotate(-16deg) scaleY(.36);display:block"></span>
+                <span style="position:absolute;inset:0;border:1.5px solid rgba(122,194,255,.8);border-radius:999px;transform:rotate(31deg) scaleY(.4);display:block"></span>
+                <span style="position:absolute;inset:6% 0;border:1.5px solid rgba(178,135,255,.75);border-radius:999px;transform:rotate(74deg) scaleY(.32);display:block"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;min-width:0">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px">
+                <h3 style="margin:0;font-family:Georgia,serif;font-size:1.6rem;font-weight:600;line-height:1.1">Sabik</h3>
+                <span style="border:1px solid #6E7E93;border-radius:999px;background:#fff;color:#43566d;padding:2px 9px;font-size:.8125rem;font-weight:700;letter-spacing:.06em">IA</span>
+              </div>
+              <p style="display:inline-flex;align-items:center;gap:6px;margin:0;color:#43566d;font-size:.9375rem;line-height:1.35">
+                <span aria-hidden="true" style="flex:0 0 auto;width:10px;height:10px;border-radius:999px;background:#fff;border:2px solid #8f1d1d"></span>
+                <span>Aquí te acompaño</span>
+              </p>
+            </div>
+          </div>
+
+          <div style="border:1px solid #8f1d1d;border-radius:8px;background:#fff;padding:14px;display:grid;gap:8px;min-width:0">
+            <strong style="font-size:.9375rem">Teléfono de atención</strong>
+            <a href="#derivacion-ejemplo" style="min-height:44px;display:inline-flex;align-items:center;color:#17395c;text-decoration:underline;text-underline-offset:4px;font-weight:650">024 · atención a la conducta suicida</a>
+            <p style="margin:0;color:#43566d;font-size:.9375rem;line-height:1.45">Gratuito, 24 horas. Enlace de ejemplo: el recurso real lo da el Core.</p>
+          </div>
+
+          <p style="margin:0;color:#17395c;line-height:1.55">Esto se atiende mejor con una persona. Te dejo dónde.</p>
+          <p style="margin:0;color:#43566d;font-size:.9375rem;line-height:1.4">No guarda historial entre sesiones.</p>
+        </div>
+        <p style="margin:0;color:#43566d;font-size:.875rem;line-height:1.5">El recurso humano va primero. <code>#8f1d1d</code> solo como borde de 1 px y como texto, nunca como relleno y nunca animado. Se retiran los ajustes de formato, «No es esto» y «Buscar por otra vía»: aquí no se pide reformular.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;waveMaxScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:3.6,&quot;min&quot;:1.8,&quot;max&quot;:4.5,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ondas&quot;,&quot;unit&quot;:&quot;×&quot;},&quot;waveBars&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:3,&quot;max&quot;:7,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ondas&quot;},&quot;impulseSpacing&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:420,&quot;min&quot;:200,&quot;max&quot;:900,&quot;step&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ondas&quot;,&quot;unit&quot;:&quot;ms&quot;}}">
+const IRIS = "#5a49a8", INK = "#17395c", MUTED = "#43566d", LAV = "#EEE9FF", BORDER = "#6E7E93", DANGER = "#8f1d1d";
+
+const SPEED = {
+  arrancando: 96, espera: 96, buscando: 30, componiendo: 44, respuesta: 96,
+  aclaracion: 110, correccion: 110, pausa: 300, error: 300, derivacion: 300
+};
+const PAUSED = new Set(["pausa", "error", "derivacion"]);
+const LABELS = {
+  arrancando: ["Preparando", "Un momento, estoy cargando lo que necesito."],
+  espera: ["Disponible", "Estoy aquí si quieres ayuda."],
+  buscando: ["Buscando", "Sabik está buscando en Iris Green."],
+  componiendo: ["Preparando respuesta", "Estoy ordenando lo que he encontrado."],
+  respuesta: ["Respuesta lista", "Sabik ha preparado una respuesta."],
+  aclaracion: ["Necesito una aclaración", "Para seguir necesito que me concretes una cosa."],
+  correccion: ["Espero una corrección", "Retiro esta vía. Puedes escribir una corrección concreta."],
+  pausa: ["En pausa", "Sabik está en pausa. Lo que hay en pantalla se queda."],
+  error: ["No he podido", "No he podido cargar lo que necesito."],
+  derivacion: ["Aquí te acompaño", "Esto se atiende mejor con una persona. Te dejo dónde."]
+};
+const VOICE_LABEL = {
+  silencio: "", iniciando: "Iniciando voz", hablando: "Leyendo en voz alta",
+  pausada: "Voz en pausa", finalizada: "", error: "La voz no está disponible"
+};
+const SAMPLE = "Puedo buscar en Iris Green y explicarlo más simple. No hago diagnósticos. Si quieres, lo dejo en una sola opción.";
+
+function bez(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  return (p) => {
+    let t = p;
+    for (let i = 0; i < 6; i++) {
+      const e = ((ax * t + bx) * t + cx) * t - p;
+      if (Math.abs(e) < 1e-4) break;
+      const d = (3 * ax * t + 2 * bx) * t + cx;
+      if (Math.abs(d) < 1e-6) break;
+      t -= e / d;
+    }
+    return ((ay * t + by) * t + cy) * t;
+  };
+}
+const E_IN = bez(.2, .7, .3, 1), E_OUT = bez(.4, 0, .6, 1);
+
+const DELAY = [40, 20, 0, 20, 40], AMP = [.62, .84, 1.00, .88, .66];
+
+class Component extends DCLogic {
+  state = {
+    interaction: "espera", protection: "normal", low: false,
+    reduced: false, collapsed: false, voice: "silencio",
+    source: "—", supported: false
+  };
+
+  constructor(props) {
+    super(props);
+    this.barEls = [];
+    this.readout = null;
+    this.base = 0;
+    this.ramp = null;
+    this.impulses = [];
+    this.schedule = [];
+    this.scheduleFrom = 0;
+    this.fired = 0;
+    this.speechEnd = 0;
+    this.lastGuard = 0;
+    this.lastRaf = 0;
+    this.boundaryHits = 0;
+  }
+
+  componentDidMount() {
+    const supported = typeof window !== "undefined" && !!window.speechSynthesis;
+    this.setState({ supported });
+    this.frame = requestAnimationFrame(this.tick);
+    this.fallbackTimer = setInterval(this.fallbackTick, 16);
+    this.applyPresentation();
+  }
+
+  componentDidUpdate() { this.applyPresentation(); }
+
+  // Opacidad del holograma y de los aros, escritas desde la referencia igual
+  // que las barras de onda. Por atributo de estilo interpolado no se
+  // re-aplicaban: el número del volcado decía .76 y el píxel seguía en .98,
+  // y este banco existe justamente para que esos dos coincidan.
+  applyPresentation() {
+    if (this.sphereEl) this.sphereEl.style.opacity = String(this.holoOpacity);
+    if (this.ringsEl) this.ringsEl.style.opacity = String(this.ringOpacity);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.frame);
+    clearInterval(this.fallbackTimer);
+    this.cancelSpeech();
+  }
+
+  barCount() {
+    const n = Number(this.props.waveBars ?? 5);
+    return Math.max(3, Math.min(7, Math.round(n)));
+  }
+  maxScale() { return Number(this.props.waveMaxScale ?? 3.6); }
+  spacing() { return Number(this.props.impulseSpacing ?? 420); }
+
+  rampTo(target, dur, curve) {
+    this.ramp = { from: this.baseNow(), to: target, t0: performance.now(), dur, curve };
+  }
+
+  baseNow() {
+    if (!this.ramp) return this.base;
+    const r = this.ramp, dt = performance.now() - r.t0;
+    if (dt >= r.dur) { this.base = r.to; this.ramp = null; return this.base; }
+    const p = (r.curve === "in" ? E_IN : r.curve === "linear" ? (x) => x : E_OUT)(dt / r.dur);
+    return r.from + (r.to - r.from) * p;
+  }
+
+  env(dt) {
+    if (dt < 0) return 0;
+    if (dt < 90) return E_IN(dt / 90);
+    if (dt < 350) return 1 - E_OUT((dt - 90) / 260);
+    return 0;
+  }
+
+  tick = () => {
+    this.lastRaf = performance.now();
+    this.step();
+    this.frame = requestAnimationFrame(this.tick);
+  };
+
+  // En algunos visores el reloj de animación no avanza y requestAnimationFrame
+  // no se dispara nunca. Todo lo que hace visible la onda —transform y opacity
+  // de cada barra, y el volcado de energía— vive en el paso, así que el paso no
+  // puede depender solo de rAF: si rAF no ha dado uno en 100 ms, lo releva un
+  // temporizador. `step` calcula desde `performance.now()`, así que cualquier
+  // cadencia da el mismo resultado.
+  //
+  // NO copiar al runtime. Ahí rAF funciona, y en E = 0 el bucle debe dormir:
+  // ver VOICE-WAVE-SPEC § Energía cero también detiene el JavaScript.
+  fallbackTick = () => {
+    if (performance.now() - this.lastRaf > 100) this.step();
+  };
+
+  step() {
+    const now = performance.now();
+    const st = this.state.voice;
+
+    if (st === "hablando" && this.schedule.length) {
+      while (this.fired < this.schedule.length && this.scheduleFrom + this.schedule[this.fired] <= now) {
+        this.impulses.push(now);
+        this.fired++;
+      }
+      if (this.fired >= this.schedule.length && now >= this.speechEnd) this.finishVoice();
+    }
+
+    if (st === "hablando" && this.usingReal && now - this.lastGuard > 250) {
+      this.lastGuard = now;
+      if (window.speechSynthesis && !window.speechSynthesis.speaking) this.finishVoice();
+    }
+
+    // Los impulsos solo existen hablando. La rampa de bajada sí se sigue
+    // pintando desde `base`: es la caída de 160 ms que especifica el documento.
+    this.impulses = st === "hablando" ? this.impulses.filter((t0) => now - t0 < 350 + 40) : [];
+
+    const base = this.baseNow();
+    const frozen = this.state.reduced || st === "silencio" || st === "finalizada" || st === "error";
+    const maxScale = this.maxScale();
+    const peakOpacity = this.state.low ? .30 : .92;
+
+    this.barEls.forEach((el, i) => {
+      if (!el) return;
+      if (frozen) {
+        el.style.transform = "scaleY(1)";
+        el.style.opacity = st === "silencio" || st === "finalizada" || st === "error" ? (this.state.reduced ? ".38" : "0") : ".38";
+        return;
+      }
+      let imp = 0;
+      for (const t0 of this.impulses) imp = Math.max(imp, this.env(now - t0 - DELAY[i % DELAY.length]));
+      const amp = AMP[i % AMP.length];
+      const v = Math.min(1, base + imp * amp * (1 - base));
+      const top = this.state.low ? 2.2 : maxScale;
+      el.style.transform = "scaleY(" + (1 + (top - 1) * v).toFixed(3) + ")";
+      el.style.opacity = (.38 + .14 * (base / .55) + (peakOpacity - .52) * (imp * amp)).toFixed(3);
+    });
+
+    if (this.readout) {
+      const e = frozen && (st === "silencio" || st === "finalizada" || st === "error") ? 0 : base;
+      this.readout.textContent =
+        "E = " + e.toFixed(2) + " · " + st +
+        (frozen ? " · animation: none" : " · impulsos activos: " + this.impulses.length) +
+        (this.state.reduced ? " · barras estáticas" : "") +
+        (this.boundaryHits ? " · boundary: " + this.boundaryHits : this.usingReal ? " · boundary: sin eventos → fallback" : "");
+    }
+  }
+
+  buildSchedule() {
+    const step = Math.min(900, Math.max(200, this.spacing()));
+    let t = 0;
+    this.schedule = [];
+    SAMPLE.split(/\s+/).forEach((w) => {
+      this.schedule.push(t);
+      t += step;
+      if (/[,;:]$/.test(w)) t += 300;
+      else if (/[.?!]$/.test(w)) t += 520;
+    });
+    this.scheduleFrom = performance.now();
+    this.fired = 0;
+    this.speechEnd = this.scheduleFrom + t + 240;
+  }
+
+  // Cancelar dispara onerror("canceled") en la locución viva. Si ese onerror
+  // sigue enganchado, «Detener voz» acaba en «Error de voz» y el prototipo
+  // enseñaría justo lo contrario de VOICE-WAVE-SPEC: parar y fallar son ramas
+  // distintas. Se sueltan los manejadores antes de cancelar.
+  cancelSpeech() {
+    if (this.utter) { this.utter.onerror = null; this.utter.onend = null; this.utter.onboundary = null; }
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (_) {}
+    this.utter = null;
+  }
+
+  startVoice = () => {
+    this.boundaryHits = 0;
+    this.impulses = [];
+    this.setState({ voice: "iniciando", source: "…" });
+    this.base = 0; this.ramp = null;
+
+    if (this.state.supported) {
+      try {
+        const u = new SpeechSynthesisUtterance(SAMPLE);
+        u.lang = "es-ES";
+        u.onstart = () => {
+          this.usingReal = true;
+          this.setState({ voice: "hablando", source: "síntesis real" });
+          this.rampTo(.55, 180, "in");
+          this.boundaryTimer = setTimeout(() => {
+            if (!this.boundaryHits) { this.buildSchedule(); this.setState({ source: "síntesis real · cadencia estimada" }); }
+          }, 1200);
+        };
+        u.onboundary = (ev) => {
+          if (ev.name && ev.name !== "word") return;
+          this.boundaryHits++;
+          // Los motores encolan boundary y los vuelcan después de pause().
+          // Sin esta guarda cada uno mete un impulso nuevo y las barras siguen
+          // saltando durante «Voz en pausa», contra la regla principal.
+          if (this.state.voice !== "hablando") return;
+          this.schedule = [];
+          this.impulses.push(performance.now());
+        };
+        u.onpause = () => { this.setState({ voice: "pausada" }); this.rampTo(0, 160, "out"); };
+        u.onresume = () => { this.setState({ voice: "hablando" }); this.rampTo(.55, 180, "in"); };
+        u.onend = () => this.finishVoice();
+        u.onerror = (ev) => {
+          // Cancelación pedida por la persona: no es un error de voz.
+          if (ev && (ev.error === "canceled" || ev.error === "interrupted")) return;
+          this.errorVoice();
+        };
+        this.utter = u;
+        window.speechSynthesis.speak(u);
+        this.startTimer = setTimeout(() => {
+          if (this.state.voice === "iniciando") this.errorVoice();
+        }, 1500);
+        return;
+      } catch (_) {}
+    }
+
+    this.usingReal = false;
+    setTimeout(() => {
+      if (this.state.voice !== "iniciando") return;
+      this.setState({ voice: "hablando", source: "fallback sin boundary" });
+      this.rampTo(.55, 180, "in");
+      this.buildSchedule();
+    }, 240);
+  };
+
+  finishVoice = () => {
+    clearTimeout(this.boundaryTimer); clearTimeout(this.startTimer);
+    this.schedule = []; this.impulses = [];
+    this.rampTo(0, 240, "out");
+    this.setState({ voice: "finalizada" });
+    setTimeout(() => { if (this.state.voice === "finalizada") this.setState({ voice: "silencio", source: "—" }); }, 600);
+  };
+
+  errorVoice = () => {
+    clearTimeout(this.boundaryTimer); clearTimeout(this.startTimer);
+    this.cancelSpeech();
+    this.schedule = []; this.impulses = [];
+    this.rampTo(0, 120, "linear");
+    this.setState({ voice: "error", source: "error de voz" });
+    // El fallo puntual no deja la etiqueta mintiendo: si «Escuchar» vuelve a
+    // estar disponible, el estado no puede seguir diciendo que la voz no lo
+    // está. El aviso permanece abajo, que es su sitio según la matriz.
+    setTimeout(() => { if (this.state.voice === "error") this.setState({ voice: "silencio" }); }, 2500);
+  };
+
+  pauseVoice = () => {
+    if (this.state.voice === "pausada") {
+      if (this.usingReal) { try { window.speechSynthesis.resume(); } catch (_) {} }
+      else { this.buildSchedule(); }
+      this.setState({ voice: "hablando" });
+      this.rampTo(.55, 180, "in");
+      return;
+    }
+    if (this.usingReal) { try { window.speechSynthesis.pause(); } catch (_) {} }
+    this.schedule = []; this.impulses = [];
+    this.setState({ voice: "pausada" });
+    this.rampTo(0, 160, "out");
+  };
+
+  stopVoice = () => {
+    clearTimeout(this.boundaryTimer); clearTimeout(this.startTimer);
+    this.cancelSpeech();
+    this.schedule = []; this.impulses = [];
+    this.rampTo(0, 120, "linear");
+    this.setState({ voice: "finalizada" });
+    setTimeout(() => { if (this.state.voice === "finalizada") this.setState({ voice: "silencio", source: "—" }); }, 600);
+  };
+
+  pick(key, value) {
+    return () => {
+      if (key === "interaction" && (value === "pausa" || value === "derivacion")) this.stopVoice();
+      this.setState({ [key]: value });
+    };
+  }
+
+  chip(on) {
+    return { on, bw: on ? "2px" : "1px", bc: on ? IRIS : BORDER, bg: on ? LAV : "#fff", fw: on ? 750 : 650 };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const quiet = s.protection !== "normal" || s.interaction === "derivacion";
+    const speed = (PAUSED.has(s.interaction) || s.protection !== "normal" ? 300 : SPEED[s.interaction]) + "s";
+    const motion = s.reduced || s.low || PAUSED.has(s.interaction) || s.protection !== "normal" || s.collapsed ? "paused" : "running";
+    const ring = s.low ? .35 : s.protection !== "normal" || PAUSED.has(s.interaction) ? .5 : 1;
+    const holo = s.low ? .74 : s.protection === "riesgo" ? .76 : s.protection === "incierto" ? .8 : PAUSED.has(s.interaction) ? .72 : s.interaction === "buscando" || s.interaction === "componiendo" ? 1 : .98;
+    this.holoOpacity = holo;
+    this.ringOpacity = ring;
+
+    const voiceLabel = VOICE_LABEL[s.voice];
+    const stateLabel = s.collapsed ? "Oculto" : voiceLabel || LABELS[s.interaction][0];
+    const sendLive = !s.collapsed && !["arrancando", "buscando", "componiendo", "pausa", "error"].includes(s.interaction);
+
+    const bars = [];
+    for (let i = 0; i < this.barCount(); i++) bars.push({ i, ref: (el) => { this.barEls[i] = el; } });
+
+    const resolved = [
+      'data-cognitive-state="NucleoBase"',
+      'data-interaction-state="' + s.interaction + '"',
+      'data-protection-state="' + s.protection + '"',
+      'data-low-intensity="' + s.low + '"',
+      'data-voice-state="' + s.voice + '"   ← único atributo nuevo',
+      "",
+      "movimiento efectivo: " + (s.reduced ? "reducido" : "normal") +
+        "   ← derivado de data-ig-motion / data-ig-system-motion /",
+      "                              prefers-reduced-motion. No es atributo de Sabik.",
+      "",
+      "--sabik-layer-speed: " + speed,
+      "--sabik-layer-motion: " + motion,
+      "--sabik-ring-opacity-layer: " + ring,
+      "panel: " + (s.collapsed ? ".is-collapsed" : "desplegado")
+    ].join("\n");
+
+    const voiceActive = ["iniciando", "hablando", "pausada"].includes(s.voice);
+
+    return {
+      bars,
+      readoutRef: (el) => { this.readout = el; },
+      sphereRef: (el) => { this.sphereEl = el; this.applyPresentation(); },
+      ringsRef: (el) => { this.ringsEl = el; this.applyPresentation(); },
+      layerSpeed: speed,
+      layerMotion: motion,
+      ringOpacity: ring,
+      holoOpacity: holo,
+      stateLabel,
+      statusText: LABELS[s.interaction][1],
+      resolved,
+      expanded: !s.collapsed,
+      bodyOpen: !s.collapsed,
+      toggleLabel: s.collapsed ? "Mostrar" : "Ocultar",
+      onToggle: () => { if (!s.collapsed) this.stopVoice(); this.setState({ collapsed: !s.collapsed }); },
+
+      dotFill: s.protection === "riesgo" || s.protection === "incierto" ? "#fff" : quiet || PAUSED.has(s.interaction) ? BORDER : IRIS,
+      dotRing: s.protection === "riesgo" || s.protection === "incierto" ? DANGER : "transparent",
+      dotInset: s.protection === "incierto" ? "inset 0 0 0 1px " + DANGER : "none",
+
+      sendBg: sendLive ? INK : "#fff",
+      sendInk: sendLive ? "#fff" : INK,
+      sendOpacity: sendLive ? 1 : .55,
+      // Bajo protección se retiran Más corto y Una opción —son formato—, pero
+      // «Bajar intensidad» sigue vivo: la protección no revoca una preferencia
+      // de reducción de estímulo. «Evitar preguntas» cae solo con `incierto`,
+      // donde preguntar es la conducta correcta.
+      quiet,
+      showFormat: !quiet,
+      showQuestions: s.protection !== "incierto",
+      lowLabel: s.low ? "Intensidad normal" : "Bajar intensidad",
+
+      // «Escuchar» es identidad estable: no se renombra durante la locución.
+      // El estado de la locución lo dan el texto de estado, Pausar/Reanudar voz
+      // y Detener voz. Ver CONTROL-STATES.md § 4.
+      listenLabel: "Escuchar",
+      listenDisabled: voiceActive || s.collapsed || s.interaction === "pausa",
+      onListen: this.startVoice,
+      vpLabel: s.voice === "pausada" ? "Reanudar voz" : "Pausar voz",
+      vpDisabled: !voiceActive || s.voice === "iniciando",
+      vpOpacity: !voiceActive || s.voice === "iniciando" ? .55 : 1,
+      onVoicePause: this.pauseVoice,
+      vsDisabled: !voiceActive,
+      vsOpacity: voiceActive ? 1 : .55,
+      onVoiceStop: this.stopVoice,
+
+      sourceNote: s.supported
+        ? (s.source === "error de voz" ? "No he podido leerlo en voz alta. El texto sigue completo aquí. " : "Fuente: " + s.source + ". ") + "Si el navegador no emite eventos de palabra, a los 1200 ms entra la cadencia estimada; el arranque, la pausa y el final siguen siendo exactos."
+        : "SIMULACIÓN EXCLUSIVA DEL BANCO. Este navegador no expone síntesis de voz, así que el banco simula la cadencia para poder revisar el fallback. En producción es lo contrario: sin síntesis no se muestra «Escuchar», no hay ondas y el texto permanece completo.",
+
+      interactionOptions: Object.keys(SPEED).map((k) => Object.assign({ label: k, pick: this.pick("interaction", k) }, this.chip(s.interaction === k))),
+      protectionOptions: ["normal", "incierto", "riesgo"].map((k) => Object.assign({ label: k, pick: this.pick("protection", k) }, this.chip(s.protection === k))),
+
+      low: s.low,
+      onLow: () => this.setState({ low: !s.low }),
+      ...(() => { const c = this.chip(s.low); return { lowBw: c.bw, lowBc: c.bc, lowBg: c.bg, lowFw: c.fw }; })(),
+      reduced: s.reduced,
+      onMotion: () => this.setState({ reduced: !s.reduced }),
+      ...(() => { const c = this.chip(s.reduced); return { motionBw: c.bw, motionBc: c.bc, motionBg: c.bg, motionFw: c.fw }; })()
+    };
+  }
+}
+
+</script>
+</body>
+</html>
