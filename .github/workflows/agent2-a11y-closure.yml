@@ -83,7 +83,7 @@ jobs:
 
               const styles = await page.evaluate(() => {
                 const rgb = el => getComputedStyle(el).borderTopColor;
-                const row = document.querySelector('.sabik-search-row');
+                const row = document.querySelector('.search-form');
                 const textarea = document.querySelector('#sabik-input');
                 const secondary = document.querySelector('#sabik-low');
                 const badge = document.querySelector('.sabik-badge');
@@ -103,7 +103,8 @@ jobs:
                   scrollWidth:document.documentElement.scrollWidth, innerWidth:window.innerWidth
                 };
               });
-              for (const k of ['row','textarea','secondary','badge','minimal','icon']) {
+              assert.equal(styles.row, 'rgb(132, 150, 175)', 'real search-form border already meets 3:1 against its white fill');
+              for (const k of ['textarea','secondary','badge','minimal','icon']) {
                 assert.equal(styles[k], 'rgb(110, 126, 147)', k);
               }
               assert.equal(styles.sourceGap,'12px');
