@@ -1,0 +1,154 @@
+name: Agent 2 A11Y closure QA
+on:
+  push:
+    branches:
+      - agent2/a11y-closure-ci-fe439632
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: fe43963207209d14bf8118565f37996503406f14
+          fetch-depth: 0
+
+      - name: Verify exact candidate and scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "fe43963207209d14bf8118565f37996503406f14"
+          test -z "$(git status --porcelain)"
+          git diff --name-only 43b4e76ff685d041e1512df12e4a723ec04cef72...HEAD | tee /tmp/changed.txt
+          diff -u <(printf '%s\n' 'sabik/sabik-page.css' 'tools/test-sabik-a11y-closure.js') <(sort /tmp/changed.txt)
+
+      - name: Install browser test dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/a11y-deps
+          cd /tmp/a11y-deps
+          npm init -y >/dev/null
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+          echo "NODE_PATH=/tmp/a11y-deps/node_modules" >> "$GITHUB_ENV"
+
+      - name: A11Y closure static checks
+        run: node tools/test-sabik-a11y-closure.js
+
+      - name: S0 suite
+        run: node tools/test-sabik-machine-s0.js
+
+      - name: S0 contract availability
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -d tests/specs/sabik ]; then
+            if [ -f tests/specs/sabik/run-s0-contract.mjs ]; then
+              node tests/specs/sabik/run-s0-contract.mjs
+            else
+              echo "INFO: tests/specs/sabik exists but run-s0-contract.mjs is absent"
+            fi
+          else
+            echo "INFO: canonical S0 contract runner is not present in sabik-preview checkout"
+          fi
+
+      - name: V7 regression
+        run: node tools/test-sabik-page-v7.js
+
+      - name: S1 automatic regression including X/N/F series
+        run: node tools/test-sabik-s1.js
+
+      - name: Browser A11Y closure checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8128 --bind 127.0.0.1 >/tmp/a11y-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          node <<'NODE'
+          const assert = require('node:assert/strict');
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            try {
+              const page = await browser.newPage({viewport:{width:320,height:900}});
+              await page.goto('http://127.0.0.1:8128/es/nea/', {waitUntil:'networkidle'});
+              await page.emulateMedia({reducedMotion:'reduce'});
+
+              const styles = await page.evaluate(() => {
+                const rgb = el => getComputedStyle(el).borderTopColor;
+                const row = document.querySelector('.sabik-search-row');
+                const textarea = document.querySelector('#sabik-input');
+                const secondary = document.querySelector('#sabik-low');
+                const badge = document.querySelector('.sabik-badge');
+                const minimal = document.querySelector('.sabik-state-dot');
+                minimal.dataset.state='minimal';
+                const icon = document.querySelector('#sabik-toggle');
+                const source = document.querySelector('#sabik-sources');
+                const li=document.createElement('li');
+                const a=document.createElement('a'); a.href='#'; a.textContent='Fuente de prueba'; li.append(a); source.append(li);
+                const sourceStyle=getComputedStyle(source), linkStyle=getComputedStyle(a);
+                return {
+                  row:rgb(row), textarea:rgb(textarea), secondary:rgb(secondary), badge:rgb(badge),
+                  minimal:getComputedStyle(minimal).backgroundColor, icon:rgb(icon),
+                  sourceGap:sourceStyle.rowGap, sourcePadding:[linkStyle.paddingBlockStart,linkStyle.paddingBlockEnd],
+                  sourceHeight:a.getBoundingClientRect().height,
+                  reducedTransition:getComputedStyle(document.querySelector('.sabik-panel')).transitionDuration,
+                  scrollWidth:document.documentElement.scrollWidth, innerWidth:window.innerWidth
+                };
+              });
+              for (const k of ['row','textarea','secondary','badge','minimal','icon']) {
+                assert.equal(styles[k], 'rgb(110, 126, 147)', k);
+              }
+              assert.equal(styles.sourceGap,'12px');
+              assert.deepEqual(styles.sourcePadding,['10px','10px']);
+              assert.ok(styles.sourceHeight >= 44, 'source target height: '+styles.sourceHeight);
+              assert.equal(styles.reducedTransition,'0s');
+              assert.ok(styles.scrollWidth <= styles.innerWidth, '320 CSS px horizontal overflow');
+
+              await page.locator('#sabik-input').focus();
+              await page.keyboard.press('Tab');
+              const focus = await page.evaluate(() => {
+                const el=document.activeElement, cs=getComputedStyle(el);
+                return {id:el.id,outline:cs.outlineStyle,width:cs.outlineWidth};
+              });
+              assert.equal(focus.id,'sabik-submit');
+              assert.notEqual(focus.outline,'none');
+              assert.notEqual(focus.width,'0px');
+
+              await page.evaluate(() => { document.documentElement.style.fontSize='200%'; });
+              await page.waitForTimeout(50);
+              const reflow = await page.evaluate(() => ({
+                scrollWidth:document.documentElement.scrollWidth, innerWidth:window.innerWidth
+              }));
+              assert.ok(reflow.scrollWidth <= reflow.innerWidth, '200% text horizontal overflow at 320 CSS px');
+
+              console.log('A11Y_BROWSER_PASS', JSON.stringify({styles,focus,reflow}));
+            } finally { await browser.close(); }
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+      - name: Build
+        run: python3 scripts/build_site.py
+
+      - name: Validate build output
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d dist
+          test ! -e dist/docs
+          test ! -e dist/tests
+          if find dist -type f -size +48999999c -print -quit | grep -q .; then
+            echo "ERROR: file >= 49,000,000 bytes"
+            find dist -type f -size +48999999c -print
+            exit 1
+          fi
+          echo "dist_files=$(find dist -type f | wc -l)"
+          echo "dist_bytes=$(du -sb dist | cut -f1)"
+          test -z "$(git status --porcelain)"
