@@ -29,6 +29,7 @@ OLD_RUNTIMES = (
     "/assets/runtime/8fe7df74405f3c55.js",
 )
 SAFE_RUNTIME = "/assets/runtime/dc-runtime-csp.js"
+EXPECTED_DC_PAGES = 23
 
 XDC = re.compile(r"(<x-dc\b[^>]*>)(.*?)(</x-dc\s*>)", re.I | re.S)
 LOGIC = re.compile(
@@ -75,6 +76,9 @@ EXTERNAL_NEW = '''        throw new Error(
 
 
 def encode_template(match: re.Match[str]) -> str:
+    # Solo las expresiones de plantilla son deuda de publicación. Secuencias ``}}``
+    # normales de CSS (por ejemplo al cerrar una regla dentro de @media) no lo son y
+    # no deben convertirse en entidades dentro de <style>.
     inner = MUSTACHE.sub(
         lambda token: token.group(0)
         .replace("{{", "&#123;&#123;", 1)
@@ -135,10 +139,14 @@ def transform_page(path: Path) -> dict:
     if not logic_source or "class Component" not in logic_source:
         raise AssertionError(f"{path}: el bloque de lógica no define class Component")
 
+    # Codificar únicamente expresiones de plantilla: el navegador convierte esas
+    # entidades de nuevo en llaves cuando el runtime consulta x-dc.innerHTML.
     text, xdc_count = XDC.subn(encode_template, text, count=1)
     if xdc_count != 1:
         raise AssertionError(f"{path}: no se pudo codificar x-dc")
 
+    # El bloque ejecutable se inserta junto al marcador original. Al llegar
+    # DOMContentLoaded, el runtime toma la clase ya precompilada sin eval/new Function.
     def replace_logic(match: re.Match[str]) -> str:
         marker = match.group(1) + "/* logic precompiled by build */" + match.group(3)
         return precompiled_script(logic_source) + marker
@@ -185,11 +193,14 @@ def main() -> None:
         text = path.read_text(encoding="utf-8", errors="ignore")
         if any(runtime in text for runtime in OLD_RUNTIMES):
             pages.append(path)
-    if len(pages) != 23:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 23, encontré {len(pages)}")
+    if len(pages) != EXPECTED_DC_PAGES:
+        raise AssertionError(
+            f"Inventario de páginas DC cambiado: esperaba {EXPECTED_DC_PAGES}, encontré {len(pages)}"
+        )
 
     rows = [transform_page(path) for path in pages]
 
+    # Ninguna página pública debe seguir apuntando a las copias antiguas.
     lingering = []
     for path in root.rglob("*.html"):
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -205,6 +216,8 @@ def main() -> None:
 
     update_csp(root)
 
+    # Guardarraíles finales de este hallazgo. Los scripts y CSS pueden contener llaves
+    # normales; lo que debe quedar a cero es una expresión {{...}} de plantilla en markup.
     active_mustache = []
     active_link_mustache = []
     for path in pages:

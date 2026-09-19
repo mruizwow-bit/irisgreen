@@ -1,0 +1,8 @@
+.gitattributes text eol=lf
+editorial/reviews/situaciones_sentidos_ES_EN.md text eol=lf
+editorial/reviews/situaciones_sueno_ES_EN.md text eol=lf
+scripts/repair_routes.py text eol=lf
+scripts/apply_pending_support_english.py text eol=lf
+tools/rebuild-sabik-index.py text eol=lf
+sabik/assets/NEA/generated/iris-fragments-index.es.json text eol=lf
+scripts/data/ayudas-support-pendientes-en.json text eol=lf
