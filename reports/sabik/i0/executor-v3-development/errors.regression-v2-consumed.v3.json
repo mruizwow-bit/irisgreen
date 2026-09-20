@@ -1,0 +1,924 @@
+{
+  "count": 114,
+  "errors": [
+    {
+      "id": "I0-CAL-0001",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0002",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0003",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0004",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0005",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0006",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0007",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0008",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0009",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0010",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0011",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0012",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0013",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0014",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0015",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0016",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0017",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0018",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0019",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0020",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0021",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0022",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0023",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0024",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0025",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0026",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0027",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0028",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0029",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0030",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0035",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0036",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0037",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0039",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0040",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0041",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0043",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0045",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0046",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0048",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0049",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0051",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0052",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0053",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0054",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0055",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0056",
+      "risk_group": "local_with_loss",
+      "failure_reasons": [
+        "result_kind",
+        "action_omitted",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0060",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0071",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0072",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0073",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0074",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0075",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0076",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0077",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0078",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0079",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0080",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0082",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0083",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0084",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0085",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0086",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0087",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0088",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0089",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "s0_events",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0090",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0091",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0092",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0093",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0094",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0095",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0096",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0098",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0099",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0100",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0101",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0102",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0103",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0104",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0105",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0112",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0114",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0116",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0119",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0120",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0121",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0122",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0123",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "negation"
+      ]
+    },
+    {
+      "id": "I0-CAL-0126",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0127",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted"
+      ]
+    },
+    {
+      "id": "I0-CAL-0128",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0129",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0131",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0132",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0133",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0135",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0136",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0137",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0139",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "classification",
+        "action_wrong"
+      ]
+    },
+    {
+      "id": "I0-CAL-0143",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong",
+        "multi_action"
+      ]
+    },
+    {
+      "id": "I0-CAL-0148",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong",
+        "multi_action"
+      ]
+    },
+    {
+      "id": "I0-CAL-0153",
+      "risk_group": "local_reversible",
+      "failure_reasons": [
+        "action_wrong",
+        "multi_action"
+      ]
+    },
+    {
+      "id": "I0-CAL-0184",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind"
+      ]
+    },
+    {
+      "id": "I0-CAL-0185",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "action_extra"
+      ]
+    },
+    {
+      "id": "I0-CAL-0186",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra"
+      ]
+    },
+    {
+      "id": "I0-CAL-0187",
+      "risk_group": "local_with_loss",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_omitted",
+        "s0_events",
+        "b3"
+      ]
+    },
+    {
+      "id": "I0-CAL-0188",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind"
+      ]
+    },
+    {
+      "id": "I0-CAL-0192",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification"
+      ]
+    },
+    {
+      "id": "I0-CAL-0193",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0194",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind"
+      ]
+    },
+    {
+      "id": "I0-CAL-0195",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind",
+        "action_extra",
+        "s0_events"
+      ]
+    },
+    {
+      "id": "I0-CAL-0196",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind"
+      ]
+    },
+    {
+      "id": "I0-CAL-0198",
+      "risk_group": "none",
+      "failure_reasons": [
+        "result_kind"
+      ]
+    }
+  ]
+}

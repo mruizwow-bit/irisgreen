@@ -1,0 +1,1204 @@
+{
+  "development": {
+    "v2_r1": {
+      "full_exact": {
+        "correct": 260,
+        "total": 400,
+        "accuracy": 0.65
+      },
+      "command_plan_exact": {
+        "correct": 285,
+        "total": 400,
+        "accuracy": 0.7125
+      },
+      "action_plan_exact": {
+        "correct": 328,
+        "total": 400,
+        "accuracy": 0.82
+      },
+      "result_kind": {
+        "exact": 347,
+        "accuracy": 0.8675,
+        "confusion": {
+          "response": {
+            "response": 112,
+            "action_result": 7
+          },
+          "action_result": {
+            "action_result": 187,
+            "response": 35,
+            "clarification": 1
+          },
+          "clarification": {
+            "action_result": 6,
+            "clarification": 24,
+            "response": 2
+          },
+          "human_help": {
+            "human_help": 10,
+            "response": 1
+          },
+          "out_of_scope": {
+            "out_of_scope": 11,
+            "clarification": 1
+          },
+          "insufficient": {
+            "insufficient": 3
+          }
+        }
+      },
+      "s0_events": {
+        "exact": 388,
+        "accuracy": 0.97
+      },
+      "b3": {
+        "exact": 358,
+        "accuracy": 0.895
+      },
+      "safety_gate": {
+        "exact": 400,
+        "errors": 0,
+        "accuracy": 1
+      },
+      "multi_action": {
+        "total": 25,
+        "command_exact": 25,
+        "action_exact": 25,
+        "full_exact": 25,
+        "command_exact_cases": 25,
+        "action_exact_given_command_exact": 25,
+        "omitted": 0,
+        "extra": 0,
+        "wrong": 0,
+        "order_errors": 0,
+        "action_exact_given_command_exact_rate": 1
+      },
+      "negation": {
+        "negative": {
+          "total": 4,
+          "correct": 4,
+          "false_triggers": 0,
+          "ids": []
+        },
+        "positive": {
+          "total": 4,
+          "correct": 4,
+          "failures": 0,
+          "ids": []
+        }
+      },
+      "insufficient": {
+        "total": 3,
+        "kind_correct": 3,
+        "no_action": 3,
+        "not_confirmar": 3,
+        "full_contract": 3,
+        "full_record": 3,
+        "cases": [
+          {
+            "id": "I0-DEV-0398",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          },
+          {
+            "id": "I0-DEV-0399",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          },
+          {
+            "id": "I0-DEV-0400",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          }
+        ]
+      }
+    },
+    "v3": {
+      "total": 400,
+      "correct": 258,
+      "incorrect": 142,
+      "accuracy": 0.645,
+      "full_exact": {
+        "correct": 258,
+        "total": 400,
+        "accuracy": 0.645
+      },
+      "classification": {
+        "command_plan_exact": 283,
+        "command_plan_accuracy": 0.7075,
+        "binary": {
+          "tp": 298,
+          "fp": 9,
+          "fn": 35,
+          "tn": 58,
+          "precision": 0.9706840390879479,
+          "recall": 0.8948948948948949,
+          "f1": 0.93125
+        },
+        "plan_confusion": {
+          "ENCONTRAR_CONTENIDO": {
+            "ENCONTRAR_CONTENIDO": 54,
+            "PEDIR_AYUDA_HUMANA": 1
+          },
+          "ABRIR_CONTENIDO": {
+            "ABRIR_CONTENIDO": 37,
+            "NO_INTENT": 1
+          },
+          "NO_INTENT": {
+            "ABRIR_CONTENIDO": 1,
+            "NO_INTENT": 58,
+            "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1,
+            "DETENER": 1,
+            "CONFIRMAR_ACCION": 1,
+            "RESTABLECER_PREFERENCIAS": 1,
+            "ENCONTRAR_CONTENIDO": 3,
+            "CAMBIAR_VISTA_SENCILLA": 1
+          },
+          "CAMBIAR_TAMANO_TEXTO": {
+            "CAMBIAR_TAMANO_TEXTO": 20,
+            "NO_INTENT": 3
+          },
+          "CAMBIAR_MOVIMIENTO": {
+            "CAMBIAR_MOVIMIENTO": 20,
+            "NO_INTENT": 3
+          },
+          "CAMBIAR_PASO_A_PASO": {
+            "CAMBIAR_PASO_A_PASO": 12,
+            "NO_INTENT": 5,
+            "SIGUIENTE+CAMBIAR_PASO_A_PASO": 1,
+            "REPETIR_INDICACION": 1
+          },
+          "CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_VISTA_SENCILLA": 17,
+            "NO_INTENT": 5
+          },
+          "CAMBIAR_DETALLES": {
+            "CAMBIAR_DETALLES": 17,
+            "NO_INTENT": 3
+          },
+          "SIGUIENTE": {
+            "SIGUIENTE": 8,
+            "NO_INTENT": 1
+          },
+          "ATRAS": {
+            "ATRAS": 18,
+            "NO_INTENT": 3
+          },
+          "REPETIR_INDICACION": {
+            "REPETIR_INDICACION": 7,
+            "ATRAS+REPETIR_INDICACION": 1,
+            "ATRAS": 1,
+            "NO_INTENT": 1
+          },
+          "DESHACER_ULTIMA_ACCION": {
+            "DESHACER_ULTIMA_ACCION": 7,
+            "NO_INTENT": 3
+          },
+          "CANCELAR": {
+            "CANCELAR": 8,
+            "NO_INTENT": 2
+          },
+          "CONFIRMAR_ACCION": {
+            "CONFIRMAR_ACCION": 8,
+            "NO_INTENT": 1
+          },
+          "RECHAZAR_RESULTADO": {
+            "RECHAZAR_RESULTADO": 4,
+            "NO_INTENT": 1
+          },
+          "OTRA_VIA": {
+            "ENCONTRAR_CONTENIDO+OTRA_VIA": 2,
+            "OTRA_VIA+REPETIR_INDICACION": 1,
+            "OTRA_VIA": 3
+          },
+          "DETENER": {
+            "DETENER": 8,
+            "NO_INTENT": 2
+          },
+          "PEDIR_AYUDA_HUMANA": {
+            "PEDIR_AYUDA_HUMANA": 6,
+            "ENCONTRAR_CONTENIDO": 1
+          },
+          "RESTABLECER_PREFERENCIAS": {
+            "RESTABLECER_PREFERENCIAS": 10,
+            "NO_INTENT": 1
+          },
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 5
+          },
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+            "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 5
+          },
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+            "CAMBIAR_PASO_A_PASO+SIGUIENTE": 5
+          },
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+            "CAMBIAR_DETALLES+REPETIR_INDICACION": 5
+          },
+          "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": {
+            "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 2
+          },
+          "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": {
+            "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 2
+          },
+          "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+            "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 1
+          }
+        }
+      },
+      "action_execution": {
+        "action_plan_exact": 331,
+        "action_plan_accuracy": 0.8275,
+        "tp": 187,
+        "fp": 6,
+        "fn": 26,
+        "tn": 181,
+        "precision": 0.9689119170984456,
+        "recall": 0.8779342723004695,
+        "f1": 0.9211822660098523,
+        "omitted_actions": 29,
+        "extra_actions": 10,
+        "wrong_actions": 34,
+        "action_exact_conditioned_on_command_exact": {
+          "numerator": 272,
+          "denominator": 283,
+          "rate": 0.9611307420494699
+        }
+      },
+      "result_kind": {
+        "exact": 346,
+        "accuracy": 0.865,
+        "confusion": {
+          "response": {
+            "response": 112,
+            "clarification": 1,
+            "human_help": 1,
+            "action_result": 5
+          },
+          "action_result": {
+            "action_result": 186,
+            "response": 36,
+            "clarification": 1
+          },
+          "clarification": {
+            "action_result": 6,
+            "clarification": 24,
+            "response": 2
+          },
+          "human_help": {
+            "human_help": 10,
+            "response": 1
+          },
+          "out_of_scope": {
+            "out_of_scope": 11,
+            "clarification": 1
+          },
+          "insufficient": {
+            "insufficient": 3
+          }
+        }
+      },
+      "s0_events": {
+        "exact": 390,
+        "accuracy": 0.975
+      },
+      "b3": {
+        "exact": 361,
+        "accuracy": 0.9025
+      },
+      "safety_gate": {
+        "exact": 400,
+        "errors": 0,
+        "accuracy": 1
+      },
+      "negation": {
+        "negative": {
+          "total": 4,
+          "correct": 4,
+          "false_triggers": 0,
+          "ids": []
+        },
+        "positive": {
+          "total": 4,
+          "correct": 4,
+          "failures": 0,
+          "ids": []
+        }
+      },
+      "insufficient": {
+        "total": 3,
+        "kind_correct": 3,
+        "no_action": 3,
+        "not_confirmar": 3,
+        "full_contract": 3,
+        "full_record": 3,
+        "cases": [
+          {
+            "id": "I0-DEV-0398",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          },
+          {
+            "id": "I0-DEV-0399",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          },
+          {
+            "id": "I0-DEV-0400",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          }
+        ]
+      },
+      "multi_action": {
+        "total": 25,
+        "command_exact": 25,
+        "action_exact": 25,
+        "full_exact": 20,
+        "command_exact_cases": 25,
+        "action_exact_given_command_exact": 25,
+        "omitted": 0,
+        "extra": 0,
+        "wrong": 0,
+        "order_errors": 0,
+        "omitted_when_command_exact": 0,
+        "extra_when_command_exact": 0,
+        "wrong_when_command_exact": 0,
+        "order_errors_when_command_exact": 0,
+        "action_exact_given_command_exact_rate": 1,
+        "structural_gate_pass": true
+      },
+      "clarification": {
+        "count": 27,
+        "rate": 0.0675
+      },
+      "abstention": {
+        "count": 11,
+        "rate": 0.0275
+      },
+      "by_risk": {
+        "none": {
+          "cases": 187,
+          "command_exact": 123,
+          "action_exact": 181,
+          "full_exact": 113,
+          "tp": 0,
+          "fp": 6,
+          "fn": 0,
+          "tn": 181,
+          "execution_fp": 6,
+          "execution_fn": 0,
+          "execution_precision": 0,
+          "execution_recall": 0,
+          "execution_f1": 0,
+          "command_accuracy": 0.6577540106951871,
+          "action_accuracy": 0.9679144385026738,
+          "full_accuracy": 0.6042780748663101
+        },
+        "local_with_loss": {
+          "cases": 53,
+          "command_exact": 50,
+          "action_exact": 50,
+          "full_exact": 50,
+          "tp": 50,
+          "fp": 0,
+          "fn": 3,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 3,
+          "execution_precision": 1,
+          "execution_recall": 0.9433962264150944,
+          "execution_f1": 0.970873786407767,
+          "command_accuracy": 0.9433962264150944,
+          "action_accuracy": 0.9433962264150944,
+          "full_accuracy": 0.9433962264150944
+        },
+        "local_reversible": {
+          "cases": 155,
+          "command_exact": 105,
+          "action_exact": 95,
+          "full_exact": 90,
+          "tp": 132,
+          "fp": 0,
+          "fn": 23,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 23,
+          "execution_precision": 1,
+          "execution_recall": 0.8516129032258064,
+          "execution_f1": 0.9198606271777003,
+          "command_accuracy": 0.6774193548387096,
+          "action_accuracy": 0.6129032258064516,
+          "full_accuracy": 0.5806451612903226
+        },
+        "mixed": {
+          "cases": 5,
+          "command_exact": 5,
+          "action_exact": 5,
+          "full_exact": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "execution_precision": 1,
+          "execution_recall": 1,
+          "execution_f1": 1,
+          "command_accuracy": 1,
+          "action_accuracy": 1,
+          "full_accuracy": 1
+        }
+      },
+      "errors_by_risk": {
+        "none": {
+          "execution_fp": 6,
+          "execution_fn": 0,
+          "full_errors": 74
+        },
+        "local_with_loss": {
+          "execution_fp": 0,
+          "execution_fn": 3,
+          "full_errors": 3
+        },
+        "local_reversible": {
+          "execution_fp": 0,
+          "execution_fn": 23,
+          "full_errors": 65
+        },
+        "mixed": {
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "full_errors": 0
+        }
+      }
+    }
+  },
+  "consumed_regression": {
+    "role": "CONSUMED_DIAGNOSTIC_REGRESSION_SET",
+    "v2_r1": {
+      "total": 200,
+      "correct": 56,
+      "incorrect": 144,
+      "accuracy": 0.28,
+      "full_exact": {
+        "correct": 56,
+        "total": 200,
+        "accuracy": 0.28
+      },
+      "classification": {
+        "command_plan_exact": 115,
+        "command_plan_accuracy": 0.575,
+        "binary": {
+          "tp": 100,
+          "fp": 10,
+          "fn": 36,
+          "tn": 54,
+          "precision": 0.9090909090909091,
+          "recall": 0.7352941176470589,
+          "f1": 0.8130081300813008
+        },
+        "plan_confusion": {
+          "ENCONTRAR_CONTENIDO": {
+            "NO_INTENT": 18,
+            "ENCONTRAR_CONTENIDO": 14,
+            "ENCONTRAR_CONTENIDO+ABRIR_CONTENIDO": 1
+          },
+          "CAMBIAR_TAMANO_TEXTO": {
+            "CAMBIAR_TAMANO_TEXTO": 10
+          },
+          "CAMBIAR_MOVIMIENTO": {
+            "NO_INTENT": 4,
+            "CAMBIAR_MOVIMIENTO": 6
+          },
+          "CAMBIAR_PASO_A_PASO": {
+            "NO_INTENT": 1,
+            "CAMBIAR_PASO_A_PASO": 5,
+            "SIGUIENTE+CAMBIAR_PASO_A_PASO": 1
+          },
+          "CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_VISTA_SENCILLA": 5,
+            "NO_INTENT": 3
+          },
+          "SIGUIENTE": {
+            "SIGUIENTE": 3,
+            "NO_INTENT": 1
+          },
+          "ATRAS": {
+            "ATRAS": 9,
+            "ABRIR_CONTENIDO": 1
+          },
+          "REPETIR_INDICACION": {
+            "REPETIR_INDICACION": 3
+          },
+          "DESHACER_ULTIMA_ACCION": {
+            "DESHACER_ULTIMA_ACCION": 2,
+            "NO_INTENT": 1
+          },
+          "ABRIR_CONTENIDO": {
+            "ABRIR_CONTENIDO": 14,
+            "NO_INTENT": 2
+          },
+          "NO_INTENT": {
+            "NO_INTENT": 54,
+            "RESTABLECER_PREFERENCIAS": 1,
+            "CAMBIAR_MOVIMIENTO": 3,
+            "CAMBIAR_VISTA_SENCILLA": 1,
+            "ENCONTRAR_CONTENIDO": 1,
+            "OTRA_VIA": 1,
+            "REPETIR_INDICACION": 2,
+            "ATRAS": 1
+          },
+          "CAMBIAR_DETALLES": {
+            "NO_INTENT": 2,
+            "CAMBIAR_DETALLES": 1
+          },
+          "RESTABLECER_PREFERENCIAS": {
+            "NO_INTENT": 1,
+            "RESTABLECER_PREFERENCIAS": 3
+          },
+          "CONFIRMAR_ACCION": {
+            "NO_INTENT": 1
+          },
+          "CANCELAR": {
+            "NO_INTENT": 1,
+            "CANCELAR": 1
+          },
+          "DETENER": {
+            "DETENER": 3
+          },
+          "OTRA_VIA": {
+            "ENCONTRAR_CONTENIDO+OTRA_VIA": 1
+          },
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 2,
+            "CAMBIAR_VISTA_SENCILLA": 1
+          },
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+            "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+          },
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+            "CAMBIAR_PASO_A_PASO+SIGUIENTE": 1,
+            "CAMBIAR_PASO_A_PASO": 2
+          },
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+            "REPETIR_INDICACION": 2,
+            "CAMBIAR_DETALLES+SIGUIENTE+ATRAS": 1
+          },
+          "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+            "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 3
+          },
+          "PEDIR_AYUDA_HUMANA": {
+            "PEDIR_AYUDA_HUMANA": 2,
+            "NO_INTENT": 1
+          }
+        }
+      },
+      "action_execution": {
+        "action_plan_exact": 144,
+        "action_plan_accuracy": 0.72,
+        "tp": 60,
+        "fp": 20,
+        "fn": 9,
+        "tn": 111,
+        "precision": 0.75,
+        "recall": 0.8695652173913043,
+        "f1": 0.8053691275167786,
+        "omitted_actions": 15,
+        "extra_actions": 23,
+        "wrong_actions": 23,
+        "action_exact_conditioned_on_command_exact": {
+          "numerator": 99,
+          "denominator": 115,
+          "rate": 0.8608695652173913
+        }
+      },
+      "result_kind": {
+        "exact": 131,
+        "accuracy": 0.655,
+        "confusion": {
+          "response": {
+            "response": 63,
+            "action_result": 11
+          },
+          "action_result": {
+            "action_result": 57,
+            "response": 10,
+            "clarification": 2
+          },
+          "clarification": {
+            "response": 28,
+            "action_result": 10,
+            "clarification": 5
+          },
+          "human_help": {
+            "human_help": 4,
+            "response": 3
+          },
+          "out_of_scope": {
+            "clarification": 1,
+            "response": 3,
+            "out_of_scope": 1
+          },
+          "insufficient": {
+            "response": 1,
+            "insufficient": 1
+          }
+        }
+      },
+      "s0_events": {
+        "exact": 152,
+        "accuracy": 0.76
+      },
+      "b3": {
+        "exact": 170,
+        "accuracy": 0.85
+      },
+      "safety_gate": {
+        "exact": 190,
+        "errors": 10,
+        "accuracy": 0.95
+      },
+      "negation": {
+        "negative": {
+          "total": 20,
+          "correct": 10,
+          "false_triggers": 10,
+          "ids": [
+            "I0-CAL-0106",
+            "I0-CAL-0107",
+            "I0-CAL-0108",
+            "I0-CAL-0110",
+            "I0-CAL-0111",
+            "I0-CAL-0113",
+            "I0-CAL-0117",
+            "I0-CAL-0118",
+            "I0-CAL-0119",
+            "I0-CAL-0125"
+          ]
+        },
+        "positive": {
+          "total": 0,
+          "correct": 0,
+          "failures": 0,
+          "ids": []
+        }
+      },
+      "insufficient": {
+        "total": 2,
+        "kind_correct": 1,
+        "no_action": 2,
+        "not_confirmar": 2,
+        "full_contract": 1,
+        "full_record": 1,
+        "cases": [
+          {
+            "id": "I0-CAL-0199",
+            "commands_exact": false,
+            "kind": "response",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": false,
+            "full_record": false
+          },
+          {
+            "id": "I0-CAL-0200",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          }
+        ]
+      },
+      "multi_action": {
+        "total": 15,
+        "command_exact": 9,
+        "action_exact": 8,
+        "full_exact": 5,
+        "command_exact_cases": 9,
+        "action_exact_given_command_exact": 8,
+        "omitted": 6,
+        "extra": 2,
+        "wrong": 3,
+        "order_errors": 0,
+        "omitted_when_command_exact": 0,
+        "extra_when_command_exact": 0,
+        "wrong_when_command_exact": 1,
+        "order_errors_when_command_exact": 0,
+        "action_exact_given_command_exact_rate": 0.8888888888888888,
+        "structural_gate_pass": true
+      },
+      "clarification": {
+        "count": 8,
+        "rate": 0.04
+      },
+      "abstention": {
+        "count": 1,
+        "rate": 0.005
+      },
+      "by_risk": {
+        "none": {
+          "cases": 131,
+          "command_exact": 73,
+          "action_exact": 111,
+          "full_exact": 26,
+          "tp": 0,
+          "fp": 20,
+          "fn": 0,
+          "tn": 111,
+          "execution_fp": 20,
+          "execution_fn": 0,
+          "execution_precision": 0,
+          "execution_recall": 0,
+          "execution_f1": 0,
+          "command_accuracy": 0.5572519083969466,
+          "action_accuracy": 0.8473282442748091,
+          "full_accuracy": 0.1984732824427481
+        },
+        "local_reversible": {
+          "cases": 50,
+          "command_exact": 24,
+          "action_exact": 16,
+          "full_exact": 13,
+          "tp": 43,
+          "fp": 0,
+          "fn": 7,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 7,
+          "execution_precision": 1,
+          "execution_recall": 0.86,
+          "execution_f1": 0.924731182795699,
+          "command_accuracy": 0.48,
+          "action_accuracy": 0.32,
+          "full_accuracy": 0.26
+        },
+        "local_with_loss": {
+          "cases": 16,
+          "command_exact": 15,
+          "action_exact": 14,
+          "full_exact": 14,
+          "tp": 14,
+          "fp": 0,
+          "fn": 2,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 2,
+          "execution_precision": 1,
+          "execution_recall": 0.875,
+          "execution_f1": 0.9333333333333333,
+          "command_accuracy": 0.9375,
+          "action_accuracy": 0.875,
+          "full_accuracy": 0.875
+        },
+        "mixed": {
+          "cases": 3,
+          "command_exact": 3,
+          "action_exact": 3,
+          "full_exact": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "execution_precision": 1,
+          "execution_recall": 1,
+          "execution_f1": 1,
+          "command_accuracy": 1,
+          "action_accuracy": 1,
+          "full_accuracy": 1
+        }
+      },
+      "errors_by_risk": {
+        "none": {
+          "execution_fp": 20,
+          "execution_fn": 0,
+          "full_errors": 105
+        },
+        "local_reversible": {
+          "execution_fp": 0,
+          "execution_fn": 7,
+          "full_errors": 37
+        },
+        "local_with_loss": {
+          "execution_fp": 0,
+          "execution_fn": 2,
+          "full_errors": 2
+        },
+        "mixed": {
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "full_errors": 0
+        }
+      }
+    },
+    "v3": {
+      "total": 200,
+      "correct": 86,
+      "incorrect": 114,
+      "accuracy": 0.43,
+      "full_exact": {
+        "correct": 86,
+        "total": 200,
+        "accuracy": 0.43
+      },
+      "classification": {
+        "command_plan_exact": 128,
+        "command_plan_accuracy": 0.64,
+        "binary": {
+          "tp": 102,
+          "fp": 9,
+          "fn": 34,
+          "tn": 55,
+          "precision": 0.918918918918919,
+          "recall": 0.75,
+          "f1": 0.8259109311740892
+        },
+        "plan_confusion": {
+          "ENCONTRAR_CONTENIDO": {
+            "NO_INTENT": 18,
+            "ENCONTRAR_CONTENIDO": 14,
+            "ABRIR_CONTENIDO": 1
+          },
+          "CAMBIAR_TAMANO_TEXTO": {
+            "CAMBIAR_TAMANO_TEXTO": 10
+          },
+          "CAMBIAR_MOVIMIENTO": {
+            "NO_INTENT": 4,
+            "CAMBIAR_MOVIMIENTO": 6
+          },
+          "CAMBIAR_PASO_A_PASO": {
+            "NO_INTENT": 1,
+            "CAMBIAR_PASO_A_PASO": 5,
+            "SIGUIENTE+CAMBIAR_PASO_A_PASO": 1
+          },
+          "CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_VISTA_SENCILLA": 5,
+            "NO_INTENT": 3
+          },
+          "SIGUIENTE": {
+            "SIGUIENTE": 3,
+            "NO_INTENT": 1
+          },
+          "ATRAS": {
+            "ATRAS": 9,
+            "ABRIR_CONTENIDO": 1
+          },
+          "REPETIR_INDICACION": {
+            "REPETIR_INDICACION": 3
+          },
+          "DESHACER_ULTIMA_ACCION": {
+            "DESHACER_ULTIMA_ACCION": 2,
+            "NO_INTENT": 1
+          },
+          "ABRIR_CONTENIDO": {
+            "ABRIR_CONTENIDO": 14,
+            "NO_INTENT": 2
+          },
+          "NO_INTENT": {
+            "NO_INTENT": 55,
+            "RESTABLECER_PREFERENCIAS": 1,
+            "CAMBIAR_MOVIMIENTO": 3,
+            "ENCONTRAR_CONTENIDO": 1,
+            "OTRA_VIA": 1,
+            "REPETIR_INDICACION": 2,
+            "ATRAS": 1
+          },
+          "CAMBIAR_DETALLES": {
+            "NO_INTENT": 1,
+            "CAMBIAR_DETALLES": 2
+          },
+          "RESTABLECER_PREFERENCIAS": {
+            "NO_INTENT": 1,
+            "RESTABLECER_PREFERENCIAS": 3
+          },
+          "CONFIRMAR_ACCION": {
+            "NO_INTENT": 1
+          },
+          "CANCELAR": {
+            "NO_INTENT": 1,
+            "CANCELAR": 1
+          },
+          "DETENER": {
+            "DETENER": 3
+          },
+          "OTRA_VIA": {
+            "ENCONTRAR_CONTENIDO+OTRA_VIA": 1
+          },
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+            "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 3
+          },
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+            "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+          },
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+            "CAMBIAR_PASO_A_PASO+SIGUIENTE": 3
+          },
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+            "CAMBIAR_DETALLES+REPETIR_INDICACION": 3
+          },
+          "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+            "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 3
+          },
+          "PEDIR_AYUDA_HUMANA": {
+            "PEDIR_AYUDA_HUMANA": 3
+          }
+        }
+      },
+      "action_execution": {
+        "action_plan_exact": 160,
+        "action_plan_accuracy": 0.8,
+        "tp": 59,
+        "fp": 10,
+        "fn": 10,
+        "tn": 121,
+        "precision": 0.855072463768116,
+        "recall": 0.855072463768116,
+        "f1": 0.855072463768116,
+        "omitted_actions": 11,
+        "extra_actions": 11,
+        "wrong_actions": 19,
+        "action_exact_conditioned_on_command_exact": {
+          "numerator": 116,
+          "denominator": 128,
+          "rate": 0.90625
+        }
+      },
+      "result_kind": {
+        "exact": 145,
+        "accuracy": 0.725,
+        "confusion": {
+          "response": {
+            "response": 72,
+            "action_result": 2
+          },
+          "action_result": {
+            "action_result": 58,
+            "response": 8,
+            "clarification": 3
+          },
+          "clarification": {
+            "response": 29,
+            "action_result": 9,
+            "clarification": 5
+          },
+          "human_help": {
+            "human_help": 7
+          },
+          "out_of_scope": {
+            "clarification": 1,
+            "response": 3,
+            "out_of_scope": 1
+          },
+          "insufficient": {
+            "insufficient": 2
+          }
+        }
+      },
+      "s0_events": {
+        "exact": 163,
+        "accuracy": 0.815
+      },
+      "b3": {
+        "exact": 180,
+        "accuracy": 0.9
+      },
+      "safety_gate": {
+        "exact": 200,
+        "errors": 0,
+        "accuracy": 1
+      },
+      "negation": {
+        "negative": {
+          "total": 20,
+          "correct": 20,
+          "false_triggers": 0,
+          "ids": []
+        },
+        "positive": {
+          "total": 0,
+          "correct": 0,
+          "failures": 0,
+          "ids": []
+        }
+      },
+      "insufficient": {
+        "total": 2,
+        "kind_correct": 2,
+        "no_action": 2,
+        "not_confirmar": 2,
+        "full_contract": 2,
+        "full_record": 2,
+        "cases": [
+          {
+            "id": "I0-CAL-0199",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          },
+          {
+            "id": "I0-CAL-0200",
+            "commands_exact": true,
+            "kind": "insufficient",
+            "no_action": true,
+            "b3": "PRESENTE",
+            "full_contract": true,
+            "full_record": true
+          }
+        ]
+      },
+      "multi_action": {
+        "total": 15,
+        "command_exact": 15,
+        "action_exact": 12,
+        "full_exact": 12,
+        "command_exact_cases": 15,
+        "action_exact_given_command_exact": 12,
+        "omitted": 0,
+        "extra": 0,
+        "wrong": 3,
+        "order_errors": 0,
+        "omitted_when_command_exact": 0,
+        "extra_when_command_exact": 0,
+        "wrong_when_command_exact": 3,
+        "order_errors_when_command_exact": 0,
+        "action_exact_given_command_exact_rate": 0.8,
+        "structural_gate_pass": true
+      },
+      "clarification": {
+        "count": 9,
+        "rate": 0.045
+      },
+      "abstention": {
+        "count": 1,
+        "rate": 0.005
+      },
+      "by_risk": {
+        "none": {
+          "cases": 131,
+          "command_exact": 78,
+          "action_exact": 121,
+          "full_exact": 47,
+          "tp": 0,
+          "fp": 10,
+          "fn": 0,
+          "tn": 121,
+          "execution_fp": 10,
+          "execution_fn": 0,
+          "execution_precision": 0,
+          "execution_recall": 0,
+          "execution_f1": 0,
+          "command_accuracy": 0.5954198473282443,
+          "action_accuracy": 0.9236641221374046,
+          "full_accuracy": 0.35877862595419846
+        },
+        "local_reversible": {
+          "cases": 50,
+          "command_exact": 32,
+          "action_exact": 22,
+          "full_exact": 22,
+          "tp": 42,
+          "fp": 0,
+          "fn": 8,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 8,
+          "execution_precision": 1,
+          "execution_recall": 0.84,
+          "execution_f1": 0.9130434782608696,
+          "command_accuracy": 0.64,
+          "action_accuracy": 0.44,
+          "full_accuracy": 0.44
+        },
+        "local_with_loss": {
+          "cases": 16,
+          "command_exact": 15,
+          "action_exact": 14,
+          "full_exact": 14,
+          "tp": 14,
+          "fp": 0,
+          "fn": 2,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 2,
+          "execution_precision": 1,
+          "execution_recall": 0.875,
+          "execution_f1": 0.9333333333333333,
+          "command_accuracy": 0.9375,
+          "action_accuracy": 0.875,
+          "full_accuracy": 0.875
+        },
+        "mixed": {
+          "cases": 3,
+          "command_exact": 3,
+          "action_exact": 3,
+          "full_exact": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "execution_precision": 1,
+          "execution_recall": 1,
+          "execution_f1": 1,
+          "command_accuracy": 1,
+          "action_accuracy": 1,
+          "full_accuracy": 1
+        }
+      },
+      "errors_by_risk": {
+        "none": {
+          "execution_fp": 10,
+          "execution_fn": 0,
+          "full_errors": 84
+        },
+        "local_reversible": {
+          "execution_fp": 0,
+          "execution_fn": 8,
+          "full_errors": 28
+        },
+        "local_with_loss": {
+          "execution_fp": 0,
+          "execution_fn": 2,
+          "full_errors": 2
+        },
+        "mixed": {
+          "execution_fp": 0,
+          "execution_fn": 0,
+          "full_errors": 0
+        }
+      }
+    }
+  }
+}
