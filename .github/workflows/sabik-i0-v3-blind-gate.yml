@@ -54,6 +54,16 @@ jobs:
           set -euo pipefail
           node tools/check-sabik-i0-calibration-v3-independence.mjs --candidate tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl --reserved-issue 173 --repo "$GITHUB_REPOSITORY" --report /tmp/independence-v3-redacted.json
 
+      - name: Report artifact SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl
+          sha256sum tests/calibration/sabik/i0-v3/coverage.v3.blind.json
+          sha256sum tools/validate-sabik-i0-calibration-v3.mjs
+          sha256sum tools/check-sabik-i0-calibration-v3-independence.mjs
+          sha256sum .github/workflows/sabik-i0-v3-blind-gate.yml
+
       - name: Verify no executor artifacts were changed
         shell: bash
         run: |
