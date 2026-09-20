@@ -1,18 +1,21 @@
 {
   "version": "0.4",
-  "dataset_role": "development",
+  "revision": "V2",
   "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
-  "case_count": 400,
+  "schema": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
   "format": "jsonl",
-  "file": "development.v0.4.jsonl",
-  "bytes": 232141,
-  "sha256": "6503fe8ab88dc8e51156e9803f19e2ba2c4fa060a88597cf81821d8d43670376",
-  "git_blob_sha1": "2b36308392835db8e3eb71693e325978dc31818c",
   "separation": {
     "validation_173_included": false,
     "validation_used_as_template": false,
+    "validation_used_for_tuning": false,
     "validation_path_reserved": "tests/evaluation/sabik/i0/validation/"
   },
+  "dataset_role": "development",
+  "case_count": 400,
+  "file": "development.v0.4.jsonl",
+  "bytes": 246100,
+  "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb",
+  "git_blob_sha1": "c4e683f587f539fd59f47044b2bfeff883b1facb",
   "stats": {
     "cases": 400,
     "by_gate": {
@@ -25,23 +28,27 @@
     "by_result_kind": {
       "response": 119,
       "action_result": 223,
-      "clarification": 34,
-      "human_help": 12,
-      "out_of_scope": 12
+      "clarification": 32,
+      "human_help": 11,
+      "out_of_scope": 12,
+      "insufficient": 3
     },
     "by_b3": {
-      "ORIENTAR": 30,
-      "PRESENTE": 279,
+      "ORIENTAR": 29,
+      "PRESENTE": 286,
       "TRANSICIÓN": 81,
-      "PAUSA": 4,
-      "CONFIRMAR": 6
+      "PAUSA": 4
     },
-    "execute": {
-      "true": 299,
-      "false": 101
+    "classification_expected": {
+      "true": 333,
+      "false": 67
+    },
+    "action_execution_expected": {
+      "true": 213,
+      "false": 187
     },
     "by_intent": {
-      "ENCONTRAR_CONTENIDO": 59,
+      "ENCONTRAR_CONTENIDO": 60,
       "ABRIR_CONTENIDO": 43,
       "CAMBIAR_TAMANO_TEXTO": 29,
       "CAMBIAR_MOVIMIENTO": 30,
@@ -51,7 +58,7 @@
       "SIGUIENTE": 14,
       "ATRAS": 21,
       "REPETIR_INDICACION": 15,
-      "DESHACER_ULTIMA_ACCION": 9,
+      "DESHACER_ULTIMA_ACCION": 10,
       "CANCELAR": 10,
       "CONFIRMAR_ACCION": 9,
       "RECHAZAR_RESULTADO": 5,
@@ -60,9 +67,14 @@
       "PEDIR_AYUDA_HUMANA": 7,
       "RESTABLECER_PREFERENCIAS": 11
     },
-    "ambiguous": 28,
+    "ambiguous": 26,
     "multi_action": 25,
     "safety_non_normal": 24,
-    "critical_negation": 8
+    "insufficient": 3,
+    "critical_negation": {
+      "total": 8,
+      "negative": 4,
+      "positive_control": 4
+    }
   }
 }

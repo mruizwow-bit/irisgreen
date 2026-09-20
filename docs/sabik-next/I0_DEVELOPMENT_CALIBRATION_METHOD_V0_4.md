@@ -1,74 +1,115 @@
-# I0 · corpus de desarrollo y calibración independientes · v0.4
+# I0 · corpus de development y calibration independientes · v0.4 · V2
 
 ## Separación
 
-- development: **400** casos en `tests/development/sabik/i0/`
-- calibration: **200** casos en `tests/calibration/sabik/i0/`
-- validation #173: **no se incluye**; permanece en PR #176 bajo `tests/evaluation/sabik/i0/validation/`
+- development: **400** casos;
+- calibration: **200** casos;
+- validation #173: **0 casos incluidos**;
+- validation #173: no se ejecuta para elegir reglas ni umbrales.
 
-Development puede consultarse durante implementación. Calibration se usa solo para elegir umbrales. Validation #173 es examen externo y no debe utilizarse para ajustar reglas o umbrales.
+Validation se consultó únicamente por texto durante el control anti-contaminación. Permanece en PR #176 @ `33cd63089416ccdf82fddea4415d3afbec6aa05a`.
 
-## Representación por capas
+## Correcciones Astra V2
 
-Cada caso separa contexto, Safety Gate, comandos, resultado, acciones, eventos S0, ejecución, B3, ambigüedad y —solo en calibration cuando aporta valor— expectativa cualitativa de confianza.
+### B3
 
-No se usan `ASK_CLARIFICATION`, `OUT_OF_SCOPE`, `SAFETY_GATE` ni `MULTI_ACTION_PLAN` como `IntentType`.
+Se aplica `I0_S0_B3_PROJECTION_V0_2.md`:
+- `clarification` → PRESENTE;
+- `ASK_CLARIFICATION` → PRESENTE;
+- `insufficient` → PRESENTE;
+- CONFIRMAR solo puede representar un resultado concreto no perceptible cuando el acuse aporta información útil.
 
-## B3
+Resultado: **0** aclaraciones con CONFIRMAR y **0** usos de CONFIRMAR en el corpus V2.
 
-Se respeta `I0_S0_B3_PROJECTION_V0_2.md`:
-- PRESENTE: información/listas/aclaración/insufficient/cambios perceptibles;
-- ORIENTAR: objetivo o siguiente paso concreto;
-- TRANSICIÓN: cambio real de etapa/ruta;
-- PAUSA: únicamente pausa funcional de Sabik;
-- CONFIRMAR: únicamente confirmación útil de una pérdida/efecto no perceptible.
+### Clasificación y ejecución
 
-## Identidad congelada tras el gate anti-contaminación
+Se elimina el campo ambiguo `should_execute` y se separan dos expectativas:
+- `should_classify`: existe un plan de clasificación válido;
+- `should_execute_actions`: existen acciones ordinarias ejecutables.
+
+Esto permite representar correctamente búsquedas, respuestas, controles S0 y otros casos con plan válido pero sin acción ordinaria.
+
+### Negación crítica
+
+`critical_negation` se desdobla en:
+- `critical_negation_negative`: miembro negado/contrario;
+- `critical_negation_positive_control`: control positivo.
+
+El harness solo cuenta inversión cuando el miembro negativo produce una salida ejecutable prohibida. Un control positivo correcto no se penaliza.
+
+### Multiacción
+
+Cobertura total: **40** casos (**25 development + 15 calibration**).
+
+El harness evalúa el plan completo:
+- todos los comandos y sus parámetros;
+- orden;
+- acciones completas, riesgo y parámetros;
+- parcialidad esperada;
+- navegación al final;
+- eventos S0 y ResultKind.
+
+### Predicciones de calibration
+
+Antes del sweep se exige:
+- exactamente **200/200** IDs;
+- IDs únicos;
+- cero extras;
+- cero faltantes;
+- `confidence_top1` y `confidence_top2` finitas, en [0,1].
+
+`--self-test-coverage` verifica el guard estructural y confirma 200/200; además prueba que missing, duplicate, extra y non-finite son rechazados. Los registros de esa prueba se derivan del corpus solo para validar el contrato de entrada: **no son predicciones de modelo y no producen tuning**.
+
+### ResultKind insufficient
+
+Cobertura V2:
+- development: **3**;
+- calibration: **2**.
+
+Incluye búsqueda válida sin fuentes locales, undo sin `lastAction` y human-help sin recurso verificado offline.
+
+### Schema y validator contractual
+
+`i0-layered-case-v0.4.schema.json` usa `oneOf` discriminado:
+- **18** variantes de IntentCommand de §5;
+- **12** variantes de SabikAction que cubren los 11 tipos de §6 y discriminan RESET por riesgo/alcance.
+
+El validator consume el JSON Schema y además verifica:
+- 400/200 exactos e IDs secuenciales;
+- parámetros cerrados por intent;
+- tipo, riesgo y parámetros por acción;
+- proyección B3;
+- clasificación ↔ ejecución;
+- negación crítica;
+- multiacción y navegación al final;
+- cobertura `insufficient`;
+- manifests, stats, bytes, SHA-256 y Git blob.
+
+Validación contractual V2: **PASS**.
+
+### Anti-contaminación
+
+Resultado ejecutado:
+- DEV↔CAL sospechosos: **0**;
+- sospechosos no autorizados contra validation: **0**;
+- residuales autorizados: **6**, todos ligados a `astra_required_literal`;
+- exactos autorizados: **5**;
+- variante autorizada: **1**.
+
+## Identidad V2
 
 Development:
-- SHA-256 `6503fe8ab88dc8e51156e9803f19e2ba2c4fa060a88597cf81821d8d43670376`
-- Git blob esperado `2b36308392835db8e3eb71693e325978dc31818c`
+- SHA-256 `c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb`
+- Git blob `c4e683f587f539fd59f47044b2bfeff883b1facb`
 
 Calibration:
-- SHA-256 `b1b6087e2947790e183ddcc929cc520be607102db6a917967f331066f21a8981`
-- Git blob esperado `517a6591c90f88479979c0f2b860d9ab53c2dc55`
+- SHA-256 `ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f`
+- Git blob `331ab54a31842b0ea04f5816f5f89f2e1b351b68`
 
 Schema:
-- SHA-256 `9278730161570be4f88824a6b6368d77408d4b2f2304ed08301a453cd0fbdddb`
-- Git blob esperado `bdbb6ae3123759e040ee9ab5c5f7c413b646f998`
-
-## Calibración
-
-El harness `tools/calibrate-sabik-i0-thresholds.mjs` barre umbrales y márgenes provisionales para `local_reversible` y `local_with_loss`.
-
-Prioridad:
-1. acciones falsas peligrosas;
-2. inversión de negaciones;
-3. Safety Gate FP/FN;
-4. acciones with_loss incorrectas;
-5. parámetros incorrectos;
-6. aclaraciones innecesarias;
-7. abstención excesiva;
-8. accuracy global.
-
-Los valores 0.90/0.15 y 0.97/0.20 no se fijan de antemano.
-
-## Anti-contaminación
-
-El detector compara development, calibration y validation:
-- exactos/normalización equivalente;
-- variante de un token;
-- Jaccard >= 0.82;
-- solapamiento de trigramas >= 0.80.
-
-Solo reporta sospechosos. No borra automáticamente ningún caso.
-
-Durante la preparación inicial se detectaron 19 coincidencias exactas contra #173:
-- 5 corresponden a contrastes literales que la orden Astra actual exige expresamente y se conservan etiquetados `astra_required_literal`;
-- 14 coincidencias accidentales se revisaron manualmente y se sustituyeron por escenarios/formulaciones nuevas antes de congelar estos hashes.
-
-Esta revisión fue exclusivamente de anti-contaminación, antes de cualquier ejecución de modelo: no se utilizaron errores de validation ni se ajustaron reglas/umbrales.
+- SHA-256 `3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8`
+- Git blob `89ddb4c0145b04ea72b57d70b0fd36517854af1a`
 
 ## Alcance
 
-No se implementa Core definitivo. No se ejecuta validation #173 para elegir reglas. No se toca `main`, `sabik-preview`, producción, Netlify, S0, S1, B3, voz ni S2.
+No se implementa Core definitivo. No se toca `main`, `sabik-preview`, producción, Netlify, S0, S1, B3, voz ni S2. #174 permanece abierto y #173 no se usa para tuning.
