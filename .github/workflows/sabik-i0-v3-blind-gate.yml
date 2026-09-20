@@ -38,7 +38,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "23ee56e118ed89fdf6f63d5e2fb6aaa362d40aae0ac20614152676be9b793eb7  tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+          echo "2dd9d24a01f99c763a7ad4db7fe2000fc28568162fbebb5599c012e2afde4f6f  tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
 
       - name: Validate schema
         shell: bash
