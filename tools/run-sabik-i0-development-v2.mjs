@@ -2,7 +2,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import {predictI0V2,PROVISIONAL_FALLBACK_ACCEPT_SCORE} from "./sabik-i0-executor-v2.mjs";
+import {predictI0V2} from "./sabik-i0-executor-v2.mjs";
+const PROVISIONAL_FALLBACK_ACCEPT_SCORE=0.34; // legacy V2 evidence only; V2-R1 uses external config.
 
 const root=path.resolve(import.meta.dirname,"..");
 const devPath=path.join(root,"tests/development/sabik/i0/development.v0.4.jsonl");
