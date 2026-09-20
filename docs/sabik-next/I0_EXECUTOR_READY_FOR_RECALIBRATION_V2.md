@@ -13,11 +13,15 @@
 
 ## 2. HEAD
 
-Freeze técnico previo a este documento:
+Commit fuente ejecutado por el run final development-only `35508837589`:
+
+`f19f2ce987af3fb2308dfda2a115e088a97e6aac`
+
+Commit automático de evidencia generado por ese run:
 
 `a1666fcfb0788d2c8a178704b94b45cf29b22f07`
 
-La documentación final se añade después como commit documental, sin modificar código ni volver a ejecutar development.
+La documentación final se añade después mediante commits exclusivamente documentales, sin modificar código ni volver a ejecutar development.
 
 ## 3. Base exacta
 
