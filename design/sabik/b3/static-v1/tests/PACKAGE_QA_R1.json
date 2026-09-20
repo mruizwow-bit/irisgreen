@@ -1,0 +1,23 @@
+{
+  "status": "B3_STATIC_R1_PACKAGE_QA_PASS",
+  "rebuild_output": [
+    "ACCEPTED_FAMILY_MASTER_LOCK_PASS 4 files",
+    "B3_STATIC_R1_BUILD_PASS",
+    "B3_STATIC_R1_REPRODUCIBILITY_PASS 75 files"
+  ],
+  "manifest_output": "MANIFEST_PASS 115 files",
+  "manifest_file_count": 115,
+  "asset_counts": {
+    "keyframes_color": 15,
+    "keyframes_monochrome": 15,
+    "scale_64": 15,
+    "scale_32": 15,
+    "proof_sheets": 6,
+    "blind_sheets": 6
+  },
+  "base_head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+  "visual_family_changes": 0,
+  "pilot_human_test": "NOT PERFORMED",
+  "perception_64px": "PENDING HUMAN TEST",
+  "perception_32px": "PENDING HUMAN TEST"
+}
