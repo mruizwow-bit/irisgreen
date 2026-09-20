@@ -1,0 +1,489 @@
+{
+  "version": "V2-development-only",
+  "dataset": "development_leave_one_out",
+  "total": 400,
+  "correct": 229,
+  "incorrect": 171,
+  "accuracy": 0.5725,
+  "classification": {
+    "command_plan_exact": 256,
+    "command_plan_accuracy": 0.64,
+    "binary": {
+      "tp": 293,
+      "fp": 7,
+      "fn": 40,
+      "tn": 60,
+      "precision": 0.9766666666666667,
+      "recall": 0.8798798798798799,
+      "f1": 0.9257503949447078
+    },
+    "plan_confusion": {
+      "ENCONTRAR_CONTENIDO": {
+        "ENCONTRAR_CONTENIDO": 54,
+        "NO_INTENT": 1
+      },
+      "ABRIR_CONTENIDO": {
+        "ABRIR_CONTENIDO": 37,
+        "NO_INTENT": 1
+      },
+      "NO_INTENT": {
+        "ABRIR_CONTENIDO": 1,
+        "NO_INTENT": 60,
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1,
+        "DETENER": 1,
+        "CONFIRMAR_ACCION": 1,
+        "RESTABLECER_PREFERENCIAS": 1,
+        "SIGUIENTE": 1,
+        "ENCONTRAR_CONTENIDO": 1
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO": 19,
+        "NO_INTENT": 4
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "CAMBIAR_MOVIMIENTO": 19,
+        "NO_INTENT": 4
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "CAMBIAR_PASO_A_PASO": 12,
+        "SIGUIENTE": 1,
+        "NO_INTENT": 4,
+        "SIGUIENTE+CAMBIAR_PASO_A_PASO": 1,
+        "REPETIR_INDICACION": 1
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_VISTA_SENCILLA": 16,
+        "NO_INTENT": 6
+      },
+      "CAMBIAR_DETALLES": {
+        "CAMBIAR_DETALLES": 17,
+        "NO_INTENT": 3
+      },
+      "SIGUIENTE": {
+        "SIGUIENTE": 8,
+        "NO_INTENT": 1
+      },
+      "ATRAS": {
+        "ATRAS": 17,
+        "NO_INTENT": 4
+      },
+      "REPETIR_INDICACION": {
+        "REPETIR_INDICACION": 7,
+        "ATRAS+REPETIR_INDICACION+SIGUIENTE": 1,
+        "ATRAS": 1,
+        "NO_INTENT": 1
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "DESHACER_ULTIMA_ACCION": 7,
+        "NO_INTENT": 3
+      },
+      "CANCELAR": {
+        "CANCELAR": 8,
+        "NO_INTENT": 2
+      },
+      "CONFIRMAR_ACCION": {
+        "CONFIRMAR_ACCION": 8,
+        "NO_INTENT": 1
+      },
+      "RECHAZAR_RESULTADO": {
+        "RECHAZAR_RESULTADO": 3,
+        "RECHAZAR_RESULTADO+ENCONTRAR_CONTENIDO": 1,
+        "NO_INTENT": 1
+      },
+      "OTRA_VIA": {
+        "ENCONTRAR_CONTENIDO+OTRA_VIA": 2,
+        "REPETIR_INDICACION+OTRA_VIA": 1,
+        "OTRA_VIA": 3
+      },
+      "DETENER": {
+        "DETENER": 7,
+        "NO_INTENT": 3
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "PEDIR_AYUDA_HUMANA": 7
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "RESTABLECER_PREFERENCIAS": 10,
+        "NO_INTENT": 1
+      },
+      "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 3,
+        "CAMBIAR_MOVIMIENTO": 2
+      },
+      "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 2,
+        "ABRIR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 1,
+        "CAMBIAR_TAMANO_TEXTO": 2
+      },
+      "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 4,
+        "CAMBIAR_PASO_A_PASO": 1
+      },
+      "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": 2,
+        "CAMBIAR_DETALLES+REPETIR_INDICACION+ATRAS": 1,
+        "CAMBIAR_DETALLES+SIGUIENTE+REPETIR_INDICACION": 1,
+        "ATRAS+REPETIR_INDICACION": 1
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 2
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 1,
+        "ENCONTRAR_CONTENIDO": 1
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 1
+      }
+    }
+  },
+  "result_kind": {
+    "exact": 344,
+    "accuracy": 0.86,
+    "confusion": {
+      "response": {
+        "response": 112,
+        "action_result": 6,
+        "clarification": 1
+      },
+      "action_result": {
+        "action_result": 182,
+        "response": 41
+      },
+      "clarification": {
+        "action_result": 6,
+        "clarification": 25,
+        "response": 1
+      },
+      "human_help": {
+        "human_help": 11
+      },
+      "out_of_scope": {
+        "out_of_scope": 11,
+        "clarification": 1
+      },
+      "insufficient": {
+        "insufficient": 3
+      }
+    }
+  },
+  "safety_gate": {
+    "exact": 398,
+    "accuracy": 0.995
+  },
+  "s0_events": {
+    "exact": 387,
+    "accuracy": 0.9675
+  },
+  "b3": {
+    "exact": 358,
+    "accuracy": 0.895
+  },
+  "execution": {
+    "action_plan_exact": 318,
+    "action_plan_accuracy": 0.795,
+    "binary": {
+      "tp": 181,
+      "fp": 11,
+      "fn": 32,
+      "tn": 176,
+      "precision": 0.9427083333333334,
+      "recall": 0.8497652582159625,
+      "f1": 0.8938271604938272
+    },
+    "omitted_actions": 71,
+    "extra_actions": 46,
+    "wrong_actions": 30,
+    "action_exact_conditioned_on_command_exact": {
+      "numerator": 240,
+      "denominator": 256,
+      "rate": 0.9375
+    }
+  },
+  "by_risk": {
+    "none": {
+      "cases": 187,
+      "command_exact": 104,
+      "action_exact": 176,
+      "full_exact": 89,
+      "expected_execute": 0,
+      "predicted_execute": 11,
+      "tp": 0,
+      "fp": 11,
+      "fn": 0,
+      "tn": 176,
+      "execution_precision": 0,
+      "execution_recall": 0,
+      "execution_f1": 0,
+      "command_accuracy": 0.5561497326203209,
+      "action_accuracy": 0.9411764705882353,
+      "full_accuracy": 0.47593582887700536
+    },
+    "local_with_loss": {
+      "cases": 53,
+      "command_exact": 50,
+      "action_exact": 49,
+      "full_exact": 49,
+      "expected_execute": 53,
+      "predicted_execute": 49,
+      "tp": 49,
+      "fp": 0,
+      "fn": 4,
+      "tn": 0,
+      "execution_precision": 1,
+      "execution_recall": 0.9245283018867925,
+      "execution_f1": 0.9607843137254902,
+      "command_accuracy": 0.9433962264150944,
+      "action_accuracy": 0.9245283018867925,
+      "full_accuracy": 0.9245283018867925
+    },
+    "local_reversible": {
+      "cases": 155,
+      "command_exact": 100,
+      "action_exact": 90,
+      "full_exact": 89,
+      "expected_execute": 155,
+      "predicted_execute": 127,
+      "tp": 127,
+      "fp": 0,
+      "fn": 28,
+      "tn": 0,
+      "execution_precision": 1,
+      "execution_recall": 0.8193548387096774,
+      "execution_f1": 0.900709219858156,
+      "command_accuracy": 0.6451612903225806,
+      "action_accuracy": 0.5806451612903226,
+      "full_accuracy": 0.5741935483870968
+    },
+    "mixed": {
+      "cases": 5,
+      "command_exact": 2,
+      "action_exact": 3,
+      "full_exact": 2,
+      "expected_execute": 5,
+      "predicted_execute": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "execution_precision": 1,
+      "execution_recall": 1,
+      "execution_f1": 1,
+      "command_accuracy": 0.4,
+      "action_accuracy": 0.6,
+      "full_accuracy": 0.4
+    }
+  },
+  "multi_action": {
+    "total": 25,
+    "command_exact": 14,
+    "action_exact": 16,
+    "full_exact": 14,
+    "command_exact_cases": 14,
+    "action_exact_given_command_exact": 14,
+    "omitted": 9,
+    "extra": 2,
+    "wrong": 0,
+    "order_errors": 0,
+    "action_exact_given_command_exact_rate": 1
+  },
+  "negation": {
+    "negative": {
+      "total": 4,
+      "correct": 4,
+      "false_triggers": 0,
+      "ids": []
+    },
+    "positive": {
+      "total": 4,
+      "correct": 4,
+      "failures": 0,
+      "ids": []
+    }
+  },
+  "insufficient": {
+    "total": 3,
+    "kind_correct": 3,
+    "no_action": 3,
+    "not_confirmar": 3,
+    "full_contract": 3,
+    "full_record": 3,
+    "cases": [
+      {
+        "id": "I0-DEV-0398",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "actions": [],
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      },
+      {
+        "id": "I0-DEV-0399",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "actions": [],
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      },
+      {
+        "id": "I0-DEV-0400",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "actions": [],
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      }
+    ]
+  },
+  "score_distribution": {
+    "all": {
+      "n": 560,
+      "min": 0.055091891891891884,
+      "p10": 0.7,
+      "p25": 0.99,
+      "p50": 1,
+      "p75": 1,
+      "p90": 1,
+      "max": 1,
+      "mean": 0.9114800156178036
+    },
+    "fallback": {
+      "n": 109,
+      "min": 0.055091891891891884,
+      "p10": 0.279768115942029,
+      "p25": 0.3776901408450704,
+      "p50": 0.7,
+      "p75": 0.7,
+      "p90": 0.7,
+      "max": 0.7,
+      "mean": 0.5549431995043141
+    },
+    "by_kind": {
+      "development_similarity": {
+        "n": 78,
+        "min": 0.37,
+        "p10": 0.4726666666666667,
+        "p25": 0.7,
+        "p50": 0.7,
+        "p75": 0.7,
+        "p90": 0.7,
+        "max": 0.7,
+        "mean": 0.6588066819452071
+      },
+      "contract_context": {
+        "n": 98,
+        "min": 0.98,
+        "p10": 0.99,
+        "p25": 0.99,
+        "p50": 0.99,
+        "p75": 0.99,
+        "p90": 1,
+        "max": 1,
+        "mean": 0.9910204081632656
+      },
+      "contract_exact": {
+        "n": 352,
+        "min": 1,
+        "p10": 1,
+        "p25": 1,
+        "p50": 1,
+        "p75": 1,
+        "p90": 1,
+        "max": 1,
+        "mean": 1
+      },
+      "development_context_resolution": {
+        "n": 31,
+        "min": 0.055091891891891884,
+        "p10": 0.195,
+        "p25": 0.2603333333333333,
+        "p50": 0.29159999999999997,
+        "p75": 0.31862325581395345,
+        "p90": 0.39339999999999997,
+        "max": 0.41899999999999993,
+        "mean": 0.2936092759433574
+      },
+      "development_fallback": {
+        "n": 1,
+        "min": 0.82,
+        "p10": 0.82,
+        "p25": 0.82,
+        "p50": 0.82,
+        "p75": 0.82,
+        "p90": 0.82,
+        "max": 0.82,
+        "mean": 0.82
+      }
+    }
+  },
+  "calibrability": {
+    "fixed": [
+      {
+        "parameter": "safety_precedence",
+        "reason": "contractual invariant"
+      },
+      {
+        "parameter": "negation_scope",
+        "reason": "semantic/contractual invariant"
+      },
+      {
+        "parameter": "local_reversible_clear_execution",
+        "reason": "contract says clear independent reversible actions may execute"
+      },
+      {
+        "parameter": "with_loss_real_loss_block",
+        "reason": "unsentText/pendingClarification are contractual blockers"
+      },
+      {
+        "parameter": "navigation_last",
+        "reason": "contractual ordering invariant"
+      }
+    ],
+    "future_calibrable": [
+      {
+        "parameter": "fallback_accept_score_min",
+        "score_semantics": "development similarity/evidence score, not probability",
+        "provisional_value": 0.34,
+        "candidate_values": [
+          0.28,
+          0.378,
+          0.7
+        ],
+        "active": true
+      }
+    ],
+    "removed_from_calibration": [
+      {
+        "parameter": "margin",
+        "reason": "V1 margin was inert; V2 has no probabilistic top1-top2 margin"
+      },
+      {
+        "parameter": "global_plan_risk_threshold",
+        "reason": "removed by per-action policy"
+      }
+    ],
+    "sensitivity": [
+      {
+        "threshold": 0.28,
+        "would_reject_fallback_scores": 11,
+        "would_accept_fallback_scores": 98,
+        "changes_from_provisional": 13
+      },
+      {
+        "threshold": 0.378,
+        "would_reject_fallback_scores": 29,
+        "would_accept_fallback_scores": 80,
+        "changes_from_provisional": 5
+      },
+      {
+        "threshold": 0.7,
+        "would_reject_fallback_scores": 47,
+        "would_accept_fallback_scores": 62,
+        "changes_from_provisional": 23
+      }
+    ]
+  }
+}

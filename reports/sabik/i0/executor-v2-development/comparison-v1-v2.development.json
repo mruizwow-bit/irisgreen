@@ -1,0 +1,135 @@
+{
+  "v1": {
+    "version": "V1-development",
+    "full_exact": {
+      "correct": 103,
+      "total": 400,
+      "accuracy": 0.2575
+    },
+    "command_plan_exact": {
+      "correct": 254,
+      "total": 400,
+      "accuracy": 0.635
+    },
+    "action_plan_exact": {
+      "correct": 215,
+      "total": 400,
+      "accuracy": 0.5375
+    },
+    "result_kind": {
+      "correct": 205,
+      "total": 400,
+      "accuracy": 0.5125
+    },
+    "s0_events": {
+      "correct": 205,
+      "total": 400,
+      "accuracy": 0.5125
+    },
+    "b3": {
+      "correct": 318,
+      "total": 400,
+      "accuracy": 0.795
+    },
+    "safety_gate": {
+      "correct": 394,
+      "total": 400,
+      "accuracy": 0.985
+    },
+    "execution": {
+      "tp": 43,
+      "fp": 1,
+      "fn": 170,
+      "tn": 186,
+      "precision": 0.9772727272727273,
+      "recall": 0.20187793427230047,
+      "f1": 0.3346303501945525
+    },
+    "multi_action": {
+      "total": 25,
+      "action_exact": 0,
+      "full_exact": 0
+    },
+    "negation": {
+      "negative": {
+        "correct": 4,
+        "total": 4
+      },
+      "positive": {
+        "correct": 2,
+        "total": 4
+      }
+    },
+    "insufficient": {
+      "full_contract": 3,
+      "total": 3
+    }
+  },
+  "v2": {
+    "full_exact": {
+      "correct": 229,
+      "total": 400,
+      "accuracy": 0.5725
+    },
+    "command_plan_exact": {
+      "correct": 256,
+      "total": 400,
+      "accuracy": 0.64
+    },
+    "action_plan_exact": {
+      "correct": 318,
+      "total": 400,
+      "accuracy": 0.795
+    },
+    "result_kind": {
+      "correct": 344,
+      "total": 400,
+      "accuracy": 0.86
+    },
+    "s0_events": {
+      "correct": 387,
+      "total": 400,
+      "accuracy": 0.9675
+    },
+    "b3": {
+      "correct": 358,
+      "total": 400,
+      "accuracy": 0.895
+    },
+    "safety_gate": {
+      "correct": 398,
+      "total": 400,
+      "accuracy": 0.995
+    },
+    "execution": {
+      "tp": 181,
+      "fp": 11,
+      "fn": 32,
+      "tn": 176,
+      "precision": 0.9427083333333334,
+      "recall": 0.8497652582159625,
+      "f1": 0.8938271604938272
+    },
+    "multi_action": {
+      "total": 25,
+      "action_exact": 16,
+      "full_exact": 14,
+      "action_exact_given_command_exact": 14,
+      "command_exact_cases": 14
+    },
+    "negation": {
+      "negative": {
+        "correct": 4,
+        "total": 4
+      },
+      "positive": {
+        "correct": 4,
+        "total": 4
+      }
+    },
+    "insufficient": {
+      "full_contract": 3,
+      "total": 3
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "score_semantics": "evidence_score_not_probability",
+  "distribution": {
+    "all": {
+      "n": 560,
+      "min": 0.055091891891891884,
+      "p10": 0.7,
+      "p25": 0.99,
+      "p50": 1,
+      "p75": 1,
+      "p90": 1,
+      "max": 1,
+      "mean": 0.9114800156178036
+    },
+    "fallback": {
+      "n": 109,
+      "min": 0.055091891891891884,
+      "p10": 0.279768115942029,
+      "p25": 0.3776901408450704,
+      "p50": 0.7,
+      "p75": 0.7,
+      "p90": 0.7,
+      "max": 0.7,
+      "mean": 0.5549431995043141
+    },
+    "by_kind": {
+      "development_similarity": {
+        "n": 78,
+        "min": 0.37,
+        "p10": 0.4726666666666667,
+        "p25": 0.7,
+        "p50": 0.7,
+        "p75": 0.7,
+        "p90": 0.7,
+        "max": 0.7,
+        "mean": 0.6588066819452071
+      },
+      "contract_context": {
+        "n": 98,
+        "min": 0.98,
+        "p10": 0.99,
+        "p25": 0.99,
+        "p50": 0.99,
+        "p75": 0.99,
+        "p90": 1,
+        "max": 1,
+        "mean": 0.9910204081632656
+      },
+      "contract_exact": {
+        "n": 352,
+        "min": 1,
+        "p10": 1,
+        "p25": 1,
+        "p50": 1,
+        "p75": 1,
+        "p90": 1,
+        "max": 1,
+        "mean": 1
+      },
+      "development_context_resolution": {
+        "n": 31,
+        "min": 0.055091891891891884,
+        "p10": 0.195,
+        "p25": 0.2603333333333333,
+        "p50": 0.29159999999999997,
+        "p75": 0.31862325581395345,
+        "p90": 0.39339999999999997,
+        "max": 0.41899999999999993,
+        "mean": 0.2936092759433574
+      },
+      "development_fallback": {
+        "n": 1,
+        "min": 0.82,
+        "p10": 0.82,
+        "p25": 0.82,
+        "p50": 0.82,
+        "p75": 0.82,
+        "p90": 0.82,
+        "max": 0.82,
+        "mean": 0.82
+      }
+    }
+  },
+  "calibrability": {
+    "fixed": [
+      {
+        "parameter": "safety_precedence",
+        "reason": "contractual invariant"
+      },
+      {
+        "parameter": "negation_scope",
+        "reason": "semantic/contractual invariant"
+      },
+      {
+        "parameter": "local_reversible_clear_execution",
+        "reason": "contract says clear independent reversible actions may execute"
+      },
+      {
+        "parameter": "with_loss_real_loss_block",
+        "reason": "unsentText/pendingClarification are contractual blockers"
+      },
+      {
+        "parameter": "navigation_last",
+        "reason": "contractual ordering invariant"
+      }
+    ],
+    "future_calibrable": [
+      {
+        "parameter": "fallback_accept_score_min",
+        "score_semantics": "development similarity/evidence score, not probability",
+        "provisional_value": 0.34,
+        "candidate_values": [
+          0.28,
+          0.378,
+          0.7
+        ],
+        "active": true
+      }
+    ],
+    "removed_from_calibration": [
+      {
+        "parameter": "margin",
+        "reason": "V1 margin was inert; V2 has no probabilistic top1-top2 margin"
+      },
+      {
+        "parameter": "global_plan_risk_threshold",
+        "reason": "removed by per-action policy"
+      }
+    ],
+    "sensitivity": [
+      {
+        "threshold": 0.28,
+        "would_reject_fallback_scores": 11,
+        "would_accept_fallback_scores": 98,
+        "changes_from_provisional": 13
+      },
+      {
+        "threshold": 0.378,
+        "would_reject_fallback_scores": 29,
+        "would_accept_fallback_scores": 80,
+        "changes_from_provisional": 5
+      },
+      {
+        "threshold": 0.7,
+        "would_reject_fallback_scores": 47,
+        "would_accept_fallback_scores": 62,
+        "changes_from_provisional": 23
+      }
+    ]
+  }
+}
