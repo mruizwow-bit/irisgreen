@@ -1,0 +1,77 @@
+{
+  "version": "I0_EXECUTOR_V2_R1",
+  "base_head": "2267aa5e506156139432e53f7dce6707bd697f9c",
+  "inputs": {
+    "development": {
+      "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "calibration": {
+      "path": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f"
+    },
+    "schema": {
+      "path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "executor": {
+    "fallback_accept_score_min": 0.34,
+    "score_semantics": "evidence_score_not_probability"
+  },
+  "calibration_grid": {
+    "fallback_accept_score_min": [
+      0.34,
+      0.484,
+      0.7
+    ],
+    "frozen": true
+  },
+  "selection": {
+    "hard_gates": [
+      "safety_errors_eq_0",
+      "critical_negation_false_triggers_eq_0",
+      "critical_negation_positive_failures_eq_0",
+      "insufficient_contract_errors_eq_0",
+      "multi_action_full_errors_eq_0"
+    ],
+    "ranking": [
+      "minimize_local_with_loss_execution_fp",
+      "maximize_local_reversible_execution_f1",
+      "maximize_overall_execution_f1",
+      "maximize_full_exact",
+      "minimize_execution_fn",
+      "minimize_clarification",
+      "minimize_abstention",
+      "lower_threshold_tiebreak"
+    ],
+    "required_report_metrics": [
+      "execution_fp",
+      "execution_fn",
+      "execution_precision",
+      "execution_recall",
+      "execution_f1",
+      "safety",
+      "negation",
+      "multi_action",
+      "full_exact",
+      "clarification",
+      "abstention",
+      "errors_by_risk"
+    ]
+  },
+  "future_calibration": {
+    "expected_cases": 200,
+    "same_cases_for_all_candidates": true,
+    "requires_external_astra_authorization": true,
+    "command": "node tools/run-sabik-i0-calibration-v2.mjs --astra-authorized --config config/sabik/i0/executor-v2-r1.json --output reports/sabik/i0/calibration-v2"
+  },
+  "forbidden": {
+    "validation_173": true,
+    "dataset_mutation": true,
+    "schema_mutation": true,
+    "candidate_addition_after_calibration_open": true
+  }
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import {predictI0V2} from "./sabik-i0-executor-v2.mjs";
+import {selectCalibrationCandidate} from "./sabik-i0-calibration-v2-selection.mjs";
 
 const run=(text,context={})=>predictI0V2({id:"synthetic",utterance:text,context},[]);
 
@@ -140,6 +141,60 @@ test("score_is_not_probability",()=>{
   const p=run("Reduce el movimiento.");
   assert.equal(p.score_semantics,"evidence_score_not_probability");
   assert.equal("confidence_top1" in p,false);
+});
+
+
+// 20 general query canonicalization: missing index family
+test("query_general_missing_index",()=>{
+  const p=run("Busca contenido sobre una guía que no aparece en el índice.");
+  assert.equal(p.predicted_commands[0]?.intent,"ENCONTRAR_CONTENIDO");
+  assert.equal(p.predicted_commands[0]?.parameters.query,"guia no indexada");
+});
+
+// 21 general query canonicalization: focus vocabulary
+test("query_general_focus_canon",()=>{
+  const p=run("Encuentra recursos sobre volver a enfocarme tras una pausa.");
+  assert.equal(p.predicted_commands[0]?.intent,"ENCONTRAR_CONTENIDO");
+  assert.equal(p.predicted_commands[0]?.parameters.query,"concentrarme");
+});
+
+// 22 general deictic correction: open -> locate selected referent
+test("query_general_deictic_location_correction",()=>{
+  const p=run("Abre ese documento. Espera, indícame su ubicación.");
+  assert.deepEqual(p.predicted_commands,[{intent:"ENCONTRAR_CONTENIDO",parameters:{query:"documento seleccionado",mode:"locate"}}]);
+  assert.equal(p.predicted_actions.length,0);
+});
+
+// 23 threshold is external and accepts frozen grid values without code change
+test("threshold_external_grid_values",()=>{
+  const dev=[{id:"d",utterance:"Haz otra cosa parecida",context:{},expected_gate:"normal",expected_commands:[{intent:"OTRA_VIA",parameters:{query:"lastQuery"}}],expected_actions:[],expected_s0_events:[],expected_result_kind:"response",expected_b3:"PRESENTE"}];
+  for(const threshold of [0.34,0.484,0.700]){
+    const p=predictI0V2({id:"x",utterance:"Haz algo parecido otra vez",context:{lastQuery:"tema"}},dev,{fallback_accept_score_min:threshold});
+    assert.equal(p.score_semantics,"evidence_score_not_probability");
+  }
+});
+
+// 24 future selection is deterministic and not accuracy-only
+test("calibration_selection_policy_is_frozen",()=>{
+  const base={
+    safety_errors:0,
+    negation:{negative:{false_triggers:0},positive:{failures:0}},
+    insufficient:{total:2,full_contract:2},
+    multi_action:{total:15,full_exact:15},
+    full_exact:{accuracy:.70},
+    execution:{f1:.80,fn:10},
+    clarification:{count:20},
+    abstention:{count:2},
+    by_risk:{local_reversible:{execution_f1:.80}},
+    errors_by_risk:{local_with_loss:{execution_fp:0}}
+  };
+  const out=selectCalibrationCandidate([
+    {threshold:.34,metrics:{...base,full_exact:{accuracy:.90},execution:{f1:.70,fn:20},by_risk:{local_reversible:{execution_f1:.70}}}},
+    {threshold:.484,metrics:{...base,full_exact:{accuracy:.75},execution:{f1:.86,fn:8},by_risk:{local_reversible:{execution_f1:.88}}}},
+    {threshold:.700,metrics:{...base,full_exact:{accuracy:.80},execution:{f1:.82,fn:9},by_risk:{local_reversible:{execution_f1:.82}}}}
+  ]);
+  assert.equal(out.status,"SELECTED");
+  assert.equal(out.selected.threshold,.484);
 });
 
 const failed=checks.filter(x=>!x.ok);

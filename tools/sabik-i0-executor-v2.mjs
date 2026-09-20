@@ -2,7 +2,13 @@
 // Contract-first. No calibration/validation data is loaded or embedded.
 
 const clone=x=>JSON.parse(JSON.stringify(x));
-export const PROVISIONAL_FALLBACK_ACCEPT_SCORE=0.34;
+export const DEFAULT_EXECUTOR_V2_CONFIG=Object.freeze({fallback_accept_score_min:0.34});
+
+export function normalizeExecutorV2Config(config={}){
+  const value=Number(config.fallback_accept_score_min??DEFAULT_EXECUTOR_V2_CONFIG.fallback_accept_score_min);
+  if(!Number.isFinite(value)||value<0||value>1)throw new Error("fallback_accept_score_min must be a finite number in [0,1]");
+  return {fallback_accept_score_min:value};
+}
 export const normalizeText=s=>String(s||"").normalize("NFD").replace(/\p{Diacritic}/gu,"").toLowerCase()
   .replace(/[^\p{L}\p{N}\s.,;:¿?¡!]/gu," ").replace(/\s+/g," ").trim();
 
@@ -135,7 +141,7 @@ function nearestDevelopment(target,development,predicate=()=>true){
 function searchMode(target,development){
   const n=normalizeText(target.utterance);
   if(/\blista\b/u.test(n))return {mode:"list",score:1,kind:"contract_exact"};
-  if(/\bdonde\b/u.test(n)||/\bsolo dime donde\b/u.test(n))return {mode:"locate",score:1,kind:"contract_exact"};
+  if(/\b(donde|ubicacion|localizacion|localiza(?:r|cion)?)\b/u.test(n))return {mode:"locate",score:1,kind:"contract_exact"};
   const nn=nearestDevelopment(target,development,c=>c.expected_commands?.length===1&&c.expected_commands[0].intent==="ENCONTRAR_CONTENIDO");
   if(nn)return {mode:nn.case.expected_commands[0].parameters.mode,score:nn.score,kind:"development_similarity"};
   return {mode:"list",score:.5,kind:"fallback_default"};
@@ -147,13 +153,50 @@ function opaqueFlowId(target,development,intent){
   return {flowId:a?.parameters?.flowId||"flow-current",score:nn?.score||.5};
 }
 
+const SEARCH_QUERY_CANON=Object.freeze([
+  {canonical:"concentrarme",pattern:/\b(?:concentr\w*|enfoc\w*|foco mental)\b/u}
+]);
+
+function stripQueryArticles(query){
+  return normalizeText(query).replace(/[.?!]+$/u,"").replace(/^(?:un|una|unos|unas|el|la|los|las)\s+/u,"").trim();
+}
+
+function indexedAbsenceCanonical(query){
+  const q=stripQueryArticles(query);
+  const m=q.match(/^(.+?)\s+que\s+no\s+(?:figura|aparece|consta|se encuentra|esta)\s+(?:en|dentro de)\s+(?:el\s+)?indice$/u);
+  if(!m)return "";
+  const subject=m[1].trim();
+  const last=subject.split(/\s+/u).at(-1)||"";
+  const adjective=last.endsWith("as")?"no indexadas":last.endsWith("os")?"no indexados":last.endsWith("a")?"no indexada":"no indexado";
+  return subject+" "+adjective;
+}
+
+function selectedReferentQuery(text){
+  const n=normalizeText(text);
+  if(!/\b(donde|ubicacion|localizacion|lugar|sitio)\b/u.test(n))return "";
+  const before=n.split(/\b(?:espera|mejor|corrijo|corrigo|retira|retira eso|cambio)\b/u)[0];
+  const m=before.match(/\b(?:abre|entra en|llevame a|ve a)\s+(?:esa|ese|aquella|aquel|la|el)?\s*([\p{L}][\p{L}-]*)/u);
+  if(!m)return "";
+  const noun=m[1];
+  const adjective=noun.endsWith("a")?"seleccionada":"seleccionado";
+  return noun+" "+adjective;
+}
+
+function canonicalizeSearchQuery(query,text){
+  let q=stripQueryArticles(query);
+  const indexed=indexedAbsenceCanonical(q);
+  if(indexed)return indexed;
+  for(const entry of SEARCH_QUERY_CANON)if(entry.pattern.test(q))return entry.canonical;
+  const referent=selectedReferentQuery(text);
+  if(!q&&referent)return referent;
+  return q;
+}
+
 function resolveSearchQuery(target,development,raw){
-  let query=queryFromText(target.utterance);
-  const n=normalizeText(target.utterance);
-  if(/\brutina que no figura en el indice\b/u.test(n))query="rutina no indexada";
-  if(/\brecuperar la concentracion\b/u.test(n))query="concentrarme";
-  if(/\bsolo dime donde esta\b/u.test(n))query="ficha seleccionada";
+  const query=canonicalizeSearchQuery(queryFromText(target.utterance),target.utterance);
   if(query)return query;
+  const referent=selectedReferentQuery(target.utterance);
+  if(referent)return referent;
   const nn=nearestDevelopment(target,development,c=>c.expected_commands?.some(x=>x.intent==="ENCONTRAR_CONTENIDO"));
   return nn?.case.expected_commands?.find(x=>x.intent==="ENCONTRAR_CONTENIDO")?.parameters?.query||raw||"consulta";
 }
@@ -172,7 +215,7 @@ function detectCommands(target,development){
   const pos=s=>Math.max(0,original.indexOf(s,offset));
 
   // Search / locate.
-  if(any(n,["localizar","localiza","busca","buscar","encuentra","encontrar","lista de recursos","materiales del sitio","consultar contenido","guia sobre","informacion sobre","recursos sobre","contenido sobre"])){
+  if(any(n,["localizar","localiza","busca","buscar","encuentra","encontrar","lista de recursos","materiales del sitio","consultar contenido","guia sobre","informacion sobre","recursos sobre","contenido sobre","donde","ubicacion","localizacion"])){
     if(!(/\bayuda humana\b/u.test(n)&&!/\bguia\b/u.test(n))){
       const m=searchMode(target,development);
       const q=resolveSearchQuery(target,development);
@@ -334,8 +377,19 @@ function detectCommands(target,development){
   // If correction segment names a new command, discard commands occurring only before correction.
   if(correction&&commands.some(c=>c.position>=offset))commands=commands.filter(c=>c.position>=offset);
 
+  // A later location request can correct an earlier open request without a phrase-specific exception.
+  const locatePosition=n.search(/\b(donde|ubicacion|localizacion)\b/u);
+  const openEntry=commands.find(c=>c.intent==="ABRIR_CONTENIDO");
+  const searchEntry=commands.find(c=>c.intent==="ENCONTRAR_CONTENIDO");
+  if(openEntry&&searchEntry&&locatePosition>openEntry.position){
+    const between=n.slice(openEntry.position,locatePosition);
+    if(/\b(espera|mejor|solo|unicamente|en vez)\b/u.test(between)){
+      commands=commands.filter(c=>c.intent!=="ABRIR_CONTENIDO");
+    }
+  }
+
   // Search combined with another command is a result-list operation unless location was explicit.
-  if(commands.length>1&&!/\bdonde\b|\bsolo dime donde\b/u.test(n)){
+  if(commands.length>1&&!/\b(donde|ubicacion|localizacion)\b/u.test(n)){
     const search=commands.find(c=>c.intent==="ENCONTRAR_CONTENIDO");
     if(search)search.parameters.mode="list";
   }
@@ -434,14 +488,15 @@ function b3For({kind,commands,actions,events}){
   return "PRESENTE";
 }
 
-function fallbackPlan(target,development){
+function fallbackPlan(target,development,config){
   const nn=nearestDevelopment(target,development,c=>c.expected_gate==="normal");
-  if(!nn||nn.score<PROVISIONAL_FALLBACK_ACCEPT_SCORE)return null;
+  if(!nn||nn.score<config.fallback_accept_score_min)return null;
   const commands=clone(nn.case.expected_commands||[]).map((c,i)=>({...c,position:i,score:nn.score,score_kind:"development_similarity",negated:false,reason:"development_fallback"}));
   return {commands,score:nn.score,exemplar_id:nn.case.id};
 }
 
-export function predictI0V2(target,development=[]){
+export function predictI0V2(target,development=[],config={}){
+  const executorConfig=normalizeExecutorV2Config(config);
   const safety=detectSafety(target.utterance);
   if(safety.gate!=="normal"){
     return {id:target.id,gate:safety.gate,predicted_commands:[],command_scores:[],action_decisions:[],predicted_actions:[],predicted_s0_events:gateEvents(safety.gate),predicted_result_kind:safety.gate==="handoff"?"human_help":"response",predicted_b3:safety.gate==="handoff"?"ORIENTAR":"PRESENTE",score_semantics:"evidence_score_not_probability",fallback_used:false,safety_reason:safety.reason};
@@ -453,7 +508,7 @@ export function predictI0V2(target,development=[]){
   if(!commands.length&&detected.ambiguities.length===0){
     const no=noCommandResult(target);
     if(no.kind==="response"){
-      fallback=fallbackPlan(target,development);
+      fallback=fallbackPlan(target,development,executorConfig);
       if(fallback?.commands?.length)commands=fallback.commands;
     }
   }
@@ -503,7 +558,7 @@ export function predictI0V2(target,development=[]){
     command_scores:commands.map(c=>({intent:c.intent,score:c.score,score_kind:c.score_kind,negated:c.negated,reason:c.reason})),
     action_decisions:entries.map(e=>({origin_command_index:e.origin_command_index,intent:e.intent,parameters:e.parameters,risk:e.risk,score:e.score,score_kind:e.score_kind,decision:e.decision,reason:e.reason,action:e.action})),
     predicted_actions:executable,predicted_s0_events:events,predicted_result_kind:kind,predicted_b3:b3,
-    score_semantics:"evidence_score_not_probability",fallback_used:Boolean(fallback),fallback_exemplar_id:fallback?.exemplar_id||null,fallback_score:fallback?.score??null
+    score_semantics:"evidence_score_not_probability",executor_config:executorConfig,fallback_used:Boolean(fallback),fallback_exemplar_id:fallback?.exemplar_id||null,fallback_score:fallback?.score??null
   };
 }
 
