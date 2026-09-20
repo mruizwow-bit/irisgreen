@@ -1,4 +1,4 @@
-# SABIK_VISUAL_FAMILY_FINAL_V1 · R2
+# SABIK_VISUAL_FAMILY_FINAL_V1_R2_1
 
 Fecha: 20/09/2026  
 Coordinación: Astra  
@@ -6,11 +6,9 @@ Agente: n.º 3 · Prototipos
 
 ## Estado
 
-**SABIK_WORDMARK_T1_VECTOR_R2_READY**
+**SABIK_VISUAL_FAMILY_FINAL_V1_R2_1_READY**
 
-La corrección R1 permanece aceptada. R2 modifica exclusivamente el master vectorial del wordmark **SABIK T1 · REFINAMIENTO** y la evidencia técnica asociada.
-
-**No se ha modificado Matriz, Web, IA ni Educa.**
+R2.1 corrige exclusivamente la coherencia técnica y la reproducibilidad del paquete R2. Todos los activos visuales aceptados permanecen bloqueados y sin cambios.
 
 ## Sistema verbal congelado
 
@@ -18,69 +16,75 @@ La corrección R1 permanece aceptada. R2 modifica exclusivamente el master vecto
 **CLARIDAD INTELIGENTE.**  
 **Una IA que adapta la información para que sea más fácil de entender y usar.**
 
-Familia:
+Familia: **UNA MISMA ESENCIA · CUATRO PRESENCIAS**.
 
-**UNA MISMA ESENCIA · CUATRO PRESENCIAS**
+## Comando único de rebuild
 
-## Wordmark T1 R2
+Desde una extracción limpia de `SABIK_VISUAL_FAMILY_FINAL_V1_R2_1.zip`, ejecutar únicamente:
 
-Master de producción:
+```bash
+python scripts/rebuild_all_r2.py
+```
 
-`masters/SABIK_WORDMARK_T1_MASTER_R2.svg`
+Salida final esperada:
 
-Características:
+`REBUILD_ALL_R2_PASS`
 
-- vector real, sin raster incrustado;
-- 5 paths / 59 nodos;
-- líneas rectas y contornos Bézier normalizados;
-- sin dependencia de archivo de fuente;
-- no autotrace bruto;
-- no reproducción del escalonado raster;
-- no cambio de T1 ni exploración tipográfica.
+No se debe ejecutar el antiguo orquestador R1. La lógica histórica R1 queda aislada dentro del paquete en `audit/legacy_r1/`.
 
-La referencia visual de autoridad es el tablero aprobado de 1536×1024 disponible en Library. El paquete conserva solo el recorte del wordmark, sin reintroducir copy histórico.
+## Qué comprueba el comando
 
-## QA
+1. `R1_VISUAL_ASSET_LOCK`: 54 masters/derivados/pruebas aceptadas de Matriz/Web/IA/Educa.
+2. `R2_WORDMARK_VISUAL_LOCK`: 10 activos aceptados del wordmark T1 R2 y QA.
+3. `SYSTEM_CONTENT_LOCK`: 5 archivos de paletas/tokens/documentación aceptados.
+4. Regeneración del wordmark T1 R2 en 365×70, 730×140, 1460×280 y 2920×560.
+5. Integridad SVG: sin raster/fuente embebidos, 5 paths y 59 nodos.
+6. Manifest R2.1 completo y hashes válidos.
+7. Código 0 únicamente si todos los gates pasan.
 
-La Biblioteca contiene:
+## Prueba desde extracción limpia
 
-- QA completo referencia/vector/overlay/×4/×8;
-- overlay;
-- SVG master;
-- ZIP R2;
-- informe de reproducibilidad.
+Ejecutada únicamente con el comando del README.
 
-Pruebas raster:
+Resultado exacto:
 
-- 365×70;
-- 730×140;
-- 1460×280 (×4);
-- 2920×560 (×8).
+```text
+CAIROSVG_VERSION_PASS 2.8.2
+R1_VISUAL_ASSET_LOCK_PASS 54 files
+R2_WORDMARK_VISUAL_LOCK_PASS 10 files
+SYSTEM_CONTENT_LOCK_PASS 5 files
+VISUAL_LOCKS_PASS
+WORDMARK_R2_BUILD_PASS
+WORDMARK_R2_REPRODUCIBILITY_PASS
+R1_VISUAL_ASSET_LOCK_PASS 54 files
+R2_WORDMARK_VISUAL_LOCK_PASS 10 files
+SYSTEM_CONTENT_LOCK_PASS 5 files
+VISUAL_LOCKS_PASS
+MANIFEST_R2_1_BUILD_PASS 111 files
+MANIFEST_R2_1_VERIFY_PASS 111 files
+REBUILD_ALL_R2_PASS
+```
 
-## Control geométrico
+## Paquete R2.1
 
-- viewBox: `0 0 198 38`
-- drawing bbox: `x=0.0838 y=2.5000 w=197.9630 h=33.6645`
-- R1: 1260 nodos en el trazado píxel-a-píxel.
-- R2: 59 nodos en 5 paths.
+Biblioteca: `/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2_1.zip`
 
-## Reproducibilidad
+SHA-256: `343ec6bab150d297150faa5299fc1c2f1e4c177e5a343cc4900e036f19fad57f`
 
-**REPRODUCIBILITY_PASS**
+Tamaño: `7,496,502 bytes`.
 
-- cuatro rasterizaciones R2 se regeneran y coinciden por SHA-256;
-- 76 archivos aceptados de R1 se comparan contra lock: **0 diferencias**;
-- SVG sin `<image>`;
-- manifest R2 verificado.
+Manifest: **111 archivos**, excluyendo únicamente `MANIFEST.json` por autorreferencia.
 
-## Paquete
+## Confirmación visual
 
-`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2.zip`
+Comparación R2 → R2.1 sobre todos los PNG/SVG del paquete:
 
-SHA-256:
+- baseline: 69 archivos visuales;
+- modificados: 0;
+- eliminados: 0;
+- añadidos: 0;
+- resultado: `VISUAL_ZERO_CHANGE_PASS`.
 
-`0db11fb3a79959b5eb5a11a15550061a459e4584bb4b14cea02da83ac7dfa69a`
-
-Tamaño: `7,485,902 bytes`.
+No se han modificado Presencia Matriz, Web, IA, Educa, siluetas, escalas, fondos, paletas, geometrías, wordmark T1 R2 ni QA visual.
 
 **NO MERGE hasta revisión directa de Astra.**
