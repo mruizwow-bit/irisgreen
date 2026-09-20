@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schema/sabik-ayudas-public-v1.json",
+  "title": "SABIK Ayudas · public data model V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "jurisdiction",
+    "category",
+    "resource_type",
+    "record_kind",
+    "status",
+    "opens_at",
+    "closes_at",
+    "official_url",
+    "previous_url",
+    "reviewed_at",
+    "next_review_at",
+    "source_authority",
+    "source_is_primary",
+    "summary",
+    "eligibility_summary",
+    "what_it_offers",
+    "documents_summary"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identificador único del registro público. No contiene datos personales del usuario."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "jurisdiction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ámbito territorial o institucional explícito."
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource_type": {
+      "type": "string",
+      "enum": [
+        "prestación",
+        "subvención",
+        "beca",
+        "bonificación",
+        "deducción",
+        "servicio",
+        "convocatoria",
+        "derecho subjetivo",
+        "programa",
+        "recurso informativo"
+      ]
+    },
+    "record_kind": {
+      "type": "string",
+      "enum": [
+        "PROGRAM",
+        "CALL",
+        "RESOURCE"
+      ],
+      "description": "Distingue identidad estable del programa de una convocatoria/edición concreta."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ABIERTO",
+        "CERRADO",
+        "PERMANENTE",
+        "PRÓXIMA CONVOCATORIA",
+        "HISTÓRICO",
+        "POR VERIFICAR"
+      ]
+    },
+    "program_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ID estable del programa. Obligatorio para CALL; para PROGRAM coincide normalmente con id."
+    },
+    "call_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ID de la convocatoria/edición concreta. Solo para CALL."
+    },
+    "opens_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "Fecha absoluta ISO 8601; null si no procede o no se conoce."
+    },
+    "closes_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "Fecha absoluta ISO 8601; obligatoria para status ABIERTO."
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "previous_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "description": "URL pública anterior cuando exista sustitución; nunca se pierde en el registro histórico."
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "source_authority": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_is_primary": {
+      "type": "boolean"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Qué es, en lenguaje claro."
+    },
+    "eligibility_summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Quién puede pedirlo, sin afirmar que a una persona concreta le corresponde."
+    },
+    "what_it_offers": {
+      "type": "string",
+      "minLength": 1
+    },
+    "documents_summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ABIERTO"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "closes_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_is_primary": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_kind": {
+            "const": "CALL"
+          }
+        },
+        "required": [
+          "record_kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "program_id",
+          "call_id"
+        ],
+        "properties": {
+          "program_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "call_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_kind": {
+            "const": "PROGRAM"
+          }
+        },
+        "required": [
+          "record_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "call_id": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}
