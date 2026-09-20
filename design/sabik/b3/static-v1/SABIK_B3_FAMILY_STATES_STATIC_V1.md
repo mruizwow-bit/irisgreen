@@ -1,166 +1,69 @@
-# SABIK_B3_FAMILY_STATES_STATIC_V1
+# SABIK_B3_FAMILY_STATES_STATIC_V1_R1
 
 **Fecha:** 20/09/2026  
 **Coordinación:** Astra  
 **Agente:** n.º 3 · Prototipos  
 **Base aceptada:** PR #181 · `742e502802cdc9e3e7b154ddbb8493493c903898`
 
-> NO PUBLICAR · NO RUNTIME · PROYECCIÓN ESTÁTICA DE DISEÑO
+> NO PUBLICAR · NO RUNTIME · REFINAMIENTO ESTÁTICO DE GRAMÁTICA B3
 
 ## Estado
 
-La familia visual permanece congelada como **`SABIK_VISUAL_FAMILY_FINAL_ACCEPTED`**.
+V1 queda aceptada técnicamente. R1 corrige exclusivamente la diferenciación estructural potencial entre keyframes. La familia visual permanece congelada como `SABIK_VISUAL_FAMILY_FINAL_ACCEPTED`.
 
-Esta fase no rediseña Matriz, Web, IA, Educa, T1, paletas, masters ni sistema verbal. Proyecta una gramática B3 común sobre **Web / IA / Educa**. Presencia Matriz solo aparece como referencia de origen.
+PRESENTE permanece byte-a-byte igual al master aceptado dentro del lienzo. Presencia Matriz no recibe estados.
 
-Núcleo B3 único:
+Núcleo único:
 
 **PRESENTE · ORIENTAR · TRANSICIÓN · PAUSA · CONFIRMAR**
 
-No son estados B3: hablar, escuchar, buscar, componer, loading, error, riesgo, emociones, diagnósticos o personalidad.
+## Ortogonalidad funcional R1
 
-## Principio
+| Estado | Variable dominante | Operación estructural R1 | No debe parecer |
+|---|---|---|---|
+| PRESENTE | estabilidad | master aceptado sin modificación | actividad decorativa |
+| ORIENTAR | direccionalidad asimétrica | desplazamiento creciente de regiones suaves a lo largo del eje nativo | flecha, puntero, brillo diagonal, loading |
+| TRANSICIÓN | reorganización | contrarrotación anterior/posterior alrededor de una bisagra central + separación perpendicular | ORIENTAR más fuerte, spinner, giro permanente |
+| PAUSA | reducción/contención | contracción global mínima + atenuación periférica continua | apagado, error, tristeza |
+| CONFIRMAR | cohesión/resolución | cierre transversal de regiones laterales hacia el eje estructural | PAUSA más fuerte, PRESENTE, premio/check |
 
-**B3 = función del sistema.**  
-**Voz = contenido/canal independiente.**  
-**Safety = capa de protección independiente.**
+Las cinco operaciones ya no son una misma operación con magnitudes distintas.
 
-Si un cambio no aporta información útil, B3 permanece en **PRESENTE**.
+## Costuras
 
-## Gramática común
+R1 elimina las tres bandas duras del generador V1. ORIENTAR, TRANSICIÓN y CONFIRMAR utilizan tres funciones de pertenencia Gaussianas normalizadas. Las máscaras suman 1 antes de la transformación. No hay una franja luminosa deliberada que actúe como señal funcional.
 
-Los cinco keyframes usan la misma lógica en las tres presencias. Para no inventar nuevas geometrías, cada estado se deriva del raster master aceptado mediante tres bandas suaves calculadas sobre el eje nativo de la forma. No se añaden flechas, iconos, checks, partículas ni masas nuevas.
+## Color y monocromo
 
-| Estado | Función | Operación estructural | Señal textual paralela | Riesgo a evitar |
-|---|---|---|---|---|
-| PRESENTE | Disponibilidad estable | Master aceptado sin deformación interna | `Disponible.` | Actividad decorativa |
-| ORIENTAR | Localizar paso/elemento/dirección | Sesgo progresivo de las mismas bandas sobre el eje nativo | `Siguiente paso: …` | Flecha, puntero, “mírame” |
-| TRANSICIÓN | Mostrar cambio entre funciones | Separación controlada anterior/central/posterior | `Cambiando de A a B.` | Spinner, loading infinito |
-| PAUSA | Contención y ausencia de demanda | Convergencia leve + menor energía periférica | `En pausa. Puedes continuar cuando quieras.` | Apagado, error, tristeza |
-| CONFIRMAR | Resultado funcional resuelto | Convergencia más clara y cohesión central | `Cambio aplicado.` | Premio, check, celebración |
+El color no es la señal primaria. Existen 15 variantes monocromas. La discriminación humana en monocromo permanece `PENDING HUMAN TEST`.
 
-## Invariantes de las tres presencias
+## Escala
 
-- mismo master aceptado como fuente;
-- mismo número de grandes masas de la presencia;
-- misma paleta fundamental;
-- mismas proporciones familiares;
-- mismo carácter de Web / IA / Educa;
-- todo cambio es reversible a PRESENTE;
-- ningún estado depende solo del color;
-- ningún estado necesita movimiento para conservar su función;
-- la UI debe comunicar el estado también mediante texto programático.
+64 px es la referencia mínima de la ronda perceptiva R1. 32 px se conserva como derivado técnico; su discriminación perceptiva permanece `PENDING HUMAN TEST`.
 
-## Expresión por presencia
+## Test ciego
 
-### SABIK WEB
+Se preparan seis hojas independientes: Web, IA y Educa, cada una en color y monocromo, con cinco imágenes a 64 px sin nombre de estado y orden aleatorizado. La clave se mantiene separada.
 
-Conserva ligereza, serenidad, pocas capas y baja profundidad. Las operaciones B3 se aplican con el mismo contrato, pero se leen sobre su eje diagonal natural. No se añade complejidad.
-
-### SABIK IA
-
-Conserva profundidad, estructura multicapa y tensión espacial. B3 no añade órbitas, partículas ni “actividad de IA”. El cambio se produce solo por relación entre la materia existente.
-
-### SABIK EDUCA
-
-Conserva apertura, crecimiento y riqueza cromática no infantil. Los estados no convierten la forma en flor, juguete o mascota. La señal funcional nunca depende del amarillo o de un color aislado.
-
-## Ficha por estado
-
-### PRESENTE
-
-| Campo | Contenido |
-|---|---|
-| Función | Sabik está disponible sin pedir atención. |
-| Activación | Cuando no hay otra función B3 que comunicar. |
-| Operación | Master aceptado; solo se centra en el lienzo de keyframe. |
-| Invariantes | Todas las propiedades de identidad. |
-| Señal textual | `Disponible.` |
-| Riesgo | Convertir reposo en “vida” decorativa. |
-| Reduced Motion | Idéntico. |
-| Estático | Es la referencia completa. |
-
-### ORIENTAR
-
-| Campo | Contenido |
-|---|---|
-| Función | Ayudar a localizar el siguiente elemento, paso o dirección funcional. |
-| Activación | Cuando la interfaz necesita indicar qué importa o dónde continuar. |
-| Operación | Sesgo progresivo de las tres bandas de materia a lo largo del eje nativo. |
-| Invariantes | Geometría fuente, paleta, escala familiar, centro de gravedad. |
-| Señal textual | `Siguiente paso: [acción o elemento].` |
-| Riesgo | Flecha, puntero, rebote, brillo llamativo. |
-| Reduced Motion | Keyframe estático + texto; sin desplazamiento temporal. |
-| Estático | La materia muestra una dirección preferente sin símbolo añadido. |
-
-### TRANSICIÓN
-
-| Campo | Contenido |
-|---|---|
-| Función | Informar de que algo cambia de una situación funcional a otra. |
-| Activación | Entre estados B3 cuando el cambio necesita hacerse visible. |
-| Operación | Separación controlada de bandas sobre el eje nativo. |
-| Invariantes | Las tres bandas proceden del mismo master; no aparecen masas nuevas. |
-| Señal textual | `Cambiando de [A] a [B].` |
-| Riesgo | Spinner, loading, remolino permanente, “procesando”. |
-| Reduced Motion | Este keyframe puede usarse sin animación durante la transición. |
-| Estático | Punto medio con dirección, principio y final. |
-
-### PAUSA
-
-| Campo | Contenido |
-|---|---|
-| Función | Reducir actividad y demanda sin desaparecer. |
-| Activación | Cuando Sabik está pausado y conserva la información. |
-| Operación | Convergencia leve, menor energía periférica y compactación mínima. |
-| Invariantes | Identidad, presencia, texto y contexto. |
-| Señal textual | `En pausa. Puedes continuar cuando quieras.` |
-| Riesgo | Apagado, error, bloqueo, muerte o tristeza. |
-| Reduced Motion | Idéntico. |
-| Estático | Estado autosuficiente; no necesita movimiento. |
-
-### CONFIRMAR
-
-| Campo | Contenido |
-|---|---|
-| Función | Informar de un resultado funcional ya resuelto. |
-| Activación | Solo cuando el contrato B3 requiera confirmación explícita. |
-| Operación | Convergencia más clara de las bandas y cohesión central. |
-| Invariantes | Sin check, premio, destello ni color celebratorio. |
-| Señal textual | `Cambio aplicado.` |
-| Riesgo | Premio, “correcto” escolar, explosión de color. |
-| Reduced Motion | Mostrar el mismo keyframe brevemente y volver a PRESENTE. |
-| Estático | Resuelve → informa → vuelve a PRESENTE. |
-
-## Tamaño
-
-Se generan los 15 estados a **64 px** y **32 px**.
-
-La existencia del archivo de 32 px solo prueba generación técnica. La suficiencia perceptiva a 32 px queda **`PENDING HUMAN TEST`**.
-
-## Monocromo
-
-Los 15 estados disponen de versión monocroma derivada de la misma estructura. El objetivo es comprobar que el estado no depende exclusivamente del color. La discriminación perceptiva entre estados en monocromo también queda sujeta a revisión humana.
+Se incluye plantilla de respuestas. **El piloto no se ha realizado todavía y no se inventan datos de participantes.**
 
 ## Reduced Motion
 
-No se define animación en 3A. Cada keyframe debe poder ser:
+R1 continúa siendo estático. Cada keyframe conserva la función sin animación. Fase 3B no está autorizada todavía.
 
-1. objetivo o punto de paso de Motion completo;
-2. estado equivalente en Reduced Motion;
-3. estado totalmente estático.
+## Compatibilidad #163
 
-La función no cambia entre las tres variantes futuras.
+Sin cambios. Voz, Safety, estados operativos y controles permanecen fuera del núcleo B3.
 
-## Trazabilidad
+## Gates humanos pendientes
 
-- Lámina A: matriz de 15 estados.
-- Lámina B: comparación Web/IA/Educa por estado.
-- Lámina C: 15 estados en monocromo.
-- Lámina D: 64 px / 32 px.
-- Lámina E: Matriz como origen + los tres PRESENTE.
-- `B3_LEGACY_COMPATIBILITY_MATRIX_V1.md`: clasificación del paquete #163.
-- `SABIK_B3_STATIC_COMPLIANCE_MATRIX_V1.md`: evidencia técnica y pendientes humanos.
-- `ASSET_INDEX.md`: rutas, hashes e IDs de Biblioteca.
+- ORIENTAR ↔ TRANSICIÓN;
+- PAUSA ↔ CONFIRMAR;
+- PRESENTE ↔ CONFIRMAR;
+- monocromo;
+- percepción a 32 px;
+- lectura intergeneracional de Educa.
+
+Ninguno se declara PASS por la mera existencia del archivo.
 
 **NO MERGE.**
