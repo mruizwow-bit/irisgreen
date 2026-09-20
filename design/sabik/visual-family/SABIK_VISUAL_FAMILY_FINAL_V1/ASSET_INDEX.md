@@ -1,54 +1,64 @@
-# ASSET_INDEX · SABIK VISUAL FAMILY · R2
+# ASSET_INDEX · SABIK VISUAL FAMILY · R2.1
 
 Fecha: 20/09/2026
 
-## Paquete R2
+## Paquete R2.1
 
-`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2.zip`
+`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2_1.zip`
 
-- Library file id: `libfile_6b61c876dc9c8191a544f76a1f21248e`
-- SHA-256: `0db11fb3a79959b5eb5a11a15550061a459e4584bb4b14cea02da83ac7dfa69a`
-- Tamaño: `7,485,902 bytes`
-- Manifest R2: `98` archivos inventariados, excluyendo solo el propio `MANIFEST.json`.
+- Library file id: `libfile_8406b48a177c8191bd48ae0dab98c487`
+- SHA-256: `343ec6bab150d297150faa5299fc1c2f1e4c177e5a343cc4900e036f19fad57f`
+- Tamaño: `7,496,502 bytes`
+- Manifest: `111` archivos inventariados, excluyendo solo el propio `MANIFEST.json`.
 
-## Wordmark T1 · master R2
+Sidecar:
+`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2_1.sha256`
+· `libfile_e97b790da9448191a1dbf67dd1054bf7`
 
-`/SABIK/Agent3/R2/SABIK_WORDMARK_T1_MASTER_R2.svg`
+## Rebuild actual
 
-- Library file id: `libfile_9f16efce525c8191a39b4977b950cca3`
-- 5 paths
-- 59 nodos
-- sin raster incrustado
-- sin fuente embebida
-- viewBox `0 0 198 38`
+Comando único:
 
-La antigua traza R1 queda solo como evidencia histórica en `audit/`; no es master de producción.
+`python scripts/rebuild_all_r2.py`
 
-## QA visual
+Salida auditada desde extracción limpia:
 
-- Lámina QA: `/SABIK/Agent3/R2/SABIK_T1_VECTOR_QA_R2.png` · `libfile_4995917ffa70819185c8672ea2934b50`
-- Overlay: `/SABIK/Agent3/R2/SABIK_T1_OVERLAY_R2.png` · `libfile_2c8e7dbe312c819191041ecadc41ce90`
-- Informe QA: `/SABIK/Agent3/R2/WORDMARK_T1_VECTOR_QA_R2.md` · `libfile_6c7ddee3292c819180f0f71ae6971b3c`
-- Reproducibilidad: `/SABIK/Agent3/R2/WORDMARK_T1_REPRODUCIBILITY_R2.json` · `libfile_0c53f8b4950c8191b936db7532a702f6`
+`/SABIK/Agent3/R2_1/REBUILD_ALL_R2_OUTPUT.txt`
+· `libfile_adeca7133b5c819180c25241f308085f`
 
-## Autoridad visual
+Resultado final: **`REBUILD_ALL_R2_PASS`**.
 
-Referencia de mayor resolución disponible:
+## Locks
 
-- `ChatGPT Image 19 sept 2026, 07_49_59.png`
-- Library: `libfile_7e7cd6470c548191939aadbfdcfe68c7`
-- 1536×1024 px.
+- `R1_VISUAL_ASSET_LOCK.json` · 54 archivos · `libfile_eb328540db0c819190107d506a1e8040`
+- `R2_WORDMARK_VISUAL_LOCK.json` · 10 archivos · `libfile_a329cf97b0c081918a091a5e6f630f14`
+- `SYSTEM_CONTENT_LOCK.json` · 5 archivos dentro del paquete.
 
-El raster R1 365×70 no se usa como autoridad geométrica.
+Los archivos históricos R1 se conservan como evidencia, pero no forman parte del contrato reproducible actual.
 
-## R1 bloqueado
+## Manifest
 
-Los 76 archivos no autorizados para cambio se verifican por SHA-256: **0 diferencias**.
+`/SABIK/Agent3/R2_1/MANIFEST.json`
+· `libfile_7c641c678fa88191b1ff429c39e25bfd`
 
-Masters Matriz/Web/IA/Educa, derivados, siluetas, escalas, fondos, paletas, sistema verbal, matriz de conformidad y reproducibilidad R1 permanecen intactos.
+Cobertura: completa.  
+Hashes incorrectos tras rebuild limpio: **0**.
+
+## Cero cambios visuales
+
+Informe:
+`/SABIK/Agent3/R2_1/R2_1_VISUAL_ZERO_CHANGE_REPORT.json`
+· `libfile_9a2373fce9d88191bbee3885ba8b8b9a`
+
+Resultado:
+
+- 69 archivos PNG/SVG comparados entre R2 y R2.1;
+- 0 modificados;
+- 0 eliminados;
+- 0 nuevos.
 
 ## Estado
 
-**SABIK_WORDMARK_T1_VECTOR_R2_READY**
+**SABIK_VISUAL_FAMILY_FINAL_V1_R2_1_READY**
 
 **NO MERGE**
