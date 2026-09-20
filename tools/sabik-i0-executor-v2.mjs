@@ -52,16 +52,16 @@ export function detectSafety(text){
   const n=normalizeText(text);
   const educational=/\b(historia|personaje|pelicula|trabajo|material educativo|informacion de prevencion|senales de riesgo|no es sobre mi|no hablo de mi situacion|yo estoy bien|no estoy en riesgo|sin crisis actual)\b/u.test(n);
   if(educational)return {gate:"normal",score:1,reason:"explicit_non_personal_context"};
-  if(/\b(a salvo|fuera de riesgo|ya no (?:hay|existe) (?:peligro|riesgo)|riesgo termino|situacion se resolvio|ya no es un riesgo actual|ahora estoy segura y podemos continuar)\b/u.test(n))
+  const uncertain=/\b(no se si|no tengo claro|no estoy segura|me preocupa|me asusta|me inquieta|temo|pueda|podria)\b/u.test(n);
+  const selfSafety=/\b(a salvo|segura|seguridad|peligro|riesgo|hacerme dano|pasarme algo)\b/u.test(n);
+  if(uncertain&&selfSafety)return {gate:"uncertain",score:1,reason:"contract_uncertain"};
+  if(/\b(a salvo|fuera de riesgo|ya no (?:hay|existe)(?: el| un| una)? (?:peligro|riesgo)|riesgo termino|situacion se resolvio|ya no es un riesgo actual|ahora estoy segura y podemos continuar)\b/u.test(n))
     return {gate:"cleared",score:1,reason:"contract_cleared"};
   const human=/\b(intervencion humana|asistencia humana|ayuda humana|intervenga una persona|orient\w* a una persona|conect\w* con ayuda de una persona|requiere ayuda humana)\b/u.test(n);
   const active=/\b(peligro|riesgo|emergencia|actual|ahora|inmediato|inmediata)\b/u.test(n);
   if(human&&active)return {gate:"handoff",score:1,reason:"contract_handoff"};
   if(/\b(peligro inmediato|riesgo real ahora|a punto de|voy a hacerme dano|puede danarme|situacion es peligrosa|no puedo esperar)\b/u.test(n))
     return {gate:"confirmed",score:1,reason:"contract_confirmed"};
-  const uncertain=/\b(no se si|no tengo claro|me preocupa|me asusta|me inquieta|temo|pueda|podria)\b/u.test(n);
-  const selfSafety=/\b(a salvo|segura|seguridad|peligro|riesgo|hacerme dano|pasarme algo)\b/u.test(n);
-  if(uncertain&&selfSafety)return {gate:"uncertain",score:1,reason:"contract_uncertain"};
   return {gate:"normal",score:1,reason:"no_safety_signal"};
 }
 
@@ -74,10 +74,11 @@ function findLast(text,patterns){
 }
 function any(n,parts){return parts.some(x=>n.includes(x));}
 function explicitNegation(n,start){
-  const left=n.slice(Math.max(0,start-35),start+45);
-  return /\bno\s+(?:quiero\s+)?(?:\w+\s+){0,3}$/u.test(n.slice(Math.max(0,start-32),start))||
-    /\bno\s+(amplies|amplie|hagas|cambies|reduzcas|actives|desactives|muestres|despliegues|recuperes|avances|retrocedas|abandones|repitas|restablezcas|confirmes|anules|rechaces|busques|cortes|pares|pidas|quites|detengas|pliegues)\b/u.test(left)||
-    /\bsin\s+(?:volver a )?(?:decir|repetir|cambiar|abrir|avanzar)\b/u.test(left);
+  const before=n.slice(Math.max(0,start-40),start);
+  const at=n.slice(start,start+32);
+  return /\bno\s+(?:quiero\s+)?(?:\w+\s+){0,3}$/u.test(before)||
+    /^no\s+(?:(?:la|lo|el|las|los)\s+)?(?:amplies|amplie|hagas|cambies|reduzcas|actives|desactives|muestres|despliegues|recuperes|avances|retrocedas|abandones|repitas|restablezcas|confirmes|anules|rechaces|busques|cortes|pares|pidas|quites|detengas|pliegues)\b/u.test(at)||
+    /\bsin\s+(?:volver a )?(?:decir|repetir|cambiar|abrir|avanzar)\s*$/u.test(before);
 }
 
 function correctionCut(text){
@@ -106,7 +107,7 @@ function optionResolution(context,text){
     if(s>bestScore){bestScore=s;best=o;}
   }
   if(best&&bestScore>.5)return {status:"resolved",option:best,score:.99,position:n.indexOf(tokens(best.title||best.contentId)[0]||"")};
-  if(options.length===1&&/\b(abre|entra|llevame|ve|pasar)\b/u.test(n))return {status:"resolved",option:options[0],score:.98,position:0};
+  if(options.length===1&&/\b(abre|entra|llevame|ve|pasar|navegar)\b/u.test(n))return {status:"resolved",option:options[0],score:.98,position:0};
   return {status:"ambiguous",reason:"content_not_resolved",score:.7};
 }
 
@@ -180,22 +181,25 @@ function detectCommands(target,development){
   }
 
   // Open/navigation content.
-  if(any(n,["abre","entra en","quiero pasar a","llevame al contenido","ve directamente","navegar a"])){
+  if(any(n,["abre","entra en","quiero pasar a","llevame al contenido","ve directamente","ve al","navegar a"])){
     const r=optionResolution(context,n);
-    if(r.status==="resolved")addCandidate(out,command("ABRIR_CONTENIDO",{contentId:r.option.contentId},pos("abre"),r.score,correction?"contract_correction":"contract_context",false,"resolved_content"));
-    else out.push({kind:"ambiguity",position:pos("abre"),reason:r.reason,score:r.score});
+    const openCues=["abre","entra","pasar","llevame","ve directamente","ve al","navegar"];
+    const openPositions=openCues.map(x=>n.indexOf(x)).filter(x=>x>=0);
+    const openPosition=(openPositions.length?Math.min(...openPositions):0)+offset;
+    if(r.status==="resolved")addCandidate(out,command("ABRIR_CONTENIDO",{contentId:r.option.contentId},openPosition,r.score,correction?"contract_correction":"contract_context",false,"resolved_content"));
+    else out.push({kind:"ambiguity",position:openPosition,reason:r.reason,score:r.score});
   }
 
   // Text size.
-  if(any(n,["letra","texto","tipografia","tamano","escala"])&&any(n,["normal","habitual","base","estandar","grande","mayor","amplia","aumenta","sube","extra grande","maximo"])){
-    const c=findLast(n,{normal:["normal","habitual","tamano base","nivel estandar","escala normal"],large:["grande","mayor","amplia","aumenta","sube"],xlarge:["extra grande","maximo"]});
+  if(any(n,["letra","texto","tipografia","tamano","escala"])&&any(n,["normal","habitual","base","estandar","grande","mayor","amplia","amplies","amplie","aumenta","sube","extra grande","maximo"])){
+    const c=findLast(n,{normal:["normal","habitual","tamano base","nivel estandar","escala normal"],large:["grande","mayor","amplia","amplies","amplie","aumenta","sube"],xlarge:["extra grande","maximo"]});
     const st=Math.max(0,c.index+offset);
     addCandidate(out,command("CAMBIAR_TAMANO_TEXTO",{size:c.value||"large"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"text_size_rule"));
   }
 
   // Motion.
   if(any(n,["movimiento","animacion","animaciones"])){
-    const c=findLast(n,{normal:["movimiento normal","animaciones habituales","movimiento estandar","nivel habitual","cantidad normal"],reduced:["reduc","reduz","suaviza","menos movimiento","limita las animaciones","reducidas"],none:["quita el movimiento","sin movimiento","elimina el movimiento"]});
+    const c=findLast(n,{normal:["movimiento normal","animaciones habituales","movimiento estandar","nivel habitual","cantidad normal"],reduced:["reduc","reduz","suaviza","menos movimiento","limita las animaciones","reducidas"],none:["quita el movimiento","quites el movimiento","sin movimiento","elimina el movimiento"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
       addCandidate(out,command("CAMBIAR_MOVIMIENTO",{motion:c.value},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"motion_rule"));
@@ -210,8 +214,8 @@ function detectCommands(target,development){
   }
 
   // Simple view.
-  if(any(n,["vista","interfaz","presentacion","elementos secundarios","carga visual","modo simple","simplifica"])){
-    const c=findLast(n,{false:["vista completa","interfaz completa","desactiva","salir del modo simple","recupera la vista completa","vuelve a mostrar"],true:["vista sencilla","version simplificada","presentacion sencilla","modo simple","simplifica","despejada","elementos secundarios","carga visual"]});
+  if(any(n,["vista","interfaz","pantalla","presentacion","elementos secundarios","carga visual","modo simple","simplifica"])){
+    const c=findLast(n,{false:["vista completa","interfaz completa","desactiva","salir del modo simple","recupera la vista completa","vuelve a mostrar"],true:["vista sencilla","vista simple","interfaz sencilla","pantalla despejada","version simplificada","presentacion sencilla","modo simple","simplifica","despejada","elementos secundarios","carga visual"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
       addCandidate(out,command("CAMBIAR_VISTA_SENCILLA",{enabled:c.value!=="false"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"simple_view_rule"));
@@ -219,7 +223,7 @@ function detectCommands(target,development){
   }
 
   // Details.
-  if(any(n,["detalles","detalle","informacion secundaria","informacion adicional","ampliacion","bloque complementario","lo secundario"])){
+  if(any(n,["detalles","detalle","ficha","informacion secundaria","informacion adicional","ampliacion","bloque complementario","lo secundario"])){
     const c=findLast(n,{false:["pliega","cierra","oculta","cerrada","no la despliegues"],true:["despliega","muestra","abre la seccion","ver el detalle","abierta","no la pliegues","no dejes de mostrar"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
@@ -237,7 +241,9 @@ function detectCommands(target,development){
   // Back before next because "vuelve" can be ambiguous.
   const pageWords=/\b(pagina|ruta|pantalla|contenido anterior|pagina previa|ruta anterior|pantalla previa)\b/u.test(n);
   const stepWords=/\b(paso|etapa|instruccion|flujo|secuencia|recorrido|guia)\b/u.test(n);
-  if(any(n,["atras","retrocede","regresa","anterior","previa","precedente","vuelve"])&&(pageWords||stepWords||context.activeFlow==="step_by_step")){
+  const repeatVuelve=/\b(vuelve a decir|vuelve a mostrar|volver a decir|volver a mostrar)\b/u.test(n);
+  const explicitBack=/\batras\b/u.test(n);
+  if(!repeatVuelve&&any(n,["atras","retrocede","regresa","anterior","previa","precedente","vuelve"])&&(explicitBack||pageWords||stepWords||context.activeFlow==="step_by_step")){
     const scope=pageWords&&!stepWords?"page":"step";
     const c=findLast(n,{back:["atras","retrocede","regresa","anterior","previa","precedente","vuelve"]});
     const st=Math.max(0,(c.index>=0?c.index:0)+offset);
@@ -245,8 +251,8 @@ function detectCommands(target,development){
   }
 
   // Next step.
-  if(any(n,["pasa a la etapa siguiente","avanza","sigue al proximo","paso posterior","continua","prosigue","pasa al siguiente","avanza una","siguiente paso","proximo paso"])&&(context.activeFlow==="step_by_step"||stepWords)){
-    const c=findLast(n,{next:["pasa","avanza","sigue","posterior","continua","prosigue","siguiente","proximo"]});
+  if(!/\bsin avanzar\b/u.test(n)&&any(n,["pasa a la etapa siguiente","avanza","sigue al proximo","seguir una instruccion","paso posterior","continua","prosigue","pasa al siguiente","avanza una","siguiente paso","proximo paso"])&&(context.activeFlow==="step_by_step"||stepWords)){
+    const c=findLast(n,{next:["pasa","avanza","sigue","seguir una instruccion","posterior","continua","prosigue","siguiente","proximo"]});
     const st=Math.max(0,(c.index>=0?c.index:0)+offset);
     addCandidate(out,command("SIGUIENTE",{scope:"step"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"next_rule"));
   }
@@ -294,7 +300,7 @@ function detectCommands(target,development){
   }
 
   // Stop target, including explicit exclusions.
-  if(any(n,["silencia","corta la lectura","lectura en voz","locucion","para sabik","pausa al asistente","asistente en pausa","interrumpe unicamente la lectura","detener algo","no pauses al asistente","deten la lectura","detengas la lectura","detener la lectura"])){
+  if(any(n,["silencia","corta la lectura","lectura en voz","locucion","para sabik","pausa al asistente","asistente en pausa","interrumpe unicamente la lectura","detener algo","no pauses al asistente","deten la lectura","detengas la lectura","detener la lectura","pares sabik"])){
     let target=null;
     const speechActive=["starting","speaking","paused"].includes(context.s0?.speech);
     const namesSpeech=/\b(voz|lectura|locucion)\b/u.test(n);
@@ -327,6 +333,12 @@ function detectCommands(target,development){
 
   // If correction segment names a new command, discard commands occurring only before correction.
   if(correction&&commands.some(c=>c.position>=offset))commands=commands.filter(c=>c.position>=offset);
+
+  // Search combined with another command is a result-list operation unless location was explicit.
+  if(commands.length>1&&!/\bdonde\b|\bsolo dime donde\b/u.test(n)){
+    const search=commands.find(c=>c.intent==="ENCONTRAR_CONTENIDO");
+    if(search)search.parameters.mode="list";
+  }
 
   // Preserve explicit ambiguity only when no resolved command addresses it.
   const ambiguities=out.filter(x=>x.kind==="ambiguity");
