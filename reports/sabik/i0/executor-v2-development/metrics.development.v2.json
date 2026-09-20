@@ -344,16 +344,27 @@
       "max": 1,
       "mean": 0.9183756407451658
     },
-    "fallback": {
-      "n": 105,
-      "min": 0.055091891891891884,
-      "p10": 0.2888,
-      "p25": 0.3784,
+    "fallback_accept": {
+      "n": 76,
+      "min": 0.3784,
+      "p10": 0.4844705882352941,
+      "p25": 0.7,
       "p50": 0.7,
       "p75": 0.7,
       "p90": 0.7,
       "max": 0.7,
-      "mean": 0.5638666040806706
+      "mean": 0.6664068577858705
+    },
+    "context_resolution": {
+      "n": 29,
+      "min": 0.055091891891891884,
+      "p10": 0.195,
+      "p25": 0.2603333333333333,
+      "p50": 0.3026764705882353,
+      "p75": 0.32366666666666666,
+      "p90": 0.39339999999999997,
+      "max": 0.41899999999999993,
+      "mean": 0.29514042195669776
     },
     "by_kind": {
       "development_similarity": {
@@ -439,13 +450,25 @@
     "future_calibrable": [
       {
         "parameter": "fallback_accept_score_min",
-        "score_semantics": "development similarity/evidence score, not probability",
+        "score_semantics": "development_similarity evidence score, not probability",
         "provisional_value": 0.34,
+        "provisional_status": "fixed_for_V2_development_not_calibrated",
+        "development_similarity_distribution": {
+          "n": 76,
+          "min": 0.3784,
+          "p10": 0.4844705882352941,
+          "p25": 0.7,
+          "p50": 0.7,
+          "p75": 0.7,
+          "p90": 0.7,
+          "max": 0.7,
+          "mean": 0.6664068577858705
+        },
         "candidate_values": [
-          0.289,
-          0.378,
+          0.484,
           0.7
         ],
+        "candidates_change_decisions": true,
         "active": true
       }
     ],
@@ -461,22 +484,16 @@
     ],
     "sensitivity": [
       {
-        "threshold": 0.289,
-        "would_reject_fallback_scores": 12,
-        "would_accept_fallback_scores": 93,
-        "changes_from_provisional": 10
-      },
-      {
-        "threshold": 0.378,
-        "would_reject_fallback_scores": 25,
-        "would_accept_fallback_scores": 80,
-        "changes_from_provisional": 3
+        "threshold": 0.484,
+        "would_reject_fallback_scores": 6,
+        "would_accept_fallback_scores": 70,
+        "changes_from_provisional": 6
       },
       {
         "threshold": 0.7,
-        "would_reject_fallback_scores": 43,
+        "would_reject_fallback_scores": 14,
         "would_accept_fallback_scores": 62,
-        "changes_from_provisional": 21
+        "changes_from_provisional": 14
       }
     ]
   }
