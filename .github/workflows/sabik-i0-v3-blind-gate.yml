@@ -1,0 +1,68 @@
+name: Sabik I0 V3 blind data gate
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v3-blind-20260920
+  pull_request:
+    paths:
+      - 'tests/calibration/sabik/i0-v3/**'
+      - 'tools/validate-sabik-i0-calibration-v3.mjs'
+      - 'tools/check-sabik-i0-calibration-v3-independence.mjs'
+      - '.github/workflows/sabik-i0-v3-blind-gate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  blind-data-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify normative source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_CONTRACTS_V0_4.md)" = "73971249dff7b7cc6627a1bb2db229aaeee3bcdc"
+          test "$(git rev-parse HEAD:tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json)" = "89ddb4c0145b04ea72b57d70b0fd36517854af1a"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_SAFETY_GATE_MAPPING_V0_2.md)" = "03fb19d993d03f5b15fd26d6720e9770c265a1cf"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_PRIVACY_NETWORK_OFFLINE_V0_2.md)" = "9f7c6283f5845895f99186c4bac130b17120c8fd"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_PRESENTATION_EFFECTS_V0_1.md)" = "9d0ea05d038f5f8e5c807c49a2d2debf40a78a8a"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_S0_B3_PROJECTION_V0_2.md)" = "25f639f2de0951d082d0387fe97f8722ec90ba19"
+
+      - name: Verify frozen corpus hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n'             "23ee56e118ed89fdf6f63d5e2fb6aaa362d40aae0ac20614152676be9b793eb7"             "tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+
+      - name: Validate schema
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/validate-sabik-i0-calibration-v3.mjs             --dataset tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json             --report /tmp/schema-validation-v3.json
+
+      - name: Fetch reserved validation without checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin             +refs/pull/173/head:refs/remotes/origin/reserved-validation
+
+      - name: Blind independence gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/check-sabik-i0-calibration-v3-independence.mjs             --candidate tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl             --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reserved-git-ref refs/remotes/origin/reserved-validation             --report /tmp/independence-v3-redacted.json
+
+      - name: Verify no executor artifacts were changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 04569282ab3637a60ecccb002c8e49b8c4f3cd2a...HEAD)"
+          if printf '%s\n' "$changed" | grep -E '(^|/)(executor|executors)(/|$)|^config/sabik/i0/|^reports/sabik/i0/|^tools/run-sabik-i0-|^tools/.*executor' ; then
+            echo "Forbidden executor/config/result path changed on blind-data branch."
+            exit 1
+          fi
