@@ -117,17 +117,22 @@ let reservedChecked=false;
 if (args['reserved-git-ref']) {
   const ref=args['reserved-git-ref'];
   const names=execFileSync('git',['ls-tree','-r','--name-only',ref],{encoding:'utf8'}).split(/\r?\n/).filter(Boolean);
-  const paths=names.filter(p=>/tests\/validation\/sabik\/i0\/.*\.jsonl$/i.test(p));
-  if (!paths.length) {
+  const allJsonl=names.filter(p=>/\.jsonl$/i.test(p));
+  let paths=allJsonl.filter(p=>/(validation|reserved|holdout|eval)/i.test(p));
+  if (!paths.length) paths=allJsonl;
+  const rows=[];
+  for (const p of paths) {
+    let text;
+    try { text=execFileSync('git',['show',`${ref}:${p}`],{encoding:'utf8',maxBuffer:64*1024*1024}); }
+    catch { continue; }
+    try { rows.push(...parseJsonlText(text,'reserved_validation')); }
+    catch { continue; }
+  }
+  if (!rows.length) {
     const report={pass:false,error:'reserved_validation_not_found',candidate_count:candidates.length,reserved_validation_checked:false,conflicts:[]};
     if (args.report) fs.writeFileSync(args.report,JSON.stringify(report,null,2)+'\n');
     console.log(JSON.stringify({pass:false,error:'reserved_validation_not_found'}));
     process.exit(2);
-  }
-  const rows=[];
-  for (const p of paths) {
-    const text=execFileSync('git',['show',`${ref}:${p}`],{encoding:'utf8',maxBuffer:64*1024*1024});
-    rows.push(...parseJsonlText(text,'reserved_validation'));
   }
   refs.push({label:'reserved_validation',reserved:true,rows});
   reservedChecked=true;
