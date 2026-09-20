@@ -2,7 +2,8 @@
 
 **Fecha:** 20/09/2026  
 **Base:** PR #180 @ `2267aa5e506156139432e53f7dce6707bd697f9c`  
-**Estado:** development-only; calibration V2 no autorizada.
+**Estado:** development-only; calibration V2 no autorizada.  
+**Freeze funcional V2-R1:** `9a4bbd7f11214bcc8bbd4bd411c44103f4e2b212`
 
 ## Objetivo
 
