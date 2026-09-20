@@ -1,0 +1,91 @@
+{
+  "action_count_distribution": {
+    "0": 113,
+    "1": 71,
+    "2": 14,
+    "3": 2
+  },
+  "action_counts": {
+    "NAVIGATE_IRIS": 19,
+    "REPEAT_INSTRUCTION": 4,
+    "RESET_PREFERENCES": 5,
+    "RESTORE_PREVIOUS_STATE": 4,
+    "SET_DETAILS": 8,
+    "SET_MOTION": 15,
+    "SET_SIMPLE_VIEW": 13,
+    "SET_STEP_BY_STEP": 14,
+    "SET_TEXT_SIZE": 16,
+    "STEP_BACK": 3,
+    "STEP_NEXT": 4
+  },
+  "ambiguity_cases": 13,
+  "b3_counts": {
+    "CONFIRMAR": 4,
+    "ORIENTAR": 8,
+    "PAUSA": 3,
+    "PRESENTE": 159,
+    "TRANSICIÓN": 26
+  },
+  "case_count": 200,
+  "command_count_distribution": {
+    "0": 64,
+    "1": 112,
+    "2": 22,
+    "3": 2
+  },
+  "correction_cases": 10,
+  "gate_counts": {
+    "cleared": 5,
+    "confirmed": 5,
+    "handoff": 3,
+    "normal": 173,
+    "uncertain": 14
+  },
+  "ids": {
+    "first": "I0-CAL-3001",
+    "last": "I0-CAL-3200",
+    "unique": 200
+  },
+  "insufficient_cases": 20,
+  "intent_counts": {
+    "ABRIR_CONTENIDO": 14,
+    "ATRAS": 7,
+    "CAMBIAR_DETALLES": 8,
+    "CAMBIAR_MOVIMIENTO": 15,
+    "CAMBIAR_PASO_A_PASO": 14,
+    "CAMBIAR_TAMANO_TEXTO": 16,
+    "CAMBIAR_VISTA_SENCILLA": 13,
+    "CANCELAR": 4,
+    "CONFIRMAR_ACCION": 6,
+    "DESHACER_ULTIMA_ACCION": 7,
+    "DETENER": 7,
+    "ENCONTRAR_CONTENIDO": 18,
+    "OTRA_VIA": 5,
+    "PEDIR_AYUDA_HUMANA": 8,
+    "RECHAZAR_RESULTADO": 4,
+    "REPETIR_INDICACION": 4,
+    "RESTABLECER_PREFERENCIAS": 7,
+    "SIGUIENTE": 5
+  },
+  "locale_en_cases": 2,
+  "multi_action_cases": 33,
+  "negation_cases": 20,
+  "negative_critical_cases": 42,
+  "positive_control_cases": 72,
+  "result_kind_counts": {
+    "action_result": 95,
+    "clarification": 31,
+    "human_help": 8,
+    "insufficient": 20,
+    "out_of_scope": 1,
+    "response": 45
+  },
+  "reversible_cases": 73,
+  "risk_action_counts": {
+    "local_reversible": 84,
+    "local_with_loss": 21
+  },
+  "safety_cases": 27,
+  "utterances_unique": 200,
+  "with_loss_cases": 25
+}
