@@ -24,13 +24,14 @@
 - fecha de consulta/revisión;
 - estado publicado solo tras comprobación.
 
-### A4-P0-003 · Vida diaria: estado editorial contradictorio
-**Problema:** índice = BORRADOR; fichas revisadas = publicada.  
+### A4-P1-008 · Vida diaria: gobernanza fuente → build → dist
+**Hallazgo:** 48/48 fichas fuente contienen estado publicada y validación 10/09/2026; el índice fuente conserva BORRADOR. El pipeline lo resuelve deliberadamente: publica/valida en staging y elimina los estados editoriales antes de exponer `dist`.  
 **Aceptación:**
-- un solo estado por ficha;
-- origen del estado único;
-- índice y ficha sincronizados;
-- fecha de validación consistente.
+- comprobar el artefacto final después de build;
+- confirmar 48/48 rutas y sitemap generado;
+- confirmar ausencia de estados editoriales públicos;
+- conservar fecha/estado de revisión en un registro interno;
+- no editar a mano salidas generadas.
 
 ### A4-P0-004 · Transparencia IA
 **Aceptación:**
@@ -148,7 +149,7 @@ Añadir cuando cubran una necesidad real y tengan alternativa accesible.
 |---|---|
 | A4-P0-001 | INVESTIGADO |
 | A4-P0-002 | INVESTIGADO |
-| A4-P0-003 | INVESTIGADO |
+| A4-P1-008 | INVESTIGADO |
 | A4-P0-004 | INVESTIGADO |
 | A4-P0-005 | INVESTIGADO |
 | A4-P0-006 | FALTA arquitectura de datos real |
