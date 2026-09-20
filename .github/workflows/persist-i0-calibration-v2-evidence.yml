@@ -1,0 +1,104 @@
+name: Persist I0 Calibration V2 Evidence
+
+on:
+  push:
+    branches:
+      - astra/i0-calibration-v2-evidence-20260920
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  persist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR 180 branch
+        uses: actions/checkout@v4
+        with:
+          ref: sabik/i0-executor-v2-20260920
+          fetch-depth: 0
+
+      - name: Download immutable calibration artifact
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          rm -rf reports/sabik/i0/calibration-v2
+          mkdir -p reports/sabik/i0/calibration-v2
+          gh run download 35515428640 --repo mruizwow-bit/irisgreen --name i0-calibration-v2-authorized --dir reports/sabik/i0/calibration-v2
+
+      - name: Generate calibration review report
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const root="reports/sabik/i0/calibration-v2";
+          const identity=JSON.parse(fs.readFileSync(root+"/run-identity.json","utf8"));
+          const selection=JSON.parse(fs.readFileSync(root+"/selection.json","utf8"));
+          const pct=x=>(100*x).toFixed(2)+"%";
+          let md="# I0_CALIBRATION_RUN_V2_READY\\n\\n";
+          md+="**Run autorizado:** 35515428640 · SUCCESS\\n\\n";
+          md+="- HEAD ejecutado: \`"+identity.authorized_head+"\`\\n";
+          md+="- freeze funcional: \`"+identity.functional_freeze+"\`\\n";
+          md+="- runtime: \`"+identity.runtime.node+" · "+identity.runtime.platform+" "+identity.runtime.arch+"\`\\n";
+          md+="- comando: \`"+identity.command+"\`\\n";
+          md+="- grid: \`["+identity.grid.join(", ")+"]\`\\n";
+          md+="- development SHA-256: \`"+identity.sha256.development+"\`\\n";
+          md+="- calibration SHA-256: \`"+identity.sha256.calibration+"\`\\n";
+          md+="- schema SHA-256: \`"+identity.sha256.schema+"\`\\n";
+          md+="- config SHA-256: \`"+identity.sha256.config+"\`\\n";
+          md+="- validation_loaded: \`false\`\\n\\n";
+          md+="## Cobertura\\n\\n- 200 esperados / 200 recibidos / 200 únicos por candidato\\n- 0 faltantes / 0 extras\\n- mismo conjunto y mismo orden: **sí**\\n\\n";
+          md+="## Selección\\n\\n**"+selection.status+"**\\n\\n";
+          for(const c of selection.candidates){
+            const m=c.metrics,cl=m.classification.binary,ex=m.execution,ma=m.multi_action,neg=m.negation,ins=m.insufficient;
+            md+="## Threshold "+c.threshold+"\\n\\n";
+            md+="- eligible: **"+c.eligible+"**\\n";
+            md+="- full exact: **"+m.full_exact.correct+"/200 = "+pct(m.full_exact.accuracy)+"**\\n";
+            md+="- command-plan exact: **"+m.classification.command_plan_exact+"/200 = "+pct(m.classification.command_plan_accuracy)+"**\\n";
+            md+="- action-plan exact: **"+ex.action_plan_exact+"/200 = "+pct(ex.action_plan_accuracy)+"**\\n";
+            md+="- ResultKind: **"+m.result_kind.exact+"/200 = "+pct(m.result_kind.accuracy)+"**\\n";
+            md+="- S0: **"+m.s0_events.exact+"/200 = "+pct(m.s0_events.accuracy)+"**\\n";
+            md+="- B3: **"+m.b3.exact+"/200 = "+pct(m.b3.accuracy)+"**\\n";
+            md+="- classification P/R/F1: **"+cl.precision.toFixed(5)+" / "+cl.recall.toFixed(5)+" / "+cl.f1.toFixed(5)+"**\\n";
+            md+="- execution FP/FN: **"+ex.fp+" / "+ex.fn+"**\\n";
+            md+="- execution P/R/F1: **"+ex.precision.toFixed(5)+" / "+ex.recall.toFixed(5)+" / "+ex.f1.toFixed(5)+"**\\n";
+            md+="- Safety: **"+m.safety.exact+"/200**, errores **"+m.safety_errors+"**\\n";
+            md+="- negación negativa: **"+neg.negative.correct+"/"+neg.negative.total+"**, falsos disparos **"+neg.negative.false_triggers+"**\\n";
+            md+="- controles positivos: **"+neg.positive.correct+"/"+neg.positive.total+"**, fallos **"+neg.positive.failures+"**\\n";
+            md+="- insufficient full contractual: **"+ins.full_contract+"/"+ins.total+"**\\n";
+            md+="- multiacción command/action/full: **"+ma.command_exact+"/"+ma.total+" · "+ma.action_exact+"/"+ma.total+" · "+ma.full_exact+"/"+ma.total+"**\\n";
+            md+="- multiacción action exact | command exact: **"+ma.action_exact_given_command_exact+"/"+ma.command_exact_cases+" = "+pct(ma.action_exact_given_command_exact_rate)+"**\\n";
+            md+="- multiacción omitidas/extra/incorrectas/orden: **"+ma.omitted+" / "+ma.extra+" / "+ma.wrong+" / "+ma.order_errors+"**\\n";
+            md+="- clarification: **"+m.clarification.count+"/200 = "+pct(m.clarification.rate)+"**\\n";
+            md+="- abstention: **"+m.abstention.count+"/200 = "+pct(m.abstention.rate)+"**\\n";
+            md+="- hard gates: \`"+JSON.stringify(c.hard_gate_failures)+"\`\\n";
+            md+="- ranking vector: \`"+JSON.stringify(c.ranking_vector)+"\`\\n\\n";
+            md+="### Riesgo\\n\\n| Clase | casos | FP | FN | precision | recall | F1 | full exact |\\n|---|---:|---:|---:|---:|---:|---:|---:|\\n";
+            for(const [risk,r] of Object.entries(m.by_risk)){
+              md+="| "+risk+" | "+r.cases+" | "+r.execution_fp+" | "+r.execution_fn+" | "+r.execution_precision.toFixed(5)+" | "+r.execution_recall.toFixed(5)+" | "+r.execution_f1.toFixed(5)+" | "+r.full_exact+"/"+r.cases+" |\\n";
+            }
+            md+="\\n";
+          }
+          md+="## Conclusión\\n\\nNo existe candidato elegible. No se selecciona threshold manualmente. No se ejecuta una segunda calibration. Validation permanece cerrada.\\n";
+          fs.mkdirSync("docs/sabik-next",{recursive:true});
+          fs.writeFileSync("docs/sabik-next/I0_CALIBRATION_RUN_V2_READY.md",md);
+          NODE
+
+      - name: Guard evidence-only changes
+        run: |
+          changed="$(git status --short | awk '{print $2}')"
+          echo "$changed"
+          bad="$(echo "$changed" | grep -Ev '^(reports/sabik/i0/calibration-v2/|docs/sabik-next/I0_CALIBRATION_RUN_V2_READY.md$)' || true)"
+          if [ -n "$bad" ]; then
+            echo "Unexpected post-calibration modifications:"
+            echo "$bad"
+            exit 1
+          fi
+
+      - name: Commit evidence to PR 180
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/sabik/i0/calibration-v2 docs/sabik-next/I0_CALIBRATION_RUN_V2_READY.md
+          git commit -m "test(sabik): record authorized I0 calibration V2 evidence"
+          git push origin HEAD:sabik/i0-executor-v2-20260920
