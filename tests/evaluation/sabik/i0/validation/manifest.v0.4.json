@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "issue": 173,
+  "dataset_role": "external_validation_only",
+  "corpus_identity": "git_blob_of_this_manifest",
+  "development_cases": 0,
+  "validation_cases": 313,
+  "spanish_text_cases": 312,
+  "english_text_cases": 1,
+  "gate_final_cases": 13,
+  "critical_negation_cases": 26,
+  "ambiguity_cases": 21,
+  "safety_gate_cases": 16,
+  "expected_execute": {
+    "execute": 222,
+    "no_execute": 91
+  },
+  "training_reuse_prohibited": true,
+  "shards": [
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-01.json",
+      "range": "001-040",
+      "count": 40,
+      "git_blob": "b9d73d46cbcc5042f9f30a11e59769366d3ba26f"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-02a.json",
+      "range": "041-050",
+      "count": 10,
+      "git_blob": "34e21f878575722b86ec8d577a5fa17065b65925"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-02b.json",
+      "range": "051-070",
+      "count": 20,
+      "git_blob": "09cf639475a24abe20d1c3daca97b4b39cbeb314"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-03.json",
+      "range": "071-120",
+      "count": 50,
+      "git_blob": "e70e6c83e9b9a2f2667226f2721b3190b174ac75"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-04.json",
+      "range": "121-160",
+      "count": 40,
+      "git_blob": "689c60b65e8445a07bfd00296749cc977c7aa20f"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-05.json",
+      "range": "161-200",
+      "count": 40,
+      "git_blob": "2a672cd9c8a4708b2d81a1efa3115d7e066f1f0c"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-06a.json",
+      "range": "201-225",
+      "count": 25,
+      "git_blob": "980901d0683edfbdc89f6fbdc4190e8f6971d597"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-06b1.json",
+      "range": "226-235",
+      "count": 10,
+      "git_blob": "882b785c1a6a75028b5664587373f61e682c337c"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-06b2.json",
+      "range": "236-245",
+      "count": 10,
+      "git_blob": "8623e66abd177a1485299b94bd5e9a5276b20d0a"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-07a.json",
+      "range": "246-265",
+      "count": 20,
+      "git_blob": "cfba00cccee9f6f48ae7afc54012db6f3e98c0b2"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-07b.json",
+      "range": "266-280",
+      "count": 15,
+      "git_blob": "4a25940258b203c701ff3d50ccd75ed277e2fbce"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-08a.json",
+      "range": "281-300",
+      "count": 20,
+      "git_blob": "459e407ee90507330c1600484ef755e28aa10aab"
+    },
+    {
+      "path": "tests/evaluation/sabik/i0/validation/i0-intents-v0.4.part-08b-gate-final.json",
+      "range": "301-313",
+      "count": 13,
+      "git_blob": "aa5bed6aa1f53e63ae0c39e6d67a5e66ecf9a048"
+    }
+  ]
+}

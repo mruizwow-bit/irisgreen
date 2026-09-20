@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "02b",
+  "cases": [
+    {
+      "id": "I0-EVAL-051",
+      "locale": "es",
+      "utterance": "Activa la vista sencilla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "simple-view-toggle"
+    },
+    {
+      "id": "I0-EVAL-052",
+      "locale": "es",
+      "utterance": "Quiero ver menos elementos.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-053",
+      "locale": "es",
+      "utterance": "Simplifica la vista.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-054",
+      "locale": "es",
+      "utterance": "Pon la interfaz sencilla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-055",
+      "locale": "es",
+      "utterance": "Vuelve a la vista completa.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-056",
+      "locale": "es",
+      "utterance": "Quiero ver todo otra vez.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-057",
+      "locale": "es",
+      "utterance": "Quita la vista sencilla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "simple-view-toggle"
+    },
+    {
+      "id": "I0-EVAL-058",
+      "locale": "es",
+      "utterance": "Enséñame la versión con menos cosas en pantalla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-059",
+      "locale": "es",
+      "utterance": "Recupera todos los elementos de la interfaz.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-060",
+      "locale": "es",
+      "utterance": "Déjame solo lo esencial en pantalla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_SIMPLE_VIEW",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-061",
+      "locale": "es",
+      "utterance": "Muéstrame los detalles de esta ficha.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": true
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-062",
+      "locale": "es",
+      "utterance": "Abre los detalles.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": true
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "details-toggle"
+    },
+    {
+      "id": "I0-EVAL-063",
+      "locale": "es",
+      "utterance": "Quiero ver la información ampliada de esto.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": true
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-064",
+      "locale": "es",
+      "utterance": "Despliega los detalles del resultado.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "selected_result",
+        "expanded": true
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-065",
+      "locale": "es",
+      "utterance": "Oculta los detalles.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": false
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "details-toggle"
+    },
+    {
+      "id": "I0-EVAL-066",
+      "locale": "es",
+      "utterance": "Cierra la información adicional.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": false
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-067",
+      "locale": "es",
+      "utterance": "No necesito ver los detalles ahora.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": false
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-068",
+      "locale": "es",
+      "utterance": "Vuelve a plegar esta explicación.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": false
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-069",
+      "locale": "es",
+      "utterance": "Enséñame lo que está oculto en esta sección.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": true
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-070",
+      "locale": "es",
+      "utterance": "Esconde la parte detallada de la ficha.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "contentId": "current",
+        "expanded": false
+      },
+      "expected_action": "SET_DETAILS",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    }
+  ]
+}

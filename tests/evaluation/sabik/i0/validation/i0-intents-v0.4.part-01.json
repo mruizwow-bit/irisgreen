@@ -1,0 +1,766 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": 1,
+  "cases": [
+    {
+      "id": "I0-EVAL-001",
+      "locale": "es",
+      "utterance": "Busca información sobre pensamientos intrusivos.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "pensamientos intrusivos",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-002",
+      "locale": "es",
+      "utterance": "Quiero encontrar lo que tenéis sobre ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-003",
+      "locale": "es",
+      "utterance": "¿Dónde puedo leer algo sobre autismo?",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "autismo",
+        "mode": "locate"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-004",
+      "locale": "es",
+      "utterance": "Enséñame los contenidos relacionados con TOC.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "TOC",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-005",
+      "locale": "es",
+      "utterance": "Localiza en Iris la parte sobre sobrecarga sensorial.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "sobrecarga sensorial",
+        "mode": "locate"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-006",
+      "locale": "es",
+      "utterance": "Necesito la información de rutinas y cambios.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "rutinas y cambios",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-007",
+      "locale": "es",
+      "utterance": "A ver si hay algo sobre dificultad para dormir.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "dificultad para dormir",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-008",
+      "locale": "es",
+      "utterance": "Encuentra recursos sobre respiración y ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "respiración y ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-009",
+      "locale": "es",
+      "utterance": "Muéstrame dónde habláis de comunicación.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "comunicación",
+        "mode": "locate"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-010",
+      "locale": "es",
+      "utterance": "Quiero buscar la sección de discalculia.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "discalculia",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-011",
+      "locale": "es",
+      "utterance": "Abre la sección de ansiedad.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "ansiedad"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-012",
+      "locale": "es",
+      "utterance": "Entra en la ficha de pensamientos intrusivos.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "pensamientos-intrusivos"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-013",
+      "locale": "es",
+      "utterance": "Quiero abrir ese resultado.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "selected_result"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "optionsShown": [
+          {
+            "slot": 1,
+            "contentId": "selected_result"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I0-EVAL-014",
+      "locale": "es",
+      "utterance": "Llévame al contenido sobre autismo.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "autismo"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-015",
+      "locale": "es",
+      "utterance": "Abre el primer resultado de la lista.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "slot:1"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "optionsShown": [
+          {
+            "slot": 1,
+            "contentId": "slot:1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I0-EVAL-016",
+      "locale": "es",
+      "utterance": "Ve a la guía que acabas de mostrar.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "last_source"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastSources": [
+          {
+            "contentId": "last_source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I0-EVAL-017",
+      "locale": "es",
+      "utterance": "Entra en esa sección, por favor.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "current_selected"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "currentContentId": "current_selected"
+      }
+    },
+    {
+      "id": "I0-EVAL-018",
+      "locale": "es",
+      "utterance": "Abre la información completa de sueño.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "sueno"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-019",
+      "locale": "es",
+      "utterance": "Quiero ver esa página de comunicación.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "comunicacion"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-020",
+      "locale": "es",
+      "utterance": "Pasa al contenido de rutinas.",
+      "expected_intent": "ABRIR_CONTENIDO",
+      "expected_parameters": {
+        "contentId": "rutinas"
+      },
+      "expected_action": "NAVIGATE_IRIS",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-021",
+      "locale": "es",
+      "utterance": "Amplía el texto.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-amplia"
+    },
+    {
+      "id": "I0-EVAL-022",
+      "locale": "es",
+      "utterance": "Haz las letras más grandes.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-023",
+      "locale": "es",
+      "utterance": "Necesito el texto todavía más grande.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "xlarge"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-024",
+      "locale": "es",
+      "utterance": "Pon el tamaño máximo.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "xlarge"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-025",
+      "locale": "es",
+      "utterance": "Déjalo en tamaño normal.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "normal"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-026",
+      "locale": "es",
+      "utterance": "Reduce el texto al tamaño habitual.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "normal"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-027",
+      "locale": "es",
+      "utterance": "¿Puedes agrandar la letra un poco?",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-028",
+      "locale": "es",
+      "utterance": "Sube bastante el tamaño del texto.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "xlarge"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-029",
+      "locale": "es",
+      "utterance": "Vuelve el texto a normal.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "normal"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-030",
+      "locale": "es",
+      "utterance": "Quiero leer con letra grande.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-031",
+      "locale": "es",
+      "utterance": "Reduce el movimiento.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "reduced"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-032",
+      "locale": "es",
+      "utterance": "Quiero menos animaciones.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "reduced"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-033",
+      "locale": "es",
+      "utterance": "Quita todo el movimiento por ahora.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "none"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-034",
+      "locale": "es",
+      "utterance": "Déjalo completamente quieto.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "none"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-035",
+      "locale": "es",
+      "utterance": "Vuelve al movimiento normal.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "normal"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-036",
+      "locale": "es",
+      "utterance": "Activa otra vez el movimiento habitual.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "normal"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-037",
+      "locale": "es",
+      "utterance": "Pon las animaciones en modo reducido.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "reduced"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-038",
+      "locale": "es",
+      "utterance": "No quiero que se mueva nada en esta sesión.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "none"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-039",
+      "locale": "es",
+      "utterance": "Recupera el movimiento normal de Sabik.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "normal"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-040",
+      "locale": "es",
+      "utterance": "Baja la cantidad de movimiento.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "reduced"
+      },
+      "expected_action": "SET_MOTION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    }
+  ]
+}

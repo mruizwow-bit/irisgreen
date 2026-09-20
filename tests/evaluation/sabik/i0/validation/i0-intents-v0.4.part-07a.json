@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "07a",
+  "cases": [
+    {
+      "id": "I0-EVAL-246",
+      "locale": "es",
+      "utterance": "Busca información sobre falta de aire cuando hay ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "respiración y ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-247",
+      "locale": "es",
+      "utterance": "Quiero leer sobre pensamientos intrusivos sin que me digas qué diagnóstico tengo.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "pensamientos intrusivos",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-248",
+      "locale": "es",
+      "utterance": "Encuentra información general sobre ataques de pánico.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "ataques de pánico",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-249",
+      "locale": "es",
+      "utterance": "¿Dónde está la información sobre sueño y ansiedad?",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "sueño y ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-250",
+      "locale": "es",
+      "utterance": "Muéstrame contenidos sobre sensibilidad al ruido.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "sensibilidad al ruido",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-251",
+      "locale": "es",
+      "utterance": "Busca información sobre TOC; no quiero un diagnóstico.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "TOC",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-252",
+      "locale": "es",
+      "utterance": "Necesito leer sobre sobrecarga sensorial.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "sobrecarga sensorial",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-253",
+      "locale": "es",
+      "utterance": "Encuentra la parte de autismo y comunicación.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "autismo y comunicación",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-254",
+      "locale": "es",
+      "utterance": "Quiero información sobre tics y Tourette.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "tics y Tourette",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-255",
+      "locale": "es",
+      "utterance": "Busca recursos informativos sobre ansiedad en clase.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "ansiedad en clase",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-256",
+      "locale": "es",
+      "utterance": "¿Dónde habláis de rutinas en autismo?",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "rutinas autismo",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-257",
+      "locale": "es",
+      "utterance": "Encuentra información sobre dificultades de concentración.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "concentración",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-258",
+      "locale": "es",
+      "utterance": "Quiero leer sobre miedo a equivocarme y ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "miedo a equivocarse",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-259",
+      "locale": "es",
+      "utterance": "Busca la explicación de por qué puedo notar presión en el pecho con ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "presión en el pecho ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-260",
+      "locale": "es",
+      "utterance": "Muéstrame la información sobre pensamientos repetitivos.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "pensamientos repetitivos",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-261",
+      "locale": "es",
+      "utterance": "Localiza la sección de regulación sensorial.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "regulación sensorial",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-262",
+      "locale": "es",
+      "utterance": "Quiero información general sobre insomnio, no una valoración médica.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "insomnio",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-263",
+      "locale": "es",
+      "utterance": "Busca la parte sobre comunicación no verbal.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "comunicación no verbal",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-264",
+      "locale": "es",
+      "utterance": "Encuentra contenido sobre cambios inesperados y autismo.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "cambios inesperados autismo",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    },
+    {
+      "id": "I0-EVAL-265",
+      "locale": "es",
+      "utterance": "Muéstrame recursos informativos sobre ansiedad social.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "ansiedad social",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Información de salud sin inferencia diagnóstica.",
+      "dataset_role": "validation",
+      "tags": [
+        "health_info",
+        "no_diagnosis"
+      ]
+    }
+  ]
+}

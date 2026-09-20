@@ -1,0 +1,41 @@
+{
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "corpus_manifest_git_blob": "b40c80c3028b21d6e7c7a6cfd9dbb49c930de4cd",
+  "validation_cases": 313,
+  "development_cases": 0,
+  "spanish_text_cases": 312,
+  "english_text_cases": 1,
+  "gate_final_cases": 13,
+  "critical_negation_cases": 26,
+  "ambiguity_cases": 21,
+  "safety_gate_cases": 16,
+  "expected_execute": {
+    "execute": 222,
+    "no_execute": 91
+  },
+  "by_intent": {
+    "ABRIR_CONTENIDO": 11,
+    "ASK_CLARIFICATION": 21,
+    "ATRAS": 13,
+    "CAMBIAR_DETALLES": 12,
+    "CAMBIAR_MOVIMIENTO": 13,
+    "CAMBIAR_PASO_A_PASO": 15,
+    "CAMBIAR_TAMANO_TEXTO": 16,
+    "CAMBIAR_VISTA_SENCILLA": 13,
+    "CANCELAR": 11,
+    "CONFIRMAR_ACCION": 11,
+    "DESHACER_ULTIMA_ACCION": 12,
+    "DETENER": 15,
+    "ENCONTRAR_CONTENIDO": 34,
+    "MULTI_ACTION_PLAN": 12,
+    "OTRA_VIA": 11,
+    "OUT_OF_SCOPE": 20,
+    "PEDIR_AYUDA_HUMANA": 11,
+    "RECHAZAR_RESULTADO": 11,
+    "REPETIR_INDICACION": 12,
+    "RESTABLECER_PREFERENCIAS": 12,
+    "SAFETY_GATE": 16,
+    "SIGUIENTE": 11
+  },
+  "prediction_metrics_status": "NO_EVALUADO_SIN_EJECUTOR_I0_V0_4"
+}

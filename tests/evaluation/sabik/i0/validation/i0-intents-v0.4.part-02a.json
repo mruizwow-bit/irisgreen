@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "02a",
+  "cases": [
+    {
+      "id": "I0-EVAL-041",
+      "locale": "es",
+      "utterance": "Ponlo paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-step"
+    },
+    {
+      "id": "I0-EVAL-042",
+      "locale": "es",
+      "utterance": "Explícamelo por pasos.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-043",
+      "locale": "es",
+      "utterance": "Activa el modo paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-044",
+      "locale": "es",
+      "utterance": "Prefiero ir de uno en uno.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-045",
+      "locale": "es",
+      "utterance": "Quita el paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-046",
+      "locale": "es",
+      "utterance": "Ya no necesito verlo por pasos.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-047",
+      "locale": "es",
+      "utterance": "Desactiva la explicación paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-048",
+      "locale": "es",
+      "utterance": "Vamos paso por paso, por favor.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-049",
+      "locale": "es",
+      "utterance": "Quiero dejar el modo por pasos.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-050",
+      "locale": "es",
+      "utterance": "Haz que avancemos un paso cada vez.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "SET_STEP_BY_STEP",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    }
+  ]
+}

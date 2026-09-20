@@ -1,0 +1,798 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "05",
+  "cases": [
+    {
+      "id": "I0-EVAL-161",
+      "locale": "es",
+      "utterance": "Detén la voz.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-162",
+      "locale": "es",
+      "utterance": "Para de leer en voz alta.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-163",
+      "locale": "es",
+      "utterance": "Corta la locución.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "starting"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-164",
+      "locale": "es",
+      "utterance": "Pausa Sabik.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-165",
+      "locale": "es",
+      "utterance": "Detén al asistente.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-166",
+      "locale": "es",
+      "utterance": "Sabik, detente aquí mismo.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-167",
+      "locale": "es",
+      "utterance": "Deja de hablar.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-168",
+      "locale": "es",
+      "utterance": "Para la lectura, pero mantén el asistente.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-169",
+      "locale": "es",
+      "utterance": "Detén esta ayuda de Sabik.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-170",
+      "locale": "es",
+      "utterance": "Quiero parar al asistente ahora.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "S0_CONTROL_EVENT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-171",
+      "locale": "es",
+      "utterance": "Quiero hablar con una persona.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-172",
+      "locale": "es",
+      "utterance": "Necesito ayuda humana.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-173",
+      "locale": "es",
+      "utterance": "¿Puedes indicarme un recurso de ayuda atendido por personas?",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-174",
+      "locale": "es",
+      "utterance": "Prefiero que me ayude alguien real.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-175",
+      "locale": "es",
+      "utterance": "Busco un recurso humano verificado.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-176",
+      "locale": "es",
+      "utterance": "Necesito contactar con una persona, no con Sabik.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-177",
+      "locale": "es",
+      "utterance": "Dime dónde puedo pedir ayuda humana.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-178",
+      "locale": "es",
+      "utterance": "Quiero una opción para hablar con alguien.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-179",
+      "locale": "es",
+      "utterance": "¿Hay algún recurso verificado con atención humana?",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-180",
+      "locale": "es",
+      "utterance": "Necesito apoyo de una persona.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "FIND_VERIFIED_HUMAN_HELP",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-181",
+      "locale": "es",
+      "utterance": "No amplíes el texto.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-amplia"
+    },
+    {
+      "id": "I0-EVAL-182",
+      "locale": "es",
+      "utterance": "No quiero que hagas la letra más grande.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-text-large-2"
+    },
+    {
+      "id": "I0-EVAL-183",
+      "locale": "es",
+      "utterance": "No reduzcas el texto al tamaño normal.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "normal"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-text-normal"
+    },
+    {
+      "id": "I0-EVAL-184",
+      "locale": "es",
+      "utterance": "No quites el movimiento.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "none"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-motion"
+    },
+    {
+      "id": "I0-EVAL-185",
+      "locale": "es",
+      "utterance": "No reduzcas las animaciones.",
+      "expected_intent": "CAMBIAR_MOVIMIENTO",
+      "expected_parameters": {
+        "motion": "reduced"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-motion-reduced"
+    },
+    {
+      "id": "I0-EVAL-186",
+      "locale": "es",
+      "utterance": "No pongas el paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-step"
+    },
+    {
+      "id": "I0-EVAL-187",
+      "locale": "es",
+      "utterance": "No quiero paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-step"
+    },
+    {
+      "id": "I0-EVAL-188",
+      "locale": "es",
+      "utterance": "No quites el paso a paso todavía.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": false
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-step-off"
+    },
+    {
+      "id": "I0-EVAL-189",
+      "locale": "es",
+      "utterance": "No actives la vista sencilla.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-simple"
+    },
+    {
+      "id": "I0-EVAL-190",
+      "locale": "es",
+      "utterance": "No quiero ver menos elementos.",
+      "expected_intent": "CAMBIAR_VISTA_SENCILLA",
+      "expected_parameters": {
+        "enabled": true
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-simple-2"
+    },
+    {
+      "id": "I0-EVAL-191",
+      "locale": "es",
+      "utterance": "No ocultes los detalles.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "expanded": false,
+        "contentId": "current"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-details-hide"
+    },
+    {
+      "id": "I0-EVAL-192",
+      "locale": "es",
+      "utterance": "No muestres más detalles.",
+      "expected_intent": "CAMBIAR_DETALLES",
+      "expected_parameters": {
+        "expanded": true,
+        "contentId": "current"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-details-show"
+    },
+    {
+      "id": "I0-EVAL-193",
+      "locale": "es",
+      "utterance": "No avances al siguiente paso.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-next"
+    },
+    {
+      "id": "I0-EVAL-194",
+      "locale": "es",
+      "utterance": "No vuelvas atrás.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-atras"
+    },
+    {
+      "id": "I0-EVAL-195",
+      "locale": "es",
+      "utterance": "No regreses a la página anterior.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-page-back"
+    },
+    {
+      "id": "I0-EVAL-196",
+      "locale": "es",
+      "utterance": "No repitas la indicación.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-repeat"
+    },
+    {
+      "id": "I0-EVAL-197",
+      "locale": "es",
+      "utterance": "No restablezcas mis preferencias.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "all"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-reset"
+    },
+    {
+      "id": "I0-EVAL-198",
+      "locale": "es",
+      "utterance": "No confirmes esa acción.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-confirm"
+    },
+    {
+      "id": "I0-EVAL-199",
+      "locale": "es",
+      "utterance": "No canceles la solicitud.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "current_request"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-cancel"
+    },
+    {
+      "id": "I0-EVAL-200",
+      "locale": "es",
+      "utterance": "No deshagas el último cambio.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-undo"
+    }
+  ]
+}

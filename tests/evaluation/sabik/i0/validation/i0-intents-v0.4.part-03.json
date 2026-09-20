@@ -1,0 +1,1020 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "03",
+  "cases": [
+    {
+      "id": "I0-EVAL-071",
+      "locale": "es",
+      "utterance": "Siguiente.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-072",
+      "locale": "es",
+      "utterance": "Continúa con el siguiente paso.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-073",
+      "locale": "es",
+      "utterance": "Ya está, pasa al siguiente.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-074",
+      "locale": "es",
+      "utterance": "Avanza un paso.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-075",
+      "locale": "es",
+      "utterance": "Podemos seguir.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-076",
+      "locale": "es",
+      "utterance": "Dame el paso que viene ahora.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-077",
+      "locale": "es",
+      "utterance": "Continúa desde aquí.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-078",
+      "locale": "es",
+      "utterance": "Ve al siguiente punto.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-079",
+      "locale": "es",
+      "utterance": "Sigue con la instrucción siguiente.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-080",
+      "locale": "es",
+      "utterance": "Adelante con el próximo paso.",
+      "expected_intent": "SIGUIENTE",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_NEXT",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "activeFlow": "step_by_step",
+        "currentStep": 2,
+        "totalSteps": 5
+      }
+    },
+    {
+      "id": "I0-EVAL-081",
+      "locale": "es",
+      "utterance": "Vuelve atrás.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary",
+        "intentional_contrast"
+      ],
+      "contrast_group": "required-atras"
+    },
+    {
+      "id": "I0-EVAL-082",
+      "locale": "es",
+      "utterance": "Regresa al paso anterior.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-083",
+      "locale": "es",
+      "utterance": "Quiero volver un paso.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-084",
+      "locale": "es",
+      "utterance": "Retrocede al punto anterior.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-085",
+      "locale": "es",
+      "utterance": "Atrás en esta guía.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "step"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-086",
+      "locale": "es",
+      "utterance": "Vuelve a la página anterior.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-087",
+      "locale": "es",
+      "utterance": "Regresa a donde estaba antes.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-088",
+      "locale": "es",
+      "utterance": "Llévame a la pantalla anterior.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-089",
+      "locale": "es",
+      "utterance": "Quiero volver a la página de antes.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-090",
+      "locale": "es",
+      "utterance": "Retrocede en la navegación.",
+      "expected_intent": "ATRAS",
+      "expected_parameters": {
+        "scope": "page"
+      },
+      "expected_action": "STEP_BACK_OR_NAVIGATE",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-091",
+      "locale": "es",
+      "utterance": "Repite la indicación.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-092",
+      "locale": "es",
+      "utterance": "¿Puedes decirme otra vez este paso?",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-093",
+      "locale": "es",
+      "utterance": "No lo he leído bien; repítelo.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-094",
+      "locale": "es",
+      "utterance": "Vuelve a mostrar la última instrucción.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "last_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-095",
+      "locale": "es",
+      "utterance": "Dime de nuevo qué tenía que hacer.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "last_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-096",
+      "locale": "es",
+      "utterance": "Repite el paso actual sin avanzar.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-097",
+      "locale": "es",
+      "utterance": "Pon otra vez la indicación anterior.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "last_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-098",
+      "locale": "es",
+      "utterance": "Necesito que repitas lo último.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "last_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-099",
+      "locale": "es",
+      "utterance": "Otra vez la instrucción, por favor.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-100",
+      "locale": "es",
+      "utterance": "Recuérdame este paso exactamente.",
+      "expected_intent": "REPETIR_INDICACION",
+      "expected_parameters": {
+        "contextId": "current_instruction"
+      },
+      "expected_action": "REPEAT_INSTRUCTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-101",
+      "locale": "es",
+      "utterance": "Restablece las preferencias de esta sesión.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "session"
+      },
+      "expected_action": "RESET_PREFERENCES",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-102",
+      "locale": "es",
+      "utterance": "Vuelve a los ajustes de Sabik de esta sesión.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "session"
+      },
+      "expected_action": "RESET_PREFERENCES",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-103",
+      "locale": "es",
+      "utterance": "Reinicia solo mis preferencias temporales.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "session"
+      },
+      "expected_action": "RESET_PREFERENCES",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-104",
+      "locale": "es",
+      "utterance": "Borra los cambios de esta sesión.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "session"
+      },
+      "expected_action": "RESET_PREFERENCES",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-105",
+      "locale": "es",
+      "utterance": "Quiero restablecer el tamaño y movimiento guardados.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "saved"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-106",
+      "locale": "es",
+      "utterance": "Restablece las preferencias guardadas de Sabik.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "saved"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-107",
+      "locale": "es",
+      "utterance": "Devuelve los ajustes guardados de Sabik a sus valores iniciales.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "saved"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-108",
+      "locale": "es",
+      "utterance": "Restablece todos los ajustes que gestiona Sabik.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "all"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-109",
+      "locale": "es",
+      "utterance": "Pon a cero las preferencias de Sabik, de sesión y guardadas.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "all"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-110",
+      "locale": "es",
+      "utterance": "Quiero empezar con los ajustes de Sabik por defecto.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "all"
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-111",
+      "locale": "es",
+      "utterance": "Sí, confirma.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-112",
+      "locale": "es",
+      "utterance": "De acuerdo, haz esa acción.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-113",
+      "locale": "es",
+      "utterance": "Confirmo el cambio que me has indicado.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-114",
+      "locale": "es",
+      "utterance": "Sí, continúa con lo que estaba pendiente.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-115",
+      "locale": "es",
+      "utterance": "Acepto esa acción.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-116",
+      "locale": "es",
+      "utterance": "Puedes proceder con la confirmación.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-117",
+      "locale": "es",
+      "utterance": "Confirmado, adelante.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-118",
+      "locale": "es",
+      "utterance": "Sí, es eso; hazlo.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-119",
+      "locale": "es",
+      "utterance": "Apruebo el cambio pendiente.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-120",
+      "locale": "es",
+      "utterance": "Vale, confirma esa operación.",
+      "expected_intent": "CONFIRMAR_ACCION",
+      "expected_parameters": {
+        "confirmationId": "pending"
+      },
+      "expected_action": "APPLY_PENDING_CONFIRMATION",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "pendingConfirmation": {
+          "id": "pending",
+          "valid": true
+        }
+      }
+    }
+  ]
+}
