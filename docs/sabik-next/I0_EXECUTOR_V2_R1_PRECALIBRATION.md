@@ -3,7 +3,7 @@
 **Fecha:** 20/09/2026  
 **Base:** PR #180 @ `2267aa5e506156139432e53f7dce6707bd697f9c`  
 **Estado:** development-only; calibration V2 no autorizada.  
-**Freeze funcional V2-R1:** `9a4bbd7f11214bcc8bbd4bd411c44103f4e2b212`
+**Freeze funcional V2-R1:** `09e65f789c2b9c811532ac90fc0533db693c2353`
 
 ## Objetivo
 
@@ -163,3 +163,67 @@ R1 solo se considera congelable si development conserva:
 - insufficient 3/3;
 - multiacción command/action/full 25/25;
 - cero hardcodes por ID o por las frases retiradas.
+
+
+## Development R1 · resultado congelado
+
+Ejecución reproducible del ejecutor funcional `09e65f789c2b9c811532ac90fc0533db693c2353`, usando únicamente development leave-one-out y threshold externo `0.34`.
+
+- full exact: **260/400 = 65,00 %**
+- command-plan exact: **285/400 = 71,25 %**
+- action-plan exact: **328/400 = 82,00 %**
+- ResultKind: **347/400 = 86,75 %**
+- S0 events: **388/400 = 97,00 %**
+- B3: **358/400 = 89,50 %**
+- Safety: **400/400 = 100 %**
+- execution FP/FN: **13 / 26**
+- execution precision/recall/F1: **0,9350 / 0,87793 / 0,90557**
+- action exact condicionado a command exact: **270/285 = 94,74 %**
+- clarification: **26/400 = 6,50 %**
+- abstention: **11/400 = 2,75 %**
+
+Gates:
+- Safety: **400/400**
+- negativos críticos: **4/4**, 0 falsos disparos
+- controles positivos: **4/4**
+- insufficient: **3/3 full record**
+- multiacción: **25/25 command · 25/25 action · 25/25 full**
+- multiacción omitidas/extra/incorrectas/orden: **0/0/0/0**
+
+## V2 ↔ V2-R1
+
+| Métrica | V2 | V2-R1 |
+|---|---:|---:|
+| full exact | 61,50 % | **65,00 %** |
+| command-plan exact | 67,50 % | **71,25 %** |
+| action-plan exact | 82,00 % | **82,00 %** |
+| ResultKind | 86,75 % | **86,75 %** |
+| S0 events | 96,75 % | **97,00 %** |
+| B3 | **90,75 %** | 89,50 % |
+| Safety | 100 % | **100 %** |
+| execution precision | 0,9350 | **0,9350** |
+| execution recall | 0,87793 | **0,87793** |
+| execution F1 | 0,90557 | **0,90557** |
+| multiacción full | 25/25 | **25/25** |
+
+La retirada del hardcode no provoca regresión global: full exact y command-plan mejoran. Se registra una regresión B3 de **−1,25 puntos porcentuales**. No se introduce una corrección oportunista antes de calibration para ocultarla.
+
+## Sensibilidad development del grid congelado
+
+Población `development_similarity`: **53 scores**.
+
+| threshold | rechazados | aceptados | decisiones distintas frente a 0.34 |
+|---:|---:|---:|---:|
+| 0.34 | 0 | 53 | 0 |
+| 0.484 | 6 | 47 | 6 |
+| 0.700 | 14 | 39 | 14 |
+
+Los tres valores se ejecutaron externamente sobre development sin editar el ejecutor. Los cinco gates permanecieron correctos con 0.484 y 0.700.
+
+## Estado de carga
+
+El manifest R1 fija:
+- `calibration_loaded=false`
+- `validation_loaded=false`
+
+No se ejecutó el runner de calibration V2.
