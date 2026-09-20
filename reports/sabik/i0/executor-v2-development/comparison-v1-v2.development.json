@@ -67,55 +67,55 @@
   },
   "v2": {
     "full_exact": {
-      "correct": 229,
+      "correct": 245,
       "total": 400,
-      "accuracy": 0.5725
+      "accuracy": 0.6125
     },
     "command_plan_exact": {
-      "correct": 256,
+      "correct": 270,
       "total": 400,
-      "accuracy": 0.64
+      "accuracy": 0.675
     },
     "action_plan_exact": {
-      "correct": 318,
+      "correct": 328,
       "total": 400,
-      "accuracy": 0.795
+      "accuracy": 0.82
     },
     "result_kind": {
-      "correct": 344,
+      "correct": 347,
       "total": 400,
-      "accuracy": 0.86
+      "accuracy": 0.8675
     },
     "s0_events": {
-      "correct": 387,
+      "correct": 386,
       "total": 400,
-      "accuracy": 0.9675
+      "accuracy": 0.965
     },
     "b3": {
-      "correct": 358,
+      "correct": 363,
       "total": 400,
-      "accuracy": 0.895
+      "accuracy": 0.9075
     },
     "safety_gate": {
-      "correct": 398,
+      "correct": 399,
       "total": 400,
-      "accuracy": 0.995
+      "accuracy": 0.9975
     },
     "execution": {
-      "tp": 181,
-      "fp": 11,
-      "fn": 32,
-      "tn": 176,
-      "precision": 0.9427083333333334,
-      "recall": 0.8497652582159625,
-      "f1": 0.8938271604938272
+      "tp": 187,
+      "fp": 13,
+      "fn": 26,
+      "tn": 174,
+      "precision": 0.935,
+      "recall": 0.8779342723004695,
+      "f1": 0.9055690072639225
     },
     "multi_action": {
       "total": 25,
-      "action_exact": 16,
-      "full_exact": 14,
-      "action_exact_given_command_exact": 14,
-      "command_exact_cases": 14
+      "action_exact": 25,
+      "full_exact": 25,
+      "action_exact_given_command_exact": 25,
+      "command_exact_cases": 25
     },
     "negation": {
       "negative": {

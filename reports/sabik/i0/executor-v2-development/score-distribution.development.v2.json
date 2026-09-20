@@ -2,7 +2,7 @@
   "score_semantics": "evidence_score_not_probability",
   "distribution": {
     "all": {
-      "n": 560,
+      "n": 575,
       "min": 0.055091891891891884,
       "p10": 0.7,
       "p25": 0.99,
@@ -10,44 +10,44 @@
       "p75": 1,
       "p90": 1,
       "max": 1,
-      "mean": 0.9114800156178036
+      "mean": 0.9183756407451658
     },
     "fallback": {
-      "n": 109,
+      "n": 105,
       "min": 0.055091891891891884,
-      "p10": 0.279768115942029,
-      "p25": 0.3776901408450704,
+      "p10": 0.2888,
+      "p25": 0.3784,
       "p50": 0.7,
       "p75": 0.7,
       "p90": 0.7,
       "max": 0.7,
-      "mean": 0.5549431995043141
+      "mean": 0.5638666040806706
     },
     "by_kind": {
       "development_similarity": {
-        "n": 78,
-        "min": 0.37,
-        "p10": 0.4726666666666667,
+        "n": 76,
+        "min": 0.3784,
+        "p10": 0.4844705882352941,
         "p25": 0.7,
         "p50": 0.7,
         "p75": 0.7,
         "p90": 0.7,
         "max": 0.7,
-        "mean": 0.6588066819452071
+        "mean": 0.6664068577858705
       },
       "contract_context": {
-        "n": 98,
+        "n": 102,
         "min": 0.98,
-        "p10": 0.99,
+        "p10": 0.98,
         "p25": 0.99,
         "p50": 0.99,
         "p75": 0.99,
         "p90": 1,
         "max": 1,
-        "mean": 0.9910204081632656
+        "mean": 0.9905882352941181
       },
       "contract_exact": {
-        "n": 352,
+        "n": 367,
         "min": 1,
         "p10": 1,
         "p25": 1,
@@ -58,15 +58,15 @@
         "mean": 1
       },
       "development_context_resolution": {
-        "n": 31,
+        "n": 29,
         "min": 0.055091891891891884,
         "p10": 0.195,
         "p25": 0.2603333333333333,
-        "p50": 0.29159999999999997,
-        "p75": 0.31862325581395345,
+        "p50": 0.3026764705882353,
+        "p75": 0.32366666666666666,
         "p90": 0.39339999999999997,
         "max": 0.41899999999999993,
-        "mean": 0.2936092759433574
+        "mean": 0.29514042195669776
       },
       "development_fallback": {
         "n": 1,
@@ -110,7 +110,7 @@
         "score_semantics": "development similarity/evidence score, not probability",
         "provisional_value": 0.34,
         "candidate_values": [
-          0.28,
+          0.289,
           0.378,
           0.7
         ],
@@ -129,22 +129,22 @@
     ],
     "sensitivity": [
       {
-        "threshold": 0.28,
-        "would_reject_fallback_scores": 11,
-        "would_accept_fallback_scores": 98,
-        "changes_from_provisional": 13
+        "threshold": 0.289,
+        "would_reject_fallback_scores": 12,
+        "would_accept_fallback_scores": 93,
+        "changes_from_provisional": 10
       },
       {
         "threshold": 0.378,
-        "would_reject_fallback_scores": 29,
+        "would_reject_fallback_scores": 25,
         "would_accept_fallback_scores": 80,
-        "changes_from_provisional": 5
+        "changes_from_provisional": 3
       },
       {
         "threshold": 0.7,
-        "would_reject_fallback_scores": 47,
+        "would_reject_fallback_scores": 43,
         "would_accept_fallback_scores": 62,
-        "changes_from_provisional": 23
+        "changes_from_provisional": 21
       }
     ]
   }
