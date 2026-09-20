@@ -1,0 +1,24 @@
+{
+  "status": "B3_STATIC_TECHNICAL_QA_PASS",
+  "checks": {
+    "keyframes_color": 15,
+    "keyframes_mono": 15,
+    "scaled_64": 15,
+    "scaled_32": 15,
+    "proofs": 5,
+    "present_inner_master_exact": {
+      "web": true,
+      "ia": true,
+      "educa": true
+    },
+    "no_matriz_states": true,
+    "reproducibility": "B3_STATIC_REPRODUCIBILITY_PASS"
+  },
+  "human_test_pending": [
+    "Distinguibilidad semántica entre los cinco estados en contexto real.",
+    "Distinguibilidad monocroma.",
+    "Percepción suficiente a 32 px.",
+    "No infantilización de Educa en muestra de usuarios.",
+    "Comprensión de ORIENTAR/TRANSICIÓN/CONFIRMAR sin sobreinterpretación."
+  ]
+}
