@@ -1,4 +1,4 @@
-# SABIK_VISUAL_FAMILY_FINAL_V1_R1
+# SABIK_VISUAL_FAMILY_FINAL_V1 · R2
 
 Fecha: 20/09/2026  
 Coordinación: Astra  
@@ -6,55 +6,81 @@ Agente: n.º 3 · Prototipos
 
 ## Estado
 
-**SABIK_VISUAL_FAMILY_FINAL_V1_R1_READY**
+**SABIK_WORDMARK_T1_VECTOR_R2_READY**
 
-Corrección técnica de Fase 2D. **No se ha rediseñado ninguna presencia.** La dirección, las cuatro formas, las paletas y el sistema verbal continúan cerrados.
+La corrección R1 permanece aceptada. R2 modifica exclusivamente el master vectorial del wordmark **SABIK T1 · REFINAMIENTO** y la evidencia técnica asociada.
 
-## Sistema verbal oficial
+**No se ha modificado Matriz, Web, IA ni Educa.**
+
+## Sistema verbal congelado
 
 **SABIK**  
 **CLARIDAD INTELIGENTE.**  
 **Una IA que adapta la información para que sea más fácil de entender y usar.**
 
-Terminología única:
+Familia:
 
 **UNA MISMA ESENCIA · CUATRO PRESENCIAS**
 
-## Correcciones R1
+## Wordmark T1 R2
 
-1. Los cuatro masters eliminan exclusivamente componentes alpha desconectados del cuerpo principal: rayas residuales, píxeles sueltos y ruido de extracción. Los píxeles RGBA conservados permanecen byte-a-byte idénticos.
-2. Los masters de las presencias se declaran correctamente como **raster 512×512 RGBA**. No se presenta como vector un SVG que contenga un PNG incrustado.
-3. Las siluetas ya no usan `alpha threshold + MaxFilter + MinFilter`. Se generan con una tinta única y el canal alpha maestro exacto, sin dilatación ni erosión.
-4. SABIK IA no incorpora órbitas ni trazos blancos añadidos.
-5. SABIK T1 dispone de maestro SVG real trazado desde la referencia aprobada; el PNG queda como preview.
-6. El rebuild desde una copia limpia finaliza sin errores y compara derivados por SHA-256.
-7. La matriz separa generación técnica a 32 px de validación perceptiva y limita cada PASS al activo realmente evaluado.
+Master de producción:
 
-## Escalas
+`masters/SABIK_WORDMARK_T1_MASTER_R2.svg`
 
-64 px, 40 px y 32 px están generados.  
-32 px es el mínimo recomendado **provisional**: el archivo técnico está validado, pero la suficiencia perceptiva en todos los contextos queda pendiente de revisión humana.  
-24 px sigue siendo prueba de resistencia y no tamaño estándar.
+Características:
+
+- vector real, sin raster incrustado;
+- 5 paths / 59 nodos;
+- líneas rectas y contornos Bézier normalizados;
+- sin dependencia de archivo de fuente;
+- no autotrace bruto;
+- no reproducción del escalonado raster;
+- no cambio de T1 ni exploración tipográfica.
+
+La referencia visual de autoridad es el tablero aprobado de 1536×1024 disponible en Library. El paquete conserva solo el recorte del wordmark, sin reintroducir copy histórico.
+
+## QA
+
+La Biblioteca contiene:
+
+- QA completo referencia/vector/overlay/×4/×8;
+- overlay;
+- SVG master;
+- ZIP R2;
+- informe de reproducibilidad.
+
+Pruebas raster:
+
+- 365×70;
+- 730×140;
+- 1460×280 (×4);
+- 2920×560 (×8).
+
+## Control geométrico
+
+- viewBox: `0 0 198 38`
+- drawing bbox: `x=0.0838 y=2.5000 w=197.9630 h=33.6645`
+- R1: 1260 nodos en el trazado píxel-a-píxel.
+- R2: 59 nodos en 5 paths.
 
 ## Reproducibilidad
 
-Desde la raíz del ZIP R1:
+**REPRODUCIBILITY_PASS**
 
-```bash
-python scripts/rebuild_all.py
-```
+- cuatro rasterizaciones R2 se regeneran y coinciden por SHA-256;
+- 76 archivos aceptados de R1 se comparan contra lock: **0 diferencias**;
+- SVG sin `<image>`;
+- manifest R2 verificado.
 
-Resultados esperados:
+## Paquete
 
-- `REBUILD_ALL_PASS`
-- `REPRODUCIBILITY_PASS`
+`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2.zip`
 
-Entorno fijado en `requirements.txt`.
+SHA-256:
 
-## Evidencia
+`0db11fb3a79959b5eb5a11a15550061a459e4584bb4b14cea02da83ac7dfa69a`
 
-Paquete R1: `/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R1.zip`
-
-El índice de activos registra IDs de Biblioteca, hashes, masters individuales, siluetas, pruebas y wordmark T1.
+Tamaño: `7,485,902 bytes`.
 
 **NO MERGE hasta revisión directa de Astra.**
