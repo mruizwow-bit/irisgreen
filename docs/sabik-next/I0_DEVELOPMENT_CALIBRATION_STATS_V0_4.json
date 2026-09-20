@@ -1,0 +1,182 @@
+{
+  "development": {
+    "cases": 400,
+    "by_gate": {
+      "normal": 376,
+      "uncertain": 6,
+      "confirmed": 6,
+      "cleared": 6,
+      "handoff": 6
+    },
+    "by_result_kind": {
+      "response": 119,
+      "action_result": 223,
+      "clarification": 32,
+      "human_help": 11,
+      "out_of_scope": 12,
+      "insufficient": 3
+    },
+    "by_b3": {
+      "ORIENTAR": 29,
+      "PRESENTE": 286,
+      "TRANSICIÓN": 81,
+      "PAUSA": 4
+    },
+    "classification_expected": {
+      "true": 333,
+      "false": 67
+    },
+    "action_execution_expected": {
+      "true": 213,
+      "false": 187
+    },
+    "by_intent": {
+      "ENCONTRAR_CONTENIDO": 60,
+      "ABRIR_CONTENIDO": 43,
+      "CAMBIAR_TAMANO_TEXTO": 29,
+      "CAMBIAR_MOVIMIENTO": 30,
+      "CAMBIAR_PASO_A_PASO": 24,
+      "CAMBIAR_VISTA_SENCILLA": 29,
+      "CAMBIAR_DETALLES": 25,
+      "SIGUIENTE": 14,
+      "ATRAS": 21,
+      "REPETIR_INDICACION": 15,
+      "DESHACER_ULTIMA_ACCION": 10,
+      "CANCELAR": 10,
+      "CONFIRMAR_ACCION": 9,
+      "RECHAZAR_RESULTADO": 5,
+      "OTRA_VIA": 6,
+      "DETENER": 10,
+      "PEDIR_AYUDA_HUMANA": 7,
+      "RESTABLECER_PREFERENCIAS": 11
+    },
+    "ambiguous": 26,
+    "multi_action": 25,
+    "safety_non_normal": 24,
+    "insufficient": 3,
+    "critical_negation": {
+      "total": 8,
+      "negative": 4,
+      "positive_control": 4
+    }
+  },
+  "calibration": {
+    "cases": 200,
+    "by_gate": {
+      "normal": 180,
+      "uncertain": 5,
+      "confirmed": 5,
+      "cleared": 5,
+      "handoff": 5
+    },
+    "by_result_kind": {
+      "response": 74,
+      "action_result": 69,
+      "clarification": 43,
+      "human_help": 7,
+      "out_of_scope": 5,
+      "insufficient": 2
+    },
+    "by_b3": {
+      "ORIENTAR": 23,
+      "PRESENTE": 149,
+      "TRANSICIÓN": 28
+    },
+    "classification_expected": {
+      "true": 136,
+      "false": 64
+    },
+    "action_execution_expected": {
+      "true": 69,
+      "false": 131
+    },
+    "by_intent": {
+      "ENCONTRAR_CONTENIDO": 36,
+      "CAMBIAR_TAMANO_TEXTO": 16,
+      "CAMBIAR_MOVIMIENTO": 13,
+      "CAMBIAR_PASO_A_PASO": 10,
+      "CAMBIAR_VISTA_SENCILLA": 11,
+      "SIGUIENTE": 7,
+      "ATRAS": 10,
+      "REPETIR_INDICACION": 6,
+      "DESHACER_ULTIMA_ACCION": 3,
+      "ABRIR_CONTENIDO": 19,
+      "CAMBIAR_DETALLES": 6,
+      "RESTABLECER_PREFERENCIAS": 4,
+      "CONFIRMAR_ACCION": 1,
+      "CANCELAR": 2,
+      "DETENER": 3,
+      "OTRA_VIA": 1,
+      "PEDIR_AYUDA_HUMANA": 3
+    },
+    "ambiguous": 36,
+    "multi_action": 15,
+    "safety_non_normal": 20,
+    "insufficient": 2,
+    "critical_negation": {
+      "total": 20,
+      "negative": 20,
+      "positive_control": 0
+    }
+  },
+  "hashes": {
+    "development": {
+      "bytes": 246100,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb",
+      "git_blob_sha1": "c4e683f587f539fd59f47044b2bfeff883b1facb"
+    },
+    "calibration": {
+      "bytes": 135952,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f",
+      "git_blob_sha1": "331ab54a31842b0ea04f5816f5f89f2e1b351b68"
+    },
+    "schema": {
+      "bytes": 24941,
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8",
+      "git_blob_sha1": "89ddb4c0145b04ea72b57d70b0fd36517854af1a"
+    }
+  },
+  "validator_contractual": {
+    "status": "PASS",
+    "schema_consumed": true,
+    "exact_counts": true,
+    "parameter_discrimination": true,
+    "action_type_risk_parameters": true,
+    "b3_projection": true,
+    "errors": 0
+  },
+  "prediction_input_contract_self_test": {
+    "status": "PREDICTION_COVERAGE_SELF_TEST_PASS",
+    "coverage": "200/200",
+    "expected": 200,
+    "received": 200,
+    "unique": 200,
+    "missing": 0,
+    "extras": 0,
+    "guards": {
+      "missing_rejected": true,
+      "duplicate_rejected": true,
+      "extra_rejected": true,
+      "nonfinite_rejected": true
+    },
+    "note": "Prueba estructural del contrato de entrada; los registros derivados de etiquetas no son predicciones de modelo ni se usan para tuning."
+  },
+  "anti_contamination": {
+    "validation_head": "33cd63089416ccdf82fddea4415d3afbec6aa05a",
+    "validation_cases_compared": 313,
+    "initial_suspects": 81,
+    "final_suspects": 6,
+    "development_calibration_suspects": 0,
+    "unreviewed_suspects": 0,
+    "authorized_astra_literal": 6,
+    "exact_authorized": 5,
+    "non_exact_authorized": 1,
+    "status": "PASS_NO_UNREVIEWED"
+  },
+  "validation_173": {
+    "included": false,
+    "used_as_template": false,
+    "used_for_tuning": false,
+    "use": "utterance-only anti-contamination review"
+  }
+}

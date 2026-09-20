@@ -1,0 +1,899 @@
+{
+  "dataset": "calibration",
+  "total": 200,
+  "correct": 54,
+  "incorrect": 146,
+  "accuracy": 0.27,
+  "classification": {
+    "command_plan_exact": 113,
+    "command_plan_accuracy": 0.565,
+    "binary": {
+      "tp": 135,
+      "fp": 28,
+      "fn": 1,
+      "tn": 36,
+      "precision": 0.8282208588957055,
+      "recall": 0.9926470588235294,
+      "f1": 0.903010033444816
+    },
+    "plan_confusion": {
+      "ENCONTRAR_CONTENIDO": {
+        "ENCONTRAR_CONTENIDO": 24,
+        "CANCELAR": 1,
+        "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 1,
+        "CAMBIAR_DETALLES": 3,
+        "ABRIR_CONTENIDO": 2,
+        "REPETIR_INDICACION": 1,
+        "CAMBIAR_TAMANO_TEXTO": 1
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO": 10
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "CAMBIAR_MOVIMIENTO": 10
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "CAMBIAR_PASO_A_PASO": 7
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_VISTA_SENCILLA": 7,
+        "CAMBIAR_MOVIMIENTO": 1
+      },
+      "SIGUIENTE": {
+        "SIGUIENTE": 4
+      },
+      "ATRAS": {
+        "ATRAS": 9,
+        "ABRIR_CONTENIDO": 1
+      },
+      "REPETIR_INDICACION": {
+        "ATRAS": 1,
+        "REPETIR_INDICACION": 2
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "DESHACER_ULTIMA_ACCION": 3
+      },
+      "ABRIR_CONTENIDO": {
+        "ABRIR_CONTENIDO": 14,
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 1,
+        "NO_INTENT": 1
+      },
+      "NO_INTENT": {
+        "CAMBIAR_MOVIMIENTO": 7,
+        "ATRAS": 3,
+        "NO_INTENT": 36,
+        "DETENER": 1,
+        "CAMBIAR_TAMANO_TEXTO": 5,
+        "CAMBIAR_VISTA_SENCILLA": 1,
+        "CAMBIAR_PASO_A_PASO": 2,
+        "DESHACER_ULTIMA_ACCION": 1,
+        "SIGUIENTE": 3,
+        "CONFIRMAR_ACCION": 1,
+        "CANCELAR": 1,
+        "REPETIR_INDICACION": 1,
+        "ABRIR_CONTENIDO": 1,
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1
+      },
+      "CAMBIAR_DETALLES": {
+        "CAMBIAR_DETALLES": 3
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "RESTABLECER_PREFERENCIAS": 4
+      },
+      "CONFIRMAR_ACCION": {
+        "CONFIRMAR_ACCION": 1
+      },
+      "CANCELAR": {
+        "CANCELAR": 2
+      },
+      "DETENER": {
+        "DETENER": 3
+      },
+      "OTRA_VIA": {
+        "OTRA_VIA": 1
+      },
+      "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 3
+      },
+      "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+      },
+      "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 3
+      },
+      "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": 3
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "PEDIR_AYUDA_HUMANA": 3
+      }
+    },
+    "per_intent": {
+      "ENCONTRAR_CONTENIDO": {
+        "n": 36,
+        "command_exact": 7,
+        "action_exact": 33,
+        "full": 6
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "n": 16,
+        "command_exact": 10,
+        "action_exact": 3,
+        "full": 3
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "n": 13,
+        "command_exact": 8,
+        "action_exact": 2,
+        "full": 1
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "n": 10,
+        "command_exact": 5,
+        "action_exact": 2,
+        "full": 1
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "n": 11,
+        "command_exact": 5,
+        "action_exact": 2,
+        "full": 0
+      },
+      "SIGUIENTE": {
+        "n": 7,
+        "command_exact": 7,
+        "action_exact": 1,
+        "full": 0
+      },
+      "ATRAS": {
+        "n": 10,
+        "command_exact": 8,
+        "action_exact": 5,
+        "full": 4
+      },
+      "REPETIR_INDICACION": {
+        "n": 6,
+        "command_exact": 3,
+        "action_exact": 1,
+        "full": 0
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "n": 3,
+        "command_exact": 3,
+        "action_exact": 2,
+        "full": 1
+      },
+      "ABRIR_CONTENIDO": {
+        "n": 19,
+        "command_exact": 16,
+        "action_exact": 3,
+        "full": 1
+      },
+      "CAMBIAR_DETALLES": {
+        "n": 6,
+        "command_exact": 5,
+        "action_exact": 2,
+        "full": 1
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "n": 4,
+        "command_exact": 3,
+        "action_exact": 3,
+        "full": 2
+      },
+      "CONFIRMAR_ACCION": {
+        "n": 1,
+        "command_exact": 1,
+        "action_exact": 1,
+        "full": 1
+      },
+      "CANCELAR": {
+        "n": 2,
+        "command_exact": 2,
+        "action_exact": 2,
+        "full": 1
+      },
+      "DETENER": {
+        "n": 3,
+        "command_exact": 3,
+        "action_exact": 3,
+        "full": 2
+      },
+      "OTRA_VIA": {
+        "n": 1,
+        "command_exact": 0,
+        "action_exact": 1,
+        "full": 0
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "n": 3,
+        "command_exact": 3,
+        "action_exact": 3,
+        "full": 3
+      }
+    }
+  },
+  "result_kind": {
+    "exact": 117,
+    "accuracy": 0.585,
+    "confusion": {
+      "response": {
+        "response": 56,
+        "action_result": 3,
+        "clarification": 14,
+        "insufficient": 1
+      },
+      "action_result": {
+        "action_result": 9,
+        "clarification": 59,
+        "response": 1
+      },
+      "clarification": {
+        "clarification": 39,
+        "action_result": 3,
+        "insufficient": 1
+      },
+      "human_help": {
+        "human_help": 7
+      },
+      "out_of_scope": {
+        "out_of_scope": 4,
+        "clarification": 1
+      },
+      "insufficient": {
+        "insufficient": 2
+      }
+    }
+  },
+  "safety_gate": {
+    "exact": 191,
+    "accuracy": 0.955
+  },
+  "b3": {
+    "exact": 162,
+    "accuracy": 0.81
+  },
+  "execution": {
+    "action_plan_exact": 133,
+    "action_plan_accuracy": 0.665,
+    "events_exact": 115,
+    "events_accuracy": 0.575,
+    "binary": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 61,
+      "tn": 131,
+      "precision": 1,
+      "recall": 0.11594202898550725,
+      "f1": 0.20779220779220778
+    },
+    "omitted_actions": 77,
+    "extra_actions": 6,
+    "wrong_actions": 6
+  },
+  "decisions": {
+    "classify": 57,
+    "clarify": 113,
+    "execute": 8,
+    "insufficient": 4,
+    "safety": 14,
+    "abstain": 4
+  },
+  "abstention_rate": 0.02,
+  "clarification_rate": 0.565,
+  "confidence": {
+    "top1": {
+      "min": 0.7900941176470588,
+      "p10": 0.7956,
+      "p50": 0.8350000000000001,
+      "p90": 0.923,
+      "max": 0.999,
+      "mean": 0.8464315825047912
+    },
+    "margin": {
+      "min": 0.254,
+      "p10": 0.25895999999999997,
+      "p50": 0.27144,
+      "p90": 0.3448,
+      "max": 0.44299999999999995,
+      "mean": 0.2897448633243594
+    },
+    "bins": [
+      {
+        "lo": 0,
+        "hi": 0.8,
+        "n": 29,
+        "correct": 6,
+        "accuracy": 0.20689655172413793,
+        "mean_confidence": 0.7945104974403556
+      },
+      {
+        "lo": 0.8,
+        "hi": 0.85,
+        "n": 107,
+        "correct": 23,
+        "accuracy": 0.21495327102803738,
+        "mean_confidence": 0.8237874085791715
+      },
+      {
+        "lo": 0.85,
+        "hi": 0.9,
+        "n": 40,
+        "correct": 10,
+        "accuracy": 0.25,
+        "mean_confidence": 0.8668680791685095
+      },
+      {
+        "lo": 0.9,
+        "hi": 0.94,
+        "n": 4,
+        "correct": 1,
+        "accuracy": 0.25,
+        "mean_confidence": 0.913392380952381
+      },
+      {
+        "lo": 0.94,
+        "hi": 0.97,
+        "n": 4,
+        "correct": 2,
+        "accuracy": 0.5,
+        "mean_confidence": 0.950775
+      },
+      {
+        "lo": 0.97,
+        "hi": 1.00001,
+        "n": 16,
+        "correct": 12,
+        "accuracy": 0.75,
+        "mean_confidence": 0.9980541666666669
+      }
+    ]
+  },
+  "insufficient": {
+    "total": 2,
+    "kind_correct": 2,
+    "no_action": 2,
+    "not_confirmar": 2,
+    "full": 2,
+    "cases": [
+      {
+        "id": "I0-CAL-0199",
+        "predicted_kind": "insufficient",
+        "predicted_actions": [],
+        "predicted_b3": "PRESENTE",
+        "correct": true
+      },
+      {
+        "id": "I0-CAL-0200",
+        "predicted_kind": "insufficient",
+        "predicted_actions": [],
+        "predicted_b3": "PRESENTE",
+        "correct": true
+      }
+    ]
+  },
+  "multi_action": {
+    "total": 15,
+    "command_exact": 12,
+    "action_exact": 0,
+    "full_exact": 0,
+    "omitted_actions": 25,
+    "extra_actions": 2,
+    "wrong_actions": 2,
+    "order_errors": 0,
+    "cases": [
+      {
+        "id": "I0-CAL-0141",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0142",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0143",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_STEP_BY_STEP",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "cal-m"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0144",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0145",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0146",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0147",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0148",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "cal-m"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "wrong": 1,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0149",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0150",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0151",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0152",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0153",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "cal-m"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "wrong": 1,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0154",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-CAL-0155",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      }
+    ]
+  },
+  "negation": {
+    "negative": {
+      "total": 20,
+      "correct": 19,
+      "false_triggers": 1,
+      "cases": [
+        {
+          "id": "I0-CAL-0106",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0107",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0108",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0109",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0110",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0111",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-CAL-0112",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0113",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-CAL-0114",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-CAL-0115",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0116",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-CAL-0117",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0118",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0119",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-CAL-0120",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0121",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0122",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0123",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-CAL-0124",
+          "correct": false,
+          "actions": [],
+          "events": [
+            "SPEECH_STOP"
+          ]
+        },
+        {
+          "id": "I0-CAL-0125",
+          "correct": true,
+          "actions": [],
+          "events": []
+        }
+      ]
+    },
+    "positive": {
+      "total": 0,
+      "correct": 0,
+      "failures": 0,
+      "cases": []
+    }
+  }
+}

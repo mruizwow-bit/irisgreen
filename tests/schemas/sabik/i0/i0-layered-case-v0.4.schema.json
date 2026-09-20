@@ -1,0 +1,1050 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schemas/sabik/i0/layered-case-v0.4.json",
+  "title": "Sabik I0 v0.4 layered development/calibration case V2",
+  "type": "object",
+  "required": [
+    "id",
+    "dataset_role",
+    "locale",
+    "utterance",
+    "context",
+    "expected_gate",
+    "expected_commands",
+    "expected_result_kind",
+    "expected_actions",
+    "expected_s0_events",
+    "should_classify",
+    "should_execute_actions",
+    "expected_b3",
+    "ambiguity",
+    "tags",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^I0-(DEV|CAL)-[0-9]{4}$"
+    },
+    "dataset_role": {
+      "enum": [
+        "development",
+        "calibration"
+      ]
+    },
+    "locale": {
+      "enum": [
+        "es",
+        "en"
+      ]
+    },
+    "utterance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "object"
+    },
+    "expected_gate": {
+      "enum": [
+        "normal",
+        "uncertain",
+        "confirmed",
+        "cleared",
+        "handoff"
+      ]
+    },
+    "expected_commands": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/command"
+      },
+      "maxItems": 3
+    },
+    "expected_result_kind": {
+      "enum": [
+        "response",
+        "action_result",
+        "clarification",
+        "insufficient",
+        "human_help",
+        "out_of_scope"
+      ]
+    },
+    "expected_actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/action"
+      },
+      "maxItems": 3
+    },
+    "expected_s0_events": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "RISK_UNCERTAIN",
+          "RISK_CONFIRMED",
+          "RISK_CLEARED",
+          "HUMAN_HANDOFF",
+          "PAUSE_ASSISTANT",
+          "SPEECH_STOP",
+          "ASK_CLARIFICATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "should_classify": {
+      "type": "boolean"
+    },
+    "should_execute_actions": {
+      "type": "boolean"
+    },
+    "expected_b3": {
+      "enum": [
+        "PRESENTE",
+        "ORIENTAR",
+        "TRANSICIÓN",
+        "PAUSA",
+        "CONFIRMAR"
+      ]
+    },
+    "ambiguity": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "string"
+    },
+    "confidence_expectation": {
+      "type": "object",
+      "required": [
+        "policy_target",
+        "risk_class",
+        "expected_band",
+        "margin"
+      ],
+      "properties": {
+        "policy_target": {
+          "enum": [
+            "classify",
+            "execute",
+            "clarify",
+            "no_action",
+            "plan",
+            "safety_gate",
+            "safety_normal",
+            "confirm",
+            "abstain"
+          ]
+        },
+        "risk_class": {
+          "enum": [
+            "local_reversible",
+            "local_with_loss",
+            "none"
+          ]
+        },
+        "expected_band": {
+          "enum": [
+            "very_high",
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "margin": {
+          "enum": [
+            "wide",
+            "narrow"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "command": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "ENCONTRAR_CONTENIDO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "query",
+                "mode"
+              ],
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "mode": {
+                  "enum": [
+                    "list",
+                    "locate"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "ABRIR_CONTENIDO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contentId"
+              ],
+              "properties": {
+                "contentId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CAMBIAR_TAMANO_TEXTO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "size"
+              ],
+              "properties": {
+                "size": {
+                  "enum": [
+                    "normal",
+                    "large",
+                    "xlarge"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CAMBIAR_MOVIMIENTO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "motion"
+              ],
+              "properties": {
+                "motion": {
+                  "enum": [
+                    "normal",
+                    "reduced",
+                    "none"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CAMBIAR_PASO_A_PASO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CAMBIAR_VISTA_SENCILLA"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CAMBIAR_DETALLES"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contentId",
+                "expanded"
+              ],
+              "properties": {
+                "contentId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expanded": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "SIGUIENTE"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "scope"
+              ],
+              "properties": {
+                "scope": {
+                  "const": "step"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "ATRAS"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "scope"
+              ],
+              "properties": {
+                "scope": {
+                  "enum": [
+                    "step",
+                    "page"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "REPETIR_INDICACION"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contextId"
+              ],
+              "properties": {
+                "contextId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "RESTABLECER_PREFERENCIAS"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "scope"
+              ],
+              "properties": {
+                "scope": {
+                  "enum": [
+                    "session",
+                    "saved",
+                    "all"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CONFIRMAR_ACCION"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "confirmationId"
+              ],
+              "properties": {
+                "confirmationId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "CANCELAR"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "target"
+              ],
+              "properties": {
+                "target": {
+                  "enum": [
+                    "clarification",
+                    "confirmation",
+                    "current_request"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "DESHACER_ULTIMA_ACCION"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [],
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "RECHAZAR_RESULTADO"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "resultId"
+              ],
+              "properties": {
+                "resultId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "OTRA_VIA"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "query"
+              ],
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "DETENER"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "target"
+              ],
+              "properties": {
+                "target": {
+                  "enum": [
+                    "speech",
+                    "assistant"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "intent",
+            "parameters"
+          ],
+          "properties": {
+            "intent": {
+              "const": "PEDIR_AYUDA_HUMANA"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [],
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "SET_TEXT_SIZE"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "size"
+              ],
+              "properties": {
+                "size": {
+                  "enum": [
+                    "normal",
+                    "large",
+                    "xlarge"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "SET_MOTION"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "motion"
+              ],
+              "properties": {
+                "motion": {
+                  "enum": [
+                    "normal",
+                    "reduced",
+                    "none"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "SET_STEP_BY_STEP"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "SET_SIMPLE_VIEW"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "SET_DETAILS"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contentId",
+                "expanded"
+              ],
+              "properties": {
+                "contentId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expanded": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "STEP_NEXT"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "flowId"
+              ],
+              "properties": {
+                "flowId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "STEP_BACK"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "flowId"
+              ],
+              "properties": {
+                "flowId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "REPEAT_INSTRUCTION"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contextId"
+              ],
+              "properties": {
+                "contextId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "NAVIGATE_IRIS"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "contentId",
+                "route"
+              ],
+              "properties": {
+                "contentId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "route": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_with_loss"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "RESET_PREFERENCES"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "scope",
+                "namedEffects"
+              ],
+              "properties": {
+                "scope": {
+                  "const": "session"
+                },
+                "namedEffects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "RESET_PREFERENCES"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "scope",
+                "namedEffects"
+              ],
+              "properties": {
+                "scope": {
+                  "enum": [
+                    "saved",
+                    "all"
+                  ]
+                },
+                "namedEffects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_with_loss"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "parameters",
+            "risk"
+          ],
+          "properties": {
+            "type": {
+              "const": "RESTORE_PREVIOUS_STATE"
+            },
+            "parameters": {
+              "type": "object",
+              "required": [
+                "actionId"
+              ],
+              "properties": {
+                "actionId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "risk": {
+              "const": "local_reversible"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,3368 @@
+{
+  "status": "I0_CALIBRATION_RUN_COMPLETE",
+  "selected_thresholds": {
+    "classify_floor": 0.7,
+    "local_reversible": {
+      "top1": 0.88,
+      "margin": 0.08
+    },
+    "local_with_loss": {
+      "top1": 0.92,
+      "margin": 0.12
+    }
+  },
+  "candidates_evaluated": 1296,
+  "development": {
+    "total": 400,
+    "correct": 103,
+    "incorrect": 297,
+    "accuracy": 0.2575,
+    "classification": {
+      "command_plan_exact": 254,
+      "command_plan_accuracy": 0.635,
+      "binary": {
+        "tp": 324,
+        "fp": 26,
+        "fn": 9,
+        "tn": 41,
+        "precision": 0.9257142857142857,
+        "recall": 0.972972972972973,
+        "f1": 0.9487554904831625
+      },
+      "plan_confusion": {
+        "ENCONTRAR_CONTENIDO": {
+          "ENCONTRAR_CONTENIDO": 51,
+          "ABRIR_CONTENIDO": 2,
+          "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 1,
+          "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1
+        },
+        "ABRIR_CONTENIDO": {
+          "ABRIR_CONTENIDO": 37,
+          "ENCONTRAR_CONTENIDO": 1
+        },
+        "NO_INTENT": {
+          "ABRIR_CONTENIDO": 4,
+          "NO_INTENT": 41,
+          "CAMBIAR_DETALLES": 1,
+          "CAMBIAR_VISTA_SENCILLA": 2,
+          "ATRAS": 3,
+          "DETENER": 1,
+          "ENCONTRAR_CONTENIDO": 6,
+          "CONFIRMAR_ACCION": 1,
+          "CAMBIAR_MOVIMIENTO": 2,
+          "CAMBIAR_TAMANO_TEXTO": 2,
+          "DESHACER_ULTIMA_ACCION": 2,
+          "OTRA_VIA": 1,
+          "PEDIR_AYUDA_HUMANA": 1
+        },
+        "CAMBIAR_TAMANO_TEXTO": {
+          "CAMBIAR_TAMANO_TEXTO": 22,
+          "CAMBIAR_MOVIMIENTO": 1
+        },
+        "CAMBIAR_MOVIMIENTO": {
+          "CAMBIAR_MOVIMIENTO": 21,
+          "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1,
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1
+        },
+        "CAMBIAR_PASO_A_PASO": {
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": 4,
+          "REPETIR_INDICACION": 3,
+          "SIGUIENTE": 1,
+          "ENCONTRAR_CONTENIDO": 1,
+          "CAMBIAR_PASO_A_PASO": 10
+        },
+        "CAMBIAR_VISTA_SENCILLA": {
+          "CAMBIAR_VISTA_SENCILLA": 16,
+          "NO_INTENT": 1,
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 2,
+          "CAMBIAR_MOVIMIENTO": 1,
+          "ATRAS": 1,
+          "ENCONTRAR_CONTENIDO": 1
+        },
+        "CAMBIAR_DETALLES": {
+          "CAMBIAR_DETALLES": 18,
+          "NO_INTENT": 1,
+          "CAMBIAR_MOVIMIENTO": 1
+        },
+        "SIGUIENTE": {
+          "SIGUIENTE": 8,
+          "ATRAS": 1
+        },
+        "ATRAS": {
+          "ATRAS": 18,
+          "NO_INTENT": 1,
+          "SIGUIENTE": 1,
+          "CAMBIAR_PASO_A_PASO": 1
+        },
+        "REPETIR_INDICACION": {
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": 2,
+          "SIGUIENTE": 2,
+          "REPETIR_INDICACION": 5,
+          "CAMBIAR_PASO_A_PASO": 1
+        },
+        "DESHACER_ULTIMA_ACCION": {
+          "DESHACER_ULTIMA_ACCION": 8,
+          "NO_INTENT": 1,
+          "ATRAS": 1
+        },
+        "CANCELAR": {
+          "CANCELAR": 8,
+          "RECHAZAR_RESULTADO": 1,
+          "ATRAS": 1
+        },
+        "CONFIRMAR_ACCION": {
+          "CONFIRMAR_ACCION": 8,
+          "NO_INTENT": 1
+        },
+        "RECHAZAR_RESULTADO": {
+          "RECHAZAR_RESULTADO": 4,
+          "OTRA_VIA": 1
+        },
+        "OTRA_VIA": {
+          "OTRA_VIA": 5,
+          "ATRAS": 1
+        },
+        "DETENER": {
+          "DETENER": 8,
+          "NO_INTENT": 1,
+          "ATRAS": 1
+        },
+        "PEDIR_AYUDA_HUMANA": {
+          "PEDIR_AYUDA_HUMANA": 5,
+          "NO_INTENT": 2
+        },
+        "RESTABLECER_PREFERENCIAS": {
+          "RESTABLECER_PREFERENCIAS": 9,
+          "NO_INTENT": 1,
+          "CAMBIAR_TAMANO_TEXTO": 1
+        },
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 5
+        },
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+          "ABRIR_CONTENIDO": 2,
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+        },
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": 4,
+          "CAMBIAR_PASO_A_PASO": 1
+        },
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": 4,
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": 1
+        },
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": {
+          "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1,
+          "CAMBIAR_MOVIMIENTO": 1
+        },
+        "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": {
+          "CAMBIAR_VISTA_SENCILLA": 2
+        },
+        "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+          "CAMBIAR_TAMANO_TEXTO": 1
+        }
+      },
+      "per_intent": {
+        "ENCONTRAR_CONTENIDO": {
+          "n": 60,
+          "command_exact": 11,
+          "action_exact": 55,
+          "full": 5
+        },
+        "ABRIR_CONTENIDO": {
+          "n": 43,
+          "command_exact": 40,
+          "action_exact": 21,
+          "full": 21
+        },
+        "CAMBIAR_TAMANO_TEXTO": {
+          "n": 29,
+          "command_exact": 24,
+          "action_exact": 5,
+          "full": 5
+        },
+        "CAMBIAR_MOVIMIENTO": {
+          "n": 30,
+          "command_exact": 24,
+          "action_exact": 2,
+          "full": 1
+        },
+        "CAMBIAR_PASO_A_PASO": {
+          "n": 24,
+          "command_exact": 6,
+          "action_exact": 2,
+          "full": 0
+        },
+        "CAMBIAR_VISTA_SENCILLA": {
+          "n": 29,
+          "command_exact": 18,
+          "action_exact": 3,
+          "full": 2
+        },
+        "CAMBIAR_DETALLES": {
+          "n": 25,
+          "command_exact": 13,
+          "action_exact": 9,
+          "full": 6
+        },
+        "SIGUIENTE": {
+          "n": 14,
+          "command_exact": 12,
+          "action_exact": 1,
+          "full": 0
+        },
+        "ATRAS": {
+          "n": 21,
+          "command_exact": 18,
+          "action_exact": 3,
+          "full": 2
+        },
+        "REPETIR_INDICACION": {
+          "n": 15,
+          "command_exact": 9,
+          "action_exact": 1,
+          "full": 0
+        },
+        "DESHACER_ULTIMA_ACCION": {
+          "n": 10,
+          "command_exact": 8,
+          "action_exact": 2,
+          "full": 1
+        },
+        "CANCELAR": {
+          "n": 10,
+          "command_exact": 8,
+          "action_exact": 10,
+          "full": 7
+        },
+        "CONFIRMAR_ACCION": {
+          "n": 9,
+          "command_exact": 8,
+          "action_exact": 1,
+          "full": 0
+        },
+        "RECHAZAR_RESULTADO": {
+          "n": 5,
+          "command_exact": 4,
+          "action_exact": 5,
+          "full": 4
+        },
+        "OTRA_VIA": {
+          "n": 6,
+          "command_exact": 5,
+          "action_exact": 6,
+          "full": 5
+        },
+        "DETENER": {
+          "n": 10,
+          "command_exact": 8,
+          "action_exact": 10,
+          "full": 7
+        },
+        "PEDIR_AYUDA_HUMANA": {
+          "n": 7,
+          "command_exact": 5,
+          "action_exact": 7,
+          "full": 4
+        },
+        "RESTABLECER_PREFERENCIAS": {
+          "n": 11,
+          "command_exact": 8,
+          "action_exact": 6,
+          "full": 3
+        }
+      }
+    },
+    "execution": {
+      "action_plan_exact": 215,
+      "action_plan_accuracy": 0.5375,
+      "events_exact": 205,
+      "events_accuracy": 0.5125,
+      "binary": {
+        "tp": 43,
+        "fp": 1,
+        "fn": 170,
+        "tn": 186,
+        "precision": 0.9772727272727273,
+        "recall": 0.20187793427230047,
+        "f1": 0.3346303501945525
+      },
+      "omitted_actions": 202,
+      "extra_actions": 15,
+      "wrong_actions": 13
+    },
+    "result_kind": {
+      "exact": 205,
+      "accuracy": 0.5125,
+      "confusion": {
+        "response": {
+          "response": 103,
+          "clarification": 15,
+          "human_help": 1
+        },
+        "action_result": {
+          "clarification": 154,
+          "action_result": 64,
+          "response": 5
+        },
+        "clarification": {
+          "clarification": 23,
+          "action_result": 2,
+          "response": 5,
+          "insufficient": 2
+        },
+        "human_help": {
+          "human_help": 10,
+          "insufficient": 1
+        },
+        "out_of_scope": {
+          "clarification": 6,
+          "response": 3,
+          "out_of_scope": 2,
+          "human_help": 1
+        },
+        "insufficient": {
+          "insufficient": 3
+        }
+      }
+    },
+    "safety_gate": {
+      "exact": 394,
+      "accuracy": 0.985
+    },
+    "b3": {
+      "exact": 318,
+      "accuracy": 0.795
+    },
+    "decisions": {
+      "classify": 127,
+      "clarify": 198,
+      "execute": 44,
+      "insufficient": 6,
+      "safety": 23,
+      "abstain": 2
+    },
+    "abstention_rate": 0.005,
+    "clarification_rate": 0.495,
+    "confidence": {
+      "top1": {
+        "min": 0.78,
+        "p10": 0.8045142857142857,
+        "p50": 0.8486400000000001,
+        "p90": 0.9237333333333333,
+        "max": 0.999,
+        "mean": 0.8571487707253006
+      },
+      "margin": {
+        "min": 0.25364999999999993,
+        "p10": 0.25766,
+        "p50": 0.26780000000000004,
+        "p90": 0.35309333333333326,
+        "max": 0.44299999999999995,
+        "mean": 0.28849632956414284
+      },
+      "bins": [
+        {
+          "lo": 0,
+          "hi": 0.8,
+          "n": 31,
+          "correct": 8,
+          "accuracy": 0.25806451612903225,
+          "mean_confidence": 0.7934715660118039
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.85,
+          "n": 174,
+          "correct": 30,
+          "accuracy": 0.1724137931034483,
+          "mean_confidence": 0.8282548276635067
+        },
+        {
+          "lo": 0.85,
+          "hi": 0.9,
+          "n": 124,
+          "correct": 21,
+          "accuracy": 0.1693548387096774,
+          "mean_confidence": 0.8628235346913915
+        },
+        {
+          "lo": 0.9,
+          "hi": 0.94,
+          "n": 42,
+          "correct": 22,
+          "accuracy": 0.5238095238095238,
+          "mean_confidence": 0.9147197959183676
+        },
+        {
+          "lo": 0.94,
+          "hi": 0.97,
+          "n": 4,
+          "correct": 0,
+          "accuracy": 0,
+          "mean_confidence": 0.95435
+        },
+        {
+          "lo": 0.97,
+          "hi": 1.00001,
+          "n": 25,
+          "correct": 22,
+          "accuracy": 0.88,
+          "mean_confidence": 0.9967919999999997
+        }
+      ]
+    },
+    "insufficient": {
+      "total": 3,
+      "kind_correct": 3,
+      "no_action": 3,
+      "not_confirmar": 3,
+      "full": 3,
+      "cases": [
+        {
+          "id": "I0-DEV-0398",
+          "predicted_kind": "insufficient",
+          "predicted_actions": [],
+          "predicted_b3": "PRESENTE",
+          "correct": true
+        },
+        {
+          "id": "I0-DEV-0399",
+          "predicted_kind": "insufficient",
+          "predicted_actions": [],
+          "predicted_b3": "PRESENTE",
+          "correct": true
+        },
+        {
+          "id": "I0-DEV-0400",
+          "predicted_kind": "insufficient",
+          "predicted_actions": [],
+          "predicted_b3": "PRESENTE",
+          "correct": true
+        }
+      ]
+    },
+    "multi_action": {
+      "total": 25,
+      "command_exact": 16,
+      "action_exact": 0,
+      "full_exact": 0,
+      "omitted_actions": 43,
+      "extra_actions": 2,
+      "wrong_actions": 2,
+      "order_errors": 0,
+      "cases": [
+        {
+          "id": "I0-DEV-0321",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0322",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0323",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0324",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0325",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0326",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0327",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0328",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0329",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0330",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0331",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-multi"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "wrong": 1,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0332",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-multi"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "wrong": 1,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0333",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_STEP_BY_STEP",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-multi"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0334",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_STEP_BY_STEP",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-multi"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0335",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_STEP_BY_STEP",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-multi"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0336",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0337",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0338",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0339",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0340",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0341",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0342",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0343",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0344",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-DEV-0345",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        }
+      ]
+    },
+    "negation": {
+      "negative": {
+        "total": 4,
+        "correct": 4,
+        "false_triggers": 0,
+        "cases": [
+          {
+            "id": "I0-DEV-0252",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-DEV-0254",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-DEV-0256",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-DEV-0258",
+            "correct": true,
+            "actions": [],
+            "events": []
+          }
+        ]
+      },
+      "positive": {
+        "total": 4,
+        "correct": 2,
+        "failures": 2,
+        "cases": [
+          {
+            "id": "I0-DEV-0251",
+            "correct": true,
+            "actions": [
+              {
+                "type": "SET_TEXT_SIZE",
+                "parameters": {
+                  "size": "large"
+                },
+                "risk": "local_reversible"
+              }
+            ],
+            "events": []
+          },
+          {
+            "id": "I0-DEV-0253",
+            "correct": false,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-DEV-0255",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "PAUSE_ASSISTANT"
+            ]
+          },
+          {
+            "id": "I0-DEV-0257",
+            "correct": false,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "calibration": {
+    "total": 200,
+    "correct": 54,
+    "incorrect": 146,
+    "accuracy": 0.27,
+    "classification": {
+      "command_plan_exact": 113,
+      "command_plan_accuracy": 0.565,
+      "binary": {
+        "tp": 135,
+        "fp": 28,
+        "fn": 1,
+        "tn": 36,
+        "precision": 0.8282208588957055,
+        "recall": 0.9926470588235294,
+        "f1": 0.903010033444816
+      },
+      "plan_confusion": {
+        "ENCONTRAR_CONTENIDO": {
+          "ENCONTRAR_CONTENIDO": 24,
+          "CANCELAR": 1,
+          "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 1,
+          "CAMBIAR_DETALLES": 3,
+          "ABRIR_CONTENIDO": 2,
+          "REPETIR_INDICACION": 1,
+          "CAMBIAR_TAMANO_TEXTO": 1
+        },
+        "CAMBIAR_TAMANO_TEXTO": {
+          "CAMBIAR_TAMANO_TEXTO": 10
+        },
+        "CAMBIAR_MOVIMIENTO": {
+          "CAMBIAR_MOVIMIENTO": 10
+        },
+        "CAMBIAR_PASO_A_PASO": {
+          "CAMBIAR_PASO_A_PASO": 7
+        },
+        "CAMBIAR_VISTA_SENCILLA": {
+          "CAMBIAR_VISTA_SENCILLA": 7,
+          "CAMBIAR_MOVIMIENTO": 1
+        },
+        "SIGUIENTE": {
+          "SIGUIENTE": 4
+        },
+        "ATRAS": {
+          "ATRAS": 9,
+          "ABRIR_CONTENIDO": 1
+        },
+        "REPETIR_INDICACION": {
+          "ATRAS": 1,
+          "REPETIR_INDICACION": 2
+        },
+        "DESHACER_ULTIMA_ACCION": {
+          "DESHACER_ULTIMA_ACCION": 3
+        },
+        "ABRIR_CONTENIDO": {
+          "ABRIR_CONTENIDO": 14,
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 1,
+          "NO_INTENT": 1
+        },
+        "NO_INTENT": {
+          "CAMBIAR_MOVIMIENTO": 7,
+          "ATRAS": 3,
+          "NO_INTENT": 36,
+          "DETENER": 1,
+          "CAMBIAR_TAMANO_TEXTO": 5,
+          "CAMBIAR_VISTA_SENCILLA": 1,
+          "CAMBIAR_PASO_A_PASO": 2,
+          "DESHACER_ULTIMA_ACCION": 1,
+          "SIGUIENTE": 3,
+          "CONFIRMAR_ACCION": 1,
+          "CANCELAR": 1,
+          "REPETIR_INDICACION": 1,
+          "ABRIR_CONTENIDO": 1,
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1
+        },
+        "CAMBIAR_DETALLES": {
+          "CAMBIAR_DETALLES": 3
+        },
+        "RESTABLECER_PREFERENCIAS": {
+          "RESTABLECER_PREFERENCIAS": 4
+        },
+        "CONFIRMAR_ACCION": {
+          "CONFIRMAR_ACCION": 1
+        },
+        "CANCELAR": {
+          "CANCELAR": 2
+        },
+        "DETENER": {
+          "DETENER": 3
+        },
+        "OTRA_VIA": {
+          "OTRA_VIA": 1
+        },
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+          "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 3
+        },
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+        },
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+          "CAMBIAR_PASO_A_PASO+SIGUIENTE": 3
+        },
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+          "CAMBIAR_DETALLES+REPETIR_INDICACION": 3
+        },
+        "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+          "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+        },
+        "PEDIR_AYUDA_HUMANA": {
+          "PEDIR_AYUDA_HUMANA": 3
+        }
+      },
+      "per_intent": {
+        "ENCONTRAR_CONTENIDO": {
+          "n": 36,
+          "command_exact": 7,
+          "action_exact": 33,
+          "full": 6
+        },
+        "CAMBIAR_TAMANO_TEXTO": {
+          "n": 16,
+          "command_exact": 10,
+          "action_exact": 3,
+          "full": 3
+        },
+        "CAMBIAR_MOVIMIENTO": {
+          "n": 13,
+          "command_exact": 8,
+          "action_exact": 2,
+          "full": 1
+        },
+        "CAMBIAR_PASO_A_PASO": {
+          "n": 10,
+          "command_exact": 5,
+          "action_exact": 2,
+          "full": 1
+        },
+        "CAMBIAR_VISTA_SENCILLA": {
+          "n": 11,
+          "command_exact": 5,
+          "action_exact": 2,
+          "full": 0
+        },
+        "SIGUIENTE": {
+          "n": 7,
+          "command_exact": 7,
+          "action_exact": 1,
+          "full": 0
+        },
+        "ATRAS": {
+          "n": 10,
+          "command_exact": 8,
+          "action_exact": 5,
+          "full": 4
+        },
+        "REPETIR_INDICACION": {
+          "n": 6,
+          "command_exact": 3,
+          "action_exact": 1,
+          "full": 0
+        },
+        "DESHACER_ULTIMA_ACCION": {
+          "n": 3,
+          "command_exact": 3,
+          "action_exact": 2,
+          "full": 1
+        },
+        "ABRIR_CONTENIDO": {
+          "n": 19,
+          "command_exact": 16,
+          "action_exact": 3,
+          "full": 1
+        },
+        "CAMBIAR_DETALLES": {
+          "n": 6,
+          "command_exact": 5,
+          "action_exact": 2,
+          "full": 1
+        },
+        "RESTABLECER_PREFERENCIAS": {
+          "n": 4,
+          "command_exact": 3,
+          "action_exact": 3,
+          "full": 2
+        },
+        "CONFIRMAR_ACCION": {
+          "n": 1,
+          "command_exact": 1,
+          "action_exact": 1,
+          "full": 1
+        },
+        "CANCELAR": {
+          "n": 2,
+          "command_exact": 2,
+          "action_exact": 2,
+          "full": 1
+        },
+        "DETENER": {
+          "n": 3,
+          "command_exact": 3,
+          "action_exact": 3,
+          "full": 2
+        },
+        "OTRA_VIA": {
+          "n": 1,
+          "command_exact": 0,
+          "action_exact": 1,
+          "full": 0
+        },
+        "PEDIR_AYUDA_HUMANA": {
+          "n": 3,
+          "command_exact": 3,
+          "action_exact": 3,
+          "full": 3
+        }
+      }
+    },
+    "execution": {
+      "action_plan_exact": 133,
+      "action_plan_accuracy": 0.665,
+      "events_exact": 115,
+      "events_accuracy": 0.575,
+      "binary": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 61,
+        "tn": 131,
+        "precision": 1,
+        "recall": 0.11594202898550725,
+        "f1": 0.20779220779220778
+      },
+      "omitted_actions": 77,
+      "extra_actions": 6,
+      "wrong_actions": 6
+    },
+    "result_kind": {
+      "exact": 117,
+      "accuracy": 0.585,
+      "confusion": {
+        "response": {
+          "response": 56,
+          "action_result": 3,
+          "clarification": 14,
+          "insufficient": 1
+        },
+        "action_result": {
+          "action_result": 9,
+          "clarification": 59,
+          "response": 1
+        },
+        "clarification": {
+          "clarification": 39,
+          "action_result": 3,
+          "insufficient": 1
+        },
+        "human_help": {
+          "human_help": 7
+        },
+        "out_of_scope": {
+          "out_of_scope": 4,
+          "clarification": 1
+        },
+        "insufficient": {
+          "insufficient": 2
+        }
+      }
+    },
+    "safety_gate": {
+      "exact": 191,
+      "accuracy": 0.955
+    },
+    "b3": {
+      "exact": 162,
+      "accuracy": 0.81
+    },
+    "decisions": {
+      "classify": 57,
+      "clarify": 113,
+      "execute": 8,
+      "insufficient": 4,
+      "safety": 14,
+      "abstain": 4
+    },
+    "abstention_rate": 0.02,
+    "clarification_rate": 0.565,
+    "confidence": {
+      "top1": {
+        "min": 0.7900941176470588,
+        "p10": 0.7956,
+        "p50": 0.8350000000000001,
+        "p90": 0.923,
+        "max": 0.999,
+        "mean": 0.8464315825047912
+      },
+      "margin": {
+        "min": 0.254,
+        "p10": 0.25895999999999997,
+        "p50": 0.27144,
+        "p90": 0.3448,
+        "max": 0.44299999999999995,
+        "mean": 0.2897448633243594
+      },
+      "bins": [
+        {
+          "lo": 0,
+          "hi": 0.8,
+          "n": 29,
+          "correct": 6,
+          "accuracy": 0.20689655172413793,
+          "mean_confidence": 0.7945104974403556
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.85,
+          "n": 107,
+          "correct": 23,
+          "accuracy": 0.21495327102803738,
+          "mean_confidence": 0.8237874085791715
+        },
+        {
+          "lo": 0.85,
+          "hi": 0.9,
+          "n": 40,
+          "correct": 10,
+          "accuracy": 0.25,
+          "mean_confidence": 0.8668680791685095
+        },
+        {
+          "lo": 0.9,
+          "hi": 0.94,
+          "n": 4,
+          "correct": 1,
+          "accuracy": 0.25,
+          "mean_confidence": 0.913392380952381
+        },
+        {
+          "lo": 0.94,
+          "hi": 0.97,
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5,
+          "mean_confidence": 0.950775
+        },
+        {
+          "lo": 0.97,
+          "hi": 1.00001,
+          "n": 16,
+          "correct": 12,
+          "accuracy": 0.75,
+          "mean_confidence": 0.9980541666666669
+        }
+      ]
+    },
+    "insufficient": {
+      "total": 2,
+      "kind_correct": 2,
+      "no_action": 2,
+      "not_confirmar": 2,
+      "full": 2,
+      "cases": [
+        {
+          "id": "I0-CAL-0199",
+          "predicted_kind": "insufficient",
+          "predicted_actions": [],
+          "predicted_b3": "PRESENTE",
+          "correct": true
+        },
+        {
+          "id": "I0-CAL-0200",
+          "predicted_kind": "insufficient",
+          "predicted_actions": [],
+          "predicted_b3": "PRESENTE",
+          "correct": true
+        }
+      ]
+    },
+    "multi_action": {
+      "total": 15,
+      "command_exact": 12,
+      "action_exact": 0,
+      "full_exact": 0,
+      "omitted_actions": 25,
+      "extra_actions": 2,
+      "wrong_actions": 2,
+      "order_errors": 0,
+      "cases": [
+        {
+          "id": "I0-CAL-0141",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0142",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0143",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_STEP_BY_STEP",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "cal-m"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0144",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0145",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0146",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0147",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0148",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "cal-m"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "wrong": 1,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0149",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0150",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0151",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_MOTION",
+              "parameters": {
+                "motion": "reduced"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "SET_SIMPLE_VIEW",
+              "parameters": {
+                "enabled": true
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0152",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "NAVIGATE_IRIS",
+              "parameters": {
+                "contentId": "dest",
+                "route": "/dest"
+              },
+              "risk": "local_with_loss"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0153",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "cal-m"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [
+            {
+              "type": "STEP_NEXT",
+              "parameters": {
+                "flowId": "flow-current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "wrong": 1,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0154",
+          "command_exact": true,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_DETAILS",
+              "parameters": {
+                "contentId": "current",
+                "expanded": false
+              },
+              "risk": "local_reversible"
+            },
+            {
+              "type": "REPEAT_INSTRUCTION",
+              "parameters": {
+                "contextId": "current"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        },
+        {
+          "id": "I0-CAL-0155",
+          "command_exact": false,
+          "action_exact": false,
+          "full_exact": false,
+          "omitted": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "extra": [],
+          "wrong": 0,
+          "order_error": false
+        }
+      ]
+    },
+    "negation": {
+      "negative": {
+        "total": 20,
+        "correct": 19,
+        "false_triggers": 1,
+        "cases": [
+          {
+            "id": "I0-CAL-0106",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0107",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0108",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0109",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0110",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0111",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-CAL-0112",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0113",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-CAL-0114",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-CAL-0115",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0116",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-CAL-0117",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0118",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0119",
+            "correct": true,
+            "actions": [],
+            "events": [
+              "ASK_CLARIFICATION"
+            ]
+          },
+          {
+            "id": "I0-CAL-0120",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0121",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0122",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0123",
+            "correct": true,
+            "actions": [],
+            "events": []
+          },
+          {
+            "id": "I0-CAL-0124",
+            "correct": false,
+            "actions": [],
+            "events": [
+              "SPEECH_STOP"
+            ]
+          },
+          {
+            "id": "I0-CAL-0125",
+            "correct": true,
+            "actions": [],
+            "events": []
+          }
+        ]
+      },
+      "positive": {
+        "total": 0,
+        "correct": 0,
+        "failures": 0,
+        "cases": []
+      }
+    }
+  },
+  "errors": {
+    "total": 443,
+    "groups": {
+      "b3": {
+        "count": 120,
+        "ids": [
+          "I0-DEV-0001",
+          "I0-DEV-0004",
+          "I0-DEV-0006",
+          "I0-DEV-0007",
+          "I0-DEV-0010",
+          "I0-DEV-0012",
+          "I0-DEV-0013",
+          "I0-DEV-0016",
+          "I0-DEV-0019",
+          "I0-DEV-0020",
+          "I0-DEV-0023",
+          "I0-DEV-0024",
+          "I0-DEV-0027",
+          "I0-DEV-0029",
+          "I0-DEV-0030",
+          "I0-DEV-0033",
+          "I0-DEV-0035",
+          "I0-DEV-0036",
+          "I0-DEV-0038",
+          "I0-DEV-0041",
+          "I0-DEV-0042",
+          "I0-DEV-0044",
+          "I0-DEV-0045",
+          "I0-DEV-0047",
+          "I0-DEV-0048",
+          "I0-DEV-0049",
+          "I0-DEV-0050",
+          "I0-DEV-0051",
+          "I0-DEV-0052",
+          "I0-DEV-0053",
+          "I0-DEV-0055",
+          "I0-DEV-0056",
+          "I0-DEV-0057",
+          "I0-DEV-0058",
+          "I0-DEV-0059",
+          "I0-DEV-0060",
+          "I0-DEV-0061",
+          "I0-DEV-0062",
+          "I0-DEV-0063",
+          "I0-DEV-0064",
+          "I0-DEV-0075",
+          "I0-DEV-0082",
+          "I0-DEV-0126",
+          "I0-DEV-0173",
+          "I0-DEV-0175",
+          "I0-DEV-0177",
+          "I0-DEV-0178",
+          "I0-DEV-0180",
+          "I0-DEV-0181",
+          "I0-DEV-0182",
+          "I0-DEV-0183",
+          "I0-DEV-0184",
+          "I0-DEV-0187",
+          "I0-DEV-0188",
+          "I0-DEV-0189",
+          "I0-DEV-0190",
+          "I0-DEV-0191",
+          "I0-DEV-0192",
+          "I0-DEV-0193",
+          "I0-DEV-0194",
+          "I0-DEV-0242",
+          "I0-DEV-0253",
+          "I0-DEV-0288",
+          "I0-DEV-0289",
+          "I0-DEV-0300",
+          "I0-DEV-0303",
+          "I0-DEV-0306",
+          "I0-DEV-0307",
+          "I0-DEV-0316",
+          "I0-DEV-0326",
+          "I0-DEV-0327",
+          "I0-DEV-0328",
+          "I0-DEV-0329",
+          "I0-DEV-0330",
+          "I0-DEV-0333",
+          "I0-DEV-0334",
+          "I0-DEV-0335",
+          "I0-DEV-0373",
+          "I0-DEV-0384",
+          "I0-DEV-0386",
+          "I0-DEV-0388",
+          "I0-DEV-0389",
+          "I0-CAL-0005",
+          "I0-CAL-0007",
+          "I0-CAL-0009",
+          "I0-CAL-0013",
+          "I0-CAL-0015",
+          "I0-CAL-0017",
+          "I0-CAL-0018",
+          "I0-CAL-0019",
+          "I0-CAL-0023",
+          "I0-CAL-0025",
+          "I0-CAL-0027",
+          "I0-CAL-0030",
+          "I0-CAL-0052",
+          "I0-CAL-0054",
+          "I0-CAL-0055",
+          "I0-CAL-0056",
+          "I0-CAL-0061",
+          "I0-CAL-0062",
+          "I0-CAL-0063",
+          "I0-CAL-0064",
+          "I0-CAL-0065",
+          "I0-CAL-0066",
+          "I0-CAL-0067",
+          "I0-CAL-0068",
+          "I0-CAL-0069",
+          "I0-CAL-0070",
+          "I0-CAL-0075",
+          "I0-CAL-0091",
+          "I0-CAL-0130",
+          "I0-CAL-0131",
+          "I0-CAL-0142",
+          "I0-CAL-0143",
+          "I0-CAL-0147",
+          "I0-CAL-0152",
+          "I0-CAL-0181",
+          "I0-CAL-0183",
+          "I0-CAL-0187",
+          "I0-CAL-0191"
+        ]
+      },
+      "classification": {
+        "count": 233,
+        "ids": [
+          "I0-DEV-0002",
+          "I0-DEV-0003",
+          "I0-DEV-0005",
+          "I0-DEV-0006",
+          "I0-DEV-0008",
+          "I0-DEV-0009",
+          "I0-DEV-0011",
+          "I0-DEV-0012",
+          "I0-DEV-0014",
+          "I0-DEV-0015",
+          "I0-DEV-0017",
+          "I0-DEV-0018",
+          "I0-DEV-0019",
+          "I0-DEV-0020",
+          "I0-DEV-0022",
+          "I0-DEV-0023",
+          "I0-DEV-0024",
+          "I0-DEV-0025",
+          "I0-DEV-0026",
+          "I0-DEV-0027",
+          "I0-DEV-0028",
+          "I0-DEV-0029",
+          "I0-DEV-0030",
+          "I0-DEV-0033",
+          "I0-DEV-0034",
+          "I0-DEV-0035",
+          "I0-DEV-0036",
+          "I0-DEV-0038",
+          "I0-DEV-0039",
+          "I0-DEV-0040",
+          "I0-DEV-0041",
+          "I0-DEV-0042",
+          "I0-DEV-0043",
+          "I0-DEV-0044",
+          "I0-DEV-0045",
+          "I0-DEV-0046",
+          "I0-DEV-0047",
+          "I0-DEV-0048",
+          "I0-DEV-0049",
+          "I0-DEV-0050",
+          "I0-DEV-0086",
+          "I0-DEV-0087",
+          "I0-DEV-0090",
+          "I0-DEV-0094",
+          "I0-DEV-0113",
+          "I0-DEV-0121",
+          "I0-DEV-0123",
+          "I0-DEV-0124",
+          "I0-DEV-0125",
+          "I0-DEV-0126",
+          "I0-DEV-0127",
+          "I0-DEV-0128",
+          "I0-DEV-0129",
+          "I0-DEV-0131",
+          "I0-DEV-0133",
+          "I0-DEV-0134",
+          "I0-DEV-0135",
+          "I0-DEV-0136",
+          "I0-DEV-0137",
+          "I0-DEV-0138",
+          "I0-DEV-0140",
+          "I0-DEV-0141",
+          "I0-DEV-0145",
+          "I0-DEV-0146",
+          "I0-DEV-0150",
+          "I0-DEV-0152",
+          "I0-DEV-0153",
+          "I0-DEV-0155",
+          "I0-DEV-0159",
+          "I0-DEV-0160",
+          "I0-DEV-0161",
+          "I0-DEV-0166",
+          "I0-DEV-0168",
+          "I0-DEV-0170",
+          "I0-DEV-0195",
+          "I0-DEV-0196",
+          "I0-DEV-0199",
+          "I0-DEV-0205",
+          "I0-DEV-0249",
+          "I0-DEV-0253",
+          "I0-DEV-0258",
+          "I0-DEV-0261",
+          "I0-DEV-0262",
+          "I0-DEV-0265",
+          "I0-DEV-0266",
+          "I0-DEV-0267",
+          "I0-DEV-0268",
+          "I0-DEV-0270",
+          "I0-DEV-0271",
+          "I0-DEV-0272",
+          "I0-DEV-0273",
+          "I0-DEV-0274",
+          "I0-DEV-0275",
+          "I0-DEV-0277",
+          "I0-DEV-0278",
+          "I0-DEV-0279",
+          "I0-DEV-0282",
+          "I0-DEV-0285",
+          "I0-DEV-0286",
+          "I0-DEV-0287",
+          "I0-DEV-0288",
+          "I0-DEV-0289",
+          "I0-DEV-0290",
+          "I0-DEV-0291",
+          "I0-DEV-0292",
+          "I0-DEV-0293",
+          "I0-DEV-0294",
+          "I0-DEV-0295",
+          "I0-DEV-0296",
+          "I0-DEV-0297",
+          "I0-DEV-0301",
+          "I0-DEV-0302",
+          "I0-DEV-0303",
+          "I0-DEV-0304",
+          "I0-DEV-0306",
+          "I0-DEV-0307",
+          "I0-DEV-0309",
+          "I0-DEV-0310",
+          "I0-DEV-0311",
+          "I0-DEV-0314",
+          "I0-DEV-0316",
+          "I0-DEV-0317",
+          "I0-DEV-0318",
+          "I0-DEV-0319",
+          "I0-DEV-0326",
+          "I0-DEV-0329",
+          "I0-DEV-0335",
+          "I0-DEV-0339",
+          "I0-DEV-0341",
+          "I0-DEV-0342",
+          "I0-DEV-0343",
+          "I0-DEV-0344",
+          "I0-DEV-0345",
+          "I0-DEV-0372",
+          "I0-DEV-0374",
+          "I0-DEV-0377",
+          "I0-DEV-0378",
+          "I0-DEV-0380",
+          "I0-DEV-0381",
+          "I0-DEV-0384",
+          "I0-DEV-0385",
+          "I0-DEV-0386",
+          "I0-DEV-0388",
+          "I0-DEV-0389",
+          "I0-DEV-0393",
+          "I0-DEV-0400",
+          "I0-CAL-0001",
+          "I0-CAL-0005",
+          "I0-CAL-0007",
+          "I0-CAL-0009",
+          "I0-CAL-0010",
+          "I0-CAL-0012",
+          "I0-CAL-0013",
+          "I0-CAL-0014",
+          "I0-CAL-0015",
+          "I0-CAL-0016",
+          "I0-CAL-0017",
+          "I0-CAL-0018",
+          "I0-CAL-0019",
+          "I0-CAL-0020",
+          "I0-CAL-0021",
+          "I0-CAL-0022",
+          "I0-CAL-0023",
+          "I0-CAL-0024",
+          "I0-CAL-0025",
+          "I0-CAL-0026",
+          "I0-CAL-0027",
+          "I0-CAL-0028",
+          "I0-CAL-0029",
+          "I0-CAL-0030",
+          "I0-CAL-0035",
+          "I0-CAL-0036",
+          "I0-CAL-0039",
+          "I0-CAL-0040",
+          "I0-CAL-0041",
+          "I0-CAL-0043",
+          "I0-CAL-0045",
+          "I0-CAL-0046",
+          "I0-CAL-0048",
+          "I0-CAL-0049",
+          "I0-CAL-0058",
+          "I0-CAL-0059",
+          "I0-CAL-0071",
+          "I0-CAL-0072",
+          "I0-CAL-0073",
+          "I0-CAL-0075",
+          "I0-CAL-0076",
+          "I0-CAL-0077",
+          "I0-CAL-0078",
+          "I0-CAL-0080",
+          "I0-CAL-0083",
+          "I0-CAL-0084",
+          "I0-CAL-0086",
+          "I0-CAL-0087",
+          "I0-CAL-0088",
+          "I0-CAL-0089",
+          "I0-CAL-0091",
+          "I0-CAL-0092",
+          "I0-CAL-0093",
+          "I0-CAL-0094",
+          "I0-CAL-0095",
+          "I0-CAL-0098",
+          "I0-CAL-0099",
+          "I0-CAL-0100",
+          "I0-CAL-0103",
+          "I0-CAL-0104",
+          "I0-CAL-0105",
+          "I0-CAL-0109",
+          "I0-CAL-0111",
+          "I0-CAL-0112",
+          "I0-CAL-0113",
+          "I0-CAL-0119",
+          "I0-CAL-0126",
+          "I0-CAL-0127",
+          "I0-CAL-0128",
+          "I0-CAL-0129",
+          "I0-CAL-0131",
+          "I0-CAL-0132",
+          "I0-CAL-0133",
+          "I0-CAL-0135",
+          "I0-CAL-0137",
+          "I0-CAL-0139",
+          "I0-CAL-0145",
+          "I0-CAL-0150",
+          "I0-CAL-0155",
+          "I0-CAL-0177",
+          "I0-CAL-0184",
+          "I0-CAL-0187",
+          "I0-CAL-0188",
+          "I0-CAL-0190",
+          "I0-CAL-0192",
+          "I0-CAL-0195",
+          "I0-CAL-0198"
+        ]
+      },
+      "result_kind": {
+        "count": 278,
+        "ids": [
+          "I0-DEV-0051",
+          "I0-DEV-0052",
+          "I0-DEV-0053",
+          "I0-DEV-0055",
+          "I0-DEV-0056",
+          "I0-DEV-0057",
+          "I0-DEV-0058",
+          "I0-DEV-0059",
+          "I0-DEV-0060",
+          "I0-DEV-0061",
+          "I0-DEV-0062",
+          "I0-DEV-0063",
+          "I0-DEV-0064",
+          "I0-DEV-0075",
+          "I0-DEV-0082",
+          "I0-DEV-0091",
+          "I0-DEV-0092",
+          "I0-DEV-0093",
+          "I0-DEV-0094",
+          "I0-DEV-0095",
+          "I0-DEV-0096",
+          "I0-DEV-0097",
+          "I0-DEV-0098",
+          "I0-DEV-0100",
+          "I0-DEV-0101",
+          "I0-DEV-0102",
+          "I0-DEV-0103",
+          "I0-DEV-0104",
+          "I0-DEV-0106",
+          "I0-DEV-0107",
+          "I0-DEV-0108",
+          "I0-DEV-0109",
+          "I0-DEV-0110",
+          "I0-DEV-0111",
+          "I0-DEV-0112",
+          "I0-DEV-0113",
+          "I0-DEV-0114",
+          "I0-DEV-0115",
+          "I0-DEV-0116",
+          "I0-DEV-0117",
+          "I0-DEV-0118",
+          "I0-DEV-0119",
+          "I0-DEV-0120",
+          "I0-DEV-0121",
+          "I0-DEV-0122",
+          "I0-DEV-0123",
+          "I0-DEV-0124",
+          "I0-DEV-0125",
+          "I0-DEV-0127",
+          "I0-DEV-0128",
+          "I0-DEV-0129",
+          "I0-DEV-0130",
+          "I0-DEV-0131",
+          "I0-DEV-0132",
+          "I0-DEV-0133",
+          "I0-DEV-0134",
+          "I0-DEV-0135",
+          "I0-DEV-0136",
+          "I0-DEV-0137",
+          "I0-DEV-0138",
+          "I0-DEV-0139",
+          "I0-DEV-0140",
+          "I0-DEV-0141",
+          "I0-DEV-0142",
+          "I0-DEV-0143",
+          "I0-DEV-0144",
+          "I0-DEV-0145",
+          "I0-DEV-0146",
+          "I0-DEV-0147",
+          "I0-DEV-0148",
+          "I0-DEV-0149",
+          "I0-DEV-0150",
+          "I0-DEV-0151",
+          "I0-DEV-0152",
+          "I0-DEV-0153",
+          "I0-DEV-0154",
+          "I0-DEV-0155",
+          "I0-DEV-0158",
+          "I0-DEV-0160",
+          "I0-DEV-0162",
+          "I0-DEV-0166",
+          "I0-DEV-0169",
+          "I0-DEV-0173",
+          "I0-DEV-0175",
+          "I0-DEV-0177",
+          "I0-DEV-0178",
+          "I0-DEV-0180",
+          "I0-DEV-0181",
+          "I0-DEV-0182",
+          "I0-DEV-0183",
+          "I0-DEV-0184",
+          "I0-DEV-0187",
+          "I0-DEV-0188",
+          "I0-DEV-0189",
+          "I0-DEV-0190",
+          "I0-DEV-0191",
+          "I0-DEV-0192",
+          "I0-DEV-0193",
+          "I0-DEV-0194",
+          "I0-DEV-0195",
+          "I0-DEV-0196",
+          "I0-DEV-0197",
+          "I0-DEV-0198",
+          "I0-DEV-0199",
+          "I0-DEV-0200",
+          "I0-DEV-0201",
+          "I0-DEV-0202",
+          "I0-DEV-0203",
+          "I0-DEV-0204",
+          "I0-DEV-0205",
+          "I0-DEV-0206",
+          "I0-DEV-0207",
+          "I0-DEV-0208",
+          "I0-DEV-0209",
+          "I0-DEV-0210",
+          "I0-DEV-0215",
+          "I0-DEV-0236",
+          "I0-DEV-0242",
+          "I0-DEV-0243",
+          "I0-DEV-0244",
+          "I0-DEV-0245",
+          "I0-DEV-0246",
+          "I0-DEV-0253",
+          "I0-DEV-0257",
+          "I0-DEV-0263",
+          "I0-DEV-0265",
+          "I0-DEV-0266",
+          "I0-DEV-0270",
+          "I0-DEV-0274",
+          "I0-DEV-0281",
+          "I0-DEV-0282",
+          "I0-DEV-0283",
+          "I0-DEV-0284",
+          "I0-DEV-0285",
+          "I0-DEV-0286",
+          "I0-DEV-0287",
+          "I0-DEV-0288",
+          "I0-DEV-0289",
+          "I0-DEV-0290",
+          "I0-DEV-0291",
+          "I0-DEV-0292",
+          "I0-DEV-0293",
+          "I0-DEV-0294",
+          "I0-DEV-0296",
+          "I0-DEV-0297",
+          "I0-DEV-0298",
+          "I0-DEV-0299",
+          "I0-DEV-0300",
+          "I0-DEV-0303",
+          "I0-DEV-0304",
+          "I0-DEV-0306",
+          "I0-DEV-0307",
+          "I0-DEV-0311",
+          "I0-DEV-0314",
+          "I0-DEV-0316",
+          "I0-DEV-0318",
+          "I0-DEV-0319",
+          "I0-DEV-0321",
+          "I0-DEV-0322",
+          "I0-DEV-0323",
+          "I0-DEV-0324",
+          "I0-DEV-0325",
+          "I0-DEV-0326",
+          "I0-DEV-0327",
+          "I0-DEV-0328",
+          "I0-DEV-0329",
+          "I0-DEV-0330",
+          "I0-DEV-0333",
+          "I0-DEV-0334",
+          "I0-DEV-0335",
+          "I0-DEV-0336",
+          "I0-DEV-0337",
+          "I0-DEV-0338",
+          "I0-DEV-0339",
+          "I0-DEV-0340",
+          "I0-DEV-0341",
+          "I0-DEV-0342",
+          "I0-DEV-0343",
+          "I0-DEV-0344",
+          "I0-DEV-0345",
+          "I0-DEV-0373",
+          "I0-DEV-0377",
+          "I0-DEV-0378",
+          "I0-DEV-0379",
+          "I0-DEV-0381",
+          "I0-DEV-0382",
+          "I0-DEV-0383",
+          "I0-DEV-0384",
+          "I0-DEV-0385",
+          "I0-DEV-0386",
+          "I0-DEV-0388",
+          "I0-DEV-0389",
+          "I0-DEV-0391",
+          "I0-DEV-0392",
+          "I0-DEV-0393",
+          "I0-CAL-0012",
+          "I0-CAL-0015",
+          "I0-CAL-0016",
+          "I0-CAL-0017",
+          "I0-CAL-0020",
+          "I0-CAL-0024",
+          "I0-CAL-0027",
+          "I0-CAL-0028",
+          "I0-CAL-0032",
+          "I0-CAL-0033",
+          "I0-CAL-0034",
+          "I0-CAL-0035",
+          "I0-CAL-0036",
+          "I0-CAL-0037",
+          "I0-CAL-0038",
+          "I0-CAL-0039",
+          "I0-CAL-0040",
+          "I0-CAL-0041",
+          "I0-CAL-0042",
+          "I0-CAL-0043",
+          "I0-CAL-0044",
+          "I0-CAL-0045",
+          "I0-CAL-0046",
+          "I0-CAL-0047",
+          "I0-CAL-0048",
+          "I0-CAL-0049",
+          "I0-CAL-0050",
+          "I0-CAL-0052",
+          "I0-CAL-0054",
+          "I0-CAL-0055",
+          "I0-CAL-0056",
+          "I0-CAL-0058",
+          "I0-CAL-0061",
+          "I0-CAL-0062",
+          "I0-CAL-0063",
+          "I0-CAL-0064",
+          "I0-CAL-0065",
+          "I0-CAL-0066",
+          "I0-CAL-0067",
+          "I0-CAL-0068",
+          "I0-CAL-0069",
+          "I0-CAL-0070",
+          "I0-CAL-0075",
+          "I0-CAL-0088",
+          "I0-CAL-0091",
+          "I0-CAL-0095",
+          "I0-CAL-0111",
+          "I0-CAL-0113",
+          "I0-CAL-0114",
+          "I0-CAL-0116",
+          "I0-CAL-0119",
+          "I0-CAL-0122",
+          "I0-CAL-0123",
+          "I0-CAL-0124",
+          "I0-CAL-0126",
+          "I0-CAL-0127",
+          "I0-CAL-0128",
+          "I0-CAL-0130",
+          "I0-CAL-0131",
+          "I0-CAL-0132",
+          "I0-CAL-0133",
+          "I0-CAL-0137",
+          "I0-CAL-0138",
+          "I0-CAL-0139",
+          "I0-CAL-0140",
+          "I0-CAL-0141",
+          "I0-CAL-0142",
+          "I0-CAL-0143",
+          "I0-CAL-0144",
+          "I0-CAL-0145",
+          "I0-CAL-0146",
+          "I0-CAL-0147",
+          "I0-CAL-0149",
+          "I0-CAL-0150",
+          "I0-CAL-0151",
+          "I0-CAL-0152",
+          "I0-CAL-0154",
+          "I0-CAL-0155",
+          "I0-CAL-0177",
+          "I0-CAL-0181",
+          "I0-CAL-0183",
+          "I0-CAL-0187",
+          "I0-CAL-0198"
+        ]
+      },
+      "action_omitted": {
+        "count": 251,
+        "ids": [
+          "I0-DEV-0051",
+          "I0-DEV-0052",
+          "I0-DEV-0053",
+          "I0-DEV-0055",
+          "I0-DEV-0056",
+          "I0-DEV-0057",
+          "I0-DEV-0058",
+          "I0-DEV-0059",
+          "I0-DEV-0060",
+          "I0-DEV-0061",
+          "I0-DEV-0062",
+          "I0-DEV-0063",
+          "I0-DEV-0064",
+          "I0-DEV-0075",
+          "I0-DEV-0082",
+          "I0-DEV-0091",
+          "I0-DEV-0092",
+          "I0-DEV-0093",
+          "I0-DEV-0094",
+          "I0-DEV-0095",
+          "I0-DEV-0096",
+          "I0-DEV-0097",
+          "I0-DEV-0098",
+          "I0-DEV-0100",
+          "I0-DEV-0101",
+          "I0-DEV-0102",
+          "I0-DEV-0103",
+          "I0-DEV-0104",
+          "I0-DEV-0106",
+          "I0-DEV-0107",
+          "I0-DEV-0108",
+          "I0-DEV-0109",
+          "I0-DEV-0110",
+          "I0-DEV-0111",
+          "I0-DEV-0112",
+          "I0-DEV-0113",
+          "I0-DEV-0114",
+          "I0-DEV-0115",
+          "I0-DEV-0116",
+          "I0-DEV-0117",
+          "I0-DEV-0118",
+          "I0-DEV-0119",
+          "I0-DEV-0120",
+          "I0-DEV-0121",
+          "I0-DEV-0122",
+          "I0-DEV-0123",
+          "I0-DEV-0124",
+          "I0-DEV-0125",
+          "I0-DEV-0126",
+          "I0-DEV-0127",
+          "I0-DEV-0128",
+          "I0-DEV-0129",
+          "I0-DEV-0130",
+          "I0-DEV-0131",
+          "I0-DEV-0132",
+          "I0-DEV-0133",
+          "I0-DEV-0134",
+          "I0-DEV-0135",
+          "I0-DEV-0136",
+          "I0-DEV-0137",
+          "I0-DEV-0138",
+          "I0-DEV-0139",
+          "I0-DEV-0140",
+          "I0-DEV-0141",
+          "I0-DEV-0142",
+          "I0-DEV-0143",
+          "I0-DEV-0144",
+          "I0-DEV-0145",
+          "I0-DEV-0146",
+          "I0-DEV-0147",
+          "I0-DEV-0148",
+          "I0-DEV-0149",
+          "I0-DEV-0150",
+          "I0-DEV-0151",
+          "I0-DEV-0152",
+          "I0-DEV-0153",
+          "I0-DEV-0154",
+          "I0-DEV-0155",
+          "I0-DEV-0158",
+          "I0-DEV-0159",
+          "I0-DEV-0160",
+          "I0-DEV-0161",
+          "I0-DEV-0162",
+          "I0-DEV-0166",
+          "I0-DEV-0168",
+          "I0-DEV-0169",
+          "I0-DEV-0170",
+          "I0-DEV-0171",
+          "I0-DEV-0172",
+          "I0-DEV-0173",
+          "I0-DEV-0174",
+          "I0-DEV-0175",
+          "I0-DEV-0176",
+          "I0-DEV-0177",
+          "I0-DEV-0178",
+          "I0-DEV-0179",
+          "I0-DEV-0180",
+          "I0-DEV-0181",
+          "I0-DEV-0182",
+          "I0-DEV-0183",
+          "I0-DEV-0184",
+          "I0-DEV-0185",
+          "I0-DEV-0186",
+          "I0-DEV-0187",
+          "I0-DEV-0188",
+          "I0-DEV-0189",
+          "I0-DEV-0190",
+          "I0-DEV-0191",
+          "I0-DEV-0192",
+          "I0-DEV-0193",
+          "I0-DEV-0194",
+          "I0-DEV-0195",
+          "I0-DEV-0196",
+          "I0-DEV-0197",
+          "I0-DEV-0198",
+          "I0-DEV-0199",
+          "I0-DEV-0200",
+          "I0-DEV-0201",
+          "I0-DEV-0202",
+          "I0-DEV-0203",
+          "I0-DEV-0204",
+          "I0-DEV-0205",
+          "I0-DEV-0206",
+          "I0-DEV-0207",
+          "I0-DEV-0208",
+          "I0-DEV-0209",
+          "I0-DEV-0210",
+          "I0-DEV-0219",
+          "I0-DEV-0220",
+          "I0-DEV-0221",
+          "I0-DEV-0222",
+          "I0-DEV-0223",
+          "I0-DEV-0224",
+          "I0-DEV-0225",
+          "I0-DEV-0226",
+          "I0-DEV-0243",
+          "I0-DEV-0244",
+          "I0-DEV-0245",
+          "I0-DEV-0246",
+          "I0-DEV-0253",
+          "I0-DEV-0257",
+          "I0-DEV-0281",
+          "I0-DEV-0282",
+          "I0-DEV-0283",
+          "I0-DEV-0284",
+          "I0-DEV-0285",
+          "I0-DEV-0286",
+          "I0-DEV-0287",
+          "I0-DEV-0288",
+          "I0-DEV-0289",
+          "I0-DEV-0290",
+          "I0-DEV-0291",
+          "I0-DEV-0297",
+          "I0-DEV-0298",
+          "I0-DEV-0299",
+          "I0-DEV-0300",
+          "I0-DEV-0321",
+          "I0-DEV-0322",
+          "I0-DEV-0323",
+          "I0-DEV-0324",
+          "I0-DEV-0325",
+          "I0-DEV-0326",
+          "I0-DEV-0327",
+          "I0-DEV-0328",
+          "I0-DEV-0329",
+          "I0-DEV-0330",
+          "I0-DEV-0331",
+          "I0-DEV-0332",
+          "I0-DEV-0333",
+          "I0-DEV-0334",
+          "I0-DEV-0335",
+          "I0-DEV-0336",
+          "I0-DEV-0337",
+          "I0-DEV-0338",
+          "I0-DEV-0339",
+          "I0-DEV-0340",
+          "I0-DEV-0341",
+          "I0-DEV-0342",
+          "I0-DEV-0343",
+          "I0-DEV-0344",
+          "I0-DEV-0345",
+          "I0-DEV-0391",
+          "I0-DEV-0392",
+          "I0-DEV-0393",
+          "I0-CAL-0032",
+          "I0-CAL-0033",
+          "I0-CAL-0034",
+          "I0-CAL-0035",
+          "I0-CAL-0036",
+          "I0-CAL-0037",
+          "I0-CAL-0038",
+          "I0-CAL-0039",
+          "I0-CAL-0040",
+          "I0-CAL-0041",
+          "I0-CAL-0042",
+          "I0-CAL-0043",
+          "I0-CAL-0044",
+          "I0-CAL-0045",
+          "I0-CAL-0046",
+          "I0-CAL-0047",
+          "I0-CAL-0048",
+          "I0-CAL-0049",
+          "I0-CAL-0050",
+          "I0-CAL-0051",
+          "I0-CAL-0052",
+          "I0-CAL-0053",
+          "I0-CAL-0054",
+          "I0-CAL-0055",
+          "I0-CAL-0056",
+          "I0-CAL-0058",
+          "I0-CAL-0059",
+          "I0-CAL-0060",
+          "I0-CAL-0061",
+          "I0-CAL-0062",
+          "I0-CAL-0063",
+          "I0-CAL-0064",
+          "I0-CAL-0065",
+          "I0-CAL-0066",
+          "I0-CAL-0067",
+          "I0-CAL-0068",
+          "I0-CAL-0069",
+          "I0-CAL-0070",
+          "I0-CAL-0126",
+          "I0-CAL-0127",
+          "I0-CAL-0128",
+          "I0-CAL-0129",
+          "I0-CAL-0130",
+          "I0-CAL-0131",
+          "I0-CAL-0132",
+          "I0-CAL-0133",
+          "I0-CAL-0138",
+          "I0-CAL-0139",
+          "I0-CAL-0140",
+          "I0-CAL-0141",
+          "I0-CAL-0142",
+          "I0-CAL-0143",
+          "I0-CAL-0144",
+          "I0-CAL-0145",
+          "I0-CAL-0146",
+          "I0-CAL-0147",
+          "I0-CAL-0148",
+          "I0-CAL-0149",
+          "I0-CAL-0150",
+          "I0-CAL-0151",
+          "I0-CAL-0152",
+          "I0-CAL-0153",
+          "I0-CAL-0154",
+          "I0-CAL-0155",
+          "I0-CAL-0181",
+          "I0-CAL-0183",
+          "I0-CAL-0187"
+        ]
+      },
+      "s0_events": {
+        "count": 280,
+        "ids": [
+          "I0-DEV-0051",
+          "I0-DEV-0052",
+          "I0-DEV-0053",
+          "I0-DEV-0055",
+          "I0-DEV-0056",
+          "I0-DEV-0057",
+          "I0-DEV-0058",
+          "I0-DEV-0059",
+          "I0-DEV-0060",
+          "I0-DEV-0061",
+          "I0-DEV-0062",
+          "I0-DEV-0063",
+          "I0-DEV-0064",
+          "I0-DEV-0075",
+          "I0-DEV-0082",
+          "I0-DEV-0091",
+          "I0-DEV-0092",
+          "I0-DEV-0093",
+          "I0-DEV-0094",
+          "I0-DEV-0095",
+          "I0-DEV-0096",
+          "I0-DEV-0097",
+          "I0-DEV-0098",
+          "I0-DEV-0100",
+          "I0-DEV-0101",
+          "I0-DEV-0102",
+          "I0-DEV-0103",
+          "I0-DEV-0104",
+          "I0-DEV-0106",
+          "I0-DEV-0107",
+          "I0-DEV-0108",
+          "I0-DEV-0109",
+          "I0-DEV-0110",
+          "I0-DEV-0111",
+          "I0-DEV-0112",
+          "I0-DEV-0113",
+          "I0-DEV-0114",
+          "I0-DEV-0115",
+          "I0-DEV-0116",
+          "I0-DEV-0117",
+          "I0-DEV-0118",
+          "I0-DEV-0119",
+          "I0-DEV-0120",
+          "I0-DEV-0121",
+          "I0-DEV-0122",
+          "I0-DEV-0123",
+          "I0-DEV-0124",
+          "I0-DEV-0125",
+          "I0-DEV-0128",
+          "I0-DEV-0129",
+          "I0-DEV-0130",
+          "I0-DEV-0131",
+          "I0-DEV-0132",
+          "I0-DEV-0133",
+          "I0-DEV-0134",
+          "I0-DEV-0135",
+          "I0-DEV-0136",
+          "I0-DEV-0137",
+          "I0-DEV-0138",
+          "I0-DEV-0139",
+          "I0-DEV-0140",
+          "I0-DEV-0141",
+          "I0-DEV-0142",
+          "I0-DEV-0143",
+          "I0-DEV-0144",
+          "I0-DEV-0145",
+          "I0-DEV-0146",
+          "I0-DEV-0147",
+          "I0-DEV-0148",
+          "I0-DEV-0149",
+          "I0-DEV-0150",
+          "I0-DEV-0151",
+          "I0-DEV-0152",
+          "I0-DEV-0153",
+          "I0-DEV-0154",
+          "I0-DEV-0155",
+          "I0-DEV-0158",
+          "I0-DEV-0160",
+          "I0-DEV-0162",
+          "I0-DEV-0166",
+          "I0-DEV-0169",
+          "I0-DEV-0173",
+          "I0-DEV-0175",
+          "I0-DEV-0177",
+          "I0-DEV-0178",
+          "I0-DEV-0180",
+          "I0-DEV-0181",
+          "I0-DEV-0182",
+          "I0-DEV-0183",
+          "I0-DEV-0184",
+          "I0-DEV-0187",
+          "I0-DEV-0188",
+          "I0-DEV-0189",
+          "I0-DEV-0190",
+          "I0-DEV-0191",
+          "I0-DEV-0192",
+          "I0-DEV-0193",
+          "I0-DEV-0194",
+          "I0-DEV-0195",
+          "I0-DEV-0196",
+          "I0-DEV-0197",
+          "I0-DEV-0198",
+          "I0-DEV-0199",
+          "I0-DEV-0200",
+          "I0-DEV-0201",
+          "I0-DEV-0202",
+          "I0-DEV-0203",
+          "I0-DEV-0204",
+          "I0-DEV-0205",
+          "I0-DEV-0206",
+          "I0-DEV-0207",
+          "I0-DEV-0208",
+          "I0-DEV-0209",
+          "I0-DEV-0210",
+          "I0-DEV-0236",
+          "I0-DEV-0243",
+          "I0-DEV-0244",
+          "I0-DEV-0245",
+          "I0-DEV-0246",
+          "I0-DEV-0249",
+          "I0-DEV-0253",
+          "I0-DEV-0257",
+          "I0-DEV-0263",
+          "I0-DEV-0265",
+          "I0-DEV-0266",
+          "I0-DEV-0270",
+          "I0-DEV-0274",
+          "I0-DEV-0281",
+          "I0-DEV-0282",
+          "I0-DEV-0283",
+          "I0-DEV-0284",
+          "I0-DEV-0285",
+          "I0-DEV-0286",
+          "I0-DEV-0287",
+          "I0-DEV-0289",
+          "I0-DEV-0290",
+          "I0-DEV-0291",
+          "I0-DEV-0292",
+          "I0-DEV-0293",
+          "I0-DEV-0294",
+          "I0-DEV-0296",
+          "I0-DEV-0298",
+          "I0-DEV-0299",
+          "I0-DEV-0300",
+          "I0-DEV-0303",
+          "I0-DEV-0304",
+          "I0-DEV-0306",
+          "I0-DEV-0307",
+          "I0-DEV-0311",
+          "I0-DEV-0314",
+          "I0-DEV-0316",
+          "I0-DEV-0318",
+          "I0-DEV-0319",
+          "I0-DEV-0321",
+          "I0-DEV-0322",
+          "I0-DEV-0323",
+          "I0-DEV-0324",
+          "I0-DEV-0325",
+          "I0-DEV-0326",
+          "I0-DEV-0327",
+          "I0-DEV-0328",
+          "I0-DEV-0329",
+          "I0-DEV-0330",
+          "I0-DEV-0333",
+          "I0-DEV-0334",
+          "I0-DEV-0335",
+          "I0-DEV-0336",
+          "I0-DEV-0337",
+          "I0-DEV-0338",
+          "I0-DEV-0339",
+          "I0-DEV-0340",
+          "I0-DEV-0341",
+          "I0-DEV-0342",
+          "I0-DEV-0343",
+          "I0-DEV-0344",
+          "I0-DEV-0345",
+          "I0-DEV-0346",
+          "I0-DEV-0350",
+          "I0-DEV-0360",
+          "I0-DEV-0370",
+          "I0-DEV-0371",
+          "I0-DEV-0372",
+          "I0-DEV-0373",
+          "I0-DEV-0375",
+          "I0-DEV-0377",
+          "I0-DEV-0378",
+          "I0-DEV-0379",
+          "I0-DEV-0381",
+          "I0-DEV-0382",
+          "I0-DEV-0383",
+          "I0-DEV-0385",
+          "I0-DEV-0391",
+          "I0-DEV-0392",
+          "I0-DEV-0393",
+          "I0-DEV-0394",
+          "I0-CAL-0015",
+          "I0-CAL-0016",
+          "I0-CAL-0017",
+          "I0-CAL-0020",
+          "I0-CAL-0024",
+          "I0-CAL-0027",
+          "I0-CAL-0028",
+          "I0-CAL-0032",
+          "I0-CAL-0033",
+          "I0-CAL-0034",
+          "I0-CAL-0035",
+          "I0-CAL-0036",
+          "I0-CAL-0037",
+          "I0-CAL-0038",
+          "I0-CAL-0039",
+          "I0-CAL-0040",
+          "I0-CAL-0041",
+          "I0-CAL-0042",
+          "I0-CAL-0043",
+          "I0-CAL-0044",
+          "I0-CAL-0045",
+          "I0-CAL-0046",
+          "I0-CAL-0047",
+          "I0-CAL-0048",
+          "I0-CAL-0049",
+          "I0-CAL-0050",
+          "I0-CAL-0052",
+          "I0-CAL-0054",
+          "I0-CAL-0055",
+          "I0-CAL-0056",
+          "I0-CAL-0058",
+          "I0-CAL-0061",
+          "I0-CAL-0062",
+          "I0-CAL-0063",
+          "I0-CAL-0064",
+          "I0-CAL-0065",
+          "I0-CAL-0066",
+          "I0-CAL-0067",
+          "I0-CAL-0068",
+          "I0-CAL-0069",
+          "I0-CAL-0070",
+          "I0-CAL-0075",
+          "I0-CAL-0088",
+          "I0-CAL-0091",
+          "I0-CAL-0095",
+          "I0-CAL-0111",
+          "I0-CAL-0113",
+          "I0-CAL-0114",
+          "I0-CAL-0116",
+          "I0-CAL-0119",
+          "I0-CAL-0124",
+          "I0-CAL-0126",
+          "I0-CAL-0127",
+          "I0-CAL-0128",
+          "I0-CAL-0130",
+          "I0-CAL-0132",
+          "I0-CAL-0133",
+          "I0-CAL-0137",
+          "I0-CAL-0138",
+          "I0-CAL-0139",
+          "I0-CAL-0140",
+          "I0-CAL-0141",
+          "I0-CAL-0142",
+          "I0-CAL-0143",
+          "I0-CAL-0144",
+          "I0-CAL-0145",
+          "I0-CAL-0146",
+          "I0-CAL-0147",
+          "I0-CAL-0149",
+          "I0-CAL-0150",
+          "I0-CAL-0151",
+          "I0-CAL-0152",
+          "I0-CAL-0154",
+          "I0-CAL-0155",
+          "I0-CAL-0156",
+          "I0-CAL-0158",
+          "I0-CAL-0162",
+          "I0-CAL-0167",
+          "I0-CAL-0177",
+          "I0-CAL-0181",
+          "I0-CAL-0183",
+          "I0-CAL-0185",
+          "I0-CAL-0187",
+          "I0-CAL-0190",
+          "I0-CAL-0198"
+        ]
+      },
+      "action_extra": {
+        "count": 21,
+        "ids": [
+          "I0-DEV-0126",
+          "I0-DEV-0159",
+          "I0-DEV-0161",
+          "I0-DEV-0168",
+          "I0-DEV-0170",
+          "I0-DEV-0171",
+          "I0-DEV-0172",
+          "I0-DEV-0174",
+          "I0-DEV-0176",
+          "I0-DEV-0179",
+          "I0-DEV-0185",
+          "I0-DEV-0186",
+          "I0-DEV-0303",
+          "I0-DEV-0331",
+          "I0-DEV-0332",
+          "I0-CAL-0051",
+          "I0-CAL-0053",
+          "I0-CAL-0059",
+          "I0-CAL-0129",
+          "I0-CAL-0148",
+          "I0-CAL-0153"
+        ]
+      },
+      "action_wrong": {
+        "count": 19,
+        "ids": [
+          "I0-DEV-0159",
+          "I0-DEV-0161",
+          "I0-DEV-0168",
+          "I0-DEV-0170",
+          "I0-DEV-0171",
+          "I0-DEV-0172",
+          "I0-DEV-0174",
+          "I0-DEV-0176",
+          "I0-DEV-0179",
+          "I0-DEV-0185",
+          "I0-DEV-0186",
+          "I0-DEV-0331",
+          "I0-DEV-0332",
+          "I0-CAL-0051",
+          "I0-CAL-0053",
+          "I0-CAL-0059",
+          "I0-CAL-0129",
+          "I0-CAL-0148",
+          "I0-CAL-0153"
+        ]
+      },
+      "negation": {
+        "count": 13,
+        "ids": [
+          "I0-DEV-0253",
+          "I0-DEV-0257",
+          "I0-DEV-0258",
+          "I0-CAL-0109",
+          "I0-CAL-0111",
+          "I0-CAL-0112",
+          "I0-CAL-0113",
+          "I0-CAL-0114",
+          "I0-CAL-0116",
+          "I0-CAL-0119",
+          "I0-CAL-0122",
+          "I0-CAL-0123",
+          "I0-CAL-0124"
+        ]
+      },
+      "multi_action": {
+        "count": 40,
+        "ids": [
+          "I0-DEV-0321",
+          "I0-DEV-0322",
+          "I0-DEV-0323",
+          "I0-DEV-0324",
+          "I0-DEV-0325",
+          "I0-DEV-0326",
+          "I0-DEV-0327",
+          "I0-DEV-0328",
+          "I0-DEV-0329",
+          "I0-DEV-0330",
+          "I0-DEV-0331",
+          "I0-DEV-0332",
+          "I0-DEV-0333",
+          "I0-DEV-0334",
+          "I0-DEV-0335",
+          "I0-DEV-0336",
+          "I0-DEV-0337",
+          "I0-DEV-0338",
+          "I0-DEV-0339",
+          "I0-DEV-0340",
+          "I0-DEV-0341",
+          "I0-DEV-0342",
+          "I0-DEV-0343",
+          "I0-DEV-0344",
+          "I0-DEV-0345",
+          "I0-CAL-0141",
+          "I0-CAL-0142",
+          "I0-CAL-0143",
+          "I0-CAL-0144",
+          "I0-CAL-0145",
+          "I0-CAL-0146",
+          "I0-CAL-0147",
+          "I0-CAL-0148",
+          "I0-CAL-0149",
+          "I0-CAL-0150",
+          "I0-CAL-0151",
+          "I0-CAL-0152",
+          "I0-CAL-0153",
+          "I0-CAL-0154",
+          "I0-CAL-0155"
+        ]
+      },
+      "safety_gate": {
+        "count": 15,
+        "ids": [
+          "I0-DEV-0346",
+          "I0-DEV-0350",
+          "I0-DEV-0360",
+          "I0-DEV-0363",
+          "I0-DEV-0372",
+          "I0-DEV-0373",
+          "I0-CAL-0156",
+          "I0-CAL-0158",
+          "I0-CAL-0159",
+          "I0-CAL-0162",
+          "I0-CAL-0165",
+          "I0-CAL-0166",
+          "I0-CAL-0167",
+          "I0-CAL-0169",
+          "I0-CAL-0174"
+        ]
+      },
+      "insufficient": {
+        "count": 1,
+        "ids": [
+          "I0-DEV-0400"
+        ]
+      }
+    }
+  },
+  "no_validation_tuning": true
+}
