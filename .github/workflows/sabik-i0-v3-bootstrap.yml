@@ -1,0 +1,36 @@
+name: Sabik I0 V3 bootstrap
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v3-blind-20260920
+    paths:
+      - tools/bootstrap/calibration.v3.blind.jsonl.gz.b64
+
+permissions:
+  contents: write
+
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sabik/i0-calibration-v3-blind-20260920
+          fetch-depth: 0
+      - name: Reconstruct frozen corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="tools/bootstrap/calibration.v3.blind.jsonl.gz.b64"
+          [ -f "$payload" ] || exit 0
+          mkdir -p tests/calibration/sabik/i0-v3
+          base64 -d "$payload" | gzip -dc > tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl
+          printf '%s  %s\n' "23ee56e118ed89fdf6f63d5e2fb6aaa362d40aae0ac20614152676be9b793eb7" "tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+          rm "$payload"
+          git config user.name "sabik-i0-calibration-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl "$payload"
+          git diff --cached --quiet && exit 0
+          git commit -m "test(sabik): materialize blind I0 calibration V3 corpus"
+          git push origin HEAD:sabik/i0-calibration-v3-blind-20260920
