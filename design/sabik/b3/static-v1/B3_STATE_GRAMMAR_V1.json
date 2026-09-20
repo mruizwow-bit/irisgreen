@@ -1,0 +1,146 @@
+{
+  "version": "SABIK_B3_FAMILY_STATES_STATIC_V1",
+  "principle": "B3 comunica función del sistema; no emoción, personalidad, voz, diagnóstico o estado mental inferido.",
+  "states": {
+    "PRESENTE": {
+      "function": "Estado base: Sabik está disponible sin pedir atención.",
+      "activation": "Cuando no existe una función B3 adicional que comunicar.",
+      "operation": "Master aceptado sin deformación interna; solo centrado en el lienzo de keyframe.",
+      "dominant_variable": "baseline",
+      "text_signal": "Disponible.",
+      "risk": "Que se convierta en actividad ambiental decorativa.",
+      "reduced_motion": "Idéntico.",
+      "static": "Es la referencia completa."
+    },
+    "ORIENTAR": {
+      "function": "Ayudar a localizar el siguiente elemento, paso o dirección funcional.",
+      "activation": "Cuando la interfaz necesita señalar qué importa o dónde continuar.",
+      "operation": "Sesgo progresivo de las mismas tres bandas de materia a lo largo del eje nativo de cada presencia.",
+      "dominant_variable": "dirección",
+      "text_signal": "Siguiente paso: [acción o elemento].",
+      "risk": "Parecer flecha, puntero, rebote o llamada de atención decorativa.",
+      "reduced_motion": "Mantener el keyframe estático y la señal textual; sin desplazamiento temporal.",
+      "static": "La materia ya muestra una dirección preferente."
+    },
+    "TRANSICIÓN": {
+      "function": "Indicar que se cambia de una situación funcional a otra.",
+      "activation": "Entre dos estados funcionales B3 distintos cuando el cambio necesita ser visible.",
+      "operation": "Separación controlada de bandas anterior/central/posterior sobre el eje nativo; conserva origen y destino legibles.",
+      "dominant_variable": "separación direccional",
+      "text_signal": "Cambiando de [A] a [B].",
+      "risk": "Parecer spinner, loading infinito o procesamiento genérico.",
+      "reduced_motion": "Usar este keyframe estático solo mientras dure la transición, con texto equivalente.",
+      "static": "Representa el punto medio estructural; tiene dirección, principio y final."
+    },
+    "PAUSA": {
+      "function": "Comunicar contención, estabilidad y ausencia de demanda inmediata.",
+      "activation": "Cuando Sabik está pausado y conserva la información en pantalla.",
+      "operation": "Convergencia leve de bandas hacia el centro, menor energía periférica y ligera compactación.",
+      "dominant_variable": "densidad/actividad",
+      "text_signal": "En pausa. Puedes continuar cuando quieras.",
+      "risk": "Parecer apagado, error, bloqueo, tristeza o desaparición.",
+      "reduced_motion": "Idéntico al keyframe estático.",
+      "static": "Sabik sigue visible y reconocible, pero con actividad contenida."
+    },
+    "CONFIRMAR": {
+      "function": "Informar de que una acción funcional ya se resolvió, solo cuando el contrato B3 lo requiera.",
+      "activation": "Después de una acción que necesita confirmación explícita del sistema.",
+      "operation": "Convergencia más clara de las mismas bandas hacia un centro compartido, manteniendo plena presencia.",
+      "dominant_variable": "cohesión",
+      "text_signal": "Cambio aplicado.",
+      "risk": "Parecer premio, celebración, check escolar, destello o explosión de color.",
+      "reduced_motion": "Mostrar el keyframe estático durante el tiempo mínimo necesario y volver a PRESENTE.",
+      "static": "Punto de resolución: resuelve → informa → vuelve a PRESENTE."
+    }
+  },
+  "product_axes": {
+    "WEB": {
+      "axis": [
+        0.811041924,
+        -0.584988032
+      ],
+      "character": "ligera, serena, baja profundidad"
+    },
+    "IA": {
+      "axis": [
+        0.969837643,
+        -0.243751811
+      ],
+      "character": "profunda, espacial, multicapa"
+    },
+    "EDUCA": {
+      "axis": [
+        0.911811477,
+        -0.410609097
+      ],
+      "character": "abierta, ascendente, acogedora no infantil"
+    }
+  },
+  "transform_parameters": {
+    "PRESENTE": {
+      "band_shift_px": [
+        0,
+        0,
+        0
+      ],
+      "band_alpha": [
+        1,
+        1,
+        1
+      ],
+      "global_scale": 1.0
+    },
+    "ORIENTAR": {
+      "band_shift_px": [
+        -2,
+        5,
+        14
+      ],
+      "band_alpha": [
+        0.88,
+        0.97,
+        1.0
+      ],
+      "global_scale": 1.0
+    },
+    "TRANSICIÓN": {
+      "band_shift_px": [
+        -16,
+        0,
+        16
+      ],
+      "band_alpha": [
+        0.9,
+        1.0,
+        0.9
+      ],
+      "global_scale": 1.0
+    },
+    "PAUSA": {
+      "band_shift_px": [
+        9,
+        0,
+        -9
+      ],
+      "band_alpha": [
+        0.52,
+        0.74,
+        0.52
+      ],
+      "global_scale": 0.975
+    },
+    "CONFIRMAR": {
+      "band_shift_px": [
+        13,
+        0,
+        -13
+      ],
+      "band_alpha": [
+        0.96,
+        1.0,
+        0.96
+      ],
+      "global_scale": 0.985
+    }
+  }
+}
