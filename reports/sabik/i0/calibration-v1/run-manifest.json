@@ -1,0 +1,145 @@
+{
+  "status": "I0_CALIBRATION_RUN_COMPLETE",
+  "run_version": "V1",
+  "dataset_head": "08764d2562c445f63a93036e0864f2ca859c1e9f",
+  "source_commit": "060d5332e86891abd3c5c853f77bc6d1f2b8d16e",
+  "runtime": {
+    "node": "v22.23.2",
+    "platform": "linux",
+    "arch": "x64",
+    "seed": null,
+    "randomness": false,
+    "hostname": "runnervmlun5p"
+  },
+  "command": "node tools/run-sabik-i0-calibration-v1.mjs --config config/sabik/i0/calibration-run-v1.json --output reports/sabik/i0/calibration-v1",
+  "inputs": {
+    "development": {
+      "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "calibration": {
+      "path": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f"
+    },
+    "schema": {
+      "path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "input_hashes_verified": true,
+  "executor": {
+    "type": "development-trained lexical-context nearest-neighbour reference executor",
+    "version": "i0-reference-v1",
+    "training": "development_only",
+    "development_evaluation": "leave_one_out",
+    "calibration_labels_use": "threshold_selection_and_metrics_only",
+    "validation_173_use": "prohibited",
+    "text_similarity_weight": 0.78,
+    "context_similarity_weight": 0.22,
+    "deterministic": true
+  },
+  "threshold_grid": {
+    "local_reversible": {
+      "top1": [
+        0.8,
+        0.85,
+        0.88,
+        0.9,
+        0.92,
+        0.94
+      ],
+      "margin": [
+        0.08,
+        0.1,
+        0.12,
+        0.15,
+        0.18,
+        0.2
+      ]
+    },
+    "local_with_loss": {
+      "top1": [
+        0.92,
+        0.94,
+        0.96,
+        0.97,
+        0.98,
+        0.99
+      ],
+      "margin": [
+        0.12,
+        0.15,
+        0.18,
+        0.2,
+        0.22,
+        0.25
+      ]
+    }
+  },
+  "candidates_evaluated": 1296,
+  "selection_criterion": [
+    "minimize execution false positives",
+    "minimize negative-control semantic inversions",
+    "minimize Safety Gate errors",
+    "minimize local_with_loss errors",
+    "minimize action-plan errors",
+    "minimize unnecessary clarifications",
+    "minimize abstentions",
+    "maximize complete-case correctness"
+  ],
+  "selected_thresholds": {
+    "classify_floor": 0.7,
+    "local_reversible": {
+      "top1": 0.88,
+      "margin": 0.08
+    },
+    "local_with_loss": {
+      "top1": 0.92,
+      "margin": 0.12
+    }
+  },
+  "prediction_coverage": {
+    "development": {
+      "expected": 400,
+      "received": 400,
+      "unique": 400
+    },
+    "calibration": {
+      "expected": 200,
+      "received": 200,
+      "unique": 200,
+      "extras": 0,
+      "missing": 0
+    }
+  },
+  "validation_173_used_for_tuning": false,
+  "validation_paths_loaded": [],
+  "artifacts": {
+    "predictions.development.jsonl": {
+      "sha256": "6dd2fc7e01f69d496f2d3a2a1b7f02b34c5aa3f88d41ab2f935597245348dbf8",
+      "bytes": 392960
+    },
+    "predictions.calibration.jsonl": {
+      "sha256": "d6527d5eed8551aa4002ff26f0ced0e9455e50e1c5e2bba2a1264ab95dff0953",
+      "bytes": 187714
+    },
+    "candidates.jsonl": {
+      "sha256": "9b80d9d4997a64e2af41894631bcf118ff59beff3a4a66a94f94911f7d62073e",
+      "bytes": 489456
+    },
+    "metrics.development.json": {
+      "sha256": "cc3bd6ada55e71bb56523879ebf31d28129a5d68c377fb301f4963f6b047d8ac",
+      "bytes": 26166
+    },
+    "metrics.calibration.json": {
+      "sha256": "a0ac3ad70c795e47032b76c1489fd6ad696bc3cd0c05c00a55cbf249eb5b52a7",
+      "bytes": 20205
+    },
+    "errors.json": {
+      "sha256": "6e5080f8fb25a43b42adcc9f40f44c91dd6954ff5e2ed7f157fdefde7c1936d5",
+      "bytes": 780762
+    }
+  }
+}

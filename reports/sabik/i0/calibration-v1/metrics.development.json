@@ -1,0 +1,1124 @@
+{
+  "dataset": "development_leave_one_out",
+  "total": 400,
+  "correct": 103,
+  "incorrect": 297,
+  "accuracy": 0.2575,
+  "classification": {
+    "command_plan_exact": 254,
+    "command_plan_accuracy": 0.635,
+    "binary": {
+      "tp": 324,
+      "fp": 26,
+      "fn": 9,
+      "tn": 41,
+      "precision": 0.9257142857142857,
+      "recall": 0.972972972972973,
+      "f1": 0.9487554904831625
+    },
+    "plan_confusion": {
+      "ENCONTRAR_CONTENIDO": {
+        "ENCONTRAR_CONTENIDO": 51,
+        "ABRIR_CONTENIDO": 2,
+        "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 1,
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1
+      },
+      "ABRIR_CONTENIDO": {
+        "ABRIR_CONTENIDO": 37,
+        "ENCONTRAR_CONTENIDO": 1
+      },
+      "NO_INTENT": {
+        "ABRIR_CONTENIDO": 4,
+        "NO_INTENT": 41,
+        "CAMBIAR_DETALLES": 1,
+        "CAMBIAR_VISTA_SENCILLA": 2,
+        "ATRAS": 3,
+        "DETENER": 1,
+        "ENCONTRAR_CONTENIDO": 6,
+        "CONFIRMAR_ACCION": 1,
+        "CAMBIAR_MOVIMIENTO": 2,
+        "CAMBIAR_TAMANO_TEXTO": 2,
+        "DESHACER_ULTIMA_ACCION": 2,
+        "OTRA_VIA": 1,
+        "PEDIR_AYUDA_HUMANA": 1
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO": 22,
+        "CAMBIAR_MOVIMIENTO": 1
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "CAMBIAR_MOVIMIENTO": 21,
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1,
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 4,
+        "REPETIR_INDICACION": 3,
+        "SIGUIENTE": 1,
+        "ENCONTRAR_CONTENIDO": 1,
+        "CAMBIAR_PASO_A_PASO": 10
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_VISTA_SENCILLA": 16,
+        "NO_INTENT": 1,
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 2,
+        "CAMBIAR_MOVIMIENTO": 1,
+        "ATRAS": 1,
+        "ENCONTRAR_CONTENIDO": 1
+      },
+      "CAMBIAR_DETALLES": {
+        "CAMBIAR_DETALLES": 18,
+        "NO_INTENT": 1,
+        "CAMBIAR_MOVIMIENTO": 1
+      },
+      "SIGUIENTE": {
+        "SIGUIENTE": 8,
+        "ATRAS": 1
+      },
+      "ATRAS": {
+        "ATRAS": 18,
+        "NO_INTENT": 1,
+        "SIGUIENTE": 1,
+        "CAMBIAR_PASO_A_PASO": 1
+      },
+      "REPETIR_INDICACION": {
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": 2,
+        "SIGUIENTE": 2,
+        "REPETIR_INDICACION": 5,
+        "CAMBIAR_PASO_A_PASO": 1
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "DESHACER_ULTIMA_ACCION": 8,
+        "NO_INTENT": 1,
+        "ATRAS": 1
+      },
+      "CANCELAR": {
+        "CANCELAR": 8,
+        "RECHAZAR_RESULTADO": 1,
+        "ATRAS": 1
+      },
+      "CONFIRMAR_ACCION": {
+        "CONFIRMAR_ACCION": 8,
+        "NO_INTENT": 1
+      },
+      "RECHAZAR_RESULTADO": {
+        "RECHAZAR_RESULTADO": 4,
+        "OTRA_VIA": 1
+      },
+      "OTRA_VIA": {
+        "OTRA_VIA": 5,
+        "ATRAS": 1
+      },
+      "DETENER": {
+        "DETENER": 8,
+        "NO_INTENT": 1,
+        "ATRAS": 1
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "PEDIR_AYUDA_HUMANA": 5,
+        "NO_INTENT": 2
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "RESTABLECER_PREFERENCIAS": 9,
+        "NO_INTENT": 1,
+        "CAMBIAR_TAMANO_TEXTO": 1
+      },
+      "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 5
+      },
+      "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+        "ABRIR_CONTENIDO": 2,
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 3
+      },
+      "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 4,
+        "CAMBIAR_PASO_A_PASO": 1
+      },
+      "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": 4,
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 1
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 1,
+        "CAMBIAR_MOVIMIENTO": 1
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_VISTA_SENCILLA": 2
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO": 1
+      }
+    },
+    "per_intent": {
+      "ENCONTRAR_CONTENIDO": {
+        "n": 60,
+        "command_exact": 11,
+        "action_exact": 55,
+        "full": 5
+      },
+      "ABRIR_CONTENIDO": {
+        "n": 43,
+        "command_exact": 40,
+        "action_exact": 21,
+        "full": 21
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "n": 29,
+        "command_exact": 24,
+        "action_exact": 5,
+        "full": 5
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "n": 30,
+        "command_exact": 24,
+        "action_exact": 2,
+        "full": 1
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "n": 24,
+        "command_exact": 6,
+        "action_exact": 2,
+        "full": 0
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "n": 29,
+        "command_exact": 18,
+        "action_exact": 3,
+        "full": 2
+      },
+      "CAMBIAR_DETALLES": {
+        "n": 25,
+        "command_exact": 13,
+        "action_exact": 9,
+        "full": 6
+      },
+      "SIGUIENTE": {
+        "n": 14,
+        "command_exact": 12,
+        "action_exact": 1,
+        "full": 0
+      },
+      "ATRAS": {
+        "n": 21,
+        "command_exact": 18,
+        "action_exact": 3,
+        "full": 2
+      },
+      "REPETIR_INDICACION": {
+        "n": 15,
+        "command_exact": 9,
+        "action_exact": 1,
+        "full": 0
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "n": 10,
+        "command_exact": 8,
+        "action_exact": 2,
+        "full": 1
+      },
+      "CANCELAR": {
+        "n": 10,
+        "command_exact": 8,
+        "action_exact": 10,
+        "full": 7
+      },
+      "CONFIRMAR_ACCION": {
+        "n": 9,
+        "command_exact": 8,
+        "action_exact": 1,
+        "full": 0
+      },
+      "RECHAZAR_RESULTADO": {
+        "n": 5,
+        "command_exact": 4,
+        "action_exact": 5,
+        "full": 4
+      },
+      "OTRA_VIA": {
+        "n": 6,
+        "command_exact": 5,
+        "action_exact": 6,
+        "full": 5
+      },
+      "DETENER": {
+        "n": 10,
+        "command_exact": 8,
+        "action_exact": 10,
+        "full": 7
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "n": 7,
+        "command_exact": 5,
+        "action_exact": 7,
+        "full": 4
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "n": 11,
+        "command_exact": 8,
+        "action_exact": 6,
+        "full": 3
+      }
+    }
+  },
+  "result_kind": {
+    "exact": 205,
+    "accuracy": 0.5125,
+    "confusion": {
+      "response": {
+        "response": 103,
+        "clarification": 15,
+        "human_help": 1
+      },
+      "action_result": {
+        "clarification": 154,
+        "action_result": 64,
+        "response": 5
+      },
+      "clarification": {
+        "clarification": 23,
+        "action_result": 2,
+        "response": 5,
+        "insufficient": 2
+      },
+      "human_help": {
+        "human_help": 10,
+        "insufficient": 1
+      },
+      "out_of_scope": {
+        "clarification": 6,
+        "response": 3,
+        "out_of_scope": 2,
+        "human_help": 1
+      },
+      "insufficient": {
+        "insufficient": 3
+      }
+    }
+  },
+  "safety_gate": {
+    "exact": 394,
+    "accuracy": 0.985
+  },
+  "b3": {
+    "exact": 318,
+    "accuracy": 0.795
+  },
+  "execution": {
+    "action_plan_exact": 215,
+    "action_plan_accuracy": 0.5375,
+    "events_exact": 205,
+    "events_accuracy": 0.5125,
+    "binary": {
+      "tp": 43,
+      "fp": 1,
+      "fn": 170,
+      "tn": 186,
+      "precision": 0.9772727272727273,
+      "recall": 0.20187793427230047,
+      "f1": 0.3346303501945525
+    },
+    "omitted_actions": 202,
+    "extra_actions": 15,
+    "wrong_actions": 13
+  },
+  "decisions": {
+    "classify": 127,
+    "clarify": 198,
+    "execute": 44,
+    "insufficient": 6,
+    "safety": 23,
+    "abstain": 2
+  },
+  "abstention_rate": 0.005,
+  "clarification_rate": 0.495,
+  "confidence": {
+    "top1": {
+      "min": 0.78,
+      "p10": 0.8045142857142857,
+      "p50": 0.8486400000000001,
+      "p90": 0.9237333333333333,
+      "max": 0.999,
+      "mean": 0.8571487707253006
+    },
+    "margin": {
+      "min": 0.25364999999999993,
+      "p10": 0.25766,
+      "p50": 0.26780000000000004,
+      "p90": 0.35309333333333326,
+      "max": 0.44299999999999995,
+      "mean": 0.28849632956414284
+    },
+    "bins": [
+      {
+        "lo": 0,
+        "hi": 0.8,
+        "n": 31,
+        "correct": 8,
+        "accuracy": 0.25806451612903225,
+        "mean_confidence": 0.7934715660118039
+      },
+      {
+        "lo": 0.8,
+        "hi": 0.85,
+        "n": 174,
+        "correct": 30,
+        "accuracy": 0.1724137931034483,
+        "mean_confidence": 0.8282548276635067
+      },
+      {
+        "lo": 0.85,
+        "hi": 0.9,
+        "n": 124,
+        "correct": 21,
+        "accuracy": 0.1693548387096774,
+        "mean_confidence": 0.8628235346913915
+      },
+      {
+        "lo": 0.9,
+        "hi": 0.94,
+        "n": 42,
+        "correct": 22,
+        "accuracy": 0.5238095238095238,
+        "mean_confidence": 0.9147197959183676
+      },
+      {
+        "lo": 0.94,
+        "hi": 0.97,
+        "n": 4,
+        "correct": 0,
+        "accuracy": 0,
+        "mean_confidence": 0.95435
+      },
+      {
+        "lo": 0.97,
+        "hi": 1.00001,
+        "n": 25,
+        "correct": 22,
+        "accuracy": 0.88,
+        "mean_confidence": 0.9967919999999997
+      }
+    ]
+  },
+  "insufficient": {
+    "total": 3,
+    "kind_correct": 3,
+    "no_action": 3,
+    "not_confirmar": 3,
+    "full": 3,
+    "cases": [
+      {
+        "id": "I0-DEV-0398",
+        "predicted_kind": "insufficient",
+        "predicted_actions": [],
+        "predicted_b3": "PRESENTE",
+        "correct": true
+      },
+      {
+        "id": "I0-DEV-0399",
+        "predicted_kind": "insufficient",
+        "predicted_actions": [],
+        "predicted_b3": "PRESENTE",
+        "correct": true
+      },
+      {
+        "id": "I0-DEV-0400",
+        "predicted_kind": "insufficient",
+        "predicted_actions": [],
+        "predicted_b3": "PRESENTE",
+        "correct": true
+      }
+    ]
+  },
+  "multi_action": {
+    "total": 25,
+    "command_exact": 16,
+    "action_exact": 0,
+    "full_exact": 0,
+    "omitted_actions": 43,
+    "extra_actions": 2,
+    "wrong_actions": 2,
+    "order_errors": 0,
+    "cases": [
+      {
+        "id": "I0-DEV-0321",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0322",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0323",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0324",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0325",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0326",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0327",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0328",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0329",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0330",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "dest",
+              "route": "/dest"
+            },
+            "risk": "local_with_loss"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0331",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-multi"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "wrong": 1,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0332",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-multi"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "wrong": 1,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0333",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_STEP_BY_STEP",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-multi"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0334",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_STEP_BY_STEP",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-multi"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0335",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_STEP_BY_STEP",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "STEP_NEXT",
+            "parameters": {
+              "flowId": "flow-multi"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0336",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0337",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0338",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0339",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0340",
+        "command_exact": true,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_DETAILS",
+            "parameters": {
+              "contentId": "current",
+              "expanded": false
+            },
+            "risk": "local_reversible"
+          },
+          {
+            "type": "REPEAT_INSTRUCTION",
+            "parameters": {
+              "contextId": "current"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0341",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0342",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_MOTION",
+            "parameters": {
+              "motion": "reduced"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0343",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0344",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      },
+      {
+        "id": "I0-DEV-0345",
+        "command_exact": false,
+        "action_exact": false,
+        "full_exact": false,
+        "omitted": [
+          {
+            "type": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "risk": "local_reversible"
+          }
+        ],
+        "extra": [],
+        "wrong": 0,
+        "order_error": false
+      }
+    ]
+  },
+  "negation": {
+    "negative": {
+      "total": 4,
+      "correct": 4,
+      "false_triggers": 0,
+      "cases": [
+        {
+          "id": "I0-DEV-0252",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-DEV-0254",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-DEV-0256",
+          "correct": true,
+          "actions": [],
+          "events": []
+        },
+        {
+          "id": "I0-DEV-0258",
+          "correct": true,
+          "actions": [],
+          "events": []
+        }
+      ]
+    },
+    "positive": {
+      "total": 4,
+      "correct": 2,
+      "failures": 2,
+      "cases": [
+        {
+          "id": "I0-DEV-0251",
+          "correct": true,
+          "actions": [
+            {
+              "type": "SET_TEXT_SIZE",
+              "parameters": {
+                "size": "large"
+              },
+              "risk": "local_reversible"
+            }
+          ],
+          "events": []
+        },
+        {
+          "id": "I0-DEV-0253",
+          "correct": false,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        },
+        {
+          "id": "I0-DEV-0255",
+          "correct": true,
+          "actions": [],
+          "events": [
+            "PAUSE_ASSISTANT"
+          ]
+        },
+        {
+          "id": "I0-DEV-0257",
+          "correct": false,
+          "actions": [],
+          "events": [
+            "ASK_CLARIFICATION"
+          ]
+        }
+      ]
+    }
+  }
+}
