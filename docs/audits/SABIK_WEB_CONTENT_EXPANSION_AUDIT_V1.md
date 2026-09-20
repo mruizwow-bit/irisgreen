@@ -92,7 +92,7 @@ Búsqueda realizada en el repositorio principal:
 |---|---:|---|
 | Condiciones | 185 entradas enlazadas desde el índice | Muy amplia; revisar taxonomía, fuente, vigencia y consistencia |
 | Situaciones | 187 entradas enlazadas desde el índice | Muy amplia; revisar cobertura y consistencia |
-| Vida diaria | 48 fichas enlazadas | Contenido útil; inconsistencia de estado entre índice y fichas |
+| Vida diaria | 48 fichas enlazadas | Pipeline editorial específico: la fuente, staging y dist usan estados distintos; auditar el artefacto final |
 | Investigación | 120 publicaciones descritas | Muy amplia; necesita mantenimiento, filtros y protocolo de actualización |
 | Datos | 49 páginas indicadas por el propio índice | El índice declara todas en borrador |
 | Ayudas | snapshot ES con 258 registros; metadatos de otros países/ámbitos | Alto valor; exige control de caducidad y jurisdicción |
@@ -134,34 +134,31 @@ El índice mezcla categorías distintas:
 - identidades;
 - conceptos emergentes o controvertidos.
 
-### 3.2 Sitemap y descubrimiento
+### 3.2 Sitemap y descubrimiento · diagnóstico corregido tras revisar el build
 
-El índice de Condiciones enlaza a 185 fichas. Siete rutas enlazadas desde el índice no aparecen en el `sitemap.xml` auditado:
+El `sitemap.xml` almacenado en la fuente no debe tratarse como artefacto final.
 
-- ARFID;
-- autismo;
-- dislexia;
-- trastorno del desarrollo de la coordinación / dispraxia;
-- perfil PDA;
-- sueño;
-- TDAH.
+`scripts/repair_routes.py` regenera `sitemap.xml` y `sitemap-1.xml` durante el build de staging a partir de las páginas indexables.
 
-Situaciones presenta 187 fichas y el sitemap contiene el índice + 187 rutas, por lo que esa colección sí es coherente en el recuento.
+El snapshot fuente consultado no contiene siete rutas enlazadas por Condiciones (ARFID, autismo, dislexia, trastorno del desarrollo de la coordinación/dispraxia, perfil PDA, sueño y TDAH), pero las fichas comprobadas conservan `index,follow` y canonical individual.
 
-**P1:** corregir la discrepancia de Condiciones y verificar por qué esas siete páginas no se incluyen.
+**Conclusión:** no se registra como fallo de producción sin revisar `dist`.
 
-### 3.3 Vida diaria: estado contradictorio
+**P1:** después de un build actual, comprobar el sitemap generado, canonical y recuentos. No editar a mano el sitemap fuente si el generador es la fuente canónica.
 
-El índice de Vida diaria marca las 48 tarjetas como **BORRADOR**.
+### 3.3 Vida diaria · fuente, staging y salida pública
 
-Sin embargo, varias fichas individuales revisadas muestran:
+La fuente contiene 48 tarjetas con “BORRADOR”, mientras que 48/48 fichas individuales contienen “Estado: publicada” y “Validación: 10 de septiembre de 2026”.
 
-- “Estado: publicada”
-- “Validación: 10 de septiembre de 2026”
+Tras revisar el pipeline se confirma que esta divergencia es deliberada:
 
-**P0/P1:** unificar el estado editorial. Una persona no debe recibir dos estados contradictorios sobre el mismo contenido.
+1. `scripts/publish_biblioteca.py` publica y valida las 48 fichas en staging y actualiza la portada.
+2. `scripts/repair_routes.py` regenera el sitemap.
+3. `validate_publication_statuses.py`, `finalize_validation_labels.py` y `strip_daily_public_status.py` retiran los estados editoriales de la salida pública `dist`.
 
-Además, las 48 fichas individuales no están individualizadas en el sitemap auditado.
+**Conclusión:** no se trata como contradicción visible en producción.
+
+**P1:** auditar `dist` después del build y mantener fecha/estado de revisión en gobernanza interna, sin depender de rótulos públicos. No editar manualmente el resultado que ya controla el pipeline.
 
 ### 3.4 Datos
 
@@ -290,7 +287,7 @@ A fecha 20/09/2026 ese plazo está cerrado. La ficha puede mantenerse como refer
 
 ### P0 · CRÍTICO
 
-1. Resolver estados editoriales contradictorios en Vida diaria.
+1. Verificar el artefacto final de Vida diaria y su registro interno de revisión; no confundir estados de fuente con salida pública.
 2. Completar verificación final de las 49 fichas de Datos antes de presentarlas como definitivas.
 3. Implementar control de caducidad/apertura/cierre en Ayudas.
 4. Marcar convocatorias ya cerradas, empezando por NEAE 2026-2027.
@@ -303,7 +300,7 @@ A fecha 20/09/2026 ese plazo está cerrado. La ficha puede mantenerse como refer
 
 1. Taxonomía de Condiciones.
 2. Corregir sitemap de Condiciones.
-3. Incorporar páginas individuales de Vida diaria al sitemap si procede.
+3. Verificar en el sitemap generado por build las páginas indexables de Vida diaria y Condiciones; no editar el sitemap generado a mano.
 4. Crear página de transparencia IA.
 5. Crear registro de fuente/vigencia por dato y recurso.
 6. Inventario completo de PDFs/documentos y estado PDF/UA.
@@ -785,9 +782,9 @@ El RD 707/2026 define la Lectura Fácil como un método que incluye redacción, 
 - publicar solo fichas verificadas.
 
 ### Gate D · Vida diaria
-- resolver BORRADOR/publicada;
-- validar 48/48;
-- sitemap;
+- revisar fuente → staging → dist;
+- conservar la validación interna 48/48;
+- comprobar sitemap generado;
 - fuentes;
 - nuevas fichas por laguna.
 
