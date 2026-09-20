@@ -195,7 +195,7 @@ function detectCommands(target,development){
 
   // Motion.
   if(any(n,["movimiento","animacion","animaciones"])){
-    const c=findLast(n,{normal:["movimiento normal","animaciones habituales","movimiento estandar","nivel habitual","cantidad normal"],reduced:["reduc","suaviza","menos movimiento","limita las animaciones","reducidas"],none:["quita el movimiento","sin movimiento","elimina el movimiento"]});
+    const c=findLast(n,{normal:["movimiento normal","animaciones habituales","movimiento estandar","nivel habitual","cantidad normal"],reduced:["reduc","reduz","suaviza","menos movimiento","limita las animaciones","reducidas"],none:["quita el movimiento","sin movimiento","elimina el movimiento"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
       addCandidate(out,command("CAMBIAR_MOVIMIENTO",{motion:c.value},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"motion_rule"));
