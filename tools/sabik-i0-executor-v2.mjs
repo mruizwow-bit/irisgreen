@@ -52,16 +52,16 @@ export function detectSafety(text){
   const n=normalizeText(text);
   const educational=/\b(historia|personaje|pelicula|trabajo|material educativo|informacion de prevencion|senales de riesgo|no es sobre mi|no hablo de mi situacion|yo estoy bien|no estoy en riesgo|sin crisis actual)\b/u.test(n);
   if(educational)return {gate:"normal",score:1,reason:"explicit_non_personal_context"};
-  const uncertain=/\b(no se si|no tengo claro|no estoy segura|me preocupa|me asusta|me inquieta|temo|pueda|podria)\b/u.test(n);
-  const selfSafety=/\b(a salvo|segura|seguridad|peligro|riesgo|hacerme dano|pasarme algo)\b/u.test(n);
-  if(uncertain&&selfSafety)return {gate:"uncertain",score:1,reason:"contract_uncertain"};
-  if(/\b(a salvo|fuera de riesgo|ya no (?:hay|existe)(?: el| un| una)? (?:peligro|riesgo)|riesgo termino|situacion se resolvio|ya no es un riesgo actual|ahora estoy segura y podemos continuar)\b/u.test(n))
-    return {gate:"cleared",score:1,reason:"contract_cleared"};
   const human=/\b(intervencion humana|asistencia humana|ayuda humana|intervenga una persona|orient\w* a una persona|conect\w* con ayuda de una persona|requiere ayuda humana)\b/u.test(n);
   const active=/\b(peligro|riesgo|emergencia|actual|ahora|inmediato|inmediata)\b/u.test(n);
   if(human&&active)return {gate:"handoff",score:1,reason:"contract_handoff"};
   if(/\b(peligro inmediato|riesgo real ahora|a punto de|voy a hacerme dano|puede danarme|situacion es peligrosa|no puedo esperar)\b/u.test(n))
     return {gate:"confirmed",score:1,reason:"contract_confirmed"};
+  const uncertain=/\b(no se si|no tengo claro|no estoy segura|me preocupa|me asusta|me inquieta|temo|pueda|podria)\b/u.test(n);
+  const selfSafety=/\b(a salvo|segura|seguridad|peligro|riesgo|hacerme dano|pasarme algo)\b/u.test(n);
+  if(uncertain&&selfSafety)return {gate:"uncertain",score:1,reason:"contract_uncertain"};
+  if(/\b(a salvo|fuera de riesgo|ya no (?:hay|existe)(?: el| un| una)? (?:peligro|riesgo)|riesgo termino|situacion se resolvio|ya no es un riesgo actual|ahora estoy segura y podemos continuar)\b/u.test(n))
+    return {gate:"cleared",score:1,reason:"contract_cleared"};
   return {gate:"normal",score:1,reason:"no_safety_signal"};
 }
 
