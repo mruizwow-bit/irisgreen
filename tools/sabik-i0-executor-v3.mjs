@@ -399,7 +399,7 @@ function detectCommands(target,development){
   const negSpecs=[
     {intent:"CAMBIAR_TAMANO_TEXTO",re:/\bno\b[^.;]{0,55}\b(?:hagas|pongas|dejes|vuelvas|devuelvas|cambies)\b[^.;]{0,30}\b(?:letra|texto|tamano)\b[^.;]{0,20}\b(grande|normal|extra grande)\b/u,params:m=>({size:m[1]==="normal"?"normal":m[1]==="extra grande"?"xlarge":"large"})},
     {intent:"CAMBIAR_MOVIMIENTO",re:/\bno\b[^.;]{0,45}\b(?:elimines|quites|reduzcas|cambies)\b[^.;]{0,35}\bmovimiento\b/u,params:m=>({motion:/elimines|quites/u.test(m[0])?"none":/reduzcas/u.test(m[0])?"reduced":"normal"})},
-    {intent:"CAMBIAR_PASO_A_PASO",re:/\bno\b[^.;]{0,25}\b(?:lo\s+)?(actives|pongas|desactives|quites)\b[^.;]{0,35}(?:pasos|etapas|recorrido|guia)?/u,params:m=>({enabled:/actives|pongas/u.test(m[1])})},
+    {intent:"CAMBIAR_PASO_A_PASO",re:/\bno\b[^.;]{0,25}\b(?:lo\s+)?(actives|pongas|desactives|quites)\b[^.;]{0,35}\b(?:modo\s+)?(?:por\s+)?(?:pasos|etapas|paso\s+a\s+paso|recorrido\s+por\s+pasos|guia\s+por\s+(?:pasos|etapas))\b/u,params:m=>({enabled:/actives|pongas/u.test(m[1])})},
     {intent:"CAMBIAR_VISTA_SENCILLA",re:/\bno\b[^.;]{0,35}\b(?:vuelvas|cambies|pongas|actives|desactives)\b[^.;]{0,40}\b(?:vista|interfaz|diseno)\b/u,params:m=>({enabled:!/complet/u.test(m[0])})},
     {intent:"ATRAS",re:/\bno\b[^.;]{0,20}\b(?:retrocedas|vuelvas|regreses)\b[^.;]{0,25}\b(paso|pagina|ruta|pantalla)\b/u,params:m=>({scope:/pagina|ruta|pantalla/u.test(m[1])?"page":"step"})},
     {intent:"REPETIR_INDICACION",re:/\b(?:no\b[^.;]{0,20}\brepitas|sin\s+repetir)\b[^.;]{0,35}(?:mensaje|instruccion|indicacion)?/u,params:()=>({contextId:"current"})},
