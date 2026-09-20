@@ -31,7 +31,7 @@
 - [x] Archivo principal en GitHub.
 - [x] Evidencias separadas en GitHub.
 - [x] Rama propia.
-- [x] PR draft.
+- [x] PR **READY FOR REVIEW**.
 - [x] P0–P3 con identificadores.
 - [x] Fuentes normativas primarias/institucionales registradas.
 - [x] Diferencia entre referencia técnica y obligación legal.
