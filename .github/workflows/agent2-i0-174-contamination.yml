@@ -1,0 +1,83 @@
+name: Agent 2 I0 #174 anti-contamination
+on:
+  push:
+    branches:
+      - agent2/i0-174-contamination-ci-243eaa67
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout development/calibration candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 243eaa67f06d229bbf468bd60fc281e69c672d44
+          path: candidate
+          fetch-depth: 1
+      - name: Checkout external validation PR176
+        uses: actions/checkout@v4
+        with:
+          ref: 33cd63089416ccdf82fddea4415d3afbec6aa05a
+          path: validation
+          fetch-depth: 1
+      - name: Validate layered corpora
+        working-directory: candidate
+        run: node tools/validate-sabik-i0-dev-cal.mjs
+      - name: Verify manifests and exact counts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          test "$(wc -l < tests/development/sabik/i0/development.v0.4.jsonl)" -eq 400
+          test "$(wc -l < tests/calibration/sabik/i0/calibration.v0.4.jsonl)" -eq 200
+          node <<'NODE'
+          const fs=require('fs'),crypto=require('crypto');
+          for(const role of ['development','calibration']){
+            const p=`tests/${role}/sabik/i0/${role}.v0.4.jsonl`;
+            const m=JSON.parse(fs.readFileSync(`tests/${role}/sabik/i0/manifest.v0.4.json`,'utf8'));
+            const b=fs.readFileSync(p);
+            const sha=crypto.createHash('sha256').update(b).digest('hex');
+            if(sha!==m.sha256) throw new Error(role+' SHA mismatch '+sha+' != '+m.sha256);
+          }
+          console.log('MANIFEST_HASHES_PASS');
+          NODE
+      - name: Confirm validation is physically separate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e candidate/tests/evaluation/sabik/i0/validation
+          test -d validation/tests/evaluation/sabik/i0/validation
+          echo "SEPARATION_PASS"
+      - name: Anti-contamination report
+        shell: bash
+        run: |
+          set -euo pipefail
+          node candidate/tools/detect-sabik-i0-contamination.mjs \
+            --development candidate/tests/development/sabik/i0/development.v0.4.jsonl \
+            --calibration candidate/tests/calibration/sabik/i0/calibration.v0.4.jsonl \
+            --validation-dir validation/tests/evaluation/sabik/i0/validation \
+            | tee /tmp/contamination.json
+          node <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('/tmp/contamination.json','utf8'));
+          console.log('ANTI_CONTAMINATION_COUNTS',JSON.stringify(r.counts));
+          console.log('ANTI_CONTAMINATION_SUSPICIOUS',r.suspicious_count);
+          for(const x of r.suspicious) console.log('SUSPECT',JSON.stringify(x));
+          NODE
+      - name: Calibration harness syntax
+        working-directory: candidate
+        run: |
+          node --check tools/calibrate-sabik-i0-thresholds.mjs
+          node --check tools/detect-sabik-i0-contamination.mjs
+          node --check tools/validate-sabik-i0-dev-cal.mjs
+      - name: Verify protected scopes unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          git diff --name-only 1d3976ef891e57c21a774ac8c8def5e98cee7688...HEAD | sort | tee /tmp/i0-changed.txt
+          if grep -E '^(sabik/nea-core/|sabik/sabik-page\.(js|css)$|es/nea/|\.github/)' /tmp/i0-changed.txt; then
+            echo "PROTECTED_SCOPE_CHANGED"; exit 1
+          fi
