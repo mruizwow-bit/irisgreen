@@ -355,14 +355,14 @@ function detectCommands(target,development){
   }
 
   // Cancel.
-  if(any(n,["cancela","anula","retira la pregunta","descarta la pregunta","elimina la confirmacion","no sigas esperando mi confirmacion","interrumpe la peticion","retira la operacion"])){
+  if(any(n,["cancela","anula","retira la pregunta","descarta la pregunta","elimina la confirmacion","interrumpe la peticion","retira la operacion"])||/\b(?:deja|para|no)\b[^.;]{0,30}\b(?:esperar|esperando)\b[^.;]{0,20}\bconfirmacion\b/u.test(n)){
     let target=/\b(pregunta|aclaracion)\b/u.test(n)?"clarification":/\b(confirmacion|operacion)\b/u.test(n)?"confirmation":"current_request";
     const st=Math.max(0,(n.search(/\b(cancela|anula|retira|descarta|elimina|interrumpe)\b/u)>=0?n.search(/\b(cancela|anula|retira|descarta|elimina|interrumpe)\b/u):0)+offset);
     addCandidate(out,command("CANCELAR",{target},st,1,"contract_exact",explicitNegation(original,st),"cancel_rule"));
   }
 
   // Reject result.
-  if(any(n,["resultado no encaja","descarta la respuesta","no tomes esta opcion como valida","contenido no responde","rechaza esta respuesta"])){
+  if(any(n,["resultado no encaja","descarta la respuesta","contenido no responde","rechaza esta respuesta"])||/\bno\b[^.;]{0,25}\b(?:tomes|consideres|aceptes)\b[^.;]{0,35}\b(?:opcion|resultado|respuesta)\b[^.;]{0,20}\bvalid\w*\b/u.test(n)){
     const st=Math.max(0,(n.search(/\b(resultado|descarta|tomes|contenido|rechaza)\b/u)>=0?n.search(/\b(resultado|descarta|tomes|contenido|rechaza)\b/u):0)+offset);
     addCandidate(out,command("RECHAZAR_RESULTADO",{resultId:context.lastResultId||"r1"},st,1,"contract_exact",/^no rechaces\b/u.test(n),"reject_rule"));
   }
