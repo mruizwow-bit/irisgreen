@@ -1,67 +1,68 @@
-# ASSET_INDEX · SABIK_B3_FAMILY_STATES_STATIC_V1
+# ASSET_INDEX · SABIK_B3_FAMILY_STATES_STATIC_V1_R1
 
 **Base exacta:** `742e502802cdc9e3e7b154ddbb8493493c903898`  
-**PR visual aceptado:** #181 · congelado  
-**Estado:** `SABIK_B3_FAMILY_STATES_STATIC_V1_READY`
+**Estado:** `SABIK_B3_FAMILY_STATES_STATIC_V1_R1_READY`
 
-## Paquete completo
+## Paquete
 
-- Library path: `/SABIK/Agent3/SABIK_B3_FAMILY_STATES_STATIC_V1.zip`
-- Library file id: `libfile_79ef50aa306c8191af3496b5b1b89891`
-- SHA-256: `68da52637e10db8201ff1db21f164c0bb1249ec2e78580148b37afa60aa23f32`
-- Bytes: `7,950,190`
-- Manifest: `85` archivos inventariados + `MANIFEST.json`.
+- Library: `/SABIK/Agent3/SABIK_B3_FAMILY_STATES_STATIC_V1_R1.zip`
+- Library file id: `libfile_ee2a0d85494481918f68864a69227686`
+- SHA-256: `bac337008937569942b35f92bfbbce127f702184c6ee15a622fe3a37082627e7`
+- Bytes: `12,567,466`
+- Manifest: `115` archivos inventariados + `MANIFEST.json`.
+- Sidecar: `libfile_ecf1f771fb98819191f02bad23132e82`
 
-Sidecar:
-- `/SABIK/Agent3/SABIK_B3_FAMILY_STATES_STATIC_V1.sha256`
-- `libfile_731a6c32c4848191b4639fca1534f4b4`
-
-## 15 keyframes principales
+## 15 keyframes R1
 
 | Presencia | Estado | Library file id | SHA-256 |
 |---|---|---|---|
-| Web | PRESENTE | `libfile_1ff482ce03908191ac3de65c3582635c` | `38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef` |
-| Web | ORIENTAR | `libfile_e29b8b9e8c2c81918a3df60cb309a225` | `2f422cbc7c73f42a3f1e4c19b60c5d05d2102ac7e1080d372b582c0e6c799f64` |
-| Web | TRANSICIÓN | `libfile_1a4af150da2481918bb24c6561af8406` | `7f6705d64f8246518dc57f7ab4a763a93cd70c93511a12baabbbda7f0df1a480` |
-| Web | PAUSA | `libfile_fadbaf2771ec8191808b65da5d2cfa79` | `586adc2cdc8a546771d8d1aa53c86d451b39f89df3eb300b83af2edca01eeaea` |
-| Web | CONFIRMAR | `libfile_0608996b599481919efde402046bb30f` | `00f2729df50e0ad32b744f2020d0805a807a36c40dfe46ca89f3f0f5b6a7d8b0` |
-| IA | PRESENTE | `libfile_905490d833008191a9c0d9bb41932499` | `6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3` |
-| IA | ORIENTAR | `libfile_98e6e0fb19a88191ac2ae56af3afe0dc` | `1b135767747363514b404159c5c708ee81582c36f959e3d16cb49ceab4a09ea8` |
-| IA | TRANSICIÓN | `libfile_f592edb4e3548191862e48ba524459dc` | `2f0353e670a28ef3b6484b419da70feed466971a1d86720572dcc66b27396980` |
-| IA | PAUSA | `libfile_6e5ad307a9ac8191b36f00137ec1b7b6` | `44cd541d22b6c42e94541069072a88b6a631e1d1c75111970a9e3bfe86807cb7` |
-| IA | CONFIRMAR | `libfile_4d3975cd95ec81918b8204262f296ed6` | `ffc0f5dcaf1341825a100f1a52bbff819f5fe326c6b328d8844485ec23667393` |
-| Educa | PRESENTE | `libfile_88860a4ee8a48191a3f5032b65dda4b6` | `1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518` |
-| Educa | ORIENTAR | `libfile_8e2d404d9c68819191808d649a839a0c` | `96f9411d40d13406f8e1df84a165f37b0ab1133a97406a79cad08dcd13e6575e` |
-| Educa | TRANSICIÓN | `libfile_a2195e100cc8819180a20d626fef3102` | `07a0247b0e0114f29b8d2d885b48e9b47504f600b10fedc8f952b94d848c12a5` |
-| Educa | PAUSA | `libfile_bcfcdf733ac4819189eb4eec2d162391` | `8a5f85fd3da29ae371d1b85fbb806b59f3e22cb7f249f8f50c835e7c0c58378c` |
-| Educa | CONFIRMAR | `libfile_12cd4dd8f16081919406555d39b7e0fd` | `bca2b476e90d2e89dca7871b0c5837fc1d88180b6e63a74a2b37d391eaf9bca3` |
+| Web | PRESENTE | `libfile_c12238dd6b388191bc67686b15fd1e94` | `38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef` |
+| Web | ORIENTAR | `libfile_06a6312cf0048191a244ebcc0517ee3d` | `6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133` |
+| Web | TRANSICIÓN | `libfile_c158341d34688191979978dfb1bd4fe2` | `b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7` |
+| Web | PAUSA | `libfile_c7d0eac71c3c8191aee86d6ba75e5521` | `62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c` |
+| Web | CONFIRMAR | `libfile_9f648d3073bc8191ae74f2950b42a6a1` | `4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053` |
+| IA | PRESENTE | `libfile_62105e6beefc8191a503383758385cc9` | `6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3` |
+| IA | ORIENTAR | `libfile_b0c6626c4c00819189c8f6a20a9c52db` | `ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9` |
+| IA | TRANSICIÓN | `libfile_ab7f8953adf081919d24964f14ce54aa` | `09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e` |
+| IA | PAUSA | `libfile_3580d7a786548191b2b08a46cc57c497` | `fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792` |
+| IA | CONFIRMAR | `libfile_e2034eaefbe08191a0542d28b2b03095` | `6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed` |
+| Educa | PRESENTE | `libfile_c7a81b960f208191a32c4ccaa23aa3e4` | `1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518` |
+| Educa | ORIENTAR | `libfile_1d45484b9aac8191baa79ea2e52e5716` | `7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640` |
+| Educa | TRANSICIÓN | `libfile_db7a4652ea8c81919177fb9571361bbb` | `4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724` |
+| Educa | PAUSA | `libfile_899f78774b608191a6cff1d970cb7fd9` | `70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f` |
+| Educa | CONFIRMAR | `libfile_4a627ae7a6988191bb0fbf6b4fe09ceb` | `b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647` |
 
-## Láminas obligatorias
+## Láminas
 
-| Lámina | Library file id | SHA-256 |
-|---|---|---|
-| A · Matriz de estados | `libfile_cdbab5f45aa8819191d1672adde37452` | `758eeaf8c0574cb56847622af5961b073f36cbea7c58421eed7c7a0e4f7f31ed` |
-| B · Comparación por estado | `libfile_56113a5a70ec81919af8995402d54911` | `73b5550cc79108b20a2800bacbd03d72206faaed2f93a8cf5d1fd26213c2fee8` |
-| C · Monocromo | `libfile_01969ecfb05c8191bb3bf8fe62eaf419` | `f748232764f86dfac28746c49664693a9fd778d3826ff7e365fcf6b4c6878267` |
-| D · Escala 64/32 | `libfile_2e8d983bd3bc8191939a94e4e7d612c4` | `e0f1134ae188ac7dd482bf9d3f3fb8cb479dce2bb2cdd39a4a40e8c059ec7017` |
-| E · Matriz origen | `libfile_3015cc3f28588191b157bc4d381b29d4` | `e4dc755a5469e1080c0a8e961832d22c38929d499c772b5cb5e063d7fe5fc878` |
+- A · matriz R1: `libfile_ec5abfba53988191a5c0456447703377`
+- B · comparación por estado: `libfile_e560f3b1fb4c819194c15beef8f78550`
+- C · monocromo: `libfile_2911d556b57c8191a518cb730d89ec08`
+- D · 64/32: `libfile_9ed09ad6e3708191955d2a61978238ee`
+- E · Matriz como origen: `libfile_64fd0fd5d1bc81918b3b6398f6b203e1`
+- F · V1 ↔ R1: `libfile_3953d5b613bc8191a5acd16f56323081`
 
-## Documentación en Biblioteca
+## Test ciego 64 px
 
-- Especificación: `libfile_8e980ff6efdc8191ad1a686366029ad1`
-- Compatibilidad PR #163: `libfile_10290f5b49808191b12fd5bae9404d49`
-- Matriz de conformidad: `libfile_293289b6af6c8191a696b99b30e2ff50`
-- Gramática JSON: `libfile_e410690830988191aa9d283abe1e871a`
-- QA técnico: `libfile_557ae968bcd48191a142bbe465c07363`
-- Lock de masters aceptados: `libfile_74f82b09ef208191b95b5634e3f28369`
+- Web color: `libfile_149a1175bfc48191b93291cbf8c37f11`
+- Web mono: `libfile_8485cbccdd9481919b802fd3e0fc7a3d`
+- IA color: `libfile_7ab7a2f9fe148191bb604b9de05dd140`
+- IA mono: `libfile_7fd8e5523a2881919cbdd971c2a9684e`
+- Educa color: `libfile_5faed54bc9848191b41e38b899d73f32`
+- Educa mono: `libfile_eaec3da293a48191996557f0be117f93`
+- Clave: `libfile_594e7bfec1c48191b7debb48783f92e1`
+- Plantilla: `libfile_3ad288a0fd808191a13d09fdc389e5df`
+- Estado piloto: `libfile_3da83d0254888191aca125510dfc07fd`
 
 ## Integridad
 
-- `B3_STATIC_TECHNICAL_QA_PASS`
-- `B3_STATIC_REPRODUCIBILITY_PASS`
-- PRESENTE Web/IA/Educa contiene el master aceptado byte-a-byte en el lienzo técnico.
-- No existen estados de Presencia Matriz.
-- 32 px perceptivo: `PENDING HUMAN TEST`.
-- 0 cambios en la familia visual aceptada.
+- `ACCEPTED_FAMILY_MASTER_LOCK_PASS 4 files`
+- `B3_STATIC_R1_BUILD_PASS`
+- `B3_STATIC_R1_REPRODUCIBILITY_PASS 75 files`
+- `MANIFEST_PASS 115 files`
+- PRESENTE Web/IA/Educa = master aceptado byte-a-byte dentro del lienzo.
+- Presencia Matriz = 0 estados B3.
+- Piloto perceptivo = `NOT PERFORMED`.
+- 32 px = `PENDING HUMAN TEST`.
+- cambios en familia visual aceptada = 0.
 
 **NO MERGE.**
