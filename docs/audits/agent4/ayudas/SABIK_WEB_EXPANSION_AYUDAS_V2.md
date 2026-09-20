@@ -35,7 +35,7 @@ Se ha realizado un barrido **258/258**.
 
 - **258/258** filas conservan una fuente oficial/primaria de administración u organismo gestor.
 - **0** filas se han resuelto usando agregadores comerciales.
-- **9** URLs tienen sustitución oficial propuesta con trazabilidad.
+- **8** URLs tienen sustitución oficial propuesta con trazabilidad.
 - **0** URLs se han clasificado como 404/410 confirmados.
 - **13** URLs/rutas presentan otra incidencia: redirección, inestabilidad, portal genérico, ruta incorrecta o recuperación insuficiente.
 
