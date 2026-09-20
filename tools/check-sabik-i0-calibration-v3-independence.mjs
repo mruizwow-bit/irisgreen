@@ -117,16 +117,27 @@ let reservedChecked=false;
 if (args['reserved-git-ref']) {
   const ref=args['reserved-git-ref'];
   const names=execFileSync('git',['ls-tree','-r','--name-only',ref],{encoding:'utf8'}).split(/\r?\n/).filter(Boolean);
-  const allJsonl=names.filter(p=>/\.jsonl$/i.test(p));
-  let paths=allJsonl.filter(p=>/(validation|reserved|holdout|eval)/i.test(p));
-  if (!paths.length) paths=allJsonl;
+  const structured=names.filter(p=>/\.(jsonl|ndjson|json)$/i.test(p));
+  let paths=structured.filter(p=>/(validation|reserved|holdout|eval)/i.test(p));
+  if (!paths.length) paths=structured;
   const rows=[];
+  const collectUtterances=(value)=>{
+    if (Array.isArray(value)) { for (const item of value) collectUtterances(item); return; }
+    if (!value || typeof value!=='object') return;
+    if (typeof value.utterance==='string') rows.push({utterance:value.utterance});
+    for (const v of Object.values(value)) if (v && typeof v==='object') collectUtterances(v);
+  };
   for (const p of paths) {
     let text;
     try { text=execFileSync('git',['show',`${ref}:${p}`],{encoding:'utf8',maxBuffer:64*1024*1024}); }
     catch { continue; }
-    try { rows.push(...parseJsonlText(text,'reserved_validation')); }
-    catch { continue; }
+    if (/\.(jsonl|ndjson)$/i.test(p)) {
+      try { rows.push(...parseJsonlText(text,'reserved_validation')); }
+      catch { continue; }
+    } else {
+      try { collectUtterances(JSON.parse(text)); }
+      catch { continue; }
+    }
   }
   if (!rows.length) {
     const report={pass:false,error:'reserved_validation_not_found',candidate_count:candidates.length,reserved_validation_checked:false,conflicts:[]};
