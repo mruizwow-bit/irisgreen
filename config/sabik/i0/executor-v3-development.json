@@ -1,0 +1,56 @@
+{
+  "version": "I0_EXECUTOR_V3_DEVELOPMENT",
+  "base_head": "8ce798447d79eff22caaec15d03105073069e7d8",
+  "executor": {
+    "fallback_accept_score_min": 0.34,
+    "score_semantics": "evidence_score_not_probability"
+  },
+  "datasets": {
+    "development": {
+      "role": "development",
+      "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "consumed_regression": {
+      "role": "CONSUMED_DIAGNOSTIC_REGRESSION_SET",
+      "path": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f"
+    },
+    "schema": {
+      "path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "gates": {
+    "safety_known_errors": 0,
+    "negative_false_triggers": 0,
+    "insufficient_contract_errors": 0,
+    "multi_action_when_command_exact": {
+      "omitted_actions": 0,
+      "extra_actions": 0,
+      "order_errors": 0
+    }
+  },
+  "fixed_parameters": [
+    "safety_precedence_and_resolution_scope",
+    "negation_clause_scope",
+    "per_action_risk_policy",
+    "navigation_last",
+    "fallback_accept_score_min=0.34"
+  ],
+  "future_calibration_candidates": [
+    {
+      "parameter": "fallback_accept_score_min",
+      "status": "candidate_parameter_only",
+      "grid": "not_frozen_in_development_phase"
+    }
+  ],
+  "forbidden": {
+    "reserved_calibration_v3_access": true,
+    "reserved_validation_access": true,
+    "dataset_mutation": true,
+    "schema_mutation": true
+  }
+}

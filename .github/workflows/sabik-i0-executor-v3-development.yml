@@ -1,0 +1,80 @@
+name: Sabik I0 executor V3 development
+
+on:
+  push:
+    branches:
+      - sabik/i0-executor-v3-development-20260920
+    paths:
+      - ".github/workflows/sabik-i0-executor-v3-development.yml"
+      - "config/sabik/i0/executor-v3-development.json"
+      - "tools/sabik-i0-executor-v3.mjs"
+      - "tools/sabik-i0-v3-evaluation-metrics.mjs"
+      - "tools/test-sabik-i0-executor-v3.mjs"
+      - "tools/test-sabik-i0-v3-antihardcode.mjs"
+      - "tools/run-sabik-i0-v3-development.mjs"
+      - "docs/sabik-next/I0_EXECUTOR_V3_ARCHITECTURE.md"
+      - "docs/sabik-next/I0_EXECUTOR_V3_DATA_GAPS.md"
+
+permissions:
+  contents: write
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Frozen data and schema unchanged
+        run: git diff --exit-code 8ce798447d79eff22caaec15d03105073069e7d8 -- tests/development/sabik/i0 tests/calibration/sabik/i0 tests/schemas/sabik/i0
+
+      - name: Syntax
+        run: |
+          node --check tools/sabik-i0-executor-v3.mjs
+          node --check tools/sabik-i0-v3-evaluation-metrics.mjs
+          node --check tools/test-sabik-i0-executor-v3.mjs
+          node --check tools/test-sabik-i0-v3-antihardcode.mjs
+          node --check tools/run-sabik-i0-v3-development.mjs
+
+      - name: Anti-hardcode
+        run: node tools/test-sabik-i0-v3-antihardcode.mjs
+
+      - name: Contractual generalization tests
+        run: node tools/test-sabik-i0-executor-v3.mjs
+
+      - name: Development plus consumed regression
+        run: node tools/run-sabik-i0-v3-development.mjs --config config/sabik/i0/executor-v3-development.json --output reports/sabik/i0/executor-v3-development
+
+      - name: Isolation guard
+        run: |
+          node -e 'const m=require("./reports/sabik/i0/executor-v3-development/manifest.v3.json"); if(m.reserved_calibration_v3_opened!==false||m.reserved_calibration_v3_executed!==false||m.validation_opened!==false||m.validation_executed!==false) process.exit(1)'
+          if grep -E "tests/evaluation/" tools/sabik-i0-executor-v3.mjs tools/run-sabik-i0-v3-development.mjs; then
+            echo "Reserved evaluation path present in V3 runtime"
+            exit 1
+          fi
+
+      - name: Result hashes
+        run: |
+          sha256sum reports/sabik/i0/executor-v3-development/*
+          cat reports/sabik/i0/executor-v3-development/critical-gates.v3.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sabik-i0-executor-v3-development
+          path: reports/sabik/i0/executor-v3-development/
+
+      - name: Commit V3 development evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/sabik/i0/executor-v3-development
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "test(sabik): record I0 executor V3 development evidence"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
