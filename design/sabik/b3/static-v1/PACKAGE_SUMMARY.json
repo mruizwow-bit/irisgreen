@@ -1,0 +1,27 @@
+{
+  "package": "SABIK_B3_FAMILY_STATES_STATIC_V1",
+  "status": "SABIK_B3_FAMILY_STATES_STATIC_V1_READY",
+  "base_head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+  "source_pr": 181,
+  "legacy_review_pr": 163,
+  "package_library_file_id": "libfile_79ef50aa306c8191af3496b5b1b89891",
+  "package_sha256": "68da52637e10db8201ff1db21f164c0bb1249ec2e78580148b37afa60aa23f32",
+  "package_bytes": 7950190,
+  "manifest_tracked_files": 85,
+  "zip_total_files": 86,
+  "keyframes_color": 15,
+  "keyframes_monochrome": 15,
+  "scale_64": 15,
+  "scale_32": 15,
+  "proof_sheets": 5,
+  "reproducibility": "B3_STATIC_REPRODUCIBILITY_PASS",
+  "technical_qa": "B3_STATIC_TECHNICAL_QA_PASS",
+  "human_test_pending": [
+    "semantic distinguishability of five B3 states",
+    "monochrome distinguishability",
+    "32px perception",
+    "Educa age-neutrality"
+  ],
+  "accepted_visual_family_changes": 0,
+  "merge": false
+}
