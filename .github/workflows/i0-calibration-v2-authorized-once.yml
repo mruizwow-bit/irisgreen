@@ -1,0 +1,105 @@
+name: I0 Calibration V2 Authorized Once
+
+on:
+  push:
+    branches:
+      - astra/i0-calibration-v2-run-20260920
+
+permissions:
+  contents: read
+
+jobs:
+  calibration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout authorized HEAD
+        uses: actions/checkout@v4
+        with:
+          ref: 8ce798447d79eff22caaec15d03105073069e7d8
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify authorized identity
+        run: |
+          test "$(git rev-parse HEAD)" = "8ce798447d79eff22caaec15d03105073069e7d8"
+          echo "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb  tests/development/sabik/i0/development.v0.4.jsonl" | sha256sum -c -
+          echo "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f  tests/calibration/sabik/i0/calibration.v0.4.jsonl" | sha256sum -c -
+          echo "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8  tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json" | sha256sum -c -
+          node --version
+          sha256sum config/sabik/i0/executor-v2-r1.json
+
+      - name: Authorized calibration V2
+        run: node tools/run-sabik-i0-calibration-v2.mjs --astra-authorized --config config/sabik/i0/executor-v2-r1.json --output reports/sabik/i0/calibration-v2
+
+      - name: Verify coverage and frozen grid
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const root="reports/sabik/i0/calibration-v2";
+          const manifest=JSON.parse(fs.readFileSync(root+"/manifest.json","utf8"));
+          const candidates=JSON.parse(fs.readFileSync(root+"/candidates.json","utf8"));
+          const selection=JSON.parse(fs.readFileSync(root+"/selection.json","utf8"));
+          const grid=[0.34,0.484,0.700];
+          if(JSON.stringify(manifest.frozen_grid)!==JSON.stringify(grid)) throw new Error("manifest grid mismatch");
+          if(JSON.stringify(candidates.grid)!==JSON.stringify(grid)) throw new Error("candidate grid mismatch");
+          if(candidates.candidates.length!==3) throw new Error("candidate count != 3");
+          if(manifest.calibration_case_count!==200) throw new Error("calibration count != 200");
+          if(manifest.validation_loaded!==false) throw new Error("validation_loaded must be false");
+          const orders=[];
+          for(const t of grid){
+            const tag=String(t).replace(".","_");
+            const rows=fs.readFileSync(root+"/predictions.threshold-"+tag+".jsonl","utf8").trim().split(/\n/u).map(JSON.parse);
+            if(rows.length!==200) throw new Error("prediction count != 200 for "+t);
+            const ids=rows.map(x=>x.id);
+            if(new Set(ids).size!==200) throw new Error("duplicate ids for "+t);
+            orders.push(ids);
+          }
+          if(JSON.stringify(orders[0])!==JSON.stringify(orders[1])||JSON.stringify(orders[0])!==JSON.stringify(orders[2])) throw new Error("candidate ID/order mismatch");
+          fs.writeFileSync(root+"/coverage-verification.json",JSON.stringify({
+            expected:200,received:[200,200,200],unique:[200,200,200],missing:[0,0,0],extras:[0,0,0],
+            same_order_and_set:true,grid,selection_status:selection.status,validation_loaded:false
+          },null,2)+"\n");
+          NODE
+
+      - name: Record run identity
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import crypto from "node:crypto";
+          const sha=p=>crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex");
+          const cfg=JSON.parse(fs.readFileSync("config/sabik/i0/executor-v2-r1.json","utf8"));
+          fs.writeFileSync("reports/sabik/i0/calibration-v2/run-identity.json",JSON.stringify({
+            authorized_head:"8ce798447d79eff22caaec15d03105073069e7d8",
+            functional_freeze:"09e65f789c2b9c811532ac90fc0533db693c2353",
+            runtime:{node:process.version,platform:process.platform,arch:process.arch},
+            command:"node tools/run-sabik-i0-calibration-v2.mjs --astra-authorized --config config/sabik/i0/executor-v2-r1.json --output reports/sabik/i0/calibration-v2",
+            grid:cfg.calibration_grid.fallback_accept_score_min,
+            sha256:{
+              development:sha("tests/development/sabik/i0/development.v0.4.jsonl"),
+              calibration:sha("tests/calibration/sabik/i0/calibration.v0.4.jsonl"),
+              schema:sha("tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json"),
+              config:sha("config/sabik/i0/executor-v2-r1.json")
+            },
+            validation_loaded:false
+          },null,2)+"\n");
+          NODE
+
+      - name: Hash result artifacts
+        run: |
+          cd reports/sabik/i0/calibration-v2
+          sha256sum *.json *.jsonl > SHA256SUMS.txt
+          cat selection.json
+          cat coverage-verification.json
+          cat run-identity.json
+          cat SHA256SUMS.txt
+
+      - name: Upload immutable calibration evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: i0-calibration-v2-authorized
+          path: reports/sabik/i0/calibration-v2/
+          if-no-files-found: error
