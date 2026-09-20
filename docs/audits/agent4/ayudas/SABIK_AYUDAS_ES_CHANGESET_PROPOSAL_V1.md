@@ -71,9 +71,8 @@ No se sustituye silenciosamente. El registro conserva la URL anterior.
 | `la-palma-becas-estudio-2025-26` | https://www.cabildodelapalma.es/es/el-cabildo-destina-875000-euros-las-becas-al-estudio-del-curso-20252026 | https://sedeelectronica.cabildodelapalma.es/sta/Relec/CatalogDetail?action=info&dboidProcedure=6262600042560866407769&dboidRequest=6269000042562783407769 | OK · Cabildo/Sede La Palma; convocatoria 2025-2026 cerrada |
 | `can-universidad-becas` | https://www.gobiernodecanarias.org/universidades/becas_ayudas/becas-gobierno-canarias/estudios-universitarios/ | https://www.gobiernodecanarias.org/universidades/becas_ayudas/becas-gobierno-canarias/estudios-universitarios/curso_2026-2027/index.html | REDIRIGE a ficha 2026-2027; plazo finalizado |
 | `mel-alquiler-2026` | https://www.melilla.es/melillaportal/contenedor.jsp?codMenu=514&codMenuPN=602&codResi=1&contenido=31005&language=es&nivel=1400&seccion=s_fdoc_d4_v1.jsp&tipo=5 | https://sede.melilla.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&DETALLE=6269001144366697007187&PAGE_CODE=CATALOGO | OK · Sede Melilla; convocatoria 2026 cerrada |
-| `mel-master-2026` | https://www.melilla.es/melillaPortal/contenedor.jsp?codMenu=610&codMenuPN=602&contenido=45847&nivel=1400&seccion=s_fnot_d4_v1.jsp&tipo=8 | https://www.melilla.es/melillaPortal/contenedor.jsp?codMenu=610&codMenuPN=602&contenido=45847&nivel=1400&seccion=s_fnot_d4_v1.jsp&tipo=8 | OK · Ciudad de Melilla; convocatoria 2026 vigente |
 
-**URLs con sustitución explícita propuesta:** 9.  
+**URLs con sustitución explícita propuesta:** 8.  
 **404/410 confirmados:** 0.  
 **URLs con incidencia, redirección, ruta genérica o recuperación insuficiente:** 13.
 
