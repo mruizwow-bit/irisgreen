@@ -100,15 +100,16 @@ for(let i=0;i<D.length;i++){
 for(const r of Object.values(byRisk)){const ep=div(r.tp,r.tp+r.fp),er=div(r.tp,r.tp+r.fn);r.execution_precision=ep;r.execution_recall=er;r.execution_f1=f1(ep,er);r.command_accuracy=div(r.command_exact,r.cases);r.action_accuracy=div(r.action_exact,r.cases);r.full_accuracy=div(r.full_exact,r.cases);}
 const cp=div(clsTP,clsTP+clsFP),cr=div(clsTP,clsTP+clsFN),ep=div(execTP,execTP+execFP),er=div(execTP,execTP+execFN);
 
-const fallbackScores=scoreRows.filter(x=>x.score_kind==="development_similarity"||x.score_kind==="development_context_resolution").map(x=>x.score);
+const fallbackAcceptScores=scoreRows.filter(x=>x.score_kind==="development_similarity").map(x=>x.score);
+const contextResolutionScores=scoreRows.filter(x=>x.score_kind==="development_context_resolution").map(x=>x.score);
 const allScores=scoreRows.map(x=>x.score);
 const scoreDist=xs=>({n:xs.length,min:xs.length?Math.min(...xs):null,p10:q(xs,.1),p25:q(xs,.25),p50:q(xs,.5),p75:q(xs,.75),p90:q(xs,.9),max:xs.length?Math.max(...xs):null,mean:xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:null});
-const dist={all:scoreDist(allScores),fallback:scoreDist(fallbackScores),by_kind:{}};
+const dist={all:scoreDist(allScores),fallback_accept:scoreDist(fallbackAcceptScores),context_resolution:scoreDist(contextResolutionScores),by_kind:{}};
 for(const kind of [...new Set(scoreRows.map(x=>x.score_kind))])dist.by_kind[kind]=scoreDist(scoreRows.filter(x=>x.score_kind===kind).map(x=>x.score));
 
-const rawCandidates=[q(fallbackScores,.1),q(fallbackScores,.25),q(fallbackScores,.5),q(fallbackScores,.75),q(fallbackScores,.9)].filter(x=>x!==null).map(x=>Number(x.toFixed(3)));
+const rawCandidates=[q(fallbackAcceptScores,.1),q(fallbackAcceptScores,.25),q(fallbackAcceptScores,.5),q(fallbackAcceptScores,.75),q(fallbackAcceptScores,.9)].filter(x=>x!==null).map(x=>Number(x.toFixed(3)));
 const sensitivityCandidates=[...new Set(rawCandidates)].sort((a,b)=>a-b);
-const sensitivity=sensitivityCandidates.map(t=>({threshold:t,would_reject_fallback_scores:fallbackScores.filter(x=>x<t).length,would_accept_fallback_scores:fallbackScores.filter(x=>x>=t).length,changes_from_provisional:fallbackScores.filter(x=>(x>=PROVISIONAL_FALLBACK_ACCEPT_SCORE)!==(x>=t)).length}));
+const sensitivity=sensitivityCandidates.map(t=>({threshold:t,would_reject_fallback_scores:fallbackAcceptScores.filter(x=>x<t).length,would_accept_fallback_scores:fallbackAcceptScores.filter(x=>x>=t).length,changes_from_provisional:fallbackAcceptScores.filter(x=>(x>=PROVISIONAL_FALLBACK_ACCEPT_SCORE)!==(x>=t)).length}));
 const calibrability={
   fixed:[
     {parameter:"safety_precedence",reason:"contractual invariant"},
@@ -118,7 +119,7 @@ const calibrability={
     {parameter:"navigation_last",reason:"contractual ordering invariant"}
   ],
   future_calibrable:[
-    {parameter:"fallback_accept_score_min",score_semantics:"development similarity/evidence score, not probability",provisional_value:PROVISIONAL_FALLBACK_ACCEPT_SCORE,candidate_values:sensitivityCandidates,active:true}
+    {parameter:"fallback_accept_score_min",score_semantics:"development_similarity evidence score, not probability",provisional_value:PROVISIONAL_FALLBACK_ACCEPT_SCORE,provisional_status:"fixed_for_V2_development_not_calibrated",development_similarity_distribution:scoreDist(fallbackAcceptScores),candidate_values:sensitivityCandidates,candidates_change_decisions:sensitivity.some(x=>x.changes_from_provisional>0),active:true}
   ],
   removed_from_calibration:[
     {parameter:"margin",reason:"V1 margin was inert; V2 has no probabilistic top1-top2 margin"},

@@ -202,12 +202,12 @@ Se usa únicamente para decidir si el fallback development puede producir un com
 No se calibrará en esta fase.
 
 El runner development:
-1. medirá la distribución de scores fallback;
-2. generará candidatos basados en cuantiles reales;
+1. medirá por separado `development_similarity` y resolución de contexto;
+2. generará candidatos únicamente con la distribución `development_similarity`, que es la que gobierna `fallback_accept_score_min`;
 3. calculará cuántas decisiones cambiaría cada candidato;
 4. no elegirá un valor nuevo.
 
-Un parámetro con cero cambios de decisión se declarará inerte y no será candidato de una futura corrida.
+Un parámetro con cero cambios de decisión se declarará inerte y no será candidato de una futura corrida. El valor 0.34 permanece **fijo/provisional para development V2**, no se presenta como calibrado.
 
 ## Pruebas contractuales
 
