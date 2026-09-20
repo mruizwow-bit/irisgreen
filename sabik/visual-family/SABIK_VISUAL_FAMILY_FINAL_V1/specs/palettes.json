@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "note": "Paletas técnicas de referencia para normalización. Los colores de las presencias son ópticos/translúcidos y no deben usarse como único canal semántico.",
+  "presencia_matriz": {
+    "role": "paleta más completa y equilibrada",
+    "colors": ["#7366D7","#A99BEF","#8EC5F2","#F1B493","#F7E1B7","#F4F6FB"]
+  },
+  "sabik_web": {
+    "role": "fría, ligera y reducida",
+    "colors": ["#2FA9F2","#59CEE8","#9CE4F2","#A5EBDD","#C9B9ED","#F5F8FC"]
+  },
+  "sabik_ia": {
+    "role": "profunda, azul-violeta",
+    "colors": ["#2F43C7","#564ADB","#7067E8","#55A9F1","#8DDBE2","#F8F4EE"]
+  },
+  "sabik_educa": {
+    "role": "abierta y cromáticamente rica",
+    "colors": ["#38C7DA","#72DECF","#8EDFD4","#79C9F2","#BFAAF0","#F0E3A2","#F4C3A5"]
+  },
+  "ui_text": {
+    "primary": "#143161",
+    "secondary": "#4E6387",
+    "dark_background": "#132746",
+    "contrast_primary_on_white": 12.79,
+    "contrast_secondary_on_white": 6.07
+  }
+}
