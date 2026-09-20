@@ -1,0 +1,34 @@
+{
+  "status": "I0_EXECUTOR_V2_DEVELOPMENT_RUN_COMPLETE",
+  "input": {
+    "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+    "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb",
+    "cases": 400
+  },
+  "calibration_loaded": false,
+  "validation_loaded": false,
+  "score_semantics": "evidence_score_not_probability",
+  "provisional_fallback_accept_score": 0.34,
+  "artifacts": {
+    "predictions.development.v2.jsonl": {
+      "sha256": "eaff309997fd0d9acc19d1e2f23ecd27614383ebd55d6f7d34f08832e1c89e1c",
+      "bytes": 459357
+    },
+    "metrics.development.v2.json": {
+      "sha256": "b8d8bf047e733ec8d11ff2a2cead614cfcb4dae5f26d6212f6c7dac7c2856c36",
+      "bytes": 12073
+    },
+    "errors.development.v2.json": {
+      "sha256": "795ba2db33a30d7276af4eb38f84277eedb00b0d01a66a7d7448a4c58ec5ebc3",
+      "bytes": 273596
+    },
+    "score-distribution.development.v2.json": {
+      "sha256": "6968f758e1bfdf99d389537847f2496f2a2b25520e7fdb9f045f2e3b744c4aab",
+      "bytes": 4126
+    },
+    "comparison-v1-v2.development.json": {
+      "sha256": "406cb09dc52c3fe4e77510fa0a19f6d1249daf9029aef5b9281e02a578d9b855",
+      "bytes": 2510
+    }
+  }
+}

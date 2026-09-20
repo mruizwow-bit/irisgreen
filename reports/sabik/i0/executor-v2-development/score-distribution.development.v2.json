@@ -1,0 +1,168 @@
+{
+  "score_semantics": "evidence_score_not_probability",
+  "distribution": {
+    "all": {
+      "n": 575,
+      "min": 0.055091891891891884,
+      "p10": 0.7,
+      "p25": 0.99,
+      "p50": 1,
+      "p75": 1,
+      "p90": 1,
+      "max": 1,
+      "mean": 0.9183756407451658
+    },
+    "fallback_accept": {
+      "n": 76,
+      "min": 0.3784,
+      "p10": 0.4844705882352941,
+      "p25": 0.7,
+      "p50": 0.7,
+      "p75": 0.7,
+      "p90": 0.7,
+      "max": 0.7,
+      "mean": 0.6664068577858705
+    },
+    "context_resolution": {
+      "n": 29,
+      "min": 0.055091891891891884,
+      "p10": 0.195,
+      "p25": 0.2603333333333333,
+      "p50": 0.3026764705882353,
+      "p75": 0.32366666666666666,
+      "p90": 0.39339999999999997,
+      "max": 0.41899999999999993,
+      "mean": 0.29514042195669776
+    },
+    "by_kind": {
+      "development_similarity": {
+        "n": 76,
+        "min": 0.3784,
+        "p10": 0.4844705882352941,
+        "p25": 0.7,
+        "p50": 0.7,
+        "p75": 0.7,
+        "p90": 0.7,
+        "max": 0.7,
+        "mean": 0.6664068577858705
+      },
+      "contract_context": {
+        "n": 102,
+        "min": 0.98,
+        "p10": 0.98,
+        "p25": 0.99,
+        "p50": 0.99,
+        "p75": 0.99,
+        "p90": 1,
+        "max": 1,
+        "mean": 0.9905882352941181
+      },
+      "contract_exact": {
+        "n": 367,
+        "min": 1,
+        "p10": 1,
+        "p25": 1,
+        "p50": 1,
+        "p75": 1,
+        "p90": 1,
+        "max": 1,
+        "mean": 1
+      },
+      "development_context_resolution": {
+        "n": 29,
+        "min": 0.055091891891891884,
+        "p10": 0.195,
+        "p25": 0.2603333333333333,
+        "p50": 0.3026764705882353,
+        "p75": 0.32366666666666666,
+        "p90": 0.39339999999999997,
+        "max": 0.41899999999999993,
+        "mean": 0.29514042195669776
+      },
+      "development_fallback": {
+        "n": 1,
+        "min": 0.82,
+        "p10": 0.82,
+        "p25": 0.82,
+        "p50": 0.82,
+        "p75": 0.82,
+        "p90": 0.82,
+        "max": 0.82,
+        "mean": 0.82
+      }
+    }
+  },
+  "calibrability": {
+    "fixed": [
+      {
+        "parameter": "safety_precedence",
+        "reason": "contractual invariant"
+      },
+      {
+        "parameter": "negation_scope",
+        "reason": "semantic/contractual invariant"
+      },
+      {
+        "parameter": "local_reversible_clear_execution",
+        "reason": "contract says clear independent reversible actions may execute"
+      },
+      {
+        "parameter": "with_loss_real_loss_block",
+        "reason": "unsentText/pendingClarification are contractual blockers"
+      },
+      {
+        "parameter": "navigation_last",
+        "reason": "contractual ordering invariant"
+      }
+    ],
+    "future_calibrable": [
+      {
+        "parameter": "fallback_accept_score_min",
+        "score_semantics": "development_similarity evidence score, not probability",
+        "provisional_value": 0.34,
+        "provisional_status": "fixed_for_V2_development_not_calibrated",
+        "development_similarity_distribution": {
+          "n": 76,
+          "min": 0.3784,
+          "p10": 0.4844705882352941,
+          "p25": 0.7,
+          "p50": 0.7,
+          "p75": 0.7,
+          "p90": 0.7,
+          "max": 0.7,
+          "mean": 0.6664068577858705
+        },
+        "candidate_values": [
+          0.484,
+          0.7
+        ],
+        "candidates_change_decisions": true,
+        "active": true
+      }
+    ],
+    "removed_from_calibration": [
+      {
+        "parameter": "margin",
+        "reason": "V1 margin was inert; V2 has no probabilistic top1-top2 margin"
+      },
+      {
+        "parameter": "global_plan_risk_threshold",
+        "reason": "removed by per-action policy"
+      }
+    ],
+    "sensitivity": [
+      {
+        "threshold": 0.484,
+        "would_reject_fallback_scores": 6,
+        "would_accept_fallback_scores": 70,
+        "changes_from_provisional": 6
+      },
+      {
+        "threshold": 0.7,
+        "would_reject_fallback_scores": 14,
+        "would_accept_fallback_scores": 62,
+        "changes_from_provisional": 14
+      }
+    ]
+  }
+}

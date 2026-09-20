@@ -1,0 +1,78 @@
+name: Sabik I0 executor V2-R1 development
+
+on:
+  push:
+    branches:
+      - sabik/i0-executor-v2-20260920
+    paths:
+      - ".github/workflows/sabik-i0-executor-v2-r1-development.yml"
+      - "config/sabik/i0/executor-v2-r1.json"
+      - "tools/sabik-i0-executor-v2.mjs"
+      - "tools/sabik-i0-evaluation-metrics.mjs"
+      - "tools/sabik-i0-calibration-v2-selection.mjs"
+      - "tools/run-sabik-i0-development-v2-r1.mjs"
+      - "tools/run-sabik-i0-calibration-v2.mjs"
+      - "tools/test-sabik-i0-executor-v2.mjs"
+      - "docs/sabik-next/I0_EXECUTOR_V2_R1_PRECALIBRATION.md"
+
+permissions:
+  contents: write
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Frozen datasets and schema unchanged
+        run: git diff --exit-code 2267aa5e506156139432e53f7dce6707bd697f9c -- tests/development/sabik/i0 tests/calibration/sabik/i0 tests/schemas/sabik/i0
+      - name: Syntax
+        run: |
+          node --check tools/sabik-i0-executor-v2.mjs
+          node --check tools/sabik-i0-evaluation-metrics.mjs
+          node --check tools/sabik-i0-calibration-v2-selection.mjs
+          node --check tools/run-sabik-i0-development-v2-r1.mjs
+          node --check tools/run-sabik-i0-calibration-v2.mjs
+          node --check tools/test-sabik-i0-executor-v2.mjs
+      - name: No phrase or ID exceptions in executor
+        run: |
+          if grep -E "rutina que no figura en el indice|recuperar la concentracion|solo dime donde esta|I0-(DEV|CAL)-" tools/sabik-i0-executor-v2.mjs; then
+            echo "Forbidden phrase/ID exception in executor"
+            exit 1
+          fi
+      - name: Contract and generalization tests
+        run: node tools/test-sabik-i0-executor-v2.mjs
+      - name: Development R1 baseline
+        run: node tools/run-sabik-i0-development-v2-r1.mjs --config config/sabik/i0/executor-v2-r1.json --threshold 0.34 --output reports/sabik/i0/executor-v2-r1-development
+      - name: External threshold smoke 0.484
+        run: node tools/run-sabik-i0-development-v2-r1.mjs --config config/sabik/i0/executor-v2-r1.json --threshold 0.484 --output /tmp/sabik-v2-r1-0484
+      - name: External threshold smoke 0.700
+        run: node tools/run-sabik-i0-development-v2-r1.mjs --config config/sabik/i0/executor-v2-r1.json --threshold 0.700 --output /tmp/sabik-v2-r1-0700
+      - name: Development runtime cannot load calibration or validation
+        run: |
+          if grep -E "tests/(calibration|evaluation)/sabik/i0" tools/sabik-i0-executor-v2.mjs tools/run-sabik-i0-development-v2-r1.mjs tools/test-sabik-i0-executor-v2.mjs tools/sabik-i0-evaluation-metrics.mjs; then
+            echo "Forbidden calibration/validation path in development runtime"
+            exit 1
+          fi
+          node -e 'const m=require("./reports/sabik/i0/executor-v2-r1-development/manifest.development.v2-r1.json"); if(m.calibration_loaded!==false||m.validation_loaded!==false) process.exit(1)'
+      - name: Result hashes
+        run: sha256sum reports/sabik/i0/executor-v2-r1-development/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sabik-i0-executor-v2-r1-development
+          path: reports/sabik/i0/executor-v2-r1-development/
+      - name: Commit R1 development evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/sabik/i0/executor-v2-r1-development
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "test(sabik): record I0 executor V2-R1 development"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi

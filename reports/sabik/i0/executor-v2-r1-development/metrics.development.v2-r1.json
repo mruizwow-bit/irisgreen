@@ -1,0 +1,372 @@
+{
+  "total": 400,
+  "correct": 260,
+  "incorrect": 140,
+  "accuracy": 0.65,
+  "full_exact": {
+    "correct": 260,
+    "total": 400,
+    "accuracy": 0.65
+  },
+  "classification": {
+    "command_plan_exact": 285,
+    "command_plan_accuracy": 0.7125,
+    "binary": {
+      "tp": 298,
+      "fp": 9,
+      "fn": 35,
+      "tn": 58,
+      "precision": 0.9706840390879479,
+      "recall": 0.8948948948948949,
+      "f1": 0.93125
+    },
+    "plan_confusion": {
+      "ENCONTRAR_CONTENIDO": {
+        "ENCONTRAR_CONTENIDO": 55
+      },
+      "ABRIR_CONTENIDO": {
+        "ABRIR_CONTENIDO": 37,
+        "NO_INTENT": 1
+      },
+      "NO_INTENT": {
+        "ABRIR_CONTENIDO": 1,
+        "NO_INTENT": 58,
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 1,
+        "DETENER": 1,
+        "CONFIRMAR_ACCION": 1,
+        "RESTABLECER_PREFERENCIAS": 1,
+        "ENCONTRAR_CONTENIDO+SIGUIENTE": 1,
+        "ENCONTRAR_CONTENIDO": 2,
+        "CAMBIAR_VISTA_SENCILLA": 1
+      },
+      "CAMBIAR_TAMANO_TEXTO": {
+        "CAMBIAR_TAMANO_TEXTO": 20,
+        "NO_INTENT": 3
+      },
+      "CAMBIAR_MOVIMIENTO": {
+        "CAMBIAR_MOVIMIENTO": 20,
+        "NO_INTENT": 3
+      },
+      "CAMBIAR_PASO_A_PASO": {
+        "CAMBIAR_PASO_A_PASO": 12,
+        "SIGUIENTE": 1,
+        "NO_INTENT": 4,
+        "SIGUIENTE+CAMBIAR_PASO_A_PASO": 1,
+        "REPETIR_INDICACION": 1
+      },
+      "CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_VISTA_SENCILLA": 17,
+        "NO_INTENT": 5
+      },
+      "CAMBIAR_DETALLES": {
+        "CAMBIAR_DETALLES": 17,
+        "NO_INTENT": 3
+      },
+      "SIGUIENTE": {
+        "SIGUIENTE": 8,
+        "NO_INTENT": 1
+      },
+      "ATRAS": {
+        "ATRAS": 18,
+        "NO_INTENT": 3
+      },
+      "REPETIR_INDICACION": {
+        "REPETIR_INDICACION": 7,
+        "ATRAS+REPETIR_INDICACION": 1,
+        "ATRAS": 1,
+        "NO_INTENT": 1
+      },
+      "DESHACER_ULTIMA_ACCION": {
+        "DESHACER_ULTIMA_ACCION": 6,
+        "NO_INTENT": 4
+      },
+      "CANCELAR": {
+        "CANCELAR": 8,
+        "NO_INTENT": 2
+      },
+      "CONFIRMAR_ACCION": {
+        "CONFIRMAR_ACCION": 8,
+        "NO_INTENT": 1
+      },
+      "RECHAZAR_RESULTADO": {
+        "RECHAZAR_RESULTADO": 3,
+        "RECHAZAR_RESULTADO+ENCONTRAR_CONTENIDO": 1,
+        "NO_INTENT": 1
+      },
+      "OTRA_VIA": {
+        "ENCONTRAR_CONTENIDO+OTRA_VIA": 2,
+        "REPETIR_INDICACION+OTRA_VIA": 1,
+        "OTRA_VIA": 3
+      },
+      "DETENER": {
+        "DETENER": 8,
+        "NO_INTENT": 2
+      },
+      "PEDIR_AYUDA_HUMANA": {
+        "PEDIR_AYUDA_HUMANA": 6,
+        "ENCONTRAR_CONTENIDO": 1
+      },
+      "RESTABLECER_PREFERENCIAS": {
+        "RESTABLECER_PREFERENCIAS": 10,
+        "NO_INTENT": 1
+      },
+      "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": {
+        "CAMBIAR_MOVIMIENTO+CAMBIAR_VISTA_SENCILLA": 5
+      },
+      "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": {
+        "CAMBIAR_TAMANO_TEXTO+ABRIR_CONTENIDO": 5
+      },
+      "CAMBIAR_PASO_A_PASO+SIGUIENTE": {
+        "CAMBIAR_PASO_A_PASO+SIGUIENTE": 5
+      },
+      "CAMBIAR_DETALLES+REPETIR_INDICACION": {
+        "CAMBIAR_DETALLES+REPETIR_INDICACION": 5
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_MOVIMIENTO": 2
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_VISTA_SENCILLA": 2
+      },
+      "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": {
+        "ENCONTRAR_CONTENIDO+CAMBIAR_TAMANO_TEXTO": 1
+      }
+    }
+  },
+  "result_kind": {
+    "exact": 347,
+    "accuracy": 0.8675,
+    "confusion": {
+      "response": {
+        "response": 112,
+        "action_result": 7
+      },
+      "action_result": {
+        "action_result": 187,
+        "response": 35,
+        "clarification": 1
+      },
+      "clarification": {
+        "action_result": 6,
+        "clarification": 24,
+        "response": 2
+      },
+      "human_help": {
+        "human_help": 10,
+        "response": 1
+      },
+      "out_of_scope": {
+        "out_of_scope": 11,
+        "clarification": 1
+      },
+      "insufficient": {
+        "insufficient": 3
+      }
+    }
+  },
+  "safety_gate": {
+    "exact": 400,
+    "errors": 0,
+    "accuracy": 1
+  },
+  "s0_events": {
+    "exact": 388,
+    "accuracy": 0.97
+  },
+  "b3": {
+    "exact": 358,
+    "accuracy": 0.895
+  },
+  "execution": {
+    "action_plan_exact": 328,
+    "action_plan_accuracy": 0.82,
+    "tp": 187,
+    "fp": 13,
+    "fn": 26,
+    "tn": 174,
+    "precision": 0.935,
+    "recall": 0.8779342723004695,
+    "f1": 0.9055690072639225,
+    "omitted_actions": 58,
+    "extra_actions": 47,
+    "wrong_actions": 29,
+    "action_exact_conditioned_on_command_exact": {
+      "numerator": 270,
+      "denominator": 285,
+      "rate": 0.9473684210526315
+    }
+  },
+  "by_risk": {
+    "none": {
+      "cases": 187,
+      "command_exact": 122,
+      "action_exact": 174,
+      "full_exact": 106,
+      "tp": 0,
+      "fp": 13,
+      "fn": 0,
+      "tn": 174,
+      "execution_fp": 13,
+      "execution_fn": 0,
+      "execution_precision": 0,
+      "execution_recall": 0,
+      "execution_f1": 0,
+      "command_accuracy": 0.6524064171122995,
+      "action_accuracy": 0.93048128342246,
+      "full_accuracy": 0.5668449197860963
+    },
+    "local_with_loss": {
+      "cases": 53,
+      "command_exact": 50,
+      "action_exact": 50,
+      "full_exact": 50,
+      "tp": 50,
+      "fp": 0,
+      "fn": 3,
+      "tn": 0,
+      "execution_fp": 0,
+      "execution_fn": 3,
+      "execution_precision": 1,
+      "execution_recall": 0.9433962264150944,
+      "execution_f1": 0.970873786407767,
+      "command_accuracy": 0.9433962264150944,
+      "action_accuracy": 0.9433962264150944,
+      "full_accuracy": 0.9433962264150944
+    },
+    "local_reversible": {
+      "cases": 155,
+      "command_exact": 108,
+      "action_exact": 99,
+      "full_exact": 99,
+      "tp": 132,
+      "fp": 0,
+      "fn": 23,
+      "tn": 0,
+      "execution_fp": 0,
+      "execution_fn": 23,
+      "execution_precision": 1,
+      "execution_recall": 0.8516129032258064,
+      "execution_f1": 0.9198606271777003,
+      "command_accuracy": 0.6967741935483871,
+      "action_accuracy": 0.6387096774193548,
+      "full_accuracy": 0.6387096774193548
+    },
+    "mixed": {
+      "cases": 5,
+      "command_exact": 5,
+      "action_exact": 5,
+      "full_exact": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "execution_fp": 0,
+      "execution_fn": 0,
+      "execution_precision": 1,
+      "execution_recall": 1,
+      "execution_f1": 1,
+      "command_accuracy": 1,
+      "action_accuracy": 1,
+      "full_accuracy": 1
+    }
+  },
+  "errors_by_risk": {
+    "none": {
+      "execution_fp": 13,
+      "execution_fn": 0,
+      "full_errors": 81
+    },
+    "local_with_loss": {
+      "execution_fp": 0,
+      "execution_fn": 3,
+      "full_errors": 3
+    },
+    "local_reversible": {
+      "execution_fp": 0,
+      "execution_fn": 23,
+      "full_errors": 56
+    },
+    "mixed": {
+      "execution_fp": 0,
+      "execution_fn": 0,
+      "full_errors": 0
+    }
+  },
+  "multi_action": {
+    "total": 25,
+    "command_exact": 25,
+    "action_exact": 25,
+    "full_exact": 25,
+    "command_exact_cases": 25,
+    "action_exact_given_command_exact": 25,
+    "omitted": 0,
+    "extra": 0,
+    "wrong": 0,
+    "order_errors": 0,
+    "action_exact_given_command_exact_rate": 1
+  },
+  "negation": {
+    "negative": {
+      "total": 4,
+      "correct": 4,
+      "false_triggers": 0,
+      "ids": []
+    },
+    "positive": {
+      "total": 4,
+      "correct": 4,
+      "failures": 0,
+      "ids": []
+    }
+  },
+  "insufficient": {
+    "total": 3,
+    "kind_correct": 3,
+    "no_action": 3,
+    "not_confirmar": 3,
+    "full_contract": 3,
+    "full_record": 3,
+    "cases": [
+      {
+        "id": "I0-DEV-0398",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "no_action": true,
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      },
+      {
+        "id": "I0-DEV-0399",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "no_action": true,
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      },
+      {
+        "id": "I0-DEV-0400",
+        "commands_exact": true,
+        "kind": "insufficient",
+        "no_action": true,
+        "b3": "PRESENTE",
+        "full_contract": true,
+        "full_record": true
+      }
+    ]
+  },
+  "clarification": {
+    "count": 26,
+    "rate": 0.065
+  },
+  "abstention": {
+    "count": 11,
+    "rate": 0.0275
+  },
+  "version": "V2-R1-development-only",
+  "dataset": "development_leave_one_out",
+  "executor_config": {
+    "fallback_accept_score_min": 0.34
+  }
+}

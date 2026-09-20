@@ -1,0 +1,222 @@
+{
+  "v2": {
+    "full_exact": {
+      "correct": 246,
+      "total": 400,
+      "accuracy": 0.615
+    },
+    "command_plan_exact": {
+      "correct": 270,
+      "total": 400,
+      "accuracy": 0.675
+    },
+    "action_plan_exact": {
+      "correct": 328,
+      "total": 400,
+      "accuracy": 0.82
+    },
+    "result_kind": {
+      "correct": 347,
+      "total": 400,
+      "accuracy": 0.8675
+    },
+    "s0_events": {
+      "correct": 387,
+      "total": 400,
+      "accuracy": 0.9675
+    },
+    "b3": {
+      "correct": 363,
+      "total": 400,
+      "accuracy": 0.9075
+    },
+    "safety": {
+      "correct": 400,
+      "total": 400,
+      "accuracy": 1
+    },
+    "execution": {
+      "tp": 187,
+      "fp": 13,
+      "fn": 26,
+      "tn": 174,
+      "precision": 0.935,
+      "recall": 0.8779342723004695,
+      "f1": 0.9055690072639225
+    },
+    "multi_action": {
+      "total": 25,
+      "command_exact": 25,
+      "action_exact": 25,
+      "full_exact": 25,
+      "command_exact_cases": 25,
+      "action_exact_given_command_exact": 25,
+      "omitted": 0,
+      "extra": 0,
+      "wrong": 0,
+      "order_errors": 0,
+      "action_exact_given_command_exact_rate": 1
+    },
+    "negation": {
+      "negative": {
+        "total": 4,
+        "correct": 4,
+        "false_triggers": 0,
+        "ids": []
+      },
+      "positive": {
+        "total": 4,
+        "correct": 4,
+        "failures": 0,
+        "ids": []
+      }
+    },
+    "insufficient": {
+      "total": 3,
+      "kind_correct": 3,
+      "no_action": 3,
+      "not_confirmar": 3,
+      "full_contract": 3,
+      "full_record": 3,
+      "cases": [
+        {
+          "id": "I0-DEV-0398",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "actions": [],
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        },
+        {
+          "id": "I0-DEV-0399",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "actions": [],
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        },
+        {
+          "id": "I0-DEV-0400",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "actions": [],
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        }
+      ]
+    }
+  },
+  "v2_r1": {
+    "full_exact": {
+      "correct": 260,
+      "total": 400,
+      "accuracy": 0.65
+    },
+    "command_plan_exact": {
+      "correct": 285,
+      "total": 400,
+      "accuracy": 0.7125
+    },
+    "action_plan_exact": {
+      "correct": 328,
+      "total": 400,
+      "accuracy": 0.82
+    },
+    "result_kind": {
+      "correct": 347,
+      "total": 400,
+      "accuracy": 0.8675
+    },
+    "s0_events": {
+      "correct": 388,
+      "total": 400,
+      "accuracy": 0.97
+    },
+    "b3": {
+      "correct": 358,
+      "total": 400,
+      "accuracy": 0.895
+    },
+    "safety": {
+      "correct": 400,
+      "total": 400,
+      "accuracy": 1
+    },
+    "execution": {
+      "tp": 187,
+      "fp": 13,
+      "fn": 26,
+      "tn": 174,
+      "precision": 0.935,
+      "recall": 0.8779342723004695,
+      "f1": 0.9055690072639225
+    },
+    "multi_action": {
+      "total": 25,
+      "command_exact": 25,
+      "action_exact": 25,
+      "full_exact": 25,
+      "command_exact_cases": 25,
+      "action_exact_given_command_exact": 25,
+      "omitted": 0,
+      "extra": 0,
+      "wrong": 0,
+      "order_errors": 0,
+      "action_exact_given_command_exact_rate": 1
+    },
+    "negation": {
+      "negative": {
+        "total": 4,
+        "correct": 4,
+        "false_triggers": 0,
+        "ids": []
+      },
+      "positive": {
+        "total": 4,
+        "correct": 4,
+        "failures": 0,
+        "ids": []
+      }
+    },
+    "insufficient": {
+      "total": 3,
+      "kind_correct": 3,
+      "no_action": 3,
+      "not_confirmar": 3,
+      "full_contract": 3,
+      "full_record": 3,
+      "cases": [
+        {
+          "id": "I0-DEV-0398",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "no_action": true,
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        },
+        {
+          "id": "I0-DEV-0399",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "no_action": true,
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        },
+        {
+          "id": "I0-DEV-0400",
+          "commands_exact": true,
+          "kind": "insufficient",
+          "no_action": true,
+          "b3": "PRESENTE",
+          "full_contract": true,
+          "full_record": true
+        }
+      ]
+    }
+  }
+}

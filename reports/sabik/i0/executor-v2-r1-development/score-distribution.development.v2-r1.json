@@ -1,0 +1,122 @@
+{
+  "score_semantics": "evidence_score_not_probability",
+  "external_threshold": true,
+  "baseline_threshold": 0.34,
+  "frozen_grid": [
+    0.34,
+    0.484,
+    0.7
+  ],
+  "distribution": {
+    "all": {
+      "n": 578,
+      "min": 0.055091891891891884,
+      "p10": 0.7,
+      "p25": 0.99,
+      "p50": 1,
+      "p75": 1,
+      "p90": 1,
+      "max": 1,
+      "mean": 0.9307370128520248
+    },
+    "development_similarity": {
+      "n": 53,
+      "min": 0.3784,
+      "p10": 0.4726666666666667,
+      "p25": 0.6197894736842104,
+      "p50": 0.7,
+      "p75": 0.7,
+      "p90": 0.7,
+      "max": 0.7,
+      "mean": 0.6518287017306813
+    },
+    "development_context_resolution": {
+      "n": 29,
+      "min": 0.055091891891891884,
+      "p10": 0.195,
+      "p25": 0.2603333333333333,
+      "p50": 0.3026764705882353,
+      "p75": 0.32366666666666666,
+      "p90": 0.39339999999999997,
+      "max": 0.41899999999999993,
+      "mean": 0.29514042195669776
+    },
+    "by_kind": {
+      "contract_exact": {
+        "n": 393,
+        "min": 1,
+        "p10": 1,
+        "p25": 1,
+        "p50": 1,
+        "p75": 1,
+        "p90": 1,
+        "max": 1,
+        "mean": 1
+      },
+      "development_similarity": {
+        "n": 53,
+        "min": 0.3784,
+        "p10": 0.4726666666666667,
+        "p25": 0.6197894736842104,
+        "p50": 0.7,
+        "p75": 0.7,
+        "p90": 0.7,
+        "max": 0.7,
+        "mean": 0.6518287017306813
+      },
+      "contract_context": {
+        "n": 102,
+        "min": 0.98,
+        "p10": 0.98,
+        "p25": 0.99,
+        "p50": 0.99,
+        "p75": 0.99,
+        "p90": 1,
+        "max": 1,
+        "mean": 0.9905882352941181
+      },
+      "development_context_resolution": {
+        "n": 29,
+        "min": 0.055091891891891884,
+        "p10": 0.195,
+        "p25": 0.2603333333333333,
+        "p50": 0.3026764705882353,
+        "p75": 0.32366666666666666,
+        "p90": 0.39339999999999997,
+        "max": 0.41899999999999993,
+        "mean": 0.29514042195669776
+      },
+      "development_fallback": {
+        "n": 1,
+        "min": 0.82,
+        "p10": 0.82,
+        "p25": 0.82,
+        "p50": 0.82,
+        "p75": 0.82,
+        "p90": 0.82,
+        "max": 0.82,
+        "mean": 0.82
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "threshold": 0.34,
+      "would_reject_development_similarity": 0,
+      "would_accept_development_similarity": 53,
+      "changes_from_baseline": 0
+    },
+    {
+      "threshold": 0.484,
+      "would_reject_development_similarity": 6,
+      "would_accept_development_similarity": 47,
+      "changes_from_baseline": 6
+    },
+    {
+      "threshold": 0.7,
+      "would_reject_development_similarity": 14,
+      "would_accept_development_similarity": 39,
+      "changes_from_baseline": 14
+    }
+  ]
+}
