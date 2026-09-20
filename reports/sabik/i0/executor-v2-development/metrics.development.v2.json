@@ -2,9 +2,9 @@
   "version": "V2-development-only",
   "dataset": "development_leave_one_out",
   "total": 400,
-  "correct": 245,
-  "incorrect": 155,
-  "accuracy": 0.6125,
+  "correct": 246,
+  "incorrect": 154,
+  "accuracy": 0.615,
   "classification": {
     "command_plan_exact": 270,
     "command_plan_accuracy": 0.675,
@@ -162,12 +162,12 @@
     }
   },
   "safety_gate": {
-    "exact": 399,
-    "accuracy": 0.9975
+    "exact": 400,
+    "accuracy": 1
   },
   "s0_events": {
-    "exact": 386,
-    "accuracy": 0.965
+    "exact": 387,
+    "accuracy": 0.9675
   },
   "b3": {
     "exact": 363,
@@ -199,7 +199,7 @@
       "cases": 187,
       "command_exact": 107,
       "action_exact": 174,
-      "full_exact": 91,
+      "full_exact": 92,
       "expected_execute": 0,
       "predicted_execute": 13,
       "tp": 0,
@@ -211,7 +211,7 @@
       "execution_f1": 0,
       "command_accuracy": 0.5721925133689839,
       "action_accuracy": 0.93048128342246,
-      "full_accuracy": 0.48663101604278075
+      "full_accuracy": 0.4919786096256685
     },
     "local_with_loss": {
       "cases": 53,
