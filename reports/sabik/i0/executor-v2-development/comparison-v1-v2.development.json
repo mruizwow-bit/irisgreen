@@ -67,14 +67,14 @@
   },
   "v2": {
     "full_exact": {
-      "correct": 260,
+      "correct": 246,
       "total": 400,
-      "accuracy": 0.65
+      "accuracy": 0.615
     },
     "command_plan_exact": {
-      "correct": 285,
+      "correct": 270,
       "total": 400,
-      "accuracy": 0.7125
+      "accuracy": 0.675
     },
     "action_plan_exact": {
       "correct": 328,
@@ -87,14 +87,14 @@
       "accuracy": 0.8675
     },
     "s0_events": {
-      "correct": 388,
+      "correct": 387,
       "total": 400,
-      "accuracy": 0.97
+      "accuracy": 0.9675
     },
     "b3": {
-      "correct": 358,
+      "correct": 363,
       "total": 400,
-      "accuracy": 0.895
+      "accuracy": 0.9075
     },
     "safety_gate": {
       "correct": 400,

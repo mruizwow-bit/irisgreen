@@ -1,15 +1,7 @@
 name: Sabik I0 executor V2 development
 
 on:
-  push:
-    branches:
-      - sabik/i0-executor-v2-20260920
-    paths:
-      - ".github/workflows/sabik-i0-executor-v2-development.yml"
-      - "tools/sabik-i0-executor-v2.mjs"
-      - "tools/test-sabik-i0-executor-v2.mjs"
-      - "tools/run-sabik-i0-development-v2.mjs"
-      - "docs/sabik-next/I0_EXECUTOR_V2_ARCHITECTURE.md"
+  workflow_dispatch:
 
 permissions:
   contents: write

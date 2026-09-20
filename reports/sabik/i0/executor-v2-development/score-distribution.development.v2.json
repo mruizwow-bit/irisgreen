@@ -2,7 +2,7 @@
   "score_semantics": "evidence_score_not_probability",
   "distribution": {
     "all": {
-      "n": 578,
+      "n": 575,
       "min": 0.055091891891891884,
       "p10": 0.7,
       "p25": 0.99,
@@ -10,18 +10,18 @@
       "p75": 1,
       "p90": 1,
       "max": 1,
-      "mean": 0.9307370128520248
+      "mean": 0.9183756407451658
     },
     "fallback_accept": {
-      "n": 53,
+      "n": 76,
       "min": 0.3784,
-      "p10": 0.4726666666666667,
-      "p25": 0.6197894736842104,
+      "p10": 0.4844705882352941,
+      "p25": 0.7,
       "p50": 0.7,
       "p75": 0.7,
       "p90": 0.7,
       "max": 0.7,
-      "mean": 0.6518287017306813
+      "mean": 0.6664068577858705
     },
     "context_resolution": {
       "n": 29,
@@ -35,27 +35,16 @@
       "mean": 0.29514042195669776
     },
     "by_kind": {
-      "contract_exact": {
-        "n": 393,
-        "min": 1,
-        "p10": 1,
-        "p25": 1,
-        "p50": 1,
-        "p75": 1,
-        "p90": 1,
-        "max": 1,
-        "mean": 1
-      },
       "development_similarity": {
-        "n": 53,
+        "n": 76,
         "min": 0.3784,
-        "p10": 0.4726666666666667,
-        "p25": 0.6197894736842104,
+        "p10": 0.4844705882352941,
+        "p25": 0.7,
         "p50": 0.7,
         "p75": 0.7,
         "p90": 0.7,
         "max": 0.7,
-        "mean": 0.6518287017306813
+        "mean": 0.6664068577858705
       },
       "contract_context": {
         "n": 102,
@@ -67,6 +56,17 @@
         "p90": 1,
         "max": 1,
         "mean": 0.9905882352941181
+      },
+      "contract_exact": {
+        "n": 367,
+        "min": 1,
+        "p10": 1,
+        "p25": 1,
+        "p50": 1,
+        "p75": 1,
+        "p90": 1,
+        "max": 1,
+        "mean": 1
       },
       "development_context_resolution": {
         "n": 29,
@@ -122,19 +122,18 @@
         "provisional_value": 0.34,
         "provisional_status": "fixed_for_V2_development_not_calibrated",
         "development_similarity_distribution": {
-          "n": 53,
+          "n": 76,
           "min": 0.3784,
-          "p10": 0.4726666666666667,
-          "p25": 0.6197894736842104,
+          "p10": 0.4844705882352941,
+          "p25": 0.7,
           "p50": 0.7,
           "p75": 0.7,
           "p90": 0.7,
           "max": 0.7,
-          "mean": 0.6518287017306813
+          "mean": 0.6664068577858705
         },
         "candidate_values": [
-          0.473,
-          0.62,
+          0.484,
           0.7
         ],
         "candidates_change_decisions": true,
@@ -153,21 +152,15 @@
     ],
     "sensitivity": [
       {
-        "threshold": 0.473,
+        "threshold": 0.484,
         "would_reject_fallback_scores": 6,
-        "would_accept_fallback_scores": 47,
+        "would_accept_fallback_scores": 70,
         "changes_from_provisional": 6
-      },
-      {
-        "threshold": 0.62,
-        "would_reject_fallback_scores": 14,
-        "would_accept_fallback_scores": 39,
-        "changes_from_provisional": 14
       },
       {
         "threshold": 0.7,
         "would_reject_fallback_scores": 14,
-        "would_accept_fallback_scores": 39,
+        "would_accept_fallback_scores": 62,
         "changes_from_provisional": 14
       }
     ]
