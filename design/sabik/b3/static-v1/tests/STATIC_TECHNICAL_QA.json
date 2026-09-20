@@ -1,0 +1,16 @@
+{
+  "status": "B3_STATIC_R1_TECHNICAL_QA_PASS",
+  "states": 5,
+  "products": 3,
+  "keyframes": 15,
+  "monochrome": 15,
+  "scale_64": 15,
+  "scale_32": 15,
+  "blind_sheets": 6,
+  "present_frozen": true,
+  "matrix_states": 0,
+  "hard_band_boundaries": false,
+  "mask_method": "normalized Gaussian soft membership; weights sum to 1 before transform",
+  "perceptual_validation": "PENDING HUMAN TEST",
+  "pilot_confusion_matrix": "NOT PERFORMED"
+}

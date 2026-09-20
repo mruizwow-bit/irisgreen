@@ -1,0 +1,32 @@
+{
+  "version": "SABIK_B3_FAMILY_STATES_STATIC_V1_R1",
+  "principle": "B3 comunica función del sistema; no emoción, personalidad, voz, diagnóstico o estado mental inferido.",
+  "orthogonality": {
+    "PRESENTE": "estabilidad",
+    "ORIENTAR": "direccionalidad asimétrica",
+    "TRANSICIÓN": "reorganización de fase",
+    "PAUSA": "reducción y contención",
+    "CONFIRMAR": "cohesión y cierre funcional"
+  },
+  "states": {
+    "PRESENTE": {"function":"Estado base: Sabik está disponible sin pedir atención.","activation":"Cuando no existe una función B3 adicional que comunicar.","operation":"Master aceptado sin modificación; centrado en el lienzo técnico.","dominant_variable":"estabilidad","text_signal":"Disponible.","risk":"Actividad ambiental decorativa.","reduced_motion":"Idéntico.","static":"Referencia completa."},
+    "ORIENTAR": {"function":"Ayudar a localizar el siguiente elemento, paso o dirección funcional.","activation":"Cuando la interfaz necesita indicar qué importa o dónde continuar.","operation":"Tres regiones suaves se desplazan de forma creciente a lo largo del eje nativo.","dominant_variable":"direccionalidad asimétrica","text_signal":"Siguiente paso: [acción o elemento].","risk":"Flecha, puntero, brillo diagonal, elongación genérica o loading.","reduced_motion":"Mismo keyframe estático + texto.","static":"Dirección preferente sin símbolo añadido."},
+    "TRANSICIÓN": {"function":"Indicar cambio de una situación funcional a otra.","activation":"Entre dos estados B3 distintos cuando el cambio necesita hacerse visible.","operation":"Regiones posterior y anterior contrarrotan y se separan suavemente en el eje perpendicular; el centro actúa como bisagra.","dominant_variable":"reorganización","text_signal":"Cambiando de [A] a [B].","risk":"Spinner, giro continuo, loading o reflejo.","reduced_motion":"Punto intermedio estático + texto.","static":"A → cambio → B mediante reorganización distinta de ORIENTAR."},
+    "PAUSA": {"function":"Comunicar contención, estabilidad y ausencia de demanda inmediata.","activation":"Cuando Sabik está pausado y conserva la información.","operation":"Reducción uniforme mínima y atenuación progresiva de periferia, sin convergencia direccional.","dominant_variable":"reducción/contención","text_signal":"En pausa. Puedes continuar cuando quieras.","risk":"Apagado, error, bloqueo, tristeza o desaparición.","reduced_motion":"Idéntico.","static":"Presencia mantenida con menor energía periférica."},
+    "CONFIRMAR": {"function":"Informar de que una acción funcional ya se resolvió cuando B3 lo requiera.","activation":"Después de una acción que requiere confirmación explícita.","operation":"Las regiones laterales se aproximan al eje central y rotan mínimamente hacia él; el eje longitudinal se mantiene.","dominant_variable":"cohesión/resolución","text_signal":"Cambio aplicado.","risk":"Premio, check, celebración, destello o pausa más intensa.","reduced_motion":"Keyframe estático breve y vuelta a PRESENTE.","static":"Punto de resolución estable distinto de PAUSA y PRESENTE."}
+  },
+  "product_axes": {
+    "WEB": {"axis":[0.811041924,-0.584988032],"character":"ligera, serena, baja profundidad"},
+    "IA": {"axis":[0.969837643,-0.243751811],"character":"profunda, espacial, multicapa"},
+    "EDUCA": {"axis":[0.911811477,-0.410609097],"character":"abierta, ascendente, acogedora no infantil"}
+  },
+  "transform_parameters": {
+    "PRESENTE": {"operation":"identity"},
+    "ORIENTAR": {"operation":"soft_axis_translation","axis_region_shift_px":[-7,3,28],"membership_centers":[-1.05,0,1.05],"membership_sigma":0.75},
+    "TRANSICIÓN": {"operation":"soft_counter_rotation","axis_region_rotation_deg":[-18,0,18],"perpendicular_shift_px":[-10,0,10],"membership_centers":[-1.05,0,1.05],"membership_sigma":0.75},
+    "PAUSA": {"operation":"global_containment","global_scale":0.94,"alpha_center":0.88,"alpha_edge":0.54,"radial_start":0.15,"radial_span":0.72},
+    "CONFIRMAR": {"operation":"soft_transverse_closure","perpendicular_region_shift_px":[24,0,-24],"region_rotation_deg":[7,0,-7],"membership_centers":[-1.05,0,1.05],"membership_sigma":0.75}
+  },
+  "blind_test": {"reference_size_px":64,"seed":"SABIK-B3-3A-R1-20260920","status":"PREPARED_NOT_PERFORMED"},
+  "perception_32px": "PENDING HUMAN TEST"
+}

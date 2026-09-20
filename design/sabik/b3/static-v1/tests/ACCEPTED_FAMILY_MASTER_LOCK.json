@@ -1,0 +1,27 @@
+{
+  "base": "SABIK_VISUAL_FAMILY_FINAL_ACCEPTED",
+  "source_pr": 181,
+  "accepted_head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+  "files": [
+    {
+      "path": "source/matriz_master_raster_ACCEPTED.png",
+      "sha256": "81d250abadafee36b98e1b4ab24e65b12c8ae439f0a49d6304ed9341ff1ded86",
+      "bytes": 242382
+    },
+    {
+      "path": "source/web_master_raster_ACCEPTED.png",
+      "sha256": "d89a8764075efd55dccf998c3ea52205f06c02da086565a14f107806c5cdaae8",
+      "bytes": 193532
+    },
+    {
+      "path": "source/ia_master_raster_ACCEPTED.png",
+      "sha256": "61d72a1e267378acf494bfa66bee182d3517f39fadeba4f3116e868f3fb8e12f",
+      "bytes": 244592
+    },
+    {
+      "path": "source/educa_master_raster_ACCEPTED.png",
+      "sha256": "5a4bb8af0fef8ed2c4ae0eeddee74792c45d0bb1d67578274180c7f066055c8c",
+      "bytes": 194250
+    }
+  ]
+}
