@@ -1,0 +1,343 @@
+jurisdiccion,dominio,registros,estado_cobertura,abierto,cerrado,permanente,proxima_convocatoria,historico,por_verificar,ids
+Andalucía,discapacidad,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,and-discapacidad-individual
+Andalucía,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,and-dependencia|and-temprana
+Andalucía,educación,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,and-comedor|and-libros
+Andalucía,universidad,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,and-universidad-99
+Andalucía,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,and-alquiler
+Andalucía,transporte,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,and-transporte-escolar
+Andalucía,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,and-temprana
+Andalucía,conciliación,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,and-infantil-03
+Andalucía,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Andalucía,autonomía personal,3,PRESENTE_CON_EVIDENCIA,0,1,2,0,0,0,and-dependencia|and-discapacidad-individual|and-temprana
+Andalucía,familia,3,PRESENTE_CON_EVIDENCIA,0,0,2,1,0,0,and-familias|and-familia-numerosa|and-monoparental
+Andalucía,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,and-rmisa
+Andalucía,libros/material,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,and-libros
+Aragón,discapacidad,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ara-disc-dep-individual
+Aragón,dependencia,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ara-disc-dep-individual
+Aragón,educación,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,ara-comedor|ara-material
+Aragón,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ara-vivienda-ayudas
+Aragón,transporte,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ara-transporte-comedor
+Aragón,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,atención temprana,2,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,1,ara-temprana-espera|ara-infantil-publica
+Aragón,conciliación,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ara-infantil-publica
+Aragón,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Aragón,autonomía personal,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ara-disc-dep-individual
+Aragón,familia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ara-familia-numerosa|ara-monoparental
+Aragón,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,ara-pacimv
+Aragón,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ara-material
+Asturias,discapacidad,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,ast-productos|ast-complemento-vital
+Asturias,dependencia,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,ast-dependencia|ast-cuidados-entorno|ast-complemento-vital
+Asturias,educación,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ast-libros-prestamo-2026-27
+Asturias,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ast-alquiler
+Asturias,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,ast-temprana
+Asturias,conciliación,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,ast-concilia-03|ast-concilia-cuidados
+Asturias,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Asturias,ayudas técnicas,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ast-productos
+Asturias,autonomía personal,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,ast-dependencia|ast-cuidados-entorno|ast-complemento-vital
+Asturias,familia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ast-monoparental|ast-familia-numerosa
+Asturias,ingresos/prestaciones,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ast-salario-social|ast-complemento-vital
+Asturias,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ast-libros-prestamo-2026-27
+Canarias,discapacidad,9,PRESENTE_CON_EVIDENCIA,0,4,3,0,0,2,la-palma-autonomia-discapacidad-dependencia|grancanaria-inmersion-ingles-2026|fuerteventura-neae-2026|fuerteventura-transporte-discapacidad|fuerteventura-carne-bienestar-naviera|lanzarote-transporte-discapacidad|la-palma-bono-residente-discapacidad|el-hierro-bono-especial-transporte|la-gomera-ayudas-sanitarias-extraordinarias-2026
+Canarias,dependencia,5,PRESENTE_CON_EVIDENCIA,0,3,2,0,0,0,la-palma-autonomia-discapacidad-dependencia|can-dependencia-prestaciones|fuerteventura-neae-2026|la-gomera-ayudas-sanitarias-extraordinarias-2026|el-hierro-servicio-atencion-domiciliaria
+Canarias,educación,5,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,3,tenerife-cheque-guarderia-2026|grancanaria-inmersion-ingles-2026|fuerteventura-neae-2026|can-becas-educacion|can-libros
+Canarias,universidad,6,PRESENTE_CON_EVIDENCIA,1,4,0,0,0,1,tenerife-becas-universidad-2026|grancanaria-becas-postobligatorios-2026|fuerteventura-becas-estudios-isla-2026-27|la-palma-becas-estudio-2025-26|la-gomera-becas-estudio-transporte-alquiler-2025-26|can-universidad-becas
+Canarias,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Canarias,vivienda,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Canarias,transporte,11,PRESENTE_CON_EVIDENCIA,0,1,5,0,0,5,tenerife-transporte-estudios-2026|fuerteventura-transporte-estudiante|fuerteventura-transporte-discapacidad|fuerteventura-transporte-familia-numerosa|fuerteventura-carne-bienestar-naviera|lanzarote-transporte-discapacidad|lanzarote-transporte-familia-numerosa|la-palma-bono-residente-discapacidad|el-hierro-becas-transporte-2026-27|el-hierro-bono-especial-transporte|can-transporte-escolar
+Canarias,salud,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,la-gomera-ayudas-sanitarias-extraordinarias-2026
+Canarias,atención temprana,2,PRESENTE_CON_EVIDENCIA,0,0,1,1,0,0,can-temprana|can-bono-infantil
+Canarias,conciliación,2,PRESENTE_CON_EVIDENCIA,0,0,1,1,0,0,el-hierro-servicio-atencion-domiciliaria|can-bono-infantil
+Canarias,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Canarias,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Canarias,accesibilidad,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,la-palma-autonomia-discapacidad-dependencia|la-gomera-ayudas-sanitarias-extraordinarias-2026
+Canarias,ayudas técnicas,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,la-palma-autonomia-discapacidad-dependencia|la-gomera-ayudas-sanitarias-extraordinarias-2026
+Canarias,autonomía personal,5,PRESENTE_CON_EVIDENCIA,0,3,2,0,0,0,la-palma-autonomia-discapacidad-dependencia|can-dependencia-prestaciones|fuerteventura-neae-2026|la-gomera-ayudas-sanitarias-extraordinarias-2026|el-hierro-servicio-atencion-domiciliaria
+Canarias,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,can-familia-numerosa
+Canarias,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,can-renta-ciudadania
+Canarias,libros/material,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,can-libros
+Cantabria,discapacidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,dependencia,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,cant-dependencia
+Cantabria,educación,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cant-libros
+Cantabria,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,vivienda,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,cant-alquiler|cant-vivienda-protegida
+Cantabria,transporte,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,cant-transporte-escolar
+Cantabria,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,atención temprana,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,cant-temprana
+Cantabria,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cantabria,autonomía personal,2,PRESENTE_POR_VERIFICAR,0,0,0,0,0,2,cant-dependencia|cant-temprana
+Cantabria,familia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,cant-mono|cant-familia-numerosa
+Cantabria,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cant-renta-social
+Cantabria,libros/material,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cant-libros
+Castilla y León,discapacidad,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cyl-comedor
+Castilla y León,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,cyl-dependencia|cyl-temprana
+Castilla y León,educación,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,cyl-comedor|cyl-releo
+Castilla y León,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,cyl-vivienda
+Castilla y León,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cyl-temprana
+Castilla y León,conciliación,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,cyl-conciliacion
+Castilla y León,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla y León,autonomía personal,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,cyl-dependencia|cyl-temprana
+Castilla y León,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cyl-familia-numerosa
+Castilla y León,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cyl-renta-garantizada
+Castilla y León,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,cyl-releo
+Castilla-La Mancha,discapacidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,dependencia,4,PRESENTE_CON_EVIDENCIA,0,0,4,0,0,0,clm-dependencia|clm-dep-economicas|clm-temprana|clm-numerosa
+Castilla-La Mancha,educación,2,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,1,clm-escolar|clm-becas-ayudas
+Castilla-La Mancha,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,vivienda,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,clm-alquiler-2026
+Castilla-La Mancha,transporte,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,clm-transporte-escolar
+Castilla-La Mancha,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,clm-temprana
+Castilla-La Mancha,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Castilla-La Mancha,autonomía personal,4,PRESENTE_CON_EVIDENCIA,0,0,4,0,0,0,clm-dependencia|clm-dep-economicas|clm-temprana|clm-numerosa
+Castilla-La Mancha,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,clm-numerosa
+Castilla-La Mancha,ingresos/prestaciones,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,clm-prestaciones-sociales
+Castilla-La Mancha,libros/material,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,discapacidad,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,cat-pua
+Cataluña,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,cat-dependencia|cat-cdiap
+Cataluña,educación,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,cat-comedor|cat-motxilles
+Cataluña,universidad,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,cat-equitat-2627
+Cataluña,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,vivienda,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,cat-alquiler-2026
+Cataluña,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cat-cdiap
+Cataluña,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Cataluña,ayudas técnicas,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,cat-pua
+Cataluña,autonomía personal,3,PRESENTE_CON_EVIDENCIA,1,0,2,0,0,0,cat-pua|cat-dependencia|cat-cdiap
+Cataluña,familia,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,cat-familia-numerosa|cat-monoparental|cat-nacimiento-2026
+Cataluña,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cat-rgc
+Cataluña,libros/material,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,cat-motxilles
+Ceuta,discapacidad,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,ceu-familia|ceu-adaptacion-vivienda|ceu-teleasistencia
+Ceuta,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ceu-adaptacion-vivienda|ceu-teleasistencia
+Ceuta,educación,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ceu-libros
+Ceuta,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,vivienda,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,ceu-adaptacion-vivienda|ceu-bono-alquiler-joven
+Ceuta,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,atención temprana,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,conciliación,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ceu-ayuda-domicilio|ceu-teleasistencia
+Ceuta,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,accesibilidad,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,ceu-adaptacion-vivienda
+Ceuta,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,autonomía personal,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,ceu-adaptacion-vivienda|ceu-ayuda-domicilio|ceu-teleasistencia
+Ceuta,familia,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,ceu-familia|ceu-apoyo-familiar-2026
+Ceuta,ingresos/prestaciones,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Ceuta,libros/material,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ceu-libros
+Comunidad de Madrid,discapacidad,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,mad-infantil|mad-temprana
+Comunidad de Madrid,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,mad-dependencia|mad-temprana
+Comunidad de Madrid,educación,3,PRESENTE_CON_EVIDENCIA,0,2,1,0,0,0,mad-infantil|mad-comedor|mad-accede
+Comunidad de Madrid,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,mad-alquiler
+Comunidad de Madrid,transporte,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,mad-transporte-escolar
+Comunidad de Madrid,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mad-temprana
+Comunidad de Madrid,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,suministros,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,madrid-agua-familia-numerosa|madrid-agua-exencion-social
+Comunidad de Madrid,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunidad de Madrid,autonomía personal,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,mad-dependencia|mad-temprana
+Comunidad de Madrid,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mad-familia-numerosa
+Comunidad de Madrid,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mad-rmi
+Comunidad de Madrid,libros/material,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mad-accede
+Comunitat Valenciana,discapacidad,2,PRESENTE_CON_EVIDENCIA,0,1,1,0,0,0,val-comedor|val-copago
+Comunitat Valenciana,dependencia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-dependencia
+Comunitat Valenciana,educación,2,PRESENTE_CON_EVIDENCIA,1,1,0,0,0,0,val-comedor|val-libros
+Comunitat Valenciana,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,val-vivienda
+Comunitat Valenciana,transporte,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,val-transporte-escolar
+Comunitat Valenciana,salud,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-copago
+Comunitat Valenciana,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-temprana
+Comunitat Valenciana,conciliación,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,val-infantil-03
+Comunitat Valenciana,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Comunitat Valenciana,autonomía personal,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-dependencia
+Comunitat Valenciana,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-monoparental
+Comunitat Valenciana,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,val-renta-inclusion
+Comunitat Valenciana,libros/material,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,val-libros
+Extremadura,discapacidad,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,ext-familia-dep-disc|ext-familia-numerosa
+Extremadura,dependencia,3,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,1,ext-dependencia|ext-familia-dep-disc|ext-familia-numerosa
+Extremadura,educación,3,PRESENTE_CON_EVIDENCIA,1,1,0,0,0,1,ext-03|ext-becas|ext-libros
+Extremadura,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,ext-vivienda
+Extremadura,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,atención temprana,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Extremadura,autonomía personal,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,ext-dependencia|ext-familia-numerosa
+Extremadura,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,ext-familia-numerosa
+Extremadura,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,ext-renta-garantizada
+Extremadura,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,ext-libros
+Galicia,discapacidad,4,PRESENTE_CON_EVIDENCIA,0,1,3,0,0,0,gal-dependencia-discapacidad|gal-comedor|gal-libros|gal-movilidad-apoyo
+Galicia,dependencia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,gal-dependencia-discapacidad|gal-movilidad-apoyo
+Galicia,educación,3,PRESENTE_CON_EVIDENCIA,0,1,2,0,0,0,gal-comedor|gal-03|gal-libros
+Galicia,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,vivienda,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,gal-bono-alquiler-social
+Galicia,transporte,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,gal-movilidad-apoyo
+Galicia,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,atención temprana,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Galicia,autonomía personal,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,gal-dependencia-discapacidad|gal-movilidad-apoyo
+Galicia,familia,3,PRESENTE_CON_EVIDENCIA,1,0,2,0,0,0,gal-familia-numerosa|gal-monoparental|gal-tarxeta-benvida-2026
+Galicia,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,gal-risga
+Galicia,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,gal-libros
+Illes Balears,discapacidad,11,PRESENTE_CON_EVIDENCIA,0,2,6,0,0,3,mallorca-ayudas-discapacidad-2026|eivissa-prestaciones-discapacidad|formentera-dependencia-pia|menorca-ayudas-individuales-discapacidad|bal-discapacidad|bal-comedor|bal-familia-numerosa|mallorca-vivienda-discapacidad-2026|formentera-tarjeta-aparcamiento|formentera-sad-teleasistencia|eivissa-empleo-apoyo-discapacidad
+Illes Balears,dependencia,5,PRESENTE_CON_EVIDENCIA,0,0,4,0,0,1,formentera-dependencia-pia|bal-dependencia|bal-familia-numerosa|mallorca-vivienda-discapacidad-2026|formentera-sad-teleasistencia
+Illes Balears,educación,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,bal-alimentacion|bal-comedor
+Illes Balears,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Illes Balears,empleo,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,eivissa-empleo-apoyo-discapacidad
+Illes Balears,vivienda,2,PRESENTE_POR_VERIFICAR,0,0,0,0,0,2,mallorca-vivienda-discapacidad-2026|bal-alquiler
+Illes Balears,transporte,3,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,1,formentera-tarjeta-aparcamiento|menorca-tjove-transporte|bal-transporte-escolar
+Illes Balears,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Illes Balears,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,bal-temprana
+Illes Balears,conciliación,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,formentera-sad-teleasistencia|bal-conciliacion
+Illes Balears,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Illes Balears,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Illes Balears,accesibilidad,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,formentera-tarjeta-aparcamiento
+Illes Balears,ayudas técnicas,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,mallorca-ayudas-mayores-autonomia-2026
+Illes Balears,autonomía personal,7,PRESENTE_CON_EVIDENCIA,0,1,4,0,0,2,mallorca-ayudas-mayores-autonomia-2026|formentera-dependencia-pia|menorca-ayudas-individuales-discapacidad|bal-dependencia|bal-familia-numerosa|mallorca-vivienda-discapacidad-2026|formentera-sad-teleasistencia
+Illes Balears,familia,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,formentera-tarjeta-nado-multiple|bal-familia-numerosa
+Illes Balears,ingresos/prestaciones,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,formentera-emergencia-social|bal-renta-social
+Illes Balears,libros/material,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,discapacidad,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,rio-transporte-descuentos
+La Rioja,dependencia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,rio-dependencia
+La Rioja,educación,2,PRESENTE_CON_EVIDENCIA,0,2,0,0,0,0,rio-comedor|rio-libros
+La Rioja,universidad,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,rio-universidad
+La Rioja,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,vivienda,2,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,1,rio-alquiler|rio-bono-joven
+La Rioja,transporte,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,rio-transporte-descuentos
+La Rioja,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,rio-temprana
+La Rioja,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,autonomía personal,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,rio-dependencia|rio-temprana
+La Rioja,familia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,rio-monoparental|rio-familia-numerosa
+La Rioja,ingresos/prestaciones,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+La Rioja,libros/material,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,rio-libros
+Melilla,discapacidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,dependencia,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,educación,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,mel-eso
+Melilla,universidad,2,PRESENTE_CON_EVIDENCIA,1,1,0,0,0,0,mel-universidad-2026|mel-master-2026
+Melilla,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,vivienda,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,mel-alquiler-2026
+Melilla,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,atención temprana,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,autonomía personal,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Melilla,familia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mel-familia
+Melilla,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mel-imi
+Melilla,libros/material,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,mel-eso
+Navarra,discapacidad,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,nav-dependencia-valoracion|nav-transporte-disc
+Navarra,dependencia,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,nav-dependencia-valoracion|nav-temprana|nav-transporte-dep
+Navarra,educación,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,nav-libros
+Navarra,universidad,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,nav-universidad
+Navarra,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Navarra,vivienda,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,nav-vivienda
+Navarra,transporte,3,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,1,nav-transporte-dep|nav-transporte-disc|nav-transporte-escolar-2627
+Navarra,salud,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,nav-protesis
+Navarra,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,nav-temprana
+Navarra,conciliación,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,nav-concilia-mono-2026
+Navarra,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Navarra,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Navarra,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Navarra,ayudas técnicas,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,nav-protesis
+Navarra,autonomía personal,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,nav-dependencia-valoracion|nav-temprana|nav-transporte-dep
+Navarra,familia,2,PRESENTE_CON_EVIDENCIA,0,0,2,0,0,0,nav-familia-numerosa|nav-monoparental
+Navarra,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,nav-renta-garantizada
+Navarra,libros/material,1,PRESENTE_POR_VERIFICAR,0,0,0,0,0,1,nav-libros
+País Vasco / Euskadi,discapacidad,7,PRESENTE_CON_EVIDENCIA,1,0,5,0,0,1,gipuzkoa-valoracion-discapacidad|pv-becas|bizkaia-irpf-discapacidad|gipuzkoa-irpf-discapacidad|bizkaia-irpf-alquiler-colectivos|alava-irpf-alquiler-colectivos|alava-irpf-compra-vivienda-colectivos
+País Vasco / Euskadi,dependencia,11,PRESENTE_CON_EVIDENCIA,0,0,9,0,0,2,gipuzkoa-valoracion-discapacidad|bizkaia-dependencia-valoracion|gipuzkoa-dependencia-valoracion|alava-dependencia-valoracion|bizkaia-irpf-discapacidad|gipuzkoa-irpf-discapacidad|bizkaia-irpf-alquiler-colectivos|alava-irpf-alquiler-colectivos|alava-irpf-compra-vivienda-colectivos|pv-conciliacion|bizkaia-irpf-cuidados
+País Vasco / Euskadi,educación,1,PRESENTE_CON_EVIDENCIA,1,0,0,0,0,0,pv-becas
+País Vasco / Euskadi,universidad,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,eus-universidad-2627
+País Vasco / Euskadi,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,vivienda,5,PRESENTE_CON_EVIDENCIA,2,0,3,0,0,0,bizkaia-irpf-alquiler-colectivos|alava-irpf-alquiler-colectivos|alava-irpf-compra-vivienda-colectivos|eus-gaztelagun|eus-emantzipa
+País Vasco / Euskadi,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,atención temprana,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,conciliación,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,pv-conciliacion|bizkaia-irpf-cuidados
+País Vasco / Euskadi,fiscalidad,2,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,1,bizkaia-irpf-discapacidad|gipuzkoa-irpf-discapacidad
+País Vasco / Euskadi,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+País Vasco / Euskadi,autonomía personal,10,PRESENTE_CON_EVIDENCIA,0,0,9,0,0,1,gipuzkoa-valoracion-discapacidad|bizkaia-dependencia-valoracion|gipuzkoa-dependencia-valoracion|alava-dependencia-valoracion|bizkaia-irpf-discapacidad|gipuzkoa-irpf-discapacidad|bizkaia-irpf-alquiler-colectivos|alava-irpf-alquiler-colectivos|alava-irpf-compra-vivienda-colectivos|bizkaia-irpf-cuidados
+País Vasco / Euskadi,familia,3,PRESENTE_CON_EVIDENCIA,0,0,3,0,0,0,pv-hijos|eus-monoparental|eus-familia-numerosa
+País Vasco / Euskadi,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,eus-rgi
+País Vasco / Euskadi,libros/material,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,discapacidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,dependencia,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mur-dependencia
+Región de Murcia,educación,1,PRESENTE_CON_EVIDENCIA,0,1,0,0,0,0,mur-comedor
+Región de Murcia,universidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,empleo,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,vivienda,1,PRESENTE_CON_EVIDENCIA,0,0,0,0,1,0,mur-alquiler
+Región de Murcia,transporte,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,salud,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,atención temprana,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mur-temprana
+Región de Murcia,conciliación,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,fiscalidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,suministros,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,accesibilidad,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,ayudas técnicas,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
+Región de Murcia,autonomía personal,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mur-dependencia
+Región de Murcia,familia,4,PRESENTE_CON_EVIDENCIA,0,0,2,0,2,0,mur-2500|mur-monoparental|mur-familia-numerosa|mur-familias-especiales
+Región de Murcia,ingresos/prestaciones,1,PRESENTE_CON_EVIDENCIA,0,0,1,0,0,0,mur-renta-basica
+Región de Murcia,libros/material,0,AUSENTE_EN_CORPUS,0,0,0,0,0,0,
