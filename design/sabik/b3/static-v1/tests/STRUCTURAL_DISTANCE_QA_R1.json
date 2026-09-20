@@ -1,0 +1,9 @@
+{
+  "scope": "technical pixel-distance only; not human perception",
+  "products": {
+    "web": {"minimum_pair":"pausa__confirmar","minimum_value":0.06735600531101227,"orientar__transicion":0.1077483519911766,"presente__confirmar":0.0975337028503418},
+    "ia": {"minimum_pair":"pausa__confirmar","minimum_value":0.07234987616539001,"orientar__transicion":0.10488664358854294,"presente__confirmar":0.11843787878751755},
+    "educa": {"minimum_pair":"pausa__confirmar","minimum_value":0.06061868369579315,"orientar__transicion":0.10289425402879715,"presente__confirmar":0.08497147262096405}
+  },
+  "note": "These distances only prove that the raster structures differ technically. They do not establish human discrimination."
+}
