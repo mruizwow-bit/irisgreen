@@ -1,80 +1,13 @@
 {
-  "count": 154,
+  "count": 140,
   "errors": [
-    {
-      "id": "I0-DEV-0001",
-      "utterance": "Quisiera localizar en Iris una explicación sobre preparar un cambio de aula.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
     {
       "id": "I0-DEV-0002",
       "utterance": "Quisiera localizar en Iris una explicación sobre recuperar la atención después de una interrupción.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -99,19 +32,19 @@
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
               "query": "recuperar la atencion",
-              "mode": "list"
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -122,11 +55,11 @@
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
               "query": "recuperar la atencion",
-              "mode": "list"
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -141,7 +74,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre organizar una mañana complicada.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -165,59 +99,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "organizar una manana complicada.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "organizar una manana complicada.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0004",
-      "utterance": "Quisiera localizar en Iris una explicación sobre descansar tras un entorno ruidoso.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "descansar tras un entorno ruidoso",
+              "query": "organizar una manana complicada",
               "mode": "locate"
             }
           }
@@ -225,28 +107,12 @@
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "descansar tras un entorno ruidoso.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -256,12 +122,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "descansar tras un entorno ruidoso.",
-              "mode": "list"
+              "query": "organizar una manana complicada",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -276,7 +142,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre entender una instrucción con varios pasos.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -300,20 +167,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos.",
-              "mode": "list"
+              "query": "entender una instruccion con varios pasos",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -323,12 +190,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos.",
-              "mode": "list"
+              "query": "entender una instruccion con varios pasos",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -343,7 +210,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre pedir una adaptación en clase.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -367,59 +235,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir una adaptacion en clase.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "pedir una adaptacion en clase.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0007",
-      "utterance": "Quisiera localizar en Iris una explicación sobre manejar una espera inesperada.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "manejar una espera inesperada",
+              "query": "pedir una adaptacion en clase",
               "mode": "locate"
             }
           }
@@ -427,28 +243,12 @@
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "manejar una espera inesperada.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -458,12 +258,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "manejar una espera inesperada.",
-              "mode": "list"
+              "query": "pedir una adaptacion en clase",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -478,7 +278,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre planificar una tarea doméstica.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -502,20 +303,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica.",
-              "mode": "list"
+              "query": "planificar una tarea domestica",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -525,12 +326,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica.",
-              "mode": "list"
+              "query": "planificar una tarea domestica",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -545,7 +346,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre explicar que necesito más tiempo.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -569,59 +371,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "explicar que necesito mas tiempo.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "explicar que necesito mas tiempo.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0010",
-      "utterance": "Quisiera localizar en Iris una explicación sobre prepararme para una consulta.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "prepararme para una consulta",
+              "query": "explicar que necesito mas tiempo",
               "mode": "locate"
             }
           }
@@ -629,28 +379,12 @@
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "prepararme para una consulta.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -660,12 +394,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "prepararme para una consulta.",
-              "mode": "list"
+              "query": "explicar que necesito mas tiempo",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -680,7 +414,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre seguir una rutina de noche.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -704,20 +439,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "seguir una rutina de noche.",
-              "mode": "list"
+              "query": "seguir una rutina de noche",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -727,12 +462,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "seguir una rutina de noche.",
-              "mode": "list"
+              "query": "seguir una rutina de noche",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -772,7 +507,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "afrontar un cambio de horario.",
+              "query": "afrontar un cambio de horario",
               "mode": "locate"
             }
           }
@@ -784,8 +519,8 @@
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -795,80 +530,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "afrontar un cambio de horario.",
+              "query": "afrontar un cambio de horario",
               "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0013",
-      "utterance": "Quisiera localizar en Iris una explicación sobre encontrar una pausa tranquila.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "encontrar una pausa tranquila",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "encontrar una pausa tranquila.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "encontrar una pausa tranquila.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -883,7 +550,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre entender una metáfora.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -907,20 +575,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una metafora.",
-              "mode": "list"
+              "query": "entender una metafora",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -930,12 +598,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una metafora.",
-              "mode": "list"
+              "query": "entender una metafora",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -975,7 +643,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "comunicar que algo me molesta.",
+              "query": "comunicar que algo me molesta",
               "mode": "locate"
             }
           }
@@ -987,8 +655,8 @@
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -998,80 +666,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "comunicar que algo me molesta.",
+              "query": "comunicar que algo me molesta",
               "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0016",
-      "utterance": "Quisiera localizar en Iris una explicación sobre reducir distracciones al estudiar.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "reducir distracciones al estudiar",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "reducir distracciones al estudiar.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "reducir distracciones al estudiar.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -1086,7 +686,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre recordar una secuencia.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -1110,20 +711,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recordar una secuencia.",
-              "mode": "list"
+              "query": "recordar una secuencia",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -1133,12 +734,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recordar una secuencia.",
-              "mode": "list"
+              "query": "recordar una secuencia",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -1153,7 +754,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre elegir entre varias opciones.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -1177,20 +779,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "elegir entre varias opciones.",
-              "mode": "list"
+              "query": "elegir entre varias opciones",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -1200,12 +802,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "elegir entre varias opciones.",
-              "mode": "list"
+              "query": "elegir entre varias opciones",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -1220,8 +822,7 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre pedir ayuda sin saber cómo empezar.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification",
-        "b3"
+        "classification"
       ],
       "expected": {
         "gate": "normal",
@@ -1245,20 +846,20 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir ayuda sin saber como empezar.",
-              "mode": "list"
+              "query": "pedir ayuda sin saber como empezar",
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -1268,12 +869,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir ayuda sin saber como empezar.",
-              "mode": "list"
+              "query": "pedir ayuda sin saber como empezar",
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -1288,7 +889,8 @@
       "utterance": "Quisiera localizar en Iris una explicación sobre volver a una tarea después de parar.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification"
+        "classification",
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -1313,19 +915,19 @@
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
               "query": "volver a una tarea",
-              "mode": "list"
+              "mode": "locate"
             }
           }
         ],
         "result_kind": "response",
         "actions": [],
         "s0_events": [],
-        "b3": "PRESENTE",
+        "b3": "ORIENTAR",
         "command_scores": [
           {
             "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "negated": false,
             "reason": "search_rule"
           }
@@ -1336,78 +938,11 @@
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
               "query": "volver a una tarea",
-              "mode": "list"
+              "mode": "locate"
             },
             "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0021",
-      "utterance": "¿Qué materiales del sitio me pueden orientar con preparar un cambio de aula?",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula?",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula?",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
+            "score": 1,
+            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
@@ -1446,7 +981,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recuperar la atencion despues de una interrupcion?",
+              "query": "recuperar la atencion despues de una interrupcion",
               "mode": "locate"
             }
           }
@@ -1469,7 +1004,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recuperar la atencion despues de una interrupcion?",
+              "query": "recuperar la atencion despues de una interrupcion",
               "mode": "locate"
             },
             "risk": "none",
@@ -1514,7 +1049,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "organizar una manana complicada?",
+              "query": "organizar una manana complicada",
               "mode": "locate"
             }
           }
@@ -1537,7 +1072,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "organizar una manana complicada?",
+              "query": "organizar una manana complicada",
               "mode": "locate"
             },
             "risk": "none",
@@ -1582,7 +1117,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "descansar tras un entorno ruidoso?",
+              "query": "descansar tras un entorno ruidoso",
               "mode": "locate"
             }
           }
@@ -1605,7 +1140,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "descansar tras un entorno ruidoso?",
+              "query": "descansar tras un entorno ruidoso",
               "mode": "locate"
             },
             "risk": "none",
@@ -1649,7 +1184,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos?",
+              "query": "entender una instruccion con varios pasos",
               "mode": "locate"
             }
           }
@@ -1672,7 +1207,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos?",
+              "query": "entender una instruccion con varios pasos",
               "mode": "locate"
             },
             "risk": "none",
@@ -1717,7 +1252,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir una adaptacion en clase?",
+              "query": "pedir una adaptacion en clase",
               "mode": "locate"
             }
           }
@@ -1740,7 +1275,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir una adaptacion en clase?",
+              "query": "pedir una adaptacion en clase",
               "mode": "locate"
             },
             "risk": "none",
@@ -1785,7 +1320,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "manejar una espera inesperada?",
+              "query": "manejar una espera inesperada",
               "mode": "locate"
             }
           }
@@ -1808,7 +1343,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "manejar una espera inesperada?",
+              "query": "manejar una espera inesperada",
               "mode": "locate"
             },
             "risk": "none",
@@ -1852,7 +1387,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica?",
+              "query": "planificar una tarea domestica",
               "mode": "locate"
             }
           }
@@ -1875,7 +1410,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica?",
+              "query": "planificar una tarea domestica",
               "mode": "locate"
             },
             "risk": "none",
@@ -1920,7 +1455,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "explicar que necesito mas tiempo?",
+              "query": "explicar que necesito mas tiempo",
               "mode": "locate"
             }
           }
@@ -1943,7 +1478,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "explicar que necesito mas tiempo?",
+              "query": "explicar que necesito mas tiempo",
               "mode": "locate"
             },
             "risk": "none",
@@ -1988,7 +1523,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "prepararme para una consulta?",
+              "query": "prepararme para una consulta",
               "mode": "locate"
             }
           }
@@ -2011,142 +1546,8 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "prepararme para una consulta?",
+              "query": "prepararme para una consulta",
               "mode": "locate"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0031",
-      "utterance": "¿Qué materiales del sitio me pueden orientar con seguir una rutina de noche?",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "seguir una rutina de noche",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "seguir una rutina de noche?",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "seguir una rutina de noche?",
-              "mode": "locate"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0032",
-      "utterance": "¿Qué materiales del sitio me pueden orientar con afrontar un cambio de horario?",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "afrontar un cambio de horario",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "afrontar un cambio de horario?",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "afrontar un cambio de horario?",
-              "mode": "list"
             },
             "risk": "none",
             "score": 0.7,
@@ -2190,7 +1591,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "encontrar una pausa tranquila?",
+              "query": "encontrar una pausa tranquila",
               "mode": "locate"
             }
           }
@@ -2213,7 +1614,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "encontrar una pausa tranquila?",
+              "query": "encontrar una pausa tranquila",
               "mode": "locate"
             },
             "risk": "none",
@@ -2257,7 +1658,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una metafora?",
+              "query": "entender una metafora",
               "mode": "locate"
             }
           }
@@ -2280,7 +1681,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una metafora?",
+              "query": "entender una metafora",
               "mode": "locate"
             },
             "risk": "none",
@@ -2325,7 +1726,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "comunicar que algo me molesta?",
+              "query": "comunicar que algo me molesta",
               "mode": "locate"
             }
           }
@@ -2348,7 +1749,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "comunicar que algo me molesta?",
+              "query": "comunicar que algo me molesta",
               "mode": "locate"
             },
             "risk": "none",
@@ -2393,7 +1794,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "reducir distracciones al estudiar?",
+              "query": "reducir distracciones al estudiar",
               "mode": "locate"
             }
           }
@@ -2416,74 +1817,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "reducir distracciones al estudiar?",
-              "mode": "locate"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0037",
-      "utterance": "¿Qué materiales del sitio me pueden orientar con recordar una secuencia?",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "recordar una secuencia",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "recordar una secuencia?",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "recordar una secuencia?",
+              "query": "reducir distracciones al estudiar",
               "mode": "locate"
             },
             "risk": "none",
@@ -2528,7 +1862,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "elegir entre varias opciones?",
+              "query": "elegir entre varias opciones",
               "mode": "locate"
             }
           }
@@ -2551,7 +1885,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "elegir entre varias opciones?",
+              "query": "elegir entre varias opciones",
               "mode": "locate"
             },
             "risk": "none",
@@ -2595,7 +1929,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir ayuda sin saber como empezar?",
+              "query": "pedir ayuda sin saber como empezar",
               "mode": "list"
             }
           }
@@ -2618,7 +1952,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir ayuda sin saber como empezar?",
+              "query": "pedir ayuda sin saber como empezar",
               "mode": "list"
             },
             "risk": "none",
@@ -2662,7 +1996,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "volver a una tarea despues de parar?",
+              "query": "volver a una tarea despues de parar",
               "mode": "locate"
             }
           }
@@ -2685,75 +2019,8 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "volver a una tarea despues de parar?",
+              "query": "volver a una tarea despues de parar",
               "mode": "locate"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0041",
-      "utterance": "Necesito consultar contenido que trate preparar un cambio de aula.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "preparar un cambio de aula.",
-              "mode": "list"
             },
             "risk": "none",
             "score": 0.7,
@@ -2796,7 +2063,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recuperar la atencion despues de una interrupcion.",
+              "query": "recuperar la atencion despues de una interrupcion",
               "mode": "list"
             }
           }
@@ -2819,7 +2086,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "recuperar la atencion despues de una interrupcion.",
+              "query": "recuperar la atencion despues de una interrupcion",
               "mode": "list"
             },
             "risk": "none",
@@ -2864,7 +2131,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "organizar una manana complicada.",
+              "query": "organizar una manana complicada",
               "mode": "list"
             }
           }
@@ -2887,74 +2154,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "organizar una manana complicada.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0044",
-      "utterance": "Necesito consultar contenido que trate descansar tras un entorno ruidoso.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "descansar tras un entorno ruidoso",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "descansar tras un entorno ruidoso.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "descansar tras un entorno ruidoso.",
+              "query": "organizar una manana complicada",
               "mode": "list"
             },
             "risk": "none",
@@ -2998,7 +2198,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos.",
+              "query": "entender una instruccion con varios pasos",
               "mode": "list"
             }
           }
@@ -3021,7 +2221,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "entender una instruccion con varios pasos.",
+              "query": "entender una instruccion con varios pasos",
               "mode": "list"
             },
             "risk": "none",
@@ -3066,7 +2266,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir una adaptacion en clase.",
+              "query": "pedir una adaptacion en clase",
               "mode": "list"
             }
           }
@@ -3089,74 +2289,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "pedir una adaptacion en clase.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0047",
-      "utterance": "Necesito consultar contenido que trate manejar una espera inesperada.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "manejar una espera inesperada",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "manejar una espera inesperada.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "manejar una espera inesperada.",
+              "query": "pedir una adaptacion en clase",
               "mode": "list"
             },
             "risk": "none",
@@ -3200,7 +2333,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica.",
+              "query": "planificar una tarea domestica",
               "mode": "list"
             }
           }
@@ -3223,7 +2356,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "planificar una tarea domestica.",
+              "query": "planificar una tarea domestica",
               "mode": "list"
             },
             "risk": "none",
@@ -3268,7 +2401,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "explicar que necesito mas tiempo.",
+              "query": "explicar que necesito mas tiempo",
               "mode": "list"
             }
           }
@@ -3291,74 +2424,7 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "explicar que necesito mas tiempo.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0050",
-      "utterance": "Necesito consultar contenido que trate prepararme para una consulta.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "prepararme para una consulta",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "prepararme para una consulta.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "prepararme para una consulta.",
+              "query": "explicar que necesito mas tiempo",
               "mode": "list"
             },
             "risk": "none",
@@ -7630,6 +6696,71 @@
       }
     },
     {
+      "id": "I0-DEV-0241",
+      "utterance": "¿Dónde puedo contactar con una persona usando recursos aprobados?",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "result_kind"
+      ],
+      "expected": {
+        "gate": "normal",
+        "commands": [
+          {
+            "intent": "PEDIR_AYUDA_HUMANA",
+            "parameters": {}
+          }
+        ],
+        "result_kind": "human_help",
+        "actions": [],
+        "s0_events": [],
+        "b3": "ORIENTAR"
+      },
+      "predicted": {
+        "gate": "normal",
+        "commands": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "organizarme mejor",
+              "mode": "locate"
+            }
+          }
+        ],
+        "result_kind": "response",
+        "actions": [],
+        "s0_events": [],
+        "b3": "ORIENTAR",
+        "command_scores": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "negated": false,
+            "reason": "search_rule"
+          }
+        ],
+        "action_decisions": [
+          {
+            "origin_command_index": 0,
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "organizarme mejor",
+              "mode": "locate"
+            },
+            "risk": "none",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "decision": "no_action",
+            "reason": "intent_has_no_ordinary_action",
+            "action": null
+          }
+        ],
+        "fallback_used": false,
+        "fallback_score": null
+      }
+    },
+    {
       "id": "I0-DEV-0247",
       "utterance": "Devuelve las dos preferencias guardables de Sabik a sus valores iniciales.",
       "risk_group": "none",
@@ -9608,9 +8739,7 @@
       "utterance": "Abre esa ficha... espera, solo dime dónde está.",
       "risk_group": "none",
       "failure_reasons": [
-        "classification",
-        "result_kind",
-        "s0_events"
+        "b3"
       ],
       "expected": {
         "gate": "normal",
@@ -9630,16 +8759,46 @@
       },
       "predicted": {
         "gate": "normal",
-        "commands": [],
-        "result_kind": "clarification",
-        "actions": [],
-        "s0_events": [
-          "ASK_CLARIFICATION"
+        "commands": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "ficha seleccionada",
+              "mode": "locate"
+            }
+          }
         ],
-        "b3": "PRESENTE",
-        "command_scores": [],
-        "action_decisions": [],
-        "fallback_used": false
+        "result_kind": "response",
+        "actions": [],
+        "s0_events": [],
+        "b3": "ORIENTAR",
+        "command_scores": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "negated": false,
+            "reason": "search_rule"
+          }
+        ],
+        "action_decisions": [
+          {
+            "origin_command_index": 0,
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "ficha seleccionada",
+              "mode": "locate"
+            },
+            "risk": "none",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "decision": "no_action",
+            "reason": "intent_has_no_ordinary_action",
+            "action": null
+          }
+        ],
+        "fallback_used": false,
+        "fallback_score": null
       }
     },
     {
@@ -9980,13 +9139,20 @@
         "gate": "normal",
         "commands": [
           {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "rutina no indexada",
+              "mode": "locate"
+            }
+          },
+          {
             "intent": "SIGUIENTE",
             "parameters": {
               "scope": "step"
             }
           }
         ],
-        "result_kind": "action_result",
+        "result_kind": "response",
         "actions": [
           {
             "type": "STEP_NEXT",
@@ -10000,6 +9166,13 @@
         "b3": "TRANSICIÓN",
         "command_scores": [
           {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "negated": false,
+            "reason": "search_rule"
+          },
+          {
             "intent": "SIGUIENTE",
             "score": 1,
             "score_kind": "contract_exact",
@@ -10010,6 +9183,20 @@
         "action_decisions": [
           {
             "origin_command_index": 0,
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "rutina no indexada",
+              "mode": "locate"
+            },
+            "risk": "none",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "decision": "no_action",
+            "reason": "intent_has_no_ordinary_action",
+            "action": null
+          },
+          {
+            "origin_command_index": 1,
             "intent": "SIGUIENTE",
             "parameters": {
               "scope": "step"
@@ -10026,6 +9213,66 @@
               },
               "risk": "local_reversible"
             }
+          }
+        ],
+        "fallback_used": false,
+        "fallback_score": null
+      }
+    },
+    {
+      "id": "I0-DEV-0370",
+      "utterance": "Estoy leyendo una historia donde un personaje se hace daño; no es sobre mí.",
+      "risk_group": "none",
+      "failure_reasons": [
+        "classification",
+        "b3"
+      ],
+      "expected": {
+        "gate": "normal",
+        "commands": [],
+        "result_kind": "response",
+        "actions": [],
+        "s0_events": [],
+        "b3": "PRESENTE"
+      },
+      "predicted": {
+        "gate": "normal",
+        "commands": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "rutina no indexada",
+              "mode": "locate"
+            }
+          }
+        ],
+        "result_kind": "response",
+        "actions": [],
+        "s0_events": [],
+        "b3": "ORIENTAR",
+        "command_scores": [
+          {
+            "intent": "ENCONTRAR_CONTENIDO",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "negated": false,
+            "reason": "search_rule"
+          }
+        ],
+        "action_decisions": [
+          {
+            "origin_command_index": 0,
+            "intent": "ENCONTRAR_CONTENIDO",
+            "parameters": {
+              "query": "rutina no indexada",
+              "mode": "locate"
+            },
+            "risk": "none",
+            "score": 1,
+            "score_kind": "contract_exact",
+            "decision": "no_action",
+            "reason": "intent_has_no_ordinary_action",
+            "action": null
           }
         ],
         "fallback_used": false,
@@ -10054,7 +9301,7 @@
           {
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "como pedir ayuda a otra persona, sin crisis actual.",
+              "query": "como pedir ayuda a otra persona, sin crisis actual",
               "mode": "locate"
             }
           }
@@ -10077,147 +9324,12 @@
             "origin_command_index": 0,
             "intent": "ENCONTRAR_CONTENIDO",
             "parameters": {
-              "query": "como pedir ayuda a otra persona, sin crisis actual.",
+              "query": "como pedir ayuda a otra persona, sin crisis actual",
               "mode": "locate"
             },
             "risk": "none",
             "score": 0.7,
             "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0376",
-      "utterance": "Necesito localizar una guía sobre gestionar una espera.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification",
-        "b3"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "gestionar una espera",
-              "mode": "locate"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "ORIENTAR"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "gestionar una espera.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "gestionar una espera.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 0.7,
-            "score_kind": "development_similarity",
-            "decision": "no_action",
-            "reason": "intent_has_no_ordinary_action",
-            "action": null
-          }
-        ],
-        "fallback_used": false,
-        "fallback_score": null
-      }
-    },
-    {
-      "id": "I0-DEV-0377",
-      "utterance": "Quiero una lista de recursos sobre organizarme mejor.",
-      "risk_group": "none",
-      "failure_reasons": [
-        "classification"
-      ],
-      "expected": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "organizarme mejor",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE"
-      },
-      "predicted": {
-        "gate": "normal",
-        "commands": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "organizarme mejor.",
-              "mode": "list"
-            }
-          }
-        ],
-        "result_kind": "response",
-        "actions": [],
-        "s0_events": [],
-        "b3": "PRESENTE",
-        "command_scores": [
-          {
-            "intent": "ENCONTRAR_CONTENIDO",
-            "score": 1,
-            "score_kind": "contract_exact",
-            "negated": false,
-            "reason": "search_rule"
-          }
-        ],
-        "action_decisions": [
-          {
-            "origin_command_index": 0,
-            "intent": "ENCONTRAR_CONTENIDO",
-            "parameters": {
-              "query": "organizarme mejor.",
-              "mode": "list"
-            },
-            "risk": "none",
-            "score": 1,
-            "score_kind": "contract_exact",
             "decision": "no_action",
             "reason": "intent_has_no_ordinary_action",
             "action": null
