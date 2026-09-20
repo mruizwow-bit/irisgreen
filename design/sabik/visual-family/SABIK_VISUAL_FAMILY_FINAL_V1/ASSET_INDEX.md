@@ -1,65 +1,54 @@
-# ASSET_INDEX · SABIK_VISUAL_FAMILY_FINAL_V1_R1
+# ASSET_INDEX · SABIK VISUAL FAMILY · R2
 
 Fecha: 20/09/2026
 
-## Paquete R1
+## Paquete R2
 
-Biblioteca:
+`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R2.zip`
 
-`/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R1.zip`
+- Library file id: `libfile_6b61c876dc9c8191a544f76a1f21248e`
+- SHA-256: `0db11fb3a79959b5eb5a11a15550061a459e4584bb4b14cea02da83ac7dfa69a`
+- Tamaño: `7,485,902 bytes`
+- Manifest R2: `98` archivos inventariados, excluyendo solo el propio `MANIFEST.json`.
 
-- Library file id: `libfile_bc65f4a5e9bc8191bda5f99136862fd0`
-- File id: `file_000000009da081f4bbb672b8fe7f0eb1`
-- SHA-256: `43033a8931af00a1691fd2f9ccffd3ae51c06f41f0f384bd203cfcfb60793ca9`
-- Tamaño: 7,158,814 bytes
-- Manifest: 79 archivos inventariados, excluyendo únicamente el propio `MANIFEST.json`.
+## Wordmark T1 · master R2
 
-El paquete V1 auditado anteriormente no se sobrescribe.
+`/SABIK/Agent3/R2/SABIK_WORDMARK_T1_MASTER_R2.svg`
 
-## Masters raster limpios
+- Library file id: `libfile_9f16efce525c8191a39b4977b950cca3`
+- 5 paths
+- 59 nodos
+- sin raster incrustado
+- sin fuente embebida
+- viewBox `0 0 198 38`
 
-- Matriz: `/SABIK/Agent3/R1/masters/matriz_master_raster.png` · `libfile_35bc14f39ab88191be7746aa7f324e32`
-- Web: `/SABIK/Agent3/R1/masters/web_master_raster.png` · `libfile_93408a5602f48191b6e690816ba79c05`
-- IA: `/SABIK/Agent3/R1/masters/ia_master_raster.png` · `libfile_91a091df45108191ae119963920f348a`
-- Educa: `/SABIK/Agent3/R1/masters/educa_master_raster.png` · `libfile_0cfc58ddec8081919948a3f6ad2a76e7`
+La antigua traza R1 queda solo como evidencia histórica en `audit/`; no es master de producción.
 
-Las cuatro presencias holográficas se declaran raster porque una vectorización exacta de las transparencias aprobadas exigiría reconstrucción visual.
+## QA visual
 
-## Wordmark T1
+- Lámina QA: `/SABIK/Agent3/R2/SABIK_T1_VECTOR_QA_R2.png` · `libfile_4995917ffa70819185c8672ea2934b50`
+- Overlay: `/SABIK/Agent3/R2/SABIK_T1_OVERLAY_R2.png` · `libfile_2c8e7dbe312c819191041ecadc41ce90`
+- Informe QA: `/SABIK/Agent3/R2/WORDMARK_T1_VECTOR_QA_R2.md` · `libfile_6c7ddee3292c819180f0f71ae6971b3c`
+- Reproducibilidad: `/SABIK/Agent3/R2/WORDMARK_T1_REPRODUCIBILITY_R2.json` · `libfile_0c53f8b4950c8191b936db7532a702f6`
 
-Maestro SVG real:
+## Autoridad visual
 
-`/SABIK/Agent3/SABIK_WORDMARK_T1_MASTER.svg`
+Referencia de mayor resolución disponible:
 
-Library file id: `libfile_4badb18547088191a72a501c1795a8f8`
+- `ChatGPT Image 19 sept 2026, 07_49_59.png`
+- Library: `libfile_7e7cd6470c548191939aadbfdcfe68c7`
+- 1536×1024 px.
 
-Comparación binaria de la traza frente a la referencia aprobada: IoU `0.997091`.
+El raster R1 365×70 no se usa como autoridad geométrica.
 
-## Siluetas R1
+## R1 bloqueado
 
-- Matriz: `libfile_7ab41893896481919fc3b363e1842b87`
-- Web: `libfile_03dcf2d72ac4819187468adfa7ca6918`
-- IA: `libfile_49fc36eb38108191b2149015c75f3039`
-- Educa: `libfile_fe7dd0263ec08191aa9728f0c96123c5`
+Los 76 archivos no autorizados para cambio se verifican por SHA-256: **0 diferencias**.
 
-Todas preservan el alpha maestro exacto y no usan morfología.
-
-## Pruebas
-
-- Cierre técnico: `/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R1.png` · `libfile_a223bb5905c8819192b3b595c85e7690`
-- Antes/después masters: `/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R1_MASTER_CLEANUP.png` · `libfile_e51109df7ad48191b2b8aaa325339061`
-- Siluetas conjuntas: `/SABIK/Agent3/SABIK_VISUAL_FAMILY_FINAL_V1_R1_SILHOUETTES.png` · `libfile_ba30a245089c8191a107276788704fe7`
-
-## Verificación
-
-- `REPRODUCIBILITY_PASS`
-- 54 archivos regenerados/comparados
-- 0 diferencias
-- cobertura de manifest: PASS
-- ninguna geometría aprobada ha sido rediseñada
+Masters Matriz/Web/IA/Educa, derivados, siluetas, escalas, fondos, paletas, sistema verbal, matriz de conformidad y reproducibilidad R1 permanecen intactos.
 
 ## Estado
 
-**SABIK_VISUAL_FAMILY_FINAL_V1_R1_READY**
+**SABIK_WORDMARK_T1_VECTOR_R2_READY**
 
 **NO MERGE**
