@@ -134,10 +134,12 @@ if (args['reserved-git-ref']) {
 }
 
 const conflicts=[];
+// Candidate internal near-duplicate control.
 for (let i=0;i<candidates.length;i++) for (let j=i+1;j<candidates.length;j++) {
   const rule=similarityRule(candidates[i].utterance,candidates[j].utterance);
   if (rule) conflicts.push({candidate_id:candidates[i].id,against:'candidate_internal',other_candidate_id:candidates[j].id,rule});
 }
+// Reference checks. Never emit reference text, id, label, path, score, or line number.
 for (const c of candidates) {
   for (const ref of refs) {
     let found=null;
