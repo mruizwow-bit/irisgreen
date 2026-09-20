@@ -114,7 +114,101 @@ for (const spec of args.reference || []) {
 }
 
 let reservedChecked=false;
-if (args['reserved-git-ref']) {
+
+function addReservedUnit(rows, value) {
+  const s=String(value ?? '').replace(/\s+/g,' ').trim();
+  if (s.length >= 4 && s.length <= 500) rows.push({utterance:s});
+}
+function collectReservedStructured(value, rows) {
+  if (Array.isArray(value)) { for (const item of value) collectReservedStructured(item, rows); return; }
+  if (!value || typeof value !== 'object') return;
+  if (typeof value.utterance === 'string') addReservedUnit(rows, value.utterance);
+  for (const v of Object.values(value)) if (v && typeof v === 'object') collectReservedStructured(v, rows);
+}
+function collectReservedMarkdown(md, rows) {
+  const text=String(md ?? '');
+  for (const m of text.matchAll(/```[^\n]*\n([\s\S]*?)```/g)) {
+    const block=m[1].trim();
+    try { collectReservedStructured(JSON.parse(block), rows); } catch {}
+    for (const line of block.split(/\r?\n/)) addReservedUnit(rows,line.replace(/^\s*[-*+>]\s*/,''));
+  }
+  for (const m of text.matchAll(/["“”]([^"“”]{4,500})["“”]/g)) addReservedUnit(rows,m[1]);
+  for (const line of text.split(/\r?\n/)) {
+    const clean=line
+      .replace(/^\s*[-*+>]\s*/,'')
+      .replace(/^\s*#{1,6}\s*/,'')
+      .replace(/\[(.*?)\]\([^)]*\)/g,'$1')
+      .trim();
+    if (!clean || /^\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?$/.test(clean)) continue;
+    if (clean.includes('|')) for (const cell of clean.split('|')) addReservedUnit(rows,cell);
+    else addReservedUnit(rows,clean);
+  }
+}
+function githubHeaders() {
+  const h={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'sabik-i0-blind-checker'};
+  if (process.env.GITHUB_TOKEN) h.Authorization=`Bearer ${process.env.GITHUB_TOKEN}`;
+  return h;
+}
+async function fetchTextBlind(url) {
+  const res=await fetch(url,{headers:githubHeaders(),redirect:'follow'});
+  if (!res.ok) throw new Error('reserved_validation_fetch_failed');
+  return await res.text();
+}
+async function loadReservedIssue(repoName, issueNumber) {
+  const rows=[];
+  const base=`https://api.github.com/repos/${repoName}/issues/${issueNumber}`;
+  const issue=JSON.parse(await fetchTextBlind(base));
+  collectReservedMarkdown(issue.body ?? '',rows);
+  const comments=JSON.parse(await fetchTextBlind(`${base}/comments?per_page=100`));
+  for (const comment of comments) collectReservedMarkdown(comment.body ?? '',rows);
+
+  const bodies=[issue.body ?? '',...comments.map(x=>x.body ?? '')];
+  const urls=new Set();
+  for (const body of bodies) for (const m of String(body).matchAll(/https?:\/\/[^\s)>\]]+/g)) {
+    const raw=m[0].replace(/[.,;:]+$/,'');
+    let u; try { u=new URL(raw); } catch { continue; }
+    const allowed=['github.com','raw.githubusercontent.com','user-attachments.githubusercontent.com','objects.githubusercontent.com','private-user-images.githubusercontent.com'];
+    if (!allowed.includes(u.hostname)) continue;
+    if (/user-attachments|\.(jsonl|ndjson|json|txt|md|csv)(?:$|\?)/i.test(raw)) urls.add(raw);
+  }
+  for (const url of urls) {
+    let attachment;
+    try { attachment=await fetchTextBlind(url); } catch { continue; }
+    if (attachment.length > 64*1024*1024) continue;
+    try { collectReservedStructured(JSON.parse(attachment),rows); } catch {}
+    for (const line of attachment.split(/\r?\n/)) {
+      try {
+        const obj=JSON.parse(line);
+        collectReservedStructured(obj,rows);
+      } catch {}
+    }
+    collectReservedMarkdown(attachment,rows);
+  }
+
+  const unique=[];
+  const seen=new Set();
+  for (const row of rows) {
+    const n=normalize(row.utterance);
+    if (!n || seen.has(n)) continue;
+    seen.add(n); unique.push(row);
+  }
+  if (!unique.length) throw new Error('reserved_validation_not_found');
+  return unique;
+}
+
+if (args['reserved-issue']) {
+  if (!args.repo) throw new Error('Missing --repo for --reserved-issue');
+  let rows;
+  try { rows=await loadReservedIssue(args.repo,args['reserved-issue']); }
+  catch {
+    const report={pass:false,error:'reserved_validation_not_found',candidate_count:candidates.length,reserved_validation_checked:false,conflicts:[]};
+    if (args.report) fs.writeFileSync(args.report,JSON.stringify(report,null,2)+'\n');
+    console.log(JSON.stringify({pass:false,error:'reserved_validation_not_found'}));
+    process.exit(2);
+  }
+  refs.push({label:'reserved_validation',reserved:true,rows});
+  reservedChecked=true;
+} else if (args['reserved-git-ref']) {
   const ref=args['reserved-git-ref'];
   const names=execFileSync('git',['ls-tree','-r','--name-only',ref],{encoding:'utf8'}).split(/\r?\n/).filter(Boolean);
   const structured=names.filter(p=>/\.(jsonl|ndjson|json)$/i.test(p));
