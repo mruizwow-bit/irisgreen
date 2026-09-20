@@ -308,3 +308,83 @@ La primera entrega V1 se considera **completa para revisión** porque:
 - no aprueba su propio gate.
 
 **Siguiente actor para este gate: Astra.**
+
+
+---
+
+## CI_POST_AUDIT_FINDINGS
+
+Hallazgos observados en CI sobre la base revisada por Astra (`5d7d2bdfaf391c5f0bc16ac2798f39d136e16450`).
+
+**Regla de alcance R1:** estos fallos se registran, pero **no se corrigen dentro de PR #179**. No se consideran causados por #179 porque las rutas/activos señalados no forman parte de su diff editorial/documental.
+
+| Check | Run | Resultado | Ruta / activo afectado | Naturaleza del fallo | ¿Forma parte del diff #179? | Propietario recomendado | Prioridad |
+|---|---:|---|---|---|---|---|---|
+| Auditar WCAG contraste con gradientes | 288 · run id 35522882098 | FAIL | `/es/tramites/directorio/` | **Accesibilidad técnica**. Texto “Directorio de ayudas y trámites” renderizado con color `rgb(31,139,168)` a 12 px; mejor caso sobre blanco 3,95:1 frente a 4,5:1 requerido. | No | Frontend / accesibilidad técnica | **P1 · ALTA** |
+| Comprobación previa de publicación | 576 · run id 35522882151 | FAIL | `/es/tarjetas-iris/` | **Frontend / accesibilidad estructural**. Auditoría estructural detecta ausencia de `<main>` y `<h1>`. Este R1 registra únicamente el hallazgo de Tarjetas Iris solicitado por Astra; el workflow contiene otros guardarraíles técnicos fuera de este registro. | No | Frontend / accesibilidad | **P1 · ALTA** |
+| Comprobar almacenamiento y privacidad | 382 · run id 35522882027 | FAIL | `assets/ig-idioma.js`, `assets/rutinas-visuales.js`, `assets/tarjeta-iris.js` | **Privacidad / arquitectura**. Auditoría detecta 9 usos de `sessionStorage` no aprobados o no resolubles por la política actual. | No | Arquitectura / privacidad técnica, con frontend | **P1 · ALTA** |
+| Comprobar WCAG flujos de teclado | 292 · run id 35522882063 | FAIL | `/es/tarjetas-iris/` | **Frontend / accesibilidad**. Caso “Tarjetas Iris · Copiar texto anuncia estado sin mover foco” falla porque no aparece `#copy-status` dentro del timeout; 5/6 casos del workflow pasan. | No | Frontend / accesibilidad | **P1 · ALTA** |
+
+### Clasificación R1
+
+- contraste Directorio → **accesibilidad técnica**;
+- Tarjetas Iris estructura → **frontend / accesibilidad**;
+- `sessionStorage` → **privacidad / arquitectura**;
+- Tarjetas Iris teclado → **frontend / accesibilidad**.
+
+### Decisión de scope
+
+PR #179 **no modifica** para resolver estos hallazgos:
+
+- contraste del Directorio;
+- estructura de Tarjetas Iris;
+- almacenamiento `sessionStorage`;
+- teclado de Tarjetas Iris;
+- runtime;
+- build;
+- scripts.
+
+Deben abrirse como tareas/PR técnicos independientes.
+
+---
+
+## AJUSTES V1-R1
+
+### PDA
+
+Se eligió la **vía B** ordenada por Astra.
+
+La frase:
+
+`No existe un tratamiento específico validado para PDA.`
+
+se retira porque las revisiones citadas (Kildahl et al., 2021; Company & Rotella, 2026) son revisiones de definición/identificación y no deben usarse como revisiones de eficacia terapéutica.
+
+La ficha queda limitada al alcance real de esas fuentes:
+
+> Las revisiones citadas se centran en cómo se define y se identifica PDA; no evalúan la eficacia de tratamientos específicos. Por eso esta ficha no extrae de ellas recomendaciones terapéuticas propias de PDA.
+
+Se mantienen sin cambios:
+- Kildahl et al. (2021);
+- Company & Rotella (2026);
+- la formulación de incertidumbre diagnóstica aprobada.
+
+### RD 1112/2018
+
+Se corrige el encuadre jurídico:
+
+- la financiación pública **no convierte automáticamente** cualquier web privada en “sector público”;
+- la disposición adicional primera establece que **las Administraciones Públicas exigirán** los criterios de los artículos 5 y 6 en los supuestos que enumera;
+- para Sabik se mantiene: **APLICABILIDAD CONCRETA → POR DETERMINAR**.
+
+### Checklist
+
+El estado del PR queda actualizado de `PR draft` a:
+
+**PR READY FOR REVIEW**
+
+---
+
+## NO MERGE
+
+**PR #179 queda en revisión. NO MERGE hasta dictamen de Astra.**
