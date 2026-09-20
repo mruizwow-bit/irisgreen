@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  issues: read
 
 jobs:
   blind-data-gate:
@@ -37,25 +38,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          printf '%s  %s\n'             "23ee56e118ed89fdf6f63d5e2fb6aaa362d40aae0ac20614152676be9b793eb7"             "tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+          echo "23ee56e118ed89fdf6f63d5e2fb6aaa362d40aae0ac20614152676be9b793eb7  tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
 
       - name: Validate schema
         shell: bash
         run: |
           set -euo pipefail
-          node tools/validate-sabik-i0-calibration-v3.mjs             --dataset tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json             --report /tmp/schema-validation-v3.json
-
-      - name: Fetch reserved validation without checkout
-        shell: bash
-        run: |
-          set -euo pipefail
-          git fetch --no-tags origin             +refs/heads/repair-base/a515f62-validation:refs/remotes/origin/reserved-validation
+          node tools/validate-sabik-i0-calibration-v3.mjs --dataset tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json --report /tmp/schema-validation-v3.json
 
       - name: Blind independence gate
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          node tools/check-sabik-i0-calibration-v3-independence.mjs             --candidate tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl             --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reserved-git-ref refs/remotes/origin/reserved-validation             --report /tmp/independence-v3-redacted.json
+          node tools/check-sabik-i0-calibration-v3-independence.mjs --candidate tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl --reserved-issue 173 --repo "$GITHUB_REPOSITORY" --report /tmp/independence-v3-redacted.json
 
       - name: Verify no executor artifacts were changed
         shell: bash
