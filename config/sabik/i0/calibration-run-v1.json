@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "dataset_head": "08764d2562c445f63a93036e0864f2ca859c1e9f",
+  "inputs": {
+    "development": {
+      "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "calibration": {
+      "path": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f"
+    },
+    "schema": {
+      "path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "executor": {
+    "type": "development-trained lexical-context nearest-neighbour reference executor",
+    "version": "i0-reference-v1",
+    "training": "development_only",
+    "development_evaluation": "leave_one_out",
+    "calibration_labels_use": "threshold_selection_and_metrics_only",
+    "validation_173_use": "prohibited",
+    "text_similarity_weight": 0.78,
+    "context_similarity_weight": 0.22,
+    "deterministic": true
+  },
+  "fixed": {
+    "classify_floor": 0.7,
+    "seed": null
+  },
+  "threshold_grid": {
+    "local_reversible": {
+      "top1": [
+        0.8,
+        0.85,
+        0.88,
+        0.9,
+        0.92,
+        0.94
+      ],
+      "margin": [
+        0.08,
+        0.1,
+        0.12,
+        0.15,
+        0.18,
+        0.2
+      ]
+    },
+    "local_with_loss": {
+      "top1": [
+        0.92,
+        0.94,
+        0.96,
+        0.97,
+        0.98,
+        0.99
+      ],
+      "margin": [
+        0.12,
+        0.15,
+        0.18,
+        0.2,
+        0.22,
+        0.25
+      ]
+    }
+  },
+  "selection_criterion": [
+    "minimize execution false positives",
+    "minimize negative-control semantic inversions",
+    "minimize Safety Gate errors",
+    "minimize local_with_loss errors",
+    "minimize action-plan errors",
+    "minimize unnecessary clarifications",
+    "minimize abstentions",
+    "maximize complete-case correctness"
+  ]
+}
