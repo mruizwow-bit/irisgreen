@@ -1,31 +1,23 @@
-# SABIK_B3_STATIC_COMPLIANCE_MATRIX_V1
+# SABIK_B3_STATIC_COMPLIANCE_MATRIX_V1 · R1
 
-No constituye una declaración global de conformidad. Separa verificación técnica de percepción humana.
+No constituye declaración global de conformidad. Separa verificación técnica de percepción humana.
 
-| Norma | Criterio | Activo | Comprobación | Resultado | Evidencia / pendiente |
-|---|---|---|---|---|---|
-| WCAG 2.2 | 1.1.1 Non-text Content | Estados B3 en futura UI | El estado funcional debe tener nombre/alternativa textual programática. | PENDING HUMAN TEST | La especificación define señal textual; verificar implementación real. |
-| WCAG 2.2 | 1.4.1 Use of Color | 15 keyframes | Cada estado existe en color y monocromo; la operación estructural cambia sin depender solo de color. | PASS | Assets monocromos y gramática estructural incluidos. |
-| Proyecto Sabik | Diferenciación perceptiva monocroma | 15 keyframes monocromos | Comprobar que PRESENTE/ORIENTAR/TRANSICIÓN/PAUSA/CONFIRMAR se distinguen en uso real. | PENDING HUMAN TEST | La prueba técnica existe; requiere evaluación perceptiva. |
-| WCAG 2.2 | 1.4.3 Contrast (Minimum) | Textos de las láminas/documentación | Tokens de texto oscuro sobre blanco en las láminas. | PASS | Texto principal #0B2450 y secundario #294A7A sobre blanco; contraste ya verificado en familia aceptada. |
-| WCAG 2.2 | 1.4.11 Non-text Contrast | Futura UI/controles | La presencia no se usa aquí como límite de control. | NOT APPLICABLE | Evaluar si posteriormente forma parte de un control. |
-| WCAG 2.2 | 2.2.2 Pause, Stop, Hide | Fase 3A | No hay animación; PAUSA es un keyframe estático. | NOT APPLICABLE | Motion se diseña en 3B. |
-| WCAG 2.2 | 2.3.1 Three Flashes or Below Threshold | Fase 3A | Sin destellos ni animación. | NOT APPLICABLE | Motion futuro deberá conservar esta restricción. |
-| WCAG 2.2 | 2.3.3 Animation from Interactions | Fase 3B futura | La función debe sobrevivir a Reduced Motion. | PENDING HUMAN TEST | 3A documenta equivalente estático; implementación futura pendiente. |
-| WCAG 2.2 | 2.4.7 Focus Visible | Futura UI | No hay controles interactivos en esta entrega. | NOT APPLICABLE | Verificar en implementación. |
-| ISO/IEC 40500:2025 | WCAG 2.2 | Producto digital futuro | Misma base WCAG 2.2. | PENDING HUMAN TEST | No se declara conformidad global del producto. |
-| EN 301 549 V4.1.1 | Web / software aplicable | Producto futuro | Evaluar sobre implementación real. | PENDING HUMAN TEST | Fase 3A es diseño estático. |
-| ISO 9241-171:2025 | Software accessibility | Producto futuro | Estado comprensible con alternativa textual, estático y Reduced Motion. | PENDING HUMAN TEST | Validación con software/AT pendiente. |
-| ISO 9241-210:2019 | Human-centred design | Proceso | Requiere evaluación con personas usuarias. | PENDING HUMAN TEST | No se infiere desde assets. |
-| ISO 9241-11:2018 | Usabilidad | Producto futuro | Eficacia/eficiencia/satisfacción en contexto. | PENDING HUMAN TEST | Pendiente prueba de uso. |
-| ISO 9241-112:2025 | Presentation of information | Láminas + estados | Función, cambio e invariantes se documentan explícitamente. | PASS | Alcance limitado a la documentación de 3A. |
-| ISO 9241-125:2017 | Visual presentation | Keyframes | Una gramática consistente se proyecta sobre las tres presencias. | PASS | Alcance técnico/documental; percepción humana separada. |
-| ISO 24495-1:2023 | Plain language | Señales textuales B3 | Frases breves, directas y orientadas a la acción/estado. | PASS | Alcance: microcopy propuesta en esta especificación. |
-| W3C COGA Content Usable | Claridad y reducción de distracción | B3 estático | PAUSA reduce actividad; no se crean señales decorativas o emocionales. | PASS | Alcance: contrato de diseño; validar con usuarios posteriormente. |
-| Proyecto Sabik | Reduced Motion por diseño | 5 estados | Cada estado tiene representación estática equivalente. | PASS | No hay función que dependa de animación en 3A. |
-| Proyecto Sabik | 64 px | 15 keyframes | Generación técnica de todos los estados a 64 px. | PASS | 45? no: 15 PNG color a 64 px generados. |
-| Proyecto Sabik | 32 px técnica | 15 keyframes | Generación técnica de todos los estados a 32 px. | PASS | 15 PNG color a 32 px generados. |
-| Proyecto Sabik | 32 px percepción | 15 keyframes | Distinguir función a tamaño real. | PENDING HUMAN TEST | No inferir percepción de la existencia del archivo. |
-| Proyecto Sabik | Voz separada de B3 | Compatibilidad #163 | No se crea estado B3 de voz. | PASS | Matriz de compatibilidad clasifica voz como VOICE_LAYER. |
-| Proyecto Sabik | Safety separada de B3 | Compatibilidad #163 | Riesgo/derivación no generan estados B3 nuevos. | PASS | Matriz de compatibilidad clasifica Safety por separado. |
-| Proyecto Sabik | Matriz no es producto | Lámina E | Presencia Matriz solo como origen y control familiar. | PASS | No se generaron estados de Matriz. |
+| Norma / control | Activo | Comprobación | Resultado | Evidencia / pendiente |
+|---|---|---|---|---|
+| WCAG 2.2 · 1.1.1 | futura UI B3 | estado funcional con nombre/alternativa textual programática | PENDING HUMAN TEST | microcopy especificada; implementación pendiente |
+| WCAG 2.2 · 1.4.1 | 15 estados | la operación cambia en estructura; color no es canal único | PASS | 15 color + 15 monocromo + gramática R1 |
+| Proyecto Sabik | ORIENTAR ≠ TRANSICIÓN técnico | traslación asimétrica vs contrarrotación/reorganización | PASS | gramática + assets R1 |
+| Proyecto Sabik | PAUSA ≠ CONFIRMAR técnico | contención global vs cierre transversal | PASS | gramática + assets R1 |
+| Proyecto Sabik | PRESENTE congelado | bytes del master aceptado intactos | PASS | verificador reproducible |
+| Proyecto Sabik | diferenciación perceptiva 64 px | prueba ciega por presencia, color y monocromo | PENDING HUMAN TEST | kit preparado; piloto no realizado |
+| Proyecto Sabik | monocromo | 15 estados sin color | PASS técnico | percepción humana pendiente |
+| Proyecto Sabik | 32 px técnico | 15 derivados generados | PASS | no equivale a percepción |
+| Proyecto Sabik | 32 px percepción | distinguir estados en tamaño real | PENDING HUMAN TEST | no optimizar antes de congelar la gramática grande |
+| Proyecto Sabik | Reduced Motion | representación estática por estado | PASS de diseño | implementación 3B pendiente |
+| Proyecto Sabik | costuras | sin bandas de corte duras | PASS técnico | pertenencias Gaussianas normalizadas; percepción pendiente |
+| Proyecto Sabik | Voice separada | #163 = VOICE_LAYER | PASS | matriz legacy sin cambios |
+| Proyecto Sabik | Safety separada | risk/handoff fuera de B3 | PASS | matriz legacy sin cambios |
+| ISO 9241-210 / 11 | evaluación humana | comprensión/uso en contexto | PENDING HUMAN TEST | no inferir desde assets |
+| ISO 9241-112 / 125 | presentación | variables e invariantes documentados | PASS documental | percepción final pendiente |
+| ISO 24495-1:2023 | microcopy | señales textuales breves y directas | PASS editorial | alcance solo de frases propuestas |
+| W3C COGA | reducción de distracción | PAUSA contenida; sin emoción/diagnóstico | PASS de contrato | validar con usuarios después |
