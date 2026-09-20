@@ -849,3 +849,37 @@ El problema principal detectado no es “falta de texto”, sino **gobernanza de
 
 Por tanto, la ampliación debe empezar por **hacer fiable y mantenible lo que ya existe**, y después cubrir huecos reales.
 
+
+
+---
+
+## 26. ARCHIVOS DE EVIDENCIA DEL AUDIT
+
+El audit V1 se apoya en documentos versionados independientes para que Astra pueda revisar hallazgos y método sin depender del chat:
+
+1. `docs/audits/agent4/SABIK_WEB_TAB_MATRIX_V1.md`
+   - matriz obligatoria por pestaña;
+   - EXISTE / FALTA / DESACTUALIZADO / AMPLIAR / SUSTITUIR / RECURSO NUEVO / ACCESIBILIDAD / NORMATIVA / FUENTE / PRÓXIMA REVISIÓN.
+
+2. `docs/audits/agent4/SABIK_WEB_COMPLIANCE_REGISTER_V1.md`
+   - normas y legislación;
+   - estado técnico;
+   - estado jurídico;
+   - fuentes primarias;
+   - fechas de comprobación.
+
+3. `docs/audits/agent4/SABIK_WEB_STATIC_ACCESSIBILITY_SCAN_V1.md`
+   - línea base estática de páginas principales;
+   - indicadores de estructura, imágenes, formularios y multimedia;
+   - límites del método;
+   - pruebas manuales obligatorias.
+
+4. `docs/audits/agent4/SABIK_WEB_WORK_QUEUE_V1.md`
+   - backlog P0–P3;
+   - identificadores estables;
+   - criterios de aceptación;
+   - estado de cada elemento.
+
+### Regla de revisión
+
+Estos archivos forman parte de la entrega. Una modificación futura que cambie el diagnóstico del audit deberá actualizar el documento afectado y dejar commit/PR trazable.
