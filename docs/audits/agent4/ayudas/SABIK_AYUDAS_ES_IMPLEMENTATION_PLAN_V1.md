@@ -1,11 +1,11 @@
-# SABIK_AYUDAS_ES_IMPLEMENTATION_PLAN_V1
+# SABIK_AYUDAS_ES_IMPLEMENTATION_PLAN_V1_READY
 
 **Agente:** n.º 4 · Ayudas  
 **Fase:** C1-I1 · Preparación de incorporación segura  
 **Fecha:** 20/09/2026  
 **PR:** #185  
 **Base:** `agent4/sabik-web-content-expansion-audit-v1` @ `4e03a9e41626ba7358ee862d89a8925b9a6299fb`  
-**Estado:** preparación documental y machine-readable. **0 cambios en producción. NO MERGE.**
+**Estado:** **READY para revisión Astra**. Preparación documental y machine-readable completa. **0 cambios en producción. NO MERGE.**
 
 ---
 
@@ -408,7 +408,19 @@ Antes de modificar producción:
 
 ---
 
-## 14. Estado C1-I1
+## 14. Validación final del Agente n.º 4
+
+- Registro: 258/258 filas con una única `migration_decision` válida.
+- READY: 206.
+- POR VERIFICAR: 47; ninguna cambia de estado; 26 HOLD_MODELING + 21 HOLD_VERIFY.
+- Modeling review: 60/60 filas, sin campos obligatorios vacíos y coherente con el registro.
+- Históricos Murcia: 3/3 retenidos; duplicidad 2792 propuesta de forma explícita.
+- URL changeset: 8/8 con old_url, new_url, motivo, comprobación, fuente y rollback. Recheck externo 20/09/2026: 7 nuevas rutas navegables; Mallorca permanece pendiente de recheck manual antes del batch.
+- Nuevos recursos: 5/5 como NEW_RESOURCE_PROPOSAL, separados del corpus actual.
+- Filtro «Abiertas ahora»: 16/16 fichas ABIERTO pasan simultáneamente plazo, fuente primaria y revisión vigente a 20/09/2026.
+- Diff C1-I1: solo `docs/audits/agent4/ayudas/`; 0 cambios en directorio público/runtime/scripts/frontend.
+
+## 15. Estado C1-I1
 
 **258 decisiones de migración: completas.**  
 **60 adjudicaciones: completas.**  
