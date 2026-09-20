@@ -1,0 +1,868 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "04",
+  "cases": [
+    {
+      "id": "I0-EVAL-121",
+      "locale": "es",
+      "utterance": "Cancela esa aclaración.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "clarification"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-122",
+      "locale": "es",
+      "utterance": "No quiero responder a esa pregunta; cancélala.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "clarification"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-123",
+      "locale": "es",
+      "utterance": "Cancela la confirmación pendiente.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "confirmation"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-124",
+      "locale": "es",
+      "utterance": "Olvida esa confirmación.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "confirmation"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-125",
+      "locale": "es",
+      "utterance": "Cancela esta petición.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "current_request"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-126",
+      "locale": "es",
+      "utterance": "Déjalo, no sigas con mi solicitud.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "current_request"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-127",
+      "locale": "es",
+      "utterance": "Anula lo que acabo de pedir.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "current_request"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-128",
+      "locale": "es",
+      "utterance": "No continúes con esa confirmación.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "confirmation"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-129",
+      "locale": "es",
+      "utterance": "Cierra esa pregunta de aclaración.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "clarification"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-130",
+      "locale": "es",
+      "utterance": "Cancela la solicitud actual sin hacer nada.",
+      "expected_intent": "CANCELAR",
+      "expected_parameters": {
+        "target": "current_request"
+      },
+      "expected_action": "CANCEL_PENDING",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "id": "I0-EVAL-131",
+      "locale": "es",
+      "utterance": "Deshaz el último cambio.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-132",
+      "locale": "es",
+      "utterance": "Vuelve atrás en el cambio que acabas de hacer.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-133",
+      "locale": "es",
+      "utterance": "Quiero deshacer la última acción.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-134",
+      "locale": "es",
+      "utterance": "Revierte lo último que cambiaste.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-135",
+      "locale": "es",
+      "utterance": "Déjalo como estaba antes del último ajuste.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-136",
+      "locale": "es",
+      "utterance": "Deshaz solo el cambio anterior.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-137",
+      "locale": "es",
+      "utterance": "Me arrepiento del último cambio; reviértelo.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-138",
+      "locale": "es",
+      "utterance": "Recupera el estado anterior a la última acción.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-139",
+      "locale": "es",
+      "utterance": "Anula el último ajuste reversible.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-140",
+      "locale": "es",
+      "utterance": "Vuelve al estado previo al cambio anterior.",
+      "expected_intent": "DESHACER_ULTIMA_ACCION",
+      "expected_parameters": {},
+      "expected_action": "RESTORE_PREVIOUS_STATE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastAction": {
+          "actionId": "a-prev",
+          "reversible": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-141",
+      "locale": "es",
+      "utterance": "Este resultado no me sirve.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-142",
+      "locale": "es",
+      "utterance": "No es esto lo que buscaba.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-143",
+      "locale": "es",
+      "utterance": "Descarta esta respuesta.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-144",
+      "locale": "es",
+      "utterance": "Ese resultado no corresponde con lo que necesito.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-145",
+      "locale": "es",
+      "utterance": "No quiero usar este resultado.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-146",
+      "locale": "es",
+      "utterance": "Esto no responde a mi búsqueda.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-147",
+      "locale": "es",
+      "utterance": "Marca este resultado como incorrecto para mi petición.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-148",
+      "locale": "es",
+      "utterance": "Rechazo la respuesta que acabas de mostrar.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-149",
+      "locale": "es",
+      "utterance": "Ese contenido no era lo que quería.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-150",
+      "locale": "es",
+      "utterance": "No me vale esta opción.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "RECORD_REJECTION",
+      "should_execute": true,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-151",
+      "locale": "es",
+      "utterance": "Busca por otra vía.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-152",
+      "locale": "es",
+      "utterance": "Prueba otra forma de encontrarlo.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-153",
+      "locale": "es",
+      "utterance": "Dame resultados diferentes para la misma búsqueda.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-154",
+      "locale": "es",
+      "utterance": "Busca lo mismo pero evitando esta opción.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-155",
+      "locale": "es",
+      "utterance": "Quiero otra ruta para esa misma consulta.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-156",
+      "locale": "es",
+      "utterance": "Inténtalo por otro camino sin cambiar la búsqueda.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-157",
+      "locale": "es",
+      "utterance": "No uses ese resultado; busca otra alternativa.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-158",
+      "locale": "es",
+      "utterance": "Enséñame otra opción sobre lo mismo.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-159",
+      "locale": "es",
+      "utterance": "Haz la misma búsqueda con otra vía.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    },
+    {
+      "id": "I0-EVAL-160",
+      "locale": "es",
+      "utterance": "Prueba otra alternativa manteniendo el tema.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "SEARCH_ALTERNATIVE",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "Caso ordinario v0.4.",
+      "dataset_role": "validation",
+      "tags": [
+        "ordinary"
+      ],
+      "context": {
+        "lastResultId": "last",
+        "lastQuery": "ansiedad",
+        "excludedContentIds": []
+      }
+    }
+  ]
+}

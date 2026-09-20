@@ -1,0 +1,516 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "06a",
+  "cases": [
+    {
+      "id": "I0-EVAL-201",
+      "locale": "es",
+      "utterance": "No rechaces este resultado.",
+      "expected_intent": "RECHAZAR_RESULTADO",
+      "expected_parameters": {
+        "resultId": "last"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-reject"
+    },
+    {
+      "id": "I0-EVAL-202",
+      "locale": "es",
+      "utterance": "No busques por otra vía.",
+      "expected_intent": "OTRA_VIA",
+      "expected_parameters": {
+        "query": "lastQuery"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-other"
+    },
+    {
+      "id": "I0-EVAL-203",
+      "locale": "es",
+      "utterance": "No detengas al asistente.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-stop-assistant",
+      "context": {
+        "s0": {
+          "speech": "silent"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-204",
+      "locale": "es",
+      "utterance": "No detengas la lectura en voz alta.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-stop-speech",
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-205",
+      "locale": "es",
+      "utterance": "No me derives a ayuda humana; solo dime qué opciones hay aquí.",
+      "expected_intent": "PEDIR_AYUDA_HUMANA",
+      "expected_parameters": {},
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "Negación crítica: reconocer intención sin ejecutar.",
+      "dataset_role": "validation",
+      "tags": [
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "contrast_group": "neg-human"
+    },
+    {
+      "id": "I0-EVAL-206",
+      "locale": "es",
+      "utterance": "Hazlo más sencillo.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "¿Vista sencilla o explicación más simple?",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-207",
+      "locale": "es",
+      "utterance": "Para un momento, no sé qué quiero detener.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Ambigua entre voz, asistente o petición actual.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-208",
+      "locale": "es",
+      "utterance": "Vuelve.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Puede ser paso o página.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-209",
+      "locale": "es",
+      "utterance": "Abre eso.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Referencia sin antecedente resoluble.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-210",
+      "locale": "es",
+      "utterance": "Ponlo grande.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Puede referirse a texto o a un elemento.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-211",
+      "locale": "es",
+      "utterance": "Quita eso.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Objeto no identificado.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-212",
+      "locale": "es",
+      "utterance": "Déjalo como antes.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Puede significar deshacer o restablecer preferencias.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-213",
+      "locale": "es",
+      "utterance": "Sigue.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Sin flujo activo ni opción elegida.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-214",
+      "locale": "es",
+      "utterance": "Quiero menos.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Falta saber si movimiento, detalles o elementos.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-215",
+      "locale": "es",
+      "utterance": "Dame otra.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Sin resultado u opciones previas.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-216",
+      "locale": "es",
+      "utterance": "Restablece.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Falta scope de preferencias.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-217",
+      "locale": "es",
+      "utterance": "Cancela.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "No hay aclaración, confirmación o request identificable.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-218",
+      "locale": "es",
+      "utterance": "Sí.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "No existe pendingConfirmation.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-219",
+      "locale": "es",
+      "utterance": "No.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Sin pregunta pendiente.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-220",
+      "locale": "es",
+      "utterance": "Haz lo de antes.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "No hay lastAction recuperable.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-221",
+      "locale": "es",
+      "utterance": "Pon la otra opción.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "No hay optionsShown.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-222",
+      "locale": "es",
+      "utterance": "Quiero volver al anterior.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Ambiguo entre paso, resultado o página.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-223",
+      "locale": "es",
+      "utterance": "Baja eso un poco.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "No identifica tamaño ni movimiento.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-224",
+      "locale": "es",
+      "utterance": "Enséñame menos.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Puede ser vista sencilla u ocultar detalles.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-225",
+      "locale": "es",
+      "utterance": "Hazlo normal.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "Puede ser tamaño o movimiento.",
+      "dataset_role": "validation",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected_result_kind": "clarification",
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    }
+  ]
+}

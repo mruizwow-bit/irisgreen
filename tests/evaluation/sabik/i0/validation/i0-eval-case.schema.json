@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schemas/sabik/i0-eval-case-v0.4.json",
+  "type": "object",
+  "required": [
+    "id",
+    "locale",
+    "utterance",
+    "expected_intent",
+    "expected_parameters",
+    "expected_action",
+    "should_execute",
+    "expected_b3",
+    "ambiguity",
+    "notes",
+    "dataset_role",
+    "tags"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^I0-EVAL-[0-9]{3}$"
+    },
+    "locale": {
+      "enum": [
+        "es",
+        "en"
+      ]
+    },
+    "utterance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_parameters": {
+      "type": "object"
+    },
+    "expected_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "should_execute": {
+      "type": "boolean"
+    },
+    "expected_b3": {
+      "enum": [
+        "PRESENTE",
+        "ORIENTAR",
+        "TRANSICIÓN",
+        "PAUSA",
+        "CONFIRMAR"
+      ]
+    },
+    "ambiguity": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "dataset_role": {
+      "const": "validation"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {
+      "type": "object"
+    },
+    "expected_result_kind": {
+      "type": "string"
+    },
+    "expected_s0_events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contrast_group": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

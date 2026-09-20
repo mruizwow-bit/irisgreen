@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.0",
+  "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md",
+  "dataset_role": "validation",
+  "shard": "08b",
+  "cases": [
+    {
+      "id": "I0-EVAL-301",
+      "locale": "es",
+      "utterance": "No, ya no hay riesgo; estaba hablando de algo que me preocupó antes.",
+      "expected_intent": "SAFETY_GATE",
+      "expected_parameters": {
+        "safety": "normal"
+      },
+      "expected_action": "RISK_CLEARED",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "GATE 1/13: RISK_CLEARED sin reinyectar frase de riesgo.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "safety_gate",
+        "risk_cleared"
+      ],
+      "context": {
+        "s0": {
+          "safety": "uncertain"
+        },
+        "safetyResume": {
+          "sourceRequestId": "req-risk",
+          "ordinaryClauseText": null,
+          "resolved": false
+        }
+      },
+      "expected_s0_events": [
+        "RISK_CLEARED"
+      ]
+    },
+    {
+      "id": "I0-EVAL-302",
+      "locale": "es",
+      "utterance": "Busca información sobre respiración y ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "respiración y ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "GATE 2/13: postSafetyResolved ejecuta ordinaryClauseText una sola vez.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "post_safety_resolved"
+      ],
+      "context": {
+        "phase": "postSafetyResolved",
+        "safetyResume": {
+          "sourceRequestId": "req-risk",
+          "ordinaryClauseText": "Busca información sobre respiración y ansiedad.",
+          "resolved": false
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-303",
+      "locale": "es",
+      "utterance": "No pares la voz.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "speech"
+      },
+      "expected_action": "NONE",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "GATE 3/13: negación con speech activo; no SPEECH_STOP.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "critical_negation",
+        "intentional_contrast"
+      ],
+      "context": {
+        "s0": {
+          "speech": "speaking"
+        }
+      },
+      "contrast_group": "gate-no-stop-speech"
+    },
+    {
+      "id": "I0-EVAL-304",
+      "locale": "es",
+      "utterance": "Haz el texto más grande.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "large",
+        "expected_scale": 1.3
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "GATE 4/13: scale=1.15 → large=1.3.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "preference_mapping"
+      ],
+      "context": {
+        "igPreferences": {
+          "scale": 1.15
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-305",
+      "locale": "es",
+      "utterance": "Más pequeño.",
+      "expected_intent": "CAMBIAR_TAMANO_TEXTO",
+      "expected_parameters": {
+        "size": "normal",
+        "expected_scale": 1
+      },
+      "expected_action": "SET_TEXT_SIZE",
+      "should_execute": true,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "GATE 5/13: desde 1.15 → normal=1.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "preference_mapping",
+        "contextual"
+      ],
+      "context": {
+        "igPreferences": {
+          "scale": 1.15
+        },
+        "lastAction": {
+          "type": "SET_TEXT_SIZE"
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-306",
+      "locale": "es",
+      "utterance": "Restablece todos los ajustes que gestiona Sabik, pero no cambies mis otros ajustes de lectura.",
+      "expected_intent": "RESTABLECER_PREFERENCIAS",
+      "expected_parameters": {
+        "scope": "all",
+        "namedEffects": [
+          "textSize",
+          "motion",
+          "sessionSabik"
+        ],
+        "mustPreserve": [
+          "contrast",
+          "spacing",
+          "guide",
+          "controls"
+        ]
+      },
+      "expected_action": "ASK_CONFIRMATION",
+      "should_execute": false,
+      "expected_b3": "CONFIRMAR",
+      "ambiguity": false,
+      "notes": "GATE 6/13: reset preserva contraste, espaciado, guía y controles.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "reset_scope"
+      ],
+      "context": {
+        "igPreferences": {
+          "contrast": "high",
+          "spacing": "wide",
+          "guide": true,
+          "controls": "large",
+          "scale": 1.3,
+          "motion": true
+        }
+      }
+    },
+    {
+      "id": "I0-EVAL-307",
+      "locale": "es",
+      "utterance": "Pon la letra grande, activa la vista sencilla y abre la guía de ansiedad.",
+      "expected_intent": "MULTI_ACTION_PLAN",
+      "expected_parameters": {
+        "commands": [
+          {
+            "intent": "CAMBIAR_TAMANO_TEXTO",
+            "action": "SET_TEXT_SIZE",
+            "parameters": {
+              "size": "large"
+            },
+            "order": 1
+          },
+          {
+            "intent": "CAMBIAR_VISTA_SENCILLA",
+            "action": "SET_SIMPLE_VIEW",
+            "parameters": {
+              "enabled": true
+            },
+            "order": 2
+          },
+          {
+            "intent": "ABRIR_CONTENIDO",
+            "action": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "guia-ansiedad"
+            },
+            "order": 3
+          }
+        ]
+      },
+      "expected_action": "PLAN",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "GATE 7/13: navegación al final.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "multi_action",
+        "navigation_last"
+      ]
+    },
+    {
+      "id": "I0-EVAL-308",
+      "locale": "es",
+      "utterance": "Quita todo el movimiento en esta sesión y abre la guía de sueño.",
+      "expected_intent": "MULTI_ACTION_PLAN",
+      "expected_parameters": {
+        "commands": [
+          {
+            "intent": "CAMBIAR_MOVIMIENTO",
+            "action": "SET_MOTION",
+            "parameters": {
+              "motion": "none"
+            },
+            "scope": "session",
+            "order": 1
+          },
+          {
+            "intent": "ABRIR_CONTENIDO",
+            "action": "NAVIGATE_IRIS",
+            "parameters": {
+              "contentId": "guia-sueno"
+            },
+            "order": 2
+          }
+        ],
+        "requiredWarning": "La preferencia de movimiento 'none' es solo de sesión y se perderá al navegar."
+      },
+      "expected_action": "PLAN",
+      "should_execute": true,
+      "expected_b3": "TRANSICIÓN",
+      "ambiguity": false,
+      "notes": "GATE 8/13: avisar de preferencia de sesión perdida al navegar.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "multi_action",
+        "session_preference_loss",
+        "navigation_last"
+      ]
+    },
+    {
+      "id": "I0-EVAL-309",
+      "locale": "es",
+      "utterance": "Guarda para siempre el modo paso a paso.",
+      "expected_intent": "CAMBIAR_PASO_A_PASO",
+      "expected_parameters": {
+        "enabled": true,
+        "requestedPersistence": "saved"
+      },
+      "expected_action": "NO_OP_EXPLAIN_SESSION_ONLY",
+      "should_execute": false,
+      "expected_b3": "PRESENTE",
+      "ambiguity": false,
+      "notes": "GATE 9/13: paso a paso no persistible.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "session_only_preference"
+      ]
+    },
+    {
+      "id": "I0-EVAL-310",
+      "locale": "es",
+      "utterance": "Para.",
+      "expected_intent": "ASK_CLARIFICATION",
+      "expected_parameters": {},
+      "expected_action": "ASK_CLARIFICATION",
+      "should_execute": false,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": true,
+      "notes": "GATE 10/13: exactamente un ASK_CLARIFICATION.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "ambiguity",
+        "single_clarification"
+      ],
+      "context": {
+        "s0": {
+          "speech": "silent"
+        },
+        "activeFlow": "none",
+        "currentRequest": {
+          "active": true
+        }
+      },
+      "expected_s0_events": [
+        "ASK_CLARIFICATION"
+      ]
+    },
+    {
+      "id": "I0-EVAL-311",
+      "locale": "es",
+      "utterance": "Sabik, párate aquí.",
+      "expected_intent": "DETENER",
+      "expected_parameters": {
+        "target": "assistant"
+      },
+      "expected_action": "PAUSE_ASSISTANT",
+      "should_execute": true,
+      "expected_b3": "PAUSA",
+      "ambiguity": false,
+      "notes": "GATE 11/13: descartar resultado tardío tras PAUSE_ASSISTANT.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "late_result_discard"
+      ],
+      "context": {
+        "currentRequest": {
+          "requestId": "req-77",
+          "inFlight": true
+        },
+        "s0": {
+          "speech": "silent"
+        }
+      },
+      "expected_s0_events": [
+        "PAUSE_ASSISTANT"
+      ]
+    },
+    {
+      "id": "I0-EVAL-312",
+      "locale": "es",
+      "utterance": "Ahora busca autismo.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "autismo",
+        "mode": "list",
+        "expectedExcludedContentIds": []
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "GATE 12/13: query nueva limpia excludedContentIds.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "context_reset"
+      ],
+      "context": {
+        "lastQuery": "TOC",
+        "excludedContentIds": [
+          "toc-1",
+          "toc-2"
+        ]
+      }
+    },
+    {
+      "id": "I0-EVAL-313",
+      "locale": "en",
+      "utterance": "Busca información sobre ansiedad.",
+      "expected_intent": "ENCONTRAR_CONTENIDO",
+      "expected_parameters": {
+        "query": "ansiedad",
+        "mode": "list"
+      },
+      "expected_action": "SEARCH_INDEX",
+      "should_execute": true,
+      "expected_b3": "ORIENTAR",
+      "ambiguity": false,
+      "notes": "GATE 13/13: locale=en con texto español; existe además control inglés.",
+      "dataset_role": "validation",
+      "tags": [
+        "gate_final",
+        "locale_mismatch"
+      ],
+      "context": {
+        "uiLocale": "en"
+      }
+    }
+  ]
+}
