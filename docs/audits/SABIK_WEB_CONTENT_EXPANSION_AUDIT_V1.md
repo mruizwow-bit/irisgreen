@@ -436,7 +436,7 @@ Aplicación:
 | Directiva (UE) 2019/882 | En vigor; aplicación desde 28/06/2025 a categorías cubiertas | Matriz legal EAA | **Determinar ámbito exacto de Sabik** |
 | Ley 11/2023 | Transposición española de EAA | Productos/servicios cubiertos | **Determinar ámbito exacto** |
 | RD 193/2023 | Vigente | Bienes/servicios a disposición del público | Revisar aplicación concreta |
-| RD 1112/2018 | Vigente | Sector público y supuestos adicionales, incluida financiación pública | No asumir aplicación sin comprobar encaje |
+| RD 1112/2018 | Vigente | Sector público; además, la disposición adicional primera ordena a las Administraciones Públicas exigir los criterios de los arts. 5 y 6 en los supuestos que enumera | La financiación pública no convierte automáticamente una web privada en «sector público». **APLICABILIDAD CONCRETA → POR DETERMINAR** |
 | **RD 707/2026** | Publicado 03/09/2026; entra en vigor 02/01/2027 | Accesibilidad cognitiva; incluye sociedad de la información | **P0: determinar encaje de Sabik como prestador en España y preparar cumplimiento** |
 | Reglamento (UE) 2024/1689, art. 50 | Transparencia aplicable desde 02/08/2026 | Interacción IA y contenido sintético | Revisar rol proveedor/implementador |
 | RGPD 2016/679 | Vigente | Datos personales y categorías especiales | Aplicable cuando exista tratamiento |
