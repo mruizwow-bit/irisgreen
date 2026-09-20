@@ -1,24 +1,16 @@
 {
-  "status": "B3_STATIC_TECHNICAL_QA_PASS",
-  "checks": {
-    "keyframes_color": 15,
-    "keyframes_mono": 15,
-    "scaled_64": 15,
-    "scaled_32": 15,
-    "proofs": 5,
-    "present_inner_master_exact": {
-      "web": true,
-      "ia": true,
-      "educa": true
-    },
-    "no_matriz_states": true,
-    "reproducibility": "B3_STATIC_REPRODUCIBILITY_PASS"
-  },
-  "human_test_pending": [
-    "Distinguibilidad semántica entre los cinco estados en contexto real.",
-    "Distinguibilidad monocroma.",
-    "Percepción suficiente a 32 px.",
-    "No infantilización de Educa en muestra de usuarios.",
-    "Comprensión de ORIENTAR/TRANSICIÓN/CONFIRMAR sin sobreinterpretación."
-  ]
+  "status": "B3_STATIC_R1_TECHNICAL_QA_PASS",
+  "states": 5,
+  "products": 3,
+  "keyframes": 15,
+  "monochrome": 15,
+  "scale_64": 15,
+  "scale_32": 15,
+  "blind_sheets": 6,
+  "present_frozen": true,
+  "matrix_states": 0,
+  "hard_band_boundaries": false,
+  "mask_method": "normalized Gaussian soft membership; weights sum to 1 before transform",
+  "perceptual_validation": "PENDING HUMAN TEST",
+  "pilot_confusion_matrix": "NOT PERFORMED"
 }
