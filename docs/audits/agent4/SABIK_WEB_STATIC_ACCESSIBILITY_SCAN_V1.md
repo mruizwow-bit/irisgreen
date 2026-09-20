@@ -1,8 +1,8 @@
 # SABIK_WEB_STATIC_ACCESSIBILITY_SCAN_V1
 
 **Fecha:** 20/09/2026  
-**Método:** inspección estática del HTML fuente de las páginas índice principales.  
-**Importante:** esto **NO es** una auditoría WCAG. No prueba comportamiento renderizado, CSS calculado, orden de foco, contraste real, nombre accesible calculado, compatibilidad con lector de pantalla, zoom, reflow, teclado ni contenido generado por JavaScript.
+**Método:** inspección estática del HTML **fuente** de las páginas índice principales.  
+**Importante:** esto **NO es** una auditoría WCAG ni describe por sí solo la salida pública. El build transforma el contenido en staging y aplica correcciones adicionales sobre `dist`. El escaneo fuente no prueba comportamiento renderizado, CSS calculado, orden de foco, contraste real, nombre accesible calculado, compatibilidad con lector de pantalla, zoom, reflow, teclado ni contenido generado por JavaScript.
 
 ## Indicadores estáticos
 
@@ -11,7 +11,7 @@
 | Inicio | es | 1 | 3 | 0 | 2 | 1 | 0 | 1 | Render dinámico y orientador |
 | Condiciones | es | 1 | 1 | 0 | 1 | 0 | 0 | 1 | Filtros/búsqueda |
 | Situaciones | es | 1 | 1 | 0 | 1 | 0 | 0 | 1 | Filtros/búsqueda |
-| Vida diaria | es | 1 | 1 | 0 | 1 | 0 | 0 | 1 | Búsqueda + estados editoriales |
+| Vida diaria | es | 1 | 1 | 0 | 1 | 0 | 0 | 1 | Búsqueda; verificar `dist`, porque los estados editoriales se limpian durante el build |
 | Vídeos | es | 2 | 2 | 0 | 2 | 1 | 0 | 1 | H1 duplicado en fuente puede ser plantilla; verificar DOM; multimedia |
 | Investigación | es | 2 | 1 | 0 | 1 | 0 | 0 | 1 | H1 duplicado en fuente puede ser plantilla; filtros |
 | Datos | es | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Tablas/figuras si se añaden |
@@ -69,3 +69,26 @@ Para cada pieza:
 ## Resultado
 
 Este archivo es la **línea base de indicadores**. La conformidad solo podrá declararse después de la evaluación del producto renderizado y de los recursos asociados.
+
+
+## Transformaciones del build ya identificadas
+
+La auditoría final debe ejecutar/inspeccionar la salida de build porque el pipeline incluye, entre otros:
+
+- `apply_accessibility_release.py`: tipografías locales, salto al contenido, CSS de impresión, reflow de Tus intereses y correcciones de contraste/privacidad en la salida pública;
+- `fix_search_accessible_names.py`: nombres accesibles estables para los buscadores de Investigación y Vídeos;
+- `fix_named_group_roles.py`: corrige grupos con nombre accesible;
+- `fix_investigacion_contrast.py`: corrección acotada de contraste;
+- `validate_publication_statuses.py` y `finalize_validation_labels.py`: eliminan estados editoriales públicos;
+- `strip_daily_public_status.py`: elimina estados editoriales de Vida diaria;
+- `defer_investigacion_data.py`: mantiene fallback sin JavaScript y añade un mensaje de error con `role="status"`.
+
+### Consecuencia metodológica
+
+Un indicador en la tabla anterior es **pre-build**. Antes de clasificarlo como barrera real hay que:
+
+1. generar `dist`;
+2. inspeccionar el DOM final;
+3. probar comportamiento;
+4. comprobar tecnologías de apoyo.
+
