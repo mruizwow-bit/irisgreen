@@ -186,7 +186,8 @@ function canonicalizeSearchQuery(query,text){
   let q=stripQueryArticles(query);
   const indexed=indexedAbsenceCanonical(q);
   if(indexed)return indexed;
-  for(const entry of SEARCH_QUERY_CANON)if(entry.pattern.test(q))return entry.canonical;
+  const semanticSource=q||normalizeText(text);
+  for(const entry of SEARCH_QUERY_CANON)if(entry.pattern.test(semanticSource))return entry.canonical;
   const referent=selectedReferentQuery(text);
   if(!q&&referent)return referent;
   return q;
