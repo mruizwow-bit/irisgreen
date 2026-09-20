@@ -1,0 +1,126 @@
+{
+  "development": {
+    "cases": 400,
+    "by_gate": {
+      "normal": 376,
+      "uncertain": 6,
+      "confirmed": 6,
+      "cleared": 6,
+      "handoff": 6
+    },
+    "by_result_kind": {
+      "response": 119,
+      "action_result": 223,
+      "clarification": 34,
+      "human_help": 12,
+      "out_of_scope": 12
+    },
+    "by_b3": {
+      "ORIENTAR": 30,
+      "PRESENTE": 279,
+      "TRANSICIÓN": 81,
+      "PAUSA": 4,
+      "CONFIRMAR": 6
+    },
+    "execute": {
+      "true": 299,
+      "false": 101
+    },
+    "by_intent": {
+      "ENCONTRAR_CONTENIDO": 59,
+      "ABRIR_CONTENIDO": 43,
+      "CAMBIAR_TAMANO_TEXTO": 29,
+      "CAMBIAR_MOVIMIENTO": 30,
+      "CAMBIAR_PASO_A_PASO": 24,
+      "CAMBIAR_VISTA_SENCILLA": 29,
+      "CAMBIAR_DETALLES": 25,
+      "SIGUIENTE": 14,
+      "ATRAS": 21,
+      "REPETIR_INDICACION": 15,
+      "DESHACER_ULTIMA_ACCION": 9,
+      "CANCELAR": 10,
+      "CONFIRMAR_ACCION": 9,
+      "RECHAZAR_RESULTADO": 5,
+      "OTRA_VIA": 6,
+      "DETENER": 10,
+      "PEDIR_AYUDA_HUMANA": 7,
+      "RESTABLECER_PREFERENCIAS": 11
+    },
+    "ambiguous": 28,
+    "multi_action": 25,
+    "safety_non_normal": 24,
+    "critical_negation": 8
+  },
+  "calibration": {
+    "cases": 200,
+    "by_gate": {
+      "normal": 180,
+      "uncertain": 5,
+      "confirmed": 5,
+      "cleared": 5,
+      "handoff": 5
+    },
+    "by_result_kind": {
+      "response": 74,
+      "action_result": 69,
+      "clarification": 45,
+      "human_help": 7,
+      "out_of_scope": 5
+    },
+    "by_b3": {
+      "ORIENTAR": 23,
+      "PRESENTE": 142,
+      "TRANSICIÓN": 28,
+      "CONFIRMAR": 7
+    },
+    "execute": {
+      "true": 107,
+      "false": 93
+    },
+    "by_intent": {
+      "ENCONTRAR_CONTENIDO": 36,
+      "CAMBIAR_TAMANO_TEXTO": 16,
+      "CAMBIAR_MOVIMIENTO": 13,
+      "CAMBIAR_PASO_A_PASO": 10,
+      "CAMBIAR_VISTA_SENCILLA": 11,
+      "SIGUIENTE": 7,
+      "ATRAS": 10,
+      "REPETIR_INDICACION": 6,
+      "DESHACER_ULTIMA_ACCION": 2,
+      "ABRIR_CONTENIDO": 19,
+      "CAMBIAR_DETALLES": 6,
+      "RESTABLECER_PREFERENCIAS": 4,
+      "CONFIRMAR_ACCION": 1,
+      "CANCELAR": 2,
+      "DETENER": 3,
+      "OTRA_VIA": 1,
+      "PEDIR_AYUDA_HUMANA": 2
+    },
+    "ambiguous": 38,
+    "multi_action": 15,
+    "safety_non_normal": 20,
+    "critical_negation": 20
+  },
+  "hashes": {
+    "development": {
+      "bytes": 232141,
+      "sha256": "6503fe8ab88dc8e51156e9803f19e2ba2c4fa060a88597cf81821d8d43670376",
+      "git_blob_sha1": "2b36308392835db8e3eb71693e325978dc31818c"
+    },
+    "calibration": {
+      "bytes": 127700,
+      "sha256": "b1b6087e2947790e183ddcc929cc520be607102db6a917967f331066f21a8981",
+      "git_blob_sha1": "517a6591c90f88479979c0f2b860d9ab53c2dc55"
+    },
+    "schema": {
+      "bytes": 4573,
+      "sha256": "9278730161570be4f88824a6b6368d77408d4b2f2304ed08301a453cd0fbdddb",
+      "git_blob_sha1": "bdbb6ae3123759e040ee9ab5c5f7c413b646f998"
+    }
+  },
+  "validation_173": {
+    "included": false,
+    "used_as_template": false,
+    "use": "anti-contamination comparison only"
+  }
+}
