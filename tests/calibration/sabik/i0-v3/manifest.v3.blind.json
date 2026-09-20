@@ -1,0 +1,65 @@
+{
+  "artifact": "I0_CALIBRATION_DATA_V3_BLIND_READY",
+  "status": "FROZEN_BLIND_READY",
+  "date": "2026-09-20",
+  "base_commit": "04569282ab3637a60ecccb002c8e49b8c4f3cd2a",
+  "dataset_path": "tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl",
+  "schema_path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+  "case_count": 200,
+  "id_range": [
+    "I0-CAL-3001",
+    "I0-CAL-3200"
+  ],
+  "dataset_sha256": "2dd9d24a01f99c763a7ad4db7fe2000fc28568162fbebb5599c012e2afde4f6f",
+  "coverage_sha256": "263f553803364dedb9b7cba67f05410eca3cc092713286c80b42623e8772e744",
+  "validator_sha256": "5073c796a8b826d4f003571c980bec03c4691988fa804777339637d7c5c96f09",
+  "independence_checker_sha256": "e92ef312d88114a4820b196c9b66be9a40dc78c5dac311661c34a63e5514c44c",
+  "blind_gate_workflow_sha256": "a7ab4e0d09df67ba1754a82c187404c13343943ed07092ed6fb621706c8f0c0c",
+  "normative_inputs": {
+    "docs/sabik-next/I0_CONTRACTS_V0_4.md": "73971249dff7b7cc6627a1bb2db229aaeee3bcdc",
+    "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json": "89ddb4c0145b04ea72b57d70b0fd36517854af1a",
+    "docs/sabik-next/I0_SAFETY_GATE_MAPPING_V0_2.md": "03fb19d993d03f5b15fd26d6720e9770c265a1cf",
+    "docs/sabik-next/I0_PRIVACY_NETWORK_OFFLINE_V0_2.md": "9f7c6283f5845895f99186c4bac130b17120c8fd",
+    "docs/sabik-next/I0_PRESENTATION_EFFECTS_V0_1.md": "9d0ea05d038f5f8e5c807c49a2d2debf40a78a8a",
+    "docs/sabik-next/I0_S0_B3_PROJECTION_V0_2.md": "25f639f2de0951d082d0387fe97f8722ec90ba19"
+  },
+  "validation": {
+    "schema": {
+      "pass": true,
+      "case_count": 200,
+      "schema_failure_count": 0,
+      "duplicate_id_count": 0,
+      "duplicate_utterance_count": 0,
+      "workflow_run_id": 35517453062
+    },
+    "independence": {
+      "pass": true,
+      "conflict_count": 0,
+      "reserved_validation_checked": true,
+      "workflow_run_id": 35517453062
+    },
+    "executor_scope": {
+      "pass": true,
+      "executor_artifacts_changed": false,
+      "workflow_run_id": 35517453062
+    },
+    "calibration_execution": {
+      "performed": false
+    }
+  },
+  "coverage_summary": {
+    "intents": 18,
+    "safety_cases": 27,
+    "negation_cases": 20,
+    "positive_control_cases": 72,
+    "insufficient_cases": 20,
+    "ambiguity_cases": 13,
+    "correction_cases": 10,
+    "multi_action_cases": 33,
+    "negative_critical_cases": 42,
+    "local_reversible_cases": 73,
+    "local_with_loss_cases": 25
+  },
+  "consumed_prior_calibration_status": "CONSUMED_DIAGNOSTIC_ONLY",
+  "prohibited_use": "Do not run this corpus against an executor before Astra authorizes the V3 selection phase."
+}
