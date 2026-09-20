@@ -1,0 +1,41 @@
+{
+  "package": "SABIK_VISUAL_FAMILY_FINAL_V1",
+  "date": "2026-09-20",
+  "status": "FAMILIA_VISUAL_CERRADA",
+  "source_reference_note": "Geometry derived without generative redesign from the approved closing reference sheet provided in chat.",
+  "wordmark": "T1 · REFINAMIENTO",
+  "verbal_system": {
+    "brand": "SABIK",
+    "headline": "CLARIDAD INTELIGENTE.",
+    "explanation": "Una IA que adapta la información para que sea más fácil de entender y usar.",
+    "family_term": "UNA MISMA ESENCIA · CUATRO PRESENCIAS"
+  },
+  "minimum_recommended_full_presence_px": 32,
+  "resistance_test_px": 24,
+  "masters": {
+    "matriz": {
+      "path": "assets/masters/matriz_master_rgba_native.png",
+      "sha256": "7e00f32e82c058bb619b427653cd1555f722b8a1f20f3bb3f4296248f70f67a7",
+      "native_pixel_size": [287,255]
+    },
+    "web": {
+      "path": "assets/masters/web_master_rgba_native.png",
+      "sha256": "662bfd1a4bab9f01436fd97a462bc02d75c2bc9ee56d4cccd47c0ab0b67bbd52",
+      "native_pixel_size": [259,248]
+    },
+    "ia": {
+      "path": "assets/masters/ia_master_rgba_native.png",
+      "sha256": "aef2cfb5cb697a6c2bbc1cecc1b538e0c7356ffc54145b8bc6d3783d31509ae8",
+      "native_pixel_size": [275,251]
+    },
+    "educa": {
+      "path": "assets/masters/educa_master_rgba_native.png",
+      "sha256": "4c76d57d07d818a189aed7280a938053a4f2897ee264a9714a9aade6e3f71f55",
+      "native_pixel_size": [279,249]
+    }
+  },
+  "wordmark_master": {
+    "path": "assets/masters/sabik_wordmark_t1_master.png",
+    "sha256": "64997c98927d4eab1fe4606994108b1902dff2c9980f232d57665446166b217a"
+  }
+}
