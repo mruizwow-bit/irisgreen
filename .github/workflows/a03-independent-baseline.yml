@@ -18,7 +18,7 @@ jobs:
       - name: Checkout A03 freeze
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 96a0fc516266166c09d3c2f9dd2f03e684a9b027
+          ref: sabik/qa-a03-freeze
           path: qa
           persist-credentials: false
       - name: Record exact baseline and environment
