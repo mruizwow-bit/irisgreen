@@ -157,7 +157,8 @@
       root.document.dispatchEvent(new CustomEvent('sabik:b3-confirm'));
     });
 
-    form.insertAdjacentElement('afterend',details);
+    const notes=root.document.querySelector('.sabik-notes');
+    (notes||form).insertAdjacentElement('afterend',details);
     mounted=details;
 
     const observer=new MutationObserver(records=>{
