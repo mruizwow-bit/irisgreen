@@ -1,0 +1,34 @@
+name: Sabik B3 R0 candidate checks
+
+on:
+  pull_request:
+    paths:
+      - "sabik/**"
+      - "es/nea/**"
+      - "tools/test-sabik-*.js"
+      - ".github/workflows/comprobar-sabik-b3-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: S0 machine unchanged semantically
+        run: node tools/test-sabik-machine-s0.js
+      - name: Existing Sabik page regression
+        run: node tools/test-sabik-page-v7.js
+      - name: Existing static accessibility closure
+        run: node tools/test-sabik-a11y-closure.js
+      - name: B3 Motion R0
+        run: node tools/test-sabik-b3-motion-r0.js
+      - name: B3 real integration R0
+        run: node tools/test-sabik-b3-integration-r0.js
+      - name: Cognitive accessibility R0
+        run: node tools/test-sabik-cognitive-r0.js
