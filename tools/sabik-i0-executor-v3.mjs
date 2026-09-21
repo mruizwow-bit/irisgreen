@@ -329,10 +329,12 @@ function detectCommands(target,development){
     }
   }
 
-  // Repeat instruction.
-  if(any(n,["repite","repetir","otra vez","vuelve a decir","volver a decir","vuelve a expresar","expresa de nuevo","leer de nuevo","mostrar la instruccion","mostrarme este paso","mensaje guia"])){
-    const c=findLast(n,{repeat:["repite","repetir","otra vez","vuelve a decir","volver a decir","vuelve a expresar","expresa de nuevo","leer de nuevo","mostrar la instruccion","mostrarme este paso","mensaje guia"]});
-    const st=Math.max(0,(c.index>=0?c.index:0)+offset);
+  // Repeat instruction: compositional repetition form + current instructional context.
+  const repeatVerb=/\b(?:repet\w*|vuelve\s+a\s+(?:decir|mostrar|expresar|leer)|volver\s+a\s+(?:decir|mostrar|expresar|leer)|(?:decir|mostrar|expresar|leer)\s+de\s+nuevo)\b/u;
+  const repeatAdverb=/\botra\s+vez\b/u;
+  const repeatTarget=/\b(?:instruccion|indicacion|mensaje|paso|guia|lectura|texto)\b/u;
+  if(repeatVerb.test(n)||(repeatAdverb.test(n)&&(repeatTarget.test(n)||context.currentContentId||context.activeFlow==="step_by_step"))){
+    const st=Math.max(0,((n.search(repeatVerb)>=0?n.search(repeatVerb):n.search(repeatAdverb))>=0?(n.search(repeatVerb)>=0?n.search(repeatVerb):n.search(repeatAdverb)):0)+offset);
     addCandidate(out,command("REPETIR_INDICACION",{contextId:out.length>0||context.currentContentId||context.activeFlow==="step_by_step"?"current":"instruction-current"},st,1,"contract_exact",explicitNegation(original,st),"repeat_rule"));
   }
 

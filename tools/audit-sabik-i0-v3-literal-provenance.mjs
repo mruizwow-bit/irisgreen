@@ -175,6 +175,7 @@ const audit={
     contract:path.relative(root,contractPath)
   },
   classifications:["CONTRACT_TERM","GENERAL_PRODUCT_LEXICON","GENERAL_LANGUAGE_RULE","CASE_SHAPED_FORBIDDEN"],
+  general_product_lexicon:[...GENERAL_PRODUCT_LEXICON].sort(),
   counts,
   CASE_SHAPED_FORBIDDEN:forbidden.length,
   consecutive_clusters:clusters,

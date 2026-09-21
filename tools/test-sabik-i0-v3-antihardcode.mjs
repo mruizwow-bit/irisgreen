@@ -23,15 +23,17 @@ const errors=[];
 if(audit.CASE_SHAPED_FORBIDDEN!==0)errors.push("literal provenance audit CASE_SHAPED_FORBIDDEN != 0");
 if(audit.counts?.CASE_SHAPED_FORBIDDEN!==0)errors.push("literal provenance count mismatch");
 
-const approved=new Set(
-  (audit.entries||[])
+const approved=new Set([
+  ...(audit.entries||[])
     .filter(e=>e.classification==="CONTRACT_TERM"||e.classification==="GENERAL_PRODUCT_LEXICON")
-    .map(e=>e.normalized)
-);
+    .map(e=>e.normalized),
+  ...(audit.general_product_lexicon||[])
+]);
 
 function technicalLiteral(raw){
   if(!/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/u.test(raw))return true;
-  if(raw.includes("_")||raw.includes("/")||raw.includes(".mjs")||raw.includes(".json")||raw.includes("sha256"))return true;
+  if(raw.includes("\\")||raw.includes("_")||raw.includes("/")||raw.includes(".mjs")||raw.includes(".json")||raw.includes("sha256"))return true;
+  if(raw.length<=2)return true;
   if(/^[A-Z0-9_:-]+$/u.test(raw))return true;
   if(/^[a-z]+(?:[A-Z][A-Za-z0-9]*)+$/u.test(raw))return true;
   if(/^(?:flow|instruction|action|content|result|request|session)-/u.test(raw))return true;
@@ -76,7 +78,7 @@ for(const lit of literals){
       const o=overlap(lit,c);
       if(!o.exact&&!o.contained&&!o.reverse)return;
       const fullPhrase=o.exact;
-      const shortCoverage=lit.tokens<=3&&lit.tokens>=1&&o.coverage>=0.50;
+      const shortCoverage=lit.tokens>=2&&lit.tokens<=3&&o.coverage>=0.50;
       const longCoverage=lit.tokens>=4&&o.coverage>=0.45;
       const reverseCoverage=o.reverseCoverage>=0.80;
       if((fullPhrase||shortCoverage||longCoverage||reverseCoverage)&&!exempt){

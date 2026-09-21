@@ -13,10 +13,42 @@
     "GENERAL_LANGUAGE_RULE",
     "CASE_SHAPED_FORBIDDEN"
   ],
+  "general_product_lexicon": [
+    "animaciones habituales",
+    "bloque complementario",
+    "cantidad normal",
+    "carga visual",
+    "de uno en uno",
+    "elementos secundarios",
+    "escala normal",
+    "extra grande",
+    "informacion adicional",
+    "informacion ampliada",
+    "informacion secundaria",
+    "interfaz completa",
+    "interfaz sencilla",
+    "lo secundario",
+    "modo paso",
+    "modo simple",
+    "movimiento estandar",
+    "movimiento normal",
+    "nivel estandar",
+    "nivel habitual",
+    "pantalla despejada",
+    "paso a paso",
+    "presentacion sencilla",
+    "recorrido por pasos",
+    "sin movimiento",
+    "tamano base",
+    "una instruccion cada vez",
+    "vista completa",
+    "vista sencilla",
+    "vista simple"
+  ],
   "counts": {
-    "CONTRACT_TERM": 188,
+    "CONTRACT_TERM": 186,
     "GENERAL_PRODUCT_LEXICON": 23,
-    "GENERAL_LANGUAGE_RULE": 154,
+    "GENERAL_LANGUAGE_RULE": 134,
     "CASE_SHAPED_FORBIDDEN": 0
   },
   "CASE_SHAPED_FORBIDDEN": 0,
@@ -1648,36 +1680,6 @@
       }
     },
     {
-      "literal": "repetir",
-      "normalized": "repetir",
-      "tokens": 1,
-      "classification": "CONTRACT_TERM",
-      "reason": "present_in_normative_contract",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0119",
-        "index": 118,
-        "coverage": 0.16666666666666666,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "repetir",
-      "normalized": "repetir",
-      "tokens": 1,
-      "classification": "CONTRACT_TERM",
-      "reason": "present_in_normative_contract",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0119",
-        "index": 118,
-        "coverage": 0.16666666666666666,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
       "literal": "resolved",
       "normalized": "resolved",
       "tokens": 1,
@@ -2907,22 +2909,6 @@
       "max_corpus_overlap": null
     },
     {
-      "literal": "expresa de nuevo",
-      "normalized": "expresa de nuevo",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": null
-    },
-    {
-      "literal": "expresa de nuevo",
-      "normalized": "expresa de nuevo",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": null
-    },
-    {
       "literal": "ficha",
       "normalized": "ficha",
       "tokens": 1,
@@ -3083,36 +3069,6 @@
         "id": "I0-DEV-0090",
         "index": 89,
         "coverage": 0.25,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "leer de nuevo",
-      "normalized": "leer de nuevo",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0198",
-        "index": 197,
-        "coverage": 0.42857142857142855,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "leer de nuevo",
-      "normalized": "leer de nuevo",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0198",
-        "index": 197,
-        "coverage": 0.42857142857142855,
         "reverse_coverage": 0,
         "exact": false
       }
@@ -3299,36 +3255,6 @@
       }
     },
     {
-      "literal": "mensaje guia",
-      "normalized": "mensaje guia",
-      "tokens": 2,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0149",
-        "index": 148,
-        "coverage": 0.15384615384615385,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "mensaje guia",
-      "normalized": "mensaje guia",
-      "tokens": 2,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0149",
-        "index": 148,
-        "coverage": 0.15384615384615385,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
       "literal": "mi",
       "normalized": "mi",
       "tokens": 1,
@@ -3354,66 +3280,6 @@
         "id": "I0-DEV-0315",
         "index": 314,
         "coverage": 0.2,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "mostrar la instruccion",
-      "normalized": "mostrar la instruccion",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0340",
-        "index": 339,
-        "coverage": 0.3333333333333333,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "mostrar la instruccion",
-      "normalized": "mostrar la instruccion",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0340",
-        "index": 339,
-        "coverage": 0.3333333333333333,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "mostrarme este paso",
-      "normalized": "mostrarme este paso",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0196",
-        "index": 195,
-        "coverage": 0.42857142857142855,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "mostrarme este paso",
-      "normalized": "mostrarme este paso",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0196",
-        "index": 195,
-        "coverage": 0.42857142857142855,
         "reverse_coverage": 0,
         "exact": false
       }
@@ -3544,36 +3410,6 @@
         "id": "I0-CAL-0082",
         "index": 81,
         "coverage": 0.5,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "otra vez",
-      "normalized": "otra vez",
-      "tokens": 2,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0059",
-        "index": 58,
-        "coverage": 0.4,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "otra vez",
-      "normalized": "otra vez",
-      "tokens": 2,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0059",
-        "index": 58,
-        "coverage": 0.4,
         "reverse_coverage": 0,
         "exact": false
       }
@@ -3881,36 +3717,6 @@
       }
     },
     {
-      "literal": "repite",
-      "normalized": "repite",
-      "tokens": 1,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0104",
-        "index": 103,
-        "coverage": 0.3333333333333333,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "repite",
-      "normalized": "repite",
-      "tokens": 1,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0104",
-        "index": 103,
-        "coverage": 0.3333333333333333,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
       "literal": "retrocede",
       "normalized": "retrocede",
       "tokens": 1,
@@ -4178,96 +3984,6 @@
         "id": "I0-CAL-0047",
         "index": 46,
         "coverage": 0.2857142857142857,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "volver a decir",
-      "normalized": "volver a decir",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0270",
-        "index": 269,
-        "coverage": 0.375,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "volver a decir",
-      "normalized": "volver a decir",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0270",
-        "index": 269,
-        "coverage": 0.375,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "vuelve a decir",
-      "normalized": "vuelve a decir",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0337",
-        "index": 336,
-        "coverage": 0.3,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "vuelve a decir",
-      "normalized": "vuelve a decir",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "development",
-        "id": "I0-DEV-0337",
-        "index": 336,
-        "coverage": 0.3,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "vuelve a expresar",
-      "normalized": "vuelve a expresar",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0149",
-        "index": 148,
-        "coverage": 0.23076923076923078,
-        "reverse_coverage": 0,
-        "exact": false
-      }
-    },
-    {
-      "literal": "vuelve a expresar",
-      "normalized": "vuelve a expresar",
-      "tokens": 3,
-      "classification": "GENERAL_LANGUAGE_RULE",
-      "reason": "general_grammar_or_parser_lexeme",
-      "max_corpus_overlap": {
-        "dataset": "consumed_regression",
-        "id": "I0-CAL-0149",
-        "index": 148,
-        "coverage": 0.23076923076923078,
         "reverse_coverage": 0,
         "exact": false
       }
