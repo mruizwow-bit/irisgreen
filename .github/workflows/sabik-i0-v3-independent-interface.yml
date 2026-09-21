@@ -1,0 +1,72 @@
+name: Sabik I0 V3 independent interface check
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v3-independent-run-20260921
+    paths:
+      - 'tools/independent/introspect-executor-interface.mjs'
+      - '.github/workflows/sabik-i0-v3-independent-interface.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  interface:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout controller
+        uses: actions/checkout@v4
+        with:
+          path: controller
+          persist-credentials: false
+
+      - name: Checkout frozen calibration by SHA
+        uses: actions/checkout@v4
+        with:
+          ref: 841298f41da2e63f5ab9fe77e594586841490530
+          path: calibration
+          persist-credentials: false
+
+      - name: Checkout authorized executor by SHA
+        uses: actions/checkout@v4
+        with:
+          ref: b3daefe4f0cd471c8cc92b35472b51f1840569fa
+          path: executor
+          persist-credentials: false
+
+      - name: Verify identities and freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C calibration rev-parse HEAD)" = "841298f41da2e63f5ab9fe77e594586841490530"
+          test "$(git -C executor rev-parse HEAD)" = "b3daefe4f0cd471c8cc92b35472b51f1840569fa"
+          echo "2dd9d24a01f99c763a7ad4db7fe2000fc28568162fbebb5599c012e2afde4f6f  calibration/tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+
+      - name: Remove remotes before executor import
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C controller remote remove origin || true
+          git -C calibration remote remove origin || true
+          git -C executor remote remove origin || true
+          test -z "$(git -C controller remote)"
+          test -z "$(git -C calibration remote)"
+          test -z "$(git -C executor remote)"
+
+      - name: Record runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          uname -a
+          node --version
+          python3 --version
+
+      - name: Introspect black-box exports only
+        shell: bash
+        env:
+          GH_TOKEN: ''
+          GITHUB_TOKEN: ''
+        run: |
+          set -euo pipefail
+          node controller/tools/independent/introspect-executor-interface.mjs executor/tools/sabik-i0-executor-v3.mjs
