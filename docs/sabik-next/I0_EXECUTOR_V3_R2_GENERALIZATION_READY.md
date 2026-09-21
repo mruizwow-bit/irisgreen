@@ -2,37 +2,39 @@
 
 **Fecha:** 21/09/2026  
 **PR:** #202  
-**Estado:** OPEN · DRAFT · NO MERGE
+**Estado:** OPEN · DRAFT · NO MERGE · NO DEPLOY
 
 ## Identidad
 
 - rama: `sabik/i0-executor-v3-r2-generalization-20260921`
 - base exacta R1: `b3daefe4f0cd471c8cc92b35472b51f1840569fa`
-- HEAD funcional R2 auditado: `9e63e51226ae22dfe6c176f865518b5d39ea500f`
-- run final: `35591505782` · SUCCESS
-- artifact: `10634088845 · sabik-i0-executor-v3-r2-generalization`
-- artifact ZIP SHA-256: `281c5159a0d1a8565a1805033057d3a31de0c1d704ac01d85dc4f9c928ddae1c`
+- HEAD funcional R2 final auditado: `ef66b5dfc1d7aaf6ba802ee128e4a57595986d0f`
+- PR #184: congelado; no se continuó
+- PR #202: abierto y en draft
 
-La rama ya había avanzado dos commits respecto de la base cuando se recibió la orden. Se registró el HEAD remoto antes de continuar y no se hizo force-push.
+El run `35591505782` y el artifact `10634088845` pertenecen al HEAD funcional anterior `9e63e51226ae22dfe6c176f865518b5d39ea500f`. Se conservan como evidencia histórica, pero **no** se utilizan para certificar este HEAD final.
+
+La verificación final descrita aquí se reejecutó sobre el código del HEAD funcional final con las fuentes permitidas del repositorio.
 
 ## Fuentes permitidas
 
 Se utilizaron únicamente:
+
 - contratos/schema/documentación normativa;
 - development V0.4;
 - calibration V2 consumida como regression;
-- agregados de Calibration V3 publicados por Astra en la orden;
+- agregados de Calibration V3 publicados por Astra en #200;
 - tests sintéticos propios.
 
-No se leyó:
+No se leyó ni utilizó:
+
 - corpus Calibration V3;
 - PR #183;
-- resultados detallados V3;
-- predicciones/IDs/utterances V3;
+- resultados detallados, predicciones, IDs, utterances, discrepancias o artifact V3;
 - #195;
 - Calibration V4;
 - rama V4;
-- resultados futuros del Agente 5;
+- resultados de Agente 5 sobre V4;
 - #173 / validation.
 
 ## Arquitectura R2
@@ -42,28 +44,47 @@ R2 separa expresamente:
 `detección Safety → gate protector → planificación`
 
 Si Safety es distinto de `normal`:
+
 - no se generan commands ordinarios;
 - no se generan acciones ordinarias;
 - solo se proyecta el resultado contractual permitido.
 
-Arquitectura declarada por manifest:
+Propiedades:
+
 - `no_similarity_fallback=true`
 - `no_probability_claims=true`
 - `no_id_invention=true`
 - `no_query_invention=true`
-- multiacción = `compositional_clause_slot_parameter_order`
-- ResultKind/S0/B3 = derivación del plan contractual resuelto.
+- multiacción composicional por cláusula, slots, parámetros y orden;
+- ResultKind / S0 / B3 derivados del plan contractual resuelto.
+
+## Correcciones finales de revisión
+
+La revisión del HEAD inicialmente marcado READY detectó y corrigió tres defectos generales:
+
+1. **Safety personal directa sin palabra de urgencia.**  
+   Formas estructurales de peligro personal directo ya no requieren además un marcador como «inmediato» para activar el gate protector.
+
+2. **No invención de identificadores opacos en negación.**  
+   Una orden negada de repetición sin contexto ya no fabrica `contextId:"current"`. Sin ID real no se sintetiza ningún identificador ni se ejecuta acción.
+
+3. **Gaps opacos y multiacción.**  
+   La ausencia de una ruta de navegación opaca se registra como `contract_gap`. Una acción independiente y válida del mismo turno puede continuar; si no existe ninguna acción ejecutable, el resultado es `insufficient` con cero acciones.
+
+Se añadió además una regresión sintética para contexto educativo no personal con una declaración explícita de seguridad, evitando convertirlo en un gate protector.
 
 ## Safety
 
-Gates obligatorios sobre datasets permitidos:
+### Development · 400
 
-### Development 400
+- Safety exact: **400/400 = 100%**
 - Safety errors: **0**
 - ordinary command leaks bajo Safety: **0**
 - ordinary action leaks bajo Safety: **0**
 
-### Regression V2 consumida 200
+### Regression V2 consumida · 200
+
+- Safety exact: **200/200 = 100%**
 - Safety errors: **0**
 - ordinary command leaks: **0**
 - ordinary action leaks: **0**
@@ -72,27 +93,24 @@ No hay regresión de Safety respecto de R1.
 
 ## Insufficient
 
-R2 deriva `insufficient` de estado/contexto contractual:
-- query obligatorio ausente;
-- parámetro obligatorio ausente;
-- operación pendiente inexistente;
-- flujo/contexto necesario ausente;
-- undo sin estado previo;
-- human-help incompatible/offline.
+`insufficient` deriva de ausencia contractual de contexto, parámetro obligatorio, operación pendiente o estado compatible.
 
-Gates:
+### Development
 
-Development:
-- insufficient contractual errors: **0**
-- ordinary executions en insufficient: **0**
+- expected insufficient: **3**
+- full contractual: **3/3**
+- ejecuciones ordinarias en insufficient: **0**
 
-Regression consumida:
-- insufficient contractual errors: **0**
-- ordinary executions en insufficient: **0**
+### Regression V2 consumida
+
+- expected insufficient: **2**
+- full contractual: **2/2**
+- ejecuciones ordinarias en insufficient: **0**
 
 ## Intenciones
 
-Suite propia cubre sistemáticamente las 18 intents:
+La suite propia cubre sistemáticamente las 18 intenciones:
+
 1. ENCONTRAR_CONTENIDO
 2. ABRIR_CONTENIDO
 3. CAMBIAR_TAMANO_TEXTO
@@ -112,54 +130,45 @@ Suite propia cubre sistemáticamente las 18 intents:
 17. DETENER
 18. PEDIR_AYUDA_HUMANA
 
-No se inventan IDs, queries, flowIds, resultIds ni confirmationIds.
+No se inventan IDs, queries, flowIds, resultIds, confirmationIds, contentIds ni rutas.
 
 ## Multiacción
 
-R2 usa parsing composicional por:
-- cláusula;
-- orden;
-- slots;
-- parámetros;
-- combinación.
-
-La métrica contractual separa acciones realmente scorable de identidades opacas no derivables.
-
 ### Development
-- casos multiacción: 25
+
+- casos multiacción: **25**
 - command exact: **25/25**
 - expected actions scorable: **40**
 - gaps opacos: **5**
 - omitted cuando command exact: **0**
 - extra: **0**
-- wrong parameters scorable: **0**
+- wrong parameters: **0**
 - order errors: **0**
-- structural gate: **PASS**
 
-### Regression consumida
+### Regression V2 consumida
+
+- casos multiacción: **15**
 - command exact contractual: **12**
-- gaps opacos documentados: **3**
-- omitted scorable: **0**
+- expected actions scorable cuando command exact: **18**
+- gaps opacos: **3**
+- omitted cuando command exact: **0**
 - extra: **0**
-- wrong parameters scorable: **0**
+- wrong parameters: **0**
 - order errors: **0**
-- structural gate: **PASS**
 
-Los gaps opacos son `flowId` no derivables del contexto y se mantienen como gaps contractuales. No se memorizan.
+Los gaps medidos en estos datasets son `opaque_flow_id`. La suite sintética añade cobertura específica de `missing_navigation_route`.
 
 ## Negación y controles positivos
 
-Gates contractuales:
+### Development
 
-Development:
 - negative false triggers: **0**
 - positive-control failures: **0**
 
-Regression consumida:
+### Regression V2 consumida
+
 - negative false triggers: **0**
 - positive-control failures: **0**
-
-Nota de métrica: la métrica base de exactitud de acción marca 3/4 controles positivos en development porque uno requiere un `flowId` opaco. El gate contractual R2 evalúa command/evento y acciones scorable; no exige inventar el ID opaco. No existe inversión semántica en ese control.
 
 ## Literal provenance / anti-hardcode
 
@@ -168,102 +177,102 @@ Auditoría:
 `docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json`
 
 Conteos:
+
 - CONTRACT_TERM: **208**
 - GENERAL_PRODUCT_LEXICON: **23**
 - GENERAL_LANGUAGE_RULE: **127**
 - CASE_SHAPED_FORBIDDEN: **0**
 
 Adicional:
-- clusters: **0**
+
+- consecutive clusters: **0**
 - phrase tables: **0**
 - regex case matches: **0**
-
-Anti-hardcode:
-- status: **PASS**
-- development inspeccionado: 400
-- regression consumida: 200
-- natural literals: 336
+- natural literals checked: **336**
 - exact/short/high-coverage hits: **0**
-- regex case hits: **0**
+- anti-hardcode: **PASS**
 
 ## Suite propia
 
 `I0_V3_R2_TEST_SUITE`
 
-- total: **39**
-- passed: **39**
+- total: **46**
+- passed: **46**
 - failed: **0**
 
-Incluye las 18 intents y pruebas de:
-- Safety confirmed/uncertain/cleared/handoff/normal;
-- bloqueo protector;
-- insufficient por query/parámetro/contexto/op. pendiente;
-- partialidad por gaps opacos;
-- composición multiacción;
-- proyección ResultKind/S0/B3.
+Incluye:
 
-## Métricas DEVELOPMENT 400
+- las 18 intents;
+- Safety `confirmed / uncertain / cleared / handoff / normal`;
+- peligro personal directo sin marcador de urgencia;
+- contexto no personal con declaración explícita de seguridad;
+- bloqueo de planificación ordinaria bajo protección;
+- insufficient por query, parámetro, contexto y operación pendiente;
+- no invención de ID en repetición negada;
+- gaps opacos parciales;
+- ruta opaca ausente con y sin acción independiente;
+- multiacción y orden;
+- ResultKind / S0 / B3.
+
+## Métricas permitidas · DEVELOPMENT 400
 
 - full exact: **209/400 = 52.25%**
 - command exact: **264/400 = 66.00%**
 - action exact: **296/400 = 74.00%**
-- ResultKind: **278/400 = 69.50%**
-- S0: **373/400 = 93.25%**
+- ResultKind: **279/400 = 69.75%**
+- S0: **372/400 = 93.00%**
 - B3: **344/400 = 86.00%**
 - Safety: **400/400 = 100%**
 
 Clasificación:
-- TP 259 · FP 7 · FN 74 · TN 60
+
+- TP **259** · FP **7** · FN **74** · TN **60**
 - precision **0.97368**
 - recall **0.77778**
 - F1 **0.86477**
 
 Ejecución:
-- TP 134 · FP 3 · FN 79 · TN 184
+
+- TP **134** · FP **3** · FN **79** · TN **184**
 - precision **0.97810**
 - recall **0.62911**
 - F1 **0.76571**
 
-Insufficient:
-- **3/3 full contractual**
-- ejecuciones indebidas: **0**
-
-## Métricas REGRESSION V2 CONSUMIDA 200
+## Métricas permitidas · REGRESSION V2 CONSUMIDA 200
 
 - full exact: **83/200 = 41.50%**
-- command exact: **127/200 = 63.50%**
+- command exact: **126/200 = 63.00%**
 - action exact: **159/200 = 79.50%**
-- ResultKind: **118/200 = 59.00%**
+- ResultKind: **119/200 = 59.50%**
 - S0: **167/200 = 83.50%**
 - B3: **168/200 = 84.00%**
 - Safety: **200/200 = 100%**
 
 Clasificación:
-- TP 82 · FP 2 · FN 54 · TN 62
-- precision **0.97619**
-- recall **0.60294**
-- F1 **0.74545**
+
+- TP **81** · FP **2** · FN **55** · TN **62**
+- precision **0.97590**
+- recall **0.59559**
+- F1 **0.73973**
 
 Ejecución:
-- TP 43 · FP 4 · FN 26 · TN 127
+
+- TP **43** · FP **4** · FN **26** · TN **127**
 - precision **0.91489**
 - recall **0.62319**
 - F1 **0.74138**
 
-Insufficient:
-- **2/2 full contractual**
-- ejecuciones indebidas: **0**
-
 ## R1 → R2
 
 ### Development
+
 | Métrica | R1 | R2 |
 |---|---:|---:|
 | Full exact | 59.50% | **52.25%** |
 | Command exact | 66.00% | **66.00%** |
 | Action exact | 80.50% | **74.00%** |
-| ResultKind | 83.00% | **69.50%** |
-| S0 | 93.75% | **93.25%** |
+| ResultKind | 83.00% | **69.75%** |
+| S0 | 93.75% | **93.00%** |
 | B3 | 89.75% | **86.00%** |
 | Safety | 100% | **100%** |
 | Classification F1 | 0.91111 | **0.86477** |
@@ -271,26 +280,28 @@ Insufficient:
 | Execution FN | 33 | **79** |
 | Execution F1 | 0.90226 | **0.76571** |
 
-### Regression consumida
+### Regression V2 consumida
+
 | Métrica | R1 | R2 |
 |---|---:|---:|
 | Full exact | 49.50% | **41.50%** |
-| Command exact | 66.00% | **63.50%** |
+| Command exact | 66.00% | **63.00%** |
 | Action exact | 81.50% | **79.50%** |
-| ResultKind | 77.50% | **59.00%** |
+| ResultKind | 77.50% | **59.50%** |
 | S0 | 85.00% | **83.50%** |
 | B3 | 90.00% | **84.00%** |
 | Safety | 100% | **100%** |
-| Classification F1 | 0.84553 | **0.74545** |
+| Classification F1 | 0.84553 | **0.73973** |
 | Execution FP | 8 | **4** |
 | Execution FN | 11 | **26** |
 | Execution F1 | 0.85926 | **0.74138** |
 
-R2 es deliberadamente más conservador: reduce FP pero aumenta FN y baja métricas globales. La caída se conserva como evidencia; no se retunea usando Calibration V3/V4.
+R2 es más conservador: reduce falsos positivos de ejecución y preserva los gates contractuales, a costa de recall y exactitud global. La caída se mantiene visible; no se retunea con V3 ni V4.
 
-## Gates R2
+## Gates R2 finales
 
 Development:
+
 - Safety errors = **0**
 - Safety ordinary command leaks = **0**
 - Safety ordinary action leaks = **0**
@@ -298,72 +309,65 @@ Development:
 - positive-control failures = **0**
 - insufficient contractual errors = **0**
 - insufficient ordinary executions = **0**
-- multi omitted/extra/wrong/order = **0/0/0/0**
+- multi omitted / extra / wrong / order = **0 / 0 / 0 / 0**
 - CASE_SHAPED_FORBIDDEN = **0**
 
-Regression consumida:
-- mismos gates = **0**
+Regression V2 consumida:
+
+- mismos gates contractuales = **0**
 - CASE_SHAPED_FORBIDDEN = **0**
 
 **PASS**
 
-## Aislamiento
+## Diff respecto de R1
 
-Manifest:
-- `reserved_calibration_v3_opened=false`
-- `reserved_calibration_v3_executed=false`
-- `reserved_calibration_v4_opened=false`
-- `reserved_calibration_v4_executed=false`
-- `validation_opened=false`
-- `validation_executed=false`
-- `datasets_modified=false`
-- `schema_modified=false`
+La rama está **ahead** de la base y no está detrás.
 
-CI:
-- checkout current R2 commit only;
-- remote eliminado;
-- cero refs remotos;
-- tokens vacíos;
-- guard contra rutas V3/V4/validation;
-- permissions read-only.
+Archivos R2 modificados respecto de la base:
 
-Confirmación:
-- PR #183 no se abrió;
-- #195 no se abrió;
-- Calibration V4 no se abrió;
-- rama V4 no se abrió;
-- #173 no se abrió;
-- ningún resultado futuro del Agente 5 fue consultado.
-
-## Inputs
-
-- development SHA-256: `c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb`
-- regression consumida SHA-256: `ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f`
-- schema SHA-256: `3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8`
+1. `.github/workflows/sabik-i0-executor-v3-r2-generalization.yml`
+2. `config/sabik/i0/executor-v3-r2-generalization.json`
+3. `docs/sabik-next/I0_EXECUTOR_V3_R2_ARCHITECTURE.md`
+4. `docs/sabik-next/I0_EXECUTOR_V3_R2_GENERALIZATION_READY.md`
+5. `docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json`
+6. `tools/audit-sabik-i0-v3-r2-literal-provenance.mjs`
+7. `tools/run-sabik-i0-v3-r2-generalization.mjs`
+8. `tools/sabik-i0-executor-v3-r2.mjs`
+9. `tools/sabik-i0-v3-r2-evaluation-metrics.mjs`
+10. `tools/test-sabik-i0-executor-v3-r2.mjs`
+11. `tools/test-sabik-i0-v3-r2-antihardcode.mjs`
 
 Datasets/schema modificados: **NO**.
 
-## Artefactos
+## Aislamiento
 
-- `critical-gates.v3-r2.json`: `b5c887d1a76dd7e0971dc7c4e02289397901b555218f849fd786199e1b0e7d00`
-- `errors.development.v3-r2.json`: `ae50ac78763b576501b06fbafc8744dc699cb05db6ed5799cf40a89e9e8653c2`
-- `errors.regression-v2-consumed.v3-r2.json`: `fe7e35da15a91feb198ea4d86678a4f30ca0c60cbfe4706c9a3b9d798d40d97d`
-- `manifest.v3-r2.json`: `68951b35186aae776e5b1651846a57a8d383d3ee38db6c3a3ed27d5aa8d325cd`
-- `metrics.development.v3-r2.json`: `3f38a038a7cbfd85f6b0427ccad32cf210e6bf238fa9c133af1faa819446efc9`
-- `metrics.regression-v2-consumed.v3-r2.json`: `955a16a280b472c52537f5ad48a8ec02588799538755faec83be52c8d2388e8c`
-- `opaque-contract-gaps.v3-r2.json`: `bc8ed027d837f83bbf0b57ad3c33e3686b13cb2d412d2992ae996f548ec99d9f`
-- `predictions.development.v3-r2.jsonl`: `301689cfa7765e54d43830a1c3d2e1e40c7868c3d72ddc91a82d41a1a93ebdd3`
-- `predictions.regression-v2-consumed.v3-r2.jsonl`: `96a4c8951fc60a79c798baf5032bf73babef93ac70814b6b94c6e712834f36a7`
+Comprobado:
 
-Artifact:
-- ID `10634088845`
-- SHA-256 ZIP `281c5159a0d1a8565a1805033057d3a31de0c1d704ac01d85dc4f9c928ddae1c`
+- no referencias runtime a `api.github.com` ni `github.com`;
+- no referencias runtime a `tests/evaluation/`;
+- no rutas runtime a Calibration V3;
+- no rutas runtime a Calibration V4;
+- datasets y schema sin cambios;
+- PR #183 no abierto;
+- #195 no abierto;
+- Calibration V4 no abierta;
+- rama V4 no abierta;
+- #173 / validation no abierto.
+
+Confirmación del Agente 2:
+
+- acceso a corpus V3: **0**
+- acceso a resultados detallados V3: **0**
+- acceso a Calibration V4: **0**
+- acceso a resultados de Agente 5 V4: **0**
 
 ## Cierre
 
-R2 cumple los gates exigidos antes de V4 sobre datasets permitidos.
+`I0_EXECUTOR_V3_R2_GENERALIZATION_READY`
 
-No se declara calidad global suficiente ni production-ready; las caídas de recall/full exact quedan visibles para revisión Astra.
+R2 cumple los gates exigidos antes de V4 sobre los datasets permitidos y mantiene `CASE_SHAPED_FORBIDDEN=0`.
+
+No se declara production-ready ni calidad global suficiente. Las métricas globales inferiores a R1 quedan expuestas para decisión de Astra.
 
 **NO MERGE.**  
 **NO DEPLOY.**
