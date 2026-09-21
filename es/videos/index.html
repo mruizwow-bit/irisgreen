@@ -352,7 +352,14 @@
  </div>
  </div>
 
- <p style="margin: 22px 0 16px; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:22px 0 10px;">
+ <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}">
+ <span style="font-size:15px;color:#5d6779;">{{ savedCountLabel }}</span>
+ <button sc-camel-on-click="{{ clearSaved }}" style="min-height:44px;border:1px solid rgba(23,57,92,.2);background:#fff;color:#17395c;border-radius:999px;padding:7px 14px;font:inherit;cursor:pointer;">{{ tClearSaved }}</button>
+ </sc-if>
+ <span role="status" aria-live="polite" aria-atomic="true" style="font-size:15px;color:#435268;">{{ savedStatus }}</span>
+ </div>
+ <p style="margin: 10px 0 16px; font-size: 15px; color: #5d6779;">{{ countLabel }}</p>
 
  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 22px; align-items: start;">
  <sc-for list="{{ cards }}" as="v" hint-placeholder-count="9">
@@ -536,7 +543,7 @@ const STR = {
  eyebrow: "Videoteca · se ven aquí mismo", title: "Aquí habla quien lo vive.",
  lede: "Aquí habla quien lo vive, en primera persona: qué le pasó, cómo lo vive y qué cambió. Elige un tema o busca a alguien por su nombre.",
  mix: "Casi todo lo que hay aquí es experiencia en primera persona, y unos pocos vídeos los publica una entidad. Cada uno lo dice en su etiqueta. Nada se carga hasta que pulsas: la página no pone cookies de YouTube, Instagram ni Vimeo antes de eso.",
- searchPh: "Busca una persona: Ro Vitale, Bianca, Jordi…", where: "Dónde está", play: "Ver aquí", save: "Guardar para luego",
+ searchPh: "Busca una persona: Ro Vitale, Bianca, Jordi…", where: "Dónde está", play: "Ver aquí", save: "Guardar para luego", clearSaved: "Borrar guardados", savedCleared: "Guardados borrados.", savedCount: (n) => n === 1 ? "1 vídeo guardado" : n + " vídeos guardados",
  count: (n) => n + " vídeos", noResults: "No hay vídeos con esas palabras. Prueba con otro nombre o quita los filtros.",
  more: (n) => "Ver más vídeos (" + n + " restantes)", seeIn: "Ver en ",
  spotify: "Playlist en Spotify", spotifyTitle: "Escucha la playlist de Iris Green",
@@ -554,7 +561,7 @@ const STR = {
  eyebrow: "Video library · plays right here", title: "Here, the people who live it speak.",
  mix: "Almost everything here is first-person experience, and a few videos are published by organisations. Each one says so on its label. Nothing loads until you press play: the page sets no YouTube, Instagram or Vimeo cookies before that.",
  lede: "Here you hear from the people who live it, in the first person: what happened, how they live it and what changed. Pick a topic or search for someone by name.",
- searchPh: "Search for a person: Ro Vitale, Bianca, Jordi…", where: "Where it lives", play: "Play here", save: "Save for later",
+ searchPh: "Search for a person: Ro Vitale, Bianca, Jordi…", where: "Where it lives", play: "Play here", save: "Save for later", clearSaved: "Clear saved videos", savedCleared: "Saved videos cleared.", savedCount: (n) => n === 1 ? "1 saved video" : n + " saved videos",
  count: (n) => n + " videos", noResults: "No videos match those words. Try another name or clear the filters.",
  more: (n) => "Show more videos (" + n + " left)", seeIn: "Watch on ",
  spotify: "Spotify playlist", spotifyTitle: "Listen to the Iris Green playlist",
@@ -575,7 +582,7 @@ const NAVL = {
 };
 
 class Component extends DCLogic {
- state = { thumbnailErrors: {}, lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
+ state = { thumbnailErrors: {}, lang: "es", q: "", tema: "all", plat: "all", limit: 9, playing: null, saved: [], savedStatus: "", a11y: false, music: false, fs: 17, spacing: false, controls: false, contrast: false, guide: false, speak: false, motion: false, ...window.IGPreferences.componentState() };
 
  componentDidMount() {
  this._igPreferencesDisconnect = window.IGPreferences.connect(this);
@@ -598,8 +605,17 @@ class Component extends DCLogic {
  }
 
  persist(saved) {
- this.setState({ saved });
- try { localStorage.setItem("ig_saved_videos", JSON.stringify(saved)); } catch (e) {}
+ this.setState({ saved, savedStatus: "" });
+ try {
+   if (saved.length) localStorage.setItem("ig_saved_videos", JSON.stringify(saved));
+   else localStorage.removeItem("ig_saved_videos");
+ } catch (e) {}
+ }
+
+ clearSaved() {
+ try { localStorage.removeItem("ig_saved_videos"); } catch (e) {}
+ const T = STR[this.state.lang] || STR.es;
+ this.setState({ saved: [], savedStatus: T.savedCleared });
  }
 
  setLang(lang) {
@@ -668,7 +684,8 @@ class Component extends DCLogic {
  tBooksBar: T.booksBar, tBooksCta: T.booksCta, tNavHome: T.navHome, tNavAsk: T.navAsk,
  tNavTopics: T.navTopics, tNavBooks: T.navBooks, tReading: T.reading, tReadingPanel: T.readingPanel,
  tTextSize: T.textSize, tReset: T.reset, tEyebrow: T.eyebrow, tTitle: T.title, tLede: T.lede, tMix: T.mix,
- tSearchPh: T.searchPh, tWhere: T.where, tPlay: T.play, tSave: T.save, tNoResults: T.noResults,
+ tSearchPh: T.searchPh, tWhere: T.where, tPlay: T.play, tSave: T.save, tClearSaved: T.clearSaved, tNoResults: T.noResults,
+ hasSaved: st.saved.length > 0, savedCountLabel: T.savedCount(st.saved.length), savedStatus: st.savedStatus, clearSaved: () => this.clearSaved(),
  tSpotify: T.spotify, tSpotifyTitle: T.spotifyTitle, tSpotifyText: T.spotifyText,
  tSpotifyMissing: T.spotifyMissing, tSpotifyEyebrow: T.spotifyEyebrow, tTagline: T.tagline, tHowToRead: T.howToRead,
 
