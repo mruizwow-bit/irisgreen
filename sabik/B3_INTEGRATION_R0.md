@@ -22,10 +22,10 @@ El spike observa la **capa de presentación existente** y proyecta B3 sin escrib
 | risk / protection | PRESENTE + Safety existente |
 | voice states | sin cambio B3 |
 
-**TRANSICIÓN** y **CONFIRMAR** están integrados como funciones de presentación explícitas:
+**TRANSICIÓN** y **CONFIRMAR** están disponibles como funciones de presentación explícitas:
 
-- TRANSICIÓN se usa para cambios locales con origen/destino conocido, como reiniciar la sesión; nunca como spinner de retrieval/composing.
-- CONFIRMAR se usa para confirmar cambios locales de presentación, como movimiento, densidad, intensidad o respuesta breve.
+- TRANSICIÓN se usa para cambios funcionales/presentacionales con origen y destino conocido; nunca como indicador de retrieval/composing.
+- CONFIRMAR se usa para cierre local explícito cuando una acción necesita confirmación.
 - ninguno modifica S0.
 
 ## Presencias
@@ -37,24 +37,23 @@ El resolvedor admite:
 
 La interfaz real `/es/nea/` declara IA como presencia por defecto. Otras superficies pueden declarar `data-sabik-presence` sin cambiar la gramática.
 
-## Activo visual de runtime
+## Activos visuales de runtime
 
-El repositorio contiene:
+El repositorio contiene **15 WebP individuales**:
 
-`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
+`sabik/assets/b3/{web|ia|educa}_{presente|orientar|transicion|pausa|confirmar}.webp`
 
 Contrato:
-- 15 keyframes R1 aceptados como fuente;
-- 3 filas: Web / IA / Educa;
-- 5 columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
-- cada celda: 256×256;
-- derivación LANCZOS desde la fuente 544×544;
-- contenedor WebP **lossless**;
-- SHA-256 y hashes de las 15 fuentes en `ASSET_MANIFEST.json`.
+- fuentes: 15 keyframes R1 congelados de #182;
+- fuente: 544×544 PNG;
+- runtime: 128×128 WebP;
+- derivación técnica LANCZOS;
+- el stage se limita a 128×128 para no ampliar el derivado;
+- bytes y SHA-256 de cada runtime y cada fuente en `ASSET_MANIFEST.json`.
 
-El sprite es un derivado de runtime; no rediseña #181/#182.
+Los WebP de runtime no rediseñan #181/#182: son transporte técnico para la interfaz real.
 
-Si el sprite no carga, el spike deja visible el holograma legacy existente: no desaparece la información ni la interfaz.
+Si un asset requerido no carga, el spike deja visible el holograma legacy existente: no desaparece el texto, la interfaz ni la información funcional.
 
 ## Motion
 
@@ -104,7 +103,7 @@ La API permite inyectar un adaptador futuro después del gate S2 sin convertir v
 
 Densidad:
 - **completa:** interfaz completa;
-- **reducida:** reduce separación/ruido visual de elementos secundarios, sin tocar respuesta ni Safety;
+- **reducida:** reduce separación/ruido visual secundario, sin tocar respuesta ni Safety;
 - **paso a paso:** prepara estructura progresiva para bloques explícitamente marcados `data-sabik-step`; si la respuesta no está estructurada así, mantiene el contenido completo.
 
 R0 no trunca respuestas ni oculta:
