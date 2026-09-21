@@ -99,7 +99,7 @@ def validate_tree(root: Path) -> dict:
     data_es = detail_pages(root, "es/datos/*/index.html", 49, "Datos ES")
     data_en = detail_pages(root, "en/data/*/index.html", 49, "Datos EN")
     daily_es = detail_pages(root, "es/biblioteca/*/index.html", 49, "Vida diaria ES")
-    daily_en = detail_pages(root, "en/everyday-life/*/index.html", 48, "Vida diaria EN")
+    daily_en = detail_pages(root, "en/everyday-life/*/index.html", 49, "Vida diaria EN")
     stats["robots_changed"] = 0
 
     p = root / "en/neurodiversity/conditions/index.html"
