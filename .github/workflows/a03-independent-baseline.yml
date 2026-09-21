@@ -20,6 +20,7 @@ jobs:
         with:
           ref: sabik/qa-a03-freeze
           path: qa
+          fetch-depth: 0
           persist-credentials: false
       - name: Record exact baseline and environment
         working-directory: runtime
