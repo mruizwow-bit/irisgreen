@@ -1,0 +1,380 @@
+{
+  "schema": "SABIK_B3_MOTION_TOKENS_R0",
+  "candidate": true,
+  "source": {
+    "visual_family_pr": 181,
+    "visual_family_head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+    "b3_pr": 182,
+    "b3_head": "e5f70cba76a4414527c10b0fbecfd549a7390e66",
+    "design_pr": 163,
+    "design_head": "851e6c17185e76ffbb4f4b5ab34fe5eb9fd9dd68",
+    "sabik_preview_base": "96ebf38a535fa287f32fee8c7957ede39933365c"
+  },
+  "states": [
+    "PRESENTE",
+    "ORIENTAR",
+    "TRANSICIÓN",
+    "PAUSA",
+    "CONFIRMAR"
+  ],
+  "levels": [
+    "NORMAL",
+    "REDUCIDO",
+    "SIN_MOVIMIENTO"
+  ],
+  "rules": {
+    "continuous_loops": false,
+    "present_idle_animation": false,
+    "semantic_from_audio": false,
+    "semantic_from_loading": false,
+    "semantic_from_safety": false,
+    "semantic_from_emotion": false,
+    "static_fallback": true
+  },
+  "quality": {
+    "modest_device": {
+      "hardware_concurrency_lte": 4,
+      "device_memory_gb_lte": 4,
+      "save_data": true,
+      "downgrade": "NORMAL_TO_REDUCIDO",
+      "note": "Solo reduce coste visual; nunca cambia texto, estado funcional ni seguridad."
+    },
+    "compositor_only": [
+      "transform",
+      "opacity"
+    ],
+    "target_refresh_hz": 60,
+    "no_layout_animation": true
+  },
+  "modes": {
+    "NORMAL": {
+      "PRESENTE": {
+        "duration_ms": 220,
+        "easing": "cubic-bezier(.2,.65,.25,1)",
+        "amplitude": 0.04,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "entry": "Al entrar al baseline funcional o volver desde otro B3.",
+        "exit": "Cuando otra función B3 pasa a ser necesaria.",
+        "interrupt": "Cancelar la animación actual y empezar desde el estilo computado; no encadenar loops.",
+        "settle": "static"
+      },
+      "ORIENTAR": {
+        "duration_ms": 380,
+        "easing": "cubic-bezier(.2,.78,.24,1)",
+        "amplitude": 0.34,
+        "translate_px": [
+          7,
+          -3
+        ],
+        "rotate_deg": -2.2,
+        "scale": 1.008,
+        "opacity": 1,
+        "entry": "Cuando la UI necesita dirigir a un siguiente elemento o paso concreto.",
+        "exit": "Cuando deja de existir esa necesidad o se activa otro B3.",
+        "interrupt": "Interrumpible inmediatamente; conservar texto/directriz.",
+        "settle": "static"
+      },
+      "TRANSICIÓN": {
+        "duration_ms": 500,
+        "easing": "cubic-bezier(.25,.1,.25,1)",
+        "amplitude": 0.42,
+        "translate_px": [
+          4,
+          -2
+        ],
+        "rotate_deg": -2.8,
+        "scale": 0.992,
+        "opacity": 0.98,
+        "entry": "Solo durante un cambio funcional B3 con origen y destino conocidos.",
+        "exit": "Al alcanzar el estado destino; no permanece como indicador de carga.",
+        "interrupt": "Saltar al nuevo destino y recalcular una única transición; máximo una animación activa.",
+        "settle": "static"
+      },
+      "PAUSA": {
+        "duration_ms": 300,
+        "easing": "cubic-bezier(.22,.61,.36,1)",
+        "amplitude": 0.18,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 0.955,
+        "opacity": 0.78,
+        "entry": "Cuando la función del asistente está realmente pausada.",
+        "exit": "Al reanudar o cambiar de función.",
+        "interrupt": "Puede salir inmediatamente; nunca desaparecer.",
+        "settle": "static"
+      },
+      "CONFIRMAR": {
+        "duration_ms": 320,
+        "easing": "cubic-bezier(.2,.7,.3,1)",
+        "amplitude": 0.22,
+        "translate_px": [
+          0,
+          -1
+        ],
+        "rotate_deg": 0.5,
+        "scale": 0.985,
+        "opacity": 1,
+        "entry": "Tras una acción que requiera confirmación explícita de que el cambio se aplicó.",
+        "exit": "Después del intervalo mínimo de lectura o al siguiente estado funcional.",
+        "interrupt": "Sin rebote ni celebración; si llega otro estado, cancelar y continuar.",
+        "settle": "static"
+      }
+    },
+    "REDUCIDO": {
+      "PRESENTE": {
+        "duration_ms": 100,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "ORIENTAR": {
+        "duration_ms": 140,
+        "easing": "ease-out",
+        "amplitude": 0.08,
+        "translate_px": [
+          2,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "TRANSICIÓN": {
+        "duration_ms": 160,
+        "easing": "ease-out",
+        "amplitude": 0.08,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 0.96,
+        "settle": "static"
+      },
+      "PAUSA": {
+        "duration_ms": 140,
+        "easing": "ease-out",
+        "amplitude": 0.06,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 0.98,
+        "opacity": 0.82,
+        "settle": "static"
+      },
+      "CONFIRMAR": {
+        "duration_ms": 140,
+        "easing": "ease-out",
+        "amplitude": 0.05,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 0.995,
+        "opacity": 1,
+        "settle": "static"
+      }
+    },
+    "SIN_MOVIMIENTO": {
+      "PRESENTE": {
+        "duration_ms": 0,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "ORIENTAR": {
+        "duration_ms": 0,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "TRANSICIÓN": {
+        "duration_ms": 0,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "PAUSA": {
+        "duration_ms": 0,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      },
+      "CONFIRMAR": {
+        "duration_ms": 0,
+        "easing": "linear",
+        "amplitude": 0,
+        "translate_px": [
+          0,
+          0
+        ],
+        "rotate_deg": 0,
+        "scale": 1,
+        "opacity": 1,
+        "settle": "static"
+      }
+    }
+  },
+  "transition_duration_ms": {
+    "NORMAL": {
+      "PRESENTE": {
+        "PRESENTE": 0,
+        "ORIENTAR": 380,
+        "TRANSICIÓN": 500,
+        "PAUSA": 300,
+        "CONFIRMAR": 320
+      },
+      "ORIENTAR": {
+        "PRESENTE": 260,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 460,
+        "PAUSA": 300,
+        "CONFIRMAR": 320
+      },
+      "TRANSICIÓN": {
+        "PRESENTE": 260,
+        "ORIENTAR": 340,
+        "TRANSICIÓN": 0,
+        "PAUSA": 300,
+        "CONFIRMAR": 320
+      },
+      "PAUSA": {
+        "PRESENTE": 280,
+        "ORIENTAR": 360,
+        "TRANSICIÓN": 460,
+        "PAUSA": 0,
+        "CONFIRMAR": 300
+      },
+      "CONFIRMAR": {
+        "PRESENTE": 240,
+        "ORIENTAR": 340,
+        "TRANSICIÓN": 440,
+        "PAUSA": 280,
+        "CONFIRMAR": 0
+      }
+    },
+    "REDUCIDO": {
+      "PRESENTE": {
+        "PRESENTE": 0,
+        "ORIENTAR": 140,
+        "TRANSICIÓN": 160,
+        "PAUSA": 140,
+        "CONFIRMAR": 140
+      },
+      "ORIENTAR": {
+        "PRESENTE": 120,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 150,
+        "PAUSA": 140,
+        "CONFIRMAR": 140
+      },
+      "TRANSICIÓN": {
+        "PRESENTE": 120,
+        "ORIENTAR": 140,
+        "TRANSICIÓN": 0,
+        "PAUSA": 140,
+        "CONFIRMAR": 140
+      },
+      "PAUSA": {
+        "PRESENTE": 120,
+        "ORIENTAR": 140,
+        "TRANSICIÓN": 150,
+        "PAUSA": 0,
+        "CONFIRMAR": 140
+      },
+      "CONFIRMAR": {
+        "PRESENTE": 120,
+        "ORIENTAR": 140,
+        "TRANSICIÓN": 150,
+        "PAUSA": 140,
+        "CONFIRMAR": 0
+      }
+    },
+    "SIN_MOVIMIENTO": {
+      "PRESENTE": {
+        "PRESENTE": 0,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 0,
+        "PAUSA": 0,
+        "CONFIRMAR": 0
+      },
+      "ORIENTAR": {
+        "PRESENTE": 0,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 0,
+        "PAUSA": 0,
+        "CONFIRMAR": 0
+      },
+      "TRANSICIÓN": {
+        "PRESENTE": 0,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 0,
+        "PAUSA": 0,
+        "CONFIRMAR": 0
+      },
+      "PAUSA": {
+        "PRESENTE": 0,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 0,
+        "PAUSA": 0,
+        "CONFIRMAR": 0
+      },
+      "CONFIRMAR": {
+        "PRESENTE": 0,
+        "ORIENTAR": 0,
+        "TRANSICIÓN": 0,
+        "PAUSA": 0,
+        "CONFIRMAR": 0
+      }
+    }
+  }
+}
