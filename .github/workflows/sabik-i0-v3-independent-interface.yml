@@ -7,6 +7,7 @@ on:
     paths:
       - 'tools/independent/introspect-executor-interface.mjs'
       - 'tools/independent/probe-v3-interface-shape.mjs'
+      - 'tools/independent/probe-v3-output-shape.mjs'
       - '.github/workflows/sabik-i0-v3-independent-interface.yml'
 
 permissions:
@@ -72,3 +73,4 @@ jobs:
           set -euo pipefail
           node controller/tools/independent/introspect-executor-interface.mjs executor/tools/sabik-i0-executor-v3.mjs
           node controller/tools/independent/probe-v3-interface-shape.mjs executor/tools/sabik-i0-executor-v3.mjs
+          node controller/tools/independent/probe-v3-output-shape.mjs executor/tools/sabik-i0-executor-v3.mjs
