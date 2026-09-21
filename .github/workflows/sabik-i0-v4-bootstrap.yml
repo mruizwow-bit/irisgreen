@@ -5,7 +5,7 @@ on:
     branches:
       - sabik/i0-calibration-v4-blind-20260921
     paths:
-      - tools/bootstrap/calibration.v4.blind.jsonl.gz.b64
+      - '.github/workflows/sabik-i0-v4-bootstrap.yml'
 
 permissions:
   contents: write
@@ -22,16 +22,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          payload="tools/bootstrap/calibration.v4.blind.jsonl.gz.b64"
-          [ -f "$payload" ] || exit 0
           mkdir -p tests/calibration/sabik/i0-v4
-          base64 -d "$payload" | gzip -dc > tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl
-          echo "3da27be84f19cb44d4178ac57b86cca738f13d64a9e5613ba531a088089b1353  tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl" | sha256sum -c -
+          {
+            cat tools/bootstrap/v4seg00.b64
+            cat tools/bootstrap/v4seg01.b64
+            for f in tools/bootstrap/v4mid{00..15}.b64; do cat "$f"; done
+            cat tools/bootstrap/calibration.v4.blind.part2.b64
+            cat tools/bootstrap/v4last.b64
+          } | base64 -d | gzip -dc > tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl
+          echo "e3e535ee1600f3c16495cfbafd4e004b5015d4033cfbfdae44a0e59ef90d81c5  tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl" | sha256sum -c -
           test "$(wc -l < tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl)" -eq 240
-          rm "$payload"
+
+          rm -f tools/bootstrap/calibration.v4.blind.part*.b64
+          rm -f tools/bootstrap/v4seg*.b64
+          rm -f tools/bootstrap/v4mid*.b64
+          rm -f tools/bootstrap/v4last.b64
+          rm -f .github/workflows/sabik-i0-v4-bootstrap.yml
+
           git config user.name "sabik-i0-calibration-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl "$payload"
-          git diff --cached --quiet && exit 0
+          git add -A
           git commit -m "test(sabik): materialize blind I0 Calibration V4 corpus"
           git push origin HEAD:sabik/i0-calibration-v4-blind-20260921
