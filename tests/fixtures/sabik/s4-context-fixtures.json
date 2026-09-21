@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0",
+  "phase": "S4",
+  "origin": "QA0_SYNTHETIC_INDEPENDENT_NO_I0",
+  "i0_dependency": false,
+  "public_dataset_dependency": false,
+  "note": "Conversaciones sintéticas nuevas; no proceden ni se derivan de corpus I0.",
+  "fixtures": [
+    {
+      "id": "S4F-FIRST-NO-ES",
+      "session": {
+        "turns": []
+      },
+      "input": {
+        "text": "No es fácil salir de casa"
+      },
+      "expected": {
+        "is_correction": false,
+        "starts_new_topic": true
+      }
+    },
+    {
+      "id": "S4F-CORRECTION",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido me agota",
+            "active_concept": "ruido"
+          },
+          {
+            "assistant": "Respuesta previa sobre ruido"
+          }
+        ],
+        "active_concept": "ruido"
+      },
+      "input": {
+        "text": "No es el ruido, es decidir demasiadas cosas"
+      },
+      "expected": {
+        "is_correction": true,
+        "rejected_concepts": [
+          "ruido"
+        ],
+        "active_concept": "decisiones",
+        "preserve_rejected_as_active": false
+      }
+    },
+    {
+      "id": "S4F-NEGATION-ORDER-1",
+      "session": {
+        "turns": []
+      },
+      "input": {
+        "text": "El ruido no me molesta"
+      },
+      "expected": {
+        "is_correction": false,
+        "negated_concepts": [
+          "ruido"
+        ],
+        "active_concept_not": "ruido"
+      }
+    },
+    {
+      "id": "S4F-NEGATION-ORDER-2",
+      "session": {
+        "turns": []
+      },
+      "input": {
+        "text": "No me molesta el ruido"
+      },
+      "expected": {
+        "is_correction": false,
+        "negated_concepts": [
+          "ruido"
+        ],
+        "active_concept_not": "ruido"
+      }
+    },
+    {
+      "id": "S4F-NO-ES-ESTO",
+      "session": {
+        "turns": [
+          {
+            "user": "Me cuesta elegir entre muchas opciones",
+            "active_concept": "decisiones"
+          },
+          {
+            "assistant": "Respuesta A",
+            "response_id": "r1"
+          }
+        ],
+        "active_concept": "decisiones"
+      },
+      "input": {
+        "action": "NOT_THIS",
+        "text": "No es esto"
+      },
+      "expected": {
+        "active_concept": "decisiones",
+        "rejected_response_ids": [
+          "r1"
+        ],
+        "topic_reset": false
+      }
+    },
+    {
+      "id": "S4F-OTHER-WAY",
+      "session": {
+        "turns": [
+          {
+            "user": "Me cuesta elegir",
+            "active_concept": "decisiones"
+          },
+          {
+            "assistant": "Explicación A"
+          }
+        ],
+        "active_concept": "decisiones",
+        "route": "explanation"
+      },
+      "input": {
+        "action": "SEARCH_OTHER_WAY",
+        "text": "Buscar por otra vía"
+      },
+      "expected": {
+        "active_concept": "decisiones",
+        "route_changed": true,
+        "topic_reset": false
+      }
+    },
+    {
+      "id": "S4F-NO-QUESTIONS",
+      "session": {
+        "turns": [
+          {
+            "user": "Necesito ayuda para organizarme",
+            "active_concept": "organizacion"
+          }
+        ],
+        "active_concept": "organizacion",
+        "question_policy": "normal"
+      },
+      "input": {
+        "text": "No me preguntes"
+      },
+      "expected": {
+        "question_policy": "none",
+        "may_ask_clarifying_question": false
+      }
+    },
+    {
+      "id": "S4F-PRONOUN",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido me agota",
+            "active_concept": "ruido"
+          },
+          {
+            "assistant": "Explicación sobre ruido"
+          }
+        ],
+        "active_concept": "ruido"
+      },
+      "input": {
+        "text": "¿Y qué puedo hacer con eso?"
+      },
+      "expected": {
+        "active_concept": "ruido",
+        "continuation": true,
+        "starts_new_topic": false
+      }
+    },
+    {
+      "id": "S4F-ELLIPSIS",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido me agota",
+            "active_concept": "ruido"
+          },
+          {
+            "assistant": "Explicación sobre ruido"
+          }
+        ],
+        "active_concept": "ruido"
+      },
+      "input": {
+        "text": "¿Y en el trabajo?"
+      },
+      "expected": {
+        "active_concept": "ruido",
+        "continuation": true,
+        "context_modifier": "trabajo",
+        "starts_new_topic": false
+      }
+    },
+    {
+      "id": "S4F-TOPIC-CHANGE",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido me agota",
+            "active_concept": "ruido"
+          }
+        ],
+        "active_concept": "ruido"
+      },
+      "input": {
+        "text": "Ahora quiero saber sobre sueño"
+      },
+      "expected": {
+        "active_concept": "sueño",
+        "starts_new_topic": true,
+        "previous_concept_inactive": true
+      }
+    },
+    {
+      "id": "S4F-FAIL-PROCEDURES",
+      "session": {
+        "active_concept": "organizacion"
+      },
+      "input": {
+        "text": "Dame información básica",
+        "dataset_failures": [
+          "procedures"
+        ]
+      },
+      "expected": {
+        "basic_retrieval_available": true,
+        "optional_failure": "procedures",
+        "fatal_error": false
+      }
+    },
+    {
+      "id": "S4F-FAIL-QUESTIONS",
+      "session": {
+        "active_concept": "organizacion"
+      },
+      "input": {
+        "text": "Dame información básica",
+        "dataset_failures": [
+          "questions"
+        ]
+      },
+      "expected": {
+        "basic_retrieval_available": true,
+        "optional_failure": "questions",
+        "fatal_error": false
+      }
+    },
+    {
+      "id": "S4F-FAIL-RESOURCES",
+      "session": {
+        "active_concept": "organizacion"
+      },
+      "input": {
+        "text": "Dame información básica",
+        "dataset_failures": [
+          "resources"
+        ]
+      },
+      "expected": {
+        "basic_retrieval_available": true,
+        "optional_failure": "resources",
+        "fatal_error": false
+      }
+    },
+    {
+      "id": "S4F-FAIL-CORPORA",
+      "session": {
+        "active_concept": "organizacion"
+      },
+      "input": {
+        "text": "Dame información básica",
+        "dataset_failures": [
+          "corpora"
+        ]
+      },
+      "expected": {
+        "basic_retrieval_available": true,
+        "optional_failure": "corpora",
+        "fatal_error": false
+      }
+    },
+    {
+      "id": "S4F-FAIL-ALL-OPTIONAL",
+      "session": {
+        "active_concept": "organizacion"
+      },
+      "input": {
+        "text": "Dame información básica",
+        "dataset_failures": [
+          "procedures",
+          "questions",
+          "resources",
+          "corpora"
+        ]
+      },
+      "expected": {
+        "basic_retrieval_available": true,
+        "fatal_error": false,
+        "invented_content_count": 0
+      }
+    },
+    {
+      "id": "S4F-RETRY",
+      "session": {
+        "active_concept": "organizacion",
+        "last_error": {
+          "layer": "optional_dataset",
+          "dataset": "questions"
+        }
+      },
+      "input": {
+        "action": "RETRY"
+      },
+      "expected": {
+        "retry_safe": true,
+        "duplicate_response_count": 0,
+        "stale_result_reapplied": false
+      }
+    },
+    {
+      "id": "S4F-STORAGE-LOCAL",
+      "session": {
+        "turns": [
+          {
+            "user": "Texto privado de prueba"
+          }
+        ]
+      },
+      "input": {
+        "inspection": "localStorage"
+      },
+      "expected": {
+        "conversation_artifacts_found": 0
+      }
+    },
+    {
+      "id": "S4F-STORAGE-SESSION",
+      "session": {
+        "turns": [
+          {
+            "user": "Texto privado de prueba"
+          }
+        ]
+      },
+      "input": {
+        "inspection": "sessionStorage"
+      },
+      "expected": {
+        "conversation_artifacts_found": 0
+      }
+    },
+    {
+      "id": "S4F-STORAGE-COOKIE",
+      "session": {
+        "turns": [
+          {
+            "user": "Texto privado de prueba"
+          }
+        ]
+      },
+      "input": {
+        "inspection": "cookies"
+      },
+      "expected": {
+        "conversation_artifacts_found": 0
+      }
+    },
+    {
+      "id": "S4F-STORAGE-IDB",
+      "session": {
+        "turns": [
+          {
+            "user": "Texto privado de prueba"
+          }
+        ]
+      },
+      "input": {
+        "inspection": "indexedDB"
+      },
+      "expected": {
+        "conversation_artifacts_found": 0
+      }
+    },
+    {
+      "id": "S4F-RELOAD",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido me agota",
+            "active_concept": "ruido"
+          }
+        ]
+      },
+      "input": {
+        "action": "RELOAD_NEW_SESSION"
+      },
+      "expected": {
+        "new_session": true,
+        "restored_conversation_turns": 0,
+        "restored_active_concept": null
+      }
+    },
+    {
+      "id": "S4F-REJECTED-NOT-ACTIVE",
+      "session": {
+        "active_concept": "ruido",
+        "rejected_concepts": []
+      },
+      "input": {
+        "text": "No es el ruido, es la luz"
+      },
+      "expected": {
+        "active_concept": "luz",
+        "rejected_concepts": [
+          "ruido"
+        ],
+        "preserve_rejected_as_active": false
+      }
+    },
+    {
+      "id": "S4F-AMBIGUOUS-PRONOUN-INFO",
+      "session": {
+        "turns": [
+          {
+            "user": "El ruido y la luz me agotan",
+            "active_concepts": [
+              "ruido",
+              "luz"
+            ]
+          }
+        ]
+      },
+      "input": {
+        "text": "¿Y qué hago con eso?"
+      },
+      "expected": null,
+      "informational_reason": "Pronombre con dos antecedentes plausibles: requiere política/juicio conversacional explícito."
+    },
+    {
+      "id": "S4F-DOUBLE-NEGATION-INFO",
+      "session": {
+        "turns": []
+      },
+      "input": {
+        "text": "No es que no me moleste el ruido"
+      },
+      "expected": null,
+      "informational_reason": "Doble negación semánticamente ambigua; no convertir en assertion automática sin política lingüística explícita."
+    }
+  ]
+}

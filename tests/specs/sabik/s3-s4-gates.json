@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "phase": "S3-S4-QA0",
+  "base_sha": "96ebf38a535fa287f32fee8c7957ede39933365c",
+  "gates": [
+    {
+      "id": "AUTOMATIC_BLOCKING",
+      "blocking": true,
+      "execution": "machine",
+      "rule": "Solo assertions deterministas observables. Un fallo bloquea la fase."
+    },
+    {
+      "id": "MANUAL_BLOCKING",
+      "blocking": true,
+      "execution": "human_evidence_only",
+      "rule": "Nunca se infiere PASS desde DOM, snapshots, heurísticas o tests automáticos. Requiere PASS_REAL/FAIL_REAL aportado como evidencia humana."
+    },
+    {
+      "id": "INFORMATIONAL",
+      "blocking": false,
+      "execution": "report_only",
+      "rule": "Se registra para revisión editorial/lingüística; no bloquea y no se convierte en test binario automático."
+    }
+  ]
+}

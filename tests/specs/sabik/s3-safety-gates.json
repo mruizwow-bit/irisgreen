@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "phase": "S3",
+  "title": "S3 · Seguridad y recursos humanos · matriz QA0",
+  "base_sha": "96ebf38a535fa287f32fee8c7957ede39933365c",
+  "rows": [
+    {
+      "id": "S3-A01",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Riesgo directo en primera persona prevalece sobre flujo normal.",
+      "fixture_ids": [
+        "S3F-DIRECT-SELF"
+      ],
+      "coverage": [
+        "direct_risk"
+      ]
+    },
+    {
+      "id": "S3-A02",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Lenguaje indirecto no se fuerza a confirmado; admite incertidumbre y aclaración breve.",
+      "fixture_ids": [
+        "S3F-INDIRECT-SELF"
+      ],
+      "coverage": [
+        "indirect_risk"
+      ]
+    },
+    {
+      "id": "S3-A03",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Ambigüedad real entra en incertidumbre y pide aclaración breve.",
+      "fixture_ids": [
+        "S3F-AMBIGUOUS"
+      ],
+      "coverage": [
+        "ambiguous_risk"
+      ]
+    },
+    {
+      "id": "S3-A04",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Negación explícita evita falso positivo de riesgo confirmado.",
+      "fixture_ids": [
+        "S3F-NEGATED"
+      ],
+      "coverage": [
+        "negated_risk"
+      ]
+    },
+    {
+      "id": "S3-A05",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Tercera persona conserva sujeto y no se reescribe como primera persona.",
+      "fixture_ids": [
+        "S3F-THIRD-PERSON"
+      ],
+      "coverage": [
+        "third_person"
+      ]
+    },
+    {
+      "id": "S3-A06",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Citas no se interpretan automáticamente como riesgo personal.",
+      "fixture_ids": [
+        "S3F-QUOTED",
+        "S3F-INFORMATIONAL-QUOTE"
+      ],
+      "coverage": [
+        "quotes",
+        "informational_reference"
+      ]
+    },
+    {
+      "id": "S3-A07",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Riesgo físico inmediato prioriza ayuda humana/acción inmediata.",
+      "fixture_ids": [
+        "S3F-PHYSICAL-IMMEDIATE"
+      ],
+      "coverage": [
+        "physical_immediate"
+      ]
+    },
+    {
+      "id": "S3-A08",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Expresiones idiomáticas de falso positivo permanecen en flujo normal.",
+      "fixture_ids": [
+        "S3F-FALSE-POSITIVE"
+      ],
+      "coverage": [
+        "false_positive"
+      ]
+    },
+    {
+      "id": "S3-A09",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Sin territorio no se inventa recurso local.",
+      "fixture_ids": [
+        "S3F-NO-TERRITORY"
+      ],
+      "coverage": [
+        "missing_territory",
+        "no_invention"
+      ]
+    },
+    {
+      "id": "S3-A10",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Recurso oficial válido y publicable puede seleccionarse sin alterar sus datos.",
+      "fixture_ids": [
+        "S3F-RESOURCE-VALID"
+      ],
+      "coverage": [
+        "official_resource_correct"
+      ]
+    },
+    {
+      "id": "S3-A11",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Recurso vencido se suprime.",
+      "fixture_ids": [
+        "S3F-RESOURCE-EXPIRED"
+      ],
+      "coverage": [
+        "expired_resource"
+      ]
+    },
+    {
+      "id": "S3-A12",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Recurso no publicable se suprime.",
+      "fixture_ids": [
+        "S3F-RESOURCE-NOT-PUBLISHABLE"
+      ],
+      "coverage": [
+        "not_publishable_resource"
+      ]
+    },
+    {
+      "id": "S3-A13",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Ausencia de recurso usa fallback seguro sin inventar contacto.",
+      "fixture_ids": [
+        "S3F-RESOURCE-MISSING"
+      ],
+      "coverage": [
+        "resource_absence",
+        "no_invention"
+      ]
+    },
+    {
+      "id": "S3-A14",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Fuente no oficial no habilita datos operativos.",
+      "fixture_ids": [
+        "S3F-RESOURCE-UNOFFICIAL"
+      ],
+      "coverage": [
+        "official_source_required"
+      ]
+    },
+    {
+      "id": "S3-A15",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Un recurso de otro territorio no se ofrece como local.",
+      "fixture_ids": [
+        "S3F-TERRITORY-MISMATCH"
+      ],
+      "coverage": [
+        "territory_mismatch"
+      ]
+    },
+    {
+      "id": "S3-A16",
+      "gate": "AUTOMATIC_BLOCKING",
+      "requirement": "Petición explícita de inventar un recurso se rechaza cuando no existe fuente oficial.",
+      "fixture_ids": [
+        "S3F-NO-SOURCE"
+      ],
+      "coverage": [
+        "no_official_source_no_fabrication"
+      ]
+    },
+    {
+      "id": "S3-M01",
+      "gate": "MANUAL_BLOCKING",
+      "requirement": "Recurso humano es operable con teclado y foco visible.",
+      "manual_checklist": [
+        "Tab/Shift+Tab alcanzan recurso y acciones",
+        "Enter/Espacio activan una sola acción",
+        "foco no queda atrapado"
+      ],
+      "coverage": [
+        "keyboard"
+      ]
+    },
+    {
+      "id": "S3-M02",
+      "gate": "MANUAL_BLOCKING",
+      "requirement": "Lector de pantalla anuncia prioridad, nombre y estado del recurso sin duplicación.",
+      "manual_checklist": [
+        "lector real",
+        "nombre accesible único",
+        "anuncio no duplicado",
+        "contenido completo navegable"
+      ],
+      "coverage": [
+        "screen_reader"
+      ]
+    },
+    {
+      "id": "S3-M03",
+      "gate": "MANUAL_BLOCKING",
+      "requirement": "Movimiento reducido elimina movimiento no esencial sin ocultar protección o ayuda.",
+      "manual_checklist": [
+        "preferencia real reduced motion",
+        "texto/estado siguen disponibles",
+        "sin dependencia de color/animación"
+      ],
+      "coverage": [
+        "reduced_motion"
+      ]
+    },
+    {
+      "id": "S3-M04",
+      "gate": "MANUAL_BLOCKING",
+      "requirement": "La protección se entiende sin depender solo de color o animación.",
+      "manual_checklist": [
+        "estado textual o semántico perceptible",
+        "alto contraste/reduced motion no elimina significado"
+      ],
+      "coverage": [
+        "nonvisual_safety_semantics"
+      ]
+    },
+    {
+      "id": "S3-I01",
+      "gate": "INFORMATIONAL",
+      "requirement": "Jerga emergente se registra para revisión editorial, no se fuerza a clase binaria.",
+      "fixture_ids": [
+        "S3F-SLANG-INFO"
+      ],
+      "coverage": [
+        "human_judgment_boundary"
+      ]
+    },
+    {
+      "id": "S3-I02",
+      "gate": "INFORMATIONAL",
+      "requirement": "Antigüedad de verificación del recurso requiere política editorial explícita.",
+      "fixture_ids": [
+        "S3F-FRESHNESS-INFO"
+      ],
+      "coverage": [
+        "resource_freshness_review"
+      ]
+    }
+  ]
+}

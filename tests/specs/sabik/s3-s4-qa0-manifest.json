@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "id": "S3-S4-QA0",
+  "base_branch": "sabik-preview",
+  "base_sha": "96ebf38a535fa287f32fee8c7957ede39933365c",
+  "runtime_modified": false,
+  "i0_dependency": false,
+  "gates_file": "tests/specs/sabik/s3-s4-gates.json",
+  "matrices": [
+    "tests/specs/sabik/s3-safety-gates.json",
+    "tests/specs/sabik/s4-context-gates.json"
+  ],
+  "fixtures": [
+    "tests/fixtures/sabik/s3-safety-fixtures.json",
+    "tests/fixtures/sabik/s4-context-fixtures.json"
+  ],
+  "runners": [
+    "tests/specs/sabik/validate-s3-s4-qa0.mjs",
+    "tests/specs/sabik/run-s3-s4-qa0.mjs"
+  ],
+  "adapter_contract": {
+    "optional_module_exports": [
+      "evaluateS3",
+      "evaluateS4"
+    ],
+    "signature": "async evaluateS3(fixture) / async evaluateS4(fixture) -> observation object",
+    "comparison": "expected is matched as recursive subset of observation; extra runtime fields are allowed"
+  },
+  "manual_evidence_contract": {
+    "format": {
+      "rows": {
+        "S3-M01": "PASS_REAL | FAIL_REAL | PENDIENTE_EVIDENCIA_REAL"
+      }
+    },
+    "rule": "MANUAL_BLOCKING is never inferred automatically. Only explicit human evidence can resolve it."
+  },
+  "required_coverage": {
+    "S3": [
+      "direct_risk",
+      "indirect_risk",
+      "ambiguous_risk",
+      "negated_risk",
+      "third_person",
+      "quotes",
+      "physical_immediate",
+      "false_positive",
+      "missing_territory",
+      "official_resource_correct",
+      "expired_resource",
+      "not_publishable_resource",
+      "resource_absence",
+      "no_official_source_no_fabrication",
+      "keyboard",
+      "screen_reader",
+      "reduced_motion"
+    ],
+    "S4": [
+      "first_query_vs_correction",
+      "explicit_correction",
+      "negation_variable_order",
+      "not_this",
+      "search_other_way",
+      "do_not_ask",
+      "pronoun",
+      "ellipsis",
+      "topic_change",
+      "optional_dataset_procedures",
+      "optional_dataset_questions",
+      "optional_dataset_resources",
+      "optional_dataset_corpora",
+      "retry",
+      "no_web_storage",
+      "no_cookies",
+      "no_indexeddb",
+      "new_session_after_reload"
+    ]
+  }
+}
