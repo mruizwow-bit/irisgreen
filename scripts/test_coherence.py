@@ -120,12 +120,12 @@ def other(p,path,width):
   choose(p,'temaChips','Autismo');p.locator('#escuchar button.ig-video-title').filter(has_text='Jules').click();frame=p.locator('#escuchar iframe').first;frame.wait_for(state='attached');assert urlsplit(frame.get_attribute('src')).hostname=='player.vimeo.com'
   filters(p,'temaChips').first.click();key='temaChips';row['provider_mapping']=True
  elif path=='/es/biblioteca/':
-  all_cards=p.locator('main .vd-card');cards=p.locator('main .vd-card:visible');assert cards.count()==48
+  all_cards=p.locator('main .vd-card');cards=p.locator('main .vd-card:visible');assert cards.count()==49
   for b in p.locator('.catbuttons button').all():
    value=b.get_attribute('data-cat');n=all_cards.evaluate_all('(els,v)=>els.filter(e=>!v||e.dataset.cat===v).length',value);b.click();assert cards.count()==n
   p.locator('.catbuttons button').first.click();p.locator('#vd-search').fill('zzzinexistentexxx');assert cards.count()==0
-  p.locator('#vd-search').fill('');assert cards.count()==48
-  style(p,'.catbuttons button[aria-pressed=true]',path);bounds(p,'.catbuttons button');row['records']=48;key=None
+  p.locator('#vd-search').fill('');assert cards.count()==49
+  style(p,'.catbuttons button[aria-pressed=true]',path);bounds(p,'.catbuttons button');row['records']=49;key=None
  elif path=='/es/intereses/':
   d=json.loads((ROOT/'es/intereses/cromos.json').read_text());n=sum(not c.get('pendiente') for t in d['temas'] for c in t.get('cromos',[]));cards=p.locator('#album article:visible');assert cards.count()==n
   p.locator('#temaFilters [data-tema=minerales]').click();assert cards.count()==sum(not c.get('pendiente') for t in d['temas'] if t['id']=='minerales' for c in t['cromos'])

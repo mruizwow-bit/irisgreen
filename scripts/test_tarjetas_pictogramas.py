@@ -23,7 +23,7 @@ REPO = Path(__file__).resolve().parents[1]
 
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
-    ("vida", "es/biblioteca/*/index.html", 48),
+    ("vida", "es/biblioteca/*/index.html", 49),
     ("condiciones", "es/neurodiversidad/condiciones/*/index.html", 185),
 )
 EXPECTED_SVGS = {"hablar.svg", "escribir.svg", "esperar.svg", "preguntar.svg", "carpeta.svg"}

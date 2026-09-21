@@ -60,7 +60,7 @@ jobs:
           # para hacerla pasar: actualizar expected solo junto al cambio editorial.
           # La tercera utilidad noindex es /es/taller/hojas/: se enlaza para imprimir,
           # pero no se añade al sitemap como contenido editorial independiente.
-          expected={'html':999,'index,follow':982,'noindex,follow':3,'otro_o_ninguno':14,'sitemap_urls':995}
+          expected={'html':1010,'index,follow':993,'noindex,follow':4,'otro_o_ninguno':13,'sitemap_urls':1006}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
               raise SystemExit(f'Contrato público de indexación alterado. Esperado {expected}; obtenido {got}')
@@ -80,6 +80,9 @@ jobs:
       - name: Auditar estructura documental de Datos
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_datos_documental.py --root dist
+      - name: Comprobar expansión W1
+        if: ${{ !cancelled() }}
+        run: python3 scripts/test_web_expansion_w1.py --root dist
       - name: Inventariar dependencias para CSP
         if: ${{ !cancelled() }}
         run: python3 scripts/audit_csp_dependencies.py --root dist

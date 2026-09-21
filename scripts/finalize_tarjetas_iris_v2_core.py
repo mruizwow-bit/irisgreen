@@ -22,7 +22,7 @@ from pathlib import Path
 
 DETAIL_SETS = (
     ("situaciones", "es/situaciones/*/index.html", 187),
-    ("vida", "es/biblioteca/*/index.html", 48),
+    ("vida", "es/biblioteca/*/index.html", 49),
     ("condiciones", "es/neurodiversidad/condiciones/*/index.html", 185),
 )
 

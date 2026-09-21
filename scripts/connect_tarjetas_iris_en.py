@@ -24,7 +24,7 @@ import connect_tarjetas_iris as es  # noqa: E402
 
 SETS = (
     ("situaciones", "en/situations/*/index.html", 187),
-    ("vida", "en/everyday-life/*/index.html", 48),
+    ("vida", "en/everyday-life/*/index.html", 49),
     ("condiciones", "en/neurodiversity/conditions/*/index.html", 185),
 )
 
