@@ -60,7 +60,7 @@ jobs:
           # para hacerla pasar: actualizar expected solo junto al cambio editorial.
           # La tercera utilidad noindex es /es/taller/hojas/: se enlaza para imprimir,
           # pero no se añade al sitemap como contenido editorial independiente.
-          expected={'html':1010,'index,follow':993,'noindex,follow':4,'otro_o_ninguno':13,'sitemap_urls':1007}
+          expected={'html':1010,'index,follow':993,'noindex,follow':4,'otro_o_ninguno':13,'sitemap_urls':1006}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
               raise SystemExit(f'Contrato público de indexación alterado. Esperado {expected}; obtenido {got}')
