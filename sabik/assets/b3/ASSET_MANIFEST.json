@@ -4,105 +4,130 @@
   "source": {
     "pr": 182,
     "head": "e5f70cba76a4414527c10b0fbecfd549a7390e66",
-    "note": "64×64 LANCZOS runtime derivatives of the accepted R1 keyframes. No semantic or geometry redesign."
+    "keyframes": "B3_STATIC_V1_R1",
+    "source_dimensions": [
+      544,
+      544
+    ],
+    "note": "The runtime sprite is a 256×256 LANCZOS derivative per cell, assembled into a lossless WebP. Source keyframes are not redesigned."
   },
-  "package": {
-    "file": "SABIK_B3_RUNTIME_ASSETS_R0.zip",
-    "bytes": 86104,
-    "sha256": "82373796ff32bb9f3834f1c59472c5f5f25ea5b81393a29ed1d993971ed3b218",
-    "tracked_files": 16
+  "runtime": {
+    "file": "sabik-b3-r0-sprite-256-lossless.webp",
+    "dimensions": [
+      1280,
+      768
+    ],
+    "cell": [
+      256,
+      256
+    ],
+    "columns": [
+      "PRESENTE",
+      "ORIENTAR",
+      "TRANSICIÓN",
+      "PAUSA",
+      "CONFIRMAR"
+    ],
+    "rows": [
+      "web",
+      "ia",
+      "educa"
+    ],
+    "bytes": 751660,
+    "sha256": "e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23",
+    "format": "image/webp",
+    "lossless": true
   },
-  "target_directory": "sabik/assets/b3",
-  "files": [
+  "source_files": [
     {
       "file": "educa_confirmar.png",
-      "bytes": 5035,
-      "sha256": "06f03a0ddc44ec90f8e5410af71cf045a9733a50fa030603a74c21bc81405157",
-      "source_library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
+      "bytes": 226039,
+      "sha256": "b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647",
+      "library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
     },
     {
       "file": "educa_orientar.png",
-      "bytes": 5541,
-      "sha256": "5a8b9ffe735768a86bf916090e52783b6ac6a3f1574b344bc0204a2a6334e6e5",
-      "source_library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
+      "bytes": 244102,
+      "sha256": "7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640",
+      "library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
     },
     {
       "file": "educa_pausa.png",
-      "bytes": 4701,
-      "sha256": "05a888852dd1d990b38c4ef1c6480a49b55ff8eef13cc6b7d6a41386e48c3b60",
-      "source_library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
+      "bytes": 186097,
+      "sha256": "70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f",
+      "library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
     },
     {
       "file": "educa_presente.png",
-      "bytes": 5427,
-      "sha256": "ea045ed9c9f77f3848084b24524af90f3375dda7abac768bfb8c51eb9ff07075",
-      "source_library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
+      "bytes": 195272,
+      "sha256": "1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518",
+      "library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
     },
     {
       "file": "educa_transicion.png",
-      "bytes": 5616,
-      "sha256": "5dd21879924287ef4e033e299a73b1f410c798335ffc90d1ab2821826d15bd12",
-      "source_library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
+      "bytes": 245401,
+      "sha256": "4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724",
+      "library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
     },
     {
       "file": "ia_confirmar.png",
-      "bytes": 5943,
-      "sha256": "c66b734904faa119e09c40e6447778a2a719a6b8057b5ce6bfe1afbf6278a168",
-      "source_library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
+      "bytes": 270460,
+      "sha256": "6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed",
+      "library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
     },
     {
       "file": "ia_orientar.png",
-      "bytes": 6689,
-      "sha256": "55c53a37b5ef2913a66e4f27022089acb0c677a796fdb6ff4deebf496fcd3f81",
-      "source_library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
+      "bytes": 299134,
+      "sha256": "ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9",
+      "library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
     },
     {
       "file": "ia_pausa.png",
-      "bytes": 5713,
-      "sha256": "344310e502d118c1c9df073e43035aa6deebc7c1be9e989676a6f2348ea0a7f3",
-      "source_library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
+      "bytes": 234155,
+      "sha256": "fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792",
+      "library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
     },
     {
       "file": "ia_presente.png",
-      "bytes": 6395,
-      "sha256": "e55b9fb157175ba99e547013785dd2da4b96f03f53d6ac28c3ab689e0439b6a0",
-      "source_library_id": "libfile_62105e6beefc8191a503383758385cc9"
+      "bytes": 245636,
+      "sha256": "6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3",
+      "library_id": "libfile_62105e6beefc8191a503383758385cc9"
     },
     {
       "file": "ia_transicion.png",
-      "bytes": 6683,
-      "sha256": "2c722698d14d893deab0172d54df7c4479a3eefa27284c5ba0ad1c263040c97c",
-      "source_library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
+      "bytes": 301766,
+      "sha256": "09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e",
+      "library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
     },
     {
       "file": "web_confirmar.png",
-      "bytes": 4982,
-      "sha256": "d024d911e08e7cd19437af47fcd8ee07a11b55cf7e36bd6bb3f69d644e81f56e",
-      "source_library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
+      "bytes": 231434,
+      "sha256": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053",
+      "library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
     },
     {
       "file": "web_orientar.png",
-      "bytes": 5355,
-      "sha256": "fa48a94540e8e97cb3111253a75ea93e5fee56f4d3a9176ba2ce305ed34621b8",
-      "source_library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
+      "bytes": 232385,
+      "sha256": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+      "library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
     },
     {
       "file": "web_pausa.png",
-      "bytes": 4493,
-      "sha256": "1284849f86b5c482980fcc791d9ec23e76ae930a1db63afe9cdc462c96fc2d85",
-      "source_library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
+      "bytes": 183613,
+      "sha256": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+      "library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
     },
     {
       "file": "web_presente.png",
-      "bytes": 5128,
-      "sha256": "4da61fa79249e190998aa11ccfad977ff2a8ad149fc964ba31ddf2915eae3471",
-      "source_library_id": "libfile_c12238dd6b388191bc67686b15fd1e94"
+      "bytes": 194400,
+      "sha256": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
+      "library_id": "libfile_c12238dd6b388191bc67686b15fd1e94"
     },
     {
       "file": "web_transicion.png",
-      "bytes": 5479,
-      "sha256": "b132a8d7f8d6de28a2a771b64c1c6b50a53246bc6a9db3478c58d88db6061478",
-      "source_library_id": "libfile_c158341d34688191979978dfb1bd4fe2"
+      "bytes": 243699,
+      "sha256": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
+      "library_id": "libfile_c158341d34688191979978dfb1bd4fe2"
     }
   ]
 }
