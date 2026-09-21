@@ -1,0 +1,76 @@
+name: A01 candidate 212 independent gate
+on:
+  pull_request:
+    branches: [sabik/reconcile-a01-safety-continuity-20260921]
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Record exact Linux environment
+        run: |
+          git rev-parse HEAD
+          uname -a
+          cat /etc/os-release
+          node --version
+          python3 --version
+      - name: Verify ancestry freeze and protected files
+        run: |
+          BASE=fc5cdfc2f978c85033de2b07c34309f8a4a7bd18
+          CAND=a6c4e1b946a36940194e8c44e2d98838038fcefc
+          FREEZE=418740e858397008aa709b0fcf22589fbc20a02f
+          git merge-base --is-ancestor "$CAND" HEAD
+          for p in tests/fixtures/sabik/a01-safety-independent-v1.json tests/specs/sabik/a01-safety-gate-v1.json tests/specs/sabik/run-a01-safety-gate-v1.mjs tests/specs/sabik/validate-a01-safety-gate-v1.mjs; do test "$(git rev-parse "$FREEZE:$p")" = "$(git rev-parse "HEAD:$p")"; done
+          for p in sabik/nea-core/sabik-machine.js tools/test-sabik-machine-s0.js sabik/nea-core/session.js sabik/nea-core/sabik-state.js; do test "$(git rev-parse "$BASE:$p")" = "$(git rev-parse "$CAND:$p")"; done
+      - name: Validate frozen contract
+        run: node tests/specs/sabik/validate-a01-safety-gate-v1.mjs
+      - name: Run exact frozen A01 gate
+        continue-on-error: true
+        run: |
+          set +e
+          set -o pipefail
+          node tests/specs/sabik/run-a01-safety-gate-v1.mjs --adapter tools/a01-candidate-212-independent-adapter.mjs | tee /tmp/a01-candidate-212.log
+          code=${PIPESTATUS[0]}
+          echo "$code" > /tmp/a01-candidate-212.exit
+          exit "$code"
+      - name: Pure regressions
+        run: |
+          node tools/test-sabik-machine-s0.js
+          node tools/test-sabik-s4.js
+          node tools/test-sabik-page-v7.js
+          node tools/test-sabik-a11y-closure.js
+      - name: Browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/a01-212-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/a01-212-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          echo "NODE_PATH=$RUNNER_TEMP/a01-212-browser/node_modules" >> "$GITHUB_ENV"
+      - name: Browser source
+        run: |
+          node tools/test-sabik-s1.js
+          node tools/test-sabik-s4-browser.js
+      - name: Linux build and dist browser
+        run: |
+          python3 scripts/build_site.py
+          test -z "$(git status --porcelain --untracked-files=no)"
+          export S1_WEB_ROOT="$PWD/dist"
+          export S4_WEB_ROOT="$PWD/dist"
+          node tools/test-sabik-s1.js
+          node tools/test-sabik-s4-browser.js
+          node -e 'const fs=require("fs"),p=require("path");const w=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{const x=p.join(d,e.name);return e.isDirectory()?w(x):[{x,b:fs.statSync(x).size}]});const f=w("dist");console.log(JSON.stringify({files:f.length,total_bytes:f.reduce((n,x)=>n+x.b,0),max_file_bytes:Math.max(...f.map(x=>x.b))},null,2));'
+      - name: Bind final job verdict to frozen gate
+        run: |
+          code="$(cat /tmp/a01-candidate-212.exit)"
+          if [ "$code" = "0" ]; then echo A01_QA_PASS_CANDIDATE; else echo A01_QA_BLOCKED_CANDIDATE; fi
+          exit "$code"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: a01-candidate-212-independent
+          path: /tmp/a01-candidate-212.log
+          retention-days: 14
