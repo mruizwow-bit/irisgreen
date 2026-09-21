@@ -1,0 +1,121 @@
+name: Sabik I0 Calibration V3 independent run
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v3-independent-run-20260921
+    paths:
+      - 'tools/independent/run-i0-calibration-v3-independent.mjs'
+      - '.github/workflows/sabik-i0-v3-independent-run.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  calibration-v3-independent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout neutral controller
+        uses: actions/checkout@v4
+        with:
+          path: controller
+          persist-credentials: false
+
+      - name: Checkout Calibration V3 exact SHA
+        uses: actions/checkout@v4
+        with:
+          ref: 841298f41da2e63f5ab9fe77e594586841490530
+          path: calibration
+          persist-credentials: false
+
+      - name: Checkout executor exact SHA
+        uses: actions/checkout@v4
+        with:
+          ref: b3daefe4f0cd471c8cc92b35472b51f1840569fa
+          path: executor
+          persist-credentials: false
+
+      - name: Verify frozen identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C calibration rev-parse HEAD)" = "841298f41da2e63f5ab9fe77e594586841490530"
+          test "$(git -C executor rev-parse HEAD)" = "b3daefe4f0cd471c8cc92b35472b51f1840569fa"
+          test "$(git -C executor rev-parse HEAD:tools/sabik-i0-executor-v3.mjs)" = "f69a91aa4023f3a833c82ca613b598505d1f4169"
+          echo "2dd9d24a01f99c763a7ad4db7fe2000fc28568162fbebb5599c012e2afde4f6f  calibration/tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl" | sha256sum -c -
+          test "$(wc -l < calibration/tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl)" -eq 200
+
+      - name: Verify neutral harness scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check controller/tools/independent/run-i0-calibration-v3-independent.mjs
+          ! grep -F "tests/development/" controller/tools/independent/run-i0-calibration-v3-independent.mjs
+          ! grep -F "calibration.v0.4.jsonl" controller/tools/independent/run-i0-calibration-v3-independent.mjs
+          ! grep -F "reports/sabik/i0/executor" controller/tools/independent/run-i0-calibration-v3-independent.mjs
+          ! grep -F "#184" controller/tools/independent/run-i0-calibration-v3-independent.mjs
+          ! grep -F "#173" controller/tools/independent/run-i0-calibration-v3-independent.mjs
+
+      - name: Remove all Git remotes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C controller remote remove origin || true
+          git -C calibration remote remove origin || true
+          git -C executor remote remove origin || true
+          test -z "$(git -C controller remote)"
+          test -z "$(git -C calibration remote)"
+          test -z "$(git -C executor remote)"
+
+      - name: Record environment before run
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifact
+          {
+            echo "uname=$(uname -a)"
+            echo "node=$(node --version)"
+            echo "python=$(python3 --version 2>&1)"
+            echo "git=$(git --version)"
+            echo "executor_sha=$(git -C executor rev-parse HEAD)"
+            echo "executor_module_blob=$(git -C executor rev-parse HEAD:tools/sabik-i0-executor-v3.mjs)"
+            echo "calibration_sha=$(git -C calibration rev-parse HEAD)"
+            echo "corpus_sha256=$(sha256sum calibration/tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl | awk '{print $1}')"
+            echo "harness_sha256=$(sha256sum controller/tools/independent/run-i0-calibration-v3-independent.mjs | awk '{print $1}')"
+          } > artifact/environment.txt
+
+      - name: Execute Calibration V3 exactly once
+        shell: bash
+        run: |
+          set -euo pipefail
+          env -i PATH="$PATH" HOME="$HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8             node controller/tools/independent/run-i0-calibration-v3-independent.mjs               --corpus calibration/tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl               --executor executor/tools/sabik-i0-executor-v3.mjs               --output artifact             | tee artifact/run.log
+
+      - name: Freeze raw result hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "executor_sha=b3daefe4f0cd471c8cc92b35472b51f1840569fa"
+            echo "calibration_sha=841298f41da2e63f5ab9fe77e594586841490530"
+            echo "corpus_sha256=2dd9d24a01f99c763a7ad4db7fe2000fc28568162fbebb5599c012e2afde4f6f"
+            echo "controller_commit=$GITHUB_SHA"
+            echo "workflow_run_id=$GITHUB_RUN_ID"
+            echo "workflow_run_attempt=$GITHUB_RUN_ATTEMPT"
+            echo "seed=null"
+            echo "randomness=false"
+            echo "calibration_complete_runs=1"
+            echo "selective_reruns=0"
+            echo "threshold_changes=0"
+            echo "executor_changes=0"
+            echo "calibration_changes=0"
+          } > artifact/reproducibility.txt
+          find artifact -maxdepth 1 -type f ! -name 'SHA256SUMS.ALL' -printf '%f\n' | sort | while read -r f; do sha256sum "artifact/$f"; done > artifact/SHA256SUMS.ALL
+          cat artifact/SHA256SUMS.ALL
+
+      - name: Upload independent raw artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: I0_CALIBRATION_V3_INDEPENDENT_RAW
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 30
