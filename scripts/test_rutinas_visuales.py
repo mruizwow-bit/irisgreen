@@ -15,7 +15,7 @@ rows=list(csv.DictReader((assets/'sources.csv').open(encoding='utf-8-sig')))
 assert len(rows)==93,len(rows)
 assert all(r['estado']=='CANDIDATO' for r in rows)
 sprite_files=sorted(assets.glob('sprite-*.svg'))
-assert [p.name for p in sprite_files]==[f'sprite-{i}.svg' for i in range(1,14)]
+assert {p.name for p in sprite_files}=={f'sprite-{i}.svg' for i in range(1,14)}
 sprite_text={p.name:p.read_text(encoding='utf-8') for p in sprite_files}
 all_sprites=''.join(sprite_text.values())
 ids=re.findall(r'<symbol\b[^>]*\bid=["\']([^"\']+)["\']',all_sprites,re.I)
