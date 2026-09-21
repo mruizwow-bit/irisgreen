@@ -1387,7 +1387,7 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
 
 
 /* ==========================================================
-   B3 integration R0 · presentation-only candidate
+   B3 integration R1 · current-S4 presentation candidate
    Source semantics remain in S0; this layer must never write Core state.
    ========================================================== */
 .sabik-hologram[data-b3-active="true"]{
