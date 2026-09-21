@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "id": "A03_QA_GATE_V1",
+  "authorization": "DEC-020",
+  "baseline_sha": "0a1d4339bae2628dc963501a30f326553605821b",
+  "fixture": "tests/fixtures/sabik/a03-cognition-adaptation-v1.json",
+  "frozen_before_a03_implementation": true,
+  "principle": "Safety/protección no debe, por sí sola, inferir un estado cognitivo de la persona ni modificar sus preferencias/adaptaciones.",
+  "adaptation_definition": {
+    "includes": [
+      "session_preferences",
+      "low_intensity"
+    ],
+    "excludes": [
+      "protection",
+      "functional_state",
+      "interaction",
+      "mode",
+      "visual_presence",
+      "ordinary_flow_block"
+    ]
+  },
+  "required_observables": [
+    "protection_before",
+    "protection_after",
+    "cognitive_state_before",
+    "cognitive_state_after",
+    "session_preferences_before",
+    "session_preferences_after",
+    "low_intensity_before",
+    "low_intensity_after",
+    "normal_response_allowed",
+    "ordinary_retrieval",
+    "safety_transition",
+    "explicit_cognitive_signal",
+    "adaptation_changed"
+  ],
+  "adapter_contract": {
+    "export": "runA03Scenario",
+    "signature": "async runA03Scenario(scenario) -> observation",
+    "rule": "El adapter observa runtime real. No puede alterar expected ni tratar presentación protectora como adaptation_changed."
+  },
+  "blocking_rule": "Cualquier mismatch de un observable congelado bloquea A03."
+}

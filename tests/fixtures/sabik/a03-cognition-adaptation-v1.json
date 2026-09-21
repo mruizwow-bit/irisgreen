@@ -1,0 +1,322 @@
+{
+  "schema_version": "1.0",
+  "id": "A03_INDEPENDENT_COGNITION_ADAPTATION_V1",
+  "authorization": "DEC-020",
+  "baseline_sha": "0a1d4339bae2628dc963501a30f326553605821b",
+  "frozen_before_a03_implementation": true,
+  "origin": "QA_SYNTHETIC_INDEPENDENT",
+  "note": "A03 mide acoplamiento entre Safety y cognición/preferencias. Las señales Safety son semánticas para no duplicar el reconocimiento lingüístico ya cubierto por A01.",
+  "default_preferences": {
+    "response_length": "normal",
+    "max_options": 3,
+    "question_threshold": "normal",
+    "question_policy": "normal",
+    "low_intensity": false
+  },
+  "scenarios": [
+    {
+      "id": "A03-01-CONFIRMED-SAFETY-ONLY",
+      "title": "Riesgo confirmado sin señal cognitiva no infiere cognición/adaptación",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_any_of": [
+          "risk",
+          "human_handoff"
+        ],
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "normal_response_allowed": false,
+        "ordinary_retrieval": false,
+        "safety_transition": "RISK_CONFIRMED",
+        "adaptation_changed": false
+      }
+    },
+    {
+      "id": "A03-02-UNCERTAIN-SAFETY-ONLY",
+      "title": "Riesgo ambiguo sin señal cognitiva no infiere cognición/adaptación",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_UNCERTAIN"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after": "uncertain",
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "normal_response_allowed": false,
+        "ordinary_retrieval": false,
+        "safety_transition": "RISK_UNCERTAIN",
+        "adaptation_changed": false
+      }
+    },
+    {
+      "id": "A03-03-THIRD-PERSON-SAFETY",
+      "title": "Tercera persona puede activar protección sin inferir cognición de la persona usuaria",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_THIRD_PERSON_CURRENT"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_not": "normal",
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "normal_response_allowed": false,
+        "ordinary_retrieval": false,
+        "adaptation_changed": false
+      }
+    },
+    {
+      "id": "A03-04-EXPLICIT-OVERLOAD-NO-SAFETY",
+      "title": "Señal cognitiva explícita sin Safety sí puede cambiar cognición",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "COGNITIVE_OVERLOAD_EXPLICIT"
+        }
+      ],
+      "explicit_cognitive_signal": true,
+      "expect": {
+        "protection_after": "normal",
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "Sobrecarga",
+        "normal_response_allowed": true,
+        "ordinary_retrieval_any_of": [
+          true,
+          false
+        ],
+        "adaptation_changed_any_of": [
+          true,
+          false
+        ]
+      }
+    },
+    {
+      "id": "A03-05-SAFETY-WITH-EXPLICIT-OVERLOAD",
+      "title": "Safety más señal cognitiva explícita permite cambio cognitivo atribuible a la señal",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED_WITH_COGNITIVE_OVERLOAD"
+        }
+      ],
+      "explicit_cognitive_signal": true,
+      "expect": {
+        "protection_after_any_of": [
+          "risk",
+          "human_handoff"
+        ],
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "Sobrecarga",
+        "normal_response_allowed": false,
+        "ordinary_retrieval": false,
+        "safety_transition": "RISK_CONFIRMED"
+      }
+    },
+    {
+      "id": "A03-06-PREFERENCE-PRESERVED",
+      "title": "Preferencia previa de sesión se preserva al entrar en Safety",
+      "setup": {
+        "cognitive_state": "NucleoBase",
+        "preferences": {
+          "response_length": "short"
+        }
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_any_of": [
+          "risk",
+          "human_handoff"
+        ],
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "normal_response_allowed": false,
+        "ordinary_retrieval": false
+      }
+    },
+    {
+      "id": "A03-07-BASE-COGNITION-PRESERVED",
+      "title": "Núcleo base previo se preserva durante Safety sin señal cognitiva nueva",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED"
+        },
+        {
+          "type": "NEUTRAL_TURN"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_not": "normal",
+        "cognitive_state_before": "NucleoBase",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "ordinary_retrieval": false
+      }
+    },
+    {
+      "id": "A03-08-PAUSE-RESUME-PROTECTED",
+      "title": "Pausa y reanudación bajo protección no modifican cognición/preferencias",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED"
+        },
+        {
+          "type": "PAUSE"
+        },
+        {
+          "type": "RESUME"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_not": "normal",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "ordinary_retrieval": false
+      }
+    },
+    {
+      "id": "A03-09-ERROR-RETRY-PROTECTED",
+      "title": "Error técnico y retry bajo protección no modifican cognición/preferencias",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_UNCERTAIN"
+        },
+        {
+          "type": "TECHNICAL_ERROR"
+        },
+        {
+          "type": "RETRY"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after": "uncertain",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "ordinary_retrieval": false
+      }
+    },
+    {
+      "id": "A03-10-RESET-PROTECTED",
+      "title": "Reset bajo protección respeta S0 y no introduce inferencia cognitiva",
+      "setup": {
+        "cognitive_state": "NucleoBase",
+        "preferences": {
+          "response_length": "short"
+        }
+      },
+      "actions": [
+        {
+          "type": "SAFETY_CONFIRMED"
+        },
+        {
+          "type": "RESET"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after_not": "normal",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "ordinary_retrieval": false
+      }
+    },
+    {
+      "id": "A03-11-CLEAR-UNCERTAIN-NO-RESIDUAL",
+      "title": "Aclaración negativa limpia protección sin dejar sobrecarga residual creada por Safety",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SAFETY_UNCERTAIN"
+        },
+        {
+          "type": "SAFETY_CLEAR"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after": "normal",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "safety_transition": "RISK_CLEARED"
+      }
+    },
+    {
+      "id": "A03-12-SENSITIVE-INFORMATIONAL-NO-OVERTRIGGER",
+      "title": "Mención sensible informativa no cambia cognición/preferencias sin señal cognitiva",
+      "setup": {
+        "cognitive_state": "NucleoBase"
+      },
+      "actions": [
+        {
+          "type": "SENSITIVE_INFORMATIONAL"
+        }
+      ],
+      "explicit_cognitive_signal": false,
+      "expect": {
+        "protection_after": "normal",
+        "cognitive_state_after": "NucleoBase",
+        "session_preferences_unchanged": true,
+        "low_intensity_unchanged": true,
+        "adaptation_changed": false,
+        "normal_response_allowed": true
+      }
+    }
+  ]
+}
