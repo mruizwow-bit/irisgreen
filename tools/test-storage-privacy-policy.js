@@ -5,6 +5,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const http=require('node:http');
+const os=require('node:os');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 
@@ -42,6 +43,8 @@ async function externalOff(context,origin){
   const browser=await chromium.launch({channel:'chrome',headless:true});
   try{
     await run('D1-language-migration-persistence-explicit',async()=>{
+      // Migration: when only the legacy session key exists, it becomes canonical
+      // localStorage and the legacy key is removed.
       let context=await browser.newContext();
       await externalOff(context,origin);
       let page=await context.newPage();
@@ -54,27 +57,40 @@ async function externalOff(context,origin){
       await page.waitForFunction(()=>localStorage.getItem('ig_lang')==='en');
       assert.equal(await page.evaluate(()=>sessionStorage.getItem('ig-idioma')),null);
       assert.equal(await page.locator('[data-ig-lang="en"]').getAttribute('aria-pressed'),'true');
-
-      // Explicit EN remains the canonical preference.
-      await page.locator('[data-ig-lang="en"]').click();
-      assert.equal(await page.evaluate(()=>localStorage.getItem('ig_lang')),'en');
-      const state=await context.storageState();
       await context.close();
 
-      // New browser context restored from persisted storage: no sessionStorage survives.
-      context=await browser.newContext({storageState:state});
-      await externalOff(context,origin);
-      page=await context.newPage();
+      // Persistence gate: use a real persistent Chrome profile, close it, and
+      // reopen the same profile. This is stronger than serialising storageState.
+      const profile=fs.mkdtempSync(path.join(os.tmpdir(),'w03-language-'));
+      let persistent=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true,viewport:{width:1280,height:900}});
+      await externalOff(persistent,origin);
+      page=persistent.pages()[0]||await persistent.newPage();
+      await page.goto(origin+'/es/recursos/tarjeta-iris/',{waitUntil:'domcontentloaded'});
+      await page.waitForFunction(()=>window.IG_IDIOMA);
+      await page.evaluate(()=>{localStorage.removeItem('ig_lang');sessionStorage.removeItem('ig-idioma');});
+      await page.reload({waitUntil:'domcontentloaded'});
+      await page.locator('[data-ig-lang="en"]').click();
+      await page.waitForFunction(()=>localStorage.getItem('ig_lang')==='en');
+      await page.goto(origin+'/es/recursos/',{waitUntil:'domcontentloaded'});
+      assert.equal(await page.evaluate(()=>localStorage.getItem('ig_lang')),'en');
+      await persistent.close();
+
+      persistent=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true,viewport:{width:1280,height:900}});
+      await externalOff(persistent,origin);
+      page=persistent.pages()[0]||await persistent.newPage();
       await page.goto(origin+'/es/recursos/tarjeta-iris/',{waitUntil:'domcontentloaded'});
       await page.waitForFunction(()=>window.IG_IDIOMA&&localStorage.getItem('ig_lang')==='en');
       assert.equal(await page.locator('[data-ig-lang="en"]').getAttribute('aria-pressed'),'true');
       assert.equal(await page.evaluate(()=>sessionStorage.getItem('ig-idioma')),null);
 
+      // An explicit new selection must override the remembered value.
       await page.locator('[data-ig-lang="es"]').click();
       await page.waitForFunction(()=>localStorage.getItem('ig_lang')==='es');
       assert.equal(await page.locator('[data-ig-lang="es"]').getAttribute('aria-pressed'),'true');
-      ok('D1-language-migration-persistence-explicit',{canonical:'ig_lang',legacyRemoved:true,explicitWins:true});
-      await context.close();
+      await persistent.close();
+      fs.rmSync(profile,{recursive:true,force:true});
+
+      ok('D1-language-migration-persistence-explicit',{canonical:'ig_lang',legacyRemoved:true,realBrowserReopen:true,explicitWins:true});
     });
 
     await run('D2-saved-videos',async()=>{
