@@ -1,0 +1,28 @@
+{
+  "schema": "SABIK_S4_PRESERVATION_LOCK_R1_CURRENT_BASE",
+  "base": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+  "result": "MUST_REMAIN_IDENTICAL_BLOBS",
+  "files": {
+    "sabik/S4_CONTEXT_CORRECTIONS.md": "5ce85c3fecfc302edfda75cf3771270e71c1839f",
+    "sabik/nea-core.js": "62d9bf013291513b3d40ecbe0acea74055c0dfb8",
+    "sabik/nea-core/corrections.js": "716507625ac22cbe6f667e88f220e4ec87f7b6a0",
+    "sabik/nea-core/decision.js": "ef266213f9b021aa57af218208a4854bcb60050b",
+    "sabik/nea-core/intent.js": "1b3dbcf2c2fd7b4e7175979baf2aeb818e8b531f",
+    "sabik/nea-core/knowledge.js": "b1eb7b404bf812755cbf34d28752768f6388318f",
+    "sabik/nea-core/language.js": "96649b481fd052454146c4325af1adab112d8796",
+    "sabik/nea-core/response.js": "408fd9012fce1a9583deb7815606dc3e83529e46",
+    "sabik/nea-core/retrieval.js": "86f7c547e867fc2f8fc543cb5b4019f82415a053",
+    "sabik/nea-core/risk.js": "4b5815b1fe729eb0671beb625116784d9bce777e",
+    "sabik/nea-core/sabik-machine.js": "b4e048c2e496ebe51e4daa6ffad3b9ad31f1fbc5",
+    "sabik/nea-core/session.js": "f58f1f5c35f868de02cc9fbb85834e42cbbece1e",
+    "sabik/nea-core/state.js": "7e6be6749225dbe24cac472e136dfeab81af47fc",
+    "sabik/sabik-page.js": "7dfb2059d8362174519b1f3e135ed0156120eb73",
+    "tools/lib/sabik-s4-browser-probe.js": "466baa4f82ea885c427090d37006cc870b0de07e",
+    "tools/sabik-s4-qa0-adapter.mjs": "4581c27e44e0e83d84cc4954a56ca07c7978eae4",
+    "tools/test-sabik-machine-s0.js": "760b46c90ba7d9f7c198e4ab33e983e81f75cb71",
+    "tools/test-sabik-s1.js": "a4ef59219aabecc32742538c313de6a497640fcd",
+    "tools/test-sabik-s4-browser.js": "a4c3b1f6d7f0b51ba29cba18920f1f870bfa8800",
+    "tools/test-sabik-s4.js": "de934297331f0ec599a926213c6358e142e9fbf2"
+  },
+  "note": "The real B3 integration is layered over current S4. These S0/S1/S4 runtime, QA and storage files must remain byte-identical to the current preview base."
+}
