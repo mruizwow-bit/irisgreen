@@ -1,0 +1,56 @@
+[
+  {
+    "id": "sobrecarga_sensorial",
+    "label": "sobrecarga sensorial",
+    "language": "es",
+    "aliases": ["demasiado ruido", "demasiada luz", "me saturo", "todo es demasiado"],
+    "category": "situacion",
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "carga_atencional",
+    "label": "carga atencional",
+    "language": "es",
+    "aliases": ["estar pendiente de muchas cosas", "tener que atender a todo", "muchas cosas a la vez"],
+    "category": "situacion",
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "decisiones",
+    "label": "decisiones",
+    "language": "es",
+    "aliases": ["decidir demasiadas cosas", "elegir", "tomar decisiones", "no se que escoger"],
+    "category": "vida_diaria",
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "ruido",
+    "label": "ruido",
+    "language": "es",
+    "aliases": ["sonido", "ruidos", "barullo", "mucho ruido"],
+    "category": "situacion",
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "baja_demanda",
+    "label": "baja demanda",
+    "language": "es",
+    "aliases": ["no puedo pensar", "menos texto"],
+    "category": "ayuda",
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "riesgo_suicida",
+    "label": "riesgo suicida",
+    "language": "es",
+    "aliases": ["pensamientos suicidas", "hacerme dano", "quiero hacerme dano", "no quiero seguir viviendo"],
+    "category": "riesgo",
+    "risk_level": "crisis",
+    "editorial_status": "PUBLICABLE"
+  }
+]

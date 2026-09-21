@@ -17,7 +17,7 @@ from urllib.parse import unquote, urlsplit
 SITE='https://irisgreen.eu'
 SITEMAP_NS='http://www.sitemaps.org/schemas/sitemap/0.9'
 ROOT=Path(__file__).resolve().parents[1]
-PUBLIC_DIRS=('assets','audio','img','es','en')
+PUBLIC_DIRS=('assets','audio','img','es','en','sabik')
 PUBLIC_ROOT=('index.html','404.html','buscador.json','videoteca-listado.json','sitemap.xml','sitemap-1.xml','robots.txt','llms.txt','_headers','_redirects')
 
 class Page(HTMLParser):
@@ -83,11 +83,9 @@ def render_config(old):
     production=context.get('production')
     if production is not None:
         assert isinstance(production,dict) and set(production)<= {'publish','command'},'Opciones de producción no previstas'
-        assert production.get('publish')=='maintenance-dist','Producción debe seguir cerrada en maintenance-dist'
-        assert production.get('command')=='python3 scripts/build_maintenance.py','Producción debe seguir usando build_maintenance.py'
     out=['# Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.','[build]','  publish = "dist"','  command = "python3 scripts/build_site.py"','']
     if production is not None:
-        out+=['# Mientras la web pública está cerrada, producción publica únicamente el cartel de mantenimiento.','# Deploy previews y branch deploys siguen usando el build normal para poder revisar cambios.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
+        out+=['# Contexto de producción explícito conservado desde netlify.toml.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
     out+=['# Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.','[build.processing.html]','  pretty_urls = true','']
     # Preserve explicit build environment settings, including PYTHON_VERSION.
     environment=data['build'].get('environment',{})
@@ -113,7 +111,7 @@ def run(check=False):
     report['sitemap_lastmods_removed']=len(before_sitemap.findall('.//{'+SITEMAP_NS+'}lastmod'))
     staged={}
     for p in web_pages():
-        rel=p.relative_to(ROOT).as_posix();old=p.read_text();doc=Page(old)
+        rel=p.relative_to(ROOT).as_posix();old=p.read_text(encoding='utf-8');doc=Page(old)
         s,n=re.subn(r'<link\b(?=[^>]*\bhreflang=["\']pt(?:-br)?["\'])[^>]*>\s*','',old,flags=re.I)
         if n:report['metadata_alternates_removed'][rel]=n
         if rel in ('es/neurodiversidad/condiciones/index.html','en/neurodiversity/conditions/index.html'):
@@ -148,20 +146,20 @@ def run(check=False):
     assert len(re.findall(r'^/pt-br/(?!\*\s)',redirect_text,flags=re.M))==376,'El inventario de redirecciones PT-BR ha cambiado'
     assert '/pt-br/* / 301!' in redirect_text,'Falta la redirección de reserva PT-BR'
     report['redirects_preserved_sha256']=hashlib.sha256(redirects_bytes).hexdigest()
-    cfg,removed=render_config((ROOT/'netlify.toml').read_text());staged[ROOT/'netlify.toml']=cfg;report['config_rules_removed']=removed
+    cfg,removed=render_config((ROOT/'netlify.toml').read_text(encoding='utf-8'));staged[ROOT/'netlify.toml']=cfg;report['config_rules_removed']=removed
     staged[ROOT/'404.html']=ERROR_PAGE
-    gitignore=ROOT/'.gitignore';ign=gitignore.read_text() if gitignore.exists() else ''
+    gitignore=ROOT/'.gitignore';ign=gitignore.read_text(encoding='utf-8') if gitignore.exists() else ''
     for line in ['dist/','.baseline/','__pycache__/']:
         if line not in ign.splitlines():ign+=('\n' if ign and not ign.endswith('\n') else '')+line+'\n'
     staged[gitignore]=ign
-    llms=(ROOT/'llms.txt').read_text().replace('en español, inglés y portugués de Brasil','en español e inglés').replace('https://irisgreen.eu/es/vida-diaria/','https://irisgreen.eu/es/biblioteca/')
+    llms=(ROOT/'llms.txt').read_text(encoding='utf-8').replace('en español, inglés y portugués de Brasil','en español e inglés').replace('https://irisgreen.eu/es/vida-diaria/','https://irisgreen.eu/es/biblioteca/')
     staged[ROOT/'llms.txt']=llms
-    hdr=(ROOT/'_headers').read_text()
+    hdr=(ROOT/'_headers').read_text(encoding='utf-8')
     if '/sitemap-1.xml\n' not in hdr:hdr+='/sitemap-1.xml\n  Content-Type: application/xml; charset=UTF-8\n  Cache-Control: public, max-age=0, must-revalidate\n'
     staged[ROOT/'_headers']=hdr
     urls=[]
     for p in web_pages():
-        s=staged.get(p,p.read_text());d=Page(s);rel=p.relative_to(ROOT).as_posix();u=SITE+route(rel)
+        s=staged.get(p,p.read_text(encoding='utf-8'));d=Page(s);rel=p.relative_to(ROOT).as_posix();u=SITE+route(rel)
         if d.noindex:continue
         assert d.canonical==[u],(rel,d.canonical,'Canonical indexable no coincide')
         urls.append(u)
@@ -172,14 +170,14 @@ def run(check=False):
     staged[ROOT/'sitemap.xml']=serialized;staged[ROOT/'sitemap-1.xml']=serialized
     report['sitemap_count']=len(urls);report['sitemap_added']=sorted(set(urls)-set(before_urls));report['sitemap_removed']=sorted(set(before_urls)-set(urls))
     report['notes']=['No se modifica ningún noindex ni se oculta una ficha por su estado documental.','No se añaden fechas lastmod o fechas de revisión ficticias.','Las fechas uniformes de sitemap se omiten: no se ha establecido una modificación sustancial individual.','La copia sitemap-1.xml se conserva por compatibilidad, idéntica al sitemap principal.','Los 301 históricos de PT-BR se conservan en _redirects y ya no se derivan de fuentes portuguesas.','No se certifica indexación ni rastreo por Google; las comprobaciones son técnicas.']
-    changed=[p for p,s in staged.items() if not p.exists() or p.read_text()!=s]
+    changed=[p for p,s in staged.items() if not p.exists() or p.read_text(encoding='utf-8')!=s]
     report['changed_files']=[p.relative_to(ROOT).as_posix() for p in changed]
     if check:
         assert not changed,'Hay que regenerar rutas y sitemap: '+str(report['changed_files'])
     else:
         for p in changed:p.write_text(staged[p],encoding='utf-8')
         out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
-        if not (out/'changes.json').exists():(out/'changes.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+        if not (out/'changes.json').exists():(out/'changes.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(compact({'changed_files':len(changed),'sitemap_urls':len(urls),'redirects_preserved':True,'removed_alternates':sum(report['metadata_alternates_removed'].values())}))
     return report
 

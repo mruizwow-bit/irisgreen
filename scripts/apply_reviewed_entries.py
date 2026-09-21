@@ -102,7 +102,7 @@ def update_index(text,index_path,updates):
     return edits(text,changes)
 
 def run(check=False):
-    data=json.loads(DATA.read_text());sources=data['sources'];staged={};legacy={};expected_descriptions={};index_groups={};paths=[]
+    data=json.loads(DATA.read_text(encoding='utf-8'));sources=data['sources'];staged={};legacy={};expected_descriptions={};index_groups={};paths=[]
     for entry in data['entries']:
         claim_sets=[]
         for lang,loc in entry['locales'].items():
@@ -112,14 +112,14 @@ def run(check=False):
             assert len({p['id'] for p in claims})==len(claims)
             assert {r['source'] for r in entry['references']}=={src for p in claims for src in p['sources']}
             claim_sets.append([(p['id'],p['sources']) for p in claims])
-            path=loc['path'];old=(ROOT/path).read_text();new,leg=update_page(old,entry,loc,lang)
+            path=loc['path'];old=(ROOT/path).read_text(encoding='utf-8');new,leg=update_page(old,entry,loc,lang)
             staged[path]=new;legacy[path]=leg;paths.append(path)
             if lang=='es':expected_descriptions['/'+path.removesuffix('index.html')]=loc['summary']
             index='es/neurodiversidad/condiciones/index.html' if lang=='es' else 'en/neurodiversity/conditions/index.html'
             index_groups.setdefault(index,{})['/'+path.removesuffix('index.html')]=loc['summary']
         assert claim_sets[0]==claim_sets[1],('Different claim coverage by language',entry['id'])
-    for path,updates in index_groups.items():staged[path]=update_index((ROOT/path).read_text(),path,updates)
-    raw=(ROOT/'buscador.json').read_text();catalog=json.loads(raw);before={r['u']:dict(r) for r in catalog};seen=[]
+    for path,updates in index_groups.items():staged[path]=update_index((ROOT/path).read_text(encoding='utf-8'),path,updates)
+    raw=(ROOT/'buscador.json').read_text(encoding='utf-8');catalog=json.loads(raw);before={r['u']:dict(r) for r in catalog};seen=[]
     for row in catalog:
         route=urlsplit(row['u']).path
         if route in expected_descriptions:row['d']=expected_descriptions[route];seen.append(route)
@@ -136,22 +136,22 @@ def run(check=False):
                 else:raw=raw.replace(json.dumps(old),json.dumps(r['d']))
         assert json.loads(raw)==catalog
     staged['buscador.json']=raw
-    videos_path=ROOT/'videoteca-listado.json';vraw=videos_path.read_text();videos=json.loads(vraw);vcount=len(videos['videos']);old_total=videos.get('total')
+    videos_path=ROOT/'videoteca-listado.json';vraw=videos_path.read_text(encoding='utf-8');videos=json.loads(vraw);vcount=len(videos['videos']);old_total=videos.get('total')
     if old_total!=vcount:
         vraw,n=re.subn(r'("total"\s*:\s*)\d+',lambda m:m[1]+str(vcount),vraw,count=1);assert n==1
         assert json.loads(vraw)['videos']==videos['videos'];staged['videoteca-listado.json']=vraw
-    changed=[p for p,s in staged.items() if s!=(ROOT/p).read_text()]
+    changed=[p for p,s in staged.items() if s!=(ROOT/p).read_text(encoding='utf-8')]
     if check:
         assert not changed,('Review outputs stale',changed)
         print(json.dumps({'checked_pages':paths,'source_records':len(sources),'same_claim_ids_by_language':True,'search_records':len(catalog),'video_total':vcount,'idempotent':True},ensure_ascii=False));return
     REPORT.mkdir(parents=True,exist_ok=True)
     baseline=REPORT/'legacy-two-entries.json'
-    if not baseline.exists():baseline.write_text(json.dumps(legacy,ensure_ascii=False,indent=2)+'\n')
+    if not baseline.exists():baseline.write_text(json.dumps(legacy,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     # Write only once all structure and integrity checks have passed.
     for path,s in staged.items():
-        if path in changed:(ROOT/path).write_text(s)
+        if path in changed:(ROOT/path).write_text(s,encoding='utf-8')
     report={'changed_files':changed,'reviewed_entries':len(data['entries']),'languages':['es','en'],'claim_pairs':sum(len(s['paragraphs']) for e in data['entries'] for s in e['locales']['es']['sections']),'search_records':len(catalog),'video_total_before':old_total,'video_total_after':vcount,'robots_changes':False,'clinical_validation':False,'note':'Documentary comparison of named claims only; all other entries remain outside this review.'}
-    (REPORT/'applied.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    (REPORT/'applied.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
 
 if __name__=='__main__':

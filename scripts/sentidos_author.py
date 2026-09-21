@@ -133,14 +133,14 @@ def import_once():
     rows=load_source(); staged={}; preserved={}
     for row,slug in zip(rows,SLUGS):
         row['es_path']='es/situaciones/'+slug+'/index.html'
-        es=(ROOT/row['es_path']).read_text();t,a,title,lead=page_nodes(es)
+        es=(ROOT/row['es_path']).read_text(encoding='utf-8');t,a,title,lead=page_nodes(es)
         chip=one((n for n in t.nodes if n.tag=='p' and has(n,'chips') and n.parent==a),'area')
         if t.text(chip)!='Sentidos':raise ValueError('Not a Sentidos entry')
         enlink=one((n for n in t.nodes if n.tag=='a' and n.attrs.get('lang')=='en' and has(n,'lang')), 'English counterpart')
         enroute=urlsplit(urljoin('https://irisgreen.eu/'+row['es_path'],enlink.attrs['href'])).path
         if not enroute.startswith('/en/situations/'):raise ValueError('Invalid English counterpart')
         row['en_path']=enroute.lstrip('/')+'index.html'
-        en=(ROOT/row['en_path']).read_text();te,ae,et,el=page_nodes(en)
+        en=(ROOT/row['en_path']).read_text(encoding='utf-8');te,ae,et,el=page_nodes(en)
         eslink=one((n for n in te.nodes if n.tag=='a' and n.attrs.get('lang')=='es' and has(n,'lang')),'Spanish counterpart')
         if urlsplit(urljoin('https://irisgreen.eu/'+row['en_path'],eslink.attrs['href'])).path!=route(row['es_path']):raise ValueError('Counterparts do not match')
         row['retained_title_en']=te.text(et)
@@ -154,15 +154,15 @@ def import_once():
             if protected(text)!=protected(new):raise ValueError('Unapproved body change: '+path)
             if lang=='en' and page_nodes(new)[0].text(page_nodes(new)[2])!=row['retained_title_en']:raise ValueError('English heading altered')
             preserved[path]=sha(protected(text).encode());staged[path]=new
-    for lang,path in INDEXES.items():staged[path]=index_update((ROOT/path).read_text(),path,rows,lang)
-    staged['buscador.json']=search_update((ROOT/'buscador.json').read_text(),rows)
+    for lang,path in INDEXES.items():staged[path]=index_update((ROOT/path).read_text(encoding='utf-8'),path,rows,lang)
+    staged['buscador.json']=search_update((ROOT/'buscador.json').read_text(encoding='utf-8'),rows)
     m={'source':SOURCE,'source_sha256':SOURCE_SHA256,'scope':'24 Spanish titles and 48 submitted ES/EN descriptions only. English titles not supplied: retained. Other fields, sections, references, dates, controls, styles and URLs unchanged.','entries':[{k:v for k,v in r.items() if k not in ['es','en']} for r in rows],'unmodified_body_sha256':preserved}
-    for path,new in staged.items(): (ROOT/path).write_text(new)
-    (ROOT/MANIFEST).write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
+    for path,new in staged.items(): (ROOT/path).write_text(new,encoding='utf-8')
+    (ROOT/MANIFEST).write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     check(ROOT)
 
 def approved_rows():
-    rows=load_source();m=json.loads((ROOT/MANIFEST).read_text())
+    rows=load_source();m=json.loads((ROOT/MANIFEST).read_text(encoding='utf-8'))
     if m['source_sha256']!=SOURCE_SHA256 or len(m['entries'])!=24:raise ValueError('Invalid approval manifest')
     for row,entry in zip(rows,m['entries']):
         if entry['number']!=row['number'] or entry['title_es']!=row['title_es']:raise ValueError('Title or entry mapping mismatch')
@@ -171,12 +171,12 @@ def approved_rows():
     return rows
 
 def check(root):
-    rows=approved_rows();catalog=json.loads((root/'buscador.json').read_text());index={x['u']:x for x in catalog}
-    cards={lang:card_nodes((root/p).read_text(),p) for lang,p in INDEXES.items()}
+    rows=approved_rows();catalog=json.loads((root/'buscador.json').read_text(encoding='utf-8'));index={x['u']:x for x in catalog}
+    cards={lang:card_nodes((root/p).read_text(encoding='utf-8'),p) for lang,p in INDEXES.items()}
     checked=[]
     for row in rows:
         for lang in ['es','en']:
-            path=row[lang+'_path'];text=(root/path).read_text();t,a,title,lead=page_nodes(text)
+            path=row[lang+'_path'];text=(root/path).read_text(encoding='utf-8');t,a,title,lead=page_nodes(text)
             expected_title=row['title_es'] if lang=='es' else row['retained_title_en']
             if t.text(lead)!=row[lang] or t.text(title)!=expected_title:raise ValueError('Approved wording changed: '+path)
             metas=[n.attrs['content'] for n in t.nodes if n.tag=='meta' and (n.attrs.get('name')=='description' or n.attrs.get('property')=='og:description')]
