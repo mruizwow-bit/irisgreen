@@ -17,13 +17,17 @@
     return terms.some((term) => normalized.includes(term));
   }
 
-  function classifyIntent(text) {
+  function classifyIntent(text, session, negatedIds = []) {
     const normalized = normalizeText(text);
     if (!normalized) return INTENTS.INFORMATION_REQUEST;
 
     if (
-      startsWithAny(normalized, ["no es", "no era", "no quiero eso", "no me referia", "no hablo de"]) ||
-      includesAny(normalized, [" no es ", " no era ", "corrijo", "me explique mal"])
+      startsWithAny(normalized, ["no me referia", "corrijo", "me explique mal"]) ||
+      /\bno (?:es|era) (?:el|la|los|las) .+ (?:es|sino) /u.test(normalized) ||
+      (session?.last_plan && (
+        startsWithAny(normalized, ["no quiero eso", "no es esto", "no era eso", "no hablo de"]) ||
+        negatedIds.some(id => (session.last_plan.concepts_used || []).includes(id))
+      ))
     ) {
       return INTENTS.CORRECTION;
     }

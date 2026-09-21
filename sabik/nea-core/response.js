@@ -1,7 +1,7 @@
 (() => {
   const { normalizeText, isPublicable, unique } = window.NEAKnowledge;
-  const { detectNegations, detectSessionPreferences } = window.NEACorrections;
-  const { applySessionUpdate } = window.NEASession;
+  const { detectNegations, detectSessionPreferences, detectConversationControl } = window.NEACorrections;
+  const { applySessionUpdate, resolveSessionContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
   const { detectRisk, createRiskAccompanimentPlan, createAmbiguousRiskPlan } = window.NEARisk;
   const { INTENTS, classifyIntent } = window.NEAIntent;
   const { decideCore } = window.NEADecision;
@@ -20,6 +20,19 @@
       .split(/(?<=[.!?])\s+|\n+/u)
       .map((sentence) => sentence.trim())
       .filter(Boolean);
+  }
+
+  function rememberPlan(session, plan) {
+    let shown = { ...plan };
+    const answerText = value => renderControlledText(value).replace(/\s*Fuente:\s*\S+\s*$/, "").trim();
+    // Different fragment IDs can contain the same answer. Never replay rejected evidence.
+    if (shown.evidence?.length && (session.rejected_responses || []).some(item => item.text === answerText(shown))) {
+      shown = { ...shown, type: "insufficient_information", answer_mode: "none", outcome: "insufficient_information",
+        evidence: [], fragments_used: [], source_urls: [], match_evidence: [], next_steps: [], question: null,
+        limits_notice: "No tengo otra respuesta respaldada por las fuentes disponibles.", repeated_response_blocked: true };
+    }
+    shown.response_text = answerText(shown);
+    return storePlan(session, shown);
   }
 
   function relevantTextForFragment(fragment, input) {
@@ -43,16 +56,6 @@
     }));
   }
 
-  function sessionForRetrieval(session, intent, directConcepts) {
-    if (intent !== INTENTS.INFORMATION_REQUEST) return session;
-    const reopened = new Set(directConcepts || []);
-    if (!reopened.size) return session;
-    return {
-      ...session,
-      vetoed_concepts: (session.vetoed_concepts || []).filter((concept) => !reopened.has(concept))
-    };
-  }
-
   function planBase(type, intent, nextSession, conceptIds, fragments, candidates, question, riskState, data) {
     return {
       type,
@@ -70,6 +73,10 @@
       })),
       question: question?.text || null,
       actions: findActions(conceptIds, riskState, data),
+      data_availability: data.availability || {},
+      outcome: type === "insufficient_information"
+        ? (data.availability?.fragmentsIndex?.status === "editorial_absence" ? "editorial_absence" : "insufficient_information")
+        : "supported",
       sabik_state: nextSession.sabik_state,
       session_preferences: nextSession.session_preferences,
       privacy_notice: "Memoria de sesion, sin persistencia por defecto.",
@@ -123,62 +130,68 @@
   }
 
   function buildResponsePlan(text, session, data) {
-    const intent = classifyIntent(text);
-    const directConcepts = detectConcepts(text, data);
+    const control = detectConversationControl(text);
+    if (control) return applyResponseControl(session, session.last_plan, control, data);
+    const mentioned = detectConcepts(text, data);
     const relationConcepts = detectRelations(text, data);
     const negatedIds = detectNegations(text, data);
+    const intent = classifyIntent(text, session, negatedIds);
+    const context = resolveSessionContext(session, text, unique([...mentioned, ...relationConcepts]));
+    const directConcepts = unique([...mentioned, ...context.inherited]);
     const preferences = detectSessionPreferences(text);
-    const conceptIds = unique([...directConcepts, ...relationConcepts]).filter((id) => !session.vetoed_concepts.includes(id) && !negatedIds.includes(id));
+    const conceptIds = unique([...directConcepts, ...relationConcepts]).filter((id) =>
+      !session.vetoed_concepts.includes(id) && !session.rejected_concepts.includes(id) && !negatedIds.includes(id));
     const riskState = detectRisk(text, unique([...conceptIds, ...directConcepts]), data);
     const cognitiveState = detectCognitiveState(text, preferences, riskState);
     const nextSession = applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState);
+    nextSession.context_mode = context.mode;
+    nextSession.context_modifier = context.modifier;
+    nextSession.topic_query = context.mode === "followup" ? session.topic_query : text;
+    nextSession.awaiting_correction = false;
+    nextSession.explanation_index = 0;
+    if (negatedIds.length) nextSession.last_rejection = { scope: "concept", concepts: [...negatedIds], reason: "explicit_negation" };
+    if (intent === INTENTS.CORRECTION) nextSession.user_corrections.push(text);
 
     if (riskState === "acompanamiento_en_riesgo") {
-      return {
-        session: nextSession,
-        plan: createRiskAccompanimentPlan(nextSession, conceptIds, findActions(["riesgo_suicida"], riskState, data))
-      };
+      return rememberPlan(nextSession, createRiskAccompanimentPlan(nextSession, conceptIds, findActions(["riesgo_suicida"], riskState, data)));
     }
 
     if (riskState === "riesgo_ambiguo") {
-      return {
-        session: nextSession,
-        plan: createAmbiguousRiskPlan(nextSession)
-      };
+      return rememberPlan(nextSession, createAmbiguousRiskPlan(nextSession));
     }
 
     if (intent === INTENTS.CORRECTION) {
       const correctionCandidates = selectBestCandidates(
-        retrieveFragmentCandidates(text, directConcepts, relationConcepts, data, nextSession),
+        retrieveFragmentCandidates(context.query, directConcepts, relationConcepts, data, nextSession),
         nextSession.session_preferences.max_options
       );
       const correctionFragments = correctionCandidates.map((candidate) => candidate.fragment);
-      return {
-        session: nextSession,
-        plan: {
+      return rememberPlan(nextSession, {
           ...planBase("correction_acknowledged", intent, nextSession, conceptIds, correctionFragments, correctionCandidates, null, riskState, data),
           removed_or_vetoed: negatedIds,
           communication_open: true,
           limits_notice: null
-        }
-      };
+      });
     }
 
     if (intent === INTENTS.ACCOMPANIMENT) {
-      return {
-        session: nextSession,
-        plan: {
+      return rememberPlan(nextSession, {
           ...planBase("accompaniment_presence", intent, nextSession, conceptIds, [], [], null, riskState, data),
           communication_open: true,
           search_required: false,
           limits_notice: null
-        }
-      };
+      });
     }
 
-    const decisionSession = sessionForRetrieval(nextSession, intent, directConcepts);
+    if (context.unresolved) {
+      const mayAsk = nextSession.session_preferences.question_policy !== "none";
+      return rememberPlan(nextSession, planBase(mayAsk ? "clarifying_question" : "insufficient_information",
+        intent, nextSession, [], [], [], mayAsk ? { text: "¿Sobre qué tema quieres seguir?" } : null, riskState, data));
+    }
+
+    const decisionSession = nextSession;
     const candidates = selectBestCandidates(
-      retrieveFragmentCandidates(text, directConcepts, relationConcepts, data, decisionSession),
+      context.unresolved ? [] : retrieveFragmentCandidates(context.query, directConcepts, relationConcepts, data, decisionSession),
       nextSession.session_preferences.max_options
     );
     const questions = (data.questions || []).filter(isPublicable);
@@ -211,6 +224,9 @@
     if (decision.decision === "offer" && intent === INTENTS.PRACTICAL_REQUEST && fragments.length) {
       type = "practical_steps";
     }
+    if (nextSession.rejected_response_types.includes(type)) {
+      type = fragments.length && type !== "direct_information" ? "direct_information" : "insufficient_information";
+    }
 
     const base = planBase(type, intent, nextSession, effectiveConceptIds, fragments, effectiveCandidates, type === "clarifying_question" ? question : null, riskState, data);
     base.decision = decision;
@@ -224,10 +240,52 @@
       base.next_steps = practicalStepsFromEvidence(base.evidence, nextSession.session_preferences.max_options);
     }
 
-    return {
-      session: nextSession,
-      plan: base
-    };
+    return rememberPlan(nextSession, base);
+  }
+
+  function applyResponseControl(session, plan, control, data) {
+    const protectedPlan = plan && ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan.type);
+    const next = protectedPlan && ["reject_hypothesis", "other_route", "rephrase"].includes(control)
+      ? structuredClone(session) : applyConversationControl(session, plan, control);
+    // Safety content is not rewritten by an ordinary response control (S3).
+    if (protectedPlan) {
+      return rememberPlan(next, { ...structuredClone(plan), session_preferences: next.session_preferences });
+    }
+    if ((control === "other_route" ||
+        (["no_questions", "one_option"].includes(control) && plan?.type === "clarifying_question")) && next.topic_query) {
+      return buildResponsePlan(next.current_need || next.topic_query, next, data);
+    }
+    if (!plan || control === "reject_hypothesis") {
+      const empty = planBase(plan && control === "reject_hypothesis" ? "correction_acknowledged" : "insufficient_information",
+        INTENTS.CORRECTION, next, [], [], [], null, "normal", data);
+      return rememberPlan(next, empty);
+    }
+    const revised = structuredClone(plan);
+    revised.session_preferences = { ...next.session_preferences };
+    revised.sabik_state = next.sabik_state;
+    if (control === "shorter" && revised.type === "source_answer") revised.type = "direct_information";
+    if (control === "one_option") {
+      for (const field of ["fragments_used", "source_urls", "evidence", "match_evidence", "next_steps"]) {
+        if (revised[field]) revised[field] = revised[field].slice(0, 1);
+      }
+      if (revised.decision) revised.decision.selected = revised.decision.selected.slice(0, 1);
+    }
+    if (control === "rephrase") {
+      let changed = false;
+      revised.evidence = (revised.evidence || []).map(item => {
+        const fragment = (data.fragmentsIndex || []).find(f => f.id === item.fragment_id && isPublicable(f));
+        const tokens = window.NEARetrieval.tokenizeSearchText(next.topic_query);
+        const alternatives = sentenceCandidates(fragment?.text).filter(sentence =>
+          sentence.slice(0, 280) !== item.relevant_text &&
+          tokens.some(token => window.NEARetrieval.termMatches(normalizeText(sentence), token)));
+        if (!alternatives.length) return item;
+        changed = true;
+        return { ...item, relevant_text: alternatives[(next.explanation_index - 1) % alternatives.length].slice(0, 280) };
+      });
+      revised.limits_notice = changed ? "Otro fragmento de la misma fuente." : "No tengo otra explicación respaldada por esta fuente.";
+      if (revised.type === "practical_steps") revised.next_steps = practicalStepsFromEvidence(revised.evidence, next.session_preferences.max_options);
+    }
+    return rememberPlan(next, revised);
   }
 
   function renderControlledText(plan, options = {}) {
@@ -252,6 +310,7 @@
   window.NEAResponse = {
     classifyIntent,
     buildResponsePlan,
+    applyResponseControl,
     renderControlledText
   };
 })();

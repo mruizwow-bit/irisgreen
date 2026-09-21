@@ -56,6 +56,8 @@ body.sabik-iris-page .sabik-panel{position:static;max-width:64rem;margin:1.5rem 
         <div class="sabik-actions sabik-actions-quiet">
           <button class="sabik-button" id="sabik-low" disabled type="button">Bajar intensidad</button>
           <button class="sabik-button" id="sabik-shorter" disabled type="button">Más corto</button>
+          <button class="sabik-button" id="sabik-no-questions" disabled type="button">No me preguntes</button>
+          <button class="sabik-button" id="sabik-one-option" disabled type="button">Dame una opción</button>
           <button class="sabik-button" id="sabik-clear" disabled type="button">Pausar Sabik</button>
           <button class="sabik-button" id="sabik-resume" disabled type="button" hidden>Reanudar</button>
           <button class="sabik-button" id="sabik-reset-session" disabled type="button">Empezar de nuevo</button>
@@ -73,9 +75,12 @@ body.sabik-iris-page .sabik-panel{position:static;max-width:64rem;margin:1.5rem 
         <div class="sabik-response-actions" role="group" aria-label="Si esta respuesta no encaja">
           <button class="sabik-button" id="sabik-not-this" disabled type="button">No es esto</button>
           <button class="sabik-button" id="sabik-other-way" disabled type="button">Buscar por otra vía</button>
+          <button class="sabik-button" id="sabik-rephrase" disabled type="button">Explícamelo de otra forma</button>
         </div>
       </section>
       <div class="sabik-notes">
+        <p id="sabik-data-notice" hidden></p>
+        <button class="sabik-button" id="sabik-retry-data" hidden type="button">Reintentar carga de datos</button>
         <p class="sabik-memory-note" id="sabik-memory-note">No guarda historial entre sesiones.</p>
         <p class="sabik-limits">Sabik puede cometer errores. Comprueba la información importante en las fuentes oficiales.</p>
       </div>

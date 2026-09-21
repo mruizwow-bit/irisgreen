@@ -121,6 +121,7 @@
     }
 
     if (type === "correction_acknowledged") {
+      if (evidenceText) return withSource(["Entendido. Retiro esa vía.", evidenceText], sourceUrls);
       return [
         "Entendido. Retiro esa vía.",
         "Probamos otra sin defender la anterior."

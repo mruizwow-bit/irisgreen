@@ -19,7 +19,7 @@
   const { createSessionState, registerPlanRejection, setSessionPreferences } = window.NEASession;
   const { INTENTS, classifyIntent } = window.NEAIntent;
   const { decideCore } = window.NEADecision;
-  const { buildResponsePlan, renderControlledText } = window.NEAResponse;
+  const { buildResponsePlan, renderControlledText, applyResponseControl } = window.NEAResponse;
   const { applySpanishOutputGuard, applyOutputLanguageGuard, formulateApprovedResponse } = window.NEALanguage;
 
   window.NEACoreV1 = {
@@ -41,6 +41,7 @@
     decideCore,
     loadData,
     buildResponsePlan,
+    applyResponseControl,
     renderControlledText,
     applyLanguageGuard: applyOutputLanguageGuard,
     applySpanishOutputGuard,

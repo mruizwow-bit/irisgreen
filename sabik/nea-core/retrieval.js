@@ -87,7 +87,7 @@
   }
 
   function fragmentHasVetoedConcept(fragment, session) {
-    const vetoed = new Set(session?.vetoed_concepts || []);
+    const vetoed = new Set([...(session?.vetoed_concepts || []), ...(session?.rejected_concepts || [])]);
     return (fragment.concepts || []).some((concept) => vetoed.has(concept));
   }
 
@@ -167,6 +167,7 @@
       .filter(isPublicable)
       .filter((fragment) => !fragmentHasVetoedConcept(fragment, session))
       .filter((fragment) => !(session?.rejected_fragments || []).includes(fragment.id))
+      .filter((fragment) => !(session?.rejected_responses || []).some(response => response.fragments.includes(fragment.id)))
       .map((fragment) => scoreFragmentLexically(fragment, text, directConceptIds, relationConceptIds))
       .filter((candidate) => candidate.match_strength >= MIN_MATCH_STRENGTH || (fragmentMatchesConcept(candidate.fragment, conceptIds)));
   }
