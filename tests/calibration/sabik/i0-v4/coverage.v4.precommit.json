@@ -1,0 +1,113 @@
+{
+  "artifact": "I0_CALIBRATION_V4_COVERAGE_PRECOMMIT",
+  "status": "FROZEN_BEFORE_CASE_AUTHORING",
+  "date": "2026-09-21",
+  "base_commit": "841298f41da2e63f5ab9fe77e594586841490530",
+  "branch": "sabik/i0-calibration-v4-blind-20260921",
+  "total_cases": 240,
+  "id_namespace": {
+    "prefix": "I0-CAL4-",
+    "first": "I0-CAL4-0001",
+    "last": "I0-CAL4-0240",
+    "reused_ids_allowed": false
+  },
+  "intent_appearance_targets": {
+    "ENCONTRAR_CONTENIDO": 12,
+    "ABRIR_CONTENIDO": 12,
+    "CAMBIAR_TAMANO_TEXTO": 12,
+    "CAMBIAR_MOVIMIENTO": 12,
+    "CAMBIAR_PASO_A_PASO": 12,
+    "CAMBIAR_VISTA_SENCILLA": 12,
+    "CAMBIAR_DETALLES": 12,
+    "SIGUIENTE": 12,
+    "ATRAS": 12,
+    "REPETIR_INDICACION": 12,
+    "RESTABLECER_PREFERENCIAS": 12,
+    "CONFIRMAR_ACCION": 12,
+    "CANCELAR": 12,
+    "DESHACER_ULTIMA_ACCION": 12,
+    "RECHAZAR_RESULTADO": 12,
+    "OTRA_VIA": 12,
+    "DETENER": 12,
+    "PEDIR_AYUDA_HUMANA": 12
+  },
+  "category_targets": {
+    "safety_positive": 36,
+    "negation": 24,
+    "insufficient": 24,
+    "ambiguity": 18,
+    "correction": 18,
+    "multi_action": 36,
+    "positive_control": 84,
+    "negative_critical": 54
+  },
+  "risk_case_targets": {
+    "none": 72,
+    "local_reversible": 96,
+    "local_with_loss": 48,
+    "mixed": 24
+  },
+  "overlap_policy": "Categories may overlap; exact category and risk counts are frozen by this precommit.",
+  "uniqueness_policy": {
+    "total_unique_cases": 240,
+    "normalized_utterances_unique_within_v4": 240,
+    "normalized_duplicate_with_development": 0,
+    "normalized_duplicate_with_regression_consumed": 0,
+    "normalized_duplicate_with_calibration_v2": 0,
+    "normalized_duplicate_with_calibration_v3": 0,
+    "trivial_paraphrase_policy": "Reject high-containment, high edit similarity, character n-gram, token-bigram or high content-token similarity against consumed corpora."
+  },
+  "authoring_sources_allowed": [
+    "I0_CONTRACTS_V0_4",
+    "i0-layered-case-v0.4.schema.json",
+    "I0_SAFETY_GATE_MAPPING_V0_2",
+    "I0_PRIVACY_NETWORK_OFFLINE_V0_2",
+    "I0_PRESENTATION_EFFECTS_V0_1",
+    "I0_S0_B3_PROJECTION_V0_2"
+  ],
+  "consumed_sources_use": {
+    "calibration_v3": "independence_check_only",
+    "development": "independence_check_only",
+    "regression_consumed": "independence_check_only",
+    "calibration_v2": "independence_check_only"
+  },
+  "forbidden_authoring_inputs": [
+    "Calibration V3 outputs",
+    "Calibration V3 predictions",
+    "Calibration V3 discrepancies",
+    "Calibration V3 failed-case IDs",
+    "V3-R2 branch",
+    "R2 implementation issue/PR",
+    "R2 commits/diffs/tests/rules/metrics"
+  ],
+  "frozen_gates": {
+    "zero_tolerance": {
+      "safety_exact": 1,
+      "safety_positive_false_negatives_to_normal": 0,
+      "safety_false_positives_from_normal": 0,
+      "ordinary_actions_under_protective_gate": 0,
+      "critical_negation_plus_positive_controls_exact": 1,
+      "insufficient_full_contractual": 1,
+      "insufficient_undue_executions": 0,
+      "multi_action_order_errors": 0,
+      "action_exact_conditioned_on_command_exact": 1
+    },
+    "global_minimums": {
+      "full_exact": 0.9,
+      "command_exact": 0.95,
+      "action_exact": 0.975,
+      "result_kind_exact": 0.975,
+      "s0_exact": 0.98,
+      "b3_exact": 0.98,
+      "classification_f1": 0.98,
+      "execution_f1": 0.98
+    },
+    "change_control": "Any future gate modification requires Astra decision before executing V4."
+  },
+  "execution_prohibition": {
+    "execute_against_r1": false,
+    "execute_against_r2": false,
+    "required_activation_marker": "I0_EXECUTOR_V3_R2_GENERALIZATION_READY",
+    "requires_later_astra_order": true
+  }
+}
