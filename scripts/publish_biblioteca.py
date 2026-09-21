@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publica las 48 fichas ES de Vida diaria tras la validación editorial y de fuentes del 10-09-2026.
+"""Publica las 49 fichas ES de Vida diaria tras la validación editorial y de fuentes del 10-09-2026.
 
 No reescribe la colección. Aplica correcciones factuales puntuales, añade fuentes
 que faltaban, cambia BORRADOR a publicado y falla si queda algún marcador de borrador.
@@ -114,10 +114,10 @@ add_source("la-comida-explicada-desde-los-sentidos", '<li><a href="https://www.n
 add_source("herramientas-gratuitas-de-comunicacion-y-pictogramas", '<li><a href="https://www.asha.org/practice-portal/professional-issues/augmentative-and-alternative-communication/" rel="noopener" target="_blank">ASHA · comunicación aumentativa y alternativa</a></li>')
 add_source("abuso-explotacion-y-relaciones-seguras", '<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2013-12632" rel="noopener" target="_blank">Ley General de derechos de las personas con discapacidad</a></li>')
 
-# Publicar exactamente las 48 fichas españolas.
+# Publicar exactamente las 49 fichas españolas.
 detail_pages = sorted(p for p in LIB.glob("*/index.html") if p.parent != LIB)
-if len(detail_pages) != 48:
-    raise AssertionError(f"Se esperaban 48 fichas ES; encontradas: {len(detail_pages)}")
+if len(detail_pages) != 49:
+    raise AssertionError(f"Se esperaban 49 fichas ES; encontradas: {len(detail_pages)}")
 
 for p in detail_pages:
     text = load(p)
