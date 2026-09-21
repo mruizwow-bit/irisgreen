@@ -1,0 +1,8 @@
+resource,language,type,r0_path,r2_status,header_contract,reading_music,language_selector,video_dependency,product_gate,decision,notes
+Daily autonomy,es,interactive game,es/recursos/juegos/autonomia-cotidiana/index.html,R2_B_CORRECTED,pass,pass,one,removed,documented,HOLD_PENDING_BROWSER_CI,"Four practical tasks; adaptable sequences; no score/timer/audio/autoplay"
+Daily autonomy,en,interactive game,en/resources/games/daily-autonomy/index.html,R2_B_CORRECTED,pass,pass,one,removed,documented,HOLD_PENDING_BROWSER_CI,"Equivalent ES/EN scope; reciprocal hreflang"
+Needs board,es,communication tool,es/recursos/tablero-necesidades/index.html,NOT_REINTRODUCED,not tested,not tested,not tested,n/a,pending,HOLD,"Remain frozen from #193 until rebuilt from baseline"
+Needs board,en,communication tool,en/resources/needs-board/index.html,NOT_REINTRODUCED,not tested,not tested,not tested,n/a,pending,HOLD,"Remain frozen from #193 until rebuilt from baseline"
+LGTBIQ+ conversations and boundaries,es,practical resource,es/biblioteca/lgtbi-preparar-conversaciones-y-limites/index.html,NOT_REINTRODUCED,not tested,not tested,not tested,n/a,pending,HOLD,"Remain frozen from #193 until rebuilt from baseline"
+LGTBIQ+ conversations and boundaries,en,practical resource,en/everyday-life/lgbti-prepare-conversations-and-boundaries/index.html,NOT_REINTRODUCED,not tested,not tested,not tested,n/a,pending,HOLD,"Remain frozen from #193 until rebuilt from baseline"
+Resources hub,en,hub page,en/resources/index.html,NOT_REINTRODUCED,not tested,not tested,not tested,n/a,pending,HOLD,"R0 version lost global destinations; not copied into R2"
