@@ -3,6 +3,7 @@
 **Agente:** n.º 4  
 **Bloque:** W1-R2-A · arquitectura  
 **Issue:** #205  
+**PR:** #206  
 **Rama:** `agent4/irisgreen-web-expansion-w1-r2-safe`  
 **Baseline obligatorio:** `main@e48b51814afed825a92e83a2f6e51ee8a1c85e45`  
 **Fecha:** 21/09/2026  
@@ -19,18 +20,38 @@ Estados bloqueantes que se mantienen:
 
 ## 2. Baseline limpio
 
-Antes de añadir esta documentación/test, la rama R2 fue comparada directamente con el baseline obligatorio:
+La rama R2 nació exactamente de:
 
+`e48b51814afed825a92e83a2f6e51ee8a1c85e45`
+
+Antes de añadir documentación/test:
 - `status = identical`
 - `ahead_by = 0`
 - `behind_by = 0`
 - archivos distintos = **0**
 
-Por tanto, la restauración no intenta reconstruir manualmente la cabecera: vuelve a la arquitectura oficial aceptada.
+El diff R2-A actual contiene únicamente cuatro artefactos bajo:
 
-## 3. Contrato observado directamente
+`docs/audits/agent4/expansion-r2/`
 
-Se inspeccionaron 11 páginas representativas ES/EN más la portada y 5 activos globales.
+No modifica HTML público, assets, scripts, CSS, build, sitemap, indexación ni redirects.
+
+## 3. Verificación directa del contrato de cabecera
+
+Se ejecutó el mismo contrato lógico de `verify_header_contract.py` contra los archivos reales del HEAD R2-A.
+
+Resultado:
+
+```text
+PASS
+baseline_files_checked = 17/17
+es_header_samples = 6/6
+en_header_samples = 5/5
+production_mutation = false
+errors = 0
+```
+
+Los 17 blobs críticos coinciden exactamente con los hashes del baseline.
 
 En las muestras ES/EN se conservan:
 - navegación principal del baseline;
@@ -41,38 +62,82 @@ En las muestras ES/EN se conservan:
 - `lectura-accesible.js`;
 - `musica.js`.
 
-El baseline contiene variantes históricas de etiqueta/destino (por ejemplo, algunos templates usan «Jugar / Play» donde otros muestran «Recursos»). **R2-A no corrige ni normaliza esa infraestructura**, porque Astra ha prohibido modificar la cabecera global desde este frente. El objetivo de este bloque es demostrar ausencia de regresión respecto del baseline oficial, no introducir una nueva cabecera.
+El baseline contiene variantes históricas de etiqueta/destino entre templates. R2-A **no las normaliza**, porque Astra ha prohibido modificar infraestructura global desde este frente.
 
-## 4. Responsive
+## 4. Responsive, teclado y accesibilidad global
 
-La hoja global aceptada conserva su contrato V23:
-- escritorio amplio: navegación completa visible;
-- por debajo de 93.99rem: navegación completa permanece disponible en una fila horizontal desplazable;
-- por debajo de 42rem: controles compactos, sin eliminar Lectura, Música o idioma.
+CI del HEAD `7ae54ee0456d236ae3aa11ebd8ef0a6424d3575d`:
 
-No se modifica CSS global.
+**SUCCESS**
+- Comprobar WCAG en navegador v2 · run 35594425921
+- Comprobar WCAG flujos de teclado · run 35594425916
+- Comprobar WCAG orientación · run 35594425745
+- Auditar WCAG tamaño de objetivos · run 35594425740
+- Auditar WCAG con axe-core · run 35594425957
+- Auditar WCAG contraste no textual · run 35594425777
+- Auditar WCAG semántica de tablas · run 35594425975
+- Auditar WCAG audio y movimiento · run 35594425766
+- Comprobar CSP · run 35594425720
+- Comprobar SEO e idiomas · run 35594425967
+- Medir rendimiento Lighthouse · run 35594425751
+- Comprobar carga del Directorio · run 35594425978
+- Comprobar carga diferida de Investigación · run 35594425912
+- Comprobar impresión del Taller · run 35594425883
 
-## 5. Teclado y foco
+Por tanto, R2-A no reproduce las regresiones de #193 en cabecera, Lectura, Música, navegación, idioma, teclado o responsive.
 
-`interfaz-comun.js` conserva:
-- `aria-expanded` en el control de menú;
-- cierre con `Escape`;
-- protección de foco respecto de paneles globales;
-- controlador compartido de Lectura.
+## 5. Checks rojos que NO proceden del diff R2-A
 
-`lectura-accesible.js` conserva explícitamente que Música la controla `assets/musica.js`.
+### Almacenamiento / privacidad
 
-No se modifica JavaScript global.
+R2-A: failure · run 35594425715.  
+Main exacto `e48b518…`: failure · run 35584652201.
 
-## 6. Evidencia reproducible
+Ambos reproducen los mismos usos de `sessionStorage`, entre ellos:
+- `assets/rutinas-visuales.js`;
+- `assets/tarjeta-iris.js`.
 
-- `architecture-baseline-manifest.json`: fija hashes Git blob de 17 archivos críticos.
-- `verify_header_contract.py`: comprueba hashes y contrato fuente de cabecera, navegación, Lectura, Música, idioma y responsive.
-- `WEB_EXPANSION_W1_R2_ARCHITECTURE_MATRIX.csv`: matriz de aplicabilidad/evidencia.
+R2-A no modifica esos archivos.
 
-El test es **read-only**. No repara ni normaliza la web.
+### Preflight / contrato de indexación
 
-## 7. Alcance de esta entrega
+R2-A: failure · run 35594425721.  
+Main exacto `e48b518…`: failure · run 35584652184.
+
+Ambos producen exactamente:
+
+```text
+Esperado:
+html 999
+index,follow 982
+noindex,follow 3
+otro_o_ninguno 14
+sitemap_urls 995
+
+Obtenido:
+html 1003
+index,follow 986
+noindex,follow 4
+otro_o_ninguno 13
+sitemap_urls 999
+```
+
+R2-A no modifica indexación, sitemap ni build.
+
+### Contraste con gradientes
+
+R2-A: failure · run 35594425758.
+
+Resultado:
+- firmas únicas: 115;
+- best-case white failures: 0;
+- conservative pass: 98;
+- firmas con pixel probe: 17;
+- pixel probe failures: 4.
+
+R2-A no modifica HTML público, CSS ni assets renderizados. Por tanto el rojo **no es una regresión causada por este diff**, pero permanece como deuda/gate global sin resolver y no se oculta.
+
+## 6. Alcance de esta entrega
 
 No se reincorpora:
 - autonomía cotidiana;
@@ -97,13 +162,19 @@ No se modifica:
 - build;
 - redirects.
 
-## 8. Siguiente gate
+## 7. Conclusión
 
-Después de esta entrega **se espera revisión Astra**.
+R2-A restaura la vía de trabajo al baseline oficial y demuestra que la arquitectura global no contiene las regresiones introducidas en W1-R0.
+
+**Entrega:** `WEB_EXPANSION_W1_R2_ARCHITECTURE_RESTORED`
+
+Después de esta entrega se espera revisión Astra.
 
 No continuar automáticamente con:
 - juegos;
 - vídeos;
-- recursos.
+- recursos;
+- LGTBIQ+ W1;
+- Rincón tranquilo.
 
 **NO MERGE · NO DEPLOY · NO CAMBIOS EN PRODUCCIÓN.**
