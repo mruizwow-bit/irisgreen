@@ -13,10 +13,6 @@
   },
   "runtime": {
     "strategy": "individual-state-assets",
-    "dimensions": [
-      64,
-      64
-    ],
     "format": "image/webp",
     "files": [
       {
@@ -212,7 +208,12 @@
       "ia",
       "educa"
     ],
-    "note": "Fifteen committed 64×64 runtime derivatives; no sprite dependency. Source 544×544 keyframes remain frozen in #182."
+    "note": "Fifteen committed runtime derivatives, each at least 64×64; actual dimensions and SHA-256 are recorded per file. Source 544×544 keyframes remain frozen in #182.",
+    "minimum_dimensions": [
+      64,
+      64
+    ],
+    "actual_dimensions_recorded_per_file": true
   },
   "source_files": [
     {
