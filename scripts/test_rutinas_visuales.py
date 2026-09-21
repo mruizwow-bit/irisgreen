@@ -27,7 +27,13 @@ for bad in ('<metadata','c2pa','com.anthropic','id="layer_1"',"id='layer_1'"):
 html=page.read_text(encoding='utf-8'); resource_index=index.read_text(encoding='utf-8')
 script=js.read_text(encoding='utf-8'); style=css.read_text(encoding='utf-8')
 data_text=data.read_text(encoding='utf-8').strip()
-m=re.search(r'window\\.IG_RUTINAS_PICTOS=(\\[.*\\]);\\s*
+prefix='window.IG_RUTINAS_PICTOS='
+pic_start=data_text.find(prefix)
+assert pic_start>=0,'No se encontró window.IG_RUTINAS_PICTOS'
+pic_start+=len(prefix)
+pic_end=data_text.find(';',pic_start)
+assert pic_end>pic_start,'Asignación IG_RUTINAS_PICTOS sin cierre'
+pictos=json.loads(data_text[pic_start:pic_end])
 assert len(pictos)==93
 for p in pictos:
     assert p['sprite'] in sprite_text,(p['id'],p['sprite'])
