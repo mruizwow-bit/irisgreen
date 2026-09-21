@@ -1416,6 +1416,8 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
   object-fit:contain;
   display:block;
   image-rendering:auto;
+  background-repeat:no-repeat;
+  background-size:500% 300%;
   transform-origin:50% 50%;
   will-change:transform,opacity;
 }
