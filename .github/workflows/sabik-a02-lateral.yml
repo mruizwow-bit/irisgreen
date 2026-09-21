@@ -1,0 +1,102 @@
+name: Sabik A02 lateral composition gate
+
+on:
+  pull_request:
+    branches: [agent3/w1-a02-base-fc5cdfc]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  a02-lateral:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.ref == 'agent3/w1-a02-lateral-implementation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: runtime
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: runtime
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare pinned browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/a02-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/a02-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          echo "NODE_PATH=$RUNNER_TEMP/a02-browser/node_modules" >> "$GITHUB_ENV"
+          echo "A02_REPORT=$RUNNER_TEMP/sabik-a02-lateral" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/sabik-a02-lateral"
+
+      - name: Record exact base/head
+        env:
+          REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$REVIEWED_HEAD"
+          git cat-file -e fc5cdfc2f978c85033de2b07c34309f8a4a7bd18^{commit}
+          {
+            printf '%s\n' "base=fc5cdfc2f978c85033de2b07c34309f8a4a7bd18"
+            printf '%s\n' "head=$(git rev-parse HEAD)"
+            google-chrome --version
+            node --version
+          } | tee "$A02_REPORT/environment.txt"
+
+      - name: A02 source L01-L20
+        env:
+          A02_EVIDENCE_DIR: ${{ runner.temp }}/sabik-a02-lateral/source
+        run: node tools/test-sabik-a02-lateral.js | tee "$A02_REPORT/a02-source.log"
+
+      - name: S1 and V7 regression on source
+        env:
+          S1_EVIDENCE_DIR: ${{ runner.temp }}/sabik-a02-lateral/s1-source
+        run: |
+          node tools/test-sabik-s1.js | tee "$A02_REPORT/s1-source.log"
+          node tools/test-sabik-page-v7.js | tee "$A02_REPORT/v7.log"
+
+      - name: Git diff check and authorized scope
+        run: |
+          git diff --check fc5cdfc2f978c85033de2b07c34309f8a4a7bd18 HEAD
+          node - <<'JS' | tee "$A02_REPORT/scope.json"
+          const {execFileSync}=require('node:child_process');
+          const allowed=new Set([
+            'sabik/sabik-page.css',
+            'tools/test-sabik-a02-lateral.js',
+            '.github/workflows/sabik-a02-lateral.yml'
+          ]);
+          const files=execFileSync('git',['diff','--name-only','fc5cdfc2f978c85033de2b07c34309f8a4a7bd18','HEAD'],{encoding:'utf8'}).trim().split(/\n/).filter(Boolean);
+          const unauthorized=files.filter(f=>!allowed.has(f));
+          console.log(JSON.stringify({files,unauthorized},null,2));
+          if(unauthorized.length)process.exitCode=1;
+          JS
+
+      - name: Linux build
+        run: |
+          python3 scripts/build_site.py | tee "$A02_REPORT/build-linux.log"
+          test -z "$(git status --porcelain)"
+
+      - name: A02 dist L01-L20
+        env:
+          A02_WEB_ROOT: ${{ github.workspace }}/runtime/dist
+          A02_EVIDENCE_DIR: ${{ runner.temp }}/sabik-a02-lateral/dist
+        run: node tools/test-sabik-a02-lateral.js | tee "$A02_REPORT/a02-dist.log"
+
+      - name: S1 regression on dist
+        env:
+          S1_WEB_ROOT: ${{ github.workspace }}/runtime/dist
+          S1_EVIDENCE_DIR: ${{ runner.temp }}/sabik-a02-lateral/s1-dist
+        run: |
+          node tools/test-sabik-s1.js | tee "$A02_REPORT/s1-dist.log"
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-a02-lateral-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/sabik-a02-lateral
+          retention-days: 14
