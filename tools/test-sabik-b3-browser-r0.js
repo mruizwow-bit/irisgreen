@@ -52,7 +52,7 @@ async function noOverflow(page,label){
     for(const id of ['#sabik-voice-enabled','#sabik-voice-volume','#sabik-voice-rate','#sabik-voice-repeat']){
       assert.equal(await page.locator(id).isDisabled(),true,id+' must stay disabled before S2');
     }
-    assert.match(await page.locator('#sabik-voice-note').innerText(),/S2/);
+    assert.match(await page.locator('#sabik-voice-note').textContent(),/S2/);
 
     await page.locator('#sabik-motion-choice').selectOption('SIN_MOVIMIENTO');
     assert.equal(await page.locator('.sabik-panel').getAttribute('data-sabik-motion'),'SIN_MOVIMIENTO');
