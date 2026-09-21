@@ -7,9 +7,14 @@
 
   const STATES=Object.freeze(['PRESENTE','ORIENTAR','TRANSICIÓN','PAUSA','CONFIRMAR']);
   const PRESENCES=Object.freeze(['web','ia','educa']);
-  const SPRITE='/sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp';
-  const ROW=Object.freeze({web:0,ia:1,educa:2});
-  const COL=Object.freeze({PRESENTE:0,ORIENTAR:1,'TRANSICIÓN':2,PAUSA:3,CONFIRMAR:4});
+  const ASSET_BASE='/sabik/assets/b3/';
+  const FILE_STATE=Object.freeze({
+    PRESENTE:'presente',
+    ORIENTAR:'orientar',
+    'TRANSICIÓN':'transicion',
+    PAUSA:'pausa',
+    CONFIRMAR:'confirmar'
+  });
 
   let current='PRESENTE';
   let semantic='PRESENTE';
@@ -20,21 +25,15 @@
   let confirmTimer=0;
   let transitionTimer=0;
   let observer=null;
-  let spriteStatus='idle';
-  let pendingState='PRESENTE';
 
   function normalizeState(value){return STATES.includes(value)?value:'PRESENTE';}
   function normalizePresence(value){
     value=String(value||'').toLowerCase();
     return PRESENCES.includes(value)?value:'ia';
   }
-  function spriteCell(p,s){
+  function asset(p,s){
     p=normalizePresence(p);s=normalizeState(s);
-    return Object.freeze({
-      presence:p,state:s,row:ROW[p],column:COL[s],
-      xPercent:COL[s]*25,yPercent:ROW[p]*50,
-      backgroundPosition:(COL[s]*25)+'% '+(ROW[p]*50)+'%'
-    });
+    return ASSET_BASE+p+'_'+FILE_STATE[s]+'.webp';
   }
   function project(input){
     input=input||{};
@@ -42,7 +41,7 @@
     const interaction=String(input.interaction||'');
     if(op==='paused'||interaction==='pausa')return 'PAUSA';
     if(op==='awaiting_clarification'||interaction==='correccion'||interaction==='aclaracion')return 'ORIENTAR';
-    // retrieving/composing/processing/error/risk/speech stay in their own layers.
+    // Retrieval, composing, presenting, error, safety and voice remain independent layers.
     return 'PRESENTE';
   }
   function effectiveMotion(){
@@ -56,12 +55,20 @@
     if(h)h.dataset.b3Active='false';
     if(stage)stage.hidden=true;
   }
-  function setCell(frame,p,s){
-    const cell=spriteCell(p,s);
-    frame.style.backgroundImage='url("'+SPRITE+'")';
-    frame.style.backgroundPosition=cell.backgroundPosition;
-    frame.dataset.b3Presence=cell.presence;
-    frame.dataset.b3State=cell.state;
+  function setFrame(frame,p,s){
+    frame.dataset.b3Presence=normalizePresence(p);
+    frame.dataset.b3State=normalizeState(s);
+    frame.src=asset(p,s);
+  }
+  function settle(frame,spec){
+    frame.style.transform=spec.transform;
+    frame.style.opacity=String(spec.opacity);
+  }
+  function activateStage(){
+    if(!root||!root.document||!stage)return;
+    const h=root.document.querySelector('#sabik-hologram');
+    stage.hidden=false;
+    if(h)h.dataset.b3Active='true';
   }
   function ensureStage(){
     if(!root||!root.document)return null;
@@ -75,62 +82,50 @@
     stage.id='sabik-b3-stage';
     stage.setAttribute('aria-hidden','true');
     stage.hidden=true;
+
     for(let i=0;i<2;i++){
-      const frame=root.document.createElement('span');
-      frame.className='sabik-b3-frame';
-      frame.hidden=i!==0;
-      setCell(frame,presence,current);
-      stage.appendChild(frame);
-      layers.push(frame);
+      const img=root.document.createElement('img');
+      img.className='sabik-b3-frame';
+      img.alt='';
+      img.decoding='async';
+      img.width=64;
+      img.height=64;
+      img.hidden=i!==0;
+      stage.appendChild(img);
+      layers.push(img);
     }
     h.appendChild(stage);
+
+    const first=layers[0];
+    first.onload=()=>{
+      const spec=root.SabikB3Motion?
+        root.SabikB3Motion.transition('PRESENTE','PRESENTE',effectiveMotion()):
+        {transform:'none',opacity:1};
+      settle(first,spec);
+      activateStage();
+      h.dataset.b3State='PRESENTE';
+      h.dataset.b3Motion=effectiveMotion();
+    };
+    first.onerror=setLegacyFallback;
+    setFrame(first,presence,'PRESENTE');
+
+    for(const s of STATES){
+      if(s==='PRESENTE')continue;
+      const preload=new root.Image();
+      preload.decoding='async';
+      preload.src=asset(presence,s);
+    }
     return stage;
-  }
-  function loadSprite(){
-    if(spriteStatus==='ready')return Promise.resolve(true);
-    if(spriteStatus==='loading'&&loadSprite.promise)return loadSprite.promise;
-    if(!root||typeof root.Image!=='function')return Promise.resolve(false);
-    spriteStatus='loading';
-    loadSprite.promise=new Promise(resolve=>{
-      const img=new root.Image();
-      img.decoding='async';
-      img.onload=()=>{
-        spriteStatus='ready';
-        const h=root.document&&root.document.querySelector('#sabik-hologram');
-        if(stage)stage.hidden=false;
-        if(h)h.dataset.b3Active='true';
-        render(pendingState,{force:true});
-        resolve(true);
-      };
-      img.onerror=()=>{
-        spriteStatus='error';
-        setLegacyFallback();
-        resolve(false);
-      };
-      img.src=SPRITE;
-    });
-    return loadSprite.promise;
-  }
-  function settle(frame,spec){
-    frame.style.transform=spec.transform;
-    frame.style.opacity=String(spec.opacity);
   }
   function render(target,options){
     target=normalizeState(target);
-    pendingState=target;
     ensureStage();
-    if(!stage||spriteStatus!=='ready'){
-      loadSprite();
-      return;
-    }
+    if(!stage)return;
     const h=root.document.querySelector('#sabik-hologram');
     const level=effectiveMotion();
     const spec=root.SabikB3Motion?
       root.SabikB3Motion.transition(current,target,level):
       {duration:0,easing:'linear',transform:'none',opacity:1};
-
-    const from=layers[layerIndex];
-    const to=layers[1-layerIndex];
 
     if(target===current&&!options?.force){
       h.dataset.b3State=target;
@@ -138,43 +133,52 @@
       return;
     }
 
-    setCell(to,presence,target);
-    to.hidden=false;
-    to.style.opacity='0';
-
-    const finish=()=>{
-      from.hidden=true;
-      from.style.opacity='';
-      from.style.transform='';
-      settle(to,spec);
-      layerIndex=1-layerIndex;
-      current=target;
-      h.dataset.b3State=target;
-      h.dataset.b3Motion=level;
-      h.dataset.b3Active='true';
-    };
-
-    if(spec.duration===0||typeof to.animate!=='function'){
-      finish();
-      return;
-    }
-
+    const from=layers[layerIndex];
+    const to=layers[1-layerIndex];
     if(typeof from.getAnimations==='function')from.getAnimations().forEach(a=>a.cancel());
     if(typeof to.getAnimations==='function')to.getAnimations().forEach(a=>a.cancel());
 
-    const currentTransform=getComputedStyle(from).transform;
-    const start=currentTransform&&currentTransform!=='none'?
-      currentTransform:'translate3d(0,0,0) rotate(0deg) scale(1)';
+    let started=false;
+    const start=()=>{
+      if(started)return;started=true;
+      activateStage();
+      to.hidden=false;
+      to.style.opacity='0';
 
-    const a1=from.animate(
-      [{opacity:Number(getComputedStyle(from).opacity)||1},{opacity:0}],
-      {duration:spec.duration,easing:spec.easing,fill:'forwards'}
-    );
-    const a2=to.animate(
-      [{opacity:0,transform:start},{opacity:spec.opacity,transform:spec.transform}],
-      {duration:spec.duration,easing:spec.easing,fill:'forwards'}
-    );
-    a2.onfinish=()=>{a1.cancel();a2.cancel();finish();};
+      const finish=()=>{
+        from.hidden=true;
+        from.style.opacity='';
+        from.style.transform='';
+        settle(to,spec);
+        layerIndex=1-layerIndex;
+        current=target;
+        h.dataset.b3State=target;
+        h.dataset.b3Motion=level;
+        h.dataset.b3Active='true';
+      };
+
+      if(spec.duration===0||typeof to.animate!=='function'){
+        finish();
+        return;
+      }
+      const currentTransform=getComputedStyle(from).transform;
+      const startTransform=currentTransform&&currentTransform!=='none'?
+        currentTransform:'translate3d(0,0,0) rotate(0deg) scale(1)';
+      const a1=from.animate(
+        [{opacity:Number(getComputedStyle(from).opacity)||1},{opacity:0}],
+        {duration:spec.duration,easing:spec.easing,fill:'forwards'}
+      );
+      const a2=to.animate(
+        [{opacity:0,transform:startTransform},{opacity:spec.opacity,transform:spec.transform}],
+        {duration:spec.duration,easing:spec.easing,fill:'forwards'}
+      );
+      a2.onfinish=()=>{a1.cancel();a2.cancel();finish();};
+    };
+
+    to.onload=start;
+    to.onerror=()=>{to.hidden=true;setLegacyFallback();};
+    setFrame(to,presence,target);
+    if(to.complete&&to.naturalWidth>0)root.queueMicrotask(start);
   }
   function syncFromDom(){
     if(!root||!root.document)return;
@@ -211,15 +215,17 @@
       transitionTimer=0;
     },delay);
   }
-  function setState(s){
-    semantic=normalizeState(s);
-    render(semantic);
-  }
+  function setState(s){semantic=normalizeState(s);render(semantic);}
   function setPresence(p){
     presence=normalizePresence(p);
     const h=root&&root.document&&root.document.querySelector('#sabik-hologram');
     if(h)h.dataset.sabikPresence=presence;
-    if(layers.length)layers.forEach(frame=>setCell(frame,presence,frame.dataset.b3State||current));
+    if(layers.length){
+      layers.forEach(frame=>{
+        const state=normalizeState(frame.dataset.b3State||current);
+        setFrame(frame,presence,state);
+      });
+    }
     render(current,{force:true});
   }
   function mount(){
@@ -241,9 +247,7 @@
     root.document.addEventListener('sabik:b3-transition',e=>{
       if(e.detail&&STATES.includes(e.detail.to))transitionTo(e.detail.to);
     });
-
     syncFromDom();
-    loadSprite();
     return stage;
   }
 
@@ -253,8 +257,8 @@
   }
 
   return Object.freeze({
-    STATES,PRESENCES,SPRITE,spriteCell,project,effectiveMotion,
+    STATES,PRESENCES,asset,project,effectiveMotion,
     mount,setState,setPresence,confirm,transitionTo,
-    getState:()=>current,getPresence:()=>presence,getSpriteStatus:()=>spriteStatus
+    getState:()=>current,getPresence:()=>presence
   });
 });
