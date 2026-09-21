@@ -17,7 +17,8 @@ assert.match(css,/data-sabik-density="reducida"/);
 assert.match(css,/data-ig-text-width/);
 assert.match(css,/data-ig-text-line/);
 assert.match(css,/data-ig-contrast="on"/);
-assert.doesNotMatch(css,/font-size:calc\(1rem \* var\(--ig-reading-scale/,'do not double-apply global 200% text scale');
+assert.match(css,/html\[data-ig-preferences="2"\] \.sabik-panel\s*\{\s*zoom:var\(--ig-reading-scale,1\);\s*\}/);
+assert.doesNotMatch(css,/font-size:calc\(1rem \* var\(--ig-reading-scale/,'do not double-apply global text scale');
 
 const densitySection=css.slice(css.indexOf('ACC-10:'),css.indexOf('Reduced Motion is independent'));
 assert.doesNotMatch(densitySection,/\.sabik-answer[^}]*display\s*:\s*none/i);
