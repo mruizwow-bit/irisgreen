@@ -26,6 +26,9 @@ test("intent_stop",()=>{const p=run("Detén la lectura.",{s0:{speech:"speaking"}
 test("intent_human_help",()=>{const p=run("Necesito asistencia humana para una consulta normal.");assert.equal(p.gate,"normal");assert.equal(p.predicted_commands[0]?.intent,"PEDIR_AYUDA_HUMANA");});
 
 test("safety_confirmed_blocks_planning",()=>{const p=run("Hay un peligro inmediato para mí y pon el texto grande.");assert.equal(p.gate,"confirmed");assert.equal(p.predicted_commands.length,0);assert.equal(p.predicted_actions.length,0);assert.equal(p.ordinary_actions_blocked,true);});
+test("safety_direct_personal_danger_without_urgency",()=>{const p=run("Estoy en peligro.");assert.equal(p.gate,"confirmed");assert.equal(p.predicted_commands.length,0);assert.equal(p.predicted_actions.length,0);});
+test("safety_direct_personal_clearance",()=>assert.equal(run("No estoy en peligro.").gate,"cleared"));
+test("safety_topic_about_risk_stays_normal",()=>assert.equal(run("Analizo información sobre riesgo para una tarea.").gate,"normal"));
 test("safety_uncertain",()=>assert.equal(run("No sé si estoy a salvo.").gate,"uncertain"));
 test("safety_cleared",()=>assert.equal(run("El peligro terminó y ahora estoy a salvo.").gate,"cleared"));
 test("safety_handoff",()=>assert.equal(run("Hay riesgo actual y necesito asistencia humana.").gate,"handoff"));
@@ -49,7 +52,8 @@ test("search_location_derives_orient",()=>{const p=run("Dime dónde está el con
 test("assistant_pause_derives_b3_pause",()=>{const p=run("Pausa al asistente.");assert.equal(p.predicted_b3,"PAUSA");});
 
 test("no_generic_query_is_invented",()=>{const p=run("Busca.");assert.equal(p.predicted_result_kind,"insufficient");assert.ok(!JSON.stringify(p).includes('"consulta"'));});
-test("no_ids_are_invented",()=>{for(const utterance of ["Confirma.","Rechaza el resultado.","Continúa."]){const p=run(utterance,{});const j=JSON.stringify(p);for(const forbidden of ["flow-current","instruction-current","/previous",'"pc"','"r1"'])assert.ok(!j.includes(forbidden),forbidden);}});
+test("no_ids_are_invented",()=>{for(const utterance of ["Confirma.","Rechaza el resultado.","Continúa.","No repitas la instrucción."]){const p=run(utterance,{});const j=JSON.stringify(p);for(const forbidden of ["flow-current","instruction-current","/previous",'"contextId":"current"','"pc"','"r1"'])assert.ok(!j.includes(forbidden),forbidden);}});
+test("negated_repeat_without_context_does_not_invent_or_execute",()=>{const p=run("No repitas la instrucción.");assert.equal(p.gate,"normal");assert.equal(p.predicted_actions.length,0);assert.notEqual(p.predicted_result_kind,"insufficient");assert.ok(!JSON.stringify(p).includes('"contextId":"current"'));});
 
 const failed=checks.filter(x=>!x.ok);
 console.log(JSON.stringify({status:failed.length?"FAIL":"PASS",version:"I0_V3_R2_TEST_SUITE",total:checks.length,passed:checks.length-failed.length,failed:failed.length,checks},null,2));
