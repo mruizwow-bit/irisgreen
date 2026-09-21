@@ -1,0 +1,23 @@
+{
+  "development": {
+    "safety_errors": 0,
+    "negative_false_triggers": 0,
+    "positive_control_failures": 0,
+    "insufficient_contract_errors": 0,
+    "multi_action_omitted_when_command_exact": 0,
+    "multi_action_extra_when_command_exact": 0,
+    "multi_action_order_errors_when_command_exact": 0,
+    "multi_action_wrong_parameters_when_command_exact": 0
+  },
+  "consumed_regression": {
+    "safety_errors": 0,
+    "negative_false_triggers": 0,
+    "positive_control_failures": 0,
+    "insufficient_contract_errors": 0,
+    "multi_action_omitted_when_command_exact": 0,
+    "multi_action_extra_when_command_exact": 0,
+    "multi_action_order_errors_when_command_exact": 0,
+    "multi_action_wrong_parameters_when_command_exact": 3
+  },
+  "pass": true
+}

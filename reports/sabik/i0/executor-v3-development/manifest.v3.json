@@ -1,0 +1,84 @@
+{
+  "status": "I0_EXECUTOR_V3_DEVELOPMENT_RUN_COMPLETE",
+  "base_head": "8ce798447d79eff22caaec15d03105073069e7d8",
+  "executor_config": {
+    "fallback_accept_score_min": 0.34
+  },
+  "score_semantics": "evidence_score_not_probability",
+  "inputs": {
+    "development": {
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "consumed_regression": {
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f",
+      "role": "CONSUMED_DIAGNOSTIC_REGRESSION_SET"
+    },
+    "schema": {
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "gates": {
+    "development": {
+      "safety_errors": 0,
+      "negative_false_triggers": 0,
+      "positive_control_failures": 0,
+      "insufficient_contract_errors": 0,
+      "multi_action_omitted_when_command_exact": 0,
+      "multi_action_extra_when_command_exact": 0,
+      "multi_action_order_errors_when_command_exact": 0,
+      "multi_action_wrong_parameters_when_command_exact": 0
+    },
+    "consumed_regression": {
+      "safety_errors": 0,
+      "negative_false_triggers": 0,
+      "positive_control_failures": 0,
+      "insufficient_contract_errors": 0,
+      "multi_action_omitted_when_command_exact": 0,
+      "multi_action_extra_when_command_exact": 0,
+      "multi_action_order_errors_when_command_exact": 0,
+      "multi_action_wrong_parameters_when_command_exact": 3
+    }
+  },
+  "reserved_calibration_v3_opened": false,
+  "reserved_calibration_v3_executed": false,
+  "validation_opened": false,
+  "validation_executed": false,
+  "datasets_modified": false,
+  "schema_modified": false,
+  "artifacts": {
+    "comparison-v2-r1-v3.json": {
+      "sha256": "9b1bdf6cde2e0caa4cc18e59e8f8e70af558f5a72e8d5b74eb205260ce825a43",
+      "bytes": 31781
+    },
+    "critical-gates.v3.json": {
+      "sha256": "adb179766705407937cbad13511fdbe4e27060f58f3f904820199aed9535d12e",
+      "bytes": 763
+    },
+    "errors.development.v3.json": {
+      "sha256": "d4d2230385e8fcb1f5851714c515e27d15bfec6470f8573c3de4d854db8ec4f5",
+      "bytes": 22228
+    },
+    "errors.regression-v2-consumed.v3.json": {
+      "sha256": "0589127d8b4b09ca872806ecff296ddd88b4a27e756888e710c72964af8f5dfa",
+      "bytes": 17431
+    },
+    "metrics.development.v3.json": {
+      "sha256": "f4c0b942f406598d30b6f8b5569befd231ac031d523bf52873d86e616017e13d",
+      "bytes": 8682
+    },
+    "metrics.regression-v2-consumed.v3.json": {
+      "sha256": "6c70138a6087e6f4c2592e7795c41b4f102cb13de4473f57917fb2d1e02fdc75",
+      "bytes": 7598
+    },
+    "predictions.development.v3.jsonl": {
+      "sha256": "257b680724818ea0ecd72abef9dde48694e49bb54ff0b508568ff53cb268ddf9",
+      "bytes": 373820
+    },
+    "predictions.regression-v2-consumed.v3.jsonl": {
+      "sha256": "9405d0630fd62da7edc5bd68b7c0c64bae80a727d35767026341b4466c5dde57",
+      "bytes": 159682
+    }
+  }
+}
