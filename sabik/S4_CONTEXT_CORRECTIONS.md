@@ -158,6 +158,7 @@ to public emergency services or third-party audio services.
 
 ## Rollback
 
-Revert the R1 correction commit to restore the reviewed R0, or revert both S4
-commits to remove S4. Both choices retain the previous integrated S1/S0. No migration,
+Revert the R1 commits after `e5cc71c5` in reverse chronological order to restore
+the reviewed R0, or also revert R0 to remove S4. Both choices retain the previous
+integrated S1/S0. No migration,
 storage cleanup, editorial change or external service rollback is needed.

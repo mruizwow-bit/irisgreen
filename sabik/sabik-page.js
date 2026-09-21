@@ -95,7 +95,7 @@
     "Conversación reiniciada. Puedes escribir una nueva consulta.": "Conversation restarted. You can write a new question.",
     "Conversación reiniciada.": "Conversation restarted.",
     "Respuesta más corta activada.": "Shorter responses enabled.",
-    "Entendido. Retiro esta respuesta y mantengo el tema. Puedes corregirme o buscar por otra vía.": "Understood. I will withdraw this answer and keep the topic. You can correct me or search another way.",
+    "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.": "Understood. I will withdraw this approach. You can write a specific correction.",
     "La corrección explícita pesa más que la inferencia.": "An explicit correction takes precedence over an inference.",
     "Sabik espera una corrección.": "Sabik is waiting for a correction.",
     "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.": "To try another approach, I need a brief clarification: what would you like to withdraw or try now?",
@@ -587,7 +587,7 @@
       state.session = window.NEACoreV1.registerPlanRejection(state.session, state.lastPlan, "no_es_esto");
       output.hidden = false;
       answer.className = "sabik-answer";
-      uiText(answer, "Entendido. Retiro esta respuesta y mantengo el tema. Puedes corregirme o buscar por otra vía.");
+      uiText(answer, "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.");
       uiText(notice, "La corrección explícita pesa más que la inferencia.");
       clearSources();
       renderSabikState(state.session.sabik_state, "Sabik espera una corrección.", "correccion");
