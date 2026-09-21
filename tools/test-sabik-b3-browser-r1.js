@@ -5,7 +5,8 @@ const http=require('node:http');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 
-const root=path.resolve(__dirname,'..');
+const repo=path.resolve(__dirname,'..');
+const root=path.resolve(process.env.B3_WEB_ROOT||repo);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2'};
 const server=http.createServer((req,res)=>{
   let pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
