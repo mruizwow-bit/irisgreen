@@ -1,0 +1,37 @@
+name: Sabik I0 V4 corpus bootstrap
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v4-blind-20260921
+    paths:
+      - tools/bootstrap/calibration.v4.blind.jsonl.gz.b64
+
+permissions:
+  contents: write
+
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sabik/i0-calibration-v4-blind-20260921
+          fetch-depth: 0
+      - name: Materialize frozen candidate corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="tools/bootstrap/calibration.v4.blind.jsonl.gz.b64"
+          [ -f "$payload" ] || exit 0
+          mkdir -p tests/calibration/sabik/i0-v4
+          base64 -d "$payload" | gzip -dc > tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl
+          echo "3da27be84f19cb44d4178ac57b86cca738f13d64a9e5613ba531a088089b1353  tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl" | sha256sum -c -
+          test "$(wc -l < tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl)" -eq 240
+          rm "$payload"
+          git config user.name "sabik-i0-calibration-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl "$payload"
+          git diff --cached --quiet && exit 0
+          git commit -m "test(sabik): materialize blind I0 Calibration V4 corpus"
+          git push origin HEAD:sabik/i0-calibration-v4-blind-20260921
