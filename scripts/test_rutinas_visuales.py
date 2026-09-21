@@ -12,14 +12,14 @@ assets=root/'assets/mulberry-rutinas'
 for p in (page,index,css,js,data,assets/'sources.csv',assets/'LICENSE-MULBERRY.txt'):
     assert p.exists(),p
 rows=list(csv.DictReader((assets/'sources.csv').open(encoding='utf-8-sig')))
-assert len(rows)==58,len(rows)
+assert len(rows)==93,len(rows)
 assert all(r['estado']=='CANDIDATO' for r in rows)
 sprite_files=sorted(assets.glob('sprite-*.svg'))
-assert [p.name for p in sprite_files]==[f'sprite-{i}.svg' for i in range(1,9)]
+assert [p.name for p in sprite_files]==[f'sprite-{i}.svg' for i in range(1,14)]
 sprite_text={p.name:p.read_text(encoding='utf-8') for p in sprite_files}
 all_sprites=''.join(sprite_text.values())
 ids=re.findall(r'<symbol\b[^>]*\bid=["\']([^"\']+)["\']',all_sprites,re.I)
-assert len(ids)==58 and len(set(ids))==58,(len(ids),len(set(ids)))
+assert len(ids)==93 and len(set(ids))==93,(len(ids),len(set(ids)))
 assert set(ids)=={r['id'] for r in rows}
 low=all_sprites.lower()
 for bad in ('<metadata','c2pa','com.anthropic','id="layer_1"',"id='layer_1'"):
@@ -29,7 +29,7 @@ script=js.read_text(encoding='utf-8'); style=css.read_text(encoding='utf-8')
 data_text=data.read_text(encoding='utf-8').strip()
 assert data_text.startswith('window.IG_RUTINAS_PICTOS=') and data_text.endswith(';')
 pictos=json.loads(data_text[len('window.IG_RUTINAS_PICTOS='):-1])
-assert len(pictos)==58
+assert len(pictos)==93
 for p in pictos:
     assert p['sprite'] in sprite_text,(p['id'],p['sprite'])
     assert re.search(r'<symbol\b[^>]*\bid=["\']'+re.escape(p['id'])+r'["\']',sprite_text[p['sprite']],re.I),(p['id'],p['sprite'])
@@ -52,4 +52,4 @@ assert '© Steve Lee, CC BY-SA 4.0 · mulberrysymbols.org' in script
 assert 'Deberes' not in script and 'Homework' not in script and 'Merienda' not in script
 assert '/es/taller/rutinas/' not in html
 assert 'irisgreen.eu/es/taller/rutinas/' not in script
-print({'route':'/es/recursos/rutinas-visuales/','symbols':58,'sprites':8,'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})
+print({'route':'/es/recursos/rutinas-visuales/','symbols':93,'sprites':13,'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})
