@@ -26,8 +26,27 @@ ALLOWED_STORAGE = {
     },
     "sessionStorage": {
         "ig-conditions-url": {"getItem", "setItem", "removeItem"},
-        "ig-situations-url": {"getItem", "setItem", "removeItem"},
+        # Retired/deprecated keys remain removable so existing sessions can be cleaned.
+        "ig-situations-url": {"removeItem"},
+        "ig-idioma": {"getItem", "removeItem"},
+        "ig-rutinas-hechos-ready": {"getItem", "setItem", "removeItem"},
+        "ig-rutinas-hechos-builder": {"getItem", "setItem", "removeItem"},
+        "ig-tarjeta-iris": {"getItem", "setItem", "removeItem"},
     },
+}
+
+# Rutinas passes one of two finite first-party keys through helper parameters.
+# This mapping is deliberately file-scoped: a generic variable called "key" in
+# another file must never be treated as approved automatically.
+DYNAMIC_KEY_ARGUMENTS = {
+    ("assets/rutinas-visuales.js", "sessionStorage", "storageKey"): [
+        "ig-rutinas-hechos-ready",
+        "ig-rutinas-hechos-builder",
+    ],
+    ("assets/rutinas-visuales.js", "sessionStorage", "key"): [
+        "ig-rutinas-hechos-ready",
+        "ig-rutinas-hechos-builder",
+    ],
 }
 
 CALL_RE = re.compile(
@@ -69,14 +88,23 @@ def constants_in(text: str) -> dict[str, str]:
     return {m.group("name"): m.group("value") for m in CONST_RE.finditer(text)}
 
 
-def resolve_keys(argument: str, constants: dict[str, str]) -> list[str]:
-    """Resuelve claves literales, constantes simples y ternarios de literales."""
+def resolve_keys(
+    argument: str,
+    constants: dict[str, str],
+    rel: str,
+    storage: str,
+) -> list[str]:
+    """Resuelve literales, constantes, ternarios y helpers finitos documentados."""
     arg = argument.strip()
     if IDENT_RE.fullmatch(arg) and arg in constants:
         return [constants[arg]]
     direct = STRING_RE.fullmatch(arg)
     if direct:
         return [direct.group("value")]
+    if IDENT_RE.fullmatch(arg):
+        mapped = DYNAMIC_KEY_ARGUMENTS.get((rel, storage, arg))
+        if mapped:
+            return list(mapped)
     # Los catálogos usan una elección ternaria entre dos claves fijas. Aceptamos
     # esa forma solo si el primer argumento contiene exclusivamente literales
     # identificables; cualquier expresión sin literales sigue quedando bloqueada.
@@ -110,7 +138,7 @@ def main() -> None:
             storage = match.group("storage")
             action = match.group("action")
             argument = match.group("arg").strip()
-            keys = resolve_keys(argument, constants)
+            keys = resolve_keys(argument, constants, rel, storage)
             line = line_number(text, match.start())
             if not keys:
                 item = {
