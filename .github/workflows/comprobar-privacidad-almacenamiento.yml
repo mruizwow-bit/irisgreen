@@ -13,15 +13,28 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar navegador W03
+        run: |
+          npm install --prefix "$RUNNER_TEMP/w03-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/w03-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          echo "NODE_PATH=$RUNNER_TEMP/w03-browser/node_modules" >> "$GITHUB_ENV"
+          echo "W03_EVIDENCE_DIR=$RUNNER_TEMP/w03-storage-privacy" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/w03-storage-privacy"
       - name: Construir la salida pública
         run: python3 scripts/build_site.py
       - name: Auditar almacenamiento del navegador
         run: python3 scripts/audit_privacidad_almacenamiento.py --root dist
+      - name: Probar política W03 en navegador
+        env:
+          W03_WEB_ROOT: dist
+        run: node tools/test-storage-privacy-policy.js
       - name: Conservar el inventario técnico
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: privacidad-almacenamiento
-          path: dist/reports/publicacion/privacidad-almacenamiento.json
+          path: |
+            dist/reports/publicacion/privacidad-almacenamiento.json
+            ${{ runner.temp }}/w03-storage-privacy
           if-no-files-found: warn
           retention-days: 14
