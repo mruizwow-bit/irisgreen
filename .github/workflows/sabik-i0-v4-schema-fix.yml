@@ -1,0 +1,55 @@
+name: Sabik I0 V4 schema-only action fix
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v4-blind-20260921
+    paths:
+      - '.github/workflows/sabik-i0-v4-schema-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sabik/i0-calibration-v4-blind-20260921
+          fetch-depth: 0
+      - name: Remove schema-forbidden action IDs only
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('fs');
+          const p='tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl';
+          const expected=new Set([
+            'I0-CAL-4141','I0-CAL-4142','I0-CAL-4143','I0-CAL-4144',
+            'I0-CAL-4145','I0-CAL-4146','I0-CAL-4147','I0-CAL-4148',
+            'I0-CAL-4162','I0-CAL-4163','I0-CAL-4164','I0-CAL-4165',
+            'I0-CAL-4166','I0-CAL-4167','I0-CAL-4231','I0-CAL-4237'
+          ]);
+          const rows=fs.readFileSync(p,'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
+          const changed=[];
+          for(const row of rows){
+            let hit=false;
+            for(const action of row.expected_actions||[]){
+              if(Object.prototype.hasOwnProperty.call(action,'id')){delete action.id;hit=true;}
+            }
+            if(hit)changed.push(row.id);
+          }
+          const got=[...changed].sort(), want=[...expected].sort();
+          if(JSON.stringify(got)!==JSON.stringify(want))throw new Error('Unexpected schema-fix ID set: '+JSON.stringify(got));
+          fs.writeFileSync(p,rows.map(x=>JSON.stringify(x)).join('\n')+'\n');
+          NODE
+          echo "f711f6f0bc1dd1a27a1c406c6f0f46972a0e93799e0602c29b0f453497d7f6b1  tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl" | sha256sum -c -
+          test "$(wc -l < tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl)" -eq 240
+          rm -f tests/calibration/sabik/i0-v4/GATE_TRIGGER.txt
+          rm -f .github/workflows/sabik-i0-v4-schema-fix.yml
+          git config user.name "sabik-i0-calibration-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "test(sabik): make V4 expected actions schema-valid"
+          git push origin HEAD:sabik/i0-calibration-v4-blind-20260921
