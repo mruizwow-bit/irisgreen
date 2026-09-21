@@ -17,7 +17,7 @@
 .ti-primary:hover{background:#122c48;color:#fff}
 .ti-btn:focus-visible,.ti-chip:focus-visible,.ti-input:focus-visible,.ti-textarea:focus-visible,.ti-picto-btn:focus-visible,.ti-shape:focus-visible{outline:3px solid var(--ti-purple);outline-offset:3px}
 .ti-grid{display:grid;grid-template-columns:minmax(300px,1fr) minmax(320px,.92fr);gap:28px;align-items:start;margin-top:8px}
-.ti-col{display:grid;gap:20px;min-width:0}
+.ti-col{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;min-width:0}
 .ti-card{background:#fff;border:1px solid rgba(23,57,92,.14);border-radius:18px;padding:20px 22px;display:grid;gap:14px}
 .ti-example{border:0;border-left:4px solid var(--ti-purple);border-radius:0;background:#fff;padding:16px 18px}
 .ti-shapes{display:grid;gap:10px;margin:0;padding:0;border:0}

@@ -44,6 +44,7 @@ ROUTES = [
     "/es/videos/",
     "/es/recursos/juegos/",
     "/es/recursos/juegos/las-cinco-cosas/",
+    "/es/recursos/tarjeta-iris/",
     "/es/intereses/",
     "/es/taller/",
     "/es/sitio-tranquilo/",
@@ -268,6 +269,53 @@ with sync_playwright() as pw:
 
         record(row, check_focus)
         ctx.close()
+
+
+    # W1-WEB-W01 · Tarjeta Iris: reproducción dedicada a 320/390 CSS px.
+    # Captura document width, elementos que cruzan el borde derecho y PNG de evidencia.
+    for width in (320, 390, 768, 1440):
+        ctx, page, errors = make_page(width)
+        row = {"scenario": "tarjeta_reflow", "route": "/es/recursos/tarjeta-iris/", "css_width": width}
+
+        def check_tarjeta_reflow():
+            load(page, "/es/recursos/tarjeta-iris/")
+            overflow = page.evaluate(JS_OVERFLOW)
+            row.update(overflow)
+            row["offenders"] = page.evaluate("""() => Array.from(document.querySelectorAll('body *')).map(el => {
+              const r=el.getBoundingClientRect(), cs=getComputedStyle(el);
+              return {tag:el.tagName,id:el.id,cls:String(el.className||'').slice(0,100),
+                      left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),
+                      display:cs.display,position:cs.position};
+            }).filter(x => x.display !== 'none' && x.right > innerWidth + 2).slice(0,30)""")
+            page.screenshot(path=str(OUT / f"tarjeta-{width}.png"), full_page=True)
+            assert overflow["overflow"] <= 2, {"overflow": overflow, "offenders": row["offenders"]}
+            assert not errors, errors
+
+        record(row, check_tarjeta_reflow)
+        ctx.close()
+
+    # La orden W01 exige que Imprimir siga intacto. Se sustituye window.print
+    # por un espía para no abrir un diálogo del sistema en CI.
+    ctx, page, errors = make_page(390)
+    row = {"scenario": "tarjeta_print", "route": "/es/recursos/tarjeta-iris/"}
+
+    def check_tarjeta_print():
+        page.add_init_script("window.__igPrintCalled=false; window.print=()=>{window.__igPrintCalled=true}")
+        load(page, "/es/recursos/tarjeta-iris/")
+        button = page.locator("#ti-print")
+        button.focus()
+        assert page.evaluate("document.activeElement?.id") == "ti-print"
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(120)
+        row["print_called"] = page.evaluate("window.__igPrintCalled === true")
+        row["printing_nodes"] = page.locator("[data-ti-printing]").count()
+        assert row["print_called"], row
+        assert row["printing_nodes"] >= 1, row
+        assert page.evaluate("document.activeElement?.id") == "ti-print"
+        assert not errors, errors
+
+    record(row, check_tarjeta_print)
+    ctx.close()
 
     browser.close()
 
