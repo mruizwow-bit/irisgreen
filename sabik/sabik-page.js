@@ -95,7 +95,7 @@
     "Conversación reiniciada. Puedes escribir una nueva consulta.": "Conversation restarted. You can write a new question.",
     "Conversación reiniciada.": "Conversation restarted.",
     "Respuesta más corta activada.": "Shorter responses enabled.",
-    "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.": "Understood. I will withdraw this approach. You can write a specific correction.",
+    "Entendido. Retiro esta respuesta y mantengo el tema. Puedes corregirme o buscar por otra vía.": "Understood. I will withdraw this answer and keep the topic. You can correct me or search another way.",
     "La corrección explícita pesa más que la inferencia.": "An explicit correction takes precedence over an inference.",
     "Sabik espera una corrección.": "Sabik is waiting for a correction.",
     "Para buscar por otra vía necesito una aclaración breve: qué quieres retirar o probar ahora.": "To try another approach, I need a brief clarification: what would you like to withdraw or try now?",
@@ -160,9 +160,17 @@
 
   function syncControls() {
     const disabled = unavailable();
-    for (const id of ["low", "shorter", "not-this", "other-way", "no-questions", "one-option", "rephrase", "retry-data"]) {
+    for (const id of ["low", "shorter", "not-this", "other-way"]) {
       const node = document.querySelector(`#sabik-${id}`);
       if (node) node.disabled = disabled;
+    }
+    // S4 actions keep native focus while pending; their handlers still guard reentry.
+    for (const id of ["no-questions", "one-option", "rephrase", "retry-data"]) {
+      const node = document.querySelector(`#sabik-${id}`);
+      if (!node) continue;
+      node.disabled = !state.coreReady || state.paused || state.controlBusy;
+      if (state.pending && !node.disabled) node.setAttribute("aria-disabled", "true");
+      else node.removeAttribute("aria-disabled");
     }
     const submit = document.querySelector("#sabik-submit");
     if (submit) {
@@ -563,11 +571,14 @@
         }
       });
     }
-    document.querySelector("#sabik-retry-data")?.addEventListener("click", async () => {
+    document.querySelector("#sabik-retry-data")?.addEventListener("click", async (event) => {
       if (unavailable()) return;
+      const button = event.currentTarget;
       state.dataPromise = null;
       const value = state.failedInput || state.lastInput || input.value.trim();
       if (value) await runNeed(value);
+      if (button.hidden && !unavailable() && state.machine.visibility === "expanded" &&
+          [button, document.body].includes(document.activeElement)) focus("#sabik-input");
     });
 
     document.querySelector("#sabik-not-this")?.addEventListener("click", () => {
@@ -576,7 +587,7 @@
       state.session = window.NEACoreV1.registerPlanRejection(state.session, state.lastPlan, "no_es_esto");
       output.hidden = false;
       answer.className = "sabik-answer";
-      uiText(answer, "Entendido. Retiro esta vía. Puedes escribir una corrección concreta.");
+      uiText(answer, "Entendido. Retiro esta respuesta y mantengo el tema. Puedes corregirme o buscar por otra vía.");
       uiText(notice, "La corrección explícita pesa más que la inferencia.");
       clearSources();
       renderSabikState(state.session.sabik_state, "Sabik espera una corrección.", "correccion");

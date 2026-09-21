@@ -70,11 +70,27 @@ async function run() {
     assert(!result.plan.source_urls.some(url => url.includes("ruido")));
   });
   test("new explicit topic without pronoun does not accumulate", () => assert.deepEqual(ask("Que es decisiones", answer().session).session.active_concepts, ["decisiones"]));
-  test("hypothesis rejection retires active concept", () => {
-    const result = control(answer(), "reject_hypothesis");
-    assert(result.session.rejected_concepts.includes("ruido")); assert.deepEqual(result.session.active_concepts, []);
-    assert.equal(result.session.last_rejection.scope, "hypothesis");
-    assert(!ask("Que es ruido", result.session).plan.source_urls.some(url => url.includes("ruido")));
+  test("answer rejection preserves concept/topic and records the shown answer", () => {
+    const initial = answer(); const before = structuredClone(initial);
+    const result = control(initial, "reject_hypothesis");
+    assert.deepEqual(initial, before);
+    assert.deepEqual(result.session.rejected_concepts, []);
+    assert.deepEqual(result.session.active_concepts, initial.session.active_concepts);
+    assert.equal(result.session.topic_query, initial.session.topic_query);
+    assert.deepEqual(result.session.rejected_response_ids, [initial.plan.response_id]);
+    assert.equal(result.session.last_rejection.scope, "response");
+    assert.equal(result.session.awaiting_correction, true);
+    assert.notEqual(core.renderControlledText(ask("Que es ruido", result.session).plan), core.renderControlledText(initial.plan));
+  });
+  test("rejected answer allows a followup and another source about the same concept", () => {
+    const initial = ask("Que es ruido", core.setSessionPreferences(fresh(), { max_options: 1 }));
+    const rejected = control(initial, "reject_hypothesis");
+    const result = ask("Y en el trabajo", rejected.session);
+    assert.equal(result.session.context_mode, "followup");
+    assert.equal(result.session.context_modifier, "trabajo");
+    assert.deepEqual(result.session.active_concepts, ["ruido"]);
+    assert(result.plan.fragments_used.length > 0);
+    assert(!result.plan.fragments_used.includes(initial.plan.fragments_used[0]));
   });
   test("other route rejects fragments, not concept", () => {
     const initial = ask("Que es ruido", core.setSessionPreferences(fresh(), { max_options: 1 }));
@@ -83,6 +99,15 @@ async function run() {
     assert.deepEqual(result.session.active_concepts, ["ruido"]);
     assert(!result.plan.fragments_used.includes(initial.plan.fragments_used[0]));
     assert(result.plan.fragments_used.length);
+  });
+  test("different fragment IDs cannot replay exactly the rejected answer", () => {
+    const data = { ...fixture, fragmentsIndex: [fixture.fragmentsIndex[0], { ...fixture.fragmentsIndex[0], id: "duplicate" }] };
+    const initial = ask("Que es ruido", core.setSessionPreferences(fresh(), { max_options: 1 }), data);
+    const rejected = core.applyResponseControl(initial.session, initial.plan, "reject_hypothesis", data);
+    const next = ask("Que es ruido", rejected.session, data);
+    assert.equal(next.plan.repeated_response_blocked, true);
+    assert.notEqual(core.renderControlledText(next.plan), core.renderControlledText(initial.plan));
+    assert.deepEqual(next.session.active_concepts, ["ruido"]);
   });
   test("exhausted route reports insufficiency without repeating", () => {
     const initial = answer(); const result = control(initial, "other_route");

@@ -1,6 +1,8 @@
 # S4: context, corrections and optional-data degradation
 
-Delivery: `SABIK_S4_CONTEXT_CORRECTIONS_READY` (implementation for review, not release approval).
+R0: `S4_GATE_BLOCKED_R0`, reviewed at `e5cc71c5f34554d1c1c88dc825c57ec5829698d9`.
+R1 is ready for independent review only after the exact-head Linux job succeeds.
+The PR records that SHA and its evidence; this document does not authorize release.
 Issue: #153. Branch: `sabik/s4-conversation-corrections`. Target: `sabik-preview`.
 Starting commit: `96ebf38a535fa287f32fee8c7957ede39933365c`.
 
@@ -22,7 +24,7 @@ renderable plan, explicit vetoes, rejected fragments/types and asked questions.
 Followups such as "y eso", "y que hago despues", "dime mas" and "puedes explicarlo"
 reuse only the current topic and non-rejected concepts from this session.
 An explicit topic change or a new non-referential query replaces the active topic.
-Corrections remove rejected concepts from active context. Asking an informational
+Explicit concept negations remove vetoed concepts from active context. Asking an informational
 question does not silently reopen a veto. A followup without a referent asks for
 the topic, or reports insufficiency if the person disabled questions.
 
@@ -42,7 +44,7 @@ plan inputs are copied, never mutated. Optional-data caches contain only site da
 | --- | --- |
 | First negative statement | Ordinary query with scoped explicit concept veto; no invented previous answer |
 | Explicit correction | Retires the named route and, if supported, includes evidence for the replacement |
-| No es esto | Rejects the shown hypothesis, removes it from active context, waits for correction |
+| No es esto | Records the shown response ID and evidence, preserves active concepts/topic, waits for correction or another route |
 | Rejection of a clarification | Rejects the response type, not either concept |
 | Buscar por otra via | Rejects shown fragments; keeps the topic/concepts and looks for another supported fragment |
 | Explicamelo de otra forma | Selects a different relevant verbatim sentence from the same source, or explicitly says none is available |
@@ -55,6 +57,15 @@ normalization. `applyResponseControl(session, plan, control, data)` returns a ne
 `{session, plan}`. `registerPlanRejection` keeps its legacy call signature, with
 explicit `fragment` and `response_type` reasons. Explicit concept negation is
 recorded separately with `last_rejection.scope = "concept"`.
+
+R1 uses deterministic session-local response IDs. Rejected answers are recorded
+in `rejected_response_ids`/`rejected_responses`, never in `rejected_concepts`.
+Retrieval excludes their shown fragments, not their concepts. This deliberately
+conservative exclusion can exhaust sources sooner than a sentence-level rejection;
+then Sabik reports insufficiency instead of repeating the same evidence. A rendered
+answer comparison also blocks duplicates stored under different fragment IDs. Followups
+after rejection retain their referent. Prepositional followups also retain their
+context modifier, for example `trabajo` in `Y en el trabajo`.
 
 Shortening does not invent an editorial summary; an already minimal direct
 excerpt may remain the same length. Another explanation is an alternate excerpt,
@@ -96,6 +107,7 @@ Commands from the worktree root:
 ```text
 node tools/test-sabik-s4.js
 node tools/test-sabik-s4-browser.js
+node /path/to/unchanged-qa0/tests/specs/sabik/run-s3-s4-qa0.mjs --phase S4 --adapter ./tools/sabik-s4-qa0-adapter.mjs
 node tools/test-sabik-machine-s0.js
 node tools/test-sabik-page-v7.js
 node tools/test-sabik-a11y-closure.js
@@ -109,13 +121,43 @@ repository for screenshots/results. `S4_WEB_ROOT`/`S1_WEB_ROOT` may point at `di
 Only local requests are allowed by the browser runners; the site's CSP is served.
 The S4 unit fixture is synthetic and embedded in the runner, never in runtime/dist.
 
-Local results and exact commit/tree are recorded in the draft PR. Windows build
-success is not a Linux/Netlify certification. Screen-reader hardware/manual gates
-from S1 remain manual; automated passes do not claim to replace them. Existing QA
+QA0 #187 is checked out separately at `96ace61de17108e31942d990cde79f3d1690c47a`.
+Its runner, gates, fixtures and expected values are unchanged. The adapter only
+reads session/input, replays the real Core with synthetic non-editorial evidence,
+and projects runtime observations. Browser-backed storage/retry/reload observations
+run the actual page, scripts and dataset loader. `S4_WEB_ROOT=dist` selects built
+modules as well as the built page. S4-I01/I02 remain informational, without scores.
+
+The browser probe starts with an empty context, submits a unique marker and several
+turns, reads all local/session storage, cookies (including HttpOnly) and IndexedDB
+databases/stores, then reloads and inspects again. It never clears storage. Separate
+canaries deliberately write a marker to all four stores and verify that the same
+inspection detects each leak. JSON evidence includes raw snapshots and the marker,
+concepts, text, evidence and context keys searched. Retry is exercised through the
+real button; an outstanding request released after reset must not repaint a result.
+
+S1 was already integrated with its coordinated gate. This change checks only its
+regression suite and the S4 controls' names, focus, keyboard activation, tab/reading
+order, reflow, disabled and hidden states. New asynchronous S4 controls preserve
+focus using `aria-disabled` while their existing handlers prevent reentry; pause
+still uses native disabled. A successful retry returns focus to the input only if
+its disappearing button had focus and no other action moved it. No S1 gate is
+reopened or described as globally pending. No new custom widget needs a separate
+manual interaction protocol; these tests do not claim a fresh screen-reader audit.
+
+`.github/workflows/sabik-s4-r1.yml` tests the PR head (not a merge ref) on Linux,
+with read-only permissions, two separate checkouts and no deployment steps. It
+records OS, Node, Python, Chrome and exact HEAD, runs S4/unit/browser/storage/QA0,
+S0, V7, S1 and the complete build, then repeats browser/QA0/S1 against dist. Reports
+stay outside both checkouts; no test or fixture is shipped. The 49 MB guard is per
+file and reports total package bytes separately. Windows results are supplementary.
+
+Local results and exact commit/tree are recorded in the draft PR. Existing QA
 tests are not modified. External failure/resource tests are simulated, not calls
 to public emergency services or third-party audio services.
 
 ## Rollback
 
-Revert the single S4 commit on this branch/target after review. No migration,
+Revert the R1 correction commit to restore the reviewed R0, or revert both S4
+commits to remove S4. Both choices retain the previous integrated S1/S0. No migration,
 storage cleanup, editorial change or external service rollback is needed.

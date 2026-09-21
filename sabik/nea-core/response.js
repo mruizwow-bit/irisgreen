@@ -1,7 +1,7 @@
 (() => {
   const { normalizeText, isPublicable, unique } = window.NEAKnowledge;
   const { detectNegations, detectSessionPreferences, detectConversationControl } = window.NEACorrections;
-  const { applySessionUpdate, resolveSessionContext, rememberPlan, applyConversationControl } = window.NEASession;
+  const { applySessionUpdate, resolveSessionContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
   const { detectRisk, createRiskAccompanimentPlan, createAmbiguousRiskPlan } = window.NEARisk;
   const { INTENTS, classifyIntent } = window.NEAIntent;
   const { decideCore } = window.NEADecision;
@@ -20,6 +20,19 @@
       .split(/(?<=[.!?])\s+|\n+/u)
       .map((sentence) => sentence.trim())
       .filter(Boolean);
+  }
+
+  function rememberPlan(session, plan) {
+    let shown = { ...plan };
+    const answerText = value => renderControlledText(value).replace(/\s*Fuente:\s*\S+\s*$/, "").trim();
+    // Different fragment IDs can contain the same answer. Never replay rejected evidence.
+    if (shown.evidence?.length && (session.rejected_responses || []).some(item => item.text === answerText(shown))) {
+      shown = { ...shown, type: "insufficient_information", answer_mode: "none", outcome: "insufficient_information",
+        evidence: [], fragments_used: [], source_urls: [], match_evidence: [], next_steps: [], question: null,
+        limits_notice: "No tengo otra respuesta respaldada por las fuentes disponibles.", repeated_response_blocked: true };
+    }
+    shown.response_text = answerText(shown);
+    return storePlan(session, shown);
   }
 
   function relevantTextForFragment(fragment, input) {
@@ -132,6 +145,7 @@
     const cognitiveState = detectCognitiveState(text, preferences, riskState);
     const nextSession = applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState);
     nextSession.context_mode = context.mode;
+    nextSession.context_modifier = context.modifier;
     nextSession.topic_query = context.mode === "followup" ? session.topic_query : text;
     nextSession.awaiting_correction = false;
     nextSession.explanation_index = 0;

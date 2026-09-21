@@ -1,0 +1,96 @@
+name: Sabik S4 R1 Linux gate
+on:
+  pull_request:
+    branches: [sabik-preview]
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  s4-r1:
+    if: github.event.pull_request.head.ref == 'sabik/s4-conversation-corrections'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: runtime
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: runtime
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 96ace61de17108e31942d990cde79f3d1690c47a
+          path: qa0
+          persist-credentials: false
+      - name: Prepare pinned browser tooling and external evidence directory
+        run: |
+          npm install --prefix "$RUNNER_TEMP/s4-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/s4-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          python3 -m venv "$RUNNER_TEMP/s4-python"
+          "$RUNNER_TEMP/s4-python/bin/pip" install beautifulsoup4==4.13.4 pillow==11.3.0
+          echo "$RUNNER_TEMP/s4-python/bin" >> "$GITHUB_PATH"
+          echo "NODE_PATH=$RUNNER_TEMP/s4-browser/node_modules" >> "$GITHUB_ENV"
+          echo "S4_REPORT=$RUNNER_TEMP/sabik-s4-r1" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/sabik-s4-r1"
+      - name: Record exact head and environment
+        env:
+          REVIEWED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$REVIEWED_HEAD"
+          test "$(git -C ../qa0 rev-parse HEAD)" = 96ace61de17108e31942d990cde79f3d1690c47a
+          {
+            git rev-parse HEAD
+            uname -a
+            cat /etc/os-release
+            node --version
+            python3 --version
+            google-chrome --version
+          } | tee "$S4_REPORT/environment.txt"
+      - name: S4 unit, S0 and V7
+        run: |
+          node tools/test-sabik-s4.js | tee "$S4_REPORT/s4-unit.log"
+          node tools/test-sabik-machine-s0.js | tee "$S4_REPORT/s0.log"
+          node tools/test-sabik-page-v7.js | tee "$S4_REPORT/v7.log"
+          node tools/test-sabik-a11y-closure.js | tee "$S4_REPORT/a11y-closure.log"
+      - name: Source browser, storage, unchanged QA0 and S1 regression
+        run: |
+          export S4_EVIDENCE_DIR="$S4_REPORT/source"
+          export S1_EVIDENCE_DIR="$S4_REPORT/s1-source"
+          node tools/test-sabik-s4-browser.js | tee "$S4_REPORT/s4-source.log"
+          node ../qa0/tests/specs/sabik/run-s3-s4-qa0.mjs --phase S4 --adapter ./tools/sabik-s4-qa0-adapter.mjs | tee "$S4_REPORT/qa0-source.log"
+          node tools/test-sabik-s1.js | tee "$S4_REPORT/s1-source.log"
+      - name: Complete Linux build, clean source and dist size
+        run: |
+          python3 scripts/build_site.py | tee "$S4_REPORT/build-linux.log"
+          test -z "$(git status --porcelain)"
+          node - <<'JS' | tee "$S4_REPORT/dist-size.json"
+          const fs = require('node:fs'), path = require('node:path');
+          const walk = dir => fs.readdirSync(dir, {withFileTypes:true}).flatMap(e => {
+            const p=path.join(dir,e.name); return e.isDirectory()?walk(p):[{path:p,bytes:fs.statSync(p).size}];
+          });
+          const files=walk('dist');
+          const tooLarge=files.filter(f=>f.bytes>49_000_000);
+          const leaked=files.filter(f=>/[\\/](?:tools|tests|docs|\.github)[\\/]/.test(f.path));
+          console.log(JSON.stringify({files:files.length,total_bytes:files.reduce((n,f)=>n+f.bytes,0),max_file_bytes:Math.max(...files.map(f=>f.bytes)),limit_per_file_bytes:49_000_000,tooLarge,leaked},null,2));
+          if(tooLarge.length||leaked.length)process.exitCode=1;
+          JS
+      - name: Dist browser, storage, unchanged QA0 and S1 regression
+        run: |
+          export S4_WEB_ROOT="$PWD/dist"
+          export S1_WEB_ROOT="$PWD/dist"
+          export S4_EVIDENCE_DIR="$S4_REPORT/dist"
+          export S1_EVIDENCE_DIR="$S4_REPORT/s1-dist"
+          node tools/test-sabik-s4-browser.js | tee "$S4_REPORT/s4-dist.log"
+          node ../qa0/tests/specs/sabik/run-s3-s4-qa0.mjs --phase S4 --adapter ./tools/sabik-s4-qa0-adapter.mjs | tee "$S4_REPORT/qa0-dist.log"
+          node tools/test-sabik-s1.js | tee "$S4_REPORT/s1-dist.log"
+          test -z "$(git status --porcelain)"
+          test -z "$(git -C ../qa0 status --porcelain)"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-s4-r1-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/sabik-s4-r1
+          retention-days: 14

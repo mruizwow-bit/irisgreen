@@ -167,6 +167,7 @@
       .filter(isPublicable)
       .filter((fragment) => !fragmentHasVetoedConcept(fragment, session))
       .filter((fragment) => !(session?.rejected_fragments || []).includes(fragment.id))
+      .filter((fragment) => !(session?.rejected_responses || []).some(response => response.fragments.includes(fragment.id)))
       .map((fragment) => scoreFragmentLexically(fragment, text, directConceptIds, relationConceptIds))
       .filter((candidate) => candidate.match_strength >= MIN_MATCH_STRENGTH || (fragmentMatchesConcept(candidate.fragment, conceptIds)));
   }

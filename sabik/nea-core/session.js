@@ -18,6 +18,9 @@
       rejected_fragments: [],
       rejected_concepts: [],
       rejected_response_types: [],
+      rejected_response_ids: [],
+      rejected_responses: [],
+      response_sequence: 0,
       shown_fragments: [],
       asked_questions: [],
       session_preferences: {
@@ -54,29 +57,27 @@
   function registerPlanRejection(session, plan, reason = "rejected_by_user") {
     const next = typeof structuredClone === "function" ? structuredClone(session) : JSON.parse(JSON.stringify(session));
     const rejectsQuestionOnly = plan?.type === "clarifying_question";
-    const selectedConcepts = ((plan && plan.decision && plan.decision.selected) || [])
-      .map((possibility) => possibility.concept_id)
-      .filter(Boolean);
-    const shownConcepts = rejectsQuestionOnly
-      ? []
-      : (selectedConcepts.length ? selectedConcepts : ((plan && plan.concepts_used) || []).slice(0, 1));
     next.user_corrections = unique([...next.user_corrections, reason]);
     const scope = reason === "buscar_otra_via" || reason === "fragment" ? "fragment"
-      : reason === "response_type" || rejectsQuestionOnly ? "response_type" : "hypothesis";
+      : reason === "response_type" ? "response_type" : "response";
     next.rejected_fragments = unique([
       ...(next.rejected_fragments || []),
       ...(scope === "fragment" ? (plan?.fragments_used || []) : [])
     ]);
     next.rejected_response_types = unique([
       ...(next.rejected_response_types || []),
-      scope === "response_type" ? plan?.type : null
+      scope === "response_type" || (scope === "response" && rejectsQuestionOnly) ? plan?.type : null
     ]);
-    next.rejected_concepts = unique([
-      ...(next.rejected_concepts || []),
-      ...(scope === "hypothesis" ? shownConcepts : [])
-    ]);
-    next.active_concepts = next.active_concepts.filter(id => !next.rejected_concepts.includes(id));
-    next.awaiting_correction = scope === "hypothesis";
+    if (scope === "response" && plan) {
+      next.rejected_response_ids = unique([...(next.rejected_response_ids || []), plan.response_id]);
+      next.rejected_responses = [...(next.rejected_responses || []), {
+        response_id: plan.response_id || null,
+        text: plan.response_text || null,
+        fragments: [...(plan.fragments_used || [])]
+      }];
+    }
+    // Rejecting an answer never vetoes its topic. Only an explicit negation does.
+    next.awaiting_correction = scope === "response";
     next.last_rejection = { scope, reason };
     return next;
   }
@@ -84,7 +85,7 @@
   function resolveSessionContext(session, text, mentionedConcepts) {
     const normalized = normalizeText(text);
     const changed = /^(?:cambio de tema|cambiemos de tema|otra cosa|ahora quiero hablar de)(?: |$)/u.test(normalized);
-    const followup = !changed && !session.awaiting_correction && (
+    const followup = !changed && (
       /\b(?:eso|esto|ello|lo anterior|esa respuesta|ese tema|explicamelo|puedes explicarlo)\b/u.test(normalized) ||
       /^(?:y (?:entonces|despues|ahora|en|si|que hago)|por que|como lo hago|que puedo hacer|dime mas|continua|sigue)(?: |$)/u.test(normalized) ||
       (session.last_plan?.type === "clarifying_question" && mentionedConcepts.length === 1)
@@ -97,18 +98,21 @@
       query: hasContext ? `${session.topic_query} ${text}` : text,
       inherited,
       mode: changed ? "topic_change" : hasContext ? "followup" : "new_query",
+      modifier: hasContext ? normalized.match(/^y en (?:el |la |los |las )?(.+)$/u)?.[1] || null : null,
       unresolved: followup && !hasContext
     };
   }
 
   function rememberPlan(session, plan) {
     const next = structuredClone(session);
-    next.last_plan = structuredClone(plan);
+    next.response_sequence = (next.response_sequence || 0) + 1;
+    const shown = { ...structuredClone(plan), response_id: `response-${next.response_sequence}` };
+    next.last_plan = shown;
     next.shown_fragments = unique([...next.shown_fragments, ...(plan.fragments_used || [])]);
     if (plan.decision?.question_id && plan.type === "clarifying_question") {
       next.asked_questions = unique([...next.asked_questions, plan.decision.question_id]);
     }
-    return { session: next, plan };
+    return { session: next, plan: structuredClone(shown) };
   }
 
   function applyConversationControl(session, plan, control) {

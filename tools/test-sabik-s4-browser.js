@@ -5,6 +5,7 @@ const path = require("node:path");
 const http = require("node:http");
 const assert = require("node:assert/strict");
 const { chromium } = require("playwright");
+const { runBrowserProbe } = require('./lib/sabik-s4-browser-probe.js');
 const repo = path.resolve(__dirname, "..");
 const root = path.resolve(process.env.S4_WEB_ROOT || repo);
 const out = process.env.S4_EVIDENCE_DIR && path.resolve(process.env.S4_EVIDENCE_DIR);
@@ -100,6 +101,20 @@ async function run() {
     assert.deepEqual(after.rejected_concepts, before.rejected_concepts);
     assert(!after.last_plan.fragments_used.some(id => before.last_plan.fragments_used.includes(id)));
   });
+  await check('No es esto preserves the topic and rejects only the shown response', async () => {
+    await fresh(); await submit('Que es el ruido');
+    const before = await session();
+    await click('not-this'); const rejected = await session();
+    assert.deepEqual(rejected.active_concepts, before.active_concepts);
+    assert.deepEqual(rejected.rejected_concepts, before.rejected_concepts);
+    assert.equal(rejected.topic_query, before.topic_query);
+    assert(rejected.rejected_response_ids.includes(before.last_plan.response_id));
+    await submit('Y en el trabajo'); const next = await session();
+    assert.equal(next.context_mode, 'followup');
+    assert.equal(next.context_modifier, 'trabajo');
+    assert.deepEqual(next.active_concepts, before.active_concepts);
+    assert(!next.last_plan.fragments_used.some(id => before.last_plan.fragments_used.includes(id)));
+  });
   await check('reload starts a new conversation', async () => {
     await page.reload(); await idle(); const next = await session();
     assert.deepEqual(next.user_statements, []); assert.equal(next.last_plan, null);
@@ -115,6 +130,31 @@ async function run() {
     await click('toggle'); assert.equal(await el('widget-body').isVisible(), false);
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     await click('toggle');
+  });
+  await check('S1 delta: S4 controls have names, keyboard activation and stable focus', async () => {
+    await fresh(); await submit('Que es el ruido');
+    const controls = [['no-questions', 'No me preguntes'], ['one-option', 'Dame una opción'], ['rephrase', 'Explícamelo de otra forma']];
+    for (const [id, name] of controls) {
+      assert.equal(await page.getByRole('button', { name, exact: true }).count(), 1);
+      await el(id).focus(); await page.keyboard.press('Enter'); await idle();
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'sabik-' + id);
+      assert.equal(await el(id).isEnabled(), true);
+    }
+    await el('shorter').focus(); await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'sabik-no-questions');
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'sabik-one-option');
+    await el('other-way').focus(); await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'sabik-rephrase');
+    await click('toggle');
+    for (const [id] of controls) assert.equal(await el(id).isVisible(), false);
+    assert.equal(await page.getByRole('button', { name: 'No me preguntes', exact: true }).count(), 0);
+    await click('toggle');
+    await el('clear').click();
+    await page.waitForFunction(() => document.querySelector('.sabik-panel').dataset.operation === 'paused');
+    for (const [id] of controls) assert.equal(await el(id).isDisabled(), true);
+    await click('resume');
+    for (const [id] of controls) assert.equal(await el(id).isEnabled(), true);
   });
   await check('new labels translate using existing language selector', async () => {
     await page.locator('[data-lang="en"]').click();
@@ -144,6 +184,7 @@ async function run() {
     const started = new Promise(resolve => { seen = resolve; });
     hold = { seen, release: new Promise(resolve => { release = resolve; }) };
     await el('input').fill('Consulta que se cancela'); await el('submit').click(); await started;
+    for (const id of ['no-questions', 'one-option', 'rephrase']) assert.equal(await el(id).getAttribute('aria-disabled'), 'true');
     await el('reset-session').click(); release(); hold = null;
     await page.waitForLoadState('networkidle'); await idle();
     assert.equal((await session()).last_plan, null);
@@ -151,7 +192,15 @@ async function run() {
     assert.equal(await el('output').isVisible(), false);
     failures.clear();
   });
-  if (out) fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ browser: browser.version(), results, manualScreenReader: 'not run' }, null, 2));
+  const storageProbe = await runBrowserProbe({ root, seedTexts: ['Texto privado de prueba'], out });
+  for (const store of ['localStorage', 'sessionStorage', 'cookies', 'indexedDB']) {
+    await check('storage ' + store, () => assert.equal(storageProbe.storage[store].conversation_artifacts_found, 0));
+  }
+  assert.equal(storageProbe.reload.new_session, true);
+  assert.equal(storageProbe.retry.retry_safe, true);
+  console.log('S4_STORAGE_GATES 4/4 PASS');
+  if (out) fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ browser: browser.version(), results,
+    s1Delta: 'keyboard, names, focus, reading/tab order, reflow, disabled and hidden; no new custom widget' }, null, 2));
   console.log(`${results.length}/${results.length} S4 browser checks passed`);
 }
 run().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
