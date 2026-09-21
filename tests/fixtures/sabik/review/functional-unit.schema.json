@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sabik/functional-unit.schema.json",
+  "title": "Unidad recuperable funcional (propuesta)",
+  "description": "Sección editorial con ancla estable y metadatos de intención. Propuesta para S6; no es contrato aprobado.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "concepto",
+    "intenciones",
+    "objetivos",
+    "prioridad",
+    "sabik_puede",
+    "sabik_no_debe",
+    "territorio",
+    "fecha_verificacion",
+    "editorial_status",
+    "url",
+    "ancla",
+    "titulo_legible",
+    "tipo_de_fuente"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^fu_[a-z0-9_]+$"
+    },
+    "concepto": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs existentes en concepts.<idioma>.json. Etiquetado editorial, no léxico."
+    },
+    "intenciones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "informacion",
+          "situacion_personal",
+          "peticion_practica",
+          "acompanamiento",
+          "donde_solicitar",
+          "como_pedir_cita",
+          "cuando_pedir_ayuda_profesional",
+          "que_hacer_ahora",
+          "derechos",
+          "requisitos"
+        ]
+      }
+    },
+    "objetivos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Qué debe conseguir la persona con esta sección (p. ej. «saber a qué servicio dirigirse»)."
+    },
+    "prioridad": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Orden editorial entre unidades que comparten concepto e intención. 1 = primera."
+    },
+    "sabik_puede": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sabik_no_debe": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Incluye siempre «diagnosticar» y «decidir por la persona»."
+    },
+    "recurso_humano": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string",
+        "pattern": "^hr_"
+      },
+      "description": "IDs de human-resources. Solo registros PUBLICABLE vigentes."
+    },
+    "territorio": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Códigos ISO; «general» si la sección no depende del territorio."
+    },
+    "fecha_verificacion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "editorial_status": {
+      "enum": [
+        "BORRADOR",
+        "PENDIENTE_VERIFICACION",
+        "PUBLICABLE",
+        "CADUCADO",
+        "RETIRADO"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://irisgreen\\.eu/"
+    },
+    "ancla": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "id estable del encabezado en la página publicada."
+    },
+    "titulo_legible": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "tipo_de_fuente": {
+      "enum": [
+        "ficha_situacion",
+        "ficha_condicion",
+        "ficha_biblioteca",
+        "procedimiento",
+        "registro_investigacion",
+        "directorio_tramites",
+        "pagina_institucional"
+      ]
+    },
+    "texto_fragmento": {
+      "type": "string",
+      "description": "Texto de la sección sin el encabezado."
+    },
+    "requiere_contexto": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "territorio",
+          "servicio",
+          "ayuda_concreta",
+          "edad"
+        ]
+      },
+      "description": "Datos sin los cuales Sabik debe preguntar antes de usar la unidad."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "tipo_de_fuente": {
+            "const": "ficha_condicion"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "intenciones": {
+            "not": {
+              "contains": {
+                "enum": [
+                  "que_hacer_ahora",
+                  "peticion_practica"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "description": "Una ficha de condición no aporta pasos para una situación cotidiana sin decisión editorial."
+    },
+    {
+      "if": {
+        "properties": {
+          "intenciones": {
+            "contains": {
+              "enum": [
+                "donde_solicitar",
+                "como_pedir_cita"
+              ]
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "requiere_contexto": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "requiere_contexto"
+        ]
+      }
+    }
+  ]
+}

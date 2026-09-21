@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sabik/human-resource.schema.json",
+  "title": "Recurso humano de Sabik (propuesta editorial)",
+  "description": "Registro de human-resources.<idioma>.json. Solo los registros con editorial_status=PUBLICABLE y verificación vigente pueden mostrarse. Propuesta de revisión; no es contrato aprobado.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "territorio",
+    "idioma",
+    "tipo_de_recurso",
+    "nombre",
+    "finalidad",
+    "disponibilidad",
+    "fuente_oficial",
+    "fecha_verificacion",
+    "editorial_status",
+    "texto_visible",
+    "condiciones_de_uso"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^hr_[a-z0-9_]+$",
+      "description": "Estable. No reutilizar IDs retirados."
+    },
+    "territorio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ambito",
+        "codigo"
+      ],
+      "properties": {
+        "ambito": {
+          "enum": [
+            "internacional",
+            "estatal",
+            "autonomico",
+            "provincial",
+            "municipal"
+          ]
+        },
+        "codigo": {
+          "type": "string",
+          "description": "ISO 3166-1 alfa-2 o ISO 3166-2 (p. ej. ES, ES-AN)."
+        },
+        "nombre_visible": {
+          "type": "string"
+        }
+      }
+    },
+    "idioma": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+      },
+      "description": "Idiomas en los que el servicio atiende, no idioma del registro."
+    },
+    "tipo_de_recurso": {
+      "enum": [
+        "emergencias",
+        "linea_crisis_suicidio",
+        "linea_apoyo_emocional",
+        "servicio_sanitario",
+        "servicio_social",
+        "asociacion",
+        "informacion_administrativa"
+      ]
+    },
+    "nombre": {
+      "type": "string",
+      "minLength": 2
+    },
+    "finalidad": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Para qué sirve, en lenguaje llano, según la fuente oficial."
+    },
+    "telefono": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9+ ]{3,20}$",
+      "description": "Solo dígitos, espacios y +. null si el servicio no tiene teléfono."
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "canales_adicionales": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tipo",
+          "valor"
+        ],
+        "properties": {
+          "tipo": {
+            "enum": [
+              "chat",
+              "sms",
+              "correo",
+              "presencial",
+              "texto_para_personas_sordas"
+            ]
+          },
+          "valor": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "disponibilidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modo"
+      ],
+      "properties": {
+        "modo": {
+          "enum": [
+            "24h",
+            "horario",
+            "desconocida"
+          ]
+        },
+        "horario_texto": {
+          "type": "string"
+        },
+        "gratuito": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "confidencial": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "fuente_oficial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "organismo"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "organismo": {
+          "type": "string"
+        },
+        "titulo": {
+          "type": "string"
+        }
+      }
+    },
+    "fecha_verificacion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "verificado_por": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Rol o persona editorial. Nunca un agente automático."
+    },
+    "caduca_en_dias": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 90
+    },
+    "prioridad_por_nivel": {
+      "type": "object",
+      "description": "Orden de aparición según nivel de seguridad.",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "propertyNames": {
+        "enum": [
+          "riesgo_inmediato",
+          "riesgo_confirmado",
+          "riesgo_incierto",
+          "riesgo_tercero",
+          "informativo",
+          "apoyo_no_urgente"
+        ]
+      }
+    },
+    "editorial_status": {
+      "enum": [
+        "BORRADOR",
+        "PENDIENTE_VERIFICACION",
+        "PUBLICABLE",
+        "CADUCADO",
+        "RETIRADO"
+      ]
+    },
+    "texto_visible": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 180,
+      "description": "Frase aprobada que Sabik muestra tal cual. Sin consejo clínico."
+    },
+    "condiciones_de_uso": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Cuándo mostrarlo y cuándo no."
+    },
+    "aviso_interno": {
+      "type": "string",
+      "description": "Uso editorial. Nunca se muestra."
+    },
+    "advertencia": {
+      "type": "string",
+      "description": "Obligatoria mientras editorial_status no sea PUBLICABLE."
+    },
+    "campos_sin_verificar": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Campos cuyo valor no se ha contrastado con la fuente oficial."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "editorial_status": {
+            "const": "PUBLICABLE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fecha_verificacion",
+          "verificado_por"
+        ],
+        "properties": {
+          "fecha_verificacion": {
+            "type": "string"
+          },
+          "verificado_por": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "telefono"
+            ],
+            "properties": {
+              "telefono": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "tipo_de_recurso": {
+            "enum": [
+              "emergencias",
+              "linea_crisis_suicidio"
+            ]
+          },
+          "editorial_status": {
+            "const": "PUBLICABLE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "telefono"
+        ],
+        "properties": {
+          "telefono": {
+            "type": "string"
+          },
+          "disponibilidad": {
+            "properties": {
+              "modo": {
+                "const": "24h"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "editorial_status": {
+            "const": "PUBLICABLE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "campos_sin_verificar": {
+            "maxItems": 0
+          }
+        }
+      },
+      "else": {
+        "required": [
+          "advertencia"
+        ]
+      }
+    }
+  ]
+}
