@@ -9,125 +9,339 @@
       544,
       544
     ],
-    "note": "The runtime sprite is a 256×256 LANCZOS derivative per cell, assembled into a lossless WebP. Source keyframes are not redesigned."
+    "count": 15,
+    "frozen": true,
+    "note": "Los 15 keyframes PNG R1 son la autoridad visual congelada. Los archivos de runtime son derivados técnicos; no rediseñan forma, color ni semántica."
   },
   "runtime": {
-    "file": "sabik-b3-r0-sprite-256-lossless.webp",
+    "count": 15,
     "dimensions": [
-      1280,
-      768
+      128,
+      128
     ],
-    "cell": [
-      256,
-      256
-    ],
-    "columns": [
-      "PRESENTE",
-      "ORIENTAR",
-      "TRANSICIÓN",
-      "PAUSA",
-      "CONFIRMAR"
-    ],
-    "rows": [
-      "web",
-      "ia",
-      "educa"
-    ],
-    "bytes": 751660,
-    "sha256": "e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23",
     "format": "image/webp",
-    "lossless": true
+    "derivative": "LANCZOS 544→128; WebP quality 25 / method 6",
+    "packaging": "individual_files",
+    "upscaling_required": false,
+    "note": "El stage real se limita a 128×128 para no ampliar el derivado de transporte."
   },
+  "runtime_files": [
+    {
+      "presence": "web",
+      "state": "PRESENTE",
+      "file": "web_presente.webp",
+      "bytes": 4618,
+      "sha256": "17dbcb695ad78f759ec0fab8694b637e9498ceba48fc67ec1c7d90d4e722ecf3",
+      "source": {
+        "file": "web_presente.png",
+        "bytes": 194400,
+        "sha256": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
+        "library_id": "libfile_c12238dd6b388191bc67686b15fd1e94"
+      }
+    },
+    {
+      "presence": "web",
+      "state": "ORIENTAR",
+      "file": "web_orientar.webp",
+      "bytes": 5266,
+      "sha256": "a8959d1a34a233d1453888b9641d15ebc54b56c6af62b794aad2889ee36cc0af",
+      "source": {
+        "file": "web_orientar.png",
+        "bytes": 232385,
+        "sha256": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+        "library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
+      }
+    },
+    {
+      "presence": "web",
+      "state": "TRANSICIÓN",
+      "file": "web_transicion.webp",
+      "bytes": 5654,
+      "sha256": "ec9ac6df83d158e3bcab4b13edd8e7b96586f6c11e385a87421d665112efc38f",
+      "source": {
+        "file": "web_transicion.png",
+        "bytes": 243699,
+        "sha256": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
+        "library_id": "libfile_c158341d34688191979978dfb1bd4fe2"
+      }
+    },
+    {
+      "presence": "web",
+      "state": "PAUSA",
+      "file": "web_pausa.webp",
+      "bytes": 4470,
+      "sha256": "e9b5d10a0357db803617e24143fcb6bc69b086756cb52e3116632202a32ed2d4",
+      "source": {
+        "file": "web_pausa.png",
+        "bytes": 183613,
+        "sha256": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+        "library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
+      }
+    },
+    {
+      "presence": "web",
+      "state": "CONFIRMAR",
+      "file": "web_confirmar.webp",
+      "bytes": 5168,
+      "sha256": "3326c8f0b5d2b9c172fdad17ec5593aa66ab1bdb2c45cf8b984fe421e35adb30",
+      "source": {
+        "file": "web_confirmar.png",
+        "bytes": 231434,
+        "sha256": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053",
+        "library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
+      }
+    },
+    {
+      "presence": "ia",
+      "state": "PRESENTE",
+      "file": "ia_presente.webp",
+      "bytes": 4932,
+      "sha256": "1a5e813f1ec33729faa9e0416b19b6f7f240cbfc0c34f41078908bdb91619aa3",
+      "source": {
+        "file": "ia_presente.png",
+        "bytes": 245636,
+        "sha256": "6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3",
+        "library_id": "libfile_62105e6beefc8191a503383758385cc9"
+      }
+    },
+    {
+      "presence": "ia",
+      "state": "ORIENTAR",
+      "file": "ia_orientar.webp",
+      "bytes": 6132,
+      "sha256": "6413dbef885cf28dc2272157f5035f080451416fe0f800ac4c05c131bb67477e",
+      "source": {
+        "file": "ia_orientar.png",
+        "bytes": 299134,
+        "sha256": "ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9",
+        "library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
+      }
+    },
+    {
+      "presence": "ia",
+      "state": "TRANSICIÓN",
+      "file": "ia_transicion.webp",
+      "bytes": 6310,
+      "sha256": "a6ec46bcd4b041bda494a54eef059508462e606e8f415779bc438a73a15a4411",
+      "source": {
+        "file": "ia_transicion.png",
+        "bytes": 301766,
+        "sha256": "09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e",
+        "library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
+      }
+    },
+    {
+      "presence": "ia",
+      "state": "PAUSA",
+      "file": "ia_pausa.webp",
+      "bytes": 5066,
+      "sha256": "5beb00b910bceaf55706c7e68a12492f485b7df92aa01acb36099cae39645d5c",
+      "source": {
+        "file": "ia_pausa.png",
+        "bytes": 234155,
+        "sha256": "fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792",
+        "library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
+      }
+    },
+    {
+      "presence": "ia",
+      "state": "CONFIRMAR",
+      "file": "ia_confirmar.webp",
+      "bytes": 5706,
+      "sha256": "2cb23802c43ddc15997c96521b9798ba1bc8f039b35a452f545896a9a45e95de",
+      "source": {
+        "file": "ia_confirmar.png",
+        "bytes": 270460,
+        "sha256": "6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed",
+        "library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
+      }
+    },
+    {
+      "presence": "educa",
+      "state": "PRESENTE",
+      "file": "educa_presente.webp",
+      "bytes": 4852,
+      "sha256": "7370df2ea74b0d86c97a433f547721aba91878b04dd22d3cf969922091c2153a",
+      "source": {
+        "file": "educa_presente.png",
+        "bytes": 195272,
+        "sha256": "1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518",
+        "library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
+      }
+    },
+    {
+      "presence": "educa",
+      "state": "ORIENTAR",
+      "file": "educa_orientar.webp",
+      "bytes": 5562,
+      "sha256": "b11f5a7898fb4f2be4b637303a371450cb0eb3bb9834dd7d3bcad5ce911763c7",
+      "source": {
+        "file": "educa_orientar.png",
+        "bytes": 244102,
+        "sha256": "7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640",
+        "library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
+      }
+    },
+    {
+      "presence": "educa",
+      "state": "TRANSICIÓN",
+      "file": "educa_transicion.webp",
+      "bytes": 5570,
+      "sha256": "7b2dc4bbe06c081b4ed80c612342cfc6fca4635eb8e436ff5f5e7a4ba86a43d0",
+      "source": {
+        "file": "educa_transicion.png",
+        "bytes": 245401,
+        "sha256": "4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724",
+        "library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
+      }
+    },
+    {
+      "presence": "educa",
+      "state": "PAUSA",
+      "file": "educa_pausa.webp",
+      "bytes": 4690,
+      "sha256": "93ee7682f16678a5dfea18aeb55a216aae997f338dc2a5fb27ae4f896eb31408",
+      "source": {
+        "file": "educa_pausa.png",
+        "bytes": 186097,
+        "sha256": "70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f",
+        "library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
+      }
+    },
+    {
+      "presence": "educa",
+      "state": "CONFIRMAR",
+      "file": "educa_confirmar.webp",
+      "bytes": 5046,
+      "sha256": "8007dbd6d5ddadea066b643547a18f12a3f1209cf927f85d9a0a0201a594839c",
+      "source": {
+        "file": "educa_confirmar.png",
+        "bytes": 226039,
+        "sha256": "b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647",
+        "library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
+      }
+    }
+  ],
   "source_files": [
     {
-      "file": "educa_confirmar.png",
-      "bytes": 226039,
-      "sha256": "b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647",
-      "library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
-    },
-    {
-      "file": "educa_orientar.png",
-      "bytes": 244102,
-      "sha256": "7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640",
-      "library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
-    },
-    {
-      "file": "educa_pausa.png",
-      "bytes": 186097,
-      "sha256": "70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f",
-      "library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
-    },
-    {
-      "file": "educa_presente.png",
-      "bytes": 195272,
-      "sha256": "1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518",
-      "library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
-    },
-    {
-      "file": "educa_transicion.png",
-      "bytes": 245401,
-      "sha256": "4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724",
-      "library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
-    },
-    {
-      "file": "ia_confirmar.png",
-      "bytes": 270460,
-      "sha256": "6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed",
-      "library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
-    },
-    {
-      "file": "ia_orientar.png",
-      "bytes": 299134,
-      "sha256": "ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9",
-      "library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
-    },
-    {
-      "file": "ia_pausa.png",
-      "bytes": 234155,
-      "sha256": "fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792",
-      "library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
-    },
-    {
-      "file": "ia_presente.png",
-      "bytes": 245636,
-      "sha256": "6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3",
-      "library_id": "libfile_62105e6beefc8191a503383758385cc9"
-    },
-    {
-      "file": "ia_transicion.png",
-      "bytes": 301766,
-      "sha256": "09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e",
-      "library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
-    },
-    {
-      "file": "web_confirmar.png",
-      "bytes": 231434,
-      "sha256": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053",
-      "library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
-    },
-    {
-      "file": "web_orientar.png",
-      "bytes": 232385,
-      "sha256": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
-      "library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
-    },
-    {
-      "file": "web_pausa.png",
-      "bytes": 183613,
-      "sha256": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
-      "library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
-    },
-    {
+      "presence": "web",
+      "state": "PRESENTE",
       "file": "web_presente.png",
       "bytes": 194400,
       "sha256": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
       "library_id": "libfile_c12238dd6b388191bc67686b15fd1e94"
     },
     {
+      "presence": "web",
+      "state": "ORIENTAR",
+      "file": "web_orientar.png",
+      "bytes": 232385,
+      "sha256": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+      "library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
+    },
+    {
+      "presence": "web",
+      "state": "TRANSICIÓN",
       "file": "web_transicion.png",
       "bytes": 243699,
       "sha256": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
       "library_id": "libfile_c158341d34688191979978dfb1bd4fe2"
+    },
+    {
+      "presence": "web",
+      "state": "PAUSA",
+      "file": "web_pausa.png",
+      "bytes": 183613,
+      "sha256": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+      "library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
+    },
+    {
+      "presence": "web",
+      "state": "CONFIRMAR",
+      "file": "web_confirmar.png",
+      "bytes": 231434,
+      "sha256": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053",
+      "library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
+    },
+    {
+      "presence": "ia",
+      "state": "PRESENTE",
+      "file": "ia_presente.png",
+      "bytes": 245636,
+      "sha256": "6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3",
+      "library_id": "libfile_62105e6beefc8191a503383758385cc9"
+    },
+    {
+      "presence": "ia",
+      "state": "ORIENTAR",
+      "file": "ia_orientar.png",
+      "bytes": 299134,
+      "sha256": "ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9",
+      "library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
+    },
+    {
+      "presence": "ia",
+      "state": "TRANSICIÓN",
+      "file": "ia_transicion.png",
+      "bytes": 301766,
+      "sha256": "09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e",
+      "library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
+    },
+    {
+      "presence": "ia",
+      "state": "PAUSA",
+      "file": "ia_pausa.png",
+      "bytes": 234155,
+      "sha256": "fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792",
+      "library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
+    },
+    {
+      "presence": "ia",
+      "state": "CONFIRMAR",
+      "file": "ia_confirmar.png",
+      "bytes": 270460,
+      "sha256": "6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed",
+      "library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
+    },
+    {
+      "presence": "educa",
+      "state": "PRESENTE",
+      "file": "educa_presente.png",
+      "bytes": 195272,
+      "sha256": "1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518",
+      "library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
+    },
+    {
+      "presence": "educa",
+      "state": "ORIENTAR",
+      "file": "educa_orientar.png",
+      "bytes": 244102,
+      "sha256": "7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640",
+      "library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
+    },
+    {
+      "presence": "educa",
+      "state": "TRANSICIÓN",
+      "file": "educa_transicion.png",
+      "bytes": 245401,
+      "sha256": "4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724",
+      "library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
+    },
+    {
+      "presence": "educa",
+      "state": "PAUSA",
+      "file": "educa_pausa.png",
+      "bytes": 186097,
+      "sha256": "70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f",
+      "library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
+    },
+    {
+      "presence": "educa",
+      "state": "CONFIRMAR",
+      "file": "educa_confirmar.png",
+      "bytes": 226039,
+      "sha256": "b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647",
+      "library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
     }
   ]
 }
