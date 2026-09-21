@@ -80,7 +80,7 @@ Los ajustes globales de Iris Green siguen gobernando:
 El panel Sabik hereda esas variables mediante CSS.
 
 Ajustes locales añadidos:
-- movimiento en Sabik: automático / reducido / sin movimiento;
+- movimiento en Sabik: normal / reducido / sin movimiento (la preferencia global, el sistema o la degradación conservadora pueden bajar NORMAL a REDUCIDO);
 - densidad: completa / reducida / paso a paso;
 - intensidad visual: reutiliza el control existente “Bajar intensidad”;
 - voz: UI candidata detrás del adaptador abstracto S2.
