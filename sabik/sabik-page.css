@@ -1392,7 +1392,15 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
    DOM/source order remains: search -> Sabik -> results/cards.
    ========================================================================== */
 
-/* Stacked baseline: the panel follows the same horizontal measure as HOME. */
+/* Stacked baseline: recover the viewport measure even when build-time HOME
+   wrappers add an outer 16px inset. The DOM is unchanged. */
+body.sabik-iris-page #home-view {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+}
+
 body.sabik-iris-page #home-view > .sabik-panel {
   position: static;
   width: calc(100% - 56px);
@@ -1418,9 +1426,10 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
 @media (min-width: 1360px) {
   body.sabik-iris-page #home-view {
     display: grid;
-    width: calc(100% - 64px);
+    width: calc(100vw - 64px);
     max-width: 1535px;
-    margin-inline: auto;
+    margin-left: calc(50% - 50vw + 32px);
+    margin-right: 0;
     grid-template-columns: minmax(0, 1fr) 340px;
     grid-template-rows: auto auto auto auto;
     grid-template-areas:
@@ -1483,6 +1492,8 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
   body.sabik-iris-page #home-view {
     width: 1580px;
     max-width: 1580px;
+    margin-left: calc(50% - 790px);
+    margin-right: 0;
     grid-template-columns: minmax(0, 1180px) 368px;
     column-gap: 32px;
   }
@@ -1525,15 +1536,16 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
 /* Iris Green enlarged-text mode always returns to source-order flow. */
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view {
   display: block;
-  width: auto;
+  width: 100vw;
   max-width: none;
-  margin-inline: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
 }
 
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel,
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
   position: static;
-  width: min(1180px, calc(100% - 80px));
+  width: min(1180px, calc(100vw - 80px));
   max-width: none;
   max-height: none;
   margin: 0 auto 24px;
@@ -1550,9 +1562,10 @@ html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel .sabi
 @media (max-width: 1359px) {
   body.sabik-iris-page #home-view {
     display: block;
-    width: auto;
+    width: 100vw;
     max-width: none;
-    margin-inline: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: 0;
   }
 
   body.sabik-iris-page #home-view > .sabik-panel,
