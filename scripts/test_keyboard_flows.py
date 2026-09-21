@@ -97,16 +97,16 @@ with sync_playwright() as pw:
  record('Libros · visor controlable con flechas sin perder foco','/es/libros/',flipbook_arrows)
 
  def tarjetas_copy_status():
-  ctx,page,errors=page_for('/es/tarjetas-iris/',permissions=['clipboard-read','clipboard-write'])
-  button=page.locator('#copy');status=page.locator('#copy-status')
-  assert status.get_attribute('role')=='status';assert status.get_attribute('aria-live')=='polite'
-  button.focus();before=button.inner_text();assert before=='Copiar texto'
-  page.keyboard.press('Enter');page.wait_for_function("document.querySelector('#copy-status')?.textContent === 'Texto copiado'",timeout=5000)
-  assert button.inner_text()=='Copiar texto'
-  assert page.evaluate("document.activeElement?.id")=='copy'
-  announced=status.inner_text();assert announced=='Texto copiado';assert not errors,errors
-  ctx.close();return {'button_label':before,'announced':announced,'focus_remained_on':'copy'}
- record('Tarjetas Iris · Copiar texto anuncia estado sin mover foco','/es/tarjetas-iris/',tarjetas_copy_status)
+  ctx,page,errors=page_for('/es/recursos/tarjeta-iris/',permissions=['clipboard-read','clipboard-write'])
+  button=page.locator('#ti-copy');status=page.locator('#ti-card-status')
+  assert status.get_attribute('role')=='status';assert status.get_attribute('aria-live')=='polite';assert status.get_attribute('aria-atomic')=='true'
+  button.focus();before=button.inner_text();assert before=='Copiar'
+  page.keyboard.press('Enter');page.wait_for_function("document.querySelector('#ti-card-status')?.textContent.includes('Copiada.')",timeout=5000)
+  assert button.inner_text()=='Copiar'
+  assert page.evaluate("document.activeElement?.id")=='ti-copy'
+  announced=status.inner_text();assert 'Copiada.' in announced;assert not errors,errors
+  ctx.close();return {'button_label':before,'announced':announced,'focus_remained_on':'ti-copy'}
+ record('Tarjeta Iris · Copiar anuncia estado sin mover foco','/es/recursos/tarjeta-iris/',tarjetas_copy_status)
 
  browser.close()
 server.shutdown()
