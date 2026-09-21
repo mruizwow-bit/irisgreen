@@ -1,8 +1,8 @@
 {
   "v": 1,
   "by": "Iris Green",
-  "note": "Listado extraído de Videoteca.dc.html el 3 de septiembre de 2026 para la auditoría. Es lo que hay guardado hoy: nada más. Los campos que la auditoría pide y no existen se listan en videoteca-auditoria.md.",
-  "total": 52,
+  "note": "Catálogo revisado; cada alta W1 conserva fuente, idioma, fecha de comprobación y estado de subtítulos/transcripción cuando se conoce.",
+  "total": 55,
   "videos": [
     {
       "id": "v-dan-wilkins",
@@ -580,6 +580,58 @@
       "embedSinCookies": true,
       "tipo": "vivencia",
       "comoLeer": null
+    },
+    {
+      "id": "v53",
+      "name": "Terapia Ocupacional infantil NHS · aprender a atarse los cordones",
+      "tema": "Autonomía",
+      "plataforma": "YouTube",
+      "ref": "RTAx8pSgzoo",
+      "url": "https://www.youtube.com/watch?v=RTAx8pSgzoo",
+      "embedSinCookies": true,
+      "tipo": "institucional",
+      "comoLeer": "Vídeo breve del equipo de Terapia Ocupacional infantil de County Durham and Darlington NHS Foundation Trust con recomendaciones para desarrollar la habilidad de atarse los cordones.",
+      "idioma": "inglés",
+      "fuente": "County Durham and Darlington NHS Foundation Trust",
+      "fechaComprobacion": "2026-09-21",
+      "resumen": "Apoyo visual y práctico para aprender una forma de atarse los cordones.",
+      "subtitulos": "No comprobados",
+      "transcripcion": "No localizada"
+    },
+    {
+      "id": "v54",
+      "name": "Mencap · ¿Qué es una discapacidad intelectual?",
+      "tema": "Discapacidad intelectual",
+      "plataforma": "YouTube",
+      "ref": "9Tls8PyUVKc",
+      "url": "https://www.youtube.com/watch?v=9Tls8PyUVKc",
+      "embedSinCookies": true,
+      "tipo": "vivencia",
+      "comoLeer": "Vijay, James, Leroy, Amy y Emily explican con sus propias palabras qué significa para ellos tener una learning disability. En Reino Unido ese término se aproxima a discapacidad intelectual, pero la terminología no es idéntica en todos los países.",
+      "idioma": "inglés",
+      "fuente": "Mencap",
+      "fechaComprobacion": "2026-09-21",
+      "resumen": "Personas con discapacidad intelectual hablan en primera persona sobre su experiencia.",
+      "subtitulos": "No comprobados",
+      "transcripcion": "No localizada"
+    },
+    {
+      "id": "v55",
+      "name": "National Autistic Society · sobrecarga sensorial en un centro comercial",
+      "tema": "Procesamiento sensorial",
+      "plataforma": "YouTube",
+      "ref": "aPknwW8mPAM",
+      "url": "https://www.youtube.com/watch?v=aPknwW8mPAM",
+      "embedSinCookies": true,
+      "tipo": "institucional",
+      "comoLeer": "Cortometraje de sensibilización de National Autistic Society sobre sobrecarga sensorial en un centro comercial. Contiene sonido e imágenes deliberadamente intensos; no representa la experiencia de todas las personas autistas.",
+      "idioma": "inglés",
+      "fuente": "National Autistic Society",
+      "fechaComprobacion": "2026-09-21",
+      "resumen": "Representación audiovisual de una situación de sobrecarga sensorial.",
+      "subtitulos": "No comprobados",
+      "transcripcion": "No localizada",
+      "avisoContenido": "Sonido e imágenes intensos"
     }
   ]
 }
