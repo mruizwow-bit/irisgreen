@@ -5,15 +5,15 @@
 })(typeof window!=='undefined'?window:globalThis,function(root){
   'use strict';
   const KEY='sabik-presentation-r0';
-  const MOTION=['AUTO','REDUCIDO','SIN_MOVIMIENTO'];
+  const MOTION=['NORMAL','REDUCIDO','SIN_MOVIMIENTO'];
   const DENSITY=['completa','reducida','paso_a_paso'];
-  let state={motion:'AUTO',density:'completa'};
+  let state={motion:'NORMAL',density:'completa'};
   let mounted=null;
 
   function validObject(v){return v&&typeof v==='object'&&!Array.isArray(v);}
   function normalize(v){
     v=validObject(v)?v:{};
-    return {motion:MOTION.includes(v.motion)?v.motion:'AUTO',density:DENSITY.includes(v.density)?v.density:'completa'};
+    return {motion:MOTION.includes(v.motion)?v.motion:'NORMAL',density:DENSITY.includes(v.density)?v.density:'completa'};
   }
   function load(){
     if(!root||!root.localStorage)return normalize();
@@ -80,7 +80,7 @@
       sel.value=value;row.append(span,sel);details.appendChild(row);return sel;
     }
     const motion=selectRow('sabik-motion-choice','Movimiento en Sabik',[
-      ['AUTO','Según Lectura y el dispositivo'],['REDUCIDO','Reducido'],['SIN_MOVIMIENTO','Sin movimiento']
+      ['NORMAL','Normal'],['REDUCIDO','Reducido'],['SIN_MOVIMIENTO','Sin movimiento']
     ],state.motion);
     const density=selectRow('sabik-density-choice','Densidad de información',[
       ['completa','Completa'],['reducida','Reducida'],['paso_a_paso','Paso a paso']
