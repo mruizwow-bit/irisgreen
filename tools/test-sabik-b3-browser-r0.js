@@ -41,6 +41,7 @@ async function noOverflow(page,label){
     const page=await context.newPage();
     await page.goto(origin+'/es/nea/',{waitUntil:'domcontentloaded'});
     await page.locator('#sabik-cognitive-settings').waitFor();
+    await page.locator('#sabik-cognitive-settings>summary').click();
     await page.waitForFunction(()=>document.querySelector('#sabik-hologram')?.dataset.b3Active==='true');
 
     assert.equal(await page.locator('.sabik-panel').getAttribute('data-sabik-motion'),'NORMAL');
