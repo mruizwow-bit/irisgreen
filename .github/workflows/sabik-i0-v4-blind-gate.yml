@@ -43,7 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node tools/validate-sabik-i0-calibration-v3.mjs             --dataset tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl             --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json             --report /tmp/v4-schema.json
+          if ! node tools/validate-sabik-i0-calibration-v3.mjs --dataset tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json --report /tmp/v4-schema.json; then cat /tmp/v4-schema.json; exit 1; fi
 
       - name: Validate frozen coverage precommit
         shell: bash
