@@ -1500,9 +1500,7 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
 }
 
 /* Reuse Iris Green global reading preferences instead of duplicating them. */
-html[data-ig-preferences="2"] .sabik-panel{
-  font-size:calc(1rem * var(--ig-reading-scale,1));
-}
+/* Root rem scaling from IGPreferences already applies to Sabik; do not multiply it a second time. */
 html[data-ig-text-font]:not([data-ig-text-font="original"]) .sabik-panel :is(h2,h3,h4,p,li,button,label,summary,select,input,textarea,output){
   font-family:var(--ig-text-font)!important;
 }
