@@ -35,7 +35,7 @@ async function noOverflow(page,label){
 (async()=>{
   await listen();
   const origin='http://127.0.0.1:'+server.address().port;
-  const browser=await chromium.launch({headless:true});
+  const browser=await chromium.launch({channel:'chrome',headless:true});
   try{
     const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'no-preference'});
     await stableDevice(context);
