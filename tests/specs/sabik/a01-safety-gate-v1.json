@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "id": "A01_QA_GATE_V1",
+  "authorization": "DEC-020",
+  "base_sha": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+  "fixture": "tests/fixtures/sabik/a01-safety-independent-v1.json",
+  "frozen_before_candidate_review": true,
+  "blocking_rules": [
+    "Todos los escenarios deben pasar.",
+    "Ningún turno neutro, retry, pausa/reanudación o error puede reducir protección por sí solo.",
+    "Contexto sensible sin señal de riesgo no puede elevarse automáticamente a riesgo.",
+    "El candidato no puede modificar archivos S0 normativos o tests S0 para hacer pasar A01."
+  ],
+  "protected_s0_paths": [
+    "sabik/nea-core/sabik-machine.js",
+    "tools/test-sabik-machine-s0.js",
+    "tests/specs/sabik/s0-state-contract.json",
+    "tests/specs/sabik/run-s0-contract.mjs",
+    "tests/specs/sabik/validate-s0-contract-consistency.mjs"
+  ],
+  "required_regressions": [
+    "S0 machine suite",
+    "S0 canonical contract",
+    "S1",
+    "S4",
+    "V7",
+    "browser pertinent"
+  ],
+  "adapter_contract": {
+    "export": "runA01Scenario",
+    "signature": "async runA01Scenario(scenario) -> {steps:[observation,...]}",
+    "note": "El adapter de QA puede mapear API/runtime del candidato al esquema observable; no modifica runtime."
+  }
+}
