@@ -765,7 +765,7 @@ export function predictI0V3R2(target,development=[],config={}){
   }
 
   const entries=commands.map((c,i)=>{const e=buildAction(c,target);e.origin_command_index=i;return e;});
-  const opaqueGapNames=new Set(["missing_flow_id","missing_instruction_context_id","missing_previous_navigation_identity"]);
+  const opaqueGapNames=new Set(["missing_flow_id","missing_instruction_context_id","missing_previous_navigation_identity","missing_navigation_route"]);
   const hardGap=entries.find(e=>e.gap&&!opaqueGapNames.has(e.gap));
   const opaqueGaps=entries.filter(e=>e.gap&&opaqueGapNames.has(e.gap));
   if(hardGap){
