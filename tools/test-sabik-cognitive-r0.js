@@ -7,7 +7,7 @@ const prefs=fs.readFileSync(path.join(root,'sabik','cognitive-preferences.js'),'
 const voice=fs.readFileSync(path.join(root,'sabik','voice-ui-adapter.js'),'utf8');
 const html=fs.readFileSync(path.join(root,'es','nea','index.html'),'utf8');
 
-for(const token of ['AUTO','REDUCIDO','SIN_MOVIMIENTO'])assert.ok(prefs.includes(token),token);
+for(const token of ['NORMAL','REDUCIDO','SIN_MOVIMIENTO'])assert.ok(prefs.includes(token),token);
 for(const token of ['completa','reducida','paso_a_paso'])assert.ok(prefs.includes(token),token);
 for(const globalHook of ['IGPreferences','data-ig-motion','data-ig-system-motion','data-ig-contrast','data-ig-text-letter','data-ig-text-word','data-ig-text-line','data-ig-text-width'])assert.ok(prefs.includes(globalHook),globalHook);
 
