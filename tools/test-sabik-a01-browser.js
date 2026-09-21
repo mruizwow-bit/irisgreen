@@ -70,6 +70,7 @@ async function fresh() {
 const idle = () => page.waitForFunction(() => document.querySelector('#sabik-output').getAttribute('aria-busy') === 'false' && !document.querySelector('#sabik-submit').disabled);
 const snapshot = () => page.evaluate(() => ({ machine: window.__a01.states.at(-1), risk: window.__a01.session?.risk_state,
   subject: window.__a01.session?.last_plan?.subject, cognitive: window.__a01.session?.cognitive_state,
+  preferences: window.__a01.session?.session_preferences,
   statements: window.__a01.session?.user_statements, retrievals: window.__a01.retrievals, events: window.__a01.events.map(e => e?.type), errors: window.__a01.errors,
   answer: document.querySelector('#sabik-answer').textContent, hidden: document.querySelector('#sabik-output').hidden }));
 async function submit(text) { await el('input').fill(text); await el('submit').click(); await idle(); return snapshot(); }
@@ -109,6 +110,29 @@ async function check(name, run) {
       let s = await submit('mi amiga dice que no quiere hacerse dano'); assert.equal(s.machine.safety, 'normal');
       s = await submit('no me quiero hacer dano'); assert.equal(s.machine.safety, 'normal');
       protectedState(await submit('me quiero hacer dano'), 'risk');
+    });
+    await check('discussion reservation after yes confirms only an actual pending safety question', async () => {
+      assert.equal((await submit('si pero prefiero no contarlo')).machine.safety, 'normal');
+      await submit('dudo si puedo seguir'); protectedState(await submit('si pero prefiero no contarlo'), 'risk');
+    });
+    await check('ordinary coordinated request cannot hide uncertainty or loop after clearance', async () => {
+      protectedState(await submit('Ayudame con los horarios y no quiero seguir'), 'uncertain');
+      assert.equal((await submit('no')).machine.safety, 'normal');
+      assert.equal((await submit('gracias')).machine.safety, 'normal');
+    });
+    await check('text preference waits during safety clarification, without altering panel controls', async () => {
+      const pending = await submit('dudo si puedo seguir'); const next = await submit('menos texto');
+      protectedState(next, 'uncertain'); assert.deepEqual(next.preferences, pending.preferences);
+      await el('shorter').click(); await idle(); const explicit = await snapshot();
+      protectedState(explicit, 'uncertain'); assert.equal(explicit.preferences.response_length, 'short');
+    });
+    await check('present explicit self predicate and past contrast use the real runtime', async () => {
+      assert.equal((await submit('Hace anos deseaba morir, ahora no')).machine.safety, 'normal');
+      const s = await submit('yo deseo morirme ahora'); protectedState(s, 'risk'); assert.equal(s.subject, 'self');
+    });
+    await check('current third-person harm does not attribute risk to the user', async () => {
+      const s = await submit('mi familiar se esta autolesionando'); protectedState(s, 'risk');
+      assert.equal(s.subject, 'third_person'); assert.equal(s.cognitive, 'NucleoBase'); assert.equal(s.retrievals, 0);
     });
     for (const phrase of ['Yo no sé si puedo continuar así.', 'Dudo si quiero seguir ahora.']) {
       await check('present doubt blocks ordinary flow and retains clarification through retry: ' + phrase, async () => {

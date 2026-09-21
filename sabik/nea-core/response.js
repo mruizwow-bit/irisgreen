@@ -137,7 +137,9 @@
     const previousSubject = session.last_plan?.subject;
     const subject = turn.subject === "self" || previousSubject === "self" ? "self"
       : turn.subject === "third_person" || previousSubject === "third_person" ? "third_person" : "none";
-    const preferences = detectSessionPreferences(text);
+    // While a safety clarification is pending, ordinary commands embedded in
+    // conversation are not executed. Explicit panel controls remain separate.
+    const preferences = machine.safety === "uncertain" ? {} : detectSessionPreferences(text);
     const next = applySessionUpdate(session, text, session.active_concepts, [], preferences,
       riskState, subject === "self" ? detectCognitiveState(text, preferences, riskState) : session.cognitive_state);
     const plan = riskState === "riesgo_ambiguo" ? createAmbiguousRiskPlan(next)

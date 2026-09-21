@@ -248,6 +248,57 @@ check('legacy single-turn API also distinguishes third-person from user cognitio
   protectedResult(result, 'acompanamiento_en_riesgo'); assert.equal(result.plan.subject, 'third_person');
   assert.equal(result.session.cognitive_state, session.cognitive_state); assert.equal(result.plan.question, null);
 });
+for (const phrase of ['quiero morir', 'quiero morirme', 'me quiero morir', 'deseo morir', 'deseo morirme', 'me deseo morir',
+  'pienso en hacerme dano', 'me autolesiono', 'me estoy autolesionando']) {
+  check('explicit personal predicate family: ' + phrase, () => {
+    const turn = global.NEARisk.classifySafetyTurn(`Yo ${phrase} ahora.`);
+    assert.equal(turn.classification, 'risk'); assert.equal(turn.subject, 'self');
+    protectedResult(ask(`Yo ${phrase} ahora.`), 'acompanamiento_en_riesgo');
+    for (const normal of [`No ${phrase}.`, `En un libro aparece «${phrase}».`]) {
+      assert.equal(global.NEARisk.classifySafetyTurn(normal).classification, 'normal');
+    }
+  });
+}
+for (const predicate of ['se autolesiona', 'se esta autolesionando', 'quiere morirse', 'se quiere morir', 'piensa en hacerse dano']) {
+  check('third-person inflection stays third-person: ' + predicate, () => {
+    const result = ask(`mi familiar ${predicate} ahora`); protectedResult(result, 'acompanamiento_en_riesgo');
+    assert.equal(result.plan.subject, 'third_person'); assert.equal(result.session.cognitive_state, 'NucleoBase');
+    assert.equal(global.NEARisk.classifySafetyTurn(`mi familiar no ${predicate} ahora`).classification, 'normal');
+  });
+}
+for (const connector of ['pero', 'aunque']) for (const reservation of ['no quiero hablar de eso', 'no puedo explicarlo ahora', 'prefiero no contarlo']) {
+  const reply = `Sí, ${connector} ${reservation}.`;
+  check('affirmative plus discussion reservation only resolves a pending question: ' + reply, () => {
+    const prior = ask('dudo si puedo seguir asi'); const result = ask(reply, prior.session);
+    protectedResult(result, 'acompanamiento_en_riesgo'); assert.deepEqual(result.events, ['RISK_CONFIRMED']);
+    assert.equal(ask(reply).machine.safety, 'normal');
+  });
+}
+for (const reply of ['si y no', 'no y si no se', 'si pero no estoy en peligro', 'si pero no quiero hacerme dano', 'si hablas del libro']) {
+  check('contradictory or differently scoped affirmation stays uncertain: ' + reply, () => {
+    protectedResult(ask(reply, ask('dudo si quiero continuar').session), 'riesgo_ambiguo');
+  });
+}
+for (const ordinary of ['Pon el texto mas grande', 'Ayudame con los horarios']) {
+  check('coordinated uncertainty is not swallowed by an ordinary request: ' + ordinary, () => {
+    const result = ask(`${ordinary} y no quiero seguir.`); protectedResult(result, 'riesgo_ambiguo');
+    const cleared = ask('no', result.session); assert.equal(cleared.machine.safety, 'normal');
+    assert.deepEqual(cleared.events, ['RISK_CLEARED']); assert.equal(ask('gracias', cleared.session).machine.safety, 'normal');
+  });
+}
+check('uncertain conversation does not execute a text preference; explicit controls remain independent', () => {
+  const pending = ask('dudo si puedo seguir');
+  const next = ask('menos texto', pending.session); protectedResult(next, 'riesgo_ambiguo');
+  assert.deepEqual(next.session.session_preferences, pending.session.session_preferences);
+  const cleared = ask('no', next.session); const normal = ask('menos texto', cleared.session);
+  assert.equal(normal.session.session_preferences.response_length, 'short');
+});
+for (const phrase of ['quiero morirme de risa', 'deseaba morir hace anos', 'mi hijo se autolesionaba antes',
+  'En un informe se dice que mi hija se autolesiona', 'No me autolesiono', 'que significa quiero morir']) {
+  check('new grammatical forms do not turn negated/past/figurative/informative text into risk: ' + phrase, () => {
+    assert.equal(global.NEARisk.classifySafetyTurn(phrase).classification, 'normal');
+  });
+}
 if (process.env.A01_EVIDENCE_DIR) {
   const out = path.resolve(process.env.A01_EVIDENCE_DIR);
   if (out === root || out.startsWith(root + path.sep)) throw Error('Keep evidence outside repository');

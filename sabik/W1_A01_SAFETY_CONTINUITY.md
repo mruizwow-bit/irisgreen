@@ -8,7 +8,142 @@ Branch: `sabik/reconcile-a01-safety-continuity-20260921`.
 Delivery: draft PR targeting `sabik-preview`; independent QA still required.
 NO MERGE. NO DEPLOY.
 
-## R2 correction after independent rejection
+## Recovered Claude 28 supplemental coverage
+
+Authorization: ORDEN_CODEX_A01_R2_EJECUTAR_28_CLAUDE. This is an additional
+commit after `56c601c55ea5c3e288b3b6cb893bc2c28ee98ecc`, not a rewrite.
+The original external JSON was verified before running: schema 1.0,
+`A01_SEMANTIC_SUGGESTED_CASES_V1`, `suggested_not_frozen`, 28 distinct scenarios,
+base `fc5cdfc2f978c85033de2b07c34309f8a4a7bd18`, SHA-256
+`1f6dede5d01ad389a642be60d409c27531ec58c6d7f0ab522a3b3ba3a24c2653`.
+No corpus or independent QA files were copied into this branch or edited.
+
+### Before and after
+
+The first execution used the exact 56c601c5 runtime, with no runtime edits:
+17 PASS, 3 measured PASS with optional observations unavailable, 8 FAIL.
+Seven failures were A01 bugs: SEM-03/06/15/16/17/19/22. SEM-23 was the
+pre-existing A03 cognition/intensity coupling, outside the authorized scope.
+
+The correction uses bounded present-tense predicate families, not case-ID or
+whole-sentence whitelists: self/third-person death wish and current self-harm,
+`pienso en`, coordinated uncertainty, and affirmative answers with a reservation
+about discussing/explaining it. A reservation only resolves an actual pending
+S0 safety question; contradictory answers do not clear protection. Negative,
+quoted, informational, past and figurative contrasts are retained in own tests.
+While uncertain, an ordinary preference embedded in conversational text is not
+executed. Explicit panel controls remain separate and are tested unchanged.
+
+Only two runtime files change in this supplemental revision: risk.js and
+response.js. The other changes are own unit/browser tests, the new supplemental
+runner and this document. No S0, session.js, sabik-state.js, page, A03 policy,
+B3, voice, data, index, assets, QA, main, Netlify or Cloud changes.
+
+Final supplemental outcome: **28/28 base-schema observations pass**;
+**23 full measured PASS, 4 measured PASS with optional observations unavailable,
+1 measured optional FAIL (SEM-23/A03)**. This is NOT an unqualified 28/28 PASS.
+The runner intentionally exits 1 for the measured A03 mismatch; no expectation
+is removed or converted into a pass. All seven in-scope A01 failures are fixed.
+
+| Scenario | Exact R2 baseline | Corrected result / scope |
+| --- | --- | --- |
+| A01-SEM-01 | Measured PASS; optional unavailable | Same; question_repeated not measured |
+| A01-SEM-02 | Measured PASS; optional unavailable | Same; second-question limit remains editorial [E] |
+| A01-SEM-03 | FAIL: affirmative reservation | PASS |
+| A01-SEM-04 | PASS | PASS |
+| A01-SEM-05 | PASS | PASS |
+| A01-SEM-06 | FAIL: coordinated uncertainty | Base PASS; resumed_original_request unavailable |
+| A01-SEM-07 | PASS | PASS |
+| A01-SEM-08 | PASS | PASS |
+| A01-SEM-09 | PASS | PASS protection; acknowledgement copy remains [E] |
+| A01-SEM-10 | PASS | PASS |
+| A01-SEM-11 | PASS | PASS |
+| A01-SEM-12 | Measured PASS; optional unavailable | Same; question_repeated not measured |
+| A01-SEM-13 | PASS | PASS |
+| A01-SEM-14 | PASS | PASS |
+| A01-SEM-15 | FAIL: current self death wish | PASS |
+| A01-SEM-16 | FAIL: present third-person predicate | PASS |
+| A01-SEM-17 | FAIL: own signal with third-party mention | PASS |
+| A01-SEM-18 | PASS | PASS |
+| A01-SEM-19 | FAIL: ordinary preference under uncertainty | PASS |
+| A01-SEM-20 | PASS | PASS |
+| A01-SEM-21 | PASS | PASS |
+| A01-SEM-22 | FAIL: current affirmative after denial | PASS |
+| A01-SEM-23 | FAIL: inferred state and adaptation change | Base PASS; optional FAIL remains, A03 out of scope |
+| A01-SEM-24 | PASS | PASS |
+| A01-SEM-25 | PASS | PASS |
+| A01-SEM-26 | PASS | PASS |
+| A01-SEM-27 | PASS within supplied alternatives | PASS alternatives; editorial [E], not frozen |
+| A01-SEM-28 | PASS | PASS |
+
+### Adapter boundaries and reproducibility
+
+`tools/test-sabik-a01-supplemental.js` runs the actual local Core, data and
+unchanged S0, not a model of their answers. It checks the original JSON hash,
+reports each step's observed values and retains mismatches in the JSON output.
+Classification/protection use the real S0 snapshot; subject uses the actual
+detector/response metadata. Retrieval and classifier calls are instrumented.
+`ordinary_action_executed` measures actual session preference changes, not an
+unimplemented UI command executor. `inferred_state_changed` and
+`adaptation_changed` are measured, not guessed or treated as unavailable.
+
+Unavailable optional observations: question_repeated in SEM-01/02/12 (this
+Core/S0 runner does not observe DOM presentation or live-region repetition),
+and resumed_original_request in SEM-06 (font-size command replay is not exposed
+by this adapter). SEM-06 risk_phrase_reevaluated is instrumented and passes.
+No DOM behavior is certified by this supplemental runner. The separate real
+browser regression includes the new A01 families and explicit panel controls.
+
+Editorial [E]: second non-resolutive question limit (SEM-02), retraction
+acknowledgement copy (SEM-09), and the normal/uncertain choice for task-qualified
+exhaustion (SEM-27) are not decided by code. SEM-27's existing uncertain result
+satisfies the supplied alternatives; this does not approve that editorial choice.
+
+```text
+node tools/test-sabik-a01-supplemental.js --cases <original-external-A01_SEMANTIC_SUGGESTED_CASES_V1.json> --out <external-report.json>
+node tools/test-sabik-a01.js
+node tools/test-sabik-a01-browser.js
+```
+
+For dist browser tests set A01_WEB_ROOT=dist; NODE_PATH points to the installed
+Playwright runtime. All evidence is outside the repo in
+`FARO 3/W1-A01-EVIDENCE-20260921/claude28/`, including exact baseline
+`before-56c601c5.json` and corrected `after.json`. Reports record HEAD and any
+uncommitted runtime diff, so pre-commit evidence is not mislabeled as a clean SHA.
+The frozen 14-case development mirror remains unchanged and external as below.
+
+### Supplemental revision regression
+
+Environment: Windows, Node 24.19.0, Python 3.12.14, Chrome 153.0.8010.53.
+
+| Suite | Result |
+| --- | --- |
+| Unmodified frozen 14-case development mirror | 14/14 |
+| Own A01 Core/S0 | 154/154 |
+| Own A01 browser source / dist | 29/29 each |
+| Unchanged S0 / V7 / S4 unit | 146/146 / 28/28 / 87/87 |
+| Unchanged S1 source / dist | 37/37 + 53/53 extra checks each |
+| Unchanged S4 browser source / dist | 19/19 each, storage 4/4 included |
+| Unchanged accessibility closure | A11Y_CLOSURE_PASS |
+| Full Windows build | exit 0, 1650 public files |
+| git diff --check | PASS |
+
+The first build attempt failed with the pre-existing Windows/OneDrive ReadOnly
+directory WinError 5 during dist replacement. After verifying the generated
+paths and clearing only their directory ReadOnly attributes, the full second
+build passed (build-final.log). No scripts or protected hashes were changed.
+No Linux result is claimed for this revision. S1 results are automated
+regressions, not new manual/screen-reader certification or a reopening of S1.
+
+Independent QA must run again on the final published HEAD; neither this corpus
+nor the local 14-case mirror grants independent acceptance.
+
+Reversal: revert only this additional commit to return to 56c601c5, including its
+seven reproduced A01 supplemental failures. No migration or persisted data.
+History is preserved without rebase or force-push. PR #212 remains draft.
+NO MERGE / NO DEPLOY.
+
+## Historical R2 correction (56c601c5)
 
 Authorization: ORDEN_CODEX_W1_A01_R2_CORRECCION / DEC-020. This revision adds
 one commit after audited `a6c4e1b946a36940194e8c44e2d98838038fcefc`; it does not
@@ -107,7 +242,7 @@ failures; do not rewrite either SHA. PR #212 stays draft. NO MERGE / NO DEPLOY.
 ## Historical record: a6c4e1b9 (superseded by R2 above)
 
 The following sections record the previous candidate, its scope and evidence;
-the R2 section is authoritative for the current correction and test counts.
+the supplemental section above is authoritative for the current correction.
 
 ## Reproduction before runtime edits
 
