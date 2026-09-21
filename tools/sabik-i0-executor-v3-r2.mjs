@@ -43,18 +43,22 @@ export function detectSafetySignals(text,context={}){
   const resolved=/\b(?:fuera\s+de\s+riesgo|ahora\s+estoy\s+segur\w*|me\s+encuentro\s+(?:segur\w*|a\s+salvo)|ya\s+no\s+(?:hay|existe|es|esta|ocurre|sigue)|se\s+resolvio|resuelto|termino|ha\s+terminado|controlado|estable)\b/u;
   const nonPersonalTopic=/\b(?:historia|novela|pelicula|personaje|caso|ejemplo|material|tarea|estudio|prevencion|informacion|recurso)\b/u;
   const explicitNotSelf=/\b(?:no\s+me\s+ocurre|no\s+me\s+pasa|no\s+es\s+sobre\s+mi|no\s+estoy\s+en\s+riesgo|sin\s+riesgo\s+para\s+mi|yo\s+estoy\s+bien|sin\s+crisis)\b/u;
+  const directSafe=/\b(?:no\s+(?:estoy|me\s+encuentro)\s+(?:en\s+)?(?:riesgo|peligro|crisis|insegur\w*)|no\s+tengo\s+(?:un|una)?\s*(?:emergencia|crisis|amenaza)|no\s+hay\s+(?:riesgo|peligro|amenaza)\s+para\s+mi)\b/u;
+  const directPersonalDanger=/\b(?:(?:estoy|me\s+encuentro)\s+(?:en\s+)?(?:riesgo|peligro|crisis|insegur\w*)|tengo\s+(?:un|una)?\s*(?:emergencia|crisis|amenaza)|(?:hay|existe)\s+(?:un|una)?\s*(?:riesgo|peligro|amenaza|emergencia|crisis)(?:\s+\w+){0,4}\s+para\s+mi|(?:riesgo|peligro|amenaza|emergencia|crisis)(?:\s+\w+){0,3}\s+(?:para\s+mi|conmigo))\b/u;
 
   for(const clause of clauses){
     const hasDanger=danger.test(clause)||harm.test(clause);
     const isUncertain=uncertainty.test(clause)&&hasDanger;
-    const isResolved=resolved.test(clause)&&(hasDanger||/\b(?:preocupante|situacion)\b/u.test(clause));
-    const nonPersonal=(nonPersonalTopic.test(clause)||explicitNotSelf.test(clause))&&!selfRef.test(clause);
+    const isResolved=(resolved.test(clause)||directSafe.test(clause))&&(hasDanger||/\b(?:preocupante|situacion)\b/u.test(clause));
+    const nonPersonal=explicitNotSelf.test(clause)||(nonPersonalTopic.test(clause)&&!selfRef.test(clause));
+    const isDirectPersonalDanger=directPersonalDanger.test(clause);
 
     if(nonPersonal){add("normal",clause,"explicit_non_personal_context",5);continue;}
     if(isResolved&&!isUncertain){add("cleared",clause,"resolved_safety_state",5);continue;}
     if(humanExplicit.test(clause)&&(hasDanger||urgency.test(clause))&&!nonUrgent.test(clause)){add("handoff",clause,"explicit_human_handoff",4);continue;}
     if(isUncertain&&!strongUrgency.test(clause)){add("uncertain",clause,"uncertain_personal_safety",2);continue;}
     if(hasDanger&&urgency.test(clause)){add("confirmed",clause,"direct_urgent_danger",3);continue;}
+    if(isDirectPersonalDanger&&!isUncertain){add("confirmed",clause,"direct_personal_danger",3);continue;}
     if(harm.test(clause)&&selfRef.test(clause)&&!isUncertain){add("confirmed",clause,"direct_personal_harm",3);continue;}
     if(isUncertain){add("uncertain",clause,"uncertain_personal_safety",2);continue;}
   }
@@ -330,8 +334,9 @@ function detectCommandsAtomic(target,development){
   if(repeatVerb.test(n)||(repeatAdverb.test(n)&&(repeatTarget.test(n)||context.currentContentId||context.activeFlow==="step_by_step"))){
     const st=Math.max(0,((n.search(repeatVerb)>=0?n.search(repeatVerb):n.search(repeatAdverb))>=0?(n.search(repeatVerb)>=0?n.search(repeatVerb):n.search(repeatAdverb)):0)+offset);
     const contextId=context.instructionContextId||context.currentContentId||null;
-    if(contextId)addCandidate(out,command("REPETIR_INDICACION",{contextId},st,1,"contract_context",explicitNegation(original,st),"repeat_rule"));
-    else out.push(issue("insufficient","missing_instruction_context_id",st,"REPETIR_INDICACION"));
+    const negated=explicitNegation(original,st);
+    if(contextId)addCandidate(out,command("REPETIR_INDICACION",{contextId},st,1,"contract_context",negated,"repeat_rule"));
+    else if(!negated)out.push(issue("insufficient","missing_instruction_context_id",st,"REPETIR_INDICACION"));
   }
 
   // Back before next because "vuelve" can be ambiguous.
@@ -459,7 +464,6 @@ function detectCommandsAtomic(target,development){
     {intent:"CAMBIAR_PASO_A_PASO",re:/\bno\b[^.;]{0,25}\b(?:lo\s+)?(actives|pongas|desactives|quites)\b[^.;]{0,35}\b(?:modo\s+)?(?:por\s+)?(?:pasos|etapas|paso\s+a\s+paso|recorrido\s+por\s+pasos|guia\s+por\s+(?:pasos|etapas))\b/u,params:m=>({enabled:/actives|pongas/u.test(m[1])})},
     {intent:"CAMBIAR_VISTA_SENCILLA",re:/\bno\b[^.;]{0,35}\b(?:vuelvas|cambies|pongas|actives|desactives)\b[^.;]{0,40}\b(?:vista|interfaz|diseno)\b/u,params:m=>({enabled:!/complet/u.test(m[0])})},
     {intent:"ATRAS",re:/\bno\b[^.;]{0,20}\b(?:retrocedas|vuelvas|regreses)\b[^.;]{0,25}\b(paso|pagina|ruta|pantalla)\b/u,params:m=>({scope:/pagina|ruta|pantalla/u.test(m[1])?"page":"step"})},
-    {intent:"REPETIR_INDICACION",re:/\b(?:no\b[^.;]{0,20}\brepitas|sin\s+repetir)\b[^.;]{0,35}(?:mensaje|instruccion|indicacion)?/u,params:()=>({contextId:"current"})},
     {intent:"DETENER",re:/\bno\b[^.;]{0,20}\b(?:pauses|pares|detengas)\b[^.;]{0,25}\b(sabik|asistente|lectura|voz|locucion)\b/u,params:m=>({target:/lectura|voz|locucion/u.test(m[1])?"speech":"assistant"})}
   ];
   for(const spec of negSpecs){const m=original.match(spec.re);if(m)addCandidate(out,command(spec.intent,spec.params(m),m.index??0,1,"contract_negation",true,"negated_target_rule"));}
