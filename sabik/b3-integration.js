@@ -96,6 +96,7 @@
     }
     h.appendChild(stage);
 
+    setFrame(layers[1],presence,'PRESENTE');
     const first=layers[0];
     first.onload=()=>{
       const spec=root.SabikB3Motion?
