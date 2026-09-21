@@ -157,7 +157,7 @@ def main():
         "condiciones_es": check_collection(root / "es/neurodiversidad/condiciones", 185, COND_ES_FORBIDDEN, None, "Condiciones ES"),
         "condiciones_en": check_collection(root / "en/neurodiversity/conditions", 185, COND_EN_FORBIDDEN, None, "Conditions EN"),
         "vida_es": check_daily(root / "es/biblioteca", 49, DAILY_ES_FORBIDDEN, "Vida diaria ES"),
-        "vida_en": check_daily(root / "en/everyday-life", 48, DAILY_EN_FORBIDDEN, "Everyday life EN"),
+        "vida_en": check_daily(root / "en/everyday-life", 49, DAILY_EN_FORBIDDEN, "Everyday life EN"),
         "avisos_urgentes_revisados": check_reviewed_urgent_notices(root),
     }
     check_index(root / "es/biblioteca/index.html", LEDE_ES, "Al final de cada ficha", "Índice Vida diaria ES")
