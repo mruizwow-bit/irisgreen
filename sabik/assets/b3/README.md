@@ -14,8 +14,8 @@ This directory contains the runtime visual derivative used by the real integrati
 - packaging: one **lossless WebP** sprite, 5 columns × 3 rows;
 - columns: PRESENTE · ORIENTAR · TRANSICIÓN · PAUSA · CONFIRMAR;
 - rows: Web · IA · Educa;
-- SHA-256: `e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23`;
-- bytes: `751660`.
+- SHA-256: `3bc05d596927f45feed44bebb70750507a9ec6aeaa6b39d856ee9f06f6216c67`;
+- bytes: `6660`.
 
 The 15 source SHA-256 values and Library IDs are recorded in `ASSET_MANIFEST.json`.
 
