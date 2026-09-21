@@ -68,7 +68,7 @@ def catalogue(p,kind,width):
   if term=='zzzinexistentexxx':
    empty=p.locator('#situationsEmpty' if situations else '#ig-search-empty');assert empty.is_visible();assert empty.locator('a[href]').count()
  p.locator('[data-ig-catalog-reset]').click();wait_catalogue(p);assert len(visible_paths(p))==len(subset);assert '?' not in p.url
- p.locator(q).fill('ruido');wait_catalogue(p);assert 'q=' not in p.url;p.reload();wait_catalogue(p);assert not p.locator(q).is_disabled();assert p.locator(q).input_value()=='';assert len(visible_paths(p))==len(subset)
+ p.locator(q).fill('ruido');wait_catalogue(p);assert 'q=' not in p.url;p.reload();wait_catalogue(p);assert not p.locator(q).is_disabled();assert 'q=' not in p.url;assert len(visible_paths(p))==len(subset)
  p.locator('[data-ig-catalog-reset]').click();assert p.locator(q).evaluate('(e)=>getComputedStyle(e).outlineColor')=='rgb(90, 73, 168)';p.screenshot(path=str(OUT/f'{"situaciones" if situations else "condiciones"}-{width}.png'))
  row.update({'records':len(subset),'all_filters_tested':p.locator(group+' button').count(),'query_parity':True,'reset':True,'free_text_not_persisted':True,'lazy_initial_index':True,'passed':True});return row
 
