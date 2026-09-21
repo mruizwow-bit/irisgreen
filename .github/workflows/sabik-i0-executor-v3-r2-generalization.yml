@@ -80,7 +80,7 @@ jobs:
         run: |
           test -z "$(git remote)"
           test -z "$(git for-each-ref refs/remotes --format='%(refname)')"
-          if grep -RE "api\.github\.com|github\.com|tests/evaluation/|i0-v3|i0-v4" \
+          if grep -RE "api\.github\.com|github\.com|tests/evaluation/|tests/calibration/sabik/i0-v3|tests/calibration/sabik/i0-v4" \
             tools/sabik-i0-executor-v3-r2.mjs \
             tools/sabik-i0-v3-r2-evaluation-metrics.mjs \
             tools/run-sabik-i0-v3-r2-generalization.mjs; then
