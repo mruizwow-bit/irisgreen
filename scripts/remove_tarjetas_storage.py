@@ -22,8 +22,8 @@ from pathlib import Path
 MARKER = 'data-iris-card-storage="true"'
 KEY = 'iris-green-tarjeta-v1'
 VISIBLE_PROMISE = (
-    'Lo que escribes se queda en tu navegador mientras la pestaña está abierta. '
-    'Al cerrarla no queda nada. No se envía a ningún sitio y no hace falta ninguna cuenta.'
+    'Esta tarjeta se guarda solo en esta pestaña para poder recuperarla al recargar. '
+    'Este guardado no la envía fuera del dispositivo y no hace falta ninguna cuenta.'
 )
 CANONICAL_PAGE = Path('es/recursos/tarjeta-iris/index.html')
 LEGACY_PAGE = Path('es/tarjetas-iris/index.html')
