@@ -1,0 +1,125 @@
+name: Sabik B3 R1 current-preview gate
+
+on:
+  pull_request:
+    branches: [agent3/sabik-b3-r1-base-fc5cdfc]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r1-current:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.ref == 'agent3/sabik-b3-r1-current-preview'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: runtime
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: runtime
+          persist-credentials: false
+
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 96ace61de17108e31942d990cde79f3d1690c47a
+          path: qa0
+          persist-credentials: false
+
+      - name: Prepare pinned browser and Python tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/sabik-b3-r1-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/sabik-b3-r1-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          python3 -m venv "$RUNNER_TEMP/sabik-b3-r1-python"
+          "$RUNNER_TEMP/sabik-b3-r1-python/bin/pip" install beautifulsoup4==4.13.4 pillow==11.3.0
+          echo "$RUNNER_TEMP/sabik-b3-r1-python/bin" >> "$GITHUB_PATH"
+          echo "NODE_PATH=$RUNNER_TEMP/sabik-b3-r1-browser/node_modules" >> "$GITHUB_ENV"
+          echo "R1_REPORT=$RUNNER_TEMP/sabik-b3-r1-current" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/sabik-b3-r1-current"
+
+      - name: Record exact head and environment
+        env:
+          REVIEWED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$REVIEWED_HEAD"
+          test "$(git -C ../qa0 rev-parse HEAD)" = 96ace61de17108e31942d990cde79f3d1690c47a
+          {
+            git rev-parse HEAD
+            printf '%s\n' 'base=fc5cdfc2f978c85033de2b07c34309f8a4a7bd18'
+            uname -a
+            cat /etc/os-release
+            node --version
+            python3 --version
+            google-chrome --version
+          } | tee "$R1_REPORT/environment.txt"
+
+      - name: Preserve current S4 and run S0 + S4 unit
+        run: |
+          node tools/test-sabik-s4-preservation-r1.js | tee "$R1_REPORT/s4-preservation.log"
+          node tools/test-sabik-machine-s0.js | tee "$R1_REPORT/s0.log"
+          node tools/test-sabik-s4.js | tee "$R1_REPORT/s4-unit.log"
+          node tools/test-sabik-page-v7.js | tee "$R1_REPORT/v7.log"
+          node tools/test-sabik-a11y-closure.js | tee "$R1_REPORT/a11y-closure.log"
+
+      - name: Source S1 + S4 + storage + QA0
+        run: |
+          export S4_EVIDENCE_DIR="$R1_REPORT/s4-source"
+          export S1_EVIDENCE_DIR="$R1_REPORT/s1-source"
+          node tools/test-sabik-s4-browser.js | tee "$R1_REPORT/s4-source.log"
+          node ../qa0/tests/specs/sabik/run-s3-s4-qa0.mjs --phase S4 --adapter ./tools/sabik-s4-qa0-adapter.mjs | tee "$R1_REPORT/qa0-source.log"
+          node tools/test-sabik-s1.js | tee "$R1_REPORT/s1-source.log"
+
+      - name: Source B3 candidate
+        run: |
+          node tools/test-sabik-b3-motion-r1.js | tee "$R1_REPORT/b3-motion-source.log"
+          node tools/test-sabik-b3-integration-r1.js | tee "$R1_REPORT/b3-integration-source.log"
+          node tools/test-sabik-cognitive-r1.js | tee "$R1_REPORT/b3-cognitive-source.log"
+          node tools/test-sabik-b3-browser-r1.js | tee "$R1_REPORT/b3-browser-source.log"
+
+      - name: Complete Linux build
+        run: |
+          python3 scripts/build_site.py | tee "$R1_REPORT/build-linux.log"
+          test -z "$(git status --porcelain)"
+          node - <<'JS' | tee "$R1_REPORT/dist-size.json"
+          const fs=require('node:fs'),path=require('node:path');
+          const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
+            const p=path.join(dir,e.name);
+            return e.isDirectory()?walk(p):[{path:p,bytes:fs.statSync(p).size}];
+          });
+          const files=walk('dist');
+          const tooLarge=files.filter(f=>f.bytes>49_000_000);
+          const leaked=files.filter(f=>/[\\/](?:tools|tests|docs|\.github)[\\/]/.test(f.path));
+          const report={files:files.length,total_bytes:files.reduce((n,f)=>n+f.bytes,0),max_file_bytes:Math.max(...files.map(f=>f.bytes)),limit_per_file_bytes:49_000_000,tooLarge,leaked};
+          console.log(JSON.stringify(report,null,2));
+          if(tooLarge.length||leaked.length)process.exitCode=1;
+          JS
+
+      - name: Dist S1 + S4 + storage + QA0
+        run: |
+          export S4_WEB_ROOT="$PWD/dist"
+          export S1_WEB_ROOT="$PWD/dist"
+          export S4_EVIDENCE_DIR="$R1_REPORT/s4-dist"
+          export S1_EVIDENCE_DIR="$R1_REPORT/s1-dist"
+          node tools/test-sabik-s4-browser.js | tee "$R1_REPORT/s4-dist.log"
+          node ../qa0/tests/specs/sabik/run-s3-s4-qa0.mjs --phase S4 --adapter ./tools/sabik-s4-qa0-adapter.mjs | tee "$R1_REPORT/qa0-dist.log"
+          node tools/test-sabik-s1.js | tee "$R1_REPORT/s1-dist.log"
+
+      - name: Dist B3 candidate
+        env:
+          B3_WEB_ROOT: ${{ github.workspace }}/runtime/dist
+        run: |
+          node tools/test-sabik-b3-browser-r1.js | tee "$R1_REPORT/b3-browser-dist.log"
+          test -z "$(git status --porcelain)"
+          test -z "$(git -C ../qa0 status --porcelain)"
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-b3-r1-current-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/sabik-b3-r1-current
+          retention-days: 14
