@@ -2,7 +2,6 @@
    Only presentation is persisted. Speech is always off on a new page. */
 (function (window, document) {
   'use strict';
-  if (/^\/es(?:\/|$)/.test(window.location.pathname)) { try { window.localStorage.removeItem('ig_lang'); } catch (_) {} }
   if (window.IGPreferences) return;
   var KEY = 'ig-a11y', VERSION = 2, STEPS = [1, 1.15, 1.3, 1.5];
   var FLAGS = ['spacing', 'controls', 'contrast', 'guide', 'motion'];
@@ -204,6 +203,14 @@
     if (speech && window.speechSynthesis) window.speechSynthesis.cancel();
     speech = false; state = defaults(); persist(); notify();
   }
+  function clearStored() {
+    if (speech && window.speechSynthesis) window.speechSynthesis.cancel();
+    speech = false;
+    try { window.localStorage.removeItem(KEY); } catch (_) {}
+    state = defaults();
+    canStore = true;
+    notify();
+  }
   function changeComponent(instance, patch) {
     var pure = {}, previousSpeech = speech;
     if (typeof patch.fs === 'number') pure.scale = patch.fs / 17;
@@ -253,7 +260,7 @@
     });
   }, {passive:true});
   window.addEventListener('pagehide', function () { if (speech && window.speechSynthesis) window.speechSynthesis.cancel(); });
-  window.IGPreferences = {get:copy, system:system, componentState:componentState, status:status, update:update, step:step, reset:reset, setSpeech:setSpeech,
+  window.IGPreferences = {get:copy, system:system, componentState:componentState, status:status, update:update, step:step, reset:reset, clearStored:clearStored, setSpeech:setSpeech,
     speechOn:function(){return speech;}, connect:connect, changeComponent:changeComponent, apply:apply, mountTextOptions:mountTextOptions, getText:effectiveText};
   new MutationObserver(syncTextOptions).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   rootStyles();

@@ -4,12 +4,30 @@
    Guarda la elección para la pestaña, avisa a la herramienta de la página y
    mantiene sincronizados los conmutadores propios que ya existían dentro del
    contenido (Rutinas visuales), que quedan ocultos. */
-var KEY='ig-idioma';
+var KEY='ig_lang';
+var LEGACY_KEY='ig-idioma';
 var listeners=[];
 var current=null;
 
+function valid(lang){return lang==='es'||lang==='en';}
 function stored(){
-  try{var v=sessionStorage.getItem(KEY);return v==='es'||v==='en'?v:null;}catch(e){return null;}
+  try{
+    var v=localStorage.getItem(KEY);
+    if(valid(v)){sessionStorage.removeItem(LEGACY_KEY);return v;}
+    var legacy=sessionStorage.getItem(LEGACY_KEY);
+    if(valid(legacy)){
+      localStorage.setItem(KEY,legacy);
+      sessionStorage.removeItem(LEGACY_KEY);
+      return legacy;
+    }
+    sessionStorage.removeItem(LEGACY_KEY);
+    return null;
+  }catch(e){return null;}
+}
+function persist(lang){
+  if(!valid(lang))return;
+  try{localStorage.setItem(KEY,lang);}catch(e){}
+  try{sessionStorage.removeItem(LEGACY_KEY);}catch(e){}
 }
 
 function chips(){return Array.prototype.slice.call(document.querySelectorAll('[data-ig-lang]'));}
@@ -47,7 +65,7 @@ function syncLegacy(){
 function set(lang){
   if(lang!=='es'&&lang!=='en')return;
   current=lang;
-  try{sessionStorage.setItem(KEY,lang);}catch(e){}
+  persist(lang);
   paint();
   syncLegacy();
   listeners.forEach(function(fn){try{fn(lang);}catch(e){}});
@@ -60,7 +78,7 @@ function choose(lang){
   if(lang!=='es'&&lang!=='en')return;
   var alt=alternates();
   if(alt[lang]&&!samePage(alt[lang])){
-    try{sessionStorage.setItem(KEY,lang);}catch(e){}
+    persist(lang);
     location.assign(alt[lang]);
     return;
   }
@@ -80,15 +98,20 @@ function init(){
   /* En una página con ruta propia por idioma manda la página, no lo guardado:
      así nadie aterriza en la versión española con el conmutador en inglés. */
   var hasAlternates=Object.keys(alternates()).length>0;
-  current=hasAlternates?pageLang:(stored()||pageLang);
-  if(hasAlternates){try{sessionStorage.setItem(KEY,current);}catch(e){}}
+  var remembered=stored();
+  current=hasAlternates?pageLang:(remembered||pageLang);
   chips().forEach(function(b){
     b.addEventListener('click',function(){choose(b.getAttribute('data-ig-lang'));});
   });
   paint();
   /* Las herramientas de la página se inicializan en su propio DOMContentLoaded:
      el primer aviso se manda después, para que ya estén escuchando. */
-  setTimeout(function(){set(current);},0);
+  setTimeout(function(){
+    paint();
+    syncLegacy();
+    listeners.forEach(function(fn){try{fn(current);}catch(e){}});
+    document.dispatchEvent(new CustomEvent('ig:idioma',{detail:{lang:current}}));
+  },0);
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);

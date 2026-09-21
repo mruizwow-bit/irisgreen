@@ -50,7 +50,7 @@ var T={
     kicker:'Recursos gratuitos · apoyo visual',
     title:'Mi Tarjeta Iris',
     lede:'Una tarjeta con tres cosas sobre ti, para enseñar cuando explicarlo de viva voz se hace cuesta arriba: en una consulta, en una ventanilla, en el trabajo, en clase.',
-    privacy:'Lo que escribes se queda en tu navegador mientras la pestaña está abierta. Al cerrarla no queda nada. No se envía a ningún sitio y no hace falta ninguna cuenta.',
+    privacy:'Esta tarjeta se guarda solo en esta pestaña para poder recuperarla al recargar. Este guardado no la envía fuera del dispositivo y no hace falta ninguna cuenta.',
     langGroup:'Idioma de la página',
     editorTitle:'Escribe lo tuyo',
     editorNote:'No hace falta rellenarlo todo de una vez, ni usar las tres partes. Una sola frase ya sirve.',
@@ -108,7 +108,7 @@ var T={
     kicker:'Free resources · visual support',
     title:'My Iris Card',
     lede:'A card with three things about you, to show when saying it out loud is hard work: at an appointment, at a counter, at work, in class.',
-    privacy:'What you write stays in your browser while the tab is open. Close it and nothing is left. It is not sent anywhere and no account is needed.',
+    privacy:'This card is stored only in this tab so it can be recovered after a reload. This storage does not send it off the device and no account is needed.',
     langGroup:'Page language',
     editorTitle:'Write your own',
     editorNote:'You do not have to fill it all in at once, or use all three parts. One sentence is already enough.',
@@ -527,7 +527,8 @@ function init(){
     state.cuesta='';state.ayuda='';state.necesito='';state.pasos=['','',''];
     state.picto={cuesta:'hablar',ayuda:'escribir',necesito:'esperar'};
     state.notice=t().stReset;state.copy=null;state.printed=false;
-    save();render();
+    try{sessionStorage.removeItem(STORE);}catch(e){}
+    render();
   });
 
   $('#ti-copy').addEventListener('click',copyCard);

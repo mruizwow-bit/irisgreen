@@ -33,8 +33,17 @@ function start(){
   empty.hidden=n!==0;reset.hidden=!(state.q||state.kind||state.letter);
   group.querySelectorAll('button').forEach(function(b){var on=pickValue(b)===state.kind;b.setAttribute('aria-pressed',String(on));b.classList.toggle('is-active',on);});
   if(az)az.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String((b.dataset.letter||'')===state.letter));});
-  var u=new URL(location.href);[['q',state.q],[kindParam,state.kind],['letra',state.letter]].forEach(function(p){if(p[1])u.searchParams.set(p[0],p[1]);else u.searchParams.delete(p[0]);});
-  try{history.replaceState(history.state,'',u.pathname+u.search+u.hash);sessionStorage.setItem(situation?'ig-situations-url':'ig-conditions-url',u.pathname+u.search);}catch(_){}
+  var u=new URL(location.href);
+  [[kindParam,state.kind],['letra',state.letter]].forEach(function(p){if(p[1])u.searchParams.set(p[0],p[1]);else u.searchParams.delete(p[0]);});
+  /* Free-text search stays in memory for the current use only. Incoming q may
+     initialise state once, but the app removes it from its normalized URL and
+     never copies it into Web Storage. */
+  u.searchParams.delete('q');
+  try{
+    history.replaceState(history.state,'',u.pathname+u.search+u.hash);
+    if(situation)sessionStorage.removeItem('ig-situations-url');
+    else sessionStorage.setItem('ig-conditions-url',u.pathname+u.search);
+  }catch(_){}
   root.dispatchEvent(new CustomEvent('ig:catalog-updated',{detail:{count:n,total:entries.length}}));
  }
  function load(){
