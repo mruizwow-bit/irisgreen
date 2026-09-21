@@ -2,9 +2,7 @@
 
 **Status:** production candidate from frozen B3 R1.
 
-This directory contains the runtime visual derivative used by the real integration spike:
-
-`sabik-b3-r0-sprite-256-lossless.webp`
+This directory contains the 15 runtime derivatives used by the real integration spike: one WebP per Web/IA/Educa × PRESENTE/ORIENTAR/TRANSICIÓN/PAUSA/CONFIRMAR.
 
 ## Runtime contract
 
@@ -21,6 +19,6 @@ The 15 source SHA-256 values and Library IDs are recorded in `ASSET_MANIFEST.jso
 
 This is a runtime derivative, not a new visual family. No source keyframe, geometry or semantic state in #181/#182 is changed.
 
-If the sprite cannot load, `b3-integration.js` keeps the existing legacy hologram visible rather than showing a broken image.
+If a requested runtime asset cannot load, `b3-integration.js` keeps the existing legacy hologram visible rather than showing a broken image.
 
 **NO MERGE · NO DEPLOY.**
