@@ -1536,16 +1536,16 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
 /* Iris Green enlarged-text mode always returns to source-order flow. */
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view {
   display: block;
-  width: 100vw;
+  width: auto;
   max-width: none;
-  margin-left: calc(50% - 50vw);
+  margin-left: 0;
   margin-right: 0;
 }
 
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel,
 html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
   position: static;
-  width: min(1180px, calc(100vw - 80px));
+  width: min(1180px, calc(100% - 80px));
   max-width: none;
   max-height: none;
   margin: 0 auto 24px;
