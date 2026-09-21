@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
-import {predictI0V3} from "./sabik-i0-executor-v3.mjs";
+import {predictI0V3,any} from "./sabik-i0-executor-v3.mjs";
 
 const cfg={fallback_accept_score_min:0.34};
 const run=(utterance,context={},development=[])=>predictI0V3({id:"synthetic",utterance,context},development,cfg);
@@ -47,6 +47,81 @@ test("deictic_second_option",()=>{const p=run("Abre el segundo recurso.",{option
 test("search_location_mode",()=>{const p=run("Dime dónde está el recurso sobre descansos.");assert.equal(p.predicted_commands[0]?.intent,"ENCONTRAR_CONTENIDO");assert.equal(p.predicted_commands[0]?.parameters.mode,"locate");});
 test("navigation_is_always_last",()=>{const p=run("Reduce el movimiento, activa la vista sencilla y abre la guía mostrada.",{optionsShown:[{slot:1,contentId:"guide",route:"/guide",title:"Guía mostrada"}],unsentText:false});assert.equal(p.predicted_actions.at(-1)?.type,"NAVIGATE_IRIS");});
 test("heuristic_score_not_probability",()=>{const p=run("Reduce el movimiento.");assert.equal(p.score_semantics,"evidence_score_not_probability");assert.equal("confidence_top1" in p,false);});
+
+
+// V3-R1 structural ambiguity / decontamination tests.
+test("any_escapes_regex_metacharacters",()=>{
+  assert.equal(any("usa a.b ahora",["a.b"]),true);
+  assert.equal(any("elige c++ despues",["c++"]),true);
+  assert.equal(any("marca x? aqui",["x?"]),true);
+  assert.equal(any("literal [abc] fin",["[abc]"]),true);
+  assert.equal(any("texto ordinario",["a.b"]),false);
+});
+test("deictic_without_referent_paraphrase",()=>{
+  const p=run("Oculta aquello por ahora.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"deictic_without_referent");
+});
+test("generic_change_without_dimension_paraphrase",()=>{
+  const p=run("Cambia algo de la configuración.");
+  assert.equal(p.predicted_result_kind,"clarification");
+});
+test("generic_parameter_without_dimension_paraphrase",()=>{
+  const p=run("Déjalo más grande.");
+  assert.equal(p.predicted_result_kind,"clarification");
+});
+test("confirmation_without_pending_paraphrase",()=>{
+  const p=run("Lo confirmo ahora.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"confirmation_without_pending_operation");
+});
+test("rejection_without_result_paraphrase",()=>{
+  const p=run("Rechaza ese resultado.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"rejection_without_result");
+});
+test("cancellation_structural_paraphrase",()=>{
+  const p=run("Anula la aclaración actual.");
+  assert.deepEqual(p.predicted_commands,[{intent:"CANCELAR",parameters:{target:"clarification"}}]);
+});
+test("navigation_without_flow_paraphrase",()=>{
+  const p=run("Prosigue.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"navigation_without_active_flow");
+});
+test("page_navigation_without_context_paraphrase",()=>{
+  const p=run("Regresa a la pantalla anterior.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"page_navigation_without_previous_route");
+});
+test("alternative_without_previous_search_paraphrase",()=>{
+  const p=run("Quiero otra vía.");
+  assert.equal(p.predicted_result_kind,"clarification");
+  assert.equal(p.reason,"alternative_without_previous_search");
+});
+
+
+test("generic_action_without_parameter_paraphrase",()=>{
+  const p=run("Haz algo con ese ajuste.");
+  assert.equal(p.predicted_result_kind,"clarification");
+});
+test("deictic_with_single_referent_counterexample",()=>{
+  const p=run("Abre eso.",{optionsShown:[{slot:1,contentId:"guide",route:"/guide",title:"Guía"}]});
+  assert.equal(p.predicted_commands[0]?.intent,"ABRIR_CONTENIDO");
+});
+test("confirmation_with_pending_counterexample",()=>{
+  const p=run("Lo confirmo.",{pendingConfirmation:{id:"pc2",action:{id:"a",type:"NAVIGATE_IRIS",parameters:{contentId:"x",route:"/x"},risk:"local_with_loss"},parameterHash:"h",sessionId:"s",expiresAtMonotonicMs:999999}});
+  assert.equal(p.predicted_commands[0]?.intent,"CONFIRMAR_ACCION");
+});
+test("alternative_with_previous_search_counterexample",()=>{
+  const p=run("Quiero otra vía.",{lastQuery:"descansos"});
+  assert.deepEqual(p.predicted_commands,[{intent:"OTRA_VIA",parameters:{query:"descansos"}}]);
+});
+test("navigation_with_active_flow_counterexample",()=>{
+  const dev=[{id:"d",utterance:"Sigue con el paso.",context:{activeFlow:"step_by_step"},expected_gate:"normal",expected_commands:[{intent:"SIGUIENTE",parameters:{scope:"step"}}],expected_actions:[{type:"STEP_NEXT",parameters:{flowId:"synthetic-flow"},risk:"local_reversible"}],expected_s0_events:[],expected_result_kind:"action_result",expected_b3:"TRANSICIÓN"}];
+  const p=run("Prosigue.",{activeFlow:"step_by_step"},dev);
+  assert.equal(p.predicted_commands[0]?.intent,"SIGUIENTE");
+});
 
 const failed=checks.filter(x=>!x.ok);
 console.log(JSON.stringify({status:failed.length?"FAIL":"PASS",total:checks.length,passed:checks.length-failed.length,failed:failed.length,checks},null,2));

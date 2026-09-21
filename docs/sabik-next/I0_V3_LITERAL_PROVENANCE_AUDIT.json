@@ -1,0 +1,4614 @@
+{
+  "version": "I0_V3_LITERAL_PROVENANCE_AUDIT_V1",
+  "scope": "Natural-language string literals and long regex fragments participating in executor parsing. Technical identifiers, paths and diagnostic reason codes are excluded.",
+  "inputs": {
+    "executor": "tools/sabik-i0-executor-v3.mjs",
+    "development": "tests/development/sabik/i0/development.v0.4.jsonl",
+    "consumed_regression": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+    "contract": "docs/sabik-next/I0_CONTRACTS_V0_4.md"
+  },
+  "classifications": [
+    "CONTRACT_TERM",
+    "GENERAL_PRODUCT_LEXICON",
+    "GENERAL_LANGUAGE_RULE",
+    "CASE_SHAPED_FORBIDDEN"
+  ],
+  "counts": {
+    "CONTRACT_TERM": 188,
+    "GENERAL_PRODUCT_LEXICON": 23,
+    "GENERAL_LANGUAGE_RULE": 154,
+    "CASE_SHAPED_FORBIDDEN": 0
+  },
+  "CASE_SHAPED_FORBIDDEN": 0,
+  "consecutive_clusters": [],
+  "phrase_tables": [],
+  "regex_case_matches": [],
+  "entries": [
+    {
+      "literal": "a",
+      "normalized": "a",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "a",
+      "normalized": "a",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "a",
+      "normalized": "a",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "abierta",
+      "normalized": "abierta",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0194",
+        "index": 193,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "abrir",
+      "normalized": "abrir",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0090",
+        "index": 89,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "al",
+      "normalized": "al",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "all",
+      "normalized": "all",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "anterior",
+      "normalized": "anterior",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0303",
+        "index": 302,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "anterior",
+      "normalized": "anterior",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0303",
+        "index": 302,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "assistant",
+      "normalized": "assistant",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "assistant",
+      "normalized": "assistant",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "assistant",
+      "normalized": "assistant",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "atras",
+      "normalized": "atras",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "atras",
+      "normalized": "atras",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "base",
+      "normalized": "base",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0093",
+        "index": 92,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "busca",
+      "normalized": "busca",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0135",
+        "index": 134,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "busca",
+      "normalized": "busca",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0135",
+        "index": 134,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "busca",
+      "normalized": "busca",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0135",
+        "index": 134,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "clarification",
+      "normalized": "clarification",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cleared",
+      "normalized": "cleared",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "con",
+      "normalized": "con",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0103",
+        "index": 102,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "confirmation",
+      "normalized": "confirmation",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "confirmed",
+      "normalized": "confirmed",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "consulta",
+      "normalized": "consulta",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0390",
+        "index": 389,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "content",
+      "normalized": "content",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "current",
+      "normalized": "current",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "current",
+      "normalized": "current",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "current",
+      "normalized": "current",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "de",
+      "normalized": "de",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0071",
+        "index": 70,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "del",
+      "normalized": "del",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0122",
+        "index": 121,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "detalles",
+      "normalized": "detalles",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0166",
+        "index": 165,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "el",
+      "normalized": "el",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "en",
+      "normalized": "en",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0082",
+        "index": 81,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "encontrar",
+      "normalized": "encontrar",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0013",
+        "index": 12,
+        "coverage": 0.09090909090909091,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "entra",
+      "normalized": "entra",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0051",
+        "index": 50,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "entrar",
+      "normalized": "entrar",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "esa",
+      "normalized": "esa",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0105",
+        "index": 104,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ese",
+      "normalized": "ese",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0088",
+        "index": 87,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "esta",
+      "normalized": "esta",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0309",
+        "index": 308,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "este",
+      "normalized": "este",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0059",
+        "index": 58,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "false",
+      "normalized": "false",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "false",
+      "normalized": "false",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "flow:",
+      "normalized": "flow",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "handoff",
+      "normalized": "handoff",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "handoff",
+      "normalized": "handoff",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "handoff",
+      "normalized": "handoff",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "handoff",
+      "normalized": "handoff",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "insufficient",
+      "normalized": "insufficient",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "insufficient",
+      "normalized": "insufficient",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "insufficient",
+      "normalized": "insufficient",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "insufficient",
+      "normalized": "insufficient",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "interfaz",
+      "normalized": "interfaz",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0142",
+        "index": 141,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "la",
+      "normalized": "la",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0115",
+        "index": 114,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "large",
+      "normalized": "large",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0105",
+        "index": 104,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "large",
+      "normalized": "large",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0105",
+        "index": 104,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "las",
+      "normalized": "las",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0115",
+        "index": 114,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "list",
+      "normalized": "list",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0086",
+        "index": 85,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "list",
+      "normalized": "list",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0086",
+        "index": 85,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "list",
+      "normalized": "list",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0086",
+        "index": 85,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "local",
+      "normalized": "local",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0384",
+        "index": 383,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "locate",
+      "normalized": "locate",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "locate",
+      "normalized": "locate",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "los",
+      "normalized": "los",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0166",
+        "index": 165,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "maximo",
+      "normalized": "maximo",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "maximo",
+      "normalized": "maximo",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "motion",
+      "normalized": "motion",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "motion",
+      "normalized": "motion",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "motion",
+      "normalized": "motion",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "navegar",
+      "normalized": "navegar",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0328",
+        "index": 327,
+        "coverage": 0.09090909090909091,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "none",
+      "normalized": "none",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "none",
+      "normalized": "none",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "none",
+      "normalized": "none",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "none",
+      "normalized": "none",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "none",
+      "normalized": "none",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "normal",
+      "normalized": "normal",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0310",
+        "index": 309,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "o",
+      "normalized": "o",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0305",
+        "index": 304,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "oculta",
+      "normalized": "oculta",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0132",
+        "index": 131,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "offline",
+      "normalized": "offline",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "page",
+      "normalized": "page",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "page",
+      "normalized": "page",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "page",
+      "normalized": "page",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "page",
+      "normalized": "page",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "page",
+      "normalized": "page",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "para",
+      "normalized": "para",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0255",
+        "index": 254,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "pasar",
+      "normalized": "pasar",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0058",
+        "index": 57,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "paused",
+      "normalized": "paused",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "paused",
+      "normalized": "paused",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "pero",
+      "normalized": "pero",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0317",
+        "index": 316,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "por",
+      "normalized": "por",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0104",
+        "index": 103,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "posterior",
+      "normalized": "posterior",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0175",
+        "index": 174,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "posterior",
+      "normalized": "posterior",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0175",
+        "index": 174,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "preferencias de sesion",
+      "normalized": "preferencias de sesion",
+      "tokens": 3,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0244",
+        "index": 243,
+        "coverage": 0.2727272727272727,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "presentacion",
+      "normalized": "presentacion",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0148",
+        "index": 147,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "previa",
+      "normalized": "previa",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0057",
+        "index": 56,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "previa",
+      "normalized": "previa",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0057",
+        "index": 56,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "previous",
+      "normalized": "previous",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "previous",
+      "normalized": "previous",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "previous",
+      "normalized": "previous",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0379",
+        "index": 378,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "que",
+      "normalized": "que",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0305",
+        "index": 304,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "reduced",
+      "normalized": "reduced",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0195",
+        "index": 194,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "reduced",
+      "normalized": "reduced",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0195",
+        "index": 194,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "reinicia",
+      "normalized": "reinicia",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0245",
+        "index": 244,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "repetir",
+      "normalized": "repetir",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0119",
+        "index": 118,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "repetir",
+      "normalized": "repetir",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0119",
+        "index": 118,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "resolved",
+      "normalized": "resolved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "resolved",
+      "normalized": "resolved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "resolved",
+      "normalized": "resolved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "resolved",
+      "normalized": "resolved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "resolved",
+      "normalized": "resolved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "response",
+      "normalized": "response",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "restablece",
+      "normalized": "restablece",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0309",
+        "index": 308,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "restablecer",
+      "normalized": "restablecer",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "safety:",
+      "normalized": "safety",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "saved",
+      "normalized": "saved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "saved",
+      "normalized": "saved",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "segunda",
+      "normalized": "segunda",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0130",
+        "index": 129,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "session",
+      "normalized": "session",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "session",
+      "normalized": "session",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "session",
+      "normalized": "session",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "session",
+      "normalized": "session",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "siguiente",
+      "normalized": "siguiente",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0172",
+        "index": 171,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "siguiente",
+      "normalized": "siguiente",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0172",
+        "index": 171,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "speaking",
+      "normalized": "speaking",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speaking",
+      "normalized": "speaking",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech:",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "speech",
+      "normalized": "speech",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "starting",
+      "normalized": "starting",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "starting",
+      "normalized": "starting",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "step",
+      "normalized": "step",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "step",
+      "normalized": "step",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "step",
+      "normalized": "step",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "step",
+      "normalized": "step",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "tamano",
+      "normalized": "tamano",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0126",
+        "index": 125,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "tercera",
+      "normalized": "tercera",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0288",
+        "index": 287,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "texto",
+      "normalized": "texto",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0251",
+        "index": 250,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "TRANSICIÓN",
+      "normalized": "transicion",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "u",
+      "normalized": "u",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "un",
+      "normalized": "un",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0306",
+        "index": 305,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "una",
+      "normalized": "una",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0173",
+        "index": 172,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "uncertain",
+      "normalized": "uncertain",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "uncertain",
+      "normalized": "uncertain",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "vista",
+      "normalized": "vista",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0140",
+        "index": 139,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vista sencilla",
+      "normalized": "vista sencilla",
+      "tokens": 2,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0140",
+        "index": 139,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve",
+      "normalized": "vuelve",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve",
+      "normalized": "vuelve",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve",
+      "normalized": "vuelve",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "xlarge",
+      "normalized": "xlarge",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "y",
+      "normalized": "y",
+      "tokens": 1,
+      "classification": "CONTRACT_TERM",
+      "reason": "present_in_normative_contract",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0259",
+        "index": 258,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "abre",
+      "normalized": "abre",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0305",
+        "index": 304,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "abre la seccion",
+      "normalized": "abre la seccion",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0158",
+        "index": 157,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguity",
+      "normalized": "ambiguity",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguous",
+      "normalized": "ambiguous",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ambiguous",
+      "normalized": "ambiguous",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "amplia",
+      "normalized": "amplia",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0251",
+        "index": 250,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "amplia",
+      "normalized": "amplia",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0251",
+        "index": 250,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ampliacion",
+      "normalized": "ampliacion",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0159",
+        "index": 158,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "amplie",
+      "normalized": "amplie",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0252",
+        "index": 251,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "amplie",
+      "normalized": "amplie",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0252",
+        "index": 251,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "amplies",
+      "normalized": "amplies",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0252",
+        "index": 251,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "amplies",
+      "normalized": "amplies",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0252",
+        "index": 251,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "as",
+      "normalized": "as",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "aumenta",
+      "normalized": "aumenta",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0101",
+        "index": 100,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "aumenta",
+      "normalized": "aumenta",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0101",
+        "index": 100,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "avanza",
+      "normalized": "avanza",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0173",
+        "index": 172,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "avanza",
+      "normalized": "avanza",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0173",
+        "index": 172,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "blocked",
+      "normalized": "blocked",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "blocked",
+      "normalized": "blocked",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "buscar",
+      "normalized": "buscar",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "cerrada",
+      "normalized": "cerrada",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0265",
+        "index": 264,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "cierra",
+      "normalized": "cierra",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0164",
+        "index": 163,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "concentrarme",
+      "normalized": "concentrarme",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "configuracion temporal",
+      "normalized": "configuracion temporal",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0245",
+        "index": 244,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "consultar contenido",
+      "normalized": "consultar contenido",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0043",
+        "index": 42,
+        "coverage": 0.2222222222222222,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "contenido sobre",
+      "normalized": "contenido sobre",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0345",
+        "index": 344,
+        "coverage": 0.2222222222222222,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "continua",
+      "normalized": "continua",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0103",
+        "index": 102,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "continua",
+      "normalized": "continua",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0103",
+        "index": 102,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "cuarta",
+      "normalized": "cuarta",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0130",
+        "index": 129,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "cuarto",
+      "normalized": "cuarto",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "desactiva",
+      "normalized": "desactiva",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0105",
+        "index": 104,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "desactives",
+      "normalized": "desactives",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0262",
+        "index": 261,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "despejada",
+      "normalized": "despejada",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0139",
+        "index": 138,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "despliega",
+      "normalized": "despliega",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0155",
+        "index": 154,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "detalle",
+      "normalized": "detalle",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0166",
+        "index": 165,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "diseno completo",
+      "normalized": "diseno completo",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0113",
+        "index": 112,
+        "coverage": 0.2222222222222222,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "donde",
+      "normalized": "donde",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0089",
+        "index": 88,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "encuentra",
+      "normalized": "encuentra",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0343",
+        "index": 342,
+        "coverage": 0.1111111111111111,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "encuentra",
+      "normalized": "encuentra",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0343",
+        "index": 342,
+        "coverage": 0.1111111111111111,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "escala",
+      "normalized": "escala",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0092",
+        "index": 91,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "eso",
+      "normalized": "eso",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0075",
+        "index": 74,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "estandar",
+      "normalized": "estandar",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0109",
+        "index": 108,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "esto",
+      "normalized": "esto",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0316",
+        "index": 315,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "execute",
+      "normalized": "execute",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "execute",
+      "normalized": "execute",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "execute",
+      "normalized": "execute",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "execute",
+      "normalized": "execute",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "expresa de nuevo",
+      "normalized": "expresa de nuevo",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "expresa de nuevo",
+      "normalized": "expresa de nuevo",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "ficha",
+      "normalized": "ficha",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0054",
+        "index": 53,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "for",
+      "normalized": "for",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0163",
+        "index": 162,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "g",
+      "normalized": "g",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0306",
+        "index": 305,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "g",
+      "normalized": "g",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0306",
+        "index": 305,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "grande",
+      "normalized": "grande",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0100",
+        "index": 99,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "grande",
+      "normalized": "grande",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0100",
+        "index": 99,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "guia sobre",
+      "normalized": "guia sobre",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0376",
+        "index": 375,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "habitual",
+      "normalized": "habitual",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0107",
+        "index": 106,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "habitual",
+      "normalized": "habitual",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0107",
+        "index": 106,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "informacion sobre",
+      "normalized": "informacion sobre",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0344",
+        "index": 343,
+        "coverage": 0.2222222222222222,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ir",
+      "normalized": "ir",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0090",
+        "index": 89,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "leer de nuevo",
+      "normalized": "leer de nuevo",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0198",
+        "index": 197,
+        "coverage": 0.42857142857142855,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "leer de nuevo",
+      "normalized": "leer de nuevo",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0198",
+        "index": 197,
+        "coverage": 0.42857142857142855,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "letra",
+      "normalized": "letra",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0099",
+        "index": 98,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "lista de recursos",
+      "normalized": "lista de recursos",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0377",
+        "index": 376,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "llevame",
+      "normalized": "llevame",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0072",
+        "index": 71,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "llevarme",
+      "normalized": "llevarme",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "localiza",
+      "normalized": "localiza",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0137",
+        "index": 136,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "localiza",
+      "normalized": "localiza",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0137",
+        "index": 136,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "localizacion",
+      "normalized": "localizacion",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "localizar",
+      "normalized": "localizar",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0376",
+        "index": 375,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "materiales del sitio",
+      "normalized": "materiales del sitio",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0034",
+        "index": 33,
+        "coverage": 0.2727272727272727,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mayor",
+      "normalized": "mayor",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0259",
+        "index": 258,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mayor",
+      "normalized": "mayor",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0259",
+        "index": 258,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "me",
+      "normalized": "me",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0071",
+        "index": 70,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "me",
+      "normalized": "me",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0071",
+        "index": 70,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mensaje guia",
+      "normalized": "mensaje guia",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0149",
+        "index": 148,
+        "coverage": 0.15384615384615385,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mensaje guia",
+      "normalized": "mensaje guia",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0149",
+        "index": 148,
+        "coverage": 0.15384615384615385,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mi",
+      "normalized": "mi",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0116",
+        "index": 115,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mis",
+      "normalized": "mis",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0315",
+        "index": 314,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mostrar la instruccion",
+      "normalized": "mostrar la instruccion",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0340",
+        "index": 339,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mostrar la instruccion",
+      "normalized": "mostrar la instruccion",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0340",
+        "index": 339,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mostrarme este paso",
+      "normalized": "mostrarme este paso",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0196",
+        "index": 195,
+        "coverage": 0.42857142857142855,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "mostrarme este paso",
+      "normalized": "mostrarme este paso",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0196",
+        "index": 195,
+        "coverage": 0.42857142857142855,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "muestra",
+      "normalized": "muestra",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0082",
+        "index": 81,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "muy",
+      "normalized": "muy",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0162",
+        "index": 161,
+        "coverage": 0.1111111111111111,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "navega",
+      "normalized": "navega",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0328",
+        "index": 327,
+        "coverage": 0.09090909090909091,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "no indexada",
+      "normalized": "no indexada",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "no indexadas",
+      "normalized": "no indexadas",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "no indexado",
+      "normalized": "no indexado",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "no indexados",
+      "normalized": "no indexados",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "no la despliegues",
+      "normalized": "no la despliegues",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0265",
+        "index": 264,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "open",
+      "normalized": "open",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0194",
+        "index": 193,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "options:",
+      "normalized": "options",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "os",
+      "normalized": "os",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0082",
+        "index": 81,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "otra vez",
+      "normalized": "otra vez",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0059",
+        "index": 58,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "otra vez",
+      "normalized": "otra vez",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0059",
+        "index": 58,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "(?:^|[^\\\\p{L}\\\\p{N}])",
+      "normalized": "p l p n",
+      "tokens": 4,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "(?=$|[^\\\\p{L}\\\\p{N}])",
+      "normalized": "p l p n",
+      "tokens": 4,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "pantalla",
+      "normalized": "pantalla",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0112",
+        "index": 111,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "please",
+      "normalized": "please",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "pliega",
+      "normalized": "pliega",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0163",
+        "index": 162,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "pliegues",
+      "normalized": "pliegues",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0265",
+        "index": 264,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "precedente",
+      "normalized": "precedente",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0184",
+        "index": 183,
+        "coverage": 0.1111111111111111,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "precedente",
+      "normalized": "precedente",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0184",
+        "index": 183,
+        "coverage": 0.1111111111111111,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "primer",
+      "normalized": "primer",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0288",
+        "index": 287,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "primera",
+      "normalized": "primera",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0288",
+        "index": 287,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "prosigue",
+      "normalized": "prosigue",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0178",
+        "index": 177,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "prosigue",
+      "normalized": "prosigue",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0178",
+        "index": 177,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "proximo",
+      "normalized": "proximo",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0174",
+        "index": 173,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "proximo",
+      "normalized": "proximo",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0174",
+        "index": 173,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "quinta",
+      "normalized": "quinta",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "quinto",
+      "normalized": "quinto",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "recoge",
+      "normalized": "recoge",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0154",
+        "index": 153,
+        "coverage": 0.07692307692307693,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "recursos sobre",
+      "normalized": "recursos sobre",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0192",
+        "index": 191,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "reduce",
+      "normalized": "reduce",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0378",
+        "index": 377,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "regresa",
+      "normalized": "regresa",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0114",
+        "index": 113,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "regresa",
+      "normalized": "regresa",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0114",
+        "index": 113,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "reiniciar",
+      "normalized": "reiniciar",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0245",
+        "index": 244,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "repite",
+      "normalized": "repite",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0104",
+        "index": 103,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "repite",
+      "normalized": "repite",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0104",
+        "index": 103,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "retrocede",
+      "normalized": "retrocede",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0190",
+        "index": 189,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "retrocede",
+      "normalized": "retrocede",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0190",
+        "index": 189,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "\\\\s+",
+      "normalized": "s",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "segundo",
+      "normalized": "segundo",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0306",
+        "index": 305,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "seleccionada",
+      "normalized": "seleccionada",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0187",
+        "index": 186,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "seleccionado",
+      "normalized": "seleccionado",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0181",
+        "index": 180,
+        "coverage": 0.14285714285714285,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "simplifica",
+      "normalized": "simplifica",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0152",
+        "index": 151,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "simplifica",
+      "normalized": "simplifica",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0152",
+        "index": 151,
+        "coverage": 0.16666666666666666,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "sube",
+      "normalized": "sube",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0099",
+        "index": 98,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "sube",
+      "normalized": "sube",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0099",
+        "index": 98,
+        "coverage": 0.2,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "tercer",
+      "normalized": "tercer",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0288",
+        "index": 287,
+        "coverage": 0.125,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "tipografia",
+      "normalized": "tipografia",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0100",
+        "index": 99,
+        "coverage": 0.25,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ubicacion",
+      "normalized": "ubicacion",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "unas",
+      "normalized": "unas",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "unos",
+      "normalized": "unos",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "unsent:",
+      "normalized": "unsent",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "valores iniciales",
+      "normalized": "valores iniciales",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0244",
+        "index": 243,
+        "coverage": 0.18181818181818182,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ve",
+      "normalized": "ve",
+      "tokens": 1,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0253",
+        "index": 252,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "ver el detalle",
+      "normalized": "ver el detalle",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0157",
+        "index": 156,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "version simplificada",
+      "normalized": "version simplificada",
+      "tokens": 2,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0047",
+        "index": 46,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "volver a decir",
+      "normalized": "volver a decir",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0270",
+        "index": 269,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "volver a decir",
+      "normalized": "volver a decir",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0270",
+        "index": 269,
+        "coverage": 0.375,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve a decir",
+      "normalized": "vuelve a decir",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0337",
+        "index": 336,
+        "coverage": 0.3,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve a decir",
+      "normalized": "vuelve a decir",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0337",
+        "index": 336,
+        "coverage": 0.3,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve a expresar",
+      "normalized": "vuelve a expresar",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0149",
+        "index": 148,
+        "coverage": 0.23076923076923078,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vuelve a expresar",
+      "normalized": "vuelve a expresar",
+      "tokens": 3,
+      "classification": "GENERAL_LANGUAGE_RULE",
+      "reason": "general_grammar_or_parser_lexeme",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0149",
+        "index": 148,
+        "coverage": 0.23076923076923078,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "bloque complementario",
+      "normalized": "bloque complementario",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0156",
+        "index": 155,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "carga visual",
+      "normalized": "carga visual",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0302",
+        "index": 301,
+        "coverage": 0.13333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "carga visual",
+      "normalized": "carga visual",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0302",
+        "index": 301,
+        "coverage": 0.13333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "elementos secundarios",
+      "normalized": "elementos secundarios",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0141",
+        "index": 140,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "elementos secundarios",
+      "normalized": "elementos secundarios",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0141",
+        "index": 140,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "escala normal",
+      "normalized": "escala normal",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0092",
+        "index": 91,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "extra grande",
+      "normalized": "extra grande",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0126",
+        "index": 125,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "extra grande",
+      "normalized": "extra grande",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0126",
+        "index": 125,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "extra grande",
+      "normalized": "extra grande",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0126",
+        "index": 125,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "informacion adicional",
+      "normalized": "informacion adicional",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0160",
+        "index": 159,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "informacion ampliada",
+      "normalized": "informacion ampliada",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "consumed_regression",
+        "id": "I0-CAL-0144",
+        "index": 143,
+        "coverage": 0.18181818181818182,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "informacion secundaria",
+      "normalized": "informacion secundaria",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0163",
+        "index": 162,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "interfaz completa",
+      "normalized": "interfaz completa",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0149",
+        "index": 148,
+        "coverage": 0.3333333333333333,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "interfaz sencilla",
+      "normalized": "interfaz sencilla",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0345",
+        "index": 344,
+        "coverage": 0.2222222222222222,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "lo secundario",
+      "normalized": "lo secundario",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0338",
+        "index": 337,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "modo simple",
+      "normalized": "modo simple",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0150",
+        "index": 149,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "modo simple",
+      "normalized": "modo simple",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0150",
+        "index": 149,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "nivel estandar",
+      "normalized": "nivel estandar",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0094",
+        "index": 93,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "pantalla despejada",
+      "normalized": "pantalla despejada",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": null
+    },
+    {
+      "literal": "presentacion sencilla",
+      "normalized": "presentacion sencilla",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0148",
+        "index": 147,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "tamano base",
+      "normalized": "tamano base",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0093",
+        "index": 92,
+        "coverage": 0.2857142857142857,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vista completa",
+      "normalized": "vista completa",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0147",
+        "index": 146,
+        "coverage": 0.5,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    },
+    {
+      "literal": "vista simple",
+      "normalized": "vista simple",
+      "tokens": 2,
+      "classification": "GENERAL_PRODUCT_LEXICON",
+      "reason": "documented_general_product_lexicon",
+      "max_corpus_overlap": {
+        "dataset": "development",
+        "id": "I0-DEV-0380",
+        "index": 379,
+        "coverage": 0.4,
+        "reverse_coverage": 0,
+        "exact": false
+      }
+    }
+  ]
+}

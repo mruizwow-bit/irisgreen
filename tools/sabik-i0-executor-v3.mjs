@@ -100,7 +100,13 @@ function findLast(text,patterns){
   }
   return best;
 }
-function any(n,parts){const esc=x=>x.replace(/[.*+?^${}()|[\]\\]/g,"\\function any(n,parts){return parts.some(x=>n.includes(x));}");return parts.some(x=>new RegExp("(?:^|\\b)"+esc(x).replace(/\\ /g,"\\s+")+"(?:$|\\b)","u").test(n));}
+export function any(n,parts){
+  const escapeRegex=value=>String(value).replace(/[.*+?^\x24{}()|[\]\\]/g,"\\$&");
+  return parts.some(part=>{
+    const pattern=escapeRegex(part).replace(/\s+/g,"\\s+");
+    return new RegExp("(?:^|[^\\p{L}\\p{N}])"+pattern+"(?=$|[^\\p{L}\\p{N}])","u").test(n);
+  });
+}
 function clauseBounds(n,start){
   const left=n.slice(0,start);
   const separators=[...left.matchAll(/[.;,:]|\b(?:y|pero|aunque|luego|despues|ademas|mientras)\b/gu)];
@@ -119,10 +125,12 @@ function explicitNegation(n,start){
 }
 function correctionCut(text){
   const n=normalizeText(text);
-  const markers=[" corrigo "," corrijo "," retiro eso "," espera, mejor "," espera mejor "," no, mejor "," cambia a "," mejor "];
-  let idx=-1,len=0;
-  for(const m of markers){const i=n.lastIndexOf(m);if(i>idx){idx=i;len=m.length;}}
-  return idx>=0?{prefix:n.slice(0,idx),suffix:n.slice(idx+len),index:idx}:{prefix:n,suffix:null,index:-1};
+  const re=/\b(?:corrijo|corrigo|rectifico|retiro(?:\s+eso)?|espera(?:\s+mejor)?|mejor|cambio\s+a)\b/gu;
+  let last=null;
+  for(const m of n.matchAll(re))last=m;
+  if(!last)return {prefix:n,suffix:null,index:-1};
+  const index=last.index??-1;
+  return {prefix:n.slice(0,index),suffix:n.slice(index+last[0].length).trim(),index};
 }
 
 function optionResolution(context,text){
@@ -244,9 +252,11 @@ function detectCommands(target,development){
   const correction=cut.suffix!==null;
   const offset=correction?cut.index:0;
   const pos=s=>Math.max(0,original.indexOf(s,offset));
+  const alternativeWithoutContext=/\b(?:alternativa|otra\s+via|otra\s+ruta|otro\s+camino|ruta\s+alternativa)\b/u.test(n)&&!context.lastQuery;
+
 
   // Search / locate.
-  if(any(n,["localizar","localiza","busca","buscar","encuentra","encontrar","lista de recursos","materiales del sitio","consultar contenido","guia sobre","informacion sobre","recursos sobre","contenido sobre","donde","ubicacion","localizacion"])){
+  if(!alternativeWithoutContext&&any(n,["localizar","localiza","busca","buscar","encuentra","encontrar","lista de recursos","materiales del sitio","consultar contenido","guia sobre","informacion sobre","recursos sobre","contenido sobre","donde","ubicacion","localizacion"])){
     if(!(/\bayuda humana\b/u.test(n)&&!/\bguia\b/u.test(n))){
       const m=searchMode(target,development);
       const q=resolveSearchQuery(target,development);
@@ -255,9 +265,9 @@ function detectCommands(target,development){
   }
 
   // Open/navigation content.
-  if(any(n,["abre","entra en","quiero pasar a","llevame al contenido","ve directamente","ve al","navegar a"])){
+  if(/\b(?:abre|abrir|entra|entrar|llevame|llevarme|ve|ir|navega|navegar|pasar)\b/u.test(n)&&(/\b(?:contenido|recurso|guia|tema|ficha|seccion|opcion)\b/u.test(n)||context.optionsShown?.length)){
     const r=optionResolution(context,n);
-    const openCues=["abre","entra","pasar","llevame","ve directamente","ve al","navegar"];
+    const openCues=["abre","abrir","entra","entrar","pasar","llevame","llevarme","ve","ir","navega","navegar"];
     const openPositions=openCues.map(x=>n.indexOf(x)).filter(x=>x>=0);
     const openPosition=(openPositions.length?Math.min(...openPositions):0)+offset;
     if(r.status==="resolved")addCandidate(out,command("ABRIR_CONTENIDO",{contentId:r.option.contentId},openPosition,r.score,correction?"contract_correction":"contract_context",false,"resolved_content"));
@@ -265,31 +275,45 @@ function detectCommands(target,development){
   }
 
   // Text size.
-  if(any(n,["letra","texto","tipografia","tamano","escala"])&&any(n,["normal","habitual","base","estandar","grande","mayor","amplia","amplies","amplie","aumenta","sube","devuelvas","hagas","extra grande","maximo"])){
-    const c=findLast(n,{normal:["normal","habitual","tamano base","nivel estandar","escala normal","devuelvas la letra a normal"],large:["grande","mayor","amplia","amplies","amplie","aumenta","sube","hagas la letra mas grande"],xlarge:["extra grande","maximo"]});
+  if(any(n,["letra","texto","tipografia","tamano","escala"])&&any(n,["normal","habitual","base","estandar","grande","mayor","amplia","amplies","amplie","aumenta","sube","extra grande","maximo"])){
+    const c=findLast(n,{normal:["normal","habitual","tamano base","nivel estandar","escala normal"],large:["grande","mayor","amplia","amplies","amplie","aumenta","sube"],xlarge:["extra grande","maximo"]});
     const st=Math.max(0,c.index+offset);
     addCandidate(out,command("CAMBIAR_TAMANO_TEXTO",{size:c.value||"large"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"text_size_rule"));
   }
 
-  // Motion.
-  if(any(n,["movimiento","animacion","animaciones"])){
-    const c=findLast(n,{normal:["movimiento normal","animaciones habituales","movimiento estandar","nivel habitual","cantidad normal"],reduced:["reduc","reduz","suaviza","menos movimiento","limita la animacion","limita las animaciones","reducidas"],none:["quita el movimiento","quites el movimiento","sin movimiento","elimina el movimiento","elimines el movimiento","elimines todo el movimiento"]});
-    if(c.index>=0){
-      const st=Math.max(0,c.index+offset);
-      addCandidate(out,command("CAMBIAR_MOVIMIENTO",{motion:c.value},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"motion_rule"));
+  // Motion: dimension + general polarity verb/adjective.
+  if(/\b(?:movimiento|animacion|animaciones)\b/u.test(n)){
+    const polarity=[...n.matchAll(/\b(?:normal|habitual|reduc\w*|suaviz\w*|limit\w*|quit\w*|elimin\w*|suprim\w*|desactiv\w*)\b/gu)];
+    const lastPolarity=polarity.at(-1);
+    let motion=null;
+    if(lastPolarity){
+      const word=lastPolarity[0];
+      motion=/^(?:quit|elimin|suprim|desactiv)/u.test(word)?"none":/^(?:reduc|suaviz|limit)/u.test(word)?"reduced":"normal";
+    }else if(/\bsin\s+movimiento\b/u.test(n)){
+      motion="none";
+    }
+    if(motion){
+      const baseIndex=lastPolarity?.index??n.search(/\bsin\s+movimiento\b/u);
+      const st=Math.max(0,(baseIndex>=0?baseIndex:0)+offset);
+      addCandidate(out,command("CAMBIAR_MOVIMIENTO",{motion},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"motion_rule"));
     }
   }
 
-  // Step-by-step preference.
-  if(any(n,["paso a paso","por pasos","por etapas","en etapas","recorrido por pasos","una instruccion cada vez","de uno en uno","modo paso","divide esta tarea","divide la tarea"])){
-    const c=findLast(n,{false:["desactiva","desactives","quita el recorrido","quites el recorrido","sin etapas","sin pasos","ya no quiero","continua sin","mejor desactiva"],true:["activa","paso a paso","por pasos","por etapas","en etapas","recorrido por pasos","una instruccion cada vez","de uno en uno","divide"]});
-    const st=Math.max(0,(c.index>=0?c.index:0)+offset);
-    addCandidate(out,command("CAMBIAR_PASO_A_PASO",{enabled:c.value!=="false"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"step_by_step_rule"));
+  // Step-by-step preference: structural concept + last polarity verb.
+  const stepConcept=/\b(?:paso(?:s)?|etapa(?:s)?|recorrido|instruccion)\b/u.test(n);
+  const stepForm=/\b(?:paso\s+a\s+paso|por\s+(?:pasos|etapas)|en\s+etapas|recorrido\s+por\s+pasos|una\s+instruccion\s+cada\s+vez|de\s+uno\s+en\s+uno|modo\s+paso)\b/u.test(n);
+  if(stepConcept&&stepForm){
+    const polarity=[...n.matchAll(/\b(?:activ\w*|desactiv\w*|quit\w*|divid\w*|gui\w*)\b/gu)];
+    const lastPolarity=polarity.at(-1);
+    const disable=lastPolarity?/^(?:desactiv|quit)/u.test(lastPolarity[0]):/\b(?:sin|ya\s+no|deja\s+de)\b/u.test(n);
+    const baseIndex=lastPolarity?.index??n.search(/\b(?:paso|etapa|recorrido|instruccion)\b/u);
+    const st=Math.max(0,(baseIndex>=0?baseIndex:0)+offset);
+    addCandidate(out,command("CAMBIAR_PASO_A_PASO",{enabled:!disable},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"step_by_step_rule"));
   }
 
   // Simple view.
   if(any(n,["vista","interfaz","pantalla","presentacion","elementos secundarios","carga visual","modo simple","simplifica"])){
-    const c=findLast(n,{false:["vista completa","interfaz completa","diseno completo","desactiva","desactives","salir del modo simple","recupera la vista completa","vuelve al diseno completo","vuelvas al diseno completo","vuelve a mostrar"],true:["vista sencilla","vista simple","interfaz sencilla","pantalla despejada","version simplificada","presentacion sencilla","modo simple","simplifica","despejada","elementos secundarios","carga visual"]});
+    const c=findLast(n,{false:["vista completa","interfaz completa","diseno completo","desactiva","desactives"],true:["vista sencilla","vista simple","interfaz sencilla","pantalla despejada","version simplificada","presentacion sencilla","modo simple","simplifica","despejada","elementos secundarios","carga visual"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
       addCandidate(out,command("CAMBIAR_VISTA_SENCILLA",{enabled:c.value!=="false"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"simple_view_rule"));
@@ -298,7 +322,7 @@ function detectCommands(target,development){
 
   // Details.
   if(any(n,["detalles","detalle","ficha","informacion secundaria","informacion adicional","informacion ampliada","ampliacion","bloque complementario","lo secundario"])){
-    const c=findLast(n,{false:["pliega","pliegues","recoge","cierra","oculta","cerrada","no la despliegues"],true:["despliega","muestra","abre la seccion","ver el detalle","abierta","no la pliegues","no dejes de mostrar"]});
+    const c=findLast(n,{false:["pliega","pliegues","recoge","cierra","oculta","cerrada","no la despliegues"],true:["despliega","muestra","abre la seccion","ver el detalle","abierta"]});
     if(c.index>=0){
       const st=Math.max(0,c.index+offset);
       addCandidate(out,command("CAMBIAR_DETALLES",{contentId:context.currentContentId||"current",expanded:c.value!=="false"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"details_rule"));
@@ -321,14 +345,27 @@ function detectCommands(target,development){
     const scope=pageWords&&!stepWords?"page":"step";
     const c=findLast(n,{back:["atras","retrocede","regresa","anterior","previa","precedente","vuelve"]});
     const st=Math.max(0,(c.index>=0?c.index:0)+offset);
-    addCandidate(out,command("ATRAS",{scope},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"back_rule"));
+    const negated=explicitNegation(original,st);
+    if(scope==="page"&&!context.previousRoute&&!negated){
+      out.push({kind:"ambiguity",position:st,reason:"page_navigation_without_previous_route",score:1});
+    }else if(scope==="step"&&context.activeFlow!=="step_by_step"&&!stepWords&&!negated){
+      out.push({kind:"ambiguity",position:st,reason:"navigation_without_active_flow",score:1});
+    }else{
+      addCandidate(out,command("ATRAS",{scope},st,correction?.96:1,correction?"contract_correction":"contract_exact",negated,"back_rule"));
+    }
   }
 
   // Next step.
-  if(!/\bsin avanzar\b/u.test(n)&&any(n,["pasa a la etapa siguiente","avanza","sigue al proximo","sigue una etapa","sigue un paso","seguir una instruccion","paso posterior","continua","prosigue","pasa al siguiente","avanza una","siguiente paso","proximo paso"])&&(context.activeFlow==="step_by_step"||stepWords)){
-    const c=findLast(n,{next:["pasa","avanza","sigue al proximo","sigue una etapa","sigue un paso","seguir una instruccion","posterior","continua","prosigue","siguiente","proximo"]});
+  if(!/\bsin avanzar\b/u.test(n)&&(any(n,["avanza","continua","prosigue","siguiente","proximo","posterior"])||/\b(?:pasa|sigue)\b[^.;]{0,24}\b(?:paso|etapa|instruccion|punto)\b/u.test(n))&&(context.activeFlow==="step_by_step"||stepWords)){
+    const c=findLast(n,{next:["avanza","continua","prosigue","siguiente","proximo","posterior"]});
     const st=Math.max(0,(c.index>=0?c.index:0)+offset);
     addCandidate(out,command("SIGUIENTE",{scope:"step"},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"next_rule"));
+  }
+
+  const genericNextCue=/\b(?:continua|continuar|avanza|avanzar|prosigue|proseguir|siguiente|proximo|posterior)\b/u.test(n);
+  if(genericNextCue&&context.activeFlow!=="step_by_step"&&!stepWords){
+    const navMatch=n.search(/\b(?:continua|continuar|avanza|avanzar|prosigue|proseguir|siguiente|proximo|posterior)\b/u);
+    out.push({kind:"ambiguity",position:Math.max(0,(navMatch>=0?navMatch:0)+offset),reason:"navigation_without_active_flow",score:1});
   }
 
   // Reset preferences.
@@ -341,40 +378,57 @@ function detectCommands(target,development){
     addCandidate(out,command("RESTABLECER_PREFERENCIAS",{scope},st,correction?.96:1,correction?"contract_correction":"contract_exact",explicitNegation(original,st),"reset_rule"));
   }
 
-  // Undo.
-  if(any(n,["deshaz","revierte","invertir la ultima","estado anterior al ultimo","restaura el anterior","recupera el estado anterior"])){
-    const st=Math.max(0,(n.search(/\b(deshaz|revierte|invertir|restaura|recupera)\b/u)>=0?n.search(/\b(deshaz|revierte|invertir|restaura|recupera)\b/u):0)+offset);
+  // Undo: reversal verb + previous/last state target.
+  const undoVerb=/\b(?:deshaz|deshacer|revierte|revertir|invierte|invertir|restaura|restaurar|recupera|recuperar)\b/u;
+  const undoTarget=/\b(?:ultimo|ultima|anterior|previo|previa|cambio|accion|ajuste|modificacion|estado)\b/u;
+  if(undoVerb.test(n)&&undoTarget.test(n)){
+    const st=Math.max(0,(n.search(undoVerb)>=0?n.search(undoVerb):0)+offset);
     addCandidate(out,command("DESHACER_ULTIMA_ACCION",{},st,1,"contract_exact",explicitNegation(original,st),"undo_rule"));
   }
 
-  // Confirm.
-  if(any(n,["autorizo","confirmo","acepto","apruebo","confirmado","estoy de acuerdo","ejecuta la accion","continuar con esa confirmacion","operacion pendiente"])){
-    const st=Math.max(0,(n.search(/\b(autorizo|confirmo|acepto|apruebo|confirmado|acuerdo|ejecuta)\b/u)>=0?n.search(/\b(autorizo|confirmo|acepto|apruebo|confirmado|acuerdo|ejecuta)\b/u):0)+offset);
-    const id=context.pendingConfirmation?.id||"pc";
-    addCandidate(out,command("CONFIRMAR_ACCION",{confirmationId:id},st,context.pendingConfirmation?.id?1:.82,context.pendingConfirmation?.id?"contract_context":"development_fallback",explicitNegation(original,st),"confirmation_rule"));
+  // Confirmation is valid only when a pending confirmation exists.
+  const confirmationCue=/\b(?:autoriz\w*|confirm\w*|aprueb\w*|acept\w*)\b/u;
+  if(confirmationCue.test(n)){
+    const st=Math.max(0,(n.search(confirmationCue)>=0?n.search(confirmationCue):0)+offset);
+    if(context.pendingConfirmation?.id){
+      addCandidate(out,command("CONFIRMAR_ACCION",{confirmationId:context.pendingConfirmation.id},st,1,"contract_context",explicitNegation(original,st),"confirmation_rule"));
+    }else{
+      out.push({kind:"ambiguity",position:st,reason:"confirmation_without_pending_operation",score:1});
+    }
   }
 
-  // Cancel.
-  if(any(n,["cancela","anula","retira la pregunta","descarta la pregunta","elimina la confirmacion","interrumpe la peticion","retira la operacion"])||/\b(?:deja|para|no)\b[^.;]{0,30}\b(?:esperar|esperando)\b[^.;]{0,20}\bconfirmacion\b/u.test(n)){
-    let target=/\b(pregunta|aclaracion)\b/u.test(n)?"clarification":/\b(confirmacion|operacion)\b/u.test(n)?"confirmation":"current_request";
-    const st=Math.max(0,(n.search(/\b(cancela|anula|retira|descarta|elimina|interrumpe)\b/u)>=0?n.search(/\b(cancela|anula|retira|descarta|elimina|interrumpe)\b/u):0)+offset);
+  // Cancellation is compositional: cancellation verb + explicit or current target.
+  const cancelCue=/\b(?:cancel\w*|anul\w*|retir\w*|elimin\w*|interrump\w*|deja\s+de\s+esperar)\b/u;
+  if(cancelCue.test(n)){
+    const st=Math.max(0,(n.search(cancelCue)>=0?n.search(cancelCue):0)+offset);
+    const target=/\b(?:pregunta|aclaracion)\b/u.test(n)?"clarification":/\b(?:confirmacion|operacion)\b/u.test(n)?"confirmation":"current_request";
     addCandidate(out,command("CANCELAR",{target},st,1,"contract_exact",explicitNegation(original,st),"cancel_rule"));
   }
 
-  // Reject result.
-  if(any(n,["resultado no encaja","descarta la respuesta","contenido no responde","rechaza esta respuesta"])||/\bno\b[^.;]{0,25}\b(?:tomes|consideres|aceptes)\b[^.;]{0,35}\b(?:opcion|resultado|respuesta)\b[^.;]{0,20}\bvalid\w*\b/u.test(n)){
-    const st=Math.max(0,(n.search(/\b(resultado|descarta|tomes|contenido|rechaza)\b/u)>=0?n.search(/\b(resultado|descarta|tomes|contenido|rechaza)\b/u):0)+offset);
-    addCandidate(out,command("RECHAZAR_RESULTADO",{resultId:context.lastResultId||"r1"},st,1,"contract_exact",/^no rechaces\b/u.test(n),"reject_rule"));
+  // Reject requires a concrete previous result/reference.
+  const rejectCue=/\b(?:rechaz\w*|descart\w*|no\s+(?:acept\w*|consider\w*|tom\w*))\b/u;
+  if(rejectCue.test(n)&&/\b(?:resultado|respuesta|opcion|contenido)\b/u.test(n)){
+    const st=Math.max(0,(n.search(rejectCue)>=0?n.search(rejectCue):0)+offset);
+    if(context.lastResultId){
+      addCandidate(out,command("RECHAZAR_RESULTADO",{resultId:context.lastResultId},st,1,"contract_context",/^no\s+rechac/u.test(n),"reject_rule"));
+    }else{
+      out.push({kind:"ambiguity",position:st,reason:"rejection_without_result",score:1});
+    }
   }
 
-  // Other route.
-  if(any(n,["alternativa","otra via","camino diferente","otra ruta de busqueda","ruta de busqueda","via alternativa"])){
-    const st=Math.max(0,(n.search(/\b(alternativa|otra via|camino|ruta de busqueda|via alternativa)\b/u)>=0?n.search(/\b(alternativa|otra via|camino|ruta de busqueda|via alternativa)\b/u):0)+offset);
-    addCandidate(out,command("OTRA_VIA",{query:context.lastQuery||"lastQuery"},st,1,"contract_exact",explicitNegation(original,st),"other_route_rule"));
+  // Alternative route requires an existing search context.
+  const alternativeCue=/\b(?:alternativa|otra\s+via|otra\s+ruta|otro\s+camino|ruta\s+alternativa)\b/u;
+  if(alternativeCue.test(n)){
+    const st=Math.max(0,(n.search(alternativeCue)>=0?n.search(alternativeCue):0)+offset);
+    if(context.lastQuery){
+      addCandidate(out,command("OTRA_VIA",{query:context.lastQuery},st,1,"contract_context",explicitNegation(original,st),"other_route_rule"));
+    }else{
+      out.push({kind:"ambiguity",position:st,reason:"alternative_without_previous_search",score:1});
+    }
   }
 
   // Stop target, including explicit exclusions.
-  if(any(n,["silencia","corta la lectura","lectura en voz","locucion","para sabik","pausa al asistente","pauses a sabik","pauses al asistente","asistente en pausa","interrumpe unicamente la lectura","detener algo","no pauses al asistente","no pauses a sabik","deten la lectura","detengas la lectura","detener la lectura","pares sabik"])){
+  if(/\b(?:silenci\w*|cort\w*|deten\w*|par\w*|paus\w*|interrump\w*)\b/u.test(n)&&/\b(?:lectura|voz|locucion|sabik|asistente)\b/u.test(n)){
     let target=null;
     const speechActive=["starting","speaking","paused"].includes(context.s0?.speech);
     const namesSpeech=/\b(voz|lectura|locucion)\b/u.test(n);
@@ -390,9 +444,11 @@ function detectCommands(target,development){
     }
   }
 
-  // Human help, normal safety only.
-  if(any(n,["ayuda humana","asistencia humana","atencion humana","apoyo humano","orientacion humana","recurso humano","recurso verificado atendido por una persona","contactar con una persona","contactar con asistencia humana","persona usando recursos aprobados","intervenga una persona"])&&!out.some(x=>x.intent==="ENCONTRAR_CONTENIDO")){
-    const st=Math.max(0,(n.search(/\b(ayuda|atencion|orientacion|recurso|persona)\b/u)>=0?n.search(/\b(ayuda|atencion|orientacion|recurso|persona)\b/u):0)+offset);
+  // Human help, normal safety only: support/resource/contact concept + human target.
+  const humanSupport=/\b(?:ayuda|asistencia|atencion|apoyo|orientacion|recurso|contactar|contacto|intervencion)\b/u.test(n);
+  const humanTarget=/\b(?:humana|humano|persona|personas|verificad\w*)\b/u.test(n);
+  if(humanSupport&&humanTarget&&!out.some(x=>x.intent==="ENCONTRAR_CONTENIDO")){
+    const st=Math.max(0,(n.search(/\b(?:ayuda|asistencia|atencion|apoyo|orientacion|recurso|contactar|contacto|intervencion)\b/u)>=0?n.search(/\b(?:ayuda|asistencia|atencion|apoyo|orientacion|recurso|contactar|contacto|intervencion)\b/u):0)+offset);
     addCandidate(out,command("PEDIR_AYUDA_HUMANA",{},st,1,"contract_exact",explicitNegation(original,st),"human_help_rule"));
   }
 
@@ -440,14 +496,57 @@ function detectCommands(target,development){
   return {commands:commands.slice(0,3),ambiguities};
 }
 
+function hasReferentContext(context={}){
+  return Boolean(
+    context.currentContentId||
+    context.lastResultId||
+    context.lastQuery||
+    context.lastAction||
+    context.pendingClarification||
+    context.pendingConfirmation||
+    (Array.isArray(context.optionsShown)&&context.optionsShown.length)
+  );
+}
+
+function structuralClarification(target){
+  const n=normalizeText(target.utterance),context=target.context||{};
+  const hasReferent=hasReferentContext(context);
+  const deictic=/\b(?:esto|eso|aquello|este|esta|ese|esa|aquel|aquella|lo|la|los|las|otro|otra|primero|primera|segundo|segunda|tercero|tercera)\b/u.test(n);
+  const actionVerb=/\b(?:abre(?:me)?|abrir|muestra(?:me)?|mostrar|oculta(?:me)?|ocultar|cambia(?:me)?|cambiar|modifica(?:me)?|modificar|ajusta(?:me)?|ajustar|pon(?:me)?|poner|haz(?:me)?|hacer|repite(?:me)?|repetir|retira(?:me)?|retirar|rechaza(?:me)?|rechazar|confirma(?:me)?|confirmar|continua|continuar|avanza|avanzar|retrocede|retroceder|vuelve|volver|restablece|restablecer|anula|anular|cancela|cancelar)\b/u.test(n);
+  if(deictic&&actionVerb&&!hasReferent)return {reason:"deictic_without_referent"};
+
+  const dimension=/\b(?:texto|letra|tamano|tipografia|movimiento|animacion|vista|interfaz|pantalla|paso|etapa|recorrido|detalle|informacion|preferencia|confirmacion|resultado|contenido|pagina|ruta|lectura|voz|asistente)\b/u.test(n);
+  const genericChange=/\b(?:cambia|cambiar|modifica|modificar|ajusta|ajustar|configura|configurar|pon|poner|haz|hacer)\b/u.test(n);
+  if(genericChange&&!dimension)return {reason:"generic_change_without_dimension"};
+
+  const genericParameter=/\b(?:normal|grande|pequeno|menos|mas|reducido|completo|simple|sencillo)\b/u.test(n);
+  if(genericParameter&&/\b(?:pon|deja|haz|cambia|ajusta)\w*\b/u.test(n)&&!dimension)return {reason:"generic_action_without_parameter_dimension"};
+
+  const confirm=/\b(?:confirm\w*|autoriz\w*|aprueb\w*|acept\w*)\b/u.test(n);
+  if(confirm&&!context.pendingConfirmation)return {reason:"confirmation_without_pending_operation"};
+
+  const reject=/\b(?:rechaz\w*|descart\w*|no\s+(?:acept\w*|consider\w*|tom\w*))\b/u.test(n);
+  if(reject&&!context.lastResultId&&!(Array.isArray(context.optionsShown)&&context.optionsShown.length))return {reason:"rejection_without_result"};
+
+  const alternative=/\b(?:alternativa|otra\s+via|otra\s+ruta|otro\s+camino|otra\s+opcion)\b/u.test(n);
+  if(alternative&&!context.lastQuery)return {reason:"alternative_without_previous_search"};
+
+  const stepNavigation=/\b(?:continua|continuar|avanza|avanzar|siguiente|proximo|retrocede|retroceder|atras|vuelve|volver)\b/u.test(n);
+  const pageNavigation=/\b(?:pagina|ruta|pantalla|contenido\s+anterior)\b/u.test(n);
+  if(stepNavigation&&!pageNavigation&&context.activeFlow!=="step_by_step")return {reason:"navigation_without_active_flow"};
+  if(pageNavigation&&/\b(?:vuelve|volver|regresa|regresar|retrocede|retroceder|atras)\b/u.test(n)&&!context.previousRoute)return {reason:"page_navigation_without_previous_route"};
+
+  return null;
+}
+
 function noCommandResult(target){
   const n=normalizeText(target.utterance);
   if(OOS.test(n))return {kind:"out_of_scope",events:[],b3:"PRESENTE",reason:"closed_capability_boundary"};
   const english=(n.match(/\b[a-z]+\b/gu)||[]).filter(w=>["please","reduce","motion","open","previous","page","for","me"].includes(w));
-  if(english.length>=2&&/^(please|open)\b/u.test(n))return {kind:"out_of_scope",events:[],b3:"PRESENTE",reason:"non_spanish_input"};
+  if(english.length>=2&&/^(?:please|open)\b/u.test(n))return {kind:"out_of_scope",events:[],b3:"PRESENTE",reason:"non_spanish_input"};
   if(/\bplease\b/u.test(n))return {kind:"clarification",events:["ASK_CLARIFICATION"],b3:"PRESENTE",reason:"mixed_language_ambiguity"};
-  if(any(n,["mas comoda","carga visual","vuelve a lo anterior","detener algo","abre aquello","el segundo","de acuerdo con algo","responder negativamente","restablece lo necesario","ponlo normal","estado anterior","continuar","retira un elemento","dame otra opcion","lo mismo de ayer","menos de esto","vuelve, pero sin irte","no lo quiero asi","modifica ese ajuste","otra cosa","vimos la semana pasada","aquello que senalaste","resultado de la derecha","esa seccion"]))
-    return {kind:"clarification",events:["ASK_CLARIFICATION"],b3:"PRESENTE",reason:"underspecified_request"};
+  const structural=structuralClarification(target);
+  if(structural)return {kind:"clarification",events:["ASK_CLARIFICATION"],b3:"PRESENTE",reason:structural.reason};
   return {kind:"response",events:[],b3:"PRESENTE",reason:"ordinary_response"};
 }
 
