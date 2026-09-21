@@ -6,8 +6,8 @@
   'use strict';
 
   const LABELS={
-    es:{legend:'Voz',available:'La voz solo se inicia cuando la activas.',unavailable:'Motor de voz no conectado en R0. S2 permanece cerrado.',enable:'Activar voz',volume:'Volumen',rate:'Velocidad',repeat:'Repetir'},
-    en:{legend:'Voice',available:'Voice starts only when you turn it on.',unavailable:'Voice engine is not connected in R0. S2 remains closed.',enable:'Enable voice',volume:'Volume',rate:'Speed',repeat:'Repeat'}
+    es:{legend:'Voz',available:'La voz solo se inicia cuando la activas.',unavailable:'Motor de voz no conectado en R1. S2 permanece cerrado.',enable:'Activar voz',volume:'Volumen',rate:'Velocidad',repeat:'Repetir'},
+    en:{legend:'Voice',available:'Voice starts only when you turn it on.',unavailable:'Voice engine is not connected in R1. S2 remains closed.',enable:'Enable voice',volume:'Volume',rate:'Speed',repeat:'Repeat'}
   };
   const language=()=>root&&root.document&&String(root.document.documentElement.lang).toLowerCase().startsWith('en')?'en':'es';
   function clamp(n,min,max){n=Number(n);return Number.isFinite(n)?Math.min(max,Math.max(min,n)):min;}
