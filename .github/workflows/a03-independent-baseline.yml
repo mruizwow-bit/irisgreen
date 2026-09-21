@@ -1,0 +1,82 @@
+name: A03 independent baseline gate
+on:
+  pull_request:
+    branches: [sabik/reconcile-a01-safety-continuity-20260921]
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 0a1d4339bae2628dc963501a30f326553605821b
+          path: runtime
+          persist-credentials: false
+      - name: Checkout A03 freeze
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 96a0fc516266166c09d3c2f9dd2f03e684a9b027
+          path: qa
+          persist-credentials: false
+      - name: Record exact baseline and environment
+        working-directory: runtime
+        run: |
+          test "$(git rev-parse HEAD)" = 0a1d4339bae2628dc963501a30f326553605821b
+          git rev-parse HEAD
+          uname -a
+          cat /etc/os-release
+          node --version
+          python3 --version
+      - name: Prove protected runtime is untouched by QA branch
+        working-directory: runtime
+        run: |
+          test -z "$(git status --porcelain)"
+          for p in sabik/nea-core/sabik-machine.js sabik/nea-core/risk.js sabik/nea-core/response.js sabik/nea-core/retrieval.js sabik/nea-core/session.js sabik/nea-core/sabik-state.js sabik/sabik-page.js; do
+            test "$(git rev-parse HEAD:$p)" = "$(git -C ../qa rev-parse 96a0fc516266166c09d3c2f9dd2f03e684a9b027:$p)"
+          done
+      - name: Inject frozen gate and baseline adapter
+        working-directory: runtime
+        run: |
+          mkdir -p tests/fixtures/sabik tests/specs/sabik
+          cp ../qa/tests/fixtures/sabik/a03-cognition-adaptation-v1.json tests/fixtures/sabik/
+          cp ../qa/tests/specs/sabik/a03-gate-v1.json tests/specs/sabik/
+          cp ../qa/tests/specs/sabik/run-a03-gate-v1.mjs tests/specs/sabik/
+          cp ../qa/tests/specs/sabik/validate-a03-gate-v1.mjs tests/specs/sabik/
+          cp ../qa/tools/a03-baseline-adapter.mjs tools/
+      - name: Validate frozen A03 contract
+        working-directory: runtime
+        run: node tests/specs/sabik/validate-a03-gate-v1.mjs
+      - name: Execute A03 baseline gate
+        working-directory: runtime
+        continue-on-error: true
+        run: |
+          set +e
+          set -o pipefail
+          node tests/specs/sabik/run-a03-gate-v1.mjs --adapter tools/a03-baseline-adapter.mjs | tee /tmp/a03-baseline.log
+          code=${PIPESTATUS[0]}
+          echo "$code" > /tmp/a03-baseline.exit
+          exit "$code"
+      - name: Remove injected QA and prove exact baseline clean
+        working-directory: runtime
+        run: |
+          rm tests/fixtures/sabik/a03-cognition-adaptation-v1.json
+          rm tests/specs/sabik/a03-gate-v1.json
+          rm tests/specs/sabik/run-a03-gate-v1.mjs
+          rm tests/specs/sabik/validate-a03-gate-v1.mjs
+          rm tools/a03-baseline-adapter.mjs
+          test -z "$(git status --porcelain)"
+          test "$(git rev-parse HEAD)" = 0a1d4339bae2628dc963501a30f326553605821b
+      - name: Report baseline result without changing freeze
+        run: |
+          code="$(cat /tmp/a03-baseline.exit)"
+          if [ "$code" = "0" ]; then echo A03_BASELINE_PASS; else echo A03_BASELINE_HAS_EXPECTED_GAPS; fi
+          exit 0
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: a03-baseline-freeze-evidence
+          path: /tmp/a03-baseline.log
+          retention-days: 14
