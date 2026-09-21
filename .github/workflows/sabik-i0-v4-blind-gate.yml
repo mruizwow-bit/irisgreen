@@ -1,0 +1,85 @@
+name: Sabik I0 V4 blind data gate
+
+on:
+  push:
+    branches:
+      - sabik/i0-calibration-v4-blind-20260921
+    paths:
+      - 'tests/calibration/sabik/i0-v4/**'
+      - 'tools/validate-sabik-i0-calibration-v4-coverage.mjs'
+      - 'tools/check-sabik-i0-calibration-v4-ids.mjs'
+      - '.github/workflows/sabik-i0-v4-blind-gate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  v4-blind-data-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify normative source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_CONTRACTS_V0_4.md)" = "73971249dff7b7cc6627a1bb2db229aaeee3bcdc"
+          test "$(git rev-parse HEAD:tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json)" = "89ddb4c0145b04ea72b57d70b0fd36517854af1a"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_SAFETY_GATE_MAPPING_V0_2.md)" = "03fb19d993d03f5b15fd26d6720e9770c265a1cf"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_PRIVACY_NETWORK_OFFLINE_V0_2.md)" = "9f7c6283f5845895f99186c4bac130b17120c8fd"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_PRESENTATION_EFFECTS_V0_1.md)" = "9d0ea05d038f5f8e5c807c49a2d2debf40a78a8a"
+          test "$(git rev-parse HEAD:docs/sabik-next/I0_S0_B3_PROJECTION_V0_2.md)" = "25f639f2de0951d082d0387fe97f8722ec90ba19"
+
+      - name: Verify frozen candidate hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "e3e535ee1600f3c16495cfbafd4e004b5015d4033cfbfdae44a0e59ef90d81c5  tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl" | sha256sum -c -
+          test "$(wc -l < tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl)" -eq 240
+
+      - name: Validate schema
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/validate-sabik-i0-calibration-v3.mjs             --dataset tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl             --schema tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json             --report /tmp/v4-schema.json
+
+      - name: Validate frozen coverage precommit
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/validate-sabik-i0-calibration-v4-coverage.mjs             --dataset tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl             --precommit tests/calibration/sabik/i0-v4/coverage.v4.precommit.json             --report /tmp/v4-coverage.json
+
+      - name: Check normalized and near-paraphrase independence
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/check-sabik-i0-calibration-v3-independence.mjs             --candidate tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl             --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl             --reference regression_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reference calibration_v3_consumed:tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --report /tmp/v4-independence.json
+
+      - name: Check ID non-reuse
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/check-sabik-i0-calibration-v4-ids.mjs             --candidate tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl             --reference development_consumed:tests/development/sabik/i0/development.v0.4.jsonl             --reference regression_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reference calibration_v2_consumed:tests/calibration/sabik/i0/calibration.v0.4.jsonl             --reference calibration_v3_consumed:tests/calibration/sabik/i0-v3/calibration.v3.blind.jsonl             --report /tmp/v4-ids.json
+
+      - name: Verify blind scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 841298f41da2e63f5ab9fe77e594586841490530...HEAD)"
+          if printf '%s\n' "$changed" | grep -E '(^|/)(executor|executors)(/|$)|^config/sabik/i0/|^reports/sabik/i0/|^tools/run-sabik-i0-|^tools/.*executor' ; then
+            echo "Forbidden executor/config/result path changed on V4 blind branch."
+            exit 1
+          fi
+
+      - name: Report SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum tests/calibration/sabik/i0-v4/calibration.v4.blind.jsonl
+          sha256sum tests/calibration/sabik/i0-v4/coverage.v4.precommit.json
+          sha256sum tools/validate-sabik-i0-calibration-v4-coverage.mjs
+          sha256sum tools/check-sabik-i0-calibration-v4-ids.mjs
+          sha256sum tools/check-sabik-i0-calibration-v3-independence.mjs
+          sha256sum .github/workflows/sabik-i0-v4-blind-gate.yml
