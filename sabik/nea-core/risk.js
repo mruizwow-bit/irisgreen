@@ -1,25 +1,46 @@
 (() => {
   const { normalizeText } = window.NEAKnowledge;
 
-  function detectRisk(text, conceptIds, data) {
-    const concepts = new Map((data.concepts || []).map((concept) => [concept.id, concept]));
-    const hasCrisisConcept = conceptIds.some((id) => concepts.get(id)?.risk_level === "crisis");
+  function classifySafetyTurn(text) {
     const normalized = normalizeText(text);
-    const explicitNegatedCrisis = [
-      "no quiero hacerme dano",
-      "no voy a hacerme dano"
-    ].some((phrase) => normalized.includes(phrase));
-    const explicitOtherCrisis = [
-      "pensamientos suicidas",
-      "no quiero seguir viviendo"
-    ].some((phrase) => normalized.includes(phrase));
-    const explicitSelfHarm = normalized.includes("quiero hacerme dano") && !explicitNegatedCrisis;
-    const explicitCrisis = explicitOtherCrisis || explicitSelfHarm;
-    if (explicitCrisis) return "acompanamiento_en_riesgo";
-    if (explicitNegatedCrisis) return "normal";
-    if (hasCrisisConcept) return "acompanamiento_en_riesgo";
-    if (normalized.includes("ya no puedo mas") || normalized === "no quiero seguir") return "riesgo_ambiguo";
-    return "normal";
+    const clauses = String(text || "").split(/[.!?;\n]+|\bpero\b|\bsin embargo\b/iu).map(normalizeText);
+    // Bounded grammar over the current utterance, never inherited concepts or
+    // session state. Reported speech is not evidence about the speaker.
+    const personal = clauses.filter(clause => !/\b(?:dice|dijo|dicen|ha dicho|pregunta)\b/u.test(clause));
+    const selfHarm = /^(?:yo )?(?:(?:quiero|voy a|pienso|estoy pensando en) hacerme dano|me (?:quiero|voy a|pienso) hacer dano)(?: |$)/u;
+    const selfCrisis = /^(?:yo )?(?:no quiero seguir viviendo|(?:tengo|estoy teniendo) pensamientos suicidas)(?: |$)/u;
+    const risk = personal.some(clause => selfHarm.test(clause) || selfCrisis.test(clause));
+    const uncertain = personal.some(clause => /^(?:yo )?ya no puedo mas(?: |$)/u.test(clause) || clause === "no quiero seguir");
+    return {
+      classification: risk ? "risk" : uncertain ? "uncertain" : "normal",
+      answer: /^(?:si|yes)$/u.test(normalized) ? "affirmative"
+        : /^(?:no|no estoy en peligro ni pensando en hacerme dano)$/u.test(normalized) ? "negative" : null,
+      requests_human_help: personal.some(clause => /^(?:yo )?(?:quiero|necesito|ayudame a) (?:buscar |contactar con |hablar con )?(?:ayuda humana|una persona|alguien)(?: |$)/u.test(clause))
+    };
+  }
+
+  function safetyEventsForTurn(turn, machine) {
+    if (!["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(machine.operation)) return [];
+    if (machine.safety === "human_handoff") return [];
+    const pending = machine.safety === "uncertain" && machine.operation === "awaiting_clarification" && machine.dialogue === "clarification";
+    const events = [];
+    if (machine.safety !== "risk" && (turn.classification === "risk" || (pending && turn.answer === "affirmative"))) events.push("RISK_CONFIRMED");
+    else if (machine.safety === "normal" && turn.classification === "uncertain") events.push("RISK_UNCERTAIN");
+    else if (pending && turn.answer === "negative") events.push("RISK_CLEARED");
+    if (turn.requests_human_help && !events.includes("RISK_CLEARED") &&
+        (machine.safety !== "normal" || events.length)) events.push("HUMAN_HANDOFF");
+    return events;
+  }
+
+  function riskStateFromSafety(machine) {
+    if (machine.safety === "uncertain") return "riesgo_ambiguo";
+    if (["risk", "human_handoff"].includes(machine.safety)) return "acompanamiento_en_riesgo";
+    if (machine.safety === "normal") return "normal";
+    throw new Error("Invalid S0 safety snapshot");
+  }
+
+  function detectRisk(text) {
+    return riskStateFromSafety({ safety: classifySafetyTurn(text).classification });
   }
 
   function createRiskAccompanimentPlan(nextSession, conceptIds, actions) {
@@ -57,6 +78,9 @@
   }
 
   window.NEARisk = {
+    classifySafetyTurn,
+    safetyEventsForTurn,
+    riskStateFromSafety,
     detectRisk,
     createRiskAccompanimentPlan,
     createAmbiguousRiskPlan

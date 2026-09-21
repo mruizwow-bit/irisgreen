@@ -1,8 +1,8 @@
 (() => {
   const { normalizeText, isPublicable, unique } = window.NEAKnowledge;
   const { detectNegations, detectSessionPreferences, detectConversationControl } = window.NEACorrections;
-  const { applySessionUpdate, resolveSessionContext, resolveSafetyContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
-  const { detectRisk, createRiskAccompanimentPlan, createAmbiguousRiskPlan } = window.NEARisk;
+  const { applySessionUpdate, resolveSessionContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
+  const { detectRisk, riskStateFromSafety, createRiskAccompanimentPlan, createAmbiguousRiskPlan } = window.NEARisk;
   const { INTENTS, classifyIntent } = window.NEAIntent;
   const { decideCore } = window.NEADecision;
   const {
@@ -129,9 +129,25 @@
     return (conceptIds || []).filter((concept) => !discarded.has(concept));
   }
 
-  function buildResponsePlan(text, session, data) {
+  function buildSafetyResponse(text, session, data, machine) {
+    const riskState = riskStateFromSafety(machine);
+    if (riskState === "normal") throw new Error("Safety response requires active S0 protection");
+    const preferences = detectSessionPreferences(text);
+    const next = applySessionUpdate(session, text, session.active_concepts, [], preferences,
+      riskState, detectCognitiveState(text, preferences, riskState));
+    return rememberPlan(next, riskState === "riesgo_ambiguo" ? createAmbiguousRiskPlan(next)
+      : createRiskAccompanimentPlan(next, [], findActions(["riesgo_suicida"], riskState, data)));
+  }
+
+  function buildResponsePlan(text, session, data, machine = null) {
+    // With S0 supplied, protection is decided before any ordinary interpretation
+    // or retrieval. The three-argument legacy API classifies one turn only.
+    if (machine && !["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(machine.operation)) {
+      throw new Error("Ordinary response forbidden by S0 operation");
+    }
+    if (machine && machine.safety !== "normal") return buildSafetyResponse(text, session, data, machine);
     const control = detectConversationControl(text);
-    if (control) return applyResponseControl(session, session.last_plan, control, data);
+    if (control) return applyResponseControl(session, session.last_plan, control, data, machine);
     const mentioned = detectConcepts(text, data);
     const relationConcepts = detectRelations(text, data);
     const negatedIds = detectNegations(text, data);
@@ -141,11 +157,9 @@
     const preferences = detectSessionPreferences(text);
     const conceptIds = unique([...directConcepts, ...relationConcepts]).filter((id) =>
       !session.vetoed_concepts.includes(id) && !session.rejected_concepts.includes(id) && !negatedIds.includes(id));
-    const safety = resolveSafetyContext(session, text, detectRisk(text, unique([...conceptIds, ...directConcepts]), data));
-    const riskState = safety.riskState;
+    const riskState = machine ? riskStateFromSafety(machine) : detectRisk(text);
     const cognitiveState = detectCognitiveState(text, preferences, riskState);
     const nextSession = applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState);
-    nextSession.safety_resolution = safety.resolution;
     nextSession.context_mode = context.mode;
     nextSession.context_modifier = context.modifier;
     nextSession.topic_query = context.mode === "followup" ? session.topic_query : text;
@@ -245,8 +259,20 @@
     return rememberPlan(nextSession, base);
   }
 
-  function applyResponseControl(session, plan, control, data) {
-    const protectedPlan = plan && ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan.type);
+  function applyResponseControl(session, plan, control, data, machine = null) {
+    if (machine && !["ready", "retrieving", "composing", "presenting", "awaiting_clarification"].includes(machine.operation)) {
+      throw new Error("Response control forbidden by S0 operation");
+    }
+    if (machine && machine.safety !== "normal") {
+      const next = ["reject_hypothesis", "other_route", "rephrase"].includes(control)
+        ? session : applyConversationControl(session, plan, control);
+      return buildSafetyResponse("", next, data, machine);
+    }
+    if (machine) {
+      session = applySessionUpdate(session, "", session.active_concepts, [], {}, riskStateFromSafety(machine), session.cognitive_state);
+      if (["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan?.type)) plan = null;
+    }
+    const protectedPlan = !machine && plan && ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan.type);
     const next = protectedPlan && ["reject_hypothesis", "other_route", "rephrase"].includes(control)
       ? structuredClone(session) : applyConversationControl(session, plan, control);
     // Safety content is not rewritten by an ordinary response control (S3).
@@ -255,7 +281,7 @@
     }
     if ((control === "other_route" ||
         (["no_questions", "one_option"].includes(control) && plan?.type === "clarifying_question")) && next.topic_query) {
-      return buildResponsePlan(next.current_need || next.topic_query, next, data);
+      return buildResponsePlan(next.current_need || next.topic_query, next, data, machine);
     }
     if (!plan || control === "reject_hypothesis") {
       const empty = planBase(plan && control === "reject_hypothesis" ? "correction_acknowledged" : "insufficient_information",
@@ -310,6 +336,7 @@
   }
 
   window.NEAResponse = {
+    buildSafetyResponse,
     classifyIntent,
     buildResponsePlan,
     applyResponseControl,

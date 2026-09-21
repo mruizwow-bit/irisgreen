@@ -23,7 +23,13 @@ async function fresh() {
   if (context) await context.close();
   context = await browser.newContext(); page = await context.newPage(); page.setDefaultTimeout(8000);
   await context.addInitScript(() => {
-    window.__a01 = { states: [], events: [], errors: [], fail: false, session: null };
+    window.__a01 = { states: [], events: [], errors: [], fail: false, session: null, retrievals: 0 };
+    let retrieval;
+    Object.defineProperty(window, 'NEARetrieval', { configurable: true, get: () => retrieval, set(api) {
+      const original = api.retrieveFragmentCandidates;
+      api.retrieveFragmentCandidates = (...args) => { window.__a01.retrievals++; return original(...args); };
+      retrieval = api;
+    } });
     const OriginalWorker = window.Worker;
     window.Worker = class extends OriginalWorker {
       constructor(...args) { super(...args); this.addEventListener('message', e => {
@@ -43,6 +49,11 @@ async function fresh() {
     };
     let core;
     Object.defineProperty(window, 'NEACoreV1', { configurable: true, get: () => core, set(api) {
+      for (const [owner, name] of [[window.NEAResponse, 'buildSafetyResponse'], [window.NEASession, 'applySessionUpdate']]) {
+        const original = owner[name]; owner[name] = (...args) => {
+          const result = original(...args); window.__a01.session = result.session || result; return result;
+        };
+      }
       for (const name of ['createSessionState', 'setSessionPreferences', 'buildResponsePlan', 'applyResponseControl']) {
         const original = api[name]; api[name] = (...args) => {
           if (name === 'buildResponsePlan' && window.__a01.fail) { window.__a01.fail = false; throw Error('A01 synthetic technical fault'); }
@@ -58,7 +69,7 @@ async function fresh() {
 }
 const idle = () => page.waitForFunction(() => document.querySelector('#sabik-output').getAttribute('aria-busy') === 'false' && !document.querySelector('#sabik-submit').disabled);
 const snapshot = () => page.evaluate(() => ({ machine: window.__a01.states.at(-1), risk: window.__a01.session?.risk_state,
-  statements: window.__a01.session?.user_statements, events: window.__a01.events.map(e => e?.type), errors: window.__a01.errors,
+  statements: window.__a01.session?.user_statements, retrievals: window.__a01.retrievals, events: window.__a01.events.map(e => e?.type), errors: window.__a01.errors,
   answer: document.querySelector('#sabik-answer').textContent, hidden: document.querySelector('#sabik-output').hidden }));
 async function submit(text) { await el('input').fill(text); await el('submit').click(); await idle(); return snapshot(); }
 function protectedState(s, safety) {
@@ -81,6 +92,22 @@ async function check(name, run) {
     await check('negative clears uncertainty with explicit RISK_CLEARED', async () => {
       await submit('ya no puedo mas'); const s = await submit('no');
       assert.equal(s.machine.safety, 'normal'); assert(s.events.includes('RISK_CLEARED')); assert.deepEqual(s.errors, []);
+    });
+    await check('human help is an S0 handoff and cannot be cleared by neutral/reset', async () => {
+      await submit('quiero hacerme dano'); const s = await submit('necesito hablar con una persona');
+      protectedState(s, 'human_handoff'); assert(s.events.includes('HUMAN_HANDOFF')); assert.equal(s.retrievals, 0);
+      protectedState(await submit('hola'), 'human_handoff');
+      await page.evaluate(() => { window.__a01.fail = true; });
+      const failed = await submit('hola'); protectedState(failed, 'human_handoff'); assert.equal(failed.machine.operation, 'error');
+      await el('retry-data').click(); await idle(); protectedState(await snapshot(), 'human_handoff');
+      await el('clear').click(); await el('resume').click(); await idle();
+      await el('reset-session').click(); await idle(); protectedState(await snapshot(), 'human_handoff');
+      protectedState(await submit('no'), 'human_handoff');
+    });
+    await check('current turn classifier handles clitics and does not infer self-risk from a third party', async () => {
+      let s = await submit('mi amiga quiere hacerse dano'); assert.equal(s.machine.safety, 'normal');
+      s = await submit('no me quiero hacer dano'); assert.equal(s.machine.safety, 'normal');
+      protectedState(await submit('me quiero hacer dano'), 'risk');
     });
     for (const control of ['clear', 'reset-session']) {
       await check('confirmed risk acknowledged during ' + control + ' is retained', async () => {
@@ -106,7 +133,8 @@ async function check(name, run) {
     }
     for (const [start, safety] of [['ya no puedo mas', 'uncertain'], ['quiero hacerme dano', 'risk']]) {
       await check(safety + ': neutral and topic-change turns keep safety', async () => {
-        await submit(start); await submit('hola'); protectedState(await submit('cambio de tema: ruido'), safety);
+        await submit(start); await submit('hola'); const s = await submit('cambio de tema: ruido'); protectedState(s, safety);
+        assert.equal(s.retrievals, 0); assert(!s.events.includes('RETRIEVAL_OK')); assert(!s.events.includes('SUBMIT'));
       });
       await check(safety + ': pause collapse expand resume keep safety', async () => {
         await submit(start); await el('clear').click();

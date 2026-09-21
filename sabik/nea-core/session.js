@@ -23,8 +23,6 @@
       response_sequence: 0,
       shown_fragments: [],
       asked_questions: [],
-      risk_state: "normal",
-      safety_resolution: null,
       session_preferences: {
         response_length: "normal",
         max_options: 3,
@@ -36,23 +34,6 @@
       sabik_state: defaultSabikState(),
       privacy_state: "session_only"
     };
-  }
-
-  function resolveSafetyContext(session, text, detectedRisk) {
-    const previous = session.risk_state || "normal";
-    // Confirmed protection has no ordinary clear event in the accepted S0 contract.
-    if (previous === "acompanamiento_en_riesgo") return { riskState: previous, resolution: null };
-    const pending = previous === "riesgo_ambiguo" && session.last_plan?.type === "ambiguous_risk_clarification";
-    const answer = normalizeText(text);
-    // Only complete answers to the displayed question can resolve uncertainty.
-    // A partial negation, topic change or preference is not a safety clearance.
-    if (pending && ["no", "no estoy en peligro ni pensando en hacerme dano"].includes(answer)) {
-      return { riskState: "normal", resolution: "RISK_CLEARED" };
-    }
-    if (detectedRisk === "acompanamiento_en_riesgo" || (pending && ["si", "yes"].includes(answer))) {
-      return { riskState: "acompanamiento_en_riesgo", resolution: null };
-    }
-    return { riskState: previous === "riesgo_ambiguo" ? previous : detectedRisk, resolution: null };
   }
 
   function applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState) {
@@ -161,7 +142,6 @@
 
   window.NEASession = {
     createSessionState,
-    resolveSafetyContext,
     applySessionUpdate,
     resolveSessionContext,
     rememberPlan,

@@ -390,23 +390,24 @@
     return ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan?.type);
   }
 
-  async function mapPlanToMachine(result, current) {
-    if (result.plan.type === "ambiguous_risk_clarification") {
-      if (state.machine.safety === "normal") await dispatch({ type: "RISK_UNCERTAIN" });
-      return;
-    }
-    if (result.plan.type === "risk_accompaniment") {
-      if (!["risk", "human_handoff"].includes(state.machine.safety)) await dispatch({ type: "RISK_CONFIRMED" });
-      return;
-    }
-    if (state.machine.safety === "uncertain" && result.session.safety_resolution === "RISK_CLEARED") {
-      await dispatch({ type: "RISK_CLEARED" });
-      // Keep the accepted resolution even if a subsequent pause cancels rendering.
+  function syncAcceptedSafety() {
+    if (state.machine.safety !== "normal") {
+      const result = window.NEAResponse.buildSafetyResponse("", state.session, state.data || {}, state.machine);
       state.session = result.session;
-      state.lastPlan = result.plan;
-      if (!current()) return;
+      renderPlan(result.plan);
+    } else {
+      // Legacy display fields are projections, never inputs to a safety decision.
+      state.session = window.NEASession.applySessionUpdate(state.session, "", state.session.active_concepts,
+        [], {}, window.NEARisk.riskStateFromSafety(state.machine), state.session.cognitive_state);
+      if (hasSafetyPlan(state.lastPlan)) { state.lastPlan = null; state.session.last_plan = null; }
     }
-    if (state.machine.safety !== "normal") throw new Error("Ordinary response cannot replace active safety");
+  }
+
+  async function mapPlanToMachine(result, current) {
+    if (state.machine.safety !== "normal") {
+      if (!hasSafetyPlan(result.plan)) throw new Error("Ordinary response cannot replace active safety");
+      return;
+    }
     if (result.plan.type === "insufficient_information") await dispatch({ type: "RETRIEVAL_EMPTY" });
     else {
       await dispatch({ type: "RETRIEVAL_OK" });
@@ -426,21 +427,21 @@
     try {
       if (state.machine.operation === "error") await dispatch({ type: "RETRY" });
       if (!current()) return;
-      // S0 blocks ordinary SUBMIT during confirmed protection. The local safety
-      // conversation remains open without starting an ordinary retrieval cycle.
-      if (!["risk", "human_handoff"].includes(state.machine.safety)) await dispatch({ type: "SUBMIT" });
+      const turn = window.NEARisk.classifySafetyTurn(conversationControl ? "" : value);
+      for (const type of window.NEARisk.safetyEventsForTurn(turn, state.machine)) {
+        await dispatch({ type });
+        syncAcceptedSafety();
+        if (!current()) return;
+      }
+      // Active Safety bypasses ordinary submission and retrieval. RISK_CLEARED
+      // already enters retrieving, so it must not be followed by another SUBMIT.
+      if (state.machine.safety === "normal" && state.machine.operation !== "retrieving") await dispatch({ type: "SUBMIT" });
       await ensureData();
       if (!current()) return;
       renderDataAvailability();
       const result = conversationControl
-        ? window.NEACoreV1.applyResponseControl(state.session, state.lastPlan, conversationControl, state.data)
-        : window.NEACoreV1.buildResponsePlan(value, state.session, state.data);
-      // Once recognised, protection must also survive a pause/reset while the
-      // worker acknowledges its transition. Ordinary results still commit below.
-      if (hasSafetyPlan(result.plan)) {
-        state.session = result.session;
-        renderPlan(result.plan);
-      }
+        ? window.NEACoreV1.applyResponseControl(state.session, state.lastPlan, conversationControl, state.data, state.machine)
+        : window.NEACoreV1.buildResponsePlan(value, state.session, state.data, state.machine);
       await mapPlanToMachine(result, current);
       if (!current()) return;
       state.session = result.session;
@@ -455,8 +456,8 @@
       state.failedInput = value;
       const message = "No he podido cargar los datos locales. Puedes volver a enviar tu consulta.";
       document.querySelector("#sabik-output").hidden = false;
-      if (hasSafetyPlan(state.lastPlan)) {
-        renderPlan(state.lastPlan);
+      if (state.machine.safety !== "normal") {
+        syncAcceptedSafety();
         document.querySelector("#sabik-notice").textContent = [state.lastPlan.limits_notice, translate(message)].filter(Boolean).join(" ");
         setStatus(message, visualState(state.session.sabik_state));
       } else {
@@ -574,9 +575,6 @@
       clearSources();
       const preferences = state.session.session_preferences;
       state.session = window.NEACoreV1.createSessionState();
-      // RESET_SESSION clears conversational content, never S0 protection.
-      state.session.risk_state = state.machine.safety === "uncertain" ? "riesgo_ambiguo"
-        : ["risk", "human_handoff"].includes(state.machine.safety) ? "acompanamiento_en_riesgo" : "normal";
       state.session = window.NEACoreV1.setSessionPreferences(state.session, preferences);
       state.lastInput = "";
       state.failedInput = "";
@@ -586,11 +584,7 @@
       text("#sabik-state-label", "Disponible");
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
-      if (state.machine.safety !== "normal") {
-        const protectedResult = window.NEACoreV1.buildResponsePlan("", state.session, state.data || {});
-        state.session = protectedResult.session;
-        renderPlan(protectedResult.plan);
-      }
+      syncAcceptedSafety();
       announce("Conversación reiniciada.");
       });
       focus("#sabik-input");
