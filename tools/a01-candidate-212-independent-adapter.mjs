@@ -1,0 +1,21 @@
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+import {createRequire} from "node:module";
+const require=createRequire(import.meta.url);
+const here=path.dirname(fileURLToPath(import.meta.url));
+const root=path.resolve(here,"..");
+global.window=global;
+for(const file of ["state","knowledge","language","sabik-state","risk","corrections","session","retrieval","intent","decision","response"]) require(path.join(root,"sabik/nea-core",file+".js"));
+require(path.join(root,"sabik/nea-core.js"));
+const core=global.NEACoreV1;
+const machineApi=require(path.join(root,"sabik/nea-core/sabik-machine.js"));
+const step=machineApi.transitionSabikState;
+const ready=()=>step(machineApi.createInitialSabikState(),{type:"BOOT_OK"});
+const P=core.PUBLICABLE;
+const data={concepts:[{editorial_status:P,id:"riesgo_suicida",label:"riesgo",aliases:[],risk_level:"crisis"},{editorial_status:P,id:"autismo",label:"autismo",aliases:[]},{editorial_status:P,id:"ansiedad",label:"ansiedad",aliases:[]}],relations:[],actions:[],resources:[],procedures:[],corpora:{languages:[]},questions:[],fragmentsIndex:[]};
+function subjectFor(text){const s=String(text||"").toLocaleLowerCase("es");if(s.includes("mi amigo dice")||s.includes("mi amiga dice"))return "third_person";if(s.includes("libro")||s.includes("«"))return "quoted";if(s.includes("trabajo sobre"))return "informational";return "none";}
+function obs(machine,plan,outcome,text){let classification="normal",protection="none",clarification="none";if(machine.safety==="uncertain"){classification="risk_uncertain";protection="clarification";clarification="yes_no";}else if(machine.safety==="risk"){classification="risk_confirmed";protection="confirmed";}else if(machine.safety==="human_handoff"){classification="risk_confirmed";protection="handoff";}return {classification,protection,clarification,normal_response_allowed:machine.safety==="normal"&&!(plan?.normal_flow_disabled===true),outcome,subject:subjectFor(text),operation:machine.operation,safety:machine.safety,plan_type:plan?.type||null};}
+function normalLifecycle(machine,plan){if(plan.type==="insufficient_information")return step(machine,{type:"RETRIEVAL_EMPTY"});let m=step(machine,{type:"RETRIEVAL_OK"});return step(m,{type:plan.type==="clarifying_question"?"ASK_CLARIFICATION":"RESPONSE_READY"});}
+export async function runA01Scenario(scenario){let machine=ready(),session=core.createSessionState(),lastPlan=null,lastText="";const out=[];
+const applyText=text=>{const turn=global.NEARisk.classifySafetyTurn(text);for(const type of global.NEARisk.safetyEventsForTurn(turn,machine))machine=step(machine,{type});if(machine.safety==="normal"&&machine.operation!=="retrieving")machine=step(machine,{type:"SUBMIT"});const r=core.buildResponsePlan(text,session,data,machine);session=r.session;lastPlan=r.plan;lastText=text;if(machine.safety==="normal")machine=normalLifecycle(machine,r.plan);return obs(machine,lastPlan,"accepted",text);};
+for(const row of scenario.steps){const input=row.input||{};let o;if(input.type==="USER_TEXT")o=applyText(input.text||"");else if(input.type==="CLARIFICATION_ANSWER")o=applyText(input.answer==="yes"?"Sí":"No");else if(input.type==="TECHNICAL_ERROR"){try{machine=step(machine,{type:"TECHNICAL_ERROR"});o=obs(machine,lastPlan,"error",lastText);}catch{ o=obs(machine,lastPlan,"rejected",lastText);}}else if(input.type==="RETRY"){try{machine=step(machine,{type:"RETRY"});o=obs(machine,lastPlan,"accepted",lastText);}catch{o=obs(machine,lastPlan,"rejected",lastText);}}else if(input.type==="PAUSE"){try{machine=step(machine,{type:"PAUSE_ASSISTANT"});o=obs(machine,lastPlan,"paused",lastText);}catch{o=obs(machine,lastPlan,"rejected",lastText);}}else if(input.type==="RESUME"){try{machine=step(machine,{type:"RESUME_ASSISTANT"});o=obs(machine,lastPlan,"resumed",lastText);}catch{o=obs(machine,lastPlan,"rejected",lastText);}}else if(input.type==="RESET"){try{machine=step(machine,{type:"RESET_SESSION"});session=core.createSessionState();lastPlan=machine.safety==="normal"?null:global.NEAResponse.buildSafetyResponse("",session,data,machine).plan;o=obs(machine,lastPlan,"reset","");}catch{o=obs(machine,lastPlan,"rejected",lastText);}}else throw new Error("unsupported input "+input.type);out.push(o);}return {steps:out};}
