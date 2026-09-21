@@ -191,14 +191,15 @@ async function stacked(){
     await check('A02-L09','collapse and Escape return/keep focus on toggle',async()=>{
       await fresh(1440);
       await page.locator('#sabik-toggle').focus();
-      await page.locator('#sabik-toggle').click();
+      await collapse();
       assert.equal(await page.evaluate(()=>document.activeElement.id),'sabik-toggle');
-      await expand();
+
+      await fresh(1440);
       await page.locator('#sabik-input').focus();
       await page.keyboard.press('Escape');
-      await page.waitForFunction(()=>document.querySelector('#sabik-toggle')?.getAttribute('aria-expanded')==='false');
+      await page.waitForFunction(()=>document.querySelector('#sabik-toggle')?.getAttribute('aria-expanded')==='false',{timeout:5000});
       assert.equal(await page.evaluate(()=>document.activeElement.id),'sabik-toggle');
-      return {focus:'sabik-toggle'};
+      return {collapseFocus:'sabik-toggle',escapeFocus:'sabik-toggle'};
     });
 
     await check('A02-L10','collapse does not change HOME column width',async()=>{
