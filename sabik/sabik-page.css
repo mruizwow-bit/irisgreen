@@ -1384,3 +1384,216 @@ body.sabik-iris-page .sabik-panel.is-collapsed {
   body.sabik-iris-page .sabik-widget-head .sabik-head-mark { display: none; }
   body.sabik-iris-page .site-header { position: static; }
 }
+
+
+/* ==========================================================================
+   W1-A3-A02 · lateral composition candidate
+   Layout-only recovery of Sabik's approved desktop rail.
+   DOM/source order remains: search -> Sabik -> results/cards.
+   ========================================================================== */
+
+/* Stacked baseline: the panel follows the same horizontal measure as HOME. */
+body.sabik-iris-page #home-view > .sabik-panel {
+  position: static;
+  width: calc(100% - 56px);
+  max-width: none;
+  max-height: none;
+  margin: 0 auto 24px;
+  overflow: visible;
+  overscroll-behavior: auto;
+}
+
+body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+  width: calc(100% - 56px);
+  margin-inline: auto;
+}
+
+body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
+  overflow: visible;
+  overscroll-behavior: auto;
+  scrollbar-gutter: auto;
+}
+
+/* Desktop rail begins only at 1360 CSS px. */
+@media (min-width: 1360px) {
+  body.sabik-iris-page #home-view {
+    display: grid;
+    width: calc(100% - 64px);
+    max-width: 1535px;
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "hero sabik"
+      "results sabik"
+      "directory sabik"
+      "noscript sabik";
+    column-gap: 24px;
+    row-gap: 0;
+    align-items: start;
+  }
+
+  body.sabik-iris-page #home-view > .hero {
+    grid-area: hero;
+    min-width: 0;
+  }
+
+  body.sabik-iris-page #home-view > .sabik-panel {
+    grid-area: sabik;
+    align-self: start;
+    width: 100%;
+    max-width: none;
+    margin: 38px 0 0;
+  }
+
+  body.sabik-iris-page #home-view > .wrap {
+    grid-area: results;
+    min-width: 0;
+  }
+
+  body.sabik-iris-page #home-view > .directory {
+    grid-area: directory;
+    min-width: 0;
+  }
+
+  body.sabik-iris-page #home-view > noscript {
+    grid-area: noscript;
+    min-width: 0;
+  }
+
+  /* Do not subtract the global HOME margins again inside the left rail. */
+  body.sabik-iris-page #home-view > .hero > .wrap,
+  body.sabik-iris-page #home-view > .wrap,
+  body.sabik-iris-page #home-view > .directory > .wrap {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  /* Collapse changes only panel contents, never HOME column geometry. */
+  body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* 1920 target: 1180 HOME + 32 gap + 368 rail = 1580. */
+@media (min-width: 1600px) {
+  body.sabik-iris-page #home-view {
+    width: 1580px;
+    max-width: 1580px;
+    grid-template-columns: minmax(0, 1180px) 368px;
+    column-gap: 32px;
+  }
+}
+
+/* Sticky is conditional: wide desktop, usable height, ordinary text. */
+@media (min-width: 1360px) and (min-height: 700px) {
+  html:not([data-ig-text-enlarged]) body.sabik-iris-page #home-view > .sabik-panel {
+    position: sticky;
+    top: 16px;
+    max-height: calc(100dvh - 32px);
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+
+  html:not([data-ig-text-enlarged]) body.sabik-iris-page #home-view > .sabik-panel > .sabik-widget {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+    min-height: 0;
+  }
+
+  html:not([data-ig-text-enlarged]) body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-head {
+    flex: 0 0 auto;
+  }
+
+  html:not([data-ig-text-enlarged]) body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  html:not([data-ig-text-enlarged]) body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* Iris Green enlarged-text mode always returns to source-order flow. */
+html[data-ig-text-enlarged] body.sabik-iris-page #home-view {
+  display: block;
+  width: auto;
+  max-width: none;
+  margin-inline: 0;
+}
+
+html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel,
+html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+  position: static;
+  width: min(1180px, calc(100% - 80px));
+  max-width: none;
+  max-height: none;
+  margin: 0 auto 24px;
+  overflow: visible;
+  overscroll-behavior: auto;
+}
+
+html[data-ig-text-enlarged] body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
+  overflow: visible;
+  scrollbar-gutter: auto;
+}
+
+/* Tablet and medium widths: source-order stack. */
+@media (max-width: 1359px) {
+  body.sabik-iris-page #home-view {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  body.sabik-iris-page #home-view > .sabik-panel,
+  body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+    position: static;
+    width: calc(100% - 56px);
+    max-width: none;
+    max-height: none;
+    margin: 0 auto 24px;
+    overflow: visible;
+    overscroll-behavior: auto;
+  }
+
+  body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
+    overflow: visible;
+    scrollbar-gutter: auto;
+  }
+}
+
+/* HOME mobile measures already approved by Iris Green. */
+@media (max-width: 760px) {
+  body.sabik-iris-page #home-view > .sabik-panel,
+  body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+    width: calc(100% - 36px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 365px) {
+  body.sabik-iris-page #home-view > .sabik-panel,
+  body.sabik-iris-page #home-view > .sabik-panel.is-collapsed {
+    width: calc(100% - 28px);
+    margin-inline: auto;
+  }
+}
+
+/* Layout changes are never animated. */
+@media (prefers-reduced-motion: reduce) {
+  body.sabik-iris-page #home-view,
+  body.sabik-iris-page #home-view > .sabik-panel,
+  body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
+    transition: none !important;
+  }
+}
