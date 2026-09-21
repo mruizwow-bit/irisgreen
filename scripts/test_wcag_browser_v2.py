@@ -273,7 +273,7 @@ with sync_playwright() as pw:
 
     # W1-WEB-W01 · Tarjeta Iris: reproducción dedicada a 320/390 CSS px.
     # Captura document width, elementos que cruzan el borde derecho y PNG de evidencia.
-    for width in (320, 390):
+    for width in (320, 390, 768, 1440):
         ctx, page, errors = make_page(width)
         row = {"scenario": "tarjeta_reflow", "route": "/es/recursos/tarjeta-iris/", "css_width": width}
 
@@ -287,7 +287,7 @@ with sync_playwright() as pw:
                       left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),
                       display:cs.display,position:cs.position};
             }).filter(x => x.display !== 'none' && x.right > innerWidth + 2).slice(0,30)""")
-            page.screenshot(path=str(OUT / f"tarjeta-before-fix-{width}.png"), full_page=True)
+            page.screenshot(path=str(OUT / f"tarjeta-{width}.png"), full_page=True)
             assert overflow["overflow"] <= 2, {"overflow": overflow, "offenders": row["offenders"]}
             assert not errors, errors
 
