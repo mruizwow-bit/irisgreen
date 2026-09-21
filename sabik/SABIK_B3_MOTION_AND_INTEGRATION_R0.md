@@ -1,6 +1,6 @@
 # SABIK_B3_MOTION_AND_INTEGRATION_R0
 
-**Estado:** `SABIK_B3_MOTION_AND_INTEGRATION_R0_READY`  
+**Estado:** `SABIK_B3_MOTION_AND_INTEGRATION_R0_CANDIDATE`  
 **Tipo:** candidato de producción; gates humanos pendientes  
 **Issue coordinador:** #196  
 **NO MERGE · NO DEPLOY**
@@ -29,7 +29,7 @@ Estados únicos:
 Invariantes:
 - PRESENTE se asienta y queda quieto;
 - ORIENTAR no rebota ni dibuja una flecha;
-- TRANSICIÓN no gira en loop y no sirve de loading;
+- TRANSICIÓN no gira en loop y no sirve de indicador de progreso técnico;
 - PAUSA queda contenida y visible;
 - CONFIRMAR no celebra ni premia;
 - una sola animación B3 activa;
@@ -68,21 +68,20 @@ Proyección:
 - CONFIRMAR se usa solo tras un cambio local que requiere confirmación;
 - voz no cambia B3.
 
-## Activo visual de runtime
+## Activos visuales de runtime
 
-El runtime usa un sprite versionado en el repositorio:
+El runtime consume **15 WebP individuales de 128×128**:
 
-`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
+`sabik/assets/b3/{web|ia|educa}_{presente|orientar|transicion|pausa|confirmar}.webp`
 
-- 1280×768;
-- 15 celdas de 256×256;
-- columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
-- filas: Web / IA / Educa;
-- WebP lossless;
-- SHA-256: `e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23`;
-- hashes de las 15 fuentes R1 en `ASSET_MANIFEST.json`.
+- fuentes: 15 PNG R1 congelados de 544×544;
+- derivación: LANCZOS → 128×128;
+- no se amplían en el stage;
+- manifest: `sabik/assets/b3/ASSET_MANIFEST.json`;
+- el test valida bytes y SHA-256 de los 15 archivos;
+- fallo de asset → holograma legacy visible como fallback.
 
-El sprite es un derivado técnico de los keyframes congelados; #181/#182 permanecen sin cambios.
+Los derivados son empaquetado técnico; #181/#182 permanecen sin cambios.
 
 ## ACC-06 · controles cognitivos
 
@@ -135,7 +134,7 @@ El candidato hereda `IGPreferences`:
 - contraste;
 - movimiento.
 
-Se evita doble aplicar la escala: el root rem global es la única fuente de aumento.
+Se evita doble aplicar la escala: el root rem global sigue siendo la única fuente de aumento.
 
 Los tests R0 mantienen 320 CSS px como guardarraíl estático; 200 % y 400 % siguen requiriendo comprobación de navegador/AT además del contrato.
 
@@ -207,7 +206,7 @@ La proyección B3 es una capa posterior de presentación.
 
 El spike se revierte eliminando:
 - los cuatro scripts R0 cargados por `/es/nea/`;
-- el sprite y manifest B3;
+- los 15 WebP de runtime y su manifest;
 - el bloque CSS R0;
 - los documentos/tests/workflow R0.
 
