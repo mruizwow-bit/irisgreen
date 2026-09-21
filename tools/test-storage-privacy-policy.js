@@ -190,6 +190,7 @@ async function externalOff(context,origin){
       const copy=page.locator('#ti-copy');
       await copy.focus();
       await copy.click();
+      await page.waitForFunction(()=>document.querySelector('#ti-card-status')?.textContent.trim().length>0);
       assert.equal(await page.evaluate(()=>document.activeElement?.id),'ti-copy');
       assert.ok((await page.locator('#ti-card-status').innerText()).trim().length>0);
 
