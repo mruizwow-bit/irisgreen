@@ -28,12 +28,23 @@
     value=String(value||'').toLowerCase();
     return PRESENCES.includes(value)?value:'ia';
   }
-  function spriteCell(p,s){
+  function cell(p,s){
     p=normalizePresence(p);s=normalizeState(s);
     return Object.freeze({
-      presence:p,state:s,row:ROW[p],column:COL[s],
-      xPercent:COL[s]*25,yPercent:ROW[p]*50,
-      backgroundPosition:(COL[s]*25)+'% '+(ROW[p]*50)+'%'
+      sprite:SPRITE,
+      column:COL[s],
+      row:ROW[p],
+      x:COL[s]*25,
+      y:ROW[p]*50
+    });
+  }
+  function spriteCell(p,s){
+    p=normalizePresence(p);s=normalizeState(s);
+    const c=cell(p,s);
+    return Object.freeze({
+      presence:p,state:s,row:c.row,column:c.column,
+      xPercent:c.x,yPercent:c.y,
+      backgroundPosition:c.x+'% '+c.y+'%'
     });
   }
   function project(input){
@@ -253,7 +264,7 @@
   }
 
   return Object.freeze({
-    STATES,PRESENCES,SPRITE,spriteCell,project,effectiveMotion,
+    STATES,PRESENCES,SPRITE,cell,spriteCell,project,effectiveMotion,
     mount,setState,setPresence,confirm,transitionTo,
     getState:()=>current,getPresence:()=>presence,getSpriteStatus:()=>spriteStatus
   });
