@@ -13,13 +13,16 @@
     'ig-tarjeta-iris'
   ];
 
-  function remove(storage,key){
-    try{storage.removeItem(key);}catch(_){}
-  }
-
   function clearIrisStorage(){
-    LOCAL_KEYS.forEach(function(key){remove(window.localStorage,key);});
-    SESSION_KEYS.forEach(function(key){remove(window.sessionStorage,key);});
+    try{window.localStorage.removeItem('ig-a11y');}catch(_){}
+    try{window.localStorage.removeItem('ig_lang');}catch(_){}
+    try{window.localStorage.removeItem('ig_saved_videos');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-conditions-url');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-situations-url');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-idioma');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-rutinas-hechos-ready');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-rutinas-hechos-builder');}catch(_){}
+    try{window.sessionStorage.removeItem('ig-tarjeta-iris');}catch(_){}
 
     /* Reflect the deletion in the current Reading UI without persisting a
        replacement default object. Other tools are not mounted on this page. */
