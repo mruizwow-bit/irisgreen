@@ -1,5 +1,5 @@
 {
-  "schema": "SABIK_B3_MOTION_TOKENS_R0",
+  "schema": "SABIK_B3_MOTION_TOKENS_R1_CURRENT_BASE",
   "candidate": true,
   "source": {
     "visual_family_pr": 181,
@@ -8,7 +8,7 @@
     "b3_head": "e5f70cba76a4414527c10b0fbecfd549a7390e66",
     "design_pr": 163,
     "design_head": "851e6c17185e76ffbb4f4b5ab34fe5eb9fd9dd68",
-    "sabik_preview_base": "96ebf38a535fa287f32fee8c7957ede39933365c"
+    "current_preview_base": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18"
   },
   "states": [
     "PRESENTE",
