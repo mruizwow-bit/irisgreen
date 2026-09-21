@@ -2,6 +2,7 @@
 
 **Estado:** `SABIK_B3_MOTION_AND_INTEGRATION_R0_READY`  
 **Tipo:** candidato de producción; gates humanos pendientes  
+**Issue coordinador:** #196  
 **NO MERGE · NO DEPLOY**
 
 ## Bases congeladas
@@ -9,42 +10,33 @@
 - Familia visual #181: `742e502802cdc9e3e7b154ddbb8493493c903898`
 - B3 estático / H1 #182: `e5f70cba76a4414527c10b0fbecfd549a7390e66`
 - Design compatibility #163: `851e6c17185e76ffbb4f4b5ab34fe5eb9fd9dd68`
-- Sabik real registrado al crear rama: `sabik-preview@96ebf38a535fa287f32fee8c7957ede39933365c`
+- Sabik real: `sabik-preview@96ebf38a535fa287f32fee8c7957ede39933365c`
 
 ## ID-14 · Motion B3
-
-Rama separada:
-
-`agent3/sabik-b3-motion-r0`
-
-PR separado y draft.
 
 Artefactos:
 - `sabik/b3-motion-tokens.json`
 - `sabik/b3-motion.js`
 - `sabik/B3_MOTION_R0.md`
 
-Cinco estados exactos:
+Estados únicos:
 - PRESENTE
 - ORIENTAR
 - TRANSICIÓN
 - PAUSA
 - CONFIRMAR
 
-Motion no crea estados conversacionales.
-
-### Invariantes
-
-- PRESENTE se asienta y queda quieto.
-- ORIENTAR no rebota ni dibuja una flecha.
-- TRANSICIÓN no gira en loop y no sirve de loading.
-- PAUSA queda contenida y visible.
-- CONFIRMAR no celebra ni premia.
+Invariantes:
+- PRESENTE se asienta y queda quieto;
+- ORIENTAR no rebota ni dibuja una flecha;
+- TRANSICIÓN no gira en loop y no sirve de loading;
+- PAUSA queda contenida y visible;
+- CONFIRMAR no celebra ni premia;
 - una sola animación B3 activa;
 - nueva entrada cancela la anterior;
 - transform + opacity únicamente;
 - no `requestAnimationFrame` permanente;
-- no spinner/latido/respiración.
+- no spinner, latido o respiración.
 
 ## ACC-07 · tres niveles
 
@@ -56,13 +48,9 @@ Motion no crea estados conversacionales.
 
 La preferencia local puede fijar SIN_MOVIMIENTO.
 
-Texto, Safety y función no desaparecen en ningún nivel.
+Texto, Safety y función permanecen en todos los niveles.
 
 ## ID-15 · integración real
-
-Rama:
-
-`agent3/sabik-b3-integration-r0`
 
 La interfaz real `/es/nea/` carga:
 - `b3-motion.js`
@@ -70,33 +58,31 @@ La interfaz real `/es/nea/` carga:
 - `cognitive-preferences.js`
 - `b3-integration.js`
 
-La integración observa la presentación existente; **no escribe en Core/S0**.
+La integración observa la presentación existente y **no escribe en Core/S0**.
 
 Proyección:
 - ready/presenting/retrieving/composing/error/risk → PRESENTE + capa existente;
 - awaiting clarification / correction → ORIENTAR;
 - paused → PAUSA;
-- TRANSICIÓN y CONFIRMAR se exponen como funciones de presentación explícitas, no como loading;
+- TRANSICIÓN se usa solo para un cambio funcional/presentacional explícito;
+- CONFIRMAR se usa solo tras un cambio local que requiere confirmación;
 - voz no cambia B3.
 
-## Activos visuales congelados
+## Activo visual de runtime
 
-El código resuelve los 15 keyframes en:
+El runtime usa un sprite versionado en el repositorio:
 
-`/sabik/assets/b3/<presencia>_<estado>.png`
+`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
 
-Los binarios se distribuyen en un paquete auditado separado:
+- 1280×768;
+- 15 celdas de 256×256;
+- columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
+- filas: Web / IA / Educa;
+- WebP lossless;
+- SHA-256: `e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23`;
+- hashes de las 15 fuentes R1 en `ASSET_MANIFEST.json`.
 
-`SABIK_B3_RUNTIME_ASSETS_R0.zip`
-
-- SHA-256: `82373796ff32bb9f3834f1c59472c5f5f25ea5b81393a29ed1d993971ed3b218`
-- 15 PNG 64×64 + manifest;
-- derivados LANCZOS de R1 aceptado;
-- ningún rediseño semántico/geométrico.
-
-`ASSET_MANIFEST.json` congela tamaño/hash de cada archivo y `tools/stage-sabik-b3-assets-r0.py` verifica cada byte antes de copiarlo.
-
-Sin staging, la integración mantiene el holograma existente como fallback. Por tanto el PR no debe desplegarse sin el paquete auditado.
+El sprite es un derivado técnico de los keyframes congelados; #181/#182 permanecen sin cambios.
 
 ## ACC-06 · controles cognitivos
 
@@ -118,26 +104,25 @@ No existe un segundo control local de contraste/tamaño/espaciado.
 
 ## ACC-08 · voz
 
-Implementado contrato UI con adaptador abstracto:
+Contrato UI con adaptador abstracto:
 - on/off;
 - volumen;
 - velocidad;
 - repetir;
 - etiquetas;
-- foco normal de controles nativos;
-- ARIA descriptiva;
+- foco nativo;
+- ARIA;
 - disabled states.
 
-Motor R0:
-`NullVoiceAdapter`
+Motor R0: `NullVoiceAdapter`.
 
-Por tanto:
-- ElevenLabs: NO;
-- API externa: NO;
-- TTS remoto: NO;
-- autoplay: NO;
-- micrófono: NO;
-- speech synthesis local como sustituto de S2: NO.
+No hay:
+- ElevenLabs;
+- API externa;
+- TTS remoto;
+- autoplay;
+- micrófono;
+- speech synthesis local usado como sustituto de S2.
 
 ## ACC-09 · lectura
 
@@ -152,9 +137,7 @@ El candidato hereda `IGPreferences`:
 
 Se evita doble aplicar la escala: el root rem global es la única fuente de aumento.
 
-CSS incluye cierre específico a 320 CSS px y los tests R0 vigilan que no se introduzca una segunda escala local.
-
-200 % / 400 % / 320 px siguen siendo gates de navegador/AT además de este contrato de implementación.
+Los tests R0 mantienen 320 CSS px como guardarraíl estático; 200 % y 400 % siguen requiriendo comprobación de navegador/AT además del contrato.
 
 ## ACC-10 · carga cognitiva
 
@@ -163,9 +146,9 @@ Densidad:
 - reducida;
 - paso a paso.
 
-En el Sabik real actual la respuesta es texto continuo. R0 **no la trunca** ni inventa pasos semánticos.
+R0 **no trunca** la respuesta actual ni inventa pasos semánticos.
 
-Los modos cambian disposición/espaciado, y “paso a paso” queda listo para contenido futuro explícitamente estructurado. Se mantienen:
+Los modos cambian disposición/espaciado. Se mantienen:
 - respuesta completa;
 - Safety;
 - límites;
@@ -202,27 +185,12 @@ No se infiere validación humana desde estas pruebas.
 ## Diferencias respecto a #181 / #182
 
 ### #181
-
-**0 cambios** en:
-- masters;
-- geometrías;
-- paletas;
-- wordmark;
-- cuatro presencias.
-
-R0 consume derivados de la familia; no modifica su fuente.
+**0 cambios** en masters, geometrías, paletas, wordmark y cuatro presencias.
 
 ### #182
+**0 cambios** en B3_STATE_GRAMMAR_V1, 15 keyframes R1, H1, secuencias, respuestas o matrices humanas.
 
-**0 cambios** en:
-- B3_STATE_GRAMMAR_V1;
-- 15 keyframes R1;
-- H1;
-- secuencias;
-- respuestas;
-- matrices humanas.
-
-R0 añade Motion e integración en ramas nuevas.
+R0 solo consume las fuentes congeladas.
 
 ## S0
 
@@ -235,11 +203,21 @@ La proyección B3 es una capa posterior de presentación.
 
 **Cambio semántico S0: 0.**
 
+## Reversión
+
+El spike se revierte eliminando:
+- los cuatro scripts R0 cargados por `/es/nea/`;
+- el sprite y manifest B3;
+- el bloque CSS R0;
+- los documentos/tests/workflow R0.
+
+El Core/S0 y la familia congelada no requieren rollback porque no se modifican.
+
 ## Gates pendientes
 
 - H1 continúa pendiente;
-- percepción/compresión no se inventa;
-- Motion R0 e Integration R0 siguen etiquetados como candidatos;
+- no se inventan resultados de percepción/comprensión;
+- Motion e Integration R0 siguen etiquetados como candidatos;
 - S2 permanece cerrado.
 
 **NO MERGE · NO DEPLOY.**
