@@ -1,0 +1,103 @@
+name: Sabik I0 executor V3-R2 generalization
+
+on:
+  push:
+    branches:
+      - sabik/i0-executor-v3-r2-generalization-20260921
+    paths:
+      - ".github/workflows/sabik-i0-executor-v3-r2-generalization.yml"
+      - "config/sabik/i0/executor-v3-r2-generalization.json"
+      - "tools/sabik-i0-executor-v3-r2.mjs"
+      - "tools/sabik-i0-v3-r2-evaluation-metrics.mjs"
+      - "tools/test-sabik-i0-executor-v3-r2.mjs"
+      - "tools/test-sabik-i0-v3-r2-antihardcode.mjs"
+      - "tools/audit-sabik-i0-v3-r2-literal-provenance.mjs"
+      - "tools/run-sabik-i0-v3-r2-generalization.mjs"
+      - "docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json"
+      - "docs/sabik-next/I0_EXECUTOR_V3_R2_ARCHITECTURE.md"
+
+permissions:
+  contents: read
+
+env:
+  GH_TOKEN: ""
+  GITHUB_TOKEN: ""
+
+jobs:
+  generalization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current R2 commit only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Seal checkout
+        run: |
+          test "$(git rev-list --count HEAD)" = "1"
+          git remote remove origin
+          test -z "$(git remote)"
+          test -z "$(git for-each-ref refs/remotes --format='%(refname)')"
+          test -z "$(git for-each-ref refs/pull --format='%(refname)')"
+
+      - name: Verify permitted inputs
+        run: |
+          echo "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb  tests/development/sabik/i0/development.v0.4.jsonl" | sha256sum -c -
+          echo "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f  tests/calibration/sabik/i0/calibration.v0.4.jsonl" | sha256sum -c -
+          echo "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8  tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json" | sha256sum -c -
+
+      - name: Syntax
+        run: |
+          node --check tools/sabik-i0-executor-v3-r2.mjs
+          node --check tools/sabik-i0-v3-r2-evaluation-metrics.mjs
+          node --check tools/test-sabik-i0-executor-v3-r2.mjs
+          node --check tools/test-sabik-i0-v3-r2-antihardcode.mjs
+          node --check tools/audit-sabik-i0-v3-r2-literal-provenance.mjs
+          node --check tools/run-sabik-i0-v3-r2-generalization.mjs
+
+      - name: Literal provenance audit
+        run: |
+          node tools/audit-sabik-i0-v3-r2-literal-provenance.mjs --output /tmp/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json
+          cmp /tmp/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json
+          node -e 'const a=require("./docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json"); if(a.CASE_SHAPED_FORBIDDEN!==0) process.exit(1)'
+
+      - name: Anti-hardcode
+        run: node tools/test-sabik-i0-v3-r2-antihardcode.mjs
+
+      - name: R2 own suite
+        run: node tools/test-sabik-i0-executor-v3-r2.mjs
+
+      - name: Development plus consumed regression
+        run: node tools/run-sabik-i0-v3-r2-generalization.mjs --config config/sabik/i0/executor-v3-r2-generalization.json --output reports/sabik/i0/executor-v3-r2-generalization
+
+      - name: Isolation guard
+        run: |
+          test -z "$(git remote)"
+          test -z "$(git for-each-ref refs/remotes --format='%(refname)')"
+          if grep -RE "api\.github\.com|github\.com|tests/evaluation/|tests/calibration/sabik/i0-v3|tests/calibration/sabik/i0-v4" \
+            tools/sabik-i0-executor-v3-r2.mjs \
+            tools/sabik-i0-v3-r2-evaluation-metrics.mjs \
+            tools/run-sabik-i0-v3-r2-generalization.mjs; then
+            echo "Forbidden reserved/external reference in R2 runtime"
+            exit 1
+          fi
+          node -e 'const m=require("./reports/sabik/i0/executor-v3-r2-generalization/manifest.v3-r2.json"); if(m.reserved_calibration_v3_opened!==false||m.reserved_calibration_v4_opened!==false||m.validation_opened!==false) process.exit(1)'
+
+      - name: Result hashes
+        run: |
+          sha256sum reports/sabik/i0/executor-v3-r2-generalization/*
+          cat reports/sabik/i0/executor-v3-r2-generalization/critical-gates.v3-r2.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sabik-i0-executor-v3-r2-generalization
+          path: |
+            reports/sabik/i0/executor-v3-r2-generalization/
+            docs/sabik-next/I0_V3_R2_LITERAL_PROVENANCE_AUDIT.json
+          if-no-files-found: error
