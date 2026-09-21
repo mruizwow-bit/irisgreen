@@ -80,6 +80,7 @@ async function noOverflow(page,label){
     const mp=await mobile.newPage();
     await mp.goto(origin+'/es/nea/',{waitUntil:'domcontentloaded'});
     await mp.locator('#sabik-cognitive-settings').waitFor();
+    await mp.locator('#sabik-cognitive-settings>summary').click();
     await noOverflow(mp,'320 CSS px');
     // 320 CSS px is the automated reflow proxy for 1280 CSS px at 400% zoom.
     assert.equal(await mp.locator('#sabik-answer').count(),1);
@@ -91,6 +92,7 @@ async function noOverflow(page,label){
     const rp=await reduced.newPage();
     await rp.goto(origin+'/es/nea/',{waitUntil:'domcontentloaded'});
     await rp.locator('#sabik-cognitive-settings').waitFor();
+    await rp.locator('#sabik-cognitive-settings>summary').click();
     assert.equal(await rp.locator('.sabik-panel').getAttribute('data-sabik-motion'),'REDUCIDO');
     await rp.locator('#sabik-motion-choice').selectOption('SIN_MOVIMIENTO');
     assert.equal(await rp.locator('.sabik-panel').getAttribute('data-sabik-motion'),'SIN_MOVIMIENTO');
