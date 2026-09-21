@@ -12,14 +12,193 @@
     "note": "The runtime sprite is a 256×256 LANCZOS derivative per cell, assembled into a lossless WebP. Source keyframes are not redesigned."
   },
   "runtime": {
-    "file": "sabik-b3-r0-sprite-256-lossless.webp",
+    "strategy": "individual-state-assets",
     "dimensions": [
-      1280,
-      768
+      64,
+      64
     ],
-    "cell": [
-      256,
-      256
+    "format": "image/webp",
+    "files": [
+      {
+        "file": "web_presente.webp",
+        "bytes": 2680,
+        "sha256": "046de206efe0a4f432e40b45bc553852ee023dc7be04a78d21b19f05b396688f",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "01ba427396a500d2472985f96023957ade6106c3"
+      },
+      {
+        "file": "web_orientar.webp",
+        "bytes": 2918,
+        "sha256": "013b6dcb2cac878fd60a0726b29245a84174e2a6240745b97a0caa41e3f73cd5",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "4ed2acf057fa2c1b1ecada3263a90ab714293d8c"
+      },
+      {
+        "file": "web_transicion.webp",
+        "bytes": 2872,
+        "sha256": "234dd0e41d4f2423115c7bc7f0870c6e0b131d1ac6a082be96ee677a5ceca3a2",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "80365eadb697af8747791150e0b7242aae64403b"
+      },
+      {
+        "file": "web_pausa.webp",
+        "bytes": 2572,
+        "sha256": "70eb8bdd94e69e530dea402f8676a27a436427cd1f5717ff01f095e27d7b990e",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "a0809244b7b8c3ed5488502cea1aeabaf94c6df0"
+      },
+      {
+        "file": "web_confirmar.webp",
+        "bytes": 4892,
+        "sha256": "9cc77a2adacf28659a0f0045861deaf7bc6336792d07319901ac0909184077c2",
+        "dimensions": [
+          96,
+          96
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "1168f6c02d639832eea75cd51d72001c4717cda7"
+      },
+      {
+        "file": "ia_presente.webp",
+        "bytes": 2910,
+        "sha256": "f68f174d1892c744f14a4691fea9855ed5db498396bb3092341f4ada95c6e30c",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "37e8ad64458496ba412b5d977674903ca350b0ca"
+      },
+      {
+        "file": "ia_orientar.webp",
+        "bytes": 3254,
+        "sha256": "07f65416c39fe0beae0c17473f6af45bdbcb0bbdeab1cfbadaa4729cd7fc42c4",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "8bc7e6bb3f0490cbff168fc8df3ab1df50b8a5aa"
+      },
+      {
+        "file": "ia_transicion.webp",
+        "bytes": 3210,
+        "sha256": "92ac47c5a18469170808699b6f1a86b69acfc0cea6181ca0765d5eacf811de0d",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "c5fbcd1bc0a6255f4eceab073b5723b148697e88"
+      },
+      {
+        "file": "ia_pausa.webp",
+        "bytes": 2912,
+        "sha256": "6596e3e3b89c27dc0b71c5ba6181f16975aa1daacfdb5bfb8c7c23ab08e0bc24",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "69109ac900f3b83fad08086ffebad712c3979908"
+      },
+      {
+        "file": "ia_confirmar.webp",
+        "bytes": 2858,
+        "sha256": "207846d80fcc5f07a7ce2899b7b4e0898b3ecfefa100e1040f83aefab45e2958",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "f2f1e509167e87429502ed23a9a9625332d85de4"
+      },
+      {
+        "file": "educa_presente.webp",
+        "bytes": 2710,
+        "sha256": "bcf29d943a054996eb958780733988da52311959d04539f405b39480dc7ace90",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "56533239aeaf0b0413e91867b9d3d19913a748b2"
+      },
+      {
+        "file": "educa_orientar.webp",
+        "bytes": 2876,
+        "sha256": "ea8c66ba1715fd84cd9fb58c1a05567b007df7dc126735687952086d5732e2f0",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "04e4cd960497d1b4ecbaca720c833e2aa75bccd0"
+      },
+      {
+        "file": "educa_transicion.webp",
+        "bytes": 2810,
+        "sha256": "379b71b04aaad2ae5e5a57b78efc3f37e2ffd195df75ec72673ea5d69d15ff98",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "04ddc229c07093338f1f8745eaf34f3336e3b565"
+      },
+      {
+        "file": "educa_pausa.webp",
+        "bytes": 2576,
+        "sha256": "1d0c3d739edca1713772fadc6a061700f8c655117c5b2238ad6807ab58f3e6b8",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "0aeb0b539440c41d1b981b5e3915af385326e1dd"
+      },
+      {
+        "file": "educa_confirmar.webp",
+        "bytes": 2546,
+        "sha256": "3645fbd291cddebf095b85fc656b10132e675aaa2705fb8f59a69e8c027baad0",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "4433fb5694aae1e53078236f98ec54fd026f1aea"
+      }
     ],
     "columns": [
       "PRESENTE",
@@ -33,11 +212,7 @@
       "ia",
       "educa"
     ],
-    "bytes": 6660,
-    "sha256": "3bc05d596927f45feed44bebb70750507a9ec6aeaa6b39d856ee9f06f6216c67",
-    "format": "image/webp",
-    "lossless": true,
-    "note": "Verified against the committed lossless WebP on this branch."
+    "note": "Fifteen committed 64×64 runtime derivatives; no sprite dependency. Source 544×544 keyframes remain frozen in #182."
   },
   "source_files": [
     {
