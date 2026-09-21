@@ -1,7 +1,7 @@
 (() => {
   const { normalizeText, isPublicable, unique } = window.NEAKnowledge;
   const { detectNegations, detectSessionPreferences, detectConversationControl } = window.NEACorrections;
-  const { applySessionUpdate, resolveSessionContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
+  const { applySessionUpdate, resolveSessionContext, resolveSafetyContext, rememberPlan: storePlan, applyConversationControl } = window.NEASession;
   const { detectRisk, createRiskAccompanimentPlan, createAmbiguousRiskPlan } = window.NEARisk;
   const { INTENTS, classifyIntent } = window.NEAIntent;
   const { decideCore } = window.NEADecision;
@@ -141,9 +141,11 @@
     const preferences = detectSessionPreferences(text);
     const conceptIds = unique([...directConcepts, ...relationConcepts]).filter((id) =>
       !session.vetoed_concepts.includes(id) && !session.rejected_concepts.includes(id) && !negatedIds.includes(id));
-    const riskState = detectRisk(text, unique([...conceptIds, ...directConcepts]), data);
+    const safety = resolveSafetyContext(session, text, detectRisk(text, unique([...conceptIds, ...directConcepts]), data));
+    const riskState = safety.riskState;
     const cognitiveState = detectCognitiveState(text, preferences, riskState);
     const nextSession = applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState);
+    nextSession.safety_resolution = safety.resolution;
     nextSession.context_mode = context.mode;
     nextSession.context_modifier = context.modifier;
     nextSession.topic_query = context.mode === "followup" ? session.topic_query : text;

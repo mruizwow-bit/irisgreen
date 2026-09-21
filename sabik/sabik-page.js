@@ -386,6 +386,36 @@
     document.querySelector("#sabik-retry-data").hidden = !degraded;
   }
 
+  function hasSafetyPlan(plan) {
+    return ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan?.type);
+  }
+
+  async function mapPlanToMachine(result, current) {
+    if (result.plan.type === "ambiguous_risk_clarification") {
+      if (state.machine.safety === "normal") await dispatch({ type: "RISK_UNCERTAIN" });
+      return;
+    }
+    if (result.plan.type === "risk_accompaniment") {
+      if (!["risk", "human_handoff"].includes(state.machine.safety)) await dispatch({ type: "RISK_CONFIRMED" });
+      return;
+    }
+    if (state.machine.safety === "uncertain" && result.session.safety_resolution === "RISK_CLEARED") {
+      await dispatch({ type: "RISK_CLEARED" });
+      // Keep the accepted resolution even if a subsequent pause cancels rendering.
+      state.session = result.session;
+      state.lastPlan = result.plan;
+      if (!current()) return;
+    }
+    if (state.machine.safety !== "normal") throw new Error("Ordinary response cannot replace active safety");
+    if (result.plan.type === "insufficient_information") await dispatch({ type: "RETRIEVAL_EMPTY" });
+    else {
+      await dispatch({ type: "RETRIEVAL_OK" });
+      if (!current()) return;
+      if (result.plan.type === "clarifying_question") await dispatch({ type: "ASK_CLARIFICATION" });
+      else await dispatch({ type: "RESPONSE_READY", dialogue: "information" });
+    }
+  }
+
   async function runNeed(value, conversationControl = null) {
     if (unavailable()) return;
     const generation = ++state.generation;
@@ -396,22 +426,22 @@
     try {
       if (state.machine.operation === "error") await dispatch({ type: "RETRY" });
       if (!current()) return;
-      await dispatch({ type: "SUBMIT" });
+      // S0 blocks ordinary SUBMIT during confirmed protection. The local safety
+      // conversation remains open without starting an ordinary retrieval cycle.
+      if (!["risk", "human_handoff"].includes(state.machine.safety)) await dispatch({ type: "SUBMIT" });
       await ensureData();
       if (!current()) return;
       renderDataAvailability();
       const result = conversationControl
         ? window.NEACoreV1.applyResponseControl(state.session, state.lastPlan, conversationControl, state.data)
         : window.NEACoreV1.buildResponsePlan(value, state.session, state.data);
-      // S1 maps only the existing ordinary lifecycle. Risk classification and
-      // editorial output are unchanged; safety integration belongs to S3.
-      if (result.plan.type === "insufficient_information") await dispatch({ type: "RETRIEVAL_EMPTY" });
-      else {
-        await dispatch({ type: "RETRIEVAL_OK" });
-        if (!current()) return;
-        if (result.plan.type === "clarifying_question") await dispatch({ type: "ASK_CLARIFICATION" });
-        else await dispatch({ type: "RESPONSE_READY", dialogue: "information" });
+      // Once recognised, protection must also survive a pause/reset while the
+      // worker acknowledges its transition. Ordinary results still commit below.
+      if (hasSafetyPlan(result.plan)) {
+        state.session = result.session;
+        renderPlan(result.plan);
       }
+      await mapPlanToMachine(result, current);
       if (!current()) return;
       state.session = result.session;
       state.lastInput = result.session.topic_query || value;
@@ -424,13 +454,19 @@
       if (!current()) return;
       state.failedInput = value;
       const message = "No he podido cargar los datos locales. Puedes volver a enviar tu consulta.";
-      setStatus(message, "minimal");
       document.querySelector("#sabik-output").hidden = false;
-      const answer = document.querySelector("#sabik-answer");
-      answer.className = "sabik-answer is-warning";
-      uiText(answer, message);
-      uiText(document.querySelector("#sabik-notice"), "");
-      clearSources();
+      if (hasSafetyPlan(state.lastPlan)) {
+        renderPlan(state.lastPlan);
+        document.querySelector("#sabik-notice").textContent = [state.lastPlan.limits_notice, translate(message)].filter(Boolean).join(" ");
+        setStatus(message, visualState(state.session.sabik_state));
+      } else {
+        setStatus(message, "minimal");
+        const answer = document.querySelector("#sabik-answer");
+        answer.className = "sabik-answer is-warning";
+        uiText(answer, message);
+        uiText(document.querySelector("#sabik-notice"), "");
+        clearSources();
+      }
       document.querySelector("#sabik-retry-data").hidden = false;
       finalStatus = message;
     } finally {
@@ -538,6 +574,9 @@
       clearSources();
       const preferences = state.session.session_preferences;
       state.session = window.NEACoreV1.createSessionState();
+      // RESET_SESSION clears conversational content, never S0 protection.
+      state.session.risk_state = state.machine.safety === "uncertain" ? "riesgo_ambiguo"
+        : ["risk", "human_handoff"].includes(state.machine.safety) ? "acompanamiento_en_riesgo" : "normal";
       state.session = window.NEACoreV1.setSessionPreferences(state.session, preferences);
       state.lastInput = "";
       state.failedInput = "";
@@ -547,6 +586,11 @@
       text("#sabik-state-label", "Disponible");
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
+      if (state.machine.safety !== "normal") {
+        const protectedResult = window.NEACoreV1.buildResponsePlan("", state.session, state.data || {});
+        state.session = protectedResult.session;
+        renderPlan(protectedResult.plan);
+      }
       announce("Conversación reiniciada.");
       });
       focus("#sabik-input");
