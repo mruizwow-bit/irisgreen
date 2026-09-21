@@ -119,7 +119,7 @@ async function externalOff(context,origin){
       assert.ok(saved&&!saved.includes('q='),saved);
 
       // A non-text filter still persists.
-      const filter=page.locator('#filtros button[data-type]').filter({hasNotText:/^$/}).first();
+      const filter=page.locator('#filtros button[data-type="apoyo"]');
       await filter.click();
       await page.waitForTimeout(100);
       saved=await page.evaluate(()=>sessionStorage.getItem('ig-conditions-url'));
@@ -148,7 +148,7 @@ async function externalOff(context,origin){
       await sq.waitFor();
       await sq.fill('ruido');
       await sq.dispatchEvent('input');
-      await page.waitForTimeout(120);
+      await page.waitForFunction(()=>sessionStorage.getItem('ig-situations-url')===null&&!new URL(location.href).searchParams.has('q'));
       assert.equal(await page.evaluate(()=>sessionStorage.getItem('ig-situations-url')),null);
       assert.equal(new URL(page.url()).searchParams.has('q'),false);
 
