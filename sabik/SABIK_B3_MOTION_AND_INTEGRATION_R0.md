@@ -70,20 +70,17 @@ Proyección:
 
 ## Activo visual de runtime
 
-El runtime usa un sprite versionado en el repositorio:
+El runtime consume 15 derivados WebP versionados en:
 
-`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
+`sabik/assets/b3/`
 
-- 1280×768;
-- 15 celdas de 256×256;
-- columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
-- filas: Web / IA / Educa;
-- WebP lossless;
-- SHA-256: `3bc05d596927f45feed44bebb70750507a9ec6aeaa6b39d856ee9f06f6216c67`;
-- tamaño: `6660` bytes;
-- hashes de las 15 fuentes R1 en `ASSET_MANIFEST.json`.
+- un archivo por presencia × estado;
+- dimensión mínima: 64×64;
+- SHA-256, bytes y dimensiones reales por archivo en `ASSET_MANIFEST.json`;
+- fallback: holograma legacy visible si el derivado solicitado no carga;
+- fuentes: keyframes R1 congelados de #182;
+- #181/#182 permanecen sin cambios.
 
-El sprite es un derivado técnico de los keyframes congelados; #181/#182 permanecen sin cambios.
 
 ## ACC-06 · controles cognitivos
 
