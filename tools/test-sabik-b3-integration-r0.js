@@ -11,22 +11,24 @@ const manifest=JSON.parse(fs.readFileSync(path.join(root,'sabik','assets','b3','
 assert.equal(manifest.schema,'SABIK_B3_RUNTIME_ASSETS_R0');
 assert.equal(manifest.source_files.length,15);
 assert.equal(new Set(manifest.source_files.map(x=>x.file)).size,15);
-assert.equal(manifest.runtime.file,'sabik-b3-r0-sprite-256-lossless.webp');
-assert.equal(manifest.runtime.lossless,true);
+assert.equal(manifest.runtime.strategy,'individual-state-assets');
 assert.deepEqual(manifest.runtime.columns,['PRESENTE','ORIENTAR','TRANSICIÓN','PAUSA','CONFIRMAR']);
 assert.deepEqual(manifest.runtime.rows,['web','ia','educa']);
-const sprite=path.join(root,'sabik','assets','b3',manifest.runtime.file);
-assert.ok(fs.existsSync(sprite),'runtime sprite must be committed');
-const bytes=fs.readFileSync(sprite);
-assert.equal(bytes.length,manifest.runtime.bytes);
-assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),manifest.runtime.sha256);
+assert.equal(manifest.runtime.files.length,15);
+for(const item of manifest.runtime.files){
+  const file=path.join(root,'sabik','assets','b3',item.file);
+  assert.ok(fs.existsSync(file),item.file+' must be committed');
+  const bytes=fs.readFileSync(file);
+  assert.equal(bytes.length,item.bytes,item.file+' byte length');
+  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),item.sha256,item.file+' sha256');
+  assert.ok(item.dimensions[0]>=64&&item.dimensions[1]>=64,item.file+' minimum runtime size');
+}
 
 assert.deepEqual(I.STATES,['PRESENTE','ORIENTAR','TRANSICIÓN','PAUSA','CONFIRMAR']);
 assert.deepEqual(I.PRESENCES,['web','ia','educa']);
-assert.equal(I.SPRITE,'/sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp');
-assert.deepEqual(I.spriteCell('web','PRESENTE'),{presence:'web',state:'PRESENTE',row:0,column:0,xPercent:0,yPercent:0,backgroundPosition:'0% 0%'});
-assert.deepEqual(I.spriteCell('ia','TRANSICIÓN'),{presence:'ia',state:'TRANSICIÓN',row:1,column:2,xPercent:50,yPercent:50,backgroundPosition:'50% 50%'});
-assert.deepEqual(I.spriteCell('educa','CONFIRMAR'),{presence:'educa',state:'CONFIRMAR',row:2,column:4,xPercent:100,yPercent:100,backgroundPosition:'100% 100%'});
+assert.equal(I.asset('web','PRESENTE'),'/sabik/assets/b3/web_presente.webp');
+assert.equal(I.asset('ia','TRANSICIÓN'),'/sabik/assets/b3/ia_transicion.webp');
+assert.equal(I.asset('educa','CONFIRMAR'),'/sabik/assets/b3/educa_confirmar.webp');
 
 assert.equal(I.project({operation:'paused',interaction:'pausa'}),'PAUSA');
 assert.equal(I.project({operation:'awaiting_clarification',interaction:'correccion'}),'ORIENTAR');
@@ -47,9 +49,6 @@ const voiceSource=fs.readFileSync(path.join(root,'sabik','voice-ui-adapter.js'),
 for(const forbidden of [/ElevenLabs/i,/speechSynthesis/,/SpeechSynthesisUtterance/,/getUserMedia/,/MediaRecorder/,/https?:\/\//])assert.doesNotMatch(voiceSource,forbidden);
 const intSource=fs.readFileSync(path.join(root,'sabik','b3-integration.js'),'utf8');
 assert.doesNotMatch(intSource,/BUSCANDO|COMPONIENDO|HABLANDO|LOADING/);
-const css=fs.readFileSync(path.join(root,'sabik','sabik-page.css'),'utf8');
-assert.match(css,/background-size:\s*500%\s+300%/);
-assert.match(css,/background-repeat:\s*no-repeat/);
 const html=fs.readFileSync(path.join(root,'es','nea','index.html'),'utf8');
 for(const src of ['/sabik/b3-motion.js','/sabik/voice-ui-adapter.js','/sabik/cognitive-preferences.js','/sabik/b3-integration.js'])assert.ok(html.includes(src),src);
 assert.ok(html.includes('data-sabik-presence="ia"'));
