@@ -32,3 +32,11 @@ jobs:
         run: node tools/test-sabik-b3-integration-r0.js
       - name: Cognitive accessibility R0
         run: node tools/test-sabik-cognitive-r0.js
+      - name: Prepare Chromium for B3 browser smoke
+        run: |
+          npm install --prefix /tmp/sabik-b3-browser --no-save playwright@1.55.0
+          /tmp/sabik-b3-browser/node_modules/.bin/playwright install --with-deps chromium >/tmp/sabik-b3-browser-install.log 2>&1
+      - name: B3 browser integration, reflow and reduced motion
+        env:
+          NODE_PATH: /tmp/sabik-b3-browser/node_modules
+        run: node tools/test-sabik-b3-browser-r0.js
