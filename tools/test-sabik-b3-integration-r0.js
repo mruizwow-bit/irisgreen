@@ -4,6 +4,16 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const I=require(path.join(root,'sabik','b3-integration.js'));
 const V=require(path.join(root,'sabik','voice-ui-adapter.js'));
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'sabik','assets','b3','ASSET_MANIFEST.json'),'utf8'));
+assert.equal(manifest.schema,'SABIK_B3_RUNTIME_ASSETS_R0');
+assert.equal(manifest.files.length,15);
+assert.equal(new Set(manifest.files.map(x=>x.file)).size,15);
+assert.equal(manifest.package.sha256,'82373796ff32bb9f3834f1c59472c5f5f25ea5b81393a29ed1d993971ed3b218');
+for(const item of manifest.files){
+  assert.match(item.file,/^(web|ia|educa)_(presente|orientar|transicion|pausa|confirmar)\.png$/);
+  assert.match(item.sha256,/^[0-9a-f]{64}$/);
+}
+
 const C=require(path.join(root,'sabik','cognitive-preferences.js'));
 
 assert.deepEqual(I.STATES,['PRESENTE','ORIENTAR','TRANSICIÓN','PAUSA','CONFIRMAR']);
