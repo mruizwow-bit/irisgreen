@@ -4,7 +4,7 @@
   if(root)root.SabikCognitivePreferences=api;
 })(typeof window!=='undefined'?window:globalThis,function(root){
   'use strict';
-  const KEY='sabik-presentation-r0';
+  const KEY='sabik-presentation-r1';
   const MOTION=['NORMAL','REDUCIDO','SIN_MOVIMIENTO'];
   const DENSITY=['completa','reducida','paso_a_paso'];
   const LABELS={
