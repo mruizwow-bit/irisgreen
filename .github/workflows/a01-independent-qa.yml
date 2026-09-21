@@ -1,0 +1,65 @@
+name: A01 independent QA gate
+on:
+  push:
+    branches: [sabik/qa-a01-safety-gate]
+permissions:
+  contents: read
+jobs:
+  a01:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify QA ancestry and S0 protected blobs
+        run: |
+          BASE=fc5cdfc2f978c85033de2b07c34309f8a4a7bd18
+          git merge-base --is-ancestor "$BASE" HEAD
+          for p in sabik/nea-core/sabik-machine.js tools/test-sabik-machine-s0.js; do
+            test "$(git rev-parse "$BASE:$p")" = "$(git rev-parse "HEAD:$p")"
+          done
+      - name: Freeze validator
+        run: node tests/specs/sabik/validate-a01-safety-gate-v1.mjs
+      - name: Execute independent A01 cases on current runtime
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node tests/specs/sabik/run-a01-safety-gate-v1.mjs --adapter tools/a01-independent-adapter.mjs | tee /tmp/a01.log
+          echo $? > /tmp/a01.exit
+      - name: S0 S4 V7 regressions
+        run: |
+          node tools/test-sabik-machine-s0.js
+          node tools/test-sabik-s4.js
+          node tools/test-sabik-page-v7.js
+          node tools/test-sabik-a11y-closure.js
+      - name: Browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/a01-browser" --no-save --package-lock=false playwright@1.62.1
+          node "$RUNNER_TEMP/a01-browser/node_modules/playwright/cli.js" install --with-deps chrome
+          echo "NODE_PATH=$RUNNER_TEMP/a01-browser/node_modules" >> "$GITHUB_ENV"
+      - name: S1 and S4 browser source
+        run: |
+          node tools/test-sabik-s1.js
+          node tools/test-sabik-s4-browser.js
+      - name: Clean build and dist browser regression
+        run: |
+          python3 scripts/build_site.py
+          test -z "$(git status --porcelain --untracked-files=no)"
+          export S1_WEB_ROOT="$PWD/dist"
+          export S4_WEB_ROOT="$PWD/dist"
+          node tools/test-sabik-s1.js
+          node tools/test-sabik-s4-browser.js
+      - name: Final A01 verdict for this runtime
+        run: |
+          code="$(cat /tmp/a01.exit)"
+          cat /tmp/a01.log
+          if [ "$code" = "0" ]; then echo A01_CASES_RUNTIME_PASS; else echo A01_CASES_RUNTIME_BLOCKED; fi
+          exit "$code"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: a01-independent-qa
+          path: /tmp/a01.log
+          retention-days: 14

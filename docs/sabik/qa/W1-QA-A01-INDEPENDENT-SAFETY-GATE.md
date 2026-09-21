@@ -19,3 +19,7 @@ Además del corpus A01, la aceptación exige:
 Salida única final: `A01_QA_PASS` o `A01_QA_BLOCKED`.
 
 No merge. No deploy.
+
+## Ejecución base
+
+Tras congelar los casos se añadió un adapter QA que proyecta el Core real al esquema observable. No modifica runtime ni deriva expectativas del candidato. El workflow independiente ejecuta A01 y luego S0/S1/S4/V7 + navegador en source y dist.
