@@ -1,23 +1,26 @@
 # B3 runtime assets · R0
 
-The production-candidate code resolves 15 static B3 keyframes under this directory.
+**Status:** production candidate from frozen B3 R1.
 
-Binary PNGs are distributed in the audited conversation artifact:
+This directory contains the runtime visual derivative used by the real integration spike:
 
-`SABIK_B3_RUNTIME_ASSETS_R0.zip`
+`sabik-b3-r0-sprite-256-lossless.webp`
 
-Package SHA-256:
+## Runtime contract
 
-`82373796ff32bb9f3834f1c59472c5f5f25ea5b81393a29ed1d993971ed3b218`
+- source: PR #182 @ `e5f70cba76a4414527c10b0fbecfd549a7390e66`;
+- source keyframes: 15 accepted R1 PNGs, 544×544;
+- runtime cells: 256×256 LANCZOS derivatives;
+- packaging: one **lossless WebP** sprite, 5 columns × 3 rows;
+- columns: PRESENTE · ORIENTAR · TRANSICIÓN · PAUSA · CONFIRMAR;
+- rows: Web · IA · Educa;
+- SHA-256: `e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23`;
+- bytes: `751660`.
 
-The repository stores the hash contract in `ASSET_MANIFEST.json`. Before a deployable integration build, extract the package and run:
+The 15 source SHA-256 values and Library IDs are recorded in `ASSET_MANIFEST.json`.
 
-```bash
-python tools/stage-sabik-b3-assets-r0.py /path/to/extracted/SABIK_B3_RUNTIME_ASSETS_R0
-```
+This is a runtime derivative, not a new visual family. No source keyframe, geometry or semantic state in #181/#182 is changed.
 
-This verifies all 15 derivatives before copying them here.
+If the sprite cannot load, `b3-integration.js` keeps the existing legacy hologram visible rather than showing a broken image.
 
-Until assets are staged, `b3-integration.js` deliberately falls back to the existing Sabik hologram rather than showing a broken/incorrect presence.
-
-**NO DEPLOY from an unstaged R0 branch.**
+**NO MERGE · NO DEPLOY.**
