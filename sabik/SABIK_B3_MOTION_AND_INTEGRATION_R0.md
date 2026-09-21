@@ -79,7 +79,8 @@ El runtime usa un sprite versionado en el repositorio:
 - columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
 - filas: Web / IA / Educa;
 - WebP lossless;
-- SHA-256: `e9e5adddc9eeecee91e8c2978603046851863ccf24b6e66504a69af877313f23`;
+- SHA-256: `3bc05d596927f45feed44bebb70750507a9ec6aeaa6b39d856ee9f06f6216c67`;
+- tamaño: `6660` bytes;
 - hashes de las 15 fuentes R1 en `ASSET_MANIFEST.json`.
 
 El sprite es un derivado técnico de los keyframes congelados; #181/#182 permanecen sin cambios.
@@ -95,7 +96,7 @@ Se reutilizan controles globales Iris Green para:
 - reducción de movimiento.
 
 Sabik añade solo:
-- movimiento local: automático / reducido / sin movimiento;
+- movimiento local: normal / reducido / sin movimiento;
 - densidad: completa / reducida / paso a paso;
 - voz candidata detrás de S2;
 - intensidad visual: reutiliza “Bajar intensidad”.
