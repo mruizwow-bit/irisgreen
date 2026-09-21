@@ -50,7 +50,7 @@ export function detectSafetySignals(text,context={}){
     const hasDanger=danger.test(clause)||harm.test(clause);
     const isUncertain=uncertainty.test(clause)&&hasDanger;
     const isResolved=(resolved.test(clause)||directSafe.test(clause))&&(hasDanger||/\b(?:preocupante|situacion)\b/u.test(clause));
-    const nonPersonal=explicitNotSelf.test(clause)||(nonPersonalTopic.test(clause)&&!selfRef.test(clause));
+    const nonPersonal=nonPersonalTopic.test(clause)&&(explicitNotSelf.test(clause)||directSafe.test(clause)||!selfRef.test(clause));
     const isDirectPersonalDanger=directPersonalDanger.test(clause);
 
     if(nonPersonal){add("normal",clause,"explicit_non_personal_context",5);continue;}
