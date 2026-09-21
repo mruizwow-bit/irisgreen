@@ -390,9 +390,9 @@
     return ["risk_accompaniment", "ambiguous_risk_clarification"].includes(plan?.type);
   }
 
-  function syncAcceptedSafety() {
+  function syncAcceptedSafety(turn) {
     if (state.machine.safety !== "normal") {
-      const result = window.NEAResponse.buildSafetyResponse("", state.session, state.data || {}, state.machine);
+      const result = window.NEAResponse.buildSafetyResponse("", state.session, state.data || {}, state.machine, turn);
       state.session = result.session;
       renderPlan(result.plan);
     } else {
@@ -430,7 +430,7 @@
       const turn = window.NEARisk.classifySafetyTurn(conversationControl ? "" : value);
       for (const type of window.NEARisk.safetyEventsForTurn(turn, state.machine)) {
         await dispatch({ type });
-        syncAcceptedSafety();
+        syncAcceptedSafety(turn);
         if (!current()) return;
       }
       // Active Safety bypasses ordinary submission and retrieval. RISK_CLEARED

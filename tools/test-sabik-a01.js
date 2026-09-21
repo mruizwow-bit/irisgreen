@@ -102,7 +102,7 @@ for (const verb of ['quiero', 'voy a', 'pienso']) {
     check('negation scopes its own predicate: no ' + phrase, () => assert.equal(global.NEARisk.detectRisk('no ' + phrase), 'normal'));
   }
 }
-for (const phrase of ['mi amiga quiere hacerse dano', 'ella dice: quiero hacerme dano', 'que son los pensamientos suicidas', 'no tengo pensamientos suicidas']) {
+for (const phrase of ['ella dice: quiero hacerme dano', 'que son los pensamientos suicidas', 'no tengo pensamientos suicidas']) {
   check('third person, report or negation is not confirmed self-risk: ' + phrase, () => {
     assert.equal(global.NEARisk.detectRisk(phrase, ['riesgo_suicida'], data), 'normal');
   });
@@ -151,6 +151,102 @@ check('paused/error uncertainty cannot be resolved by a yes/no turn', () => {
     for (const text of ['si', 'no']) assert.deepEqual(global.NEARisk.safetyEventsForTurn(global.NEARisk.classifySafetyTurn(text), machine), []);
     assert.deepEqual(machine, before);
   }
+});
+
+for (const doubt of ['no se', 'dudo']) for (const modal of ['puedo', 'quiero']) {
+  for (const verb of ['seguir', 'continuar']) for (const suffix of ['', ' asi']) {
+    const phrase = `${doubt} si ${modal} ${verb}${suffix}`;
+    check('present personal doubt family: ' + phrase, () => {
+      for (const variant of [phrase, `¡YO ${phrase.toUpperCase()}!`, `Ahora, yo ${phrase}.`]) {
+        const before = retrievals;
+        const result = ask(variant);
+        protectedResult(result, 'riesgo_ambiguo'); assert.equal(retrievals, before);
+        assert.deepEqual(result.events, ['RISK_UNCERTAIN']);
+        assert.equal(result.machine.operation, 'awaiting_clarification');
+        assert.equal(result.machine.dialogue, 'clarification'); assert.equal(result.plan.subject, 'self');
+      }
+    });
+  }
+}
+for (const start of ['No sé si puedo continuar.', 'Dudo si quiero seguir así ahora.']) {
+  check('doubt family uses existing yes/no and lifecycle, not a parallel resolver: ' + start, () => {
+    const prior = ask(start);
+    protectedResult(ask('hola', prior.session), 'riesgo_ambiguo');
+    assert.deepEqual(ask('si', prior.session).events, ['RISK_CONFIRMED']);
+    assert.deepEqual(ask('no', prior.session).events, ['RISK_CLEARED']);
+    let machine = step(prior.machine, { type: 'TECHNICAL_ERROR', code: 'synthetic' });
+    machine = step(machine, { type: 'RETRY' });
+    assert.equal(machine.safety, 'uncertain'); assert.equal(machine.operation, 'awaiting_clarification');
+    protectedResult(global.NEAResponse.buildSafetyResponse('', prior.session, data, machine), 'riesgo_ambiguo');
+  });
+}
+const normalContrasts = [
+  'No sé si quiero seguir leyendo el informe.', 'Dudo si puedo continuar con la solicitud.',
+  'No sé si puedo seguir así; no quiero hacerme daño.',
+  'No sé si quiero continuar, pero no estoy en peligro.',
+  'Ayer no sabía si podía seguir así.', 'Antes, no sé si puedo seguir así, era una frase frecuente.',
+  'No sé si puedo seguir así era lo que pensaba antes.',
+  'Quería hacerme daño el año pasado, pero ya no.', 'Mi hijo quería hacerse daño antes, ahora no.',
+  'Mi familiar dice que quiso hacerse daño ayer.', 'Mi amiga no quiere hacerse daño.',
+  'Mi hijo dice que no quiere hacerse daño hoy.', 'Mi familiar dice que quiere hacerse daño en el juego.',
+  'En la novela mi amigo dice que quiere hacerse daño hoy.',
+  'La frase "No sé si puedo seguir. Quiero hacerme daño" aparece en un libro.',
+  '«Mi hijo dice que quiere hacerse daño hoy». Es una cita literaria.',
+  'Estoy estudiando la expresión: no sé si quiero seguir.',
+  'Qué significa no sé si puedo seguir así?', 'Me muero de risa.',
+  'Quiero hacerme daño en el videojuego para reiniciarlo.',
+  'Mi amigo dijo que quiere hacerse daño, pero eso ya pasó.',
+  'No me quiero hacer daño ahora.', 'No tengo pensamientos suicidas.',
+  'Sí.'
+];
+for (const phrase of normalContrasts) check('bounded grammar leaves contrast normal: ' + phrase, () => {
+  const turn = global.NEARisk.classifySafetyTurn(phrase);
+  assert.equal(turn.classification, 'normal');
+  assert.deepEqual(global.NEARisk.safetyEventsForTurn(turn, ready()), []);
+  assert.equal(ask(phrase).machine.safety, 'normal');
+});
+for (const person of ['mi amiga', 'mi hijo', 'un familiar']) {
+  for (const predicate of ['quiere hacerse dano', 'dice que quiere hacerse dano hoy', 'me explica que se va a hacer dano ahora']) {
+    const phrase = `${person} ${predicate}`;
+    check('current third-person risk without self attribution: ' + phrase, () => {
+      const initial = core.createSessionState(); const before = retrievals;
+      const turn = global.NEARisk.classifySafetyTurn(phrase);
+      assert.equal(turn.subject, 'third_person'); assert.equal(turn.classification, 'risk');
+      const result = ask(phrase, initial); protectedResult(result, 'acompanamiento_en_riesgo');
+      assert.equal(result.plan.subject, 'third_person'); assert.equal(result.plan.question, null);
+      assert.equal(result.session.cognitive_state, initial.cognitive_state);
+      assert.equal(result.plan.sabik_state.cognitive_state, initial.sabik_state.cognitive_state);
+      assert.equal(retrievals, before); assert.deepEqual(result.events, ['RISK_CONFIRMED']);
+      const neutral = ask('hola', result.session);
+      assert.equal(neutral.plan.subject, 'third_person'); assert.equal(neutral.session.cognitive_state, initial.cognitive_state);
+      assert.equal(neutral.machine.safety, 'risk'); assert.equal(retrievals, before);
+      assert(!core.renderControlledText(result.plan).includes('¿estás en peligro'));
+    });
+  }
+}
+for (const phrase of [
+  'Mi amigo quiere hacerse daño y yo me quiero hacer daño ahora.',
+  'Mi amiga está a mi lado y me quiero hacer daño.',
+  'Yo quiero hacerme daño y mi hijo dice que quiere hacerse daño hoy.',
+  'Mi hijo dice que quiere hacerse daño hoy. Yo quiero hacerme daño.',
+  'En el libro dice "quiero hacerme daño"; pero yo me quiero hacer daño hoy.'
+]) check('actual self-risk takes precedence without mistaking a quote for self: ' + phrase, () => {
+  const turn = global.NEARisk.classifySafetyTurn(phrase);
+  assert.equal(turn.classification, 'risk'); assert.equal(turn.subject, 'self');
+  assert.equal(ask(phrase).plan.subject, 'self');
+});
+check('subject is metadata, never authority to enable or disable protection', () => {
+  const third = ask('mi hijo quiere hacerse dano hoy');
+  const normal = core.buildResponsePlan('hola', third.session, data, ready());
+  assert.equal(normal.session.risk_state, 'normal'); assert.notEqual(normal.plan.type, 'risk_accompaniment');
+  const unknown = global.NEAResponse.buildSafetyResponse('', core.createSessionState(), data, third.machine);
+  protectedResult(unknown, 'acompanamiento_en_riesgo'); assert.equal(unknown.plan.subject, 'none');
+});
+check('legacy single-turn API also distinguishes third-person from user cognition', () => {
+  const session = core.createSessionState();
+  const result = core.buildResponsePlan('mi hija se quiere hacer dano hoy', session, data);
+  protectedResult(result, 'acompanamiento_en_riesgo'); assert.equal(result.plan.subject, 'third_person');
+  assert.equal(result.session.cognitive_state, session.cognitive_state); assert.equal(result.plan.question, null);
 });
 if (process.env.A01_EVIDENCE_DIR) {
   const out = path.resolve(process.env.A01_EVIDENCE_DIR);

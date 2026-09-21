@@ -129,14 +129,20 @@
     return (conceptIds || []).filter((concept) => !discarded.has(concept));
   }
 
-  function buildSafetyResponse(text, session, data, machine) {
+  function buildSafetyResponse(text, session, data, machine, turn = window.NEARisk.classifySafetyTurn(text)) {
     const riskState = riskStateFromSafety(machine);
     if (riskState === "normal") throw new Error("Safety response requires active S0 protection");
+    // Subject is response context only, never an input to S0 protection. A
+    // third-person report must not assign a cognitive state to the user.
+    const previousSubject = session.last_plan?.subject;
+    const subject = turn.subject === "self" || previousSubject === "self" ? "self"
+      : turn.subject === "third_person" || previousSubject === "third_person" ? "third_person" : "none";
     const preferences = detectSessionPreferences(text);
     const next = applySessionUpdate(session, text, session.active_concepts, [], preferences,
-      riskState, detectCognitiveState(text, preferences, riskState));
-    return rememberPlan(next, riskState === "riesgo_ambiguo" ? createAmbiguousRiskPlan(next)
-      : createRiskAccompanimentPlan(next, [], findActions(["riesgo_suicida"], riskState, data)));
+      riskState, subject === "self" ? detectCognitiveState(text, preferences, riskState) : session.cognitive_state);
+    const plan = riskState === "riesgo_ambiguo" ? createAmbiguousRiskPlan(next)
+      : createRiskAccompanimentPlan(next, [], findActions(["riesgo_suicida"], riskState, data));
+    return rememberPlan(next, { ...plan, subject });
   }
 
   function buildResponsePlan(text, session, data, machine = null) {
@@ -158,7 +164,8 @@
     const conceptIds = unique([...directConcepts, ...relationConcepts]).filter((id) =>
       !session.vetoed_concepts.includes(id) && !session.rejected_concepts.includes(id) && !negatedIds.includes(id));
     const riskState = machine ? riskStateFromSafety(machine) : detectRisk(text);
-    const cognitiveState = detectCognitiveState(text, preferences, riskState);
+    const subject = window.NEARisk.classifySafetyTurn(text).subject;
+    const cognitiveState = subject === "third_person" ? session.cognitive_state : detectCognitiveState(text, preferences, riskState);
     const nextSession = applySessionUpdate(session, text, conceptIds, negatedIds, preferences, riskState, cognitiveState);
     nextSession.context_mode = context.mode;
     nextSession.context_modifier = context.modifier;
@@ -169,11 +176,11 @@
     if (intent === INTENTS.CORRECTION) nextSession.user_corrections.push(text);
 
     if (riskState === "acompanamiento_en_riesgo") {
-      return rememberPlan(nextSession, createRiskAccompanimentPlan(nextSession, conceptIds, findActions(["riesgo_suicida"], riskState, data)));
+      return rememberPlan(nextSession, { ...createRiskAccompanimentPlan(nextSession, conceptIds, findActions(["riesgo_suicida"], riskState, data)), subject });
     }
 
     if (riskState === "riesgo_ambiguo") {
-      return rememberPlan(nextSession, createAmbiguousRiskPlan(nextSession));
+      return rememberPlan(nextSession, { ...createAmbiguousRiskPlan(nextSession), subject });
     }
 
     if (intent === INTENTS.CORRECTION) {

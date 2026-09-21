@@ -69,6 +69,7 @@ async function fresh() {
 }
 const idle = () => page.waitForFunction(() => document.querySelector('#sabik-output').getAttribute('aria-busy') === 'false' && !document.querySelector('#sabik-submit').disabled);
 const snapshot = () => page.evaluate(() => ({ machine: window.__a01.states.at(-1), risk: window.__a01.session?.risk_state,
+  subject: window.__a01.session?.last_plan?.subject, cognitive: window.__a01.session?.cognitive_state,
   statements: window.__a01.session?.user_statements, retrievals: window.__a01.retrievals, events: window.__a01.events.map(e => e?.type), errors: window.__a01.errors,
   answer: document.querySelector('#sabik-answer').textContent, hidden: document.querySelector('#sabik-output').hidden }));
 async function submit(text) { await el('input').fill(text); await el('submit').click(); await idle(); return snapshot(); }
@@ -105,10 +106,41 @@ async function check(name, run) {
       protectedState(await submit('no'), 'human_handoff');
     });
     await check('current turn classifier handles clitics and does not infer self-risk from a third party', async () => {
-      let s = await submit('mi amiga quiere hacerse dano'); assert.equal(s.machine.safety, 'normal');
+      let s = await submit('mi amiga dice que no quiere hacerse dano'); assert.equal(s.machine.safety, 'normal');
       s = await submit('no me quiero hacer dano'); assert.equal(s.machine.safety, 'normal');
       protectedState(await submit('me quiero hacer dano'), 'risk');
     });
+    for (const phrase of ['Yo no sé si puedo continuar así.', 'Dudo si quiero seguir ahora.']) {
+      await check('present doubt blocks ordinary flow and retains clarification through retry: ' + phrase, async () => {
+        protectedState(await submit(phrase), 'uncertain');
+        protectedState(await submit('cambiemos de tema'), 'uncertain');
+        await page.evaluate(() => { window.__a01.fail = true; });
+        const failed = await submit('hola'); protectedState(failed, 'uncertain'); assert.equal(failed.machine.operation, 'error');
+        await el('retry-data').click(); await idle(); const s = await snapshot();
+        protectedState(s, 'uncertain'); assert.equal(s.machine.operation, 'awaiting_clarification');
+        assert.equal(s.retrievals, 0); assert(!s.events.includes('SUBMIT'));
+        protectedState(await submit('si'), 'risk');
+      });
+      await check('present doubt clears only through explicit pending negative: ' + phrase, async () => {
+        await submit(phrase); const s = await submit('no');
+        assert.equal(s.machine.safety, 'normal'); assert(s.events.includes('RISK_CLEARED')); assert.deepEqual(s.errors, []);
+      });
+    }
+    for (const start of ['mi familiar me dice que se quiere hacer dano ahora', 'mi hija quiere hacerse dano hoy']) {
+      await check('third-person protection does not label the user, even across controls: ' + start, async () => {
+        const before = (await snapshot()).cognitive;
+        let s = await submit(start); protectedState(s, 'risk'); assert.equal(s.subject, 'third_person'); assert.equal(s.cognitive, before);
+        assert(!s.answer.includes('¿estás en peligro'));
+        s = await submit('hola'); protectedState(s, 'risk'); assert.equal(s.subject, 'third_person'); assert.equal(s.cognitive, before);
+        await el('clear').click(); await el('resume').click(); await idle();
+        s = await snapshot(); protectedState(s, 'risk'); assert.equal(s.cognitive, before);
+        await page.evaluate(() => { window.__a01.fail = true; }); await submit('hola');
+        await el('retry-data').click(); await idle(); s = await snapshot();
+        protectedState(s, 'risk'); assert.equal(s.subject, 'third_person'); assert.equal(s.cognitive, before); assert.equal(s.retrievals, 0);
+        await el('reset-session').click(); await idle(); s = await snapshot();
+        protectedState(s, 'risk'); assert.equal(s.subject, 'none'); assert.deepEqual(s.statements, []);
+      });
+    }
     for (const control of ['clear', 'reset-session']) {
       await check('confirmed risk acknowledged during ' + control + ' is retained', async () => {
         await page.evaluate(control => { window.__a01.interrupt = { event: 'RISK_CONFIRMED', control }; }, control);

@@ -1,18 +1,36 @@
 (() => {
   const { normalizeText } = window.NEAKnowledge;
 
+  const currentTime = "(?:ahora(?: mismo)?|hoy|en este momento)";
+  const firstPerson = `^(?:${currentTime} )?(?:yo )?`;
+  const currentEnd = `(?: ${currentTime})?$`;
+  const selfHarm = new RegExp(firstPerson + "(?:(?:quiero|voy a|pienso|estoy pensando en) hacerme dano|me (?:quiero|voy a|pienso) hacer dano)" + currentEnd, "u");
+  const selfCrisis = new RegExp(firstPerson + "(?:no quiero seguir viviendo|(?:tengo|estoy teniendo) pensamientos suicidas)" + currentEnd, "u");
+  const doubt = new RegExp(firstPerson + "(?:no se|dudo) si (?:puedo|quiero) (?:seguir|continuar)(?: asi)?" + currentEnd, "u");
+  const denial = new RegExp(firstPerson + "(?:no (?:quiero hacerme dano|me quiero hacer dano|tengo pensamientos suicidas|estoy en peligro))(?: |$)", "u");
+  const thirdPerson = "(?:(?:mi|un|una) (?:amig[oa]|hij[oa]|familiar|herman[oa]|pareja|madre|padre)|el|ella)";
+  const thirdRisk = new RegExp(`^(?:${currentTime} )?${thirdPerson} (?:${currentTime} )?(?:(?:me |nos )?(?:dice|explica|afirma) que )?` +
+    "(?:(?:quiere|va a|piensa|esta pensando en) hacerse dano|se (?:quiere|va a|piensa) hacer dano|no quiere seguir viviendo|tiene pensamientos suicidas)" + currentEnd, "u");
+
   function classifySafetyTurn(text) {
     const normalized = normalizeText(text);
-    const clauses = String(text || "").split(/[.!?;\n]+|\bpero\b|\bsin embargo\b/iu).map(normalizeText);
-    // Bounded grammar over the current utterance, never inherited concepts or
-    // session state. Reported speech is not evidence about the speaker.
+    // Mask quotations before splitting clauses: punctuation inside a quote must
+    // never create an apparently first-person statement outside it.
+    const unquoted = String(text || "").replace(/"[^"\n]*"|'[^'\n]*'|«[^»]*»|“[^”]*”|‘[^’]*’|`[^`]*`/gu, " quoted ");
+    const clauses = unquoted.split(/[.!?;\n]+|\bpero\b|\bsin embargo\b|\by (?=(?:yo|mi|un|una|el|ella|me|quiero|voy|pienso|dudo)\b|no se si\b)/iu).map(normalizeText);
+    // Present-tense predicates, not keywords or inherited session concepts.
     const personal = clauses.filter(clause => !/\b(?:dice|dijo|dicen|ha dicho|pregunta)\b/u.test(clause));
-    const selfHarm = /^(?:yo )?(?:(?:quiero|voy a|pienso|estoy pensando en) hacerme dano|me (?:quiero|voy a|pienso) hacer dano)(?: |$)/u;
-    const selfCrisis = /^(?:yo )?(?:no quiero seguir viviendo|(?:tengo|estoy teniendo) pensamientos suicidas)(?: |$)/u;
-    const risk = personal.some(clause => selfHarm.test(clause) || selfCrisis.test(clause));
-    const uncertain = personal.some(clause => /^(?:yo )?ya no puedo mas(?: |$)/u.test(clause) || clause === "no quiero seguir");
+    const self = personal.some(clause => selfHarm.test(clause) || selfCrisis.test(clause));
+    const third = clauses.some(clause => thirdRisk.test(clause));
+    const uncertainty = personal.some(clause => doubt.test(clause)) && !personal.some(clause => denial.test(clause));
+    // Keep the pre-existing exhaustion rule; task-qualified exhaustion remains
+    // an unresolved editorial [E] decision, not new R2 acceptance coverage.
+    const legacyUncertain = personal.some(clause => /^(?:yo )?ya no puedo mas(?: |$)/u.test(clause) || clause === "no quiero seguir");
+    const uncertain = uncertainty || legacyUncertain;
     return {
-      classification: risk ? "risk" : uncertain ? "uncertain" : "normal",
+      classification: self || third ? "risk" : uncertain ? "uncertain" : "normal",
+      subject: self ? "self" : third ? "third_person" : uncertain ? "self"
+        : unquoted !== String(text || "") ? "quoted" : "none",
       answer: /^(?:si|yes)$/u.test(normalized) ? "affirmative"
         : /^(?:no|no estoy en peligro ni pensando en hacerme dano)$/u.test(normalized) ? "negative" : null,
       requests_human_help: personal.some(clause => /^(?:yo )?(?:quiero|necesito|ayudame a) (?:buscar |contactar con |hablar con )?(?:ayuda humana|una persona|alguien)(?: |$)/u.test(clause))

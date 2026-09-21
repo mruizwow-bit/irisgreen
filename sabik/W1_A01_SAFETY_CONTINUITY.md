@@ -8,6 +8,107 @@ Branch: `sabik/reconcile-a01-safety-continuity-20260921`.
 Delivery: draft PR targeting `sabik-preview`; independent QA still required.
 NO MERGE. NO DEPLOY.
 
+## R2 correction after independent rejection
+
+Authorization: ORDEN_CODEX_W1_A01_R2_CORRECCION / DEC-020. This revision adds
+one commit after audited `a6c4e1b946a36940194e8c44e2d98838038fcefc`; it does not
+rewrite that history. The independent verdict on that SHA remains
+`A01_QA_BLOCKED` (Linux run 35620965664, candidate 8/14, baseline 4/14).
+
+Two causes explain the six failures, not six independent patches:
+
+- QA-01/02/03/05/07: the detector lacked present first-person doubt about
+  continuing, so S0 never received RISK_UNCERTAIN. Once it does, the unchanged
+  clarification, affirmative/negative, neutral-turn and error/retry transitions
+  provide the required continuity.
+- QA-14: third-person reports were always discarded. Present affirmative
+  statements about another person's risk now propose RISK_CONFIRMED without
+  treating that person as the user or asking the personal safety question.
+
+The bounded grammar combines optional present-time/first-person markers,
+`no se|dudo`, `si`, `puedo|quiero`, `seguir|continuar` and optional `asi`.
+Clauses must finish there or with a current-time modifier. Explicit first-person
+risk denial excludes this new ambiguity rule. Task completions, past tense,
+informational prefixes and quotations do not match it. Quotations are masked
+before clause splitting, including punctuation inside quoted text.
+
+Third-person grammar requires a singular personal referent and an affirmative
+present predicate over the existing risk vocabulary, optionally reported with
+`dice|explica|afirma que`. Negated, past, fictional and informational constructions
+are not equivalent predicates. Current personal risk takes precedence over a
+third-person report or quoted text in the same input. This is deliberately not
+a general Spanish parser, diagnosis model or open clinical vocabulary.
+
+Scope: risk.js, response.js, sabik-page.js, both own A01 tests and this document.
+The small response/page delta is necessary to preserve subject at the first
+accepted worker event (including interruption by pause), instead of first
+rendering an empty self-risk projection. `plan.subject` is response metadata
+only: it never sets or clears S0 Safety. It persists through ordinary protected
+turns but not a reset of conversational context. Third-person/unknown protected
+responses retain existing user cognition rather than inferring it from another
+person. Legacy single-turn response calls also preserve third-person attribution.
+The personal-risk policy, sabik-state.js and all intensity controls are unchanged;
+this does not claim to solve the broader A03 coupling.
+
+The prior development assertion that a present third-person risk report stays
+normal was replaced with stronger positive assertions required by R2: protection,
+third_person subject, no personal question, unchanged user cognition, and zero
+ordinary retrieval. Quotation/negation/information contrasts remain tested.
+
+### R2 executed evidence (development, not independent acceptance)
+
+Environment: Windows, Node 24.19.0, Python 3.12.14, Chrome 153.0.8010.53.
+
+| Suite | Result |
+| --- | --- |
+| Frozen 14-case development mirror | 14/14 (8/14 reproduced before editing) |
+| Claude 28 suggested_not_frozen supplemental | NOT RUN: file not supplied/found; requested again |
+| Own A01 Core/S0 | 120/120 |
+| Own A01 browser source / dist | 24/24 each |
+| Unchanged S0 / V7 / S4 unit | 146/146 / 28/28 / 87/87 |
+| Unchanged S1 source / dist | 37/37 + 53/53 extra checks each |
+| Unchanged S4 browser source / dist | 19/19 each, storage 4/4 included |
+| Unchanged accessibility closure | A11Y_CLOSURE_PASS |
+| Full Windows build | exit 0, 1650 published files |
+
+The mirror uses the four unmodified blobs from freeze
+418740e858397008aa709b0fcf22589fbc20a02f outside this branch, plus the unmodified
+runtime/S0 adapter from QA execution commit
+33fbaebee2d2c7793ca0212780145195d0f176e0. Its `sabik` directory points to this
+candidate. The adapter's subject projection is simplistic; our own unit and
+browser tests additionally assert the real detector/plan subject and cognition.
+No QA scenario, expectation, adapter or runner was changed. The runner's printed
+`A01_INDEPENDENT_CASES_PASS` is its literal output, NOT an independent verdict
+for this development execution. Agent 1 must revalidate the published SHA.
+
+Mirror commands from its separate directory:
+
+```text
+node tests/specs/sabik/validate-a01-safety-gate-v1.mjs
+node tests/specs/sabik/run-a01-safety-gate-v1.mjs --adapter tools/a01-candidate-212-independent-adapter.mjs
+```
+
+Other commands are listed below. Evidence is outside the repository under
+`FARO 3/W1-A01-EVIDENCE-20260921/r2/`. Two build attempts hit the existing
+Windows/OneDrive ReadOnly-directory WinError 5 during dist replacement. After
+checking generated paths and removing only directory ReadOnly attributes, a
+complete third attempt passed (`build-final.log`). No scripts or editorial
+hashes were altered; no new Linux result is claimed.
+
+Limitations: the actual 28-case Claude file remains unavailable, so no
+supplemental PASS/FAIL counts or full R2-ready marker are claimed. Editorial [E]
+items remain pending. In particular the pre-existing task-qualified exhaustion
+rule is retained, not newly approved or frozen in tests by R2. No resources,
+human service, copy, data, index, S0, A03, B3, voice or deploy changes.
+
+Revert only the R2 commit to return to audited a6c4e1b9, with its known six gate
+failures; do not rewrite either SHA. PR #212 stays draft. NO MERGE / NO DEPLOY.
+
+## Historical record: a6c4e1b9 (superseded by R2 above)
+
+The following sections record the previous candidate, its scope and evidence;
+the R2 section is authoritative for the current correction and test counts.
+
 ## Reproduction before runtime edits
 
 The new synthetic unit suite passed 17/37 on the exact base; its initial
