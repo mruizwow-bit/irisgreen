@@ -87,7 +87,7 @@
   }
 
   function fragmentHasVetoedConcept(fragment, session) {
-    const vetoed = new Set(session?.vetoed_concepts || []);
+    const vetoed = new Set([...(session?.vetoed_concepts || []), ...(session?.rejected_concepts || [])]);
     return (fragment.concepts || []).some((concept) => vetoed.has(concept));
   }
 

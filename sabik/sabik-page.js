@@ -30,6 +30,7 @@
     data: null,
     session: null,
     lastInput: "",
+    failedInput: "",
     lastPlan: null,
     coreReady: false,
     paused: false,
@@ -57,6 +58,12 @@
     "Bajar intensidad": "Lower intensity",
     "Subir intensidad": "Raise intensity",
     "Más corto": "Shorter",
+    "No me preguntes": "Do not ask me questions",
+    "Dame una opción": "Give me one option",
+    "Explícamelo de otra forma": "Explain it another way",
+    "Reintentar carga de datos": "Retry loading data",
+    "Algunos datos opcionales no están disponibles. La búsqueda básica sigue funcionando.": "Some optional data is unavailable. Basic search still works.",
+    "Preferencia de respuesta aplicada.": "Response preference applied.",
     "Pausar Sabik": "Pause Sabik",
     "Reanudar": "Resume",
     "Empezar de nuevo": "Start again",
@@ -153,7 +160,7 @@
 
   function syncControls() {
     const disabled = unavailable();
-    for (const id of ["low", "shorter", "not-this", "other-way"]) {
+    for (const id of ["low", "shorter", "not-this", "other-way", "no-questions", "one-option", "rephrase", "retry-data"]) {
       const node = document.querySelector(`#sabik-${id}`);
       if (node) node.disabled = disabled;
     }
@@ -355,14 +362,23 @@
 
   async function ensureData() {
     if (!state.coreReady) await loadCore();
-    if (!state.dataPromise) state.dataPromise = window.NEACoreV1.loadData(DATA_PATHS).catch((error) => {
+    if (!state.dataPromise) state.dataPromise = window.NEACoreV1.loadData(DATA_PATHS, state.data).catch((error) => {
       state.dataPromise = null;
       throw error;
     });
     state.data = await state.dataPromise;
   }
 
-  async function runNeed(value) {
+  function renderDataAvailability() {
+    const degraded = Object.values(state.data.availability || {}).some(item =>
+      ["technical_error", "resource_unavailable"].includes(item.status));
+    const note = document.querySelector("#sabik-data-notice");
+    note.hidden = !degraded;
+    uiText(note, degraded ? "Algunos datos opcionales no están disponibles. La búsqueda básica sigue funcionando." : "");
+    document.querySelector("#sabik-retry-data").hidden = !degraded;
+  }
+
+  async function runNeed(value, conversationControl = null) {
     if (unavailable()) return;
     const generation = ++state.generation;
     // Lock synchronously, before any await: disabled styling is not a mutex.
@@ -375,7 +391,10 @@
       await dispatch({ type: "SUBMIT" });
       await ensureData();
       if (!current()) return;
-      const result = window.NEACoreV1.buildResponsePlan(value, state.session, state.data);
+      renderDataAvailability();
+      const result = conversationControl
+        ? window.NEACoreV1.applyResponseControl(state.session, state.lastPlan, conversationControl, state.data)
+        : window.NEACoreV1.buildResponsePlan(value, state.session, state.data);
       // S1 maps only the existing ordinary lifecycle. Risk classification and
       // editorial output are unchanged; safety integration belongs to S3.
       if (result.plan.type === "insufficient_information") await dispatch({ type: "RETRIEVAL_EMPTY" });
@@ -387,13 +406,15 @@
       }
       if (!current()) return;
       state.session = result.session;
-      state.lastInput = value;
+      state.lastInput = result.session.topic_query || value;
+      state.failedInput = "";
       renderPlan(result.plan);
       finalStatus = "Respuesta de Sabik disponible.";
     } catch (error) {
       if (!current()) return;
       await dispatch({ type: "TECHNICAL_ERROR" });
       if (!current()) return;
+      state.failedInput = value;
       const message = "No he podido cargar los datos locales. Puedes volver a enviar tu consulta.";
       setStatus(message, "minimal");
       document.querySelector("#sabik-output").hidden = false;
@@ -402,6 +423,7 @@
       uiText(answer, message);
       uiText(document.querySelector("#sabik-notice"), "");
       clearSources();
+      document.querySelector("#sabik-retry-data").hidden = false;
       finalStatus = message;
     } finally {
       if (generation === state.generation) {
@@ -510,6 +532,7 @@
       state.session = window.NEACoreV1.createSessionState();
       state.session = window.NEACoreV1.setSessionPreferences(state.session, preferences);
       state.lastInput = "";
+      state.failedInput = "";
       state.lastPlan = null;
       syncLowIntensityButton(state.session.sabik_state);
       applySabikVisual(state.session.sabik_state, "espera");
@@ -524,15 +547,32 @@
     document.querySelector("#sabik-shorter")?.addEventListener("click", async () => {
       if (unavailable()) return;
       state.session = window.NEACoreV1.setSessionPreferences(state.session, {
-        response_length: "short",
-        max_options: 1
+        response_length: "short"
       });
-      if (state.lastInput) await runNeed(state.lastInput);
+      if (state.lastPlan) await runNeed(state.lastInput, "shorter");
       else renderSabikState(state.session.sabik_state, "Respuesta más corta activada.");
+    });
+
+    for (const [id, action] of [["no-questions", "no_questions"], ["one-option", "one_option"], ["rephrase", "rephrase"]]) {
+      document.querySelector(`#sabik-${id}`)?.addEventListener("click", async () => {
+        if (unavailable()) return;
+        if (state.lastPlan) await runNeed(state.lastInput, action);
+        else {
+          state.session = window.NEASession.applyConversationControl(state.session, null, action);
+          setStatus("Preferencia de respuesta aplicada.");
+        }
+      });
+    }
+    document.querySelector("#sabik-retry-data")?.addEventListener("click", async () => {
+      if (unavailable()) return;
+      state.dataPromise = null;
+      const value = state.failedInput || state.lastInput || input.value.trim();
+      if (value) await runNeed(value);
     });
 
     document.querySelector("#sabik-not-this")?.addEventListener("click", () => {
       if (unavailable()) return;
+      if (["risk_accompaniment", "ambiguous_risk_clarification"].includes(state.lastPlan?.type)) return;
       state.session = window.NEACoreV1.registerPlanRejection(state.session, state.lastPlan, "no_es_esto");
       output.hidden = false;
       answer.className = "sabik-answer";
@@ -544,9 +584,10 @@
 
     document.querySelector("#sabik-other-way")?.addEventListener("click", async () => {
       if (unavailable()) return;
+      if (["risk_accompaniment", "ambiguous_risk_clarification"].includes(state.lastPlan?.type)) return;
       state.session = window.NEACoreV1.registerPlanRejection(state.session, state.lastPlan, "buscar_otra_via");
       if (state.lastPlan && state.lastPlan.fragments_used && state.lastPlan.fragments_used.length && state.lastInput) {
-        await runNeed(state.lastInput);
+        await runNeed(state.session.current_need || state.lastInput);
         return;
       }
       output.hidden = false;

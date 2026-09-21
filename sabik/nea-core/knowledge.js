@@ -29,57 +29,62 @@
   async function loadJson(path) {
     const response = await fetch(path, { cache: "no-store" });
     if (!response.ok) {
-      throw new Error(`No se pudo cargar ${path}`);
+      const error = new Error(`No se pudo cargar ${path}`);
+      error.code = response.status === 404 ? "resource_unavailable" : "technical_error";
+      throw error;
     }
     return response.json();
   }
 
-  function normalizeFragmentsIndex(payload) {
-    if (Array.isArray(payload)) return payload;
-    if (Array.isArray(payload?.fragments)) return payload.fragments;
-    return [];
-  }
-
-  async function loadData(paths = DEFAULT_PATHS) {
-    const [
-      concepts,
-      relations,
-      fragmentsPayload,
-      actions,
-      questions,
-      resources,
-      corpora,
-      procedures
-    ] = await Promise.all([
-      loadJson(paths.concepts),
-      loadJson(paths.relations),
-      loadJson(paths.fragmentsIndex),
-      loadJson(paths.actions),
-      loadJson(paths.questions),
-      loadJson(paths.resources),
-      loadJson(paths.corpora),
-      loadJson(paths.procedures)
-    ]);
-
-    return {
-      concepts,
-      relations,
-      fragmentsIndex: normalizeFragmentsIndex(fragmentsPayload),
-      fragmentsIndexMeta: Array.isArray(fragmentsPayload) ? null : {
-        generated_at: fragmentsPayload.generated_at,
-        source_label: fragmentsPayload.source_label,
-        language: fragmentsPayload.language,
-        base_url: fragmentsPayload.base_url,
-        url_count: fragmentsPayload.url_count,
-        fragment_count: fragmentsPayload.fragment_count,
-        skipped_count: fragmentsPayload.skipped_count
-      },
-      actions,
-      questions,
-      resources,
-      corpora,
-      procedures
-    };
+  async function loadData(paths = DEFAULT_PATHS, previous = null) {
+    const data = { availability: {}, fragmentsIndexMeta: previous?.fragmentsIndexMeta || null };
+    // Optional data fails independently. A retry reuses only successfully loaded
+    // inputs; neither a rejected promise nor a fallback is cached as success.
+    await Promise.all(Object.keys(DEFAULT_PATHS).map(async (key) => {
+      const required = key === "concepts" || key === "fragmentsIndex";
+      const oldStatus = previous?.availability?.[key];
+      if (oldStatus && ["available", "editorial_absence"].includes(oldStatus.status)) {
+        data[key] = previous[key];
+        data.availability[key] = { ...oldStatus };
+        return;
+      }
+      try {
+        if (!paths[key]) {
+          const error = new Error(`Missing dataset path: ${key}`);
+          error.code = "resource_unavailable";
+          throw error;
+        }
+        const payload = await loadJson(paths[key]);
+        const items = key === "fragmentsIndex" ? (Array.isArray(payload) ? payload : payload?.fragments)
+          : key === "corpora" ? payload?.languages : payload;
+        if (!Array.isArray(items) || items.some(item => !item || typeof item !== "object" || Array.isArray(item) ||
+          ["aliases", "concepts"].some(field => item[field] !== undefined &&
+            (!Array.isArray(item[field]) || item[field].some(value => typeof value !== "string"))) ||
+          (key === "concepts" && typeof item.id !== "string") ||
+          (key === "fragmentsIndex" && [item.id, item.text, item.url].some(value => typeof value !== "string")))) {
+          const error = new Error(`Invalid dataset: ${key}`);
+          error.code = "technical_error";
+          throw error;
+        }
+        data[key] = key === "corpora" ? payload : items;
+        data.availability[key] = { status: items.some(isPublicable) ? "available" : "editorial_absence", required };
+        if (key === "fragmentsIndex" && !Array.isArray(payload)) {
+          const { generated_at, source_label, language, base_url, url_count, fragment_count, skipped_count } = payload;
+          data.fragmentsIndexMeta = { generated_at, source_label, language, base_url, url_count, fragment_count, skipped_count };
+        }
+      } catch (cause) {
+        const code = cause.code === "resource_unavailable" ? cause.code : "technical_error";
+        if (required) {
+          const error = new Error(`Required dataset failed: ${key}`, { cause });
+          error.code = code;
+          error.dataset = key;
+          throw error;
+        }
+        data[key] = key === "corpora" ? { languages: [] } : [];
+        data.availability[key] = { status: code, required: false };
+      }
+    }));
+    return data;
   }
 
   function unique(values) {

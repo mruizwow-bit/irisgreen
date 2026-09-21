@@ -50,14 +50,19 @@
       .sort((a, b) => b.relation_strength - a.relation_strength || String(a.concept_id).localeCompare(String(b.concept_id)));
   }
 
-  function findDiscriminatingQuestion(options, questions) {
+  function findDiscriminatingQuestion(options, questions, session) {
+    const preferences = session?.session_preferences || {};
+    if (preferences.question_policy === "none" || preferences.max_options === 1 ||
+        session?.rejected_response_types?.includes("clarifying_question")) return null;
+    const gap = preferences.question_threshold === "high" ? 10 : 25;
     return (questions || [])
       .filter(isPublicable)
       .find((question) => {
+        if (session?.asked_questions?.includes(question.id)) return false;
         const left = options.find((option) => option.concept_id === question.concept_a);
         const right = options.find((option) => option.concept_id === question.concept_b);
         if (!left || !right) return false;
-        return Math.abs(left.relation_strength - right.relation_strength) <= 25;
+        return Math.abs(left.relation_strength - right.relation_strength) <= gap;
       }) || null;
   }
 
@@ -133,7 +138,7 @@
     }
 
     if (intent === INTENTS.PERSONAL_SITUATION) {
-      const question = findDiscriminatingQuestion(viable, questions);
+      const question = findDiscriminatingQuestion(viable, questions, session);
       if (question) {
         return {
           possibilities,
