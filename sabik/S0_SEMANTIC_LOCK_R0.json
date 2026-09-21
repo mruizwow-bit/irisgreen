@@ -1,0 +1,15 @@
+{
+  "schema": "SABIK_S0_SEMANTIC_LOCK_R0",
+  "base": "sabik-preview@96ebf38a535fa287f32fee8c7957ede39933365c",
+  "candidate_branch": "agent3/sabik-b3-r0",
+  "result": "IDENTICAL_BLOBS",
+  "files": {
+    "sabik/nea-core/sabik-machine.js": "b4e048c2e496ebe51e4daa6ffad3b9ad31f1fbc5",
+    "sabik/nea-core/state.js": "7e6be6749225dbe24cac472e136dfeab81af47fc",
+    "sabik/nea-core/risk.js": "4b5815b1fe729eb0671beb625116784d9bce777e",
+    "sabik/nea-core/response.js": "168f50a24f96c0b56189110969f50d9b959ed576",
+    "sabik/sabik-page.js": "54c823f2332352e074f2e8599d2436eca26068ab",
+    "sabik/S0_STATE_MACHINE.md": "17cdd2b516b9be1523f3d05b8e8fe3232707f3de"
+  },
+  "note": "Git blob SHA equality against the recorded integration base. B3 R0 is a presentation layer and does not alter S0."
+}

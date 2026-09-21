@@ -1,0 +1,310 @@
+{
+  "schema": "SABIK_B3_RUNTIME_ASSETS_R0",
+  "status": "CANDIDATE_FROM_FROZEN_B3_R1",
+  "source": {
+    "pr": 182,
+    "head": "e5f70cba76a4414527c10b0fbecfd549a7390e66",
+    "keyframes": "B3_STATIC_V1_R1",
+    "source_dimensions": [
+      544,
+      544
+    ],
+    "note": "The runtime sprite is a 256×256 LANCZOS derivative per cell, assembled into a lossless WebP. Source keyframes are not redesigned."
+  },
+  "runtime": {
+    "strategy": "individual-state-assets",
+    "format": "image/webp",
+    "files": [
+      {
+        "file": "web_presente.webp",
+        "bytes": 2680,
+        "sha256": "046de206efe0a4f432e40b45bc553852ee023dc7be04a78d21b19f05b396688f",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "01ba427396a500d2472985f96023957ade6106c3"
+      },
+      {
+        "file": "web_orientar.webp",
+        "bytes": 2918,
+        "sha256": "013b6dcb2cac878fd60a0726b29245a84174e2a6240745b97a0caa41e3f73cd5",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "4ed2acf057fa2c1b1ecada3263a90ab714293d8c"
+      },
+      {
+        "file": "web_transicion.webp",
+        "bytes": 2872,
+        "sha256": "234dd0e41d4f2423115c7bc7f0870c6e0b131d1ac6a082be96ee677a5ceca3a2",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "80365eadb697af8747791150e0b7242aae64403b"
+      },
+      {
+        "file": "web_pausa.webp",
+        "bytes": 2572,
+        "sha256": "70eb8bdd94e69e530dea402f8676a27a436427cd1f5717ff01f095e27d7b990e",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "a0809244b7b8c3ed5488502cea1aeabaf94c6df0"
+      },
+      {
+        "file": "web_confirmar.webp",
+        "bytes": 4892,
+        "sha256": "9cc77a2adacf28659a0f0045861deaf7bc6336792d07319901ac0909184077c2",
+        "dimensions": [
+          96,
+          96
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "1168f6c02d639832eea75cd51d72001c4717cda7"
+      },
+      {
+        "file": "ia_presente.webp",
+        "bytes": 2910,
+        "sha256": "f68f174d1892c744f14a4691fea9855ed5db498396bb3092341f4ada95c6e30c",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "37e8ad64458496ba412b5d977674903ca350b0ca"
+      },
+      {
+        "file": "ia_orientar.webp",
+        "bytes": 3254,
+        "sha256": "07f65416c39fe0beae0c17473f6af45bdbcb0bbdeab1cfbadaa4729cd7fc42c4",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "8bc7e6bb3f0490cbff168fc8df3ab1df50b8a5aa"
+      },
+      {
+        "file": "ia_transicion.webp",
+        "bytes": 3210,
+        "sha256": "92ac47c5a18469170808699b6f1a86b69acfc0cea6181ca0765d5eacf811de0d",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "c5fbcd1bc0a6255f4eceab073b5723b148697e88"
+      },
+      {
+        "file": "ia_pausa.webp",
+        "bytes": 2912,
+        "sha256": "6596e3e3b89c27dc0b71c5ba6181f16975aa1daacfdb5bfb8c7c23ab08e0bc24",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "69109ac900f3b83fad08086ffebad712c3979908"
+      },
+      {
+        "file": "ia_confirmar.webp",
+        "bytes": 2858,
+        "sha256": "207846d80fcc5f07a7ce2899b7b4e0898b3ecfefa100e1040f83aefab45e2958",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "f2f1e509167e87429502ed23a9a9625332d85de4"
+      },
+      {
+        "file": "educa_presente.webp",
+        "bytes": 2710,
+        "sha256": "bcf29d943a054996eb958780733988da52311959d04539f405b39480dc7ace90",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "56533239aeaf0b0413e91867b9d3d19913a748b2"
+      },
+      {
+        "file": "educa_orientar.webp",
+        "bytes": 2876,
+        "sha256": "ea8c66ba1715fd84cd9fb58c1a05567b007df7dc126735687952086d5732e2f0",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "04e4cd960497d1b4ecbaca720c833e2aa75bccd0"
+      },
+      {
+        "file": "educa_transicion.webp",
+        "bytes": 2810,
+        "sha256": "379b71b04aaad2ae5e5a57b78efc3f37e2ffd195df75ec72673ea5d69d15ff98",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "04ddc229c07093338f1f8745eaf34f3336e3b565"
+      },
+      {
+        "file": "educa_pausa.webp",
+        "bytes": 2576,
+        "sha256": "1d0c3d739edca1713772fadc6a061700f8c655117c5b2238ad6807ab58f3e6b8",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "0aeb0b539440c41d1b981b5e3915af385326e1dd"
+      },
+      {
+        "file": "educa_confirmar.webp",
+        "bytes": 2546,
+        "sha256": "3645fbd291cddebf095b85fc656b10132e675aaa2705fb8f59a69e8c027baad0",
+        "dimensions": [
+          64,
+          64
+        ],
+        "format": "image/webp",
+        "lossless": false,
+        "blob_sha": "4433fb5694aae1e53078236f98ec54fd026f1aea"
+      }
+    ],
+    "columns": [
+      "PRESENTE",
+      "ORIENTAR",
+      "TRANSICIÓN",
+      "PAUSA",
+      "CONFIRMAR"
+    ],
+    "rows": [
+      "web",
+      "ia",
+      "educa"
+    ],
+    "note": "Fifteen committed runtime derivatives, each at least 64×64; actual dimensions and SHA-256 are recorded per file. Source 544×544 keyframes remain frozen in #182.",
+    "minimum_dimensions": [
+      64,
+      64
+    ],
+    "actual_dimensions_recorded_per_file": true
+  },
+  "source_files": [
+    {
+      "file": "educa_confirmar.png",
+      "bytes": 226039,
+      "sha256": "b1d74d07bd41c59c1c5172d60216a96714fa887eb5a63dfafa4a02f684797647",
+      "library_id": "libfile_4a627ae7a6988191bb0fbf6b4fe09ceb"
+    },
+    {
+      "file": "educa_orientar.png",
+      "bytes": 244102,
+      "sha256": "7635b7fd97780f1aee9a35cd8a0a95df93720a357ba59f039cfd6e2a54aa0640",
+      "library_id": "libfile_1d45484b9aac8191baa79ea2e52e5716"
+    },
+    {
+      "file": "educa_pausa.png",
+      "bytes": 186097,
+      "sha256": "70b6eb2ab9e8eb2e07fc1682f67534c3a0e4e33b817e85b8c0e17f8ea015cf7f",
+      "library_id": "libfile_899f78774b608191a6cff1d970cb7fd9"
+    },
+    {
+      "file": "educa_presente.png",
+      "bytes": 195272,
+      "sha256": "1dd102b17e48facb6d0b29bed67476119a5dc77b832e37a768bc8f0e6309b518",
+      "library_id": "libfile_c7a81b960f208191a32c4ccaa23aa3e4"
+    },
+    {
+      "file": "educa_transicion.png",
+      "bytes": 245401,
+      "sha256": "4ea32911c5d64f82b324e91821a505ead96ce7d6379c6f49bac24cc205379724",
+      "library_id": "libfile_db7a4652ea8c81919177fb9571361bbb"
+    },
+    {
+      "file": "ia_confirmar.png",
+      "bytes": 270460,
+      "sha256": "6289a4eabd4eb90ae77af335838a454f375c0f0e8dad34af7a9d791f57930bed",
+      "library_id": "libfile_e2034eaefbe08191a0542d28b2b03095"
+    },
+    {
+      "file": "ia_orientar.png",
+      "bytes": 299134,
+      "sha256": "ca6a6e81ee36c6ef41c8254d99832d15327834d91fdc55b3a48d8b44e993c1f9",
+      "library_id": "libfile_b0c6626c4c00819189c8f6a20a9c52db"
+    },
+    {
+      "file": "ia_pausa.png",
+      "bytes": 234155,
+      "sha256": "fa2239a8c8e34369da697cf5f551a4f9fe137faf615f63fd7b749fbf0daf5792",
+      "library_id": "libfile_3580d7a786548191b2b08a46cc57c497"
+    },
+    {
+      "file": "ia_presente.png",
+      "bytes": 245636,
+      "sha256": "6e7aaed04a556e5f1104c1643fc0eabf19c67049c677f087be0bde29e78b39c3",
+      "library_id": "libfile_62105e6beefc8191a503383758385cc9"
+    },
+    {
+      "file": "ia_transicion.png",
+      "bytes": 301766,
+      "sha256": "09db51a2f58134346febc56133ee4777e33ab9a1274ba31637050222a6b9760e",
+      "library_id": "libfile_ab7f8953adf081919d24964f14ce54aa"
+    },
+    {
+      "file": "web_confirmar.png",
+      "bytes": 231434,
+      "sha256": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053",
+      "library_id": "libfile_9f648d3073bc8191ae74f2950b42a6a1"
+    },
+    {
+      "file": "web_orientar.png",
+      "bytes": 232385,
+      "sha256": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+      "library_id": "libfile_06a6312cf0048191a244ebcc0517ee3d"
+    },
+    {
+      "file": "web_pausa.png",
+      "bytes": 183613,
+      "sha256": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+      "library_id": "libfile_c7d0eac71c3c8191aee86d6ba75e5521"
+    },
+    {
+      "file": "web_presente.png",
+      "bytes": 194400,
+      "sha256": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
+      "library_id": "libfile_c12238dd6b388191bc67686b15fd1e94"
+    },
+    {
+      "file": "web_transicion.png",
+      "bytes": 243699,
+      "sha256": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
+      "library_id": "libfile_c158341d34688191979978dfb1bd4fe2"
+    }
+  ]
+}
