@@ -56,7 +56,8 @@
 
   function detectCognitiveState(text, preferences, riskState) {
     const normalized = normalizeText(text);
-    if (riskState !== "normal") return COGNITIVE_STATES.SOBRECARGA;
+    // Safety controls protection, not cognition. Keep the existing call signature;
+    // only the text signals below select a cognitive state.
     if (
       normalized.includes("no puedo pensar") ||
       normalized.includes("estoy saturad") ||
