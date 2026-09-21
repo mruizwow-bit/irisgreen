@@ -1,0 +1,23 @@
+{
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "purpose": "W1-R2-A architecture freeze: these global assets and representative ES/EN pages must remain byte-identical during architecture restoration.",
+  "files": {
+    "index.html": "3d9aa60b31d4670f3a3a90680af7cd8d8b68b3f8",
+    "es/recursos/index.html": "63156a104d2a8fa1d6e8fcd07e4f9394b669ff57",
+    "es/neurodiversidad/condiciones/autismo/index.html": "e5bfdd1144d0d019cd291e4d442560e17fb9b41e",
+    "es/situaciones/necesito-que-me-repitan-las-instrucciones/index.html": "6a464c93f1a623457e481231d8fead8c7622bf2e",
+    "es/biblioteca/index.html": "67874582956e47a3cc3d65ec39021731a607bb93",
+    "es/datos/index.html": "0e9aa2c09788d03f4a49e34ae6b701f130b36c34",
+    "es/sitio-tranquilo/index.html": "f605c673d4917f4201980521d1de7054dbd8016c",
+    "en/neurodiversity/conditions/autism/index.html": "00780084d28361d8c8874711ddd8216e71e1477f",
+    "en/situations/i-need-instructions-repeated/index.html": "35350ea7bde849657b389d0ebb84ae1dbb06fbc8",
+    "en/everyday-life/index.html": "4b19d9e54709f92b0870cf94758acfd01c52d1b6",
+    "en/data/index.html": "d9f913afd256437db7f009dfc4e59a3c18295f4f",
+    "en/quiet-space/index.html": "b45ef2215482b095d00b627ebbb9698a6dda1755",
+    "assets/site-v23.css": "40e1474af75544389ef941f912408737a56891c5",
+    "assets/interfaz-comun.js": "a5f6ff54ed4174b4b254a1331b449fdd3f9fe491",
+    "assets/lectura-accesible.js": "46a8095481a3d7b1ffc590da75c130c36724bcba",
+    "assets/musica.js": "50ff1400fc10f2b2dc799044108bdaf6373127b4",
+    "assets/controles-comunes.css": "e424f09d38ecfa7b368e8b9a796dfcab6ba73644"
+  }
+}
