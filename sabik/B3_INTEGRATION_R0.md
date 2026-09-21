@@ -22,7 +22,11 @@ El spike observa la **capa de presentación existente** y proyecta B3 sin escrib
 | risk / protection | PRESENTE + Safety existente |
 | voice states | sin cambio B3 |
 
-**TRANSICIÓN** y **CONFIRMAR** siguen disponibles en el controlador B3 como funciones de presentación. TRANSICIÓN no se usa como spinner de retrieval. CONFIRMAR se usa únicamente en acciones locales explícitas de presentación, como aplicar una preferencia de Sabik.
+**TRANSICIÓN** y **CONFIRMAR** están integrados como funciones de presentación explícitas:
+
+- TRANSICIÓN se usa para cambios locales con origen/destino conocido, como reiniciar la sesión; nunca como spinner de retrieval/composing.
+- CONFIRMAR se usa para confirmar cambios locales de presentación, como movimiento, densidad, intensidad o respuesta breve.
+- ninguno modifica S0.
 
 ## Presencias
 
@@ -33,9 +37,24 @@ El resolvedor admite:
 
 La interfaz real `/es/nea/` declara IA como presencia por defecto. Otras superficies pueden declarar `data-sabik-presence` sin cambiar la gramática.
 
-Los 15 assets de integración son derivados 64 px de los keyframes estáticos R1 aceptados; sus fuentes y hashes se documentan en `sabik/assets/b3/ASSET_MANIFEST.json`.
+## Activo visual de runtime
 
-Si un asset no carga, el spike deja visible el holograma legacy existente: no desaparece la información ni la interfaz.
+El repositorio contiene:
+
+`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
+
+Contrato:
+- 15 keyframes R1 aceptados como fuente;
+- 3 filas: Web / IA / Educa;
+- 5 columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
+- cada celda: 256×256;
+- derivación LANCZOS desde la fuente 544×544;
+- contenedor WebP **lossless**;
+- SHA-256 y hashes de las 15 fuentes en `ASSET_MANIFEST.json`.
+
+El sprite es un derivado de runtime; no rediseña #181/#182.
+
+Si el sprite no carga, el spike deja visible el holograma legacy existente: no desaparece la información ni la interfaz.
 
 ## Motion
 
@@ -70,7 +89,7 @@ Ajustes locales añadidos:
 
 `voice-ui-adapter.js` contiene un `NullVoiceAdapter`.
 
-En producción R0:
+En R0:
 - no hay motor conectado;
 - no hay autoplay;
 - no hay micrófono;
