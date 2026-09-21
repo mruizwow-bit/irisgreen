@@ -90,7 +90,7 @@
 .ti-sheet-foot .ti-sheet-strong{font:700 11pt/1.3 'Atkinson Hyperlegible',Arial,sans-serif}
 .ti-sheet-foot .ti-sheet-small{font-size:9.5pt;color:#333}
 .ti-sheet-foot .ti-sheet-credit{font-size:8.5pt;color:#555}
-@media(max-width:950px){.ti-grid{grid-template-columns:1fr}.ti-page{padding:26px 18px 60px}}
+@media(max-width:950px){.ti-grid{grid-template-columns:minmax(0,1fr)}.ti-page{padding:26px 18px 60px}}
 @media(max-width:520px){.ti-picto-btn{width:calc(33.333% - 6px)}}
 @page hojaTarjeta{size:A4 portrait;margin:0}
 .ti-sheet{page:hojaTarjeta}
