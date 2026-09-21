@@ -330,7 +330,7 @@ function detectCommands(target,development){
   }
 
   // Repeat instruction: compositional repetition form + current instructional context.
-  const repeatVerb=/\b(?:repet\w*|vuelve\s+a\s+(?:decir|mostrar|expresar|leer)|volver\s+a\s+(?:decir|mostrar|expresar|leer)|(?:decir|mostrar|expresar|leer)\s+de\s+nuevo)\b/u;
+  const repeatVerb=/\b(?:rep(?:et|it)\w*|vuelve\s+a\s+(?:decir|mostrar|expresar|leer)|volver\s+a\s+(?:decir|mostrar|expresar|leer)|(?:decir|mostrar|expresar|leer)\s+de\s+nuevo)\b/u;
   const repeatAdverb=/\botra\s+vez\b/u;
   const repeatTarget=/\b(?:instruccion|indicacion|mensaje|paso|guia|lectura|texto)\b/u;
   if(repeatVerb.test(n)||(repeatAdverb.test(n)&&(repeatTarget.test(n)||context.currentContentId||context.activeFlow==="step_by_step"))){
@@ -401,8 +401,10 @@ function detectCommands(target,development){
 
   // Cancellation is compositional: cancellation verb + explicit or current target.
   const cancelCue=/\b(?:cancel\w*|anul\w*|retir\w*|elimin\w*|interrump\w*|deja\s+de\s+esperar)\b/u;
-  if(cancelCue.test(n)){
-    const st=Math.max(0,(n.search(cancelCue)>=0?n.search(cancelCue):0)+offset);
+  const discardControl=/\bdescart\w*\b[^.;]{0,28}\b(?:pregunta|aclaracion|confirmacion|operacion)\b/u;
+  if(cancelCue.test(n)||discardControl.test(n)){
+    const cueIndex=cancelCue.test(n)?n.search(cancelCue):n.search(/\bdescart\w*\b/u);
+    const st=Math.max(0,(cueIndex>=0?cueIndex:0)+offset);
     const target=/\b(?:pregunta|aclaracion)\b/u.test(n)?"clarification":/\b(?:confirmacion|operacion)\b/u.test(n)?"confirmation":"current_request";
     addCandidate(out,command("CANCELAR",{target},st,1,"contract_exact",explicitNegation(original,st),"cancel_rule"));
   }
