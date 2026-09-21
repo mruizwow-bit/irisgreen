@@ -6,10 +6,11 @@
   "branch": "sabik/i0-calibration-v4-blind-20260921",
   "total_cases": 240,
   "id_namespace": {
-    "prefix": "I0-CAL4-",
-    "first": "I0-CAL4-0001",
-    "last": "I0-CAL4-0240",
-    "reused_ids_allowed": false
+    "prefix": "I0-CAL-4",
+    "first": "I0-CAL-4001",
+    "last": "I0-CAL-4240",
+    "reused_ids_allowed": false,
+    "correction_note": "Schema-compatible namespace correction before case authoring; all frozen counts unchanged."
   },
   "intent_appearance_targets": {
     "ENCONTRAR_CONTENIDO": 12,
