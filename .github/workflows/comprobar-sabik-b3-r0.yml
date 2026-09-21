@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: S0 source blobs unchanged from integration base
+        run: node tools/test-sabik-s0-lock-r0.js
       - name: S0 machine unchanged semantically
         run: node tools/test-sabik-machine-s0.js
       - name: Existing Sabik page regression
