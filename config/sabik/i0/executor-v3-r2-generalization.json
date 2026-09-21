@@ -1,0 +1,71 @@
+{
+  "version": "I0_EXECUTOR_V3_R2_GENERALIZATION",
+  "base_head": "b3daefe4f0cd471c8cc92b35472b51f1840569fa",
+  "datasets": {
+    "development": {
+      "role": "development",
+      "path": "tests/development/sabik/i0/development.v0.4.jsonl",
+      "cases": 400,
+      "sha256": "c388607d55c5c8daef721217e49f01c0dd7e17d81c27af2f6e76f3c44cca97fb"
+    },
+    "consumed_regression": {
+      "role": "CONSUMED_DIAGNOSTIC_REGRESSION_SET",
+      "path": "tests/calibration/sabik/i0/calibration.v0.4.jsonl",
+      "cases": 200,
+      "sha256": "ffc63e76eadbac6e975f9792e906913585bcbf53806d7616dc385481145b373f"
+    },
+    "schema": {
+      "path": "tests/schemas/sabik/i0/i0-layered-case-v0.4.schema.json",
+      "sha256": "3bbfcd7dfd8473b1a6366a664ddd98d7c94c08dafa6553d7879aa7b693a3edc8"
+    }
+  },
+  "architecture": {
+    "safety_pipeline": [
+      "detection",
+      "protective_gate",
+      "planning"
+    ],
+    "no_similarity_fallback": true,
+    "no_probability_claims": true,
+    "no_id_invention": true,
+    "no_query_invention": true,
+    "multi_action": "compositional_clause_slot_parameter_order",
+    "result_projection": "derive_from_resolved_contractual_plan"
+  },
+  "gates": {
+    "safety_errors": 0,
+    "safety_ordinary_command_leaks": 0,
+    "safety_ordinary_action_leaks": 0,
+    "negative_false_triggers": 0,
+    "positive_control_failures": 0,
+    "insufficient_contract_errors": 0,
+    "insufficient_ordinary_executions": 0,
+    "multi_action_when_command_exact": {
+      "omitted": 0,
+      "extra": 0,
+      "wrong_parameters": 0,
+      "order_errors": 0
+    },
+    "CASE_SHAPED_FORBIDDEN": 0
+  },
+  "opaque_contract_gaps": {
+    "policy": "record_not_invent_not_score_as_omission",
+    "permitted_families": [
+      "opaque_flow_id",
+      "opaque_instruction_context_id",
+      "opaque_current_content_id",
+      "opaque_previous_navigation_identity",
+      "opaque_navigation_route"
+    ]
+  },
+  "reserved": {
+    "calibration_v3": "forbidden",
+    "calibration_v4": "forbidden",
+    "validation": "forbidden",
+    "pr_183": "forbidden",
+    "issue_195": "forbidden",
+    "issue_173": "forbidden"
+  },
+  "merge": false,
+  "deploy": false
+}
