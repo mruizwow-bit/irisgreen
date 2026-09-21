@@ -29,6 +29,7 @@ test("safety_confirmed_blocks_planning",()=>{const p=run("Hay un peligro inmedia
 test("safety_direct_personal_danger_without_urgency",()=>{const p=run("Estoy en peligro.");assert.equal(p.gate,"confirmed");assert.equal(p.predicted_commands.length,0);assert.equal(p.predicted_actions.length,0);});
 test("safety_direct_personal_clearance",()=>assert.equal(run("No estoy en peligro.").gate,"cleared"));
 test("safety_topic_about_risk_stays_normal",()=>assert.equal(run("Analizo información sobre riesgo para una tarea.").gate,"normal"));
+test("safety_nonpersonal_material_with_explicit_clearance_stays_normal",()=>assert.equal(run("Estoy preparando material educativo sobre prevención, no estoy en peligro.").gate,"normal"));
 test("safety_uncertain",()=>assert.equal(run("No sé si estoy a salvo.").gate,"uncertain"));
 test("safety_cleared",()=>assert.equal(run("El peligro terminó y ahora estoy a salvo.").gate,"cleared"));
 test("safety_handoff",()=>assert.equal(run("Hay riesgo actual y necesito asistencia humana.").gate,"handoff"));
