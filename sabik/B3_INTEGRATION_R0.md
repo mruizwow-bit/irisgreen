@@ -39,22 +39,19 @@ La interfaz real `/es/nea/` declara IA como presencia por defecto. Otras superfi
 
 ## Activo visual de runtime
 
-El repositorio contiene:
+El repositorio contiene **15 derivados WebP**, uno por combinación presencia/estado, en:
 
-`sabik/assets/b3/sabik-b3-r0-sprite-256-lossless.webp`
+`sabik/assets/b3/`
 
 Contrato:
-- 15 keyframes R1 aceptados como fuente;
-- 3 filas: Web / IA / Educa;
-- 5 columnas: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
-- cada celda: 256×256;
-- derivación LANCZOS desde la fuente 544×544;
-- contenedor WebP **lossless**;
-- SHA-256 y hashes de las 15 fuentes en `ASSET_MANIFEST.json`.
+- fuentes: 15 keyframes R1 congelados de #182;
+- presencias: Web / IA / Educa;
+- estados: PRESENTE / ORIENTAR / TRANSICIÓN / PAUSA / CONFIRMAR;
+- dimensión mínima del derivado: 64×64;
+- SHA-256, bytes y dimensión real registrados por archivo en `ASSET_MANIFEST.json`;
+- no existe dependencia de sprite para el runtime.
 
-El sprite es un derivado de runtime; no rediseña #181/#182.
-
-Si el sprite no carga, el spike deja visible el holograma legacy existente: no desaparece la información ni la interfaz.
+Los derivados no rediseñan #181/#182. Si un asset no carga, el spike conserva visible el holograma legacy existente: la interfaz y el texto no desaparecen.
 
 ## Motion
 
