@@ -5,7 +5,7 @@ Alcance deliberado:
 - 187 Situaciones ES + 187 EN: retira bloques automáticos de señales/urgencias y relaciones diagnósticas.
 - 185 Condiciones ES + 185 EN: no reescribe contenido; la auditoría posterior exige que no existan
   encabezados genéricos automáticos Señales/Signs o Relacionado/Related.
-- 48 Vida diaria ES + 48 EN: retira la nube de relaciones de cada detalle y la taxonomía pública del índice.
+- 49 Vida diaria ES + 48 EN: retira la nube de relaciones de cada detalle y la taxonomía pública del índice.
 - La ficha especial de instrucciones conserva su diseño aprobado, pero refleja la misma decisión editorial.
 
 No toca Tarjeta Iris, robots, canónicos, fuentes documentales ni el texto de los demás bloques.
@@ -179,7 +179,7 @@ def main() -> None:
     results = {}
     results["situaciones_es"] = apply_collection(root / "es/situaciones", 187, SITUATION_HEADINGS_ES, "Situaciones ES")
     results["situaciones_en"] = apply_collection(root / "en/situations", 187, SITUATION_HEADINGS_EN, "Situations EN")
-    results["vida_es"] = apply_collection(root / "es/biblioteca", 48, DAILY_HEADINGS_ES, "Vida diaria ES")
+    results["vida_es"] = apply_collection(root / "es/biblioteca", 49, DAILY_HEADINGS_ES, "Vida diaria ES")
     results["vida_en"] = apply_collection(root / "en/everyday-life", 48, DAILY_HEADINGS_EN, "Everyday life EN")
 
     for rel, lede, lang in [
