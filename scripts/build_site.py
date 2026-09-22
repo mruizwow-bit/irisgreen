@@ -16,6 +16,50 @@ from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 STAGING_ENV='IRISGREEN_BUILD_STAGING'
 
 
+# W07-R1 · elementos necesarios en source/QA pero no en el artefacto público.
+# La lista está congelada por el QA de build hygiene; no elimina ni modifica
+# estas fuentes, únicamente impide que la copia pública las introduzca en dist.
+PUBLIC_EXCLUDE_PATHS=frozenset({
+    'es/investigacion/_import/parte-01.xz.b64',
+    'es/investigacion/_import/parte-02.xz.b64',
+    'es/investigacion/_import/parte-03.xz.b64',
+    'es/investigacion/_import/parte-04.xz.b64',
+    'es/investigacion/_import/parte-05.xz.b64',
+    'assets/muestras/luma/p01.jpg.b64',
+    'assets/books/samples/luma-es/sprite.part1.txt',
+    'assets/books/samples/luma-es/sprite.part2.txt',
+    'assets/books/samples/luma-es/sprite.part3.txt',
+    'es/intereses/catalogo.json',
+    'en/interests/catalogue.json',
+    'es/intereses/estrellas-constelaciones.json',
+    'es/intereses/estrellas-tanda2.json',
+    'es/intereses/videos-intereses.json',
+    'assets/video-thumbnails/manifest.json',
+    'img/juegos-coleccion/manifest.json',
+    'assets/mulberry-rutinas/sources.csv',
+})
+
+
+def _public_copy_ignore(src: str, names: list[str]) -> set[str]:
+    """Excluye de la copia pública solo los paths W07-R1 congelados."""
+    src_path=Path(src)
+    ignored=set()
+    for name in names:
+        candidate=src_path/name
+        try:
+            rel=candidate.relative_to(ROOT).as_posix()
+        except ValueError:
+            continue
+        if rel in PUBLIC_EXCLUDE_PATHS:
+            ignored.add(name)
+    # Mantener también las exclusiones genéricas históricas del build.
+    ignored.update(
+        name for name in names
+        if name=='__pycache__' or name.endswith(('.py','.md','.dc.html'))
+    )
+    return ignored
+
+
 def _copy_repo_to_staging(stage: Path) -> None:
     """Copia los insumos del repositorio a una raíz temporal desechable."""
     ignore=shutil.ignore_patterns('.git','dist','.baseline','__pycache__','*.pyc')
@@ -75,7 +119,7 @@ def build():
     for name in PUBLIC_DIRS:
         p=ROOT/name
         if not p.is_dir():raise FileNotFoundError(p)
-        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns('__pycache__','*.py','*.md','*.dc.html'))
+        shutil.copytree(p,dst/name,ignore=_public_copy_ignore)
     for name in PUBLIC_ROOT:
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
@@ -137,6 +181,9 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/check_csp_eval_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
+    leaked=sorted(PUBLIC_EXCLUDE_PATHS.intersection(files))
+    if leaked:
+        raise AssertionError('W07-R1 paths publicados por error: '+repr(leaked))
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
     (out/'build.json').write_text(json.dumps({'publish':'dist','files':len(files),'html':sum(p.endswith('.html') for p in files),'excluded_directories':['scripts','reports','editorial','pt-br','.github/','_audit/'],'roots':sorted(p.name for p in dst.iterdir())},ensure_ascii=False,indent=2)+'\n')
