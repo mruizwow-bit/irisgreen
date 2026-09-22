@@ -1,0 +1,245 @@
+{
+  "schema": "W07-R1-FIXTURE/1.0",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "baseline_tree": "f493a47b84945679e30a0a299d9327949f333945",
+  "w07_report": {
+    "name": "W07_BUILD_HYGIENE_AUDIT_READY.md",
+    "sha256": "05c443d7116d635e81bf8060c42041165a05eb19a449f6c44ffaaf7435de4886"
+  },
+  "w06_report": {
+    "name": "W06_LEGACY_LINKS_AUDIT_READY(1).md",
+    "sha256": "32d26ebf7b9b7137e88b6c58883cc6372b1ed3c68724744a5d1ea11a46597ef3"
+  },
+  "historical_artifact": {
+    "id": 10680715155,
+    "name": "web-release-gate-r0",
+    "zip_sha256": "a9c2c85531acfafbc41fa044e6b2c1b096624fe64f382087c9f6e32a8c1b82de",
+    "artifact_base_json_sha256": "5aed685e967773379d803221283e30d13f13cb9da2ae984a5c27ae04e91e8404",
+    "files": 1619,
+    "bytes": 439959506
+  },
+  "build_blobs": {
+    "scripts/build_site.py": "cce4565d50f6215c4936a5ab2044515cd122cea3",
+    "scripts/repair_routes.py": "8955f4ea1d6929091746b799655475d11ddd0076"
+  },
+  "w04": {
+    "pr": 220,
+    "head": "8104a46e48d5112286d55532bea8c082f5c42049",
+    "tree": "9261cf46695d9846828944de83660d805b879bf5",
+    "workflow_blob": "3155436d059c795d129cde427c4abedbd727f67d",
+    "publication_contract": {
+      "html": 1003,
+      "index,follow": 986,
+      "noindex,follow": 4,
+      "otro_o_ninguno": 13,
+      "sitemap_urls": 999
+    }
+  },
+  "sec01": {
+    "state": "WEB_SECURITY_BUILD_AUDIT_READY",
+    "netlify_toml_public": false,
+    "unsafe_eval_public": false
+  },
+  "exclusions": [
+    {
+      "path": "es/investigacion/_import/parte-01.xz.b64",
+      "bytes": 18000,
+      "git_blob_sha1": "84d388666ec13ac992f9dca31801d4442e1e35ab",
+      "classification": [
+        "INTERNAL_ONLY",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "es/investigacion/_import/parte-02.xz.b64",
+      "bytes": 18000,
+      "git_blob_sha1": "f1ed590fc2e833d26077b7ae540ca0cc270e277e",
+      "classification": [
+        "INTERNAL_ONLY",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "es/investigacion/_import/parte-03.xz.b64",
+      "bytes": 18000,
+      "git_blob_sha1": "40fe83928c76a42b4eb7073a7d0e636285ea836f",
+      "classification": [
+        "INTERNAL_ONLY",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "es/investigacion/_import/parte-04.xz.b64",
+      "bytes": 18000,
+      "git_blob_sha1": "a1f474892fe45658e53ac7e9af9939896f1bb3ee",
+      "classification": [
+        "INTERNAL_ONLY",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "es/investigacion/_import/parte-05.xz.b64",
+      "bytes": 3376,
+      "git_blob_sha1": "ddaba824ba4e1a66e14aca8eeb69003f571bc2d0",
+      "classification": [
+        "INTERNAL_ONLY",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "assets/muestras/luma/p01.jpg.b64",
+      "bytes": 18870,
+      "git_blob_sha1": "494b418713e696c679a32f013d3b930907cd77fe",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "assets/books/samples/luma-es/sprite.part1.txt",
+      "bytes": 7000,
+      "git_blob_sha1": "12d42b4d74b3efa4c7e4002afac33fa1d27a469d",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "assets/books/samples/luma-es/sprite.part2.txt",
+      "bytes": 7000,
+      "git_blob_sha1": "ec0596164dfc59d5a28dd5b883e4f56e1e7efda4",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "assets/books/samples/luma-es/sprite.part3.txt",
+      "bytes": 7000,
+      "git_blob_sha1": "9a05ea762c1147d2469b07b5b427c55c7cdf5053",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "es/intereses/catalogo.json",
+      "bytes": 33815,
+      "git_blob_sha1": "dfece0ee52b1200e205bb0a953746fe5d349824a",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "en/interests/catalogue.json",
+      "bytes": 33815,
+      "git_blob_sha1": "dfece0ee52b1200e205bb0a953746fe5d349824a",
+      "classification": [
+        "ORPHAN_UNREFERENCED",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "es/intereses/estrellas-constelaciones.json",
+      "bytes": 11465,
+      "git_blob_sha1": "fe19fe3a1af2e7b74d69b1938608c6330557d763",
+      "classification": [
+        "SOURCE_ONLY_EXPECTED",
+        "ORPHAN_UNREFERENCED"
+      ]
+    },
+    {
+      "path": "es/intereses/estrellas-tanda2.json",
+      "bytes": 13508,
+      "git_blob_sha1": "2acb74b3d2c46670354b7be164024e11c6e975cd",
+      "classification": [
+        "SOURCE_ONLY_EXPECTED",
+        "ORPHAN_UNREFERENCED"
+      ]
+    },
+    {
+      "path": "es/intereses/videos-intereses.json",
+      "bytes": 30907,
+      "git_blob_sha1": "63acbd13ec24b67b2adc16bac402a4e05d0c8182",
+      "classification": [
+        "QA_EVIDENCE",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "assets/video-thumbnails/manifest.json",
+      "bytes": 19688,
+      "git_blob_sha1": "cd1a28b6ce7248bf7198766de9558369efc45764",
+      "classification": [
+        "QA_EVIDENCE",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    },
+    {
+      "path": "img/juegos-coleccion/manifest.json",
+      "bytes": 22671,
+      "git_blob_sha1": "55a584dcdf187677c78de3495901350a6e62163f",
+      "classification": [
+        "QA_EVIDENCE",
+        "LEGACY_RESIDUE"
+      ]
+    },
+    {
+      "path": "assets/mulberry-rutinas/sources.csv",
+      "bytes": 7845,
+      "git_blob_sha1": "f4aa8bbec47dacfd780210f89f8805b2f1a40c27",
+      "classification": [
+        "QA_EVIDENCE",
+        "SOURCE_ONLY_EXPECTED"
+      ]
+    }
+  ],
+  "totals": {
+    "paths": 17,
+    "bytes": 288960,
+    "legacy_orphan_paths": 6,
+    "source_qa_paths": 11,
+    "sensitive_exposures": 0
+  },
+  "protected_runtime": [
+    {
+      "path": "es/intereses/cromos.json",
+      "git_blob_sha1": "9411a55444b4ff4e657eb6de78061330abe3de86"
+    },
+    {
+      "path": "es/investigacion/estudios-textos.json",
+      "git_blob_sha1": "271f03adf38079efd03dbc8c8561a41b59e59f4a"
+    },
+    {
+      "path": "es/recursos/juegos/juegos-120.json",
+      "git_blob_sha1": "b8ccbf2fd9a37589fc92c428f2f5853a3662ec4b"
+    }
+  ],
+  "protected_flipbooks": [
+    "assets/books/samples/flip-luma-es.part1.txt",
+    "assets/books/samples/flip-luma-es.part2.txt",
+    "assets/books/samples/flip-luma-es.part3.txt",
+    "assets/books/samples/flip-autismo-es.part1.txt",
+    "assets/books/samples/flip-autismo-es.part2.txt",
+    "assets/books/samples/flip-autismo-es.part3.txt",
+    "assets/books/samples/flip-autismo-es.part4.txt"
+  ],
+  "protected_licenses": [
+    "assets/fonts/LICENSE-Atkinson-Hyperlegible.txt",
+    "assets/fonts/LICENSE-Newsreader.txt",
+    "assets/mulberry/LICENSE-MULBERRY.txt",
+    "assets/mulberry-rutinas/LICENSE-MULBERRY.txt"
+  ],
+  "react_false_positive_pairs": [
+    [
+      "assets/games/react.production.min.js",
+      "assets/runtime/d949f1c3687aedad.js"
+    ],
+    [
+      "assets/games/react-dom.production.min.js",
+      "assets/runtime/35f4f974f4b2bcd4.js"
+    ]
+  ],
+  "baseline_storage_errors": 9
+}
