@@ -68,7 +68,7 @@ def serve(root: Path):
         server.server_close()
 
 def rgb_parse(value: str):
-    m=re.fullmatch(r'rgba?\\(\\s*([\\d.]+)\\s*,\\s*([\\d.]+)\\s*,\\s*([\\d.]+)(?:\\s*,\\s*([\\d.]+))?\\s*\\)',value.strip())
+    m=re.fullmatch(r'rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)',value.strip())
     if not m:
         raise ValueError(f'Unsupported computed color: {value!r}')
     return tuple(float(x) for x in m.group(1,2,3))
