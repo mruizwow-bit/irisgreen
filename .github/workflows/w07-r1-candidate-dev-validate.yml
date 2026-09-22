@@ -23,9 +23,10 @@ jobs:
       - name: Verify exact product candidate parent
         shell: bash
         run: |
-          test "$(git rev-parse HEAD^)" = "78b1566f0c3546348ff8fa102da51b465e9f6156"
-          test "$(git diff --name-only e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^)" = "scripts/build_site.py"
-          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^
+          git merge-base --is-ancestor 78b1566f0c3546348ff8fa102da51b465e9f6156 HEAD
+          test "$(git diff --name-only 78b1566f0c3546348ff8fa102da51b465e9f6156...HEAD)" = ".github/workflows/w07-r1-candidate-dev-validate.yml"
+          test "$(git diff --name-only e48b51814afed825a92e83a2f6e51ee8a1c85e45...78b1566f0c3546348ff8fa102da51b465e9f6156)" = "scripts/build_site.py"
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...78b1566f0c3546348ff8fa102da51b465e9f6156
 
       - name: Import exact accepted freeze #226 into temp
         shell: bash
@@ -134,14 +135,14 @@ jobs:
               if not p.is_file(): errors.append((x['path'],'missing-source'));continue
               blob=subprocess.check_output(['git','hash-object',x['path']],text=True).strip()
               if blob!=x['git_blob_sha1']: errors.append((x['path'],blob,x['git_blob_sha1']))
-          changed=subprocess.check_output(['git','diff','--name-only','e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^'],text=True).splitlines()
+          changed=subprocess.check_output(['git','diff','--name-only','e48b51814afed825a92e83a2f6e51ee8a1c85e45...78b1566f0c3546348ff8fa102da51b465e9f6156'],text=True).splitlines()
           result={'source_preserved':len(paths)-len(errors),'source_errors':errors,'product_candidate_changed_paths':changed}
           print(result)
           Path('/tmp/w07-validation/source-preservation.json').write_text(json.dumps(result,indent=2)+'\n')
           if errors: raise SystemExit(errors)
           if changed!=['scripts/build_site.py']: raise SystemExit('unexpected product diff '+repr(changed))
           PY
-          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...78b1566f0c3546348ff8fa102da51b465e9f6156
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
