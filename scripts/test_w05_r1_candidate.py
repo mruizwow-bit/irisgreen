@@ -156,8 +156,7 @@ def browser_checks(root: Path) -> dict:
                 assert panel.get_by_role("button", name=re.compile(r"^(Parar|Stop)$")).count() == 1
                 assert panel.get_by_role("button", name=re.compile(r"^(Escuchar|Play)$")).count() == 1
                 if width == 390:
-                    first = panel.locator('[data-track="0"]')
-                    first.click()
+                    panel.get_by_role("button", name=re.compile(r"^(Escuchar|Play)$")).click()
                     page.wait_for_timeout(450)
                     assert any(p.endswith("/audio/fallbacks/un-momento-de-calma.mp3") for p in audio_requests), audio_requests
                     panel.get_by_role("button", name=re.compile(r"^(Parar|Stop)$")).click()
@@ -194,7 +193,7 @@ def browser_checks(root: Path) -> dict:
             trigger = page.locator(".ig-uh-music:visible,#plBtn:visible,[data-ig-music]:visible").first
             trigger.click()
             panel = page.locator("#ig-music-panel")
-            panel.locator('[data-track="0"]').click()
+            panel.get_by_role("button", name=re.compile(r"^(Escuchar|Play)$")).click()
             page.wait_for_timeout(700)
             assert panel.locator("[data-track]").count() == 24
             assert panel.locator(".ig-m-status").inner_text().strip()
