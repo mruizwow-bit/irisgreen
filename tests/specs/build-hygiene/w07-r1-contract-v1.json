@@ -1,0 +1,156 @@
+{
+  "schema": "W07-R1-CONTRACT/1.0",
+  "authorization": [
+    "DEC-035",
+    "DEC-037",
+    "DEC-033",
+    "DEC-014"
+  ],
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "freeze_mode": "QA_ONLY_ZERO_PRODUCT_FILES",
+  "scope": "Build hygiene only. No product/build implementation in the freeze.",
+  "baseline_expected": {
+    "exclusions_present": 17,
+    "exclusion_bytes": 288960,
+    "artifact_files": 1619,
+    "artifact_bytes": 439959506,
+    "publication_contract": {
+      "html": 1003,
+      "index,follow": 986,
+      "noindex,follow": 4,
+      "otro_o_ninguno": 13,
+      "sitemap_urls": 999
+    },
+    "storage_errors": 9,
+    "netlify_toml_public": false,
+    "sensitive_exposures": 0
+  },
+  "future_diff_policy": {
+    "allowed_removed_paths": "fixture.exclusions[].path only",
+    "allowed_added_paths": [],
+    "allowed_changed_paths": [],
+    "stop_if_consumer_evidence_changes": true
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "key": "baseline_17_present",
+      "severity": "BLOCKING",
+      "target": "The exact 17 W07 paths are present in the baseline public artifact with the frozen sizes."
+    },
+    {
+      "id": "F02",
+      "key": "future_17_absent",
+      "severity": "BLOCKING_FUTURE",
+      "target": "A future W07-R1 public artifact publishes none of the 17, unless an explicit STOP is raised because consumer evidence changed."
+    },
+    {
+      "id": "F03",
+      "key": "source_preserved",
+      "severity": "BLOCKING_FUTURE",
+      "target": "Required source files remain in repository/source; W07 is publish pruning, not source deletion."
+    },
+    {
+      "id": "F04",
+      "key": "public_media_licenses_preserved",
+      "severity": "BLOCKING_FUTURE",
+      "target": "Books/flipbooks/PDF/audio/images/licenses/originals outside the authorized 17 are unchanged."
+    },
+    {
+      "id": "F05",
+      "key": "investigacion_import_source_only",
+      "severity": "BLOCKING_FUTURE",
+      "target": "es/investigacion/_import/** remains usable source for Investigación but is absent from future publish."
+    },
+    {
+      "id": "F06",
+      "key": "qa_manifests_available",
+      "severity": "BLOCKING_FUTURE",
+      "target": "QA manifests needed by tests remain available before/pre-prune or outside publish."
+    },
+    {
+      "id": "F07",
+      "key": "runtime_data_preserved",
+      "severity": "BLOCKING",
+      "target": "Current runtime data such as cromos.json, estudios-textos.json and juegos-120.json remains present."
+    },
+    {
+      "id": "F08",
+      "key": "react_duplicates_preserved",
+      "severity": "BLOCKING",
+      "target": "React byte-identical pairs are not deduplicated by W07."
+    },
+    {
+      "id": "F09",
+      "key": "linux_build_reproducible",
+      "severity": "BLOCKING",
+      "target": "Two clean Linux builds from the same SHA produce byte-identical public artifact manifests."
+    },
+    {
+      "id": "F10",
+      "key": "artifact_manifest_bound",
+      "severity": "BLOCKING",
+      "target": "Before/after artifact manifest is SHA-bound and records path/bytes/SHA-256."
+    },
+    {
+      "id": "F11",
+      "key": "w06_route_checker",
+      "severity": "BLOCKING",
+      "target": "W06 route checker runs read-only against the same clean dist."
+    },
+    {
+      "id": "F12",
+      "key": "w04_publication_contract",
+      "severity": "BLOCKING",
+      "target": "Publication/indexation contract does not worsen from 1003/986/4/13/999."
+    },
+    {
+      "id": "F13",
+      "key": "privacy_storage_no_worse",
+      "severity": "BLOCKING",
+      "target": "Privacy/storage audit does not worsen relative to frozen baseline error count."
+    },
+    {
+      "id": "F14",
+      "key": "csp_security_no_worse",
+      "severity": "BLOCKING",
+      "target": "CSP and security-header audits do not regress."
+    },
+    {
+      "id": "F15",
+      "key": "netlify_not_public",
+      "severity": "BLOCKING",
+      "target": "netlify.toml remains absent from dist."
+    },
+    {
+      "id": "F16",
+      "key": "no_sensitive_introduced",
+      "severity": "BLOCKING",
+      "target": "No sensitive/secret material is introduced into the public artifact."
+    },
+    {
+      "id": "F17",
+      "key": "artifact_diff_authorized_only",
+      "severity": "BLOCKING_FUTURE",
+      "target": "Future artifact diff is limited to removing the exact authorized 17 paths; no other path is added/removed/changed."
+    },
+    {
+      "id": "F18",
+      "key": "no_w11_media_work",
+      "severity": "BLOCKING_FUTURE",
+      "target": "W07 performs no media conversion, recompression or optimization."
+    },
+    {
+      "id": "F19",
+      "key": "git_diff_check",
+      "severity": "BLOCKING",
+      "target": "git diff --check passes."
+    },
+    {
+      "id": "F20",
+      "key": "rollback_documented",
+      "severity": "BLOCKING",
+      "target": "Rollback restores the prior publish policy/artifact without deleting source."
+    }
+  ]
+}
