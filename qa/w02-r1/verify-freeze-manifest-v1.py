@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import hashlib,json
+import json,subprocess
 from pathlib import Path
 root=Path(__file__).resolve().parents[2]
 manifest=json.loads((root/'qa/w02-r1/freeze-manifest-v1.json').read_text(encoding='utf-8'))
@@ -9,8 +9,8 @@ for item in manifest['artifacts']:
     if not p.is_file():
         errors.append(f"missing {item['path']}")
         continue
-    sha=hashlib.sha256(p.read_bytes()).hexdigest()
-    if sha!=item['sha256']:
-        errors.append(f"{item['path']}: sha256 {sha} != {item['sha256']}")
+    blob=subprocess.check_output(['git','hash-object',str(p)],cwd=root,text=True).strip()
+    if blob!=item['blob_sha']:
+        errors.append(f"{item['path']}: blob {blob} != {item['blob_sha']}")
 print(json.dumps({'checked':len(manifest['artifacts']),'errors':errors},indent=2))
 raise SystemExit(1 if errors else 0)
