@@ -109,6 +109,31 @@ Do not deduplicate these byte-identical React pairs:
 - `assets/games/react.production.min.js` + `assets/runtime/d949f1c3687aedad.js`;
 - `assets/games/react-dom.production.min.js` + `assets/runtime/35f4f974f4b2bcd4.js`.
 
+## W06 checker baseline classification
+
+The first exact-main W06 checker run produced one preexisting checker failure:
+
+`EXPECTED_BASELINE_FAIL_PREEXISTING_CHECKER_CONTRACT`
+
+Exact failure:
+`('en/data/autism-in-the-population/index.html', 'meta[name=description]')`
+
+Attribution: **PREEXISTING_OUT_OF_SCOPE_W07**.
+
+Evidence:
+- `scripts/fix_seo_metadata.py` intentionally rewrites the Data meta description for
+  `en/data/autism-in-the-population/index.html` in the final public artifact;
+- `scripts/test_routes.py` still asserts source/dist equality for
+  `meta[name=description]` on that page;
+- W06 had already classified its current exhaustive route-checker coverage as
+  `EVIDENCE_INSUFFICIENT`, not as a current PASS;
+- the W07 artifact itself is reproducible and the W04 publication contract remains green.
+
+Therefore F11 freezes the obligation to **run W06 read-only on the same dist**.
+W07 may not edit or weaken W06. A future W07 candidate may retain this exact single
+preexisting failure or improve to PASS through a separately authorized W06 correction,
+but it may not introduce any additional W06 checker failure.
+
 ## Baseline rerun
 
 ```bash
