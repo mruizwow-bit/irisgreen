@@ -1,0 +1,176 @@
+name: W04 R1 exact-head independent QA
+on:
+  pull_request:
+    branches: [web/w04-r1-publication-contract-20260922]
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8104a46e48d5112286d55532bea8c082f5c42049
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout exact base
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: e48b51814afed825a92e83a2f6e51ee8a1c85e45
+          path: base
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Identity scope and environment
+        working-directory: candidate
+        run: |
+          BASE=e48b51814afed825a92e83a2f6e51ee8a1c85e45
+          CAND=8104a46e48d5112286d55532bea8c082f5c42049
+          test "$(git rev-parse HEAD)" = "$CAND"
+          test "$(git rev-parse HEAD^{tree})" = "9261cf46695d9846828944de83660d805b879bf5"
+          test "$(git merge-base "$BASE" "$CAND")" = "$BASE"
+          test "$(git rev-list --count "$BASE..$CAND")" = "1"
+          test "$(git rev-list --count "$CAND..$BASE")" = "0"
+          test "$(git diff --name-only "$BASE..$CAND")" = ".github/workflows/comprobar-publicacion.yml"
+          git diff --check "$BASE..$CAND"
+          ! git grep -n '<<<<<<<\|=======\|>>>>>>>' "$BASE..$CAND" -- . ':!*.lock'
+          uname -a
+          cat /etc/os-release
+          python3 --version
+          node --version
+
+      - name: Build base and candidate
+        run: |
+          (cd base && python3 scripts/build_site.py)
+          (cd candidate && python3 scripts/build_site.py)
+
+      - name: Prove published dist unchanged
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          def manifest(root):
+              out={}
+              for p in sorted(Path(root).rglob('*')):
+                  if p.is_file():
+                      rel=p.relative_to(root).as_posix()
+                      out[rel]={'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+              return out
+          b=manifest('base/dist'); c=manifest('candidate/dist')
+          added=sorted(set(c)-set(b)); removed=sorted(set(b)-set(c))
+          changed=sorted(k for k in set(b)&set(c) if b[k]!=c[k])
+          report={'base_files':len(b),'candidate_files':len(c),'added':added,'removed':removed,'changed':changed,
+                  'base_bytes':sum(x['bytes'] for x in b.values()),'candidate_bytes':sum(x['bytes'] for x in c.values())}
+          Path('/tmp/w04-r1').mkdir(exist_ok=True)
+          Path('/tmp/w04-r1/dist-identity.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report))
+          if added or removed or changed: raise SystemExit('Candidate changes published dist')
+          PY
+
+      - name: Verify new strict publication contract
+        working-directory: candidate
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          root=Path('dist')
+          pages=list(root.rglob('*.html'))
+          counts={'index,follow':0,'noindex,follow':0,'otro_o_ninguno':0}
+          for p in pages:
+              text=p.read_text(encoding='utf-8',errors='ignore')
+              m=(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']*)["\']',text,re.I)
+                 or re.search(r'<meta[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']robots["\']',text,re.I))
+              value=m.group(1).strip().lower() if m else None
+              counts[value if value in counts else 'otro_o_ninguno'] += 1
+          sitemap=Path('dist/sitemap.xml').read_text(encoding='utf-8')
+          got={'html':len(pages),**counts,'sitemap_urls':len(re.findall(r'<url(?:\s|>)',sitemap))}
+          expected={'html':1003,'index,follow':986,'noindex,follow':4,'otro_o_ninguno':13,'sitemap_urls':999}
+          old={'html':999,'index,follow':982,'noindex,follow':3,'otro_o_ninguno':14,'sitemap_urls':995}
+          print(json.dumps({'got':got,'expected':expected,'old':old,'new_contract_pass':got==expected,'old_contract_would_pass':got==old}))
+          if got != expected: raise SystemExit('New publication contract mismatch')
+          if got == old: raise SystemExit('Negative test invalid: old contract still passes')
+          Path('/tmp/w04-r1/indexation.json').write_text(json.dumps(got,indent=2)+'\n')
+          PY
+          python3 scripts/audit_sin_estados_publicos.py --root dist
+
+      - name: SEO canonical hreflang sitemap noindex
+        working-directory: candidate
+        run: |
+          python3 scripts/audit_seo_idiomas.py --root dist
+          cp dist/reports/publicacion/seo-idiomas.json /tmp/w04-r1/seo-idiomas.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          r=json.loads(Path('dist/reports/publicacion/seo-idiomas.json').read_text())
+          print(json.dumps(r))
+          if not r.get('passed'): raise SystemExit('SEO report not passed')
+          # Explicit W04 exceptions / invariants.
+          bridge=Path('dist/es/tarjetas-iris/index.html').read_text(encoding='utf-8',errors='ignore')
+          if 'noindex,follow' not in bridge.lower(): raise SystemExit('Legacy bridge lost noindex')
+          if 'https://irisgreen.eu/es/recursos/tarjeta-iris/' not in bridge: raise SystemExit('Legacy bridge canonical changed')
+          if not Path('dist/404.html').is_file(): raise SystemExit('404 artifact missing')
+          PY
+
+      - name: Storage red is unchanged and out of W04 scope
+        run: |
+          set +e
+          (cd base && python3 scripts/audit_privacidad_almacenamiento.py --root dist >/tmp/storage-base.log 2>&1)
+          b=$?
+          (cd candidate && python3 scripts/audit_privacidad_almacenamiento.py --root dist >/tmp/storage-candidate.log 2>&1)
+          c=$?
+          set -e
+          test "$b" != "0"
+          test "$c" != "0"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          b=json.loads(Path('base/dist/reports/publicacion/privacidad-almacenamiento.json').read_text())
+          c=json.loads(Path('candidate/dist/reports/publicacion/privacidad-almacenamiento.json').read_text())
+          be=b.get('errores',[]); ce=c.get('errores',[])
+          print(json.dumps({'base_errors':len(be),'candidate_errors':len(ce),'identical_errors':be==ce}))
+          if be != ce: raise SystemExit('Storage red changed in W04 candidate')
+          if len(ce) != 9: raise SystemExit(f'Unexpected storage error count: {len(ce)}')
+          Path('/tmp/w04-r1/storage-classification.json').write_text(json.dumps({
+            'classification':'PREEXISTING_OUT_OF_SCOPE','base_errors':len(be),'candidate_errors':len(ce),'identical_errors':True
+          },indent=2)+'\n')
+          PY
+
+      - name: Inventory and manifest
+        working-directory: candidate
+        run: |
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          files=[p for p in Path('dist').rglob('*') if p.is_file()]
+          manifest={
+            'schema':'IG-SABIK-DELIVERY-MANIFEST/1.0',
+            'Work_ID':'W1-QA-W04-R1-PR220',
+            'Decision_ID':['DEC-025','DEC-020'],
+            'base':'e48b51814afed825a92e83a2f6e51ee8a1c85e45',
+            'head':'8104a46e48d5112286d55532bea8c082f5c42049',
+            'tree':'9261cf46695d9846828944de83660d805b879bf5',
+            'QA_Tested_SHA':'8104a46e48d5112286d55532bea8c082f5c42049',
+            'Build_Tested_SHA':'8104a46e48d5112286d55532bea8c082f5c42049',
+            'build_command':'python3 scripts/build_site.py',
+            'build_exit_code':0,
+            'dist_files':len(files),
+            'dist_bytes':sum(p.stat().st_size for p in files),
+            'manual_pending':[],
+            'publication':'1003/986/4/13/999 PASS',
+            'rollback':'revert W04 R1 commit 8104a46e48d5112286d55532bea8c082f5c42049 to restore prior workflow contract; no product/data migration',
+            'limitations':['global storage/privacy red remains PREEXISTING_OUT_OF_SCOPE until W03 integration','4 true WCAG contrast defects remain PREEXISTING_OUT_OF_SCOPE','this QA does not deploy']
+          }
+          Path('/tmp/w04-r1/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          print(json.dumps(manifest))
+          PY
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: w04-r1-pr220-independent
+          path: /tmp/w04-r1
+          retention-days: 14
