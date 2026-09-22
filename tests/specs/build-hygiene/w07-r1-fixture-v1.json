@@ -241,5 +241,18 @@
       "assets/runtime/35f4f974f4b2bcd4.js"
     ]
   ],
-  "baseline_storage_errors": 9
+  "baseline_storage_errors": 9,
+  "w06_route_baseline": {
+    "classification": "EXPECTED_BASELINE_FAIL_PREEXISTING_CHECKER_CONTRACT",
+    "returncode": 1,
+    "failures": [
+      {
+        "phase": "static-or-routing",
+        "error": "('en/data/autism-in-the-population/index.html', 'meta[name=description]')"
+      }
+    ],
+    "attribution": "PREEXISTING_OUT_OF_SCOPE_W07",
+    "evidence": "scripts/fix_seo_metadata.py intentionally changes the Data meta description in dist after source copy; scripts/test_routes.py still asserts source/dist meta[name=description] equality for en/data/autism-in-the-population/index.html.",
+    "rule": "W07 must run the checker read-only and must not worsen this exact baseline. Do not edit/reopen W06 in W07."
+  }
 }
