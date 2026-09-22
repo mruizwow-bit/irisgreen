@@ -159,12 +159,20 @@ def measure(page, locator, required, state):
     rects=locator.evaluate(TEXT_RECTS_JS)
     if not rects:
         raise RuntimeError('No text rectangles')
-    locator.evaluate("(el)=>el.setAttribute('data-w02-probe','')")
+    old_style=locator.get_attribute('style')
+    locator.evaluate("""(el)=>{
+      el.style.setProperty('color','transparent','important');
+      el.style.setProperty('-webkit-text-fill-color','transparent','important');
+      el.style.setProperty('text-shadow','none','important');
+    }""")
     page.wait_for_timeout(20)
     try:
         shot=Image.open(io.BytesIO(page.screenshot(full_page=False))).convert('RGB')
     finally:
-        locator.evaluate("(el)=>el.removeAttribute('data-w02-probe')")
+        if old_style is None:
+            locator.evaluate("(el)=>el.removeAttribute('style')")
+        else:
+            locator.evaluate("(el,old)=>el.setAttribute('style',old)",old_style)
     w,h=shot.size
     vals=[]
     worst={'ratio':999.0,'x':None,'y':None,'background_rgb':None}
