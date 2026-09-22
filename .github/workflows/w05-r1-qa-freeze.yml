@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Source baseline
         run: node tests/specs/music/run-w05-r1-freeze.mjs --out=/tmp/w05-source.json
       - name: Build exact QA head
