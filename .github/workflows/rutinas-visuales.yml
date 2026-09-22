@@ -8,10 +8,12 @@ on:
       - 'scripts/test_rutinas_visuales.py'
       - 'scripts/generate_rutinas_sprites.py'
       - '.github/workflows/rutinas-visuales.yml'
+permissions:
+  contents: read
 jobs:
   comprobar:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Comprobar estructura y decisiones cerradas
         run: python3 scripts/test_rutinas_visuales.py .
