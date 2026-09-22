@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - web/w05-r1-music-fallback-20260922
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
