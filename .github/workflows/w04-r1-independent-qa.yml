@@ -145,7 +145,7 @@ jobs:
           python3 - <<'PY'
           import json,subprocess
           from pathlib import Path
-          files=[p for p in Path('dist').rglob('*') if p.is_file()]
+          build_inventory=json.loads(Path('/tmp/w04-r1/build-inventory.json').read_text())
           manifest={
             'schema':'IG-SABIK-DELIVERY-MANIFEST/1.0',
             'Work_ID':'W1-QA-W04-R1-PR220',
@@ -157,8 +157,8 @@ jobs:
             'Build_Tested_SHA':'8104a46e48d5112286d55532bea8c082f5c42049',
             'build_command':'python3 scripts/build_site.py',
             'build_exit_code':0,
-            'dist_files':len(files),
-            'dist_bytes':sum(p.stat().st_size for p in files),
+            'dist_files':build_inventory['dist_files'],
+            'dist_bytes':build_inventory['dist_bytes'],
             'manual_pending':[],
             'publication':'1003/986/4/13/999 PASS',
             'rollback':'revert W04 R1 commit 8104a46e48d5112286d55532bea8c082f5c42049 to restore prior workflow contract; no product/data migration',
