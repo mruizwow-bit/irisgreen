@@ -34,7 +34,8 @@ def current_identity()->dict:
     }
 
 def source_checks()->dict:
-    assert sh("git","merge-base","--is-ancestor",BASE,"HEAD",check=False)==""  # command has no stdout
+    ancestor=subprocess.run(["git","merge-base","--is-ancestor",BASE,"HEAD"],cwd=ROOT).returncode
+    assert ancestor==0,"baseline is not an ancestor of QA freeze HEAD"
     changed=sh("git","diff","--name-only",BASE+"...HEAD").splitlines()
     bad=[p for p in changed if p and not (p.startswith(ALLOWED_PREFIXES[0]) or p.startswith(ALLOWED_PREFIXES[1]) or p==ALLOWED_PREFIXES[2])]
     assert not bad, f"product/build path changed in freeze branch: {bad}"
