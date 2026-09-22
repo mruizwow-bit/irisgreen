@@ -1,0 +1,32 @@
+name: W05 R1 QA freeze
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/specs/music/w05-r1-*'
+      - 'docs/qa/W05_R1_*'
+      - '.github/workflows/w05-r1-qa-freeze.yml'
+  workflow_dispatch:
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Source baseline
+        run: node tests/specs/music/run-w05-r1-freeze.mjs --out=/tmp/w05-source.json
+      - name: Build exact QA head
+        run: python3 scripts/build_site.py
+      - name: Dist baseline
+        run: node tests/specs/music/run-w05-r1-freeze.mjs --dist --out=/tmp/w05-dist.json
+      - name: Diff check
+        run: git diff --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: w05-r1-freeze-baseline
+          path: |
+            /tmp/w05-source.json
+            /tmp/w05-dist.json
