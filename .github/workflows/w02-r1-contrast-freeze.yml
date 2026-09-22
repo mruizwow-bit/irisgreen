@@ -1,73 +1,77 @@
 name: W02 R1 Contrast Freeze
-on:
+'on':
   pull_request:
     branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  baseline-discovery:
+  freeze:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
-      - name: Verify QA-only scope
+      - name: Verify frozen QA-only scope and diff
         shell: bash
         run: |
-          git diff --check origin/main...HEAD
-          changed="$(git diff --name-only origin/main...HEAD)"
-          printf '%s
-' "$changed"
-          if printf '%s
-' "$changed" | grep -Ev '^(.github/workflows/w02-r1-contrast-freeze.yml|qa/w02-r1/)'; then
-            echo "W02 freeze must contain QA-only files." >&2
-            exit 1
-          fi
-      - name: Prepare browser dependencies
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD
+          python3 - <<'PY'
+          import subprocess
+          files=subprocess.check_output(
+              ['git','diff','--name-only','e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD'],
+              text=True
+          ).splitlines()
+          bad=[p for p in files if p!='.github/workflows/w02-r1-contrast-freeze.yml' and not p.startswith('qa/w02-r1/')]
+          print({'changed_files':files,'product_files':bad})
+          if bad:
+              raise SystemExit('Product/runtime file entered W02 freeze: '+repr(bad))
+          PY
+      - name: Verify upstream audit blobs
+        shell: bash
+        run: |
+          test "$(git hash-object .github/workflows/auditar-wcag-contraste.yml)" = "df9f626be0f897ffcd43944cd3ea16622186af28"
+          test "$(git hash-object scripts/audit_contrast_signatures.py)" = "d931470e783b968f6ecdf4c81a0930bd6c42ca6d"
+      - name: Prepare Linux browser dependencies
         run: |
           python3 -m venv /tmp/w02-freeze
           /tmp/w02-freeze/bin/pip -q install playwright==1.55.0 pillow==11.3.0
           /tmp/w02-freeze/bin/python -m playwright install --with-deps chromium >/tmp/w02-playwright-install.log 2>&1
           npm install --no-save --ignore-scripts axe-core@4.13.0
-      - name: Build Linux baseline candidate tree
+      - name: Build Linux output
         run: python3 scripts/build_site.py
-      - name: Reproduce current contrast audit
-        run: /tmp/w02-freeze/bin/python scripts/audit_contrast_signatures.py --root dist --axe node_modules/axe-core/axe.min.js
-      - name: Print exact failing signatures and instances
+      - name: Reproduce official baseline audit
         run: |
+          /tmp/w02-freeze/bin/python scripts/audit_contrast_signatures.py --root dist --axe node_modules/axe-core/axe.min.js
           python3 - <<'PY'
           import json
           from pathlib import Path
-          data=json.loads(Path('dist/reports/wcag-contrast-signatures/results.json').read_text())
-          failed=[]
-          for i,row in enumerate(data['signatures']):
-              probes=row.get('pixel_probes') or []
-              if probes and not all(p.get('p01_pass',False) for p in probes):
-                  failed.append({
-                      'signature_index':i,
-                      'count':row['count'],
-                      'style':row['style'],
-                      'required_ratio':row['required_ratio'],
-                      'conservative_min_ratio':row['conservative_min_ratio'],
-                      'examples':row['examples'],
-                      'pixel_probes':probes,
-                  })
-          print(json.dumps({
-              'routes':data['routes'],
-              'unique_style_signatures':data['unique_style_signatures'],
-              'conservative_pass_signatures':data['conservative_pass_signatures'],
-              'pixel_probe_signatures':data['pixel_probe_signatures'],
-              'pixel_probe_signatures_with_failures':data['pixel_probe_signatures_with_failures'],
-              'failed':failed,
-          },ensure_ascii=False,indent=2))
-          if len(failed)!=4:
-              raise SystemExit(f'Expected exactly 4 baseline failures, got {len(failed)}')
+          d=json.loads(Path('dist/reports/wcag-contrast-signatures/results.json').read_text())
+          failed=[
+              row for row in d['signatures']
+              if row.get('pixel_probes') and not all(x.get('p01_pass',False) for x in row['pixel_probes'])
+          ]
+          print({
+              'unique_signatures':d['unique_style_signatures'],
+              'conservative_pass':d['conservative_pass_signatures'],
+              'pixel_probe_signatures':d['pixel_probe_signatures'],
+              'pixel_probe_failures':d['pixel_probe_signatures_with_failures'],
+              'failing_families':len(failed),
+          })
+          if len(failed)!=4 or d['pixel_probe_signatures_with_failures']!=4:
+              raise SystemExit('Official W02 baseline no longer reproduces exactly 4/4 failures')
           PY
+      - name: Execute immutable W02 R1 baseline freeze
+        run: |
+          /tmp/w02-freeze/bin/python qa/w02-r1/run-w02-contrast-gate-v1.py             --phase baseline             --contract qa/w02-r1/w02-contrast-contract-v1.json             --source-root .             --dist-root dist             --output /tmp/w02-r1-freeze/report.json
+      - name: Verify freeze manifest
+        run: python3 qa/w02-r1/verify-freeze-manifest-v1.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: w02-r1-baseline-discovery
-          path: dist/reports/wcag-contrast-signatures
+          name: w02-r1-contrast-freeze
+          path: |
+            /tmp/w02-r1-freeze
+            dist/reports/wcag-contrast-signatures/results.json
           retention-days: 14
