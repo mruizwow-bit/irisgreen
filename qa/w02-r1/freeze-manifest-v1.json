@@ -1,0 +1,41 @@
+{
+  "schema": "W02_R1_FREEZE_MANIFEST/1.0",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "contract_id": "W02-R1-CONTRAST-FREEZE-V1",
+  "artifacts": [
+    {
+      "path": ".github/workflows/w02-r1-contrast-freeze.yml",
+      "blob_sha": "3c2061c7376c150976d8dc7bdf4d7b9c176ac394"
+    },
+    {
+      "path": "qa/w02-r1/README.md",
+      "blob_sha": "6163db008169edde9130e3743669e299a6deb690"
+    },
+    {
+      "path": "qa/w02-r1/run-w02-contrast-gate-v1.py",
+      "blob_sha": "86ce611ca0ceca708b7790f2ae4a1913ed45bfa5"
+    },
+    {
+      "path": "qa/w02-r1/verify-freeze-manifest-v1.py",
+      "blob_sha": "957c7c400d586bcf6f3d8137555d30521da26201"
+    },
+    {
+      "path": "qa/w02-r1/w02-contrast-contract-v1.json",
+      "blob_sha": "32e5488a342f6733525687c7c893aae3dffcf916"
+    }
+  ],
+  "upstream_audit": {
+    "workflow_blob_sha": "df9f626be0f897ffcd43944cd3ea16622186af28",
+    "script_blob_sha": "d931470e783b968f6ecdf4c81a0930bd6c42ca6d",
+    "evidence_artifact_id": 10678998016,
+    "evidence_artifact_digest": "sha256:de34bffb624229dd645e304eb4d14a237f17af4592a6733de936eec68a215128"
+  },
+  "rules": {
+    "normal_text_threshold": 4.5,
+    "product_files_allowed": 0,
+    "freeze_may_be_edited_after_ready": false,
+    "merge": false,
+    "deploy": false,
+    "production": false
+  }
+}
