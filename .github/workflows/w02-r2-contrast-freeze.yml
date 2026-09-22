@@ -1,0 +1,127 @@
+name: W02 R2 Contrast Freeze
+'on':
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Verify R2 ancestry, QA-only scope and candidate isolation
+        shell: bash
+        run: |
+          git merge-base --is-ancestor 7c2fd9cc85ee06b107452c01e7e2600c964c2d07 HEAD
+          git diff --check 7c2fd9cc85ee06b107452c01e7e2600c964c2d07...HEAD
+          python3 - <<'PY'
+          import subprocess
+          r1='7c2fd9cc85ee06b107452c01e7e2600c964c2d07'
+          baseline='e48b51814afed825a92e83a2f6e51ee8a1c85e45'
+          candidate='38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd'
+          r2=subprocess.check_output(['git','diff','--name-only',r1+'...HEAD'],text=True).splitlines()
+          bad_r2=[p for p in r2 if p!='.github/workflows/w02-r2-contrast-freeze.yml' and not p.startswith('qa/w02-r2/')]
+          all_delta=subprocess.check_output(['git','diff','--name-only',baseline+'...HEAD'],text=True).splitlines()
+          bad_product=[p for p in all_delta if not (
+              p in ('.github/workflows/w02-r1-contrast-freeze.yml','.github/workflows/w02-r2-contrast-freeze.yml')
+              or p.startswith('qa/w02-r1/')
+              or p.startswith('qa/w02-r2/')
+          )]
+          candidate_is_ancestor=subprocess.run(['git','merge-base','--is-ancestor',candidate,'HEAD']).returncode==0
+          print({'r2_delta':r2,'r2_disallowed':bad_r2,'all_delta_from_product_baseline':all_delta,'product_files':bad_product,'candidate_is_ancestor':candidate_is_ancestor})
+          if bad_r2: raise SystemExit('R2 changed files outside QA-only scope: '+repr(bad_r2))
+          if bad_product: raise SystemExit('Product/runtime file entered R2 freeze: '+repr(bad_product))
+          if candidate_is_ancestor: raise SystemExit('Candidate #225 must not be an ancestor/input of R2 construction')
+          PY
+      - name: Verify accepted R1 blobs remain byte-exact
+        shell: bash
+        run: |
+          test "$(git hash-object qa/w02-r1/run-w02-contrast-gate-v1.py)" = "4245c0c23f29a208e37463a0091e0a7671a13e1f"
+          test "$(git hash-object qa/w02-r1/w02-contrast-contract-v1.json)" = "32e5488a342f6733525687c7c893aae3dffcf916"
+          test "$(git hash-object qa/w02-r1/freeze-manifest-v1.json)" = "1cb439ab64d4c5fe4a44fedb0c50ce702e49a38d"
+          test "$(git hash-object .github/workflows/w02-r1-contrast-freeze.yml)" = "3c2061c7376c150976d8dc7bdf4d7b9c176ac394"
+      - name: Verify R2 contract differs only in version identity
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('qa/w02-r1/w02-contrast-contract-v1.json').read_text())
+          b=json.loads(Path('qa/w02-r2/w02-contrast-contract-v2.json').read_text())
+          aid=(a.pop('schema'),a.pop('contract_id'))
+          bid=(b.pop('schema'),b.pop('contract_id'))
+          print({'r1_identity':aid,'r2_identity':bid,'functional_contract_equal':a==b})
+          if a!=b: raise SystemExit('R2 functional contract drifted from R1')
+          if bid!=('W02_R2_CONTRAST_FREEZE/1.0','W02-R2-CONTRAST-FREEZE-V2'):
+              raise SystemExit('Unexpected R2 contract identity')
+          PY
+      - name: Verify upstream audit blobs
+        shell: bash
+        run: |
+          test "$(git hash-object .github/workflows/auditar-wcag-contraste.yml)" = "df9f626be0f897ffcd43944cd3ea16622186af28"
+          test "$(git hash-object scripts/audit_contrast_signatures.py)" = "d931470e783b968f6ecdf4c81a0930bd6c42ca6d"
+      - name: Prepare Linux browser dependencies
+        run: |
+          python3 -m venv /tmp/w02-r2-freeze-env
+          /tmp/w02-r2-freeze-env/bin/pip -q install playwright==1.55.0 pillow==11.3.0
+          /tmp/w02-r2-freeze-env/bin/python -m playwright install --with-deps chromium >/tmp/w02-r2-playwright-install.log 2>&1
+          npm install --no-save --ignore-scripts axe-core@4.13.0
+      - name: Build baseline Linux output
+        run: python3 scripts/build_site.py
+      - name: Reproduce official baseline audit
+        run: |
+          /tmp/w02-r2-freeze-env/bin/python scripts/audit_contrast_signatures.py --root dist --axe node_modules/axe-core/axe.min.js
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('dist/reports/wcag-contrast-signatures/results.json').read_text())
+          failed=[row for row in d['signatures'] if row.get('pixel_probes') and not all(x.get('p01_pass',False) for x in row['pixel_probes'])]
+          print({'unique_signatures':d['unique_style_signatures'],'pixel_probe_failures':d['pixel_probe_signatures_with_failures'],'failing_families':len(failed)})
+          if len(failed)!=4 or d['pixel_probe_signatures_with_failures']!=4:
+              raise SystemExit('Official W02 baseline no longer reproduces exactly 4/4 failures')
+          PY
+      - name: Execute W02 R2 baseline freeze only
+        run: |
+          /tmp/w02-r2-freeze-env/bin/python qa/w02-r2/run-w02-contrast-gate-v2.py             --phase baseline             --contract qa/w02-r2/w02-contrast-contract-v2.json             --source-root .             --dist-root dist             --output /tmp/w02-r2-freeze/report.json
+      - name: Verify baseline-first acceptance conditions
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/w02-r2-freeze/report.json')
+          d=json.loads(p.read_text())
+          bad=[cid for cid,x in d['summary'].items() if x['baseline_core_pass']]
+          diag=d['diagnostics']
+          verdict={
+            'baseline_fail_families':4-len(bad),
+            'zoom_records':diag['zoom_records'],
+            'zoom_mapping_valid':diag['zoom_mapping_valid'],
+            'page_errors':diag['page_errors'],
+            'threshold':diag['normal_text_ratio'],
+            'errors':d['errors'],
+          }
+          print(verdict)
+          if bad or len(d['summary'])!=4:
+              raise SystemExit('W02_R2_FREEZE_BLOCKED_BASELINE_REPRODUCTION: '+repr(bad))
+          if diag['zoom_records']!=54 or diag['zoom_mapping_valid']!=54 or diag['zoom_mapping_invalid']!=0:
+              raise SystemExit('R2 zoom mapping telemetry is incomplete/invalid')
+          if diag['page_errors']!=0:
+              raise SystemExit('R2 baseline has page errors')
+          if abs(float(diag['normal_text_ratio'])-4.5)>1e-9:
+              raise SystemExit('R2 threshold drift')
+          if d['errors']:
+              raise SystemExit('R2 report contains errors: '+repr(d['errors']))
+          PY
+      - name: Verify R2 freeze manifest
+        run: python3 qa/w02-r2/verify-freeze-manifest-v2.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: w02-r2-contrast-freeze
+          path: |
+            /tmp/w02-r2-freeze
+            dist/reports/wcag-contrast-signatures/results.json
+          retention-days: 14

@@ -1,0 +1,211 @@
+{
+  "schema": "W02_R2_CONTRAST_FREEZE/1.0",
+  "contract_id": "W02-R2-CONTRAST-FREEZE-V2",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "normal_text_ratio": 4.5,
+  "upstream_evidence": {
+    "audit_status": "W02_CONTRAST_AUDIT_READY",
+    "classification": "4/4 TRUE_WCAG_CONTRAST_DEFECT",
+    "workflow_path": ".github/workflows/auditar-wcag-contraste.yml",
+    "workflow_blob_sha": "df9f626be0f897ffcd43944cd3ea16622186af28",
+    "audit_script_path": "scripts/audit_contrast_signatures.py",
+    "audit_script_blob_sha": "d931470e783b968f6ecdf4c81a0930bd6c42ca6d",
+    "artifact_run_id": 35692627272,
+    "artifact_id": 10678998016,
+    "artifact_digest": "sha256:de34bffb624229dd645e304eb4d14a237f17af4592a6733de936eec68a215128"
+  },
+  "gradient": {
+    "css": "linear-gradient(160deg, rgba(90,73,168,.14) 0%, rgba(90,73,168,.05) 42%, rgba(31,95,139,.11) 100%)",
+    "base": "#f6f8fb",
+    "stops": [
+      {
+        "position": 0,
+        "rgba": [
+          90,
+          73,
+          168,
+          0.14
+        ]
+      },
+      {
+        "position": 0.42,
+        "rgba": [
+          90,
+          73,
+          168,
+          0.05
+        ]
+      },
+      {
+        "position": 1,
+        "rgba": [
+          31,
+          95,
+          139,
+          0.11
+        ]
+      }
+    ]
+  },
+  "viewports": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "zoom_factors": [
+    2,
+    4
+  ],
+  "modes": [
+    "normal",
+    "site-high-contrast"
+  ],
+  "cases": [
+    {
+      "id": "W02-01",
+      "label": "Breadcrumb de fichas",
+      "selector": ".crumb > a",
+      "routes": [
+        "/es/situaciones/la-ropa-me-molesta/",
+        "/en/situations/clothes-feel-unbearable/",
+        "/es/neurodiversidad/condiciones/autismo/",
+        "/en/neurodiversity/conditions/autism/",
+        "/es/datos/autismo-en-la-poblacion/",
+        "/en/data/autism-in-the-population/"
+      ],
+      "expected_per_route": {
+        "/es/situaciones/la-ropa-me-molesta/": 2,
+        "/en/situations/clothes-feel-unbearable/": 2,
+        "/es/neurodiversidad/condiciones/autismo/": 2,
+        "/en/neurodiversity/conditions/autism/": 2,
+        "/es/datos/autismo-en-la-poblacion/": 2,
+        "/en/data/autism-in-the-population/": 2
+      },
+      "expected_total_instances": 12,
+      "states": [
+        "default",
+        "hover",
+        "focus"
+      ],
+      "baseline_foreground": "#5c7391",
+      "baseline_font_size_px": 15.2,
+      "baseline_font_weight": "400",
+      "baseline_observed_p01_range": [
+        3.768,
+        3.836
+      ],
+      "baseline_analytic_min_ratio": 3.715,
+      "source_needles": [
+        "class=\"crumb\"",
+        "--suave:#5c7391"
+      ]
+    },
+    {
+      "id": "W02-02",
+      "label": "Encabezado de ayuda",
+      "selector": ".helps > h2",
+      "routes": [
+        "/es/situaciones/la-ropa-me-molesta/",
+        "/en/situations/clothes-feel-unbearable/",
+        "/es/neurodiversidad/condiciones/autismo/",
+        "/en/neurodiversity/conditions/autism/",
+        "/es/datos/autismo-en-la-poblacion/",
+        "/en/data/autism-in-the-population/"
+      ],
+      "expected_per_route": {
+        "/es/situaciones/la-ropa-me-molesta/": 1,
+        "/en/situations/clothes-feel-unbearable/": 1,
+        "/es/neurodiversidad/condiciones/autismo/": 1,
+        "/en/neurodiversity/conditions/autism/": 1,
+        "/es/datos/autismo-en-la-poblacion/": 1,
+        "/en/data/autism-in-the-population/": 1
+      },
+      "expected_total_instances": 6,
+      "states": [
+        "default"
+      ],
+      "baseline_foreground": "#197991",
+      "baseline_font_size_px": 22.72,
+      "baseline_font_weight": "600",
+      "baseline_observed_p01_range": [
+        4.304,
+        4.37
+      ],
+      "baseline_analytic_min_ratio": 3.831,
+      "source_needles": [
+        "class=\"sec helps\"",
+        "--turq:#197991"
+      ]
+    },
+    {
+      "id": "W02-03",
+      "label": "Intereses cuenta",
+      "selector": ".album-tema > .cuenta",
+      "routes": [
+        "/es/intereses/"
+      ],
+      "expected_per_route": {
+        "/es/intereses/": 6
+      },
+      "expected_total_instances": 6,
+      "states": [
+        "default"
+      ],
+      "baseline_foreground": "#5d6877",
+      "baseline_font_size_px": 14.5,
+      "baseline_font_weight": "400",
+      "baseline_observed_p01_values": [
+        4.331,
+        4.787,
+        4.62
+      ],
+      "baseline_analytic_min_ratio": 4.32,
+      "source_needles": [
+        ".album-tema .cuenta{color:var(--muted)",
+        "--muted:#5d6877"
+      ]
+    },
+    {
+      "id": "W02-04",
+      "label": "Breadcrumb de índices",
+      "selector": ".crumb > a",
+      "routes": [
+        "/es/situaciones/",
+        "/es/biblioteca/",
+        "/es/datos/"
+      ],
+      "expected_per_route": {
+        "/es/situaciones/": 1,
+        "/es/biblioteca/": 1,
+        "/es/datos/": 1
+      },
+      "expected_total_instances": 3,
+      "states": [
+        "default",
+        "hover",
+        "focus"
+      ],
+      "baseline_foreground": "#5c7391",
+      "baseline_font_size_px": 13.6,
+      "baseline_font_weight": "400",
+      "baseline_observed_p01_range": [
+        3.7,
+        3.725
+      ],
+      "baseline_analytic_min_ratio": 3.715,
+      "source_needles": [
+        "class=\"crumb\"",
+        "--suave:#5c7391"
+      ]
+    }
+  ],
+  "candidate_pass_rule": "All four case families must pass every frozen coverage record at >=4.5:1; no test/fixture/threshold adaptation is allowed.",
+  "limitations": [
+    "Pixel measurement uses rendered background samples under text line rectangles with foreground taken from computed CSS; antialiasing of glyph edges is not used to waive failures.",
+    "The site reading-size preference is currently capped at 150%; 200% and 400% are tested separately through Chromium page-scale diagnostics and are not misreported as an Iris Green preference.",
+    "The freeze runs browser checks over source and dist at the 1440 core condition; responsive, high-contrast and zoom coverage runs against dist. Source declarations are also checked statically.",
+    "No author-defined dark mode exists in the baseline, so dark mode is N/A rather than an invented requirement.",
+    "Final conformance still requires human review; this freeze is a regression gate for the four audited defects, not a site-wide WCAG certification."
+  ]
+}
