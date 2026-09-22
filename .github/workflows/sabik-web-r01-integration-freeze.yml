@@ -1,0 +1,86 @@
+name: Sabik Web R01 Integration QA Freeze
+'on':
+  push:
+    branches:
+      - qa/sabik-web-r01-integration-freeze-20260922
+  pull_request:
+    branches:
+      - sabik-preview
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Verify QA-only scope and no combined/product delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=fc5cdfc2f978c85033de2b07c34309f8a4a7bd18
+          git merge-base --is-ancestor "$BASE" HEAD
+          git diff --check "$BASE"...HEAD
+          python3 - <<'PY'
+          import subprocess
+          base='fc5cdfc2f978c85033de2b07c34309f8a4a7bd18'
+          files=subprocess.check_output(['git','diff','--name-only',base+'...HEAD'],text=True).splitlines()
+          allowed=lambda p: p=='.github/workflows/sabik-web-r01-integration-freeze.yml' or p.startswith('qa/sabik-web-r01/')
+          bad=[p for p in files if not allowed(p)]
+          print({'changed_files':files,'disallowed':bad,'product_files':bad})
+          if bad: raise SystemExit('freeze contains product/non-QA files: '+repr(bad))
+          PY
+
+      - name: Fetch exact closed candidate refs
+        run: |
+          git fetch --no-tags origin \
+            0a1d4339bae2628dc963501a30f326553605821b \
+            a72d2482d17acd007fe1dc605e7aaad64a3762f6 \
+            4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb \
+            742e502802cdc9e3e7b154ddbb8493493c903898 \
+            6bf17b9cd0f13d251cd2d87fb2af986b326f9804
+
+      - name: Execute immutable replacement baseline freeze
+        run: |
+          mkdir -p /tmp/sabik-web-r01-freeze
+          python3 qa/sabik-web-r01/run-integration-gate-v1.py \
+            --phase baseline \
+            --root . \
+            --contract qa/sabik-web-r01/integration-contract-v1.json \
+            --output /tmp/sabik-web-r01-freeze/baseline-report.json
+
+      - name: Verify freeze readiness
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/sabik-web-r01-freeze/baseline-report.json').read_text())
+          print({
+            'contract_id':d['contract_id'],
+            'cases_frozen':d['cases_frozen'],
+            'a03_parent':d['observations']['a03_parent'],
+            'a02_changed_files':d['observations']['a02_changed_files'],
+            'manual_s1':d['manual_s1'],
+            'visual_binding':d['visual_binding'],
+            'errors':d['errors'],
+          })
+          if d['cases_frozen']!=26: raise SystemExit('I01-I26 not fully frozen')
+          if d['manual_s1']['rows']!=23: raise SystemExit('manual S1 count drift')
+          if d['errors']: raise SystemExit('freeze errors: '+repr(d['errors']))
+          PY
+
+      - name: Verify freeze manifest
+        run: python3 qa/sabik-web-r01/verify-freeze-manifest-v1.py
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-web-r01-integration-qa-freeze
+          path: /tmp/sabik-web-r01-freeze
+          retention-days: 14

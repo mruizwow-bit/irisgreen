@@ -1,0 +1,92 @@
+{
+  "schema": "SABIK_WEB_R01_FREEZE_MANIFEST/1.0",
+  "contract_id": "SABIK-WEB-R01-INTEGRATION-FREEZE-V1",
+  "preview_base": {
+    "sha": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+    "tree": "9b1c891511a8e1528a415030ddec2a57dc9c1d58"
+  },
+  "artifacts": [
+    {
+      "path": ".github/workflows/sabik-web-r01-integration-freeze.yml",
+      "blob_sha": "6f42f55e0f9a7edd7ce7ec8dcc20eef9a3492d22"
+    },
+    {
+      "path": "qa/sabik-web-r01/README.md",
+      "blob_sha": "b0f0390757e87143000746ee32b83302b807e63b"
+    },
+    {
+      "path": "qa/sabik-web-r01/integration-contract-v1.json",
+      "blob_sha": "27fd73b780d78746ab6c2bd700a8fe608d20d87e"
+    },
+    {
+      "path": "qa/sabik-web-r01/s1-manual-regression-v1.json",
+      "blob_sha": "dd3e05803c59ce45b5c239205655974152e8da09"
+    },
+    {
+      "path": "qa/sabik-web-r01/run-integration-gate-v1.py",
+      "blob_sha": "18997bd8c64db08f56c0e7abe4dcf9f0a8af1c02"
+    },
+    {
+      "path": "qa/sabik-web-r01/verify-freeze-manifest-v1.py",
+      "blob_sha": "b53854eb2eef13e52cdec99aa8f2c36f2a312f54"
+    }
+  ],
+  "closed_candidates": {
+    "A01": {
+      "pr": 212,
+      "head": "0a1d4339bae2628dc963501a30f326553605821b",
+      "tree": "95be45a046eccddc1fb87b61024010241da4fc7e"
+    },
+    "A02": {
+      "pr": 213,
+      "head": "a72d2482d17acd007fe1dc605e7aaad64a3762f6",
+      "tree": "e63b608d6f472557d387472b53c498c76264cf3c"
+    },
+    "A03": {
+      "pr": 218,
+      "head": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "tree": "5b96b45ea1d59079917b67171e455f9ad97d2b0f",
+      "direct_parent": "0a1d4339bae2628dc963501a30f326553605821b"
+    }
+  },
+  "a02_product_delta": {
+    "path": "sabik/sabik-page.css",
+    "base_blob": "b38a95b8994de2e20cfb0b8f29e58a69253325a9",
+    "a02_blob": "9a0e69e121749fade88e08706e994609d46c2374",
+    "test_blob": "4c83c16723e9e42fa61fb10e9bb1b9c6f906a24c",
+    "workflow_blob": "7a47db8a565950e52efc7b1f500eefbe397eed80"
+  },
+  "b3_identity": {
+    "pr": 181,
+    "head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+    "tree": "01014a0986b65908169776cf2559e93c0da401d0",
+    "family": "SABIK_VISUAL_FAMILY_FINAL_ACCEPTED",
+    "states_sha256": {
+      "PRESENTE": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
+      "ORIENTAR": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+      "TRANSICION": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
+      "PAUSA": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+      "CONFIRMAR": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053"
+    }
+  },
+  "rules": {
+    "qa_only": true,
+    "product_files_allowed": 0,
+    "combined_branch": false,
+    "future_recipe": "A03 exact + exact A02 product delta + accepted SABIK_WEB_VISUAL_PRESENTATION_R01",
+    "reapply_A01": false,
+    "cases": "I01-I26",
+    "manual_s1_rows": 23,
+    "manual_s1_historical": "23/23 PASS_REAL @ 6bf17b9cd0f13d251cd2d87fb2af986b326f9804",
+    "manual_s1_future_status": "PENDIENTE_ENTORNO until 23/23 PASS_REAL on exact integrated candidate",
+    "visual_delivery_required": "SABIK_WEB_VISUAL_PRESENTATION_R01",
+    "motion_activation": false,
+    "voice_runtime_activation": false,
+    "voice_autoplay": false,
+    "cloud_api_activation": false,
+    "merge": false,
+    "deploy": false,
+    "production": false,
+    "freeze_may_be_edited_after_ready": false
+  }
+}
