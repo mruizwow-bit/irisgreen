@@ -1,0 +1,102 @@
+{
+  "schema": "SABIK_S1_MANUAL_REGRESSION/1.0",
+  "historical_candidate_sha": "6bf17b9cd0f13d251cd2d87fb2af986b326f9804",
+  "historical_result": "23/23 PASS_REAL",
+  "inheritance_rule": "Historical PASS is expected-behavior evidence only. Every row returns to PENDIENTE_ENTORNO for the future integrated candidate and must be PASS_REAL on that exact final SHA.",
+  "rows": [
+    [
+      "A02",
+      "Envío con ratón mantiene comportamiento de foco y produce un único aviso breve ES/EN."
+    ],
+    [
+      "A06",
+      "Pausa → ocultar → mostrar mantiene pausa y contenido."
+    ],
+    [
+      "A09",
+      "Reset explícito borra consulta/respuesta e inicia conversación nueva."
+    ],
+    [
+      "A13",
+      "Respuesta permanece y pausa/reanudación no repite aviso."
+    ],
+    [
+      "A14",
+      "Controles incompatibles se omiten/deshabilitan durante pausa."
+    ],
+    [
+      "A16",
+      "2001 caracteres no se envían, texto se conserva y error se anuncia."
+    ],
+    [
+      "A17",
+      "Click en Enviar conserva foco durante pending; no fuerza foco al input."
+    ],
+    [
+      "A18",
+      "Envío mantiene foco natural en Enviar; no impone foco al input/respuesta."
+    ],
+    [
+      "A19",
+      "Al ocultar, foco queda en Mostrar; invocador visible."
+    ],
+    [
+      "A20",
+      "Tras Pausar foco en Reanudar; tras Reanudar foco en Pausar Sabik; tras reset foco en input."
+    ],
+    [
+      "A21",
+      "Tab mueve hacia delante."
+    ],
+    [
+      "A22",
+      "Shift+Tab mueve hacia atrás."
+    ],
+    [
+      "A23",
+      "Enter crea nueva línea; Ctrl+Enter envía."
+    ],
+    [
+      "A24",
+      "Enter activa Pausar Sabik."
+    ],
+    [
+      "A25",
+      "Espacio activa Reanudar."
+    ],
+    [
+      "A26",
+      "Escape colapsa sin borrar consulta/respuesta."
+    ],
+    [
+      "A28",
+      "Pausar Sabik se anuncia como botón, sin pressed indebido."
+    ],
+    [
+      "A29",
+      "Nombres accesibles de controles observables con lector de pantalla."
+    ],
+    [
+      "A30",
+      "320 CSS px: reflow y orden búsqueda → Sabik → resto."
+    ],
+    [
+      "A31",
+      "Texto nativo del sistema al 200 %."
+    ],
+    [
+      "A32",
+      "Zoom nativo del navegador al 400 % con reflow."
+    ],
+    [
+      "A33",
+      "Reduced motion real del sistema."
+    ],
+    [
+      "A34",
+      "Navegación convencional completa de Iris Green independiente de Sabik; Sabik no atrapa ni desvía foco."
+    ]
+  ],
+  "future_initial_status": "PENDIENTE_ENTORNO",
+  "final_requirement": "23/23 PASS_REAL on same candidate HEAD/tree"
+}

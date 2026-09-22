@@ -1,0 +1,425 @@
+{
+  "schema": "SABIK_WEB_R01_INTEGRATION_FREEZE/1.0",
+  "contract_id": "SABIK-WEB-R01-INTEGRATION-FREEZE-V1",
+  "authority": [
+    "DEC-064",
+    "DEC-063",
+    "DEC-060",
+    "DEC-033",
+    "DEC-020",
+    "DEC-009",
+    "DEC-021"
+  ],
+  "principle": {
+    "old_prototype": "HISTORICAL_IMPLEMENTATION + REGRESSION_BASELINE",
+    "future_qa": "NO_REGRESSION + INTEGRATED_QA",
+    "rediscovery_from_zero": false
+  },
+  "preview_base": {
+    "sha": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+    "tree": "9b1c891511a8e1528a415030ddec2a57dc9c1d58"
+  },
+  "closed_candidates": {
+    "A01": {
+      "pr": 212,
+      "head": "0a1d4339bae2628dc963501a30f326553605821b",
+      "tree": "95be45a046eccddc1fb87b61024010241da4fc7e",
+      "base": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+      "status": "A01_QA_PASS"
+    },
+    "A02": {
+      "pr": 213,
+      "head": "a72d2482d17acd007fe1dc605e7aaad64a3762f6",
+      "tree": "e63b608d6f472557d387472b53c498c76264cf3c",
+      "base": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+      "status": "A02_QA_PASS"
+    },
+    "A03": {
+      "pr": 218,
+      "head": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "tree": "5b96b45ea1d59079917b67171e455f9ad97d2b0f",
+      "direct_parent": "0a1d4339bae2628dc963501a30f326553605821b",
+      "status": "A03_QA_PASS"
+    }
+  },
+  "future_recipe": {
+    "start_from": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+    "reapply_A01": false,
+    "a02_product_delta": {
+      "path": "sabik/sabik-page.css",
+      "base_blob": "b38a95b8994de2e20cfb0b8f29e58a69253325a9",
+      "a02_blob": "9a0e69e121749fade88e08706e994609d46c2374",
+      "source_base": "fc5cdfc2f978c85033de2b07c34309f8a4a7bd18",
+      "source_head": "a72d2482d17acd007fe1dc605e7aaad64a3762f6",
+      "product_files_exact": [
+        "sabik/sabik-page.css"
+      ]
+    },
+    "visual_delivery_required": "SABIK_WEB_VISUAL_PRESENTATION_R01",
+    "result": "new integrated Sabik Web candidate"
+  },
+  "regression_fixtures": [
+    {
+      "source": "A01",
+      "ref": "0a1d4339bae2628dc963501a30f326553605821b",
+      "path": "tools/test-sabik-a01.js",
+      "blob": "d181753f2afa0f3ad2a71a163398da0a1683cc26",
+      "expected": "PASS"
+    },
+    {
+      "source": "A01",
+      "ref": "0a1d4339bae2628dc963501a30f326553605821b",
+      "path": "tools/test-sabik-a01-browser.js",
+      "blob": "8e4496bc36137086e2f38b55f73d254bbfb0ca37",
+      "expected": "PASS source+dist"
+    },
+    {
+      "source": "A02",
+      "ref": "a72d2482d17acd007fe1dc605e7aaad64a3762f6",
+      "path": "tools/test-sabik-a02-lateral.js",
+      "blob": "4c83c16723e9e42fa61fb10e9bb1b9c6f906a24c",
+      "expected": "20/20 source + 20/20 dist"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-a03.js",
+      "blob": "9f44782f605a8c3e7b5a1033c09fa07dbf0d07b8",
+      "expected": "12/12 frozen regression + own suite PASS"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-machine-s0.js",
+      "blob": "760b46c90ba7d9f7c198e4ab33e983e81f75cb71",
+      "expected": "146/146"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-s1.js",
+      "blob": "a4ef59219aabecc32742538c313de6a497640fcd",
+      "expected": "automatic+extras source/dist PASS"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-s4.js",
+      "blob": "de934297331f0ec599a926213c6358e142e9fbf2",
+      "expected": "87/87"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-s4-browser.js",
+      "blob": "a4c3b1f6d7f0b51ba29cba18920f1f870bfa8800",
+      "expected": "source/dist + storage PASS"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-page-v7.js",
+      "blob": "1b5ac1f7040453648d2493012b9b62924dab3af2",
+      "expected": "28/28"
+    },
+    {
+      "source": "A03",
+      "ref": "4c67e276d4fd0a0d4d407d3504a7416d7ed39cfb",
+      "path": "tools/test-sabik-a11y-closure.js",
+      "blob": "36d6c50dc0067e52144c386cc867bc7daeeec96e",
+      "expected": "A11Y_CLOSURE_PASS"
+    }
+  ],
+  "a02_qa_fixture": {
+    "workflow_path": ".github/workflows/sabik-a02-lateral.yml",
+    "workflow_blob": "7a47db8a565950e52efc7b1f500eefbe397eed80",
+    "test_path": "tools/test-sabik-a02-lateral.js",
+    "test_blob": "4c83c16723e9e42fa61fb10e9bb1b9c6f906a24c",
+    "viewports": [
+      1920,
+      1440,
+      768,
+      390,
+      320
+    ],
+    "breakpoint": 1360,
+    "includes": [
+      "open/collapsed",
+      "long response",
+      "results visible",
+      "sticky/internal scroll",
+      "200%",
+      "400%",
+      "reduced motion",
+      "focus/keyboard",
+      "source/dist"
+    ]
+  },
+  "s1_manual": {
+    "schema": "SABIK_S1_MANUAL_REGRESSION/1.0",
+    "historical_candidate_sha": "6bf17b9cd0f13d251cd2d87fb2af986b326f9804",
+    "historical_result": "23/23 PASS_REAL",
+    "inheritance_rule": "Historical PASS is expected-behavior evidence only. Every row returns to PENDIENTE_ENTORNO for the future integrated candidate and must be PASS_REAL on that exact final SHA.",
+    "rows": [
+      [
+        "A02",
+        "Envío con ratón mantiene comportamiento de foco y produce un único aviso breve ES/EN."
+      ],
+      [
+        "A06",
+        "Pausa → ocultar → mostrar mantiene pausa y contenido."
+      ],
+      [
+        "A09",
+        "Reset explícito borra consulta/respuesta e inicia conversación nueva."
+      ],
+      [
+        "A13",
+        "Respuesta permanece y pausa/reanudación no repite aviso."
+      ],
+      [
+        "A14",
+        "Controles incompatibles se omiten/deshabilitan durante pausa."
+      ],
+      [
+        "A16",
+        "2001 caracteres no se envían, texto se conserva y error se anuncia."
+      ],
+      [
+        "A17",
+        "Click en Enviar conserva foco durante pending; no fuerza foco al input."
+      ],
+      [
+        "A18",
+        "Envío mantiene foco natural en Enviar; no impone foco al input/respuesta."
+      ],
+      [
+        "A19",
+        "Al ocultar, foco queda en Mostrar; invocador visible."
+      ],
+      [
+        "A20",
+        "Tras Pausar foco en Reanudar; tras Reanudar foco en Pausar Sabik; tras reset foco en input."
+      ],
+      [
+        "A21",
+        "Tab mueve hacia delante."
+      ],
+      [
+        "A22",
+        "Shift+Tab mueve hacia atrás."
+      ],
+      [
+        "A23",
+        "Enter crea nueva línea; Ctrl+Enter envía."
+      ],
+      [
+        "A24",
+        "Enter activa Pausar Sabik."
+      ],
+      [
+        "A25",
+        "Espacio activa Reanudar."
+      ],
+      [
+        "A26",
+        "Escape colapsa sin borrar consulta/respuesta."
+      ],
+      [
+        "A28",
+        "Pausar Sabik se anuncia como botón, sin pressed indebido."
+      ],
+      [
+        "A29",
+        "Nombres accesibles de controles observables con lector de pantalla."
+      ],
+      [
+        "A30",
+        "320 CSS px: reflow y orden búsqueda → Sabik → resto."
+      ],
+      [
+        "A31",
+        "Texto nativo del sistema al 200 %."
+      ],
+      [
+        "A32",
+        "Zoom nativo del navegador al 400 % con reflow."
+      ],
+      [
+        "A33",
+        "Reduced motion real del sistema."
+      ],
+      [
+        "A34",
+        "Navegación convencional completa de Iris Green independiente de Sabik; Sabik no atrapa ni desvía foco."
+      ]
+    ],
+    "future_initial_status": "PENDIENTE_ENTORNO",
+    "final_requirement": "23/23 PASS_REAL on same candidate HEAD/tree"
+  },
+  "b3_identity": {
+    "authority_pr": 181,
+    "authority_head": "742e502802cdc9e3e7b154ddbb8493493c903898",
+    "authority_tree": "01014a0986b65908169776cf2559e93c0da401d0",
+    "family": "SABIK_VISUAL_FAMILY_FINAL_ACCEPTED",
+    "states_sha256": {
+      "PRESENTE": "38231a12d48432a004b874bff7f80752a02f394a842f82d3b91125ea06c3d1ef",
+      "ORIENTAR": "6fb4155ec1dc4eaf541b8f017b81c73e1044d04ce081b1c0d5add00e19d76133",
+      "TRANSICION": "b95014a9d1bc6d3036b71f98db244af75934a854c1c40bbf8125ceeaaf9f29f7",
+      "PAUSA": "62ff4653833d130e774b3a9da074f6cc5588ea2a2dbdd4f582a5f05db96b580c",
+      "CONFIRMAR": "4fe709c5212542c7a597173d672e626bbbfd23429abc0d4bea446ed5e37cb053"
+    },
+    "motion": "OUT_OF_SCOPE",
+    "minimum_accepted_reference_px": 64,
+    "px32": "PENDING_HUMAN_TEST"
+  },
+  "visual_presentation_required": {
+    "id": "SABIK_WEB_VISUAL_PRESENTATION_R01",
+    "required_outputs": [
+      "hero desktop",
+      "hero mobile 390/430",
+      "light",
+      "dark",
+      "transparent placement",
+      "PRESENTE context",
+      "ORIENTAR context",
+      "TRANSICION context",
+      "PAUSA context",
+      "CONFIRMAR context",
+      "safe-area/padding rules",
+      "responsive sizing",
+      "no-change proof of core master",
+      "design tokens",
+      "asset list+hashes"
+    ],
+    "reduced_motion": "still PRESENTE exact; no function depends on animation",
+    "core_master_must_change": false
+  },
+  "historical_regression_counts": {
+    "A01_freeze": "14/14 PASS",
+    "A03_freeze": "12/12 PASS",
+    "S0": "146/146 PASS",
+    "S4_unit": "87/87 PASS",
+    "V7": "28/28 PASS",
+    "A02": "20/20 source + 20/20 dist",
+    "S1_manual_historical": "23/23 PASS_REAL on 6bf17b9c; not inheritable"
+  },
+  "cases": {
+    "I01": {
+      "title": "Exact closed identities",
+      "requirement": "preview base fc5cdfc2; A01 #212; A02 #213; A03 #218; exact heads/trees immutable."
+    },
+    "I02": {
+      "title": "Ancestry / no duplicate A01",
+      "requirement": "A03 must contain A01 and future recipe must not reapply A01 after A03."
+    },
+    "I03": {
+      "title": "Exact A02 product delta",
+      "requirement": "A02 product delta is only sabik/sabik-page.css, identified by exact base/head blobs; A02 QA workflow/test are regression fixtures, not product delta."
+    },
+    "I04": {
+      "title": "A01 regression",
+      "requirement": "Frozen A01 14/14 + exact own/browser test blobs must pass on final integrated candidate."
+    },
+    "I05": {
+      "title": "A03 regression",
+      "requirement": "Frozen A03 12/12 + own suite must pass; A01 remains green."
+    },
+    "I06": {
+      "title": "A02 source regression",
+      "requirement": "A02 L01-L20 exact frozen test must pass against candidate source."
+    },
+    "I07": {
+      "title": "A02 dist regression",
+      "requirement": "A02 L01-L20 exact frozen test must pass against candidate dist."
+    },
+    "I08": {
+      "title": "Core automatic regression",
+      "requirement": "S0 146/146, S1 automatic+extras, S4 unit, V7 28/28 and A11Y closure must pass."
+    },
+    "I09": {
+      "title": "Browser/storage regression",
+      "requirement": "A01 browser source/dist, S1 source/dist and S4 browser/storage source/dist must pass."
+    },
+    "I10": {
+      "title": "Historical controls/buttons no-regression",
+      "requirement": "Manual behavior matrix is expected behavior, not functionality to rediscover."
+    },
+    "I11": {
+      "title": "23 S1 manual controls",
+      "requirement": "All 23 rows must be PASS_REAL on exact final candidate; historical PASS cannot transfer."
+    },
+    "I12": {
+      "title": "Keyboard/focus",
+      "requirement": "Submit, pause/resume, reset, hide/show, collapse/Escape and conventional navigation must preserve focus semantics."
+    },
+    "I13": {
+      "title": "Layout/responsive",
+      "requirement": "1920/1440 lateral, 768/390/320 stacked, open/collapsed, long response, results, sticky/internal scroll invariants."
+    },
+    "I14": {
+      "title": "Zoom/reduced motion",
+      "requirement": "200%/400% reflow checks plus reduced-motion; no essential function depends on animation."
+    },
+    "I15": {
+      "title": "B3 visual identity",
+      "requirement": "PR #181 accepted family and five Web-state SHA-256 identities remain unchanged."
+    },
+    "I16": {
+      "title": "Web visual presentation binding",
+      "requirement": "Accepted SABIK_WEB_VISUAL_PRESENTATION_R01 must bind desktop/mobile, light/dark/transparent, five contexts, safe areas/responsive tokens, no core-master change."
+    },
+    "I17": {
+      "title": "Offline/disabled cloud",
+      "requirement": "Sabik Web remains usable in the explicitly disabled/offline cloud state; no cloud activation is required by this integration."
+    },
+    "I18": {
+      "title": "Text-only / voice absent / no autoplay",
+      "requirement": "Complete text path remains available when voice asset/runtime is absent and no voice autoplay occurs."
+    },
+    "I19": {
+      "title": "Storage/privacy",
+      "requirement": "No conversation/query leakage or unauthorized persistence; source/dist storage behavior remains contract-compliant."
+    },
+    "I20": {
+      "title": "High contrast",
+      "requirement": "High-contrast/current accessibility preference must preserve readable/usable controls and visual context."
+    },
+    "I21": {
+      "title": "Errors/recovery",
+      "requirement": "Technical error, retry, pause/resume and reset recover without losing Safety invariants or trapping controls."
+    },
+    "I22": {
+      "title": "No cognitive-state inference",
+      "requirement": "Safety alone must not infer cognitive state or enable low_intensity; explicit cognitive signal remains allowed by A03 contract."
+    },
+    "I23": {
+      "title": "Linux build/source/dist",
+      "requirement": "Clean Linux build, git diff --check, source/dist tests and reproducible dist inventory."
+    },
+    "I24": {
+      "title": "Manifest/provenance",
+      "requirement": "Final candidate must record exact base/head/tree/merge-base/ordered commits/changed files and origin per commit/final blob."
+    },
+    "I25": {
+      "title": "Scope exclusions",
+      "requirement": "No B3 motion, voice runtime activation, cloud/API activation, duplicate A01, old prototype promotion, or unrelated I0/I1 contamination."
+    },
+    "I26": {
+      "title": "Final integrated verdict",
+      "requirement": "PASS only if I01-I25 automated/evidence gates pass and I11 is 23/23 PASS_REAL on unchanged final HEAD/tree; otherwise BLOCK/PENDING, never inherited PASS."
+    }
+  },
+  "final_rules": {
+    "product_edits_in_freeze": 0,
+    "combined_branch_in_freeze": false,
+    "duplicate_A01": false,
+    "motion_activation": false,
+    "voice_runtime_activation": false,
+    "cloud_api_activation": false,
+    "merge": false,
+    "deploy": false,
+    "production": false,
+    "final_pass_requires": "I01-I25 PASS + all 23 S1 manual PASS_REAL on same unchanged candidate HEAD/tree"
+  }
+}
