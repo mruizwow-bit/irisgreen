@@ -1,0 +1,166 @@
+{
+  "schema": "W05-R1-CONTRACT/1.0",
+  "authorization": [
+    "DEC-035",
+    "DEC-034",
+    "DEC-033",
+    "DEC-014"
+  ],
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "freeze_mode": "QA_ONLY_ZERO_PRODUCT_FILES",
+  "goal": "Preserve 24 logical tracks regardless of browser technical-source choice.",
+  "implementation_decision": "NOT_FROZEN",
+  "provenance_gate": {
+    "status": "FREEZE_ALLOWED_DERIVATIVE_NOT_AUTHORIZED",
+    "rationale": "The contract does not require creating derivatives. Four tracks have unresolved original Pixabay URLs and eight are only probable matches; any implementation that creates a derivative for insufficiently evidenced tracks must STOP for provenance before doing so."
+  },
+  "baseline_expectations": {
+    "probe_empty": {
+      "observed_count": 15,
+      "target_count": 24,
+      "classification": "EXPECTED_BASELINE_FAIL"
+    },
+    "probe_maybe": {
+      "observed_count": 24,
+      "target_count": 24,
+      "classification": "EXPECTED_BASELINE_PASS"
+    },
+    "probe_probably": {
+      "observed_count": 24,
+      "target_count": 24,
+      "classification": "EXPECTED_BASELINE_PASS"
+    },
+    "explicit_stop_control": {
+      "observed": false,
+      "target": true,
+      "classification": "EXPECTED_BASELINE_FAIL"
+    },
+    "manual_screen_reader": {
+      "observed": "NOT_RUN",
+      "target": "PASS_REAL",
+      "classification": "PENDING_ENVIRONMENT"
+    }
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "key": "logical_catalog_24_all_scenarios",
+      "severity": "BLOCKING",
+      "target": "Future candidate exposes 24 logical tracks for probe '', maybe, probably."
+    },
+    {
+      "id": "F02",
+      "key": "original_hashes_preserved",
+      "severity": "BLOCKING",
+      "target": "All 24 originals keep exact baseline Git blob SHA-1; no original replacement is allowed."
+    },
+    {
+      "id": "F03",
+      "key": "source_dist_originals_24",
+      "severity": "BLOCKING",
+      "target": "Source and dist contain all 24 originals byte-identically."
+    },
+    {
+      "id": "F04",
+      "key": "no_autoplay",
+      "severity": "BLOCKING",
+      "target": "Opening/initializing music never starts audio."
+    },
+    {
+      "id": "F05",
+      "key": "open_panel_no_play",
+      "severity": "BLOCKING",
+      "target": "Opening panel does not instantiate/start playback."
+    },
+    {
+      "id": "F06",
+      "key": "controls_keyboard_focus",
+      "severity": "BLOCKING",
+      "target": "Play/pause/stop-or-approved-equivalent/Escape/keyboard/focus remain operable and accessible."
+    },
+    {
+      "id": "F07",
+      "key": "responsive_320_390_768_1440",
+      "severity": "BLOCKING",
+      "target": "Panel/catalog usable at 320,390,768,1440 CSS px."
+    },
+    {
+      "id": "F08",
+      "key": "screen_reader_names",
+      "severity": "BLOCKING",
+      "target": "Accessible names and live/error semantics pass; manual screen-reader check required."
+    },
+    {
+      "id": "F09",
+      "key": "source_error_keeps_logical_track",
+      "severity": "BLOCKING",
+      "target": "Failure of one technical source never deletes the logical track from catalog."
+    },
+    {
+      "id": "F10",
+      "key": "canPlayType_matrix",
+      "severity": "BLOCKING",
+      "target": "Probe scenarios '', maybe, probably are tested explicitly."
+    },
+    {
+      "id": "F11",
+      "key": "no_aac_still_24_visible",
+      "severity": "BLOCKING",
+      "target": "Probe '' still exposes 24 logical tracks."
+    },
+    {
+      "id": "F12",
+      "key": "aac_support_same_logical_count",
+      "severity": "BLOCKING",
+      "target": "Probe maybe/probably exposes the same 24 logical tracks."
+    },
+    {
+      "id": "F13",
+      "key": "no_silent_build_conversion",
+      "severity": "BLOCKING",
+      "target": "Build does not silently transcode/replace originals."
+    },
+    {
+      "id": "F14",
+      "key": "codec_measured_or_unknown",
+      "severity": "BLOCKING",
+      "target": "Exact codec/profile per original is measured or literal UNKNOWN; extension is not treated as codec proof."
+    },
+    {
+      "id": "F15",
+      "key": "provenance_per_track",
+      "severity": "BLOCKING",
+      "target": "Each track records Pixabay provenance URL/evidence when known and explicit unresolved status otherwise."
+    },
+    {
+      "id": "F16",
+      "key": "license_evidence_descriptive",
+      "severity": "BLOCKING",
+      "target": "Evidence/license status is recorded descriptively; no legal conclusion is inferred."
+    },
+    {
+      "id": "F17",
+      "key": "derivatives_manifested",
+      "severity": "BLOCKING_IF_DERIVATIVE_EXISTS",
+      "target": "Any future derivative/fallback has hash, source relation and provenance evidence. Freeze itself authorizes no derivative."
+    },
+    {
+      "id": "F18",
+      "key": "text_equivalent_when_required",
+      "severity": "BLOCKING_IF_FUNCTION_SIGNIFICANT",
+      "target": "Text equivalent/transcript exists when audio function conveys significant information requiring it."
+    },
+    {
+      "id": "F19",
+      "key": "zero_third_party_on_local_playback",
+      "severity": "BLOCKING",
+      "target": "Local playback requests 0 third-party audio resources."
+    },
+    {
+      "id": "F20",
+      "key": "originals_not_deleted",
+      "severity": "BLOCKING",
+      "target": "All original files remain preserved."
+    }
+  ]
+}
