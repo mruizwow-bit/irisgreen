@@ -1,0 +1,150 @@
+name: W07 R1 candidate development validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/w07-r1-candidate-dev-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact product candidate parent
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD^)" = "78b1566f0c3546348ff8fa102da51b465e9f6156"
+          test "$(git diff --name-only e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^)" = "scripts/build_site.py"
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^
+
+      - name: Import exact accepted freeze #226 into temp
+        shell: bash
+        run: |
+          git fetch origin qa/w07-r1-build-hygiene-freeze-20260922
+          mkdir -p /tmp/w07-freeze-src/tests/specs/build-hygiene
+          git show 04d1d82ee23af2d440354bc9f2b07a3d08996d82:tests/specs/build-hygiene/run-w07-r1-freeze.py > /tmp/w07-freeze-src/tests/specs/build-hygiene/run-w07-r1-freeze.py
+          git show 04d1d82ee23af2d440354bc9f2b07a3d08996d82:tests/specs/build-hygiene/w07-r1-contract-v1.json > /tmp/w07-freeze-src/tests/specs/build-hygiene/w07-r1-contract-v1.json
+          git show 04d1d82ee23af2d440354bc9f2b07a3d08996d82:tests/specs/build-hygiene/w07-r1-fixture-v1.json > /tmp/w07-freeze-src/tests/specs/build-hygiene/w07-r1-fixture-v1.json
+          test "$(git hash-object /tmp/w07-freeze-src/tests/specs/build-hygiene/run-w07-r1-freeze.py)" = "fee8ef4adb0eb64b4f7582cdc1a1ac8c673ab816"
+          test "$(git hash-object /tmp/w07-freeze-src/tests/specs/build-hygiene/w07-r1-contract-v1.json)" = "eaecb06e67e0b71024c76113d55b0d105a8e630b"
+          test "$(git hash-object /tmp/w07-freeze-src/tests/specs/build-hygiene/w07-r1-fixture-v1.json)" = "434f69451d062a3afdc14e45e6c23bfd12824e1b"
+
+      - name: Prepare gate environment
+        run: |
+          python3 -m venv /tmp/ig-w07
+          /tmp/ig-w07/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 lxml==6.0.1
+          /tmp/ig-w07/bin/python -m playwright install --with-deps chromium >/tmp/ig-w07-install.log 2>&1
+
+      - name: Rebuild frozen baseline manifest
+        shell: bash
+        run: |
+          git worktree add --detach /tmp/w07-baseline e48b51814afed825a92e83a2f6e51ee8a1c85e45
+          mkdir -p /tmp/w07-baseline/tests/specs/build-hygiene
+          cp /tmp/w07-freeze-src/tests/specs/build-hygiene/* /tmp/w07-baseline/tests/specs/build-hygiene/
+          cd /tmp/w07-baseline
+          python3 scripts/build_site.py
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py             --phase dist --mode baseline             --manifest-out /tmp/w07-validation/baseline-manifest.json             --out /tmp/w07-validation/baseline-dist.json
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path('/tmp/w07-validation/baseline-manifest.json')
+          got=hashlib.sha256(p.read_bytes()).hexdigest()
+          expected='46b37ee7bd4c4d75c5b025476c4ee83ccb7863b05fdc378a7ce424807f20fd35'
+          print({'baseline_manifest_sha256':got,'expected':expected})
+          if got!=expected: raise SystemExit('accepted baseline manifest drift')
+          PY
+
+      - name: Restore exact candidate workspace and freeze tools
+        shell: bash
+        run: |
+          git reset --hard HEAD
+          mkdir -p tests/specs/build-hygiene
+          cp /tmp/w07-freeze-src/tests/specs/build-hygiene/* tests/specs/build-hygiene/
+          mkdir -p /tmp/w07-validation
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          f=json.loads(Path('tests/specs/build-hygiene/w07-r1-fixture-v1.json').read_text())
+          bad=[]
+          for x in f['exclusions']:
+              p=Path(x['path'])
+              if not p.is_file() or p.stat().st_size!=x['bytes']:
+                  bad.append((x['path'],'size-or-missing'))
+                  continue
+              blob=subprocess.check_output(['git','hash-object',x['path']],text=True).strip()
+              if blob!=x['git_blob_sha1']: bad.append((x['path'],blob,x['git_blob_sha1']))
+          print({'source_exclusions_checked':len(f['exclusions']),'errors':bad})
+          if bad: raise SystemExit(bad)
+          PY
+
+      - name: Candidate Linux build 1 and frozen artifact diff
+        shell: bash
+        run: |
+          python3 scripts/build_site.py
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py             --phase dist --mode candidate             --manifest-out /tmp/w07-validation/candidate-manifest-1.json             --compare-manifest /tmp/w07-validation/baseline-manifest.json             --out /tmp/w07-validation/candidate-dist-1.json
+
+      - name: Candidate Linux build 2 and reproducibility
+        shell: bash
+        run: |
+          python3 scripts/build_site.py
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py             --phase dist --mode candidate             --manifest-out /tmp/w07-validation/candidate-manifest-2.json             --out /tmp/w07-validation/candidate-dist-2.json
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          a=Path('/tmp/w07-validation/candidate-manifest-1.json')
+          b=Path('/tmp/w07-validation/candidate-manifest-2.json')
+          ja=json.loads(a.read_text());jb=json.loads(b.read_text())
+          ma={x['path']:(x['bytes'],x['sha256']) for x in ja['entries']}
+          mb={x['path']:(x['bytes'],x['sha256']) for x in jb['entries']}
+          added=sorted(set(mb)-set(ma));removed=sorted(set(ma)-set(mb))
+          changed=sorted(k for k in set(ma)&set(mb) if ma[k]!=mb[k])
+          out={'added':added,'removed':removed,'changed':changed,
+               'manifest1_sha256':hashlib.sha256(a.read_bytes()).hexdigest(),
+               'manifest2_sha256':hashlib.sha256(b.read_bytes()).hexdigest()}
+          print(out)
+          Path('/tmp/w07-validation/reproducibility.json').write_text(json.dumps(out,indent=2)+'\n')
+          if added or removed or changed: raise SystemExit('candidate builds are not byte-identical')
+          PY
+
+      - name: W06 W03 SEC01 gates on candidate dist
+        run: |
+          /tmp/ig-w07/bin/python tests/specs/build-hygiene/run-w07-r1-freeze.py             --phase gates --mode candidate --out /tmp/w07-validation/gates.json
+
+      - name: Verify source preservation and exact product diff
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          f=json.loads(Path('tests/specs/build-hygiene/w07-r1-fixture-v1.json').read_text())
+          paths=[x['path'] for x in f['exclusions']]
+          errors=[]
+          for x in f['exclusions']:
+              p=Path(x['path'])
+              if not p.is_file(): errors.append((x['path'],'missing-source'));continue
+              blob=subprocess.check_output(['git','hash-object',x['path']],text=True).strip()
+              if blob!=x['git_blob_sha1']: errors.append((x['path'],blob,x['git_blob_sha1']))
+          changed=subprocess.check_output(['git','diff','--name-only','e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^'],text=True).splitlines()
+          result={'source_preserved':len(paths)-len(errors),'source_errors':errors,'product_candidate_changed_paths':changed}
+          print(result)
+          Path('/tmp/w07-validation/source-preservation.json').write_text(json.dumps(result,indent=2)+'\n')
+          if errors: raise SystemExit(errors)
+          if changed!=['scripts/build_site.py']: raise SystemExit('unexpected product diff '+repr(changed))
+          PY
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD^
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: w07-r1-candidate-development-validation
+          path: /tmp/w07-validation
+          retention-days: 30
