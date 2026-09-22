@@ -23,13 +23,20 @@
     },
     "storage_errors": 9,
     "netlify_toml_public": false,
-    "sensitive_exposures": 0
+    "sensitive_exposures": 0,
+    "w06_route_checker": {
+      "classification": "EXPECTED_BASELINE_FAIL_PREEXISTING_CHECKER_CONTRACT",
+      "failure_count": 1,
+      "phase": "static-or-routing",
+      "error": "('en/data/autism-in-the-population/index.html', 'meta[name=description]')"
+    }
   },
   "future_diff_policy": {
     "allowed_removed_paths": "fixture.exclusions[].path only",
     "allowed_added_paths": [],
     "allowed_changed_paths": [],
-    "stop_if_consumer_evidence_changes": true
+    "stop_if_consumer_evidence_changes": true,
+    "w06_route_rule": "Run read-only on the same dist; exact preexisting metadata-assertion failure may remain but must not worsen. W07 must not edit/reopen W06."
   },
   "cases": [
     {
