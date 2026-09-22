@@ -1,0 +1,177 @@
+name: W02 R2 Candidate QA R17
+'on':
+  push:
+    branches:
+      - qa/w02-r2-candidate-qa-20260922
+permissions:
+  contents: read
+jobs:
+  candidate-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout exact candidate #225
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd
+          fetch-depth: 0
+          path: candidate
+
+      - name: Checkout exact accepted R2 freeze #227
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 29970f4bfd84e5efd7115423ffdb937ff88c5ad7
+          fetch-depth: 0
+          path: freeze
+
+      - name: Verify exact candidate identity and product scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          test "$(git rev-parse HEAD)" = "38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd"
+          test "$(git rev-parse HEAD^{tree})" = "e8d07a55fae1e0fc074aa27f0ab1e95cd9d3648d"
+          test "$(git merge-base 38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd e48b51814afed825a92e83a2f6e51ee8a1c85e45)" = "e48b51814afed825a92e83a2f6e51ee8a1c85e45"
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD
+          python3 - <<'PY'
+          import subprocess
+          baseline='e48b51814afed825a92e83a2f6e51ee8a1c85e45'
+          files=subprocess.check_output(['git','diff','--name-only',baseline+'...HEAD'],text=True).splitlines()
+          expected=['assets/site-v23.css','es/intereses/index.html']
+          if files!=expected:
+              raise SystemExit(f'candidate scope drift: {files!r}')
+          numstat=subprocess.check_output(['git','diff','--numstat',baseline+'...HEAD'],text=True).splitlines()
+          adds=dels=0
+          for row in numstat:
+              a,d,_=row.split('\t',2)
+              adds+=int(a); dels+=int(d)
+          if (adds,dels)!=(3,3):
+              raise SystemExit(f'candidate delta drift: additions={adds} deletions={dels}')
+          patch=subprocess.check_output(['git','diff','--unified=0',baseline+'...HEAD','--','assets/site-v23.css','es/intereses/index.html'],text=True)
+          expected_new=['+.crumb a{color:#4b607d}','+.sec.helps h2{color:#15677c} .sec.consult h2{color:var(--azul)} .sec.alert h2{color:var(--rosa)}','+.album-tema .cuenta{color:#495665;font-size:14.5px;margin:0 0 14px}']
+          for needle in expected_new:
+              if needle not in patch:
+                  raise SystemExit('missing exact candidate color delta: '+needle)
+          print({'candidate_head':'38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd','tree':'e8d07a55fae1e0fc074aa27f0ab1e95cd9d3648d','changed_files':files,'additions':adds,'deletions':dels})
+          PY
+
+      - name: Verify exact accepted R2 freeze identity and blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd freeze
+          test "$(git rev-parse HEAD)" = "29970f4bfd84e5efd7115423ffdb937ff88c5ad7"
+          test "$(git rev-parse HEAD^{tree})" = "1654f2d6fe8fbafe3838e2c1ace3b71e46688f7c"
+          test "$(git rev-parse HEAD^)" = "7c2fd9cc85ee06b107452c01e7e2600c964c2d07"
+          test "$(git hash-object .github/workflows/w02-r2-contrast-freeze.yml)" = "41f96f3189f48932208accb3722ebc17effa3784"
+          test "$(git hash-object qa/w02-r2/README.md)" = "7ccf0ba17d1254a847f763ffa4921be0f2a759b4"
+          test "$(git hash-object qa/w02-r2/freeze-manifest-v2.json)" = "3e5ef052347a1bfdde7ae47a3a0f8d50e86e55cd"
+          test "$(git hash-object qa/w02-r2/run-w02-contrast-gate-v2.py)" = "c814fab11609bb701cccb1423d9ddc159ed0439b"
+          test "$(git hash-object qa/w02-r2/verify-freeze-manifest-v2.py)" = "3dbf7ce6e16a160f54f44ad73dc402a975e9e6ec"
+          test "$(git hash-object qa/w02-r2/w02-contrast-contract-v2.json)" = "9baa3ff1f82119a8bb078424266a10562fbe4ac0"
+          python3 qa/w02-r2/verify-freeze-manifest-v2.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('qa/w02-r2/w02-contrast-contract-v2.json').read_text())
+          if abs(float(d['normal_text_ratio'])-4.5)>1e-9:
+              raise SystemExit('threshold drift')
+          if d['viewports'] != [320,390,768,1440]:
+              raise SystemExit('viewport drift')
+          if d['zoom_factors'] != [2,4]:
+              raise SystemExit('zoom drift')
+          print({'contract_id':d['contract_id'],'threshold':d['normal_text_ratio'],'viewports':d['viewports'],'zoom_factors':d['zoom_factors']})
+          PY
+
+      - name: Prepare Linux browser dependencies
+        run: |
+          python3 -m venv /tmp/w02-r2-candidate-env
+          /tmp/w02-r2-candidate-env/bin/pip -q install playwright==1.55.0 pillow==11.3.0
+          /tmp/w02-r2-candidate-env/bin/python -m playwright install --with-deps chromium >/tmp/w02-r2-candidate-playwright-install.log 2>&1
+
+      - name: Build exact candidate Linux output
+        working-directory: candidate
+        run: python3 scripts/build_site.py
+
+      - name: Execute exact accepted R2 on exact candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/w02-r2-candidate
+          /tmp/w02-r2-candidate-env/bin/python freeze/qa/w02-r2/run-w02-contrast-gate-v2.py \
+            --phase candidate \
+            --contract freeze/qa/w02-r2/w02-contrast-contract-v2.json \
+            --source-root candidate \
+            --dist-root candidate/dist \
+            --output /tmp/w02-r2-candidate/report.json
+
+      - name: Validate candidate report contract
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f /tmp/w02-r2-candidate/report.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/w02-r2-candidate/report.json')
+          d=json.loads(p.read_text())
+          rows=d['records']
+          summary=d['summary']
+          diag=d['diagnostics']
+          families={}
+          for cid,item in summary.items():
+              rr=[r for r in rows if r['case_id']==cid]
+              source=[r['p01_ratio'] for r in rr if r['root']=='source']
+              dist=[r['p01_ratio'] for r in rr if r['root']=='dist']
+              families[cid]={
+                  'coverage_records':item['coverage_records'],
+                  'coverage_pass':item['coverage_pass'],
+                  'failing_records':item['failing_records'],
+                  'minimum_p01':min((r['p01_ratio'] for r in rr),default=None),
+                  'source_minimum_p01':min(source,default=None),
+                  'dist_minimum_p01':min(dist,default=None),
+              }
+          verdict={
+              'phase':d['phase'],
+              'contract_id':d['contract_id'],
+              'families':families,
+              'records_total':diag['records_total'],
+              'zoom_records':diag['zoom_records'],
+              'zoom_200_records':diag['zoom_200_records'],
+              'zoom_400_records':diag['zoom_400_records'],
+              'zoom_mapping_valid':diag['zoom_mapping_valid'],
+              'zoom_mapping_invalid':diag['zoom_mapping_invalid'],
+              'page_errors':diag['page_errors'],
+              'threshold':diag['normal_text_ratio'],
+              'errors':d['errors'],
+              'limitations':d['limitations'],
+          }
+          Path('/tmp/w02-r2-candidate/summary.json').write_text(json.dumps(verdict,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(verdict,ensure_ascii=False,indent=2))
+          if d['phase']!='candidate': raise SystemExit('wrong phase')
+          if len(summary)!=4 or not all(x['coverage_pass'] for x in summary.values()):
+              raise SystemExit('one or more W02 families fail frozen coverage')
+          if any(x['failing_records'] for x in summary.values()):
+              raise SystemExit('failing records remain')
+          if diag['zoom_records']!=54 or diag['zoom_mapping_valid']!=54 or diag['zoom_mapping_invalid']!=0:
+              raise SystemExit('zoom mapping verdict invalid')
+          if diag['page_errors']!=0:
+              raise SystemExit('page errors present')
+          if abs(float(diag['normal_text_ratio'])-4.5)>1e-9:
+              raise SystemExit('threshold drift')
+          if d['errors']:
+              raise SystemExit('report errors: '+repr(d['errors']))
+          PY
+          cd candidate
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd
+
+      - name: Upload R17 candidate QA evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: w02-r2-candidate-qa-r17
+          path: |
+            /tmp/w02-r2-candidate
+            /tmp/w02-r2-candidate-playwright-install.log
+          retention-days: 14
