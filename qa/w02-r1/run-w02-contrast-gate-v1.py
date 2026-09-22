@@ -160,6 +160,7 @@ def measure(page, locator, required, state):
     if not rects:
         raise RuntimeError('No text rectangles')
     locator.evaluate("(el)=>el.setAttribute('data-w02-probe','')")
+    page.wait_for_timeout(20)
     try:
         shot=Image.open(io.BytesIO(page.screenshot(full_page=False))).convert('RGB')
     finally:
@@ -232,6 +233,7 @@ def run_root(browser, root_name, root, contract, plans):
                         try:
                             page.goto(base+route,wait_until='domcontentloaded',timeout=30000)
                             wait_ready(page)
+                            page.add_style_tag(content=PROBE_CSS)
                             if plan.get('page_scale_factor'):
                                 cdp=ctx.new_cdp_session(page)
                                 cdp.send('Emulation.setPageScaleFactor',{'pageScaleFactor':plan['page_scale_factor']})
@@ -342,6 +344,11 @@ def main():
                 errors.append(f'{cid}: baseline must reproduce FAIL, but core passed')
         if sum(1 for x in summary.values() if not x['baseline_core_pass']) != 4:
             errors.append('baseline must reproduce exactly 4/4 failing case families')
+        for case in contract['cases']:
+            worst=summary[case['id']]['baseline_core_worst_p01']
+            floor=case['baseline_analytic_min_ratio']-0.12
+            if worst is None or worst < floor:
+                errors.append(f"{case['id']}: implausible baseline pixel ratio {worst}; expected >= {floor:.3f} from analytic sanity")
     else:
         for cid,item in summary.items():
             if not item['coverage_pass']:
