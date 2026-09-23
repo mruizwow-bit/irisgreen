@@ -1,0 +1,87 @@
+name: Sabik N04 R26 predeploy candidate
+
+on:
+  pull_request:
+    branches: [sabik-preview]
+    paths:
+      - 'cloud/n04-r26-staging-binding/**'
+      - '.github/workflows/n04-r26-predeploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  predeploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: cloud/n04-r26-staging-binding/package-lock.json
+
+      - name: Generate exact lockfile
+        working-directory: cloud/n04-r26-staging-binding
+        run: |
+          node --version | tee evidence-node-version.txt
+          npm --version | tee evidence-npm-version.txt
+          npm install --package-lock-only --ignore-scripts
+          npm ci --ignore-scripts
+          test "$(node --version)" = "v22.16.0"
+          test "$(npm --version)" = "10.9.2"
+          test "$(node -p "require('./node_modules/@netlify/blobs/package.json').version")" = "11.1.0"
+          ./node_modules/.bin/netlify --version | tee evidence-netlify-cli-version.txt
+          ./node_modules/.bin/netlify --version | grep -q "27.8.0"
+
+      - name: Verify exact corpus before build
+        working-directory: cloud/n04-r26-staging-binding
+        run: npm run verify:corpus
+
+      - name: Build 1
+        working-directory: cloud/n04-r26-staging-binding
+        run: |
+          npm run build
+          npm run hash:outputs
+          cp evidence/BUILD_OUTPUT_HASHES.json /tmp/build-1.json
+
+      - name: Build 2 reproducibility
+        working-directory: cloud/n04-r26-staging-binding
+        run: |
+          npm run build
+          npm run hash:outputs
+          cmp /tmp/build-1.json evidence/BUILD_OUTPUT_HASHES.json
+
+      - name: Predeploy gate
+        working-directory: cloud/n04-r26-staging-binding
+        run: |
+          npm run gate | tee evidence/predeploy-gate.stdout
+          tail -n +2 evidence/predeploy-gate.stdout >/dev/null
+          node scripts/predeploy-gate.mjs > evidence/PREDEPLOY_GATE.json
+          node scripts/prepare-provenance.mjs
+
+      - name: Ensure no deploy command executed
+        run: |
+          ! grep -R --line-number -E 'netlify[[:space:]]+deploy([[:space:]]|$)' cloud/n04-r26-staging-binding/scripts cloud/n04-r26-staging-binding/netlify/functions || exit 1
+          ! grep -R --line-number -E 'SABIK_AI_ENABLED[[:space:]]*=[[:space:]]*["'"']?true' cloud/n04-r26-staging-binding || exit 1
+
+      - name: Package candidate
+        working-directory: cloud/n04-r26-staging-binding
+        run: |
+          mkdir -p evidence
+          sha256sum package-lock.json TOOLCHAIN.json PROVENANCE_PREDEPLOY.json evidence/BUILD_OUTPUT_HASHES.json evidence/PREDEPLOY_GATE.json > evidence/KEY_SHA256SUMS.txt
+          git diff --check
+          git diff --name-status sabik-preview...HEAD > evidence/DIFF_NAME_STATUS.txt
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sabik-n04-r26-predeploy-candidate
+          path: |
+            cloud/n04-r26-staging-binding
+          retention-days: 30

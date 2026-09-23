@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[build.environment]
+  NODE_VERSION = "22.16.0"
+  NPM_VERSION = "10.9.2"
+
+# R26: no provider/model config, no API activation.
+# SABIK_AI_ENABLED is intentionally not set here; absence is fail-closed.
