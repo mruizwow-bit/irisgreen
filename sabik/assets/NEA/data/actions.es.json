@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ver_fuente",
+    "label": "Ver fuente",
+    "language": "es",
+    "concepts": ["fuente"],
+    "priority": "normal",
+    "sabik_can": ["mostrar titulo y enlace de una fuente publicada"],
+    "sabik_must_not": ["citar borradores", "abrir enlaces automaticamente"],
+    "requires_permission": false,
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "bajar_intensidad",
+    "label": "Bajar intensidad",
+    "language": "es",
+    "concepts": ["baja_demanda"],
+    "priority": "important",
+    "sabik_can": ["reducir texto", "mostrar una sola opcion", "pasar a estado visual minimo"],
+    "sabik_must_not": ["abrir tareas nuevas", "hacer varias preguntas"],
+    "requires_permission": false,
+    "risk_level": "low",
+    "editorial_status": "PUBLICABLE"
+  },
+  {
+    "id": "ayuda_humana",
+    "label": "Ayuda humana",
+    "language": "es",
+    "concepts": ["riesgo_suicida"],
+    "priority": "urgent",
+    "sabik_can": ["mostrar recursos aprobados", "preparar que decir", "quedarse presente"],
+    "sabik_must_not": ["llamar automaticamente", "contactar terceros sin accion explicita", "diagnosticar"],
+    "requires_permission": true,
+    "risk_level": "crisis",
+    "editorial_status": "PUBLICABLE"
+  }
+]
