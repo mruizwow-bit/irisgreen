@@ -5,7 +5,7 @@ import argparse,re
 from pathlib import Path
 
 LINK='<link rel="stylesheet" href="/assets/irisglass-r35.css">'
-FLOWER=re.compile(r'<img\\b[^>]*(?:v40-brand-symbol\\.webp|brand-symbol\\.webp)[^>]*>',re.I)
+FLOWER=re.compile(r'<img\b[^>]*(?:v40-brand-symbol\.webp|brand-symbol\.webp)[^>]*>',re.I)
 
 def apply(root: Path):
     changed=0;flowers=0
@@ -16,10 +16,10 @@ def apply(root: Path):
         if LINK not in text:
             if '</head>' not in text:
                 raise AssertionError(f'No </head> in {page}')
-            text=text.replace('</head>',LINK+'\\n</head>',1)
+            text=text.replace('</head>',LINK+'\n</head>',1)
         text=re.sub(r'<meta name="theme-color" content="[^"]*">','<meta name="theme-color" content="#f5fafc">',text,count=1)
         if text!=old:
-            page.write_text(text,encoding='utf-8',newline='\\n');changed+=1
+            page.write_text(text,encoding='utf-8',newline='\n');changed+=1
     if not (root/'assets/irisglass-r35.css').is_file():
         raise FileNotFoundError(root/'assets/irisglass-r35.css')
     print({'r35_pages_changed':changed,'flower_logo_imgs_removed':flowers,'stylesheet':'/assets/irisglass-r35.css'})
