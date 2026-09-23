@@ -119,6 +119,11 @@ def transform(page, data, source_hash):
     seed_tag = f'<script id="ig-initial-data" type="application/json" data-source="/{source_rel}" data-sha256="{source_hash}">{payload}</script>\n'
     if field:
         initializer = 'const IG_INITIAL = JSON.parse(document.getElementById("ig-initial-data").textContent);\n'
+        # Las superficies nuevas de Taller/Intereses ya llevan un primer render HTML
+        # completo y no usan el runtime DCLogic histórico. No deben pasar por este
+        # transformador legacy: el build las copia tal como están.
+        if initializer not in text and 'class Component extends DCLogic {' not in text:
+            return text
         if initializer not in text:
             text = replace_once(text, 'class Component extends DCLogic {', initializer + 'class Component extends DCLogic {')
         text = replace_once(text, field + ': null', field + ': IG_INITIAL')
@@ -144,6 +149,10 @@ def transform(page, data, source_hash):
                 text = text.replace('(st.data.'+country+' || []).length', '(IG_INITIAL._counts.'+country+')')
             text = text.replace('.catch(() => this.setState({ data: { es: [], uk: [], br: [], us: [], mundo: [] } }));', '.catch(() => { /* Retain the locally available Spain entries on network failure. */ });')
     else:
+        # La nueva portada de Intereses es estática y no contiene el renderer
+        # histórico `var datos={temas:[]}`. Si no está esa firma, conservarla.
+        if 'var datos={temas:[]}, tema="todos", texto="";' not in text:
+            return text
         counts, filters, album, count = interests_markup(data)
         for ident, contents in [('counts', counts), ('temaFilters', filters), ('album', album)]:
             start, end = f'<!-- ig-initial-{ident}:start -->', f'<!-- ig-initial-{ident}:end -->'
