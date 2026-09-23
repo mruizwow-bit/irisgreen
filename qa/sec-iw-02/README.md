@@ -49,3 +49,24 @@ Los blobs exactos baseline de los tres workflows están fijados en el contrato. 
 ## Límites
 
 Este freeze no cambia workflows productivos, settings del repositorio, rulesets, cuentas, Netlify ni producción. No es una auditoría general de GitHub Actions: solo congela SEC-IW-02.
+
+
+## R2 · corrección de lector
+
+R2 corrige únicamente una asimetría del harness descubierta al ejecutar el
+candidato: el baseline se obtenía mediante un helper que aplicaba `.strip()`
+al resultado de `git show`, mientras el candidato se leía con
+`Path.read_text()`. En un bloque literal YAML `run: |`, ese `.strip()`
+eliminaba el LF final y podía producir un falso drift semántico incluso
+comparando el baseline consigo mismo.
+
+R2:
+- preserva exactamente el texto devuelto por `git show` para los workflows;
+- mantiene `.strip()` solo en comandos Git escalares como SHA/nombres;
+- añade `baseline_self_compare` al informe y exige igualdad semántica de los
+  tres workflows baseline;
+- no cambia S01–S18, el contrato, los blobs baseline ni ningún workflow
+  productivo.
+
+Fuente del freeze anterior: PR #230 @
+`c5b464b8d8a7414f09d9651375f47a3b6803247d`.
