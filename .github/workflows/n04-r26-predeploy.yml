@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   predeploy:
@@ -24,13 +24,15 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: cloud/n04-r26-staging-binding/package-lock.json
 
-      - name: Generate exact lockfile
+      - name: Verify sealed lock and install exact dependencies
         working-directory: cloud/n04-r26-staging-binding
         run: |
           node --version | tee evidence-node-version.txt
           npm --version | tee evidence-npm-version.txt
-          npm install --package-lock-only --ignore-scripts
+          test "$(sha256sum package-lock.json | cut -d' ' -f1)" = "f46e91bfd8ef26a607206e992e528bef8cb197902dcd905011f2f114b86c3370"
           npm ci --ignore-scripts
           test "$(node --version)" = "v22.16.0"
           test "$(npm --version)" = "10.9.2"
@@ -79,23 +81,11 @@ jobs:
           git diff --check
           git diff --name-status origin/sabik-preview...HEAD > evidence/DIFF_NAME_STATUS.txt
 
-      - name: Seal generated lockfile on bootstrap only
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: |
-          if git ls-files --error-unmatch cloud/n04-r26-staging-binding/package-lock.json >/dev/null 2>&1; then
-            echo "package-lock.json already tracked"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cloud/n04-r26-staging-binding/package-lock.json
-          git commit -m "Cloud N04 R26: seal reproducible dependency lock"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
-
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: sabik-n04-r26-predeploy-candidate
           path: |
-            cloud/n04-r26-staging-binding
+            cloud/n04-r26-staging-binding/**
+            !cloud/n04-r26-staging-binding/node_modules/**
+          include-hidden-files: true
           retention-days: 30
