@@ -37,8 +37,17 @@ def yaml_load(text: str):
 def file_doc(root: Path, path: str):
     return yaml_load((root / path).read_text(encoding="utf-8"))
 
+def git_show_text(root: Path, baseline: str, path: str) -> str:
+    # Preserve file content exactly. Do not strip the final newline: YAML block
+    # scalars use it semantically, and candidate files are read without stripping.
+    return subprocess.check_output(
+        ["git", "show", f"{baseline}:{path}"],
+        cwd=root,
+        text=True,
+    )
+
 def baseline_doc(root: Path, baseline: str, path: str):
-    return yaml_load(sh("git", "show", f"{baseline}:{path}", cwd=root))
+    return yaml_load(git_show_text(root, baseline, path))
 
 def uses_inventory(doc):
     out=[]
@@ -152,6 +161,7 @@ def phase_baseline(root, contract):
     mutable=[]
     explicit_count=0
     yaml_parse=True
+    baseline_self_compare={}
     for wf in contract["target_workflows"]:
         path=wf["path"]
         try:
@@ -160,6 +170,16 @@ def phase_baseline(root, contract):
             yaml_parse=False
             errors.append(f"{path}: current YAML parse error: {exc}")
             continue
+        try:
+            bdoc=baseline_doc(root, contract["baseline_sha"], path)
+            same=(sanitized_semantics(doc)==sanitized_semantics(bdoc))
+        except Exception as exc:
+            same=False
+            errors.append(f"{path}: baseline self-compare failed to parse: {exc}")
+        baseline_self_compare[path]=same
+        if not same:
+            errors.append(f"{path}: baseline self-compare semantic drift")
+
         blob=sh("git","hash-object",path,cwd=root)
         refs=checkout_refs(doc)
         mutable.extend([{"path":path,**r} for r in refs if not r["immutable"]])
@@ -217,6 +237,7 @@ def phase_baseline(root, contract):
         "baseline_sha":contract["baseline_sha"],
         "current":current,
         "baseline_expected_candidate_gate_failures":baseline_red,
+        "baseline_self_compare":baseline_self_compare,
         "cases":cases,
         "errors":errors,
     }
