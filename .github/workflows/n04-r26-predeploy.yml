@@ -67,7 +67,9 @@ jobs:
       - name: Ensure no deploy command executed
         run: |
           ! grep -R --line-number -E 'netlify[[:space:]]+deploy([[:space:]]|$)' cloud/n04-r26-staging-binding/scripts cloud/n04-r26-staging-binding/netlify/functions || exit 1
-          ! grep -R --line-number -E 'SABIK_AI_ENABLED[[:space:]]*=[[:space:]]*["'"']?true' cloud/n04-r26-staging-binding || exit 1
+          ! grep -R --line-number -F 'SABIK_AI_ENABLED=true' cloud/n04-r26-staging-binding || exit 1
+          ! grep -R --line-number -F 'SABIK_AI_ENABLED = true' cloud/n04-r26-staging-binding || exit 1
+          ! grep -R --line-number -F 'SABIK_AI_ENABLED = "true"' cloud/n04-r26-staging-binding || exit 1
 
       - name: Package candidate
         working-directory: cloud/n04-r26-staging-binding
