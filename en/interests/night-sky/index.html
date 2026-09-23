@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night sky · Iris Green · R02</title>
+<meta name="description" content="Night sky pilot world with sample data.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="alternate" hreflang="es" href="../../../es/intereses/cielo/">
+<style>/* IRIS · Taller + Tus intereses · prototipo R02
+   Sistema visual de Design R01 (tokens README §9), sin dependencias externas. */
+
+:root{
+  --paper:#F4F1EA;--surface:#FFFDF8;--ink:#1B1C22;--ink2:#3A3C44;--muted:#55575F;--line:#D9D3C5;--empty:#8A8578;
+  --cobalt:#2F4BD8;--vermilion:#D8452B;--ochre:#9A6F0E;--ochre-ink:#9A6F0E;--green:#2E7D5B;--error:#A12A14;--status:#E9E4D8;
+  --focus:#2F4BD8;
+  --f-text:system-ui,sans-serif;--f-title:"Bricolage Grotesque",system-ui,sans-serif;--f-mono:ui-monospace,monospace;
+  --r-ctl:10px;--r-card:14px;--gap:16px;--pad:clamp(16px,4vw,32px);
+}
+.sky{
+  --paper:#0B1022;--surface:#131A36;--surface2:#0E1430;--canvas:#070B1A;--ink:#E8ECF8;--ink2:#C9D0E6;--muted:#A9B2D0;--line:#3A4680;--line2:#2A3563;
+  --star:#FFF4D6;--user:#7FE3D0;--sel:#FFD166;--constline:#8FA3E0;--status:#131A36;--error:#FF9C8A;--focus:#FFD166;--cobalt:#9DB2FF;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.5 var(--f-text)}
+a{color:var(--cobalt)}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--surface);color:var(--ink);padding:12px 16px;z-index:10;border:2px solid var(--ink)}
+.skip:focus{left:8px;top:8px}
+.eyebrow{font:500 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{margin:0;font:800 clamp(38px,7vw,76px)/.98 var(--f-title);letter-spacing:-.03em}
+h2{margin:0;font:700 clamp(26px,4.2vw,42px)/1.08 var(--f-title);letter-spacing:-.02em}
+h3{margin:0;font:700 20px/1.25 var(--f-title)}
+p{margin:0}
+.lede{font-size:18px;color:var(--ink2);max-width:62ch}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:var(--gap)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+
+/* cabecera del sitio de prototipo */
+.site{border-bottom:1.5px solid var(--line);background:var(--surface)}
+.site .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-top:8px;padding-bottom:8px}
+.site nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px}
+.site nav a,.site .lang{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--r-ctl);text-decoration:none;color:var(--ink);font-weight:700}
+.site nav a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.site .lang{border:1.5px solid var(--ink)}
+.proto{font:500 12px/1.3 var(--f-mono);color:var(--muted)}
+
+header.page{padding:clamp(20px,4vw,40px) 0 12px}
+header.page .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end}
+
+/* controles: meta interna Iris 44×44 px (WCAG 2.5.8 AA exige 24×24) */
+.btn{min-height:44px;min-width:44px;padding:0 14px;border:1.5px solid var(--ink);border-radius:var(--r-ctl);background:var(--surface);color:var(--ink);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--status)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.ghost{border-style:dashed;background:transparent}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn svg{flex:none}
+label{font-weight:700}
+input[type=text],input[type=search],select,textarea{min-height:44px;padding:8px 12px;border:1.5px solid var(--ink);border-radius:var(--r-ctl);background:var(--surface);width:100%}
+textarea{min-height:120px;resize:vertical}
+.field{display:flex;flex-direction:column;gap:6px}
+.hint{font-size:15px;color:var(--muted)}
+.err{color:var(--error);font-weight:700}
+.err:empty{display:none}
+fieldset{border:1.5px solid var(--line);border-radius:var(--r-card);padding:12px 16px;margin:0}
+legend{font-weight:700;padding:0 6px}
+
+.status{min-height:44px;display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:var(--r-ctl);background:var(--status);font-size:15px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;gap:10px}
+.card.fixed{border:3px solid var(--cobalt)}
+.card .val{font:700 20px/1.3 var(--f-title)}
+.tag{font:500 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.empty{border:1.5px dashed var(--empty);border-radius:var(--r-card);padding:16px;color:var(--muted)}
+.sample{border:2px dashed var(--ochre-ink);border-radius:var(--r-card);padding:10px 14px;font-size:15px}
+.sky .sample{border-color:#F0D089}
+
+/* selector de mesas */
+.mesas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:8px;list-style:none;margin:0;padding:0}
+.mesas .btn{width:100%;min-height:64px;padding:10px 12px;justify-content:flex-start;text-align:left}
+.mesas .btn>span{display:flex;flex-direction:column;gap:3px}
+.mesas .n{font:500 11px/1 var(--f-mono);letter-spacing:.06em;opacity:.85;display:block}
+.zones{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+
+/* lista ordenada editable */
+ol.items,ul.items{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ol.items li,ul.items li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-ctl);padding:8px 8px 8px 14px}
+ol.items li .t{flex:1 1 200px}
+
+/* T04 lienzo */
+.canvas-wrap{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start}
+.canvas{width:100%;max-width:560px;aspect-ratio:1;background:var(--surface);border:1.5px solid var(--ink);border-radius:var(--r-card)}
+.canvas:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.canvas svg{width:100%;height:100%;display:block}
+.pieces .btn{width:100%;justify-content:flex-start;text-align:left}
+.pieces .btn[aria-pressed="true"]{border-width:3px}
+
+/* pestañas T06 */
+[role=tablist]{display:flex;flex-wrap:wrap;gap:8px}
+[role=tab]{min-height:44px}
+[role=tab][aria-selected="true"]{background:var(--ink);color:var(--paper)}
+
+/* retos sin pantalla */
+details{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-card);padding:0 16px}
+details>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font:700 18px/1.3 var(--f-title)}
+details[open]{padding-bottom:12px}
+.reto{border-top:1px solid var(--line);padding:10px 0}
+
+/* cuaderno */
+.note{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;gap:8px}
+.note pre{white-space:pre-wrap;font:inherit;margin:0}
+.note svg{width:160px;height:160px;border:1px solid var(--line);border-radius:8px}
+
+/* mundos */
+.world{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;gap:6px}
+.world.live{border:3px solid var(--ink)}
+
+/* tablas */
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.table-wrap{overflow-x:auto;max-width:100%}
+.table-wrap:focus-visible{outline:3px solid var(--focus)}
+
+/* cielo */
+.sky body,body.sky{background:var(--paper)}
+.sky-layout{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.sky-stage{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.sky-panel{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.skybox{position:relative;width:100%;aspect-ratio:5/3;background:var(--canvas);border:1.5px solid var(--line);border-radius:var(--r-card);overflow:hidden;touch-action:none}
+.skybox:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skybox svg{width:100%;height:100%;display:block}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px}
+.legend li{display:flex;gap:8px;align-items:center}
+dl.facts{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin:0}
+dl.facts div{border-top:1px solid var(--line);padding-top:8px}
+dl.facts dt{font-weight:700}
+dl.facts dd{margin:0}
+.culture{border:1.5px dashed var(--line);border-radius:var(--r-card);padding:12px}
+.nojs-only{display:block}
+.js .nojs-only{display:none}
+.js-only{display:none}
+.js .js-only{display:block}
+.js .js-flex{display:flex}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+footer.site-foot{margin-top:40px;border-top:1.5px solid var(--line);padding:20px 0;font-size:15px;color:var(--muted)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (forced-colors: active){.btn[aria-pressed="true"],[role=tab][aria-selected="true"]{outline:3px solid CanvasText}.card.fixed{border-color:Highlight}}
+
+@media print{
+  .site,.no-print,nav,.status,footer.site-foot{display:none!important}
+  body{background:#fff;color:#000}
+  body.printing-note main>*:not(#cuaderno){display:none!important}
+  body.printing-note #cuaderno .note:not(.print-target),body.printing-note #cuaderno .no-print{display:none!important}
+}
+.js .stack.js-only{display:flex}
+input[type=radio],input[type=checkbox]{width:24px;height:24px;margin:0;accent-color:var(--ink);flex:none}
+</style>
+
+</head>
+<body class="sky">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+<nav aria-label="Prototype"><ul><li><a href="../../../en/workshop/">The workshop</a></li><li><a href="../../../en/interests/">Your interests</a></li><li><a href="../../../en/interests/night-sky/" aria-current="page">Night sky</a></li><li><a href="../../../en/interests/modules/">Modules</a></li></ul></nav>
+<div class="row"><span class="proto">Review version</span><a class="lang" href="../../../es/intereses/cielo/" lang="es" hreflang="es">Español</a></div>
+</div></header>
+<main id="main" tabindex="-1">
+<header class="page"><div class="wrap"><div class="stack" style="max-width:66ch">
+<p class="eyebrow">Your interests · Pilot world</p>
+<h1>Night sky</h1>
+<p class="lede">Explore the sky, pick a star to see its fact card and draw your own constellations.</p>
+<p class="sample"><strong>SAMPLE DATA.</strong> The STAR_SAMPLE_xx markers, their positions and the CONST_SAMPLE_x constellations are for design only. No name, coordinate, magnitude or distance is real.</p>
+</div></div></header>
+<div class="wrap stack">
+<p id="status" class="status js-flex js-only" role="status" aria-live="polite"><span class="msg">Sky ready. 24 sample markers and 3 sample constellations.</span></p>
+<div id="sky-app" class="js-only"></div>
+<section aria-labelledby="h-lista" class="stack" id="lista">
+<h2 id="h-lista">Sky list</h2>
+<p>The same information as the map, without having to use it.</p>
+<div class="field js-only" style="max-width:420px"><label for="q">Search</label>
+<input type="search" id="q" data-k="q" aria-describedby="q-count" autocomplete="off"><p id="q-count" class="hint">24 of 24 markers</p></div>
+<div class="table-wrap" tabindex="0" role="region" aria-labelledby="cap-stars">
+<table><caption id="cap-stars" class="visually-hidden">Sample markers</caption>
+<thead><tr><th scope="col">Marker</th><th scope="col">Constellation</th><th scope="col">RA / Dec (sample)</th><th scope="col">Magnitude (sample)</th><th scope="col">Distance (sample)</th><th scope="col"><span class="js-only">Card</span></th></tr></thead>
+<tbody id="star-rows"><tr data-id="STAR_SAMPLE_01"><th scope="row">STAR_SAMPLE_01</th><td>CONST_SAMPLE_A</td>
+<td>04h 19m / +32.0°</td><td>MAG_SAMPLE_3</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_02"><th scope="row">STAR_SAMPLE_02</th><td>CONST_SAMPLE_A</td>
+<td>06h 00m / +38.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_03"><th scope="row">STAR_SAMPLE_03</th><td>CONST_SAMPLE_A</td>
+<td>07h 40m / +30.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_04"><th scope="row">STAR_SAMPLE_04</th><td>CONST_SAMPLE_A</td>
+<td>07h 12m / +14.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_05"><th scope="row">STAR_SAMPLE_05</th><td>CONST_SAMPLE_A</td>
+<td>05h 02m / +10.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_06"><th scope="row">STAR_SAMPLE_06</th><td>CONST_SAMPLE_B</td>
+<td>14h 52m / +42.0°</td><td>MAG_SAMPLE_3</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_07"><th scope="row">STAR_SAMPLE_07</th><td>CONST_SAMPLE_B</td>
+<td>16h 19m / +28.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_08"><th scope="row">STAR_SAMPLE_08</th><td>CONST_SAMPLE_B</td>
+<td>17h 45m / +32.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_09"><th scope="row">STAR_SAMPLE_09</th><td>CONST_SAMPLE_B</td>
+<td>19h 11m / +20.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_10"><th scope="row">STAR_SAMPLE_10</th><td>CONST_SAMPLE_B</td>
+<td>18h 14m / +4.0°</td><td>MAG_SAMPLE_3</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_11"><th scope="row">STAR_SAMPLE_11</th><td>CONST_SAMPLE_B</td>
+<td>16h 33m / +0.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_12"><th scope="row">STAR_SAMPLE_12</th><td>CONST_SAMPLE_C</td>
+<td>10h 04m / -16.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_13"><th scope="row">STAR_SAMPLE_13</th><td>CONST_SAMPLE_C</td>
+<td>12h 00m / -24.0°</td><td>MAG_SAMPLE_3</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_14"><th scope="row">STAR_SAMPLE_14</th><td>CONST_SAMPLE_C</td>
+<td>11h 16m / -40.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_15"><th scope="row">STAR_SAMPLE_15</th><td>CONST_SAMPLE_C</td>
+<td>09h 21m / -34.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_16"><th scope="row">STAR_SAMPLE_16</th><td>No constellation</td>
+<td>02h 09m / -24.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_17"><th scope="row">STAR_SAMPLE_17</th><td>No constellation</td>
+<td>03h 21m / -44.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_18"><th scope="row">STAR_SAMPLE_18</th><td>No constellation</td>
+<td>13h 26m / +10.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_19"><th scope="row">STAR_SAMPLE_19</th><td>No constellation</td>
+<td>21h 07m / +44.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_20"><th scope="row">STAR_SAMPLE_20</th><td>No constellation</td>
+<td>22h 19m / -16.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_21"><th scope="row">STAR_SAMPLE_21</th><td>No constellation</td>
+<td>20h 09m / -36.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_22"><th scope="row">STAR_SAMPLE_22</th><td>No constellation</td>
+<td>14h 52m / -34.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_23"><th scope="row">STAR_SAMPLE_23</th><td>No constellation</td>
+<td>07h 12m / +48.0°</td><td>MAG_SAMPLE_1</td><td>DIST_SAMPLE</td>
+<td class="js-cell"></td></tr><tr data-id="STAR_SAMPLE_24"><th scope="row">STAR_SAMPLE_24</th><td>No constellation</td>
+<td>12h 28m / +36.0°</td><td>MAG_SAMPLE_2</td><td>DIST_SAMPLE · uncertain</td>
+<td class="js-cell"></td></tr></tbody></table></div>
+<h3>Sample constellations</h3><ul><li>CONST_SAMPLE_A: 5 markers</li><li>CONST_SAMPLE_B: 6 markers</li><li>CONST_SAMPLE_C: 4 markers</li></ul>
+<h3 class="js-only">My constellations</h3><div id="mine-app" class="js-only"></div>
+</section>
+</div></main>
+<footer class="site-foot"><div class="wrap"><p>R02 review prototype. Sample copy pending editorial review. Sky data: sample only, none of it is real. The site accessibility statement is pending (gate).</p></div></footer>
+<script type="application/json" id="page-data">{"lang": "en", "stars": [{"id": "STAR_SAMPLE_01", "x": 180, "y": 140, "tier": 3, "con": "CONST_SAMPLE_A", "ra_sample": "04h 19m", "dec_sample": "+32.0°", "mag_sample": "MAG_SAMPLE_3", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_01.", "texto_en": "Sample fact for STAR_SAMPLE_01.", "fuente": "SOURCE_SAMPLE_01"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_02", "x": 250, "y": 110, "tier": 2, "con": "CONST_SAMPLE_A", "ra_sample": "06h 00m", "dec_sample": "+38.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_02.", "texto_en": "Sample fact for STAR_SAMPLE_02.", "fuente": "SOURCE_SAMPLE_02"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_03", "x": 320, "y": 150, "tier": 2, "con": "CONST_SAMPLE_A", "ra_sample": "07h 40m", "dec_sample": "+30.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_03.", "texto_en": "Sample fact for STAR_SAMPLE_03.", "fuente": "SOURCE_SAMPLE_03"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_04", "x": 300, "y": 230, "tier": 1, "con": "CONST_SAMPLE_A", "ra_sample": "07h 12m", "dec_sample": "+14.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_04.", "texto_en": "Sample fact for STAR_SAMPLE_04.", "fuente": "SOURCE_SAMPLE_04"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_05", "x": 210, "y": 250, "tier": 2, "con": "CONST_SAMPLE_A", "ra_sample": "05h 02m", "dec_sample": "+10.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_05.", "texto_en": "Sample fact for STAR_SAMPLE_05.", "fuente": "SOURCE_SAMPLE_05"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_06", "x": 620, "y": 90, "tier": 3, "con": "CONST_SAMPLE_B", "ra_sample": "14h 52m", "dec_sample": "+42.0°", "mag_sample": "MAG_SAMPLE_3", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_06.", "texto_en": "Sample fact for STAR_SAMPLE_06.", "fuente": "SOURCE_SAMPLE_06"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_07", "x": 680, "y": 160, "tier": 2, "con": "CONST_SAMPLE_B", "ra_sample": "16h 19m", "dec_sample": "+28.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_07.", "texto_en": "Sample fact for STAR_SAMPLE_07.", "fuente": "SOURCE_SAMPLE_07"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_08", "x": 740, "y": 140, "tier": 1, "con": "CONST_SAMPLE_B", "ra_sample": "17h 45m", "dec_sample": "+32.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_08.", "texto_en": "Sample fact for STAR_SAMPLE_08.", "fuente": "SOURCE_SAMPLE_08"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_09", "x": 800, "y": 200, "tier": 2, "con": "CONST_SAMPLE_B", "ra_sample": "19h 11m", "dec_sample": "+20.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_09.", "texto_en": "Sample fact for STAR_SAMPLE_09.", "fuente": "SOURCE_SAMPLE_09"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_10", "x": 760, "y": 280, "tier": 3, "con": "CONST_SAMPLE_B", "ra_sample": "18h 14m", "dec_sample": "+4.0°", "mag_sample": "MAG_SAMPLE_3", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_10.", "texto_en": "Sample fact for STAR_SAMPLE_10.", "fuente": "SOURCE_SAMPLE_10"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_11", "x": 690, "y": 300, "tier": 1, "con": "CONST_SAMPLE_B", "ra_sample": "16h 33m", "dec_sample": "+0.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_11.", "texto_en": "Sample fact for STAR_SAMPLE_11.", "fuente": "SOURCE_SAMPLE_11"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_12", "x": 420, "y": 380, "tier": 2, "con": "CONST_SAMPLE_C", "ra_sample": "10h 04m", "dec_sample": "-16.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_12.", "texto_en": "Sample fact for STAR_SAMPLE_12.", "fuente": "SOURCE_SAMPLE_12"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_13", "x": 500, "y": 420, "tier": 3, "con": "CONST_SAMPLE_C", "ra_sample": "12h 00m", "dec_sample": "-24.0°", "mag_sample": "MAG_SAMPLE_3", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_13.", "texto_en": "Sample fact for STAR_SAMPLE_13.", "fuente": "SOURCE_SAMPLE_13"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_14", "x": 470, "y": 500, "tier": 1, "con": "CONST_SAMPLE_C", "ra_sample": "11h 16m", "dec_sample": "-40.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_14.", "texto_en": "Sample fact for STAR_SAMPLE_14.", "fuente": "SOURCE_SAMPLE_14"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_15", "x": 390, "y": 470, "tier": 2, "con": "CONST_SAMPLE_C", "ra_sample": "09h 21m", "dec_sample": "-34.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_15.", "texto_en": "Sample fact for STAR_SAMPLE_15.", "fuente": "SOURCE_SAMPLE_15"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_16", "x": 90, "y": 420, "tier": 1, "con": null, "ra_sample": "02h 09m", "dec_sample": "-24.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_16.", "texto_en": "Sample fact for STAR_SAMPLE_16.", "fuente": "SOURCE_SAMPLE_16"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_17", "x": 140, "y": 520, "tier": 2, "con": null, "ra_sample": "03h 21m", "dec_sample": "-44.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_17.", "texto_en": "Sample fact for STAR_SAMPLE_17.", "fuente": "SOURCE_SAMPLE_17"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_18", "x": 560, "y": 250, "tier": 1, "con": null, "ra_sample": "13h 26m", "dec_sample": "+10.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_18.", "texto_en": "Sample fact for STAR_SAMPLE_18.", "fuente": "SOURCE_SAMPLE_18"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_19", "x": 880, "y": 80, "tier": 2, "con": null, "ra_sample": "21h 07m", "dec_sample": "+44.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_19.", "texto_en": "Sample fact for STAR_SAMPLE_19.", "fuente": "SOURCE_SAMPLE_19"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_20", "x": 930, "y": 380, "tier": 1, "con": null, "ra_sample": "22h 19m", "dec_sample": "-16.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_20.", "texto_en": "Sample fact for STAR_SAMPLE_20.", "fuente": "SOURCE_SAMPLE_20"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_21", "x": 840, "y": 480, "tier": 2, "con": null, "ra_sample": "20h 09m", "dec_sample": "-36.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_21.", "texto_en": "Sample fact for STAR_SAMPLE_21.", "fuente": "SOURCE_SAMPLE_21"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_22", "x": 620, "y": 470, "tier": 1, "con": null, "ra_sample": "14h 52m", "dec_sample": "-34.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_22.", "texto_en": "Sample fact for STAR_SAMPLE_22.", "fuente": "SOURCE_SAMPLE_22"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_23", "x": 300, "y": 60, "tier": 1, "con": null, "ra_sample": "07h 12m", "dec_sample": "+48.0°", "mag_sample": "MAG_SAMPLE_1", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": true, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_23.", "texto_en": "Sample fact for STAR_SAMPLE_23.", "fuente": "SOURCE_SAMPLE_23"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}, {"id": "STAR_SAMPLE_24", "x": 520, "y": 120, "tier": 2, "con": null, "ra_sample": "12h 28m", "dec_sample": "+36.0°", "mag_sample": "MAG_SAMPLE_2", "spect_sample": "SPECT_SAMPLE", "dist_sample": "DIST_SAMPLE", "fiable": false, "curiosidad": {"texto_es": "Curiosidad de muestra para STAR_SAMPLE_24.", "texto_en": "Sample fact for STAR_SAMPLE_24.", "fuente": "SOURCE_SAMPLE_24"}, "cultura_es": "Texto cultural de muestra. No es un dato científico.", "cultura_en": "Sample cultural text. Not a scientific fact."}], "consts": [{"id": "CONST_SAMPLE_A", "links": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0]]}, {"id": "CONST_SAMPLE_B", "links": [[5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 6]]}, {"id": "CONST_SAMPLE_C", "links": [[11, 12], [12, 13], [13, 14], [14, 11]]}]}</script>
+<script>/* IRIS R02 · núcleo común. Sin dependencias, sin evaluación de código en tiempo de ejecución, sin peticiones de red. */
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  var IG = window.IG = {};
+
+  /* Datos de la página: bloque JSON no ejecutable generado en build. */
+  IG.data = function (id) {
+    var el = document.getElementById(id || 'page-data');
+    return el ? JSON.parse(el.textContent) : {};
+  };
+
+  /* Almacenamiento efímero por pestaña (sessionStorage), claves ig-*. */
+  IG.store = {
+    get: function (k) { try { var v = sessionStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } },
+    set: function (k, v) { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento: sigue en memoria */ } },
+    del: function (k) { try { sessionStorage.removeItem(k); } catch (e) {} }
+  };
+
+  /* Una sola región de estado por página (role=status, aria-live=polite). */
+  IG.say = function (msg) {
+    var el = document.getElementById('status');
+    if (!el) return;
+    var span = el.querySelector('.msg') || el;
+    span.textContent = '';
+    window.setTimeout(function () { span.textContent = msg; }, 30);
+  };
+
+  IG.debounce = function (fn, ms) {
+    var t; return function () { var a = arguments, s = this; clearTimeout(t); t = setTimeout(function () { fn.apply(s, a); }, ms); };
+  };
+
+  /* Constructor de nodos: todo el texto entra por textContent (nunca se inserta HTML con datos). */
+  IG.h = function (tag, attrs) {
+    var svgTags = /^(svg|g|path|circle|line|rect|text|polygon|polyline|title)$/;
+    var el = svgTags.test(tag) ? document.createElementNS('http://www.w3.org/2000/svg', tag) : document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === 'on') { Object.keys(v).forEach(function (ev) { el.addEventListener(ev, v[ev]); }); }
+      else if (k === 'text') el.textContent = v;
+      else if (k === 'value') el.value = v;
+      else el.setAttribute(k, v === true ? '' : String(v));
+    });
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c === null || c === undefined || c === false) continue;
+      if (Array.isArray(c)) c.forEach(function (x) { if (x) el.appendChild(typeof x === 'string' ? document.createTextNode(x) : x); });
+      else el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return el;
+  };
+
+  /* Re-render conservando el foco: los elementos enfocables llevan data-k. */
+  IG.render = function (container, buildFn) {
+    var a = document.activeElement, key = a && a.getAttribute && a.getAttribute('data-k');
+    var selStart = a && 'selectionStart' in a ? a.selectionStart : null;
+    var node = buildFn();
+    container.replaceChildren(node);
+    if (key) {
+      var t = container.querySelector('[data-k="' + key.replace(/"/g, '') + '"]');
+      if (t) { t.focus({ preventScroll: true }); if (selStart !== null && 'setSelectionRange' in t) { try { t.setSelectionRange(selStart, selStart); } catch (e) {} } }
+    }
+  };
+
+  IG.uid = function () { return Math.random().toString(36).slice(2, 9); };
+  IG.clone = function (o) { return JSON.parse(JSON.stringify(o)); };
+  IG.pick = function (arr, not) { if (arr.length < 2) return 0; var i; do { i = Math.floor(Math.random() * arr.length); } while (i === not); return i; };
+})();
+</script><script>/* IRIS R02 · Cielo nocturno (piloto). Solo datos SAMPLE. Sin eval, sin red.
+   Regla dura (addendum R44 §8 / D14): REAL_SKY_LAYER y DRAWING_LAYER separados.
+   - Un punto creado por la persona es SIEMPRE { layer: 'DRAWING', kind: 'own' } y nunca recibe star/starRef.
+   - La creación de puntos NO consulta la distancia a ningún marcador.
+   - El único vínculo con un marcador es { kind: 'ref', starRef } creado por la acción explícita
+     «Usar en mi constelación» de la ficha. Es una referencia separada, no un punto propio. */
+(function () {
+  'use strict';
+  var IG = window.IG, h = IG.h, D = IG.data(), L = D.lang, KEY = 'ig-cielo-r02';
+  var T = function (es, en) { return L === 'es' ? es : en; };
+  var W = 1000, H = 600, STARS = D.stars, CONSTS = D.consts;
+  var byId = {}; STARS.forEach(function (s, i) { byId[s.id] = i; });
+
+  function blankDraft() { return { seq: [], links: [], auto: true, name: '', nextOwn: 1 }; }
+  var saved = IG.store.get(KEY) || {};
+  var st = { mode: 'explore', lines: true, help: false, z: 1, cx: W / 2, cy: H / 2, sel: null, cursor: { x: W / 2, y: H / 2 },
+             draft: saved.draft || blankDraft(), mine: saved.mine || [] };
+  var hist = [];
+  var app = document.getElementById('sky-app'), mineApp = document.getElementById('mine-app');
+
+  function persist() { IG.store.set(KEY, { draft: st.draft, mine: st.mine }); }
+  function commit(fn, msg) { hist.push(IG.clone({ draft: st.draft, mine: st.mine })); if (hist.length > 80) hist.shift(); fn(); persist(); draw(); if (msg) IG.say(msg); }
+  function undo() { var p = hist.pop(); if (!p) { IG.say(T('Nada que deshacer.', 'Nothing to undo.')); return; } st.draft = p.draft; st.mine = p.mine; persist(); draw(); IG.say(T('Último cambio deshecho.', 'Last change undone.')); }
+
+  /* ---- vista ---- */
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function view() { var vw = W / st.z, vh = H / st.z; st.cx = clamp(st.cx, vw / 2, W - vw / 2); st.cy = clamp(st.cy, vh / 2, H - vh / 2); return { x: st.cx - vw / 2, y: st.cy - vh / 2, w: vw, h: vh }; }
+  function zoom(nz, msg) { st.z = clamp(Math.round(nz * 10) / 10, 1, 6); draw(); IG.say(msg || T('Zoom ', 'Zoom ') + st.z.toFixed(1) + '×.'); }
+  function pan(dx, dy) { var v = view(); st.cx += dx * v.w * 0.15; st.cy += dy * v.h * 0.15; draw(); IG.say(T('Cielo desplazado. Ningún punto ha cambiado.', 'Sky moved. No point has changed.')); }
+  function reframe() { st.z = 1; st.cx = W / 2; st.cy = H / 2; draw(); IG.say(T('Cielo reencuadrado.', 'Sky reframed.')); }
+
+  /* ---- modelo de dibujo (DRAWING_LAYER) ---- */
+  function addOwnPoint(x, y) {
+    // Punto propio: coordenadas exactas donde lo pone la persona. Sin búsqueda de marcadores cercanos.
+    commit(function () {
+      var d = st.draft, n = d.seq.length, id = 'P' + d.nextOwn++;
+      d.seq.push({ kind: 'own', layer: 'DRAWING', id: id, x: Math.round(x), y: Math.round(y) });
+      if (d.auto && n > 0) d.links.push([n - 1, n]);
+    }, T('Punto propio ', 'Own point ') + 'P' + st.draft.nextOwn + T(' creado', ' created') + (st.draft.auto && st.draft.seq.length ? T(', unido al anterior', ', joined to the previous one') : '') + '. ' + T('Total: ', 'Total: ') + (st.draft.seq.length + 1) + '.');
+  }
+  function addRef(starIdx) {
+    // Única vía de vínculo: acción explícita desde la ficha. Se guarda como referencia separada.
+    var s = STARS[starIdx], d = st.draft, last = d.seq[d.seq.length - 1];
+    if (last && last.kind === 'ref' && last.starRef === s.id) { IG.say(s.id + T(' ya es el último vértice.', ' is already the last vertex.')); return; }
+    commit(function () { var n = d.seq.length; d.seq.push({ kind: 'ref', layer: 'DRAWING', starRef: s.id }); if (d.auto && n > 0) d.links.push([n - 1, n]); },
+      T('Referencia explícita a ', 'Explicit reference to ') + s.id + T(' añadida a tu constelación. Tu constelación no cambia el marcador.', ' added to your constellation. Your constellation does not change the marker.'));
+    st.mode = 'draw'; draw();
+  }
+  function vxy(v) { if (v.kind === 'ref') { var s = STARS[byId[v.starRef]]; return { x: s.x, y: s.y }; } return { x: v.x, y: v.y }; }
+  function vlabel(v, i) { return (i + 1) + ' · ' + (v.kind === 'ref' ? T('Referencia explícita a ', 'Explicit reference to ') + v.starRef + T(' (marcador de muestra)', ' (sample marker)') : T('Punto propio ', 'Own point ') + v.id + ' · x ' + v.x + ', y ' + v.y); }
+
+  /* ---- SVG ---- */
+  function sky() {
+    var v = view(), k = 1 / st.z;
+    var svg = h('svg', { viewBox: v.x + ' ' + v.y + ' ' + v.w + ' ' + v.h, 'aria-hidden': 'true', focusable: 'false', preserveAspectRatio: 'xMidYMid slice' });
+    svg.appendChild(h('rect', { x: 0, y: 0, width: W, height: H, fill: '#070B1A' }));
+    var real = h('g', { 'data-layer': 'REAL_SKY_LAYER' });
+    if (st.lines) CONSTS.forEach(function (c) { c.links.forEach(function (l) { var a = STARS[l[0]], b = STARS[l[1]]; real.appendChild(h('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: '#8FA3E0', 'stroke-width': 1.5 * k })); }); });
+    STARS.forEach(function (s, i) {
+      var r = (2 + s.tier * 1.6) * Math.sqrt(k) * 1.4;
+      if (i === st.sel) real.appendChild(h('circle', { cx: s.x, cy: s.y, r: r + 9 * k, fill: 'none', stroke: '#FFD166', 'stroke-width': 2.5 * k }));
+      real.appendChild(h('circle', { cx: s.x, cy: s.y, r: r, fill: '#FFF4D6' }));
+      real.appendChild(h('path', { d: 'M' + (s.x - r * 2) + ',' + s.y + 'H' + (s.x + r * 2) + 'M' + s.x + ',' + (s.y - r * 2) + 'V' + (s.y + r * 2), stroke: '#FFF4D6', 'stroke-width': 0.8 * k, opacity: 0.8 }));
+    });
+    svg.appendChild(real);
+    var draw_ = h('g', { 'data-layer': 'DRAWING_LAYER' });
+    function drawFig(d, saved) {
+      d.links.forEach(function (l) { var a = vxy(d.seq[l[0]]), b = vxy(d.seq[l[1]]); draw_.appendChild(h('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: '#7FE3D0', 'stroke-width': 3 * k, 'stroke-dasharray': (8 * k) + ' ' + (6 * k) })); });
+      d.seq.forEach(function (p) {
+        var c = vxy(p);
+        if (p.kind === 'ref') draw_.appendChild(h('circle', { cx: c.x, cy: c.y, r: 13 * k, fill: 'none', stroke: '#7FE3D0', 'stroke-width': 2 * k, 'stroke-dasharray': (3 * k) + ' ' + (3 * k) }));
+        else {
+          var q = 8 * k; draw_.appendChild(h('path', { d: 'M' + c.x + ',' + (c.y - q) + 'L' + (c.x + q) + ',' + c.y + 'L' + c.x + ',' + (c.y + q) + 'L' + (c.x - q) + ',' + c.y + 'Z', fill: 'none', stroke: '#7FE3D0', 'stroke-width': 2.2 * k }));
+          if (!saved) draw_.appendChild(h('text', { x: c.x + q + 4 * k, y: c.y + q + 8 * k, fill: '#7FE3D0', 'font-size': 13 * k, 'font-family': 'JetBrains Mono, monospace' }, p.id));
+        }
+      });
+    }
+    st.mine.forEach(function (m) { drawFig(m, true); });
+    drawFig(st.draft, false);
+    if (st.mode === 'draw' && st.kbCursor) {
+      var cx = st.cursor.x, cy = st.cursor.y, q = 12 * k;
+      draw_.appendChild(h('path', { d: 'M' + (cx - q) + ',' + cy + 'H' + (cx + q) + 'M' + cx + ',' + (cy - q) + 'V' + (cy + q), stroke: '#FFD166', 'stroke-width': 2 * k }));
+    }
+    svg.appendChild(draw_);
+    return svg;
+  }
+
+  /* hit-test SOLO para explorar (seleccionar un marcador). Nunca se usa al crear puntos. */
+  function hitStarForExplore(p) { var best = null, bd = 18 / st.z; STARS.forEach(function (s, i) { var d = Math.hypot(s.x - p.x, s.y - p.y); if (d < bd) { bd = d; best = i; } }); return best; }
+  function toSky(box, ev) { var r = box.getBoundingClientRect(), v = view(); var sc = Math.max(r.width / v.w, r.height / v.h), ox = (r.width - v.w * sc) / 2, oy = (r.height - v.h * sc) / 2; return { x: v.x + (ev.clientX - r.left - ox) / sc, y: v.y + (ev.clientY - r.top - oy) / sc }; }
+  function select(i, center) {
+    if (i === null) { st.sel = null; draw(); IG.say(T('Selección quitada.', 'Selection cleared.')); return; }
+    st.sel = i; if (center) { st.cx = STARS[i].x; st.cy = STARS[i].y; }
+    draw(); var s = STARS[i]; IG.say(T('Seleccionado ', 'Selected ') + s.id + (s.con ? ' · ' + s.con : '') + T('. Ficha actualizada.', '. Card updated.'));
+  }
+
+  function skyBox() {
+    var drag = null;
+    var box = h('div', { class: 'skybox', tabindex: '0', role: 'application', 'data-k': 'sky', 'aria-roledescription': T('mapa del cielo', 'sky map'),
+      'aria-label': T('Cielo de muestra, modo ', 'Sample sky, ') + (st.mode === 'draw' ? T('dibujar', 'draw mode') : T('explorar', 'explore mode')) + ', zoom ' + st.z.toFixed(1) + '×. ' + T('La Lista del cielo ofrece la misma información.', 'The Sky list gives the same information.'),
+      'aria-describedby': 'sky-keys',
+      on: {
+        pointerdown: function (ev) { drag = { x: ev.clientX, y: ev.clientY, cx: st.cx, cy: st.cy, moved: false }; box.setPointerCapture(ev.pointerId); },
+        pointermove: function (ev) { if (!drag) return; var dx = ev.clientX - drag.x, dy = ev.clientY - drag.y; if (Math.hypot(dx, dy) > 6) drag.moved = true; if (drag.moved) { var r = box.getBoundingClientRect(), v = view(), sc = Math.max(r.width / v.w, r.height / v.h); st.cx = drag.cx - dx / sc; st.cy = drag.cy - dy / sc; var svg = box.querySelector('svg'), vv = view(); svg.setAttribute('viewBox', vv.x + ' ' + vv.y + ' ' + vv.w + ' ' + vv.h); } },
+        pointerup: function (ev) {
+          if (!drag) return; var moved = drag.moved; drag = null;
+          if (moved) { draw(); IG.say(T('Cielo desplazado. Ningún punto ha cambiado.', 'Sky moved. No point has changed.')); return; }
+          var p = toSky(box, ev);
+          if (st.mode === 'draw') { st.kbCursor = false; addOwnPoint(p.x, p.y); }        // D14: sin consultar marcadores
+          else { var i = hitStarForExplore(p); select(i, false); }
+        },
+        wheel: function (ev) { ev.preventDefault(); zoom(st.z * (ev.deltaY < 0 ? 1.25 : 0.8)); },
+        keydown: function (ev) {
+          var k = ev.key, arrows = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+          if (arrows[k]) {
+            ev.preventDefault();
+            if (st.mode === 'draw' && !ev.shiftKey) { st.kbCursor = true; var step = 10 / st.z; st.cursor.x = clamp(st.cursor.x + arrows[k][0] * step, 0, W); st.cursor.y = clamp(st.cursor.y + arrows[k][1] * step, 0, H); draw(); }
+            else pan(arrows[k][0], arrows[k][1]);
+          } else if (k === '+' || k === '=') { ev.preventDefault(); zoom(st.z * 1.25); }
+          else if (k === '-') { ev.preventDefault(); zoom(st.z * 0.8); }
+          else if (k === '0') { ev.preventDefault(); reframe(); }
+          else if (st.mode === 'explore' && (k === 'n' || k === 'N')) { ev.preventDefault(); select(st.sel === null ? 0 : (st.sel + 1) % STARS.length, true); }
+          else if (st.mode === 'explore' && (k === 'p' || k === 'P')) { ev.preventDefault(); select(st.sel === null ? STARS.length - 1 : (st.sel - 1 + STARS.length) % STARS.length, true); }
+          else if (k === 'Escape') { ev.preventDefault(); select(null); }
+          else if (st.mode === 'draw' && (k === 'Enter' || k === ' ')) { ev.preventDefault(); st.kbCursor = true; addOwnPoint(st.cursor.x, st.cursor.y); } // D14: sin búsqueda de marcadores cercanos
+          else if (st.mode === 'draw' && (k === 'Backspace' || ((ev.ctrlKey || ev.metaKey) && (k === 'z' || k === 'Z')))) { ev.preventDefault(); undo(); }
+        }
+      } }, sky());
+    return box;
+  }
+
+  /* ---- ficha (REAL_SKY_LAYER · SAMPLE) ---- */
+  function ficha() {
+    if (st.sel === null) return h('section', { class: 'card', 'aria-labelledby': 'h-ficha' }, h('h2', { id: 'h-ficha', style: 'font-size:24px', text: T('Ninguna estrella elegida', 'No star chosen') }),
+      h('p', { class: 'muted', text: T('Elige un marcador en el cielo (o pulsa N con el foco en el cielo) o en la Lista del cielo.', 'Choose a marker in the sky (or press N with focus on the sky) or in the Sky list.') }));
+    var s = STARS[st.sel];
+    function row(dt, dd, help) { return h('div', null, h('dt', { text: dt }), help ? h('dd', { class: 'hint', text: help }) : null, h('dd', { text: dd })); }
+    return h('section', { class: 'card', 'aria-labelledby': 'h-ficha' },
+      h('p', { class: 'tag', text: T('Ficha · datos de muestra', 'Card · sample data') }),
+      h('h2', { id: 'h-ficha', style: 'font-size:24px', text: s.id }),
+      h('h3', { text: T('Qué estás viendo', 'What you are looking at') }),
+      h('p', { text: T('Un marcador de muestra', 'A sample marker') + (s.con ? T(' de ', ' in ') + s.con : '') + T('. No es una estrella real.', '. It is not a real star.') }),
+      h('h3', { text: T('Datos', 'Data') }),
+      h('dl', { class: 'facts' },
+        row(T('Magnitud aparente', 'Apparent magnitude'), s.mag_sample, T('Cuánto brilla vista desde la Tierra. Un número más bajo significa más brillo.', 'How bright it looks from Earth. A lower number means brighter.')),
+        row(T('Tipo espectral', 'Spectral type'), s.spect_sample, T('Clase según su luz; indica su temperatura.', 'Class based on its light; it shows its temperature.')),
+        row(T('Distancia', 'Distance'), s.dist_sample + (s.fiable ? '' : T(' · distancia incierta: la medida tiene demasiado error.', ' · uncertain distance: the measurement has too much error.')), null)),
+      h('h3', { text: T('Dónde está', 'Where it is') }),
+      h('dl', { class: 'facts' }, row(T('Constelación', 'Constellation'), s.con || T('Sin constelación', 'No constellation')),
+        row(T('AR / Dec J2000 (muestra)', 'RA / Dec J2000 (sample)'), s.ra_sample + ' / ' + s.dec_sample + T(' · proyección de diseño, no astronómica', ' · design projection, not astronomical'))),
+      h('h3', { text: T('Curiosidad', 'Fact') }),
+      h('p', null, (L === 'es' ? s.curiosidad.texto_es : s.curiosidad.texto_en) + ' ', h('span', { class: 'muted', text: T('Fuente: ', 'Source: ') + s.curiosidad.fuente })),
+      h('div', { class: 'culture' }, h('h3', { text: T('En la cultura', 'In culture') }), h('p', { text: L === 'es' ? s.cultura_es : s.cultura_en })),
+      h('h3', { text: T('Fuente', 'Source') }),
+      h('p', { class: 'muted', text: 'DATASET_SAMPLE_R02 · ' + T('sin datos reales hasta el contrato de procedencia y licencia (D2)', 'no real data until the provenance and licence contract (D2)') }),
+      h('div', { class: 'row' },
+        h('button', { class: 'btn', type: 'button', 'data-k': 'prev', on: { click: function () { select((st.sel - 1 + STARS.length) % STARS.length, true); } } }, T('Anterior', 'Previous')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'next', on: { click: function () { select((st.sel + 1) % STARS.length, true); } } }, T('Siguiente', 'Next')),
+        h('button', { class: 'btn primary', type: 'button', 'data-k': 'use-in-draw', on: { click: function () { addRef(st.sel); } } }, T('Usar en mi constelación', 'Use in my constellation'))),
+      h('p', { class: 'hint', text: T('«Usar en mi constelación» añade una referencia a este marcador. Tu dibujo sigue siendo tuyo y el marcador no cambia.', '"Use in my constellation" adds a reference to this marker. Your drawing stays yours and the marker does not change.') }));
+  }
+
+  /* ---- panel de dibujo ---- */
+  function drawPanel() {
+    var d = st.draft;
+    return h('section', { class: 'card', 'aria-labelledby': 'h-draw' },
+      h('p', { class: 'tag', text: T('Hecho por ti', 'Made by you') }),
+      h('h2', { id: 'h-draw', style: 'font-size:24px', text: T('Tu constelación', 'Your constellation') }),
+      h('p', { class: 'hint', text: T('Toca el cielo, o usa las flechas e Intro con el foco en el cielo, para poner tus puntos. Tus puntos nunca son estrellas reales, aunque estén cerca de un marcador.', 'Tap the sky, or use the arrows and Enter with focus on the sky, to place your points. Your points are never real stars, even when they are close to a marker.') }),
+      h('div', { class: 'row' },
+        h('button', { class: 'btn', type: 'button', 'data-k': 'auto', 'aria-pressed': d.auto ? 'true' : 'false', on: { click: function () { commit(function () { d.auto = !d.auto; }, d.auto ? T('Unir automáticamente: no.', 'Join automatically: off.') : T('Unir automáticamente: sí.', 'Join automatically: on.')); } } }, T('Unir automáticamente', 'Join automatically')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'join2', on: { click: function () { var n = d.seq.length; if (n < 2) { IG.say(T('Hacen falta dos vértices.', 'Two vertices are needed.')); return; } commit(function () { d.links.push([n - 2, n - 1]); }, T('Últimos dos vértices unidos.', 'Last two vertices joined.')); } } }, T('Unir los dos últimos', 'Join the last two')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'close', on: { click: function () { var n = d.seq.length; if (n < 3) { IG.say(T('Hacen falta tres vértices para cerrar.', 'Three vertices are needed to close.')); return; } commit(function () { d.links.push([n - 1, 0]); }, T('Figura cerrada.', 'Shape closed.')); } } }, T('Cerrar figura', 'Close shape')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'dundo', on: { click: undo } }, T('Deshacer', 'Undo')),
+        h('button', { class: 'btn ghost', type: 'button', 'data-k': 'dclear', on: { click: function () { commit(function () { st.draft = blankDraft(); }, T('Dibujo vaciado. Puedes deshacerlo.', 'Drawing cleared. You can undo it.')); } } }, T('Vaciar', 'Clear'))),
+      d.seq.length ? h('ol', { class: 'items', 'aria-label': T('Vértices de tu constelación', 'Vertices of your constellation') }, d.seq.map(function (v, i) { return h('li', null, h('span', { class: 't', text: vlabel(v, i) })); }))
+                   : h('p', { class: 'empty', text: T('Aún no hay vértices.', 'No vertices yet.') }),
+      h('div', { class: 'field' }, h('label', { for: 'cname', text: T('Nombre de tu constelación', 'Name of your constellation') }),
+        h('input', { type: 'text', id: 'cname', 'data-k': 'cname', value: d.name, on: { input: function (ev) { d.name = ev.target.value; persist(); } } })),
+      h('p', { class: 'err', role: 'alert', id: 'err-draw' }),
+      h('button', { class: 'btn primary', type: 'button', 'data-k': 'dsave', on: { click: function () {
+        var err = d.seq.length < 2 ? T('Hacen falta al menos dos vértices.', 'At least two vertices are needed.') : !d.links.length ? T('Une al menos dos vértices.', 'Join at least two vertices.') : !d.name.trim() ? T('Ponle un nombre antes de guardar.', 'Give it a name before saving.') : '';
+        document.getElementById('err-draw').textContent = err; if (err) return;
+        commit(function () { var m = IG.clone(d); m.id = IG.uid(); st.mine.push(m); st.draft = blankDraft(); }, T('Constelación guardada en Mis constelaciones.', 'Constellation saved in My constellations.')); } } }, T('Guardar', 'Save')));
+  }
+
+  function controls() {
+    function b(k, lab, aria, fn) { return h('button', { class: 'btn', type: 'button', 'data-k': k, 'aria-label': aria, on: { click: fn } }, lab); }
+    return h('div', { class: 'row', role: 'group', 'aria-label': T('Mover y ampliar el cielo', 'Move and zoom the sky') },
+      b('pl', '←', T('Mover el cielo a la izquierda', 'Move the sky left'), function () { pan(-1, 0); }),
+      b('pu', '↑', T('Mover el cielo arriba', 'Move the sky up'), function () { pan(0, -1); }),
+      b('pd', '↓', T('Mover el cielo abajo', 'Move the sky down'), function () { pan(0, 1); }),
+      b('pr', '→', T('Mover el cielo a la derecha', 'Move the sky right'), function () { pan(1, 0); }),
+      b('zo', '−', T('Alejar', 'Zoom out'), function () { zoom(st.z * 0.8); }),
+      h('span', { class: 'tag', text: st.z.toFixed(1) + '×' }),
+      b('zi', '+', T('Acercar', 'Zoom in'), function () { zoom(st.z * 1.25); }),
+      h('button', { class: 'btn', type: 'button', 'data-k': 'rf', on: { click: reframe } }, T('Reencuadrar', 'Reframe')));
+  }
+
+  function draw() {
+    IG.render(app, function () {
+      var modes = h('div', { class: 'row', role: 'group', 'aria-label': T('Modo', 'Mode') },
+        h('button', { class: 'btn', type: 'button', 'data-k': 'm-explore', 'aria-pressed': st.mode === 'explore' ? 'true' : 'false', on: { click: function () { st.mode = 'explore'; draw(); IG.say(T('Modo explorar.', 'Explore mode.')); } } }, T('Explorar', 'Explore')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'm-draw', 'aria-pressed': st.mode === 'draw' ? 'true' : 'false', on: { click: function () { st.mode = 'draw'; draw(); IG.say(T('Modo dibujar. Tus puntos siempre son tuyos.', 'Draw mode. Your points are always yours.')); } } }, T('Dibujar', 'Draw')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'lines', 'aria-pressed': st.lines ? 'true' : 'false', on: { click: function () { st.lines = !st.lines; draw(); IG.say(st.lines ? T('Líneas de muestra visibles.', 'Sample lines shown.') : T('Líneas de muestra ocultas.', 'Sample lines hidden.')); } } }, T('Líneas de constelación', 'Constellation lines')),
+        h('button', { class: 'btn', type: 'button', 'data-k': 'help', 'aria-expanded': st.help ? 'true' : 'false', 'aria-controls': 'sky-keys', on: { click: function () { st.help = !st.help; draw(); } } }, T('Ayuda de teclado', 'Keyboard help')));
+      var keys = h('div', { id: 'sky-keys', class: st.help ? 'card' : 'visually-hidden' },
+        h('p', { text: T('Con el foco en el cielo: flechas mueven el cielo; + y − cambian el zoom; 0 reencuadra; N y P eligen el marcador siguiente o anterior; Esc quita la selección.', 'With focus on the sky: arrows move the sky; + and − zoom; 0 reframes; N and P choose the next or previous marker; Esc clears the selection.') }),
+        h('p', { text: T('En modo dibujar: las flechas mueven la mira, Mayús + flechas mueven el cielo, Intro o Espacio ponen un punto propio, Retroceso deshace.', 'In draw mode: arrows move the crosshair, Shift + arrows move the sky, Enter or Space place an own point, Backspace undoes.') }));
+      var legend = h('ul', { class: 'legend', 'aria-label': T('Leyenda', 'Legend') },
+        h('li', null, h('svg', { width: 18, height: 18, viewBox: '-9 -9 18 18', 'aria-hidden': 'true' }, h('circle', { r: 5, fill: '#FFF4D6' })), T('Marcador de muestra (círculo relleno)', 'Sample marker (filled circle)')),
+        h('li', null, h('svg', { width: 18, height: 18, viewBox: '-9 -9 18 18', 'aria-hidden': 'true' }, h('path', { d: 'M0,-7L7,0L0,7L-7,0Z', fill: 'none', stroke: '#7FE3D0', 'stroke-width': 2 })), T('Tu punto propio (rombo hueco)', 'Your own point (hollow diamond)')),
+        h('li', null, h('svg', { width: 18, height: 18, viewBox: '-9 -9 18 18', 'aria-hidden': 'true' }, h('circle', { r: 7, fill: 'none', stroke: '#7FE3D0', 'stroke-width': 2, 'stroke-dasharray': '2 2' })), T('Tu referencia a un marcador (anillo discontinuo)', 'Your reference to a marker (dashed ring)')),
+        h('li', null, h('svg', { width: 24, height: 10, viewBox: '0 0 24 10', 'aria-hidden': 'true' }, h('line', { x1: 0, y1: 5, x2: 24, y2: 5, stroke: '#8FA3E0', 'stroke-width': 1.5 })), T('Línea de muestra (fina, continua)', 'Sample line (thin, solid)')),
+        h('li', null, h('svg', { width: 24, height: 10, viewBox: '0 0 24 10', 'aria-hidden': 'true' }, h('line', { x1: 0, y1: 5, x2: 24, y2: 5, stroke: '#7FE3D0', 'stroke-width': 3, 'stroke-dasharray': '5 3' })), T('Tu línea (gruesa, discontinua)', 'Your line (thick, dashed)')));
+      return h('div', { class: 'stack' }, modes, keys,
+        h('p', { class: 'hint', text: st.mode === 'draw' ? T('Dibujar: toca el cielo para poner un punto propio. Arrastra para mover el cielo.', 'Draw: tap the sky to place an own point. Drag to move the sky.') : T('Explorar: toca un marcador para ver su ficha. Arrastra para mover el cielo.', 'Explore: tap a marker to see its card. Drag to move the sky.') }),
+        h('div', { class: 'sky-layout' }, h('div', { class: 'sky-stage' }, skyBox(), controls(), legend), h('div', { class: 'sky-panel' }, ficha(), drawPanel())));
+    });
+    drawMine();
+  }
+
+  function drawMine() {
+    IG.render(mineApp, function () {
+      if (!st.mine.length) return h('p', { class: 'empty', text: T('Todavía no has guardado constelaciones en esta sesión.', 'You have not saved any constellations in this session yet.') });
+      return h('ul', { class: 'items' }, st.mine.map(function (m, i) {
+        var own = m.seq.filter(function (v) { return v.kind === 'own'; }).length, refs = m.seq.length - own;
+        return h('li', null, h('span', { class: 't', text: m.name + ' · ' + own + T(' puntos propios, ', ' own points, ') + refs + T(' referencias explícitas', ' explicit references') }),
+          h('button', { class: 'btn ghost', type: 'button', 'data-k': 'mdel-' + m.id, 'aria-label': T('Eliminar ', 'Delete ') + m.name, on: { click: function () { commit(function () { st.mine.splice(i, 1); }, T('Constelación eliminada. Puedes deshacerlo.', 'Constellation deleted. You can undo it.')); } } }, T('Eliminar', 'Delete')));
+      }));
+    });
+  }
+
+  /* ---- Lista del cielo: búsqueda con recuento anunciado (D04) ---- */
+  var q = document.getElementById('q'), count = document.getElementById('q-count'), rows = document.querySelectorAll('#star-rows tr');
+  rows.forEach(function (tr) {
+    var id = tr.getAttribute('data-id'), cell = tr.querySelector('.js-cell');
+    cell.appendChild(h('button', { class: 'btn', type: 'button', 'aria-label': T('Ver ficha de ', 'See card for ') + id, on: { click: function () { st.mode = 'explore'; select(byId[id], true); var f = document.getElementById('h-ficha'); if (f) { f.setAttribute('tabindex', '-1'); f.focus(); } } } }, T('Ver ficha', 'See card')));
+  });
+  var announce = IG.debounce(function (msg) { IG.say(msg); }, 500);
+  q.addEventListener('input', function () {
+    var v = q.value.trim().toLowerCase(), n = 0;
+    rows.forEach(function (tr) { var hit = !v || tr.textContent.toLowerCase().indexOf(v) >= 0; tr.hidden = !hit; if (hit) n++; });
+    var msg = n + T(' de ', ' of ') + STARS.length + T(' marcadores coinciden', ' markers match') + (n ? '.' : T('. Prueba con un número, como 03, o con SAMPLE_B.', '. Try a number, such as 03, or SAMPLE_B.'));
+    count.textContent = msg; announce(msg);
+  });
+
+  draw();
+})();
+</script></body>
+</html>
