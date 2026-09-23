@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   predeploy:
@@ -78,6 +78,20 @@ jobs:
           sha256sum package-lock.json TOOLCHAIN.json PROVENANCE_PREDEPLOY.json evidence/BUILD_OUTPUT_HASHES.json evidence/PREDEPLOY_GATE.json > evidence/KEY_SHA256SUMS.txt
           git diff --check
           git diff --name-status origin/sabik-preview...HEAD > evidence/DIFF_NAME_STATUS.txt
+
+      - name: Seal generated lockfile on bootstrap only
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          if git ls-files --error-unmatch cloud/n04-r26-staging-binding/package-lock.json >/dev/null 2>&1; then
+            echo "package-lock.json already tracked"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cloud/n04-r26-staging-binding/package-lock.json
+          git commit -m "Cloud N04 R26: seal reproducible dependency lock"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
