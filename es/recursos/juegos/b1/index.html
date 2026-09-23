@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";src:url("assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url("assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url("assets/fonts/newsreader-latin-wght-normal.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+/* Regla de la casa: sólo U+0030 usa una sans del sistema, para conservar el cero SIN barra.
+   Atkinson Hyperlegible trae el cero barrado y el proyecto lo rechaza. Ver assets/ig-fonts.css. */
+@font-face{font-family:"IG Zero";src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");unicode-range:U+0030}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#f6f8fb;color:#17395c;font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+a{color:#5a49a8}
+a:hover{color:#3d3078}
+button{font:inherit;color:inherit;font-family:inherit}
+:focus-visible{outline:3px solid #5a49a8;outline-offset:3px}
+img{max-width:100%}
+h1,h2,h3{text-wrap:pretty}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;scroll-behavior:auto !important}}
+@media print{
+  html,body{background:#ffffff}
+  [data-noprint]{display:none !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{margin:14mm}
+}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:#f6f8fb;display:flex;flex-direction:column">
+
+  <header data-noprint="1" style="background:#ffffff;border-bottom:2px solid #dfe6ef;padding:14px clamp(12px,3vw,28px);display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;max-width:1160px;width:100%;margin:0 auto">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-family:'Newsreader',Georgia,serif;font-size:24px;line-height:1.1">Iris Green</span>
+        <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5a49a8">{{ tSubtitulo }}</span>
+      </div>
+      <div role="group" aria-label="Idioma / Language" style="display:flex;gap:8px">
+        <button type="button" onClick="{{ setES }}" aria-pressed="{{ esES }}" style="min-height:44px;min-width:56px;border:2px solid #17395c;border-radius:999px;padding:6px 16px;background:#ffffff;cursor:pointer;font-weight:700;background-color:{{ bgES }};color:{{ fgES }};transition:{{ trans }}">ES</button>
+        <button type="button" onClick="{{ setEN }}" aria-pressed="{{ esEN }}" style="min-height:44px;min-width:56px;border:2px solid #17395c;border-radius:999px;padding:6px 16px;background:#ffffff;cursor:pointer;font-weight:700;background-color:{{ bgEN }};color:{{ fgEN }};transition:{{ trans }}">EN</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:18px;max-width:1160px;width:100%;margin:0 auto">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span id="lbl-modo" style="font-size:13px;font-weight:700;color:#42566f">{{ tModo }}</span>
+        <div role="group" aria-labelledby="lbl-modo" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ modos }}" as="m" hint-placeholder-count="3">
+            <button type="button" onClick="{{ m.onClick }}" aria-pressed="{{ m.activo }}" style="min-height:44px;border-radius:999px;padding:8px 16px;cursor:pointer;border:{{ m.borde }};background:{{ m.fondo }};font-weight:{{ m.peso }};transition:{{ m.trans }}">{{ m.etiqueta }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span id="lbl-mov" style="font-size:13px;font-weight:700;color:#42566f">{{ tMovimiento }}</span>
+        <div role="group" aria-labelledby="lbl-mov" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ movs }}" as="m" hint-placeholder-count="2">
+            <button type="button" onClick="{{ m.onClick }}" aria-pressed="{{ m.activo }}" style="min-height:44px;border-radius:999px;padding:8px 16px;cursor:pointer;border:{{ m.borde }};background:{{ m.fondo }};font-weight:{{ m.peso }};transition:{{ m.trans }}">{{ m.etiqueta }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex:1;width:100%;max-width:1160px;margin:0 auto;padding:clamp(18px,3vw,36px) clamp(12px,3vw,28px) 64px">
+
+    <sc-if value="{{ enMenu }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div style="max-width:52rem;display:flex;flex-direction:column;gap:10px">
+          <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0">{{ tTitulo }}</h1>
+          <p style="margin:0;font-size:18px;color:#2c4a66">{{ tIntro }}</p>
+          <p style="margin:0;font-size:15px;color:#42566f">{{ tIntro2 }}</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,264px),1fr));gap:16px">
+          <sc-for list="{{ menu }}" as="g" hint-placeholder-count="10">
+            <article style="background:#ffffff;border:2px solid #dfe6ef;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <span style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#5a49a8">{{ g.id }}</span>
+                <span style="font-size:13px;border:1px solid #c5ccdf;border-radius:999px;padding:1px 10px;color:#42566f">{{ g.publico }}</span>
+              </div>
+              <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:23px;line-height:1.15;margin:0">{{ g.nombre }}</h2>
+              <p style="margin:0;font-size:15px;color:#42566f">{{ g.mecanica }}</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px">
+                <sc-for list="{{ g.iconos }}" as="ic" hint-placeholder-count="0">
+                  <span role="presentation" style="width:36px;height:36px;background-image:url({{ ic }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                </sc-for>
+              </div>
+              <button type="button" onClick="{{ g.onClick }}" aria-label="{{ g.aria }}" style="margin-top:auto;min-height:48px;border:2px solid #17395c;background:#17395c;color:#ffffff;border-radius:999px;padding:10px 20px;font-weight:700;cursor:pointer">{{ g.jugar }}</button>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ enJuego }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:18px">
+
+        <button type="button" data-noprint="1" onClick="{{ onVolverLista }}" style="align-self:flex-start;min-height:44px;border:2px solid #17395c;background:#ffffff;border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:700">{{ tVolverLista }}</button>
+
+        <div data-noprint="1" style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span style="font-size:13px;font-weight:700;letter-spacing:.08em;color:{{ acento }}">{{ jId }}</span>
+            <span style="font-size:13px;border:1px solid #c5ccdf;border-radius:999px;padding:1px 10px;color:#42566f">{{ jPublico }}</span>
+          </div>
+          <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,40px);line-height:1.1;margin:0">{{ jNombre }}</h1>
+          <p style="margin:0;font-size:17px;color:#2c4a66;max-width:48rem">{{ jObjetivo }}</p>
+        </div>
+
+        <sc-if value="{{ hayImpresion }}" hint-placeholder-val="{{ false }}">
+          <div data-noprint="1" style="display:flex;flex-wrap:wrap;gap:10px">
+            <button type="button" onClick="{{ onVerImpresion }}" aria-pressed="{{ enImpresion }}" style="min-height:44px;border:2px solid #1f5f8b;background:#ffffff;color:#17395c;border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:700">{{ tVerImpresion }}</button>
+            <sc-if value="{{ enImpresion }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ onImprimir }}" style="min-height:44px;border:2px solid #17395c;background:#17395c;color:#ffffff;border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:700">{{ tImprimir }}</button>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ enImpresion }}" hint-placeholder-val="{{ false }}">
+          <section style="background:#ffffff;border:2px solid #dfe6ef;border-radius:16px;padding:clamp(16px,3vw,30px);display:flex;flex-direction:column;gap:20px;max-width:46rem">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#42566f">{{ tHojaTitulo }}</span>
+              <h2 ref="{{ focoRef }}" tabIndex="-1" style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(24px,3.2vw,32px);line-height:1.12;margin:0;outline:none">{{ jNombre }}</h2>
+              <p style="margin:0;font-size:16px;color:#2c4a66">{{ jObjetivo }}</p>
+              <p style="margin:0;font-size:14px;color:#42566f">{{ tHojaNota }}</p>
+            </div>
+            <sc-for list="{{ imprimible }}" as="bl" hint-placeholder-count="0">
+              <div style="display:flex;flex-direction:column;gap:8px;break-inside:avoid">
+                <h3 style="font-size:18px;margin:0;padding-bottom:4px;border-bottom:2px solid #dfe6ef;color:#17395c">{{ bl.titulo }}</h3>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ bl.lineas }}" as="ln" hint-placeholder-count="0">
+                    <li style="display:flex;align-items:center;gap:10px;font-size:16px;color:#17395c">
+                      <span style="min-width:22px;font-weight:700">{{ ln.marca }}</span>
+                      <sc-if value="{{ ln.conImagen }}" hint-placeholder-val="{{ false }}">
+                        <span role="presentation" style="width:40px;height:40px;flex:none;background-image:url({{ ln.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                      </sc-if>
+                      <span>{{ ln.texto }}</span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-for>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ hayFase }}" hint-placeholder-val="{{ false }}">
+          <section style="background:#ffffff;border:2px solid #dfe6ef;border-top:6px solid {{ acento }};border-radius:16px;padding:clamp(14px,2.4vw,26px);display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#42566f">{{ faseEtiqueta }}</span>
+              <h2 ref="{{ focoRef }}" tabIndex="-1" style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(23px,3vw,31px);line-height:1.15;margin:0;outline:none">{{ faseTitulo }}</h2>
+              <p style="margin:0;font-size:17px;color:#2c4a66;max-width:46rem">{{ faseInstruccion }}</p>
+            </div>
+
+            <sc-if value="{{ esOrden }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px">
+
+                <sc-if value="{{ hayMapa }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <sc-if value="{{ hayRutaTexto }}" hint-placeholder-val="{{ false }}">
+                      <p style="margin:0;font-size:16px;color:#2c4a66;max-width:46rem;background:#f6f8fb;border-left:4px solid #1f5f8b;border-radius:0 10px 10px 0;padding:10px 14px">{{ rutaTexto }}</p>
+                    </sc-if>
+                    <button type="button" onClick="{{ onMapa }}" aria-pressed="{{ mapaVisible }}" style="align-self:flex-start;min-height:44px;border:2px solid #1f5f8b;background:#ffffff;color:#17395c;border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:700">{{ tMapa }}</button>
+                    <sc-if value="{{ mapaVisible }}" hint-placeholder-val="{{ false }}">
+                      <ol style="list-style:none;margin:0;padding:14px;display:flex;flex-wrap:wrap;gap:6px;background:#f6f8fb;border:2px solid #dfe6ef;border-radius:12px">
+                        <sc-for list="{{ mapaPasos }}" as="mp" hint-placeholder-count="0">
+                          <li style="flex:1 1 120px;min-width:104px;display:flex;flex-direction:column;align-items:center;gap:6px;border-top:3px solid #9aa8bd;padding-top:10px">
+                            <span style="width:28px;height:28px;border-radius:999px;background:#17395c;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ mp.num }}</span>
+                            <span role="presentation" style="width:56px;height:56px;background-image:url({{ mp.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                            <span style="font-size:14px;text-align:center;color:#2c4a66">{{ mp.etiqueta }}</span>
+                          </li>
+                        </sc-for>
+                      </ol>
+                    </sc-if>
+                  </div>
+                </sc-if>
+
+                <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,148px),1fr));gap:10px">
+                  <sc-for list="{{ ordenHechos }}" as="p" hint-placeholder-count="0">
+                    <li style="border:3px solid #1f8ba8;background:#e6f4f6;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center">
+                      <span style="align-self:flex-start;font-size:13px;font-weight:700;color:#17395c">{{ p.num }}</span>
+                      <sc-if value="{{ p.foto }}" hint-placeholder-val="{{ false }}">
+                        <div style="width:100%;height:68px;border:2px dashed #9aa8bd;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#ffffff;padding:4px"><span style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#42566f;text-align:center">{{ tFotoPendiente }}</span></div>
+                      </sc-if>
+                      <sc-if value="{{ p.conImagen }}" hint-placeholder-val="{{ false }}">
+                        <span role="presentation" style="width:68px;height:68px;background-image:url({{ p.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                      </sc-if>
+                      <span style="font-size:15px;text-align:center;color:#17395c">{{ p.etiqueta }}</span>
+                      <span style="font-size:13px;font-weight:700;color:#17395c">{{ tHecho }}</span>
+                    </li>
+                  </sc-for>
+                </ol>
+
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font-size:15px;font-weight:700;color:#42566f">{{ tElegirSiguiente }}</span>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,168px),1fr));gap:12px">
+                    <sc-for list="{{ ordenPool }}" as="op" hint-placeholder-count="0">
+                      <button type="button" onClick="{{ op.onClick }}" style="text-align:left;border:2px solid #c5ccdf;background:#ffffff;border-radius:14px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:8px;align-items:center;min-height:132px;transition:{{ trans }}">
+                        <sc-if value="{{ op.foto }}" hint-placeholder-val="{{ false }}">
+                          <div style="width:100%;height:64px;border:2px dashed #9aa8bd;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#f6f8fb;padding:4px"><span style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#42566f;text-align:center">{{ tFotoPendiente }}</span></div>
+                        </sc-if>
+                        <sc-if value="{{ op.conImagen }}" hint-placeholder-val="{{ false }}">
+                          <span role="presentation" style="width:64px;height:64px;background-image:url({{ op.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                        </sc-if>
+                        <span style="font-size:16px;text-align:center;color:#17395c">{{ op.etiqueta }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esHueco }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,142px),1fr));gap:10px">
+                  <sc-for list="{{ huecoSec }}" as="s" hint-placeholder-count="0">
+                    <li style="border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center;border:{{ s.borde }};background:{{ s.fondo }}">
+                      <span style="align-self:flex-start;font-size:13px;font-weight:700;color:#17395c">{{ s.num }}</span>
+                      <sc-if value="{{ s.vacio }}" hint-placeholder-val="{{ false }}">
+                        <div style="width:64px;height:64px;border:3px dashed #5a49a8;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#ffffff"><span style="font-size:30px;font-weight:700;color:#5a49a8">?</span></div>
+                      </sc-if>
+                      <sc-if value="{{ s.conImagen }}" hint-placeholder-val="{{ false }}">
+                        <span role="presentation" style="width:64px;height:64px;background-image:url({{ s.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                      </sc-if>
+                      <span style="font-size:15px;text-align:center;color:#17395c">{{ s.etiqueta }}</span>
+                    </li>
+                  </sc-for>
+                </ol>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font-size:15px;font-weight:700;color:#42566f">{{ tElegirHueco }}</span>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,168px),1fr));gap:12px">
+                    <sc-for list="{{ huecoOpciones }}" as="o" hint-placeholder-count="0">
+                      <button type="button" onClick="{{ o.onClick }}" style="border:2px solid #c5ccdf;background:#ffffff;border-radius:14px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:8px;align-items:center;min-height:132px;transition:{{ trans }}">
+                        <span role="presentation" style="width:64px;height:64px;background-image:url({{ o.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                        <span style="font-size:16px;text-align:center;color:#17395c">{{ o.etiqueta }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esSeleccion }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px;align-items:start">
+                <aside style="display:flex;flex-direction:column;gap:14px;background:#f6f8fb;border:2px solid #dfe6ef;border-radius:14px;padding:14px">
+                  <sc-if value="{{ hayContexto }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#42566f">{{ tHoy }}</span>
+                      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
+                        <sc-for list="{{ contexto }}" as="c" hint-placeholder-count="0">
+                          <li style="display:flex;align-items:center;gap:8px;background:#ffffff;border:2px solid #c5ccdf;border-radius:999px;padding:6px 14px 6px 6px">
+                            <span role="presentation" style="width:34px;height:34px;flex:none;background-image:url({{ c.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                            <span style="font-size:15px;color:#17395c">{{ c.etiqueta }}</span>
+                          </li>
+                        </sc-for>
+                      </ul>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ hayDestino }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#42566f">{{ tDestino }}</span>
+                      <div style="display:flex;align-items:center;gap:12px;background:#ffffff;border:2px solid #c5ccdf;border-radius:14px;padding:10px">
+                        <span role="presentation" style="width:56px;height:56px;flex:none;background-image:url({{ destinoImg }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                        <div style="display:flex;flex-direction:column">
+                          <span style="font-size:16px;font-weight:700;color:#17395c">{{ destinoEtiqueta }}</span>
+                          <span style="font-size:14px;color:#42566f">{{ destinoCuenta }}</span>
+                        </div>
+                      </div>
+                      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+                        <sc-for list="{{ listaNecesaria }}" as="l" hint-placeholder-count="3">
+                          <li style="display:flex;align-items:center;gap:8px;font-size:15px;color:#17395c"><span style="font-weight:700;width:18px;display:inline-block">{{ l.marca }}</span><span>{{ l.etiqueta }}</span></li>
+                        </sc-for>
+                      </ul>
+                    </div>
+                  </sc-if>
+                </aside>
+
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,152px),1fr));gap:12px">
+                    <sc-for list="{{ selItems }}" as="it" hint-placeholder-count="0">
+                      <button type="button" onClick="{{ it.onClick }}" aria-pressed="{{ it.marcado }}" style="border-radius:14px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:6px;align-items:center;min-height:150px;border:{{ it.borde }};background:{{ it.fondo }};transition:{{ trans }}">
+                        <span role="presentation" style="width:64px;height:64px;background-image:url({{ it.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                        <span style="font-size:16px;text-align:center;color:#17395c">{{ it.etiqueta }}</span>
+                        <span style="font-size:13px;font-weight:700;color:#17395c;text-align:center">{{ it.estado }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:10px">
+                    <button type="button" onClick="{{ selAccion.onClick }}" disabled="{{ selAccion.inactiva }}" style="min-height:48px;border-radius:999px;padding:10px 22px;cursor:pointer;font-weight:700;border:{{ selAccion.borde }};background:{{ selAccion.fondo }};color:{{ selAccion.color }}">{{ selAccion.etiqueta }}</button>
+                    <sc-if value="{{ selAccion2.visible }}" hint-placeholder-val="{{ false }}">
+                      <button type="button" onClick="{{ selAccion2.onClick }}" style="min-height:48px;border:2px solid #17395c;background:#ffffff;border-radius:999px;padding:10px 22px;cursor:pointer;font-weight:700">{{ selAccion2.etiqueta }}</button>
+                    </sc-if>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esSelPaso }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px;max-width:36rem">
+                <span style="font-size:15px;font-weight:700;color:#42566f">{{ pasoContador }}</span>
+                <div style="display:flex;align-items:center;gap:16px;border:2px solid #c5ccdf;background:#ffffff;border-radius:16px;padding:16px">
+                  <span role="presentation" style="width:84px;height:84px;flex:none;background-image:url({{ pasoItem.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                  <span style="font-size:21px;color:#17395c">{{ pasoItem.etiqueta }}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:12px">
+                  <button type="button" onClick="{{ onPasoSi }}" style="min-height:52px;border:2px solid #17395c;background:#17395c;color:#ffffff;border-radius:999px;padding:12px 24px;cursor:pointer;font-weight:700">{{ tPasoSi }}</button>
+                  <button type="button" onClick="{{ onPasoNo }}" style="min-height:52px;border:2px solid #17395c;background:#ffffff;color:#17395c;border-radius:999px;padding:12px 24px;cursor:pointer;font-weight:700">{{ tPasoNo }}</button>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esAgrupar }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <div style="display:flex;align-items:center;gap:16px;border:3px solid #5a49a8;background:#f3eeff;border-radius:16px;padding:16px;max-width:36rem">
+                  <span role="presentation" style="width:84px;height:84px;flex:none;background-image:url({{ agrItem.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                  <div style="display:flex;flex-direction:column;gap:2px">
+                    <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#42566f">{{ agrContador }}</span>
+                    <span style="font-size:21px;color:#17395c">{{ agrItem.etiqueta }}</span>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+                  <sc-for list="{{ agrDestinos }}" as="d" hint-placeholder-count="0">
+                    <button type="button" onClick="{{ d.onClick }}" style="border:2px solid #c5ccdf;background:#ffffff;border-radius:16px;padding:14px;cursor:pointer;display:flex;flex-direction:column;gap:8px;align-items:center;min-height:170px;transition:{{ trans }}">
+                      <span role="presentation" style="width:76px;height:76px;background-image:url({{ d.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                      <span style="font-size:17px;font-weight:700;text-align:center;color:#17395c">{{ d.etiqueta }}</span>
+                      <span style="font-size:14px;color:#42566f">{{ d.cuenta }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ hayAgrHechos }}" hint-placeholder-val="{{ false }}">
+                  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ agrHechos }}" as="h" hint-placeholder-count="2">
+                      <li style="display:flex;align-items:center;gap:8px;border:2px solid #1f8ba8;background:#e6f4f6;border-radius:999px;padding:6px 14px;font-size:15px;color:#17395c"><span style="font-weight:700">{{ tMarcaOk }}</span><span>{{ h.texto }}</span></li>
+                    </sc-for>
+                  </ul>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esDecidir }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;max-width:44rem">
+                <sc-if value="{{ hayReloj }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;align-items:center;gap:12px">
+                    <button type="button" onClick="{{ onReloj }}" aria-pressed="{{ relojVisible }}" style="min-height:44px;border:2px solid #1f5f8b;background:#ffffff;border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:700">{{ tReloj }}</button>
+                    <sc-if value="{{ relojVisible }}" hint-placeholder-val="{{ false }}">
+                      <span style="display:flex;align-items:center;gap:8px;font-size:16px;color:#17395c"><span role="presentation" style="width:34px;height:34px;flex:none;background-image:url(assets/pictos/reloj.svg);background-size:contain;background-repeat:no-repeat;background-position:center"></span>{{ relojTexto }}</span>
+                    </sc-if>
+                  </div>
+                </sc-if>
+                <sc-for list="{{ decOpciones }}" as="o" hint-placeholder-count="0">
+                  <button type="button" onClick="{{ o.onClick }}" style="text-align:left;border:2px solid #c5ccdf;background:#ffffff;border-radius:16px;padding:14px;cursor:pointer;display:flex;align-items:center;gap:14px;min-height:80px;transition:{{ trans }}">
+                    <span role="presentation" style="width:58px;height:58px;flex:none;background-image:url({{ o.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                    <span style="display:flex;flex-direction:column;gap:2px">
+                      <span style="font-size:18px;font-weight:700;color:#17395c">{{ o.etiqueta }}</span>
+                      <span style="font-size:15px;color:#42566f">{{ o.nota }}</span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ esPago }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:44rem">
+                <div style="display:flex;align-items:baseline;gap:12px;border:2px solid #c5ccdf;background:#f6f8fb;border-radius:14px;padding:14px">
+                  <span style="font-size:15px;font-weight:700;color:#42566f">{{ tTotal }}</span>
+                  <span style="font-family:'Newsreader',Georgia,serif;font-size:34px;line-height:1;color:#17395c">{{ pagoTotal }}</span>
+                </div>
+                <sc-for list="{{ pagoOpciones }}" as="o" hint-placeholder-count="0">
+                  <button type="button" onClick="{{ o.onClick }}" style="text-align:left;border:2px solid #c5ccdf;background:#ffffff;border-radius:16px;padding:14px;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:14px;min-height:88px;transition:{{ trans }}">
+                    <span style="display:flex;gap:6px;align-items:center;flex:none">
+                      <sc-for list="{{ o.piezas }}" as="p" hint-placeholder-count="0">
+                        <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                          <span role="presentation" style="width:72px;height:46px;background-image:url({{ p.img }});background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+                          <span style="font-size:14px;font-weight:700;color:#17395c">{{ p.valor }}</span>
+                        </span>
+                      </sc-for>
+                    </span>
+                    <span style="display:flex;flex-direction:column;gap:2px;min-width:180px;flex:1 1 180px">
+                      <span style="font-size:18px;font-weight:700;color:#17395c">{{ o.etiqueta }}</span>
+                      <span style="font-size:15px;color:#42566f">{{ o.nota }}</span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ esFin }}" hint-placeholder-val="{{ false }}">
+          <section style="background:#ffffff;border:2px solid #dfe6ef;border-top:6px solid {{ acento }};border-radius:16px;padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:14px;max-width:44rem">
+            <h2 ref="{{ focoRef }}" tabIndex="-1" style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(26px,3.4vw,34px);line-height:1.12;margin:0;outline:none">{{ finTitulo }}</h2>
+            <p style="margin:0;font-size:17px;color:#2c4a66">{{ finTexto }}</p>
+            <sc-if value="{{ hayFinPaso }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:4px;border:2px solid #1f5f8b;background:#f6f8fb;border-radius:14px;padding:14px">
+                <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#42566f">{{ finPasoTitulo }}</span>
+                <span style="font-size:19px;color:#17395c">{{ finPaso }}</span>
+              </div>
+            </sc-if>
+            <p style="margin:0;font-size:15px;color:#42566f">{{ finNota }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+              <button type="button" onClick="{{ onReiniciar }}" style="min-height:48px;border:2px solid #17395c;background:#17395c;color:#ffffff;border-radius:999px;padding:10px 22px;cursor:pointer;font-weight:700">{{ tOtraVez }}</button>
+              <button type="button" onClick="{{ onVolverLista }}" style="min-height:48px;border:2px solid #17395c;background:#ffffff;border-radius:999px;padding:10px 22px;cursor:pointer;font-weight:700">{{ tVolverLista }}</button>
+            </div>
+          </section>
+        </sc-if>
+
+        <div role="status" aria-live="polite" style="min-height:64px">
+          <sc-if value="{{ hayMensaje }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;display:flex;align-items:flex-start;gap:12px;border-radius:14px;padding:12px 16px;font-size:17px;color:#17395c;border:{{ mensajeBorde }};background:{{ mensajeFondo }}">
+              <span aria-hidden="true" style="font-weight:700;font-size:19px;flex:none">{{ mensajeIcono }}</span>
+              <span>{{ mensajeTexto }}</span>
+            </p>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ hayFase }}" hint-placeholder-val="{{ false }}">
+          <div data-noprint="1" style="display:flex;flex-wrap:wrap;gap:10px;border-top:2px solid #dfe6ef;padding-top:16px">
+            <button type="button" onClick="{{ onPista }}" style="min-height:48px;border:2px solid #5a49a8;background:#ffffff;color:#17395c;border-radius:999px;padding:10px 20px;cursor:pointer;font-weight:700">{{ tPista }}</button>
+            <sc-if value="{{ puedeMenos }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ onMenos }}" style="min-height:48px;border:2px solid #5a49a8;background:#ffffff;color:#17395c;border-radius:999px;padding:10px 20px;cursor:pointer;font-weight:700">{{ tMenos }}</button>
+            </sc-if>
+            <button type="button" onClick="{{ onReiniciar }}" style="min-height:48px;border:2px solid #c5ccdf;background:#ffffff;color:#17395c;border-radius:999px;padding:10px 20px;cursor:pointer">{{ tReiniciar }}</button>
+            <button type="button" onClick="{{ onSalir }}" style="min-height:48px;border:2px solid #c5ccdf;background:#ffffff;color:#17395c;border-radius:999px;padding:10px 20px;cursor:pointer">{{ tSalir }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer data-noprint="1" style="background:#ffffff;border-top:2px solid #dfe6ef;padding:18px clamp(12px,3vw,28px)">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#42566f">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between">
+        <span>{{ tPie1 }}</span>
+        <span>{{ tPie2 }}</span>
+      </div>
+      <p style="margin:0">{{ tAtribucion }}</p>
+      <p style="margin:0">{{ tAtribucion2 }}</p>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+const P = 'assets/pictos/';
+const G = 'assets/juegos-b1/';
+const F = 'pictos-fase1/';
+
+const JUEGOS = [
+{ id:'B1-01', publico:'ninos', imprime:true,
+  n:{es:'Atarse los cordones', en:'Tying shoelaces'},
+  m:{es:'Ordenar una microsecuencia', en:'Put a micro-sequence in order'},
+  o:{es:'Seguir los pasos de atarse los cordones, uno a uno y sin prisa.', en:'Follow the steps for tying laces, one at a time, with no rush.'},
+  iconos:[F+'limpio-shoe_mans.svg', P+'primero.svg', P+'terminado.svg'],
+  fases:[{ tipo:'orden',
+    t:{es:'Los pasos, en orden', en:'The steps, in order'},
+    i:{es:'Elige el paso que va ahora. Si te lías, puedes pedir que te muestre uno.', en:'Choose the step that comes now. If you get stuck, you can ask to be shown one.'},
+    pista:{es:'Primero se cruzan. Al final se aprieta.', en:'They cross first. Tightening comes last.'},
+    pasos:[
+      {id:'a', foto:true, l:{es:'Cruza los dos cordones.', en:'Cross the two laces.'}},
+      {id:'b', foto:true, l:{es:'Pasa un cordón por debajo y tira.', en:'Pass one lace underneath and pull.'}},
+      {id:'c', foto:true, l:{es:'Haz un lazo con un cordón.', en:'Make a loop with one lace.'}},
+      {id:'d', foto:true, l:{es:'Rodea el lazo con el otro cordón.', en:'Wrap the other lace around the loop.'}},
+      {id:'e', foto:true, l:{es:'Empuja la punta por el hueco y tira.', en:'Push the tip through the gap and pull.'}}],
+    red:['a','c','e'] }] },
+
+{ id:'B1-02', publico:'ninos', imprime:true,
+  n:{es:'Lavarse los dientes · ¿Qué falta?', en:'Brushing teeth · What is missing?'},
+  m:{es:'Encontrar el paso que falta', en:'Find the missing step'},
+  o:{es:'Mirar la secuencia completa y colocar el paso que no está.', en:'Look at the whole sequence and place the step that is not there.'},
+  iconos:[P+'bano.svg', P+'lavarse-los-dientes.svg', P+'terminado.svg'],
+  fases:[{ tipo:'hueco',
+    t:{es:'Falta un paso', en:'One step is missing'},
+    i:{es:'Mira la secuencia. Elige el paso que va en el hueco.', en:'Look at the sequence. Choose the step that goes in the gap.'},
+    pista:{es:'Mira qué hay antes y después del hueco: mojas el cepillo y luego te enjuagas.', en:'Look before and after the gap: you wet the brush, then you rinse.'},
+    sec:[
+      {img:P+'bano.svg', l:{es:'Entras en el baño', en:'You go into the bathroom'}},
+      {img:P+'agua.svg', l:{es:'Mojas el cepillo', en:'You wet the toothbrush'}},
+      {hueco:true},
+      {img:P+'agua.svg', l:{es:'Te enjuagas la boca', en:'You rinse your mouth'}},
+      {img:P+'terminado.svg', l:{es:'Terminado', en:'Finished'}}],
+    redSec:[0,1,2,3],
+    sol:{id:'dientes', img:P+'lavarse-los-dientes.svg', l:{es:'Te cepillas los dientes', en:'You brush your teeth'}},
+    otras:[
+      {id:'peinarse', img:P+'peinarse.svg', l:{es:'Te peinas', en:'You brush your hair'}},
+      {id:'cara', img:P+'lavarse-la-cara.svg', l:{es:'Te lavas la cara', en:'You wash your face'}}],
+    nota:{ peinarse:{es:'Peinarse también se hace en el baño, pero no limpia los dientes. Prueba otra opción.', en:'Brushing your hair also happens in the bathroom, but it does not clean teeth. Try another option.'},
+           cara:{es:'Lavarse la cara va bien, pero aquí lo que falta son los dientes.', en:'Washing your face is fine, but what is missing here is the teeth.'} } }] },
+
+{ id:'B1-03', publico:'ninos', imprime:true,
+  n:{es:'Preparar la mochila', en:'Packing the school bag'},
+  m:{es:'Elegir lo necesario y añadirlo', en:'Choose what is needed and add it'},
+  o:{es:'Meter en la mochila lo que hace falta hoy.', en:'Put into the bag what is needed today.'},
+  iconos:[P+'mochila.svg', P+'lluvia.svg', P+'carpeta.svg'],
+  fases:[{ tipo:'seleccion',
+    t:{es:'Lo que hace falta hoy', en:'What is needed today'},
+    i:{es:'Elige un objeto y pulsa «Añadir a la mochila».', en:'Choose an object and press “Add to the bag”.'},
+    contexto:[{img:P+'colegio.svg', l:{es:'Hoy hay colegio', en:'School today'}},{img:P+'lluvia.svg', l:{es:'Está lloviendo', en:'It is raining'}}],
+    destino:{img:P+'mochila.svg', l:{es:'Mochila', en:'School bag'}, accion:{es:'Añadir a la mochila', en:'Add to the bag'}},
+    items:[
+      {id:'carpeta', img:P+'carpeta.svg', nec:true, l:{es:'Carpeta', en:'Folder'}},
+      {id:'comida', img:P+'comida.svg', nec:true, l:{es:'Almuerzo', en:'Lunch'}},
+      {id:'agua', img:G+'botella.svg', nec:true, l:{es:'Botella de agua', en:'Water bottle'}},
+      {id:'paraguas', img:P+'paraguas.svg', nec:true, l:{es:'Paraguas', en:'Umbrella'}},
+      {id:'tele', img:G+'television.svg', l:{es:'La tele', en:'The TV'}},
+      {id:'perro', img:P+'perro.svg', l:{es:'El perro', en:'The dog'}},
+      {id:'pijama', img:P+'pijama.svg', l:{es:'El pijama', en:'Pyjamas'}},
+      {id:'bici', img:P+'bici.svg', l:{es:'La bici', en:'The bike'}}],
+    red:['carpeta','comida','paraguas','tele','pijama'],
+    noNec:{es:'Eso hoy no hace falta en la mochila. Puedes dejarlo.', en:'That is not needed in the bag today. You can leave it.'} }] },
+
+{ id:'B1-04', publico:'ninos',
+  n:{es:'Vestirse según el tiempo', en:'Dressing for the weather'},
+  m:{es:'Elegir según el contexto', en:'Choose according to context'},
+  o:{es:'Elegir ropa que va bien para salir hoy. Hay varias respuestas buenas.', en:'Choose clothes that work for going out today. Several answers are good.'},
+  iconos:[G+'impermeable.svg', G+'botas.svg', P+'lluvia.svg'],
+  fases:[{ tipo:'seleccion', min:2,
+    t:{es:'Llueve y hace fresco', en:'Rainy and chilly'},
+    i:{es:'Elige al menos dos prendas que te vengan bien. Cuando termines, pulsa «Ya está».', en:'Choose at least two items that work for you. When you are done, press “That is it”.'},
+    pista:{es:'Piensa en los pies y en la lluvia.', en:'Think about your feet and about the rain.'},
+    contexto:[{img:P+'lluvia.svg', l:{es:'Llueve', en:'Rain'}},{img:F+'limpio-go_outside.svg', l:{es:'Vas a salir a la calle', en:'You are going outside'}}],
+    items:[
+      {id:'imper', img:G+'impermeable.svg', nec:true, l:{es:'Chaqueta impermeable', en:'Raincoat'}},
+      {id:'botas', img:G+'botas.svg', nec:true, l:{es:'Botas de agua', en:'Rain boots'}},
+      {id:'jersey', img:G+'jersey.svg', nec:true, l:{es:'Jersey', en:'Jumper'}},
+      {id:'camiseta', img:G+'camiseta.svg', nec:true, l:{es:'Camiseta debajo', en:'T-shirt underneath'}},
+      {id:'gorro', img:G+'gorro.svg', nec:true, l:{es:'Gorro', en:'Beanie'}},
+      {id:'paraguas', img:P+'paraguas.svg', nec:true, l:{es:'Paraguas', en:'Umbrella'}},
+      {id:'sandalias', img:G+'sandalias.svg', l:{es:'Sandalias', en:'Sandals'}},
+      {id:'banador', img:G+'banador.svg', l:{es:'Bañador', en:'Swimsuit'}},
+      {id:'gorra', img:G+'gorra.svg', l:{es:'Gorra de sol', en:'Sun cap'}}],
+    red:['imper','botas','jersey','sandalias','gorra'],
+    noNec:{es:'Con esta lluvia eso te va a dejar frío o mojado. Puedes cambiarlo.', en:'In this rain that will leave you cold or wet. You can change it.'} }] },
+
+{ id:'B1-05', publico:'ninos', imprime:true,
+  n:{es:'Cambio de actividad · Plan A o Plan B', en:'Changing activity · Plan A or Plan B'},
+  m:{es:'Transición con dos planes', en:'Transition with two plans'},
+  o:{es:'Pasar de una actividad a la siguiente eligiendo cómo hacerlo.', en:'Move from one activity to the next, choosing how.'},
+  iconos:[F+'limpio-break_time_2.svg', P+'despues.svg', P+'silencio.svg'],
+  fases:[
+   { tipo:'decidir',
+     t:{es:'El recreo se acaba', en:'Break is ending'},
+     i:{es:'No hay prisa. Elige lo que necesitas ahora. Las dos opciones valen.', en:'There is no rush. Choose what you need now. Both options are fine.'},
+     reloj:{es:'Quedan unos 5 minutos.', en:'About 5 minutes left.'},
+     ops:[
+      {id:'ok', img:P+'recoger.svg', l:{es:'Entendido, voy terminando', en:'Got it, I am wrapping up'}, nota:{es:'Recoges lo que tengas entre manos.', en:'You put away whatever you are holding.'}},
+      {id:'momento', img:P+'esperar.svg', l:{es:'Necesito un momento', en:'I need a moment'}, nota:{es:'Puedes quedarte donde estás un rato más.', en:'You can stay where you are a little longer.'}}] },
+   { tipo:'decidir',
+     t:{es:'Qué viene después', en:'What comes next'},
+     i:{es:'Las dos opciones valen.', en:'Both options are fine.'},
+     ops:[
+      {id:'a', img:P+'leer.svg', l:{es:'Plan A · Lectura en clase', en:'Plan A · Reading in class'}, nota:{es:'Es lo que toca en el horario.', en:'It is what the timetable says.'}},
+      {id:'b', img:P+'silencio.svg', l:{es:'Plan B · Sala tranquila', en:'Plan B · Quiet room'}, nota:{es:'Si hay mucho ruido, esta también vale.', en:'If it is too loud, this one works too.'}}] },
+   { tipo:'decidir', soloNormal:true,
+     t:{es:'Cómo empiezo', en:'How I start'},
+     i:{es:'Elige una.', en:'Choose one.'},
+     ops:[
+      {id:'ya', img:P+'primero.svg', l:{es:'Empiezo ya', en:'I start now'}, nota:{es:'Sin avisar a nadie.', en:'Without telling anyone.'}},
+      {id:'aviso', img:P+'hablar.svg', l:{es:'Aviso a alguien antes', en:'I tell someone first'}, nota:{es:'Le dices a un adulto por dónde vas.', en:'You let an adult know what you are doing.'}}] }] },
+
+{ id:'B1-06', publico:'ninos', imprime:true,
+  n:{es:'La ruta del autobús', en:'The bus route'},
+  m:{es:'Ordenar una ruta', en:'Put a route in order'},
+  o:{es:'Colocar en orden los pasos de ir en autobús, de casa al colegio.', en:'Put the steps of the bus trip in order, from home to school.'},
+  iconos:[P+'puerta.svg', P+'autobus.svg', P+'colegio.svg'],
+  fases:[{ tipo:'orden', mapa:true,
+    t:{es:'De casa al colegio', en:'From home to school'},
+    i:{es:'Elige el paso que va ahora. El mapa es opcional: la ruta se entiende sin verlo.', en:'Choose the step that comes now. The map is optional: the route makes sense without it.'},
+    pista:{es:'Empieza por salir de casa y termina al llegar.', en:'Start by leaving home and finish on arrival.'},
+    hitos:[
+      {img:G+'hito-casa.svg', l:{es:'Casa', en:'Home'}},
+      {img:G+'hito-parada.svg', l:{es:'Parada', en:'Bus stop'}},
+      {img:G+'hito-bus.svg', l:{es:'Autobús', en:'Bus'}},
+      {img:G+'hito-destino.svg', l:{es:'Colegio', en:'School'}}],
+    rutaTexto:{es:'La ruta tiene cuatro hitos: sales de casa, llegas a la parada, viajas en el autobús y te bajas en el colegio. Entre la casa y la parada se va andando; entre la parada y el colegio, en autobús.', en:'The route has four landmarks: you leave home, you reach the bus stop, you ride the bus, and you get off at school. Home to stop is on foot; stop to school is by bus.'},
+    pasos:[
+      {id:'p1', img:P+'puerta.svg', l:{es:'Salgo de casa', en:'I leave home'}},
+      {id:'p2', img:P+'andar.svg', l:{es:'Camino hasta la parada', en:'I walk to the stop'}},
+      {id:'p3', img:P+'esperar.svg', l:{es:'Espero el autobús', en:'I wait for the bus'}},
+      {id:'p4', img:F+'limpio-get_on_bus.svg', l:{es:'Subo al autobús', en:'I get on the bus'}},
+      {id:'p5', img:F+'limpio-get_off_bus.svg', l:{es:'Me bajo en mi parada', en:'I get off at my stop'}},
+      {id:'p6', img:P+'colegio.svg', l:{es:'Llego al colegio', en:'I arrive at school'}}],
+    red:['p1','p3','p4','p6'] }] },
+
+{ id:'B1-07', publico:'ninos',
+  n:{es:'Cada cosa en su sitio', en:'Everything in its place'},
+  m:{es:'Agrupar por destino', en:'Group by destination'},
+  o:{es:'Elegir dónde va cada cosa. Algunos sitios valen para más de una.', en:'Choose where each thing goes. Some places work for more than one.'},
+  iconos:[G+'estante.svg', G+'cestaropa.svg', G+'papelera.svg'],
+  fases:[{ tipo:'agrupar',
+    t:{es:'¿Dónde va esto?', en:'Where does this go?'},
+    i:{es:'Mira el objeto y elige un sitio. Si encaja en dos, los dos valen.', en:'Look at the object and choose a place. If two fit, both are fine.'},
+    destinos:[
+      {id:'estante', img:G+'estante.svg', l:{es:'Estantería', en:'Shelf'}},
+      {id:'cesta', img:G+'cestaropa.svg', l:{es:'Cesta de la ropa', en:'Laundry basket'}},
+      {id:'papelera', img:G+'papelera.svg', l:{es:'Papelera', en:'Waste bin'}}],
+    items:[
+      {id:'libro', img:G+'libro.svg', ok:['estante'], l:{es:'Un libro', en:'A book'}},
+      {id:'ropa', img:G+'ropa.svg', ok:['cesta'], l:{es:'Ropa usada', en:'Worn clothes'}},
+      {id:'juguete', img:G+'juguete.svg', ok:['estante','cesta'], l:{es:'Un juguete', en:'A toy'}},
+      {id:'papel', img:G+'papel.svg', ok:['papelera'], l:{es:'Papel arrugado', en:'Crumpled paper'}},
+      {id:'pijama', img:P+'pijama.svg', ok:['cesta','estante'], l:{es:'El pijama', en:'Pyjamas'}}],
+    red:['libro','ropa','juguete'], redDest:['estante','cesta'] }] },
+
+{ id:'B1-08', publico:'adulta', sobrio:true, imprime:true,
+  n:{es:'Preparar una cita médica', en:'Getting ready for a medical appointment'},
+  m:{es:'Secuencia de organización', en:'Organisation sequence'},
+  o:{es:'Organizar lo práctico de una cita: qué llevo, cómo llego y qué hago mientras espero. No es información clínica.', en:'Organise the practical side of an appointment: what to take, how to get there, what to do while waiting. This is not clinical information.'},
+  iconos:[P+'calendario.svg', P+'carpeta.svg', P+'esperar.svg'],
+  fases:[
+   { tipo:'seleccion',
+     t:{es:'Qué llevo', en:'What I take'},
+     i:{es:'Elige algo y pulsa «Añadir a la carpeta».', en:'Choose something and press “Add to the folder”.'},
+     contexto:[{img:P+'calendario.svg', l:{es:'Martes 6, a las 10:30', en:'Tuesday the 6th, 10:30'}},{img:P+'reloj.svg', l:{es:'Llegar 10 minutos antes', en:'Arrive 10 minutes early'}}],
+     destino:{img:P+'carpeta.svg', l:{es:'Carpeta de la cita', en:'Appointment folder'}, accion:{es:'Añadir a la carpeta', en:'Add to the folder'}},
+     items:[
+      {id:'tarjeta', img:G+'tarjeta-sanitaria.svg', nec:true, l:{es:'Tarjeta sanitaria', en:'Health card'}},
+      {id:'informes', img:G+'informes.svg', nec:true, l:{es:'Informes y preguntas anotadas', en:'Reports and written questions'}},
+      {id:'movil', img:P+'telefono.svg', nec:true, l:{es:'Móvil con la cita', en:'Phone with the appointment'}},
+      {id:'agua', img:G+'botella.svg', nec:true, l:{es:'Botella de agua', en:'Water bottle'}},
+      {id:'auri', img:P+'auriculares.svg', nec:true, opcional:true, l:{es:'Auriculares (opcional)', en:'Headphones (optional)'}},
+      {id:'tele', img:G+'television.svg', l:{es:'La tele', en:'The TV'}},
+      {id:'bici', img:P+'bici.svg', l:{es:'La bici', en:'The bike'}}],
+     red:['tarjeta','informes','movil','tele'],
+     noNec:{es:'Eso no hace falta para la cita.', en:'That is not needed for the appointment.'} },
+   { tipo:'orden',
+     t:{es:'La ruta y la espera', en:'Route and waiting'},
+     i:{es:'Elige el paso que va ahora.', en:'Choose the step that comes now.'},
+     pasos:[
+      {id:'r1', img:P+'reloj.svg', l:{es:'Salgo con tiempo de sobra', en:'I leave with time to spare'}},
+      {id:'r2', img:P+'autobus.svg', l:{es:'Voy en autobús', en:'I take the bus'}},
+      {id:'r3', img:F+'limpio-enter_door.svg', l:{es:'Entro y aviso en recepción', en:'I go in and check in at reception'}},
+      {id:'r4', img:P+'esperar.svg', l:{es:'Espero en la sala', en:'I wait in the waiting room'}},
+      {id:'r5', img:G+'consulta.svg', l:{es:'Paso a la consulta', en:'I go through the consulting-room door'}},
+      {id:'r6', img:P+'salir.svg', l:{es:'Salgo y anoto la próxima cita', en:'I leave and note the next appointment'}}],
+     red:['r1','r3','r4','r6'] },
+   { tipo:'decidir', soloNormal:true,
+     t:{es:'Si la espera se alarga', en:'If the wait gets long'},
+     i:{es:'Las tres valen. Elige la que te sirva.', en:'All three are fine. Choose the one that helps.'},
+     ops:[
+      {id:'auri', img:P+'auriculares.svg', l:{es:'Me pongo los auriculares', en:'I put my headphones on'}, nota:{es:'Bajas el ruido de la sala.', en:'You lower the noise of the room.'}},
+      {id:'pasillo', img:P+'salir.svg', l:{es:'Salgo un momento al pasillo', en:'I step into the corridor for a minute'}, nota:{es:'Avisas en recepción antes de salir.', en:'You tell reception before stepping out.'}},
+      {id:'pregunto', img:P+'preguntar.svg', l:{es:'Pregunto cuánto queda', en:'I ask how much longer'}, nota:{es:'Saber el tiempo ayuda a esperar.', en:'Knowing the time makes waiting easier.'}}] }] },
+
+{ id:'B1-09', publico:'todas', imprime:true,
+  n:{es:'La compra y el pago', en:'Shopping and paying'},
+  m:{es:'Lista, cesta y pago', en:'List, basket and payment'},
+  o:{es:'Coger lo de la lista y pagar sin cálculo mental.', en:'Pick up what is on the list and pay with no mental arithmetic.'},
+  iconos:[P+'tienda.svg', G+'cestacompra.svg', G+'caja.svg'],
+  fases:[
+   { tipo:'seleccion',
+     t:{es:'Lo de la lista', en:'What is on the list'},
+     i:{es:'Elige un producto y pulsa «Añadir a la cesta».', en:'Choose a product and press “Add to the basket”.'},
+     contexto:[{img:P+'tienda.svg', l:{es:'Tienda del barrio', en:'Local shop'}}],
+     destino:{img:G+'cestacompra.svg', l:{es:'Cesta', en:'Basket'}, accion:{es:'Añadir a la cesta', en:'Add to the basket'}},
+     items:[
+      {id:'pan', img:G+'pan.svg', nec:true, l:{es:'Pan', en:'Bread'}},
+      {id:'leche', img:G+'leche.svg', nec:true, l:{es:'Leche', en:'Milk'}},
+      {id:'fruta', img:G+'fruta.svg', nec:true, l:{es:'Fruta', en:'Fruit'}},
+      {id:'agua', img:G+'botella.svg', l:{es:'Agua', en:'Water'}},
+      {id:'tele', img:G+'television.svg', l:{es:'Una tele', en:'A TV'}},
+      {id:'juego', img:G+'juguete.svg', l:{es:'Un juguete', en:'A toy'}}],
+     red:['pan','leche','agua'],
+     noNec:{es:'Eso no está en la lista de hoy. Puedes dejarlo.', en:'That is not on today’s list. You can leave it.'} },
+   { tipo:'orden',
+     t:{es:'La fila y la caja', en:'The queue and the till'},
+     i:{es:'Elige el paso que va ahora.', en:'Choose the step that comes now.'},
+     pasos:[
+      {id:'q1', img:G+'fila.svg', l:{es:'Me pongo en la fila', en:'I join the queue'}},
+      {id:'q2', img:P+'esperar.svg', l:{es:'Espero mi turno', en:'I wait my turn'}},
+      {id:'q3', img:G+'caja.svg', l:{es:'Pongo la compra en la caja', en:'I put the shopping on the till'}}],
+     red:['q1','q3'] },
+   { tipo:'pago',
+     t:{es:'El pago', en:'Paying'},
+     i:{es:'Elige cómo pagar. Todas las formas valen y ninguna es mejor.', en:'Choose how to pay. Every way is fine and none is better.'},
+     total:{es:'4,50 €', en:'€4.50'},
+     ops:[
+      {id:'tarjeta', piezas:[{img:G+'tarjeta.svg', v:{es:'Tarjeta', en:'Card'}}], l:{es:'Con tarjeta', en:'By card'}, nota:{es:'Acercas la tarjeta y esperas el aviso.', en:'You tap the card and wait for the beep.'}},
+      {id:'justo', piezas:[{img:'e2.svg', v:{es:'2 €', en:'€2'}}, {img:'e2.svg', v:{es:'2 €', en:'€2'}}, {img:'c50.svg', v:{es:'50 céntimos', en:'50 cents'}}], l:{es:'Justo: 2 € + 2 € + 50 céntimos', en:'Exact: €2 + €2 + 50 cents'}, nota:{es:'No hay cambio que guardar.', en:'There is no change to keep.'}},
+      {id:'cinco', piezas:[{img:'b5.svg', v:{es:'5 €', en:'€5'}}], l:{es:'Con un billete de 5 €', en:'With a €5 note'}, nota:{es:'Te devuelven 50 céntimos.', en:'You get 50 cents back.'}}],
+     red:['tarjeta','cinco'] },
+   { tipo:'orden', soloNormal:true,
+     t:{es:'Antes de salir', en:'Before leaving'},
+     i:{es:'Elige el paso que va ahora.', en:'Choose the step that comes now.'},
+     pasos:[
+      {id:'s1', img:G+'cambio.svg', l:{es:'Recojo el cambio, si lo hay', en:'I take the change, if there is any'}},
+      {id:'s2', img:G+'ticket.svg', l:{es:'Guardo el ticket', en:'I keep the receipt'}},
+      {id:'s3', img:G+'bolsa.svg', l:{es:'Guardo la compra en la bolsa', en:'I put the shopping in the bag'}}],
+     red:['s2','s3'] }] },
+
+{ id:'B1-10', publico:'adulta', sobrio:true,
+  n:{es:'Volver del descanso al trabajo', en:'Back to work after a break'},
+  m:{es:'Transición e inicio de tarea', en:'Transition and task start'},
+  o:{es:'Volver a la tarea sin prisa y empezar por algo pequeño. Sin rachas ni puntos.', en:'Return to the task without rushing and start with something small. No streaks, no points.'},
+  iconos:[P+'descansar.svg', F+'limpio-work_2.svg', P+'primero.svg'],
+  fases:[
+   { tipo:'decidir',
+     t:{es:'El descanso termina', en:'The break is over'},
+     i:{es:'Las dos valen. Nadie lleva la cuenta.', en:'Both are fine. Nobody is keeping score.'},
+     ops:[
+      {id:'vuelvo', img:P+'levantarse.svg', l:{es:'Vuelvo ahora', en:'I go back now'}, nota:{es:'Te levantas y sigues.', en:'You get up and carry on.'}},
+      {id:'minuto', img:P+'descansar.svg', l:{es:'Necesito un minuto más', en:'I need one more minute'}, nota:{es:'Sin problema. Seguimos cuando quieras.', en:'No problem. We continue when you want.'}}] },
+   { tipo:'seleccion', min:1,
+     t:{es:'Preparar el sitio', en:'Getting the space ready'},
+     i:{es:'Elige lo que te ayude. Con una cosa basta. Pulsa «Ya está» cuando quieras.', en:'Choose what helps. One thing is enough. Press “That is it” whenever you want.'},
+     items:[
+      {id:'agua', img:P+'agua.svg', nec:true, l:{es:'Agua a mano', en:'Water within reach'}},
+      {id:'silencio', img:P+'silencio.svg', nec:true, l:{es:'Móvil en silencio', en:'Phone on silent'}},
+      {id:'ordenador', img:P+'ordenador.svg', nec:true, l:{es:'Abrir solo lo que necesito', en:'Open only what I need'}},
+      {id:'sentarse', img:F+'limpio-sit_at_computer.svg', nec:true, l:{es:'Sentarme cómodo', en:'Sit comfortably'}},
+      {id:'auri', img:P+'auriculares.svg', nec:true, l:{es:'Auriculares', en:'Headphones'}}],
+     red:['agua','silencio','ordenador'] },
+   { tipo:'decidir',
+     t:{es:'La primera tarea pequeña', en:'The first small task'},
+     i:{es:'Elige una. Es para arrancar, no para terminarlo todo.', en:'Choose one. It is to get going, not to finish everything.'},
+     ops:[
+      {id:'lista', img:P+'escribir.svg', l:{es:'Escribir la lista de hoy', en:'Write today’s list'},
+       nota:{es:'Unos 3 minutos. Abres el cuaderno y escribes tres líneas, no más.', en:'About 3 minutes. Open the notebook and write three lines, no more.'},
+       primero:{es:'Abrir el cuaderno y escribir la primera línea.', en:'Open the notebook and write the first line.'}},
+      {id:'correo', img:P+'ordenador.svg', l:{es:'Abrir el correo', en:'Open the email'},
+       nota:{es:'Unos 5 minutos. Lees solo el primero y decides si contestas hoy.', en:'About 5 minutes. Read only the first one and decide if you reply today.'},
+       primero:{es:'Abrir el correo y leer el primer mensaje entero.', en:'Open the email and read the first message all the way through.'}},
+      {id:'retomar', img:P+'carpeta.svg', l:{es:'Retomar lo de antes', en:'Pick up where I left off'},
+       nota:{es:'Unos 10 minutos. Abres el archivo de ayer por donde lo dejaste.', en:'About 10 minutes. Open yesterday’s file where you left it.'},
+       primero:{es:'Abrir el archivo de ayer y releer el último párrafo.', en:'Open yesterday’s file and reread the last paragraph.'}}] }] }
+];
+
+const TXT = {
+  subtitulo:{es:'Juegos · lote B1', en:'Games · batch B1'},
+  titulo:{es:'Diez actividades prácticas', en:'Ten practical activities'},
+  intro:{es:'Cosas que se hacen en el día: prepararse, moverse, comprar, volver a empezar. Se juegan con el dedo, con el ratón o con el teclado. Nunca hace falta arrastrar.', en:'Everyday things: getting ready, getting around, shopping, starting again. Play with a finger, a mouse or the keyboard. Dragging is never needed.'},
+  intro2:{es:'No hay tiempo, ni puntos, ni rachas. Puedes pedir una pista, quitar opciones o dejarlo a medias cuando quieras.', en:'There is no timer, no points, no streaks. You can ask for a hint, remove options, or stop halfway whenever you want.'},
+  modo:{es:'Modo', en:'Mode'},
+  normal:{es:'Normal', en:'Normal'},
+  reducido:{es:'Reducido', en:'Reduced'},
+  paso:{es:'Paso a paso', en:'Step by step'},
+  movimiento:{es:'Movimiento', en:'Motion'},
+  movNormal:{es:'Normal', en:'Normal'},
+  movSin:{es:'Sin movimiento', en:'No motion'},
+  jugar:{es:'Jugar', en:'Play'},
+  volverLista:{es:'Volver a la lista', en:'Back to the list'},
+  hecho:{es:'Hecho', en:'Done'},
+  elegirSiguiente:{es:'Elige el paso que va ahora', en:'Choose the step that comes now'},
+  elegirHueco:{es:'Elige el paso que falta', en:'Choose the missing step'},
+  fotoPendiente:{es:'FOTO PENDIENTE', en:'PHOTO PENDING'},
+  hoy:{es:'Hoy', en:'Today'},
+  destino:{es:'Dónde va', en:'Where it goes'},
+  dentro:{es:'Dentro', en:'In'},
+  elegido:{es:'Elegido', en:'Chosen'},
+  yaEsta:{es:'Ya está', en:'That is it'},
+  pasoSi:{es:'Sí, lo llevo', en:'Yes, take it'},
+  pasoNo:{es:'Hoy no hace falta', en:'Not needed today'},
+  total:{es:'Total a pagar', en:'Total to pay'},
+  pista:{es:'Mostrar un paso', en:'Show me a step'},
+  menos:{es:'Menos opciones', en:'Fewer options'},
+  reiniciar:{es:'Empezar de nuevo', en:'Start again'},
+  salir:{es:'Terminar sin completar', en:'Finish without completing'},
+  otraVez:{es:'Hacerlo otra vez', en:'Do it again'},
+  mapaVer:{es:'Ver el mapa de la ruta', en:'Show the route map'},
+  mapaOcultar:{es:'Ocultar el mapa', en:'Hide the map'},
+  relojVer:{es:'Ver el tiempo que queda', en:'Show time remaining'},
+  relojOcultar:{es:'Ocultar el tiempo', en:'Hide the time'},
+  finCompleto:{es:'Actividad terminada', en:'Activity finished'},
+  finParcial:{es:'Lo dejamos aquí', en:'We stop here'},
+  finTextoC:{es:'Has llegado al final.', en:'You have reached the end.'},
+  finTextoP:{es:'Puedes volver cuando quieras.', en:'You can come back whenever you want.'},
+  finNota:{es:'No se guarda nada: al recargar la página empieza de cero.', en:'Nothing is saved: reloading the page starts from scratch.'},
+  pie1:{es:'Sin cuenta, sin perfil, sin resultados guardados.', en:'No account, no profile, no saved results.'},
+  pie2:{es:'Prototipo de diseño · lote B1 · no implementado en web', en:'Design prototype · batch B1 · not implemented on the web'},
+  parte:{es:'Parte', en:'Part'},
+  de:{es:'de', en:'of'},
+  objeto:{es:'Objeto', en:'Object'},
+  pubNinos:{es:'Infantil', en:'Children'},
+  pubAdulta:{es:'Adulta', en:'Adult'},
+  pubTodas:{es:'Todas las edades', en:'All ages'},
+  sigue:{es:'Bien. Sigue.', en:'Good. Keep going.'},
+  masAdelante:{es:'Ese paso va más adelante. Prueba otra opción.', en:'That step comes later. Try another option.'},
+  noEncaja:{es:'Ahí no acaba de encajar. Prueba otro sitio.', en:'It does not quite fit there. Try another place.'},
+  colocado:{es:'Colocado.', en:'Placed.'},
+  anadido:{es:'Añadido.', en:'Added.'},
+  quitado:{es:'Lo has quitado.', en:'Removed.'},
+  listoTodo:{es:'Ya está todo lo de la lista.', en:'Everything on the list is in.'},
+  buenaEleccion:{es:'Buena elección.', en:'Good choice.'},
+  eligeAlMenos:{es:'Elige al menos dos cosas antes de seguir.', en:'Choose at least two things before going on.'},
+  eligeUna:{es:'Elige al menos una cosa antes de seguir.', en:'Choose at least one thing before going on.'},
+  menosHecho:{es:'Ahora hay menos opciones a la vista.', en:'There are fewer options on screen now.'},
+  pistaLibre:{es:'Todas las opciones valen aquí. Elige la que prefieras.', en:'Every option is fine here. Choose whichever you prefer.'},
+  teFalta:{es:'Te falta esto:', en:'This one is still missing:'},
+  vaEn:{es:'Este va en:', en:'This one goes in:'},
+  teMuestro:{es:'Te muestro este paso.', en:'Here is that step.'},
+  faltaLista:{es:'Falta algo de la lista. Lo repasamos.', en:'Something from the list is missing. Let us go through it again.'},
+  vale:{es:'Vale, hoy no.', en:'Fine, not today.'},
+  anotado:{es:'Anotado.', en:'Noted.'},
+  instrPaso:{es:'Una cosa cada vez. Di si la llevas o si hoy no hace falta.', en:'One thing at a time. Say whether you take it or whether it is not needed today.'},
+  tuPrimerPaso:{es:'Tu primer paso', en:'Your first step'},
+  verImpresion:{es:'Versión para imprimir', en:'Printable version'},
+  volverJuego:{es:'Volver al juego', en:'Back to the activity'},
+  imprimir:{es:'Imprimir', en:'Print'},
+  hojaTitulo:{es:'Hoja para imprimir', en:'Printable sheet'},
+  hojaNota:{es:'Esta hoja tiene la actividad entera, en orden y sin pantalla. Se puede rellenar a mano.', en:'This sheet has the whole activity, in order and off-screen. It can be filled in by hand.'},
+  atribucion:{es:'Pictogramas: Mulberry Symbols 3.6.1 (commit 9cbab9f4), © Steve Lee, CC BY-SA 4.0 · mulberrysymbols.org', en:'Symbols: Mulberry Symbols 3.6.1 (commit 9cbab9f4), © Steve Lee, CC BY-SA 4.0 · mulberrysymbols.org'},
+  atribucion2:{es:'Ilustraciones de prototipo: Iris Green · ORIGINAL_DESIGN_PROTOTYPE · no son assets finales', en:'Prototype illustrations: Iris Green · ORIGINAL_DESIGN_PROTOTYPE · not final assets'}
+};
+
+const C = { tinta:'#17395c', lila:'#5a49a8', azul:'#1f5f8b', turq:'#1f8ba8', linea:'#c5ccdf', suave:'#42566f' };
+
+class Component extends DCLogic {
+  state = { lang:'es', modo:'normal', mov:'normal', ji:null, fi:0, d:{}, sel:null, msg:null, menos:false, fin:null, mapa:false, reloj:false, impr:false };
+
+  focoRef = React.createRef();
+
+  componentDidMount(){
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) this.setState({ mov:'sin' });
+    } catch (e) {}
+  }
+
+  // G03 · al cambiar de fase, de juego o al terminar, el foco va al título
+  // nuevo. Sin esto, quien navega con teclado se queda donde estaba —el botón
+  // que acaba de pulsar ha desaparecido— y no sabe que la pantalla ha
+  // cambiado. El título lleva tabIndex="-1": no entra en el orden de
+  // tabulación, solo es un destino programático.
+  //
+  // Se dispara desde las propias transiciones y no desde componentDidUpdate,
+  // porque este runtime no invoca ese ciclo de vida.
+  foco(){
+    // Reenfocar el mismo nodo con texto nuevo es justo lo que hace falta: el
+    // lector vuelve a anunciar el título. Dos intentos por temporizador —no
+    // por requestAnimationFrame, que no corre de forma fiable cuando el marco
+    // no está en primer plano.
+    const ir = () => {
+      const h = document.querySelector('main h2[tabindex="-1"]');
+      if (h) { try { h.focus(); } catch (e) {} return true; }
+      return false;
+    };
+    setTimeout(() => { if (!ir()) setTimeout(ir, 80); }, 0);
+  }
+
+  T(o){ if(!o) return ''; return o[this.state.lang] || o.es || ''; }
+  juego(){ return this.state.ji === null ? null : JUEGOS[this.state.ji]; }
+  fasesOf(ji, modo){ const j = JUEGOS[ji]; if(!j) return []; return modo === 'reducido' ? j.fases.filter(f => !f.soloNormal) : j.fases; }
+  fases(){ return this.fasesOf(this.state.ji, this.state.modo); }
+  fase(){ return this.fases()[this.state.fi] || null; }
+  dat(){ return this.state.d[this.state.fi] || {}; }
+
+  msg(t, x){ this.setState({ msg:{ t, x } }); }
+
+  commit(patch, kind, texto){
+    this.setState(s => {
+      const d = Object.assign({}, s.d);
+      d[s.fi] = Object.assign({}, d[s.fi] || {}, patch);
+      let fi = s.fi, fin = s.fin, menos = s.menos;
+      if (kind === 'avanzar'){
+        if (fi + 1 >= this.fasesOf(s.ji, s.modo).length) fin = 'completo';
+        else { fi = fi + 1; menos = false; }
+      }
+      return { d, fi, fin, menos, sel:null, msg:{ t: kind === 'aviso' ? 'guia' : 'ok', x: texto || TXT.sigue } };
+    });
+    if (kind === 'avanzar') this.foco();
+  }
+
+  abrir(i){ this.setState({ ji:i, fi:0, d:{}, sel:null, msg:null, menos:false, fin:null, mapa:false, reloj:false, impr:false }); this.foco(); }
+  volver(){ this.setState({ ji:null, fi:0, d:{}, sel:null, msg:null, menos:false, fin:null, impr:false }); }
+  reiniciar(){ this.setState({ fi:0, d:{}, sel:null, msg:null, menos:false, fin:null, impr:false }); this.foco(); }
+
+  // G23 · versión estática. Todas las fases del juego, completas y en orden,
+  // como lista de papel. No es un volcado de la pantalla: es el material que
+  // alguien pega en la nevera o se lleva a la cita.
+  imprimible(){
+    const j = this.juego(); if (!j) return [];
+    const L = o => this.T(o);
+    return j.fases.map(f => {
+      const bl = { titulo:L(f.t), lineas:[] };
+      if (f.tipo === 'orden')
+        bl.lineas = f.pasos.map((p, k) => ({ marca:(k+1)+'.', texto:L(p.l) + (p.foto ? ' — foto pendiente' : ''), img:p.img || '' }));
+      else if (f.tipo === 'hueco')
+        bl.lineas = f.sec.map((s, k) => ({ marca:(k+1)+'.', texto:s.hueco ? L(f.sol.l) : L(s.l), img:s.hueco ? f.sol.img : s.img }));
+      else if (f.tipo === 'seleccion')
+        bl.lineas = f.items.filter(x => x.nec).map(x => ({ marca:'\u25a1', texto:L(x.l) + (x.opcional ? ' (opcional)' : ''), img:x.img }));
+      else if (f.tipo === 'agrupar')
+        bl.lineas = f.items.map(x => {
+          const dd = f.destinos.find(d => x.ok.indexOf(d.id) >= 0);
+          return { marca:'\u25a1', texto:L(x.l) + ' \u2192 ' + L(dd.l), img:x.img };
+        });
+      else if (f.tipo === 'decidir')
+        bl.lineas = f.ops.map(o => ({ marca:'\u25cb', texto:L(o.l) + (o.nota ? ' — ' + L(o.nota) : ''), img:o.img }));
+      else if (f.tipo === 'pago')
+        bl.lineas = [{ marca:'', texto:this.T(TXT.total) + ': ' + L(f.total), img:'' }]
+          .concat(f.ops.map(o => ({ marca:'\u25cb', texto:L(o.l) + ' — ' + L(o.nota), img:o.piezas[0].img || '' })));
+      return bl;
+    });
+  }
+  salir(){ this.setState({ fin:'parcial', msg:null }); this.foco(); }
+  cambiarModo(m){ this.setState({ modo:m, fi:0, d:{}, sel:null, msg:null, menos:false, fin:null }); }
+  verImpresion(){ this.setState({ impr:!this.state.impr, msg:null }); this.foco(); }
+
+  pasosDe(f){ return (this.state.modo === 'reducido' && f.red) ? f.pasos.filter(p => f.red.indexOf(p.id) >= 0) : f.pasos; }
+  itemsDe(f){
+    let a = f.items || [];
+    if (this.state.modo === 'reducido' && f.red) a = a.filter(x => f.red.indexOf(x.id) >= 0);
+    if (this.state.menos) a = a.filter(x => x.nec);
+    return a;
+  }
+  destinosDe(f){
+    let a = f.destinos || [];
+    if (this.state.modo === 'reducido' && f.redDest) a = a.filter(x => f.redDest.indexOf(x.id) >= 0);
+    return a;
+  }
+  itemsAgr(f){ return (this.state.modo === 'reducido' && f.red) ? f.items.filter(x => f.red.indexOf(x.id) >= 0) : f.items; }
+
+  onOrden(id){
+    const f = this.fase(), ps = this.pasosDe(f), hechos = (this.dat().hechos || []).slice();
+    const esperado = ps[hechos.length];
+    if (!esperado) return;
+    if (id !== esperado.id){ this.msg('guia', TXT.masAdelante); return; }
+    hechos.push(id);
+    this.commit({ hechos }, hechos.length === ps.length ? 'avanzar' : 'ok');
+  }
+
+  onHueco(id){
+    const f = this.fase();
+    if (id === f.sol.id) this.commit({ puesto:id }, 'avanzar', { es:'Ese es el paso que faltaba.', en:'That is the step that was missing.' });
+    else this.msg('guia', (f.nota && f.nota[id]) || TXT.masAdelante);
+  }
+
+  onItem(id){
+    const f = this.fase();
+    if (f.destino){ this.setState({ sel:id, msg:null }); return; }
+    const dentro = (this.dat().dentro || []).slice();
+    const i = dentro.indexOf(id);
+    const it = f.items.find(x => x.id === id);
+    if (i >= 0){ dentro.splice(i, 1); this.commit({ dentro }, 'ok', TXT.quitado); }
+    else { dentro.push(id); this.commit({ dentro }, it.nec ? 'ok' : 'aviso', it.nec ? TXT.elegido : f.noNec); }
+  }
+
+  onAnadir(){
+    const f = this.fase(), id = this.state.sel;
+    if (!id) return;
+    const it = f.items.find(x => x.id === id);
+    if (!it.nec){ this.setState({ sel:null, msg:{ t:'guia', x:f.noNec } }); return; }
+    const dentro = (this.dat().dentro || []).slice();
+    if (dentro.indexOf(id) < 0) dentro.push(id);
+    const need = this.itemsDe(f).filter(x => x.nec && !x.opcional);
+    const listo = need.every(x => dentro.indexOf(x.id) >= 0);
+    this.commit({ dentro }, listo ? 'avanzar' : 'ok', listo ? TXT.listoTodo : TXT.anadido);
+  }
+
+  onYaEsta(){
+    const f = this.fase(), dentro = this.dat().dentro || [], min = f.min || 1;
+    if (dentro.length < min){ this.msg('guia', min > 1 ? TXT.eligeAlMenos : TXT.eligeUna); return; }
+    this.commit({ dentro }, 'avanzar', TXT.buenaEleccion);
+  }
+
+  onPaso(si){
+    const f = this.fase(), items = this.itemsDe(f), d = this.dat(), pi = d.pi || 0;
+    const it = items[pi];
+    if (!it) return;
+    const dentro = (d.dentro || []).slice();
+    if (si && dentro.indexOf(it.id) < 0) dentro.push(it.id);
+    const npi = pi + 1;
+    if (npi >= items.length){
+      const need = items.filter(x => x.nec && !x.opcional && !f.min);
+      const faltan = need.filter(x => dentro.indexOf(x.id) < 0);
+      if (faltan.length){ this.commit({ dentro, pi:0 }, 'ok', TXT.faltaLista); return; }
+      if ((f.min || 0) > dentro.length){ this.commit({ dentro, pi:0 }, 'ok', f.min > 1 ? TXT.eligeAlMenos : TXT.eligeUna); return; }
+      this.commit({ dentro, pi:npi }, 'avanzar', TXT.listoTodo);
+    } else this.commit({ dentro, pi:npi }, 'ok', si ? TXT.anotado : TXT.vale);
+  }
+
+  onDestino(did){
+    const f = this.fase(), items = this.itemsAgr(f), hechos = this.dat().hechos || {};
+    const it = items[Object.keys(hechos).length];
+    if (!it) return;
+    if (it.ok.indexOf(did) < 0){ this.msg('guia', TXT.noEncaja); return; }
+    const nh = Object.assign({}, hechos);
+    nh[it.id] = did;
+    this.commit({ hechos:nh }, Object.keys(nh).length >= items.length ? 'avanzar' : 'ok', TXT.colocado);
+  }
+
+  onDecidir(id){
+    const f = this.fase(), op = f.ops.find(o => o.id === id);
+    this.commit({ elegido:id, primero:op.primero || null }, 'avanzar', op.nota || TXT.buenaEleccion);
+  }
+
+  onPagar(id){
+    const f = this.fase(), op = f.ops.find(o => o.id === id);
+    this.commit({ pago:id }, 'avanzar', op.nota);
+  }
+
+  onPista(){
+    const f = this.fase();
+    if (!f) return;
+    if (f.tipo === 'orden'){
+      const ps = this.pasosDe(f), hechos = (this.dat().hechos || []).slice();
+      const nx = ps[hechos.length];
+      if (!nx) return;
+      hechos.push(nx.id);
+      this.commit({ hechos }, hechos.length === ps.length ? 'avanzar' : 'ok', TXT.teMuestro);
+      return;
+    }
+    if (f.tipo === 'seleccion'){
+      const dentro = this.dat().dentro || [];
+      const falta = this.itemsDe(f).filter(x => x.nec && !x.opcional && dentro.indexOf(x.id) < 0)[0];
+      if (falta){ this.msg('info', { es:TXT.teFalta.es + ' ' + falta.l.es, en:TXT.teFalta.en + ' ' + falta.l.en }); return; }
+      this.msg('info', f.pista || TXT.pistaLibre);
+      return;
+    }
+    if (f.tipo === 'agrupar'){
+      const items = this.itemsAgr(f), hechos = this.dat().hechos || {};
+      const it = items[Object.keys(hechos).length];
+      const dest = it && this.destinosDe(f).find(x => it.ok.indexOf(x.id) >= 0);
+      if (dest){ this.msg('info', { es:TXT.vaEn.es + ' ' + dest.l.es, en:TXT.vaEn.en + ' ' + dest.l.en }); return; }
+    }
+    this.msg('info', f.pista || TXT.pistaLibre);
+  }
+
+  onMenos(){ this.setState({ menos:true, msg:{ t:'info', x:TXT.menosHecho } }); }
+
+  renderVals(){
+    const t = k => this.T(TXT[k]);
+    const lang = this.state.lang;
+    const trans = this.state.mov === 'sin' ? 'none' : 'border-color 150ms ease, background-color 150ms ease';
+    const pub = p => p === 'adulta' ? t('pubAdulta') : (p === 'todas' ? t('pubTodas') : t('pubNinos'));
+
+    const grupo = (opts, actual) => opts.map(o => ({
+      etiqueta:o.et, activo:actual === o.v, onClick:o.fn,
+      borde: actual === o.v ? '2px solid ' + C.lila : '2px solid ' + C.linea,
+      fondo: actual === o.v ? '#eee9ff' : '#ffffff',
+      peso: actual === o.v ? '700' : '400',
+      trans
+    }));
+
+    const v = {
+      trans,
+      tSubtitulo:t('subtitulo'), tTitulo:t('titulo'), tIntro:t('intro'), tIntro2:t('intro2'),
+      tModo:t('modo'), tMovimiento:t('movimiento'),
+      tVolverLista:t('volverLista'), tHecho:t('hecho'), tElegirSiguiente:t('elegirSiguiente'),
+      tElegirHueco:t('elegirHueco'), tFotoPendiente:t('fotoPendiente'), tHoy:t('hoy'),
+      tDestino:t('destino'), tPasoSi:t('pasoSi'), tPasoNo:t('pasoNo'), tTotal:t('total'),
+      tPista:t('pista'), tMenos:t('menos'), tReiniciar:t('reiniciar'), tSalir:t('salir'),
+      tOtraVez:t('otraVez'), tMarcaOk:'\u2713', tPie1:t('pie1'), tPie2:t('pie2'),
+      tAtribucion:t('atribucion'), tAtribucion2:t('atribucion2'),
+      hayFinPaso:false, hayRutaTexto:false,
+      esES:lang === 'es', esEN:lang === 'en',
+      bgES:lang === 'es' ? C.tinta : '#ffffff', fgES:lang === 'es' ? '#ffffff' : C.tinta,
+      bgEN:lang === 'en' ? C.tinta : '#ffffff', fgEN:lang === 'en' ? '#ffffff' : C.tinta,
+      setES:() => this.setState({ lang:'es' }), setEN:() => this.setState({ lang:'en' }),
+      modos:grupo([
+        { v:'normal', et:t('normal'), fn:() => this.cambiarModo('normal') },
+        { v:'reducido', et:t('reducido'), fn:() => this.cambiarModo('reducido') },
+        { v:'paso', et:t('paso'), fn:() => this.cambiarModo('paso') }], this.state.modo),
+      movs:grupo([
+        { v:'normal', et:t('movNormal'), fn:() => this.setState({ mov:'normal' }) },
+        { v:'sin', et:t('movSin'), fn:() => this.setState({ mov:'sin' }) }], this.state.mov),
+      enMenu:this.state.ji === null,
+      enJuego:this.state.ji !== null,
+      menu:JUEGOS.map((g, i) => ({
+        id:g.id, nombre:this.T(g.n), mecanica:this.T(g.m), publico:pub(g.publico),
+        iconos:g.iconos, jugar:t('jugar'),
+        aria:t('jugar') + ': ' + this.T(g.n),
+        onClick:() => this.abrir(i)
+      })),
+      onVolverLista:() => this.volver(), onReiniciar:() => this.reiniciar(),
+      onSalir:() => this.salir(), onPista:() => this.onPista(), onMenos:() => this.onMenos(),
+      focoRef:this.focoRef,
+      enImpresion:false, hayImpresion:false,
+      tVerImpresion:t('verImpresion'), tVolverJuego:t('volverJuego'), tImprimir:t('imprimir'),
+      tHojaTitulo:t('hojaTitulo'), tHojaNota:t('hojaNota'),
+      onImprimir:() => { try { window.print(); } catch (e) {} },
+      hayFase:false, esFin:false, esOrden:false, esHueco:false, esSeleccion:false,
+      esSelPaso:false, esAgrupar:false, esDecidir:false, esPago:false,
+      hayMapa:false, hayReloj:false, hayMensaje:false, puedeMenos:false,
+      acento:C.lila, hayContexto:false, hayDestino:false, hayAgrHechos:false
+    };
+
+    const j = this.state.ji === null ? null : JUEGOS[this.state.ji];
+    if (!j) return v;
+
+    v.acento = j.sobrio ? C.azul : C.lila;
+    v.jId = j.id; v.jNombre = this.T(j.n); v.jObjetivo = this.T(j.o); v.jPublico = pub(j.publico);
+
+    v.hayImpresion = !!j.imprime;
+    v.tVerImpresion = this.state.impr ? t('volverJuego') : t('verImpresion');
+    v.onVerImpresion = () => this.verImpresion();
+    if (this.state.impr){
+      v.enImpresion = true;
+      v.imprimible = this.imprimible().map(b => ({
+        titulo:b.titulo,
+        lineas:b.lineas.map(l => ({ marca:l.marca, texto:l.texto, img:l.img, conImagen:!!l.img }))
+      }));
+      return v;
+    }
+
+    if (this.state.msg){
+      const tono = this.state.msg.t;
+      v.hayMensaje = true;
+      v.mensajeTexto = this.T(this.state.msg.x);
+      v.mensajeIcono = tono === 'ok' ? '\u2713' : (tono === 'guia' ? '\u2192' : 'i');
+      v.mensajeBorde = '2px solid ' + (tono === 'ok' ? C.turq : (tono === 'guia' ? C.lila : C.suave));
+      v.mensajeFondo = tono === 'ok' ? '#e6f4f6' : (tono === 'guia' ? '#f3eeff' : '#eef2f7');
+    }
+
+    if (this.state.fin){
+      v.esFin = true;
+      v.finTitulo = this.state.fin === 'completo' ? t('finCompleto') : t('finParcial');
+      v.finTexto = this.state.fin === 'completo' ? t('finTextoC') : t('finTextoP');
+      v.finNota = t('finNota');
+      const prim = Object.keys(this.state.d).map(k => this.state.d[k].primero).filter(Boolean).pop();
+      if (prim){ v.hayFinPaso = true; v.finPasoTitulo = t('tuPrimerPaso'); v.finPaso = this.T(prim); }
+      return v;
+    }
+
+    const f = this.fase();
+    if (!f) return v;
+    const fases = this.fases(), d = this.dat();
+    v.hayFase = true;
+    v.faseEtiqueta = t('parte') + ' ' + (this.state.fi + 1) + ' ' + t('de') + ' ' + fases.length;
+    v.faseTitulo = this.T(f.t);
+    v.faseInstruccion = this.T(f.i);
+    v.puedeMenos = !this.state.menos && ['orden', 'hueco', 'seleccion', 'agrupar'].indexOf(f.tipo) >= 0;
+
+    if (f.tipo === 'orden'){
+      const ps = this.pasosDe(f), hechos = d.hechos || [];
+      v.esOrden = true;
+      v.ordenHechos = hechos.map((id, k) => {
+        const p = ps.find(x => x.id === id);
+        return { num:(k + 1) + '.', etiqueta:this.T(p.l), img:p.img || '', foto:!!p.foto, conImagen:!!p.img };
+      });
+      let pool = ps.filter(p => hechos.indexOf(p.id) < 0);
+      if (this.state.menos && pool.length > 3){
+        const correcto = pool[0];
+        pool = pool.slice(0, 3);
+        if (pool.indexOf(correcto) < 0) pool[0] = correcto;
+      }
+      const baraja = pool.slice().sort((a, b) => (a.id + j.id).length % 3 - (b.id + j.id).length % 3 || a.id.localeCompare(b.id));
+      v.ordenPool = baraja.map(p => ({
+        etiqueta:this.T(p.l), img:p.img || '', foto:!!p.foto, conImagen:!!p.img,
+        onClick:() => this.onOrden(p.id)
+      }));
+      if (f.mapa){
+        v.hayMapa = true;
+        v.mapaVisible = this.state.mapa;
+        v.tMapa = this.state.mapa ? t('mapaOcultar') : t('mapaVer');
+        v.onMapa = () => this.setState({ mapa:!this.state.mapa });
+        v.mapaPasos = (f.hitos || ps).map((p, k) => ({ num:k + 1, etiqueta:this.T(p.l), img:p.img || '' }));
+        v.rutaTexto = this.T(f.rutaTexto);
+        v.hayRutaTexto = !!f.rutaTexto;
+      }
+    }
+
+    if (f.tipo === 'hueco'){
+      v.esHueco = true;
+      let sec = f.sec.map((s, k) => ({ s, k }));
+      if (this.state.modo === 'reducido' && f.redSec) sec = sec.filter(x => f.redSec.indexOf(x.k) >= 0);
+      const puesto = d.puesto;
+      v.huecoSec = sec.map((x, k) => {
+        const s = x.s;
+        if (s.hueco){
+          const lleno = !!puesto;
+          return {
+            num:(k + 1) + '.', vacio:!lleno, conImagen:lleno,
+            img:lleno ? f.sol.img : '', etiqueta:lleno ? this.T(f.sol.l) : '',
+            borde:lleno ? '3px solid ' + C.turq : '3px solid ' + C.lila,
+            fondo:lleno ? '#e6f4f6' : '#f3eeff'
+          };
+        }
+        return { num:(k + 1) + '.', vacio:false, conImagen:true, img:s.img, etiqueta:this.T(s.l), borde:'2px solid ' + C.linea, fondo:'#ffffff' };
+      });
+      let ops = [f.sol].concat(f.otras);
+      if (this.state.menos) ops = [f.sol, f.otras[0]];
+      ops = ops.slice().sort((a, b) => a.id.localeCompare(b.id));
+      v.huecoOpciones = ops.map(o => ({ img:o.img, etiqueta:this.T(o.l), onClick:() => this.onHueco(o.id) }));
+    }
+
+    if (f.tipo === 'seleccion'){
+      const items = this.itemsDe(f), dentro = d.dentro || [];
+      if (this.state.modo === 'paso'){
+        const pi = d.pi || 0, it = items[pi];
+        if (it){
+          v.esSelPaso = true;
+          v.pasoItem = { img:it.img, etiqueta:this.T(it.l) };
+          v.pasoContador = t('objeto') + ' ' + (pi + 1) + ' ' + t('de') + ' ' + items.length;
+          v.faseInstruccion = t('instrPaso');
+          v.onPasoSi = () => this.onPaso(true);
+          v.onPasoNo = () => this.onPaso(false);
+        }
+      } else {
+        v.esSeleccion = true;
+        v.hayContexto = !!f.contexto;
+        v.contexto = (f.contexto || []).map(c => ({ img:c.img, etiqueta:this.T(c.l) }));
+        v.hayDestino = !!f.destino;
+        if (f.destino){
+          v.destinoImg = f.destino.img;
+          v.destinoEtiqueta = this.T(f.destino.l);
+          const need = items.filter(x => x.nec && !x.opcional);
+          v.destinoCuenta = dentro.length + ' / ' + need.length;
+          v.listaNecesaria = need.map(x => ({ etiqueta:this.T(x.l), marca:dentro.indexOf(x.id) >= 0 ? '\u2713' : '\u00b7' }));
+        }
+        v.selItems = items.map(it => {
+          const est = dentro.indexOf(it.id) >= 0;
+          const sel = this.state.sel === it.id;
+          return {
+            img:it.img, etiqueta:this.T(it.l), marcado:est || sel,
+            estado:est ? (f.destino ? '\u2713 ' + t('dentro') : '\u2713 ' + t('elegido')) : (sel ? t('elegido') : ''),
+            borde:est ? '3px solid ' + C.turq : (sel ? '3px solid ' + C.lila : '2px solid ' + C.linea),
+            fondo:est ? '#e6f4f6' : (sel ? '#f3eeff' : '#ffffff'),
+            onClick:() => this.onItem(it.id)
+          };
+        });
+        if (f.destino){
+          v.selAccion = {
+            etiqueta:this.T(f.destino.accion), onClick:() => this.onAnadir(),
+            inactiva:!this.state.sel,
+            borde:'2px solid ' + C.tinta,
+            fondo:this.state.sel ? C.tinta : '#eef2f7',
+            color:this.state.sel ? '#ffffff' : C.suave
+          };
+          v.selAccion2 = { visible:false };
+        } else {
+          v.selAccion = { etiqueta:t('yaEsta'), onClick:() => this.onYaEsta(), inactiva:false, borde:'2px solid ' + C.tinta, fondo:C.tinta, color:'#ffffff' };
+          v.selAccion2 = { visible:false };
+        }
+      }
+    }
+
+    if (f.tipo === 'agrupar'){
+      const items = this.itemsAgr(f), hechos = d.hechos || {}, hs = Object.keys(hechos);
+      const it = items[hs.length];
+      if (it){
+        v.esAgrupar = true;
+        v.agrItem = { img:it.img, etiqueta:this.T(it.l) };
+        v.agrContador = t('objeto') + ' ' + (hs.length + 1) + ' ' + t('de') + ' ' + items.length;
+        v.agrDestinos = this.destinosDe(f).map(dd => ({
+          img:dd.img, etiqueta:this.T(dd.l),
+          cuenta:hs.filter(k => hechos[k] === dd.id).length + '',
+          onClick:() => this.onDestino(dd.id)
+        }));
+        v.hayAgrHechos = hs.length > 0;
+        v.agrHechos = hs.map(k => {
+          const item = items.find(x => x.id === k);
+          const dest = f.destinos.find(x => x.id === hechos[k]);
+          return { texto:this.T(item.l) + ' \u2192 ' + this.T(dest.l) };
+        });
+      }
+    }
+
+    if (f.tipo === 'decidir'){
+      v.esDecidir = true;
+      v.decOpciones = f.ops.map(o => ({ img:o.img, etiqueta:this.T(o.l), nota:this.T(o.nota), onClick:() => this.onDecidir(o.id) }));
+      if (f.reloj){
+        v.hayReloj = true;
+        v.relojVisible = this.state.reloj;
+        v.tReloj = this.state.reloj ? t('relojOcultar') : t('relojVer');
+        v.relojTexto = this.T(f.reloj);
+        v.onReloj = () => this.setState({ reloj:!this.state.reloj });
+      }
+    }
+
+    if (f.tipo === 'pago'){
+      v.esPago = true;
+      v.pagoTotal = this.T(f.total);
+      let ops = f.ops;
+      if (this.state.modo === 'reducido' && f.red) ops = ops.filter(o => f.red.indexOf(o.id) >= 0);
+      v.pagoOpciones = ops.map(o => ({
+        etiqueta:this.T(o.l), nota:this.T(o.nota),
+        piezas:o.piezas.map(p => ({ img:p.img || p, valor:p.v ? this.T(p.v) : '' })),
+        onClick:() => this.onPagar(o.id)
+      }));
+    }
+
+    return v;
+  }
+}
+</script>
+</body>
+</html>

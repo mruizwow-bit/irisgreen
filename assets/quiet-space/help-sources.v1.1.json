@@ -1,0 +1,132 @@
+{
+  "schema": "iris.rincon.help-sources/1",
+  "version": "1.1.0-astra-reconciled",
+  "consulted_on": "2026-09-23",
+  "jurisdiction_notice": {
+    "es": "Recursos de España.",
+    "en": "These services are in Spain."
+  },
+  "outside_notice": {
+    "es": "Si estás fuera de España, usa los servicios de emergencia locales.",
+    "en": "If you are outside Spain, use your local emergency services."
+  },
+  "rules": [
+    "no_geolocation",
+    "no_click_logging",
+    "no_call_logging",
+    "review_before_each_publication",
+    "no_number_from_memory",
+    "phone_numbers_use_tel_links",
+    "non_phone_channels_only_after_official_url_verification"
+  ],
+  "sources": [
+    {
+      "id": "eu-112",
+      "number": "112",
+      "tel": "tel:112",
+      "role": "emergency",
+      "organism": "Comisión Europea (número europeo de emergencia); en España, centros 112 autonómicos",
+      "official_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
+      "jurisdiction": "UE (incluida España)",
+      "facts_verified": [
+        "gratuito en toda la UE",
+        "desde fijo y móvil",
+        "la UE exige acceso equivalente para personas con discapacidad (p. ej. texto en tiempo real, SMS)"
+      ],
+      "page_last_update": "2026-06-23",
+      "consulted_on": "2026-09-23",
+      "verified_by": "Claude (R43) · lectura de la página oficial",
+      "review": "antes de cada publicación",
+      "status": "VERIFIED",
+      "published_on": "2026-06-23",
+      "version": "official_web_page",
+      "validity": "ACTIVE_AS_OF_2026-09-23",
+      "last_reviewed_on": "2026-09-23"
+    },
+    {
+      "id": "es-024",
+      "number": "024",
+      "tel": "tel:024",
+      "role": "suicidal_behaviour",
+      "organism": "Ministerio de Sanidad (Gobierno de España)",
+      "official_url": "https://www.sanidad.gob.es/linea024/home.htm",
+      "jurisdiction": "España (ámbito nacional)",
+      "facts_verified": [
+        "24 h, 365 días",
+        "gratuito",
+        "confidencial",
+        "para personas con conducta o ideación suicida y para familiares/allegados",
+        "chat on-line (Cruz Roja)",
+        "videointerpretación en lengua de signos (SVisual)",
+        "en riesgo vital, derivar/llamar al 112",
+        "no sustituye la atención sanitaria presencial"
+      ],
+      "consulted_on": "2026-09-23",
+      "verified_by": "Claude (R43) · lectura de la página oficial; coincide con el perfil normativo R01",
+      "review": "antes de cada publicación",
+      "status": "VERIFIED",
+      "open_items": [
+        "URL exacta del chat y de SVisual: tomarla de la página oficial en la fecha de implementación; no enlazar a terceros sin verificar"
+      ],
+      "published_on": "UNKNOWN",
+      "version": "official_web_page",
+      "validity": "ACTIVE_AS_OF_2026-09-23",
+      "last_reviewed_on": "2026-09-23"
+    },
+    {
+      "id": "es-esperanza",
+      "number": "717 003 717",
+      "tel": "tel:+34717003717",
+      "role": "emotional_support",
+      "organism": "Asociación Internacional del Teléfono de la Esperanza",
+      "official_url": "https://telefonodelaesperanza.org/",
+      "jurisdiction": "España",
+      "facts_verified": [
+        "número 717 003 717",
+        "servicio de Atención en Crisis disponible 24 horas al día, 365 días al año"
+      ],
+      "consulted_on": "2026-09-23",
+      "verified_by": "Astra · verificación manual/web de la página oficial de Teléfono de la Esperanza el 23/09/2026",
+      "review": "antes de cada publicación",
+      "status": "VERIFIED",
+      "published_on": "UNKNOWN",
+      "version": "official_web_page",
+      "validity": "ACTIVE_AS_OF_2026-09-23",
+      "last_reviewed_on": "2026-09-23",
+      "open_items": []
+    },
+    {
+      "id": "es-anar",
+      "number": "900 20 20 10",
+      "tel": "tel:900202010",
+      "role": "minors",
+      "organism": "Fundación ANAR",
+      "official_url": "https://www.anar.org/que-hacemos/telefono-chat-anar/",
+      "jurisdiction": "España (toda España para 900 20 20 10)",
+      "facts_verified": [
+        "900 20 20 10 desde toda España",
+        "gratuito y confidencial",
+        "atendido por psicólogos/as",
+        "chat: chatanar.es",
+        "116 111 solo en algunas comunidades (lista en la web oficial)"
+      ],
+      "display_rules": [
+        "mostrar 900 20 20 10",
+        "NO mostrar 116 111 como universal (ver D-08)"
+      ],
+      "consulted_on": "2026-09-23",
+      "verified_by": "Claude (R43) · lectura de la página oficial",
+      "review": "antes de cada publicación",
+      "status": "VERIFIED",
+      "open_items": [
+        "La página no indica horario explícito: no afirmar '24 h' para ANAR hasta verificarlo"
+      ],
+      "published_on": "UNKNOWN",
+      "version": "official_web_page",
+      "validity": "ACTIVE_AS_OF_2026-09-23",
+      "last_reviewed_on": "2026-09-23"
+    }
+  ],
+  "reconciled_on": "2026-09-23",
+  "reconciliation_note": "D-10 reconciliado con matriz/addendum Astra. D-12 verificado por Astra en la web oficial del Teléfono de la Esperanza el 23/09/2026."
+}

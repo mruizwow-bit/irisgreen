@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "iris.rincon.modules-contract/2.1.2",
+  "title": "Rincón tranquilo · contrato de módulos y medios v2.1.2 (compatibilidad R32 + publication gate media)",
+  "$defs": {
+    "status_module": {
+      "enum": [
+        "PUBLIC",
+        "PENDING_REVIEW"
+      ]
+    },
+    "status_media": {
+      "enum": [
+        "PUBLIC",
+        "PENDING_REVIEW",
+        "MISSING_FILE"
+      ]
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "decided_by",
+        "decided_on",
+        "evidence",
+        "checklist"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "decided_by": {
+          "type": "string"
+        },
+        "decided_on": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "checklist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "required": [
+        "id",
+        "orden",
+        "status",
+        "label_es",
+        "label_en"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "calm-entry",
+            "still",
+            "help",
+            "local-sound",
+            "pause",
+            "grounding",
+            "show-card",
+            "watch",
+            "listen",
+            "clean-screen"
+          ]
+        },
+        "orden": {
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/status_module"
+        },
+        "label_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clean_screen": {
+          "type": "boolean"
+        },
+        "depends_on_media": {
+          "type": "boolean"
+        },
+        "copy_ref": {
+          "type": "string"
+        },
+        "ui": {
+          "type": "object"
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        }
+      },
+      "$comment": "v2.1.2: los módulos son contenedores funcionales y se validan por QA de producto/copy. El objeto review es opcional en módulos. El gate editorial obligatorio de license/provenance/transcript/captions/review se aplica a recursos media PUBLIC. Esto preserva los módulos PUBLIC heredados de R32 sin inventar metadatos."
+    },
+    "media": {
+      "type": "object",
+      "required": [
+        "id",
+        "module",
+        "type",
+        "status",
+        "license",
+        "accessibility",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "module": {
+          "enum": [
+            "watch",
+            "listen"
+          ]
+        },
+        "type": {
+          "enum": [
+            "video",
+            "audio"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status_media"
+        },
+        "license": {
+          "type": "string"
+        },
+        "accessibility": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": true
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PUBLIC"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "review"
+        ],
+        "properties": {
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "not": {
+              "const": "UNKNOWN"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "minProperties": 1
+          },
+          "review": {
+            "properties": {
+              "decided_by": {
+                "minLength": 1
+              },
+              "decided_on": {
+                "minLength": 10
+              },
+              "evidence": {
+                "minItems": 1
+              },
+              "checklist": {
+                "minItems": 1
+              }
+            }
+          },
+          "accessibility": {
+            "type": "object",
+            "properties": {
+              "transcript": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "UNKNOWN"
+                }
+              },
+              "has_captions": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "not": {
+                      "const": "UNKNOWN"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "video"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "accessibility": {
+                  "required": [
+                    "transcript",
+                    "has_captions"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "audio"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "accessibility": {
+                  "required": [
+                    "transcript"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "$comment": "Astra v2.1: PUBLIC exige presencia explícita de transcript; vídeo exige además has_captions. has_captions=false solo es aceptable cuando review.evidence documenta ausencia de audio relevante/alternativa aplicable. El schema no puede demostrar por sí solo esa evidencia editorial. v2.1.1: las restricciones «no UNKNOWN» de transcript/has_captions solo aplican con status PUBLIC; en PENDING_REVIEW/MISSING_FILE se conserva UNKNOWN (R32). v2.1.2: el cambio de 2.1.1→2.1.2 NO altera ningún gate de media PUBLIC; solo corrige el sobrealcance de review en $defs.module."
+    }
+  },
+  "type": "object",
+  "required": [
+    "modules",
+    "media"
+  ],
+  "properties": {
+    "modules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/module"
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/media"
+      }
+    }
+  }
+}

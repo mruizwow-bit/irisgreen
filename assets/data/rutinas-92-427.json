@@ -1,0 +1,4539 @@
+{
+  "version": "2026-09-23",
+  "rutinas": 92,
+  "pasos": 427,
+  "categorias": {
+    "Autonomía personal": 8,
+    "Higiene": 11,
+    "Mañana / salida de casa": 7,
+    "Comida / cocina": 10,
+    "Casa": 13,
+    "Estudio / trabajo": 8,
+    "Calle / comunidad": 11,
+    "Tiempo / transiciones": 7,
+    "Noche / sueño": 7,
+    "Otras habilidades prácticas": 10
+  },
+  "items": [
+    {
+      "id": "AUT-01",
+      "categoria": "Autonomía personal",
+      "es": "Atarse los cordones",
+      "en": "Tie your shoelaces",
+      "dificultad": "motricidad fina; secuenciación; memoria de trabajo",
+      "nivel": "compleja",
+      "n_pasos": 7,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Poner el pie en el suelo",
+          "en": "Put your foot down",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Coger un cordón en cada mano",
+          "en": "Hold one lace in each hand",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cruzar los cordones",
+          "en": "Cross the laces",
+          "pictograma": "cross",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Pasar un cordón por debajo",
+          "en": "Pass one lace underneath",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Hacer un lazo con cada cordón",
+          "en": "Make a loop with each lace",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Apretar",
+          "en": "Pull tight",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 7,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-02",
+      "categoria": "Autonomía personal",
+      "es": "Ponerse y quitarse los zapatos",
+      "en": "Put on and take off shoes",
+      "dificultad": "motricidad; secuenciación",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Sentarse",
+          "en": "Sit down",
+          "pictograma": "sit_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Coger los zapatos",
+          "en": "Take your shoes",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Ponerse un zapato",
+          "en": "Put on one shoe",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ponerse el otro zapato",
+          "en": "Put on the other shoe",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Levantarse",
+          "en": "Stand up",
+          "pictograma": "stand_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-03",
+      "categoria": "Autonomía personal",
+      "es": "Abrochar botones",
+      "en": "Do up buttons",
+      "dificultad": "motricidad fina; coordinación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el botón y el ojal",
+          "en": "Look at the button and the hole",
+          "pictograma": "button",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sujetar la tela",
+          "en": "Hold the fabric",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Pasar el botón",
+          "en": "Push the button through",
+          "pictograma": "button",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Repetir con el siguiente",
+          "en": "Repeat with the next one",
+          "pictograma": "button",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Comprobar que está recto",
+          "en": "Check it is straight",
+          "pictograma": "clothes_neat",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-04",
+      "categoria": "Autonomía personal",
+      "es": "Subir y bajar la cremallera",
+      "en": "Do up and undo a zip",
+      "dificultad": "motricidad fina; coordinación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Juntar las dos partes abajo",
+          "en": "Join the two parts at the bottom",
+          "pictograma": "zip",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sujetar la parte de abajo",
+          "en": "Hold the bottom",
+          "pictograma": "zip",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Subir la cremallera",
+          "en": "Pull the zip up",
+          "pictograma": "zip",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Bajar la cremallera",
+          "en": "Pull the zip down",
+          "pictograma": "zip",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-05",
+      "categoria": "Autonomía personal",
+      "es": "Elegir la ropa",
+      "en": "Choose your clothes",
+      "dificultad": "función ejecutiva; planificación; sensibilidad sensorial",
+      "nivel": "media",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el tiempo que hace",
+          "en": "Check the weather",
+          "pictograma": "change_weather_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Mirar qué vas a hacer hoy",
+          "en": "Check what you are doing today",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Elegir la parte de arriba",
+          "en": "Choose the top",
+          "pictograma": "jumper",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Elegir la parte de abajo",
+          "en": "Choose the bottom",
+          "pictograma": "trousers",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Elegir los zapatos",
+          "en": "Choose the shoes",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Dejarlo todo junto",
+          "en": "Put it all together",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-06",
+      "categoria": "Autonomía personal",
+      "es": "Vestirse por orden",
+      "en": "Get dressed in order",
+      "dificultad": "secuenciación; función ejecutiva",
+      "nivel": "básica",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ropa interior",
+          "en": "Underwear",
+          "pictograma": "pants",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Calcetines",
+          "en": "Socks",
+          "pictograma": "socks",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Parte de abajo",
+          "en": "Bottoms",
+          "pictograma": "trousers",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Parte de arriba",
+          "en": "Top",
+          "pictograma": "jumper",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Zapatos",
+          "en": "Shoes",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Vestido",
+          "en": "Dressed",
+          "pictograma": "get_dressed_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-07",
+      "categoria": "Autonomía personal",
+      "es": "Preparar la ropa del día siguiente",
+      "en": "Lay out tomorrow's clothes",
+      "dificultad": "planificación; función ejecutiva; transición",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el calendario de mañana",
+          "en": "Check tomorrow",
+          "pictograma": "tomorrow",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sacar la ropa",
+          "en": "Take out the clothes",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Ponerla en una silla",
+          "en": "Put it on a chair",
+          "pictograma": "chair",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Poner los zapatos debajo",
+          "en": "Put the shoes underneath",
+          "pictograma": "shoe_-_mans",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "AUT-08",
+      "categoria": "Autonomía personal",
+      "es": "Quitarse la ropa y dejarla en su sitio",
+      "en": "Undress and put clothes away",
+      "dificultad": "secuenciación; organización",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Quitarse la ropa",
+          "en": "Take off your clothes",
+          "pictograma": "undress_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Separar lo limpio de lo sucio",
+          "en": "Sort clean from dirty",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Lo sucio al cesto",
+          "en": "Dirty clothes in the basket",
+          "pictograma": "laundry_basket",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Lo limpio al armario",
+          "en": "Clean clothes in the wardrobe",
+          "pictograma": "clothes_hanger",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-01",
+      "categoria": "Higiene",
+      "es": "Lavarse los dientes",
+      "en": "Brush your teeth",
+      "dificultad": "secuenciación; sensibilidad sensorial; motricidad",
+      "nivel": "básica",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el cepillo",
+          "en": "Take the toothbrush",
+          "pictograma": "toothbrush",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner la pasta",
+          "en": "Put on toothpaste",
+          "pictograma": "toothpaste",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cepillar los dientes",
+          "en": "Brush your teeth",
+          "pictograma": "brush_teeth_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Enjuagar",
+          "en": "Rinse",
+          "pictograma": "mouthwash",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Limpiar el cepillo",
+          "en": "Clean the brush",
+          "pictograma": "toothbrush",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-02",
+      "categoria": "Higiene",
+      "es": "Ducharse",
+      "en": "Have a shower",
+      "dificultad": "secuenciación; sensibilidad sensorial; función ejecutiva",
+      "nivel": "media",
+      "n_pasos": 8,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger la toalla",
+          "en": "Take a towel",
+          "pictograma": "towel",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Quitarse la ropa",
+          "en": "Take off your clothes",
+          "pictograma": "undress_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Abrir el agua",
+          "en": "Turn on the water",
+          "pictograma": "shower",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ducharse",
+          "en": "Shower",
+          "pictograma": "shower",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Usar el gel",
+          "en": "Use shower gel",
+          "pictograma": "shower_gel",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Cerrar el agua",
+          "en": "Turn off the water",
+          "pictograma": "shower",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 7,
+          "es": "Secarse",
+          "en": "Dry yourself",
+          "pictograma": "dry",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 8,
+          "es": "Vestirse",
+          "en": "Get dressed",
+          "pictograma": "get_dressed_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-03",
+      "categoria": "Higiene",
+      "es": "Lavarse el pelo",
+      "en": "Wash your hair",
+      "dificultad": "secuenciación; sensorial",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mojar el pelo",
+          "en": "Wet your hair",
+          "pictograma": "shower",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner champú",
+          "en": "Put on shampoo",
+          "pictograma": "shampoo",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Frotar",
+          "en": "Rub",
+          "pictograma": "shampoo_hair_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Aclarar",
+          "en": "Rinse",
+          "pictograma": "shower",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Secar el pelo",
+          "en": "Dry your hair",
+          "pictograma": "dry_hair_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-04",
+      "categoria": "Higiene",
+      "es": "Secarse",
+      "en": "Dry yourself",
+      "dificultad": "secuenciación; sensorial",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger la toalla",
+          "en": "Take the towel",
+          "pictograma": "towel",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Secar la cara",
+          "en": "Dry your face",
+          "pictograma": "dry_face_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Secar el cuerpo",
+          "en": "Dry your body",
+          "pictograma": "dry",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Secar el pelo",
+          "en": "Dry your hair",
+          "pictograma": "dry_hair_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Colgar la toalla",
+          "en": "Hang the towel",
+          "pictograma": "hang_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-05",
+      "categoria": "Higiene",
+      "es": "Peinarse",
+      "en": "Brush your hair",
+      "dificultad": "motricidad; sensorial",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el cepillo del pelo",
+          "en": "Take the hairbrush",
+          "pictograma": "hairbrush",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Peinar",
+          "en": "Brush your hair",
+          "pictograma": "brush_hair_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Mirarse",
+          "en": "Look in the mirror",
+          "pictograma": "mirror",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-06",
+      "categoria": "Higiene",
+      "es": "Lavarse las manos",
+      "en": "Wash your hands",
+      "dificultad": "secuenciación; sensorial",
+      "nivel": "básica",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Abrir el grifo",
+          "en": "Turn on the tap",
+          "pictograma": "tap",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner jabón",
+          "en": "Use soap",
+          "pictograma": "soap",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Frotar las manos",
+          "en": "Rub your hands",
+          "pictograma": "wash_hands_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Aclarar",
+          "en": "Rinse",
+          "pictograma": "wash_hands_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Cerrar el grifo",
+          "en": "Turn off the tap",
+          "pictograma": "tap",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Secar las manos",
+          "en": "Dry your hands",
+          "pictograma": "dry_hands_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-07",
+      "categoria": "Higiene",
+      "es": "Ir al baño",
+      "en": "Go to the toilet",
+      "dificultad": "secuenciación; interocepción; transición",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ir al baño",
+          "en": "Go to the toilet",
+          "pictograma": "toilet_,_go_to_the",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Usar el váter",
+          "en": "Use the toilet",
+          "pictograma": "toilet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Papel",
+          "en": "Toilet roll",
+          "pictograma": "toilet_roll",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Tirar de la cadena",
+          "en": "Flush the toilet",
+          "pictograma": "flush_toilet_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Lavarse las manos",
+          "en": "Wash your hands",
+          "pictograma": "wash_hands_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-08",
+      "categoria": "Higiene",
+      "es": "Cuidado menstrual",
+      "en": "Period care",
+      "dificultad": "planificación; sensorial; interocepción",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el calendario",
+          "en": "Check the calendar",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Llevar compresa o tampón",
+          "en": "Carry a pad or tampon",
+          "pictograma": "sanitary_towel",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cambiar en el baño",
+          "en": "Change in the toilet",
+          "pictograma": "toilet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Tirar a la papelera",
+          "en": "Put it in the bin",
+          "pictograma": "waste_paper_bin",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Lavarse las manos",
+          "en": "Wash your hands",
+          "pictograma": "wash_hands_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-09",
+      "categoria": "Higiene",
+      "es": "Afeitarse o cuidado personal",
+      "en": "Shave or personal grooming",
+      "dificultad": "motricidad; sensorial",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Preparar lo que necesitas",
+          "en": "Get what you need",
+          "pictograma": "razor",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Mojar la piel",
+          "en": "Wet your skin",
+          "pictograma": "wash_face_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Afeitarse",
+          "en": "Shave",
+          "pictograma": "shave_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Aclarar",
+          "en": "Rinse",
+          "pictograma": "wash_face_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Secar",
+          "en": "Dry",
+          "pictograma": "dry_face_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-10",
+      "categoria": "Higiene",
+      "es": "Cortarse las uñas",
+      "en": "Clip your nails",
+      "dificultad": "motricidad fina; sensorial",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el cortaúñas",
+          "en": "Take the nail clippers",
+          "pictograma": "nail_clippers",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Cortar una mano",
+          "en": "Cut one hand",
+          "pictograma": "nail_clippers",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cortar la otra mano",
+          "en": "Cut the other hand",
+          "pictograma": "nail_clippers",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Limar",
+          "en": "File",
+          "pictograma": "nail_file",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "HIG-11",
+      "categoria": "Higiene",
+      "es": "Usar desodorante",
+      "en": "Use deodorant",
+      "dificultad": "memoria de trabajo; sensorial",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el desodorante",
+          "en": "Take the deodorant",
+          "pictograma": "deodorant",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ponerlo",
+          "en": "Put it on",
+          "pictograma": "deodorant",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Guardarlo",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-01",
+      "categoria": "Mañana / salida de casa",
+      "es": "Levantarse",
+      "en": "Get up",
+      "dificultad": "transición; función ejecutiva; regulación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Suena la alarma",
+          "en": "The alarm goes off",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Despertarse",
+          "en": "Wake up",
+          "pictograma": "wake_up_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Sentarse en la cama",
+          "en": "Sit up in bed",
+          "pictograma": "bed_time",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Sentarse en la cama» usa bed time. Existe make the bed para hacer la cama."
+        },
+        {
+          "n": 4,
+          "es": "Levantarse",
+          "en": "Get up",
+          "pictograma": "stand_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Abrir la persiana",
+          "en": "Open the curtains",
+          "pictograma": "curtains",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-02",
+      "categoria": "Mañana / salida de casa",
+      "es": "Desayunar",
+      "en": "Have breakfast",
+      "dificultad": "secuenciación; interocepción",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ir a la cocina",
+          "en": "Go to the kitchen",
+          "pictograma": "cooker",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Ir a la cocina» pasa a «Ir a la cocina (fogones)» (cooker). Aproximación: revisar."
+        },
+        {
+          "n": 2,
+          "es": "Preparar el desayuno",
+          "en": "Make breakfast",
+          "pictograma": "breakfast_1",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Comer",
+          "en": "Eat",
+          "pictograma": "eat_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Beber",
+          "en": "Drink",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Recoger",
+          "en": "Clear up",
+          "pictograma": "tidy_up_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-03",
+      "categoria": "Mañana / salida de casa",
+      "es": "Preparar la mochila",
+      "en": "Pack your bag",
+      "dificultad": "memoria de trabajo; organización; planificación",
+      "nivel": "media",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el horario",
+          "en": "Check the timetable",
+          "pictograma": "calendar",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Mirar el horario» usa calendar. Aproximación: no es un horario de clase."
+        },
+        {
+          "n": 2,
+          "es": "Meter los libros",
+          "en": "Put in the books",
+          "pictograma": "work_book",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Libros» usa work book (cuaderno de trabajo). Aproximación."
+        },
+        {
+          "n": 3,
+          "es": "Meter el estuche",
+          "en": "Put in the pencil case",
+          "pictograma": "pencil_case",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Meter la comida",
+          "en": "Put in your lunch",
+          "pictograma": "lunch_box",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Meter la botella de agua",
+          "en": "Put in your water bottle",
+          "pictograma": "glass_,_drinking",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Llenar la botella» pasa a «Llenar el vaso de agua» (drinking glass)."
+        },
+        {
+          "n": 6,
+          "es": "Cerrar la mochila",
+          "en": "Close the bag",
+          "pictograma": "school_bag",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-04",
+      "categoria": "Mañana / salida de casa",
+      "es": "Comprobar llaves, teléfono y documentos",
+      "en": "Check keys, phone and documents",
+      "dificultad": "memoria de trabajo; organización",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llaves",
+          "en": "Keys",
+          "pictograma": "key_1",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Teléfono",
+          "en": "Phone",
+          "pictograma": "telephone_mobile_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cartera",
+          "en": "Wallet",
+          "pictograma": "wallet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Abono de transporte",
+          "en": "Travel pass",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-05",
+      "categoria": "Mañana / salida de casa",
+      "es": "Ponerse el abrigo y salir",
+      "en": "Put on your coat and leave",
+      "dificultad": "transición; secuenciación",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el tiempo",
+          "en": "Check the weather",
+          "pictograma": "change_weather_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ponerse el abrigo",
+          "en": "Put on your coat",
+          "pictograma": "put_on_coat_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Coger la mochila",
+          "en": "Take your bag",
+          "pictograma": "school_bag",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Abrir la puerta",
+          "en": "Open the door",
+          "pictograma": "door",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Salir",
+          "en": "Go out",
+          "pictograma": "go_out_2_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-06",
+      "categoria": "Mañana / salida de casa",
+      "es": "Salir a tiempo",
+      "en": "Leave on time",
+      "dificultad": "gestión del tiempo; función ejecutiva; transición",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ver la hora de salida",
+          "en": "See the leaving time",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner un temporizador",
+          "en": "Set a timer",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Primero: lo imprescindible",
+          "en": "First: the essentials",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Después: lo opcional",
+          "en": "Then: the optional",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Salir",
+          "en": "Leave",
+          "pictograma": "go_out_2_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "MAN-07",
+      "categoria": "Mañana / salida de casa",
+      "es": "Transición casa → escuela o trabajo",
+      "en": "Transition home → school or work",
+      "dificultad": "transición; ansiedad anticipatoria; planificación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Salir de casa",
+          "en": "Leave home",
+          "pictograma": "door",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ir andando o en transporte",
+          "en": "Walk or take transport",
+          "pictograma": "walk_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Llegar",
+          "en": "Arrive",
+          "pictograma": "school",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Dejar las cosas",
+          "en": "Put your things away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Empezar",
+          "en": "Start",
+          "pictograma": "begin_start",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-01",
+      "categoria": "Comida / cocina",
+      "es": "Preparar un desayuno sencillo",
+      "en": "Make a simple breakfast",
+      "dificultad": "secuenciación; planificación; motricidad",
+      "nivel": "básica",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Sacar lo que necesitas",
+          "en": "Get what you need",
+          "pictograma": "cereal",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner el cereal en el bol",
+          "en": "Put cereal in the bowl",
+          "pictograma": "cereal_bowl",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Añadir la leche",
+          "en": "Add the milk",
+          "pictograma": "milk",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Coger la cuchara",
+          "en": "Take a spoon",
+          "pictograma": "spoon",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Comer",
+          "en": "Eat",
+          "pictograma": "eat_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Recoger",
+          "en": "Clear up",
+          "pictograma": "tidy_up_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-02",
+      "categoria": "Comida / cocina",
+      "es": "Preparar un bocadillo",
+      "en": "Make a sandwich",
+      "dificultad": "secuenciación; motricidad",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el pan",
+          "en": "Take the bread",
+          "pictograma": "bread",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Abrirlo",
+          "en": "Open it",
+          "pictograma": "knife",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Poner el relleno",
+          "en": "Add the filling",
+          "pictograma": "sandwich_cheese",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Cerrarlo",
+          "en": "Close it",
+          "pictograma": "sandwich",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Guardarlo o comerlo",
+          "en": "Wrap it or eat it",
+          "pictograma": "lunch_box",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-03",
+      "categoria": "Comida / cocina",
+      "es": "Poner la mesa",
+      "en": "Set the table",
+      "dificultad": "secuenciación; organización espacial",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Plato",
+          "en": "Plate",
+          "pictograma": "plate",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Tenedor",
+          "en": "Fork",
+          "pictograma": "fork",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cuchillo",
+          "en": "Knife",
+          "pictograma": "knife",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Vaso",
+          "en": "Glass",
+          "pictograma": "glass_,_drinking",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Servilleta",
+          "en": "Napkin",
+          "pictograma": "serviette",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Servilleta» usa serviette, que es el nombre británico del mismo objeto."
+        }
+      ]
+    },
+    {
+      "id": "COC-04",
+      "categoria": "Comida / cocina",
+      "es": "Recoger la mesa",
+      "en": "Clear the table",
+      "dificultad": "secuenciación; transición",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llevar los platos",
+          "en": "Take the plates",
+          "pictograma": "plate",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Tirar los restos",
+          "en": "Scrape the leftovers",
+          "pictograma": "waste_paper_bin",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Limpiar la mesa",
+          "en": "Wipe the table",
+          "pictograma": "wipe_table_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-05",
+      "categoria": "Comida / cocina",
+      "es": "Lavar los platos",
+      "en": "Wash up",
+      "dificultad": "secuenciación; sensorial; motricidad",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llenar el fregadero",
+          "en": "Fill the sink",
+          "pictograma": "sink",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner jabón",
+          "en": "Add washing-up liquid",
+          "pictograma": "washing_up_liquid",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Lavar",
+          "en": "Wash up",
+          "pictograma": "wash_up_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Aclarar",
+          "en": "Rinse",
+          "pictograma": "wash_up_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Secar y guardar",
+          "en": "Dry and put away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-06",
+      "categoria": "Comida / cocina",
+      "es": "Guardar la comida",
+      "en": "Put food away",
+      "dificultad": "organización; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Tapar la comida",
+          "en": "Cover the food",
+          "pictograma": "plate",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Abrir la nevera",
+          "en": "Open the fridge",
+          "pictograma": "fridge",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Guardar",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Cerrar la nevera",
+          "en": "Close the fridge",
+          "pictograma": "fridge",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-07",
+      "categoria": "Comida / cocina",
+      "es": "Usar el microondas con seguridad",
+      "en": "Use the microwave safely",
+      "dificultad": "secuenciación; seguridad; planificación",
+      "nivel": "media",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Poner la comida en un plato",
+          "en": "Put the food on a plate",
+          "pictograma": "plate",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Meterlo en el microondas",
+          "en": "Put it in the microwave",
+          "pictograma": "microwave",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Poner el tiempo",
+          "en": "Set the time",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Esperar",
+          "en": "Wait",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Sacarlo con cuidado: quema",
+          "en": "Take it out carefully: it is hot",
+          "pictograma": "hot",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Comer",
+          "en": "Eat",
+          "pictograma": "eat_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-08",
+      "categoria": "Comida / cocina",
+      "es": "Seguir una receta visual sencilla",
+      "en": "Follow a simple visual recipe",
+      "dificultad": "secuenciación; memoria de trabajo; planificación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar todos los pasos",
+          "en": "Look at all the steps",
+          "pictograma": "recipe",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sacar los ingredientes",
+          "en": "Get the ingredients",
+          "pictograma": "food",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Hacer el paso 1",
+          "en": "Do step one",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Hacer el paso siguiente",
+          "en": "Do the next step",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Terminar",
+          "en": "Finish",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-09",
+      "categoria": "Comida / cocina",
+      "es": "Preparar la comida para llevar",
+      "en": "Pack a packed lunch",
+      "dificultad": "planificación; organización",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger la fiambrera",
+          "en": "Take the lunch box",
+          "pictograma": "lunch_box",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Meter la comida",
+          "en": "Put in the food",
+          "pictograma": "sandwich",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Meter la fruta",
+          "en": "Put in the fruit",
+          "pictograma": "fruit",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Meter la bebida",
+          "en": "Put in the drink",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Cerrar",
+          "en": "Close it",
+          "pictograma": "lunch_box",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "COC-10",
+      "categoria": "Comida / cocina",
+      "es": "Beber agua a lo largo del día",
+      "en": "Drink water through the day",
+      "dificultad": "interocepción; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llenar la botella",
+          "en": "Fill your bottle",
+          "pictograma": "glass_,_drinking",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Llenar la botella» pasa a «Llenar el vaso de agua» (drinking glass)."
+        },
+        {
+          "n": 2,
+          "es": "Beber por la mañana",
+          "en": "Drink in the morning",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Beber al mediodía",
+          "en": "Drink at midday",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Beber por la tarde",
+          "en": "Drink in the afternoon",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-01",
+      "categoria": "Casa",
+      "es": "Hacer la cama",
+      "en": "Make the bed",
+      "dificultad": "motricidad; secuenciación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Estirar la sábana",
+          "en": "Straighten the sheet",
+          "pictograma": "bed_time",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Sentarse en la cama» usa bed time. Existe make the bed para hacer la cama."
+        },
+        {
+          "n": 2,
+          "es": "Subir el edredón",
+          "en": "Pull up the duvet",
+          "pictograma": "blanket",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Subir el edredón» usa blanket (manta). Aproximación."
+        },
+        {
+          "n": 3,
+          "es": "Colocar la almohada",
+          "en": "Put the pillow in place",
+          "pictograma": "cushion_2",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Colocar la almohada» usa cushion (cojín). Aproximación."
+        },
+        {
+          "n": 4,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-02",
+      "categoria": "Casa",
+      "es": "Recoger una habitación",
+      "en": "Tidy a room",
+      "dificultad": "función ejecutiva; organización; iniciación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Elegir una zona",
+          "en": "Choose one area",
+          "pictograma": "clean_room",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ropa al cesto",
+          "en": "Clothes in the basket",
+          "pictograma": "laundry_basket",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Basura a la papelera",
+          "en": "Rubbish in the bin",
+          "pictograma": "waste_paper_bin",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Cada cosa a su sitio",
+          "en": "Everything in its place",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Mirar el resultado",
+          "en": "Look at the result",
+          "pictograma": "clean_room",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-03",
+      "categoria": "Casa",
+      "es": "Clasificar la ropa",
+      "en": "Sort the laundry",
+      "dificultad": "categorización; función ejecutiva",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ropa blanca",
+          "en": "Whites",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ropa de color",
+          "en": "Colours",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Ropa delicada",
+          "en": "Delicates",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Cada montón en su sitio",
+          "en": "Each pile in its place",
+          "pictograma": "laundry_basket",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-04",
+      "categoria": "Casa",
+      "es": "Poner la lavadora",
+      "en": "Put on a wash",
+      "dificultad": "secuenciación; planificación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Meter la ropa",
+          "en": "Put in the clothes",
+          "pictograma": "wash_clothes_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner el detergente",
+          "en": "Add the powder",
+          "pictograma": "washing_powder",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Elegir el programa",
+          "en": "Choose the programme",
+          "pictograma": "washing_machine",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Poner en marcha",
+          "en": "Start it",
+          "pictograma": "begin_start",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Poner un aviso para sacarla",
+          "en": "Set a reminder to take it out",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-05",
+      "categoria": "Casa",
+      "es": "Tender la ropa",
+      "en": "Hang out the washing",
+      "dificultad": "motricidad; secuenciación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Sacar la ropa",
+          "en": "Take out the washing",
+          "pictograma": "laundry_basket",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sacudirla",
+          "en": "Shake it out",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Colgarla",
+          "en": "Hang it up",
+          "pictograma": "hang_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Poner las pinzas",
+          "en": "Use the pegs",
+          "pictograma": "clothes_peg",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-06",
+      "categoria": "Casa",
+      "es": "Doblar la ropa",
+      "en": "Fold the clothes",
+      "dificultad": "motricidad; secuenciación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger una prenda",
+          "en": "Take one item",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Doblarla",
+          "en": "Fold it",
+          "pictograma": "fold_clothes_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Hacer un montón",
+          "en": "Make a pile",
+          "pictograma": "clothes_neat",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Guardarla",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-07",
+      "categoria": "Casa",
+      "es": "Guardar los objetos en su lugar",
+      "en": "Put things back in their place",
+      "dificultad": "organización; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger lo que está fuera de sitio",
+          "en": "Pick up what is out of place",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Mirar dónde va",
+          "en": "Look where it goes",
+          "pictograma": "cupboard",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Guardarlo",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-08",
+      "categoria": "Casa",
+      "es": "Sacar la basura",
+      "en": "Take out the rubbish",
+      "dificultad": "secuenciación; sensorial; transición",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Cerrar la bolsa",
+          "en": "Tie the bag",
+          "pictograma": "bin_bag",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Sacarla del cubo",
+          "en": "Take it out of the bin",
+          "pictograma": "waste_paper_bin",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Llevarla fuera",
+          "en": "Take it outside",
+          "pictograma": "put_out_rubbish_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Poner una bolsa nueva",
+          "en": "Put in a new bag",
+          "pictograma": "bin_bag",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-09",
+      "categoria": "Casa",
+      "es": "Separar para reciclar",
+      "en": "Sort the recycling",
+      "dificultad": "categorización; memoria de trabajo",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Papel",
+          "en": "Paper",
+          "pictograma": "recycle_bin",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Plástico",
+          "en": "Plastic",
+          "pictograma": "recycle_bin",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Vidrio",
+          "en": "Glass",
+          "pictograma": "recycle_bin",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Orgánico",
+          "en": "Food waste",
+          "pictograma": "waste_paper_bin",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Llevarlo al contenedor",
+          "en": "Take it to the bins",
+          "pictograma": "recycling_bins",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-10",
+      "categoria": "Casa",
+      "es": "Limpiar una superficie",
+      "en": "Clean a surface",
+      "dificultad": "motricidad; secuenciación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Quitar lo que hay encima",
+          "en": "Take things off",
+          "pictograma": "wipe_table_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Coger el paño",
+          "en": "Take the cloth",
+          "pictograma": "cleaner_spray",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Limpiar",
+          "en": "Wipe it",
+          "pictograma": "clean_window_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Volver a colocar",
+          "en": "Put things back",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-11",
+      "categoria": "Casa",
+      "es": "Pasar la aspiradora",
+      "en": "Vacuum",
+      "dificultad": "sensorial (ruido); secuenciación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ponerse protección auditiva si hace falta",
+          "en": "Use ear protection if you need it",
+          "pictograma": "headphones",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Recoger del suelo",
+          "en": "Pick things up off the floor",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Aspirar",
+          "en": "Vacuum",
+          "pictograma": "hoover_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Guardar la aspiradora",
+          "en": "Put the vacuum away",
+          "pictograma": "vacuum_cleaner_1",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-12",
+      "categoria": "Casa",
+      "es": "Regar las plantas",
+      "en": "Water the plants",
+      "dificultad": "memoria de trabajo; rutina periódica",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llenar la regadera",
+          "en": "Fill the watering can",
+          "pictograma": "watering_can",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Regar",
+          "en": "Water the plants",
+          "pictograma": "water_plants_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Guardar la regadera",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAS-13",
+      "categoria": "Casa",
+      "es": "Cuidar a un animal de compañía",
+      "en": "Look after a pet",
+      "dificultad": "rutina periódica; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Dar de comer",
+          "en": "Feed the animal",
+          "pictograma": "feed_dog_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner agua",
+          "en": "Give water",
+          "pictograma": "water",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Pasear o limpiar",
+          "en": "Walk or clean",
+          "pictograma": "walk_dog_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-01",
+      "categoria": "Estudio / trabajo",
+      "es": "Preparar el escritorio",
+      "en": "Set up your desk",
+      "dificultad": "organización; carga sensorial; iniciación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Quitar lo que no hace falta",
+          "en": "Clear what you do not need",
+          "pictograma": "desk",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner el material",
+          "en": "Put out your materials",
+          "pictograma": "pencil_case",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Poner agua",
+          "en": "Put water there",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Silenciar avisos",
+          "en": "Silence notifications",
+          "pictograma": "quiet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-02",
+      "categoria": "Estudio / trabajo",
+      "es": "Empezar una tarea",
+      "en": "Start a task",
+      "dificultad": "iniciación; función ejecutiva",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar la tarea",
+          "en": "Look at the task",
+          "pictograma": "worksheet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Elegir el primer paso",
+          "en": "Choose the first step",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Poner un temporizador corto",
+          "en": "Set a short timer",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Empezar",
+          "en": "Start",
+          "pictograma": "begin_start",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Parar y mirar qué llevas",
+          "en": "Stop and check",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-03",
+      "categoria": "Estudio / trabajo",
+      "es": "Dividir una tarea grande",
+      "en": "Break a big task down",
+      "dificultad": "función ejecutiva; planificación",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Escribir o dibujar la tarea entera",
+          "en": "Show the whole task",
+          "pictograma": "worksheet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Partirla en trozos",
+          "en": "Cut it into pieces",
+          "pictograma": "cut",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Ordenar los trozos",
+          "en": "Put the pieces in order",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Hacer uno",
+          "en": "Do one",
+          "pictograma": "work_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Marcarlo",
+          "en": "Tick it",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-04",
+      "categoria": "Estudio / trabajo",
+      "es": "Guardar los materiales",
+      "en": "Put your materials away",
+      "dificultad": "organización; transición",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Cerrar los libros",
+          "en": "Close the books",
+          "pictograma": "work_book",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Libros» usa work book (cuaderno de trabajo). Aproximación."
+        },
+        {
+          "n": 2,
+          "es": "Guardar el estuche",
+          "en": "Put away the pencil case",
+          "pictograma": "pencil_case",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Dejar la mesa despejada",
+          "en": "Leave the desk clear",
+          "pictograma": "desk",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-05",
+      "categoria": "Estudio / trabajo",
+      "es": "Entregar una tarea",
+      "en": "Hand in a task",
+      "dificultad": "memoria de trabajo; ansiedad",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Comprobar que está completa",
+          "en": "Check it is complete",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Poner tu nombre",
+          "en": "Put your name on it",
+          "pictograma": "write_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Llevarla o enviarla",
+          "en": "Take it or send it",
+          "pictograma": "envelope",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Comprobar que llegó",
+          "en": "Check it arrived",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-06",
+      "categoria": "Estudio / trabajo",
+      "es": "Transición descanso → trabajo",
+      "en": "Transition break → work",
+      "dificultad": "transición; iniciación",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Aviso de que queda poco",
+          "en": "Warning that the break is ending",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Guardar lo del descanso",
+          "en": "Put away the break things",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Beber agua",
+          "en": "Drink water",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Sentarse",
+          "en": "Sit down",
+          "pictograma": "sit_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Primer paso pequeño",
+          "en": "One small first step",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-07",
+      "categoria": "Estudio / trabajo",
+      "es": "Pedir una adaptación o ayuda",
+      "en": "Ask for an adjustment or help",
+      "dificultad": "comunicación; ansiedad; planificación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Elegir a quién preguntar",
+          "en": "Choose who to ask",
+          "pictograma": "ask_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Elegir el momento",
+          "en": "Choose the moment",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Decir qué necesitas",
+          "en": "Say what you need",
+          "pictograma": "talk_1_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Anotar lo acordado",
+          "en": "Write down what you agreed",
+          "pictograma": "write_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "EST-08",
+      "categoria": "Estudio / trabajo",
+      "es": "Seguir un horario del día",
+      "en": "Follow a day timetable",
+      "dificultad": "planificación; transición; memoria de trabajo",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el horario",
+          "en": "Look at the timetable",
+          "pictograma": "calendar",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Mirar el horario» usa calendar. Aproximación: no es un horario de clase."
+        },
+        {
+          "n": 2,
+          "es": "Primero",
+          "en": "First",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Después",
+          "en": "Next",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Descanso",
+          "en": "Break",
+          "pictograma": "break_time_1",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Terminado",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-01",
+      "categoria": "Calle / comunidad",
+      "es": "Cruzar por el paso de peatones",
+      "en": "Cross at the crossing",
+      "dificultad": "seguridad; secuenciación; atención",
+      "nivel": "básica",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ir al paso de peatones",
+          "en": "Go to the crossing",
+          "pictograma": "zebra_crossing",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Parar en el bordillo",
+          "en": "Stop at the kerb",
+          "pictograma": "finish",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Parar» usa finish (terminado). No hay símbolo de stop en la colección."
+        },
+        {
+          "n": 3,
+          "es": "Mirar el semáforo",
+          "en": "Look at the lights",
+          "pictograma": "traffic_lights",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Mirar a los dos lados",
+          "en": "Look both ways",
+          "pictograma": "look_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Cruzar andando",
+          "en": "Walk across",
+          "pictograma": "walk_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-02",
+      "categoria": "Calle / comunidad",
+      "es": "Esperar el turno",
+      "en": "Wait your turn",
+      "dificultad": "espera; regulación; carga sensorial",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ponerse en la fila",
+          "en": "Join the queue",
+          "pictograma": "queue_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Esperar",
+          "en": "Wait",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Avanzar cuando avance la fila",
+          "en": "Move when the queue moves",
+          "pictograma": "walk_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Tu turno",
+          "en": "Your turn",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-03",
+      "categoria": "Calle / comunidad",
+      "es": "Usar el transporte público",
+      "en": "Use public transport",
+      "dificultad": "planificación; carga sensorial; orientación",
+      "nivel": "compleja",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar la línea y la parada",
+          "en": "Check the line and the stop",
+          "pictograma": "bus",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ir a la parada",
+          "en": "Go to the stop",
+          "pictograma": "get_on_bus_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Ir a la parada» pasa a «Subir al autobús» (get on bus)."
+        },
+        {
+          "n": 3,
+          "es": "Esperar",
+          "en": "Wait",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Validar el billete",
+          "en": "Use your ticket",
+          "pictograma": "bank_card",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Validar el billete» pasa a «Pasar la tarjeta» (bank card): el abono suele ser una tarjeta."
+        },
+        {
+          "n": 5,
+          "es": "Sentarse o agarrarse",
+          "en": "Sit or hold on",
+          "pictograma": "sit_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Bajar en tu parada",
+          "en": "Get off at your stop",
+          "pictograma": "bus",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-04",
+      "categoria": "Calle / comunidad",
+      "es": "Subir y bajar del autobús o metro",
+      "en": "Get on and off the bus or metro",
+      "dificultad": "secuenciación; carga sensorial",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Dejar salir primero",
+          "en": "Let people off first",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Subir",
+          "en": "Get on",
+          "pictograma": "bus",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Validar",
+          "en": "Tap your card",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Buscar sitio",
+          "en": "Find a place",
+          "pictograma": "sit_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Bajar",
+          "en": "Get off",
+          "pictograma": "door",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-05",
+      "categoria": "Calle / comunidad",
+      "es": "Comprar en una tienda",
+      "en": "Shop in a shop",
+      "dificultad": "planificación; carga sensorial; comunicación",
+      "nivel": "media",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Llevar la lista",
+          "en": "Take your list",
+          "pictograma": "notepad",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Llevar la lista» usa notepad (bloc). No hay lista de la compra específica."
+        },
+        {
+          "n": 2,
+          "es": "Coger una cesta",
+          "en": "Take a basket",
+          "pictograma": "basket",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Buscar las cosas",
+          "en": "Find the items",
+          "pictograma": "shop",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ir a la caja",
+          "en": "Go to the till",
+          "pictograma": "queue_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Ir a la caja» pasa a «Ponerse en la fila» (queue). No hay símbolo de caja registradora."
+        },
+        {
+          "n": 5,
+          "es": "Pagar",
+          "en": "Pay",
+          "pictograma": "money",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Guardar la compra",
+          "en": "Pack your shopping",
+          "pictograma": "basket",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Guardar la compra» usa basket (cesta), ya presente en la rutina."
+        }
+      ]
+    },
+    {
+      "id": "CAL-06",
+      "categoria": "Calle / comunidad",
+      "es": "Pagar",
+      "en": "Pay",
+      "dificultad": "cálculo; ansiedad; motricidad",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Sacar la tarjeta o el dinero",
+          "en": "Take out your card or money",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Mirar el importe",
+          "en": "Look at the amount",
+          "pictograma": "money",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Pagar",
+          "en": "Pay",
+          "pictograma": "money",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Coger el cambio",
+          "en": "Take the change",
+          "pictograma": "money",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Coger el cambio» pasa a «Coger el dinero» (money): no hay símbolo de monedas sueltas."
+        },
+        {
+          "n": 5,
+          "es": "Guardar la cartera",
+          "en": "Put your wallet away",
+          "pictograma": "wallet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-07",
+      "categoria": "Calle / comunidad",
+      "es": "Guardar el ticket y el cambio",
+      "en": "Keep the receipt and change",
+      "dificultad": "organización; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el ticket",
+          "en": "Take the receipt",
+          "pictograma": "wallet",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Coger el ticket» se funde con «Guardarlo en la cartera» (wallet). Un paso menos."
+        },
+        {
+          "n": 2,
+          "es": "Guardarlo en un sitio fijo",
+          "en": "Put it in one fixed place",
+          "pictograma": "wallet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Guardar el cambio",
+          "en": "Put the change away",
+          "pictograma": "money",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Coger el cambio» pasa a «Coger el dinero» (money): no hay símbolo de monedas sueltas."
+        }
+      ]
+    },
+    {
+      "id": "CAL-08",
+      "categoria": "Calle / comunidad",
+      "es": "Pedir ayuda",
+      "en": "Ask for help",
+      "dificultad": "comunicación; ansiedad",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Buscar a alguien que trabaje allí",
+          "en": "Find someone who works there",
+          "pictograma": "find_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Buscar a alguien que trabaje allí» pasa a «Buscar a alguien» (find)."
+        },
+        {
+          "n": 2,
+          "es": "Enseñar la tarjeta o el pictograma",
+          "en": "Show your card or symbol",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Decir qué necesitas",
+          "en": "Say what you need",
+          "pictograma": "help_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Dar las gracias",
+          "en": "Say thank you",
+          "pictograma": "smile_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Dar las gracias» usa smile (sonreír). Aproximación clara: la etiqueta de texto dice gracias."
+        }
+      ]
+    },
+    {
+      "id": "CAL-09",
+      "categoria": "Calle / comunidad",
+      "es": "Orientarse en un lugar conocido",
+      "en": "Find your way in a familiar place",
+      "dificultad": "orientación; memoria; ansiedad",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Buscar un punto de referencia",
+          "en": "Find a landmark",
+          "pictograma": "find_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Buscar un punto de referencia» pasa a «Buscar» (find). También existe where y globe."
+        },
+        {
+          "n": 2,
+          "es": "Mirar el mapa o las flechas",
+          "en": "Look at the map or arrows",
+          "pictograma": "point_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Mirar el mapa o las flechas» pasa a «Señalar hacia dónde vas» (point)."
+        },
+        {
+          "n": 3,
+          "es": "Ir hacia allí",
+          "en": "Walk towards it",
+          "pictograma": "walk_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Comprobar que es el sitio",
+          "en": "Check it is the right place",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-10",
+      "categoria": "Calle / comunidad",
+      "es": "Ir a una cita médica",
+      "en": "Go to a medical appointment",
+      "dificultad": "planificación; ansiedad; comunicación",
+      "nivel": "compleja",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el día y la hora",
+          "en": "Check the day and time",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Llevar la documentación",
+          "en": "Take your documents",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Ir",
+          "en": "Travel there",
+          "pictograma": "bus",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Esperar",
+          "en": "Wait",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Entrar a la consulta",
+          "en": "Go in",
+          "pictograma": "doctor_1a",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Anotar lo que te han dicho",
+          "en": "Write down what you were told",
+          "pictograma": "write_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-11",
+      "categoria": "Calle / comunidad",
+      "es": "Salir del sitio cuando hay sobrecarga",
+      "en": "Leave when you are overloaded",
+      "dificultad": "sensorial; regulación; autodefensa",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Notar la señal del cuerpo",
+          "en": "Notice the body signal",
+          "pictograma": "body_outline",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Avisar o enseñar la tarjeta",
+          "en": "Tell someone or show your card",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Salir a un sitio tranquilo",
+          "en": "Go somewhere quiet",
+          "pictograma": "quiet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ponerse los auriculares",
+          "en": "Put on your headphones",
+          "pictograma": "headphones",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Esperar a estar mejor",
+          "en": "Wait until you feel better",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-01",
+      "categoria": "Tiempo / transiciones",
+      "es": "Prepararse para salir",
+      "en": "Get ready to go out",
+      "dificultad": "transición; planificación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Aviso: faltan 10 minutos",
+          "en": "Warning: ten minutes left",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Terminar lo que estás haciendo",
+          "en": "Finish what you are doing",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Coger tus cosas",
+          "en": "Take your things",
+          "pictograma": "school_bag",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Salir",
+          "en": "Go out",
+          "pictograma": "door",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-02",
+      "categoria": "Tiempo / transiciones",
+      "es": "Terminar una actividad",
+      "en": "Finish an activity",
+      "dificultad": "transición; regulación",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Aviso de que queda poco",
+          "en": "Warning that it is ending",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Guardar",
+          "en": "Put it away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Terminado",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Qué viene ahora",
+          "en": "What comes next",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-03",
+      "categoria": "Tiempo / transiciones",
+      "es": "Cambiar de tarea",
+      "en": "Switch task",
+      "dificultad": "transición; función ejecutiva",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Parar",
+          "en": "Stop",
+          "pictograma": "finish",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Parar» usa finish (terminado). No hay símbolo de stop en la colección."
+        },
+        {
+          "n": 2,
+          "es": "Guardar lo de la tarea anterior",
+          "en": "Put away the last task",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Mirar qué viene",
+          "en": "Look at what comes next",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Sacar lo nuevo",
+          "en": "Get out the new thing",
+          "pictograma": "worksheet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Empezar",
+          "en": "Start",
+          "pictograma": "begin_start",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-04",
+      "categoria": "Tiempo / transiciones",
+      "es": "Esperar",
+      "en": "Wait",
+      "dificultad": "espera; regulación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar cuánto falta",
+          "en": "See how long is left",
+          "pictograma": "timer_2",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Elegir algo que hacer mientras",
+          "en": "Choose something to do while you wait",
+          "pictograma": "work_book",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Libros» usa work book (cuaderno de trabajo). Aproximación."
+        },
+        {
+          "n": 3,
+          "es": "Esperar",
+          "en": "Wait",
+          "pictograma": "wait_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ya toca",
+          "en": "Now it is time",
+          "pictograma": "now",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-05",
+      "categoria": "Tiempo / transiciones",
+      "es": "Seguir una cuenta atrás visual",
+      "en": "Follow a visual countdown",
+      "dificultad": "gestión del tiempo; espera",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ver el tiempo entero",
+          "en": "See the whole time",
+          "pictograma": "timer_2",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ver cómo baja",
+          "en": "Watch it go down",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Aviso final",
+          "en": "Final warning",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Terminado",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-06",
+      "categoria": "Tiempo / transiciones",
+      "es": "Organizar la secuencia de la tarde",
+      "en": "Plan the afternoon sequence",
+      "dificultad": "planificación; función ejecutiva",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar lo que hay que hacer",
+          "en": "Look at what has to be done",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ponerlo en orden",
+          "en": "Put it in order",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Meter un descanso",
+          "en": "Put a break in",
+          "pictograma": "break_time_1",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Marcar lo hecho",
+          "en": "Tick what is done",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "TIE-07",
+      "categoria": "Tiempo / transiciones",
+      "es": "Primero → después",
+      "en": "First → then",
+      "dificultad": "secuenciación; transición",
+      "nivel": "básica",
+      "n_pasos": 2,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Primero",
+          "en": "First",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Después",
+          "en": "Then",
+          "pictograma": "next",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-01",
+      "categoria": "Noche / sueño",
+      "es": "Preparar el pijama",
+      "en": "Get your pyjamas ready",
+      "dificultad": "planificación; sensorial",
+      "nivel": "básica",
+      "n_pasos": 3,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Sacar el pijama",
+          "en": "Take out your pyjamas",
+          "pictograma": "pyjamas",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Dejarlo en la cama",
+          "en": "Leave it on the bed",
+          "pictograma": "bed_time",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Sentarse en la cama» usa bed time. Existe make the bed para hacer la cama."
+        },
+        {
+          "n": 3,
+          "es": "Ponérselo",
+          "en": "Put it on",
+          "pictograma": "pyjamas",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-02",
+      "categoria": "Noche / sueño",
+      "es": "Higiene nocturna",
+      "en": "Night-time hygiene",
+      "dificultad": "secuenciación; transición",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ir al baño",
+          "en": "Go to the toilet",
+          "pictograma": "toilet_,_go_to_the",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Lavarse los dientes",
+          "en": "Brush your teeth",
+          "pictograma": "brush_teeth_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Lavarse la cara",
+          "en": "Wash your face",
+          "pictograma": "wash_face_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ponerse el pijama",
+          "en": "Put on your pyjamas",
+          "pictograma": "pyjamas",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-03",
+      "categoria": "Noche / sueño",
+      "es": "Dejar preparadas las cosas del día siguiente",
+      "en": "Get tomorrow's things ready",
+      "dificultad": "planificación; memoria de trabajo",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ropa preparada",
+          "en": "Clothes ready",
+          "pictograma": "clothes_generic",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Mochila preparada",
+          "en": "Bag ready",
+          "pictograma": "school_bag",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Llaves y teléfono en su sitio",
+          "en": "Keys and phone in their place",
+          "pictograma": "key_1",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Listo",
+          "en": "Finished",
+          "pictograma": "finish",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-04",
+      "categoria": "Noche / sueño",
+      "es": "Apagar pantallas y luces",
+      "en": "Turn off screens and lights",
+      "dificultad": "transición; regulación; sensorial",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Aviso de última media hora",
+          "en": "Warning: last half hour",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Apagar la pantalla",
+          "en": "Turn off the screen",
+          "pictograma": "computer_1",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Bajar la luz",
+          "en": "Dim the light",
+          "pictograma": "lamp",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Apagar la luz",
+          "en": "Turn off the light",
+          "pictograma": "light",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-05",
+      "categoria": "Noche / sueño",
+      "es": "Acostarse",
+      "en": "Go to bed",
+      "dificultad": "transición; regulación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Ir a la cama",
+          "en": "Go to bed",
+          "pictograma": "bed_time",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Taparse",
+          "en": "Get under the covers",
+          "pictograma": "bed_time",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Sentarse en la cama» usa bed time. Existe make the bed para hacer la cama."
+        },
+        {
+          "n": 3,
+          "es": "Apagar la luz",
+          "en": "Turn off the light",
+          "pictograma": "light",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Dormir",
+          "en": "Sleep",
+          "pictograma": "sleep_female_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-06",
+      "categoria": "Noche / sueño",
+      "es": "Preparar el ambiente de descanso",
+      "en": "Set up a restful room",
+      "dificultad": "sensorial; regulación",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Bajar el ruido",
+          "en": "Lower the noise",
+          "pictograma": "quiet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Bajar la luz",
+          "en": "Lower the light",
+          "pictograma": "lamp",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Cerrar la cortina",
+          "en": "Close the curtains",
+          "pictograma": "curtains",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ponerse algo cómodo",
+          "en": "Put on something comfortable",
+          "pictograma": "pyjamas",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Descansar",
+          "en": "Rest",
+          "pictograma": "rest_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "NOC-07",
+      "categoria": "Noche / sueño",
+      "es": "Volver a la cama si te despiertas",
+      "en": "Go back to bed if you wake up",
+      "dificultad": "regulación; sueño",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar la hora",
+          "en": "Look at the time",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ir al baño si hace falta",
+          "en": "Go to the toilet if you need to",
+          "pictograma": "toilet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Beber un poco de agua",
+          "en": "Drink a little water",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Volver a la cama",
+          "en": "Go back to bed",
+          "pictograma": "bed_time",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Sentarse en la cama» usa bed time. Existe make the bed para hacer la cama."
+        },
+        {
+          "n": 5,
+          "es": "Descansar",
+          "en": "Rest",
+          "pictograma": "rest_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-01",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Tomar la medicación",
+      "en": "Take your medication",
+      "dificultad": "memoria de trabajo; rutina periódica",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el aviso",
+          "en": "Check the reminder",
+          "pictograma": "set_timer_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Coger la medicación",
+          "en": "Take the medicine",
+          "pictograma": "medicine",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Tomarla con agua",
+          "en": "Take it with water",
+          "pictograma": "drink",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Marcar que la has tomado",
+          "en": "Mark that you took it",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-02",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Prepararse para el dentista",
+      "en": "Get ready for the dentist",
+      "dificultad": "ansiedad anticipatoria; sensorial; planificación",
+      "nivel": "media",
+      "n_pasos": 6,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el día",
+          "en": "Check the day",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ver las fotos del sitio",
+          "en": "Look at photos of the place",
+          "pictograma": "dentist_1a",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Llevar auriculares o gafas de sol",
+          "en": "Take headphones or sunglasses",
+          "pictograma": "headphones",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Ir",
+          "en": "Go",
+          "pictograma": "bus",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Entrar",
+          "en": "Go in",
+          "pictograma": "door",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 6,
+          "es": "Salir y hacer algo tranquilo",
+          "en": "Leave and do something calm",
+          "pictograma": "quiet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-03",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Cargar el teléfono",
+      "en": "Charge your phone",
+      "dificultad": "memoria de trabajo; rutina periódica",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Coger el cargador",
+          "en": "Take the charger",
+          "pictograma": "telephone_mobile_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Enchufar el teléfono",
+          "en": "Plug in the phone",
+          "pictograma": "plug_2",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Dejarlo en un sitio fijo",
+          "en": "Leave it in one fixed place",
+          "pictograma": "table",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Cogerlo por la mañana",
+          "en": "Take it in the morning",
+          "pictograma": "morning",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-04",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Manejar el dinero de la semana",
+      "en": "Manage the week's money",
+      "dificultad": "cálculo; planificación; función ejecutiva",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar cuánto tienes",
+          "en": "See how much you have",
+          "pictograma": "money",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Separar lo fijo",
+          "en": "Set aside the fixed costs",
+          "pictograma": "cash_point",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Separar lo de la comida",
+          "en": "Set aside food money",
+          "pictograma": "food",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Lo que queda es lo libre",
+          "en": "What is left is free to spend",
+          "pictograma": "money",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Coger el cambio» pasa a «Coger el dinero» (money): no hay símbolo de monedas sueltas."
+        },
+        {
+          "n": 5,
+          "es": "Mirar a mitad de semana",
+          "en": "Check midweek",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-05",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Abrir un envase difícil",
+      "en": "Open a tricky package",
+      "dificultad": "motricidad fina; frustración",
+      "nivel": "media",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar por dónde se abre",
+          "en": "Look for the opening",
+          "pictograma": "open_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Mirar por dónde se abre» pasa a «Abrir» (open)."
+        },
+        {
+          "n": 2,
+          "es": "Usar tijeras si hace falta",
+          "en": "Use scissors if you need to",
+          "pictograma": "scissors",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Abrir",
+          "en": "Open it",
+          "pictograma": "open",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Guardar el resto",
+          "en": "Put the rest away",
+          "pictograma": "put_away_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-06",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Contestar a la puerta o al teléfono",
+      "en": "Answer the door or the phone",
+      "dificultad": "comunicación; ansiedad",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Suena",
+          "en": "It rings",
+          "pictograma": "telephone_handset",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Decidir si contestas ahora",
+          "en": "Decide whether to answer now",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Saludar",
+          "en": "Say hello",
+          "pictograma": "hello",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Escuchar",
+          "en": "Listen",
+          "pictograma": "hear_,_to",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Escuchar» usa el símbolo hear (oír). Concepto equivalente en la colección."
+        },
+        {
+          "n": 5,
+          "es": "Despedirse",
+          "en": "Say goodbye",
+          "pictograma": "finish",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Despedirse» pasa a «Terminar la llamada» (finish). No hay símbolo de adiós."
+        }
+      ]
+    },
+    {
+      "id": "OTR-07",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Usar una lista de la compra",
+      "en": "Use a shopping list",
+      "dificultad": "memoria de trabajo; organización",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar lo que falta",
+          "en": "See what you need",
+          "pictograma": "fridge",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Añadirlo a la lista",
+          "en": "Add it to the list",
+          "pictograma": "notepad",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Llevar la lista» usa notepad (bloc). No hay lista de la compra específica."
+        },
+        {
+          "n": 3,
+          "es": "Llevarla a la tienda",
+          "en": "Take it to the shop",
+          "pictograma": "shop",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Marcar lo cogido",
+          "en": "Tick what you picked up",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-08",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Descansar antes de agotarte",
+      "en": "Rest before you crash",
+      "dificultad": "interocepción; regulación; sensorial",
+      "nivel": "media",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Notar la señal del cuerpo",
+          "en": "Notice the body signal",
+          "pictograma": "body_outline",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Parar",
+          "en": "Stop",
+          "pictograma": "finish",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": "«Parar» usa finish (terminado). No hay símbolo de stop en la colección."
+        },
+        {
+          "n": 3,
+          "es": "Ir a un sitio tranquilo",
+          "en": "Go somewhere quiet",
+          "pictograma": "quiet",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Descansar",
+          "en": "Rest",
+          "pictograma": "rest_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Volver cuando puedas",
+          "en": "Come back when you can",
+          "pictograma": "clock",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-09",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Prepararse para un cambio previsto",
+      "en": "Get ready for a planned change",
+      "dificultad": "transición; ansiedad anticipatoria; planificación",
+      "nivel": "compleja",
+      "n_pasos": 5,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar qué va a cambiar",
+          "en": "Look at what will change",
+          "pictograma": "calendar",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ver fotos del sitio o la persona",
+          "en": "See photos of the place or person",
+          "pictograma": "photographs",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Hacer el plan en pasos",
+          "en": "Make the plan in steps",
+          "pictograma": "first",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Decidir el plan B",
+          "en": "Decide the plan B",
+          "pictograma": "help_,_to",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 5,
+          "es": "Hacerlo",
+          "en": "Do it",
+          "pictograma": "correct",
+          "estado": "POSSIBLE_ALTERNATIVE",
+          "reformulacion": null
+        }
+      ]
+    },
+    {
+      "id": "OTR-10",
+      "categoria": "Otras habilidades prácticas",
+      "es": "Recargar el abono de transporte",
+      "en": "Top up your travel card",
+      "dificultad": "memoria de trabajo; planificación",
+      "nivel": "básica",
+      "n_pasos": 4,
+      "cobertura": "COBERTURA_COMPLETA",
+      "pasos": [
+        {
+          "n": 1,
+          "es": "Mirar el saldo",
+          "en": "Check the balance",
+          "pictograma": "card",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 2,
+          "es": "Ir a la máquina",
+          "en": "Go to the machine",
+          "pictograma": "cash_point",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        },
+        {
+          "n": 3,
+          "es": "Pagar",
+          "en": "Pay",
+          "pictograma": "money",
+          "estado": "MATCH_CURRENT_SYSTEM",
+          "reformulacion": null
+        },
+        {
+          "n": 4,
+          "es": "Guardar la tarjeta",
+          "en": "Put the card away",
+          "pictograma": "wallet",
+          "estado": "MATCH_CURRENT_SYSTEM_AMPLIABLE",
+          "reformulacion": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "schema": "iris.rincon.copy/1",
+  "version": "1.0.0-frozen",
+  "frozen_on": "2026-09-23",
+  "status": "FROZEN_PENDING_CRISIS_COPY_REVIEW",
+  "rules": [
+    "ISO 24495-1: lo principal primero, frases cortas, una idea por instrucción",
+    "sin promesas de efecto ni términos clínicos",
+    "sin imperativos de calma ('cálmate', 'respira')",
+    "ES/EN con las mismas claves",
+    "los cambios posteriores requieren una versión nueva"
+  ],
+  "M-01": {
+    "title": {
+      "es": "Aquí puedes parar.",
+      "en": "You can stop here."
+    },
+    "lede": {
+      "es": "Elige una cosa. No tienes que hacer nada más.",
+      "en": "Choose one thing. You don't have to do anything else."
+    },
+    "opt.still": {
+      "es": "Oscurecer y quedarme quieto",
+      "en": "Dim the screen and stay still"
+    },
+    "opt.sound": {
+      "es": "Un sonido",
+      "en": "A sound"
+    },
+    "opt.shape": {
+      "es": "Una forma que se mueve despacio",
+      "en": "A shape that moves slowly"
+    },
+    "opt.person": {
+      "es": "Necesito a una persona",
+      "en": "I need a person"
+    },
+    "opt.all": {
+      "es": "Ver todo el Rincón",
+      "en": "See the whole Quiet space"
+    },
+    "exit": {
+      "es": "Salir",
+      "en": "Leave"
+    }
+  },
+  "M-03": {
+    "line": {
+      "es": "Puedes quedarte aquí el tiempo que necesites.",
+      "en": "You can stay here as long as you need."
+    },
+    "exit": {
+      "es": "Salir",
+      "en": "Leave"
+    },
+    "exit_label": {
+      "es": "Salir de la pantalla quieta",
+      "en": "Leave the still screen"
+    }
+  },
+  "M-04": {
+    "trigger": {
+      "es": "Si necesitas a una persona ahora",
+      "en": "If you need a person now"
+    },
+    "title": {
+      "es": "Si necesitas a una persona ahora",
+      "en": "If you need a person now"
+    },
+    "scope": {
+      "es": "Recursos de España.",
+      "en": "These services are in Spain."
+    },
+    "h.112": {
+      "es": "Si tú u otra persona estáis en peligro ahora mismo: 112.",
+      "en": "If you or someone else is in danger right now: 112."
+    },
+    "h.112.note": {
+      "es": "Emergencias. Gratis.",
+      "en": "Emergencies. Free."
+    },
+    "h.024": {
+      "es": "Si tienes pensamientos de suicidio, o te preocupa alguien: 024.",
+      "en": "If you are having thoughts of suicide, or you are worried about someone: 024."
+    },
+    "h.024.note": {
+      "es": "Gratis y confidencial, a cualquier hora. También por chat y en lengua de signos.",
+      "en": "Free and confidential, any time. Also by chat and in sign language."
+    },
+    "h.esperanza": {
+      "es": "Si necesitas hablar con alguien: Teléfono de la Esperanza, 717 003 717.",
+      "en": "If you need to talk to someone: Teléfono de la Esperanza, 717 003 717."
+    },
+    "h.anar": {
+      "es": "Si tienes menos de 18 años: Fundación ANAR, 900 20 20 10.",
+      "en": "If you are under 18: Fundación ANAR, 900 20 20 10."
+    },
+    "h.anar.note": {
+      "es": "Gratis y confidencial. También tiene chat.",
+      "en": "Free and confidential. There is also a chat."
+    },
+    "outside": {
+      "es": "Si estás fuera de España, usa los servicios de emergencia locales.",
+      "en": "If you are outside Spain, use your local emergency services."
+    },
+    "privacy": {
+      "es": "Este sitio no sabe si llamas ni a quién.",
+      "en": "This site does not know whether you call, or whom."
+    },
+    "close": {
+      "es": "Cerrar",
+      "en": "Close"
+    }
+  },
+  "M-06": {
+    "title": {
+      "es": "Una forma que se mueve despacio",
+      "en": "A shape that moves slowly"
+    },
+    "mode.look": {
+      "es": "Mirar la forma",
+      "en": "Watch the shape"
+    },
+    "mode.look.help": {
+      "es": "Solo mira cómo crece y se encoge. No tienes que hacer nada más.",
+      "en": "Just watch it grow and shrink. You do not have to do anything else."
+    },
+    "mode.breathe": {
+      "es": "Respirar con la forma (opcional)",
+      "en": "Breathe with the shape (optional)"
+    },
+    "mode.breathe.help": {
+      "es": "Si te apetece, toma aire cuando crece y suéltalo despacio cuando se encoge. Si te molesta, vuelve a «Mirar la forma».",
+      "en": "If you like, breathe in as it grows and breathe out slowly as it shrinks. If it bothers you, go back to “Watch the shape”."
+    },
+    "speed.normal": {
+      "es": "Ritmo normal",
+      "en": "Normal pace"
+    },
+    "speed.slow": {
+      "es": "Más despacio",
+      "en": "Slower"
+    },
+    "duration.label": {
+      "es": "Cuánto rato",
+      "en": "How long"
+    },
+    "duration.open": {
+      "es": "Sin final",
+      "en": "No end"
+    },
+    "duration.1": {
+      "es": "1 minuto",
+      "en": "1 minute"
+    },
+    "duration.3": {
+      "es": "3 minutos",
+      "en": "3 minutes"
+    },
+    "duration.5": {
+      "es": "5 minutos",
+      "en": "5 minutes"
+    },
+    "notext": {
+      "es": "Sin texto",
+      "en": "No text"
+    },
+    "start": {
+      "es": "Empezar",
+      "en": "Start"
+    },
+    "stop": {
+      "es": "Parar",
+      "en": "Stop"
+    },
+    "ended": {
+      "es": "La forma se ha quedado quieta. Puedes seguir aquí.",
+      "en": "The shape has stopped. You can stay here."
+    },
+    "reduced": {
+      "es": "Tienes el movimiento reducido: la forma no se mueve. Puedes avanzar tú con «Siguiente».",
+      "en": "You have reduced motion on: the shape does not move. You can move on yourself with “Next”."
+    },
+    "next": {
+      "es": "Siguiente",
+      "en": "Next"
+    },
+    "step.grow": {
+      "es": "La forma crece.",
+      "en": "The shape grows."
+    },
+    "step.shrink": {
+      "es": "La forma se encoge.",
+      "en": "The shape shrinks."
+    }
+  },
+  "M-07": {
+    "title": {
+      "es": "Fijarse en lo que hay alrededor",
+      "en": "Notice what is around you"
+    },
+    "intro": {
+      "es": "Un paso cada vez. Puedes saltar cualquier paso.",
+      "en": "One step at a time. You can skip any step."
+    },
+    "choose": {
+      "es": "¿Cómo prefieres hacerlo?",
+      "en": "How would you like to do it?"
+    },
+    "variant.senses": {
+      "es": "Con los sentidos",
+      "en": "With the senses"
+    },
+    "variant.outside": {
+      "es": "Solo mirando fuera de ti",
+      "en": "Only looking around you"
+    },
+    "s.see": {
+      "es": "Busca 5 cosas que puedas ver.",
+      "en": "Find 5 things you can see."
+    },
+    "s.touch": {
+      "es": "Busca 4 cosas que puedas tocar.",
+      "en": "Find 4 things you can touch."
+    },
+    "s.hear": {
+      "es": "Busca 3 cosas que puedas oír.",
+      "en": "Find 3 things you can hear."
+    },
+    "s.smell": {
+      "es": "Busca 2 cosas que puedas oler.",
+      "en": "Find 2 things you can smell."
+    },
+    "s.taste": {
+      "es": "Busca 1 cosa que puedas saborear.",
+      "en": "Find 1 thing you can taste."
+    },
+    "o.blue": {
+      "es": "Busca 3 cosas azules.",
+      "en": "Find 3 blue things."
+    },
+    "o.corners": {
+      "es": "Cuenta 5 esquinas.",
+      "en": "Count 5 corners."
+    },
+    "o.round": {
+      "es": "Busca 2 cosas redondas.",
+      "en": "Find 2 round things."
+    },
+    "o.letters": {
+      "es": "Busca 1 letra escrita cerca de ti.",
+      "en": "Find 1 written letter near you."
+    },
+    "next": {
+      "es": "Siguiente",
+      "en": "Next"
+    },
+    "skip": {
+      "es": "Saltar este",
+      "en": "Skip this one"
+    },
+    "done": {
+      "es": "Ya está. Puedes quedarte aquí o salir.",
+      "en": "That's all. You can stay here or leave."
+    },
+    "exit": {
+      "es": "Salir",
+      "en": "Leave"
+    }
+  },
+  "M-08": {
+    "title": {
+      "es": "Tarjeta para enseñar",
+      "en": "Card to show"
+    },
+    "help": {
+      "es": "Elige una frase. Se verá en grande para enseñarla a otra persona.",
+      "en": "Choose a sentence. It will show in large type so you can show it to someone."
+    },
+    "c1": {
+      "es": "Necesito un momento.",
+      "en": "I need a moment."
+    },
+    "c2": {
+      "es": "Ahora no puedo hablar.",
+      "en": "I can't talk right now."
+    },
+    "c3": {
+      "es": "Por favor, menos ruido.",
+      "en": "Less noise, please."
+    },
+    "c4": {
+      "es": "Estoy bien. Solo necesito tiempo.",
+      "en": "I'm OK. I just need time."
+    },
+    "back": {
+      "es": "Volver",
+      "en": "Back"
+    },
+    "more": {
+      "es": "Más tarjetas en Tarjetas Iris",
+      "en": "More cards in Iris cards"
+    }
+  },
+  "PENDING": {
+    "_ref": "Textos pending_* y none_all ya congelados en modules.v1.json del candidato R32 (5a428880). No se duplican aquí."
+  }
+}
