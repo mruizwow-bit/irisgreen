@@ -1,0 +1,77 @@
+/* Iris Green R35 · visual harmonization with Sabik */
+:root{
+  --ig-r35-bg:#f7fbfd;
+  --ig-r35-bg2:#eef8fb;
+  --ig-r35-glass:rgba(255,255,255,.82);
+  --ig-r35-glass-strong:rgba(255,255,255,.92);
+  --ig-r35-line:rgba(49,105,137,.18);
+  --ig-r35-accent:#397da2;
+  --ig-r35-accent-2:#58a9c4;
+  --ig-r35-ink:#17395c;
+  --ig-r35-muted:#536b7d;
+  --paper:#f7fbfd;
+  --surface:rgba(255,255,255,.88);
+  --line:#d5e4eb;
+  --calm:#eef8fb;
+  --status:#eef8fb;
+  --violet:#397da2;
+  --cobalt:#397da2;
+  --focus:#286f97;
+  --ig-bg:#f7fbfd;
+  --ig-card:rgba(255,255,255,.88);
+  --ig-blue:#397da2;
+  --ig-violet:#397da2;
+  --ig-teal:#58a9c4;
+}
+html,body{
+  background:
+    radial-gradient(105% 78% at 88% -8%,rgba(171,224,246,.34),transparent 60%),
+    radial-gradient(90% 70% at 4% 8%,rgba(210,242,247,.46),transparent 62%),
+    linear-gradient(135deg,#fbfdff 0%,#f5fafc 52%,#eef8fb 100%) !important;
+  background-attachment:fixed !important;
+  color:var(--ig-r35-ink);
+}
+.ig-uh,.ig-global-shell,.qs-top,header.site,.site{
+  background:rgba(255,255,255,.84)!important;
+  border-color:var(--ig-r35-line)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(115%);
+  backdrop-filter:blur(18px) saturate(115%);
+}
+.ig-uh-brand img,
+img[src*="v40-brand-symbol.webp"],
+img[src*="brand-symbol.webp"]{display:none!important}
+.ig-uh-brand{gap:0!important}
+.ig-uh-music,.ig-uh-reading,.ig-subtabs a,.ig-global-links a,.ig-global-links button,
+.card,.world,.metric,.game,.item,.panel,.note,details,
+input,select,textarea,.btn,.qbtn,.lang,.cta.alt{
+  background:var(--ig-r35-glass)!important;
+  border-color:var(--ig-r35-line)!important;
+  box-shadow:0 18px 55px -46px rgba(23,57,92,.38);
+}
+.ig-subtabs,.hero,.legacy-note,.ground-step,.media-pending,.status,.tag{
+  background:rgba(244,250,252,.78)!important;
+  border-color:var(--ig-r35-line)!important;
+}
+.legacy-note{color:#31566d!important;border-left-color:#67abc3!important}
+.eyebrow,.tag,.muted,.intro p,.panel p{color:var(--ig-r35-muted)}
+a{color:#286f97}
+a:hover{color:#1e5879}
+.ig-uh-nav a:hover,.ig-global-links a:hover,.ig-global-links button:hover{
+  background:rgba(88,169,196,.10)!important
+}
+.ig-uh-nav a[aria-current="page"],.ig-subtabs a[aria-current="page"],
+.btn.primary,.qbtn.primary,.cta,.site nav a[aria-current="page"]{
+  background:#17395c!important;color:#fff!important;border-color:#17395c!important
+}
+body.mundos{background:
+    radial-gradient(105% 78% at 88% -8%,rgba(171,224,246,.34),transparent 60%),
+    radial-gradient(90% 70% at 4% 8%,rgba(210,242,247,.46),transparent 62%),
+    linear-gradient(135deg,#fbfdff 0%,#f5fafc 52%,#eef8fb 100%)!important
+}
+.sky{--paper:#f7fbfd;--surface:rgba(255,255,255,.88);--ink:#17395c;--ink2:#36566c;--muted:#657d8e;--line:#d5e4eb;--status:#eef8fb;--focus:#286f97;--cobalt:#397da2}
+.skybox{--surface:#131A36}
+.still{background:#101a2a!important;color:#f6f8fb!important}
+.still p{color:#e2e8f0!important}
+.help{background:rgba(255,250,252,.9)!important}
+.help-item{background:rgba(255,255,255,.9)!important}
+@media(max-width:700px){html,body{background-attachment:scroll!important}}

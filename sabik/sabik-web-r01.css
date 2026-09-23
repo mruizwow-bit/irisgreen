@@ -1,0 +1,76 @@
+/* R01 integration: immutable B3 assets, layout responds to the actual panel. */
+.sabik-panel {
+  --sabik-ink: #0B2450;
+  --sabik-text: #0B2450;
+  --sabik-muted: #294A7A;
+  /* R25B A: reveal the real Iris page; the final A/B/C choice remains human. */
+  --sabik-web-surface: transparent;
+  background: var(--sabik-web-surface);
+  color: var(--sabik-text);
+}
+body.sabik-iris-page .sabik-widget-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+body.sabik-iris-page .sabik-widget-head .sabik-head-mark {
+  display: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  object-fit: contain;
+}
+.sabik-wordmark { width: min(100%, 132px); height: auto; object-fit: contain; }
+body.sabik-iris-page .sabik-panel.is-collapsed .sabik-widget-head {
+  grid-template-columns: 64px auto;
+}
+body.sabik-iris-page .sabik-panel.is-collapsed .sabik-head-mark { display: block; }
+.sabik-widget-body { container-type: inline-size; }
+.sabik-web-presentation {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  padding-block: .5rem 1rem;
+  border-bottom: 0;
+}
+body.sabik-iris-page .sabik-web-visual,
+body.sabik-iris-page.sabik-low-stim .sabik-web-visual {
+  box-sizing: border-box;
+  display: block;
+  width: min(100%, 544px);
+  max-width: 544px;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  /* Percent padding uses the whole parent width, shrinking the figure on
+     stacked/tablet panels. Cap padding at 8% of this 544px visual box. */
+  padding: clamp(24px, 8cqi, 43.52px);
+  opacity: 1;
+  filter: none;
+  transform: none;
+  background: none;
+  animation: none !important;
+  transition: none !important;
+}
+.sabik-web-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+  transform: none;
+  animation: none !important;
+  transition: none !important;
+}
+/* Iris declares color-scheme: light. DEC-093 retires the separate navy surface,
+   including in a dark OS preference. Keep the original wordmark presentation. */
+html[data-ig-contrast="on"] .sabik-panel { background: #FFFFFF; color: #0B2450; }
+@media (forced-colors: active) {
+  .sabik-panel { background: Canvas !important; color: CanvasText !important; }
+  .sabik-wordmark { display: none; }
+  .sabik-panel #sabik-widget-title { position: static; width: auto; height: auto; clip-path: none; margin: 0; overflow: visible; white-space: normal; color: CanvasText; }
+}

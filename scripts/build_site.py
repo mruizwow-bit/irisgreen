@@ -133,6 +133,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_420_relaciones.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Último paso: cerrar la deuda de las 24 plantillas sin cambiar sus interfaces.
     subprocess.run([sys.executable,str(ROOT/'scripts/finalize_dc_runtime_csp.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Mount the accepted Sabik component into the fully generated current Iris home.
+    subprocess.run([sys.executable,str(ROOT/'scripts/mount_sabik.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R35: harmonize the complete generated site with Sabik's light glass system.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_visual_harmonization.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/audit_template_runtime_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/check_csp_eval_scope.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
