@@ -1,0 +1,208 @@
+name: SEC-IW-02 PR233 Independent QA
+'on':
+  push:
+    branches:
+      - qa/sec-iw-02-pr233-independent-qa-20260923
+
+permissions:
+  contents: read
+
+jobs:
+  independent-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact PR233 candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: f526c4a9ad99c951493a1b4777bb6d0b254cf4c3
+          fetch-depth: 0
+          path: candidate
+          persist-credentials: false
+
+      - name: Checkout exact accepted R2 freeze
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 7477d799def6c3b4ad3a590480769b63f9c5724e
+          fetch-depth: 0
+          path: freeze
+          persist-credentials: false
+
+      - name: Verify PR233 identity, scope, tree, parent and blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/sec-iw-02-pr233
+          cd candidate
+          BASE=e48b51814afed825a92e83a2f6e51ee8a1c85e45
+          HEAD_EXPECT=f526c4a9ad99c951493a1b4777bb6d0b254cf4c3
+          TREE_EXPECT=e5bcc2b5ae7ee2ee5ad9d622f543569fea86ffcd
+
+          test "$(git rev-parse HEAD)" = "$HEAD_EXPECT"
+          test "$(git rev-parse HEAD^{tree})" = "$TREE_EXPECT"
+          test "$(git rev-parse HEAD^)" = "$BASE"
+          test "$(git rev-list --count "$BASE"..HEAD)" = "1"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+
+          python3 - <<'PY'
+          import subprocess, json
+          base='e48b51814afed825a92e83a2f6e51ee8a1c85e45'
+          expected=[
+            '.github/workflows/diagnostico-build-investigacion.yml',
+            '.github/workflows/publicar-investigacion-120.yml',
+            '.github/workflows/rutinas-visuales.yml',
+          ]
+          files=subprocess.check_output(['git','diff','--name-only',base+'...HEAD'],text=True).splitlines()
+          if files!=expected:
+              raise SystemExit('BLOCKED_SCOPE_DRIFT: '+repr(files))
+          blobs={p:subprocess.check_output(['git','rev-parse','HEAD:'+p],text=True).strip() for p in expected}
+          expected_blobs={
+            '.github/workflows/diagnostico-build-investigacion.yml':'946e92a94ca53174768cf1602b00d8dcf849135c',
+            '.github/workflows/publicar-investigacion-120.yml':'b667d1154b0becbf50d394eab31c93f4bf75feb7',
+            '.github/workflows/rutinas-visuales.yml':'c23f615b5f4ddcd111a2fca5fde3ee865f2f2f69',
+          }
+          if blobs!=expected_blobs:
+              raise SystemExit('candidate blob drift: '+json.dumps(blobs,sort_keys=True))
+          out={'candidate_head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+               'candidate_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+               'candidate_parent':subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(),
+               'changed_files':files,'blobs':blobs}
+          print(json.dumps(out,indent=2))
+          open('/tmp/sec-iw-02-pr233/identity.json','w').write(json.dumps(out,indent=2)+'\n')
+          PY
+
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/sec-iw-02-pr233/git-status-before.txt
+          test ! -s /tmp/sec-iw-02-pr233/git-status-before.txt
+
+      - name: Verify accepted R2 freeze identity and immutable blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd freeze
+          test "$(git rev-parse HEAD)" = "7477d799def6c3b4ad3a590480769b63f9c5724e"
+          test "$(git rev-parse HEAD^{tree})" = "ea629895dd84b695cd89a9be1d94f0bfc085a5e9"
+          test "$(git hash-object qa/sec-iw-02/actions-contract-v1.json)" = "860998c55282a070200d0dfb4725414846dec730"
+          test "$(git hash-object qa/sec-iw-02/run-actions-gate-v1.py)" = "042df1a4c5ad151f95352ba50b9000d26f3eba3b"
+          test "$(git hash-object qa/sec-iw-02/freeze-manifest-v1.json)" = "69024ef6c7b521c4f81dbaabf20b010d3cb02271"
+          test "$(git hash-object qa/sec-iw-02/verify-freeze-manifest-v1.py)" = "b616fc40cc54a7f0eb7e93a2ad24d3a61e83549e"
+          test "$(git hash-object .github/workflows/sec-iw-02-actions-freeze.yml)" = "a57e389d25f249c64b6682bf38fda4b0d3efbb6b"
+          test "$(git hash-object qa/sec-iw-02/README.md)" = "e4529e136afe2d4f6f587e4f2e4c22c89e056e7c"
+          python3 qa/sec-iw-02/verify-freeze-manifest-v1.py | tee /tmp/sec-iw-02-pr233/freeze-manifest-check.json
+
+      - name: Prepare exact YAML parser
+        run: python3 -m pip -q install pyyaml==6.0.2
+
+      - name: Parse all three candidate workflow YAML files
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          python3 - <<'PY' | tee /tmp/sec-iw-02-pr233/yaml-parse.json
+          import json, yaml
+          from pathlib import Path
+          paths=[
+            '.github/workflows/diagnostico-build-investigacion.yml',
+            '.github/workflows/publicar-investigacion-120.yml',
+            '.github/workflows/rutinas-visuales.yml',
+          ]
+          result={}
+          for p in paths:
+              text=Path(p).read_text(encoding='utf-8')
+              node=yaml.compose(text)
+              if node is None:
+                  raise SystemExit('YAML parse returned empty document: '+p)
+              result[p]='PASS'
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Execute exact accepted R2 candidate gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 freeze/qa/sec-iw-02/run-actions-gate-v1.py \
+            --phase candidate \
+            --contract freeze/qa/sec-iw-02/actions-contract-v1.json \
+            --root candidate \
+            --output /tmp/sec-iw-02-pr233/candidate-report.json
+
+      - name: Verify R2 is exactly 18 of 18 PASS
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee /tmp/sec-iw-02-pr233/verdict-summary.json
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/sec-iw-02-pr233/candidate-report.json').read_text())
+          cases=d['cases']
+          expected=[f'S{i:02d}' for i in range(1,19)]
+          got=list(cases)
+          passed=[cid for cid in expected if cases.get(cid,{}).get('pass') is True]
+          failed=[cid for cid in expected if cases.get(cid,{}).get('pass') is not True]
+          if got!=expected:
+              raise SystemExit('R2 case identity/order drift: '+repr(got))
+          summary={
+            'contract_id':d['contract_id'],
+            'phase':d['phase'],
+            'pass_count':len(passed),
+            'total':len(expected),
+            'failed':failed,
+            'errors':d['errors'],
+            'permissions':cases['S07'].get('permissions'),
+            'checkout_uses':cases['S06'].get('checkout_uses'),
+            'changed_files':cases['S15'].get('changed_files'),
+            'rollback':cases['S17'].get('rollback'),
+          }
+          print(json.dumps(summary,indent=2))
+          if len(passed)!=18 or failed or d['errors']:
+              raise SystemExit('BLOCKED_QA_GATE')
+          PY
+
+      - name: Git diff-check and clean-state proof before build
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/sec-iw-02-pr233/git-status-prebuild.txt
+          test ! -s /tmp/sec-iw-02-pr233/git-status-prebuild.txt
+
+      - name: Linux build exact candidate
+        working-directory: candidate
+        run: python3 scripts/build_site.py | tee /tmp/sec-iw-02-pr233/build-linux.log
+
+      - name: Clean-state, parent/tree and changed-files proof after build
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/sec-iw-02-pr233/git-status-postbuild.txt
+          test ! -s /tmp/sec-iw-02-pr233/git-status-postbuild.txt
+          cmp /tmp/sec-iw-02-pr233/git-status-prebuild.txt /tmp/sec-iw-02-pr233/git-status-postbuild.txt
+          test "$(git rev-parse HEAD)" = "f526c4a9ad99c951493a1b4777bb6d0b254cf4c3"
+          test "$(git rev-parse HEAD^{tree})" = "e5bcc2b5ae7ee2ee5ad9d622f543569fea86ffcd"
+          test "$(git rev-parse HEAD^)" = "e48b51814afed825a92e83a2f6e51ee8a1c85e45"
+          git diff --check e48b51814afed825a92e83a2f6e51ee8a1c85e45...HEAD
+          python3 - <<'PY' | tee /tmp/sec-iw-02-pr233/postbuild-proof.json
+          import subprocess,json
+          base='e48b51814afed825a92e83a2f6e51ee8a1c85e45'
+          files=subprocess.check_output(['git','diff','--name-only',base+'...HEAD'],text=True).splitlines()
+          expected=[
+            '.github/workflows/diagnostico-build-investigacion.yml',
+            '.github/workflows/publicar-investigacion-120.yml',
+            '.github/workflows/rutinas-visuales.yml',
+          ]
+          if files!=expected: raise SystemExit('BLOCKED_SCOPE_DRIFT after build')
+          print(json.dumps({'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+                            'tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+                            'parent':subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(),
+                            'changed_files':files,
+                            'clean':True},indent=2))
+          PY
+
+      - name: Upload independent QA evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sec-iw-02-pr233-independent-qa
+          path: /tmp/sec-iw-02-pr233
+          retention-days: 14
