@@ -32,19 +32,21 @@ body.sabik-iris-page .sabik-panel.is-collapsed .sabik-head-mark { display: block
   gap: 1rem;
   align-items: center;
   padding-block: .5rem 1rem;
-  border-bottom: 1px solid #D8E1EA;
+  border-bottom: 0;
 }
 body.sabik-iris-page .sabik-web-visual,
 body.sabik-iris-page.sabik-low-stim .sabik-web-visual {
   box-sizing: border-box;
   display: block;
-  width: min(100%, 320px);
-  max-width: 320px;
+  width: min(100%, 544px);
+  max-width: 544px;
   min-height: 0;
   height: auto;
   aspect-ratio: 1;
   margin: 0 auto;
-  padding: max(24px, 8%);
+  /* Percent padding uses the whole parent width, shrinking the figure on
+     stacked/tablet panels. Cap padding at 8% of this 544px visual box. */
+  padding: clamp(24px, 8cqi, 43.52px);
   opacity: 1;
   filter: none;
   transform: none;

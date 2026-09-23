@@ -865,7 +865,7 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
     max-width: 1535px;
     margin-left: calc(50% - 50vw + 32px);
     margin-right: 0;
-    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-columns: minmax(0, 1fr) 440px;
     grid-template-rows: auto auto auto auto;
     grid-template-areas:
       "hero sabik"
@@ -922,14 +922,14 @@ body.sabik-iris-page #home-view > .sabik-panel .sabik-widget-body {
   }
 }
 
-/* 1920 target: 1180 HOME + 32 gap + 368 rail = 1580. */
+/* Give Sabik a legible presence: 1180 HOME + 32 gap + 520 rail at 1920. */
 @media (min-width: 1600px) {
   body.sabik-iris-page #home-view {
-    width: 1580px;
-    max-width: 1580px;
-    margin-left: calc(50% - 790px);
+    width: min(1732px, calc(100vw - 64px));
+    max-width: 1732px;
+    margin-left: calc(50% - min(866px, 50vw - 32px));
     margin-right: 0;
-    grid-template-columns: minmax(0, 1180px) 368px;
+    grid-template-columns: minmax(0, 1180px) 520px;
     column-gap: 32px;
   }
 }

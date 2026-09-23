@@ -103,21 +103,21 @@ async function stacked(){
   origin='http://127.0.0.1:'+server.address().port;
   browser=await chromium.launch({channel:'chrome',headless:true});
   try{
-    await check('A02-L01','1920 lateral: HOME 1180 / gap 32 / rail 368',async()=>{
+    await check('A02-L01','1920 lateral: HOME 1180 / gap 32 / rail 520',async()=>{
       const g=await geometry(1920);
-      assert.equal(round(g.home.width),1580);
+      assert.equal(round(g.home.width),1732);
       assert.equal(round(g.hero.width),1180);
-      assert.equal(round(g.panel.width),368);
+      assert.equal(round(g.panel.width),520);
       assert.equal(g.gap,32);
       await shot('A02-1920-open');
       return {home:round(g.home.width),homeColumn:round(g.hero.width),gap:g.gap,rail:round(g.panel.width)};
     });
 
-    await check('A02-L02','1440 lateral: HOME 1012 / gap 24 / rail 340',async()=>{
+    await check('A02-L02','1440 lateral: HOME 912 / gap 24 / rail 440',async()=>{
       const g=await geometry(1440);
       assert.equal(round(g.home.width),1376);
-      assert.equal(round(g.hero.width),1012);
-      assert.equal(round(g.panel.width),340);
+      assert.equal(round(g.hero.width),912);
+      assert.equal(round(g.panel.width),440);
       assert.equal(g.gap,24);
       await shot('A02-1440-open');
       return {home:round(g.home.width),homeColumn:round(g.hero.width),gap:g.gap,rail:round(g.panel.width)};
@@ -209,7 +209,7 @@ async function stacked(){
       const after=await rect('#home-view>.hero');
       assert.ok(Math.abs(before.width-after.width)<1);
       const panel=await rect('.sabik-panel');
-      assert.equal(round(panel.width),340);
+      assert.equal(round(panel.width),440);
       await shot('A02-1440-collapsed');
       return {homeBefore:round(before.width),homeAfter:round(after.width),rail:round(panel.width)};
     });
