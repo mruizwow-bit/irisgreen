@@ -77,7 +77,7 @@ jobs:
           mkdir -p evidence
           sha256sum package-lock.json TOOLCHAIN.json PROVENANCE_PREDEPLOY.json evidence/BUILD_OUTPUT_HASHES.json evidence/PREDEPLOY_GATE.json > evidence/KEY_SHA256SUMS.txt
           git diff --check
-          git diff --name-status sabik-preview...HEAD > evidence/DIFF_NAME_STATUS.txt
+          git diff --name-status origin/sabik-preview...HEAD > evidence/DIFF_NAME_STATUS.txt
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
