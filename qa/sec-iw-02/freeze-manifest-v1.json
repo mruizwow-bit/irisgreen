@@ -1,5 +1,5 @@
 {
-  "schema": "SEC_IW_02_FREEZE_MANIFEST/1.0",
+  "schema": "SEC_IW_02_FREEZE_MANIFEST/1.1",
   "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
   "contract_id": "SEC-IW-02-ACTIONS-FREEZE-V1",
   "artifacts": [
@@ -9,7 +9,7 @@
     },
     {
       "path": "qa/sec-iw-02/README.md",
-      "blob_sha": "c5c2f4011eb81746c397b60beb623c6682656a23"
+      "blob_sha": "e4529e136afe2d4f6f587e4f2e4c22c89e056e7c"
     },
     {
       "path": "qa/sec-iw-02/actions-contract-v1.json",
@@ -17,7 +17,7 @@
     },
     {
       "path": "qa/sec-iw-02/run-actions-gate-v1.py",
-      "blob_sha": "d890ae598e3724b81846e4e8d40694b24b411716"
+      "blob_sha": "042df1a4c5ad151f95352ba50b9000d26f3eba3b"
     },
     {
       "path": "qa/sec-iw-02/verify-freeze-manifest-v1.py",
@@ -43,5 +43,12 @@
     "merge": false,
     "deploy": false,
     "production": false
+  },
+  "r2_harness_fix": {
+    "parent_freeze_head": "c5b464b8d8a7414f09d9651375f47a3b6803247d",
+    "issue": "baseline git-show content was stripped while candidate file content preserved final LF",
+    "scope": "QA_ONLY_READER_FIX",
+    "contract_unchanged": true,
+    "target_workflow_blobs_unchanged": true
   }
 }
