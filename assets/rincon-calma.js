@@ -9,6 +9,14 @@
     credit: 'Escena de Iris Green. Se mueve despacio y no usa internet.',
     aquarium: 'Acuario: peces de colores nadan despacio entre plantas y burbujas.',
     bubbles: 'Tubo de burbujas: burbujas que suben despacio por una columna de luz.',
+    jellies: 'Medusas: medusas de luz que laten y suben despacio en agua oscura.',
+    fibre: 'Fibra óptica: cientos de hilos de luz que caen del techo y cambian de color despacio.',
+    sea: 'Mar: olas suaves que llegan a la orilla, con el sol bajo sobre el agua.',
+    rain: 'Lluvia en la ventana: gotas que resbalan despacio por un cristal, con luces desenfocadas detrás.',
+    river: 'Río en el bosque: agua que corre entre piedras, hierba que se mueve con el viento y hojas que caen.',
+    night: 'Cielo nocturno: estrellas y una aurora que ondula despacio sobre un lago rodeado de pinos.',
+    no3d: 'Esta escena necesita gráficos 3D y este navegador no los permite. Prueba con el acuario o el tubo de burbujas.',
+    nofull: 'Este navegador no permite la pantalla completa aquí.',
     unavailable: 'no disponible'
   } : {
     stopped: 'The shape has stopped. You can stay here.',
@@ -16,6 +24,14 @@
     credit: 'A scene made for this site. It moves slowly and uses no internet.',
     aquarium: 'Aquarium: coloured fish swim slowly among plants and bubbles.',
     bubbles: 'Bubble tube: bubbles rise slowly up a column of light.',
+    jellies: 'Jellyfish: glowing jellyfish pulse and rise slowly in dark water.',
+    fibre: 'Fibre optics: hundreds of strands of light fall from the ceiling and slowly change colour.',
+    sea: 'Sea: gentle waves reach the shore, with the sun low over the water.',
+    rain: 'Rain on the window: drops slide slowly down a pane of glass, with blurred lights behind.',
+    river: 'Stream in the forest: water runs over stones, grass moves in the wind and leaves fall.',
+    night: 'Night sky: stars and an aurora that ripples slowly over a lake ringed with pine trees.',
+    no3d: 'This scene needs 3D graphics and this browser does not allow them. Try the aquarium or the bubble tube.',
+    nofull: 'This browser does not allow full screen here.',
     unavailable: 'unavailable'
   };
   var $ = function (s) { return document.querySelector(s); };
@@ -42,6 +58,7 @@
       if (m.dataset.mix) mixOff(m);
     });
     media.add(self);
+    if (window.__igSilence) window.__igSilence(mix ? 'mix' : 'file');
     return nativePlay.apply(this, arguments);
   };
 
@@ -124,6 +141,162 @@
     });
   }
 
+
+  /* --- Sonidos creados en la página (assets/rincon-sonidos.js).
+         Una sola fuente a la vez: archivo, mezcla, sonido creado o sonido de escena. --- */
+  var SND = window.IGSonidos && window.IGSonidos.supported ? window.IGSonidos : null;
+  var activeKind = null, pausing = false;
+  var owners = {};                       // quién está sonando: {file, mix, gen, scene}: función para pararlo
+  function silence(except) {
+    Object.keys(owners).forEach(function (k) {
+      if (k === except) return;
+      if (except === 'mix' && k === 'mixgen') return;
+      if (except === 'mixgen' && k === 'mix') return;
+      var f = owners[k]; if (f) f();
+    });
+    if (except !== 'file' && except !== 'mix') media.forEach(function (m) {
+      if (m.paused) return;
+      if (except === 'mixgen' && m.dataset.mix) return;
+      m.pause(); if (m.dataset.mix) mixOff(m);
+    });
+    if (except === 'mixgen') media.forEach(function (m) { if (!m.paused && !m.dataset.mix) m.pause(); });
+  }
+  window.__igSilence = silence;
+
+  /* Sonido de la escena */
+  var SCENE_SOUND = { aquarium: 'escena-acuario', bubbles: 'escena-burbujas', jellies: 'escena-medusas', fibre: 'escena-fibra', sea: 'escena-mar', rain: 'escena-lluvia', river: 'escena-rio', night: 'escena-noche' };
+  var ambience = (function () {
+    var box = $('#sceneSound'), vol = $('#sceneVol'), h = null, playing = null;
+    function level() { return vol ? (vol.value / 100) * 0.9 : 0.4; }
+    function stop() { if (h) { h.stop(1.5); h = null; } playing = null; owners.scene = null; }
+    function sync() {
+      var want = SND && box && box.checked && activeKind ? activeKind : null;
+      if (want === playing) return;
+      stop();
+      if (!want) return;
+      silence('scene');
+      h = SND.start(SCENE_SOUND[want] || 'escena-burbujas', level(), 4); playing = want;
+      owners.scene = function () { stop(); if (box) box.checked = false; if (vol) vol.disabled = true; };
+    }
+    if (box && !SND) { box.disabled = true; }
+    if (box) box.addEventListener('change', function () { if (vol) vol.disabled = !box.checked; sync(); });
+    if (vol) vol.addEventListener('input', function () { if (h) h.setLevel(level()); });
+    return { sync: sync, stop: stop };
+  })();
+
+  /* Escuchar: sonidos y música creados aquí */
+  (function () {
+    var box = $('#genSounds'), list = $('#genList'), vol = $('#genVol');
+    if (!box || !list || !SND) return;
+    box.hidden = false;
+    var cur = null, curId = null, btns = [];
+    var FAM = ES ? { nat: 'Naturaleza', ruido: 'Ruido suave', mus: 'Música' } : { nat: 'Nature', ruido: 'Soft noise', mus: 'Music' };
+    var title = $('#audioTitle'), cred = $('#audioCredit');
+    var CREDIT = ES ? 'Creado en Iris Green · no es una grabación' : 'Made by Iris Green · not a recording';
+    function level() { return vol ? (vol.value / 100) * 0.9 : 0.45; }
+    function stop() {
+      if (cur) { cur.stop(1.5); cur = null; }
+      curId = null; owners.gen = null;
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+    }
+    ['nat', 'ruido', 'mus'].forEach(function (f) {
+      var h = document.createElement('h3'); h.className = 'qgen-h'; h.textContent = FAM[f]; list.appendChild(h);
+      SND.catalog.filter(function (c) { return c.fam === f; }).forEach(function (c) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'qchoice qgen'; b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<span class="qthumb qthumb-gen qthumb-' + f + '" aria-hidden="true"></span><span><strong></strong><small></small></span>';
+        b.querySelector('strong').textContent = ES ? c.es : c.en; b.querySelector('small').textContent = ES ? c.des : c.den;
+        var on = document.createElement('span'); on.className = 'qgen-on'; on.textContent = ES ? 'Sonando' : 'Playing'; b.querySelector('strong').appendChild(on);
+        b.addEventListener('click', function () {
+          if (curId === c.id) { stop(); if (title) title.textContent = ES ? 'Elige un sonido' : 'Choose a sound'; return; }
+          silence('gen'); stop();
+          cur = SND.start(c.id, level(), 4); curId = c.id; owners.gen = stop;
+          b.setAttribute('aria-pressed', 'true');
+          if (title) title.textContent = ES ? c.es : c.en;
+          if (cred) cred.textContent = CREDIT;
+        });
+        btns.push(b); list.appendChild(b);
+      });
+    });
+    if (vol) vol.addEventListener('input', function () { if (cur) cur.setLevel(level()); });
+    var stopA = $('#stopAudio');
+    if (stopA) stopA.addEventListener('click', function () { if (curId) { stop(); if (title) title.textContent = ES ? 'Elige un sonido' : 'Choose a sound'; } });
+    window.addEventListener('pagehide', function () { stop(); });
+  })();
+
+  /* Mezclar: también con los sonidos creados */
+  (function () {
+    var ml = $('#mixList');
+    if (!ml || !SND) return;
+    var rows = [], frag = document.createDocumentFragment();
+    SND.catalog.forEach(function (c, i) {
+      var name = ES ? c.es : c.en;
+      var row = document.createElement('div'); row.className = 'qmixrow';
+      var lab = document.createElement('label'); lab.setAttribute('for', 'mixg' + i);
+      var box = document.createElement('input'); box.type = 'checkbox'; box.id = 'mixg' + i;
+      var txt = document.createElement('span'), strong = document.createElement('strong'), small = document.createElement('small');
+      strong.textContent = name; small.textContent = 'Iris Green'; txt.appendChild(strong); txt.appendChild(small);
+      lab.appendChild(box); lab.appendChild(txt);
+      var range = document.createElement('input'); range.type = 'range'; range.min = 0; range.max = 100; range.value = 50; range.disabled = true;
+      range.setAttribute('aria-label', (ES ? 'Volumen de ' : 'Volume of ') + name);
+      row.appendChild(lab); row.appendChild(range); frag.appendChild(row);
+      var r = { box: box, range: range, h: null };
+      rows.push(r);
+      box.addEventListener('change', function () {
+        if (box.checked) { silence('mixgen'); range.disabled = false; r.h = SND.start(c.id, range.value / 100 * 0.9, 4); owners.mixgen = offAll; }
+        else { range.disabled = true; if (r.h) { r.h.stop(1.5); r.h = null; } if (!rows.some(function (x) { return x.h; })) owners.mixgen = null; }
+      });
+      range.addEventListener('input', function () { if (r.h) r.h.setLevel(range.value / 100 * 0.9); });
+    });
+    ml.insertBefore(frag, ml.firstChild);
+    function offAll() { rows.forEach(function (r) { if (r.h) { r.h.stop(1.5); r.h = null; } r.box.checked = false; r.range.disabled = true; }); owners.mixgen = null; }
+    var ms = $('#mixStop'); if (ms) ms.addEventListener('click', offAll);
+    window.addEventListener('pagehide', offAll);
+  })();
+
+  /* --- Mantener la pantalla encendida mientras miras una escena o haces la pausa --- */
+  var keepAwake = (function () {
+    var lock = null;
+    function want() { return !!activeKind || pausing; }
+    function update() {
+      if (!('wakeLock' in navigator)) return;
+      if (want() && !lock && document.visibilityState === 'visible') {
+        navigator.wakeLock.request('screen').then(function (l) { lock = l; l.addEventListener('release', function () { if (lock === l) lock = null; }); }).catch(function () {});
+      } else if (!want()) release();
+    }
+    function release() { if (lock) { var l = lock; lock = null; l.release().catch(function () {}); } }
+    document.addEventListener('visibilitychange', update);
+    return { update: update, release: release };
+  })();
+  function sceneEnded() { activeKind = null; ambience.sync(); keepAwake.update(); }
+
+  /* --- Ver a pantalla completa: la escena o el vídeo ocupan toda la pantalla. Esc para salir. --- */
+  var fullB = $('#sceneFull');
+  if (fullB) fullB.addEventListener('click', function () {
+    var st = $('#watchStage'), fn = st && (st.requestFullscreen || st.webkitRequestFullscreen);
+    if (!fn) { if (credit) credit.textContent = T.nofull; return; }
+    try { var r = fn.call(st); if (r && r.catch) r.catch(function () { if (credit) credit.textContent = T.nofull; }); } catch (e) { if (credit) credit.textContent = T.nofull; }
+  });
+
+  /* --- Mirar en grande: cuando hay un vídeo o una escena, la tarjeta se amplía y la imagen se ve arriba --- */
+  (function () {
+    var card = $('#watch'), st = $('#watchStage');
+    if (!card || !st || !window.MutationObserver) return;
+    var was = false;
+    function check() {
+      var on = !!st.querySelector('iframe, canvas');
+      if (on === was) return;
+      was = on;
+      card.classList.toggle('is-viewing', on);
+      if (on && !document.body.classList.contains('focus-mode')) {
+        requestAnimationFrame(function () {
+          var r = st.getBoundingClientRect();
+          if (r.top < 0 || r.bottom > window.innerHeight) st.scrollIntoView({ block: 'start' });
+        });
+      }
+    }
+    new MutationObserver(check).observe(st, { childList: true });
+  })();
+
   /* --- Mirar: escenas propias (acuario y tubo de burbujas) --- */
   var stage = $('#watchStage'), credit = $('#watchCredit');
   var PAL = {
@@ -156,12 +329,13 @@
     stage.innerHTML = '';
     var cv3 = document.createElement('canvas');
     cv3.setAttribute('role', 'img');
-    cv3.setAttribute('aria-label', kind === 'aquarium' ? T.aquarium : T.bubbles);
+    cv3.setAttribute('aria-label', T[kind] || T.bubbles);
     stage.appendChild(cv3);
     if (credit) credit.textContent = T.credit;
     need3d().then(function (lib) {
       if (startScene.token !== token || !cv3.isConnected) return;
       if (!lib.supported()) throw new Error('webgl');
+      activeKind = kind; ambience.sync(); keepAwake.update();
       scene3d = lib.start(kind, cv3, {
         speed: function () { return parseFloat(opt('sspeed', '0.5')) * (reduced() ? 0.4 : 1); },
         color: function () { return opt('scolor', 'blue'); },
@@ -173,6 +347,14 @@
     });
   }
   function start2d(kind, button) {
+    if (kind !== 'aquarium' && kind !== 'bubbles' && kind !== 'jellies' && kind !== 'fibre') {
+      stopScene(); stage.innerHTML = '';
+      var msg = document.createElement('div'); msg.className = 'empty-stage'; msg.setAttribute('role', 'status'); msg.textContent = T.no3d; stage.appendChild(msg);
+      if (credit) credit.textContent = '';
+      return;
+    }
+    activeKind = kind; ambience.sync(); keepAwake.update();
+    if (kind !== 'aquarium') kind = 'bubbles';
     stopScene();
     document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
     stage.innerHTML = '';
@@ -270,16 +452,18 @@
   var stopVideo = $('#stopVideo');
   if (stopVideo) stopVideo.addEventListener('click', function () {
     if (scene || scene3d) { stopScene(); stop3d(); startScene.token = null; if (credit) credit.textContent = ''; }
+    sceneEnded();
     document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
   });
   document.querySelectorAll('#watchList').forEach(function (wl) {
     wl.addEventListener('click', function () {
-      stopScene(); stop3d(); startScene.token = null;
+      stopScene(); stop3d(); startScene.token = null; sceneEnded();
       document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
     }, true);
   });
   window.addEventListener('pagehide', function () {
     stopScene(); stop3d(); if (pause3d) { pause3d.stop(); pause3d = null; }
+    activeKind = null; ambience.stop(); keepAwake.release();
     mixRows.forEach(function (r) { if (r.el) r.el.pause(); });
   });
 
@@ -318,7 +502,8 @@
       $('#pause').addEventListener(ev, function () { need3d().catch(function () {}); }, { once: true, passive: true });
     });
   }
-  var sB = $('#startBreath'); if (sB) sB.addEventListener('click', startPause3d);
+  var sB = $('#startBreath'); if (sB) sB.addEventListener('click', function () { pausing = true; keepAwake.update(); startPause3d(); });
+  var sS = $('#stopBreath'); if (sS) sS.addEventListener('click', function () { pausing = false; keepAwake.update(); });
 
   /* --- Pausa: modo (mirar / respirar) y duración --- */
   var label = $('#breathLabel');
