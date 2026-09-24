@@ -1,0 +1,64 @@
+{
+  "task_id": "R39-A1",
+  "owner": "Agente 1",
+  "authority": [
+    "DEC-119",
+    "issue #237",
+    "Control V114",
+    "Memory V106"
+  ],
+  "base_sha": "92f24c8c89e8d429a6936efd962ee3f5dad936f0",
+  "head_sha": "b0a55cb3ab94ad9f44d2ce3e8c1ce4513c9f475d",
+  "tree_sha": "81e1b6498cd9fe32ded1cae327c0c80a8b13ceea",
+  "files": [
+    {
+      "path": "cloud/n04-r38-library/src/source-groups.mjs",
+      "git_blob": "899edb2bf7fa06b3636a0ffddf5172886c53a8af",
+      "sha256": "5a76bec12c0c41ece573da4b372bcd19ddea6d5b1bb80dde1705ad55b4be3be0"
+    },
+    {
+      "path": "cloud/n04-r38-library/tests/source-groups.test.mjs",
+      "git_blob": "29c251b4a563d75904f714df7acb9b0442ddfb14",
+      "sha256": "4ca99d5501b174ecd509a75d038ca526921227b0c154c8a6ed161d51c783e57d"
+    }
+  ],
+  "sha256": {
+    "CHANGES.patch": "d83e6f16e3483498065661c18bb7c354496a5432055bdca4597b4fb0e2da9700"
+  },
+  "commands": [
+    "node --test cloud/n04-r38-library/tests/source-groups.test.mjs"
+  ],
+  "results": {
+    "node": "v22.16.0",
+    "tests_total": 8,
+    "tests_pass": 8,
+    "tests_fail": 0,
+    "grouping": "exact URL only",
+    "source_order": "first appearance preserved",
+    "citation_fields": [
+      "library_version",
+      "fragment_id",
+      "snippet",
+      "title",
+      "heading",
+      "url",
+      "source_type",
+      "concepts",
+      "score"
+    ],
+    "input_mutation": false,
+    "ranking_changed": false,
+    "retrieveForSabik_changed": false,
+    "library_engine_changed": false
+  },
+  "known_limitations": [
+    "groupSources is presentation-only and does not improve or reinterpret ranking/relevance",
+    "raw ranked candidates remain a separate caller-owned structure",
+    "no HTTP, frontend, timeout/cancel, deployment or visual acceptance is claimed by this delivery"
+  ],
+  "blocker": null,
+  "integration_target": [
+    "Codex",
+    "Agente 3"
+  ]
+}
