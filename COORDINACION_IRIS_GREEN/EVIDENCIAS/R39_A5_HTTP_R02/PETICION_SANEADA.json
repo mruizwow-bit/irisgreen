@@ -1,0 +1,41 @@
+{
+  "schema": "R39_A5_HTTP_R02_REQUEST_SANITIZED/1.0",
+  "target": {
+    "site": "sabik-asistente",
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "deploy_id": "6ab4d5047d3729fae7f122aa",
+    "function": "n04-library-qa",
+    "route": "/internal/n04/library/search"
+  },
+  "request": {
+    "method": "POST",
+    "content_type": "application/json",
+    "headers": {
+      "x-n04-smoke-token": "<EXISTING_QA_KEY_NOT_RECORDED>",
+      "cookie": "<TEAM_LOGIN_SESSION_NOT_EXPORTED_OR_RECORDED>"
+    },
+    "body": {
+      "q": "sobrecarga sensorial",
+      "limit": 3,
+      "version": "n04-es-20260916-56f72c4d3959"
+    }
+  },
+  "correlation_expected": {
+    "code_head": "66b6b551ad055ea9e367ebdff7246b381f4656d3",
+    "library_deploy_id": "6ab4c1a15435b93043ab3f6d",
+    "response_headers": [
+      "Content-Type",
+      "X-Sabik-Code-Head",
+      "X-Sabik-Library-Deploy"
+    ],
+    "response_body_fields": [
+      "library_version",
+      "corpus_sha256",
+      "deploy_id",
+      "source_git_blob",
+      "build_head",
+      "results"
+    ]
+  },
+  "note": "Template only. No HTTP request was executed by Agent 5 because no legitimate team-login HTTP invocation surface is exposed by the available tools and the previous unauthenticated probe already returned 401."
+}
