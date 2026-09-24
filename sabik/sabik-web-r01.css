@@ -22,6 +22,10 @@ body.sabik-iris-page .sabik-widget-head .sabik-head-mark {
   object-fit: contain;
 }
 .sabik-wordmark { width: min(100%, 132px); height: auto; object-fit: contain; }
+.sabik-motion-control { display: grid; gap: .35rem; margin-block: .75rem; }
+.sabik-motion-control select { font: inherit; color: inherit; background: #fff; border: 1px solid #64748b; border-radius: .4rem; padding: .55rem; width: 100%; max-width: 24rem; }
+.sabik-motion-control select:focus-visible { outline: 3px solid #0B2450; outline-offset: 3px; }
+.sabik-motion-control small { display: block; }
 body.sabik-iris-page .sabik-panel.is-collapsed .sabik-widget-head {
   grid-template-columns: 64px auto;
 }

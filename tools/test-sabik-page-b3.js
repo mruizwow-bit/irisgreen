@@ -75,6 +75,7 @@ async function run() {
   const pageJs = read(jsPath);
   const css = read(cssPath) + read(path.join(root, "sabik/sabik-web-r01.css"));
   const visualJs = read(path.join(root, "sabik/sabik-web-r01.js"));
+  const motion = require('../sabik/sabik-motion-r37');
 
   installCore();
   const data = await window.NEACoreV1.loadData(DATA_PATHS);
@@ -228,9 +229,11 @@ async function run() {
   );
 
   assert(
-    "B3-016 reduced motion selects the exact PRESENTE still",
-    visualJs.includes("prefers-reduced-motion: reduce") && visualJs.includes("still ? 'PRESENTE' : state") && visualJs.includes("igMotion"),
-    "System and manual reduced-motion paths are exercised in B3 browser tests."
+    "R37-016 reduced motion preserves meaning without NORMAL motion",
+    visualJs.includes("prefers-reduced-motion: reduce") && visualJs.includes("igMotion") &&
+      motion.effectiveLevel({systemReduced:true,motionLevel:'NORMAL'}) === 'REDUCIDO' &&
+      motion.effectiveLevel({globalOff:true}) === 'SIN_MOVIMIENTO',
+    "R37 supersedes the earlier single-PRESENTE fallback; exact static masters preserve all five states."
   );
 
   assert(
@@ -268,14 +271,14 @@ async function run() {
       pageJs.includes('panel.dataset.operation = state.presentation.operation') &&
       pageJs.includes('applySabikVisual(state.session && state.session.sabik_state, "procesando")') &&
       pageJs.includes('applySabikVisual(state.session.sabik_state, "pausa")') &&
-      visualJs.includes("current.interaction === 'procesando'") &&
-      visualJs.includes("current.interaction === 'pausa'"),
+      motion.project({interaction:'procesando'}) === 'presente' &&
+      motion.project({interaction:'pausa'}) === 'pausa',
     "Issue #150: S0 authority and separate actions; session preservation and processing/pause behavior run in S1 A04-A14/X03. No S2 timing requirement."
   );
 
   assert(
     "B3-020 protection stabilises B3 without tinting the master",
-    visualJs.includes("current.protection === 'riesgo' ? 'PRESENTE'") && !visualJs.includes(".style.filter") && !css.includes("blink") && !css.includes("shake"),
+    motion.project({protection:'riesgo',interaction:'correccion'}) === 'presente' && !visualJs.includes(".style.filter") && !css.includes("blink") && !css.includes("shake"),
     "Protection is separate from cognition; exact raster colours remain unchanged."
   );
 
@@ -336,9 +339,11 @@ async function run() {
   );
 
   assert(
-    "B3-027 R01 is static, with no voice or motion activation",
-    !css.includes("@keyframes sabik") && !visualJs.includes("speechSynthesis") && !visualJs.includes("SpeechRecognition") && css.includes("animation: none !important"),
-    "B3 motion and voice runtime are outside this integration."
+    "R37-027 PRESENTE is still; every other motion is finite, without voice",
+    !css.includes("@keyframes sabik") && !visualJs.includes("speechSynthesis") && !visualJs.includes("SpeechRecognition") &&
+      motion.STATES.every(s=>motion.transition(s,'presente','NORMAL').duration===0) &&
+      motion.STATES.every(s=>motion.transition('presente',s,'NORMAL').iterations===1),
+    "R37 explicitly authorizes finite five-state motion; voice remains outside this integration."
   );
 
   assert(

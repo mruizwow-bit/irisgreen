@@ -10,7 +10,7 @@ from html.parser import HTMLParser
 
 REPO=Path(__file__).resolve().parents[1]
 STYLES=['/sabik/sabik-page.css','/sabik/sabik-web-r01.css']
-SCRIPTS=['/sabik/sabik-web-r01.js','/sabik/sabik-page.js']
+SCRIPTS=['/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/sabik-page.js']
 
 class Document(HTMLParser):
     """Locate exact spans without reserializing approved HTML or inline JS."""
@@ -90,7 +90,7 @@ def mount(root):
     dedicated=edit(mounted,changes)
     route=root/'es/nea/index.html';route.parent.mkdir(parents=True,exist_ok=True)
     route.write_text(dedicated,encoding='utf-8',newline='\n')
-    return {'mounted_routes':['/','/es/nea/'],'existing_home_text_preserved':True,'existing_home_links_preserved':True,'core_modified':False,'inference_api_enabled':False,'motion_added':False,'voice_runtime_added':False}
+    return {'mounted_routes':['/','/es/nea/'],'existing_home_text_preserved':True,'existing_home_links_preserved':True,'core_modified':False,'inference_api_enabled':False,'motion_added':'R37_FINITE_FIVE_STATES','voice_runtime_added':False}
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--root',required=True)

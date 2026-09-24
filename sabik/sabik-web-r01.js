@@ -1,59 +1,66 @@
-/* B3 is a presentation of explicit operations, never a cognitive classifier. */
+/* R37 projects explicit functional actions onto the exact current Web PNGs. */
 (() => {
+  'use strict';
+  const motion = window.SabikMotionR37;
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const states = {
-    PRESENTE: ['presente', 'PRESENTE', 'PRESENT'],
-    ORIENTAR: ['orientar', 'ORIENTAR', 'GUIDE'],
-    TRANSICION: ['transicion', 'TRANSICIÓN', 'TRANSITION'],
-    PAUSA: ['pausa', 'PAUSA', 'PAUSED'],
-    CONFIRMAR: ['confirmar', 'CONFIRMAR', 'CONFIRM']
-  };
-  let current = { interaction: 'espera', protection: 'normal', lowIntensity: false };
-  let revision = 0;
   const masters = new Map();
-  function readyMaster(asset) {
-    if (!masters.has(asset)) {
-      const image = new Image(544, 544);
-      image.alt = '';
-      image.id = 'sabik-web-master';
-      image.decoding = 'async';
-      image.src = '/sabik/assets/web-r01/web_' + states[asset][0] + '.png';
-      masters.set(asset, image.decode().then(() => image).catch(() => null));
+  let current = {interaction: 'espera', protection: 'normal', lowIntensity: false};
+  let controller;
+  function readyMaster(state) {
+    if (!masters.has(state)) {
+      const image = new Image();
+      image.src = '/sabik/assets/web-r01/web_' + state + '.png';
+      const decoded = image.decode().then(() => image.src).catch(error => { masters.delete(state); throw error; });
+      masters.set(state, decoded);
     }
-    return masters.get(asset);
+    return masters.get(state);
+  }
+  function preferences() {
+    return {motionLevel: document.querySelector('#sabik-motion-level')?.value || 'NORMAL',
+      systemReduced: media.matches, globalOff: document.documentElement.dataset.igMotion === 'off', lowIntensity: current.lowIntensity};
+  }
+  function ensureController() {
+    if (controller) return controller;
+    const visual = document.querySelector('#sabik-hologram');
+    const master = document.querySelector('#sabik-web-master');
+    if (!visual || !master || !motion) return null;
+    controller = motion.createController({element: master, load: readyMaster, preferences,
+      apply(src, state) { master.src = src; visual.dataset.webAsset = state.toUpperCase(); },
+      describe(state, level, active) {
+        visual.dataset.webState = state.toUpperCase();
+        visual.dataset.motionLevel = level;
+        visual.dataset.motionActive = String(active);
+        const help = document.querySelector('#sabik-motion-help');
+        const en = document.documentElement.lang.startsWith('en');
+        if (help) help.textContent = ({NORMAL: en ? 'Brief motion only when needed.' : 'Movimiento breve solo cuando hace falta.',
+          REDUCIDO: en ? 'Reduced motion is active.' : 'Movimiento reducido activado.',
+          SIN_MOVIMIENTO: en ? 'Motion is off.' : 'Movimiento desactivado.'})[level];
+      }});
+    controller.setSabikState('presente', {force: true, static: true});
+    return controller;
   }
   function render(next) {
     if (next) current = next;
-    const visual = document.querySelector('#sabik-hologram');
-    const master = document.querySelector('#sabik-web-master');
-    if (!visual || !master) return;
-    // Protection stabilises the presence; it does not diagnose overload.
-    const state = current.interaction === 'pausa' ? 'PAUSA'
-      : current.protection === 'riesgo' ? 'PRESENTE'
-      : current.interaction === 'procesando' ? 'TRANSICION'
-      : current.interaction === 'confirmacion' ? 'CONFIRMAR'
-      : ['respuesta', 'correccion'].includes(current.interaction) ? 'ORIENTAR' : 'PRESENTE';
-    const still = media.matches || document.documentElement.dataset.igMotion === 'off' || current.lowIntensity;
-    const asset = still ? 'PRESENTE' : state;
-    const src = '/sabik/assets/web-r01/web_' + states[asset][0] + '.png';
-    const thisRevision = ++revision;
-    if (master.getAttribute('src') !== src) {
-      // Keep the complete current master visible until its replacement is decoded.
-      // A stale request must not overwrite a newer pause/reduced-motion state.
-      readyMaster(asset).then(image => {
-        if (!image || thisRevision !== revision) return;
-        document.querySelector('#sabik-web-master')?.replaceWith(image);
-        visual.dataset.webAsset = asset;
-      });
-    } else visual.dataset.webAsset = asset;
-    // B3 is decorative. Functional status and the existing live region carry meaning.
-    // Technical state names remain metadata, never user-facing labels or announcements.
-    visual.dataset.webState = state;
+    const c = ensureController();
+    if (c) return c.setSabikState(motion.project(current), {reason: 'functional-projection'});
   }
-  window.SabikWebPresentation = { render };
-  for (const asset of Object.keys(states)) readyMaster(asset);
-  media.addEventListener('change', () => render());
-  new MutationObserver(() => render()).observe(document.documentElement, {
-    attributes: true, attributeFilter: ['lang', 'data-ig-motion']
-  });
+  function contextChange() {
+    const c = ensureController();
+    if (!c) return;
+    const to = motion.project({...current, interaction: 'espera'});
+    if (to === 'pausa' || ['error', 'retrieving', 'composing'].includes(current.operation) || current.protection === 'riesgo' || (current.safety && current.safety !== 'normal')) return render();
+    return c.setSabikState('transicion', {to, reason: 'explicit-context-change', force: true});
+  }
+  window.SabikWebPresentation = Object.freeze({render, contextChange,
+    setSabikState(state, options) { return ensureController()?.setSabikState(state, options); },
+    snapshot() { return ensureController()?.snapshot(); }});
+  window.setSabikState = (state, options) => window.SabikWebPresentation.setSabikState(state, options);
+  function refresh() { return ensureController()?.refresh(); }
+  document.addEventListener('DOMContentLoaded', () => {
+    ensureController();
+    for (const state of motion.STATES) readyMaster(state).catch(() => {});
+    document.querySelector('#sabik-motion-level')?.addEventListener('change', refresh);
+  }, {once: true});
+  media.addEventListener('change', refresh);
+  new MutationObserver(refresh).observe(document.documentElement, {attributes: true, attributeFilter: ['data-ig-motion']});
 })();

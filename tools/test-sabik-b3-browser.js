@@ -66,11 +66,11 @@ async function assertFunctionalCopy(page) {
     return v;
    });
   }
-  await check('explicit query presents ORIENTAR without changing the Web identity',async()=>{
+  await check('R37 ordinary query stays PRESENTE without loading motion',async()=>{
    await fresh();await page.locator('#sabik-input').fill('Qué es el autismo');await page.locator('#sabik-submit').click();
    await page.waitForFunction(()=>document.querySelector('#sabik-output').getAttribute('aria-busy')==='false' && !document.querySelector('#sabik-output').hidden);
-   assert.equal(await page.locator('#sabik-hologram').getAttribute('data-web-state'),'ORIENTAR');
-   assert.match(await page.locator('#sabik-web-master').getAttribute('src'),/web_orientar\.png$/);
+   assert.equal(await page.locator('#sabik-hologram').getAttribute('data-web-state'),'PRESENTE');
+   assert.match(await page.locator('#sabik-web-master').getAttribute('src'),/web_presente\.png$/);
    assert((await page.locator('#sabik-answer').textContent()).length>0);
   });
   await check('pause preserves answer and exposes functional availability and resume control',async()=>{
@@ -81,10 +81,10 @@ async function assertFunctionalCopy(page) {
    await assertFunctionalCopy(page);
    assert.equal(await page.locator('#sabik-answer').textContent(),before);
   });
-  await check('system reduced motion uses exact PRESENTE and retains functional pause text',async()=>{
+  await check('R37 system reduced motion keeps the PAUSA master and functional pause text',async()=>{
    await page.emulateMedia({reducedMotion:'reduce'});
-   await page.waitForFunction(()=>document.querySelector('#sabik-hologram').dataset.webAsset==='PRESENTE');
-   assert.match(await page.locator('#sabik-web-master').getAttribute('src'),/web_presente\.png$/);
+   await page.waitForFunction(()=>document.querySelector('#sabik-hologram').dataset.webAsset==='PAUSA');
+   assert.match(await page.locator('#sabik-web-master').getAttribute('src'),/web_pausa\.png$/);
    assert.equal(await page.locator('#sabik-state-label').textContent(),'En pausa');
   });
   await check('English functional availability is localized without a technical B3 label',async()=>{
@@ -97,9 +97,11 @@ async function assertFunctionalCopy(page) {
    await page.waitForFunction(()=>document.querySelector('#sabik-hologram').dataset.webState==='CONFIRMAR');
    assert.equal(await page.locator('#sabik-output').isHidden(),true);
   });
-  await check('manual reduced motion uses the PRESENTE still',async()=>{
+  await check('R37 manual motion off swaps exact static states',async()=>{
    await page.evaluate(()=>document.documentElement.dataset.igMotion='off');
-   await page.waitForFunction(()=>document.querySelector('#sabik-hologram').dataset.webAsset==='PRESENTE');
+   await page.waitForFunction(()=>document.querySelector('#sabik-hologram').dataset.motionLevel==='SIN_MOVIMIENTO');
+   await page.evaluate(()=>window.setSabikState('confirmar',{hold:true}));
+   assert.match(await page.locator('#sabik-web-master').getAttribute('src'),/web_confirmar\.png$/);
    assert.equal(await page.locator('#sabik-hologram').getAttribute('data-web-state'),'CONFIRMAR');
    await assertFunctionalCopy(page);
   });

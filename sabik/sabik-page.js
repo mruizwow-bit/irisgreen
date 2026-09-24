@@ -57,6 +57,10 @@
     "Enviar": "Send",
     "Bajar intensidad": "Lower intensity",
     "Subir intensidad": "Raise intensity",
+    "Movimiento de Sabik": "Sabik motion",
+    "Normal": "Normal",
+    "Reducido": "Reduced",
+    "Sin movimiento": "No motion",
     "Más corto": "Shorter",
     "No me preguntes": "Do not ask me questions",
     "Dame una opción": "Give me one option",
@@ -123,7 +127,7 @@
   }
   function bindPanelLanguage() {
     const panel = document.querySelector(".sabik-panel");
-    const selectors = "#sabik-widget-title, .sabik-badge, .sabik-subtitle, #sabik-state-label, #sabik-status-text, .sabik-capability, label[for='sabik-input'], #sabik-input-help, #sabik-input-error, #sabik-output-title, #sabik-source-title, .sabik-memory-note, .sabik-limits, button";
+    const selectors = "#sabik-widget-title, .sabik-badge, .sabik-subtitle, #sabik-state-label, #sabik-status-text, .sabik-capability, label[for='sabik-input'], label[for='sabik-motion-level'], #sabik-motion-level option, #sabik-input-help, #sabik-input-error, #sabik-output-title, #sabik-source-title, .sabik-memory-note, .sabik-limits, button";
     for (const node of panel.querySelectorAll(selectors)) {
       if (node.id !== "sabik-content-language") uiText(node, node.textContent);
     }
@@ -138,6 +142,7 @@
       // Clear the old brief status instead of replaying it in another language.
       document.querySelector('#sabik-announcement').replaceChildren();
       localizePanel();
+      window.SabikWebPresentation?.contextChange();
     }).observe(document.documentElement, {attributes:true,attributeFilter:['lang']});
   }
   const INPUT_LIMIT = 2000;
@@ -256,7 +261,8 @@
     hologram.dataset.interactionState = interaction;
     hologram.dataset.protectionState = sabikState && sabikState.protection === "riesgo" ? "riesgo" : "normal";
     hologram.dataset.lowIntensity = String(lowIntensity);
-    window.SabikWebPresentation?.render({ interaction, protection: hologram.dataset.protectionState, lowIntensity });
+    window.SabikWebPresentation?.render({ interaction, protection: hologram.dataset.protectionState, lowIntensity,
+      operation: state.presentation?.operation, safety: state.machine?.safety });
   }
 
   function syncLowIntensityButton(sabikState) {
@@ -357,7 +363,8 @@
       answer.classList.add("is-warning");
       renderSabikState(plan.sabik_state, "Sabik no tiene fuente suficiente.", "respuesta");
     } else {
-      renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.", "respuesta");
+      renderSabikState(plan.sabik_state, "Sabik ha preparado una respuesta.",
+        plan.type === "clarifying_question" ? "aclaracion" : plan.type === "correction_acknowledged" ? "correccion" : "respuesta");
     }
     // La fuente va abajo como enlace: el texto no la repite en crudo.
     uiStrings.delete(answer);
@@ -564,6 +571,7 @@
         applySabikVisual(state.session.sabik_state, "espera");
         text("#sabik-state-label", "Disponible");
         setStatus("Sabik vuelve a estar disponible.");
+        window.SabikWebPresentation?.contextChange();
         announce("Sabik vuelve a estar disponible.");
       });
       focus("#sabik-clear");
@@ -589,6 +597,7 @@
       setVisibility();
       setStatus("Conversación reiniciada. Puedes escribir una nueva consulta.");
       syncAcceptedSafety();
+      window.SabikWebPresentation?.contextChange();
       announce("Conversación reiniciada.");
       });
       focus("#sabik-input");
@@ -670,6 +679,10 @@
       try {
         await dispatch({ type: state.machine.visibility === "collapsed" ? "EXPAND" : "COLLAPSE" });
         setVisibility();
+        if (state.machine.visibility === "expanded") window.SabikWebPresentation?.contextChange();
+        else window.SabikWebPresentation?.render({interaction: state.paused ? 'pausa' : 'espera',
+          protection: state.session.sabik_state.protection, lowIntensity: state.session.sabik_state.low_intensity,
+          operation: state.presentation.operation, safety: state.machine.safety});
       } finally {
         state.controlBusy = false;
         syncControls();
