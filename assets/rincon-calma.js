@@ -214,7 +214,7 @@
       SND.catalog.filter(function (c) { return c.fam === f; }).forEach(function (c) {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'qchoice qgen'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="qthumb qthumb-gen qthumb-' + f + '" aria-hidden="true"></span><span><strong></strong><small></small></span>';
-        b.querySelector('strong').textContent = ES ? c.es : c.en; b.querySelector('small').textContent = ES ? c.des : c.den;
+        b.dataset.soundFamily = FAM[f]; b.querySelector('strong').textContent = ES ? c.es : c.en; b.querySelector('small').textContent = ES ? c.des : c.den;
         var on = document.createElement('span'); on.className = 'qgen-on'; on.textContent = ES ? 'Sonando' : 'Playing'; b.querySelector('strong').appendChild(on);
         b.addEventListener('click', function () {
           if (curId === c.id) { stop(); if (title) title.textContent = ES ? 'Elige un sonido' : 'Choose a sound'; return; }
@@ -631,4 +631,30 @@
     }, min * 60000);
   });
   if (stopB) stopB.addEventListener('click', function () { clearTimeout(endTimer); });
+  /* Filter sounds without starting playback or saving the query. */
+  (function () {
+    var finder = $('#soundFinder'), input = $('#soundQuery'); if (!finder || !input) return;
+    finder.hidden = false;
+    function norm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
+    function filter() {
+      var query = norm(input.value), count = 0;
+      document.querySelectorAll('#genList .qchoice, #audioList .qchoice').forEach(function (b) {
+        var match = !query || norm(b.textContent + ' ' + (b.dataset.soundFamily || '')).includes(query);
+        b.hidden = !match; if (match) count++;
+      });
+      document.querySelectorAll('#genList .qgen-h').forEach(function (heading) {
+        var b = heading.nextElementSibling, visible = false;
+        while (b && !b.classList.contains('qgen-h')) { if (!b.hidden) visible = true; b = b.nextElementSibling; }
+        heading.hidden = !visible;
+      });
+      document.querySelectorAll('#genSounds, #audioList details').forEach(function (group) {
+        group.hidden = !group.querySelector('.qchoice:not([hidden])');
+        if (query && !group.hidden) group.open = true;
+      });
+      $('#soundResults').textContent = count ? count + (ES ? ' sonidos' : ' sounds') : (ES ? 'No hay sonidos con ese nombre.' : 'No sounds match that name.');
+    }
+    input.addEventListener('input', filter);
+    finder.querySelectorAll('[data-sound-filter]').forEach(function (button) { button.addEventListener('click', function () { input.value = button.dataset.soundFilter; filter(); }); });
+    new MutationObserver(function () { if (input.value) filter(); }).observe($('#audioList'), {childList:true});
+  })();
 })();

@@ -149,7 +149,7 @@
 
     /* canvas */
     var cv = document.createElement('canvas');
-    cv.className = 'cn-sky-canvas'; cv.tabIndex = 0; cv.setAttribute('role', 'img');
+    cv.className = 'cn-sky-canvas'; cv.tabIndex = 0; cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', T('Cielo nocturno. Usa los controles para elegir lugar y hora.', 'Night sky. Use the controls to choose a place and time.'));
     host.replaceChildren(cv);
     var ctx = cv.getContext('2d');
     function resize() {
