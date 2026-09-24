@@ -50,6 +50,19 @@ def run():
       panel=page.locator('.sabik-panel').bounding_box();content=page.locator('.iris-home-content').bounding_box();assert (panel['x']>content['x']+content['width']-2) if width==1440 else (panel['y']>=content['y']+content['height']-2)
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')
       assert page.locator('[data-iris-top="workshop"]').get_attribute('href')==('/en/workshop/' if i==1 else '/es/taller/')
+      assert page.locator('.feature-card .text').first.bounding_box()['width']>=135
+      if i==0:
+       page.locator('#reading-open').click()
+       page.get_by_role('button',name='Alto contraste',exact=True).click()
+       page.get_by_role('button',name='Botones más grandes',exact=True).click()
+       page.get_by_role('button',name='Aumentar el texto',exact=True).click()
+       page.get_by_role('button',name='Volver a la página',exact=True).click()
+       assert page.locator('html').get_attribute('data-ig-contrast')=='on'
+       assert page.locator('#sabik-reset').bounding_box()['height']>=56
+       assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(width,'reading overflow')
+       page.locator('#reading-open').click()
+       page.get_by_role('button',name='Restablecer ajustes',exact=True).click()
+       page.get_by_role('button',name='Volver a la página',exact=True).click()
      assert not errors,(route,errors)
      page.screenshot(path=str(OUT/f'{i:02d}-{width}.png'),full_page=False)
      row['passed']=True;rows.append(row);(OUT/'browser.json').write_text(json.dumps(rows,indent=2));ctx.close()

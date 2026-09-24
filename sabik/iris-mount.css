@@ -23,3 +23,8 @@
 @media print{#home-view{display:block}.sabik-panel{display:none!important}}
 
 #home-view{max-width:1600px;margin:0 auto;padding-inline:24px}#home-view .iris-home-content .wrap{width:100%}#home-view .small-grid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:1100px){#home-view .small-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:850px){#home-view{padding-inline:16px}}@media(max-width:480px){#home-view .small-grid{grid-template-columns:1fr}}
+/* Respond to the reading column, which can also be narrowed by Lectura. */
+.iris-home-content{container-type:inline-size}
+@container(max-width:900px){#home-view .featured-grid,#home-view .section-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.iris-home-content .feature-card{grid-template-columns:34px minmax(0,1fr) 16px;padding:18px 16px;gap:10px}.iris-home-content .icon-block{width:34px;height:36px}}
+@container(max-width:600px){#home-view .featured-grid,#home-view .section-grid{grid-template-columns:minmax(0,1fr)}}
+html[data-ig-text-enlarged] #home-view .featured-grid{grid-template-columns:minmax(0,1fr)}
