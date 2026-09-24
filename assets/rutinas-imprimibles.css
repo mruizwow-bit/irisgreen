@@ -1,98 +1,105 @@
-/* Iris Green · Imprimibles. La hoja se mide en cqw: pantalla, PDF e imagen usan las mismas proporciones. */
-.im-sec{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.15;margin:1rem 0 0;color:#17395c}
-.im-sub{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.35rem;margin:0}
-.im-card-img{grid-template-columns:repeat(4,1fr)!important}
-.im-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem;align-items:start}
-.im-side{display:flex;flex-direction:column;gap:1.25rem}
-@media(max-width:900px){.im-split{grid-template-columns:minmax(0,1fr)}}
-.im-pasos{margin:0;padding:0;list-style:none;display:grid;gap:.5rem;counter-reset:p}
-.im-pasos li{display:flex;align-items:center;gap:.75rem;counter-increment:p;font-weight:700}
-.im-pasos li::before{content:counter(p);min-width:1.9rem;height:1.9rem;border-radius:999px;background:#1f5f8b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.im-pasos img{width:3rem;height:3rem;object-fit:contain;background:#fff;border:1px solid #dfe6ef;border-radius:.5rem;padding:.15rem}
-.im-fmts,.im-opts{border:0;margin:0;padding:0;display:grid;gap:.5rem}
-.im-fmts legend,.im-opts legend{font-weight:700;margin-bottom:.4rem;padding:0}
-.im-fmt{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem .8rem;border:2px solid #d5e4eb;border-radius:1rem;background:#fff;cursor:pointer;min-height:44px}
-.im-fmt.is-on{border-color:#1f5f8b;background:#eef6fb}
-.im-fmt input,.im-chk input{width:1.25rem;height:1.25rem;margin:.15rem 0 0;accent-color:#1f5f8b;flex:none}
-.im-fmt>span{display:flex;flex-direction:column}.im-fmt>span>span{font-size:.92rem;color:#435268}
-.im-chk{display:flex;gap:.6rem;align-items:flex-start;min-height:44px;padding:.4rem 0;cursor:pointer}
-.im-sel{display:flex;flex-direction:column;gap:.25rem;font-weight:700}
-.im-sel select{min-height:44px;border:1px solid #b9cbd8;border-radius:.75rem;padding:0 .75rem;font:inherit;font-weight:400;background:#fff;color:#17395c}
-.im-status{margin:.5rem 0 0;min-height:1.5em;color:#435268}
-.im-mega-l{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
-.im-banco{grid-template-columns:repeat(auto-fill,minmax(min(100%,7.5rem),1fr))!important}
-.im-banco .jg-tile-l{font-size:.9rem}
-.im-fuentes{margin-top:1.5rem;padding:1rem 1.25rem;background:#fff;border:1px solid #d5e4eb;border-radius:1rem}
-.im-fuentes p{margin:.5rem 0 0;color:#435268}
-.im-prev{background:#eef3f8;border-radius:1rem;padding:1rem;max-height:80vh;overflow:auto}
-.im-print{container-type:inline-size;display:flex;flex-direction:column;gap:1rem}
-/* Hoja A4 */
-.im-sheet{position:relative;width:100%;aspect-ratio:210/297;background:#fff;color:#17395c;box-shadow:0 1px 3px rgba(23,57,92,.18);padding:6.5cqw 6.5cqw 11cqw;display:flex;flex-direction:column;gap:3cqw;font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;overflow:hidden;box-sizing:border-box}
-.im-h h2{margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:5.2cqw;line-height:1.1;color:#17395c}
-.im-h p{margin:1cqw 0 0;font-size:2.3cqw;color:#435268}
-.im-body{flex:1;min-height:0;display:flex;flex-direction:column}
-.im-grid{display:grid;gap:2.4cqw}.im-grid.g2{grid-template-columns:repeat(2,1fr)}.im-grid.g3{grid-template-columns:repeat(3,1fr)}.im-grid.g4{grid-template-columns:repeat(4,1fr)}
-.im-c{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.2cqw;border:.35cqw solid #b9cbd8;border-radius:2cqw;padding:2cqw 1.6cqw;background:#fff}
-.im-c img{width:100%;aspect-ratio:1;object-fit:contain}
-.im-l{font-size:2.6cqw;font-weight:700;line-height:1.25;text-align:center}
-.im-n{position:absolute;top:1cqw;left:1cqw;min-width:4.2cqw;height:4.2cqw;border-radius:999px;background:#1f5f8b;color:#fff;font-weight:700;font-size:2.3cqw;display:flex;align-items:center;justify-content:center}
-.im-cut .im-c{border-style:dashed;border-radius:0}
-.im-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.8cqw}
-.im-list li{display:flex;align-items:center;gap:3cqw;border-bottom:.25cqw solid #dfe6ef;padding-bottom:1.6cqw}
-.im-list img{width:10cqw;height:10cqw;object-fit:contain}
-.im-list .im-l{text-align:left;font-size:3cqw}
-.im-box{width:5.5cqw;height:5.5cqw;border:.5cqw solid #17395c;border-radius:1cqw;flex:none}
-.im-ft{flex:1;display:flex;align-items:center;justify-content:center;gap:2.5cqw}
-.im-ftc{flex:1;display:flex;flex-direction:column;gap:1.5cqw}
-.im-ft.n2 .im-ftc{max-width:38cqw}.im-ft.n3 .im-ftc{max-width:26cqw}
-.im-ftl{margin:0;font-weight:700;font-size:3.4cqw;text-align:center;color:#5a49a8}
-.im-ft .im-l{font-size:3.2cqw}
-.im-arrow{font-size:6cqw;color:#5c7391}
-.im-hh{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
-.im-hh>div{display:flex;flex-direction:column;gap:2cqw}
-.im-hh-done{border:.5cqw dashed #b9cbd8;border-radius:2cqw;padding:2cqw}
-.im-hh .im-ftl{text-align:left}
-.is-tira .im-body{align-items:center}
-.im-tira{width:34cqw;display:flex;flex-direction:column;gap:1.4cqw}
-.im-c.im-row{flex-direction:row;padding:1.2cqw 2cqw 1.2cqw 6cqw}
-.im-c.im-row img{width:11cqw;flex:none}.im-c.im-row .im-l{text-align:left}
-.im-sob{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.6cqw}
-.im-sob li{display:flex;align-items:center;gap:2.6cqw;border-bottom:.2cqw solid #dfe6ef;padding-bottom:1.4cqw}
-.im-sn{font-weight:700;font-size:3cqw;min-width:4cqw}
-.im-sl{flex:1;font-size:3.1cqw;line-height:1.3}
-.im-sob img{width:6.5cqw;height:6.5cqw;object-fit:contain;opacity:.9}
-.im-pie{position:absolute;left:6.5cqw;right:6.5cqw;bottom:4cqw;display:flex;justify-content:space-between;align-items:flex-end;gap:3cqw;border-top:.25cqw solid #b9cbd8;padding-top:1.4cqw;font-size:1.55cqw;line-height:1.35;color:#435268}
-.im-pie span{max-width:68%}
-.im-marca{font-size:1.9cqw;letter-spacing:.08em;color:#17395c;white-space:nowrap}
-/* Ahorrar tinta */
-.im-sheet.is-tinta img{filter:grayscale(1) contrast(1.15)}
-.im-sheet.is-tinta .im-n{background:#fff;color:#17395c;border:.35cqw solid #17395c}
-.im-sheet.is-tinta .im-ftl{color:#17395c}
-.im-sheet.is-tinta .im-c{border-color:#555}
-html[data-ig-contrast="on"] .im-fmt{border-color:#17395c}
-@media(forced-colors:active){.im-fmt.is-on{border:4px double Highlight}}
+/* Iris Green · Rutinas imprimibles. Hojas A4 listas para imprimir. Colores de la web; rem para respetar Lectura. */
+.im{--ink:#17395c;--ink2:#34495f;--vio:#5a49a8;--line:#dfe6ef;--soft:#eef3f8;color:var(--ink)}
+.im-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.im-tabs,.im-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.im-tabs{margin:1.25rem 0 1rem}
+.im-tab,.im-chip,.im-btn{min-height:2.75rem;display:inline-flex;align-items:center;gap:.45rem;padding:0 1rem;border-radius:999px;border:2px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.im-tab{border-radius:.9rem;font-size:1.02rem}
+.im-tab small{font-weight:400;color:var(--ink2)}
+.im-tab[aria-pressed="true"],.im-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.im-tab[aria-pressed="true"] small{color:#fff}
+.im-tab:hover,.im-chip:hover,.im-btn:hover{border-color:var(--vio)}
+.im-btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
+.im-btn.pri:hover{background:#0f2940}
+.im-tab:focus-visible,.im-chip:focus-visible,.im-btn:focus-visible,.im-card a:focus-visible,.im-q:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+.im-filters{display:grid;gap:.85rem;padding:1rem;border:1px solid var(--line);border-radius:1.1rem;background:#fff;margin-bottom:1.25rem}
+.im-row{display:grid;gap:.4rem}
+.im-lab{font-weight:700;font-size:.95rem}
+.im-q{min-height:2.9rem;padding:.4rem .8rem;border:2px solid var(--ink);border-radius:.7rem;font:inherit;max-width:28rem;width:100%;box-sizing:border-box;background:#fff;color:var(--ink)}
+.im-count{margin:.2rem 0 1rem;color:var(--ink2)}
+.im-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13.5rem),1fr));gap:1.1rem;margin:0;padding:0;list-style:none}
+.im-card{display:flex;flex-direction:column;gap:.55rem;padding:.75rem;border:1px solid var(--line);border-radius:1rem;background:#fff}
+.im-card h3{margin:0;font-size:1.05rem;line-height:1.3}
+.im-card h3 a{color:var(--ink);text-decoration:none}
+.im-card h3 a:hover{text-decoration:underline}
+.im-meta{margin:0;font-size:.88rem;color:var(--ink2)}
+.im-acts{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
+.im-acts .im-btn{min-height:2.75rem;padding:0 .85rem;font-size:.95rem}
+.im-fit{position:relative;width:100%;overflow:hidden;border:1px solid var(--line);border-radius:.4rem;background:#fff;box-shadow:0 1px 3px rgba(23,57,92,.08)}
+.im-fit.por{aspect-ratio:210/297}.im-fit.land{aspect-ratio:297/210}
+.im-fit>.im-sheet{position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--k,.25))}
+.im-empty{padding:1.5rem;border:1px dashed var(--line);border-radius:1rem;background:#fff}
+.im-detail{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+@media(max-width:52rem){.im-detail{grid-template-columns:1fr}}
+.im-side{display:grid;gap:1rem}
+.im-side h1{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(2rem,4vw,2.8rem);line-height:1.05;margin:0}
+.im-side h1:focus{outline:none}
+.im-box{padding:1rem;border:1px solid var(--line);border-radius:1rem;background:#fff;display:grid;gap:.6rem}
+.im-box h2{margin:0;font-size:1.05rem}
+.im-box ol{margin:0;padding-left:1.4rem}
+.im-check{display:flex;gap:.6rem;align-items:center;min-height:2.75rem;cursor:pointer}
+.im-check input{width:1.3rem;height:1.3rem;accent-color:var(--ink)}
+.im-pages{display:grid;gap:1rem}
+.im-note{margin:0;font-size:.92rem;color:var(--ink2)}
+/* La hoja: 210 × 297 mm. Todo en mm para que la pantalla y el papel coincidan. */
+.im-sheet{box-sizing:border-box;width:210mm;height:297mm;padding:14mm 13mm 11mm;background:#fff;color:#17395c;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+.im-sheet.land{width:297mm;height:210mm;padding:11mm 12mm 9mm}
+.im-sheet *{box-sizing:border-box}
+.im-sheet img{display:block;object-fit:contain}
+.im-bn img{filter:grayscale(1) contrast(1.1)}
+.sh-h{display:flex;justify-content:space-between;align-items:flex-end;gap:6mm;border-bottom:.8mm solid #17395c;padding-bottom:3mm;margin-bottom:6mm}
+.sh-t{margin:0;font-size:10.5mm;line-height:1.05;font-weight:700}
+.sh-name{font-size:4.2mm;white-space:nowrap}
+.sh-name span{display:inline-block;width:48mm;border-bottom:.35mm solid #17395c;margin-left:2mm}
+.sh-body{flex:1;min-height:0;display:grid;gap:4mm}
+.sh-f{display:flex;justify-content:space-between;gap:6mm;margin-top:5mm;padding-top:2.5mm;border-top:.3mm solid #c9d3de;font-size:2.7mm;line-height:1.35;color:#34495f}
+.sh-f b{white-space:nowrap;letter-spacing:.06em}
+/* Pasos */
+.st-grid{display:grid;gap:4mm;align-content:start}
+.st{display:grid;grid-template-columns:9mm 1fr;align-items:center;gap:3mm;border:.45mm solid #17395c;border-radius:4mm;padding:3mm 4mm}
+.st-n{width:9mm;height:9mm;border-radius:50%;background:#17395c;color:#fff;display:grid;place-items:center;font-weight:700;font-size:4.6mm}
+.st-c{display:grid;justify-items:center;gap:2mm;text-align:center}
+.st-c b{font-size:5.4mm;line-height:1.15}
+.st.row{grid-template-columns:9mm auto 1fr}
+.st.row .st-c{justify-items:start;text-align:left}
+/* Lista para marcar */
+.ls{display:grid;grid-template-columns:9mm 26mm 1fr 15mm;align-items:center;gap:4mm;border-bottom:.35mm solid #c9d3de;padding:2.5mm 0}
+.ls b{font-size:5.6mm}
+.ls i{width:13mm;height:13mm;border:.7mm solid #17395c;border-radius:2.5mm;justify-self:end}
+.ls-h{font-size:3.4mm;font-weight:700;text-align:right;letter-spacing:.08em;text-transform:uppercase}
+/* Tira */
+.tr{border:.5mm dashed #7d8da0;border-radius:3mm;padding:4mm;display:grid;gap:3mm}
+.tr-t{font-weight:700;font-size:4.8mm}
+.tr-s{display:grid;gap:2mm}
+.tr-s>div{display:grid;justify-items:center;gap:1.5mm;text-align:center;border:.35mm solid #17395c;border-radius:2.5mm;padding:2mm 1mm}
+.tr-s b{font-size:3.3mm;line-height:1.15}
+.tr-s span{font-size:3mm;font-weight:700}
+/* Tarjetas para recortar */
+.cd-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:0;border-top:.4mm dashed #7d8da0;border-left:.4mm dashed #7d8da0;flex:1}
+.cd{border-right:.4mm dashed #7d8da0;border-bottom:.4mm dashed #7d8da0;display:grid;justify-items:center;align-content:center;gap:2.5mm;padding:3mm;text-align:center}
+.cd b{font-size:5mm;line-height:1.15}
+.cut{font-size:3mm;color:#34495f;margin:0 0 2mm}
+/* Tableros */
+.bd{display:grid;gap:6mm;flex:1}
+.bd-col{display:grid;grid-template-rows:auto 1fr;gap:3mm;border:.6mm solid #17395c;border-radius:4mm;padding:4mm}
+.bd-col h3{margin:0;text-align:center;font-size:7mm;text-transform:uppercase;letter-spacing:.06em}
+.bd-slots{display:grid;gap:3mm}
+.bd-slot{border:.45mm dashed #7d8da0;border-radius:3mm;display:grid;place-items:center;color:#7d8da0;font-size:3mm;min-height:18mm}
+.bd-arrow{display:grid;place-items:center;font-size:14mm;color:#17395c}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:2.5mm;flex:1}
+.wk>div{display:grid;grid-template-rows:auto repeat(5,1fr);gap:2mm;border:.45mm solid #17395c;border-radius:3mm;padding:2mm}
+.wk h3{margin:0;text-align:center;font-size:4.2mm}
+.wk .bd-slot{min-height:0}
+#im-print{display:none}
 @media print{
- @page{size:A4;margin:0}
- html,body{background:#fff!important}
- body>*:not(main),.im-hero,.jg-atrib,#im-app .jg-ui>:not(.im-split):not(.im-prev-wrap),.im-split>:not(.im-prev-wrap),.im-prev-wrap>.im-sub,.jg-live{display:none!important}
- main,.jg-main,#im-app,.jg-ui,.im-split,.im-prev-wrap,.im-prev{display:block!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;box-shadow:none!important;max-width:none!important;max-height:none!important;overflow:visible!important;width:210mm!important}
- .im-print{display:block;width:210mm;gap:0}
- .im-sheet{width:210mm;height:296.5mm;aspect-ratio:auto;box-shadow:none;break-after:page;page-break-after:always}
- .im-sheet:last-child{break-after:auto;page-break-after:auto}
- *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ @page{size:A4 portrait;margin:0}
+ @page land{size:A4 landscape;margin:0}
+ html.im-printing body>*:not(#im-print){display:none!important}
+ html.im-printing #im-print{display:block!important}
+ html.im-printing body{background:#fff!important;margin:0!important;padding:0!important}
+ #im-print .im-sheet{break-after:page;page-break-after:always;box-shadow:none;border:0}
+ #im-print .im-sheet.land{page:land}
+ #im-print .im-sheet:last-child{break-after:auto;page-break-after:auto}
+ .im-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
-
-/* La hoja reparte su propio alto: las filas nunca pasan por debajo del pie. */
-.im-body{display:grid;grid-template-rows:minmax(0,1fr);min-height:0}
-.im-body>*{min-height:0}
-.im-fill{height:min(100%,calc(var(--r,1)*40cqw));grid-template-rows:repeat(var(--r,1),minmax(0,1fr));align-self:start}
-.im-fill .im-c,.im-tira .im-c{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;justify-items:center;align-items:center}
-.im-fill .im-c img{aspect-ratio:auto;width:100%;height:100%;min-height:0;object-fit:contain}
-.im-hh{height:100%;min-height:0}
-.im-hh>div:first-child{min-height:0}
-.im-hh>div:first-child>.im-fill{flex:1;height:auto;max-height:calc(var(--r,1)*30cqw)}
-.im-tira{height:min(100%,calc(var(--r,1)*15cqw));display:grid;grid-template-rows:repeat(var(--r,1),minmax(0,1fr));gap:1.2cqw;align-self:start}
-.im-c.im-row{grid-template-rows:none;grid-template-columns:auto minmax(0,1fr);gap:2cqw;justify-items:start;padding:.8cqw 2cqw .8cqw 6cqw}
-.im-c.im-row img{height:100%;width:auto;max-width:11cqw;aspect-ratio:1;min-height:0;object-fit:contain}
-.im-ft .im-c img{aspect-ratio:1;height:auto}
-@media print{.im-fill{height:min(100%,calc(var(--r,1)*84mm))}.im-tira{height:min(100%,calc(var(--r,1)*31mm))}}
+@media (prefers-reduced-motion:reduce){.im *{transition:none!important}}
