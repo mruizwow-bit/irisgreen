@@ -15,9 +15,10 @@ server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
 R={'phase':args.phase,'panels':[],'picture_games':[],'failures':[],'notes':['Non-modal reading and music: Tab is not trapped; Escape returns to their opener.','Large equivalent controls use the same game callbacks. Original picture rectangles are deliberately not enlarged over neighbouring objects.','External requests blocked. Not a WCAG certification or a screen-reader listening test.']}
 DYNAMIC=[p.relative_to(ROOT).as_posix() for p in [ROOT/'index.html',*sorted((ROOT/'es').rglob('*.html'))] if '<sc-if value="{{ a11yOpen }}"' in p.read_text()]
-assert len(DYNAMIC)==25
+assert DYNAMIC, "No se detectan páginas con preferencias"
 STATIC=['es/neurodiversidad/condiciones/index.html','es/neurodiversidad/condiciones/abuso-y-explotacion/index.html','es/situaciones/index.html','es/intereses/index.html','es/sitio-tranquilo/index.html','en/neurodiversity/conditions/index.html']
-PICTURES=['las-cinco-cosas','el-mapa-del-tesoro-de-casa']
+PICTURES=[]
+STATIC += ['es/recursos/juegos/index.html','es/recursos/rutinas-visuales/index.html']
 def url(path):return '/'+path.removesuffix('index.html')
 def rects(loc):return loc.evaluate_all('(els)=>els.map(e=>{let r=e.getBoundingClientRect();return {text:(e.getAttribute("aria-label")||e.textContent).trim(),x:r.x,y:r.y,w:r.width,h:r.height}})')
 def check_box(p,panel):
@@ -97,45 +98,6 @@ def run():
     except Exception as e:row['passed']=False;row['error']=str(e);R['failures'].append(row.copy())
     row['javascript_errors']=errors;row['audio_requests']=requests;R['panels'].append(row);context.close()
     print(json.dumps({k:v for k,v in row.items() if k!='audio_requests'},ensure_ascii=False),flush=True)
-  if args.phase=='after':
-   for width in [1440,390,320]:
-    for lang in ['es','en']:
-     for slug in PICTURES:
-      row={'game':slug,'width':width,'language':lang};ctx=browser.new_context(viewport={'width':width,'height':844},reduced_motion='reduce');p=ctx.new_page();p.set_default_timeout(7000)
-      p.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())
-      try:
-       p.goto(BASE+'/es/recursos/juegos/'+slug+'/',wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.locator('.ig-uh-langs button').filter(has_text=re.compile('^'+lang.upper()+'$')).click()
-       p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
-       p.wait_for_function('document.querySelector("main img")?.naturalWidth>1')
-       target=p.locator('main .ig-picture-target');before=rects(target)
-       details=p.locator('.ig-touch-alternative');summary=details.locator('summary');summary.focus();summary.press('Space')
-       buttons=details.locator('.ig-touch-choices>button');assert buttons.count()==(5 if slug=='las-cinco-cosas' else 8)
-       row['buttons']=rects(buttons)
-       assert all(r['w']>=44 and r['h']>=44 for r in row['buttons'])
-       for i,a in enumerate(row['buttons']):
-        for b in row['buttons'][i+1:]:assert min(a['x']+a['w'],b['x']+b['w'])<=max(a['x'],b['x'])+.5 or min(a['y']+a['h'],b['y']+b['h'])<=max(a['y'],b['y'])+.5,'Overlapping alternative controls'
-       if slug=='las-cinco-cosas':
-        target.nth(0).click();assert buttons.nth(0).get_attribute('aria-pressed')=='true'
-        for i in range(1,5):buttons.nth(i).focus();buttons.nth(i).press('Enter')
-       else:
-        buttons.nth(3).click();assert buttons.nth(3).get_attribute('aria-pressed')=='true'
-        p.get_by_role('button',name='Sitio de carga' if lang=='es' else 'Heavy place',exact=True).click()
-        buttons.nth(0).focus();buttons.nth(0).press('Space')
-        p.get_by_role('button',name='Los adultos' if lang=='es' else 'The adults',exact=True).click()
-        assert buttons.nth(3).get_attribute('aria-pressed')=='false'
-        buttons.nth(3).click();buttons.nth(0).click()
-       assert p.locator('main a[href*="#carta-"]:visible').count()==1
-       p.get_by_role('button',name='Empezar otra vez' if lang=='es' else 'Start again',exact=True).click()
-       assert not p.locator('main a[href*="#carta-"]:visible').count()
-       assert not details.locator('button[aria-pressed=true]').count()
-       after=rects(target)
-       assert [(round(x['w'],1),round(x['h'],1)) for x in before]==[(round(x['w'],1),round(x['h'],1)) for x in after],'Original rectangles changed'
-       assert p.locator('main img').first.evaluate('(e)=>e.complete&&e.naturalWidth>1')
-       summary.evaluate('(e)=>e.scrollIntoView({block:"center"})')
-       if width in [390,320] and lang=='es':p.screenshot(path=str(OUT/f'touch-{slug}-{width}.png'),full_page=False)
-       row['same_game_completed_and_reset']=True;row['original_geometry_preserved']=True;row['passed']=True
-      except Exception as e:row['passed']=False;row['error']=str(e);R['failures'].append(row.copy())
-      R['picture_games'].append(row);ctx.close();print(json.dumps({k:v for k,v in row.items() if k!='buttons'},ensure_ascii=False),flush=True)
   browser.close()
  R['summary']={'panels_tested':len(R['panels']),'panels_passed':sum(x['passed'] for x in R['panels']),'picture_scenarios':len(R['picture_games']),'picture_passed':sum(x['passed'] for x in R['picture_games'])};R['passed']=not R['failures']
  (OUT/(args.phase+'.json')).write_text(json.dumps(R,ensure_ascii=False,indent=2)+'\n')

@@ -43,7 +43,7 @@ ROUTES = [
     "/es/libros/",
     "/es/videos/",
     "/es/recursos/juegos/",
-    "/es/recursos/juegos/las-cinco-cosas/",
+    "/es/recursos/juegos/",
     "/es/intereses/",
     "/es/taller/",
     "/es/sitio-tranquilo/",

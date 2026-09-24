@@ -16,6 +16,16 @@
 @media(max-width:520px){.rv-preview-inner{transform:scale(.5)}.rv-library{grid-template-columns:repeat(2,1fr)}.rv-screen-step{grid-template-columns:auto 54px 1fr auto}.rv-picto{width:54px;height:54px}}
 @page hojaA4{size:A4 portrait;margin:0}@page hojaTira{size:A4 landscape;margin:0}@page hojaPar{size:A5 landscape;margin:0}
 .rv-a4{page:hojaA4}.rv-strip-sheet{page:hojaTira}.rv-pair-sheet{page:hojaPar}
-@media print{html[data-rv-print] body *{visibility:hidden!important}html[data-rv-print] [data-rv-printing],html[data-rv-print] [data-rv-printing] *{visibility:visible!important}html[data-rv-print] [data-rv-printing]{position:absolute!important;left:0!important;top:0!important;margin:0!important;box-shadow:none!important}.rv-sheet{box-shadow:none!important;break-inside:avoid}.rv-a4,.rv-strip-sheet,.rv-pair-sheet{zoom:1!important}.rv-a4{break-after:page;page-break-after:always}.rv-print-stack .rv-a4:last-child{break-after:auto;page-break-after:auto}.rv-no-print,.hd,.ft,.panel,.skip,#rguide{display:none!important}.rv-sheet .rv-picto{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
-@media(forced-colors:active){.rv-picto{border:1px solid CanvasText!important;background:Canvas!important}.rv-a4-step,.rv-strip-step,.rv-pair-card{border:2px solid CanvasText!important}}
-@media(prefers-reduced-motion:reduce){.rv-page *{transition:none!important;animation:none!important}}
+/* Print outside the scrollable/scaled preview so sheets are never clipped. */
+.rv-print-document{display:none}
+@page rv-portrait{size:A4 portrait;margin:0}
+@page rv-landscape{size:A4 landscape;margin:0}
+@media print{
+ html[data-rv-print] body > *:not(.rv-print-document){display:none!important}
+ html[data-rv-print] body > .rv-print-document{display:block!important;page:rv-portrait;margin:0!important;padding:0!important}
+ html[data-rv-print] body > .rv-print-landscape{page:rv-landscape}
+ .rv-print-document .rv-sheet{box-shadow:none!important;break-inside:avoid;box-sizing:border-box;zoom:1!important}
+ .rv-print-document .rv-a4,.rv-print-document .rv-pair-sheet{break-after:page;page-break-after:always}
+ .rv-print-document .rv-sheet:last-child{break-after:auto;page-break-after:auto}
+ .rv-sheet .rv-picto{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}

@@ -25,7 +25,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import hashlib,json,shutil
-          files=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json','es/intereses/cromos.json']
+          files=['buscador.json','videoteca-listado.json','assets/data/juegos-iris-data.js','es/intereses/cromos.json']
           Path('/tmp/ig-text-catalogues.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}))
           for name in ['after','base','regression-preferences']:
               p=Path('reports/text-preferences')/(name+'.json');q=p.with_name('first-'+p.name)

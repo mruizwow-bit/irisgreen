@@ -112,7 +112,7 @@ def static_tests():
     assert len(urls)==len(set(urls)) and set(urls)==expected,(len(urls),len(expected))
     assert not xml.findall('.//s:lastmod',NS)
     assert (DIST/'sitemap.xml').read_bytes()==(DIST/'sitemap-1.xml').read_bytes()
-    assert SITE+'/es/recursos/juegos/coleccion/sueno/' in urls
+    assert SITE+'/es/recursos/rutinas-imprimibles/' in urls
     for url in urls:assert not redirected(urlsplit(url).path),url
     for name,d in docs.items():
         for a in d['soup'].select('link[hreflang]'):
@@ -124,7 +124,7 @@ def static_tests():
     for rel in ['es/neurodiversidad/condiciones/index.html','en/neurodiversity/conditions/index.html']:
         s=docs[rel]['soup'];assert not s.select('.crumb')
         assert not any('BreadcrumbList' in x.get_text() for x in s.select('script[type="application/ld+json"]'))
-    sources=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json','es/intereses/cromos.json']
+    sources=['buscador.json','videoteca-listado.json','assets/data/juegos-iris-data.js','es/intereses/cromos.json']
     for name in sources:assert hashlib.sha256((BASELINE/name).read_bytes()).digest()==hashlib.sha256((DIST/name).read_bytes()).digest(),name
     assert (BASELINE/'robots.txt').read_bytes()==(DIST/'robots.txt').read_bytes()
     REPORT['static']={'html_scanned':len(docs),'local_references_checked':entries,'missing_local_references':bad,'sitemap_urls':len(urls),'conditions_content_unchanged':checked,'robots_preserved_pages':baseline_robots,'game_fragment_routes_recognized':len(set(hashes)),'sitemap_duplicates':0,'sitemap_noindex_urls':0,'pt_alternates':0,'protected_sources':sources,'sitemap_compatibility_identical':True}
@@ -158,7 +158,7 @@ def browser_tests():
     with sync_playwright() as pw:
         browser=pw.chromium.launch()
         for width in [1440,320]:
-            for path in ['/', '/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/','/es/recursos/juegos/coleccion/sueno/','/es/sobre-iris-green/#criterios-editoriales','/es/intereses/imprimir/?tema=minerales','/direccion-que-no-existe/']:
+            for path in ['/', '/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/','/es/recursos/rutinas-imprimibles/','/es/sobre-iris-green/#criterios-editoriales','/es/intereses/imprimir/?tema=minerales','/direccion-que-no-existe/']:
                 ctx=browser.new_context(viewport={'width':width,'height':900});page=ctx.new_page();page.set_default_timeout(10000)
                 errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
                 page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(BASE) else r.abort())

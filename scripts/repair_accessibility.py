@@ -43,29 +43,6 @@ for p in [ROOT/'index.html',*sorted((ROOT/'es').rglob('*.html')),*sorted((ROOT/'
         s,n=re.subn(r'<button\b[^>]*class="[^"]*ig-uh-reading[^"]*"[^>]*>',opener,s);assert n==1
         s=once(s,'b.style.zoom = (s.fs / 17).toFixed(3);','b.style.zoom = "";\n    const readingMain = document.querySelector("main");\n    if (readingMain) readingMain.style.zoom = (s.fs / 17).toFixed(3);')
         report['dynamic_reading_pages'].append(rel)
-    if p.parent.name in {'las-cinco-cosas','el-mapa-del-tesoro-de-casa'}:
-        vera=p.parent.name=='las-cinco-cosas';name='spots' if vera else 'rooms';v='s' if vera else 'r'
-        a=s.index('<sc-for list="{{ '+name+' }}"');b=end_block(s,a,'sc-for')
-        chunk=s[a:b]
-        chunk=once(chunk,'<button sc-camel-on-click=', '<button class="ig-picture-target" sc-camel-on-click=')
-        s=s[:a]+chunk+s[b:];b=a+len(chunk)
-        pos=s.index('</div>',b)+6
-        label='aria' if vera else 'name';pressed='found' if vera else 'marked'
-        controls='''
-    <details class="ig-touch-alternative">
-      <summary>{{ tTouchControls }}</summary>
-      <div class="ig-touch-choices" role="group" aria-label="{{ tTouchControls }}">
-        <sc-for list="{{ LIST }}" as="VAR" hint-placeholder-count="COUNT">
-          <button type="button" sc-camel-on-click="{{ VAR.click }}" aria-pressed="{{ VAR.PRESSED }}">{{ VAR.LABEL }}EXTRA</button>
-        </sc-for>
-      </div>
-    </details>'''.replace('LIST',name).replace('VAR',v).replace('COUNT','5' if vera else '8').replace('PRESSED',pressed).replace('LABEL',label)
-        extra='' if vera else '<span style="display: {{ r.chipDisplay }}; color: {{ r.chipColor }};"> · {{ r.chipText }}</span>'
-        controls=controls.replace('EXTRA',extra)
-        s=s[:pos]+controls+s[pos:]
-        s=once(s,'      langButtons:', '      tTouchControls: ({es:"Usar botones en lugar de tocar la imagen",en:"Use buttons instead of tapping the picture",pt:"Usar botões em vez de tocar na imagem"})[L] || "Usar botones en lugar de tocar la imagen",\n      langButtons:')
-        if not vera:s=once(s,'          name: T.rooms[n],','          name: T.rooms[n], marked: !!visible,')
-        report['touch_games'].append(rel)
     assert dic(s)==before,'Existing dictionary changed: '+rel
     if s!=p.read_text():
         report['preserved'][rel]={'dictionary_sha256':before}

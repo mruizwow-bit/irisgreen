@@ -103,7 +103,7 @@ def precompiled_script(source: str) -> str:
 
 
 def safe_runtime(root: Path) -> Path:
-    source_path = root / "assets/games/dc-runtime.js"
+    source_path = Path(__file__).resolve().parent / "vendor/dc-runtime-source.js"
     if not source_path.is_file():
         raise FileNotFoundError(source_path)
     source = source_path.read_text(encoding="utf-8", errors="strict")
@@ -201,8 +201,8 @@ def main() -> None:
     leaked_b1 = sorted(page_rels & retired_b1)
     if leaked_b1:
         raise AssertionError("Las rutas B1 retiradas han vuelto al runtime DC: " + ", ".join(leaked_b1))
-    if len(pages) != 24:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 24 públicas (22 + El taller ES/EN), encontré {len(pages)}")
+    if len(pages) != 11:
+        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 11 públicas tras retirar los 13 juegos DC, encontré {len(pages)}")
 
     rows = [transform_page(path) for path in pages]
 
@@ -218,9 +218,6 @@ def main() -> None:
         old = root / runtime.lstrip("/")
         if old.is_file():
             old.unlink()
-    b1_support = root / "es/recursos/juegos/b1/support.js"
-    if b1_support.is_file():
-        b1_support.unlink()
 
     update_csp(root)
 

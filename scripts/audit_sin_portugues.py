@@ -27,7 +27,7 @@ PATTERNS=(
 NO_JS_PAGES=(
     'es/libros/index.html',
     'es/tramites/directorio/index.html',
-    'es/recursos/juegos/el-detective-de-los-sentidos/index.html',
+    'es/recursos/rutinas-visuales/index.html',
 )
 
 

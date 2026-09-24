@@ -25,7 +25,7 @@ OUT=ROOT/'reports'/'wcag-autoplay-motion';OUT.mkdir(parents=True,exist_ok=True)
 ROUTES=[
  '/', '/es/situaciones/', '/es/neurodiversidad/condiciones/', '/es/biblioteca/',
  '/es/investigacion/', '/es/datos/', '/es/tramites/directorio/', '/es/libros/',
- '/es/videos/', '/es/recursos/juegos/', '/es/recursos/juegos/las-cinco-cosas/',
+ '/es/videos/', '/es/recursos/juegos/', '/es/recursos/juegos/',
  '/es/intereses/', '/es/taller/', '/es/sitio-tranquilo/'
 ]
 SPY=r'''

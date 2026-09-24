@@ -13,7 +13,7 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/juegos-86.json"
-  to = "/es/recursos/juegos/juegos-120.json"
+  to = "/es/recursos/juegos/"
   status = 301
 
 [[headers]]
@@ -66,3 +66,213 @@
   for = "/assets/video-thumbnails/*"
   [headers.values]
     "Cache-Control" = "public, max-age=2592000, stale-while-revalidate=604800"
+
+[[redirects]]
+  from = "/es/recursos/juegos/b1"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/b1/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/cada-cerebro-su-camino"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/cada-cerebro-su-camino/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/coleccion"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/coleccion/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/contar-y-pagar"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/contar-y-pagar/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/donde-se-fue-la-energia"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/donde-se-fue-la-energia/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-archivo-de-capacidades"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-archivo-de-capacidades/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-aula-al-reves"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-aula-al-reves/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-detective-de-los-sentidos"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-detective-de-los-sentidos/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-mapa-del-tesoro-de-casa"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-mapa-del-tesoro-de-casa/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-traductor-de-casa"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-traductor-de-casa/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-traductor-de-instrucciones"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/el-traductor-de-instrucciones/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-cena-de-los-planes"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-cena-de-los-planes/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-consulta"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-consulta/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-maquina-de-empezar"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/la-maquina-de-empezar/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/las-cinco-cosas"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/las-cinco-cosas/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/palabra-misteriosa"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/palabra-misteriosa/*"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/recursos/juegos/juegos-120.json"
+  to = "/es/recursos/juegos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/resources/games/count-and-pay"
+  to = "/en/resources/games/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/resources/games/count-and-pay/*"
+  to = "/en/resources/games/"
+  status = 301
+  force = true

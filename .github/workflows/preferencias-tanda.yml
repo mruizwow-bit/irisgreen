@@ -24,7 +24,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import hashlib,json
-          names=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json']
+          names=['buscador.json','videoteca-listado.json','assets/data/juegos-iris-data.js']
           Path('/tmp/ig-prefs-catalogues.json').write_text(json.dumps({n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in names}))
           p=Path('scripts/test_reading_preferences.py');s=p.read_text()
           s=s.replace("if path in ['index.html',STATIC[0]]:","if path in ['index.html',STATIC[0],'es/intereses/index.html']:")
@@ -83,7 +83,7 @@ jobs:
           if Path('dist/reports/preferences').exists():shutil.copytree('dist/reports/preferences','reports/preferences',dirs_exist_ok=True)
           if Path('dist/reports/accessibility/after.json').exists():shutil.copy2('dist/reports/accessibility/after.json','reports/preferences/regression-accessibility.json')
           if Path('reports/preferences').exists():shutil.copytree('reports/preferences',out/'reports',dirs_exist_ok=True)
-          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_preference_panel_bounds.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
+          for name in ['assets/preferencias-lectura.js','assets/preferencias-lectura.css','assets/lectura-accesible.js','scripts/unify_reading_preferences.py','scripts/test_reading_preferences.py','scripts/test_preference_panel_bounds.py','scripts/test_accessibility_batch.py','index.html','es/intereses/index.html','es/neurodiversidad/condiciones/index.html','es/recursos/juegos/index.html']:
               p=Path(name);q=out/'source'/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,q)
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
