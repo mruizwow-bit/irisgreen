@@ -1,0 +1,167 @@
+diff --git a/cloud/n04-r38-library/scripts/check-runtime.mjs b/cloud/n04-r38-library/scripts/check-runtime.mjs
+new file mode 100644
+index 0000000..04d2d47
+--- /dev/null
++++ b/cloud/n04-r38-library/scripts/check-runtime.mjs
+@@ -0,0 +1,58 @@
++import { readFile } from 'node:fs/promises';
++import { fileURLToPath } from 'node:url';
++
++const root = new URL('../', import.meta.url);
++const read = path => readFile(new URL(path, root), 'utf8');
++const strict = process.argv.includes('--strict');
++const checks = [];
++const add = (id, pass, scope = 'a5', detail = undefined) => checks.push({ id, pass: Boolean(pass), scope, ...(detail === undefined ? {} : { detail }) });
++
++const files = Object.fromEntries(await Promise.all([
++  'src/r39-runtime-transport.mjs',
++  'src/sabik-retrieval-server.mjs',
++  'src/sabik-retrieval.mjs',
++  'src/library.mjs',
++  'src/qa-handler.mjs',
++  'netlify/functions/n04-library-qa.mjs',
++  'scripts/build.mjs',
++  'package.json',
++].map(async path => [path, await read(path)])));
++
++const runtime = process.versions.node;
++add('node_runtime_supported', runtime === '22.16.0' || /^24\./.test(runtime), 'a5', runtime);
++add('transport_reuses_server_composition', files['src/r39-runtime-transport.mjs'].includes("from './sabik-retrieval-server.mjs'") &&
++  files['src/r39-runtime-transport.mjs'].includes('createSabikRetrievalForDeployment'));
++add('transport_has_no_direct_loader_or_blob_sdk', !/createCachedReader|getDeployStore|@netlify\/blobs/.test(files['src/r39-runtime-transport.mjs']));
++add('sealed_r38_deploy_identity', files['src/r39-runtime-transport.mjs'].includes("R38_LIBRARY_DEPLOY_ID = '6ab4c1a15435b93043ab3f6d'"));
++add('no_user_deploy_selector', !/body\.(deployId|libraryDeployId)|body\[['\"](?:deployId|libraryDeployId)['\"]\]/.test(files['src/r39-runtime-transport.mjs']));
++add('no_provider_chat_or_persistence', !/\/api\/chat|openai|anthropic|embedding|conversation|profile|store\.(?:set|setJSON|delete)\s*\(/i.test(files['src/r39-runtime-transport.mjs']));
++
++const pkg = JSON.parse(files['package.json']);
++add('dependency_surface_unchanged', JSON.stringify(pkg.dependencies) === JSON.stringify({ '@netlify/blobs': '11.1.0' }));
++
++const requiredProvenanceFiles = [
++  'src/library.mjs',
++  'src/qa-handler.mjs',
++  'src/sabik-retrieval.mjs',
++  'src/sabik-retrieval-server.mjs',
++  'src/r39-runtime-transport.mjs',
++  'netlify/functions/n04-library-qa.mjs',
++];
++for (const path of requiredProvenanceFiles) {
++  add(`build_provenance:${path}`, files['scripts/build.mjs'].includes(`'${path}'`) || files['scripts/build.mjs'].includes(`\"${path}\"`), 'codex-integration');
++}
++add('function_entry_uses_r39_transport', /r39-runtime-transport/.test(files['netlify/functions/n04-library-qa.mjs']), 'codex-integration');
++
++const a5Failures = checks.filter(check => check.scope === 'a5' && !check.pass);
++const integrationPending = checks.filter(check => check.scope === 'codex-integration' && !check.pass);
++const status = a5Failures.length ? 'FAIL' : integrationPending.length ? 'A5_READY_CODEX_INTEGRATION_PENDING' : 'PASS';
++const report = {
++  schema: 'SABIK_R39_A5_RUNTIME_CHECK/1.0',
++  status,
++  runtime: { node: process.version, npm_config_user_agent: process.env.npm_config_user_agent ?? null, platform: process.platform, arch: process.arch },
++  sealed_library_deploy_id: '6ab4c1a15435b93043ab3f6d',
++  checks,
++  integration_pending: integrationPending.map(check => check.id),
++};
++console.log(JSON.stringify(report, null, 2));
++if (a5Failures.length || (strict && integrationPending.length)) process.exit(1);
+diff --git a/cloud/n04-r38-library/src/r39-runtime-transport.mjs b/cloud/n04-r38-library/src/r39-runtime-transport.mjs
+new file mode 100644
+index 0000000..ddd7138
+--- /dev/null
++++ b/cloud/n04-r38-library/src/r39-runtime-transport.mjs
+@@ -0,0 +1,53 @@
++import { SabikRetrievalError } from './sabik-retrieval.mjs';
++import { createSabikRetrievalForDeployment } from './sabik-retrieval-server.mjs';
++
++export const R38_LIBRARY_DEPLOY_ID = '6ab4c1a15435b93043ab3f6d';
++
++const fail = code => { throw new SabikRetrievalError(code); };
++
++function plainDataObject(value) {
++  if (value === null || typeof value !== 'object' || Array.isArray(value) ||
++      ![Object.prototype, null].includes(Object.getPrototypeOf(value))) return false;
++  for (const key of Reflect.ownKeys(value)) {
++    if (typeof key !== 'string') return false;
++    const descriptor = Object.getOwnPropertyDescriptor(value, key);
++    if (!descriptor || !('value' in descriptor)) return false;
++  }
++  return true;
++}
++
++function toRetrievalInput(body) {
++  if (!plainDataObject(body)) fail('INVALID_RETRIEVAL_QUERY');
++  const allowed = new Set(['q', 'limit', 'version']);
++  if (Reflect.ownKeys(body).some(key => !allowed.has(key))) fail('INVALID_RETRIEVAL_QUERY');
++
++  const input = { query: body.q };
++  if (Object.hasOwn(body, 'limit')) input.limit = body.limit;
++  if (Object.hasOwn(body, 'version')) input.libraryVersion = body.version;
++  return Object.freeze(input);
++}
++
++/**
++ * Trusted bridge between the already-authenticated HTTP handler and R39 retrieval.
++ * The immutable R38 library deployment is selected by server composition only.
++ * No deployment selector is accepted from request data.
++ */
++export function createR39RuntimeTransport({
++  libraryDeployId = R38_LIBRARY_DEPLOY_ID,
++  createRetrieval = createSabikRetrievalForDeployment,
++} = {}) {
++  if (libraryDeployId !== R38_LIBRARY_DEPLOY_ID || typeof createRetrieval !== 'function') {
++    fail('LIBRARY_UNAVAILABLE');
++  }
++
++  let retrieval;
++  try {
++    retrieval = createRetrieval({ libraryDeployId });
++  } catch {
++    fail('LIBRARY_UNAVAILABLE');
++  }
++  if (!retrieval || typeof retrieval.retrieveForSabik !== 'function') fail('LIBRARY_UNAVAILABLE');
++
++  const retrieve = async body => retrieval.retrieveForSabik(toRetrievalInput(body));
++  return Object.freeze({ retrieve });
++}
+diff --git a/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs b/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs
+new file mode 100644
+index 0000000..1299e32
+--- /dev/null
++++ b/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs
+@@ -0,0 +1,82 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { SabikRetrievalError } from '../src/sabik-retrieval.mjs';
++import { R38_LIBRARY_DEPLOY_ID, createR39RuntimeTransport } from '../src/r39-runtime-transport.mjs';
++
++function assertCode(error, code) {
++  assert.ok(error instanceof SabikRetrievalError);
++  assert.equal(error.code, code);
++  assert.equal(error.message, code);
++  return true;
++}
++
++function stubFactory(calls, implementation = async input => ({ input })) {
++  return options => {
++    calls.factories.push(options);
++    return {
++      retrieveForSabik: async input => {
++        calls.inputs.push(input);
++        return implementation(input);
++      },
++    };
++  };
++}
++
++test('binds only the sealed R38 library deployment and maps the validated HTTP body to R39 input', async () => {
++  const calls = { factories: [], inputs: [] };
++  const transport = createR39RuntimeTransport({ createRetrieval: stubFactory(calls) });
++  const result = await transport.retrieve({ q: 'sobrecarga sensorial', limit: 3, version: 'n04-es-20260916-56f72c4d3959' });
++  assert.deepEqual(calls.factories, [{ libraryDeployId: R38_LIBRARY_DEPLOY_ID }]);
++  assert.deepEqual(calls.inputs, [{ query: 'sobrecarga sensorial', limit: 3, libraryVersion: 'n04-es-20260916-56f72c4d3959' }]);
++ assert.deepEqual(result, { input: calls.inputs[0] });
++});
++
++test('request data cannot select a deployment or add transport fields', async () => {
++  const calls = { factories: [], inputs: [] };
++  const transport = createR39RuntimeTransport({ createRetrieval: stubFactory(calls) });
++  await assert.rejects(transport.retrieve({ q: 'apoyos', deployId: 'f'.repeat(24) }), error => assertCode(error, 'INVALID_RETRIEVAL_QUERY'));
+  MÄ
