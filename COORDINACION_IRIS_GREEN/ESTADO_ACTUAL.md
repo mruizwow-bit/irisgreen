@@ -61,8 +61,8 @@ Los resultados están en `CONTROL/ESTADO_TRABAJOS.csv` y los addenda de `MEMORIA
 
 | Línea | Última evidencia | Estado y límite | Responsable |
 |---|---|---|---|
-| Taller F1, sustitución completa | PR244 HEAD 697a0e2c815f6dd966e221e564c4e1f6e98df7bc; 31/31 Node; build 2047 archivos; [informe](EVIDENCIAS/WEB_A2_TALLER_F1_R10/INFORME.md) | Integrado en candidato ES/EN; QA navegador y preview con sustitución verificada; corrección del enlace EN→ES en despliegue; sin producción | María + agente 2 |
+| Taller F1, sustitución completa | PR244 HEAD 697a0e2c815f6dd966e221e564c4e1f6e98df7bc; 31/31 Node; build 2047 archivos; [informe](EVIDENCIAS/WEB_A2_TALLER_F1_R10/INFORME.md) | Integrado en candidato ES/EN; QA navegador y preview READY y verificada ES/EN; sin producción | María + agente 2 |
 
 ## Taller F1 · continuación A2 R11
 
-Sustitución de portada completa: retirados los 72 retos anteriores. Código f93346772f6e005ecafa2b2b03ff467a105d210a; preview con sustitución verificada; corrección del enlace EN→ES en despliegue. [Registro y límites](MEMORIA/WEB_A2_TALLER_F1_R11_20260924.md).
+Sustitución de portada completa: retirados los 72 retos anteriores. Código f93346772f6e005ecafa2b2b03ff467a105d210a; preview READY y verificada ES/EN. [Registro y límites](MEMORIA/WEB_A2_TALLER_F1_R11_20260924.md).
