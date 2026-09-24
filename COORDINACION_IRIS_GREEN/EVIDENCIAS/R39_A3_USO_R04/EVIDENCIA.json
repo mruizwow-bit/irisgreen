@@ -1,0 +1,50 @@
+{
+  "id": "R39-A3-USO-R04",
+  "status": "VERIFICADO_MONTAJE_DESACTIVADO_PENDIENTE_TRANSPORTE_REAL",
+  "mount": {
+    "head": "89dcea56abc14d94914d0cb1bd005b902d46a29c",
+    "deploy_id": "6ab5360d1b58030008d2f97a",
+    "pr": 244,
+    "es": "/",
+    "en": "/?lang=en",
+    "netlify_state": "ready",
+    "functions": 0,
+    "edge_functions": 0,
+    "connection_enabled": false,
+    "cloud_origin": null
+  },
+  "not_repeated": [
+    {
+      "case": "keyboard_focus",
+      "source": "A2 R08 mounted browser matrix"
+    },
+    {
+      "case": "reading",
+      "source": "A2 R08 mounted browser matrix"
+    },
+    {
+      "case": "reduced_motion",
+      "source": "A2 R08 mounted browser matrix"
+    },
+    {
+      "case": "mobile_reflow",
+      "source": "A2 R08/R09 mounted browser matrices"
+    },
+    {
+      "case": "es_en_ui",
+      "source": "A2 R08/R09 mounted browser matrices"
+    }
+  ],
+  "pending_real_transport": [
+    "query_results_sources",
+    "empty_results",
+    "cancel_replace_live_request",
+    "recoverable_error_timeout",
+    "mounted_source_lang_es_in_en_ui"
+  ],
+  "local_only_not_promoted": [
+    "Codex R03 BROWSER_QA results/sources/error/retry/cancel/focus/lang"
+  ],
+  "new_product_changes": 0,
+  "deploys": 0
+}
