@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schema/sabik-r39-delivery.json",
+  "title": "Sabik R39 delivery manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["task_id", "owner", "base_sha", "head_sha", "tree_sha", "files", "sha256", "commands", "results"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "owner": {"type": "string", "minLength": 1},
+    "base_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "head_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "tree_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "files": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "sha256"],
+            "additionalProperties": true,
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        }
+      ]
+    },
+    "sha256": {
+      "oneOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        {
+          "type": "object",
+          "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      ]
+    },
+    "commands": {"type": "array", "items": {"type": "string"}},
+    "results": {},
+    "blocker": {"type": ["string", "null"]},
+    "codex_review": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "approved": {"type": "boolean"},
+        "reviewer": {"type": "string"},
+        "evidence": {"type": "string"}
+      }
+    }
+  }
+}
