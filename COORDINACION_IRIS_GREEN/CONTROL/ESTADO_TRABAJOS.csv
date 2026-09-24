@@ -32,7 +32,7 @@ WEB-A2-SABIK-BRIEF-R08;María y agente 2;MONTADO_TRANSPORTE_DESACTIVADO;PR244 HE
 
 WEB-A2-CORRECCIONES-R09;María y agente 2;CORREGIDO_CANDIDATO;PR244 HEAD 89dcea56abc14d94914d0cb1bd005b902d46a29c deploy 6ab5360d1b58030008d2f97a;Aceptación María pendiente;30 casos 1920/1440/320 y 15 hojas interiores distintas;Sin conexión Cloud ni producción
 
-WEB-A2-TALLER-F1-R10;María y agente 2;INTEGRADO_CANDIDATO_QA_EN_CURSO;PR244 HEAD 697a0e2c815f6dd966e221e564c4e1f6e98df7bc - build 2047 archivos - 31/31 Node;QA navegador preview y aceptación María;Cinco estudios ES/EN y 58 retos por idioma;Sustituye Taller anterior sin main producción ni activar Cloud
+WEB-A2-TALLER-F1-R10;María y agente 2;PREVIEW_VERIFICADO_EN_SU_ALCANCE;PR244 HEAD 697a0e2c815f6dd966e221e564c4e1f6e98df7bc - build 2047 archivos - 31/31 Node;QA navegador preview y aceptación María;Cinco estudios ES/EN y 58 retos por idioma;Sustituye Taller anterior sin main producción ni activar Cloud
 
 WEB-A2-TALLER-F1-R11;María y agente 2;PREVIEW_VERIFICADO;PR244 HEAD f93346772f6e005ecafa2b2b03ff467a105d210a;Aceptación visual de María y CI completa pendientes;Portadas ES EN con cinco estudios sin los 72 retos antiguos;Sin main producción ni Cloud
 
@@ -46,4 +46,4 @@ WEB-A2-INTERESES-R15;María y agente 2;PREVIEW_VERIFICADO_EN_SU_ALCANCE;PR244 HE
 
 WEB-A2-VIDEOTECA-R16;María y agente 2;PREVIEW_VERIFICADO_EN_SU_ALCANCE;PR244 HEAD b91c4bc7047d8e7793f095c8333ee76ef0c20217 deploy 6ab5495032ae24000833b599;Revisión audiovisual individual y miniaturas nuevas pendientes;118 vídeos 17 temas y Dan Wilkins primero ES EN;Solo preview sin main producción ni Cloud
 
-WEB-A2-RECURSOS-R17;María y agente 2;INTEGRADO_CANDIDATO_QA_EN_CURSO;PR244 HEAD 38cff835a3446ac1539d79fe2a87aedc358ae9c8 deploy 6ab54b8485d4b700084df85b;QA navegador e impresión física pendientes - cuatro grupos de opciones con dibujos compartidos anotados;252 juegos 109 rutinas ES EN catálogo A4 y constructor;Solo preview sin main producción ni Cloud
+WEB-A2-RECURSOS-R17;María y agente 2;INTEGRADO_CANDIDATO_QA_EN_CURSO;PR244 HEAD 9ee8ef74e700426623bdc0cc8d69f06575a1af03 deploy 6ab54c40de6a3c000885a13a;Impresión física y móvil pendientes - cuatro grupos de opciones con dibujos compartidos anotados;252 juegos 109 rutinas ES EN catálogo A4 y constructor;Solo preview sin main producción ni Cloud
