@@ -90,5 +90,15 @@
     "/api/chat",
     "C17 PASS claim"
   ],
-  "status": "A5_IMPLEMENTATION_READY_CODEX_INTEGRATION_PENDING"
+  "status": "A5_IMPLEMENTATION_READY_CODEX_INTEGRATION_PENDING",
+  "delivery_artifacts": {
+    "CHANGES.patch": {
+      "sha256": "030899f9120c452c4a0d700dccb6038509e08ffbea579b8763f18515ac64c86e",
+      "source_commits": [
+        "de31ae038f2496e4644356404535105d41b208c2",
+        "8a1eb30c33f423fab400748b9a1da6d36b0138f8",
+        "9574d3ac8d0a265393095cf84cd25f90774a5ab9"
+      ]
+    }
+  }
 }
