@@ -1,4 +1,4 @@
-import { writeFile, mkdir, readdir } from 'node:fs/promises';
+import { writeFile, mkdir, readdir, copyFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { RELEASE } from '../src/library.mjs';
 import { LIBRARY_DEPLOY_ID, RETRIEVAL_TIMEOUT_MS } from '../src/cloud-release.mjs';
@@ -15,7 +15,8 @@ await writeFile(new URL('../build/code-provenance.json', import.meta.url), JSON.
 const dist = new URL('../dist/', import.meta.url);
 await mkdir(dist, { recursive: true });
 const existing = await readdir(dist);
-if (existing.some(f => !['index.html', '_headers'].includes(f))) throw new Error('Unexpected public files');
+if (existing.some(f => !['index.html', '_headers', 'sabik-connect.mjs'].includes(f))) throw new Error('Unexpected public files');
+await copyFile(new URL('../src/cloud-connection.mjs', import.meta.url), new URL('sabik-connect.mjs', dist));
 await writeFile(new URL('index.html', dist), '<!doctype html><html lang="es"><meta charset="utf-8"><title>Sabik · Biblioteca N04</title><h1>Biblioteca N04 · diagnóstico privado</h1><p>NO_API_ACTIVATION</p></html>\n');
 await writeFile(new URL('_headers', dist), '/*\n  Cache-Control: no-store\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n');
-console.log(JSON.stringify({ status: 'PASS', provenance, public_files: ['index.html', '_headers'], library_writes: 0 }, null, 2));
+console.log(JSON.stringify({ status: 'PASS', provenance, public_files: ['index.html', '_headers', 'sabik-connect.mjs'], library_writes: 0 }, null, 2));
