@@ -1,0 +1,49 @@
+{
+  "task_id": "R39-A4-C17-R02",
+  "date": "2026-09-24",
+  "project": {
+    "name": "sabik-asistente",
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a"
+  },
+  "candidate": {
+    "deploy_id": "6ab4d5047d3729fae7f122aa",
+    "context": "deploy-preview",
+    "state": "ready",
+    "published": false,
+    "function": "n04-library-qa",
+    "runtime": "nodejs24.x",
+    "region": "us-east-2",
+    "edge_functions": 0,
+    "source_head": "66b6b551ad055ea9e367ebdff7246b381f4656d3"
+  },
+  "c17": {
+    "agreed_scope": "native application logs",
+    "target": "<= 7 days",
+    "result": "VERIFICADO",
+    "basis": [
+      "Netlify Function logs documentation: native function activity logs retained at least 24 hours and up to 7 days depending on pricing plan",
+      "R39 candidate deploy contains one Serverless Function and no Edge Functions",
+      "build/deploy logs are treated separately and are not claimed to meet the C17 7-day application-log target"
+    ]
+  },
+  "categories": {
+    "function_logs": "VERIFICADO",
+    "edge_function_logs": "NO_APLICABLE_JUSTIFICADO",
+    "build_deploy_logs": "NO_APLICABLE_JUSTIFICADO_A_C17",
+    "metrics_observability": "NO_APLICABLE_JUSTIFICADO_A_C17",
+    "external_log_drains": "NO_APLICABLE_JUSTIFICADO_TO_NATIVE_RETENTION_TEST"
+  },
+  "mutations": {
+    "netlify_config": 0,
+    "plan": 0,
+    "retention": 0,
+    "permissions": 0,
+    "secrets": 0,
+    "team_login": 0,
+    "dns": 0,
+    "deploy": 0,
+    "production": 0,
+    "product_code": 0
+  },
+  "public_text": "NO_APLICA_TEXTO_PUBLICO"
+}
