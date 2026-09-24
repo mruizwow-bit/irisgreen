@@ -134,3 +134,6 @@ Mejoras 1 a 6 integradas ES/EN en PR244, commit 145cfc43a76f0c1746d45c7158d3f31a
 ## Eclipses · A2 R21
 
 Integrados ES/EN en PR244, commit d52584344240deb352f712debd19e9e7ae76bdd2. Build PASS; preview 6ab569d5 SUCCESS. [Registro](MEMORIA/WEB_A2_ECLIPSES_R21_20260924.md).
+
+## WEB-A2 R22 · Accesibilidad y usabilidad
+Orden directa de María: auditoría de toda la web y cambios; acceso superior a secciones y funciones; corregir bloqueos y saltos de Intereses. EN EJECUCIÓN desde d5258434, con preview PR244 como destino. Biblioteca cloud y Sabik excluidos. Registro: MEMORIA/WEB_A2_ACCESIBILIDAD_USABILIDAD_R22_20260924.md.
