@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[build.environment]
+  NODE_VERSION = "22.16.0"
+  NPM_VERSION = "10.9.2"
+
+# Draft Cloud QA only. No provider, AI activation, chat route or access override.
