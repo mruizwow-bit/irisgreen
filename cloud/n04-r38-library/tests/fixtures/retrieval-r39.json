@@ -1,0 +1,602 @@
+{
+  "schema": "SABIK_RETRIEVAL_FIXTURES/1.0",
+  "baseline_head": "ddd12ed4e002812f5c53e24618c029be9faf9e00",
+  "corpus_sha256": "56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e",
+  "library_version": "n04-es-20260916-56f72c4d3959",
+  "cases": [
+    {
+      "id": "exact-common-term",
+      "request": {
+        "query": "sensorial"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 110,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    },
+    {
+      "id": "multiple-terms",
+      "request": {
+        "query": "sobrecarga sensorial"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 220,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 216,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 215,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    },
+    {
+      "id": "accented-query",
+      "request": {
+        "query": "atención educación"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sexualidad-y-educacion-sexual-accesible.sec4",
+          "score": 208,
+          "url": "https://irisgreen.eu/es/biblioteca/sexualidad-y-educacion-sexual-accesible"
+        },
+        {
+          "fragment_id": "es-investigacion-registro-e17.research",
+          "score": 208,
+          "url": "https://irisgreen.eu/es/investigacion/"
+        },
+        {
+          "fragment_id": "es-investigacion-registro-e13.research",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/investigacion/"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sexualidad.sec3",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sexualidad"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sexualidad.sec7",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sexualidad"
+        }
+      ]
+    },
+    {
+      "id": "accentless-query",
+      "request": {
+        "query": "atencion educacion"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sexualidad-y-educacion-sexual-accesible.sec4",
+          "score": 208,
+          "url": "https://irisgreen.eu/es/biblioteca/sexualidad-y-educacion-sexual-accesible"
+        },
+        {
+          "fragment_id": "es-investigacion-registro-e17.research",
+          "score": 208,
+          "url": "https://irisgreen.eu/es/investigacion/"
+        },
+        {
+          "fragment_id": "es-investigacion-registro-e13.research",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/investigacion/"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sexualidad.sec3",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sexualidad"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sexualidad.sec7",
+          "score": 202,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sexualidad"
+        }
+      ]
+    },
+    {
+      "id": "upper-and-spaces",
+      "request": {
+        "query": "  SOBRECARGA   SENSORIAL  "
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 220,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 216,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 215,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    },
+    {
+      "id": "punctuation",
+      "request": {
+        "query": "sobrecarga, sensorial!"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 220,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 216,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 215,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    },
+    {
+      "id": "repeated-terms",
+      "request": {
+        "query": "sensorial sensorial"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 110,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    },
+    {
+      "id": "no-results",
+      "request": {
+        "query": "qzxvunknownterm"
+      },
+      "expected": []
+    },
+    {
+      "id": "filter-source-match",
+      "request": {
+        "query": "apoyos",
+        "filters": {
+          "source_type": "meta_description"
+        }
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.meta",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-discapacidad-dependencia-pobreza-y-acceso-a-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-estudiar-en-la-universidad-con-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/estudiar-en-la-universidad-con-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-los-apoyos-legales-al-cumplir-18-anos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/los-apoyos-legales-al-cumplir-18-anos"
+        }
+      ]
+    },
+    {
+      "id": "filter-source-no-match",
+      "request": {
+        "query": "apoyos",
+        "filters": {
+          "source_type": "not-a-source-type"
+        }
+      },
+      "expected": []
+    },
+    {
+      "id": "filter-concept",
+      "request": {
+        "query": "ruido",
+        "filters": {
+          "concepts": [
+            "ruido"
+          ]
+        }
+      },
+      "expected": [
+        {
+          "fragment_id": "es-situaciones-cuando-estoy-saturada-mi-forma-de-hablar-cambia.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia"
+        },
+        {
+          "fragment_id": "es-situaciones-despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer"
+        },
+        {
+          "fragment_id": "es-situaciones-el-ruido-le-resulta-insoportable.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/situaciones/el-ruido-le-resulta-insoportable"
+        },
+        {
+          "fragment_id": "es-situaciones-no-se-si-estoy-cansada-saturada-o-tengo-hambre.meta",
+          "score": 111,
+          "url": "https://irisgreen.eu/es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre"
+        },
+        {
+          "fragment_id": "es-situaciones-comer-en-un-restaurante-me-resulta-demasiado.meta",
+          "score": 110,
+          "url": "https://irisgreen.eu/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado"
+        }
+      ]
+    },
+    {
+      "id": "filter-two-concepts",
+      "request": {
+        "query": "sobrecarga sensorial",
+        "filters": {
+          "concepts": [
+            "ruido",
+            "sobrecarga_sensorial"
+          ]
+        }
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 216,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec9",
+          "score": 214,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-situaciones-el-transporte-publico-me-sobrecarga.sec3",
+          "score": 210,
+          "url": "https://irisgreen.eu/es/situaciones/el-transporte-publico-me-sobrecarga"
+        }
+      ]
+    },
+    {
+      "id": "filter-url",
+      "request": {
+        "query": "apoyos",
+        "filters": {
+          "url": "https://irisgreen.eu/es/biblioteca"
+        }
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca.meta",
+          "score": 101,
+          "url": "https://irisgreen.eu/es/biblioteca"
+        },
+        {
+          "fragment_id": "es-biblioteca.sec2",
+          "score": 101,
+          "url": "https://irisgreen.eu/es/biblioteca"
+        },
+        {
+          "fragment_id": "es-biblioteca.sec4",
+          "score": 101,
+          "url": "https://irisgreen.eu/es/biblioteca"
+        },
+        {
+          "fragment_id": "es-biblioteca.sec5",
+          "score": 101,
+          "url": "https://irisgreen.eu/es/biblioteca"
+        }
+      ]
+    },
+    {
+      "id": "filter-publicable",
+      "request": {
+        "query": "apoyos",
+        "filters": {
+          "editorial_status": "PUBLICABLE"
+        }
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.meta",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-los-apoyos-legales-al-cumplir-18-anos.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/los-apoyos-legales-al-cumplir-18-anos"
+        },
+        {
+          "fragment_id": "es-biblioteca-vivienda-convivencia-autonomia-y-apoyos-en-casa.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa"
+        },
+        {
+          "fragment_id": "es-biblioteca-vivienda-convivencia-autonomia-y-apoyos-en-casa.sec3",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa"
+        }
+      ]
+    },
+    {
+      "id": "filter-not-publicable",
+      "request": {
+        "query": "apoyos",
+        "filters": {
+          "editorial_status": "PRIVATE"
+        }
+      },
+      "expected": []
+    },
+    {
+      "id": "limit-one",
+      "request": {
+        "query": "apoyos",
+        "limit": 1
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.meta",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        }
+      ]
+    },
+    {
+      "id": "limit-twenty",
+      "request": {
+        "query": "apoyos",
+        "limit": 20
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.meta",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-los-apoyos-legales-al-cumplir-18-anos.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/los-apoyos-legales-al-cumplir-18-anos"
+        },
+        {
+          "fragment_id": "es-biblioteca-vivienda-convivencia-autonomia-y-apoyos-en-casa.sec1",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa"
+        },
+        {
+          "fragment_id": "es-biblioteca-vivienda-convivencia-autonomia-y-apoyos-en-casa.sec3",
+          "score": 108,
+          "url": "https://irisgreen.eu/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa"
+        },
+        {
+          "fragment_id": "es-biblioteca-diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos.sec1",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-discapacidad-dependencia-pobreza-y-acceso-a-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-discapacidad-dependencia-pobreza-y-acceso-a-apoyos.sec1",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-estudiar-en-la-universidad-con-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/estudiar-en-la-universidad-con-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-estudiar-en-la-universidad-con-apoyos.sec1",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/estudiar-en-la-universidad-con-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-los-apoyos-legales-al-cumplir-18-anos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/los-apoyos-legales-al-cumplir-18-anos"
+        },
+        {
+          "fragment_id": "es-biblioteca-vivienda-convivencia-autonomia-y-apoyos-en-casa.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa"
+        },
+        {
+          "fragment_id": "es-investigacion-registro-e70.research",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/investigacion/"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-acceso-a-apoyos.meta",
+          "score": 107,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/acceso-a-apoyos"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec2",
+          "score": 105,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec7",
+          "score": 105,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec8",
+          "score": 105,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes.sec9",
+          "score": 105,
+          "url": "https://irisgreen.eu/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes"
+        },
+        {
+          "fragment_id": "es-biblioteca-discapacidad-dependencia-pobreza-y-acceso-a-apoyos.sec3",
+          "score": 105,
+          "url": "https://irisgreen.eu/es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos"
+        }
+      ]
+    },
+    {
+      "id": "term-order",
+      "request": {
+        "query": "sensorial sobrecarga"
+      },
+      "expected": [
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.meta",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec1",
+          "score": 222,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-neurodiversidad-condiciones-sobrecarga-sensorial.meta",
+          "score": 220,
+          "url": "https://irisgreen.eu/es/neurodiversidad/condiciones/sobrecarga-sensorial"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec7",
+          "score": 216,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        },
+        {
+          "fragment_id": "es-biblioteca-sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo.sec4",
+          "score": 215,
+          "url": "https://irisgreen.eu/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo"
+        }
+      ]
+    }
+  ]
+}
