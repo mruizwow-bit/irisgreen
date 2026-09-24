@@ -93,4 +93,4 @@ Paquete R06 integrado: 252 juegos, 109 rutinas, catálogo A4 y biblioteca visual
 
 ## Presentación Recursos, Taller y Videoteca · A2 R18
 
-Tarjetas ilustradas ES/EN, retirada del bloque de hojas antiguas y corrección de lectura del catálogo para generar miniaturas locales. HEAD 49b866e42a211445711d6991cd5b649aea35b54a; build local correcto, deploy y QA pendientes. [Registro](MEMORIA/WEB_A2_VISUAL_MINIATURAS_R18_20260924.md).
+Tarjetas ilustradas ES/EN, retirada del bloque de hojas antiguas y corrección de lectura del catálogo para generar miniaturas locales. HEAD 49b866e42a211445711d6991cd5b649aea35b54a; build local correcto, deploy SUCCESS. Cuatro tarjetas con dibujos, cinco estudios sin bloque antiguo y manifest remoto con 118 imágenes y cero fallos. [Registro](MEMORIA/WEB_A2_VISUAL_MINIATURAS_R18_20260924.md).
