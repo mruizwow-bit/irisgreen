@@ -85,7 +85,7 @@
 .jg-msg.is-ok{background:#eef8fb;border-color:#cfe5ec}
 .jg-done{display:flex;flex-direction:column;gap:.75rem;background:#eef8fb;border:1px solid #cfe5ec;border-radius:1rem;padding:1.25rem}.jg-done p{margin:0;color:#435268}
 .jg-done-t{font-family:Newsreader,Georgia,serif;font-size:1.6rem;line-height:1.2;color:#17395c!important}
-.jg-atrib{margin:1.5rem 0 0;font-size:.88rem;color:#5c7391;max-width:46rem}
+.jg-atrib{margin:1.5rem 0 0;font-size:.88rem;color:#435268;max-width:46rem}
 .jg-hoja{display:none}
 .jg-nojs{margin:0;padding:1rem 1.25rem;background:#fff;border:1px solid #d5e4eb;border-radius:1rem}
 .jg-lista-nojs{columns:2 18rem;margin:.75rem 0 0;padding-left:1.2rem}
