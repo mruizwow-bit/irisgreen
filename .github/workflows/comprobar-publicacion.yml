@@ -60,7 +60,17 @@ jobs:
           # para hacerla pasar: actualizar expected solo junto al cambio editorial.
           # La tercera utilidad noindex es /es/taller/hojas/: se enlaza para imprimir,
           # pero no se añade al sitemap como contenido editorial independiente.
-          expected={'html':999,'index,follow':982,'noindex,follow':3,'otro_o_ninguno':14,'sitemap_urls':995}
+          # W04_INDEXATION_AUDIT_READY: GATE_STALE revisado (DEC-025 / DEC-020).
+          # Cinco altas públicas legítimas:
+          # - en/resources/games/count-and-pay/
+          # - es/recursos/
+          # - es/recursos/juegos/contar-y-pagar/
+          # - es/recursos/rutinas-visuales/
+          # - es/recursos/tarjeta-iris/
+          # Se retira assets/maintenance.html; /es/tarjetas-iris/ pasa a puente
+          # legacy noindex,follow con canonical a /es/recursos/tarjeta-iris/.
+          # Delta: HTML +4, index,follow +4, noindex,follow +1, otros -1, sitemap +4.
+          expected={'html':1003,'index,follow':986,'noindex,follow':4,'otro_o_ninguno':13,'sitemap_urls':999}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
               raise SystemExit(f'Contrato público de indexación alterado. Esperado {expected}; obtenido {got}')
