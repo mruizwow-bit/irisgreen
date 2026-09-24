@@ -1,0 +1,94 @@
+{
+  "task_id": "R39-A5",
+  "owner": "Agente 5",
+  "authority": "GitHub issue #237 Â· DEC-119 vigente; el reparto del issue sustituye el subproyecto histÃ³rico del fichero adjunto.",
+  "base_sha": "92f24c8c89e8d429a6936efd962ee3f5dad936f0",
+  "head_sha": "de31ae038f2496e4644356404535105d41b208c2",
+  "tree_sha": "47581b6fad769e35187a92cfe38b4cea6edf3a28",
+  "branch": "agent5/r39-a5-runtime-20260924",
+  "files": [
+    {
+      "path": "cloud/n04-r38-library/src/r39-runtime-transport.mjs",
+      "git_blob": "ddd7138cb0ea0de61cfff449ec0ad9fe518cc61c",
+      "sha256": "e4aec63c447c56a4d3240ecdb1a68bc0cc8d9f571ac6603f74e206b8b37bc790"
+    },
+    {
+      "path": "cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs",
+      "git_blob": "1299e322d5743b3a96d850fceef158333a03c1ed",
+      "sha256": "d62bcb4a273e599b303716c227d5aec453896c887e3bf6fbc59d2c3916db9365"
+    },
+    {
+      "path": "cloud/n04-r38-library/scripts/check-runtime.mjs",
+      "git_blob": "04d2d47459330aefced75c072e7a4fd16da2f3bd",
+      "sha256": "a0bfd57ce971487e65816e6447385a1861fd75049da7f091c447d0b8476e481f"
+    }
+  ],
+  "commands": [
+    {
+      "command": "node --test tests/r39-runtime-transport.test.mjs",
+      "runtime": "node v22.16.0 / npm 10.9.2",
+      "result": "PASS 6/6",
+      "scope": "A5 isolated unit test through the documented dependency-injection seam; no deploy."
+    },
+    {
+      "command": "node --check src/r39-runtime-transport.mjs",
+      "runtime": "node v22.16.0",
+      "result": "PASS"
+    },
+    {
+      "command": "node scripts/check-runtime.mjs",
+      "runtime": "node v22.16.0",
+      "result": "A5_READY_CODEX_INTEGRATION_PENDING",
+      "details": [
+        "A5 checks PASS",
+        "build provenance still omits src/sabik-retrieval.mjs",
+        "build provenance still omits src/sabik-retrieval-server.mjs",
+        "build provenance still omits src/r39-runtime-transport.mjs",
+        "Function entry does not yet use r39-runtime-transport"
+      ]
+    },
+    {
+      "command": "node scripts/check-runtime.mjs --strict",
+      "runtime": "node v22.16.0",
+      "result": "EXPECTED FAIL exit 1 until Codex integration closes the four integration checks"
+    }
+  ],
+  "verified_behavior": {
+    "sealed_library_deploy_id": "6ab4c1a15435b93043ab3f6d",
+    "user_request_cannot_select_deploy": true,
+    "reuses_createSabikRetrievalForDeployment": true,
+    "no_new_loader_or_query_cache": true,
+    "no_provider_model_embeddings_api_chat_or_user_storage": true,
+    "dependency_surface_changed": false
+  },
+  "platform_observation": {
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "r38_deploy_id": "6ab4c1a15435b93043ab3f6d",
+    "r38_deploy_context": "deploy-preview",
+    "r38_state": "ready",
+    "r38_function": "n04-library-qa",
+    "r38_function_runtime": "nodejs24.x",
+    "r38_function_region": "us-east-2",
+    "r38_function_digest": "5a24017c3c19f28c90f634016507bfe95be6aa07ec3b3fe62dd5cd86ffee069b",
+    "claim_limit": "This proves the deployed R38 baseline runtime only; A5/R39 code has not yet executed on Node 24."
+  },
+  "integration_required_by_codex": [
+    "Wire r39-runtime-transport into the protected n04-library-qa Function/handler without weakening Team Login, Function secret, method/content-type/body validation or no-store behavior.",
+    "Extend scripts/build.mjs provenance to hash the R39 modules actually packaged, including sabik-retrieval.mjs, sabik-retrieval-server.mjs and r39-runtime-transport.mjs.",
+    "Run the integrated package on Node 22.16.0 and then the single authorized draft Function on Netlify Node 24; only that second execution can close A5 Node24 compatibility.",
+    "Keep authenticated HTTP evidence separate from SDK/Blobs evidence; keep C17 PENDING until effective platform configuration is evidenced."
+  ],
+  "out_of_scope_confirmed": [
+    "deploy by A5",
+    "site environment variables",
+    "cookies/tokens",
+    "Team Login changes",
+    "DNS",
+    "agent 2 web branch",
+    "Motion/voice",
+    "provider/model/embeddings",
+    "/api/chat",
+    "C17 PASS claim"
+  ],
+  "status": "A5_IMPLEMENTATION_READY_CODEX_INTEGRATION_PENDING"
+}
