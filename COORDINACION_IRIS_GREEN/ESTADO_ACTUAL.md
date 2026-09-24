@@ -86,3 +86,7 @@ Retirado catálogo antiguo del índice ES/EN según capturas de María. Cielo no
 ## Videoteca · A2 R16
 
 R04 integrado en PR244: 118 vídeos, 17 temas. Dan Wilkins permanece primero por petición expresa de María; prioridad registrada y comprobada por generador. HEAD b91c4bc7047d8e7793f095c8333ee76ef0c20217. Build correcto; deploy SUCCESS. Navegador confirma 118 vídeos, Dan primero ES/EN y filtro Ceguera con los cuatro nuevos vídeos. [Registro](MEMORIA/WEB_A2_VIDEOTECA_R16_20260924.md).
+
+## Juegos y recursos · A2 R17
+
+Paquete R06 integrado: 252 juegos, 109 rutinas, catálogo A4 y biblioteca visual compartida. HEAD 38cff835a3446ac1539d79fe2a87aedc358ae9c8 en PR244; build correcto, deploy y QA pendientes. Tres juegos nuevos, ningún slug retirado frente al HEAD anterior. [Registro y límites de duplicación](MEMORIA/WEB_A2_RECURSOS_R17_20260924.md).
