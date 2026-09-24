@@ -20,6 +20,9 @@ from pathlib import Path
 # no se amplía este inventario solo para hacer pasar CI.
 ALLOWED_STORAGE = {
     "localStorage": {
+        # Exoplanetas R12: favoritos y planetas conocidos; acción explícita,
+        # solo navegador, exportación y borrado. Aviso público ES/EN revisado.
+        "ig-exoplanetas-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-a11y": {"getItem", "setItem", "removeItem"},
         "ig_lang": {"getItem", "setItem", "removeItem"},
         "ig_saved_videos": {"getItem", "setItem", "removeItem"},
@@ -200,3 +203,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
