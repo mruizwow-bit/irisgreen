@@ -122,15 +122,23 @@
     var hiss = v.gain(0.06 * level, v.dry); v.noise('pink', v.filter('highpass', 2500, 0.5, hiss)); v.walk(hiss.gain, 0.02 * level, 0.09 * level, 2, 5);
   }
   function stream(v, level) {
-    var base = v.gain(0.35 * level, v.dry); v.noise('brown', v.filter('lowpass', 500, 0.5, base));
-    for (var i = 0; i < 7; i++) {
-      var g = v.gain(0.22 * level, v.pan(R(-0.8, 0.8), v.dry));
-      var bp = v.filter('bandpass', R(350, 2600), R(4, 12), g);
-      v.noise('pink', bp);
-      v.walk(bp.frequency, 300 + i * 150, 900 + i * 380, 0.08, 0.35);   // borboteo: la resonancia cambia muy rápido
-      v.walk(g.gain, 0.05 * level, 0.35 * level, 0.1, 0.5);
-    }
-    var spl = v.gain(0.05 * level, v.dry); v.noise('white', v.filter('highpass', 3500, 0.5, spl)); v.walk(spl.gain, 0.02 * level, 0.07 * level, 0.3, 1.2);
+    // Masa de agua: grave y redonda, con pequeñas variaciones
+    var base = v.gain(0.4 * level, v.dry), blp = v.filter('lowpass', 420, 0.6, base); v.noise('brown', blp);
+    v.walk(base.gain, 0.28 * level, 0.45 * level, 0.4, 1.4); v.walk(blp.frequency, 320, 560, 0.5, 1.5);
+    // Burbujeo: cientos de burbujas pequeñas por segundo. Cada una es un tono corto que sube (como el agua real al romper)
+    [-0.6, 0, 0.6].forEach(function (pan, k) {
+      var busy = 1;
+      v.walk({ setTargetAtTime: function (x) { busy = x; } }, 0.4, 1.6, 0.3, 1.2);
+      schedule(v, function () { return R(0.004, 0.03) / busy; }, function (t) {
+        var f = 320 * Math.pow(2, R(0, 2.2)), dur = R(0.025, 0.07);
+        var o = ctx.createOscillator(); o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * R(1.4, 2.4), t + dur);
+        var e = ctx.createGain(), a = Math.pow(Math.random(), 2) * 0.05 * level + 0.004;
+        e.gain.setValueAtTime(0.0001, t); e.gain.exponentialRampToValueAtTime(a, t + 0.003); e.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        var p = v.pan(pan + R(-0.3, 0.3)); o.connect(e); e.connect(p); p.connect(v.dry); o.start(t); o.stop(t + dur + 0.02);
+      });
+    });
+    // Salpicaduras muy suaves
+    var spl = v.gain(0.025 * level, v.dry); v.noise('pink', v.filter('bandpass', 2400, 0.8, spl)); v.walk(spl.gain, 0.01 * level, 0.04 * level, 0.08, 0.3);
   }
   function wind(v, level) {
     var g = v.gain(0.4 * level, v.dry), bp = v.filter('bandpass', 500, 0.9, g);
@@ -162,10 +170,19 @@
     });
   }
   function fire(v, level) {
-    var g = v.gain(0.45 * level, v.dry), lp = v.filter('lowpass', 520, 0.5, g); v.noise('brown', lp); v.walk(g.gain, 0.3 * level, 0.55 * level, 0.3, 1.5);
-    schedule(v, function () { return Math.random() < 0.15 ? R(0.01, 0.04) : R(0.06, 0.35); }, function (t) {
-      if (Math.random() < 0.85) burst(v, t, R(0.002, 0.008), 'highpass', R(1500, 4000), 0.7, R(0.03, 0.14) * level, R(-0.5, 0.5));
-      else burst(v, t, R(0.02, 0.05), 'bandpass', R(300, 900), 1.5, R(0.08, 0.2) * level, R(-0.4, 0.4), 'pink');
+    var roar = v.gain(0.5 * level, v.dry), rlp = v.filter('lowpass', 260, 0.5, roar); v.noise('brown', rlp);
+    v.walk(roar.gain, 0.3 * level, 0.6 * level, 0.15, 0.8); v.walk(rlp.frequency, 180, 380, 0.2, 1);
+    var hiss = v.gain(0.02 * level, v.dry); v.noise('pink', v.filter('highpass', 3500, 0.5, hiss)); v.walk(hiss.gain, 0.008 * level, 0.03 * level, 0.1, 0.6);
+    function snap(t, big) {                              // chasquido: ruido muy corto que hace sonar una resonancia de madera
+      var s2 = ctx.createBufferSource(); s2.buffer = noiseBuf('white');
+      var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = big ? R(700, 1600) : R(1800, 5000); bp.Q.value = big ? R(4, 9) : R(1, 3);
+      var e = ctx.createGain(), a = (big ? R(0.2, 0.45) : R(0.04, 0.16)) * level, d = big ? R(0.03, 0.08) : R(0.004, 0.015);
+      e.gain.setValueAtTime(0.0001, t); e.gain.exponentialRampToValueAtTime(a, t + 0.001); e.gain.exponentialRampToValueAtTime(0.0001, t + d);
+      var p = v.pan(R(-0.5, 0.5)); s2.connect(bp); bp.connect(e); e.connect(p); p.connect(v.dry); s2.start(t, R(0, 7), d + 0.03);
+    }
+    schedule(v, function () { return Math.random() < 0.3 ? R(0.012, 0.05) : R(0.08, 0.5); }, function (t) {
+      snap(t, Math.random() < 0.08);
+      if (Math.random() < 0.25) snap(t + R(0.005, 0.02), false);
     });
   }
   function softNoise(v, level, kind) { var g = v.gain((kind === 'brown' ? 0.55 : 0.4) * level, v.dry); v.noise(kind, v.filter('lowpass', kind === 'brown' ? 900 : 6000, 0.4, g)); }
@@ -202,10 +219,10 @@
   }
   function pads(v, level, low) {
     var voices = [], base = low ? 45 : 57, sc = SCALES[0];
-    var lp = v.filter('lowpass', low ? 600 : 1100, 0.7, v.gain(1, v.dry)); v.walk(lp.frequency, low ? 400 : 700, low ? 800 : 1500, 6, 14);
+    var lp = v.filter('lowpass', low ? 500 : 800, 0.5, v.gain(1, v.dry)); v.walk(lp.frequency, low ? 350 : 550, low ? 650 : 1000, 6, 14);
     for (var i = 0; i < 4; i++) for (var d = 0; d < 2; d++) {
-      var o = ctx.createOscillator(); o.type = d ? 'triangle' : 'sawtooth'; o.detune.value = d ? 6 : -6;
-      var g = v.gain((d ? 0.05 : 0.012) * level, lp); o.connect(g); o.start(); v.keep(o); voices.push(o);
+      var o = ctx.createOscillator(); o.type = 'sine'; o.detune.value = d ? 5 : -5;
+      var g = v.gain(0.035 * level, lp); o.connect(g); o.start(); v.keep(o); voices.push(o);
     }
     var CH = [[0, 4, 7, 11], [9, 12, 16, 19], [5, 9, 12, 16], [7, 11, 14, 19], [2, 5, 9, 12]];
     function next() {
@@ -241,7 +258,6 @@
     'ruido-rosa': function (v) { softNoise(v, 1, 'pink'); },
     'ruido-marron': function (v) { softNoise(v, 1, 'brown'); },
     'piano': function (v) { piano(v, 1); },
-    'ambiental': function (v) { pads(v, 1, false); },
     'cuencos': function (v) { bowls(v, 1); },
     // mezclas de las escenas
     'escena-acuario': function (v) { aquariumHum(v, 1, false); },
@@ -254,8 +270,8 @@
     'escena-noche': function (v) { crickets(v, 0.8); wind(v, 0.3); pads(v, 0.35, true); }
   };
   /* igualar el volumen percibido entre sonidos (medido en dB, ver memoria) */
-  var TRIM = { 'pajaros': 3.2, 'grillos': 3.6, 'cuencos': 3.0, 'piano': 1.7, 'escena-noche': 2.2, 'olas': 0.72, 'escena-mar': 0.68, 'viento': 1.3, 'ambiental': 1.1 };
-  var WET = { 'piano': 0.45, 'ambiental': 0.5, 'cuencos': 0.6, 'pajaros': 0.35, 'escena-rio': 0.25, 'escena-noche': 0.35, 'escena-fibra': 0.45, 'escena-medusas': 0.4 };
+  var TRIM = { 'pajaros': 3.2, 'grillos': 3.6, 'cuencos': 3.0, 'piano': 1.7, 'escena-noche': 2.2, 'olas': 0.72, 'escena-mar': 0.68, 'viento': 1.3 };
+  var WET = { 'piano': 0.45, 'cuencos': 0.6, 'pajaros': 0.35, 'escena-rio': 0.25, 'escena-noche': 0.35, 'escena-fibra': 0.45, 'escena-medusas': 0.4 };
 
   var catalog = [
     { id: 'lluvia', fam: 'nat', es: 'Lluvia', en: 'Rain', des: 'Lluvia constante, sin truenos', den: 'Steady rain, no thunder' },
@@ -269,7 +285,6 @@
     { id: 'ruido-rosa', fam: 'ruido', es: 'Ruido rosa', en: 'Pink noise', des: 'Sonido parejo, parecido a la lluvia fina', den: 'An even sound, like light rain' },
     { id: 'ruido-marron', fam: 'ruido', es: 'Ruido marrón', en: 'Brown noise', des: 'Sonido grave y envolvente', den: 'A deep, enveloping sound' },
     { id: 'piano', fam: 'mus', es: 'Piano suave', en: 'Soft piano', des: 'Notas lentas que nunca se repiten igual', den: 'Slow notes that never repeat the same way' },
-    { id: 'ambiental', fam: 'mus', es: 'Música ambiental', en: 'Ambient music', des: 'Acordes largos y cálidos', den: 'Long, warm chords' },
     { id: 'cuencos', fam: 'mus', es: 'Cuencos', en: 'Singing bowls', des: 'Un cuenco que suena de vez en cuando', den: 'A bowl that rings now and then' }
   ];
 

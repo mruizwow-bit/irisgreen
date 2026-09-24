@@ -15,7 +15,7 @@
     rain: 'Lluvia en la ventana: gotas que resbalan despacio por un cristal, con luces desenfocadas detrás.',
     river: 'Río en el bosque: agua que corre entre piedras, hierba que se mueve con el viento y hojas que caen.',
     night: 'Cielo nocturno: estrellas y una aurora que ondula despacio sobre un lago rodeado de pinos.',
-    no3d: 'Esta escena necesita gráficos 3D y este navegador no los permite. Prueba con el acuario o el tubo de burbujas.',
+    no3d: 'Para ver esta escena, el navegador necesita gráficos 3D (WebGL) y ahora mismo no los tiene activos. Suele arreglarse activando la «aceleración por hardware» en la configuración del navegador. El acuario y el tubo de burbujas sí se ven sin ella.',
     nofull: 'Este navegador no permite la pantalla completa aquí.',
     unavailable: 'no disponible'
   } : {
@@ -30,7 +30,7 @@
     rain: 'Rain on the window: drops slide slowly down a pane of glass, with blurred lights behind.',
     river: 'Stream in the forest: water runs over stones, grass moves in the wind and leaves fall.',
     night: 'Night sky: stars and an aurora that ripples slowly over a lake ringed with pine trees.',
-    no3d: 'This scene needs 3D graphics and this browser does not allow them. Try the aquarium or the bubble tube.',
+    no3d: 'To show this scene, the browser needs 3D graphics (WebGL), which are not active right now. Turning on “hardware acceleration” in the browser settings usually fixes it. The aquarium and the bubble tube work without it.',
     nofull: 'This browser does not allow full screen here.',
     unavailable: 'unavailable'
   };
@@ -313,7 +313,7 @@
   function need3d() {
     if (window.IGScenes3D) return Promise.resolve(window.IGScenes3D);
     if (!load3d) load3d = new Promise(function (ok, ko) {
-      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r02-20260924'; s.async = true;
+      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r19-20260924'; s.async = true;
       s.onload = function () { window.IGScenes3D ? ok(window.IGScenes3D) : ko(); };
       s.onerror = function () { load3d = null; ko(); };
       document.head.appendChild(s);
@@ -347,7 +347,7 @@
     });
   }
   function start2d(kind, button) {
-    if (kind !== 'aquarium' && kind !== 'bubbles' && kind !== 'jellies' && kind !== 'fibre') {
+    if (kind !== 'aquarium' && kind !== 'bubbles') {   // sin versión 2D propia: se explica, nunca se enseña otra escena
       stopScene(); stage.innerHTML = '';
       var msg = document.createElement('div'); msg.className = 'empty-stage'; msg.setAttribute('role', 'status'); msg.textContent = T.no3d; stage.appendChild(msg);
       if (credit) credit.textContent = '';

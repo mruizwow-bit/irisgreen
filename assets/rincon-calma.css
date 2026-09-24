@@ -95,3 +95,14 @@
 #listen #genList .qgen{flex-wrap:nowrap;padding:8px 10px;min-height:52px}
 #listen #genList .qgen>span.qthumb{flex:0 0 34px;width:34px;height:34px;aspect-ratio:1/1;border-radius:50%}
 #listen #genList .qgen>span:last-child{flex:1 1 auto;min-width:0}
+
+/* Miniaturas: imagen real de cada escena (capturas de las propias escenas 3D) */
+.qscenes .qthumb{background-color:#17395c;background-position:center;background-size:cover;background-repeat:no-repeat}
+.qscenes .qthumb-aq{background-image:url(/img/rincon-tranquilo/escenas/acuario.webp)}
+.qscenes .qthumb-bu{background-image:url(/img/rincon-tranquilo/escenas/tubo-burbujas.webp)}
+.qscenes .qthumb-je{background-image:url(/img/rincon-tranquilo/escenas/medusas.webp)}
+.qscenes .qthumb-fi{background-image:url(/img/rincon-tranquilo/escenas/fibra-optica.webp)}
+.qscenes .qthumb-sea{background-image:url(/img/rincon-tranquilo/escenas/mar.webp)}
+.qscenes .qthumb-rain{background-image:url(/img/rincon-tranquilo/escenas/lluvia-ventana.webp)}
+.qscenes .qthumb-river{background-image:url(/img/rincon-tranquilo/escenas/rio-bosque.webp)}
+.qscenes .qthumb-night{background-image:url(/img/rincon-tranquilo/escenas/cielo-nocturno.webp)}
