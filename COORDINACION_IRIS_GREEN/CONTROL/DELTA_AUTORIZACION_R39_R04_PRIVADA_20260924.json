@@ -1,0 +1,40 @@
+{
+  "event_id": "AUTH-R39-R04-PRIVADA-20260924",
+  "date": "2026-09-24",
+  "authority": "María: sí a la activación privada R04 expresamente descrita",
+  "order": "ORDENES/R39_CONEXION_MONTAJE_R04/01_CODEX.md",
+  "memory": "MEMORIA/AUTORIZACION_R39_R04_PRIVADA_20260924.md",
+  "apply_by_task_id": [
+    {
+      "task_id": "R39-CODEX-R04",
+      "authorization_state": "AUTORIZADA_ACTIVACION_PRIVADA",
+      "execution_state": "PENDIENTE_CONFIRMACION",
+      "next_action": "Habilitar la entrada privada R04 ya construida en un borrador incremental de sabik-asistente, con Team Login conservado, clave QA existente solo en servidor y origen exacto del borrador A2 vigente; comprobar HTTP y biblioteca desde la Function real."
+    },
+    {
+      "task_id": "R39-A2-MONTAJE-R04",
+      "authorization_state": "AUTORIZADA_CONEXION_BORRADOR_VIGENTE",
+      "execution_state": "PENDIENTE_CONFIRMACION_DE_CONEXION",
+      "preserve": "Sabik ya montado y subidas posteriores de María/A2",
+      "next_action": "Confirmar HEAD/deploy/origen vigentes y conectar el montaje al borrador Cloud autorizado sin sustituir páginas ni retroceder la web."
+    },
+    {
+      "task_id": "R39-A3-USO-R04",
+      "preserve": "VERIFICADO_MONTAJE_DESACTIVADO_PENDIENTE_TRANSPORTE_REAL",
+      "next_action": "Continuar solo los casos de uso real pendientes al recibir la identidad del montaje conectado; no repetir las comprobaciones ya acreditadas."
+    }
+  ],
+  "public_access_authorized": false,
+  "production_publication_authorized": false,
+  "ai_voice_chat_activation_authorized": false,
+  "team_login_must_remain_enabled": true,
+  "qa_secret_server_only": true,
+  "new_secrets_or_rotation_authorized": false,
+  "public_content_languages": ["es", "en"],
+  "sealed_corpus_language": "es",
+  "implementation_reference": "e8a8e9579b64ffbe288e2a85889dbe687210554b; conservar avance posterior compatible",
+  "library_deploy_preserved": "6ab4c1a15435b93043ab3f6d",
+  "master_xlsx_modified": false,
+  "global_pass_claimed": false,
+  "note": "Este evento sustituye únicamente PENDIENTE_AUTORIZACION de la propuesta privada R04. No prueba ejecución ni altera otras autorizaciones de María/A2. Aplicar al control por ID conservando resultados y avances posteriores."
+}
