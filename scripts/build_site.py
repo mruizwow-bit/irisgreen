@@ -67,6 +67,7 @@ def build():
     # España ya va incrustada en la pantalla inicial del Directorio. Los otros países
     # se solicitan únicamente cuando la persona los elige.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
 
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
