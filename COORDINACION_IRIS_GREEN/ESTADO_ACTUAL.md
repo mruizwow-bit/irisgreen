@@ -82,3 +82,7 @@ Actualización R02/R02b del paquete irisgreen-r02-r03-listo_2.zip integrada solo
 ## Intereses · agrupación R15
 
 Retirado catálogo antiguo del índice ES/EN según capturas de María. Cielo nocturno, Sistema Solar y Exoplanetas bajo El cielo y el espacio. Estructura de once grupos registrada para entregas futuras, sin grupos vacíos públicos. HEAD d0c49fa9a7f51e6cd363e3281818f082132abcb8; deploy 6ab545c25a9e420008fcfec3 SUCCESS. [Registro](MEMORIA/WEB_A2_INTERESES_ESTRUCTURA_R15_20260924.md).
+
+## Videoteca · A2 R16
+
+R04 integrado en PR244: 118 vídeos, 17 temas. Dan Wilkins permanece primero por petición expresa de María; prioridad registrada y comprobada por generador. HEAD b91c4bc7047d8e7793f095c8333ee76ef0c20217. Build correcto; deploy y QA navegador pendientes. [Registro](MEMORIA/WEB_A2_VIDEOTECA_R16_20260924.md).
