@@ -1,0 +1,21 @@
+# R39-A3-R02 · Corregir el panel antes de montarlo
+Fecha: 24/09/2026. Responsable: Agente 3. Autoridad: María, siguientes órdenes tras revisión final. Estado: EMITIDA_PENDIENTE_ACUSE.
+
+## Base y alcance
+Corregir tu entrega `f5c7d4fb24c7ae2f2c9eed98d6745bc1d98c3842`, conservando cualquier avance posterior verificado. Solo `sabik/retrieval-panel.js` y `tools/test-sabik-retrieval-panel.js`. No editar páginas, CSS global, Core, Motion, Function, configuración o rama de María/agente 2. Codex conserva el puente de contratos y la integración.
+Fuente: [revisión final](../../MEMORIA/REVISION_FINAL_AGENTES_R39_2026-09-24.md), OBS-A3-01/02/03 e INT-A1-A3-01. Las 14 pruebas originales no cubren estos fallos; añadir regresiones concretas, no otra auditoría.
+
+## Corregir
+1. **OBS-A3-01:** quitar del texto público ID de fragmento, versión de biblioteca, tipo técnico de fuente y conceptos internos. Mostrar título/enlace, apartado útil y extracto. Conservar identificadores/versiones en el contrato interno para trazabilidad; no destruir citas ni esconder datos técnicos como texto anunciado por lector de pantalla. Actualizar el test que hoy exige el rótulo interno: el requisito vigente manda.
+2. **OBS-A3-02:** reconocer la cancelación canónica `REQUEST_CANCELLED` de Codex como cancelación, no error genérico. Mantener descarte de respuestas antiguas. No sustituir la política del servidor. Toda nueva explicación pública debe estar en ES y EN.
+3. **OBS-A3-03:** distinguir idioma de la interfaz e idioma de cada cita. Usar metadatos fiables suministrados por el contrato acordado; marcar con `lang` el extracto y otros textos de fuente cuando difieran del idioma de la interfaz. No adivinarlo por texto ni presentar una cita española como traducción inglesa. No modificar el corpus sellado. Si la cobertura EN falta, declararla; no es un PASS bilingüe del servicio completo.
+4. Acordar con Codex la recepción de grupos A1 `{url,citations[]}` sin duplicar agrupador ni renombrar contratos en varios sitios. Codex adapta `results` y preserva candidatos crudos. El panel debe poder mostrar una fuente con sus extractos sin perder fragmentos ni repetir la tarjeta por cada fragmento. No incluir fetch directo ni secretos. Reutilizar validación de enlaces confiable en la frontera acordada con Codex, sin normalizar URLs que cambien la agrupación exacta.
+
+## Prueba y aceptación
+Regresiones: ausencia de rótulos internos en ES/EN y en texto accesible; `REQUEST_CANCELLED` → cancelled; consulta obsoleta no reemplaza otra; idioma ES marcado dentro de interfaz EN; título/extracto de fuente sin traducción inventada; grupos con todos sus fragmentos; error seguro, vacío y reintento. Mantener texto seguro, foco y región de anuncios existentes.
+Ejecutar las pruebas pertinentes y una revisión del componente en navegador si el entorno lo permite. Registrar como pendiente lo que solo se probó con dobles DOM; no llamarlo lector de pantalla real. Entregar los dos archivos, parche y manifest con base/HEAD/tree, pruebas y OBS cerradas. Codex recibe; el montaje en la web corresponde a María/A2, sobre su HEAD vigente. No deploy por A3.
+
+## Normativa obligatoria y ES+EN
+[Marco operativo de la misma carpeta](../../NORMATIVA/REQUISITOS_OPERATIVOS_ES_EN.md). **Iris Green es bilingüe: español e inglés.** Entregar ambos idiomas en títulos, botones, vacíos, errores, ayudas, nombres accesibles y cualquier texto nuevo. El selector no acredita traducción; mantener el idioma original de las citas y registrar la cobertura documental pendiente.
+Preservar tipografía Newsreader/Atkinson, navegación y Lectura. WCAG 2.2 AA/COGA según superficie: HTML semántico, encabezados coherentes con el montaje, teclado, foco visible/no robado, anuncios oportunos, contraste, ampliación/reflujo y movimiento reducido. No nuevas animaciones ni estados B3. Escritura clara, acciones concretas, sin metadatos de QA visibles, sin infantilizar ni exigir diagnóstico.
+Referencias aplicables del marco: ISO/IEC 40500, EN 301 549, ISO 24495-1, ISO 9241-171/210/11/112; no declarar certificación ni Lectura Fácil formal por simplificar frases. UNE 153101 EX, PDF/UA y braille solo cuando su superficie corresponda y se valide. Registrar no aplicables y evidencia por idioma. Sin cambios de permisos, corpus, proveedor, voz, `/api/chat` ni web de A2. No convertir la corrección en rediseño.
