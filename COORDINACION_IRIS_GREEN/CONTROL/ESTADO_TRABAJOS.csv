@@ -1,0 +1,12 @@
+﻿ID;Responsable;Estado_con_evidencia;Entregado_o_confirmado;Pendiente;ES_EN;Limites
+WEB-A2;María y agente 2;TRABAJO_CONFIRMADO_POR_MARIA;Subidas e integración de la web dirigidas por María;Su propio registro de entregas vigentes;Obligatorio para todo contenido público afectado;No tocar su rama ni sustituir su web
+DESIGN;María y Design;COORDINACION_CONFIRMADA_POR_MARIA;Adaptación dirigida por María;Entregas concretas bajo su control;Obligatorio para recursos e imprimibles publicados;130 juegos antiguos excluidos
+R37;Codex;CANDIDATO_TECNICO_RECIBIDO;HEAD c23abd9a3ef082a6ed646b03334fe9031b17af15;Revisión visual de María y comprobaciones manuales pendientes;No acreditar EN sin evidencia de la superficie;No rediseño ni estados extra
+R38;Codex;MOTOR_RECIBIDO;HEAD ddd12ed4e002812f5c53e24618c029be9faf9e00;HTTP autenticado y C17;Corpus ES sellado no es corpus EN;Corpus inmutable y sin inferencia
+R39;Codex;CODIGO_ENTREGADO;HEAD 92f24c8c89e8d429a6936efd962ee3f5dad936f0;Conectar e integrar en Function sin rehacer adaptador;No añadir copy monolingüe ni declarar cobertura documental EN;No API chat ni proveedor
+R39-A1;Agente 1;ASIGNADO_SIN_ACUSE;Encargo de agrupación de fuentes;Módulo y prueba compatibles con R39;Datos aptos para consumidor ES EN;No cambiar ranking ni corpus
+R39-A3;Agente 3;ASIGNADO_SIN_ACUSE;Encargo de resultados dentro de Sabik;Componente y pruebas de accesibilidad e idiomas;ES y EN completos en texto ARIA estados y errores;No otra web ni credenciales cliente
+R39-A4;Agente 4;ASIGNADO_SIN_ACUSE;Encargo de ciclo de solicitudes;Cancelación timeout y evidencia concreta C17;Errores y anuncios públicos ES EN;No interrumpir carga compartida
+R39-A5;Agente 5;ASIGNADO_SIN_ACUSE;Encargo de Function y runtime;Incremento de transporte empaquetado y ejecución real;Contrato apto ES EN sin traducir corpus sellado;Borrador Cloud solo según HEAD integrado de Codex
+S2-A6;Agente 6;CONTINUIDAD_ORDENADA_SIN_NUEVO_ACUSE;Trabajo local de voz previo;Paquete y contrato de integración futura;Etiquetar idioma real y no presumir voz inglesa;Audio privado fuera de Git y voz no activada
+R39-A7;Agente 7;ASIGNADO_SIN_ACUSE;Encargo de recepción y colisiones;Consolidar acuses entregas y estado;Bloque ES EN y normativa en cada orden;No editar producto ni desplegar
