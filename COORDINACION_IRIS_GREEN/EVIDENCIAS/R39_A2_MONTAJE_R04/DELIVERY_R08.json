@@ -1,0 +1,33 @@
+{
+  "status": "MONTADO_TRANSPORTE_DESACTIVADO",
+  "branch": "agent2/sabik-iris-r08-20260924",
+  "head": "5d6515ba8a1aa7752d624773eed07d49d1ea84c6",
+  "base": "2e17ed3ae02e23a4fd734b00c10f843d14a19d4d",
+  "pr": 244,
+  "deploy": "6ab531f12deee80008212708",
+  "origin": "https://6ab531f12deee80008212708--irisgreen-home.netlify.app",
+  "routes": {
+    "es": "/",
+    "en": "/?lang=en"
+  },
+  "transport": {
+    "enabled": false,
+    "cloudOrigin": null,
+    "fixtures": false,
+    "authorizationPending": "R04.4 y HTTP real"
+  },
+  "verified": {
+    "generatedHtml": 989,
+    "flowerImagesRemoved": 984,
+    "browserCases": 36,
+    "resourcesCases": 12,
+    "motionTransitions": 75,
+    "desktopWidth": 1440,
+    "mobileWidth": 320
+  },
+  "limitations": [
+    "Sin merge de main ni apertura de producción por orden R39-A2-MONTAJE-R04.",
+    "Auditoría general de almacenamiento mantiene 21 hallazgos preexistentes, fuera del transporte Sabik.",
+    "Aceptación humana y ayudas técnicas no ejecutadas pendientes."
+  ]
+}
