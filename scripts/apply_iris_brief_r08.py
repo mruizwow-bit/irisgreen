@@ -40,6 +40,8 @@ def apply(root):
    changes.append((nav['close_start'],nav['close_start'],'<a href="/es/intereses/" data-iris-top="interests">Tus intereses</a><a href="/es/taller/" data-iris-top="workshop">El taller</a>'))
   changes.append((head['close_start'],head['close_start'],styles))
   result=edit(text,changes).replace('https://irisgreen.eu/img/v40-brand-symbol.webp','https://irisgreen.eu/assets/iris-wordmark.svg').replace('Símbolo de Iris Green: una flor de iris','Iris Green').replace('Iris Green symbol: an iris flower','Iris Green')
+  flip_hash=hashlib.sha256((ROOT/'assets/libros-flipbooks.js').read_bytes()).hexdigest()[:12]
+  result=result.replace('/assets/libros-flipbooks.js\"',f'/assets/libros-flipbooks.js?v={flip_hash}\"')
   p.write_text(result);families[kind]+=1;inventory.append({'path':rel,'template':kind,'flower_images_removed':removed,'shared_brief':True,'lang':doc.one('html')['attrs'].get('lang')})
  dest=root/'sabik';dest.mkdir(exist_ok=True)
  for p in (ROOT/'sabik').rglob('*'):

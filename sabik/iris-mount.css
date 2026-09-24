@@ -28,3 +28,9 @@
 @container(max-width:900px){#home-view .featured-grid,#home-view .section-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.iris-home-content .feature-card{grid-template-columns:34px minmax(0,1fr) 16px;padding:18px 16px;gap:10px}.iris-home-content .icon-block{width:34px;height:36px}}
 @container(max-width:600px){#home-view .featured-grid,#home-view .section-grid{grid-template-columns:minmax(0,1fr)}}
 html[data-ig-text-enlarged] #home-view .featured-grid{grid-template-columns:minmax(0,1fr)}
+/* Home is a full-width application surface, not a narrow editorial article. */
+main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+#home-view{max-width:none;grid-template-columns:minmax(0,2fr) minmax(320px,1fr);gap:32px}
+#home-view .search-block{max-width:none}
+.sabik-web-visual{max-width:440px}
+@media(max-width:850px){#home-view{display:block}.sabik-web-visual{max-width:260px}}

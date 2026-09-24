@@ -32,3 +32,7 @@ Origen Cloud no configurado y transporte desactivado hasta autorización R04.4 y
 ## Verificación
 
 Inventario estático completo; cabecera y Lectura únicas; ausencia de flor; enlaces vigentes; pruebas de navegación y composición a 1440 y 320 px, ES/EN, teclado, ocultar/mostrar, intensidad, reinicio, reduced motion y contraste. Mantener pruebas de impresión/PNG de Recursos. No atribuir certificación normativa ni revisión manual con todas las ayudas técnicas a estas pruebas.
+
+## Correcciones R09 solicitadas por María
+
+Cabeceras secundarias en una sola fila de escritorio (marca, navegación, controles e idiomas), conservando el menú móvil. La portada usa el ancho de ventana con margen de 24 px y reparto 2:1 entre contenido y Sabik; no hereda el límite editorial de 70 rem. Títulos Newsreader coherentes entre Recursos, Intereses y el resto de plantillas, con tamaño de h1 común; las elecciones de fuente de Lectura siguen prevaleciendo. Corrección funcional de las muestras de libros: cada paso desplaza la imagen de la hoja, además del contador. Comprobar diferencias reales de píxeles en todas las hojas interiores de ambos libros.
