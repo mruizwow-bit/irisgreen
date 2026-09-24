@@ -12,14 +12,14 @@ assets=root/'assets/mulberry-rutinas'
 for p in (page,index,css,js,data,assets/'sources.csv',assets/'LICENSE-MULBERRY.txt'):
     assert p.exists(),p
 rows=list(csv.DictReader((assets/'sources.csv').open(encoding='utf-8-sig')))
-assert len(rows)==58,len(rows)
+assert len(rows)==93,len(rows)
 assert all(r['estado']=='CANDIDATO' for r in rows)
 sprite_files=sorted(assets.glob('sprite-*.svg'))
-assert [p.name for p in sprite_files]==[f'sprite-{i}.svg' for i in range(1,9)]
+assert [p.name for p in sprite_files]==sorted(f'sprite-{i}.svg' for i in range(1,14))
 sprite_text={p.name:p.read_text(encoding='utf-8') for p in sprite_files}
 all_sprites=''.join(sprite_text.values())
 ids=re.findall(r'<symbol\b[^>]*\bid=["\']([^"\']+)["\']',all_sprites,re.I)
-assert len(ids)==58 and len(set(ids))==58,(len(ids),len(set(ids)))
+assert len(ids)==93 and len(set(ids))==93,(len(ids),len(set(ids)))
 assert set(ids)=={r['id'] for r in rows}
 low=all_sprites.lower()
 for bad in ('<metadata','c2pa','com.anthropic','id="layer_1"',"id='layer_1'"):
@@ -27,9 +27,8 @@ for bad in ('<metadata','c2pa','com.anthropic','id="layer_1"',"id='layer_1'"):
 html=page.read_text(encoding='utf-8'); resource_index=index.read_text(encoding='utf-8')
 script=js.read_text(encoding='utf-8'); style=css.read_text(encoding='utf-8')
 data_text=data.read_text(encoding='utf-8').strip()
-assert data_text.startswith('window.IG_RUTINAS_PICTOS=') and data_text.endswith(';')
-pictos=json.loads(data_text[len('window.IG_RUTINAS_PICTOS='):-1])
-assert len(pictos)==58
+pictos=json.loads(re.search(r'window\.IG_RUTINAS_PICTOS=(\[.*?\]);',data_text,re.S).group(1))
+assert len(pictos)==93
 for p in pictos:
     assert p['sprite'] in sprite_text,(p['id'],p['sprite'])
     assert re.search(r'<symbol\b[^>]*\bid=["\']'+re.escape(p['id'])+r'["\']',sprite_text[p['sprite']],re.I),(p['id'],p['sprite'])
@@ -48,8 +47,8 @@ assert 'grid-template-columns:10mm 35mm 1fr 12mm' in style
 assert 'repeat(4,1fr)' in style
 assert 'width:60mm' in style
 assert 'width:45mm' in style
-assert '© Steve Lee, CC BY-SA 4.0 · mulberrysymbols.org' in script
+assert '© Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.0 · mulberrysymbols.org' in script
 assert 'Deberes' not in script and 'Homework' not in script and 'Merienda' not in script
 assert '/es/taller/rutinas/' not in html
 assert 'irisgreen.eu/es/taller/rutinas/' not in script
-print({'route':'/es/recursos/rutinas-visuales/','symbols':58,'sprites':8,'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})
+print({'route':'/es/recursos/rutinas-visuales/','symbols':93,'sprites':13,'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})
