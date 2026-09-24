@@ -15,3 +15,13 @@ html,body{height:auto!important}
 body.hc .igt-studio{border:2px solid #17395c}
 @media (max-width:560px){.igt-portada{padding:18px 16px}}
 @media print{.igt-studio{break-inside:avoid}}
+
+/* R13: visual entry to the five studios */
+.igt-title{font:400 clamp(32px,4vw,48px)/1.15 'Newsreader',Georgia,serif;margin:0 0 8px}
+.igt-intro{margin:0 0 24px;color:#435268;font-size:19px}
+.igt-studios{grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:20px}
+.igt-studio{padding:0 0 18px;overflow:hidden;gap:10px}
+.igt-studio>strong,.igt-studio>span,.igt-studio>em{margin-left:18px;margin-right:18px}
+.igt-studio-preview{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;border-bottom:1px solid #dde3ed}
+.igt-studio>.igt-enter{font-weight:700;color:#1f5f8b;margin-top:6px;min-height:28px}
+.igt-studio:hover>.igt-enter{text-decoration:underline;text-underline-offset:4px}
