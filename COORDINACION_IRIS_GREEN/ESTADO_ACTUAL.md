@@ -1,5 +1,15 @@
 # Estado operativo compartido
 
+## R39 R04 · Cloud privado activo; parche entregado a A2
+
+María confirma que su acceso ya funciona y que no abrió el aviso de login visto en esta continuación; no se trata como bloqueo ni se investiga como tarea nueva.
+
+Codex ha dejado Cloud privado activo en `sabik-asistente` y ha entregado a A2 el parche mínimo de tres archivos sobre su HEAD vigente documentado. Estado operativo: **CLOUD_PRIVADO_ACTIVO · PARCHE_A2_ENTREGADO · PENDIENTE_APLICACION_A2_Y_QA_REAL**.
+
+Siguiente acción única: A2 aplica el parche sobre su HEAD vigente, sin restaurar bases anteriores ni perder subidas, confirma HEAD/deploy/origen; después A3 ejecuta solo los cinco casos reales pendientes (resultados+fuentes, cero resultados, cancelación/sustitución, error/timeout recuperable y `lang=es` de citas en UI EN). No repetir QA de montaje ya acreditada. No nueva autorización, no nuevo Cloud, no nueva investigación de login.
+
+---
+
 ## R39 R04 · activación privada autorizada ejecutada
 
 Cloud `6ab56a1ba2f6d83e6fb7b408` READY, privado y no publicado; HEAD `16f1134e56292ca2ee600e77e69012c494f39aaf`, 259/259 por runtime. Team Login all y corpus sellado conservados. GET de la página de conexión accesible con sesión de equipo; POST de búsqueda y transporte desde el formulario A2 pendientes. Delta mínimo de tres archivos probado contra PR244 d5258434, sin modificar su rama. [Entrega y límites](EVIDENCIAS/R39_CODEX_R04_ACTIVACION/INFORME.md). La autorización ya está concedida; no volver a solicitarla. El montaje previo se conserva y no se reabre su QA ya acreditada.
