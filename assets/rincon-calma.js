@@ -313,7 +313,7 @@
   function need3d() {
     if (window.IGScenes3D) return Promise.resolve(window.IGScenes3D);
     if (!load3d) load3d = new Promise(function (ok, ko) {
-      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js'; s.async = true;
+      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r02-20260924'; s.async = true;
       s.onload = function () { window.IGScenes3D ? ok(window.IGScenes3D) : ko(); };
       s.onerror = function () { load3d = null; ko(); };
       document.head.appendChild(s);
