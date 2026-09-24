@@ -1,11 +1,11 @@
-/* Iris Green · Juegos y rutinas. Sin dependencias. Nada suena ni se mueve solo. */
+/* Iris Green · Juegos. Sin dependencias. Nada suena ni se mueve solo. */
 (function(){
 'use strict';
 var D=window.IG_JUEGOS_DATA;if(!D)return;
 var root=document.getElementById('jg-app');if(!root)return;
 var BASE=root.getAttribute('data-base')||'/assets/juegos/';
 var UI={
- es:{h1:'Juegos y rutinas',lede:'Elige por etapa, contexto o por lo que quieras practicar. Son apoyos para organizar, secuenciar, planificar o practicar situaciones cotidianas; no hace falta un diagnóstico para usarlos. Sin tiempo, sin puntos y sin prisa.',crumb:'Recursos',crumbHref:'/es/recursos/',
+ es:{h1:'Juegos',lede:'Elige por etapa de vida, contexto o por lo que quieras practicar. Son juegos visuales y prácticos para organizar pasos, planificar o ensayar situaciones cotidianas. No necesitas un diagnóstico para usarlos. Sin tiempo, sin puntos y sin prisa.',crumb:'Recursos',crumbHref:'/es/recursos/',
   buscar:'Buscar un juego',buscarPh:'Por ejemplo: mochila, ducha, autobús',temas:'Contexto',filtros:'Filtrar juegos',etapa:'Etapa de vida',necesidad:'Habilidad o necesidad',duracion:'Duración aproximada',tipoActividad:'Tipo de actividad',limpiar:'Quitar filtros',n:function(n){return n===1?'1 juego':n+' juegos';},sinRes:'No hay juegos con esos filtros. Prueba otra combinación.',
   jugar:'Jugar',todos:'Todos los juegos',menos:'Menos opciones',ayuda:'Ayúdame',otraVez:'Empezar otra vez',imprimir:'Imprimir',
   parte:function(a,b){return 'Parte '+a+' de '+b;},vacio:'Todavía está vacío.',listo:'Ya está',seguir:'Seguir',otroJuego:'Elegir otro juego',
@@ -21,7 +21,7 @@ var UI={
   mitad:'Queda la mitad.',poco:'Queda poco.',finReloj:'Se acabó el tiempo.',relojListo:'Preparado cuando tú quieras.',
   hojaOrden:'Pasos en orden.',hojaLista:'Marca cada casilla cuando lo hayas hecho.',hojaPlan:'Mi plan.',elige:'Buena elección. Sigue cuando quieras.',
   objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego'},
- en:{h1:'Games and routines',lede:'Choose by life stage, context or what you want to practise. These are practical supports for organising, sequencing, planning or practising everyday situations; you do not need a diagnosis to use them. No timer, no points and no rush.',crumb:'Resources',crumbHref:'/en/resources/',
+ en:{h1:'Games',lede:'Choose by life stage, context or what you want to practise. These are visual, practical games for organising steps, planning or practising everyday situations. You do not need a diagnosis to use them. No timer, no points and no rush.',crumb:'Resources',crumbHref:'/en/resources/',
   buscar:'Search for a game',buscarPh:'For example: backpack, shower, bus',temas:'Context',filtros:'Filter games',etapa:'Life stage',necesidad:'Skill or need',duracion:'Approximate duration',tipoActividad:'Activity type',limpiar:'Clear filters',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match those filters. Try another combination.',
   jugar:'Play',todos:'All games',menos:'Fewer options',ayuda:'Help me',otraVez:'Start again',imprimir:'Print',
   parte:function(a,b){return 'Part '+a+' of '+b;},vacio:'It is still empty.',listo:'Done',seguir:'Continue',otroJuego:'Choose another game',
