@@ -1,0 +1,15 @@
+/* Iris Green · Tus intereses · entrada a los intereses a fondo. */
+.ig-afondo{border-radius:24px;padding:22px 24px;margin-bottom:22px;display:flex;flex-direction:column;gap:10px}
+.ig-afondo h2{font:400 clamp(26px,3.2vw,34px)/1.1 'Newsreader',Georgia,serif;margin:0;letter-spacing:-.01em}
+.ig-afondo-lede{margin:0;max-width:46rem;font-size:16.5px;line-height:1.6;color:#435268}
+.ig-afondo-list{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:14px}
+.ig-afondo-card{display:flex;gap:14px;align-items:stretch;min-height:44px;background:#fff;border:1px solid var(--line,#dfe6ef);border-radius:18px;padding:12px;color:var(--ink,#17395c);text-decoration:none}
+.ig-afondo-card:hover{border-color:var(--ink,#17395c)}
+.ig-afondo-card:focus-visible{outline:3px solid #5a49a8;outline-offset:2px}
+.ig-afondo-card img{width:96px;height:128px;object-fit:cover;border-radius:12px;flex:none;background:#0e1a33}
+.ig-afondo-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ig-afondo-txt strong{font:600 22px/1.2 'Newsreader',Georgia,serif}
+.ig-afondo-txt>span{font-size:15px;line-height:1.5;color:#405369}
+.ig-afondo-txt .ig-afondo-go{margin-top:auto;font-weight:700;color:var(--blue,#1f5f8b)}
+@media(max-width:420px){.ig-afondo{padding:16px 10px}.ig-afondo-card img{width:72px;height:96px}}
+@media(forced-colors:active){.ig-afondo-card{border:1px solid CanvasText}}

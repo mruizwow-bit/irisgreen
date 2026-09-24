@@ -8,6 +8,7 @@
   "campos_en": "los mismos cinco campos en inglés; sin esto el cromo no sale en /en/interests/",
   "foto": "/img/intereses/<tema>/<nn>-<nombre>.webp",
   "credito": "de dónde sale la imagen",
+  "credito_en": "el mismo crédito en inglés, para la página inglesa",
   "lineas": "solo en constelaciones: pares de estrellas que forman la figura",
   "pendiente": "true mientras no esté la imagen",
   "total": "cuántos cromos tendrá la colección entera; null si todavía no se sabe",
@@ -27,6 +28,7 @@
      "latino": "Ursa Major",
      "foto": "img/intereses/constelaciones/01-ursa-major.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "es el punto de partida de todo lo demás. Siete estrellas en forma de carro, altas en el norte.",
       "Cuándo se ve": "todo el año. Nunca se pone desde España.",
@@ -80,6 +82,7 @@
      "latino": "Ursa Minor",
      "foto": "img/intereses/constelaciones/02-ursa-minor.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "siguiendo cinco veces la distancia entre Dubhe y Merak, las dos del extremo del carro.",
       "Cuándo se ve": "todo el año.",
@@ -133,6 +136,7 @@
      "latino": "Cassiopeia",
      "foto": "img/intereses/constelaciones/03-cassiopeia.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "al otro lado de la polar respecto al carro. Cuando una está alta, la otra está baja.",
       "Cuándo se ve": "todo el año, en el norte.",
@@ -173,6 +177,7 @@
      "latino": "Orion",
      "foto": "img/intereses/constelaciones/04-orion.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "por el cinturón, tres estrellas seguidas, iguales y muy juntas. No hay nada parecido en el cielo.",
       "Cuándo se ve": "de diciembre a marzo, mirando al sur.",
@@ -229,6 +234,7 @@
      "latino": "Canis Major",
      "foto": "img/intereses/constelaciones/05-canis-major.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "siguiendo el cinturón de Orión hacia abajo y a la izquierda. La primera estrella muy brillante es Sirio.",
       "Cuándo se ve": "de diciembre a marzo, bajo, hacia el sur.",
@@ -278,6 +284,7 @@
      "latino": "Taurus",
      "foto": "img/intereses/constelaciones/06-taurus.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "siguiendo el cinturón de Orión hacia arriba y a la derecha, hasta una estrella naranja.",
       "Cuándo se ve": "de noviembre a marzo, alto hacia el sur.",
@@ -326,6 +333,7 @@
      "latino": "Gemini",
      "foto": "img/intereses/constelaciones/07-gemini.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "a la izquierda de Tauro, dos estrellas brillantes juntas y del mismo tamaño.",
       "Cuándo se ve": "de diciembre a abril, alto.",
@@ -370,6 +378,7 @@
      "latino": "Leo",
      "foto": "img/intereses/constelaciones/08-leo.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "hay un signo de interrogación al revés en el cielo. Su punto es Régulo.",
       "Cuándo se ve": "de febrero a mayo, alto hacia el sur.",
@@ -430,6 +439,7 @@
      "latino": "Scorpius",
      "foto": "img/intereses/constelaciones/09-scorpius.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "muy bajo hacia el sur en verano, con una estrella claramente roja en el centro.",
       "Cuándo se ve": "de junio a agosto, bajo. Desde el norte de España se ve peor.",
@@ -502,6 +512,7 @@
      "latino": "Cygnus",
      "foto": "img/intereses/constelaciones/10-cygnus.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "en lo alto del verano hay una cruz grande. Deneb es la cola.",
       "Cuándo se ve": "de junio a octubre, muy alto.",
@@ -543,6 +554,7 @@
      "latino": "Lyra",
      "foto": "img/intereses/constelaciones/11-lyra.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "la estrella más brillante del verano, casi en el cenit. Es Vega.",
       "Cuándo se ve": "de junio a octubre, muy alto.",
@@ -591,6 +603,7 @@
      "latino": "Aquila",
      "foto": "img/intereses/constelaciones/12-aquila.webp",
      "credito": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+     "credito_en": "Star positions: HYG Database, David Nash · CC BY-SA 4.0",
      "campos": {
       "Cómo se encuentra": "desde Vega, bajando hacia el sur. Altair es la que tiene una estrella a cada lado, como un botón con dos ojales.",
       "Cuándo se ve": "de julio a octubre.",
@@ -636,6 +649,7 @@
      "nombre_en": "Pegasus",
      "foto": "img/intereses/constelaciones/13-pegasus.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Se busca un cuadrado grande y vacío por dentro, tan ancho como la palma de la mano con el brazo estirado. Es la figura más fácil de reconocer del cielo de otoño, porque dentro del cuadrado casi no hay estrellas.",
       "Cuándo se ve": "De septiembre a diciembre. En octubre y noviembre está en lo alto a media noche.",
@@ -657,6 +671,7 @@
      "nombre_en": "Andromeda",
      "foto": "img/intereses/constelaciones/14-andromeda.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Se sale de una esquina del cuadrado de Pegaso y se siguen dos hileras de estrellas que se abren hacia arriba, como dos cadenas paralelas.",
       "Cuándo se ve": "De septiembre a enero. En noviembre pasa casi por encima de la cabeza.",
@@ -678,6 +693,7 @@
      "nombre_en": "Perseus",
      "foto": "img/intereses/constelaciones/15-perseus.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Entre la W de Casiopea y la estrella amarilla de Auriga. Tiene forma de Y tumbada, con el brazo más largo apuntando hacia Casiopea.",
       "Cuándo se ve": "De octubre a marzo. En diciembre está muy alto al anochecer.",
@@ -699,6 +715,7 @@
      "nombre_en": "Cepheus",
      "foto": "img/intereses/constelaciones/16-cepheus.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Justo encima de Casiopea, con forma de casa de dibujo infantil: un cuadrado con el tejado en punta. La punta señala hacia la estrella polar.",
       "Cuándo se ve": "Todo el año. Desde Madrid nunca se pone, así que está siempre en algún sitio del cielo del norte.",
@@ -720,6 +737,7 @@
      "nombre_en": "Auriga",
      "foto": "img/intereses/constelaciones/17-auriga.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Se busca Capella, una estrella amarilla muy brillante, alta en el cielo de invierno. Alrededor hay un pentágono casi regular.",
       "Cuándo se ve": "De noviembre a marzo. En enero está en lo alto a media noche.",
@@ -741,6 +759,7 @@
      "nombre_en": "Boötes",
      "foto": "img/intereses/constelaciones/18-bootes.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Se sigue la curva del mango del Carro y se llega a Arturo, una estrella anaranjada muy brillante. Detrás se abre una cometa alargada.",
       "Cuándo se ve": "De marzo a agosto. En mayo y junio está en lo alto al anochecer.",
@@ -762,6 +781,7 @@
      "nombre_en": "Virgo",
      "foto": "img/intereses/constelaciones/19-virgo.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Siguiendo la misma curva que lleva a Arturo, un poco más allá, aparece Spica, una estrella blanca y solitaria. El resto de la figura es un ángulo abierto de estrellas más débiles.",
       "Cuándo se ve": "De marzo a julio. En mayo está al sur, a media altura.",
@@ -783,6 +803,7 @@
      "nombre_en": "Corona Borealis",
      "foto": "img/intereses/constelaciones/20-corona-borealis.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Entre Boyero y Hércules hay un semicírculo pequeño de siete estrellas, con una más brillante en el centro. Se reconoce de una vez, porque no hay nada parecido cerca.",
       "Cuándo se ve": "De abril a septiembre. En junio y julio está muy alta.",
@@ -804,6 +825,7 @@
      "nombre_en": "Hercules",
      "foto": "img/intereses/constelaciones/21-hercules.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Se busca un trapecio de cuatro estrellas, alto en el cielo de verano, entre Corona Boreal y Vega. De cada esquina salen dos brazos hacia fuera.",
       "Cuándo se ve": "De mayo a octubre. En julio y agosto está casi encima de la cabeza.",
@@ -825,6 +847,7 @@
      "nombre_en": "Sagittarius",
      "foto": "img/intereses/constelaciones/22-sagittarius.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Bajo, hacia el sur, en las noches de verano. La parte que se reconoce no es un arquero sino una tetera: cuerpo, tapa, asa y pico.",
       "Cuándo se ve": "De junio a septiembre, y siempre baja sobre el horizonte del sur. Hay que buscar un sitio sin edificios ni montes por ese lado.",
@@ -846,6 +869,7 @@
      "nombre_en": "Delphinus",
      "foto": "img/intereses/constelaciones/23-delphinus.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Un rombo diminuto de cuatro estrellas con una quinta detrás, que hace de cola. Está cerca de Altair y es tan pequeño que se pasa por alto.",
       "Cuándo se ve": "De julio a noviembre. En agosto y septiembre está alto al anochecer.",
@@ -867,6 +891,7 @@
      "nombre_en": "Draco",
      "foto": "img/intereses/constelaciones/24-draco.webp",
      "credito": "Ilustración propia de Iris Green · coordenadas de la HYG Database (CC BY-SA 4.0)",
+     "credito_en": "Original illustration by Iris Green · coordinates from the HYG Database (CC BY-SA 4.0)",
      "campos": {
       "Cómo se encuentra": "Serpentea entre las dos osas. Lo más fácil es empezar por la cabeza, un cuadrilátero pequeño cerca de Vega, y seguir la fila de estrellas que da la vuelta a la Osa Menor.",
       "Cuándo se ve": "Todo el año. Desde Madrid nunca se pone, aunque en primavera y verano está mucho más alto.",
@@ -904,6 +929,7 @@
      "nombre": "Cuarzo",
      "foto": "img/intereses/minerales/min-cuarzo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "transparente o blanco lechoso, con brillo de cristal. Crece en prismas de seis caras rematados en punta. Raya el acero y no se raya con una navaja.",
       "Dónde se encuentra": "en casi todas partes. Es el mineral más común de la superficie del planeta, y la arena de playa es cuarzo molido.",
@@ -925,6 +951,7 @@
      "nombre": "Amatista",
      "foto": "img/intereses/minerales/min-amatista.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "es cuarzo morado. Las puntas suelen ser más oscuras que la base, y a menudo aparece tapizando el hueco de una piedra, en forma de geoda.",
       "Dónde se encuentra": "Brasil y Uruguay dan las geodas grandes. En España hay amatista en Asturias y en Almería.",
@@ -946,6 +973,7 @@
      "nombre": "Pirita",
      "foto": "img/intereses/minerales/min-pirita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "color de latón, brillo de metal, y crece en cubos casi perfectos con estrías finas en las caras. Pesa mucho para lo que abulta. Rayada sobre porcelana deja polvo negro verdoso, no dorado.",
       "Dónde se encuentra": "en toda España, y en La Rioja se encuentran cubos sueltos tan perfectos que parecen tallados.",
@@ -967,6 +995,7 @@
      "nombre": "Fluorita",
      "foto": "img/intereses/minerales/min-fluorita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "cubos transparentes de colores, morado, verde, azul o amarillo, a veces varios en la misma pieza. Se raya con una navaja, que es lo que la separa del cuarzo. Al romperse, se parte en planos limpios.",
       "Dónde se encuentra": "Asturias tiene algunos de los mejores yacimientos del mundo.",
@@ -988,6 +1017,7 @@
      "nombre": "Yeso",
      "foto": "img/intereses/minerales/min-yeso.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "blanco o incoloro, con brillo nacarado. Es tan blando que se raya con la uña, y no hay otro mineral común del que se pueda decir eso. A veces crece en cristales planos que se llaman rosas del desierto.",
       "Dónde se encuentra": "en zonas que fueron mar y se secaron. En España hay yeso en el valle del Ebro, en Almería y en Toledo.",
@@ -1009,6 +1039,7 @@
      "nombre": "Malaquita",
      "foto": "img/intereses/minerales/min-malaquita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "verde intenso, opaca, y con bandas de distintos verdes que forman círculos concéntricos al cortarla. No es transparente en ningún caso.",
       "Dónde se encuentra": "allí donde hay cobre. El Congo y Rusia dan las piezas grandes; en España aparece en las minas de cobre de Huelva.",
@@ -1030,6 +1061,7 @@
      "nombre": "Obsidiana",
      "foto": "img/intereses/minerales/min-obsidiana.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "negra, brillante como el cristal, y sin cristales dentro. Al romperse deja superficies curvas, como el fondo de una concha, y los bordes quedan afiladísimos.",
       "Dónde se encuentra": "en zonas volcánicas. México, Islandia, Italia y las islas Canarias.",
@@ -1051,6 +1083,7 @@
      "nombre": "Mica",
      "foto": "img/intereses/minerales/min-mica.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "se separa en láminas finísimas, casi transparentes, que se pueden levantar con la uña como las hojas de un libro. Brillo plateado o dorado según la variedad.",
       "Dónde se encuentra": "en el granito. Los puntitos que brillan en una encimera de granito son mica.",
@@ -1072,6 +1105,7 @@
      "nombre": "Magnetita",
      "foto": "img/intereses/minerales/min-magnetita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "negra, con brillo metálico, muy pesada, y atrae al imán. Es el único mineral común que hace eso. Crece en octaedros, como dos pirámides pegadas por la base.",
       "Dónde se encuentra": "en Suecia, en Rusia y en el País Vasco y Almería.",
@@ -1093,6 +1127,7 @@
      "nombre": "Calcita",
      "foto": "img/intereses/minerales/min-calcita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "blanca o incolora, se raya con una moneda de cobre, y al romperse siempre se parte en romboedros: cajitas inclinadas, nunca cubos rectos. Con una gota de vinagre burbujea.",
       "Dónde se encuentra": "es el mineral de la caliza y del mármol, así que está en media España. Las estalactitas de las cuevas son calcita.",
@@ -1114,6 +1149,7 @@
      "nombre": "Granate",
      "foto": "img/intereses/minerales/min-granate.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "rojo oscuro, casi vinoso, con brillo de vidrio. Crece en bolas de muchas caras, redondeadas, a menudo incrustadas en la roca que las rodea.",
       "Dónde se encuentra": "dentro de rocas que han estado a mucha presión. En España aparece en Galicia y en Almería.",
@@ -1135,6 +1171,7 @@
      "nombre": "Turmalina",
      "foto": "img/intereses/minerales/min-turmalina.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "cristales alargados, con la sección triangular de lados curvos y estrías marcadas a lo largo. Puede cambiar de color en la misma pieza: verde en un extremo y rosa en el otro.",
       "Dónde se encuentra": "Brasil y Afganistán dan las mejores. En España hay turmalina negra en Galicia y en Extremadura.",
@@ -1157,6 +1194,7 @@
      "nombre_en": "Azurite",
      "foto": "img/intereses/minerales/min-azurita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un azul oscuro y encendido que no tiene ningún otro mineral corriente. Sale en cristales de caras cortas y brillantes o en costras terrosas, y casi siempre lleva manchas verdes al lado. Rayada sobre porcelana deja una marca azul clara.",
       "Dónde se encuentra": "En la parte de arriba de los yacimientos de cobre, donde el agua y el aire han ido deshaciendo el mineral original. Las más conocidas salen de Chessy, en Francia, de Bisbee, en Arizona, y de Touissit, en Marruecos.",
@@ -1178,6 +1216,7 @@
      "nombre_en": "Hematite",
      "foto": "img/intereses/minerales/min-hematites.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Masas redondeadas, como riñones pegados, de un gris metálico muy brillante. Pesa bastante más de lo que parece por su tamaño. Y aunque la piedra sea negra, la raya que deja siempre es roja.",
       "Dónde se encuentra": "En formaciones de hierro muy antiguas, en capas enormes, sobre todo en Brasil, Australia y Ucrania. Y en pequeñas cantidades en casi cualquier terreno de color rojizo, porque el rojo de la tierra suele ser esto mismo.",
@@ -1199,6 +1238,7 @@
      "nombre_en": "Opal",
      "foto": "img/intereses/minerales/min-opalo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "No tiene caras planas ni forma de cristal: es liso, como una gota de vidrio. Al moverlo aparecen destellos de colores que cambian según desde dónde se mire, y eso no lo hace ninguna otra piedra.",
       "Dónde se encuentra": "Donde el agua cargada de sílice se cuela por las grietas y se seca muy despacio. La mayoría viene de Australia, y también de Etiopía y de México.",
@@ -1220,6 +1260,7 @@
      "nombre_en": "Jasper",
      "foto": "img/intereses/minerales/min-jaspe.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Opaco del todo: puesto contra una luz fuerte no deja pasar nada, ni por los bordes. Colores de tierra, rojo, ocre y marrón, en manchas y vetas que van cada una a lo suyo. Pulido brilla como un caramelo.",
       "Dónde se encuentra": "En grietas y huecos de rocas volcánicas y sedimentarias, en todo el mundo. En los ríos aparece hecho canto rodado, ya redondeado por el agua.",
@@ -1241,6 +1282,7 @@
      "nombre_en": "Agate",
      "foto": "img/intereses/minerales/min-agata.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Bandas paralelas que siguen la forma del hueco donde se formó, una dentro de otra. Los bordes dejan pasar la luz, y en el centro muchas veces queda un hueco con cristalitos.",
       "Dónde se encuentra": "Dentro de las burbujas de gas que quedan atrapadas en la lava al enfriarse. Las más grandes salen de Brasil y de Uruguay.",
@@ -1262,6 +1304,7 @@
      "nombre_en": "Aragonite",
      "foto": "img/intereses/minerales/min-aragonito.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Agujas alargadas que crecen juntas y se abren en abanico. A veces tres cristales se pegan y parecen uno solo de seis caras, pero mirando la punta se ven los tres. Blanco, a veces color miel.",
       "Dónde se encuentra": "En cuevas, en manantiales de agua caliente y en huecos de yesos y margas. El nombre viene de Molina de Aragón, en Guadalajara, donde se describió por primera vez.",
@@ -1283,6 +1326,7 @@
      "nombre_en": "Sulphur",
      "foto": "img/intereses/minerales/min-azufre.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un amarillo limón que no tiene ningún otro mineral. Los cristales son dobles pirámides pegadas por la base. Es tan blando que se raya con la uña, y tan mal conductor que el calor de la mano basta para que un cristal crepite y se agriete.",
       "Dónde se encuentra": "En volcanes y fumarolas, donde el gas se enfría de golpe al salir, y en depósitos de yeso y sal. Sicilia surtió al mundo entero durante el siglo XIX.",
@@ -1304,6 +1348,7 @@
      "nombre_en": "Halite",
      "foto": "img/intereses/minerales/min-halita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Cubos, siempre cubos. Muchos tienen las caras hundidas en escalones, como pirámides invertidas, porque crecen más deprisa por los bordes que por el centro. Transparente o blanca, y a veces rosa o azul. Es la única de la colección que se deshace en un vaso de agua.",
       "Dónde se encuentra": "En mares que se secaron hace millones de años y dejaron capas de sal de cientos de metros. En Cardona, en Barcelona, esa capa asoma en superficie y forma una montaña.",
@@ -1325,6 +1370,7 @@
      "nombre_en": "Talc",
      "foto": "img/intereses/minerales/min-talco.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Es el mineral más blando que existe: la uña lo raya sin apretar. Al pasar el dedo resbala como si estuviera enjabonado, y eso no lo hace ningún otro. Blanco, gris o verdoso, sin brillo.",
       "Dónde se encuentra": "En rocas que han estado sometidas a calor y presión bajo tierra, sobre todo si llevaban magnesio. En España se extrae en Puebla de Lillo, en León.",
@@ -1346,6 +1392,7 @@
      "nombre_en": "Graphite",
      "foto": "img/intereses/minerales/min-grafito.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Gris muy oscuro con un brillo metálico apagado. Se deshace en hojas finas que se separan solas, y mancha los dedos y el papel en cuanto se toca.",
       "Dónde se encuentra": "En rocas que han pasado por mucho calor y mucha presión, donde restos de seres vivos antiguos quedaron reducidos a carbono. Sale de Sri Lanka, de Madagascar y de China.",
@@ -1379,6 +1426,7 @@
      "nombre": "Óbolo",
      "foto": "img/intereses/monedas/mon-obolo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una moneda diminuta, del tamaño de una uña, con la lechuza de Atenea y una ramita de olivo. El metal está aplastado a martillo, así que el borde es irregular y el dibujo se sale por un lado.",
       "Dónde y cuándo circuló": "Atenas y el mundo griego, sobre todo en los siglos V y IV antes de Cristo.",
@@ -1400,6 +1448,7 @@
      "nombre": "Denario",
      "foto": "img/intereses/monedas/mon-denario.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Plata, una cabeza de perfil con corona de laurel y letras alrededor del borde. El canto es irregular, porque se acuñaba golpeando el metal entre dos cuños.",
       "Dónde y cuándo circuló": "Todo el imperio romano, desde el año 211 antes de Cristo hasta el siglo III después de Cristo.",
@@ -1421,6 +1470,7 @@
      "nombre": "Dirham",
      "foto": "img/intereses/monedas/mon-dirham.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Plata sin ninguna figura: solo escritura, en líneas dentro de un círculo y más líneas alrededor del borde.",
       "Dónde y cuándo circuló": "El mundo islámico desde el siglo VII. En al-Andalus se acuñó en Córdoba desde el siglo VIII.",
@@ -1442,6 +1492,7 @@
      "nombre": "Maravedí",
      "foto": "img/intereses/monedas/mon-maravedi.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Cobre, pequeña y tosca, con un castillo y un león. Casi siempre está gastada y con manchas verdes, que son la oxidación del cobre.",
       "Dónde y cuándo circuló": "Castilla, desde el siglo XII hasta 1868, cuando llegó la peseta.",
@@ -1463,6 +1514,7 @@
      "nombre": "Real de a ocho",
      "foto": "img/intereses/monedas/mon-real-de-a-ocho.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Grande y pesada para ser plata, con un escudo coronado entre dos columnas envueltas en cintas. Muchas están recortadas o con marcas golpeadas encima.",
       "Dónde y cuándo circuló": "Desde 1497 hasta el siglo XIX. Se acuñaba sobre todo en América, en Potosí y en México, y desde allí salía hacia Europa y hacia Asia.",
@@ -1484,6 +1536,7 @@
      "nombre": "Ducado",
      "foto": "img/intereses/monedas/mon-ducado.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Oro, pequeño y muy fino, casi como una lámina. Dos figuras de pie, una frente a otra, con un bastón largo entre las dos.",
       "Dónde y cuándo circuló": "Venecia desde 1284, y después media Europa. En Castilla, desde los Reyes Católicos.",
@@ -1505,6 +1558,7 @@
      "nombre": "Papel moneda chino",
      "foto": "img/intereses/monedas/mon-papel-chino.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una hoja alargada de papel áspero, con el texto en columnas y un dibujo en el centro: sartas de monedas atadas con una cuerda, que son las que vale el billete.",
       "Dónde y cuándo circuló": "China. El papel moneda empieza en el siglo XI, y este billete, el del imperio Ming, se imprime desde 1375.",
@@ -1526,6 +1580,7 @@
      "nombre": "Moneda agujereada",
      "foto": "img/intereses/monedas/mon-moneda-agujereada.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Redonda, de bronce, con un agujero cuadrado justo en el centro y cuatro caracteres alrededor, uno arriba, uno abajo y uno a cada lado.",
       "Dónde y cuándo circuló": "China, desde el siglo III antes de Cristo hasta 1911. También se usó, con la misma forma, en Japón, Corea y Vietnam.",
@@ -1547,6 +1602,7 @@
      "nombre": "Duro",
      "foto": "img/intereses/monedas/mon-duro.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Grande y pesada, de plata, con una cabeza de perfil y el canto estriado con rayitas.",
       "Dónde y cuándo circuló": "España, en el siglo XIX y las primeras décadas del XX.",
@@ -1568,6 +1624,7 @@
      "nombre": "Peseta",
      "foto": "img/intereses/monedas/mon-peseta.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Pequeña y sorprendentemente ligera. Las últimas eran de aluminio, tan finas que casi no se notaban en la mano.",
       "Dónde y cuándo circuló": "España, de 1868 a 2002.",
@@ -1589,6 +1646,7 @@
      "nombre": "Moneda de necesidad",
      "foto": "img/intereses/monedas/mon-moneda-de-necesidad.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un cartón redondo impreso a un solo color, con el escudo de un pueblo. Se dobla con los dedos y las que quedan tienen los bordes rotos.",
       "Dónde y cuándo circuló": "Donde falta moneda pequeña. En España, en cientos de ayuntamientos entre 1936 y 1938.",
@@ -1610,6 +1668,7 @@
      "nombre": "Euro",
      "foto": "img/intereses/monedas/mon-euro.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Dos metales encajados, un anillo de un color y un centro de otro. La cara común es igual en todos los países; la otra la elige cada país.",
       "Dónde y cuándo circuló": "Desde 1999 en las cuentas y desde 2002 en la mano. Hoy circula en veintiún países.",
@@ -1758,6 +1817,7 @@
      "nombre_en": "House sparrow",
      "foto": "img/intereses/aves/ave-gorrion.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Pardo por arriba y gris por abajo, del tamaño de un puño pequeño y con el pico grueso y corto, de comer semillas. El macho lleva la cabeza gris con una babera negra en el pecho; la hembra es lisa, sin marcas.",
       "Dónde y cuándo se ve": "Todo el año, en cualquier calle. Vive donde vive la gente y casi nunca aparece lejos de las casas.",
@@ -1780,6 +1840,7 @@
      "nombre_en": "Feral pigeon",
      "foto": "img/intereses/aves/ave-paloma.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Cuerpo gris azulado con dos rayas negras en cada ala y el cuello con reflejos verdes y morados según le dé la luz. Camina moviendo la cabeza adelante y atrás a cada paso.",
       "Dónde y cuándo se ve": "Todo el año, en plazas, cornisas y estaciones. Es la única ave que en muchas ciudades se ve todos los días sin buscarla.",
@@ -1802,6 +1863,7 @@
      "nombre_en": "Common blackbird",
      "foto": "img/intereses/aves/ave-mirlo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "El macho es negro entero con el pico y el anillo del ojo de un naranja encendido. La hembra es marrón oscura con el pecho moteado. Los dos se mueven por el suelo a saltos, con la cola algo levantada.",
       "Dónde y cuándo se ve": "Todo el año, en parques y jardines. Canta desde lo alto de un árbol o de una antena al amanecer y al atardecer, y es de los primeros en empezar y de los últimos en callar.",
@@ -1830,6 +1892,7 @@
      "nombre_en": "Spotless starling",
      "foto": "img/intereses/aves/ave-estornino.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Oscuro con brillo verdoso, del tamaño de un mirlo pero más rechoncho, con la cola corta y el pico recto y amarillo en época de cría. Anda deprisa por el suelo en vez de saltar.",
       "Dónde y cuándo se ve": "Todo el año en casi toda España. Al atardecer se junta en bandos que giran sobre los tejados antes de meterse a dormir todos en los mismos árboles.",
@@ -1858,6 +1921,7 @@
      "nombre_en": "Eurasian magpie",
      "foto": "img/intereses/aves/ave-urraca.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Blanca y negra, con la cola tan larga como el resto del cuerpo. A la luz, el negro tira a azul y verde. Vuela a golpes, como si le costara.",
       "Dónde y cuándo se ve": "Todo el año, en parques, descampados y bordes de ciudad. Anda por el suelo sin miedo y se va sin prisa cuando alguien se acerca.",
@@ -1880,6 +1944,7 @@
      "nombre_en": "Common swift",
      "foto": "img/intereses/aves/ave-vencejo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Casi siempre en el aire, nunca posado. Silueta de ancla o de media luna, alas largas y curvadas hacia atrás, cuerpo pardo oscuro que en el cielo se ve negro. Chilla mientras vuela, en grupo y a ras de tejado.",
       "Dónde y cuándo se ve": "Llega a finales de abril y se va a finales de julio. Es el ave que marca el verano en las ciudades españolas: cuando dejan de oírse los chillidos por la tarde, el verano se está acabando.",
@@ -1908,6 +1973,7 @@
      "nombre_en": "Barn swallow",
      "foto": "img/intereses/aves/ave-golondrina.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Azul oscuro brillante por arriba, blanca por debajo, con la frente y la garganta de color rojo ladrillo. La cola se abre en dos puntas largas y finas, más largas en el macho.",
       "Dónde y cuándo se ve": "De marzo a septiembre. Se posa en cables y aleros, y en septiembre se juntan en filas antes de irse a África.",
@@ -1930,6 +1996,7 @@
      "nombre_en": "European robin",
      "foto": "img/intereses/aves/ave-petirrojo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Redondo, del tamaño de un puño, con el pecho y la cara de color naranja subido, rodeado de gris. Patas finas y postura muy erguida, como si estuviera pendiente de algo.",
       "Dónde y cuándo se ve": "Todo el año, y sobre todo en invierno, que es cuando baja a los parques y a los jardines. Siempre solo.",
@@ -1958,6 +2025,7 @@
      "nombre_en": "Black redstart",
      "foto": "img/intereses/aves/ave-colirrojo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Gris oscuro casi negro, con la cola de color óxido que mueve arriba y abajo sin parar, incluso posado. El macho es más oscuro que la hembra y tiene una mancha blanca en el ala.",
       "Dónde y cuándo se ve": "De octubre a marzo en la mayoría de las ciudades, y todo el año en las de montaña. En tejados, muros, obras y azoteas: le gusta lo alto y lo pelado.",
@@ -1986,6 +2054,7 @@
      "nombre_en": "Great tit",
      "foto": "img/intereses/aves/ave-carbonero.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Amarillo por debajo con una franja negra que le baja por el medio del pecho, cabeza negra y mejillas blancas muy marcadas. Se cuelga boca abajo de las ramas.",
       "Dónde y cuándo se ve": "Todo el año, en parques y jardines con árboles. En cuanto termina el invierno empieza a cantar dos notas repetidas, y es de los primeros sonidos de la primavera.",
@@ -2008,6 +2077,7 @@
      "nombre_en": "Common kestrel",
      "foto": "img/intereses/aves/ave-cernicalo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un halcón pequeño, del tamaño de una paloma, de color canela con puntos negros y la cola larga. Lo que lo delata es que se queda quieto en el aire, batiendo las alas y con la cabeza inmóvil, mirando al suelo.",
       "Dónde y cuándo se ve": "Todo el año, sobre descampados, cornisas altas, torres y bordes de carretera.",
@@ -2030,6 +2100,7 @@
      "nombre_en": "Monk parakeet",
      "foto": "img/intereses/aves/ave-cotorra.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Verde brillante por arriba y gris claro en la cara y el pecho, del tamaño de una paloma pequeña, con la cola larga y puntiaguda y el pico grueso y curvo. Se oye antes de verla: chilla en grupo y no para.",
       "Dónde y cuándo se ve": "Todo el año, en parques con árboles grandes de ciudades como Madrid, Barcelona, Zaragoza o Sevilla. Los nidos son bolas enormes de palos en lo alto de una palmera o un cedro, y se ven de lejos.",
@@ -2159,6 +2230,7 @@
      "nombre_en": "Common poppy",
      "foto": "img/intereses/flores/flor-amapola.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Cuatro pétalos de un rojo encendido, finos como papel de seda y siempre algo arrugados, con una mancha negra en la base de cada uno. En el centro, un botón redondo rodeado de estambres oscuros.",
       "Dónde y cuándo sale": "De abril a junio, en cualquier terreno removido: bordes de carretera, solares, campos de cereal. Cuanto más se remueve la tierra, más amapolas salen.",
@@ -2181,6 +2253,7 @@
      "nombre_en": "Dandelion",
      "foto": "img/intereses/flores/flor-diente-de-leon.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una sola flor amarilla, redonda y llena de pétalos finos, en lo alto de un tallo hueco y sin hojas. Cuando se corta, el tallo suelta un jugo blanco.",
       "Dónde y cuándo sale": "De febrero a noviembre, en césped, alcorques, aceras y cualquier sitio donde quepa una raíz. Es de las primeras en salir y de las últimas en desaparecer.",
@@ -2209,6 +2282,7 @@
      "nombre_en": "Sow thistle",
      "foto": "img/intereses/flores/flor-cerraja.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Flores amarillas pequeñas, varias en el mismo tallo, más pálidas y menos llenas que las del diente de león. El tallo es grueso, con hojas, y también suelta jugo blanco al partirlo.",
       "Dónde y cuándo sale": "Casi todo el año, en solares, huertos abandonados, pies de muro y arriates. Es de las que aparecen sin que nadie las llame.",
@@ -2237,6 +2311,7 @@
      "nombre_en": "Chicory",
      "foto": "img/intereses/flores/flor-achicoria.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un azul que no tiene ninguna otra flor de cuneta: cinco o seis centímetros, con los pétalos cortados en cuadrado por la punta, como recortados con tijera. Salen pegadas al tallo, repartidas a lo largo.",
       "Dónde y cuándo sale": "De junio a septiembre, en bordes de carretera, terraplenes y descampados secos. Abre a primera hora y hacia el mediodía ya está cerrada, así que quien pasa por la tarde no la ve.",
@@ -2259,6 +2334,7 @@
      "nombre_en": "Common mallow",
      "foto": "img/intereses/flores/flor-malva.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Cinco pétalos de color lila rosado, con la punta hendida como un corazón y unas rayas moradas más oscuras que van hacia el centro, como los radios de una rueda.",
       "Dónde y cuándo sale": "De marzo a octubre, al pie de los muros, en solares y en los bordes de los caminos. Aguanta el pisoteo y la sequía mejor que casi ninguna.",
@@ -2281,6 +2357,7 @@
      "nombre_en": "Stinging nettle",
      "foto": "img/intereses/flores/flor-ortiga.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "No se reconoce por la flor, que es verdosa y no llama la atención, sino por la hoja: en punta de corazón, con el borde muy dentado y cubierta de pelos rígidos. Las hojas salen de dos en dos, una frente a otra, y el tallo tiene cuatro esquinas.",
       "Dónde y cuándo sale": "Casi todo el año, en suelos ricos y removidos: alrededor de contenedores, junto a corrales, en solares donde se ha acumulado basura. Donde hay ortigas hubo actividad humana.",
@@ -2303,6 +2380,7 @@
      "nombre_en": "Plantain",
      "foto": "img/intereses/flores/flor-llanten.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "No parece una flor: es una espiga estrecha y parda en lo alto de un tallo desnudo, con un anillo de estambres blancos que va subiendo poco a poco. Abajo, una roseta de hojas con nervios paralelos muy marcados, como rayas de arriba abajo.",
       "Dónde y cuándo sale": "De abril a octubre, en los caminos pisados, entre las baldosas y en el césped rapado. Cuanto más se pisa un sitio, más llantén hay.",
@@ -2325,6 +2403,7 @@
      "nombre_en": "Scented mayweed",
      "foto": "img/intereses/flores/flor-manzanilla.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Flores pequeñas de centro amarillo abombado y pétalos blancos que se doblan hacia atrás según pasan los días. El centro es hueco por dentro, como un dedal.",
       "Dónde y cuándo sale": "De abril a julio, en bordes de camino, barbechos y solares. Sale en manchas grandes, no de una en una.",
@@ -2353,6 +2432,7 @@
      "nombre_en": "Daisy",
      "foto": "img/intereses/flores/flor-margarita.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una sola flor por tallo, del tamaño de una moneda pequeña, con el centro amarillo plano y los pétalos blancos con la punta rosada por debajo. Se cierra al anochecer y vuelve a abrirse por la mañana.",
       "Dónde y cuándo sale": "Casi todo el año, en cualquier césped de parque, y con más fuerza de febrero a mayo. Es la flor que sobrevive al cortacésped porque crece por debajo de la cuchilla.",
@@ -2381,6 +2461,7 @@
      "nombre_en": "Field bindweed",
      "foto": "img/intereses/flores/flor-correhuela.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una flor en forma de embudo, blanca o rosa pálida, de dos o tres centímetros, sin pétalos separados: es una pieza entera con cinco pliegues marcados. Dura un día.",
       "Dónde y cuándo sale": "De mayo a septiembre, trepando por vallas, arbustos y todo lo que encuentre, o extendida por el suelo en los alcorques y las medianas.",
@@ -2403,6 +2484,7 @@
      "nombre_en": "Wall rocket",
      "foto": "img/intereses/flores/flor-jaramago.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Flores amarillas de cuatro pétalos puestos en cruz, pequeñas y en grupo al final del tallo. Debajo van saliendo unas vainas largas y finas, rectas como agujas, que son el fruto.",
       "Dónde y cuándo sale": "De marzo a noviembre, y en sitios donde no crece nada más: cascotes, cunetas, grietas de un muro, bordes de vía. Es de las primeras en colonizar un solar recién derribado.",
@@ -2425,6 +2507,7 @@
      "nombre_en": "Fennel",
      "foto": "img/intereses/flores/flor-hinojo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una sombrilla de flores amarillas diminutas al final de varios radios que salen del mismo punto, como las varillas de un paraguas. Y unas hojas que no parecen hojas: hilos verdes finísimos, en mata.",
       "Dónde y cuándo sale": "De julio a octubre, en cunetas, taludes y bordes de camino, muchas veces en filas largas junto a la carretera.",
@@ -2460,6 +2543,7 @@
      "nombre_en": "Seahorse",
      "foto": "img/intereses/peces/pez-caballito.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Nada de pie. La cabeza forma un ángulo recto con el cuerpo, como la de un caballo, y la cola se enrolla y se agarra. No tiene aleta en la cola: se mueve con una aleta pequeñísima en la espalda que bate muy deprisa. El cuerpo va cubierto de anillos duros en vez de escamas.",
       "Dónde vive": "Entre praderas marinas y algas, agarrado a un tallo, en el Mediterráneo y en las rías atlánticas. En España hay dos especies.",
@@ -2482,6 +2566,7 @@
      "nombre_en": "Moray eel",
      "foto": "img/intereses/peces/pez-morena.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una serpiente parda con manchas amarillentas. No tiene las aletas de los costados, así que el cuerpo va liso de la cabeza a la cola, y la aleta de arriba le recorre casi entero. La boca está siempre abierta.",
       "Dónde vive": "Metida en un agujero de roca, con solo la cabeza fuera, en todo el Mediterráneo y el Atlántico sur peninsular.",
@@ -2504,6 +2589,7 @@
      "nombre_en": "Ray",
      "foto": "img/intereses/peces/pez-raya.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un rombo plano. Las aletas de los costados están pegadas a la cabeza y forman todo el cuerpo, y la cola sale por detrás como un látigo con espinas. La boca y las agallas van debajo; los ojos, arriba.",
       "Dónde vive": "Tumbada en fondos de arena y fango, medio enterrada, en todas las costas españolas.",
@@ -2526,6 +2612,7 @@
      "nombre_en": "Ocean sunfish",
      "foto": "img/intereses/peces/pez-luna.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un disco gris del tamaño de una puerta al que parece faltarle la mitad de atrás. No tiene cola: donde debería estar hay un borde ondulado. Las dos aletas, la de arriba y la de abajo, son altísimas y las mueve a la vez, como remos.",
       "Dónde vive": "En mar abierto, en todos los océanos templados. Aparece cerca de la costa española en verano.",
@@ -2548,6 +2635,7 @@
      "nombre_en": "Swordfish",
      "foto": "img/intereses/peces/pez-espada.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "El pico. Sale de la cabeza, es plano y afilado como una hoja, y mide casi un tercio del animal. La aleta de la espalda va alta y rígida, como una vela pequeña, y el cuerpo del adulto es liso y sin escamas.",
       "Dónde vive": "En mar abierto, del Mediterráneo al Atlántico. Baja de día a varios cientos de metros y sube de noche a cazar.",
@@ -2570,6 +2658,7 @@
      "nombre_en": "Hammerhead shark",
      "foto": "img/intereses/peces/pez-martillo.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "La cabeza es una barra ancha y plana, cruzada de lado a lado, con un ojo en cada punta y las fosas nasales repartidas por el borde. El cuerpo es de tiburón corriente; lo raro está todo delante.",
       "Dónde vive": "En aguas templadas y cálidas. En España se ve poco: alguno en el Mediterráneo y en el Atlántico sur.",
@@ -2592,6 +2681,7 @@
      "nombre_en": "Monkfish",
      "foto": "img/intereses/peces/pez-rape.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "La cabeza ocupa casi la mitad del animal, es plana y ancha, y la boca la cruza entera de lado a lado con los dientes vueltos hacia dentro. De la frente le sale un radio suelto acabado en un colgajo de piel.",
       "Dónde vive": "Quieto en el fondo y medio enterrado, hasta mil metros de profundidad.",
@@ -2614,6 +2704,7 @@
      "nombre_en": "Red scorpionfish",
      "foto": "img/intereses/peces/pez-cabracho.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Rojo y grumoso, con una cabeza enorme llena de crestas, bultos y flecos de piel que parecen algas. Los ojos van muy arriba. La aleta de la espalda es una fila de espinas sueltas.",
       "Dónde vive": "En fondos de roca, entre algas, en el Mediterráneo y el Atlántico.",
@@ -2636,6 +2727,7 @@
      "nombre_en": "Garfish",
      "foto": "img/intereses/peces/pez-aguja.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un lápiz verde. El cuerpo es larguísimo y estrecho, verde azulado por arriba y plateado por debajo, y las dos mandíbulas se estiran en un pico fino lleno de dientes pequeños.",
       "Dónde vive": "Cerca de la superficie, en el Mediterráneo y en el Atlántico, y se acerca a la costa en primavera.",
@@ -2658,6 +2750,7 @@
      "nombre_en": "Flying fish",
      "foto": "img/intereses/peces/pez-volador.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Las aletas del pecho son enormes, casi tan largas como el cuerpo, y abiertas parecen alas de libélula. El cuerpo es azul por arriba y plateado por debajo, y la cola tiene la parte de abajo más larga que la de arriba.",
       "Dónde vive": "En mar abierto y cálido, cerca de la superficie. En España se ve en el sur y en Canarias.",
@@ -2680,6 +2773,7 @@
      "nombre_en": "Triggerfish",
      "foto": "img/intereses/peces/pez-ballesta.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Un óvalo aplastado, gris verdoso, con los ojos colocados muy arriba y muy atrás, casi en el lomo, lejísimos de la boca. La boca es pequeña y tiene dientes de roer, como los de un conejo.",
       "Dónde vive": "En fondos de roca y en aguas abiertas cerca de la costa, en el Mediterráneo y el Atlántico.",
@@ -2702,6 +2796,7 @@
      "nombre_en": "Silver scabbardfish",
      "foto": "img/intereses/peces/pez-sable.webp",
      "credito": "Ilustración propia de Iris Green",
+     "credito_en": "Original illustration by Iris Green",
      "campos": {
       "Cómo se reconoce": "Una cinta de plata pulida, larga como un brazo y plana como una hoja de cuchillo, que se va estrechando hasta acabar en un hilo. No tiene escamas y brilla como un espejo. La boca es grande, con dientes largos y curvados.",
       "Dónde vive": "En el fondo, entre cien y ochocientos metros, en el Atlántico y el Mediterráneo. Sube por la noche.",

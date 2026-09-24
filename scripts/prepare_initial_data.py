@@ -16,9 +16,11 @@ from urllib.parse import quote
 ROOT = Path.cwd()
 PAGES = {
     'es/taller/index.html': ('es/taller/taller-retos.json', 'retos'),
+    'en/workshop/index.html': ('es/taller/taller-retos.json', 'retos'),
     'es/investigacion/index.html': ('es/investigacion/estudios-textos.json', 'data'),
     'es/tramites/directorio/index.html': ('es/tramites/directorio/tramites-datos.json', 'data'),
     'es/intereses/index.html': ('es/intereses/cromos.json', None),
+    'en/interests/index.html': ('es/intereses/cromos.json', None),
 }
 SEED_RE = re.compile(r'<script id="ig-initial-data" type="application/json"[^>]*>.*?</script>\n?', re.S)
 
@@ -107,6 +109,49 @@ def interests_markup(data):
     return counts, filters, ''.join(sections), count
 
 
+def interests_markup_en(data):
+    """English first paint for /en/interests/: same fields, order and links as its pinta()."""
+    def visible(c):
+        return not c.get('pendiente') and c.get('campos_en')
+    topics = [t for t in data['temas'] if any(visible(c) for c in t.get('cromos', []))]
+    count = sum(1 for t in data['temas'] for c in t.get('cromos', []) if visible(c))
+    counts = f'<span class="pill">{len(topics)} topics</span><span class="pill">{count} cards</span>'
+    filters = '<button class="filter" type="button" aria-pressed="true">All topics</button>'
+    filters += ''.join(f'<button class="filter" type="button" aria-pressed="false" data-tema="{esc(t["id"])}">{esc(t["en"])}</button>' for t in topics)
+    sections = []
+    for t in topics:
+        cards = [c for c in t.get('cromos', []) if visible(c)]
+        label = f'{len(cards)} of {t["total"]} so far' if t.get('total') else f'{len(cards)} '+('card' if len(cards) == 1 else 'cards')
+        collection = '/es/intereses/imprimir/?lang=en&tema=' + quote(t['id'], safe='')
+        sections.append(f'<section class="album-tema"><h2>{esc(t["en"])}</h2><p class="cuenta">{esc(label)}</p><a class="bajar bajar-todo" href="{esc(collection)}">Download the whole collection · {math.ceil(len(cards)/4)+1} A4 sheets</a><div class="cromos">')
+        for c in cards:
+            photo = c.get('foto', '')
+            if photo and not photo.startswith(('/', 'http')):
+                photo = '../../' + photo
+            name = c.get('nombre_en') or c.get('nombre', '')
+            sections.append(f'<article class="cromo" id="cromo-{esc(t["id"])}-{esc(c.get("n", ""))}" style="scroll-margin-top:5rem"><div class="foto"><img loading="lazy" decoding="async" src="{esc(photo)}" alt="{esc(name)}"><span class="num">{esc(c.get("n", ""))}</span></div><div class="cuerpo"><h3>{esc(name)}</h3>')
+            latin = c.get('latino_en') or c.get('latino')
+            if latin:
+                sections.append(f'<p class="latino">{esc(latin)}</p>')
+            for key, value in c.get('campos_en', {}).items():
+                if not value:
+                    continue
+                rendered = esc(value)
+                if key == "What it's confused with":
+                    for link in c.get('enlaces', []):
+                        phrase = link.get('texto_en') or link.get('texto')
+                        if phrase and phrase.lower() in value.lower():
+                            pos = value.lower().find(phrase.lower())
+                            rendered = esc(value[:pos]) + '<a href="#cromo-'+esc(t['id'])+'-'+esc(link['n'])+'">'+esc(value[pos:pos+len(phrase)])+'</a>'+esc(value[pos+len(phrase):])
+                sections.append(f'<div class="campo"><span class="etiqueta">{esc(key)}</span><p class="valor">{rendered}</p></div>')
+            credit = c.get('credito_en') or c.get('credito')
+            if credit:
+                sections.append(f'<p class="credito">{esc(credit)}</p>')
+            sections.append(f'<a class="bajar" href="{esc(collection + "&n=" + str(c.get("n", "")))}">Download this card</a></div></article>')
+        sections.append('</div></section>')
+    return counts, filters, ''.join(sections), count
+
+
 def transform(page, data, source_hash):
     text = SEED_RE.sub('', page.read_text(encoding='utf-8'))
     rel = page.relative_to(ROOT).as_posix()
@@ -119,9 +164,8 @@ def transform(page, data, source_hash):
     seed_tag = f'<script id="ig-initial-data" type="application/json" data-source="/{source_rel}" data-sha256="{source_hash}">{payload}</script>\n'
     if field:
         initializer = 'const IG_INITIAL = JSON.parse(document.getElementById("ig-initial-data").textContent);\n'
-        # Las superficies nuevas de Taller/Intereses ya llevan un primer render HTML
-        # completo y no usan el runtime DCLogic histórico. No deben pasar por este
-        # transformador legacy: el build las copia tal como están.
+        # Una página sin el runtime DCLogic ni su inicializador no pasa por este
+        # transformador: el build la copia tal como está.
         if initializer not in text and 'class Component extends DCLogic {' not in text:
             return text
         if initializer not in text:
@@ -149,11 +193,12 @@ def transform(page, data, source_hash):
                 text = text.replace('(st.data.'+country+' || []).length', '(IG_INITIAL._counts.'+country+')')
             text = text.replace('.catch(() => this.setState({ data: { es: [], uk: [], br: [], us: [], mundo: [] } }));', '.catch(() => { /* Retain the locally available Spain entries on network failure. */ });')
     else:
-        # La nueva portada de Intereses es estática y no contiene el renderer
-        # histórico `var datos={temas:[]}`. Si no está esa firma, conservarla.
-        if 'var datos={temas:[]}, tema="todos", texto="";' not in text:
+        # Solo se transforma el álbum con su renderer histórico, vacío o ya sembrado.
+        # Cualquier otra portada se copia tal como está.
+        if ('var datos={temas:[]}, tema="todos", texto="";' not in text
+                and 'var datos=JSON.parse(document.getElementById("ig-initial-data").textContent), tema="todos", texto="";' not in text):
             return text
-        counts, filters, album, count = interests_markup(data)
+        counts, filters, album, count = (interests_markup_en if rel.startswith('en/') else interests_markup)(data)
         for ident, contents in [('counts', counts), ('temaFilters', filters), ('album', album)]:
             start, end = f'<!-- ig-initial-{ident}:start -->', f'<!-- ig-initial-{ident}:end -->'
             marked = start+contents+end
