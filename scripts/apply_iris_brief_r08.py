@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Apply Maria's shared Iris brief without reserializing editorial HTML."""
-import argparse,json,re,shutil
+import argparse,json,re,shutil,hashlib
 from collections import Counter
 from pathlib import Path
 from html_spans import Document,edit
@@ -27,12 +27,14 @@ def apply(root):
    for a in doc.nodes:
     if a['tag']=='a' and 'ri-card' in a['attrs'].get('class','').split() and a['attrs'].get('href') in TOP:
      parents=[n for n in doc.nodes if n['tag']=='li' and n['start']<a['start'] and n.get('end',0)>a['end']];li=min(parents,key=lambda n:n['end']-n['start']);changes.append((li['start'],li['end'],''))
-  styles='<link rel="stylesheet" href="/assets/iris-brief-r08.css">'
+  brief_hash=hashlib.sha256((ROOT/'assets/iris-brief-r08.css').read_bytes()).hexdigest()[:12]
+  styles=f'<link rel="stylesheet" href="/assets/iris-brief-r08.css?v={brief_hash}">'
   if rel=='index.html':
    kind='home';home=doc.one(id='home-view');body=doc.one('body');nav=doc.one('nav',**{'class':'nav'})
    changes.append((home['open_end'],home['open_end'],'<div class="iris-home-content">'))
    changes.append((home['close_start'],home['close_start'],'</div>'+(ROOT/'sabik/iris-panel.html').read_text()))
-   styles+='<link rel="stylesheet" href="/sabik/iris-mount.css">'
+   mount_hash=hashlib.sha256((ROOT/'sabik/iris-mount.css').read_bytes()).hexdigest()[:12]
+   styles+=f'<link rel="stylesheet" href="/sabik/iris-mount.css?v={mount_hash}">'
    scripts=''.join(f'<script defer src="{src}"></script>' for src in ['/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/retrieval-panel.js','/assets/iris-brief-r08.js'])+'<script type="module" src="/sabik/iris-mount.mjs"></script>'
    changes.append((body['close_start'],body['close_start'],scripts))
    changes.append((nav['close_start'],nav['close_start'],'<a href="/es/intereses/" data-iris-top="interests">Tus intereses</a><a href="/es/taller/" data-iris-top="workshop">El taller</a>'))
