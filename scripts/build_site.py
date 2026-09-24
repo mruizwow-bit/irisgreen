@@ -55,7 +55,8 @@ def build():
 
     # A partir de aquí cualquier escritura ocurre únicamente dentro de staging.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_reviewed_entries.py')],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),'--apply-only'],cwd=ROOT,check=True)
+    thumbnail_args=[] if os.environ.get('NETLIFY')=='true' else ['--apply-only']
+    subprocess.run([sys.executable,str(ROOT/'scripts/prepare_video_thumbnails.py'),*thumbnail_args],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_language_updates.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_pending_support_english.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_home_support_english.py')],cwd=ROOT,check=True)
