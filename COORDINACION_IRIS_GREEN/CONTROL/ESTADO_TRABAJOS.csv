@@ -31,3 +31,5 @@ WEB-A2-RETIRADA-LEGACY-R07;María y agente 2;INTEGRADO_MAIN_PREVIEW_VERIFICADO;P
 WEB-A2-SABIK-BRIEF-R08;María y agente 2;MONTADO_TRANSPORTE_DESACTIVADO;PR244 HEAD 5d6515ba8a1aa7752d624773eed07d49d1ea84c6 deploy 6ab531f12deee80008212708 - EVIDENCIAS/R39_A2_MONTAJE_R04/ENTREGA_R08.md;Aceptación humana y R04.4 HTTP real pendientes - 21 hallazgos anteriores de almacenamiento;989 HTML y ES EN 1440/320 - 36 casos navegador y 12 Recursos - sin delegación;Sin merge main apertura producción fixtures voz o inferencia
 
 WEB-A2-CORRECCIONES-R09;María y agente 2;CORREGIDO_CANDIDATO;PR244 HEAD 89dcea56abc14d94914d0cb1bd005b902d46a29c deploy 6ab5360d1b58030008d2f97a;Aceptación María pendiente;30 casos 1920/1440/320 y 15 hojas interiores distintas;Sin conexión Cloud ni producción
+
+WEB-A2-TALLER-F1-R10;María y agente 2;INTEGRADO_CANDIDATO_QA_EN_CURSO;PR244 HEAD 697a0e2c815f6dd966e221e564c4e1f6e98df7bc - build 2047 archivos - 31/31 Node;QA navegador preview y aceptación María;Cinco estudios ES/EN y 58 retos por idioma;Sustituye Taller anterior sin main producción ni activar Cloud
