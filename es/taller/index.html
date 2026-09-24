@@ -1610,7 +1610,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._igPreferencesDisconnect = window.IGPreferences.connect(this);
     try {
-      const lang = localStorage.getItem("ig_lang");
+      const lang = "es";
       const use = lang && STR[lang] ? lang : "es";
       if (use !== "es") this.setState({ lang: use });
       document.documentElement.lang = use;
@@ -1630,7 +1630,7 @@ class Component extends DCLogic {
   setLang(lang) {
     try {
       document.documentElement.lang = lang;
-      localStorage.setItem("ig_lang", lang);
+      // Language belongs to the current route; no workshop storage.
     } catch (e) {}
     this.setState({ lang });
   }

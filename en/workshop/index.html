@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>try{localStorage.setItem("ig_lang","en")}catch(e){}</script><script src="/assets/preferencias-lectura.js"></script>
+<html lang="en"><head><script src="/assets/preferencias-lectura.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -1651,7 +1651,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._igPreferencesDisconnect = window.IGPreferences.connect(this);
     try {
-      const lang = localStorage.getItem("ig_lang");
+      const lang = "en";
       const use = lang && STR[lang] ? lang : "es";
       if (use !== "es") this.setState({ lang: use });
       document.documentElement.lang = use;
@@ -1671,7 +1671,7 @@ class Component extends DCLogic {
   setLang(lang) {
     try {
       document.documentElement.lang = lang;
-      localStorage.setItem("ig_lang", lang);
+      // Language belongs to the current route; no workshop storage.
     } catch (e) {}
     this.setState({ lang });
   }
