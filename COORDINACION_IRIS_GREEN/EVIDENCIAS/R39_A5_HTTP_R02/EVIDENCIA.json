@@ -1,0 +1,50 @@
+{
+  "schema": "R39_A5_HTTP_R02_EVIDENCE/1.0",
+  "status": "BLOQUEADO_ACCESO_AUTORIZADO",
+  "observed_on": "2026-09-24",
+  "authority": "COORDINACION_IRIS_GREEN/ORDENES/R39_CORRECCIONES_R03/04_AGENTE_5.md",
+  "candidate": {
+    "source_head": "66b6b551ad055ea9e367ebdff7246b381f4656d3",
+    "deploy_id": "6ab4d5047d3729fae7f122aa",
+    "deploy_context": "deploy-preview",
+    "deploy_state": "ready",
+    "published_at": null,
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "function": "n04-library-qa",
+    "function_digest": "5655a261f20b68b91c7a9dbc344ee675468ca4f848b1c83c9a976596573c5073",
+    "function_runtime": "nodejs24.x",
+    "function_region": "us-east-2",
+    "route": "/internal/n04/library/search"
+  },
+  "library": {
+    "deploy_id": "6ab4c1a15435b93043ab3f6d",
+    "corpus_version": "n04-es-20260916-56f72c4d3959",
+    "corpus_sha256": "56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e"
+  },
+  "access": {
+    "project_requires_team_login": true,
+    "team_login_scope": "all",
+    "connected_netlify_role": "Owner",
+    "legitimate_function_http_invoker_available_to_agent": false,
+    "previous_unauthenticated_probe_result": "401 (recorded previously in #237; not repeated)"
+  },
+  "execution": {
+    "remote_http_request_performed": false,
+    "remote_function_execution_proven": false,
+    "cross_deploy_runtime_read_proven": false,
+    "local_sdk_or_local_handler_reused_as_substitute": false,
+    "reason": "Available Netlify connector can read project/deploy/team identity but exposes no operation that invokes the protected deploy as the authenticated Team Login browser session. Using an anonymous HTTP client would repeat the prohibited 401 probe."
+  },
+  "single_external_action_id": "A5-HTTP-ACTION-01",
+  "c17": "PENDING_SEPARATE",
+  "public_text_applicability": "NO_APLICA_TEXTO_PUBLICO",
+  "security": {
+    "team_login_changed": false,
+    "secrets_changed": false,
+    "cookies_exported": false,
+    "qa_key_recorded": false,
+    "deploy_created": false,
+    "dns_changed": false,
+    "bypass_used": false
+  }
+}
