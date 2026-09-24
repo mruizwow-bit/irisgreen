@@ -11,7 +11,9 @@ Estrategia de publicación, sin reescribir interfaces:
    23 páginas la usen;
 5. elimina las dos copias antiguas del artefacto y retira ``unsafe-eval`` de CSP.
 
-El inventario actual contiene 22 páginas legacy más las dos superficies B1.
+El inventario actual contiene 22 páginas legacy más El taller en español
+(/es/taller/) y en inglés (/en/workshop/), que usan la misma página DC; las dos
+superficies B1 quedan fuera (son puentes noindex).
 B1 usa una copia byte-idéntica del mismo runtime bajo ./support.js; durante el
 build se precompila con el mismo runtime CSP-safe. El script sigue fallando si
 el inventario vuelve a cambiar,
@@ -199,8 +201,8 @@ def main() -> None:
     leaked_b1 = sorted(page_rels & retired_b1)
     if leaked_b1:
         raise AssertionError("Las rutas B1 retiradas han vuelto al runtime DC: " + ", ".join(leaked_b1))
-    if len(pages) != 22:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 22 públicas, encontré {len(pages)}")
+    if len(pages) != 24:
+        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 24 públicas (22 + El taller ES/EN), encontré {len(pages)}")
 
     rows = [transform_page(path) for path in pages]
 
