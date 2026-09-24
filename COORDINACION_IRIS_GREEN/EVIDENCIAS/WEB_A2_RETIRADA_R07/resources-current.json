@@ -1,0 +1,105 @@
+{
+  "static": {
+    "retired_directories": 16,
+    "current_routes_in_sitemap": 8,
+    "reciprocal_hreflang": true
+  },
+  "browser": [
+    {
+      "path": "/es/recursos/juegos/",
+      "width": 1440,
+      "print_pdf_bytes": 31879,
+      "png": "not_applicable_no_png_control",
+      "language_target": "https://irisgreen.eu/en/resources/games/#juego-los-cordones",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/games/",
+      "width": 1440,
+      "print_pdf_bytes": 33149,
+      "png": "not_applicable_no_png_control",
+      "language_target": "https://irisgreen.eu/es/recursos/juegos/#juego-los-cordones",
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/rutinas-imprimibles/",
+      "width": 1440,
+      "png_bytes": 305023,
+      "print_pdf_bytes": 70064,
+      "language_target": "https://irisgreen.eu/en/resources/printable-routines/#pack-manana-para-salir",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/printable-routines/",
+      "width": 1440,
+      "png_bytes": 317524,
+      "print_pdf_bytes": 69818,
+      "language_target": "https://irisgreen.eu/es/recursos/rutinas-imprimibles/#pack-manana-para-salir",
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/rutinas-visuales/",
+      "width": 1440,
+      "builder_keyboard": true,
+      "print_pdf_bytes": 88383,
+      "language_target": "https://irisgreen.eu/en/resources/visual-routines/",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/visual-routines/",
+      "width": 1440,
+      "builder_keyboard": true,
+      "print_pdf_bytes": 86563,
+      "language_target": "https://irisgreen.eu/es/recursos/rutinas-visuales/",
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/juegos/",
+      "width": 320,
+      "print_pdf_bytes": 31879,
+      "png": "not_applicable_no_png_control",
+      "language_target": "https://irisgreen.eu/en/resources/games/#juego-los-cordones",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/games/",
+      "width": 320,
+      "print_pdf_bytes": 33149,
+      "png": "not_applicable_no_png_control",
+      "language_target": "https://irisgreen.eu/es/recursos/juegos/#juego-los-cordones",
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/rutinas-imprimibles/",
+      "width": 320,
+      "png_bytes": 305023,
+      "print_pdf_bytes": 70064,
+      "language_target": "https://irisgreen.eu/en/resources/printable-routines/#pack-manana-para-salir",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/printable-routines/",
+      "width": 320,
+      "png_bytes": 317524,
+      "print_pdf_bytes": 69818,
+      "language_target": "https://irisgreen.eu/es/recursos/rutinas-imprimibles/#pack-manana-para-salir",
+      "passed": true
+    },
+    {
+      "path": "/es/recursos/rutinas-visuales/",
+      "width": 320,
+      "builder_keyboard": true,
+      "print_pdf_bytes": 88383,
+      "language_target": "https://irisgreen.eu/en/resources/visual-routines/",
+      "passed": true
+    },
+    {
+      "path": "/en/resources/visual-routines/",
+      "width": 320,
+      "builder_keyboard": true,
+      "print_pdf_bytes": 86563,
+      "language_target": "https://irisgreen.eu/es/recursos/rutinas-visuales/",
+      "passed": true
+    }
+  ]
+}
