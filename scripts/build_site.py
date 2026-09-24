@@ -68,6 +68,9 @@ def build():
     # se solicitan únicamente cuando la persona los elige.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
 
+    # Rincón tranquilo: restore the verified self-contained 3D bundle inside staging.
+    subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
+
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
     if dst.exists():shutil.rmtree(dst)
