@@ -116,3 +116,7 @@ Cabecera interior en dos filas y nuevo Rincón: 12 sonidos, ocho miniaturas y bu
 ## Rincon tranquilo · A2 R20
 
 Mejoras 1 a 6 integradas ES/EN en PR244, commit 145cfc43a76f0c1746d45c7158d3f31a784862da. Build y verificación estática PASS. Deploy 6ab566ee SUCCESS; controles ES/EN comprobados en navegador remoto. Interacción 3D, apagado completo y pruebas humanas pendientes. [Registro y límites](MEMORIA/WEB_A2_RINCON_R20_20260924.md).
+
+## Eclipses · A2 R21
+
+Integrados ES/EN en PR244, commit d52584344240deb352f712debd19e9e7ae76bdd2. Build PASS; preview 6ab569d5 SUCCESS. [Registro](MEMORIA/WEB_A2_ECLIPSES_R21_20260924.md).
