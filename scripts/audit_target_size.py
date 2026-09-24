@@ -32,7 +32,7 @@ ROUTES = [
     '/es/neurodiversidad/condiciones/', '/es/neurodiversidad/condiciones/autismo/',
     '/es/biblioteca/', '/es/investigacion/', '/es/datos/',
     '/es/tramites/directorio/', '/es/libros/', '/es/videos/',
-    '/es/recursos/juegos/', '/es/recursos/juegos/las-cinco-cosas/',
+    '/es/recursos/juegos/', '/es/recursos/juegos/',
     '/es/intereses/', '/es/taller/', '/es/sitio-tranquilo/',
 ]
 VIEWPORTS = [1280, 390]

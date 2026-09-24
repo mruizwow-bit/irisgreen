@@ -36,7 +36,7 @@ def main():
     retired_b1={'/es/recursos/juegos/b1/','/es/recursos/juegos/b1/mecanicas.html'}
     leaked=sorted(route for _,route in pages if route in retired_b1)
     if leaked:raise AssertionError('Las rutas B1 retiradas han vuelto al runtime DC: '+', '.join(leaked))
-    if len(pages)!=22:raise AssertionError(f'Inventario DC seguro cambiado: {len(pages)} != 22')
+    if len(pages)!=11:raise AssertionError(f'Inventario DC seguro cambiado: {len(pages)} != 11')
     csp=global_csp()
     if "'unsafe-eval'" in csp:raise AssertionError('La prueba DC no se ejecutará con unsafe-eval presente')
     httpd,base=server(csp);failures=[];checked=[]

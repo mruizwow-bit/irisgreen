@@ -14,16 +14,17 @@ from pathlib import Path
 CHILDREN = (
     '/es/recursos/juegos/',
     '/es/recursos/rutinas-visuales/',
+    '/es/recursos/rutinas-imprimibles/',
     '/es/recursos/tarjeta-iris/',
 )
 
 
-def fix_header(header: str) -> str:
-    if '/es/recursos/juegos/' not in header:
-        return header
+def fix_header(header: str, lang: str = "es") -> str:
     header = header.replace('href="/es/recursos/juegos/"', 'href="/es/recursos/"')
     header = re.sub(r'(>\s*)Jugar(\s*</a>)', r'\1Recursos\2', header)
     header = re.sub(r'(>\s*)Play(\s*</a>)', r'\1Resources\2', header)
+    if lang == 'en':
+        header = header.replace('href="/es/recursos/"', 'href="/en/resources/"')
     return header
 
 
@@ -58,6 +59,8 @@ def run(root: Path) -> dict:
     for child in CHILDREN:
         assert f'href="{child}"' in hub_text, f'El índice de Recursos no enlaza {child}'
 
+    for child in ('/en/resources/', '/en/resources/games/', '/en/resources/visual-routines/', '/en/resources/printable-routines/'):
+        assert (root / child.strip('/') / 'index.html').is_file(), child
     changed_headers = 0
     for path in sorted(root.rglob('*.html')):
         text = path.read_text(encoding='utf-8', errors='strict')
@@ -65,7 +68,7 @@ def run(root: Path) -> dict:
 
         def repl(match: re.Match[str]) -> str:
             nonlocal changed_headers
-            fixed = fix_header(match.group(0))
+            fixed = fix_header(match.group(0), 'en' if path.relative_to(root).parts[0] == 'en' else 'es')
             if fixed != match.group(0):
                 changed_headers += 1
             return fixed
@@ -81,12 +84,13 @@ def run(root: Path) -> dict:
         raise FileNotFoundError(nav_js)
     js = nav_js.read_text(encoding='utf-8')
     old = '{"id":"jugar","icon":"game","es":["Jugar","Juegos y actividades."],"en":["Play","Games and activities."],"url":"/es/recursos/juegos/","url_en":"/es/recursos/juegos/"}'
-    new = '{"id":"recursos","icon":"game","es":["Recursos","Juegos, rutinas visuales y herramientas gratuitas."],"en":["Resources","Games, visual routines and free tools."],"url":"/es/recursos/","url_en":"/es/recursos/"}'
+    new = '{"id":"recursos","icon":"game","es":["Recursos","Juegos, rutinas visuales y herramientas gratuitas."],"en":["Resources","Games, visual routines and free tools."],"url":"/es/recursos/","url_en":"/en/resources/"}'
+    previous = new.replace('"url_en":"/en/resources/"', '"url_en":"/es/recursos/"')
+    js = js.replace(previous, new)
     if old not in js and new not in js:
         raise AssertionError('No se encuentra la entrada Jugar/Recursos de la portada aprobada')
-    if old in js:
-        js = js.replace(old, new, 1)
-        nav_js.write_text(js, encoding='utf-8')
+    js = js.replace(old, new, 1)
+    nav_js.write_text(js, encoding='utf-8')
 
     home = (root / 'index.html').read_text(encoding='utf-8')
     assert 'data-section="recursos"' in home and 'href="/es/recursos/"' in home

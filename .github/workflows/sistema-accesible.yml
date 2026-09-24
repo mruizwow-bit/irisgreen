@@ -24,7 +24,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import hashlib,json,shutil
-          files=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json','es/intereses/cromos.json']
+          files=['buscador.json','videoteca-listado.json','assets/data/juegos-iris-data.js','es/intereses/cromos.json']
           Path('/tmp/ig-system-data.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}))
           root=Path('reports/system-accessibility')
           if (root/'after.json').exists() and not (root/'first-tests.json').exists():shutil.copy2(root/'after.json',root/'first-tests.json')

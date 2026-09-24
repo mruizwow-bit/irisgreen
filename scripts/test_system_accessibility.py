@@ -13,7 +13,7 @@ class Quiet(SimpleHTTPRequestHandler):
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
 REPORT={'phase':args.phase,'cases':[],'failures':[],'notes':['Browser media emulation, not a physical-device accessibility certification.','No image filters or fictional game state are introduced.','Targeted occlusion checks focus existing controls after placing them under the panel.','External resources are blocked; audio files must not be requested by these interactions.']}
-PAGES=['/','/es/neurodiversidad/condiciones/','/es/situaciones/','/es/neurodiversidad/condiciones/autismo/','/es/recursos/juegos/el-detective-de-los-sentidos/','/es/intereses/','/es/sitio-tranquilo/','/en/neurodiversity/conditions/']
+PAGES=['/','/es/neurodiversidad/condiciones/','/es/situaciones/','/es/neurodiversidad/condiciones/autismo/','/es/recursos/rutinas-visuales/','/es/intereses/','/es/sitio-tranquilo/','/en/neurodiversity/conditions/']
 TRIGGER='#plBtn:visible,.ig-uh-music:visible,[data-ig-music]:visible'
 READING='#a11yBtn:visible,.ig-uh-reading:visible,[data-ig-reading-trigger]:visible'
 FILTER=':is(.ig-filter-button,.secfind button[data-type],.secfind button[data-letter],.situation-filter,#temaFilters .filter,.catbuttons button,.vd-filters button)[aria-pressed="true"]'

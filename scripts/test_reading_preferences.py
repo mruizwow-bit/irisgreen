@@ -87,7 +87,7 @@ with sync_playwright() as pw:
   ctx.add_init_script(SPY);return ctx
  if args.phase=='before':
   ctx=context(320,LEGACY);page=ctx.new_page()
-  for path in [STATIC[0],'index.html','es/recursos/juegos/las-cinco-cosas/index.html']:
+  for path in [STATIC[0],'index.html','es/recursos/juegos/index.html']:
    load(page,path);panel=open_panel(page)
    R['cases'].append({'page':route(path),'shared_controller':page.evaluate('!!window.IGPreferences'),'states':panel_states(panel),'stored':page.evaluate('localStorage.getItem("ig-a11y")'),'main_zoom':page.evaluate('getComputedStyle(document.querySelector("main")).zoom')})
   ctx.close()
@@ -125,7 +125,7 @@ with sync_playwright() as pw:
     saved=page.evaluate("JSON.parse(localStorage.getItem('ig-a11y'))");assert saved==EXPECTED
     assert 'tts' not in saved and 'speak' not in saved
     close(page)
-    for path in ['index.html','es/recursos/juegos/las-cinco-cosas/index.html',STATIC[2],STATIC[-1],STATIC[0]]:
+    for path in ['index.html','es/recursos/juegos/index.html',STATIC[2],STATIC[-1],STATIC[0]]:
      load(page,path);same_state(page)
     load(page,'index.html');panel=open_panel(page)
     if panel.evaluate('p=>p.tagName==="DIALOG"'):close(page)
@@ -175,7 +175,7 @@ with sync_playwright() as pw:
     assert page.evaluate('window.__speechCalls')==0
     panel=open_panel(page);pref_button(panel,'spacing').click();assert prefs(page)['spacing'] is True
    note_result(row,invalid);ctx.close()
-  for path in [STATIC[0],'es/recursos/juegos/las-cinco-cosas/index.html']:
+  for path in [STATIC[0],'es/recursos/juegos/index.html']:
    ctx=context();ctx.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Blocked','SecurityError')}})");page=ctx.new_page();row={'scenario':'storage blocked','path':route(path)}
    def blocked():
     errors=[];page.on('pageerror',lambda e:errors.append(str(e)));load(page,path)

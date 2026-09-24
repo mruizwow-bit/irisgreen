@@ -32,7 +32,7 @@ ROUTES = [
     '/es/biblioteca/', '/es/investigacion/', '/es/datos/',
     '/es/datos/autismo-en-la-poblacion/', '/en/data/autism-in-the-population/',
     '/es/tramites/directorio/', '/es/libros/', '/es/videos/', '/es/recursos/juegos/',
-    '/es/recursos/juegos/las-cinco-cosas/', '/es/intereses/', '/es/taller/',
+    '/es/recursos/juegos/', '/es/intereses/', '/es/taller/',
     '/es/sitio-tranquilo/'
 ]
 

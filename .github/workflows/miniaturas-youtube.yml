@@ -25,7 +25,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import shutil,hashlib,json
-          names=['buscador.json','videoteca-listado.json','es/recursos/juegos/juegos-120.json']
+          names=['buscador.json','videoteca-listado.json','assets/data/juegos-iris-data.js']
           Path('/tmp/ig-thumbs-integrity.json').write_text(json.dumps({n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in names}))
           a=Path('reports/thumbnails/tests.json');b=Path('reports/thumbnails/first-tests.json')
           if a.exists() and not b.exists():shutil.copy2(a,b)

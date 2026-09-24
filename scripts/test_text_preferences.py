@@ -12,7 +12,7 @@ class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-PATHS=['/','/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/autismo/','/en/neurodiversity/conditions/autism/','/es/recursos/juegos/las-cinco-cosas/','/es/intereses/','/es/videos/']
+PATHS=['/','/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/autismo/','/en/neurodiversity/conditions/autism/','/es/recursos/juegos/','/es/intereses/','/es/videos/']
 R={'phase':args.phase,'cases':[],'failures':[],'notes':['Tested on the generated public files, with external domains blocked.','Text selectors are native select controls with labels.','Keyboard traversal uses Tab/Shift+Tab; no focus() or synthetic page-state completion.','Audio uses the real local MP3 and original play() call; time advancing is checked, not physical loudspeaker audibility.','Computed font stacks do not guarantee that a proprietary device font is installed.']}
 SPY='''window.__igAudio=null;window.__igSpeech=0;const play=HTMLMediaElement.prototype.play;HTMLMediaElement.prototype.play=function(){window.__igAudio=this;return play.apply(this,arguments);};if(window.SpeechSynthesis){const say=SpeechSynthesis.prototype.speak;SpeechSynthesis.prototype.speak=function(u){window.__igSpeech++;return say.call(this,u);};}'''
 def result(row,fn):
@@ -47,7 +47,7 @@ with sync_playwright() as pw:
   (OUT/'baseline-values.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2));print('Baseline saved')
  elif args.phase=='base':
   for width in [1440,320]:
-   for path in ['/','/es/neurodiversidad/condiciones/','/es/recursos/juegos/las-cinco-cosas/']:
+   for path in ['/','/es/neurodiversidad/condiciones/','/es/recursos/juegos/']:
     c=context(width);p=c.new_page();row={'test':'real Tab traversal','path':path,'width':width}
     def keyboard():
      load(p,path);row['visited']=[]
@@ -134,7 +134,7 @@ with sync_playwright() as pw:
   def journey():
    load(p,'/');tab_to(p,'.ig-uh-reading,#a11yBtn');p.keyboard.press('Enter');tab_to(p,'[data-ig-text-settings] summary');p.keyboard.press('Space');p.keyboard.press('Tab')
    assert p.evaluate('document.activeElement.dataset.igTextKey')=='font';p.keyboard.press('ArrowDown');p.keyboard.press('Enter');assert stored(p)['font']=='sans'
-   for path in ['/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/autismo/','/es/recursos/juegos/las-cinco-cosas/','/es/intereses/','/en/neurodiversity/conditions/autism/']:
+   for path in ['/es/neurodiversidad/condiciones/','/es/neurodiversidad/condiciones/autismo/','/es/recursos/juegos/','/es/intereses/','/en/neurodiversity/conditions/autism/']:
     load(p,path);assert stored(p)['font']=='sans';assert geometry(p)['overflow']<=2
    el=panel(p);assert el.locator('[data-ig-text-settings] summary').inner_text()=='Typeface, spacing and reading width';el.locator('summary').click()
    other=c.new_page();load(other,'/es/situaciones/');el.locator('[data-ig-text-key="word"]').select_option('0.24');other.wait_for_function('IGPreferences.getText().word===.24');assert p.evaluate('window.__igSpeech')==0;assert other.evaluate('window.__igSpeech')==0
