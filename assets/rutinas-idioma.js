@@ -13,7 +13,7 @@ var T={
     ready:'Por la mañana',
     builder:'Constructor de rutinas',
     note2:'Elige pictogramas, cambia el texto, ordena con botones y usa el formato que necesites. La biblioteca contiene 93 símbolos Mulberry en once categorías. No se arrastra nada y no hace falta una cuenta.',
-    licenseIntro:'Pictogramas: Mulberry Symbols, © Steve Lee, CC BY-SA 4.0 · ',
+    licenseIntro:'Pictogramas: Mulberry Symbols, © Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.0 · ',
     licenseLink:'Licencia',
     licenseEnd:'. Los pictogramas son apoyo: el texto permanece siempre visible.'
   },
@@ -26,7 +26,7 @@ var T={
     ready:'Morning',
     builder:'Routine builder',
     note2:'Choose symbols, change the text, reorder with buttons and use the format you need. The library holds 93 Mulberry symbols in eleven categories. Nothing is dragged and no account is needed.',
-    licenseIntro:'Symbols: Mulberry Symbols, © Steve Lee, CC BY-SA 4.0 · ',
+    licenseIntro:'Pictograms: Mulberry Symbols, © Garry Paxton 2008-2017 and © Steve Lee 2018-2026, CC BY-SA 4.0 licence · ',
     licenseLink:'Licence',
     licenseEnd:'. The symbols are support: the text always stays visible.'
   }
