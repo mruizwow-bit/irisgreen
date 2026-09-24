@@ -1,0 +1,17 @@
+/* Iris Green · El taller · portada: estudios y corrección de altura del runtime de plantillas.
+   El runtime fija html, body y #dc-root al 100 % de la pantalla; con eso el pie quedaba encima del contenido. */
+html,body{height:auto!important}
+#dc-root,#dc-root>.sc-host{height:auto!important}
+.igt-portada{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(23,57,92,.1);border-radius:20px;padding:22px 24px;margin:0 0 24px;color:#17395c}
+.igt-portada h2{margin:0 0 6px;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(25px,3.1vw,33px);line-height:1.15}
+.igt-portada>p{margin:0 0 16px;font-size:16.5px;line-height:1.6;color:#435268;max-width:46em}
+.igt-studios{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:12px;margin:0;padding:0;list-style:none}
+.igt-studio{display:flex;flex-direction:column;gap:6px;height:100%;box-sizing:border-box;border-radius:18px;border:1px solid rgba(23,57,92,.14);background:#fff;padding:16px 18px;text-decoration:none!important;color:#17395c!important;min-height:44px}
+.igt-studio:hover,.igt-studio:focus-visible{border-color:rgba(31,95,139,.5);box-shadow:0 10px 30px -22px rgba(23,57,92,.6)}
+.igt-studio:focus-visible{outline:3px solid #5a49a8;outline-offset:2px}
+.igt-studio strong{font:600 21px/1.15 'Newsreader',Georgia,serif}
+.igt-studio span{font-size:15.5px;color:#46566b;line-height:1.5}
+.igt-studio em{font-style:normal;font-size:13.5px;color:#5a49a8;font-weight:700;margin-top:auto}
+body.hc .igt-studio{border:2px solid #17395c}
+@media (max-width:560px){.igt-portada{padding:18px 16px}}
+@media print{.igt-studio{break-inside:avoid}}

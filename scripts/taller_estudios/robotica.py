@@ -1,0 +1,146 @@
+"""Estudio 13 · Robótica. Textos ES/EN y retos."""
+from .codigo_strings import C, LANG_REF
+
+KEY = 'robotica'
+NUMBER = 13
+SLUG = {'es': 'robotica', 'en': 'robotics'}
+SCRIPTS = ['ig-taller-codigo.js', 'ig-taller-robotica.js']
+
+LEVELS = {
+    1: {'es': 'Moverse y medir', 'en': 'Moving and measuring'},
+    2: {'es': 'Seguir una línea', 'en': 'Following a line'},
+    3: {'es': 'Laberintos', 'en': 'Mazes'},
+    4: {'es': 'Varios robots', 'en': 'Several robots'},
+    5: {'es': 'Sin techo', 'en': 'No ceiling'},
+}
+
+CHALLENGES = [
+    {'id': 'r1', 'level': 1, 'scene': 'room',
+     'es': {'title': 'Salir de la habitación', 'goal': 'El robot está en una habitación de 240 × 110 cm con una puerta arriba. Llévalo hasta la meta, al otro lado de la puerta.', 'limits': ['Llegar a la meta'], 'tip': 'Mide con la cuadrícula: cada cuadrado tiene 10 cm. El robot mide 16 cm de ancho.'},
+     'en': {'title': 'Leave the room', 'goal': 'The robot is in a 240 × 110 cm room with a door at the top. Drive it to the goal on the other side of the door.', 'limits': ['Reach the goal'], 'tip': 'Measure with the grid: each square is 10 cm. The robot is 16 cm wide.'}},
+    {'id': 'r2', 'level': 1, 'scene': 'park', 'variants': 3,
+     'es': {'title': 'Aparcar sin tocar', 'goal': 'Acerca el robot a la pared de enfrente y páralo a entre 1 y 6 cm, sin chocar. La distancia de salida cambia cada vez.', 'limits': ['Parar a entre 1 y 6 cm', 'Sin choques', 'Funciona en 3 salidas distintas'], 'tip': 'mientras distancia() > 3 { avanzar 1 }'},
+     'en': {'title': 'Park without touching', 'goal': 'Drive the robot towards the wall ahead and stop it between 1 and 6 cm away, without bumping. The starting distance changes each time.', 'limits': ['Stop between 1 and 6 cm', 'No bumps', 'Works from 3 different starts'], 'tip': 'while distance() > 3 { forward 1 }'}},
+    {'id': 'r3', 'level': 2, 'scene': 'curve', 'variants': 3,
+     'es': {'title': 'Seguir la línea', 'goal': 'Sigue la línea negra hasta la meta usando los sensores de suelo. La curva cambia en cada variante.', 'limits': ['Llegar a la meta', 'Funciona en 3 curvas distintas'], 'tip': 'Si el sensor izquierdo ve la línea, gira un poco a la izquierda; si la ve el derecho, a la derecha; y avanza 1 cm.'},
+     'en': {'title': 'Follow the line', 'goal': 'Follow the black line to the goal using the floor sensors. The curve changes with each variant.', 'limits': ['Reach the goal', 'Works on 3 different curves'], 'tip': 'If the left sensor sees the line, turn a little left; if the right one does, turn right; then go forward 1 cm.'}},
+    {'id': 'r4', 'level': 2, 'scene': 'wavy', 'variants': 2,
+     'es': {'title': 'Curvas cerradas', 'goal': 'Una línea con ondas más cerradas. El mismo programa tiene que llegar en las dos variantes.', 'limits': ['Llegar a la meta', 'Funciona en 2 recorridos'], 'tip': 'Giros más pequeños y pasos más cortos aguantan mejor las curvas.'},
+     'en': {'title': 'Tight bends', 'goal': 'A line with tighter waves. The same program has to arrive on both variants.', 'limits': ['Reach the goal', 'Works on 2 routes'], 'tip': 'Smaller turns and shorter steps cope better with bends.'}},
+    {'id': 'r5', 'level': 3, 'scene': 'known',
+     'es': {'title': 'Laberinto conocido', 'goal': 'Un laberinto de 6 × 4 celdas de 40 cm. Puedes verlo entero: llega a la meta de la esquina de arriba a la derecha.', 'limits': ['Llegar a la meta'], 'tip': 'Puedes dar las órdenes una a una o probar una regla que sirva para cualquier laberinto.'},
+     'en': {'title': 'Known maze', 'goal': 'A maze of 6 × 4 cells, each 40 cm. You can see all of it: reach the goal in the top right corner.', 'limits': ['Reach the goal'], 'tip': 'You can give the instructions one by one, or try a rule that works for any maze.'}},
+    {'id': 'r6', 'level': 3, 'scene': 'unknown', 'variants': 3,
+     'es': {'title': 'Laberinto desconocido', 'goal': 'Cada vez sale un laberinto distinto. Escribe un programa que llegue a la meta en cualquiera, usando los sensores de distancia.', 'limits': ['Llegar a la meta', 'Funciona en 3 laberintos nuevos'], 'tip': 'Regla de la mano derecha: si a la derecha hay hueco, gira y avanza una celda; si no, y delante hay hueco, avanza; si no, gira a la izquierda.'},
+     'en': {'title': 'Unknown maze', 'goal': 'A different maze appears each time. Write a program that reaches the goal in any of them, using the distance sensors.', 'limits': ['Reach the goal', 'Works in 3 new mazes'], 'tip': 'Right-hand rule: if there is space on the right, turn and go forward one cell; if not, and there is space ahead, go forward; otherwise, turn left.'}},
+    {'id': 'r7', 'level': 4, 'scene': 'corridor',
+     'es': {'title': 'Cruzarse en un pasillo', 'goal': 'Dos robots en un pasillo estrecho tienen que cambiarse de lado sin chocar. Hay un hueco para apartarse. Cada robot tiene su programa.', 'limits': ['Los dos llegan a su meta', 'Sin choques'], 'tip': 'Uno se aparta al hueco y espera con «esperar» mientras pasa el otro.'},
+     'en': {'title': 'Passing in a corridor', 'goal': 'Two robots in a narrow corridor have to swap sides without bumping. There is a bay to pull into. Each robot has its own program.', 'limits': ['Both reach their goal', 'No bumps'], 'tip': 'One pulls into the bay and uses “wait” while the other goes past.'}},
+    {'id': 'r8', 'level': 4, 'scene': 'meet',
+     'es': {'title': 'Encuentro', 'goal': 'Los dos robots salen de esquinas opuestas y tienen que llegar a la zona de encuentro del centro, sin chocar entre ellos ni con las paredes.', 'limits': ['Los dos en la zona de encuentro', 'Sin choques'], 'tip': 'Cada robot ve al otro con su sensor de distancia.'},
+     'en': {'title': 'Meeting point', 'goal': 'The two robots start from opposite corners and have to reach the meeting zone in the middle, without bumping into each other or the walls.', 'limits': ['Both in the meeting zone', 'No bumps'], 'tip': 'Each robot can see the other with its distance sensor.'}},
+    {'id': 'r9', 'level': 5, 'scene': 'big', 'variants': 5,
+     'es': {'title': 'Laberintos grandes', 'goal': 'Laberintos de 10 × 7 celdas de 30 cm, nuevos cada vez. Intenta que tu programa llegue con el camino más corto que puedas. Te comparas solo contigo.', 'limits': ['Funciona en 5 laberintos', 'Camino recorrido: tu mejor marca de la sesión'], 'tip': 'Seguir una pared siempre llega, pero no siempre por el camino corto. ¿Qué más puede mirar el robot?'},
+     'en': {'title': 'Big mazes', 'goal': 'Mazes of 10 × 7 cells, each 30 cm, new every time. Try to make your program arrive by the shortest route you can. You only compare yourself with yourself.', 'limits': ['Works in 5 mazes', 'Distance travelled: your best this session'], 'tip': 'Following a wall always arrives, but not always by the short route. What else can the robot look at?'}},
+]
+
+STRINGS = {
+    'es': dict(C['es'], **{
+        'rCanvasLabel': 'Escenario del robot', 'pOutput': 'Salida', 'pTitle': 'Título', 'yes': 'sí', 'no': 'no',
+        'rProgram': 'Programa del robot', 'rRobots': 'Robots', 'rRobotA': 'Robot A', 'rRobotB': 'Robot B', 'rNewDone': 'Programas nuevos',
+        'rTrail': 'Mostrar el rastro', 'rNewVariant': 'Otra variante', 'rVariantDone': 'Variante nueva del escenario',
+        'rGoal': 'META', 'rGoalN': 'META {n}', 'rMeet': 'ENCUENTRO',
+        'rErrTooFar': 'distancia demasiado grande (más de 5.000)', 'rErrTooLong': 'el robot lleva demasiados movimientos (más de 60.000). ¿Hay un bucle que no termina?',
+        'rSensorsTitle': 'Sensores del robot',
+        'rSensor_dist': 'centímetros libres delante, hasta una pared u otro robot (máximo 300)', 'rSensor_distL': 'centímetros libres a la izquierda', 'rSensor_distR': 'centímetros libres a la derecha',
+        'rSensor_line': 'verdadero si el sensor de suelo del centro ve la línea negra', 'rSensor_lineL': 'verdadero si el sensor de suelo izquierdo ve la línea', 'rSensor_lineR': 'verdadero si el sensor de suelo derecho ve la línea',
+        'rSensor_bump': 'verdadero si el último movimiento chocó', 'rSensor_goal': 'verdadero si el robot está en su meta', 'rSensor_heading': 'hacia dónde mira, en grados (0 arriba, 90 derecha)',
+        'rSensorsNow': 'Sensores ahora: delante {d} cm · línea izquierda {l}, centro {c}, derecha {r} · en la meta: {g}',
+        'rAltTitle': 'Qué hay en el escenario',
+        'rAltScene_room': 'Habitación de {w} × {h} cm con una pared a 110 cm del suelo y una puerta de 40 cm. La meta está al otro lado de la puerta, a la derecha.',
+        'rAltScene_park': 'Pasillo de {w} × {h} cm. El robot mira a la pared de la derecha; la zona para aparcar está pegada a esa pared.',
+        'rAltScene_curve': 'Suelo de {w} × {h} cm con una línea negra curva de izquierda a derecha. La meta está al final de la línea.',
+        'rAltScene_wavy': 'Suelo de {w} × {h} cm con una línea negra que sube haciendo ondas. La meta está al final de la línea.',
+        'rAltScene_known': 'Laberinto de {w} × {h} cm en celdas de 40 cm. El robot sale abajo a la izquierda y la meta está arriba a la derecha.',
+        'rAltScene_unknown': 'Laberinto de {w} × {h} cm en celdas de 40 cm, distinto en cada variante. Salida abajo a la izquierda, meta arriba a la derecha.',
+        'rAltScene_big': 'Laberinto de {w} × {h} cm en celdas de 30 cm, distinto en cada variante. Salida abajo a la izquierda, meta arriba a la derecha.',
+        'rAltScene_corridor': 'Pasillo de {w} cm con un hueco de 40 cm en el centro de la pared de abajo. El robot A sale por la izquierda y su meta está a la derecha; el B, al revés.',
+        'rAltScene_meet': 'Sala de {w} × {h} cm con dos tabiques. El robot A sale abajo a la izquierda, el B arriba a la derecha, y la zona de encuentro está en el centro.',
+        'rAltBot': 'Robot {r} en x {x}, y {y} cm, mirando a {hd} grados. Delante: {d} cm libres. Sobre la línea: {line}. En la meta: {goal}. Choques: {bumps}.',
+        'rParkOk': 'Aparcado a {d} cm de la pared, sin choques.', 'rParkNo': 'Parado a {d} cm de la pared, con {b} choques. Hace falta parar a entre 1 y 6 cm, sin tocar.',
+        'rGoalOk': 'Llega a la meta. Camino recorrido: {d} cm. Choques: {b}.', 'rGoalNo': 'No llega a la meta. Choques: {b}.',
+        'rBest': 'Tu camino más corto en este laberinto: {d} cm.', 'rTryAll': 'Probar en {n} variantes', 'rAllOk': 'Funciona en las {n} variantes. Reto cumplido.',
+        'rSomeOk': 'Funciona en {ok} de {n} variantes.', 'rVariantLine': 'Variante {n}: {r}', 'rVarOk': 'llega', 'rVarNo': 'no llega',
+        'rStarter': '# El robot mide 16 cm. Pulsa «Ejecutar».\navanzar 40\nderecha 90\navanzar 20',
+    }),
+    'en': dict(C['en'], **{
+        'rCanvasLabel': 'Robot scene', 'pOutput': 'Output', 'pTitle': 'Title', 'yes': 'yes', 'no': 'no',
+        'rProgram': 'Robot program', 'rRobots': 'Robots', 'rRobotA': 'Robot A', 'rRobotB': 'Robot B', 'rNewDone': 'New programs',
+        'rTrail': 'Show the trail', 'rNewVariant': 'Another variant', 'rVariantDone': 'New variant of the scene',
+        'rGoal': 'GOAL', 'rGoalN': 'GOAL {n}', 'rMeet': 'MEET',
+        'rErrTooFar': 'distance too large (over 5,000)', 'rErrTooLong': 'the robot has made too many moves (over 60,000). Is there a loop that never ends?',
+        'rSensorsTitle': 'Robot sensors',
+        'rSensor_dist': 'free centimetres ahead, up to a wall or another robot (300 at most)', 'rSensor_distL': 'free centimetres to the left', 'rSensor_distR': 'free centimetres to the right',
+        'rSensor_line': 'true if the middle floor sensor sees the black line', 'rSensor_lineL': 'true if the left floor sensor sees the line', 'rSensor_lineR': 'true if the right floor sensor sees the line',
+        'rSensor_bump': 'true if the last move bumped into something', 'rSensor_goal': 'true if the robot is on its goal', 'rSensor_heading': 'which way it faces, in degrees (0 up, 90 right)',
+        'rSensorsNow': 'Sensors now: ahead {d} cm · line left {l}, middle {c}, right {r} · on the goal: {g}',
+        'rAltTitle': 'What is in the scene',
+        'rAltScene_room': 'A {w} × {h} cm room with a wall 110 cm from the bottom and a 40 cm door. The goal is on the other side of the door, to the right.',
+        'rAltScene_park': 'A {w} × {h} cm corridor. The robot faces the right-hand wall; the parking zone is right against that wall.',
+        'rAltScene_curve': 'A {w} × {h} cm floor with a curved black line from left to right. The goal is at the end of the line.',
+        'rAltScene_wavy': 'A {w} × {h} cm floor with a black line that climbs in waves. The goal is at the end of the line.',
+        'rAltScene_known': 'A {w} × {h} cm maze with 40 cm cells. The robot starts bottom left and the goal is top right.',
+        'rAltScene_unknown': 'A {w} × {h} cm maze with 40 cm cells, different for each variant. Start bottom left, goal top right.',
+        'rAltScene_big': 'A {w} × {h} cm maze with 30 cm cells, different for each variant. Start bottom left, goal top right.',
+        'rAltScene_corridor': 'A {w} cm corridor with a 40 cm bay in the middle of the bottom wall. Robot A starts on the left and its goal is on the right; robot B the other way round.',
+        'rAltScene_meet': 'A {w} × {h} cm room with two partition walls. Robot A starts bottom left, robot B top right, and the meeting zone is in the middle.',
+        'rAltBot': 'Robot {r} at x {x}, y {y} cm, facing {hd} degrees. Ahead: {d} cm free. On the line: {line}. On the goal: {goal}. Bumps: {bumps}.',
+        'rParkOk': 'Parked {d} cm from the wall, with no bumps.', 'rParkNo': 'Stopped {d} cm from the wall, with {b} bumps. It needs to stop between 1 and 6 cm away, without touching.',
+        'rGoalOk': 'It reaches the goal. Distance travelled: {d} cm. Bumps: {b}.', 'rGoalNo': 'It does not reach the goal. Bumps: {b}.',
+        'rBest': 'Your shortest route in this maze: {d} cm.', 'rTryAll': 'Try it on {n} variants', 'rAllOk': 'It works on all {n} variants. Challenge done.',
+        'rSomeOk': 'It works on {ok} of {n} variants.', 'rVariantLine': 'Variant {n}: {r}', 'rVarOk': 'arrives', 'rVarNo': 'does not arrive',
+        'rStarter': '# The robot is 16 cm wide. Press “Run”.\nforward 40\nright 90\nforward 20',
+    }),
+}
+assert set(STRINGS['es']) == set(STRINGS['en'])
+
+PAGE = {
+    'es': {
+        'title': 'Estudio de robótica',
+        'description': 'Programa robots con motores y sensores: salir de una habitación, aparcar, seguir una línea, resolver laberintos desconocidos y coordinar dos robots.',
+        'lede': 'Un robot con dos motores, sensores de distancia y sensores de suelo. Prográmalo para salir de una habitación, seguir una línea, resolver laberintos que no conoce y trabajar con otro robot.',
+        'pills': ['Sensores de distancia y de suelo', 'Laberintos nuevos cada vez', 'Dos robots a la vez', 'Bloques y texto', 'Paso a paso', '9 retos en 5 niveles'],
+        'steps': [
+            'Elige un reto. El escenario aparece arriba y su descripción está debajo, en texto.',
+            'Escribe el programa con bloques o con texto. Es el mismo lenguaje que en el estudio de programación, con órdenes y sensores de robot.',
+            'Pulsa «Ejecutar» o «Paso a paso». Los sensores se leen en directo debajo del escenario.',
+            'Cuando llegue, pulsa «Probar en N variantes»: el mismo programa tiene que funcionar en escenarios que no has visto.',
+            'En los retos de dos robots, cada uno tiene su programa: cambia entre «Robot A» y «Robot B».',
+        ],
+        'sections': [
+            {'h': 'Órdenes y sensores', 'p': 'Órdenes: avanzar y retroceder en centímetros, derecha e izquierda en grados, esperar un número de pasos. Si el robot choca, se para y tocando() pasa a ser verdadero. Todo lo del lenguaje (repetir, mientras, si, variables, funciones) funciona igual que en el estudio de programación.',
+             'li': ['distancia(), distancia_izq(), distancia_der(): centímetros libres en esa dirección.', 'linea(), linea_izq(), linea_der(): los tres sensores de suelo, separados 2,5 cm.', 'tocando(), en_meta(), direccion().']},
+        ],
+        'links': [('Estudio de programación', '/es/taller/programacion/'), ('Estudio de estructuras', '/es/taller/estructuras/'), ('Tus intereses', '/es/intereses/'), ('Volver al Taller', '/es/taller/')],
+        'credits': 'Estudio de robótica de Iris Green. Simulación propia en el navegador, sin servicios externos.',
+    },
+    'en': {
+        'title': 'Robotics studio',
+        'description': 'Program robots with motors and sensors: leave a room, park, follow a line, solve unknown mazes and coordinate two robots.',
+        'lede': 'A robot with two motors, distance sensors and floor sensors. Program it to leave a room, follow a line, solve mazes it has never seen and work with another robot.',
+        'pills': ['Distance and floor sensors', 'New mazes every time', 'Two robots at once', 'Blocks and text', 'Step by step', '9 challenges on 5 levels'],
+        'steps': [
+            'Pick a challenge. The scene appears at the top and is described in text below it.',
+            'Write the program with blocks or text. It is the same language as in the coding studio, with robot instructions and sensors.',
+            'Press “Run” or “Step by step”. The sensors are shown live under the scene.',
+            'When it arrives, press “Try it on N variants”: the same program has to work in scenes you have not seen.',
+            'In the two-robot challenges, each robot has its own program: switch between “Robot A” and “Robot B”.',
+        ],
+        'sections': [
+            {'h': 'Instructions and sensors', 'p': 'Instructions: forward and back in centimetres, right and left in degrees, wait a number of steps. If the robot bumps into something, it stops and bumped() becomes true. Everything else in the language (repeat, while, if, variables, functions) works just as in the coding studio.',
+             'li': ['distance(), distance_left(), distance_right(): free centimetres in that direction.', 'line(), line_left(), line_right(): the three floor sensors, 2.5 cm apart.', 'bumped(), at_goal(), heading().']},
+        ],
+        'links': [('Coding studio', '/en/workshop/coding/'), ('Structures studio', '/en/workshop/structures/'), ('Your interests', '/en/interests/'), ('Back to the workshop', '/en/workshop/')],
+        'credits': 'Iris Green robotics studio. Our own simulation in the browser, with no external services.',
+    },
+}

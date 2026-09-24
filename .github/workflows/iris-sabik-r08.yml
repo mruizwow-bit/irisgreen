@@ -18,10 +18,12 @@ jobs:
       - run: pip install beautifulsoup4 pillow playwright==1.55.0
       - run: python -m playwright install --with-deps chromium
       - run: node tools/test-sabik-motion-r37.js
+      - run: node scripts/taller_estudios/pruebas_node.js
       - run: python scripts/build_site.py
       - run: python scripts/test_iris_brief_r08.py
       - run: python scripts/test_resources_current.py
       - run: python scripts/test_iris_corrections_r09.py
+      - run: python scripts/test_taller_f1_mounted.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -30,3 +32,4 @@ jobs:
             reports/iris-brief-r08/
             reports/resources-current/
             reports/iris-r09/
+            reports/taller-f1/
