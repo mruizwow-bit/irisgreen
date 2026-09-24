@@ -1,8 +1,8 @@
-/* Iris Green · Juegos y rutinas. Colores y tipos de la web; tamaños en rem para respetar Lectura. */
+/* Iris Green · Juegos. Integrado en la página canónica de Iris. */
 .jg-main{max-width:73.75rem;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.1rem,3vw,2rem) 5rem;color:#17395c}
-.jg-hero{background:rgba(255,255,255,.86);border:1px solid #d5e4eb;border-radius:1.15rem;padding:clamp(1.5rem,4vw,3rem) clamp(1.25rem,4vw,3.25rem);margin:0 0 1.5rem}
+.jg-hero{max-width:52rem;background:transparent;border:0;border-radius:0;padding:0;margin:0 0 clamp(2rem,4vw,3rem)}
 .jg-hero .crumb{margin:0 0 .5rem}
-.jg-hero h1{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(2.5rem,4.6vw,3.5rem);line-height:1.06;letter-spacing:-.025em;margin:0 0 .75rem;color:#17395c}
+.jg-hero h1{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(2.7rem,5vw,4.5rem);line-height:1.02;letter-spacing:-.025em;margin:0 0 1rem;color:#17395c}
 .jg-lede{font-size:1.18rem;line-height:1.58;color:#435268;max-width:46rem;margin:0;text-wrap:pretty}
 .jg{display:flex;flex-direction:column;gap:1.5rem}
 .jg-ui{display:flex;flex-direction:column;gap:1.25rem}.jg-ui>p{margin:0}
