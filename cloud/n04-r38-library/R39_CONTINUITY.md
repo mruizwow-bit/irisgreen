@@ -1,10 +1,10 @@
-# R39 · Continuidad DEC-119 R02
+# R39 · Continuidad DEC-119 R03
 
 La entrada `n04-library-qa` conserva ruta, autenticación, JSON de entrada `{q, limit?, version?}` y cuerpo de salida R38. Ahora llama a `createSabikRetrievalForDeployment` y al adaptador R39; no se añade otro retrieval ni endpoint. La selección de biblioteca está fijada en `src/cloud-release.mjs`, nunca procede de la petición.
 
 ## Ejecución por solicitud
 
-`runRetrievalTask(work, {signal, timeoutMs})` exige un entero positivo de milisegundos (máximo 2147483647). La Function configura **15000 ms**, incluyendo recuperación y lectura de procedencia. La validación y lectura acotada del cuerpo preceden a esa fase. No se transmite signal al loader compartido: cancelar un consumidor descarta sólo su resultado. La carga puede terminar y servir a otros consumidores. Se limpian listener/timer y se consumen rechazos tardíos. La comprobación monotónica del deadline descarta también resultados de trabajo síncrono que haya impedido ejecutar el timer; no promete interrumpir JavaScript síncrono.
+`runRetrievalTask(work, {signal, timeoutMs})` exige un entero positivo de milisegundos (máximo 2147483647). La Function configura **15000 ms en total**, incluyendo lectura del body (máximo 2048 bytes), validación, recuperación y procedencia. El retrieval recibe sólo el tiempo restante. Al terminar, se cancela y libera el reader de esa petición sin esperar al callback subyacente de cancelación; sus rechazos se consumen. Esto acota también un body incompleto o que nunca termina. No se transmite signal al loader compartido: cancelar un consumidor descarta sólo su resultado. La carga puede terminar y servir a otros consumidores. Se limpian listener/timer y se consumen rechazos tardíos. La comprobación monotónica del deadline descarta también resultados de trabajo síncrono que haya impedido ejecutar el timer; no promete interrumpir JavaScript síncrono.
 
 Se mantienen los cuatro códigos públicos del adaptador: `INVALID_RETRIEVAL_QUERY`, `LIBRARY_VERSION_MISMATCH`, `LIBRARY_INTEGRITY_ERROR`, `LIBRARY_UNAVAILABLE`. Los errores internos `REQUEST_CANCELLED`, `REQUEST_TIMEOUT`, `INVALID_EXECUTION_OPTIONS` no cambian el cuerpo HTTP: devuelven 503 `{error:"library_unavailable"}` y una cabecera diagnóstica interna `X-Sabik-Request-Outcome`. No se expone la causa, señal.reason ni consulta. La Function debe estar detrás de Team Login y del token QA existente.
 
@@ -27,4 +27,8 @@ Se mantienen los cuatro códigos públicos del adaptador: `INVALID_RETRIEVAL_QUE
 
 Las suites cubren R38, R39, cancelación/timeout y composición HTTP local con corpus exacto. `probe-retrieval-r39.mjs` prueba lectura remota de Blobs desde Node local; `probe-qa-r39.mjs` comprueba el handler conectado a esa lectura. Ninguno demuestra ejecución HTTP de la Function remota. El empaquetado y el deploy ready tampoco bastan para afirmarla.
 
-La comprobación HTTP autenticada requiere acceso legítimo de equipo y la cabecera QA mediante el procedimiento autorizado. No repetir los accesos previamente denegados, exportar cookies ni desactivar protección. Registrar esta prueba como pendiente mientras falte ese acceso. C17 permanece pendiente sin evidencia de retención aplicada. No se activa voz, proveedor/modelo, inferencia ni `/api/chat`. La web la integran María y el agente 2.
+La comprobación HTTP autenticada requiere acceso legítimo de equipo y la cabecera QA mediante el procedimiento autorizado. No repetir los accesos previamente denegados, exportar cookies ni desactivar protección. A5 R02 confirma ese límite: no hay nueva prueba HTTP. A4 aporta evidencia de política de retención nativa de Function logs hasta 7 días, aplicable al tipo Serverless Function de este sitio; no prueba borrado físico ni extiende ese plazo a build/deploy, métricas o copias externas. Consultar los informes A4/A5 vigentes en la carpeta documental canónica. No se activa voz, proveedor/modelo, inferencia ni `/api/chat`. La web la integran María y el agente 2.
+
+## Consumo y presentación R03
+
+`sabik/retrieval-bridge.mjs` valida la respuesta de un transporte autorizado inyectado, conserva los nueve campos de cada candidato y llama al `groupSources` A1 aceptado. `sabik/retrieval-panel.js`, recibido de A3 y corregido por Codex con autorización de María, representa los grupos y marca las citas españolas sin mostrar metadatos técnicos como texto público. El contrato, distribución para A2 y límites de transporte están en `sabik/RETRIEVAL_INTEGRATION.md`.

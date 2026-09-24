@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs",
+    "test": "node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs tests/request-body-r03.test.mjs tests/source-groups.test.mjs",
     "test:retrieval": "node --test tests/retrieval-r39.test.mjs",
     "probe:retrieval": "node scripts/probe-retrieval-r39.mjs",
     "seal:deploy": "node scripts/seal-deploy.mjs"
