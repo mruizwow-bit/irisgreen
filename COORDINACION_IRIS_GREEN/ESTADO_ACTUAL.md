@@ -1,8 +1,22 @@
 # Estado operativo compartido
 
-Actualización: 24/09/2026, entrega R39 R03 de Codex y corrección del panel reasignada expresamente por María. Evidencia local, navegador, paquete y HTTP separadas; no certificación global.
+## Última confirmación de María · Sabik montado · 24/09/2026
 
-## Resumen vigente
+María comunica: «todo listo, Sabik esta en la web».
+
+**MONTADO_CONFIRMADO_POR_MARIA.** No volver a encargar la subida o reconstrucción de Sabik ni mantener el montaje como no realizado a partir del informe R04 anterior. Se conserva íntegro el trabajo montado con María/agente 2.
+
+Esta confirmación no incluye en el mensaje URL, HEAD, deploy o informe de pruebas nuevos; no se les asigna automáticamente una identidad histórica. Tampoco equivale a autorizar cambios de acceso, abrir producción o activar voz/inferencia. Los estados técnicos anteriores se conservan debajo como evidencia fechada, no como negación de este montaje posterior.
+
+Continuidad: aplicar la orden existente R39-A3-USO-R04 únicamente a las comprobaciones que aún no estén acreditadas sobre la URL/versión montada: consulta y fuentes reales, cancelación/errores, teclado/foco, Lectura, móvil y ES/EN. Si ya existe esa entrega, registrar su evidencia sin repetirla. Codex conserva integración y atiende solo defectos reproducibles; nadie reconstruye panel, motor, agrupación o transporte por esta confirmación. No se acredita aquí ejecución nueva de Astra o de A3 ni cierre HTTP/cross-deploy por mera presencia visual.
+
+Registro de recepción de Astra: consultados este estado compartido y el informe R39_CODEX_R04; no se ejecutaron pruebas ni se modificaron código, despliegues, secretos o permisos. No se declara sincronizado el Excel maestro V114.
+
+---
+
+Actualización anterior: 24/09/2026, entrega R39 R03 de Codex y corrección del panel reasignada expresamente por María. Evidencia local, navegador, paquete y HTTP separadas; no certificación global.
+
+## Resumen de evidencias anteriores al aviso de montaje
 
 | Línea | Última evidencia | Estado y límite | Responsable |
 |---|---|---|---|
@@ -13,9 +27,9 @@ Actualización: 24/09/2026, entrega R39 R03 de Codex y corrección del panel rea
 | Motion R37 | c23abd9a3ef082a6ed646b03334fe9031b17af15; deploy 6ab4beac4267a5275ff2feb5 | Candidato montado; revisión visual de María y comprobaciones manuales pendientes | Codex / María |
 | Biblioteca R38 | ddd12ed4e002812f5c53e24618c029be9faf9e00; deploy 6ab4c1a15435b93043ab3f6d | Biblioteca sellada conservada, consumida por R39 R02 | Codex |
 | R39 continuidad R02 | HEAD 66b6b551ad055ea9e367ebdff7246b381f4656d3; tree 759b5c0d82a023a81d4aae48c6ab3ced26638d83; deploy 6ab4d5047d3729fae7f122aa | Integrado y desplegado como borrador. Revisión técnica previa de Astra con observación OBS-R39-BODY-01; no reconstruir | Codex |
-| R39 R03 | HEAD `3131d55020057c55567a3457900afc888876de5d`; deploy `6ab504fbf5d403147f6de213`; 227 pruebas por runtime | Body corregido, puente A1/panel integrado, delta A2 comprobado; HTTP y montaje real pendientes | Codex |
-| R39 R04 | HEAD `e8a8e9579b64ffbe288e2a85889dbe687210554b`; 256/256 por runtime; delta main A2 `117a53a01bf254054f759e7e08eb06ba06f00d00` | Conexión privada construida localmente y desactivada. Nueva entrada pendiente de autorización específica; HTTP y montaje sin verificar. [Informe](EVIDENCIAS/R39_CODEX_R04/INFORME.md) | Codex; A2 monta |
-| HTTP protegido | A5 BLOQUEADO_ACCESO_AUTORIZADO; Team Login conservado | A5-HTTP-ACTION-01 contra candidato R03; lectura cross-deploy con identidad runtime pendiente | Codex + apoyo A5 |
+| R39 R03 | HEAD `3131d55020057c55567a3457900afc888876de5d`; deploy `6ab504fbf5d403147f6de213`; 227 pruebas por runtime | Body corregido, puente A1/panel integrado, delta A2 comprobado; HTTP y montaje real pendientes en ese informe anterior | Codex |
+| R39 R04 | HEAD `e8a8e9579b64ffbe288e2a85889dbe687210554b`; 256/256 por runtime; delta main A2 `117a53a01bf254054f759e7e08eb06ba06f00d00` | Conexión privada construida localmente y desactivada según informe previo al aviso de María; nueva entrada y HTTP sin acreditar en dicho informe. Montaje posterior confirmado por María arriba. [Informe](EVIDENCIAS/R39_CODEX_R04/INFORME.md) | Codex; A2 monta |
+| HTTP protegido | A5 BLOQUEADO_ACCESO_AUTORIZADO; Team Login conservado | A5-HTTP-ACTION-01 contra candidato R03; lectura cross-deploy con identidad runtime pendiente en la evidencia anterior | Codex + apoyo A5 |
 | Retención C17 | A4 R02: política nativa Function logs hasta 7 días contrastada | Acotado a logs nativos de Serverless Function; no prueba de borrado físico ni otros tipos de registro | A4 + revisión Codex |
 | Voz | Herramientas de validación/paquete local recibidas | Revisión detecta WAV truncado aceptado; corrección local pendiente. Voz no activada y no bloquea R39 | A6 |
 
@@ -26,12 +40,12 @@ Evidencia estructurada: [Pruebas y reproducciones](CONTROL/EVIDENCIA_REVISION_AG
 
 Astra reprodujo **53/53 pruebas originales**: A1 8, A3 14, A4 8, A5 6, A6 9, A7 8. Node22.16.0 y Python3.13.5 según módulo. Son casos unitarios/locales; no Node24, HTTP, navegador real, lector de pantalla o validación perceptiva de voz. Las pruebas negativas adicionales identifican fallos que esos casos no cubrían.
 
-| Agente | Veredicto | Acción restante |
+| Agente | Veredicto | Acción restante en la revisión anterior |
 |---|---|---|
-| A1 | Módulo aceptado integrado en R03 | Montaje A2 y transporte autorizado pendientes |
-| A3 | Correcciones asumidas por Codex con autorización de María y verificadas en R03 | Montaje A2 y aceptación humana pendientes; donante original conservado |
+| A1 | Módulo aceptado integrado en R03 | No reconstruir; consultar aviso posterior de montaje y evidencia de uso |
+| A3 | Correcciones asumidas por Codex con autorización de María y verificadas en R03 | Comprobación de uso real R04 y aceptación humana según evidencia vigente; donante original conservado |
 | A4 | Código revisado, solución alternativa ya cubierta por Codex | No sustituir execution-policy integrado. Evidencia C17 nativa recibida; ver límites de alcance |
-| A5 | Código revisado, transporte alternativo ya cubierto por Codex | No añadir otra capa ni satisfacer gate de build histórico. Ayuda restante: HTTP autorizado |
+| A5 | Código revisado, transporte alternativo ya cubierto por Codex | No añadir otra capa ni satisfacer gate de build histórico. Ayuda restante: HTTP autorizado según evidencia vigente |
 | A6 | Corrección de entrada incompleta necesaria | Rechazar WAV truncado y controlar error de decodificación; no crear paquete válido ni modificar originales |
 | A7 | No usar todavía como puerta de aceptación | Verificar contenido real del parche: vacío o alterado no puede ser VALID. Revisar comandos completos y actualizar índice sin confundir bases donantes/destino |
 
