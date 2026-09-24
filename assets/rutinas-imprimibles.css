@@ -1,0 +1,98 @@
+/* Iris Green · Imprimibles. La hoja se mide en cqw: pantalla, PDF e imagen usan las mismas proporciones. */
+.im-sec{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.15;margin:1rem 0 0;color:#17395c}
+.im-sub{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.35rem;margin:0}
+.im-card-img{grid-template-columns:repeat(4,1fr)!important}
+.im-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem;align-items:start}
+.im-side{display:flex;flex-direction:column;gap:1.25rem}
+@media(max-width:900px){.im-split{grid-template-columns:minmax(0,1fr)}}
+.im-pasos{margin:0;padding:0;list-style:none;display:grid;gap:.5rem;counter-reset:p}
+.im-pasos li{display:flex;align-items:center;gap:.75rem;counter-increment:p;font-weight:700}
+.im-pasos li::before{content:counter(p);min-width:1.9rem;height:1.9rem;border-radius:999px;background:#1f5f8b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.im-pasos img{width:3rem;height:3rem;object-fit:contain;background:#fff;border:1px solid #dfe6ef;border-radius:.5rem;padding:.15rem}
+.im-fmts,.im-opts{border:0;margin:0;padding:0;display:grid;gap:.5rem}
+.im-fmts legend,.im-opts legend{font-weight:700;margin-bottom:.4rem;padding:0}
+.im-fmt{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem .8rem;border:2px solid #d5e4eb;border-radius:1rem;background:#fff;cursor:pointer;min-height:44px}
+.im-fmt.is-on{border-color:#1f5f8b;background:#eef6fb}
+.im-fmt input,.im-chk input{width:1.25rem;height:1.25rem;margin:.15rem 0 0;accent-color:#1f5f8b;flex:none}
+.im-fmt>span{display:flex;flex-direction:column}.im-fmt>span>span{font-size:.92rem;color:#435268}
+.im-chk{display:flex;gap:.6rem;align-items:flex-start;min-height:44px;padding:.4rem 0;cursor:pointer}
+.im-sel{display:flex;flex-direction:column;gap:.25rem;font-weight:700}
+.im-sel select{min-height:44px;border:1px solid #b9cbd8;border-radius:.75rem;padding:0 .75rem;font:inherit;font-weight:400;background:#fff;color:#17395c}
+.im-status{margin:.5rem 0 0;min-height:1.5em;color:#435268}
+.im-mega-l{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
+.im-banco{grid-template-columns:repeat(auto-fill,minmax(min(100%,7.5rem),1fr))!important}
+.im-banco .jg-tile-l{font-size:.9rem}
+.im-fuentes{margin-top:1.5rem;padding:1rem 1.25rem;background:#fff;border:1px solid #d5e4eb;border-radius:1rem}
+.im-fuentes p{margin:.5rem 0 0;color:#435268}
+.im-prev{background:#eef3f8;border-radius:1rem;padding:1rem;max-height:80vh;overflow:auto}
+.im-print{container-type:inline-size;display:flex;flex-direction:column;gap:1rem}
+/* Hoja A4 */
+.im-sheet{position:relative;width:100%;aspect-ratio:210/297;background:#fff;color:#17395c;box-shadow:0 1px 3px rgba(23,57,92,.18);padding:6.5cqw 6.5cqw 11cqw;display:flex;flex-direction:column;gap:3cqw;font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;overflow:hidden;box-sizing:border-box}
+.im-h h2{margin:0;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:5.2cqw;line-height:1.1;color:#17395c}
+.im-h p{margin:1cqw 0 0;font-size:2.3cqw;color:#435268}
+.im-body{flex:1;min-height:0;display:flex;flex-direction:column}
+.im-grid{display:grid;gap:2.4cqw}.im-grid.g2{grid-template-columns:repeat(2,1fr)}.im-grid.g3{grid-template-columns:repeat(3,1fr)}.im-grid.g4{grid-template-columns:repeat(4,1fr)}
+.im-c{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.2cqw;border:.35cqw solid #b9cbd8;border-radius:2cqw;padding:2cqw 1.6cqw;background:#fff}
+.im-c img{width:100%;aspect-ratio:1;object-fit:contain}
+.im-l{font-size:2.6cqw;font-weight:700;line-height:1.25;text-align:center}
+.im-n{position:absolute;top:1cqw;left:1cqw;min-width:4.2cqw;height:4.2cqw;border-radius:999px;background:#1f5f8b;color:#fff;font-weight:700;font-size:2.3cqw;display:flex;align-items:center;justify-content:center}
+.im-cut .im-c{border-style:dashed;border-radius:0}
+.im-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.8cqw}
+.im-list li{display:flex;align-items:center;gap:3cqw;border-bottom:.25cqw solid #dfe6ef;padding-bottom:1.6cqw}
+.im-list img{width:10cqw;height:10cqw;object-fit:contain}
+.im-list .im-l{text-align:left;font-size:3cqw}
+.im-box{width:5.5cqw;height:5.5cqw;border:.5cqw solid #17395c;border-radius:1cqw;flex:none}
+.im-ft{flex:1;display:flex;align-items:center;justify-content:center;gap:2.5cqw}
+.im-ftc{flex:1;display:flex;flex-direction:column;gap:1.5cqw}
+.im-ft.n2 .im-ftc{max-width:38cqw}.im-ft.n3 .im-ftc{max-width:26cqw}
+.im-ftl{margin:0;font-weight:700;font-size:3.4cqw;text-align:center;color:#5a49a8}
+.im-ft .im-l{font-size:3.2cqw}
+.im-arrow{font-size:6cqw;color:#5c7391}
+.im-hh{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.im-hh>div{display:flex;flex-direction:column;gap:2cqw}
+.im-hh-done{border:.5cqw dashed #b9cbd8;border-radius:2cqw;padding:2cqw}
+.im-hh .im-ftl{text-align:left}
+.is-tira .im-body{align-items:center}
+.im-tira{width:34cqw;display:flex;flex-direction:column;gap:1.4cqw}
+.im-c.im-row{flex-direction:row;padding:1.2cqw 2cqw 1.2cqw 6cqw}
+.im-c.im-row img{width:11cqw;flex:none}.im-c.im-row .im-l{text-align:left}
+.im-sob{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.6cqw}
+.im-sob li{display:flex;align-items:center;gap:2.6cqw;border-bottom:.2cqw solid #dfe6ef;padding-bottom:1.4cqw}
+.im-sn{font-weight:700;font-size:3cqw;min-width:4cqw}
+.im-sl{flex:1;font-size:3.1cqw;line-height:1.3}
+.im-sob img{width:6.5cqw;height:6.5cqw;object-fit:contain;opacity:.9}
+.im-pie{position:absolute;left:6.5cqw;right:6.5cqw;bottom:4cqw;display:flex;justify-content:space-between;align-items:flex-end;gap:3cqw;border-top:.25cqw solid #b9cbd8;padding-top:1.4cqw;font-size:1.55cqw;line-height:1.35;color:#435268}
+.im-pie span{max-width:68%}
+.im-marca{font-size:1.9cqw;letter-spacing:.08em;color:#17395c;white-space:nowrap}
+/* Ahorrar tinta */
+.im-sheet.is-tinta img{filter:grayscale(1) contrast(1.15)}
+.im-sheet.is-tinta .im-n{background:#fff;color:#17395c;border:.35cqw solid #17395c}
+.im-sheet.is-tinta .im-ftl{color:#17395c}
+.im-sheet.is-tinta .im-c{border-color:#555}
+html[data-ig-contrast="on"] .im-fmt{border-color:#17395c}
+@media(forced-colors:active){.im-fmt.is-on{border:4px double Highlight}}
+@media print{
+ @page{size:A4;margin:0}
+ html,body{background:#fff!important}
+ body>*:not(main),.im-hero,.jg-atrib,#im-app .jg-ui>:not(.im-split):not(.im-prev-wrap),.im-split>:not(.im-prev-wrap),.im-prev-wrap>.im-sub,.jg-live{display:none!important}
+ main,.jg-main,#im-app,.jg-ui,.im-split,.im-prev-wrap,.im-prev{display:block!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;box-shadow:none!important;max-width:none!important;max-height:none!important;overflow:visible!important;width:210mm!important}
+ .im-print{display:block;width:210mm;gap:0}
+ .im-sheet{width:210mm;height:296.5mm;aspect-ratio:auto;box-shadow:none;break-after:page;page-break-after:always}
+ .im-sheet:last-child{break-after:auto;page-break-after:auto}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* La hoja reparte su propio alto: las filas nunca pasan por debajo del pie. */
+.im-body{display:grid;grid-template-rows:minmax(0,1fr);min-height:0}
+.im-body>*{min-height:0}
+.im-fill{height:min(100%,calc(var(--r,1)*40cqw));grid-template-rows:repeat(var(--r,1),minmax(0,1fr));align-self:start}
+.im-fill .im-c,.im-tira .im-c{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;justify-items:center;align-items:center}
+.im-fill .im-c img{aspect-ratio:auto;width:100%;height:100%;min-height:0;object-fit:contain}
+.im-hh{height:100%;min-height:0}
+.im-hh>div:first-child{min-height:0}
+.im-hh>div:first-child>.im-fill{flex:1;height:auto;max-height:calc(var(--r,1)*30cqw)}
+.im-tira{height:min(100%,calc(var(--r,1)*15cqw));display:grid;grid-template-rows:repeat(var(--r,1),minmax(0,1fr));gap:1.2cqw;align-self:start}
+.im-c.im-row{grid-template-rows:none;grid-template-columns:auto minmax(0,1fr);gap:2cqw;justify-items:start;padding:.8cqw 2cqw .8cqw 6cqw}
+.im-c.im-row img{height:100%;width:auto;max-width:11cqw;aspect-ratio:1;min-height:0;object-fit:contain}
+.im-ft .im-c img{aspect-ratio:1;height:auto}
+@media print{.im-fill{height:min(100%,calc(var(--r,1)*84mm))}.im-tira{height:min(100%,calc(var(--r,1)*31mm))}}
