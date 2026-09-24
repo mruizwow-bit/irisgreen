@@ -97,14 +97,14 @@ export function createNight(canvas, renderer) {
   const shootGeo = new THREE.BufferGeometry(); shootGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
   const shootMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
   const shoot = new THREE.Line(shootGeo, shootMat); scene.add(shoot);
-  let shootT = -1, next = rnd(20, 40), sx = 0, sy = 0, sz = 0;
+  let shootT = -1, next = rnd(20, 40), sx = 0, sy = 0, sz = 0, wantX = null;
   let t = 0;
   function update(dt, k, reduced) {
     t += dt * k; U.uT.value = t;
-    if (!reduced) {
-      camera.position.x = Math.sin(t * 0.02) * 0.6; camera.lookAt(0, 4.5, -30);
-      next -= dt;
-      if (next <= 0 && shootT < 0) { shootT = 0; next = rnd(25, 60); sx = rnd(-60, 20); sy = rnd(60, 90); sz = -150; }
+    if (!reduced || wantX !== null || shootT >= 0) {
+      if (!reduced) { camera.position.x = Math.sin(t * 0.02) * 0.6; camera.lookAt(0, 4.5, -30); }
+      if (!reduced || wantX !== null) next -= dt;
+      if (next <= 0 && shootT < 0) { shootT = 0; next = rnd(25, 60); sx = wantX === null ? rnd(-60, 20) : (wantX - 0.5) * 160 - 20; wantX = null; sy = rnd(60, 90); sz = -150; }
       if (shootT >= 0) {
         shootT += dt; const a = shootT / 1.2, p = shootGeo.attributes.position;
         p.setXYZ(0, sx + a * 40, sy - a * 14, sz); p.setXYZ(1, sx + a * 40 - 10, sy - a * 14 + 3.5, sz); p.needsUpdate = true;
@@ -119,6 +119,7 @@ export function createNight(canvas, renderer) {
   }
   return {
     scene, camera, update, setWater,
+    poke(x) { if (shootT < 0) { next = 0; wantX = x; } },
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 75 : 55; camera.updateProjectionMatrix(); }
   };
 }

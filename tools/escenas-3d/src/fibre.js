@@ -16,6 +16,7 @@ export function createFibre(canvas, renderer) {
   camera.position.set(0, 3.2, 12); camera.lookAt(0, 3.4, 0);
 
   const uT = { value: 0 };
+  const uPoke = { value: new THREE.Vector3(0, 0, -100) };
   const uA = { value: new THREE.Vector3() }, uB = { value: new THREE.Vector3() }, uC = { value: new THREE.Vector3() };
 
   const N = 420, SEG = 26, TOP = 8.2;
@@ -52,13 +53,15 @@ export function createFibre(canvas, renderer) {
     vec3 pal(float x){ x = fract(x); return x < 0.333 ? mix(uA, uB, x * 3.0) : x < 0.666 ? mix(uB, uC, (x - 0.333) * 3.0) : mix(uC, uA, (x - 0.666) * 3.0); }`;
   const lineMat = new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { uT, uA, uB, uC },
-    vertexShader: `uniform float uT; attribute float aK; attribute float aH; attribute float aPh; varying float vK; varying float vH; varying float vPh;
+    uniforms: { uT, uA, uB, uC, uPoke },
+    vertexShader: `uniform float uT; uniform vec3 uPoke; attribute float aK; attribute float aH; attribute float aPh; varying float vK; varying float vH; varying float vPh; varying float vG;
       void main(){ vK = aK; vH = aH; vPh = aPh; vec3 p = position;
         p.x += sin(uT * 0.35 + aPh) * 0.12 * aK * aK; p.z += cos(uT * 0.3 + aPh) * 0.1 * aK * aK;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0); }`,
-    fragmentShader: `${colorFn} varying float vK; varying float vH; varying float vPh;
-      void main(){ vec3 c = pal(vH * 0.35 + uT * 0.02);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+        vec2 nd = gl_Position.xy / gl_Position.w; float age = uT - uPoke.z; float d = length((nd - uPoke.xy) * vec2(1.6, 1.0));
+        vG = exp(-pow(d - age * 0.35, 2.0) * 60.0) * exp(-age * 0.45); }`,
+    fragmentShader: `${colorFn} varying float vK; varying float vH; varying float vPh; varying float vG;
+      void main(){ vec3 c = pal(vH * 0.35 + uT * 0.02) * (1.0 + vG * 3.0);
         float pulse = 0.55 + 0.45 * smoothstep(0.7, 1.0, sin(vK * 9.0 - uT * 0.6 + vPh));
         gl_FragColor = vec4(c * (0.12 + 0.35 * vK) * pulse, 1.0); }`
   });
@@ -70,13 +73,16 @@ export function createFibre(canvas, renderer) {
   tg.setAttribute('aPh', new THREE.BufferAttribute(tipPh, 1));
   const tipMat = new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { uT, uA, uB, uC, uSize: { value: 16 } },
-    vertexShader: `uniform float uT; uniform float uSize; attribute float aH; attribute float aPh; varying float vH; varying float vPh;
+    uniforms: { uT, uA, uB, uC, uPoke, uSize: { value: 16 } },
+    vertexShader: `uniform float uT; uniform float uSize; uniform vec3 uPoke; attribute float aH; attribute float aPh; varying float vH; varying float vPh; varying float vG;
       void main(){ vH = aH; vPh = aPh; vec3 p = position; p.x += sin(uT * 0.35 + aPh) * 0.12; p.z += cos(uT * 0.3 + aPh) * 0.1;
-        vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_PointSize = uSize * (8.0 / -mv.z); gl_Position = projectionMatrix * mv; }`,
-    fragmentShader: `${colorFn} varying float vH; varying float vPh;
+        vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
+        vec2 nd = gl_Position.xy / gl_Position.w; float age = uT - uPoke.z; float d = length((nd - uPoke.xy) * vec2(1.6, 1.0));
+        vG = exp(-pow(d - age * 0.35, 2.0) * 60.0) * exp(-age * 0.45);
+        gl_PointSize = uSize * (8.0 / -mv.z) * (1.0 + vG * 0.8); }`,
+    fragmentShader: `${colorFn} varying float vH; varying float vPh; varying float vG;
       void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d);
-        float tw = 0.7 + 0.3 * sin(uT * 0.8 + vPh * 3.0);
+        float tw = (0.7 + 0.3 * sin(uT * 0.8 + vPh * 3.0)) * (1.0 + vG * 2.5);
         vec3 c = pal(vH * 0.35 + uT * 0.02) * a * tw + vec3(1.0) * pow(a, 6.0) * 0.6;
         gl_FragColor = vec4(c, 1.0); }`
   });
@@ -103,6 +109,7 @@ export function createFibre(canvas, renderer) {
   }
   return {
     scene, camera, update, setWater,
+    poke(x, y) { uPoke.value.set(x * 2 - 1, 1 - y * 2, t); },
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 62 : 40; camera.updateProjectionMatrix(); tipMat.uniforms.uSize.value = Math.max(10, Math.min(22, h / 30)); }
   };
 }

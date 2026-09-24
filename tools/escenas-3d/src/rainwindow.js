@@ -137,6 +137,12 @@ export function createRainWindow(canvas, renderer) {
   draw();
   return {
     scene, camera, update, setWater,
+    poke(x, y) {
+      const px = x * DW, py = y * DH, R2 = 42 * 42;
+      still = still.filter((o) => (o.x - px) * (o.x - px) + (o.y - py) * (o.y - py) > R2);
+      for (const s2 of sliders) if ((s2.x - px) * (s2.x - px) + (s2.y - py) * (s2.y - py) < R2 * 1.5) Object.assign(s2, newSlider(true));
+      draw();
+    },
     resize(w, h) {
       U.uAspect.value = w / Math.max(1, h);
       const nh = Math.round(DW / U.uAspect.value);

@@ -118,7 +118,7 @@ export function createJellies(canvas, renderer) {
     g.position.set(-8.5 + (i % 5) * 4.2 + rnd(-1, 1), (i % 2 ? 2.6 : -2.2) + rnd(-1.2, 1.2), rnd(-8, 1.5));
     g.rotation.z = rnd(-0.35, 0.35); g.rotation.x = rnd(0.2, 0.55);
     scene.add(g);
-    jellies.push({ g, pulse: bm.uniforms.uPulse, ph: rnd(0, TAU), per: rnd(3.2, 4.6), drift: new THREE.Vector3(rnd(-0.08, 0.08), 0, rnd(-0.03, 0.03)), s });
+    jellies.push({ push: new THREE.Vector3(), g, pulse: bm.uniforms.uPulse, ph: rnd(0, TAU), per: rnd(3.2, 4.6), drift: new THREE.Vector3(rnd(-0.08, 0.08), 0, rnd(-0.03, 0.03)), s });
   }
 
   /* Nieve marina */
@@ -140,6 +140,7 @@ export function createJellies(canvas, renderer) {
       const thrust = (cyc < 0.35 ? 0.55 : 0.08) - 0.1;
       j.g.position.addScaledVector(up, thrust * dt * k * 0.9 * j.s);
       j.g.position.addScaledVector(j.drift, dt * k);
+      j.g.position.addScaledVector(j.push, dt); j.push.multiplyScalar(Math.max(0, 1 - dt * 0.8));
       j.g.rotation.z += Math.sin(t * 0.1 + j.ph) * 0.0006 * k;
       if (j.g.position.y > 7) j.g.position.y = -7; if (j.g.position.y < -7.5) j.g.position.y = 7;
       if (j.g.position.x > 11) j.g.position.x = -11; if (j.g.position.x < -11) j.g.position.x = 11;
@@ -157,6 +158,14 @@ export function createJellies(canvas, renderer) {
   for (let i = 0; i < 60; i++) update(1 / 30, 1, true);
   return {
     scene, camera, update, setWater,
+    poke(x, y) {
+      const P = new THREE.Vector3();
+      for (const j of jellies) {
+        P.copy(j.g.position).project(camera);
+        const dx = (P.x + 1) / 2 - x, dy = (1 - P.y) / 2 - y, d = Math.hypot(dx * camera.aspect, dy);
+        if (d < 0.28) { const f = (0.28 - d) * 9; j.push.x += Math.sign(dx || 0.01) * f; j.push.y += -Math.sign(dy || 0.01) * f * 0.6; }
+      }
+    },
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 60 : 42; camera.updateProjectionMatrix(); }
   };
 }

@@ -69,7 +69,8 @@ function start(kind, canvas, opts) {
     renderer.dispose();
     if (renderer.forceContextLoss) renderer.forceContextLoss();
   }
-  return { stop };
+  function poke(x, y) { if (alive && world.poke) world.poke(x, y); }
+  return { stop, poke, canPoke: !!world.poke };
 }
 
 window.IGScenes3D = { supported, start };

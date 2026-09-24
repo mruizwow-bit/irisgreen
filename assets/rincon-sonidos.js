@@ -90,14 +90,21 @@
   }
 
   /* ---------- Naturaleza ---------- */
+  /* Lluvia en capas (técnica de síntesis por capas): hervor agudo, hervor medio, ancho estéreo y gotas.
+     Cada gota es un tono muy corto (10–20 ms) que sube de tono, como las burbujas que forma al caer. */
   function rain(v, level, window_) {
-    var bed = v.gain(0.55 * level, v.dry);
-    var hp = v.filter('highpass', 350, 0.5), lp = v.filter('lowpass', window_ ? 5200 : 7500, 0.4, bed); hp.connect(lp);
-    v.noise('pink', hp);
-    v.walk(bed.gain, 0.42 * level, 0.62 * level, 1.5, 4);
-    var rum = v.gain(0.3 * level, v.dry); v.noise('brown', v.filter('lowpass', 220, 0.5, rum));
-    schedule(v, function () { return R(0.006, 0.03); }, function (t) {        // gotas sueltas
-      burst(v, t, R(0.006, 0.02), 'bandpass', R(1800, 6500), R(0.8, 2.5), R(0.02, 0.09) * level, R(-0.9, 0.9));
+    var hi = v.gain(0.12 * level, v.dry), hbp = v.filter('bandpass', 6500, 0.8, hi); v.noise('white', hbp);
+    v.walk(hbp.frequency, 5200, 8000, 0.3, 1.2); v.walk(hi.gain, 0.07 * level, 0.15 * level, 0.2, 0.9);
+    var mid = v.gain(0.32 * level, v.dry), mbp = v.filter('bandpass', 1800, 0.7, mid); v.noise('pink', mbp);
+    v.walk(mbp.frequency, 1200, 2600, 0.4, 1.6); v.walk(mid.gain, 0.22 * level, 0.4 * level, 0.3, 1.4);
+    [-0.8, 0.8].forEach(function (p) { var g = v.gain(0.18 * level, v.pan(p, v.dry)); v.noise('pink', v.filter('lowpass', window_ ? 3800 : 5500, 0.5, g)); });
+    var rum = v.gain(0.22 * level, v.dry); v.noise('brown', v.filter('lowpass', 200, 0.5, rum));
+    schedule(v, function () { return R(0.004, 0.025); }, function (t) {
+      var f = R(1400, 4600), dur = R(0.01, 0.02), o = ctx.createOscillator();
+      o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * R(1.3, 1.8), t + dur);
+      var e = ctx.createGain(), a = Math.pow(Math.random(), 2.5) * 0.06 * level + 0.003;
+      e.gain.setValueAtTime(0.0001, t); e.gain.exponentialRampToValueAtTime(a, t + 0.002); e.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      var pp = v.pan(R(-0.9, 0.9)); o.connect(e); e.connect(pp); pp.connect(v.dry); o.start(t); o.stop(t + dur + 0.02);
     });
     if (window_) schedule(v, function () { return R(0.15, 0.6); }, function (t) {  // gotas en el cristal
       tone(v, t, R(1600, 3400), R(0.03, 0.07), R(0.015, 0.05) * level, 'sine', R(-0.6, 0.6));
@@ -282,8 +289,8 @@
     { id: 'pajaros', fam: 'nat', es: 'Pájaros en el bosque', en: 'Birds in the forest', des: 'Cantos lejanos y brisa', den: 'Distant birdsong and a breeze' },
     { id: 'grillos', fam: 'nat', es: 'Grillos de noche', en: 'Crickets at night', des: 'Noche tranquila de verano', den: 'A calm summer night' },
     { id: 'fuego', fam: 'nat', es: 'Chimenea', en: 'Fireplace', des: 'Fuego bajo que crepita', den: 'A low, crackling fire' },
-    { id: 'ruido-rosa', fam: 'ruido', es: 'Ruido rosa', en: 'Pink noise', des: 'Sonido parejo, parecido a la lluvia fina', den: 'An even sound, like light rain' },
-    { id: 'ruido-marron', fam: 'ruido', es: 'Ruido marrón', en: 'Brown noise', des: 'Sonido grave y envolvente', den: 'A deep, enveloping sound' },
+    { id: 'ruido-rosa', fam: 'ruido', es: 'Ruido rosa', en: 'Pink noise', des: 'Sonido parejo. A algunas personas les ayuda a concentrarse; a otras, no', den: 'An even sound. It helps some people focus, but not everyone' },
+    { id: 'ruido-marron', fam: 'ruido', es: 'Ruido marrón', en: 'Brown noise', des: 'Grave y envolvente. A unas personas les ayuda a concentrarse; a otras, no', den: 'Deep and enveloping. It helps some people focus, but not everyone' },
     { id: 'piano', fam: 'mus', es: 'Piano suave', en: 'Soft piano', des: 'Notas lentas que nunca se repiten igual', den: 'Slow notes that never repeat the same way' },
     { id: 'cuencos', fam: 'mus', es: 'Cuencos', en: 'Singing bowls', des: 'Un cuenco que suena de vez en cuando', den: 'A bowl that rings now and then' }
   ];

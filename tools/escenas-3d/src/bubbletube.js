@@ -109,6 +109,7 @@ export function createBubbleTube(canvas, renderer) {
   for (let i = 0; i < 30; i++) update(1 / 30, 1);
   return {
     scene, camera, update, setWater: setColor,
+    poke() { for (let i = 0; i < 45; i++) { const b = bubbles[(Math.random() * NB) | 0]; spawn(b); b.y = Y0 + rnd(0, 0.4); } },
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 60 : 38; camera.updateProjectionMatrix(); }
   };
 }

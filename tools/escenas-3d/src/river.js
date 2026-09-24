@@ -248,6 +248,11 @@ export function createRiver(canvas, renderer) {
   update(0.016, 1, true);
   return {
     scene, camera, update, setWater,
+    poke(x, y) {
+      const ray = new THREE.Raycaster(); ray.setFromCamera(new THREE.Vector2(x * 2 - 1, 1 - y * 2), camera);
+      const hit = new THREE.Vector3(); if (!ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0.1), hit)) return;
+      for (let n = 0; n < 4; n++) { const i = (Math.random() * NL) | 0; L[i] = { x: hit.x + rnd(-0.4, 0.4), y: rnd(2.2, 3.2), z: hit.z + rnd(-0.4, 0.4), rx: rnd(0, TAU), ry: rnd(0, TAU), vx: rnd(-0.1, 0.1), onWater: false, ph: rnd(0, TAU) }; }
+    },
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 70 : 50; camera.updateProjectionMatrix(); }
   };
 }

@@ -293,6 +293,7 @@ export function createAquarium(canvas, renderer) {
     if (!reduced) { camSway += dt * 0.08; camera.position.x = Math.sin(camSway) * 0.6; camera.position.y = 4.3 + Math.sin(camSway * 0.7) * 0.15; camera.lookAt(lookAt); }
   }
 
+  function poke() { for (let i = 0; i < 60; i++) { const b = bubbles[(Math.random() * NB) | 0]; b.y = rnd(0.2, 0.9); b.w = rnd(0, TAU); } }
   function setWater(name) {
     const w = WATERS[name] || WATERS.blue; if (w === water) return; water = w;
     scene.fog.color.set(w.fog); bgMat.uniforms.uTop.value.set(w.top); bgMat.uniforms.uDeep.value.set(w.deep);
@@ -304,7 +305,7 @@ export function createAquarium(canvas, renderer) {
   for (let i = 0; i < 90; i++) update(1 / 30, 1, true);
 
   return {
-    scene, camera, update, setWater,
+    scene, camera, update, setWater, poke,
     resize(w, h) { camera.aspect = w / Math.max(1, h); camera.fov = camera.aspect < 1.2 ? 55 : 40; camera.updateProjectionMatrix(); }
   };
 }

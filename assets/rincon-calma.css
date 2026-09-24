@@ -106,3 +106,20 @@
 .qscenes .qthumb-rain{background-image:url(/img/rincon-tranquilo/escenas/lluvia-ventana.webp)}
 .qscenes .qthumb-river{background-image:url(/img/rincon-tranquilo/escenas/rio-bosque.webp)}
 .qscenes .qthumb-night{background-image:url(/img/rincon-tranquilo/escenas/cielo-nocturno.webp)}
+
+/* Luz de la escena y apagado suave */
+#watchStage canvas{filter:brightness(var(--ig-bright,1));transition:opacity 60s linear}
+#watchStage.is-warm canvas{filter:brightness(var(--ig-bright,1)) sepia(.45) saturate(1.15)}
+#watchStage.is-fading canvas{opacity:0}
+#sceneTouch[hidden],#sceneTouchHint[hidden]{display:none}
+#watchStage canvas{touch-action:manipulation;cursor:pointer}
+/* Pausa con ritmo lento: la forma 2D también tarda 6 s */
+#breathBox.ig-r66 .orb,#breathBox.ig-r66 .orb .core,#breathBox.ig-r66 .ring{transition-duration:6s!important}
+#pvibRow{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+#pvibRow[hidden]{display:none}
+#pvibRow input{width:20px;height:20px;accent-color:#1f5f8b;flex:none}
+/* Reflujo con texto grande */
+.qselect{max-width:100%;width:auto}
+.qmixrow label{flex:1 1 60%;min-width:0}
+.qmixrow input[type=range]{flex:1 1 30%;min-width:0}
+.qmixrow strong,.qmixrow small,#listen .qgen strong{overflow-wrap:break-word}

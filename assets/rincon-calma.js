@@ -17,6 +17,9 @@
     night: 'Cielo nocturno: estrellas y una aurora que ondula despacio sobre un lago rodeado de pinos.',
     no3d: 'Para ver esta escena, el navegador necesita gráficos 3D (WebGL) y ahora mismo no los tiene activos. Suele arreglarse activando la «aceleración por hardware» en la configuración del navegador. El acuario y el tubo de burbujas sí se ven sin ella.',
     nofull: 'Este navegador no permite la pantalla completa aquí.',
+    touch: { aquarium: 'Soltar burbujas', bubbles: 'Más burbujas y otro color', jellies: 'Apartar las medusas', fibre: 'Mandar una onda de luz', rain: 'Limpiar el cristal', night: 'Ver una estrella fugaz', river: 'Que caigan hojas' },
+    offAt: function (h) { return 'Se apagará sola a las ' + h + '.'; },
+    offNone: '',
     unavailable: 'no disponible'
   } : {
     stopped: 'The shape has stopped. You can stay here.',
@@ -32,6 +35,9 @@
     night: 'Night sky: stars and an aurora that ripples slowly over a lake ringed with pine trees.',
     no3d: 'To show this scene, the browser needs 3D graphics (WebGL), which are not active right now. Turning on “hardware acceleration” in the browser settings usually fixes it. The aquarium and the bubble tube work without it.',
     nofull: 'This browser does not allow full screen here.',
+    touch: { aquarium: 'Release bubbles', bubbles: 'More bubbles and another colour', jellies: 'Move the jellyfish aside', fibre: 'Send a wave of light', rain: 'Wipe the glass', night: 'See a shooting star', river: 'Let some leaves fall' },
+    offAt: function (h) { return 'It will turn off by itself at ' + h + '.'; },
+    offNone: '',
     unavailable: 'unavailable'
   };
   var $ = function (s) { return document.querySelector(s); };
@@ -167,7 +173,7 @@
   var SCENE_SOUND = { aquarium: 'escena-acuario', bubbles: 'escena-burbujas', jellies: 'escena-medusas', fibre: 'escena-fibra', sea: 'escena-mar', rain: 'escena-lluvia', river: 'escena-rio', night: 'escena-noche' };
   var ambience = (function () {
     var box = $('#sceneSound'), vol = $('#sceneVol'), h = null, playing = null;
-    function level() { return vol ? (vol.value / 100) * 0.9 : 0.4; }
+    function level() { return vol ? (vol.value / 100) * 0.6 : 0.3; }
     function stop() { if (h) { h.stop(1.5); h = null; } playing = null; owners.scene = null; }
     function sync() {
       var want = SND && box && box.checked && activeKind ? activeKind : null;
@@ -181,8 +187,12 @@
     if (box && !SND) { box.disabled = true; }
     if (box) box.addEventListener('change', function () { if (vol) vol.disabled = !box.checked; sync(); });
     if (vol) vol.addEventListener('input', function () { if (h) h.setLevel(level()); });
-    return { sync: sync, stop: stop };
+    function fade(sec) { if (h) { h.stop(sec); h = null; } playing = null; owners.scene = null; }
+    return { sync: sync, stop: stop, fade: fade };
   })();
+
+  /* Todo lo que suena en Escuchar puede bajar despacio (apagado automático) */
+  var listenFaders = [];
 
   /* Escuchar: sonidos y música creados aquí */
   (function () {
@@ -193,7 +203,7 @@
     var FAM = ES ? { nat: 'Naturaleza', ruido: 'Ruido suave', mus: 'Música' } : { nat: 'Nature', ruido: 'Soft noise', mus: 'Music' };
     var title = $('#audioTitle'), cred = $('#audioCredit');
     var CREDIT = ES ? 'Creado en Iris Green · no es una grabación' : 'Made by Iris Green · not a recording';
-    function level() { return vol ? (vol.value / 100) * 0.9 : 0.45; }
+    function level() { return vol ? (vol.value / 100) * 0.6 : 0.3; }
     function stop() {
       if (cur) { cur.stop(1.5); cur = null; }
       curId = null; owners.gen = null;
@@ -221,6 +231,7 @@
     var stopA = $('#stopAudio');
     if (stopA) stopA.addEventListener('click', function () { if (curId) { stop(); if (title) title.textContent = ES ? 'Elige un sonido' : 'Choose a sound'; } });
     window.addEventListener('pagehide', function () { stop(); });
+    listenFaders.push(function (sec) { if (cur) { cur.stop(sec); cur = null; } curId = null; owners.gen = null; btns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (title) title.textContent = ES ? 'Elige un sonido' : 'Choose a sound'; });
   })();
 
   /* Mezclar: también con los sonidos creados */
@@ -242,15 +253,16 @@
       var r = { box: box, range: range, h: null };
       rows.push(r);
       box.addEventListener('change', function () {
-        if (box.checked) { silence('mixgen'); range.disabled = false; r.h = SND.start(c.id, range.value / 100 * 0.9, 4); owners.mixgen = offAll; }
+        if (box.checked) { silence('mixgen'); range.disabled = false; r.h = SND.start(c.id, range.value / 100 * 0.6, 4); owners.mixgen = offAll; }
         else { range.disabled = true; if (r.h) { r.h.stop(1.5); r.h = null; } if (!rows.some(function (x) { return x.h; })) owners.mixgen = null; }
       });
-      range.addEventListener('input', function () { if (r.h) r.h.setLevel(range.value / 100 * 0.9); });
+      range.addEventListener('input', function () { if (r.h) r.h.setLevel(range.value / 100 * 0.6); });
     });
     ml.insertBefore(frag, ml.firstChild);
     function offAll() { rows.forEach(function (r) { if (r.h) { r.h.stop(1.5); r.h = null; } r.box.checked = false; r.range.disabled = true; }); owners.mixgen = null; }
     var ms = $('#mixStop'); if (ms) ms.addEventListener('click', offAll);
     window.addEventListener('pagehide', offAll);
+    listenFaders.push(function (sec) { rows.forEach(function (r) { if (r.h) { r.h.stop(sec); r.h = null; } r.box.checked = false; r.range.disabled = true; }); owners.mixgen = null; });
   })();
 
   /* --- Mantener la pantalla encendida mientras miras una escena o haces la pausa --- */
@@ -267,7 +279,7 @@
     document.addEventListener('visibilitychange', update);
     return { update: update, release: release };
   })();
-  function sceneEnded() { activeKind = null; ambience.sync(); keepAwake.update(); }
+  function sceneEnded() { activeKind = null; ambience.sync(); keepAwake.update(); touch.hide(); sceneTimer.clear(); }
 
   /* --- Ver a pantalla completa: la escena o el vídeo ocupan toda la pantalla. Esc para salir. --- */
   var fullB = $('#sceneFull');
@@ -297,6 +309,74 @@
     new MutationObserver(check).observe(st, { childList: true });
   })();
 
+  /* --- Tocar la escena: cada una responde de una forma tranquila. Botón equivalente para teclado. --- */
+  var touch = (function () {
+    var btn = $('#sceneTouch'), hint = $('#sceneTouchHint'), kindNow = null, canvasNow = null;
+    var COLS = ['blue', 'green', 'violet'];
+    function poke(x, y) {
+      if (!scene3d || !scene3d.canPoke) return;
+      scene3d.poke(x, y);
+      if (kindNow === 'bubbles') {                      // el tubo cambia de color, como en una sala sensorial
+        var cur = opt('scolor', 'blue'), next = COLS[(COLS.indexOf(cur) + 1) % COLS.length];
+        var r = document.querySelector('input[name="scolor"][value="' + next + '"]'); if (r) r.checked = true;
+      }
+    }
+    function onDown(e) { var r = canvasNow.getBoundingClientRect(); poke((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height); }
+    function hide() { kindNow = null; if (btn) btn.hidden = true; if (hint) hint.hidden = true; if (canvasNow) { canvasNow.removeEventListener('pointerdown', onDown); canvasNow = null; } }
+    function setup(kind, canvas) {
+      hide();
+      if (!scene3d || !scene3d.canPoke || !T.touch[kind]) return;
+      kindNow = kind; canvasNow = canvas; canvas.addEventListener('pointerdown', onDown);
+      if (btn) { btn.textContent = T.touch[kind]; btn.hidden = false; }
+      if (hint) hint.hidden = false;
+    }
+    if (btn) btn.addEventListener('click', function () { poke(0.35 + Math.random() * 0.3, 0.35 + Math.random() * 0.3); });
+    return { setup: setup, hide: hide };
+  })();
+
+  /* --- Luz de la escena: brillo y luz cálida (no cambia la escena, solo cómo se ve) --- */
+  (function () {
+    var st = $('#watchStage'), br = $('#sceneBright'), warm = $('#sceneWarm');
+    if (!st) return;
+    if (br) br.addEventListener('input', function () { st.style.setProperty('--ig-bright', (br.value / 100).toFixed(2)); });
+    if (warm) warm.addEventListener('change', function () { st.classList.toggle('is-warm', warm.checked); });
+  })();
+
+  /* --- Apagar sola: la escena y su sonido bajan durante un minuto y se paran --- */
+  var sceneTimer = (function () {
+    var sel = $('#sceneOff'), id = null, id2 = null;
+    function clear() { clearTimeout(id); clearTimeout(id2); id = id2 = null; var st = $('#watchStage'); if (st) st.classList.remove('is-fading'); }
+    function arm() {
+      clear();
+      var min = sel ? parseFloat(sel.value) : 0; if (!min || !activeKind) return;
+      id = setTimeout(function () {
+        var st = $('#watchStage'); if (st) st.classList.add('is-fading');
+        ambience.fade(60);
+        id2 = setTimeout(function () { var b = $('#stopVideo'); if (b) b.click(); if (st) st.classList.remove('is-fading'); }, 60000);
+      }, min * 60000);
+    }
+    if (sel) sel.addEventListener('change', arm);
+    return { arm: arm, clear: clear };
+  })();
+
+  /* --- Escuchar: apagar solo. Cuenta desde que lo eliges; al final todo baja durante un minuto. --- */
+  (function () {
+    var sel = $('#listenOff'), id = null, info = null;
+    if (!sel) return;
+    info = document.createElement('p'); info.className = 'qhint'; info.setAttribute('aria-live', 'polite'); sel.parentNode.appendChild(info);
+    sel.addEventListener('change', function () {
+      clearTimeout(id); info.textContent = '';
+      var min = parseFloat(sel.value); if (!min) return;
+      var end = new Date(Date.now() + min * 60000);
+      info.textContent = T.offAt(end.getHours() + ':' + ('0' + end.getMinutes()).slice(-2));
+      id = setTimeout(function () {
+        listenFaders.forEach(function (f) { f(60); });
+        media.forEach(function (m) { if (!m.paused) { var el = m; ramp(el, 0, 60000, function () { el.pause(); if (el.dataset.mix) mixOff(el); }); } });
+        sel.value = '0'; info.textContent = '';
+      }, min * 60000);
+    });
+  })();
+
   /* --- Mirar: escenas propias (acuario y tubo de burbujas) --- */
   var stage = $('#watchStage'), credit = $('#watchCredit');
   var PAL = {
@@ -313,7 +393,7 @@
   function need3d() {
     if (window.IGScenes3D) return Promise.resolve(window.IGScenes3D);
     if (!load3d) load3d = new Promise(function (ok, ko) {
-      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r19-20260924'; s.async = true;
+      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r20-20260924'; s.async = true;
       s.onload = function () { window.IGScenes3D ? ok(window.IGScenes3D) : ko(); };
       s.onerror = function () { load3d = null; ko(); };
       document.head.appendChild(s);
@@ -341,6 +421,7 @@
         color: function () { return opt('scolor', 'blue'); },
         reduced: reduced
       });
+      touch.setup(kind, cv3); sceneTimer.arm();
     }).catch(function () {
       if (startScene.token !== token) return;
       start2d(kind, button);
@@ -353,7 +434,7 @@
       if (credit) credit.textContent = '';
       return;
     }
-    activeKind = kind; ambience.sync(); keepAwake.update();
+    activeKind = kind; ambience.sync(); keepAwake.update(); touch.hide(); sceneTimer.arm();
     if (kind !== 'aquarium') kind = 'bubbles';
     stopScene();
     document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
@@ -476,6 +557,28 @@
       if (inh !== pState.inhale) { pState.inhale = inh; pState.t0 = performance.now(); }
     }).observe(pbox, { attributes: true, attributeFilter: ['class'] });
   }
+  /* Ritmo de la pausa: 4 s + 6 s (por defecto) o 6 s + 6 s, más lento */
+  window.IGRitmo = [4000, 6000];
+  document.querySelectorAll('input[name="pritmo"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      var slow = r.value === '66' && r.checked;
+      window.IGRitmo = slow ? [6000, 6000] : [4000, 6000];
+      if (pbox) pbox.classList.toggle('ig-r66', slow);
+    });
+  });
+  /* Vibración suave en cada cambio, solo si el móvil lo permite y la persona lo activa */
+  (function () {
+    var row = $('#pvibRow'), box = $('#pvib');
+    if (!row || !box || !navigator.vibrate) return;
+    row.hidden = false;
+    var was = null;
+    if (pbox && window.MutationObserver) new MutationObserver(function () {
+      var inh = pbox.classList.contains('breathing');
+      if (!box.checked || !pbox.classList.contains('ig-guiding') || inh === was) { was = inh; return; }
+      was = inh;
+      try { navigator.vibrate(inh ? 60 : [30, 90, 30]); } catch (e) {}
+    }).observe(pbox, { attributes: true, attributeFilter: ['class'] });
+  })();
   function pausePhase() {
     var steps = $('#breathSteps');
     if (steps && !steps.hidden) {
@@ -483,7 +586,7 @@
       return { guiding: true, inhale: idx === 0, progress: 1 };
     }
     var guiding = !!pbox && pbox.classList.contains('ig-guiding');
-    var dur = pState.inhale ? 4000 : 6000;
+    var RR = window.IGRitmo || [4000, 6000], dur = pState.inhale ? RR[0] : RR[1];
     return { guiding: guiding, inhale: pState.inhale, progress: (performance.now() - pState.t0) / dur };
   }
   function startPause3d() {
@@ -521,7 +624,7 @@
   var startB = $('#startBreath'), stopB = $('#stopBreath');
   if (startB) startB.addEventListener('click', function () {
     clearTimeout(endTimer);
-    var sel = $('#pdur'); var min = sel ? parseInt(sel.value, 10) : 0;
+    var sel = $('#pdur'); var min = sel ? parseFloat(sel.value) : 0;
     if (min > 0) endTimer = setTimeout(function () {
       if (stopB) stopB.click();
       label.textContent = T.stopped;
