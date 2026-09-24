@@ -45,7 +45,7 @@ jobs:
       - name: Exercise the deployed Rincón
         shell: bash
         run: |
-          cat > /tmp/rincon-live-qa.mjs <<'NODE'
+          cat > rincon-live-qa.mjs <<'NODE'
           import { chromium } from 'playwright';
           import fs from 'node:fs';
 
@@ -160,7 +160,7 @@ jobs:
           fs.writeFileSync('rincon-live-qa.json', JSON.stringify({base, results}, null, 2));
           console.log(JSON.stringify({base, results}, null, 2));
           NODE
-          node /tmp/rincon-live-qa.mjs
+          node rincon-live-qa.mjs
       - name: Upload live screenshots and QA result
         if: always()
         uses: actions/upload-artifact@v4
