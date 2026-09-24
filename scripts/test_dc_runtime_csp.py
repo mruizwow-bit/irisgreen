@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prueba en Chromium las 24 interfaces DC tras la migración sin unsafe-eval."""
+"""Prueba en Chromium las interfaces DC públicas tras la migración sin unsafe-eval."""
 from __future__ import annotations
 import functools,re,threading
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
@@ -33,7 +33,10 @@ def main():
         if 'reports' in path.parts:continue
         text=path.read_text(encoding='utf-8',errors='ignore')
         if SAFE_RUNTIME in text:pages.append((path,public_route(path)))
-    if len(pages)!=24:raise AssertionError(f'Inventario DC seguro cambiado: {len(pages)} != 24')
+    retired_b1={'/es/recursos/juegos/b1/','/es/recursos/juegos/b1/mecanicas.html'}
+    leaked=sorted(route for _,route in pages if route in retired_b1)
+    if leaked:raise AssertionError('Las rutas B1 retiradas han vuelto al runtime DC: '+', '.join(leaked))
+    if len(pages)!=22:raise AssertionError(f'Inventario DC seguro cambiado: {len(pages)} != 22')
     csp=global_csp()
     if "'unsafe-eval'" in csp:raise AssertionError('La prueba DC no se ejecutará con unsafe-eval presente')
     httpd,base=server(csp);failures=[];checked=[]
