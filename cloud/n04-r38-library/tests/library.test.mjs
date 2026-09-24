@@ -185,12 +185,14 @@ test('QA fails closed on AI flag and backend errors without exposing diagnostics
   const res = await failing(request(), context); assert.equal(res.status, 503); assert.deepEqual(await res.json(), { error: 'library_unavailable' });
 });
 test('runtime has no writes, payload logging, chat/provider dependencies or private data storage', async () => {
-  const runtimeFiles = ['src/library.mjs', 'src/qa-handler.mjs', 'netlify/functions/n04-library-qa.mjs'];
+  const runtimeFiles = ['src/library.mjs', 'src/qa-handler.mjs', 'netlify/functions/n04-library-qa.mjs',
+    'src/team-transport-handler.mjs', 'src/cloud-connection.mjs', 'netlify/functions/n04-team-transport.mjs'];
   const code = (await Promise.all(runtimeFiles.map(f => readFile(new URL('../' + f, import.meta.url), 'utf8')))).join('\n');
   assert.doesNotMatch(code, /console\.|store\.(set|setJSON|delete)\s*\(|localStorage|\/api\/chat|context\.ip|context\.geo|openai|anthropic|embedding/i);
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
   assert.deepEqual(Object.keys(pkg.dependencies), ['@netlify/blobs']);
-  const functions = await readdir(new URL('../netlify/functions/', import.meta.url)); assert.deepEqual(functions, ['n04-library-qa.mjs']);
+  const functions = await readdir(new URL('../netlify/functions/', import.meta.url));
+  assert.deepEqual(functions.sort(), ['n04-library-qa.mjs', 'n04-team-transport.mjs']);
 });
 test('performance targets on frozen corpus: cold < 2s, p95 warm search < 50ms, heap delta <128MiB', async () => {
   const times = [];

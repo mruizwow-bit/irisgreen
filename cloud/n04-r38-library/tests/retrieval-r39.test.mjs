@@ -200,7 +200,8 @@ test('adapter dependency graph adds no provider, logging, persistence or HTTP ac
   assert.doesNotMatch(code, /console\.|node:fs|writeFile|appendFile|localStorage|store\.(set|setJSON|delete)\s*\(|context\.ip|context\.geo|fetch\(|\/api\/chat|openai|anthropic|embedding/i);
   const externals = [...code.matchAll(/from ['"]([^.'"][^'"]*)['"]/g)].map(m => m[1]);
   assert.deepEqual(externals, ['@netlify/blobs']);
-  assert.deepEqual(await readdir(new URL('../netlify/functions/', import.meta.url)), ['n04-library-qa.mjs']);
+  // R04 adds one disabled relay; the adapter itself acquires no HTTP dependency.
+  assert.deepEqual((await readdir(new URL('../netlify/functions/', import.meta.url))).sort(), ['n04-library-qa.mjs', 'n04-team-transport.mjs']);
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
   assert.deepEqual(pkg.dependencies, { '@netlify/blobs': '11.1.0' });
 });
