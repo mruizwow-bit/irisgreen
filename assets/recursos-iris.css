@@ -1,0 +1,8 @@
+/* Recursos: tarjetas integradas en la cabecera, lectura y tipografía canónicas de Iris Green. */
+.ri-main{width:min(calc(100% - 2rem),70rem);max-width:70rem;margin:0 auto;padding:clamp(2rem,5vw,4rem) 0 5rem}
+.ri-intro{max-width:52rem;margin-bottom:2rem}.ri-intro h1{margin:0 0 .5rem}.ri-intro p{font-size:1.125rem;line-height:1.6;margin:0;color:var(--tinta)}
+.ri-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem}
+.ri-card{height:100%;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem;border:1px solid var(--linea);border-radius:1rem;background:rgba(255,255,255,.9);color:var(--tinta);text-decoration:none}
+.ri-card:hover{border-color:var(--azul);background:#fff;color:var(--tinta)}.ri-card:focus-visible{outline:3px solid var(--lila);outline-offset:3px}
+.ri-card h2{margin:0;font-size:1.4rem}.ri-card p{margin:0;line-height:1.55}.ri-card span{margin-top:auto;align-self:flex-end;font-size:1.4rem;color:var(--azul)}
+@media(max-width:38rem){.ri-main{padding-top:2rem}.ri-grid{grid-template-columns:1fr}}
