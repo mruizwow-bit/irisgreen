@@ -17,7 +17,7 @@
  :is(.ri-card,.jg-card,.jg-btn,.jg-mini-btn,.rv-btn,.rv-chip,.igl .btn,.sabik-button,.sabik-icon-button):focus-visible{outline:3px solid #5a49a8!important;outline-offset:3px!important}
  :is(.jg-btn,.rv-btn,.sabik-button):disabled{cursor:not-allowed;opacity:.65}
  .brand,.ig-uh-brand{gap:0!important}
- .crumb,.crumb a,.helps h2{color:#435268!important}
+ .crumb,.crumb a,.helps h2,.jg-small{color:#435268!important}
 }
 html[data-ig-controls="big"] :is(.jg-btn,.jg-mini-btn,.rv-btn,.sabik-button,.sabik-icon-button){min-height:56px}
 html[data-ig-contrast="on"] :is(.ri-card,.jg-card,.rv-card,.sabik-widget){background:#fff!important;color:#17395c!important;border-color:#17395c!important}
