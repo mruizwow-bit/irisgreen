@@ -201,8 +201,8 @@ def main() -> None:
     leaked_b1 = sorted(page_rels & retired_b1)
     if leaked_b1:
         raise AssertionError("Las rutas B1 retiradas han vuelto al runtime DC: " + ", ".join(leaked_b1))
-    if len(pages) != 11:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 11 públicas tras retirar los 13 juegos DC, encontré {len(pages)}")
+    if len(pages) != 9:
+        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 9 públicas tras retirar los 13 juegos DC y las 2 portadas del Taller, encontré {len(pages)}")
 
     rows = [transform_page(path) for path in pages]
 
