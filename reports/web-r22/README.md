@@ -9,6 +9,7 @@ Orden de María: revisar toda la web, tamaños y accesibilidad; facilitar acceso
 - Intereses: espacio estable para las escenas, título fuera de la imagen, sin expansión de anchura tras cargar datos. Planetas/Exoplanetas presentan imagen local y cargan el motor 3D al pulsar Abrir vista interactiva. El cielo se dibuja antes de preparar las tablas secundarias, con nombre accesible desde su creación.
 - Rutinas ES/EN y tabla de cifras: regiones desplazables accesibles con teclado. Tarjeta Iris: corrección del mínimo de columna y ancho de la vista previa. Imprimir cromos: desplazamiento dentro de la vista previa, conservando las medidas del papel.
 - Contraste de etiquetas/botones en Autismo y Trámites. Botones de ordenar del Sistema Solar con tamaño de 44 × 44 px como mínimo.
+- Corregido el enlace al Taller en la navegación de páginas inglesas: lleva a `/en/workshop/`.
 - Versiones por contenido de los recursos modificados para evitar servir copias antiguas.
 
 ## Evidencia

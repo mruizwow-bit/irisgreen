@@ -9,6 +9,8 @@ def apply(root):
  versions={name:hashlib.sha256((root/'assets'/name).read_bytes()).hexdigest()[:12] for name in ['ig-cielo.css','ig-cielo.js','ig-cielo-vivo.js','ig-sistema-solar.js','ig-exoplanetas.js','rincon-calma.js','rincon-calma.css','tarjeta-iris.css']}
  for path in sorted(root.rglob('*.html')):
   text=path.read_text()
+  if path.relative_to(root).parts[0]=='en':
+   text=text.replace('href="/es/taller/"','href="/en/workshop/"')
   for name,version in versions.items():
    text=re.sub(r'(/assets/'+re.escape(name)+r')(?:\?[^\"\s>]*)?',lambda m:m[1]+'?v='+version,text)
   path.write_text(text)
