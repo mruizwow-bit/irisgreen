@@ -188,8 +188,19 @@ def main() -> None:
         text = path.read_text(encoding="utf-8", errors="ignore")
         if any(runtime in text for runtime in OLD_RUNTIMES):
             pages.append(path)
-    if len(pages) != 24:
-        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 24, encontré {len(pages)}")
+    # Las dos páginas internas B1 dejaron de ser superficies públicas: ahora son
+    # puentes noindex hacia /es/recursos/juegos/. No deben volver a entrar en el
+    # inventario DC ni obligar a publicar lenguaje interno B1/B0.
+    retired_b1 = {
+        "es/recursos/juegos/b1/index.html",
+        "es/recursos/juegos/b1/mecanicas.html",
+    }
+    page_rels = {path.relative_to(root).as_posix() for path in pages}
+    leaked_b1 = sorted(page_rels & retired_b1)
+    if leaked_b1:
+        raise AssertionError("Las rutas B1 retiradas han vuelto al runtime DC: " + ", ".join(leaked_b1))
+    if len(pages) != 22:
+        raise AssertionError(f"Inventario de páginas DC cambiado: esperaba 22 públicas, encontré {len(pages)}")
 
     rows = [transform_page(path) for path in pages]
 
