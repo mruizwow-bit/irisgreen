@@ -90,3 +90,7 @@ R04 integrado en PR244: 118 vídeos, 17 temas. Dan Wilkins permanece primero por
 ## Juegos y recursos · A2 R17
 
 Paquete R06 integrado: 252 juegos, 109 rutinas, catálogo A4 y biblioteca visual compartida. HEAD 9ee8ef74e700426623bdc0cc8d69f06575a1af03 en PR244; build correcto, deploy SUCCESS y QA navegador ES/EN verificada en su alcance. Tres juegos nuevos, ningún slug retirado frente al HEAD anterior. [Registro y límites de duplicación](MEMORIA/WEB_A2_RECURSOS_R17_20260924.md).
+
+## Presentación Recursos, Taller y Videoteca · A2 R18
+
+Tarjetas ilustradas ES/EN, retirada del bloque de hojas antiguas y corrección de lectura del catálogo para generar miniaturas locales. HEAD 49b866e42a211445711d6991cd5b649aea35b54a; build local correcto, deploy y QA pendientes. [Registro](MEMORIA/WEB_A2_VISUAL_MINIATURAS_R18_20260924.md).

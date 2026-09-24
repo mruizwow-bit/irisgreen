@@ -1,0 +1,9 @@
+# Correcciones visuales y miniaturas · A2 R18 · 2026-09-24
+
+María aporta cuatro capturas y solicita Recursos con dibujos como Taller, corregir presentación, quitar las hojas del Taller antiguo y resolver los vídeos nuevos sin imagen.
+
+Cambios: Recursos ES/EN con cuatro tarjetas ilustradas mediante pictogramas existentes y composición HTML/CSS, dos columnas en escritorio y una en móvil. Pie al final del contenido con altura mínima de pantalla. Eliminado bloque Hojas para tus proyectos / Sheets for your projects de ambas portadas Taller. No se borran archivos históricos por inferencia.
+
+Miniaturas: la entrega Videoteca R04 incorporaba datos nuevos, pero prepare_video_thumbnails.py solo leía el catálogo antiguo y literales inline. Se añade lectura del JSON editorial. En Netlify el build descarga únicamente miniaturas ausentes a staging y publica imágenes locales; la construcción local sigue usando copias disponibles. No se realizan peticiones YouTube desde el navegador antes de pulsar. Validación JPEG por cabecera y dimensiones sin dependencia PIL en Netlify; contrastada contra 47 JPEG existentes y rechazo de HTML. 118 IDs YouTube solicitados entre fuentes home/videoteca, no equivale al total de vídeos del catálogo ni garantiza reproducción embebida. Dan Wilkins conserva primer puesto.
+
+HEAD 49b866e42a211445711d6991cd5b649aea35b54a en PR244. Build local correcto. Deploy 6ab54dd421f9fe0008d93d5f pendiente: falta verificar tarjetas, retirada de hojas y miniaturas descargadas en destino. En este entorno la descarga directa de i.ytimg.com devuelve HTML Site Unavailable; no se publican esos cuerpos como imágenes. Sin main, producción ni Cloud.
