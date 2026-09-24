@@ -1,0 +1,18 @@
+{
+  "head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+  "tree": "7138db244399234055f8ea437389b15715273cc7",
+  "base": "3131d55020057c55567a3457900afc888876de5d",
+  "changed_files": [
+    "cloud/n04-r38-library/netlify/functions/n04-team-transport.mjs",
+    "cloud/n04-r38-library/scripts/build.mjs",
+    "cloud/n04-r38-library/src/cloud-connection.mjs",
+    "cloud/n04-r38-library/src/team-transport-handler.mjs",
+    "cloud/n04-r38-library/tests/library.test.mjs",
+    "cloud/n04-r38-library/tests/retrieval-r39.test.mjs",
+    "sabik/AUTHORIZED_TRANSPORT_R04.md",
+    "sabik/authorized-transport.mjs",
+    "tools/test-sabik-authorized-transport.mjs"
+  ],
+  "clean": true,
+  "engine_bridge_panel_A1_unchanged": true
+}

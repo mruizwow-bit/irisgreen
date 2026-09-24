@@ -1,0 +1,689 @@
+diff --git a/sabik/retrieval-bridge.browser.mjs b/sabik/retrieval-bridge.browser.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..376dacf13a800731e8f5a98d112a348e393cfb53
+--- /dev/null
++++ b/sabik/retrieval-bridge.browser.mjs
+@@ -0,0 +1,163 @@
++// work/r39/irisgreen/cloud/n04-r38-library/src/source-groups.mjs
++var REQUIRED = Object.freeze([
++  "library_version",
++  "fragment_id",
++  "snippet",
++  "title",
++  "heading",
++  "url",
++  "source_type",
++  "concepts",
++  "score"
++]);
++function plain(value) {
++  return value !== null && typeof value === "object" && [Object.prototype, null].includes(Object.getPrototypeOf(value));
++}
++function validCandidate(candidate) {
++  if (!plain(candidate)) return false;
++  if (Reflect.ownKeys(candidate).some((key) => typeof key !== "string")) return false;
++  if (REQUIRED.some((key) => !Object.hasOwn(candidate, key))) return false;
++  if (typeof candidate.library_version !== "string" || !candidate.library_version) return false;
++  if (typeof candidate.fragment_id !== "string" || !candidate.fragment_id) return false;
++  if (typeof candidate.snippet !== "string") return false;
++  if (typeof candidate.title !== "string") return false;
++  if (typeof candidate.heading !== "string") return false;
++  if (typeof candidate.url !== "string" || !candidate.url) return false;
++  if (typeof candidate.source_type !== "string") return false;
++  if (!Array.isArray(candidate.concepts) || candidate.concepts.some((v) => typeof v !== "string")) return false;
++  if (!Number.isSafeInteger(candidate.score) || candidate.score <= 0) return false;
++  return true;
++}
++function citation(candidate) {
++  return Object.freeze({
++    library_version: candidate.library_version,
++    fragment_id: candidate.fragment_id,
++    snippet: candidate.snippet,
++    title: candidate.title,
++    heading: candidate.heading,
++    url: candidate.url,
++    source_type: candidate.source_type,
++    concepts: Object.freeze([...candidate.concepts]),
++    score: candidate.score
++  });
++}
++function groupSources(candidates) {
++  if (!Array.isArray(candidates)) throw new TypeError("INVALID_SOURCE_CANDIDATES");
++  const byUrl = /* @__PURE__ */ new Map();
++  const groups = [];
++  for (const candidate of candidates) {
++    if (!validCandidate(candidate)) throw new TypeError("INVALID_SOURCE_CANDIDATE");
++    let group = byUrl.get(candidate.url);
++    if (!group) {
++      group = { url: candidate.url, citations: [] };
++      byUrl.set(candidate.url, group);
++      groups.push(group);
++    }
++    group.citations.push(citation(candidate));
++  }
++  return Object.freeze(groups.map((group) => Object.freeze({
++    url: group.url,
++    citations: Object.freeze(group.citations)
++  })));
++}
++
++// work/r39/irisgreen/sabik/retrieval-bridge.mjs
++var CODES = /* @__PURE__ */ new Set([
++  "INVALID_RETRIEVAL_QUERY",
++  "LIBRARY_VERSION_MISMATCH",
++  "LIBRARY_INTEGRITY_ERROR",
++  "LIBRARY_UNAVAILABLE",
++  "REQUEST_CANCELLED",
++  "REQUEST_TIMEOUT"
++]);
++var FIELDS = Object.freeze([
++  "library_version",
++  "fragment_id",
++  "snippet",
++  "title",
++  "heading",
++  "url",
++  "source_type",
++  "concepts",
++  "score"
++]);
++var RetrievalBridgeError = class extends Error {
++  constructor(code) {
++    const safe = CODES.has(code) ? code : "LIBRARY_UNAVAILABLE";
++    super(safe);
++    this.name = "RetrievalBridgeError";
++    this.code = safe;
++  }
++};
++var fail = (code) => {
++  throw new RetrievalBridgeError(code);
++};
++function safeFailure(error, signal) {
++  if (signal?.aborted || error?.name === "AbortError") return new RetrievalBridgeError("REQUEST_CANCELLED");
++  return new RetrievalBridgeError(error?.code);
++}
++function safeSourceUrl(value) {
++  if (typeof value !== "string" || !value || /[\u0000-\u0020\u007f]/u.test(value)) fail("LIBRARY_INTEGRITY_ERROR");
++  let url;
++  try {
++    url = new URL(value);
++  } catch {
++    fail("LIBRARY_INTEGRITY_ERROR");
++  }
++  if (url.origin !== "https://irisgreen.eu" || url.username || url.password) fail("LIBRARY_INTEGRITY_ERROR");
++  return value;
++}
++function candidatesFromBody(body, library) {
++  if (!body || typeof body !== "object" || Array.isArray(body)) fail("LIBRARY_INTEGRITY_ERROR");
++  if (body.library_version !== library.version) fail("LIBRARY_VERSION_MISMATCH");
++  if (body.corpus_sha256 !== library.corpusSha256 || body.source_git_blob !== library.sourceGitBlob || !/^[a-f0-9]{40}$/.test(body.build_head ?? "") || !/^[a-f0-9]{24}$/.test(body.deploy_id ?? "") || !Array.isArray(body.results) || body.results.length > 20) fail("LIBRARY_INTEGRITY_ERROR");
++  const ids = /* @__PURE__ */ new Set();
++  return Object.freeze(body.results.map((result) => {
++    if (!result || typeof result !== "object" || Array.isArray(result) || Object.keys(result).some((key) => !FIELDS.includes(key) && key !== "editorial_status") || FIELDS.some((key) => !Object.hasOwn(result, key)) || result.editorial_status !== "PUBLICABLE" || result.library_version !== library.version || typeof result.fragment_id !== "string" || !result.fragment_id || ids.has(result.fragment_id) || typeof result.snippet !== "string" || result.snippet.length > 480 || !Array.isArray(result.concepts)) fail("LIBRARY_INTEGRITY_ERROR");
++    ids.add(result.fragment_id);
++    return Object.freeze(Object.fromEntries(FIELDS.map((key) => [
++      key,
++      key === "url" ? safeSourceUrl(result[key]) : key === "concepts" ? Object.freeze([...result[key]]) : result[key]
++    ])));
++  }));
++}
++function createRetrievalQuery({ transport, library } = {}) {
++  if (typeof transport !== "function" || !library || typeof library.version !== "string" || !library.version || !/^[a-f0-9]{64}$/.test(library.corpusSha256 ?? "") || !/^[a-f0-9]{40}$/.test(library.sourceGitBlob ?? "") || library.sourceLanguage !== "es") throw new TypeError("Invalid retrieval composition");
++  const source = Object.freeze({
++    version: library.version,
++    corpusSha256: library.corpusSha256,
++    sourceGitBlob: library.sourceGitBlob,
++    sourceLanguage: library.sourceLanguage
++  });
++  return async function query(request, { signal } = {}) {
++    try {
++      if (signal?.aborted) fail("REQUEST_CANCELLED");
++      const response = await transport(request, { signal });
++      if (signal?.aborted) fail("REQUEST_CANCELLED");
++      if (!(response instanceof Response) || !/^application\/json(?:;|$)/i.test(response.headers.get("content-type") ?? "")) fail("LIBRARY_UNAVAILABLE");
++      const body = await response.json();
++      if (signal?.aborted) fail("REQUEST_CANCELLED");
++      if (!response.ok) {
++        const outcome = response.headers.get("X-Sabik-Request-Outcome");
++        if (outcome === "REQUEST_CANCELLED" || outcome === "REQUEST_TIMEOUT") fail(outcome);
++        if (body?.error === "wrong_version") fail("LIBRARY_VERSION_MISMATCH");
++        if (["invalid_query", "invalid_request", "invalid_limit"].includes(body?.error)) fail("INVALID_RETRIEVAL_QUERY");
++        fail("LIBRARY_UNAVAILABLE");
++      }
++      const candidates = candidatesFromBody(body, source);
++      let groups;
++      try {
++        groups = groupSources(candidates);
++      } catch {
++        fail("LIBRARY_INTEGRITY_ERROR");
++      }
++      return Object.freeze({ library_version: source.version, candidates, groups, source_language: source.sourceLanguage });
++    } catch (error) {
++      throw safeFailure(error, signal);
++    }
++  };
++}
++export {
++  RetrievalBridgeError,
++  createRetrievalQuery
++};
+diff --git a/sabik/retrieval-panel.js b/sabik/retrieval-panel.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..83e7b75c4a9a88eca16f85d6fff25f960722e32a
+--- /dev/null
++++ b/sabik/retrieval-panel.js
+@@ -0,0 +1,341 @@
++(function (global) {
++  'use strict';
++
++  const UI = Object.freeze({
++    es: Object.freeze({
++      heading: 'Resultados en Iris Green',
++      empty: 'No hay resultados de Iris Green para esta consulta.',
++      error: 'No se pudieron cargar los resultados de Iris Green. Puedes volver a intentarlo.',
++      cancelled: 'La consulta se canceló. No se mostrarán resultados antiguos.',
++      retry: 'Reintentar',
++      resultsAnnouncement: count => count === 1 ? '1 resultado disponible.' : `${count} resultados disponibles.`,
++      emptyAnnouncement: 'No hay resultados disponibles.',
++      errorAnnouncement: 'No se pudieron cargar los resultados. Puedes volver a intentarlo.',
++      cancelledAnnouncement: 'Consulta cancelada.'
++    }),
++    en: Object.freeze({
++      heading: 'Results from Iris Green',
++      empty: 'There are no Iris Green results for this query.',
++      error: 'The Iris Green results could not be loaded. You can try again.',
++      cancelled: 'The query was cancelled. Older results will not be shown.',
++      retry: 'Try again',
++      resultsAnnouncement: count => count === 1 ? '1 result available.' : `${count} results available.`,
++      emptyAnnouncement: 'No results are available.',
++      errorAnnouncement: 'The results could not be loaded. You can try again.',
++      cancelledAnnouncement: 'Query cancelled.'
++    })
++  });
++
++  const VIEW_STATES = Object.freeze(['idle', 'results', 'empty', 'error', 'cancelled']);
++
++  function validLanguage(value) {
++    return value === 'en' ? 'en' : 'es';
++  }
++
++  function dataObject(value) {
++    return value !== null && typeof value === 'object' && !Array.isArray(value);
++  }
++
++  function nonEmptyString(value) {
++    return typeof value === 'string' && value.trim().length > 0;
++  }
++
++  function safeHttpUrl(value) {
++    if (!nonEmptyString(value) || /[\u0000-\u0020\u007f]/u.test(value)) return null;
++    try {
++      const parsed = new URL(value);
++      return parsed.origin === 'https://irisgreen.eu' && !parsed.username && !parsed.password ? value : null;
++    } catch (_) {
++      return null;
++    }
++  }
++
++  function normalizeEnvelope(value) {
++    if (!dataObject(value) || !nonEmptyString(value.library_version) || !Array.isArray(value.candidates) ||
++        !Array.isArray(value.groups) || value.source_language !== 'es') {
++      throw new TypeError('Invalid retrieval result');
++    }
++
++    const version = value.library_version;
++    const candidates = value.candidates.map(candidate => {
++      if (!dataObject(candidate)) throw new TypeError('Invalid retrieval result');
++      if (!nonEmptyString(candidate.fragment_id)) throw new TypeError('Invalid retrieval result');
++      if (candidate.library_version !== version) throw new TypeError('Invalid retrieval result');
++      if (typeof candidate.snippet !== 'string' || typeof candidate.title !== 'string' ||
++          typeof candidate.heading !== 'string' || typeof candidate.source_type !== 'string') {
++        throw new TypeError('Invalid retrieval result');
++      }
++      if (!Array.isArray(candidate.concepts) || candidate.concepts.some(item => typeof item !== 'string')) {
++        throw new TypeError('Invalid retrieval result');
++      }
++      if (!Number.isSafeInteger(candidate.score) || candidate.score < 1) {
++        throw new TypeError('Invalid retrieval result');
++      }
++      const url = safeHttpUrl(candidate.url);
++      if (!url) throw new TypeError('Invalid retrieval result');
++
++      return Object.freeze({
++        library_version: candidate.library_version,
++        fragment_id: candidate.fragment_id,
++        snippet: candidate.snippet,
++        url,
++        title: candidate.title,
++        heading: candidate.heading,
++        source_type: candidate.source_type,
++        concepts: Object.freeze(candidate.concepts.slice()),
++        score: candidate.score
++      });
++    });
++
++    // Validate the supplied A1 projection without regrouping or reranking it.
++    const byId = new Map(candidates.map((candidate, index) => [candidate.fragment_id, { candidate, index }]));
++    if (byId.size !== candidates.length) throw new TypeError('Invalid retrieval result');
++    const usedIds = new Set();
++    const usedUrls = new Set();
++    let previousFirst = -1;
++    const groups = value.groups.map(group => {
++      if (!dataObject(group) || !safeHttpUrl(group.url) || usedUrls.has(group.url) ||
++          !Array.isArray(group.citations) || !group.citations.length) throw new TypeError('Invalid retrieval result');
++      usedUrls.add(group.url);
++      let previousIndex = -1;
++      const citations = group.citations.map((citation, offset) => {
++        const entry = byId.get(citation?.fragment_id);
++        if (!entry || usedIds.has(citation.fragment_id) || citation.url !== group.url ||
++            entry.index <= previousIndex || (offset === 0 && entry.index <= previousFirst) ||
++            Object.keys(entry.candidate).some(key => JSON.stringify(citation[key]) !== JSON.stringify(entry.candidate[key]))) {
++          throw new TypeError('Invalid retrieval result');
++        }
++        if (offset === 0) previousFirst = entry.index;
++        previousIndex = entry.index;
++        usedIds.add(citation.fragment_id);
++        return entry.candidate;
++      });
++      return Object.freeze({ url: group.url, citations: Object.freeze(citations) });
++    });
++    if (usedIds.size !== candidates.length) throw new TypeError('Invalid retrieval result');
++    return Object.freeze({ library_version: version, candidates: Object.freeze(candidates),
++      groups: Object.freeze(groups), source_language: value.source_language });
++  }
++
++  function setText(node, value) {
++    node.textContent = String(value);
++    return node;
++  }
++
++  function createRetrievalPanel({ root, query, announcement = null, language = 'es' } = {}) {
++    if (!root || typeof root.replaceChildren !== 'function' || !root.ownerDocument) {
++      throw new TypeError('A DOM root is required');
++    }
++    if (typeof query !== 'function') throw new TypeError('A query function is required');
++
++    const document = root.ownerDocument;
++    let lang = validLanguage(language);
++    let serial = 0;
++    let pending = false;
++    let viewState = 'idle';
++    let lastRequest = null;
++    let lastEnvelope = null;
++    let controller = null;
++
++    root.setAttribute('data-retrieval-state', viewState);
++    root.setAttribute('aria-busy', 'false');
++    root.setAttribute('lang', lang);
++
++    function strings() {
++      return UI[lang];
++    }
++
++    function announce(message) {
++      if (!announcement || typeof announcement.replaceChildren !== 'function' || !message) return;
++      announcement.setAttribute('lang', lang);
++      announcement.replaceChildren(document.createTextNode(message));
++    }
++
++    function replaceView(node) {
++      const active = document.activeElement;
++      const restore = active && root.contains(active);
++      const href = restore ? active.getAttribute('href') : null;
++      root.replaceChildren(node);
++      if (!restore) return;
++      const walk = parent => Array.from(parent.children || []).flatMap(child => [child, ...walk(child)]);
++      const children = walk(root);
++      const equivalent = href ? children.find(child => child.getAttribute?.('href') === href) :
++        children.find(child => child.className === active.className && child.tagName === active.tagName);
++      const target = equivalent || children.find(child => child.tagName === 'H4' || child.tagName === 'P');
++      if (target) {
++        if (!equivalent) target.setAttribute('tabindex', '-1');
++        target.focus({ preventScroll: true });
++      }
++    }
++
++    function setState(next) {
++      if (!VIEW_STATES.includes(next)) throw new TypeError('Invalid view state');
++      viewState = next;
++      root.setAttribute('data-retrieval-state', next);
++    }
++
++    function retryButton() {
++      if (lastRequest === null) return null;
++      const button = document.createElement('button');
++      button.type = 'button';
++      button.className = 'sabik-button sabik-retrieval-retry';
++      setText(button, strings().retry);
++      button.addEventListener('click', () => { void run(lastRequest); });
++      return button;
++    }
++
++    function renderStatus(kind, message, announcementText) {
++      const box = document.createElement('div');
++      box.className = `sabik-retrieval-state sabik-retrieval-${kind}`;
++      const paragraph = document.createElement('p');
++      paragraph.className = 'sabik-notice';
++      setText(paragraph, message);
++      box.appendChild(paragraph);
++      if (kind === 'error' || kind === 'cancelled') {
++        const retry = retryButton();
++        if (retry) box.appendChild(retry);
++      }
++      replaceView(box);
++      setState(kind);
++      announce(announcementText);
++    }
++
++    function renderResults(envelope) {
++      if (envelope.candidates.length === 0) {
++        renderStatus('empty', strings().empty, strings().emptyAnnouncement);
++        return Object.freeze({ status: 'empty', count: 0, library_version: envelope.library_version });
++      }
++
++      const section = document.createElement('section');
++      section.className = 'sabik-retrieval-results';
++      const heading = document.createElement('h4');
++      heading.className = 'sabik-source-title';
++      setText(heading, strings().heading);
++      section.appendChild(heading);
++
++      const list = document.createElement('ol');
++      list.className = 'sabik-source-list sabik-retrieval-list';
++
++      envelope.groups.forEach(group => {
++        const candidate = group.citations[0];
++        const item = document.createElement('li');
++        item.className = 'sabik-retrieval-result';
++
++        const link = document.createElement('a');
++        link.setAttribute('href', group.url);
++        link.setAttribute('lang', envelope.source_language);
++        link.className = 'sabik-retrieval-link';
++        const linkText = candidate.title.trim() || candidate.heading.trim() || candidate.url;
++        setText(link, linkText);
++        item.appendChild(link);
++
++        group.citations.forEach(citation => {
++          const fragment = document.createElement('div');
++          fragment.className = 'sabik-retrieval-citation';
++          fragment.setAttribute('lang', envelope.source_language);
++          fragment.setAttribute('data-fragment-id', citation.fragment_id);
++          fragment.setAttribute('data-library-version', citation.library_version);
++          fragment.setAttribute('data-source-type', citation.source_type);
++          fragment.setAttribute('data-score', String(citation.score));
++          if (citation.title && citation.title !== linkText) {
++            const citationTitle = document.createElement('p');
++            citationTitle.className = 'sabik-retrieval-heading';
++            setText(citationTitle, citation.title);
++            fragment.appendChild(citationTitle);
++          }
++          if (citation.heading && citation.heading !== linkText) {
++            const sourceHeading = document.createElement('p');
++            sourceHeading.className = 'sabik-retrieval-heading';
++            setText(sourceHeading, citation.heading);
++            fragment.appendChild(sourceHeading);
++          }
++          const snippet = document.createElement('p');
++          snippet.className = 'sabik-retrieval-snippet';
++          setText(snippet, citation.snippet);
++          fragment.appendChild(snippet);
++          item.appendChild(fragment);
++        });
++        list.appendChild(item);
++      });
++
++      section.appendChild(list);
++      replaceView(section);
++      setState('results');
++      announce(strings().resultsAnnouncement(envelope.groups.length));
++      return Object.freeze({
++        status: 'results',
++        count: envelope.groups.length,
++        library_version: envelope.library_version
++      });
++    }
++
++    function cancelledError(error) {
++      return Boolean(error && (error.name === 'AbortError' || error.code === 'ABORT_ERR' || error.code === 'REQUEST_CANCELLED'));
++    }
++
++    async function run(request) {
++      const token = ++serial;
++      controller?.abort();
++      controller = new AbortController();
++      const signal = controller.signal;
++      pending = true;
++      lastRequest = request;
++      root.setAttribute('aria-busy', 'true');
++
++      try {
++        const raw = await query(request, { signal });
++        if (token !== serial) return Object.freeze({ status: 'stale' });
++        const envelope = normalizeEnvelope(raw);
++        lastEnvelope = envelope;
++        return renderResults(envelope);
++      } catch (error) {
++        if (token !== serial) return Object.freeze({ status: 'stale' });
++        lastEnvelope = null;
++        if (cancelledError(error)) {
++          renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement);
++          return Object.freeze({ status: 'cancelled' });
++        }
++        renderStatus('error', strings().error, strings().errorAnnouncement);
++        return Object.freeze({ status: 'error' });
++      } finally {
++        if (token === serial) {
++          pending = false;
++          controller = null;
++          root.setAttribute('aria-busy', 'false');
++        }
++      }
++    }
++
++    function cancel() {
++      if (!pending) return Object.freeze({ status: viewState, cancelled: false });
++      serial += 1;
++      controller?.abort();
++      controller = null;
++      pending = false;
++      lastEnvelope = null;
++      root.setAttribute('aria-busy', 'false');
++      renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement);
++      return Object.freeze({ status: 'cancelled', cancelled: true });
++    }
++
++    function setLanguage(nextLanguage) {
++      lang = validLanguage(nextLanguage);
++      root.setAttribute('lang', lang);
++      if (viewState === 'results' && lastEnvelope) renderResults(lastEnvelope);
++      else if (viewState === 'empty') renderStatus('empty', strings().empty, strings().emptyAnnouncement);
++      else if (viewState === 'error') renderStatus('error', strings().error, strings().errorAnnouncement);
++      else if (viewState === 'cancelled') renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement);
++      return lang;
++    }
++
++    function getState() {
++      return Object.freeze({ state: viewState, pending, language: lang });
++    }
++
++    return Object.freeze({ run, cancel, setLanguage, getState });
++  }
++
++  const api = Object.freeze({ createRetrievalPanel });
++  if (typeof module !== 'undefined' && module.exports) module.exports = api;
++  if (global && typeof global === 'object') global.SabikRetrievalPanel = api;
++})(typeof globalThis !== 'undefined' ? globalThis : this);
+diff --git a/sabik/authorized-transport.mjs b/sabik/authorized-transport.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..6f04dac8b542da78ab0572e4361d8db3e3953a94
+--- /dev/null
++++ b/sabik/authorized-transport.mjs
+@@ -0,0 +1,109 @@
++// Private team connection. Activation requires approval of the Cloud relay.
++// The Netlify session stays in its own top-level window; no credential is read.
++const VERSION = 1;
++const MAX_RESPONSE = 65536;
++const failure = code => Object.assign(new Error(code), { code });
++export function createAuthorizedTransport({ cloudOrigin, window: host = globalThis.window,
++  connectionTimeoutMs = 60000, requestTimeoutMs = 20000 } = {}) {
++  if (!/^https:\/\/[a-f0-9]{24}--sabik-asistente\.netlify\.app$/.test(cloudOrigin ?? '') ||
++      !host || !Number.isInteger(connectionTimeoutMs) || connectionTimeoutMs < 1 ||
++      !Number.isInteger(requestTimeoutMs) || requestTimeoutMs < 1) throw new TypeError('Invalid connection configuration');
++  let peer = null, port = null, connecting = null, stopConnecting = null, serial = 0;
++  const pending = new Map();
++  function disconnect() {
++    stopConnecting?.(); stopConnecting = null;
++    for (const [id, entry] of [...pending]) {
++      try { port?.postMessage({ type: 'sabik:cancel', id }); } catch {}
++      entry.finish(failure('REQUEST_CANCELLED'));
++    }
++    port?.close(); port = null; peer?.close(); peer = null; connecting = null;
++  }
++  function connect(language = 'es') {
++    if (port && peer && !peer.closed) return Promise.resolve();
++    if (connecting) return connecting;
++    disconnect();
++    peer = host.open(`${cloudOrigin}/sabik-connect?lang=${language === 'en' ? 'en' : 'es'}`, '_blank', 'popup,width=520,height=420');
++    if (!peer) return Promise.reject(failure('LIBRARY_UNAVAILABLE'));
++    const attempt = new Promise((resolve, reject) => {
++      let offered = false, channel = null, settled = false;
++      const nonce = host.crypto.randomUUID();
++      const cleanup = () => { clearTimeout(timer); clearInterval(closed); host.removeEventListener('message', ready); stopConnecting = null; };
++      const finish = error => {
++        if (settled) return; settled = true; cleanup();
++        if (error) { channel?.port1.close(); channel?.port2.close(); peer?.close(); peer = null; reject(error); }
++        else resolve();
++      };
++      const ready = event => {
++        if (event.origin !== cloudOrigin || event.source !== peer || event.data?.type !== 'sabik:ready' ||
++            event.data.version !== VERSION || offered) return;
++        offered = true; channel = new host.MessageChannel();
++        channel.port1.onmessage = message => {
++          if (message.data?.type !== 'sabik:connected' || message.data.nonce !== nonce) return;
++          port = channel.port1; port.onmessage = receive; finish();
++        };
++        try { peer.postMessage({ type: 'sabik:connect', version: VERSION, nonce }, cloudOrigin, [channel.port2]); }
++        catch { finish(failure('LIBRARY_UNAVAILABLE')); }
++      };
++      host.addEventListener('message', ready);
++      const timer = setTimeout(() => finish(failure('REQUEST_TIMEOUT')), connectionTimeoutMs);
++      const closed = setInterval(() => { if (peer?.closed) finish(failure('REQUEST_CANCELLED')); }, 200);
++      stopConnecting = () => finish(failure('REQUEST_CANCELLED'));
++    });
++    connecting = attempt;
++    const clear = () => { if (connecting === attempt) connecting = null; };
++    attempt.then(clear, clear);
++    return connecting;
++  }
++  function waitForConnection(signal) {
++    const attempt = connect();
++    if (!signal) return attempt;
++    // Abort this consumer immediately, without closing another consumer's login.
++    return new Promise((resolve, reject) => {
++      const abort = () => { signal.removeEventListener('abort', abort); reject(failure('REQUEST_CANCELLED')); };
++      signal.addEventListener('abort', abort, { once: true });
++      attempt.then(value => { signal.removeEventListener('abort', abort); resolve(value); },
++        error => { signal.removeEventListener('abort', abort); reject(error); });
++      if (signal.aborted) abort();
++    });
++  }
++  function receive(event) {
++    const data = event.data;
++    if (!data || data.type !== 'sabik:response') return;
++    const entry = pending.get(data.id); if (!entry) return;
++    if (!Number.isInteger(data.status) || data.status < 200 || data.status > 599 ||
++        typeof data.body !== 'string' || new TextEncoder().encode(data.body).length > MAX_RESPONSE ||
++        !Array.isArray(data.headers) || data.headers.some(pair => !Array.isArray(pair) || pair.length !== 2 ||
++          !['content-type','x-sabik-code-head','x-sabik-library-deploy','x-sabik-request-outcome'].includes(pair[0]) || typeof pair[1] !== 'string')) {
++      entry.finish(failure('LIBRARY_UNAVAILABLE')); return;
++    }
++    try { entry.finish(null, new Response(data.body, { status: data.status, headers: data.headers })); }
++    catch { entry.finish(failure('LIBRARY_UNAVAILABLE')); }
++  }
++  async function transport(request, { signal } = {}) {
++    if (signal?.aborted) throw failure('REQUEST_CANCELLED');
++    const body = JSON.stringify({ q: request?.query, ...(request?.limit === undefined ? {} : { limit: request.limit }),
++      ...(request?.libraryVersion === undefined ? {} : { version: request.libraryVersion }) });
++    if (new TextEncoder().encode(body).length > 2048) throw failure('INVALID_RETRIEVAL_QUERY');
++    // connect() should be called from an explicit user gesture before the first
++    // query. Automatic fallback remains within the initiating search gesture.
++    await waitForConnection(signal);
++    if (signal?.aborted) throw failure('REQUEST_CANCELLED');
++    return new Promise((resolve, reject) => {
++      const id = String(++serial); let finished = false;
++      const cancel = code => { try { port?.postMessage({ type: 'sabik:cancel', id }); } catch {} finish(failure(code)); };
++      const onAbort = () => cancel('REQUEST_CANCELLED');
++      const finish = (error, value) => {
++        if (finished) return; finished = true; clearTimeout(timer); clearInterval(closed);
++        signal?.removeEventListener('abort', onAbort); pending.delete(id);
++        if (error) reject(error); else resolve(value);
++      };
++      const timer = setTimeout(() => cancel('REQUEST_TIMEOUT'), requestTimeoutMs);
++      const closed = setInterval(() => { if (peer?.closed) cancel('REQUEST_CANCELLED'); }, 200);
++      pending.set(id, { finish }); signal?.addEventListener('abort', onAbort, { once: true });
++      if (signal?.aborted) { onAbort(); return; }
++      try { port.postMessage({ type: 'sabik:query', id, body }); }
++      catch { finish(failure('LIBRARY_UNAVAILABLE')); }
++    });
++  }
++  return Object.freeze({ transport, connect, disconnect });
++}
+diff --git a/sabik/AUTHORIZED_TRANSPORT_R04.md b/sabik/AUTHORIZED_TRANSPORT_R04.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..d33fcfce93e0683fc9a9ece83dbad57d32d05544
+--- /dev/null
++++ b/sabik/AUTHORIZED_TRANSPORT_R04.md
+@@ -0,0 +1,52 @@
++# R04 · Conexión privada de equipo, pendiente de activación
++
++Base preservada: R03 `3131d55020057c55567a3457900afc888876de5d`. No cambia el motor, el agrupador A1, el puente ni el panel. La biblioteca R38 y sus citas ES permanecen intactas.
++
++## Qué está construido
++
++`createAuthorizedTransport({cloudOrigin})` devuelve `transport(request,{signal})`, `connect(language)` y `disconnect()`. El transporte devuelve una `Response` para el puente R03. El control existente abre explícitamente una ventana de conexión del Cloud privado; Netlify autentica allí al equipo con su sesión existente. Las ventanas intercambian solamente consulta, cancelación y respuesta mediante un MessageChannel, con origen y WindowProxy exactos, versión y nonce.
++
++La ventana Cloud hace POST del mismo origen a `/internal/n04/team/search`. La Function incorpora en servidor la clave QA existente e invoca el handler R03 sin alterar búsqueda, límites, biblioteca, agrupación ni puntuaciones. No se envía esa clave al navegador. La cookie de Netlify no se lee ni se exporta; el navegador la gestiona exclusivamente para su origen.
++
++Esto es una conexión privada de equipo para comprobar el montaje. **No es la autenticación de visitantes públicos ni hace público Sabik.** La web Iris Green continúa siendo pública. No se presenta la sesión de mantenimiento como autenticación. El servicio público requiere decidir su acceso de consumo por separado; este cambio no activa inferencia, voz ni chat.
++
++## Condición de activación pendiente
++
++El punto 4 de la orden R04 exige autorización específica para un endpoint de acceso nuevo. No se ha activado ni desplegado esta propuesta. Requiere autorización de María para habilitar exclusivamente esta entrada de lectura en un borrador incremental de `sabik-asistente`, manteniendo Team Login para todos los contextos y la clave QA existente sólo en servidor. No crea secretos ni cambia producción.
++
++Configuración de ese único borrador:
++
++- `N04_TEAM_TRANSPORT_ENABLED=true`, ausente por defecto (cierre con 503).
++- `N04_WEB_ALLOWED_ORIGIN`: origen HTTPS exacto de un borrador `24hex--irisgreen-home.netlify.app` confirmado por A2, sin comodines.
++- `N04_SMOKE_TOKEN`: secreto existente, por el canal local seguro; nunca en archivos ni conversación.
++- Verificar mediante API que Team Login sigue requerido en todos los contextos antes de habilitar. La Function rechaza otro sitio, contexto distinto de deploy-preview y cualquier despliegue publicado. Estas condiciones y los controles CSRF **no sustituyen** la autenticación de Netlify.
++
++Sólo admite consultas de lectura, cuerpo máximo 2.048 bytes heredado de R03, hasta cuatro solicitudes simultáneas por conexión, respuesta máxima 65.536 bytes y cabeceras de respuesta permitidas. No hay historial, almacenamiento de consultas, CORS, reintento automático ni log de contenido. Cancelar durante el login libera sólo al consumidor; cancelar una consulta aborta su fetch. Una respuesta tardía no se entrega. Cerrar la conexión cancela solicitudes y puertos. El motor mantiene su caché compartida R03.
++
++## Delta para A2
++
++Base confirmada por A2 en #237, comentario 5814404116: `main@117a53a01bf254054f759e7e08eb06ba06f00d00` (Taller e Intereses). No se edita su rama ni se copian páginas desde Cloud. Si la base avanza, A2 comprueba/aplica nuevamente el parche aditivo sobre su nuevo HEAD.
++
++Reutilizar exactamente el bundle `retrieval-bridge.browser.mjs` y `retrieval-panel.js` de R03. Añadir sólo `authorized-transport.mjs` y este contrato a esos dos componentes si aún no están incorporados. El montaje permanece propiedad de A2. No configurar un origen Cloud hasta tener autorización y evidencia remota; no etiquetar fixtures como conectados.
++
++```js
++import { createAuthorizedTransport } from './authorized-transport.mjs';
++import { createRetrievalQuery } from './retrieval-bridge.browser.mjs';
++const connection = createAuthorizedTransport({ cloudOrigin: approvedCloudOrigin });
++const query = createRetrievalQuery({ transport: connection.transport, library: sealedLibrary });
++const panel = SabikRetrievalPanel.createRetrievalPanel({ root, query, announcement, language });
++// En el control existente y por gesto explícito del usuario:
++await connection.connect(language); // es/en, sin micrófono ni audio.
++await panel.run({ query: userQuery });
++// Al salir o cerrar: panel.cancel(); connection.disconnect();
++```
++
++Mantener semántica, foco, Lectura, Newsreader/Atkinson y los masters en el montaje actual de A2. El panel R03 ya conserva citas con `lang=es` y estados ES/EN. La pequeña ventana técnica declara acceso limitado al equipo en ambos idiomas. Si falta conexión o se bloquea la ventana, mantener aviso recuperable y alternativa de navegación; no repetir aperturas automáticamente.
++
++## Evidencia y siguiente ejecución
++
++Las pruebas automatizadas componen ventanas simuladas, MessageChannel, Function local, motor, corpus original y puente. Demuestran el contrato y sus límites; **no acreditan HTTP remoto ni sesión real del transporte**.
++
++Tras autorización: declarar HEAD y cambio antes del nuevo borrador; verificar protección del sitio, configurar origen A2 exacto, abrir conexión desde el control real, ejecutar consulta sintética, comprobar JSON/status, cabeceras de código/biblioteca y citas, cancelar y sustituir consulta. Guardar sólo evidencia saneada. A3 comprueba el montaje ES/EN. El antiguo R03 conserva aparte su POST manual pendiente A5-HTTP-ACTION-01; verificar el nuevo relay no sustituye esa evidencia sobre el despliegue antiguo.
++
++Estados actuales: IMPLEMENTADO_LOCAL; HTTP_AUTORIZADO_VERIFICADO pendiente; TRANSPORTE_REAL_VERIFICADO pendiente; MONTADO_VERIFICADO_ES_EN pendiente. No se declara conexión final ni conformidad global de accesibilidad.

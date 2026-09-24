@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source_head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+  "runtime": "v24.19.0",
+  "checks": [
+    "extracted relay imports with bundled SDK",
+    "disabled by default",
+    "connection page enabled only under fixture config",
+    "server delegates version validation to packaged R03 handler",
+    "code and library provenance headers"
+  ],
+  "network_calls": 0,
+  "real_secret": false,
+  "remote_http": false
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "source_head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+  "runtimes": [
+    {
+      "node": "v22.16.0",
+      "source_head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+      "passed": 256,
+      "failed": 0,
+      "suites": [
+        {
+          "name": "cloud",
+          "passed": 177,
+          "failed": 0,
+          "log": "TESTS_cloud_v22.16.0.log"
+        },
+        {
+          "name": "web-transport",
+          "passed": 79,
+          "failed": 0,
+          "log": "TESTS_web-transport_v22.16.0.log"
+        }
+      ]
+    },
+    {
+      "node": "v24.19.0",
+      "source_head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+      "passed": 256,
+      "failed": 0,
+      "suites": [
+        {
+          "name": "cloud",
+          "passed": 177,
+          "failed": 0,
+          "log": "TESTS_cloud_v24.19.0.log"
+        },
+        {
+          "name": "web-transport",
+          "passed": 79,
+          "failed": 0,
+          "log": "TESTS_web-transport_v24.19.0.log"
+        }
+      ]
+    }
+  ],
+  "method": "Local unit/composition tests, simulated windows and real MessageChannel; no remote HTTP"
+}

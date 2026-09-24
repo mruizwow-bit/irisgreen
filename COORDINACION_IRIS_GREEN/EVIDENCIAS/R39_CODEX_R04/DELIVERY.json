@@ -1,0 +1,34 @@
+{
+  "status": "LOCAL_IMPLEMENTED_ACTIVATION_REQUIRES_SPECIFIC_APPROVAL",
+  "source_head": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+  "source_tree": "7138db244399234055f8ea437389b15715273cc7",
+  "base_head": "3131d55020057c55567a3457900afc888876de5d",
+  "destination_head": "117a53a01bf254054f759e7e08eb06ba06f00d00",
+  "destination_confirmed_by": "A2 issuecomment-5814404116",
+  "destination_modified": false,
+  "additive_patch_verified": true,
+  "files": [
+    {
+      "path": "sabik/retrieval-bridge.browser.mjs",
+      "sha256": "3cfc09fa65818cb0634b0fb288d1a53c5506fb4a2552122d3a3d64dcce763f78"
+    },
+    {
+      "path": "sabik/retrieval-panel.js",
+      "sha256": "aa8826c5260fdb67d495c17fb2e87b38708d090d282c70ddcdb91f24068f6400"
+    },
+    {
+      "path": "sabik/authorized-transport.mjs",
+      "sha256": "88a95e81d127adae7a2b50c2f62bdc44c23c28bdc19c779d22e4d4c7ebdc1799"
+    },
+    {
+      "path": "sabik/AUTHORIZED_TRANSPORT_R04.md",
+      "sha256": "7fb437ad0730866c8f7e4e0f7afb2cd3423340473e666702c1cf5c8a7983fcf2"
+    }
+  ],
+  "remote_http_verified": false,
+  "real_browser_transport_verified": false,
+  "mounted_es_en_verified": false,
+  "deploys": 0,
+  "secrets_changed": false,
+  "platform_settings_changed": false
+}
