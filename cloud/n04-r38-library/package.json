@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "22.16.0",
+    "node": "22.16.0 || >=24.0.0 <25",
     "npm": "10.9.2"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test tests/library.test.mjs tests/retrieval-r39.test.mjs",
+    "test": "node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs",
     "test:retrieval": "node --test tests/retrieval-r39.test.mjs",
     "probe:retrieval": "node scripts/probe-retrieval-r39.mjs",
     "seal:deploy": "node scripts/seal-deploy.mjs"

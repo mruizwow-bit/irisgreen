@@ -1,10 +1,12 @@
-# Biblioteca Sabik N04 · R38
+# Biblioteca Sabik N04 · R38 / integración R39 R02
+
+El incremento R39 conecta el adaptador aceptado a la Function QA existente. El código nuevo consume exclusivamente el despliegue de biblioteca `6ab4c1a15435b93043ab3f6d`; el despliegue de código es distinto. No reemplaza el manifiesto R38. Véase [R39_CONTINUITY.md](R39_CONTINUITY.md) para ejecución, empaquetado y límites de la evidencia.
 
 Motor de recuperación de documentos públicos, exclusivamente de servidor. Base: PR #234, commit `32bde31544bb51feb2a00e14e28b5a58d74a5d55`. Este subproyecto sustituye al diagnóstico R26 únicamente en el nuevo borrador Cloud; no modifica R26 ni la web Iris Green.
 
 ## Fuente y almacenamiento
 
-El build lee `../n04-r26-staging-binding/source/iris-fragments-index.es.json` y verifica sus bytes antes de copiarlos. La fuente permanece en su ubicación y blob originales.
+El build R38 original verificó y copió `../n04-r26-staging-binding/source/iris-fragments-index.es.json`. La fuente permanece en su ubicación y blob originales. El build R39 actual genera sólo procedencia de código; no vuelve a copiar ni sellar datos.
 
 - Versión: `n04-es-20260916-56f72c4d3959`.
 - SHA-256: `56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e`.
@@ -35,9 +37,11 @@ Team Login se mantiene en todos los contextos. Además exige la cabecera `x-n04-
 
 La función tiene un único índice cacheado por despliegue/versión, compartido entre llamadas concurrentes de esa instancia. Una carga fallida se descarta para reintento. No se cachean consultas, respuestas ni datos de usuarios. Las instancias frías descargan dos blobs; las llamadas calientes reutilizan el índice. No hay escrituras desde el runtime.
 
-## Publicación inmutable
+## Publicación inmutable R38 (histórica; no repetir para R39)
 
-1. Node 22.16.0 / npm 10.9.2: `npm ci`, `npm test`, `npm run build` desde este directorio.
+Estas instrucciones describen la entrega R38 original; sus artefactos quedan conservados. El flujo actual está en R39_CONTINUITY.md.
+
+1. Node 22.16.0 / npm 10.9.2: `npm ci`, `npm test`, `npm run build` desde este directorio, en el commit R38 original.
 2. Revisar el manifiesto y crear un borrador en **sabik-asistente**, ID `47b06e68-ff54-4097-8ad8-336b2d71758a`. Nunca usar `--prod`. `netlify deploy --no-build --dir dist` con este `netlify.toml` empaqueta únicamente la función R38.
 3. Pasar credenciales sólo mediante entorno de proceso: `NETLIFY_AUTH_TOKEN`, `N04_DEPLOY_ID`. Ejecutar `npm run seal:deploy`.
 4. El script comprueba identidad del sitio, Team Login, región, despliegue ready/no publicado; escribe corpus y después manifiesto mediante `onlyIfNew`, con lectura fuerte y hash. Nunca sobrescribe una clave distinta. No hay borrados ni limpieza de versiones.
