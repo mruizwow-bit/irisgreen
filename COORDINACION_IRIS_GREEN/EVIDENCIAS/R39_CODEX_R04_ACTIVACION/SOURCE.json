@@ -1,0 +1,12 @@
+{
+  "head": "16f1134e56292ca2ee600e77e69012c494f39aaf",
+  "tree": "7e423e53ef52c0c8b6c970545f9370c4a38e7c03",
+  "base": "e8a8e9579b64ffbe288e2a85889dbe687210554b",
+  "changed_files": [
+    "cloud/n04-r38-library/src/cloud-connection.mjs",
+    "cloud/n04-r38-library/src/team-transport-handler.mjs",
+    "sabik/AUTHORIZED_TRANSPORT_R04.md",
+    "tools/test-sabik-authorized-transport.mjs"
+  ],
+  "frontend_runtime_unchanged": true
+}

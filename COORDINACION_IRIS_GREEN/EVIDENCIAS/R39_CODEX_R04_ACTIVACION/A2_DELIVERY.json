@@ -1,0 +1,29 @@
+{
+  "status": "PATCH_READY_NOT_APPLIED_BY_CODEX",
+  "destination_head": "d52584344240deb352f712debd19e9e7ae76bdd2",
+  "destination_branch": "agent2/sabik-iris-r08-20260924",
+  "cloud_origin": "https://6ab56a1ba2f6d83e6fb7b408--sabik-asistente.netlify.app",
+  "only_web_origin": "https://deploy-preview-244--irisgreen-home.netlify.app",
+  "files": [
+    {
+      "path": "sabik/mount-config.mjs",
+      "before_sha256": "ed9614b77fd9c15934f94560b69116b3529e7b9bf4ccefa437b831cb2e907f04",
+      "after_sha256": "e95f35ac29b633197fd642ef4716afb75698586178bfb9108ebac65f874470d8"
+    },
+    {
+      "path": "sabik/iris-mount.mjs",
+      "before_sha256": "2ccd81d71a4b0199592057ac7bec5e5148950ce5c09ebdbf55d5644c7e7b4d6a",
+      "after_sha256": "bdfd898e0b6d57106c7c9f972ead1bc34a8a110fcb2d88b25761f115d6e54214"
+    },
+    {
+      "path": "sabik/iris-panel.html",
+      "before_sha256": "bbe03783e3be5f6821227568cbbbbe6f6c317d5df8e04c37dece1f824a56d0f2",
+      "after_sha256": "56428c03aa0da148fc866d18f9969d4953101074e80797d3aeaa5459d0d8a9ca"
+    }
+  ],
+  "apply_checked": true,
+  "byte_verified": true,
+  "source_branch_modified": false,
+  "frontend_deployed_by_codex": false,
+  "remote_post_verified": false
+}

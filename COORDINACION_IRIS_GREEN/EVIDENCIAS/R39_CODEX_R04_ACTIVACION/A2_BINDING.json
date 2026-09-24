@@ -1,0 +1,10 @@
+{
+  "origin": "https://deploy-preview-244--irisgreen-home.netlify.app",
+  "branch": "agent2/sabik-iris-r08-20260924",
+  "head": "145cfc43a76f0c1746d45c7158d3f31a784862da",
+  "deploy_id": "6ab566ee0ca62c0008e4b1fd",
+  "evidence_url": "https://github.com/mruizwow-bit/irisgreen/pull/244",
+  "confirmation_method": "Current deployed A2 PR244 artifact: exact deploy_ssl_url, branch, commit and ready state verified directly through Netlify API. Additional message acknowledgement requested, not yet received.",
+  "direct_alias_ack_received": false,
+  "authorization": "https://github.com/mruizwow-bit/irisgreen/issues/237#issuecomment-5819519824"
+}

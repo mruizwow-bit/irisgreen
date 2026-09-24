@@ -1,5 +1,9 @@
 # Estado operativo compartido
 
+## R39 R04 · activación privada autorizada ejecutada
+
+Cloud `6ab56a1ba2f6d83e6fb7b408` READY, privado y no publicado; HEAD `16f1134e56292ca2ee600e77e69012c494f39aaf`, 259/259 por runtime. Team Login all y corpus sellado conservados. GET de la página de conexión accesible con sesión de equipo; POST de búsqueda y transporte desde el formulario A2 pendientes. Delta mínimo de tres archivos probado contra PR244 d5258434, sin modificar su rama. [Entrega y límites](EVIDENCIAS/R39_CODEX_R04_ACTIVACION/INFORME.md). La autorización ya está concedida; no volver a solicitarla. El montaje previo se conserva y no se reabre su QA ya acreditada.
+
 ## Última confirmación de María · Sabik montado · 24/09/2026
 
 María comunica: «todo listo, Sabik esta en la web».

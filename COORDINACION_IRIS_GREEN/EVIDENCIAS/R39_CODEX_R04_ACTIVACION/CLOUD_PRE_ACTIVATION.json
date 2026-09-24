@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-09-24T18:21:09.138292+00:00",
+  "site": {
+    "id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "name": "sabik-asistente",
+    "sso_login": true,
+    "sso_login_context": "all"
+  },
+  "published": {
+    "id": null,
+    "published_at": null
+  },
+  "library": {
+    "id": "6ab4c1a15435b93043ab3f6d",
+    "state": "ready",
+    "context": "deploy-preview",
+    "published_at": null
+  },
+  "R03": {
+    "id": "6ab504fbf5d403147f6de213",
+    "state": "ready",
+    "context": "deploy-preview",
+    "published_at": null
+  },
+  "web_published": {
+    "id": "6aa99a0d467202094ed9320f",
+    "published_at": "2026-09-15T19:18:58.788Z"
+  },
+  "AI_enabled": false
+}
