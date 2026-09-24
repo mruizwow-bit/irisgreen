@@ -47,7 +47,7 @@ def apply(root):
                 a=soup.new_tag('a',href=url);a['data-iris-top']=key;a.string=label;nav.append(a)
             tag=soup.new_tag('script',src='/assets/iris-brief-r08.js');tag['defer']='';soup.body.append(tag)
         # A single shared stylesheet per page. Preserve full content, scripts and SVGs.
-        p.write_text(str(soup).replace('https://irisgreen.eu/img/v40-brand-symbol.webp','https://irisgreen.eu/assets/iris-wordmark.svg')+'\n')
+        p.write_text(str(soup).replace('https://irisgreen.eu/img/v40-brand-symbol.webp','https://irisgreen.eu/assets/iris-wordmark.svg').replace('Símbolo de Iris Green: una flor de iris','Iris Green').replace('Iris Green symbol: an iris flower','Iris Green')+'\n')
         families[kind]+=1;inventory.append({'path':rel,'template':kind,'flower_images_removed':removed,'shared_brief':bool(head),'lang':soup.html.get('lang') if soup.html else None})
     dest=root/'sabik';dest.mkdir(exist_ok=True)
     for p in (ROOT/'sabik').rglob('*'):
