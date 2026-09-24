@@ -21,7 +21,16 @@ function pic(id){return PICTOS.find(p=>p.id===id)||null;}
 function imgFor(id,alt=''){return id?'<svg class="rv-picto" role="img" aria-label="'+esc(alt)+'"><use href="'+BASE+pic(id).sprite+'#'+encodeURIComponent(id)+'"></use></svg>':'';}
 function interfaceDone(){return '<span class="rv-interface-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4 4L19 6.5"></path></svg></span>';}
 function credit(lang){return T[lang].credit;}
-function printTarget(el){ if(!el)return; document.documentElement.setAttribute('data-rv-print','1'); el.setAttribute('data-rv-printing','1'); const cleanup=()=>{document.documentElement.removeAttribute('data-rv-print');el.removeAttribute('data-rv-printing');window.removeEventListener('afterprint',cleanup);}; window.addEventListener('afterprint',cleanup); window.print(); setTimeout(cleanup,1500); }
+function printTarget(el){
+ if(!el)return;
+ document.querySelectorAll('body > .rv-print-document').forEach(node=>node.remove());
+ const copy=el.cloneNode(true);copy.classList.add('rv-print-document');
+ copy.removeAttribute('id');copy.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+ if(copy.querySelector('.rv-strip-sheet'))copy.classList.add('rv-print-landscape');
+ document.body.appendChild(copy);document.documentElement.setAttribute('data-rv-print','1');
+ const cleanup=()=>{copy.remove();document.documentElement.removeAttribute('data-rv-print');window.removeEventListener('afterprint',cleanup);};
+ window.addEventListener('afterprint',cleanup);window.print();
+}
 function footer(lang,showName){const t=T[lang];return '<div class="rv-footer">'+(showName?'<span class="rv-name-line">'+esc(t.routine)+' ____________________</span>':'<span></span>')+'<span>'+esc(t.url)+'</span><span class="rv-credit">'+esc(credit(lang))+'</span></div>';}
 function a4Sheet(steps,lang,title,pageNum,total,showName,id){const t=T[lang];return '<section class="rv-sheet rv-a4" id="'+id+'"><div class="rv-sheet-head"><h3 class="rv-sheet-title">'+esc(title)+'</h3><p class="rv-sheet-sub">'+esc(t.subtitle)+'</p><div class="rv-page-label">'+esc(t.page)+' '+pageNum+' '+esc(t.of)+' '+total+'</div></div><ol class="rv-a4-list">'+steps.map((s,i)=>'<li class="rv-a4-step"><span class="rv-num">'+(s.n||i+1)+'</span>'+(s.id?imgFor(s.id):'<span class="rv-picto" aria-hidden="true"></span>')+'<span class="rv-step-text">'+esc(s.text)+'</span><span class="rv-box" aria-hidden="true"></span></li>').join('')+'</ol>'+footer(lang,showName)+'</section>';}
 function renderA4(steps,lang,title,showName,prefix){const chunks=[];for(let i=0;i<steps.length;i+=5)chunks.push(steps.slice(i,i+5));return '<div class="rv-print-stack" id="'+prefix+'">'+chunks.map((g,k)=>a4Sheet(g.map((s,j)=>({...s,n:k*5+j+1})),lang,title,k+1,chunks.length,showName,prefix+'-'+(k+1))).join('')+'</div>';}

@@ -56,16 +56,18 @@ def browser_checks(root,out):
                 data=target.read_bytes();assert data[:8]==b'\x89PNG\r\n\x1a\n' and len(data)>1000
                 row['png_bytes']=len(data)
               elif kind==2:
-                page.locator('#rv-ready-print').click();page.wait_for_function('window.__printCalls>0')
-                page.locator('#rv-ready-pdf').click();page.wait_for_function('window.__printCalls>1')
                 page.locator('#rv-text-only').fill('Prueba' if lang=='es' else 'Example')
                 page.locator('#rv-add-text').focus();page.locator('#rv-add-text').press('Enter')
+                assert page.locator('#rv-builder-steps li').count()>0
                 row['builder_keyboard']=True
+                page.locator('#rv-ready-print').click();page.wait_for_function('window.__printCalls>0')
+                page.locator('#rv-ready-pdf').click();page.wait_for_function('window.__printCalls>1')
               if kind==0:
                 page.locator('[data-k="print"]').click();page.wait_for_function('window.__printCalls>0')
               if kind in [0,1,2]:
-                pdf=page.pdf(print_background=True);assert len(pdf)>3000
+                pdf=page.pdf(print_background=True,prefer_css_page_size=True)
                 (out/f'print-{kind}-{lang}-{width}.pdf').write_bytes(pdf);row['print_pdf_bytes']=len(pdf)
+                assert len(pdf)>3000,(path,width,len(pdf))
               if kind==0:
                 row['png']='not_applicable_no_png_control'
                 page.locator('[data-k="otra"]').focus();page.locator('[data-k="otra"]').press('Enter')
@@ -74,7 +76,9 @@ def browser_checks(root,out):
               button=page.locator('header [data-ig-lang="'+target_lang+'"]')
               button.click();page.wait_for_url('https://irisgreen.eu'+pair[1 if lang=='es' else 0]+'**',wait_until='commit')
               row['language_target']=page.url
-              row['passed']=True;results.append(row);ctx.close()
+              row['passed']=True;results.append(row)
+              (out/'browser-progress.json').write_text(json.dumps(results,indent=2))
+              ctx.close()
         browser.close()
     finally:server.shutdown()
     return results
