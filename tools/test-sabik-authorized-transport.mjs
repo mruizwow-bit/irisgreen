@@ -33,12 +33,12 @@ function events() {
     dispatch(type, event) { for (const fn of listeners.get(type) ?? []) fn(event); },
   };
 }
-function pair({ fetch, automatic = true, requestTimeoutMs = 500, connectionTimeoutMs = 500 } = {}) {
+function pair({ fetch, automatic = true, requestTimeoutMs = 500, connectionTimeoutMs = 500, origin = webOrigin } = {}) {
   const calls = [], messages = []; let broker, count = 0;
   const host = { ...events(), crypto: globalThis.crypto, MessageChannel };
-  const peer = { ...events(), closed: false, document: { getElementById() { return null; } },
+  const peer = { ...events(), closed: false, document: { documentElement: { dataset: {} }, getElementById() { return null; } },
     close() { this.closed = true; broker?.stop(); },
-    postMessage(data, target, ports) { assert.equal(target, cloudOrigin); messages.push(data); queueMicrotask(() => peer.dispatch('message', { data, source: host, origin: webOrigin, ports })); },
+    postMessage(data, target, ports) { assert.equal(target, cloudOrigin); messages.push(data); queueMicrotask(() => peer.dispatch('message', { data, source: host, origin, ports })); },
     async fetch(path, options) { calls.push({ path, options }); return fetch ? fetch(path, options) : relay(new Request(cloudOrigin + path, {
       ...options, headers: { ...options.headers, origin: cloudOrigin, 'sec-fetch-site': 'same-origin' },
     }), context); },
@@ -46,10 +46,10 @@ function pair({ fetch, automatic = true, requestTimeoutMs = 500, connectionTimeo
   };
   // Browser WindowProxy identity is equal to opener; emulate that identity here.
   peer.opener = Object.assign(host, { postMessage(data, target) {
-    assert.equal(target, webOrigin); queueMicrotask(() => host.dispatch('message', { data, origin: cloudOrigin, source: peer }));
+    assert.equal(target, origin); queueMicrotask(() => host.dispatch('message', { data, origin: cloudOrigin, source: peer }));
   } });
   host.open = url => { count++; assert.ok(url.startsWith(`${cloudOrigin}/sabik-connect?lang=`)); peer.closed = false;
-    if (automatic) queueMicrotask(() => { broker = startCloudConnection({ host: peer, allowedOrigin: webOrigin }); }); return peer; };
+    if (automatic) queueMicrotask(() => { broker = startCloudConnection({ host: peer, allowedOrigin: origin }); }); return peer; };
   const connection = createAuthorizedTransport({ cloudOrigin, window: host, requestTimeoutMs, connectionTimeoutMs });
   return { host, peer, connection, calls, messages, get opened() { return count; }, close() { connection.disconnect(); broker?.stop(); } };
 }
@@ -203,4 +203,30 @@ test('connection document is bilingual, allowlisted, credential-free, uncached a
   }
   const unsafe = createTeamTransportHandler({ qaHandler: qa, env: key => key === 'N04_WEB_ALLOWED_ORIGIN' ? 'https://attacker.invalid' : config[key] });
   assert.equal((await unsafe(new Request(`${cloudOrigin}/sabik-connect`), context)).status, 503);
+});
+test('exact PR preview origin works without an immutable-deploy configuration cycle', async t => {
+  const origin = 'https://deploy-preview-244--irisgreen-home.netlify.app';
+  const p = pair({ origin }); t.after(() => p.close());
+  const result = await createRetrievalQuery({ transport: p.connection.transport, library })({ query: 'sensorial' });
+  assert.ok(result.groups.length);
+  const handler = createTeamTransportHandler({ qaHandler: qa, env: key => key === 'N04_WEB_ALLOWED_ORIGIN' ? origin : config[key] });
+  const document = await handler(new Request(cloudOrigin+'/sabik-connect'), context);
+  assert.equal(document.status, 200); assert.ok((await document.text()).includes(origin));
+});
+test('origin formats never allow production, wildcard, paths or foreign preview sites', async () => {
+  for (const origin of ['https://irisgreen.eu', 'https://irisgreen-home.netlify.app', 'https://*--irisgreen-home.netlify.app',
+    'https://deploy-preview-244--attacker.netlify.app', 'https://deploy-preview-244--irisgreen-home.netlify.app/path', 'https://deploy-preview-0--irisgreen-home.netlify.app']) {
+    const handler = createTeamTransportHandler({ qaHandler: qa, env: key => key === 'N04_WEB_ALLOWED_ORIGIN' ? origin : config[key] });
+    assert.equal((await handler(new Request(cloudOrigin+'/sabik-connect'), context)).status, 503);
+    assert.equal(startCloudConnection({ host: { opener: {} }, allowedOrigin: origin }), null);
+  }
+});
+test('private HTTP correlation exposes only current status and permitted provenance, never a query or secret', async t => {
+  const p = pair({ fetch: () => new Response('{}', { headers: { 'content-type': 'application/json',
+    'x-sabik-code-head': 'a'.repeat(40), 'x-sabik-library-deploy': 'b'.repeat(24), 'set-cookie': fixtureSecret } }) }); t.after(() => p.close());
+  await p.connection.transport({ query: 'synthetic-current-query' });
+  assert.deepEqual(p.peer.document.documentElement.dataset, { n04Request: '1', n04Status: '200', n04ContentType: 'application/json', n04CodeHead: 'a'.repeat(40), n04LibraryDeploy: 'b'.repeat(24) });
+  await p.connection.transport({ query: 'next-synthetic-query' });
+  assert.equal(p.peer.document.documentElement.dataset.n04Request, '2');
+  assert.equal(JSON.stringify(p.peer.document.documentElement.dataset).includes('query'), false);
 });

@@ -1,4 +1,4 @@
-# R04 · Conexión privada de equipo, pendiente de activación
+# R04 · Conexión privada de equipo, activación autorizada
 
 Base preservada: R03 `3131d55020057c55567a3457900afc888876de5d`. No cambia el motor, el agrupador A1, el puente ni el panel. La biblioteca R38 y sus citas ES permanecen intactas.
 
@@ -10,18 +10,18 @@ La ventana Cloud hace POST del mismo origen a `/internal/n04/team/search`. La Fu
 
 Esto es una conexión privada de equipo para comprobar el montaje. **No es la autenticación de visitantes públicos ni hace público Sabik.** La web Iris Green continúa siendo pública. No se presenta la sesión de mantenimiento como autenticación. El servicio público requiere decidir su acceso de consumo por separado; este cambio no activa inferencia, voz ni chat.
 
-## Condición de activación pendiente
+## Autorización de activación
 
-El punto 4 de la orden R04 exige autorización específica para un endpoint de acceso nuevo. No se ha activado ni desplegado esta propuesta. Requiere autorización de María para habilitar exclusivamente esta entrada de lectura en un borrador incremental de `sabik-asistente`, manteniendo Team Login para todos los contextos y la clave QA existente sólo en servidor. No crea secretos ni cambia producción.
+María ha autorizado esta activación, registrada en #237, comentario 5819519824, y en la cabecera de la orden R04. Se habilita exclusivamente esta entrada de lectura en un borrador incremental de `sabik-asistente`, manteniendo Team Login para todos los contextos y la clave QA existente sólo en servidor. No crea secretos ni cambia producción. La evidencia de ejecución se registra separadamente de la autorización.
 
 Configuración de ese único borrador:
 
 - `N04_TEAM_TRANSPORT_ENABLED=true`, ausente por defecto (cierre con 503).
-- `N04_WEB_ALLOWED_ORIGIN`: origen HTTPS exacto de un borrador `24hex--irisgreen-home.netlify.app` confirmado por A2, sin comodines.
+- `N04_WEB_ALLOWED_ORIGIN`: origen HTTPS exacto confirmado por A2, permalink `24hex--irisgreen-home.netlify.app` o alias `deploy-preview-N--irisgreen-home.netlify.app`, sin comodines. El alias exacto evita el ciclo de configuración entre dos permalinks nuevos; no permite otros orígenes de esa PR ni de otro proyecto.
 - `N04_SMOKE_TOKEN`: secreto existente, por el canal local seguro; nunca en archivos ni conversación.
 - Verificar mediante API que Team Login sigue requerido en todos los contextos antes de habilitar. La Function rechaza otro sitio, contexto distinto de deploy-preview y cualquier despliegue publicado. Estas condiciones y los controles CSRF **no sustituyen** la autenticación de Netlify.
 
-Sólo admite consultas de lectura, cuerpo máximo 2.048 bytes heredado de R03, hasta cuatro solicitudes simultáneas por conexión, respuesta máxima 65.536 bytes y cabeceras de respuesta permitidas. No hay historial, almacenamiento de consultas, CORS, reintento automático ni log de contenido. Cancelar durante el login libera sólo al consumidor; cancelar una consulta aborta su fetch. Una respuesta tardía no se entrega. Cerrar la conexión cancela solicitudes y puertos. El motor mantiene su caché compartida R03.
+Sólo admite consultas de lectura, cuerpo máximo 2.048 bytes heredado de R03, hasta cuatro solicitudes simultáneas por conexión, respuesta máxima 65.536 bytes y cabeceras de respuesta permitidas. No hay historial, almacenamiento de consultas, CORS, reintento automático ni log de contenido. En el DOM privado se conserva únicamente el estado HTTP y las cabeceras de procedencia de la solicitud actual, sin consulta, cuerpo ni credenciales; permite verificar HTTP sin exportar la sesión. Cancelar durante el login libera sólo al consumidor; cancelar una consulta aborta su fetch. Una respuesta tardía no se entrega. Cerrar la conexión cancela solicitudes y puertos. El motor mantiene su caché compartida R03.
 
 ## Delta para A2
 
@@ -49,4 +49,4 @@ Las pruebas automatizadas componen ventanas simuladas, MessageChannel, Function 
 
 Tras autorización: declarar HEAD y cambio antes del nuevo borrador; verificar protección del sitio, configurar origen A2 exacto, abrir conexión desde el control real, ejecutar consulta sintética, comprobar JSON/status, cabeceras de código/biblioteca y citas, cancelar y sustituir consulta. Guardar sólo evidencia saneada. A3 comprueba el montaje ES/EN. El antiguo R03 conserva aparte su POST manual pendiente A5-HTTP-ACTION-01; verificar el nuevo relay no sustituye esa evidencia sobre el despliegue antiguo.
 
-Estados actuales: IMPLEMENTADO_LOCAL; HTTP_AUTORIZADO_VERIFICADO pendiente; TRANSPORTE_REAL_VERIFICADO pendiente; MONTADO_VERIFICADO_ES_EN pendiente. No se declara conexión final ni conformidad global de accesibilidad.
+Estado de autorización: AUTORIZADA_ACTIVACION_PRIVADA. Consultar la entrega de activación para los resultados HTTP, transporte y montaje; este contrato no los declara verificados por anticipado. No se declara conformidad global de accesibilidad.

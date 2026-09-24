@@ -13,7 +13,7 @@ export function createTeamTransportHandler({ qaHandler, env }) {
     const url = new URL(request.url);
     if (url.pathname === '/sabik-connect' && request.method === 'GET') {
       const origin = env('N04_WEB_ALLOWED_ORIGIN');
-      if (!/^https:\/\/[a-f0-9]{24}--irisgreen-home\.netlify\.app$/.test(origin ?? '')) return denied(503);
+      if (!/^https:\/\/(?:[a-f0-9]{24}|deploy-preview-[1-9][0-9]*)--irisgreen-home\.netlify\.app$/.test(origin ?? '')) return denied(503);
       const en = url.searchParams.get('lang') === 'en';
       const title = en ? 'Sabik private connection' : 'Conexión privada de Sabik';
       const status = en ? 'Connecting to Iris Green…' : 'Conectando con Iris Green…';

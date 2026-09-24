@@ -1,7 +1,7 @@
 // Runs only on the private Cloud origin, behind the existing Netlify Team Login.
 // This window never receives the QA credential or reads the platform session.
 export function startCloudConnection({ host = globalThis.window, allowedOrigin, language = 'es' } = {}) {
-  if (!/^https:\/\/[a-f0-9]{24}--irisgreen-home\.netlify\.app$/.test(allowedOrigin ?? '') || !host?.opener) return null;
+  if (!/^https:\/\/(?:[a-f0-9]{24}|deploy-preview-[1-9][0-9]*)--irisgreen-home\.netlify\.app$/.test(allowedOrigin ?? '') || !host?.opener) return null;
   const messages = language === 'en'
     ? { ready: 'Connected. Return to Iris Green to search.', closed: 'Connection closed. You can close this window.' }
     : { ready: 'Conectado. Vuelve a Iris Green para buscar.', closed: 'Conexión cerrada. Puedes cerrar esta ventana.' };
@@ -20,12 +20,26 @@ export function startCloudConnection({ host = globalThis.window, allowedOrigin, 
       unavailable(data.id); return;
     }
     const controller = new AbortController(); active.set(data.id, controller);
+    // Ephemeral HTTP correlation for private QA, without query text, cookies,
+    // response content or history. Only the current request owns this marker.
+    const marker = host.document?.documentElement?.dataset;
+    if (marker) {
+      marker.n04Request = data.id; marker.n04Status = 'pending';
+      for (const key of ['n04ContentType', 'n04CodeHead', 'n04LibraryDeploy']) delete marker[key];
+    }
     const timeout = setTimeout(() => controller.abort(), 15000);
     let reader;
     try {
       const response = await host.fetch('/internal/n04/team/search', { method: 'POST',
         headers: { 'content-type': 'application/json' }, body: data.body,
         credentials: 'same-origin', mode: 'same-origin', cache: 'no-store', redirect: 'error', signal: controller.signal });
+      if (marker?.n04Request === data.id && !controller.signal.aborted) {
+        marker.n04Status = String(response.status);
+        marker.n04ContentType = /^application\/json(?:;|$)/i.test(response.headers.get('content-type') ?? '') ? 'application/json' : 'other';
+        const head = response.headers.get('x-sabik-code-head'), deploy = response.headers.get('x-sabik-library-deploy');
+        if (/^[a-f0-9]{40}$/.test(head ?? '')) marker.n04CodeHead = head;
+        if (/^[a-f0-9]{24}$/.test(deploy ?? '')) marker.n04LibraryDeploy = deploy;
+      }
       // A renewed login challenge is never interpreted as search data.
       if (!/^application\/json(?:;|$)/i.test(response.headers.get('content-type') ?? '') || !response.body) throw new Error('Unavailable');
       reader = response.body.getReader(); const chunks = []; let bytes = 0;
