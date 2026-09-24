@@ -1,0 +1,30 @@
+name: Iris Green y Sabik R08
+on:
+  push:
+    branches: ['agent2/sabik-iris-r08-20260924']
+  pull_request:
+    paths: ['sabik/**','assets/iris-*','scripts/*iris_brief*','.github/workflows/iris-sabik-r08.yml']
+permissions:
+  contents: read
+jobs:
+  mounted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install beautifulsoup4 pillow playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: node tools/test-sabik-motion-r37.js
+      - run: python scripts/build_site.py
+      - run: python scripts/test_iris_brief_r08.py
+      - run: python scripts/test_resources_current.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iris-sabik-r08
+          path: |
+            reports/iris-brief-r08/
+            reports/resources-current/
