@@ -1,6 +1,5 @@
 diff --git a/cloud/n04-r38-library/scripts/check-runtime.mjs b/cloud/n04-r38-library/scripts/check-runtime.mjs
 new file mode 100644
-index 0000000..04d2d47
 --- /dev/null
 +++ b/cloud/n04-r38-library/scripts/check-runtime.mjs
 @@ -0,0 +1,58 @@
@@ -64,7 +63,6 @@ index 0000000..04d2d47
 +if (a5Failures.length || (strict && integrationPending.length)) process.exit(1);
 diff --git a/cloud/n04-r38-library/src/r39-runtime-transport.mjs b/cloud/n04-r38-library/src/r39-runtime-transport.mjs
 new file mode 100644
-index 0000000..ddd7138
 --- /dev/null
 +++ b/cloud/n04-r38-library/src/r39-runtime-transport.mjs
 @@ -0,0 +1,53 @@
@@ -123,7 +121,6 @@ index 0000000..ddd7138
 +}
 diff --git a/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs b/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs
 new file mode 100644
-index 0000000..1299e32
 --- /dev/null
 +++ b/cloud/n04-r38-library/tests/r39-runtime-transport.test.mjs
 @@ -0,0 +1,82 @@
@@ -155,65 +152,57 @@ index 0000000..1299e32
 +  const calls = { factories: [], inputs: [] };
 +  const transport = createR39RuntimeTransport({ createRetrieval: stubFactory(calls) });
 +  const result = await transport.retrieve({ q: 'sobrecarga sensorial', limit: 3, version: 'n04-es-20260916-56f72c4d3959' });
-+  assert.deepE\]X[
-Ø[ËXÝÜY\ËÞÈX\Q\ÞRYÎÓPTWÑTÖWÒQWJNÂ\ÜÙ\Y\\]X[
-Ø[Ë[]ËÞÈ]Y\N	ÜÛØXØ\ØHÙ[ÛÜX[	Ë[Z]ËX\U\Ú[Û	ÛY\ËLLMMMÌÍÎMNIÈWJNÂÈ\ÜÙ\Y\\]X[
-\Ý[È[]Ø[Ë[]ÖÌHJNÂJNÂ\Ý
-	Ü\]Y\Ý]HØ[ÝÙ[XÝH\Þ[Y[ÜY[ÜÜY[ÉË\Þ[È
-
-HOÂÛÛÝØ[ÈHÈXÝÜY\Î×K[]Î×HNÂÛÛÝ[ÜÜHÜX]TÎT[[YU[ÜÜ
-ÈÜX]T]Y][ÝXXÝÜJØ[ÊHJNÂ]ØZ]\ÜÙ\ZXÝÊ[ÜÜ]Y]JÈN	Ø\Þ[ÜÉË\ÞRY	ÙË\X]
-
-HJK\ÜO\ÜÙ\ÛÙJ\Ü	ÒSSQÔUQUSÔUQTIÊJNÂ]ØZ]\ÜÙ\ZXÝÊ[ÜÜ]Y]JÈN	Ø\Þ[ÜÉËX\Q\ÞRY	ÙË\X]
-
-HJK\ÜO\ÜÙ\ÛÙJ\Ü	ÒSSQÔUQUSÔUQTIÊJNÂ\ÜÙ\Y\\]X[
-Ø[Ë[]Ë×JNÂJNÂ\Ý
-	ÙÜZYÛÜX[ÜYYÙ\\\ÚYH\Þ[Y[Y[]HZ[ÈYÜH]Y][ÛÛÝXÝ[ÛË
-
-HOÂ]Ø[YH[ÙNÂÜ
-ÛÛÝX\Q\ÞRYÙÉÙË\X]
-
-K	Ý\Ù\\ÝYYZ[[Y	Ë	ÉË[JHÂ\ÜÙ\ÝÜÊ
-
-HOÜX]TÎT[[YU[ÜÜ
-ÂX\Q\ÞRYÜX]T]Y][
-
-HOÈØ[YHYNÈ]\È]Y]QÜØXZÊ
-HßHNÈKJK\ÜO\ÜÙ\ÛÙJ\Ü	ÓPTWÕSURSPIÊJNÂB\ÜÙ\\]X[
-Ø[Y[ÙJNÂJNÂ\Ý
-	ÛÛH]Y][ÛÛ\ÜÚ][Û\ÈÚ\YXÜÜÜÈØ[È[]Y\KÜ\Ý[ØXÚ[È\ÈÝ[ÙXÙY\IË\Þ[È
-
-HOÂÛÛÝØ[ÈHÈXÝÜY\Î×K[]Î×HNÂÛÛÝ[ÜÜHÜX]TÎT[[YU[ÜÜ
-ÈÜX]T]Y][ÝXXÝÜJØ[Ë\Þ[È[]O
-ÈX\Ù\[]]Y\HJJHJNÂÛÛÝØK×HH]ØZ]ÛZ\ÙK[
-Â[ÜÜ]Y]JÈN	Ø\Þ[ÜÉÈJK[ÜÜ]Y]JÈN	ÜÙ[ÛÜX[	Ë[Z]JK[ÜÜ]Y]JÈN	ÛXÝ\HLLXÚ[	ÈJKJNÂ\ÜÙ\\]X[
-Ø[ËXÝÜY\Ë[ÝJNÂ\ÜÙ\Y\\]X[
-Ø[Ë[]ËX\
-[]O[]]Y\JKÉØ\Þ[ÜÉË	ÜÙ[ÛÜX[	Ë	ÛXÝ\HLLXÚ[	×JNÂ\ÜÙ\Y\\]X[
-ØKX\Ù\X\Ù\ËX\Ù\KÉØ\Þ[ÜÉË	ÜÙ[ÛÜX[	Ë	ÛXÝ\HLLXÚ[	×JNÂJNÂ\Ý
-	ÜØYHÎH]Y][\ÜÈÜYØ]HÚ]Ý][ÜÜ\ÜXÚYXÈ]Z[	Ë\Þ[È
-
-HOÂÛÛÝ[ÜÜHÜX]TÎT[[YU[ÜÜ
-ÂÜX]T]Y][
-
-HO
-È]Y]QÜØXZÎ\Þ[È
-
-HOÈÝÈ]ÈØXZÔ]Y][\Ü	ÓPTWÕSURSPIÊNÈHJKJNÂ]ØZ]\ÜÙ\ZXÝÊ[ÜÜ]Y]JÈN	Ø\Þ[ÜÉÈJK\ÜO\ÜÙ\ÛÙJ\Ü	ÓPTWÕSURSPIÊJNÂJNÂ\Ý
-	Ú[[YXÝÜH[[[Y\ÙYÙHZ[ÛÜÙY	Ë\Þ[È
-
-HOÂ\ÜÙ\ÝÜÊ
-
-HOÜX]TÎT[[YU[ÜÜ
-ÈÜX]T]Y][
-
-HO
-ßJHJK\ÜO\ÜÙ\ÛÙJ\Ü	ÓPTWÕSURSPIÊJNÂÛÛÝ[ÜÜHÜX]TÎT[[YU[ÜÜ
-ÈÜX]T]Y][
-
-HO
-È]Y]QÜØXZÎ\Þ[È[]O[]JHJNÂÜ
-ÛÛÝ[YHÙÝ[Y[Y[×K	Ø\Þ[ÜÉ×JHÂ]ØZ]\ÜÙ\ZXÝÊ[ÜÜ]Y]J[YJK\ÜO\ÜÙ\ÛÙJ\Ü	ÒSSQÔUQUSÔUQTIÊJNÂBÛÛÝÙ]\HßNÂØXÝY[TÜ\JÙ]\	ÜIËÈÙ]
-
-HÈ\ÜÙ\Z[
-	ÙÙ]\]\ÝÝ[ÊNÈK[[Y\XNYHJNÂ]ØZ]\ÜÙ\ZXÝÊ[ÜÜ]Y]JÙ]\K\ÜO\ÜÙ\ÛÙJ\Ü	ÒSSQÔUQUSÔUQTIÊJNÂJNÂ
++  assert.deepEqual(calls.factories, [{ libraryDeployId: R38_LIBRARY_DEPLOY_ID }]);
++  assert.deepEqual(calls.inputs, [{ query: 'sobrecarga sensorial', limit: 3, libraryVersion: 'n04-es-20260916-56f72c4d3959' }]);
++  assert.deepEqual(result, { input: calls.inputs[0] });
++});
++
++test('request data cannot select a deployment or add transport fields', async () => {
++  const calls = { factories: [], inputs: [] };
++  const transport = createR39RuntimeTransport({ createRetrieval: stubFactory(calls) });
++  await assert.rejects(transport.retrieve({ q: 'apoyos', deployId: 'f'.repeat(24) }), error => assertCode(error, 'INVALID_RETRIEVAL_QUERY'));
++  await assert.rejects(transport.retrieve({ q: 'apoyos', libraryDeployId: 'f'.repeat(24) }), error => assertCode(error, 'INVALID_RETRIEVAL_QUERY'));
++  assert.deepEqual(calls.inputs, []);
++});
++
++test('foreign or malformed server-side deployment identity fails before retrieval construction', () => {
++  let called = false;
++  for (const libraryDeployId of ['f'.repeat(24), 'user-provided-invalid', '', null]) {
++    assert.throws(() => createR39RuntimeTransport({
++      libraryDeployId,
++      createRetrieval: () => { called = true; return { retrieveForSabik() {} }; },
++    }), error => assertCode(error, 'LIBRARY_UNAVAILABLE'));
++  }
++  assert.equal(called, false);
++});
++
++test('one retrieval composition is shared across calls and query/result caching is not introduced here', async () => {
++  const calls = { factories: [], inputs: [] };
++  const transport = createR39RuntimeTransport({ createRetrieval: stubFactory(calls, async input => ({ marker: input.query })) });
++  const [a, b, c] = await Promise.all([
++    transport.retrieve({ q: 'apoyos' }),
++    transport.retrieve({ q: 'sensorial', limit: 2 }),
++    transport.retrieve({ q: 'lectura f\u00e1cil' }),
++  ]);
++  assert.equal(calls.factories.length, 1);
++  assert.deepEqual(calls.inputs.map(input => input.query), ['apoyos', 'sensorial', 'lectura f\u00e1cil']);
++  assert.deepEqual([a.marker, b.marker, c.marker], ['apoyos', 'sensorial', 'lectura f\u00e1cil']);
++});
++
++test('safe R39 retrieval errors propagate without transport-specific detail', async () => {
++  const transport = createR39RuntimeTransport({
++    createRetrieval: () => ({ retrieveForSabik: async () => { throw new SabikRetrievalError('LIBRARY_UNAVAILABLE'); } }),
++  });
++  await assert.rejects(transport.retrieve({ q: 'apoyos' }), error => assertCode(error, 'LIBRARY_UNAVAILABLE'));
++});
++
++test('invalid factory and invalid parsed body fail closed', async () => {
++  assert.throws(() => createR39RuntimeTransport({ createRetrieval: () => ({}) }), error => assertCode(error, 'LIBRARY_UNAVAILABLE'));
++  const transport = createR39RuntimeTransport({ createRetrieval: () => ({ retrieveForSabik: async input => input }) });
++  for (const value of [undefined, null, [], 'apoyos']) {
++    await assert.rejects(transport.retrieve(value), error => assertCode(error, 'INVALID_RETRIEVAL_QUERY'));
++  }
++  const getter = {};
++  Object.defineProperty(getter, 'q', { get() { assert.fail('getter must not run'); }, enumerable: true });
++  await assert.rejects(transport.retrieve(getter), error => assertCode(error, 'INVALID_RETRIEVAL_QUERY'));
++});
