@@ -8,6 +8,6 @@ Rincón ES/EN: bundle entregado con soporte WebGL1 y WebGL2, aviso cuando no hay
 
 Solo se integra Rincón del ZIP. Recursos R03 y memoria/control del donante no se copian encima de versiones posteriores R17/R18. Cabeceras y pies del donante Rincón coinciden con el HEAD actual. No se sustituye el catálogo de 252 juegos ni los 118 vídeos con Dan primero.
 
-HEAD cd39aa8ca957a4b1448400be98d0911b35851db6, PR244. 17 archivos cambiados. Build propio correcto (2113 archivos). Deploy 6ab54f8f004b0100085d6eac pendiente y QA navegador pendiente en este registro.
+HEAD cd39aa8ca957a4b1448400be98d0911b35851db6, PR244. 17 archivos cambiados. Build propio correcto (2113 archivos). Deploy 6ab54f8f004b0100085d6eac SUCCESS. QA propia de navegador: barra en dos filas con controles visibles en Rincón ES/EN y Videoteca; sin desbordamiento a 1363px. Ocho miniaturas con sus URL propias y catálogo de doce sonidos sin Ambient music. Medusas sin WebGL muestra aviso ES/EN y ningún canvas de tubo. Acuario abre canvas 2D propio y se puede parar. Río cambia a Sonando/aria-pressed y Parar sonido lo devuelve a false. No se evalúa el realismo auditivo ni se simula WebGL1/2 en este navegador sin GPU.
 
 Las pruebas de WebGL1/WebGL2, axe y escucha descritas en la entrega son del donante; no se atribuyen a A2. GPU real, móvil y valoración auditiva humana pendientes. No certificación normativa. Sin main, producción ni Cloud.

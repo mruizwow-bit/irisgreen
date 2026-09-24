@@ -97,4 +97,4 @@ Tarjetas ilustradas ES/EN, retirada del bloque de hojas antiguas y corrección d
 
 ## Barra interior y Rincón · A2 R19
 
-Cabecera interior en dos filas y nuevo Rincón: 12 sonidos, ocho miniaturas y bundle compatible WebGL1. HEAD cd39aa8ca957a4b1448400be98d0911b35851db6, build correcto; deploy y QA pendientes. [Registro](MEMORIA/WEB_A2_BARRA_RINCON_R19_20260924.md).
+Cabecera interior en dos filas y nuevo Rincón: 12 sonidos, ocho miniaturas y bundle compatible WebGL1. HEAD cd39aa8ca957a4b1448400be98d0911b35851db6, build correcto; deploy SUCCESS. Barra completa comprobada en Rincón y Videoteca; 12 sonidos, ocho miniaturas y fallback ES/EN verificados. [Registro](MEMORIA/WEB_A2_BARRA_RINCON_R19_20260924.md).
