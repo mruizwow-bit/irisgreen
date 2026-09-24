@@ -1,0 +1,50 @@
+{
+  "schema": "IRIS_AGENT_DELIVERY_REVIEW/1.0",
+  "date": "2026-09-24",
+  "reviewer": "Astra",
+  "codex_reference_head": "66b6b551ad055ea9e367ebdff7246b381f4656d3",
+  "report": "../MEMORIA/REVISION_FINAL_AGENTES_R39_2026-09-24.md",
+  "environment": {"node": "22.16.0", "python": "3.13.5", "node24_executed": false, "real_http_executed": false, "human_audio_accessed": false, "actual_browser_executed": false, "deployed": false, "product_changed": false},
+  "original_tests_reproduced": {
+    "total": 53, "pass": 53, "fail": 0,
+    "warning": "These are the delivered test cases, not global acceptance. Additional negative probes revealed failures.",
+    "agents": [
+      {"id": "R39-A1", "head": "b0a55cb3ab94ad9f44d2ce3e8c1ce4513c9f475d", "command": "node --test tests/source-groups.test.mjs", "pass": 8, "exit": 0, "scope": "pure grouping with synthetic verified-candidate fixtures", "log_sha256": "235e5021f38471f58a4294cf08ab56f3d92771bd0444ee00e2a1de2b32e20707", "verdict": "MODULE_ACCEPTED_INTEGRATION_PENDING"},
+      {"id": "R39-A3", "head": "f5c7d4fb24c7ae2f2c9eed98d6745bc1d98c3842", "command": "node tools/test-sabik-retrieval-panel.js", "pass": 14, "exit": 0, "scope": "DOM doubles, not browser or assistive technology", "log_sha256": "246b86900e3c9f46e917eb22881c2c76c9670c4b1af704f7d8ae3078741a0cef", "verdict": "TARGETED_CORRECTIONS_REQUIRED"},
+      {"id": "R39-A4", "head": "e58c343e661a713f8dcececae722caec448b6816", "command": "node --test tests/execution-policy.test.mjs", "pass": 8, "exit": 0, "scope": "execution module with real R39 error mapping, no live storage", "log_sha256": "cfb67109c149befeb028c0ada4935b90e16a877cc3dcbfd7bb69387a1ce947e1", "verdict": "REVIEWED_DO_NOT_REPLACE_CODEX_IMPLEMENTATION"},
+      {"id": "R39-A5", "head": "de31ae038f2496e4644356404535105d41b208c2", "command": "node --test tests/r39-runtime-transport.test.mjs", "pass": 6, "exit": 0, "scope": "author's injected factories; SDK import resolved with throwing stub never invoked; not a real SDK test", "log_sha256": "e6cc9834eabb27b04736638ba3125ee996899b4a1b9b1979f391a5e437983385", "verdict": "REVIEWED_DO_NOT_ADD_DUPLICATE_TRANSPORT"},
+      {"id": "S2-A6", "code_bundle_sha256": "36c5da7aecf0d8c9fb23219a7326336608dfedf3f0103afa222b24c750396243", "command": "python -B -m unittest discover -s tests -v", "pass": 9, "exit": 0, "scope": "synthetic WAV only; no human recording", "log_sha256": "603ab25c220c928234a451fb8059165f69aed5ccb14b0e9bc60c45a80798e3a9", "verdict": "TRUNCATED_INPUT_CORRECTION_REQUIRED"},
+      {"id": "R39-A7", "head": "57ae8bf24e30eebe8a625be2dc8244ededb7e136", "command": "node --test tools/sabik-delivery/check-delivery.test.mjs", "pass": 8, "exit": 0, "scope": "temporary Git repositories only", "log_sha256": "bf8e7a01042ebf8307fd6642f66ad06a8da4ff7c77e912b2564f48fe644ac2ea", "verdict": "NOT_ACCEPTED_AS_DELIVERY_GATE"}
+    ]
+  },
+  "negative_probes": {
+    "A3": {
+      "probe_output_sha256": "e9816f5d3d115398adfe9e9d179f58c53664fe9c190207c5b3cdc4df10993366",
+      "technical_metadata_visible": true,
+      "current_codex_cancel": {"input_error_code": "REQUEST_CANCELLED", "actual_panel_status": "error", "expected_semantic_status": "cancelled"},
+      "language": {"english_ui": true, "spanish_excerpt": true, "explicit_excerpt_lang": false, "root_lang": null},
+      "direct_http_envelope": {"field": "results", "actual_panel_status": "error", "classification": "missing integration bridge, not failure of the declared candidates interface"},
+      "source_groups_consumed": false,
+      "defense_in_depth": {"accepted_href": "https://user:pass@example.invalid/not-iris", "actual_panel_status": "results", "not_a_live_exploit_claim": true}
+    },
+    "A6": {
+      "probe_output_sha256": "0e9b39b21c9560e7293fe143984ca6a5693fe6a18c6b3796fad2f993ffd8056c",
+      "synthetic_source": {"pcm_bits": 16, "channels": 1, "sample_rate_hz": 16000, "declared_frames": 1600},
+      "remove_20_bytes": {"validation_status": "valid", "declared_frames": 1600, "read_samples": 1590, "package_status": "created", "expected": "controlled rejection; no valid package"},
+      "remove_1_byte": {"exception": "struct.error", "safe_validation_error": false, "message": "unpack requires a buffer of 3198 bytes", "expected": "AudioValidationError"}
+    },
+    "A7": {
+      "probe_output_sha256": "d7321e74a7d31241c58ad442a3545a9b7d2e0a27e303a7da5901919be3787375",
+      "valid_baseline": "VALID",
+      "empty_changes_patch": {"actual": "VALID", "expected": "BLOCKED"},
+      "altered_patch_payload_same_path": {"actual": "VALID", "expected": "BLOCKED"},
+      "manifest_command_only": {"text": "git status --short && git reset --hard", "actual": "VALID", "expected": "BLOCKED_OR_NOT_ASSESSED", "executed": false}
+    }
+  },
+  "unchanged_pending_items": ["HTTP_AUTHORIZED_RUNTIME_CROSS_DEPLOY", "C17_PLATFORM_RETENTION", "OBS-R39-BODY-01", "FRONTEND_INTEGRATION_AND_HUMAN_REVIEW"],
+  "correction_execution_confirmed": false,
+  "normative_reference": "../NORMATIVA/REQUISITOS_OPERATIVOS_ES_EN.md",
+  "public_languages_required": ["es", "en"],
+  "sealed_corpus_language": "es",
+  "masters_v106_v114_overwritten": false
+}
