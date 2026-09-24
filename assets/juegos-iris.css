@@ -15,7 +15,7 @@
 .jg-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
 .jg-finder{display:flex;flex-direction:column;gap:1rem}
 .jg-search{display:flex;flex-direction:column;gap:.4rem;max-width:32rem;font-weight:700}
-.jg-search input{min-height:48px;padding:.6rem 1rem;border:1px solid #b9cbd8;border-radius:999px;background:#fff;font:inherit;font-weight:400;color:#17395c}
+.jg-search input{min-height:48px;padding:.6rem 1rem;border:1px solid #8492a5;border-radius:999px;background:#fff;font:inherit;font-weight:400;color:#17395c}
 .jg-search input:focus{border-color:#1f5f8b}
 .jg-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:1rem}
 .jg-cards li{display:flex}
