@@ -602,7 +602,7 @@
           var r = evaluate(ch); T.clear(res);
           var allOk = r.every(function (x) { return x[0]; });
           res.appendChild(T.result(allOk, allOk ? t('dCheckAllOk') : t('dCheckSome')));
-          res.appendChild(h('ul', { class: 'igt-limits' }, r.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
+          res.appendChild(h('ul', { class: 'igt-limits igt-checks', role: 'list' }, r.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
         } }));
         if (ch.setup) wrap.appendChild(T.btn(t('dSetup'), { onClick: function () { applySetup(ch.setup); } }));
       }

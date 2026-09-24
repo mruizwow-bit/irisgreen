@@ -87,6 +87,7 @@ body{color:var(--ink)}
 .igt-brief p{margin:0;line-height:1.55}
 .igt-brief-k{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--violet)}
 .igt-limits{margin:0;padding-left:1.2rem;display:grid;gap:3px}
+.igt-checks{list-style:none;padding-left:0}
 .igt-tip{font-size:15px;color:#46406e}
 .igt-result{display:flex;gap:10px;align-items:flex-start;border-radius:14px;padding:10px 13px;margin:0;font-size:15.5px;line-height:1.5}
 .igt-result.ok{background:rgba(29,107,58,.1);border:1px solid rgba(29,107,58,.35);color:#154d2a}
@@ -96,7 +97,7 @@ body{color:var(--ink)}
 /* Texto equivalente y tablas */
 .igt-alt{border-radius:16px;background:rgba(255,255,255,.7);border:1px solid var(--line);padding:12px 14px;font-size:15px;line-height:1.55}
 .igt-alt h3{font:700 14px/1.3 'Atkinson Hyperlegible',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3b4d63;margin:0 0 6px}
-.igt-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;max-height:22rem}
+.igt-table-wrap{position:relative;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;max-height:22rem}
 .igt-table{border-collapse:collapse;width:100%;font-size:14.5px}
 .igt-table caption{text-align:left;padding:8px 10px;font-weight:700}
 .igt-table th,.igt-table td{padding:7px 10px;border-bottom:1px solid rgba(23,57,92,.09);text-align:left;vertical-align:top}
@@ -162,6 +163,8 @@ body.hc .igt-note,body.hc .igt-caption{color:#1f2d3d}
   body.igt-print-focus main>:not(#igt-app){display:none!important}
   body.igt-print-focus #igt-app>:not(.igt-print-keep){display:none!important}
   body.igt-print-focus .igt-side .igt-palette-wrap,body.igt-print-focus .igt-side .igt-tabs,body.igt-print-focus .igt-side .igt-blocks-box,body.igt-print-focus .igt-side .igt-text-box,body.igt-print-focus .igt-side label{display:none!important}
+  .igt-panel>summary::after{display:none!important}
+  body.igt-print-focus .igt-side details:not([open]),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-side details:not(:first-child),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-stage>:is(.igt-note,.igt-keys),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-table-wrap .igt-btn.icon-only{display:none!important}
   pre.igt-print-only{white-space:pre-wrap;font-size:10pt;border:1px solid #ccd;padding:8px;border-radius:6px}
   .igt-canvas-box canvas{max-height:18cm;object-fit:contain}}
 main#main.igx.igt{max-width:88rem;width:100%}
@@ -196,3 +199,12 @@ main#main.igx.igt{max-width:88rem;width:100%}
 html:has(main.igt){scroll-padding-top:140px;scroll-padding-bottom:24px}
 .igt :is(input,select,textarea,button,a,canvas,summary){scroll-margin-top:140px}
 @media print{.igt-print-sheet:last-child{break-after:auto}}
+/* Estudio de diseño gráfico */
+.igt-xy{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.igt-xy .igt-field input{width:100%}
+.igt-colour-row{align-items:flex-end}
+.igt-colour-row input[type=text]{inline-size:7.5em;min-block-size:44px;font-family:ui-monospace,"Courier New",monospace}
+.igt-contrast-sample{margin:10px 0;padding:12px 14px;border-radius:12px;border:1px solid var(--line);font-size:18px;line-height:1.4}
+.igt-row-sel th,.igt-row-sel td{background:rgba(91,63,160,.08)}
+.igt-dis-box{background:#e9edf2}
+@media (forced-colors:active){.igt-contrast-sample{forced-color-adjust:none}}

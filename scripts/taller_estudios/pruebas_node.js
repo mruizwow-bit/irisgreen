@@ -1,4 +1,4 @@
-/* Pruebas del Taller sin navegador: cálculo de estructuras, lenguaje propio y robótica.
+/* Pruebas del Taller sin navegador: estructuras, lenguaje propio, robótica, circuitos, máquinas y diseño gráfico.
    Uso: node scripts/taller_estudios/pruebas_node.js  (sale con código 1 si algo falla) */
 'use strict';
 const path = require('path');
@@ -70,5 +70,55 @@ let W = run('corridor', 0, ['avanzar 105\nderecha 90\navanzar 25\nesperar 160\nr
 ok(W.bots.every(b => W.atGoal(b) && !b.bumps), 'r7: dos robots se cruzan sin chocar');
 W = run('meet', 0, ['avanzar 60\nderecha 90\navanzar 95', 'avanzar 60\nderecha 90\navanzar 85']);
 ok(W.bots.every(b => W.atGoal(b) && !b.bumps), 'r8: encuentro');
+
+/* Circuitos */
+const CI = require(A('ig-taller-circuitos-calc.js'));
+const cbat = (a, b, kind) => ({ t: 'battery', a, b, kind: kind || 'pack' }), cw = (a, b) => ({ t: 'wire', a, b }), clamp = (a, b) => ({ t: 'lamp', a, b }), cled = (a, b) => ({ t: 'led', a, b, color: 'rojo' }), cres = (a, b, r) => ({ t: 'resistor', a, b, r });
+let e = CI.solveElec([cbat([0, 0], [0, 4]), cw([0, 4], [4, 4]), clamp([4, 4], [4, 0]), cw([4, 0], [0, 0])]);
+ok(e.ok && e.comps[2].bright > 0.8 && !e.comps[2].burnt, 'c1: una pila y una bombilla lucen');
+e = CI.solveElec([cbat([0, 0], [0, 4]), cw([0, 4], [4, 4]), clamp([4, 4], [4, 0]), cw([4, 4], [6, 4]), clamp([6, 4], [6, 0]), cw([6, 0], [4, 0]), cw([4, 0], [0, 0])]);
+ok(e.ok && e.comps[2].bright >= 0.8 && e.comps[4].bright >= 0.8, 'c2: dos bombillas en paralelo al 80 % o más');
+e = CI.solveElec([cbat([0, 0], [0, 4]), cw([0, 4], [0, 0])]);
+ok(e.short, 'c: cortocircuito detectado');
+e = CI.solveElec([cbat([0, 0], [0, 4], 'v9'), cw([0, 4], [4, 4]), cled([4, 4], [4, 0]), cw([4, 0], [0, 0])]);
+ok(e.comps[2].burnt, 'c4: LED sin resistencia a 9 V se quema');
+e = CI.solveElec([cbat([0, 0], [0, 4], 'v9'), cres([0, 4], [4, 4], 330), cled([4, 4], [4, 0]), cw([4, 0], [0, 0])]);
+ok(e.comps[2].lit && !e.comps[2].burnt, 'c4: LED con 330 Ω luce sin quemarse');
+const HA = [{ t: 'input', p: [0, 1], label: 'A', v: 0 }, { t: 'input', p: [0, 3], label: 'B', v: 0 }, { t: 'wire', a: [0, 1], b: [2, 1] }, { t: 'wire', a: [0, 3], b: [2, 3] }, { t: 'xor', p: [2, 2] },
+  { t: 'and', p: [2, 6] }, { t: 'wire', a: [0, 1], b: [0, 5] }, { t: 'wire', a: [0, 5], b: [2, 5] }, { t: 'wire', a: [0, 3], b: [1, 3] }, { t: 'wire', a: [1, 3], b: [1, 7] }, { t: 'wire', a: [1, 7], b: [2, 7] },
+  { t: 'out', p: [4, 2], label: 'S' }, { t: 'out', p: [4, 6], label: 'C' }];
+ok(CI.matchTable(HA, CI.TARGETS.half).ok, 'l2: semisumador con O exclusiva e Y');
+
+/* Máquinas */
+const MQ = require(A('ig-taller-maquinas-calc.js'));
+let g = [{ id: 1, x: 0, y: 0, z: 20, layer: 0 }], p2 = MQ.placeMeshed(g[0], 60, 0); g.push({ id: 2, x: p2.x, y: p2.y, z: 60, layer: 0 });
+let gr = MQ.solveGears(g, 1, 60);
+ok(Math.abs(gr.speed[2] + 20) < 1e-9 && Math.abs(gr.torque[2] - 3) < 1e-9, 'g1: 20 contra 60 dientes, 1:3 y sentido contrario');
+g.push({ id: 3, x: p2.x, y: p2.y, z: 12, layer: 1 }); const p4 = MQ.placeMeshed(g[2], 48, 90); g.push({ id: 4, x: p4.x, y: p4.y, z: 48, layer: 1 });
+gr = MQ.solveGears(g, 1, 60);
+ok(Math.abs(gr.speed[4] - 5) < 1e-9 && !gr.jam && !gr.collisions.length, 'g5: tren compuesto 1:12 en el mismo sentido');
+const tri = [{ id: 1, x: 0, y: 0, z: 20, layer: 0 }]; const q2 = MQ.placeMeshed(tri[0], 20, 0); tri.push({ id: 2, x: q2.x, y: q2.y, z: 20, layer: 0 }); const q3 = MQ.placeMeshed(tri[0], 20, 60); tri.push({ id: 3, x: q3.x, y: q3.y, z: 20, layer: 0 });
+ok(MQ.solveGears(tri, 1, 60).jam, 'g: tres engranajes en triángulo se bloquean');
+const lv = MQ.lever(3, 0.75, 0, 3, 60);
+ok(Math.abs(lv.effort - 20) < 1e-9 && lv.kind === 1, 'p1: palanca de primer tipo, 60 kg con 20 kg');
+ok(MQ.lever(3, 0, 1, 3, 60).kind === 2 && MQ.lever(3, 0, 3, 1.2, 10).kind === 3, 'p2 y p3: tipos segundo y tercero');
+ok(MQ.pulley('pol4', 100, 2).effortKg > 30 && MQ.pulley('pol6', 100, 2).effortKg < 30, 'q2: con rozamiento, 100 kg piden el polipasto de 6 tramos');
+ok(MQ.pulley('pol6', 1000, 3).rope === 18 && MQ.pulley('pol6', 1000, 3).effortKg < 250, 'q4: una tonelada a 3 m');
+ok(MQ.checkChain([{ part: 'rampa', inp: 'rodar', out: 'caida' }, { part: 'palanca', inp: 'caida', out: 'empujon' }, { part: 'domino', inp: 'empujon', out: 'empujon' }]).ok, 'k1: tres pasos que encajan');
+ok(!MQ.checkChain([{ part: 'rampa', inp: 'rodar', out: 'caida' }, { part: 'domino', inp: 'empujon', out: 'empujon' }]).ok, 'k: un paso que no encaja se detecta');
+
+/* Diseño gráfico */
+const DS = require(A('ig-taller-diseno-calc.js'));
+ok(Math.abs(DS.contrast('#ffffff', '#000000') - 21) < 1e-9 && Math.abs(DS.contrast('#767676', '#ffffff') - 4.54) < 0.01, 'ds: fórmula de contraste WCAG (21:1 y 4,54:1)');
+const doc = { format: 'cartel', bg: '#ffffff', els: [{ type: 'rect', x: 0, y: 0, w: 420, h: 200, fill: '#f2c230' }, { type: 'text', x: 30, y: 76, w: 300, text: 'Hola', size: 40, weight: 700, fill: '#ffffff' }] };
+ok(!DS.textContrast(doc, 1).aa, 'd3: texto blanco sobre amarillo no pasa AA');
+doc.els[1].fill = '#1b1f24';
+ok(DS.textContrast(doc, 1).aaa, 'd3: texto negro sobre amarillo pasa AAA');
+doc.els[0].op = 0.2; doc.els[1].fill = '#ffffff';
+ok(!DS.textContrast(doc, 1).aa && DS.textContrast(doc, 1).bg === DS.mix('#ffffff', '#f2c230', 0.2), 'ds: la opacidad de la forma cuenta en el color de fondo');
+ok(DS.fills({ type: 'star', x: 0, y: 0, w: 100, h: 100, fill: '#000', sides: 5 }, 50, 50) && !DS.fills({ type: 'star', x: 0, y: 0, w: 100, h: 100, fill: '#000', sides: 5 }, 5, 5), 'ds: dentro y fuera de una estrella');
+const sign = { format: 'senal', bg: '#17395c', els: [{ type: 'arrow', x: 560, y: 164, w: 120, h: 72, fill: '#ffffff' }, { type: 'text', x: 50, y: 181, w: 260, text: 'Biblioteca', size: 80, weight: 700, fill: '#ffffff' }] };
+ok(DS.check(sign, { format: 'senal', needArrow: true, bigText: 60, contrast: 'AAA' }).ok, 'd7: señal con flecha, texto grande y contraste AAA');
+ok(!DS.check(sign, { maxColours: 1 }).ok && DS.coloursUsed(sign).length === 2, 'ds: cuenta de colores con el fondo');
 console.log(`\n${n - fails}/${n} pruebas correctas`);
 process.exit(fails ? 1 : 0);

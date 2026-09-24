@@ -20,12 +20,12 @@ import importlib  # noqa: E402
 
 from taller_estudios import comun  # noqa: E402
 
-STUDIO_NAMES = ['dibujo', 'estructuras', 'programacion', 'robotica', 'ideas']
+STUDIO_NAMES = ['dibujo', 'estructuras', 'programacion', 'robotica', 'ideas', 'circuitos', 'maquinas', 'diseno']
 STUDIOS = [importlib.import_module('taller_estudios.' + n) for n in STUDIO_NAMES
            if (Path(__file__).resolve().parent / 'taller_estudios' / (n + '.py')).exists()]
 BASE = {'es': '/es/taller/', 'en': '/en/workshop/'}
 SITE = 'https://irisgreen.eu'
-ASSET_V = 'taller-f1-20260924'
+ASSET_V = 'taller-f4-20260924'
 
 HEADER = {
     'es': (

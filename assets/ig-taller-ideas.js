@@ -166,7 +166,7 @@
       var all = out.every(function (x) { return x[0]; });
       checksBox.appendChild(h('h3', { text: t('iChecksTitle') }));
       checksBox.appendChild(T.result(all, all ? t('iAllOk') : t('iSomeOk')));
-      checksBox.appendChild(h('ul', { class: 'igt-limits' }, out.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
+      checksBox.appendChild(h('ul', { class: 'igt-limits igt-checks', role: 'list' }, out.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
     }
 
     /* Retos: encargos con límites; el último genera encargos sin fin */

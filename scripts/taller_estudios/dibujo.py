@@ -178,7 +178,7 @@ PAGE = {
         'sections': [
             {'h': 'Para qué sirve cada cosa', 'p': 'Las capas son hojas transparentes una encima de otra: lo que borras en una no toca las demás. La simetría repite cada trazo en espejo o alrededor del centro. La perspectiva hace que las líneas que se alejan vayan a un punto del horizonte, como en una foto de una calle.\n\nLas hojas sirven para series: el mismo dibujo con otra luz, una historia en viñetas o diez variaciones de una idea.'},
         ],
-        'links': [('Tus intereses: Cielo nocturno, para dibujar tu constelación', '/es/intereses/cielo/'), ('Estudio de ideas e inventos', '/es/taller/ideas/'), ('Las hojas para imprimir del Taller', '/es/taller/hojas/'), ('Volver al Taller', '/es/taller/')],
+        'links': [('Tus intereses: Cielo nocturno, para dibujar tu constelación', '/es/intereses/cielo/'), ('Estudio de ideas e inventos', '/es/taller/ideas/'), ('Volver al Taller', '/es/taller/')],
         'credits': 'Estudio de dibujo de Iris Green. Lo que dibujas es tuyo. Las imágenes exportadas llevan una franja con IRIS GREEN · irisgreen.eu fuera del dibujo.',
     },
     'en': {
@@ -196,7 +196,7 @@ PAGE = {
         'sections': [
             {'h': 'What each thing is for', 'p': 'Layers are transparent sheets stacked on top of each other: what you erase on one does not touch the others. Symmetry repeats every stroke as a mirror image or around the centre. Perspective makes lines that go into the distance meet at a point on the horizon, like in a photo of a street.\n\nSheets are for series: the same drawing in different light, a story in panels or ten variations on one idea.'},
         ],
-        'links': [('Your interests: Night sky, to draw your constellation', '/en/interests/night-sky/'), ('Ideas and inventions studio', '/en/workshop/ideas/'), ('The workshop printable sheets', '/en/workshop/sheets/'), ('Back to the workshop', '/en/workshop/')],
+        'links': [('Your interests: Night sky, to draw your constellation', '/en/interests/night-sky/'), ('Ideas and inventions studio', '/en/workshop/ideas/'), ('Back to the workshop', '/en/workshop/')],
         'credits': 'Iris Green drawing studio. What you draw is yours. Exported images carry a strip with IRIS GREEN · irisgreen.eu outside the drawing.',
     },
 }

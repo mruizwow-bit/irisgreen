@@ -131,7 +131,7 @@ PAGE = {
         'sections': [
             {'h': 'Por qué con límites', 'p': 'Los límites bien puestos ayudan a inventar: obligan a buscar caminos que no se buscarían con dinero y espacio sin fin. Por eso cada encargo tiene un presupuesto, unas medidas y un peso máximos. Los límites nunca llevan puntuación ni tiempo.'},
         ],
-        'links': [('Estudio de dibujo, para dibujar tu invento', '/es/taller/dibujo/'), ('Estudio de estructuras', '/es/taller/estructuras/'), ('Las hojas para imprimir del Taller', '/es/taller/hojas/'), ('Volver al Taller', '/es/taller/')],
+        'links': [('Estudio de dibujo, para dibujar tu invento', '/es/taller/dibujo/'), ('Estudio de estructuras', '/es/taller/estructuras/'), ('Volver al Taller', '/es/taller/')],
         'credits': 'Estudio de ideas de Iris Green. SCAMPER es un método de creatividad descrito por Bob Eberle (1971) a partir de las preguntas de Alex Osborn.',
     },
     'en': {
@@ -149,7 +149,7 @@ PAGE = {
         'sections': [
             {'h': 'Why limits', 'p': 'Well-chosen limits help you invent: they push you to look for routes you would never try with endless money and space. That is why each commission has a maximum budget, size and weight. Limits never come with a score or a clock.'},
         ],
-        'links': [('Drawing studio, to draw your invention', '/en/workshop/drawing/'), ('Structures studio', '/en/workshop/structures/'), ('The workshop printable sheets', '/en/workshop/sheets/'), ('Back to the workshop', '/en/workshop/')],
+        'links': [('Drawing studio, to draw your invention', '/en/workshop/drawing/'), ('Structures studio', '/en/workshop/structures/'), ('Back to the workshop', '/en/workshop/')],
         'credits': 'Iris Green ideas studio. SCAMPER is a creativity method described by Bob Eberle (1971), based on questions by Alex Osborn.',
     },
 }

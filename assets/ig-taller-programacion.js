@@ -232,7 +232,7 @@
       T.clear(resBox);
       var all = out.every(function (x) { return x[0]; });
       resBox.appendChild(T.result(all, all ? t('pCheckOk') : t('pCheckSome')));
-      resBox.appendChild(h('ul', { class: 'igt-limits' }, out.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
+      resBox.appendChild(h('ul', { class: 'igt-limits igt-checks', role: 'list' }, out.map(function (x) { return h('li', { text: (x[0] ? '✓ ' : '· ') + x[1] }); })));
       T.say(all ? t('pCheckOk') : t('pCheckSome'));
     }
     function exportPng() {

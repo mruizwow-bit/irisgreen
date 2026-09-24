@@ -592,7 +592,7 @@
         if (scene.maxMass) goals.push([r.mass <= scene.maxMass, t('eGoalMass', { m: fmtMass(r.mass), max: fmtMass(scene.maxMass) })]);
         var allOk = goals.every(function (g) { return g[0]; });
         resBox.appendChild(T.result(allOk, allOk ? t('eChallengeDone') : t('eChallengeAlmost')));
-        if (goals.length) resBox.appendChild(h('ul', { class: 'igt-limits' }, goals.map(function (g) { return h('li', { text: (g[0] ? '✓ ' : '· ') + g[1] }); })));
+        if (goals.length) resBox.appendChild(h('ul', { class: 'igt-limits igt-checks', role: 'list' }, goals.map(function (g) { return h('li', { text: (g[0] ? '✓ ' : '· ') + g[1] }); })));
       }
       if (ok) {
         var bestKey = scene.id + ':' + scene.span + ':' + scene.load.type;
