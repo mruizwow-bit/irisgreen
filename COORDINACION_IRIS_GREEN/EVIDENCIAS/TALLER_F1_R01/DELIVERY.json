@@ -1,0 +1,266 @@
+{
+ "id": "TALLER-F1-R01",
+ "responsable": "Claude (carril Taller, asignado por María el 24/09/2026)",
+ "base": {
+  "rama": "main",
+  "head": "117a53a01bf254054f759e7e08eb06ba06f00d00"
+ },
+ "commit_local": {
+  "rama": "taller/f1-estudios-main",
+  "head": "0ddc183f6774583bbdd68a0290950bfb5ce1ec98",
+  "tree": "60a2a045f5602cd2265b2d6b66cc9bbe7d35c009",
+  "publicado_en_github": false,
+  "motivo": "la sesión no tiene permiso de escritura en el repositorio; se entrega CHANGES.patch y ZIP"
+ },
+ "archivos": [
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-codigo.js",
+   "sha256": "d7092402c9dfb714490f910bbaf2b6f12b944e8527dd9a1357c2ff67429c6fbb",
+   "bytes": 42114
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-dibujo.js",
+   "sha256": "32490ddd7dd1fdc3cfea79989951966a860c9b030dd98ccadf85cfdbd454a814",
+   "bytes": 44470
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-estructuras-calc.js",
+   "sha256": "cfc11d4b0d2b09fe9cf23370e4c830b5e376e2b8c8309d25f9f7fbd1255abbda",
+   "bytes": 14386
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-estructuras.js",
+   "sha256": "17e0dbf204d028ff2e7b35e555c2dae5dac2b4536ee7bf7ef70931c0ee069773",
+   "bytes": 47750
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-estudio.css",
+   "sha256": "b37ec008bd4dd935a3adf9014a4404717305150f00c0992f6a8434be47e28a94",
+   "bytes": 16859
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-estudio.js",
+   "sha256": "fd90e972ba079c1c2ac35ddbd5a892d3343234f824033ffe0494bf6a5975e211",
+   "bytes": 18571
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-ideas.js",
+   "sha256": "a732461106c8a0dee9cedc18021df815acfd2ad8a449767d6c497b01a4c529c2",
+   "bytes": 15581
+  },
+  {
+   "estado": "modificado",
+   "ruta": "assets/ig-taller-lab.js",
+   "sha256": "bf7b74c0ffc2f4917be705a1f6139483aaa373e541a2b8d1842f07586bbf4d7b",
+   "bytes": 44884
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-portada.css",
+   "sha256": "6ab47d2c7d4b5040b4da36d5cb5a058ea14d517dd62fe26089b5751441153963",
+   "bytes": 1701
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-programacion.js",
+   "sha256": "5acb1bb8a5e5f1d1423f7ab437a5c6de583751394f2fc8e44de0b1910d851c3a",
+   "bytes": 17620
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "assets/ig-taller-robotica.js",
+   "sha256": "9addbc4ca0543369085a6ef512f95dd5adc78a81802b63717ea4dc8bf4b7c848",
+   "bytes": 25522
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "en/workshop/coding/index.html",
+   "sha256": "91f9e266b7ff3b27c29d77563fc8bdbd13807b4b3f8532f64c2d7370f646cee6",
+   "bytes": 24889
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "en/workshop/drawing/index.html",
+   "sha256": "658cfda9fd613abcef975c89702da39d3fcb68aeee79fab55caad49c89bcb02a",
+   "bytes": 24350
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "en/workshop/ideas/index.html",
+   "sha256": "cc847a93747226190a567bd0e8c8de0c70ae36b7136321b8ce28cdf69c4fa25f",
+   "bytes": 36839
+  },
+  {
+   "estado": "modificado",
+   "ruta": "en/workshop/index.html",
+   "sha256": "3e51dedd2a1cef5149a797ca76c1095483109987d024ee70ad84efb5e1abe0ed",
+   "bytes": 254982
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "en/workshop/robotics/index.html",
+   "sha256": "ecde75ab1094b60b7f3858ced4152977ec201b7a6336ac17f3262c6690f6c1de",
+   "bytes": 22270
+  },
+  {
+   "estado": "modificado",
+   "ruta": "en/workshop/sheets/index.html",
+   "sha256": "f349031bba8e0825f0e0e6e2beaab82d0e2badc3bb0e055ccb777b29454baeb6",
+   "bytes": 33428
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "en/workshop/structures/index.html",
+   "sha256": "ba8edaa87a755e95567f70074122aee62cb55813b602b9aa766bed3267c64655",
+   "bytes": 25735
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "es/taller/dibujo/index.html",
+   "sha256": "2d2b146b0d92e56a871ddceaf58cf97a3a68bd557b23b68b2cf63be8566db98c",
+   "bytes": 24738
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "es/taller/estructuras/index.html",
+   "sha256": "5ecf03e60ee56dcf8ddbd848ff465c968c34b5bd558be905dc5deb3b34318fc9",
+   "bytes": 26207
+  },
+  {
+   "estado": "modificado",
+   "ruta": "es/taller/hojas/index.html",
+   "sha256": "08817ebb551bbc11a653b58089a7a6f9f3ecc82c850bbb80fabe95a39c2b103b",
+   "bytes": 30332
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "es/taller/ideas/index.html",
+   "sha256": "ebb70d8012ea73bd0f5972e7c1eaa6b80b51a1326fe72468e8080c1ae1459634",
+   "bytes": 37245
+  },
+  {
+   "estado": "modificado",
+   "ruta": "es/taller/index.html",
+   "sha256": "ab2feefae2c7fb7ec74aa7fa68785409758581a43210cd8cc3605ab6679dadee",
+   "bytes": 250040
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "es/taller/programacion/index.html",
+   "sha256": "6caa857841dbc36ad520bc8390db213c0d4efca601c4a936548c935f475d25f9",
+   "bytes": 25805
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "es/taller/robotica/index.html",
+   "sha256": "0df3f59ee8897cea1b44f2815823790698f42fe554ee98b5b74300c4d6375aec",
+   "bytes": 23209
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/build_taller_estudios.py",
+   "sha256": "c373dc4ee254c1e533a0da5a0f4a44b0b8a817016744eed5b55955bc6b37b17f",
+   "bytes": 13431
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/codigo_strings.py",
+   "sha256": "171113656467dd9ca4db42d32864e41b6e3d7d32914e55fa36d666b35e92f387",
+   "bytes": 9291
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/comun.py",
+   "sha256": "16d3f0d33d3c11c85e43878f1ecfe28a162a00e7e361fb96776d86ed8787e0c7",
+   "bytes": 5113
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/dibujo.py",
+   "sha256": "d30d1506e47087a7440a42b3c06f3c9f15daf25bd8630b419e218721ad808e82",
+   "bytes": 27791
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/estructuras.py",
+   "sha256": "be6a17d99562fba867f4e0c57a17bbd28d90b356f45eeb9a3a4583d940b8f656",
+   "bytes": 29751
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/ideas.py",
+   "sha256": "df9a8a298619a1407ece3f0aaa2ddfa27ebb38e4adc6a1ea069dd0f41f7f1164",
+   "bytes": 21838
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/igl_data.json",
+   "sha256": "a52c195c302167ed082561c8e30429b09799795a199d0274105c7a3f5f67f3d8",
+   "bytes": 16687
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/programacion.py",
+   "sha256": "bb89bf67f8505b47f9d6619d74e5d85931fa9ba47b79800e10f2198ecd72591e",
+   "bytes": 19468
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/pruebas_node.js",
+   "sha256": "71597d810e7061e8942b5bd5ae32f402667ec01d1fac3b52aa3e5c7ff41a9fd4",
+   "bytes": 6886
+  },
+  {
+   "estado": "nuevo",
+   "ruta": "scripts/taller_estudios/robotica.py",
+   "sha256": "19816951b4817f36e08a8f27580cc69456f4108808795bb618f9899e61bcca17",
+   "bytes": 18523
+  }
+ ],
+ "pruebas": {
+  "build_site": "python3 scripts/build_site.py rc=0 sobre la base + parche (2176 archivos públicos, 0 eval/new Function, auditorías internas del build correctas)",
+  "node": "node scripts/taller_estudios/pruebas_node.js -> 31/31 (cálculo de estructuras, lenguaje, robótica)",
+  "axe_core_4_13_0": {
+   "rutas": 12,
+   "estados": "inicio y tras acción (reto elegido, prueba ejecutada o ficha rellenada)",
+   "viewports": [
+    "1440x900",
+    "390x844"
+   ],
+   "violaciones_wcag2a_aa_21_22": 0,
+   "incompletos": "color-contrast (fondos translúcidos); revisión manual por cálculo: contraste mínimo 4,79:1"
+  },
+  "adaptabilidad": "320 px sin desbordamiento horizontal en 12 rutas, también con espaciado de texto WCAG 1.4.12; objetivos táctiles ≥ 44 px; foco visible 3 px; colores forzados; movimiento reducido (prueba de carga sin animación, robot al instante)",
+  "sin_js": "10 páginas de estudio muestran todos los retos por niveles sin JavaScript",
+  "ingles": "recorrido de las 6 rutas EN con todos los retos: 0 textos en español (1 falso positivo: función sin())",
+  "impresion": "5 estudios imprimen solo el trabajo, con IRIS GREEN · irisgreen.eu en todas las páginas",
+  "auditorias_repo": {
+   "audit_privacidad_almacenamiento": "0 hallazgos del Taller (antes 3 en ig-taller-lab.js); quedan 21 de otros carriles",
+   "audit_target_size": "OK",
+   "audit_table_semantics": "OK",
+   "audit_autoplay_motion": "OK",
+   "audit_seo_idiomas": "OK",
+   "audit_sin_js": "OK",
+   "audit_privacidad": "OK"
+  }
+ },
+ "no_verificado": [
+  "lector de pantalla real (NVDA, VoiceOver)",
+  "dispositivo móvil físico y lápiz digital",
+  "despliegue Netlify y revisión visual de María",
+  "PDF/UA: no se generan PDF propios; la impresión la hace el navegador"
+ ]
+}
