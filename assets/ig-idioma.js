@@ -61,7 +61,14 @@ function choose(lang){
   var alt=alternates();
   if(alt[lang]&&!samePage(alt[lang])){
     try{sessionStorage.setItem(KEY,lang);}catch(e){}
-    location.assign(alt[lang]);
+    var destination=new URL(alt[lang],location.href);
+    /* En Deploy Preview, conservar el mismo candidato al cambiar de idioma;
+       los canonical y hreflang siguen apuntando al dominio público. */
+    if(/--irisgreen-home\.netlify\.app$/.test(location.hostname)&&destination.hostname==='irisgreen.eu'){
+      destination.protocol=location.protocol;
+      destination.host=location.host;
+    }
+    location.assign(destination.href);
     return;
   }
   set(lang);
