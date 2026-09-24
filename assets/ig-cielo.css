@@ -96,7 +96,7 @@ html[data-ig-text-enlarged] .cn-ficha-body{grid-template-columns:1fr}
 .cn-stage-title{z-index:2;position:absolute;left:clamp(12px,3vw,40px);top:clamp(14px,3vw,34px);max-width:min(30rem,calc(100% - 24px));padding:16px 20px;border-radius:20px;
   background:rgba(4,10,24,.55);border:1px solid rgba(190,205,235,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:auto}
 .cn-stage-title .crumb{margin:0 0 4px}
-.cn-stage-title .crumb a{color:#cfdcf5}
+.cn-stage-title .crumb a{color:#cfdcf5!important}
 .cn-stage-title h1{font:400 clamp(2.2rem,4.4vw,3.4rem)/1.04 'Newsreader',Georgia,serif;letter-spacing:-.02em;margin:0;color:#fff}
 .cn-stage-lede{margin:8px 0 0;font-size:15.5px;line-height:1.55;color:#dbe4f5}
 .cn-stage-ui{z-index:2;position:relative;padding:12px clamp(12px,3vw,40px) 16px;display:flex;flex-direction:column;gap:8px;background:#03070f;border-top:1px solid rgba(190,205,235,.14)}

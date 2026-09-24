@@ -23,11 +23,20 @@ ALLOWED_STORAGE = {
         # Exoplanetas R12: favoritos y planetas conocidos; acción explícita,
         # solo navegador, exportación y borrado. Aviso público ES/EN revisado.
         "ig-exoplanetas-coleccion": {"getItem", "setItem", "removeItem"},
+        # Cielo nocturno, Planetas y sistema solar y Eclipses (Claude, Intereses):
+        # listas «Mi cielo» / «Mi colección»; acción explícita, solo navegador,
+        # archivo propio y borrado con confirmación. Aviso público ES/EN en Privacidad.
+        "ig-cielo-mis-listas": {"getItem", "setItem", "removeItem"},
+        "ig-sistema-solar-coleccion": {"getItem", "setItem", "removeItem"},
+        "ig-eclipses-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-a11y": {"getItem", "setItem", "removeItem"},
         "ig_lang": {"getItem", "setItem", "removeItem"},
         "ig_saved_videos": {"getItem", "setItem", "removeItem"},
     },
     "sessionStorage": {
+        # Cielo nocturno: solo se lee y se borra la lista de la versión anterior
+        # (sessionStorage) para pasarla a localStorage.
+        "ig-cielo-mis-listas": {"getItem", "removeItem"},
         "ig-conditions-url": {"getItem", "setItem", "removeItem"},
         "ig-situations-url": {"getItem", "setItem", "removeItem"},
     },
