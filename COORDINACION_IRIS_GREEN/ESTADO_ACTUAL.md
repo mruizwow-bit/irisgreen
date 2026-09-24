@@ -1,6 +1,6 @@
 # Estado operativo compartido
 
-Actualización: 24/09/2026, tras revisar las seis entregas finales de agentes. Estado operativo, no certificación global. Las correcciones solicitadas no constan como ejecutadas hasta nueva entrega.
+Actualización: 24/09/2026, entrega R39 R03 de Codex y corrección del panel reasignada expresamente por María. Evidencia local, navegador, paquete y HTTP separadas; no certificación global.
 
 ## Resumen vigente
 
@@ -12,8 +12,9 @@ Actualización: 24/09/2026, tras revisar las seis entregas finales de agentes. E
 | Motion R37 | c23abd9a3ef082a6ed646b03334fe9031b17af15; deploy 6ab4beac4267a5275ff2feb5 | Candidato montado; revisión visual de María y comprobaciones manuales pendientes | Codex / María |
 | Biblioteca R38 | ddd12ed4e002812f5c53e24618c029be9faf9e00; deploy 6ab4c1a15435b93043ab3f6d | Biblioteca sellada conservada, consumida por R39 R02 | Codex |
 | R39 continuidad R02 | HEAD 66b6b551ad055ea9e367ebdff7246b381f4656d3; tree 759b5c0d82a023a81d4aae48c6ab3ced26638d83; deploy 6ab4d5047d3729fae7f122aa | Integrado y desplegado como borrador. Revisión técnica previa de Astra con observación OBS-R39-BODY-01; no reconstruir | Codex |
-| HTTP protegido | Team Login conservado; ninguna nueva prueba autorizada en estas entregas | Petición HTTP y lectura cross-deploy con identidad real del runtime pendientes | Codex + apoyo A5 |
-| Retención C17 | A4 identifica exactamente la evidencia que falta | Pendiente de retención aplicada en plataforma, no acreditada por ausencia de logs propios | A4 |
+| R39 R03 | HEAD `3131d55020057c55567a3457900afc888876de5d`; deploy `6ab504fbf5d403147f6de213`; 227 pruebas por runtime | Body corregido, puente A1/panel integrado, delta A2 comprobado; HTTP y montaje real pendientes | Codex |
+| HTTP protegido | A5 BLOQUEADO_ACCESO_AUTORIZADO; Team Login conservado | A5-HTTP-ACTION-01 contra candidato R03; lectura cross-deploy con identidad runtime pendiente | Codex + apoyo A5 |
+| Retención C17 | A4 R02: política nativa Function logs hasta 7 días contrastada | Acotado a logs nativos de Serverless Function; no prueba de borrado físico ni otros tipos de registro | A4 + revisión Codex |
 | Voz | Herramientas de validación/paquete local recibidas | Revisión detecta WAV truncado aceptado; corrección local pendiente. Voz no activada y no bloquea R39 | A6 |
 
 ## Entregas del equipo: revisión realizada, no solo recepción
@@ -25,9 +26,9 @@ Astra reprodujo **53/53 pruebas originales**: A1 8, A3 14, A4 8, A5 6, A6 9, A7 
 
 | Agente | Veredicto | Acción restante |
 |---|---|---|
-| A1 | Módulo de agrupación aceptado, no integrado | Codex une su salida al panel corregido conservando todos los fragmentos/citas |
-| A3 | Correcciones antes del montaje público | Retirar etiquetas internas visibles; mapear REQUEST_CANCELLED; marcar idioma real de extractos. Codex compone respuesta HTTP/results, contrato candidates y agrupación A1 |
-| A4 | Código revisado, solución alternativa ya cubierta por Codex | No sustituir execution-policy integrado. Ayuda restante: evidencia C17 |
+| A1 | Módulo aceptado integrado en R03 | Montaje A2 y transporte autorizado pendientes |
+| A3 | Correcciones asumidas por Codex con autorización de María y verificadas en R03 | Montaje A2 y aceptación humana pendientes; donante original conservado |
+| A4 | Código revisado, solución alternativa ya cubierta por Codex | No sustituir execution-policy integrado. Evidencia C17 nativa recibida; ver límites de alcance |
 | A5 | Código revisado, transporte alternativo ya cubierto por Codex | No añadir otra capa ni satisfacer gate de build histórico. Ayuda restante: HTTP autorizado |
 | A6 | Corrección de entrada incompleta necesaria | Rechazar WAV truncado y controlar error de decodificación; no crear paquete válido ni modificar originales |
 | A7 | No usar todavía como puerta de aceptación | Verificar contenido real del parche: vacío o alterado no puede ser VALID. Revisar comandos completos y actualizar índice sin confundir bases donantes/destino |
@@ -40,7 +41,7 @@ Codex reporta sobre el mismo SHA 157/157 pruebas en Node22.16.0 y 157/157 en Nod
 
 La revisión técnica anterior de Astra consultó código/diff y deploy Netlify y ejecutó 25 pruebas del motor más 12 adicionales en Node22. Se documenta en [Revisión técnica R39](MEMORIA/REVISION_TECNICA_R39_R02_37_PRUEBAS.md). El ZIP final solo se había recibido como ruta Windows: no se atribuye aquí una verificación independiente de ese archivo. Las 53 de agentes son otro alcance, no una suma de cobertura global.
 
-OBS-R39-BODY-01 sigue abierta: el plazo del retrieval empieza después de leer el body. Acotar también esa lectura o documentar/verificar el límite externo si se ofrece timeout total. No se afirma vulnerabilidad Netlify ni cierre de HTTP.
+OBS-R39-BODY-01 corregida en R03 y probada localmente y en paquete: el plazo incluye lectura de body. No se afirma vulnerabilidad Netlify ni cierre de HTTP. Véase [entrega y límites R03](EVIDENCIAS/R39_CODEX_R03/INFORME.md).
 
 ## Límites y forma de continuar
 

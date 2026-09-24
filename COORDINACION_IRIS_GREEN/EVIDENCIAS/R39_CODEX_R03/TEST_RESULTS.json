@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "source_head": "3131d55020057c55567a3457900afc888876de5d",
+  "source_tree": "f107353232cb7dd4764a08b9e9c851175f45309b",
+  "suites": [
+    {
+      "node": "v22.16.0",
+      "source_head": "3131d55020057c55567a3457900afc888876de5d",
+      "source_tree": "f107353232cb7dd4764a08b9e9c851175f45309b",
+      "passed": 227,
+      "failed": 0,
+      "suites": [
+        {
+          "name": "cloud",
+          "passed": 177,
+          "failed": 0,
+          "log": "TESTS_cloud_v22.16.0.log"
+        },
+        {
+          "name": "consumption",
+          "passed": 50,
+          "failed": 0,
+          "log": "TESTS_consumption_v22.16.0.log"
+        }
+      ]
+    },
+    {
+      "node": "v24.19.0",
+      "source_head": "3131d55020057c55567a3457900afc888876de5d",
+      "source_tree": "f107353232cb7dd4764a08b9e9c851175f45309b",
+      "passed": 227,
+      "failed": 0,
+      "suites": [
+        {
+          "name": "cloud",
+          "passed": 177,
+          "failed": 0,
+          "log": "TESTS_cloud_v24.19.0.log"
+        },
+        {
+          "name": "consumption",
+          "passed": 50,
+          "failed": 0,
+          "log": "TESTS_consumption_v24.19.0.log"
+        }
+      ]
+    }
+  ]
+}

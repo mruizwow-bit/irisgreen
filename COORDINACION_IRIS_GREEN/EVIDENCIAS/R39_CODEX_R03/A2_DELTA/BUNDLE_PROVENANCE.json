@@ -1,0 +1,15 @@
+{
+  "esbuild_version": "0.28.1",
+  "inputs": [
+    {
+      "path": "sabik/retrieval-bridge.mjs",
+      "sha256": "1caabbcf6bb46aead32c27b42b082cd742cea513cacbb3db64c64548cbe17c73"
+    },
+    {
+      "path": "cloud/n04-r38-library/src/source-groups.mjs",
+      "sha256": "5a76bec12c0c41ece573da4b372bcd19ddea6d5b1bb80dde1705ad55b4be3be0"
+    }
+  ],
+  "output": "sabik/retrieval-bridge.browser.mjs",
+  "sha256": "3cfc09fa65818cb0634b0fb288d1a53c5506fb4a2552122d3a3d64dcce763f78"
+}

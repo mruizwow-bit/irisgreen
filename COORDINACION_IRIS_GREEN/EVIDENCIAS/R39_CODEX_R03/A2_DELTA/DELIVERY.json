@@ -1,0 +1,26 @@
+{
+  "status": "ADDITIVE_DELTA_APPLY_CHECKED_NOT_MOUNTED",
+  "donor_source_head": "3131d55020057c55567a3457900afc888876de5d",
+  "destination_branch": "agent2/rincon-3d-r01-20260924",
+  "destination_base_head": "38815375c904283eb7af07e4655589177abb6ff6",
+  "patch_applies_to_destination": true,
+  "applied_content_byte_equal": true,
+  "destination_branch_modified": false,
+  "files": [
+    {
+      "path": "sabik/retrieval-bridge.browser.mjs",
+      "sha256": "3cfc09fa65818cb0634b0fb288d1a53c5506fb4a2552122d3a3d64dcce763f78"
+    },
+    {
+      "path": "sabik/retrieval-panel.js",
+      "sha256": "aa8826c5260fdb67d495c17fb2e87b38708d090d282c70ddcdb91f24068f6400"
+    },
+    {
+      "path": "sabik/RETRIEVAL_INTEGRATION.md",
+      "sha256": "59d81f294d5e1ae264640764680ddf872087dac61f8cd558e86fe5023d81922a"
+    }
+  ],
+  "patch_sha256": "f5be46632d5a8c494a2e41621fb24cd6fe30636a849cfbb20ddc3e7944f723f3",
+  "real_browser_transport": "PENDING_AUTHORIZED_TRANSPORT",
+  "credentials_or_internal_endpoint_shipped": false
+}

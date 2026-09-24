@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "source_head": "3131d55020057c55567a3457900afc888876de5d",
+  "method": "CUA in-app browser, localhost fixture page, original corpus response from local handler",
+  "viewports": [
+    {
+      "width": 1136,
+      "passed": 15
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "passed": 15
+    }
+  ],
+  "checks": [
+    "Spanish interface",
+    "External input focus retained",
+    "One exact link per URL",
+    "Every citation is exact",
+    "Technical metadata absent from public copy",
+    "English UI, Spanish source links and citations",
+    "Source focus survives language change",
+    "No horizontal overflow",
+    "Empty result announced",
+    "Safe error, retry available",
+    "Retry completes and retains meaningful focus",
+    "Cancellation has its own English announcement",
+    "Subsequent query succeeds",
+    "Only supplied live region",
+    "No component animation"
+  ],
+  "keyboard": {
+    "query_Tab_to_exact_source_link": true,
+    "focus_outline": "solid 3px",
+    "horizontal_overflow": false
+  },
+  "screen_reader_human_acceptance": false,
+  "remote_cloud_http": false,
+  "A2_web_mounted": false,
+  "browser_bundle_sha256": "3cfc09fa65818cb0634b0fb288d1a53c5506fb4a2552122d3a3d64dcce763f78"
+}
