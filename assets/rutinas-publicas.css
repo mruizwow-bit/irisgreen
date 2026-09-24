@@ -1,0 +1,27 @@
+/* Iris Green · biblioteca pública de rutinas */
+.routine-public-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 0;color:#34495f}
+.routine-public-meta span{display:inline-flex;align-items:center;min-height:32px;padding:.15rem .65rem;border:1px solid rgba(23,57,92,.14);border-radius:999px;background:#f7f9fc;font-size:.9rem;font-weight:700}
+.routine-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+.routine-download{min-height:44px;padding:.55rem .9rem;border:2px solid #17395c;border-radius:12px;background:#17395c;color:#fff;font:700 1rem/1.2 inherit;cursor:pointer}
+.routine-download:hover{background:#244f79}.routine-download:focus-visible{outline:3px solid #5a49a8;outline-offset:3px}
+.routine-license,.routine-library-license{color:#4c5b6c;font-size:.94rem}
+.routine-watermark{display:none}
+.rv-public-intro .crumb{margin:0 0 .5rem}.rv-public-intro .crumb a{min-height:44px;display:inline-flex;align-items:center}
+.rv-public-note{max-width:72ch;color:#34495f}
+@media print{
+  body[data-routine-print="1"] .hd,
+  body[data-routine-print="1"] .panel,
+  body[data-routine-print="1"] .rv-public-intro,
+  body[data-routine-print="1"] .search,
+  body[data-routine-print="1"] footer,
+  body[data-routine-print="1"] details.routine:not([data-printing="1"]),
+  body[data-routine-print="1"] .routine-actions{display:none!important}
+  body[data-routine-print="1"] main{max-width:none;padding:0}
+  body[data-routine-print="1"] section#rutinas{margin:0}
+  body[data-routine-print="1"] details.routine[data-printing="1"]{display:block!important;border:0!important;box-shadow:none!important;margin:0!important}
+  body[data-routine-print="1"] details.routine[data-printing="1"] summary{font-size:22pt;padding:0 0 8mm}
+  body[data-routine-print="1"] details.routine[data-printing="1"] .routine-body{display:block!important;padding:0}
+  body[data-routine-print="1"] .step{break-inside:avoid}
+  body[data-routine-print="1"] .routine-watermark{display:block;position:fixed;right:8mm;bottom:7mm;font-size:9pt;color:#58697b;letter-spacing:.04em}
+  body[data-routine-print="1"] .routine-license{display:block;margin-top:10mm;padding-top:4mm;border-top:1px solid #ccd5df}
+}

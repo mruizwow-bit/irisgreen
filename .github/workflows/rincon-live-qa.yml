@@ -1,0 +1,175 @@
+name: Rincón live QA
+
+on:
+  pull_request:
+    paths:
+      - 'es/sitio-tranquilo/**'
+      - 'en/quiet-space/**'
+      - 'assets/rincon-**'
+      - 'tools/escenas-3d/**'
+      - 'scripts/assemble_rincon_3d.py'
+      - 'scripts/build_site.py'
+      - '.github/workflows/rincon-live-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  live-rincon:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_URL: https://deploy-preview-236--irisgreen-home.netlify.app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser QA
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Wait for the current Netlify preview
+        shell: bash
+        run: |
+          for i in {1..60}; do
+            body="$(curl -fsSL "$BASE_URL/es/sitio-tranquilo/" || true)"
+            if grep -q 'data-scene="aquarium"' <<<"$body" && grep -q 'Tubo de burbujas' <<<"$body"; then
+              echo "Rincón preview is current."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Timed out waiting for the current Rincón preview." >&2
+          exit 1
+      - name: Exercise the deployed Rincón
+        shell: bash
+        run: |
+          cat > rincon-live-qa.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+
+          const base = process.env.BASE_URL;
+          const results = [];
+          const assert = (cond, msg) => { if (!cond) throw new Error(msg); };
+          const row = (name, ok, details={}) => results.push({name, ok, ...details});
+
+          const browser = await chromium.launch({
+            headless: true,
+            args: ['--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist']
+          });
+
+          async function common(page, path, lang, mobile=false) {
+            const requested = [];
+            page.on('request', r => requested.push(r.url()));
+            await page.goto(base + path, {waitUntil:'networkidle', timeout:60000});
+            assert(await page.locator('html').getAttribute('lang') === lang, path + ': lang');
+            assert(await page.locator('#watchStage canvas').count() === 0, path + ': scene must not start automatically');
+            assert(await page.locator('#watchStage iframe').count() === 0, path + ': video must not start automatically');
+            assert(await page.locator('#audio').evaluate(el => el.paused), path + ': audio must not start automatically');
+
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+            assert(overflow <= 2, path + ': horizontal overflow before interaction: ' + overflow);
+
+            await page.locator('[data-scene="aquarium"]').click();
+            await page.waitForSelector('#watchStage canvas', {timeout:15000});
+            await page.waitForFunction(() => !!window.IGScenes3D, null, {timeout:15000});
+            assert(requested.some(u => u.includes('/assets/rincon-escenas-3d.js')), path + ': 3D bundle was not loaded lazily after interaction');
+
+            const aquariumLabel = await page.locator('#watchStage canvas').getAttribute('aria-label');
+            assert(aquariumLabel && /Acuario|Aquarium/i.test(aquariumLabel), path + ': aquarium accessible name');
+
+            const supported = await page.evaluate(() => !!window.IGScenes3D && window.IGScenes3D.supported());
+            row(path + ' aquarium', true, {webglSupported:supported, mobile});
+
+            await page.locator('[data-scene="bubbles"]').click();
+            await page.waitForSelector('#watchStage canvas', {timeout:10000});
+            const bubbleLabel = await page.locator('#watchStage canvas').getAttribute('aria-label');
+            assert(bubbleLabel && /burbuja|bubble/i.test(bubbleLabel), path + ': bubble tube accessible name');
+            row(path + ' bubble tube', true, {mobile});
+
+            await page.locator('[data-focus="watch"]').click();
+            assert(await page.locator('body').evaluate(el => el.classList.contains('focus-mode')), path + ': clean screen did not open');
+            const overflowFocus = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+            assert(overflowFocus <= 2, path + ': horizontal overflow in clean screen: ' + overflowFocus);
+            await page.locator('#exitFocus').click();
+
+            return {requested, supported};
+          }
+
+          // Desktop ES
+          {
+            const context = await browser.newContext({viewport:{width:1366,height:900}});
+            const page = await context.newPage();
+            await common(page, '/es/sitio-tranquilo/', 'es', false);
+            await page.screenshot({path:'rincon-es-desktop.png', fullPage:true});
+            await context.close();
+          }
+
+          // Desktop EN
+          {
+            const context = await browser.newContext({viewport:{width:1366,height:900}});
+            const page = await context.newPage();
+            await common(page, '/en/quiet-space/', 'en', false);
+            await page.screenshot({path:'rincon-en-desktop.png', fullPage:true});
+            await context.close();
+          }
+
+          // Mobile ES
+          {
+            const context = await browser.newContext({
+              viewport:{width:390,height:844},
+              isMobile:true,
+              hasTouch:true,
+              deviceScaleFactor:2
+            });
+            const page = await context.newPage();
+            await common(page, '/es/sitio-tranquilo/', 'es', true);
+            await page.screenshot({path:'rincon-es-mobile.png', fullPage:true});
+            await context.close();
+          }
+
+          // Reduced motion is exercised on the deployed page, not against a local copy.
+          {
+            const context = await browser.newContext({
+              viewport:{width:390,height:844},
+              isMobile:true,
+              hasTouch:true,
+              deviceScaleFactor:2,
+              reducedMotion:'reduce'
+            });
+            const page = await context.newPage();
+            await page.goto(base + '/es/sitio-tranquilo/', {waitUntil:'networkidle', timeout:60000});
+            assert(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), 'reduced-motion media query');
+            const ringAnimation = await page.locator('.ring.r1').evaluate(el => getComputedStyle(el).animationName);
+            assert(ringAnimation === 'none', '2D pause ring must be static in reduced motion');
+
+            await page.locator('#startBreath').click();
+            await page.waitForFunction(() => document.querySelector('#breathBox')?.classList.contains('ig-guiding'), null, {timeout:5000});
+            await page.waitForTimeout(800);
+            const label1 = (await page.locator('#breathLabel').innerText()).trim();
+            await page.waitForTimeout(4200);
+            const label2 = (await page.locator('#breathLabel').innerText()).trim();
+            assert(label1 !== label2, 'reduced-motion pause must still advance its textual steps');
+            await page.screenshot({path:'rincon-es-reduced-mobile.png', fullPage:true});
+            row('/es/sitio-tranquilo/ reduced motion', true, {label1,label2});
+            await context.close();
+          }
+
+          await browser.close();
+          fs.writeFileSync('rincon-live-qa.json', JSON.stringify({base, results}, null, 2));
+          console.log(JSON.stringify({base, results}, null, 2));
+          NODE
+          node rincon-live-qa.mjs
+      - name: Upload live screenshots and QA result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rincon-live-qa
+          path: |
+            rincon-live-qa.json
+            rincon-es-desktop.png
+            rincon-en-desktop.png
+            rincon-es-mobile.png
+            rincon-es-reduced-mobile.png
+          if-no-files-found: warn

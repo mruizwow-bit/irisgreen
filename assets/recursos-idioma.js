@@ -5,7 +5,7 @@ var T={
     kicker:'Para usar directamente',title:'Recursos gratuitos',lede:'Herramientas prácticas para usar en pantalla, imprimir o adaptar a tu manera. No hace falta crear una cuenta.',crumb:'Inicio',
     pills:['Sin registro','En pantalla','Para imprimir'],toolsTitle:'Elige lo que necesitas',toolsText:'Esta familia irá creciendo sin mezclarla con El Taller: aquí están las herramientas para usar.',next:'Se añadirán más recursos aquí, manteniendo cada herramienta separada y fácil de encontrar.',
     cards:[
-      ['Juegos','Jugar','Juegos interactivos y una colección de actividades para entender situaciones, comunicar lo que necesitas y probar apoyos.','Abrir Jugar'],
+      ['Juegos','Juegos','Juegos visuales y prácticos para organizar pasos, practicar situaciones cotidianas y encontrar formas de empezar. Puedes elegir por etapa de vida, contexto o habilidad.','Abrir Juegos'],
       ['Apoyo visual','Rutinas visuales','Usa una rutina ya preparada o crea una secuencia propia con texto y pictogramas para pantalla, A4, tira o Primero → Después.','Abrir Rutinas'],
       ['Comunicación','Tarjeta Iris','Escribe qué te cuesta, qué te ayuda y qué necesitas. Tres formas de tarjeta, pictogramas opcionales, para copiar o imprimir en A4.','Crear una tarjeta']
     ]
@@ -14,7 +14,7 @@ var T={
     kicker:'Ready to use',title:'Free resources',lede:'Practical tools to use on screen, print or adapt in your own way. No account is needed.',crumb:'Home',
     pills:['No sign-up','On screen','To print'],toolsTitle:'Choose what you need',toolsText:'This collection will keep growing without mixing it with The Workshop: these are ready-to-use tools.',next:'More resources will be added here, keeping each tool separate and easy to find.',
     cards:[
-      ['Games','Play','Interactive games and a collection of activities to understand situations, say what you need and try out supports.','Open Play'],
+      ['Games','Games','Visual, practical games for organising steps, practising everyday situations and finding ways to get started. You can choose by life stage, context or skill.','Open games'],
       ['Visual support','Visual routines','Use a ready-made routine or create your own sequence with text and symbols for screen, A4, strip or First → Then.','Open routines'],
       ['Communication','Iris Card','Write what is hard for you, what helps and what you need. Three card shapes, optional symbols, to copy or print on A4.','Create a card']
     ]

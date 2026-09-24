@@ -1,0 +1,67 @@
+/* Iris Green R35b · background harmonization only.
+   Preserve the existing typography, navigation, controls and component styling. */
+@font-face{
+  font-family:"IG Zero";
+  src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");
+  unicode-range:U+0030;
+}
+:root{
+  --ig-r35-bg:#f7fbfd;
+  --ig-r35-bg2:#eef8fb;
+  --ig-r35-glass:rgba(255,255,255,.82);
+  --ig-r35-glass-strong:rgba(255,255,255,.92);
+  --ig-r35-line:rgba(49,105,137,.18);
+  --paper:#f7fbfd;
+  --surface:rgba(255,255,255,.90);
+  --line:#d5e4eb;
+  --calm:#eef8fb;
+  --status:#eef8fb;
+  --ig-bg:#f7fbfd;
+  --ig-card:rgba(255,255,255,.90);
+}
+html,body{
+  background:
+    radial-gradient(105% 78% at 88% -8%,rgba(171,224,246,.28),transparent 60%),
+    radial-gradient(90% 70% at 4% 8%,rgba(210,242,247,.36),transparent 62%),
+    linear-gradient(135deg,#fbfdff 0%,#f5fafc 52%,#eef8fb 100%) !important;
+  background-attachment:fixed !important;
+}
+body{
+  /* Keep the site's existing typography; IG Zero only replaces U+0030. */
+  font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
+}
+/* Brand flower is retired; keep the original wordmark, sizes and header layout. */
+.ig-uh-brand img,
+.ig-global-shell .ig-home img,
+.qs-top .brand img,
+img[src*="v40-brand-symbol.webp"],
+img[src*="brand-symbol.webp"]{display:none!important}
+
+/* New resource prototypes: align typography with the established Iris Green family
+   without changing their navigation structure or controls. */
+.ig-global-shell{font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important}
+.ig-global-shell .ig-home,.qs-top .brand{font-family:"Newsreader",Georgia,serif!important;font-weight:400!important}
+body.mundos h1,body.mundos h2,body.mundos h3,
+.intro h1,.panel h2{font-family:"Newsreader",Georgia,serif!important}
+.intro h1{font-weight:400!important;font-size:clamp(40px,5.4vw,62px)!important;letter-spacing:-.025em!important;line-height:1.02!important}
+
+/* Quiet Space and R02 pages use their variables for backgrounds; keep accent colours. */
+body.mundos,.qs-top,.panel,.world,.card,.note,details,.metric,.game,.item{
+  border-color:var(--line)!important;
+}
+.help{background:rgba(255,250,252,.92)!important}
+.still{background:#101a2a!important;color:#f6f8fb!important}
+.still p{color:#e2e8f0!important}
+
+/* Night-sky canvas remains intentionally dark; only the surrounding page follows R35. */
+.sky{
+  --paper:#f7fbfd;
+  --surface:rgba(255,255,255,.90);
+  --ink:#17395c;
+  --ink2:#36566c;
+  --muted:#657d8e;
+  --line:#d5e4eb;
+  --status:#eef8fb;
+}
+.skybox{background:#070b1a!important}
+@media(max-width:700px){html,body{background-attachment:scroll!important}}

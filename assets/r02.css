@@ -10,7 +10,7 @@
   --paper:#F4F1EA;--surface:#FFFDF8;--ink:#1B1C22;--ink2:#3A3C44;--muted:#55575F;--line:#D9D3C5;--empty:#8A8578;
   --cobalt:#2F4BD8;--vermilion:#D8452B;--ochre:#9A6F0E;--ochre-ink:#9A6F0E;--green:#2E7D5B;--error:#A12A14;--status:#E9E4D8;
   --focus:#2F4BD8;
-  --f-text:"Atkinson Hyperlegible",system-ui,sans-serif;--f-title:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --f-text:"Atkinson Hyperlegible",system-ui,sans-serif;--f-title:"Newsreader",Georgia,serif;--f-mono:"JetBrains Mono",ui-monospace,monospace;
   --r-ctl:10px;--r-card:14px;--gap:16px;--pad:clamp(16px,4vw,32px);
 }
 .sky{
