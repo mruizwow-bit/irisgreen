@@ -30,7 +30,7 @@ jobs:
       - name: Record identity and scope
         run: |
           node --version
-          test "$(git rev-parse HEAD^:sabik/authorized-transport.mjs 2>/dev/null || true)" != "$(git rev-parse HEAD:sabik/authorized-transport.mjs)"
+          test "$(git rev-parse 16f1134e56292ca2ee600e77e69012c494f39aaf:sabik/authorized-transport.mjs)" != "$(git rev-parse HEAD:sabik/authorized-transport.mjs)"
           git diff --check 16f1134e56292ca2ee600e77e69012c494f39aaf...HEAD
           git diff --name-only 16f1134e56292ca2ee600e77e69012c494f39aaf...HEAD
       - name: Install exact Cloud dependencies
