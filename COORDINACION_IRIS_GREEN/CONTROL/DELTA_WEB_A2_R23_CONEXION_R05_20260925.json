@@ -1,0 +1,63 @@
+{
+  "schema": "iris-green-control-addendum-by-id-v1",
+  "date": "2026-09-25",
+  "author": "Agente 2",
+  "coordination_base": "3057e3c5537323591fd3dffbf196005801712729",
+  "website_head": "82106c874f5e4b612cdb68292b3c3115e040fea6",
+  "preview_deploy": "6ab5fd0246e4910008d918a2",
+  "allowed_web_origin": "https://deploy-preview-244--irisgreen-home.netlify.app",
+  "cloud_origin": "https://6ab56a1ba2f6d83e6fb7b408--sabik-asistente.netlify.app",
+  "memory": "../MEMORIA/WEB_A2_R23_CONEXION_R05_20260925.md",
+  "communication": "https://github.com/mruizwow-bit/irisgreen/issues/237#issuecomment-5826899869",
+  "records": [
+    {
+      "ID": "R39-A2-CONEXION-R05",
+      "Responsable": "María y agente 2",
+      "Estado_con_evidencia": "APLICADO_QA_SUPERFICIE_PASS_PREVIEW_READY_HTTP_PENDIENTE",
+      "Entregado_o_confirmado": "Parche exacto 3 archivos sobre 7b49e95; HEAD 82106c8; build y montaje run 36095903893 SUCCESS; preview 6ab5fd0246e4910008d918a2 READY",
+      "Pendiente": "A3 cinco casos reales y Codex correlación HTTP; no se acredita su ejecución por este handoff",
+      "ES_EN": "4 casos de portada ES/EN 1440/320: disponibilidad, máximo nativo 300, ayuda, Tab, reset/foco, cero contactos automáticos Cloud; corpus y citas ES sin cambios",
+      "Limites": "query_submitted=false; http_retrieval_verified=false; no MONTADO_CONECTADO_REAL, main, producción, voz, secreto ni nuevo Cloud"
+    },
+    {
+      "ID": "WEB-A2-COMPROBACIONES-R23",
+      "Responsable": "María y agente 2",
+      "Estado_con_evidencia": "CORREGIDAS_PRUEBAS_OBSOLETAS_VALIDACION_ACOTADA_PASS",
+      "Entregado_o_confirmado": "4 pruebas y 2 informes; 7b49e95; montaje 36095235096 SUCCESS; sin cambios de producto en R23",
+      "Pendiente": "Gates generales y pendientes manuales R22 conservados; aceptación humana no ejecutada",
+      "ES_EN": "Recursos, catálogo individual de 292 pictogramas, foco de buscador abierto y cabeceras/visores con evidencia separada",
+      "Limites": "No auditoría global nueva, no certificación, no modificación de pictogramas, CSS, contenidos, escenas o sonidos"
+    },
+    {
+      "ID": "WEB-CONTENIDO-R02",
+      "Responsable": "María y agente 2",
+      "Estado_con_evidencia": "RECIBIDA_NO_EJECUTADA_EN_ESTE_LOTE",
+      "Entregado_o_confirmado": "Orden 01_AGENTE_2_CORREGIR_INTEGRAR.md leída; blob 4cd5b057038b42efaee9f0d8e304256e590c2e21",
+      "Pendiente": "Corrección y posterior integración de la entrega editorial R01 conforme a la orden R02; paquete no integrado en 82106c8",
+      "ES_EN": "Requisitos completos de la orden se conservan; no se anuncia traducción ni 132 estudios publicados",
+      "Limites": "No amplía esta entrega R23/R05 ni declara candidato editorial R02 terminado"
+    }
+  ],
+  "evidence": {
+    "mounted_run": 36095903893,
+    "mounted_job": 107948008609,
+    "artifact_id": 10847097560,
+    "artifact_sha256": "fd7aa1a177ba86c3078956829f31c3a69c52715b21b255b9fbe2a02ecae35dd5",
+    "representative_browser_cases": 36,
+    "resource_browser_cases": 12,
+    "r05_form_cases": 4,
+    "query_submitted": false,
+    "http_retrieval_verified": false,
+    "global_ci_green": false,
+    "failed_general_runs": {"storage_privacy":36095903892,"csp":36095904032,"prepublication":36095903988}
+  },
+  "application": {
+    "mode": "versioned_addendum_over_listed_IDs_only",
+    "replaces_prior_pending_R05_state": true,
+    "other_records_preserved": true,
+    "csv_overwritten": false,
+    "master_excel_V114_synchronized": false,
+    "original_memory_V106_overwritten": false,
+    "normative_requirements_changed": false
+  }
+}

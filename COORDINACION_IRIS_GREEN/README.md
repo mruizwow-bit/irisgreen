@@ -2,9 +2,15 @@
 
 Esta carpeta reúne la documentación operativa del proyecto. No forma parte de la web publicada. La documentación no autoriza por sí sola cambios de producto, publicación ni activación de servicios.
 
+## Addendum vigente A2 · 25/09/2026 · R23 y R39-A2-CONEXION-R05
+
+La conexión frontend R05 ya está aplicada en PR #244, HEAD `82106c874f5e4b612cdb68292b3c3115e040fea6`, preview `6ab5fd0246e4910008d918a2` READY. Build y QA de superficie ES/EN correctos; **consulta/fuentes HTTP reales pendientes de A3 y Codex**, no MONTADO_CONECTADO_REAL. Origen autorizado: `https://deploy-preview-244--irisgreen-home.netlify.app`.
+
+Leer [memoria y evidencia de entrega](MEMORIA/WEB_A2_R23_CONEXION_R05_20260925.md) y [delta de control por ID](CONTROL/DELTA_WEB_A2_R23_CONEXION_R05_20260925.json) junto a los registros anteriores. Este addendum sustituye únicamente el estado «pendiente de aplicar / sin acuse» de R39-A2-CONEXION-R05 y registra el cierre acotado de R23; no sustituye las otras filas o decisiones de coordinación. El CSV y los originales V106/V114 no se han sobrescrito ni se declaran sincronizados por este delta. La nueva orden WEB-CONTENIDO-R02 está recibida, no ejecutada en este lote. Los registros posteriores de otros responsables se conservan.
+
 ## Leer al empezar
 
-1. `ESTADO_ACTUAL.md`: trabajo entregado, pendiente y responsable.
+1. `ESTADO_ACTUAL.md`: trabajo entregado, pendiente y responsable, leído con el addendum A2 indicado arriba para sus IDs actualizados.
 2. `NORMATIVA/REQUISITOS_OPERATIVOS_ES_EN.md`: condiciones obligatorias según alcance.
 3. `ORDENES/`: orden vigente de cada responsable; contiene también los requisitos aplicables y la obligación español/inglés.
 4. `MEMORIA/` y `CONTROL/`: decisiones y seguimiento. Los históricos no sustituyen al estado vigente.
