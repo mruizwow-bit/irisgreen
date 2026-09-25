@@ -1,0 +1,42 @@
+{
+  "id": "CONTINUIDAD-A3-VOZ-UX-20260925",
+  "date": "2026-09-25",
+  "source": "Instrucción expresa de María en el chat de Astra",
+  "evidence_level": "DECLARACION_DE_MARIA_NO_VERIFICACION_TECNICA",
+  "memory": "MEMORIA/CONTINUIDAD_A3_Y_VOZ_ANTES_DE_ORDENES_UX_20260925.md",
+  "master_sync_status": "DELTA_REGISTRADO_NO_APLICADO_AL_EXCEL_MAESTRO",
+  "updates": [
+    {
+      "subject": "Errores detectados por A2 y pendientes de Codex",
+      "owner": "A3 recibe de A2; coordinación con María",
+      "status": "TRASPASO_Y_CORRECCIONES_COMUNICADOS_POR_MARIA",
+      "next": "Conservar entrega final A3 con base, cambios, evidencia y pendientes; no declarar cierre por esta recepción"
+    },
+    {
+      "subject": "Disponibilidad de Codex",
+      "status": "INACTIVO_HASTA_2026-10-01_SEGUN_MARIA",
+      "next": "No depender de una respuesta de Codex para las tareas que María ha trasladado a A3; no programar reanudación automática"
+    },
+    {
+      "target_id": "WEB-UX-SABIK-R01",
+      "status": "ANALIZADO_EMISION_APLAZADA_POR_MARIA",
+      "next": "Emitir órdenes cuando María vuelva tras cierre A3 y con la voz de Sabik; usar la versión vigente resultante"
+    },
+    {
+      "target_id": "WEB-EXPLORE-UX-R02",
+      "status": "ANALIZADO_EMISION_APLAZADA_POR_MARIA",
+      "next": "Mantener alcance del análisis; conservar estudios y juegos vigentes; no iniciar implementación concurrente"
+    }
+  ],
+  "new_orders_issued": false,
+  "product_changed": false,
+  "deployment_changed": false,
+  "normative_change": false,
+  "requirements_preserved": [
+    "Normativa vigente de construcción, accesibilidad, escritura y lectura",
+    "Contenido público completo en español e inglés",
+    "Marca Iris Green en los descargables",
+    "Preservación de la web actual, los masters de Sabik y las preferencias de Lectura",
+    "Audio únicamente tras acción explícita y con alternativa en silencio"
+  ]
+}
