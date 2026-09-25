@@ -1,0 +1,22 @@
+{
+  "id": "SABIK-BIBLIOTECA-NARRADA-ES-EN-R01",
+  "date": "2026-09-25",
+  "status": "DECISION_DE_MARIA_REGISTRADA_PREPARACION_GENERACION_PENDIENTES",
+  "authority": "Mensajes de María: narrar en ElevenLabs todo el contenido público que se prepara para la nube, en ES/EN; voz inglesa distinta ya generada; pronunciación I'm /ˈsɑːbɪk/.",
+  "memory_path": "MEMORIA/SABIK_BIBLIOTECA_NARRADA_ES_EN_R01_20260925.md",
+  "voices": {"es": "CONSERVAR_VOZ_ELEGIDA", "en": "CONSERVAR_VOZ_DISTINTA_ELEGIDA", "same_timbre_required": false, "voice_ids_verified": false},
+  "english_pronunciation": {"user_tested_generation_example": "I'm /ˈsɑːbɪk/", "visible_example": "I'm Sabik.", "scope": "Guion de locución EN; no sustitución global en web/corpus"},
+  "generation_provider": "ElevenLabs suscripción pagada comunicada por María",
+  "credits_reported": 100000,
+  "account_checked": false,
+  "credits_spent_in_this_action": 0,
+  "runtime_voice_api": "NINGUNA_EN_ESTA_ARQUITECTURA",
+  "route_not_adopted_for_this_scope": "Qwen VoiceDesign + OpenVoice + nuevo timbre único",
+  "next": "Partir del contenido ES/EN aprobado vigente, extraer sin duplicaciones, contar caracteres, preparar guiones por apartados y registrar ajustes exactos de las dos voces antes de generar lotes.",
+  "audio_generation_done": false,
+  "new_agent_orders_issued": false,
+  "product_changes": false,
+  "deploy_changes": false,
+  "master_spreadsheet_updated": false,
+  "normative_change": false
+}
