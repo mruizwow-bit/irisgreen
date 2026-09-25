@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-25",
+  "reviewer": "Agente 2",
+  "request": "El agente 3 ya ha hecho cambios, compruebalo.",
+  "memory": "../MEMORIA/REVISION_A2_CAMBIOS_A3_R06_20260925.md",
+  "records": [
+    {
+      "ID": "R39-A3-CONTINUIDAD-R06",
+      "owner": "Agente 3",
+      "status": "ACUSE_Y_CODIGO_ENTREGADOS_QA_ACOTADA_CONFIRMADA_INTEGRACION_HTTP_PENDIENTES",
+      "a3_web_pr": 245,
+      "a3_web_head": "0b96baec83e96c34f39200993260d366d496a0a3",
+      "a3_cloud_pr": 246,
+      "a3_cloud_head": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
+      "a2_web_head": "82106c874f5e4b612cdb68292b3c3115e040fea6",
+      "cloud_test_run": 36100865590,
+      "cloud_test_head": "d9193de2dc5568b10eb6e7791e0c297ddac95b2b",
+      "cloud_test_status": "Node22 and Node24 SUCCESS observed; final product unchanged, only temporary workflow restored",
+      "web_test_run": 36100265218,
+      "web_test_status": "SUCCESS observed; no authenticated query test",
+      "deploy_attempt_run": 36101218660,
+      "deploy_attempt_status": "Credential guard FAILURE; deploy SKIPPED",
+      "pending": "Resolve OBS-A3-R06-FRAME-SRC-01; authorized exact private deploy; coherent A2 integration; authenticated iframe and five real cases with HTTP identity",
+      "http_retrieval_verified_by_this_review": false,
+      "do_not_restore_pending_acknowledgement": true
+    },
+    {
+      "ID": "OBS-A3-R06-FRAME-SRC-01",
+      "status": "OPEN_CONFIRMED_BUILT_CONFIGURATION_GAP",
+      "owner": "Agente 3; frontend integration by Agente 2",
+      "finding": "A3 creates a Cloud iframe but unchanged built A2 frame-src permits only YouTube, Vimeo and Instagram. Cloud frame-ancestors alone does not grant parent frame-src permission.",
+      "evidence_artifact": 10847108890,
+      "evidence_sha256": "4af10ea75a0cefdc1dea6ab327c7febe079c5ff092e9717fa02ae9e42fe93fd2",
+      "evidence_path": "publicacion/csp-inventario.json",
+      "transport_blob": "c4a11fc0f7d17f545b627ab3bf9e5e9502c29e70",
+      "required_delta": "Exact-origin, preview-scoped integration of both policies and final Cloud origin; real-header connection test; no wildcards or weakening access",
+      "new_browser_reproduction": false,
+      "browser_limit": "Managed browser navigation denied; not counted as product failure or PASS"
+    }
+  ],
+  "limits": {
+    "product_changes": 0,
+    "merges": 0,
+    "deploys": 0,
+    "secrets_read_or_changed": 0,
+    "master_csv_overwritten": false,
+    "master_excel_synchronized": false,
+    "normative_requirements_changed": false,
+    "authority_returns_to_codex": false
+  }
+}
