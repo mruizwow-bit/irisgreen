@@ -1,0 +1,58 @@
+name: Exportar textos públicos Sabik R01
+on:
+  push:
+    branches: ['coordinacion/iris-green-canonica-20260924']
+    paths: ['.github/workflows/sabik-export-textos-r01.yml']
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 82106c874f5e4b612cdb68292b3c3115e040fea6
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Dependencias de lectura y construcción aislada
+        run: python3 -m pip install beautifulsoup4==4.13.4 pillow
+      - name: Construir copia pública sin desplegar ni modificar la fuente
+        id: build
+        continue-on-error: true
+        run: python3 scripts/build_site.py
+      - name: Exportar exclusivamente insumos textuales y procedencia
+        if: always()
+        env:
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,subprocess,zipfile
+          from pathlib import Path
+          root=Path.cwd()
+          dest=Path('/tmp/sabik-narracion-export');dest.mkdir()
+          extensions={'.html','.json','.js','.mjs','.css','.py','.md','.txt','.xml','.b64','.toml'}
+          roots={'es','en','assets','scripts','editorial','sabik'}
+          rootfiles={'index.html','buscador.json','videoteca-listado.json','support.js','sitemap.xml','sitemap-1.xml','VERSION.txt'}
+          rows=[]
+          with zipfile.ZipFile(dest/'FUENTE_TEXTUAL_82106c8.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+              for p in sorted(root.rglob('*')):
+                  if not p.is_file() or p.is_symlink():continue
+                  rel=p.relative_to(root)
+                  if '.git' in rel.parts or '__pycache__' in rel.parts:continue
+                  kind='dist' if rel.parts[0]=='dist' else 'source'
+                  allowed=(kind=='dist' and p.suffix.lower() in extensions) or (kind=='source' and ((rel.parts[0] in roots and p.suffix.lower() in extensions) or rel.as_posix() in rootfiles))
+                  if not allowed:continue
+                  data=p.read_bytes();name=rel.as_posix() if kind=='dist' else 'source/'+rel.as_posix()
+                  z.writestr(name,data)
+                  rows.append({'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          meta={'repository':'mruizwow-bit/irisgreen','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'build_outcome':os.environ['BUILD_OUTCOME'],'product_changes':False,'deploy':False,'api_voice_calls':0,'files':rows}
+          (dest/'SOURCE.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2),encoding='utf-8')
+          print('Archivos textuales exportados:',len(rows),'build:',meta['build_outcome'])
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-textos-fuente-82106c8-r01
+          path: /tmp/sabik-narracion-export/
+          retention-days: 14
