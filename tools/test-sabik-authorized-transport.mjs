@@ -78,6 +78,7 @@ function pair({ fetch, automatic = true, requestTimeoutMs = 500, connectionTimeo
 
 test('full local composition preserves R03 citations and A1 grouping; no browser credential', async t => {
   const p = pair(); t.after(() => p.close());
+  assert.equal(p.peer.opener, null, 'regression: Team Login may remove window.opener');
   const actual = await createRetrievalQuery({ transport: p.connection.transport, library })({ query: 'sobrecarga sensorial', limit: 12 });
   const expected = await (await qa(new Request(`${cloudOrigin}/internal/n04/library/search`, { method: 'POST',
     headers: { 'content-type': 'application/json', 'x-n04-smoke-token': fixtureSecret }, body: '{"q":"sobrecarga sensorial","limit":12}' }), context)).json();
@@ -98,7 +99,7 @@ test('abort during login rejects immediately without closing another consumer co
   const p = pair({ automatic: false }); t.after(() => p.close());
   const signal = new AbortController(); const first = p.connection.transport({ query: 'sensorial' }, { signal: signal.signal });
   const rejected = assert.rejects(first, { code: 'REQUEST_CANCELLED' }); signal.abort(); await rejected;
-  assert.equal(p.peer.closed, false); assert.equal(p.calls.length, 0);
+  assert.equal(p.frame.isConnected, true); assert.equal(p.calls.length, 0);
 });
 test('pre-aborted query does not create a Cloud frame', async t => {
   const p = pair(); t.after(() => p.close());
@@ -120,6 +121,12 @@ test('wrong handshake nonce cannot establish a transport', async t => {
   p.host.dispatch('message', { origin: cloudOrigin, source: p.peer, data: { type: 'sabik:ready', version: 1 } });
   await waiting; receiver?.close(); assert.equal(p.calls.length, 0);
 });
+test('top-level Cloud page with no opener or parent refuses to create a broker', () => {
+  const host = { ...events(), opener: null };
+  host.parent = host;
+  assert.equal(startCloudConnection({ host, allowedOrigin: webOrigin }), null);
+});
+
 test('Cloud only accepts its configured parent and origin when opener is null', async t => {
   let fetches = 0;
   const parent = { postMessage() {} };
@@ -217,13 +224,14 @@ test('R03 body limit, invalid version and pre-abort semantics survive the server
   const aborted = await relay(request(undefined, { signal: AbortSignal.abort() }), context);
   assert.equal(aborted.headers.get('x-sabik-request-outcome'), 'REQUEST_CANCELLED');
 });
-test('connection document is bilingual, allowlisted, credential-free, uncached and unframeable', async () => {
+test('connection document is bilingual, allowlisted, credential-free and frameable only by the exact web origin', async () => {
   for (const language of ['es', 'en']) {
     const response = await relay(new Request(`${cloudOrigin}/sabik-connect?lang=${language}`), context);
     const html = await response.text(); assert.equal(response.status, 200); assert.ok(html.includes(`lang="${language}"`));
     assert.ok(html.includes(webOrigin)); assert.equal(html.includes(fixtureSecret), false); assert.ok(html.includes('role="status"'));
-    assert.equal(response.headers.get('cache-control'), 'no-store'); assert.equal(response.headers.get('x-frame-options'), 'DENY');
-    assert.ok(response.headers.get('content-security-policy').includes("connect-src 'self'"));
+    assert.equal(response.headers.get('cache-control'), 'no-store'); assert.equal(response.headers.get('x-frame-options'), null);
+    const csp = response.headers.get('content-security-policy');
+    assert.ok(csp.includes("connect-src 'self'")); assert.ok(csp.includes(`frame-ancestors ${webOrigin}`));
   }
   const unsafe = createTeamTransportHandler({ qaHandler: qa, env: key => key === 'N04_WEB_ALLOWED_ORIGIN' ? 'https://attacker.invalid' : config[key] });
   assert.equal((await unsafe(new Request(`${cloudOrigin}/sabik-connect`), context)).status, 503);
