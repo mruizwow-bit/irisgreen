@@ -1,3 +1,15 @@
+# Órdenes del equipo · continuidad vigente R06
+
+## Reasignación por María · 25/09/2026
+
+**Codex está inoperativo según María; el agente 3 asume todos sus pendientes técnicos de Sabik/Cloud junto a sus propias comprobaciones.** Aplicar [R39-A3-CONTINUIDAD-R06](R39_CONTINUIDAD_A3_R06/01_AGENTE_3.md). A3 es el responsable de correlación HTTP, correcciones, integración común y entrega verificable; no esperar a Codex. Ya no está limitado a inspección ni tiene prohibido corregir el panel existente cuando sea necesario. No reconstruir piezas ya entregadas.
+
+A2 conserva web/subidas/frontend y revisión editorial R02; solo las dependencias técnicas puntuales antes dirigidas a Codex se canalizan ahora a A3. Los auxiliares conservan sus órdenes vigentes y entregas realizadas, sin volver a ejecutar órdenes históricas de construcción. La nueva asignación no acredita acuse o ejecución de A3 y no amplía permisos sobre producción, acceso, corpus, voz o Design.
+
+El reparto anterior se conserva abajo como histórico. Todas sus referencias a Codex como integrador/destinatario de pendientes en Sabik quedan sustituidas por A3 conforme a R06. Los requisitos de ES/EN y seguridad permanecen vigentes.
+
+---
+
 # Órdenes vigentes del equipo · apoyo a Codex
 
 Este documento conserva el reparto de apoyo a R39 sobre código ya entregado. No afirma que los agentes hayan recibido o iniciado las órdenes. Antes de escribir, declarar HEAD real, archivos reservados y avance ya existente; entregar solo el incremento pendiente. Codex es el único integrador de archivos compartidos. Las rutas nuevas propuestas no acreditan que sus archivos existan.

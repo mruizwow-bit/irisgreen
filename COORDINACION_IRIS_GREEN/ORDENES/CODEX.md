@@ -1,3 +1,15 @@
+# Continuidad antes asignada a Codex · reasignada al agente 3
+
+## Disposición vigente R06 · 25/09/2026
+
+María comunica: «Codex esta inoperativo ahora, ponlo todo para agente 3». **El agente 3 asume los pendientes técnicos de Codex en Sabik/Cloud y sus propias comprobaciones**, incluyendo correlación HTTP real, corrección de fallos e integración común. No esperar a Codex ni reservarle el cierre. Orden vigente: [R39-A3-CONTINUIDAD-R06](R39_CONTINUIDAD_A3_R06/01_AGENTE_3.md). Estado: REASIGNADA_POR_MARIA_PENDIENTE_ACUSE_A3.
+
+El texto anterior se conserva debajo como histórico y referencia del alcance heredado. No restaura la exclusividad de Codex ni obliga a reconstruir módulos que ya fueron entregados. Los permisos de publicación/acceso no se amplían; A2 conserva frontend y su rama.
+
+---
+
+## Orden anterior de Codex conservada como histórico
+
 # Orden vigente · Codex · continuidad R39
 
 ## Trabajo

@@ -1,0 +1,23 @@
+{
+  "schema": "iris-green-control-addendum-by-id-v1",
+  "date": "2026-09-25",
+  "author": "Agente 2",
+  "authority": {"source":"direct_user_message","text":"Codex esta inoperativo ahora, ponlo todo para agente 3","availability":"reported_by_Maria_not_independently_verified"},
+  "coordination_base": "03609fbdd0ccc7571ff5b777204beadc055cc857",
+  "order": "../ORDENES/R39_CONTINUIDAD_A3_R06/01_AGENTE_3.md",
+  "memory": "../MEMORIA/REASIGNACION_CODEX_A3_R06_20260925.md",
+  "website_head_observed": "82106c874f5e4b612cdb68292b3c3115e040fea6",
+  "preview_deploy_recorded": "6ab5fd0246e4910008d918a2",
+  "allowed_web_origin": "https://deploy-preview-244--irisgreen-home.netlify.app",
+  "cloud_origin": "https://6ab56a1ba2f6d83e6fb7b408--sabik-asistente.netlify.app",
+  "records": [
+    {"ID":"R39-A3-CONTINUIDAD-R06","Responsable":"Agente 3","Estado_con_evidencia":"REASIGNADA_POR_MARIA_PENDIENTE_ACUSE_A3","Entregado_o_confirmado":"Orden única de continuidad técnica y QA real emitida por mandato de María","Pendiente":"Acuse, cinco casos reales, correlación HTTP, correcciones/integración necesarias y entrega con evidencia","ES_EN":"Todo texto público modificado ES/EN; citas y corpus ES intactos","Limites":"Asignación no equivale a ejecución ni autoriza producción o cambios de acceso"},
+    {"ID":"R39-A3-USO-R04","Responsable":"Agente 3","Estado_con_evidencia":"CONTINUIDAD_REASIGNADA_EN_R06","Entregado_o_confirmado":"Se conserva la evidencia previa de montaje; R06 incorpora los pendientes técnicos de Codex","Pendiente":"Resultados y fuentes reales, vacío, cancelación/sustitución, error/timeout y lang es en citas de UI EN","Limites":"No repetir QA ya acreditada salvo regresión causada por el delta"},
+    {"ID":"R39-CODEX-R04","Responsable":"Agente 3 para los pendientes; autoría/entrega de Codex conservada","Estado_con_evidencia":"ENTREGA_EXISTENTE_CONSERVADA_PENDIENTES_TRANSFERIDOS_A3","Entregado_o_confirmado":"Cloud privado y trabajo R04 no se reconstruyen","Pendiente":"Correlación HTTP y correcciones/integración necesarias a cargo de A3 sin esperar a Codex","Limites":"No nueva biblioteca, transporte paralelo, investigación de login o pérdida de fuentes"},
+    {"ID":"R39","Responsable":"Agente 3 para continuidad técnica de Sabik/Cloud; A2 mantiene integración web","Estado_con_evidencia":"RESPONSABILIDAD_TECNICA_REASIGNADA_R06_HTTP_REAL_PENDIENTE","Entregado_o_confirmado":"Reasignación operativa por María, no modificación de producto","Pendiente":"Cierre de conexión real mediante evidencia conjunta de UI y aplicación","Limites":"No se declara MONTADO_CONECTADO_REAL, C17 global ni CI global verde"},
+    {"ID":"R39-A2-CONEXION-R05","Responsable":"María y agente 2; recepción técnica pendiente de A3","Estado_con_evidencia":"APLICADO_QA_SUPERFICIE_PASS_PREVIEW_READY_HTTP_PENDIENTE_A3","Entregado_o_confirmado":"82106c8 y preview 6ab5fd0246e4910008d918a2 conservados; no reaplicar el parche","Pendiente":"Ahora A3 asume tanto QA real como correlación HTTP antes reservada a Codex","Limites":"No cambia el HEAD web ni su estado de validación por reasignar"},
+    {"ID":"WEB-CONTENIDO-R02","Responsable":"María y agente 2; A3 solo dependencia técnica antes dirigida a Codex","Estado_con_evidencia":"RECIBIDA_NO_EJECUTADA_EN_ESTE_LOTE","Entregado_o_confirmado":"Propiedad editorial A2 conservada","Pendiente":"Si es necesaria regeneración de Investigación por integrador, A2 entrega esa dependencia puntual a A3","Limites":"No se transfiere toda la revisión editorial, Design o voz"}
+  ],
+  "supersedes": ["Codex como único integrador de Sabik/Cloud para estos pendientes","A3 solo inspección sin correcciones del panel","handoff pendiente a Codex para correlación HTTP"],
+  "application": {"mode":"versioned_addendum_over_listed_IDs_only","overrides_prior_conflicting_assignments":true,"previous_technical_evidence_preserved":true,"agent3_acknowledged":false,"agent3_execution_confirmed":false,"other_workstreams_preserved":true,"csv_overwritten":false,"master_excel_synchronized":false,"normative_requirements_changed":false,"product_or_deployment_changed":false}
+}
