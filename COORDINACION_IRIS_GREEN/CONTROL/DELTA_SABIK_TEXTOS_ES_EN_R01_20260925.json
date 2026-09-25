@@ -1,0 +1,34 @@
+{
+  "id": "SABIK-TEXTOS-ES-EN-R01",
+  "fecha": "2026-09-25",
+  "responsable": "Astra",
+  "estado": "TEXTOS_EXTRAIDOS_ENTREGADOS_INGLES_CON_CAMPOS_PENDIENTES",
+  "source_head": "82106c874f5e4b612cdb68292b3c3115e040fea6",
+  "source_export_run": 36109275211,
+  "source_artifact": 10852318797,
+  "memoria": "MEMORIA/SABIK_TEXTOS_ES_EN_EXTRAIDOS_R01_20260925.md",
+  "paquete": {
+    "nombre": "SABIK_TEXTOS_ES_EN_R01.zip",
+    "sha256": "f3013fe745672eb21f48e7c05569d778573f8bddbf719702a5bc88a7726d1b9c",
+    "bytes": 16437155,
+    "ubicacion_entrega": "Archivos de esta conversación; no subido como ZIP a GitHub"
+  },
+  "caracteres_contenido": {"es": 3356288, "en_fuente": 3274390},
+  "registros_hash_verificados": 11533,
+  "lotes_lectura": {"es": 16, "en": 15},
+  "pendientes": [
+    "Nombres y territorios EN del directorio: distinguir nombres oficiales de títulos descriptivos sin traducir",
+    "Diseño y muestra de estudios EN",
+    "Guiones de tablas y mensajes parametrizados",
+    "Incorporar solo después la entrega editorial R02 cuando esté corregida e integrada"
+  ],
+  "voces": "Conservar las dos voces distintas aprobadas por María",
+  "pronunciacion_en": "/ˈsɑːbɪk/ solo en copia de locución; Sabik en texto público",
+  "api_calls_elevenlabs": 0,
+  "creditos_gastados": 0,
+  "audio_generado": false,
+  "producto_modificado": false,
+  "deploy": false,
+  "maestros_sobrescritos": false,
+  "nota": "Delta documental, no actualización automática del Excel maestro ni certificación de aprobación editorial completa. No cambia las tareas vigentes de A2/A3."
+}
