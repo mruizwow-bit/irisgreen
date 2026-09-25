@@ -29,18 +29,29 @@
     { f:'ambiente-largo-1.mp3',t:'Ambiente largo I',a:'Lachm' },
     { f:'ambiente-largo-2.mp3',t:'Ambiente largo II',a:'Lachm' }
   ];
-  /* Algunos navegadores Chromium no incluyen decodificador AAC. En ellos las
-     pistas .m4a daban respuesta HTTP correcta pero terminaban en error de audio.
-     Mostramos solo formatos que el propio navegador declara reproducibles. */
+  /* W05-R1: el catálogo lógico siempre conserva las 24 piezas. Las nueve
+     fuentes M4A VERIFIED_EXACT tienen un MP3 derivado local versionado como
+     fallback; el feature-detect decide la fuente técnica, nunca si la pista existe. */
+  var FALLBACKS = {
+    'un-momento-de-calma.m4a':'fallbacks/un-momento-de-calma.mp3',
+    'calma-por-dentro.m4a':'fallbacks/calma-por-dentro.mp3',
+    'piano-tranquilo.m4a':'fallbacks/piano-tranquilo.mp3',
+    'piano-suave.m4a':'fallbacks/piano-suave.mp3',
+    'piano-minimo.m4a':'fallbacks/piano-minimo.mp3',
+    'bajo-el-agua.m4a':'fallbacks/bajo-el-agua.mp3',
+    'piano-fondo.m4a':'fallbacks/piano-fondo.mp3',
+    'piano-flores.m4a':'fallbacks/piano-flores.mp3',
+    'entre-estrellas.m4a':'fallbacks/entre-estrellas.mp3'
+  };
   var probe=document.createElement('audio');
   var aac=!!(probe.canPlayType&&probe.canPlayType('audio/mp4; codecs="mp4a.40.2"'));
-  var TRACKS=ALL_TRACKS.filter(function(track){return !/\.m4a$/i.test(track.f)||aac;});
-  if(!TRACKS.length)TRACKS=ALL_TRACKS.slice();
+  var TRACKS=ALL_TRACKS.slice();
   var TEXT = {
-    es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. Prueba otra o pulsa Escuchar de nuevo.'},
-    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. Choose another or press Play again.'}
+    es:{title:'Música',close:'Cerrar reproductor',play:'Escuchar',pause:'Pausa',stop:'Parar',stopped:'Reproducción detenida.',prev:'Anterior',next:'Siguiente',list:'Elegir una pieza',volume:'Volumen',repeat:'Repetir lista',credit:'Música de Pixabay. Autor indicado en cada pieza.',error:'No se ha podido reproducir esta pieza. La pista sigue disponible en la lista.'},
+    en:{title:'Music',close:'Close player',play:'Play',pause:'Pause',stop:'Stop',stopped:'Playback stopped.',prev:'Previous',next:'Next',list:'Choose a track',volume:'Volume',repeat:'Repeat playlist',credit:'Music from Pixabay. Each track credits its author.',error:'This track could not be played. The track remains available in the list.'}
   };
-  var panel, audio, playButton, title, author, status, closeButton, lastTrigger, labels, previousButton, nextButton, listSummary, volumeLabel, volumeSlider, repeatText, creditText, selected = 0, repeat = true, open = false;
+  var panel, audio, playButton, stopButton, title, author, status, closeButton, lastTrigger, labels, previousButton, nextButton, listSummary, volumeLabel, volumeSlider, repeatText, creditText, selected = 0, repeat = true, open = false;
+  var statusKind='', currentSourceKind='', alternateTried=false, attemptToken=0, handledFailureToken=0;
   var selector = '#plBtn,.ig-uh-music,[data-ig-music]';
   function language() { var lang = document.documentElement.lang || 'es'; return TEXT[lang.slice(0,2)] || TEXT.es; }
   function el(tag, text, className) { var node=document.createElement(tag); if(text)node.textContent=text;if(className)node.className=className;return node; }
@@ -56,26 +67,63 @@
     labels=language();
     panel.querySelector('#ig-music-title').textContent=labels.title;
     closeButton.setAttribute('aria-label',labels.close);
-    previousButton.textContent=labels.prev;nextButton.textContent=labels.next;
+    previousButton.textContent=labels.prev;nextButton.textContent=labels.next;stopButton.textContent=labels.stop;
     listSummary.textContent=labels.list;volumeLabel.textContent=labels.volume;
     volumeSlider.setAttribute('aria-label',labels.volume);
     repeatText.textContent=labels.repeat;creditText.textContent=labels.credit;
-    if(status.textContent)status.textContent=labels.error;
+    status.textContent=statusKind ? (labels[statusKind]||'') : '';
     sync();
+  }
+  function setStatus(kind) {
+    statusKind=kind||'';
+    if(status)status.textContent=statusKind ? (labels[statusKind]||'') : '';
+  }
+  function fallbackFile() { return FALLBACKS[TRACKS[selected].f] || ''; }
+  function originalUrl() { return new URL('/audio/'+TRACKS[selected].f,location.origin).href; }
+  function fallbackUrl() {
+    var file=fallbackFile();
+    return file ? new URL('/audio/'+file,location.origin).href : '';
+  }
+  function sourceChoice(forceFallback) {
+    var fallback=fallbackFile();
+    if(fallback && (forceFallback || (/\.m4a$/i.test(TRACKS[selected].f) && !aac))) {
+      return {kind:'fallback',url:fallbackUrl()};
+    }
+    return {kind:'original',url:originalUrl()};
+  }
+  function handleSourceFailure(token) {
+    if(token!==attemptToken || handledFailureToken===token)return;
+    handledFailureToken=token;
+    if(currentSourceKind!=='fallback' && !alternateTried && fallbackFile()) {
+      alternateTried=true;
+      attemptSource(sourceChoice(true));
+      return;
+    }
+    setStatus('error');sync();
   }
   function ensureAudio() {
     if(audio)return audio;
     audio=new Audio(); audio.preload='none';audio.volume=.6;
     audio.addEventListener('play',sync);audio.addEventListener('pause',sync);
-    audio.addEventListener('error',function(){status.textContent=labels.error;sync();});
+    audio.addEventListener('error',function(){handleSourceFailure(attemptToken);});
     audio.addEventListener('ended',function(){if(selected<TRACKS.length-1)play(selected+1);else if(repeat)play(0);else sync();});
     return audio;
   }
+  function attemptSource(choice) {
+    var a=ensureAudio(), token=++attemptToken;
+    currentSourceKind=choice.kind;handledFailureToken=0;
+    if(a.src!==choice.url)a.src=choice.url;
+    a.play().then(function(){if(token===attemptToken){setStatus('');sync();}}).catch(function(){handleSourceFailure(token);});
+  }
   function play(index) {
     selected=(index+TRACKS.length)%TRACKS.length;
-    var a=ensureAudio(), url=new URL('/audio/'+TRACKS[selected].f,location.origin).href;
-    status.textContent=''; if(a.src!==url)a.src=url;
-    a.play().then(sync).catch(function(){status.textContent=labels.error;sync();});sync();
+    alternateTried=false;setStatus('');
+    attemptSource(sourceChoice(false));sync();
+  }
+  function stopPlayback() {
+    attemptToken+=1;handledFailureToken=0;alternateTried=false;
+    if(audio){audio.pause();try{audio.currentTime=0;}catch(_){}}
+    setStatus('stopped');sync();
   }
   function close(restore) {
     if(!panel)return;
@@ -103,8 +151,9 @@
     title=el('strong','', 'ig-m-title');author=el('span','', 'ig-m-author');panel.append(title,author);
     var controls=el('div','', 'ig-m-controls');
     playButton=button(labels.play,function(){if(audio&&!audio.paused)audio.pause();else play(selected);});playButton.className='ig-m-play';
+    stopButton=button(labels.stop,stopPlayback);stopButton.className='ig-m-stop';
     previousButton=button(labels.prev,function(){play(selected-1);});nextButton=button(labels.next,function(){play(selected+1);});
-    controls.append(previousButton,playButton,nextButton);panel.append(controls);
+    controls.append(previousButton,playButton,stopButton,nextButton);panel.append(controls);
     var volume=el('label','', 'ig-m-volume'),slider=el('input');slider.type='range';slider.min='0';slider.max='100';slider.value='60';slider.setAttribute('aria-label',labels.volume);
     slider.addEventListener('input',function(){ensureAudio().volume=Number(slider.value)/100;});volumeLabel=el('span',labels.volume);volumeSlider=slider;volume.append(volumeLabel,slider);panel.append(volume);
     var details=el('details'), summary=el('summary',labels.list),list=el('ol');listSummary=summary;
