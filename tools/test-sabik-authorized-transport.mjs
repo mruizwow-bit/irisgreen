@@ -34,28 +34,51 @@ function events() {
   };
 }
 function pair({ fetch, automatic = true, requestTimeoutMs = 500, connectionTimeoutMs = 500, origin = webOrigin } = {}) {
-  const calls = [], messages = []; let broker, count = 0;
+  const calls = [], messages = []; let broker, count = 0, currentFrame = null;
   const host = { ...events(), crypto: globalThis.crypto, MessageChannel };
-  const peer = { ...events(), closed: false, document: { documentElement: { dataset: {} }, getElementById() { return null; } },
-    close() { this.closed = true; broker?.stop(); },
-    postMessage(data, target, ports) { assert.equal(target, cloudOrigin); messages.push(data); queueMicrotask(() => peer.dispatch('message', { data, source: host, origin, ports })); },
+  const peer = { ...events(), opener: null, parent: host,
+    document: { documentElement: { dataset: {} }, getElementById() { return null; } },
+    postMessage(data, target, ports) {
+      assert.equal(target, cloudOrigin); messages.push(data);
+      queueMicrotask(() => peer.dispatch('message', { data, source: host, origin, ports }));
+    },
     async fetch(path, options) { calls.push({ path, options }); return fetch ? fetch(path, options) : relay(new Request(cloudOrigin + path, {
       ...options, headers: { ...options.headers, origin: cloudOrigin, 'sec-fetch-site': 'same-origin' },
     }), context); },
-    opener: { postMessage(data, target) { assert.equal(target, webOrigin); queueMicrotask(() => host.dispatch('message', { data, origin: cloudOrigin, source: peer })); } },
   };
-  // Browser WindowProxy identity is equal to opener; emulate that identity here.
-  peer.opener = Object.assign(host, { postMessage(data, target) {
-    assert.equal(target, origin); queueMicrotask(() => host.dispatch('message', { data, origin: cloudOrigin, source: peer }));
-  } });
-  host.open = url => { count++; assert.ok(url.startsWith(`${cloudOrigin}/sabik-connect?lang=`)); peer.closed = false;
-    if (automatic) queueMicrotask(() => { broker = startCloudConnection({ host: peer, allowedOrigin: origin }); }); return peer; };
+  host.postMessage = (data, target) => {
+    assert.equal(target, origin);
+    queueMicrotask(() => host.dispatch('message', { data, origin: cloudOrigin, source: peer }));
+  };
+  host.document = {
+    body: {
+      appendChild(frame) {
+        count++; currentFrame = frame; frame.isConnected = true;
+        assert.ok(frame.src.startsWith(`${cloudOrigin}/sabik-connect?lang=`));
+        if (automatic) queueMicrotask(() => { broker = startCloudConnection({ host: peer, allowedOrigin: origin }); });
+        return frame;
+      },
+    },
+    createElement(tag) {
+      assert.equal(tag, 'iframe');
+      const frameEvents = events();
+      return Object.assign(frameEvents, {
+        contentWindow: peer, hidden: false, tabIndex: 0, isConnected: false, src: '',
+        attrs: new Map(),
+        setAttribute(name, value) { this.attrs.set(name, String(value)); },
+        remove() { this.isConnected = false; },
+      });
+    },
+  };
   const connection = createAuthorizedTransport({ cloudOrigin, window: host, requestTimeoutMs, connectionTimeoutMs });
-  return { host, peer, connection, calls, messages, get opened() { return count; }, close() { connection.disconnect(); broker?.stop(); } };
+  return { host, peer, connection, calls, messages,
+    get opened() { return count; }, get frame() { return currentFrame; },
+    close() { connection.disconnect(); broker?.stop(); } };
 }
 
 test('full local composition preserves R03 citations and A1 grouping; no browser credential', async t => {
   const p = pair(); t.after(() => p.close());
+  assert.equal(p.peer.opener, null, 'regression: Team Login may remove window.opener');
   const actual = await createRetrievalQuery({ transport: p.connection.transport, library })({ query: 'sobrecarga sensorial', limit: 12 });
   const expected = await (await qa(new Request(`${cloudOrigin}/internal/n04/library/search`, { method: 'POST',
     headers: { 'content-type': 'application/json', 'x-n04-smoke-token': fixtureSecret }, body: '{"q":"sobrecarga sensorial","limit":12}' }), context)).json();
@@ -76,9 +99,9 @@ test('abort during login rejects immediately without closing another consumer co
   const p = pair({ automatic: false }); t.after(() => p.close());
   const signal = new AbortController(); const first = p.connection.transport({ query: 'sensorial' }, { signal: signal.signal });
   const rejected = assert.rejects(first, { code: 'REQUEST_CANCELLED' }); signal.abort(); await rejected;
-  assert.equal(p.peer.closed, false); assert.equal(p.calls.length, 0);
+  assert.equal(p.frame.isConnected, true); assert.equal(p.calls.length, 0);
 });
-test('pre-aborted query does not open a window', async t => {
+test('pre-aborted query does not create a Cloud frame', async t => {
   const p = pair(); t.after(() => p.close());
   await assert.rejects(p.connection.transport({ query: 'sensorial' }, { signal: AbortSignal.abort() }), { code: 'REQUEST_CANCELLED' });
   assert.equal(p.opened, 0);
@@ -98,12 +121,19 @@ test('wrong handshake nonce cannot establish a transport', async t => {
   p.host.dispatch('message', { origin: cloudOrigin, source: p.peer, data: { type: 'sabik:ready', version: 1 } });
   await waiting; receiver?.close(); assert.equal(p.calls.length, 0);
 });
-test('Cloud only accepts its configured opener and origin', async t => {
+test('top-level Cloud page with no opener or parent refuses to create a broker', () => {
+  const host = { ...events(), opener: null };
+  host.parent = host;
+  assert.equal(startCloudConnection({ host, allowedOrigin: webOrigin }), null);
+});
+
+test('Cloud only accepts its configured parent and origin when opener is null', async t => {
   let fetches = 0;
-  const host = { ...events(), opener: { postMessage() {} }, fetch() { fetches++; } };
+  const parent = { postMessage() {} };
+  const host = { ...events(), opener: null, parent, fetch() { fetches++; } };
   const broker = startCloudConnection({ host, allowedOrigin: webOrigin }); t.after(() => broker.stop());
   const ports = new MessageChannel(); t.after(() => { ports.port1.close(); ports.port2.close(); });
-  const base = { source: host.opener, origin: webOrigin, ports: [ports.port1], data: { type: 'sabik:connect', version: 1, nonce: crypto.randomUUID() } };
+  const base = { source: parent, origin: webOrigin, ports: [ports.port1], data: { type: 'sabik:connect', version: 1, nonce: crypto.randomUUID() } };
   host.dispatch('message', { ...base, origin: 'https://attacker.invalid' });
   host.dispatch('message', { ...base, source: {} });
   ports.port2.postMessage({ type: 'sabik:query', id: '1', body: '{"q":"sensorial"}' });
@@ -118,11 +148,12 @@ test('one aborted consumer leaves a concurrent query operational', async t => {
   const second = createRetrievalQuery({ transport: p.connection.transport, library })({ query: 'sensorial' });
   await delay(10); control.abort(); await first; assert.ok((await second).groups.length); assert.equal(p.opened, 1);
 });
-test('closed popup cancels the pending login and a blocked popup fails without retry', async t => {
+test('iframe load failure rejects the pending connection without retry', async t => {
   const p = pair({ automatic: false, connectionTimeoutMs: 500 }); t.after(() => p.close());
-  const waiting = assert.rejects(p.connection.connect(), { code: 'REQUEST_CANCELLED' }); p.peer.closed = true; await waiting;
-  p.host.open = () => null;
-  await assert.rejects(p.connection.connect(), { code: 'LIBRARY_UNAVAILABLE' }); assert.equal(p.calls.length, 0);
+  const waiting = assert.rejects(p.connection.connect(), { code: 'LIBRARY_UNAVAILABLE' });
+  p.frame.dispatch('error', {});
+  await waiting;
+  assert.equal(p.calls.length, 0);
 });
 test('query cancellation aborts only its fetch and discards a late reply', async t => {
   let fetchSignal, release;
@@ -193,13 +224,14 @@ test('R03 body limit, invalid version and pre-abort semantics survive the server
   const aborted = await relay(request(undefined, { signal: AbortSignal.abort() }), context);
   assert.equal(aborted.headers.get('x-sabik-request-outcome'), 'REQUEST_CANCELLED');
 });
-test('connection document is bilingual, allowlisted, credential-free, uncached and unframeable', async () => {
+test('connection document is bilingual, allowlisted, credential-free and frameable only by the exact web origin', async () => {
   for (const language of ['es', 'en']) {
     const response = await relay(new Request(`${cloudOrigin}/sabik-connect?lang=${language}`), context);
     const html = await response.text(); assert.equal(response.status, 200); assert.ok(html.includes(`lang="${language}"`));
     assert.ok(html.includes(webOrigin)); assert.equal(html.includes(fixtureSecret), false); assert.ok(html.includes('role="status"'));
-    assert.equal(response.headers.get('cache-control'), 'no-store'); assert.equal(response.headers.get('x-frame-options'), 'DENY');
-    assert.ok(response.headers.get('content-security-policy').includes("connect-src 'self'"));
+    assert.equal(response.headers.get('cache-control'), 'no-store'); assert.equal(response.headers.get('x-frame-options'), null);
+    const csp = response.headers.get('content-security-policy');
+    assert.ok(csp.includes("connect-src 'self'")); assert.ok(csp.includes(`frame-ancestors ${webOrigin}`));
   }
   const unsafe = createTeamTransportHandler({ qaHandler: qa, env: key => key === 'N04_WEB_ALLOWED_ORIGIN' ? 'https://attacker.invalid' : config[key] });
   assert.equal((await unsafe(new Request(`${cloudOrigin}/sabik-connect`), context)).status, 503);

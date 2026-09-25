@@ -19,9 +19,9 @@ export function createTeamTransportHandler({ qaHandler, env }) {
       const status = en ? 'Connecting to Iris Green…' : 'Conectando con Iris Green…';
       const close = en ? 'Close connection' : 'Cerrar conexión';
       return new Response(`<!doctype html><html lang="${en ? 'en' : 'es'}"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="sabik-allowed-origin" content="${origin}"><title>${title}</title><script type="module" src="/sabik-connect.mjs"></script><main><h1>${title}</h1><p id="status" role="status">${status}</p><p>${en ? 'Keep this window open while searching. Access is limited to the Iris Green team.' : 'Mantén esta ventana abierta mientras buscas. El acceso está limitado al equipo de Iris Green.'}</p><button id="close" type="button">${close}</button></main></html>`, {
-        headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8', 'X-Frame-Options': 'DENY',
+        headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8',
           'Cross-Origin-Opener-Policy': 'unsafe-none',
-          'Content-Security-Policy': "default-src 'none'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'" },
+          'Content-Security-Policy': `default-src 'none'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors ${origin}` },
       });
     }
     if (url.pathname !== PATH || url.search || request.method !== 'POST') return denied(405);

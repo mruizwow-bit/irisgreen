@@ -4,7 +4,7 @@ Base preservada: R03 `3131d55020057c55567a3457900afc888876de5d`. No cambia el mo
 
 ## Qué está construido
 
-`createAuthorizedTransport({cloudOrigin})` devuelve `transport(request,{signal})`, `connect(language)` y `disconnect()`. El transporte devuelve una `Response` para el puente R03. El control existente abre explícitamente una ventana de conexión del Cloud privado; Netlify autentica allí al equipo con su sesión existente. Las ventanas intercambian solamente consulta, cancelación y respuesta mediante un MessageChannel, con origen y WindowProxy exactos, versión y nonce.
+`createAuthorizedTransport({cloudOrigin})` devuelve `transport(request,{signal})`, `connect(language)` y `disconnect()`. El transporte devuelve una `Response` para el puente R03. Tras reproducirse en R06 que Team Login deja `window.opener === null`, la conexión deja de depender del popup: el control crea un iframe oculto del Cloud privado. El documento Cloud autenticado usa `window.parent` y `MessageChannel` con origen y WindowProxy exactos, versión y nonce. El iframe sólo puede existir bajo el origen exacto autorizado por `N04_WEB_ALLOWED_ORIGIN`; no se amplía a producción ni a otros previews.
 
 La ventana Cloud hace POST del mismo origen a `/internal/n04/team/search`. La Function incorpora en servidor la clave QA existente e invoca el handler R03 sin alterar búsqueda, límites, biblioteca, agrupación ni puntuaciones. No se envía esa clave al navegador. La cookie de Netlify no se lee ni se exporta; el navegador la gestiona exclusivamente para su origen.
 
@@ -21,7 +21,7 @@ Configuración de ese único borrador:
 - `N04_SMOKE_TOKEN`: secreto existente, por el canal local seguro; nunca en archivos ni conversación.
 - Verificar mediante API que Team Login sigue requerido en todos los contextos antes de habilitar. La Function rechaza otro sitio, contexto distinto de deploy-preview y cualquier despliegue publicado. Estas condiciones y los controles CSRF **no sustituyen** la autenticación de Netlify.
 
-Sólo admite consultas de lectura, cuerpo máximo 2.048 bytes heredado de R03, hasta cuatro solicitudes simultáneas por conexión, respuesta máxima 65.536 bytes y cabeceras de respuesta permitidas. No hay historial, almacenamiento de consultas, CORS, reintento automático ni log de contenido. En el DOM privado se conserva únicamente el estado HTTP y las cabeceras de procedencia de la solicitud actual, sin consulta, cuerpo ni credenciales; permite verificar HTTP sin exportar la sesión. Cancelar durante el login libera sólo al consumidor; cancelar una consulta aborta su fetch. Una respuesta tardía no se entrega. Cerrar la conexión cancela solicitudes y puertos. El motor mantiene su caché compartida R03.
+Sólo admite consultas de lectura, cuerpo máximo 2.048 bytes heredado de R03, hasta cuatro solicitudes simultáneas por conexión, respuesta máxima 65.536 bytes y cabeceras de respuesta permitidas. No hay historial, almacenamiento de consultas, CORS, reintento automático ni log de contenido. En el DOM privado se conserva únicamente el estado HTTP y las cabeceras de procedencia de la solicitud actual, sin consulta, cuerpo ni credenciales; permite verificar HTTP sin exportar la sesión. Cancelar durante la conexión libera sólo al consumidor; cancelar una consulta aborta su fetch. Una respuesta tardía no se entrega. `disconnect()` elimina el iframe, cancela solicitudes y cierra puertos. El motor mantiene su caché compartida R03. Si la sesión Team Login ha caducado, el iframe no se convierte en una vía de autenticación alternativa: la conexión falla de forma recuperable y el miembro del equipo debe volver a autenticarse por la vía normal de Netlify.
 
 ## Delta para A2
 
@@ -35,18 +35,33 @@ import { createRetrievalQuery } from './retrieval-bridge.browser.mjs';
 const connection = createAuthorizedTransport({ cloudOrigin: approvedCloudOrigin });
 const query = createRetrievalQuery({ transport: connection.transport, library: sealedLibrary });
 const panel = SabikRetrievalPanel.createRetrievalPanel({ root, query, announcement, language });
-// En el control existente y por gesto explícito del usuario:
-await connection.connect(language); // es/en, sin micrófono ni audio.
+// En el control existente:
+await connection.connect(language); // iframe privado es/en, sin micrófono ni audio.
 await panel.run({ query: userQuery });
 // Al salir o cerrar: panel.cancel(); connection.disconnect();
 ```
 
-Mantener semántica, foco, Lectura, Newsreader/Atkinson y los masters en el montaje actual de A2. El panel R03 ya conserva citas con `lang=es` y estados ES/EN. La pequeña ventana técnica declara acceso limitado al equipo en ambos idiomas. Si falta conexión o se bloquea la ventana, mantener aviso recuperable y alternativa de navegación; no repetir aperturas automáticamente.
+Mantener semántica, foco, Lectura, Newsreader/Atkinson y los masters en el montaje actual de A2. El panel R03 ya conserva citas con `lang=es` y estados ES/EN. El documento técnico Cloud sigue declarando acceso limitado al equipo en ambos idiomas, aunque en la conexión normal R06 se carga embebido y oculto. Si falta sesión o conexión, mantener aviso recuperable y alternativa de navegación; no abrir popups ni repetir autenticaciones automáticamente.
 
 ## Evidencia y siguiente ejecución
 
-Las pruebas automatizadas componen ventanas simuladas, MessageChannel, Function local, motor, corpus original y puente. Demuestran el contrato y sus límites; **no acreditan HTTP remoto ni sesión real del transporte**.
+Las pruebas automatizadas componen iframe/parent con `opener=null`, MessageChannel, Function local, motor, corpus original y puente. Reproducen el defecto R06 anterior y verifican que el handshake ya no depende de `window.opener`. Demuestran el contrato y sus límites; **no acreditan HTTP remoto ni sesión real del transporte**.
 
 Tras autorización: declarar HEAD y cambio antes del nuevo borrador; verificar protección del sitio, configurar origen A2 exacto, abrir conexión desde el control real, ejecutar consulta sintética, comprobar JSON/status, cabeceras de código/biblioteca y citas, cancelar y sustituir consulta. Guardar sólo evidencia saneada. A3 comprueba el montaje ES/EN. El antiguo R03 conserva aparte su POST manual pendiente A5-HTTP-ACTION-01; verificar el nuevo relay no sustituye esa evidencia sobre el despliegue antiguo.
 
 Estado de autorización: AUTORIZADA_ACTIVACION_PRIVADA. Consultar la entrega de activación para los resultados HTTP, transporte y montaje; este contrato no los declara verificados por anticipado. No se declara conformidad global de accesibilidad.
+
+
+## Corrección R06 · opener nulo
+
+Reproducción humana autenticada de María el 25/09/2026: desde el alias autorizado de PR #244, la página Cloud final cargó con `N04_WEB_ALLOWED_ORIGIN` correcto y scripts presentes, pero `window.opener === null` en dos intentos consecutivos. El transporte anterior quedó detenido en «Conectando con Iris Green…».
+
+La corrección R06:
+- no cambia endpoints, corpus, ranking, secretos ni Team Login;
+- sustituye únicamente el enlace popup/opener por iframe/parent;
+- elimina `X-Frame-Options: DENY` solo en `/sabik-connect`;
+- fija CSP `frame-ancestors` al origen exacto ya validado en servidor;
+- mantiene `default-src 'none'`, `script-src 'self'`, `connect-src 'self'`, `base-uri 'none'` y `form-action 'none'`;
+- deja el resto del Cloud no embebible por defecto; no añade CORS ni acceso anónimo.
+
+La corrección necesita un único borrador privado nuevo únicamente si la revisión y pruebas de la rama R06 pasan. A2 recibe solo el delta de `sabik/authorized-transport.mjs` sobre su HEAD vigente.
