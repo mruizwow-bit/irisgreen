@@ -1,8 +1,9 @@
-name: Auditoría de la web
+name: TEMP R39 A3 R06 private transport validation
 
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - 'agent3/r39-r06-opener-fix-20260925'
     paths:
       - '.github/workflows/auditoria-web.yml'
 
@@ -10,62 +11,41 @@ permissions:
   contents: read
 
 jobs:
-  auditar:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  r39-r06:
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22.16.0', '24.19.0']
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - name: Inspeccionar las páginas actuales sin modificarlas
-        run: |
-          python3 - <<'PY'
-          import base64, gzip, json, re, shutil
-          from collections import Counter
-          from pathlib import Path
-          from html.parser import HTMLParser
-
-          root = Path.cwd()
-          out = Path('/tmp/irisgreen-audit')
-          out.mkdir()
-          counts = Counter()
-          summaries = []
-          for path in sorted(root.rglob('*')):
-              if not path.is_file() or '.git' in path.parts or '.github' in path.parts:
-                  continue
-              if path.suffix not in {'.html', '.js', '.css', '.json', '.toml', '.xml', '.txt', '.md'} and path.name not in {'_headers', '_redirects'}:
-                  continue
-              rel = path.relative_to(root)
-              target = out / 'source' / rel
-              target.parent.mkdir(parents=True, exist_ok=True)
-              shutil.copy2(path, target)
-              if path.suffix != '.html':
-                  continue
-              raw = path.read_text(encoding='utf-8')
-              counts['html'] += 1
-              match = re.search(r'<script\b[^>]*type=[\"\']__bundler/template[\"\'][^>]*>(.*?)</script\s*>', raw, re.S | re.I)
-              template = json.loads(match.group(1)) if match else raw
-              counts['bundled' if match else 'plain'] += 1
-              navs = re.findall(r'<nav\b[^>]*(?:ig-uh-nav|class=[\"\']nav[\"\'])[^>]*>.*?</nav\s*>', template, re.S | re.I)
-              internal = re.findall(r'<nav\b[^>]*ig-subtabs[^>]*>.*?</nav\s*>', template, re.S | re.I)
-              counts['global_nav'] += bool(navs)
-              counts['global_tramites'] += any('/es/tramites/' in n or '/en/apply/' in n for n in navs)
-              summaries.append({'path': str(rel), 'bytes': path.stat().st_size, 'bundled': bool(match), 'global_nav_count': len(navs), 'internal_nav_count': len(internal), 'shared_css': '/assets/site-v23.css' in template, 'loader_hides_body': 'visibility:hidden!important' in raw})
-              if str(rel) in {'index.html', 'es/tramites/index.html', 'es/libros/index.html', 'es/neurodiversidad/condiciones/index.html', 'en/index.html'}:
-                  dest = out / 'decoded' / rel
-                  dest.parent.mkdir(parents=True, exist_ok=True)
-                  dest.write_text(template, encoding='utf-8')
-                  print('\nPAGE', rel, 'bytes', path.stat().st_size, 'bundled', bool(match))
-                  for nav in navs + internal:
-                      print('NAV', nav[:16000])
-                  for needle in ['La pagan', 'pagan dos libros', 'free', 'sostener', 'MutationObserver', 'setInterval', 'site-v23.css', 'musica.js']:
-                      pos = template.find(needle)
-                      if pos >= 0:
-                          print('CONTEXT', needle, template[max(0, pos-400):pos+700])
-          report = {'counts': dict(counts), 'pages': summaries}
-          (out / 'audit.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
-          print('\nTOTALS', json.dumps(dict(counts)))
-          PY
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: auditoria-web-fuentes-actuales
-          path: /tmp/irisgreen-audit
-          retention-days: 3
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: cloud/n04-r38-library/package-lock.json
+      - name: Record identity and scope
+        run: |
+          node --version
+          test "$(git rev-parse HEAD^:sabik/authorized-transport.mjs 2>/dev/null || true)" != "$(git rev-parse HEAD:sabik/authorized-transport.mjs)"
+          git diff --check 16f1134e56292ca2ee600e77e69012c494f39aaf...HEAD
+          git diff --name-only 16f1134e56292ca2ee600e77e69012c494f39aaf...HEAD
+      - name: Install exact Cloud dependencies
+        working-directory: cloud/n04-r38-library
+        run: npm ci --ignore-scripts
+      - name: R06 opener-null transport regression
+        run: node --test tools/test-sabik-authorized-transport.mjs
+      - name: Cloud regression suite
+        working-directory: cloud/n04-r38-library
+        run: npm test
+      - name: Cloud build
+        working-directory: cloud/n04-r38-library
+        run: npm run build
+      - name: Static syntax checks
+        run: |
+          node --check sabik/authorized-transport.mjs
+          node --check cloud/n04-r38-library/src/cloud-connection.mjs
+          node --check cloud/n04-r38-library/src/team-transport-handler.mjs
