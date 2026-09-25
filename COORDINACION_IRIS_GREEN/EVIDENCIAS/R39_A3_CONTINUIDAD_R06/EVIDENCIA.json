@@ -1,0 +1,57 @@
+{
+  "id": "R39-A3-CONTINUIDAD-R06",
+  "status": "EN_EJECUCION_BLOQUEO_PUNTUAL_SESION_HTTP_AUTENTICADA",
+  "checked_at": "2026-09-25",
+  "web": {
+    "pr": 244,
+    "head": "82106c874f5e4b612cdb68292b3c3115e040fea6",
+    "deploy": "6ab5fd0246e4910008d918a2",
+    "authorized_origin": "https://deploy-preview-244--irisgreen-home.netlify.app",
+    "cloud_origin": "https://6ab56a1ba2f6d83e6fb7b408--sabik-asistente.netlify.app",
+    "connection_enabled": true,
+    "max_query_chars": 300
+  },
+  "cloud": {
+    "deploy": "6ab56a1ba2f6d83e6fb7b408",
+    "source_head": "16f1134e56292ca2ee600e77e69012c494f39aaf",
+    "library_deploy": "6ab4c1a15435b93043ab3f6d",
+    "functions": [
+      {
+        "name": "n04-library-qa",
+        "sha256": "abbc2f3a8eac8478aa2d33530b5615c3e7cbdc944498dc57079bdb2774507724",
+        "runtime": "nodejs24.x"
+      },
+      {
+        "name": "n04-team-transport",
+        "sha256": "130cb0fd60e6e73a098652d40660555b98e017a0ebdf03dc3cbcaa9fa4f774b3",
+        "runtime": "nodejs24.x"
+      }
+    ],
+    "edge_functions": 0
+  },
+  "independent_checks": {
+    "live_deploy_identity": true,
+    "package_digest_match": true,
+    "web_binding_matches_cloud": true,
+    "cloud_reuses_r03_handler": true,
+    "r38_library_pin": true,
+    "sabik_connect_asset_generated_by_build": true,
+    "no_product_defect_reproduced": true
+  },
+  "pending_authenticated_real": [
+    "results_sources",
+    "empty_results",
+    "cancel_replace_no_stale",
+    "recoverable_error_timeout",
+    "english_ui_spanish_citations_lang_es",
+    "http_status_content_type_code_head_library_deploy"
+  ],
+  "product_files_reserved": [],
+  "changes": {
+    "product": 0,
+    "web_a2": 0,
+    "cloud": 0,
+    "deploys": 0,
+    "secrets_or_access": 0
+  }
+}
