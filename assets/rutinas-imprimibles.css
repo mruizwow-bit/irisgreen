@@ -103,3 +103,10 @@
  .im-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 @media (prefers-reduced-motion:reduce){.im *{transition:none!important}}
+
+
+/* R42 · metadatos de descarga y procedencia. */
+.im-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin:0}
+.im-tags span{display:inline-flex;align-items:center;min-height:2rem;padding:.2rem .65rem;border:1px solid var(--line);border-radius:999px;background:#f7fafc;color:var(--ink2);font-size:.88rem}
+.im-provenance p{margin:0;line-height:1.55}
+@media(forced-colors:active){.im-tags span{border:1px solid CanvasText;background:Canvas;color:CanvasText}}
