@@ -1,0 +1,47 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-TALLER-INTERFACE-RESEARCH",
+  "date": "2026-09-26",
+  "status": "R42_TALLER_INTERFACE_RESEARCH_COMPLETE_IMPLEMENTATION_HOLD",
+  "inspected": {
+    "a2_head": "e8cad400a30d5d4857f9f99b0c1070d786958a8b",
+    "a5_pr": 299,
+    "a5_head": "8c1a9cc132ae9ebcacf1acbec3f99767db295634"
+  },
+  "confirmed_project_findings": [
+    "e8cad persisted ig42-stage in sessionStorage",
+    "PR299 removes stage persistence",
+    "WebGPU was capability detection only",
+    "No Three/Pixi/Rapier/Planck/Blockly/CodeMirror/Tone in inspected e8cad tree",
+    "AudioWorklet used blob module and silently fell back",
+    "PR299 architecture 3D is Canvas2D isometric",
+    "PR299 music timing uses setTimeout",
+    "PR299 has common workspace shell but no common scene tree/Mirror DOM/command palette"
+  ],
+  "research_corrections": [
+    "Blockly v13 accessibility is released/current",
+    "Fundacion Telefonica current pages explicitly require own creations",
+    "WCAG 2.5.7 needs non-drag single-pointer alternative, not keyboard only",
+    "W3C XAUR gives useful spatial/3D accessibility requirements",
+    "Scratch 33-to-60 claim is not accepted as UI architecture evidence",
+    "PhET 18-of-23-in-10-min claim not verified"
+  ],
+  "proposal": {
+    "shell": "stable common editor shell",
+    "workbench_profiles": 5,
+    "semantic_model": "single Iris project/scene model feeding renderer + structure + inspector + a11y + exports + tests",
+    "stage": "ephemeral context lens; does not gate capability",
+    "completion_gate": "artifact-first + HUMAN QA"
+  },
+  "observation": {
+    "id": "OBS-R42-TALLER-STORAGE-01",
+    "issue": "User document says no browser storage, but canonical A5 memory and code preserve IndexedDB/local projects and optional OPFS",
+    "action": "Maria decision/reconciliation before storage redesign"
+  },
+  "limits": [
+    "No new phase-6 implementation until Maria reviews architecture",
+    "Preserve PR299 useful work",
+    "No main/production",
+    "Do not treat research as acceptance"
+  ]
+}
