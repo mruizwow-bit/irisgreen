@@ -95,7 +95,9 @@ def _nav_markup(lang: str, nav_id: str | None, original_classes: str = "") -> st
     id_attr = f' id="{nav_id}"' if nav_id else ""
     classes = [x for x in original_classes.split() if x]
     if not classes:
-        classes = ["nav"]
+        classes = []
+    if "nav" not in classes:
+        classes.append("nav")
     if "ig-r40-nav" not in classes:
         classes.append("ig-r40-nav")
     class_attr = " ".join(classes)
