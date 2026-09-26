@@ -1,0 +1,27 @@
+name: R42 A1 Resources Games Routines QA
+'on':
+  push:
+    branches:
+      - qa/r42-a1-resources-games-routines-20260926
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Verify exact product handoff identity
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "c88ede84d8f4f88e3a93390d7502e226ba5f4e0d"
+          test "$(git rev-parse HEAD^^)" = "52e5f9f02184581a1bfb1878c388ede3d1068c47"
+          test "$(git rev-parse HEAD^^{tree})" = "c8806e6a62ead7c8fa869a2793768d8d7a388f7d"
+      - name: Run R42 A1 contract
+        run: python3 scripts/test_r42_recursos_juegos_rutinas.py
+      - name: Diff check product handoff
+        run: git diff --check 52e5f9f02184581a1bfb1878c388ede3d1068c47...c88ede84d8f4f88e3a93390d7502e226ba5f4e0d
