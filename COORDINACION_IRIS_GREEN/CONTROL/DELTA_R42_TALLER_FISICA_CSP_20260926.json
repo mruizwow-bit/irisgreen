@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-A5-PHYSICS-CSP",
+  "date": "2026-09-26",
+  "status": "R42_A5_PHYSICS_CSP_DUAL_ENGINE_REQUIRED",
+  "scope": "Taller physics backend and production CSP",
+  "verified": {
+    "production_build_removes_unsafe_eval": true,
+    "production_script_src": "'self' 'unsafe-inline'",
+    "wasm_unsafe_eval_enabled": false,
+    "rapier_requires_wasm": true,
+    "planck_runtime": "JavaScript/TypeScript 2D physics"
+  },
+  "decision": {
+    "global_csp_change": false,
+    "production_backend": "Planck",
+    "optional_backend": "Rapier when effective CSP explicitly permits WebAssembly",
+    "package": "planck",
+    "deprecated_package_rejected": "planck-js"
+  },
+  "gates": [
+    "No public Taller feature may require Rapier only",
+    "Production CSP test must exercise Planck",
+    "No visible error or unhandled rejection when WASM is blocked",
+    "Common physics regression scenarios must pass",
+    "3D real physics reopens security/architecture decision"
+  ],
+  "future_wasm_change": {
+    "owner": "A2/Astra",
+    "keyword": "'wasm-unsafe-eval'",
+    "not_equivalent_to": "'unsafe-eval'",
+    "requires": "separate security review + preview/report-only + effective single CSP validation"
+  },
+  "issues": [
+    285,
+    299,
+    289
+  ]
+}
