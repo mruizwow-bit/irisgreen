@@ -171,3 +171,25 @@ Aplicación prioritaria: Juegos, Rutinas, Taller, Tus intereses, Cuaderno de Cam
 Memoria: `MEMORIA/R42_SEPARACION_ETAPAS_VIDA_20260926.md`.  
 Normativa: `NORMATIVA/ADDENDUM_R42_SEPARACION_ETAPAS_VIDA_20260926.md`.  
 Control: `CONTROL/DELTA_R42_SEPARACION_ETAPAS_VIDA_20260926.json`.
+
+## R42 · Agente 7 · Rincón tranquilo inmersivo · 26/09/2026
+
+**Estado: `R42_A7_QUIET_SPACE_IMMERSIVE_READY_FOR_A2`.**
+
+Agente 7 completó #288 tras publicar `R42_NORMATIVA_EMBEBIDA_LEIDA` y construir sobre la fuente exacta R04 integrada por A2.
+
+Entrega:
+- branch `agent7/r42-quiet-space-immersive-20260926`;
+- HEAD `5f804201fcd4fd7c165fa9c5e1f682f3098f75c2`;
+- tree `2ec039620eac4f5728daa2fb26e3eaebf34840ed`;
+- PR #291 draft;
+- precheck remoto `R42_A7_STATIC_CONTRACT_PASS`.
+
+R42 sustituye la estética plana R04 por motor inmersivo WebGL2 first-party con fallback y 12 espacios: nueve categorías reconstruidas más Bosque con niebla, Lago al amanecer y Nubes lentas. El stage domina escritorio/móvil, pantalla limpia recupera controles por interacción/foco y no hay autoplay. ES/EN se mantiene completo.
+
+El audio conserva únicamente el ambiente de Mar R04 expresamente aceptado por María y regenera los demás paisajes tras acción explícita con identidades distintas.
+
+No es aceptación final: A2 integra/sube la preview única y María/QA realiza HUMAN QA visual y auditiva. Un fallo perceptivo devuelve el carril a construcción.
+
+Memoria: `MEMORIA/R42_A7_QUIET_SPACE_IMMERSIVE_20260926.md`.  
+Control: `CONTROL/DELTA_R42_A7_QUIET_SPACE_IMMERSIVE_20260926.json`.
