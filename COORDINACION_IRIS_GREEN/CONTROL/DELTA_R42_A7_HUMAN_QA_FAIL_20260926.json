@@ -1,0 +1,17 @@
+{
+  "id": "R42-A7-HUMAN-QA-FAIL",
+  "date": "2026-09-26",
+  "owner": "Agente 7",
+  "issue": 288,
+  "previous_state": "R42_A7_QUIET_SPACE_IMMERSIVE_READY_FOR_A2",
+  "state": "R42_A7_HUMAN_QA_FAIL_REBUILD_REQUIRED",
+  "evidence": "Maria human QA on integrated preview",
+  "failures": [
+    "visual quality too low",
+    "not immersive",
+    "interface poor",
+    "buttons/controls overlap"
+  ],
+  "next": "rebuild from integrated R42 result and return to A2 for preview + human QA",
+  "pass": false
+}
