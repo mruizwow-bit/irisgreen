@@ -237,7 +237,7 @@ function gameCard(o,cats){
  ks.forEach(function(k){if(k&&un.indexOf(k)<0)un.push(k);});
  var art=un.slice(0,3).map(function(k){return img(pk(k).img);}).join('');
  return '<li><a class="jg-card jg-r41-game-card" href="#juego-'+esc(j.s)+'" data-k="g-'+esc(j.s)+'" data-a="'+act(function(){abrir(o.i);})+'">'+
-  '<span class="jg-card-img" aria-hidden="true">'+art+'</span><span class="jg-card-copy"><span class="jg-card-type">'+esc(L((D.tipos||[]).filter(function(t){return t.id===grupo(j);})[0]?.l||{}))+' · '+esc(u.skills[habilidad(j)]||'')+'</span>'+
+  '<span class="jg-card-img" aria-hidden="true">'+art+'</span><span class="jg-card-copy"><span class="jg-card-type">'+esc(L((D.tipos||[]).filter(function(t){return t.id===grupo(j);})[0]?.l||{}))+' · '+esc(u.skills[habilidad(j)]||'')+' · '+esc(u.dur(Number.isFinite(j.min)?j.min:null))+'</span>'+
   '<strong class="jg-card-t">'+esc(L(j.t))+'</strong><span class="jg-card-d">'+esc(L(j.d))+'</span></span>'+
   '<span class="jg-card-f"><span class="jg-small">'+esc(cats[j.c]?L(cats[j.c].l):'')+'</span><span class="jg-card-cta">'+esc(u.jugar)+'</span></span></a></li>';
 }
