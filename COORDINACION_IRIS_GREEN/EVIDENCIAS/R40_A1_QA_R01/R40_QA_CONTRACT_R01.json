@@ -1,0 +1,314 @@
+{
+  "schema": "IRIS_R40_QA_CONTRACT/1.0",
+  "id": "R40-A1-QA-CONTRACT-R01",
+  "date": "2026-09-26",
+  "owner": "Agente 1",
+  "authority": {
+    "parent_issue": 247,
+    "work_issue": 248,
+    "coordination_base": "e224984b9dd722d0a2b68e95f3f9a13bdfcf9fe1",
+    "normative_ref": {
+      "path": "COORDINACION_IRIS_GREEN/NORMATIVA/REQUISITOS_OPERATIVOS_ES_EN.md",
+      "git_blob": "77a011c1770ac7a7a0940a20c1c0f9dbaf6adbbd"
+    }
+  },
+  "status": "QA_CONTRACT_READY_BASELINE_PENDING_A2_HANDOFF",
+  "product_baseline": {
+    "status": "PENDING_A2_HANDOFF",
+    "head_sha": null,
+    "tree_sha": null,
+    "rule": "No product SHA is accepted as R40 baseline until Agent 2 publishes an explicit stable handoff/freeze. Observed moving SHAs are not baselines."
+  },
+  "scope": {
+    "product_edits": 0,
+    "html_css_js_edits": 0,
+    "voice_tts": "OUT_OF_SCOPE",
+    "historical_tests": "MUST_NOT_BE_EDITED_TO_FORCE_PASS",
+    "compliance_claims": "FORBIDDEN",
+    "production_deploy": "NOT_AUTHORIZED"
+  },
+  "required_evidence_dependencies": [
+    {
+      "issue": 249,
+      "owner": "Agente 3",
+      "name": "P0 architecture/component/state/route contract",
+      "status": "PENDING"
+    },
+    {
+      "issue": 250,
+      "owner": "Agente 4",
+      "name": "content/source/licence READY-HOLD and provenance matrix",
+      "status": "PENDING"
+    },
+    {
+      "issue": 251,
+      "owner": "Agente 5",
+      "name": "local collection/project data contract and threat model",
+      "status": "PENDING"
+    },
+    {
+      "issue": 252,
+      "owner": "Agente 7",
+      "name": "audiovisual/visual specification and scene QA",
+      "status": "PENDING"
+    }
+  ],
+  "test_dimensions": {
+    "required_languages": [
+      "es",
+      "en"
+    ],
+    "required_viewports": [
+      {
+        "id": "desktop",
+        "width_css_px": 1440,
+        "height_policy": "content-dependent"
+      },
+      {
+        "id": "mobile_min",
+        "width_css_px": 320,
+        "height_policy": "content-dependent"
+      }
+    ],
+    "additional_recommended_viewports": [
+      390,
+      430,
+      768
+    ],
+    "required_preferences": [
+      "default",
+      "prefers-reduced-motion: reduce",
+      "forced-colors: active"
+    ],
+    "required_input_modes": [
+      "keyboard",
+      "pointer"
+    ],
+    "zoom_manual_percent": [
+      200,
+      400
+    ],
+    "text_spacing_profile": {
+      "line_height": 1.5,
+      "paragraph_spacing_em": 2,
+      "letter_spacing_em": 0.12,
+      "word_spacing_em": 0.16
+    }
+  },
+  "verdict_model": {
+    "allowed_case_states": [
+      "PASS",
+      "FAIL",
+      "BLOCKED",
+      "PENDING_MANUAL",
+      "NOT_APPLICABLE_JUSTIFIED"
+    ],
+    "phase_pass_rule": "All applicable automated and manual gates must be PASS on the same exact phase HEAD/tree; no FAIL, BLOCKED or PENDING_MANUAL may remain.",
+    "no_inherited_pass": true,
+    "same_sha_rule": true
+  },
+  "global_gates": [
+    {
+      "id": "G01",
+      "name": "Exact identity",
+      "mode": "AUTOMATED",
+      "accept": "Record base, HEAD, tree and changed files for the phase; recheck after QA."
+    },
+    {
+      "id": "G02",
+      "name": "ES/EN equivalence",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Public UI, help, errors, empty states, accessible names and navigation are available in both languages with equivalent behavior; no Spanish content leaks into English pages."
+    },
+    {
+      "id": "G03",
+      "name": "320px reflow",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "At 320 CSS px there is no two-dimensional scrolling for ordinary page content, clipped controls, hidden essential content or overlap."
+    },
+    {
+      "id": "G04",
+      "name": "Zoom/reflow",
+      "mode": "HUMAN_REQUIRED",
+      "accept": "Native browser zoom at 200% and 400% preserves content, operation, focus and reading order on representative affected surfaces."
+    },
+    {
+      "id": "G05",
+      "name": "Text spacing",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Applying the contract text-spacing profile causes no clipping, overlap, hidden content or loss of operation."
+    },
+    {
+      "id": "G06",
+      "name": "Keyboard operation",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "All interactive functions are reachable and operable by keyboard without traps; logical order is preserved."
+    },
+    {
+      "id": "G07",
+      "name": "Focus visibility and return",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Focus is visibly perceivable, not obscured, and returns predictably after close/cancel/delete/import/reset actions."
+    },
+    {
+      "id": "G08",
+      "name": "Forced colors",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Controls, focus, selection, states and essential boundaries remain perceivable and operable with forced colors active."
+    },
+    {
+      "id": "G09",
+      "name": "Reduced motion",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Reduced-motion preference removes or simplifies non-essential movement without hiding state, breaking controls or changing task meaning."
+    },
+    {
+      "id": "G10",
+      "name": "44px internal target",
+      "mode": "AUTOMATED",
+      "accept": "Interactive controls introduced or materially modified by R40 have computed hit areas at least 44x44 CSS px."
+    },
+    {
+      "id": "G11",
+      "name": "Progressive disclosure",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Primary choices are shown first; advanced filters/options remain optional and reversible; phase-specific simultaneous-option limits are respected."
+    },
+    {
+      "id": "G12",
+      "name": "Loading/empty/error",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Loading, empty and recoverable error states are explicit, calm, understandable and do not trap focus or erase user work."
+    },
+    {
+      "id": "G13",
+      "name": "Predictable navigation",
+      "mode": "HUMAN_REQUIRED",
+      "accept": "Back/close/cancel/return behavior is consistent; user is not unexpectedly moved to another section or reset."
+    },
+    {
+      "id": "G14",
+      "name": "No autoplay",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "No audio, video, animation sequence or timed experience starts before explicit user action."
+    },
+    {
+      "id": "G15",
+      "name": "Audio controls and scene change",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "When audiovisual mode exists, mute, volume and image-only controls remain visible/operable; scene changes avoid abrupt audio/visual events and match reduced-motion behavior."
+    },
+    {
+      "id": "G16",
+      "name": "Local privacy",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "Collections/projects stay local under the A5 contract, can be deleted, and are not sent to Sabik or external services."
+    },
+    {
+      "id": "G17",
+      "name": "Provenance/licence",
+      "mode": "DOCUMENT_REVIEW",
+      "accept": "Every affected factual/media asset required by the phase is READY in A4/A7 evidence with source, date/version where applicable and usable licence/provenance."
+    },
+    {
+      "id": "G18",
+      "name": "No pressure mechanics",
+      "mode": "AUTOMATED+HUMAN",
+      "accept": "No R40 surface introduces points, ranking, required streaks, countdown pressure or compulsory return behavior."
+    },
+    {
+      "id": "G19",
+      "name": "axe supplemental",
+      "mode": "AUTOMATED",
+      "accept": "Affected surface has no new axe critical/serious violations attributable to the phase; this does not replace manual QA."
+    }
+  ],
+  "phase_gates": {
+    "P0": [
+      "Common card/component patterns exist without replacing global Iris shell.",
+      "Sortable full list/table, search and progressive filters are keyboard operable.",
+      "Mi colección is optional; project save/open follows A5 local-data contract.",
+      "Viewer/realistic experience has explicit loading, empty and error states.",
+      "ES/EN routes/labels/actions are equivalent.",
+      "No second parallel architecture or duplicated global Reading controls."
+    ],
+    "P1": [
+      "Resources prioritizes practical tools; Taller/Intereses/Rincón are lower-hierarchy exploration links.",
+      "Games catalog content is preserved; no silent deletion.",
+      "Entry presents the approved simple question, search and exactly 9 primary contexts.",
+      "Age and type are behind progressive 'more options' behavior.",
+      "No points, time limit, ranking, pressure or competition."
+    ],
+    "P2": [
+      "Nothing starts automatically.",
+      "Primary explicit audiovisual activation exists in ES/EN with equivalent meaning.",
+      "Scene and its approved sound start only after activation and use A7 documented initial-volume token.",
+      "Mute, volume and image-only controls stay visible and keyboard operable.",
+      "Scene transitions follow A7 crossfade/fallback rules; reduced motion never disables controls.",
+      "Each scene has A4/A7 provenance/licence and textual alternative; no invented real-world sound claims."
+    ],
+    "P3": [
+      "Taller landing shows exactly 6 approved areas rather than 25 simultaneous study cards.",
+      "Existing studies remain reachable.",
+      "Each study exposes the approved common pattern: free create / challenge, real tool, optional reversible level, help, save/open, export and link to Intereses where applicable.",
+      "Advanced capability means improved tools, not uncontrolled button proliferation.",
+      "No scoring or competition."
+    ],
+    "P4": [
+      "Intereses landing shows search and exactly 11 approved groups rather than 72 simultaneous cards.",
+      "Each interest follows the approved structure: explore, complete catalog, view/listen/simulate, optional collection, create in Taller, sources.",
+      "Cuaderno de Campo remains inside Tus intereses.",
+      "No Spanish content in English pages; factual/data content obeys A4 READY/HOLD."
+    ],
+    "P5": [
+      "Explicit Intereses↔Taller↔Cuaderno links preserve context and provide a predictable way back.",
+      "Documented examples such as Trenes/Aves/Astronomía link only to existing or READY content; no fictitious real content is presented as fact.",
+      "Collection/project context is not transmitted externally when following connections.",
+      "Cross-feature navigation preserves language and user state unless a documented local reset is explicitly chosen."
+    ]
+  },
+  "automation_vs_human": {
+    "automated": [
+      "exact HEAD/tree/files",
+      "ES/EN route/string presence and selected behavior parity",
+      "320px overflow/overlap heuristics",
+      "text-spacing injection checks",
+      "keyboard reachability/activation smoke",
+      "focus target/return assertions where deterministic",
+      "forced-colors and reduced-motion emulation",
+      "44x44 bounding-box checks",
+      "autoplay/media paused-state checks",
+      "network interception for local collection/project exfiltration",
+      "axe supplemental scan",
+      "phase-specific visible-count assertions: P1=9 contexts, P3=6 areas, P4=11 groups"
+    ],
+    "human_required": [
+      "native browser zoom 200%/400%",
+      "focus visibility/obscuration and reading-order judgement",
+      "cognitive load and progressive disclosure judgement",
+      "predictability of navigation and recovery",
+      "absence of audiovisual surprise and suitability of scene transitions",
+      "equivalence/naturalness of ES/EN public wording",
+      "legibility in forced colors/reduced motion beyond static assertions",
+      "licence/provenance document review",
+      "mobile physical-device and assistive-technology checks when phase reaches final acceptance"
+    ]
+  },
+  "phase_handoff_required": {
+    "from_A2": [
+      "explicit stable HEAD",
+      "tree SHA",
+      "base SHA",
+      "changed files",
+      "build/test evidence"
+    ],
+    "from_phase_implementer": [
+      "exact HEAD/tree after implementation",
+      "changed files",
+      "commands/results",
+      "ES/EN desktop+320 screenshots",
+      "known pending items"
+    ],
+    "final_recheck": "Remote/local HEAD and tree must be unchanged after all automated and manual QA."
+  }
+}
