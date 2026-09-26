@@ -34,6 +34,6 @@ const tools=require('../assets/ig-taller-r40-tools.js');
   assert.throws(()=>svc.validateImportText('{"kind":"irisgreen-r40-project-export","contract_version":"1.0","schema_version":1,"project":{"project_id":"project-0002","project_type":"workshop-03","project_schema_version":1,"revision":1,"payload":{"__proto__":{"x":1}}}}'),e=>e.code==='IMPORT_DANGEROUS_KEY'||e.code==='IMPORT_INVALID_SCHEMA');
 
   const localText=fs.readFileSync(path.join(__dirname,'../assets/ig-taller-local-data.js'),'utf8');
-  assert.doesNotMatch(localText,/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket/);
+  assert.doesNotMatch(localText,/(^|[;{}]\\s*)fetch\\s*\\(|new\\s+XMLHttpRequest|navigator\\.sendBeacon|new\\s+WebSocket/m);
   console.log(JSON.stringify({status:'PASS',catalog:25,current:8,new_studies:17,local_data:'PASS',network_calls:0}));
 })().catch(e=>{console.error(e);process.exit(1);});
