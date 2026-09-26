@@ -17,7 +17,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT=Path.cwd().resolve()
-ROUTES=[('/', 'Empieza por lo que te pasa'),('/es/libros/','Los libros'),('/es/tramites/directorio/','Todo lo que puedes pedir'),('/es/investigacion/','Investigación'),('/es/videos/','Vídeos'),('/es/recursos/juegos/','Jugar'),('/es/intereses/','Tus intereses'),('/es/datos/autismo-en-la-poblacion/','Autismo en la población'),('/es/situaciones/la-ropa-me-molesta/','etiquetas'),('/es/sitio-tranquilo/','Rincón tranquilo')]
+ROUTES=[('/', 'Empieza por lo que te pasa'),('/es/libros/','Los libros'),('/es/tramites/directorio/','Todo lo que puedes pedir'),('/es/investigacion/','Investigación'),('/es/videos/','Vídeos'),('/es/recursos/juegos/','Juegos'),('/es/intereses/','Tus intereses'),('/es/datos/autismo-en-la-poblacion/','Autismo en la población'),('/es/situaciones/la-ropa-me-molesta/','etiquetas'),('/es/sitio-tranquilo/','Rincón tranquilo')]
 VIDEO_FRAME_SOURCES={'https://www.youtube-nocookie.com','https://player.vimeo.com','https://www.instagram.com'}
 SABIK_FRAME_SOURCE='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 REVIEWED_FRAME_SOURCES=VIDEO_FRAME_SOURCES|{SABIK_FRAME_SOURCE}
