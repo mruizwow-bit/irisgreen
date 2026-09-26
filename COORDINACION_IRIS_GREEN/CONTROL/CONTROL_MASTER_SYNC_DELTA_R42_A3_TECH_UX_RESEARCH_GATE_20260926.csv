@@ -1,0 +1,13 @@
+ID;Campo;Valor;Fecha;Fuente
+R42-A3;Estado;R42_A3_TECH_UX_RESEARCH_GATE_ACTIVE;2026-09-26;#284
+R42-A3;Trigger;RESEARCH_BEFORE_GLOBAL_ROLLOUT;2026-09-26;Maria
+R42-A3;Architecture;MPA_PRE_RENDERED_PLUS_PROGRESSIVE_ENHANCEMENT;2026-09-26;research
+R42-A3;Global_SPA;NO;2026-09-26;research
+R42-A3;Framework_rewrite_for_aesthetics;NO;2026-09-26;#284
+R42-A3;Base_tech;@layer|container_queries|subgrid|dialog|inert|prefers-contrast|OffscreenCanvas|OPFS;2026-09-26;MDN
+R42-A3;Progressive_tech;Popover|ViewTransitions|@scope|anchor_positioning|FileSystemAccess|WebGPU;2026-09-26;MDN
+R42-A3;Reduced_transparency;ENHANCEMENT_ONLY_NOT_BASELINE;2026-09-26;MDN
+R42-A3;Navigation_API;NO_GLOBAL_SPA_CONVERSION;2026-09-26;MDN
+R42-A3;Pilot;INFO+HUB+WORKSPACE+IMMERSIVE_ES_EN;2026-09-26;#284
+R42-A3;Acceptance;QA_TECH_ACCESSIBILITY_PERFORMANCE+HUMAN_QA;2026-09-26;Maria
+R42-A3;Global_rollout;BLOCKED_UNTIL_PILOT_ACCEPTED;2026-09-26;Maria
