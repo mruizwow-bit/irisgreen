@@ -1,0 +1,38 @@
+name: WEB Release Gate R0
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: { python-version: '3.12' }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: { node-version: '22' }
+      - name: Preparar dependencias fuera del checkout
+        run: |
+          python3 -m venv /tmp/ig-web-rel
+          /tmp/ig-web-rel/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/ig-web-rel/bin/python -m playwright install --with-deps chromium >/tmp/ig-web-rel-install.log 2>&1
+          npm install --prefix /tmp/ig-web-rel-node --no-save --ignore-scripts axe-core@4.13.0
+      - name: Ejecutar WEB-REL-R0 sin deploy
+        shell: bash
+        run: |
+          git fetch origin main --force
+          BASE_SHA="${{ github.event.pull_request.base.sha || '' }}"
+          CANDIDATE_SHA="${{ github.event.pull_request.head.sha || github.sha }}"
+          if [ -z "$BASE_SHA" ]; then BASE_SHA="$(git rev-parse origin/main)"; fi
+          python3 tools/web_release_gate_r0.py --base "$BASE_SHA" --candidate "$CANDIDATE_SHA" --browser-python /tmp/ig-web-rel/bin/python --axe /tmp/ig-web-rel-node/node_modules/axe-core/axe.min.js --rollback-deploy-id 6aa99a0d467202094ed9320f --output /tmp/irisgreen-web-rel-r0
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: web-release-gate-r0
+          path: /tmp/irisgreen-web-rel-r0
+          retention-days: 14

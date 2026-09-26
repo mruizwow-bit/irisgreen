@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "id": "WEB_STORAGE_CONTRACT_R0",
+  "scope": "public_dist",
+  "rule": "Any browser storage key not listed here is release-blocking. Listed keys are allowed only for the exact actions, data, duration, purpose and disclosures below.",
+  "storage": {
+    "localStorage": {
+      "ig-a11y": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "reading accessibility preferences",
+        "duration": "persistent until user/browser clears or reset removes it",
+        "purpose": "reuse chosen reading preferences",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "es/privacidad/index.html",
+            "contains": [
+              "preferencias de lectura"
+            ]
+          }
+        ]
+      },
+      "ig_lang": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "language code",
+        "duration": "persistent until user/browser clears",
+        "purpose": "language preference in legacy/current surfaces",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "es/privacidad/index.html",
+            "contains": [
+              "idioma"
+            ]
+          }
+        ]
+      },
+      "ig_saved_videos": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "saved video identifiers",
+        "duration": "persistent until user/browser clears",
+        "purpose": "user-selected video favourites",
+        "sensitivity": "low_to_medium",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "es/privacidad/index.html",
+            "contains": [
+              "favoritos"
+            ]
+          }
+        ]
+      }
+    },
+    "sessionStorage": {
+      "ig-conditions-url": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "return URL for Conditions catalogue",
+        "duration": "browser tab session",
+        "purpose": "return navigation",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": []
+      },
+      "ig-situations-url": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "return URL for Situations catalogue",
+        "duration": "browser tab session",
+        "purpose": "return navigation",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": []
+      },
+      "ig-idioma": {
+        "actions": [
+          "getItem",
+          "setItem"
+        ],
+        "data": "enum es|en",
+        "duration": "browser tab session",
+        "purpose": "keep language choice within the tab and across pages",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "es/privacidad/index.html",
+            "contains": [
+              "idioma"
+            ]
+          }
+        ]
+      },
+      "ig-rutinas-hechos-ready": {
+        "actions": [
+          "getItem",
+          "setItem"
+        ],
+        "data": "JSON array of completed-step UI keys for the prepared routine",
+        "duration": "browser tab session",
+        "purpose": "preserve Done marks while the tab stays open",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "assets/rutinas-visuales.js",
+            "contains": [
+              "Las marcas de hecho se guardan solo durante esta pestaña."
+            ]
+          }
+        ]
+      },
+      "ig-rutinas-hechos-builder": {
+        "actions": [
+          "getItem",
+          "setItem",
+          "removeItem"
+        ],
+        "data": "JSON array of completed-step UI keys for the routine builder",
+        "duration": "browser tab session",
+        "purpose": "preserve Done marks while the tab stays open",
+        "sensitivity": "low",
+        "privacy_compatibility": "COMPATIBLE",
+        "disclosures": [
+          {
+            "file": "assets/rutinas-visuales.js",
+            "contains": [
+              "Las marcas de hecho se guardan solo durante esta pestaña."
+            ]
+          }
+        ]
+      },
+      "ig-tarjeta-iris": {
+        "actions": [
+          "getItem",
+          "setItem"
+        ],
+        "data": "language, card shape, example flag, free text in cuesta/ayuda/necesito, three free-text steps, selected pictograms",
+        "duration": "browser tab session; sessionStorage is discarded when the tab session ends",
+        "purpose": "preserve the in-progress Iris Card inside the same tab/session",
+        "sensitivity": "potentially personal and special-category if the person types health/disability information",
+        "privacy_compatibility": "COMPATIBLE_WITH_PAGE_SPECIFIC_NOTICE",
+        "network_rule": "stored locally only; this contract does not permit transmission of this payload",
+        "disclosures": [
+          {
+            "file": "es/recursos/tarjeta-iris/index.html",
+            "contains": [
+              "mientras la pestaña está abierta",
+              "Al cerrarla no queda nada",
+              "No se envía a ningún sitio"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "dynamic_bindings": {
+    "assets/rutinas-visuales.js": {
+      "storageKey": [
+        "ig-rutinas-hechos-ready",
+        "ig-rutinas-hechos-builder"
+      ],
+      "key": [
+        "ig-rutinas-hechos-ready",
+        "ig-rutinas-hechos-builder"
+      ]
+    }
+  },
+  "forbidden_apis": [
+    "document.cookie write",
+    "Cookie Store API write/delete",
+    "IndexedDB open/deleteDatabase",
+    "Storage.clear"
+  ],
+  "review_note": "The global Privacy page covers browser preferences; Iris Card relies on a specific just-in-time notice for free-text session data. Any change in fields, duration, storage type, network behaviour or disclosure requires a new contract revision."
+}
