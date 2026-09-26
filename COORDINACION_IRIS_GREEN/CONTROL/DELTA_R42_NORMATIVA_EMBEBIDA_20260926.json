@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-EMBEDDED-NORMATIVE",
+  "date": "2026-09-26",
+  "status": "R42_EMBEDDED_NORMATIVE_REBUILD_REQUIRED",
+  "trigger": "MARIA_REQUIRES_FULL_NORMATIVE_TEXT_INSIDE_EVERY_ORDER",
+  "mandatory_source_file": "COORDINACION_IRIS_GREEN/NORMATIVA/BLOQUE_OBLIGATORIO_EMBEBIDO_R42_20260926.txt",
+  "mandatory_source_lines": 429,
+  "issues": {
+    "parent": 283,
+    "A3": 284,
+    "A5": 285,
+    "A1": 286,
+    "A4": 287,
+    "A7": 288,
+    "A2": 289,
+    "A6": "voice-only"
+  },
+  "supersedes": [
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282
+  ],
+  "integration_gate": {
+    "marker": "R42_NORMATIVA_EMBEBIDA_LEIDA",
+    "owner": "Agente 2",
+    "final_acceptance": "HUMAN_QA_WEB"
+  },
+  "bilingual": true,
+  "mobile_required": true,
+  "memory_control_update_required": true
+}
