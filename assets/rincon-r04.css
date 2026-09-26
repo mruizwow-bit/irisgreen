@@ -53,3 +53,5 @@
 @media(prefers-reduced-motion:reduce){.r40-rincon-r04 #watchStage{transition:none!important}}
 body.rm.r40-rincon-r04 #watchStage{transition:none!important}
 @media(forced-colors:active){.r40-rincon-r04 .r40-tabs,.r40-rincon-r04 .r40-scene-actions,.r40-rincon-r04 .r40-static-fallback figcaption,.r40-rincon-r04 .r04-settings{background:Canvas;color:CanvasText;border:2px solid CanvasText}.r40-rincon-r04 .r40-tabs button[aria-selected="true"]{background:Highlight;color:HighlightText}}
+
+.r40-rincon-r04 #soundFinder .qbuttons{display:none!important}
