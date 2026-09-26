@@ -11,8 +11,8 @@ import argparse
 import re
 from pathlib import Path
 
-CSS_HREF = "/assets/ig-r40.css"
-JS_SRC = "/assets/ig-r40.js"
+CSS_HREF = "/assets/iris-r40.css"
+JS_SRC = "/assets/iris-r40.js"
 
 HTML_RE = re.compile(r"<html\b[^>]*\blang=(['\"])(?P<lang>[^'\"]+)\1", re.I)
 HEADER_RE = re.compile(r"<header\b(?P<attrs>[^>]*)>(?P<body>.*?)</header>", re.I | re.S)
