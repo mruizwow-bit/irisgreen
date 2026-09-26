@@ -1,0 +1,31 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-LIFE-STAGE-SEPARATION",
+  "date": "2026-09-26",
+  "status": "R42_LIFE_STAGE_SEPARATION_ADOPTED",
+  "decision": "Separar/orientar recursos por etapas de vida cuando mejore relevancia y usabilidad.",
+  "stages": [
+    "INFANCIA",
+    "ADOLESCENCIA",
+    "ADULTEZ",
+    "TRANSVERSAL / CUALQUIER EDAD"
+  ],
+  "rules": [
+    "No diagnosis required",
+    "No forced age-stage choice",
+    "Resources may belong to multiple stages",
+    "Keep transversal/all-ages route when appropriate",
+    "Do not infantilize adolescence/adulthood",
+    "Separate only when experience/context meaningfully changes"
+  ],
+  "priority_surfaces": [
+    "Juegos",
+    "Rutinas",
+    "Taller",
+    "Tus intereses",
+    "Cuaderno de Campo",
+    "Recursos practicos y descargables"
+  ],
+  "parent_r42": 283,
+  "source": "Decision de Maria en chat 2026-09-26"
+}
