@@ -30,6 +30,10 @@ def main():
       path=f'/{prefix}/{slug}/';ctx=browser.new_context(viewport={'width':width,'height':1000},accept_downloads=True,reduced_motion='reduce')
       page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
       page.goto(f'http://127.0.0.1:{server.server_port}'+path,wait_until='networkidle')
+      # R42 keeps project actions behind the compact File/Archivo control.
+      file_button=page.get_by_role('button',name='Archivo' if lang=='es' else 'File',exact=True)
+      if file_button.count():
+       file_button.click()
       save=page.get_by_role('button',name='Guardar archivo' if lang=='es' else 'Save file',exact=True);save.wait_for()
       assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),path
       assert 'Newsreader' in page.locator('main h1').first.evaluate('(el)=>getComputedStyle(el).fontFamily'),path
