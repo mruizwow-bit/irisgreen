@@ -14,15 +14,6 @@ var SCENES={
  jellies:{file:'Phantom_Jellyfish_Off_of_the_Melchior_Islands.webm',author:'MasterfulNerd',license:'CC BY 4.0',page:'Phantom_Jellyfish_Off_of_the_Melchior_Islands.webm'},
  octopus:{file:'Octopus_Vulgaris_-_Poulpe_commun.webm',author:'Ericsfr',license:'CC BY-SA 4.0',page:'Octopus_Vulgaris_-_Poulpe_commun.webm'}
 };
-var POST={
- sea:'/img/rincon-tranquilo/escenas/mar.webp',
- rain:'/img/rincon-tranquilo/escenas/lluvia-ventana.webp',
- river:'/img/rincon-tranquilo/escenas/rio-bosque.webp',
- night:'/img/rincon-tranquilo/escenas/cielo-nocturno.webp',
- aquarium:'/img/rincon-tranquilo/escenas/acuario.webp',
- jellies:'/img/rincon-tranquilo/escenas/medusas.webp',
- octopus:'/img/rincon-tranquilo/escenas/acuario.webp'
-};
 function reduced(){
  try{return matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('rm');}catch(e){return false;}
 }
@@ -40,9 +31,9 @@ function mount(kind,stage,opts){
  var meta=SCENES[kind];if(!meta||!stage)return null;
  stage.innerHTML='';
  var wrap=document.createElement('div');wrap.className='r42-media-stage r42-media-'+kind;
- var poster=document.createElement('img');poster.className='r42-media-poster';poster.alt='';poster.decoding='async';poster.src=POST[kind]||POST.sea;wrap.appendChild(poster);
+ var poster=document.createElement('div');poster.className='r42-media-poster r42-media-placeholder-'+kind;poster.setAttribute('aria-hidden','true');wrap.appendChild(poster);
  var video=document.createElement('video');
- video.className='r42-media-video';video.muted=true;video.loop=true;video.playsInline=true;video.preload='metadata';video.disablePictureInPicture=true;video.setAttribute('aria-hidden','true');
+ video.className='r42-media-video';video.muted=true;video.loop=true;video.playsInline=true;video.preload='none';video.disablePictureInPicture=true;video.setAttribute('aria-hidden','true');video.playbackRate=kind==='night'?.55:kind==='jellies'||kind==='octopus'?.82:.92;
  wrap.appendChild(video);
  var veil=document.createElement('div');veil.className='r42-media-grade';veil.setAttribute('aria-hidden','true');wrap.appendChild(veil);
  var grain=document.createElement('div');grain.className='r42-media-atmosphere';grain.setAttribute('aria-hidden','true');wrap.appendChild(grain);
@@ -51,10 +42,15 @@ function mount(kind,stage,opts){
  function stop(){active=false;try{video.pause();video.removeAttribute('src');video.load();}catch(e){}}
  function play(){
   if(!active||reduced())return Promise.resolve(false);
-  if(!started){started=true;video.src=src(kind);}
-  return video.play().then(function(){wrap.classList.add('is-video-ready');return true;}).catch(function(){wrap.classList.add('is-video-fallback');return false;});
+  try{if(navigator.connection&&navigator.connection.saveData){wrap.classList.add('is-video-fallback');return Promise.resolve(false);}}catch(e){}
+  if(!started){started=true;video.src=src(kind);video.load();}
+  return video.play().then(function(){
+    if(video.requestVideoFrameCallback){video.requestVideoFrameCallback(function(){if(active)wrap.classList.add('is-video-ready');});}
+    else wrap.classList.add('is-video-ready');
+    return true;
+  }).catch(function(){wrap.classList.add('is-video-fallback');return false;});
  }
- video.addEventListener('loadeddata',function(){if(active)wrap.classList.add('is-loaded');},{once:true});
+ video.addEventListener('loadeddata',function(){if(active)wrap.classList.add('is-loaded');},{once:true});document.addEventListener('visibilitychange',function(){if(!active)return;if(document.hidden)video.pause();else if(started&&!reduced())video.play().catch(function(){});});
  video.addEventListener('error',function(){if(active)wrap.classList.add('is-video-fallback');});
  if(opts&&opts.autoplayAfterGesture)play();
  return {stop:stop,play:play,video:video,wrap:wrap,meta:meta};
