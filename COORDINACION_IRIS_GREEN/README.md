@@ -74,3 +74,9 @@ Aceptación perceptiva pendiente de integración/subida A2 y revisión humana.
 El Cloud R06 está READY en deploy-preview no publicado. La integración frontend está en PR #272 y debe entrar por A2. Ver `MEMORIA/R39_R06_CLOUD_DEPLOY_20260926.md` y `CONTROL/DELTA_R39_R06_CLOUD_DEPLOY_20260926.json`.
 
 Estado: `R39_R06_CLOUD_READY_WEB_INTEGRATION_PENDING_A2`.
+
+## R41 · Interactive Product Rebuild
+
+Reset de diseño tras HUMAN QA. Ver `ORDENES/R41_INTERACTIVE_PRODUCT_REBUILD/`, `NORMATIVA/ADDENDUM_R41_INTERACTIVE_PRODUCT_DESIGN_20260926.md` y `MEMORIA/R41_HUMAN_QA_DESIGN_RESET_20260926.md`.
+
+Estado: `R41_INTERACTIVE_PRODUCT_REBUILD_REQUIRED`.
