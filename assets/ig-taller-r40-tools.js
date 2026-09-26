@@ -200,7 +200,12 @@
     var history=new IGT.History(function(){return state;},function(s){state=s;render();},function(){bar.sync();});
     var bar=IGT.projectBar({studio:study.id,studyId:study.id,history:history,getData:function(){return {kind:study.kind,state:state};},getTitle:function(){return study.title[lang];},onOpen:function(data){if(!data||data.kind!==study.kind||!data.state)return;state=deep(data.state);history.reset();render();},onNew:function(){state=deep(initial);history.reset();render();},onPrint:true});
     var challenges=IGT.challenges({items:challengeList(study,lang)});
-    app.appendChild(bar);app.appendChild(challenges);app.appendChild(tool);
+    var help=h('details',{class:'igt-r40-help glass'},[
+      h('summary',{text:L('Ayuda y teclado','Help and keyboard')}),
+      h('p',{text:L('Todos los controles se pueden recorrer con Tabulador. Activa botones con Intro o Espacio. En las cuadrículas, cada casilla es un botón; en el estudio de videojuegos, las flechas mueven al personaje durante la prueba.','All controls can be reached with Tab. Activate buttons with Enter or Space. In grids, every cell is a button; in the video-game studio, arrow keys move the character while testing.')}),
+      h('p',{text:L('Puedes crear libremente, cambiar de reto cuando quieras, deshacer y guardar solo cuando tú lo decidas. No hay puntuación ni tiempo límite.','You can create freely, change challenge whenever you want, undo, and save only when you choose. There is no score or time limit.')})
+    ]);
+    app.appendChild(bar);app.appendChild(challenges);app.appendChild(tool);app.appendChild(help);
     function changed(before){history.commit(before===undefined?undefined:before);bar.sync();}
     function render(){IGT.clear(tool);var before=history.snapshot();RENDERERS[study.kind](tool,state,function(){history.commit(before);before=history.snapshot();bar.sync();});}
     render();
