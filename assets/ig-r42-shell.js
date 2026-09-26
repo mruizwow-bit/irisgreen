@@ -101,6 +101,9 @@
   function openDialog(dialog, trigger) {
     if (!dialog) return;
     dialog._igTrigger = trigger || document.activeElement;
+    /* One overlay at a time: close existing Reading/Music panels before a modal. */
+    if (window.IGReading && typeof window.IGReading.close === 'function') window.IGReading.close(false);
+    document.dispatchEvent(new CustomEvent('ig:uncover-focus', { detail:'music' }));
     if (typeof dialog.showModal === 'function') {
       if (!dialog.open) dialog.showModal();
     } else {
