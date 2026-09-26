@@ -209,8 +209,17 @@
   }
   var RENDERERS={pattern:renderPattern,pixel:renderPixel,colour:renderColour,comic:renderComic,architecture:renderArchitecture,origami:renderOrigami,game:renderGame,simulation:renderSimulation,rhythm:renderRhythm,composition:renderComposition,synthesis:renderSynthesis,writing:renderWriting,worlds:renderWorlds,conlang:renderConlang,board:renderBoard,photo:renderPhoto,fashion:renderFashion};
   function mountStudy(){
-    var IGT=root.IGT,app=root.document&&root.document.querySelector('#igt-app[data-r40-generic="true"]');if(!IGT||!app)return;
-    var study=byId(app.getAttribute('data-study-id'));if(!study||!RENDERERS[study.kind])return;IGT.mount();
+    var IGT=root.IGT,app=root.document&&root.document.querySelector('#igt-app[data-r40-generic="true"]');if(!IGT||!app||app.dataset.ig43Mounted)return;
+    var study=byId(app.getAttribute('data-study-id'));if(!study||!RENDERERS[study.kind])return;
+    if(root.IGTallerR43Advanced&&root.IGTallerR43Advanced.supported(study.kind)){
+      root.IGTallerR43Advanced.mountGeneric(app,study);return;
+    }
+    if(root.__ig42WorkshopLoading){
+      root.document.addEventListener('ig:r43-advanced-ready',function once(){root.document.removeEventListener('ig:r43-advanced-ready',once);mountStudy();},{once:true});
+      root.setTimeout(function(){if(!app.dataset.ig43Mounted)mountStudy();},1800);
+      return;
+    }
+    IGT.mount();
     var lang=String(root.document.documentElement.lang||'es').slice(0,2)==='en'?'en':'es',state=defaultState(study.kind),initial=deep(state),tool=h('section',{class:'igt-r40-tool glass','aria-label':study.title[lang]});
     var history=new IGT.History(function(){return state;},function(s){state=s;render();},function(){bar.sync();});
     var bar=IGT.projectBar({studio:study.id,studyId:study.id,history:history,getData:function(){return {kind:study.kind,state:state};},getTitle:function(){return study.title[lang];},onOpen:function(data){if(!data||data.kind!==study.kind||!data.state)return;state=deep(data.state);history.reset();render();},onNew:function(){state=deep(initial);history.reset();render();},onPrint:true});
