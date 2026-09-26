@@ -1,0 +1,42 @@
+{
+  "id": "R42-DESIGN-R01-PRECHECK-CORRECTIONS",
+  "date": "2026-09-26",
+  "owner": "Design construye / Astra revisa / A2 integra",
+  "state": "R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED",
+  "issue_design": 301,
+  "issue_a2": 289,
+  "package_sha256": "65ea0b67c0cc74da3e133bd12c8dc149ed4104f3895b5447a2b4021d40e2ad57",
+  "declared_base_head": "e8cad400a30d5d4857f9f99b0c1070d786958a8b",
+  "preserved_patch": "COORDINACION_IRIS_GREEN/HANDOFFS/R42_DESIGN_R01/R42_DESIGN_MATERIALES.patch.gz",
+  "precheck": {
+    "measurements": 30,
+    "measurement_failures": 0,
+    "changed_files_product_qa": 10,
+    "additions": 1180,
+    "deletions": 22,
+    "javascript_node_check": "PASS",
+    "python_compile_4_scripts": "PASS"
+  },
+  "corrections_required": [
+    "Releer y reconciliar con ESTADO_ACTUAL.md, MEMORIA/ESTADO_CONSOLIDADO.md, CONTROL/ESTADO_TRABAJOS.csv y addenda R42 vigentes.",
+    "Rincón: .ig-r42-dialog, .ig-r42-inspector y sheets/paneles temporales deben usar superficie dark/opaca; no panel blanco.",
+    "Medidor de contraste: calcular fondo efectivo real recorriendo ancestros y componiendo alfa; respetar fondo propio de botones/controles."
+  ],
+  "minor_adjustments": [
+    "Subir margen del texto deshabilitado de 4.52:1 hacia 4.8-5:1.",
+    "Indicar en Transparencia cuando Más contraste impone superficie opaca."
+  ],
+  "screenshots_gate": {
+    "count": 48,
+    "formula": "8 rutas x 2 tamaños x 3 modos",
+    "meaning": "CI estructural/material; no sustituye medios/fuentes reales ni HUMAN QA en Deploy Preview A2"
+  },
+  "a2_gate": "HOLD_DESIGN_301_ONLY_UNTIL_CORRECTED_AND_REVIEWED",
+  "next_marker": "R42_DESIGN_R01_CORRECTIONS_APPLIED_READY_FOR_ASTRA_REVIEW",
+  "limits": [
+    "No main",
+    "No producción",
+    "No propagación global del cristal antes de piloto + HUMAN QA",
+    "No bloquear handoffs R42 independientes"
+  ]
+}
