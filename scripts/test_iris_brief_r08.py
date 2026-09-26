@@ -6,6 +6,7 @@ from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';OUT=ROOT/'reports/iris-brief-r08';OUT.mkdir(parents=True,exist_ok=True)
 ROUTES=['/','/?lang=en','/es/recursos/','/en/resources/','/es/recursos/juegos/','/en/resources/games/','/es/recursos/rutinas-visuales/','/en/resources/visual-routines/','/es/recursos/rutinas-imprimibles/','/en/resources/printable-routines/','/es/taller/','/en/workshop/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/','/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/']
+R42_PILOT_ROUTES={'/es/recursos/juegos/','/en/resources/games/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/'}
 
 CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
@@ -75,7 +76,12 @@ def run():
      cloud_requests=[];page.on('request',lambda request:cloud_requests.append(True) if request.url.startswith(CLOUD_ORIGIN) else None)
      page.goto(base+route,wait_until='networkidle');page.locator('main').first.wait_for()
      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(route,width,'overflow')
-     assert page.locator('header').count()==1,(route,'header')
+     headers=page.locator('header').count()
+     if route in R42_PILOT_ROUTES:
+      assert headers==2,(route,'R42 headers',headers)
+      assert page.locator('header.ig-r42-topbar').count()==1,(route,'R42 topbar')
+     else:
+      assert headers==1,(route,'header',headers)
      assert page.locator('img[src*="v40-brand-symbol"]').count()==0
      page.keyboard.press('Tab');assert page.evaluate('document.activeElement.tagName')!='BODY'
      row={'route':route,'width':width,'lang':page.locator('html').get_attribute('lang')}
