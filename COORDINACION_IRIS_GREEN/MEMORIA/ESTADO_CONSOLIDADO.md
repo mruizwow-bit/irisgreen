@@ -269,17 +269,24 @@ Normativa: `NORMATIVA/ADDENDUM_R42_CRISTAL_BAJO_NORMATIVA_COMPLETA_20260926.md`.
 Memoria: `MEMORIA/R42_CRISTAL_NORMATIVA_COMPLETA_20260926.md`.  
 Control: `CONTROL/DELTA_R42_CRISTAL_NORMATIVA_COMPLETA_20260926.json`.
 
-## R42 Design · sistema material/cristal · 26/09/2026
+## R42 Design · sistema material/cristal · precheck · 26/09/2026
 
-**Estado: `R42_DESIGN_CRYSTAL_SYSTEM_BUILD_ACTIVE`.**
+**Estado vigente: `R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED`.**
 
-Design está disponible y recibe #301 con la normativa completa físicamente embebida. Su trabajo no crea un segundo app shell: evoluciona el R42 ya integrado y convierte el estudio de cristal en un sistema común real.
+La entrega R01 se conserva como arquitectura válida y limpia; no se rechaza ni se ordena rehacerla. El patch declara base `e8cad400a30d5d4857f9f99b0c1070d786958a8b`; el ZIP queda identificado por SHA-256 `65ea0b67c0cc74da3e133bd12c8dc149ed4104f3895b5447a2b4021d40e2ad57` y el patch está preservado en `HANDOFFS/R42_DESIGN_R01/R42_DESIGN_MATERIALES.patch.gz`. El precheck registra 10 archivos de producto/QA, +1180/−22, 30 mediciones / 0 FAIL, compilación Python de cuatro scripts y `node --check` correcto para `preferencias-lectura.js`.
 
-Principios: cristal solo en chrome interactivo; contenido estable/opaco; no glass-on-glass; variantes light/dark/opaque; control manual de transparencia dentro de IGPreferences; forced-colors/reduced-motion/fallback; alto contraste mediante tokens, no filtro global; medición real de opacidad/contraste; piloto Navegación + Taller/Dibujo + Juegos + Rincón + Intereses.
+Se aprueba continuar con el sistema común: material/cristal solo en chrome interactivo; lectura/workspace/contenido estable opacos; `Transparencia` integrada en `IGPreferences`; fallback de sistema y de almacenamiento; móvil sin blur; alto contraste mediante tokens, no filtro global.
 
-A2 sigue siendo única puerta web. HUMAN QA de María antes de propagación global.
+No pasa todavía a A2. Correcciones obligatorias:
+- reconciliar la entrega con los canónicos actuales, porque Design declaró haber leído Memoria/Control anteriores;
+- impedir superficies blancas temporales en el Rincón: inspector, dialog, sheets y ayuda/contexto deben ser dark/opacos;
+- corregir el medidor de contraste para calcular el fondo efectivo real por cadena de ancestros y composición alfa.
 
-Orden: `ORDENES/R42_DESIGN_CRYSTAL_R01/01_DESIGN.md`.  
-Issue: #301.  
-Memoria: `MEMORIA/R42_DESIGN_CRYSTAL_R01_20260926.md`.  
-Control: `CONTROL/DELTA_R42_DESIGN_CRYSTAL_R01_20260926.json`.
+Ajustes menores: aumentar margen práctico del texto deshabilitado desde 4,52:1 hacia 4,8–5:1 y hacer visible cognitivamente que `Más contraste` puede imponer superficie opaca aunque la preferencia manual fuese `Normal`.
+
+Las 48 capturas locales son gate estructural/material. Al bloquear red no acreditan vídeo/fuentes externas reales. El gate perceptivo sigue siendo Deploy Preview A2 + HUMAN QA María.
+
+A2 mantiene HOLD solo para #301 hasta reentrega `R42_DESIGN_R01_CORRECTIONS_APPLIED_READY_FOR_ASTRA_REVIEW` y revisión Astra. Los demás handoffs R42 no quedan bloqueados.
+
+Detalle completo: `R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.md`.  
+Control: `../CONTROL/DELTA_R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.json`.
