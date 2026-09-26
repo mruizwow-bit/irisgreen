@@ -1,0 +1,75 @@
+{
+  "schema": "IRIS_R40_A4_DATA_PACK_MANIFEST",
+  "version": "1.0",
+  "generated_at": "2026-09-26",
+  "task": "R40-A4 · #257",
+  "branch": "agent4/r40-a4-data-pack-20260926",
+  "package_path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01",
+  "status": "R40_A4_DATA_PACK_READY",
+  "files": [
+    {
+      "name": "README.md",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/README.md",
+      "git_blob": "77e66b337fda31783de50c3fdb38bc349180becb",
+      "size": 4765,
+      "type": "file"
+    },
+    {
+      "name": "VALIDATION.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/VALIDATION.json",
+      "git_blob": "0ce1c9539680d62d112525cb8a159ce43c81af5b",
+      "size": 4760,
+      "type": "file"
+    },
+    {
+      "name": "r40-connections.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/r40-connections.json",
+      "git_blob": "1dd92bac3537df9c6bf7c36bfdcec4b176d64d40",
+      "size": 64515,
+      "type": "file"
+    },
+    {
+      "name": "r40-data-pack.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/r40-data-pack.json",
+      "git_blob": "75c323f606a761cb7bdb26f7bb2cc08db424880f",
+      "size": 272645,
+      "type": "file"
+    },
+    {
+      "name": "r40-data-pack.schema.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/r40-data-pack.schema.json",
+      "git_blob": "ee43f5bbeb064dcb51fc90721827692e3c96fe75",
+      "size": 13310,
+      "type": "file"
+    },
+    {
+      "name": "r40-holds.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/r40-holds.json",
+      "git_blob": "068e7fc9cfcbb830b4a612c895843bf7a1104688",
+      "size": 22212,
+      "type": "file"
+    },
+    {
+      "name": "r40-public-ready.json",
+      "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_DATA_PACK_R01/r40-public-ready.json",
+      "git_blob": "4ad89a9fb07d84d92b051a7fd3c633ea64da00e0",
+      "size": 194271,
+      "type": "file"
+    }
+  ],
+  "expected_counts": {
+    "interest_groups": 11,
+    "interests_total": 72,
+    "interests_ready": 43,
+    "interests_hold": 29,
+    "workshop_areas": 6,
+    "studies_total": 25,
+    "studies_existing": 8,
+    "studies_planned": 17,
+    "connections_total": 56,
+    "validation_checks": 33,
+    "validation_failures": 0
+  },
+  "product_changes": 0,
+  "note": "This manifest lists the package files that existed immediately before MANIFEST.json was added. MANIFEST.json is intentionally not self-listed."
+}
