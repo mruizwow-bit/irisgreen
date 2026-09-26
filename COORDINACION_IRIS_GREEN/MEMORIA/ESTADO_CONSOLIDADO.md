@@ -128,3 +128,28 @@ Orden: `ORDENES/R41_INTERACTIVE_PRODUCT_REBUILD/`
 Normativa: `NORMATIVA/ADDENDUM_R41_INTERACTIVE_PRODUCT_DESIGN_20260926.md`  
 Memoria: `MEMORIA/R41_HUMAN_QA_DESIGN_RESET_20260926.md`  
 Control: `CONTROL/DELTA_R41_INTERACTIVE_PRODUCT_REBUILD_20260926.json`.
+
+## R42 · normativa obligatoria embebida en cada orden · 26/09/2026
+
+**Estado vigente: `R42_EMBEDDED_NORMATIVE_REBUILD_REQUIRED`.**
+
+Por decisión expresa de María, ya no basta con enlazar normativa. El bloque completo aportado (429 líneas) está físicamente copiado dentro de cada orden R42 y versionado como fuente canónica.
+
+Órdenes:
+- Parent #283
+- A3 #284
+- A5 #285
+- A1 #286
+- A4 #287
+- A7 #288
+- A2 #289
+- A6 continúa voz exclusivamente.
+
+Gate: cada agente publica `R42_NORMATIVA_EMBEBIDA_LEIDA` y construye en la misma sesión. A2 rechaza handoffs sin ese marcador.
+
+R41 #276–#282 queda sustituido. R40/R41 se conserva solo como historia/base funcional, no aceptación visual.
+
+Fuente exacta: `NORMATIVA/BLOQUE_OBLIGATORIO_EMBEBIDO_R42_20260926.txt`.
+Addendum: `NORMATIVA/ADDENDUM_R42_ORDEN_CON_NORMATIVA_EMBEBIDA_20260926.md`.
+Memoria: `MEMORIA/R42_NORMATIVA_EMBEBIDA_20260926.md`.
+Control: `CONTROL/DELTA_R42_NORMATIVA_EMBEBIDA_20260926.json`.
