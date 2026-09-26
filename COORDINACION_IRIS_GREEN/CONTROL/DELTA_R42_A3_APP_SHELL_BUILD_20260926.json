@@ -1,0 +1,63 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-A3-APP-SHELL-BUILD",
+  "date": "2026-09-26",
+  "status": "R42_A3_APP_SHELL_BUILD_READY_FOR_A2",
+  "parent_issue": 283,
+  "agent_issue": 284,
+  "pull_request": 290,
+  "base_a2": "574356cba3b73dc8477a625d2c6311008260a2d6",
+  "branch": "agent3/r42-app-shell-20260926",
+  "head": "85a972a1024de3ad009484463f46620346922b02",
+  "tree": "dc7163325e54937e99797f77842035ae4f1a80b7",
+  "files": [
+    "assets/ig-r42-shell.css",
+    "assets/ig-r42-shell.js",
+    "scripts/apply_r42_app_shell.py",
+    "scripts/test_r42_app_shell.py",
+    "scripts/build_site.py"
+  ],
+  "pilot_routes": [
+    "/es/taller/dibujo/",
+    "/en/workshop/drawing/",
+    "/es/recursos/juegos/",
+    "/en/resources/games/",
+    "/es/intereses/",
+    "/en/interests/",
+    "/es/sitio-tranquilo/",
+    "/en/quiet-space/"
+  ],
+  "architecture": "canonical-mpa-progressive-enhancement",
+  "capabilities": [
+    "compact-topbar",
+    "workspace-stage",
+    "tool-rail-apg",
+    "context-inspector",
+    "command-actions",
+    "help-drawer",
+    "project-status",
+    "mobile-bottom-dock-sheet",
+    "popover-dialog",
+    "container-queries",
+    "cascade-layers",
+    "view-transition-enhancement",
+    "anchor-positioning-fallback"
+  ],
+  "qa": {
+    "workflow_run": 36242268262,
+    "conclusion": "success",
+    "pilot_routes": "8/8",
+    "r42_contract": "PASS",
+    "published_files": 2195,
+    "js_syntax_check": "node --check when available"
+  },
+  "constraints": {
+    "global_rollout": false,
+    "deploy": false,
+    "main": false,
+    "production": false,
+    "human_qa_pending": true,
+    "a2_only_web_gateway": true
+  },
+  "next": "A2 integrates PR290 into preview; María performs HUMAN QA before broader propagation"
+}
