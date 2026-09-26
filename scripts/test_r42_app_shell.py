@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
+import subprocess
 import tempfile
 from pathlib import Path
 
@@ -74,6 +76,11 @@ def source_contract() -> None:
     assert "React" not in js
     assert "Vue" not in js
     assert "Svelte" not in js
+
+    # Parse the actual JS when Node is available (GitHub/Netlify runners have it).
+    node = shutil.which("node")
+    if node:
+        subprocess.run([node, "--check", str(ROOT / "assets/ig-r42-shell.js")], check=True)
 
     # Pilot remains deliberately scoped to one ES/EN surface per family.
     assert len(PILOT) == 8
