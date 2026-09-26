@@ -118,7 +118,7 @@
       frame.style.setProperty('--ratio', book.ratio);
       frame.style.setProperty('--sprite-scale', book.scale);
       var y = book.count === 1 ? 0 : ((page - 1) / (book.count - 1)) * 100;
-      frame.style.setProperty('--sprite-y', '0 ' + y + '%');
+      frame.style.setProperty('--sprite-y', y + '%');
       frame.style.backgroundImage = 'url("' + sprite + '")';
       stage.appendChild(frame);
     }

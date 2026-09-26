@@ -15,12 +15,8 @@ from urllib.parse import quote
 
 ROOT = Path.cwd()
 PAGES = {
-    'es/taller/index.html': ('es/taller/taller-retos.json', 'retos'),
-    'en/workshop/index.html': ('es/taller/taller-retos.json', 'retos'),
     'es/investigacion/index.html': ('es/investigacion/estudios-textos.json', 'data'),
     'es/tramites/directorio/index.html': ('es/tramites/directorio/tramites-datos.json', 'data'),
-    'es/intereses/index.html': ('es/intereses/cromos.json', None),
-    'en/interests/index.html': ('es/intereses/cromos.json', None),
 }
 SEED_RE = re.compile(r'<script id="ig-initial-data" type="application/json"[^>]*>.*?</script>\n?', re.S)
 

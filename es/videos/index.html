@@ -85,6 +85,7 @@
 <link rel="stylesheet" href="/assets/controles-comunes.css"/>
 <link rel="stylesheet" href="/assets/video-thumbnails.css">
 <link rel="stylesheet" href="/assets/preferencias-lectura.css">
+<script src="/assets/videoteca/videoteca-datos.js?v=r04"></script>
 </head>
 <body><!-- ig-sin-js:start --><noscript><main id="main" style="padding:28px 22px 60px;max-width:68em;margin:0 auto">
  <p data-dc-tpl="64" style="margin: 0px 0px 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(90, 73, 168);"><span class="sc-interp">Videoteca · se ven aquí mismo</span></p>
@@ -129,7 +130,7 @@
  
  </div>
  <div data-dc-tpl="77" class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
- <span data-dc-tpl="78" style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(122, 134, 152);"><span class="sc-interp">Dónde está</span></span>
+ <span data-dc-tpl="78" style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(67, 82, 104);"><span class="sc-interp">Dónde está</span></span>
  
  
  
@@ -345,7 +346,7 @@
  </sc-for>
  </div>
  <div class="ig-filter-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center;">
- <span style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a8698;">{{ tWhere }}</span>
+ <span style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #435268;">{{ tWhere }}</span>
  <sc-for list="{{ platChips }}" as="c" hint-placeholder-count="3">
  <button class="ig-filter-button" sc-camel-on-click="{{ c.pick }}" style="border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;" data-ig-filter="platChips" aria-pressed="{{ c.bg !== '#fff' }}">{{ c.label }}</button>
  </sc-for>
@@ -376,7 +377,7 @@
  <div style="font-weight: 700; line-height: 1.35;">{{ v.name }}</div>
  <div style="font-size: 14px; color: #6b6479; margin-top: 2px;">{{ v.meta }}</div>
  </div>
- <button sc-camel-on-click="{{ v.save }}" aria-label="{{ tSave }}" style="background: transparent; border: 0; cursor: pointer; color: #5a49a8; padding: 2px;">
+ <button sc-camel-on-click="{{ v.save }}" aria-label="{{ tSave }}" style="background: transparent; border: 0; cursor: pointer; color: #5a49a8; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex:none;">
  <svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="{{ v.savedFill }}" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"></path></svg>
  </button>
  </div>
@@ -471,60 +472,8 @@ const TIPOS = {
  divulgacion: ["Divulgación profesional", "#5a49a8", "rgba(111,95,192,0.12)"]
 };
 
-const VIDEOS = [
- y("Dan Wilkins · Managing on the Spectrum", "Autismo", "qy_6-Zhx-i0", "vivencia", "Cuenta su experiencia con el diagnóstico tardío, el autismo y la vida adulta. Habla de identidad, de entenderse mejor y de lo que cambia cuando por fin encuentras un nombre para lo que llevabas años viviendo."),
- y("Cris Edwards · su historia con la misofonía", "Misofonía", "AIM2TieReU8", "vivencia", "Cuenta su propia experiencia con la misofonía y cómo le afecta en el día a día. Menciona ideación suicida: si estás en un momento difícil, en España puedes llamar al 024. Publicado por Misophonia Research Fund."),
- y("Bob Williams · See Us. Hear Us.", "CAA", "t60K-XJWg9A", "vivencia", "Lleva más de seis décadas comunicándose con CAA. Cuenta cómo la comunicación aumentativa y alternativa forma parte de su vida, de sus decisiones y de su forma de estar en el mundo. Tiene subtítulos en español."),
- y("Peter Cherry · vivir con discalculia", "Discalculia", "YsjRwpuFNiE", "vivencia", "Tiene discalculia y cuenta cómo son las matemáticas en su día a día, en el trabajo y en los estudios. También visibiliza la discalculia en adultos desde Dyscalculia Network."),
- v("Jules Robertson · The Kennel Grandslam", "Autismo", "174264190", "vivencia", "Cortometraje encargado por Ambitious about Autism en el que Jules, actor autista, relata episodios reales de acoso escolar que vivió él mismo."),
- y("Ioan Berry · Me and DLD", "TDL", "bXHCjk_FCI4", "vivencia", "Diagnosticado de dificultades del lenguaje desde los cinco años. Lo grabó él durante el confinamiento y cuenta qué apoyos le ayudaron, cuáles no y cómo ha sido crecer con TDL."),
- y("Gabriela Venâncio · diagnóstico en la vida adulta", "TDAH", "2ijZqgW41q8", "vivencia", "Relato en primera persona de un diagnóstico de TDAH ya de adulta. Cuenta cómo lo vive ella, qué empieza a encajar y cómo cambia la manera de mirarse."),
- y("Alice Moyle · pensamiento mágico", "TOC", "7YpjdG3qTmg", "vivencia", "Convive con el TOC desde los dieciséis años y habla del pensamiento mágico desde la experiencia vivida. Cuenta cómo aparecen esos pensamientos y cómo se aprende a nombrarlos."),
- y("Ro Vitale · La Cruda", "TOC", "jS2LoXykaRw"),
- y("Jordi Rodríguez · Roca Project", "Tourette", "to77ghKeq8I"),
- y("Cate Moretti · Roca Project", "Síndrome de Down", "kR_ZyTd2PW8"),
- y("Josep Thió", "Autismo", "rEU5YZGvovc"),
- y("Abraham Ros · Más allá del rosa", "Autismo", "KOHb8-xHpOU"),
- y("Elisa Farías", "TDAH", "IZhswSOVNoc"),
- y("Yessenia y Javier · Autismo Guía", "Autismo", "6avzOjlOPeQ"),
- y("Renzo Schuller", "TDAH", "86UnZk_tRUI"),
- y("Norma Echavarría · Inesperado Podcast", "TDAH", "P1x13ntninc"),
- y("Jaume Aymar / Mind Sylenth", "TOC", "0da3Lud8aqo"),
- y("Fernando · historia de TOC", "TOC", "74KDFWp1jK8"),
- y("Lele Pons", "TOC", "utFNW9znXMU"),
- y("Tini Stoessel", "Ansiedad", "rUDlpO89isc"),
- y("María Becerra", "Ansiedad", "yNo-OBEJ-2s"),
- y("Leiva", "Ansiedad", "AR-mhLGktMs"),
- y("Beret", "Ansiedad", "TJtqJaTMbTk"),
- y("Jely Reátegui", "Ansiedad", "FXuObQT10Ew"),
- y("Felipe Silva Eltit · Inesperado Podcast", "Tourette", "Pt2v_vS2LuA"),
- y("Bianca Sáez", "Tourette", "Rl3nZwxM28w"),
- y("Wado de Pedro", "Tartamudez", "5n-svsAPUlE"),
- y("Kenya Cuevas · Se Regalan Dudas", "Identidad LGTBI+", "NdsTWfDG4n8"),
- y("Alex Orué · Se Regalan Dudas", "Identidad LGTBI+", "dtwJcwFFGIE"),
- y("Aike Martín · Les Mariquites", "Identidad LGTBI+", "mlruSqK0YM4"),
- y("Jesica y Ambar · CAMBIO", "Identidad LGTBI+", "qCM_mBpfkug"),
- y("Izan Baptista", "Identidad LGTBI+", "KKVxqJIJNcw"),
- y("Bea Is · Perú Intersex", "Identidad LGTBI+", "U9ORbTEkmE8"),
- y("Luta Cruz", "Identidad LGTBI+", "rpkHylCno1s"),
- y("Rosario Ortega", "Identidad LGTBI+", "QmxhKxJK_eU"),
- y("Paula Gonu", "Identidad LGTBI+", "dB4DzHS_P58"),
- y("Ellie Middleton · diagnóstico AuDHD", "TDAH", "u-Qtf9YAlts"),
- y("Lizi Jackson-Barrett", "TDAH", "EDLpUMjYoGY"),
- y("Orlando Bloom · Made By Dyslexia", "Dislexia y discalculia", "-_ij_ZyDwVI"),
- y("Joyce Luz · Drauzio Varella", "Tourette", "ZYAfjjHrI_A"),
- y("Amanda Ramalho · The Noite", "Autismo", "WewQesBzrmI"),
- y("Bella Ramsey · autismo e identidad", "Identidad LGTBI+", "xR1Brs76IEo"),
- y("Jessica Kellgren-Fozard · TDAH y vida queer", "Identidad LGTBI+", "BrxAnehKjZ0"),
- y("Fern Brady · autismo y bisexualidad", "Identidad LGTBI+", "URzPua45sRQ"),
- y("Hannah Gadsby · autismo y experiencia queer", "Identidad LGTBI+", "PaT__mzkHbA"),
- y("Chloé Hayden · autismo, TDAH y representación", "Autismo", "roFFvyNVWtc"),
- y("Yasmin Finney · representación trans", "Identidad LGTBI+", "8bzfJXGieng")
-].map((v, n) => Object.assign({ id: "v" + n }, v));
-
-const VIDEO_EN = {"Dan Wilkins · Managing on the Spectrum":{"name":"Dan Wilkins · Managing on the Spectrum","nota":"He shares his experience of late diagnosis, autism and adult life. He talks about identity, understanding yourself better, and what changes when you finally find a name for what you have been living with for years."},"Cris Edwards · su historia con la misofonía":{"name":"Cris Edwards · her story with misophonia","nota":"She shares her own experience with misophonia and how it affects her day to day. She mentions suicidal ideation: if you are in a difficult moment, in Spain you can call 024. Published by Misophonia Research Fund."},"Bob Williams · See Us. Hear Us.":{"name":"Bob Williams · See Us. Hear Us.","nota":"He has communicated with AAC for more than six decades. He talks about how augmentative and alternative communication is part of his life, his choices and his way of being in the world. It has Spanish subtitles."},"Peter Cherry · vivir con discalculia":{"name":"Peter Cherry · living with dyscalculia","nota":"He has dyscalculia and talks about what maths is like in his day-to-day life, at work and in education. He also raises the visibility of dyscalculia in adults through Dyscalculia Network."},"Jules Robertson · The Kennel Grandslam":{"name":"Jules Robertson · The Kennel Grandslam","nota":"A short film commissioned by Ambitious about Autism in which Jules, an autistic actor, recounts real episodes of bullying that he experienced himself."},"Ioan Berry · Me and DLD":{"name":"Ioan Berry · Me and DLD","nota":"Diagnosed with language difficulties from the age of five. He recorded it himself during lockdown and explains which supports helped him, which did not, and what it has been like to grow up with DLD."},"Gabriela Venâncio · diagnóstico en la vida adulta":{"name":"Gabriela Venâncio · diagnosis in adulthood","nota":"A first-person account of an ADHD diagnosis in adulthood. She explains how she experiences it, what starts to make sense, and how the way she sees herself changes."},"Alice Moyle · pensamiento mágico":{"name":"Alice Moyle · magical thinking","nota":"She has lived with OCD since she was sixteen and speaks about magical thinking from lived experience. She explains how those thoughts appear and how she learned to name them."},"Ro Vitale · La Cruda":{"name":"Ro Vitale · La Cruda"},"Jordi Rodríguez · Roca Project":{"name":"Jordi Rodríguez · Roca Project"},"Cate Moretti · Roca Project":{"name":"Cate Moretti · Roca Project"},"Josep Thió":{"name":"Josep Thió"},"Abraham Ros · Más allá del rosa":{"name":"Abraham Ros · Más allá del rosa"},"Elisa Farías":{"name":"Elisa Farías"},"Yessenia y Javier · Autismo Guía":{"name":"Yessenia and Javier · Autismo Guía"},"Renzo Schuller":{"name":"Renzo Schuller"},"Norma Echavarría · Inesperado Podcast":{"name":"Norma Echavarría · Inesperado Podcast"},"Jaume Aymar / Mind Sylenth":{"name":"Jaume Aymar / Mind Sylenth"},"Fernando · historia de TOC":{"name":"Fernando · OCD story"},"Lele Pons":{"name":"Lele Pons"},"Tini Stoessel":{"name":"Tini Stoessel"},"María Becerra":{"name":"María Becerra"},"Leiva":{"name":"Leiva"},"Beret":{"name":"Beret"},"Jely Reátegui":{"name":"Jely Reátegui"},"Felipe Silva Eltit · Inesperado Podcast":{"name":"Felipe Silva Eltit · Inesperado Podcast"},"Bianca Sáez":{"name":"Bianca Sáez"},"Wado de Pedro":{"name":"Wado de Pedro"},"Kenya Cuevas · Se Regalan Dudas":{"name":"Kenya Cuevas · Se Regalan Dudas"},"Alex Orué · Se Regalan Dudas":{"name":"Alex Orué · Se Regalan Dudas"},"Aike Martín · Les Mariquites":{"name":"Aike Martín · Les Mariquites"},"Jesica y Ambar · CAMBIO":{"name":"Jesica and Ambar · CAMBIO"},"Izan Baptista":{"name":"Izan Baptista"},"Bea Is · Perú Intersex":{"name":"Bea Is · Perú Intersex"},"Luta Cruz":{"name":"Luta Cruz"},"Rosario Ortega":{"name":"Rosario Ortega"},"Paula Gonu":{"name":"Paula Gonu"},"Ellie Middleton · diagnóstico AuDHD":{"name":"Ellie Middleton · AuDHD diagnosis"},"Lizi Jackson-Barrett":{"name":"Lizi Jackson-Barrett"},"Orlando Bloom · Made By Dyslexia":{"name":"Orlando Bloom · Made By Dyslexia"},"Joyce Luz · Drauzio Varella":{"name":"Joyce Luz · Drauzio Varella"},"Amanda Ramalho · The Noite":{"name":"Amanda Ramalho · The Noite"},"Bella Ramsey · autismo e identidad":{"name":"Bella Ramsey · autism and identity"},"Jessica Kellgren-Fozard · TDAH y vida queer":{"name":"Jessica Kellgren-Fozard · ADHD and queer life"},"Fern Brady · autismo y bisexualidad":{"name":"Fern Brady · autism and bisexuality"},"Hannah Gadsby · autismo y experiencia queer":{"name":"Hannah Gadsby · autism and queer experience"},"Chloé Hayden · autismo, TDAH y representación":{"name":"Chloé Hayden · autism, ADHD and representation"},"Yasmin Finney · representación trans":{"name":"Yasmin Finney · trans representation"}};
-VIDEOS.forEach((video)=>{const tr=VIDEO_EN[video.name];if(tr){if(tr.name)video.name_en=tr.name;if(tr.nota)video.nota_en=tr.nota;}});
-
+const VIDEOS = ((window.IG_VIDEOTECA && window.IG_VIDEOTECA.videos) || []).map((v,n) => Object.assign({id:"v"+n},v));
+const TEMAS_I18N = (window.IG_VIDEOTECA && window.IG_VIDEOTECA.temas) || {es:{},en:{}};
 const TEMA_KEYS = Array.from(new Set(VIDEOS.map((v) => v.tema)));
 
 const STR = {
@@ -634,6 +583,7 @@ class Component extends DCLogic {
  }
 
  renderVals() {
+ for (const lg of ["es","en"]) { if (STR[lg] && TEMAS_I18N[lg]) STR[lg].temas = Object.assign({},STR[lg].temas,TEMAS_I18N[lg]); }
  const st = this.state;
     const thumbURL = (video) => st.thumbnailErrors && st.thumbnailErrors[video.embed] ? "" : ytThumb(video.embed);
  const L = STR[st.lang] ? st.lang : "es";

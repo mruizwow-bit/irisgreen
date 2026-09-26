@@ -11,7 +11,7 @@ auditoría completa de todos los objetos gráficos del sitio.
 """
 from __future__ import annotations
 
-import functools,json,re,threading
+import functools,json,os,re,threading
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -30,6 +30,7 @@ JS_FIELDS=r'''() => {
 }'''
 JS_FOCUS=r'''(el) => {
  el.focus({preventScroll:false});
+ if(document.activeElement!==el)return null;
  let node=el,depth=0;
  while(node&&node!==document.body&&depth<6){
   const c=getComputedStyle(node),w=parseFloat(c.outlineWidth||'0');
@@ -39,6 +40,17 @@ JS_FOCUS=r'''(el) => {
  return null;
 }'''
 RGB=re.compile(r'rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)')
+
+def open_page_finder(page):
+ """Measure its input after opening the native disclosure with the keyboard."""
+ finder=page.locator('details#ig-page-finder')
+ if not finder.count():return False
+ if finder.get_attribute('open') is None:
+  summary=finder.locator(':scope > summary')
+  summary.focus();summary.press('Enter')
+  assert finder.get_attribute('open') is not None,'section finder did not open with Enter'
+ page.locator('#ig-section-query').wait_for(state='visible')
+ return True
 
 def rgb(value):
  m=RGB.fullmatch((value or '').strip())
@@ -62,13 +74,16 @@ class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start();BASE=f'http://127.0.0.1:{server.server_port}'
-report={'criterion':'WCAG 2.2 SC 1.4.11 Non-text Contrast','routes':[],'fields':[],'border_review':[],'focus_review':[],'page_errors':[],'limits':['White is used as the adjacent-color reference for this field-control guard.','Graphical objects beyond form controls are not covered by this test.','A future candidate stops CI for review rather than being labelled automatically as a full-site conformance failure.']}
+report={'criterion':'WCAG 2.2 SC 1.4.11 Non-text Contrast','routes':[],'fields':[],'border_review':[],'focus_review':[],'page_errors':[],'limits':['White is used as the adjacent-color reference for this field-control guard.','The native section finder is opened with Enter before measuring its input; no field is waived.','Graphical objects beyond form controls are not covered by this test.','A future candidate stops CI for review rather than being labelled automatically as a full-site conformance failure.']}
 with sync_playwright() as pw:
- browser=pw.chromium.launch()
+ launch={}
+ if os.environ.get('IRIS_AUDIT_BROWSER'):launch['executable_path']=os.environ['IRIS_AUDIT_BROWSER']
+ browser=pw.chromium.launch(**launch)
  for route in ROUTES:
   ctx=browser.new_context(viewport={'width':1280,'height':900},reduced_motion='reduce');ctx.route('**/*',lambda req:req.continue_() if req.request.url.startswith(BASE) else req.abort())
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(BASE+route,wait_until='domcontentloaded');page.locator('main h1').first.wait_for(timeout=15000);page.wait_for_timeout(300)
+  finder_open=open_page_finder(page)
   fields=page.evaluate(JS_FIELDS);route_rows=[];locators=page.locator('input:not([type=hidden]),select,textarea')
   for item in fields:
    border=ratio(rgb(item['borderTopColor'])) if item['borderTopStyle']!='none' and float(item['borderTopWidth'].replace('px','') or 0)>0 else None
@@ -84,9 +99,9 @@ with sync_playwright() as pw:
    if border is not None and border<3:report['border_review'].append(row)
    if fcontrast is None or fcontrast<3:report['focus_review'].append(row)
   if errors:report['page_errors'].append({'route':route,'errors':errors})
-  report['routes'].append({'route':route,'visible_fields':len(route_rows)});ctx.close()
+  report['routes'].append({'route':route,'visible_fields':len(route_rows),'section_finder_open_for_measurement':finder_open});ctx.close()
  browser.close()
-server.shutdown()
+server.shutdown();server.server_close()
 report['summary']={'routes':len(ROUTES),'fields':len(report['fields']),'border_review':len(report['border_review']),'focus_review':len(report['focus_review']),'page_errors':len(report['page_errors'])}
 (OUT/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report['summary'],ensure_ascii=False))
 if report['page_errors'] or report['border_review'] or report['focus_review']:

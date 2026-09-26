@@ -1,0 +1,2 @@
+/* Only the home has inline language switching; secondary pages keep their routes. */
+(()=>{'use strict';function sync(){const en=document.documentElement.lang==='en';document.querySelectorAll('[data-iris-top]').forEach(a=>{const workshop=a.dataset.irisTop==='workshop';a.textContent=workshop?(en?'The workshop':'El taller'):(en?'Your interests':'Tus intereses');a.href=workshop?(en?'/en/workshop/':'/es/taller/'):(en?'/en/interests/':'/es/intereses/');});}sync();new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();

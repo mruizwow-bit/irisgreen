@@ -80,15 +80,19 @@ def choose(p,key,label):
 def other(p,path,width):
  row={'path':path,'width':width};p.goto(BASE+path,wait_until='domcontentloaded');p.locator('main h1').first.wait_for();p.wait_for_timeout(300)
  if path=='/es/taller/':
-  d=json.loads((ROOT/'es/taller/taller-retos.json').read_text());cards=p.locator('main article:visible');assert cards.count()==len(d)
-  choose(p,'timeChips','Diez minutos');assert cards.count()==sum(x['dur']==0 for x in d)
-  choose(p,'mesaChips','Dibujar');assert cards.count()==sum(x['dur']==0 and x['mesa']==0 for x in d)
-  filters(p,'timeChips').first.click();filters(p,'mesaChips').first.click();assert cards.count()==len(d);key='timeChips';row['records']=len(d)
+  # La portada vigente del Taller es un índice de ocho estudios, no el catálogo
+  # antiguo de retos con filtros. Verificamos las ocho rutas públicas exactas.
+  expected=['/es/taller/dibujo/','/es/taller/diseno-grafico/','/es/taller/estructuras/','/es/taller/maquinas/','/es/taller/circuitos/','/es/taller/programacion/','/es/taller/robotica/','/es/taller/ideas/']
+  cards=p.locator('main a.igt-studio:visible');assert cards.count()==len(expected)
+  paths=cards.evaluate_all('(els)=>els.map(e=>new URL(e.href).pathname)');assert paths==expected,paths
+  assert all((ROOT/path.strip('/')/'index.html').is_file() for path in expected)
+  row['records']=len(expected);row['studio_routes']=expected;key=None
  elif path=='/es/investigacion/':
   d=json.loads((ROOT/'es/investigacion/estudios-textos.json').read_text());cards=p.locator('main article:visible');assert cards.count()==len(d)
   bylabel(p,'topicChips','Autismo').click();assert cards.count()==sum(x['topic']=='Autismo' for x in d)
-  filters(p,'topicChips').first.click();p.locator('main input[type=search]').fill('zzzinexistentexxx');assert cards.count()==0
-  p.locator('main input[type=search]').fill('');assert cards.count()==len(d);key='topicChips';row['records']=len(d)
+  filters(p,'topicChips').first.click();search=p.locator('main input.ig-search-input');assert search.count()==1
+  search.fill('zzzinexistentexxx');assert cards.count()==0
+  search.fill('');assert cards.count()==len(d);key='topicChips';row['records']=len(d)
  elif path=='/es/tramites/directorio/':
   cards=p.locator('main article:visible');assert cards.count()==12;old=cards.first.inner_text()
   choose(p,'countryChips','Reino Unido')
@@ -127,11 +131,13 @@ def other(p,path,width):
   p.locator('#vd-search').fill('');assert cards.count()==48
   style(p,'.catbuttons button[aria-pressed=true]',path);bounds(p,'.catbuttons button');row['records']=48;key=None
  elif path=='/es/intereses/':
-  d=json.loads((ROOT/'es/intereses/cromos.json').read_text());n=sum(not c.get('pendiente') for t in d['temas'] for c in t.get('cromos',[]));cards=p.locator('#album article:visible');assert cards.count()==n
-  p.locator('#temaFilters [data-tema=minerales]').click();assert cards.count()==sum(not c.get('pendiente') for t in d['temas'] if t['id']=='minerales' for c in t['cromos'])
-  p.locator('#q').fill('zzzinexistentexxx');assert cards.count()==0
-  p.locator('#q').fill('');p.locator('#temaFilters button').first.click();assert cards.count()==n
-  style(p,'#temaFilters button[aria-pressed=true]',path);bounds(p,'#temaFilters button');row['records']=n;key=None
+  # El índice vigente agrupa los espacios profundos y ya no publica el álbum
+  # antiguo de cromos ni sus filtros.
+  expected=['/es/intereses/cielo/','/es/intereses/sistema-solar/','/es/intereses/exoplanetas/','/es/intereses/eclipses/']
+  cards=p.locator('main a.ig-afondo-card:visible');assert cards.count()==len(expected)
+  paths=cards.evaluate_all('(els)=>els.map(e=>new URL(e.href).pathname)');assert paths==expected,paths
+  assert all((ROOT/path.strip('/')/'index.html').is_file() for path in expected)
+  row['records']=len(expected);row['interest_routes']=expected;key=None
  else:raise AssertionError(path)
  if key:style(p,'[data-ig-filter="'+key+'"][aria-pressed=true]',path);bounds(p,'main .ig-filter-button')
  row['passed']=True;p.screenshot(path=str(OUT/('seccion-'+(path.strip('/').replace('/','-') or 'home')+'-'+str(width)+'.png')));return row

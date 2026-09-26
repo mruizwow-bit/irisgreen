@@ -1,22 +1,24 @@
-Pictogramas compartidos · Iris Green · 24/09/2026
+Pictogramas compartidos · Iris Green · R06 · 24/09/2026
 
-Esta carpeta la usan dos recursos: Juegos y Rutinas imprimibles.
-Cada archivo figura una sola vez. El detalle de cada uno está en
-MANIFIESTO_PICTOGRAMAS.csv (origen, licencia, tipo de imagen y usos).
+Una sola carpeta para Juegos, Rutinas imprimibles y Rutinas visuales.
+Cada archivo figura una sola vez en MANIFIESTO_PICTOGRAMAS.csv
+(origen, licencia, tipo de imagen y usos).
 
-299 archivos SVG:
-· 234 de Mulberry Symbols 3.6.1 (pictos, fase1, mulberry98,
-  mulberry-extra, mulberry-verbos y parte de pictos-objetos).
-  Se han renombrado y sus colores pasan de <style> a atributos.
-  El dibujo no cambia.
-· 65 dibujos vectoriales propios de Iris Green (propios, vector-rutinas,
-  dinero y parte de pictos-objetos).
+336 archivos SVG:
+· 240 de Mulberry Symbols (234 de R05 + 6 nuevos en mulberry-rutinas-extra/,
+  que antes solo existían dentro de los sprites de Rutinas visuales).
+  Renombrados; colores como atributos; el dibujo no cambia.
+· 65 dibujos vectoriales propios de Iris Green.
+· 31 variantes con distintivo en iris-variantes/: el pictograma Mulberry
+  con un círculo pequeño abajo a la derecha que distingue pasos que antes
+  repetían el mismo dibujo: ▶ abrir o empezar · ■ cerrar o apagar ·
+  ↑ coger · ↓ guardar · ✓ comprobar · ojo mirar · 1, 2, 3 orden.
+  Son adaptaciones de Iris Green, CC BY-SA 4.0 (misma licencia).
 
 No hay fotografía.
 
 Atribución, visible en cada página y en cada hoja impresa:
-ES · Pictogramas: Mulberry Symbols, © Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.0 · mulberrysymbols.org. Otros dibujos: Iris Green.
-EN · Pictograms: Mulberry Symbols, © Garry Paxton 2008-2017 and © Steve Lee 2018-2026, CC BY-SA 4.0 licence · mulberrysymbols.org. Other drawings: Iris Green.
+ES · Pictogramas: Mulberry Symbols, © Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.0 · mulberrysymbols.org. Otros dibujos y variantes con distintivo: Iris Green, CC BY-SA 4.0.
+EN · Pictograms: Mulberry Symbols, © Garry Paxton 2008-2017 and © Steve Lee 2018-2026, CC BY-SA 4.0 licence · mulberrysymbols.org. Other drawings and badged variants: Iris Green, CC BY-SA 4.0.
 
-Licencia completa: LICENSE-MULBERRY.txt (el mismo texto que
-/assets/mulberry-rutinas/LICENSE-MULBERRY.txt, que usa Rutinas visuales).
+Licencia completa: LICENSE-MULBERRY.txt

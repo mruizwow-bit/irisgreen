@@ -1,0 +1,40 @@
+name: R42 A3 app shell browser QA
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r42-a3-app-shell-browser.yml'
+      - 'assets/ig-r42-shell.css'
+      - 'assets/ig-r42-shell.js'
+      - 'scripts/apply_r42_app_shell.py'
+      - 'scripts/test_r42_app_shell.py'
+      - 'scripts/test_r42_app_shell_browser.py'
+      - 'scripts/build_site.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-r42
+          /tmp/ig-r42/bin/pip -q install playwright==1.55.0
+          /tmp/ig-r42/bin/python -m playwright install --with-deps chromium >/tmp/ig-r42-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Probar app shell R42 en navegador
+        run: |
+          cd dist
+          /tmp/ig-r42/bin/python ../scripts/test_r42_app_shell_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r42-a3-browser-qa
+          path: dist/reports/r42-a3-browser
+          retention-days: 14

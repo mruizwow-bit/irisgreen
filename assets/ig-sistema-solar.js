@@ -483,7 +483,17 @@
     comparer(); refreshMine();
     var now = new Date();
     renderHoy(now);
-    var canGL = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } })();
+    var launch = h('button', { type: 'button', class: 'filter', text: T('Abrir vista interactiva', 'Open interactive view') });
+    ui.replaceChildren(launch);
+    var prompt = view.querySelector('.cn-stage-nojs');
+    if (prompt) prompt.textContent = T('Abre la vista interactiva cuando quieras. Las fichas y tablas ya están disponibles.', 'Open the interactive view whenever you want. Entries and tables are already available.');
+    launch.addEventListener('click', function () {
+      launch.disabled = true;
+      launch.textContent = T('Cargando vista…', 'Loading view…');
+      var script = document.createElement('script');
+      script.src = '/assets/ig-sistema-solar-3d.js';
+      script.onload = function () {
+      var canGL = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } })();
     if (window.IGSistemaSolar3D && canGL) {
       buildUI();
       D.fondo = FONDO;
@@ -491,6 +501,19 @@
         date: function () { return now; }, img: function (f) { return '/img/intereses/sistema-solar/' + f; } });
       if (VIEW) onTime(now, false);
     } else fail();
+
+        if (stage.classList.contains('cn-live')) {
+          var poster = view.querySelector('.ig-scene-poster'); if (poster) poster.remove();
+          view.focus({ preventScroll: true });
+        } else { launch.hidden = true; }
+      };
+      script.onerror = function () {
+        launch.disabled = false; launch.textContent = T('Volver a cargar la vista', 'Try loading the view again');
+        if (prompt) prompt.textContent = T('No se pudo cargar la vista. Puedes volver a intentarlo o leer las fichas.', 'The view could not load. You can try again or read the entries.');
+        script.remove();
+      };
+      document.head.appendChild(script);
+    });
     fichaTools();
     if (location.hash && document.getElementById(location.hash.slice(1))) setTimeout(function () { document.getElementById(location.hash.slice(1)).scrollIntoView(); }, 0);
   }
