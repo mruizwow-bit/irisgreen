@@ -31,6 +31,19 @@ jobs:
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/r04-http.log 2>&1 &
           sleep 2
+      - name: Browser DOM contract
+        run: |
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME"
+          mkdir -p docs/r40-a7-build/r04-evidence/dom
+          for mode in videos sounds ball; do
+            "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=1800 --dump-dom "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}" > "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            grep -q 'data-r40-r04-ready="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            grep -q "data-r40-active-mode=\"${mode}\"" "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            grep -q 'data-r40-video-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            grep -q 'data-r40-sound-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            grep -q 'data-r40-ball-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+          done
       - name: Capture layouts
         run: |
           CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
@@ -40,6 +53,8 @@ jobs:
             "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=1440,900 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/${mode}-1440x900.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}"
             "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=390,844 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/${mode}-390x844.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}"
           done
+          test "$(sha256sum docs/r40-a7-build/r04-evidence/screenshots/*-1440x900.png | awk '{print $1}' | sort -u | wc -l)" -eq 3
+          test "$(sha256sum docs/r40-a7-build/r04-evidence/screenshots/*-390x844.png | awk '{print $1}' | sort -u | wc -l)" -eq 3
       - name: Hash evidence
         run: |
           mkdir -p docs/r40-a7-build/r04-evidence
