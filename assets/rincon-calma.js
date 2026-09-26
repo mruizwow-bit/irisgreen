@@ -386,8 +386,8 @@
   function need3d() {
     if (window.IGScenesR42 || window.IGScenesR04) return Promise.resolve(window.IGScenesR42 || window.IGScenesR04);
     if (!load3d) load3d = new Promise(function (ok, ko) {
-      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-r04.js?v=r40-r04-20260926'; s.async = true;
-      s.onload = function () { window.IGScenesR04 ? ok(window.IGScenesR04) : ko(); };
+      var s = document.createElement('script'); s.src = '/assets/rincon-immersive-r42.js?v=r42-a7-20260926'; s.async = true;
+      s.onload = function () { var lib = window.IGScenesR42 || window.IGScenesR04; lib ? ok(lib) : ko(); };
       s.onerror = function () { load3d = null; ko(); };
       document.head.appendChild(s);
     });
@@ -405,7 +405,6 @@
     cv3.setAttribute('aria-label', T[kind] || T.bubbles);
     stage.appendChild(cv3);
     if (credit) credit.textContent = T.credit;
-    if (kind === 'octopus') { start2d(kind, button); return; }
     need3d().then(function (lib) {
       if (startScene.token !== token || !cv3.isConnected) return;
       if (!lib.supported()) throw new Error('webgl');
