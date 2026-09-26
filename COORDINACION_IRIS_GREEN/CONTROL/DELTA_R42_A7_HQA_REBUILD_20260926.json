@@ -1,0 +1,18 @@
+{
+  "id": "R42-A7-HQA-REBUILD",
+  "date": "2026-09-26",
+  "owner": "Agente 7",
+  "issue": 288,
+  "state": "R42_A7_HQA_REBUILD_READY_FOR_A2",
+  "supersedes": "R42_A7_QUIET_SPACE_IMMERSIVE_READY_FOR_A2 / PR #291 as final solution",
+  "base": "ab952077464b1348d3da88ee974f9375b3458bc9",
+  "branch": "agent7/r42-quiet-space-humanqa-rebuild-20260926",
+  "head": "6c312d3fbd2677180a7894159f14b19894fe0eae",
+  "tree": "94ae6c72e88b6dc9752c14cfbd3a9c6cb9c16dc5",
+  "pr": 300,
+  "static_precheck": "R42_A7_HQA_REBUILD_STATIC_PASS",
+  "visual_strategy": "7 real licensed nature videos + 2 local GPU sensory scenes",
+  "scene_count": 9,
+  "human_qa_required": true,
+  "next": "A2 integrate PR300 -> Deploy Preview -> Maria visual/audio HUMAN QA"
+}
