@@ -10,10 +10,10 @@ var GAMES=LANG==='en'?'/en/resources/games/':'/es/recursos/juegos/';
 var U={
  es:{tipos:{rutinas:'Rutinas paso a paso',tarjetas:'Tarjetas para recortar',tableros:'Tableros',packs:'Packs completos'},
   fmts:{pasos:'Hoja de pasos',lista:'Lista para marcar',tira:'Tira para la nevera',recortar:'Tarjetas de la rutina'},
-  fmtL:'Cómo quieres la hoja',tema:'Tema',edad:'Edad',buscar:'Buscar',buscarPh:'Por ejemplo: dientes, lavadora, autobús',
+  fmtL:'Cómo quieres la hoja',tema:'Tema',edad:'Edad',eligeEtapa:'Elige una etapa de vida',etapaAyuda:'Puedes elegir una etapa o ver todas las rutinas. Puedes cambiarla en cualquier momento.',verTodas:'Ver todas',buscar:'Buscar',buscarPh:'Por ejemplo: dientes, lavadora, autobús',
   n:function(n,w){return n+' '+(n===1?w[0]:w[1]);},wR:['rutina','rutinas'],wT:['tema','temas'],wB:['tablero','tableros'],wP:['pack','packs'],
   pasos:function(n){return n===1?'1 paso':n+' pasos';},hojas:function(n){return n===1?'1 hoja A4':n+' hojas A4';},tarj:function(n){return n+' tarjetas';},
-  imprimir:'Imprimir',ver:'Ver la hoja',volver:'Todas las hojas',imprimirPdf:'Imprimir o guardar en PDF',
+  imprimir:'Imprimir',ver:'Ver la hoja',volver:'Todas las hojas',imprimirPdf:'Imprimir o guardar en PDF',descargarSvg:'Descargar SVG A4',descargando:'Preparando la descarga…',descargaOk:'Descarga preparada.',descargaError:'No se pudo preparar la descarga. Puedes usar «Imprimir o guardar en PDF».',contexto:'Contexto',etapasTxt:'Etapa',licenciaTxt:'Pictogramas y licencia',
   bn:'Blanco y negro (ahorra tinta)',nombre:'Añadir «Rutina de: ____»',jugar:'Jugar con esta rutina',adaptar:'Cambiarla en Rutinas visuales',
   queHay:'Qué hay en la hoja',opc:'Opciones',sinRes:'No hay hojas con esa búsqueda. Prueba con otra palabra o elige «Todos».',
   rutinaDe:'Rutina de:',nombreL:'Nombre:',nombreB:'Añadir «Nombre: ____»',hecho:'Hecho',recorta:'Recorta por la línea de puntos.',pega:'Pega aquí',
@@ -24,10 +24,10 @@ var U={
   prev:'Vista previa de la hoja',incl:'Incluye'},
  en:{tipos:{rutinas:'Step-by-step routines',tarjetas:'Cards to cut out',tableros:'Boards',packs:'Full packs'},
   fmts:{pasos:'Steps sheet',lista:'Tick list',tira:'Fridge strip',recortar:'Routine cards'},
-  fmtL:'How you want the sheet',tema:'Topic',edad:'Age',buscar:'Search',buscarPh:'For example: teeth, washing, bus',
+  fmtL:'How you want the sheet',tema:'Topic',edad:'Age',eligeEtapa:'Choose a stage of life',etapaAyuda:'Choose a stage or view all routines. You can change it at any time.',verTodas:'View all',buscar:'Search',buscarPh:'For example: teeth, washing, bus',
   n:function(n,w){return n+' '+(n===1?w[0]:w[1]);},wR:['routine','routines'],wT:['topic','topics'],wB:['board','boards'],wP:['pack','packs'],
   pasos:function(n){return n===1?'1 step':n+' steps';},hojas:function(n){return n===1?'1 A4 sheet':n+' A4 sheets';},tarj:function(n){return n+' cards';},
-  imprimir:'Print',ver:'View the sheet',volver:'All sheets',imprimirPdf:'Print or save as PDF',
+  imprimir:'Print',ver:'View the sheet',volver:'All sheets',imprimirPdf:'Print or save as PDF',descargarSvg:'Download A4 SVG',descargando:'Preparing download…',descargaOk:'Download ready.',descargaError:'The download could not be prepared. You can use “Print or save as PDF”.',contexto:'Context',etapasTxt:'Stage of life',licenciaTxt:'Pictograms and licence',
   bn:'Black and white (saves ink)',nombre:'Add “Routine for: ____”',jugar:'Play with this routine',adaptar:'Change it in Visual routines',
   queHay:'What is on the sheet',opc:'Options',sinRes:'No sheets match that search. Try another word or choose “All”.',
   rutinaDe:'Routine for:',nombreL:'Name:',nombreB:'Add “Name: ____”',hecho:'Done',recorta:'Cut along the dotted line.',pega:'Stick here',
@@ -44,8 +44,9 @@ function pic(k){var p=X[k];return p?{f:p[0],t:LANG==='en'?p[2]:p[1]}:{f:'',t:k};
 function img(f,mm){return f?'<img src="'+esc(BASE+f)+'" alt="" loading="lazy" decoding="async" style="width:'+mm+'mm;height:'+mm+'mm">':'';}
 var AT=L(D.atrib)||'',MARCA=D.marca||'IRIS GREEN · irisgreen.eu';
 var CATS={};(D.cats||[]).forEach(function(c){CATS[c.id]=c;});
+var ETAPAS={};(D.etapas||[]).forEach(function(e){ETAPAS[e.id]=e;});
 var BOARDS=['pd','pld','hh','mtn','sem'];
-var S={tipo:'rutinas',fmt:'pasos',cat:'todos',etapa:'',q:'',vista:'lista',id:null,bn:false,nombre:true,msg:''};
+var S={tipo:'rutinas',fmt:'pasos',cat:'todos',etapa:'',stageChosen:false,q:'',vista:'lista',id:null,bn:false,nombre:true,msg:''};
 
 /* ---------- las hojas ---------- */
 function foot(){return '<div class="sh-f"><span>'+esc(AT)+'</span><b>'+esc(MARCA)+'</b></div>';}
@@ -115,15 +116,53 @@ function fitAll(){Array.prototype.forEach.call(root.querySelectorAll('.im-fit'),
 function thumb(html,extra){var land=html.indexOf('im-sheet land')>=0;return '<div class="im-fit '+(land?'land':'por')+(S.bn?' im-bn':'')+'"'+(extra||' aria-hidden="true"')+'>'+html+'</div>';}
 function chip(a,on,label,cls){return '<button type="button" class="'+(cls||'im-chip')+'" data-act="'+a+'" aria-pressed="'+(on?'true':'false')+'">'+label+'</button>';}
 function hashFor(id){var k=id.slice(0,1),s=id.slice(2);return '#'+(k==='r'?'pack':k==='t'?'tarjetas':k==='b'?'tablero':'todo')+'-'+s+(k==='r'&&S.fmt!=='pasos'?'~'+S.fmt:'');}
+function etapasOrdenadas(){
+ var by={};(D.etapas||[]).forEach(function(e){by[e.id]=e;});
+ return ['inf','ado','adu','todas'].map(function(id){return by[id];}).filter(Boolean);
+}
+function etapaAplicaPack(p,id){
+ var e=p.e||['todas'];
+ if(!id)return true;
+ return id==='todas'?e.indexOf('todas')>=0:(e.indexOf(id)>=0||e.indexOf('todas')>=0);
+}
+function etapaPackCount(id){return D.packs.filter(function(p){return etapaAplicaPack(p,id);}).length;}
+function etapaPackPreview(id){
+ var keys=[];
+ D.packs.filter(function(p){return etapaAplicaPack(p,id);}).slice(0,5).forEach(function(p){
+  (p.pasos||[]).forEach(function(k){if(keys.indexOf(k)<0)keys.push(k);});
+ });
+ return keys.slice(0,3);
+}
+function screenPic(k){
+ var p=pic(k);return p.f?'<img src="'+esc(BASE+p.f)+'" alt="" loading="lazy" decoding="async">':'';
+}
+function etapaCard(et){
+ var ks=etapaPackPreview(et.id);
+ return '<button type="button" class="im-stage-card" data-act="stage:'+esc(et.id)+'">'+
+  '<span class="im-stage-art" aria-hidden="true">'+ks.map(screenPic).join('')+'</span>'+
+  '<span class="im-stage-copy"><strong>'+esc(L(et.l))+'</strong><span>'+esc(U.n(etapaPackCount(et.id),U.wR))+'</span></span><span aria-hidden="true" class="im-stage-arrow">→</span></button>';
+}
+function etapaLanding(){
+ return '<section class="im-stage-entry" aria-labelledby="im-stage-title"><div class="im-stage-head"><p class="im-kicker">'+esc(U.edad)+'</p>'+
+  '<h2 id="im-stage-title">'+esc(U.eligeEtapa)+'</h2><p>'+esc(U.etapaAyuda)+'</p></div>'+
+  '<div class="im-stage-grid">'+etapasOrdenadas().map(etapaCard).join('')+'</div>'+
+  '<p class="im-stage-all">'+chip('stage:all',false,esc(U.verTodas),'im-btn pri')+'</p></section>';
+}
+function etapaRail(){
+ var all=S.stageChosen&&!S.etapa;
+ return '<div class="im-stage-rail" aria-label="'+esc(U.eligeEtapa)+'">'+
+  chip('stage:all',all,esc(U.verTodas),'im-chip')+
+  etapasOrdenadas().map(function(et){return chip('stage:'+et.id,S.stageChosen&&S.etapa===et.id,esc(L(et.l)),'im-chip');}).join('')+'</div>';
+}
 function catalogo(){
+ if(S.tipo==='rutinas'&&!S.stageChosen)return etapaLanding();
  var counts={rutinas:D.packs.length,tarjetas:(D.cats||[]).filter(function(c){return c.id!=='todos'&&temaItems(c.id).length;}).length,tableros:BOARDS.length,packs:(D.megapacks||[]).length};
  var w={rutinas:U.wR,tarjetas:U.wT,tableros:U.wB,packs:U.wP};
- var h='<div class="im-tabs" role="group" aria-label="'+esc(U.fmtL)+'">';Object.keys(U.tipos).forEach(function(t){h+=chip('tipo:'+t,S.tipo===t,esc(U.tipos[t])+' <small>'+esc(U.n(counts[t],w[t]))+'</small>','im-tab');});h+='</div>';
+ var h='<div class="im-tabs" role="group" aria-label="'+esc(U.fmtL)+'">';Object.keys(U.tipos).forEach(function(t){h+=chip('tipo:'+t,S.tipo===t,esc(U.tipos[t])+' <small>'+esc(U.n(counts[t],w[t]))+'</small>','im-tab');});h+='</div>';if(S.tipo==='rutinas')h+=etapaRail();
  h+='<div class="im-filters">';
  if(S.tipo==='rutinas'){
   h+='<div class="im-row"><span class="im-lab" id="im-l-fmt">'+esc(U.fmtL)+'</span><div class="im-chips" role="group" aria-labelledby="im-l-fmt">';Object.keys(U.fmts).forEach(function(f){h+=chip('fmt:'+f,S.fmt===f,esc(U.fmts[f]));});h+='</div></div>';
   h+='<div class="im-row"><span class="im-lab" id="im-l-cat">'+esc(U.tema)+'</span><div class="im-chips" role="group" aria-labelledby="im-l-cat">';(D.cats||[]).forEach(function(c){h+=chip('cat:'+c.id,S.cat===c.id,esc(L(c.l)));});h+='</div></div>';
-  h+='<div class="im-row"><span class="im-lab" id="im-l-et">'+esc(U.edad)+'</span><div class="im-chips" role="group" aria-labelledby="im-l-et">';(D.etapas||[]).forEach(function(e){var v=e.id==='todas'?'':e.id;h+=chip('et:'+(v||'x'),S.etapa===v,esc(L(e.l)));});h+='</div></div>';
  }
  if(S.tipo!=='tableros')h+='<div class="im-row"><label class="im-lab" for="im-q">'+esc(U.buscar)+'</label><input class="im-q" id="im-q" type="search" autocomplete="off" placeholder="'+esc(U.buscarPh)+'" value="'+esc(S.q)+'"></div>';
  else h+='<p class="im-note">'+esc(U.boardD)+'</p>';
@@ -147,8 +186,11 @@ function detalle(){
  h+='</div><div class="im-side"><h1 id="im-h1" tabindex="-1">'+esc(t)+'</h1><p class="im-meta">'+esc(k==='r'?U.pasos(p.pasos.length)+' · '+U.hojas(sh.length):U.hojas(sh.length))+'</p>';
  if(k==='r'){h+='<div class="im-box"><h2 id="im-l-f2">'+esc(U.fmtL)+'</h2><div class="im-chips" role="group" aria-labelledby="im-l-f2">';Object.keys(U.fmts).forEach(function(f){h+=chip('fmt:'+f,S.fmt===f,esc(U.fmts[f]));});h+='</div></div>';}
  h+='<div class="im-box"><h2>'+esc(U.opc)+'</h2><label class="im-check"><input type="checkbox" id="im-bn"'+(S.bn?' checked':'')+'> '+esc(U.bn)+'</label>'+((k==='r'&&(S.fmt==='pasos'||S.fmt==='lista'))||k==='p'||k==='b'?'<label class="im-check"><input type="checkbox" id="im-nombre"'+(S.nombre?' checked':'')+'> '+esc(k==='b'?U.nombreB:U.nombre)+'</label>':'')+'</div>';
- h+='<p class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(id)+'">'+esc(U.imprimirPdf)+'</button></p><p class="im-note" role="status" aria-live="polite">'+esc(S.msg)+'</p>';
- if(k==='r'){var g=D.links&&D.links[s];h+='<p class="im-acts">'+(g?'<a class="im-btn" href="'+GAMES+'#juego-'+esc(g)+'">'+esc(U.jugar)+'</a>':'')+'<a class="im-btn" href="'+RV+'?rutina='+encodeURIComponent(s)+'">'+esc(U.adaptar)+'</a></p>';}
+ h+='<p class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(id)+'">'+esc(U.imprimirPdf)+'</button>'+(k==='r'?'<button type="button" class="im-btn" data-download="'+esc(id)+'">'+esc(U.descargarSvg)+'</button>':'')+'</p><p class="im-note" role="status" aria-live="polite">'+esc(S.msg)+'</p>';
+ if(k==='r'){var g=D.links&&D.links[s],stage=(p.e||['todas']).map(function(e){return ETAPAS[e]?L(ETAPAS[e].l):e;}).join(' · '),cat=CATS[p.c]?L(CATS[p.c].l):p.c;
+   h+='<div class="im-box im-context"><h2>'+esc(U.contexto)+'</h2><p>'+esc(cat)+'</p><p><strong>'+esc(U.etapasTxt)+':</strong> '+esc(stage)+'</p></div>';
+   h+='<div class="im-box im-provenance"><h2>'+esc(U.licenciaTxt)+'</h2><p>'+esc(AT)+'</p><p><a href="https://mulberrysymbols.org/" rel="noopener">mulberrysymbols.org</a></p></div>';
+   h+='<p class="im-acts">'+(g?'<a class="im-btn" href="'+GAMES+'#juego-'+esc(g)+'">'+esc(U.jugar)+'</a>':'')+'<a class="im-btn" href="'+RV+'?rutina='+encodeURIComponent(s)+'">'+esc(U.adaptar)+'</a></p>';}
  if(steps)h+='<div class="im-box"><h2>'+esc(k==='p'?U.incl:U.queHay)+'</h2><ol>'+steps.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ol></div>';
  else if(k==='b')h+='<p class="im-note">'+esc(U.boardD)+'</p>';
  return h+'</div></div>';
@@ -162,6 +204,46 @@ function printId(id){
  var go=function(){document.documentElement.classList.add('im-printing');var clean=function(){document.documentElement.classList.remove('im-printing');window.removeEventListener('afterprint',clean);};window.addEventListener('afterprint',clean);window.print();setTimeout(clean,1500);};
  var left=Array.prototype.filter.call(imgs,function(i){return !i.complete;});if(!left.length){go();return;}
  var n=left.length,done=false,one=function(){if(--n<=0&&!done){done=true;go();}};left.forEach(function(i){i.addEventListener('load',one);i.addEventListener('error',one);});setTimeout(function(){if(!done){done=true;go();}},4000);
+}
+
+function textEncoderBase64(text){
+ var bytes=new TextEncoder().encode(text),bin='',chunk=0x8000;
+ for(var i=0;i<bytes.length;i+=chunk)bin+=String.fromCharCode.apply(null,bytes.subarray(i,Math.min(i+chunk,bytes.length)));
+ return btoa(bin);
+}
+function xml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c];});}
+async function pictogramData(k){
+ var p=pic(k);if(!p.f)return '';
+ var r=await fetch(BASE+p.f,{credentials:'same-origin'});if(!r.ok)throw new Error('PICTOGRAM_FETCH_FAILED');
+ var svg=await r.text();return 'data:image/svg+xml;base64,'+textEncoderBase64(svg);
+}
+async function downloadRoutineSvg(id){
+ var slug=id.slice(2),p=packBy(slug);if(!p)throw new Error('ROUTINE_NOT_FOUND');
+ S.msg=U.descargando;render();
+ try{
+  var W=794,H=1123,title=L(p.t),n=p.pasos.length,cols=n<=4?1:2,rows=Math.ceil(n/cols);
+  var gap=18,top=120,bottom=92,cellW=(W-64-gap*(cols-1))/cols,cellH=(H-top-bottom-gap*(rows-1))/rows;
+  var images=await Promise.all(p.pasos.map(pictogramData)),parts=[
+   '<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 '+W+' '+H+'" role="img" aria-labelledby="title desc">',
+   '<title id="title">'+xml(title)+'</title><desc id="desc">'+xml(p.pasos.map(function(k){return pic(k).t;}).join('. '))+'</desc>',
+   '<rect width="'+W+'" height="'+H+'" fill="white"/>',
+   '<text x="32" y="54" font-family="Georgia,serif" font-size="28" fill="#17395c">'+xml(title)+'</text>',
+   '<text x="32" y="84" font-family="Arial,sans-serif" font-size="14" fill="#435268">'+xml((CATS[p.c]?L(CATS[p.c].l):p.c)+' · '+(p.e||['todas']).map(function(e){return ETAPAS[e]?L(ETAPAS[e].l):e;}).join(' · '))+'</text>'
+  ];
+  p.pasos.forEach(function(k,i){
+   var col=i%cols,row=Math.floor(i/cols),x=32+col*(cellW+gap),y=top+row*(cellH+gap),im=Math.min(112,cellH-54),px=x+14,py=y+14;
+   parts.push('<rect x="'+x+'" y="'+y+'" width="'+cellW+'" height="'+cellH+'" rx="16" fill="#f7f9fc" stroke="#b9cbd8"/>');
+   parts.push('<circle cx="'+(x+25)+'" cy="'+(y+25)+'" r="15" fill="#17395c"/><text x="'+(x+25)+'" y="'+(y+30)+'" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white">'+(i+1)+'</text>');
+   if(images[i])parts.push('<image href="'+images[i]+'" x="'+px+'" y="'+py+'" width="'+im+'" height="'+im+'" preserveAspectRatio="xMidYMid meet"/>');
+   parts.push('<text x="'+(px+im+14)+'" y="'+(y+cellH/2+5)+'" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#17395c">'+xml(pic(k).t)+'</text>');
+  });
+  parts.push('<line x1="32" y1="'+(H-66)+'" x2="'+(W-32)+'" y2="'+(H-66)+'" stroke="#b9cbd8"/>');
+  parts.push('<text x="32" y="'+(H-42)+'" font-family="Arial,sans-serif" font-size="10" fill="#435268">'+xml(AT)+'</text>');
+  parts.push('<text x="'+(W-32)+'" y="'+(H-20)+'" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#17395c">IRIS GREEN · irisgreen.eu</text></svg>');
+  var blob=new Blob([parts.join('')],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=slug+'-iris-green.svg';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  S.msg=U.descargaOk;render();
+ }catch(e){S.msg=U.descargaError;render();}
 }
 
 /* ---------- estado ---------- */
@@ -184,12 +266,22 @@ function leer(){var h=decodeURIComponent(location.hash||''),m=h.match(/^#(pack|t
 root.addEventListener('click',function(e){
  var o=e.target.closest('[data-open]');if(o&&root.contains(o)){e.preventDefault();abrir(o.getAttribute('data-open'));return;}
  var p=e.target.closest('[data-print]');if(p&&root.contains(p)){e.preventDefault();S.msg=U.printing;printId(p.getAttribute('data-print'));return;}
+ var d=e.target.closest('[data-download]');if(d&&root.contains(d)){e.preventDefault();downloadRoutineSvg(d.getAttribute('data-download'));return;}
  var a=e.target.closest('[data-act]');if(!a||!root.contains(a))return;var v=a.getAttribute('data-act'),i=v.indexOf(':'),k=i<0?v:v.slice(0,i),x=i<0?'':v.slice(i+1);
  if(k==='volver'){volver();return;}
- if(k==='tipo'){S.tipo=x;S.q='';}else if(k==='fmt'){S.fmt=x;if(S.vista==='hoja'){try{history.replaceState(null,'',hashFor(S.id));}catch(er){}}}else if(k==='cat')S.cat=x;else if(k==='et')S.etapa=x==='x'?'':x;
- focusSel='[data-act="'+v+'"]';render();
+ if(k==='stage'){S.stageChosen=true;S.etapa=x==='all'?'':x;S.cat='todos';S.q='';}
+ else if(k==='tipo'){S.tipo=x;S.q='';}else if(k==='fmt'){S.fmt=x;if(S.vista==='hoja'){try{history.replaceState(null,'',hashFor(S.id));}catch(er){}}}else if(k==='cat')S.cat=x;else if(k==='et')S.etapa=x==='x'?'':x;
+ focusSel='[data-act="'+v+'"]';
+ var useTransition=!!(document.startViewTransition&&(k==='stage'||k==='tipo'));
+ try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)useTransition=false;}catch(er){}
+ if(useTransition){document.startViewTransition(function(){render();});}else render();
 });
 window.addEventListener('popstate',function(){if(!leer()){S.vista='lista';S.id=null;}render();});
 window.addEventListener('hashchange',function(){if(leer())render();});
+var initialStage=(location.hash||'').match(/^#etapa-(inf|ado|adu|todas|all)$/);
+if(initialStage){
+ S.stageChosen=true;S.etapa=initialStage[1]==='all'?'':initialStage[1];
+ try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+}
 leer();render();
 })();

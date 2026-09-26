@@ -69,11 +69,24 @@ def browser_checks(root,out):
                 assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),path
                 page.keyboard.press('Tab');assert page.evaluate('document.activeElement.tagName')!='BODY'
                 if kind==0:
+                  # R42 life-stage orientation is now the canonical entry point.
+                  # Exercise its explicit "view all" path before the unchanged game-card contract.
+                  stage_all=page.locator('#jg-app [data-k="stage-all"]')
+                  if stage_all.count():
+                    stage_all.first.focus();stage_all.first.press('Enter')
+                  # The play-first hub then asks what context to practise before listing games.
+                  context_cards=page.locator('#jg-app .jg-context-card')
+                  if context_cards.count():
+                    context_cards.first.focus();context_cards.first.press('Enter')
                   cards=page.locator('main .jg-card');cards.first.wait_for(state='visible');assert cards.count()>0
                   cards.first.focus();cards.first.press('Enter')
                   page.locator('#jg-h2').wait_for()
                   assert page.evaluate('document.activeElement.id')=='jg-h2'
                 elif kind==1:
+                  # Printable routines use the same non-blocking stage orientation.
+                  stage_all=page.locator('#im-app [data-act="stage:all"]')
+                  if stage_all.count():
+                    stage_all.first.focus();stage_all.first.press('Enter')
                   item_id,title=open_printable(page)
                   row['detail_keyboard']=True
                   button=page.locator('#im-app .im-side button[data-print]')
@@ -93,6 +106,8 @@ def browser_checks(root,out):
                   page.locator('#rv-ready-print').click();page.wait_for_function('window.__printCalls>0')
                   page.locator('#rv-ready-pdf').click();page.wait_for_function('window.__printCalls>1')
                 if kind==0:
+                  # R42 keeps secondary game actions in the explicit Options popover.
+                  page.locator('.jg-actions-btn[popovertarget="jg-game-tools"]').click()
                   page.locator('[data-k="print"]').click();page.wait_for_function('window.__printCalls>0')
                 pdf=page.pdf(print_background=True,prefer_css_page_size=True)
                 (out/f'print-{kind}-{lang}-{width}.pdf').write_bytes(pdf);row['print_pdf_bytes']=len(pdf)
