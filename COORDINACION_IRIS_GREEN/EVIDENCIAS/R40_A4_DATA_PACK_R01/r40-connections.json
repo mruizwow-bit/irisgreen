@@ -1,0 +1,994 @@
+{
+  "schema": "IRIS_R40_A4_CONNECTIONS",
+  "version": "1.0",
+  "generated_at": "2026-09-26",
+  "classification": {
+    "values": [
+      "REAL_DATA",
+      "SIMULATION",
+      "USER_CREATED",
+      "FICTIONAL"
+    ],
+    "rule": "Las clases son capas de contenido. SIMULATION/USER_CREATED/FICTIONAL nunca se presentan como REAL_DATA. Un estado HOLD no se eleva por conexión con una entidad READY."
+  },
+  "field_notebook": {
+    "id": "field-notebook",
+    "kind": "field_notebook",
+    "title": {
+      "es": "Cuaderno de Campo",
+      "en": "Field Notebook"
+    },
+    "classes": [
+      "REAL_DATA",
+      "USER_CREATED"
+    ],
+    "status": "HOLD",
+    "requirements": [
+      "Cada hallazgo real conserva dataset/fuente exacta e identificador estable.",
+      "Conservar fecha del registro, lugar/precisión permitida, licencia, autor/proveedor, fecha de consulta y versión/DOI cuando exista.",
+      "Un registro histórico no significa presencia «ahora».",
+      "No reconstruir localizaciones de biodiversidad que la fuente haya ocultado.",
+      "Cantos reales requieren grabación, autor, ID y licencia por archivo."
+    ]
+  },
+  "counts": {
+    "total": 56,
+    "ready": 39,
+    "hold": 17,
+    "publicable": 38
+  },
+  "connections": [
+    {
+      "id": "connection-001",
+      "from": {
+        "kind": "study",
+        "id": "workshop-01"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-01"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Cielo nocturno",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-002",
+      "from": {
+        "kind": "study",
+        "id": "workshop-01"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-17"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "aves",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-003",
+      "from": {
+        "kind": "study",
+        "id": "workshop-01"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-08"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "minerales",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-004",
+      "from": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Transporte",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-005",
+      "from": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-36"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "señales",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-006",
+      "from": {
+        "kind": "study",
+        "id": "workshop-03"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-007",
+      "from": {
+        "kind": "study",
+        "id": "workshop-03"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-58"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "arquitectura",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-008",
+      "from": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-42"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Videojuegos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-009",
+      "from": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-66"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "FICTIONAL",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "criaturas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-010",
+      "from": {
+        "kind": "study",
+        "id": "workshop-05"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-60"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Pintura",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-011",
+      "from": {
+        "kind": "study",
+        "id": "workshop-05"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "diseño",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-012",
+      "from": {
+        "kind": "study",
+        "id": "workshop-06"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-07"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Escritura",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-013",
+      "from": {
+        "kind": "study",
+        "id": "workshop-06"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-65"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "FICTIONAL",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "mundos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-014",
+      "from": {
+        "kind": "study",
+        "id": "workshop-07"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-28"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Trenes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-015",
+      "from": {
+        "kind": "study",
+        "id": "workshop-07"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-58"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "arquitectura",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-016",
+      "from": {
+        "kind": "study",
+        "id": "workshop-08"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-57"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Castillos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-017",
+      "from": {
+        "kind": "study",
+        "id": "workshop-08"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-58"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "arquitectura",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-018",
+      "from": {
+        "kind": "study",
+        "id": "workshop-09"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-35"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Relojes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-019",
+      "from": {
+        "kind": "study",
+        "id": "workshop-09"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-32"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "coches",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-020",
+      "from": {
+        "kind": "study",
+        "id": "workshop-10"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-40"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Electrónica",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-021",
+      "from": {
+        "kind": "study",
+        "id": "workshop-10"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-39"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "ordenadores",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-022",
+      "from": {
+        "kind": "study",
+        "id": "workshop-11"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-023",
+      "from": {
+        "kind": "study",
+        "id": "workshop-12"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-024",
+      "from": {
+        "kind": "study",
+        "id": "workshop-12"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-03"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "SIMULATION",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "arte generativo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-025",
+      "from": {
+        "kind": "study",
+        "id": "workshop-13"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-38"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Robótica",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-026",
+      "from": {
+        "kind": "study",
+        "id": "workshop-13"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "transporte",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-027",
+      "from": {
+        "kind": "study",
+        "id": "workshop-14"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-42"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Videojuegos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-028",
+      "from": {
+        "kind": "study",
+        "id": "workshop-14"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "pixel art",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-029",
+      "from": {
+        "kind": "study",
+        "id": "workshop-15"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-03"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Seres vivos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-030",
+      "from": {
+        "kind": "study",
+        "id": "workshop-15"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-28"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "trenes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-031",
+      "from": {
+        "kind": "study",
+        "id": "workshop-16"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-61"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Música",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-032",
+      "from": {
+        "kind": "study",
+        "id": "workshop-17"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-61"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Música",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-033",
+      "from": {
+        "kind": "study",
+        "id": "workshop-17"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-034",
+      "from": {
+        "kind": "study",
+        "id": "workshop-18"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-12"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Tiempo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-035",
+      "from": {
+        "kind": "study",
+        "id": "workshop-18"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-17"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "aves",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-036",
+      "from": {
+        "kind": "study",
+        "id": "workshop-19"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-53"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Historia",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-037",
+      "from": {
+        "kind": "study",
+        "id": "workshop-19"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-55"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "mitología",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-038",
+      "from": {
+        "kind": "study",
+        "id": "workshop-20"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-15"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Geografía",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-039",
+      "from": {
+        "kind": "study",
+        "id": "workshop-20"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-49"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "idiomas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-040",
+      "from": {
+        "kind": "study",
+        "id": "workshop-21"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-49"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Idiomas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-041",
+      "from": {
+        "kind": "study",
+        "id": "workshop-21"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-50"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "escrituras",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-042",
+      "from": {
+        "kind": "study",
+        "id": "workshop-22"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-44"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Ajedrez",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-043",
+      "from": {
+        "kind": "study",
+        "id": "workshop-22"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-68"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "colecciones",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-044",
+      "from": {
+        "kind": "study",
+        "id": "workshop-23"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-01"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Cielo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-045",
+      "from": {
+        "kind": "study",
+        "id": "workshop-23"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-19"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "plantas",
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+    },
+    {
+      "id": "connection-046",
+      "from": {
+        "kind": "study",
+        "id": "workshop-24"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Diseño",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-047",
+      "from": {
+        "kind": "study",
+        "id": "workshop-24"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-53"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "historia",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-048",
+      "from": {
+        "kind": "study",
+        "id": "workshop-25"
+      },
+      "to": {
+        "kind": "all_interests",
+        "id": "all-interests"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Todos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-049",
+      "from": {
+        "kind": "interest",
+        "id": "interest-17"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Aves",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-050",
+      "from": {
+        "kind": "interest",
+        "id": "interest-18"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Insectos y mariposas",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-051",
+      "from": {
+        "kind": "interest",
+        "id": "interest-19"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Plantas y flores",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-052",
+      "from": {
+        "kind": "interest",
+        "id": "interest-22"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Vida marina y peces",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-053",
+      "from": {
+        "kind": "interest",
+        "id": "interest-23"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Mamíferos",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-054",
+      "from": {
+        "kind": "interest",
+        "id": "interest-24"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Reptiles y anfibios",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    },
+    {
+      "id": "connection-055",
+      "from": {
+        "kind": "interest",
+        "id": "interest-09"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": false,
+      "source_label": "Fósiles y dinosaurios",
+      "note": "La fuente del interés es READY, pero el Cuaderno completo sigue HOLD hasta cerrar sus restantes familias."
+    },
+    {
+      "id": "connection-056",
+      "from": {
+        "kind": "interest",
+        "id": "interest-08"
+      },
+      "to": {
+        "kind": "field_notebook",
+        "id": "field-notebook"
+      },
+      "relation": "COLLECT_IN",
+      "payload_class": "REAL_DATA",
+      "status": "HOLD",
+      "publicable": false,
+      "source_label": "Minerales y rocas",
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+    }
+  ]
+}
