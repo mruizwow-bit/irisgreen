@@ -29,8 +29,8 @@ def assert_page(text: str, lang: str, nav_id: str) -> None:
     expected = ES_NAV if lang == "es" else EN_NAV
     assert 'class="ig-r40"' in text
     assert 'data-ig-global-format="r40"' in text
-    assert '/assets/ig-r40.css' in text
-    assert '/assets/ig-r40.js' in text
+    assert '/assets/iris-r40.css' in text
+    assert '/assets/iris-r40.js' in text
     assert f'id="{nav_id}"' in text
     assert text.count('data-ig-r40-nav') == 1
     for label in expected:
@@ -88,8 +88,8 @@ def built_contract(root: Path) -> None:
     for name, path in pages.items():
         assert path.is_file(), (name, path)
         text = path.read_text(encoding="utf-8")
-        assert "/assets/ig-r40.css" in text, name
-        assert "/assets/ig-r40.js" in text, name
+        assert "/assets/iris-r40.css" in text, name
+        assert "/assets/iris-r40.js" in text, name
         assert "data-ig-r40-nav" in text, name
         assert 'data-ig-global-format="r40"' in text, name
 
@@ -97,7 +97,7 @@ def built_contract(root: Path) -> None:
     linked = 0
     for path in all_html:
         text = path.read_text(encoding="utf-8", errors="strict")
-        if "/assets/ig-r40.css" in text and "/assets/ig-r40.js" in text:
+        if "/assets/iris-r40.css" in text and "/assets/iris-r40.js" in text:
             linked += 1
     assert linked >= max(1, int(len(all_html) * 0.95)), (linked, len(all_html))
 
