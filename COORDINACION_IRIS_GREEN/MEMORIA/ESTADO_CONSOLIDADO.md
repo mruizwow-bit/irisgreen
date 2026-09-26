@@ -256,3 +256,15 @@ Entrega: PR #300 · HEAD `6c312d3fbd2677180a7894159f14b19894fe0eae` · tree `94a
 Se vuelve a nueve escenas curadas, se retiran las tres extras de calidad insuficiente, se eliminan pósteres legacy del stage/selector y se rehace la barra de controles para impedir solapamientos con el app shell. Mobile 760/390, clean mode, reduced motion, Save-Data y fallback incluidos.
 
 PR #291 queda superseded como solución final. El siguiente gate es A2 → preview → HUMAN QA visual/auditiva de María.
+
+## R42 · estudio de cristal subordinado a normativa completa · 26/09/2026
+
+**Estado: `R42_CRYSTAL_STUDY_SUBORDINATE_TO_FULL_NORMATIVE`.**
+
+María confirma que cualquier decisión derivada del estudio de Liquid Glass/glassmorphism debe aplicar toda la normativa Iris Green. El estudio es referencia técnica subordinada, no autoridad paralela.
+
+A3/A5/A1/A4/A7/A2 han recibido el addendum. A2 debe rechazar una integración que cumpla estética/contraste pero incumpla ES/EN, web+móvil, WCAG/ISO/EN/COGA, privacidad, trazabilidad, etapas, lenguaje claro, accesibilidad cognitiva, teclado/foco/zoom/forced-colors/reduced-motion/transparency o HUMAN QA.
+
+Normativa: `NORMATIVA/ADDENDUM_R42_CRISTAL_BAJO_NORMATIVA_COMPLETA_20260926.md`.  
+Memoria: `MEMORIA/R42_CRISTAL_NORMATIVA_COMPLETA_20260926.md`.  
+Control: `CONTROL/DELTA_R42_CRISTAL_NORMATIVA_COMPLETA_20260926.json`.
