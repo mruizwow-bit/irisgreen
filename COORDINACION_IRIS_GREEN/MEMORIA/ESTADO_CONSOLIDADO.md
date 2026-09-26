@@ -288,5 +288,7 @@ Las 48 capturas locales son gate estructural/material. Al bloquear red no acredi
 
 A2 mantiene HOLD solo para #301 hasta reentrega `R42_DESIGN_R01_CORRECTIONS_APPLIED_READY_FOR_ASTRA_REVIEW` y revisión Astra. Los demás handoffs R42 no quedan bloqueados.
 
+Orden de corrección: `../ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHECK_20260926.md`.  
+Addendum de aceptación: `../NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md`.  
 Detalle completo: `R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.md`.  
 Control: `../CONTROL/DELTA_R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.json`.
