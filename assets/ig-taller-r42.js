@@ -54,10 +54,10 @@
     var actions=el('div','ig42-topbar-actions');
     var undo=btn('↶','ig42-icon-btn');undo.setAttribute('aria-label',T('Deshacer','Undo'));undo.title=T('Deshacer · Ctrl+Z','Undo · Ctrl+Z');
     var redo=btn('↷','ig42-icon-btn');redo.setAttribute('aria-label',T('Rehacer','Redo'));redo.title=T('Rehacer · Ctrl+Y','Redo · Ctrl+Y');
-    var file=btn(T('Archivo','File'),'ig42-action-btn');var help=btn(T('Ayuda','Help'),'ig42-icon-btn');help.setAttribute('aria-label',T('Ayuda','Help'));help.textContent='?';
-    actions.appendChild(undo);actions.appendChild(redo);actions.appendChild(file);actions.appendChild(help);top.appendChild(actions);
+    var file=btn(T('Archivo','File'),'ig42-action-btn');var props=btn('⌘','ig42-icon-btn ig42-properties-btn');props.setAttribute('aria-label',T('Propiedades','Properties'));props.setAttribute('aria-expanded','false');var help=btn(T('Ayuda','Help'),'ig42-icon-btn');help.setAttribute('aria-label',T('Ayuda','Help'));help.textContent='?';
+    actions.appendChild(undo);actions.appendChild(redo);actions.appendChild(file);actions.appendChild(props);actions.appendChild(help);top.appendChild(actions);
     main.insertBefore(top,app);
-    return {node:top,undo:undo,redo:redo,free:free,challenge:challenge,file:file,help:help,state:state};
+    return {node:top,undo:undo,redo:redo,free:free,challenge:challenge,file:file,props:props,help:help,state:state};
   }
 
   function moveSourceSections(helpBody){
@@ -70,7 +70,7 @@
     var seen={};originalTools.forEach(function(source){var label=(source.getAttribute('aria-label')||source.textContent||'').trim();if(!label||seen[label])return;seen[label]=1;var b=btn(label.charAt(0).toUpperCase(),'ig42-tool-shortcut');b.title=label;b.setAttribute('aria-label',label);b.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');b.addEventListener('click',function(){safeClick(source);sync();});rail.appendChild(b);function sync(){b.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');}});
     if(!rail.children.length){var b=el('span','ig42-tool-placeholder','✦');b.setAttribute('aria-hidden','true');rail.appendChild(b);}return rail;
   }
-  function createInspector(){var aside=el('aside','ig42-inspector');aside.setAttribute('aria-label',T('Propiedades','Properties'));var h=el('h2','ig42-panel-title',T('Propiedades','Properties'));aside.appendChild(h);var body=el('div','ig42-inspector-body');aside.appendChild(body);return {node:aside,body:body};}
+  function createInspector(){var aside=el('aside','ig42-inspector');aside.setAttribute('aria-label',T('Propiedades','Properties'));var head=el('div','ig42-inspector-head'),h=el('h2','ig42-panel-title',T('Propiedades','Properties')),close=btn('×','ig42-inspector-close');close.setAttribute('aria-label',T('Cerrar propiedades','Close properties'));head.appendChild(h);head.appendChild(close);aside.appendChild(head);var body=el('div','ig42-inspector-body');aside.appendChild(body);return {node:aside,body:body,close:close};}
   function populateInspector(app,inspector){
     var side=q('.igt-side',app);if(side){inspector.body.appendChild(side);return;}
     var tool=q('.igt-r40-tool',app);if(!tool)return;
@@ -125,6 +125,9 @@
     top.challenge.addEventListener('click',function(){top.free.setAttribute('aria-pressed','false');top.challenge.setAttribute('aria-pressed','true');showDialog(challengeDlg,top.challenge);});top.file.addEventListener('click',function(){showDialog(fileDlg,top.file);});top.help.addEventListener('click',function(){showDialog(helpDlg,top.help);});
     ['input','change'].forEach(function(ev){app.addEventListener(ev,function(){top.state.textContent=T('Sin guardar','Unsaved');},{passive:true});});
     var ws=workspaceShell(app);app.parentNode.insertBefore(ws.node,app);ws.center.appendChild(app);
+    function setInspector(open){ws.node.classList.toggle('ig42-inspector-open',!!open);top.props.setAttribute('aria-expanded',String(!!open));if(open){var first=q('button,input,select,textarea,[tabindex]',ws.inspector.body);if(first)first.focus();}}
+    top.props.addEventListener('click',function(){setInspector(!ws.node.classList.contains('ig42-inspector-open'));});ws.inspector.close.addEventListener('click',function(){setInspector(false);top.props.focus();});
+    ws.node.addEventListener('keydown',function(e){if(e.key==='Escape'&&ws.node.classList.contains('ig42-inspector-open')){setInspector(false);top.props.focus();}});
     moveSourceSections(q('.ig42-dialog-body',helpDlg));makeManagementButton(main);
     var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
     root.setTimeout(settle,0);return true;
