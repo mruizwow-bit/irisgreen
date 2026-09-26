@@ -140,6 +140,9 @@ def _replace_header_navigation(text: str, lang: str) -> tuple[str, bool]:
     attrs = selected.group("attrs")
     ident = ID_RE.search(attrs)
     nav_id = ident.group("value") if ident else None
+    if not nav_id:
+        control = re.search(r'aria-controls=(["\\\'])(nav|ig-main-nav)\\1', header, re.I)
+        nav_id = control.group(2) if control else "ig-main-nav"
     replacement = _nav_markup(lang, nav_id)
 
     new_header = header[: selected.start()] + replacement + header[selected.end() :]
