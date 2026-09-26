@@ -309,6 +309,8 @@ body.ig-r40 :where(.igt-btn,.jg-btn,.rv-btn):disabled{
     align-items:stretch;
     padding:.65rem 0;
   }
+  header.ig-menu-open .ig-r40-nav,
+  .ig-r40-nav.open{display:flex;flex-direction:column}
   .ig-r40-nav>a,
   .ig-r40-nav>details>summary{
     width:100%;
