@@ -89,6 +89,25 @@ def encode_template(match: re.Match[str]) -> str:
     return match.group(1) + inner + match.group(3)
 
 
+def encode_active_markup(text: str) -> str:
+    """Codifica plantillas solo en HTML activo, nunca dentro de script/noscript."""
+    protected = re.compile(r"<(?:script|noscript)\\b[^>]*>.*?</(?:script|noscript)\\s*>", re.I | re.S)
+    out = []
+    pos = 0
+    for match in protected.finditer(text):
+        out.append(MUSTACHE.sub(
+            lambda token: token.group(0).replace("{{", "&#123;&#123;", 1).replace("}}", "&#125;&#125;", 1),
+            text[pos:match.start()],
+        ))
+        out.append(match.group(0))
+        pos = match.end()
+    out.append(MUSTACHE.sub(
+        lambda token: token.group(0).replace("{{", "&#123;&#123;", 1).replace("}}", "&#125;&#125;", 1),
+        text[pos:],
+    ))
+    return "".join(out)
+
+
 def precompiled_script(source: str) -> str:
     if "</script" in source.lower():
         raise AssertionError("El bloque data-dc-script contiene </script> y no puede precompilarse inline con seguridad")
@@ -153,6 +172,10 @@ def transform_page(path: Path) -> dict:
         raise AssertionError(f"{path}: no se pudo precompilar data-dc-script")
 
     text = text.replace(refs[0], SAFE_RUNTIME)
+    # También hay controles DC fuera de x-dc (cabecera, Lectura, etc.).
+    # Sus entidades vuelven a llaves en el DOM, pero ya no quedan plantillas
+    # crudas en la respuesta HTML inicial.
+    text = encode_active_markup(text)
     path.write_text(text, encoding="utf-8")
     return {
         "path": path.as_posix(),
