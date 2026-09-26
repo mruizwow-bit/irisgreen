@@ -1,0 +1,27 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-CHILD-SAFE-DEFERRED",
+  "date": "2026-09-26",
+  "status": "R42_CHILD_SAFE_DEFERRED_UNTIL_CURRENT_WORK_COMPLETE",
+  "decision": "Keep child-safe architecture approved but defer implementation until the current R42 construction/integration cycle is complete.",
+  "preserved_issues": [
+    293,
+    294,
+    295,
+    296,
+    297
+  ],
+  "do_not_do_now": [
+    "No child-safe product patches",
+    "No new child-safe branches",
+    "No integration into current moving UI",
+    "No reclassification work that would need immediate product integration"
+  ],
+  "resume_when": [
+    "Current R42 modules complete",
+    "A2 integrated",
+    "Stable preview exists",
+    "New product baseline HEAD/tree recorded"
+  ],
+  "safety_architecture_preserved": true
+}
