@@ -183,6 +183,17 @@ assert "requestAnimationFrame" in iris_card and "scheduleLivePreview" in iris_ca
 for p in [ROOT/"es/recursos/tarjeta-iris/index.html",ROOT/"en/resources/iris-card/index.html"]:
     assert "/assets/tarjeta-iris.js?v=r42-a1-tech-r01" in p.read_text(encoding="utf-8")
 
+visual_routines=(ROOT/"assets/rutinas-visuales.js").read_text(encoding="utf-8")
+visual_routines_css=(ROOT/"assets/rutinas-visuales.css").read_text(encoding="utf-8")
+subprocess.run(["node","--check",str(ROOT/"assets/rutinas-visuales.js")],cwd=ROOT,check=True)
+assert "scheduleBuilderPreview" in visual_routines and "requestAnimationFrame" in visual_routines
+assert "scheduleLibraryRender" in visual_routines
+assert "content-visibility:auto" in visual_routines_css and "contain:layout paint" in visual_routines_css
+for p in [ROOT/"es/recursos/rutinas-visuales/index.html",ROOT/"en/resources/visual-routines/index.html"]:
+    text=p.read_text(encoding="utf-8")
+    assert "/assets/rutinas-visuales.js?v=r42-a1-tech-r01" in text
+    assert "/assets/rutinas-visuales.css?v=r42-a1-tech-r01" in text
+
 print(json.dumps({
     "status":"PASS",
     "games_total":297,
