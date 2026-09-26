@@ -13,7 +13,7 @@ var U={
   fmtL:'Cómo quieres la hoja',tema:'Tema',edad:'Edad',buscar:'Buscar',buscarPh:'Por ejemplo: dientes, lavadora, autobús',
   n:function(n,w){return n+' '+(n===1?w[0]:w[1]);},wR:['rutina','rutinas'],wT:['tema','temas'],wB:['tablero','tableros'],wP:['pack','packs'],
   pasos:function(n){return n===1?'1 paso':n+' pasos';},hojas:function(n){return n===1?'1 hoja A4':n+' hojas A4';},tarj:function(n){return n+' tarjetas';},
-  imprimir:'Imprimir',ver:'Ver la hoja',volver:'Todas las hojas',imprimirPdf:'Imprimir o guardar en PDF',
+  imprimir:'Imprimir',ver:'Ver la hoja',volver:'Todas las hojas',imprimirPdf:'Imprimir o guardar en PDF',descargar:'Descargar archivo',descargando:'Preparando la descarga…',descargaLista:'Descarga preparada.',descargaError:'No se pudo preparar la descarga. Puedes usar «Imprimir o guardar en PDF».',licencia:'Pictogramas y licencia',etapa:'Etapa',contexto:'Contexto',
   bn:'Blanco y negro (ahorra tinta)',nombre:'Añadir «Rutina de: ____»',jugar:'Jugar con esta rutina',adaptar:'Cambiarla en Rutinas visuales',
   queHay:'Qué hay en la hoja',opc:'Opciones',sinRes:'No hay hojas con esa búsqueda. Prueba con otra palabra o elige «Todos».',
   rutinaDe:'Rutina de:',nombreL:'Nombre:',nombreB:'Añadir «Nombre: ____»',hecho:'Hecho',recorta:'Recorta por la línea de puntos.',pega:'Pega aquí',
@@ -27,7 +27,7 @@ var U={
   fmtL:'How you want the sheet',tema:'Topic',edad:'Age',buscar:'Search',buscarPh:'For example: teeth, washing, bus',
   n:function(n,w){return n+' '+(n===1?w[0]:w[1]);},wR:['routine','routines'],wT:['topic','topics'],wB:['board','boards'],wP:['pack','packs'],
   pasos:function(n){return n===1?'1 step':n+' steps';},hojas:function(n){return n===1?'1 A4 sheet':n+' A4 sheets';},tarj:function(n){return n+' cards';},
-  imprimir:'Print',ver:'View the sheet',volver:'All sheets',imprimirPdf:'Print or save as PDF',
+  imprimir:'Print',ver:'View the sheet',volver:'All sheets',imprimirPdf:'Print or save as PDF',descargar:'Download file',descargando:'Preparing download…',descargaLista:'Download ready.',descargaError:'The download could not be prepared. You can use “Print or save as PDF”.',licencia:'Pictograms and licence',etapa:'Stage of life',contexto:'Context',
   bn:'Black and white (saves ink)',nombre:'Add “Routine for: ____”',jugar:'Play with this routine',adaptar:'Change it in Visual routines',
   queHay:'What is on the sheet',opc:'Options',sinRes:'No sheets match that search. Try another word or choose “All”.',
   rutinaDe:'Routine for:',nombreL:'Name:',nombreB:'Add “Name: ____”',hecho:'Done',recorta:'Cut along the dotted line.',pega:'Stick here',
@@ -133,7 +133,7 @@ function catalogo(){
  if(!its.length)return h+'<p class="im-empty">'+esc(U.sinRes)+'</p>';
  h+='<ul class="im-grid">';
  its.forEach(function(it){var sh=sheetsFor(it.id);var href=hashFor(it.id),land=sh[0].indexOf('im-sheet land')>=0;
-  h+='<li class="im-card"><div class="im-fit '+(land?'land':'por')+(S.bn?' im-bn':'')+'" aria-hidden="true" data-thumb="'+esc(it.id)+'"></div>'+'<h3><a href="'+href+'" data-open="'+esc(it.id)+'">'+esc(it.t)+'</a></h3><p class="im-meta">'+esc(metaFor(it,sh.length))+'</p><div class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(it.id)+'" aria-label="'+esc(U.imprimir+': '+it.t)+'">'+esc(U.imprimir)+'</button><a class="im-btn" href="'+href+'" data-open="'+esc(it.id)+'">'+esc(U.ver)+'</a></div></li>';});
+  h+='<li class="im-card"><div class="im-fit '+(land?'land':'por')+(S.bn?' im-bn':'')+'" aria-hidden="true" data-thumb="'+esc(it.id)+'"></div>'+'<h3><a href="'+href+'" data-open="'+esc(it.id)+'">'+esc(it.t)+'</a></h3><p class="im-meta">'+esc(metaFor(it,sh.length))+'</p><div class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(it.id)+'" aria-label="'+esc(U.imprimir+': '+it.t)+'">'+esc(U.imprimir)+'</button>'+(it.id.indexOf('r:')===0?'<button type="button" class="im-btn" data-download="'+esc(it.id)+'" aria-label="'+esc(U.descargar+': '+it.t)+'">'+esc(U.descargar)+'</button>':'')+'<a class="im-btn" href="'+href+'" data-open="'+esc(it.id)+'">'+esc(U.ver)+'</a></div></li>';});
  return h+'</ul>';
 }
 function detalle(){
@@ -145,9 +145,15 @@ function detalle(){
  var h='<p><button type="button" class="im-btn" data-act="volver"><span aria-hidden="true">←</span> '+esc(U.volver)+'</button></p><div class="im-detail"><div class="im-pages" aria-label="'+esc(U.prev)+'" role="group">';
  sh.forEach(function(x,i){h+=thumb(x,' role="img" aria-label="'+esc(sh.length>1?U.hojaDe(i+1,sh.length):U.prev)+'"');});
  h+='</div><div class="im-side"><h1 id="im-h1" tabindex="-1">'+esc(t)+'</h1><p class="im-meta">'+esc(k==='r'?U.pasos(p.pasos.length)+' · '+U.hojas(sh.length):U.hojas(sh.length))+'</p>';
+ if(k==='r'){
+  var stageText=(p.e||['todas']).map(function(id){var item=(D.etapas||[]).filter(function(e){return e.id===id;})[0];return item?L(item.l):id;}).join(' · ');
+  var contextText=CATS[p.c]?L(CATS[p.c].l):p.c;
+  h+='<p class="im-tags"><span>'+esc(U.etapa)+': '+esc(stageText)+'</span><span>'+esc(U.contexto)+': '+esc(contextText)+'</span></p>';
+ }
  if(k==='r'){h+='<div class="im-box"><h2 id="im-l-f2">'+esc(U.fmtL)+'</h2><div class="im-chips" role="group" aria-labelledby="im-l-f2">';Object.keys(U.fmts).forEach(function(f){h+=chip('fmt:'+f,S.fmt===f,esc(U.fmts[f]));});h+='</div></div>';}
  h+='<div class="im-box"><h2>'+esc(U.opc)+'</h2><label class="im-check"><input type="checkbox" id="im-bn"'+(S.bn?' checked':'')+'> '+esc(U.bn)+'</label>'+((k==='r'&&(S.fmt==='pasos'||S.fmt==='lista'))||k==='p'||k==='b'?'<label class="im-check"><input type="checkbox" id="im-nombre"'+(S.nombre?' checked':'')+'> '+esc(k==='b'?U.nombreB:U.nombre)+'</label>':'')+'</div>';
- h+='<p class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(id)+'">'+esc(U.imprimirPdf)+'</button></p><p class="im-note" role="status" aria-live="polite">'+esc(S.msg)+'</p>';
+ h+='<p class="im-acts"><button type="button" class="im-btn pri" data-print="'+esc(id)+'">'+esc(U.imprimirPdf)+'</button>'+(k==='r'?'<button type="button" class="im-btn" data-download="'+esc(id)+'">'+esc(U.descargar)+'</button>':'')+'</p><p class="im-note" role="status" aria-live="polite">'+esc(S.msg)+'</p>';
+ h+='<div class="im-box im-provenance"><h2>'+esc(U.licencia)+'</h2><p>'+esc(AT)+'</p></div>';
  if(k==='r'){var g=D.links&&D.links[s];h+='<p class="im-acts">'+(g?'<a class="im-btn" href="'+GAMES+'#juego-'+esc(g)+'">'+esc(U.jugar)+'</a>':'')+'<a class="im-btn" href="'+RV+'?rutina='+encodeURIComponent(s)+'">'+esc(U.adaptar)+'</a></p>';}
  if(steps)h+='<div class="im-box"><h2>'+esc(k==='p'?U.incl:U.queHay)+'</h2><ol>'+steps.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ol></div>';
  else if(k==='b')h+='<p class="im-note">'+esc(U.boardD)+'</p>';
@@ -162,6 +168,48 @@ function printId(id){
  var go=function(){document.documentElement.classList.add('im-printing');var clean=function(){document.documentElement.classList.remove('im-printing');window.removeEventListener('afterprint',clean);};window.addEventListener('afterprint',clean);window.print();setTimeout(clean,1500);};
  var left=Array.prototype.filter.call(imgs,function(i){return !i.complete;});if(!left.length){go();return;}
  var n=left.length,done=false,one=function(){if(--n<=0&&!done){done=true;go();}};left.forEach(function(i){i.addEventListener('load',one);i.addEventListener('error',one);});setTimeout(function(){if(!done){done=true;go();}},4000);
+}
+
+
+/* ---------- descarga autocontenida ---------- */
+function fileDataUrl(url){
+ return fetch(url,{credentials:'same-origin'}).then(function(r){
+  if(!r.ok)throw new Error('asset');
+  return r.blob();
+ }).then(function(b){
+  return new Promise(function(ok,no){
+   var fr=new FileReader();fr.onload=function(){ok(fr.result);};fr.onerror=no;fr.readAsDataURL(b);
+  });
+ });
+}
+function safeFileName(id){
+ var v=id.replace(/^[a-z]:/,'').replace(/[^a-zA-Z0-9_-]+/g,'-').replace(/^-+|-+$/g,'');
+ return (v||'iris-green-rutina')+'-'+LANG+'.html';
+}
+async function downloadId(id){
+ try{
+  S.msg=U.descargando;focusSel='[data-download="'+id+'"]';render();
+  var holder=document.createElement('div');holder.innerHTML=sheetsFor(id).join('');
+  var imgs=Array.prototype.slice.call(holder.querySelectorAll('img'));
+  await Promise.all(imgs.map(async function(node){
+   var absolute=new URL(node.getAttribute('src'),location.origin).href;
+   node.setAttribute('src',await fileDataUrl(absolute));
+   node.removeAttribute('loading');node.removeAttribute('decoding');
+  }));
+  var cssText='';
+  try{
+   var cr=await fetch('/assets/rutinas-imprimibles.css?v=r42-a1',{credentials:'same-origin'});
+   if(cr.ok)cssText=await cr.text();
+  }catch(_){}
+  var pack=id.indexOf('r:')===0?packBy(id.slice(2)):null;
+  var title=pack?L(pack.t):(LANG==='en'?'Iris Green printable':'Imprimible Iris Green');
+  var doc='<!doctype html><html lang="'+LANG+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(title)+'</title><style>'+cssText+'body{margin:0;background:#fff}#download{display:grid;gap:12mm;justify-content:center;padding:8mm}@media print{#download{padding:0;gap:0}}</style></head><body><main id="download">'+holder.innerHTML+'</main></body></html>';
+  var blob=new Blob([doc],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=safeFileName(id);document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  S.msg=U.descargaLista;
+ }catch(e){S.msg=U.descargaError;}
+ focusSel='[data-download="'+id+'"]';render();
 }
 
 /* ---------- estado ---------- */
@@ -184,6 +232,7 @@ function leer(){var h=decodeURIComponent(location.hash||''),m=h.match(/^#(pack|t
 root.addEventListener('click',function(e){
  var o=e.target.closest('[data-open]');if(o&&root.contains(o)){e.preventDefault();abrir(o.getAttribute('data-open'));return;}
  var p=e.target.closest('[data-print]');if(p&&root.contains(p)){e.preventDefault();S.msg=U.printing;printId(p.getAttribute('data-print'));return;}
+ var dl=e.target.closest('[data-download]');if(dl&&root.contains(dl)){e.preventDefault();downloadId(dl.getAttribute('data-download'));return;}
  var a=e.target.closest('[data-act]');if(!a||!root.contains(a))return;var v=a.getAttribute('data-act'),i=v.indexOf(':'),k=i<0?v:v.slice(0,i),x=i<0?'':v.slice(i+1);
  if(k==='volver'){volver();return;}
  if(k==='tipo'){S.tipo=x;S.q='';}else if(k==='fmt'){S.fmt=x;if(S.vista==='hoja'){try{history.replaceState(null,'',hashFor(S.id));}catch(er){}}}else if(k==='cat')S.cat=x;else if(k==='et')S.etapa=x==='x'?'':x;
