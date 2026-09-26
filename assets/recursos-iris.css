@@ -78,3 +78,29 @@ body:has(.ri-main)>.ft{margin-top:0;margin-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){.ri-main .ri-card{transition:none}.ri-main .ri-card:hover{transform:none}}
 @media(forced-colors:active){.ri-main .ri-card{box-shadow:none;border:2px solid CanvasText}.ri-card>span[aria-hidden="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText}}
+
+
+/* R42 addendum · entrada por etapa de vida. Orienta, no bloquea. */
+.ri-stage-section{margin:1.35rem 0 2.2rem;padding:1.1rem;border:1px solid #d7e3ee;border-radius:1.35rem;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(244,249,252,.92))}
+.ri-stage-lede{max-width:52rem;margin:-.35rem 0 1rem;color:#435268;line-height:1.55}
+.ri-stage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.85rem}
+.ri-stage-card{position:relative;display:flex;flex-direction:column;gap:.55rem;min-height:14rem;padding:.9rem;border:1px solid #d5e4eb;border-radius:1.1rem;background:#fff;box-shadow:0 8px 24px rgba(23,57,92,.045)}
+.ri-stage-card h3{margin:0;font:600 1.35rem/1.15 Newsreader,Georgia,serif;color:#17395c}
+.ri-stage-card p{margin:0;color:#435268;line-height:1.48;font-size:.95rem}
+.ri-stage-visual{display:flex;align-items:center;gap:.35rem;min-height:4rem;padding:.55rem;border-radius:.85rem;background:linear-gradient(135deg,#eef5fb,#f3eef9)}
+.ri-stage-visual span{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:.7rem;background:#fff;border:1px solid #d6e1ec;color:#17395c;font-weight:800;font-size:1.1rem}
+.ri-stage-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.35rem}
+.ri-stage-actions a{min-height:44px;display:inline-flex;align-items:center;padding:0 .9rem;border-radius:999px;border:1px solid #b8cad9;background:#f7fafc;color:#17395c;text-decoration:none;font-weight:750}
+.ri-stage-actions a:hover{border-color:#1f5f8b;background:#fff}
+.ri-stage-actions a:focus-visible{outline:3px solid #5a49a8;outline-offset:3px}
+.ri-stage-child .ri-stage-visual{background:linear-gradient(135deg,#edf6fb,#f2effa)}
+.ri-stage-teen .ri-stage-visual{background:linear-gradient(135deg,#edf7f3,#eef4fb)}
+.ri-stage-adult .ri-stage-visual{background:linear-gradient(135deg,#f1f4f8,#eeeefa)}
+.ri-stage-any .ri-stage-visual{background:linear-gradient(135deg,#f7f5ef,#eff6f4)}
+@media(max-width:68rem){.ri-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:42rem){
+ .ri-stage-section{padding:.8rem;margin-inline:-.15rem}
+ .ri-stage-grid{grid-template-columns:1fr}
+ .ri-stage-card{min-height:auto}
+}
+@media(forced-colors:active){.ri-stage-section,.ri-stage-card,.ri-stage-visual,.ri-stage-actions a{border:2px solid CanvasText;background:Canvas!important;box-shadow:none}}
