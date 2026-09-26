@@ -69,11 +69,20 @@ def browser_checks(root,out):
                 assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),path
                 page.keyboard.press('Tab');assert page.evaluate('document.activeElement.tagName')!='BODY'
                 if kind==0:
+                  # R42 life-stage orientation is now the canonical entry point.
+                  # Exercise its explicit "view all" path before the unchanged game-card contract.
+                  stage_all=page.locator('#jg-app [data-k="stage-all"]')
+                  if stage_all.count():
+                    stage_all.first.focus();stage_all.first.press('Enter')
                   cards=page.locator('main .jg-card');cards.first.wait_for(state='visible');assert cards.count()>0
                   cards.first.focus();cards.first.press('Enter')
                   page.locator('#jg-h2').wait_for()
                   assert page.evaluate('document.activeElement.id')=='jg-h2'
                 elif kind==1:
+                  # Printable routines use the same non-blocking stage orientation.
+                  stage_all=page.locator('#im-app [data-act="stage:all"]')
+                  if stage_all.count():
+                    stage_all.first.focus();stage_all.first.press('Enter')
                   item_id,title=open_printable(page)
                   row['detail_keyboard']=True
                   button=page.locator('#im-app .im-side button[data-print]')
