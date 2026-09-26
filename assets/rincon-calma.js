@@ -16,7 +16,7 @@
     river: 'Río en el bosque: agua que corre entre piedras, hierba que se mueve con el viento y hojas que caen.',
     night: 'Cielo nocturno: estrellas y una aurora que ondula despacio sobre un lago rodeado de pinos.',
     octopus: 'Pulpos: pulpos se mueven despacio entre rocas y plantas bajo el agua.',
-    no3d: 'Para ver esta escena, el navegador necesita gráficos 3D (WebGL) y ahora mismo no los tiene activos. Suele arreglarse activando la «aceleración por hardware» en la configuración del navegador. El acuario y el tubo de burbujas sí se ven sin ella.',
+    no3d: 'La animación no está disponible en este navegador. Puedes seguir con la imagen fija.',
     nofull: 'Este navegador no permite la pantalla completa aquí.',
     touch: { aquarium: 'Soltar burbujas', bubbles: 'Más burbujas y otro color', jellies: 'Apartar las medusas', fibre: 'Mandar una onda de luz', rain: 'Limpiar el cristal', night: 'Ver una estrella fugaz', river: 'Que caigan hojas' },
     offAt: function (h) { return 'Se apagará sola a las ' + h + '.'; },
@@ -35,7 +35,7 @@
     river: 'Stream in the forest: water runs over stones, grass moves in the wind and leaves fall.',
     night: 'Night sky: stars and an aurora that ripples slowly over a lake ringed with pine trees.',
     octopus: 'Octopuses: octopuses move slowly among rocks and plants underwater.',
-    no3d: 'To show this scene, the browser needs 3D graphics (WebGL), which are not active right now. Turning on “hardware acceleration” in the browser settings usually fixes it. The aquarium and the bubble tube work without it.',
+    no3d: 'The animation is not available in this browser. You can keep using the still image.',
     nofull: 'This browser does not allow full screen here.',
     touch: { aquarium: 'Release bubbles', bubbles: 'More bubbles and another colour', jellies: 'Move the jellyfish aside', fibre: 'Send a wave of light', rain: 'Wipe the glass', night: 'See a shooting star', river: 'Let some leaves fall' },
     offAt: function (h) { return 'It will turn off by itself at ' + h + '.'; },
@@ -384,10 +384,10 @@
   /* Escenas en 3D (se cargan solo al pulsar). Si el navegador no puede, se usa la versión 2D. */
   var scene3d = null, load3d = null;
   function need3d() {
-    if (window.IGScenes3D) return Promise.resolve(window.IGScenes3D);
+    if (window.IGScenesR04) return Promise.resolve(window.IGScenesR04);
     if (!load3d) load3d = new Promise(function (ok, ko) {
-      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-3d.js?v=rincon-r20-20260924'; s.async = true;
-      s.onload = function () { window.IGScenes3D ? ok(window.IGScenes3D) : ko(); };
+      var s = document.createElement('script'); s.src = '/assets/rincon-escenas-r04.js?v=r40-r04-20260926'; s.async = true;
+      s.onload = function () { window.IGScenesR04 ? ok(window.IGScenesR04) : ko(); };
       s.onerror = function () { load3d = null; ko(); };
       document.head.appendChild(s);
     });
