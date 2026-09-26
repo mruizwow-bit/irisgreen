@@ -1,0 +1,53 @@
+{
+  "schema": "iris-green-r39-r06-a2-web-integration-v1",
+  "date": "2026-09-26",
+  "status": "R39_R06_WEB_INTEGRATED_PREVIEW_READY_FOR_REAL_HTTP_QA",
+  "cloud": {
+    "source_candidate": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
+    "deploy_id": "6ab7a2cd2cf8dc09d3ae9aca",
+    "origin": "https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app",
+    "state": "ready",
+    "context": "deploy-preview",
+    "published_at": null,
+    "functions": [
+      "n04-library-qa",
+      "n04-team-transport"
+    ]
+  },
+  "web": {
+    "base_before_pr272": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+    "pr272_head": "95f5e81e34196eef182b49aa3b0d122b5706977c",
+    "final_head": "538daa9729b8904d85f5bc1519e8e13a40fb59bb",
+    "final_tree": "034cc898463fcc31d6da703c1800b60d1fbedc1a",
+    "deploy_id": "6ab7a8687285860008f3b5a4",
+    "preview_alias": "https://deploy-preview-244--irisgreen-home.netlify.app",
+    "context": "deploy-preview",
+    "published_at": null
+  },
+  "ci": {
+    "total": 20,
+    "success": 20,
+    "failed": 0,
+    "r06_regression": true,
+    "csp_guard": true
+  },
+  "next_gate": [
+    "results+sources",
+    "zero results",
+    "cancel/replace",
+    "recoverable error/timeout",
+    "EN UI with es citations"
+  ],
+  "query_submitted": false,
+  "mounted_connected_real": false,
+  "excluded": [
+    "main",
+    "production",
+    "DNS",
+    "Team Login changes",
+    "voice/TTS",
+    "corpus/ranking",
+    "new credentials",
+    "secret values"
+  ]
+}
