@@ -282,7 +282,7 @@
     }
   }
 
-  @container ig-r42-shell (max-width:64rem) {
+  @container ig-r42-shell (max-width:48rem) {
     .ig-r42-topbar {
       grid-template-columns:auto minmax(0,1fr);
     }
@@ -563,9 +563,27 @@
 
   body[data-ig-r42-family="workshop"] #igt-app > .igt-work {
     display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(230px,300px);
+    grid-template-columns:minmax(0,1fr);
     gap:.7rem;
     align-items:start;
+  }
+
+  body[data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-retos {
+    width:100%;
+    min-width:0;
+    grid-template-columns:minmax(0,1fr);
+    gap:.75rem;
+    padding:.75rem;
+    border-radius:14px;
+  }
+
+  body[data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-side {
+    width:100%;
+    min-width:0;
+    padding:.25rem 0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
   }
 
   body[data-ig-r42-family="workshop"] #igt-app .igt-stage {
@@ -600,15 +618,33 @@
 
   body[data-ig-r42-family="quiet"] .r40-mode-nav {
     margin:0;
-    width:auto;
+    width:100%;
     max-width:100%;
+    flex:1 1 100%;
   }
 
   body[data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs {
     margin:0;
+    width:100%;
   }
 
-  @container ig-r42-shell (max-width:64rem) {
+  @media (min-width:701px) {
+    body[data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.4rem;
+      padding:.25rem;
+      flex-wrap:nowrap;
+    }
+    body[data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs button {
+      min-height:44px;
+      min-width:0;
+      width:100%;
+      flex:none;
+    }
+  }
+
+  @container ig-r42-shell (max-width:48rem) {
     body[data-ig-r42-family="workshop"] #igt-app > .igt-work {
       grid-template-columns:minmax(0,1fr);
     }
