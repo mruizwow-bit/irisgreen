@@ -35,8 +35,9 @@
     var wrap=el('div','ig42-stage-choice'),label=el('span','ig42-stage-label',T('Ruta de entrada','Entry path'));wrap.appendChild(label);
     var group=el('div','ig42-segmented');group.setAttribute('role','group');group.setAttribute('aria-label',label.textContent);
     var stages=[['all',T('Cualquier edad','Any age')],['child',T('Infancia','Childhood')],['teen',T('Adolescencia','Teens')],['adult',T('Adultez','Adults')]];
-    var key='ig42-stage';var current='all';try{current=root.sessionStorage.getItem(key)||'all';}catch(e){}
-    stages.forEach(function(s){var b=btn(s[1],'ig42-segment');b.dataset.stage=s[0];b.setAttribute('aria-pressed',String(current===s[0]));b.addEventListener('click',function(){current=s[0];try{root.sessionStorage.setItem(key,current);}catch(e){}qa('button',group).forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});updateStageBrief(study,current);});group.appendChild(b);});
+    /* La etapa es una vista momentánea, no un dato de perfil: no se guarda ni se infiere. */
+    var current='all';
+    stages.forEach(function(s){var b=btn(s[1],'ig42-segment');b.dataset.stage=s[0];b.setAttribute('aria-pressed',String(current===s[0]));b.addEventListener('click',function(){current=s[0];qa('button',group).forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});updateStageBrief(study,current);});group.appendChild(b);});
     wrap.appendChild(group);return wrap;
   }
   function updateStageBrief(study,stage){
