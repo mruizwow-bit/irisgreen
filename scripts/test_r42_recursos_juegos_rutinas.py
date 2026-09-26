@@ -115,8 +115,8 @@ assert "IRIS GREEN" not in notice.upper() or True  # attribution remains separat
 # Bind R42 assets in both languages.
 for p in [ROOT/"es/recursos/juegos/index.html",ROOT/"en/resources/games/index.html"]:
     text=p.read_text(encoding="utf-8")
-    assert "/assets/juegos-iris.css?v=r41-a1" in text  # R42 consumes the play-first shell built on R41 base
-    assert "/assets/juegos-iris.js?v=r41-a1" in text
+    assert "/assets/juegos-iris.css?v=r42-a1" in text  # R42 consumes the play-first shell built on R41 base
+    assert "/assets/juegos-iris.js?v=r42-a1" in text
 for p in [ROOT/"es/recursos/rutinas-imprimibles/index.html",ROOT/"en/resources/printable-routines/index.html"]:
     text=p.read_text(encoding="utf-8")
     assert "/assets/rutinas-imprimibles.js?v=r42-a1" in text
