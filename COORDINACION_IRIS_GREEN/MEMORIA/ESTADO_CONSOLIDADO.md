@@ -61,3 +61,13 @@ Cada orden contiene requisitos aplicables de construcción, accesibilidad, escri
 ## Qué significa terminado
 
 Separar orden emitida, recibida, construcción, código entregado, integración, despliegue, ejecución real y aceptación humana. Actualizar estado solo con evidencia. No sustituir una entrega utilizable por un informe; no bloquear piezas independientes por una barrera externa distinta. Codex integra Cloud, María/agente2 integran web, agente7 consolida registros. Permanecen cerradas apertura pública, proveedor/modelo, embeddings, `/api/chat` e inferencia conversacional o voz salvo nueva autorización expresa.
+
+## Addendum 26/09/2026 · R40 Rincón R03
+
+Estado vigente: **`R40_RINCON_R03_ORDERED_BUILD_REQUIRED`**.
+
+María rechaza como aceptación final el audio/UX actual del Rincón. Se ordena reconstrucción de los 12 sonidos generales, los 9 ambientes de escena y la navegación principal. La herramienta activa debe permanecer arriba mediante selector único Vídeos / Sonidos / Bola de relajación; no se acepta el patrón que expande la hoja hacia abajo.
+
+A7 construye. A2 integra y es la única puerta a la web. La aceptación requiere escucha y revisión visual humana sobre la preview integrada.
+
+Registro completo: `R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`. Normativa aplicable: `../NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md`.
