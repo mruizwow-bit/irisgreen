@@ -264,7 +264,8 @@
         "id",
         "index",
         "title",
-        "interest_ids"
+        "interest_ids",
+        "provenance"
       ],
       "additionalProperties": false,
       "properties": {
@@ -288,6 +289,9 @@
             "pattern": "^interest-[0-9]{2}$"
           },
           "uniqueItems": true
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
         }
       }
     },
@@ -384,7 +388,8 @@
         "id",
         "index",
         "title",
-        "study_ids"
+        "study_ids",
+        "provenance"
       ],
       "additionalProperties": false,
       "properties": {
@@ -408,6 +413,9 @@
             "pattern": "^workshop-[0-9]{2}$"
           },
           "uniqueItems": true
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
         }
       }
     },
@@ -534,7 +542,8 @@
         "payload_class",
         "status",
         "publicable",
-        "source_label"
+        "source_label",
+        "provenance"
       ],
       "additionalProperties": false,
       "properties": {
@@ -572,6 +581,9 @@
         },
         "note": {
           "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
         }
       }
     },
@@ -583,7 +595,8 @@
         "title",
         "classes",
         "status",
-        "requirements"
+        "requirements",
+        "provenance"
       ],
       "additionalProperties": false,
       "properties": {
@@ -612,6 +625,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
         }
       }
     }
