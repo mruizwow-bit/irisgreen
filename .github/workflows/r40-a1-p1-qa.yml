@@ -58,16 +58,23 @@ jobs:
         working-directory: dist
         run: /tmp/r40-a1/bin/python ../scripts/audit_target_size.py
 
-      - name: Clean tree after debug
+      - name: Source tree unchanged after debug
         run: |
           git status --porcelain=v1 --untracked-files=all | tee /tmp/r40-a1-status.txt
-          test ! -s /tmp/r40-a1-status.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          lines=[x for x in Path('/tmp/r40-a1-status.txt').read_text().splitlines() if x.strip()]
+          unexpected=[x for x in lines if not x.startswith('?? reports/resources-current/')]
+          print({'generated_test_evidence':len(lines)-len(unexpected),'unexpected':unexpected})
+          if unexpected:
+              raise SystemExit(1)
+          PY
 
       - name: Upload debug evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: r40-a1-recursos-juegos-debug-r2
+          name: r40-a1-recursos-juegos-debug-r3
           path: |
             reports/resources-current/
             dist/reports/publicacion/seo-idiomas.json
