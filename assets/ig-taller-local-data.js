@@ -3,7 +3,14 @@
 (function(root,factory){
   var api=factory(root);
   if(typeof module==='object'&&module.exports) module.exports=api;
-  else root.IGR40Local=api;
+  else {
+    root.IGR40Local=api;
+    root.IGR40LocalData=api;
+    root.IGR40=root.IGR40||{};
+    root.IGR40.collection=api.collection;
+    root.IGR40.projects=api.projects;
+    root.IGR40.localData=api;
+  }
   if(root && root.document) api.enhanceWorkshop(root);
 })(typeof globalThis!=='undefined'?globalThis:this,function(root){
   'use strict';
@@ -100,6 +107,7 @@
         if(!db.objectStoreNames.contains('progress')) db.createObjectStore('progress',{keyPath:'key'});
         if(!db.objectStoreNames.contains('projects')) db.createObjectStore('projects',{keyPath:'project_id'});
         if(!db.objectStoreNames.contains('meta')) db.createObjectStore('meta',{keyPath:'key'});
+        req.transaction.objectStore('meta').put({key:'schema-version',value:SCHEMA});
       };
       req.onsuccess=function(){ self.db=req.result; resolve(self); };
       req.onerror=function(){ reject(req.error||new Error('IDB_OPEN')); };
@@ -123,7 +131,16 @@
   IDBBackend.prototype.put=function(s,v){return this._req(s,'readwrite',function(os){return os.put(v);}).then(function(){return clone(v);});};
   IDBBackend.prototype.del=function(s,k){return this._req(s,'readwrite',function(os){return os.delete(k);});};
   IDBBackend.prototype.clear=function(s){return this._req(s,'readwrite',function(os){return os.clear();});};
-  IDBBackend.prototype.clearAll=async function(){ for(var i=0;i<STORES.length;i++) await this.clear(STORES[i]); };
+  IDBBackend.prototype.clearAll=async function(){
+    await this.ready(); var db=this.db;
+    return new Promise(function(resolve,reject){
+      var tx=db.transaction(STORES,'readwrite');
+      try{STORES.forEach(function(name){tx.objectStore(name).clear();});}catch(e){reject(e);return;}
+      tx.oncomplete=function(){resolve();};
+      tx.onerror=function(){reject(tx.error||new Error('IDB_TX'));};
+      tx.onabort=function(){reject(tx.error||new Error('IDB_ABORT'));};
+    });
+  };
 
   function HybridBackend(){
     this.active=null; this.persistent=false; this.reason='NOT_INITIALIZED';
@@ -200,6 +217,24 @@
   }
 
   var service=createService(new HybridBackend());
+  function collectionRef(value){
+    if(typeof value==='string') return {namespace:'interests',id:value};
+    if(!plain(value)||typeof value.id!=='string') fail('INVALID_REFERENCE');
+    if(value.namespace) return {namespace:value.namespace,id:value.id};
+    return {namespace:value.kind==='workshop'?'workshop':'interests',id:value.id};
+  }
+  var collectionFacade={
+    has:function(value){return service.hasCollection(collectionRef(value));},
+    add:function(value){return service.addCollection(collectionRef(value)).then(function(){return true;});},
+    remove:function(value){return service.removeCollection(collectionRef(value)).then(function(){return true;});},
+    list:function(){return service.listCollection().then(function(items){return items.map(function(x){return {id:x.id,kind:x.namespace==='interests'?'interest':x.namespace,namespace:x.namespace};});});},
+    clear:function(){return service.clearCollection();},
+    capabilities:function(){return service.capabilities();}
+  };
+  var projectsFacade={
+    list:service.listProjects,get:service.getProject,save:service.saveProject,remove:service.deleteProject,clear:service.clearProjects,
+    export:service.exportProject,validateImportText:service.validateImportText,import:service.commitImport,capabilities:service.capabilities
+  };
   var TEXT={
     es:{saveLocal:'Guardar aquí',openLocal:'Guardados',collectionAdd:'Añadir a Mi colección',collectionRemove:'Quitar de Mi colección',
       progressOn:'Guardar progreso',progressOff:'No guardar progreso',sessionOnly:'Solo durante esta sesión',savedLocal:'Proyecto guardado en este dispositivo.',
@@ -301,7 +336,8 @@
     var host=root.document&&root.document.getElementById('igt-local-summary'); if(!host||!root.IGT)return;
     var IGT=root.IGT; IGT.clear(host);
     var h=IGT.h('h2',{text:t('collection')}), list=IGT.h('ul',{class:'igt-local-summary-list'}), info=IGT.h('p',{class:'igt-note'});
-    host.appendChild(h);host.appendChild(info);host.appendChild(list);
+    var ph=IGT.h('h3',{text:t('projects')}), projectList=IGT.h('ul',{class:'igt-local-summary-list'});
+    host.appendChild(h);host.appendChild(info);host.appendChild(list);host.appendChild(ph);host.appendChild(projectList);
     var controls=IGT.h('div',{class:'igt-bar'});
     var clearC=IGT.btn(t('clearCollection'),{onClick:async function(){if(root.confirm(t('confirmClear'))){await service.clearCollection();render();}}});
     var clearP=IGT.btn(t('clearProjects'),{onClick:async function(){if(root.confirm(t('confirmClear'))){await service.clearProjects();render();}}});
@@ -310,9 +346,24 @@
     controls.appendChild(clearC);controls.appendChild(clearProg);controls.appendChild(clearP);controls.appendChild(clearAll);host.appendChild(controls);
     async function render(){
       var c=await service.listCollection(),p=await service.listProjects(),pr=await service.loadProgress(),cap=await service.capabilities();
-      IGT.clear(list);
-      c.forEach(function(x){list.appendChild(IGT.h('li',{text:x.id}));});
+      IGT.clear(list); IGT.clear(projectList);
+      var cat=root.IGTallerR40Catalog||[];
+      c.forEach(function(x){
+        var item=cat.find?cat.find(function(s){return s.id===x.id;}):null;
+        if(item&&x.namespace==='workshop'){
+          var a=IGT.h('a',{href:(lang()==='en'?'/en/workshop/'+item.slugs.en+'/':'/es/taller/'+item.slugs.es+'/'),text:item.title[lang()]});
+          list.appendChild(IGT.h('li',{},a));
+        }else list.appendChild(IGT.h('li',{text:x.id}));
+      });
       if(!c.length)list.appendChild(IGT.h('li',{text:'—'}));
+      p.forEach(function(project){
+        var item=cat.find?cat.find(function(s){return s.id===project.project_type;}):null;
+        var label=(project.title||item&&item.title[lang()]||project.project_type)+' · r'+project.revision;
+        if(item){
+          projectList.appendChild(IGT.h('li',{},IGT.h('a',{href:(lang()==='en'?'/en/workshop/'+item.slugs.en+'/':'/es/taller/'+item.slugs.es+'/'),text:label})));
+        }else projectList.appendChild(IGT.h('li',{text:label}));
+      });
+      if(!p.length)projectList.appendChild(IGT.h('li',{text:'—'}));
       info.textContent=(lang()==='en'?'Collection: ':'Colección: ')+c.length+' · '+(lang()==='en'?'projects: ':'proyectos: ')+p.length+' · '+(lang()==='en'?'progress: ':'progreso: ')+pr.length+(cap.persistent?'':' · '+t('sessionOnly'));
     }
     render();
@@ -327,6 +378,6 @@
   return {
     DB_NAME:DB_NAME,DB_VERSION:DB_VERSION,CONTRACT:CONTRACT,SCHEMA_VERSION:SCHEMA,MAX_IMPORT_BYTES:MAX_IMPORT_BYTES,
     LocalDataError:LocalDataError,MemoryBackend:MemoryBackend,createService:createService,validateImportText:validateImportText,
-    canonicalType:canonicalType,service:service,enhanceWorkshop:enhanceWorkshop
+    canonicalType:canonicalType,collection:collectionFacade,projects:projectsFacade,service:service,enhanceWorkshop:enhanceWorkshop
   };
 });
