@@ -233,6 +233,8 @@ with sync_playwright() as pw:
                     assert mobile["railDirection"] == "row", mobile
                     assert mobile["buttons"] >= 3, mobile
                     assert mobile["inspectorDisplay"] == "none", mobile
+                    assert workspace["width"] >= width * 0.72, metrics
+                    assert stage["width"] >= width * 0.65, metrics
 
                 if family == "workshop":
                     page.wait_for_function(
