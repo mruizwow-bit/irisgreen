@@ -306,22 +306,39 @@ body.ig-r40 :where(.igt-btn,.jg-btn,.rv-btn):disabled{
 /* Móvil: el mismo árbol de navegación se convierte en acordeón. */
 @media(max-width:73.99rem){
   .ig-r40-nav{
-    width:100%;
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
     align-items:stretch;
-    padding:.65rem 0;
   }
   header.ig-menu-open .ig-r40-nav,
-  .ig-r40-nav.open{display:flex;flex-direction:column}
-  .ig-r40-nav>a,
-  .ig-r40-nav>details>summary{
+  .ig-r40-nav.open{
+    display:flex;
+    flex-direction:column;
     width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    padding:.65rem 0;
+  }
+  header.ig-menu-open .ig-r40-nav>a,
+  header.ig-menu-open .ig-r40-nav>details,
+  header.ig-menu-open .ig-r40-nav>details>summary,
+  .ig-r40-nav.open>a,
+  .ig-r40-nav.open>details,
+  .ig-r40-nav.open>details>summary{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
     justify-content:flex-start;
     border-radius:12px;
   }
-  .ig-r40-nav-group{width:100%}
-  .ig-r40-nav-menu{
+  header.ig-menu-open .ig-r40-nav-menu,
+  .ig-r40-nav.open .ig-r40-nav-menu{
     position:static;
     min-width:0;
+    width:calc(100% - .75rem);
+    max-width:calc(100% - .75rem);
+    box-sizing:border-box;
     margin:.2rem 0 .5rem .75rem;
     box-shadow:none;
     border-left:2px solid var(--ig-r40-line);
