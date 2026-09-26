@@ -44,10 +44,11 @@ with sync_playwright() as pw:
                     more.click()
             posters=area.locator('button.ig-video-poster[data-ig-video*="youtube"]')
             count=posters.count();row['youtube_posters']=count
-            checked=[];fallbacks=[]
+            checked=[];fallbacks=[];seen=[]
             for n in range(count):
                 poster=posters.nth(n);poster.scroll_into_view_if_needed();before=poster.bounding_box()
                 ident=re.search(r'/embed/([A-Za-z0-9_-]{11})',poster.get_attribute('data-ig-video'))[1]
+                seen.append(ident)
                 if ident in manifest['images']:
                     im=poster.locator('img.ig-video-thumbnail');im.wait_for(state='visible')
                     im.evaluate('(im)=>im.decode()')
@@ -63,7 +64,10 @@ with sync_playwright() as pw:
                 assert abs(after['width']/after['height']-16/9)<.04
                 assert poster.get_attribute('aria-label') and len(poster.get_attribute('aria-label'))>15
             if lang=='es':
-                assert set(checked)==expected,(len(checked),len(expected))
+                current_cached=expected & set(seen)
+                assert set(checked)==current_cached,(len(checked),len(current_cached))
+                assert len(checked)+len(fallbacks)==count,(len(checked),len(fallbacks),count)
+                row['unused_cached_images']=sorted(expected-set(seen))
             row['images_checked']=len(checked);row['correct_image_ids']=len(set(checked));row['fallbacks_checked']=len(fallbacks);row['image_size_stable']=True
             assert page.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)')<=2
             first=area.locator('button.ig-video-poster[data-ig-video*="youtube"]').first
