@@ -93,6 +93,8 @@ JS_WORKSHOP = """() => {
   const retos=document.querySelector('.igt-retos');
   const side=document.querySelector('.igt-side');
   const inspector=document.querySelector('.ig-r42-inspector-body');
+  const outerStage=document.querySelector('.ig-r42-stage');
+  const innerStage=app && app.querySelector('.igt-stage');
   const canvas=app && app.querySelector('canvas.igt-draw');
   const file=document.querySelector('#ig-r42-file-menu');
   const trigger=document.querySelector('.ig-r42-file-trigger');
@@ -105,7 +107,11 @@ JS_WORKSHOP = """() => {
     fileButtons:file ? file.querySelectorAll('button').length : 0,
     fileTrigger:!!trigger,
     oldTopHidden:!!(oldTop && (oldTop.hidden || getComputedStyle(oldTop).display==='none')),
-    canvasTop:canvas ? canvas.getBoundingClientRect().top : null
+    canvasTop:canvas ? canvas.getBoundingClientRect().top : null,
+    outerStageWidth:outerStage ? outerStage.getBoundingClientRect().width : null,
+    innerStageWidth:innerStage ? innerStage.getBoundingClientRect().width : null,
+    retosClientWidth:retos ? retos.clientWidth : null,
+    retosScrollWidth:retos ? retos.scrollWidth : null
   };
 }"""
 
@@ -252,6 +258,9 @@ with sync_playwright() as pw:
                     assert workshop["fileButtons"] >= 3, workshop
                     assert workshop["oldTopHidden"], workshop
                     assert workshop["canvasTop"] is not None and workshop["canvasTop"] < height - 60, workshop
+                    assert workshop["innerStageWidth"] is not None and workshop["outerStageWidth"] is not None, workshop
+                    assert workshop["innerStageWidth"] >= workshop["outerStageWidth"] * 0.82, workshop
+                    assert workshop["retosScrollWidth"] <= workshop["retosClientWidth"] + 2, workshop
 
                 assert not errors, errors
 
