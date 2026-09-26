@@ -143,7 +143,7 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final).
+    # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
