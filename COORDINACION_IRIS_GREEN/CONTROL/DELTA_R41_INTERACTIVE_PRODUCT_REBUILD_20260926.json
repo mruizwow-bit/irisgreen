@@ -1,0 +1,50 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R41-INTERACTIVE-PRODUCT-REBUILD",
+  "date": "2026-09-26",
+  "status": "R41_INTERACTIVE_PRODUCT_REBUILD_REQUIRED",
+  "trigger": "HUMAN_QA_DESIGN_FAIL",
+  "observed_a2_head": "e7e2e986e370af093c094a78deaacd2eb1f04707",
+  "parent_issue": 276,
+  "orders": {
+    "A3": 277,
+    "A5": 278,
+    "A1": 279,
+    "A4": 280,
+    "A7": 281,
+    "A2": 282,
+    "A6": "voice-only"
+  },
+  "superseded_visual_acceptance": [
+    260,
+    261,
+    262,
+    263,
+    265
+  ],
+  "required_patterns": [
+    "workspace-first",
+    "direct-manipulation",
+    "contextual-inspector",
+    "compact-toolbar",
+    "progressive-disclosure",
+    "mobile-specific-shell",
+    "human-qa-on-web"
+  ],
+  "acceptance": {
+    "ci_required": true,
+    "local_screenshot_not_final": true,
+    "human_visual_acceptance_required": true,
+    "a2_only_web_gateway": true
+  },
+  "technology_policy": {
+    "container_queries": "allowed",
+    "popover_dialog": "allowed",
+    "view_transitions": "allowed_with_reduced_motion",
+    "offscreen_canvas_workers": "allowed",
+    "indexeddb_opfs": "allowed",
+    "file_system_access": "progressive_enhancement",
+    "webgpu": "optional_with_fallback",
+    "framework_rewrite": "not_for_aesthetics_only"
+  }
+}
