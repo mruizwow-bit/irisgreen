@@ -89,11 +89,17 @@ def _language(text: str) -> str:
     return "en" if match and match.group("lang").lower().startswith("en") else "es"
 
 
-def _nav_markup(lang: str, nav_id: str | None) -> str:
+def _nav_markup(lang: str, nav_id: str | None, original_classes: str = "") -> str:
     t = NAV[lang]
     r = t["routes"]
     id_attr = f' id="{nav_id}"' if nav_id else ""
-    return f"""<nav class="nav ig-r40-nav"{id_attr} aria-label="{t['label']}" data-ig-r40-nav>
+    classes = [x for x in original_classes.split() if x]
+    if not classes:
+        classes = ["nav"]
+    if "ig-r40-nav" not in classes:
+        classes.append("ig-r40-nav")
+    class_attr = " ".join(classes)
+    return f"""<nav class="{class_attr}"{id_attr} aria-label="{t['label']}" data-ig-r40-nav>
 <a href="/" data-route="inicio">{t['home']}</a>
 <details class="ig-r40-nav-group"><summary>{t['info']}</summary><div class="ig-r40-nav-menu">
 <a href="{r['conditions']}">{t['conditions']}</a>
@@ -143,7 +149,9 @@ def _replace_header_navigation(text: str, lang: str) -> tuple[str, bool]:
     if not nav_id:
         control = re.search(r"aria-controls=(['\\\"])(nav|ig-main-nav)\\1", header, re.I)
         nav_id = control.group(2) if control else "ig-main-nav"
-    replacement = _nav_markup(lang, nav_id)
+    cls = CLASS_RE.search(attrs)
+    original_classes = cls.group("value") if cls else ""
+    replacement = _nav_markup(lang, nav_id, original_classes)
 
     new_header = header[: selected.start()] + replacement + header[selected.end() :]
     return text[: header_match.start()] + new_header + text[header_match.end() :], True
