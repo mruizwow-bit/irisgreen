@@ -106,3 +106,25 @@ La corrección frontend está preparada en PR #272 sobre la base exacta de A2: i
 
 Memoria: `MEMORIA/R39_R06_CLOUD_DEPLOY_20260926.md`.  
 Control: `CONTROL/DELTA_R39_R06_CLOUD_DEPLOY_20260926.json`.
+
+## R41 · Interactive Product Rebuild · HUMAN QA · 26/09/2026
+
+**Estado vigente: `R41_INTERACTIVE_PRODUCT_REBUILD_REQUIRED`.**
+
+María rechaza visualmente el Taller R40 integrado: las funciones existen, pero la arquitectura sigue siendo documento/formulario y relega el workspace. El reset R41 redefine el gate de producto: workspace-first, direct manipulation, toolbars compactas, inspector contextual, progressive disclosure y mobile específico.
+
+Órdenes:
+- A3 #277
+- A5 #278
+- A1 #279
+- A4 #280
+- A7 #281
+- A2 #282
+- A6 voz exclusivamente
+
+#260/#261/#262/#263/#265 quedan superseded visualmente; se conservan como historial/base funcional.
+
+Orden: `ORDENES/R41_INTERACTIVE_PRODUCT_REBUILD/`  
+Normativa: `NORMATIVA/ADDENDUM_R41_INTERACTIVE_PRODUCT_DESIGN_20260926.md`  
+Memoria: `MEMORIA/R41_HUMAN_QA_DESIGN_RESET_20260926.md`  
+Control: `CONTROL/DELTA_R41_INTERACTIVE_PRODUCT_REBUILD_20260926.json`.
