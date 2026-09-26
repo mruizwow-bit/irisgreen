@@ -106,8 +106,8 @@ def _nav_markup(lang: str, nav_id: str | None) -> str:
 </div></details>
 <a href="{r['resources']}">{t['resources']}</a>
 <details class="ig-r40-nav-group"><summary>{t['explore']}</summary><div class="ig-r40-nav-menu">
-<a href="{r['interests']}">{t['interests']}</a>
-<a href="{r['workshop']}">{t['workshop']}</a>
+<a href="{r['interests']}" data-iris-top="interests">{t['interests']}</a>
+<a href="{r['workshop']}" data-iris-top="workshop">{t['workshop']}</a>
 <a href="{r['quiet']}">{t['quiet']}</a>
 </div></details>
 <a class="ig-r40-nav-search" href="/#buscar" data-ig-r40-search>{t['search']}</a>
