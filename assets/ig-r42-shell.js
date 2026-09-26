@@ -303,8 +303,10 @@
   }
 
   inspectorClose.addEventListener('click', function () {
-    if (inspector.parentNode === inspectorFrame.body) closeDialog(inspectorFrame.dialog);
-    else {
+    if (inspector.parentNode === inspectorFrame.body) {
+      closeDialog(inspectorFrame.dialog);
+      restoreInspectorHome();
+    } else {
       inspector.setAttribute('data-collapsed', 'true');
       panelButton.setAttribute('aria-expanded', 'false');
       inspectRail.setAttribute('aria-pressed', 'false');
@@ -432,7 +434,7 @@
     });
 
     if (fileButtons.length) {
-      var fileTrigger = h('button', { type:'button', class:'ig-r42-action', text:T.file });
+      var fileTrigger = h('button', { type:'button', class:'ig-r42-action ig-r42-file-trigger', text:T.file });
       var fileMenu = h('div', { class:'ig-r42-file-popover', id:'ig-r42-file-menu' });
       fileButtons.forEach(function (button) {
         button.classList.add('ig-r42-action');
