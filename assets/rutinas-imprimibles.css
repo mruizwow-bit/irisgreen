@@ -103,3 +103,33 @@
  .im-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 @media (prefers-reduced-motion:reduce){.im *{transition:none!important}}
+
+
+/* R42 addendum · etapas de vida como primera orientación de Rutinas. */
+.im-stage-entry{display:grid;gap:1rem;margin:1rem 0 1.25rem}
+.im-stage-head{max-width:48rem}.im-stage-head h2{margin:.15rem 0 .35rem;font:500 clamp(1.65rem,3vw,2.15rem)/1.15 Newsreader,Georgia,serif}.im-stage-head>p:last-child{margin:0;color:var(--ink2);line-height:1.55}
+.im-kicker{margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#5a6e88}
+.im-stage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+.im-stage-card{position:relative;min-height:12rem;display:grid;grid-template-rows:1fr auto;gap:.65rem;padding:.9rem;border:1px solid var(--line);border-radius:1.2rem;background:linear-gradient(150deg,#fff,#f6f9fc);color:var(--ink);text-align:left;font:inherit;cursor:pointer;box-shadow:0 9px 28px rgba(23,57,92,.05);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.im-stage-card:hover{transform:translateY(-2px);border-color:#719eb8;box-shadow:0 13px 32px rgba(23,57,92,.09)}
+.im-stage-card:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+.im-stage-art{min-height:6.2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;align-items:center;padding:.45rem;border-radius:.9rem;background:linear-gradient(135deg,rgba(226,236,248,.82),rgba(238,231,248,.72))}
+.im-stage-art img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:.65rem;padding:.28rem}
+.im-stage-copy{display:grid;gap:.18rem;padding-right:2rem}.im-stage-copy strong{font:600 1.3rem/1.15 Newsreader,Georgia,serif}.im-stage-copy span{font-size:.87rem;color:#5c7391}
+.im-stage-arrow{position:absolute;right:1rem;bottom:1rem;color:#1f5f8b;font-size:1.2rem}
+.im-stage-all{margin:0}
+.im-stage-rail{display:flex;gap:.45rem;align-items:center;overflow-x:auto;padding:.25rem 0 .6rem;margin:.35rem 0;scrollbar-width:thin}
+.im-stage-rail .im-chip{flex:0 0 auto}
+.im-grid>.im-card{content-visibility:auto;contain-intrinsic-size:28rem 18rem}
+@media(max-width:64rem){.im-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:42rem){
+ .im-stage-grid{grid-template-columns:1fr}
+ .im-stage-card{min-height:8.8rem;grid-template-columns:7rem 1fr;grid-template-rows:1fr;align-items:center}
+ .im-stage-art{min-height:6rem;grid-template-columns:repeat(2,1fr)}
+ .im-stage-art img:nth-child(3){display:none}
+}
+@media(prefers-reduced-motion:reduce){.im-stage-card{transition:none}.im-stage-card:hover{transform:none}}
+@media(forced-colors:active){
+ .im-stage-card{border:2px solid ButtonText;background:Canvas!important;box-shadow:none}
+ .im-stage-art{border:1px solid ButtonText;background:Canvas!important}
+}
