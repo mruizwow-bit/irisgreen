@@ -214,9 +214,9 @@
     if(root.IGTallerR43Advanced&&root.IGTallerR43Advanced.supported(study.kind)){
       root.IGTallerR43Advanced.mountGeneric(app,study);return;
     }
-    if(root.__ig42WorkshopLoading){
+    if(root.__ig42WorkshopLoading&&!root.IGTallerR43Advanced){
       root.document.addEventListener('ig:r43-advanced-ready',function once(){root.document.removeEventListener('ig:r43-advanced-ready',once);mountStudy();},{once:true});
-      root.setTimeout(function(){if(!app.dataset.ig43Mounted)mountStudy();},1800);
+      root.setTimeout(function(){if(!root.IGTallerR43Advanced&&!app.dataset.ig43Mounted){root.__ig42WorkshopLoading=false;mountStudy();}},1800);
       return;
     }
     IGT.mount();
