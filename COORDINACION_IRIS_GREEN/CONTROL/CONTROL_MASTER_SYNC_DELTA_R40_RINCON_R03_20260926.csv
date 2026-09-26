@@ -1,9 +1,16 @@
 ID;Campo;Valor;Fecha;Fuente
-R40-RINCON-R03;Estado;R40_RINCON_R03_ORDERED_BUILD_REQUIRED;2026-09-26;#269
+R40-RINCON-R03;Estado;R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2;2026-09-26;#269/#270
 R40-RINCON-R03;Responsable_construccion;Agente 7;2026-09-26;#269
-R40-RINCON-R03;Responsable_integracion_subida;Agente 2;2026-09-26;#265/#269
-R40-RINCON-R03;Sonidos_generales_a_rehacer;12;2026-09-26;#269
-R40-RINCON-R03;Ambientes_escena_a_rehacer;9;2026-09-26;#269
-R40-RINCON-R03;Navegacion_superior;Videos|Sonidos|Bola de relajacion;2026-09-26;#269
-R40-RINCON-R03;Aceptacion;Preview web + escucha humana + revision visual humana;2026-09-26;#269
-R40-RINCON-R03;Sustituye;#268;2026-09-26;#269
+R40-RINCON-R03;Responsable_integracion_subida;Agente 2;2026-09-26;#269
+R40-RINCON-R03;Base_A2;bba503efb24aa15bacfbf1c0d47986420705d3bf;2026-09-26;PR244/#269
+R40-RINCON-R03;HEAD_A7;ad08841ba563ddda38a3d1dac7ee70421faaf88b;2026-09-26;PR270
+R40-RINCON-R03;Tree_A7;bd75fd67e598aa8b7fb40b400e3d93821b99c2e5;2026-09-26;PR270
+R40-RINCON-R03;PR_A7;270 draft mergeable;2026-09-26;#270
+R40-RINCON-R03;Sonidos_generales_rehechos;12;2026-09-26;#269
+R40-RINCON-R03;Ambientes_escena_rehechos;9;2026-09-26;#269
+R40-RINCON-R03;Escenas_visuales;9 incluida Pulpos;2026-09-26;#269
+R40-RINCON-R03;Navegacion_superior;Videos|Sonidos|Bola de relajacion - una region activa;2026-09-26;#269
+R40-RINCON-R03;Grabaciones_HOLD_runtime;0;2026-09-26;PR270
+R40-RINCON-R03;Precheck_GitHub;94/94 PASS;2026-09-26;PR270
+R40-RINCON-R03;Aceptacion;PENDIENTE A2 preview + escucha humana + revision visual humana;2026-09-26;#269
+R40-RINCON-R03;Siguiente_gate;A2 integra y sube sobre HEAD vigente;2026-09-26;#269

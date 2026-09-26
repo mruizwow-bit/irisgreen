@@ -138,21 +138,30 @@ Integrados ES/EN en PR244, commit d52584344240deb352f712debd19e9e7ae76bdd2. Buil
 ## WEB-A2 R22 · Accesibilidad y usabilidad
 Orden directa de María: auditoría de toda la web y cambios; acceso superior a secciones y funciones; corregir bloqueos y saltos de Intereses. PUBLICADO en preview PR244: cf96e31b, deploy 6ab579b8d1bccb0008720139 READY/SUCCESS. Auditoría automática y verificaciones de interacción documentadas, pendientes manuales conservados. Biblioteca cloud y Sabik excluidos. Registro: MEMORIA/WEB_A2_ACCESIBILIDAD_USABILIDAD_R22_20260924.md.
 
-## R40 · Rincón tranquilo R03 · decisión vigente 26/09/2026
+## R40 · Rincón tranquilo R03 · construcción A7 entregada 26/09/2026
 
-**Estado: `R40_RINCON_R03_ORDERED_BUILD_REQUIRED`.**
+**Estado: `R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2`.**
 
-La versión audiovisual integrada anterior no está aceptada por María. #268 queda sustituida por #269.
+Agente 7 ha terminado la reconstrucción sobre la base A2 exacta `bba503efb24aa15bacfbf1c0d47986420705d3bf`.
 
-Cambios obligatorios:
-- rehacer la biblioteca de 12 sonidos generales, priorizando identidad sonora y relajación real;
-- rehacer/mejorar los 9 ambientes de escena;
-- modernizar escenas visuales que resulten arcaicas;
-- reemplazar el patrón de pestañas que alarga la página por un selector superior único **Vídeos / Sonidos / Bola de relajación** con una sola región activa arriba;
-- mantener nada de autoplay, controles explícitos, reduced motion, ES/EN y accesibilidad;
-- A7 construye; A2 integra/sube; la aceptación se realiza viendo y escuchando la preview web.
+Entrega:
+- rama `agent7/r40-rincon-r03-20260926`;
+- HEAD `ad08841ba563ddda38a3d1dac7ee70421faaf88b`;
+- tree `bd75fd67e598aa8b7fb40b400e3d93821b99c2e5`;
+- draft PR #270 contra la rama A2;
+- 12 sonidos generales first-party rehechos;
+- 9 ambientes de escena first-party;
+- 9 escenas, incluida Pulpos;
+- selector superior único **Vídeos / Sonidos / Bola de relajación** con una sola región activa;
+- ES/EN, controles explícitos, crossfade, reduced motion, forced-colors y fallback;
+- grabaciones históricas HOLD fuera del runtime R03.
+
+Revisión A7 del código directamente en GitHub: **94/94 comprobaciones estructurales PASS**. Durante esa revisión se corrigieron carga simultánea de controladores anteriores, movimiento prematuro del poster Pulpos, clave Pulpos duplicada y runtime oculto de audios HOLD.
+
+Esto **no es aceptación perceptiva**. Siguiente gate: A2 revisa/integrará el delta en su HEAD vigente, publica Deploy Preview y se realiza escucha y revisión visual humana.
 
 Orden: [R40_RINCON_R03](ORDENES/R40_RINCON_R03/README.md).  
 Normativa: [Addendum R03 audio/UX](NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md).  
-Memoria: [Decisión R03](MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md).  
+Memoria de entrega: [R40_RINCON_R03_ENTREGA_A7_20260926](MEMORIA/R40_RINCON_R03_ENTREGA_A7_20260926.md).  
+Evidencia: [R40_RINCON_R03_A7](EVIDENCIAS/R40_RINCON_R03_A7/README.md).  
 Control: [Delta R03](CONTROL/DELTA_R40_RINCON_R03_20260926.json).

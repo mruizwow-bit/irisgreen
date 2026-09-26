@@ -2,7 +2,7 @@
   "schema": "iris-green-control-delta-v1",
   "id": "R40-RINCON-R03",
   "date": "2026-09-26",
-  "status": "R40_RINCON_R03_ORDERED_BUILD_REQUIRED",
+  "status": "R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2",
   "supersedes": [
     "R40-RINCON-R02",
     "#268"
@@ -43,5 +43,41 @@
   ],
   "canonical_order": "COORDINACION_IRIS_GREEN/ORDENES/R40_RINCON_R03/",
   "normative_addendum": "COORDINACION_IRIS_GREEN/NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md",
-  "memory_addendum": "COORDINACION_IRIS_GREEN/MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md"
+  "memory_addendum": "COORDINACION_IRIS_GREEN/MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md",
+  "builder_delivery": {
+    "branch": "agent7/r40-rincon-r03-20260926",
+    "base_sha": "bba503efb24aa15bacfbf1c0d47986420705d3bf",
+    "head_sha": "ad08841ba563ddda38a3d1dac7ee70421faaf88b",
+    "tree_sha": "bd75fd67e598aa8b7fb40b400e3d93821b99c2e5",
+    "pull_request": 270,
+    "pull_request_state": "draft_mergeable",
+    "changed_files": 11,
+    "github_precheck": "94/94 PASS",
+    "product_gate": "BUILD_READY_FOR_A2"
+  },
+  "completed_build": {
+    "general_sound_catalog": 12,
+    "scene_ambiences": 9,
+    "visual_scenes": 9,
+    "top_selector": [
+      "Vídeos",
+      "Sonidos",
+      "Bola de relajación"
+    ],
+    "active_workspace": "single_top_region",
+    "historical_hold_audio_runtime": false,
+    "octopus_scene": true,
+    "es_en": true,
+    "reduced_motion": true,
+    "forced_colors": true,
+    "explicit_start": true
+  },
+  "review_findings_closed": [
+    "superseded R40 controllers loaded simultaneously",
+    "octopus poster moved before explicit start",
+    "duplicate octopus translation key",
+    "hidden historical HOLD audio runtime/fetch"
+  ],
+  "next_gate": "A2 integra sobre HEAD vigente, publica Deploy Preview y ejecuta QA live; aceptación exige escucha/revisión visual humana.",
+  "acceptance": "PENDING_A2_INTEGRATION_AND_HUMAN_LISTENING_VISUAL_REVIEW"
 }

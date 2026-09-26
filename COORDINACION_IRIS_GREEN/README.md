@@ -49,3 +49,8 @@ Antes de trabajar en Rincón tranquilo, leer:
 - `CONTROL/DELTA_R40_RINCON_R03_20260926.json`.
 
 #269 es la orden vigente y sustituye #268. A7 construye y A2 es la única puerta de integración/subida. La aceptación es en la web, con revisión auditiva y visual humana.
+
+
+## R40 Rincón R03 · entrega A7 · 26/09/2026
+
+Construcción A7 terminada y lista para integración A2: `R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2`. Ver [memoria](MEMORIA/R40_RINCON_R03_ENTREGA_A7_20260926.md), [evidencia](EVIDENCIAS/R40_RINCON_R03_A7/README.md) y [control](CONTROL/DELTA_R40_RINCON_R03_20260926.json). La aceptación perceptiva permanece pendiente de preview web.

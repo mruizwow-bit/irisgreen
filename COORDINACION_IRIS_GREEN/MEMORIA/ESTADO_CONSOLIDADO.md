@@ -64,10 +64,14 @@ Separar orden emitida, recibida, construcción, código entregado, integración,
 
 ## Addendum 26/09/2026 · R40 Rincón R03
 
-Estado vigente: **`R40_RINCON_R03_ORDERED_BUILD_REQUIRED`**.
+Estado vigente: **`R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2`**.
 
-María rechaza como aceptación final el audio/UX actual del Rincón. Se ordena reconstrucción de los 12 sonidos generales, los 9 ambientes de escena y la navegación principal. La herramienta activa debe permanecer arriba mediante selector único Vídeos / Sonidos / Bola de relajación; no se acepta el patrón que expande la hoja hacia abajo.
+A7 termina la reconstrucción exigida por #269 sobre la base A2 `bba503efb24aa15bacfbf1c0d47986420705d3bf` y entrega `agent7/r40-rincon-r03-20260926@ad08841ba563ddda38a3d1dac7ee70421faaf88b` (tree `bd75fd67e598aa8b7fb40b400e3d93821b99c2e5`, draft PR #270).
 
-A7 construye. A2 integra y es la única puerta a la web. La aceptación requiere escucha y revisión visual humana sobre la preview integrada.
+El delta contiene 12 sonidos generales sintetizados first-party, 9 ambientes de escena, 9 escenas incluida Pulpos, selector superior Vídeos / Sonidos / Bola de relajación, una sola región activa, ES/EN, controles explícitos, crossfade, reduced motion, forced-colors y fallback. Las grabaciones históricas HOLD quedan fuera del runtime R03.
 
-Registro completo: `R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`. Normativa aplicable: `../NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md`.
+A7 revisó la entrega directamente en GitHub y cerró cuatro defectos detectados durante esa revisión. Precheck estructural final: 94/94 comprobaciones PASS.
+
+No se declara aceptación auditiva/visual. A2 sigue siendo la única puerta a la web y debe integrar/subir; después se exige escucha y revisión visual humana en Deploy Preview.
+
+Registro de decisión: `R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`. Entrega A7: `R40_RINCON_R03_ENTREGA_A7_20260926.md`. Normativa: `../NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md`.

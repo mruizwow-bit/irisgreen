@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-r40-a7-evidence-v1",
+  "id": "R40-RINCON-R03-A7",
+  "date": "2026-09-26",
+  "state": "R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2",
+  "base_sha": "bba503efb24aa15bacfbf1c0d47986420705d3bf",
+  "branch": "agent7/r40-rincon-r03-20260926",
+  "head_sha": "ad08841ba563ddda38a3d1dac7ee70421faaf88b",
+  "tree_sha": "bd75fd67e598aa8b7fb40b400e3d93821b99c2e5",
+  "pull_request": 270,
+  "github_precheck": {
+    "total": 94,
+    "pass": 94,
+    "fail": 0
+  },
+  "sound_catalog": {
+    "general": 12,
+    "scene_ambiences": 9,
+    "external_hold_runtime": 0
+  },
+  "visual_scenes": 9,
+  "modes": [
+    "videos",
+    "sounds",
+    "ball"
+  ],
+  "es_en": true,
+  "issues_closed_during_review": [
+    "superseded_controllers_loaded",
+    "octopus_preview_motion_before_explicit_start",
+    "duplicate_octopus_translation_key",
+    "hidden_hold_audio_runtime_and_fetch"
+  ],
+  "perceptual_acceptance": "PENDING_A2_PREVIEW_HUMAN_LISTENING_VISUAL_REVIEW",
+  "deploy_by_a7": false,
+  "merge_main_by_a7": false
+}
