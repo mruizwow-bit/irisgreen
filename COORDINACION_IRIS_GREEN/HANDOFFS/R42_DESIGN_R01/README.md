@@ -58,6 +58,27 @@ Esos gates corresponden a la CI/integración A2 y a la preview real.
 
 El paquete contiene `docs/r42-design-materials/R42_NORMATIVA_EMBEBIDA_LEIDA.md`, fechado antes de escribir código. Coordinación registra ese marcador como evidencia recibida; no se afirma que Design pudiera publicarlo directamente en GitHub.
 
-## Estado
+## Precheck posterior
 
-`R42_DESIGN_PACKAGE_RECEIVED_PRECHECK_PASS_A2_INTEGRATION_REQUIRED`
+La arquitectura del paquete se conserva, pero se detectaron tres correcciones antes de A2:
+1. reconciliar contra los canónicos operativos actuales;
+2. impedir dialog/inspector/sheets blancos en el Rincón mediante dark/opaco o dark-material;
+3. corregir el medidor para calcular fondo efectivo real por ancestros + composición alfa.
+
+Ajustes menores:
+- margen del texto deshabilitado hacia 4,8–5:1;
+- reflejar cuando Más contraste impone opacidad sobre la preferencia de Transparencia.
+
+Las 48 capturas locales se consideran validación estructural/material; la preview A2 sigue siendo la validación visual real.
+
+Orden versionada:
+`COORDINACION_IRIS_GREEN/ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHECK_20260926.md`
+
+Addendum:
+`COORDINACION_IRIS_GREEN/NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md`
+
+## Estado vigente
+
+`R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED`
+
+A2 mantiene HOLD específico de #301 hasta reentrega y revisión Astra.
