@@ -293,7 +293,8 @@
     .ig-r42-project-status {
       margin-left:auto;
     }
-    .ig-r42-body {
+    .ig-r42-body,
+    .ig-r42-shell[data-inspector="closed"] .ig-r42-body {
       grid-template-columns:minmax(0,1fr);
       grid-template-rows:minmax(0,1fr) auto;
     }
