@@ -36,8 +36,8 @@ jobs:
           test -n "$CHROME"
           mkdir -p docs/r40-a7-build/r04-evidence/screenshots
           for mode in videos sounds ball; do
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=1440,900 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/\${mode}-1440x900.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=\${mode}"
-            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=390,844 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/\${mode}-390x844.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=\${mode}"
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=1440,900 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/${mode}-1440x900.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}"
+            "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=1800 --window-size=390,844 --screenshot="docs/r40-a7-build/r04-evidence/screenshots/${mode}-390x844.png" "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}"
           done
       - name: Hash evidence
         run: |
@@ -45,6 +45,9 @@ jobs:
           sha256sum audio/rincon/r04/*.m4a audio/rincon/r04/AUDIO_MANIFEST.json docs/r40-a7-build/r04-evidence/screenshots/*.png > docs/r40-a7-build/r04-evidence/SHA256SUMS.txt
           echo "R40_RINCON_R04_GENERATED_EVIDENCE" > docs/r40-a7-build/r04-evidence/WORKFLOW_RESULTS.txt
           node tools/test-r40-rincon-r04.js >> docs/r40-a7-build/r04-evidence/WORKFLOW_RESULTS.txt
+          echo "python=$(python --version 2>&1)" >> docs/r40-a7-build/r04-evidence/WORKFLOW_RESULTS.txt
+          echo "node=$(node --version)" >> docs/r40-a7-build/r04-evidence/WORKFLOW_RESULTS.txt
+          echo "ffmpeg=$(ffmpeg -version | head -1)" >> docs/r40-a7-build/r04-evidence/WORKFLOW_RESULTS.txt
       - name: Commit generated assets
         run: |
           git config user.name "irisgreen-r40-bot"

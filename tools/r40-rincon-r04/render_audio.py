@@ -109,5 +109,5 @@ def encode(sprite,names,source):
  subprocess.run(['ffmpeg','-y','-hide_banner','-loglevel','error','-i',str(wav),'-c:a','aac','-b:a','48k','-ar',str(SR),'-ac','1','-movflags','+faststart',str(m4a)],check=True);wav.unlink()
  manifest['sprites'][sprite]={'path':str(m4a.relative_to(ROOT)).replace('\\\\','/'),'sha256':hashlib.sha256(m4a.read_bytes()).hexdigest(),'bytes':m4a.stat().st_size,'duration_seconds':off}
 encode('general-nature',SETS['general-nature'],GENERAL);encode('general-calm',SETS['general-calm'],GENERAL);encode('scenes',SETS['scenes'],SCENES)
-(OUT/'AUDIO_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8')
+(OUT/'AUDIO_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'sprites':manifest['sprites'],'items':len(manifest['items'])},ensure_ascii=False))
