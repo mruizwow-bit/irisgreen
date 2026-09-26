@@ -1,0 +1,237 @@
+{
+  "count": 29,
+  "holds": [
+    {
+      "id": "interest-03",
+      "title_es": "Exoplanetas",
+      "title_en": "Exoplanets",
+      "source": "NASA Exoplanet Archive",
+      "cause": "Archivo público con requisitos de reconocimiento y referencias por dataset; no se halló una licencia única de redistribución para todo el agregado",
+      "notes": "Puede usarse para consulta/citación; antes de republicar un catálogo derivado debe fijarse tabla, DOI y condiciones de sus fuentes."
+    },
+    {
+      "id": "interest-04",
+      "title_es": "Eclipses",
+      "title_en": "Eclipses",
+      "source": "Cálculo propio con efemérides",
+      "cause": "Falta fijar proveedor/versión/licencia de efemérides",
+      "notes": "No presentar resultados astronómicos actuales como reales sin fuente temporal congelada."
+    },
+    {
+      "id": "interest-05",
+      "title_es": "Lluvias de estrellas y meteoritos",
+      "title_en": "Meteor showers and meteorites",
+      "source": "Calendario IMO; Meteoritical Bulletin (a confirmar)",
+      "cause": "No hay licencia abierta conjunta demostrada",
+      "notes": "IMO declara copyright sobre estructura/textos/gráficos; MBDB es fuente autoritativa pero no se localizó permiso abierto de redistribución."
+    },
+    {
+      "id": "interest-07",
+      "title_es": "Satélites y Estación Espacial",
+      "title_en": "Satellites and the International Space Station",
+      "source": "Órbitas públicas de CelesTrak (a confirmar)",
+      "cause": "Existe política de uso/frecuencia pero no se localizó una licencia explícita de redistribución del dataset",
+      "notes": "Puede consultarse con cache/rate limits; antes de republicar/empacar órbitas hay que aclarar derechos y fijar frescura."
+    },
+    {
+      "id": "interest-08",
+      "title_es": "Minerales y rocas",
+      "title_en": "Minerals and rocks",
+      "source": "Lista IMA (a confirmar) + cromos de la web",
+      "cause": "No se localizó licencia abierta explícita para la lista IMA/RRUFF usada y los cromos requieren auditoría de procedencia",
+      "notes": "No reutilizar fotos/espectros/arte sin licencia por ítem."
+    },
+    {
+      "id": "interest-13",
+      "title_es": "Océanos y mareas",
+      "title_en": "Oceans and tides",
+      "source": "Puertos del Estado (a confirmar)",
+      "cause": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+      "notes": "El acceso/descarga pública no prueba por sí sola una licencia de republicación; identificar dataset concreto y condiciones."
+    },
+    {
+      "id": "interest-16",
+      "title_es": "Banderas",
+      "title_en": "Flags",
+      "source": "Wikimedia Commons (a confirmar por bandera)",
+      "cause": "Licencia por archivo; debe verificarse en cada página de descripción",
+      "notes": "Registrar autor, licencia, URL y atribución por bandera; no basta con que esté en Commons."
+    },
+    {
+      "id": "interest-17",
+      "title_es": "Aves",
+      "title_en": "Birds",
+      "source": "GBIF; Xeno-canto (licencia por grabación, a confirmar)",
+      "cause": "GBIF varía por dataset y cada grabación Xeno-canto tiene licencia propia",
+      "notes": "Registrar XC ID, autor, licencia y cita por grabación; evitar NC si el uso final no está claramente dentro de sus límites."
+    },
+    {
+      "id": "interest-18",
+      "title_es": "Insectos y mariposas",
+      "title_en": "Insects and butterflies",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-19",
+      "title_es": "Plantas y flores",
+      "title_en": "Plants and flowers",
+      "source": "GBIF; Anthos (a confirmar)",
+      "cause": "GBIF varía por dataset; Anthos está publicado como CC BY-NC 4.0",
+      "notes": "No mezclar datos sin conservar licencia y atribución de cada origen."
+    },
+    {
+      "id": "interest-20",
+      "title_es": "Árboles",
+      "title_en": "Trees",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-21",
+      "title_es": "Setas",
+      "title_en": "Mushrooms",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-22",
+      "title_es": "Vida marina y peces",
+      "title_en": "Marine life and fish",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-23",
+      "title_es": "Mamíferos",
+      "title_en": "Mammals",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-24",
+      "title_es": "Reptiles y anfibios",
+      "title_en": "Reptiles and amphibians",
+      "source": "GBIF",
+      "cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga."
+    },
+    {
+      "id": "interest-25",
+      "title_es": "Perros",
+      "title_en": "Dogs",
+      "source": "Lista de razas de la FCI (a confirmar)",
+      "cause": "No se localizó permiso abierto de reutilización para estándares/listado",
+      "notes": "Se puede enlazar/citar como autoridad; no replicar textos, imágenes o estándares hasta aclarar derechos."
+    },
+    {
+      "id": "interest-26",
+      "title_es": "Gatos",
+      "title_en": "Cats",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-27",
+      "title_es": "Caballos",
+      "title_en": "Horses",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-31",
+      "title_es": "Barcos y faros",
+      "title_en": "Ships and lighthouses",
+      "source": "Puertos del Estado (a confirmar)",
+      "cause": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+      "notes": "El acceso/descarga pública no prueba por sí sola una licencia de republicación; identificar dataset concreto y condiciones."
+    },
+    {
+      "id": "interest-33",
+      "title_es": "Autobuses y tranvías",
+      "title_en": "Buses and trams",
+      "source": "Datos abiertos municipales (a confirmar)",
+      "cause": "Debe identificarse municipio, dataset, fecha y licencia por red",
+      "notes": "No existe una licencia municipal genérica aplicable a todas las ciudades."
+    },
+    {
+      "id": "interest-34",
+      "title_es": "Ascensores y escaleras mecánicas",
+      "title_en": "Lifts and escalators",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-36",
+      "title_es": "Señales y semáforos",
+      "title_en": "Road signs and traffic lights",
+      "source": "Catálogo oficial de la DGT (a confirmar)",
+      "cause": "La fuente exacta de catálogo/arte de señales y sus condiciones de reutilización no están congeladas",
+      "notes": "Datos.gob permite RISP para documentos sometidos a esas condiciones, pero no se identificó un dataset exacto de señales que cubra el uso previsto."
+    },
+    {
+      "id": "interest-41",
+      "title_es": "Internet",
+      "title_en": "The internet",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-51",
+      "title_es": "Etimología",
+      "title_en": "Etymology",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-52",
+      "title_es": "Lengua de signos, braille y Morse",
+      "title_en": "Sign language, Braille and Morse",
+      "source": "Creación propia; LSE (a confirmar)",
+      "cause": "La parte propia es utilizable; falta fuente/licencia autoritativa de LSE",
+      "notes": "No publicar repertorios de signos copiados de materiales sin licencia."
+    },
+    {
+      "id": "interest-58",
+      "title_es": "Monedas",
+      "title_en": "Coins",
+      "source": "Wikidata; cromos actuales",
+      "cause": "Wikidata CC0; procedencia/licencia de cada cromo actual no auditada en R40-A4",
+      "notes": "Los datos podrían separarse como READY; la experiencia actual que amplía cromos queda HOLD hasta inventario de assets."
+    },
+    {
+      "id": "interest-59",
+      "title_es": "Sellos",
+      "title_en": "Stamps",
+      "source": "Fuentes a confirmar",
+      "cause": "No hay procedencia/licencia verificable",
+      "notes": "No publicable como dato real hasta fijar fuente."
+    },
+    {
+      "id": "interest-61",
+      "title_es": "Música e instrumentos",
+      "title_en": "Music and instruments",
+      "source": "MusicBrainz (a confirmar)",
+      "cause": "Core data CC0; supplementary CC BY-NC-SA 3.0; no aporta grabaciones de instrumentos",
+      "notes": "La experiencia prevista requiere sonido: falta fuente/licencia de audio; metadata sola sí podría usar core CC0."
+    },
+    {
+      "id": "interest-70",
+      "title_es": "Química y elementos",
+      "title_en": "Chemistry and the elements",
+      "source": "PubChem (a confirmar)",
+      "cause": "Licencia definida por cada fuente contribuyente; no existe licencia única para todo PubChem",
+      "notes": "Seleccionar solo campos/orígenes con licencia explícita compatible y conservar source attribution."
+    }
+  ]
+}
