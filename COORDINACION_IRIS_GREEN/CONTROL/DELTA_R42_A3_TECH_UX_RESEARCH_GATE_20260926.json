@@ -1,0 +1,69 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-A3-TECH-UX-RESEARCH-GATE",
+  "date": "2026-09-26",
+  "status": "R42_A3_TECH_UX_RESEARCH_GATE_ACTIVE",
+  "trigger": "DIRECT_USER_REQUIREMENT_RESEARCH_BEFORE_GLOBAL_ROLLOUT",
+  "parent_issue": 283,
+  "agent_issue": 284,
+  "supersedes_global_rollout_from": [
+    260,
+    277
+  ],
+  "product_policy": {
+    "architecture": "canonical-pre-rendered-mpa-plus-progressive-enhancement",
+    "global_spa_rewrite": false,
+    "framework_rewrite_for_aesthetics": false,
+    "information_pages": "content-first",
+    "hubs": "find-explore-first",
+    "tools": "workspace-first",
+    "games": "play-first",
+    "interests": "explore-first",
+    "quiet_space": "stage-first"
+  },
+  "technology": {
+    "base": [
+      "css-cascade-layers",
+      "container-size-queries",
+      "grid-subgrid",
+      "dialog",
+      "inert",
+      "prefers-contrast",
+      "forced-colors",
+      "offscreen-canvas-workers",
+      "opfs-when-justified"
+    ],
+    "progressive": [
+      "popover-api",
+      "view-transitions",
+      "css-scope",
+      "css-anchor-positioning",
+      "file-system-access",
+      "webgpu"
+    ],
+    "restricted": {
+      "prefers-reduced-transparency": "enhancement-only-not-baseline",
+      "file-system-access": "fallback-required",
+      "webgpu": "fallback-required",
+      "css-anchor-positioning": "fallback-required",
+      "navigation-api": "no-global-spa-conversion"
+    }
+  },
+  "gate": [
+    "inventory-current-base",
+    "technology-benefit-support-fallback-risk-matrix",
+    "representative-es-en-pilot",
+    "accessibility-performance-mobile-qa",
+    "human-qa-maria",
+    "correct",
+    "global-propagation-only-after-acceptance"
+  ],
+  "performance_targets": {
+    "LCP_seconds": 2.5,
+    "INP_ms": 200,
+    "CLS": 0.1,
+    "percentile": 75
+  },
+  "deployment": "none",
+  "global_product_changes": "none-during-research-gate"
+}
