@@ -1,0 +1,134 @@
+{
+  "schema": "irisgreen-r40-rincon-r04-audio-sprite-v1",
+  "sample_rate": 24000,
+  "segment_seconds": 14.0,
+  "provenance": "SYNTHETIC_FIRST_PARTY_R40_R04",
+  "generator": "tools/r40-rincon-r04/render_audio.py",
+  "sprites": {
+    "general-nature": {
+      "path": "audio/rincon/r04/general-nature.m4a",
+      "sha256": "b2678dea90536a331755fc0291d955e7513f388341b3d390dd5daf884a7124e9",
+      "bytes": 679647,
+      "duration_seconds": 112.0
+    },
+    "general-calm": {
+      "path": "audio/rincon/r04/general-calm.m4a",
+      "sha256": "b0accd420f0344cdfa5cb2957e52e4fb39fc947a75da3dc6f481b7210fed3505",
+      "bytes": 299301,
+      "duration_seconds": 56.0
+    },
+    "scenes": {
+      "path": "audio/rincon/r04/scenes.m4a",
+      "sha256": "a3e9a7b9fc3c82f002b5699d613ebe68be881c08d3650d2f849065e4440d12da",
+      "bytes": 772104,
+      "duration_seconds": 126.0
+    }
+  },
+  "items": {
+    "general:lluvia": {
+      "sprite": "general-nature",
+      "offset": 0.0,
+      "duration": 14.0
+    },
+    "general:lluvia-ventana": {
+      "sprite": "general-nature",
+      "offset": 14.0,
+      "duration": 14.0
+    },
+    "general:olas": {
+      "sprite": "general-nature",
+      "offset": 28.0,
+      "duration": 14.0
+    },
+    "general:rio": {
+      "sprite": "general-nature",
+      "offset": 42.0,
+      "duration": 14.0
+    },
+    "general:viento": {
+      "sprite": "general-nature",
+      "offset": 56.0,
+      "duration": 14.0
+    },
+    "general:pajaros": {
+      "sprite": "general-nature",
+      "offset": 70.0,
+      "duration": 14.0
+    },
+    "general:grillos": {
+      "sprite": "general-nature",
+      "offset": 84.0,
+      "duration": 14.0
+    },
+    "general:fuego": {
+      "sprite": "general-nature",
+      "offset": 98.0,
+      "duration": 14.0
+    },
+    "general:ruido-rosa": {
+      "sprite": "general-calm",
+      "offset": 0.0,
+      "duration": 14.0
+    },
+    "general:ruido-marron": {
+      "sprite": "general-calm",
+      "offset": 14.0,
+      "duration": 14.0
+    },
+    "general:piano": {
+      "sprite": "general-calm",
+      "offset": 28.0,
+      "duration": 14.0
+    },
+    "general:cuencos": {
+      "sprite": "general-calm",
+      "offset": 42.0,
+      "duration": 14.0
+    },
+    "scene:mar": {
+      "sprite": "scenes",
+      "offset": 0.0,
+      "duration": 14.0
+    },
+    "scene:lluvia": {
+      "sprite": "scenes",
+      "offset": 14.0,
+      "duration": 14.0
+    },
+    "scene:rio": {
+      "sprite": "scenes",
+      "offset": 28.0,
+      "duration": 14.0
+    },
+    "scene:noche": {
+      "sprite": "scenes",
+      "offset": 42.0,
+      "duration": 14.0
+    },
+    "scene:acuario": {
+      "sprite": "scenes",
+      "offset": 56.0,
+      "duration": 14.0
+    },
+    "scene:tubo-burbujas": {
+      "sprite": "scenes",
+      "offset": 70.0,
+      "duration": 14.0
+    },
+    "scene:medusas": {
+      "sprite": "scenes",
+      "offset": 84.0,
+      "duration": 14.0
+    },
+    "scene:fibra": {
+      "sprite": "scenes",
+      "offset": 98.0,
+      "duration": 14.0
+    },
+    "scene:pulpos": {
+      "sprite": "scenes",
+      "offset": 112.0,
+      "duration": 14.0
+    }
+  }
+}
