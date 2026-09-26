@@ -210,6 +210,10 @@ function vistaFase(){
 
 /* ---------- pantallas ---------- */
 /* ---------- orientación por etapa de vida ---------- */
+function etapasOrdenadas(){
+ var by={};(D.etapas||[]).forEach(function(e){by[e.id]=e;});
+ return ['inf','ado','adu','todas'].map(function(id){return by[id];}).filter(Boolean);
+}
 function etapaAplica(j,id){
  var e=j.e||['todas'];
  if(!id)return true;
@@ -234,12 +238,12 @@ function etapaRail(){
  var u=U(),allOn=S.stageChosen&&!S.etapa;
  return '<div class="jg-stage-rail" aria-label="'+esc(u.eligeEtapa)+'">'+
   boton(u.verTodo,function(){S.stageChosen=true;S.etapa=null;S.cat='todos';S.q='';},allOn?'is-on':'','stage-all',' aria-pressed="'+allOn+'"')+
-  (D.etapas||[]).map(function(et){var on=S.stageChosen&&S.etapa===et.id;return boton(L(et.l),function(){S.stageChosen=true;S.etapa=et.id;S.cat='todos';S.q='';},on?'is-on':'','stage-'+et.id,' aria-pressed="'+on+'"');}).join('')+'</div>';
+  etapasOrdenadas().map(function(et){var on=S.stageChosen&&S.etapa===et.id;return boton(L(et.l),function(){S.stageChosen=true;S.etapa=et.id;S.cat='todos';S.q='';},on?'is-on':'','stage-'+et.id,' aria-pressed="'+on+'"');}).join('')+'</div>';
 }
 function etapaLanding(){
  var u=U();
  return '<section class="jg-stage-entry" aria-labelledby="jg-stage-title"><div class="jg-stage-head"><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-stage-title">'+esc(u.eligeEtapa)+'</h2><p>'+esc(u.etapaAyuda)+'</p></div>'+
-  '<div class="jg-stage-grid">'+(D.etapas||[]).map(etapaCard).join('')+'</div>'+
+  '<div class="jg-stage-grid">'+etapasOrdenadas().map(etapaCard).join('')+'</div>'+
   '<div class="jg-stage-all">'+boton(u.verTodo,function(){S.stageChosen=true;S.etapa=null;},'is-primary','stage-all')+'</div></section>';
 }
 
