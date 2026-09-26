@@ -162,6 +162,17 @@
 
   function createService(backend){
     backend=backend||new HybridBackend();
+    function platform(){ return root.IGTallerR42Platform||null; }
+    async function coordinated(name,fn){
+      var p=platform();
+      if(p&&typeof p.withLock==='function') return p.withLock(name,fn);
+      return fn();
+    }
+    function changed(type,detail){
+      var p=platform();
+      if(p&&typeof p.publish==='function') p.publish(type,detail||null);
+      try{ if(root.document) root.document.dispatchEvent(new CustomEvent('ig:r42-local-change',{detail:{type:type,detail:detail||null}})); }catch(e){}
+    }
     async function op(name,args){
       try{return await backend[name].apply(backend,args||[]);}
       catch(e){if(e&&(e.name==='QuotaExceededError'||e.code===22||e.code===1014))fail('STORAGE_QUOTA');throw e;}
@@ -169,9 +180,9 @@
     async function caps(){ var b=await backend.ready(); return {persistent:!!b.persistent,reason:b.reason||null}; }
     async function listCollection(){ return (await op('getAll',['collection'])).map(function(x){return {namespace:x.namespace,id:x.id};}); }
     async function hasCollection(ref){ ref=normalizeRef(ref); return !!(await op('get',['collection',refKey(ref)])); }
-    async function addCollection(ref){ ref=normalizeRef(ref); await op('put',['collection',{key:refKey(ref),namespace:ref.namespace,id:ref.id}]); return ref; }
-    async function removeCollection(ref){ ref=normalizeRef(ref); await op('del',['collection',refKey(ref)]); }
-    async function clearCollection(){ await op('clear',['collection']); }
+    async function addCollection(ref){ ref=normalizeRef(ref); await op('put',['collection',{key:refKey(ref),namespace:ref.namespace,id:ref.id}]); changed('collection:add',ref); return ref; }
+    async function removeCollection(ref){ ref=normalizeRef(ref); await op('del',['collection',refKey(ref)]); changed('collection:remove',ref); }
+    async function clearCollection(){ await op('clear',['collection']); changed('collection:clear'); }
     async function isProgressEnabled(){ var v=await op('get',['meta','progress-enabled']); return !!(v&&v.value===true); }
     async function setProgressEnabled(enabled){ await op('put',['meta',{key:'progress-enabled',value:!!enabled}]); return !!enabled; }
     async function loadProgress(){ return (await op('getAll',['progress'])).map(function(x){return {target:x.target,markers:x.markers||[]};}); }
@@ -180,9 +191,9 @@
       if(!plain(entry)||!Array.isArray(entry.markers)) fail('PROGRESS_INVALID');
       var target=normalizeRef(entry.target), markers=Array.from(new Set(entry.markers.map(String))).slice(0,128);
       markers.forEach(function(x){if(!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(x)) fail('PROGRESS_INVALID');});
-      await op('put',['progress',{key:refKey(target),target:target,markers:markers}]); return {saved:true};
+      await op('put',['progress',{key:refKey(target),target:target,markers:markers}]); changed('progress:save',{target:target}); return {saved:true};
     }
-    async function clearProgress(){ await op('clear',['progress']); }
+    async function clearProgress(){ await op('clear',['progress']); changed('progress:clear'); }
     async function listProjects(type){
       var all=(await op('getAll',['projects'])).map(normalizeProject);
       if(type) all=all.filter(function(p){return p.project_type===canonicalType(type);});
@@ -191,17 +202,25 @@
     }
     async function getProject(id){ var p=await op('get',['projects',id]); return p?normalizeProject(p):null; }
     async function saveProject(project,expectedRevision){
-      var p=normalizeProject(project), existing=await op('get',['projects',p.project_id]);
-      if(existing){
-        existing=normalizeProject(existing);
-        if(expectedRevision===undefined||Number(expectedRevision)!==existing.revision) fail('PROJECT_REVISION_CONFLICT');
-        p.revision=existing.revision+1;
-      } else p.revision=1;
-      await op('put',['projects',p]); return clone(p);
+      var candidate=normalizeProject(project);
+      return coordinated('project-'+candidate.project_id,async function(){
+        var p=normalizeProject(candidate), existing=await op('get',['projects',p.project_id]);
+        if(existing){
+          existing=normalizeProject(existing);
+          if(expectedRevision===undefined||Number(expectedRevision)!==existing.revision) fail('PROJECT_REVISION_CONFLICT');
+          p.revision=existing.revision+1;
+        } else p.revision=1;
+        await op('put',['projects',p]);
+        changed('project:save',{project_id:p.project_id,project_type:p.project_type,revision:p.revision});
+        return clone(p);
+      });
     }
-    async function deleteProject(id){ await op('del',['projects',String(id)]); }
-    async function clearProjects(){ await op('clear',['projects']); }
-    async function clearAllR40Data(){ await op('clearAll',[]); }
+    async function deleteProject(id){
+      id=String(id);
+      return coordinated('project-'+id,async function(){await op('del',['projects',id]);changed('project:delete',{project_id:id});});
+    }
+    async function clearProjects(){ return coordinated('projects-clear',async function(){await op('clear',['projects']);changed('projects:clear');}); }
+    async function clearAllR40Data(){ return coordinated('all-clear',async function(){await op('clearAll',[]);changed('all:clear');}); }
     async function exportProject(id){
       var p=await getProject(id); if(!p) fail('PROJECT_NOT_FOUND');
       return {filename:'iris-green-'+p.project_type+'-'+p.project_id.slice(-12)+'.json',
