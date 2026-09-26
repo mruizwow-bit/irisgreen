@@ -33,6 +33,11 @@ def assert_page(text: str, lang: str, nav_id: str) -> None:
     assert '/assets/iris-r40.js' in text
     assert f'id="{nav_id}"' in text
     assert text.count('data-ig-r40-nav') == 1
+    assert 'class="nav ig-r40-nav"' in text or 'class="ig-uh-nav nav ig-r40-nav"' in text
+    assert 'data-route="inicio"' in text
+    assert 'data-iris-top="workshop"' in text
+    assert 'data-iris-top="interests"' in text
+    assert 'class="quiet-link"' in text
     for label in expected:
         assert label in text, (lang, label)
     assert "Old" not in text
