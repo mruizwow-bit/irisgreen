@@ -268,3 +268,29 @@ Fuente exacta: `NORMATIVA/BLOQUE_OBLIGATORIO_EMBEBIDO_R42_20260926.txt`.
 Addendum: `NORMATIVA/ADDENDUM_R42_ORDEN_CON_NORMATIVA_EMBEBIDA_20260926.md`.
 Memoria: `MEMORIA/R42_NORMATIVA_EMBEBIDA_20260926.md`.
 Control: `CONTROL/DELTA_R42_NORMATIVA_EMBEBIDA_20260926.json`.
+
+
+## R42 · Agente 1 · Recursos/Juegos/Rutinas · 26/09/2026
+
+**Estado: `R42_A1_RESOURCES_GAMES_ROUTINES_READY_FOR_A2`.**
+
+Agente 1 ha completado #286 después de publicar `R42_NORMATIVA_EMBEBIDA_LEIDA`.
+
+Entrega técnica:
+- branch `agent1/r42-resources-games-routines-ready`;
+- HEAD `c88ede84d8f4f88e3a93390d7502e226ba5f4e0d`;
+- tree `c8806e6a62ead7c8fa869a2793768d8d7a388f7d`;
+- base freeze A2 `52e5f9f02184581a1bfb1878c388ede3d1068c47`;
+- 297 juegos: 252 públicos preservados + 45 nuevos;
+- experiencia play-first con 9 contextos y filtros etapa/contexto/tipo/habilidad/duración;
+- 109 rutinas preservadas, todas con descarga SVG A4, watermark y atribución;
+- manifest R42 de juegos y de rutinas;
+- no ARASAAC;
+- ES/EN completo en el alcance.
+
+Workflow independiente `36241371415`, job `108402384115`: **SUCCESS**.
+
+No es aceptación final: A2 debe integrar/subir una preview única y quedan HUMAN QA de María, móvil/lector de pantalla/zoom/impresión y reconciliación del pin exacto de licencia Mulberry.
+
+Memoria: `MEMORIA/R42_A1_RESOURCES_GAMES_ROUTINES_20260926.md`.  
+Control: `CONTROL/DELTA_R42_A1_RESOURCES_GAMES_ROUTINES_20260926.json`.

@@ -1,0 +1,79 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-A1-RESOURCES-GAMES-ROUTINES",
+  "date": "2026-09-26",
+  "status": "R42_A1_RESOURCES_GAMES_ROUTINES_READY_FOR_A2",
+  "parent_issue": 283,
+  "agent_issue": 286,
+  "mandatory_ack": "R42_NORMATIVA_EMBEBIDA_LEIDA",
+  "base": {
+    "ref": "freeze/r40-a2-web-baseline-20260926",
+    "head": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+    "tree": "a341d2053fee62d3f7cd3522c74618b1a090a0dc"
+  },
+  "handoff": {
+    "branch": "agent1/r42-resources-games-routines-ready",
+    "head": "c88ede84d8f4f88e3a93390d7502e226ba5f4e0d",
+    "tree": "c8806e6a62ead7c8fa869a2793768d8d7a388f7d",
+    "commits_over_base": 1,
+    "changed_files": 19
+  },
+  "games": {
+    "preserved_public": 252,
+    "new": 45,
+    "total": 297,
+    "contexts": 9,
+    "types": 5,
+    "retired_legacy_130_used_as_source": false,
+    "filters": [
+      "stage",
+      "context",
+      "type",
+      "skill_need",
+      "duration"
+    ],
+    "experience": "play-first",
+    "drag_only_method": false
+  },
+  "routines": {
+    "historical_minimum": 92,
+    "current_valid": 109,
+    "downloads_svg_a4": 109,
+    "watermark": "IRIS GREEN · irisgreen.eu",
+    "editorial_source_ids_recorded": 79,
+    "editorial_source_ids_missing_legacy": 30
+  },
+  "pictograms": {
+    "central_manifest": "assets/pictogramas/MANIFIESTO_PICTOGRAMAS.csv",
+    "source_primary": "Mulberry Symbols",
+    "declared_license": "CC BY-SA 4.0",
+    "exact_license_pin": "PENDING_PROJECT_RECONCILIATION_PER_R42_BRIEF",
+    "arasaac_used": false
+  },
+  "languages": [
+    "es",
+    "en"
+  ],
+  "qa": {
+    "workflow": "R42 A1 Resources Games Routines QA",
+    "run_id": 36241371415,
+    "job_id": 108402384115,
+    "conclusion": "SUCCESS",
+    "diff_check": "PASS",
+    "js_syntax": "PASS",
+    "contract_test": "PASS"
+  },
+  "manual_pending": [
+    "A2 integrated preview",
+    "Maria HUMAN QA",
+    "1440x900",
+    "390x844 physical/mobile review",
+    "native zoom/reflow",
+    "screen reader",
+    "physical print",
+    "Mulberry exact licence pin reconciliation"
+  ],
+  "deployment": "none_by_A1",
+  "main_modified": false,
+  "final_acceptance": false
+}
