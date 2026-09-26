@@ -20,6 +20,7 @@ jobs:
       - run: node tools/test-sabik-motion-r37.js
       - run: node scripts/taller_estudios/pruebas_node.js
       - run: node tools/test-r40-rincon-r03.js
+      - run: node tools/test-sabik-authorized-transport-r06.mjs
       - run: python scripts/build_site.py
       - run: python scripts/test_iris_brief_r08.py
       - run: python scripts/test_resources_current.py
