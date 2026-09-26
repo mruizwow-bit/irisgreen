@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-control-addendum-by-id-v1",
+  "date": "2026-09-26",
+  "author": "Agente 2",
+  "website_head": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+  "records": [
+    {
+      "ID": "WEB-A2-AUDITORIA-R24",
+      "Responsable": "María y agente 2",
+      "Estado_con_evidencia": "AUDITORIA_AUTOMATICA_CERRADA_20_DE_20_SUCCESS",
+      "Entregado_o_confirmado": "PR244 HEAD 52e5f9f; almacenamiento, CSP, publicación, coherencia, miniaturas y ciclo de foco corregidos; 20 workflows SUCCESS",
+      "Pendiente": "Solo validaciones humanas/físicas y carril separado Sabik R06",
+      "ES_EN": "Gates bilingües existentes preservados; SEO/idiomas y Recursos ES/EN SUCCESS",
+      "Limites": "No certificación WCAG/ISO/legal; no lector de pantalla real, móvil físico, escucha humana, validación usuarios, GPU física, PDF/UA ni braille"
+    }
+  ],
+  "evidence": {
+    "all_pr_workflows_green": true,
+    "workflows_total": 20,
+    "storage_run": 36224266458,
+    "csp_run": 36224266466,
+    "publication_run": 36224266439,
+    "keyboard_focus_run": 36224266464,
+    "focus_cycles_completed": "26/26",
+    "focus_stops": 2322,
+    "focus_candidates": 0,
+    "storage_errors": 0,
+    "dc_surfaces": 9,
+    "active_mustache_pages": 0
+  },
+  "application": {
+    "mode": "versioned_addendum",
+    "main_modified": false,
+    "production_modified": false,
+    "sabik_r06_closed": false
+  }
+}
