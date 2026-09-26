@@ -24,7 +24,9 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "ea8d309e77fd1ade0c1315e650cb85ec24d8e60c"
           test "$(git rev-parse HEAD^{tree})" = "31fa0e3ccc29ff58e4cce68440ba3c8b4a93655d"
-          test "$(git rev-parse HEAD^)" = "52e5f9f02184581a1bfb1878c388ede3d1068c47"
+          test "$(git rev-parse HEAD^)" = "1cbc9ee6f7b1316e2718ad1d5eb9f636d4a4773c"
+          git merge-base --is-ancestor 52e5f9f02184581a1bfb1878c388ede3d1068c47 HEAD
+          test "$(git rev-list --count 52e5f9f02184581a1bfb1878c388ede3d1068c47..HEAD)" = "2"
           git diff --check 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
           git diff --name-only 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
 
