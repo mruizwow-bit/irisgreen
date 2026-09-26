@@ -177,10 +177,11 @@
   }
 
   var title = String(titleSource.textContent || CONFIG.eyebrow).trim();
+  var inspectorStartsOpen = family === 'workshop';
   var shell = h('section', {
     class:'ig-r42-shell',
     'data-family':family,
-    'data-inspector':'open',
+    'data-inspector':inspectorStartsOpen ? 'open' : 'closed',
     'aria-label':T.shell
   });
   var topbar = h('header', { class:'ig-r42-topbar' });
@@ -202,7 +203,7 @@
   });
 
   var actionButton = h('button', { type:'button', class:'ig-r42-action', text:T.actions });
-  var panelButton = h('button', { type:'button', class:'ig-r42-action', text:T.panel, 'aria-expanded':'true' });
+  var panelButton = h('button', { type:'button', class:'ig-r42-action', text:T.panel, 'aria-expanded':String(inspectorStartsOpen) });
   var helpButton = h('button', { type:'button', class:'ig-r42-action', text:T.help });
   topActions.appendChild(actionButton);
   topActions.appendChild(panelButton);
@@ -217,7 +218,7 @@
   var rail = h('div', { class:'ig-r42-rail', role:'toolbar', 'aria-label':lang === 'en' ? 'Workspace tools' : 'Herramientas del espacio' });
   var workspace = h('div', { class:'ig-r42-workspace' });
   var stage = h('div', { class:'ig-r42-stage', tabindex:'-1' });
-  var inspector = h('aside', { class:'ig-r42-inspector', 'data-collapsed':'false', 'aria-labelledby':'ig-r42-inspector-title' });
+  var inspector = h('aside', { class:'ig-r42-inspector', 'data-collapsed':String(!inspectorStartsOpen), 'aria-labelledby':'ig-r42-inspector-title' });
   var inspectorClose = h('button', { type:'button', class:'ig-r42-icon-button', text:'×', 'aria-label':T.close });
   var inspectorHead = h('div', { class:'ig-r42-inspector-head' },
     h('h2', { id:'ig-r42-inspector-title', text:T.inspector }),
@@ -233,7 +234,7 @@
     h('span', { class:'ig-r42-glyph', 'aria-hidden':'true', text:'▣' }),
     h('span', { text:T.work })
   );
-  var inspectRail = h('button', { type:'button', 'aria-pressed':'false' },
+  var inspectRail = h('button', { type:'button', 'aria-pressed':String(inspectorStartsOpen) },
     h('span', { class:'ig-r42-glyph', 'aria-hidden':'true', text:'◫' }),
     h('span', { text:T.panel })
   );
