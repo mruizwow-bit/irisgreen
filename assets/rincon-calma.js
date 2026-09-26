@@ -92,7 +92,7 @@
   }
 
   /* --- Mezclar sonidos --- */
-  var SOUNDS = [
+  var SOUNDS = $('#r40StartAV') ? [] : [
     ['/audio/rincon/lluvia-en-tienda.mp3', 'Lluvia en una tienda', 'Rain on a tent', 'enternalrainsounds'],
     ['/audio/rincon/lluvia-en-ventana.mp3', 'Lluvia en la ventana', 'Rain on the window', 'Eryliaa'],
     ['/audio/rincon/lluvia-habitacion.m4a', 'Lluvia en una habitación', 'Rain in a room', 'CeleronBeats'],
