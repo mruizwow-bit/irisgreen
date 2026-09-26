@@ -137,3 +137,22 @@ Integrados ES/EN en PR244, commit d52584344240deb352f712debd19e9e7ae76bdd2. Buil
 
 ## WEB-A2 R22 · Accesibilidad y usabilidad
 Orden directa de María: auditoría de toda la web y cambios; acceso superior a secciones y funciones; corregir bloqueos y saltos de Intereses. PUBLICADO en preview PR244: cf96e31b, deploy 6ab579b8d1bccb0008720139 READY/SUCCESS. Auditoría automática y verificaciones de interacción documentadas, pendientes manuales conservados. Biblioteca cloud y Sabik excluidos. Registro: MEMORIA/WEB_A2_ACCESIBILIDAD_USABILIDAD_R22_20260924.md.
+
+## R40 · Rincón tranquilo R03 · decisión vigente 26/09/2026
+
+**Estado: `R40_RINCON_R03_ORDERED_BUILD_REQUIRED`.**
+
+La versión audiovisual integrada anterior no está aceptada por María. #268 queda sustituida por #269.
+
+Cambios obligatorios:
+- rehacer la biblioteca de 12 sonidos generales, priorizando identidad sonora y relajación real;
+- rehacer/mejorar los 9 ambientes de escena;
+- modernizar escenas visuales que resulten arcaicas;
+- reemplazar el patrón de pestañas que alarga la página por un selector superior único **Vídeos / Sonidos / Bola de relajación** con una sola región activa arriba;
+- mantener nada de autoplay, controles explícitos, reduced motion, ES/EN y accesibilidad;
+- A7 construye; A2 integra/sube; la aceptación se realiza viendo y escuchando la preview web.
+
+Orden: [R40_RINCON_R03](ORDENES/R40_RINCON_R03/README.md).  
+Normativa: [Addendum R03 audio/UX](NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md).  
+Memoria: [Decisión R03](MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md).  
+Control: [Delta R03](CONTROL/DELTA_R40_RINCON_R03_20260926.json).
