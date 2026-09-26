@@ -372,13 +372,26 @@ function renderSteps(){
       '<input class="ti-input" data-step="'+i+'" value="'+esc(text)+'" aria-label="'+esc(ti.stepLabel+' '+(i+1))+'"></li>';
   }).join('');
   list.querySelectorAll('[data-step]').forEach(function(input){
-    input.addEventListener('change',function(){
+    input.addEventListener('input',function(){
       var i=Number(input.dataset.step),pasos=values().pasos.slice();
       pasos[i]=input.value;
-      commit();
+      if(state.example)commit();
       state.pasos=pasos;
-      save();render();
+      state.copy=null;state.printed=false;state.notice='';
+      scheduleLivePreview();
     });
+    input.addEventListener('change',function(){save();});
+  });
+}
+
+var liveFrame=0;
+function scheduleLivePreview(){
+  if(liveFrame)return;
+  liveFrame=requestAnimationFrame(function(){
+    liveFrame=0;
+    save();
+    renderPreview();
+    renderStatus();
   });
 }
 
@@ -506,13 +519,16 @@ function init(){
   }
 
   KEYS.forEach(function(key){
-    $('#ti-'+key).addEventListener('change',function(e){
+    var field=$('#ti-'+key);
+    field.addEventListener('input',function(e){
       var value=e.target.value;
-      commit();
+      if(state.example)commit();
       state[key]=value;
       state.notice='';
-      save();render();
+      state.copy=null;state.printed=false;
+      scheduleLivePreview();
     });
+    field.addEventListener('change',function(){save();});
   });
 
   $('#ti-example-btn').addEventListener('click',function(){
