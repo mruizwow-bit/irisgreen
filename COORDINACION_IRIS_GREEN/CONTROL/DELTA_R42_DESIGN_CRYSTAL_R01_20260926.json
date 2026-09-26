@@ -2,7 +2,7 @@
   "schema": "iris-green-control-delta-v1",
   "id": "R42-DESIGN-CRYSTAL-R01",
   "date": "2026-09-26",
-  "status": "R42_DESIGN_CRYSTAL_SYSTEM_BUILD_ACTIVE",
+  "status": "R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED",
   "issue": 301,
   "observed_a2": {
     "branch": "agent2/sabik-iris-r08-20260924",
@@ -25,5 +25,24 @@
   ],
   "integration_owner": "A2",
   "final_acceptance": "HUMAN_QA_MARIA",
-  "full_normative_required": true
+  "full_normative_required": true,
+  "precheck": {
+    "package_sha256": "65ea0b67c0cc74da3e133bd12c8dc149ed4104f3895b5447a2b4021d40e2ad57",
+    "measurements": "30/30 PASS",
+    "changed_files_product_qa": 10,
+    "diff": "+1180/-22",
+    "a2_gate": "HOLD_DESIGN_301_ONLY"
+  },
+  "corrections_required": [
+    "Reconcile current canonical State/Memory/Control and applicable R42 addenda",
+    "Dark/opaque temporary chrome in Quiet Space dialogs/inspector/sheets",
+    "Effective-background contrast measurement through ancestor alpha composition"
+  ],
+  "minor_adjustments": [
+    "Disabled text target margin about 4.8-5:1",
+    "Communicate when More Contrast overrides Transparency appearance"
+  ],
+  "correction_order": "COORDINACION_IRIS_GREEN/ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHECK_20260926.md",
+  "acceptance_addendum": "COORDINACION_IRIS_GREEN/NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md",
+  "next_marker": "R42_DESIGN_R01_CORRECTIONS_APPLIED_READY_FOR_ASTRA_REVIEW"
 }
