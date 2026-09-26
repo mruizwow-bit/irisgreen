@@ -1,0 +1,47 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R40-RINCON-R03",
+  "date": "2026-09-26",
+  "status": "R40_RINCON_R03_ORDERED_BUILD_REQUIRED",
+  "supersedes": [
+    "R40-RINCON-R02",
+    "#268"
+  ],
+  "operative_issue": 269,
+  "parent_issue": 247,
+  "builder": "Agente 7",
+  "integrator": "Agente 2",
+  "web_gateway_rule": "Solo A2 integra y sube; la aceptación final se realiza en la preview web integrada.",
+  "required_build": {
+    "general_sound_catalog": 12,
+    "scene_ambiences": 9,
+    "visual_scenes": 9,
+    "top_selector": [
+      "Vídeos",
+      "Sonidos",
+      "Bola de relajación"
+    ],
+    "active_workspace": "single_top_region"
+  },
+  "rejected_current_behaviours": [
+    "sonidos de escenas con cama común de viento/ruido/pad",
+    "olas que no se perciben como oleaje real",
+    "sonidos generales poco relajantes",
+    "visuales arcaicos o esquemáticos",
+    "pestañas que expanden la página hacia abajo y desplazan la herramienta activa"
+  ],
+  "mandatory_constraints": [
+    "no autoplay",
+    "low-stimulation audio",
+    "no invented animal vocalizations",
+    "first-party/local or per-file licensed audio",
+    "explicit synthetic/recorded provenance",
+    "ES/EN equivalence",
+    "keyboard/touch/320px/zoom/reflow/forced-colors",
+    "reduced motion",
+    "human listening and visual review on deployed preview"
+  ],
+  "canonical_order": "COORDINACION_IRIS_GREEN/ORDENES/R40_RINCON_R03/",
+  "normative_addendum": "COORDINACION_IRIS_GREEN/NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md",
+  "memory_addendum": "COORDINACION_IRIS_GREEN/MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md"
+}
