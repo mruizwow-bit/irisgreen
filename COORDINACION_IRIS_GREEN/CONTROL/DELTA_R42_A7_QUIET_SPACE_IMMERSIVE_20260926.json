@@ -1,0 +1,27 @@
+{
+  "id": "R42-A7-QUIET-SPACE-IMMERSIVE",
+  "date": "2026-09-26",
+  "owner": "Agente 7",
+  "issue": 288,
+  "parent": 283,
+  "state": "R42_A7_QUIET_SPACE_IMMERSIVE_READY_FOR_A2",
+  "normative_ack": "R42_NORMATIVA_EMBEBIDA_LEIDA",
+  "source_base": "574356cba3b73dc8477a625d2c6311008260a2d6",
+  "branch": "agent7/r42-quiet-space-immersive-20260926",
+  "head": "5f804201fcd4fd7c165fa9c5e1f682f3098f75c2",
+  "tree": "2ec039620eac4f5728daa2fb26e3eaebf34840ed",
+  "pr": 291,
+  "technical_precheck": "R42_A7_STATIC_CONTRACT_PASS",
+  "scenes": {
+    "original_rebuilt": 9,
+    "added": [
+      "forest",
+      "dawn",
+      "clouds"
+    ],
+    "total": 12
+  },
+  "human_qa_required": true,
+  "deploy_by_agent7": false,
+  "next": "A2 integrate in R42 order, deploy preview, Maria/QA visual+audio human QA"
+}
