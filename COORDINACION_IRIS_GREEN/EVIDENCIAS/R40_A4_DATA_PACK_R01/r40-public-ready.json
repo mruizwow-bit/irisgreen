@@ -1,0 +1,4250 @@
+{
+  "schema": "IRIS_R40_A4_PUBLIC_READY",
+  "version": "1.0",
+  "generated_at": "2026-09-26",
+  "filter_rule": "Derivado mecánicamente de r40-data-pack.json: solo entidades READY y conexiones sin referencias a intereses HOLD. Field Notebook se excluye mientras su estado global sea HOLD.",
+  "interest_groups": [
+    {
+      "id": "interest-group-01",
+      "index": 1,
+      "title": {
+        "es": "El cielo y el espacio",
+        "en": "Sky and space"
+      },
+      "interest_ids": [
+        "interest-01",
+        "interest-02",
+        "interest-06"
+      ]
+    },
+    {
+      "id": "interest-group-02",
+      "index": 2,
+      "title": {
+        "es": "La Tierra",
+        "en": "Earth"
+      },
+      "interest_ids": [
+        "interest-09",
+        "interest-10",
+        "interest-11",
+        "interest-12",
+        "interest-14",
+        "interest-15"
+      ]
+    },
+    {
+      "id": "interest-group-04",
+      "index": 4,
+      "title": {
+        "es": "Transporte y máquinas",
+        "en": "Transport and machines"
+      },
+      "interest_ids": [
+        "interest-28",
+        "interest-29",
+        "interest-30",
+        "interest-32",
+        "interest-35"
+      ]
+    },
+    {
+      "id": "interest-group-05",
+      "index": 5,
+      "title": {
+        "es": "Tecnología",
+        "en": "Technology"
+      },
+      "interest_ids": [
+        "interest-37",
+        "interest-38",
+        "interest-39",
+        "interest-40",
+        "interest-42"
+      ]
+    },
+    {
+      "id": "interest-group-06",
+      "index": 6,
+      "title": {
+        "es": "Números, lógica y sistemas",
+        "en": "Numbers, logic and systems"
+      },
+      "interest_ids": [
+        "interest-43",
+        "interest-44",
+        "interest-45",
+        "interest-46",
+        "interest-47",
+        "interest-48"
+      ]
+    },
+    {
+      "id": "interest-group-07",
+      "index": 7,
+      "title": {
+        "es": "Lenguas y escritura",
+        "en": "Languages and writing"
+      },
+      "interest_ids": [
+        "interest-49",
+        "interest-50"
+      ]
+    },
+    {
+      "id": "interest-group-08",
+      "index": 8,
+      "title": {
+        "es": "Historia y cultura",
+        "en": "History and culture"
+      },
+      "interest_ids": [
+        "interest-53",
+        "interest-54",
+        "interest-55",
+        "interest-56",
+        "interest-57"
+      ]
+    },
+    {
+      "id": "interest-group-09",
+      "index": 9,
+      "title": {
+        "es": "Arte, música e imagen",
+        "en": "Art, music and image"
+      },
+      "interest_ids": [
+        "interest-60",
+        "interest-62",
+        "interest-63",
+        "interest-64"
+      ]
+    },
+    {
+      "id": "interest-group-10",
+      "index": 10,
+      "title": {
+        "es": "Mundos, juegos y colecciones",
+        "en": "Worlds, games and collections"
+      },
+      "interest_ids": [
+        "interest-65",
+        "interest-66",
+        "interest-67",
+        "interest-68"
+      ]
+    },
+    {
+      "id": "interest-group-11",
+      "index": 11,
+      "title": {
+        "es": "Vida diaria",
+        "en": "Everyday life"
+      },
+      "interest_ids": [
+        "interest-69",
+        "interest-71",
+        "interest-72"
+      ]
+    }
+  ],
+  "interests": [
+    {
+      "id": "interest-01",
+      "kind": "interest",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Cielo nocturno",
+        "en": "Night sky"
+      },
+      "objective": {
+        "es": "Todas las estrellas y constelaciones",
+        "en": "All the stars and constellations"
+      },
+      "experience": {
+        "es": "Planetario en directo (hecho)",
+        "en": "Live planetarium (done)"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las estrellas y constelaciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All the stars and constellations. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "HYG, IAU, d3-celestial",
+        "authority": "HYG + IAU + d3-celestial",
+        "license": "HYG v4.1 CC BY-SA 4.0; IAU web products CC BY 4.0; d3-celestial code BSD-3-Clause",
+        "evidence": "https://github.com/astronexus/HYG-Database/blob/main/LICENSE ; https://www.iau.org/IAU/Iau/Copyright.aspx ; https://github.com/ofrohn/d3-celestial/blob/master/LICENSE",
+        "notes": "Usar d3-celestial como software; no asumir que cada dataset tercero incluido por el proyecto hereda BSD.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-02",
+      "kind": "interest",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Planetas y sistema solar",
+        "en": "Planets and the solar system"
+      },
+      "objective": {
+        "es": "Tamaños, órbitas, lunas, dónde están hoy",
+        "en": "Sizes, orbits, moons, and where they are today"
+      },
+      "experience": {
+        "es": "Sistema solar a escala real que se recorre",
+        "en": "Walk-through solar system at real scale"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Tamaños, órbitas, lunas, dónde están hoy. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Sizes, orbits, moons, and where they are today. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Elementos del JPL; NASA (a confirmar)",
+        "authority": "NASA/JPL",
+        "license": "Uso de material JPL permitido salvo indicación contraria; crédito NASA/JPL-Caltech; datos/visualización propios",
+        "evidence": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+        "notes": "Excluir logos y cualquier contenido de tercero indicado en la ficha; preferir datos numéricos + render propio.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-06",
+      "kind": "interest",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Exploración espacial",
+        "en": "Space exploration"
+      },
+      "objective": {
+        "es": "Todas las misiones, cohetes y astronautas",
+        "en": "All missions, rockets and astronauts"
+      },
+      "experience": {
+        "es": "Línea del tiempo y cohetes a escala",
+        "en": "Timeline and rockets to scale"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las misiones, cohetes y astronautas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All missions, rockets and astronauts. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata (CC0)",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-09",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Fósiles y dinosaurios",
+        "en": "Fossils and dinosaurs"
+      },
+      "objective": {
+        "es": "Todas las especies, épocas, dónde se hallaron (también en España)",
+        "en": "All species, periods and where they were found (including Spain)"
+      },
+      "experience": {
+        "es": "Línea del tiempo geológica y mapa de yacimientos",
+        "en": "Geological timeline and map of fossil sites"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las especies, épocas, dónde se hallaron (también en España). Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All species, periods and where they were found (including Spain). When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Paleobiology Database",
+        "authority": "Paleobiology Database",
+        "license": "Tratar como CC BY 4.0 por el recurso PBDB registrado; conservar cita de registro/contribuidores",
+        "evidence": "https://ipt.vertnet.org/resource?r=pbdb_paleo",
+        "notes": "La documentación histórica/corriente no es totalmente uniforme; usar la licencia declarada por el dataset exacto ingerido.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-10",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Volcanes",
+        "en": "Volcanoes"
+      },
+      "objective": {
+        "es": "Todos los activos, erupciones históricas, Canarias",
+        "en": "All active volcanoes, historic eruptions and the Canary Islands"
+      },
+      "experience": {
+        "es": "Globo con volcanes y cortes de un volcán",
+        "en": "Globe with volcanoes and volcano cross-sections"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todos los activos, erupciones históricas, Canarias. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All active volcanoes, historic eruptions and the Canary Islands. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Smithsonian GVP (a confirmar)",
+        "authority": "Smithsonian Global Volcanism Program",
+        "license": "Base Volcanoes of the World: producto de empleados US; usar con cita; fotos/gráficos requieren revisión aparte",
+        "evidence": "https://volcano.si.edu/gvp_termsofuse.cfm",
+        "notes": "Fijar versión (v5.4.0, 7 Aug 2026 en la consulta actual); no asumir que las fotos son libres.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-11",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Terremotos",
+        "en": "Earthquakes"
+      },
+      "objective": {
+        "es": "Los de España desde 1370 y los del mundo hoy",
+        "en": "Earthquakes in Spain since 1370 and worldwide today"
+      },
+      "experience": {
+        "es": "Mapa con profundidad y magnitud",
+        "en": "Map with depth and magnitude"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Los de España desde 1370 y los del mundo hoy. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Earthquakes in Spain since 1370 and worldwide today. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Catálogo del IGN; USGS (a confirmar)",
+        "authority": "IGN España + USGS",
+        "license": "IGN: licencia compatible CC BY 4.0; USGS-authored data: U.S. Public Domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "notes": "Atribuir IGN/fecha y USGS; material gráfico de terceros se verifica por ítem.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-12",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Tiempo y nubes",
+        "en": "Weather and clouds"
+      },
+      "objective": {
+        "es": "Todos los tipos de nubes, fenómenos, récords",
+        "en": "All cloud types, phenomena and records"
+      },
+      "experience": {
+        "es": "Cielo con nubes realistas que se clasifican",
+        "en": "Sky with realistic clouds to classify"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todos los tipos de nubes, fenómenos, récords. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All cloud types, phenomena and records. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "AEMET OpenData (a confirmar)",
+        "authority": "AEMET OpenData",
+        "license": "RISP reutilización comercial/no comercial; conservar fuente, fecha y metadatos",
+        "evidence": "https://www.aemet.es/es/datos_abiertos",
+        "notes": "Datos meteorológicos/climatológicos; no implica licencia sobre material de terceros.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-14",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Montañas y ríos",
+        "en": "Mountains and rivers"
+      },
+      "objective": {
+        "es": "Alturas, recorridos, cuencas",
+        "en": "Heights, courses and basins"
+      },
+      "experience": {
+        "es": "Relieve en 3D de España",
+        "en": "3D relief map of Spain"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Alturas, recorridos, cuencas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Heights, courses and basins. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "IGN, Natural Earth",
+        "authority": "IGN España + Natural Earth",
+        "license": "IGN compatible CC BY 4.0; Natural Earth public domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.naturalearthdata.com/about/terms-of-use/",
+        "notes": "Atribuir IGN; Natural Earth no exige atribución aunque se recomienda.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-15",
+      "kind": "interest",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Mapas y geografía",
+        "en": "Maps and geography"
+      },
+      "objective": {
+        "es": "Países, capitales, fronteras, proyecciones",
+        "en": "Countries, capitals, borders and projections"
+      },
+      "experience": {
+        "es": "Globo terráqueo y proyecciones comparadas",
+        "en": "Globe and compared map projections"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Países, capitales, fronteras, proyecciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Countries, capitals, borders and projections. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Natural Earth",
+        "authority": "Natural Earth",
+        "license": "Public domain",
+        "evidence": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "notes": "Uso comercial y adaptación permitidos; revisar campos excepcionales señalados por el propio proyecto.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-28",
+      "kind": "interest",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Trenes",
+        "en": "Trains"
+      },
+      "objective": {
+        "es": "Todas las series, líneas, estaciones y horarios de España",
+        "en": "All train series, lines, stations and timetables in Spain"
+      },
+      "experience": {
+        "es": "Red ferroviaria con trenes en su horario real",
+        "en": "Rail network with trains on their real timetable"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las series, líneas, estaciones y horarios de España. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All train series, lines, stations and timetables in Spain. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Renfe Data (a confirmar); OpenStreetMap (ODbL)",
+        "authority": "Renfe Data + OpenStreetMap",
+        "license": "Renfe: reutilización comercial/no comercial bajo condiciones RISP; OSM ODbL 1.0",
+        "evidence": "https://data.renfe.com/legal ; https://www.openstreetmap.org/copyright",
+        "notes": "Citar 'Origen de los datos: Renfe Operadora', fecha de actualización, y atribución/licencia OSM.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-29",
+      "kind": "interest",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Metros del mundo",
+        "en": "Metro systems around the world"
+      },
+      "objective": {
+        "es": "Todas las redes, líneas y estaciones",
+        "en": "All networks, lines and stations"
+      },
+      "experience": {
+        "es": "Planos de metro dibujados de verdad",
+        "en": "Real metro maps"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las redes, líneas y estaciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All networks, lines and stations. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "OpenStreetMap (ODbL)",
+        "authority": "OpenStreetMap",
+        "license": "ODbL 1.0",
+        "evidence": "https://www.openstreetmap.org/copyright",
+        "notes": "Atribución obligatoria; derivados de base pueden activar share-alike; producido visual debe mostrar aviso de datos OSM.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-30",
+      "kind": "interest",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Aviones y aeropuertos",
+        "en": "Aircraft and airports"
+      },
+      "objective": {
+        "es": "Todos los aeropuertos, pistas y modelos de avión",
+        "en": "All airports, runways and aircraft models"
+      },
+      "experience": {
+        "es": "Mapa de aeropuertos con pistas",
+        "en": "Airport map with runways"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todos los aeropuertos, pistas y modelos de avión. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All airports, runways and aircraft models. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "OurAirports",
+        "authority": "OurAirports",
+        "license": "Public Domain",
+        "evidence": "https://ourairports.com/data/",
+        "notes": "Datos sin garantía; fijar fecha/versionado de descarga.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-32",
+      "kind": "interest",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Coches",
+        "en": "Cars"
+      },
+      "objective": {
+        "es": "Modelos, historia, cómo funciona un motor",
+        "en": "Models, history and how an engine works"
+      },
+      "experience": {
+        "es": "Motor en corte animado",
+        "en": "Animated engine cutaway"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Modelos, historia, cómo funciona un motor. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Models, history and how an engine works. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-35",
+      "kind": "interest",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Relojes y mecanismos",
+        "en": "Clocks and mechanisms"
+      },
+      "objective": {
+        "es": "Engranajes, escapes, relojes famosos",
+        "en": "Gears, escapements and famous clocks"
+      },
+      "experience": {
+        "es": "Mecanismo que se desmonta",
+        "en": "Mechanism that can be taken apart"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Engranajes, escapes, relojes famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Gears, escapements and famous clocks. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-37",
+      "kind": "interest",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Programación",
+        "en": "Programming"
+      },
+      "objective": {
+        "es": "Lenguajes, historia, cómo piensa un ordenador",
+        "en": "Languages, history and how a computer thinks"
+      },
+      "experience": {
+        "es": "Enlaza con el estudio de programación del Taller",
+        "en": "Links to the Workshop programming study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Lenguajes, historia, cómo piensa un ordenador. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Languages, history and how a computer thinks. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-38",
+      "kind": "interest",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Robótica",
+        "en": "Robotics"
+      },
+      "objective": {
+        "es": "Tipos de robots, sensores, robots famosos",
+        "en": "Types of robots, sensors and famous robots"
+      },
+      "experience": {
+        "es": "Enlaza con el estudio de robótica",
+        "en": "Links to the robotics study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Tipos de robots, sensores, robots famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Types of robots, sensors and famous robots. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-39",
+      "kind": "interest",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Ordenadores e informática",
+        "en": "Computers and computing"
+      },
+      "objective": {
+        "es": "Historia, piezas, cómo funciona por dentro",
+        "en": "History, parts and how it works inside"
+      },
+      "experience": {
+        "es": "Ordenador que se desmonta",
+        "en": "Computer that can be taken apart"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Historia, piezas, cómo funciona por dentro. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: History, parts and how it works inside. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-40",
+      "kind": "interest",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Electrónica y circuitos",
+        "en": "Electronics and circuits"
+      },
+      "objective": {
+        "es": "Componentes, leyes, esquemas",
+        "en": "Components, laws and circuit diagrams"
+      },
+      "experience": {
+        "es": "Simulador de circuitos",
+        "en": "Circuit simulator"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Componentes, leyes, esquemas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Components, laws and circuit diagrams. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "notes": "Las constantes o inputs externos, si se incorporan, deben quedar en procedencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-42",
+      "kind": "interest",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Videojuegos",
+        "en": "Video games"
+      },
+      "objective": {
+        "es": "Historia, géneros, cómo se diseñan",
+        "en": "History, genres and how games are designed"
+      },
+      "experience": {
+        "es": "Línea del tiempo y diseño de niveles en el Taller",
+        "en": "Timeline and level design in Workshop"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Historia, géneros, cómo se diseñan. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: History, genres and how games are designed. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-43",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Matemáticas",
+        "en": "Mathematics"
+      },
+      "objective": {
+        "es": "Primos, sucesiones, geometría, fractales",
+        "en": "Primes, sequences, geometry and fractals"
+      },
+      "experience": {
+        "es": "Explorador de fractales y sucesiones",
+        "en": "Fractal and sequence explorer"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Primos, sucesiones, geometría, fractales. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Primes, sequences, geometry and fractals. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Cálculo propio; OEIS (a confirmar)",
+        "authority": "Iris Green + OEIS",
+        "license": "OEIS CC BY-SA 4.0",
+        "evidence": "https://oeis.org/wiki/The_OEIS_End-User_License_Agreement",
+        "notes": "Atribuir OEIS y respetar share-alike cuando el material derive de OEIS.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-44",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Ajedrez",
+        "en": "Chess"
+      },
+      "objective": {
+        "es": "Aperturas, partidas, problemas",
+        "en": "Openings, games and problems"
+      },
+      "experience": {
+        "es": "Tablero con problemas por nivel",
+        "en": "Board with problems by level"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Aperturas, partidas, problemas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Openings, games and problems. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Lichess",
+        "authority": "Lichess open database",
+        "license": "Exports principales/puzzles/evaluaciones CC0; broadcasts oficiales CC BY-SA 4.0",
+        "evidence": "https://database.lichess.org/",
+        "notes": "Usar únicamente el dataset cuya licencia esté indicada; no copiar UI, marcas ni contenido fuera del export.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-45",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Cubo de Rubik y rompecabezas",
+        "en": "Rubik’s Cube and puzzles"
+      },
+      "objective": {
+        "es": "Algoritmos, notación, récords",
+        "en": "Algorithms, notation and records"
+      },
+      "experience": {
+        "es": "Cubo 3D que se gira",
+        "en": "Rotatable 3D cube"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Algoritmos, notación, récords. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Algorithms, notation and records. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "notes": "Las constantes o inputs externos, si se incorporan, deben quedar en procedencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-46",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Calendarios y horas",
+        "en": "Calendars and time"
+      },
+      "objective": {
+        "es": "Calendarios del mundo, husos horarios",
+        "en": "Calendars around the world and time zones"
+      },
+      "experience": {
+        "es": "Reloj mundial y conversor de calendarios",
+        "en": "World clock and calendar converter"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Calendarios del mundo, husos horarios. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Calendars around the world and time zones. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Base de husos IANA (a confirmar)",
+        "authority": "IANA Time Zone Database",
+        "license": "Public domain para la base tz; fijar versión al ingerir",
+        "evidence": "https://www.iana.org/time-zones",
+        "notes": "Usar datos tz, no asumir idéntico régimen para todo el código auxiliar.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-47",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Códigos y criptografía",
+        "en": "Codes and cryptography"
+      },
+      "objective": {
+        "es": "Cifrados históricos, Morse",
+        "en": "Historical ciphers and Morse"
+      },
+      "experience": {
+        "es": "Máquinas de cifrado simuladas",
+        "en": "Simulated cipher machines"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Cifrados históricos, Morse. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Historical ciphers and Morse. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-48",
+      "kind": "interest",
+      "group_id": "interest-group-06",
+      "title": {
+        "es": "Lógica y puzles",
+        "en": "Logic and puzzles"
+      },
+      "objective": {
+        "es": "Sudokus, nonogramas, lógica",
+        "en": "Sudokus, nonograms and logic"
+      },
+      "experience": {
+        "es": "Generador por niveles",
+        "en": "Generator by level"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Sudokus, nonogramas, lógica. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Sudokus, nonograms and logic. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-49",
+      "kind": "interest",
+      "group_id": "interest-group-07",
+      "title": {
+        "es": "Idiomas del mundo",
+        "en": "Languages of the world"
+      },
+      "objective": {
+        "es": "Todas las lenguas, familias, dónde se hablan",
+        "en": "All languages, families and where they are spoken"
+      },
+      "experience": {
+        "es": "Árbol de familias y mapa",
+        "en": "Language family tree and map"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todas las lenguas, familias, dónde se hablan. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All languages, families and where they are spoken. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Glottolog",
+        "authority": "Glottolog 5.3",
+        "license": "CC BY 4.0",
+        "evidence": "https://glottolog.org/meta/downloads",
+        "notes": "Atribución obligatoria; fijar versión consultada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-50",
+      "kind": "interest",
+      "group_id": "interest-group-07",
+      "title": {
+        "es": "Alfabetos y escrituras",
+        "en": "Alphabets and writing systems"
+      },
+      "objective": {
+        "es": "Todos los sistemas de escritura",
+        "en": "All writing systems"
+      },
+      "experience": {
+        "es": "Cada letra con su trazo",
+        "en": "Each letter with its stroke"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Todos los sistemas de escritura. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: All writing systems. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Unicode (a confirmar)",
+        "authority": "Unicode Consortium",
+        "license": "Unicode data files/software: Unicode License v3; charts/publications tienen restricciones distintas",
+        "evidence": "https://www.unicode.org/policies/licensing_policy.html",
+        "notes": "Construir visualización propia a partir de data files; no redistribuir code charts/fonts salvo permiso específico.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-53",
+      "kind": "interest",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Historia",
+        "en": "History"
+      },
+      "objective": {
+        "es": "Fechas, reinados, batallas, líneas del tiempo",
+        "en": "Dates, reigns, battles and timelines"
+      },
+      "experience": {
+        "es": "Línea del tiempo que se amplía sin límite",
+        "en": "Infinitely zoomable timeline"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Fechas, reinados, batallas, líneas del tiempo. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Dates, reigns, battles and timelines. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-54",
+      "kind": "interest",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Antiguo Egipto",
+        "en": "Ancient Egypt"
+      },
+      "objective": {
+        "es": "Faraones, jeroglíficos, pirámides",
+        "en": "Pharaohs, hieroglyphs and pyramids"
+      },
+      "experience": {
+        "es": "Pirámide por dentro",
+        "en": "Inside a pyramid"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Faraones, jeroglíficos, pirámides. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Pharaohs, hieroglyphs and pyramids. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "notes": "Filtrar por OA/CC0; obras no OA quedan fuera.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-55",
+      "kind": "interest",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Mitología",
+        "en": "Mythology"
+      },
+      "objective": {
+        "es": "Dioses y héroes de todas las culturas",
+        "en": "Gods and heroes from all cultures"
+      },
+      "experience": {
+        "es": "Árboles genealógicos",
+        "en": "Family trees"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Dioses y héroes de todas las culturas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Gods and heroes from all cultures. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-56",
+      "kind": "interest",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Castillos",
+        "en": "Castles"
+      },
+      "objective": {
+        "es": "Castillos de España, partes, asedios",
+        "en": "Castles in Spain, parts and sieges"
+      },
+      "experience": {
+        "es": "Castillo en corte",
+        "en": "Castle cutaway"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Castillos de España, partes, asedios. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Castles in Spain, parts and sieges. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata; OpenStreetMap",
+        "authority": "Wikidata + OpenStreetMap",
+        "license": "Wikidata CC0 + OSM ODbL 1.0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing ; https://www.openstreetmap.org/copyright",
+        "notes": "Conservar obligaciones OSM y no atribuir imágenes de Commons a Wikidata.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-57",
+      "kind": "interest",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Arquitectura y puentes",
+        "en": "Architecture and bridges"
+      },
+      "objective": {
+        "es": "Estilos, estructuras, edificios famosos",
+        "en": "Styles, structures and famous buildings"
+      },
+      "experience": {
+        "es": "Enlaza con el estudio de construcción",
+        "en": "Links to the construction study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Estilos, estructuras, edificios famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Styles, structures and famous buildings. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-60",
+      "kind": "interest",
+      "group_id": "interest-group-09",
+      "title": {
+        "es": "Pintura y museos",
+        "en": "Painting and museums"
+      },
+      "objective": {
+        "es": "Obras, artistas, técnicas",
+        "en": "Works, artists and techniques"
+      },
+      "experience": {
+        "es": "Sala de museo con obras en alta calidad",
+        "en": "Museum gallery with high-quality works"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Obras, artistas, técnicas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Works, artists and techniques. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Met Museum (CC0)",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "notes": "Usar solo imágenes/datos OA.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-62",
+      "kind": "interest",
+      "group_id": "interest-group-09",
+      "title": {
+        "es": "Cine y cómo se hace",
+        "en": "Film and filmmaking"
+      },
+      "objective": {
+        "es": "Oficios, técnicas, historia",
+        "en": "Professions, techniques and history"
+      },
+      "experience": {
+        "es": "Plató por dentro",
+        "en": "Inside a film set"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Oficios, técnicas, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Professions, techniques and history. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-63",
+      "kind": "interest",
+      "group_id": "interest-group-09",
+      "title": {
+        "es": "Fotografía",
+        "en": "Photography"
+      },
+      "objective": {
+        "es": "Cámaras, luz, técnica",
+        "en": "Cameras, light and technique"
+      },
+      "experience": {
+        "es": "Simulador de cámara",
+        "en": "Camera simulator"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Cámaras, luz, técnica. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Cameras, light and technique. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "notes": "Las constantes o inputs externos, si se incorporan, deben quedar en procedencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-64",
+      "kind": "interest",
+      "group_id": "interest-group-09",
+      "title": {
+        "es": "Cómic y dibujo narrativo",
+        "en": "Comics and visual storytelling"
+      },
+      "objective": {
+        "es": "Estilos, viñetas, historia",
+        "en": "Styles, panels and history"
+      },
+      "experience": {
+        "es": "Enlaza con el estudio de dibujo",
+        "en": "Links to the drawing study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Estilos, viñetas, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Styles, panels and history. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-65",
+      "kind": "interest",
+      "group_id": "interest-group-10",
+      "title": {
+        "es": "Mundos de ficción",
+        "en": "Fictional worlds"
+      },
+      "objective": {
+        "es": "Crear mundos, mapas, criaturas",
+        "en": "Create worlds, maps and creatures"
+      },
+      "experience": {
+        "es": "Estudio de mundos del Taller",
+        "en": "Workshop world-building study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Crear mundos, mapas, criaturas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Create worlds, maps and creatures. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "FICTIONAL"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "FICTIONAL",
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia (sin personajes con derechos)",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "Prohibido introducir personajes, logotipos o arte de franquicias ajenas.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-66",
+      "kind": "interest",
+      "group_id": "interest-group-10",
+      "title": {
+        "es": "Criaturas para coleccionar",
+        "en": "Collectible creatures"
+      },
+      "objective": {
+        "es": "Coleccionarlas todas, tipos, evoluciones",
+        "en": "Collect them all, types and evolutions"
+      },
+      "experience": {
+        "es": "Colección de criaturas inventadas",
+        "en": "Collection of invented creatures"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Coleccionarlas todas, tipos, evoluciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Collect them all, types and evolutions. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "FICTIONAL"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "FICTIONAL",
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-67",
+      "kind": "interest",
+      "group_id": "interest-group-10",
+      "title": {
+        "es": "Juegos de mesa",
+        "en": "Board games"
+      },
+      "objective": {
+        "es": "Reglas, historia, estrategia",
+        "en": "Rules, history and strategy"
+      },
+      "experience": {
+        "es": "Tableros jugables",
+        "en": "Playable boards"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Reglas, historia, estrategia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Rules, history and strategy. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-68",
+      "kind": "interest",
+      "group_id": "interest-group-10",
+      "title": {
+        "es": "Colecciones en general",
+        "en": "Collections"
+      },
+      "objective": {
+        "es": "Tenerlo todo, ordenado y completo",
+        "en": "Keep everything complete and organised"
+      },
+      "experience": {
+        "es": "Álbum común a todos los intereses",
+        "en": "Shared album for all interests"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Tenerlo todo, ordenado y completo. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Keep everything complete and organised. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Mi colección",
+        "authority": "Iris Green local collection",
+        "license": "Contenido/estado local del producto",
+        "evidence": "",
+        "notes": "No implica derechos sobre objetos externos que el usuario añada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-69",
+      "kind": "interest",
+      "group_id": "interest-group-11",
+      "title": {
+        "es": "Cocina",
+        "en": "Cooking"
+      },
+      "objective": {
+        "es": "Recetas, técnicas, química de la cocina",
+        "en": "Recipes, techniques and kitchen chemistry"
+      },
+      "experience": {
+        "es": "Cocina paso a paso",
+        "en": "Step-by-step kitchen"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Recetas, técnicas, química de la cocina. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Recipes, techniques and kitchen chemistry. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "notes": "No incorporar material de terceros no documentado.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-71",
+      "kind": "interest",
+      "group_id": "interest-group-11",
+      "title": {
+        "es": "Deportes",
+        "en": "Sports"
+      },
+      "objective": {
+        "es": "Reglas, récords, historia",
+        "en": "Rules, records and history"
+      },
+      "experience": {
+        "es": "Línea del tiempo de récords",
+        "en": "Record timeline"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Reglas, récords, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Rules, records and history. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "SIMULATION"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "interest-72",
+      "kind": "interest",
+      "group_id": "interest-group-11",
+      "title": {
+        "es": "Moda y tejidos",
+        "en": "Fashion and textiles"
+      },
+      "objective": {
+        "es": "Tejidos, patrones, historia del traje",
+        "en": "Fabrics, patterns and the history of clothing"
+      },
+      "experience": {
+        "es": "Enlaza con el estudio de diseño",
+        "en": "Links to the design study"
+      },
+      "data_required": {
+        "es": "Datos reales suficientes para sostener: Tejidos, patrones, historia del traje. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+        "en": "Real data sufficient to support: Fabrics, patterns and the history of clothing. When status is HOLD, do not present it as published real-world data until the stated provenance gap is closed."
+      },
+      "layers": {
+        "knowledge": {
+          "classes": [
+            "REAL_DATA"
+          ],
+          "status": "READY",
+          "note": "La capa de datos puede consumirse respetando fuente/licencia/fecha."
+        },
+        "experience": {
+          "classes": [
+            "USER_CREATED"
+          ],
+          "status": "READY",
+          "note": "La clase de experiencia no cambia la naturaleza de los datos de conocimiento."
+        }
+      },
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "notes": "Filtrar por OA/CC0; obras no OA quedan fuera.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    }
+  ],
+  "workshop_areas": [
+    {
+      "id": "workshop-area-01",
+      "index": 1,
+      "title": {
+        "es": "Imagen y diseño",
+        "en": "Image and design"
+      },
+      "study_ids": [
+        "workshop-01",
+        "workshop-02",
+        "workshop-03",
+        "workshop-04",
+        "workshop-05",
+        "workshop-06"
+      ]
+    },
+    {
+      "id": "workshop-area-02",
+      "index": 2,
+      "title": {
+        "es": "Construir e inventar",
+        "en": "Build and invent"
+      },
+      "study_ids": [
+        "workshop-07",
+        "workshop-08",
+        "workshop-09",
+        "workshop-10",
+        "workshop-11"
+      ]
+    },
+    {
+      "id": "workshop-area-03",
+      "index": 3,
+      "title": {
+        "es": "Programar y robótica",
+        "en": "Programming and robotics"
+      },
+      "study_ids": [
+        "workshop-12",
+        "workshop-13",
+        "workshop-14",
+        "workshop-15"
+      ]
+    },
+    {
+      "id": "workshop-area-04",
+      "index": 4,
+      "title": {
+        "es": "Música y sonido",
+        "en": "Music and sound"
+      },
+      "study_ids": [
+        "workshop-16",
+        "workshop-17",
+        "workshop-18"
+      ]
+    },
+    {
+      "id": "workshop-area-05",
+      "index": 5,
+      "title": {
+        "es": "Palabras y mundos",
+        "en": "Words and worlds"
+      },
+      "study_ids": [
+        "workshop-19",
+        "workshop-20",
+        "workshop-21",
+        "workshop-22"
+      ]
+    },
+    {
+      "id": "workshop-area-06",
+      "index": 6,
+      "title": {
+        "es": "Ideas",
+        "en": "Ideas"
+      },
+      "study_ids": [
+        "workshop-23",
+        "workshop-24",
+        "workshop-25"
+      ]
+    }
+  ],
+  "studies": [
+    {
+      "id": "workshop-01",
+      "kind": "study",
+      "number": 1,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Dibujo",
+        "en": "Drawing"
+      },
+      "objective": {
+        "es": "Desarrollar Dibujo mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Drawing through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Lienzo con capas, pinceles, goma, simetría y guías de perspectiva",
+          "en": "Canvas with layers, brushes, eraser, symmetry and perspective guides"
+        },
+        "challenges": {
+          "es": "Dibujar solo con una línea → luz con tres tonos → escena en perspectiva de dos puntos → serie de 10 dibujos con reglas propias",
+          "en": "Draw with one line → light using three tones → a two-point-perspective scene → a series of 10 drawings with your own rules"
+        },
+        "save_as": {
+          "es": "Imagen PNG y proyecto",
+          "en": "PNG image and project"
+        },
+        "connects_to": {
+          "es": "Cielo nocturno, aves, minerales",
+          "en": "Night sky, birds, minerals"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-02",
+      "kind": "study",
+      "number": 2,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Diseño gráfico y tipografía",
+        "en": "Graphic design and typography"
+      },
+      "objective": {
+        "es": "Desarrollar Diseño gráfico y tipografía mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Graphic design and typography through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Rejilla, formas, textos y paletas",
+          "en": "Grid, shapes, text and palettes"
+        },
+        "challenges": {
+          "es": "Logo con una sola forma → cartel con 2 colores → sistema de señales para un edificio",
+          "en": "Logo with a single shape → two-colour poster → wayfinding system for a building"
+        },
+        "save_as": {
+          "es": "SVG, PNG",
+          "en": "SVG, PNG"
+        },
+        "connects_to": {
+          "es": "Transporte, señales",
+          "en": "Transport, signs"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-03",
+      "kind": "study",
+      "number": 3,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Patrones y arte generativo",
+        "en": "Patterns and generative art"
+      },
+      "objective": {
+        "es": "Desarrollar Patrones y arte generativo mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Patterns and generative art through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Reglas de repetición, simetrías, teselados y fractales",
+          "en": "Rules for repetition, symmetry, tessellations and fractals"
+        },
+        "challenges": {
+          "es": "Mosaico con un solo azulejo → 17 tipos de simetría plana → fractal con reglas propias",
+          "en": "Mosaic using one tile → the 17 wallpaper symmetry groups → a fractal with your own rules"
+        },
+        "save_as": {
+          "es": "SVG, reglas",
+          "en": "SVG, rules"
+        },
+        "connects_to": {
+          "es": "Matemáticas, arquitectura",
+          "en": "Mathematics, architecture"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-04",
+      "kind": "study",
+      "number": 4,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Pixel art y animación",
+        "en": "Pixel art and animation"
+      },
+      "objective": {
+        "es": "Desarrollar Pixel art y animación mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Pixel art and animation through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Rejilla de píxeles, paletas, fotogramas",
+          "en": "Pixel grid, palettes and frames"
+        },
+        "challenges": {
+          "es": "Icono de 16×16 → animación de 8 fotogramas → personaje con 4 movimientos",
+          "en": "16×16 icon → 8-frame animation → character with four movements"
+        },
+        "save_as": {
+          "es": "PNG, GIF",
+          "en": "PNG, GIF"
+        },
+        "connects_to": {
+          "es": "Videojuegos, criaturas",
+          "en": "Video games, creatures"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-05",
+      "kind": "study",
+      "number": 5,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Color",
+        "en": "Colour"
+      },
+      "objective": {
+        "es": "Desarrollar Color mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Colour through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Rueda, mezclas, contraste, paletas",
+          "en": "Colour wheel, mixes, contrast and palettes"
+        },
+        "challenges": {
+          "es": "Paleta de 5 colores con contraste accesible → misma escena de día y de noche",
+          "en": "Five-colour palette with accessible contrast → the same scene by day and by night"
+        },
+        "save_as": {
+          "es": "Paleta",
+          "en": "Palette"
+        },
+        "connects_to": {
+          "es": "Pintura, diseño",
+          "en": "Painting, design"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-06",
+      "kind": "study",
+      "number": 6,
+      "area_id": "workshop-area-01",
+      "title": {
+        "es": "Cómic y guion gráfico",
+        "en": "Comics and storyboarding"
+      },
+      "objective": {
+        "es": "Desarrollar Cómic y guion gráfico mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Comics and storyboarding through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Viñetas, bocadillos, planos",
+          "en": "Panels, speech balloons and shots"
+        },
+        "challenges": {
+          "es": "Historia en 4 viñetas sin texto → página completa con ritmo",
+          "en": "Four-panel story without text → a complete page with visual rhythm"
+        },
+        "save_as": {
+          "es": "PNG, PDF",
+          "en": "PNG, PDF"
+        },
+        "connects_to": {
+          "es": "Escritura, mundos",
+          "en": "Writing, worlds"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-07",
+      "kind": "study",
+      "number": 7,
+      "area_id": "workshop-area-02",
+      "title": {
+        "es": "Estructuras y puentes",
+        "en": "Structures and bridges"
+      },
+      "objective": {
+        "es": "Desarrollar Estructuras y puentes mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Structures and bridges through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Piezas con física: aguanta o se cae",
+          "en": "Physics-based pieces: it holds or it falls"
+        },
+        "challenges": {
+          "es": "Puente de 2 m con 12 piezas → carga de 5 kg → el más ligero que aguante un tren",
+          "en": "Two-metre bridge with 12 pieces → five-kilogram load → the lightest bridge that can hold a train"
+        },
+        "save_as": {
+          "es": "Proyecto",
+          "en": "Project"
+        },
+        "connects_to": {
+          "es": "Trenes, arquitectura",
+          "en": "Trains, architecture"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-08",
+      "kind": "study",
+      "number": 8,
+      "area_id": "workshop-area-02",
+      "title": {
+        "es": "Arquitectura y planos",
+        "en": "Architecture and plans"
+      },
+      "objective": {
+        "es": "Desarrollar Arquitectura y planos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Architecture and plans through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Plano en planta que se levanta en 3D",
+          "en": "Floor plan that rises into 3D"
+        },
+        "challenges": {
+          "es": "Habitación → casa con luz natural → edificio con reglas de accesibilidad",
+          "en": "Room → house with natural light → building with accessibility rules"
+        },
+        "save_as": {
+          "es": "Plano PNG y proyecto",
+          "en": "PNG plan and project"
+        },
+        "connects_to": {
+          "es": "Castillos, arquitectura",
+          "en": "Castles, architecture"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-09",
+      "kind": "study",
+      "number": 9,
+      "area_id": "workshop-area-02",
+      "title": {
+        "es": "Máquinas e inventos",
+        "en": "Machines and inventions"
+      },
+      "objective": {
+        "es": "Desarrollar Máquinas e inventos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Machines and inventions through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Engranajes, palancas, poleas, rampas",
+          "en": "Gears, levers, pulleys and ramps"
+        },
+        "challenges": {
+          "es": "Subir un peso con una polea → reloj con engranajes → máquina en cadena de 10 pasos",
+          "en": "Lift a weight with a pulley → geared clock → ten-step chain machine"
+        },
+        "save_as": {
+          "es": "Proyecto",
+          "en": "Project"
+        },
+        "connects_to": {
+          "es": "Relojes, coches",
+          "en": "Clocks, cars"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-10",
+      "kind": "study",
+      "number": 10,
+      "area_id": "workshop-area-02",
+      "title": {
+        "es": "Circuitos",
+        "en": "Circuits"
+      },
+      "objective": {
+        "es": "Desarrollar Circuitos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Circuits through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Simulador de pilas, luces, interruptores y puertas lógicas",
+          "en": "Simulator with batteries, lights, switches and logic gates"
+        },
+        "challenges": {
+          "es": "Encender una luz → semáforo → sumador binario",
+          "en": "Light a lamp → traffic light → binary adder"
+        },
+        "save_as": {
+          "es": "Proyecto",
+          "en": "Project"
+        },
+        "connects_to": {
+          "es": "Electrónica, ordenadores",
+          "en": "Electronics, computers"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-11",
+      "kind": "study",
+      "number": 11,
+      "area_id": "workshop-area-02",
+      "title": {
+        "es": "Papiroflexia y poliedros",
+        "en": "Origami and polyhedra"
+      },
+      "objective": {
+        "es": "Desarrollar Papiroflexia y poliedros mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Origami and polyhedra through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Diagramas paso a paso y sólidos que se despliegan",
+          "en": "Step-by-step diagrams and unfoldable solids"
+        },
+        "challenges": {
+          "es": "Grulla → cubo de piezas → poliedro propio para imprimir",
+          "en": "Crane → modular cube → your own printable polyhedron"
+        },
+        "save_as": {
+          "es": "PDF para imprimir",
+          "en": "Printable PDF"
+        },
+        "connects_to": {
+          "es": "Matemáticas",
+          "en": "Mathematics"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-12",
+      "kind": "study",
+      "number": 12,
+      "area_id": "workshop-area-03",
+      "title": {
+        "es": "Programación",
+        "en": "Programming"
+      },
+      "objective": {
+        "es": "Desarrollar Programación mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Programming through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Bloques que se pueden ver como texto; lenguaje propio seguro",
+          "en": "Blocks that can also be viewed as text; a safe custom language"
+        },
+        "challenges": {
+          "es": "Dibujar una estrella → bucles y variables → funciones y recursividad",
+          "en": "Draw a star → loops and variables → functions and recursion"
+        },
+        "save_as": {
+          "es": "Programa",
+          "en": "Program"
+        },
+        "connects_to": {
+          "es": "Matemáticas, arte generativo",
+          "en": "Mathematics, generative art"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-13",
+      "kind": "study",
+      "number": 13,
+      "area_id": "workshop-area-03",
+      "title": {
+        "es": "Robótica",
+        "en": "Robotics"
+      },
+      "objective": {
+        "es": "Desarrollar Robótica mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Robotics through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Robot en un escenario con motores y sensores",
+          "en": "Robot in a scene with motors and sensors"
+        },
+        "challenges": {
+          "es": "Salir de una habitación → seguir una línea → laberinto desconocido → varios robots juntos",
+          "en": "Leave a room → follow a line → unknown maze → several robots working together"
+        },
+        "save_as": {
+          "es": "Programa y escenario",
+          "en": "Program and scene"
+        },
+        "connects_to": {
+          "es": "Robótica, transporte",
+          "en": "Robotics, transport"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-14",
+      "kind": "study",
+      "number": 14,
+      "area_id": "workshop-area-03",
+      "title": {
+        "es": "Diseño de videojuegos",
+        "en": "Video game design"
+      },
+      "objective": {
+        "es": "Desarrollar Diseño de videojuegos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Video game design through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Editor de niveles, reglas y personajes",
+          "en": "Level, rule and character editor"
+        },
+        "challenges": {
+          "es": "Nivel con 3 reglas → juego de puzles de 10 niveles → juego completo",
+          "en": "Level with three rules → ten-level puzzle game → complete game"
+        },
+        "save_as": {
+          "es": "Proyecto jugable",
+          "en": "Playable project"
+        },
+        "connects_to": {
+          "es": "Videojuegos, pixel art",
+          "en": "Video games, pixel art"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-15",
+      "kind": "study",
+      "number": 15,
+      "area_id": "workshop-area-03",
+      "title": {
+        "es": "Simulaciones",
+        "en": "Simulations"
+      },
+      "objective": {
+        "es": "Desarrollar Simulaciones mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Simulations through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Sistemas con reglas: ecosistemas, tráfico, autómatas",
+          "en": "Rule-based systems: ecosystems, traffic and cellular automata"
+        },
+        "challenges": {
+          "es": "Juego de la vida → red de tráfico → ecosistema equilibrado",
+          "en": "Game of Life → traffic network → balanced ecosystem"
+        },
+        "save_as": {
+          "es": "Proyecto",
+          "en": "Project"
+        },
+        "connects_to": {
+          "es": "Seres vivos, trenes",
+          "en": "Living things, trains"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-16",
+      "kind": "study",
+      "number": 16,
+      "area_id": "workshop-area-04",
+      "title": {
+        "es": "Ritmo y secuenciador",
+        "en": "Rhythm and sequencer"
+      },
+      "objective": {
+        "es": "Desarrollar Ritmo y secuenciador mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Rhythm and sequencer through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Cuadrícula de pasos con instrumentos",
+          "en": "Step grid with instruments"
+        },
+        "challenges": {
+          "es": "Ritmo de 4 tiempos → pieza con 3 partes → poliritmos",
+          "en": "Four-beat rhythm → three-part piece → polyrhythms"
+        },
+        "save_as": {
+          "es": "Proyecto; audio WAV",
+          "en": "Project; WAV audio"
+        },
+        "connects_to": {
+          "es": "Música",
+          "en": "Music"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-17",
+      "kind": "study",
+      "number": 17,
+      "area_id": "workshop-area-04",
+      "title": {
+        "es": "Composición",
+        "en": "Composition"
+      },
+      "objective": {
+        "es": "Desarrollar Composición mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Composition through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Pentagrama y teclado con reglas de armonía",
+          "en": "Staff and keyboard with harmony rules"
+        },
+        "challenges": {
+          "es": "Melodía con 5 notas → canon → pieza con forma A-B-A",
+          "en": "Five-note melody → canon → A-B-A form"
+        },
+        "save_as": {
+          "es": "Partitura, MIDI",
+          "en": "Score, MIDI"
+        },
+        "connects_to": {
+          "es": "Música, matemáticas",
+          "en": "Music, mathematics"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-18",
+      "kind": "study",
+      "number": 18,
+      "area_id": "workshop-area-04",
+      "title": {
+        "es": "Síntesis y paisajes sonoros",
+        "en": "Synthesis and soundscapes"
+      },
+      "objective": {
+        "es": "Desarrollar Síntesis y paisajes sonoros mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Synthesis and soundscapes through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Osciladores, filtros y sonidos de la naturaleza",
+          "en": "Oscillators, filters and nature sounds"
+        },
+        "challenges": {
+          "es": "Imitar la lluvia → paisaje de una ciudad",
+          "en": "Imitate rain → a city soundscape"
+        },
+        "save_as": {
+          "es": "Audio WAV",
+          "en": "WAV audio"
+        },
+        "connects_to": {
+          "es": "Tiempo, aves",
+          "en": "Weather, birds"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "SIMULATION",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-19",
+      "kind": "study",
+      "number": 19,
+      "area_id": "workshop-area-05",
+      "title": {
+        "es": "Escritura con restricciones",
+        "en": "Constraint-based writing"
+      },
+      "objective": {
+        "es": "Desarrollar Escritura con restricciones mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Constraint-based writing through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Editor con reglas: sin una letra, número fijo de palabras, formas poéticas",
+          "en": "Editor with constraints: forbidden letters, fixed word counts and poetic forms"
+        },
+        "challenges": {
+          "es": "Microrrelato de 50 palabras → texto sin la letra e → cuento con estructura fija",
+          "en": "50-word micro-story → text without the letter e → story with a fixed structure"
+        },
+        "save_as": {
+          "es": "Texto, PDF",
+          "en": "Text, PDF"
+        },
+        "connects_to": {
+          "es": "Historia, mitología",
+          "en": "History, mythology"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-20",
+      "kind": "study",
+      "number": 20,
+      "area_id": "workshop-area-05",
+      "title": {
+        "es": "Mundos",
+        "en": "Worlds"
+      },
+      "objective": {
+        "es": "Desarrollar Mundos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Worlds through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Mapa, especies, lenguas, historia y personajes enlazados",
+          "en": "Linked maps, species, languages, history and characters"
+        },
+        "challenges": {
+          "es": "Isla con 3 especies → cultura con calendario propio → mundo completo con atlas",
+          "en": "Island with three species → culture with its own calendar → complete world with an atlas"
+        },
+        "save_as": {
+          "es": "Atlas en archivo propio",
+          "en": "Atlas in its own file"
+        },
+        "connects_to": {
+          "es": "Geografía, idiomas",
+          "en": "Geography, languages"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "FICTIONAL",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-21",
+      "kind": "study",
+      "number": 21,
+      "area_id": "workshop-area-05",
+      "title": {
+        "es": "Lenguas inventadas",
+        "en": "Invented languages"
+      },
+      "objective": {
+        "es": "Desarrollar Lenguas inventadas mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Invented languages through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Sonidos, alfabeto, gramática y diccionario",
+          "en": "Sounds, alphabet, grammar and dictionary"
+        },
+        "challenges": {
+          "es": "Alfabeto de 20 signos → 100 palabras → texto traducido",
+          "en": "20-sign alphabet → 100 words → translated text"
+        },
+        "save_as": {
+          "es": "Diccionario",
+          "en": "Dictionary"
+        },
+        "connects_to": {
+          "es": "Idiomas, escrituras",
+          "en": "Languages, writing systems"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "FICTIONAL",
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-22",
+      "kind": "study",
+      "number": 22,
+      "area_id": "workshop-area-05",
+      "title": {
+        "es": "Juegos de mesa",
+        "en": "Board games"
+      },
+      "objective": {
+        "es": "Desarrollar Juegos de mesa mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Board games through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Tablero, cartas y reglas imprimibles",
+          "en": "Board, cards and printable rules"
+        },
+        "challenges": {
+          "es": "Juego para 2 con 5 reglas → juego equilibrado con cartas",
+          "en": "Two-player game with five rules → balanced card game"
+        },
+        "save_as": {
+          "es": "PDF para imprimir",
+          "en": "Printable PDF"
+        },
+        "connects_to": {
+          "es": "Ajedrez, colecciones",
+          "en": "Chess, collections"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-23",
+      "kind": "study",
+      "number": 23,
+      "area_id": "workshop-area-06",
+      "title": {
+        "es": "Fotografía y composición",
+        "en": "Photography and composition"
+      },
+      "objective": {
+        "es": "Desarrollar Fotografía y composición mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Photography and composition through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Tus fotos, sin subirlas: encuadre, luz, series",
+          "en": "Your photos without uploading them: framing, light and series"
+        },
+        "challenges": {
+          "es": "Serie de 5 fotos de un color → misma cosa en 10 encuadres",
+          "en": "Series of five photos of one colour → the same subject in ten framings"
+        },
+        "save_as": {
+          "es": "Serie",
+          "en": "Series"
+        },
+        "connects_to": {
+          "es": "Cielo, plantas",
+          "en": "Sky, plants"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-24",
+      "kind": "study",
+      "number": 24,
+      "area_id": "workshop-area-06",
+      "title": {
+        "es": "Moda y textil",
+        "en": "Fashion and textiles"
+      },
+      "objective": {
+        "es": "Desarrollar Moda y textil mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Fashion and textiles through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Patrones, tejidos y estampados",
+          "en": "Patterns, fabrics and prints"
+        },
+        "challenges": {
+          "es": "Estampado con un motivo → colección de 5 prendas",
+          "en": "Print made from one motif → collection of five garments"
+        },
+        "save_as": {
+          "es": "PNG",
+          "en": "PNG"
+        },
+        "connects_to": {
+          "es": "Diseño, historia",
+          "en": "Design, history"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "PLANNED",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    },
+    {
+      "id": "workshop-25",
+      "kind": "study",
+      "number": 25,
+      "area_id": "workshop-area-06",
+      "title": {
+        "es": "Ideas e inventos",
+        "en": "Ideas and inventions"
+      },
+      "objective": {
+        "es": "Desarrollar Ideas e inventos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+        "en": "Develop Ideas and inventions through the tool and progressive challenges defined in the R40 catalogue."
+      },
+      "experience": {
+        "tool": {
+          "es": "Laboratorio de ideas: usos distintos, combinar, cambiar el punto de vista, SCAMPER",
+          "en": "Idea laboratory: alternative uses, combinations, viewpoint changes and SCAMPER"
+        },
+        "challenges": {
+          "es": "Las 6 actividades actuales → invento con restricciones reales de coste y tamaño",
+          "en": "The six current activities → an invention with real cost and size constraints"
+        },
+        "save_as": {
+          "es": "Mi cuaderno",
+          "en": "My notebook"
+        },
+        "connects_to": {
+          "es": "Todos",
+          "en": "All"
+        }
+      },
+      "data_required": {
+        "es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+        "en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY."
+      },
+      "layers": [
+        "USER_CREATED"
+      ],
+      "catalog_state": "EXISTING",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "authority": "Iris Green · catálogo R40 del Taller",
+        "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+        "evidence": "",
+        "notes": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "status": "READY"
+    }
+  ],
+  "connections": [
+    {
+      "id": "connection-001",
+      "from": {
+        "kind": "study",
+        "id": "workshop-01"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-01"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Cielo nocturno",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-004",
+      "from": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Transporte",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-006",
+      "from": {
+        "kind": "study",
+        "id": "workshop-03"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-008",
+      "from": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-42"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Videojuegos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-009",
+      "from": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-66"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "FICTIONAL",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "criaturas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-010",
+      "from": {
+        "kind": "study",
+        "id": "workshop-05"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-60"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Pintura",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-011",
+      "from": {
+        "kind": "study",
+        "id": "workshop-05"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "diseño",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-012",
+      "from": {
+        "kind": "study",
+        "id": "workshop-06"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-07"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Escritura",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-013",
+      "from": {
+        "kind": "study",
+        "id": "workshop-06"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-65"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "FICTIONAL",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "mundos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-014",
+      "from": {
+        "kind": "study",
+        "id": "workshop-07"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-28"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Trenes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-016",
+      "from": {
+        "kind": "study",
+        "id": "workshop-08"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-57"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Castillos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-018",
+      "from": {
+        "kind": "study",
+        "id": "workshop-09"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-35"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Relojes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-019",
+      "from": {
+        "kind": "study",
+        "id": "workshop-09"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-32"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "coches",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-020",
+      "from": {
+        "kind": "study",
+        "id": "workshop-10"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-40"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Electrónica",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-021",
+      "from": {
+        "kind": "study",
+        "id": "workshop-10"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-39"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "ordenadores",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-022",
+      "from": {
+        "kind": "study",
+        "id": "workshop-11"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-023",
+      "from": {
+        "kind": "study",
+        "id": "workshop-12"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-024",
+      "from": {
+        "kind": "study",
+        "id": "workshop-12"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-03"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "SIMULATION",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "arte generativo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-025",
+      "from": {
+        "kind": "study",
+        "id": "workshop-13"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-38"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Robótica",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-026",
+      "from": {
+        "kind": "study",
+        "id": "workshop-13"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "transporte",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-027",
+      "from": {
+        "kind": "study",
+        "id": "workshop-14"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-42"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Videojuegos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-028",
+      "from": {
+        "kind": "study",
+        "id": "workshop-14"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-04"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "pixel art",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-029",
+      "from": {
+        "kind": "study",
+        "id": "workshop-15"
+      },
+      "to": {
+        "kind": "interest_group",
+        "id": "interest-group-03"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Seres vivos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-030",
+      "from": {
+        "kind": "study",
+        "id": "workshop-15"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-28"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "trenes",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-033",
+      "from": {
+        "kind": "study",
+        "id": "workshop-17"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-43"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "matemáticas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-034",
+      "from": {
+        "kind": "study",
+        "id": "workshop-18"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-12"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Tiempo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-036",
+      "from": {
+        "kind": "study",
+        "id": "workshop-19"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-53"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Historia",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-037",
+      "from": {
+        "kind": "study",
+        "id": "workshop-19"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-55"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "mitología",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-038",
+      "from": {
+        "kind": "study",
+        "id": "workshop-20"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-15"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Geografía",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-039",
+      "from": {
+        "kind": "study",
+        "id": "workshop-20"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-49"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "idiomas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-040",
+      "from": {
+        "kind": "study",
+        "id": "workshop-21"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-49"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Idiomas",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-041",
+      "from": {
+        "kind": "study",
+        "id": "workshop-21"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-50"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "escrituras",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-042",
+      "from": {
+        "kind": "study",
+        "id": "workshop-22"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-44"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Ajedrez",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-043",
+      "from": {
+        "kind": "study",
+        "id": "workshop-22"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-68"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "colecciones",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-044",
+      "from": {
+        "kind": "study",
+        "id": "workshop-23"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-01"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Cielo",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-046",
+      "from": {
+        "kind": "study",
+        "id": "workshop-24"
+      },
+      "to": {
+        "kind": "study",
+        "id": "workshop-02"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "USER_CREATED",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Diseño",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-047",
+      "from": {
+        "kind": "study",
+        "id": "workshop-24"
+      },
+      "to": {
+        "kind": "interest",
+        "id": "interest-53"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "historia",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    },
+    {
+      "id": "connection-048",
+      "from": {
+        "kind": "study",
+        "id": "workshop-25"
+      },
+      "to": {
+        "kind": "all_interests",
+        "id": "all-interests"
+      },
+      "relation": "CREATE_FROM",
+      "payload_class": "REAL_DATA",
+      "status": "READY",
+      "publicable": true,
+      "source_label": "Todos",
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+    }
+  ],
+  "counts": {
+    "interest_groups": 10,
+    "interests": 43,
+    "studies": 25,
+    "connections": 38,
+    "hold_entities_in_payload": 0
+  }
+}
