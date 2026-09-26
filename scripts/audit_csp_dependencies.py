@@ -16,6 +16,8 @@ LOAD_LINK_RELS={'stylesheet','preload','modulepreload','icon','manifest'}
 URL_ATTRS={'script':('src',),'img':('src',),'iframe':('src',),'audio':('src',),'video':('src','poster'),'source':('src',),'track':('src',)}
 REMOTE_CALL=re.compile(r'\b(?:fetch|open|sendBeacon)\s*\(\s*[\"\'](https?://[^\"\']+)',re.I)
 VIDEO_FRAME_SOURCES={'https://www.youtube-nocookie.com','https://player.vimeo.com','https://www.instagram.com'}
+SABIK_FRAME_SOURCE='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
+REVIEWED_FRAME_SOURCES=VIDEO_FRAME_SOURCES|{SABIK_FRAME_SOURCE}
 def origin(value):
     try:p=urlsplit(value)
     except ValueError:return None
@@ -48,7 +50,7 @@ def validate_csp_policy(root):
         if name=='connect-src' and got=={"'none'"}:continue
         if got!=expected:raise AssertionError(f'CSP cambia el perímetro revisado de {name}: esperado {sorted(expected)}, obtenido {sorted(got)}')
     frame_sources=set(directives['frame-src'])
-    if frame_sources!=VIDEO_FRAME_SOURCES:raise AssertionError(f'CSP cambia los proveedores de iframe revisados: esperado {sorted(VIDEO_FRAME_SOURCES)}, obtenido {sorted(frame_sources)}')
+    if frame_sources!=REVIEWED_FRAME_SOURCES:raise AssertionError(f'CSP cambia los orígenes iframe revisados: esperado {sorted(REVIEWED_FRAME_SOURCES)}, obtenido {sorted(frame_sources)}')
     ancestors=set(directives['frame-ancestors'])
     if ancestors not in ({"'self'"},{"'none'"}):raise AssertionError(f'CSP amplía frame-ancestors fuera de self/none: {sorted(ancestors)}')
     script_allowed={"'self'","'unsafe-inline'","'unsafe-eval'","'strict-dynamic'","'report-sample'"};style_allowed={"'self'","'unsafe-inline'","'report-sample'"}
@@ -108,7 +110,7 @@ def main():
             remote_calls[o]+=1;ex=remote_examples.setdefault(o,[]);rel=path.relative_to(root).as_posix()
             if rel not in ex and len(ex)<8:ex.append(rel)
     insecure=sorted(o for o in set(origins)|set(remote_calls) if o.startswith('http://'))
-    report={'html_revisados':len(html_files),'js_revisados':len(js_files),'inline':dict(totals),'recursos_externos':[{'origin':o,'referencias':n,'ejemplos':examples.get(o,[])} for o,n in sorted(origins.items())],'llamadas_remotas_js':[{'origin':o,'referencias':n,'archivos':remote_examples.get(o,[])} for o,n in sorted(remote_calls.items())],'eval_o_new_function':eval_like,'limite_eval_o_new_function':args.max_eval_like,'origenes_http_inseguros':insecure,'csp_publicada':policy,'csp_directivas':directives,'proveedores_iframe_revisados':sorted(VIDEO_FRAME_SOURCES),'csp_deuda_conocida':{'script_src_unsafe_inline':"'unsafe-inline'" in directives.get('script-src',[]),'script_src_unsafe_eval':"'unsafe-eval'" in directives.get('script-src',[]),'style_src_unsafe_inline':"'unsafe-inline'" in directives.get('style-src',[])}}
+    report={'html_revisados':len(html_files),'js_revisados':len(js_files),'inline':dict(totals),'recursos_externos':[{'origin':o,'referencias':n,'ejemplos':examples.get(o,[])} for o,n in sorted(origins.items())],'llamadas_remotas_js':[{'origin':o,'referencias':n,'archivos':remote_examples.get(o,[])} for o,n in sorted(remote_calls.items())],'eval_o_new_function':eval_like,'limite_eval_o_new_function':args.max_eval_like,'origenes_http_inseguros':insecure,'csp_publicada':policy,'csp_directivas':directives,'proveedores_iframe_revisados':sorted(VIDEO_FRAME_SOURCES),'sabik_frame_source_revisado':SABIK_FRAME_SOURCE,'csp_deuda_conocida':{'script_src_unsafe_inline':"'unsafe-inline'" in directives.get('script-src',[]),'script_src_unsafe_eval':"'unsafe-eval'" in directives.get('script-src',[]),'style_src_unsafe_inline':"'unsafe-inline'" in directives.get('style-src',[])}}
     out=root/'reports/publicacion';out.mkdir(parents=True,exist_ok=True);(out/'csp-inventario.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'html_revisados':len(html_files),'inline_scripts':totals['inline_scripts'],'style_blocks':totals['style_blocks'],'style_attrs':totals['style_attrs'],'event_attrs':totals['event_attrs'],'origenes_externos':len(origins),'llamadas_remotas_js':len(remote_calls),'eval_o_new_function':eval_like,'limite_eval_o_new_function':args.max_eval_like,'http_inseguro':len(insecure),'csp_guardada':True,'csp_directivas':len(directives)},ensure_ascii=False))
     if eval_like>args.max_eval_like:raise AssertionError(f'La salida pública ha aumentado eval()/new Function(): {eval_like} > {args.max_eval_like}.')
