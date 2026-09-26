@@ -20,7 +20,7 @@ var UI={
   hecho:'Hecho',subir:'Mover antes',bajar:'Mover después',quitar:'Quitar',minL:function(m){return m===1?'1 minuto':m+' minutos';},
   mitad:'Queda la mitad.',poco:'Queda poco.',finReloj:'Se acabó el tiempo.',relojListo:'Preparado cuando tú quieras.',
   hojaOrden:'Pasos en orden.',hojaLista:'Marca cada casilla cuando lo hayas hecho.',hojaPlan:'Mi plan.',elige:'Buena elección. Sigue cuando quieras.',
-  objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',dur:function(m){return 'Unos '+m+' minutos';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
+  objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',habilidad:'Habilidad o necesidad',duracionFiltro:'Duración',todasHabilidades:'Todas',todasDuraciones:'Todas',skills:{secuenciar:'Secuenciar',decision:'Elegir y decidir',clasificar:'Clasificar',planificar:'Planificar y organizar',memoria:'Memoria visual'},duraciones:{breve:'Hasta 2 min aprox.',media:'3–5 min aprox.',flexible:'Sin duración fija'},dur:function(m){return m?'Unos '+m+' minutos':'Sin duración fija';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
  en:{h1:'Games',lede:'297 practical games for everyday situations. No timer, no points and no rush. Nothing plays or moves until you decide.',crumb:'Resources',crumbHref:'/en/resources/',
   buscar:'Search for a game',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
   jugar:'Play',todos:'All games',menos:'Fewer options',ayuda:'Help me',otraVez:'Start again',imprimir:'Print',
@@ -36,9 +36,9 @@ var UI={
   hecho:'Done',subir:'Move earlier',bajar:'Move later',quitar:'Take out',minL:function(m){return m===1?'1 minute':m+' minutes';},
   mitad:'Half the time is left.',poco:'Not much time left.',finReloj:'Time is up.',relojListo:'Ready when you are.',
   hojaOrden:'Steps in order.',hojaLista:'Tick each box when you have done it.',hojaPlan:'My plan.',elige:'Good choice. Continue when you like.',
-  objetos:'Objects',conEsto:'Match with',meLoPongo:'What I am wearing',juego:'Game',etapa:'Stage of life',todasEdades:'All ages',contexto:'Situation',tipo:'Type of game',todosTipos:'All',dur:function(m){return 'About '+m+' minutes';},imprimible:'Download the printable',encontrados:function(a,b){return a+' of '+b+' found';},noEsta:'That is not on the list. Try another.',pareja:'A pair!',noPareja:'They do not match. They turn back over.',carta:'Face-down card',tuEleccion:'Your choice',libreOk:'Noted.',resumen:'This is your plan.'}
+  objetos:'Objects',conEsto:'Match with',meLoPongo:'What I am wearing',juego:'Game',etapa:'Stage of life',todasEdades:'All ages',contexto:'Situation',tipo:'Type of game',todosTipos:'All',habilidad:'Skill or need',duracionFiltro:'Duration',todasHabilidades:'All',todasDuraciones:'All',skills:{secuenciar:'Sequencing',decision:'Choosing and deciding',clasificar:'Sorting',planificar:'Planning and organising',memoria:'Visual memory'},duraciones:{breve:'Up to about 2 min',media:'About 3–5 min',flexible:'No fixed duration'},dur:function(m){return m?'About '+m+' minutes':'No fixed duration';},imprimible:'Download the printable',encontrados:function(a,b){return a+' of '+b+' found';},noEsta:'That is not on the list. Try another.',pareja:'A pair!',noPareja:'They do not match. They turn back over.',carta:'Face-down card',tuEleccion:'Your choice',libreOk:'Noted.',resumen:'This is your plan.'}
 };
-var S={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',vista:'lista',gi:null,fi:0,red:false,ayuda:false,msg:null,hecha:false,cat:'todos',etapa:null,tipo:null,q:'',adv:false,d:{}};
+var S={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',vista:'lista',gi:null,fi:0,red:false,ayuda:false,msg:null,hecha:false,cat:'todos',etapa:null,tipo:null,skill:null,dur:null,q:'',adv:false,d:{}};
 var A=[],lastKey=null,focusHead=false;
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -228,21 +228,23 @@ function filtrosPopover(u){
  return '<button type="button" class="jg-btn jg-actions-btn" popovertarget="jg-filter-pop">'+esc(u.moreOptions)+'</button>'+
   '<div class="jg-filter-pop" id="jg-filter-pop" popover><div class="jg-pop-head"><strong>'+esc(u.moreOptions)+'</strong><button type="button" class="jg-pop-close" popovertarget="jg-filter-pop" popovertargetaction="hide" aria-label="×">×</button></div>'+
   group('et',u.etapa,btnsEt,S.etapa,function(v){S.etapa=v;})+
-  group('tp',u.tipo,btnsTp,S.tipo,function(v){S.tipo=v;})+'</div>';
+  group('tp',u.tipo,btnsTp,S.tipo,function(v){S.tipo=v;})+
+  group('sk',u.habilidad,[{v:null,l:u.todasHabilidades}].concat(Object.keys(u.skills).map(function(k){return {v:k,l:u.skills[k]};})),S.skill,function(v){S.skill=v;})+
+  group('du',u.duracionFiltro,[{v:null,l:u.todasDuraciones}].concat(Object.keys(u.duraciones).map(function(k){return {v:k,l:u.duraciones[k]};})),S.dur,function(v){S.dur=v;})+'</div>';
 }
 function gameCard(o,cats){
  var u=U(),j=o.j,f=j.f[0],ks=[].concat(f.pasos||[],f.sec||[],f.banco||[],(f.items||[]).map(function(x){return Array.isArray(x)?x[0]:x;}),(f.pares||[]).map(function(p){return p[0];}),(f.ops||[]).map(function(x){return x[0];}),f.ctx?[f.ctx]:[]),un=[];
  ks.forEach(function(k){if(k&&un.indexOf(k)<0)un.push(k);});
  var art=un.slice(0,3).map(function(k){return img(pk(k).img);}).join('');
  return '<li><a class="jg-card jg-r41-game-card" href="#juego-'+esc(j.s)+'" data-k="g-'+esc(j.s)+'" data-a="'+act(function(){abrir(o.i);})+'">'+
-  '<span class="jg-card-img" aria-hidden="true">'+art+'</span><span class="jg-card-copy"><span class="jg-card-type">'+esc(L((D.tipos||[]).filter(function(t){return t.id===grupo(j);})[0]?.l||{}))+'</span>'+
+  '<span class="jg-card-img" aria-hidden="true">'+art+'</span><span class="jg-card-copy"><span class="jg-card-type">'+esc(L((D.tipos||[]).filter(function(t){return t.id===grupo(j);})[0]?.l||{}))+' · '+esc(u.skills[habilidad(j)]||'')+'</span>'+
   '<strong class="jg-card-t">'+esc(L(j.t))+'</strong><span class="jg-card-d">'+esc(L(j.d))+'</span></span>'+
   '<span class="jg-card-f"><span class="jg-small">'+esc(cats[j.c]?L(cats[j.c].l):'')+'</span><span class="jg-card-cta">'+esc(u.jugar)+'</span></span></a></li>';
 }
 function catalogo(){
  var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});
  var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j;
-  return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
+  return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!S.skill||habilidad(j)===S.skill)&&(!S.dur||duracionGrupo(j)===S.dur)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
  var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
  if(S.cat==='todos'&&!q){
   return '<section class="jg-r41-hub" aria-labelledby="jg-practice-title"><div class="jg-r41-actions"><div><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-practice-title">'+esc(u.practica)+'</h2></div><div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
@@ -259,6 +261,18 @@ function catalogo(){
    '</section>';
 }
 function grupo(j){var t=j.f[0].tipo;if(/orden|siguiente|falta|primero/.test(t))return 'ordenar';if(/meter|elegir/.test(t))return 'elegir';if(/repartir|parejas|intruso|busca/.test(t))return (t==='repartir'&&j.f[0].libre)?'planificar':'clasificar';if(t==='memoria')return 'memoria';return 'planificar';}
+function habilidad(j){
+ var t=(j.f&&j.f[0]&&j.f[0].tipo)||'';
+ if(t==='memoria')return 'memoria';
+ if(/repartir|parejas|intruso|busca/.test(t))return 'clasificar';
+ if(/elegir|meter|primero/.test(t))return 'decision';
+ if(/orden|siguiente|falta/.test(t))return 'secuenciar';
+ return 'planificar';
+}
+function duracionGrupo(j){
+ if(!Number.isFinite(j.min))return 'flexible';
+ return j.min<=2?'breve':'media';
+}
 function pantallaJuego(){
  var u=U(),j=juego(),fs=fases(),f=fase(),last=S.fi>=fs.length-1,v=vistaFase(),m=S.msg,fam=grupo(j);
  var ps=Object.keys(D.links||{}).filter(function(p){return D.links[p]===j.s;})[0];
