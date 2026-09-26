@@ -12,7 +12,7 @@
   var CONTRACT='1.0';
   var SCHEMA=1;
   var MAX_IMPORT_BYTES=8*1024*1024; // Existing Workshop file gate.
-  var MAX_DEPTH=32, MAX_NODES=100000, MAX_STRING=1024*1024;
+  var MAX_DEPTH=32, MAX_NODES=100000, MAX_STRING=6*1024*1024;
   var STORES=['collection','progress','projects','meta'];
   var DANGEROUS={__proto__:1,prototype:1,constructor:1};
   var STUDIO_IDS={
