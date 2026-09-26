@@ -1,0 +1,33 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R39-R06-CLOUD-DEPLOY-20260926",
+  "date": "2026-09-26",
+  "status": "R39_R06_CLOUD_READY_WEB_INTEGRATION_PENDING_A2",
+  "cloud": {
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "deploy_id": "6ab7a2cd2cf8dc09d3ae9aca",
+    "origin": "https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app",
+    "state": "ready",
+    "context": "deploy-preview",
+    "published_at": null,
+    "source_candidate": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
+    "functions": [
+      "n04-library-qa",
+      "n04-team-transport"
+    ],
+    "runtime": "nodejs24.x",
+    "workflow_run": 36236824712,
+    "safe_receipt_artifact": 10904248410
+  },
+  "web_integration": {
+    "base_a2": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+    "branch": "agent3/r39-r06-web-integration-20260926",
+    "head": "95f5e81e34196eef182b49aa3b0d122b5706977c",
+    "pr": 272,
+    "owner": "Agente 2",
+    "required_next": "A2 integrates after CI and publishes PR244 preview"
+  },
+  "production": false,
+  "voice_tts": false,
+  "secret_values_recorded": false
+}
