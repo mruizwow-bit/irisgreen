@@ -1,5 +1,26 @@
 # Estado operativo compartido
 
+## R42 · Agente 1 · Recursos/Juegos/Rutinas por etapas + tecnología · 26/09/2026
+
+**Estado: `R42_A1_LIFE_STAGE_TECH_READY_FOR_A2`.**
+
+PR #298 está READY FOR REVIEW y mergeable sobre A2. HEAD final: `8f68609852ed83d4cf846c0390931b74c18d4cdb`.
+
+A1 amplió el addendum de etapas a una arquitectura tecnológica coherente en todo su carril: Recursos, Juegos, Rutinas imprimibles, Rutinas visuales y Tarjeta Iris. Se usan progressive enhancements actuales (View Transitions, Popover, CSS Anchor Positioning, Container Queries, `content-visibility`, `requestAnimationFrame`) con fallback, reduced motion, forced colors, teclado y foco. No se solicita ni persiste DOB, diagnóstico o perfil de etapa.
+
+QA final del mismo HEAD:
+- `Comprobar rutinas visuales` run `36253137816`: SUCCESS.
+- `Recursos actuales ES y EN` run `36253137789`: SUCCESS.
+- build + navegador ES/EN 1440/320: SUCCESS dentro del gate.
+
+Siguiente puerta: A2 integra #298 en su HEAD vigente y publica preview; HUMAN QA de María sigue siendo obligatoria antes de aceptación perceptiva final.
+
+Registro: `MEMORIA/R42_A1_LIFE_STAGE_TECH_20260926.md` y `CONTROL/DELTA_R42_A1_LIFE_STAGE_TECH_20260926.json`.
+
+A1: **0 merge · 0 deploy · 0 producción**.
+
+---
+
 ## R42 · Agente 3 · app shell interactivo terminado y listo para A2 · 26/09/2026
 
 **Estado: `R42_A3_APP_SHELL_BUILD_READY_FOR_A2`.**
