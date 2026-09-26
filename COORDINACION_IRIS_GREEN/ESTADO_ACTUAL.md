@@ -360,3 +360,30 @@ No es aceptación final: A2 integra/sube la preview única y María/QA realiza H
 
 Memoria: `MEMORIA/R42_A7_QUIET_SPACE_IMMERSIVE_20260926.md`.  
 Control: `CONTROL/DELTA_R42_A7_QUIET_SPACE_IMMERSIVE_20260926.json`.
+
+## R42 · protección de menores en Situaciones/Condiciones · 26/09/2026
+
+**Estado: `R42_CHILD_SAFE_CONTENT_ARCHITECTURE_REQUIRED`.**
+
+María decide extender la separación por etapas a Situaciones y Condiciones para reducir exposición accidental de menores a contenido de alta sensibilidad.
+
+Arquitectura adoptada:
+- audiencia: Infancia / Adolescencia / Adultez / Transversal;
+- sensibilidad: S0_GENERAL / S1_SENSITIVE / S2_HIGH_SENSITIVITY;
+- discovery: NORMAL / INTENTIONAL_ONLY / SAFE_VARIANT_REQUIRED;
+- safe-by-default sin selección;
+- sin DOB/cuenta/perfil remoto;
+- protección de descubrimiento incidental sin ocultar vías seguras de ayuda.
+
+Inventario observado: 185 Condiciones + 187 Situaciones = 372 fichas.
+
+Issues:
+- #293 parent
+- #294 A4 clasificación
+- #295 A3 implementación
+- #296 A1 enlaces seguros
+- #297 A2 integración/live QA
+
+Normativa: `NORMATIVA/ADDENDUM_R42_PROTECCION_MENORES_CONTENIDO_20260926.md`.  
+Memoria: `MEMORIA/R42_PROTECCION_MENORES_SITUACIONES_CONDICIONES_20260926.md`.  
+Control: `CONTROL/DELTA_R42_PROTECCION_MENORES_20260926.json`.
