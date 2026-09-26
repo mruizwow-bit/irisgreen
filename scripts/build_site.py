@@ -143,6 +143,11 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R40: formato global compartido. Se aplica al final para no duplicar cambios en ~1000 páginas
+    # y para que la navegación común sobreviva a generadores/normalizadores anteriores.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r40_global_format.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r40_global_format.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)
