@@ -153,3 +153,21 @@ Fuente exacta: `NORMATIVA/BLOQUE_OBLIGATORIO_EMBEBIDO_R42_20260926.txt`.
 Addendum: `NORMATIVA/ADDENDUM_R42_ORDEN_CON_NORMATIVA_EMBEBIDA_20260926.md`.
 Memoria: `MEMORIA/R42_NORMATIVA_EMBEBIDA_20260926.md`.
 Control: `CONTROL/DELTA_R42_NORMATIVA_EMBEBIDA_20260926.json`.
+
+## R42 · separación por etapas de vida · 26/09/2026
+
+**Estado: `R42_LIFE_STAGE_SEPARATION_ADOPTED`.**
+
+María adopta como criterio de producto la separación/orientación por etapas cuando mejore la utilidad:
+- Infancia
+- Adolescencia
+- Adultez
+- Transversal / Cualquier edad
+
+La separación orienta y no excluye: no exige diagnóstico, no obliga a elegir etapa, permite recursos multi-etapa y mantiene una vía transversal cuando proceda. No se duplica por edad si la experiencia no cambia de forma útil y no se infantiliza adolescencia/adultez.
+
+Aplicación prioritaria: Juegos, Rutinas, Taller, Tus intereses, Cuaderno de Campo y recursos prácticos/descargables.
+
+Memoria: `MEMORIA/R42_SEPARACION_ETAPAS_VIDA_20260926.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R42_SEPARACION_ETAPAS_VIDA_20260926.md`.  
+Control: `CONTROL/DELTA_R42_SEPARACION_ETAPAS_VIDA_20260926.json`.
