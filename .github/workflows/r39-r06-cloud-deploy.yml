@@ -47,7 +47,7 @@ jobs:
         run: |
           test "$(git -C ../.. rev-parse HEAD)" = "$CANDIDATE_SHA"
           npm ci --ignore-scripts
-          test "$(./node_modules/.bin/netlify --version | tail -1 | tr -d '\r')" = "27.8.0"
+          ./node_modules/.bin/netlify --version | grep -F "27.8.0"
 
       - name: Re-run R06 regression and build
         working-directory: candidate
