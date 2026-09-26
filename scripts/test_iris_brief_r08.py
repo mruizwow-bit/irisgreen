@@ -42,7 +42,14 @@ def static():
   assert 'flor de iris' not in p.read_text().lower(),rel
   rows.append({'path':rel,'language':s.html.get('lang'),'brief':True,'flower':False})
  for p in ['es/recursos/index.html','en/resources/index.html']:
-  s=BeautifulSoup((DIST/p).read_text(),'html.parser');assert len(s.select('main .ri-card'))==(4 if p.startswith('es') else 3)
+  s=BeautifulSoup((DIST/p).read_text(),'html.parser')
+  # R42 A1 sustituye el conteo histórico R08 por una estructura explícita:
+  # cuatro etapas orientativas + cinco recursos primarios, en ES y EN.
+  assert len(s.select('main .ri-stage-card'))==4,p
+  assert len(s.select('main [data-r40-resource]'))==5,p
+  labels=[x.get_text(' ',strip=True) for x in s.select('main .ri-stage-card h3')]
+  expected=(['Infancia','Adolescencia','Adultez','Cualquier edad'] if p.startswith('es') else ['Childhood','Adolescence','Adulthood','Any age'])
+  assert labels==expected,(p,labels)
  for p in (ROOT/'sabik/assets/web-r01').iterdir():assert p.read_bytes()==(DIST/'sabik/assets/web-r01'/p.name).read_bytes(),p.name
  config=(DIST/'sabik/mount-config.mjs').read_text()
  assert "enabled:true,cloudOrigin:'"+CLOUD_ORIGIN+"'" in config
