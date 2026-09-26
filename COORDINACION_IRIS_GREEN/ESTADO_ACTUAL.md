@@ -404,3 +404,11 @@ Reanudar tras:
 
 Memoria: `MEMORIA/R42_CHILD_SAFE_DEFERRED_20260926.md`.  
 Control: `CONTROL/DELTA_R42_CHILD_SAFE_DEFERRED_20260926.json`.
+
+## R42 · Agente 7 · HUMAN QA FAIL · 26/09/2026
+
+**Estado: `R42_A7_HUMAN_QA_FAIL_REBUILD_REQUIRED`.**
+
+María rechaza la preview integrada del Rincón R42: las escenas no alcanzan calidad inmersiva, la interfaz se percibe pobre y existen solapamientos de botones/controles. El gate técnico aislado de A7 no fue suficiente para detectar la composición real con el app shell.
+
+La entrega previa #291 queda superseded como solución aceptable. Próximo paso: reconstrucción sobre el resultado integrado R42 real y nueva HUMAN QA visual/auditiva antes de cierre.
