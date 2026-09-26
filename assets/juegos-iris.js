@@ -61,7 +61,7 @@ function seed(x){var j=juego();return (j?j.s:'')+'|'+S.fi+'|'+(S.red?1:0)+'|'+(x
 
 function img(src,cls){return '<img src="'+esc(src)+'" alt=""'+(cls?' class="'+cls+'"':'')+' loading="lazy" decoding="async">';}
 function tile(k,o,fn){o=o||{};var p=pk(k),c='jg-tile'+(o.on?' is-on':'')+(o.hint?' is-hint':'');
- return '<button type="button" class="'+c+'" data-a="'+act(fn||function(){})+'" data-k="t-'+esc(k)+'" aria-pressed="'+(o.on?'true':'false')+'">'+
+ return '<button type="button" class="'+c+'" draggable="true" data-a="'+act(fn||function(){})+'" data-k="t-'+esc(k)+'" aria-pressed="'+(o.on?'true':'false')+'">'+
   (o.badge?'<span class="jg-badge" aria-hidden="true">'+esc(o.badge)+'</span>':'')+img(p.img)+'<span class="jg-tile-l">'+esc(p.l)+'</span>'+
   (o.estado?'<span class="jg-tile-e">'+esc(o.estado)+'</span>':'')+'</button>';}
 function grid(html){return '<div class="jg-grid">'+html+'</div>';}
@@ -69,7 +69,7 @@ function slotLleno(k,o){o=o||{};var p=pk(k);return '<li class="jg-slot'+(o.flech
  '<span class="jg-slot-card">'+(o.n?'<span class="jg-num">'+esc(o.n)+'</span>':'')+(o.etiqueta?'<span class="jg-slot-tag">'+esc(o.etiqueta)+'</span>':'')+img(p.img)+
  '<span class="jg-slot-l">'+esc(p.l)+'</span>'+(o.ctl||'')+'</span></li>';}
 function slotVacio(o){o=o||{};return '<li class="jg-slot'+(o.flecha?' has-arrow':'')+'">'+(o.flecha?'<span class="jg-arrow" aria-hidden="true">→</span>':'')+
- '<span class="jg-slot-empty'+(o.foco?' is-focus':'')+'"><span class="jg-slot-mark">'+esc(o.marca||'')+'</span>'+(o.etiqueta?'<span class="jg-slot-etq">'+esc(o.etiqueta)+'</span>':'')+'</span></li>';}
+ '<span class="jg-slot-empty'+(o.foco?' is-focus jg-drop-target':'')+'"><span class="jg-slot-mark">'+esc(o.marca||'')+'</span>'+(o.etiqueta?'<span class="jg-slot-etq">'+esc(o.etiqueta)+'</span>':'')+'</span></li>';}
 function tira(titulo,items){return '<div class="jg-strip-wrap"><p class="jg-small">'+esc(titulo)+'</p><ol class="jg-strip">'+items.join('')+'</ol></div>';}
 function ctxBox(f){var h='';if(f.ctx){var c=pk(f.ctx);h='<div class="jg-ctx">'+img(c.img)+'<span>'+esc(c.l)+'</span></div>';}
  else if(f.ctxTxt)h='<div class="jg-ctx"><span>'+esc(L(f.ctxTxt))+'</span></div>';return h;}
@@ -141,7 +141,7 @@ function vistaFase(){
   if(cur&&!hecha){var cp=pk(cur[0]);H.push('<div class="jg-ctx jg-actual">'+img(cp.img)+'<span><span class="jg-small">'+esc(u.vuelta)+'</span><strong>'+esc(cp.l)+'</strong></span></div>');}
   H.push('<p class="jg-prog">'+esc(u.hechos(Math.min(idx,f.items.length),f.items.length))+'</p>');if(f.libre&&Object.keys(pl).length)hoja={t:u.resumen,items:f.items.map(function(it,n){return pl[n]?[pk(pl[n]).l,it[0]]:null;}).filter(Boolean)};
   H.push('<div class="jg-dests">'+f.destinos.map(function(dk){var p=pk(dk),aqui=cur&&(f.libre||String(cur[1]).split('|').indexOf(dk)>=0);
-   return '<div class="jg-destcol"><button type="button" class="jg-row'+(ay&&aqui?' is-hint':'')+'" data-k="d-'+dk+'" data-a="'+act(function(){
+   return '<div class="jg-destcol"><button type="button" class="jg-row jg-drop-target'+(ay&&aqui?' is-hint':'')+'" data-k="d-'+dk+'" data-a="'+act(function(){
      if(!cur||hecha)return;if(aqui){var np=Object.assign({},pl);np[idx]=dk;var ni=idx+1,fin=ni>=f.items.length;put({pl:np,idx:ni},ok(fin?(f.libre?u.resumen:u.hechoT):(f.libre?u.libreOk:u.bien)),fin);}else say(u.noEncaja);})+'">'+img(p.img)+'<span>'+esc(p.l)+'</span></button>'+
     '<span class="jg-mini">'+f.items.map(function(it,n){if(pl[n]!==dk)return '';var q=pk(it[0]);return '<img src="'+esc(q.img)+'" alt="'+esc(q.l)+'" title="'+esc(q.l)+'">';}).join('')+'</span></div>';}).join('')+'</div>');
  }
@@ -209,40 +209,77 @@ function vistaFase(){
 }
 
 /* ---------- pantallas ---------- */
+function contextoPreview(catId){
+ var juegos=D.juegos.filter(function(j){return j.c===catId;}).slice(0,3),ks=[];
+ juegos.forEach(function(j){var f=j.f&&j.f[0],arr=f?[].concat(f.pasos||[],f.sec||[],f.banco||[],(f.items||[]).map(function(x){return Array.isArray(x)?x[0]:x;}),(f.pares||[]).map(function(p){return p[0];}),(f.ops||[]).map(function(o){return o[0];}),f.ctx?[f.ctx]:[]):[];arr.forEach(function(k){if(k&&ks.indexOf(k)<0)ks.push(k);});});
+ return ks.slice(0,3);
+}
+function contextoCard(cat){
+ var ks=contextoPreview(cat.id),count=D.juegos.filter(function(j){return j.c===cat.id;}).length;
+ return '<button type="button" class="jg-context-card" data-a="'+act(function(){S.cat=cat.id;S.q='';})+'" data-k="ctx-'+esc(cat.id)+'">'+
+   '<span class="jg-context-art" aria-hidden="true">'+ks.map(function(k){var p=pk(k);return img(p.img);}).join('')+'</span>'+
+   '<span class="jg-context-copy"><strong>'+esc(L(cat.l))+'</strong><span>'+esc(U().n(count))+'</span></span><span class="jg-context-arrow" aria-hidden="true">→</span></button>';
+}
+function filtrosPopover(u){
+ var ets={};(D.etapas||[]).forEach(function(x){ets[x.id]=x;});
+ var btnsEt=[{v:null,l:u.todasEdades}].concat((D.etapas||[]).filter(function(x){return x.id!=='todas';}).map(function(x){return {v:x.id,l:L(x.l)};}));
+ var btnsTp=[{v:null,l:u.todosTipos}].concat((D.tipos||[]).map(function(x){return {v:x.id,l:L(x.l)};}));
+ var group=function(id,label,opts,cur,set){return '<fieldset class="jg-filter"><legend>'+esc(label)+'</legend><div class="jg-chips">'+opts.map(function(o){var on=cur===o.v;return boton(o.l,function(){set(o.v);},on?'is-on':'',id+'-'+(o.v||'x'),' aria-pressed="'+on+'"');}).join('')+'</div></fieldset>';};
+ return '<button type="button" class="jg-btn jg-actions-btn" popovertarget="jg-filter-pop">'+esc(u.moreOptions)+'</button>'+
+  '<div class="jg-filter-pop" id="jg-filter-pop" popover><div class="jg-pop-head"><strong>'+esc(u.moreOptions)+'</strong><button type="button" class="jg-pop-close" popovertarget="jg-filter-pop" popovertargetaction="hide" aria-label="×">×</button></div>'+
+  group('et',u.etapa,btnsEt,S.etapa,function(v){S.etapa=v;})+
+  group('tp',u.tipo,btnsTp,S.tipo,function(v){S.tipo=v;})+'</div>';
+}
+function gameCard(o,cats){
+ var u=U(),j=o.j,f=j.f[0],ks=[].concat(f.pasos||[],f.sec||[],f.banco||[],(f.items||[]).map(function(x){return Array.isArray(x)?x[0]:x;}),(f.pares||[]).map(function(p){return p[0];}),(f.ops||[]).map(function(x){return x[0];}),f.ctx?[f.ctx]:[]),un=[];
+ ks.forEach(function(k){if(k&&un.indexOf(k)<0)un.push(k);});
+ var art=un.slice(0,3).map(function(k){return img(pk(k).img);}).join('');
+ return '<li><a class="jg-card jg-r41-game-card" href="#juego-'+esc(j.s)+'" data-k="g-'+esc(j.s)+'" data-a="'+act(function(){abrir(o.i);})+'">'+
+  '<span class="jg-card-img" aria-hidden="true">'+art+'</span><span class="jg-card-copy"><span class="jg-card-type">'+esc(L((D.tipos||[]).filter(function(t){return t.id===grupo(j);})[0]?.l||{}))+'</span>'+
+  '<strong class="jg-card-t">'+esc(L(j.t))+'</strong><span class="jg-card-d">'+esc(L(j.d))+'</span></span>'+
+  '<span class="jg-card-f"><span class="jg-small">'+esc(cats[j.c]?L(cats[j.c].l):'')+'</span><span class="jg-card-cta">'+esc(u.jugar)+'</span></span></a></li>';
+}
 function catalogo(){
- var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});var ets={};(D.etapas||[]).forEach(function(x){ets[x.id]=x;});
+ var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});
  var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j;
   return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
- var iconos=function(j){var f=j.f[0],ks=[].concat(f.pasos||[],f.sec||[],f.banco||[],(f.items||[]).map(function(x){return Array.isArray(x)?x[0]:x;}),(f.pares||[]).map(function(p){return p[0];}),(f.ops||[]).map(function(o){return o[0];}),f.ctx?[f.ctx]:[]),un=[];
-  ks.forEach(function(k){if(un.indexOf(k)<0)un.push(k);});if(f.tipo==='reloj')un.push('reloj');return un.slice(0,3).map(function(k){return img(pk(k).img);}).join('');};
- var grp=function(id,label,opts,cur,set){return '<div class="jg-filter"><p class="jg-filter-t" id="jg-f-'+id+'">'+esc(label)+'</p><div class="jg-chips" role="group" aria-labelledby="jg-f-'+id+'">'+opts.map(function(o){var on=cur===o.v;return boton(o.l,function(){set(o.v);},on?'is-on':'',id+'-'+(o.v||'x'),' aria-pressed="'+on+'"');}).join('')+'</div></div>';};
- var etTxt=function(j){var e=j.e||['todas'];return e.map(function(x){return ets[x]?L(ets[x].l):'';}).join(' · ');};
- return '<section class="jg-finder" aria-label="'+esc(u.practica)+'"><h2 class="jg-practice">'+esc(u.practica)+'</h2><label class="jg-search"><span>'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>'+
-  grp('cx',u.contexto,D.cats.filter(function(c){return c.id!=='todos';}).map(function(c){return {v:c.id,l:L(c.l)};}),S.cat==='todos'?null:S.cat,function(v){S.cat=v;})+
-  (S.cat!=='todos'?'<div class="jg-clear-context">'+boton(u.clearContext,function(){S.cat='todos';},'','cx-clear')+'</div>':'')+
-  '<div class="jg-more">'+boton(S.adv?u.hideOptions:u.moreOptions,function(){S.adv=!S.adv;},'','more',' aria-expanded="'+S.adv+'" aria-controls="jg-advanced"')+'</div>'+
-  '<div id="jg-advanced" class="jg-advanced"'+(S.adv?'':' hidden')+'>'+
-  grp('et',u.etapa,[{v:null,l:u.todasEdades}].concat((D.etapas||[]).filter(function(x){return x.id!=='todas';}).map(function(x){return {v:x.id,l:L(x.l)};})),S.etapa,function(v){S.etapa=v;})+
-  grp('tp',u.tipo,[{v:null,l:u.todosTipos}].concat((D.tipos||[]).map(function(x){return {v:x.id,l:L(x.l)};})),S.tipo,function(v){S.tipo=v;})+
-  '</div><p class="jg-small" id="jg-n">'+esc(u.n(vis.length))+'</p></section>'+
-  (vis.length?'<ul class="jg-cards">'+vis.map(function(o){var j=o.j;return '<li><a class="jg-card" href="#juego-'+esc(j.s)+'" data-k="g-'+esc(j.s)+'" data-a="'+act(function(){abrir(o.i);})+'">'+
-   '<span class="jg-card-img" aria-hidden="true">'+iconos(j)+'</span><span class="jg-card-t">'+esc(L(j.t))+'</span><span class="jg-card-d">'+esc(L(j.d))+'</span>'+
-   '<span class="jg-card-meta"><span>'+esc(etTxt(j))+'</span><span>'+esc(u.dur(j.min||2))+'</span></span>'+
-   '<span class="jg-card-f"><span class="jg-small">'+esc(cats[j.c]?L(cats[j.c].l):'')+'</span><span class="jg-card-cta">'+esc(u.jugar)+'</span></span></a></li>';}).join('')+'</ul>':'<p class="jg-nota">'+esc(u.sinRes)+'</p>');
+ var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
+ if(S.cat==='todos'&&!q){
+  return '<section class="jg-r41-hub" aria-labelledby="jg-practice-title"><div class="jg-r41-actions"><div><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-practice-title">'+esc(u.practica)+'</h2></div><div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
+   '<div class="jg-context-grid">'+D.cats.filter(function(c){return c.id!=='todos';}).map(contextoCard).join('')+'</div>'+
+   '<p class="jg-hub-note">'+esc(u.n(D.juegos.length))+'</p></section>';
+ }
+ var current=S.cat!=='todos'?cats[S.cat]:null;
+ return '<section class="jg-r41-browser" aria-label="'+esc(u.practica)+'"><div class="jg-r41-browserbar">'+
+   (current?boton('← '+u.todos,function(){S.cat='todos';S.q='';},'','ctx-back'):'')+
+   '<div class="jg-r41-browser-title"><span class="jg-small">'+esc(u.practica)+'</span><strong>'+esc(current?L(current.l):u.buscar)+'</strong></div>'+
+   '<div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
+   '<p class="jg-small" id="jg-n">'+esc(u.n(vis.length))+'</p>'+
+   (vis.length?'<ul class="jg-cards jg-r41-results">'+vis.map(function(o){return gameCard(o,cats);}).join('')+'</ul>':'<p class="jg-nota">'+esc(u.sinRes)+'</p>')+
+   '</section>';
 }
 function grupo(j){var t=j.f[0].tipo;if(/orden|siguiente|falta|primero/.test(t))return 'ordenar';if(/meter|elegir/.test(t))return 'elegir';if(/repartir|parejas|intruso|busca/.test(t))return (t==='repartir'&&j.f[0].libre)?'planificar':'clasificar';if(t==='memoria')return 'memoria';return 'planificar';}
 function pantallaJuego(){
- var u=U(),j=juego(),fs=fases(),f=fase(),last=S.fi>=fs.length-1,v=vistaFase(),m=S.msg;
- var h='<div class="jg-ui"><p class="jg-chips"><button type="button" class="jg-btn" data-k="volver" data-a="'+act(volver)+'"><span aria-hidden="true">←</span> '+esc(u.todos)+'</button>'+(function(){var ps=Object.keys(D.links||{}).filter(function(p){return D.links[p]===j.s;})[0];return ps?'<a class="jg-btn" href="'+(S.lang==='en'?'/en/resources/printable-routines/':'/es/recursos/rutinas-imprimibles/')+'#pack-'+ps+'">'+esc(u.imprimible)+'</a>':'';})()+'</p>'+
-  '<section class="jg-head">'+(fs.length>1?'<p class="jg-small">'+esc(u.parte(S.fi+1,fs.length))+'</p>':'')+'<h1 tabindex="-1" id="jg-h2">'+esc(L(j.t))+'</h1><p class="jg-lede">'+esc(L(j.d))+'</p></section>'+
-  '<section class="jg-play"><div class="jg-bar-top"><div class="jg-instr">'+(f&&f.t?'<h2>'+esc(L(f.t))+'</h2>':'')+'<p>'+esc(f?L(f.i):'')+'</p></div><div class="jg-chips">'+
+ var u=U(),j=juego(),fs=fases(),f=fase(),last=S.fi>=fs.length-1,v=vistaFase(),m=S.msg,fam=grupo(j);
+ var ps=Object.keys(D.links||{}).filter(function(p){return D.links[p]===j.s;})[0];
+ var tools='<button type="button" class="jg-btn jg-actions-btn" popovertarget="jg-game-tools">'+esc(S.lang==='en'?'Options':'Opciones')+'</button>'+
+  '<div class="jg-filter-pop jg-game-tools" id="jg-game-tools" popover><div class="jg-pop-head"><strong>'+esc(S.lang==='en'?'Game options':'Opciones del juego')+'</strong><button type="button" class="jg-pop-close" popovertarget="jg-game-tools" popovertargetaction="hide" aria-label="×">×</button></div><div class="jg-pop-actions">'+
   boton(u.menos,function(){S.red=!S.red;S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;},S.red?'is-on':'','red',' aria-pressed="'+S.red+'"')+
   boton(u.ayuda,function(){if(S.hecha)return;var t=f&&f.tipo;S.ayuda=true;if(!(t==='reloj'||t==='elegir'||t==='construir'))S.msg={t:t==='orden'?u.ayudaOrden:u.ayudaGen,k:'guia'};},'','ayuda')+
-  boton(u.otraVez,reiniciar,'','otra')+(v.hoja?boton(u.imprimir,function(){setTimeout(function(){try{window.print();}catch(e){}},50);},'','print'):'')+'</div></div>'+
-  v.html+'<div class="jg-status">'+(m&&!S.hecha?'<p class="jg-msg'+(m.k==='ok'?' is-ok':'')+'">'+esc(m.t)+'</p>':'')+'</div>'+
-  (S.hecha?'<div class="jg-done"><p class="jg-done-t">'+esc(last?u.hechoT:u.hechoParte)+'</p>'+(last?'<p>'+esc(u.hechoFin)+'</p>':'')+'<div class="jg-chips">'+
-   (last?boton(u.otroJuego,volver,'is-primary','otro')+boton(u.otraVez,reiniciar,'','otra2'):boton(u.seguir,function(){S.fi++;S.msg=null;S.hecha=false;S.ayuda=false;focusHead=true;},'is-primary','seguir'))+'</div></div>':'')+
-  '</section></div>';
+  boton(u.otraVez,reiniciar,'','otra')+(v.hoja?boton(u.imprimir,function(){setTimeout(function(){try{window.print();}catch(e){}},50);},'','print'):'')+
+  (ps?'<a class="jg-btn" href="'+(S.lang==='en'?'/en/resources/printable-routines/':'/es/recursos/rutinas-imprimibles/')+'#pack-'+ps+'">'+esc(u.imprimible)+'</a>':'')+
+  '</div></div>';
+ var h='<div class="jg-ui jg-r41-game"><header class="jg-gamebar">'+
+  '<button type="button" class="jg-iconbtn" data-k="volver" data-a="'+act(volver)+'" aria-label="'+esc(u.todos)+'">←</button>'+
+  '<div class="jg-gamebar-title"><span class="jg-small">'+esc((D.tipos||[]).filter(function(t){return t.id===fam;}).map(function(t){return L(t.l);})[0]||u.juego)+'</span><h1 tabindex="-1" id="jg-h2">'+esc(L(j.t))+'</h1></div>'+tools+'</header>'+
+  '<div class="jg-r41-app jg-family-'+esc(fam)+'"><section class="jg-play jg-workspace" aria-label="'+esc(L(j.t))+'">'+
+   '<div class="jg-taskbar">'+(fs.length>1?'<span class="jg-step">'+esc(u.parte(S.fi+1,fs.length))+'</span>':'')+
+   '<div class="jg-instr">'+(f&&f.t?'<h2>'+esc(L(f.t))+'</h2>':'')+'<p>'+esc(f?L(f.i):'')+'</p></div></div>'+
+   '<div class="jg-stage">'+v.html+'</div>'+
+   '<div class="jg-status">'+(m&&!S.hecha?'<p class="jg-msg'+(m.k==='ok'?' is-ok':'')+'">'+esc(m.t)+'</p>':'')+'</div>'+
+   (S.hecha?'<div class="jg-done"><p class="jg-done-t">'+esc(last?u.hechoT:u.hechoParte)+'</p>'+(last?'<p>'+esc(u.hechoFin)+'</p>':'')+'<div class="jg-chips">'+
+    (last?boton(u.otroJuego,volver,'is-primary','otro')+boton(u.otraVez,reiniciar,'','otra2'):boton(u.seguir,function(){S.fi++;S.msg=null;S.hecha=false;S.ayuda=false;focusHead=true;},'is-primary','seguir'))+'</div></div>':'')+
+  '</section><aside class="jg-inspector" aria-label="'+esc(S.lang==='en'?'About this game':'Sobre este juego')+'"><p class="jg-kicker">'+esc((D.cats||[]).filter(function(c){return c.id===j.c;}).map(function(c){return L(c.l);})[0]||'')+'</p><p>'+esc(L(j.d))+'</p><div class="jg-family-legend" aria-hidden="true"><span></span><span></span><span></span></div></aside></div></div>';
  if(v.hoja)h+='<section class="jg-hoja"><h2>'+esc(L(j.t))+'</h2><p>'+esc(v.hoja.t)+'</p><ol>'+v.hoja.items.map(function(it){var p=pk(it[1]);return '<li><span>'+esc(it[0])+'</span>'+img(p.img)+'<strong>'+esc(p.l)+'</strong></li>';}).join('')+'</ol><footer class="jg-hoja-pie"><span>'+esc(u.atrib)+'</span><strong class="jg-marca">'+esc(D.marca||'IRIS GREEN · irisgreen.eu')+'</strong></footer></section>';
  return h;
 }
@@ -265,6 +302,16 @@ function render(){
   lastKey=null;}
 }
 root.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b||!root.contains(b))return;var fn=A[+b.getAttribute('data-a')];if(!fn)return;e.preventDefault();lastKey=b.getAttribute('data-k');fn();render();});
+var dragAction=null;
+root.addEventListener('dragstart',function(e){
+ var b=e.target.closest('[data-a][draggable="true"]');if(!b)return;dragAction=+b.getAttribute('data-a');try{e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','iris-game-item');}catch(_){}
+});
+root.addEventListener('dragover',function(e){if(dragAction===null)return;if(e.target.closest('.jg-drop-target,.jg-slot-empty.is-focus,.jg-row'))e.preventDefault();});
+root.addEventListener('drop',function(e){
+ if(dragAction===null)return;var target=e.target.closest('.jg-drop-target,.jg-slot-empty.is-focus,.jg-row');if(!target)return;e.preventDefault();
+ var fn=A[dragAction];dragAction=null;if(typeof fn==='function'){fn();render();}
+});
+root.addEventListener('dragend',function(){dragAction=null;});
 function arriba(){try{var r=(hero&&!hero.hidden?hero:root).getBoundingClientRect();window.scrollTo(0,Math.max(0,r.top+window.scrollY-24));}catch(e){}}
 function altHash(h){try{Array.prototype.forEach.call(document.querySelectorAll('link[rel="alternate"][hreflang]'),function(l){var u=l.getAttribute('href').split('#')[0];l.setAttribute('href',u+(h||''));});}catch(e){}}
 function abrir(i,sinHash){altHash('#juego-'+D.juegos[i].s);S.vista='juego';S.gi=i;S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;focusHead=true;
