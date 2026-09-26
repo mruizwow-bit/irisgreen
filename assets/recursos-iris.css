@@ -104,3 +104,10 @@ body:has(.ri-main)>.ft{margin-top:0;margin-bottom:0}
  .ri-stage-card{min-height:auto}
 }
 @media(forced-colors:active){.ri-stage-section,.ri-stage-card,.ri-stage-visual,.ri-stage-actions a{border:2px solid CanvasText;background:Canvas!important;box-shadow:none}}
+
+
+/* R42 progressive enhancement · responsive resource hub by available space. */
+.ri-stage-section{container-type:inline-size}
+.ri-grid-primary>li,.ri-grid-explore>li{content-visibility:auto;contain-intrinsic-size:18rem 22rem}
+@container (max-width:52rem){.ri-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:30rem){.ri-stage-grid{grid-template-columns:1fr}.ri-stage-card{min-height:auto}}
