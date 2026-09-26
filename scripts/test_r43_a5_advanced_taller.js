@@ -12,6 +12,8 @@ assert.doesNotMatch(shell,/sessionStorage\.getItem\(['"]ig42-stage/,'life-stage 
 assert.doesNotMatch(shell,/sessionStorage\.setItem\(['"]ig42-stage/,'life-stage view must not be stored');
 assert.match(shell,/Ver propuestas para|Show ideas for/,'stage control must describe a view, not identity');
 assert.match(shell,/ig42-link-context/,'stage selection must change visible context');
+assert.match(shell,/\.ig43-toolbar button/,'R42 rail must expose advanced-engine tools');
+assert.match(shell,/\.ig43-editor/,'R42 shell must recognise advanced editors as ready workspaces');
 assert.match(shell,/dataStudyId|studyId|dataset\.studyId/,'launcher must bind cards to studios');
 
 assert.match(loader,/ig-taller-r43-advanced\.js/,'advanced engine must actually load');
