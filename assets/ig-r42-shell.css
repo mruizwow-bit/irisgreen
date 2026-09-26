@@ -473,6 +473,44 @@
     color:var(--r42-muted);
   }
 
+  .ig-r42-file-popover {
+    width:min(92vw,18rem);
+    max-height:min(70vh,30rem);
+    margin:0;
+    padding:.45rem;
+    border:1px solid var(--r42-line-strong);
+    border-radius:14px;
+    background:var(--r42-surface);
+    color:var(--r42-ink);
+    box-shadow:0 20px 60px -36px rgba(14,29,53,.72);
+    display:grid;
+    gap:.3rem;
+  }
+
+  .ig-r42-file-popover:not(:popover-open):not([open]) {
+    display:none;
+  }
+
+  .ig-r42-file-popover .ig-r42-action {
+    width:100%;
+    justify-content:flex-start;
+    border-radius:10px;
+  }
+
+  .ig-r42-file-trigger {
+    anchor-name:--ig-r42-file-anchor;
+  }
+
+  @supports (position-anchor:--ig-r42-file-anchor) {
+    .ig-r42-file-popover {
+      position-anchor:--ig-r42-file-anchor;
+      inset:auto;
+      top:anchor(bottom);
+      left:anchor(left);
+      margin-top:.3rem;
+    }
+  }
+
   .ig-r42-help-source {
     margin:0;
   }
