@@ -91,7 +91,7 @@ def encode_template(match: re.Match[str]) -> str:
 
 def encode_active_markup(text: str) -> str:
     """Codifica plantillas solo en HTML activo, nunca dentro de script/noscript."""
-    protected = re.compile(r"<(?:script|noscript)\\b[^>]*>.*?</(?:script|noscript)\\s*>", re.I | re.S)
+    protected = re.compile(r"<(?:script|noscript)\b[^>]*>.*?</(?:script|noscript)\s*>", re.I | re.S)
     out = []
     pos = 0
     for match in protected.finditer(text):
