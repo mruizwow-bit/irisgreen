@@ -40,12 +40,12 @@
     },
     interests: {
       stage:'.ig-afondo', title:'main h1', hero:null,
-      back:lang === 'en' ? '/en/' : '/es/', eyebrow:T.interests
+      back:'/', eyebrow:T.interests
     },
     quiet: {
       stage:'#r40Workspace', title:'.xhero h1', hero:'.xhero',
       context:'.r40-mode-nav',
-      back:lang === 'en' ? '/en/' : '/es/', eyebrow:T.quiet
+      back:'/', eyebrow:T.quiet
     }
   }[family];
 
@@ -297,7 +297,13 @@
     }
   }
 
-  inspectorFrame.dialog.addEventListener('close', restoreInspectorHome);
+  inspectorFrame.dialog.addEventListener('close', function () {
+    restoreInspectorHome();
+    inspector.setAttribute('data-collapsed', 'true');
+    shell.dataset.inspector = 'closed';
+    panelButton.setAttribute('aria-expanded', 'false');
+    inspectRail.setAttribute('aria-pressed', 'false');
+  });
 
   function openInspector(trigger) {
     if (isCompact()) {
