@@ -1,0 +1,53 @@
+/* R40-RINCON-R03 · zona superior única */
+.r40-mode-nav[hidden]{display:none!important}
+.r40-rincon-r03 .r40-mode-nav{display:grid;gap:10px;margin:0 0 14px}
+.r40-rincon-r03 .r40-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:6px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.94)}
+.r40-rincon-r03 .r40-tabs button{flex:1 1 10rem;min-height:48px;border:1px solid transparent;border-radius:13px;background:transparent;color:var(--ink);font:700 1rem/1.2 'Atkinson Hyperlegible',system-ui,sans-serif;cursor:pointer}
+.r40-rincon-r03 .r40-tabs button[aria-selected="true"]{background:#17395c;color:#fff}
+.r40-rincon-r03 .r40-mobile-mode{display:none}
+.r40-rincon-r03 .r40-workspace{display:block;margin:0;min-height:34rem}
+.r40-rincon-r03 .r40-workspace>.qcard{display:block!important;margin:0;border-radius:24px;padding:20px}
+.r40-rincon-r03 .r40-workspace>.qcard[hidden]{display:none!important}
+.r40-rincon-r03 .r40-workspace>.qcard>summary{display:none!important}
+.r40-rincon-r03 #watch{display:flex!important;flex-direction:column}
+.r40-rincon-r03 #watch[hidden]{display:none!important}
+.r40-rincon-r03 #watch>.stage{order:1;margin-top:0;min-height:clamp(240px,48vw,620px)}
+.r40-rincon-r03 #watch>#watchCredit{order:2;text-align:center}
+.r40-rincon-r03 #watch>#r40SceneStatus{order:3}
+.r40-rincon-r03 #watch>.r40-scene-actions{order:4}
+.r40-rincon-r03 #watch>p:not(#watchCredit):not(#r40SceneStatus){order:5}
+.r40-rincon-r03 #watch>#sceneList{order:6}
+.r40-rincon-r03 #sceneList{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.r40-rincon-r03 #sceneList>.qchoice{grid-template-columns:72px minmax(0,1fr);min-height:86px}
+.r40-rincon-r03 #sceneList>.qopts{grid-column:1/-1}
+.r40-rincon-r03 .r40-scene-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;border:1px solid #a9bacb;border-radius:16px;background:rgba(255,255,255,.96)}
+.r40-rincon-r03 .r40-scene-actions button{min-height:44px}
+.r40-rincon-r03 #r40StartAV{background:#1f5f8b;border-color:#1f5f8b;color:#fff}
+.r40-rincon-r03 #r40Mute[aria-pressed="true"]{background:#17395c;color:#fff}
+.r40-rincon-r03 .r40-scene-status{min-height:1.6em}
+.r40-rincon-r03 #watchStage{transition:opacity 400ms ease;background:#0d2133}
+.r40-rincon-r03 #watchStage.r40-fade-out{opacity:0}
+.r40-rincon-r03 #genSounds{display:block!important;border:0;background:transparent}
+.r40-rincon-r03 #genSounds>summary{display:none}
+.r40-rincon-r03 #genList{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0}
+.r40-rincon-r03 #genList .qgen{min-height:58px}
+.r40-rincon-r03 #mixer,.r40-rincon-r03 #audioList,.r40-rincon-r03 #audio{display:none!important}
+.r40-rincon-r03 .audio-now{background:#fff}
+.r40-rincon-r03 .r40-static-fallback{margin:0;width:100%;height:100%;position:relative;display:grid;place-items:end center;background:#0d2133;overflow:hidden}
+.r40-rincon-r03 .r40-static-fallback img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r40-rincon-r03 .r40-static-fallback figcaption{position:relative;z-index:2;width:min(94%,52rem);margin:0 0 14px;padding:11px 14px;border-radius:12px;background:rgba(255,255,255,.95);color:#17395c}
+.r40-rincon-r03 .qthumb-octopus{background:radial-gradient(ellipse 20% 24% at 56% 48%,#9c6b57 0 58%,transparent 61%),radial-gradient(ellipse 15% 8% at 44% 72%,#765044 0 60%,transparent 64%),radial-gradient(ellipse 15% 8% at 66% 74%,#765044 0 60%,transparent 64%),linear-gradient(180deg,#2d7892,#123b58 60%,#756c57 61%)}
+@media(max-width:700px){
+ .r40-rincon-r03 .r40-tabs{display:none}
+ .r40-rincon-r03 .r40-mobile-mode{display:grid;gap:6px;font-weight:700}
+ .r40-rincon-r03 .r40-mobile-mode select{min-height:48px;width:100%;border:1px solid #8492a5;border-radius:12px;background:#fff;color:#17395c;font:inherit;padding:0 12px}
+ .r40-rincon-r03 #sceneList{grid-template-columns:1fr}
+ .r40-rincon-r03 #genList{grid-template-columns:1fr}
+ .r40-rincon-r03 .r40-workspace{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.r40-rincon-r03 #watchStage{transition:none!important}}
+body.rm.r40-rincon-r03 #watchStage{transition:none!important}
+@media(forced-colors:active){
+ .r40-rincon-r03 .r40-tabs,.r40-rincon-r03 .r40-scene-actions,.r40-rincon-r03 .r40-static-fallback figcaption{background:Canvas;color:CanvasText;border:2px solid CanvasText}
+ .r40-rincon-r03 .r40-tabs button[aria-selected="true"]{background:Highlight;color:HighlightText}
+}
