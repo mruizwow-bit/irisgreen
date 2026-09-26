@@ -1,0 +1,79 @@
+name: R42 A1 Life Stage QA
+'on':
+  push:
+    branches:
+      - qa/r42-a1-life-stage-r01-20260926
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact A1 life-stage candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 874a5c1f0b6bbeced962c31aaa288a3d7cdb07ff
+          fetch-depth: 0
+          path: candidate
+          persist-credentials: false
+
+      - name: Verify exact identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r42-a1-stage
+          cd candidate
+          test "$(git rev-parse HEAD)" = "874a5c1f0b6bbeced962c31aaa288a3d7cdb07ff"
+          test "$(git rev-parse HEAD^{tree})" = "320d2394d87ce66cbcbe9087c3394df8cacf6068"
+          git diff --check c88ede84d8f4f88e3a93390d7502e226ba5f4e0d...HEAD
+          git diff --name-only c88ede84d8f4f88e3a93390d7502e226ba5f4e0d...HEAD | tee /tmp/r42-a1-stage/changed-files.txt
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/r42-a1-stage/status-before.txt
+          test ! -s /tmp/r42-a1-stage/status-before.txt
+
+      - name: Run R42 Resources Games Routines contract
+        working-directory: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/test_r42_recursos_juegos_rutinas.py | tee /tmp/r42-a1-stage/contract-report.json
+
+      - name: Build complete site
+        working-directory: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_site.py | tee /tmp/r42-a1-stage/build.log
+
+      - name: Verify identity after build
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd candidate
+          test "$(git rev-parse HEAD)" = "874a5c1f0b6bbeced962c31aaa288a3d7cdb07ff"
+          test "$(git rev-parse HEAD^{tree})" = "320d2394d87ce66cbcbe9087c3394df8cacf6068"
+          git diff --check c88ede84d8f4f88e3a93390d7502e226ba5f4e0d...HEAD
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/r42-a1-stage/status-after.txt
+          test ! -s /tmp/r42-a1-stage/status-after.txt
+          python3 - <<'PY' | tee /tmp/r42-a1-stage/identity.json
+          import json, subprocess
+          def g(*args):
+              return subprocess.check_output(["git",*args], text=True).strip()
+          print(json.dumps({
+              "head": g("rev-parse","HEAD"),
+              "tree": g("rev-parse","HEAD^{tree}"),
+              "base_handoff": "c88ede84d8f4f88e3a93390d7502e226ba5f4e0d",
+              "changed_files": g("diff","--name-only","c88ede84d8f4f88e3a93390d7502e226ba5f4e0d...HEAD").splitlines(),
+              "clean": True
+          }, indent=2))
+          PY
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r42-a1-life-stage-r01-qa
+          path: /tmp/r42-a1-stage
+          retention-days: 14
