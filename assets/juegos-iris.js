@@ -305,7 +305,12 @@ function render(){
   if(el&&!el.disabled)el.focus({preventScroll:true});else{var alt=root.querySelector('.jg-grid button,.jg-cols button,.jg-dests button,.jg-done button');if(alt)alt.focus({preventScroll:true});}
   lastKey=null;}
 }
-root.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b||!root.contains(b))return;var fn=A[+b.getAttribute('data-a')];if(!fn)return;e.preventDefault();lastKey=b.getAttribute('data-k');fn();render();});
+function transitionUpdate(fn){
+ var reduce=false;try{reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(_){}
+ if(!reduce&&document.startViewTransition){try{return document.startViewTransition(fn);}catch(_){}}
+ fn();return null;
+}
+root.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b||!root.contains(b))return;var fn=A[+b.getAttribute('data-a')];if(!fn)return;e.preventDefault();lastKey=b.getAttribute('data-k');transitionUpdate(function(){fn();render();});});
 var dragAction=null,dragCurrent=false;
 root.addEventListener('dragstart',function(e){
  var current=e.target.closest('[data-drag-current="true"]');
