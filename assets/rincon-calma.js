@@ -6,7 +6,7 @@
   var T = ES ? {
     stopped: 'La forma se ha quedado quieta. Puedes seguir aquí.',
     grow: 'La forma crece.', shrink: 'La forma se encoge.',
-    credit: 'Escena de Iris Green. Se mueve despacio y no usa internet.',
+    credit: 'Escena local de Iris Green. Las escenas naturales con vídeo se cargan desde Wikimedia Commons solo después de iniciarlas.',
     aquarium: 'Acuario: peces de colores nadan despacio entre plantas y burbujas.',
     bubbles: 'Tubo de burbujas: burbujas que suben despacio por una columna de luz.',
     jellies: 'Medusas: medusas de luz que laten y suben despacio en agua oscura.',
@@ -25,7 +25,7 @@
   } : {
     stopped: 'The shape has stopped. You can stay here.',
     grow: 'The shape grows.', shrink: 'The shape shrinks.',
-    credit: 'A scene made for this site. It moves slowly and uses no internet.',
+    credit: 'A local Iris Green scene. Natural video scenes load from Wikimedia Commons only after you start them.',
     aquarium: 'Aquarium: coloured fish swim slowly among plants and bubbles.',
     bubbles: 'Bubble tube: bubbles rise slowly up a column of light.',
     jellies: 'Jellyfish: glowing jellyfish pulse and rise slowly in dark water.',
@@ -378,8 +378,8 @@
     violet: { water: ['#5a49a8', '#261d52'], glow: '#c9b8ff', fish: ['#f4a6c1', '#ffd6a5', '#a8dadc', '#ffffff', '#f2c14e'] }
   };
   function opt(name, def) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : def; }
-  var scene = null, raf = 0;
-  function stopScene() { cancelAnimationFrame(raf); raf = 0; if (scene && scene.stop) { try { scene.stop(); } catch (e) {} } scene = null; }
+  var scene = null, mediaScene = null, raf = 0;
+  function stopScene() { cancelAnimationFrame(raf); raf = 0; if (scene && scene.stop) { try { scene.stop(); } catch (e) {} } scene = null; if (mediaScene && mediaScene.stop) { try { mediaScene.stop(); } catch (e) {} } mediaScene = null; }
 
   /* Escenas en 3D (se cargan solo al pulsar). Si el navegador no puede, se usa la versión 2D. */
   var scene3d = null, load3d = null;
@@ -394,11 +394,27 @@
     return load3d;
   }
   function stop3d() { if (scene3d) { scene3d.stop(); scene3d = null; } }
+  function setMediaCredit(kind) {
+    if (!credit) return;
+    credit.textContent = '';
+    var rm = window.IGQuietMediaR42, a = rm && rm.attribution ? rm.attribution(kind, ES) : null;
+    if (!a) { credit.textContent = T.credit; return; }
+    var span = document.createElement('span'); span.textContent = a.text + ' · ';
+    var link = document.createElement('a'); link.href = a.href; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = ES ? 'fuente y licencia' : 'source and licence';
+    credit.appendChild(span); credit.appendChild(link);
+  }
   function startScene(kind, button) {
     var stopV = $('#stopVideo'); if (stopV) stopV.click();
     stopScene(); stop3d();
     var token = {}; startScene.token = token;
     document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
+    var rm = window.IGQuietMediaR42;
+    if (rm && rm.has && rm.has(kind)) {
+      activeKind = kind; ambience.sync(); keepAwake.update(); touch.hide(); sceneTimer.arm();
+      mediaScene = rm.mount(kind, stage, { autoplayAfterGesture: !reduced() });
+      setMediaCredit(kind);
+      return;
+    }
     stage.innerHTML = '';
     var cv3 = document.createElement('canvas');
     cv3.setAttribute('role', 'img');
