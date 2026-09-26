@@ -74,6 +74,10 @@ def browser_checks(root,out):
                   stage_all=page.locator('#jg-app [data-k="stage-all"]')
                   if stage_all.count():
                     stage_all.first.focus();stage_all.first.press('Enter')
+                  # The play-first hub then asks what context to practise before listing games.
+                  context_cards=page.locator('#jg-app .jg-context-card')
+                  if context_cards.count():
+                    context_cards.first.focus();context_cards.first.press('Enter')
                   cards=page.locator('main .jg-card');cards.first.wait_for(state='visible');assert cards.count()>0
                   cards.first.focus();cards.first.press('Enter')
                   page.locator('#jg-h2').wait_for()
