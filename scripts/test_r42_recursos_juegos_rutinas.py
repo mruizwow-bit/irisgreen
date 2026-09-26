@@ -64,7 +64,7 @@ for needle in [
     'draggable="true"','data-drag-current="true"',"dragstart","drop",
     "stageChosen","etapasOrdenadas","etapaLanding","etapaRail",
     "['inf','ado','adu','todas']","#etapa-(inf|ado|adu|todas|all)",
-    "eligeEtapa","verTodo"
+    "eligeEtapa","verTodo","startViewTransition","renderNavigation"
 ]:
     assert needle in runtime,needle
 assert "group('et'" not in runtime, "life stage must not be hidden in secondary filters"
@@ -138,7 +138,7 @@ for needle in [
     "IRIS GREEN · irisgreen.eu","mulberrysymbols.org","pictogramData","TextEncoder",
     "stageChosen","etapasOrdenadas","etapaLanding","etapaRail",
     "['inf','ado','adu','todas']","#etapa-(inf|ado|adu|todas|all)",
-    "eligeEtapa","verTodas"
+    "eligeEtapa","verTodas","startViewTransition"
 ]:
     assert needle in routine_js,needle
 
@@ -169,8 +169,19 @@ routines_css=(ROOT/"assets/rutinas-imprimibles.css").read_text(encoding="utf-8")
 resources_css=(ROOT/"assets/recursos-iris.css").read_text(encoding="utf-8")
 assert "content-visibility:auto" in games_css
 assert "content-visibility:auto" in routines_css
+assert "anchor-name:--jg-filter-anchor" in games_css
+assert "position-anchor:--jg-filter-anchor" in games_css
+assert "view-transition-name:jg-resource-view" in games_css
 assert ".im-stage-entry" in routines_css and ".im-stage-rail" in routines_css
+assert "view-transition-name:im-resource-view" in routines_css
 assert ".ri-stage-section" in resources_css and ".ri-stage-grid" in resources_css
+assert "container-type:inline-size" in resources_css
+
+iris_card=(ROOT/"assets/tarjeta-iris.js").read_text(encoding="utf-8")
+subprocess.run(["node","--check",str(ROOT/"assets/tarjeta-iris.js")],cwd=ROOT,check=True)
+assert "requestAnimationFrame" in iris_card and "scheduleLivePreview" in iris_card
+for p in [ROOT/"es/recursos/tarjeta-iris/index.html",ROOT/"en/resources/iris-card/index.html"]:
+    assert "/assets/tarjeta-iris.js?v=r42-a1-tech-r01" in p.read_text(encoding="utf-8")
 
 print(json.dumps({
     "status":"PASS",
