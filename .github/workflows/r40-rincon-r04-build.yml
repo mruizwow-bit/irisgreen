@@ -45,22 +45,22 @@ jobs:
           mode=os.environ["MODE"]
           p=pathlib.Path("docs/r40-a7-build/r04-evidence/dom")/(mode+".html")
           s=p.read_text(encoding="utf-8",errors="replace")
-          m=re.search(r"<body\\b([^>]*)>",s,re.I)
-          attrs=m.group(1) if m else ""
-          print("R04_DOM",mode,attrs[:1200])
+          m=re.search(r"<body[^>]*>",s,re.I)
+          tag=m.group(0) if m else ""
+          print("R04_DOM",mode,tag[:1200])
           if 'data-r40-r04-script="loaded"' not in s:
             print("R04_SCRIPT_NOT_EXECUTED",mode,file=sys.stderr)
             sys.exit(1)
           required={
-            'data-r40-r04-ready':'true',
-            'data-r40-active-mode':mode,
-            'data-r40-video-first':'true',
-            'data-r40-sound-first':'true',
-            'data-r40-ball-first':'true',
+            "data-r40-r04-ready":"true",
+            "data-r40-active-mode":mode,
+            "data-r40-video-first":"true",
+            "data-r40-sound-first":"true",
+            "data-r40-ball-first":"true",
           }
           missing=[]
           for k,v in required.items():
-            if not re.search(r'\\b'+re.escape(k)+r'=["\\\']'+re.escape(v)+r'["\\\']',attrs):
+            if (k+'="'+v+'"') not in tag and (k+"='"+v+"'") not in tag:
               missing.append(k+"="+v)
           if missing:
             print("R04_DOM_FAIL",mode,missing,file=sys.stderr)
