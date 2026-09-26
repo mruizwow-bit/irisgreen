@@ -390,6 +390,12 @@
       info.textContent=(lang()==='en'?'Collection: ':'Colección: ')+c.length+' · '+(lang()==='en'?'projects: ':'proyectos: ')+p.length+' · '+(lang()==='en'?'progress: ':'progreso: ')+pr.length+(cap.persistent?'':' · '+t('sessionOnly'));
     }
     render();
+    var platform=root.IGTallerR42Platform;
+    if(platform&&typeof platform.subscribe==='function'&&!host.dataset.ig42Subscribed){
+      host.dataset.ig42Subscribed='true';
+      platform.subscribe(function(){ render(); });
+    }
+    root.document.addEventListener('ig:r42-local-change',function(){render();});
   }
 
   function enhanceWorkshop(w){
