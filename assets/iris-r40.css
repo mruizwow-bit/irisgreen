@@ -65,6 +65,7 @@ body.ig-r40 :where(.hd,.ig-uh,.site-header){
   color:#fff;
 }
 .ig-r40-nav-group{position:relative}
+.ig-r40-nav-group:not([open])>.ig-r40-nav-menu{display:none}
 .ig-r40-nav-menu{
   position:absolute;
   z-index:80;
