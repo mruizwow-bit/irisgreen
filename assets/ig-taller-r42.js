@@ -26,7 +26,7 @@
   function createDialog(id,title){
     var d=D.createElement('dialog');d.id=id;d.className='ig42-dialog';d.setAttribute('aria-labelledby',id+'-title');
     var head=el('div','ig42-dialog-head'),h=el('h2','',title),x=btn(T('Cerrar','Close'),'ig42-icon-btn');x.setAttribute('aria-label',T('Cerrar','Close'));x.textContent='×';x.addEventListener('click',function(){d.close();});
-    head.appendChild(h);head.appendChild(x);d.appendChild(head);d.appendChild(el('div','ig42-dialog-body'));D.body.appendChild(d);return d;
+    h.id=id+'-title';head.appendChild(h);head.appendChild(x);d.appendChild(head);d.appendChild(el('div','ig42-dialog-body'));D.body.appendChild(d);return d;
   }
   function showDialog(d,trigger){if(!d)return;d.__trigger=trigger||D.activeElement;if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
   function wireDialogClose(d){d.addEventListener('close',function(){if(d.__trigger&&typeof d.__trigger.focus==='function')d.__trigger.focus();});}
@@ -80,7 +80,6 @@
   function workspaceShell(app){
     var shell=el('section','ig42-workspace');shell.setAttribute('aria-label',T('Espacio de trabajo','Workspace'));
     var rail=buildRail(app),center=el('div','ig42-workspace-center'),ins=createInspector();
-    var work=mainWork(app);if(work!==app)center.appendChild(work);else center.appendChild(app);
     shell.appendChild(rail);shell.appendChild(center);shell.appendChild(ins.node);return {node:shell,rail:rail,center:center,inspector:ins};
   }
   function mirrorInspector(app,ins){populateInspector(app,ins);}
@@ -90,12 +89,13 @@
     for(var i=0;i<bars.length;i++){if(/Deshacer|Undo/.test(bars[i].textContent||'')){project=bars[i];break;}}
     if(!project)return;
     var ub=findButton(project,/Deshacer|Undo/i),rb=findButton(project,/Rehacer|Redo/i);top.undo.onclick=function(){safeClick(ub);};top.redo.onclick=function(){safeClick(rb);};
-    qa('button',project).forEach(function(b){var txt=(b.textContent||'').trim();if(/Deshacer|Undo|Rehacer|Redo/i.test(txt))return;var clone=btn(txt,'ig42-menu-action');clone.addEventListener('click',function(){safeClick(b);});fileBody.appendChild(clone);});
+    if(!project.dataset.ig42Extracted){qa('button',project).forEach(function(b){var txt=(b.textContent||'').trim();if(/Deshacer|Undo|Rehacer|Redo/i.test(txt))return;var clone=btn(txt,'ig42-menu-action');clone.addEventListener('click',function(){safeClick(b);});fileBody.appendChild(clone);});project.dataset.ig42Extracted='true';}
     project.classList.add('ig42-original-projectbar');project.hidden=true;
   }
   function extractChallenges(app,body,top,study){
-    var c=q('.igt-retos',app);if(c){body.appendChild(c);c.classList.add('ig42-challenge-content');}
-    var stage=el('section','ig42-stage-brief-wrap');stage.appendChild(el('h3','',T('Sugerencia para esta etapa','Suggestion for this stage')));var p=el('p','');p.id='ig42-stage-brief';stage.appendChild(p);body.insertBefore(stage,body.firstChild);updateStageBrief(study,(function(){try{return root.sessionStorage.getItem('ig42-stage')||'all';}catch(e){return'all';}})());
+    var c=q('.igt-retos',app);if(c&&!body.contains(c)){body.appendChild(c);c.classList.add('ig42-challenge-content');}
+    if(!q('#ig42-stage-brief',body)){var stage=el('section','ig42-stage-brief-wrap');stage.appendChild(el('h3','',T('Sugerencia para esta etapa','Suggestion for this stage')));var p=el('p','');p.id='ig42-stage-brief';stage.appendChild(p);body.insertBefore(stage,body.firstChild);}
+    updateStageBrief(study,(function(){try{return root.sessionStorage.getItem('ig42-stage')||'all';}catch(e){return'all';}})());
   }
   function makeManagementButton(main){
     var b=btn(T('Mi colección y proyectos','My collection and projects'),'ig42-manage-btn');var dlg=createDialog('ig42-manage',T('Mi colección y proyectos','My collection and projects'));wireDialogClose(dlg);b.addEventListener('click',function(){var body=q('.ig42-dialog-body',dlg);if(!body.dataset.loaded){var old=q('#igt-local-summary');if(old){body.appendChild(old);old.hidden=false;old.classList.add('ig42-local-summary');}else body.appendChild(el('p','ig42-empty',T('Todavía no hay datos locales que gestionar.','There is no local data to manage yet.')));body.dataset.loaded='true';}showDialog(dlg,b);});
@@ -105,14 +105,14 @@
   function directManipulation(app){
     qa('.igt-r40-pixel,.igt-r40-floor,.igt-r40-world,.igt-r40-board,.igt-r40-sim,.igt-r40-game,.igt-r40-sequencer,.igt-r40-piano',app).forEach(function(grid){
       if(grid.dataset.ig42Drag)return;grid.dataset.ig42Drag='true';var down=false,last=null;
-      grid.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('button');if(!b)return;down=true;last=b;try{b.setPointerCapture(e.pointerId);}catch(x){};});
+      grid.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('button');if(!b)return;down=true;last=b;});
       grid.addEventListener('pointerover',function(e){if(!down)return;var b=e.target.closest&&e.target.closest('button');if(!b||b===last)return;last=b;b.click();});
       grid.addEventListener('pointerup',function(){down=false;last=null;});grid.addEventListener('pointercancel',function(){down=false;last=null;});
     });
   }
 
   function bindFileSystemAccess(fileBody,app,study){
-    if(!root.showOpenFilePicker&&!root.showSaveFilePicker)return;var sep=el('hr','ig42-menu-sep');fileBody.appendChild(sep);
+    if(fileBody.dataset.ig42Fs||(!root.showOpenFilePicker&&!root.showSaveFilePicker))return;fileBody.dataset.ig42Fs='true';var sep=el('hr','ig42-menu-sep');fileBody.appendChild(sep);
     var cap=el('p','ig42-capability',T('Guardado avanzado disponible en este navegador.','Advanced file saving is available in this browser.'));fileBody.appendChild(cap);
     if(root.showOpenFilePicker){var open=btn(T('Abrir con selector del sistema…','Open with system picker…'),'ig42-menu-action');open.addEventListener('click',async function(){try{var hs=await root.showOpenFilePicker({multiple:false,types:[{description:'Iris Green project',accept:{'application/json':['.json']}}]});var f=await hs[0].getFile();var text=await f.text();if(root.IGR40LocalData&&root.IGR40LocalData.validateImportText){var p=root.IGR40LocalData.validateImportText(text,study&&study.id);await root.IGR40LocalData.service.commitImport(p);if(root.IGT&&root.IGT.say)root.IGT.say(T('Proyecto importado.','Project imported.'));}}catch(e){if(e&&e.name!=='AbortError'&&root.IGT)root.IGT.say(T('No se pudo abrir el archivo.','The file could not be opened.'));}});fileBody.appendChild(open);}
   }
@@ -121,9 +121,9 @@
     var app=q('#igt-app'),main=q('main#main');if(!app||!main||main.dataset.ig42Mounted)return false;main.dataset.ig42Mounted='true';main.classList.add('ig42-active');ensureCss();var study=studyFromApp(app);
     var top=createTopbar(main,app,study),challengeDlg=createDialog('ig42-challenge',T('Reto','Challenge')),fileDlg=createDialog('ig42-file',T('Archivo','File')),helpDlg=createDialog('ig42-help',T('Ayuda','Help'));wireDialogClose(challengeDlg);wireDialogClose(fileDlg);wireDialogClose(helpDlg);
     top.challenge.addEventListener('click',function(){showDialog(challengeDlg,top.challenge);});top.file.addEventListener('click',function(){showDialog(fileDlg,top.file);});top.help.addEventListener('click',function(){showDialog(helpDlg,top.help);});
-    var ws=workspaceShell(app);if(app.parentNode!==ws.center)app.parentNode.insertBefore(ws.node,app);else main.insertBefore(ws.node,app);if(app.parentNode!==ws.center&&app!==ws.center)ws.center.appendChild(app);
+    var ws=workspaceShell(app);app.parentNode.insertBefore(ws.node,app);ws.center.appendChild(app);
     moveSourceSections(q('.ig42-dialog-body',helpDlg));makeManagementButton(main);
-    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);var work=mainWork(app);if(work&&work!==app&&work.parentNode!==ws.center)ws.center.appendChild(work);if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
+    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
     root.setTimeout(settle,0);return true;
   }
 
