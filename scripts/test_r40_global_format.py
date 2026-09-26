@@ -54,8 +54,8 @@ def synthetic_contract() -> None:
 
 
 def source_contract() -> None:
-    css = (ROOT / "assets/ig-r40.css").read_text(encoding="utf-8")
-    js = (ROOT / "assets/ig-r40.js").read_text(encoding="utf-8")
+    css = (ROOT / "assets/iris-r40.css").read_text(encoding="utf-8")
+    js = (ROOT / "assets/iris-r40.js").read_text(encoding="utf-8")
     transform = (ROOT / "scripts/apply_r40_global_format.py").read_text(encoding="utf-8")
 
     # La nueva capa no añade deuda de especificidad.
