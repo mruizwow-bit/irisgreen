@@ -252,3 +252,16 @@ a.jg-btn{text-decoration:none}
  .jg-stage-card{border:2px solid ButtonText;background:Canvas!important;box-shadow:none}
  .jg-stage-art{border:1px solid ButtonText;background:Canvas!important}
 }
+
+
+/* R42 progressive enhancement · native anchoring + view-transition identity. */
+.jg-stage-entry,.jg-r41-hub,.jg-r41-browser{view-transition-name:jg-resource-view}
+@media(min-width:42.01rem){
+ @supports(anchor-name:--iris-anchor){
+  button[popovertarget="jg-filter-pop"]{anchor-name:--jg-filter-anchor}
+  #jg-filter-pop{position-anchor:--jg-filter-anchor;inset:auto;top:calc(anchor(bottom) + .55rem);right:anchor(right)}
+  button[popovertarget="jg-game-tools"]{anchor-name:--jg-game-tools-anchor}
+  #jg-game-tools{position-anchor:--jg-game-tools-anchor;inset:auto;top:calc(anchor(bottom) + .55rem);right:anchor(right)}
+ }
+}
+@media(prefers-reduced-motion:reduce){::view-transition-group(jg-resource-view){animation-duration:0s}}
