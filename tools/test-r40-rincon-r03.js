@@ -18,4 +18,7 @@ assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
 assert.ok(oct.includes('IGOctopusScene')&&!oct.includes('AudioContext'));
 assert.ok(calm.includes("var SOUNDS = [];"),'historical recordings removed from mixer');
 assert.ok(calm.includes("octopus: 'escena-pulpos'"),'octopus scene sound mapped');
+assert.ok(!calm.includes('/audio/rincon/'),'calm controller has no historical recording paths');
+assert.ok(!es.includes('/audio/rincon/')&&!en.includes('/audio/rincon/'),'public R03 HTML has no historical recording paths');
+assert.ok(!es.includes('sonidos.json')&&!en.includes('sonidos.json'),'public R03 HTML does not fetch HOLD sound index');
 console.log('R40_RINCON_R03_STATIC_PASS');
