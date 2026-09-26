@@ -503,3 +503,37 @@ A2 integra A5 sin tocar la CSP y prueba la física con el header final generado 
 Memoria: `MEMORIA/R42_TALLER_FISICA_CSP_DUAL_ENGINE_20260926.md`.  
 Normativa: `NORMATIVA/ADDENDUM_R42_TALLER_FISICA_CSP_20260926.md`.  
 Control: `CONTROL/DELTA_R42_TALLER_FISICA_CSP_20260926.json`.
+
+## R42 · Taller · investigación intensiva de interfaz · 26/09/2026
+
+**Estado: `R42_TALLER_INTERFACE_RESEARCH_COMPLETE_IMPLEMENTATION_HOLD`.**
+
+Astra ha contrastado el documento de interfaz con el código real de A2 `e8cad400...`, el PR #299 de A5 `8c1a9cc...` y fuentes actuales de Figma, W3C, PhET, Blockly, CodeMirror, Three.js, Chrome, PixiJS, AEPD, ICO y Fundación Telefónica.
+
+Conclusión: se conserva el trabajo útil de #299, pero no se amplía fase 6 todavía. El Taller debe evolucionar hacia **un shell común estable + cinco perfiles de banco de trabajo**, no 25 páginas independientes ni un único motor genérico.
+
+Confirmado en código:
+- PR #299 ya elimina persistencia de etapa;
+- WebGPU previo era solo detección;
+- AudioWorklet usa Blob y cae en silencio;
+- no había Three/Pixi/Rapier/Planck/Blockly/CodeMirror/Tone en `e8cad400...`;
+- Arquitectura R43 “3D” sigue siendo proyección Canvas2D;
+- Ritmo/Composición R43 usan `setTimeout`;
+- el shell actual ya tiene workspace/rail/inspector, pero falta Scene/Structure tree, inspector realmente ligado a selección, modelo semántico/Mirror DOM, Actions/command palette y contrato común de zoom/pan.
+
+Correcciones de investigación:
+- Blockly v13 accesible ya está disponible;
+- Fundación Telefónica sí exige creaciones propias en talleres actuales;
+- WCAG 2.5.7 exige alternativa de puntero sin drag además del teclado;
+- W3C XAUR aporta base para accesibilidad espacial/3D;
+- no se aceptan como evidencia arquitectónica las cifras Scratch 33→60 ni PhET 18/23 en 10 minutos.
+
+Observación abierta:
+`OBS-R42-TALLER-STORAGE-01`: el documento recibido dice “sin almacenamiento del navegador”, pero Memoria/Control/código A5 conservan IndexedDB/proyectos locales y OPFS opcional. No añadir persistencia nueva hasta decisión/reconciliación de María.
+
+Arquitectura propuesta: shell común + perfiles Lienzo, Construir/Probar, Timeline, Bloques/Código/Ejecutar y Documento/Sistema de conocimiento; modelo semántico Iris común para renderer, estructura, inspector, accesibilidad, undo/redo, export y tests; etapa de vida efímera y nunca bloqueante; gate final artifact-first + HUMAN QA.
+
+Memoria: `MEMORIA/R42_TALLER_INTERFAZ_INVESTIGACION_INTENSIVA_20260926.md`.  
+Evidencia: `EVIDENCIAS/R42_TALLER_INTERFAZ_INVESTIGACION_20260926/README.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R42_TALLER_INTERFAZ_ACCESIBLE_20260926.md`.  
+Control: `CONTROL/DELTA_R42_TALLER_INTERFAZ_INVESTIGACION_20260926.json`.
