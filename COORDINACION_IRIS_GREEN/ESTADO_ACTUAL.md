@@ -1,5 +1,24 @@
 # Estado operativo compartido
 
+## R42 · Agente 3 · investigación tecnológica/UX antes de propagación global · 26/09/2026
+
+**Estado: `R42_A3_TECH_UX_RESEARCH_GATE_ACTIVE`.**
+
+Por instrucción directa de María, A3 no propagará una actualización de formato a toda Iris Green antes de estudiar y contrastar la Web Platform vigente, compatibilidad, interacción, rendimiento, accesibilidad y adecuación cognitiva. La orden vigente es #284 bajo #283.
+
+Decisión: conservar la arquitectura canónica multipágina/pre-renderizada y usar progressive enhancement. No conversión global a SPA ni framework nuevo por estética. Base candidata: cascade layers, Container Queries, Grid/Subgrid, dialog/inert, contraste/forced-colors/reduced-motion, OffscreenCanvas/Workers y almacenamiento local solo cuando se justifique. Popover/View Transitions/@scope/anchor positioning son mejoras progresivas; File System Access y WebGPU requieren fallback. `prefers-reduced-transparency` no es Baseline y no puede ser la única protección.
+
+Gate: inventario → matriz tecnología/beneficio/soporte/fallback/riesgo → piloto ES/EN representativo (información + hub + workspace + inmersivo) → QA accesibilidad/móvil/rendimiento → HUMAN QA de María → corrección → solo entonces propagación global.
+
+Registros:
+- `MEMORIA/R42_A3_TECH_UX_RESEARCH_GATE_20260926.md`
+- `CONTROL/DELTA_R42_A3_TECH_UX_RESEARCH_GATE_20260926.json`
+- `CONTROL/CONTROL_MASTER_SYNC_DELTA_R42_A3_TECH_UX_RESEARCH_GATE_20260926.csv`
+- `NORMATIVA/ADDENDUM_R42_A3_WEB_PLATFORM_20260926.md`
+
+No deploy, no producción y no propagación global en este gate.
+
+
 ## R39 R04 · Cloud privado activo; parche entregado a A2
 
 María confirma que su acceso ya funciona y que no abrió el aviso de login visto en esta continuación; no se trata como bloqueo ni se investiga como tarea nueva.
