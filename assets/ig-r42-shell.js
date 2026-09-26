@@ -129,6 +129,17 @@
     }
   }
 
+  /* Resolve Escape before document-level legacy overlay handlers can consume it. */
+  window.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    var dialogs = Array.prototype.slice.call(document.querySelectorAll('dialog.ig-r42-dialog[open]'));
+    var activeDialog = dialogs.length ? dialogs[dialogs.length - 1] : null;
+    if (!activeDialog) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    closeDialog(activeDialog);
+  }, true);
+
   var dialogSerial = 0;
   function dialogFrame(title) {
     dialogSerial += 1;
