@@ -1,0 +1,444 @@
+{
+  "schema": "IRIS_R40_A4_HOLDS",
+  "version": "1.0",
+  "generated_at": "2026-09-26",
+  "count": 29,
+  "rule": "Cada entrada permanece fuera de r40-public-ready.json hasta ejecutar la acción de desbloqueo y volver a registrar source/license/date/status como READY.",
+  "holds": [
+    {
+      "id": "interest-03",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Exoplanetas",
+        "en": "Exoplanets"
+      },
+      "source": "NASA Exoplanet Archive",
+      "authority": "NASA Exoplanet Archive",
+      "exact_cause": "Archivo público con requisitos de reconocimiento y referencias por dataset; no se halló una licencia única de redistribución para todo el agregado",
+      "evidence": "https://exoplanetarchive.ipac.caltech.edu/docs/acknowledge.html",
+      "provenance_notes": "Puede usarse para consulta/citación; antes de republicar un catálogo derivado debe fijarse tabla, DOI y condiciones de sus fuentes.",
+      "unlock_action": "Fijar las tablas/datasets exactos que se redistribuirán, su referencia/DOI y condiciones de reconocimiento/reutilización; registrar versión y fecha de consulta antes de incluir el catálogo derivado.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-04",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Eclipses",
+        "en": "Eclipses"
+      },
+      "source": "Cálculo propio con efemérides",
+      "authority": "Iris Green + efemérides no identificadas",
+      "exact_cause": "Falta fijar proveedor/versión/licencia de efemérides",
+      "evidence": "",
+      "provenance_notes": "No presentar resultados astronómicos actuales como reales sin fuente temporal congelada.",
+      "unlock_action": "Identificar y congelar proveedor de efemérides, versión/fecha, licencia/condiciones y parámetros usados por el cálculo; después repetir la comprobación de procedencia.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-05",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Lluvias de estrellas y meteoritos",
+        "en": "Meteor showers and meteorites"
+      },
+      "source": "Calendario IMO; Meteoritical Bulletin (a confirmar)",
+      "authority": "International Meteor Organization + Meteoritical Bulletin Database",
+      "exact_cause": "No hay licencia abierta conjunta demostrada",
+      "evidence": "https://www.imo.net/legal-notice/",
+      "provenance_notes": "IMO declara copyright sobre estructura/textos/gráficos; MBDB es fuente autoritativa pero no se localizó permiso abierto de redistribución.",
+      "unlock_action": "Obtener condiciones explícitas de reutilización para los datos exactos de IMO y Meteoritical Bulletin o sustituirlos por datasets con licencia compatible; registrar dataset, versión y atribución.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-07",
+      "group_id": "interest-group-01",
+      "title": {
+        "es": "Satélites y Estación Espacial",
+        "en": "Satellites and the International Space Station"
+      },
+      "source": "Órbitas públicas de CelesTrak (a confirmar)",
+      "authority": "CelesTrak",
+      "exact_cause": "Existe política de uso/frecuencia pero no se localizó una licencia explícita de redistribución del dataset",
+      "evidence": "https://celestrak.org/usage-policy.php",
+      "provenance_notes": "Puede consultarse con cache/rate limits; antes de republicar/empacar órbitas hay que aclarar derechos y fijar frescura.",
+      "unlock_action": "Conseguir una base explícita de redistribución para los elementos orbitales usados o sustituir CelesTrak por una fuente con licencia compatible; fijar además política de frescura/cache.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-08",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Minerales y rocas",
+        "en": "Minerals and rocks"
+      },
+      "source": "Lista IMA (a confirmar) + cromos de la web",
+      "authority": "IMA/RRUFF + cromos Iris actuales",
+      "exact_cause": "No se localizó licencia abierta explícita para la lista IMA/RRUFF usada y los cromos requieren auditoría de procedencia",
+      "evidence": "https://rruff.info/ima/",
+      "provenance_notes": "No reutilizar fotos/espectros/arte sin licencia por ítem.",
+      "unlock_action": "Fijar un dataset mineralógico reutilizable con licencia expresa y auditar uno por uno los cromos actuales (dato, imagen, autor, licencia y URL).",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-13",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Océanos y mareas",
+        "en": "Oceans and tides"
+      },
+      "source": "Puertos del Estado (a confirmar)",
+      "authority": "Puertos del Estado / Portus",
+      "exact_cause": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+      "evidence": "https://www.puertos.es/aviso-legal",
+      "provenance_notes": "El acceso/descarga pública no prueba por sí sola una licencia de republicación; identificar dataset concreto y condiciones.",
+      "unlock_action": "Identificar el dataset exacto para mareas/faros y sus condiciones RISP o permiso de reutilización; registrar versión, fecha y atribución antes de republicar datos.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-16",
+      "group_id": "interest-group-02",
+      "title": {
+        "es": "Banderas",
+        "en": "Flags"
+      },
+      "source": "Wikimedia Commons (a confirmar por bandera)",
+      "authority": "Wikimedia Commons",
+      "exact_cause": "Licencia por archivo; debe verificarse en cada página de descripción",
+      "evidence": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/licenses",
+      "provenance_notes": "Registrar autor, licencia, URL y atribución por bandera; no basta con que esté en Commons.",
+      "unlock_action": "Seleccionar cada archivo de bandera y guardar página de descripción, autor, licencia, versión y texto de atribución por archivo.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-17",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Aves",
+        "en": "Birds"
+      },
+      "source": "GBIF; Xeno-canto (licencia por grabación, a confirmar)",
+      "authority": "GBIF + Xeno-canto",
+      "exact_cause": "GBIF varía por dataset y cada grabación Xeno-canto tiene licencia propia",
+      "evidence": "https://www.gbif.org/terms ; https://xeno-canto.org/",
+      "provenance_notes": "Registrar XC ID, autor, licencia y cita por grabación; evitar NC si el uso final no está claramente dentro de sus límites.",
+      "unlock_action": "Seleccionar datasets GBIF concretos y, para cada audio, registrar XC ID, recordista, URL y licencia de la grabación; no usar audio genérico sin ficha por archivo.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-18",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Insectos y mariposas",
+        "en": "Insects and butterflies"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-19",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Plantas y flores",
+        "en": "Plants and flowers"
+      },
+      "source": "GBIF; Anthos (a confirmar)",
+      "authority": "GBIF + Anthos",
+      "exact_cause": "GBIF varía por dataset; Anthos está publicado como CC BY-NC 4.0",
+      "evidence": "https://www.gbif.org/terms ; https://ipt.gbif.es/resource?r=rjb-anthos&v=1.13",
+      "provenance_notes": "No mezclar datos sin conservar licencia y atribución de cada origen.",
+      "unlock_action": "Seleccionar datasets GBIF concretos y fijar el recurso Anthos exacto; comprobar compatibilidad de su CC BY-NC con el uso previsto y conservar las dos atribuciones/licencias.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-20",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Árboles",
+        "en": "Trees"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-21",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Setas",
+        "en": "Mushrooms"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-22",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Vida marina y peces",
+        "en": "Marine life and fish"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-23",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Mamíferos",
+        "en": "Mammals"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-24",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Reptiles y anfibios",
+        "en": "Reptiles and amphibians"
+      },
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "exact_cause": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "provenance_notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "unlock_action": "Seleccionar datasets concretos mediante descarga/DOI, comprobar licencia de cada dataset (CC0/CC BY/CC BY-NC) y conservar cita, fecha, versión y precisión geográfica permitida.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-25",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Perros",
+        "en": "Dogs"
+      },
+      "source": "Lista de razas de la FCI (a confirmar)",
+      "authority": "Fédération Cynologique Internationale",
+      "exact_cause": "No se localizó permiso abierto de reutilización para estándares/listado",
+      "evidence": "https://www.fci.be/es/nomenclature/publication.aspx",
+      "provenance_notes": "Se puede enlazar/citar como autoridad; no replicar textos, imágenes o estándares hasta aclarar derechos.",
+      "unlock_action": "Obtener permiso/licencia de reutilización para el listado/estándares que se pretenda copiar o sustituir por una fuente abierta equivalente y trazable.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-26",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Gatos",
+        "en": "Cats"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-27",
+      "group_id": "interest-group-03",
+      "title": {
+        "es": "Caballos",
+        "en": "Horses"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-31",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Barcos y faros",
+        "en": "Ships and lighthouses"
+      },
+      "source": "Puertos del Estado (a confirmar)",
+      "authority": "Puertos del Estado / Portus",
+      "exact_cause": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+      "evidence": "https://www.puertos.es/aviso-legal",
+      "provenance_notes": "El acceso/descarga pública no prueba por sí sola una licencia de republicación; identificar dataset concreto y condiciones.",
+      "unlock_action": "Identificar el dataset exacto para mareas/faros y sus condiciones RISP o permiso de reutilización; registrar versión, fecha y atribución antes de republicar datos.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-33",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Autobuses y tranvías",
+        "en": "Buses and trams"
+      },
+      "source": "Datos abiertos municipales (a confirmar)",
+      "authority": "Datasets municipales no concretados",
+      "exact_cause": "Debe identificarse municipio, dataset, fecha y licencia por red",
+      "evidence": "",
+      "provenance_notes": "No existe una licencia municipal genérica aplicable a todas las ciudades.",
+      "unlock_action": "Definir qué municipio/red se cubrirá, seleccionar el dataset concreto y registrar licencia, versión/fecha y atribución para cada ciudad; no existe una licencia municipal universal.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-34",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Ascensores y escaleras mecánicas",
+        "en": "Lifts and escalators"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-36",
+      "group_id": "interest-group-04",
+      "title": {
+        "es": "Señales y semáforos",
+        "en": "Road signs and traffic lights"
+      },
+      "source": "Catálogo oficial de la DGT (a confirmar)",
+      "authority": "Dirección General de Tráfico",
+      "exact_cause": "La fuente exacta de catálogo/arte de señales y sus condiciones de reutilización no están congeladas",
+      "evidence": "https://datos.gob.es/es/aviso-legal",
+      "provenance_notes": "Datos.gob permite RISP para documentos sometidos a esas condiciones, pero no se identificó un dataset exacto de señales que cubra el uso previsto.",
+      "unlock_action": "Identificar el dataset o recurso exacto del catálogo de señales que permita reutilización y registrar sus condiciones; si no existe, crear representaciones propias basadas en normativa sin copiar arte protegido.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-41",
+      "group_id": "interest-group-05",
+      "title": {
+        "es": "Internet",
+        "en": "The internet"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-51",
+      "group_id": "interest-group-07",
+      "title": {
+        "es": "Etimología",
+        "en": "Etymology"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-52",
+      "group_id": "interest-group-07",
+      "title": {
+        "es": "Lengua de signos, braille y Morse",
+        "en": "Sign language, Braille and Morse"
+      },
+      "source": "Creación propia; LSE (a confirmar)",
+      "authority": "Iris Green + fuente LSE aún no congelada",
+      "exact_cause": "La parte propia es utilizable; falta fuente/licencia autoritativa de LSE",
+      "evidence": "",
+      "provenance_notes": "No publicar repertorios de signos copiados de materiales sin licencia.",
+      "unlock_action": "Fijar la fuente autoritativa de LSE que se utilizará y su licencia/permiso; separar contenido propio de cualquier repertorio o imagen de signos de terceros.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-58",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Monedas",
+        "en": "Coins"
+      },
+      "source": "Wikidata; cromos actuales",
+      "authority": "Wikidata + assets de cromos actuales",
+      "exact_cause": "Wikidata CC0; procedencia/licencia de cada cromo actual no auditada en R40-A4",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "provenance_notes": "Los datos podrían separarse como READY; la experiencia actual que amplía cromos queda HOLD hasta inventario de assets.",
+      "unlock_action": "Auditar todos los cromos actuales asociados (dato, imagen, autor, licencia, URL); la parte Wikidata es CC0 pero no cubre esos assets.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-59",
+      "group_id": "interest-group-08",
+      "title": {
+        "es": "Sellos",
+        "en": "Stamps"
+      },
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "exact_cause": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "provenance_notes": "No publicable como dato real hasta fijar fuente.",
+      "unlock_action": "Elegir una fuente autoritativa concreta para este interés, registrar dataset/documento, URL, licencia, versión/fecha y atribución; no publicar datos reales hasta entonces.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-61",
+      "group_id": "interest-group-09",
+      "title": {
+        "es": "Música e instrumentos",
+        "en": "Music and instruments"
+      },
+      "source": "MusicBrainz (a confirmar)",
+      "authority": "MusicBrainz",
+      "exact_cause": "Core data CC0; supplementary CC BY-NC-SA 3.0; no aporta grabaciones de instrumentos",
+      "evidence": "https://musicbrainz.org/doc/About/Data_License",
+      "provenance_notes": "La experiencia prevista requiere sonido: falta fuente/licencia de audio; metadata sola sí podría usar core CC0.",
+      "unlock_action": "Fijar si se usará solo metadata core CC0 o datos suplementarios con otra licencia; para sonidos de instrumentos seleccionar además audios con licencia por archivo.",
+      "status": "HOLD"
+    },
+    {
+      "id": "interest-70",
+      "group_id": "interest-group-11",
+      "title": {
+        "es": "Química y elementos",
+        "en": "Chemistry and the elements"
+      },
+      "source": "PubChem (a confirmar)",
+      "authority": "PubChem",
+      "exact_cause": "Licencia definida por cada fuente contribuyente; no existe licencia única para todo PubChem",
+      "evidence": "https://pubchem.ncbi.nlm.nih.gov/docs/data-sources",
+      "provenance_notes": "Seleccionar solo campos/orígenes con licencia explícita compatible y conservar source attribution.",
+      "unlock_action": "Elegir los campos y fuentes contribuyentes exactos dentro de PubChem, comprobar su licencia individual y conservar atribución/origen por dato antes de republicar.",
+      "status": "HOLD"
+    }
+  ]
+}
