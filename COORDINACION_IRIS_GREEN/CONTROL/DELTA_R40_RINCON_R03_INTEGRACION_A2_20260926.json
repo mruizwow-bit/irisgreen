@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-r40-rincon-r03-a2-integration-v1",
+  "date": "2026-09-26",
+  "status": "R40_RINCON_R03_INTEGRATED_PREVIEW_READY_FOR_HUMAN_AUDIO_QA",
+  "a2_head": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+  "a2_tree": "37a94d4d339aad29108bd929faa51753a373dd4c",
+  "a7_head": "ad08841ba563ddda38a3d1dac7ee70421faaf88b",
+  "base_a2": "bba503efb24aa15bacfbf1c0d47986420705d3bf",
+  "deploy_id": "6ab795fcd904e20008e1560d",
+  "deploy_context": "deploy-preview",
+  "published_at": null,
+  "preview_alias": "https://deploy-preview-244--irisgreen-home.netlify.app",
+  "workflows": {
+    "total": 20,
+    "success": 20,
+    "failed": 0
+  },
+  "live_qa": {
+    "selector_modes": 3,
+    "scenes": 9,
+    "generated_sounds": 12,
+    "hold_recordings_visible": 0,
+    "autoplay_on_selection": false,
+    "stacked_workspaces": false
+  },
+  "pending": [
+    "human auditory/perceptual QA",
+    "human mobile/touch/zoom checks if required"
+  ],
+  "excluded": [
+    "Sabik R06/HTTP real",
+    "voice/TTS",
+    "main merge",
+    "production"
+  ]
+}
