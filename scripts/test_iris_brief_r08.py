@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';OUT=ROOT/'reports/iris-brief-r08';OUT.mkdir(parents=True,exist_ok=True)
 ROUTES=['/','/?lang=en','/es/recursos/','/en/resources/','/es/recursos/juegos/','/en/resources/games/','/es/recursos/rutinas-visuales/','/en/resources/visual-routines/','/es/recursos/rutinas-imprimibles/','/en/resources/printable-routines/','/es/taller/','/en/workshop/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/','/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/']
 
-CLOUD_ORIGIN='https://6ab56a1ba2f6d83e6fb7b408--sabik-asistente.netlify.app'
+CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
 def check_r05_ui(page,lang):
  """Native activated form only; no query, mocked response or auth probe."""
