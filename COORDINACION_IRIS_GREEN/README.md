@@ -54,3 +54,13 @@ Antes de trabajar en Rincón tranquilo, leer:
 ## R40 Rincón R03 · entrega A7 · 26/09/2026
 
 Construcción A7 terminada y lista para integración A2: `R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2`. Ver [memoria](MEMORIA/R40_RINCON_R03_ENTREGA_A7_20260926.md), [evidencia](EVIDENCIAS/R40_RINCON_R03_A7/README.md) y [control](CONTROL/DELTA_R40_RINCON_R03_20260926.json). La aceptación perceptiva permanece pendiente de preview web.
+
+## R40 Rincón R04 · HUMAN QA FAIL
+
+La orden vigente del Rincón es **#271**. Leer antes de trabajar:
+- `ORDENES/R40_RINCON_R04/README.md`
+- `NORMATIVA/ADDENDUM_R40_RINCON_R04_HUMAN_QA_20260926.md`
+- `MEMORIA/R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`
+- `CONTROL/DELTA_R40_RINCON_R04_20260926.json`
+
+R03 queda rechazada por revisión humana. A7 reconstruye; A2 integra y sube; la aceptación final es en preview web.
