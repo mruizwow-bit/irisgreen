@@ -94,7 +94,7 @@ def _nav_markup(lang: str, nav_id: str | None) -> str:
     r = t["routes"]
     id_attr = f' id="{nav_id}"' if nav_id else ""
     return f"""<nav class="nav ig-r40-nav"{id_attr} aria-label="{t['label']}" data-ig-r40-nav>
-<a href="/">{t['home']}</a>
+<a href="/" data-route="inicio">{t['home']}</a>
 <details class="ig-r40-nav-group"><summary>{t['info']}</summary><div class="ig-r40-nav-menu">
 <a href="{r['conditions']}">{t['conditions']}</a>
 <a href="{r['data']}">{t['data']}</a>
