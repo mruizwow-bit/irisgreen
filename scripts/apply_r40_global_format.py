@@ -141,7 +141,7 @@ def _replace_header_navigation(text: str, lang: str) -> tuple[str, bool]:
     ident = ID_RE.search(attrs)
     nav_id = ident.group("value") if ident else None
     if not nav_id:
-        control = re.search(r'aria-controls=(["\\\'])(nav|ig-main-nav)\\1', header, re.I)
+        control = re.search(r"aria-controls=(['\\\"])(nav|ig-main-nav)\\1", header, re.I)
         nav_id = control.group(2) if control else "ig-main-nav"
     replacement = _nav_markup(lang, nav_id)
 
@@ -172,12 +172,13 @@ def _inject_assets(text: str) -> str:
         link = f'<link rel="stylesheet" href="{CSS_HREF}"/>\n'
         text, count = HEAD_CLOSE_RE.subn(link + "</head>", text, count=1)
         if count != 1:
-            raise ValueError("HTML sin </head>")
+            body = BODY_OPEN_RE.search(text)
+            text = text[: body.start()] + link + text[body.start() :] if body else link + text
     if JS_SRC not in text:
         script = f'<script defer src="{JS_SRC}"></script>\n'
         text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
         if count != 1:
-            raise ValueError("HTML sin </body>")
+            text += "\n" + script
     return text
 
 
