@@ -126,9 +126,12 @@
     }
   }
 
+  var dialogSerial = 0;
   function dialogFrame(title) {
-    var dialog = h('dialog', { class:'ig-r42-dialog' });
-    var heading = h('h2', { text:title });
+    dialogSerial += 1;
+    var headingId = 'ig-r42-dialog-title-' + dialogSerial;
+    var dialog = h('dialog', { class:'ig-r42-dialog', 'aria-labelledby':headingId });
+    var heading = h('h2', { id:headingId, text:title });
     var close = h('button', {
       type:'button', class:'ig-r42-icon-button', text:'×',
       'aria-label':T.close, on:{ click:function () { closeDialog(dialog); } }
@@ -226,6 +229,22 @@
   rail.appendChild(workRail);
   rail.appendChild(inspectRail);
   rail.appendChild(helpRail);
+
+  var railButtons = [workRail, inspectRail, helpRail];
+  railButtons.forEach(function (button, index) { button.tabIndex = index === 0 ? 0 : -1; });
+  rail.addEventListener('keydown', function (event) {
+    var current = railButtons.indexOf(document.activeElement);
+    if (current < 0) return;
+    var next = current;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % railButtons.length;
+    else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + railButtons.length) % railButtons.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = railButtons.length - 1;
+    else return;
+    event.preventDefault();
+    railButtons.forEach(function (button, index) { button.tabIndex = index === next ? 0 : -1; });
+    railButtons[next].focus();
+  });
 
   stage.appendChild(stageSource);
   workspace.appendChild(stage);
