@@ -75,3 +75,11 @@ A7 revisó la entrega directamente en GitHub y cerró cuatro defectos detectados
 No se declara aceptación auditiva/visual. A2 sigue siendo la única puerta a la web y debe integrar/subir; después se exige escucha y revisión visual humana en Deploy Preview.
 
 Registro de decisión: `R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`. Entrega A7: `R40_RINCON_R03_ENTREGA_A7_20260926.md`. Normativa: `../NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md`.
+
+## Addendum 26/09/2026 · R40 Rincón R04
+
+Estado vigente: **`R40_RINCON_R04_REAL_REBUILD_REQUIRED`**.
+
+La revisión humana de María invalida la aceptación estructural de R03. El reproductor/escena sigue enterrado después del catálogo y ajustes, y la reconstrucción audiovisual no es sustantiva en las ocho escenas previas. R04 #271 sustituye R03.
+
+A7 debe reconstruir; A2 integra/sube; el cierre requiere web real y revisión humana. Ver `R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`.
