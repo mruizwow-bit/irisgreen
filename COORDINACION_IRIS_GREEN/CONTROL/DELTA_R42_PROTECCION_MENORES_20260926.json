@@ -1,0 +1,50 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-CHILD-SAFE-CONTENT",
+  "date": "2026-09-26",
+  "status": "R42_CHILD_SAFE_CONTENT_ARCHITECTURE_REQUIRED",
+  "trigger": "Maria concern about incidental minor exposure from games/resources to high-sensitivity content",
+  "observed_catalogue": {
+    "conditions": 185,
+    "situations": 187,
+    "total": 372
+  },
+  "model": {
+    "audience": [
+      "INFANCIA",
+      "ADOLESCENCIA",
+      "ADULTEZ",
+      "TRANSVERSAL/CUALQUIER EDAD"
+    ],
+    "sensitivity": [
+      "S0_GENERAL",
+      "S1_SENSITIVE",
+      "S2_HIGH_SENSITIVITY"
+    ],
+    "discovery": [
+      "NORMAL",
+      "INTENTIONAL_ONLY",
+      "SAFE_VARIANT_REQUIRED"
+    ]
+  },
+  "defaults": {
+    "no_stage_selection": "SAFE_BY_DEFAULT",
+    "child_s2_incidental": false,
+    "teen_s2_requires_intent": true,
+    "adult_full_catalogue": true
+  },
+  "privacy": {
+    "date_of_birth_required": false,
+    "account_required": false,
+    "server_profile": false,
+    "local_or_session_preference": true
+  },
+  "issues": {
+    "parent": 293,
+    "A4": 294,
+    "A3": 295,
+    "A1": 296,
+    "A2": 297
+  },
+  "human_qa_required": true
+}
