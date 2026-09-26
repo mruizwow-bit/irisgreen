@@ -1,0 +1,8 @@
+ID;Campo;Valor;Fecha;Fuente
+R39-R06-CLOUD;Estado;R39_R06_CLOUD_READY_WEB_INTEGRATION_PENDING_A2;2026-09-26;GitHub run 36236824712 / Netlify
+R39-R06-CLOUD;Deploy_ID;6ab7a2cd2cf8dc09d3ae9aca;2026-09-26;Netlify
+R39-R06-CLOUD;Source_candidate;8690e26140f6d513c3592df62bc82b167cbb1d0e;2026-09-26;GitHub
+R39-R06-CLOUD;Context;deploy-preview unpublished;2026-09-26;Netlify
+R39-R06-WEB;PR;272;2026-09-26;GitHub
+R39-R06-WEB;Integration_owner;Agente 2;2026-09-26;Orden vigente
+R39-R06-WEB;Next;Integrar tras CI y publicar preview PR244;2026-09-26;#237/#272
