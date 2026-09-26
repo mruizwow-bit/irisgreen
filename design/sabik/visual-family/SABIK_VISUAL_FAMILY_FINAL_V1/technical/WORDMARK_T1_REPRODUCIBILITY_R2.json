@@ -1,0 +1,14 @@
+{
+  "status": "REPRODUCIBILITY_PASS",
+  "wordmark_raster_mismatches": [],
+  "accepted_R1_lock_mismatches": [],
+  "accepted_R1_locked_files": 76,
+  "svg_integrity": {
+    "embedded_raster": false,
+    "path_count": 5,
+    "node_count": 59
+  },
+  "zip_sha256": "0db11fb3a79959b5eb5a11a15550061a459e4584bb4b14cea02da83ac7dfa69a",
+  "zip_bytes": 7485902,
+  "manifest_file_count": 98
+}
