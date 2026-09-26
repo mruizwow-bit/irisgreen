@@ -19,6 +19,8 @@ from playwright.sync_api import sync_playwright
 ROOT=Path.cwd().resolve()
 ROUTES=[('/', 'Empieza por lo que te pasa'),('/es/libros/','Los libros'),('/es/tramites/directorio/','Todo lo que puedes pedir'),('/es/investigacion/','Investigación'),('/es/videos/','Vídeos'),('/es/recursos/juegos/','Jugar'),('/es/intereses/','Tus intereses'),('/es/datos/autismo-en-la-poblacion/','Autismo en la población'),('/es/situaciones/la-ropa-me-molesta/','etiquetas'),('/es/sitio-tranquilo/','Rincón tranquilo')]
 VIDEO_FRAME_SOURCES={'https://www.youtube-nocookie.com','https://player.vimeo.com','https://www.instagram.com'}
+SABIK_FRAME_SOURCE='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
+REVIEWED_FRAME_SOURCES=VIDEO_FRAME_SOURCES|{SABIK_FRAME_SOURCE}
 VIDEO_PROVIDERS=[('YouTube','https://www.youtube-nocookie.com',True),('Vimeo','https://player.vimeo.com',True),('Instagram','https://www.instagram.com',False)]
 
 def global_csp(root):
@@ -73,7 +75,7 @@ def test_video_frames(browser,base,failures):
 
 def main():
     csp=global_csp(ROOT);got_frames=frame_sources(csp)
-    if got_frames!=VIDEO_FRAME_SOURCES:raise AssertionError('frame-src no coincide con la lista cerrada de la videoteca: '+f'esperado {sorted(VIDEO_FRAME_SOURCES)}, obtenido {sorted(got_frames)}')
+    if got_frames!=REVIEWED_FRAME_SOURCES:raise AssertionError('frame-src no coincide con la lista cerrada revisada (vídeo + Sabik privado): '+f'esperado {sorted(REVIEWED_FRAME_SOURCES)}, obtenido {sorted(got_frames)}')
     httpd,base=server(ROOT,csp);failures=[];providers_tested=[]
     try:
         with sync_playwright() as pw:
