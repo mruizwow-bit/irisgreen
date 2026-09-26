@@ -143,3 +143,25 @@ body.rm.r42-rincon .r42-media-poster{opacity:1!important;transform:none!importan
  .r42-rincon .r42-media-grade,.r42-rincon .r42-media-atmosphere{display:none!important}
  .r42-rincon .r42-more-actions>summary,.r42-rincon .r42-more-menu,.r42-rincon .r42-more-menu button{background:Canvas!important;color:CanvasText!important;border:2px solid CanvasText!important}
 }
+
+/* Human-QA visual cleanup: no legacy pictorial thumbnails or low-quality stage posters. */
+.r42-rincon .r42-stage-intro{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#eef5f7;background:
+ radial-gradient(circle at 68% 22%,rgba(133,190,213,.18),transparent 24%),
+ radial-gradient(circle at 24% 76%,rgba(89,114,151,.16),transparent 30%),
+ linear-gradient(145deg,#07131f,#10283a 58%,#0b1b29)}
+.r42-rincon .r42-stage-intro>div{display:grid;gap:.35rem;max-width:min(78%,36rem);padding:1.25rem}
+.r42-rincon .r42-stage-intro strong{font:600 clamp(1.5rem,3vw,2.5rem)/1.05 'Newsreader',Georgia,serif}
+.r42-rincon .r42-stage-intro span{font-size:.98rem;line-height:1.45;color:#cedce2}
+.r42-rincon .r42-media-poster{background:
+ radial-gradient(circle at 70% 20%,rgba(160,211,225,.16),transparent 28%),
+ linear-gradient(145deg,#07131f,#10283a 58%,#0b1b29)}
+.r42-rincon .r42-media-placeholder-rain{background:linear-gradient(145deg,#111a29,#26394c)}
+.r42-rincon .r42-media-placeholder-river{background:linear-gradient(145deg,#15332b,#24574b 50%,#163d49)}
+.r42-rincon .r42-media-placeholder-night{background:linear-gradient(145deg,#030916,#10233c)}
+.r42-rincon .r42-media-placeholder-aquarium,
+.r42-rincon .r42-media-placeholder-jellies,
+.r42-rincon .r42-media-placeholder-octopus{background:linear-gradient(145deg,#041822,#0a4150)}
+.r42-rincon #sceneList>.qchoice{grid-template-columns:1fr!important;min-height:52px!important;flex-basis:140px!important;padding:.65rem .72rem!important}
+.r42-rincon #sceneList>.qchoice .qthumb{display:none!important}
+.r42-rincon #sceneList>.qchoice strong{font-size:.94rem;line-height:1.15}
+.r42-rincon #sceneList>.qchoice small{font-size:.78rem;line-height:1.25;margin-top:.2rem}
