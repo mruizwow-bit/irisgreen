@@ -1,0 +1,92 @@
+name: R39 R06 private Sabik Cloud deploy
+
+on:
+  push:
+    branches:
+      - 'agent3/r39-r06-deploy-runner-20260925'
+    paths:
+      - '.github/workflows/r39-r06-cloud-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-private-r06:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: 8690e26140f6d513c3592df62bc82b167cbb1d0e
+      NETLIFY_SITE_ID: 47b06e68-ff54-4097-8ad8-336b2d71758a
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    steps:
+      - name: Require existing Netlify deploy credential
+        run: |
+          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
+            echo "NETLIFY_AUTH_TOKEN_MISSING"
+            exit 78
+          fi
+
+      - name: Checkout exact R06 candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+          fetch-depth: 0
+          path: candidate
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: candidate/cloud/n04-r38-library/package-lock.json
+
+      - name: Verify exact candidate and install locked dependencies
+        working-directory: candidate/cloud/n04-r38-library
+        run: |
+          test "$(git -C ../.. rev-parse HEAD)" = "$CANDIDATE_SHA"
+          npm ci --ignore-scripts
+          test "$(./node_modules/.bin/netlify --version | tail -1 | tr -d '\r')" = "27.8.0"
+
+      - name: Re-run R06 regression and build
+        working-directory: candidate
+        run: |
+          node --test tools/test-sabik-authorized-transport.mjs
+          cd cloud/n04-r38-library
+          npm test
+          npm run build
+
+      - name: Deploy one private non-production draft
+        working-directory: candidate/cloud/n04-r38-library
+        run: |
+          ./node_modules/.bin/netlify deploy \
+            --no-build \
+            --dir dist \
+            --site "$NETLIFY_SITE_ID" \
+            --message "R39 R06 opener-null fix $CANDIDATE_SHA" \
+            --json > /tmp/r39-r06-deploy.json
+          node - <<'JS'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/r39-r06-deploy.json','utf8'));
+          const safe={
+            deploy_id:d.deploy_id||d.id||null,
+            deploy_url:d.deploy_url||d.deploy_ssl_url||null,
+            logs:d.logs||null,
+            site_name:d.site_name||null,
+            message:d.message||null
+          };
+          if(!/^[a-f0-9]{24}$/.test(safe.deploy_id||'')) throw new Error('Missing deploy id');
+          if(!String(safe.deploy_url||'').includes('--sabik-asistente.netlify.app')) throw new Error('Unexpected deploy origin');
+          fs.writeFileSync('/tmp/r39-r06-deploy-safe.json',JSON.stringify(safe,null,2)+'\n');
+          console.log(JSON.stringify(safe));
+          JS
+
+      - name: Upload safe deploy receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r39-r06-private-deploy
+          path: /tmp/r39-r06-deploy-safe.json
+          if-no-files-found: ignore
+          retention-days: 7
