@@ -20,3 +20,5 @@
 @media(max-width:700px){.r40-filterbar,.r40-field-controls{grid-template-columns:1fr}.r40-data-list{grid-template-columns:1fr}.r40-anchor-nav{position:static}.r40-table-wrap table{min-width:42rem}}
 @media(prefers-reduced-motion:reduce){.r40-primary,.r40-secondary,.r40-group-card,.r40-interest-card{transition:none!important}}
 @media(forced-colors:active){.r40-hero,.r40-section-head,.r40-topic-hero,.r40-panel,.r40-group-card,.r40-interest-card{background:Canvas;border-color:CanvasText}.r40-primary,.r40-secondary{forced-color-adjust:auto;background:ButtonFace;color:ButtonText}}
+
+.r40-class-legend{display:flex;gap:6px;flex-wrap:wrap}.r40-class-legend code{font:700 .78rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.01em}
