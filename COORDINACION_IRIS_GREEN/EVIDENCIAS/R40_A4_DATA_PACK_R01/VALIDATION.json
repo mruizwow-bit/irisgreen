@@ -1,0 +1,184 @@
+{
+  "schema": "IRIS_R40_A4_VALIDATION",
+  "version": "1.0",
+  "generated_at": "2026-09-26",
+  "method": "Deterministic structural, referential and publishability validation of the committed JSON payloads against the invariants represented by r40-data-pack.schema.json. This report does not claim a browser/product implementation test.",
+  "source_blobs": {
+    "schema": "ee43f5bbeb064dcb51fc90721827692e3c96fe75",
+    "full_pack": "75c323f606a761cb7bdb26f7bb2cc08db424880f",
+    "public_ready": "4ad89a9fb07d84d92b051a7fd3c633ea64da00e0",
+    "holds": "068e7fc9cfcbb830b4a612c895843bf7a1104688",
+    "connections": "1dd92bac3537df9c6bf7c36bfdcec4b176d64d40"
+  },
+  "result": "PASS",
+  "checks_total": 33,
+  "checks_pass": 33,
+  "checks_fail": 0,
+  "checks": [
+    {
+      "id": "JSON_PARSE",
+      "status": "PASS",
+      "detail": "schema, full pack, public payload, holds and connections parse as JSON"
+    },
+    {
+      "id": "SCHEMA_ID",
+      "status": "PASS",
+      "detail": "schema $id/version present"
+    },
+    {
+      "id": "COUNT_INTEREST_GROUPS",
+      "status": "PASS",
+      "detail": "11/11"
+    },
+    {
+      "id": "COUNT_INTERESTS",
+      "status": "PASS",
+      "detail": "72/72"
+    },
+    {
+      "id": "COUNT_INTEREST_READY",
+      "status": "PASS",
+      "detail": "43/43"
+    },
+    {
+      "id": "COUNT_INTEREST_HOLD",
+      "status": "PASS",
+      "detail": "29/29"
+    },
+    {
+      "id": "COUNT_WORKSHOP_AREAS",
+      "status": "PASS",
+      "detail": "6/6"
+    },
+    {
+      "id": "COUNT_STUDIES",
+      "status": "PASS",
+      "detail": "25/25"
+    },
+    {
+      "id": "COUNT_EXISTING_STUDIES",
+      "status": "PASS",
+      "detail": "8/8"
+    },
+    {
+      "id": "COUNT_PLANNED_STUDIES",
+      "status": "PASS",
+      "detail": "17/17"
+    },
+    {
+      "id": "COUNT_CONNECTIONS",
+      "status": "PASS",
+      "detail": "56/56"
+    },
+    {
+      "id": "UNIQUE_INTEREST_IDS",
+      "status": "PASS",
+      "detail": "72 unique interest IDs"
+    },
+    {
+      "id": "UNIQUE_STUDY_IDS",
+      "status": "PASS",
+      "detail": "25 unique study IDs"
+    },
+    {
+      "id": "UNIQUE_GROUP_IDS",
+      "status": "PASS",
+      "detail": "11 unique group IDs"
+    },
+    {
+      "id": "UNIQUE_AREA_IDS",
+      "status": "PASS",
+      "detail": "6 unique area IDs"
+    },
+    {
+      "id": "UNIQUE_CONNECTION_IDS",
+      "status": "PASS",
+      "detail": "56 unique connection IDs"
+    },
+    {
+      "id": "INTEREST_GROUP_REFS",
+      "status": "PASS",
+      "detail": "all interest.group_id resolve"
+    },
+    {
+      "id": "STUDY_AREA_REFS",
+      "status": "PASS",
+      "detail": "all study.area_id resolve"
+    },
+    {
+      "id": "GROUP_MEMBERSHIP_PARTITION",
+      "status": "PASS",
+      "detail": "group interest_ids are a 72-item exact partition"
+    },
+    {
+      "id": "AREA_MEMBERSHIP_PARTITION",
+      "status": "PASS",
+      "detail": "area study_ids are a 25-item exact partition"
+    },
+    {
+      "id": "STATUS_ENUMS",
+      "status": "PASS",
+      "detail": "all entity statuses are READY/HOLD"
+    },
+    {
+      "id": "CLASS_ENUMS",
+      "status": "PASS",
+      "detail": "all content classes use the four canonical values"
+    },
+    {
+      "id": "PROVENANCE_PER_RECORD",
+      "status": "PASS",
+      "detail": "171/171 records carry source/license/date/status"
+    },
+    {
+      "id": "CONNECTION_ENDPOINTS",
+      "status": "PASS",
+      "detail": "all 112 connection endpoints resolve"
+    },
+    {
+      "id": "HOLD_TARGET_GATE",
+      "status": "PASS",
+      "detail": "connections touching HOLD interests do not become publicable"
+    },
+    {
+      "id": "HOLDS_EXACT_SET",
+      "status": "PASS",
+      "detail": "r40-holds.json matches the exact 29 HOLD interests"
+    },
+    {
+      "id": "HOLDS_HAVE_ACTION",
+      "status": "PASS",
+      "detail": "all 29 HOLD entries have an explicit unblock action"
+    },
+    {
+      "id": "PUBLIC_ZERO_HOLD",
+      "status": "PASS",
+      "detail": "public payload contains no HOLD status/token"
+    },
+    {
+      "id": "PUBLIC_INTERESTS_READY_ONLY",
+      "status": "PASS",
+      "detail": "43/43 public interests are READY"
+    },
+    {
+      "id": "PUBLIC_GROUP_REFS_READY",
+      "status": "PASS",
+      "detail": "all public group members resolve to READY interests"
+    },
+    {
+      "id": "PUBLIC_CONNECTIONS_READY",
+      "status": "PASS",
+      "detail": "38/38 public connections are READY and non-Field-Notebook"
+    },
+    {
+      "id": "FIELD_NOTEBOOK_GATED",
+      "status": "PASS",
+      "detail": "Field Notebook stays out of public-ready while global data gate is HOLD"
+    },
+    {
+      "id": "CONNECTION_EXPORT_MATCH",
+      "status": "PASS",
+      "detail": "standalone connections export matches full pack"
+    }
+  ]
+}
