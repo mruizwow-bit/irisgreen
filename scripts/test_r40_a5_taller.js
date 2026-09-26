@@ -35,5 +35,24 @@ const tools=require('../assets/ig-taller-r40-tools.js');
 
   const localText=fs.readFileSync(path.join(__dirname,'../assets/ig-taller-local-data.js'),'utf8');
   assert.doesNotMatch(localText,/(^|[;{}]\\s*)fetch\\s*\\(|new\\s+XMLHttpRequest|navigator\\.sendBeacon|new\\s+WebSocket/m);
-  console.log(JSON.stringify({status:'PASS',catalog:25,current:8,new_studies:17,local_data:'PASS',network_calls:0}));
+  const expectedPages=catalog.flatMap(s=>['es/taller/'+s.slugs.es+'/index.html','en/workshop/'+s.slugs.en+'/index.html']);
+  for(const pth of expectedPages){
+    const full=path.join(__dirname,'..',pth);
+    assert.ok(fs.existsSync(full),'missing '+pth);
+    const html=fs.readFileSync(full,'utf8');
+    assert.match(html,new RegExp('data-study-id="'+catalog.find(s=>pth.includes('/'+s.slugs.es+'/')||pth.includes('/'+s.slugs.en+'/')).id+'"'));
+    assert.match(html,/ig-taller-local-data\.js/);
+  }
+  for(const s of catalog.filter(x=>!x.current)){
+    const es=fs.readFileSync(path.join(__dirname,'..','es/taller',s.slugs.es,'index.html'),'utf8');
+    const en=fs.readFileSync(path.join(__dirname,'..','en/workshop',s.slugs.en,'index.html'),'utf8');
+    assert.match(es,/data-r40-generic="true"/); assert.match(en,/data-r40-generic="true"/);
+    assert.match(es,/ig-taller-r40-tools\.js/); assert.match(en,/ig-taller-r40-tools\.js/);
+  }
+  for(const langPath of ['es/taller/index.html','en/workshop/index.html']){
+    const html=fs.readFileSync(path.join(__dirname,'..',langPath),'utf8');
+    assert.equal((html.match(/<details data-area=/g)||[]).length,6);
+    assert.match(html,/id="igt-local-summary"/);
+  }
+  console.log(JSON.stringify({status:'PASS',catalog:25,current:8,new_studies:17,pages:50,areas:6,local_data:'PASS',network_calls:0}));
 })().catch(e=>{console.error(e);process.exit(1);});
