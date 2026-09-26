@@ -271,7 +271,10 @@ root.addEventListener('click',function(e){
  if(k==='volver'){volver();return;}
  if(k==='stage'){S.stageChosen=true;S.etapa=x==='all'?'':x;S.cat='todos';S.q='';}
  else if(k==='tipo'){S.tipo=x;S.q='';}else if(k==='fmt'){S.fmt=x;if(S.vista==='hoja'){try{history.replaceState(null,'',hashFor(S.id));}catch(er){}}}else if(k==='cat')S.cat=x;else if(k==='et')S.etapa=x==='x'?'':x;
- focusSel='[data-act="'+v+'"]';render();
+ focusSel='[data-act="'+v+'"]';
+ var useTransition=!!(document.startViewTransition&&(k==='stage'||k==='tipo'));
+ try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)useTransition=false;}catch(er){}
+ if(useTransition){document.startViewTransition(function(){render();});}else render();
 });
 window.addEventListener('popstate',function(){if(!leer()){S.vista='lista';S.id=null;}render();});
 window.addEventListener('hashchange',function(){if(leer())render();});
