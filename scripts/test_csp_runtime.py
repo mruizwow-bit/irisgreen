@@ -21,6 +21,7 @@ ROUTES=[('/', 'Empieza por lo que te pasa'),('/es/libros/','Los libros'),('/es/t
 VIDEO_FRAME_SOURCES={'https://www.youtube-nocookie.com','https://player.vimeo.com','https://www.instagram.com'}
 SABIK_FRAME_SOURCE='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 REVIEWED_FRAME_SOURCES=VIDEO_FRAME_SOURCES|{SABIK_FRAME_SOURCE}
+RINCON_MEDIA_SOURCES={'https://commons.wikimedia.org','https://upload.wikimedia.org'}
 VIDEO_PROVIDERS=[('YouTube','https://www.youtube-nocookie.com',True),('Vimeo','https://player.vimeo.com',True),('Instagram','https://www.instagram.com',False)]
 
 def global_csp(root):
@@ -30,10 +31,16 @@ def global_csp(root):
     if "default-src 'self'" not in value:raise RuntimeError('La CSP de prueba no tiene default-src self')
     return value
 
-def frame_sources(csp):
-    m=re.search(r'(?:^|;)\s*frame-src\s+([^;]+)',csp)
-    if not m:raise RuntimeError('La CSP de prueba no declara frame-src')
+def directive_sources(csp,name):
+    m=re.search(r'(?:^|;)\s*'+re.escape(name)+r'\s+([^;]+)',csp)
+    if not m:raise RuntimeError('La CSP de prueba no declara '+name)
     return set(m.group(1).split())
+
+def frame_sources(csp):
+    return directive_sources(csp,'frame-src')
+
+def media_sources(csp):
+    return directive_sources(csp,'media-src')
 
 def server(root,csp):
     class Handler(SimpleHTTPRequestHandler):
@@ -74,8 +81,10 @@ def test_video_frames(browser,base,failures):
     return tested
 
 def main():
-    csp=global_csp(ROOT);got_frames=frame_sources(csp)
+    csp=global_csp(ROOT);got_frames=frame_sources(csp);got_media=media_sources(csp)
     if got_frames!=REVIEWED_FRAME_SOURCES:raise AssertionError('frame-src no coincide con la lista cerrada revisada (vídeo + Sabik privado): '+f'esperado {sorted(REVIEWED_FRAME_SOURCES)}, obtenido {sorted(got_frames)}')
+    expected_media={"'self'",'blob:'}|RINCON_MEDIA_SOURCES
+    if got_media!=expected_media:raise AssertionError('media-src no coincide con la lista cerrada revisada (local + Rincón Wikimedia): '+f'esperado {sorted(expected_media)}, obtenido {sorted(got_media)}')
     httpd,base=server(ROOT,csp);failures=[];providers_tested=[]
     try:
         with sync_playwright() as pw:
@@ -95,5 +104,5 @@ def main():
             providers_tested=test_video_frames(browser,base,failures);browser.close()
     finally:httpd.shutdown()
     if failures:raise AssertionError('CSP rompe la salida pública:\n'+'\n'.join(failures[:40]))
-    print({'rutas_probadas':len(ROUTES),'bloqueos_csp':0,'frame_src':sorted(got_frames),'proveedores_con_tarjeta_probados':providers_tested,'csp':csp})
+    print({'rutas_probadas':len(ROUTES),'bloqueos_csp':0,'frame_src':sorted(got_frames),'media_src':sorted(got_media),'proveedores_con_tarjeta_probados':providers_tested,'csp':csp})
 if __name__=='__main__':main()
