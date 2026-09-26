@@ -1,0 +1,29 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-DESIGN-CRYSTAL-R01",
+  "date": "2026-09-26",
+  "status": "R42_DESIGN_CRYSTAL_SYSTEM_BUILD_ACTIVE",
+  "issue": 301,
+  "observed_a2": {
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "head": "e8cad400a30d5d4857f9f99b0c1070d786958a8b",
+    "tree": "827a68fae6596a929e4d246bb47b8494a976e8a3"
+  },
+  "dependencies": {
+    "a3_shell_pr": 290,
+    "child_safe": "DEFERRED"
+  },
+  "scope": [
+    "semantic materials/tokens",
+    "light dark opaque chrome",
+    "manual reduced transparency preference",
+    "forced colors and reduced motion",
+    "replace global contrast filter",
+    "functional control border token",
+    "real alpha/contrast measurements",
+    "5-surface pilot"
+  ],
+  "integration_owner": "A2",
+  "final_acceptance": "HUMAN_QA_MARIA",
+  "full_normative_required": true
+}
