@@ -67,13 +67,15 @@
   }
   function buildRail(app){
     var rail=el('nav','ig42-toolrail');rail.setAttribute('aria-label',T('Herramientas del estudio','Studio tools'));rail.tabIndex=-1;
-    var originalTools=qa('.igt-side button[aria-pressed],.igt-r40-controls button[aria-pressed],.igt-r40-controls button,.igt-tabs button',app).slice(0,12);
+    var originalTools=qa('.igt-side button[aria-pressed],.igt-r40-controls button[aria-pressed],.igt-r40-controls button,.igt-tabs button,.ig43-toolbar button[aria-pressed],.ig43-toolbar button',app).slice(0,12);
     var seen={};originalTools.forEach(function(source){var label=(source.getAttribute('aria-label')||source.textContent||'').trim();if(!label||seen[label])return;seen[label]=1;var b=btn(label.charAt(0).toUpperCase(),'ig42-tool-shortcut');b.title=label;b.setAttribute('aria-label',label);b.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');b.addEventListener('click',function(){safeClick(source);sync();});rail.appendChild(b);function sync(){b.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');}});
     if(!rail.children.length){var b=el('span','ig42-tool-placeholder','✦');b.setAttribute('aria-hidden','true');rail.appendChild(b);}return rail;
   }
   function createInspector(){var aside=el('aside','ig42-inspector');aside.setAttribute('aria-label',T('Propiedades','Properties'));var head=el('div','ig42-inspector-head'),h=el('h2','ig42-panel-title',T('Propiedades','Properties')),close=btn('×','ig42-inspector-close');close.setAttribute('aria-label',T('Cerrar propiedades','Close properties'));head.appendChild(h);head.appendChild(close);aside.appendChild(head);var body=el('div','ig42-inspector-body');aside.appendChild(body);return {node:aside,body:body,close:close};}
   function populateInspector(app,inspector){
     var side=q('.igt-side',app);if(side){inspector.body.appendChild(side);return;}
+    var advanced=q('.ig43-editor',app);
+    if(advanced){inspector.body.appendChild(el('p','ig42-capability',T('Las propiedades específicas aparecen junto a la herramienta activa. El panel se mantiene libre para no duplicar controles.','Tool-specific properties appear beside the active tool. This panel stays uncluttered instead of duplicating controls.')));return;}
     var tool=q('.igt-r40-tool',app);if(!tool)return;
     var controls=q('.igt-r40-controls',tool);if(controls)inspector.body.appendChild(controls);
     var direct=Array.prototype.slice.call(tool.children);direct.forEach(function(ch){if(ch===controls||ch.matches(WORK_SELECTOR)||ch.classList.contains('ig42-engine-work'))return;if(ch.tagName==='BUTTON'&&/guardar|save|imprimir|print|escuchar|play|parar|stop/i.test(ch.textContent||''))return;if(ch.matches('.igt-r40-field,.igt-r40-palette,.igt-r40-result,textarea,input,select'))inspector.body.appendChild(ch);});
@@ -130,7 +132,7 @@
     top.props.addEventListener('click',function(){setInspector(!ws.node.classList.contains('ig42-inspector-open'));});ws.inspector.close.addEventListener('click',function(){setInspector(false);top.props.focus();});
     ws.node.addEventListener('keydown',function(e){if(e.key==='Escape'&&ws.node.classList.contains('ig42-inspector-open')){setInspector(false);top.props.focus();}});
     moveSourceSections(q('.ig42-dialog-body',helpDlg));makeManagementButton(main);
-    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);if(root.IGTallerR42Direct&&typeof root.IGTallerR42Direct.enhance==='function')root.IGTallerR42Direct.enhance(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
+    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);if(root.IGTallerR42Direct&&typeof root.IGTallerR42Direct.enhance==='function')root.IGTallerR42Direct.enhance(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app)&&!q('.ig43-editor',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
     root.setTimeout(settle,0);return true;
   }
 
