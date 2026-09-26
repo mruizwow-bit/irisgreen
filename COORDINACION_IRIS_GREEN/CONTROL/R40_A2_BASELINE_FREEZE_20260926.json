@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-r40-baseline-freeze-v1",
+  "date": "2026-09-26",
+  "status": "R40_BASELINE_A2_FROZEN_READY",
+  "source_branch": "agent2/sabik-iris-r08-20260924",
+  "head": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+  "tree": "a341d2053fee62d3f7cd3522c74618b1a090a0dc",
+  "parent": "a4bd7bc416de10b50cf74277ae6cff0f09679ad9",
+  "pr_base": "2e17ed3ae02e23a4fd734b00c10f843d14a19d4d",
+  "freeze_ref": "freeze/r40-a2-web-baseline-20260926",
+  "workflows": {
+    "total": 20,
+    "success": 20,
+    "failed": 0
+  },
+  "handoff_issues": [
+    255,
+    256,
+    258,
+    259
+  ],
+  "excluded": [
+    "Sabik R06/HTTP real",
+    "voice/TTS",
+    "production",
+    "main merge"
+  ],
+  "manual_pending": [
+    "real screen reader",
+    "physical mobile",
+    "human audio listening",
+    "user validation",
+    "human incomplete/complex-background review",
+    "physical GPU",
+    "PDF/UA if required",
+    "braille if required",
+    "native 200/400 zoom and cognitive/naturalness gates when required"
+  ]
+}
