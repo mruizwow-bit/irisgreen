@@ -1,7 +1,7 @@
 /* Iris Green · Juegos. Sin dependencias. Nada suena ni se mueve solo. */
 (function(){
 'use strict';
-var D=window.IG_JUEGOS_DATA;if(!D)return;
+var D=window.IG_JUEGOS_DATA,META=window.IG_JUEGOS_META_R42||null;if(!D)return;var MM={};if(META&&META.games)META.games.forEach(function(m){MM[m.id]=m;});
 var root=document.getElementById('jg-app');if(!root)return;
 var BASE=root.getAttribute('data-base')||'/assets/pictogramas/';
 var UI={
@@ -20,7 +20,7 @@ var UI={
   hecho:'Hecho',subir:'Mover antes',bajar:'Mover después',quitar:'Quitar',minL:function(m){return m===1?'1 minuto':m+' minutos';},
   mitad:'Queda la mitad.',poco:'Queda poco.',finReloj:'Se acabó el tiempo.',relojListo:'Preparado cuando tú quieras.',
   hojaOrden:'Pasos en orden.',hojaLista:'Marca cada casilla cuando lo hayas hecho.',hojaPlan:'Mi plan.',elige:'Buena elección. Sigue cuando quieras.',
-  objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',dur:function(m){return 'Unos '+m+' minutos';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
+  objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',habilidad:'Habilidad',duracion:'Duración',todasHabilidades:'Todas',todasDuraciones:'Cualquier duración',dur:function(m){return 'Unos '+m+' minutos';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
  en:{h1:'Games',lede:'297 practical games for everyday situations. No timer, no points and no rush. Nothing plays or moves until you decide.',crumb:'Resources',crumbHref:'/en/resources/',
   buscar:'Search for a game',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
   jugar:'Play',todos:'All games',menos:'Fewer options',ayuda:'Help me',otraVez:'Start again',imprimir:'Print',
@@ -36,9 +36,9 @@ var UI={
   hecho:'Done',subir:'Move earlier',bajar:'Move later',quitar:'Take out',minL:function(m){return m===1?'1 minute':m+' minutes';},
   mitad:'Half the time is left.',poco:'Not much time left.',finReloj:'Time is up.',relojListo:'Ready when you are.',
   hojaOrden:'Steps in order.',hojaLista:'Tick each box when you have done it.',hojaPlan:'My plan.',elige:'Good choice. Continue when you like.',
-  objetos:'Objects',conEsto:'Match with',meLoPongo:'What I am wearing',juego:'Game',etapa:'Stage of life',todasEdades:'All ages',contexto:'Situation',tipo:'Type of game',todosTipos:'All',dur:function(m){return 'About '+m+' minutes';},imprimible:'Download the printable',encontrados:function(a,b){return a+' of '+b+' found';},noEsta:'That is not on the list. Try another.',pareja:'A pair!',noPareja:'They do not match. They turn back over.',carta:'Face-down card',tuEleccion:'Your choice',libreOk:'Noted.',resumen:'This is your plan.'}
+  objetos:'Objects',conEsto:'Match with',meLoPongo:'What I am wearing',juego:'Game',etapa:'Stage of life',todasEdades:'All ages',contexto:'Situation',tipo:'Type of game',todosTipos:'All',habilidad:'Skill',duracion:'Duration',todasHabilidades:'All',todasDuraciones:'Any duration',dur:function(m){return 'About '+m+' minutes';},imprimible:'Download the printable',encontrados:function(a,b){return a+' of '+b+' found';},noEsta:'That is not on the list. Try another.',pareja:'A pair!',noPareja:'They do not match. They turn back over.',carta:'Face-down card',tuEleccion:'Your choice',libreOk:'Noted.',resumen:'This is your plan.'}
 };
-var S={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',vista:'lista',gi:null,fi:0,red:false,ayuda:false,msg:null,hecha:false,cat:'todos',etapa:null,tipo:null,q:'',adv:false,d:{}};
+var S={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',vista:'lista',gi:null,fi:0,red:false,ayuda:false,msg:null,hecha:false,cat:'todos',etapa:null,tipo:null,habilidad:null,duracion:null,q:'',adv:false,d:{}};
 var A=[],lastKey=null,focusHead=false;
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -221,14 +221,18 @@ function contextoCard(cat){
    '<span class="jg-context-copy"><strong>'+esc(L(cat.l))+'</strong><span>'+esc(U().n(count))+'</span></span><span class="jg-context-arrow" aria-hidden="true">→</span></button>';
 }
 function filtrosPopover(u){
- var ets={};(D.etapas||[]).forEach(function(x){ets[x.id]=x;});
  var btnsEt=[{v:null,l:u.todasEdades}].concat((D.etapas||[]).filter(function(x){return x.id!=='todas';}).map(function(x){return {v:x.id,l:L(x.l)};}));
  var btnsTp=[{v:null,l:u.todosTipos}].concat((D.tipos||[]).map(function(x){return {v:x.id,l:L(x.l)};}));
+ var btnsSk=[{v:null,l:u.todasHabilidades}],btnsDu=[{v:null,l:u.todasDuraciones}];
+ if(META&&META.skills)Object.keys(META.skills).forEach(function(k){btnsSk.push({v:k,l:L(META.skills[k])});});
+ if(META&&META.durations)Object.keys(META.durations).forEach(function(k){btnsDu.push({v:k,l:L(META.durations[k])});});
  var group=function(id,label,opts,cur,set){return '<fieldset class="jg-filter"><legend>'+esc(label)+'</legend><div class="jg-chips">'+opts.map(function(o){var on=cur===o.v;return boton(o.l,function(){set(o.v);},on?'is-on':'',id+'-'+(o.v||'x'),' aria-pressed="'+on+'"');}).join('')+'</div></fieldset>';};
  return '<button type="button" class="jg-btn jg-actions-btn" popovertarget="jg-filter-pop">'+esc(u.moreOptions)+'</button>'+
   '<div class="jg-filter-pop" id="jg-filter-pop" popover><div class="jg-pop-head"><strong>'+esc(u.moreOptions)+'</strong><button type="button" class="jg-pop-close" popovertarget="jg-filter-pop" popovertargetaction="hide" aria-label="×">×</button></div>'+
   group('et',u.etapa,btnsEt,S.etapa,function(v){S.etapa=v;})+
-  group('tp',u.tipo,btnsTp,S.tipo,function(v){S.tipo=v;})+'</div>';
+  group('tp',u.tipo,btnsTp,S.tipo,function(v){S.tipo=v;})+
+  group('sk',u.habilidad,btnsSk,S.habilidad,function(v){S.habilidad=v;})+
+  group('du',u.duracion,btnsDu,S.duracion,function(v){S.duracion=v;})+'</div>';
 }
 function gameCard(o,cats){
  var u=U(),j=o.j,f=j.f[0],ks=[].concat(f.pasos||[],f.sec||[],f.banco||[],(f.items||[]).map(function(x){return Array.isArray(x)?x[0]:x;}),(f.pares||[]).map(function(p){return p[0];}),(f.ops||[]).map(function(x){return x[0];}),f.ctx?[f.ctx]:[]),un=[];
@@ -241,8 +245,8 @@ function gameCard(o,cats){
 }
 function catalogo(){
  var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});
- var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j;
-  return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
+ var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j,m=MM[j.s]||null;
+  return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!S.habilidad||(m&&m.skill===S.habilidad))&&(!S.duracion||(m&&m.duration_band===S.duracion))&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
  var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
  if(S.cat==='todos'&&!q){
   return '<section class="jg-r41-hub" aria-labelledby="jg-practice-title"><div class="jg-r41-actions"><div><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-practice-title">'+esc(u.practica)+'</h2></div><div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
