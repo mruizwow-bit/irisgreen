@@ -15,15 +15,15 @@ jobs:
       - name: Checkout exact A1 product candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 1cbc9ee6f7b1316e2718ad1d5eb9f636d4a4773c
+          ref: ea8d309e77fd1ade0c1315e650cb85ec24d8e60c
           fetch-depth: 0
           persist-credentials: false
 
       - name: Exact identity and diff check
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "1cbc9ee6f7b1316e2718ad1d5eb9f636d4a4773c"
-          test "$(git rev-parse HEAD^{tree})" = "a99ed0c65f318a7624b68b8a4bdb260ccd12f2f7"
+          test "$(git rev-parse HEAD)" = "ea8d309e77fd1ade0c1315e650cb85ec24d8e60c"
+          test "$(git rev-parse HEAD^{tree})" = "31fa0e3ccc29ff58e4cce68440ba3c8b4a93655d"
           test "$(git rev-parse HEAD^)" = "52e5f9f02184581a1bfb1878c388ede3d1068c47"
           git diff --check 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
           git diff --name-only 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
@@ -65,7 +65,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: r40-a1-recursos-juegos-debug
+          name: r40-a1-recursos-juegos-debug-r2
           path: |
             reports/resources-current/
             dist/reports/publicacion/seo-idiomas.json
