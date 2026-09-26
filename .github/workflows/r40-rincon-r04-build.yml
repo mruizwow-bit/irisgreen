@@ -48,6 +48,10 @@ jobs:
           m=re.search(r"<body[^>]*>",s,re.I)
           tag=m.group(0) if m else ""
           print("R04_DOM",mode,tag[:1200])
+          err=re.search(r'data-r40-r04-error=["\\\']([^"\\\']+)',tag,re.I)
+          if err:
+            print("R04_RUNTIME_ERROR",mode,err.group(1),file=sys.stderr)
+            sys.exit(1)
           if 'data-r40-r04-script="loaded"' not in s:
             print("R04_SCRIPT_NOT_EXECUTED",mode,file=sys.stderr)
             sys.exit(1)
