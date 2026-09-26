@@ -79,6 +79,7 @@ JS_METRICS = """() => {
     stage:rect(stage),
     rail:rect(rail),
     inspector:rect(inspector),
+    context:rect(document.querySelector('.ig-r42-context')),
     title:title ? title.textContent.trim() : '',
     h1Count:Array.from(document.querySelectorAll('main h1')).filter(el => {
       const cs=getComputedStyle(el), r=el.getBoundingClientRect();
@@ -217,6 +218,15 @@ with sync_playwright() as pw:
 
                 if vp_name == "desktop":
                     assert workspace["width"] >= min(600, width * 0.48), metrics
+                    desktop_ui = page.evaluate(JS_MOBILE)
+                    row["desktop"] = desktop_ui
+                    assert desktop_ui["railDirection"] == "column", desktop_ui
+                    if family == "workshop":
+                        assert metrics["inspector"]["display"] != "none", metrics
+                    else:
+                        assert metrics["inspector"]["display"] == "none", metrics
+                    if family == "quiet":
+                        assert metrics["context"] and metrics["context"]["height"] <= 90, metrics
                 else:
                     mobile = page.evaluate(JS_MOBILE)
                     row["mobile"] = mobile
