@@ -387,3 +387,20 @@ Issues:
 Normativa: `NORMATIVA/ADDENDUM_R42_PROTECCION_MENORES_CONTENIDO_20260926.md`.  
 Memoria: `MEMORIA/R42_PROTECCION_MENORES_SITUACIONES_CONDICIONES_20260926.md`.  
 Control: `CONTROL/DELTA_R42_PROTECCION_MENORES_20260926.json`.
+
+## R42 · child-safe diferido hasta terminar la oleada actual · 26/09/2026
+
+**Estado vigente: `R42_CHILD_SAFE_DEFERRED_UNTIL_CURRENT_WORK_COMPLETE`.**
+
+La arquitectura #293–#297 sigue aprobada, pero María decide implementarla después de terminar los trabajos R42 actuales, para no tocar dos veces catálogos, buscador, app shell y enlaces mientras todavía están cambiando.
+
+No ejecutar ahora patches/ramas child-safe.
+
+Reanudar tras:
+1. construcción R42 actual terminada;
+2. integración A2;
+3. preview estable;
+4. nuevo baseline HEAD/tree registrado.
+
+Memoria: `MEMORIA/R42_CHILD_SAFE_DEFERRED_20260926.md`.  
+Control: `CONTROL/DELTA_R42_CHILD_SAFE_DEFERRED_20260926.json`.
