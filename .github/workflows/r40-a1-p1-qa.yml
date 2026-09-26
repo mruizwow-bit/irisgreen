@@ -1,0 +1,74 @@
+name: R40 A1 Recursos Juegos QA
+'on':
+  push:
+    branches:
+      - qa/r40-p1-a1-1cbc9ee6-20260926
+
+permissions:
+  contents: read
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact A1 product candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 1cbc9ee6f7b1316e2718ad1d5eb9f636d4a4773c
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Exact identity and diff check
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "1cbc9ee6f7b1316e2718ad1d5eb9f636d4a4773c"
+          test "$(git rev-parse HEAD^{tree})" = "a99ed0c65f318a7624b68b8a4bdb260ccd12f2f7"
+          test "$(git rev-parse HEAD^)" = "52e5f9f02184581a1bfb1878c388ede3d1068c47"
+          git diff --check 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
+          git diff --name-only 52e5f9f02184581a1bfb1878c388ede3d1068c47...HEAD
+
+      - name: R40 P1 structural and preservation test
+        run: python3 scripts/test_r40_recursos_juegos.py
+
+      - name: JavaScript syntax
+        run: |
+          node --check assets/juegos-iris.js
+          node --check assets/data/juegos-iris-data.js
+          node --check assets/tarjeta-iris.js
+
+      - name: Prepare browser test environment
+        run: |
+          python3 -m venv /tmp/r40-a1
+          /tmp/r40-a1/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+          /tmp/r40-a1/bin/python -m playwright install --with-deps chromium >/tmp/r40-a1-browser-install.log 2>&1
+
+      - name: Build
+        run: python3 scripts/build_site.py
+
+      - name: Existing Resources ES EN regression
+        run: /tmp/r40-a1/bin/python scripts/test_resources_current.py
+
+      - name: SEO and language regression
+        run: python3 scripts/audit_seo_idiomas.py --root dist
+
+      - name: Target-size regression
+        working-directory: dist
+        run: /tmp/r40-a1/bin/python ../scripts/audit_target_size.py
+
+      - name: Clean tree after debug
+        run: |
+          git status --porcelain=v1 --untracked-files=all | tee /tmp/r40-a1-status.txt
+          test ! -s /tmp/r40-a1-status.txt
+
+      - name: Upload debug evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r40-a1-recursos-juegos-debug
+          path: |
+            reports/resources-current/
+            dist/reports/publicacion/seo-idiomas.json
+            dist/reports/wcag-target-size/
+            /tmp/r40-a1-status.txt
+          retention-days: 14
