@@ -1,6 +1,7 @@
 /* R40-RINCON-R04 · reproductor primero, selector después, ajustes en disclosure. */
 (function(){
 'use strict';
+document.documentElement.dataset.r40R04Script='loaded';
 var ES=(document.documentElement.lang||'es').slice(0,2)!=='en',$=function(s,r){return(r||document).querySelector(s);},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s));};
 var panels={videos:$('#watch'),sounds:$('#listen'),ball:$('#pause')},tabs=$$('[data-r40-mode]'),modeSelect=$('#r40ModeSelect'),stage=$('#watchStage');if(!panels.videos||!panels.sounds||!panels.ball||!tabs.length)return;
 document.body.classList.remove('r40-rincon-r03');document.body.classList.add('r40-rincon-r04');document.body.dataset.r40R04Ready='true';var modeNav=$('.r40-mode-nav');if(modeNav)modeNav.hidden=false;Object.keys(panels).forEach(function(k){panels[k].open=true;panels[k].setAttribute('role','tabpanel');panels[k].setAttribute('aria-labelledby','r40-tab-'+k);});

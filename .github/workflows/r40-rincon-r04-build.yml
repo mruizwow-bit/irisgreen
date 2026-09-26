@@ -33,6 +33,8 @@ jobs:
           sleep 2
       - name: Browser DOM contract
         run: |
+          curl -fsS "http://127.0.0.1:8765/assets/rincon-r04.js?v=r40-r04-20260926" | grep -q "R40-RINCON-R04"
+          curl -fsS "http://127.0.0.1:8765/es/sitio-tranquilo/" | grep -q "rincon-r04.js"
           CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
           test -n "$CHROME"
           mkdir -p docs/r40-a7-build/r04-evidence/dom
@@ -46,6 +48,9 @@ jobs:
           m=re.search(r"<body\\b([^>]*)>",s,re.I)
           attrs=m.group(1) if m else ""
           print("R04_DOM",mode,attrs[:1200])
+          if 'data-r40-r04-script="loaded"' not in s:
+            print("R04_SCRIPT_NOT_EXECUTED",mode,file=sys.stderr)
+            sys.exit(1)
           required={
             'data-r40-r04-ready':'true',
             'data-r40-active-mode':mode,
