@@ -55,15 +55,19 @@ Antes de trabajar en Rincón tranquilo, leer:
 
 Construcción A7 terminada y lista para integración A2: `R40_RINCON_R03_FULL_AUDIO_UX_BUILD_READY_FOR_A2`. Ver [memoria](MEMORIA/R40_RINCON_R03_ENTREGA_A7_20260926.md), [evidencia](EVIDENCIAS/R40_RINCON_R03_A7/README.md) y [control](CONTROL/DELTA_R40_RINCON_R03_20260926.json). La aceptación perceptiva permanece pendiente de preview web.
 
-## R40 Rincón R04 · HUMAN QA FAIL
+## R40 Rincón R04 · entrega A7 lista para A2
 
-La orden vigente del Rincón es **#271**. Leer antes de trabajar:
-- `ORDENES/R40_RINCON_R04/README.md`
-- `NORMATIVA/ADDENDUM_R40_RINCON_R04_HUMAN_QA_20260926.md`
-- `MEMORIA/R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`
+Estado: **`R40_RINCON_R04_REAL_REBUILD_READY_FOR_A2`**.
+
+A7 ha terminado la reconstrucción real de #271. Entrega: PR #274, HEAD `7f15dd174fc26b7768224896492ff240c5cecdf5`. Incluye audio renderizado 12+9, motor visual de 9 escenas, reproductor/sonido/bola arriba y evidencia 1440×900 + 390×844.
+
+Ver:
+- `MEMORIA/R40_RINCON_R04_ENTREGA_A7_20260926.md`
+- `EVIDENCIAS/R40_RINCON_R04_A7/`
 - `CONTROL/DELTA_R40_RINCON_R04_20260926.json`
 
-R03 queda rechazada por revisión humana. A7 reconstruye; A2 integra y sube; la aceptación final es en preview web.
+Aceptación perceptiva pendiente de integración/subida A2 y revisión humana.
+
 
 ## R39 R06 · Cloud listo, integración web pendiente A2
 

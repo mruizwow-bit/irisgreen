@@ -166,29 +166,31 @@ Memoria de entrega: [R40_RINCON_R03_ENTREGA_A7_20260926](MEMORIA/R40_RINCON_R03_
 Evidencia: [R40_RINCON_R03_A7](EVIDENCIAS/R40_RINCON_R03_A7/README.md).  
 Control: [Delta R03](CONTROL/DELTA_R40_RINCON_R03_20260926.json).
 
-## R40 · Rincón R04 · HUMAN QA FAIL · 26/09/2026
+## R40 · Rincón R04 · construcción A7 entregada · 26/09/2026
 
-**Estado vigente: `R40_RINCON_R04_REAL_REBUILD_REQUIRED`.**
+**Estado vigente: `R40_RINCON_R04_REAL_REBUILD_READY_FOR_A2`.**
 
-María ha rechazado la preview R03 después de probarla visualmente. La interfaz superior no resolvió el problema: en Vídeos se muestran primero 9 escenas y múltiples ajustes y el reproductor queda más abajo, fuera de la zona inicial.
+R04 sustituye R03 después del HUMAN QA FAIL de María. Agente 7 ha completado una reconstrucción audiovisual real sobre la base A2 observada `9ad3cc8116b6c1d237b84f71855f3808e93ddbad`.
 
-La revisión del diff confirma además que R03 no reconstruyó el motor visual principal de las ocho escenas anteriores y que la nueva biblioteca sonora sigue apoyándose ampliamente en ruido white/pink/brown filtrado.
+Entrega A7:
+- rama final `agent7/r40-rincon-r04-final-20260926`;
+- HEAD `7f15dd174fc26b7768224896492ff240c5cecdf5`;
+- tree `cac62fe72d1a193edc9e31ab9cfa177e5c92ca6d`;
+- draft PR #274, mergeable sobre la rama A2 vigente;
+- 12 sonidos generales + 9 ambientes de escena renderizados offline como assets first-party;
+- 3 sprites AAC-LC, mono, 24 kHz, con SHA-256 verificados;
+- motor visual nuevo `assets/rincon-escenas-r04.js` para las nueve escenas;
+- reproductor/estado/bola visible arriba antes de catálogo y ajustes;
+- selector Vídeos / Sonidos / Bola de relajación con una sola región activa;
+- ES/EN, reduced motion, forced-colors, targets cómodos y fallback.
 
-R03 (#269) queda sustituida por **#271**.
+Workflow de generación/QA `36237393274`: SUCCESS. Los blobs de producto del HEAD final son idénticos a los cubiertos por ese run. A7 inspeccionó las seis capturas finales 1440×900 y 390×844 y no observó el defecto R03 de herramienta enterrada.
 
-R04 exige:
-- reproductor/escena, sonido activo o bola inmediatamente arriba;
-- selector compacto después o al lado;
-- ajustes secundarios en disclosure;
-- 12 sonidos generales rehechos;
-- 9 ambientes rehechos;
-- reconstrucción visual real de las escenas previas además de Pulpos;
-- A7 construye; A2 integra/sube;
-- aceptación visual/auditiva humana en la preview.
+Esto **no es aceptación perceptiva final**. A2 integra/sube sobre su HEAD vigente; después María/QA escucha los 12 sonidos + 9 ambientes y revisa las 9 escenas en Deploy Preview.
 
-Orden: `ORDENES/R40_RINCON_R04/`.  
-Normativa: `NORMATIVA/ADDENDUM_R40_RINCON_R04_HUMAN_QA_20260926.md`.  
-Memoria: `MEMORIA/R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`.
+Memoria: `MEMORIA/R40_RINCON_R04_ENTREGA_A7_20260926.md`.  
+Evidencia: `EVIDENCIAS/R40_RINCON_R04_A7/`.  
+Control: `CONTROL/DELTA_R40_RINCON_R04_20260926.json`.
 
 ## R39 R06 · Cloud desplegado · 26/09/2026
 

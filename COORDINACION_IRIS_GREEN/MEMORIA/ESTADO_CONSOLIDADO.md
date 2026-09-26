@@ -78,11 +78,23 @@ Registro de decisión: `R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`. Entrega A
 
 ## Addendum 26/09/2026 · R40 Rincón R04
 
-Estado vigente: **`R40_RINCON_R04_REAL_REBUILD_REQUIRED`**.
+Estado vigente: **`R40_RINCON_R04_REAL_REBUILD_READY_FOR_A2`**.
 
-La revisión humana de María invalida la aceptación estructural de R03. El reproductor/escena sigue enterrado después del catálogo y ajustes, y la reconstrucción audiovisual no es sustantiva en las ocho escenas previas. R04 #271 sustituye R03.
+Tras el HUMAN QA FAIL de R03, A7 completa R04 con una reconstrucción audiovisual real:
+- 12 sonidos generales y 9 ambientes renderizados offline first-party;
+- tres sprites locales con manifest y hashes;
+- motor visual nuevo común para Mar, Lluvia, Río, Noche, Acuario, Tubo, Medusas, Fibra y Pulpos;
+- reproductor/estado/bola primero, catálogo después y ajustes secundarios en disclosure;
+- selector superior único y equivalente móvil;
+- ES/EN, no autoplay, reduced motion, forced-colors y fallback.
 
-A7 debe reconstruir; A2 integra/sube; el cierre requiere web real y revisión humana. Ver `R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`.
+Entrega final: `agent7/r40-rincon-r04-final-20260926@7f15dd174fc26b7768224896492ff240c5cecdf5`, tree `cac62fe72d1a193edc9e31ab9cfa177e5c92ca6d`, draft PR #274.
+
+El workflow `36237393274` terminó SUCCESS. A7 verificó que los blobs de producto/audio del HEAD final coinciden con los cubiertos por ese run; los SHA-256 de los tres sprites fueron recalculados y coinciden. También se revisaron visualmente las seis capturas finales 1440×900 y 390×844.
+
+No existe PASS perceptivo todavía. A2 integra/sube; la aceptación exige preview web + escucha y revisión visual humana.
+
+Memoria: `R40_RINCON_R04_ENTREGA_A7_20260926.md`. Evidencia: `../EVIDENCIAS/R40_RINCON_R04_A7/`.
 
 ## R39 R06 · Cloud desplegado · 26/09/2026
 

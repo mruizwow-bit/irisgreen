@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-r40-r04-a7-evidence-v1",
+  "date": "2026-09-26",
+  "state": "R40_RINCON_R04_REAL_REBUILD_READY_FOR_A2",
+  "source_base_sha": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+  "branch": "agent7/r40-rincon-r04-final-20260926",
+  "head_sha": "7f15dd174fc26b7768224896492ff240c5cecdf5",
+  "tree_sha": "cac62fe72d1a193edc9e31ab9cfa177e5c92ca6d",
+  "pull_request": 274,
+  "workflow": {
+    "id": 36237393274,
+    "conclusion": "success",
+    "head_sha": "8278e3a4863fa31a71f0e7f1554cfb55a9e8c073",
+    "product_blobs_match_final": true
+  },
+  "audio": {
+    "general_sounds": 12,
+    "scene_ambiences": 9,
+    "sprites": 3,
+    "provenance": "SYNTHETIC_FIRST_PARTY_R40_R04",
+    "sha256": {
+      "general-nature.m4a": "b2678dea90536a331755fc0291d955e7513f388341b3d390dd5daf884a7124e9",
+      "general-calm.m4a": "b0accd420f0344cdfa5cb2957e52e4fb39fc947a75da3dc6f481b7210fed3505",
+      "scenes.m4a": "a3e9a7b9fc3c82f002b5699d613ebe68be881c08d3650d2f849065e4440d12da"
+    }
+  },
+  "visuals": {
+    "scenes": 9,
+    "engine": "assets/rincon-escenas-r04.js",
+    "screenshots_reviewed": 6,
+    "tool_first_viewport_pass": true
+  },
+  "acceptance": "PENDING_A2_DEPLOY_PREVIEW_AND_HUMAN_AUDIO_VISUAL_REVIEW",
+  "merge_main_by_a7": false,
+  "deploy_by_a7": false
+}

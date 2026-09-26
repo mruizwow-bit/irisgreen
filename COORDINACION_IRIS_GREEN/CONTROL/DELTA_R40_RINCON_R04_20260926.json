@@ -2,7 +2,7 @@
   "schema": "iris-green-control-delta-v1",
   "id": "R40-RINCON-R04",
   "date": "2026-09-26",
-  "status": "R40_RINCON_R04_REAL_REBUILD_REQUIRED",
+  "status": "R40_RINCON_R04_REAL_REBUILD_READY_FOR_A2",
   "supersedes": [
     "R40-RINCON-R03",
     "#269"
@@ -32,5 +32,58 @@
   ],
   "builder": "Agente 7",
   "integrator": "Agente 2",
-  "parent_issue": 247
+  "parent_issue": 247,
+  "builder_delivery": {
+    "branch": "agent7/r40-rincon-r04-final-20260926",
+    "source_base_sha": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+    "head_sha": "7f15dd174fc26b7768224896492ff240c5cecdf5",
+    "tree_sha": "cac62fe72d1a193edc9e31ab9cfa177e5c92ca6d",
+    "pull_request": 274,
+    "pull_request_state": "draft_mergeable",
+    "current_a2_head_observed": "e7e2e986e370af093c094a78deaacd2eb1f04707"
+  },
+  "build": {
+    "general_sounds": 12,
+    "scene_ambiences": 9,
+    "visual_scenes": 9,
+    "audio_assets": [
+      "general-nature.m4a",
+      "general-calm.m4a",
+      "scenes.m4a"
+    ],
+    "audio_provenance": "SYNTHETIC_FIRST_PARTY_R40_R04",
+    "visual_engine": "assets/rincon-escenas-r04.js",
+    "active_tool_first": true,
+    "top_selector": [
+      "Vídeos",
+      "Sonidos",
+      "Bola de relajación"
+    ],
+    "es_en": true,
+    "reduced_motion": true,
+    "forced_colors": true,
+    "no_autoplay": true
+  },
+  "verification": {
+    "workflow_run": 36237393274,
+    "workflow_conclusion": "SUCCESS",
+    "workflow_head": "8278e3a4863fa31a71f0e7f1554cfb55a9e8c073",
+    "final_product_blobs_match_workflow": true,
+    "audio_sha256": {
+      "general-nature.m4a": "b2678dea90536a331755fc0291d955e7513f388341b3d390dd5daf884a7124e9",
+      "general-calm.m4a": "b0accd420f0344cdfa5cb2957e52e4fb39fc947a75da3dc6f481b7210fed3505",
+      "scenes.m4a": "a3e9a7b9fc3c82f002b5699d613ebe68be881c08d3650d2f849065e4440d12da"
+    },
+    "screenshots_reviewed": [
+      "videos-1440x900",
+      "videos-390x844",
+      "sounds-1440x900",
+      "sounds-390x844",
+      "ball-1440x900",
+      "ball-390x844"
+    ],
+    "visual_gate": "A7_REVIEW_PASS_TOOL_VISIBLE_FIRST_VIEWPORT"
+  },
+  "acceptance": "PENDING_A2_INTEGRATION_DEPLOY_PREVIEW_AND_HUMAN_AUDIO_VISUAL_REVIEW",
+  "next_gate": "A2 integra PR274 sobre HEAD vigente y publica Deploy Preview; María/QA escucha 12+9 y revisa 9 escenas."
 }
