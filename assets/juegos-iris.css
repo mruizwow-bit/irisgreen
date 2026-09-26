@@ -223,3 +223,11 @@ a.jg-btn{text-decoration:none}
  .jg-context-card,.jg-gamebar,.jg-r41-browserbar,.jg-workspace,.jg-inspector,.jg-filter-pop{border:2px solid CanvasText;background:Canvas!important;box-shadow:none}
  .jg-context-art{background:Canvas!important;border:1px solid CanvasText}
 }
+
+
+/* R42 progressive enhancement: same-document transitions; never required for operation. */
+#jg-app{view-transition-name:ig-games-stage}
+::view-transition-old(ig-games-stage),::view-transition-new(ig-games-stage){animation-duration:.16s;animation-timing-function:ease-out}
+@media(prefers-reduced-motion:reduce){
+ ::view-transition-old(ig-games-stage),::view-transition-new(ig-games-stage){animation:none!important}
+}
