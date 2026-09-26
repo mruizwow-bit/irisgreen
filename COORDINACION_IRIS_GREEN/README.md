@@ -39,3 +39,13 @@ No se traduce ni modifica silenciosamente el corpus N04 español sellado: la cob
 Cada entrega aporta responsable, orden, base y HEAD reales, archivos cambiados, pruebas ejecutadas, resultado y limitaciones, y enlaces a evidencias. Se distinguen código entregado, integración, despliegue y verificación de funcionamiento. Un build correcto o Netlify READY no equivalen a aceptación funcional o visual.
 
 No borrar históricos. No incluir secretos, cookies, grabaciones vocales privadas, conversaciones de usuarios ni copias no autorizadas de normas de pago. La marca Iris Green no sustituye los créditos de terceros.
+
+## Addendum operativo R40 · Rincón R03 · 26/09/2026
+
+Antes de trabajar en Rincón tranquilo, leer:
+- `ORDENES/R40_RINCON_R03/README.md`;
+- `NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20260926.md`;
+- `MEMORIA/R40_RINCON_R03_DECISION_AUDIO_UX_20260926.md`;
+- `CONTROL/DELTA_R40_RINCON_R03_20260926.json`.
+
+#269 es la orden vigente y sustituye #268. A7 construye y A2 es la única puerta de integración/subida. La aceptación es en la web, con revisión auditiva y visual humana.
