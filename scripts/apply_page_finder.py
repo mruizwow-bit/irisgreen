@@ -24,7 +24,10 @@ def apply(root):
   ids={n['attrs'].get('id') for n in doc.nodes}
   for i,n in enumerate(headings):
    label=html.unescape(re.sub('<[^>]*>',' ',text[n['open_end']:n['close_start']])).strip();label=re.sub(r'\s+',' ',label)
-   if not label:continue
+   # Un heading DC puede contener una expresión que solo cobra sentido tras
+   # hidratar. No la copies al índice estático: html.unescape convertiría las
+   # entidades seguras de nuevo en {{...}} dentro del HTML publicado.
+   if not label or '{{' in label or '}}' in label:continue
    ident=n['attrs'].get('id')
    if not ident:
     ident=f'ig-section-{i+1}'
