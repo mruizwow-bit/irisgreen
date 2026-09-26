@@ -29,7 +29,17 @@
       "Un registro histórico no significa presencia «ahora».",
       "No reconstruir localizaciones de biodiversidad que la fuente haya ocultado.",
       "Cantos reales requieren grabación, autor, ID y licencia por archivo."
-    ]
+    ],
+    "provenance": {
+      "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+      "authority": "Iris Green · definición editorial de Cuaderno de Campo",
+      "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+      "evidence": "",
+      "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+      "source_date": "2026-09-24",
+      "checked_at": "2026-09-26",
+      "status": "HOLD"
+    }
   },
   "counts": {
     "total": 56,
@@ -53,7 +63,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Cielo nocturno",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-002",
@@ -70,7 +90,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "aves",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-003",
@@ -87,7 +117,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "minerales",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-004",
@@ -104,7 +144,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Transporte",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-005",
@@ -121,7 +171,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "señales",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-006",
@@ -138,7 +198,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Matemáticas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-007",
@@ -155,7 +225,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "arquitectura",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-008",
@@ -172,7 +252,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Videojuegos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-009",
@@ -189,7 +279,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "criaturas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-010",
@@ -206,7 +306,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Pintura",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-011",
@@ -223,7 +333,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "diseño",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-012",
@@ -240,7 +360,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Escritura",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-013",
@@ -257,7 +387,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "mundos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-014",
@@ -274,7 +414,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Trenes",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-015",
@@ -291,7 +441,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "arquitectura",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-016",
@@ -308,7 +468,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Castillos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-017",
@@ -325,7 +495,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "arquitectura",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-018",
@@ -342,7 +522,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Relojes",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-019",
@@ -359,7 +549,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "coches",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-020",
@@ -376,7 +576,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Electrónica",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-021",
@@ -393,7 +603,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "ordenadores",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-022",
@@ -410,7 +630,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Matemáticas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-023",
@@ -427,7 +657,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Matemáticas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-024",
@@ -444,7 +684,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "arte generativo",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-025",
@@ -461,7 +711,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Robótica",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-026",
@@ -478,7 +738,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "transporte",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-027",
@@ -495,7 +765,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Videojuegos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-028",
@@ -512,7 +792,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "pixel art",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-029",
@@ -529,7 +819,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Seres vivos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-030",
@@ -546,7 +846,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "trenes",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-031",
@@ -563,7 +873,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Música",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-032",
@@ -580,7 +900,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Música",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-033",
@@ -597,7 +927,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "matemáticas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-034",
@@ -614,7 +954,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Tiempo",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-035",
@@ -631,7 +981,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "aves",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-036",
@@ -648,7 +1008,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Historia",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-037",
@@ -665,7 +1035,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "mitología",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-038",
@@ -682,7 +1062,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Geografía",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-039",
@@ -699,7 +1089,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "idiomas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-040",
@@ -716,7 +1116,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Idiomas",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-041",
@@ -733,7 +1143,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "escrituras",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-042",
@@ -750,7 +1170,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Ajedrez",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-043",
@@ -767,7 +1197,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "colecciones",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-044",
@@ -784,7 +1224,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Cielo",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-045",
@@ -801,7 +1251,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "plantas",
-      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD."
+      "note": "La relación se conserva como planificación, pero no debe transportar ni mostrar datos/medios reales del interés HOLD.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-046",
@@ -818,7 +1278,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Diseño",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-047",
@@ -835,7 +1305,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "historia",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-048",
@@ -852,7 +1332,17 @@
       "status": "READY",
       "publicable": true,
       "source_label": "Todos",
-      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos."
+      "note": "Relación editorial consumible; invertirla en UI permite «Crear en el Taller» sin duplicar datos.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/TALLER_25_READY_HOLD.json",
+        "authority": "Iris Green · catálogo R40 del Taller y mapeo canónico A4",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-049",
@@ -869,7 +1359,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Aves",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-050",
@@ -886,7 +1386,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Insectos y mariposas",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-051",
@@ -903,7 +1413,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Plantas y flores",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-052",
@@ -920,7 +1440,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Vida marina y peces",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-053",
@@ -937,7 +1467,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Mamíferos",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-054",
@@ -954,7 +1494,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Reptiles y anfibios",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     },
     {
       "id": "connection-055",
@@ -971,7 +1521,17 @@
       "status": "READY",
       "publicable": false,
       "source_label": "Fósiles y dinosaurios",
-      "note": "La fuente del interés es READY, pero el Cuaderno completo sigue HOLD hasta cerrar sus restantes familias."
+      "note": "La fuente del interés es READY, pero el Cuaderno completo sigue HOLD hasta cerrar sus restantes familias.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      }
     },
     {
       "id": "connection-056",
@@ -988,7 +1548,17 @@
       "status": "HOLD",
       "publicable": false,
       "source_label": "Minerales y rocas",
-      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable."
+      "note": "La familia real permanece HOLD hasta fijar dataset/licencia/cita concreta; no entra en el payload publicable.",
+      "provenance": {
+        "source": "COORDINACION_IRIS_GREEN/EVIDENCIAS/R40_A4_CONTENIDO_FUENTES_LICENCIAS_R01/CONEXIONES_INTERESES_TALLER_CUADERNO.md",
+        "authority": "Iris Green · matriz editorial Intereses↔Cuaderno de Campo",
+        "license": "Metadatos editoriales internos de Iris Green; no incorporan por sí mismos datos ni assets de terceros.",
+        "evidence": "",
+        "notes": "La procedencia del contenido/dato externo sigue gobernada por la ficha enlazada; este registro solo documenta estructura editorial.",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      }
     }
   ]
 }
