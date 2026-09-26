@@ -166,6 +166,7 @@
   var shell = h('section', {
     class:'ig-r42-shell',
     'data-family':family,
+    'data-inspector':'open',
     'aria-label':T.shell
   });
   var topbar = h('header', { class:'ig-r42-topbar' });
@@ -301,6 +302,7 @@
   function openInspector(trigger) {
     if (isCompact()) {
       inspector.setAttribute('data-collapsed', 'false');
+      shell.dataset.inspector = 'open';
       inspectorFrame.body.appendChild(inspector);
       openDialog(inspectorFrame.dialog, trigger);
       panelButton.setAttribute('aria-expanded', 'true');
@@ -310,6 +312,7 @@
     transition(function () {
       var collapsed = inspector.getAttribute('data-collapsed') === 'true';
       inspector.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+      shell.dataset.inspector = collapsed ? 'open' : 'closed';
       panelButton.setAttribute('aria-expanded', String(collapsed));
       inspectRail.setAttribute('aria-pressed', String(collapsed));
     });
@@ -327,6 +330,7 @@
       restoreInspectorHome();
     } else {
       inspector.setAttribute('data-collapsed', 'true');
+      shell.dataset.inspector = 'closed';
       panelButton.setAttribute('aria-expanded', 'false');
       inspectRail.setAttribute('aria-pressed', 'false');
     }
@@ -406,7 +410,7 @@
   registerAction('help', T.openHelp, T.help, function () { openHelp(actionButton); });
 
   document.addEventListener('keydown', function (event) {
-    if (!(event.ctrlKey || event.metaKey) || String(event.key).toLowerCase() !== 'k' || event.altKey || isEditable(event.target)) return;
+    if (!shell.contains(event.target) || !(event.ctrlKey || event.metaKey) || String(event.key).toLowerCase() !== 'k' || event.altKey || isEditable(event.target)) return;
     event.preventDefault();
     openCommands(document.activeElement);
   });
@@ -501,7 +505,11 @@
       var q = stageSource.querySelector('input[type="search"]');
       if (q) registerAction('search-games', lang === 'en' ? 'Search games' : 'Buscar juegos', T.games, function () { q.focus(); });
       var gameHeading = stageSource.querySelector('#jg-h2');
-      if (gameHeading) setStatus('ready', String(gameHeading.textContent || T.ready));
+      if (gameHeading) {
+        gameHeading.setAttribute('role', 'heading');
+        gameHeading.setAttribute('aria-level', '2');
+        setStatus('ready', String(gameHeading.textContent || T.ready));
+      }
       else setStatus('ready');
     });
     gameObserver.observe(stageSource, { childList:true, subtree:true });
