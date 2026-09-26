@@ -1,0 +1,62 @@
+{
+  "schema": "IRIS_CONTROL_DELTA/1.0",
+  "id": "R42_A1_LIFE_STAGE_TECH_20260926",
+  "date": "2026-09-26",
+  "responsible": "Agente 1",
+  "status": "R42_A1_LIFE_STAGE_TECH_READY_FOR_A2",
+  "authority": [
+    "#286",
+    "R42_LIFE_STAGE_SEPARATION_ADOPTED",
+    "directriz María: tecnología avanzada en todo el carril Recursos/Juegos"
+  ],
+  "delivery": {
+    "branch": "agent1/r42-life-stage-separation-r01-20260926",
+    "pr": 298,
+    "head": "8f68609852ed83d4cf846c0390931b74c18d4cdb",
+    "functional_base": "c88ede84d8f4f88e3a93390d7502e226ba5f4e0d",
+    "a2_base_observed": "ab952077464b1348d3da88ee974f9375b3458bc9",
+    "compare": {
+      "ahead": 39,
+      "behind": 0,
+      "files": 20
+    },
+    "mergeable": true,
+    "draft": false
+  },
+  "qa": [
+    {
+      "workflow": "Comprobar rutinas visuales",
+      "run": 36253137816,
+      "conclusion": "success"
+    },
+    {
+      "workflow": "Recursos actuales ES y EN",
+      "run": 36253137789,
+      "conclusion": "success"
+    }
+  ],
+  "technology": [
+    "View Transitions progressive enhancement",
+    "Popover API",
+    "CSS Anchor Positioning with fallback",
+    "Container Queries",
+    "content-visibility and containment",
+    "requestAnimationFrame live previews",
+    "forced-colors",
+    "prefers-reduced-motion"
+  ],
+  "privacy": {
+    "life_stage_persisted": false,
+    "dob_collected": false,
+    "diagnosis_required": false,
+    "profile_required": false,
+    "new_network_data": false
+  },
+  "next_gate": "A2 integrate PR #298 and publish integrated preview; HUMAN QA María",
+  "limits": [
+    "no merge A1",
+    "no deploy A1",
+    "no production",
+    "no Taller/Intereses/Rincón scope"
+  ]
+}
