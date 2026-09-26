@@ -37,12 +37,30 @@ jobs:
           test -n "$CHROME"
           mkdir -p docs/r40-a7-build/r04-evidence/dom
           for mode in videos sounds ball; do
-            "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=1800 --dump-dom "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}" > "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
-            grep -q 'data-r40-r04-ready="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
-            grep -q "data-r40-active-mode=\"${mode}\"" "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
-            grep -q 'data-r40-video-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
-            grep -q 'data-r40-sound-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
-            grep -q 'data-r40-ball-first="true"' "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            "$CHROME" --headless --no-sandbox --disable-gpu --virtual-time-budget=2400 --dump-dom "http://127.0.0.1:8765/es/sitio-tranquilo/?r40mode=${mode}" > "docs/r40-a7-build/r04-evidence/dom/${mode}.html"
+            MODE="${mode}" python - <<'PY'
+          import os, re, pathlib, sys
+          mode=os.environ["MODE"]
+          p=pathlib.Path("docs/r40-a7-build/r04-evidence/dom")/(mode+".html")
+          s=p.read_text(encoding="utf-8",errors="replace")
+          m=re.search(r"<body\\b([^>]*)>",s,re.I)
+          attrs=m.group(1) if m else ""
+          print("R04_DOM",mode,attrs[:1200])
+          required={
+            'data-r40-r04-ready':'true',
+            'data-r40-active-mode':mode,
+            'data-r40-video-first':'true',
+            'data-r40-sound-first':'true',
+            'data-r40-ball-first':'true',
+          }
+          missing=[]
+          for k,v in required.items():
+            if not re.search(r'\\b'+re.escape(k)+r'=["\\\']'+re.escape(v)+r'["\\\']',attrs):
+              missing.append(k+"="+v)
+          if missing:
+            print("R04_DOM_FAIL",mode,missing,file=sys.stderr)
+            sys.exit(1)
+          PY
           done
       - name: Capture layouts
         run: |

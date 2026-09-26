@@ -1,6 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const es=fs.readFileSync('es/sitio-tranquilo/index.html','utf8'),en=fs.readFileSync('en/quiet-space/index.html','utf8');
 const calm=fs.readFileSync('assets/rincon-calma.js','utf8'),visual=fs.readFileSync('assets/rincon-escenas-r04.js','utf8'),audio=fs.readFileSync('assets/rincon-audio-r04.js','utf8'),ctl=fs.readFileSync('assets/rincon-r04.js','utf8'),css=fs.readFileSync('assets/rincon-r04.css','utf8');
+new Function(calm);new Function(visual);new Function(audio);new Function(ctl);
 for(const [lang,h] of [['ES',es],['EN',en]]){
  assert.ok(h.includes('/assets/rincon-r04.css?v=r40-r04-20260926'),lang+' css R04');
  assert.ok(h.includes('/assets/rincon-audio-r04.js?v=r40-r04-20260926'),lang+' rendered audio');
