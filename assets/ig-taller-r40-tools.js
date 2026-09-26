@@ -57,6 +57,14 @@
   function jsonDownload(name,data){root.IGT.download(name,new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));}
   function audioContext(){var C=root.AudioContext||root.webkitAudioContext;return C?new C():null;}
   function playTone(freq,dur,wave,filter){
+    var modern=root.IGTallerR42Platform;
+    if(modern&&typeof modern.tone==='function'){
+      modern.tone(freq||220,dur||.2,wave||'sine',filter||1800).catch(function(){playToneFallback(freq,dur,wave,filter);});
+      return;
+    }
+    playToneFallback(freq,dur,wave,filter);
+  }
+  function playToneFallback(freq,dur,wave,filter){
     var ac=audioContext();if(!ac){root.IGT.say(L('Audio no disponible.','Audio is not available.'));return;}
     var o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();o.type=wave||'sine';o.frequency.value=freq||220;f.type='lowpass';f.frequency.value=filter||1800;
     g.gain.setValueAtTime(.0001,ac.currentTime);g.gain.exponentialRampToValueAtTime(.12,ac.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+dur);
@@ -126,9 +134,16 @@
     function paint(){var bs=grid.querySelectorAll('button');for(var i=0;i<bs.length;i++){bs[i].dataset.type=state.cells[i]||'';bs[i].textContent=i===state.player?'●':i===state.goal?'★':'';}}paint();
   }
   function renderSimulation(host,state,changed){
-    var grid=gridButtons(state.cells.length,'igt-r40-sim',function(i){if(state.running)return;state.cells[i]=!state.cells[i];changed();paint();},function(i){return L('Célula ','Cell ')+(i+1);});host.appendChild(grid);var timer=null,status=h('p',{role:'status'});host.appendChild(status);
-    function step(){state.cells=lifeStep(state.cells,state.w,state.h);state.steps++;paint();status.textContent=L('Paso ','Step ')+state.steps;}
-    host.appendChild(button(L('Paso','Step'),function(){step();changed();}));host.appendChild(button(L('Iniciar','Start'),function(){if(timer)return;state.running=true;timer=setInterval(step,350);}));
+    var grid=gridButtons(state.cells.length,'igt-r40-sim',function(i){if(state.running)return;state.cells[i]=!state.cells[i];changed();paint();},function(i){return L('Célula ','Cell ')+(i+1);});host.appendChild(grid);var timer=null,status=h('p',{role:'status'}),busy=false;host.appendChild(status);
+    async function step(){
+      if(busy)return;busy=true;
+      try{
+        var modern=root.IGTallerR42Platform;
+        state.cells=modern&&typeof modern.lifeStep==='function'?await modern.lifeStep(state.cells,state.w,state.h,1):lifeStep(state.cells,state.w,state.h);
+        state.steps++;paint();status.textContent=L('Paso ','Step ')+state.steps;
+      }finally{busy=false;}
+    }
+    host.appendChild(button(L('Paso','Step'),function(){step().then(changed);}));host.appendChild(button(L('Iniciar','Start'),function(){if(timer)return;state.running=true;timer=setInterval(step,350);}));
     host.appendChild(button(L('Parar','Stop'),function(){if(timer)clearInterval(timer);timer=null;state.running=false;changed();}));
     function paint(){var bs=grid.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].dataset.live=state.cells[i]?'true':'false';}paint();
   }
