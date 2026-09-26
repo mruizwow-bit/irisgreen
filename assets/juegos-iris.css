@@ -139,3 +139,11 @@ a.jg-btn{text-decoration:none}
 }
 
 .jg-cross{margin:.9rem 0 0;font-size:1.05rem}.jg-cross a{color:#1f5f8b;font-weight:700;text-underline-offset:.18em}
+
+/* R40-P1 · entrada simple: pregunta + 9 contextos; Edad/Tipo bajo divulgación progresiva. */
+.jg-practice{font-family:Newsreader,Georgia,serif;font-size:clamp(1.65rem,3vw,2.15rem);line-height:1.15;font-weight:500;margin:.15rem 0 0;color:#17395c}
+.jg-more,.jg-clear-context{display:flex;align-items:center;gap:.5rem}
+.jg-advanced{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem;border:1px solid #d5e4eb;border-radius:1rem;background:rgba(255,255,255,.72)}
+.jg-advanced[hidden]{display:none}
+@media(max-width:42rem){.jg-advanced{grid-template-columns:1fr}}
+@media(forced-colors:active){.jg-advanced{border:2px solid CanvasText}}

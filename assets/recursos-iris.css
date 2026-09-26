@@ -25,3 +25,16 @@ body:has(.ri-main)>.ft{margin-top:0;margin-bottom:0}
 .ri-message-symbol{grid-row:span 3;background:#ebe7f7;color:#584781;border-radius:9px;text-align:center;font-size:32px;line-height:48px}.ri-message i{height:5px;background:#d9c6d4;border-radius:3px}
 @media(max-width:42rem){.ri-main .ri-grid{grid-template-columns:1fr}.ri-art{height:150px}.ri-main{padding-top:1.5rem;padding-bottom:2rem}}
 @media(forced-colors:active){.ri-art,.ri-picture,.ri-message,.ri-paper{border:1px solid CanvasText}}
+
+/* R40-P1 · jerarquía: 5 herramientas principales + exploración secundaria. */
+.ri-section{margin-top:2rem}.ri-section-title{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(1.55rem,3vw,2rem);margin:0 0 1rem}
+.ri-grid-primary{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.ri-grid-explore{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.ri-card-compact{padding:1.2rem;min-height:11rem}
+.ri-card-soon{border-style:dashed;background:rgba(246,248,251,.9)}
+.ri-card-soon:hover{border-color:var(--linea);background:rgba(246,248,251,.9)}
+.ri-art-downloads{background:#edf5f7;border:1px solid #d5e4eb}.ri-download-symbol{margin:0!important;align-self:auto!important;display:grid;place-items:center;width:5rem;height:5rem;border-radius:999px;background:#fff;border:1px solid #b9cbd8;color:#1f5f8b!important;font-size:2.4rem!important}
+.ri-status{margin-top:auto!important;align-self:flex-start!important;font-size:.9rem!important;font-weight:700;color:#435268!important;border:1px solid #cbd7e6;border-radius:999px;padding:.35rem .75rem;background:#fff}
+@media(max-width:60rem){.ri-grid-primary{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:42rem){.ri-grid-primary,.ri-grid-explore{grid-template-columns:1fr!important}}
+@media(forced-colors:active){.ri-card-soon,.ri-art-downloads,.ri-status{border-color:CanvasText}}
