@@ -1,0 +1,68 @@
+{
+  "schema": "IRIS_R40_A4_DELIVERY/1.0",
+  "task": "R40-BUILD-A4",
+  "issue": 262,
+  "status": "R40_INTERESES_72_CAMPO_BUILD_READY_FOR_A2",
+  "date": "2026-09-26",
+  "branch": "agent4/r40-intereses-72-campo-20260926",
+  "base_sha": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+  "product_head": "aa813d9c537275f4f7c914821f687b2abb7e49a6",
+  "product_tree": "1f97d927188cfc15d4cad27dc186915612298c8c",
+  "changed_files": 183,
+  "html_pages": 172,
+  "product": {
+    "homes": 2,
+    "group_pages": 22,
+    "catalogues": 2,
+    "topic_pages": 144,
+    "field_notebooks": 2,
+    "interest_count": 72,
+    "groups": 11,
+    "ready": 43,
+    "source_review": 29,
+    "connections": 56
+  },
+  "major_files": [
+    "assets/r40-interests.css",
+    "assets/r40-interests.js",
+    "assets/r40-field-notebook.js",
+    "assets/data/r40-interests.es.json",
+    "assets/data/r40-interests.en.json",
+    "assets/data/r40-interest-routes.json",
+    "assets/data/r40-connections.json",
+    "scripts/test_r40_interests_build.py",
+    "reports/r40-a4-interests/HOLDS_FOR_A2.json",
+    "reports/r40-a4-interests/ROUTES.json"
+  ],
+  "ownership": {
+    "a3_owned_untouched": [
+      "assets/ig-r40.css",
+      "assets/ig-r40.js",
+      "scripts/apply_r40_global_format.py",
+      "scripts/build_site.py"
+    ],
+    "a5_owned_untouched": [
+      "Taller subtree and persistent local-data implementation"
+    ],
+    "preserved_existing_deep_experiences": [
+      "/es/intereses/cielo/",
+      "/es/intereses/sistema-solar/",
+      "/es/intereses/exoplanetas/",
+      "/es/intereses/eclipses/",
+      "/en/interests/night-sky/",
+      "/en/interests/solar-system/",
+      "/en/interests/exoplanets/",
+      "/en/interests/eclipses/"
+    ]
+  },
+  "integration_notes": [
+    "A2 should integrate this branch on top of the exact R40 freeze together with A3 global format and A5 local-data patches.",
+    "Do not replace source-review gates with external data unless the #250 provenance blocker has been closed.",
+    "Collection UI accepts window.IGR40.collection or window.IGR40LocalData.collection; otherwise session-memory fallback is explicit.",
+    "Field Notebook emits ig:r40-field-change and contains no A4-owned persistence backend.",
+    "Final acceptance belongs to the integrated web, not this isolated branch."
+  ],
+  "merge": false,
+  "deploy": false,
+  "production": false
+}

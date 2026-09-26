@@ -1,0 +1,92 @@
+{
+  "schema": "IRIS_R40_A4_BUILD_VALIDATION/1.0",
+  "task": "R40-BUILD-A4",
+  "issue": 262,
+  "date": "2026-09-26",
+  "base": {
+    "ref": "freeze/r40-a2-web-baseline-20260926",
+    "sha": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+    "tree": "a341d2053fee62d3f7cd3522c74618b1a090a0dc"
+  },
+  "product_candidate": {
+    "head": "aa813d9c537275f4f7c914821f687b2abb7e49a6",
+    "tree": "1f97d927188cfc15d4cad27dc186915612298c8c",
+    "branch": "agent4/r40-intereses-72-campo-20260926"
+  },
+  "result": "PASS_STATIC_BUILD_CONTRACT",
+  "checks": [
+    {
+      "id": "ES_TOPICS",
+      "status": "PASS",
+      "detail": "72/72 topic pages fetched from GitHub; required Explore/Catalogue/View-listen-simulate/Collection/Workshop/Sources sections, correct title, source-review gate where applicable, zero autoplay."
+    },
+    {
+      "id": "EN_TOPICS",
+      "status": "PASS",
+      "detail": "72/72 topic pages fetched from GitHub with the same contract and zero autoplay."
+    },
+    {
+      "id": "ES_GROUPS",
+      "status": "PASS",
+      "detail": "11/11 group pages; exact per-group counts and local search."
+    },
+    {
+      "id": "EN_GROUPS",
+      "status": "PASS",
+      "detail": "11/11 group pages; exact per-group counts and local search."
+    },
+    {
+      "id": "HOME_PROGRESSIVE",
+      "status": "PASS",
+      "detail": "11 group cards on each ES/EN home; zero interest-card wall on home; search present."
+    },
+    {
+      "id": "FULL_CATALOGUE",
+      "status": "PASS",
+      "detail": "72 rows ES + 72 rows EN with search/group filter."
+    },
+    {
+      "id": "DATA_COUNTS",
+      "status": "PASS",
+      "detail": "72 ES + 72 EN; 11 groups; 43 ready; 29 source-review; 72 canonical route pairs; 56 typed connections."
+    },
+    {
+      "id": "FIELD_NOTEBOOK",
+      "status": "PASS",
+      "detail": "ES/EN pages include place, month, hour, category, museum, diary, corner, optional ambience and literal REAL_DATA/SIMULATION/USER_CREATED/FICTIONAL legend."
+    },
+    {
+      "id": "NO_AUTOPLAY",
+      "status": "PASS",
+      "detail": "No autoplay in Field Notebook pages/runtime or topic pages checked."
+    },
+    {
+      "id": "NO_A4_PERSISTENCE",
+      "status": "PASS",
+      "detail": "A4 runtimes contain no localStorage/sessionStorage. Collection consumes A3/A5 hooks when integrated and otherwise uses page-session memory only."
+    },
+    {
+      "id": "NO_EXTERNAL_RUNTIME_URL",
+      "status": "PASS",
+      "detail": "A4 runtimes contain no external http/https URL literals; catalogue fetches are same-origin static assets."
+    },
+    {
+      "id": "A11Y_CSS_BASE",
+      "status": "PASS",
+      "detail": "forced-colors and prefers-reduced-motion rules present; the single new !important was removed."
+    },
+    {
+      "id": "SCOPE_COLLISIONS",
+      "status": "PASS",
+      "detail": "0 changes under sabik/, assets/ig-r40*, scripts/build_site.py or existing deep astronomy routes cielo/sistema-solar/exoplanetas/eclipses and EN equivalents."
+    }
+  ],
+  "pending_final_web_qa": [
+    "A1/A2 browser validation on the integrated A2 web: 320 px, native zoom/reflow 200/400%, text spacing, keyboard, focus, target size >=44 px, forced-colors, reduced motion, axe and human cognitive review.",
+    "A5 persistent local-data patch integration: A4 intentionally does not own localStorage/IndexedDB. Before that integration, collection/notebook persistence is session-only.",
+    "A3 global navigation/ES-EN tool integration is applied by A2 when combining the wave; A4 does not modify A3-owned global files.",
+    "29 source-review interests retain structural UI but no unverified records/assets. Exact blockers remain in reports/r40-a4-interests/HOLDS_FOR_A2.json.",
+    "Only the four pre-existing deep astronomy experiences have specialised live simulations in this branch. Other topic pages expose the approved experience contract without fabricating domain simulations or data."
+  ],
+  "claim_limit": "This is a static/source contract validation, not final browser, assistive-technology, visual, licence, or production acceptance."
+}
