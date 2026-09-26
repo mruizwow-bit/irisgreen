@@ -83,3 +83,14 @@ Estado vigente: **`R40_RINCON_R04_REAL_REBUILD_REQUIRED`**.
 La revisión humana de María invalida la aceptación estructural de R03. El reproductor/escena sigue enterrado después del catálogo y ajustes, y la reconstrucción audiovisual no es sustantiva en las ocho escenas previas. R04 #271 sustituye R03.
 
 A7 debe reconstruir; A2 integra/sube; el cierre requiere web real y revisión humana. Ver `R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`.
+
+## R39 R06 · Cloud desplegado · 26/09/2026
+
+**Estado: `R39_R06_CLOUD_READY_WEB_INTEGRATION_PENDING_A2`.**
+
+El candidato R06 `8690e26140f6d513c3592df62bc82b167cbb1d0e` se desplegó correctamente en el Cloud privado `sabik-asistente` como deploy-preview no publicado `6ab7a2cd2cf8dc09d3ae9aca`. El run `36236824712` terminó SUCCESS y Netlify confirma las Functions `n04-library-qa` y `n04-team-transport` en Node24.
+
+La corrección frontend está preparada en PR #272 sobre la base exacta de A2: iframe privado + MessageChannel, nuevo origin exacto y CSP `frame-src`. A2 conserva integración y subida; después se ejecutan las comprobaciones HTTP reales.
+
+Memoria: `MEMORIA/R39_R06_CLOUD_DEPLOY_20260926.md`.  
+Control: `CONTROL/DELTA_R39_R06_CLOUD_DEPLOY_20260926.json`.
