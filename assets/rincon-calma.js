@@ -183,7 +183,7 @@
       stop();
       if (!want) return;
       silence('scene');
-      h = SND.start(SCENE_SOUND[want] || 'escena-burbujas', level(), 4); playing = want;
+      h = SND.start(SCENE_SOUND[want] || 'escena-burbujas', level(), 2); playing = want;
       owners.scene = function () { stop(); if (box) box.checked = false; if (vol) vol.disabled = true; };
     }
     if (box && !SND) { box.disabled = true; }
