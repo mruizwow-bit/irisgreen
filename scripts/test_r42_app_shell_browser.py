@@ -89,8 +89,8 @@ JS_METRICS = """() => {
 
 JS_WORKSHOP = """() => {
   const app=document.querySelector('#igt-app');
-  const retos=app && app.querySelector('.igt-retos');
-  const side=app && app.querySelector('.igt-side');
+  const retos=document.querySelector('.igt-retos');
+  const side=document.querySelector('.igt-side');
   const inspector=document.querySelector('.ig-r42-inspector-body');
   const canvas=app && app.querySelector('canvas.igt-draw');
   const file=document.querySelector('#ig-r42-file-menu');
@@ -239,6 +239,7 @@ with sync_playwright() as pw:
                     assert workshop["fileTrigger"], workshop
                     assert workshop["fileButtons"] >= 3, workshop
                     assert workshop["oldTopHidden"], workshop
+                    assert workshop["canvasTop"] is not None and workshop["canvasTop"] < height - 60, workshop
 
                 assert not errors, errors
 
