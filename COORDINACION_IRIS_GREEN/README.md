@@ -86,3 +86,18 @@ Estado: `R41_INTERACTIVE_PRODUCT_REBUILD_REQUIRED`.
 Cada orden R42 copia físicamente el bloque obligatorio completo. Ver `ORDENES/R42_EMBEDDED_NORMATIVE_REBUILD/` y `NORMATIVA/BLOQUE_OBLIGATORIO_EMBEBIDO_R42_20260926.txt`.
 
 Estado: `R42_EMBEDDED_NORMATIVE_REBUILD_REQUIRED`.
+
+## R42 · Child-safe Situaciones/Condiciones
+
+Arquitectura para proteger el descubrimiento incidental de contenido sensible por menores.
+
+- Parent #293
+- A4 #294 · clasificar 372 fichas
+- A3 #295 · implementar lente/búsqueda/rutas
+- A1 #296 · enlaces seguros desde Recursos/Juegos
+- A2 #297 · integración y HUMAN QA
+
+Orden: `ORDENES/R42_CHILD_SAFE_CONTENT/`
+Normativa: `NORMATIVA/ADDENDUM_R42_PROTECCION_MENORES_CONTENIDO_20260926.md`
+Memoria: `MEMORIA/R42_PROTECCION_MENORES_SITUACIONES_CONDICIONES_20260926.md`
+Estado: `R42_CHILD_SAFE_CONTENT_ARCHITECTURE_REQUIRED`.
