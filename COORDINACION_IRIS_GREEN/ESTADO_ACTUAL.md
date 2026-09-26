@@ -433,3 +433,14 @@ Control: `CONTROL/DELTA_R42_CHILD_SAFE_DEFERRED_20260926.json`.
 María rechaza la preview integrada del Rincón R42: las escenas no alcanzan calidad inmersiva, la interfaz se percibe pobre y existen solapamientos de botones/controles. El gate técnico aislado de A7 no fue suficiente para detectar la composición real con el app shell.
 
 La entrega previa #291 queda superseded como solución aceptable. Próximo paso: reconstrucción sobre el resultado integrado R42 real y nueva HUMAN QA visual/auditiva antes de cierre.
+## R42 · Agente 7 · rebuild tras HUMAN QA · 26/09/2026
+
+**Estado: `R42_A7_HQA_REBUILD_READY_FOR_A2`.**
+
+Tras el rechazo de María, A7 reconstruye el Rincón sobre la preview integrada real. El enfoque cambia de shader procedural como visual principal a vídeo natural real y trazable para Mar, Lluvia, Río, Noche, Acuario, Medusas y Pulpos; Tubo de burbujas y Fibra óptica permanecen como escenas sensoriales GPU locales.
+
+Entrega: PR #300 · HEAD `6c312d3fbd2677180a7894159f14b19894fe0eae` · tree `94ae6c72e88b6dc9752c14cfbd3a9c6cb9c16dc5` · base A2 `ab952077464b1348d3da88ee974f9375b3458bc9` · precheck `R42_A7_HQA_REBUILD_STATIC_PASS`.
+
+Se vuelve a nueve escenas curadas, se retiran las tres extras de calidad insuficiente, se eliminan pósteres legacy del stage/selector y se rehace la barra de controles para impedir solapamientos con el app shell. Mobile 760/390, clean mode, reduced motion, Save-Data y fallback incluidos.
+
+PR #291 queda superseded como solución final. El siguiente gate es A2 → preview → HUMAN QA visual/auditiva de María.
