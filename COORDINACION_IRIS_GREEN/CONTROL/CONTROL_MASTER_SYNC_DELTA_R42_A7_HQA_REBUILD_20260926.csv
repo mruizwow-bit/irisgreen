@@ -1,0 +1,2 @@
+id,date,owner,issue,state,base,head,tree,pr,precheck,scene_count,human_qa,next
+R42-A7-HQA-REBUILD,2026-09-26,Agente 7,288,R42_A7_HQA_REBUILD_READY_FOR_A2,ab952077464b1348d3da88ee974f9375b3458bc9,6c312d3fbd2677180a7894159f14b19894fe0eae,94ae6c72e88b6dc9752c14cfbd3a9c6cb9c16dc5,300,R42_A7_HQA_REBUILD_STATIC_PASS,9,REQUIRED,"A2 integrate -> preview -> Maria HUMAN QA"
