@@ -105,6 +105,20 @@ Escenas mínimas comunes:
 - pausa;
 - al menos una interacción directa del estudio que use física.
 
+## Límite de verificación actual
+
+La decisión anterior evalúa la arquitectura propuesta.
+
+A fecha de este registro, el HEAD remoto visible de PR #299 es:
+
+`8c1a9cc132ae9ebcacf1acbec3f99767db295634`
+
+y en ese HEAD todavía no aparecen referencias a Rapier o Planck. Por tanto:
+- no se declara implementado el doble motor en GitHub;
+- no se declara probado el fallback;
+- A5 debe subir HEAD/tree nuevos y evidencias;
+- Astra/A2 revisarán entonces la implementación real contra este criterio.
+
 ## Integración
 
 A2 no debe tocar la CSP para integrar A5.
