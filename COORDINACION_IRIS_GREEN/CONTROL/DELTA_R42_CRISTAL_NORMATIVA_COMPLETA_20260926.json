@@ -1,0 +1,24 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-CRYSTAL-FULL-NORMATIVE",
+  "date": "2026-09-26",
+  "status": "R42_CRYSTAL_STUDY_SUBORDINATE_TO_FULL_NORMATIVE",
+  "rule": "Any Liquid Glass/glassmorphism change must comply with the entire current Iris Green normative framework.",
+  "applies_to": [
+    "A3 app shell",
+    "A5 Taller",
+    "A1 Juegos/Recursos",
+    "A4 Intereses",
+    "A7 Rincon",
+    "A2 integration"
+  ],
+  "precedence": [
+    "Maria decisions",
+    "Iris Green normative/addenda",
+    "Master Control/Memory",
+    "agent order",
+    "external study"
+  ],
+  "full_normative_required": true,
+  "human_qa_required": true
+}
