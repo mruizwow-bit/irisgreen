@@ -29,4 +29,8 @@ assert.ok(calm.includes("if (kind === 'octopus') { start2d(kind, button); return
 assert.ok(snd.includes("'escena-fibra': function (v) { pads(v, 0.10, false); }"),'fibre stays near-silent');
 assert.ok(snd.includes("birds(v, 0.12)"),'river birds stay distant');
 assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert.ok(css.includes('--r40-fade:800ms'),'visual crossfade matches R40 spec');
+assert.ok(!css.includes('!important'),'R40 additive stylesheet introduces no new !important');
+assert.ok(ctl.includes("d=reduced()?0:800"),'controller uses the same 800ms visual fade');
+assert.ok(calm.includes("level(), 2); playing = want;"),'scene audio fades in over two seconds');
 console.log('R40_RINCON_AV_STATIC_PASS');
