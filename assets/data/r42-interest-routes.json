@@ -1,0 +1,378 @@
+{
+  "schema": "IRIS_R42_INTEREST_ROUTES/1.0",
+  "generated_at": "2026-09-26",
+  "routes": {
+    "interest-01": {
+      "es": "/es/intereses/temas/01-cielo-nocturno/",
+      "en": "/en/interests/topics/01-night-sky/",
+      "deep": {
+        "es": "/es/intereses/cielo/",
+        "en": "/en/interests/night-sky/"
+      }
+    },
+    "interest-02": {
+      "es": "/es/intereses/temas/02-planetas-y-sistema-solar/",
+      "en": "/en/interests/topics/02-planets-and-the-solar-system/",
+      "deep": {
+        "es": "/es/intereses/sistema-solar/",
+        "en": "/en/interests/solar-system/"
+      }
+    },
+    "interest-03": {
+      "es": "/es/intereses/temas/03-exoplanetas/",
+      "en": "/en/interests/topics/03-exoplanets/",
+      "deep": {
+        "es": "/es/intereses/exoplanetas/",
+        "en": "/en/interests/exoplanets/"
+      }
+    },
+    "interest-04": {
+      "es": "/es/intereses/temas/04-eclipses/",
+      "en": "/en/interests/topics/04-eclipses/",
+      "deep": {
+        "es": "/es/intereses/eclipses/",
+        "en": "/en/interests/eclipses/"
+      }
+    },
+    "interest-05": {
+      "es": "/es/intereses/temas/05-lluvias-de-estrellas-y-meteoritos/",
+      "en": "/en/interests/topics/05-meteor-showers-and-meteorites/",
+      "deep": null
+    },
+    "interest-06": {
+      "es": "/es/intereses/temas/06-exploracion-espacial/",
+      "en": "/en/interests/topics/06-space-exploration/",
+      "deep": null
+    },
+    "interest-07": {
+      "es": "/es/intereses/temas/07-satelites-y-estacion-espacial/",
+      "en": "/en/interests/topics/07-satellites-and-the-international-space-station/",
+      "deep": null
+    },
+    "interest-08": {
+      "es": "/es/intereses/temas/08-minerales-y-rocas/",
+      "en": "/en/interests/topics/08-minerals-and-rocks/",
+      "deep": null
+    },
+    "interest-09": {
+      "es": "/es/intereses/temas/09-fosiles-y-dinosaurios/",
+      "en": "/en/interests/topics/09-fossils-and-dinosaurs/",
+      "deep": null
+    },
+    "interest-10": {
+      "es": "/es/intereses/temas/10-volcanes/",
+      "en": "/en/interests/topics/10-volcanoes/",
+      "deep": null
+    },
+    "interest-11": {
+      "es": "/es/intereses/temas/11-terremotos/",
+      "en": "/en/interests/topics/11-earthquakes/",
+      "deep": null
+    },
+    "interest-12": {
+      "es": "/es/intereses/temas/12-tiempo-y-nubes/",
+      "en": "/en/interests/topics/12-weather-and-clouds/",
+      "deep": null
+    },
+    "interest-13": {
+      "es": "/es/intereses/temas/13-oceanos-y-mareas/",
+      "en": "/en/interests/topics/13-oceans-and-tides/",
+      "deep": null
+    },
+    "interest-14": {
+      "es": "/es/intereses/temas/14-montanas-y-rios/",
+      "en": "/en/interests/topics/14-mountains-and-rivers/",
+      "deep": null
+    },
+    "interest-15": {
+      "es": "/es/intereses/temas/15-mapas-y-geografia/",
+      "en": "/en/interests/topics/15-maps-and-geography/",
+      "deep": null
+    },
+    "interest-16": {
+      "es": "/es/intereses/temas/16-banderas/",
+      "en": "/en/interests/topics/16-flags/",
+      "deep": null
+    },
+    "interest-17": {
+      "es": "/es/intereses/temas/17-aves/",
+      "en": "/en/interests/topics/17-birds/",
+      "deep": null
+    },
+    "interest-18": {
+      "es": "/es/intereses/temas/18-insectos-y-mariposas/",
+      "en": "/en/interests/topics/18-insects-and-butterflies/",
+      "deep": null
+    },
+    "interest-19": {
+      "es": "/es/intereses/temas/19-plantas-y-flores/",
+      "en": "/en/interests/topics/19-plants-and-flowers/",
+      "deep": null
+    },
+    "interest-20": {
+      "es": "/es/intereses/temas/20-arboles/",
+      "en": "/en/interests/topics/20-trees/",
+      "deep": null
+    },
+    "interest-21": {
+      "es": "/es/intereses/temas/21-setas/",
+      "en": "/en/interests/topics/21-mushrooms/",
+      "deep": null
+    },
+    "interest-22": {
+      "es": "/es/intereses/temas/22-vida-marina-y-peces/",
+      "en": "/en/interests/topics/22-marine-life-and-fish/",
+      "deep": null
+    },
+    "interest-23": {
+      "es": "/es/intereses/temas/23-mamiferos/",
+      "en": "/en/interests/topics/23-mammals/",
+      "deep": null
+    },
+    "interest-24": {
+      "es": "/es/intereses/temas/24-reptiles-y-anfibios/",
+      "en": "/en/interests/topics/24-reptiles-and-amphibians/",
+      "deep": null
+    },
+    "interest-25": {
+      "es": "/es/intereses/temas/25-perros/",
+      "en": "/en/interests/topics/25-dogs/",
+      "deep": null
+    },
+    "interest-26": {
+      "es": "/es/intereses/temas/26-gatos/",
+      "en": "/en/interests/topics/26-cats/",
+      "deep": null
+    },
+    "interest-27": {
+      "es": "/es/intereses/temas/27-caballos/",
+      "en": "/en/interests/topics/27-horses/",
+      "deep": null
+    },
+    "interest-28": {
+      "es": "/es/intereses/temas/28-trenes/",
+      "en": "/en/interests/topics/28-trains/",
+      "deep": null
+    },
+    "interest-29": {
+      "es": "/es/intereses/temas/29-metros-del-mundo/",
+      "en": "/en/interests/topics/29-metro-systems-around-the-world/",
+      "deep": null
+    },
+    "interest-30": {
+      "es": "/es/intereses/temas/30-aviones-y-aeropuertos/",
+      "en": "/en/interests/topics/30-aircraft-and-airports/",
+      "deep": null
+    },
+    "interest-31": {
+      "es": "/es/intereses/temas/31-barcos-y-faros/",
+      "en": "/en/interests/topics/31-ships-and-lighthouses/",
+      "deep": null
+    },
+    "interest-32": {
+      "es": "/es/intereses/temas/32-coches/",
+      "en": "/en/interests/topics/32-cars/",
+      "deep": null
+    },
+    "interest-33": {
+      "es": "/es/intereses/temas/33-autobuses-y-tranvias/",
+      "en": "/en/interests/topics/33-buses-and-trams/",
+      "deep": null
+    },
+    "interest-34": {
+      "es": "/es/intereses/temas/34-ascensores-y-escaleras-mecanicas/",
+      "en": "/en/interests/topics/34-lifts-and-escalators/",
+      "deep": null
+    },
+    "interest-35": {
+      "es": "/es/intereses/temas/35-relojes-y-mecanismos/",
+      "en": "/en/interests/topics/35-clocks-and-mechanisms/",
+      "deep": null
+    },
+    "interest-36": {
+      "es": "/es/intereses/temas/36-senales-y-semaforos/",
+      "en": "/en/interests/topics/36-road-signs-and-traffic-lights/",
+      "deep": null
+    },
+    "interest-37": {
+      "es": "/es/intereses/temas/37-programacion/",
+      "en": "/en/interests/topics/37-programming/",
+      "deep": null
+    },
+    "interest-38": {
+      "es": "/es/intereses/temas/38-robotica/",
+      "en": "/en/interests/topics/38-robotics/",
+      "deep": null
+    },
+    "interest-39": {
+      "es": "/es/intereses/temas/39-ordenadores-e-informatica/",
+      "en": "/en/interests/topics/39-computers-and-computing/",
+      "deep": null
+    },
+    "interest-40": {
+      "es": "/es/intereses/temas/40-electronica-y-circuitos/",
+      "en": "/en/interests/topics/40-electronics-and-circuits/",
+      "deep": null
+    },
+    "interest-41": {
+      "es": "/es/intereses/temas/41-internet/",
+      "en": "/en/interests/topics/41-the-internet/",
+      "deep": null
+    },
+    "interest-42": {
+      "es": "/es/intereses/temas/42-videojuegos/",
+      "en": "/en/interests/topics/42-video-games/",
+      "deep": null
+    },
+    "interest-43": {
+      "es": "/es/intereses/temas/43-matematicas/",
+      "en": "/en/interests/topics/43-mathematics/",
+      "deep": null
+    },
+    "interest-44": {
+      "es": "/es/intereses/temas/44-ajedrez/",
+      "en": "/en/interests/topics/44-chess/",
+      "deep": null
+    },
+    "interest-45": {
+      "es": "/es/intereses/temas/45-cubo-de-rubik-y-rompecabezas/",
+      "en": "/en/interests/topics/45-rubiks-cube-and-puzzles/",
+      "deep": null
+    },
+    "interest-46": {
+      "es": "/es/intereses/temas/46-calendarios-y-horas/",
+      "en": "/en/interests/topics/46-calendars-and-time/",
+      "deep": null
+    },
+    "interest-47": {
+      "es": "/es/intereses/temas/47-codigos-y-criptografia/",
+      "en": "/en/interests/topics/47-codes-and-cryptography/",
+      "deep": null
+    },
+    "interest-48": {
+      "es": "/es/intereses/temas/48-logica-y-puzles/",
+      "en": "/en/interests/topics/48-logic-and-puzzles/",
+      "deep": null
+    },
+    "interest-49": {
+      "es": "/es/intereses/temas/49-idiomas-del-mundo/",
+      "en": "/en/interests/topics/49-languages-of-the-world/",
+      "deep": null
+    },
+    "interest-50": {
+      "es": "/es/intereses/temas/50-alfabetos-y-escrituras/",
+      "en": "/en/interests/topics/50-alphabets-and-writing-systems/",
+      "deep": null
+    },
+    "interest-51": {
+      "es": "/es/intereses/temas/51-etimologia/",
+      "en": "/en/interests/topics/51-etymology/",
+      "deep": null
+    },
+    "interest-52": {
+      "es": "/es/intereses/temas/52-lengua-de-signos-braille-y-morse/",
+      "en": "/en/interests/topics/52-sign-language-braille-and-morse/",
+      "deep": null
+    },
+    "interest-53": {
+      "es": "/es/intereses/temas/53-historia/",
+      "en": "/en/interests/topics/53-history/",
+      "deep": null
+    },
+    "interest-54": {
+      "es": "/es/intereses/temas/54-antiguo-egipto/",
+      "en": "/en/interests/topics/54-ancient-egypt/",
+      "deep": null
+    },
+    "interest-55": {
+      "es": "/es/intereses/temas/55-mitologia/",
+      "en": "/en/interests/topics/55-mythology/",
+      "deep": null
+    },
+    "interest-56": {
+      "es": "/es/intereses/temas/56-castillos/",
+      "en": "/en/interests/topics/56-castles/",
+      "deep": null
+    },
+    "interest-57": {
+      "es": "/es/intereses/temas/57-arquitectura-y-puentes/",
+      "en": "/en/interests/topics/57-architecture-and-bridges/",
+      "deep": null
+    },
+    "interest-58": {
+      "es": "/es/intereses/temas/58-monedas/",
+      "en": "/en/interests/topics/58-coins/",
+      "deep": null
+    },
+    "interest-59": {
+      "es": "/es/intereses/temas/59-sellos/",
+      "en": "/en/interests/topics/59-stamps/",
+      "deep": null
+    },
+    "interest-60": {
+      "es": "/es/intereses/temas/60-pintura-y-museos/",
+      "en": "/en/interests/topics/60-painting-and-museums/",
+      "deep": null
+    },
+    "interest-61": {
+      "es": "/es/intereses/temas/61-musica-e-instrumentos/",
+      "en": "/en/interests/topics/61-music-and-instruments/",
+      "deep": null
+    },
+    "interest-62": {
+      "es": "/es/intereses/temas/62-cine-y-como-se-hace/",
+      "en": "/en/interests/topics/62-film-and-filmmaking/",
+      "deep": null
+    },
+    "interest-63": {
+      "es": "/es/intereses/temas/63-fotografia/",
+      "en": "/en/interests/topics/63-photography/",
+      "deep": null
+    },
+    "interest-64": {
+      "es": "/es/intereses/temas/64-comic-y-dibujo-narrativo/",
+      "en": "/en/interests/topics/64-comics-and-visual-storytelling/",
+      "deep": null
+    },
+    "interest-65": {
+      "es": "/es/intereses/temas/65-mundos-de-ficcion/",
+      "en": "/en/interests/topics/65-fictional-worlds/",
+      "deep": null
+    },
+    "interest-66": {
+      "es": "/es/intereses/temas/66-criaturas-para-coleccionar/",
+      "en": "/en/interests/topics/66-collectible-creatures/",
+      "deep": null
+    },
+    "interest-67": {
+      "es": "/es/intereses/temas/67-juegos-de-mesa/",
+      "en": "/en/interests/topics/67-board-games/",
+      "deep": null
+    },
+    "interest-68": {
+      "es": "/es/intereses/temas/68-colecciones-en-general/",
+      "en": "/en/interests/topics/68-collections/",
+      "deep": null
+    },
+    "interest-69": {
+      "es": "/es/intereses/temas/69-cocina/",
+      "en": "/en/interests/topics/69-cooking/",
+      "deep": null
+    },
+    "interest-70": {
+      "es": "/es/intereses/temas/70-quimica-y-elementos/",
+      "en": "/en/interests/topics/70-chemistry-and-the-elements/",
+      "deep": null
+    },
+    "interest-71": {
+      "es": "/es/intereses/temas/71-deportes/",
+      "en": "/en/interests/topics/71-sports/",
+      "deep": null
+    },
+    "interest-72": {
+      "es": "/es/intereses/temas/72-moda-y-tejidos/",
+      "en": "/en/interests/topics/72-fashion-and-textiles/",
+      "deep": null
+    }
+  }
+}

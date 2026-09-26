@@ -1,0 +1,4135 @@
+{
+  "schema": "IRIS_R42_INTERESTS/1.0",
+  "locale": "es",
+  "generated_at": "2026-09-26",
+  "life_stage_policy": "presentation-not-access-gate",
+  "groups": [
+    {
+      "id": "interest-group-01",
+      "index": 1,
+      "title": "El cielo y el espacio",
+      "description": "Astronomía, sistema solar, eclipses, meteoros, exploración y satélites.",
+      "route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "count": 7,
+      "family": "cosmos"
+    },
+    {
+      "id": "interest-group-02",
+      "index": 2,
+      "title": "La Tierra",
+      "description": "Minerales, fósiles, volcanes, terremotos, tiempo, océanos, relieve, mapas y banderas.",
+      "route": "/es/intereses/grupos/02-tierra/",
+      "count": 9,
+      "family": "earth"
+    },
+    {
+      "id": "interest-group-03",
+      "index": 3,
+      "title": "Seres vivos",
+      "description": "Aves, insectos, plantas, árboles, setas, vida marina, mamíferos, reptiles y animales domésticos.",
+      "route": "/es/intereses/grupos/03-seres-vivos/",
+      "count": 11,
+      "family": "life"
+    },
+    {
+      "id": "interest-group-04",
+      "index": 4,
+      "title": "Transporte y máquinas",
+      "description": "Trenes, metros, aviones, barcos, coches, transporte urbano, mecanismos, relojes y señales.",
+      "route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "count": 9,
+      "family": "transport"
+    },
+    {
+      "id": "interest-group-05",
+      "index": 5,
+      "title": "Tecnología",
+      "description": "Programación, robótica, ordenadores, circuitos, internet y videojuegos.",
+      "route": "/es/intereses/grupos/05-tecnologia/",
+      "count": 6,
+      "family": "tech"
+    },
+    {
+      "id": "interest-group-06",
+      "index": 6,
+      "title": "Números, lógica y sistemas",
+      "description": "Matemáticas, ajedrez, rompecabezas, calendarios, códigos y lógica.",
+      "route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "count": 6,
+      "family": "math"
+    },
+    {
+      "id": "interest-group-07",
+      "index": 7,
+      "title": "Lenguas y escritura",
+      "description": "Lenguas, alfabetos, etimología, lengua de signos, braille y Morse.",
+      "route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "count": 4,
+      "family": "language"
+    },
+    {
+      "id": "interest-group-08",
+      "index": 8,
+      "title": "Historia y cultura",
+      "description": "Historia, Egipto, mitología, castillos, arquitectura, monedas y sellos.",
+      "route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "count": 7,
+      "family": "history"
+    },
+    {
+      "id": "interest-group-09",
+      "index": 9,
+      "title": "Arte, música e imagen",
+      "description": "Pintura, música, cine, fotografía y cómic.",
+      "route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "count": 5,
+      "family": "art"
+    },
+    {
+      "id": "interest-group-10",
+      "index": 10,
+      "title": "Mundos, juegos y colecciones",
+      "description": "Mundos, criaturas, juegos de mesa y colecciones.",
+      "route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "count": 4,
+      "family": "worlds"
+    },
+    {
+      "id": "interest-group-11",
+      "index": 11,
+      "title": "Vida diaria",
+      "description": "Cocina, química, deportes, moda y tejidos.",
+      "route": "/es/intereses/grupos/11-vida-diaria/",
+      "count": 4,
+      "family": "daily"
+    }
+  ],
+  "interests": [
+    {
+      "id": "interest-01",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/01-cielo-nocturno/",
+      "alternate_route": "/en/interests/topics/01-night-sky/",
+      "deep_route": "/es/intereses/cielo/",
+      "title": "Cielo nocturno",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Todas las estrellas y constelaciones",
+      "experience": "Planetario en directo (hecho)",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "HYG, IAU, d3-celestial",
+        "authority": "HYG + IAU + d3-celestial",
+        "license": "HYG v4.1 CC BY-SA 4.0; IAU web products CC BY 4.0; d3-celestial code BSD-3-Clause",
+        "evidence": "https://github.com/astronexus/HYG-Database/blob/main/LICENSE ; https://www.iau.org/IAU/Iau/Copyright.aspx ; https://github.com/ofrohn/d3-celestial/blob/master/LICENSE",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-23",
+          "title": "Fotografía y composición",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-02",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/02-planetas-y-sistema-solar/",
+      "alternate_route": "/en/interests/topics/02-planets-and-the-solar-system/",
+      "deep_route": "/es/intereses/sistema-solar/",
+      "title": "Planetas y sistema solar",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Tamaños, órbitas, lunas, dónde están hoy",
+      "experience": "Sistema solar a escala real que se recorre",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Elementos del JPL; NASA (a confirmar)",
+        "authority": "NASA/JPL",
+        "license": "Uso de material JPL permitido salvo indicación contraria; crédito NASA/JPL-Caltech; datos/visualización propios",
+        "evidence": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-03",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/03-exoplanetas/",
+      "alternate_route": "/en/interests/topics/03-exoplanets/",
+      "deep_route": "/es/intereses/exoplanetas/",
+      "title": "Exoplanetas",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Todos los descubiertos, cómo se encontraron",
+      "experience": "Mapa 3D de estrellas con planetas",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "NASA Exoplanet Archive",
+        "authority": "NASA Exoplanet Archive",
+        "license": "Archivo público con requisitos de reconocimiento y referencias por dataset; no se halló una licencia única de redistribución para todo el agregado",
+        "evidence": "https://exoplanetarchive.ipac.caltech.edu/docs/acknowledge.html",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-04",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/04-eclipses/",
+      "alternate_route": "/en/interests/topics/04-eclipses/",
+      "deep_route": "/es/intereses/eclipses/",
+      "title": "Eclipses",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Cuándo y desde dónde se ven (España: 2026, 2027 y 2028)",
+      "experience": "Simulador del eclipse desde tu ciudad",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Cálculo propio con efemérides",
+        "authority": "Iris Green + efemérides no identificadas",
+        "license": "Falta fijar proveedor/versión/licencia de efemérides",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-05",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/05-lluvias-de-estrellas-y-meteoritos/",
+      "alternate_route": "/en/interests/topics/05-meteor-showers-and-meteorites/",
+      "deep_route": null,
+      "title": "Lluvias de estrellas y meteoritos",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Fechas, radiantes, meteoritos caídos en España",
+      "experience": "Cielo con el radiante y cuenta de meteoros",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Calendario IMO; Meteoritical Bulletin (a confirmar)",
+        "authority": "International Meteor Organization + Meteoritical Bulletin Database",
+        "license": "No hay licencia abierta conjunta demostrada",
+        "evidence": "https://www.imo.net/legal-notice/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-06",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/06-exploracion-espacial/",
+      "alternate_route": "/en/interests/topics/06-space-exploration/",
+      "deep_route": null,
+      "title": "Exploración espacial",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Todas las misiones, cohetes y astronautas",
+      "experience": "Línea del tiempo y cohetes a escala",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata (CC0)",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-07",
+      "group_id": "interest-group-01",
+      "family": "cosmos",
+      "route": "/es/intereses/temas/07-satelites-y-estacion-espacial/",
+      "alternate_route": "/en/interests/topics/07-satellites-and-the-international-space-station/",
+      "deep_route": null,
+      "title": "Satélites y Estación Espacial",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "objective": "Cuándo pasa la estación sobre tu casa",
+      "experience": "Paso por el cielo en el planetario",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Explorar",
+        "Tiempo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Órbitas públicas de CelesTrak (a confirmar)",
+        "authority": "CelesTrak",
+        "license": "Existe política de uso/frecuencia pero no se localizó una licencia explícita de redistribución del dataset",
+        "evidence": "https://celestrak.org/usage-policy.php",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-08",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/08-minerales-y-rocas/",
+      "alternate_route": "/en/interests/topics/08-minerals-and-rocks/",
+      "deep_route": null,
+      "title": "Minerales y rocas",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Los más de 6.000 minerales reconocidos: fórmula, dureza, sistema cristalino, color",
+      "experience": "Cristales en 3D que se giran; identificador por propiedades",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Lista IMA (a confirmar) + cromos de la web",
+        "authority": "IMA/RRUFF + cromos Iris actuales",
+        "license": "No se localizó licencia abierta explícita para la lista IMA/RRUFF usada y los cromos requieren auditoría de procedencia",
+        "evidence": "https://rruff.info/ima/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-09",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/09-fosiles-y-dinosaurios/",
+      "alternate_route": "/en/interests/topics/09-fossils-and-dinosaurs/",
+      "deep_route": null,
+      "title": "Fósiles y dinosaurios",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Todas las especies, épocas, dónde se hallaron (también en España)",
+      "experience": "Línea del tiempo geológica y mapa de yacimientos",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Paleobiology Database",
+        "authority": "Paleobiology Database",
+        "license": "Tratar como CC BY 4.0 por el recurso PBDB registrado; conservar cita de registro/contribuidores",
+        "evidence": "https://ipt.vertnet.org/resource?r=pbdb_paleo",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-10",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/10-volcanes/",
+      "alternate_route": "/en/interests/topics/10-volcanoes/",
+      "deep_route": null,
+      "title": "Volcanes",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Todos los activos, erupciones históricas, Canarias",
+      "experience": "Globo con volcanes y cortes de un volcán",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Smithsonian GVP (a confirmar)",
+        "authority": "Smithsonian Global Volcanism Program",
+        "license": "Base Volcanoes of the World: producto de empleados US; usar con cita; fotos/gráficos requieren revisión aparte",
+        "evidence": "https://volcano.si.edu/gvp_termsofuse.cfm",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-11",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/11-terremotos/",
+      "alternate_route": "/en/interests/topics/11-earthquakes/",
+      "deep_route": null,
+      "title": "Terremotos",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Los de España desde 1370 y los del mundo hoy",
+      "experience": "Mapa con profundidad y magnitud",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Catálogo del IGN; USGS (a confirmar)",
+        "authority": "IGN España + USGS",
+        "license": "IGN: licencia compatible CC BY 4.0; USGS-authored data: U.S. Public Domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-12",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/12-tiempo-y-nubes/",
+      "alternate_route": "/en/interests/topics/12-weather-and-clouds/",
+      "deep_route": null,
+      "title": "Tiempo y nubes",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Todos los tipos de nubes, fenómenos, récords",
+      "experience": "Cielo con nubes realistas que se clasifican",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "AEMET OpenData (a confirmar)",
+        "authority": "AEMET OpenData",
+        "license": "RISP reutilización comercial/no comercial; conservar fuente, fecha y metadatos",
+        "evidence": "https://www.aemet.es/es/datos_abiertos",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-18",
+          "title": "Síntesis y paisajes sonoros",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-13",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/13-oceanos-y-mareas/",
+      "alternate_route": "/en/interests/topics/13-oceans-and-tides/",
+      "deep_route": null,
+      "title": "Océanos y mareas",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Mareas, corrientes, fondos marinos",
+      "experience": "Puerto con marea del día",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Puertos del Estado (a confirmar)",
+        "authority": "Puertos del Estado / Portus",
+        "license": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+        "evidence": "https://www.puertos.es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-14",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/14-montanas-y-rios/",
+      "alternate_route": "/en/interests/topics/14-mountains-and-rivers/",
+      "deep_route": null,
+      "title": "Montañas y ríos",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Alturas, recorridos, cuencas",
+      "experience": "Relieve en 3D de España",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "IGN, Natural Earth",
+        "authority": "IGN España + Natural Earth",
+        "license": "IGN compatible CC BY 4.0; Natural Earth public domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.naturalearthdata.com/about/terms-of-use/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-15",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/15-mapas-y-geografia/",
+      "alternate_route": "/en/interests/topics/15-maps-and-geography/",
+      "deep_route": null,
+      "title": "Mapas y geografía",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Países, capitales, fronteras, proyecciones",
+      "experience": "Globo terráqueo y proyecciones comparadas",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Natural Earth",
+        "authority": "Natural Earth",
+        "license": "Public domain",
+        "evidence": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-20",
+          "title": "Mundos",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-16",
+      "group_id": "interest-group-02",
+      "family": "earth",
+      "route": "/es/intereses/temas/16-banderas/",
+      "alternate_route": "/en/interests/topics/16-flags/",
+      "deep_route": null,
+      "title": "Banderas",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "objective": "Todas las banderas, colores, significado",
+      "experience": "Banderas en alta calidad que se comparan",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Mapa",
+        "Capas",
+        "Tiempo",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikimedia Commons (a confirmar por bandera)",
+        "authority": "Wikimedia Commons",
+        "license": "Licencia por archivo; debe verificarse en cada página de descripción",
+        "evidence": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/licenses",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-17",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/17-aves/",
+      "alternate_route": "/en/interests/topics/17-birds/",
+      "deep_route": null,
+      "title": "Aves",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Todas las especies de España, cantos, migraciones",
+      "experience": "Cantos grabados y mapa de avistamientos",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF; Xeno-canto (licencia por grabación, a confirmar)",
+        "authority": "GBIF + Xeno-canto",
+        "license": "GBIF varía por dataset y cada grabación Xeno-canto tiene licencia propia",
+        "evidence": "https://www.gbif.org/terms ; https://xeno-canto.org/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-18",
+          "title": "Síntesis y paisajes sonoros",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-18",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/18-insectos-y-mariposas/",
+      "alternate_route": "/en/interests/topics/18-insects-and-butterflies/",
+      "deep_route": null,
+      "title": "Insectos y mariposas",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies, ciclos, clasificación",
+      "experience": "Metamorfosis paso a paso",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-19",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/19-plantas-y-flores/",
+      "alternate_route": "/en/interests/topics/19-plants-and-flowers/",
+      "deep_route": null,
+      "title": "Plantas y flores",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies de la península, floración por meses",
+      "experience": "Calendario de floración",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF; Anthos (a confirmar)",
+        "authority": "GBIF + Anthos",
+        "license": "GBIF varía por dataset; Anthos está publicado como CC BY-NC 4.0",
+        "evidence": "https://www.gbif.org/terms ; https://ipt.gbif.es/resource?r=rjb-anthos&v=1.13",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-23",
+          "title": "Fotografía y composición",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-20",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/20-arboles/",
+      "alternate_route": "/en/interests/topics/20-trees/",
+      "deep_route": null,
+      "title": "Árboles",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies, hojas, frutos, árboles singulares",
+      "experience": "Identificador por hoja",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-21",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/21-setas/",
+      "alternate_route": "/en/interests/topics/21-mushrooms/",
+      "deep_route": null,
+      "title": "Setas",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies, cuáles no se tocan",
+      "experience": "Identificador (nunca para comer)",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-22",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/22-vida-marina-y-peces/",
+      "alternate_route": "/en/interests/topics/22-marine-life-and-fish/",
+      "deep_route": null,
+      "title": "Vida marina y peces",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies, profundidades",
+      "experience": "Corte del mar por profundidad",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-23",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/23-mamiferos/",
+      "alternate_route": "/en/interests/topics/23-mammals/",
+      "deep_route": null,
+      "title": "Mamíferos",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies, tamaños, hábitats",
+      "experience": "Comparador a escala",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-24",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/24-reptiles-y-anfibios/",
+      "alternate_route": "/en/interests/topics/24-reptiles-and-amphibians/",
+      "deep_route": null,
+      "title": "Reptiles y anfibios",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Especies de España",
+      "experience": "Mapa de distribución",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-25",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/25-perros/",
+      "alternate_route": "/en/interests/topics/25-dogs/",
+      "deep_route": null,
+      "title": "Perros",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Todas las razas reconocidas y sus grupos",
+      "experience": "Comparador de razas",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Lista de razas de la FCI (a confirmar)",
+        "authority": "Fédération Cynologique Internationale",
+        "license": "No se localizó permiso abierto de reutilización para estándares/listado",
+        "evidence": "https://www.fci.be/es/nomenclature/publication.aspx",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-26",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/26-gatos/",
+      "alternate_route": "/en/interests/topics/26-cats/",
+      "deep_route": null,
+      "title": "Gatos",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Razas, genética del color",
+      "experience": "Simulador de colores de pelaje",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-27",
+      "group_id": "interest-group-03",
+      "family": "life",
+      "route": "/es/intereses/temas/27-caballos/",
+      "alternate_route": "/en/interests/topics/27-horses/",
+      "deep_route": null,
+      "title": "Caballos",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "objective": "Razas, capas, pasos",
+      "experience": "Pasos del caballo en movimiento",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Observar",
+        "Clasificar",
+        "Comparar",
+        "Escuchar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-28",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/28-trenes/",
+      "alternate_route": "/en/interests/topics/28-trains/",
+      "deep_route": null,
+      "title": "Trenes",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Todas las series, líneas, estaciones y horarios de España",
+      "experience": "Red ferroviaria con trenes en su horario real",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Renfe Data (a confirmar); OpenStreetMap (ODbL)",
+        "authority": "Renfe Data + OpenStreetMap",
+        "license": "Renfe: reutilización comercial/no comercial bajo condiciones RISP; OSM ODbL 1.0",
+        "evidence": "https://data.renfe.com/legal ; https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-07",
+          "title": "Estructuras y puentes",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-29",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/29-metros-del-mundo/",
+      "alternate_route": "/en/interests/topics/29-metro-systems-around-the-world/",
+      "deep_route": null,
+      "title": "Metros del mundo",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Todas las redes, líneas y estaciones",
+      "experience": "Planos de metro dibujados de verdad",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "OpenStreetMap (ODbL)",
+        "authority": "OpenStreetMap",
+        "license": "ODbL 1.0",
+        "evidence": "https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-30",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/30-aviones-y-aeropuertos/",
+      "alternate_route": "/en/interests/topics/30-aircraft-and-airports/",
+      "deep_route": null,
+      "title": "Aviones y aeropuertos",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Todos los aeropuertos, pistas y modelos de avión",
+      "experience": "Mapa de aeropuertos con pistas",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "OurAirports",
+        "authority": "OurAirports",
+        "license": "Public Domain",
+        "evidence": "https://ourairports.com/data/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-31",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/31-barcos-y-faros/",
+      "alternate_route": "/en/interests/topics/31-ships-and-lighthouses/",
+      "deep_route": null,
+      "title": "Barcos y faros",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Faros de España, señales, tipos de barco",
+      "experience": "Faros con su secuencia de luz real",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Puertos del Estado (a confirmar)",
+        "authority": "Puertos del Estado / Portus",
+        "license": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+        "evidence": "https://www.puertos.es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-32",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/32-coches/",
+      "alternate_route": "/en/interests/topics/32-cars/",
+      "deep_route": null,
+      "title": "Coches",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Modelos, historia, cómo funciona un motor",
+      "experience": "Motor en corte animado",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-09",
+          "title": "Máquinas e inventos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-33",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/33-autobuses-y-tranvias/",
+      "alternate_route": "/en/interests/topics/33-buses-and-trams/",
+      "deep_route": null,
+      "title": "Autobuses y tranvías",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Redes y vehículos",
+      "experience": "Recorridos por ciudad",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Datos abiertos municipales (a confirmar)",
+        "authority": "Datasets municipales no concretados",
+        "license": "Debe identificarse municipio, dataset, fecha y licencia por red",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-34",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/34-ascensores-y-escaleras-mecanicas/",
+      "alternate_route": "/en/interests/topics/34-lifts-and-escalators/",
+      "deep_route": null,
+      "title": "Ascensores y escaleras mecánicas",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Marcas, mecanismos, tipos",
+      "experience": "Mecanismo en corte",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-35",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/35-relojes-y-mecanismos/",
+      "alternate_route": "/en/interests/topics/35-clocks-and-mechanisms/",
+      "deep_route": null,
+      "title": "Relojes y mecanismos",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Engranajes, escapes, relojes famosos",
+      "experience": "Mecanismo que se desmonta",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-09",
+          "title": "Máquinas e inventos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-36",
+      "group_id": "interest-group-04",
+      "family": "transport",
+      "route": "/es/intereses/temas/36-senales-y-semaforos/",
+      "alternate_route": "/en/interests/topics/36-road-signs-and-traffic-lights/",
+      "deep_route": null,
+      "title": "Señales y semáforos",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "objective": "Todas las señales de tráfico",
+      "experience": "Catálogo completo",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Rutas",
+        "Mecanismo",
+        "Comparar",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Catálogo oficial de la DGT (a confirmar)",
+        "authority": "Dirección General de Tráfico",
+        "license": "La fuente exacta de catálogo/arte de señales y sus condiciones de reutilización no están congeladas",
+        "evidence": "https://datos.gob.es/es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-37",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/37-programacion/",
+      "alternate_route": "/en/interests/topics/37-programming/",
+      "deep_route": null,
+      "title": "Programación",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Lenguajes, historia, cómo piensa un ordenador",
+      "experience": "Enlaza con el estudio de programación del Taller",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-38",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/38-robotica/",
+      "alternate_route": "/en/interests/topics/38-robotics/",
+      "deep_route": null,
+      "title": "Robótica",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Tipos de robots, sensores, robots famosos",
+      "experience": "Enlaza con el estudio de robótica",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-39",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/39-ordenadores-e-informatica/",
+      "alternate_route": "/en/interests/topics/39-computers-and-computing/",
+      "deep_route": null,
+      "title": "Ordenadores e informática",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Historia, piezas, cómo funciona por dentro",
+      "experience": "Ordenador que se desmonta",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-10",
+          "title": "Circuitos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-40",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/40-electronica-y-circuitos/",
+      "alternate_route": "/en/interests/topics/40-electronics-and-circuits/",
+      "deep_route": null,
+      "title": "Electrónica y circuitos",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Componentes, leyes, esquemas",
+      "experience": "Simulador de circuitos",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-10",
+          "title": "Circuitos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-41",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/41-internet/",
+      "alternate_route": "/en/interests/topics/41-the-internet/",
+      "deep_route": null,
+      "title": "Internet",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Cómo viaja un mensaje, cables submarinos",
+      "experience": "Mapa de cables",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-42",
+      "group_id": "interest-group-05",
+      "family": "tech",
+      "route": "/es/intereses/temas/42-videojuegos/",
+      "alternate_route": "/en/interests/topics/42-video-games/",
+      "deep_route": null,
+      "title": "Videojuegos",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "objective": "Historia, géneros, cómo se diseñan",
+      "experience": "Línea del tiempo y diseño de niveles en el Taller",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Por dentro",
+        "Red",
+        "Simular",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-04",
+          "title": "Pixel art y animación",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-14",
+          "title": "Diseño de videojuegos",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-43",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/43-matematicas/",
+      "alternate_route": "/en/interests/topics/43-mathematics/",
+      "deep_route": null,
+      "title": "Matemáticas",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Primos, sucesiones, geometría, fractales",
+      "experience": "Explorador de fractales y sucesiones",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Cálculo propio; OEIS (a confirmar)",
+        "authority": "Iris Green + OEIS",
+        "license": "OEIS CC BY-SA 4.0",
+        "evidence": "https://oeis.org/wiki/The_OEIS_End-User_License_Agreement",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-03",
+          "title": "Patrones y arte generativo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-11",
+          "title": "Papiroflexia y poliedros",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-12",
+          "title": "Programación",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-17",
+          "title": "Composición",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-44",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/44-ajedrez/",
+      "alternate_route": "/en/interests/topics/44-chess/",
+      "deep_route": null,
+      "title": "Ajedrez",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Aperturas, partidas, problemas",
+      "experience": "Tablero con problemas por nivel",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Lichess",
+        "authority": "Lichess open database",
+        "license": "Exports principales/puzzles/evaluaciones CC0; broadcasts oficiales CC BY-SA 4.0",
+        "evidence": "https://database.lichess.org/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-22",
+          "title": "Juegos de mesa",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-45",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/45-cubo-de-rubik-y-rompecabezas/",
+      "alternate_route": "/en/interests/topics/45-rubiks-cube-and-puzzles/",
+      "deep_route": null,
+      "title": "Cubo de Rubik y rompecabezas",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Algoritmos, notación, récords",
+      "experience": "Cubo 3D que se gira",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-46",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/46-calendarios-y-horas/",
+      "alternate_route": "/en/interests/topics/46-calendars-and-time/",
+      "deep_route": null,
+      "title": "Calendarios y horas",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Calendarios del mundo, husos horarios",
+      "experience": "Reloj mundial y conversor de calendarios",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Base de husos IANA (a confirmar)",
+        "authority": "IANA Time Zone Database",
+        "license": "Public domain para la base tz; fijar versión al ingerir",
+        "evidence": "https://www.iana.org/time-zones",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-47",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/47-codigos-y-criptografia/",
+      "alternate_route": "/en/interests/topics/47-codes-and-cryptography/",
+      "deep_route": null,
+      "title": "Códigos y criptografía",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Cifrados históricos, Morse",
+      "experience": "Máquinas de cifrado simuladas",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-48",
+      "group_id": "interest-group-06",
+      "family": "math",
+      "route": "/es/intereses/temas/48-logica-y-puzles/",
+      "alternate_route": "/en/interests/topics/48-logic-and-puzzles/",
+      "deep_route": null,
+      "title": "Lógica y puzles",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "objective": "Sudokus, nonogramas, lógica",
+      "experience": "Generador por niveles",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Patrón",
+        "Transformar",
+        "Reto",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-49",
+      "group_id": "interest-group-07",
+      "family": "language",
+      "route": "/es/intereses/temas/49-idiomas-del-mundo/",
+      "alternate_route": "/en/interests/topics/49-languages-of-the-world/",
+      "deep_route": null,
+      "title": "Idiomas del mundo",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "objective": "Todas las lenguas, familias, dónde se hablan",
+      "experience": "Árbol de familias y mapa",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Familias",
+        "Comparar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Glottolog",
+        "authority": "Glottolog 5.3",
+        "license": "CC BY 4.0",
+        "evidence": "https://glottolog.org/meta/downloads",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-20",
+          "title": "Mundos",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-21",
+          "title": "Lenguas inventadas",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-50",
+      "group_id": "interest-group-07",
+      "family": "language",
+      "route": "/es/intereses/temas/50-alfabetos-y-escrituras/",
+      "alternate_route": "/en/interests/topics/50-alphabets-and-writing-systems/",
+      "deep_route": null,
+      "title": "Alfabetos y escrituras",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "objective": "Todos los sistemas de escritura",
+      "experience": "Cada letra con su trazo",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Familias",
+        "Comparar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Unicode (a confirmar)",
+        "authority": "Unicode Consortium",
+        "license": "Unicode data files/software: Unicode License v3; charts/publications tienen restricciones distintas",
+        "evidence": "https://www.unicode.org/policies/licensing_policy.html",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-21",
+          "title": "Lenguas inventadas",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-51",
+      "group_id": "interest-group-07",
+      "family": "language",
+      "route": "/es/intereses/temas/51-etimologia/",
+      "alternate_route": "/en/interests/topics/51-etymology/",
+      "deep_route": null,
+      "title": "Etimología",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "objective": "De dónde viene cada palabra",
+      "experience": "Árbol de una palabra",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Mapa",
+        "Familias",
+        "Comparar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-52",
+      "group_id": "interest-group-07",
+      "family": "language",
+      "route": "/es/intereses/temas/52-lengua-de-signos-braille-y-morse/",
+      "alternate_route": "/en/interests/topics/52-sign-language-braille-and-morse/",
+      "deep_route": null,
+      "title": "Lengua de signos, braille y Morse",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "objective": "Signos, códigos, historia",
+      "experience": "Traductor a braille y Morse",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Mapa",
+        "Familias",
+        "Comparar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia; LSE (a confirmar)",
+        "authority": "Iris Green + fuente LSE aún no congelada",
+        "license": "La parte propia es utilizable; falta fuente/licencia autoritativa de LSE",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-53",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/53-historia/",
+      "alternate_route": "/en/interests/topics/53-history/",
+      "deep_route": null,
+      "title": "Historia",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Fechas, reinados, batallas, líneas del tiempo",
+      "experience": "Línea del tiempo que se amplía sin límite",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-19",
+          "title": "Escritura con restricciones",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-24",
+          "title": "Moda y textil",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-54",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/54-antiguo-egipto/",
+      "alternate_route": "/en/interests/topics/54-ancient-egypt/",
+      "deep_route": null,
+      "title": "Antiguo Egipto",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Faraones, jeroglíficos, pirámides",
+      "experience": "Pirámide por dentro",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-55",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/55-mitologia/",
+      "alternate_route": "/en/interests/topics/55-mythology/",
+      "deep_route": null,
+      "title": "Mitología",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Dioses y héroes de todas las culturas",
+      "experience": "Árboles genealógicos",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-19",
+          "title": "Escritura con restricciones",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-56",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/56-castillos/",
+      "alternate_route": "/en/interests/topics/56-castles/",
+      "deep_route": null,
+      "title": "Castillos",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Castillos de España, partes, asedios",
+      "experience": "Castillo en corte",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata; OpenStreetMap",
+        "authority": "Wikidata + OpenStreetMap",
+        "license": "Wikidata CC0 + OSM ODbL 1.0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing ; https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-57",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/57-arquitectura-y-puentes/",
+      "alternate_route": "/en/interests/topics/57-architecture-and-bridges/",
+      "deep_route": null,
+      "title": "Arquitectura y puentes",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Estilos, estructuras, edificios famosos",
+      "experience": "Enlaza con el estudio de construcción",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-08",
+          "title": "Arquitectura y planos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-58",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/58-monedas/",
+      "alternate_route": "/en/interests/topics/58-coins/",
+      "deep_route": null,
+      "title": "Monedas",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Monedas de España y del mundo",
+      "experience": "Cromos de la web ampliados",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata; cromos actuales",
+        "authority": "Wikidata + assets de cromos actuales",
+        "license": "Wikidata CC0; procedencia/licencia de cada cromo actual no auditada en R40-A4",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-03",
+          "title": "Patrones y arte generativo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-07",
+          "title": "Estructuras y puentes",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-08",
+          "title": "Arquitectura y planos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-59",
+      "group_id": "interest-group-08",
+      "family": "history",
+      "route": "/es/intereses/temas/59-sellos/",
+      "alternate_route": "/en/interests/topics/59-stamps/",
+      "deep_route": null,
+      "title": "Sellos",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "objective": "Series, países, rarezas",
+      "experience": "Álbum de sellos",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Línea del tiempo",
+        "Mapa",
+        "Objetos",
+        "Comparar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-60",
+      "group_id": "interest-group-09",
+      "family": "art",
+      "route": "/es/intereses/temas/60-pintura-y-museos/",
+      "alternate_route": "/en/interests/topics/60-painting-and-museums/",
+      "deep_route": null,
+      "title": "Pintura y museos",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "objective": "Obras, artistas, técnicas",
+      "experience": "Sala de museo con obras en alta calidad",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Galería",
+        "Detalle",
+        "Escuchar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Met Museum (CC0)",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-05",
+          "title": "Color",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-61",
+      "group_id": "interest-group-09",
+      "family": "art",
+      "route": "/es/intereses/temas/61-musica-e-instrumentos/",
+      "alternate_route": "/en/interests/topics/61-music-and-instruments/",
+      "deep_route": null,
+      "title": "Música e instrumentos",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "objective": "Instrumentos, teoría, compositores",
+      "experience": "Instrumentos que suenan",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Galería",
+        "Detalle",
+        "Escuchar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "MusicBrainz (a confirmar)",
+        "authority": "MusicBrainz",
+        "license": "Core data CC0; supplementary CC BY-NC-SA 3.0; no aporta grabaciones de instrumentos",
+        "evidence": "https://musicbrainz.org/doc/About/Data_License",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-16",
+          "title": "Ritmo y secuenciador",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-17",
+          "title": "Composición",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-62",
+      "group_id": "interest-group-09",
+      "family": "art",
+      "route": "/es/intereses/temas/62-cine-y-como-se-hace/",
+      "alternate_route": "/en/interests/topics/62-film-and-filmmaking/",
+      "deep_route": null,
+      "title": "Cine y cómo se hace",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "objective": "Oficios, técnicas, historia",
+      "experience": "Plató por dentro",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Galería",
+        "Detalle",
+        "Escuchar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-63",
+      "group_id": "interest-group-09",
+      "family": "art",
+      "route": "/es/intereses/temas/63-fotografia/",
+      "alternate_route": "/en/interests/topics/63-photography/",
+      "deep_route": null,
+      "title": "Fotografía",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "objective": "Cámaras, luz, técnica",
+      "experience": "Simulador de cámara",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Galería",
+        "Detalle",
+        "Escuchar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-64",
+      "group_id": "interest-group-09",
+      "family": "art",
+      "route": "/es/intereses/temas/64-comic-y-dibujo-narrativo/",
+      "alternate_route": "/en/interests/topics/64-comics-and-visual-storytelling/",
+      "deep_route": null,
+      "title": "Cómic y dibujo narrativo",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "objective": "Estilos, viñetas, historia",
+      "experience": "Enlaza con el estudio de dibujo",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Galería",
+        "Detalle",
+        "Escuchar",
+        "Crear"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-65",
+      "group_id": "interest-group-10",
+      "family": "worlds",
+      "route": "/es/intereses/temas/65-mundos-de-ficcion/",
+      "alternate_route": "/en/interests/topics/65-fictional-worlds/",
+      "deep_route": null,
+      "title": "Mundos de ficción",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "objective": "Crear mundos, mapas, criaturas",
+      "experience": "Estudio de mundos del Taller",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Colección",
+        "Crear",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia (sin personajes con derechos)",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-66",
+      "group_id": "interest-group-10",
+      "family": "worlds",
+      "route": "/es/intereses/temas/66-criaturas-para-coleccionar/",
+      "alternate_route": "/en/interests/topics/66-collectible-creatures/",
+      "deep_route": null,
+      "title": "Criaturas para coleccionar",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "objective": "Coleccionarlas todas, tipos, evoluciones",
+      "experience": "Colección de criaturas inventadas",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Colección",
+        "Crear",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-04",
+          "title": "Pixel art y animación",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-67",
+      "group_id": "interest-group-10",
+      "family": "worlds",
+      "route": "/es/intereses/temas/67-juegos-de-mesa/",
+      "alternate_route": "/en/interests/topics/67-board-games/",
+      "deep_route": null,
+      "title": "Juegos de mesa",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "objective": "Reglas, historia, estrategia",
+      "experience": "Tableros jugables",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Colección",
+        "Crear",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-68",
+      "group_id": "interest-group-10",
+      "family": "worlds",
+      "route": "/es/intereses/temas/68-colecciones-en-general/",
+      "alternate_route": "/en/interests/topics/68-collections/",
+      "deep_route": null,
+      "title": "Colecciones en general",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "objective": "Tenerlo todo, ordenado y completo",
+      "experience": "Álbum común a todos los intereses",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Mapa",
+        "Colección",
+        "Crear",
+        "Simular"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Mi colección",
+        "authority": "Iris Green local collection",
+        "license": "Contenido/estado local del producto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-22",
+          "title": "Juegos de mesa",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-69",
+      "group_id": "interest-group-11",
+      "family": "daily",
+      "route": "/es/intereses/temas/69-cocina/",
+      "alternate_route": "/en/interests/topics/69-cooking/",
+      "deep_route": null,
+      "title": "Cocina",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "objective": "Recetas, técnicas, química de la cocina",
+      "experience": "Cocina paso a paso",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Proceso",
+        "Comparar",
+        "Crear",
+        "Planificar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-70",
+      "group_id": "interest-group-11",
+      "family": "daily",
+      "route": "/es/intereses/temas/70-quimica-y-elementos/",
+      "alternate_route": "/en/interests/topics/70-chemistry-and-the-elements/",
+      "deep_route": null,
+      "title": "Química y elementos",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "objective": "La tabla periódica entera",
+      "experience": "Tabla periódica con cada elemento",
+      "availability": "source-review",
+      "source_ready": false,
+      "modes": [
+        "Proceso",
+        "Comparar",
+        "Crear",
+        "Planificar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "PubChem (a confirmar)",
+        "authority": "PubChem",
+        "license": "Licencia definida por cada fuente contribuyente; no existe licencia única para todo PubChem",
+        "evidence": "https://pubchem.ncbi.nlm.nih.gov/docs/data-sources",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-71",
+      "group_id": "interest-group-11",
+      "family": "daily",
+      "route": "/es/intereses/temas/71-deportes/",
+      "alternate_route": "/en/interests/topics/71-sports/",
+      "deep_route": null,
+      "title": "Deportes",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "objective": "Reglas, récords, historia",
+      "experience": "Línea del tiempo de récords",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Proceso",
+        "Comparar",
+        "Crear",
+        "Planificar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-72",
+      "group_id": "interest-group-11",
+      "family": "daily",
+      "route": "/es/intereses/temas/72-moda-y-tejidos/",
+      "alternate_route": "/en/interests/topics/72-fashion-and-textiles/",
+      "deep_route": null,
+      "title": "Moda y tejidos",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "objective": "Tejidos, patrones, historia del traje",
+      "experience": "Enlaza con el estudio de diseño",
+      "availability": "ready",
+      "source_ready": true,
+      "modes": [
+        "Proceso",
+        "Comparar",
+        "Crear",
+        "Planificar"
+      ],
+      "life_stages": [
+        "child",
+        "teen",
+        "adult",
+        "all"
+      ],
+      "life_prompts": {
+        "all": "Explora a tu ritmo. Puedes cambiar de profundidad cuando quieras.",
+        "child": "Empieza por una acción grande. Mira, mueve y prueba una cosa cada vez.",
+        "teen": "Compara, cambia una variable y decide qué quieres investigar después.",
+        "adult": "Activa capas, analiza relaciones y abre la procedencia cuando necesites detalle."
+      },
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    }
+  ]
+}

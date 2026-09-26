@@ -1,0 +1,30 @@
+{
+  "task": "R42-A4",
+  "issue": 287,
+  "base_sha": "574356cba3b73dc8477a625d2c6311008260a2d6",
+  "base_tree": "3da021ce16109a10423ab53ae7fb071ca80dba13",
+  "counts": {
+    "groups": 11,
+    "interests": 72,
+    "topic_pages": 144,
+    "group_pages": 22,
+    "homes": 2,
+    "catalogues": 2,
+    "field_notebooks": 2,
+    "source_ready": 43,
+    "source_review": 29
+  },
+  "life_stages": [
+    "child",
+    "teen",
+    "adult",
+    "all"
+  ],
+  "languages": [
+    "es",
+    "en"
+  ],
+  "architecture": "explore-first visual atlas/laboratory; one active mode panel; field workspace",
+  "no_merge": true,
+  "no_deploy": true
+}
