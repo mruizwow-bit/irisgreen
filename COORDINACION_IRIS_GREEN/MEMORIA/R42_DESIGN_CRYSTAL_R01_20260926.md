@@ -35,4 +35,23 @@ No afirmar que todo botón con borde <3:1 incumple WCAG 1.4.11. Evaluar contrast
 ## Integración
 Design trabaja en rama propia. A2 integra y despliega. No propagación global hasta HUMAN QA de María.
 
-Estado: `R42_DESIGN_CRYSTAL_SYSTEM_BUILD_ACTIVE`.
+## Precheck de entrega R01
+
+La arquitectura entregada se conserva, pero el gate cambia a:
+
+`R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED`
+
+Correcciones antes de A2:
+1. reconciliar contra Estado/Memoria/Control canónicos actuales y addenda R42 vigentes;
+2. hacer dark/opaco el chrome temporal del Rincón (dialog, inspector, sheets/paneles);
+3. corregir el medidor para usar el fondo efectivo real por ancestros + composición alfa.
+
+Ajustes menores: margen del texto deshabilitado hacia 4,8–5:1 y estado comprensible cuando Más contraste impone opacidad.
+
+Las 48 capturas son CI estructural/material; la validación perceptiva real sigue en Deploy Preview A2 + HUMAN QA María.
+
+Orden de corrección: `../ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHECK_20260926.md`.  
+Addendum: `../NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md`.  
+Detalle de revisión: `R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.md`.
+
+Estado vigente: `R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED`.
