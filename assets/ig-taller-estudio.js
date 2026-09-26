@@ -300,4 +300,44 @@
     m.classList.add('igt-on');
     return m;
   };
+
+  /* R42 Taller product layer: loaded progressively after the existing studio runtime. */
+  IGT.loadR42 = function () {
+    if (window.__ig42WorkshopLoading) return;
+    window.__ig42WorkshopLoading = true;
+    if (!document.querySelector('link[data-ig42-taller]')) {
+      var css = document.createElement('link');
+      css.rel = 'stylesheet'; css.href = '/assets/ig-taller-r42.css?v=r42-a5-2'; css.setAttribute('data-ig42-taller', 'true');
+      document.head.appendChild(css);
+    }
+    function loadShell() {
+      if (window.IGTallerR42) { window.IGTallerR42.autoMount(); return; }
+      var shell = document.createElement('script');
+      shell.src = '/assets/ig-taller-r42.js?v=r42-a5-2';
+      shell.defer = true;
+      document.head.appendChild(shell);
+    }
+    function loadDirect() {
+      if (window.IGTallerR42Direct) { loadShell(); return; }
+      var direct = document.createElement('script');
+      direct.src = '/assets/ig-taller-r42-direct.js?v=r42-a5-2';
+      direct.defer = true; direct.onload = loadShell;
+      document.head.appendChild(direct);
+    }
+    function loadPlatform() {
+      if (window.IGTallerR42Platform) { loadDirect(); return; }
+      var platform = document.createElement('script');
+      platform.src = '/assets/ig-taller-r42-platform.js?v=r42-a5-2';
+      platform.defer = true; platform.onload = loadDirect;
+      document.head.appendChild(platform);
+    }
+    if (window.IGTallerR42Paths) loadPlatform();
+    else {
+      var paths = document.createElement('script');
+      paths.src = '/assets/data/taller-r42-paths.js?v=r42-a5-2';
+      paths.defer = true; paths.onload = loadPlatform;
+      document.head.appendChild(paths);
+    }
+  };
+  IGT.ready(IGT.loadR42);
 })(window, document);
