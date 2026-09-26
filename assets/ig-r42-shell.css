@@ -749,3 +749,44 @@
     }
   }
 }
+
+
+/* R42 compatibility bridge.
+   The legacy Workshop CSS is unlayered; normal unlayered rules outrank layered
+   normal declarations. These scoped rules deliberately stay unlayered so the
+   R42 pilot can override only the legacy layout it is replacing, without
+   !important and without affecting non-pilot pages. */
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] #igt-app > .igt-work {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:.7rem;
+  align-items:start;
+}
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-retos {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:.75rem;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  padding:.75rem;
+  border-radius:14px;
+  overflow:hidden;
+}
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-retos > * {
+  min-width:0;
+  max-width:100%;
+}
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-retos select,
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-retos .igt-bar {
+  max-width:100%;
+}
+body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-body > .igt-side {
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  padding:.25rem 0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
