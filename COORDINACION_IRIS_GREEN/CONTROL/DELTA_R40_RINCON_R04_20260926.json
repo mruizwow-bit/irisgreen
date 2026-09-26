@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R40-RINCON-R04",
+  "date": "2026-09-26",
+  "status": "R40_RINCON_R04_REAL_REBUILD_REQUIRED",
+  "supersedes": [
+    "R40-RINCON-R03",
+    "#269"
+  ],
+  "operative_issue": 271,
+  "rejected_preview": {
+    "head": "9ad3cc8116b6c1d237b84f71855f3808e93ddbad",
+    "tree": "37a94d4d339aad29108bd929faa51753a373dd4c",
+    "reason": "HUMAN_QA_FAIL"
+  },
+  "findings": [
+    "reproductor enterrado bajo 9 escenas y ajustes",
+    "scroll obligatorio para llegar a la escena",
+    "motor visual principal de 8 escenas no reconstruido",
+    "sonido nuevo basado ampliamente en white/pink/brown noise filtrado",
+    "calidad visual/sonora no aceptada por Maria"
+  ],
+  "requirements": [
+    "player_or_active_tool_first",
+    "compact_scene_selector_after_or_beside_player",
+    "secondary_settings_in_disclosure",
+    "12_general_sounds_rebuilt",
+    "9_scene_ambiences_rebuilt",
+    "8_previous_visual_scenes_rebuilt_plus_octopus",
+    "A2_only_web_gateway",
+    "human_visual_audio_acceptance_on_preview"
+  ],
+  "builder": "Agente 7",
+  "integrator": "Agente 2",
+  "parent_issue": 247
+}
