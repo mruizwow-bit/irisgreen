@@ -1,0 +1,619 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schemas/r40-data-pack.v1.schema.json",
+  "title": "Iris Green R40 A4 Data Pack",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "generated_at",
+    "sources",
+    "classification",
+    "interest_groups",
+    "interests",
+    "workshop_areas",
+    "studies",
+    "field_notebook",
+    "connections",
+    "counts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "IRIS_R40_A4_DATA_PACK"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "values",
+        "rule"
+      ],
+      "properties": {
+        "values": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "REAL_DATA"
+            },
+            {
+              "const": "SIMULATION"
+            },
+            {
+              "const": "USER_CREATED"
+            },
+            {
+              "const": "FICTIONAL"
+            }
+          ],
+          "items": false
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "interest_groups": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "$ref": "#/$defs/interestGroup"
+      }
+    },
+    "interests": {
+      "type": "array",
+      "minItems": 72,
+      "maxItems": 72,
+      "items": {
+        "$ref": "#/$defs/interest"
+      }
+    },
+    "workshop_areas": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/workshopArea"
+      }
+    },
+    "studies": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": {
+        "$ref": "#/$defs/study"
+      }
+    },
+    "field_notebook": {
+      "$ref": "#/$defs/fieldNotebook"
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/connection"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interest_groups",
+        "interests",
+        "interests_ready",
+        "interests_hold",
+        "workshop_areas",
+        "studies",
+        "studies_existing",
+        "studies_planned",
+        "connections"
+      ],
+      "properties": {
+        "interest_groups": {
+          "const": 11
+        },
+        "interests": {
+          "const": 72
+        },
+        "interests_ready": {
+          "const": 43
+        },
+        "interests_hold": {
+          "const": 29
+        },
+        "workshop_areas": {
+          "const": 6
+        },
+        "studies": {
+          "const": 25
+        },
+        "studies_existing": {
+          "const": 8
+        },
+        "studies_planned": {
+          "const": 17
+        },
+        "connections": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": [
+        "es",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "READY",
+        "HOLD"
+      ]
+    },
+    "dataClass": {
+      "enum": [
+        "REAL_DATA",
+        "SIMULATION",
+        "USER_CREATED",
+        "FICTIONAL"
+      ]
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": [
+        "id",
+        "path",
+        "git_blob",
+        "role"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_blob": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source",
+        "authority",
+        "license",
+        "source_date",
+        "checked_at",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "source_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "interestGroup": {
+      "type": "object",
+      "required": [
+        "id",
+        "index",
+        "title",
+        "interest_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^interest-group-[0-9]{2}$"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 11
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "interest_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^interest-[0-9]{2}$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "layer": {
+      "type": "object",
+      "required": [
+        "classes",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/dataClass"
+          },
+          "uniqueItems": true
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "interest": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "group_id",
+        "title",
+        "objective",
+        "experience",
+        "data_required",
+        "layers",
+        "provenance",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^interest-[0-9]{2}$"
+        },
+        "kind": {
+          "const": "interest"
+        },
+        "group_id": {
+          "type": "string",
+          "pattern": "^interest-group-[0-9]{2}$"
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "objective": {
+          "$ref": "#/$defs/localized"
+        },
+        "experience": {
+          "$ref": "#/$defs/localized"
+        },
+        "data_required": {
+          "$ref": "#/$defs/localized"
+        },
+        "layers": {
+          "type": "object",
+          "required": [
+            "knowledge",
+            "experience"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "knowledge": {
+              "$ref": "#/$defs/layer"
+            },
+            "experience": {
+              "$ref": "#/$defs/layer"
+            }
+          }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "workshopArea": {
+      "type": "object",
+      "required": [
+        "id",
+        "index",
+        "title",
+        "study_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^workshop-area-[0-9]{2}$"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "study_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^workshop-[0-9]{2}$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "study": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "number",
+        "area_id",
+        "title",
+        "objective",
+        "experience",
+        "data_required",
+        "layers",
+        "catalog_state",
+        "provenance",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^workshop-[0-9]{2}$"
+        },
+        "kind": {
+          "const": "study"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25
+        },
+        "area_id": {
+          "type": "string",
+          "pattern": "^workshop-area-[0-9]{2}$"
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "objective": {
+          "$ref": "#/$defs/localized"
+        },
+        "experience": {
+          "type": "object",
+          "required": [
+            "tool",
+            "challenges",
+            "save_as",
+            "connects_to"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "tool": {
+              "$ref": "#/$defs/localized"
+            },
+            "challenges": {
+              "$ref": "#/$defs/localized"
+            },
+            "save_as": {
+              "$ref": "#/$defs/localized"
+            },
+            "connects_to": {
+              "$ref": "#/$defs/localized"
+            }
+          }
+        },
+        "data_required": {
+          "$ref": "#/$defs/localized"
+        },
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/dataClass"
+          },
+          "uniqueItems": true
+        },
+        "catalog_state": {
+          "enum": [
+            "EXISTING",
+            "PLANNED"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "interest",
+            "interest_group",
+            "study",
+            "workshop_area",
+            "field_notebook",
+            "all_interests"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "required": [
+        "id",
+        "from",
+        "to",
+        "relation",
+        "payload_class",
+        "status",
+        "publicable",
+        "source_label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^connection-[0-9]{3}$"
+        },
+        "from": {
+          "$ref": "#/$defs/endpoint"
+        },
+        "to": {
+          "$ref": "#/$defs/endpoint"
+        },
+        "relation": {
+          "enum": [
+            "CREATE_FROM",
+            "EXPLORE_WITH",
+            "COLLECT_IN",
+            "RELATED_TO",
+            "SIMULATE_WITH"
+          ]
+        },
+        "payload_class": {
+          "$ref": "#/$defs/dataClass"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "publicable": {
+          "type": "boolean"
+        },
+        "source_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "fieldNotebook": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "classes",
+        "status",
+        "requirements"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "field-notebook"
+        },
+        "kind": {
+          "const": "field_notebook"
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "classes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/dataClass"
+          },
+          "uniqueItems": true
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
