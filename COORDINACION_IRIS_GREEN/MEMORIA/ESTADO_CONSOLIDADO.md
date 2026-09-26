@@ -292,3 +292,23 @@ Orden de corrección: `../ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHEC
 Addendum de aceptación: `../NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md`.  
 Detalle completo: `R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.md`.  
 Control: `../CONTROL/DELTA_R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.json`.
+
+## R42 · Taller · física y CSP · 26/09/2026
+
+**Estado: `R42_A5_PHYSICS_CSP_DUAL_ENGINE_REQUIRED`.**
+
+Astra verifica que el build público retira `'unsafe-eval'` y deja `script-src 'self' 'unsafe-inline'`, sin `'wasm-unsafe-eval'`. Rapier es WebAssembly y no puede considerarse capacidad garantizada de producción bajo esa política. Planck.js actual es JavaScript/TypeScript 2D y sí funciona con la CSP vigente.
+
+Decisión:
+- no modificar ahora la CSP global;
+- Planck = backend canónico de producción para física 2D del Taller;
+- Rapier = backend opcional/acelerado solo cuando la política efectiva permita WebAssembly;
+- ninguna actividad pública puede depender exclusivamente de Rapier;
+- si WASM está bloqueado, no debe haber error visible ni estado roto;
+- física 3D real reabre la decisión; una vista 3D/isométrica no.
+
+A2 integra A5 sin tocar la CSP y prueba la física con el header final generado por build. Una futura habilitación de `'wasm-unsafe-eval'` exige decisión A2/Astra separada y prueba de la política HTTP efectiva; una segunda CSP más permisiva no anula otra más restrictiva.
+
+Memoria: `MEMORIA/R42_TALLER_FISICA_CSP_DUAL_ENGINE_20260926.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R42_TALLER_FISICA_CSP_20260926.md`.  
+Control: `CONTROL/DELTA_R42_TALLER_FISICA_CSP_20260926.json`.
