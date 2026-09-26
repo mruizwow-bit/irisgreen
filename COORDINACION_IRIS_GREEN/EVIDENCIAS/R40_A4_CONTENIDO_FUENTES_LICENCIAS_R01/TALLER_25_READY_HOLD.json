@@ -1,0 +1,868 @@
+{
+  "schema": "IRIS_R40_A4_WORKSHOP/1.0",
+  "source_catalog": {
+    "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+    "git_blob": "cc074b2de06cc87523635f98b18b2e6a465cff18"
+  },
+  "counts": {
+    "total": 25,
+    "areas": 6,
+    "READY": 25,
+    "HOLD": 0,
+    "current": 8,
+    "planned": 17
+  },
+  "status_rule": "Los 25 estudios están definidos como contenido/herramientas originales. Las conexiones con datos o multimedia externos heredan el estado READY/HOLD del inventario de Intereses y no se vuelven reales por aparecer dentro de una simulación.",
+  "studies": [
+    {
+      "id": "workshop-01",
+      "number": 1,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Dibujo",
+      "title_en": "Drawing",
+      "objective_es": "Desarrollar Dibujo mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Drawing through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Lienzo con capas, pinceles, goma, simetría y guías de perspectiva",
+        "challenges": "Dibujar solo con una línea → luz con tres tonos → escena en perspectiva de dos puntos → serie de 10 dibujos con reglas propias",
+        "save_as": "Imagen PNG y proyecto",
+        "connects_to": "Cielo nocturno, aves, minerales"
+      },
+      "experience_en": {
+        "tool": "Canvas with layers, brushes, eraser, symmetry and perspective guides",
+        "challenges": "Draw with one line → light using three tones → a two-point-perspective scene → a series of 10 drawings with your own rules",
+        "save_as": "PNG image and project",
+        "connects_to": "Night sky, birds, minerals"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-02",
+      "number": 2,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Diseño gráfico y tipografía",
+      "title_en": "Graphic design and typography",
+      "objective_es": "Desarrollar Diseño gráfico y tipografía mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Graphic design and typography through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Rejilla, formas, textos y paletas",
+        "challenges": "Logo con una sola forma → cartel con 2 colores → sistema de señales para un edificio",
+        "save_as": "SVG, PNG",
+        "connects_to": "Transporte, señales"
+      },
+      "experience_en": {
+        "tool": "Grid, shapes, text and palettes",
+        "challenges": "Logo with a single shape → two-colour poster → wayfinding system for a building",
+        "save_as": "SVG, PNG",
+        "connects_to": "Transport, signs"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-03",
+      "number": 3,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Patrones y arte generativo",
+      "title_en": "Patterns and generative art",
+      "objective_es": "Desarrollar Patrones y arte generativo mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Patterns and generative art through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Reglas de repetición, simetrías, teselados y fractales",
+        "challenges": "Mosaico con un solo azulejo → 17 tipos de simetría plana → fractal con reglas propias",
+        "save_as": "SVG, reglas",
+        "connects_to": "Matemáticas, arquitectura"
+      },
+      "experience_en": {
+        "tool": "Rules for repetition, symmetry, tessellations and fractals",
+        "challenges": "Mosaic using one tile → the 17 wallpaper symmetry groups → a fractal with your own rules",
+        "save_as": "SVG, rules",
+        "connects_to": "Mathematics, architecture"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-04",
+      "number": 4,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Pixel art y animación",
+      "title_en": "Pixel art and animation",
+      "objective_es": "Desarrollar Pixel art y animación mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Pixel art and animation through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Rejilla de píxeles, paletas, fotogramas",
+        "challenges": "Icono de 16×16 → animación de 8 fotogramas → personaje con 4 movimientos",
+        "save_as": "PNG, GIF",
+        "connects_to": "Videojuegos, criaturas"
+      },
+      "experience_en": {
+        "tool": "Pixel grid, palettes and frames",
+        "challenges": "16×16 icon → 8-frame animation → character with four movements",
+        "save_as": "PNG, GIF",
+        "connects_to": "Video games, creatures"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-05",
+      "number": 5,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Color",
+      "title_en": "Colour",
+      "objective_es": "Desarrollar Color mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Colour through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Rueda, mezclas, contraste, paletas",
+        "challenges": "Paleta de 5 colores con contraste accesible → misma escena de día y de noche",
+        "save_as": "Paleta",
+        "connects_to": "Pintura, diseño"
+      },
+      "experience_en": {
+        "tool": "Colour wheel, mixes, contrast and palettes",
+        "challenges": "Five-colour palette with accessible contrast → the same scene by day and by night",
+        "save_as": "Palette",
+        "connects_to": "Painting, design"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-06",
+      "number": 6,
+      "area_es": "Imagen y diseño",
+      "area_en": "Image and design",
+      "title_es": "Cómic y guion gráfico",
+      "title_en": "Comics and storyboarding",
+      "objective_es": "Desarrollar Cómic y guion gráfico mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Comics and storyboarding through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Viñetas, bocadillos, planos",
+        "challenges": "Historia en 4 viñetas sin texto → página completa con ritmo",
+        "save_as": "PNG, PDF",
+        "connects_to": "Escritura, mundos"
+      },
+      "experience_en": {
+        "tool": "Panels, speech balloons and shots",
+        "challenges": "Four-panel story without text → a complete page with visual rhythm",
+        "save_as": "PNG, PDF",
+        "connects_to": "Writing, worlds"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Imagen y diseño",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-07",
+      "number": 7,
+      "area_es": "Construir e inventar",
+      "area_en": "Build and invent",
+      "title_es": "Estructuras y puentes",
+      "title_en": "Structures and bridges",
+      "objective_es": "Desarrollar Estructuras y puentes mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Structures and bridges through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Piezas con física: aguanta o se cae",
+        "challenges": "Puente de 2 m con 12 piezas → carga de 5 kg → el más ligero que aguante un tren",
+        "save_as": "Proyecto",
+        "connects_to": "Trenes, arquitectura"
+      },
+      "experience_en": {
+        "tool": "Physics-based pieces: it holds or it falls",
+        "challenges": "Two-metre bridge with 12 pieces → five-kilogram load → the lightest bridge that can hold a train",
+        "save_as": "Project",
+        "connects_to": "Trains, architecture"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Construir e inventar",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-08",
+      "number": 8,
+      "area_es": "Construir e inventar",
+      "area_en": "Build and invent",
+      "title_es": "Arquitectura y planos",
+      "title_en": "Architecture and plans",
+      "objective_es": "Desarrollar Arquitectura y planos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Architecture and plans through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Plano en planta que se levanta en 3D",
+        "challenges": "Habitación → casa con luz natural → edificio con reglas de accesibilidad",
+        "save_as": "Plano PNG y proyecto",
+        "connects_to": "Castillos, arquitectura"
+      },
+      "experience_en": {
+        "tool": "Floor plan that rises into 3D",
+        "challenges": "Room → house with natural light → building with accessibility rules",
+        "save_as": "PNG plan and project",
+        "connects_to": "Castles, architecture"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Construir e inventar",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-09",
+      "number": 9,
+      "area_es": "Construir e inventar",
+      "area_en": "Build and invent",
+      "title_es": "Máquinas e inventos",
+      "title_en": "Machines and inventions",
+      "objective_es": "Desarrollar Máquinas e inventos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Machines and inventions through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Engranajes, palancas, poleas, rampas",
+        "challenges": "Subir un peso con una polea → reloj con engranajes → máquina en cadena de 10 pasos",
+        "save_as": "Proyecto",
+        "connects_to": "Relojes, coches"
+      },
+      "experience_en": {
+        "tool": "Gears, levers, pulleys and ramps",
+        "challenges": "Lift a weight with a pulley → geared clock → ten-step chain machine",
+        "save_as": "Project",
+        "connects_to": "Clocks, cars"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Construir e inventar",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-10",
+      "number": 10,
+      "area_es": "Construir e inventar",
+      "area_en": "Build and invent",
+      "title_es": "Circuitos",
+      "title_en": "Circuits",
+      "objective_es": "Desarrollar Circuitos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Circuits through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Simulador de pilas, luces, interruptores y puertas lógicas",
+        "challenges": "Encender una luz → semáforo → sumador binario",
+        "save_as": "Proyecto",
+        "connects_to": "Electrónica, ordenadores"
+      },
+      "experience_en": {
+        "tool": "Simulator with batteries, lights, switches and logic gates",
+        "challenges": "Light a lamp → traffic light → binary adder",
+        "save_as": "Project",
+        "connects_to": "Electronics, computers"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Construir e inventar",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-11",
+      "number": 11,
+      "area_es": "Construir e inventar",
+      "area_en": "Build and invent",
+      "title_es": "Papiroflexia y poliedros",
+      "title_en": "Origami and polyhedra",
+      "objective_es": "Desarrollar Papiroflexia y poliedros mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Origami and polyhedra through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Diagramas paso a paso y sólidos que se despliegan",
+        "challenges": "Grulla → cubo de piezas → poliedro propio para imprimir",
+        "save_as": "PDF para imprimir",
+        "connects_to": "Matemáticas"
+      },
+      "experience_en": {
+        "tool": "Step-by-step diagrams and unfoldable solids",
+        "challenges": "Crane → modular cube → your own printable polyhedron",
+        "save_as": "Printable PDF",
+        "connects_to": "Mathematics"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Construir e inventar",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-12",
+      "number": 12,
+      "area_es": "Programar y robótica",
+      "area_en": "Programming and robotics",
+      "title_es": "Programación",
+      "title_en": "Programming",
+      "objective_es": "Desarrollar Programación mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Programming through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Bloques que se pueden ver como texto; lenguaje propio seguro",
+        "challenges": "Dibujar una estrella → bucles y variables → funciones y recursividad",
+        "save_as": "Programa",
+        "connects_to": "Matemáticas, arte generativo"
+      },
+      "experience_en": {
+        "tool": "Blocks that can also be viewed as text; a safe custom language",
+        "challenges": "Draw a star → loops and variables → functions and recursion",
+        "save_as": "Program",
+        "connects_to": "Mathematics, generative art"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Programar y robótica",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-13",
+      "number": 13,
+      "area_es": "Programar y robótica",
+      "area_en": "Programming and robotics",
+      "title_es": "Robótica",
+      "title_en": "Robotics",
+      "objective_es": "Desarrollar Robótica mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Robotics through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Robot en un escenario con motores y sensores",
+        "challenges": "Salir de una habitación → seguir una línea → laberinto desconocido → varios robots juntos",
+        "save_as": "Programa y escenario",
+        "connects_to": "Robótica, transporte"
+      },
+      "experience_en": {
+        "tool": "Robot in a scene with motors and sensors",
+        "challenges": "Leave a room → follow a line → unknown maze → several robots working together",
+        "save_as": "Program and scene",
+        "connects_to": "Robotics, transport"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Programar y robótica",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-14",
+      "number": 14,
+      "area_es": "Programar y robótica",
+      "area_en": "Programming and robotics",
+      "title_es": "Diseño de videojuegos",
+      "title_en": "Video game design",
+      "objective_es": "Desarrollar Diseño de videojuegos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Video game design through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Editor de niveles, reglas y personajes",
+        "challenges": "Nivel con 3 reglas → juego de puzles de 10 niveles → juego completo",
+        "save_as": "Proyecto jugable",
+        "connects_to": "Videojuegos, pixel art"
+      },
+      "experience_en": {
+        "tool": "Level, rule and character editor",
+        "challenges": "Level with three rules → ten-level puzzle game → complete game",
+        "save_as": "Playable project",
+        "connects_to": "Video games, pixel art"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Programar y robótica",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-15",
+      "number": 15,
+      "area_es": "Programar y robótica",
+      "area_en": "Programming and robotics",
+      "title_es": "Simulaciones",
+      "title_en": "Simulations",
+      "objective_es": "Desarrollar Simulaciones mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Simulations through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Sistemas con reglas: ecosistemas, tráfico, autómatas",
+        "challenges": "Juego de la vida → red de tráfico → ecosistema equilibrado",
+        "save_as": "Proyecto",
+        "connects_to": "Seres vivos, trenes"
+      },
+      "experience_en": {
+        "tool": "Rule-based systems: ecosystems, traffic and cellular automata",
+        "challenges": "Game of Life → traffic network → balanced ecosystem",
+        "save_as": "Project",
+        "connects_to": "Living things, trains"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Programar y robótica",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-16",
+      "number": 16,
+      "area_es": "Música y sonido",
+      "area_en": "Music and sound",
+      "title_es": "Ritmo y secuenciador",
+      "title_en": "Rhythm and sequencer",
+      "objective_es": "Desarrollar Ritmo y secuenciador mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Rhythm and sequencer through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Cuadrícula de pasos con instrumentos",
+        "challenges": "Ritmo de 4 tiempos → pieza con 3 partes → poliritmos",
+        "save_as": "Proyecto; audio WAV",
+        "connects_to": "Música"
+      },
+      "experience_en": {
+        "tool": "Step grid with instruments",
+        "challenges": "Four-beat rhythm → three-part piece → polyrhythms",
+        "save_as": "Project; WAV audio",
+        "connects_to": "Music"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Música y sonido",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-17",
+      "number": 17,
+      "area_es": "Música y sonido",
+      "area_en": "Music and sound",
+      "title_es": "Composición",
+      "title_en": "Composition",
+      "objective_es": "Desarrollar Composición mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Composition through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Pentagrama y teclado con reglas de armonía",
+        "challenges": "Melodía con 5 notas → canon → pieza con forma A-B-A",
+        "save_as": "Partitura, MIDI",
+        "connects_to": "Música, matemáticas"
+      },
+      "experience_en": {
+        "tool": "Staff and keyboard with harmony rules",
+        "challenges": "Five-note melody → canon → A-B-A form",
+        "save_as": "Score, MIDI",
+        "connects_to": "Music, mathematics"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Música y sonido",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-18",
+      "number": 18,
+      "area_es": "Música y sonido",
+      "area_en": "Music and sound",
+      "title_es": "Síntesis y paisajes sonoros",
+      "title_en": "Synthesis and soundscapes",
+      "objective_es": "Desarrollar Síntesis y paisajes sonoros mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Synthesis and soundscapes through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Osciladores, filtros y sonidos de la naturaleza",
+        "challenges": "Imitar la lluvia → paisaje de una ciudad",
+        "save_as": "Audio WAV",
+        "connects_to": "Tiempo, aves"
+      },
+      "experience_en": {
+        "tool": "Oscillators, filters and nature sounds",
+        "challenges": "Imitate rain → a city soundscape",
+        "save_as": "WAV audio",
+        "connects_to": "Weather, birds"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Música y sonido",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-19",
+      "number": 19,
+      "area_es": "Palabras y mundos",
+      "area_en": "Words and worlds",
+      "title_es": "Escritura con restricciones",
+      "title_en": "Constraint-based writing",
+      "objective_es": "Desarrollar Escritura con restricciones mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Constraint-based writing through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Editor con reglas: sin una letra, número fijo de palabras, formas poéticas",
+        "challenges": "Microrrelato de 50 palabras → texto sin la letra e → cuento con estructura fija",
+        "save_as": "Texto, PDF",
+        "connects_to": "Historia, mitología"
+      },
+      "experience_en": {
+        "tool": "Editor with constraints: forbidden letters, fixed word counts and poetic forms",
+        "challenges": "50-word micro-story → text without the letter e → story with a fixed structure",
+        "save_as": "Text, PDF",
+        "connects_to": "History, mythology"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Palabras y mundos",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-20",
+      "number": 20,
+      "area_es": "Palabras y mundos",
+      "area_en": "Words and worlds",
+      "title_es": "Mundos",
+      "title_en": "Worlds",
+      "objective_es": "Desarrollar Mundos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Worlds through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Mapa, especies, lenguas, historia y personajes enlazados",
+        "challenges": "Isla con 3 especies → cultura con calendario propio → mundo completo con atlas",
+        "save_as": "Atlas en archivo propio",
+        "connects_to": "Geografía, idiomas"
+      },
+      "experience_en": {
+        "tool": "Linked maps, species, languages, history and characters",
+        "challenges": "Island with three species → culture with its own calendar → complete world with an atlas",
+        "save_as": "Atlas in its own file",
+        "connects_to": "Geography, languages"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Palabras y mundos",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-21",
+      "number": 21,
+      "area_es": "Palabras y mundos",
+      "area_en": "Words and worlds",
+      "title_es": "Lenguas inventadas",
+      "title_en": "Invented languages",
+      "objective_es": "Desarrollar Lenguas inventadas mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Invented languages through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Sonidos, alfabeto, gramática y diccionario",
+        "challenges": "Alfabeto de 20 signos → 100 palabras → texto traducido",
+        "save_as": "Diccionario",
+        "connects_to": "Idiomas, escrituras"
+      },
+      "experience_en": {
+        "tool": "Sounds, alphabet, grammar and dictionary",
+        "challenges": "20-sign alphabet → 100 words → translated text",
+        "save_as": "Dictionary",
+        "connects_to": "Languages, writing systems"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Palabras y mundos",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-22",
+      "number": 22,
+      "area_es": "Palabras y mundos",
+      "area_en": "Words and worlds",
+      "title_es": "Juegos de mesa",
+      "title_en": "Board games",
+      "objective_es": "Desarrollar Juegos de mesa mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Board games through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Tablero, cartas y reglas imprimibles",
+        "challenges": "Juego para 2 con 5 reglas → juego equilibrado con cartas",
+        "save_as": "PDF para imprimir",
+        "connects_to": "Ajedrez, colecciones"
+      },
+      "experience_en": {
+        "tool": "Board, cards and printable rules",
+        "challenges": "Two-player game with five rules → balanced card game",
+        "save_as": "Printable PDF",
+        "connects_to": "Chess, collections"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Palabras y mundos",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-23",
+      "number": 23,
+      "area_es": "Ideas",
+      "area_en": "Ideas",
+      "title_es": "Fotografía y composición",
+      "title_en": "Photography and composition",
+      "objective_es": "Desarrollar Fotografía y composición mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Photography and composition through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Tus fotos, sin subirlas: encuadre, luz, series",
+        "challenges": "Serie de 5 fotos de un color → misma cosa en 10 encuadres",
+        "save_as": "Serie",
+        "connects_to": "Cielo, plantas"
+      },
+      "experience_en": {
+        "tool": "Your photos without uploading them: framing, light and series",
+        "challenges": "Series of five photos of one colour → the same subject in ten framings",
+        "save_as": "Series",
+        "connects_to": "Sky, plants"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Ideas",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-24",
+      "number": 24,
+      "area_es": "Ideas",
+      "area_en": "Ideas",
+      "title_es": "Moda y textil",
+      "title_en": "Fashion and textiles",
+      "objective_es": "Desarrollar Moda y textil mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Fashion and textiles through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Patrones, tejidos y estampados",
+        "challenges": "Estampado con un motivo → colección de 5 prendas",
+        "save_as": "PNG",
+        "connects_to": "Diseño, historia"
+      },
+      "experience_en": {
+        "tool": "Patterns, fabrics and prints",
+        "challenges": "Print made from one motif → collection of five garments",
+        "save_as": "PNG",
+        "connects_to": "Design, history"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Ideas",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "PLANNED",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    },
+    {
+      "id": "workshop-25",
+      "number": 25,
+      "area_es": "Ideas",
+      "area_en": "Ideas",
+      "title_es": "Ideas e inventos",
+      "title_en": "Ideas and inventions",
+      "objective_es": "Desarrollar Ideas e inventos mediante la herramienta y los retos progresivos definidos en el catálogo R40.",
+      "objective_en": "Develop Ideas and inventions through the tool and progressive challenges defined in the R40 catalogue.",
+      "experience_es": {
+        "tool": "Laboratorio de ideas: usos distintos, combinar, cambiar el punto de vista, SCAMPER",
+        "challenges": "Las 6 actividades actuales → invento con restricciones reales de coste y tamaño",
+        "save_as": "Mi cuaderno",
+        "connects_to": "Todos"
+      },
+      "experience_en": {
+        "tool": "Idea laboratory: alternative uses, combinations, viewpoint changes and SCAMPER",
+        "challenges": "The six current activities → an invention with real cost and size constraints",
+        "save_as": "My notebook",
+        "connects_to": "All"
+      },
+      "data_required_es": "Proyecto local de la persona y parámetros de la herramienta. Los datos reales externos de una conexión solo se incorporan cuando la ficha de Intereses correspondiente esté READY.",
+      "data_required_en": "The person’s local project and tool parameters. External real-world data from a linked interest may only be included when the corresponding Interests record is READY.",
+      "source": {
+        "path": "COORDINACION_IRIS_GREEN/EVIDENCIAS/WEB_A2_INTERESES_R15/ESTRUCTURA_RECIBIDA_20260924.md",
+        "section": "Ideas",
+        "source_date": "2026-09-24"
+      },
+      "license": "Contenido editorial y herramienta previstos como creación original de Iris Green. Cualquier dato, imagen, audio o dataset externo conserva su propia licencia y hereda el gate de procedencia correspondiente.",
+      "catalog_state": "CURRENT_EVOLVING",
+      "checked_at": "2026-09-26",
+      "status": "READY",
+      "integrity_rule": "READY describe la definición editorial del estudio, no autoriza a presentar como reales datos externos HOLD ni activos de terceros sin licencia."
+    }
+  ]
+}
