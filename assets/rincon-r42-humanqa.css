@@ -1,0 +1,145 @@
+/* R42-A7 · HUMAN QA rebuild.
+   Real media dominates. Controls never overlap the stage or each other. */
+.r42-rincon #watch{min-width:0}
+.r42-rincon #watch>.stage{
+ position:relative!important;
+ height:clamp(380px,min(68vh,720px),720px)!important;
+ min-height:380px!important;
+ overflow:hidden!important;
+ background:#020812!important;
+ border-radius:20px!important;
+}
+.r42-rincon .r42-media-stage{position:absolute;inset:0;background:#020812;overflow:hidden}
+.r42-rincon .r42-media-poster,
+.r42-rincon .r42-media-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.r42-rincon .r42-media-poster{opacity:1;transform:scale(1.025);filter:saturate(.82) contrast(.96) brightness(.82);transition:opacity .7s ease}
+.r42-rincon .r42-media-video{opacity:0;filter:saturate(.88) contrast(.98) brightness(.91);transition:opacity .85s ease}
+.r42-rincon .r42-media-stage.is-video-ready .r42-media-video{opacity:1}
+.r42-rincon .r42-media-stage.is-video-ready .r42-media-poster{opacity:0}
+.r42-rincon .r42-media-grade{position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(180deg,rgba(1,8,16,.08),transparent 26%,transparent 70%,rgba(1,8,16,.28)),
+ radial-gradient(ellipse at center,transparent 45%,rgba(1,8,16,.18) 100%)}
+.r42-rincon .r42-media-atmosphere{position:absolute;inset:-8%;pointer-events:none;opacity:.18;background:
+ radial-gradient(circle at 25% 18%,rgba(255,255,255,.16),transparent 28%),
+ radial-gradient(circle at 78% 72%,rgba(89,176,204,.10),transparent 32%);
+ mix-blend-mode:screen}
+.r42-rincon #watchCredit{font-size:.82rem!important;line-height:1.35!important;min-height:1.2em}
+.r42-rincon #watchCredit a{color:inherit;text-underline-offset:.15em}
+.r42-rincon #r40SceneStatus{font-size:.9rem!important;line-height:1.35!important;margin:.15rem 0 .3rem!important}
+
+/* Essential controls: compact, stable grid. */
+.r42-rincon .r40-scene-actions{
+ display:grid!important;
+ grid-template-columns:minmax(11rem,1.35fr) repeat(3,minmax(7rem,1fr)) auto!important;
+ gap:6px!important;
+ align-items:stretch!important;
+ max-width:100%!important;
+ min-width:0!important;
+ padding:6px!important;
+ overflow:visible!important;
+ position:relative!important;
+ inset:auto!important;
+ transform:none!important;
+ opacity:1!important;
+ pointer-events:auto!important;
+}
+.r42-rincon .r40-scene-actions>button,
+.r42-rincon .r40-scene-actions>.r42-more-actions>summary{
+ min-width:0!important;
+ width:100%!important;
+ min-height:44px!important;
+ padding:.52rem .7rem!important;
+ white-space:normal!important;
+ line-height:1.15!important;
+ text-align:center!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ box-sizing:border-box!important;
+}
+.r42-rincon .r42-more-actions{position:relative;min-width:0}
+.r42-rincon .r42-more-actions>summary{
+ list-style:none;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;cursor:pointer;font:inherit
+}
+.r42-rincon .r42-more-actions>summary::-webkit-details-marker{display:none}
+.r42-rincon .r42-more-actions[open]>.r42-more-menu{
+ position:absolute;right:0;bottom:calc(100% + 8px);z-index:80;
+ width:min(280px,82vw);padding:8px;display:grid;gap:6px;
+ border:1px solid #b7c6d3;border-radius:15px;background:rgba(255,255,255,.98);
+ box-shadow:0 18px 48px rgba(10,30,48,.20)
+}
+.r42-rincon .r42-more-menu button{width:100%;min-height:44px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font:inherit}
+.r42-rincon #sceneList{max-width:100%!important}
+.r42-rincon #sceneList>.qchoice{flex-basis:156px!important}
+.r42-rincon .r42-mobile-scene{margin-top:6px!important}
+
+/* Integrated R42 shell: the Quiet Space owns its workspace, shell chrome stays outside it. */
+.ig-r42-shell .r42-rincon,
+.ig-r42-shell .r42-rincon .r40-workspace,
+.ig-r42-shell .r42-rincon .qcard{min-width:0!important;max-width:100%!important}
+.ig-r42-shell .r42-rincon .r40-scene-actions{position:relative!important;bottom:auto!important;left:auto!important;right:auto!important}
+
+/* Clean mode also removes the global R42 shell chrome. */
+body.r42-clean .ig-r42-topbar,
+body.r42-clean .ig-r42-context,
+body.r42-clean .ig-r42-rail,
+body.r42-clean .ig-r42-inspector{display:none!important}
+body.r42-clean .ig-r42-shell,
+body.r42-clean .ig-r42-body,
+body.r42-clean .ig-r42-workspace,
+body.r42-clean .ig-r42-stage{position:static!important;display:block!important;width:100%!important;height:auto!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+body.r42-clean #watch>.r40-scene-actions{
+ display:grid!important;
+ grid-template-columns:minmax(10rem,1.4fr) repeat(3,minmax(7rem,1fr)) auto!important;
+ left:50%!important;right:auto!important;bottom:max(14px,env(safe-area-inset-bottom))!important;
+ width:min(94vw,840px)!important;position:fixed!important;transform:translateX(-50%) translateY(10px)!important;
+ opacity:0!important;pointer-events:none!important;background:rgba(8,20,31,.78)!important;
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+body.r42-clean.r42-controls-awake #watch>.r40-scene-actions,
+body.r42-clean #watch>.r40-scene-actions:focus-within{opacity:1!important;pointer-events:auto!important;transform:translateX(-50%)!important}
+
+/* No motion is forced when the person requests reduced motion. */
+@media(prefers-reduced-motion:reduce){
+ .r42-rincon .r42-media-video{display:none!important}
+ .r42-rincon .r42-media-poster{opacity:1!important;transform:none!important;transition:none!important}
+ .r42-rincon .r42-media-grade,.r42-rincon .r42-media-atmosphere{animation:none!important;transition:none!important}
+}
+body.rm.r42-rincon .r42-media-video{display:none!important}
+body.rm.r42-rincon .r42-media-poster{opacity:1!important;transform:none!important}
+
+/* Mobile: no wrapping pile of pills. Two clear rows + one More menu. */
+@media(max-width:760px){
+ .r42-rincon #watch>.stage{height:clamp(280px,48svh,470px)!important;min-height:280px!important;border-radius:15px!important}
+ .r42-rincon .r40-scene-actions{
+   grid-template-columns:1fr 1fr!important;
+   gap:5px!important;padding:5px!important
+ }
+ .r42-rincon .r40-scene-actions>button,
+ .r42-rincon .r40-scene-actions>.r42-more-actions{min-width:0!important}
+ .r42-rincon .r42-more-actions{grid-column:1 / -1}
+ .r42-rincon .r42-more-actions>summary{border-radius:11px!important}
+ .r42-rincon .r42-more-actions[open]>.r42-more-menu{position:fixed;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-height:65svh;overflow:auto}
+ .r42-rincon #sceneList{display:none!important}
+ .r42-rincon .r42-mobile-scene{display:grid!important}
+ body.r42-clean #watch>.r40-scene-actions{
+   grid-template-columns:1fr 1fr!important;
+   width:calc(100vw - 16px)!important;
+   bottom:max(8px,env(safe-area-inset-bottom))!important
+ }
+ body.r42-clean #watch>.r40-scene-actions>.r42-more-actions{grid-column:1/-1}
+}
+
+/* Very narrow screens: prevent any control from exceeding viewport. */
+@media(max-width:390px){
+ .r42-rincon .r40-scene-actions{grid-template-columns:1fr!important}
+ .r42-rincon .r42-more-actions{grid-column:auto}
+ .r42-rincon #watch>.stage{height:44svh!important;min-height:250px!important}
+ body.r42-clean #watch>.r40-scene-actions{grid-template-columns:1fr 1fr!important}
+}
+
+/* Forced-colors keeps all controls visible and distinct. */
+@media(forced-colors:active){
+ .r42-rincon .r42-media-grade,.r42-rincon .r42-media-atmosphere{display:none!important}
+ .r42-rincon .r42-more-actions>summary,.r42-rincon .r42-more-menu,.r42-rincon .r42-more-menu button{background:Canvas!important;color:CanvasText!important;border:2px solid CanvasText!important}
+}
