@@ -64,3 +64,9 @@ La orden vigente del Rincón es **#271**. Leer antes de trabajar:
 - `CONTROL/DELTA_R40_RINCON_R04_20260926.json`
 
 R03 queda rechazada por revisión humana. A7 reconstruye; A2 integra y sube; la aceptación final es en preview web.
+
+## R39 R06 · Cloud listo, integración web pendiente A2
+
+El Cloud R06 está READY en deploy-preview no publicado. La integración frontend está en PR #272 y debe entrar por A2. Ver `MEMORIA/R39_R06_CLOUD_DEPLOY_20260926.md` y `CONTROL/DELTA_R39_R06_CLOUD_DEPLOY_20260926.json`.
+
+Estado: `R39_R06_CLOUD_READY_WEB_INTEGRATION_PENDING_A2`.
