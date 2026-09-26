@@ -51,3 +51,9 @@ body.rm.r40-rincon-r03 #watchStage{transition:none!important}
  .r40-rincon-r03 .r40-tabs,.r40-rincon-r03 .r40-scene-actions,.r40-rincon-r03 .r40-static-fallback figcaption{background:Canvas;color:CanvasText;border:2px solid CanvasText}
  .r40-rincon-r03 .r40-tabs button[aria-selected="true"]{background:Highlight;color:HighlightText}
 }
+.r40-rincon-r03 .r40-octopus-poster{position:absolute;inset:0;background:
+ radial-gradient(ellipse 18% 21% at 57% 49%,#9d6c58 0 58%,transparent 61%),
+ radial-gradient(ellipse 14% 7% at 45% 72%,#765044 0 60%,transparent 64%),
+ radial-gradient(ellipse 14% 7% at 65% 74%,#765044 0 60%,transparent 64%),
+ radial-gradient(circle at 24% 18%,rgba(160,210,220,.15),transparent 28%),
+ linear-gradient(180deg,#2b6d84 0%,#123f59 55%,#082736 79%,#756e5b 80%,#4d493f 100%)}

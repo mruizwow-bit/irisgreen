@@ -94,16 +94,7 @@
   }
 
   /* --- Mezclar sonidos --- */
-  var SOUNDS = $('#r40StartAV') ? [] : [
-    ['/audio/rincon/lluvia-en-tienda.mp3', 'Lluvia en una tienda', 'Rain on a tent', 'enternalrainsounds'],
-    ['/audio/rincon/lluvia-en-ventana.mp3', 'Lluvia en la ventana', 'Rain on the window', 'Eryliaa'],
-    ['/audio/rincon/lluvia-habitacion.m4a', 'Lluvia en una habitación', 'Rain in a room', 'CeleronBeats'],
-    ['/audio/rincon/rio-lento.mp3', 'Río lento', 'Slow river', 'Nils_Vega'],
-    ['/audio/rincon/olas-suaves.mp3', 'Olas suaves', 'Soft waves', 'SoundsForYou'],
-    ['/audio/rincon/bosque-y-viento.mp3', 'Bosque y viento', 'Forest wind and birds', 'freesound_community'],
-    ['/audio/rincon/ambiente-largo.m4a', 'Ambiente largo', 'Long ambience', 'Lachm'],
-    ['/audio/rincon/meditacion-suave.m4a', 'Meditación suave', 'Soft meditation', 'Verclub_Music']
-  ];
+  var SOUNDS = [];
   var mixList = $('#mixList');
   if (mixList) {
     SOUNDS.forEach(function (s, i) {
