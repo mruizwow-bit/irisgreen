@@ -1,22 +1,36 @@
 # Estado operativo compartido
 
-## R42 · Agente 3 · investigación tecnológica/UX antes de propagación global · 26/09/2026
+## R42 · Agente 3 · app shell interactivo listo para A2 · 26/09/2026
 
-**Estado: `R42_A3_TECH_UX_RESEARCH_GATE_ACTIVE`.**
+**Estado: `R42_A3_APP_SHELL_BUILD_READY_FOR_A2`.**
 
-Por instrucción directa de María, A3 no propagará una actualización de formato a toda Iris Green antes de estudiar y contrastar la Web Platform vigente, compatibilidad, interacción, rendimiento, accesibilidad y adecuación cognitiva. La orden vigente es #284 bajo #283.
+A3 conserva la investigación Web Platform 2026 como base de construcción y ha entregado el primer sistema común R42 sobre la base A2 exacta `574356cba3b73dc8477a625d2c6311008260a2d6`, sin convertir Iris Green en SPA ni introducir framework por estética.
 
-Decisión: conservar la arquitectura canónica multipágina/pre-renderizada y usar progressive enhancement. No conversión global a SPA ni framework nuevo por estética. Base candidata: cascade layers, Container Queries, Grid/Subgrid, dialog/inert, contraste/forced-colors/reduced-motion, OffscreenCanvas/Workers y almacenamiento local solo cuando se justifique. Popover/View Transitions/@scope/anchor positioning son mejoras progresivas; File System Access y WebGPU requieren fallback. `prefers-reduced-transparency` no es Baseline y no puede ser la única protección.
+Entrega:
+- rama `agent3/r42-app-shell-20260926`;
+- HEAD `85a972a1024de3ad009484463f46620346922b02`;
+- tree `dc7163325e54937e99797f77842035ae4f1a80b7`;
+- draft PR #290 contra la rama A2;
+- app shell común con topbar compacta, workspace, tool rail APG, inspector contextual, command/actions, drawer de ayuda, project/status y mobile dock/sheet;
+- Dibujo reorganiza retos/propiedades fuera del camino del lienzo y agrupa Archivo mediante Popover/fallback;
+- tecnología aplicada: `@layer`, Container Queries, dialog/Popover, View Transitions solo como enhancement, anchor positioning con fallback, contraste/forced-colors/reduced-motion;
+- base opaca; `prefers-reduced-transparency` se usa solo como mejora;
+- 0 red, 0 persistencia implícita y 0 `innerHTML` en el shell.
 
-Gate: inventario → matriz tecnología/beneficio/soporte/fallback/riesgo → piloto ES/EN representativo (información + hub + workspace + inmersivo) → QA accesibilidad/móvil/rendimiento → HUMAN QA de María → corrección → solo entonces propagación global.
+Piloto deliberado antes de propagación: Dibujo, Juegos, Intereses y Rincón, cada uno en ES/EN (8 rutas). La portada y el resto de la web no reciben todavía la inyección R42.
+
+QA final A3: workflow `36242268262` SUCCESS sobre el HEAD final; `8/8 routes present`; contrato `R42 A3 app-shell contract: PASS`; build de 2.195 archivos. La validación incluye `node --check` del JS cuando Node está disponible.
+
+Siguiente gate: A2 integra #290 y publica preview. María realiza HUMAN QA en web (desktop/móvil, reflow 320, jerarquía, foco/teclado, lector de pantalla, zoom, forced-colors, reduced-motion, ES/EN). Solo después se decide la propagación del patrón.
 
 Registros:
 - `MEMORIA/R42_A3_TECH_UX_RESEARCH_GATE_20260926.md`
+- `MEMORIA/R42_A3_APP_SHELL_ENTREGA_20260926.md`
 - `CONTROL/DELTA_R42_A3_TECH_UX_RESEARCH_GATE_20260926.json`
-- `CONTROL/CONTROL_MASTER_SYNC_DELTA_R42_A3_TECH_UX_RESEARCH_GATE_20260926.csv`
+- `CONTROL/DELTA_R42_A3_APP_SHELL_BUILD_20260926.json`
 - `NORMATIVA/ADDENDUM_R42_A3_WEB_PLATFORM_20260926.md`
 
-No deploy, no producción y no propagación global en este gate.
+A3: **0 deploy · 0 main · 0 producción**.
 
 
 ## R39 R04 · Cloud privado activo; parche entregado a A2
