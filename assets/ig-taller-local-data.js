@@ -240,6 +240,18 @@
     var IGT=root.IGT; if(!IGT||IGT.__r40LocalEnhanced) return;
     IGT.__r40LocalEnhanced=true; IGT.localData=service;
     var original=IGT.projectBar;
+    var originalChallenges=IGT.challenges;
+    IGT.challenges=function(cfg){
+      cfg=cfg||{}; var app=root.document&&root.document.getElementById('igt-app');
+      var studio=canonicalType(app&&(app.getAttribute('data-study-id')||app.getAttribute('data-studio'))||'workshop-unknown');
+      var ownPick=cfg.onPick, wrapped={};
+      Object.keys(cfg).forEach(function(k){wrapped[k]=cfg[k];});
+      wrapped.onPick=function(ch){
+        if(ch) service.saveProgress({target:studioRef(studio),markers:[ch.id]}).catch(function(){});
+        return ownPick?ownPick(ch):null;
+      };
+      return originalChallenges(wrapped);
+    };
     IGT.projectBar=function(cfg){
       var bar=original(cfg), studio=canonicalType(cfg.studyId||cfg.studio||'workshop-unknown'), current=null;
       var sep=IGT.h('span',{class:'igt-sep','aria-hidden':'true'}); bar.appendChild(sep);

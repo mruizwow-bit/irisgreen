@@ -199,7 +199,7 @@
     var lang=String(root.document.documentElement.lang||'es').slice(0,2)==='en'?'en':'es',state=defaultState(study.kind),initial=deep(state),tool=h('section',{class:'igt-r40-tool glass','aria-label':study.title[lang]});
     var history=new IGT.History(function(){return state;},function(s){state=s;render();},function(){bar.sync();});
     var bar=IGT.projectBar({studio:study.id,studyId:study.id,history:history,getData:function(){return {kind:study.kind,state:state};},getTitle:function(){return study.title[lang];},onOpen:function(data){if(!data||data.kind!==study.kind||!data.state)return;state=deep(data.state);history.reset();render();},onNew:function(){state=deep(initial);history.reset();render();},onPrint:true});
-    var challenges=IGT.challenges({items:challengeList(study,lang),onPick:function(ch){if(ch&&IGT.localData)IGT.localData.saveProgress({target:{namespace:'workshop',id:study.id},markers:[ch.id]}).catch(function(){});return null;}});
+    var challenges=IGT.challenges({items:challengeList(study,lang)});
     app.appendChild(bar);app.appendChild(challenges);app.appendChild(tool);
     function changed(before){history.commit(before===undefined?undefined:before);bar.sync();}
     function render(){IGT.clear(tool);var before=history.snapshot();RENDERERS[study.kind](tool,state,function(){history.commit(before);before=history.snapshot();bar.sync();});}

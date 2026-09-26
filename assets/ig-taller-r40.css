@@ -7,20 +7,23 @@
 .igt-r40-field>span{font-weight:700}.igt-r40-field input,.igt-r40-field select,.igt-r40-tool textarea,.igt-r40-tool input[type="text"],.igt-r40-tool select{min-height:44px;border:1px solid #91a6bb;border-radius:10px;padding:.5rem;background:#fff;color:#17395c}
 .igt-r40-tool textarea{width:100%;min-height:8rem}.igt-r40-canvas,.igt-r40-photo{display:block;width:min(100%,800px);height:auto;min-height:280px;border:1px solid #a9b7c6;border-radius:16px;background:#fff}
 .igt-r40-pixel{display:grid;grid-template-columns:repeat(16,minmax(18px,1fr));width:min(100%,560px);aspect-ratio:1;border:1px solid #7b8ea3}
-.igt-r40-pixel button{min-width:0;min-height:0;border:1px solid #d7dee7;padding:0}
-.igt-r40-floor,.igt-r40-game,.igt-r40-world{display:grid;grid-template-columns:repeat(12,minmax(28px,1fr));width:min(100%,720px)}
-.igt-r40-floor button,.igt-r40-game button,.igt-r40-world button,.igt-r40-sim button,.igt-r40-board button,.igt-r40-sequencer button,.igt-r40-piano button{min-width:28px;min-height:28px;border:1px solid #c0cad5;background:#fff;padding:0}
+.igt-r40-pixel button{min-width:44px;min-height:44px;border:1px solid #d7dee7;padding:0}
+.igt-r40-floor,.igt-r40-game,.igt-r40-world{display:grid;grid-template-columns:repeat(12,minmax(44px,1fr));width:min(100%,720px)}
+.igt-r40-floor button,.igt-r40-game button,.igt-r40-world button,.igt-r40-sim button,.igt-r40-board button,.igt-r40-sequencer button,.igt-r40-piano button{min-width:44px;min-height:44px;border:1px solid #c0cad5;background:#fff;padding:0}
 .igt-r40-floor button[data-type="wall"]{background:#17395c}.igt-r40-floor button[data-type="door"]{background:#b07a45}.igt-r40-floor button[data-type="window"]{background:#7fc7e8}
 .igt-r40-building{margin:.75rem 0;padding:1rem;border-radius:14px;background:linear-gradient(135deg,#e7f0fa,#f2eafd)}
 .igt-r40-game button[data-type="wall"]{background:#17395c}.igt-r40-game button{font-size:1.2rem}
-.igt-r40-sim{display:grid;grid-template-columns:repeat(20,minmax(20px,1fr));width:min(100%,720px)}.igt-r40-sim button[data-live="true"]{background:#5a49a8}
-.igt-r40-sequencer,.igt-r40-piano{display:grid;grid-template-columns:repeat(16,minmax(24px,1fr));width:min(100%,780px);margin:1rem 0}.igt-r40-sequencer button[data-on="true"],.igt-r40-piano button[data-on="true"]{background:#2f80ed}
+.igt-r40-sim{display:grid;grid-template-columns:repeat(20,minmax(44px,1fr));width:min(100%,720px)}.igt-r40-sim button[data-live="true"]{background:#5a49a8}
+.igt-r40-sequencer,.igt-r40-piano{display:grid;grid-template-columns:repeat(16,minmax(44px,1fr));width:min(100%,780px);margin:1rem 0}.igt-r40-sequencer button[data-on="true"],.igt-r40-piano button[data-on="true"]{background:#2f80ed}
 .igt-r40-writing{min-height:18rem}.igt-r40-world button[data-type="water"]{background:#9cd6ef}.igt-r40-world button[data-type="land"]{background:#a9d58b}.igt-r40-world button[data-type="mountain"]{background:#a89b91}.igt-r40-world button[data-type="city"]{background:#d6c5ea}
-.igt-r40-board{display:grid;grid-template-columns:repeat(8,minmax(36px,1fr));width:min(100%,560px)}.igt-r40-board button:nth-child(odd){background:#edf2f7}.igt-r40-board button[data-token="a"]{color:#17395c}.igt-r40-board button[data-token="b"]{color:#8a5ad8}
+.igt-r40-board{display:grid;grid-template-columns:repeat(8,minmax(44px,1fr));width:min(100%,560px)}.igt-r40-board button:nth-child(odd){background:#edf2f7}.igt-r40-board button[data-token="a"]{color:#17395c}.igt-r40-board button[data-token="b"]{color:#8a5ad8}
 .igt-r40-comic{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.igt-r40-panel{border:2px solid #17395c;padding:1rem;min-height:180px;background:#fff}
 .igt-r40-palette{display:flex;gap:.5rem;flex-wrap:wrap}.igt-r40-palette input{width:56px;height:56px}.igt-r40-result{padding:1rem;border:1px solid #a9b7c6;border-radius:12px}
 .igt-taller-r40-index .igt-area-list{display:grid;gap:1rem}.igt-taller-r40-index details{border:1px solid rgba(23,57,92,.16);border-radius:16px;background:#fff;padding:.4rem 1rem}.igt-taller-r40-index summary{cursor:pointer;min-height:52px;display:flex;align-items:center;font-weight:700;font-size:1.08rem}.igt-taller-r40-index ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem 1rem;padding-left:1.2rem}.igt-taller-r40-index li{break-inside:avoid}.igt-taller-r40-index li a{display:block;padding:.55rem;border-radius:10px}.igt-taller-r40-index li a:hover{background:#eef4fb}
-@media(max-width:700px){.igt-r40-comic,.igt-taller-r40-index ul{grid-template-columns:1fr}.igt-local-summary-list{columns:1}.igt-r40-floor,.igt-r40-game,.igt-r40-world{grid-template-columns:repeat(12,minmax(22px,1fr))}.igt-r40-sequencer,.igt-r40-piano{grid-template-columns:repeat(8,minmax(30px,1fr))}}
+@media(max-width:700px){.igt-r40-comic,.igt-taller-r40-index ul{grid-template-columns:1fr}.igt-local-summary-list{columns:1}.igt-r40-floor,.igt-r40-game,.igt-r40-world{grid-template-columns:repeat(12,minmax(44px,1fr))}.igt-r40-sequencer,.igt-r40-piano{grid-template-columns:repeat(8,minmax(44px,1fr))}}
 @media(forced-colors:active){.igt-r40-tool,.igt-local-panel,.igt-taller-r40-index details{border:1px solid CanvasText}.igt-r40-cell{forced-color-adjust:auto}}
 @media(prefers-reduced-motion:reduce){.igt-r40-tool *{scroll-behavior:auto;transition:none;animation:none}}
 @media print{.igt-local-panel,.igt-r40-controls,.igt-retos-pick,.igt-bar,.igt-status{display:none}.igt-r40-tool{border:0;box-shadow:none}.igt-r40-canvas,.igt-r40-photo{max-width:100%}}
+
+.igt-r40-tool :focus-visible,.igt-local-panel :focus-visible,.igt-taller-r40-index :focus-visible{outline:3px solid #17395c;outline-offset:3px}
+.igt-r40-pixel,.igt-r40-floor,.igt-r40-game,.igt-r40-world,.igt-r40-sim,.igt-r40-board,.igt-r40-sequencer,.igt-r40-piano{overflow:auto}
