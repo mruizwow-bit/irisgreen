@@ -240,6 +240,10 @@
     display:none;
   }
 
+  .ig-r42-shell[data-inspector="closed"] .ig-r42-body {
+    grid-template-columns:64px minmax(0,1fr);
+  }
+
   .ig-r42-inspector-head {
     display:flex;
     align-items:center;
