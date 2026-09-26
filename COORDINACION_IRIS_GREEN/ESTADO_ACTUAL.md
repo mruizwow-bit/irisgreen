@@ -165,3 +165,27 @@ Normativa: [Addendum R03 audio/UX](NORMATIVA/ADDENDUM_R40_RINCON_R03_AUDIO_UX_20
 Memoria de entrega: [R40_RINCON_R03_ENTREGA_A7_20260926](MEMORIA/R40_RINCON_R03_ENTREGA_A7_20260926.md).  
 Evidencia: [R40_RINCON_R03_A7](EVIDENCIAS/R40_RINCON_R03_A7/README.md).  
 Control: [Delta R03](CONTROL/DELTA_R40_RINCON_R03_20260926.json).
+
+## R40 · Rincón R04 · HUMAN QA FAIL · 26/09/2026
+
+**Estado vigente: `R40_RINCON_R04_REAL_REBUILD_REQUIRED`.**
+
+María ha rechazado la preview R03 después de probarla visualmente. La interfaz superior no resolvió el problema: en Vídeos se muestran primero 9 escenas y múltiples ajustes y el reproductor queda más abajo, fuera de la zona inicial.
+
+La revisión del diff confirma además que R03 no reconstruyó el motor visual principal de las ocho escenas anteriores y que la nueva biblioteca sonora sigue apoyándose ampliamente en ruido white/pink/brown filtrado.
+
+R03 (#269) queda sustituida por **#271**.
+
+R04 exige:
+- reproductor/escena, sonido activo o bola inmediatamente arriba;
+- selector compacto después o al lado;
+- ajustes secundarios en disclosure;
+- 12 sonidos generales rehechos;
+- 9 ambientes rehechos;
+- reconstrucción visual real de las escenas previas además de Pulpos;
+- A7 construye; A2 integra/sube;
+- aceptación visual/auditiva humana en la preview.
+
+Orden: `ORDENES/R40_RINCON_R04/`.  
+Normativa: `NORMATIVA/ADDENDUM_R40_RINCON_R04_HUMAN_QA_20260926.md`.  
+Memoria: `MEMORIA/R40_RINCON_R04_HUMAN_QA_FAIL_20260926.md`.
