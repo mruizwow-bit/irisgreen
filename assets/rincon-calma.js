@@ -15,6 +15,7 @@
     rain: 'Lluvia en la ventana: gotas que resbalan despacio por un cristal, con luces desenfocadas detrás.',
     river: 'Río en el bosque: agua que corre entre piedras, hierba que se mueve con el viento y hojas que caen.',
     night: 'Cielo nocturno: estrellas y una aurora que ondula despacio sobre un lago rodeado de pinos.',
+    octopus: 'Pulpos: pulpos se mueven despacio entre rocas y plantas bajo el agua.',
     no3d: 'Para ver esta escena, el navegador necesita gráficos 3D (WebGL) y ahora mismo no los tiene activos. Suele arreglarse activando la «aceleración por hardware» en la configuración del navegador. El acuario y el tubo de burbujas sí se ven sin ella.',
     nofull: 'Este navegador no permite la pantalla completa aquí.',
     touch: { aquarium: 'Soltar burbujas', bubbles: 'Más burbujas y otro color', jellies: 'Apartar las medusas', fibre: 'Mandar una onda de luz', rain: 'Limpiar el cristal', night: 'Ver una estrella fugaz', river: 'Que caigan hojas' },
@@ -33,6 +34,7 @@
     rain: 'Rain on the window: drops slide slowly down a pane of glass, with blurred lights behind.',
     river: 'Stream in the forest: water runs over stones, grass moves in the wind and leaves fall.',
     night: 'Night sky: stars and an aurora that ripples slowly over a lake ringed with pine trees.',
+    octopus: 'Octopuses: octopuses move slowly among rocks and plants underwater.',
     no3d: 'To show this scene, the browser needs 3D graphics (WebGL), which are not active right now. Turning on “hardware acceleration” in the browser settings usually fixes it. The aquarium and the bubble tube work without it.',
     nofull: 'This browser does not allow full screen here.',
     touch: { aquarium: 'Release bubbles', bubbles: 'More bubbles and another colour', jellies: 'Move the jellyfish aside', fibre: 'Send a wave of light', rain: 'Wipe the glass', night: 'See a shooting star', river: 'Let some leaves fall' },
@@ -170,7 +172,7 @@
   window.__igSilence = silence;
 
   /* Sonido de la escena */
-  var SCENE_SOUND = { aquarium: 'escena-acuario', bubbles: 'escena-burbujas', jellies: 'escena-medusas', fibre: 'escena-fibra', sea: 'escena-mar', rain: 'escena-lluvia', river: 'escena-rio', night: 'escena-noche' };
+  var SCENE_SOUND = { aquarium: 'escena-acuario', bubbles: 'escena-burbujas', jellies: 'escena-medusas', fibre: 'escena-fibra', sea: 'escena-mar', rain: 'escena-lluvia', river: 'escena-rio', night: 'escena-noche', octopus: 'escena-pulpos' };
   var ambience = (function () {
     var box = $('#sceneSound'), vol = $('#sceneVol'), h = null, playing = null;
     function level() { return vol ? (vol.value / 100) * 0.6 : 0.3; }
@@ -386,7 +388,7 @@
   };
   function opt(name, def) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : def; }
   var scene = null, raf = 0;
-  function stopScene() { cancelAnimationFrame(raf); raf = 0; scene = null; }
+  function stopScene() { cancelAnimationFrame(raf); raf = 0; if (scene && scene.stop) { try { scene.stop(); } catch (e) {} } scene = null; }
 
   /* Escenas en 3D (se cargan solo al pulsar). Si el navegador no puede, se usa la versión 2D. */
   var scene3d = null, load3d = null;
@@ -412,6 +414,7 @@
     cv3.setAttribute('aria-label', T[kind] || T.bubbles);
     stage.appendChild(cv3);
     if (credit) credit.textContent = T.credit;
+    if (kind === 'octopus') { start2d(kind, button); return; }
     need3d().then(function (lib) {
       if (startScene.token !== token || !cv3.isConnected) return;
       if (!lib.supported()) throw new Error('webgl');
@@ -428,22 +431,30 @@
     });
   }
   function start2d(kind, button) {
-    if (kind !== 'aquarium' && kind !== 'bubbles') {   // sin versión 2D propia: se explica, nunca se enseña otra escena
+    var isOctopus = kind === 'octopus';
+    if (kind !== 'aquarium' && kind !== 'bubbles' && !isOctopus) {   // sin versión 2D propia: se explica, nunca se enseña otra escena
       stopScene(); stage.innerHTML = '';
       var msg = document.createElement('div'); msg.className = 'empty-stage'; msg.setAttribute('role', 'status'); msg.textContent = T.no3d; stage.appendChild(msg);
       if (credit) credit.textContent = '';
       return;
     }
     activeKind = kind; ambience.sync(); keepAwake.update(); touch.hide(); sceneTimer.arm();
-    if (kind !== 'aquarium') kind = 'bubbles';
     stopScene();
     document.querySelectorAll('[data-scene]').forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
     stage.innerHTML = '';
     var cv = document.createElement('canvas');
     cv.setAttribute('role', 'img');
-    cv.setAttribute('aria-label', kind === 'aquarium' ? T.aquarium : T.bubbles);
+    cv.setAttribute('aria-label', isOctopus ? T.octopus : (kind === 'aquarium' ? T.aquarium : T.bubbles));
     stage.appendChild(cv);
     if (credit) credit.textContent = T.credit;
+    if (isOctopus && window.IGOctopusScene) {
+      scene = window.IGOctopusScene.create(cv, { reduced: reduced });
+      if (scene) return;
+      stage.innerHTML = '';
+      var octMsg = document.createElement('div'); octMsg.className = 'empty-stage'; octMsg.setAttribute('role', 'status'); octMsg.textContent = T.octopus; stage.appendChild(octMsg);
+      return;
+    }
+    if (kind !== 'aquarium') kind = 'bubbles';
     var dpr = Math.min(2, window.devicePixelRatio || 1);
     if (kind === 'aquarium' && window.IGAquarium) {
       var aq = window.IGAquarium.create(cv);

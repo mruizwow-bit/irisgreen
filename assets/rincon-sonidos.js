@@ -267,14 +267,15 @@
     'piano': function (v) { piano(v, 1); },
     'cuencos': function (v) { bowls(v, 1); },
     // mezclas de las escenas
-    'escena-acuario': function (v) { aquariumHum(v, 1, false); },
-    'escena-burbujas': function (v) { aquariumHum(v, 0.8, true); },
-    'escena-medusas': function (v) { aquariumHum(v, 0.6, false); pads(v, 0.7, true); },
-    'escena-fibra': function (v) { pads(v, 0.9, false); },
-    'escena-mar': function (v) { waves(v, 1); },
-    'escena-lluvia': function (v) { rain(v, 0.9, true); },
-    'escena-rio': function (v) { stream(v, 0.9); birds(v, 0.6); wind(v, 0.15); },
-    'escena-noche': function (v) { crickets(v, 0.8); wind(v, 0.3); pads(v, 0.35, true); }
+    'escena-acuario': function (v) { aquariumHum(v, 0.7, false); },
+    'escena-burbujas': function (v) { aquariumHum(v, 0.65, true); },
+    'escena-medusas': function (v) { aquariumHum(v, 0.32, false); pads(v, 0.22, true); },
+    'escena-fibra': function (v) { pads(v, 0.10, false); },
+    'escena-mar': function (v) { waves(v, 0.7); },
+    'escena-lluvia': function (v) { rain(v, 0.65, true); },
+    'escena-rio': function (v) { stream(v, 0.65); birds(v, 0.12); wind(v, 0.08); },
+    'escena-noche': function (v) { crickets(v, 0.32); wind(v, 0.14); pads(v, 0.10, true); },
+    'escena-pulpos': function (v) { aquariumHum(v, 0.28, false); pads(v, 0.08, true); }
   };
   /* igualar el volumen percibido entre sonidos (medido en dB, ver memoria) */
   var TRIM = { 'pajaros': 3.2, 'grillos': 3.6, 'cuencos': 3.0, 'piano': 1.7, 'escena-noche': 2.2, 'olas': 0.72, 'escena-mar': 0.68, 'viento': 1.3 };

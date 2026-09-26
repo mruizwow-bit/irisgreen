@@ -1,0 +1,32 @@
+const fs=require('node:fs');
+const assert=require('node:assert/strict');
+const es=fs.readFileSync('es/sitio-tranquilo/index.html','utf8');
+const en=fs.readFileSync('en/quiet-space/index.html','utf8');
+const ctl=fs.readFileSync('assets/rincon-r40-av.js','utf8');
+const oct=fs.readFileSync('assets/rincon-pulpos.js','utf8');
+const css=fs.readFileSync('assets/rincon-r40-av.css','utf8');
+for(const [lang,html] of [['ES',es],['EN',en]]){
+  const scenes=[...html.matchAll(/data-scene="([^"]+)"/g)].map(x=>x[1]);
+  assert.deepEqual(scenes,['sea','rain','river','night','aquarium','bubbles','jellies','fibre','octopus'],lang+' scene order');
+  ['r40StartAV','r40ImageOnly','r40Mute','sceneVol','stopVideo','r40SceneStatus'].forEach(id=>assert.ok(html.includes('id="'+id+'"'),lang+' '+id));
+  assert.ok(html.includes('/assets/rincon-r40-av.css?v=r40-20260926'),lang+' css');
+  assert.ok(html.includes('/assets/rincon-pulpos.js?v=r40-20260926'),lang+' octopus script');
+  assert.ok(html.includes('/assets/rincon-r40-av.js?v=r40-20260926'),lang+' controller');
+}
+assert.ok(es.includes('Ver y escuchar')&&en.includes('Watch and listen'));
+assert.ok(es.includes('Solo imagen')&&en.includes('Image only'));
+assert.ok(ctl.includes("addEventListener('click',selectCapture,true)"),'scene selection is intercepted before legacy start');
+assert.ok(ctl.includes("legacyClick(selected,withAudio)"),'all scenes use the common explicit-start path');
+assert.ok(ctl.includes('r40-hold-recording'),'HOLD recordings removed from R40 UI');
+assert.ok(ctl.includes("prefers-reduced-motion: reduce"),'reduced motion checked');
+assert.ok(ctl.includes("setTimeout(ensureFallback,700)"),'fallback verification');
+assert.ok(oct.includes('IGOctopusScene')&&!oct.includes('AudioContext'),'octopus visual is local and silent by itself');
+const snd=fs.readFileSync('assets/rincon-sonidos.js','utf8');
+assert.ok(snd.includes("'escena-pulpos'"),'octopus first-party scene sound exists');
+const calm=fs.readFileSync('assets/rincon-calma.js','utf8');
+assert.ok(calm.includes("octopus: 'escena-pulpos'"),'octopus uses the common scene audio owner');
+assert.ok(calm.includes("if (kind === 'octopus') { start2d(kind, button); return; }"),'octopus uses first-party Canvas2D path');
+assert.ok(snd.includes("'escena-fibra': function (v) { pads(v, 0.10, false); }"),'fibre stays near-silent');
+assert.ok(snd.includes("birds(v, 0.12)"),'river birds stay distant');
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+console.log('R40_RINCON_AV_STATIC_PASS');
