@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://irisgreen.eu/schemas/r40-local-data-v1.schema.json",
+  "title": "Iris Green R40 local data contract",
+  "description": "Contract-only schema for local R40 state and single-project export. It does not authorize a backend or network transfer.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/localState"
+    },
+    {
+      "$ref": "#/$defs/projectExport"
+    }
+  ],
+  "$defs": {
+    "itemRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "id"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "maxLength": 64
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "maxLength": 128
+        }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/itemRef"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "progressEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "markers"
+      ],
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/itemRef"
+        },
+        "markers": {
+          "type": "array",
+          "maxItems": 128,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "maxLength": 128
+          }
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "entries"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/progressEntry"
+          }
+        }
+      }
+    },
+    "projectRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "project_type",
+        "project_schema_version",
+        "revision",
+        "payload"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{7,127}$",
+          "maxLength": 128
+        },
+        "project_type": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "maxLength": 64
+        },
+        "project_schema_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    },
+    "localState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "contract_version",
+        "schema_version",
+        "collection",
+        "progress",
+        "projects"
+      ],
+      "properties": {
+        "kind": {
+          "const": "irisgreen-r40-local-state"
+        },
+        "contract_version": {
+          "const": "1.0"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "collection": {
+          "$ref": "#/$defs/collection"
+        },
+        "progress": {
+          "$ref": "#/$defs/progress"
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/projectRecord"
+          }
+        }
+      }
+    },
+    "projectExport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "contract_version",
+        "schema_version",
+        "project"
+      ],
+      "properties": {
+        "kind": {
+          "const": "irisgreen-r40-project-export"
+        },
+        "contract_version": {
+          "const": "1.0"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "project": {
+          "$ref": "#/$defs/projectRecord"
+        }
+      }
+    }
+  }
+}
