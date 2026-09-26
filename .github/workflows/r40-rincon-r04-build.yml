@@ -6,6 +6,14 @@ on:
     paths:
       - tools/r40-rincon-r04/**
       - .github/workflows/r40-rincon-r04-build.yml
+      - assets/rincon-r04.js
+      - assets/rincon-r04.css
+      - assets/rincon-audio-r04.js
+      - assets/rincon-escenas-r04.js
+      - assets/rincon-calma.js
+      - es/sitio-tranquilo/index.html
+      - en/quiet-space/index.html
+      - tools/test-r40-rincon-r04.js
 permissions:
   contents: write
 jobs:
