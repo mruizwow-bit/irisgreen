@@ -214,7 +214,7 @@
   }
 
   /* Mi colección: memoria de sesión por defecto. A5 puede inyectar un adaptador
-     persistente sin que los componentes conozcan IndexedDB/localStorage/red. */
+     persistente sin que los componentes conozcan el backend de almacenamiento ni la red. */
   var memoryCollection = [];
   var collectionAdapter = {
     list:function(){return Promise.resolve(memoryCollection.slice());},
