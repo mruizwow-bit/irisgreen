@@ -1,0 +1,346 @@
+{
+  "schema": "IRIS_R40_A4_QUIET_SPACE_PROVENANCE/1.0",
+  "observed_product_reference": {
+    "head": "bb1efb8608681b138e5ce8029a6d425eddcaed98",
+    "note": "Referencia de inventario únicamente; no es freeze de implementación A2."
+  },
+  "sources": {
+    "sound_runtime": {
+      "path": "assets/rincon-sonidos.js",
+      "git_blob": "173b07f48be6de5c5fc340361682b9a326467368"
+    },
+    "historical_recordings_registry": {
+      "path": "audio/rincon/sonidos.json",
+      "git_blob": "b6b266dd66b4a5a9575335932bedd1e6e4071293"
+    }
+  },
+  "counts": {
+    "scenes": 8,
+    "scene_READY": 8,
+    "scene_HOLD": 0,
+    "historical_recordings": 8,
+    "historical_recordings_HOLD": 8
+  },
+  "scenes": [
+    {
+      "id": "sea",
+      "title_es": "Mar",
+      "title_en": "Sea",
+      "sound_id": "escena-mar",
+      "sound_es": "Oleaje lento y continuo",
+      "sound_en": "Slow, steady waves",
+      "text_alt_es": "Olas lentas que llegan y se retiran de forma continua.",
+      "text_alt_en": "Slow waves arrive and recede continuously.",
+      "restrictions_es": [
+        "Sin golpes de ola repentinos",
+        "Sin sirenas, voces ni animales añadidos",
+        "Volumen inicial bajo",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "No sudden crashing waves",
+        "No added sirens, voices or animals",
+        "Low initial volume",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "aquarium",
+      "title_es": "Acuario",
+      "title_en": "Aquarium",
+      "sound_id": "escena-acuario",
+      "sound_es": "Agua filtrada y burbujas suaves",
+      "sound_en": "Filtered water and soft bubbles",
+      "text_alt_es": "Un zumbido grave y estable de agua filtrada con burbujas suaves.",
+      "text_alt_en": "A low, steady filtered-water hum with soft bubbles.",
+      "restrictions_es": [
+        "Sin chasquidos mecánicos bruscos",
+        "Sin sonidos de especies inventados",
+        "Volumen inicial bajo",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "No sudden mechanical clicks",
+        "No invented species sounds",
+        "Low initial volume",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "bubbles",
+      "title_es": "Tubo de burbujas",
+      "title_en": "Bubble tube",
+      "sound_id": "escena-burbujas",
+      "sound_es": "Burbujas graves, suaves y continuas",
+      "sound_en": "Low, soft, continuous bubbles",
+      "text_alt_es": "Burbujas suaves suben de forma continua, sin picos agudos.",
+      "text_alt_en": "Soft bubbles rise continuously without sharp peaks.",
+      "restrictions_es": [
+        "Evitar agudos bruscos",
+        "Ritmo estable",
+        "Volumen inicial bajo",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "Avoid sharp high frequencies",
+        "Stable rhythm",
+        "Low initial volume",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "jellies",
+      "title_es": "Medusas",
+      "title_en": "Jellyfish",
+      "sound_id": "escena-medusas",
+      "sound_es": "Ambiente submarino profundo y estable con capa tonal muy discreta",
+      "sound_en": "Deep, stable underwater ambience with a very subtle tonal layer",
+      "text_alt_es": "Ambiente submarino continuo y muy suave. No representa un sonido producido por las medusas.",
+      "text_alt_en": "A continuous, very soft underwater ambience. It does not represent a sound produced by jellyfish.",
+      "restrictions_es": [
+        "No atribuir voz o canto a las medusas",
+        "Sin eventos repentinos",
+        "Capa tonal muy discreta",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "Do not attribute a voice or song to jellyfish",
+        "No sudden events",
+        "Very subtle tonal layer",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "fibre",
+      "title_es": "Fibra óptica",
+      "title_en": "Fibre optic",
+      "sound_id": "escena-fibra",
+      "sound_es": "Tono ambiental mínimo, casi silencio",
+      "sound_en": "Minimal ambient tone, almost silence",
+      "text_alt_es": "Un tono muy tenue y continuo acompaña la luz; la escena también funciona en silencio.",
+      "text_alt_en": "A very faint continuous tone accompanies the light; the scene also works in silence.",
+      "restrictions_es": [
+        "Priorizar casi silencio",
+        "Sin pulsos ni cambios bruscos",
+        "Solo imagen debe ser equivalente",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "Prefer near-silence",
+        "No pulses or abrupt changes",
+        "Image-only mode must be equivalent",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "rain",
+      "title_es": "Lluvia en la ventana",
+      "title_en": "Rain on the window",
+      "sound_id": "escena-lluvia",
+      "sound_es": "Lluvia suave sobre el cristal",
+      "sound_en": "Soft rain on glass",
+      "text_alt_es": "Lluvia constante sobre una ventana, sin truenos.",
+      "text_alt_en": "Steady rain on a window, with no thunder.",
+      "restrictions_es": [
+        "Sin truenos",
+        "Sin golpes fuertes inesperados",
+        "Sin viento súbito",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "No thunder",
+        "No unexpected loud impacts",
+        "No sudden wind",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "river",
+      "title_es": "Río en el bosque",
+      "title_en": "River in the forest",
+      "sound_id": "escena-rio",
+      "sound_es": "Corriente suave, brisa y llamadas de aves muy lejanas sintetizadas",
+      "sound_en": "Soft stream, breeze and very distant synthesised bird-like calls",
+      "text_alt_es": "Agua entre piedras, una brisa ligera y llamadas lejanas genéricas. No identifican una especie real.",
+      "text_alt_en": "Water over stones, a light breeze and generic distant calls. They do not identify a real species.",
+      "restrictions_es": [
+        "Las llamadas son síntesis genérica, no grabaciones de especies",
+        "Aves muy lejanas",
+        "Sin eventos repentinos",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "Calls are generic synthesis, not recordings of real species",
+        "Bird-like calls remain very distant",
+        "No sudden events",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    },
+    {
+      "id": "night",
+      "title_es": "Cielo nocturno",
+      "title_en": "Night",
+      "sound_id": "escena-noche",
+      "sound_es": "Grillos sintetizados y viento muy suave con fondo tonal estable",
+      "sound_en": "Synthesised crickets and very gentle wind with a stable tonal bed",
+      "text_alt_es": "Grillos regulares y viento muy suave, sin sonidos repentinos.",
+      "text_alt_en": "Regular crickets and very gentle wind, with no sudden sounds.",
+      "restrictions_es": [
+        "Sin llamadas súbitas",
+        "Sin aullidos, búhos u otros animales añadidos sin fuente",
+        "Volumen estable",
+        "Nada empieza solo"
+      ],
+      "restrictions_en": [
+        "No sudden calls",
+        "No added howls, owls or other animals without a source",
+        "Stable volume",
+        "Nothing starts automatically"
+      ],
+      "visual_source": "Render first-party Canvas/WebGL del Rincón; miniatura derivada bajo img/rincon-tranquilo/escenas/.",
+      "visual_license": "Creación del proyecto Iris Green; no depende de fotografía/vídeo externo en el catálogo actual.",
+      "sound_source": "Síntesis Web Audio local en assets/rincon-sonidos.js; no utiliza grabación externa para este paisaje de escena.",
+      "sound_license": "Generación propia del proyecto; no requiere incorporar una grabación de terceros.",
+      "checked_at": "2026-09-26",
+      "status": "READY"
+    }
+  ],
+  "historical_recordings": [
+    {
+      "group_id": "lluvia",
+      "title_es": "Lluvia en una tienda",
+      "title_en": "Rain on a tent",
+      "file": "/audio/rincon/lluvia-en-tienda.mp3",
+      "author": "enternalrainsounds",
+      "duration": "14:59",
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "lluvia",
+      "title_es": "Lluvia en la ventana",
+      "title_en": "Rain on the window",
+      "file": "/audio/rincon/lluvia-en-ventana.mp3",
+      "author": "Eryliaa",
+      "duration": "4:15",
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "lluvia",
+      "title_es": "Lluvia en una habitación",
+      "title_en": "Rain in a room",
+      "file": "/audio/rincon/lluvia-habitacion.m4a",
+      "author": "CeleronBeats",
+      "duration": null,
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "agua",
+      "title_es": "Río lento",
+      "title_en": "Slow river",
+      "file": "/audio/rincon/rio-lento.mp3",
+      "author": "Nils_Vega",
+      "duration": "4:05",
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "agua",
+      "title_es": "Olas suaves",
+      "title_en": "Soft waves",
+      "file": "/audio/rincon/olas-suaves.mp3",
+      "author": "SoundsForYou",
+      "duration": "2:30",
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "bosque",
+      "title_es": "Bosque y viento",
+      "title_en": "Forest wind and birds",
+      "file": "/audio/rincon/bosque-y-viento.mp3",
+      "author": "freesound_community",
+      "duration": "3:16",
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "ambiente",
+      "title_es": "Ambiente largo",
+      "title_en": "Long ambience",
+      "file": "/audio/rincon/ambiente-largo.m4a",
+      "author": "Lachm",
+      "duration": null,
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    },
+    {
+      "group_id": "ambiente",
+      "title_es": "Meditación suave",
+      "title_en": "Soft meditation",
+      "file": "/audio/rincon/meditacion-suave.m4a",
+      "author": "Verclub_Music",
+      "duration": null,
+      "license": null,
+      "status": "HOLD",
+      "hold_reason": "El registro actual identifica autor/archivo pero no incluye licencia ni URL de procedencia verificable. No usar esta grabación en la nueva composición R40 hasta cerrar licencia por archivo."
+    }
+  ],
+  "optional_future_octopus": {
+    "status": "HOLD",
+    "reason_es": "No existe en el catálogo actual. Si se incorpora, usar paisaje submarino creíble y no inventar un «canto de pulpo».",
+    "reason_en": "It is not in the current catalogue. If added later, use a credible underwater soundscape and do not invent an 'octopus song'."
+  },
+  "integration_rule": "Para R40, las escenas pueden usar la síntesis local READY. Las ocho grabaciones históricas registradas quedan HOLD para nueva composición hasta documentar licencia/URL por archivo. A7 puede consumir esta matriz tras freeze de A2."
+}
