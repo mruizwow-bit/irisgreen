@@ -1,0 +1,53 @@
+{
+  "id": "R42-A5-TALLER-PRODUCT-REBUILD",
+  "date": "2026-09-26",
+  "responsible": "Agente 5",
+  "state": "R42_A5_TALLER_PRODUCT_REBUILD_READY_FOR_A2",
+  "authority": "#285 / #283",
+  "marker": "R42_NORMATIVA_EMBEBIDA_LEIDA",
+  "base": {
+    "head": "574356cba3b73dc8477a625d2c6311008260a2d6",
+    "tree": "3da021ce16109a10423ab53ae7fb071ca80dba13"
+  },
+  "delivery": {
+    "pr": 292,
+    "branch": "agent5/r42-a5-taller-product-20260926",
+    "head": "f39fb531b259d19d9212cd3e5abbf256873e779a",
+    "tree": "29d58c3dcd270dc8ca227bd29a7bdb0a028bdeb1",
+    "ahead": 20,
+    "behind": 0,
+    "files": 10
+  },
+  "scope": [
+    "Taller 25",
+    "workspace-first",
+    "life-stage paths",
+    "direct manipulation",
+    "local data coordination",
+    "Worker/OffscreenCanvas",
+    "AudioWorklet"
+  ],
+  "es_en": "25/25 studies retain ES+EN routes; stage guidance is bilingual",
+  "validation": {
+    "js_syntax": "10/10 PASS via independent V8 compilation",
+    "catalog": "25/25 unique",
+    "routes": "25/25 ES+EN pairs",
+    "network_runtime": "no actual network calls detected",
+    "github_actions": "NO_RUN_ASSOCIATED_AT_CLOSE"
+  },
+  "manual_pending": [
+    "A2 integration after A3 #290",
+    "integrated build/CI",
+    "Deploy Preview",
+    "HUMAN QA María",
+    "physical/mobile/screen reader/zoom/forced-colors/reduced-motion/performance"
+  ],
+  "exclusions": [
+    "main",
+    "production deploy",
+    "Sabik HTTP/Cloud",
+    "voice/TTS",
+    "B3/Motion",
+    "global A3 shell"
+  ]
+}
