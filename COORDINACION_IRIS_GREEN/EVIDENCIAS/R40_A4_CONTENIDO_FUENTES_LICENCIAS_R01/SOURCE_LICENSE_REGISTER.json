@@ -1,0 +1,394 @@
+{
+  "schema": "IRIS_R40_A4_SOURCE_LICENSE_REGISTER/1.0",
+  "checked_at": "2026-09-26",
+  "scope": "Intereses/Taller/Rincón editorial provenance; no product change",
+  "entries": [
+    {
+      "source": "AEMET OpenData (a confirmar)",
+      "authority": "AEMET OpenData",
+      "status": "READY",
+      "license": "RISP reutilización comercial/no comercial; conservar fuente, fecha y metadatos",
+      "evidence": "https://www.aemet.es/es/datos_abiertos",
+      "notes": "Datos meteorológicos/climatológicos; no implica licencia sobre material de terceros.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Base de husos IANA (a confirmar)",
+      "authority": "IANA Time Zone Database",
+      "status": "READY",
+      "license": "Public domain para la base tz; fijar versión al ingerir",
+      "evidence": "https://www.iana.org/time-zones",
+      "notes": "Usar datos tz, no asumir idéntico régimen para todo el código auxiliar.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Calendario IMO; Meteoritical Bulletin (a confirmar)",
+      "authority": "International Meteor Organization + Meteoritical Bulletin Database",
+      "status": "HOLD",
+      "license": "No hay licencia abierta conjunta demostrada",
+      "evidence": "https://www.imo.net/legal-notice/",
+      "notes": "IMO declara copyright sobre estructura/textos/gráficos; MBDB es fuente autoritativa pero no se localizó permiso abierto de redistribución.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Catálogo del IGN; USGS (a confirmar)",
+      "authority": "IGN España + USGS",
+      "status": "READY",
+      "license": "IGN: licencia compatible CC BY 4.0; USGS-authored data: U.S. Public Domain",
+      "evidence": "https://www.ign.es/web/politica-datos ; https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+      "notes": "Atribuir IGN/fecha y USGS; material gráfico de terceros se verifica por ítem.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Catálogo oficial de la DGT (a confirmar)",
+      "authority": "Dirección General de Tráfico",
+      "status": "HOLD",
+      "license": "La fuente exacta de catálogo/arte de señales y sus condiciones de reutilización no están congeladas",
+      "evidence": "https://datos.gob.es/es/aviso-legal",
+      "notes": "Datos.gob permite RISP para documentos sometidos a esas condiciones, pero no se identificó un dataset exacto de señales que cubra el uso previsto.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Creación propia",
+      "authority": "Iris Green",
+      "status": "READY",
+      "license": "Contenido original del proyecto",
+      "evidence": "",
+      "notes": "No incorporar material de terceros no documentado.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Creación propia (sin personajes con derechos)",
+      "authority": "Iris Green",
+      "status": "READY",
+      "license": "Contenido original del proyecto",
+      "evidence": "",
+      "notes": "Prohibido introducir personajes, logotipos o arte de franquicias ajenas.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Creación propia; LSE (a confirmar)",
+      "authority": "Iris Green + fuente LSE aún no congelada",
+      "status": "HOLD",
+      "license": "La parte propia es utilizable; falta fuente/licencia autoritativa de LSE",
+      "evidence": "",
+      "notes": "No publicar repertorios de signos copiados de materiales sin licencia.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Cálculo propio",
+      "authority": "Iris Green",
+      "status": "READY",
+      "license": "Cálculo/visualización original",
+      "evidence": "",
+      "notes": "Las constantes o inputs externos, si se incorporan, deben quedar en procedencia separada.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Cálculo propio con efemérides",
+      "authority": "Iris Green + efemérides no identificadas",
+      "status": "HOLD",
+      "license": "Falta fijar proveedor/versión/licencia de efemérides",
+      "evidence": "",
+      "notes": "No presentar resultados astronómicos actuales como reales sin fuente temporal congelada.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Cálculo propio; OEIS (a confirmar)",
+      "authority": "Iris Green + OEIS",
+      "status": "READY",
+      "license": "OEIS CC BY-SA 4.0",
+      "evidence": "https://oeis.org/wiki/The_OEIS_End-User_License_Agreement",
+      "notes": "Atribuir OEIS y respetar share-alike cuando el material derive de OEIS.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Datos abiertos municipales (a confirmar)",
+      "authority": "Datasets municipales no concretados",
+      "status": "HOLD",
+      "license": "Debe identificarse municipio, dataset, fecha y licencia por red",
+      "evidence": "",
+      "notes": "No existe una licencia municipal genérica aplicable a todas las ciudades.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Elementos del JPL; NASA (a confirmar)",
+      "authority": "NASA/JPL",
+      "status": "READY",
+      "license": "Uso de material JPL permitido salvo indicación contraria; crédito NASA/JPL-Caltech; datos/visualización propios",
+      "evidence": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+      "notes": "Excluir logos y cualquier contenido de tercero indicado en la ficha; preferir datos numéricos + render propio.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Fuentes a confirmar",
+      "authority": "Sin fuente congelada",
+      "status": "HOLD",
+      "license": "No hay procedencia/licencia verificable",
+      "evidence": "",
+      "notes": "No publicable como dato real hasta fijar fuente.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "GBIF",
+      "authority": "GBIF-mediated occurrence data",
+      "status": "HOLD",
+      "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+      "evidence": "https://www.gbif.org/terms",
+      "notes": "El plan genérico no fija datasets ni licencias; requiere selección compatible y cita por dataset/descarga.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "GBIF; Anthos (a confirmar)",
+      "authority": "GBIF + Anthos",
+      "status": "HOLD",
+      "license": "GBIF varía por dataset; Anthos está publicado como CC BY-NC 4.0",
+      "evidence": "https://www.gbif.org/terms ; https://ipt.gbif.es/resource?r=rjb-anthos&v=1.13",
+      "notes": "No mezclar datos sin conservar licencia y atribución de cada origen.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "GBIF; Xeno-canto (licencia por grabación, a confirmar)",
+      "authority": "GBIF + Xeno-canto",
+      "status": "HOLD",
+      "license": "GBIF varía por dataset y cada grabación Xeno-canto tiene licencia propia",
+      "evidence": "https://www.gbif.org/terms ; https://xeno-canto.org/",
+      "notes": "Registrar XC ID, autor, licencia y cita por grabación; evitar NC si el uso final no está claramente dentro de sus límites.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Glottolog",
+      "authority": "Glottolog 5.3",
+      "status": "READY",
+      "license": "CC BY 4.0",
+      "evidence": "https://glottolog.org/meta/downloads",
+      "notes": "Atribución obligatoria; fijar versión consultada.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "HYG, IAU, d3-celestial",
+      "authority": "HYG + IAU + d3-celestial",
+      "status": "READY",
+      "license": "HYG v4.1 CC BY-SA 4.0; IAU web products CC BY 4.0; d3-celestial code BSD-3-Clause",
+      "evidence": "https://github.com/astronexus/HYG-Database/blob/main/LICENSE ; https://www.iau.org/IAU/Iau/Copyright.aspx ; https://github.com/ofrohn/d3-celestial/blob/master/LICENSE",
+      "notes": "Usar d3-celestial como software; no asumir que cada dataset tercero incluido por el proyecto hereda BSD.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "IGN, Natural Earth",
+      "authority": "IGN España + Natural Earth",
+      "status": "READY",
+      "license": "IGN compatible CC BY 4.0; Natural Earth public domain",
+      "evidence": "https://www.ign.es/web/politica-datos ; https://www.naturalearthdata.com/about/terms-of-use/",
+      "notes": "Atribuir IGN; Natural Earth no exige atribución aunque se recomienda.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Lichess",
+      "authority": "Lichess open database",
+      "status": "READY",
+      "license": "Exports principales/puzzles/evaluaciones CC0; broadcasts oficiales CC BY-SA 4.0",
+      "evidence": "https://database.lichess.org/",
+      "notes": "Usar únicamente el dataset cuya licencia esté indicada; no copiar UI, marcas ni contenido fuera del export.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Lista IMA (a confirmar) + cromos de la web",
+      "authority": "IMA/RRUFF + cromos Iris actuales",
+      "status": "HOLD",
+      "license": "No se localizó licencia abierta explícita para la lista IMA/RRUFF usada y los cromos requieren auditoría de procedencia",
+      "evidence": "https://rruff.info/ima/",
+      "notes": "No reutilizar fotos/espectros/arte sin licencia por ítem.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Lista de razas de la FCI (a confirmar)",
+      "authority": "Fédération Cynologique Internationale",
+      "status": "HOLD",
+      "license": "No se localizó permiso abierto de reutilización para estándares/listado",
+      "evidence": "https://www.fci.be/es/nomenclature/publication.aspx",
+      "notes": "Se puede enlazar/citar como autoridad; no replicar textos, imágenes o estándares hasta aclarar derechos.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Met Museum",
+      "authority": "The Metropolitan Museum of Art Open Access",
+      "status": "READY",
+      "license": "CC0 únicamente para obras/datos marcados Open Access",
+      "evidence": "https://www.metmuseum.org/hubs/open-access",
+      "notes": "Filtrar por OA/CC0; obras no OA quedan fuera.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Met Museum (CC0)",
+      "authority": "The Metropolitan Museum of Art Open Access",
+      "status": "READY",
+      "license": "CC0",
+      "evidence": "https://www.metmuseum.org/hubs/open-access",
+      "notes": "Usar solo imágenes/datos OA.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Mi colección",
+      "authority": "Iris Green local collection",
+      "status": "READY",
+      "license": "Contenido/estado local del producto",
+      "evidence": "",
+      "notes": "No implica derechos sobre objetos externos que el usuario añada.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "MusicBrainz (a confirmar)",
+      "authority": "MusicBrainz",
+      "status": "HOLD",
+      "license": "Core data CC0; supplementary CC BY-NC-SA 3.0; no aporta grabaciones de instrumentos",
+      "evidence": "https://musicbrainz.org/doc/About/Data_License",
+      "notes": "La experiencia prevista requiere sonido: falta fuente/licencia de audio; metadata sola sí podría usar core CC0.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "NASA Exoplanet Archive",
+      "authority": "NASA Exoplanet Archive",
+      "status": "HOLD",
+      "license": "Archivo público con requisitos de reconocimiento y referencias por dataset; no se halló una licencia única de redistribución para todo el agregado",
+      "evidence": "https://exoplanetarchive.ipac.caltech.edu/docs/acknowledge.html",
+      "notes": "Puede usarse para consulta/citación; antes de republicar un catálogo derivado debe fijarse tabla, DOI y condiciones de sus fuentes.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Natural Earth",
+      "authority": "Natural Earth",
+      "status": "READY",
+      "license": "Public domain",
+      "evidence": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "notes": "Uso comercial y adaptación permitidos; revisar campos excepcionales señalados por el propio proyecto.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "OpenStreetMap (ODbL)",
+      "authority": "OpenStreetMap",
+      "status": "READY",
+      "license": "ODbL 1.0",
+      "evidence": "https://www.openstreetmap.org/copyright",
+      "notes": "Atribución obligatoria; derivados de base pueden activar share-alike; producido visual debe mostrar aviso de datos OSM.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "OurAirports",
+      "authority": "OurAirports",
+      "status": "READY",
+      "license": "Public Domain",
+      "evidence": "https://ourairports.com/data/",
+      "notes": "Datos sin garantía; fijar fecha/versionado de descarga.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Paleobiology Database",
+      "authority": "Paleobiology Database",
+      "status": "READY",
+      "license": "Tratar como CC BY 4.0 por el recurso PBDB registrado; conservar cita de registro/contribuidores",
+      "evidence": "https://ipt.vertnet.org/resource?r=pbdb_paleo",
+      "notes": "La documentación histórica/corriente no es totalmente uniforme; usar la licencia declarada por el dataset exacto ingerido.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "PubChem (a confirmar)",
+      "authority": "PubChem",
+      "status": "HOLD",
+      "license": "Licencia definida por cada fuente contribuyente; no existe licencia única para todo PubChem",
+      "evidence": "https://pubchem.ncbi.nlm.nih.gov/docs/data-sources",
+      "notes": "Seleccionar solo campos/orígenes con licencia explícita compatible y conservar source attribution.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Puertos del Estado (a confirmar)",
+      "authority": "Puertos del Estado / Portus",
+      "status": "HOLD",
+      "license": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+      "evidence": "https://www.puertos.es/aviso-legal",
+      "notes": "El acceso/descarga pública no prueba por sí sola una licencia de republicación; identificar dataset concreto y condiciones.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Renfe Data (a confirmar); OpenStreetMap (ODbL)",
+      "authority": "Renfe Data + OpenStreetMap",
+      "status": "READY",
+      "license": "Renfe: reutilización comercial/no comercial bajo condiciones RISP; OSM ODbL 1.0",
+      "evidence": "https://data.renfe.com/legal ; https://www.openstreetmap.org/copyright",
+      "notes": "Citar 'Origen de los datos: Renfe Operadora', fecha de actualización, y atribución/licencia OSM.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Smithsonian GVP (a confirmar)",
+      "authority": "Smithsonian Global Volcanism Program",
+      "status": "READY",
+      "license": "Base Volcanoes of the World: producto de empleados US; usar con cita; fotos/gráficos requieren revisión aparte",
+      "evidence": "https://volcano.si.edu/gvp_termsofuse.cfm",
+      "notes": "Fijar versión (v5.4.0, 7 Aug 2026 en la consulta actual); no asumir que las fotos son libres.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Unicode (a confirmar)",
+      "authority": "Unicode Consortium",
+      "status": "READY",
+      "license": "Unicode data files/software: Unicode License v3; charts/publications tienen restricciones distintas",
+      "evidence": "https://www.unicode.org/policies/licensing_policy.html",
+      "notes": "Construir visualización propia a partir de data files; no redistribuir code charts/fonts salvo permiso específico.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Wikidata",
+      "authority": "Wikidata structured data",
+      "status": "READY",
+      "license": "CC0",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "notes": "Solo datos estructurados; imágenes enlazadas tienen licencia separada.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Wikidata (CC0)",
+      "authority": "Wikidata structured data",
+      "status": "READY",
+      "license": "CC0",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "notes": "Solo datos estructurados.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Wikidata; OpenStreetMap",
+      "authority": "Wikidata + OpenStreetMap",
+      "status": "READY",
+      "license": "Wikidata CC0 + OSM ODbL 1.0",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing ; https://www.openstreetmap.org/copyright",
+      "notes": "Conservar obligaciones OSM y no atribuir imágenes de Commons a Wikidata.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Wikidata; cromos actuales",
+      "authority": "Wikidata + assets de cromos actuales",
+      "status": "HOLD",
+      "license": "Wikidata CC0; procedencia/licencia de cada cromo actual no auditada en R40-A4",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "notes": "Los datos podrían separarse como READY; la experiencia actual que amplía cromos queda HOLD hasta inventario de assets.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Wikimedia Commons (a confirmar por bandera)",
+      "authority": "Wikimedia Commons",
+      "status": "HOLD",
+      "license": "Licencia por archivo; debe verificarse en cada página de descripción",
+      "evidence": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/licenses",
+      "notes": "Registrar autor, licencia, URL y atribución por bandera; no basta con que esté en Commons.",
+      "checked_at": "2026-09-26"
+    },
+    {
+      "source": "Órbitas públicas de CelesTrak (a confirmar)",
+      "authority": "CelesTrak",
+      "status": "HOLD",
+      "license": "Existe política de uso/frecuencia pero no se localizó una licencia explícita de redistribución del dataset",
+      "evidence": "https://celestrak.org/usage-policy.php",
+      "notes": "Puede consultarse con cache/rate limits; antes de republicar/empacar órbitas hay que aclarar derechos y fijar frescura.",
+      "checked_at": "2026-09-26"
+    }
+  ]
+}
