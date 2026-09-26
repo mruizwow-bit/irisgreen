@@ -268,3 +268,18 @@ A3/A5/A1/A4/A7/A2 han recibido el addendum. A2 debe rechazar una integración qu
 Normativa: `NORMATIVA/ADDENDUM_R42_CRISTAL_BAJO_NORMATIVA_COMPLETA_20260926.md`.  
 Memoria: `MEMORIA/R42_CRISTAL_NORMATIVA_COMPLETA_20260926.md`.  
 Control: `CONTROL/DELTA_R42_CRISTAL_NORMATIVA_COMPLETA_20260926.json`.
+
+## R42 Design · sistema material/cristal · 26/09/2026
+
+**Estado: `R42_DESIGN_CRYSTAL_SYSTEM_BUILD_ACTIVE`.**
+
+Design está disponible y recibe #301 con la normativa completa físicamente embebida. Su trabajo no crea un segundo app shell: evoluciona el R42 ya integrado y convierte el estudio de cristal en un sistema común real.
+
+Principios: cristal solo en chrome interactivo; contenido estable/opaco; no glass-on-glass; variantes light/dark/opaque; control manual de transparencia dentro de IGPreferences; forced-colors/reduced-motion/fallback; alto contraste mediante tokens, no filtro global; medición real de opacidad/contraste; piloto Navegación + Taller/Dibujo + Juegos + Rincón + Intereses.
+
+A2 sigue siendo única puerta web. HUMAN QA de María antes de propagación global.
+
+Orden: `ORDENES/R42_DESIGN_CRYSTAL_R01/01_DESIGN.md`.  
+Issue: #301.  
+Memoria: `MEMORIA/R42_DESIGN_CRYSTAL_R01_20260926.md`.  
+Control: `CONTROL/DELTA_R42_DESIGN_CRYSTAL_R01_20260926.json`.
