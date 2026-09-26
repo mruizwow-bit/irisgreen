@@ -141,7 +141,7 @@ var T={
     previewNote:'It builds as you write. This is how it looks when you show it, and how it prints.',
     cardHead:'Iris Green · Iris Card',
     nothing:'Nothing written yet.',
-    cardFoot:'Ready to show or save · irisgreen.eu/es/recursos/tarjeta-iris/',
+    cardFoot:'Ready to show or save · irisgreen.eu/en/resources/iris-card/',
     copy:'Copy',print:'Print',
     copyName:'Copy the Iris Card',printName:'Print the Iris Card on A4',
     copied:'Copied. You can paste it now.',
@@ -185,7 +185,7 @@ var SUGGEST={
 var STORE='ig-tarjeta-iris';
 var TICK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 12.4 9.6 17.6 19.6 6.4"></path></svg>';
 
-var state={lang:'es',shape:'uno',example:true,cuesta:'',ayuda:'',necesito:'',pasos:['','',''],
+var state={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',shape:'uno',example:true,cuesta:'',ayuda:'',necesito:'',pasos:['','',''],
   picto:{cuesta:'hablar',ayuda:'escribir',necesito:'esperar'},copy:null,printed:false,notice:''};
 
 function $(sel){return document.querySelector(sel);}
@@ -262,7 +262,7 @@ function plainText(){
     lines.push(ti.labels.ayuda+': '+v.ayuda);
   }
   if(v.necesito)lines.push(ti.labels.necesito+': '+v.necesito);
-  lines.push('','irisgreen.eu/es/recursos/tarjeta-iris/');
+  lines.push('',state.lang==='en'?'irisgreen.eu/en/resources/iris-card/':'irisgreen.eu/es/recursos/tarjeta-iris/');
   return lines.join('\n');
 }
 
