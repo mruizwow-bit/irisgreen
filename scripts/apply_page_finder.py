@@ -16,6 +16,9 @@ def apply(root):
   path.write_text(text)
   doc=Document(text);main=next((n for n in doc.nodes if n['tag']=='main' and not any(a['tag'] in {'noscript','template'} and a['start']<n['start']<a.get('close_start',0) for a in doc.nodes)),None);head=doc.one('head');body=doc.one('body')
   if not main or not head or not body or 'id="ig-page-finder"' in text:continue
+  # Home R42 ya tiene un único buscador global y navegación propia. No añadir
+  # otro buscador/índice de secciones delante del hero.
+  if 'data-ig-home-r42="true"' in text:continue
   if '/imprimir/' in str(path) or '/print/' in str(path):continue
   headings=[n for n in doc.nodes if n['tag']=='h2' and main['open_end']<=n['start']<main['close_start']]
   headings=[n for n in headings if not any(a['start']<n['start']<a.get('close_start',0) and (a['tag'] in {'template','noscript','dialog'} or 'hidden' in a['attrs'] or a['attrs'].get('aria-hidden')=='true') for a in doc.nodes)]
