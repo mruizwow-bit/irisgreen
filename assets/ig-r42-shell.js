@@ -15,7 +15,8 @@
       commandHint:'Escribe para filtrar acciones.', noActions:'No hay acciones con ese nombre.',
       focusWork:'Ir al área de trabajo', openPanel:'Abrir panel contextual', openHelp:'Abrir ayuda',
       file:'Archivo', workshop:'El taller', games:'Juegos', interests:'Tus intereses',
-      quiet:'Rincón tranquilo', shell:'Espacio de trabajo'
+      quiet:'Rincón tranquilo', shell:'Espacio de trabajo',
+      audience:'Contenido para…', audienceAll:'Cualquier edad', audienceChild:'Infancia', audienceTeen:'Adolescencia', audienceAdult:'Adultez'
     },
     en: {
       back:'Back', work:'Work', panel:'Panel', help:'Help', actions:'Actions',
@@ -25,7 +26,8 @@
       commandHint:'Type to filter actions.', noActions:'No actions match that name.',
       focusWork:'Go to workspace', openPanel:'Open context panel', openHelp:'Open help',
       file:'File', workshop:'The workshop', games:'Games', interests:'Your interests',
-      quiet:'Quiet space', shell:'Workspace'
+      quiet:'Quiet space', shell:'Workspace',
+      audience:'Content for…', audienceAll:'Any age', audienceChild:'Children', audienceTeen:'Teenagers', audienceAdult:'Adults'
     }
   }[lang];
 
@@ -205,9 +207,25 @@
   var actionButton = h('button', { type:'button', class:'ig-r42-action', text:T.actions });
   var panelButton = h('button', { type:'button', class:'ig-r42-action', text:T.panel, 'aria-expanded':String(inspectorStartsOpen) });
   var helpButton = h('button', { type:'button', class:'ig-r42-action', text:T.help });
+  var audienceLabel = h('label', { class:'ig-r42-audience' },
+    h('span', { class:'ig-r42-only-sr', text:T.audience }),
+    h('select', { 'aria-label':T.audience },
+      h('option', { value:'all', text:T.audienceAll }),
+      h('option', { value:'child', text:T.audienceChild }),
+      h('option', { value:'teen', text:T.audienceTeen }),
+      h('option', { value:'adult', text:T.audienceAdult })
+    )
+  );
+  var audienceSelect = audienceLabel.querySelector('select');
+  audienceSelect.value = 'all';
+  audienceSelect.addEventListener('change', function () {
+    if (window.IGChildSafety) window.IGChildSafety.setAudience(audienceSelect.value);
+  });
+  if (window.IGChildSafety) window.IGChildSafety.setAudience('all');
   topActions.appendChild(actionButton);
   topActions.appendChild(panelButton);
   topActions.appendChild(helpButton);
+  topActions.appendChild(audienceLabel);
   topActions.appendChild(status);
   topbar.appendChild(back);
   topbar.appendChild(titleBlock);
