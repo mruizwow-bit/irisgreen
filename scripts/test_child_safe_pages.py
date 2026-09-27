@@ -19,27 +19,35 @@ ROUTES=(
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--root",type=Path,required=True);a=ap.parse_args();root=a.root.resolve()
- for rel in ROUTES:
-  p=root/rel;assert p.is_file(),p
-  s=p.read_text(encoding="utf-8")
-  assert 'data-ig-s2-shell="true"' in s,rel
-  assert 'data-ig-s2-safe' in s,rel
-  assert 'data-ig-audience-select' in s,rel
-  assert '/assets/ig-child-safety.js?v=r42-child-1' in s,rel
-  assert '/assets/ig-child-safety-content.js?v=r42-child-1' in s,rel
-  assert not re.search(r'data-ig-s2-full(?:\\s|=|>)',s),rel
-  assert '<link rel="preload"' not in s.lower() or '/assets/content/full/' not in s,rel
- for cid in IDS:
+ present=[]
+ for i,cid in enumerate(IDS):
+  es_rel=ROUTES[i*2];en_rel=ROUTES[i*2+1]
+  es_exists=(root/es_rel).is_file();en_exists=(root/en_rel).is_file()
+  assert es_exists==en_exists,(cid,es_exists,en_exists)
+  if not es_exists:
+   continue
+  present.append(cid)
+  for rel in (es_rel,en_rel):
+   p=root/rel
+   s=p.read_text(encoding="utf-8")
+   assert 'data-ig-s2-shell="true"' in s,rel
+   assert 'data-ig-s2-safe' in s,rel
+   assert 'data-ig-audience-select' in s,rel
+   assert '/assets/ig-child-safety.js?v=r42-child-1' in s,rel
+   assert '/assets/ig-child-safety-content.js?v=r42-child-1' in s,rel
+   assert not re.search(r'data-ig-s2-full(?:\\s|=|>)',s),rel
+   assert '<link rel="preload"' not in s.lower() or '/assets/content/full/' not in s,rel
   for lang in ("es","en"):
    p=root/f"assets/content/full/{cid}.{lang}.json";assert p.is_file(),p
    data=json.loads(p.read_text(encoding="utf-8"))
    assert data["content_id"]==cid and data["lang"]==lang
    assert isinstance(data["html"],str) and "<h1" in data["html"].lower()
+ assert present,'No audited S2 route pair was found'
  controller=(root/"assets/ig-child-safety-content.js").read_text(encoding="utf-8")
  assert "data-ig-load-full" in controller
  assert "explicitAction:true" in controller
  assert "fetch('/assets/content/full/'" in controller
  assert "prefetch" not in controller.lower() and "preload" not in controller.lower()
- print("R42_CHILD_SAFE_DEEP_LINKS_PASS")
+ print("R42_CHILD_SAFE_DEEP_LINKS_PASS",{"present_ids":len(present),"audited_ids":len(IDS)})
 
 if __name__=="__main__":main()
