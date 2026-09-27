@@ -54,7 +54,7 @@ const SECTIONS=[
  {id:'quiet',es:['Rincón tranquilo','Elige una imagen, un sonido o una pausa.','/es/sitio-tranquilo/'],en:['Quiet space','Choose an image, a sound or a pause.','/en/quiet-space/']},
  {id:'books',es:['Libros','Los libros de Iris Green.','/es/libros/'],en:['Books','Books by Iris Green.','/es/libros/']}
 ];
-let lang='es', shown=8, query='', results=[], opener=null;
+let lang=(new URLSearchParams(location.search).get('lang')==='en'?'en':'es'), shown=8, query='', results=[], opener=null;
 const T=()=>COPY[lang];
 
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
