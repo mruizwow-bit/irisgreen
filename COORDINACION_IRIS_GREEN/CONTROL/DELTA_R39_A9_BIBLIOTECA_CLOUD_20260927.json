@@ -10,8 +10,8 @@
     "tree": "d257910de08519359d805b1f0b53599595174bdb"
   },
   "deployed_candidate": {
-    "head": "c6735f8956c4f79f1017bd51c269ecf8a88a4ed3",
-    "tree": "b142f75cb822f5575c64c9b490c53f9f092946f7"
+    "head": "be14346d58acbd2c4340149836b9c630feba9279",
+    "tree": "500510ea4a49afe9f97eb2b9c8485852e20b2e42"
   },
   "r38": {
     "fragments": 4332,
@@ -21,15 +21,18 @@
   },
   "source": {
     "commit": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
-    "bundle_sha256": "5307be32bb4627ed19be087f2c92f9cce1e602b7e2fa26b255702ef5f0230683",
+    "bundle_sha256": "5b257218f06f32a770ea2441be7074d66d8ff09abeb792cd92168e79702c678c",
     "child_safe_package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
     "safe_variants_sha256": "4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260",
     "s2_review_sha256": "579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55",
-    "classification_review": "HUMAN_REVIEWED_S2"
+    "classification_review": "HUMAN_REVIEWED_S2",
+    "content_safety_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+    "content_safety_manifest_records": 965,
+    "safe_variant_records": 16
   },
   "release": {
-    "version": "sabik-es-en-20260927-r03-ee7e3e4a1f4b",
-    "corpus_sha256": "0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249",
+    "version": "sabik-es-en-20260927-r03-9216eeee6a32",
+    "corpus_sha256": "7335fc9ba4992814ff11698e740d6faca3abc0e160f2d2485c214866884add43",
     "corpus_bytes": 1623300,
     "fragments": 1208,
     "locale_counts": {
@@ -38,7 +41,7 @@
     },
     "full_s2_fragments": 30,
     "safe_variants": 30,
-    "manifest_sha256": "a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f"
+    "manifest_sha256": "9dd6a2f1e6458351876a74921d7ed6180ce2660468798a1c5787c047a8bc8a13"
   },
   "citations": {
     "checked_records": 1208,
@@ -52,22 +55,22 @@
     "en_research_public_route_absent": true
   },
   "qa": {
-    "run_id": 36332929849,
+    "run_id": 36333077790,
     "run_result": "SUCCESS",
     "tests_passed": 204,
     "tests_failed": 0,
-    "local_cold_load_ms": 102.98,
-    "local_warm_p95_ms": 0.25,
-    "heap_used_mib": 20.91,
-    "remote_blob_cold_load_ms": 456.13,
-    "artifact_id": 10935908743,
-    "artifact_digest": "sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b"
+    "local_cold_load_ms": 123.8,
+    "local_warm_p95_ms": 0.33,
+    "heap_used_mib": 54.37,
+    "remote_blob_cold_load_ms": 392.57,
+    "artifact_id": 10936506830,
+    "artifact_digest": "sha256:035aef4db871cb0483128a05d7f48e7ebcbb6e3297fce6098811997b795b0581"
   },
   "deploy": {
     "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
     "site_name": "sabik-asistente",
-    "deploy_id": "6ab942ab91d1122477001cc0",
-    "origin": "https://6ab942ab91d1122477001cc0--sabik-asistente.netlify.app",
+    "deploy_id": "6ab943463d8845250907ab42",
+    "origin": "https://6ab943463d8845250907ab42--sabik-asistente.netlify.app",
     "state": "ready",
     "context": "deploy-preview",
     "published_at": null,
