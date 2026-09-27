@@ -1,5 +1,20 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Nuevos carriles por decisión de María · 27/09/2026
+
+### Agente 8 · Home nueva + child-safe
+Orden: `R45_HOME_CHILD_SAFE/01_AGENTE_8.md` · issue #305.
+
+A8 construye la nueva Home sobre el baseline A2/R42/R02 e implementa child-safe real sobre la nueva arquitectura. No reactiva como parches #294–#297. A2 conserva integración/subida y María HUMAN QA. Voz y Cloud quedan fuera.
+
+### Agente 9 · biblioteca Cloud Sabik
+Orden: `R45_SABIK_CLOUD_LIBRARY/01_AGENTE_9.md` · issue #306.
+
+A9 construye el sucesor bilingüe/versionado de la biblioteca R38/R39 sobre el Cloud privado existente `sabik-asistente`, manteniendo R38 inmutable y aplicando child-safe antes de ranking/salida. Tiene autorización para candidato privado, no producción. Voz/audio quedan fuera.
+
+**Orden emitida no acredita acuse ni ejecución.** Los estados iniciales son `R42_A8_HOME_CHILD_SAFE_ORDERED` y `R39_A9_SABIK_CLOUD_LIBRARY_ORDERED`.
+
+
 ## Reasignación por María · 25/09/2026
 
 **Codex está inoperativo según María; el agente 3 asume todos sus pendientes técnicos de Sabik/Cloud junto a sus propias comprobaciones.** Aplicar [R39-A3-CONTINUIDAD-R06](R39_CONTINUIDAD_A3_R06/01_AGENTE_3.md). A3 es el responsable de correlación HTTP, correcciones, integración común y entrega verificable; no esperar a Codex. Ya no está limitado a inspección ni tiene prohibido corregir el panel existente cuando sea necesario. No reconstruir piezas ya entregadas.
