@@ -1,5 +1,19 @@
 # Estado operativo compartido
 
+## Sabik · QC muestra ES PASS + ref SFT 24 kHz requerida · 27/09/2026
+
+**Estado: `SABIK_ES_REVIEW_QC_PASS_REF24K_PREFLIGHT_NEXT`.**
+
+Muestra estratificada ES de 12 clips (001, 012, 024, 036, 048, 060, 072, 084, 096, 108, 120, 133) revisada:
+- 12/12 a 24 kHz;
+- clipping: 0;
+- RMS medio ≈ -18.55 dB, desviación ≈ 0.38 dB;
+- F0 mediana de la muestra ≈ 150.6 Hz; master ES ≈ 147.6 Hz;
+- sin tendencia de deriva tonal apreciable a lo largo del corpus;
+- similitud cepstral alta frente al master en toda la muestra; ninguna pieza exige descarte.
+
+Antes de SFT se detecta requisito del dataset oficial: `ref_audio` debe estar a 24 kHz. El master canónico ES se conserva intacto a 44.1 kHz; para entrenamiento se creará `SABIK_ES_MASTER_V1_TRAIN_24K.wav` y se actualizará únicamente el campo `ref_audio` en los JSONL, con backups. Después: worst-case preflight sobre las 4 secuencias más largas.
+
 ## Sabik · ES audio codes completos · 27/09/2026
 
 **Estado: `SABIK_ES_CODES_133_PASS_REVIEW_NEXT`.**
