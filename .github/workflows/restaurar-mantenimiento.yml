@@ -48,10 +48,6 @@ jobs:
             "$API/sites/$SITE_ID/deploys/$MAINTENANCE_DEPLOY_ID/restore" \
             -o /tmp/restore.json
 
-          RESTORED_ID="$(python3 - <<'PY'
-import json
-print(json.load(open('/tmp/restore.json'))['id'])
-PY
-)"
+          RESTORED_ID="$(python3 -c 'import json; print(json.load(open("/tmp/restore.json"))["id"])')"
           test -n "$RESTORED_ID"
           echo "Cartel de mantenimiento restaurado: $RESTORED_ID"
