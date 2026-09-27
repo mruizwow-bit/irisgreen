@@ -84,7 +84,16 @@
     "unauthenticated_outer_gate_status": 401,
     "team_login_gate_observed": true,
     "authenticated_application_http": "PENDING_LEGITIMATE_TEAM_BROWSER_SESSION",
-    "human_qa_required": true
+    "human_qa_required": true,
+    "browser_human_qa_attempt": {
+      "attempted": true,
+      "method": "legitimate_browser_profile_no_cookie_or_secret_export",
+      "result": "AUTHENTICATED_SESSION_NOT_AVAILABLE",
+      "team_login_redirect_status": 302,
+      "protected_post_status": 401,
+      "credentials_exported": false,
+      "secrets_exported": false
+    }
   },
   "limitations": {
     "full_r42_manifest_records": 965,
