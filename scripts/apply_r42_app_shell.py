@@ -88,11 +88,31 @@ def apply(root: Path) -> dict[str, int]:
             path.write_text(text, encoding="utf-8")
             changed += 1
 
+    # R43 · Las páginas de la suite creativa del Taller ya se generan sobre el app shell
+    # (body data-ig-r42-pilot="true"). Reciben el mismo sistema material. No es propagación
+    # global: solo páginas que ya declaran el shell R42.
+    listed = {(root / rel).resolve() for rel in PILOT}
+    extra = 0
+    for path in sorted(root.rglob("index.html")):
+        if path.resolve() in listed:
+            continue
+        original = path.read_text(encoding="utf-8")
+        match = BODY_RE.search(original)
+        if not match or 'data-ig-r42-pilot="true"' not in match.group("attrs"):
+            continue
+        family = re.search(r'data-ig-r42-family=(["\'])(.*?)\1', match.group("attrs"))
+        text = _set_body_attrs(original, family.group(2) if family else "workshop")
+        text = _inject_assets(text)
+        extra += 1
+        if text != original:
+            path.write_text(text, encoding="utf-8")
+            changed += 1
+
     if missing:
         raise AssertionError(f"R42 pilot missing {missing} required route(s)")
     if present != len(PILOT):
         raise AssertionError((present, len(PILOT)))
-    return {"present": present, "changed": changed}
+    return {"present": present, "changed": changed, "suite": extra}
 
 
 def main() -> None:
@@ -103,7 +123,8 @@ def main() -> None:
     print(
         "R42 A3 pilot:",
         f"{result['present']}/{len(PILOT)} routes present;",
-        f"{result['changed']} changed",
+        f"{result['changed']} changed;",
+        f"{result['suite']} Taller suite pages on the shell",
     )
 
 
