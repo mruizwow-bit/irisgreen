@@ -147,6 +147,11 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R02 documentación general: cuatro correcciones jurídicas auditadas, aplicadas
+    # como delta exacto sobre las dos copias públicas del dataset.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R42 Child Safety: construir el índice seguro ANTES de que el buscador del navegador lo consuma.
     # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
