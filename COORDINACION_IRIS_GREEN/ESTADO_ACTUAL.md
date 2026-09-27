@@ -1,3 +1,15 @@
+## R42 · A8 · Home nueva + child-safe lista para A2 · 27/09/2026
+
+**Estado: `R42_A8_HOME_CHILD_SAFE_READY_FOR_A2`.**
+
+A8 ha construido #305 sobre A2 exacto `bf44d6ae7aa362b81fadb16b44bdef358cc31bcc`. Entrega: rama `agent8/r42-home-child-safe-20260927`, HEAD `4769e223dc5e10f2bdd82a508310a929e94a6bb5`, tree `7e3db0f4dc4f4c7943f7ce1be266109ca97510c2`, PR #310 dirigido a la rama A2.
+
+QA final A8: run `36330769828` SUCCESS; artifact `10935572919`. Home ES/EN desktop/móvil, cuatro lentes de etapa, SAFE_BY_DEFAULT, índices de búsqueda separados, full S2 fuera de HTML/payload inicial, safe variants, Adultez con carga full solo tras acción explícita, y cuatro Investigación `INTENTIONAL_ONLY` (#35/#42/#43/#89).
+
+Baseline real: `global-395` y Investigación 121–132 siguen siendo altas R01 del gate editorial #302 y no se inventan en A8. #294–#297 permanecen históricos/pausados.
+
+Siguiente puerta: A2 integra #310 → build/CI → una única Deploy Preview → HUMAN QA María. No main ni producción.
+
 # Estado operativo compartido
 
 ## Sabik · audio fijo ES/EN · muestra HUMAN QA PASS · 27/09/2026
