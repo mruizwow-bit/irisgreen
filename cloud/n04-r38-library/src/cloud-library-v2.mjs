@@ -33,6 +33,8 @@ export function assertCloudRelease(release) {
       !/^[a-f0-9]{64}$/.test(release.source_bundle_sha256 || '') ||
       release.approved_child_safe_package_sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
       release.approved_safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
+      release.approved_content_safety_manifest_sha256 !== '51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e' ||
+      release.approved_s2_review_sha256 !== '579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55' ||
       !/^[a-f0-9]{64}$/.test(release.approved_safe_source_snapshot_sha256 || '') ||
       !/^[a-f0-9]{40}$/.test(release.source_commit || '') ||
       !Number.isSafeInteger(release.corpus_bytes) || release.corpus_bytes < 1 ||
