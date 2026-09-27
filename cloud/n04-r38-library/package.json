@@ -8,11 +8,13 @@
     "npm": "10.9.2"
   },
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "test": "node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs tests/request-body-r03.test.mjs tests/source-groups.test.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-cloud-library-v2.mjs",
+    "test": "node scripts/build-cloud-library-v2.mjs && node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs tests/request-body-r03.test.mjs tests/source-groups.test.mjs tests/cloud-library-v2.test.mjs tests/cloud-library-http-v2.test.mjs",
     "test:retrieval": "node --test tests/retrieval-r39.test.mjs",
     "probe:retrieval": "node scripts/probe-retrieval-r39.mjs",
-    "seal:deploy": "node scripts/seal-deploy.mjs"
+    "seal:deploy": "node scripts/seal-deploy.mjs",
+    "build:cloud-library": "node scripts/build-cloud-library-v2.mjs",
+    "seal:cloud-library": "node scripts/seal-cloud-library-v2.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
