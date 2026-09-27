@@ -71,6 +71,12 @@
     return el;
   }
 
+  function safeInsertBefore(parent, node, before) {
+    if (!parent || !node) return;
+    if (before && before.parentNode !== parent) before = null;
+    parent.insertBefore(node, before || null);
+  }
+
   function append(parent, child) {
     if (child === null || child === undefined || child === false) return;
     if (Array.isArray(child)) {
@@ -288,7 +294,7 @@
   shell.appendChild(topbar);
   shell.appendChild(context);
   shell.appendChild(body);
-  main.insertBefore(shell, main.firstChild);
+  safeInsertBefore(main, shell, main.firstChild);
 
   /* The shell owns the visible page heading. Preserve source content as secondary/help. */
   if (titleSource !== titleBlock.querySelector('h1')) titleSource.hidden = true;
@@ -317,7 +323,7 @@
   if (modeContext && modeContext.isConnected) context.appendChild(modeContext);
 
   var inspectorHome = document.createComment('ig-r42-inspector-home');
-  body.insertBefore(inspectorHome, inspector);
+  safeInsertBefore(body, inspectorHome, inspector);
   var inspectorFrame = dialogFrame(T.inspector);
 
   function isCompact() {
@@ -326,7 +332,7 @@
 
   function restoreInspectorHome() {
     if (inspector.parentNode !== body) {
-      body.insertBefore(inspector, inspectorHome.nextSibling);
+      safeInsertBefore(body, inspector, inspectorHome.parentNode === body ? inspectorHome.nextSibling : null);
     }
   }
 
