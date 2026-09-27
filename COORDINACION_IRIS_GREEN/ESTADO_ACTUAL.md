@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · copy producción R02 refrescado · 27/09/2026
+
+**Estado: `SABIK_COPY_PRODUCCION_R02_AUDIO_CANDIDATE_NEXT`.**
+
+Inventario fijo refrescado contra PR #244 HEAD `bf44d6ae7aa362b81fadb16b44bdef358cc31bcc`: 40 registros, 25 KEEP, 15 REVISED, 0 HOLD. El antiguo HOLD “Bajar intensidad” queda resuelto por código actual: el control fuerza `SIN_MOVIMIENTO`, por lo que el copy revisado pasa a “Desactivar movimiento / Turn off motion”.
+
+Locución propia de Sabik: 15 registros (10 SYSTEM_VOICE + 5 SYSTEM_VOICE_OPTIONAL). Siguiente gate: canonizar hashes locales de modelos finales y generar 30 WAV ES/EN con normalización -16.5 LUFS para HUMAN QA.
+
 ## Sabik · ES E0 cerrado + normalización de loudness aprobada · 27/09/2026
 
 **Estado: `SABIK_VOICES_EN_ES_FINAL_LOUDNESS_POLICY_APPROVED`.**
