@@ -103,3 +103,72 @@ body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar){
   --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-bar);--_f:var(--ig-glass-floor-bar);--_solid:var(--ig-chrome-solid-light);
   background-color:var(--_solid);background-image:none;border-color:var(--ig-separator);
 }
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd{
+  --_rgb:var(--ig-chrome-dark-rgb);--_a:var(--ig-glass-alpha-dark);--_f:var(--ig-glass-floor-dark);--_solid:var(--ig-chrome-solid-dark);
+  color:var(--ig-ink-on-dark);border-bottom-color:var(--ig-separator-dark);
+}
+body[data-ig-materials="r42"] .ig-r42-rail{--_solid:var(--ig-surface-content-soft)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail{--_solid:var(--ig-chrome-solid-dark)}
+@container ig-r42-shell (max-width:48rem){
+  body[data-ig-materials="r42"] .ig-r42-rail{
+    --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-rail);--_f:var(--ig-glass-floor-rail);--_solid:var(--ig-chrome-solid-light);
+    background-color:var(--_solid);
+  }
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail{
+    --_rgb:var(--ig-chrome-dark-rgb);--_a:var(--ig-glass-alpha-dark);--_f:var(--ig-glass-floor-dark);--_solid:var(--ig-chrome-solid-dark);
+    background-color:var(--_solid);
+  }
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (color:rgb(0 0 0 / max(.1,.2))){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar){
+    background-color:rgb(var(--_rgb) / max(var(--ig-glass-alpha-user,var(--_a)),var(--_f),var(--ig-glass-alpha-min)));
+    -webkit-backdrop-filter:blur(var(--ig-glass-blur)) saturate(1.05);
+    backdrop-filter:blur(var(--ig-glass-blur)) saturate(1.05);
+  }
+  @container ig-r42-shell (max-width:48rem){
+    body[data-ig-materials="r42"] .ig-r42-rail{
+      background-color:rgb(var(--_rgb) / max(var(--ig-glass-alpha-user,var(--_a)),var(--_f),var(--ig-glass-alpha-min)));
+      -webkit-backdrop-filter:blur(var(--ig-glass-blur));
+      backdrop-filter:blur(var(--ig-glass-blur));
+    }
+  }
+}
+@media (max-width:900px){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+/* Opaco: elección explícita, «Más contraste» o preferencia de contraste del sistema. */
+:is(html[data-ig-transparency="opaque"],html[data-ig-contrast="on"]) body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){
+  background-color:var(--_solid,var(--ig-chrome-solid-light));-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+@media (prefers-contrast:more){
+  html body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){
+    background-color:var(--_solid,var(--ig-chrome-solid-light));-webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+}
+
+/* Medición R42: .jg-kicker (#5a6e88) y .jg-small (#5c7391) no llegan a 4,5:1 sobre cristal
+   en el peor fondo. Dentro de las barras de cristal pasan al token de texto secundario. */
+body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar) :is(.jg-kicker,.jg-small,.jg-hub-note){color:var(--ig-ink-muted)}
+
+/* 4 · Chrome opaco del app shell (no se superpone al contenido: el cristal no aporta) */
+body[data-ig-materials="r42"] .ig-r42-topbar{background:var(--ig-chrome-solid-light);border-bottom-color:var(--ig-separator)}
+body[data-ig-materials="r42"] .ig-r42-context{background:var(--ig-surface-content-soft);border-bottom-color:var(--ig-separator)}
+body[data-ig-materials="r42"] .ig-r42-inspector{background:var(--ig-surface-content);border-left-color:var(--ig-separator)}
+body[data-ig-materials="r42"] :is(.ig-r42-dialog,.ig-r42-file-popover,.jg-filter-pop){background:var(--ig-surface-content);color:var(--ig-ink);-webkit-backdrop-filter:none;backdrop-filter:none}
+body[data-ig-materials="r42"] .ig-r42-dialog::backdrop{background:var(--ig-overlay-backdrop)}
+body[data-ig-materials="r42"] :is(.ig-r42-command-search input,.jg-search input,.secfind input[type=search]){border-color:var(--ig-control-border);background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action):hover{background:var(--ig-state-hover)}
+body[data-ig-materials="r42"] :is(.ig-r42-shell,.ig-r42-dialog) :focus-visible{outline-color:var(--ig-focus)}
+
+/* 5 · Contenido: estable y opaco. Aquí se retira el cristal que había. */
+body[data-ig-materials="r42"] :is(.ig-r42-shell,.ig-r42-dialog) .glass,
+body[data-ig-materials="r42"] :is(.jg-inspector,.jg-hero,.jg-head,.jg-play,.jg-card,.jg-advanced,.jg-workspace),
+body[data-ig-materials="r42"] :is(.ig-afondo,.ig-empty,.ig-support,.ig-touch-alternative),
+body[data-ig-materials="r42"] .r42-rincon :is(.xhero,.r40-workspace>.qcard){
+  background:var(--ig-surface-content);-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+body[data-ig-materials="r42"] .r42-rincon .r40-scene-actions{background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] .r42-rincon .r42-static-fallback figcaption{background:var(--ig-surface-content)}
+
+/* 6 · Rincón tranquilo · chrome oscuro de baja estimulación. El stage no se toca. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.nav a){color:var(--ig-ink-on-dark)}
