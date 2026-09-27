@@ -12,7 +12,20 @@
  --ig-r49-shadow:0 18px 54px -42px rgba(23,57,92,.52);
 }
 }
-@layer ig-r49-chrome{
+@layer ig-r49-chrome{\n/* Reserve the final global chrome before the deferred adapter runs.
+   The tiny language bootstrap sets data-ig-r49-js during parsing; without JS,
+   legacy navigation remains visible as the no-script fallback. */
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] :is(.ig-home-header,header.hd,.ig-uh,body>header):not([data-ig-r49-upgraded="true"]){
+ min-height:var(--ig-r49-header-h)!important;
+ height:var(--ig-r49-header-h)!important;
+ padding:0!important;
+ margin:0!important;
+ overflow:hidden!important;
+ border-bottom:1px solid var(--ig-separator,rgba(23,57,92,.14))!important;
+ background:var(--ig-chrome-solid-light,#fff)!important;
+}
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] :is(.ig-home-header,header.hd,.ig-uh,body>header):not([data-ig-r49-upgraded="true"])>*{display:none!important}
+
 body[data-ig-r49="1"]{min-width:0;overflow-x:clip}
 body[data-ig-r49="1"] .ig-r49-global-header{
  position:sticky!important;top:0!important;z-index:900!important;width:100%!important;max-width:none!important;min-height:var(--ig-r49-header-h)!important;
