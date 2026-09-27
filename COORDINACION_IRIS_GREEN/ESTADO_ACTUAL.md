@@ -1,3 +1,17 @@
+## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
+
+**Estado: `R49_A8_TRANSVERSAL_R42_R02_READY_FOR_ASTRA`.**
+
+A8 completó #311 en rama `agent8/r49-transversal-r42-r02-20260927`. HEAD validado `563ac5f71e4c9c3b19b32ea982a684033ea74f45`, tree `9ee305eb571b590cb59f524b78b0877160f0e284`, PR #312 contra A2 y mergeable al entregar.
+
+Cobertura pública: 1.047 rutas navegables, 0 sin clasificar; CONTENT 948, BROWSE 22, WORKSPACE 77; ES 531 / EN 516. Los 6 HTML restantes hasta los 1.053 fuente son chunks full S2 no navegables. Transform build idempotente, shared chrome R02, búsqueda segura, audience, preferencias y child-safe se aplican transversalmente sin reescribir motores R46/R47/R48.
+
+Regla de layout `READING_WIDTH != PRODUCT_WIDTH` validada en 1366/1440/1600/1920/2560 + 390/320. QA final run `36338047939` SUCCESS, artifact `10937792177`, 95 capturas R49 + 11 Home. Child-safe mantiene 0 full-S2 requests en vistas protegidas y 1 solo tras acción adulta explícita. Tarjeta Iris derivada del full fue retirada del payload inicial S2 y queda gate contra regresión.
+
+Performance delta frente a build sin R49: CONTENT LCP −28 ms / CLS +0.005842; BROWSE +8 ms / −0.07424; WORKSPACE −80 ms / +0.039341. Todos pasan el gate de regresión.
+
+A2 avanzó durante QA a `822092d3ae64d39ab421e766d79a83db93dc031b` y ya integró #310. R49 no se rebasa después del QA para conservar evidencia exacta. Secuencia: **Astra revisa #312 → A2 integra en HEAD vivo → una preview → María HUMAN QA**. No main/producción/deploy A8.
+
 ## R39 · A9 · Biblioteca Cloud de Sabik · fix Astra R03 · 27/09/2026
 
 **Estado: `R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA`.**  
