@@ -15,6 +15,7 @@ on:
       - 'scripts/test_r49_transversal_ui.py'
       - 'scripts/test_r49_transversal_browser.py'
       - 'scripts/test_home_child_safe_browser.py'
+      - 'scripts/measure_r49_budget.py'
       - 'scripts/build_site.py'
   workflow_dispatch:
 permissions:
@@ -30,7 +31,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Sintaxis R49
         run: |
-          python3 -m py_compile scripts/apply_r49_transversal_ui.py scripts/test_r49_transversal_ui.py scripts/test_r49_transversal_browser.py
+          python3 -m py_compile scripts/apply_r49_transversal_ui.py scripts/test_r49_transversal_ui.py scripts/test_r49_transversal_browser.py scripts/measure_r49_budget.py
           node --check assets/ig-r49-transversal.js
           node --check assets/ig-r49-lang-bootstrap.js
           node --check assets/ig-audience.js
@@ -41,8 +42,15 @@ jobs:
           python3 -m venv /tmp/ig-r49
           /tmp/ig-r49/bin/pip -q install playwright==1.55.0
           /tmp/ig-r49/bin/python -m playwright install --with-deps chromium >/tmp/ig-r49-install.log 2>&1
+      - name: Construir referencia sin R49
+        run: |
+          IRISGREEN_SKIP_R49=1 python3 scripts/build_site.py
+          rm -rf /tmp/r49-baseline
+          mv dist /tmp/r49-baseline
       - name: Build completo y gates estáticos
-        run: python3 scripts/build_site.py
+        run: |
+          python3 scripts/build_site.py
+          python3 scripts/measure_r49_budget.py --baseline /tmp/r49-baseline --root dist --out reports/r49-transversal/budget.json
       - name: Browser QA transversal y child-safe
         run: |
           python3 -m http.server 4173 --directory dist >/tmp/ig-r49-http.log 2>&1 &
