@@ -1,5 +1,19 @@
 ## R42 · A8 · Home nueva + child-safe lista para A2 · 27/09/2026
 
+## Astra review · A9 Biblioteca Cloud · 27/09/2026
+
+**Estado: `R39_A9_SABIK_CLOUD_LIBRARY_ASTRA_REVIEW_FIX_REQUIRED`.**
+
+A9 entrega arquitectura válida y candidato privado sellado, pero no se cierra por tres bloqueantes:
+1. safe variants autoderivadas; algunas usan el mismo texto que el fragmento S2;
+2. 2 URLs EN de Datos incorrectas por inferir slug desde título;
+3. HTTP de aplicación autenticado tras Team Login no demostrado.
+
+R38 sigue intacto. El candidato R01 puede conservarse como evidencia técnica. A9 debe corregir sobre el mismo carril, crear nueva versión inmutable y devolver `R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA`.
+
+Cobertura #302 (965 registros / 16 S2) sigue pendiente de sincronización con la nueva web.
+
+
 **Estado: `R42_A8_HOME_CHILD_SAFE_READY_FOR_A2`.**
 
 A8 ha construido #305 sobre A2 exacto `bf44d6ae7aa362b81fadb16b44bdef358cc31bcc`. Entrega: rama `agent8/r42-home-child-safe-20260927`, HEAD `4769e223dc5e10f2bdd82a508310a929e94a6bb5`, tree `7e3db0f4dc4f4c7943f7ce1be266109ca97510c2`, PR #310 dirigido a la rama A2.
