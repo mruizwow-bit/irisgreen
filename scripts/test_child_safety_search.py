@@ -26,7 +26,8 @@ def main():
     safe=root/"assets/content-safety/search-safe-default.json"
     if safe.is_file():
         data=json.loads(safe.read_text(encoding="utf-8"))
-        assert len(data)==441
+        full=json.loads((root/"buscador.json").read_text(encoding="utf-8"))
+        assert len(data)==len(full)-len(rows), (len(full),len(data),len(rows))
         blob=json.dumps(data,ensure_ascii=False)
         for r in rows:
             assert r["url_es"] not in blob and r["url_en"] not in blob
