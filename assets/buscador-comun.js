@@ -249,7 +249,7 @@
   }
   function indexUrl(mode) {
     return mode === 'adult'
-      ? '/assets/content-safety/search-adult-full-catalog.json'
+      ? '/buscador.json'
       : '/assets/content-safety/search-safe-default.json';
   }
   function validIndexedItem(item) {
