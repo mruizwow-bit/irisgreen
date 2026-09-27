@@ -64,7 +64,14 @@ def search_contracts(root):
         en=x.get('en') or {};eu=x.get('u','');nu=en.get('u',eu);r=by_es.get(eu) or by_en.get(nu)
         surf='condition' if '/condiciones/' in eu else 'situation'
         rows.append({'id':r[0] if r else eu,'surface':surf,'title_es':x.get('t',''),'title_en':en.get('t',x.get('t','')),'url_es':eu,'url_en':nu,'area_or_type_es':x.get('tipo') or x.get('a',''),'area_or_type_en':en.get('a') or x.get('tipo') or x.get('a',''),'summary_es':x.get('d',''),'summary_en':en.get('d',x.get('d','')),'audience':['TRANSVERSAL'],'sensitivity':'S2_HIGH_SENSITIVITY' if r else 'S0_GENERAL','discovery':'SAFE_VARIANT_REQUIRED' if r else 'NORMAL','safe_variant_group':r[2] if r else None})
-    safe=[x for x in rows if x['sensitivity']!='S2_HIGH_SENSITIVITY'];intent=[x for x in rows if x['sensitivity']=='S2_HIGH_SENSITIVITY']
+    safe=[x for x in rows if x['sensitivity']!='S2_HIGH_SENSITIVITY']
+    intent=[]
+    for x in rows:
+        if x['sensitivity']!='S2_HIGH_SENSITIVITY':continue
+        y=dict(x);group=y.get('safe_variant_group')
+        if group in SAFE:
+            y['summary_es']=SAFE[group]['es'][1];y['summary_en']=SAFE[group]['en'][1]
+        intent.append(y)
     out=root/'assets/safety';out.mkdir(parents=True,exist_ok=True)
     for name,obj in [('search-safe-default.json',safe),('search-intentional-safe.json',intent),('search-adult-full-catalog.json',rows)]:
         (out/name).write_text(json.dumps(obj,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
