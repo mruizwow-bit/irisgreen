@@ -17,6 +17,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: r49-a8-transversal-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   qa:
     runs-on: ubuntu-latest
