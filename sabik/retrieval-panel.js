@@ -4,20 +4,20 @@
   const UI = Object.freeze({
     es: Object.freeze({
       heading: 'Resultados en Iris Green',
-      empty: 'No hay resultados de Iris Green para esta consulta.',
-      error: 'No se pudieron cargar los resultados de Iris Green. Puedes volver a intentarlo.',
-      cancelled: 'La consulta se canceló. No se mostrarán resultados antiguos.',
+      empty: 'No hay resultados en Iris Green para esta consulta.',
+      error: 'No se pudieron cargar los resultados de Iris Green. Puedes intentarlo de nuevo.',
+      cancelled: 'La consulta se ha cancelado. No se mostrarán resultados anteriores.',
       retry: 'Reintentar',
       resultsAnnouncement: count => count === 1 ? '1 resultado disponible.' : `${count} resultados disponibles.`,
       emptyAnnouncement: 'No hay resultados disponibles.',
-      errorAnnouncement: 'No se pudieron cargar los resultados. Puedes volver a intentarlo.',
+      errorAnnouncement: 'No se pudieron cargar los resultados. Puedes intentarlo de nuevo.',
       cancelledAnnouncement: 'Consulta cancelada.'
     }),
     en: Object.freeze({
       heading: 'Results from Iris Green',
-      empty: 'There are no Iris Green results for this query.',
+      empty: 'There are no results in Iris Green for this query.',
       error: 'The Iris Green results could not be loaded. You can try again.',
-      cancelled: 'The query was cancelled. Older results will not be shown.',
+      cancelled: 'The query has been cancelled. Earlier results will not be shown.',
       retry: 'Try again',
       resultsAnnouncement: count => count === 1 ? '1 result available.' : `${count} results available.`,
       emptyAnnouncement: 'No results are available.',

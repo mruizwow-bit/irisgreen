@@ -32,7 +32,7 @@
         visual.dataset.motionActive = String(active);
         const help = document.querySelector('#sabik-motion-help');
         const en = document.documentElement.lang.startsWith('en');
-        if (help) help.textContent = ({NORMAL: en ? 'Brief motion only when needed.' : 'Movimiento breve solo cuando hace falta.',
+        if (help) help.textContent = ({NORMAL: en ? 'Brief motion when the state changes.' : 'Movimiento breve cuando cambia el estado.',
           REDUCIDO: en ? 'Reduced motion is active.' : 'Movimiento reducido activado.',
           SIN_MOVIMIENTO: en ? 'Motion is off.' : 'Movimiento desactivado.'})[level];
       }});
