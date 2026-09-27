@@ -42,6 +42,29 @@ async def main():
         need(await page.locator('[data-ig-home-results]').get_by_text('versión segura',exact=False).count()>0,'safe S2 result marker missing')
         need(not any('/assets/safety/full/' in u for u in req),'full S2 requested by Home safe search')
         report['network']['home_safe_full_requests']=sum('/assets/safety/full/' in u for u in req)
+        # Representative content matrix required by #305: one S0, one audited S1, five S2.
+        for route,label in [
+            ('/es/situaciones/la-ropa-me-molesta/','S0'),
+            ('/es/situaciones/se-me-olvida-comer/','S1'),
+        ]:
+            await page.goto(BASE+route,wait_until='networkidle')
+            need(await page.locator('[data-ig-s2-safe]').count()==0,label+' was incorrectly treated as S2')
+        five_s2=[
+            '/es/neurodiversidad/condiciones/abuso-y-explotacion/',
+            '/es/neurodiversidad/condiciones/anorexia-nerviosa/',
+            '/es/neurodiversidad/condiciones/bulimia-nerviosa/',
+            '/es/neurodiversidad/condiciones/tept-trastorno-por-estres-postraumatico/',
+            '/es/biblioteca/abuso-explotacion-y-relaciones-seguras/',
+        ]
+        await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate("IGAudience.clear()")
+        for route in five_s2:
+            matrix_requests=[]
+            page.on('request',lambda r,arr=matrix_requests:arr.append(r.url))
+            await page.goto(BASE+route,wait_until='networkidle')
+            need(await page.locator('[data-ig-s2-safe]').count()==1,'S2 safe shell missing '+route)
+            need(not any('/assets/safety/full/' in u for u in matrix_requests),'full S2 travelled in initial request '+route)
+        report['checks'].append('S0+S1+5-S2-matrix')
+
         # Deep link default/children/teenagers: safe page and zero full requests.
         s2='/es/neurodiversidad/condiciones/anorexia-nerviosa/'
         for stage in ['default','children','teenagers']:
