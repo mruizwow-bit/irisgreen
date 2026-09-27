@@ -48,7 +48,7 @@ const SECTIONS=[
  {id:'research',es:['Investigación','Estudios y explicaciones con contexto.','/es/investigacion/'],en:['Research','Studies and explanations with context.','/es/investigacion/']},
  {id:'data',es:['Datos','Cifras y fuentes para consultar.','/es/datos/'],en:['Data','Figures and sources to explore.','/en/data/']},
  {id:'videos',es:['Vídeos','Experiencias contadas en primera persona.','/es/videos/'],en:['Videos','First-person experiences.','/es/videos/']},
- {id:'resources',es:['Recursos','Juegos, rutinas y herramientas prácticas.','/es/recursos/'],en:['Resources','Games, routines and practical tools.','/en/resources/']},
+ {id:'recursos',es:['Recursos','Juegos, rutinas y herramientas prácticas.','/es/recursos/'],en:['Resources','Games, routines and practical tools.','/en/resources/']},
  {id:'interests',es:['Tus intereses','Explora temas desde lo que te gusta.','/es/intereses/'],en:['Your interests','Explore topics through what you enjoy.','/en/interests/']},
  {id:'workshop',es:['El taller','Crea, prueba y construye proyectos.','/es/taller/'],en:['The workshop','Create, test and build projects.','/en/workshop/']},
  {id:'quiet',es:['Rincón tranquilo','Elige una imagen, un sonido o una pausa.','/es/sitio-tranquilo/'],en:['Quiet space','Choose an image, a sound or a pause.','/en/quiet-space/']},
