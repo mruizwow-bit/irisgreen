@@ -58,7 +58,7 @@ def protect_pages(root):
             # Tarjeta Iris is generated earlier from the full source article.
             # On S2 routes it must not remain in the initial safe payload, even
             # as a derived summary/support card.
-            text=re.sub(r'<aside\\b[^>]*class=["\\'][^"\\']*\\biris-mini-card\\b[^"\\']*["\\'][^>]*>.*?</aside>', '', text, flags=re.S|re.I)
+            text=re.sub(r"<aside\\b[^>]*class=['\"][^'\"]*\\biris-mini-card\\b[^'\"]*['\"][^>]*>.*?</aside>", '', text, flags=re.S|re.I)
             p.write_text(inject(text),encoding='utf-8');n+=1
     return n
 def search_contracts(root):
