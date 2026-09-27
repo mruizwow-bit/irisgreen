@@ -1,0 +1,60 @@
+name: R42 Resources · Netlify Draft Preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'agent2/r42-design-r02-staging-20260927'
+    paths:
+      - 'es/recursos/**'
+      - 'en/resources/**'
+      - 'assets/juegos-iris.*'
+      - 'assets/rutinas-visuales.*'
+      - 'assets/tarjeta-iris.*'
+      - 'assets/preferencias-lectura.js'
+      - 'assets/lectura-accesible.js'
+      - 'assets/pictogramas/**'
+      - 'scripts/generate_rutinas_sprites.py'
+      - 'scripts/test_r42_*.py'
+      - '_headers'
+      - 'netlify.toml'
+      - '.github/workflows/r42-resources-preview.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NETLIFY_SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Require Netlify CI credential
+        run: test -n "$NETLIFY_AUTH_TOKEN"
+      - name: Build isolated site
+        run: python scripts/build_site.py
+      - name: Deploy draft preview only
+        run: |
+          mkdir -p reports/r42-resources-preview
+          npx -y netlify-cli@latest deploy \
+            --dir=dist \
+            --site "$NETLIFY_SITE_ID" \
+            --auth "$NETLIFY_AUTH_TOKEN" \
+            --context deploy-preview \
+            --message "R42 Resources PR304 $GITHUB_SHA" \
+            --json | tee reports/r42-resources-preview/deploy.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r42-resources-netlify-preview
+          path: reports/r42-resources-preview/
+          retention-days: 14
