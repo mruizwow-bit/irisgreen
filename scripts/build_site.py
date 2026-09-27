@@ -147,6 +147,11 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R42 Child Safety: construir el índice seguro ANTES de que el buscador del navegador lo consuma.
+    # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
