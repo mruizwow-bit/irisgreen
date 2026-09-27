@@ -1,0 +1,17 @@
+(function(){
+'use strict';
+function lang(){return document.documentElement.lang.indexOf('en')===0?'en':'es';}
+function text(){return lang()==='en'?{no:'No results. Try another word.',found:'results',safe:'This result uses the safer version for this view.'}:{no:'No hay resultados. Prueba con otra palabra.',found:'resultados',safe:'Este resultado usa la versión segura para esta vista.'};}
+function resultNode(item){var a=document.createElement('a');a.className='ig-home-result';a.href=item.url;var h=document.createElement('strong');h.textContent=item.name;var p=document.createElement('span');p.textContent=item.hint||item.full||'';a.append(h,p);if(item.sensitivity==='S2_HIGH_SENSITIVITY'){var safe=document.createElement('small');safe.textContent=text().safe;a.appendChild(safe);}return a;}
+function start(){
+ var form=document.querySelector('[data-ig-home-search]'),input=form&&form.querySelector('input[type=search]'),suggestions=document.querySelector('[data-ig-home-suggestions]'),results=document.querySelector('[data-ig-home-results]'),status=document.querySelector('[data-ig-home-search-status]');if(!form||!input||!window.IGSearch)return;
+ var seq=0;
+ function showSuggestions(){var ticket=++seq,q=input.value.trim();suggestions.replaceChildren();if(q.length<2)return;window.IGSearch.load().then(function(items){if(ticket!==seq)return;var hits=window.IGSearch.rank(items,q,lang()).slice(0,6);hits.forEach(function(x){suggestions.appendChild(resultNode(window.IGSearch.localize(x,lang())));});});}
+ input.addEventListener('input',showSuggestions);
+ form.addEventListener('submit',function(e){e.preventDefault();var q=input.value.trim();if(!q)return;var ticket=++seq;results.replaceChildren();status.textContent=lang()==='en'?'Searching…':'Buscando…';window.IGSearch.search(q,{intentional:true,lang:lang()}).then(function(hits){if(ticket!==seq)return;var list=hits.slice(0,12);if(!list.length){status.textContent=text().no;return;}status.textContent=list.length+' '+text().found;list.forEach(function(x){results.appendChild(resultNode(window.IGSearch.localize(x,lang())));});});});
+ window.addEventListener('ig:audience-change',function(){suggestions.replaceChildren();results.replaceChildren();status.textContent='';if(input.value.trim())showSuggestions();});
+ var dialog=document.getElementById('ig-home-settings'),openButtons=document.querySelectorAll('[data-ig-home-settings-open]'),close=dialog&&dialog.querySelector('[data-ig-home-settings-close]');if(dialog&&openButtons.length){openButtons.forEach(function(open){open.addEventListener('click',function(){if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');if(window.IGPreferences)window.IGPreferences.mountTransparencyOptions(dialog);});});if(close)close.addEventListener('click',function(){dialog.close?dialog.close():dialog.removeAttribute('open');});}
+ var menu=document.querySelector('[data-ig-home-menu]'),menuButton=document.querySelector('[data-ig-home-menu-button]');if(menu&&menuButton){menuButton.addEventListener('click',function(){var openNow=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!openNow));menu.hidden=openNow;});}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
