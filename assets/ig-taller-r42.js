@@ -50,7 +50,7 @@
   function createTopbar(main,app,study){
     var top=el('div','ig42-topbar');
     var left=el('div','ig42-topbar-left'),back=D.createElement('a');back.className='ig42-back';back.href=lang()==='en'?'/en/workshop/':'/es/taller/';back.textContent='← '+T('Taller','Workshop');left.appendChild(back);
-    var title=el('div','ig42-titleblock'),name=el('strong','ig42-study-name',study?study.title[lang()]:(q('#igt-title')?q('#igt-title').textContent:T('Estudio','Studio'))),state=el('span','ig42-save-state',T('Cambios locales','Local changes'));title.appendChild(name);title.appendChild(state);left.appendChild(title);top.appendChild(left);
+    var title=el('div','ig42-titleblock'),name=el('h1','ig42-study-name',study?study.title[lang()]:(q('#igt-title')?q('#igt-title').textContent:T('Estudio','Studio'))),state=el('span','ig42-save-state',T('Cambios locales','Local changes'));title.appendChild(name);title.appendChild(state);left.appendChild(title);top.appendChild(left);
     var center=el('div','ig42-topbar-center'),mode=el('div','ig42-mode');mode.setAttribute('role','group');mode.setAttribute('aria-label',T('Modo de trabajo','Working mode'));
     var free=btn(T('Libre','Free'),'ig42-mode-btn'),challenge=btn(T('Reto','Challenge'),'ig42-mode-btn');free.setAttribute('aria-pressed','true');challenge.setAttribute('aria-pressed','false');mode.appendChild(free);mode.appendChild(challenge);center.appendChild(mode);center.appendChild(stageSelector(study));top.appendChild(center);
     var actions=el('div','ig42-topbar-actions');
