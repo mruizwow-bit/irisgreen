@@ -1,0 +1,169 @@
+name: R39 A9 private bilingual Sabik library
+
+on:
+  push:
+    branches:
+      - 'agent9/r39-cloud-library-r01-20260927'
+    paths:
+      - 'cloud/n04-r38-library/**'
+      - '.github/workflows/r39-a9-cloud-library.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-deploy-seal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      BASE_SHA: 8690e26140f6d513c3592df62bc82b167cbb1d0e
+      NETLIFY_SITE_ID: 47b06e68-ff54-4097-8ad8-336b2d71758a
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    steps:
+      - name: Require existing Netlify deploy credential
+        run: |
+          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
+            echo "EXISTING_NETLIFY_DEPLOY_CREDENTIAL_UNAVAILABLE"
+            exit 78
+          fi
+
+      - name: Checkout A9 candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: cloud/n04-r38-library/package-lock.json
+
+      - name: Scope guard and locked install
+        working-directory: cloud/n04-r38-library
+        run: |
+          test "$(node --version)" = "v22.16.0"
+          git diff --check "$BASE_SHA"...HEAD
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^(cloud/n04-r38-library/|\.github/workflows/r39-a9-cloud-library\.yml$)' ; then
+            echo "A9_SCOPE_VIOLATION"
+            exit 1
+          fi
+          for protected in             src/library.mjs             src/qa-handler.mjs             src/team-transport-handler.mjs             src/cloud-connection.mjs             netlify/functions/n04-library-qa.mjs             netlify/functions/n04-team-transport.mjs             scripts/seal-deploy.mjs
+          do
+            if git diff --quiet "$BASE_SHA"...HEAD -- "$protected"; then :; else
+              echo "HISTORICAL_R38_R39_FILE_CHANGED: $protected"
+              exit 1
+            fi
+          done
+          npm ci --ignore-scripts
+          ./node_modules/.bin/netlify --version | grep -F "27.8.0"
+
+      - name: Test bilingual child-safe library
+        working-directory: cloud/n04-r38-library
+        run: npm test
+
+      - name: Build candidate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build | tee /tmp/a9-build.log
+          node - <<'JS'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('build/library-v2/release.json','utf8'));
+          if(r.schema!=='SABIK_CLOUD_LIBRARY_RELEASE/2.0') throw new Error('Bad release schema');
+          if(r.fragment_count!==1208 || r.locale_counts.es!==604 || r.locale_counts.en!==604) throw new Error('Unexpected bilingual counts');
+          if(r.full_s2_count!==30 || r.safe_variant_count!==30) throw new Error('Unexpected safety counts');
+          console.log(JSON.stringify({version:r.version,corpus_sha256:r.corpus_sha256,corpus_bytes:r.corpus_bytes,fragments:r.fragment_count,locale_counts:r.locale_counts,full_s2:r.full_s2_count,safe_variants:r.safe_variant_count,source_commit:r.source_commit,source_bundle_sha256:r.source_bundle_sha256}));
+          JS
+
+      - name: Verify protected site before deploy
+        run: |
+          node - <<'JS'
+          const fs=require('fs');
+          const token=process.env.NETLIFY_AUTH_TOKEN, id=process.env.NETLIFY_SITE_ID;
+          const res=await fetch('https://api.netlify.com/api/v1/sites/'+id,{headers:{Authorization:'Bearer '+token}});
+          if(!res.ok) throw new Error('Netlify site API status '+res.status);
+          const s=await res.json();
+          if(s.id!==id || s.name!=='sabik-asistente' || s.sso_login!==true || s.sso_login_context!=='all') throw new Error('Protected site identity mismatch');
+          const safe={site_id:s.id,name:s.name,sso_login:s.sso_login,sso_login_context:s.sso_login_context,
+            functions_region:s.functions_region,published_deploy_id:s.published_deploy?.id||null};
+          fs.writeFileSync('/tmp/a9-site-before.json',JSON.stringify(safe,null,2)+'\n');
+          console.log(JSON.stringify(safe));
+          JS
+
+      - name: Deploy one private non-production draft
+        working-directory: cloud/n04-r38-library
+        run: |
+          ./node_modules/.bin/netlify deploy             --no-build             --dir dist             --site "$NETLIFY_SITE_ID"             --message "R39 A9 bilingual child-safe cloud library $GITHUB_SHA"             --json > /tmp/a9-deploy-raw.json
+          node - <<'JS'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/a9-deploy-raw.json','utf8'));
+          const safe={deploy_id:d.deploy_id||d.id||null,deploy_url:d.deploy_url||d.deploy_ssl_url||null,
+            site_name:d.site_name||null,message:d.message||null};
+          if(!/^[a-f0-9]{24}$/.test(safe.deploy_id||'')) throw new Error('Missing deploy id');
+          if(!String(safe.deploy_url||'').includes('--sabik-asistente.netlify.app')) throw new Error('Unexpected deploy origin');
+          fs.writeFileSync('/tmp/a9-deploy-safe.json',JSON.stringify(safe,null,2)+'\n');
+          fs.appendFileSync(process.env.GITHUB_ENV,'N04_DEPLOY_ID='+safe.deploy_id+'\nA9_DEPLOY_URL='+safe.deploy_url+'\n');
+          console.log(JSON.stringify(safe));
+          JS
+
+      - name: Verify deploy remains private and production unchanged
+        run: |
+          node - <<'JS'
+          const fs=require('fs');
+          const token=process.env.NETLIFY_AUTH_TOKEN, siteId=process.env.NETLIFY_SITE_ID, deployId=process.env.N04_DEPLOY_ID;
+          const headers={Authorization:'Bearer '+token};
+          const [dr,sr]=await Promise.all([
+            fetch('https://api.netlify.com/api/v1/deploys/'+deployId,{headers}),
+            fetch('https://api.netlify.com/api/v1/sites/'+siteId,{headers})
+          ]);
+          if(!dr.ok||!sr.ok) throw new Error('Netlify verification API failure');
+          const d=await dr.json(), s=await sr.json(), before=JSON.parse(fs.readFileSync('/tmp/a9-site-before.json','utf8'));
+          if(d.site_id!==siteId || d.state!=='ready' || d.context==='production' || d.published_at!==null) throw new Error('Candidate is not an unpublished private draft');
+          if(s.sso_login!==true || s.sso_login_context!=='all') throw new Error('Team Login changed');
+          const after=s.published_deploy?.id||null;
+          if(after!==before.published_deploy_id) throw new Error('Production deploy changed');
+          const safe={deploy_id:d.id,state:d.state,context:d.context,published_at:d.published_at,
+            deploy_ssl_url:d.deploy_ssl_url||d.ssl_url||null,site_id:d.site_id,
+            sso_login:s.sso_login,sso_login_context:s.sso_login_context,
+            production_before:before.published_deploy_id,production_after:after};
+          fs.writeFileSync('/tmp/a9-private-verification.json',JSON.stringify(safe,null,2)+'\n');
+          console.log(JSON.stringify(safe));
+          JS
+
+      - name: Seal new immutable library into candidate deploy store
+        working-directory: cloud/n04-r38-library
+        run: npm run seal:cloud-library | tee /tmp/a9-seal.json
+
+      - name: Real HTTP outer-gate probe
+        run: |
+          status="$(curl --silent --show-error --output /tmp/a9-http-body --dump-header /tmp/a9-http-headers             --write-out '%{http_code}' --max-time 20             -X POST -H 'content-type: application/json'             --data '{"q":"autismo","locale":"es","context":"default"}'             "$A9_DEPLOY_URL/internal/n04/cloud-library/search" || true)"
+          node - "$status" <<'JS'
+          const fs=require('fs');
+          const status=process.argv[2];
+          const headers=fs.existsSync('/tmp/a9-http-headers')?fs.readFileSync('/tmp/a9-http-headers','utf8'):'';
+          // A protected Team Login response is expected without a human browser session.
+          if(!['401','403','302','303'].includes(status)) throw new Error('Private outer gate did not block unauthenticated HTTP: '+status);
+          const safe={real_http:true,authenticated_application_http:false,status:Number(status),
+            team_login_gate_observed:true,application_http_reason:'Netlify Team Login requires a legitimate team browser session; no session cookie is exported to CI.'};
+          fs.writeFileSync('/tmp/a9-http-safe.json',JSON.stringify(safe,null,2)+'\n');
+          console.log(JSON.stringify(safe));
+          JS
+
+      - name: Upload safe A9 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r39-a9-cloud-library-evidence
+          path: |
+            /tmp/a9-site-before.json
+            /tmp/a9-deploy-safe.json
+            /tmp/a9-private-verification.json
+            /tmp/a9-seal.json
+            /tmp/a9-http-safe.json
+            cloud/n04-r38-library/build/library-v2/release.json
+          if-no-files-found: ignore
+          retention-days: 14
