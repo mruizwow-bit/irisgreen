@@ -1,0 +1,285 @@
+/* Iris Green R42 · sistema material (cristal solo en el chrome).
+   Piloto: se carga únicamente en las superficies con body[data-ig-materials="r42"].
+   Jerarquía: contenido estable/opaco → chrome interactivo → overlay temporal.
+   Prohibido cristal sobre cristal. Los valores de suelo se miden con
+   scripts/measure_r42_materials.py (lee este archivo) y se comprueban en navegador
+   con scripts/test_r42_materials_browser.py.
+   Reglas sin capa y con body[data-ig-materials] como prefijo: el CSS antiguo no está
+   en capas y una regla normal en capa perdería frente a él. Donde el CSS antiguo usa
+   !important se usa la capa ig-r42-materials-important (un !important en capa gana
+   al !important sin capa), nunca !important sin capa. */
+
+/* 1 · Tokens semánticos únicos */
+body[data-ig-materials="r42"]{
+  --ig-ink:#17395c;
+  --ig-ink-muted:#435268;
+  --ig-ink-on-dark:#eef4f8;
+  --ig-ink-muted-on-dark:#c9d5dd;
+
+  --ig-surface-content:#ffffff;
+  --ig-surface-content-soft:#f4f7fa;
+
+  --ig-chrome-light-rgb:255 255 255;
+  --ig-chrome-dark-rgb:11 26 43;
+  --ig-chrome-solid-light:#ffffff;
+  --ig-chrome-solid-dark:#0b1a2b;
+  --ig-chrome-control-dark:#15304a;
+
+  /* Valor por defecto de cada componente y suelo mínimo medido (ver tabla). */
+  --ig-glass-alpha-header:.90;  --ig-glass-floor-header:.86;
+  --ig-glass-alpha-bar:.92;     --ig-glass-floor-bar:.88;
+  --ig-glass-alpha-rail:.94;    --ig-glass-floor-rail:.90;
+  --ig-glass-alpha-dark:.86;    --ig-glass-floor-dark:.80;
+  --ig-glass-alpha-floor:.86;
+  --ig-glass-alpha-min:0;
+  /* --ig-glass-alpha-user: sin valor en modo normal; lo fija el modo reducido. */
+  --ig-glass-blur:12px;
+
+  /* Sin soporte de max() o de backdrop-filter, los tokens de cristal son opacos. */
+  --ig-chrome-glass-light:var(--ig-chrome-solid-light);
+  --ig-chrome-glass-dark:var(--ig-chrome-solid-dark);
+
+  --ig-control-border:#7a869d;
+  --ig-control-border-dark:#8494a8;
+  --ig-separator:#d5e1ec;
+  --ig-separator-dark:#2a4460;
+  --ig-overlay-backdrop:rgb(14 29 53 / .42);
+  --ig-overlay-backdrop-dark:rgb(2 8 18 / .62);
+  --ig-link-on-dark:#9fdcea;
+  --ig-focus:#5a49a8;
+  --ig-focus-on-dark:#c3b8ff;
+
+  --ig-state-hover:#edf5fb;
+  --ig-state-hover-dark:#1d3d5c;
+  --ig-state-selected:#17395c;
+  --ig-state-selected-ink:#ffffff;
+  --ig-state-selected-soft:#e6f1f8;
+  --ig-state-selected-dark:#dce8f2;
+  --ig-state-selected-dark-ink:#0b1a2b;
+  --ig-state-disabled-ink:#5f6b80;
+  --ig-state-disabled-surface:#eef2f6;
+  --ig-state-error:#8a2942;
+  --ig-state-success:#1d6b3a;
+  --ig-state-error-on-dark:#ffb3c1;
+  --ig-state-success-on-dark:#9be0b4;
+}
+@supports (color:rgb(0 0 0 / max(.1,.2))){
+  body[data-ig-materials="r42"]{
+    --ig-chrome-glass-light:rgb(var(--ig-chrome-light-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-header)),var(--ig-glass-alpha-floor),var(--ig-glass-alpha-min)));
+    --ig-chrome-glass-dark:rgb(var(--ig-chrome-dark-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-dark)),var(--ig-glass-floor-dark),var(--ig-glass-alpha-min)));
+  }
+}
+
+/* 2 · Modos de transparencia (preferencia de la persona en window.IGPreferences) */
+html[data-ig-transparency="reduced"] body[data-ig-materials="r42"]{--ig-glass-alpha-user:.97;--ig-glass-blur:4px}
+@media (prefers-reduced-transparency:reduce){
+  html:not([data-ig-transparency-source="user"]) body[data-ig-materials="r42"]{--ig-glass-alpha-user:.97;--ig-glass-blur:4px}
+}
+html[data-ig-contrast="on"] body[data-ig-materials="r42"]{
+  --ig-ink-muted:#17395c;--ig-separator:#7a869d;--ig-control-border:#17395c;
+  --ig-ink-muted-on-dark:#eef4f8;--ig-separator-dark:#8494a8;--ig-control-border-dark:#eef4f8;
+}
+@media (prefers-contrast:more){
+  body[data-ig-materials="r42"]{
+    --ig-ink-muted:#17395c;--ig-separator:#7a869d;--ig-control-border:#17395c;
+    --ig-ink-muted-on-dark:#eef4f8;--ig-separator-dark:#8494a8;--ig-control-border-dark:#eef4f8;
+  }
+}
+/* Móvil: sin blur (coste de GPU en barras sticky) y casi opaco. Corte conservado en 900 px. */
+@media (max-width:900px){
+  body[data-ig-materials="r42"]{--ig-glass-alpha-min:.97;--ig-glass-blur:0px}
+}
+
+/* Alto contraste: sustituye el filtro global sobre main (alteraba pictogramas,
+   ilustraciones, vídeo y escenas) por tokens de texto, bordes y superficies. */
+html[data-ig-contrast="on"] body[data-ig-materials="r42"] main{filter:none}
+
+/* 3 · Superficies de chrome con cristal (flotan sobre contenido que se desplaza) */
+body[data-ig-materials="r42"] .hd{
+  --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-header);--_f:var(--ig-glass-floor-header);--_solid:var(--ig-chrome-solid-light);
+  background-color:var(--_solid);background-image:none;border-bottom-color:var(--ig-separator);
+}
+body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar){
+  --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-bar);--_f:var(--ig-glass-floor-bar);--_solid:var(--ig-chrome-solid-light);
+  background-color:var(--_solid);background-image:none;border-color:var(--ig-separator);
+}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd{
+  --_rgb:var(--ig-chrome-dark-rgb);--_a:var(--ig-glass-alpha-dark);--_f:var(--ig-glass-floor-dark);--_solid:var(--ig-chrome-solid-dark);
+  color:var(--ig-ink-on-dark);border-bottom-color:var(--ig-separator-dark);
+}
+body[data-ig-materials="r42"] .ig-r42-rail{--_solid:var(--ig-surface-content-soft)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail{--_solid:var(--ig-chrome-solid-dark)}
+@container ig-r42-shell (max-width:48rem){
+  body[data-ig-materials="r42"] .ig-r42-rail{
+    --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-rail);--_f:var(--ig-glass-floor-rail);--_solid:var(--ig-chrome-solid-light);
+    background-color:var(--_solid);
+  }
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail{
+    --_rgb:var(--ig-chrome-dark-rgb);--_a:var(--ig-glass-alpha-dark);--_f:var(--ig-glass-floor-dark);--_solid:var(--ig-chrome-solid-dark);
+    background-color:var(--_solid);
+  }
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (color:rgb(0 0 0 / max(.1,.2))){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar){
+    background-color:rgb(var(--_rgb) / max(var(--ig-glass-alpha-user,var(--_a)),var(--_f),var(--ig-glass-alpha-min)));
+    -webkit-backdrop-filter:blur(var(--ig-glass-blur)) saturate(1.05);
+    backdrop-filter:blur(var(--ig-glass-blur)) saturate(1.05);
+  }
+  @container ig-r42-shell (max-width:48rem){
+    body[data-ig-materials="r42"] .ig-r42-rail{
+      background-color:rgb(var(--_rgb) / max(var(--ig-glass-alpha-user,var(--_a)),var(--_f),var(--ig-glass-alpha-min)));
+      -webkit-backdrop-filter:blur(var(--ig-glass-blur));
+      backdrop-filter:blur(var(--ig-glass-blur));
+    }
+  }
+}
+@media (max-width:900px){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+/* Opaco: elección explícita, «Más contraste» o preferencia de contraste del sistema. */
+:is(html[data-ig-transparency="opaque"],html[data-ig-contrast="on"]) body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){
+  background-color:var(--_solid,var(--ig-chrome-solid-light));-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+@media (prefers-contrast:more){
+  html body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){
+    background-color:var(--_solid,var(--ig-chrome-solid-light));-webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+}
+
+/* Medición R42: .jg-kicker (#5a6e88) y .jg-small (#5c7391) no llegan a 4,5:1 sobre cristal
+   en el peor fondo. Dentro de las barras de cristal pasan al token de texto secundario. */
+body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar) :is(.jg-kicker,.jg-small,.jg-hub-note){color:var(--ig-ink-muted)}
+
+/* 4 · Chrome opaco del app shell (no se superpone al contenido: el cristal no aporta) */
+body[data-ig-materials="r42"] .ig-r42-topbar{background:var(--ig-chrome-solid-light);border-bottom-color:var(--ig-separator)}
+body[data-ig-materials="r42"] .ig-r42-context{background:var(--ig-surface-content-soft);border-bottom-color:var(--ig-separator)}
+body[data-ig-materials="r42"] .ig-r42-inspector{background:var(--ig-surface-content);border-left-color:var(--ig-separator)}
+body[data-ig-materials="r42"] :is(.ig-r42-dialog,.ig-r42-file-popover,.jg-filter-pop){background:var(--ig-surface-content);color:var(--ig-ink);-webkit-backdrop-filter:none;backdrop-filter:none}
+body[data-ig-materials="r42"] .ig-r42-dialog::backdrop{background:var(--ig-overlay-backdrop)}
+body[data-ig-materials="r42"] :is(.ig-r42-command-search input,.jg-search input,.secfind input[type=search]){border-color:var(--ig-control-border);background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action):hover{background:var(--ig-state-hover)}
+body[data-ig-materials="r42"] :is(.ig-r42-shell,.ig-r42-dialog) :focus-visible{outline-color:var(--ig-focus)}
+
+/* 5 · Contenido: estable y opaco. Aquí se retira el cristal que había. */
+body[data-ig-materials="r42"] :is(.ig-r42-shell,.ig-r42-dialog) .glass,
+body[data-ig-materials="r42"] :is(.jg-inspector,.jg-hero,.jg-head,.jg-play,.jg-card,.jg-advanced,.jg-workspace),
+body[data-ig-materials="r42"] :is(.ig-afondo,.ig-empty,.ig-support,.ig-touch-alternative),
+body[data-ig-materials="r42"] .r42-rincon :is(.xhero,.r40-workspace>.qcard){
+  background:var(--ig-surface-content);-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+body[data-ig-materials="r42"] .r42-rincon .r40-scene-actions{background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] .r42-rincon .r42-static-fallback figcaption{background:var(--ig-surface-content)}
+
+/* 6 · Rincón tranquilo · chrome oscuro de baja estimulación. El stage no se toca. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.nav a){color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a:hover{background:var(--ig-state-hover-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a[aria-current=page]{background:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav{border-top-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav .sep{background:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico,.lang,.ig-menu-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico[aria-expanded=true],.lang.on){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :focus-visible{outline-color:var(--ig-focus-on-dark)}
+
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail){background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-shell{border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-title{color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-eyebrow,.ig-r42-project-status){color:var(--ig-ink-muted-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action,button,select){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action,button):hover{background:var(--ig-state-hover-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail button{border-color:transparent;background:transparent}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-rail button[aria-pressed="true"],.ig-r42-context .r40-tabs button[aria-selected="true"]){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs{background:transparent;border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs button{border-color:transparent}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-mobile-mode{color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :focus-visible{outline-color:var(--ig-focus-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-project-status::before{background:var(--ig-ink-muted-on-dark)}
+
+/* Rincón · todo el chrome temporal es oscuro y opaco: inspector, diálogos (ayuda,
+   acciones, panel contextual), popover y sheets. El contenido de lectura sigue opaco;
+   solo cambia a tinta clara sobre navy para no iluminar la escena. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.ig-r42-dialog-head,.ig-r42-inspector-head){
+  background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark);-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-dialog::backdrop{background:var(--ig-overlay-backdrop-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(h1,h2,h3,h4,p,li,dt,dd,label,span,strong,small,summary,legend,figcaption,output){color:inherit}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.ig-r42-inspector-hint,.lede,.muted,small){color:var(--ig-ink-muted-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) a{color:var(--ig-link-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.xhero,.ig-r42-help-source,.qcard,.r42-settings,.audio-now,.breathbox){background:transparent;border-color:var(--ig-separator-dark);box-shadow:none}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,select,input:not([type=range]),textarea,.ig-r42-action,.ig-r42-icon-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,.ig-r42-action,.ig-r42-icon-button):hover{background:var(--ig-state-hover-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button[aria-pressed="true"],button[aria-selected="true"]){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) input[type=range]{accent-color:var(--ig-state-selected-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :focus-visible{outline-color:var(--ig-focus-on-dark)}
+/* Menú «Más» y sheet de ajustes en móvil: oscuros en los dos modos. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-actions[open]>.r42-more-menu{background:var(--ig-chrome-solid-dark);border-color:var(--ig-control-border-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu button{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu :focus-visible{outline-color:var(--ig-focus-on-dark)}
+@media (max-width:700px){
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open],
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open]>summary{background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :is(label,span,strong,small,p,legend){color:inherit}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :is(button,select){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] input[type=range]{accent-color:var(--ig-state-selected-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :focus-visible{outline-color:var(--ig-focus-on-dark)}
+}
+
+/* Modo limpio: controles flotantes sobre la escena (cristal oscuro con suelo). */
+@layer ig-r42-materials-important{
+  body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+    background:var(--ig-chrome-solid-dark)!important;border-color:var(--ig-control-border-dark)!important;
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (color:rgb(0 0 0 / max(.1,.2))){
+    body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+      background:rgb(var(--ig-chrome-dark-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-dark)),var(--ig-glass-floor-dark),var(--ig-glass-alpha-min)))!important;
+      -webkit-backdrop-filter:blur(var(--ig-glass-blur))!important;backdrop-filter:blur(var(--ig-glass-blur))!important;
+    }
+  }
+  :is(html[data-ig-transparency="opaque"],html[data-ig-contrast="on"]) body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+    background:var(--ig-chrome-solid-dark)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  @media (prefers-contrast:more),(max-width:900px){
+    html body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+  /* Contenido: superficies que el CSS antiguo fijaba translúcidas con !important. */
+  body[data-ig-materials="r42"] .secfind{background:var(--ig-surface-content)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  body[data-ig-materials="r42"] .secfind input[type=search]{border-color:var(--ig-control-border)!important}
+}
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>button,
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>.r42-more-actions>summary{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>button[aria-pressed="true"]{background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"].r42-clean .r42-more-actions[open]>.r42-more-menu{background:var(--ig-chrome-solid-dark);border-color:var(--ig-control-border-dark)}
+body[data-ig-materials="r42"].r42-clean .r42-more-menu button{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean .exit-focus{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean #watch :focus-visible{outline-color:var(--ig-focus-on-dark)}
+
+/* 7 · Control «Transparencia» dentro de Lectura (solo en el piloto) */
+body[data-ig-materials="r42"] .ig-transparency{display:grid;gap:.4rem;margin-top:.75rem}
+body[data-ig-materials="r42"] .ig-transparency-title{margin:0;font-size:.9rem;font-weight:700;color:var(--ig-ink)}
+body[data-ig-materials="r42"] .ig-transparency .ctrls{margin:0}
+body[data-ig-materials="r42"] .ig-transparency-note{margin:0;font-size:.88rem;line-height:1.45;color:var(--ig-ink-muted)}
+/* «Más contraste» impone opaco: la elección guardada se marca con trazo discontinuo y la nota lo explica. */
+body[data-ig-materials="r42"] .ig-transparency[data-ig-transparency-forced] button[aria-pressed="true"]{background:var(--ig-surface-content);color:var(--ig-ink);border:2px dashed var(--ig-ink)}
+body[data-ig-materials="r42"] .ig-transparency-forced{margin:0;padding:.5rem .65rem;border:2px solid var(--ig-ink);border-radius:.6rem;font-size:.9rem;font-weight:700;color:var(--ig-ink);background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] .ig-transparency-forced[hidden]{display:none}
+
+/* 8 · Movimiento, colores forzados e impresión */
+body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail,.ig-r42-topbar){transition:none}
+@media (forced-colors:active){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail,.ig-r42-topbar,.ig-r42-context,.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.jg-filter-pop,.secfind,.r42-more-menu,.r42-settings),
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.ig-r42-dialog-head,.ig-r42-inspector-head){
+    background:Canvas;color:CanvasText;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;
+  }
+  body[data-ig-materials="r42"] .hd :is(.nav a,.brand,.ico,.lang){color:CanvasText;background:Canvas;border-color:CanvasText}
+  body[data-ig-materials="r42"] .hd :is(.nav a[aria-current=page],.lang.on,.ico[aria-expanded=true]),
+  body[data-ig-materials="r42"] .ig-transparency button[aria-pressed="true"]{background:Highlight;color:HighlightText;border-color:Highlight;forced-color-adjust:none}
+  body[data-ig-materials="r42"] :focus-visible{outline-color:Highlight}
+}
+@layer ig-r42-materials-important{
+  @media (forced-colors:active){
+    body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{background:Canvas!important;border-color:CanvasText!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+}
+@media print{
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+}

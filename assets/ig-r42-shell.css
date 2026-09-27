@@ -1,4 +1,6 @@
 /* Iris Green R42 · app shell común.
+   R42-Design: los tokens --r42-* leen el sistema material (assets/ig-r42-materials.css)
+   cuando está cargado y conservan su valor anterior como fallback.
    Progressive enhancement: la página sigue siendo legible y operable sin esta capa. */
 
 @layer ig-r42-tokens, ig-r42-shell, ig-r42-components, ig-r42-adapters, ig-r42-a11y;
@@ -8,15 +10,15 @@
     --r42-navy:#17395c;
     --r42-blue:#2f82c6;
     --r42-violet:#7567d9;
-    --r42-ink:#172b42;
-    --r42-muted:#526477;
-    --r42-line:#c9d8e6;
-    --r42-line-strong:#91a9bf;
-    --r42-surface:#ffffff;
-    --r42-soft:#f4f7fa;
-    --r42-selected:#17395c;
-    --r42-focus:#5a49a8;
-    --r42-danger:#8a2942;
+    --r42-ink:var(--ig-ink,#172b42);
+    --r42-muted:var(--ig-ink-muted,#526477);
+    --r42-line:var(--ig-separator,#c9d8e6);
+    --r42-line-strong:var(--ig-control-border,#91a9bf);
+    --r42-surface:var(--ig-surface-content,#ffffff);
+    --r42-soft:var(--ig-surface-content-soft,#f4f7fa);
+    --r42-selected:var(--ig-state-selected,#17395c);
+    --r42-focus:var(--ig-focus,#5a49a8);
+    --r42-danger:var(--ig-state-error,#8a2942);
     --r42-radius:18px;
     --r42-radius-sm:12px;
     --r42-hit:44px;
@@ -81,7 +83,7 @@
   .ig-r42-back:hover,
   .ig-r42-icon-button:hover,
   .ig-r42-action:hover {
-    background:#edf5fb;
+    background:var(--ig-state-hover,#edf5fb);
     border-color:#8eb7d4;
   }
 
@@ -140,7 +142,7 @@
   }
 
   .ig-r42-project-status[data-state="dirty"]::before { background:#a66b22; }
-  .ig-r42-project-status[data-state="saved"]::before { background:#28755c; }
+  .ig-r42-project-status[data-state="saved"]::before { background:var(--ig-state-success,#28755c); }
   .ig-r42-project-status[data-state="error"]::before { background:var(--r42-danger); }
 
   .ig-r42-context {
@@ -193,7 +195,7 @@
 
   .ig-r42-rail button:hover,
   .ig-r42-rail button[aria-pressed="true"] {
-    background:#e6f1f8;
+    background:var(--ig-state-selected-soft,#e6f1f8);
     border-color:#a8c2d5;
   }
 
@@ -400,7 +402,7 @@
   }
 
   .ig-r42-dialog::backdrop {
-    background:rgba(14,29,53,.42);
+    background:var(--ig-overlay-backdrop,rgba(14,29,53,.42));
   }
 
   .ig-r42-dialog-head {
