@@ -17,7 +17,7 @@ S2=[
 ('library-022','library','food','/es/biblioteca/arfid-tca-y-pica-cuando-el-apoyo-cotidiano-necesita-atencion-clinica/','/en/everyday-life/arfid-eating-disorders-and-pica-when-everyday-support-needs-clinical-care/','ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica','ARFID, eating disorders and pica: when everyday support needs clinical care'),
 ('library-057','library','abuse','/es/biblioteca/abuso-explotacion-y-relaciones-seguras/','/en/everyday-life/abuse-exploitation-and-safe-relationships/','Abuso, explotación y relaciones seguras','Abuse, exploitation and safe relationships'),
 ]
-RS={5:('research-005','food'),36:('research-036','selfharm'),37:('research-037','selfharm'),45:('research-045','food'),46:('research-046','food'),71:('research-071','sexual')}
+RS={5:('research-005','food'),36:('research-036','selfharm'),37:('research-037','selfharm'),45:('research-045','food'),46:('research-046','food'),71:('research-071','sexual')}\nINTENTIONAL_RESEARCH={35,42,43,89}
 SAFE={
 'abuse':{'es':('Explicación segura','Si alguien te hace sentir miedo, te obliga a hacer algo, te pide guardar secretos que te hacen sentir mal o se aprovecha de que necesitas ayuda, puedes contárselo a una persona adulta de confianza. No necesitas explicar todos los detalles para pedir ayuda.','Si estás en peligro ahora, busca ayuda inmediata de una persona adulta de confianza o de los servicios de emergencia de tu país.'),'en':('Safer explanation','If someone makes you feel afraid, forces you to do something, asks you to keep secrets that make you feel unsafe, or takes advantage of the fact that you need help, you can tell a trusted adult. You do not need to explain every detail in order to ask for help.','If you are in immediate danger, seek help from a trusted adult or your local emergency services.')},
 'food':{'es':('Explicación segura','Esta información habla de dificultades serias relacionadas con la comida y la salud. La versión segura evita pesos, calorías, comparaciones corporales y detalles sobre conductas que puedan resultar dañinas. Si comer, el miedo a comer o lo que ocurre después de comer te preocupa, habla con una persona adulta de confianza y con un profesional sanitario.','Puedes pedir ayuda aunque no sepas ponerle un nombre a lo que te pasa.'),'en':('Safer explanation','This information is about serious difficulties involving food and health. The safer version avoids weights, calories, body comparisons and details about behaviours that could be harmful. If eating, fear around eating, or what happens after eating is worrying you, speak to a trusted adult and a health professional.','You can ask for help even if you do not know what to call what is happening.')},
@@ -102,6 +102,8 @@ def research(root):
             body=''.join(f'<p>{html.escape(str(v))}</p>' for v in paras)
             (out/f'{cid}-{lang}.html').write_text(f'<h2>{html.escape(str(heading))}</h2>{body}<p>{html.escape(str(means))}</p><p>{html.escape(str(notp))}</p>',encoding='utf-8')
         es=SAFE[group]['es'];en=SAFE[group]['en'];x['text']=[es[1],es[2]];x['means']=es[1];x['notProven']=es[2];x['text_en']=[en[1],en[2]];x['means_en']=en[1];x['notProven_en']=en[2];x['ig_s2_id']=cid;n+=1
+    for x in data:
+        if int(x.get('n',0) or 0) in INTENTIONAL_RESEARCH:x['ig_intentional_only']=True
     data_path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     p=root/'es/investigacion/index.html'
     if p.is_file():
