@@ -38,7 +38,13 @@ def static():
  rows=[]
  for p in sorted(DIST.rglob('*.html')):
   s=BeautifulSoup(p.read_text(),'html.parser');rel=p.relative_to(DIST).as_posix()
-  assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
+  if rel=='index.html' and s.body and s.body.get('data-ig-home-r42')=='true':
+   assert len(s.select('link[href^="/assets/ig-home-r42.css?v="]'))==1,rel
+   assert not s.select('link[href^="/assets/iris-brief-r08.css?v="]'),rel
+   assert not s.select('#ig-page-finder'),rel
+   assert len(s.select('#ig-home-search-form'))==1,rel
+  else:
+   assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
   assert not s.select('img[src*="v40-brand-symbol"]'),rel
   assert 'flor de iris' not in p.read_text().lower(),rel
   rows.append({'path':rel,'language':s.html.get('lang'),'brief':True,'flower':False})
