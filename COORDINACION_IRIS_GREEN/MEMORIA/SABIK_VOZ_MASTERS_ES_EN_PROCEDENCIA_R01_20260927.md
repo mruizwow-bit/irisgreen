@@ -45,6 +45,25 @@ Semilla histórica aprobada que llevó a este cierre:
 
 La referencia VoiceDesign intermedia exacta de la primera sesión no se recuperó; por tanto no se presenta como si existiera una cadena criptográfica completa de ese paso histórico. El master EN aprobado sí queda identificado por hash.
 
+## 3B. Master inglés V2 seleccionado
+
+Tras la búsqueda controlada V4 y la comparación perceptiva/técnica posterior, María selecciona definitivamente la candidata **12 · seed 9112** como nuevo master inglés de referencia.
+
+`SABIK_EN_MASTER_V2.wav` = copia canónica de `SABIK_EN_REG_V4_12_seed9112.wav`.
+
+- seed: `9112`;
+- SHA-256: `c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede`;
+- motor: Qwen3-TTS 12Hz 1.7B Base;
+- origen de identidad: master inglés aprobado previo + generación x-vector-only;
+- texto exacto usado para generar la candidata 12:
+  `Hello. I'm Sabik. I can help you find the information you need. We can go step by step. If something isn't clear, I can explain it in a different way.`
+
+La comparación final se hizo con las candidatas 02, 06, 08, 10, 11 y 12. María y Astra coinciden en cerrar la selección con la 12 tras escuchar estabilidad, timbre, ritmo y similitud con Sabik ES.
+
+La referencia ralentizada 0.88 queda **DESCARTADA** por sonido robótico y no debe entrar en ningún corpus ni entrenamiento.
+
+Desde este punto, el master EN vigente para corpus/ICL/fine-tuning es `SABIK_EN_MASTER_V2.wav`; el antiguo `SABIK_EN_MASTER_RETEST_01.wav` se conserva solo como evidencia histórica de la identidad que dio origen a la V2.
+
 ## 4. Master español aprobado
 
 `SABIK_ES_MASTER_V1.wav` es una copia canónica de `SABIK_ES_LONG_REF.wav`.
@@ -129,6 +148,6 @@ Antes de release público se mantiene un gate separado para comprobar la licenci
 
 ## 10. Resultado
 
-La búsqueda de identidad vocal queda cerrada. El siguiente trabajo de voz es producción controlada: `SABIK_COPY_PRODUCCION`, biblioteca de audio ES/EN, cierre de licencias y posterior integración autorizada.
+La búsqueda de identidad vocal queda cerrada en ambos idiomas. El siguiente trabajo de voz es: generar y revisar `SABIK_EN_TRAIN_V1`, ejecutar fine-tuning EN; después fine-tuning ES; validar ambos checkpoints con frases inéditas; y solo entonces continuar con `SABIK_COPY_PRODUCCION` y `SABIK_AUDIO_LIBRARY`.
 
 No subir masters ni grabaciones humanas al GitHub público.
