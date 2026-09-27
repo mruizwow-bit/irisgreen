@@ -1,0 +1,39 @@
+{
+  "schema": "SABIK_CLOUD_SOURCE_SNAPSHOT/1.0",
+  "source_repository": "mruizwow-bit/irisgreen",
+  "source_commit": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
+  "captured_at": "2026-09-27",
+  "purpose": "Approved/public Iris Green content snapshot for issue #306; source-only, no user data.",
+  "inventory": [
+    {
+      "source_path": "buscador.json",
+      "snapshot_path": "sources/a9-r01/catalog-search.json",
+      "git_blob_sha1": "fa268bf5ff70f6b994722b0b7d4abea001ac1493"
+    },
+    {
+      "source_path": "es/datos/datos.json",
+      "snapshot_path": "sources/a9-r01/data-es.json",
+      "git_blob_sha1": "b0d72db6838030125ade4a292562acd4351f151b"
+    },
+    {
+      "source_path": "en/data/data.json",
+      "snapshot_path": "sources/a9-r01/data-en.json",
+      "git_blob_sha1": "65a7b78e45dbfb1879e34223b786b12d5e49924a"
+    },
+    {
+      "source_path": "es/biblioteca/vida-diaria.json",
+      "snapshot_path": "sources/a9-r01/everyday-es.json",
+      "git_blob_sha1": "f4831139120fe5631b6a3b7bbc62d25469a57f14"
+    },
+    {
+      "source_path": "en/everyday-life/everyday-life.json",
+      "snapshot_path": "sources/a9-r01/everyday-en.json",
+      "git_blob_sha1": "fdea8abcba5ecea2bda862e75c6d0a04f2d70dac"
+    },
+    {
+      "source_path": "es/investigacion/estudios-textos.json",
+      "snapshot_path": "sources/a9-r01/research-bilingual.json",
+      "git_blob_sha1": "271f03adf38079efd03dbc8c8561a41b59e59f4a"
+    }
+  ]
+}
