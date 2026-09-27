@@ -6,7 +6,7 @@ if(!document.body||document.body.dataset.igHomeR42!=='true')return;
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const COPY={
  es:{
-  explore:'Explorar',quiet:'Rincón tranquilo',reading:'Lectura',language:'Idioma',
+  explore:'Explorar',exploreSite:'Explorar Iris Green',quiet:'Rincón tranquilo',reading:'Lectura',music:'Música',language:'Idioma',pageTitle:'Iris Green · Neurodiversidad, información y recursos',
   eyebrow:'Neurodiversidad · Información y recursos',title:'Empieza por lo que necesitas',
   lead:'Busca una palabra o entra directamente por una sección.',
   searchLabel:'Buscar en Iris Green',placeholder:'Por ejemplo: ruido, instrucciones, transporte…',search:'Buscar',
@@ -23,7 +23,7 @@ const COPY={
   spacing:'Más espacio',contrast:'Más contraste',controls:'Botones grandes',guide:'Guía de lectura',motion:'Reducir movimiento'
  },
  en:{
-  explore:'Explore',quiet:'Quiet space',reading:'Reading',language:'Language',
+  explore:'Explore',exploreSite:'Explore Iris Green',quiet:'Quiet space',reading:'Reading',music:'Music',language:'Language',pageTitle:'Iris Green · Neurodiversity, information and resources',
   eyebrow:'Neurodiversity · Information and resources',title:'Start with what you need',
   lead:'Search for a word or go straight to a section.',
   searchLabel:'Search Iris Green',placeholder:'For example: noise, instructions, transport…',search:'Search',
@@ -73,6 +73,7 @@ function drawSections(){
 }
 function translate(){
  document.documentElement.lang=lang;
+ document.title=T().pageTitle;
  $$('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(T()[key])el.textContent=T()[key];});
  $$('[data-i18n-label]').forEach(el=>{const key=el.dataset.i18nLabel;if(T()[key])el.setAttribute('aria-label',T()[key]);});
  $('#ig-home-q').placeholder=T().placeholder;
