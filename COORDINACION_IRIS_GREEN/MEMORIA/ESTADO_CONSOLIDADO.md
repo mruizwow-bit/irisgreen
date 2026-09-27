@@ -1,5 +1,11 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · QC ES PASS y referencia SFT 24 kHz · 27/09/2026
+
+La muestra ES 12/12 pasa QA acústico: F0 mediana ≈150.6 Hz frente a master ≈147.6 Hz, RMS estable, 0 clipping y sin deriva progresiva detectable. No se descarta ningún clip de la muestra.
+
+El master ES canónico permanece a 44.1 kHz. Para el dataset SFT se utilizará una copia técnica 24 kHz exclusivamente como `ref_audio`, porque el dataset oficial de Qwen3-TTS exige 24 kHz. Los JSONL se respaldarán antes de actualizar ese campo. Siguiente gate: crear ref 24 kHz y ejecutar worst-case preflight ES.
+
 ## Sabik · ES codes completos · 27/09/2026
 
 `SABIK_ES_TRAIN_V1` queda preparado con `train_with_codes.jsonl` completo 133/133 mediante tokenización segura batch 1 y UTF-8. La ejecución terminó con ≈13.82 GiB de VRAM libre y se creó una muestra REVIEW de 12 WAV para QA previo a SFT.
