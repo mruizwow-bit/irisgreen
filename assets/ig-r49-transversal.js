@@ -78,7 +78,7 @@ function upgradeHeader(){
  var settings=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-settings':'','aria-label':tr().settingsTitle},h('span',{text:tr().settings}));
  var music=h('button',{type:'button',class:'ig-r49-tool','data-ig-music':'','aria-expanded':'false','aria-label':tr().music},h('span',{text:tr().music}));
  var lang=h('a',{class:'ig-r49-lang',href:langHref(),lang:en()?'es':'en',text:tr().language});
- tools.append(settings,music,lang);inner.append(brand,tools);header.appendChild(inner);
+ tools.append(settings,music,lang);inner.append(brand,tools);header.replaceChildren(inner);
  settings.addEventListener('click',function(){openSettings(settings);});
  return header;
 }
