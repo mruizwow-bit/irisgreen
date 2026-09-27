@@ -1,5 +1,13 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · referencias vocales exactas confirmadas · 27/09/2026
+
+María aporta y confirma los dos archivos exactos que representan las voces elegidas:
+- EN: `SABIK_EN_V6_12_T01.wav` · SHA-256 `8dabd1ceb126201822d0ccc431bf5087fb276aa49061945d3a37c23ea1be100b`.
+- ES: `SABIK_ES_LONG_REF.wav` (master ES V1) · SHA-256 `c9d18290375d46608d37f65b05788ef552980706161a0eb0e26e2a268059c8fa`.
+
+La referencia V4_12 seed 9112 se mantiene como antecedente técnico de la familia EN, pero la referencia auditiva exacta elegida por María queda fijada en V6_12_T01.
+
 ## Sabik · QC ES PASS y referencia SFT 24 kHz · 27/09/2026
 
 La muestra ES 12/12 pasa QA acústico: F0 mediana ≈150.6 Hz frente a master ≈147.6 Hz, RMS estable, 0 clipping y sin deriva progresiva detectable. No se descarta ningún clip de la muestra.
