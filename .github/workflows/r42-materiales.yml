@@ -1,0 +1,45 @@
+name: R42 · sistema material (piloto)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'assets/ig-r42-materials.css'
+      - 'assets/ig-r42-shell.css'
+      - 'assets/preferencias-lectura.js'
+      - 'scripts/apply_r42_app_shell.py'
+      - 'scripts/test_r42_app_shell.py'
+      - 'scripts/measure_r42_materials.py'
+      - 'scripts/test_r42_materials_browser.py'
+      - 'assets/ig-suite.css'
+      - 'scripts/build_taller_suite.py'
+      - 'assets/ig-taller-material-r43.css'
+      - 'scripts/apply_taller_materials_r43.py'
+      - 'scripts/test_r43_integrated.py'
+      - '.github/workflows/r42-materiales.yml'
+permissions:
+  contents: read
+jobs:
+  materials:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/measure_r42_materials.py
+      - run: python scripts/test_r42_app_shell.py
+      - run: python scripts/build_site.py
+      - run: python scripts/test_r42_app_shell.py --root dist
+      - run: python scripts/test_r43_integrated.py --root dist
+      - run: cd scripts && python test_r42_materials_browser.py
+      - run: python scripts/test_reading_preferences.py --phase after
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r42-materiales-evidencia
+          path: |
+            reports/r42-materials/
+            reports/preferences/
