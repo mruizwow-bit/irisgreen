@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · corpus EN V1 · QC muestra PASS · 27/09/2026
+
+**Estado: `SABIK_EN_TRAIN_V1_SAMPLE_QC_PASS_PREPARE_CODES_NEXT`.**
+
+Corpus inglés generado completo: 160 clips / 10.36 min. Muestra estratificada 12/12 revisada sin clipping ni deriva acústica progresiva; F0 mediana de muestra ≈193 Hz y ritmo mediano ≈173 ppm. Siguiente gate: extracción de `audio_codes` y preparación de `train_with_codes.jsonl`.
+
+Nota técnica vigente: no lanzar aún el `sft_12hz.py` stock sin resolver los problemas abiertos de alineación de pérdida y el hard-code de FlashAttention2 observados en upstream Qwen3-TTS al 27/09/2026.
+
 ## Sabik · master inglés V2 seleccionado · 27/09/2026
 
 **Estado: `SABIK_EN_MASTER_V2_SELECTED_TRAINING_NEXT`.**
