@@ -82,7 +82,7 @@ async def perf(browser,path,name):
       return n?{domContentLoaded:n.domContentLoadedEventEnd,load:n.loadEventEnd,transferSize:n.transferSize}:null;
     }""")
     p=await page.evaluate('window.__r49perf')
-    p['interaction_event_max_ms']=max(p.get('events') or [0]);p.pop('events',None);p['navigation']=nav;p['route']=path;p['sample']=name
+    p['inp_observed_ms']=max(p.get('events') or [0]);p.pop('events',None);p['navigation']=nav;p['route']=path;p['sample']=name
     await page.close();return p
 
 async def main():
@@ -117,7 +117,12 @@ async def main():
         stage=page.locator('[data-ig-r49-stage]').first;await stage.click();await page.locator('#ig-r49-audience [data-ig-audience-stage="children"]').click();await page.keyboard.press('Escape')
         await page.goto(BASE+'/es/datos/',wait_until='domcontentloaded');await page.wait_for_timeout(250);need(await page.locator('.ig-r49-stage-state').first.inner_text()=='Infancia','audience session state did not persist across areas')
         await page.goto(BASE+'/en/data/',wait_until='domcontentloaded');await page.wait_for_timeout(250);need(await page.locator('[data-ig-r49-search]').first.get_attribute('aria-label')=='Search','EN common chrome label wrong');need(await page.locator('.ig-r49-stage-state').first.inner_text()=='Children','EN audience label wrong')
-        report['accessibility']+=['native-dialog-escape','focus-restore','session-audience-cross-area','EN-common-chrome']
+        for route in ['/es/videos/?lang=en','/es/libros/?lang=en','/es/tramites/directorio/?lang=en','/es/investigacion/?lang=en']:
+            await page.goto(BASE+route,wait_until='domcontentloaded');await page.wait_for_timeout(300)
+            need(await page.locator('html').get_attribute('lang')=='en','single-route bilingual app did not bootstrap EN '+route)
+            need(await page.locator('[data-ig-r49-search]').first.get_attribute('aria-label')=='Search','common chrome did not follow EN '+route)
+            need(await page.evaluate("localStorage.getItem('ig_lang')")=='en','bilingual app language state not set before mount '+route)
+        report['accessibility']+=['native-dialog-escape','focus-restore','session-audience-cross-area','EN-common-chrome','single-route-EN-bootstrap']
 
         # Landmarks, dialog names, current page, target size and text-spacing/reflow.
         await page.set_viewport_size({'width':390,'height':844})
