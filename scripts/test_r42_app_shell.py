@@ -138,6 +138,16 @@ def built_contract(root: Path) -> None:
         assert 'data-ig-r42-pilot="true"' in text, rel
         assert f'data-ig-r42-family="{family}"' in text, rel
 
+    # R43 · every page already built on the R42 shell (Taller suite) receives the material system.
+    for path in root.rglob("index.html"):
+        text = path.read_text(encoding="utf-8")
+        body = re.search(r"<body[^>]*>", text, re.I)
+        if body and 'data-ig-r42-pilot="true"' in body.group(0):
+            rel = path.relative_to(root).as_posix()
+            assert MATERIALS in text, rel
+            assert 'data-ig-materials="r42"' in body.group(0), rel
+            assert "ig-r42-shell.css?v=r42-a3-1" not in text, rel
+
     # No accidental site-wide propagation before human acceptance.
     for rel in ("index.html", "es/recursos/index.html", "en/resources/index.html"):
         path = root / rel
