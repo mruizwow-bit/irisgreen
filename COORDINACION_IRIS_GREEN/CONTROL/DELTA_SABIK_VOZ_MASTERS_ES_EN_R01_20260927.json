@@ -1,0 +1,56 @@
+{
+  "id": "SABIK-VOICE-MASTERS-ES-EN-R01",
+  "fecha": "2026-09-27",
+  "estado": "SABIK_VOICE_MASTERS_ES_EN_APPROVED_PROVENANCE_REGISTERED",
+  "responsable_decision": "Titular del proyecto + Astra",
+  "human_source": {
+    "type": "owner_own_voice",
+    "authorized": true,
+    "artifact": "SABIK_SOURCE_MARIA.wav",
+    "sha256": "6545fcad588db96c1d0bce1cd1f2c43cb8cda124627bcccd7fac6075c2dad770",
+    "public_repository_audio": false
+  },
+  "masters": {
+    "en": {
+      "artifact": "SABIK_EN_MASTER_RETEST_01.wav",
+      "sha256": "fe58b4af6e89fd15fd631945a8fedfe0b14a225a0dc1689703311d47db412285",
+      "engine": "Qwen3-TTS-12Hz-1.7B-Base",
+      "mode": "x_vector_only",
+      "status": "APPROVED"
+    },
+    "es": {
+      "artifact": "SABIK_ES_MASTER_V1.wav",
+      "canonical_source_artifact": "SABIK_ES_LONG_REF.wav",
+      "sha256": "c9d18290375d46608d37f65b05788ef552980706161a0eb0e26e2a268059c8fa",
+      "engine": "Qwen3-TTS-12Hz-1.7B-Base",
+      "mode": "ICL",
+      "x_vector_only_mode": false,
+      "language": "Spanish",
+      "accent": "espanol_peninsular",
+      "human_validation": "20/20 APPROVED"
+    }
+  },
+  "rejected_for_final_es": [
+    "OpenVoice por artefactos roboticos",
+    "RVC entrenado desde master ingles para español largo por cambio de voz/acento ingles",
+    "135 outputs ES convertidos con RVC 40e por acento no deseado"
+  ],
+  "content_governance": {
+    "training_corpus": "CORPUS_ENTRENAMIENTO_VOZ",
+    "production_copy": "SABIK_COPY_PRODUCCION",
+    "audio_library": "SABIK_AUDIO_LIBRARY",
+    "rule": "training corpus is never production copy by default"
+  },
+  "privacy": {
+    "publish_human_source_audio": false,
+    "publish_master_audio_in_public_repo": false,
+    "record_hashes_and_parameters": true
+  },
+  "licensing": {
+    "qwen_code_observed_license": "Apache-2.0",
+    "qwen_code_source": "https://github.com/QwenLM/Qwen3-TTS/blob/main/LICENSE",
+    "final_weights_and_dependencies": "VERIFY_AT_RELEASE"
+  },
+  "memoria": "MEMORIA/SABIK_VOZ_MASTERS_ES_EN_PROCEDENCIA_R01_20260927.md",
+  "declaracion": "NORMATIVA/DECLARACION_PROCEDENCIA_AUTORIZACION_VOZ_SABIK_R01_20260927.md"
+}
