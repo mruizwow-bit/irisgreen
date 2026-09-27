@@ -79,3 +79,82 @@ PROBE = r"""(floors) => {
   const measure = (root, limit) => { const rows = [];
     const nodes = [...root.querySelectorAll('a,button,strong,span,h1,h2,p,label,summary,small,li')].filter(n => n.getClientRects().length && n.childNodes.length && [...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())).slice(0, limit);
     for (const n of nodes) { const fg = parse(getComputedStyle(n).color); if (!fg) continue;
+      for (const e of effective(n)) rows.push({path:path(n), text:n.textContent.trim().slice(0, 40), fg:[fg.r, fg.g, fg.b], bg:[Math.round(e.color.r), Math.round(e.color.g), Math.round(e.color.b)], base:e.base, layers:e.layers, ratio:Math.round(ratio(fg, e.color) * 100) / 100}); }
+    return rows; };
+
+  /* Regresión obligatoria: texto en botón opaco dentro de barra de cristal → el fondo es el botón. */
+  const fx = document.createElement('div'); fx.style.cssText = 'position:fixed;left:-9999px;top:0;background:rgba(255,255,255,.5)';
+  const btn = document.createElement('button'); btn.style.cssText = 'background:#17395c;color:#fff'; btn.textContent = 'fixture';
+  fx.appendChild(btn); document.body.appendChild(fx);
+  const reg = effective(btn); const regRatio = ratio({r:255,g:255,b:255}, reg[0].color); fx.remove();
+
+  const quiet = document.body.dataset.igR42Family === 'quiet';
+  const out = {mode:document.documentElement.dataset.igTransparency, source:document.documentElement.dataset.igTransparencySource,
+    forced:document.documentElement.dataset.igTransparencyForced, materials:document.body.dataset.igMaterials,
+    overflow:Math.max(0, document.documentElement.scrollWidth - innerWidth), chrome:[], problems:[],
+    regression:{base:reg[0].base, ratio:Math.round(regRatio * 100) / 100, expected:11.82}};
+  if (reg.length !== 1 || Math.abs(regRatio - 11.82) > .05) out.problems.push('effective-background regression failed');
+  const chrome = [['.hd', quiet ? 'dark' : 'header'], ['.jg-r41-browserbar', 'bar'], ['.jg-gamebar', 'bar'], ['.ig-r42-topbar', null], ['.ig-r42-context', null], ['.ig-r42-rail', null]];
+  for (const [sel, key] of chrome) {
+    const el = document.querySelector(sel); if (!el || !el.getClientRects().length) continue;
+    const bg = parse(getComputedStyle(el).backgroundColor) || {a:0};
+    const rows = measure(el, 40); const worst = rows.reduce((m, r) => Math.min(m, r.ratio), 99);
+    out.chrome.push({sel, alpha:bg.a, floor:key ? floors[key] : null, backdrop:bf(el), worstText:worst, measurements:rows});
+    if (key && bg.a > 0 && bg.a < .999 && bg.a + 1e-3 < floors[key]) out.problems.push(sel + ' alpha ' + bg.a + ' < floor ' + floors[key]);
+    for (const r of rows) if (r.ratio < 4.5) out.problems.push(sel + ' text ' + r.ratio + ' at ' + r.path);
+  }
+  const glassy = [...document.querySelectorAll('body *')].filter(el => bf(el) !== 'none');
+  for (const el of glassy) { let p = el.parentElement; while (p) { if (bf(p) !== 'none') { out.problems.push('glass-on-glass: ' + path(el)); break; } p = p.parentElement; } }
+  for (const el of glassy) if (el.closest('.ig-r42-stage') && !el.matches('.jg-r41-browserbar,.jg-gamebar'))
+    out.problems.push('glass inside workspace: ' + path(el));
+  out.glassCount = glassy.length;
+  out.mainFilter = getComputedStyle(document.querySelector('main')).filter;
+  window.__igMeasure = measure; window.__igLum = c => lum(parse(c));
+  return out;
+}"""
+
+
+def route(rel: str) -> str:
+    return "/" + rel.removesuffix("index.html")
+
+
+def main() -> None:
+    server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=str(DIST)))
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_port}"
+    report = {"cases": [], "failures": []}
+
+    def case(row, fn):
+        try:
+            fn(row)
+            row["passed"] = True
+        except Exception as error:  # noqa: BLE001
+            row.update(passed=False, error=str(error), traceback=traceback.format_exc())
+            report["failures"].append(row)
+        report["cases"].append(row)
+        print(json.dumps({k: v for k, v in row.items() if k != "traceback"}, ensure_ascii=False), flush=True)
+
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch()
+
+        def context(size, mode=None, contrast=False, **extra):
+            ctx = browser.new_context(viewport={"width": size[0], "height": size[1]}, **extra)
+            ctx.route("**/*", lambda r: r.continue_() if r.request.url.startswith(base) else r.abort())
+            prefs = {"version": 2, "scale": 1, "spacing": False, "controls": False, "contrast": contrast, "guide": False, "motion": False}
+            if mode and mode != "normal":
+                prefs["transparency"] = mode
+            ctx.add_init_script("try{localStorage.setItem('ig-a11y'," + json.dumps(json.dumps(prefs)) + ")}catch(_){}")
+            return ctx
+
+        def load(page, rel):
+            errors = []
+            page.on("pageerror", lambda e: errors.append(str(e)))
+            page.goto(base + route(rel), wait_until="domcontentloaded")
+            page.locator(".ig-r42-shell").wait_for(state="visible", timeout=20000)
+            page.wait_for_timeout(400)
+            return errors
+
+        for rel, family in PILOT.items():
+            for vname, size in VIEWPORTS.items():
+                for mode in MODES:
+                    row = {"route": route(rel), "family": family, "viewport": vname, "mode": mode}
