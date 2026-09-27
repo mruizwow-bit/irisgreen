@@ -333,3 +333,25 @@ body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rai
     backdrop-filter:none!important;
   }
 }
+
+
+/* R42 closure · legacy header colours and accessibility modes. */
+@layer ig-r42-materials-important{
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.brand span,.nav a,.nav a.calma){
+    color:var(--ig-ink-on-dark)!important;
+  }
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a[aria-current="page"]{
+    color:var(--ig-state-selected-dark-ink)!important;
+  }
+  html[data-ig-contrast="on"] body[data-ig-materials="r42"][data-ig-r42-family="workshop"] *,
+  body[data-ig-materials="r42"][data-ig-r42-family="workshop"].hc *{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  @media (forced-colors:active),(prefers-contrast:more){
+    body[data-ig-materials="r42"][data-ig-r42-family="workshop"] *{
+      -webkit-backdrop-filter:none!important;
+      backdrop-filter:none!important;
+    }
+  }
+}
