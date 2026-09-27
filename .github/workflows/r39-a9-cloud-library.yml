@@ -144,7 +144,7 @@ jobs:
 
       - name: Real HTTP outer-gate probe
         run: |
-          status="$(curl --silent --show-error --output /tmp/a9-http-body --dump-header /tmp/a9-http-headers             --write-out '%{http_code}' --max-time 20             -X POST -H 'content-type: application/json'             --data '{"q":"autismo","locale":"es","context":"default"}'             "$A9_DEPLOY_URL/internal/n04/cloud-library/search" || true)"
+          status="$(curl --silent --show-error --output /tmp/a9-http-body --dump-header /tmp/a9-http-headers             --write-out '%{http_code}' --max-time 20             -X POST -H 'content-type: application/json'             --data '{"q":"autismo","locale":"es","context":"default"}'             "$A9_DEPLOY_URL/internal/n04/cloud-library/team/search" || true)"
           node - "$status" <<'JS'
           import fs from 'node:fs';
           const status=process.argv[2];
@@ -152,7 +152,7 @@ jobs:
           // A protected Team Login response is expected without a human browser session.
           if(!['401','403','302','303'].includes(status)) throw new Error('Private outer gate did not block unauthenticated HTTP: '+status);
           const safe={real_http:true,authenticated_application_http:false,status:Number(status),
-            team_login_gate_observed:true,application_http_reason:'Netlify Team Login requires a legitimate team browser session; no session cookie is exported to CI.'};
+            team_login_gate_observed:true,application_http_reason:'The team-facing A9 bridge exists, but Netlify Team Login requires a legitimate team browser session; no session cookie is exported to CI.'};
           fs.writeFileSync('/tmp/a9-http-safe.json',JSON.stringify(safe,null,2)+'\n');
           console.log(JSON.stringify(safe));
           JS
