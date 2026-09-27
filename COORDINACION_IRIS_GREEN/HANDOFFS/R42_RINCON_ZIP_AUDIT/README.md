@@ -23,13 +23,14 @@ Ambos faltan en PR #300 HEAD `6c312d3f...`.
 
 Material = Design R02 vigente.
 
-### Preservar para Juegos/Recursos
-- 13 juegos R03;
-- 71 pictogramas + manifest;
-- fix de `arriba()` con offset real de cabecera;
-- evidencia móvil.
+### Juegos
+**Fuera de alcance de este handoff.** Claude está actualizando Juegos en su propio carril. No derivar tareas a A1 ni integrar contenido de Juegos desde este ZIP.
 
-No integrar desde este bundle. Crear/usar un lote independiente sobre el baseline nuevo y aplicar child-safe.
+### Responsables operativos
+- **A7:** portar los dos fixes del Rincón.
+- **A2:** integrar después el resultado de A7 y ejecutar build/preview/HUMAN QA.
+
+Nadie más actualiza Rincón desde este paquete.
 
 ## Evidencia
 111/111 navegador; 273/273 móvil; axe 0 violaciones en 36 runs; checksums completos PASS.
