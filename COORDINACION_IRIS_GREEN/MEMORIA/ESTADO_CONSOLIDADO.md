@@ -1,5 +1,11 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · EN R02 exacto cerrado · 27/09/2026
+
+El reentrenamiento EN R02 usa la referencia exacta `SABIK_EN_V6_12_T01.wav`. La comparación final con misma frase/seed da F0 201.6 Hz frente a 209.9 Hz de referencia, centroide mediano 1181 Hz frente a 1294 Hz y similitud MFCC alineada ≈0.9938. La voz conserva la identidad/timbre esperados y corrige la desviación brillante observada en E0.
+
+Resultado: `SABIK_EN_R02_EXACT_VALIDATED_FINAL`. E0 queda histórico. No reabrir EN salvo evidencia nueva de producción.
+
 ## Sabik · corrección EN tras comparación con referencia exacta · 27/09/2026
 
 E0 se compara directamente con `SABIK_EN_V6_12_T01.wav` usando la misma frase/seed. La voz conserva la misma familia, pero queda más brillante y algo más rápida; la similitud MFCC media (≈0.987) es inferior incluso a la cercanía V6_11↔V6_12 en la misma frase (≈0.997). Por tanto E0 deja de ser el modelo EN final y pasa a evidencia técnica del primer entrenamiento.
