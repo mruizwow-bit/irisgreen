@@ -1,0 +1,61 @@
+{
+  "schema": "R49_A8_TRANSVERSAL_UI/1.0",
+  "date": "2026-09-27",
+  "issue": 311,
+  "status": "R49_A8_TRANSVERSAL_R42_R02_ORDERED",
+  "owner": "Agent 8",
+  "review_gate": "Astra",
+  "integration_gate": "A2",
+  "human_qa": "Maria",
+  "prior_home_delivery": {
+    "issue": 305,
+    "pr": 310,
+    "state": "VALID_HOME_CHILD_SAFE_DONOR_NOT_GLOBAL_SCOPE"
+  },
+  "scope": {
+    "all_public_areas": true,
+    "observed_html_count": 1053,
+    "profiles": [
+      "CONTENT",
+      "BROWSE",
+      "WORKSPACE"
+    ],
+    "zero_unclassified_routes": true
+  },
+  "layout": {
+    "principle": "READING_WIDTH_NOT_EQUAL_PRODUCT_WIDTH",
+    "reject_large_empty_side_gutters": true,
+    "content_reading_measure": "65-75ch for continuous text, not page shell",
+    "workspace_max_width": "none by default",
+    "required_viewports": [
+      "1366x768",
+      "1440x900",
+      "1600x900",
+      "1920x1080",
+      "2560x1440",
+      "390x844",
+      "320x800"
+    ]
+  },
+  "shared_system": [
+    "R42/R02 materials",
+    "global chrome",
+    "IGPreferences",
+    "IGAudience",
+    "child-safe discovery",
+    "responsive/accessibility"
+  ],
+  "coordination": {
+    "R46": "CONSUME_R49_SHARED_UI_KEEP_R46_PRODUCT",
+    "R47": "CONSUME_R49_SHARED_UI_KEEP_R47_PRODUCT",
+    "R48": "CONSUME_R49_SHARED_UI_KEEP_R48_PRODUCT"
+  },
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_CLOUD_A9",
+    "NO_SABIK_VOICE",
+    "NO_ENGINE_REWRITE_R46_R47_R48"
+  ]
+}
