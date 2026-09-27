@@ -28,7 +28,8 @@ if (site.name !== 'sabik-asistente' || site.sso_login !== true || site.sso_login
   throw new Error('Not the protected unpublished Cloud draft');
 }
 if (!/^[a-f0-9]{40}$/.test(provenance.source_head || '') ||
-    !/^[a-f0-9]{40}$/.test(provenance.source_tree || '')) {
+    !/^[a-f0-9]{40}$/.test(provenance.source_tree || '') ||
+    !/^[a-f0-9]{64}$/.test(provenance.source_inventory_sha256 || '')) {
   throw new Error('Invalid build provenance');
 }
 const corpusURL = new URL('../build/library-v2/' + release.corpus_key.replace(/^cloud-library\//, ''), import.meta.url);
@@ -39,7 +40,7 @@ if (corpusBytes.byteLength !== release.corpus_bytes || digestV2(corpusBytes) !==
 const manifest = createCloudManifest(release, {
   build_head: provenance.source_head,
   build_tree: provenance.source_tree,
-  engine_sha256: provenance.engine_sha256
+  engine_sha256: provenance.source_inventory_sha256
 });
 const manifestBytes = Buffer.from(JSON.stringify(manifest) + '\n');
 const store = getDeployStore({
