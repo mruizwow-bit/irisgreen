@@ -452,16 +452,39 @@ function render(){
   renderStatus();
 }
 
+// Mismo respaldo que assets/tarjetas-iris-static.js: un textarea fuera de
+// pantalla, execCommand, y el nodo fuera en cuanto termina. El foco vuelve a
+// donde estaba, porque copiar no debe mover a nadie de sitio.
+function fallbackCopy(text){
+  var active=document.activeElement;
+  var area=document.createElement('textarea');
+  area.value=text;
+  area.setAttribute('readonly','');
+  area.style.position='fixed';
+  area.style.left='-9999px';
+  area.style.top='0';
+  document.body.appendChild(area);
+  area.focus();
+  area.select();
+  var ok=false;
+  try{ok=document.execCommand('copy');}catch(e){ok=false;}
+  area.remove();
+  if(active&&typeof active.focus==='function')active.focus({preventScroll:true});
+  return ok;
+}
+
 function copyCard(){
   var text=plainText();
   var done=function(ok){state.copy=ok?'ok':'error';state.printed=false;renderStatus();};
+  // El respaldo entra sólo si la Clipboard API no está o si rechaza.
+  var fallback=function(){var ok=false;try{ok=fallbackCopy(text);}catch(e){ok=false;}done(ok);};
   try{
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});
+      navigator.clipboard.writeText(text).then(function(){done(true);},fallback);
     }else{
-      done(false);
+      fallback();
     }
-  }catch(e){done(false);}
+  }catch(e){fallback();}
 }
 
 function printCard(){
