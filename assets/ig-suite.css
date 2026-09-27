@@ -355,3 +355,35 @@ body[data-ig-suite] .igp-frame img { width:100%; height:100%; object-fit:contain
 body[data-ig-suite] .igp-frame span { position:absolute; left:.2rem; bottom:.1rem; font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; color:#172b42; background:#fff; border-radius:4px; padding:.1rem .25rem; }
 body[data-ig-suite] .igp-frame[aria-current="true"] { border-color:var(--igs-violet); box-shadow:0 0 0 2px var(--igs-violet); }
 body[data-ig-suite] .igp-frame:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite] .igp-palette { display:grid; grid-template-columns:repeat(4,44px); gap:.3rem; margin:.3rem 0 .6rem; }
+body[data-ig-suite] .igp-swatch { width:44px; height:44px; border-radius:10px; border:2px solid rgba(0,0,0,.35); cursor:pointer; padding:0; }
+body[data-ig-suite] .igp-swatch.igp-transparent { background:repeating-conic-gradient(#cfd8e3 0 25%, #fff 0 50%) 0 0/12px 12px; }
+body[data-ig-suite] .igp-swatch[aria-checked="true"] { box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--igs-violet); }
+body[data-ig-suite] .igp-swatch:focus-visible { outline:3px solid var(--igs-focus); outline-offset:5px; }
+@media (forced-colors: active) { body[data-ig-suite] .igp-swatch { forced-color-adjust:none; } body[data-ig-suite] .igp-swatch[aria-checked="true"] { outline:3px solid Highlight; } }
+
+/* Lienzo (Cómic y Diseño) */
+body[data-ig-suite] .igl-overlay { position:absolute; inset:0; pointer-events:none; z-index:10; overflow:hidden; }
+body[data-ig-suite] .igl-selbox { position:absolute; transform-origin:0 0; border:2px dashed #5a49a8; box-shadow:0 0 0 1px #fff; }
+body[data-ig-suite] .igl-selbox-line { border:0; box-shadow:none; }
+body[data-ig-suite] .igl-handle { position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px; padding:0; border:0; background:transparent; pointer-events:auto; cursor:nwse-resize; touch-action:none; }
+body[data-ig-suite] .igl-handle::after { content:""; position:absolute; left:14px; top:14px; width:16px; height:16px; border-radius:4px; background:#fff; border:2px solid #5a49a8; }
+body[data-ig-suite] .igl-h-tail::after, body[data-ig-suite] .igl-h-start::after, body[data-ig-suite] .igl-h-end::after { border-radius:50%; background:#ffd400; border-color:#101820; }
+body[data-ig-suite] .igl-handle:focus-visible { outline:none; }
+body[data-ig-suite] .igl-handle:focus-visible::after { box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--igs-focus); }
+body[data-ig-suite] .igl-cursor { position:absolute; width:18px; height:18px; margin:-9px 0 0 -9px; background:linear-gradient(#b3261e,#b3261e) center/2px 100% no-repeat, linear-gradient(#b3261e,#b3261e) center/100% 2px no-repeat; }
+body[data-ig-suite] .igl-cursor-dim { opacity:.3; }
+body[data-ig-suite] .igl-swatches { display:flex; flex-wrap:wrap; gap:.25rem; margin:.25rem 0; }
+body[data-ig-suite] .igl-sw { width:28px; height:28px; min-width:28px; padding:0; border-radius:7px; border:1px solid rgba(0,0,0,.4); cursor:pointer; }
+body[data-ig-suite] .igl-sw-none { background:linear-gradient(135deg,#fff 45%,#b3261e 45% 55%,#fff 55%); }
+body[data-ig-suite] .igl-sw[aria-pressed="true"] { box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--igs-violet); }
+body[data-ig-suite] .igl-sw:focus-visible { outline:3px solid var(--igs-focus); outline-offset:3px; }
+body[data-ig-suite] .igl-colour-label { display:block; font-weight:700; font-size:.9rem; }
+@media (pointer:coarse) { body[data-ig-suite] .igl-sw { width:36px; height:36px; } }
+@media (forced-colors: active) { body[data-ig-suite] .igl-sw { forced-color-adjust:none; } body[data-ig-suite] .igl-sw[aria-pressed="true"] { outline:3px solid Highlight; } }
+body[data-ig-suite] .igm-corner-row { display:grid; grid-template-columns:1fr 1fr; gap:0 .5rem; }
+body[data-ig-suite] .igm-corner-name { grid-column:1 / -1; margin:.4rem 0 0; font-weight:700; font-size:.88rem; }
+
+/* R42 · la barra de herramientas fija en móvil es chrome opaco sobre el lienzo (sin cristal:
+   el lienzo necesita estabilidad y la barra lleva controles pequeños). */
+body[data-ig-materials="r42"][data-ig-suite] .igs-toolbar { background:var(--ig-chrome-solid-light,#fff); border-color:var(--ig-separator,#c9d8e6); -webkit-backdrop-filter:none; backdrop-filter:none; }
