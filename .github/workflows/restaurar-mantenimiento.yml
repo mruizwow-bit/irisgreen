@@ -1,0 +1,57 @@
+name: Restaurar mantenimiento Iris Green
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restaurar-mantenimiento.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Restaurar deploy de mantenimiento y volver a bloquear
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+          MAINTENANCE_DEPLOY_ID: 6aa99a0d467202094ed9320f
+          CURRENT_DEPLOY_ID: 6ab8f699b5c516f9f3324bde
+        run: |
+          set -euo pipefail
+          TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
+          if [ -z "$TOKEN" ]; then
+            echo "::error::No hay token de Netlify configurado"
+            exit 1
+          fi
+          API="https://api.netlify.com/api/v1"
+          auth=(-H "Authorization: Bearer $TOKEN")
+
+          # Producción está bloqueada deliberadamente. Se abre solo para restaurar
+          # el cartel y se vuelve a cerrar al final.
+          curl -fsSL -X POST "${auth[@]}" "$API/deploys/$CURRENT_DEPLOY_ID/unlock" >/tmp/unlock.json
+
+          cleanup() {
+            if [ -n "${RESTORED_ID:-}" ]; then
+              curl -fsSL -X POST "${auth[@]}" "$API/deploys/$RESTORED_ID/lock" >/tmp/relock.json || true
+            else
+              curl -fsSL -X POST "${auth[@]}" "$API/deploys/$CURRENT_DEPLOY_ID/lock" >/tmp/relock-current.json || true
+            fi
+          }
+          trap cleanup EXIT
+
+          curl -fsSL -X POST "${auth[@]}" \
+            "$API/sites/$SITE_ID/deploys/$MAINTENANCE_DEPLOY_ID/restore" \
+            -o /tmp/restore.json
+
+          RESTORED_ID="$(python3 - <<'PY'
+import json
+print(json.load(open('/tmp/restore.json'))['id'])
+PY
+)"
+          test -n "$RESTORED_ID"
+          echo "Cartel de mantenimiento restaurado: $RESTORED_ID"
