@@ -1,5 +1,11 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · Audio Library R01 final · 27/09/2026
+
+La biblioteca fija ES/EN queda procesada 30/30 con -16.5 LUFS exactos, peak máximo -1.0 dBFS y cero clipping. Diez entradas requirieron limitador lookahead; reducción máxima 2.774 dB, dentro del límite conservador fijado. Manifest SHA-256 `dd4a44d222d6fbbade669a32a705d08fe5601ac11c39911105df8cb37d71d4d9`; ZIP SHA-256 `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`.
+
+Queda pendiente únicamente recibir el ZIP, verificarlo byte a byte y preparar el handoff de integración web/cloud. No reabrir voz ni loudness salvo evidencia nueva.
+
 ## Sabik · audio fijo R01 · muestra QA PASS · 27/09/2026
 
 Diez WAV de revisión (5 por idioma) pasan HUMAN QA acústico: volumen aprobado, 0 clipping y timbre estable. Se detecta únicamente silencio inicial excesivo en varias piezas EN (hasta ~0.68 s) y en ES welcome (~0.51 s). Se corrige en postproceso, no mediante entrenamiento: trim conservador + normalización gain-only a -16.5 LUFS con pico ≤ -1 dBFS.
