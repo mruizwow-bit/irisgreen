@@ -312,6 +312,11 @@ body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rai
       border-color:var(--ig-control-border-dark)!important;
       color:var(--ig-ink-on-dark)!important;
     }
+    body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-stage .r42-settings[open] .qseg label{
+      background:var(--ig-chrome-control-dark)!important;
+      border-color:var(--ig-control-border-dark)!important;
+      color:var(--ig-ink-on-dark)!important;
+    }
   }
   body[data-ig-materials="r42"] .ig-transparency[data-ig-transparency-forced] .ig-transparency-forced[hidden]{
     display:block!important;
