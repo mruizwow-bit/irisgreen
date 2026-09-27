@@ -317,11 +317,16 @@ def main() -> None:
             load(page, rel)
             page.locator("#a11yBtn").click()
             box = page.locator("[data-ig-transparency-settings]")
-            assert box.get_attribute("data-ig-transparency-forced") == "contrast"
             note = page.locator("[data-ig-transparency-forced-note]")
-            assert note.is_visible() and note.get_attribute("role") == "status"
-            assert "contraste" in note.inner_text().lower() or "contrast" in note.inner_text().lower()
-            assert page.evaluate("document.documentElement.dataset.igTransparency") == "normal"
+            row["forced"] = box.get_attribute("data-ig-transparency-forced")
+            row["note_visible"] = note.is_visible()
+            row["note_role"] = note.get_attribute("role")
+            row["note_text"] = note.inner_text()
+            row["effective_choice"] = page.evaluate("document.documentElement.dataset.igTransparency")
+            assert row["forced"] == "contrast", row
+            assert row["note_visible"] and row["note_role"] == "status", row
+            assert "contraste" in row["note_text"].lower() or "contrast" in row["note_text"].lower(), row
+            assert row["effective_choice"] == "normal", row
             ctx.close()
 
         case(row, forced_note)
