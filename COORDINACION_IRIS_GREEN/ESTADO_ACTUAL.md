@@ -1,3 +1,29 @@
+## R39 · A9 · Biblioteca Cloud de Sabik · fix Astra R03 · 27/09/2026
+
+**Estado: `R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA`.**  
+**Calificación técnica:** `A9_R03_TECHNICALLY_VERIFIED_PRIVATE`.
+
+A9 ha aplicado el fix acotado pedido por Astra en #306 sin reconstruir R38/R39/R06:
+- safe variants: únicamente copy editorial revisado del paquete R42 child-safe `iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip` (SHA-256 `b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23`), con `SAFETY/safe-variants.json` SHA-256 `4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260` y revisión S2 SHA-256 `579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55`;
+- 30 full S2 + 30 safe variants; cada variante queda ligada a su `safety_content_id`; igualdad full/safe o aprobación ausente falla cerrado;
+- URLs EN de Datos con título duplicado `Employment and autism` corregidas mediante `slug_en`: UK y Australia ya conservan rutas distintas;
+- auditoría fail-closed: 1.208 registros de cita / 1.057 URLs únicas / **0 rotas**;
+- Investigación EN conserva texto/título EN, pero cita temporalmente la fuente pública existente `/es/investigacion/#estudio-N` porque el snapshot fijado y R42 integrado todavía no tienen `/en/research/`; no se inventa una ruta EN inexistente.
+
+Release inmutable válida:
+- HEAD probado/desplegado `c6735f8956c4f79f1017bd51c269ecf8a88a4ed3`, tree `b142f75cb822f5575c64c9b490c53f9f092946f7`;
+- versión `sabik-es-en-20260927-r03-ee7e3e4a1f4b`;
+- corpus SHA-256 `0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249`;
+- manifest SHA-256 `a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f`;
+- 1.208 fragmentos = 604 ES + 604 EN;
+- CI `36332929849`: **204/204 PASS**;
+- evidence artifact `10935908743`, digest `sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b`.
+
+Candidato privado:
+`6ab942ab91d1122477001cc0` · `deploy-preview` · READY · `published_at=null`. Netlify confirma Team Login requerido en todos los contextos. R38 sigue intacto (4.332 fragmentos, SHA histórico esperado). Producción, frontend, DNS, Team Login y secretos no se han modificado.
+
+HTTP de aplicación autenticado **sigue PENDING HUMAN QA**: el HTTP externo sin sesión legítima recibe 401 en Team Login, como debe. No se exportan cookies ni credenciales. La cobertura sigue siendo el snapshot técnico 372 catálogo + 49 Datos + 48 Vida diaria + 120 Investigación; no se declara sincronización completa con los 965 registros de #302. `TEPT complejo` sigue ausente del snapshot público fijado y no se inventa.
+
 ## R42 · A8 · Home nueva + child-safe lista para A2 · 27/09/2026
 
 ## Sabik voz/audio · cerrado → integración A2 · 27/09/2026
