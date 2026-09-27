@@ -28,9 +28,12 @@ export function freezeV2(value) {
 }
 export function assertCloudRelease(release) {
   if (!plain(release) || release.schema !== 'SABIK_CLOUD_LIBRARY_RELEASE/2.0' ||
-      typeof release.version !== 'string' || !/^sabik-es-en-20260927-r01-[a-f0-9]{12}$/.test(release.version) ||
+      typeof release.version !== 'string' || !/^sabik-es-en-20260927-r02-[a-f0-9]{12}$/.test(release.version) ||
       !/^[a-f0-9]{64}$/.test(release.corpus_sha256 || '') ||
       !/^[a-f0-9]{64}$/.test(release.source_bundle_sha256 || '') ||
+      release.approved_child_safe_package_sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
+      release.approved_safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
+      release.approved_safe_source_snapshot_sha256 !== '7438eeadeffb3918cacd7654c0e2943b4cfd9b16ef37ca3fb79c4367395657b6' ||
       !/^[a-f0-9]{40}$/.test(release.source_commit || '') ||
       !Number.isSafeInteger(release.corpus_bytes) || release.corpus_bytes < 1 ||
       !Number.isSafeInteger(release.fragment_count) || release.fragment_count < 1 ||
@@ -66,6 +69,9 @@ export function createCloudManifest(release, provenance) {
     safe_variant_count: release.safe_variant_count,
     source_commit: release.source_commit,
     source_bundle_sha256: release.source_bundle_sha256,
+    approved_child_safe_package_sha256: release.approved_child_safe_package_sha256,
+    approved_safe_variants_sha256: release.approved_safe_variants_sha256,
+    approved_safe_source_snapshot_sha256: release.approved_safe_source_snapshot_sha256,
     source_inventory: release.source_inventory,
     corpus_key: release.corpus_key,
     storage_kind: release.storage_kind,
