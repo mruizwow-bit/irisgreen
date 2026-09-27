@@ -187,8 +187,6 @@ def apply_one(path: Path, root: Path) -> dict:
         'owner_lane': owner,
         'exemption': None,
         'reason': reason,
-        'bytes_before': len(before.encode('utf-8')),
-        'bytes_after': len(after.encode('utf-8')),
     }
 
 def main() -> None:
@@ -209,7 +207,6 @@ def main() -> None:
     counts = Counter(x['profile'] for x in manifest)
     locales = Counter(x['locale'] for x in manifest)
     owners = Counter(x['owner_lane'] for x in manifest)
-    delta = sum(x['bytes_after'] - x['bytes_before'] for x in manifest)
     out = root / 'assets' / 'r49-route-profiles.json'
     payload = {
         'version': 'R49-1',
@@ -219,11 +216,10 @@ def main() -> None:
         'profiles': dict(sorted(counts.items())),
         'locales': dict(sorted(locales.items())),
         'owners': dict(sorted(owners.items())),
-        'html_delta_bytes': delta,
         'routes': manifest,
     }
     out.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-    print(json.dumps({k: payload[k] for k in ('total_routes','unclassified','profiles','locales','owners','html_delta_bytes')}, ensure_ascii=False))
+    print(json.dumps({k: payload[k] for k in ('total_routes','unclassified','profiles','locales','owners')}, ensure_ascii=False))
 
 if __name__ == '__main__':
     main()
