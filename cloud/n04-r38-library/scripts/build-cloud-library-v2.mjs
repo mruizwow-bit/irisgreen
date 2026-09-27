@@ -58,6 +58,10 @@ if (approvedSafety?.schema !== 'SABIK_A9_APPROVED_SAFE_VARIANTS/1.0' ||
     approvedSafety.source_package?.sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
     approvedSafety.source_package?.safe_variants_path !== 'SAFETY/safe-variants.json' ||
     approvedSafety.source_package?.safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
+    approvedSafety.source_package?.content_safety_manifest_path !== 'SAFETY/content-safety-manifest.json' ||
+    approvedSafety.source_package?.content_safety_manifest_sha256 !== '51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e' ||
+    approvedSafety.source_package?.content_safety_manifest_records !== 965 ||
+    approvedSafety.source_package?.safe_variant_records !== 16 ||
     approvedSafety.source_package?.s2_review_path !== 'SAFETY/s2-review.csv' ||
     approvedSafety.source_package?.s2_review_sha256 !== '579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55' ||
     approvedSafety.source_package?.classification_review !== 'HUMAN_REVIEWED_S2' ||
@@ -333,6 +337,8 @@ const release = {
   source_bundle_sha256: sourceBundleSha256,
   approved_child_safe_package_sha256: approvedSafety.source_package.sha256,
   approved_safe_variants_sha256: approvedSafety.source_package.safe_variants_sha256,
+  approved_content_safety_manifest_sha256: approvedSafety.source_package.content_safety_manifest_sha256,
+  approved_s2_review_sha256: approvedSafety.source_package.s2_review_sha256,
   approved_safe_source_snapshot_sha256: approvedSafetySha256,
   source_inventory: sourceInventory,
   corpus_key: 'cloud-library/versions/' + version + '/corpus.json',
