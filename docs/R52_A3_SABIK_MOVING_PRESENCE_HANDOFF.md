@@ -36,6 +36,6 @@ This branch does not claim final speech playback because the canonical 30 WAV as
 
 `scripts/test_sabik_presence_r52.py` gates structure, donor provenance and regressions.  
 `scripts/test_sabik_presence_r52_browser.py` produces temporal browser evidence for resting motion, processing, voice ripple, reduced/no-motion, hidden panel, frame pacing and 1920/1440/390/320 widths.  
-CI artifact: `reports/sabik-r52/temporal-evidence.json`.
+CI artifact: `reports/sabik-r52/temporal-evidence.json`. The R08 publisher allowlist also includes `.webp`, and the built donor asset is checked byte-for-byte against source.
 
 Marker: `R52_A3_SABIK_MOVING_PRESENCE_RESTORED_READY_FOR_A2`

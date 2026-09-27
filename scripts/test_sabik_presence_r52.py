@@ -8,6 +8,7 @@ panel = (ROOT / "sabik/iris-panel.html").read_text(encoding="utf-8")
 css = (ROOT / "sabik/iris-mount.css").read_text(encoding="utf-8")
 js = (ROOT / "sabik/sabik-web-r01.js").read_text(encoding="utf-8")
 mount = (ROOT / "sabik/iris-mount.mjs").read_text(encoding="utf-8")
+publisher = (ROOT / "scripts/apply_iris_brief_r08.py").read_text(encoding="utf-8")
 asset = ROOT / "sabik/assets/sabik-base-640.webp"
 
 def require(condition: bool, message: str) -> None:
@@ -55,5 +56,6 @@ require("web_" not in js, "R52 presentation must not swap web_* PNG masters")
 require("new Image()" not in js, "R52 presentation must not preload static state masters")
 require("Movimiento breve cuando cambia el estado." in panel + mount, "Approved R02 ES motion copy changed")
 require("Brief motion when the state changes." in mount, "Approved R02 EN motion copy changed")
+require("'.webp'" in publisher, "R08 publisher must include R52 donor WebP")
 
 print("R52_A3_SABIK_PRESENCE_STATIC_TESTS_PASS")
