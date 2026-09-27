@@ -1,0 +1,64 @@
+name: R49 A8 transversal R42 R02 QA
+on:
+  push:
+    paths:
+      - '.github/workflows/r49-a8-transversal-r42-r02.yml'
+      - 'assets/ig-r49-transversal.css'
+      - 'assets/ig-r49-transversal.js'
+      - 'assets/ig-r42-materials.css'
+      - 'assets/ig-audience.css'
+      - 'assets/ig-audience.js'
+      - 'assets/ig-child-safe.js'
+      - 'assets/buscador-comun.js'
+      - 'scripts/apply_r49_transversal_ui.py'
+      - 'scripts/test_r49_transversal_ui.py'
+      - 'scripts/test_r49_transversal_browser.py'
+      - 'scripts/build_site.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Sintaxis R49
+        run: |
+          python3 -m py_compile scripts/apply_r49_transversal_ui.py scripts/test_r49_transversal_ui.py scripts/test_r49_transversal_browser.py
+          node --check assets/ig-r49-transversal.js
+          node --check assets/ig-audience.js
+          node --check assets/ig-child-safe.js
+          node --check assets/buscador-comun.js
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-r49
+          /tmp/ig-r49/bin/pip -q install playwright==1.55.0
+          /tmp/ig-r49/bin/python -m playwright install --with-deps chromium >/tmp/ig-r49-install.log 2>&1
+      - name: Build completo y gates estáticos
+        run: python3 scripts/build_site.py
+      - name: Browser QA transversal y child-safe
+        run: |
+          python3 -m http.server 4173 --directory dist >/tmp/ig-r49-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-r49/bin/python scripts/test_home_child_safe_browser.py
+          /tmp/ig-r49/bin/python scripts/test_r49_transversal_browser.py
+      - name: Resumen de tamaños compartidos
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          files=['assets/ig-r49-transversal.css','assets/ig-r49-transversal.js','assets/ig-audience.css','assets/ig-audience.js','assets/ig-child-safe.js']
+          print(json.dumps({p:Path('dist',p).stat().st_size for p in files},indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r49-a8-transversal-r42-r02-qa
+          path: |
+            reports/r49-transversal
+            reports/r42-a8-home-child-safe
+            dist/assets/r49-route-profiles.json
+          retention-days: 14
