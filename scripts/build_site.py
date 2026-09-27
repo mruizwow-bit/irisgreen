@@ -70,6 +70,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)
+    # R43/Design: aplicar el sistema material a portada + todas las rutas públicas
+    # existentes del Taller, sin modificar motores ni contenido.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_taller_materials_r43.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
 
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
@@ -147,6 +151,7 @@ def build():
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
