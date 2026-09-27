@@ -53,6 +53,10 @@ body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha){
  align-items:start!important;
  gap:1rem clamp(1.5rem,3vw,3rem)!important;
 }
+
+body[data-ig-r49="1"] main :where(a,button,input,select,textarea,[tabindex]){scroll-margin-top:calc(var(--ig-r49-header-h) + 1rem)}
+body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>article.ficha{position:relative!important;z-index:1!important}
+body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>.iris-mini-card{z-index:0!important}
 body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>#ig-page-finder{grid-column:1/-1!important;grid-row:1!important;margin:0 0 .5rem!important}
 body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>article.ficha{grid-column:1!important;grid-row:2!important;margin:0!important}
 body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>.iris-mini-card{grid-column:2!important;grid-row:2!important;position:sticky!important;top:calc(var(--ig-r49-header-h) + 1rem)!important;margin:0!important;align-self:start!important;max-height:calc(100dvh - var(--ig-r49-header-h) - 2rem);overflow:auto}
