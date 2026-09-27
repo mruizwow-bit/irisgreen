@@ -1,5 +1,11 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · EN V1 canonizado / ES corpus listo para codes · 27/09/2026
+
+`SABIK_EN_V1` queda materialmente canonizado desde E0. Hashes locales fijados: model `0346413f078b5f0f982974a35641fa3713bad13a71e9bf3237682acb5641e062`; config `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`. E2 se conserva como alternativo.
+
+Auditoría del corpus español existente: `SABIK_ES_TRAIN_V1` contiene 133 WAV válidos, 22.56 min, 133 filas en `train_raw.jsonl`, manifest presente y codes aún pendientes. Próximo paso: verificar JSONL ES y preparar audio codes.
+
 ## Sabik · EN V1 seleccionado · 27/09/2026
 
 Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_ES_TRAINING_NEXT`.
