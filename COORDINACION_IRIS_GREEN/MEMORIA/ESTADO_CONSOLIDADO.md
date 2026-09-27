@@ -1,5 +1,9 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · audio fijo R01 · muestra QA PASS · 27/09/2026
+
+Diez WAV de revisión (5 por idioma) pasan HUMAN QA acústico: volumen aprobado, 0 clipping y timbre estable. Se detecta únicamente silencio inicial excesivo en varias piezas EN (hasta ~0.68 s) y en ES welcome (~0.51 s). Se corrige en postproceso, no mediante entrenamiento: trim conservador + normalización gain-only a -16.5 LUFS con pico ≤ -1 dBFS.
+
 ## Sabik · voces EN/ES cerradas + loudness de producción · 27/09/2026
 
 María aprueba el nivel final de escucha tras normalizar post-síntesis a **-16.5 LUFS integrados** con pico máximo objetivo **≤ -1 dBFS**. La sensación previa de voz lejana se atribuye al nivel de salida (~-20 LUFS), no al entrenamiento.
