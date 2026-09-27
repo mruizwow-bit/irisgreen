@@ -6,7 +6,7 @@ Donor base asset Git blob: `003a7642840d060a4c53ce6f2776c59ff6e672e7`
 
 ## Ported by A3
 
-Layered back SVG + approved base WebP + layered front SVG are taken from the exact donor. The donor's continuous precession, base breathing, presence wave and voice ripple are restored. PRESENTE / ORIENTAR / TRANSICION / PAUSA / CONFIRMAR now modulate that living presence instead of swapping static masters. Current retrieval activity is read from `#sabik-results[aria-busy]`; the current panel, retrieval, Safety and audio runtime stay authoritative.
+Layered back SVG + approved base WebP + layered front SVG are taken from the exact donor. The donor's continuous precession, base breathing, presence wave and voice ripple are restored. PRESENTE / ORIENTAR / TRANSICION / PAUSA / CONFIRMAR now modulate that living presence instead of swapping static masters. Current retrieval activity is read from `#sabik-results[aria-busy]`; the current panel, retrieval, Safety, audio runtime and approved R02 copy stay authoritative.
 
 The historical donor references `sabikCoreBreath` but does not define `@keyframes sabikCoreBreath`. R52 records that discrepancy and does not invent a missing donor animation.
 

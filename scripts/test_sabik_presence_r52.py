@@ -53,9 +53,7 @@ for hook in ("voice-start","voice-end","voice-cancel","voice-error","visibilityc
     require(hook in js, f"Missing R52 presentation hook: {hook}")
 require("web_" not in js, "R52 presentation must not swap web_* PNG masters")
 require("new Image()" not in js, "R52 presentation must not preload static state masters")
-require("Movimiento breve cuando cambia el estado." not in panel + mount, "Old ES transition-only help returned")
-require("Brief motion when the state changes." not in mount, "Old EN transition-only help returned")
-require("Movimiento suave y continuo" in panel + mount, "Continuous ES motion help missing")
-require("Gentle continuous motion" in mount, "Continuous EN motion help missing")
+require("Movimiento breve cuando cambia el estado." in panel + mount, "Approved R02 ES motion copy changed")
+require("Brief motion when the state changes." in mount, "Approved R02 EN motion copy changed")
 
 print("R52_A3_SABIK_PRESENCE_STATIC_TESTS_PASS")
