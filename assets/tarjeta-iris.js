@@ -141,7 +141,7 @@ var T={
     previewNote:'It builds as you write. This is how it looks when you show it, and how it prints.',
     cardHead:'Iris Green · Iris Card',
     nothing:'Nothing written yet.',
-    cardFoot:'Ready to show or save · irisgreen.eu/es/recursos/tarjeta-iris/',
+    cardFoot:'Ready to show or save · irisgreen.eu/en/resources/iris-card/',
     copy:'Copy',print:'Print',
     copyName:'Copy the Iris Card',printName:'Print the Iris Card on A4',
     copied:'Copied. You can paste it now.',
@@ -185,7 +185,7 @@ var SUGGEST={
 var STORE='ig-tarjeta-iris';
 var TICK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 12.4 9.6 17.6 19.6 6.4"></path></svg>';
 
-var state={lang:'es',shape:'uno',example:true,cuesta:'',ayuda:'',necesito:'',pasos:['','',''],
+var state={lang:(document.documentElement.lang||'es').indexOf('en')===0?'en':'es',shape:'uno',example:true,cuesta:'',ayuda:'',necesito:'',pasos:['','',''],
   picto:{cuesta:'hablar',ayuda:'escribir',necesito:'esperar'},copy:null,printed:false,notice:''};
 
 function $(sel){return document.querySelector(sel);}
@@ -262,7 +262,7 @@ function plainText(){
     lines.push(ti.labels.ayuda+': '+v.ayuda);
   }
   if(v.necesito)lines.push(ti.labels.necesito+': '+v.necesito);
-  lines.push('','irisgreen.eu/es/recursos/tarjeta-iris/');
+  lines.push('',state.lang==='en'?'irisgreen.eu/en/resources/iris-card/':'irisgreen.eu/es/recursos/tarjeta-iris/');
   return lines.join('\n');
 }
 
@@ -372,13 +372,26 @@ function renderSteps(){
       '<input class="ti-input" data-step="'+i+'" value="'+esc(text)+'" aria-label="'+esc(ti.stepLabel+' '+(i+1))+'"></li>';
   }).join('');
   list.querySelectorAll('[data-step]').forEach(function(input){
-    input.addEventListener('change',function(){
+    input.addEventListener('input',function(){
       var i=Number(input.dataset.step),pasos=values().pasos.slice();
       pasos[i]=input.value;
-      commit();
+      if(state.example)commit();
       state.pasos=pasos;
-      save();render();
+      state.copy=null;state.printed=false;state.notice='';
+      scheduleLivePreview();
     });
+    input.addEventListener('change',function(){save();});
+  });
+}
+
+var liveFrame=0;
+function scheduleLivePreview(){
+  if(liveFrame)return;
+  liveFrame=requestAnimationFrame(function(){
+    liveFrame=0;
+    save();
+    renderPreview();
+    renderStatus();
   });
 }
 
@@ -506,13 +519,16 @@ function init(){
   }
 
   KEYS.forEach(function(key){
-    $('#ti-'+key).addEventListener('change',function(e){
+    var field=$('#ti-'+key);
+    field.addEventListener('input',function(e){
       var value=e.target.value;
-      commit();
+      if(state.example)commit();
       state[key]=value;
       state.notice='';
-      save();render();
+      state.copy=null;state.printed=false;
+      scheduleLivePreview();
     });
+    field.addEventListener('change',function(){save();});
   });
 
   $('#ti-example-btn').addEventListener('click',function(){

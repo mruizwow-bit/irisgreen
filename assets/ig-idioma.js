@@ -62,6 +62,12 @@ function choose(lang){
   if(alt[lang]&&!samePage(alt[lang])){
     try{sessionStorage.setItem(KEY,lang);}catch(e){}
     var destination=new URL(alt[lang],location.href);
+    /* Conservar la rutina elegida al abrir su pareja ES/EN. */
+    var routinePaths=['/es/recursos/rutinas-visuales/','/en/resources/visual-routines/'];
+    if(routinePaths.indexOf(location.pathname)!==-1 && routinePaths.indexOf(destination.pathname)!==-1){
+      var routine=new URLSearchParams(location.search).get('rutina');
+      if(routine)destination.searchParams.set('rutina',routine);
+    }
     /* En Deploy Preview, conservar el mismo candidato al cambiar de idioma;
        los canonical y hreflang siguen apuntando al dominio público. */
     if(/--irisgreen-home\.netlify\.app$/.test(location.hostname)&&destination.hostname==='irisgreen.eu'){

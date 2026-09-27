@@ -1,0 +1,46 @@
+/* Iris Green R08: white glass and the blue/cyan/violet light of Sabik. */
+:root{--iris-ink:#17395c;--iris-muted:#435268;--iris-blue:59,169,242;--iris-cyan:84,210,221;--iris-violet:142,131,230;--iris-line:#c8d8e5;--iris-glass:rgba(255,255,255,.88);--iris-light:radial-gradient(ellipse at 8% 0%,rgba(var(--iris-violet),.16),transparent 52%),radial-gradient(ellipse at 95% 15%,rgba(var(--iris-blue),.15),transparent 55%),radial-gradient(ellipse at 70% 90%,rgba(var(--iris-cyan),.12),transparent 55%);--tinta:var(--iris-ink);--ink:var(--iris-ink);--muted:var(--iris-muted);--linea:var(--iris-line)}
+@media screen{
+ html:not([data-ig-contrast="on"]) body{background-color:#fff!important;background-image:var(--iris-light)!important;color:var(--iris-ink)}
+ html:not([data-ig-contrast="on"]) :is(.site-header,.hd,.ig-uh,.site-footer,.ft){background:rgba(255,255,255,.88)!important;border-color:var(--iris-line)!important}
+ html:not([data-ig-contrast="on"]) :is(.feature-card,.small-card,.ri-card,.jg-card,.rv-card,.brief-box,.request-panel,.igl .card){background:var(--iris-glass)!important;border-color:var(--iris-line)!important;box-shadow:0 10px 30px -24px rgba(31,95,139,.22)}
+ html:not([data-ig-contrast="on"]) :is(.feature-card.lilac,.small-card[data-section="rincon"]){background:rgba(142,131,230,.10)!important}
+ html:not([data-ig-contrast="on"]) .feature-card.rose{background:rgba(84,210,221,.10)!important}
+ html:not([data-ig-contrast="on"]) .feature-card.blue{background:rgba(59,169,242,.10)!important}
+ :is(.ri-card,.jg-card,.feature-card,.small-card),:is(.ri-card,.jg-card,.feature-card,.small-card) *{text-decoration:none!important}
+ .ri-card{border-radius:20px;padding:24px;gap:12px}
+ .ri-card h2{font-family:'Newsreader',Georgia,serif!important;font-weight:500;font-size:1.75rem;line-height:1.2}
+ :is(.jg-btn,.jg-mini-btn,.rv-btn,.igl .btn,.sabik-button,.sabik-icon-button){font-family:'Atkinson Hyperlegible',system-ui,sans-serif!important;font-size:1rem;line-height:1.4;min-height:44px;min-width:44px;border:1px solid #8492a5;border-radius:14px!important;padding:10px 16px;box-shadow:none;text-decoration:none;cursor:pointer;background:#fff;color:#17395c}
+ :is(.jg-btn.primary,.jg-btn.is-primary,.jg-btn.jg-primary,.rv-btn.rv-primary,.igl .btn.primary,.sabik-button.primary){background:#17395c!important;border-color:#17395c!important;color:#fff!important}
+ :is(.jg-btn,.jg-mini-btn,.rv-btn,.igl .btn,.sabik-button,.sabik-icon-button):hover:not(:disabled){background:#eaf6fc;border-color:#1f5f8b}
+ :is(.jg-chip,.rv-chip,.jg-filters button){min-height:44px;border-radius:999px;font:inherit}
+ :is(.ri-card,.jg-card,.jg-btn,.jg-mini-btn,.rv-btn,.rv-chip,.igl .btn,.sabik-button,.sabik-icon-button):focus-visible{outline:3px solid #5a49a8!important;outline-offset:3px!important}
+ :is(.jg-btn,.rv-btn,.sabik-button):disabled{cursor:not-allowed;opacity:.65}
+ .brand,.ig-uh-brand{gap:0!important}
+ .crumb,.crumb a,.helps h2,.jg-small{color:#435268!important}
+}
+html[data-ig-controls="big"] :is(.jg-btn,.jg-mini-btn,.rv-btn,.sabik-button,.sabik-icon-button){min-height:56px}
+html[data-ig-contrast="on"] :is(.ri-card,.jg-card,.rv-card,.sabik-widget){background:#fff!important;color:#17395c!important;border-color:#17395c!important}
+@media(forced-colors:active){:is(.ri-card,.jg-card,.sabik-widget,.sabik-button){border:1px solid CanvasText!important;box-shadow:none!important}}
+@media print{body{background:#fff!important}.sabik-panel{display:none!important}}
+
+/* R09: the same Iris typography on every template; user font choices win. */
+html:not([data-ig-text-font]):is(html) main :is(h1,h2,h3,h4),
+html[data-ig-text-font="original"] main :is(h1,h2,h3,h4){font-family:Newsreader,Georgia,serif!important}
+html:not([data-ig-text-font]) main :is(h1,h2,h3,h4) *,
+html[data-ig-text-font="original"] main :is(h1,h2,h3,h4) *{font-family:inherit!important}
+html:not([data-ig-text-font]) main h1,html[data-ig-text-font="original"] main h1{font-weight:400!important;font-size:clamp(2rem,3.2vw,3.5rem)!important;line-height:1.12!important}
+/* Páginas interiores: marca y controles arriba, navegación completa debajo. */
+@media screen and (min-width:901px){
+ header.hd.hd,.ig-uh .ig-uh-inner{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;align-items:center!important;gap:10px 18px!important;padding:14px 24px 10px!important;box-sizing:border-box!important;width:100%!important;max-width:none!important}
+ header.hd.hd>.brand,.ig-uh .ig-uh-brand{grid-column:1!important;grid-row:1!important;min-width:0!important;justify-self:start!important;white-space:nowrap!important;margin:0!important}
+ header.hd.hd>.tools{grid-column:2!important;grid-row:1!important;display:flex!important;gap:10px!important;margin:0!important;flex-wrap:nowrap!important}
+ header.hd.hd>.langs{grid-column:3!important;grid-row:1!important;display:flex!important;margin:0!important}
+ .ig-uh .ig-uh-right{grid-column:2 / 4!important;grid-row:1!important;display:flex!important;justify-self:end!important;gap:10px!important;margin:0!important;flex-wrap:nowrap!important}
+ header.hd.hd>.nav,.ig-uh .ig-uh-nav{grid-column:1 / -1!important;grid-row:2!important;position:static!important;display:flex!important;width:100%!important;box-sizing:border-box!important;min-width:0!important;flex-wrap:wrap!important;align-items:center!important;justify-content:center!important;overflow:visible!important;gap:4px 8px!important;margin:0!important;padding:8px 0 0!important;border:0!important;border-top:1px solid #dce5ef!important}
+ header.hd.hd>.nav a,.ig-uh .ig-uh-nav a{flex:0 0 auto!important;white-space:nowrap!important;padding:8px 10px!important;font-size:15px!important;min-height:44px!important;box-sizing:border-box!important}
+ header.hd.hd>.menu,header.hd.hd>.ig-menu-button,.ig-uh .ig-menu-button{display:none!important}
+}
+
+/* Small editorial labels need normal-text contrast, including legacy templates. */
+[data-dc-tpl="111"]>.sc-interp{color:#17677e!important}

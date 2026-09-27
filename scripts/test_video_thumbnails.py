@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 ROOT=Path.cwd();OUT=ROOT/'reports/thumbnails';OUT.mkdir(parents=True,exist_ok=True)
 manifest=json.loads((ROOT/'assets/video-thumbnails/manifest.json').read_text())
-expected=set(manifest['requested_ids'])
+expected=set(manifest['images'])
 REPORT={'cases':[],'failures':[],'notes':['Pruebas en Chromium con dominios externos bloqueados.','La existencia de una imagen no valida la disponibilidad o incrustación del vídeo.','Se recorre la videoteca como visitante; no se fuerza el estado del componente.','La portada aprobada ya no contiene videoteca; sus miniaturas se prueban únicamente en /es/videos/.']}
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
@@ -44,22 +44,31 @@ with sync_playwright() as pw:
                     more.click()
             posters=area.locator('button.ig-video-poster[data-ig-video*="youtube"]')
             count=posters.count();row['youtube_posters']=count
-            if lang=='es':assert count==len(expected),(count,len(expected))
-            checked=[]
+            checked=[];fallbacks=[];seen=[]
             for n in range(count):
                 poster=posters.nth(n);poster.scroll_into_view_if_needed();before=poster.bounding_box()
-                im=poster.locator('img.ig-video-thumbnail');im.wait_for(state='visible')
-                im.evaluate('(im)=>im.decode()')
-                data=im.evaluate('(im)=>({src:new URL(im.currentSrc).pathname,width:im.naturalWidth,height:im.naturalHeight,loading:im.loading,opacity:getComputedStyle(im).opacity})')
                 ident=re.search(r'/embed/([A-Za-z0-9_-]{11})',poster.get_attribute('data-ig-video'))[1]
-                assert ident in manifest['images'],ident
-                assert data['src']==manifest['images'][ident]['path'],data
-                assert data['width']>=320 and data['height']>=180 and data['loading']=='lazy' and data['opacity']=='1',data
+                seen.append(ident)
+                if ident in manifest['images']:
+                    im=poster.locator('img.ig-video-thumbnail');im.wait_for(state='visible')
+                    im.evaluate('(im)=>im.decode()')
+                    data=im.evaluate('(im)=>({src:new URL(im.currentSrc).pathname,width:im.naturalWidth,height:im.naturalHeight,loading:im.loading,opacity:getComputedStyle(im).opacity})')
+                    assert data['src']==manifest['images'][ident]['path'],data
+                    assert data['width']>=320 and data['height']>=180 and data['loading']=='lazy' and data['opacity']=='1',data
+                    checked.append(ident)
+                else:
+                    fallback=poster.locator('.ig-thumbnail-unavailable');assert fallback.is_visible(),ident
+                    assert not poster.locator('img.ig-video-thumbnail').count(),ident
+                    fallbacks.append(ident)
                 after=poster.bounding_box();assert abs(before['height']-after['height'])<1
                 assert abs(after['width']/after['height']-16/9)<.04
                 assert poster.get_attribute('aria-label') and len(poster.get_attribute('aria-label'))>15
-                checked.append(ident)
-            row['images_checked']=len(checked);row['correct_image_ids']=len(set(checked));row['image_size_stable']=True
+            if lang=='es':
+                current_cached=expected & set(seen)
+                assert set(checked)==current_cached,(len(checked),len(current_cached))
+                assert len(checked)+len(fallbacks)==count,(len(checked),len(fallbacks),count)
+                row['unused_cached_images']=sorted(expected-set(seen))
+            row['images_checked']=len(checked);row['correct_image_ids']=len(set(checked));row['fallbacks_checked']=len(fallbacks);row['image_size_stable']=True
             assert page.evaluate('Math.max(0,document.documentElement.scrollWidth-innerWidth)')<=2
             first=area.locator('button.ig-video-poster[data-ig-video*="youtube"]').first
             first.evaluate('(e)=>{e.scrollIntoView({block:"start"});scrollBy(0,-170)}')

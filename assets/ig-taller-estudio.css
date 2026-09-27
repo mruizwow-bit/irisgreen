@@ -1,0 +1,210 @@
+/* Iris Green · El taller · estudios. Usa la paleta, tipografía y cristal de la web; no redefine cabecera, pie ni Lectura. */
+:root{--ink:#17395c;--muted:#56657a;--line:rgba(23,57,92,.14);--blue:#1f5f8b;--rose:#a8336f;--violet:#5a49a8;--glass:rgba(255,255,255,.76);--ok:#1d6b3a;--warn:#8a4b00}
+body{color:var(--ink)}
+.igx{width:min(100%,82rem);max-width:82rem;margin:auto;padding:clamp(1.6rem,3.4vw,3rem) clamp(1rem,4vw,3rem) 5rem}
+.glass{background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 18px 55px -46px rgba(23,57,92,.48)}
+.igt :focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.igt a{color:var(--blue)}
+.igt-hero{border-radius:28px;padding:clamp(22px,4vw,44px);margin-bottom:20px;display:grid;gap:10px}
+.igt-hero .crumb{margin:0;font-size:15px}
+.igt-hero h1{font:400 clamp(2.3rem,4.4vw,4rem)/1.06 'Newsreader',Georgia,serif;margin:0;letter-spacing:-.02em}
+.igt-hero .lede{max-width:50rem;font-size:clamp(1.08rem,1.35vw,1.24rem);line-height:1.6;color:#435268;margin:0}
+.igt-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin:4px 0 0;padding:0;list-style:none}
+.igt-pills li{display:inline-flex;align-items:center;min-height:34px;padding:.3rem .7rem;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid var(--line);font-size:14px;color:#42546a}
+.igt-sec{border-radius:24px;padding:clamp(16px,2.6vw,26px);margin-bottom:20px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:6rem}
+.igt-sec h2,.igt-retos h2{font:400 clamp(24px,3vw,34px)/1.12 'Newsreader',Georgia,serif;margin:0;letter-spacing:-.01em}
+.igt-sec h3{font:600 clamp(19px,2vw,22px)/1.2 'Newsreader',Georgia,serif;margin:6px 0 0}
+.igt-sec p{margin:0;max-width:52rem;line-height:1.6}
+.igt-note{font-size:15.5px;color:var(--muted);max-width:52rem;margin:0}
+.igt-steps{margin:0;padding-left:1.3rem;display:grid;gap:6px;max-width:52rem}
+.igt-steps li{line-height:1.55}
+.igt-list-static{display:grid;gap:14px}
+.igt-list-static h3{margin:0}
+.igt-list-static ol{margin:4px 0 0;padding-left:1.3rem;display:grid;gap:4px}
+.igt-src{margin:0;padding-left:1.2rem;display:grid;gap:6px;font-size:15px;color:#3f5168}
+
+/* Aplicación */
+.igt-app{display:flex;flex-direction:column;gap:14px}
+.igt-app .igt-nojs{border:1px dashed var(--line);border-radius:18px;padding:16px 18px;color:var(--muted);background:rgba(255,255,255,.6)}
+.igt-work{display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:16px;align-items:start}
+.igt-work.wide-side{grid-template-columns:minmax(0,1fr) 24rem}
+.igt-stage{border-radius:22px;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.igt-side{border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.igt-side h3,.igt-panel h3{font:600 18px/1.2 'Newsreader',Georgia,serif;margin:0}
+.igt-panel{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.igt-panel:first-child{border-top:0;padding-top:0}
+.igt-panel>summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:10px}
+.igt-panel>summary::-webkit-details-marker{display:none}
+.igt-panel>summary::after{content:'+';font:700 20px/1 'Atkinson Hyperlegible',sans-serif;color:var(--blue);width:28px;height:28px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--line);flex:none}
+.igt-panel[open]>summary::after{content:'−'}
+.igt-panel[open]{gap:10px}
+.igt-block .igt-block-name-in{flex:1 1 7rem;min-width:6rem}
+.igt-canvas-box{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;touch-action:none;line-height:0}
+.igt-canvas-box canvas{display:block;width:100%;height:auto}
+.igt-canvas-box:focus-within,.igt-canvas-box canvas:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.igt-caption{font-size:14.5px;color:var(--muted);margin:0;line-height:1.5}
+
+/* Botones y controles: 44 px de objetivo cómodo */
+.igt-bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.igt-sep{width:1px;height:28px;background:var(--line);margin:0 4px}
+.igt-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;min-width:44px;padding:0 13px;border-radius:999px;border:1px solid rgba(23,57,92,.2);background:#fff;color:var(--ink);font:inherit;font-size:15px;line-height:1.2;cursor:pointer;text-align:left}
+.igt-btn:hover{border-color:rgba(31,95,139,.45);background:#f7fafd}
+.igt-btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.igt-btn[aria-pressed="true"]::before{content:'✓';content:'✓' / '';font-weight:700}
+.igt-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700}
+.igt-btn.primary:hover{background:#174d72}
+.igt-btn.danger{color:#8b1e3f;border-color:rgba(139,30,63,.35)}
+.igt-btn:disabled{opacity:.55;cursor:not-allowed}
+.igt-btn.icon-only span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.igt-btn svg{flex:none}
+.igt-chips{display:flex;flex-wrap:wrap;gap:6px}
+.igt-chip{font-size:14.5px}
+.igt-field{display:grid;gap:5px;font-size:14.5px;font-weight:700}
+.igt-field.inline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.igt input[type=text],.igt input[type=number],.igt select,.igt textarea{min-height:44px;border-radius:12px;border:1.5px solid rgba(23,57,92,.22);background:#fff;padding:.45rem .7rem;font:inherit;font-size:16px;font-weight:400;color:var(--ink);max-width:100%}
+.igt textarea{min-height:6rem;line-height:1.5;width:100%;resize:vertical}
+.igt input[type=range]{width:100%;min-height:44px;accent-color:var(--ink)}
+.igt input[type=color]{width:52px;height:44px;border:1.5px solid rgba(23,57,92,.22);border-radius:12px;background:#fff;padding:3px}
+.igt input[type=checkbox]{width:22px;height:22px;accent-color:var(--ink)}
+.igt-check{display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:15px;font-weight:400}
+.igt-swatches{display:flex;flex-wrap:wrap;gap:6px}
+.igt-swatch{width:44px;height:44px;border-radius:12px;border:2px solid rgba(23,57,92,.25);cursor:pointer;padding:0;position:relative}
+.igt-swatch[aria-pressed="true"]{border:3px solid var(--ink);box-shadow:0 0 0 2px #fff inset}
+.igt-swatch[aria-pressed="true"]::after{content:'✓';content:'✓' / '';position:absolute;inset:0;display:grid;place-items:center;font-weight:700;color:#fff;text-shadow:0 0 3px #000,0 0 2px #000}
+
+/* Retos */
+.igt-retos{border-radius:24px;padding:clamp(16px,2.6vw,26px);display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:14px 22px;align-items:start}
+.igt-retos-pick{display:grid;gap:10px}
+.igt-retos-pick select{width:100%}
+.igt-topbar{border-radius:18px;padding:8px 10px}
+@media (max-width:860px){.igt-retos{grid-template-columns:1fr}}
+.igt-levels{display:grid;gap:12px}
+.igt-level h3{font:600 17px/1.2 'Atkinson Hyperlegible',system-ui,sans-serif;margin:0 0 6px;color:#3b4d63}
+.igt-brief{border-radius:18px;background:rgba(90,73,168,.07);border-left:4px solid var(--violet);padding:14px 16px;display:grid;gap:8px}
+.igt-brief:focus{outline:none}
+.igt-brief:focus-visible{outline:3px solid var(--violet)}
+.igt-brief h3{font:600 22px/1.2 'Newsreader',Georgia,serif;margin:0}
+.igt-brief p{margin:0;line-height:1.55}
+.igt-brief-k{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--violet)}
+.igt-limits{margin:0;padding-left:1.2rem;display:grid;gap:3px}
+.igt-checks{list-style:none;padding-left:0}
+.igt-tip{font-size:15px;color:#46406e}
+.igt-result{display:flex;gap:10px;align-items:flex-start;border-radius:14px;padding:10px 13px;margin:0;font-size:15.5px;line-height:1.5}
+.igt-result.ok{background:rgba(29,107,58,.1);border:1px solid rgba(29,107,58,.35);color:#154d2a}
+.igt-result.no{background:rgba(23,57,92,.06);border:1px solid var(--line);color:var(--ink)}
+.igt-result-mark{font-weight:700;font-size:18px;line-height:1.3}
+
+/* Texto equivalente y tablas */
+.igt-alt{border-radius:16px;background:rgba(255,255,255,.7);border:1px solid var(--line);padding:12px 14px;font-size:15px;line-height:1.55}
+.igt-alt h3{font:700 14px/1.3 'Atkinson Hyperlegible',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3b4d63;margin:0 0 6px}
+.igt-table-wrap{position:relative;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;max-height:22rem}
+.igt-table{border-collapse:collapse;width:100%;font-size:14.5px}
+.igt-table caption{text-align:left;padding:8px 10px;font-weight:700}
+.igt-table th,.igt-table td{padding:7px 10px;border-bottom:1px solid rgba(23,57,92,.09);text-align:left;vertical-align:top}
+.igt-table thead th{background:#f3f6fa;position:sticky;top:0}
+.igt-keys{border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.7);padding:4px 14px}
+.igt-keys summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700}
+.igt-keys dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:4px 0 12px;font-size:14.5px}
+.igt-keys dt{font-weight:700}
+.igt-keys dd{margin:0}
+kbd{font:600 13px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 5px;background:#fff}
+.igt-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.igt-visible-status{min-height:1.5em;font-size:15px;color:#3b4d63;margin:0}
+.igt-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Código */
+.igt-code{font:500 15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;tab-size:2}
+.igt-code-area{width:100%;min-height:18rem;border-radius:14px;border:1.5px solid rgba(23,57,92,.22);padding:10px 12px;background:#fbfcfe;color:#14304f;resize:vertical}
+.igt-blocks{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.igt-blocks .igt-blocks{margin:4px 0 2px 1.4rem;padding-left:.6rem;border-left:3px solid rgba(90,73,168,.28)}
+.igt-block{border-radius:12px;background:#fff;border:1px solid rgba(23,57,92,.16);padding:5px 6px 5px 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.igt-block[data-kind="control"]{background:#f4f1fc;border-color:rgba(90,73,168,.3)}
+.igt-block[data-kind="var"]{background:#eef7f3;border-color:rgba(29,107,58,.28)}
+.igt-block[data-kind="func"]{background:#fdf1f6;border-color:rgba(168,51,111,.3)}
+.igt-block[data-kind="sensor"]{background:#fff6ea;border-color:rgba(138,75,0,.3)}
+.igt-block.sel{box-shadow:0 0 0 3px rgba(31,95,139,.35)}
+.igt-block.run{box-shadow:0 0 0 3px #d98e04}
+.igt-block-name{font-weight:700;font-size:15px;min-height:36px;display:inline-flex;align-items:center;border:0;background:transparent;color:inherit;padding:0 4px;border-radius:8px;cursor:pointer;font-family:inherit}
+.igt-block input,.igt-block select{min-height:36px!important;padding:.2rem .45rem!important;font-size:15px!important;width:auto;max-width:12rem}
+.igt-block input.num{width:5.5rem}
+.igt-block-tools{margin-left:auto;display:flex;gap:3px}
+.igt-block-tools .igt-btn{min-height:36px;min-width:36px;padding:0 7px}
+.igt-block-body{flex:1 0 100%}
+.igt-palette{display:flex;flex-wrap:wrap;gap:5px}
+.igt-palette .igt-btn{min-height:40px;font-size:14px;padding:0 10px}
+.igt-err{border-radius:12px;background:#fff1f3;border:1px solid rgba(139,30,63,.35);color:#6d1530;padding:8px 12px;font-size:15px;margin:0}
+.igt-log{list-style:none;margin:0;padding:8px 12px;max-height:12rem;overflow:auto;font:14px/1.5 ui-monospace,Menlo,monospace;background:#f8fafc;border:1px solid var(--line);border-radius:12px}
+.igt-tabs{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Estudios en la portada del Taller */
+.igt-studios{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15.5rem),1fr));gap:14px;margin:0;padding:0;list-style:none}
+.igt-studio{display:flex;flex-direction:column;gap:6px;height:100%;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.84);padding:16px 18px;text-decoration:none;color:var(--ink)}
+.igt-studio:hover,.igt-studio:focus-visible{border-color:rgba(31,95,139,.45);background:#fff}
+.igt-studio strong{font:600 22px/1.15 'Newsreader',Georgia,serif}
+.igt-studio span{font-size:15.5px;color:#46566b;line-height:1.5}
+.igt-studio em{font-style:normal;font-size:13.5px;color:var(--violet);font-weight:700;margin-top:auto}
+
+@media (max-width:1060px){.igt-work,.igt-work.wide-side{grid-template-columns:1fr}}
+@media (max-width:560px){.igx{padding-inline:12px}.igt-hero{border-radius:22px}.igt-stage{padding:8px;border-radius:18px}.igt-side{padding:12px;border-radius:18px}.igt-btn{padding:0 11px;font-size:14.5px}.igt-keys dl{grid-template-columns:1fr}.igt-block input,.igt-block select{max-width:9rem}}
+body.big .igt-btn{min-height:52px;min-width:52px;font-size:16.5px}
+body.big .igt-swatch{width:52px;height:52px}
+body.hc .igt-btn,body.hc .igt-block,body.hc .igt-canvas-box{border-color:#17395c;border-width:2px}
+body.hc .igt-note,body.hc .igt-caption{color:#1f2d3d}
+@media (forced-colors:active){.igt-btn[aria-pressed="true"]{border:3px solid Highlight}.igt-swatch{forced-color-adjust:none}.igt-canvas-box canvas{forced-color-adjust:none}}
+@media (prefers-reduced-motion:reduce){.igt *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media print{
+  .hd,.panel,.ft,.igt-bar,.igt-retos .igt-levels,.igt-palette,.igt-noprint,.igt-keys,.skip,#rguide{display:none!important}
+  .igx{padding:0;max-width:none}.glass{background:#fff;box-shadow:none;backdrop-filter:none;border:1px solid #ccd}
+  .igt-work{grid-template-columns:1fr}.igt-canvas-box{break-inside:avoid}
+  body::after{content:'IRIS GREEN · irisgreen.eu';position:fixed;right:0;bottom:0;font:12px 'Atkinson Hyperlegible',Arial,sans-serif;color:#555}
+}
+.igt-print-only{display:none}
+@media print{.igt-print-only{display:block}.igt-print-sheet{break-after:page;margin:0 0 12px}.igt-print-sheet img{width:100%;height:auto;border:1px solid #ccd}.igt-print-sheet figcaption{font-size:12pt;margin-top:6px}
+  body.igt-print-focus main>:not(#igt-app){display:none!important}
+  body.igt-print-focus #igt-app>:not(.igt-print-keep){display:none!important}
+  body.igt-print-focus .igt-side .igt-palette-wrap,body.igt-print-focus .igt-side .igt-tabs,body.igt-print-focus .igt-side .igt-blocks-box,body.igt-print-focus .igt-side .igt-text-box,body.igt-print-focus .igt-side label{display:none!important}
+  .igt-panel>summary::after{display:none!important}
+  body.igt-print-focus .igt-side details:not([open]),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-side details:not(:first-child),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-stage>:is(.igt-note,.igt-keys),body.igt-print-focus :is([data-studio=maquinas],[data-studio=diseno]) .igt-table-wrap .igt-btn.icon-only{display:none!important}
+  pre.igt-print-only{white-space:pre-wrap;font-size:10pt;border:1px solid #ccd;padding:8px;border-radius:6px}
+  .igt-canvas-box canvas{max-height:18cm;object-fit:contain}}
+main#main.igx.igt{max-width:88rem;width:100%}
+/* Editor de código */
+.igt-code-editor{display:flex;flex-direction:column;gap:10px;min-width:0}
+.igt-palette-wrap{display:grid;gap:6px;border-radius:14px;background:rgba(255,255,255,.6);border:1px solid var(--line);padding:8px 10px}
+.igt-pal-k{min-width:6.5rem;font-weight:700;align-self:center}
+.igt-blocks-box{display:grid;gap:6px;max-height:34rem;overflow:auto;padding:2px}
+.igt-slot{min-height:36px;border:1.5px dashed rgba(23,57,92,.3);background:transparent;border-radius:10px;padding:0 10px;font:inherit;font-size:14px;color:#46566b;cursor:pointer;text-align:left}
+.igt-slot.on,.igt-slot[aria-pressed="true"]{border-color:var(--blue);background:rgba(31,95,139,.08);color:var(--ink);font-weight:700}
+.igt-empty-slot{list-style:none}
+.igt-else{font-style:italic}
+.igt-text-box{display:grid;gap:8px}
+.igt-output{display:grid;gap:6px}
+.igt-turtle-box{background:#fff}
+.igt-log:empty{display:none}
+/* Ideas */
+.igt-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:12px}
+.igt-grid2 .igt-field input,.igt-grid2 .igt-field textarea{width:100%}
+.igt-fieldset{border:1px solid var(--line);border-radius:14px;padding:8px 14px 12px;margin:0}
+.igt-fieldset legend{font-weight:700;padding:0 6px}
+.igt-fieldset input[type=number]{width:7rem}
+.igt-scamper{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:12px}
+.igt-sc-item{display:grid;gap:5px;border:1px solid var(--line);border-radius:16px;padding:12px;background:rgba(255,255,255,.7)}
+.igt-sc-item .igt-field{display:flex;align-items:center;gap:10px}
+.igt-sc-letter{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--violet);color:#fff;font:700 18px 'Newsreader',Georgia,serif;flex:none}
+.igt-table input{min-height:40px!important;width:100%;min-width:5rem}
+.igt-encargo{background:rgba(31,95,139,.06);border-left-color:var(--blue)}
+.igt-sec .igl{margin:0}
+.igt-sec .igl-eyebrow,.igt-sec .igl-h2,.igt-sec .igl-lede{display:none}
+/* Foco no tapado por la cabecera fija (WCAG 2.4.11) */
+html:has(main.igt){scroll-padding-top:140px;scroll-padding-bottom:24px}
+.igt :is(input,select,textarea,button,a,canvas,summary){scroll-margin-top:140px}
+@media print{.igt-print-sheet:last-child{break-after:auto}}
+/* Estudio de diseño gráfico */
+.igt-xy{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.igt-xy .igt-field input{width:100%}
+.igt-colour-row{align-items:flex-end}
+.igt-colour-row input[type=text]{inline-size:7.5em;min-block-size:44px;font-family:ui-monospace,"Courier New",monospace}
+.igt-contrast-sample{margin:10px 0;padding:12px 14px;border-radius:12px;border:1px solid var(--line);font-size:18px;line-height:1.4}
+.igt-row-sel th,.igt-row-sel td{background:rgba(91,63,160,.08)}
+.igt-dis-box{background:#e9edf2}
+@media (forced-colors:active){.igt-contrast-sample{forced-color-adjust:none}}

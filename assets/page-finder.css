@@ -1,0 +1,8 @@
+.ig-page-finder{box-sizing:border-box;width:100%;margin:0 0 1.25rem;padding:.25rem 1rem;border:1px solid #8492a5;border-radius:16px;background:#fff;color:#17395c;text-align:left;position:relative;z-index:1}
+.ig-page-finder summary{cursor:pointer;min-height:44px;padding:.6rem 0;box-sizing:border-box;font:600 1rem/1.5 'Atkinson Hyperlegible',system-ui,sans-serif;overflow-wrap:anywhere}
+.ig-page-finder nav{padding:0 0 .75rem}.ig-page-filter label{display:block;margin:.4rem 0;font-weight:700}.ig-page-filter input{box-sizing:border-box;width:100%;max-width:36rem;min-height:44px;padding:.6rem;border:1px solid #8492a5;border-radius:8px;font:inherit;color:inherit;background:#fff}
+.ig-page-finder ul{display:flex;flex-wrap:wrap;gap:.4rem 1rem;list-style:none;padding:0!important;margin:.75rem 0}.ig-page-finder li{margin:0;max-width:100%;padding:0!important}.ig-page-finder li::before{content:none!important}.ig-page-finder a{display:inline-flex;align-items:center;box-sizing:border-box;min-height:44px;padding:.4rem .5rem;overflow-wrap:anywhere;color:#1f5f8b;text-decoration:underline}
+.ig-page-finder :focus-visible{outline:3px solid #5a49a8;outline-offset:3px}.ig-page-finder [hidden]{display:none!important}.ig-section-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+main h2[id]{scroll-margin-top:12rem}
+@media print{.ig-page-finder{display:none!important}}
+@media(forced-colors:active){.ig-page-finder{border-color:CanvasText;background:Canvas;color:CanvasText}.ig-page-finder a{color:LinkText}}

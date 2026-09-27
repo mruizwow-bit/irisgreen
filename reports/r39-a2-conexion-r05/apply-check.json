@@ -1,0 +1,14 @@
+{
+  "base_commit": "7b49e95f25318e9e936cf54e959948c6781c1c73",
+  "scope": "three exact current-head blobs hydrated locally; not a full repository checkout",
+  "patch_git_blob": "a1e5dc958ebaa49e692b61849eea4467063ff2b8",
+  "patch_sha256": "52f4a01fa67d8bdab0ac42ef03940a6eea6ae37c83663171493a916b227e76ce",
+  "git_apply_check_exit": 0,
+  "git_apply_exit": 0,
+  "files": [
+    {"path":"sabik/mount-config.mjs","base_blob":"82cd4b0882e523fcf1fe158d5ca4cd08349cfc77","expected_blob":"61163492ad78440709f8852414f404fd661a0c8a"},
+    {"path":"sabik/iris-mount.mjs","base_blob":"be18a3977fb9b2b133194982dd6e2fa7e692ffe2","expected_blob":"2a2158c6dec3af806c6cc31eae68b2a1bb734b99"},
+    {"path":"sabik/iris-panel.html","base_blob":"54cddc994ad22100ddea551b6556411170658685","expected_blob":"8daa2c5c449c7e845b506ef2feb6fa37af6d6aa2"}
+  ],
+  "node_syntax": "PASS"
+}

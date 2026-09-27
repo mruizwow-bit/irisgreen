@@ -496,9 +496,13 @@
   fetch('/es/intereses/cielo/cielo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (d) {
     D = d; CONS = d.constelaciones; STARS = d.estrellas; NAMED = d.nombres; BY = {};
     CONS.forEach(function (c) { BY[c.abbr] = c; });
-    buildMap(); buildConsTools(); buildStarsTools(); drawMine();
     if (window.IGCieloVivo) window.IGCieloVivo.start(D, VIVO);
-    var hash = decodeURIComponent(location.hash.slice(1));
-    if (hash.indexOf('c-') === 0 && BY[hash.slice(2)]) openFicha(BY[hash.slice(2)], false);
-  }).catch(function () {});
+    setTimeout(function () { buildMap();
+      var hash = decodeURIComponent(location.hash.slice(1));
+      if (hash.indexOf('c-') === 0 && BY[hash.slice(2)]) openFicha(BY[hash.slice(2)], false);
+      setTimeout(function () { buildConsTools();
+        setTimeout(function () { buildStarsTools(); drawMine(); }, 0);
+      }, 0);
+    }, 0);
+  }).catch(function () { say(T('No se ha podido cargar el cielo. Las tablas siguen disponibles.', 'The sky could not be loaded. The tables are still available.')); });
 })();

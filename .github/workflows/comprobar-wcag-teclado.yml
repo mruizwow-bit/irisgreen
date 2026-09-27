@@ -22,9 +22,15 @@ jobs:
         run: |
           cd dist
           /tmp/ig-keyboard/bin/python ../scripts/test_keyboard_flows.py
+      - name: Completar ciclos de foco y comprobar que no queda oculto
+        run: |
+          cd dist
+          /tmp/ig-keyboard/bin/python ../scripts/audit_focus_not_obscured.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: wcag-keyboard-flows
-          path: dist/reports/wcag-keyboard-flows
+          name: wcag-keyboard-focus
+          path: |
+            dist/reports/wcag-keyboard-flows
+            dist/reports/wcag-focus-not-obscured
           retention-days: 14

@@ -1,0 +1,32 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const read=p=>fs.readFileSync(p,'utf8');
+const es=read('es/sitio-tranquilo/index.html'), en=read('en/quiet-space/index.html');
+const calm=read('assets/rincon-calma.js'), ctl=read('assets/rincon-r42.js'), css=read('assets/rincon-r42.css');
+const vis=read('assets/rincon-immersive-r42.js'), audio=read('assets/rincon-audio-r42.js');
+new Function(calm);new Function(ctl);new Function(vis);new Function(audio);
+const scenes=['sea','rain','river','night','aquarium','bubbles','jellies','fibre','octopus','forest','dawn','clouds'];
+for(const [lang,h] of [['ES',es],['EN',en]]){
+  assert.ok(h.includes('/assets/rincon-r42.css?v=r42-a7-20260926'),lang+' R42 CSS');
+  assert.ok(h.includes('/assets/rincon-audio-r42.js?v=r42-a7-20260926'),lang+' R42 audio');
+  assert.ok(h.includes('/assets/rincon-immersive-r42.js?v=r42-a7-20260926'),lang+' R42 immersive engine');
+  assert.ok(h.includes('/assets/rincon-r42.js?v=r42-a7-20260926'),lang+' R42 controller');
+  assert.ok(!h.includes('/assets/rincon-r04.css?v='),lang+' no R04 shell');
+  assert.ok(!h.includes('/assets/rincon-audio-r04.js?v='),lang+' no R04 audio controller');
+  assert.ok(!h.includes('/assets/rincon-r04.js?v='),lang+' no R04 controller');
+  scenes.forEach(k=>assert.ok(h.includes('data-scene="'+k+'"'),lang+' scene '+k));
+  assert.equal((h.match(/data-scene=/g)||[]).length,12,lang+' exactly 12 immersive scene buttons');
+  ['videos','sounds','ball'].forEach(k=>assert.ok(h.includes('data-r40-mode="'+k+'"'),lang+' mode '+k));
+}
+assert.ok(calm.includes("forest: 'escena-bosque-niebla'")&&calm.includes("dawn: 'escena-lago-amanecer'")&&calm.includes("clouds: 'escena-nubes-lentas'"),'new scene sound routing');
+assert.ok(calm.includes('/assets/rincon-immersive-r42.js?v=r42-a7-20260926'),'calma loader points to R42');
+assert.ok(!calm.includes("if (kind === 'octopus') { start2d"),'octopus no longer forced to legacy 2D');
+assert.ok(ctl.includes('r42-clean')&&ctl.includes('r42-controls-awake'),'immersive clean mode with recoverable controls');
+assert.ok(css.includes('.r42-settings[open]{position:fixed')&&css.includes('bottom:max'),'mobile settings bottom sheet');
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'),'reduced motion');
+assert.ok(css.includes('@media(forced-colors:active)'),'forced colors');
+assert.ok(vis.includes("window.IGScenesR42")&&vis.includes("R42_A7_IMMERSIVE_WEBGL2"),'R42 immersive engine exported');
+assert.ok(vis.includes('MAP={sea:0,rain:1,river:2,night:3,aquarium:4,bubbles:5,jellies:6,fibre:7,octopus:8,forest:9,dawn:10,clouds:11}'),'all 12 visual scenes mapped');
+assert.ok(audio.includes('R42_FIRST_PARTY_DIFFERENTIATED_AUDIO'),'R42 differentiated audio exported');
+assert.ok(audio.includes('generatedAfterExplicitAction:true'),'soundscape buffers generated only after explicit action');
+assert.ok(audio.includes("var SEA='/audio/rincon/r04/scenes.m4a'"),'accepted R04 sea ambience preserved');
+console.log('R42_A7_QUIET_SPACE_STATIC_PASS');

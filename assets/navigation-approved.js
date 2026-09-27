@@ -161,8 +161,9 @@ window.addEventListener('popstate',e=>{
 window.addEventListener('hashchange',()=>setPage(currentRoute()));
 window.addEventListener('beforeunload',e=>{if(modified.es||modified.en){e.preventDefault();e.returnValue='';}});
 $('#return-edit').addEventListener('click',()=>{opener=$('#request-text');});
-let initialLang=document.documentElement.lang==='en'?'en':'es';
-if(!knownEntry(location.href)){try{if(localStorage.getItem('ig_lang')==='en')initialLang='en';}catch(_){}}
+const requestedLang=new URLSearchParams(location.search).get('lang');
+let initialLang=requestedLang==='en'?'en':document.documentElement.lang==='en'?'en':'es';
+if(!requestedLang&&!knownEntry(location.href)){try{if(localStorage.getItem('ig_lang')==='en')initialLang='en';}catch(_){}}
 translate(initialLang);setPage(currentRoute(),false);
 
 })();

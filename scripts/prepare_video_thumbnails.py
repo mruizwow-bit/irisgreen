@@ -24,12 +24,34 @@ def video_ids():
     for name in PAGES:
         text=(ROOT/name).read_text()
         for match in re.finditer(r'\by\(\s*"(?:[^"\\]|\\.)*"\s*,\s*"(?:[^"\\]|\\.)*"\s*,\s*"([A-Za-z0-9_-]{11})"',text):found.add(match[1])
-    if not found or len(found)>200:raise ValueError('Número de vídeos no previsto; revisar sin modificar.')
+    editorial=ROOT/'editorial/videoteca/publicados.es.json'
+    if editorial.exists():
+        for video in json.loads(editorial.read_text())['videos']:
+            match=re.search(r'youtube(?:-nocookie)?\.com/embed/([A-Za-z0-9_-]{11})',video.get('embed',''))
+            if match:found.add(match[1])
+    if not found or len(found)>300:raise ValueError('Número de vídeos no previsto; revisar sin modificar.')
     return sorted(found)
 
 
+def jpeg_dimensions(blob):
+    # Leer el tamaño del marcador SOF, sin dependencias de imagen en el build.
+    if not blob.startswith(b'\xff\xd8') or not blob.endswith(b'\xff\xd9'):
+        raise ValueError('No es un JPEG completo.')
+    pos=2
+    while pos+4<=len(blob):
+        if blob[pos]!=255:raise ValueError('Marcador JPEG inválido.')
+        while pos<len(blob) and blob[pos]==255:pos+=1
+        marker=blob[pos];pos+=1
+        if marker in (0xD8,0x01) or 0xD0<=marker<=0xD7:continue
+        length=int.from_bytes(blob[pos:pos+2],'big')
+        if length<2 or pos+length>len(blob):raise ValueError('Segmento JPEG incompleto.')
+        if marker in (0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF):
+            return int.from_bytes(blob[pos+5:pos+7],'big'),int.from_bytes(blob[pos+3:pos+5],'big')
+        pos+=length
+    raise ValueError('JPEG sin dimensiones.')
+
+
 def download(ident):
-    from PIL import Image
     errors=[]
     for size in ['maxresdefault','hqdefault']:
         url=f'https://i.ytimg.com/vi/{ident}/{size}.jpg'
@@ -38,10 +60,8 @@ def download(ident):
             with urllib.request.urlopen(req,timeout=12) as response:
                 blob=response.read(2_000_001)
                 if response.status!=200 or len(blob)>2_000_000:raise ValueError('Respuesta inesperada o demasiado grande.')
-            with Image.open(io.BytesIO(blob)) as image:
-                width,height=image.size
-                if image.format!='JPEG' or width<320 or height<180:raise ValueError('No es una miniatura de tamaño suficiente.')
-                image.verify()
+            width,height=jpeg_dimensions(blob)
+            if width<320 or height<180:raise ValueError('No es una miniatura de tamaño suficiente.')
             file=ASSETS/(ident+'.jpg');file.write_bytes(blob)
             return ident,{'path':'/assets/video-thumbnails/'+ident+'.jpg','source':url,'width':width,'height':height,'bytes':len(blob),'sha256':hashlib.sha256(blob).hexdigest(),'checkedAt':datetime.now(timezone.utc).isoformat(),'status':'image_downloaded'},None
         except Exception as error:errors.append(size+': '+str(error))

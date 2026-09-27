@@ -1,0 +1,85 @@
+/* R42-A7 · Rincón tranquilo inmersivo. Stage primero, chrome mínimo, mobile específico. */
+.r42-rincon .xhero{padding:14px 22px;margin-bottom:8px;border-radius:20px}
+.r42-rincon .xhero h1{font-size:clamp(1.9rem,3vw,2.8rem);margin:.05rem 0 .25rem}
+.r42-rincon .xhero .lede{font-size:1rem;line-height:1.45;margin:.2rem 0}
+.r42-rincon .r40-mode-nav{margin:0 0 8px}
+.r42-rincon .r40-tabs{display:flex;gap:7px;padding:5px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.94)}
+.r42-rincon .r40-tabs button{flex:1 1 10rem;min-height:46px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--ink);font:700 1rem/1.2 'Atkinson Hyperlegible',system-ui,sans-serif;cursor:pointer}
+.r42-rincon .r40-tabs button[aria-selected="true"]{background:#17395c;color:#fff}
+.r42-rincon .r40-mobile-mode{display:none}
+.r42-rincon .r40-workspace{display:block;margin:0}
+.r42-rincon .r40-workspace>.qcard{display:flex!important;flex-direction:column;margin:0;border-radius:22px;padding:12px 14px;background:rgba(255,255,255,.90)}
+.r42-rincon .r40-workspace>.qcard[hidden]{display:none!important}
+.r42-rincon .r40-workspace>.qcard>summary{display:none!important}
+.r42-rincon #watch>.stage{order:1;margin:0;width:100%;height:clamp(430px,calc(100svh - 285px),680px);min-height:430px;aspect-ratio:auto;border-radius:20px;overflow:hidden;background:#071827;box-shadow:0 18px 50px rgba(13,36,55,.14);isolation:isolate}
+.r42-rincon #watch>.stage canvas{display:block;width:100%;height:100%}
+.r42-rincon #watch>#watchCredit{order:2;text-align:center;margin:.30rem 0 .15rem;color:#52667b;font-size:.9rem}
+.r42-rincon #watch>#r40SceneStatus{order:3;margin:.22rem 0;color:#405369}
+.r42-rincon #watch>.r40-scene-actions{order:4}
+.r42-rincon #watch>#sceneList{order:5}
+.r42-rincon #watch>p:not(#watchCredit):not(#r40SceneStatus){order:8}
+.r42-rincon #sceneList{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;scrollbar-width:thin;padding:7px 2px 5px;margin-top:7px}
+.r42-rincon #sceneList>.qchoice{scroll-snap-align:start;flex:0 0 164px;grid-template-columns:54px minmax(0,1fr);min-height:70px;padding:7px;border-radius:14px}
+.r42-rincon #sceneList>.qchoice .qthumb{width:54px;height:48px;aspect-ratio:auto;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.r42-rincon #sceneList>.qchoice[aria-pressed="true"]{outline:3px solid #1f648d;outline-offset:1px;background:#f7fbfd}
+.r42-rincon #sceneList>.qopts{display:none!important}
+.r42-rincon .r42-mobile-scene{display:none}
+.r42-rincon .r42-settings{order:7;margin-top:7px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.r42-rincon .r42-settings>summary{min-height:44px;padding:10px 12px;cursor:pointer;font-weight:700}
+.r42-rincon .r42-settings .qopts{display:grid!important;padding:0 12px 12px}
+.r42-rincon .r40-scene-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:7px;border:1px solid #a9bacb;border-radius:14px;background:rgba(255,255,255,.97);box-shadow:0 5px 18px rgba(22,49,72,.06)}
+.r42-rincon .r40-scene-actions button{min-height:44px}
+.r42-rincon #r40StartAV{background:#1f5f8b;border-color:#1f5f8b;color:#fff}
+.r42-rincon #r40Mute[aria-pressed="true"]{background:#17395c;color:#fff}
+.r42-rincon #watchStage{transition:opacity 650ms ease,filter 300ms ease;background:#071827}
+.r42-rincon #watchStage.r42-fade-out{opacity:0}
+.r42-rincon #listen>.audio-now{order:1;margin:0;padding:16px;background:linear-gradient(135deg,#f6fbfd,#edf5f7);border:1px solid #c9d9e1;border-radius:16px;min-height:92px;display:grid;align-content:center}
+.r42-rincon #listen>.r42-sound-controls{order:2;display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0}
+.r42-rincon #listen>.r42-sound-controls .qgenvol{flex:1 1 16rem;padding:0}
+.r42-rincon #listen>.r42-sound-controls .qbuttons{margin:0}
+.r42-rincon #listen>p{order:3;margin:.45rem 0}
+.r42-rincon #listen>.r42-sound-filter{order:4;display:grid;gap:6px;margin:.4rem 0}
+.r42-rincon #listen>#genSounds{order:5;display:block!important;border:0;background:transparent}
+.r42-rincon #genSounds>summary{display:none}
+.r42-rincon #genList{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0}
+.r42-rincon #genList .qgen{min-height:62px;border-radius:13px}
+.r42-rincon #mixer,.r42-rincon #audioList,.r42-rincon #audio{display:none!important}
+.r42-rincon #pause>.breathbox{order:1;margin:0;min-height:clamp(330px,48vh,520px);border-radius:20px;background:radial-gradient(circle at 50% 45%,rgba(240,249,249,.96),rgba(225,237,240,.80) 45%,rgba(212,224,232,.55));overflow:hidden}
+.r42-rincon #pause>.qbuttons{order:2;margin:.4rem 0}
+.r42-rincon #pause>p{order:3;margin:.4rem 0}
+.r42-rincon #pause>.r42-settings{order:4}
+.r42-rincon .r42-static-fallback{margin:0;width:100%;height:100%;position:relative;display:grid;place-items:end center;background:#0d2133;overflow:hidden}
+.r42-rincon .r42-static-fallback img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(.96)}
+.r42-rincon .r42-static-fallback figcaption{position:relative;z-index:2;width:min(94%,52rem);margin:0 0 12px;padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.94);color:#17395c}
+.r42-rincon .r42-fallback-forest{background:radial-gradient(circle at 65% 24%,rgba(226,232,195,.45),transparent 24%),linear-gradient(#76928a,#193c31 67%,#102a20)}
+.r42-rincon .r42-fallback-dawn{background:radial-gradient(circle at 68% 46%,#ffd6a2 0 5%,transparent 18%),linear-gradient(#53789f,#efa879 46%,#315a75 48%,#173c53)}
+.r42-rincon .r42-fallback-clouds{background:radial-gradient(ellipse at 30% 44%,rgba(255,255,255,.68),transparent 28%),radial-gradient(ellipse at 72% 56%,rgba(244,247,244,.64),transparent 25%),linear-gradient(#6ca1c4,#d7e3df)}
+.r42-rincon .qthumb-forest{background:radial-gradient(circle at 68% 20%,rgba(225,232,188,.45),transparent 25%),linear-gradient(110deg,#173b2e 0 18%,#496c58 18% 24%,#244a39 24% 48%,#638071 48% 55%,#183a2f 55%)}
+.r42-rincon .qthumb-dawn{background:radial-gradient(circle at 70% 42%,#ffd39a 0 7%,transparent 18%),linear-gradient(#6685a6 0 46%,#e5a078 46% 49%,#315e78 49% 100%)}
+.r42-rincon .qthumb-clouds{background:radial-gradient(ellipse at 32% 58%,#eef3f1 0 22%,transparent 24%),radial-gradient(ellipse at 66% 42%,#f9f7ef 0 20%,transparent 22%),linear-gradient(#73a8c9,#cfdfe3)}
+body.r42-clean{overflow:hidden}
+body.r42-clean #watch{position:fixed!important;inset:0;z-index:1000!important;padding:0!important;border:0!important;border-radius:0!important;background:#050d15!important;display:block!important}
+body.r42-clean #watch>.stage{position:absolute;inset:0;width:100vw!important;height:100svh!important;min-height:0!important;max-height:none!important;border-radius:0!important;box-shadow:none!important}
+body.r42-clean #watch>#watchCredit,body.r42-clean #watch>#r40SceneStatus,body.r42-clean #watch>#sceneList,body.r42-clean #watch>.r42-mobile-scene,body.r42-clean #watch>.r42-settings,body.r42-clean #watch>p:not(#watchCredit):not(#r40SceneStatus){display:none!important}
+body.r42-clean #watch>.r40-scene-actions{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(12px);z-index:1003;width:min(94vw,900px);justify-content:center;background:rgba(9,22,34,.82);border-color:rgba(255,255,255,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+body.r42-clean #watch>.r40-scene-actions button{background:rgba(255,255,255,.96);color:#17395c}
+body.r42-clean #watch>.r40-scene-actions #r40StartAV{background:#eaf7fb;color:#123d5c;border-color:#eaf7fb}
+body.r42-clean.r42-controls-awake #watch>.r40-scene-actions,body.r42-clean #watch>.r40-scene-actions:focus-within{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+body.r42-clean .exit-focus{display:block!important;z-index:1004;background:rgba(255,255,255,.92);border:1px solid rgba(20,48,70,.25);box-shadow:0 8px 24px rgba(0,0,0,.16)}
+@media(max-width:700px){
+ .r42-rincon .xhero{padding:12px 14px;margin-bottom:6px}.r42-rincon .xhero h1{font-size:1.8rem}.r42-rincon .xhero .lede{font-size:.95rem}
+ .r42-rincon .r40-tabs{display:none}.r42-rincon .r40-mobile-mode{display:grid;gap:5px;font-weight:700}
+ .r42-rincon .r40-mobile-mode select,.r42-rincon .r42-mobile-scene select,.r42-rincon .r42-sound-filter select{min-height:48px;width:100%;border:1px solid #8492a5;border-radius:11px;background:#fff;color:#17395c;font:inherit;padding:0 10px}
+ .r42-rincon #watch>.stage{height:clamp(320px,calc(100svh - 250px),540px);min-height:320px}
+ .r42-rincon #sceneList{display:none}.r42-rincon .r42-mobile-scene{order:5;display:grid;gap:5px;margin-top:7px}
+ .r42-rincon #genList{grid-template-columns:1fr}.r42-rincon #pause>.breathbox{min-height:360px}
+ .r42-rincon .r40-scene-actions{gap:5px}.r42-rincon .r40-scene-actions button{flex:1 1 45%;min-width:0}
+ .r42-rincon .r42-settings[open]{position:fixed;z-index:1200;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));max-height:72svh;overflow:auto;border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.28);background:#fff}
+ .r42-rincon .r42-settings[open]>summary{position:sticky;top:0;background:#fff;z-index:2;border-bottom:1px solid #d7e0e5}
+ body.r42-clean #watch>.r40-scene-actions{width:calc(100vw - 16px);bottom:max(8px,env(safe-area-inset-bottom));padding:6px;gap:4px}
+ body.r42-clean #watch>.r40-scene-actions button{flex:1 1 30%;min-height:42px;font-size:.92rem;padding:.45rem .5rem}
+}
+@media(prefers-reduced-motion:reduce){.r42-rincon #watchStage,body.r42-clean #watch>.r40-scene-actions{transition:none!important}}
+body.rm.r42-rincon #watchStage,body.rm.r42-clean #watch>.r40-scene-actions{transition:none!important}
+@media(forced-colors:active){.r42-rincon .r40-tabs,.r42-rincon .r40-scene-actions,.r42-rincon .r42-static-fallback figcaption,.r42-rincon .r42-settings,.r42-rincon .audio-now{background:Canvas!important;color:CanvasText!important;border:2px solid CanvasText!important}.r42-rincon .r40-tabs button[aria-selected="true"]{background:Highlight!important;color:HighlightText!important}.r42-rincon #sceneList>.qchoice[aria-pressed="true"]{outline:3px solid Highlight!important}}
+.r42-rincon #soundFinder .qbuttons{display:none!important}

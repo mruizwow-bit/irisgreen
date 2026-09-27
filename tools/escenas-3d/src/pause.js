@@ -92,15 +92,15 @@ export function createPause(canvas, renderer) {
     if (moving) t += dt;
     uT.value = t;
     let target;
-    if (reduced || !phase.guiding) target = 0.35;
+    if (!phase.guiding) target = 0.35;
     else target = phase.inhale ? ease(phase.progress) : 1 - ease(phase.progress);
-    breath = reduced ? 0.35 : breath + (target - breath) * clamp(dt * 6, 0, 1);
+    breath = reduced ? target : breath + (target - breath) * clamp(dt * 6, 0, 1);
     uBreath.value = breath;
     const s = 1.05 + breath * 0.75;
     orb.scale.setScalar(s);
     halo.scale.setScalar(s * 5.2); halo.material.opacity = 0.38 + breath * 0.22;
-    uP.value = !reduced && phase.guiding ? clamp(phase.progress, 0, 1) : 0; uIn.value = phase.inhale ? 1 : 0;
-    arc.visible = !reduced && phase.guiding;
+    uP.value = phase.guiding ? clamp(phase.progress, 0, 1) : 0; uIn.value = phase.inhale ? 1 : 0;
+    arc.visible = phase.guiding;
     const key = phase.guiding ? (phase.inhale ? 'in' : 'out') : 'idle';
     if (key !== lastPhase) { if (phase.guiding && !reduced) { const r = ripples[rip++ % ripples.length]; r.life = 0; } lastPhase = key; }
     ripples.forEach((r) => {

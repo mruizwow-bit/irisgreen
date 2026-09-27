@@ -1,0 +1,6037 @@
+{
+  "schema": "IRIS_R42_GAMES_METADATA/1.0",
+  "generated_for": "R42-A1 #286",
+  "source_dataset": {
+    "path": "assets/data/juegos-iris-data.js",
+    "git_blob": "f6bf0808401031a5178db8835f1bc668af63036c",
+    "total": 297
+  },
+  "lineage": {
+    "current_public_baseline_games": 252,
+    "current_public_baseline_sha": "52e5f9f02184581a1bfb1878c388ede3d1068c47",
+    "new_batch_games": 45,
+    "new_batch_id": "R40-A1-45",
+    "retired_legacy_130_used_as_redesign_source": false
+  },
+  "skills": {
+    "secuenciacion": {
+      "es": "Secuenciación",
+      "en": "Sequencing"
+    },
+    "eleccion_decision": {
+      "es": "Elección y decisión",
+      "en": "Choosing and deciding"
+    },
+    "clasificacion": {
+      "es": "Clasificación",
+      "en": "Sorting"
+    },
+    "planificacion_organizacion": {
+      "es": "Planificación y organización",
+      "en": "Planning and organising"
+    },
+    "memoria_visual": {
+      "es": "Memoria visual",
+      "en": "Visual memory"
+    }
+  },
+  "durations": {
+    "hasta_2_min": {
+      "es": "Hasta 2 min aprox.",
+      "en": "Up to about 2 min"
+    },
+    "3_5_min": {
+      "es": "3–5 min aprox.",
+      "en": "About 3–5 min"
+    },
+    "sin_duracion_fija": {
+      "es": "Sin duración fija",
+      "en": "No fixed duration"
+    }
+  },
+  "games": [
+    {
+      "id": "los-cordones",
+      "title": {
+        "es": "Los cordones, paso a paso",
+        "en": "Shoelaces, step by step"
+      },
+      "description": {
+        "es": "Pon en orden los pasos para atarte los cordones.",
+        "en": "Put the steps for tying your laces in order."
+      },
+      "stages": [
+        "inf",
+        "ado"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-la-ducha",
+      "title": {
+        "es": "Ordena la ducha",
+        "en": "Put the shower in order"
+      },
+      "description": {
+        "es": "Coloca los pasos de la ducha, del primero al último.",
+        "en": "Place the shower steps, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-dientes",
+      "title": {
+        "es": "¿Qué falta para lavarse los dientes?",
+        "en": "What is missing to brush your teeth?"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-manana",
+      "title": {
+        "es": "¿Qué viene ahora? · mañana",
+        "en": "What comes next? · morning"
+      },
+      "description": {
+        "es": "La mañana ya ha empezado. Elige lo que va después.",
+        "en": "The morning has started. Choose what comes next."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "prepara-tu-mochila",
+      "title": {
+        "es": "Prepara tu mochila",
+        "en": "Pack your backpack"
+      },
+      "description": {
+        "es": "Mete en la mochila lo que hace falta hoy.",
+        "en": "Put what you need today in your backpack."
+      },
+      "stages": [
+        "inf",
+        "ado"
+      ],
+      "context": "manana",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "vistete-lluvia",
+      "title": {
+        "es": "Vístete para la lluvia",
+        "en": "Dress for the rain"
+      },
+      "description": {
+        "es": "Hoy llueve. Elige ropa que te proteja.",
+        "en": "It is raining. Choose clothes that protect you."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "vestirse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "objeto-accion",
+      "title": {
+        "es": "Objeto y acción",
+        "en": "Object and action"
+      },
+      "description": {
+        "es": "Une cada objeto con lo que haces con él.",
+        "en": "Match each object with what you do with it."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "antes-y-despues-de-comer",
+      "title": {
+        "es": "Antes y después de comer",
+        "en": "Before and after eating"
+      },
+      "description": {
+        "es": "Ordena lo que pasa con la mesa.",
+        "en": "Put what happens at the table in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "intruso-ducha",
+      "title": {
+        "es": "El intruso de la ducha",
+        "en": "The odd one out in the shower"
+      },
+      "description": {
+        "es": "Todo sirve para la ducha menos una cosa.",
+        "en": "Everything is for the shower except one thing."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "construye-tu-manana",
+      "title": {
+        "es": "Construye tu mañana",
+        "en": "Build your morning"
+      },
+      "description": {
+        "es": "Elige tus pasos y ponlos en tu orden. Puedes imprimirlo.",
+        "en": "Choose your steps and put them in your order. You can print it."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "checklist-noche",
+      "title": {
+        "es": "Lista de la noche",
+        "en": "Night checklist"
+      },
+      "description": {
+        "es": "Marca lo que ya has hecho antes de dormir.",
+        "en": "Tick off what you have done before bed."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ruta-al-autobus",
+      "title": {
+        "es": "Ruta al autobús",
+        "en": "Route to the bus"
+      },
+      "description": {
+        "es": "Coloca los sitios de la ruta, de casa al destino.",
+        "en": "Place the stops on the route, from home to where you are going."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cremallera-y-botones",
+      "title": {
+        "es": "Cremallera y botones",
+        "en": "Zips and buttons"
+      },
+      "description": {
+        "es": "Dos secuencias cortas: abrochar un botón y subir una cremallera.",
+        "en": "Two short sequences: doing up a button and a zip."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cual-es-el-primero",
+      "title": {
+        "es": "¿Cuál es el primero?",
+        "en": "Which comes first?"
+      },
+      "description": {
+        "es": "Para desayunar cereales, ¿qué haces primero?",
+        "en": "To have cereal, what do you do first?"
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "dos-rutinas-mezcladas",
+      "title": {
+        "es": "Dos rutinas mezcladas",
+        "en": "Two routines mixed up"
+      },
+      "description": {
+        "es": "Separa lo que es de lavarse los dientes y lo que es de hacer la cama.",
+        "en": "Sort what is for brushing teeth and what is for making the bed."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "donde-pasa-esto",
+      "title": {
+        "es": "¿Dónde va esto?",
+        "en": "Where does this go?"
+      },
+      "description": {
+        "es": "Lleva cada cosa a su sitio de la casa.",
+        "en": "Take each thing to its place in the home."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "manana-de-lluvia",
+      "title": {
+        "es": "La mañana de un día de lluvia",
+        "en": "A rainy morning"
+      },
+      "description": {
+        "es": "La mañana de siempre, con lluvia. Ordena los pasos.",
+        "en": "The usual morning, with rain. Put the steps in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-la-lavadora",
+      "title": {
+        "es": "Ordena la lavadora",
+        "en": "Put the washing in order"
+      },
+      "description": {
+        "es": "De la ropa sucia a la ropa tendida.",
+        "en": "From dirty clothes to clothes on the line."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "pon-la-mesa",
+      "title": {
+        "es": "Pon la mesa",
+        "en": "Set the table"
+      },
+      "description": {
+        "es": "Elige lo que va en la mesa para comer.",
+        "en": "Choose what goes on the table for a meal."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "intruso-compra",
+      "title": {
+        "es": "El intruso de la compra",
+        "en": "The odd one out in the shopping"
+      },
+      "description": {
+        "es": "Todo es comida menos una cosa.",
+        "en": "Everything is food except one thing."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cruzar-bien",
+      "title": {
+        "es": "Cruzar bien",
+        "en": "Crossing safely"
+      },
+      "description": {
+        "es": "Los pasos para cruzar la calle con calma.",
+        "en": "The steps to cross the street calmly."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "esperar-el-turno",
+      "title": {
+        "es": "Esperar el turno",
+        "en": "Waiting your turn"
+      },
+      "description": {
+        "es": "Ordena lo que pasa en una fila.",
+        "en": "Put what happens in a queue in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "paga-y-guarda",
+      "title": {
+        "es": "Paga y guarda",
+        "en": "Pay and put away"
+      },
+      "description": {
+        "es": "Los pasos para pagar en una tienda. Sin cuentas.",
+        "en": "The steps to pay in a shop. No sums."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "mochila-del-finde",
+      "title": {
+        "es": "La mochila del finde",
+        "en": "The weekend bag"
+      },
+      "description": {
+        "es": "Te vas dos días. Elige qué llevas.",
+        "en": "You are away for two days. Choose what to take."
+      },
+      "stages": [
+        "inf",
+        "ado"
+      ],
+      "context": "manana",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "antes-de-dormir",
+      "title": {
+        "es": "Antes de dormir",
+        "en": "Before sleep"
+      },
+      "description": {
+        "es": "De la pantalla encendida a la luz apagada.",
+        "en": "From screen on to lights off."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "construye-tu-tarde",
+      "title": {
+        "es": "Construye tu tarde",
+        "en": "Build your afternoon"
+      },
+      "description": {
+        "es": "Organiza tu tarde. Incluye un descanso.",
+        "en": "Plan your afternoon. Include a break."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-despues",
+      "title": {
+        "es": "Primero, después",
+        "en": "First, then"
+      },
+      "description": {
+        "es": "Elige qué haces primero y qué después.",
+        "en": "Choose what you do first and what comes after."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-al-salir",
+      "title": {
+        "es": "¿Qué falta al salir?",
+        "en": "What is missing when you go out?"
+      },
+      "description": {
+        "es": "Tienes casi todo. ¿Qué falta?",
+        "en": "You have almost everything. What is missing?"
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-el-bocadillo",
+      "title": {
+        "es": "Ordena el bocadillo",
+        "en": "Put the sandwich in order"
+      },
+      "description": {
+        "es": "Los pasos para preparar un bocadillo.",
+        "en": "The steps to make a sandwich."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "recoge-la-habitacion",
+      "title": {
+        "es": "Recoge la habitación",
+        "en": "Tidy the room"
+      },
+      "description": {
+        "es": "Elige dónde va cada cosa. Algunas valen en dos sitios.",
+        "en": "Choose where each thing goes. Some fit in two places."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "la-ruta-del-medico",
+      "title": {
+        "es": "La ruta del médico",
+        "en": "The route to the doctor"
+      },
+      "description": {
+        "es": "Qué pasa desde que sales de casa hasta que vuelves a estar tranquilo.",
+        "en": "What happens from leaving home until you are calm again."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "abrir-un-envase",
+      "title": {
+        "es": "Abrir un envase",
+        "en": "Opening a pack"
+      },
+      "description": {
+        "es": "Los pasos para abrir un envase difícil.",
+        "en": "The steps to open a tricky pack."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "checklist-manana",
+      "title": {
+        "es": "Lista de la mañana",
+        "en": "Morning checklist"
+      },
+      "description": {
+        "es": "Marca lo que ya has hecho antes de salir. Puedes imprimirla.",
+        "en": "Tick off what you have done before leaving. You can print it."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "empareja-sitio-objeto",
+      "title": {
+        "es": "Cada cosa con su sitio",
+        "en": "Each thing and its place"
+      },
+      "description": {
+        "es": "Une cada sitio con lo que se guarda allí.",
+        "en": "Match each place with what is kept there."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "la-cuenta-atras",
+      "title": {
+        "es": "La cuenta atrás",
+        "en": "The countdown"
+      },
+      "description": {
+        "es": "Un reloj que se vacía poco a poco. Empieza cuando tú quieras.",
+        "en": "A clock that empties little by little. Start when you want."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "vistete-para-el-tiempo",
+      "title": {
+        "es": "Vístete para el frío, el calor y la lluvia",
+        "en": "Dress for cold, heat and rain"
+      },
+      "description": {
+        "es": "Tres días distintos y un mismo armario.",
+        "en": "Three different days and one wardrobe."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-noche",
+      "title": {
+        "es": "¿Qué viene ahora? · noche",
+        "en": "What comes next? · night"
+      },
+      "description": {
+        "es": "La noche ya ha empezado. Elige lo que va después.",
+        "en": "The evening has started. Choose what comes next."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "separa-para-reciclar",
+      "title": {
+        "es": "Separa para reciclar",
+        "en": "Sort for recycling"
+      },
+      "description": {
+        "es": "Lleva cada cosa a su contenedor.",
+        "en": "Take each thing to its bin."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "intruso-escritorio",
+      "title": {
+        "es": "El intruso del escritorio",
+        "en": "The odd one out on the desk"
+      },
+      "description": {
+        "es": "Todo ayuda a estudiar menos una cosa, que puede esperar.",
+        "en": "Everything helps you study except one thing, which can wait."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "empieza-por-uno",
+      "title": {
+        "es": "Empieza por uno",
+        "en": "Start with one"
+      },
+      "description": {
+        "es": "Para empezar una tarea, elige un trozo pequeño. Hay varios buenos.",
+        "en": "To start a task, choose a small piece. There are several good ones."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "la-medicacion-de-hoy",
+      "title": {
+        "es": "Recordatorio de la medicación",
+        "en": "Medication reminder"
+      },
+      "description": {
+        "es": "Marca cada momento del día cuando ya lo hayas hecho.",
+        "en": "Tick each time of day once you have done it."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "cuidarse",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "salir-con-el-perro",
+      "title": {
+        "es": "Salir con el perro",
+        "en": "Going out with the dog"
+      },
+      "description": {
+        "es": "Ordena los pasos del paseo con el perro.",
+        "en": "Put the steps of the dog walk in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cambio-de-actividad",
+      "title": {
+        "es": "Cambio de actividad",
+        "en": "Changing activity"
+      },
+      "description": {
+        "es": "Pasar de una actividad a otra eligiendo cómo. Las dos opciones valen.",
+        "en": "Moving from one activity to another, choosing how. Both options work."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "volver-del-descanso",
+      "title": {
+        "es": "Volver del descanso",
+        "en": "Coming back from a break"
+      },
+      "description": {
+        "es": "Volver a la tarea sin prisa, empezando por algo pequeño.",
+        "en": "Getting back to the task without rushing, starting small."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "la-compra",
+      "title": {
+        "es": "La compra y el pago",
+        "en": "Shopping and paying"
+      },
+      "description": {
+        "es": "Coger lo de la lista, esperar en la fila y pagar sin hacer cuentas.",
+        "en": "Pick up what is on the list, queue and pay with no sums."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "salir",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "preparar-una-cita-medica",
+      "title": {
+        "es": "Preparar una cita médica",
+        "en": "Getting ready for a medical appointment"
+      },
+      "description": {
+        "es": "Lo práctico de una cita: qué llevas y qué haces mientras esperas.",
+        "en": "The practical side: what you take and what you do while you wait."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "cuidarse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 5,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cambiar-de-aula",
+      "title": {
+        "es": "Cambiar de aula",
+        "en": "Changing classrooms"
+      },
+      "description": {
+        "es": "Los pasos para cambiar de aula sin perder nada por el camino.",
+        "en": "The steps to change classrooms without leaving anything behind."
+      },
+      "stages": [
+        "ado"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "organizar-los-deberes",
+      "title": {
+        "es": "Organizar los deberes",
+        "en": "Planning your homework"
+      },
+      "description": {
+        "es": "Reparte los deberes entre hoy, mañana y esta semana. Tú decides.",
+        "en": "Share out your homework between today, tomorrow and this week. You decide."
+      },
+      "stages": [
+        "ado"
+      ],
+      "context": "estudio",
+      "type": "planificar",
+      "skill": "clasificacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "estudiar-para-un-examen",
+      "title": {
+        "es": "Estudiar para un examen",
+        "en": "Studying for a test"
+      },
+      "description": {
+        "es": "Un orden para estudiar por partes, con pausas.",
+        "en": "An order for studying in parts, with breaks."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "planificar-una-quedada",
+      "title": {
+        "es": "Planificar una quedada",
+        "en": "Planning a meet-up"
+      },
+      "description": {
+        "es": "Lo que conviene decidir antes de quedar con alguien.",
+        "en": "What helps to decide before meeting up with someone."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "cambio-de-plan",
+      "title": {
+        "es": "Cuando cambia el plan",
+        "en": "When plans change"
+      },
+      "description": {
+        "es": "La quedada se cancela. Elige qué haces. Todas las opciones valen.",
+        "en": "The meet-up is cancelled. Choose what you do. Every option works."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "tiempo",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "tiempo-con-pantallas",
+      "title": {
+        "es": "Tiempo con pantallas",
+        "en": "Screen time"
+      },
+      "description": {
+        "es": "Llevas mucho rato con el móvil y quieres parar. Elige cómo.",
+        "en": "You have been on your phone a long time and want to stop. Choose how."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "tiempo",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "responder-un-correo",
+      "title": {
+        "es": "Responder un correo",
+        "en": "Answering an email"
+      },
+      "description": {
+        "es": "Pasos cortos para contestar un correo sin darle muchas vueltas.",
+        "en": "Short steps for answering an email without overthinking it."
+      },
+      "stages": [
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "hacer-una-llamada",
+      "title": {
+        "es": "Hacer una llamada",
+        "en": "Making a phone call"
+      },
+      "description": {
+        "es": "Preparar una llamada paso a paso para que cueste menos.",
+        "en": "Getting ready for a phone call step by step so it feels easier."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "demasiadas-tareas",
+      "title": {
+        "es": "Cuando hay demasiadas tareas",
+        "en": "When there is too much to do"
+      },
+      "description": {
+        "es": "Reparte las tareas entre ahora, más tarde y otro día. Tú decides.",
+        "en": "Share out your tasks between now, later and another day. You decide."
+      },
+      "stages": [
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "planificar",
+      "skill": "clasificacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "dividir-una-tarea-grande",
+      "title": {
+        "es": "Dividir una tarea grande",
+        "en": "Breaking down a big task"
+      },
+      "description": {
+        "es": "«Limpiar la casa» es mucho. Elige tres trozos y ponlos en orden.",
+        "en": "“Clean the house” is a lot. Choose three pieces and put them in order."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "casa",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordenar-papeles",
+      "title": {
+        "es": "Ordenar los papeles",
+        "en": "Sorting paperwork"
+      },
+      "description": {
+        "es": "Separa lo que hay que pagar, lo que se guarda y lo que se tira.",
+        "en": "Sort what needs paying, what to keep and what to throw away."
+      },
+      "stages": [
+        "adu"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "despues-de-un-dia-dificil",
+      "title": {
+        "es": "Después de un día que agota",
+        "en": "After an exhausting day"
+      },
+      "description": {
+        "es": "Volver a casa y recuperar energía, a tu manera.",
+        "en": "Getting home and recharging, your way."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "cuidarse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "preparar-la-noche-anterior",
+      "title": {
+        "es": "Dejarlo listo la noche anterior",
+        "en": "Getting ready the night before"
+      },
+      "description": {
+        "es": "Lo que conviene dejar preparado para que la mañana sea más fácil.",
+        "en": "What to get ready so the morning is easier."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "manana",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "memoria-de-la-cocina",
+      "title": {
+        "es": "Memoria de la cocina",
+        "en": "Kitchen memory"
+      },
+      "description": {
+        "es": "Encuentra las parejas. No hay tiempo ni puntos.",
+        "en": "Find the pairs. No timer and no points."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "busca-lo-que-necesitas-para-salir",
+      "title": {
+        "es": "Busca lo que necesitas para salir",
+        "en": "Find what you need to go out"
+      },
+      "description": {
+        "es": "Entre muchas cosas, encuentra las llaves, la cartera y el móvil.",
+        "en": "Among lots of things, find the keys, the wallet and the phone."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "coger-el-tren",
+      "title": {
+        "es": "Coger el tren",
+        "en": "Taking the train"
+      },
+      "description": {
+        "es": "Del billete a tu parada, paso a paso.",
+        "en": "From the ticket to your stop, step by step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "doblar-la-ropa",
+      "title": {
+        "es": "Doblar la ropa",
+        "en": "Folding clothes"
+      },
+      "description": {
+        "es": "Doblar una camiseta y guardarla.",
+        "en": "Folding a T-shirt and putting it away."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "lavarse-las-manos",
+      "title": {
+        "es": "Lavarse las manos",
+        "en": "Washing your hands"
+      },
+      "description": {
+        "es": "Los pasos para lavarse bien las manos.",
+        "en": "The steps for washing your hands well."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "busca-lo-del-bano",
+      "title": {
+        "es": "Busca lo del baño",
+        "en": "Find the bathroom things"
+      },
+      "description": {
+        "es": "Encuentra las cosas que se usan en el baño.",
+        "en": "Find the things you use in the bathroom."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "memoria-de-la-higiene",
+      "title": {
+        "es": "Memoria de la higiene",
+        "en": "Hygiene memory"
+      },
+      "description": {
+        "es": "Encuentra las parejas de cosas del baño.",
+        "en": "Find the pairs of bathroom things."
+      },
+      "stages": [
+        "inf"
+      ],
+      "context": "higiene",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "sin_duracion_fija",
+      "estimated_minutes": null,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-atarse-los-cordones",
+      "title": {
+        "es": "Ordena: atarse los cordones",
+        "en": "Put in order: tie your shoelaces"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-atarse-los-cordones",
+      "title": {
+        "es": "¿Qué viene ahora? · Atarse los cordones",
+        "en": "What comes next? · Tie your shoelaces"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-ponerse-y-quitarse-los-zapatos",
+      "title": {
+        "es": "Ordena: ponerse y quitarse los zapatos",
+        "en": "Put in order: put on and take off shoes"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-ponerse-y-quitarse-los-zapatos",
+      "title": {
+        "es": "¿Qué viene ahora? · Ponerse y quitarse los zapatos",
+        "en": "What comes next? · Put on and take off shoes"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-abrochar-botones",
+      "title": {
+        "es": "Ordena: abrochar botones",
+        "en": "Put in order: do up buttons"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-abrochar-botones",
+      "title": {
+        "es": "¿Qué viene ahora? · Abrochar botones",
+        "en": "What comes next? · Do up buttons"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-subir-y-bajar-la-cremallera",
+      "title": {
+        "es": "Ordena: subir y bajar la cremallera",
+        "en": "Put in order: do up and undo a zip"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-subir-y-bajar-la-cremallera",
+      "title": {
+        "es": "¿Qué falta? · Subir y bajar la cremallera",
+        "en": "What is missing? · Do up and undo a zip"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-elegir-la-ropa",
+      "title": {
+        "es": "Ordena: elegir la ropa",
+        "en": "Put in order: choose your clothes"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-elegir-la-ropa",
+      "title": {
+        "es": "¿Qué viene ahora? · Elegir la ropa",
+        "en": "What comes next? · Choose your clothes"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-vestirse-por-orden",
+      "title": {
+        "es": "Ordena: vestirse por orden",
+        "en": "Put in order: get dressed in order"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-vestirse-por-orden",
+      "title": {
+        "es": "¿Qué viene ahora? · Vestirse por orden",
+        "en": "What comes next? · Get dressed in order"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-la-ropa-del-dia-siguiente",
+      "title": {
+        "es": "Ordena: preparar la ropa del día siguiente",
+        "en": "Put in order: lay out tomorrow's clothes"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-la-ropa-del-dia-siguiente",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar la ropa del día siguiente",
+        "en": "What comes next? · Lay out tomorrow's clothes"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-quitarse-la-ropa-y-dejarla-en-su-sitio",
+      "title": {
+        "es": "Ordena: quitarse la ropa y dejarla en su sitio",
+        "en": "Put in order: undress and put clothes away"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-quitarse-la-ropa-y-dejarla-en-su-sitio",
+      "title": {
+        "es": "¿Qué falta? · Quitarse la ropa y dejarla en su sitio",
+        "en": "What is missing? · Undress and put clothes away"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-lavarse-los-dientes",
+      "title": {
+        "es": "Ordena: lavarse los dientes",
+        "en": "Put in order: brush your teeth"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-lavarse-los-dientes",
+      "title": {
+        "es": "¿Qué viene ahora? · Lavarse los dientes",
+        "en": "What comes next? · Brush your teeth"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-ducharse",
+      "title": {
+        "es": "Ordena: ducharse",
+        "en": "Put in order: have a shower"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-ducharse",
+      "title": {
+        "es": "¿Qué viene ahora? · Ducharse",
+        "en": "What comes next? · Have a shower"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-lavarse-el-pelo",
+      "title": {
+        "es": "Ordena: lavarse el pelo",
+        "en": "Put in order: wash your hair"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-lavarse-el-pelo",
+      "title": {
+        "es": "¿Qué viene ahora? · Lavarse el pelo",
+        "en": "What comes next? · Wash your hair"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-secarse",
+      "title": {
+        "es": "Ordena: secarse",
+        "en": "Put in order: dry yourself"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-secarse",
+      "title": {
+        "es": "¿Qué viene ahora? · Secarse",
+        "en": "What comes next? · Dry yourself"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-peinarse",
+      "title": {
+        "es": "Ordena: peinarse",
+        "en": "Put in order: brush your hair"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-peinarse",
+      "title": {
+        "es": "¿Qué falta? · Peinarse",
+        "en": "What is missing? · Brush your hair"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-lavarse-las-manos",
+      "title": {
+        "es": "Ordena: lavarse las manos",
+        "en": "Put in order: wash your hands"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-lavarse-las-manos",
+      "title": {
+        "es": "¿Qué viene ahora? · Lavarse las manos",
+        "en": "What comes next? · Wash your hands"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-ir-al-bano",
+      "title": {
+        "es": "Ordena: ir al baño",
+        "en": "Put in order: go to the toilet"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-ir-al-bano",
+      "title": {
+        "es": "¿Qué viene ahora? · Ir al baño",
+        "en": "What comes next? · Go to the toilet"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cuidado-menstrual",
+      "title": {
+        "es": "Ordena: cuidado menstrual",
+        "en": "Put in order: period care"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-cuidado-menstrual",
+      "title": {
+        "es": "¿Qué viene ahora? · Cuidado menstrual",
+        "en": "What comes next? · Period care"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-afeitarse-o-cuidado-personal",
+      "title": {
+        "es": "Ordena: afeitarse o cuidado personal",
+        "en": "Put in order: shave or personal grooming"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-afeitarse-o-cuidado-personal",
+      "title": {
+        "es": "¿Qué viene ahora? · Afeitarse o cuidado personal",
+        "en": "What comes next? · Shave or personal grooming"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cortarse-las-unas",
+      "title": {
+        "es": "Ordena: cortarse las uñas",
+        "en": "Put in order: clip your nails"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-cortarse-las-unas",
+      "title": {
+        "es": "¿Qué viene ahora? · Cortarse las uñas",
+        "en": "What comes next? · Clip your nails"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-usar-desodorante",
+      "title": {
+        "es": "Ordena: usar desodorante",
+        "en": "Put in order: use deodorant"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-usar-desodorante",
+      "title": {
+        "es": "¿Qué va primero? · Usar desodorante",
+        "en": "What comes first? · Use deodorant"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-levantarse",
+      "title": {
+        "es": "Ordena: levantarse",
+        "en": "Put in order: get up"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-levantarse",
+      "title": {
+        "es": "¿Qué viene ahora? · Levantarse",
+        "en": "What comes next? · Get up"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-desayunar",
+      "title": {
+        "es": "Ordena: desayunar",
+        "en": "Put in order: have breakfast"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-desayunar",
+      "title": {
+        "es": "¿Qué viene ahora? · Desayunar",
+        "en": "What comes next? · Have breakfast"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-la-mochila",
+      "title": {
+        "es": "Ordena: preparar la mochila",
+        "en": "Put in order: pack your bag"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-la-mochila",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar la mochila",
+        "en": "What comes next? · Pack your bag"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-comprobar-llaves-telefono-y-documentos",
+      "title": {
+        "es": "Ordena: comprobar llaves, teléfono y documentos",
+        "en": "Put in order: check keys, phone and documents"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-comprobar-llaves-telefono-y-documentos",
+      "title": {
+        "es": "¿Qué viene ahora? · Comprobar llaves, teléfono y documentos",
+        "en": "What comes next? · Check keys, phone and documents"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-ponerse-el-abrigo-y-salir",
+      "title": {
+        "es": "Ordena: ponerse el abrigo y salir",
+        "en": "Put in order: put on your coat and leave"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-ponerse-el-abrigo-y-salir",
+      "title": {
+        "es": "¿Qué viene ahora? · Ponerse el abrigo y salir",
+        "en": "What comes next? · Put on your coat and leave"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-salir-a-tiempo",
+      "title": {
+        "es": "Ordena: salir a tiempo",
+        "en": "Put in order: leave on time"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-salir-a-tiempo",
+      "title": {
+        "es": "¿Qué viene ahora? · Salir a tiempo",
+        "en": "What comes next? · Leave on time"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-transicion-casa-escuela-o-trabajo",
+      "title": {
+        "es": "Ordena: transición casa → escuela o trabajo",
+        "en": "Put in order: transition home → school or work"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-transicion-casa-escuela-o-trabajo",
+      "title": {
+        "es": "¿Qué viene ahora? · Transición casa → escuela o trabajo",
+        "en": "What comes next? · Transition home → school or work"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-un-desayuno-sencillo",
+      "title": {
+        "es": "Ordena: preparar un desayuno sencillo",
+        "en": "Put in order: make a simple breakfast"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-un-desayuno-sencillo",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar un desayuno sencillo",
+        "en": "What comes next? · Make a simple breakfast"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-un-bocadillo",
+      "title": {
+        "es": "Ordena: preparar un bocadillo",
+        "en": "Put in order: make a sandwich"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-un-bocadillo",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar un bocadillo",
+        "en": "What comes next? · Make a sandwich"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-poner-la-mesa",
+      "title": {
+        "es": "Ordena: poner la mesa",
+        "en": "Put in order: set the table"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-poner-la-mesa",
+      "title": {
+        "es": "¿Qué viene ahora? · Poner la mesa",
+        "en": "What comes next? · Set the table"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-recoger-la-mesa",
+      "title": {
+        "es": "Ordena: recoger la mesa",
+        "en": "Put in order: clear the table"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-recoger-la-mesa",
+      "title": {
+        "es": "¿Qué falta? · Recoger la mesa",
+        "en": "What is missing? · Clear the table"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-lavar-los-platos",
+      "title": {
+        "es": "Ordena: lavar los platos",
+        "en": "Put in order: wash up"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-lavar-los-platos",
+      "title": {
+        "es": "¿Qué viene ahora? · Lavar los platos",
+        "en": "What comes next? · Wash up"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-guardar-la-comida",
+      "title": {
+        "es": "Ordena: guardar la comida",
+        "en": "Put in order: put food away"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-guardar-la-comida",
+      "title": {
+        "es": "¿Qué falta? · Guardar la comida",
+        "en": "What is missing? · Put food away"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-usar-el-microondas-con-seguridad",
+      "title": {
+        "es": "Ordena: usar el microondas con seguridad",
+        "en": "Put in order: use the microwave safely"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-usar-el-microondas-con-seguridad",
+      "title": {
+        "es": "¿Qué viene ahora? · Usar el microondas con seguridad",
+        "en": "What comes next? · Use the microwave safely"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-seguir-una-receta-visual-sencilla",
+      "title": {
+        "es": "Ordena: seguir una receta visual sencilla",
+        "en": "Put in order: follow a simple visual recipe"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-seguir-una-receta-visual-sencilla",
+      "title": {
+        "es": "¿Qué viene ahora? · Seguir una receta visual sencilla",
+        "en": "What comes next? · Follow a simple visual recipe"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-la-comida-para-llevar",
+      "title": {
+        "es": "Ordena: preparar la comida para llevar",
+        "en": "Put in order: pack a packed lunch"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-la-comida-para-llevar",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar la comida para llevar",
+        "en": "What comes next? · Pack a packed lunch"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-beber-agua-a-lo-largo-del-dia",
+      "title": {
+        "es": "Ordena: beber agua a lo largo del día",
+        "en": "Put in order: drink water through the day"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-beber-agua-a-lo-largo-del-dia",
+      "title": {
+        "es": "¿Qué falta? · Beber agua a lo largo del día",
+        "en": "What is missing? · Drink water through the day"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-hacer-la-cama",
+      "title": {
+        "es": "Ordena: hacer la cama",
+        "en": "Put in order: make the bed"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-hacer-la-cama",
+      "title": {
+        "es": "¿Qué falta? · Hacer la cama",
+        "en": "What is missing? · Make the bed"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-recoger-una-habitacion",
+      "title": {
+        "es": "Ordena: recoger una habitación",
+        "en": "Put in order: tidy a room"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-recoger-una-habitacion",
+      "title": {
+        "es": "¿Qué viene ahora? · Recoger una habitación",
+        "en": "What comes next? · Tidy a room"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-clasificar-la-ropa",
+      "title": {
+        "es": "Ordena: clasificar la ropa",
+        "en": "Put in order: sort the laundry"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-clasificar-la-ropa",
+      "title": {
+        "es": "¿Qué falta? · Clasificar la ropa",
+        "en": "What is missing? · Sort the laundry"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-poner-la-lavadora",
+      "title": {
+        "es": "Ordena: poner la lavadora",
+        "en": "Put in order: put on a wash"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-poner-la-lavadora",
+      "title": {
+        "es": "¿Qué viene ahora? · Poner la lavadora",
+        "en": "What comes next? · Put on a wash"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-tender-la-ropa",
+      "title": {
+        "es": "Ordena: tender la ropa",
+        "en": "Put in order: hang out the washing"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-tender-la-ropa",
+      "title": {
+        "es": "¿Qué falta? · Tender la ropa",
+        "en": "What is missing? · Hang out the washing"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-doblar-la-ropa",
+      "title": {
+        "es": "Ordena: doblar la ropa",
+        "en": "Put in order: fold the clothes"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-doblar-la-ropa",
+      "title": {
+        "es": "¿Qué falta? · Doblar la ropa",
+        "en": "What is missing? · Fold the clothes"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-guardar-los-objetos-en-su-lugar",
+      "title": {
+        "es": "Ordena: guardar los objetos en su lugar",
+        "en": "Put in order: put things back in their place"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-guardar-los-objetos-en-su-lugar",
+      "title": {
+        "es": "¿Qué va primero? · Guardar los objetos en su lugar",
+        "en": "What comes first? · Put things back in their place"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-sacar-la-basura",
+      "title": {
+        "es": "Ordena: sacar la basura",
+        "en": "Put in order: take out the rubbish"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-sacar-la-basura",
+      "title": {
+        "es": "¿Qué falta? · Sacar la basura",
+        "en": "What is missing? · Take out the rubbish"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-separar-para-reciclar",
+      "title": {
+        "es": "Ordena: separar para reciclar",
+        "en": "Put in order: sort the recycling"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-separar-para-reciclar",
+      "title": {
+        "es": "¿Qué viene ahora? · Separar para reciclar",
+        "en": "What comes next? · Sort the recycling"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-limpiar-una-superficie",
+      "title": {
+        "es": "Ordena: limpiar una superficie",
+        "en": "Put in order: clean a surface"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-limpiar-una-superficie",
+      "title": {
+        "es": "¿Qué falta? · Limpiar una superficie",
+        "en": "What is missing? · Clean a surface"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-pasar-la-aspiradora",
+      "title": {
+        "es": "Ordena: pasar la aspiradora",
+        "en": "Put in order: vacuum"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-pasar-la-aspiradora",
+      "title": {
+        "es": "¿Qué falta? · Pasar la aspiradora",
+        "en": "What is missing? · Vacuum"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-regar-las-plantas",
+      "title": {
+        "es": "Ordena: regar las plantas",
+        "en": "Put in order: water the plants"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-regar-las-plantas",
+      "title": {
+        "es": "¿Qué va primero? · Regar las plantas",
+        "en": "What comes first? · Water the plants"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cuidar-a-un-animal-de-compania",
+      "title": {
+        "es": "Ordena: cuidar a un animal de compañía",
+        "en": "Put in order: look after a pet"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-cuidar-a-un-animal-de-compania",
+      "title": {
+        "es": "¿Qué falta? · Cuidar a un animal de compañía",
+        "en": "What is missing? · Look after a pet"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-el-escritorio",
+      "title": {
+        "es": "Ordena: preparar el escritorio",
+        "en": "Put in order: set up your desk"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-preparar-el-escritorio",
+      "title": {
+        "es": "¿Qué falta? · Preparar el escritorio",
+        "en": "What is missing? · Set up your desk"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-empezar-una-tarea",
+      "title": {
+        "es": "Ordena: empezar una tarea",
+        "en": "Put in order: start a task"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-empezar-una-tarea",
+      "title": {
+        "es": "¿Qué viene ahora? · Empezar una tarea",
+        "en": "What comes next? · Start a task"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-dividir-una-tarea-grande",
+      "title": {
+        "es": "Ordena: dividir una tarea grande",
+        "en": "Put in order: break a big task down"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-dividir-una-tarea-grande",
+      "title": {
+        "es": "¿Qué viene ahora? · Dividir una tarea grande",
+        "en": "What comes next? · Break a big task down"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-guardar-los-materiales",
+      "title": {
+        "es": "Ordena: guardar los materiales",
+        "en": "Put in order: put your materials away"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-guardar-los-materiales",
+      "title": {
+        "es": "¿Qué va primero? · Guardar los materiales",
+        "en": "What comes first? · Put your materials away"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-entregar-una-tarea",
+      "title": {
+        "es": "Ordena: entregar una tarea",
+        "en": "Put in order: hand in a task"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-entregar-una-tarea",
+      "title": {
+        "es": "¿Qué falta? · Entregar una tarea",
+        "en": "What is missing? · Hand in a task"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-transicion-descanso-trabajo",
+      "title": {
+        "es": "Ordena: transición descanso → trabajo",
+        "en": "Put in order: transition break → work"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-transicion-descanso-trabajo",
+      "title": {
+        "es": "¿Qué viene ahora? · Transición descanso → trabajo",
+        "en": "What comes next? · Transition break → work"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-pedir-una-adaptacion-o-ayuda",
+      "title": {
+        "es": "Ordena: pedir una adaptación o ayuda",
+        "en": "Put in order: ask for an adjustment or help"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-pedir-una-adaptacion-o-ayuda",
+      "title": {
+        "es": "¿Qué falta? · Pedir una adaptación o ayuda",
+        "en": "What is missing? · Ask for an adjustment or help"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-seguir-un-horario-del-dia",
+      "title": {
+        "es": "Ordena: seguir un horario del día",
+        "en": "Put in order: follow a day timetable"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-seguir-un-horario-del-dia",
+      "title": {
+        "es": "¿Qué viene ahora? · Seguir un horario del día",
+        "en": "What comes next? · Follow a day timetable"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cruzar-por-el-paso-de-peatones",
+      "title": {
+        "es": "Ordena: cruzar por el paso de peatones",
+        "en": "Put in order: cross at the crossing"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-cruzar-por-el-paso-de-peatones",
+      "title": {
+        "es": "¿Qué viene ahora? · Cruzar por el paso de peatones",
+        "en": "What comes next? · Cross at the crossing"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-esperar-el-turno",
+      "title": {
+        "es": "Ordena: esperar el turno",
+        "en": "Put in order: wait your turn"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-esperar-el-turno",
+      "title": {
+        "es": "¿Qué falta? · Esperar el turno",
+        "en": "What is missing? · Wait your turn"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-usar-el-transporte-publico",
+      "title": {
+        "es": "Ordena: usar el transporte público",
+        "en": "Put in order: use public transport"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-usar-el-transporte-publico",
+      "title": {
+        "es": "¿Qué viene ahora? · Usar el transporte público",
+        "en": "What comes next? · Use public transport"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-subir-y-bajar-del-autobus-o-metro",
+      "title": {
+        "es": "Ordena: subir y bajar del autobús o metro",
+        "en": "Put in order: get on and off the bus or metro"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-subir-y-bajar-del-autobus-o-metro",
+      "title": {
+        "es": "¿Qué viene ahora? · Subir y bajar del autobús o metro",
+        "en": "What comes next? · Get on and off the bus or metro"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-comprar-en-una-tienda",
+      "title": {
+        "es": "Ordena: comprar en una tienda",
+        "en": "Put in order: shop in a shop"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-comprar-en-una-tienda",
+      "title": {
+        "es": "¿Qué viene ahora? · Comprar en una tienda",
+        "en": "What comes next? · Shop in a shop"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-pagar",
+      "title": {
+        "es": "Ordena: pagar",
+        "en": "Put in order: pay"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-pagar",
+      "title": {
+        "es": "¿Qué viene ahora? · Pagar",
+        "en": "What comes next? · Pay"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-guardar-el-ticket-y-el-cambio",
+      "title": {
+        "es": "Ordena: guardar el ticket y el cambio",
+        "en": "Put in order: keep the receipt and change"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-guardar-el-ticket-y-el-cambio",
+      "title": {
+        "es": "¿Qué va primero? · Guardar el ticket y el cambio",
+        "en": "What comes first? · Keep the receipt and change"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-pedir-ayuda",
+      "title": {
+        "es": "Ordena: pedir ayuda",
+        "en": "Put in order: ask for help"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-pedir-ayuda",
+      "title": {
+        "es": "¿Qué falta? · Pedir ayuda",
+        "en": "What is missing? · Ask for help"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-orientarse-en-un-lugar-conocido",
+      "title": {
+        "es": "Ordena: orientarse en un lugar conocido",
+        "en": "Put in order: find your way in a familiar place"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-orientarse-en-un-lugar-conocido",
+      "title": {
+        "es": "¿Qué falta? · Orientarse en un lugar conocido",
+        "en": "What is missing? · Find your way in a familiar place"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-ir-a-una-cita-medica",
+      "title": {
+        "es": "Ordena: ir a una cita médica",
+        "en": "Put in order: go to a medical appointment"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-ir-a-una-cita-medica",
+      "title": {
+        "es": "¿Qué viene ahora? · Ir a una cita médica",
+        "en": "What comes next? · Go to a medical appointment"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-salir-del-sitio-cuando-hay-sobrecarga",
+      "title": {
+        "es": "Ordena: salir del sitio cuando hay sobrecarga",
+        "en": "Put in order: leave when you are overloaded"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-salir-del-sitio-cuando-hay-sobrecarga",
+      "title": {
+        "es": "¿Qué viene ahora? · Salir del sitio cuando hay sobrecarga",
+        "en": "What comes next? · Leave when you are overloaded"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-prepararse-para-salir",
+      "title": {
+        "es": "Ordena: prepararse para salir",
+        "en": "Put in order: get ready to go out"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-prepararse-para-salir",
+      "title": {
+        "es": "¿Qué falta? · Prepararse para salir",
+        "en": "What is missing? · Get ready to go out"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-terminar-una-actividad",
+      "title": {
+        "es": "Ordena: terminar una actividad",
+        "en": "Put in order: finish an activity"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-terminar-una-actividad",
+      "title": {
+        "es": "¿Qué falta? · Terminar una actividad",
+        "en": "What is missing? · Finish an activity"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cambiar-de-tarea",
+      "title": {
+        "es": "Ordena: cambiar de tarea",
+        "en": "Put in order: switch task"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-cambiar-de-tarea",
+      "title": {
+        "es": "¿Qué viene ahora? · Cambiar de tarea",
+        "en": "What comes next? · Switch task"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-esperar",
+      "title": {
+        "es": "Ordena: esperar",
+        "en": "Put in order: wait"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-esperar",
+      "title": {
+        "es": "¿Qué falta? · Esperar",
+        "en": "What is missing? · Wait"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-seguir-una-cuenta-atras-visual",
+      "title": {
+        "es": "Ordena: seguir una cuenta atrás visual",
+        "en": "Put in order: follow a visual countdown"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-seguir-una-cuenta-atras-visual",
+      "title": {
+        "es": "¿Qué falta? · Seguir una cuenta atrás visual",
+        "en": "What is missing? · Follow a visual countdown"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-organizar-la-secuencia-de-la-tarde",
+      "title": {
+        "es": "Ordena: organizar la secuencia de la tarde",
+        "en": "Put in order: plan the afternoon sequence"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-organizar-la-secuencia-de-la-tarde",
+      "title": {
+        "es": "¿Qué falta? · Organizar la secuencia de la tarde",
+        "en": "What is missing? · Plan the afternoon sequence"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-primero-despues",
+      "title": {
+        "es": "¿Qué va primero? · Primero → después",
+        "en": "What comes first? · First → then"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-el-pijama",
+      "title": {
+        "es": "Ordena: preparar el pijama",
+        "en": "Put in order: get your pyjamas ready"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "primero-preparar-el-pijama",
+      "title": {
+        "es": "¿Qué va primero? · Preparar el pijama",
+        "en": "What comes first? · Get your pyjamas ready"
+      },
+      "description": {
+        "es": "Elige el paso con el que se empieza.",
+        "en": "Choose the step you start with."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "eleccion_decision",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-higiene-nocturna",
+      "title": {
+        "es": "Ordena: higiene nocturna",
+        "en": "Put in order: night-time hygiene"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-higiene-nocturna",
+      "title": {
+        "es": "¿Qué falta? · Higiene nocturna",
+        "en": "What is missing? · Night-time hygiene"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-dejar-preparadas-las-cosas-del-dia-siguiente",
+      "title": {
+        "es": "Ordena: dejar preparadas las cosas del día siguiente",
+        "en": "Put in order: get tomorrow's things ready"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-dejar-preparadas-las-cosas-del-dia-siguiente",
+      "title": {
+        "es": "¿Qué falta? · Dejar preparadas las cosas del día siguiente",
+        "en": "What is missing? · Get tomorrow's things ready"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-apagar-pantallas-y-luces",
+      "title": {
+        "es": "Ordena: apagar pantallas y luces",
+        "en": "Put in order: turn off screens and lights"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-apagar-pantallas-y-luces",
+      "title": {
+        "es": "¿Qué falta? · Apagar pantallas y luces",
+        "en": "What is missing? · Turn off screens and lights"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-acostarse",
+      "title": {
+        "es": "Ordena: acostarse",
+        "en": "Put in order: go to bed"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-acostarse",
+      "title": {
+        "es": "¿Qué falta? · Acostarse",
+        "en": "What is missing? · Go to bed"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-preparar-el-ambiente-de-descanso",
+      "title": {
+        "es": "Ordena: preparar el ambiente de descanso",
+        "en": "Put in order: set up a restful room"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-preparar-el-ambiente-de-descanso",
+      "title": {
+        "es": "¿Qué viene ahora? · Preparar el ambiente de descanso",
+        "en": "What comes next? · Set up a restful room"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-volver-a-la-cama-si-te-despiertas",
+      "title": {
+        "es": "Ordena: volver a la cama si te despiertas",
+        "en": "Put in order: go back to bed if you wake up"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-volver-a-la-cama-si-te-despiertas",
+      "title": {
+        "es": "¿Qué viene ahora? · Volver a la cama si te despiertas",
+        "en": "What comes next? · Go back to bed if you wake up"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-tomar-la-medicacion",
+      "title": {
+        "es": "Ordena: tomar la medicación",
+        "en": "Put in order: take your medication"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-tomar-la-medicacion",
+      "title": {
+        "es": "¿Qué falta? · Tomar la medicación",
+        "en": "What is missing? · Take your medication"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-prepararse-para-el-dentista",
+      "title": {
+        "es": "Ordena: prepararse para el dentista",
+        "en": "Put in order: get ready for the dentist"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-prepararse-para-el-dentista",
+      "title": {
+        "es": "¿Qué viene ahora? · Prepararse para el dentista",
+        "en": "What comes next? · Get ready for the dentist"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cargar-el-telefono",
+      "title": {
+        "es": "Ordena: cargar el teléfono",
+        "en": "Put in order: charge your phone"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-cargar-el-telefono",
+      "title": {
+        "es": "¿Qué falta? · Cargar el teléfono",
+        "en": "What is missing? · Charge your phone"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-manejar-el-dinero-de-la-semana",
+      "title": {
+        "es": "Ordena: manejar el dinero de la semana",
+        "en": "Put in order: manage the week's money"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-manejar-el-dinero-de-la-semana",
+      "title": {
+        "es": "¿Qué viene ahora? · Manejar el dinero de la semana",
+        "en": "What comes next? · Manage the week's money"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-abrir-un-envase-dificil",
+      "title": {
+        "es": "Ordena: abrir un envase difícil",
+        "en": "Put in order: open a tricky package"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-abrir-un-envase-dificil",
+      "title": {
+        "es": "¿Qué falta? · Abrir un envase difícil",
+        "en": "What is missing? · Open a tricky package"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-contestar-a-la-puerta-o-al-telefono",
+      "title": {
+        "es": "Ordena: contestar a la puerta o al teléfono",
+        "en": "Put in order: answer the door or the phone"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-contestar-a-la-puerta-o-al-telefono",
+      "title": {
+        "es": "¿Qué viene ahora? · Contestar a la puerta o al teléfono",
+        "en": "What comes next? · Answer the door or the phone"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-usar-una-lista-de-la-compra",
+      "title": {
+        "es": "Ordena: usar una lista de la compra",
+        "en": "Put in order: use a shopping list"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-usar-una-lista-de-la-compra",
+      "title": {
+        "es": "¿Qué falta? · Usar una lista de la compra",
+        "en": "What is missing? · Use a shopping list"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-descansar-antes-de-agotarte",
+      "title": {
+        "es": "Ordena: descansar antes de agotarte",
+        "en": "Put in order: rest before you crash"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-descansar-antes-de-agotarte",
+      "title": {
+        "es": "¿Qué viene ahora? · Descansar antes de agotarte",
+        "en": "What comes next? · Rest before you crash"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-prepararse-para-un-cambio-previsto",
+      "title": {
+        "es": "Ordena: prepararse para un cambio previsto",
+        "en": "Put in order: get ready for a planned change"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-viene-prepararse-para-un-cambio-previsto",
+      "title": {
+        "es": "¿Qué viene ahora? · Prepararse para un cambio previsto",
+        "en": "What comes next? · Get ready for a planned change"
+      },
+      "description": {
+        "es": "Mira lo que ya ha pasado y elige el paso siguiente.",
+        "en": "Look at what has happened and choose the next step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-recargar-el-abono-de-transporte",
+      "title": {
+        "es": "Ordena: recargar el abono de transporte",
+        "en": "Put in order: top up your travel card"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "que-falta-recargar-el-abono-de-transporte",
+      "title": {
+        "es": "¿Qué falta? · Recargar el abono de transporte",
+        "en": "What is missing? · Top up your travel card"
+      },
+      "description": {
+        "es": "Mira la secuencia y elige el paso que falta.",
+        "en": "Look at the sequence and choose the missing step."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-afeitarse",
+      "title": {
+        "es": "Ordena: afeitarse",
+        "en": "Put in order: shaving"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-cocinar-una-receta",
+      "title": {
+        "es": "Ordena: cocinar una receta",
+        "en": "Put in order: cooking a recipe"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "ado",
+        "adu"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "ordena-limpiar-la-casa",
+      "title": {
+        "es": "Ordena: limpiar la casa por partes",
+        "en": "Put in order: cleaning the house in parts"
+      },
+      "description": {
+        "es": "Pon los pasos en orden, del primero al último.",
+        "en": "Put the steps in order, from first to last."
+      },
+      "stages": [
+        "adu"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "hasta_2_min",
+      "estimated_minutes": 2,
+      "lineage": "A2_FROZEN_PUBLIC_BASELINE"
+    },
+    {
+      "id": "r40-higiene-ordenar",
+      "title": {
+        "es": "Lavarse las manos, paso a paso",
+        "en": "Wash your hands, step by step"
+      },
+      "description": {
+        "es": "Pon en orden una secuencia cotidiana para lavarte las manos.",
+        "en": "Put an everyday hand-washing sequence in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-higiene-elegir",
+      "title": {
+        "es": "¿Por dónde quieres empezar?",
+        "en": "Where do you want to start?"
+      },
+      "description": {
+        "es": "Elige una tarea de cuidado personal para empezar. Las tres opciones pueden servir.",
+        "en": "Choose a personal-care task to start with. Any of the three can work."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-higiene-clasificar",
+      "title": {
+        "es": "Cada objeto con su cuidado",
+        "en": "Match each item to its care task"
+      },
+      "description": {
+        "es": "Separa las cosas de los dientes y las del pelo.",
+        "en": "Sort the things for teeth and the things for hair."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-higiene-planificar",
+      "title": {
+        "es": "Prepara tu cuidado personal",
+        "en": "Plan your personal care"
+      },
+      "description": {
+        "es": "Elige las tareas que quieres hacer y ordénalas a tu manera.",
+        "en": "Choose the tasks you want to do and put them in your own order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-higiene-memoria",
+      "title": {
+        "es": "Memoria del baño",
+        "en": "Bathroom memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de objetos cotidianos del baño.",
+        "en": "Find pairs of everyday bathroom items."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "higiene",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-vestirse-ordenar",
+      "title": {
+        "es": "Vestirse para salir",
+        "en": "Get dressed to go out"
+      },
+      "description": {
+        "es": "Pon en orden una secuencia sencilla de ropa y calzado.",
+        "en": "Put a simple clothes-and-shoes sequence in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-vestirse-elegir",
+      "title": {
+        "es": "Elige una prenda para empezar",
+        "en": "Choose an item to start with"
+      },
+      "description": {
+        "es": "Elige con qué prenda quieres empezar. Puedes decidir según el día y cómo te encuentres.",
+        "en": "Choose which item you want to start with. You can decide based on the day and how you feel."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-vestirse-clasificar",
+      "title": {
+        "es": "Ropa y calzado",
+        "en": "Clothes and footwear"
+      },
+      "description": {
+        "es": "Separa prendas de vestir y calzado.",
+        "en": "Sort clothes and footwear."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-vestirse-planificar",
+      "title": {
+        "es": "Prepara lo que te vas a poner",
+        "en": "Plan what you will wear"
+      },
+      "description": {
+        "es": "Elige las prendas que quieres usar y ordénalas como te resulte cómodo.",
+        "en": "Choose the clothes you want to use and put them in an order that feels comfortable."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-vestirse-memoria",
+      "title": {
+        "es": "Memoria de la ropa",
+        "en": "Clothes memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de prendas y calzado.",
+        "en": "Find pairs of clothes and footwear."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "vestirse",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-comidas-ordenar",
+      "title": {
+        "es": "Preparar un bocadillo",
+        "en": "Make a sandwich"
+      },
+      "description": {
+        "es": "Pon en orden cuatro pasos para preparar y guardar un bocadillo.",
+        "en": "Put four steps for making and packing a sandwich in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-comidas-elegir",
+      "title": {
+        "es": "¿Qué comida quieres preparar?",
+        "en": "Which meal do you want to prepare?"
+      },
+      "description": {
+        "es": "Elige una comida del día para empezar a organizarla.",
+        "en": "Choose a meal of the day to start organising."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-comidas-clasificar",
+      "title": {
+        "es": "Nevera o fregadero",
+        "en": "Fridge or sink"
+      },
+      "description": {
+        "es": "Separa lo que se guarda en frío y lo que se lava después de usarlo.",
+        "en": "Sort what is kept cold and what is washed after use."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-comidas-planificar",
+      "title": {
+        "es": "Prepara una comida para llevar",
+        "en": "Plan food to take with you"
+      },
+      "description": {
+        "es": "Elige qué quieres preparar o llevar y ordénalo a tu manera.",
+        "en": "Choose what you want to prepare or take and put it in your own order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-comidas-memoria",
+      "title": {
+        "es": "Memoria de la cocina · nueva tanda",
+        "en": "Kitchen memory · new set"
+      },
+      "description": {
+        "es": "Encuentra parejas de objetos cotidianos de la cocina.",
+        "en": "Find pairs of everyday kitchen items."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "comidas",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-manana-ordenar",
+      "title": {
+        "es": "Prepararse para salir",
+        "en": "Get ready to go out"
+      },
+      "description": {
+        "es": "Pon en orden una mañana sencilla antes de salir.",
+        "en": "Put a simple morning-before-leaving sequence in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-manana-elegir",
+      "title": {
+        "es": "Deja una cosa lista",
+        "en": "Get one thing ready"
+      },
+      "description": {
+        "es": "Elige una cosa que quieras dejar preparada para que la salida sea más sencilla.",
+        "en": "Choose one thing to get ready so leaving is simpler."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-manana-clasificar",
+      "title": {
+        "es": "Mañana o noche",
+        "en": "Morning or night"
+      },
+      "description": {
+        "es": "Separa acciones típicas de la mañana y de la noche.",
+        "en": "Sort typical morning and night actions."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-manana-planificar",
+      "title": {
+        "es": "Construye tu salida de casa",
+        "en": "Build your leaving-home plan"
+      },
+      "description": {
+        "es": "Elige los pasos que te ayudan antes de salir y ponlos en tu orden.",
+        "en": "Choose the steps that help before leaving and put them in your order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-manana-memoria",
+      "title": {
+        "es": "Memoria antes de salir",
+        "en": "Leaving-home memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de cosas que pueden acompañarte al salir.",
+        "en": "Find pairs of things that can go with you when you leave."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "manana",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-casa-ordenar",
+      "title": {
+        "es": "Poner a punto una habitación",
+        "en": "Get a room ready"
+      },
+      "description": {
+        "es": "Prueba un orden posible para hacer varias tareas pequeñas de casa.",
+        "en": "Try one possible order for several small household tasks."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-casa-elegir",
+      "title": {
+        "es": "Elige una tarea pequeña de casa",
+        "en": "Choose one small household task"
+      },
+      "description": {
+        "es": "Elige una tarea concreta para empezar. Las tres son opciones posibles.",
+        "en": "Choose one specific task to start with. Any of the three can work."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-casa-clasificar",
+      "title": {
+        "es": "Armario o nevera",
+        "en": "Wardrobe or fridge"
+      },
+      "description": {
+        "es": "Separa cosas que se guardan en el armario y cosas que se guardan en frío.",
+        "en": "Sort things kept in the wardrobe and things kept cold."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-casa-planificar",
+      "title": {
+        "es": "Haz tu plan de casa",
+        "en": "Make your home plan"
+      },
+      "description": {
+        "es": "Elige unas tareas de casa y ordénalas como prefieras.",
+        "en": "Choose some household tasks and put them in the order you prefer."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-casa-memoria",
+      "title": {
+        "es": "Memoria de casa",
+        "en": "Home memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de objetos y lugares cotidianos de casa.",
+        "en": "Find pairs of everyday household items and places."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "casa",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-salir-ordenar",
+      "title": {
+        "es": "Del portal al destino",
+        "en": "From home to your destination"
+      },
+      "description": {
+        "es": "Pon en orden una ruta sencilla en transporte público.",
+        "en": "Put a simple public-transport route in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-salir-elegir",
+      "title": {
+        "es": "Comprueba una cosa antes de salir",
+        "en": "Check one thing before leaving"
+      },
+      "description": {
+        "es": "Elige qué quieres comprobar primero. Las tres opciones pueden ser útiles.",
+        "en": "Choose what you want to check first. Any of the three can be useful."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-salir-clasificar",
+      "title": {
+        "es": "Lo llevo o se queda en casa",
+        "en": "Take it or leave it at home"
+      },
+      "description": {
+        "es": "Separa algunas cosas que suelen acompañarte de una cosa que se queda en casa.",
+        "en": "Sort some things that often go with you from one thing that stays at home."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-salir-planificar",
+      "title": {
+        "es": "Planifica una salida sencilla",
+        "en": "Plan a simple trip out"
+      },
+      "description": {
+        "es": "Elige qué necesitas para la salida y ordénalo a tu manera.",
+        "en": "Choose what you need for going out and put it in your own order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-salir-memoria",
+      "title": {
+        "es": "Memoria para salir",
+        "en": "Going-out memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de cosas que puedes comprobar antes de salir.",
+        "en": "Find pairs of things you can check before going out."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "salir",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-estudio-ordenar",
+      "title": {
+        "es": "Responder una tarea breve",
+        "en": "Complete a short task"
+      },
+      "description": {
+        "es": "Pon en orden cuatro pasos desde abrir el material hasta entregar la respuesta.",
+        "en": "Put four steps in order, from opening the material to sending the answer."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "estudio",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-estudio-elegir",
+      "title": {
+        "es": "Elige cómo empezar",
+        "en": "Choose how to start"
+      },
+      "description": {
+        "es": "Elige una forma pequeña de empezar una tarea. No hay una única opción correcta.",
+        "en": "Choose a small way to start a task. There is no single correct option."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "estudio",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-estudio-clasificar",
+      "title": {
+        "es": "Trabajo o descanso",
+        "en": "Work or break"
+      },
+      "description": {
+        "es": "Separa cosas para la tarea y cosas para una pausa.",
+        "en": "Sort things for the task and things for a break."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "estudio",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-estudio-planificar",
+      "title": {
+        "es": "Construye una sesión de estudio o trabajo",
+        "en": "Build a study or work session"
+      },
+      "description": {
+        "es": "Elige partes de trabajo y descanso y colócalas en el orden que prefieras.",
+        "en": "Choose work and break parts and put them in the order you prefer."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "estudio",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-estudio-memoria",
+      "title": {
+        "es": "Memoria del escritorio",
+        "en": "Desk memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de materiales de estudio o trabajo.",
+        "en": "Find pairs of study or work materials."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "estudio",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-tiempo-ordenar",
+      "title": {
+        "es": "Cambiar de una tarea a otra",
+        "en": "Move from one task to another"
+      },
+      "description": {
+        "es": "Pon en orden una transición sencilla entre dos actividades.",
+        "en": "Put a simple transition between two activities in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-tiempo-elegir",
+      "title": {
+        "es": "Elige cómo preparar un cambio",
+        "en": "Choose how to prepare for a change"
+      },
+      "description": {
+        "es": "Elige una forma de prepararte para cambiar de actividad.",
+        "en": "Choose a way to prepare for changing activity."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-tiempo-clasificar",
+      "title": {
+        "es": "Actividad o pausa",
+        "en": "Activity or break"
+      },
+      "description": {
+        "es": "Separa acciones de tarea y acciones de pausa.",
+        "en": "Sort task actions and break actions."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-tiempo-planificar",
+      "title": {
+        "es": "Organiza un rato de tarde",
+        "en": "Plan part of your afternoon"
+      },
+      "description": {
+        "es": "Elige actividad, descanso y siguiente paso, y ordénalos como prefieras.",
+        "en": "Choose activity, break and next step, and put them in the order you prefer."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-tiempo-memoria",
+      "title": {
+        "es": "Memoria de planes",
+        "en": "Plans memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de apoyos para organizar el tiempo.",
+        "en": "Find pairs of supports for organising time."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "tiempo",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-cuidarse-ordenar",
+      "title": {
+        "es": "Hacer una pausa y volver",
+        "en": "Take a break and return"
+      },
+      "description": {
+        "es": "Pon en orden una forma posible de parar un momento y volver después.",
+        "en": "Put one possible way to pause for a moment and return afterwards in order."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "ordenar",
+      "skill": "secuenciacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-cuidarse-elegir",
+      "title": {
+        "es": "¿Qué necesitas ahora?",
+        "en": "What do you need now?"
+      },
+      "description": {
+        "es": "Elige una opción cotidiana que pueda ayudarte a cuidarte en este momento.",
+        "en": "Choose an everyday option that may help you look after yourself right now."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "elegir",
+      "skill": "eleccion_decision",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-cuidarse-clasificar",
+      "title": {
+        "es": "Para una pausa o para salir",
+        "en": "For a break or for going out"
+      },
+      "description": {
+        "es": "Separa cosas que pueden acompañar una pausa y cosas que puedes llevar al salir.",
+        "en": "Sort things that can go with a break and things you can take when going out."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "clasificar",
+      "skill": "clasificacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-cuidarse-planificar",
+      "title": {
+        "es": "Prepara una pausa a tu manera",
+        "en": "Plan a break your way"
+      },
+      "description": {
+        "es": "Elige lo que te ayuda a hacer una pausa y ordénalo como quieras.",
+        "en": "Choose what helps you take a break and put it in any order you like."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "planificar",
+      "skill": "planificacion_organizacion",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    },
+    {
+      "id": "r40-cuidarse-memoria",
+      "title": {
+        "es": "Memoria de cosas útiles",
+        "en": "Useful-things memory"
+      },
+      "description": {
+        "es": "Encuentra parejas de objetos cotidianos que puedes querer tener a mano.",
+        "en": "Find pairs of everyday items you may want to keep handy."
+      },
+      "stages": [
+        "todas"
+      ],
+      "context": "cuidarse",
+      "type": "memoria",
+      "skill": "memoria_visual",
+      "duration_bucket": "3_5_min",
+      "estimated_minutes": 3,
+      "lineage": "R40_A1_45_NEW"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import csv, json, re, sys
+import xml.etree.ElementTree as ET
 
 root=Path(sys.argv[1] if len(sys.argv)>1 else '.').resolve()
 page=root/'es/recursos/rutinas-visuales/index.html'
@@ -11,6 +12,7 @@ data=root/'assets/rutinas-visuales-data.js'
 assets=root/'assets/mulberry-rutinas'
 for p in (page,index,css,js,data,assets/'sources.csv',assets/'LICENSE-MULBERRY.txt'):
     assert p.exists(),p
+# Preserve the historical 93-symbol sprite manifest; it is not the live catalogue.
 rows=list(csv.DictReader((assets/'sources.csv').open(encoding='utf-8-sig')))
 assert len(rows)==93,len(rows)
 assert all(r['estado']=='CANDIDATO' for r in rows)
@@ -28,10 +30,21 @@ html=page.read_text(encoding='utf-8'); resource_index=index.read_text(encoding='
 script=js.read_text(encoding='utf-8'); style=css.read_text(encoding='utf-8')
 data_text=data.read_text(encoding='utf-8').strip()
 pictos=json.loads(re.search(r'window\.IG_RUTINAS_PICTOS=(\[.*?\]);',data_text,re.S).group(1))
-assert len(pictos)==93
+categories=json.loads(re.search(r'window\.IG_RUTINAS_CATEGORIAS=(\[.*?\]);',data_text,re.S).group(1))
+# The current shared catalogue uses individual SVG files, not sprite references.
+assert len(pictos)==292,len(pictos)
+assert len(categories)==11 and len(set(categories))==11,categories
+assert len({p['id'] for p in pictos})==len(pictos),'duplicate live pictogram IDs'
+base=(root/'assets/pictogramas').resolve()
 for p in pictos:
-    assert p['sprite'] in sprite_text,(p['id'],p['sprite'])
-    assert re.search(r'<symbol\b[^>]*\bid=["\']'+re.escape(p['id'])+r'["\']',sprite_text[p['sprite']],re.I),(p['id'],p['sprite'])
+    assert all(isinstance(p.get(k),str) and p[k].strip() for k in ('id','file','cat','es','en')),p
+    assert p['cat'] in categories,(p['id'],p['cat'])
+    relative=Path(p['file'])
+    assert not relative.is_absolute() and '..' not in relative.parts,p['file']
+    target=(base/relative).resolve()
+    assert target.is_relative_to(base) and target.suffix=='.svg' and target.is_file(),target
+    assert ET.parse(target).getroot().tag=='{http://www.w3.org/2000/svg}svg',target
+assert "const BASE='/assets/pictogramas/';" in script
 for needle in ['Rutinas visuales','Constructor de rutinas','Pictogramas: Mulberry Symbols','data-builder-format="a4"','data-builder-format="strip"','data-builder-format="pair"','data-builder-format="screen"']:
     assert needle in html,needle
 assert '/es/recursos/rutinas-visuales/' in resource_index
@@ -51,4 +64,4 @@ assert '© Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.
 assert 'Deberes' not in script and 'Homework' not in script and 'Merienda' not in script
 assert '/es/taller/rutinas/' not in html
 assert 'irisgreen.eu/es/taller/rutinas/' not in script
-print({'route':'/es/recursos/rutinas-visuales/','symbols':93,'sprites':13,'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})
+print({'route':'/es/recursos/rutinas-visuales/','symbols':len(pictos),'categories':len(categories),'historical_sprite_symbols':93,'historical_sprites':13,'individual_svg_paths_checked':len(pictos),'a4_max_per_sheet':5,'strip_max_per_strip':4,'pair':2,'max_routine':8,'session_only':True,'result':'accepted'})

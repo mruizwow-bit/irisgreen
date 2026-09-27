@@ -10,11 +10,13 @@
     return el ? JSON.parse(el.textContent) : {};
   };
 
-  /* Almacenamiento efímero por pestaña (sessionStorage), claves ig-*. */
+  /* Memoria de la página: no usa almacenamiento del navegador. Lo creado se conserva mientras la página
+     está abierta y se guarda en un archivo propio con «Guardar archivo» del estudio de ideas. */
+  var MEM = {};
   IG.store = {
-    get: function (k) { try { var v = sessionStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } },
-    set: function (k, v) { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento: sigue en memoria */ } },
-    del: function (k) { try { sessionStorage.removeItem(k); } catch (e) {} }
+    get: function (k) { return Object.prototype.hasOwnProperty.call(MEM, k) ? JSON.parse(MEM[k]) : null; },
+    set: function (k, v) { MEM[k] = JSON.stringify(v); if (IG.onChange) IG.onChange(); },
+    del: function (k) { delete MEM[k]; if (IG.onChange) IG.onChange(); }
   };
 
   /* Una sola región de estado por página (role=status, aria-live=polite). */
@@ -377,8 +379,8 @@ function iglStart(lang) {
   /* ---------- Mi cuaderno ---------- */
   function drawCuaderno() {
     IG.render(cuad, function () {
-      if (!S.cuaderno.length) return h('p', { class: 'empty', text: T('Todavía no has guardado nada. Lo que guardes en las actividades aparecerá aquí mientras tengas abierta esta pestaña.', 'You have not saved anything yet. What you save in the activities will appear here while this tab is open.') });
-      return h('div', { class: 'stack' }, h('p', { text: S.cuaderno.length === 1 ? T('1 cosa guardada en esta pestaña.', '1 thing saved in this tab.') : S.cuaderno.length + T(' cosas guardadas en esta pestaña.', ' things saved in this tab.') }),
+      if (!S.cuaderno.length) return h('p', { class: 'empty', text: T('Todavía no has guardado nada. Lo que guardes en las actividades aparecerá aquí mientras tengas abierta esta página.', 'You have not saved anything yet. What you save in the activities will appear here while this page is open.') });
+      return h('div', { class: 'stack' }, h('p', { text: S.cuaderno.length === 1 ? T('1 cosa guardada en esta página.', '1 thing saved on this page.') : S.cuaderno.length + T(' cosas guardadas en esta página.', ' things saved on this page.') }),
         h('ul', { style: 'list-style:none;margin:0;padding:0', class: 'stack' }, S.cuaderno.map(function (n) {
           var mi = mesaInfo(n.mesa);
           return h('li', { class: 'note', id: 'note-' + n.id },
@@ -409,8 +411,8 @@ function iglStart(lang) {
   var clearBtn = document.getElementById('clear-session');
   clearBtn.addEventListener('click', function () {
     var box = document.getElementById('session-alert');
-    if (!confirmClear) { confirmClear = true; clearBtn.textContent = T('Pulsa otra vez para borrar todo', 'Press again to clear everything'); box.textContent = T('Se borrará todo lo de esta pestaña, también Mi cuaderno.', 'Everything in this tab will be deleted, including My notebook.'); return; }
-    confirmClear = false; clearBtn.textContent = T('Borrar todo lo de esta pestaña', 'Clear everything in this tab'); box.textContent = '';
+    if (!confirmClear) { confirmClear = true; clearBtn.textContent = T('Pulsa otra vez para borrar todo', 'Press again to clear everything'); box.textContent = T('Se borrará todo lo de esta página, también Mi cuaderno.', 'Everything on this page will be deleted, including My notebook.'); return; }
+    confirmClear = false; clearBtn.textContent = T('Borrar todo lo de esta página', 'Clear everything on this page'); box.textContent = '';
     IG.store.del(KEY); S = blank(); hist = {}; draw(); IG.say(T('Todo borrado.', 'Everything cleared.'));
   });
 
@@ -420,18 +422,18 @@ function iglStart(lang) {
 
 /* Bloque «Prueba aquí mismo» del Taller de Iris Green.
    Se monta dentro de la página existente, sigue su idioma (atributo lang) y no crea cabecera, menú ni pie propios.
-   Sin red y sin evaluar código. Lo creado vive solo en esta pestaña (sessionStorage). */
+   Sin red y sin evaluar código. Lo creado vive solo en la memoria de la página. */
 (function () {
   'use strict';
   var IG = window.IGL, h = IG.h;
   var TXT = {
     es: { eyebrow: 'Para hacer aquí', title: 'Prueba aquí mismo', lede: 'Seis actividades para crear en la pantalla. Cambia piezas, escribe, dibuja con formas. No hay respuesta buena y no se puntúa.',
-          priv: 'Lo que hagas se queda en esta pestaña del navegador. No se envía a ningún sitio y se borra al cerrarla.',
-          start: 'Elige una actividad y empieza. Todo se puede deshacer.', clear: 'Borrar todo lo de esta pestaña', cuad: 'Mi cuaderno',
+          priv: 'Lo que hagas se queda en esta página mientras la tengas abierta. No se envía a ningún sitio. Para conservarlo, usa «Guardar archivo».',
+          start: 'Elige una actividad y empieza. Todo se puede deshacer.', clear: 'Borrar todo lo de esta página', cuad: 'Mi cuaderno',
           cuadNote: 'Lo que guardas desde las actividades. Puedes copiarlo o imprimirlo.' },
     en: { eyebrow: 'To do here', title: 'Try it right here', lede: 'Six activities to create on screen. Change pieces, write, draw with shapes. There is no right answer and nothing is scored.',
-          priv: 'What you make stays in this browser tab. It is not sent anywhere and is deleted when you close the tab.',
-          start: 'Choose an activity and start. Everything can be undone.', clear: 'Clear everything in this tab', cuad: 'My notebook',
+          priv: 'What you make stays on this page while it is open. It is not sent anywhere. To keep it, use “Save file”.',
+          start: 'Choose an activity and start. Everything can be undone.', clear: 'Clear everything on this page', cuad: 'My notebook',
           cuadNote: 'What you save from the activities. You can copy it or print it.' }
   };
   var cur = null;
@@ -460,6 +462,7 @@ function iglStart(lang) {
     if (!root) return;
     if (!root.firstChild || cur !== lang()) build(root);
   }
+  IG.remount = function () { var root = document.getElementById('igl-mount'); if (root) build(root); };
   document.addEventListener('keydown', function (ev) {
     var t = ev.target.tagName;
     if (!ev.target.closest || !ev.target.closest('.igl')) return;

@@ -1,0 +1,59 @@
+/* Iris Green · Tus intereses · Eclipses. Se apoya en ig-cielo.css e ig-sistema-solar.css. */
+.ec-stage .cn-stage-sky{overflow:hidden}
+.ec-sky{display:block;width:100%;height:100%}
+.ec-inset{position:absolute;right:clamp(10px,2vw,28px);bottom:clamp(10px,2vw,24px);margin:0;width:clamp(170px,24vw,300px);display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.ec-inset-c{display:block;width:100%;aspect-ratio:1;border-radius:50%;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.ec-inset figcaption{width:100%}
+.ec-inset-cap{margin:0;font-size:12.5px;line-height:1.4;color:#eef3ff;text-align:center;background:rgba(3,7,15,.78);border-radius:10px;padding:5px 8px}
+.ec-eclf{flex:2 1 18rem}
+.ec-eclf select{max-width:none!important;width:100%}
+.ec-timef{flex:3 1 20rem}
+.ec-timef input[type=range]{width:100%;min-height:44px;accent-color:#f2c46d}
+.ec-clock{font-variant-numeric:tabular-nums;color:#fff}
+.ec-phase{margin:0;font-weight:700;color:#5a2a0c;background:#fff4d9;border-left:4px solid #d9822b;padding:8px 12px;border-radius:0 10px 10px 0}
+.ec-now-h{margin:6px 0 0;font:600 19px/1.2 'Newsreader',Georgia,serif;color:var(--ink,#17395c)}
+/* mapas */
+.ec-mapfig{margin:0 0 12px;display:flex;flex-direction:column;gap:6px}
+.ec-map{display:block;width:100%;height:auto;border:1px solid var(--line,#dfe6ef);border-radius:16px;background:#dce8f2}
+.ec-map-live{cursor:crosshair}
+.ec-mapwrap:focus-visible{outline:3px solid #5a49a8;outline-offset:2px}
+.ec-sea{fill:#dce8f2}
+.ec-land{fill:#f4f1ea;stroke:#9aa6b4;stroke-width:.6}
+.ec-es{fill:#fffdf6;stroke:#6d7a8a}
+.ec-zone-total{fill:rgba(28,30,52,.6)}
+.ec-zone-anular{fill:rgba(214,110,16,.5)}
+.ec-iso{fill:none;stroke:#5a49a8;stroke-width:1.3;stroke-dasharray:4 3}
+.ec-dur{fill:none;stroke:#fff;stroke-width:1}
+.ec-dur-t{font:600 11.5px system-ui,sans-serif;fill:#fff;paint-order:stroke;stroke:#1c1e34;stroke-width:3px}
+.ec-iso-t{font:600 11.5px system-ui,sans-serif;fill:#4a3a96;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.ec-city circle{fill:#17395c;stroke:#fff;stroke-width:1}
+.ec-city text{font:600 11.5px system-ui,sans-serif;fill:#10233a;paint-order:stroke;stroke:#fffdf6;stroke-width:3px}
+.ec-caja{stroke:#6d7a8a;stroke-width:1}
+/* tablas */
+.ec-table td,.ec-table th{white-space:nowrap}
+tr.ec-in th,tr.ec-in td{background:#eef0fa}
+.ec-go{margin:0 0 0 8px!important;min-height:36px;min-width:44px;font-size:13px}
+/* cómo funcionan */
+.ec-hows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,20rem),1fr));gap:14px}
+.ec-how{border:1px solid var(--line,#dfe6ef);border-radius:18px;background:rgba(255,255,255,.92);overflow:hidden;display:flex;flex-direction:column}
+.ec-how-fig{background:#050b18;padding:8px;min-height:10px}
+.ec-how-fig:empty{display:none}
+.ec-how-svg{display:block;width:100%;height:auto}
+.ec-svg-t{fill:#aebbd4;font:12px system-ui,sans-serif;text-anchor:middle}
+.ec-how h3{margin:12px 16px 0}
+.ec-how p{margin:6px 16px 16px;font-size:15.5px;line-height:1.55;color:#2c3e55}
+.ec-safe{border-left:6px solid #d9822b}
+.ec-safe .ss-list li{margin-bottom:6px}
+@media (max-width:760px){
+  .ec-mapwrap{overflow-x:auto;border-radius:16px}
+  .ec-mapwrap .ec-map{min-width:680px}
+  .ec-inset{width:150px}
+  .ec-inset-cap{font-size:12px}
+}
+html[data-ig-text-enlarged] .ec-inset{width:clamp(150px,20vw,240px)}
+@media (forced-colors:active){
+  .ec-map,.ec-how{border:1px solid CanvasText}
+  .ec-mine[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText}
+  .ec-phase{border-left-color:CanvasText}
+}
+@media print{.ec-stage,#mi-coleccion,#ec-cat-tools{display:none!important}.ec-how,.ec-mapfig{break-inside:avoid}}

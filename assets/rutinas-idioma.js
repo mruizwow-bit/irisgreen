@@ -12,9 +12,10 @@ var T={
     note1:'La rutina «Por la mañana» usa los mismos ocho pasos en pantalla, A4, tira para la nevera y «Primero → Después». Las hojas A4 tienen una sola columna y un máximo de cinco pasos por hoja.',
     ready:'Por la mañana',
     builder:'Constructor de rutinas',
-    note2:'Elige pictogramas, cambia el texto, ordena con botones y usa el formato que necesites. La biblioteca contiene 93 símbolos Mulberry en once categorías. No se arrastra nada y no hace falta una cuenta.',
+    note2:'Elige pictogramas, cambia el texto, ordena con botones y usa el formato que necesites. La biblioteca tiene 292 pictogramas en once categorías: los mismos que usan Juegos y Rutinas imprimibles. No se arrastra nada y no hace falta una cuenta.',
     licenseIntro:'Pictogramas: Mulberry Symbols, © Garry Paxton 2008-2017 y © Steve Lee 2018-2026, licencia CC BY-SA 4.0 · ',
     licenseLink:'Licencia',
+    cross:"¿Prefieres una hoja ya hecha? <a href=\"/es/recursos/rutinas-imprimibles/\">Rutinas imprimibles</a>. ¿Quieres practicar jugando? <a href=\"/es/recursos/juegos/\">Juegos</a>.",
     licenseEnd:'. Los pictogramas son apoyo: el texto permanece siempre visible.'
   },
   en:{
@@ -25,9 +26,10 @@ var T={
     note1:'The “Morning” routine uses the same eight steps on screen, on A4, on the fridge strip and in “First → Then”. A4 sheets have a single column and a maximum of five steps per sheet.',
     ready:'Morning',
     builder:'Routine builder',
-    note2:'Choose symbols, change the text, reorder with buttons and use the format you need. The library holds 93 Mulberry symbols in eleven categories. Nothing is dragged and no account is needed.',
+    note2:'Choose symbols, change the text, reorder with buttons and use the format you need. The library holds 292 pictograms in eleven categories: the same ones used by Games and Printable routines. Nothing is dragged and no account is needed.',
     licenseIntro:'Pictograms: Mulberry Symbols, © Garry Paxton 2008-2017 and © Steve Lee 2018-2026, CC BY-SA 4.0 licence · ',
     licenseLink:'Licence',
+    cross:"Prefer a ready-made sheet? <a href=\"/en/resources/printable-routines/\">Printable routines</a>. Want to practise by playing? <a href=\"/en/resources/games/\">Games</a>.",
     licenseEnd:'. The symbols are support: the text always stays visible.'
   }
 };
@@ -42,7 +44,7 @@ function apply(lang){
   set('rv-note-1',t.note1);
   set('rv-note-2',t.note2);
   set('ready-title',t.ready);
-  set('builder-title',t.builder);
+  set('builder-title',t.builder);var cr=document.getElementById('rv-cross');if(cr){cr.innerHTML=t.cross;}
   var lic=document.getElementById('rv-license');
   if(lic){
     lic.innerHTML='';
@@ -53,7 +55,7 @@ function apply(lang){
     lic.appendChild(site);
     lic.appendChild(document.createTextNode('. '));
     var license=document.createElement('a');
-    license.href='/assets/mulberry-rutinas/LICENSE-MULBERRY.txt';
+    license.href='/assets/pictogramas/LICENSE-MULBERRY.txt';
     license.textContent=t.licenseLink;
     lic.appendChild(license);
     lic.appendChild(document.createTextNode(t.licenseEnd));

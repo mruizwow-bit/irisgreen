@@ -20,13 +20,35 @@ from pathlib import Path
 # no se amplía este inventario solo para hacer pasar CI.
 ALLOWED_STORAGE = {
     "localStorage": {
+        # Exoplanetas R12: favoritos y planetas conocidos; acción explícita,
+        # solo navegador, exportación y borrado. Aviso público ES/EN revisado.
+        "ig-exoplanetas-coleccion": {"getItem", "setItem", "removeItem"},
+        # Cielo nocturno, Planetas y sistema solar y Eclipses (Claude, Intereses):
+        # listas «Mi cielo» / «Mi colección»; acción explícita, solo navegador,
+        # archivo propio y borrado con confirmación. Aviso público ES/EN en Privacidad.
+        "ig-cielo-mis-listas": {"getItem", "setItem", "removeItem"},
+        "ig-sistema-solar-coleccion": {"getItem", "setItem", "removeItem"},
+        "ig-eclipses-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-a11y": {"getItem", "setItem", "removeItem"},
         "ig_lang": {"getItem", "setItem", "removeItem"},
         "ig_saved_videos": {"getItem", "setItem", "removeItem"},
     },
     "sessionStorage": {
+        # Cielo nocturno: solo se lee y se borra la lista de la versión anterior
+        # (sessionStorage) para pasarla a localStorage.
+        "ig-cielo-mis-listas": {"getItem", "removeItem"},
         "ig-conditions-url": {"getItem", "setItem", "removeItem"},
         "ig-situations-url": {"getItem", "setItem", "removeItem"},
+        # Selector de idioma: solo vive durante la pestaña y evita cambios de
+        # idioma parciales al navegar entre rutas equivalentes.
+        "ig-idioma": {"getItem", "setItem"},
+        # Rutinas visuales: únicamente las marcas de pasos completados de esta
+        # pestaña. La propia interfaz ES/EN informa de este alcance.
+        "ig-rutinas-hechos-ready": {"getItem", "setItem"},
+        "ig-rutinas-hechos-builder": {"getItem", "setItem", "removeItem"},
+        # Tarjeta Iris: borrador efímero de la pestaña; la página promete que
+        # desaparece al cerrarla y no se envía a Iris Green.
+        "ig-tarjeta-iris": {"getItem", "setItem"},
     },
 }
 
@@ -47,6 +69,19 @@ CLEAR_RE = re.compile(
     r"\b(?:window\s*\.\s*)?(?P<storage>localStorage|sessionStorage)\s*\.\s*clear\s*\(",
     re.I,
 )
+# Dos helpers de Rutinas visuales reciben una clave por parámetro, pero sus
+# únicos valores posibles están cerrados y visibles en el mismo archivo. Se
+# modelan explícitamente aquí para que el auditor siga fallando ante cualquier
+# otra clave dinámica.
+DYNAMIC_KEY_SETS = {
+    ("assets/rutinas-visuales.js", "sessionStorage", "setItem", "storageKey"): {
+        "ig-rutinas-hechos-ready", "ig-rutinas-hechos-builder",
+    },
+    ("assets/rutinas-visuales.js", "sessionStorage", "getItem", "key"): {
+        "ig-rutinas-hechos-ready", "ig-rutinas-hechos-builder",
+    },
+}
+
 DANGEROUS_PATTERNS = {
     "escritura document.cookie": re.compile(r"\bdocument\s*\.\s*cookie\s*=", re.I),
     "Cookie Store API": re.compile(r"\bcookieStore\s*\.\s*(?:set|delete)\s*\(", re.I),
@@ -113,18 +148,22 @@ def main() -> None:
             keys = resolve_keys(argument, constants)
             line = line_number(text, match.start())
             if not keys:
-                item = {
-                    "file": rel,
-                    "line": line,
-                    "storage": storage,
-                    "action": action,
-                    "argumento": argument[:160],
-                }
-                unresolved_calls.append(item)
-                errors.append(
-                    f"{rel}:{line}: llamada a {storage}.{action} con clave no resoluble: {argument[:80]!r}"
-                )
-                continue
+                dynamic = DYNAMIC_KEY_SETS.get((rel, storage, action, argument))
+                if dynamic:
+                    keys = sorted(dynamic)
+                else:
+                    item = {
+                        "file": rel,
+                        "line": line,
+                        "storage": storage,
+                        "action": action,
+                        "argumento": argument[:160],
+                    }
+                    unresolved_calls.append(item)
+                    errors.append(
+                        f"{rel}:{line}: llamada a {storage}.{action} con clave no resoluble: {argument[:80]!r}"
+                    )
+                    continue
 
             for key in keys:
                 item = {
@@ -200,3 +239,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -105,3 +105,7 @@ html[data-ti-print] [data-ti-printing]{position:absolute!important;left:0!import
 }
 @media(forced-colors:active){.ti-frame,.ti-sheet-frame{border:1px solid CanvasText!important;background:Canvas!important}.ti-picto-btn{border:2px solid CanvasText!important}}
 @media(prefers-reduced-motion:reduce){.ti-page *{transition:none!important;animation:none!important}}
+
+/* Let the preview shrink inside its grid track on small screens. */
+.ti-grid>*{min-width:0}.ti-preview{box-sizing:border-box;width:min(360px,100%);overflow-wrap:anywhere}
+@media(max-width:950px){.ti-grid{grid-template-columns:minmax(0,1fr)}}

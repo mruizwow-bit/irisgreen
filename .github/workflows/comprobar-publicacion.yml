@@ -58,9 +58,9 @@ jobs:
           # indexación de una página, este paso debe ponerse en rojo hasta revisar
           # conscientemente estos cinco números y el sitemap. No debilitar la prueba
           # para hacerla pasar: actualizar expected solo junto al cambio editorial.
-          # PR243: catálogo actual ES/EN, Taller/Intereses R06 y retirada legacy.
+          # PR244: se añaden 22 páginas públicas ES/EN de Taller, Exoplanetas y Eclipses sobre el contrato anterior; todas index,follow y presentes en sitemap.
           # Las utilidades de impresión y redirecciones no entran en el sitemap.
-          expected={'html':989,'index,follow':968,'noindex,follow':5,'otro_o_ninguno':16,'sitemap_urls':982}
+          expected={'html':1011,'index,follow':990,'noindex,follow':5,'otro_o_ninguno':16,'sitemap_urls':1004}
           got={'html':len(pages),**counts,'sitemap_urls':sitemap_urls}
           if got != expected:
               raise SystemExit(f'Contrato público de indexación alterado. Esperado {expected}; obtenido {got}')

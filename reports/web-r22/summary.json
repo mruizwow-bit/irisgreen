@@ -1,0 +1,34 @@
+{
+  "base_commit": "d52584344240deb352f712debd19e9e7ae76bdd2",
+  "html_pages": 1011,
+  "section_finder_pages": 989,
+  "build_files": 2140,
+  "browser_cases": 2022,
+  "widths": [
+    320,
+    1280
+  ],
+  "axe": "4.13.0",
+  "chromium": "153.0.8010.0",
+  "automated_violations_after_rechecks": 0,
+  "horizontal_document_overflow_cases": 0,
+  "page_error_cases": 0,
+  "catalogue_rows_per_language": 6366,
+  "catalogue_batches": 128,
+  "catalogue_batch_violations": 0,
+  "target_cases": 48,
+  "targets_measured": 6831,
+  "target_candidates_after_correction": 0,
+  "focus_cases": 26,
+  "tab_stops_measured": 2258,
+  "focus_candidates": 0,
+  "full_focus_cycles": 24,
+  "method": "Full sweep followed by targeted reruns of final corrections. Large static catalogues tested in 200-row batches with original header and CSS. All initial HTML structurally checked.",
+  "limits": [
+    "Axe incomplete checks retained in evidence; no global WCAG/ISO/legal conformance claim.",
+    "Automated tests use Chromium with external requests blocked. Real screen reader, physical mobile, audio listening and user validation remain pending.",
+    "Full tab cycle not reached on two long routes within 260 stops.",
+    "WebGL checked with SwiftShader software rendering; physical GPU remains pending.",
+    "PDF/UA and braille artifacts are outside this HTML change."
+  ]
+}

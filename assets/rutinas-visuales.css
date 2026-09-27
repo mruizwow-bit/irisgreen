@@ -29,3 +29,10 @@
  .rv-print-document .rv-sheet:last-child{break-after:auto;page-break-after:auto}
  .rv-sheet .rv-picto{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
+
+
+/* R42 progressive enhancement · large symbol library without eager paint cost. */
+.rv-library{scrollbar-gutter:stable}
+.rv-library button{content-visibility:auto;contain-intrinsic-size:118px 120px;contain:layout paint}
+.rv-builder-preview{view-transition-name:rv-builder-preview}
+@media(prefers-reduced-motion:reduce){::view-transition-group(rv-builder-preview){animation-duration:0s}}
