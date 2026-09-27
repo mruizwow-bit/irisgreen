@@ -172,8 +172,8 @@ def ensure_shell_mount_timing(text: str, profile: str) -> str:
     if profile != 'workspace' or '/assets/ig-r42-shell.js' not in text:
         return text
     return re.sub(
-        r"<script\\s+defer\\s+src=(['\"])(/assets/ig-r42-shell\\.js[^'\"]*)\\1\\s*></script>",
-        r'<script src="\\2"></script>',
+        r"<script\s+defer\s+src=(['\"])(/assets/ig-r42-shell\.js[^'\"]*)\1\s*></script>",
+        r'<script src="\2"></script>',
         text,
         count=1,
         flags=re.I,
