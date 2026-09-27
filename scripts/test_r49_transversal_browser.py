@@ -137,7 +137,7 @@ async def main():
         need(await page.locator('.ig-r49-global-header').count()==1,'header landmark missing')
         need(await page.locator('.ig-r49-global-footer').count()==1,'footer landmark missing')
         need(await page.locator('h1').count()>=1,'h1 missing')
-        need(await page.locator('.ig-r49-global-header a[aria-current="page"]').count()==1,'current-page state missing')
+        need(await page.locator('.ig-r49-header-inner a[aria-current="page"]').count()==1,'visible current-page state missing')
         need(await page.locator('a.skip,a.ig-r49-skip,a.ig-home-skip').count()>=1,'skip link missing')
         await page.locator('[data-ig-r49-settings]').first.click()
         need(await page.get_by_role('dialog',name='Lectura y accesibilidad').count()==1,'settings dialog has no accessible name')
