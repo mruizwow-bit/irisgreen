@@ -152,6 +152,11 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R02 Investigación: incorporar los 12 estudios normalizados nuevos y verificar
+    # el hash del delta antes de aplicar la separación Child Safety.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R42 Child Safety: construir el índice seguro ANTES de que el buscador del navegador lo consuma.
     # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
