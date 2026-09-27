@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R43-TALLER-DESIGN-ADAPTATION",
+  "date": "2026-09-27",
+  "status": "R43_TALLER_DESIGN_ADAPTATION_PRECHECK_PASS_COVERAGE_REQUIRED",
+  "source": {
+    "adaptation_zip": "Talleer.zip",
+    "adaptation_sha256": "62d338cf6cdd509b9dab6696f1ee6c0aa2c39cd62bcdf465577a40abb8290c89",
+    "historical_design_zip": "Taller Desing.zip",
+    "historical_design_sha256": "4f2bfec1633d0341bf827bf6136f303be846491295ed05765253370dc8cb3688"
+  },
+  "r02_fidelity": {
+    "materials_css": "IDENTICAL",
+    "preferences_js": "IDENTICAL",
+    "measure_script": "IDENTICAL"
+  },
+  "reproduced": {
+    "python_compile_5": "PASS",
+    "node_check_preferences": "PASS",
+    "measurements": "30/30 PASS"
+  },
+  "coverage": {
+    "r43_suite_pages": "26 documented",
+    "drawing_pilot": "covered",
+    "hub": "NOT EXPLICITLY COVERED",
+    "remaining_legacy_workshop_pages": "NOT EXPLICITLY COVERED",
+    "result": "CORRECTION_REQUIRED"
+  },
+  "required_fix": "Extend R02 material/interface adaptation to 100% of currently public Workshop routes without changing engines/content.",
+  "expected_marker": "R43_TALLER_DESIGN_ADAPTATION_COVERAGE_FIXED_READY_FOR_ASTRA",
+  "limits": [
+    "Do not reopen R43 product",
+    "Do not use Design R01",
+    "No main",
+    "No production",
+    "No propagation outside Workshop"
+  ]
+}
