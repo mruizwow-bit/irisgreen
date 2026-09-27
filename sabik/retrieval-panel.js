@@ -122,11 +122,12 @@
     return node;
   }
 
-  function createRetrievalPanel({ root, query, announcement = null, language = 'es' } = {}) {
+  function createRetrievalPanel({ root, query, announcement = null, language = 'es', onVoiceEvent = () => {}, isVoiceEnabled = () => false } = {}) {
     if (!root || typeof root.replaceChildren !== 'function' || !root.ownerDocument) {
       throw new TypeError('A DOM root is required');
     }
     if (typeof query !== 'function') throw new TypeError('A query function is required');
+    if (typeof onVoiceEvent !== 'function' || typeof isVoiceEnabled !== 'function') throw new TypeError('Invalid voice callbacks');
 
     const document = root.ownerDocument;
     let lang = validLanguage(language);
@@ -149,6 +150,20 @@
       if (!announcement || typeof announcement.replaceChildren !== 'function' || !message) return;
       announcement.setAttribute('lang', lang);
       announcement.replaceChildren(document.createTextNode(message));
+    }
+
+    function voice(id, message, fallbackAnnouncement, expectedState) {
+      const token = serial;
+      const voiceLanguage = lang;
+      const fallbackIfCurrent = () => {
+        if (token === serial && voiceLanguage === lang && viewState === expectedState) announce(fallbackAnnouncement);
+      };
+      let result;
+      try { result = onVoiceEvent({ id, text: message, language: lang }); }
+      catch (_) { fallbackIfCurrent(); return; }
+      Promise.resolve(result).then(outcome => {
+        if (!outcome || outcome.status !== 'playing') fallbackIfCurrent();
+      }).catch(fallbackIfCurrent);
     }
 
     function replaceView(node) {
@@ -184,7 +199,7 @@
       return button;
     }
 
-    function renderStatus(kind, message, announcementText) {
+    function renderStatus(kind, message, announcementText, speakVoice = true) {
       const box = document.createElement('div');
       box.className = `sabik-retrieval-state sabik-retrieval-${kind}`;
       const paragraph = document.createElement('p');
@@ -197,7 +212,9 @@
       }
       replaceView(box);
       setState(kind);
-      announce(announcementText);
+      const voiceId = ({ empty: 'sabik.results.empty', error: 'sabik.results.error', cancelled: 'sabik.results.cancelled' })[kind];
+      if (speakVoice && voiceId && isVoiceEnabled()) voice(voiceId, message, announcementText, kind);
+      else announce(announcementText);
     }
 
     function renderResults(envelope) {
@@ -322,9 +339,9 @@
       lang = validLanguage(nextLanguage);
       root.setAttribute('lang', lang);
       if (viewState === 'results' && lastEnvelope) renderResults(lastEnvelope);
-      else if (viewState === 'empty') renderStatus('empty', strings().empty, strings().emptyAnnouncement);
-      else if (viewState === 'error') renderStatus('error', strings().error, strings().errorAnnouncement);
-      else if (viewState === 'cancelled') renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement);
+      else if (viewState === 'empty') renderStatus('empty', strings().empty, strings().emptyAnnouncement, false);
+      else if (viewState === 'error') renderStatus('error', strings().error, strings().errorAnnouncement, false);
+      else if (viewState === 'cancelled') renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement, false);
       return lang;
     }
 
