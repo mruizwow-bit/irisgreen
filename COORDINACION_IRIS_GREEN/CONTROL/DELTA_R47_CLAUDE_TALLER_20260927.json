@@ -1,0 +1,50 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R47-CLAUDE-TALLER",
+  "date": "2026-09-27",
+  "issue": 308,
+  "status": "R47_CLAUDE_TALLER_ORDERED",
+  "owner": "Claude",
+  "review_gate": "Astra",
+  "integration_gate": "A2",
+  "human_qa": "Maria",
+  "source_files": {
+    "r43_patch_sha256": "72702ab39da1698fe09ca0903ececf3caa89d1a98963fb5617ff5e341aad7f72",
+    "coordination_patch_sha256": "e0d8340ddd97ea5baaf552914a2e678b623bc82d387532cf9b2a366e57fa405e"
+  },
+  "audit": {
+    "public_studies": 27,
+    "r43_suite": 13,
+    "drawing_pilot": 1,
+    "legacy": 13,
+    "workspace_first": "FAIL_CURRENT",
+    "design_r02": "NOT_IMPLEMENTED_IN_R43_PACKAGE",
+    "child_safe": "NOT_IMPLEMENTED_IN_R43_PACKAGE",
+    "life_stage": "PRESENT_BUT_NOT_CHILD_SAFE",
+    "storage_policy": "CONTRADICTORY_REQUIRES_R47_CONTRACT"
+  },
+  "product": {
+    "target": "27_OF_27_SINGLE_GENERATION",
+    "profiles": 5,
+    "design_r02": "MANDATORY_100_PERCENT_WORKSHOP_ROUTES",
+    "safe_by_default": true,
+    "child_safe_registry": "ZERO_UNCLASSIFIED",
+    "storage_default": "TAB_MEMORY_ONLY",
+    "persistent_local": "EXPLICIT_OPT_IN_ONLY"
+  },
+  "donors": {
+    "r43_v2": "DONOR_NOT_FINAL",
+    "pr299": "DONOR_NOT_FINAL",
+    "drawing": "DONOR_NOT_EXCEPTION"
+  },
+  "r44": "SEPARATE_NO_BULK_BUILD",
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_HOME_A8",
+    "NO_CLOUD_A9",
+    "NO_SABIK_VOICE",
+    "NO_R44_BULK_BUILD_WITHOUT_MATRIX"
+  ]
+}
