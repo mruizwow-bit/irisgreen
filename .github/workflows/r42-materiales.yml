@@ -40,6 +40,10 @@ on:
       - 'scripts/build_site.py'
       - 'scripts/apply_normalized_legal_r02.py'
       - 'scripts/test_normalized_legal_r02.py'
+      - 'scripts/apply_research_r02_delta.py'
+      - 'scripts/test_research_r02_delta.py'
+      - 'scripts/data/content-r02-research-121-132.01.b64'
+      - 'scripts/data/content-r02-research-121-132.02.b64'
       - '.github/workflows/r42-materiales.yml'
 permissions:
   contents: read
@@ -74,6 +78,8 @@ jobs:
 
       - name: R02 normalized legal data dist
         run: python scripts/test_normalized_legal_r02.py --root dist
+      - name: R02 research 121-132 dist
+        run: python scripts/test_research_r02_delta.py --root dist
       - name: Child Safety search dist
         run: python scripts/test_child_safety_search.py --root dist
       - name: Child Safety S2 dedicated routes dist
