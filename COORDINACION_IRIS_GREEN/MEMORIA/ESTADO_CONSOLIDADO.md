@@ -269,29 +269,37 @@ Normativa: `NORMATIVA/ADDENDUM_R42_CRISTAL_BAJO_NORMATIVA_COMPLETA_20260926.md`.
 Memoria: `MEMORIA/R42_CRISTAL_NORMATIVA_COMPLETA_20260926.md`.  
 Control: `CONTROL/DELTA_R42_CRISTAL_NORMATIVA_COMPLETA_20260926.json`.
 
-## R42 Design · sistema material/cristal · precheck · 26/09/2026
+## R42 Design · sistema material/cristal · R02 revisado · 27/09/2026
 
-**Estado vigente: `R42_DESIGN_PACKAGE_PRECHECK_PASS_CORRECTIONS_REQUIRED`.**
+**Estado vigente: `R42_DESIGN_CRYSTAL_SYSTEM_READY_FOR_A2`.**
 
-La entrega R01 se conserva como arquitectura válida y limpia; no se rechaza ni se ordena rehacerla. El patch declara base `e8cad400a30d5d4857f9f99b0c1070d786958a8b`; el ZIP queda identificado por SHA-256 `65ea0b67c0cc74da3e133bd12c8dc149ed4104f3895b5447a2b4021d40e2ad57` y el patch está preservado en `HANDOFFS/R42_DESIGN_R01/R42_DESIGN_MATERIALES.patch.gz`. El precheck registra 10 archivos de producto/QA, +1180/−22, 30 mediciones / 0 FAIL, compilación Python de cuatro scripts y `node --check` correcto para `preferencias-lectura.js`.
+Astra revisa el paquete R02 `Interfaz(1).zip` (SHA-256 `650b1993c2f780c4b0fffdabfd8ae2524df10bd234e365e5bcbc264fd5f8edd6`) sobre la base A2 todavía exacta `e8cad400a30d5d4857f9f99b0c1070d786958a8b`, tree `827a68fae6596a929e4d246bb47b8494a976e8a3`.
 
-Se aprueba continuar con el sistema común: material/cristal solo en chrome interactivo; lectura/workspace/contenido estable opacos; `Transparencia` integrada en `IGPreferences`; fallback de sistema y de almacenamiento; móvil sin blur; alto contraste mediante tokens, no filtro global.
+Reproducción Astra:
+- Python 4 scripts: PASS;
+- `node --check preferencias-lectura.js`: PASS;
+- medición analítica: **30/30 PASS**;
+- diff final: **+1376/−22**;
+- Chromium sintético: inspector/dialog/popover/sheet del Rincón en `#0b1a2b`, opacos y sin backdrop; regresión de fondo efectivo **11,82:1** contra el botón opaco;
+- aviso ES/EN de `Más contraste`: PASS sin modificar la elección manual de Transparencia;
+- el diff R01→R02 reconstruye los hashes conocidos de R01 en los cinco archivos de código corregidos.
 
-No pasa todavía a A2. Correcciones obligatorias:
-- reconciliar la entrega con los canónicos actuales, porque Design declaró haber leído Memoria/Control anteriores;
-- impedir superficies blancas temporales en el Rincón: inspector, dialog, sheets y ayuda/contexto deben ser dark/opacos;
-- corregir el medidor de contraste para calcular el fondo efectivo real por cadena de ancestros y composición alfa.
+Astra completa la reconciliación que Design no pudo hacer porque los canónicos viven en la rama de coordinación, no en la rama A2. Resultado: **PASS_NO_CODE_CONFLICT**.
 
-Ajustes menores: aumentar margen práctico del texto deshabilitado desde 4,52:1 hacia 4,8–5:1 y hacer visible cognitivamente que `Más contraste` puede imponer superficie opaca aunque la preferencia manual fuese `Normal`.
+El nuevo HOLD de interfaz del Taller se conserva: el piloto R02 sobre Taller/Dibujo valida únicamente material/chrome y NO congela ni acepta la arquitectura del Taller. Tras la arquitectura final del Taller, el material deberá volver a probarse antes de propagación global.
 
-Las 48 capturas locales son gate estructural/material. Al bloquear red no acreditan vídeo/fuentes externas reales. El gate perceptivo sigue siendo Deploy Preview A2 + HUMAN QA María.
+Observaciones no bloqueantes:
+- `OBS-R42-DESIGN-R02-DOC-01`: documentos R01 heredados dentro del ZIP conservan texto READY/“entregado A2”; la reentrega R02 + registro canónico Astra los superseden.
+- `OBS-R42-DESIGN-R02-EVIDENCE-01`: el script reproduce las mismas 30 filas/valores pero reescribe los informes sin la metadata narrativa del snapshot enriquecido. La salida CI es la evidencia máquina canónica.
 
-A2 mantiene HOLD solo para #301 hasta reentrega `R42_DESIGN_R01_CORRECTIONS_APPLIED_READY_FOR_ASTRA_REVIEW` y revisión Astra. Los demás handoffs R42 no quedan bloqueados.
+A2 puede aplicar R02, crear HEAD/tree y ejecutar `r42-materiales.yml`. Siguen pendientes build real, browser.json, 48 capturas primarias + evidencia adicional del Rincón, Deploy Preview, lector de pantalla, zoom/reflow y HUMAN QA María.
 
-Orden de corrección: `../ORDENES/R42_DESIGN_CRYSTAL_R01/02_CORRECCIONES_PRECHECK_20260926.md`.  
-Addendum de aceptación: `../NORMATIVA/ADDENDUM_R42_DESIGN_CRYSTAL_PRECHECK_20260926.md`.  
-Detalle completo: `R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.md`.  
-Control: `../CONTROL/DELTA_R42_DESIGN_R01_PRECHECK_CORRECCIONES_20260926.json`.
+No main · no producción · no propagación global.
+
+Handoff: `HANDOFFS/R42_DESIGN_R02/README.md`.  
+Memoria: `MEMORIA/R42_DESIGN_R02_REVISION_ASTRA_20260927.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R42_DESIGN_R02_RECONCILIACION_20260927.md`.  
+Control: `CONTROL/DELTA_R42_DESIGN_R02_REVISION_ASTRA_20260927.json`.
 
 ## R42 · Taller · física y CSP · 26/09/2026
 
