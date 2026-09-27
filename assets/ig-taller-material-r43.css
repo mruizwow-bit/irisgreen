@@ -1,0 +1,21 @@
+/* Iris Green · Taller R43 · puente Design R02 para portada y estudios legacy.
+   Solo el chrome adopta material; canvas, lectura e inspector permanecen opacos. */
+body[data-ig-materials="r42"] .igs-para,
+body[data-ig-materials="r42"] .ig42-topbar{color:var(--ig-ink);border-color:var(--ig-separator);background:var(--ig-chrome-solid-light)}
+body[data-ig-materials="r42"] .igs-para-list a,
+body[data-ig-materials="r42"] .ig42-action-btn,
+body[data-ig-materials="r42"] .ig42-manage-btn,
+body[data-ig-materials="r42"] .ig42-icon-btn,
+body[data-ig-materials="r42"] .ig42-segment{border-color:var(--ig-control-border);color:var(--ig-ink);background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] .igs-para-note,
+body[data-ig-materials="r42"] .ig42-stage-label{color:var(--ig-ink-muted)}
+body[data-ig-materials="r42"] .igs-para-list a[aria-current="true"],
+body[data-ig-materials="r42"] .ig42-segment[aria-pressed="true"]{background:var(--ig-state-selected);color:var(--ig-state-selected-ink);border-color:var(--ig-state-selected)}
+body[data-ig-materials="r42"] .ig42-toolrail{background:var(--ig-surface-content-soft);border-color:var(--ig-separator)}
+body[data-ig-materials="r42"] :is(.ig42-workspace-center,.ig42-inspector,.ig42-dialog,.ig42-area-card,.igt-r40-tool){background:var(--ig-surface-content);color:var(--ig-ink)}
+body[data-ig-materials="r42"] :is(.ig42-workspace-center,.ig42-inspector,.ig42-dialog,.ig42-area-card){border-color:var(--ig-separator)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ body[data-ig-materials="r42"] :is(.igs-para,.ig42-topbar){background:var(--ig-chrome-glass-light);-webkit-backdrop-filter:blur(var(--ig-glass-blur));backdrop-filter:blur(var(--ig-glass-blur))}
+}
+@media(max-width:900px){body[data-ig-materials="r42"] :is(.igs-para,.ig42-topbar){-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media(forced-colors:active){body[data-ig-materials="r42"] :is(.igs-para,.ig42-topbar,.ig42-toolrail,.ig42-inspector,.ig42-dialog){forced-color-adjust:auto;background:Canvas;color:CanvasText;border-color:CanvasText}}
