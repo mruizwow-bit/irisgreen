@@ -1,16 +1,17 @@
 {
-  "schema": "R39_A9_CONTROL_DELTA/1.1",
+  "schema": "R39_A9_CONTROL_DELTA/1.2",
   "date": "2026-09-27",
   "issue": 306,
-  "status": "R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA",
+  "status": "R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA",
+  "qualification": "A9_R03_TECHNICALLY_VERIFIED_PRIVATE",
   "branch": "agent9/r39-cloud-library-r01-20260927",
   "base": {
     "head": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
     "tree": "d257910de08519359d805b1f0b53599595174bdb"
   },
   "deployed_candidate": {
-    "head": "f4d89076b13cc3103bbcf41bbe7dd88718cb9bf0",
-    "tree": "a5a5f94fb8cfc5941cdf56e2ae0f2d6b2145f922"
+    "head": "c6735f8956c4f79f1017bd51c269ecf8a88a4ed3",
+    "tree": "b142f75cb822f5575c64c9b490c53f9f092946f7"
   },
   "r38": {
     "fragments": 4332,
@@ -20,12 +21,16 @@
   },
   "source": {
     "commit": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
-    "bundle_sha256": "a582b153c173f397ee40e105f09cdcdaf424599984fcf742157adc819b5d2647"
+    "bundle_sha256": "5307be32bb4627ed19be087f2c92f9cce1e602b7e2fa26b255702ef5f0230683",
+    "child_safe_package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+    "safe_variants_sha256": "4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260",
+    "s2_review_sha256": "579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55",
+    "classification_review": "HUMAN_REVIEWED_S2"
   },
   "release": {
-    "version": "sabik-es-en-20260927-r01-a582b153c173",
-    "corpus_sha256": "2a36db04dabd04d5fabdf5e7fc79db9509ebd8657f3daa9dd9886a75d9540da8",
-    "corpus_bytes": 1583119,
+    "version": "sabik-es-en-20260927-r03-ee7e3e4a1f4b",
+    "corpus_sha256": "0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249",
+    "corpus_bytes": 1623300,
     "fragments": 1208,
     "locale_counts": {
       "es": 604,
@@ -33,25 +38,36 @@
     },
     "full_s2_fragments": 30,
     "safe_variants": 30,
-    "manifest_sha256": "0197ee5c8c3ed418dfd4ad364822b7f628608e8dd666b6773faeb4ddc9dcb502"
+    "manifest_sha256": "a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f"
+  },
+  "citations": {
+    "checked_records": 1208,
+    "checked_unique_urls": 1057,
+    "broken_urls": 0,
+    "duplicate_en_data_title_routes": [
+      "https://irisgreen.eu/en/data/employment-and-autism-australia/",
+      "https://irisgreen.eu/en/data/employment-and-autism-united-kingdom/"
+    ],
+    "en_research_source_route": "https://irisgreen.eu/es/investigacion/#estudio-N",
+    "en_research_public_route_absent": true
   },
   "qa": {
-    "run_id": 36327674236,
+    "run_id": 36332929849,
     "run_result": "SUCCESS",
-    "tests_passed": 203,
+    "tests_passed": 204,
     "tests_failed": 0,
-    "local_cold_load_ms": 111.51,
-    "local_warm_p95_ms": 0.3,
-    "heap_used_mib": 63.12,
-    "remote_blob_cold_load_ms": 339.12,
-    "artifact_id": 10934885561,
-    "artifact_digest": "sha256:9e6e954f3e5e1c09c9fed6d9aba53f6cfba8dabedb0668798f8c219f957f8277"
+    "local_cold_load_ms": 102.98,
+    "local_warm_p95_ms": 0.25,
+    "heap_used_mib": 20.91,
+    "remote_blob_cold_load_ms": 456.13,
+    "artifact_id": 10935908743,
+    "artifact_digest": "sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b"
   },
   "deploy": {
     "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
     "site_name": "sabik-asistente",
-    "deploy_id": "6ab92e91a3cdab71e281a975",
-    "origin": "https://6ab92e91a3cdab71e281a975--sabik-asistente.netlify.app",
+    "deploy_id": "6ab942ab91d1122477001cc0",
+    "origin": "https://6ab942ab91d1122477001cc0--sabik-asistente.netlify.app",
     "state": "ready",
     "context": "deploy-preview",
     "published_at": null,
@@ -64,9 +80,12 @@
     "real_http": true,
     "unauthenticated_outer_gate_status": 401,
     "team_login_gate_observed": true,
-    "authenticated_application_http": "PENDING_LEGITIMATE_TEAM_BROWSER_SESSION"
+    "authenticated_application_http": "PENDING_LEGITIMATE_TEAM_BROWSER_SESSION",
+    "human_qa_required": true
   },
   "limitations": {
+    "full_r42_manifest_records": 965,
+    "technical_snapshot_only": true,
     "r42_s2_topics_documented": 16,
     "s2_topics_present_in_pinned_public_snapshot": 15,
     "missing_from_snapshot": [
@@ -82,5 +101,9 @@
     "frontend_changed": false,
     "voice_changed": false,
     "user_data_in_corpus": false
+  },
+  "superseded": {
+    "r01": "historical technical candidate",
+    "r02": "private intermediate candidate; superseded after fail-closed citation audit correction"
   }
 }

@@ -1,106 +1,103 @@
-# R39 A9 · Biblioteca Cloud de Sabik · cierre técnico · 27/09/2026
+# R39 A9 · Biblioteca Cloud de Sabik · fix Astra R03 · 27/09/2026
 
-Estado: `R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA`.
+Estado: `R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA`.  
+Calificación: `A9_R03_TECHNICALLY_VERIFIED_PRIVATE`.
 
-## Base y candidato
+## Motivo del R03
 
-- Issue: #306.
-- Rama de construcción: `agent9/r39-cloud-library-r01-20260927`.
-- Base R06: HEAD `8690e26140f6d513c3592df62bc82b167cbb1d0e`, tree `d257910de08519359d805b1f0b53599595174bdb`.
-- Candidato Cloud desplegado y probado: HEAD `f4d89076b13cc3103bbcf41bbe7dd88718cb9bf0`, tree `a5a5f94fb8cfc5941cdf56e2ae0f2d6b2145f922`.
-- CI final: run `36327674236` SUCCESS, 203/203 tests.
-- Evidencia GitHub Actions: artifact `10934885561`, digest `sha256:9e6e954f3e5e1c09c9fed6d9aba53f6cfba8dabedb0668798f8c219f957f8277`.
+Astra reabrió el cierre R01 en #306 por tres puntos: safe variants autoderivadas, dos URLs EN de Datos construidas desde un título duplicado y HTTP autenticado de aplicación todavía no ejecutado. La arquitectura R38/R39/R06 se conservó.
 
-## R38 preservado
+R01 permanece como evidencia histórica. Un R02 privado intermedio se descartó al detectar que el auditor de citas no propagaba el error a través de `tee` y que se había intentado una ruta EN de Investigación que todavía no existe. La corrección válida se cortó como identidad nueva R03; ninguna identidad anterior fue sobrescrita.
 
-La biblioteca histórica R38 permanece inmutable:
+## Fuente child-safe aprobada
+
+Fuente editorial fijada por Astra:
+- paquete: `iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip`;
+- paquete SHA-256: `b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23`;
+- `SAFETY/safe-variants.json` SHA-256: `4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260`;
+- `SAFETY/s2-review.csv` SHA-256: `579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55`;
+- clasificación: `HUMAN_REVIEWED_S2`;
+- 16 registros S2 revisados en la fuente aprobada.
+
+El builder consume `cloud/n04-r38-library/sources/a9-r02-safety/APPROVED_SAFE_VARIANTS_R42.json`. No genera variantes por truncado, `lede` ni primer párrafo. Cada safe variant enlaza su `safety_content_id`; si falta aprobación, el build falla. Los tests exigen copy exacto revisado y rechazan una variante normalizada idéntica al full S2.
+
+El snapshot público fijado para el corpus A9 contiene 15 de los 16 temas revisados; `TEPT complejo / Complex PTSD` no está presente y no se fabrica contenido full para él.
+
+## Release R03
+
+Código probado y desplegado:
+- branch: `agent9/r39-cloud-library-r01-20260927`;
+- HEAD: `c6735f8956c4f79f1017bd51c269ecf8a88a4ed3`;
+- tree: `b142f75cb822f5575c64c9b490c53f9f092946f7`.
+
+Identidad:
+- versión: `sabik-es-en-20260927-r03-ee7e3e4a1f4b`;
+- corpus SHA-256: `0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249`;
+- corpus bytes: 1.623.300;
+- manifest SHA-256: `a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f`;
+- source commit: `ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5`;
+- source bundle SHA-256: `5307be32bb4627ed19be087f2c92f9cce1e602b7e2fa26b255702ef5f0230683`;
+- 1.208 fragmentos = 604 ES + 604 EN;
+- 30 full S2 + 30 safe variants.
+
+R38 sigue byte-identificado:
 - versión `n04-es-20260916-56f72c4d3959`;
-- 4.332 fragmentos / 4.332 IDs;
+- 4.332 fragmentos;
 - SHA-256 `56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e`.
 
-A9 no modificó `src/library.mjs`, `src/qa-handler.mjs`, `src/team-transport-handler.mjs`, `src/cloud-connection.mjs`, `netlify/functions/n04-library-qa.mjs`, `netlify/functions/n04-team-transport.mjs` ni `scripts/seal-deploy.mjs`.
+## Citas
 
-## Biblioteca A9
+Se corrige la generación de Datos para usar slug canónico de fuente. Los dos registros EN con título `Employment and autism` quedan:
+- `/en/data/employment-and-autism-united-kingdom/`;
+- `/en/data/employment-and-autism-australia/`.
 
-Fuente fijada: contenido público trazable de Iris Green en `main@ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5`, copiado como snapshot inmutable dentro de `cloud/n04-r38-library/sources/a9-r01/`.
+El auditor final, ahora con `set -o pipefail`, valida contra el snapshot Git fijado:
+- 1.208 registros de cita comprobados;
+- 1.057 URLs únicas;
+- 0 rotas.
 
-Identidad final:
-- versión: `sabik-es-en-20260927-r01-a582b153c173`;
-- corpus SHA-256: `2a36db04dabd04d5fabdf5e7fc79db9509ebd8657f3daa9dd9886a75d9540da8`;
-- bytes: 1.583.119;
-- fragmentos: 1.208;
-- ES: 604;
-- EN: 604;
-- source bundle SHA-256: `a582b153c173f397ee40e105f09cdcdaf424599984fcf742157adc819b5d2647`;
-- manifest SHA-256: `0197ee5c8c3ed418dfd4ad364822b7f628608e8dd666b6773faeb4ddc9dcb502`.
+Investigación EN mantiene título/texto EN pero cita la página fuente pública que sí existe: `/es/investigacion/#estudio-N`. No existe todavía `en/research/index.html` en el snapshot fijado ni en la integración R42 comprobada, por lo que no se inventa esa URL.
 
-Cobertura fijada por esta release: Condiciones/Situaciones, Datos, Vida diaria e Investigación disponibles en el snapshot público. La release no lee `main` en runtime.
+## QA
 
-## Child-safe
+GitHub Actions:
+- run `36332929849`: SUCCESS;
+- 204 tests / 204 PASS / 0 FAIL;
+- local cold load: 102,98 ms;
+- warm query p95: 0,25 ms;
+- heap observado: 20,91 MiB;
+- artifact `10935908743`;
+- artifact digest `sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b`.
 
-- 30 fragmentos full S2 = 15 temas bilingües.
-- 30 safe variants enlazadas.
-- DEFAULT / CHILD / TEEN: full S2 queda fuera del índice antes de ranking.
-- ADULT sin intención explícita: full S2 queda fuera.
-- ADULT + intención explícita: puede recuperar full S2.
-- Las safe variants son extractos literales de la fuente pública fijada; A9 no redacta ni traduce nuevo contenido de seguridad.
-- No se pide DOB, edad, identidad ni diagnóstico.
+Sellado remoto:
+- proof `A9_EXPLICIT_DEPLOY_STORE_READBACK_AND_CHILD_SAFE_SEARCH`;
+- corpus y manifest `created-and-readback-verified`;
+- cold load con red: 456,13 ms.
 
-La documentación R42 enumera 16 temas S2. `TEPT complejo` no existe en el snapshot público fijado y no se inventó. El paquete R42 R02 completo de 965 registros no estaba materializado como fuente accesible en este carril; queda como limitación de cobertura, no como falsa inclusión.
+## Deploy privado
 
-## Citas y recuperación
-
-Cada resultado conserva fragment ID, content ID, locale, URL real, title/heading, library version, source version, source SHA-256 y score. ES y EN se indexan por separado y no se mezclan silenciosamente. La agrupación por fuente conserva todos los fragment IDs.
-
-No hay embeddings, LLM, proveedor externo, reranker, conversación ni `/api/chat`.
-
-## Rendimiento
-
-Medición local Node 22.16.0:
-- cold load: 111,51 ms;
-- warm query p95 (100 búsquedas): 0,30 ms;
-- heap usado observado: 63,12 MiB.
-
-Lectura remota real de Netlify Blobs durante el sellado:
-- cold load con red: 339,12 ms;
-- consultas de comprobación: 0,04–0,65 ms tras carga.
-
-Estas cifras son QA del candidato, no SLA de producción.
-
-## Cloud privado
-
-Netlify site: `sabik-asistente`, Site ID `47b06e68-ff54-4097-8ad8-336b2d71758a`.
-
-Deploy A9:
-- ID `6ab92e91a3cdab71e281a975`;
-- origin `https://6ab92e91a3cdab71e281a975--sabik-asistente.netlify.app`;
-- state `ready`;
-- context `deploy-preview`;
+- site: `sabik-asistente`;
+- site ID: `47b06e68-ff54-4097-8ad8-336b2d71758a`;
+- deploy ID: `6ab942ab91d1122477001cc0`;
+- origin: `https://6ab942ab91d1122477001cc0--sabik-asistente.netlify.app`;
+- state: `ready`;
+- context: `deploy-preview`;
 - `published_at=null`;
-- Team Login: true / all contexts;
-- runtime Functions: Node 24, us-east-2;
-- 4 Functions: las dos R06 históricas + `sabik-cloud-library-qa` + puente privado A9 `sabik-cloud-library-team`.
+- Team Login: requerido / all contexts;
+- 4 Functions: dos R06 históricas + `sabik-cloud-library-qa` + `sabik-cloud-library-team`;
+- Functions Node 24; Blobs `us-east-2`.
 
-El sellado escribió exclusivamente:
-- `cloud-library/versions/<version>/corpus.json`;
-- `cloud-library/manifest.json`;
+La verificación independiente de Netlify confirma el deploy anterior y que el proyecto continúa protegido por Team Login en todos los contextos.
 
-corpus y manifest quedaron `created-and-readback-verified` con lectura fuerte. No se borró ni sobrescribió R38.
+## HTTP / HUMAN QA
 
-## HTTP y límites honestos
+HTTP externo real sin sesión humana legítima: 401 en Team Login. Esto confirma el gate exterior.
 
-Se ejecutó HTTP real contra el origin A9. Sin exportar cookies/sesiones, Netlify Team Login respondió 401 antes de la aplicación: el gate exterior privado queda demostrado.
+No se declara todavía HTTP autenticado de aplicación. Ese gate exige una sesión Team Login legítima y se hará como HUMAN QA sin exportar cookies ni secretos:
+ES, EN, cero resultados, DEFAULT S2, ADULT sin intención, ADULT + intención explícita, grouping conservando IDs y `Cache-Control: no-store`.
 
-No se declara todavía una respuesta HTTP **de aplicación autenticada** desde una sesión humana de Team Login. La ruta server-only A9 para ese QA existe y está probada localmente, pero la sesión humana no se exporta a CI. Esta limitación se mantiene explícita para Astra.
+## Cobertura y límites
 
-C17/retención de plataforma sigue PENDING: ausencia de logs propios no prueba retención cero de Netlify.
+R03 es un candidato técnico privado, no la biblioteca final sincronizada con los 965 registros de #302. Cobertura fuente actual: 372 catálogo + 49 Datos + 48 Vida diaria + 120 Investigación.
 
-## Invariantes finales
-
-- 0 producción;
-- 0 DNS;
-- 0 cambios de Team Login;
-- 0 lectura/copia/cambio de secretos;
-- 0 frontend;
-- 0 voz/TTS/masters/audio;
-- 0 datos de usuario, conversaciones, perfiles, IP o memoria personal en el corpus.
+C17/retención de plataforma continúa PENDING. No se modificaron producción, DNS, frontend, voz, Team Login ni secretos; no hay datos de usuario, conversaciones, perfiles, IP ni memoria personal en el corpus.
