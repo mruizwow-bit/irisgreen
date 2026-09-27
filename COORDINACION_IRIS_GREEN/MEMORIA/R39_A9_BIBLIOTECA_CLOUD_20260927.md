@@ -94,7 +94,9 @@ La verificación independiente de Netlify confirma el deploy anterior y que el p
 
 HTTP externo real sin sesión humana legítima: 401 en Team Login. Esto confirma el gate exterior.
 
-No se declara todavía HTTP autenticado de aplicación. Ese gate exige una sesión Team Login legítima y se hará como HUMAN QA sin exportar cookies ni secretos:
+No se declara todavía HTTP autenticado de aplicación. Se intentó además el gate mediante navegador con perfil legítimo, sin exportar cookies, tokens ni secretos. El navegador fue redirigido a Netlify Team Login (302) y los POST al endpoint protegido quedaron en 401 porque no había una sesión Team Login autenticada disponible en ese perfil. Resultado: `AUTHENTICATED_SESSION_NOT_AVAILABLE`.
+
+El HUMAN QA autenticado sigue pendiente y debe comprobar:
 ES, EN, cero resultados, DEFAULT S2, ADULT sin intención, ADULT + intención explícita, grouping conservando IDs y `Cache-Control: no-store`.
 
 ## Cobertura y límites
