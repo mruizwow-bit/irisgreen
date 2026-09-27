@@ -14,7 +14,7 @@ def render(root,lang):
     en=lang=='en';prefix='/en/' if en else '/'
     title='Iris Green · Clear information and practical tools' if en else 'Iris Green · Información clara y herramientas prácticas'
     desc='Find clear information, practical resources and everyday tools without having to choose a diagnosis.' if en else 'Encuentra información clara, recursos prácticos y herramientas cotidianas sin tener que elegir un diagnóstico.'
-    nav=[('/en/neurodiversity/conditions/' if en else '/es/neurodiversidad/condiciones/','Conditions' if en else 'Condiciones'),('/en/situations/' if en else '/es/situaciones/','Situations' if en else 'Situaciones'),('/en/everyday-life/' if en else '/es/biblioteca/','Everyday life' if en else 'Vida diaria'),('/es/recursos/','Resources' if en else 'Recursos')]
+    nav=[('/en/neurodiversity/conditions/' if en else '/es/neurodiversidad/condiciones/','Conditions' if en else 'Condiciones'),('/en/situations/' if en else '/es/situaciones/','Situations' if en else 'Situaciones'),('/en/everyday-life/' if en else '/es/biblioteca/','Everyday life' if en else 'Vida diaria'),('/en/resources/' if en else '/es/recursos/','Resources' if en else 'Recursos')]
     areas=[
     ('/en/neurodiversity/conditions/' if en else '/es/neurodiversidad/condiciones/','Conditions' if en else 'Condiciones','Understand a condition, experience or identity.' if en else 'Entender una condición, experiencia o identidad.'),
     ('/en/situations/' if en else '/es/situaciones/','Situations' if en else 'Situaciones','Start from what is happening in everyday life.' if en else 'Empezar por lo que te está pasando en el día a día.'),
@@ -22,9 +22,9 @@ def render(root,lang):
     ('/es/investigacion/?lang=en' if en else '/es/investigacion/','Research' if en else 'Investigación','Read what a study does and does not show.' if en else 'Leer qué demuestra y qué no demuestra un estudio.'),
     ('/en/data/' if en else '/es/datos/','Data' if en else 'Datos','Figures with context, population and source.' if en else 'Cifras con contexto, población y fuente.'),
     ('/es/tramites/directorio/','Support directory' if en else 'Ayudas y trámites','Find official support and procedures.' if en else 'Encontrar apoyos oficiales y trámites.'),
-    ('/es/recursos/','Resources and games' if en else 'Recursos y juegos','Visual tools, routines and activities.' if en else 'Herramientas visuales, rutinas y actividades.'),
+    ('/en/resources/' if en else '/es/recursos/','Resources and games' if en else 'Recursos y juegos','Visual tools, routines and activities.' if en else 'Herramientas visuales, rutinas y actividades.'),
     ('/en/interests/' if en else '/es/intereses/','Your interests' if en else 'Tus intereses','Explore topics at your own pace.' if en else 'Explorar temas a tu ritmo.'),
-    ('/es/taller/','The workshop' if en else 'El taller','Create, practise and work on projects.' if en else 'Crear, practicar y trabajar en proyectos.'),
+    ('/en/workshop/' if en else '/es/taller/','The workshop' if en else 'El taller','Create, practise and work on projects.' if en else 'Crear, practicar y trabajar en proyectos.'),
     ('/en/quiet-space/' if en else '/es/sitio-tranquilo/','Quiet space' if en else 'Rincón tranquilo','A lower-stimulation space when you need it.' if en else 'Un espacio con menos estímulos cuando lo necesites.')]
     nav_html=''.join(f'<a href="{u}">{html.escape(t)}</a>' for u,t in nav)
     areas_html=''.join(f'<a class="ig-home-area" href="{u}"><strong>{html.escape(t)}</strong><span>{html.escape(d)}</span></a>' for u,t,d in areas)
