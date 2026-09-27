@@ -1,5 +1,11 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · corrección EN tras comparación con referencia exacta · 27/09/2026
+
+E0 se compara directamente con `SABIK_EN_V6_12_T01.wav` usando la misma frase/seed. La voz conserva la misma familia, pero queda más brillante y algo más rápida; la similitud MFCC media (≈0.987) es inferior incluso a la cercanía V6_11↔V6_12 en la misma frase (≈0.997). Por tanto E0 deja de ser el modelo EN final y pasa a evidencia técnica del primer entrenamiento.
+
+Acción única necesaria: regenerar el corpus inglés con la referencia exacta V6_12_T01 y repetir codes + SFT. Todo el resto del pipeline ya validado se reutiliza.
+
 ## Sabik · referencias vocales exactas confirmadas · 27/09/2026
 
 María aporta y confirma los dos archivos exactos que representan las voces elegidas:
