@@ -29,6 +29,7 @@ def main():
             continue
         protected+=1;text=p.read_text(encoding='utf-8')
         need('data-ig-s2-safe' in text,'Full S2 not replaced '+url);need('data-ig-s2-actions' in text,'Adult explicit action mount missing '+url)
+        need(re.search(r"<aside\\b[^>]*class=['\"][^'\"]*\\biris-mini-card\\b",text,re.I) is None,'Derived Tarjeta Iris leaked into initial S2 safe payload '+url)
         need('prefetch' not in text.lower() and 'preload' not in text.lower(),'S2 prefetch/preload found '+url)
         full=root/'assets/safety/full'/f'{cid}-es.html';need(full.is_file(),'Missing full S2 chunk '+cid);need(full.read_text(encoding='utf-8') not in text,'Full S2 body leaked into initial HTML '+cid)
     conditions=(root/'es/neurodiversidad/condiciones/index.html').read_text(encoding='utf-8')

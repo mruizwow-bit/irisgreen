@@ -152,7 +152,16 @@ def build():
     # S2 full bodies are extracted from initial HTML/JSON and never prefetched.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_home_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R49 A8: industrializar R42/R02 en todo el HTML público por perfil de superficie.
+    # IRISGREEN_SKIP_R49 solo existe para construir una referencia de presupuesto
+    # en CI; Netlify y el build normal nunca lo establecen.
+    if os.environ.get('IRISGREEN_SKIP_R49') != '1':
+        subprocess.run([sys.executable,str(ROOT/'scripts/apply_r49_transversal_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     subprocess.run([sys.executable,str(ROOT/'scripts/test_home_child_safe_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    if os.environ.get('IRISGREEN_SKIP_R49') != '1':
+        subprocess.run([sys.executable,str(ROOT/'scripts/test_r49_transversal_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)

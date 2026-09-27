@@ -8,11 +8,13 @@ function mode(){return current==='adults'?'adult':'safe';}
 function isAdult(){return current==='adults';}
 function allowedAudience(values){
  values=Array.isArray(values)?values:[];
- if(!values.length||current==='default'||current==='any'||current==='adults')return true;
+ if(!values.length)return true;
  if(values.indexOf('TRANSVERSAL')!==-1)return true;
  if(current==='children')return values.indexOf('INFANCIA')!==-1;
  if(current==='teenagers')return values.indexOf('ADOLESCENCIA')!==-1;
- return true;
+ if(current==='adults')return values.indexOf('ADULTEZ')!==-1;
+ if(current==='default'||current==='any')return false;
+ return false;
 }
 function syncPicker(root){
  root.querySelectorAll('[data-ig-audience-stage]').forEach(function(btn){
