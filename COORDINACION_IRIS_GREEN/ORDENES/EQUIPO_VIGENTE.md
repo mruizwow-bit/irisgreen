@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Agente 9 · R51 Biblioteca Cloud R04 · 27/09/2026
+
+Orden: `R51_A9_SABIK_CLOUD_LIBRARY_R04/01_AGENTE_9.md` · issue #314.
+
+A9 continúa la biblioteca Cloud de Sabik. R03 queda histórica/inmutable; R51 crea R04 con cobertura editorial ampliada y sistema incremental de actualización. Tras R04, cada cambio aprobado de la web debe generar un delta y, si afecta contenido, una nueva versión privada verificada de la biblioteca.
+
+No producción, frontend, voz, secretos ni datos de usuario.
+
+
 ## Agente 8 · R49 interfaz transversal · 27/09/2026
 
 Orden: `R49_A8_INTERFAZ_TRANSVERSAL/01_AGENTE_8.md` · issue #311.
