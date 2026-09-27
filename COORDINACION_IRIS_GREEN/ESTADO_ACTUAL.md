@@ -1,5 +1,22 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R52 · restaurar Sabik móvil aprobado + voz final · 27/09/2026
+
+**Estado: `R52_SABIK_MOVING_PRESENCE_RESTORE_ORDERED`.**
+
+María aclara que el Sabik anterior ya se movía; solo faltaba la voz. La simplificación R37 posterior (cinco PNG + transiciones cortas + PRESENTE inmóvil) se registra como regresión/intermedio, no continuidad visual final.
+
+Donante móvil exacto:
+`sabik-preview@fc5cdfc2f978c85033de2b07c34309f8a4a7bd18`
+CSS blob `b38a95b8994de2e20cfb0b8f29e58a69253325a9`.
+
+R52 restaura únicamente la presencia animada por capas sobre el panel actual, sin recuperar shell/retrieval/storage/semánticas antiguas. A3 porta movimiento; A2 integra la voz final ES/EN y los 30 WAV.
+
+Marcadores:
+`R52_A3_SABIK_MOVING_PRESENCE_RESTORED_READY_FOR_A2`
+→ `R52_A2_SABIK_MOVING_AND_SPEAKING_PREVIEW_READY_FOR_ASTRA`.
+
+
 ## R51 · A9 · Biblioteca Cloud Sabik R04 · 27/09/2026
 
 **Estado: `R51_A9_SABIK_CLOUD_LIBRARY_R04_ORDERED`.**
