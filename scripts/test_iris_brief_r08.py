@@ -5,7 +5,7 @@ from pathlib import Path
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';OUT=ROOT/'reports/iris-brief-r08';OUT.mkdir(parents=True,exist_ok=True)
-ROUTES=['/','/?lang=en','/es/recursos/','/en/resources/','/es/recursos/juegos/','/en/resources/games/','/es/recursos/rutinas-visuales/','/en/resources/visual-routines/','/es/recursos/rutinas-imprimibles/','/en/resources/printable-routines/','/es/taller/','/en/workshop/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/','/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/']
+ROUTES=['/','/en/','/es/recursos/','/en/resources/','/es/recursos/juegos/','/en/resources/games/','/es/recursos/rutinas-visuales/','/en/resources/visual-routines/','/es/recursos/rutinas-imprimibles/','/en/resources/printable-routines/','/es/taller/','/en/workshop/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/','/es/neurodiversidad/condiciones/','/en/neurodiversity/conditions/']
 R42_PILOT_ROUTES={'/es/recursos/juegos/','/en/resources/games/','/es/intereses/','/en/interests/','/es/sitio-tranquilo/','/en/quiet-space/'}
 
 CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
