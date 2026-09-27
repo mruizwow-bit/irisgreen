@@ -1,0 +1,55 @@
+{
+  "schema": "R50_A2_HOME_GLOBAL_HEADER_ISO_COPY/1.0",
+  "date": "2026-09-27",
+  "issue": 313,
+  "status": "R50_A2_HOME_GLOBAL_HEADER_ISO_COPY_ORDERED",
+  "owner": "A2",
+  "human_qa_source": "Maria",
+  "supersedes_visual_copy_of": [
+    "R49 header primary nav",
+    "R42 Home visible copy"
+  ],
+  "header": {
+    "visible": [
+      "Iris Green",
+      "Search",
+      "Music",
+      "Accessibility",
+      "Content",
+      "Language",
+      "Explore"
+    ],
+    "remove_primary": [
+      "Conditions",
+      "Situations",
+      "Everyday life",
+      "Research",
+      "Resources"
+    ],
+    "more_label": "Explore",
+    "default_public_stage": "General",
+    "safe_by_default": "INTERNAL_ONLY"
+  },
+  "home_copy": {
+    "es_eyebrow": "Información clara y herramientas prácticas",
+    "es_h1": "Empieza por lo que necesitas.",
+    "es_lead": "Busca información, recursos y herramientas para situaciones del día a día.",
+    "en_eyebrow": "Clear information and practical tools",
+    "en_h1": "Start with what you need.",
+    "en_lead": "Find information, resources and tools for everyday situations."
+  },
+  "forbidden_home_phrases": [
+    "sin etiquetas",
+    "without labels",
+    "sin tener que elegir un diagnóstico",
+    "without having to choose a diagnosis",
+    "Protección por defecto",
+    "Safe by default"
+  ],
+  "standards": [
+    "ISO 24495-1:2023",
+    "ISO 9241-112:2025",
+    "W3C COGA"
+  ],
+  "expected_marker": "R50_A2_HOME_GLOBAL_HEADER_ISO_COPY_READY_FOR_ASTRA"
+}
