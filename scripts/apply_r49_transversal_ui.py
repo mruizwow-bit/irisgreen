@@ -162,6 +162,23 @@ def ensure_screen_print_rule(text: str) -> str:
     # Public printable HTML keeps common chrome on screen; print CSS hides it.
     return text
 
+def ensure_shell_mount_timing(text: str, profile: str) -> str:
+    """Mount the existing R42 workspace shell at parser end, before first paint.
+
+    The script already lives immediately before </body>. Removing defer does not
+    change the engine or fallback HTML; it only prevents a post-DOMContentLoaded
+    relocation of the workspace from producing avoidable CLS.
+    """
+    if profile != 'workspace' or '/assets/ig-r42-shell.js' not in text:
+        return text
+    return re.sub(
+        r'<script\\s+defer\\s+src=(["\\'])(/assets/ig-r42-shell\\.js[^"\\']*)\\1\\s*></script>',
+        r'<script src="\\2"></script>',
+        text,
+        count=1,
+        flags=re.I,
+    )
+
 def apply_one(path: Path, root: Path) -> dict:
     before = path.read_text(encoding='utf-8')
     route = route_for(path, root)
@@ -172,6 +189,7 @@ def apply_one(path: Path, root: Path) -> dict:
     after = ensure_main_id(after)
     after = ensure_head_assets(after, route)
     after = ensure_screen_print_rule(after)
+    after = ensure_shell_mount_timing(after, profile)
     if after != before:
         path.write_text(after, encoding='utf-8')
     return {
