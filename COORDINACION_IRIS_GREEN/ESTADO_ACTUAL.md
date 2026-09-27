@@ -1,5 +1,16 @@
 # Estado operativo compartido
 
+## R46 · corrección Paisajes · YouTube embebido, no Pexels · 27/09/2026
+
+**Estado: `R46_CLAUDE_RINCON_YOUTUBE_LANDSCAPES_ADOPTED`.**
+
+María rechaza Pexels/montajes de tomas como fuente principal del Rincón. R46 #307 se corrige para usar preferentemente vídeos largos embebibles de YouTube siguiendo el patrón existente de Videoteca: `youtube-nocookie.com`, iframe solo tras acción, poster local, vídeo silenciado y audio Iris Green separado.
+
+Criterio visual: 30–60+ min, ideal ≥1 h, un único entorno, cámara fija o casi fija, sin montaje turístico, dron, pans/zooms repetidos ni cortes frecuentes. No descargar/rippear/rehostear YouTube.
+
+YouTube puede mostrar anuncios incluso en embeds; cada candidato requiere QA real 20–30 min en sesión limpia/no logueada desktop+móvil. Anuncio/promoción/interrupción = REJECT_CANDIDATE. Pexels no vuelve como fallback automático.
+
+
 ## R47 · Claude · Taller definitivo · 27/09/2026
 
 **Estado: `R47_CLAUDE_TALLER_ORDERED`.**
