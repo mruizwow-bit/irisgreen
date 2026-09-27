@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R45-HOME-CHILD-SAFE-SABIK-CLOUD",
+  "date": "2026-09-27",
+  "decision": "TWO_PARALLEL_AGENTS_ORDERED",
+  "voice": {
+    "status": "TRAINING_IN_SEPARATE_LANE",
+    "excluded_from": [
+      "A8",
+      "A9"
+    ]
+  },
+  "A8": {
+    "issue": 305,
+    "scope": "NEW_HOME_PLUS_CHILD_SAFE_ON_CURRENT_BASELINE",
+    "status": "R42_A8_HOME_CHILD_SAFE_ORDERED",
+    "integration_gate": "A2",
+    "human_qa": "MARIA_REQUIRED",
+    "baseline_observed": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+    "old_child_safe_patches": "294-297_REMAIN_PAUSED_HISTORICAL"
+  },
+  "A9": {
+    "issue": 306,
+    "scope": "SABIK_CLOUD_LIBRARY_BILINGUAL_VERSIONED_CHILD_SAFE",
+    "status": "R39_A9_SABIK_CLOUD_LIBRARY_ORDERED",
+    "cloud_site": "sabik-asistente",
+    "cloud_r06_deploy": "6ab7a2cd2cf8dc09d3ae9aca",
+    "r38_library": "IMMUTABLE",
+    "private_preview_deploy": "AUTHORIZED",
+    "production": "NOT_AUTHORIZED"
+  },
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_SECRET_COPY",
+    "NO_VOICE_CHANGES"
+  ]
+}
