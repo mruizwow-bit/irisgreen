@@ -227,6 +227,18 @@ body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu :focus-
 
 /* Modo limpio: controles flotantes sobre la escena (cristal oscuro con suelo). */
 @layer ig-r42-materials-important{
+  /* La cabecera legacy usa background con alta prioridad: en Quiet Space debe ser inequívocamente oscura. */
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd{
+    background:var(--ig-chrome-solid-dark)!important;
+    background-image:none!important;
+    color:var(--ig-ink-on-dark)!important;
+    border-bottom-color:var(--ig-separator-dark)!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.nav a){
+    color:var(--ig-ink-on-dark)!important;
+  }
   body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
     background:var(--ig-chrome-solid-dark)!important;border-color:var(--ig-control-border-dark)!important;
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
