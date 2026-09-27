@@ -159,3 +159,88 @@ def main() -> None:
                 for mode in MODES:
                     row = {"route": route(rel), "family": family, "viewport": vname, "mode": mode}
 
+                    def run(row, rel=rel, size=size, mode=mode, vname=vname):
+                        ctx = context(size, mode)
+                        page = ctx.new_page()
+                        errors = load(page, rel)
+                        probe = page.evaluate(PROBE, FLOORS)
+                        row["probe"] = probe
+                        assert probe["materials"] == "r42"
+                        assert probe["mode"] == mode, probe["mode"]
+                        assert probe["overflow"] <= 2, probe["overflow"]
+                        if mode == "opaque":
+                            assert probe["glassCount"] == 0, probe["glassCount"]
+                        assert not probe["problems"], probe["problems"]
+                        assert not errors, errors
+                        if vname != "320x800":
+                            page.screenshot(path=str(SHOTS / f"{family}-{rel.split('/')[0]}-{vname}-{mode}.png"))
+                        ctx.close()
+
+                    case(row, run)
+
+        for rel, family in PILOT.items():
+            row = {"route": route(rel), "scenario": "contrast + forced colors + reduced motion"}
+
+            def extremes(row, rel=rel):
+                ctx = context((1440, 900), None, contrast=True)
+                page = ctx.new_page()
+                load(page, rel)
+                probe = page.evaluate(PROBE, FLOORS)
+                assert probe["mainFilter"] == "none", probe["mainFilter"]
+                assert probe["glassCount"] == 0, probe["glassCount"]
+                ctx.close()
+                ctx = context((390, 844), None, forced_colors="active", reduced_motion="reduce")
+                page = ctx.new_page()
+                load(page, rel)
+                probe = page.evaluate(PROBE, FLOORS)
+                assert probe["glassCount"] == 0, probe["glassCount"]
+                assert probe["overflow"] <= 2
+                ctx.close()
+
+            case(row, extremes)
+
+            row = {"route": route(rel), "scenario": "change transparency without reset"}
+
+            def no_reset(row, rel=rel):
+                ctx = context((1440, 900))
+                page = ctx.new_page()
+                load(page, rel)
+                page.evaluate("window.__igAlive = document.querySelector('.ig-r42-stage').firstElementChild")
+                page.locator("#a11yBtn").click()
+                page.locator("[data-ig-transparency-choice='opaque']").click()
+                assert page.evaluate("document.documentElement.dataset.igTransparency") == "opaque"
+                assert page.evaluate("window.__igAlive === document.querySelector('.ig-r42-stage').firstElementChild")
+                assert page.locator("[data-ig-transparency-choice='opaque']").get_attribute("aria-pressed") == "true"
+                label = page.locator(".ig-transparency-title").inner_text()
+                assert label == ("Transparency" if rel.startswith("en/") else "Transparencia"), label
+                page.reload(wait_until="domcontentloaded")
+                page.locator(".ig-r42-shell").wait_for(state="visible")
+                assert page.evaluate("document.documentElement.dataset.igTransparencySource") == "user"
+                ctx.close()
+
+            case(row, no_reset)
+
+        QUIET = [rel for rel, family in PILOT.items() if family == "quiet"]
+        TEMP_CHROME = """(sel) => { const el = [...document.querySelectorAll(sel)].find(n => n.getClientRects().length);
+          if (!el) return null; const bg = getComputedStyle(el).backgroundColor; const m = bg.match(/rgba?\(([^)]+)\)/);
+          const p = m ? m[1].split(/[ ,/]+/).map(Number) : [255, 255, 255, 1];
+          const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); };
+          const L = .2126 * f(p[0]) + .7152 * f(p[1]) + .0722 * f(p[2]);
+          const r = el.getBoundingClientRect();
+          return {bg, luminance:Math.round(L * 1000) / 1000, alpha:p.length > 3 ? p[3] : 1, area:Math.round(r.width * r.height / (innerWidth * innerHeight) * 100),
+                  texts:window.__igMeasure ? window.__igMeasure(el, 30) : []}; }"""
+        for rel in QUIET:
+            for vname in ("1440x900", "390x844"):
+                for mode in MODES:
+                    row = {"route": route(rel), "scenario": "Rincón temporary chrome is dark", "viewport": vname, "mode": mode}
+
+                    def dark_chrome(row, rel=rel, vname=vname, mode=mode):
+                        ctx = context(VIEWPORTS[vname], mode)
+                        page = ctx.new_page()
+                        load(page, rel)
+                        page.evaluate(PROBE, FLOORS)
+                        lang = rel.split("/")[0]
+                        seen = {}
+                        # Panel contextual / inspector (en móvil se abre como diálogo).
+                        page.locator(".ig-r42-top-actions .ig-r42-action").nth(1).click()
+                        page.wait_for_timeout(250)
