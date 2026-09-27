@@ -11,6 +11,7 @@ REQ_ASSETS=[
  '/assets/ig-r42-materials.css',
  '/assets/ig-audience.css',
  '/assets/ig-r49-transversal.css',
+ '/assets/ig-r49-lang-bootstrap.js',
  '/assets/ig-audience.js',
  '/assets/ig-child-safe.js',
  '/assets/ig-r49-transversal.js',
@@ -85,7 +86,7 @@ def main():
     js=(root/'assets/ig-r49-transversal.js').read_text(encoding='utf-8')
     for token in ['openSearch','openAudience','openSettings','upgradeHeader','upgradeFooter']:
         need(token in js,'global chrome function missing '+token)
-    common_bytes=sum((root/p.lstrip('/').split('?')[0]).stat().st_size for p in ['/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/assets/ig-audience.css','/assets/ig-audience.js','/assets/ig-child-safe.js'])
+    common_bytes=sum((root/p.lstrip('/').split('?')[0]).stat().st_size for p in ['/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/assets/ig-r49-lang-bootstrap.js','/assets/ig-audience.css','/assets/ig-audience.js','/assets/ig-child-safe.js'])
     need(common_bytes<90000,f'R49 common assets too large: {common_bytes}')
     tracked=pages+[manifest_path]
     before=digest(tracked)
