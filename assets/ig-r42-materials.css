@@ -1,0 +1,105 @@
+/* Iris Green R42 · sistema material (cristal solo en el chrome).
+   Piloto: se carga únicamente en las superficies con body[data-ig-materials="r42"].
+   Jerarquía: contenido estable/opaco → chrome interactivo → overlay temporal.
+   Prohibido cristal sobre cristal. Los valores de suelo se miden con
+   scripts/measure_r42_materials.py (lee este archivo) y se comprueban en navegador
+   con scripts/test_r42_materials_browser.py.
+   Reglas sin capa y con body[data-ig-materials] como prefijo: el CSS antiguo no está
+   en capas y una regla normal en capa perdería frente a él. Donde el CSS antiguo usa
+   !important se usa la capa ig-r42-materials-important (un !important en capa gana
+   al !important sin capa), nunca !important sin capa. */
+
+/* 1 · Tokens semánticos únicos */
+body[data-ig-materials="r42"]{
+  --ig-ink:#17395c;
+  --ig-ink-muted:#435268;
+  --ig-ink-on-dark:#eef4f8;
+  --ig-ink-muted-on-dark:#c9d5dd;
+
+  --ig-surface-content:#ffffff;
+  --ig-surface-content-soft:#f4f7fa;
+
+  --ig-chrome-light-rgb:255 255 255;
+  --ig-chrome-dark-rgb:11 26 43;
+  --ig-chrome-solid-light:#ffffff;
+  --ig-chrome-solid-dark:#0b1a2b;
+  --ig-chrome-control-dark:#15304a;
+
+  /* Valor por defecto de cada componente y suelo mínimo medido (ver tabla). */
+  --ig-glass-alpha-header:.90;  --ig-glass-floor-header:.86;
+  --ig-glass-alpha-bar:.92;     --ig-glass-floor-bar:.88;
+  --ig-glass-alpha-rail:.94;    --ig-glass-floor-rail:.90;
+  --ig-glass-alpha-dark:.86;    --ig-glass-floor-dark:.80;
+  --ig-glass-alpha-floor:.86;
+  --ig-glass-alpha-min:0;
+  /* --ig-glass-alpha-user: sin valor en modo normal; lo fija el modo reducido. */
+  --ig-glass-blur:12px;
+
+  /* Sin soporte de max() o de backdrop-filter, los tokens de cristal son opacos. */
+  --ig-chrome-glass-light:var(--ig-chrome-solid-light);
+  --ig-chrome-glass-dark:var(--ig-chrome-solid-dark);
+
+  --ig-control-border:#7a869d;
+  --ig-control-border-dark:#8494a8;
+  --ig-separator:#d5e1ec;
+  --ig-separator-dark:#2a4460;
+  --ig-overlay-backdrop:rgb(14 29 53 / .42);
+  --ig-overlay-backdrop-dark:rgb(2 8 18 / .62);
+  --ig-link-on-dark:#9fdcea;
+  --ig-focus:#5a49a8;
+  --ig-focus-on-dark:#c3b8ff;
+
+  --ig-state-hover:#edf5fb;
+  --ig-state-hover-dark:#1d3d5c;
+  --ig-state-selected:#17395c;
+  --ig-state-selected-ink:#ffffff;
+  --ig-state-selected-soft:#e6f1f8;
+  --ig-state-selected-dark:#dce8f2;
+  --ig-state-selected-dark-ink:#0b1a2b;
+  --ig-state-disabled-ink:#5f6b80;
+  --ig-state-disabled-surface:#eef2f6;
+  --ig-state-error:#8a2942;
+  --ig-state-success:#1d6b3a;
+  --ig-state-error-on-dark:#ffb3c1;
+  --ig-state-success-on-dark:#9be0b4;
+}
+@supports (color:rgb(0 0 0 / max(.1,.2))){
+  body[data-ig-materials="r42"]{
+    --ig-chrome-glass-light:rgb(var(--ig-chrome-light-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-header)),var(--ig-glass-alpha-floor),var(--ig-glass-alpha-min)));
+    --ig-chrome-glass-dark:rgb(var(--ig-chrome-dark-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-dark)),var(--ig-glass-floor-dark),var(--ig-glass-alpha-min)));
+  }
+}
+
+/* 2 · Modos de transparencia (preferencia de la persona en window.IGPreferences) */
+html[data-ig-transparency="reduced"] body[data-ig-materials="r42"]{--ig-glass-alpha-user:.97;--ig-glass-blur:4px}
+@media (prefers-reduced-transparency:reduce){
+  html:not([data-ig-transparency-source="user"]) body[data-ig-materials="r42"]{--ig-glass-alpha-user:.97;--ig-glass-blur:4px}
+}
+html[data-ig-contrast="on"] body[data-ig-materials="r42"]{
+  --ig-ink-muted:#17395c;--ig-separator:#7a869d;--ig-control-border:#17395c;
+  --ig-ink-muted-on-dark:#eef4f8;--ig-separator-dark:#8494a8;--ig-control-border-dark:#eef4f8;
+}
+@media (prefers-contrast:more){
+  body[data-ig-materials="r42"]{
+    --ig-ink-muted:#17395c;--ig-separator:#7a869d;--ig-control-border:#17395c;
+    --ig-ink-muted-on-dark:#eef4f8;--ig-separator-dark:#8494a8;--ig-control-border-dark:#eef4f8;
+  }
+}
+/* Móvil: sin blur (coste de GPU en barras sticky) y casi opaco. Corte conservado en 900 px. */
+@media (max-width:900px){
+  body[data-ig-materials="r42"]{--ig-glass-alpha-min:.97;--ig-glass-blur:0px}
+}
+
+/* Alto contraste: sustituye el filtro global sobre main (alteraba pictogramas,
+   ilustraciones, vídeo y escenas) por tokens de texto, bordes y superficies. */
+html[data-ig-contrast="on"] body[data-ig-materials="r42"] main{filter:none}
+
+/* 3 · Superficies de chrome con cristal (flotan sobre contenido que se desplaza) */
+body[data-ig-materials="r42"] .hd{
+  --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-header);--_f:var(--ig-glass-floor-header);--_solid:var(--ig-chrome-solid-light);
+  background-color:var(--_solid);background-image:none;border-bottom-color:var(--ig-separator);
+}
+body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar){
+  --_rgb:var(--ig-chrome-light-rgb);--_a:var(--ig-glass-alpha-bar);--_f:var(--ig-glass-floor-bar);--_solid:var(--ig-chrome-solid-light);
+  background-color:var(--_solid);background-image:none;border-color:var(--ig-separator);
+}
