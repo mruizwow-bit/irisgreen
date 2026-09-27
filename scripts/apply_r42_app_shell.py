@@ -10,8 +10,10 @@ import argparse
 import re
 from pathlib import Path
 
-CSS = "/assets/ig-r42-shell.css?v=r42-a3-1"
+MATERIALS = "/assets/ig-r42-materials.css?v=r42-design-1"
+CSS = "/assets/ig-r42-shell.css?v=r42-design-1"
 JS = "/assets/ig-r42-shell.js?v=r42-a3-1"
+LEGACY_CSS = "/assets/ig-r42-shell.css?v=r42-a3-1"
 
 PILOT = {
     "es/taller/dibujo/index.html": "workshop",
@@ -45,15 +47,21 @@ def _set_body_attrs(text: str, family: str) -> str:
 
     attrs = set_attr(attrs, "data-ig-r42-pilot", "true")
     attrs = set_attr(attrs, "data-ig-r42-family", family)
+    # R42-Design: the material system is scoped to the same pilot pages.
+    attrs = set_attr(attrs, "data-ig-materials", "r42")
     return text[: match.start()] + "<body" + attrs + ">" + text[match.end() :]
 
 
 def _inject_assets(text: str) -> str:
+    # Idempotent upgrade from the A3 cache key to the Design cache key.
+    text = text.replace(LEGACY_CSS, CSS)
     if CSS not in text:
-        link = f'<link rel="stylesheet" href="{CSS}">\n'
+        link = f'<link rel="stylesheet" href="{MATERIALS}">\n<link rel="stylesheet" href="{CSS}">\n'
         text, count = HEAD_CLOSE_RE.subn(link + "</head>", text, count=1)
         if count != 1:
             raise AssertionError("R42 pilot page has no </head>")
+    if MATERIALS not in text:
+        text = text.replace(f'<link rel="stylesheet" href="{CSS}">', f'<link rel="stylesheet" href="{MATERIALS}">\n<link rel="stylesheet" href="{CSS}">', 1)
     if JS not in text:
         script = f'<script defer src="{JS}"></script>\n'
         text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
