@@ -1,5 +1,25 @@
 # R46 · Claude · Rincón tranquilo definitivo · emisión 27/09/2026
 
+## Corrección de María · YouTube, no Pexels
+
+María rechaza la propuesta de construir los paisajes desde clips Pexels o programas de múltiples tomas.
+
+Decisión vigente:
+- fuente preferida: vídeos largos embebibles de YouTube, igual que el patrón técnico de la Videoteca;
+- `youtube-nocookie.com`;
+- iframe solo tras acción explícita;
+- poster local antes de reproducir;
+- vídeo YouTube silenciado;
+- audio Iris Green separado;
+- no descargar/rippear/rehostear YouTube;
+- preferencia 30–60+ min / ideal 1 h o más;
+- un único entorno, cámara fija o prácticamente fija;
+- no travel montage, drone tour, pans/zooms repetidos ni cortes frecuentes;
+- cualquier candidato con anuncios/interrupciones en embed real = REJECT_CANDIDATE;
+- Pexels queda descartado como fuente principal de Paisajes.
+
+YouTube Privacy Enhanced Mode no garantiza ausencia de anuncios; se exige QA real 20–30 min en sesión limpia/no logueada desktop+móvil antes de aceptar cada candidato.
+
 Issue: #307  
 Estado: `R46_CLAUDE_RINCON_ORDERED`
 
