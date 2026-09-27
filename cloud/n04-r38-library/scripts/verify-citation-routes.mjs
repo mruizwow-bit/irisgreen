@@ -43,6 +43,7 @@ const report = {
   schema: 'R39_A9_CITATION_ROUTE_AUDIT/1.0',
   source_commit: release.source_commit,
   library_version: release.version,
+  checked_citation_records: corpus.fragments.length,
   checked_unique_urls: urls.length,
   broken_count: broken.length,
   duplicate_title_urls: duplicateTitleUrls,

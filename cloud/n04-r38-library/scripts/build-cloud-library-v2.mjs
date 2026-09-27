@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const sourceDir = new URL('../sources/a9-r01/', import.meta.url);
-const safetySourceUrl = new URL('../sources/a9-r02/approved-safe-variants.json', import.meta.url);
+const safetySourceUrl = new URL('../sources/a9-r02-safety/APPROVED_SAFE_VARIANTS_R42.json', import.meta.url);
 const outDir = new URL('../build/library-v2/', import.meta.url);
 const SOURCE_DATE = '2026-09-27';
 const ORIGIN = 'https://irisgreen.eu';
@@ -53,13 +53,14 @@ if (sourceManifest?.schema !== 'SABIK_CLOUD_SOURCE_SNAPSHOT/1.0' ||
 const approvedSafetyBytes = await readFile(safetySourceUrl);
 const approvedSafetySha256 = sha256(approvedSafetyBytes);
 const approvedSafety = JSON.parse(approvedSafetyBytes.toString('utf8'));
-if (approvedSafetySha256 !== '7438eeadeffb3918cacd7654c0e2943b4cfd9b16ef37ca3fb79c4367395657b6' ||
-    approvedSafety?.schema !== 'SABIK_APPROVED_SAFE_VARIANTS/1.0' ||
-    approvedSafety.source_package_sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
-    approvedSafety.source_safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
-    approvedSafety.source_manifest_sha256 !== '51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e' ||
-    approvedSafety.source_review_sha256 !== '579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55' ||
-    approvedSafety.reviewed_record_count !== 16 ||
+if (approvedSafety?.schema !== 'SABIK_A9_APPROVED_SAFE_VARIANTS/1.0' ||
+    approvedSafety.source_package?.name !== 'iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip' ||
+    approvedSafety.source_package?.sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
+    approvedSafety.source_package?.safe_variants_path !== 'SAFETY/safe-variants.json' ||
+    approvedSafety.source_package?.safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
+    approvedSafety.source_package?.s2_review_path !== 'SAFETY/s2-review.csv' ||
+    approvedSafety.source_package?.s2_review_sha256 !== '579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55' ||
+    approvedSafety.source_package?.classification_review !== 'HUMAN_REVIEWED_S2' ||
     approvedSafety.records?.length !== 16) {
   throw new Error('Approved R42 child-safe source identity mismatch');
 }
@@ -81,7 +82,8 @@ const bundleMaterial = [...sourceBySnapshot].sort(([a], [b]) => a.localeCompare(
   .map(([name, value]) => name + ':' + value.sha256).join('\n') +
   '\napproved-safe-variants.json:' + approvedSafetySha256;
 const sourceBundleSha256 = sha256(bundleMaterial);
-const version = 'sabik-es-en-20260927-r02-' + sourceBundleSha256.slice(0, 12);
+const versionIdentity = sha256(sourceBundleSha256 + ':A9_R03_APPROVED_SAFE_EXISTING_RESEARCH_SOURCE_ROUTE');
+const version = 'sabik-es-en-20260927-r03-' + versionIdentity.slice(0, 12);
 
 async function json(name) {
   return JSON.parse(sourceBySnapshot.get(name).bytes.toString('utf8'));
@@ -146,14 +148,17 @@ function addApprovedSafeVariant(full, approvalId) {
   const approval = approvalById.get(approvalId);
   if (!approval) throw new Error('Missing reviewed safe variant approval ' + approvalId);
   const locale = full.locale;
-  const variant = approvedSafety.variants?.[approval.safe_variant_group]?.[locale];
+  const variant = approvedSafety.groups?.[approval.safe_variant_group]?.[locale];
   if (!variant?.heading || !variant?.summary || !variant?.help) {
     throw new Error('Missing reviewed safe variant copy ' + approvalId + '/' + locale);
   }
   const expectedTitle = approval[locale === 'es' ? 'title_es' : 'title_en'];
-  const expectedUrl = ORIGIN + approval[locale === 'es' ? 'canonical_url_es' : 'canonical_url_en'];
+  const researchNumber = Number(String(approvalId).replace(/^research-/, ''));
+  const expectedUrl = approval.surface === 'research'
+    ? ORIGIN + '/es/investigacion/#estudio-' + researchNumber
+    : ORIGIN + approval[locale === 'es' ? 'canonical_url_es' : 'canonical_url_en'];
   if (full.title !== expectedTitle || full.url !== expectedUrl) {
-    throw new Error('Reviewed safe variant does not match source record ' + approvalId + '/' + locale);
+    throw new Error('Reviewed safe variant does not match pinned source record ' + approvalId + '/' + locale);
   }
   const text = variant.summary + '\n' + variant.help;
   if (normalizeSafetyText(text) === normalizeSafetyText(full.text)) {
@@ -172,9 +177,9 @@ function addApprovedSafeVariant(full, approvalId) {
     source_type: 'safe_variant',
     editorial_status: 'R42_HUMAN_REVIEWED_SAFE_VARIANT',
     source: {
-      source_version: 'r42-child-safe@' + approvedSafety.source_package_sha256,
-      source_sha256: approvedSafety.source_safe_variants_sha256,
-      source_path: approvedSafety.source_safe_variants_path
+      source_version: 'r42-child-safe@' + approvedSafety.source_package.sha256,
+      source_sha256: approvedSafety.source_package.safe_variants_sha256,
+      source_path: approvedSafety.source_package.safe_variants_path
     },
     audience: ['INFANCIA', 'ADOLESCENCIA', 'ADULTEZ', 'TRANSVERSAL'],
     sensitivity: 'S1_SENSITIVE',
@@ -266,7 +271,7 @@ research.forEach((study, i) => {
   });
   const en = pushFragment({
     ...common, content_id: contentId, fragment_id: contentId + ':en:main', locale: 'en',
-    url: ORIGIN + '/en/research/#study-' + n, title: study.heading_en || study.titleOrig,
+    url: ORIGIN + '/es/investigacion/#estudio-' + n, title: study.heading_en || study.titleOrig,
     heading: study.topic || '', text: [ ...(study.text_en || []), study.means_en, study.notProven_en ].filter(Boolean).join('\n'),
     concepts: [study.topic, study.designKey, study.titleOrig]
   });
@@ -306,12 +311,12 @@ const sourceInventory = sourceManifest.inventory.map(item => {
   return { ...item, sha256: s.sha256, bytes: s.bytes.byteLength };
 });
 sourceInventory.push({
-  source_path: approvedSafety.source_safe_variants_path,
-  snapshot_path: 'sources/a9-r02/approved-safe-variants.json',
+  source_path: approvedSafety.source_package.safe_variants_path,
+  snapshot_path: 'sources/a9-r02-safety/APPROVED_SAFE_VARIANTS_R42.json',
   sha256: approvedSafetySha256,
-  upstream_sha256: approvedSafety.source_safe_variants_sha256,
+  upstream_sha256: approvedSafety.source_package.safe_variants_sha256,
   bytes: approvedSafetyBytes.byteLength,
-  source_package_sha256: approvedSafety.source_package_sha256
+  source_package_sha256: approvedSafety.source_package.sha256
 });
 const release = {
   schema: 'SABIK_CLOUD_LIBRARY_RELEASE/2.0',
@@ -326,8 +331,8 @@ const release = {
   safe_variant_count: safeVariants.length,
   source_commit: sourceManifest.source_commit,
   source_bundle_sha256: sourceBundleSha256,
-  approved_child_safe_package_sha256: approvedSafety.source_package_sha256,
-  approved_safe_variants_sha256: approvedSafety.source_safe_variants_sha256,
+  approved_child_safe_package_sha256: approvedSafety.source_package.sha256,
+  approved_safe_variants_sha256: approvedSafety.source_package.safe_variants_sha256,
   approved_safe_source_snapshot_sha256: approvedSafetySha256,
   source_inventory: sourceInventory,
   corpus_key: 'cloud-library/versions/' + version + '/corpus.json',
