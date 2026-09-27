@@ -161,8 +161,22 @@ def built_contract(root: Path) -> None:
             assert 'data-ig-materials="r42"' in body.group(0), rel
             assert "ig-r42-shell.css?v=r42-a3-1" not in text, rel
 
-    # No accidental site-wide propagation before human acceptance.
-    for rel in ("index.html", "es/recursos/index.html", "en/resources/index.html"):
+    # Home R42 es la primera superficie general migrada fuera del piloto:
+    # consume materiales + Child Safety, pero NO el workspace/app-shell de herramientas.
+    home = root / "index.html"
+    if home.is_file():
+        text = home.read_text(encoding="utf-8")
+        assert 'data-ig-home-r42="true"' in text
+        assert CSS not in text, "index.html"
+        assert JS not in text, "index.html"
+        assert "data-ig-r42-pilot" not in text, "index.html"
+        assert CHILD_SAFETY_JS in text, "index.html"
+        assert MATERIALS in text, "index.html"
+        assert 'data-ig-materials="r42"' in text, "index.html"
+
+    # Las demás superficies generales siguen sin propagación material/app-shell
+    # hasta migrarse una a una y pasar HUMAN QA.
+    for rel in ("es/recursos/index.html", "en/resources/index.html"):
         path = root / rel
         if not path.is_file():
             continue
