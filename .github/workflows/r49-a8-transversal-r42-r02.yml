@@ -11,6 +11,8 @@ on:
       - 'assets/ig-audience.js'
       - 'assets/ig-child-safe.js'
       - 'assets/buscador-comun.js'
+      - 'scripts/apply_child_safe_r42.py'
+      - 'scripts/test_home_child_safe_r42.py'
       - 'scripts/apply_r49_transversal_ui.py'
       - 'scripts/test_r49_transversal_ui.py'
       - 'scripts/test_r49_transversal_browser.py'
