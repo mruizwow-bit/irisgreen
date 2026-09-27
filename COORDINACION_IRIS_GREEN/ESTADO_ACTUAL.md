@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · EN audio codes completos · 27/09/2026
+
+**Estado: `SABIK_EN_TRAIN_V1_CODES_READY_SFT_PREFLIGHT_NEXT`.**
+
+`train_with_codes.jsonl` generado correctamente con **160/160** registros mediante el tokenizer oficial Qwen3-TTS 12Hz. Los avisos de symlinks/Xet de Hugging Face no bloquearon la preparación.
+
+Siguiente gate: aplicar el patch local R01 (alineación talker/sub-talker + SDPA), ejecutar **1 optimizer step de preflight sin guardar checkpoint**, medir pico real de VRAM en la RTX 5000 Ada 16 GB y solo después autorizar entrenamiento completo.
+
 ## Sabik · corpus EN V1 · QC muestra PASS · 27/09/2026
 
 **Estado: `SABIK_EN_TRAIN_V1_SAMPLE_QC_PASS_PREPARE_CODES_NEXT`.**
