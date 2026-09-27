@@ -40,3 +40,13 @@ Por tanto:
 
 ## Restricciones conservadas
 No main · no producción · no regeneración/retraining · no modelos/weights/masters humanos en Git · no Team Login/secrets · no narración dinámica.
+
+## Checkpoint CI final de esta sesión
+
+- HEAD web verificado: `ed9960011f08e38217eecb4be61e6273d7dbe8b1`.
+- Workflow: `36339396889`.
+- PASS: motion R37; sintaxis mount; runtime Sabik Audio R01; copy R02; Taller Node; Rincón R40; transporte autorizado; build; R08; Recursos; R09; Taller montado **20/20**.
+- Corrección adicional de producto: se eliminó la carrera de doble shell R42 en Dibujo/Drawing y se restauró un `h1` semántico dentro de `main` para los estudios del Taller especializado.
+- Único FAIL: `scripts/test_sabik_audio_assets_r01.py`.
+- Resultado del gate: `expected=30`, **30 rutas missing**, `hash_mismatch=[]`.
+- Esto confirma que no queda un fallo funcional encubierto antes del gate binario: el bloqueo es exclusivamente la incorporación física de los 30 WAV exactos al árbol.
