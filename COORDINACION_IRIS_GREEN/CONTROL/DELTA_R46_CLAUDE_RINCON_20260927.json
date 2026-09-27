@@ -18,17 +18,23 @@
     "standalone_audio_mode": false
   },
   "landscapes": {
-    "target_session_minutes": "20-30",
-    "presets_minutes": [
-      10,
-      20,
-      30,
-      60
+    "source_policy": "YOUTUBE_EMBED_PREFERRED_NO_PEXELS_PRIMARY",
+    "youtube_privacy_mode": "youtube-nocookie",
+    "load_policy": "IFRAME_ONLY_AFTER_EXPLICIT_ACTION",
+    "audio": "YOUTUBE_MUTED_IRIS_GREEN_AUDIO_SEPARATE",
+    "preferred_duration": "30-60+ min, ideally >=1h",
+    "camera": "FIXED_OR_NEAR_FIXED_SINGLE_ENVIRONMENT",
+    "reject": [
+      "PEXELS_PRIMARY",
+      "TRAVEL_MONTAGE",
+      "DRONE_TOUR",
+      "FREQUENT_CUTS",
+      "REPEATED_PANS_ZOOMS",
+      "ADS_OR_PROMOS_IN_EMBED",
+      "SHORT_LOOP"
     ],
-    "continuous": true,
-    "short_loop_as_full_landscape": "FORBIDDEN",
-    "acceptable": "LONG_SOURCE_OR_3_TO_5_PLUS_SEGMENT_PROGRAM_WITH_SMOOTH_TRANSITIONS",
-    "maria_detects_repetition": "FAIL"
+    "qa": "20-30_MIN_REAL_EMBED_SESSION_CLEAN_DESKTOP_MOBILE",
+    "download_rehost": "FORBIDDEN"
   },
   "immersive": {
     "rooms": [
