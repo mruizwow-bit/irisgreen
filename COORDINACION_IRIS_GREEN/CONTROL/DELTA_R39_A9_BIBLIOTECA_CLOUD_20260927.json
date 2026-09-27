@@ -1,0 +1,86 @@
+{
+  "schema": "R39_A9_CONTROL_DELTA/1.1",
+  "date": "2026-09-27",
+  "issue": 306,
+  "status": "R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA",
+  "branch": "agent9/r39-cloud-library-r01-20260927",
+  "base": {
+    "head": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
+    "tree": "d257910de08519359d805b1f0b53599595174bdb"
+  },
+  "deployed_candidate": {
+    "head": "f4d89076b13cc3103bbcf41bbe7dd88718cb9bf0",
+    "tree": "a5a5f94fb8cfc5941cdf56e2ae0f2d6b2145f922"
+  },
+  "r38": {
+    "fragments": 4332,
+    "version": "n04-es-20260916-56f72c4d3959",
+    "sha256": "56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e",
+    "modified": false
+  },
+  "source": {
+    "commit": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
+    "bundle_sha256": "a582b153c173f397ee40e105f09cdcdaf424599984fcf742157adc819b5d2647"
+  },
+  "release": {
+    "version": "sabik-es-en-20260927-r01-a582b153c173",
+    "corpus_sha256": "2a36db04dabd04d5fabdf5e7fc79db9509ebd8657f3daa9dd9886a75d9540da8",
+    "corpus_bytes": 1583119,
+    "fragments": 1208,
+    "locale_counts": {
+      "es": 604,
+      "en": 604
+    },
+    "full_s2_fragments": 30,
+    "safe_variants": 30,
+    "manifest_sha256": "0197ee5c8c3ed418dfd4ad364822b7f628608e8dd666b6773faeb4ddc9dcb502"
+  },
+  "qa": {
+    "run_id": 36327674236,
+    "run_result": "SUCCESS",
+    "tests_passed": 203,
+    "tests_failed": 0,
+    "local_cold_load_ms": 111.51,
+    "local_warm_p95_ms": 0.3,
+    "heap_used_mib": 63.12,
+    "remote_blob_cold_load_ms": 339.12,
+    "artifact_id": 10934885561,
+    "artifact_digest": "sha256:9e6e954f3e5e1c09c9fed6d9aba53f6cfba8dabedb0668798f8c219f957f8277"
+  },
+  "deploy": {
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "site_name": "sabik-asistente",
+    "deploy_id": "6ab92e91a3cdab71e281a975",
+    "origin": "https://6ab92e91a3cdab71e281a975--sabik-asistente.netlify.app",
+    "state": "ready",
+    "context": "deploy-preview",
+    "published_at": null,
+    "sso_team_login": true,
+    "sso_context": "all",
+    "runtime": "nodejs24.x",
+    "region": "us-east-2"
+  },
+  "http": {
+    "real_http": true,
+    "unauthenticated_outer_gate_status": 401,
+    "team_login_gate_observed": true,
+    "authenticated_application_http": "PENDING_LEGITIMATE_TEAM_BROWSER_SESSION"
+  },
+  "limitations": {
+    "r42_s2_topics_documented": 16,
+    "s2_topics_present_in_pinned_public_snapshot": 15,
+    "missing_from_snapshot": [
+      "TEPT complejo"
+    ],
+    "c17_platform_retention": "PENDING"
+  },
+  "invariants": {
+    "production_changed": false,
+    "dns_changed": false,
+    "team_login_changed": false,
+    "secrets_changed": false,
+    "frontend_changed": false,
+    "voice_changed": false,
+    "user_data_in_corpus": false
+  }
+}
