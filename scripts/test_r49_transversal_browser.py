@@ -74,12 +74,10 @@ async def shot(page,path,name,w,h):
 
 async def perf(browser,path,name):
     page=await browser.new_page(viewport={'width':1440,'height':900})
-    await page.add_init_script("""() => {
-      window.__r49perf={lcp:0,cls:0,events:[]};
-      try{new PerformanceObserver(l=>{for(const e of l.getEntries())window.__r49perf.lcp=Math.max(window.__r49perf.lcp,e.startTime||0)}).observe({type:'largest-contentful-paint',buffered:true})}catch(e){}
-      try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__r49perf.cls+=e.value||0}).observe({type:'layout-shift',buffered:true})}catch(e){}
-      try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(e.interactionId)window.__r49perf.events.push(e.duration||0)}).observe({type:'event',durationThreshold:16,buffered:true})}catch(e){}
-    }""")
+    await page.add_init_script("""window.__r49perf={lcp:0,cls:0,events:[]};
+try{new PerformanceObserver(l=>{for(const e of l.getEntries())window.__r49perf.lcp=Math.max(window.__r49perf.lcp,e.startTime||0)}).observe({type:'largest-contentful-paint',buffered:true})}catch(e){}
+try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__r49perf.cls+=e.value||0}).observe({type:'layout-shift',buffered:true})}catch(e){}
+try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(e.interactionId)window.__r49perf.events.push(e.duration||0)}).observe({type:'event',durationThreshold:16,buffered:true})}catch(e){}""")
     await page.goto(BASE+path,wait_until='domcontentloaded');await page.wait_for_timeout(700)
     trigger=page.locator('[data-ig-r49-search]').first
     if await trigger.count():
