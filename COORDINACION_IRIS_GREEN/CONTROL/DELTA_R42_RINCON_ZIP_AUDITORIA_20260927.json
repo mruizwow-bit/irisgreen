@@ -2,7 +2,7 @@
   "schema": "iris-green-control-delta-v1",
   "id": "R42-RINCON-ZIP-AUDIT",
   "date": "2026-09-27",
-  "status": "R42_RINCON_ZIP_AUDIT_SPLIT_REQUIRED",
+  "status": "R42_RINCON_ZIP_AUDIT_A7_A2_ONLY",
   "source": {
     "file": "Rincon.zip",
     "sha256": "0efd80e61ff489ce4f38a0fd496c934cfad565954130300cfbf90c1574d17309",
@@ -10,7 +10,7 @@
     "internal_tree": "4615b69c3a1a32a7de522a1774b7c1f7d7267313",
     "base": "e8cad400a30d5d4857f9f99b0c1070d786958a8b"
   },
-  "decision": "DO_NOT_INTEGRATE_WHOLE_PACKAGE",
+  "decision": "DO_NOT_INTEGRATE_WHOLE_PACKAGE_A7_A2_ONLY_FOR_RINCON",
   "lanes": {
     "materials": {
       "state": "SUPERSEDED_BY_DESIGN_R02",
@@ -25,11 +25,8 @@
       "current_a7_head": "6c312d3fbd2677180a7894159f14b19894fe0eae"
     },
     "games": {
-      "state": "SEPARATE_BATCH_NOT_IN_A1_297",
-      "count": 13,
-      "pictograms": 71,
-      "mobile_focus_fix": true,
-      "action": "preserve and reconcile with child-safe/new resources baseline"
+      "state": "OUT_OF_SCOPE_CLAUDE_OWNS_GAMES",
+      "action": "No task derived from Rincon.zip; do not mix with Rincón handoff."
     }
   },
   "received_qa": {
@@ -44,5 +41,14 @@
     "No main",
     "No production",
     "Rincón real-media HUMAN QA still required"
+  ],
+  "operational_owners": [
+    "A7",
+    "A2"
+  ],
+  "next": [
+    "A7 ports only the two Quiet Space fixes onto current PR #300 or successor",
+    "A2 integrates the corrected A7 result and runs build/Deploy Preview/HUMAN QA",
+    "Games continue only in Claude's separate lane"
   ]
 }
