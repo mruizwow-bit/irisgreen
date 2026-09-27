@@ -70,7 +70,8 @@ def build(check: bool = False) -> dict:
         text = (SOURCE/template).read_text(encoding='utf-8')
         if 'noindex,nofollow,noarchive' in text or 'iris-review-route' in text:
             raise ValueError('A review wrapper must not be published')
-        text = accessible_dialog_defaults(text, target)
+        if target != 'index.html':
+            text = accessible_dialog_defaults(text, target)
         if target == 'index.html':
             # "Secciones" es un ancla normal. No debe depender del router JS.
             text = text.replace(' data-route="secciones"', '')
