@@ -322,3 +322,14 @@ body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rai
     display:block!important;
   }
 }
+
+
+/* R42 closure · Opaco / Más contraste significa cero cristal dentro del Taller,
+   también en chrome propio de motores R43 y overlays de herramienta. */
+@layer ig-r42-materials-important{
+  :is(html[data-ig-transparency="opaque"],html[data-ig-contrast="on"])
+  body[data-ig-materials="r42"][data-ig-r42-family="workshop"] *{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+}
