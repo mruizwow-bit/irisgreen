@@ -6,7 +6,9 @@
 @layer ig-r42-tokens, ig-r42-shell, ig-r42-components, ig-r42-adapters, ig-r42-a11y;
 
 @layer ig-r42-tokens {
-  .ig-r42-shell {
+  /* Los diálogos se añaden a <body>, fuera del shell: necesitan los mismos tokens (fondo opaco). R43. */
+  .ig-r42-shell,
+  .ig-r42-dialog {
     --r42-navy:#17395c;
     --r42-blue:#2f82c6;
     --r42-violet:#7567d9;
