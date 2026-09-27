@@ -1,5 +1,13 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · Audio Library final verificada y preparada para A2 · 27/09/2026
+
+El ZIP final recibido coincide exactamente con el hash declarado `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`; 30/30 hashes de WAV coinciden con el manifest. EN model `3aec07b8...`; ES model `8100e977...`.
+
+Astra reconcilia una inconsistencia de metadata: el campo heredado `audio_policy.processing=gain_only` no describía el fallback limitador aplicado en 10/30 audios. El paquete verificado corrige solo metadata/procedencia, sin modificar audio, y queda con SHA `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`.
+
+A2 debe integrar únicamente el copy fijo R02 y estos assets; voz por control explícito de sesión, no autoplay previo, no doble habla con screen reader/live regions y sin narración dinámica en este lote.
+
 ## Sabik · Audio Library R01 final · 27/09/2026
 
 La biblioteca fija ES/EN queda procesada 30/30 con -16.5 LUFS exactos, peak máximo -1.0 dBFS y cero clipping. Diez entradas requirieron limitador lookahead; reducción máxima 2.774 dB, dentro del límite conservador fijado. Manifest SHA-256 `dd4a44d222d6fbbade669a32a705d08fe5601ac11c39911105df8cb37d71d4d9`; ZIP SHA-256 `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`.
