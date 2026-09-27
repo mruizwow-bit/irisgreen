@@ -3,6 +3,7 @@
 (function(){
 'use strict';
 try{
+  document.documentElement.dataset.igR49Js='1';
   var q=new URLSearchParams(location.search).get('lang');
   if(q!=='es'&&q!=='en')return;
   document.documentElement.lang=q;
