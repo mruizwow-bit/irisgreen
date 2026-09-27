@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import release from '../build/library-v2/release.json' with { type: 'json' };
 import { createCloudLibraryQAHandler } from '../src/cloud-library-qa-handler.mjs';
+import { createCloudLibraryTeamHandler } from '../src/cloud-library-team-handler.mjs';
 
 const token = 't'.repeat(40);
 const result = (overrides = {}) => Object.freeze({
@@ -86,4 +87,57 @@ test('HTTP storage/runtime failures are sanitized', async () => {
   const text = await response.text();
   assert.deepEqual(JSON.parse(text), { error: 'library_unavailable' });
   assert.ok(!text.includes('SECRET_INTERNAL_STORAGE_DETAIL'));
+});
+
+
+test('A9 Team Login bridge stays deploy-preview only and injects credential server-side', async () => {
+  let seen;
+  const qaHandler = async request => {
+    seen = {
+      token: request.headers.get('x-n04-smoke-token'),
+      contentType: request.headers.get('content-type'),
+      body: await request.json()
+    };
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+  };
+  const bridge = createCloudLibraryTeamHandler({
+    qaHandler,
+    env: key => key === 'N04_TEAM_TRANSPORT_ENABLED' ? 'true' :
+      key === 'N04_SMOKE_TOKEN' ? token : undefined
+  });
+  const url = 'https://draft.example/internal/n04/cloud-library/team/search';
+  const req = new Request(url, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      origin: 'https://draft.example',
+      'sec-fetch-site': 'same-origin'
+    },
+    body: JSON.stringify({ q: 'autismo', locale: 'es', context: 'default' })
+  });
+  const ctx = { site: { id: '47b06e68-ff54-4097-8ad8-336b2d71758a' },
+    deploy: { context: 'deploy-preview', published: false } };
+  const response = await bridge(req, ctx);
+  assert.equal(response.status, 200);
+  assert.equal(seen.token, token);
+  assert.equal(seen.contentType, 'application/json');
+  assert.deepEqual(seen.body, { q: 'autismo', locale: 'es', context: 'default' });
+});
+
+test('A9 Team Login bridge closes on origin, production, publication or disabled transport', async () => {
+  const qaHandler = async () => new Response('{}', { status: 200 });
+  const make = enabled => createCloudLibraryTeamHandler({
+    qaHandler,
+    env: key => key === 'N04_TEAM_TRANSPORT_ENABLED' ? enabled :
+      key === 'N04_SMOKE_TOKEN' ? token : undefined
+  });
+  const requestFor = origin => new Request('https://draft.example/internal/n04/cloud-library/team/search', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', origin, 'sec-fetch-site': 'same-origin' },
+    body: JSON.stringify({ q: 'autismo' })
+  });
+  const site = { id: '47b06e68-ff54-4097-8ad8-336b2d71758a' };
+  assert.equal((await make('false')(requestFor('https://draft.example'), { site, deploy: { context: 'deploy-preview', published: false } })).status, 503);
+  assert.equal((await make('true')(requestFor('https://evil.example'), { site, deploy: { context: 'deploy-preview', published: false } })).status, 403);
+  assert.equal((await make('true')(requestFor('https://draft.example'), { site, deploy: { context: 'production', published: true } })).status, 503);
 });
