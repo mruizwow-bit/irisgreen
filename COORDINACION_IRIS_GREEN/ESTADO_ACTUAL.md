@@ -1,5 +1,22 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R51 · A9 · Biblioteca Cloud Sabik R04 · 27/09/2026
+
+**Estado: `R51_A9_SABIK_CLOUD_LIBRARY_R04_ORDERED`.**
+
+R03 queda inmutable como base técnica privada verificada. #314 construye R04 con cobertura editorial completa y un updater incremental reproducible.
+
+Regla de María:
+**cada cambio aprobado de la web debe reflejarse en una nueva versión de biblioteca sin reconstrucción manual completa.**
+
+Flujo:
+`WEB_SOURCE_CHANGE → DELTA → REBUILD_AFECTADO → SAFETY/CITATIONS_QA → NEW_IMMUTABLE_VERSION`.
+
+El updater observa solo el source web canónico aprobado, ignora ramas experimentales, no crea versiones si el cambio es solo UI/CSS/JS sin contenido, y conserva histórico/tombstones.
+
+A9 construye → Astra revisa. No producción.
+
+
 ## R50 · HUMAN QA Home/header global · 27/09/2026
 
 **Estado: `R50_A2_HOME_GLOBAL_HEADER_ISO_COPY_ORDERED`.**
