@@ -159,6 +159,10 @@ def build():
     # publicar sus cuerpos solo como fragmentos lazy de carga explícita adulta.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Discovery transversal: retirar tarjetas/enlaces S2 incidentales antes del render.
+    # Adultez recupera únicamente metadatos seguros tras selección explícita.
+    subprocess.run([sys.executable,str(ROOT/'scripts/filter_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
