@@ -29,14 +29,10 @@ async def sample(browser,origin,path):
       try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__r49delta.cls+=e.value||0}).observe({type:'layout-shift',buffered:true})}catch(e){}
       try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(e.interactionId)window.__r49delta.events.push(e.duration||0)}).observe({type:'event',durationThreshold:16,buffered:true})}catch(e){}
     })()""")
-    await page.goto(origin+path,wait_until='domcontentloaded');await page.wait_for_timeout(900)
-    # Trigger a comparable native interaction. Baseline may not have R49 search.
-    trigger=page.locator('[data-ig-r49-search]').first
-    if await trigger.count():
-        await trigger.click();await page.wait_for_timeout(120);await page.keyboard.press('Escape');await page.wait_for_timeout(120)
-    else:
-        link=page.locator('a,button').filter(visible=True).first if False else None
-        await page.keyboard.press('Tab');await page.wait_for_timeout(80)
+    await page.goto(origin+path,wait_until='domcontentloaded')
+    # Load-vs-load comparison only. Interaction responsiveness is measured by the
+    # final R49 browser suite; baseline has no equivalent common-search control.
+    await page.wait_for_timeout(1500)
     data=await page.evaluate('window.__r49delta')
     need(isinstance(data,dict),'performance observer did not initialise '+origin+path)
     data['inp_observed_ms']=max(data.get('events') or [0]);data.pop('events',None)
@@ -49,11 +45,11 @@ async def main():
         browser=await p.chromium.launch()
         for name,path in SAMPLES:
             before=await sample(browser,BASE,path);after=await sample(browser,FINAL,path)
-            delta={'lcp_ms':round(after['lcp']-before['lcp'],3),'cls':round(after['cls']-before['cls'],6),'inp_observed_ms':round(after['inp_observed_ms']-before['inp_observed_ms'],3)}
-            # Local-server tolerance: R49 may add common chrome, but must not materially worsen stability.
+            delta={'lcp_ms':round(after['lcp']-before['lcp'],3),'cls':round(after['cls']-before['cls'],6)}
+            # Local-server tolerance: R49 may add common chrome, but must not materially worsen load stability.
+            print(json.dumps({'sample':name,'baseline':before,'final':after,'delta':delta},ensure_ascii=False),flush=True)
             need(delta['cls']<=0.05,f'R49 materially worsened CLS {name}: {delta}')
             need(delta['lcp_ms']<=180,f'R49 materially worsened LCP {name}: {delta}')
-            need(delta['inp_observed_ms']<=64,f'R49 materially worsened observed interaction {name}: {delta}')
             report['samples'].append({'name':name,'route':path,'baseline':before,'final':after,'delta':delta,'pass':True})
         await browser.close()
     OUT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
