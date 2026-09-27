@@ -1,0 +1,76 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-CONTENT-R01-CHILD-SAFE-DESIGN",
+  "date": "2026-09-27",
+  "status": "R42_CONTENT_R01_AUDITED_READY_FOR_DESIGN_CHILD_SAFE",
+  "child_safe_status": "R42_CHILD_SAFE_CONTENT_REACTIVATED_FOR_DESIGN_NEW_WEB",
+  "issues": {
+    "parent": 293,
+    "design": 302,
+    "a2": 289,
+    "implementation_old": [
+      294,
+      295,
+      296,
+      297
+    ]
+  },
+  "source": {
+    "file": "iris-green-contenido-R01-20260924.zip",
+    "sha256": "e44633d2c4707e69276c88728a090212f6d791046cc8dbe38399270f5c29551a"
+  },
+  "prepared_package": {
+    "file": "iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip",
+    "sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23"
+  },
+  "inventory": {
+    "new_content_entities": 118,
+    "new_html_pages": 204,
+    "full_catalog": {
+      "conditions": 226,
+      "situations": 223,
+      "everyday_life": 62,
+      "data": 60,
+      "research": 132,
+      "support_directory_es": 262
+    }
+  },
+  "safety": {
+    "total_records": 965,
+    "S0": 724,
+    "S1": 225,
+    "S2": 16,
+    "NORMAL": 945,
+    "SAFE_VARIANT_REQUIRED": 16,
+    "INTENTIONAL_ONLY": 4,
+    "rule": "FULL_S2_NOT_IN_INITIAL_PAYLOAD_DEFAULT_CHILD_TEEN",
+    "age_assurance": false,
+    "no_dob": true,
+    "no_account": true
+  },
+  "qa": {
+    "new_leaf_pages_structural": "PASS_204",
+    "numeric_weight_calorie_hits": 0,
+    "numeric_bmi_hits": 0,
+    "dosage_like_hits": 0,
+    "explicit_self_harm_method_hits": 0,
+    "graphic_harm_hits": 0,
+    "english_footer_to_spanish_links": 245
+  },
+  "corrections": {
+    "research_sample_en_121_132": 12,
+    "research_authors_en": 4,
+    "legal_support_records": 4
+  },
+  "implementation": {
+    "phase": "DESIGN_FIRST",
+    "old_issues_294_297": "REMAIN_PAUSED_UNTIL_DESIGN_NEW_BASELINE",
+    "design_marker": "R42_DESIGN_CONTENT_CHILD_SAFE_READY_FOR_ASTRA_REVIEW"
+  },
+  "limits": [
+    "No main",
+    "No production",
+    "HTML R01 is editorial source, not new UI shell",
+    "S0/S1 seed needs progressive editorial review"
+  ]
+}
