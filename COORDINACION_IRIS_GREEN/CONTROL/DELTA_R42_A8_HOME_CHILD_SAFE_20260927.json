@@ -1,0 +1,48 @@
+{
+  "id": "R42-A8-HOME-CHILD-SAFE-READY",
+  "date": "2026-09-27",
+  "owner": "Agente 8",
+  "state": "R42_A8_HOME_CHILD_SAFE_READY_FOR_A2",
+  "issue": 305,
+  "pull_request": 310,
+  "base_head": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+  "base_tree": "b143682a9309ad87574bd4909b5ca28b2da0d26e",
+  "branch": "agent8/r42-home-child-safe-20260927",
+  "head": "4769e223dc5e10f2bdd82a508310a929e94a6bb5",
+  "tree": "7e3db0f4dc4f4c7943f7ce1be266109ca97510c2",
+  "changed_files": 14,
+  "additions": 638,
+  "deletions": 265,
+  "qa": {
+    "run": 36330769828,
+    "job": 108652120704,
+    "conclusion": "SUCCESS",
+    "artifact_id": 10935572919,
+    "artifact_name": "r42-a8-home-child-safe-qa"
+  },
+  "evidence": {
+    "search_safe": 365,
+    "search_intentional_s2": 7,
+    "search_adult": 372,
+    "s2_html_pairs": 9,
+    "research_s2": 6,
+    "removed_incidental_links": 18,
+    "protected_full_requests": 0,
+    "adult_explicit_full_requests": 1,
+    "browser_matrix": "S0+S1+5-S2",
+    "screenshots": 11
+  },
+  "next": "A2 integra PR310, build/CI + Deploy Preview único; HUMAN QA María",
+  "guards": [
+    "no main",
+    "no production",
+    "no A8 deploy",
+    "voice out of scope",
+    "Sabik Cloud/retrieval out of scope",
+    "#294-#297 historical/paused"
+  ],
+  "known_baseline_gap": [
+    "global-395 TEPT complejo is new R01 and absent from current A2",
+    "Research 121-132 are new R01 and remain in #302 content gate"
+  ]
+}
