@@ -1,5 +1,15 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · master EN V2 · 27/09/2026
+
+Estado: `SABIK_EN_MASTER_V2_SELECTED_TRAINING_NEXT`.
+
+María selecciona la candidata 12 (seed 9112) como master inglés definitivo para la fase de entrenamiento. `SABIK_EN_MASTER_V2.wav` es copia canónica de `SABIK_EN_REG_V4_12_seed9112.wav`, SHA-256 `c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede`.
+
+La selección se cierra tras comparar candidatas V4/V6 y contrastar estabilidad, timbre, ritmo y similitud con Sabik ES. La referencia ralentizada 0.88 se descarta por sonido robótico y queda prohibida para corpus/fine-tuning.
+
+Secuencia vigente: generar `SABIK_EN_TRAIN_V1` → revisar muestra → fine-tuning EN → validar con frases inéditas → fine-tuning ES → validación ES → retomar copy/biblioteca de audio de producción.
+
 ## Sabik EN · master V2 seleccionado · 27/09/2026
 
 Estado vigente: `SABIK_EN_MASTER_V2_SELECTED`.
