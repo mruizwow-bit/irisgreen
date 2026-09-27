@@ -45,6 +45,15 @@ def browser(root:Path):
               page.goto(base+path,wait_until="domcontentloaded")
               page.locator("main h1").first.wait_for(state="visible")
               assert page.locator("html").get_attribute("lang")==lang
+              panel_title=page.locator("#a11y h2").inner_text()
+              if lang=="en":
+                  assert panel_title=="Accessible reading",panel_title
+                  assert page.locator('#a11y [data-a="big"]').inner_text()=="Bigger buttons"
+                  assert page.locator('#a11y [data-a="hc"]').inner_text()=="More contrast"
+                  assert page.locator('#a11y [data-a="rm"]').inner_text()=="Reduce motion"
+                  assert page.locator('#a11y [data-a="reset"]').inner_text()=="Reset"
+              else:
+                  assert panel_title=="Lectura accesible",panel_title
               assert page.evaluate("typeof window.IGPreferences==='object'")
               srcs=page.locator("script[src]").evaluate_all("(els)=>els.map(e=>e.getAttribute('src'))")
               assert srcs.count(PREF)==1,srcs
