@@ -83,8 +83,9 @@ def browser(root:Path):
 
               page.keyboard.press("Escape")
               assert panel.get_attribute("hidden") is not None
+              page.wait_for_function("document.getElementById('a11yBtn').getAttribute('aria-expanded')==='false'")
+              page.wait_for_function("document.activeElement && document.activeElement.id==='a11yBtn'")
               assert trigger.get_attribute("aria-expanded")=="false"
-              assert page.evaluate("document.activeElement && document.activeElement.id==='a11yBtn'")
               assert page.evaluate("document.documentElement.scrollWidth<=innerWidth+1")
               assert not errors,(path,width,errors)
               row["passed"]=True
