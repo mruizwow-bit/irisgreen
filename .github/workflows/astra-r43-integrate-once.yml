@@ -5,7 +5,7 @@ on:
     branches:
       - astra/r43-interface-integration-20260927
     paths:
-      - ".astra/r43-source.tar.xz"
+      - ".astra/R43_PAYLOAD_READY"
 
 permissions:
   contents: write
@@ -34,7 +34,7 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
-          tar -xJf .astra/r43-source.tar.xz -C .
+          cat .astra/r43-source.b64.* | base64 -d > .astra/r43-source.tar.xz\n          tar -xJf .astra/r43-source.tar.xz -C .
           python3 .astra/apply_r43_current.py
 
       - name: Build pinned local vendor libraries
@@ -71,7 +71,7 @@ jobs:
         run: |
           mkdir -p reports/r43-integration
           printf '%s\n' "R43 + Design R02 + Rincón integrated by Astra" > reports/r43-integration/EXPANDED
-          rm -f .astra/r43-source.tar.xz .astra/apply_r43_current.py
+          rm -f .astra/r43-source.tar.xz .astra/r43-source.b64.* .astra/R43_PAYLOAD_READY .astra/apply_r43_current.py
           rm -rf scripts/taller_suite/vendor/node_modules
           git config user.name "Astra integration"
           git config user.email "noreply@irisgreen.eu"
