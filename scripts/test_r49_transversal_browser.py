@@ -147,12 +147,16 @@ async def main():
         need(await page.locator('h1').count()>=1,'h1 missing')
         need(await page.locator('.ig-r49-header-inner a[aria-current="page"]').count()==1,'visible current-page state missing')
         need(await page.locator('a.skip,a.ig-r49-skip,a.ig-home-skip').count()>=1,'skip link missing')
+        await page.evaluate("document.activeElement && document.activeElement.blur()")
+        await page.keyboard.press('Tab')
+        first_focus=await page.evaluate("document.activeElement && document.activeElement.matches('a.skip,a.ig-r49-skip,a.ig-home-skip')")
+        need(first_focus,'skip link is not the first keyboard focus')
         await page.locator('[data-ig-r49-settings]').first.click()
         need(await page.get_by_role('dialog',name='Lectura y accesibilidad').count()==1,'settings dialog has no accessible name')
         await page.keyboard.press('Escape')
         boxes=await page.locator('.ig-r49-tools > :is(button,a)').evaluate_all("els=>els.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height,visible:!!(e.offsetWidth||e.offsetHeight)}))")
         need(all((not b['visible']) or (b['w']>=43.5 and b['h']>=43.5) for b in boxes),'common chrome target below 44px')
-        report['accessibility']+=['landmarks','heading-structure-sample','current-page','skip-link','dialog-accessible-name','target-size-44','legacy-common-chrome-hidden']
+        report['accessibility']+=['landmarks','heading-structure-sample','current-page','skip-link','dialog-accessible-name','target-size-44','legacy-common-chrome-hidden','skip-link-first-focus']
 
         # The transversal header search itself must remain safe before results are built.
         await page.goto(BASE+'/es/datos/',wait_until='domcontentloaded');await page.wait_for_timeout(250)
