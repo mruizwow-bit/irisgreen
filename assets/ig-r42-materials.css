@@ -250,3 +250,36 @@ body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>.r42-more-acti
 body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>button[aria-pressed="true"]{background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
 body[data-ig-materials="r42"].r42-clean .r42-more-actions[open]>.r42-more-menu{background:var(--ig-chrome-solid-dark);border-color:var(--ig-control-border-dark)}
 body[data-ig-materials="r42"].r42-clean .r42-more-menu button{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean .exit-focus{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean #watch :focus-visible{outline-color:var(--ig-focus-on-dark)}
+
+/* 7 · Control «Transparencia» dentro de Lectura (solo en el piloto) */
+body[data-ig-materials="r42"] .ig-transparency{display:grid;gap:.4rem;margin-top:.75rem}
+body[data-ig-materials="r42"] .ig-transparency-title{margin:0;font-size:.9rem;font-weight:700;color:var(--ig-ink)}
+body[data-ig-materials="r42"] .ig-transparency .ctrls{margin:0}
+body[data-ig-materials="r42"] .ig-transparency-note{margin:0;font-size:.88rem;line-height:1.45;color:var(--ig-ink-muted)}
+/* «Más contraste» impone opaco: la elección guardada se marca con trazo discontinuo y la nota lo explica. */
+body[data-ig-materials="r42"] .ig-transparency[data-ig-transparency-forced] button[aria-pressed="true"]{background:var(--ig-surface-content);color:var(--ig-ink);border:2px dashed var(--ig-ink)}
+body[data-ig-materials="r42"] .ig-transparency-forced{margin:0;padding:.5rem .65rem;border:2px solid var(--ig-ink);border-radius:.6rem;font-size:.9rem;font-weight:700;color:var(--ig-ink);background:var(--ig-surface-content)}
+body[data-ig-materials="r42"] .ig-transparency-forced[hidden]{display:none}
+
+/* 8 · Movimiento, colores forzados e impresión */
+body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail,.ig-r42-topbar){transition:none}
+@media (forced-colors:active){
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail,.ig-r42-topbar,.ig-r42-context,.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.jg-filter-pop,.secfind,.r42-more-menu,.r42-settings),
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.ig-r42-dialog-head,.ig-r42-inspector-head){
+    background:Canvas;color:CanvasText;border-color:CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;
+  }
+  body[data-ig-materials="r42"] .hd :is(.nav a,.brand,.ico,.lang){color:CanvasText;background:Canvas;border-color:CanvasText}
+  body[data-ig-materials="r42"] .hd :is(.nav a[aria-current=page],.lang.on,.ico[aria-expanded=true]),
+  body[data-ig-materials="r42"] .ig-transparency button[aria-pressed="true"]{background:Highlight;color:HighlightText;border-color:Highlight;forced-color-adjust:none}
+  body[data-ig-materials="r42"] :focus-visible{outline-color:Highlight}
+}
+@layer ig-r42-materials-important{
+  @media (forced-colors:active){
+    body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{background:Canvas!important;border-color:CanvasText!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+}
+@media print{
+  body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
