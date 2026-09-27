@@ -311,7 +311,7 @@
       document.body.dataset.igMaterials = 'r42';
       if (!document.body.dataset.igR42Family) document.body.dataset.igR42Family = 'workshop';
     }
-    if (!document.querySelector('link[data-ig42-materials]')) {
+    if (!document.querySelector('link[data-ig42-materials],link[href*="ig-r42-materials.css"]')) {
       var materials = document.createElement('link');
       materials.rel = 'stylesheet'; materials.href = '/assets/ig-r42-materials.css?v=r42-design-1';
       materials.setAttribute('data-ig42-materials', 'true');
