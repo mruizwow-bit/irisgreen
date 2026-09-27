@@ -15,6 +15,7 @@ assert.match(shell,/ig42-link-context/,'stage selection must change visible cont
 assert.match(shell,/\.ig43-toolbar button/,'R42 rail must expose advanced-engine tools');
 assert.match(shell,/\.ig43-editor/,'R42 shell must recognise advanced editors as ready workspaces');
 assert.match(shell,/dataStudyId|studyId|dataset\.studyId/,'launcher must bind cards to studios');
+assert.match(shell,/function safeInsertBefore\(parent,node,before\)/,'safe insertion helper must be defined');
 
 assert.match(loader,/ig-taller-r43-advanced\.js/,'advanced engine must actually load');
 assert.match(loader,/ig-taller-r43-advanced\.css/,'advanced engine styles must actually load');
