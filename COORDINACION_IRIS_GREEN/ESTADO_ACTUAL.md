@@ -1,5 +1,26 @@
 # Estado operativo compartido
 
+## Sabik · EN V1 canonizado + corpus ES auditado · 27/09/2026
+
+**Estado: `SABIK_EN_V1_CANONICAL_ES_CORPUS_AUDITED_PREPARE_CODES_NEXT`.**
+
+EN:
+- `SABIK_EN_V1` canonizado desde `checkpoint-epoch-0`;
+- `model.safetensors` SHA-256: `0346413f078b5f0f982974a35641fa3713bad13a71e9bf3237682acb5641e062`;
+- `config.json` SHA-256: `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`;
+- manifest local: `SABIK_EN_V1_MANIFEST.json`;
+- E2 se conserva como checkpoint alternativo.
+
+ES:
+- master `SABIK_ES_MASTER_V1.wav`: presente;
+- corpus `SABIK_ES_TRAIN_V1`: 133 WAV, 22.56 min, 0 WAV con error;
+- `train_raw.jsonl`: 133 líneas;
+- `manifest.csv`: presente;
+- `train_with_codes.jsonl`: aún no generado;
+- `summary.json`: no presente.
+
+Siguiente gate: verificar unicidad de `ref_audio`/rutas del JSONL ES y generar `train_with_codes.jsonl` antes de SFT ES.
+
 ## Sabik · checkpoint EN final seleccionado · 27/09/2026
 
 **Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_CANONICALIZE_NEXT`.**
