@@ -121,6 +121,8 @@
   }
 
   function enhanceStudy(){
+    /* A3 owns the Drawing pilot. Do not mount a second workshop shell on the same #igt-app. */
+    if(D.body&&D.body.dataset.igR42Pilot==='true'&&D.body.dataset.igR42Family==='workshop')return false;
     var app=q('#igt-app'),main=q('main#main');if(!app||!main||main.dataset.ig42Mounted)return false;main.dataset.ig42Mounted='true';main.classList.add('ig42-active');ensureCss();var study=studyFromApp(app);
     var top=createTopbar(main,app,study),challengeDlg=createDialog('ig42-challenge',T('Reto','Challenge')),fileDlg=createDialog('ig42-file',T('Archivo','File')),helpDlg=createDialog('ig42-help',T('Ayuda','Help'));wireDialogClose(challengeDlg);wireDialogClose(fileDlg);wireDialogClose(helpDlg);
     top.free.addEventListener('click',function(){var sel=q('#igt-reto-sel');if(sel){sel.value='';sel.dispatchEvent(new Event('change',{bubbles:true}));}top.free.setAttribute('aria-pressed','true');top.challenge.setAttribute('aria-pressed','false');});
