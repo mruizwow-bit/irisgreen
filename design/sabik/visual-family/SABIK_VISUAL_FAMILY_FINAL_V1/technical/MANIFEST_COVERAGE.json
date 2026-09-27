@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "manifest_file_count": 79,
+  "missing": [],
+  "covers": ["masters","scripts","proofs","rules","matrices","tokens","derived_assets"],
+  "note": "MANIFEST.json inventories every package file except itself."
+}

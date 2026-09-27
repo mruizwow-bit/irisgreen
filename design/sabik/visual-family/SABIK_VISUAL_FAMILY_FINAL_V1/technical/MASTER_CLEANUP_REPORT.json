@@ -1,0 +1,9 @@
+{
+  "method": "keep largest 8-connected component of alpha>0; all retained RGBA bytes unchanged",
+  "forms": {
+    "matriz": {"removed_nonzero_alpha_pixels":582,"kept_nonzero_alpha_pixels":115872,"retained_rgba_identical":true,"before_bbox":[41,74,471,438],"after_bbox":[55,82,471,438]},
+    "web": {"removed_nonzero_alpha_pixels":1768,"kept_nonzero_alpha_pixels":100847,"retained_rgba_identical":true,"before_bbox":[41,57,471,455],"after_bbox":[71,73,471,455]},
+    "ia": {"removed_nonzero_alpha_pixels":895,"kept_nonzero_alpha_pixels":133077,"retained_rgba_identical":true,"before_bbox":[50,56,461,456],"after_bbox":[50,67,461,456]},
+    "educa": {"removed_nonzero_alpha_pixels":1805,"kept_nonzero_alpha_pixels":109786,"retained_rgba_identical":true,"before_bbox":[41,57,471,455],"after_bbox":[66,79,471,455]}
+  }
+}

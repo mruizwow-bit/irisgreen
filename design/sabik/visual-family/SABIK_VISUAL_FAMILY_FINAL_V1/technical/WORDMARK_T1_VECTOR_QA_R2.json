@@ -1,0 +1,24 @@
+{
+  "status": "SABIK_WORDMARK_T1_VECTOR_R2_READY",
+  "source_authority": {
+    "library_file_id": "libfile_7e7cd6470c548191939aadbfdcfe68c7",
+    "dimensions": [1536, 1024],
+    "T1_reference_region": {"x": 293, "y": 161, "width": 198, "height": 33}
+  },
+  "geometry": {
+    "viewBox": [0, 0, 198, 38],
+    "drawing_bbox": {"x": 0.0837958, "y": 2.5, "width": 197.963, "height": 33.6645},
+    "tracking_gaps": {"S_A": 21.3092042, "A_B": 22.0, "B_I": 22.5, "I_K": 24.0}
+  },
+  "complexity": {
+    "R1_pixel_trace": {"path_count": 1, "node_count": 1260},
+    "R2_clean_vector": {"path_count": 5, "node_count": 59}
+  },
+  "raster_tests": {
+    "365x70": "9b4045abc8ac88536dc71b2217237822a7ea166daa107c90e1b3ce0f6a16ca5a",
+    "730x140": "2710dc9e740e74c16b3fc9256410409c48f5eeb7f00fa034fb81f4409e521cb2",
+    "1460x280": "96fc7f7cf021442a0ea4032f76463cf1b8b5c7002f0ffdf87458731a2396db96",
+    "2920x560": "4bf77d9f05eed78247cd146b4d2ea4b02ef1b25987c0528db2d73618d2e09c94"
+  },
+  "svg_integrity": {"embedded_raster": false, "font_dependency": false, "path_count": 5, "node_count": 59}
+}
