@@ -1,5 +1,19 @@
 # Estado operativo compartido
 
+## Sabik · EN E0 comparado contra referencia exacta V6_12_T01 · 27/09/2026
+
+**Estado: `SABIK_EN_E0_NOT_FINAL_RETRAIN_EXACT_REFERENCE_REQUIRED`.**
+
+Comparación controlada de `SABIK_EN_V1` (E0) contra la referencia exacta elegida `SABIK_EN_V6_12_T01.wav`, misma frase y seed 13001:
+- referencia exacta: 6.00 s, F0 mediana ≈209.9 Hz;
+- E0: 5.84 s, F0 mediana ≈214.8 Hz;
+- diferencia de F0 ≈+0.4 semitonos;
+- centroide espectral E0 ≈19.4 % más alto (voz más brillante);
+- similitud MFCC media ≈0.987;
+- como control, V6_11 sobre la misma frase queda más cerca de V6_12 (≈0.997).
+
+Conclusión: E0 conserva la misma familia/identidad, pero no replica con suficiente fidelidad el matiz exacto de V6_12_T01. Se revoca el cierre de E0 como final. Rehacer **solo** corpus/entrenamiento EN usando V6_12_T01 como referencia ICL exacta. No repetir búsqueda de voz, V4/V6 ni trabajo ES.
+
 ## Sabik · referencias vocales exactas confirmadas por María · 27/09/2026
 
 **Estado: `SABIK_VOICE_EXACT_REFERENCES_CONFIRMED`.**
