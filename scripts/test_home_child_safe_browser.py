@@ -73,7 +73,7 @@ async def main():
         await page.goto(BASE+'/',wait_until='networkidle')
         for mode in ['normal','reduced','opaque']:
             await page.evaluate(f"IGPreferences.update({{transparency:'{mode}'}})")
-            need(await page.get_attribute('html','data-ig-transparency')==mode,f'transparency {mode} not applied')
+            need(await page.locator('html').get_attribute('data-ig-transparency')==mode,f'transparency {mode} not applied')
             await page.screenshot(path=str(OUT/f'home-es-transparency-{mode}.png'),full_page=False);report['screenshots'].append(f'home-es-transparency-{mode}.png')
         # Reduced motion / forced colors render without overflow.
         await page.emulate_media(reduced_motion='reduce')
