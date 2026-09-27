@@ -1,5 +1,18 @@
 # Estado operativo compartido
 
+## R46 · Claude · Rincón tranquilo definitivo · 27/09/2026
+
+**Estado: `R46_CLAUDE_RINCON_ORDERED`.**
+
+Issue #307 sustituye como orden de producto vigente del Rincón la interpretación anterior de tres bloques. Nueva arquitectura: **Respirar · Paisajes · Inmersivo**. El audio propio Iris Green se reutiliza dentro de Paisajes/Inmersivo y deja de ser modo principal.
+
+Paisajes: objetivo 20–30 min por experiencia, presets 10/20/30/60 + continuo. No se aceptan loops perceptibles de 1–2 min. Fuente larga o programa multi-segmento con transiciones suaves.
+
+Inmersivo: cinco salas iniciales con progressive enhancement WebGPU/WGSL → WebGL2 → Canvas → estático. Sin cámara/micrófono/geolocalización/tracking/permisos nuevos. PR #300 se conserva; fixes #303 obligatorios.
+
+Claude construye → Astra revisa → A2 integra → María HUMAN QA. No main/producción/deploy propio.
+
+
 ## Sabik · EN R02 exacto validado contra V6_12_T01 · 27/09/2026
 
 **Estado: `SABIK_EN_R02_EXACT_VALIDATED_FINAL`.**
