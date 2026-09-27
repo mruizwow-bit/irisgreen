@@ -38,6 +38,8 @@ on:
       - 'scripts/defer_investigacion_data.py'
       - 'scripts/test_investigacion_deferred.py'
       - 'scripts/build_site.py'
+      - 'scripts/apply_normalized_legal_r02.py'
+      - 'scripts/test_normalized_legal_r02.py'
       - '.github/workflows/r42-materiales.yml'
 permissions:
   contents: read
@@ -70,6 +72,8 @@ jobs:
       - name: Build isolated site
         run: python scripts/build_site.py
 
+      - name: R02 normalized legal data dist
+        run: python scripts/test_normalized_legal_r02.py --root dist
       - name: Child Safety search dist
         run: python scripts/test_child_safety_search.py --root dist
       - name: Child Safety S2 dedicated routes dist
