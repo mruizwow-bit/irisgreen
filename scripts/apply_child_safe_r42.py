@@ -83,7 +83,8 @@ def incidental(root):
         if rel.rstrip('/') in routes:continue
         text=p.read_text(encoding='utf-8')
         for target in routes:
-            pat=re.compile(r'<a\b[^>]*href=["\'](?:https://irisgreen\.eu)?'+re.escape(target)+r'/?["\'][^>]*>.*?</a>',re.S|re.I)
+            relative=target.lstrip('/')
+            pat=re.compile(r'<a\b[^>]*href=["\'](?:https://irisgreen\.eu)?(?:/|(?:\.\./)+)?'+re.escape(relative)+r'/?["\'][^>]*>.*?</a>',re.S|re.I)
             text,n=pat.subn('',text);removed+=n
         p.write_text(text,encoding='utf-8')
     return removed
