@@ -1,5 +1,34 @@
 # Estado operativo compartido
 
+## Sabik · voz definitiva ES/EN + procedencia registrada · 27/09/2026
+
+**Estado: `SABIK_VOICE_MASTERS_ES_EN_APPROVED_PROVENANCE_REGISTERED`.**
+
+María ha cerrado la búsqueda de voz. Sabik queda con una misma identidad vocal y dos masters lingüísticos separados:
+- EN: `SABIK_EN_MASTER_RETEST_01.wav` · SHA-256 `fe58b4af6e89fd15fd631945a8fedfe0b14a225a0dc1689703311d47db412285`;
+- ES: `SABIK_ES_MASTER_V1.wav` = copia canónica de `SABIK_ES_LONG_REF.wav` · SHA-256 `c9d18290375d46608d37f65b05788ef552980706161a0eb0e26e2a268059c8fa`.
+
+La fuente humana se registra como voz propia de la titular del proyecto, aportada y autorizada por la propia hablante. Hash de la fuente humana `SABIK_SOURCE_MARIA.wav`: `6545fcad588db96c1d0bce1cd1f2c43cb8cda124627bcccd7fac6075c2dad770`. Los audios humanos y masters no se publican en GitHub.
+
+Sabik ES se validó con Qwen3-TTS Base en ICL (`x_vector_only_mode=False`, idioma Spanish) y un banco de 20 frases variadas: **20/20 aprobadas por María**, manteniendo la misma mujer y español peninsular.
+
+Quedan rechazadas para el master ES:
+- OpenVoice como final, por artefactos robóticos;
+- RVC EN→ES como arquitectura de español largo, por cambio de voz/acento inglés;
+- los 135 outputs del corpus RVC español, que no deben entrenar el master final.
+
+Gobernanza nueva:
+- `CORPUS_ENTRENAMIENTO_VOZ` no es copy publicable;
+- `SABIK_COPY_PRODUCCION` será la fuente canónica de frases propias del sistema, revisadas ES/EN;
+- `SABIK_AUDIO_LIBRARY` se generará solo desde copy aprobado;
+- lenguaje de producción sin antropomorfismo emocional ni suposiciones sobre el estado del usuario.
+
+Memoria: `MEMORIA/SABIK_VOZ_MASTERS_ES_EN_PROCEDENCIA_R01_20260927.md`.  
+Declaración de procedencia/autorización: `NORMATIVA/DECLARACION_PROCEDENCIA_AUTORIZACION_VOZ_SABIK_R01_20260927.md`.  
+Control: `CONTROL/DELTA_SABIK_VOZ_MASTERS_ES_EN_R01_20260927.json`.  
+Sync: `CONTROL/CONTROL_MASTER_SYNC_DELTA_SABIK_VOZ_MASTERS_ES_EN_R01_20260927.csv`.  
+Evidencia pública sin audio: `EVIDENCIAS/SABIK_VOZ_MASTERS_ES_EN_R01_20260927/`.
+
 ## R42 · Agente 1 · Recursos/Juegos/Rutinas por etapas + tecnología · 26/09/2026
 
 **Estado: `R42_A1_LIFE_STAGE_TECH_READY_FOR_A2`.**
