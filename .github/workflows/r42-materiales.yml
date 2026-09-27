@@ -28,8 +28,11 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - run: python scripts/measure_r42_materials.py
       - run: python scripts/test_r42_app_shell.py
+      - run: python scripts/apply_taller_materials_r43.py --root .
+      - run: python scripts/test_taller_material_coverage.py --root .
       - run: python scripts/build_site.py
       - run: python scripts/test_r42_app_shell.py --root dist
+      - run: python scripts/test_taller_material_coverage.py --root dist
       - run: cd scripts && python test_r42_materials_browser.py
       - run: python scripts/test_reading_preferences.py --phase after
       - uses: actions/upload-artifact@v4
