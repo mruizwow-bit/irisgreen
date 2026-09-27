@@ -645,7 +645,7 @@ Handoff: `HANDOFFS/R42_DESIGN_CONTENT_CHILD_SAFE_R01/README.md`.
 
 ## R42 · auditoría Rincon.zip · 27/09/2026
 
-**Estado: `R42_RINCON_ZIP_AUDIT_SPLIT_REQUIRED`.**
+**Estado: `R42_RINCON_ZIP_AUDIT_A7_A2_ONLY`.**
 
 El ZIP recibido como `Rincon.zip` es en realidad la entrega mixta Design R01 completa:
 - SHA-256 `0efd80e61ff489ce4f38a0fd496c934cfad565954130300cfbf90c1574d17309`;
@@ -658,11 +658,13 @@ El ZIP recibido como `Rincon.zip` es en realidad la entrega mixta Design R01 com
 **No integrar el bundle completo.**
 
 Separación canónica:
-1. Material R01 → superseded por Design R02 ya aprobado.
-2. Rincón → dos fixes pequeños siguen vigentes y faltan en A7 PR #300: mutación idempotente de clases en Pantalla limpia y `[hidden]{display:none!important}` en acciones.
-3. Juegos → 13 juegos R03 + 71 pictogramas + fix móvil de foco/cabecera no están en A1 HEAD 297; preservar como lote independiente y pasar por child-safe antes de integración.
+1. Material R01 → superseded por Design R02 ya aprobado; sin acción desde este handoff.
+2. **Rincón → único alcance operativo del ZIP:** dos fixes pequeños siguen vigentes y faltan en A7 PR #300: mutación idempotente de clases en Pantalla limpia y `[hidden]{display:none!important}` en acciones.
+3. Juegos → fuera de este handoff. Claude está actualizando Juegos en su propio carril; no derivar tareas a A1 ni integrar esos juegos desde `Rincon.zip`.
 
 QA recibido: navegador 111/111, móvil 273/273, axe 36 runs/0 violaciones, checksums PASS. Las capturas Rincón son estructurales/materiales, no sustituyen real-media/HUMAN QA.
+
+**Responsables operativos desde este paquete: A7 porta los dos fixes; A2 integra y valida. Nadie más actualiza Rincón desde `Rincon.zip`.**
 
 Memoria: `MEMORIA/R42_RINCON_ZIP_AUDITORIA_20260927.md`.  
 Control: `CONTROL/DELTA_R42_RINCON_ZIP_AUDITORIA_20260927.json`.  
