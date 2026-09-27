@@ -222,7 +222,7 @@ def main() -> None:
 
         QUIET = [rel for rel, family in PILOT.items() if family == "quiet"]
         TEMP_CHROME = """(sel) => { const el = [...document.querySelectorAll(sel)].find(n => n.getClientRects().length);
-          if (!el) return null; const bg = getComputedStyle(el).backgroundColor; const m = bg.match(/rgba?\(([^)]+)\)/);
+          if (!el) return null; const bg = getComputedStyle(el).backgroundColor; const m = bg.match(/rgba?\\(([^)]+)\\)/);
           const p = m ? m[1].split(/[ ,/]+/).map(Number) : [255, 255, 255, 1];
           const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); };
           const L = .2126 * f(p[0]) + .7152 * f(p[1]) + .0722 * f(p[2]);
