@@ -1,0 +1,58 @@
+name: R42 A8 Home child-safe QA
+on:
+  push:
+    paths:
+      - '.github/workflows/r42-a8-home-child-safe.yml'
+      - 'assets/home-r42-child-safe.css'
+      - 'assets/home-r42-child-safe.js'
+      - 'assets/ig-audience.css'
+      - 'assets/ig-audience.js'
+      - 'assets/ig-child-safe.js'
+      - 'assets/ig-library-s2.js'
+      - 'assets/buscador-comun.js'
+      - 'assets/catalogo-comun.js'
+      - 'scripts/apply_child_safe_r42.py'
+      - 'scripts/apply_home_r42.py'
+      - 'scripts/test_home_child_safe_r42.py'
+      - 'scripts/test_home_child_safe_browser.py'
+      - 'scripts/build_site.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Sintaxis A8
+        run: |
+          python3 -m py_compile scripts/apply_child_safe_r42.py scripts/apply_home_r42.py scripts/test_home_child_safe_r42.py scripts/test_home_child_safe_browser.py
+          node --check assets/ig-audience.js
+          node --check assets/ig-child-safe.js
+          node --check assets/ig-library-s2.js
+          node --check assets/home-r42-child-safe.js
+          node --check assets/buscador-comun.js
+          node --check assets/catalogo-comun.js
+      - name: Preparar Chromium
+        run: |
+          python3 -m venv /tmp/ig-a8
+          /tmp/ig-a8/bin/pip -q install playwright==1.55.0
+          /tmp/ig-a8/bin/python -m playwright install --with-deps chromium >/tmp/ig-a8-install.log 2>&1
+      - name: Construir salida pública
+        run: python3 scripts/build_site.py
+      - name: Navegador, red y capturas
+        run: |
+          python3 -m http.server 4173 --directory dist >/tmp/ig-a8-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-a8/bin/python scripts/test_home_child_safe_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r42-a8-home-child-safe-qa
+          path: |
+            reports/r42-a8-home-child-safe
+            reports/routes/build.json
+          retention-days: 14
