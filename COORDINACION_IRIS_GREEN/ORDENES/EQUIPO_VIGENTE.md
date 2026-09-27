@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R48 Intereses definitivos · 27/09/2026
+
+Orden: `R48_CLAUDE_INTERESES_DEFINITIVOS/01_CLAUDE.md` · issue #309.
+
+Claude conserva las 72 temáticas y 11 grupos, pero reconstruye su coherencia editorial/técnica. A4 R42 es donante, no solución final. Cada interés debe tener una experiencia propia y un subconjunto de datos justificado; mapas y datasets completos solo cuando el propósito lo exija. Design R02 y child-safe son obligatorios.
+
+Astra revisa antes de A2; A2 integra; María hace HUMAN QA.
+
+
 ## Claude · R47 Taller definitivo · 27/09/2026
 
 Orden: `R47_CLAUDE_TALLER_DEFINITIVO/01_CLAUDE.md` · issue #308.
