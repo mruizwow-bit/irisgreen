@@ -1,0 +1,48 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R48-CLAUDE-INTERESES",
+  "date": "2026-09-27",
+  "issue": 309,
+  "status": "R48_CLAUDE_INTERESES_ORDERED",
+  "owner": "Claude",
+  "review_gate": "Astra",
+  "integration_gate": "A2",
+  "human_qa": "Maria",
+  "audit": {
+    "themes": 72,
+    "groups": 11,
+    "overbroad_objectives": 20,
+    "repeated_mode_signatures": 11,
+    "generic_family_canvas": "NOT_FINAL_EXPERIENCE",
+    "design_r02": "NOT_IMPLEMENTED_IN_A4_BRANCH",
+    "child_safe": "NOT_IMPLEMENTED_IN_A4_BRANCH"
+  },
+  "rule": "SOURCE_DATA_NOT_EQUAL_EXPERIENCE_SCOPE",
+  "product": {
+    "themes": "KEEP_72",
+    "groups": "KEEP_11",
+    "contract_rows": 72,
+    "map_roles": [
+      "NONE",
+      "PRIMARY",
+      "SECONDARY"
+    ],
+    "data_default": "CURATED_SUBSET",
+    "full_dataset": "ON_DEMAND_ONLY_WHEN_JUSTIFIED",
+    "design_r02": "MANDATORY_100_PERCENT",
+    "safe_by_default": true
+  },
+  "donor": {
+    "a4_r42": "DONOR_NOT_FINAL"
+  },
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_HOME_A8",
+    "NO_CLOUD_A9",
+    "NO_SABIK_VOICE",
+    "NO_UNJUSTIFIED_WORLD_MAPS",
+    "NO_FETCH_ALL_BY_DEFAULT"
+  ]
+}
