@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const sourceDir = new URL('../sources/a9-r01/', import.meta.url);
+const safetySourceUrl = new URL('../sources/a9-r02/approved-safe-variants.json', import.meta.url);
 const outDir = new URL('../build/library-v2/', import.meta.url);
 const SOURCE_DATE = '2026-09-27';
 const ORIGIN = 'https://irisgreen.eu';
@@ -25,22 +26,22 @@ function collectText(value, key = '') {
 }
 
 const S2_CATALOG = new Map([
-  ['Abuso y explotación', 'abuse_exploitation'],
-  ['Anorexia nerviosa', 'eating_disorder'],
-  ['Trastorno por atracón', 'eating_disorder'],
-  ['Bulimia nerviosa', 'eating_disorder'],
-  ['Trastornos de la conducta alimentaria (TCA)', 'eating_disorder'],
-  ['Otros trastornos alimentarios especificados (OSFED)', 'eating_disorder'],
-  ['TEPT / trastorno por estrés postraumático', 'trauma'],
-  ['TEPT complejo', 'trauma']
+  ['Abuso y explotación', 'global-188'],
+  ['Anorexia nerviosa', 'global-200'],
+  ['Trastorno por atracón', 'global-212'],
+  ['Bulimia nerviosa', 'global-224'],
+  ['Trastornos de la conducta alimentaria (TCA)', 'global-237'],
+  ['Otros trastornos alimentarios especificados (OSFED)', 'global-320'],
+  ['TEPT / trastorno por estrés postraumático', 'global-360'],
+  ['TEPT complejo', 'global-395']
 ]);
 const S2_EVERYDAY = new Map([
-  ['ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica', 'eating_disorder'],
-  ['Abuso, explotación y relaciones seguras', 'abuse_exploitation']
+  ['ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica', 'library-022'],
+  ['Abuso, explotación y relaciones seguras', 'library-057']
 ]);
 const S2_RESEARCH = new Map([
-  [5, 'eating_disorder'], [36, 'suicide_self_harm'], [37, 'suicide_self_harm'],
-  [45, 'eating_disorder'], [46, 'eating_disorder'], [71, 'sexual_adverse_experience']
+  [5, 'research-005'], [36, 'research-036'], [37, 'research-037'],
+  [45, 'research-045'], [46, 'research-046'], [71, 'research-071']
 ]);
 
 const sourceManifest = JSON.parse(await readFile(new URL('SOURCE.json', sourceDir), 'utf8'));
@@ -48,6 +49,22 @@ if (sourceManifest?.schema !== 'SABIK_CLOUD_SOURCE_SNAPSHOT/1.0' ||
     !/^[a-f0-9]{40}$/.test(sourceManifest.source_commit || '')) {
   throw new Error('Invalid source snapshot manifest');
 }
+
+const approvedSafetyBytes = await readFile(safetySourceUrl);
+const approvedSafetySha256 = sha256(approvedSafetyBytes);
+const approvedSafety = JSON.parse(approvedSafetyBytes.toString('utf8'));
+if (approvedSafetySha256 !== '7438eeadeffb3918cacd7654c0e2943b4cfd9b16ef37ca3fb79c4367395657b6' ||
+    approvedSafety?.schema !== 'SABIK_APPROVED_SAFE_VARIANTS/1.0' ||
+    approvedSafety.source_package_sha256 !== 'b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23' ||
+    approvedSafety.source_safe_variants_sha256 !== '4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260' ||
+    approvedSafety.source_manifest_sha256 !== '51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e' ||
+    approvedSafety.source_review_sha256 !== '579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55' ||
+    approvedSafety.reviewed_record_count !== 16 ||
+    approvedSafety.records?.length !== 16) {
+  throw new Error('Approved R42 child-safe source identity mismatch');
+}
+const approvalById = new Map(approvedSafety.records.map(record => [record.content_id, Object.freeze(record)]));
+if (approvalById.size !== approvedSafety.records.length) throw new Error('Duplicate approved safety content id');
 
 const sourceBySnapshot = new Map();
 for (const item of sourceManifest.inventory) {
@@ -61,9 +78,10 @@ for (const item of sourceManifest.inventory) {
   }));
 }
 const bundleMaterial = [...sourceBySnapshot].sort(([a], [b]) => a.localeCompare(b))
-  .map(([name, value]) => name + ':' + value.sha256).join('\n');
+  .map(([name, value]) => name + ':' + value.sha256).join('\n') +
+  '\napproved-safe-variants.json:' + approvedSafetySha256;
 const sourceBundleSha256 = sha256(bundleMaterial);
-const version = 'sabik-es-en-20260927-r01-' + sourceBundleSha256.slice(0, 12);
+const version = 'sabik-es-en-20260927-r02-' + sourceBundleSha256.slice(0, 12);
 
 async function json(name) {
   return JSON.parse(sourceBySnapshot.get(name).bytes.toString('utf8'));
@@ -115,45 +133,64 @@ function pushFragment(input) {
     concepts: [...new Set((input.concepts || []).filter(v => typeof v === 'string' && v.trim()).map(v => v.trim()))],
     source_editorial_status: input.source_editorial_status || null,
     derived_from_fragment_id: input.derived_from_fragment_id || null,
-    safe_variant_group: input.safe_variant_group || null
+    safe_variant_group: input.safe_variant_group || null,
+    safety_content_id: input.safety_content_id || null
   };
   fragments.push(fragment);
   return fragment;
 }
-function addSourceSafeVariant(full, group, safeText) {
-  const text = String(safeText || '').trim();
-  if (!text) throw new Error('Missing public source excerpt for safe variant ' + group + '/' + full.locale);
-  // The safe variant is a literal excerpt already present in the pinned public source.
-  // A9 does not author or translate safety copy.
+function normalizeSafetyText(value) {
+  return String(value || '').normalize('NFKC').replace(/\s+/g, ' ').trim();
+}
+function addApprovedSafeVariant(full, approvalId) {
+  const approval = approvalById.get(approvalId);
+  if (!approval) throw new Error('Missing reviewed safe variant approval ' + approvalId);
+  const locale = full.locale;
+  const variant = approvedSafety.variants?.[approval.safe_variant_group]?.[locale];
+  if (!variant?.heading || !variant?.summary || !variant?.help) {
+    throw new Error('Missing reviewed safe variant copy ' + approvalId + '/' + locale);
+  }
+  const expectedTitle = approval[locale === 'es' ? 'title_es' : 'title_en'];
+  const expectedUrl = ORIGIN + approval[locale === 'es' ? 'canonical_url_es' : 'canonical_url_en'];
+  if (full.title !== expectedTitle || full.url !== expectedUrl) {
+    throw new Error('Reviewed safe variant does not match source record ' + approvalId + '/' + locale);
+  }
+  const text = variant.summary + '\n' + variant.help;
+  if (normalizeSafetyText(text) === normalizeSafetyText(full.text)) {
+    throw new Error('Reviewed safe variant cannot equal full S2 text ' + approvalId + '/' + locale);
+  }
   const safeId = full.fragment_id.replace(/:main$/, ':safe');
   full.safe_variant_id = safeId;
   pushFragment({
     content_id: full.content_id,
     fragment_id: safeId,
-    locale: full.locale,
+    locale,
     url: full.url,
     title: full.title,
-    heading: full.locale === 'es' ? 'Extracto de fuente' : 'Source excerpt',
+    heading: variant.heading,
     text,
     source_type: 'safe_variant',
-    editorial_status: 'PUBLIC_SOURCE_SAFE_EXCERPT_R01',
+    editorial_status: 'R42_HUMAN_REVIEWED_SAFE_VARIANT',
     source: {
-      source_version: full.source_version,
-      source_sha256: full.source_sha256,
-      source_path: full.source_path
+      source_version: 'r42-child-safe@' + approvedSafety.source_package_sha256,
+      source_sha256: approvedSafety.source_safe_variants_sha256,
+      source_path: approvedSafety.source_safe_variants_path
     },
     audience: ['INFANCIA', 'ADOLESCENCIA', 'ADULTEZ', 'TRANSVERSAL'],
     sensitivity: 'S1_SENSITIVE',
     discovery: 'NORMAL',
-    concepts: [...full.concepts, group],
+    concepts: [...full.concepts, approval.safe_variant_group],
     derived_from_fragment_id: full.fragment_id,
-    safe_variant_group: group
+    safe_variant_group: approval.safe_variant_group,
+    safety_content_id: approvalId
   });
 }
 
 catalog.forEach((x, i) => {
   const contentId = 'catalog-' + String(i + 1).padStart(3, '0');
-  const group = S2_CATALOG.get(x.t) || null;
+  const safetyId = S2_CATALOG.get(x.t) || null;
+  const group = safetyId ? approvalById.get(safetyId)?.safe_variant_group : null;
+  if (safetyId && !group) throw new Error('Missing reviewed S2 mapping ' + safetyId);
   const es = pushFragment({
     content_id: contentId, fragment_id: contentId + ':es:main', locale: 'es',
     url: ORIGIN + x.u, title: x.t, heading: x.a || x.s || '',
@@ -174,14 +211,14 @@ catalog.forEach((x, i) => {
     concepts: [x.en.a, x.tipo, ...(Array.isArray(x.k) ? x.k : [])],
     safe_variant_group: group
   });
-  if (group) { addSourceSafeVariant(es, group, x.d); addSourceSafeVariant(en, group, x.en.d); }
+  if (safetyId) { addApprovedSafeVariant(es, safetyId); addApprovedSafeVariant(en, safetyId); }
 });
 
 function addData(locale, page, index, snapshotName, basePath) {
   const contentId = 'data-' + String(page.n || index + 1).padStart(3, '0');
   pushFragment({
     content_id: contentId, fragment_id: contentId + ':' + locale + ':main', locale,
-    url: ORIGIN + basePath + slug(page.title) + '/', title: page.title,
+    url: ORIGIN + basePath + ((locale === 'en' ? page.slug_en : page.slug_es) || slug(page.title)) + '/', title: page.title,
     heading: page.territorio || '', text: collectText(page).join('\n'),
     source_type: 'data', source: sourceMeta(snapshotName),
     sensitivity: 'S1_SENSITIVE', concepts: [page.territorio, page.metodo, page.poblacion],
@@ -194,7 +231,9 @@ dataEn.paginas.forEach((p, i) => addData('en', p, i, 'data-en.json', '/en/data/'
 function addEveryday(locale, card, index, snapshotName, basePath) {
   const contentId = 'everyday-' + String(index + 1).padStart(3, '0');
   const esTitle = everydayEs.fichas[index]?.title;
-  const group = S2_EVERYDAY.get(esTitle) || null;
+  const safetyId = S2_EVERYDAY.get(esTitle) || null;
+  const group = safetyId ? approvalById.get(safetyId)?.safe_variant_group : null;
+  if (safetyId && !group) throw new Error('Missing reviewed S2 mapping ' + safetyId);
   const full = pushFragment({
     content_id: contentId, fragment_id: contentId + ':' + locale + ':main', locale,
     url: ORIGIN + basePath + slug(card.title) + '/', title: card.title,
@@ -205,7 +244,7 @@ function addEveryday(locale, card, index, snapshotName, basePath) {
     concepts: card.concepts || [], source_editorial_status: card.status || null,
     safe_variant_group: group
   });
-  if (group) addSourceSafeVariant(full, group, card.lede);
+  if (safetyId) addApprovedSafeVariant(full, safetyId);
 }
 everydayEs.fichas.forEach((p, i) => addEveryday('es', p, i, 'everyday-es.json', '/es/biblioteca/'));
 everydayEn.fichas.forEach((p, i) => addEveryday('en', p, i, 'everyday-en.json', '/en/everyday-life/'));
@@ -213,25 +252,27 @@ everydayEn.fichas.forEach((p, i) => addEveryday('en', p, i, 'everyday-en.json', 
 research.forEach((study, i) => {
   const n = Number(study.n || i + 1);
   const contentId = 'research-' + String(n).padStart(3, '0');
-  const group = S2_RESEARCH.get(n) || null;
+  const safetyId = S2_RESEARCH.get(n) || null;
+  const group = safetyId ? approvalById.get(safetyId)?.safe_variant_group : null;
+  if (safetyId && !group) throw new Error('Missing reviewed S2 mapping ' + safetyId);
   const common = { source_type: 'research', source: sourceMeta('research-bilingual.json'),
     sensitivity: group ? 'S2_HIGH_SENSITIVITY' : 'S1_SENSITIVE',
     discovery: group ? 'SAFE_VARIANT_REQUIRED' : 'NORMAL', safe_variant_group: group };
   const es = pushFragment({
     ...common, content_id: contentId, fragment_id: contentId + ':es:main', locale: 'es',
-    url: ORIGIN + '/es/investigacion/', title: study.heading || study.titleEs || study.titleOrig,
+    url: ORIGIN + '/es/investigacion/#estudio-' + n, title: study.heading || study.titleEs || study.titleOrig,
     heading: study.topic || '', text: [ ...(study.text || []), study.means, study.notProven ].filter(Boolean).join('\n'),
     concepts: [study.topic, study.design, study.titleOrig]
   });
   const en = pushFragment({
     ...common, content_id: contentId, fragment_id: contentId + ':en:main', locale: 'en',
-    url: ORIGIN + '/es/investigacion/', title: study.heading_en || study.titleOrig,
+    url: ORIGIN + '/en/research/#study-' + n, title: study.heading_en || study.titleOrig,
     heading: study.topic || '', text: [ ...(study.text_en || []), study.means_en, study.notProven_en ].filter(Boolean).join('\n'),
     concepts: [study.topic, study.designKey, study.titleOrig]
   });
-  if (group) {
-    addSourceSafeVariant(es, group, (study.text || [])[0]);
-    addSourceSafeVariant(en, group, (study.text_en || [])[0]);
+  if (safetyId) {
+    addApprovedSafeVariant(es, safetyId);
+    addApprovedSafeVariant(en, safetyId);
   }
 });
 
@@ -264,6 +305,14 @@ const sourceInventory = sourceManifest.inventory.map(item => {
   const s = sourceBySnapshot.get(name);
   return { ...item, sha256: s.sha256, bytes: s.bytes.byteLength };
 });
+sourceInventory.push({
+  source_path: approvedSafety.source_safe_variants_path,
+  snapshot_path: 'sources/a9-r02/approved-safe-variants.json',
+  sha256: approvedSafetySha256,
+  upstream_sha256: approvedSafety.source_safe_variants_sha256,
+  bytes: approvedSafetyBytes.byteLength,
+  source_package_sha256: approvedSafety.source_package_sha256
+});
 const release = {
   schema: 'SABIK_CLOUD_LIBRARY_RELEASE/2.0',
   version,
@@ -277,6 +326,9 @@ const release = {
   safe_variant_count: safeVariants.length,
   source_commit: sourceManifest.source_commit,
   source_bundle_sha256: sourceBundleSha256,
+  approved_child_safe_package_sha256: approvedSafety.source_package_sha256,
+  approved_safe_variants_sha256: approvedSafety.source_safe_variants_sha256,
+  approved_safe_source_snapshot_sha256: approvedSafetySha256,
   source_inventory: sourceInventory,
   corpus_key: 'cloud-library/versions/' + version + '/corpus.json',
   manifest_key: 'cloud-library/manifest.json',

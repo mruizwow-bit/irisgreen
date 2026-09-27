@@ -78,10 +78,17 @@ jobs:
           import fs from 'node:fs';
           const r=JSON.parse(fs.readFileSync('build/library-v2/release.json','utf8'));
           if(r.schema!=='SABIK_CLOUD_LIBRARY_RELEASE/2.0') throw new Error('Bad release schema');
+          if(!/^sabik-es-en-20260927-r02-[a-f0-9]{12}$/.test(r.version)) throw new Error('Unexpected R02 version');
+          if(r.approved_child_safe_package_sha256!=='b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23') throw new Error('Unexpected child-safe package');
+          if(r.approved_safe_variants_sha256!=='4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260') throw new Error('Unexpected approved safe variants');
           if(r.fragment_count!==1208 || r.locale_counts.es!==604 || r.locale_counts.en!==604) throw new Error('Unexpected bilingual counts');
           if(r.full_s2_count!==30 || r.safe_variant_count!==30) throw new Error('Unexpected safety counts');
           console.log(JSON.stringify({version:r.version,corpus_sha256:r.corpus_sha256,corpus_bytes:r.corpus_bytes,fragments:r.fragment_count,locale_counts:r.locale_counts,full_s2:r.full_s2_count,safe_variants:r.safe_variant_count,source_commit:r.source_commit,source_bundle_sha256:r.source_bundle_sha256}));
           JS
+
+      - name: Audit every citation URL against pinned source
+        working-directory: cloud/n04-r38-library
+        run: node scripts/verify-citation-routes.mjs | tee /tmp/a9-url-audit.json
 
       - name: Verify protected site before deploy
         run: |
@@ -168,6 +175,7 @@ jobs:
             /tmp/a9-private-verification.json
             /tmp/a9-seal.json
             /tmp/a9-http-safe.json
+            /tmp/a9-url-audit.json
             cloud/n04-r38-library/build/library-v2/release.json
           if-no-files-found: ignore
           retention-days: 14

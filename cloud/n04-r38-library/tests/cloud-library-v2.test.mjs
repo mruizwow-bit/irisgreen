@@ -13,6 +13,9 @@ import { RELEASE as R38_RELEASE } from '../src/library.mjs';
 const corpusPath = new URL('../build/library-v2/' + release.corpus_key.replace(/^cloud-library\//, ''), import.meta.url);
 const corpusBytes = await readFile(corpusPath);
 const corpus = JSON.parse(corpusBytes.toString('utf8'));
+const approvedSafety = JSON.parse(await readFile(new URL('../sources/a9-r02/approved-safe-variants.json', import.meta.url), 'utf8'));
+const approvedById = new Map(approvedSafety.records.map(record => [record.content_id, record]));
+const normalizeSafetyText = value => String(value || '').normalize('NFKC').replace(/\\s+/g, ' ').trim();
 const provenance = { build_head: 'a'.repeat(40), build_tree: 'b'.repeat(40), engine_sha256: 'c'.repeat(64) };
 const manifest = createCloudManifest(release, provenance);
 const manifestBytes = Buffer.from(JSON.stringify(manifest) + '\n');
@@ -33,7 +36,9 @@ function memoryStore({ manifestValue = manifestBytes, corpusValue = corpusBytes 
 const expectCode = (fn, code) => assert.throws(fn, error => error instanceof CloudLibraryError && error.code === code);
 
 test('A9 release is bilingual, versioned and R38 identity remains intact', () => {
-  assert.match(release.version, /^sabik-es-en-20260927-r01-[a-f0-9]{12}$/);
+  assert.match(release.version, /^sabik-es-en-20260927-r02-[a-f0-9]{12}$/);
+  assert.equal(release.approved_child_safe_package_sha256, approvedSafety.source_package_sha256);
+  assert.equal(release.approved_safe_variants_sha256, approvedSafety.source_safe_variants_sha256);
   assert.equal(release.fragment_count, 1208);
   assert.deepEqual(release.locale_counts, { es: 604, en: 604 });
   assert.equal(release.full_s2_count, 30);
@@ -108,13 +113,39 @@ test('adult plus explicit intent can retrieve allowed full S2', async () => {
   assert.ok(results.some(r => r.sensitivity === 'S2_HIGH_SENSITIVITY'));
 });
 
-test('safe variant is linked bidirectionally to its full source record', () => {
-  const full = corpus.fragments.find(f => f.sensitivity === 'S2_HIGH_SENSITIVITY');
-  const safe = corpus.fragments.find(f => f.fragment_id === full.safe_variant_id);
-  assert.equal(safe.source_type, 'safe_variant');
-  assert.equal(safe.derived_from_fragment_id, full.fragment_id);
-  assert.equal(safe.locale, full.locale);
-  assert.equal(safe.content_id, full.content_id);
+test('every S2 safe variant is exact reviewed R42 copy and never relabelled full text', () => {
+  const fullS2 = corpus.fragments.filter(f => f.sensitivity === 'S2_HIGH_SENSITIVITY' && f.source_type !== 'safe_variant');
+  assert.equal(fullS2.length, 30);
+  for (const full of fullS2) {
+    const safe = corpus.fragments.find(f => f.fragment_id === full.safe_variant_id);
+    assert.ok(safe, 'safe variant missing for ' + full.fragment_id);
+    assert.equal(safe.source_type, 'safe_variant');
+    assert.equal(safe.derived_from_fragment_id, full.fragment_id);
+    assert.equal(safe.locale, full.locale);
+    assert.equal(safe.content_id, full.content_id);
+    assert.equal(safe.editorial_status, 'R42_HUMAN_REVIEWED_SAFE_VARIANT');
+    const approval = approvedById.get(safe.safety_content_id);
+    assert.ok(approval, 'reviewed approval missing for ' + safe.fragment_id);
+    const variant = approvedSafety.variants[approval.safe_variant_group][safe.locale];
+    assert.equal(safe.heading, variant.heading);
+    assert.equal(safe.text, variant.summary + '\n' + variant.help);
+    assert.equal(safe.source_sha256, approvedSafety.source_safe_variants_sha256);
+    assert.equal(safe.source_path, approvedSafety.source_safe_variants_path);
+    assert.notEqual(normalizeSafetyText(safe.text), normalizeSafetyText(full.text));
+  }
+});
+
+test('duplicate EN Data titles use their canonical source slugs and research EN cites EN route', () => {
+  const employment = corpus.fragments
+    .filter(f => f.locale === 'en' && f.source_type === 'data' && f.title === 'Employment and autism')
+    .map(f => f.url).sort();
+  assert.deepEqual(employment, [
+    'https://irisgreen.eu/en/data/employment-and-autism-australia/',
+    'https://irisgreen.eu/en/data/employment-and-autism-united-kingdom/'
+  ]);
+  const researchEn = corpus.fragments.filter(f => f.locale === 'en' && f.source_type === 'research');
+  assert.ok(researchEn.length > 0);
+  assert.ok(researchEn.every(f => /^https:\/\/irisgreen\.eu\/en\/research\/#study-\d+$/.test(f.url)));
 });
 
 test('R39 presentation grouping preserves every ranked fragment id', async () => {
