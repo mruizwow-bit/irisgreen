@@ -22,6 +22,7 @@ ASSETS = (
     ('css', '/assets/ig-r42-materials.css?v=r49-1'),
     ('css', '/assets/ig-audience.css?v=r49-1'),
     ('css', '/assets/ig-r49-transversal.css?v=r49-1'),
+    ('js', '/assets/ig-r49-lang-bootstrap.js?v=r49-1'),
     ('js', '/assets/ig-audience.js?v=r49-1'),
     ('js', '/assets/ig-child-safe.js?v=r49-1'),
     ('js', '/assets/ig-r49-transversal.js?v=r49-1'),
