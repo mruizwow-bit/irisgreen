@@ -1,0 +1,48 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-RINCON-ZIP-AUDIT",
+  "date": "2026-09-27",
+  "status": "R42_RINCON_ZIP_AUDIT_SPLIT_REQUIRED",
+  "source": {
+    "file": "Rincon.zip",
+    "sha256": "0efd80e61ff489ce4f38a0fd496c934cfad565954130300cfbf90c1574d17309",
+    "internal_head": "d78330bc3efc3175ec96d8196659db87e920bb75",
+    "internal_tree": "4615b69c3a1a32a7de522a1774b7c1f7d7267313",
+    "base": "e8cad400a30d5d4857f9f99b0c1070d786958a8b"
+  },
+  "decision": "DO_NOT_INTEGRATE_WHOLE_PACKAGE",
+  "lanes": {
+    "materials": {
+      "state": "SUPERSEDED_BY_DESIGN_R02",
+      "action": "do not port R01 material code"
+    },
+    "quiet_space": {
+      "state": "TWO_VALID_FIXES_MISSING_FROM_A7_PR300",
+      "fixes": [
+        "idempotent body class mutation for clean mode",
+        "[hidden] display none for scene actions"
+      ],
+      "current_a7_head": "6c312d3fbd2677180a7894159f14b19894fe0eae"
+    },
+    "games": {
+      "state": "SEPARATE_BATCH_NOT_IN_A1_297",
+      "count": 13,
+      "pictograms": 71,
+      "mobile_focus_fix": true,
+      "action": "preserve and reconcile with child-safe/new resources baseline"
+    }
+  },
+  "received_qa": {
+    "browser": "111/111 PASS",
+    "mobile": "273/273 PASS",
+    "axe": "36 runs / 0 violations",
+    "checksums": "PASS"
+  },
+  "limits": [
+    "No whole-bundle integration",
+    "No old material R01",
+    "No main",
+    "No production",
+    "Rincón real-media HUMAN QA still required"
+  ]
+}
