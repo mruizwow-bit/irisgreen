@@ -220,6 +220,33 @@ def main() -> None:
 
             case(row, no_reset)
 
+        # R43 · estudios de la suite del Taller sobre el shell R42 (descubiertos en dist).
+        SUITE = sorted(p.relative_to(DIST).as_posix() for p in DIST.rglob("index.html")
+                       if 'data-ig-suite=' in p.read_text(encoding="utf-8")[:6000])
+        for rel in SUITE:
+            for vname in ("1440x900", "390x844"):
+                for mode in ("normal", "opaque"):
+                    row = {"route": route(rel), "family": "taller-suite", "viewport": vname, "mode": mode}
+
+                    def suite(row, rel=rel, vname=vname, mode=mode):
+                        ctx = context(VIEWPORTS[vname], mode)
+                        page = ctx.new_page()
+                        errors = load(page, rel)
+                        probe = page.evaluate(PROBE, FLOORS)
+                        row["probe"] = {k: v for k, v in probe.items() if k != "chrome"}
+                        assert probe["materials"] == "r42"
+                        assert probe["mode"] == mode
+                        assert probe["overflow"] <= 2, probe["overflow"]
+                        assert not probe["problems"], probe["problems"]
+                        if mode == "opaque":
+                            assert probe["glassCount"] == 0
+                        assert not [e for e in errors if "wasm" not in e.lower()], errors
+                        if mode == "normal":
+                            page.screenshot(path=str(SHOTS / f"taller-{rel.split('/')[0]}-{rel.split('/')[2]}-{vname}.png"))
+                        ctx.close()
+
+                    case(row, suite)
+
         QUIET = [rel for rel, family in PILOT.items() if family == "quiet"]
         TEMP_CHROME = """(sel) => { const el = [...document.querySelectorAll(sel)].find(n => n.getClientRects().length);
           if (!el) return null; const bg = getComputedStyle(el).backgroundColor; const m = bg.match(/rgba?\\(([^)]+)\\)/);
