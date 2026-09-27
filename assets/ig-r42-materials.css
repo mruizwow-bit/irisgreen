@@ -284,3 +284,36 @@ body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rai
 @media print{
   body[data-ig-materials="r42"] :is(.hd,.jg-r41-browserbar,.jg-gamebar,.ig-r42-rail){background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
 }
+
+
+/* R42 closure · legacy overrides verified by the browser gate.
+   These three rules are intentionally important and tightly scoped:
+   1) Quiet help breadcrumb link on dark dialog;
+   2) Quiet mobile settings sheet must stay dark;
+   3) forced-transparency status must be visible while the parent declares a forced state. */
+@layer ig-r42-materials-important{
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-dialog .ig-r42-help-source .crumb a{
+    color:var(--ig-link-on-dark)!important;
+  }
+  @media (max-width:700px){
+    body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-stage .r42-settings[open],
+    body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-stage .r42-settings[open]>summary{
+      background:var(--ig-chrome-solid-dark)!important;
+      color:var(--ig-ink-on-dark)!important;
+      border-color:var(--ig-separator-dark)!important;
+      -webkit-backdrop-filter:none!important;
+      backdrop-filter:none!important;
+    }
+    body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-stage .r42-settings[open] :is(label,span,strong,small,p,legend){
+      color:inherit!important;
+    }
+    body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-stage .r42-settings[open] :is(button,select){
+      background:var(--ig-chrome-control-dark)!important;
+      border-color:var(--ig-control-border-dark)!important;
+      color:var(--ig-ink-on-dark)!important;
+    }
+  }
+  body[data-ig-materials="r42"] .ig-transparency[data-ig-transparency-forced] .ig-transparency-forced[hidden]{
+    display:block!important;
+  }
+}
