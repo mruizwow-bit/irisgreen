@@ -51,9 +51,10 @@ async def go(page,path,w,h):
     legacy=await page.evaluate("""() => {
       const visible=e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0};
       const h=document.querySelector('.ig-r49-global-header'),f=document.querySelector('.ig-r49-global-footer');
-      return {header:h?Array.from(h.children).filter(e=>!e.classList.contains('ig-r49-header-inner')&&visible(e)).length:99,footer:f?Array.from(f.children).filter(e=>!e.classList.contains('ig-r49-footer-inner')&&visible(e)).length:99};
+      return {header:h?Array.from(h.children).filter(e=>!e.classList.contains('ig-r49-header-inner')&&visible(e)).length:99,footer:f?Array.from(f.children).filter(e=>!e.classList.contains('ig-r49-footer-inner')&&visible(e)).length:99,footerInsideMain:!!(f&&f.closest('main')),footerIsCard:!!(f&&f.classList.contains('iris-mini-foot'))};
     }""")
     need(legacy['header']==0 and legacy['footer']==0,'legacy common chrome still visible '+path)
+    need(not legacy['footerInsideMain'] and not legacy['footerIsCard'],'common footer mounted inside page content '+path)
     sw=await page.evaluate('document.documentElement.scrollWidth')
     iw=await page.evaluate('innerWidth')
     need(sw<=iw+1,f'horizontal scroll {path} {w}: {sw}>{iw}')
