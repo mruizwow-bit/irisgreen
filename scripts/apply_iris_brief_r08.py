@@ -33,7 +33,7 @@ def apply(root):
   # de Sabik; no vuelve a superponer la capa visual antigua.
   styles='' if home_r42 else f'<link rel="stylesheet" href="/assets/iris-brief-r08.css?v={brief_hash}">'
   if rel=='index.html':
-   kind='home';home=doc.one(id='home-view');body=doc.one('body');nav=doc.one('nav',**{'class':'nav'})
+   kind='home';home=doc.one(id='home-view');body=doc.one('body');nav=None if home_r42 else doc.one('nav',**{'class':'nav'})
    changes.append((home['open_end'],home['open_end'],'<div class="iris-home-content">'))
    changes.append((home['close_start'],home['close_start'],'</div>'+(ROOT/'sabik/iris-panel.html').read_text()))
    mount_hash=hashlib.sha256((ROOT/'sabik/iris-mount.css').read_bytes()).hexdigest()[:12]
