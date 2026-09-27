@@ -152,6 +152,7 @@ $('#ig-home-menu').addEventListener('keydown',e=>{if(e.key==='Escape'){e.current
 document.addEventListener('click',e=>{const d=$('#ig-home-menu');if(d.open&&!d.contains(e.target))d.open=false;});
 
 if(window.IGPreferences&&IGPreferences.mountTextOptions)IGPreferences.mountTextOptions($('#ig-home-text-options'));
+if(window.IGPreferences&&IGPreferences.mountTransparencyOptions)IGPreferences.mountTransparencyOptions($('#ig-home-transparency-options'));
 if(window.IGChildSafety&&IGChildSafety.subscribe)IGChildSafety.subscribe(drawAudience);
 drawAudience();translate();syncPrefs();
 })();
