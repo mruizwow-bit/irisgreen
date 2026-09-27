@@ -1,5 +1,15 @@
 # Estado operativo compartido
 
+## Sabik · master inglés V2 seleccionado · 27/09/2026
+
+**Estado: `SABIK_EN_MASTER_V2_SELECTED_TRAINING_NEXT`.**
+
+María selecciona definitivamente la candidata **12 · seed 9112** tras la comparación V4/V6. Nuevo master canónico:
+- `SABIK_EN_MASTER_V2.wav` = copia de `SABIK_EN_REG_V4_12_seed9112.wav`;
+- SHA-256 `c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede`;
+- referencia ralentizada 0.88: DESCARTADA por sonido robótico;
+- siguiente fase: generar `SABIK_EN_TRAIN_V1`, revisar muestra y hacer fine-tuning EN antes de volver a copy/audio de producción.
+
 ## Sabik EN · master V2 seleccionado · 27/09/2026
 
 **Estado: `SABIK_EN_MASTER_V2_SELECTED`.**
