@@ -1,6 +1,23 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
-Fecha de esta consolidación: 24/09/2026. Es una síntesis operativa identificada como tal; no reemplaza ni modifica los originales históricos V106/V114. El estado de una tarea posterior requiere evidencia nueva. Consultar también `../ESTADO_ACTUAL.md` y el control antes de escribir.
+Fecha de esta consolidación: 27/09/2026. Es una síntesis operativa identificada como tal; no reemplaza ni modifica los originales históricos V106/V114. El estado de una tarea posterior requiere evidencia nueva. Consultar también `../ESTADO_ACTUAL.md` y el control antes de escribir.
+
+## Voz Sabik ES/EN · cierre de identidad y procedencia · 27/09/2026
+
+Estado vigente: `SABIK_VOICE_MASTERS_ES_EN_APPROVED_PROVENANCE_REGISTERED`.
+
+La identidad vocal de Sabik se documenta como derivada de voz propia autorizada de la titular del proyecto. No se publica audio humano en el repositorio; se conservan hashes y trazabilidad. Se adoptan dos masters lingüísticos de una misma identidad: `SABIK_EN_MASTER_RETEST_01.wav` y `SABIK_ES_MASTER_V1.wav`.
+
+El master ES, español peninsular, se ha validado mediante Qwen3-TTS Base ICL y 20/20 frases de control aprobadas por María. La ruta RVC desde el master inglés queda rechazada para español largo por acento inglés/cambio de voz y los 135 outputs de esa ruta no son dataset final.
+
+Se separan formalmente `CORPUS_ENTRENAMIENTO_VOZ` y `SABIK_COPY_PRODUCCION`. Solo el copy de producción revisado podrá alimentar `SABIK_AUDIO_LIBRARY`. El corpus fonético puede contener redacciones no aptas para la web y nunca se promueve automáticamente a producto.
+
+La autorización de la hablante cubre el uso de su voz y derivados dentro de Iris Green/Sabik y sus superficies; las licencias del software/modelos/dependencias siguen siendo un gate separado antes de release.
+
+Ver:
+- `MEMORIA/SABIK_VOZ_MASTERS_ES_EN_PROCEDENCIA_R01_20260927.md`
+- `NORMATIVA/DECLARACION_PROCEDENCIA_AUTORIZACION_VOZ_SABIK_R01_20260927.md`
+- `CONTROL/DELTA_SABIK_VOZ_MASTERS_ES_EN_R01_20260927.json`
 
 ## Prioridades y propietarios
 
