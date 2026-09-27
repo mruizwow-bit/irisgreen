@@ -1,0 +1,57 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R44-TALLER-RETOS-AUDITORIA-ASTRA",
+  "date": "2026-09-27",
+  "status": "R44_TALLER_RETOS_PROPOSAL_ASTRA_REVIEWED_PENDING_MARIA",
+  "scope": "Only R44 proposed new challenges; R43 workshop implementation explicitly excluded",
+  "source": "R44_COORDINACION.patch",
+  "proposal": {
+    "total": 64,
+    "per_study": 48,
+    "cross_study": 8,
+    "dated": 8,
+    "new_studies": 5,
+    "waves": [
+      21,
+      16,
+      27
+    ]
+  },
+  "audit": {
+    "full_64_list_embedded": false,
+    "dated_topics_listed": 7,
+    "count_traceability": "INSUFFICIENT_UNTIL_MATRIX",
+    "cross_study": "KEEP_HIGH_PRIORITY",
+    "new_studies": {
+      "animation": "KEEP_AS_STUDY_CANDIDATE",
+      "maps": "KEEP_AS_STUDY_CANDIDATE",
+      "midi": "MERGE_AS_CAPABILITY_IN_MUSIC_STUDIES",
+      "microcontrollers": "MERGE_AS_OPTIONAL_HARDWARE_LAYER",
+      "voice_radio": "MERGE_AS_AUDIO_PROJECT_PROFILE_FIRST"
+    }
+  },
+  "dated": {
+    "eclipse_2027": "KEEP",
+    "beethoven_2027": "KEEP",
+    "falla_150": "REFRAME_2026_TO_EVERGREEN",
+    "gaudi_centenary": "REFRAME_2026_TO_EVERGREEN",
+    "generation_27_2027": "KEEP_WITH_COPYRIGHT_GUARDRAILS",
+    "plato_2027": "KEEP_DATE_AS_CONTEXT_NOT_DEPENDENCY",
+    "rangelands_2026": "REFRAME_TO_EVERGREEN"
+  },
+  "permission_policy": {
+    "camera": "NO_CHANGE",
+    "microphone": "NO_CHANGE",
+    "geolocation": "OPTIONAL_ONLY",
+    "web_midi": "OPTIONAL_FALLBACK_REQUIRED",
+    "web_serial": "OPTIONAL_FALLBACK_REQUIRED"
+  },
+  "next": "Embed complete 64-row challenge matrix, then Astra individual review before any build order",
+  "limits": [
+    "Do not reopen/analyze R43 workshop",
+    "No bulk build authorization",
+    "No new permission changes",
+    "No hardware-only challenge",
+    "No main/production"
+  ]
+}
