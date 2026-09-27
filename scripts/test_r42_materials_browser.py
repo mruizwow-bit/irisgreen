@@ -244,3 +244,68 @@ def main() -> None:
                         # Panel contextual / inspector (en móvil se abre como diálogo).
                         page.locator(".ig-r42-top-actions .ig-r42-action").nth(1).click()
                         page.wait_for_timeout(250)
+                        seen["inspector"] = page.evaluate(TEMP_CHROME, ".ig-r42-inspector")
+                        seen["inspector_dialog"] = page.evaluate(TEMP_CHROME, "dialog.ig-r42-dialog[open]")
+                        page.screenshot(path=str(SHOTS / f"quiet-{lang}-{vname}-{mode}-inspector.png"))
+                        page.keyboard.press("Escape")
+                        if page.locator("dialog.ig-r42-dialog[open]").count():
+                            page.keyboard.press("Escape")
+                        # Ayuda (diálogo con el contenido de ayuda del Rincón).
+                        page.locator(".ig-r42-top-actions .ig-r42-action").nth(2).click()
+                        page.wait_for_timeout(250)
+                        seen["help_dialog"] = page.evaluate(TEMP_CHROME, "dialog.ig-r42-dialog[open]")
+                        page.screenshot(path=str(SHOTS / f"quiet-{lang}-{vname}-{mode}-help-dialog.png"))
+                        page.keyboard.press("Escape")
+                        assert page.locator("dialog.ig-r42-dialog[open]").count() == 0, "Escape must close the dialog"
+                        # Acciones (paleta de comandos).
+                        page.locator(".ig-r42-top-actions .ig-r42-action").nth(0).click()
+                        page.wait_for_timeout(250)
+                        seen["actions_dialog"] = page.evaluate(TEMP_CHROME, "dialog.ig-r42-dialog[open]")
+                        page.keyboard.press("Escape")
+                        # Sheet de ajustes en móvil.
+                        if vname == "390x844" and page.locator(".r42-settings > summary").count():
+                            page.locator(".r42-settings > summary").first.click()
+                            page.wait_for_timeout(200)
+                            seen["settings_sheet"] = page.evaluate(TEMP_CHROME, ".r42-settings[open]")
+                            page.screenshot(path=str(SHOTS / f"quiet-{lang}-{vname}-{mode}-settings-sheet.png"))
+                        row["seen"] = seen
+                        for name, item in seen.items():
+                            if not item:
+                                continue
+                            assert item["luminance"] <= 0.05, (name, item["bg"])
+                            assert item["alpha"] >= 0.999, (name, item["bg"])
+                            bad = [t for t in item["texts"] if t["ratio"] < 4.5]
+                            assert not bad, (name, bad[:3])
+                        assert seen.get("help_dialog"), "help dialog did not open"
+                        ctx.close()
+
+                    case(row, dark_chrome)
+
+        row = {"scenario": "contrast forces opaque: Transparency control explains it"}
+
+        def forced_note(row):
+            rel = next(iter(PILOT))
+            ctx = context((1440, 900), "normal", contrast=True)
+            page = ctx.new_page()
+            load(page, rel)
+            page.locator("#a11yBtn").click()
+            box = page.locator("[data-ig-transparency-settings]")
+            assert box.get_attribute("data-ig-transparency-forced") == "contrast"
+            note = page.locator("[data-ig-transparency-forced-note]")
+            assert note.is_visible() and note.get_attribute("role") == "status"
+            assert "contraste" in note.inner_text().lower() or "contrast" in note.inner_text().lower()
+            assert page.evaluate("document.documentElement.dataset.igTransparency") == "normal"
+            ctx.close()
+
+        case(row, forced_note)
+
+        browser.close()
+    server.shutdown()
+    report["summary"] = {"tested": len(report["cases"]), "failures": len(report["failures"])}
+    (OUT / "browser.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if report["failures"]:
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
