@@ -60,9 +60,11 @@ async def go(page,path,w,h):
     return await page.evaluate("""() => {
       const main=document.querySelector('main');
       const article=main&&main.querySelector(':scope > article.ficha');
+      const card=main&&main.querySelector(':scope > .iris-mini-card');
+      const finder=main&&main.querySelector(':scope > #ig-page-finder');
       const shell=document.querySelector('.ig-r42-shell,#igt-app,#jg-app,#r40Workspace,.r40-workspace,.ig-afondo');
       const rect=n=>n?n.getBoundingClientRect():null;
-      return {viewport:innerWidth,main:rect(main),article:rect(article),shell:rect(shell),profile:document.body.dataset.igProfile};
+      return {viewport:innerWidth,main:rect(main),article:rect(article),card:rect(card),finder:rect(finder),shell:rect(shell),profile:document.body.dataset.igProfile};
     }""")
 
 async def shot(page,path,name,w,h):
@@ -107,8 +109,14 @@ async def main():
                         need(m['main'] and m['main']['width']/w>=.82,f'browse product width too narrow {path} {w}')
                     if w>=1440 and profile=='workspace':
                         need(m['main'] and m['main']['width']/w>=.90,f'workspace product width too narrow {path} {w}')
-                    if w>=1440 and profile=='content' and m['article']:
-                        need(m['article']['width']<=1050,f'reading measure too wide {path}')
+                    if profile=='content' and m['article']:
+                        if w>=1440:
+                            need(m['article']['width']<=1050,f'reading measure too wide {path}')
+                            need(m['article']['top']<520,f'CONTENT reading pushed below first viewport {path}: top={m["article"]["top"]}')
+                            if m['card']:
+                                need(m['card']['left']>=m['article']['right']-2,f'Tarjeta Iris is not a side tool on desktop {path}')
+                        if w<=390 and m['card']:
+                            need(m['article']['top']<m['card']['top'],f'Tarjeta Iris precedes reading on mobile {path}')
                 report['profiles'][profile].append(path)
         for profile,path in WIDE_ROUTES:
             for w,h in WIDE:
