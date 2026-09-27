@@ -1,5 +1,21 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R50 · HUMAN QA Home/header global · 27/09/2026
+
+**Estado: `R50_A2_HOME_GLOBAL_HEADER_ISO_COPY_ORDERED`.**
+
+María detecta regresiones en R49/Home: Música ausente, Accesibilidad poco visible, categorías duplicadas en la barra superior y copy negativo que introduce “etiquetas”, “diagnóstico” y “Protección por defecto”.
+
+#313 fija el header global:
+**Iris Green · Buscar · Música · Accesibilidad · Contenido · idioma · Explorar**.
+
+Condiciones/Situaciones/Vida diaria/Investigación/Recursos salen de la navegación primaria permanente y permanecen en Home/Buscar/Explorar.
+
+Copy Home ES/EN revisado bajo ISO 24495-1:2023, ISO 9241-112:2025 y COGA. SAFE_BY_DEFAULT continúa técnico, pero el estado público sin selección se llama **General**.
+
+A2 aplica R50 antes de la preview final. A8 no se reabre. No main/producción.
+
+
 **Estado: `R49_A8_TRANSVERSAL_R42_R02_READY_FOR_ASTRA`.**
 
 A8 completó #311 en rama `agent8/r49-transversal-r42-r02-20260927`. HEAD validado `563ac5f71e4c9c3b19b32ea982a684033ea74f45`, tree `9ee305eb571b590cb59f524b78b0877160f0e284`, PR #312 contra A2 y mergeable al entregar.
