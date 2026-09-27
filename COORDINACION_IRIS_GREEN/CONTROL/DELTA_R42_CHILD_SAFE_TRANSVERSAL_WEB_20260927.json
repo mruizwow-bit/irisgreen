@@ -1,0 +1,48 @@
+{
+  "id": "DELTA_R42_CHILD_SAFE_TRANSVERSAL_WEB_20260927",
+  "date": "2026-09-27",
+  "status": "R42_CHILD_SAFE_TRANSVERSAL_WEB_REQUIRED",
+  "authority": "DECISION_MARIA",
+  "supersedes_scope_note": "R42_CHILD_SAFE_CONTENT_REACTIVATED_FOR_DESIGN_NEW_WEB: scope limitation only; safety model retained",
+  "applies_to": [
+    "global_shell",
+    "navigation",
+    "home_catalogs",
+    "search_autocomplete_related",
+    "situations_conditions",
+    "research",
+    "resources_games_routines",
+    "interests_field_notebook",
+    "workshop",
+    "quiet_space",
+    "es_en",
+    "desktop_mobile",
+    "assistive_technology"
+  ],
+  "hard_rules": [
+    "no_full_S2_initial_payload_default_child_teen",
+    "no_full_S2_prefetch_preload_ssr_safe_modes",
+    "filter_before_render_and_discovery",
+    "adult_full_S2_only_after_explicit_action",
+    "adult_to_child_or_teen_purges_full_S2",
+    "no_dob_identity_account_diagnosis_required"
+  ],
+  "implementation_order": [
+    "interface_R02_baseline",
+    "shared_child_safety_contract",
+    "global_discovery",
+    "content_research",
+    "cross_surface_links",
+    "network_dom_a11y_QA",
+    "deploy_preview",
+    "human_QA_Maria"
+  ],
+  "old_baseline_patches": [
+    "294",
+    "295",
+    "296",
+    "297"
+  ],
+  "old_baseline_action": "remain_paused_no_cherry_pick",
+  "production": false
+}
