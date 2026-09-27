@@ -151,6 +151,10 @@ def build():
     # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
     subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # S2 con ruta propia: el cuerpo completo sale del HTML inicial y queda en un fragmento
+    # separado. Solo ADULTEZ + acción explícita lo solicita desde el navegador.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
