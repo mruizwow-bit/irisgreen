@@ -683,3 +683,32 @@ ES/EN llevan cache-bust `-d01`. No se modifican audio, escenas, catálogo ni rea
 
 Memoria: `MEMORIA/R42_RINCON_ZIP_A7_FIXES_20260927.md`.  
 Control: `CONTROL/DELTA_R42_RINCON_ZIP_A7_FIXES_20260927.json`.
+
+## R44 · propuesta de nuevos retos del Taller · revisión Astra · 27/09/2026
+
+**Estado: `R44_TALLER_RETOS_PROPOSAL_ASTRA_REVIEWED_PENDING_MARIA`.**
+
+Por instrucción de María, esta revisión **no analiza ni reabre el Taller R43 ni la corrección de Design**. Solo evalúa los nuevos retos propuestos en R44.
+
+Conclusión:
+- dirección general buena;
+- los 8 proyectos cruzados son la parte más fuerte;
+- Animación y Mapas se mantienen como candidatos a estudio;
+- MIDI debe entrar primero como capacidad de Música;
+- Microcontroladores como capa opcional de Programación/Robótica;
+- Voz/radio como perfil/proyecto de audio antes que estudio independiente;
+- no cambiar camera/microphone Permissions-Policy por esta propuesta;
+- Web MIDI/Web Serial/hardware nunca serán requisito único.
+
+Retos fechados:
+- eclipse 02/08/2027: KEEP;
+- Beethoven 2027: KEEP;
+- Generación del 27 2027: KEEP con guardarraíles de PI;
+- PLATO 2027: KEEP como contexto, no dependencia de fecha;
+- Falla 150 y Gaudí centenario: reformular a evergreen porque corresponden a 2026;
+- Pastizales/Pastores 2026: reformular a proyecto evergreen.
+
+El patch dice 8 retos fechados pero enumera 7 temas; y no incluye los 64 retos individualmente. Antes de autorizar construcción debe entregarse una matriz 64/64 con ID, ES/EN, estudio, etapa, artefacto, API/permisos/hardware, fallback, accesibilidad, PI, ola y criterio de PASS.
+
+Memoria: `MEMORIA/R44_RETOS_TALLER_AUDITORIA_ASTRA_20260927.md`.  
+Control: `CONTROL/DELTA_R44_RETOS_TALLER_AUDITORIA_ASTRA_20260927.json`.
