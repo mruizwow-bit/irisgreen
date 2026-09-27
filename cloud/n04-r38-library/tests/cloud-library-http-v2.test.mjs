@@ -83,6 +83,7 @@ test('HTTP storage/runtime failures are sanitized', async () => {
   });
   const response = await handler(request({ q: 'autismo' }), context);
   assert.equal(response.status, 503);
-  assert.deepEqual(await response.json(), { error: 'library_unavailable' });
-  assert.ok(!(await response.clone().text()).includes('SECRET_INTERNAL_STORAGE_DETAIL'));
+  const text = await response.text();
+  assert.deepEqual(JSON.parse(text), { error: 'library_unavailable' });
+  assert.ok(!text.includes('SECRET_INTERNAL_STORAGE_DETAIL'));
 });
