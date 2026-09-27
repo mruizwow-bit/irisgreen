@@ -69,6 +69,9 @@ def main():
             need(txt.count(asset)==1,f'{asset} count != 1 on {r}')
         need(row['common_header'] and row['common_footer'],'common chrome flag false '+r)
         need(row['preferences'] and row['audience'] and row['child_safe'],'common contract flag false '+r)
+        if row['profile']=='workspace' and '/assets/ig-r42-shell.js' in txt:
+            need('<script defer src="/assets/ig-r42-shell.js' not in txt,'workspace shell still deferred '+r)
+            need('<script src="/assets/ig-r42-shell.js' in txt,'workspace shell parser-end mount missing '+r)
     for es,en in CORE_PAIRS:
         need(es in rows and en in rows,'core ES/EN pair missing '+es+' '+en)
         need(rows[es]['profile']==rows[en]['profile'],'core ES/EN profile mismatch '+es)
