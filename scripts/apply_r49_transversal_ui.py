@@ -189,12 +189,22 @@ def apply_one(path: Path, root: Path) -> dict:
         'reason': reason,
     }
 
+def public_pages(root: Path) -> list[Path]:
+    pages=[]
+    for name in ('index.html','404.html'):
+        p=root/name
+        if p.is_file():pages.append(p)
+    for lang in ('es','en'):
+        base=root/lang
+        if base.is_dir():pages.extend(p for p in base.rglob('*.html') if p.is_file())
+    return sorted(set(pages))
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--root', type=Path, required=True)
     args = ap.parse_args()
     root = args.root.resolve()
-    pages = sorted(p for p in root.rglob('*.html') if p.is_file())
+    pages = public_pages(root)
     if not pages:
         raise AssertionError('R49 found no public HTML')
     manifest = [apply_one(p, root) for p in pages]
