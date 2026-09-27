@@ -257,14 +257,24 @@
       if (b.soft) { x.shadowColor = s.color; x.shadowBlur = s.size * 0.7; }
       x.beginPath();
       if (b.kind === 'free') {
-        x.moveTo(p[0], p[1]);
-        if (p.length === 2) { x.lineTo(p[0] + 0.01, p[1]); }
-        else if (p.length === 4) { x.lineTo(p[2], p[3]); }
-        else {
-          for (var i = 2; i < p.length - 2; i += 2) { var mx = (p[i] + p[i + 2]) / 2, my = (p[i + 1] + p[i + 3]) / 2; x.quadraticCurveTo(p[i], p[i + 1], mx, my); }
-          x.lineTo(p[p.length - 2], p[p.length - 1]);
+        var pr = s.pressures || [];
+        if (pr.length > 1 && p.length >= 4) {
+          for (var i = 0, n = 0; i < p.length - 2; i += 2, n++) {
+            x.beginPath(); x.moveTo(p[i], p[i + 1]); x.lineTo(p[i + 2], p[i + 3]);
+            var a = pr[Math.min(n, pr.length - 1)] || 1, bb = pr[Math.min(n + 1, pr.length - 1)] || a;
+            x.lineWidth = s.size * Math.max(0.22, (a + bb) / 2); x.stroke();
+          }
+          x.lineWidth = s.size;
+        } else {
+          x.moveTo(p[0], p[1]);
+          if (p.length === 2) { x.lineTo(p[0] + 0.01, p[1]); }
+          else if (p.length === 4) { x.lineTo(p[2], p[3]); }
+          else {
+            for (var i2 = 2; i2 < p.length - 2; i2 += 2) { var mx = (p[i2] + p[i2 + 2]) / 2, my = (p[i2 + 1] + p[i2 + 3]) / 2; x.quadraticCurveTo(p[i2], p[i2 + 1], mx, my); }
+            x.lineTo(p[p.length - 2], p[p.length - 1]);
+          }
+          x.stroke();
         }
-        x.stroke();
       } else {
         var x0 = p[0], y0 = p[1], x1 = p[2], y1 = p[3];
         if (b.kind === 'line') { x.moveTo(x0, y0); x.lineTo(x1, y1); x.stroke(); }
@@ -357,7 +367,11 @@
 
     function makeStroke(pts) {
       return { tool: ui.tool, color: ui.color, size: ui.size, alpha: ui.alpha, fill: ui.fill && (ui.tool === 'rect' || ui.tool === 'elipse'),
-        sym: ui.sym, symN: ui.symN, w: W(), h: H(), pts: pts };
+        sym: ui.sym, symN: ui.symN, w: W(), h: H(), pts: pts, pressures: [] };
+    }
+    function pointerPressure(e) {
+      if (!e || e.pointerType !== 'pen' || !isFinite(e.pressure) || e.pressure <= 0) return 1;
+      return Math.max(0.18, Math.min(1, e.pressure));
     }
     function round1(v) { return Math.round(v * 10) / 10; }
 
@@ -394,6 +408,7 @@
       var p = toLogical(e); drawing = true; ui.kx = p[0]; ui.ky = p[1];
       var b = BRUSHES[ui.tool];
       live = makeStroke(b.kind === 'free' ? [round1(p[0]), round1(p[1])] : [round1(p[0]), round1(p[1]), round1(p[0]), round1(p[1])]);
+      if (b.kind === 'free') live.pressures = [pointerPressure(e)];
       draw();
     });
     canvas.addEventListener('pointermove', function (e) {
@@ -404,7 +419,10 @@
         var p = toLogical(ev);
         if (b.kind === 'free') {
           var q = live.pts, lx = q[q.length - 2], ly = q[q.length - 1];
-          if (Math.hypot(p[0] - lx, p[1] - ly) >= 1.5) live.pts = q.concat([round1(p[0]), round1(p[1])]);
+          if (Math.hypot(p[0] - lx, p[1] - ly) >= 1.5) {
+            live.pts = q.concat([round1(p[0]), round1(p[1])]);
+            live.pressures = (live.pressures || []).concat([pointerPressure(ev)]);
+          }
         } else {
           var sn = b.kind === 'line' ? snapLine(live.pts[0], live.pts[1], p[0], p[1]) : { pts: [live.pts[0], live.pts[1], p[0], p[1]], snap: ui.guide === 'grid' && ui.snap ? 'grid' : null };
           if (b.kind !== 'line' && sn.snap === 'grid') sn = snapLine(live.pts[0], live.pts[1], p[0], p[1]);
