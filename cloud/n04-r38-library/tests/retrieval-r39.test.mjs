@@ -200,8 +200,9 @@ test('adapter dependency graph adds no provider, logging, persistence or HTTP ac
   assert.doesNotMatch(code, /console\.|node:fs|writeFile|appendFile|localStorage|store\.(set|setJSON|delete)\s*\(|context\.ip|context\.geo|fetch\(|\/api\/chat|openai|anthropic|embedding/i);
   const externals = [...code.matchAll(/from ['"]([^.'"][^'"]*)['"]/g)].map(m => m[1]);
   assert.deepEqual(externals, ['@netlify/blobs']);
-  // R04 adds one disabled relay; the adapter itself acquires no HTTP dependency.
-  assert.deepEqual((await readdir(new URL('../netlify/functions/', import.meta.url))).sort(), ['n04-library-qa.mjs', 'n04-team-transport.mjs']);
+  // The R39 adapter remains unchanged. A9 adds one isolated, separately-tested QA Function.
+  assert.deepEqual((await readdir(new URL('../netlify/functions/', import.meta.url))).sort(),
+    ['n04-library-qa.mjs', 'n04-team-transport.mjs', 'sabik-cloud-library-qa.mjs']);
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
   assert.deepEqual(pkg.dependencies, { '@netlify/blobs': '11.1.0' });
 });
