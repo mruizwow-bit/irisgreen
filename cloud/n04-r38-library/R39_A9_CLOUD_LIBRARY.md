@@ -34,7 +34,7 @@ La clasificación S2 se aplica antes de construir el índice/ranking:
 - `adult` + `explicitIntent=true`: puede usar full S2;
 - cada full S2 presente en esta fuente tiene una variante segura enlazada.
 
-El snapshot contiene 15 temas S2 bilingües (30 fragmentos full S2) y 30 variantes seguras. El tema «TEPT complejo» listado en R42 no existe en esta instantánea pública y por tanto no se inventa ni se incluye.
+El snapshot contiene 15 temas S2 bilingües (30 fragmentos full S2) y 30 variantes seguras. Las 30 variantes son **extractos literales ya publicados en la fuente fijada** (descripción del catálogo, lede de Vida diaria o primer párrafo «qué se estudió» de Investigación); A9 no redacta ni traduce contenido editorial nuevo. El tema «TEPT complejo» listado en R42 no existe en esta instantánea pública y por tanto no se inventa ni se incluye.
 
 No se solicita edad, fecha de nacimiento ni identidad.
 
@@ -52,4 +52,4 @@ Runtime sin persistencia de queries, respuestas o historial; sin proveedor/LLM/e
 
 ## HTTP
 
-La Function nueva es `POST /internal/n04/cloud-library/search`, protegida por Team Login y por el gate existente `N04_SMOKE_TOKEN`. El CI puede demostrar HTTP real no autenticado hasta el gate exterior; una respuesta HTTP de aplicación requiere una sesión legítima de miembro del equipo y no se sustituye por exportar cookies o leer secretos.
+La Function QA nueva es `POST /internal/n04/cloud-library/search`, protegida por el gate existente `N04_SMOKE_TOKEN`. Para HUMAN QA se añade un puente **server-only separado**, `POST /internal/n04/cloud-library/team/search`, detrás de Team Login, que inyecta esa credencial únicamente en servidor. No modifica el transporte R06 existente. El CI puede demostrar HTTP real no autenticado hasta el gate exterior; una respuesta HTTP de aplicación requiere una sesión legítima de miembro del equipo y no se sustituye por exportar cookies o leer secretos.
