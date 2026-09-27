@@ -31,6 +31,11 @@ async def main():
                 await capture(page,path,name,w,h);report['screenshots'].append(f'{name}-{w}x{h}.png')
         await page.goto(BASE+'/',wait_until='networkidle')
         need(await page.locator('[data-ig-audience-stage]').count()==4,'four audience stages not mounted')
+        need(await page.locator('.ig-home-header nav').count()==0,'content navigation must not appear in the Home top bar')
+        need(await page.get_by_role('button',name='Accesibilidad',exact=True).count()==1,'Accessibility control missing')
+        need(await page.get_by_role('button',name='Música',exact=True).count()==1,'Music control missing')
+        need(await page.locator('.ig-home-header').get_by_text('Condiciones',exact=True).count()==0,'Conditions leaked into top bar')
+        need(await page.locator('.ig-home-header').get_by_text('Situaciones',exact=True).count()==0,'Situations leaked into top bar')
         await page.keyboard.press('Tab');need(await page.evaluate('document.activeElement!==document.body'),'keyboard focus did not move')
         # Autocomplete must never receive S2 in safe/default mode.
         req=[]
@@ -39,7 +44,7 @@ async def main():
         need(await page.locator('[data-ig-home-suggestions]').get_by_text('Anorexia nerviosa',exact=False).count()==0,'S2 leaked into autocomplete')
         await page.locator('[data-ig-home-search] button[type=submit]').click();await page.wait_for_timeout(700)
         need(await page.locator('[data-ig-home-results]').get_by_text('Anorexia nerviosa',exact=False).count()>0,'intentional safe S2 result missing')
-        need(await page.locator('[data-ig-home-results]').get_by_text('versión segura',exact=False).count()>0,'safe S2 result marker missing')
+        need(await page.locator('[data-ig-home-results]').get_by_text('versión segura',exact=False).count()==0,'internal safety label leaked into Home result')
         need(not any('/assets/safety/full/' in u for u in req),'full S2 requested by Home safe search')
         report['network']['home_safe_full_requests']=sum('/assets/safety/full/' in u for u in req)
         # Representative content matrix required by #305: one S0, one audited S1, five S2.
@@ -92,6 +97,19 @@ async def main():
         need(await page.get_by_text('Anorexia nerviosa',exact=True).count()==0,'S2 leaked into default Conditions catalogue')
         await page.evaluate("IGAudience.set('adults')");await page.wait_for_timeout(800)
         need(await page.get_by_text('Anorexia nerviosa',exact=True).count()>0,'adult Conditions catalogue missing S2 metadata')
+        # Global utilities restored by R50: opening them does not autoplay audio.
+        await page.goto(BASE+'/',wait_until='networkidle')
+        media_requests=[]
+        page.on('request',lambda r,arr=media_requests:arr.append(r.url))
+        await page.get_by_role('button',name='Música',exact=True).click();await page.wait_for_timeout(150)
+        need(await page.locator('#ig-music-panel').count()==1,'single music player not created')
+        need(not any('/audio/' in u for u in media_requests),'Music panel requested audio before Play')
+        await page.keyboard.press('Escape')
+        await page.get_by_role('button',name='Accesibilidad',exact=True).click()
+        need(await page.get_by_role('heading',name='Accesibilidad y lectura').count()==1,'Accessibility panel did not open')
+        need(await page.get_by_role('button',name='Más contraste',exact=True).count()==1,'Accessibility controls missing')
+        await page.keyboard.press('Escape')
+        report['checks'].append('r50-global-music-accessibility')
         # Transparency modes from R02.
         await page.goto(BASE+'/',wait_until='networkidle')
         for mode in ['normal','reduced','opaque']:

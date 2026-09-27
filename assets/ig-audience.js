@@ -19,7 +19,7 @@ function syncPicker(root){
   btn.setAttribute('aria-pressed',String(btn.getAttribute('data-ig-audience-stage')===current));
  });
  var status=root.querySelector('[data-ig-audience-status]');
- if(status){var en=document.documentElement.lang.indexOf('en')===0;var names=en?{default:'Safe by default',children:'Children',teenagers:'Teenagers',adults:'Adults',any:'Any age'}:{default:'Protección por defecto',children:'Infancia',teenagers:'Adolescencia',adults:'Adultez',any:'Cualquier edad'};status.textContent=names[current]||names.default;}
+ if(status){var en=document.documentElement.lang.indexOf('en')===0;var names=en?{default:'General',children:'Children',teenagers:'Teenagers',adults:'Adults',any:'Any age'}:{default:'General',children:'Infancia',teenagers:'Adolescencia',adults:'Adultez',any:'Cualquier edad'};status.textContent=names[current]||names.default;}
 }
 function apply(){
  document.documentElement.dataset.igAudience=current;

@@ -19,6 +19,11 @@ def main():
     for text,labels in [(es,['Contenido para…','Infancia','Adolescencia','Adultez','Cualquier edad']),(en,['Content for…','Children','Teenagers','Adults','Any age'])]:
         for label in labels:need(label in text,'Home missing '+label)
         need('data-ig-home-search' in text,'Home search missing');need('sabik-panel' in text,'Sabik access missing');need('data-ig-materials="r42"' in text,'R02 material hook missing')
+        need('data-ig-music' in text,'Global Music control missing');need('data-ig-home-settings-open' in text,'Global Accessibility control missing')
+        need('/assets/musica.js' in text and text.count('/assets/musica.js')==1,'Music runtime must load once')
+        need('/assets/interfaz-comun.js' in text and text.count('/assets/interfaz-comun.js')==1,'Shared accessibility controller must load once')
+        for forbidden in ['sin etiquetas','without labels','sin tener que elegir un diagnóstico','without having to choose a diagnosis','Protección por defecto','Safe by default']:
+            need(forbidden not in text,'Forbidden R50 Home/header copy: '+forbidden)
     safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text());adult=json.loads((root/'assets/safety/search-adult-full-catalog.json').read_text())
     need(len(intent)==7,'Expected 7 searchable S2 records on the current A2 baseline; global-395 is R01-new');need(all(x['sensitivity']!='S2_HIGH_SENSITIVITY' for x in safe),'S2 leaked into safe autocomplete payload');need(all(x['sensitivity']=='S2_HIGH_SENSITIVITY' for x in intent),'Intentional safe file contains non-S2');need(len(adult)==len(safe)+len(intent),'Adult metadata catalogue mismatch')
     protected=0
