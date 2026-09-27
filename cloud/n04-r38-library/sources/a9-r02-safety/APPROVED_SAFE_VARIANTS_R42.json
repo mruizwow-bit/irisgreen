@@ -7,7 +7,11 @@
     "safe_variants_sha256": "4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260",
     "s2_review_path": "SAFETY/s2-review.csv",
     "s2_review_sha256": "579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55",
-    "classification_review": "HUMAN_REVIEWED_S2"
+    "classification_review": "HUMAN_REVIEWED_S2",
+    "content_safety_manifest_path": "SAFETY/content-safety-manifest.json",
+    "content_safety_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+    "content_safety_manifest_records": 965,
+    "safe_variant_records": 16
   },
   "groups": {
     "abuse_exploitation": {
