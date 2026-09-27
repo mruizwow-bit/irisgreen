@@ -1,5 +1,16 @@
 # Estado operativo compartido
 
+## Sabik · checkpoint EN final seleccionado · 27/09/2026
+
+**Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_CANONICALIZE_NEXT`.**
+
+Comparación de 18 WAV inéditos (6 frases × E0/E1/E2) completada. Selección final:
+- **E0 = checkpoint-epoch-0 → SABIK_EN_V1**;
+- E2 queda como checkpoint alternativo conservado;
+- E1 descartado frente a E0/E2.
+
+Criterios: timbre más cercano al master EN V2, naturalidad, estabilidad de identidad y ritmo. Siguiente gate: copiar E0 a carpeta canónica `SABIK_EN_V1`, calcular hashes/manifest y auditar el corpus ES antes del fine-tuning español.
+
 ## Sabik · EN V1 checkpoint final seleccionado · 27/09/2026
 
 **Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_ES_TRAINING_NEXT`.**
