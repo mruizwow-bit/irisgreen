@@ -38,7 +38,13 @@ def static():
  rows=[]
  for p in sorted(DIST.rglob('*.html')):
   s=BeautifulSoup(p.read_text(),'html.parser');rel=p.relative_to(DIST).as_posix()
-  assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
+  if rel=='index.html' and s.body and s.body.get('data-ig-home-r42')=='true':
+   assert len(s.select('link[href^="/assets/ig-home-r42.css?v="]'))==1,rel
+   assert not s.select('link[href^="/assets/iris-brief-r08.css?v="]'),rel
+   assert not s.select('#ig-page-finder'),rel
+   assert len(s.select('#ig-home-search-form'))==1,rel
+  else:
+   assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
   assert not s.select('img[src*="v40-brand-symbol"]'),rel
   assert 'flor de iris' not in p.read_text().lower(),rel
   rows.append({'path':rel,'language':s.html.get('lang'),'brief':True,'flower':False})
@@ -97,19 +103,23 @@ def run():
       panel=page.locator('.sabik-panel').bounding_box();content=page.locator('.iris-home-content').bounding_box();assert (panel['x']>content['x']+content['width']-2) if width==1440 else (panel['y']>=content['y']+content['height']-2)
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')
       assert page.locator('[data-iris-top="workshop"]').get_attribute('href')==('/en/workshop/' if i==1 else '/es/taller/')
-      assert page.locator('.feature-card .text').first.bounding_box()['width']>=135
+      assert page.locator('.ig-home-card').first.bounding_box()['width']>=135
+      # Home R42: una sola búsqueda, etapa efímera y diálogo de Lectura propio.
+      assert page.locator('#ig-page-finder').count()==0
+      assert page.locator('#ig-home-search-form').count()==1
+      assert page.locator('[data-audience]').count()==4
       if i==0:
-       page.locator('#reading-open').click()
-       page.get_by_role('button',name='Alto contraste',exact=True).click()
-       page.get_by_role('button',name='Botones más grandes',exact=True).click()
-       page.get_by_role('button',name='Aumentar el texto',exact=True).click()
-       page.get_by_role('button',name='Volver a la página',exact=True).click()
+       page.locator('#ig-home-reading-open').click()
+       page.get_by_role('button',name='Más contraste',exact=True).click()
+       page.get_by_role('button',name='Botones grandes',exact=True).click()
+       page.get_by_role('button',name='Texto más grande',exact=True).click()
+       page.locator('#ig-home-reading-close').click()
        assert page.locator('html').get_attribute('data-ig-contrast')=='on'
        assert page.locator('#sabik-reset').bounding_box()['height']>=56
        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(width,'reading overflow')
-       page.locator('#reading-open').click()
-       page.get_by_role('button',name='Restablecer ajustes',exact=True).click()
-       page.get_by_role('button',name='Volver a la página',exact=True).click()
+       page.locator('#ig-home-reading-open').click()
+       page.get_by_role('button',name='Restablecer',exact=True).click()
+       page.locator('#ig-home-reading-close').click()
      assert not errors,(route,errors)
      page.screenshot(path=str(OUT/f'{i:02d}-{width}.png'),full_page=False)
      row['passed']=True;rows.append(row);(OUT/'browser.json').write_text(json.dumps(rows,indent=2));ctx.close()

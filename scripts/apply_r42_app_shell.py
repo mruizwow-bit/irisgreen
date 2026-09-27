@@ -10,8 +10,11 @@ import argparse
 import re
 from pathlib import Path
 
-CSS = "/assets/ig-r42-shell.css?v=r42-a3-1"
+MATERIALS = "/assets/ig-r42-materials.css?v=r42-design-1"
+CSS = "/assets/ig-r42-shell.css?v=r42-design-1"
+CHILD_SAFETY_JS = "/assets/ig-child-safety.js?v=r42-child-1"
 JS = "/assets/ig-r42-shell.js?v=r42-a3-1"
+LEGACY_CSS = "/assets/ig-r42-shell.css?v=r42-a3-1"
 
 PILOT = {
     "es/taller/dibujo/index.html": "workshop",
@@ -45,15 +48,26 @@ def _set_body_attrs(text: str, family: str) -> str:
 
     attrs = set_attr(attrs, "data-ig-r42-pilot", "true")
     attrs = set_attr(attrs, "data-ig-r42-family", family)
+    # R42-Design: the material system is scoped to the same pilot pages.
+    attrs = set_attr(attrs, "data-ig-materials", "r42")
     return text[: match.start()] + "<body" + attrs + ">" + text[match.end() :]
 
 
 def _inject_assets(text: str) -> str:
+    # Idempotent upgrade from the A3 cache key to the Design cache key.
+    text = text.replace(LEGACY_CSS, CSS)
     if CSS not in text:
-        link = f'<link rel="stylesheet" href="{CSS}">\n'
+        link = f'<link rel="stylesheet" href="{MATERIALS}">\n<link rel="stylesheet" href="{CSS}">\n'
         text, count = HEAD_CLOSE_RE.subn(link + "</head>", text, count=1)
         if count != 1:
             raise AssertionError("R42 pilot page has no </head>")
+    if MATERIALS not in text:
+        text = text.replace(f'<link rel="stylesheet" href="{CSS}">', f'<link rel="stylesheet" href="{MATERIALS}">\n<link rel="stylesheet" href="{CSS}">', 1)
+    if CHILD_SAFETY_JS not in text:
+        script = f'<script defer src="{CHILD_SAFETY_JS}"></script>\n'
+        text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
+        if count != 1:
+            raise AssertionError("R42 pilot page has no </body>")
     if JS not in text:
         script = f'<script defer src="{JS}"></script>\n'
         text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
@@ -80,11 +94,31 @@ def apply(root: Path) -> dict[str, int]:
             path.write_text(text, encoding="utf-8")
             changed += 1
 
+    # R43 · Las páginas de la suite creativa del Taller ya se generan sobre el app shell
+    # (body data-ig-r42-pilot="true"). Reciben el mismo sistema material. No es propagación
+    # global: solo páginas que ya declaran el shell R42.
+    listed = {(root / rel).resolve() for rel in PILOT}
+    extra = 0
+    for path in sorted(root.rglob("index.html")):
+        if path.resolve() in listed:
+            continue
+        original = path.read_text(encoding="utf-8")
+        match = BODY_RE.search(original)
+        if not match or 'data-ig-r42-pilot="true"' not in match.group("attrs"):
+            continue
+        family = re.search(r'data-ig-r42-family=(["\'])(.*?)\1', match.group("attrs"))
+        text = _set_body_attrs(original, family.group(2) if family else "workshop")
+        text = _inject_assets(text)
+        extra += 1
+        if text != original:
+            path.write_text(text, encoding="utf-8")
+            changed += 1
+
     if missing:
         raise AssertionError(f"R42 pilot missing {missing} required route(s)")
     if present != len(PILOT):
         raise AssertionError((present, len(PILOT)))
-    return {"present": present, "changed": changed}
+    return {"present": present, "changed": changed, "suite": extra}
 
 
 def main() -> None:
@@ -95,7 +129,8 @@ def main() -> None:
     print(
         "R42 A3 pilot:",
         f"{result['present']}/{len(PILOT)} routes present;",
-        f"{result['changed']} changed",
+        f"{result['changed']} changed;",
+        f"{result['suite']} Taller suite pages on the shell",
     )
 
 

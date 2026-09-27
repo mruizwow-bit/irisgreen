@@ -1,0 +1,32 @@
+name: R42 Resources corrections · A Iris Card Reading
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'es/recursos/tarjeta-iris/**'
+      - 'en/resources/iris-card/**'
+      - 'assets/preferencias-lectura.js'
+      - 'assets/lectura-accesible.js'
+      - 'scripts/test_r42_iris_card_reading_prefs.py'
+      - '.github/workflows/r42-resources-a-iris-card.yml'
+      - 'scripts/build_site.py'
+
+permissions:
+  contents: read
+
+jobs:
+  iris-card-reading:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build isolated site
+        run: python scripts/build_site.py
+      - name: Iris Card reading preferences ES/EN
+        run: python scripts/test_r42_iris_card_reading_prefs.py --root dist

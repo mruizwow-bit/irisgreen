@@ -9,7 +9,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from apply_r42_app_shell import CSS, JS, PILOT, apply
+from apply_r42_app_shell import CHILD_SAFETY_JS, CSS, JS, MATERIALS, PILOT, apply
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,6 +38,10 @@ def synthetic_contract() -> None:
             text = (root / rel).read_text(encoding="utf-8")
             assert text.count(CSS) == 1, rel
             assert text.count(JS) == 1, rel
+            assert text.count(CHILD_SAFETY_JS) == 1, rel
+            assert text.count(MATERIALS) == 1, rel
+            assert text.index(MATERIALS) < text.index(CSS), rel
+            assert 'data-ig-materials="r42"' in text, rel
             assert 'data-ig-r42-pilot="true"' in text, rel
             assert f'data-ig-r42-family="{family}"' in text, rel
 
@@ -77,10 +81,55 @@ def source_contract() -> None:
     assert "Vue" not in js
     assert "Svelte" not in js
 
+    # R42-Design material system: one token source, glass only on chrome, real fallbacks.
+    mat = (ROOT / "assets/ig-r42-materials.css").read_text(encoding="utf-8")
+    mat_code = re.sub(r"/\*.*?\*/", "", mat, flags=re.S)
+    for token in (
+        "--ig-surface-content:", "--ig-surface-content-soft:", "--ig-chrome-glass-light:", "--ig-chrome-glass-dark:",
+        "--ig-chrome-solid-light:", "--ig-chrome-solid-dark:", "--ig-control-border:", "--ig-separator:",
+        "--ig-overlay-backdrop:", "--ig-glass-blur:", "--ig-glass-alpha-user", "--ig-glass-alpha-floor:", "--ig-focus:",
+        "--ig-state-hover:", "--ig-state-selected:", "--ig-state-disabled-ink:", "--ig-state-error:", "--ig-state-success:",
+        'data-ig-transparency="reduced"', 'data-ig-transparency="opaque"', "prefers-reduced-transparency",
+        "@supports", "forced-colors", "prefers-contrast", "max-width:900px", "Canvas", "CanvasText", "Highlight", "HighlightText",
+    ):
+        assert token in mat_code, token
+    # Every !important lives inside a cascade layer (layered important beats legacy unlayered important).
+    unlayered = re.sub(r"@layer ig-r42-materials-important\{(?:[^{}]|\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\})*\}", "", mat_code)
+    assert "!important" not in unlayered
+    # The global image-altering contrast filter is neutralised on pilot pages.
+    assert 'html[data-ig-contrast="on"] body[data-ig-materials="r42"] main{filter:none}' in mat_code
+    # Glass is never declared on content surfaces.
+    for content in (".ig-r42-stage{", ".ig-r42-workspace{", ".ig-r42-inspector{backdrop", ".jg-workspace{backdrop"):
+        assert content not in mat_code, content
+    # R02 · Rincón: todo el chrome temporal es oscuro y opaco (inspector, diálogos, popover, sheet).
+    for token in (
+        '[data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover',
+        '[data-ig-r42-family="quiet"] .ig-r42-dialog::backdrop', '.r42-settings[open]', '.r42-more-menu',
+        "--ig-state-disabled-ink:#5f6b80;",
+    ):
+        assert token in mat_code, token
+    prefs = (ROOT / "assets/preferencias-lectura.js").read_text(encoding="utf-8")
+    for token in ("prefers-contrast: more", "igTransparencyForced", "data-ig-transparency-forced-note"):
+        assert token in prefs, token
+    for token in ("prefers-reduced-transparency", "igTransparency", "igTransparencySource", "mountTransparency", "Transparencia", "Transparency"):
+        assert token in prefs, token
+
+    shell_js = (ROOT / "assets/ig-r42-shell.js").read_text(encoding="utf-8")
+    child_js = (ROOT / "assets/ig-child-safety.js").read_text(encoding="utf-8")
+    for token in ("Contenido para…", "Content for…", "audienceChild", "audienceTeen", "audienceAdult", "IGChildSafety.setAudience"):
+        assert token in shell_js, token
+    for token in ("localStorage", "sessionStorage"):
+        assert token not in child_js, token
+    for token in ("S2_HIGH_SENSITIVITY", "explicitAction===true", "ig:child-safety-purge-full"):
+        assert token in child_js, token
+
     # Parse the actual JS when Node is available (GitHub/Netlify runners have it).
     node = shutil.which("node")
     if node:
         subprocess.run([node, "--check", str(ROOT / "assets/ig-r42-shell.js")], check=True)
+        subprocess.run([node, "--check", str(ROOT / "assets/ig-child-safety.js")], check=True)
+        subprocess.run([node, str(ROOT / "scripts/test_child_safety_policy.js")], check=True, cwd=ROOT)
+        subprocess.run([node, "--check", str(ROOT / "assets/preferencias-lectura.js")], check=True)
 
     # Pilot remains deliberately scoped to one ES/EN surface per family.
     assert len(PILOT) == 8
@@ -96,18 +145,48 @@ def built_contract(root: Path) -> None:
         text = path.read_text(encoding="utf-8")
         assert CSS in text, rel
         assert JS in text, rel
+        assert CHILD_SAFETY_JS in text, rel
+        assert MATERIALS in text, rel
+        assert 'data-ig-materials="r42"' in text, rel
         assert 'data-ig-r42-pilot="true"' in text, rel
         assert f'data-ig-r42-family="{family}"' in text, rel
 
-    # No accidental site-wide propagation before human acceptance.
-    for rel in ("index.html", "es/recursos/index.html", "en/resources/index.html"):
+    # R43 · every page already built on the R42 shell (Taller suite) receives the material system.
+    for path in root.rglob("index.html"):
+        text = path.read_text(encoding="utf-8")
+        body = re.search(r"<body[^>]*>", text, re.I)
+        if body and 'data-ig-r42-pilot="true"' in body.group(0):
+            rel = path.relative_to(root).as_posix()
+            assert MATERIALS in text, rel
+            assert 'data-ig-materials="r42"' in body.group(0), rel
+            assert "ig-r42-shell.css?v=r42-a3-1" not in text, rel
+
+    # Home R42 es la primera superficie general migrada fuera del piloto:
+    # consume materiales + Child Safety, pero NO el workspace/app-shell de herramientas.
+    home = root / "index.html"
+    if home.is_file():
+        text = home.read_text(encoding="utf-8")
+        assert 'data-ig-home-r42="true"' in text
+        assert CSS not in text, "index.html"
+        assert JS not in text, "index.html"
+        assert "data-ig-r42-pilot" not in text, "index.html"
+        assert CHILD_SAFETY_JS in text, "index.html"
+        assert MATERIALS in text, "index.html"
+        assert 'data-ig-materials="r42"' in text, "index.html"
+
+    # Las demás superficies generales siguen sin propagación material/app-shell
+    # hasta migrarse una a una y pasar HUMAN QA.
+    for rel in ("es/recursos/index.html", "en/resources/index.html"):
         path = root / rel
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
         assert CSS not in text, rel
         assert JS not in text, rel
+        assert CHILD_SAFETY_JS not in text, rel
         assert "data-ig-r42-pilot" not in text, rel
+        assert MATERIALS not in text, rel
+        assert "data-ig-materials" not in text, rel
 
 
 def main() -> None:
@@ -118,7 +197,7 @@ def main() -> None:
     source_contract()
     if args.root:
         built_contract(args.root)
-    print("R42 A3 app-shell contract: PASS")
+    print("R42 A3 app-shell + R42-Design materials contract: PASS")
 
 
 if __name__ == "__main__":

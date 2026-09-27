@@ -70,6 +70,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)
+    # R43/Design: aplicar el sistema material a portada + todas las rutas públicas
+    # existentes del Taller, sin modificar motores ni contenido.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_taller_materials_r43.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
 
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
@@ -143,10 +147,38 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R02 documentación general: cuatro correcciones jurídicas auditadas, aplicadas
+    # como delta exacto sobre las dos copias públicas del dataset.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R02 Investigación: incorporar los 12 estudios normalizados nuevos y verificar
+    # el hash del delta antes de aplicar la separación Child Safety.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R42 Child Safety: construir el índice seguro ANTES de que el buscador del navegador lo consuma.
+    # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # S2 con ruta propia: el cuerpo completo sale del HTML inicial y queda en un fragmento
+    # separado. Solo ADULTEZ + acción explícita lo solicita desde el navegador.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Investigación agregada: retirar seis S2 del dataset/fallback inicial y
+    # publicar sus cuerpos solo como fragmentos lazy de carga explícita adulta.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # Discovery transversal: retirar tarjetas/enlaces S2 incidentales antes del render.
+    # Adultez recupera únicamente metadatos seguros tras selección explícita.
+    subprocess.run([sys.executable,str(ROOT/'scripts/filter_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
     # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)

@@ -181,7 +181,11 @@ iris_card=(ROOT/"assets/tarjeta-iris.js").read_text(encoding="utf-8")
 subprocess.run(["node","--check",str(ROOT/"assets/tarjeta-iris.js")],cwd=ROOT,check=True)
 assert "requestAnimationFrame" in iris_card and "scheduleLivePreview" in iris_card
 for p in [ROOT/"es/recursos/tarjeta-iris/index.html",ROOT/"en/resources/iris-card/index.html"]:
-    assert "/assets/tarjeta-iris.js?v=r42-a1-tech-r01" in p.read_text(encoding="utf-8")
+    text=p.read_text(encoding="utf-8")
+    assert "/assets/tarjeta-iris.js?v=r42-a1-tech-r01" in text
+    assert text.count('/assets/preferencias-lectura.js') == 1
+    assert text.count('/assets/lectura-accesible.js') == 1
+    assert text.index('/assets/preferencias-lectura.js') < text.index('/assets/lectura-accesible.js')
 
 visual_routines=(ROOT/"assets/rutinas-visuales.js").read_text(encoding="utf-8")
 visual_routines_css=(ROOT/"assets/rutinas-visuales.css").read_text(encoding="utf-8")

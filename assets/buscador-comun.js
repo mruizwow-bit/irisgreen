@@ -6,7 +6,9 @@
 (function () {
   'use strict';
   if (window.IGSearch) return;
-  var pending;
+  var pending = {};
+  var intentionalPending = null;
+  var intentionalSafe = [];
   var equivalencias = null;   // { es: {palabra:[destinos]}, en: {...} }, ya filtradas
   var stopEs = new Set('no me con el la que de del a y o en un una lo los las al se su mi te les nos por para es son ser estoy esta este eso hay muy mas pero si ya cuando donde como todo toda'.split(' '));
   var stopEn = new Set('i me my the a an and or of to in on for with is are am be been being this that these those it its at as from by can could would should do does did have has had'.split(' '));
@@ -79,6 +81,19 @@
   function source(item) { return item && item._raw ? item._raw : item; }
   function localizedRaw(item, lang) {
     var raw = source(item) || {};
+    /* R42 Child Safety audit schema. It stays the canonical data shape; this adapter
+       only presents it through the legacy IGSearch API. */
+    if (raw.title_es || raw.title_en) {
+      var english = language(lang) === 'en';
+      return Object.assign({}, raw, {
+        s: raw.surface || raw.s || '',
+        t: english ? (raw.title_en || raw.title_es || '') : (raw.title_es || raw.title_en || ''),
+        u: english ? (raw.url_en || raw.canonical_url_en || raw.url_es || raw.canonical_url_es || '') : (raw.url_es || raw.canonical_url_es || raw.url_en || raw.canonical_url_en || ''),
+        d: english ? (raw.summary_en || raw.summary_es || '') : (raw.summary_es || raw.summary_en || ''),
+        a: english ? (raw.area_or_type_en || raw.area_or_type_es || '') : (raw.area_or_type_es || raw.area_or_type_en || ''),
+        indexKey: english ? (raw.title_en || raw.title_es || '') : (raw.title_es || raw.title_en || '')
+      });
+    }
     if (language(lang) !== 'en' || !raw.en || typeof raw.en !== 'object') return raw;
     var en = raw.en;
     return Object.assign({}, raw, {
@@ -122,7 +137,7 @@
     var words = tokens(query, lang);
     if (!words.length) return items.map(function (item) { return localize(item, lang); });
     var phrase = norm(query);
-    return items.map(function (item, index) {
+    var ranked = items.map(function (item, index) {
       var value = localize(item, lang);
       var score = 0;
       var cobertura = 0;
@@ -167,6 +182,32 @@
     }).filter(function (hit) { return hit.score > 0; })
       .sort(function (a, b) { return b.fit - a.fit || b.score - a.score || a.index - b.index; })
       .map(function (hit) { return hit.item; });
+    return addIntentionalSafe(ranked, query, lang);
+  }
+
+  function intentionalMatch(item, query, lang) {
+    var q = norm(query);
+    if (!q) return false;
+    var value = localize(item, lang);
+    /* Deliberately strict: a safe S2 result is discoverable in safe modes only
+       when the typed query matches its title/index key exactly after normalisation.
+       Broad terms never promote S2 into suggestions/results. */
+    return q === value._title || q === norm(value.indexKey);
+  }
+
+  function addIntentionalSafe(results, query, lang) {
+    var policy = window.IGChildSafety;
+    var audience = policy && policy.getAudience ? policy.getAudience() : 'default';
+    if (audience === 'adult') return results;
+    var extras = intentionalSafe.filter(function (item) { return intentionalMatch(item, query, lang); })
+      .map(function (item) {
+        var value = localize(item, lang);
+        value._igIntentionalSafe = true;
+        return value;
+      });
+    var seen = new Set(results.map(function (item) { return path(item.url); }));
+    extras.forEach(function (item) { if (!seen.has(path(item.url))) { results.unshift(item); seen.add(path(item.url)); } });
+    return results;
   }
   /* Descarta las equivalencias cuyo destino no aparece en ninguna ficha: una
      errata en el archivo de datos no puede alterar la búsqueda en silencio. */
@@ -201,29 +242,62 @@
       .then(function (data) { if (data) equivalencias = filtrarEquivalencias(data, items); })
       .catch(function () { equivalencias = null; });
   }
+  function indexMode() {
+    var policy = window.IGChildSafety;
+    var audience = policy && policy.getAudience ? policy.getAudience() : 'default';
+    return audience === 'adult' ? 'adult' : 'safe';
+  }
+  function indexUrl(mode) {
+    return mode === 'adult'
+      ? '/buscador.json'
+      : '/assets/content-safety/search-safe-default.json';
+  }
+  function validIndexedItem(item) {
+    if (!item) return false;
+    if (item.title_es || item.title_en) {
+      var u = item.url_es || item.canonical_url_es || item.url_en || item.canonical_url_en;
+      return typeof u === 'string' && u.startsWith('/');
+    }
+    return typeof item.t === 'string' && typeof item.u === 'string' && item.u.startsWith('/');
+  }
+  function loadIntentionalSafe() {
+    if (intentionalPending) return intentionalPending;
+    intentionalPending = fetch('/assets/content-safety/search-intentional-safe.json', { cache:'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (data) {
+        intentionalSafe = Array.isArray(data) ? data.filter(validIndexedItem).map(prepare) : [];
+        return intentionalSafe;
+      }).catch(function () { intentionalSafe = []; return intentionalSafe; });
+    return intentionalPending;
+  }
   function load() {
-    if (pending) return pending;
+    var mode = indexMode();
+    if (pending[mode]) return pending[mode];
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 10000);
-    pending = fetch('/buscador.json', { signal: controller.signal, cache: 'no-cache' })
-      .then(function (response) {
+    pending[mode] = Promise.all([
+      fetch(indexUrl(mode), { signal:controller.signal, cache:'no-cache' }).then(function (response) {
         if (!response.ok) throw new Error('No se ha podido cargar el índice (' + response.status + ').');
         return response.json();
-      }).then(function (data) {
-        if (!Array.isArray(data)) throw new Error('El índice no tiene el formato esperado.');
-        var seen = new Set();
-        var items = data.filter(function (item) {
-          if (!item || typeof item.t !== 'string' || typeof item.u !== 'string' || !item.u.startsWith('/')) return false;
-          var key = path(item.u);
-          if (seen.has(key)) return false;
-          seen.add(key); return true;
-        }).map(prepare);
-        /* Las equivalencias son una ayuda, no un requisito: si tardan o fallan,
-           la búsqueda ya está lista. */
-        return cargarEquivalencias(items).then(function () { return items; });
-      }).catch(function (error) { pending = null; throw error; })
+      }),
+      loadIntentionalSafe()
+    ]).then(function (parts) {
+      var data = parts[0];
+      if (!Array.isArray(data)) throw new Error('El índice no tiene el formato esperado.');
+      var seen = new Set();
+      var items = data.filter(validIndexedItem).filter(function (item) {
+        var raw = localizedRaw(item, 'es');
+        var key = path(raw.u || raw.url);
+        if (!key || seen.has(key)) return false;
+        seen.add(key); return true;
+      }).map(prepare);
+      return cargarEquivalencias(items).then(function () { return items; });
+    }).catch(function (error) { delete pending[mode]; throw error; })
       .finally(function () { clearTimeout(timeout); });
-    return pending;
+    return pending[mode];
   }
-  window.IGSearch = Object.freeze({ load: load, rank: rank, norm: norm, path: path, prepare: prepare, localize: localize, stem: stem, formas: formas });
+  window.addEventListener('ig:audience-change', function () {
+    /* Cached datasets are kept by policy class (safe/adult); no personal state is stored. */
+  });
+  window.IGSearch = Object.freeze({ load: load, rank: rank, norm: norm, path: path, prepare: prepare, localize: localize, stem: stem, formas: formas, intentionalMatch:intentionalMatch });
 })();

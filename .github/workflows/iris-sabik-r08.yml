@@ -3,7 +3,7 @@ on:
   push:
     branches: ['agent2/sabik-iris-r08-20260924']
   pull_request:
-    paths: ['sabik/**','assets/iris-*','scripts/*iris_brief*','.github/workflows/iris-sabik-r08.yml']
+    paths: ['sabik/**','assets/iris-*','assets/ig-home-r42.*','editorial/navigation/home-r42.html','editorial/navigation/manifest.json','scripts/*iris_brief*','scripts/apply_page_finder.py','scripts/build_approved_navigation.py','scripts/test_iris_brief_r08.py','scripts/test_r42_home.py','.github/workflows/iris-sabik-r08.yml']
 permissions:
   contents: read
 jobs:
@@ -22,6 +22,7 @@ jobs:
       - run: node tools/test-r40-rincon-r03.js
       - run: node tools/test-sabik-authorized-transport-r06.mjs
       - run: python scripts/build_site.py
+      - run: python scripts/test_r42_home.py
       - run: python scripts/test_iris_brief_r08.py
       - run: python scripts/test_resources_current.py
       - run: python scripts/test_iris_corrections_r09.py

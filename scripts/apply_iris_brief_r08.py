@@ -27,17 +27,21 @@ def apply(root):
    for a in doc.nodes:
     if a['tag']=='a' and 'ri-card' in a['attrs'].get('class','').split() and a['attrs'].get('href') in TOP:
      parents=[n for n in doc.nodes if n['tag']=='li' and n['start']<a['start'] and n.get('end',0)>a['end']];li=min(parents,key=lambda n:n['end']-n['start']);changes.append((li['start'],li['end'],''))
+  home_r42='data-ig-home-r42="true"' in text
   brief_hash=hashlib.sha256((ROOT/'assets/iris-brief-r08.css').read_bytes()).hexdigest()[:12]
-  styles=f'<link rel="stylesheet" href="/assets/iris-brief-r08.css?v={brief_hash}">'
+  # La Home R42 tiene su propio sistema visual. R08 solo conserva aquí el montaje
+  # de Sabik; no vuelve a superponer la capa visual antigua.
+  styles='' if home_r42 else f'<link rel="stylesheet" href="/assets/iris-brief-r08.css?v={brief_hash}">'
   if rel=='index.html':
-   kind='home';home=doc.one(id='home-view');body=doc.one('body');nav=doc.one('nav',**{'class':'nav'})
+   kind='home';home=doc.one(id='home-view');body=doc.one('body');nav=None if home_r42 else doc.one('nav',**{'class':'nav'})
    changes.append((home['open_end'],home['open_end'],'<div class="iris-home-content">'))
    changes.append((home['close_start'],home['close_start'],'</div>'+(ROOT/'sabik/iris-panel.html').read_text()))
    mount_hash=hashlib.sha256((ROOT/'sabik/iris-mount.css').read_bytes()).hexdigest()[:12]
    styles+=f'<link rel="stylesheet" href="/sabik/iris-mount.css?v={mount_hash}">'
    scripts=''.join(f'<script defer src="{src}"></script>' for src in ['/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/retrieval-panel.js','/assets/iris-brief-r08.js'])+'<script type="module" src="/sabik/iris-mount.mjs"></script>'
    changes.append((body['close_start'],body['close_start'],scripts))
-   changes.append((nav['close_start'],nav['close_start'],'<a href="/es/intereses/" data-iris-top="interests">Tus intereses</a><a href="/es/taller/" data-iris-top="workshop">El taller</a>'))
+   if nav is not None and not home_r42:
+    changes.append((nav['close_start'],nav['close_start'],'<a href="/es/intereses/" data-iris-top="interests">Tus intereses</a><a href="/es/taller/" data-iris-top="workshop">El taller</a>'))
   changes.append((head['close_start'],head['close_start'],styles))
   result=edit(text,changes).replace('https://irisgreen.eu/img/v40-brand-symbol.webp','https://irisgreen.eu/assets/iris-wordmark.svg').replace('Símbolo de Iris Green: una flor de iris','Iris Green').replace('Iris Green symbol: an iris flower','Iris Green')
   flip_hash=hashlib.sha256((ROOT/'assets/libros-flipbooks.js').read_bytes()).hexdigest()[:12]

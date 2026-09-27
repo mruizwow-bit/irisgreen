@@ -57,6 +57,8 @@
  justify-content:center!important;
  box-sizing:border-box!important;
 }
+/* R42-DESIGN-R01: un botón oculto (hidden) no debe aparecer como píldora vacía sin nombre. */
+.r42-rincon .r40-scene-actions [hidden]{display:none!important}
 .r42-rincon .r42-more-actions{position:relative;min-width:0}
 .r42-rincon .r42-more-actions>summary{
  list-style:none;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;cursor:pointer;font:inherit
@@ -165,3 +167,16 @@ body.rm.r42-rincon .r42-media-poster{opacity:1!important;transform:none!importan
 .r42-rincon #sceneList>.qchoice .qthumb{display:none!important}
 .r42-rincon #sceneList>.qchoice strong{font-size:.94rem;line-height:1.15}
 .r42-rincon #sceneList>.qchoice small{font-size:.78rem;line-height:1.25;margin-top:.2rem}
+
+
+/* R42 integration closure: the Quiet Space global header is dark in the material
+   shell, so its legacy navy link colours must not survive the page-specific cascade. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .brand,
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .brand span,
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a,
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a.calma{
+  color:#eef4f8!important;
+}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a[aria-current="page"]{
+  color:#0b1a2b!important;
+}
