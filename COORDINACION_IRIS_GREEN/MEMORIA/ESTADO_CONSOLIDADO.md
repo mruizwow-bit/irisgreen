@@ -1,5 +1,9 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · ES codes completos · 27/09/2026
+
+`SABIK_ES_TRAIN_V1` queda preparado con `train_with_codes.jsonl` completo 133/133 mediante tokenización segura batch 1 y UTF-8. La ejecución terminó con ≈13.82 GiB de VRAM libre y se creó una muestra REVIEW de 12 WAV para QA previo a SFT.
+
 ## Sabik · EN V1 canonizado / ES corpus listo para codes · 27/09/2026
 
 `SABIK_EN_V1` queda materialmente canonizado desde E0. Hashes locales fijados: model `0346413f078b5f0f982974a35641fa3713bad13a71e9bf3237682acb5641e062`; config `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`. E2 se conserva como alternativo.
