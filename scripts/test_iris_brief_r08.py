@@ -22,7 +22,7 @@ def check_r05_ui(page,lang):
  assert set(field.get_attribute('aria-describedby').split())=={'sabik-input-help','sabik-availability'}
  assert page.locator('#sabik-announcement').get_attribute('role')=='status'
  assert page.locator('#sabik-announcement').get_attribute('aria-live')=='polite'
- if lang=='en':assert 'Original quotations are in Spanish.' in page.locator('#sabik-availability').inner_text()
+ if lang=='en':assert 'The original quotations are in Spanish.' in page.locator('#sabik-availability').inner_text()
  submit=page.get_by_role('button',name='Send' if lang=='en' else 'Enviar',exact=True)
  assert submit.is_disabled()
  field.fill('x'*299);field.press('End');field.press('y');field.press('z')
