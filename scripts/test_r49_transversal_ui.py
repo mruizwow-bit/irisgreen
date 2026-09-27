@@ -44,7 +44,14 @@ def main():
     root=args.root.resolve();manifest_path=root/'assets/r49-route-profiles.json'
     need(manifest_path.is_file(),'route/profile manifest missing')
     data=json.loads(manifest_path.read_text(encoding='utf-8'))
-    pages=sorted(p for p in root.rglob('*.html') if p.is_file())
+    pages=[]
+    for name in ('index.html','404.html'):
+        p=root/name
+        if p.is_file():pages.append(p)
+    for lang in ('es','en'):
+        base=root/lang
+        if base.is_dir():pages.extend(p for p in base.rglob('*.html') if p.is_file())
+    pages=sorted(set(pages))
     need(data['total_routes']==len(pages),'manifest total does not equal public HTML')
     need(data['unclassified']==0,'public routes remain unclassified')
     need(sum(data['profiles'].values())==len(pages),'profile counts do not sum to total')
