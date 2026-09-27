@@ -31,8 +31,15 @@ jobs:
           git worktree add /tmp/iris-r43 e8cad400a30d5d4857f9f99b0c1070d786958a8b
           git -C /tmp/iris-r43 config user.name "Claude R43 reconstruction"
           git -C /tmp/iris-r43 config user.email "noreply@irisgreen.eu"
-          git show origin/coordinacion/iris-green-canonica-20260924:COORDINACION_IRIS_GREEN/HANDOFFS/R43_TALLER_CREATIVO_CLAUDE/R43_TALLER_CREATIVO.patch.gz > /tmp/R43_TALLER_CREATIVO.patch.gz
-          gzip -dc /tmp/R43_TALLER_CREATIVO.patch.gz > /tmp/R43_TALLER_CREATIVO.patch
+          CANON='origin/coordinacion/iris-green-canonica-20260924:COORDINACION_IRIS_GREEN/HANDOFFS/R43_TALLER_CREATIVO_CLAUDE/R43_TALLER_CREATIVO.patch.gz'
+          if git cat-file -e "$CANON" 2>/dev/null; then
+            git show "$CANON" > /tmp/R43_TALLER_CREATIVO.patch.gz
+            gzip -dc /tmp/R43_TALLER_CREATIVO.patch.gz > /tmp/R43_TALLER_CREATIVO.patch
+          else
+            # Copia exacta preservada en esta rama durante la integración anterior.
+            cat .astra/r43-source/part-01.b64 .astra/r43-source/part-02.b64 .astra/r43-source/part-03.b64 .astra/r43-source/part-04.b64 \
+              | base64 -d | xz -dc > /tmp/R43_TALLER_CREATIVO.patch
+          fi
           git -C /tmp/iris-r43 am /tmp/R43_TALLER_CREATIVO.patch
           test "$(git -C /tmp/iris-r43 rev-parse HEAD)" = "5e83c489d1f4e35b36294ac0f39eddff6f0e8c14"
 
