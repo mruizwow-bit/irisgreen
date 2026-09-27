@@ -122,6 +122,7 @@ async def main():
             for w,h in WIDE:
                 m=await shot(page,path,f'wide-{profile}',w,h);report['screenshots'].append(f'wide-{profile}-{w}x{h}.png')
                 ratio=(m['main']['width']/w) if m['main'] else 0
+                if profile=='content':need(ratio>=.86,f'wide content product width too narrow {w}: {ratio:.3f}')
                 if profile=='browse':need(ratio>=.86,f'wide browse gutters too large {w}: {ratio:.3f}')
                 if profile=='workspace':need(ratio>=.92,f'wide workspace gutters too large {w}: {ratio:.3f}')
                 report['wide'].append({'profile':profile,'route':path,'width':w,'main_ratio':round(ratio,3),'article_width':round(m['article']['width'],1) if m['article'] else None,'shell_width':round(m['shell']['width'],1) if m['shell'] else None})
