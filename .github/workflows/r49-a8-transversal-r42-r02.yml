@@ -13,6 +13,7 @@ on:
       - 'scripts/apply_r49_transversal_ui.py'
       - 'scripts/test_r49_transversal_ui.py'
       - 'scripts/test_r49_transversal_browser.py'
+      - 'scripts/test_home_child_safe_browser.py'
       - 'scripts/build_site.py'
   workflow_dispatch:
 permissions:
