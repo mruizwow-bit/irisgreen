@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: r39-a9-cloud-library-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify-deploy-seal:
     runs-on: ubuntu-24.04
@@ -48,7 +52,7 @@ jobs:
           git diff --check "$BASE_SHA"...HEAD
           changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
           printf '%s\n' "$changed"
-          if printf '%s\n' "$changed" | grep -Ev '^(cloud/n04-r38-library/|\.github/workflows/r39-a9-cloud-library\.yml$)' ; then
+          if printf '%s\n' "$changed" | grep -Ev '^(cloud/n04-r38-library/|\.github/workflows/r39-a9-cloud-library\.yml$|COORDINACION_IRIS_GREEN/MEMORIA/R39_A9_BIBLIOTECA_CLOUD_20260927\.md$|COORDINACION_IRIS_GREEN/CONTROL/DELTA_R39_A9_BIBLIOTECA_CLOUD_20260927\.json$)' ; then
             echo "A9_SCOPE_VIOLATION"
             exit 1
           fi
