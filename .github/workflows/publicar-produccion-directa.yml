@@ -1,0 +1,27 @@
+name: Publicar artefacto de producción
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-produccion-directa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Construir sitio de producción
+        run: python3 scripts/build_site.py
+      - name: Empaquetar dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: irisgreen-production-dist
+          path: dist/
+          retention-days: 1
+          if-no-files-found: error
