@@ -204,6 +204,7 @@ body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-dialog::backdr
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(h1,h2,h3,h4,p,li,dt,dd,label,span,strong,small,summary,legend,figcaption,output){color:inherit}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.ig-r42-inspector-hint,.lede,.muted,small){color:var(--ig-ink-muted-on-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) a{color:var(--ig-link-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-dialog .ig-r42-help-source .crumb a{color:var(--ig-link-on-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.xhero,.ig-r42-help-source,.qcard,.r42-settings,.audio-now,.breathbox){background:transparent;border-color:var(--ig-separator-dark);box-shadow:none}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,select,input:not([type=range]),textarea,.ig-r42-action,.ig-r42-icon-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,.ig-r42-action,.ig-r42-icon-button):hover{background:var(--ig-state-hover-dark)}
