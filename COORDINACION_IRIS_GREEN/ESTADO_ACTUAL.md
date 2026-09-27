@@ -41,6 +41,27 @@ Siguiente puerta: A2 integra #310 → build/CI → una única Deploy Preview →
 
 # Estado operativo compartido
 
+## Sabik · Audio Library R01 verificada + handoff A2 listo · 27/09/2026
+
+**Estado: `SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED_HANDOFF_READY`.**
+
+Verificación del ZIP recibido:
+- SHA-256 recibido = esperado: `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`;
+- 30/30 hashes de WAV coinciden con el manifest;
+- 15 ES + 15 EN;
+- machine QA PASS: -16.5 LUFS, peak máximo -1.0 dBFS, 0 clipping;
+- limitador: 10/30, reducción máxima 2.774 dB.
+
+Modelos finales registrados:
+- EN `SABIK_EN_R02_FINAL`: model SHA `3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df`;
+- ES `SABIK_ES_R01_FINAL`: model SHA `8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291`.
+
+Se detectó una inconsistencia solo de metadata en el manifest original: `audio_policy.processing` seguía declarando gain-only aunque 10 entradas usan el limitador fallback ya documentado en `postprocess`. Se creó paquete de handoff verificado con metadata reconciliada, sin alterar los bytes de audio: SHA-256 `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`.
+
+Handoff: `HANDOFFS/SABIK_AUDIO_R01_FINAL/README.md`.
+
+Siguiente gate: A2 integra copy R02 + assets de audio en preview, con voz session-only bajo control del usuario, sin autoplay previo, sin doble locución con live regions y sin main/producción hasta HUMAN QA María.
+
 ## Sabik · AUDIO LIBRARY R01 FINAL · 27/09/2026
 
 **Estado: `SABIK_AUDIO_LIBRARY_R01_FINAL_MACHINE_QA_PASS_UPLOAD_VERIFY_NEXT`.**
