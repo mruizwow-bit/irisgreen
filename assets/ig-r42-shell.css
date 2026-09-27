@@ -121,6 +121,23 @@
     flex-wrap:wrap;
   }
 
+  .ig-r42-audience {
+    min-height:var(--r42-hit);
+    display:inline-flex;
+    align-items:center;
+  }
+
+  .ig-r42-audience select {
+    min-height:var(--r42-hit);
+    max-width:11.5rem;
+    border:1px solid var(--r42-line-strong);
+    border-radius:12px;
+    background:var(--r42-surface);
+    color:var(--r42-ink);
+    padding:.55rem 2rem .55rem .65rem;
+    font:700 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;
+  }
+
   .ig-r42-project-status {
     min-height:var(--r42-hit);
     display:inline-flex;
@@ -360,6 +377,13 @@
     .ig-r42-action {
       flex:1 1 auto;
       padding:.45rem .55rem;
+    }
+    .ig-r42-audience {
+      flex:1 1 auto;
+    }
+    .ig-r42-audience select {
+      width:100%;
+      max-width:none;
     }
     .ig-r42-project-status {
       width:100%;
@@ -717,6 +741,12 @@
       border-color:CanvasText;
       box-shadow:none;
       forced-color-adjust:auto;
+    }
+
+    .ig-r42-audience select {
+      color:CanvasText;
+      background:Canvas;
+      border-color:CanvasText;
     }
 
     .ig-r42-primary,
