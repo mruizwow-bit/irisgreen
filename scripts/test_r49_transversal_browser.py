@@ -88,6 +88,7 @@ try{new PerformanceObserver(l=>{for(const e of l.getEntries())if(e.interactionId
       return n?{domContentLoaded:n.domContentLoadedEventEnd,load:n.loadEventEnd,transferSize:n.transferSize}:null;
     }""")
     p=await page.evaluate('window.__r49perf')
+    need(isinstance(p,dict),'performance observers did not initialise '+path)
     p['inp_observed_ms']=max(p.get('events') or [0]);p.pop('events',None);p['navigation']=nav;p['route']=path;p['sample']=name
     await page.close();return p
 
