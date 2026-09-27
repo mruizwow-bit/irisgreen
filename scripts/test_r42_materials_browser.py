@@ -205,17 +205,30 @@ def main() -> None:
                 ctx = context((1440, 900))
                 page = ctx.new_page()
                 load(page, rel)
+                # Product engines enhance asynchronously after DOMContentLoaded. Measure reset
+                # only after the stage root has stopped changing, otherwise the test mistakes
+                # normal initialisation for a transparency-triggered reset.
                 page.evaluate("window.__igAlive = document.querySelector('.ig-r42-stage').firstElementChild")
+                page.wait_for_timeout(600)
+                if not page.evaluate("window.__igAlive === document.querySelector('.ig-r42-stage').firstElementChild"):
+                    page.evaluate("window.__igAlive = document.querySelector('.ig-r42-stage').firstElementChild")
+                    page.wait_for_timeout(350)
+                row["stable_before"] = page.evaluate("window.__igAlive === document.querySelector('.ig-r42-stage').firstElementChild")
+                assert row["stable_before"], row
                 page.locator("#a11yBtn").click()
                 page.locator("[data-ig-transparency-choice='opaque']").click()
-                assert page.evaluate("document.documentElement.dataset.igTransparency") == "opaque"
-                assert page.evaluate("window.__igAlive === document.querySelector('.ig-r42-stage').firstElementChild")
-                assert page.locator("[data-ig-transparency-choice='opaque']").get_attribute("aria-pressed") == "true"
-                label = page.locator(".ig-transparency-title").inner_text()
-                assert label == ("Transparency" if rel.startswith("en/") else "Transparencia"), label
+                row["mode_after_click"] = page.evaluate("document.documentElement.dataset.igTransparency")
+                row["same_stage_after_click"] = page.evaluate("window.__igAlive === document.querySelector('.ig-r42-stage').firstElementChild")
+                row["pressed"] = page.locator("[data-ig-transparency-choice='opaque']").get_attribute("aria-pressed")
+                row["label"] = page.locator(".ig-transparency-title").inner_text()
+                assert row["mode_after_click"] == "opaque", row
+                assert row["same_stage_after_click"], row
+                assert row["pressed"] == "true", row
+                assert row["label"] == ("Transparency" if rel.startswith("en/") else "Transparencia"), row
                 page.reload(wait_until="domcontentloaded")
                 page.locator(".ig-r42-shell").wait_for(state="visible")
-                assert page.evaluate("document.documentElement.dataset.igTransparencySource") == "user"
+                row["source_after_reload"] = page.evaluate("document.documentElement.dataset.igTransparencySource")
+                assert row["source_after_reload"] == "user", row
                 ctx.close()
 
             case(row, no_reset)
