@@ -1,0 +1,50 @@
+{
+  "id": "SABIK-AUDIO-R01-A2-INTEGRATION-20260927",
+  "date": "2026-09-27",
+  "owner": "Agente 2 integra / Astra revisa",
+  "status": "SABIK_AUDIO_R01_A2_RUNTIME_PREVIEW_READY_WAV_TRANSFER_BLOCKED",
+  "authority": [
+    "#289",
+    "SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED_HANDOFF_READY"
+  ],
+  "web_branch": "agent2/sabik-iris-r08-20260924",
+  "integration": {
+    "home_child_safe_pr": 310,
+    "preview": "https://deploy-preview-244--irisgreen-home.netlify.app/",
+    "copy_r02": {
+      "records": 40,
+      "keep": 25,
+      "revised": 15,
+      "hold": 0
+    },
+    "runtime": "sabik/audio-r01.mjs",
+    "manifest": "sabik/assets/audio-r01/manifest.runtime.json",
+    "asset_gate": "scripts/test_sabik_audio_assets_r01.py"
+  },
+  "artifact": {
+    "library_path": "/SABIK/HANDOFFS/SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED.zip",
+    "sha256": "96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c",
+    "wav_expected": 30,
+    "es": 15,
+    "en": 15
+  },
+  "evidence": {
+    "manifest_http": "PASS",
+    "sample_wav_http": "404",
+    "runtime_test": "PASS",
+    "copy_test": "PASS",
+    "build": "PASS",
+    "home_child_safe": "PASS",
+    "final_asset_gate": "PENDING_WAV_BINARY_INGESTION"
+  },
+  "next_gate": "30/30 WAV present + exact SHA-256 + HTTP 200/MIME audio + HUMAN QA before final marker",
+  "final_marker_emitted": false,
+  "prohibitions": [
+    "main",
+    "production",
+    "retraining",
+    "audio regeneration",
+    "models or masters in public Git",
+    "dynamic result narration"
+  ]
+}
