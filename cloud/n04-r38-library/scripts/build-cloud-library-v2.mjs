@@ -24,29 +24,6 @@ function collectText(value, key = '') {
   return [];
 }
 
-const SAFE_TEXT = Object.freeze({
-  abuse_exploitation: {
-    es: 'Si una relación, contacto o petición te hace sentir inseguridad, presión o miedo, puedes buscar apoyo y alejarte de la situación cuando sea posible. Una persona adulta de confianza, un servicio especializado o los servicios de emergencia de tu zona pueden ayudarte si hay peligro.',
-    en: 'If a relationship, contact or request makes you feel unsafe, pressured or afraid, you can seek support and move away from the situation when possible. A trusted adult, a specialist service or local emergency services can help if there is immediate danger.'
-  },
-  eating_disorder: {
-    es: 'Las dificultades con la alimentación pueden afectar a la salud y al bienestar. Si comer, evitar alimentos o la preocupación por el cuerpo está causando problemas, es importante pedir apoyo a una persona de confianza y a un profesional sanitario. Esta versión evita cifras, pesos y detalles que pueden resultar perjudiciales.',
-    en: 'Eating difficulties can affect health and wellbeing. If eating, avoiding food or worries about the body are causing problems, it is important to seek support from a trusted person and a healthcare professional. This version avoids numbers, weights and details that may be harmful.'
-  },
-  trauma: {
-    es: 'Después de una experiencia muy difícil, algunas personas tienen recuerdos, miedo, alerta intensa o evitación. El apoyo debe centrarse en la seguridad, el control de la persona y la posibilidad de pedir ayuda sin obligarla a contar detalles.',
-    en: 'After a very difficult experience, some people have distressing memories, fear, intense alertness or avoidance. Support should focus on safety, the person’s control and being able to ask for help without being required to describe details.'
-  },
-  suicide_self_harm: {
-    es: 'Si tú o alguien cercano está en peligro inmediato o puede hacerse daño, busca ayuda de emergencia en tu zona. Si aparecen pensamientos de hacerse daño o de no querer seguir, no hace falta afrontarlos a solas: habla con una persona de confianza o con un profesional y busca apoyo cuanto antes.',
-    en: 'If you or someone close to you is in immediate danger or may hurt themselves, seek emergency help in your area. If thoughts of self-harm or not wanting to continue appear, they do not have to be faced alone: talk to a trusted person or a professional and seek support as soon as possible.'
-  },
-  sexual_adverse_experience: {
-    es: 'Una experiencia sexual no deseada o una situación de presión merece apoyo y una respuesta centrada en la seguridad y el consentimiento. La persona puede buscar ayuda de alguien de confianza o de un servicio especializado sin tener que explicar más detalles de los que quiera.',
-    en: 'An unwanted sexual experience or a situation involving pressure deserves support and a response focused on safety and consent. The person can seek help from someone they trust or a specialist service without having to share more detail than they want.'
-  }
-});
-
 const S2_CATALOG = new Map([
   ['Abuso y explotación', 'abuse_exploitation'],
   ['Anorexia nerviosa', 'eating_disorder'],
@@ -143,9 +120,11 @@ function pushFragment(input) {
   fragments.push(fragment);
   return fragment;
 }
-function addPairSafeVariant(full, group) {
-  const text = SAFE_TEXT[group]?.[full.locale];
-  if (!text) throw new Error('Missing safe variant text for ' + group + '/' + full.locale);
+function addSourceSafeVariant(full, group, safeText) {
+  const text = String(safeText || '').trim();
+  if (!text) throw new Error('Missing public source excerpt for safe variant ' + group + '/' + full.locale);
+  // The safe variant is a literal excerpt already present in the pinned public source.
+  // A9 does not author or translate safety copy.
   const safeId = full.fragment_id.replace(/:main$/, ':safe');
   full.safe_variant_id = safeId;
   pushFragment({
@@ -154,10 +133,10 @@ function addPairSafeVariant(full, group) {
     locale: full.locale,
     url: full.url,
     title: full.title,
-    heading: full.locale === 'es' ? 'Resumen seguro' : 'Safe summary',
+    heading: full.locale === 'es' ? 'Extracto de fuente' : 'Source excerpt',
     text,
     source_type: 'safe_variant',
-    editorial_status: 'SAFETY_DERIVED_R01',
+    editorial_status: 'PUBLIC_SOURCE_SAFE_EXCERPT_R01',
     source: {
       source_version: full.source_version,
       source_sha256: full.source_sha256,
@@ -195,7 +174,7 @@ catalog.forEach((x, i) => {
     concepts: [x.en.a, x.tipo, ...(Array.isArray(x.k) ? x.k : [])],
     safe_variant_group: group
   });
-  if (group) { addPairSafeVariant(es, group); addPairSafeVariant(en, group); }
+  if (group) { addSourceSafeVariant(es, group, x.d); addSourceSafeVariant(en, group, x.en.d); }
 });
 
 function addData(locale, page, index, snapshotName, basePath) {
@@ -226,7 +205,7 @@ function addEveryday(locale, card, index, snapshotName, basePath) {
     concepts: card.concepts || [], source_editorial_status: card.status || null,
     safe_variant_group: group
   });
-  if (group) addPairSafeVariant(full, group);
+  if (group) addSourceSafeVariant(full, group, card.lede);
 }
 everydayEs.fichas.forEach((p, i) => addEveryday('es', p, i, 'everyday-es.json', '/es/biblioteca/'));
 everydayEn.fichas.forEach((p, i) => addEveryday('en', p, i, 'everyday-en.json', '/en/everyday-life/'));
@@ -250,7 +229,10 @@ research.forEach((study, i) => {
     heading: study.topic || '', text: [ ...(study.text_en || []), study.means_en, study.notProven_en ].filter(Boolean).join('\n'),
     concepts: [study.topic, study.designKey, study.titleOrig]
   });
-  if (group) { addPairSafeVariant(es, group); addPairSafeVariant(en, group); }
+  if (group) {
+    addSourceSafeVariant(es, group, (study.text || [])[0]);
+    addSourceSafeVariant(en, group, (study.text_en || [])[0]);
+  }
 });
 
 const ids = new Set(fragments.map(f => f.fragment_id));
