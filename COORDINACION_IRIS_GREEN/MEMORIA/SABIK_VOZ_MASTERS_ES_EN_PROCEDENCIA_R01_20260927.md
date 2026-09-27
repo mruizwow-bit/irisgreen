@@ -91,6 +91,26 @@ Hashes del modelo canonizado:
 
 El corpus ES existente queda auditado para la siguiente fase: 133 WAV, 22.56 min, 0 errores de lectura, 133 líneas en `train_raw.jsonl`, manifest presente y audio codes pendientes.
 
+
+## 3E. Modelos entrenados finales
+
+EN final:
+- ID: `SABIK_EN_R02_FINAL`;
+- model SHA-256: `3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df`;
+- config SHA-256: `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`.
+
+ES final:
+- ID: `SABIK_ES_R01_FINAL`;
+- model SHA-256: `8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291`;
+- config SHA-256: `6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e`.
+
+Audio fijo asociado:
+- 30 WAV (15 ES + 15 EN);
+- ZIP original SHA-256: `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`;
+- paquete de handoff verificado SHA-256: `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`.
+
+Los modelos y masters no se publican en GitHub público; solo quedan registrados por hash/procedencia.
+
 ## 4. Master español aprobado
 
 `SABIK_ES_MASTER_V1.wav` es una copia canónica de `SABIK_ES_LONG_REF.wav`.
