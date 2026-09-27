@@ -94,7 +94,9 @@ def run():
      if i<2:
       assert row['lang']==('en' if i==1 else 'es')
       assert page.locator('#sabik-submit').is_disabled();assert page.locator('#sabik-web-master').evaluate('(el)=>el.complete&&el.naturalWidth>0')
-      page.locator('#sabik-toggle').focus();page.locator('#sabik-toggle').press('Enter');assert page.locator('#sabik-widget-body').is_hidden();page.locator('#sabik-toggle').press('Enter');assert page.locator('#sabik-widget-body').is_visible()
+      page.locator('#sabik-toggle').focus();page.locator('#sabik-toggle').press('Enter')
+      assert page.locator('#sabik-widget-body').is_hidden(),{'errors':errors,'aria_expanded':page.locator('#sabik-toggle').get_attribute('aria-expanded'),'hidden_prop':page.locator('#sabik-widget-body').evaluate('(e)=>e.hidden')}
+      page.locator('#sabik-toggle').press('Enter');assert page.locator('#sabik-widget-body').is_visible(),{'errors':errors,'aria_expanded':page.locator('#sabik-toggle').get_attribute('aria-expanded')}
       row['r05_connection_ui']=check_r05_ui(page,row['lang'])
       assert not cloud_requests,'Cloud contacted before an explicit query'
       row['r05_connection_ui']['automatic_cloud_requests']=0
