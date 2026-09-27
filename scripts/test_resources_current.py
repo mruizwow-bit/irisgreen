@@ -5,6 +5,7 @@ from pathlib import Path
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 ROOT=Path(__file__).resolve().parents[1]
 PAIRS=[('/es/recursos/juegos/','/en/resources/games/'),('/es/recursos/rutinas-imprimibles/','/en/resources/printable-routines/'),('/es/recursos/rutinas-visuales/','/en/resources/visual-routines/')]
+CARD_PAIR=('/es/recursos/tarjeta-iris/','/en/resources/iris-card/')
 
 def static(root):
     retired=json.loads((ROOT/'scripts/retired_game_routes.json').read_text())
@@ -135,6 +136,62 @@ def browser_checks(root,out):
                 except Exception:pass
                 raise
               finally:ctx.close()
+        # R42 Resources A: Iris Card must load the shared preference controller before the static adapter.
+        for width in [1440,320]:
+          for lang,path in zip(['es','en'],CARD_PAIR):
+            row={'path':path,'width':width,'scenario':'iris-card-reading-preferences'}
+            ctx=browser.new_context(viewport={'width':width,'height':900},accept_downloads=True)
+            page=ctx.new_page();page.set_default_timeout(15000)
+            errors=[];page.on('pageerror',lambda error:errors.append(str(error)))
+            try:
+              page.goto(base+path,wait_until='networkidle');page.locator('main h1').first.wait_for()
+              assert page.locator('html').get_attribute('lang')==lang
+              assert page.evaluate('typeof window.IGPreferences==="object"')
+              scripts=page.locator('script[src]')
+              srcs=scripts.evaluate_all('(els)=>els.map(e=>e.getAttribute("src"))')
+              assert srcs.count('/assets/preferencias-lectura.js')==1,srcs
+              assert srcs.count('/assets/lectura-accesible.js')==1,srcs
+              assert srcs.index('/assets/preferencias-lectura.js')<srcs.index('/assets/lectura-accesible.js'),srcs
+
+              trigger=page.locator('#a11yBtn');trigger.focus();trigger.press('Enter')
+              panel=page.locator('#a11y');assert not panel.get_attribute('hidden')
+              assert trigger.get_attribute('aria-expanded')=='true'
+              assert page.evaluate('document.activeElement && document.activeElement.closest("#a11y")!==null')
+
+              page.locator('#a11y [data-a="fs+"]').click()
+              assert page.evaluate('window.IGPreferences.get().scale>1')
+              page.locator('#a11y [data-a="ls"]').click()
+              assert page.evaluate('window.IGPreferences.get().spacing===true')
+              page.locator('#a11y [data-a="big"]').click()
+              assert page.evaluate('window.IGPreferences.get().controls===true && document.body.classList.contains("big")')
+              page.locator('#a11y [data-a="hc"]').click()
+              assert page.evaluate('window.IGPreferences.get().contrast===true && document.documentElement.dataset.igContrast==="on"')
+              page.locator('#a11y [data-a="rm"]').click()
+              assert page.evaluate('window.IGPreferences.get().motion===true && document.body.classList.contains("rm")')
+
+              transparency=page.locator('#a11y [data-ig-transparency-settings]')
+              if transparency.count():
+                page.locator('#a11y [data-ig-transparency-choice="opaque"]').click()
+                assert page.evaluate('window.IGPreferences.getTransparency()==="opaque"')
+                row['transparency']='tested'
+              else:
+                row['transparency']='not_applicable_no_material_system'
+
+              page.locator('#a11y [data-a="reset"]').click()
+              state=page.evaluate('window.IGPreferences.get()')
+              assert state['scale']==1 and not state['spacing'] and not state['controls'] and not state['contrast'] and not state['motion'],state
+              page.keyboard.press('Escape')
+              assert panel.get_attribute('hidden') is not None
+              assert trigger.get_attribute('aria-expanded')=='false'
+              assert page.evaluate('document.activeElement && document.activeElement.id==="a11yBtn"')
+              assert not errors,(path,width,errors)
+              row['passed']=True;results.append(row)
+            except Exception as error:
+              row.update(passed=False,error=str(error),page_errors=errors);results.append(row)
+              try:page.screenshot(path=str(out/f'failure-card-reading-{lang}-{width}.png'),full_page=True)
+              except Exception:pass
+              raise
+            finally:ctx.close()
         browser.close()
     finally:server.shutdown();server.server_close()
     return results
