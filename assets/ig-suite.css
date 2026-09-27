@@ -115,6 +115,9 @@ body[data-ig-suite] .igs-field :is(input[type=number],input[type=text],select,te
 }
 body[data-ig-suite] .igs-field input[type=range] { width:100%; min-height:32px; accent-color:var(--igs-blue); }
 body[data-ig-suite] .igs-field input[type=color] { width:3rem; height:2.3rem; border:1px solid var(--igs-control); border-radius:8px; padding:2px; background:#fff; }
+body[data-ig-suite] .igs-field-inline { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+body[data-ig-suite] .igs-check { display:flex; align-items:center; gap:.5rem; }
+body[data-ig-suite] .igs-check input { width:22px; height:22px; accent-color:var(--igs-blue); }
 body[data-ig-suite] .igs-unit, body[data-ig-suite] .igs-out { color:var(--igs-ink-soft); font:600 .85rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; white-space:nowrap; }
 body[data-ig-suite] .igs-choice-row { display:flex; flex-wrap:wrap; gap:.3rem; }
 body[data-ig-suite] .igs-choice-item { position:relative; }
