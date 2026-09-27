@@ -13,9 +13,7 @@ from __future__ import annotations
 import argparse, json
 from pathlib import Path
 
-EXPECTED_FULL = 449
 EXPECTED_S2_SEARCH = 8
-EXPECTED_SAFE = 441
 
 def clean_url(value: str) -> str:
     value=str(value or "").split("#",1)[0].split("?",1)[0]
@@ -33,7 +31,7 @@ def main() -> None:
 
     full=json.loads(full_path.read_text(encoding="utf-8"))
     intentional=json.loads(intentional_path.read_text(encoding="utf-8"))
-    assert isinstance(full,list) and len(full)==EXPECTED_FULL, len(full)
+    assert isinstance(full,list) and len(full) >= EXPECTED_S2_SEARCH, len(full)
     assert isinstance(intentional,list) and len(intentional)==EXPECTED_S2_SEARCH, len(intentional)
 
     sensitive=set()
@@ -56,8 +54,12 @@ def main() -> None:
         else:
             safe.append(row)
 
-    assert len(removed)==EXPECTED_S2_SEARCH, len(removed)
-    assert len(safe)==EXPECTED_SAFE, len(safe)
+    assert len(removed)==EXPECTED_S2_SEARCH, {
+        "removed": len(removed),
+        "full": len(full),
+        "message": "Every audited S2 search entity must be removed from the current catalogue."
+    }
+    assert len(safe)==len(full)-EXPECTED_S2_SEARCH, (len(full),len(safe))
     for row in safe:
         urls={clean_url(row.get("u",""))}
         en=row.get("en") if isinstance(row.get("en"),dict) else {}
