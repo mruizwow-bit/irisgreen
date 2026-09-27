@@ -10,10 +10,11 @@ function mount(){
  const query=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
  let lang=document.documentElement.lang.startsWith('en')?'en':'es',serial=0,busy=false;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options);
- const voice=createSabikVoice({initialLanguage:lang,onState:syncVoice});
+ let voice;
  let panel=window.SabikRetrievalPanel.createRetrievalPanel({root,query,announcement,language:lang});
- function voiceEnabled(){return Boolean(voice.getState().enabled);}
- function syncVoice(){const on=voiceEnabled();voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=on?strings().voiceOn:strings().voiceOff;voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);}
+ function voiceEnabled(){return Boolean(voice?.getState().enabled);}
+ function syncVoice(state){const on=Boolean(state?.enabled??voiceEnabled());voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=on?strings().voiceOn:strings().voiceOff;voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);}
+ voice=createSabikVoice({initialLanguage:lang,onState:syncVoice});
  function say(text,{voiceId=null,allowOptional=false}={}){announcement.textContent=text;if(voiceId&&voiceEnabled())void voice.speak(voiceId,text,{allowOptional});}
  function controls(){ $('#sabik-submit').disabled=!connection||!input.value.trim();$('#sabik-cancel').hidden=!busy; }
  function translate(){const next=document.documentElement.lang.startsWith('en')?'en':'es';lang=next;voice.setLanguage(lang);aside.lang=lang;announcement.lang=lang;aside.querySelectorAll('[data-sabik-text]').forEach(el=>el.textContent=strings()[el.dataset.sabikText]);$('#sabik-toggle').textContent=$('#sabik-widget-body').hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;$('#sabik-browse').href=lang==='en'?'/en/resources/':'/es/recursos/';if(connection){aside.querySelector('.sabik-state').textContent=strings().available;$('#sabik-availability').textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');}panel.setLanguage(lang);syncVoice();controls();}
