@@ -206,3 +206,47 @@ body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) a{color:var(--ig-link-on-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.xhero,.ig-r42-help-source,.qcard,.r42-settings,.audio-now,.breathbox){background:transparent;border-color:var(--ig-separator-dark);box-shadow:none}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,select,input:not([type=range]),textarea,.ig-r42-action,.ig-r42-icon-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,.ig-r42-action,.ig-r42-icon-button):hover{background:var(--ig-state-hover-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button[aria-pressed="true"],button[aria-selected="true"]){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) input[type=range]{accent-color:var(--ig-state-selected-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :focus-visible{outline-color:var(--ig-focus-on-dark)}
+/* Menú «Más» y sheet de ajustes en móvil: oscuros en los dos modos. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-actions[open]>.r42-more-menu{background:var(--ig-chrome-solid-dark);border-color:var(--ig-control-border-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu button{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu :focus-visible{outline-color:var(--ig-focus-on-dark)}
+@media (max-width:700px){
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open],
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open]>summary{background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :is(label,span,strong,small,p,legend){color:inherit}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :is(button,select){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] input[type=range]{accent-color:var(--ig-state-selected-dark)}
+  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-rincon .r42-settings[open] :focus-visible{outline-color:var(--ig-focus-on-dark)}
+}
+
+/* Modo limpio: controles flotantes sobre la escena (cristal oscuro con suelo). */
+@layer ig-r42-materials-important{
+  body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+    background:var(--ig-chrome-solid-dark)!important;border-color:var(--ig-control-border-dark)!important;
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (color:rgb(0 0 0 / max(.1,.2))){
+    body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+      background:rgb(var(--ig-chrome-dark-rgb) / max(var(--ig-glass-alpha-user,var(--ig-glass-alpha-dark)),var(--ig-glass-floor-dark),var(--ig-glass-alpha-min)))!important;
+      -webkit-backdrop-filter:blur(var(--ig-glass-blur))!important;backdrop-filter:blur(var(--ig-glass-blur))!important;
+    }
+  }
+  :is(html[data-ig-transparency="opaque"],html[data-ig-contrast="on"]) body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
+    background:var(--ig-chrome-solid-dark)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  @media (prefers-contrast:more),(max-width:900px){
+    html body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+  /* Contenido: superficies que el CSS antiguo fijaba translúcidas con !important. */
+  body[data-ig-materials="r42"] .secfind{background:var(--ig-surface-content)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  body[data-ig-materials="r42"] .secfind input[type=search]{border-color:var(--ig-control-border)!important}
+}
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>button,
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>.r42-more-actions>summary{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions>button[aria-pressed="true"]{background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"].r42-clean .r42-more-actions[open]>.r42-more-menu{background:var(--ig-chrome-solid-dark);border-color:var(--ig-control-border-dark)}
+body[data-ig-materials="r42"].r42-clean .r42-more-menu button{background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
