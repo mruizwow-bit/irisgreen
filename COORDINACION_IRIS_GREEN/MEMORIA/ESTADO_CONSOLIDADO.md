@@ -1,5 +1,17 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## R39 A9 · Biblioteca Cloud bilingüe child-safe · 27/09/2026
+
+Estado vigente: `R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA`.
+
+Se construye y sella una nueva biblioteca ES/EN sobre R38/R39/R06, conservando byte-inmutable R38. Release `sabik-es-en-20260927-r01-a582b153c173`: 1.208 fragmentos (604 ES/604 EN), corpus SHA-256 `2a36db04dabd04d5fabdf5e7fc79db9509ebd8657f3daa9dd9886a75d9540da8`. Fuente pública fijada en `main@ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5`; no lectura de contenido cambiante en runtime.
+
+Child-safe: 30 full S2 y 30 safe variants. DEFAULT/CHILD/TEEN y ADULT sin intención explícita excluyen full S2 antes del índice/ranking; ADULT + intención explícita puede recuperarlo. Las variantes seguras son extractos literales de la fuente fijada. El snapshot público contiene 15 de los 16 temas S2 documentados por R42; TEPT complejo queda fuera y no se inventa.
+
+Candidato Cloud `f4d89076b13cc3103bbcf41bbe7dd88718cb9bf0` / tree `a5a5f94fb8cfc5941cdf56e2ae0f2d6b2145f922`; run `36327674236` SUCCESS 203/203. Deploy privado `6ab92e91a3cdab71e281a975`, `published_at=null`, Team Login all. Sellado y readback remoto PASS; cold Blobs 339,12 ms. HTTP real sin sesión prueba el gate exterior 401; HTTP de aplicación autenticado queda pendiente de sesión legítima humana. C17 sigue PENDING.
+
+No producción, DNS, cambios de Team Login/secretos, frontend, voz, LLM, embeddings ni datos de usuario.
+
 ## Sabik · EN R02 exacto cerrado · 27/09/2026
 
 El reentrenamiento EN R02 usa la referencia exacta `SABIK_EN_V6_12_T01.wav`. La comparación final con misma frase/seed da F0 201.6 Hz frente a 209.9 Hz de referencia, centroide mediano 1181 Hz frente a 1294 Hz y similitud MFCC alineada ≈0.9938. La voz conserva la identidad/timbre esperados y corrige la desviación brillante observada en E0.
