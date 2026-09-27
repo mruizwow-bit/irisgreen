@@ -1,0 +1,31 @@
+{
+  "schema": "irisgreen.sabik.voice-provenance.v1",
+  "date": "2026-09-27",
+  "status": "VOICE_SOURCE_OWNER_AUTHORIZED_AND_PROVENANCE_RECORDED",
+  "human_source": {
+    "owner_is_speaker": true,
+    "authorized_for_project_derivatives": true,
+    "artifact": "SABIK_SOURCE_MARIA.wav",
+    "sha256": "6545fcad588db96c1d0bce1cd1f2c43cb8cda124627bcccd7fac6075c2dad770",
+    "public_audio": false
+  },
+  "masters": [
+    {
+      "language": "en",
+      "artifact": "SABIK_EN_MASTER_RETEST_01.wav",
+      "sha256": "fe58b4af6e89fd15fd631945a8fedfe0b14a225a0dc1689703311d47db412285",
+      "status": "approved"
+    },
+    {
+      "language": "es-ES",
+      "artifact": "SABIK_ES_MASTER_V1.wav",
+      "canonical_source": "SABIK_ES_LONG_REF.wav",
+      "sha256": "c9d18290375d46608d37f65b05788ef552980706161a0eb0e26e2a268059c8fa",
+      "status": "approved",
+      "human_validation": "20/20"
+    }
+  ],
+  "third_party_human_voice_in_final_identity_dataset": false,
+  "public_repository_contains_voice_audio": false,
+  "license_gate": "Software/model/dependency licenses remain separately applicable and must be verified at release."
+}
