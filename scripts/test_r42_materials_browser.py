@@ -143,7 +143,7 @@ def main() -> None:
             prefs = {"version": 2, "scale": 1, "spacing": False, "controls": False, "contrast": contrast, "guide": False, "motion": False}
             if mode and mode != "normal":
                 prefs["transparency"] = mode
-            ctx.add_init_script("try{localStorage.setItem('ig-a11y'," + json.dumps(json.dumps(prefs)) + ")}catch(_){}")
+            ctx.add_init_script("try{if(!localStorage.getItem('ig-a11y'))localStorage.setItem('ig-a11y'," + json.dumps(json.dumps(prefs)) + ")}catch(_){}")
             return ctx
 
         def load(page, rel):
