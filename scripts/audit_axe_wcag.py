@@ -37,12 +37,22 @@ ROUTES = [
     '/es/tramites/directorio/',
     '/es/libros/',
     '/es/videos/',
+    # Herramientas de Recursos, ES y EN. La entrada de Juegos estaba repetida
+    # y esa repetición no añadía cobertura: las otras siete faltaban.
     '/es/recursos/juegos/',
-    '/es/recursos/juegos/',
+    '/en/resources/games/',
+    '/es/recursos/rutinas-visuales/',
+    '/en/resources/visual-routines/',
+    '/es/recursos/rutinas-imprimibles/',
+    '/en/resources/printable-routines/',
+    '/es/recursos/tarjeta-iris/',
+    '/en/resources/iris-card/',
     '/es/intereses/',
     '/es/taller/',
     '/es/sitio-tranquilo/',
 ]
+assert len(ROUTES) == len(set(ROUTES)), \
+    f'Rutas repetidas: {sorted({r for r in ROUTES if ROUTES.count(r) > 1})}'
 TAGS = ['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22a','wcag22aa']
 
 

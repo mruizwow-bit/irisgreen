@@ -32,9 +32,16 @@ ROUTES = [
     '/es/neurodiversidad/condiciones/', '/es/neurodiversidad/condiciones/autismo/',
     '/es/biblioteca/', '/es/investigacion/', '/es/datos/',
     '/es/tramites/directorio/', '/es/libros/', '/es/videos/',
-    '/es/recursos/juegos/', '/es/recursos/juegos/',
+    # Herramientas de Recursos, ES y EN. La entrada de Juegos estaba repetida
+    # y esa repetición no añadía cobertura: las otras siete faltaban.
+    '/es/recursos/juegos/', '/en/resources/games/',
+    '/es/recursos/rutinas-visuales/', '/en/resources/visual-routines/',
+    '/es/recursos/rutinas-imprimibles/', '/en/resources/printable-routines/',
+    '/es/recursos/tarjeta-iris/', '/en/resources/iris-card/',
     '/es/intereses/', '/es/taller/', '/es/sitio-tranquilo/',
 ]
+assert len(ROUTES) == len(set(ROUTES)), \
+    f'Rutas repetidas: {sorted({r for r in ROUTES if ROUTES.count(r) > 1})}'
 VIEWPORTS = [1280, 390]
 
 JS_TARGETS = r'''() => {
