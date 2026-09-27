@@ -1,5 +1,23 @@
 # Estado operativo compartido
 
+## Sabik · EN R02 exacto validado contra V6_12_T01 · 27/09/2026
+
+**Estado: `SABIK_EN_R02_EXACT_VALIDATED_FINAL`.**
+
+Se reentrena EN usando como referencia ICL exacta `SABIK_EN_V6_12_T01.wav` y se compara el checkpoint R02 de una época contra esa referencia con la misma frase y seed.
+
+Comparación:
+- referencia: 6.00 s, F0 mediana ≈209.9 Hz;
+- R02 exacto: 5.68 s, F0 mediana ≈201.6 Hz;
+- diferencia tonal ≈-0.7 semitonos;
+- centroide espectral mediano: referencia ≈1294 Hz, R02 ≈1181 Hz;
+- similitud MFCC alineada media ≈0.9938;
+- mejora clara frente al E0 anterior en brillo/espectro; identidad y timbre se consideran suficientemente conservados.
+
+Audio de validación: `SABIK_EN_R02_EXACT_COMPARE_V6_12_T01.wav`, SHA-256 `510ee516ce074993a7f4608c0ab174ba7f3e899ac02a4a43dcdbcae575569181`.
+
+Decisión: cerrar EN R02 como voz inglesa entrenada vigente. No reabrir búsqueda ni entrenamiento EN salvo nueva evidencia de producción.
+
 ## Nuevos carriles paralelos · Home child-safe + Cloud Sabik · 27/09/2026
 
 **A8:** `R42_A8_HOME_CHILD_SAFE_ORDERED` · issue #305.  
