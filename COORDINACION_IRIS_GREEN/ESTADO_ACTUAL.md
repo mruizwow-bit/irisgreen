@@ -669,3 +669,17 @@ QA recibido: navegador 111/111, móvil 273/273, axe 36 runs/0 violaciones, check
 Memoria: `MEMORIA/R42_RINCON_ZIP_AUDITORIA_20260927.md`.  
 Control: `CONTROL/DELTA_R42_RINCON_ZIP_AUDITORIA_20260927.json`.  
 Handoff: `HANDOFFS/R42_RINCON_ZIP_AUDIT/README.md`.
+## R42 · Rincon.zip · A7 porta dos fixes · 27/09/2026
+
+**Estado: `R42_RINCON_ZIP_A7_FIXES_READY_FOR_A2`.**
+
+Agente 7 completó el único alcance operativo del ZIP auditado:
+1. Pantalla limpia: actualización idempotente de clases mediante `setBodyClass()` para evitar el bucle del `MutationObserver` y el freeze.
+2. `sceneTouch[hidden]`: regla específica `display:none!important` para evitar la píldora vacía sin nombre accesible.
+
+Entrega sobre A2 vigente `a0036d541393f103d2dfefd05ec2f66a979f49e2`: branch `agent7/r42-rincon-fix-clean-hidden-r02-20260927`, HEAD `2b5db6dfcffa3c17b375abb4629016fd14cc65a7`, tree `165ac2f3c9f2cc389ef74d67b2b20b414adaf793`, PR #303, precheck `R42_A7_RINCON_TWO_FIXES_PASS`.
+
+ES/EN llevan cache-bust `-d01`. No se modifican audio, escenas, catálogo ni real-media. Siguiente gate: A2 integra #303 y valida en preview.
+
+Memoria: `MEMORIA/R42_RINCON_ZIP_A7_FIXES_20260927.md`.  
+Control: `CONTROL/DELTA_R42_RINCON_ZIP_A7_FIXES_20260927.json`.
