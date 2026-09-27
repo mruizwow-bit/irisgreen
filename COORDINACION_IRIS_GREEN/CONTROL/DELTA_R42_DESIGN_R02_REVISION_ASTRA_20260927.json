@@ -1,0 +1,60 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-DESIGN-R02-ASTRA-REVIEW",
+  "date": "2026-09-27",
+  "status": "R42_DESIGN_CRYSTAL_SYSTEM_READY_FOR_A2",
+  "issue_design": 301,
+  "issue_a2": 289,
+  "package": {
+    "name": "Interfaz(1).zip",
+    "sha256": "650b1993c2f780c4b0fffdabfd8ae2524df10bd234e365e5bcbc264fd5f8edd6",
+    "base_head": "e8cad400a30d5d4857f9f99b0c1070d786958a8b",
+    "base_tree": "827a68fae6596a929e4d246bb47b8494a976e8a3",
+    "diff_sha256": "9c99183cd5bbe1c7abb2057c482972c81474f0f0160000cb15b0ef2a668664a8",
+    "incremental_diff_sha256": "398297dfb27f5def5a61ace75ce452a8d0d927b01124a768ae7c47559d6c0e57",
+    "diff_stat": "+1376/-22"
+  },
+  "reproduced": {
+    "python_compile_4": "PASS",
+    "node_check_preferences": "PASS",
+    "analytic_measurements": "30/30 PASS",
+    "chromium_quiet_dark_fixture": "PASS",
+    "effective_background_regression": "11.82:1 button background",
+    "forced_contrast_note": "PASS",
+    "r01_incremental_hash_reconstruction": "PASS"
+  },
+  "canonical_reconciliation": {
+    "result": "PASS_NO_CODE_CONFLICT",
+    "workshop_hold_preserved": true,
+    "child_safe_untouched": true,
+    "storage_untouched": true,
+    "physics_csp_untouched": true
+  },
+  "observations": [
+    {
+      "id": "OBS-R42-DESIGN-R02-DOC-01",
+      "severity": "non_blocking",
+      "detail": "Inherited R01 docs in ZIP retain stale READY/delivered-to-A2 wording; R02 re-delivery + Astra canonical record supersede it."
+    },
+    {
+      "id": "OBS-R42-DESIGN-R02-EVIDENCE-01",
+      "severity": "non_blocking",
+      "detail": "Measurement generator reproduces identical 30 values but rewrites report bytes/metadata; CI-generated output is machine canonical."
+    }
+  ],
+  "next": [
+    "A2 git apply --check and apply R02 diff",
+    "A2 creates HEAD/tree",
+    "Run r42-materiales CI",
+    "Review screenshots/browser report",
+    "Deploy Preview",
+    "screen reader + zoom/reflow",
+    "HUMAN QA Maria"
+  ],
+  "limits": [
+    "No main",
+    "No production",
+    "No global propagation before HUMAN QA",
+    "Workshop material pilot does not freeze Workshop architecture"
+  ]
+}
