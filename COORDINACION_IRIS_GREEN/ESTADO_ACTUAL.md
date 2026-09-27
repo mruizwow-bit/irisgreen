@@ -1,5 +1,23 @@
 ## R42 · A8 · Home nueva + child-safe lista para A2 · 27/09/2026
 
+## Sabik voz/audio · cerrado → integración A2 · 27/09/2026
+
+**Estado fuente cerrado: `SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED_HANDOFF_READY`.**
+**Estado operativo: `SABIK_AUDIO_R01_A2_INTEGRATION_ORDERED`.**
+
+Artefacto único:
+`/SABIK/HANDOFFS/SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED.zip`
+SHA-256 `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`.
+
+30 WAV · 15 ES + 15 EN · 30/30 hashes PASS · 30/30 machine QA PASS.
+
+Copy canónico: `SABIK_COPY_PRODUCCION_R02_20260927`: 40 registros · 25 KEEP · 15 REVISED · 0 HOLD.
+
+No se reabre entrenamiento ni selección de voz. A2 integra copy R02 + assets + control de voz session-only OFF por defecto + cancelación + QA preview.
+
+Marcador esperado: `SABIK_AUDIO_R01_A2_PREVIEW_READY_FOR_ASTRA`.
+
+
 ## Sabik Audio R01 · A2 integration handoff · 27/09/2026
 
 **Estado: `SABIK_AUDIO_R01_A2_INTEGRATION_ORDERED`.**
