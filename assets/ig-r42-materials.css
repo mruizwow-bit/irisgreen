@@ -172,3 +172,37 @@ body[data-ig-materials="r42"] .r42-rincon .r42-static-fallback figcaption{backgr
 
 /* 6 · Rincón tranquilo · chrome oscuro de baja estimulación. El stage no se toca. */
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.nav a){color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a:hover{background:var(--ig-state-hover-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav a[aria-current=page]{background:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav{border-top-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav .sep{background:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico,.lang,.ig-menu-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico[aria-expanded=true],.lang.on){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :focus-visible{outline-color:var(--ig-focus-on-dark)}
+
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail){background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-shell{border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-title{color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-eyebrow,.ig-r42-project-status){color:var(--ig-ink-muted-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action,button,select){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :is(.ig-r42-back,.ig-r42-icon-button,.ig-r42-action,button):hover{background:var(--ig-state-hover-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-rail button{border-color:transparent;background:transparent}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-rail button[aria-pressed="true"],.ig-r42-context .r40-tabs button[aria-selected="true"]){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs{background:transparent;border-color:var(--ig-separator-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-tabs button{border-color:transparent}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-context .r40-mobile-mode{color:var(--ig-ink-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail) :focus-visible{outline-color:var(--ig-focus-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-project-status::before{background:var(--ig-ink-muted-on-dark)}
+
+/* Rincón · todo el chrome temporal es oscuro y opaco: inspector, diálogos (ayuda,
+   acciones, panel contextual), popover y sheets. El contenido de lectura sigue opaco;
+   solo cambia a tinta clara sobre navy para no iluminar la escena. */
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover,.ig-r42-dialog-head,.ig-r42-inspector-head){
+  background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark);-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-dialog::backdrop{background:var(--ig-overlay-backdrop-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(h1,h2,h3,h4,p,li,dt,dd,label,span,strong,small,summary,legend,figcaption,output){color:inherit}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.ig-r42-inspector-hint,.lede,.muted,small){color:var(--ig-ink-muted-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) a{color:var(--ig-link-on-dark)}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog) :is(.xhero,.ig-r42-help-source,.qcard,.r42-settings,.audio-now,.breathbox){background:transparent;border-color:var(--ig-separator-dark);box-shadow:none}
+body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-inspector,.ig-r42-dialog,.ig-r42-file-popover) :is(button,select,input:not([type=range]),textarea,.ig-r42-action,.ig-r42-icon-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
