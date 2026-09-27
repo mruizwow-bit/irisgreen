@@ -102,7 +102,7 @@ const allowedAudience = new Set(['INFANCIA', 'ADOLESCENCIA', 'ADULTEZ', 'TRANSVE
 const fragmentFields = new Set([
   'content_id','fragment_id','locale','url','title','heading','text','source_type','editorial_status',
   'source_version','source_sha256','source_path','library_version','audience','sensitivity','discovery',
-  'safe_variant_id','concepts','source_editorial_status','derived_from_fragment_id','safe_variant_group'
+  'safe_variant_id','concepts','source_editorial_status','derived_from_fragment_id','safe_variant_group','safety_content_id'
 ]);
 
 export function validateCloudCorpusStructure(corpus, release) {
@@ -127,6 +127,7 @@ export function validateCloudCorpusStructure(corpus, release) {
         !(f.safe_variant_id === null || typeof f.safe_variant_id === 'string') ||
         !(f.derived_from_fragment_id === null || typeof f.derived_from_fragment_id === 'string') ||
         !(f.safe_variant_group === null || typeof f.safe_variant_group === 'string') ||
+        !(f.safety_content_id === null || typeof f.safety_content_id === 'string') ||
         !(f.source_editorial_status === null || typeof f.source_editorial_status === 'string')) fail('invalid_fragment');
     let url; try { url = new URL(f.url); } catch { fail('invalid_source_url'); }
     if (url.origin !== 'https://irisgreen.eu' || url.username || url.password) fail('invalid_source_url');
