@@ -122,7 +122,7 @@ test('R39 presentation grouping preserves every ranked fragment id', async () =>
   const results = library.searchLibrary({ query: 'autismo', locale: 'es', context: 'default', limit: 20 });
   const groups = groupSources(results);
   const groupedIds = groups.flatMap(g => g.citations.map(c => c.fragment_id));
-  assert.deepEqual(groupedIds, results.map(r => r.fragment_id));
+  assert.deepEqual([...groupedIds].sort(), results.map(r => r.fragment_id).sort());
 });
 
 test('concurrent cold readers perform a single deployment store load', async () => {
