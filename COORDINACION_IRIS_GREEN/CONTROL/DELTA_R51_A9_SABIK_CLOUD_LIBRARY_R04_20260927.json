@@ -1,0 +1,66 @@
+{
+  "schema": "R51_A9_CLOUD_LIBRARY_R04/1.0",
+  "date": "2026-09-27",
+  "issue": 314,
+  "status": "R51_A9_SABIK_CLOUD_LIBRARY_R04_ORDERED",
+  "owner": "Agent 9",
+  "base_release": {
+    "version": "sabik-es-en-20260927-r03-9216eeee6a32",
+    "immutable": true,
+    "qualification": "A9_R03_TECHNICALLY_VERIFIED_PRIVATE"
+  },
+  "goals": [
+    "FULLER_EDITORIAL_COVERAGE",
+    "INCREMENTAL_REPRODUCIBLE_UPDATER",
+    "VERSIONED_IMMUTABLE_RELEASES",
+    "CHILD_SAFE_BEFORE_RANKING",
+    "EXACT_CITATIONS",
+    "NO_USER_DATA"
+  ],
+  "coverage_targets": {
+    "conditions": 226,
+    "situations": 223,
+    "everyday": 62,
+    "data": 60,
+    "research": 132,
+    "support_es": 262,
+    "resources_games_routines": "EDITORIAL_METADATA_AND_GUIDANCE_ONLY",
+    "interests": "CURATED_EXPLANATIONS_NOT_RAW_DATASETS",
+    "workshop": "USAGE_KNOWLEDGE_NOT_USER_PROJECTS",
+    "quiet_space": "GUIDANCE_AND_CONTROLS_NOT_MEDIA_STATE"
+  },
+  "updater": {
+    "source": "APPROVED_CANONICAL_WEB_SOURCE",
+    "ignore_experimental_branches": true,
+    "triggers": [
+      "canonical-source-change",
+      "workflow_dispatch source_sha",
+      "A2 integration close"
+    ],
+    "no_content_change": "NO_NEW_VERSION",
+    "rebuild": "AFFECTED_CONTENT_AND_DEPENDENCIES",
+    "global_validation": [
+      "safety",
+      "citations",
+      "manifest",
+      "indexes"
+    ],
+    "versions": "IMMUTABLE",
+    "tombstones": true
+  },
+  "expected_marker": "R51_A9_SABIK_CLOUD_LIBRARY_R04_READY_FOR_ASTRA",
+  "future_flow": "WEB_SOURCE_CHANGE -> A9_INCREMENTAL_LIBRARY_CANDIDATE",
+  "limits": [
+    "NO_R38_OVERWRITE",
+    "NO_R03_OVERWRITE",
+    "NO_PRODUCTION",
+    "NO_DNS",
+    "NO_TEAM_LOGIN_CHANGE",
+    "NO_SECRETS",
+    "NO_FRONTEND",
+    "NO_VOICE_TTS",
+    "NO_EMBEDDINGS",
+    "NO_LLM_RERANKER",
+    "NO_USER_DATA"
+  ]
+}
