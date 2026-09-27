@@ -81,6 +81,8 @@ def main():
         need(all(x['profile']=='workspace' and x['owner_lane']==owner for x in subset),'owner/profile mismatch '+prefix)
     css=(root/'assets/ig-r49-transversal.css').read_text(encoding='utf-8')
     need('--ig-reading-measure' in css and '--ig-layout-gutter' in css and '--ig-workspace-gutter' in css,'semantic layout tokens missing')
+    need('@layer ig-r49-chrome{\\n' not in css,'literal newline escape breaks pre-paint chrome reservation')
+    need('html[data-ig-r49-js="1"] body[data-ig-r49="1"]' in css and 'height:var(--ig-r49-header-h)!important' in css,'pre-paint header reservation missing')
     need('html[data-ig-contrast="on"] body[data-ig-r49="1"] main{filter:none!important}' in css,'high contrast filter override missing')
     need('@media(forced-colors:active)' in css and '@media(prefers-reduced-motion:reduce)' in css and '@media(prefers-reduced-transparency:reduce)' in css,'a11y media modes missing')
     js=(root/'assets/ig-r49-transversal.js').read_text(encoding='utf-8')
