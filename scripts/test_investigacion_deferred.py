@@ -67,7 +67,7 @@ def delayed_language(browser):
     en.click()
     assert page.evaluate("document.documentElement.lang") == "en"
     assert page.evaluate("localStorage.getItem('ig_lang')") == "en"
-    page.wait_for_function("(n) => document.querySelectorAll('main article').length === n", len(DATA))
+    page.wait_for_function("(n) => document.querySelectorAll('main article').length === n", arg=len(DATA))
     first = page.locator("main article h2").first.inner_text().strip()
     expected = (DATA[0].get("heading_en") or "").strip()
     assert expected and first == expected, (first, expected)
