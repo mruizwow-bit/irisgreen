@@ -1,4 +1,4 @@
-name: R42 · sistema material (piloto)
+name: R42 · sistema material + Child Safety (integración)
 on:
   workflow_dispatch:
   push:
@@ -8,13 +8,33 @@ on:
     paths:
       - 'assets/ig-r42-materials.css'
       - 'assets/ig-r42-shell.css'
+      - 'assets/ig-r42-shell.js'
       - 'assets/preferencias-lectura.js'
+      - 'assets/ig-suite.css'
+      - 'assets/ig-taller-material-r43.css'
+      - 'assets/ig-child-safety.js'
+      - 'assets/ig-child-safety.css'
+      - 'assets/ig-child-safety-content.js'
+      - 'assets/ig-child-safety-research.js'
+      - 'assets/content-safety/**'
+      - 'assets/buscador-comun.js'
       - 'scripts/apply_r42_app_shell.py'
       - 'scripts/test_r42_app_shell.py'
       - 'scripts/measure_r42_materials.py'
       - 'scripts/test_r42_materials_browser.py'
-      - 'assets/ig-suite.css'
       - 'scripts/build_taller_suite.py'
+      - 'scripts/apply_taller_materials_r43.py'
+      - 'scripts/test_taller_material_coverage.py'
+      - 'scripts/build_child_safety_search.py'
+      - 'scripts/test_child_safety_search.py'
+      - 'scripts/apply_child_safe_pages.py'
+      - 'scripts/test_child_safe_pages.py'
+      - 'scripts/apply_child_safe_research.py'
+      - 'scripts/test_child_safe_research.py'
+      - 'scripts/test_child_safety_policy.js'
+      - 'scripts/defer_investigacion_data.py'
+      - 'scripts/test_investigacion_deferred.py'
+      - 'scripts/build_site.py'
       - '.github/workflows/r42-materiales.yml'
 permissions:
   contents: read
@@ -29,19 +49,48 @@ jobs:
           python-version: '3.12'
       - run: pip install playwright==1.55.0 beautifulsoup4==4.13.4 pillow==11.3.0
       - run: python -m playwright install --with-deps chromium
-      - run: python scripts/measure_r42_materials.py
-      - run: python scripts/test_r42_app_shell.py
-      - run: python scripts/apply_taller_materials_r43.py --root .
-      - run: python scripts/test_taller_material_coverage.py --root .
-      - run: python scripts/build_site.py
-      - run: python scripts/test_r42_app_shell.py --root dist
-      - run: python scripts/test_taller_material_coverage.py --root dist
-      - run: cd scripts && python test_r42_materials_browser.py
-      - run: python scripts/test_reading_preferences.py --phase after
+
+      - name: R42 material measurements
+        run: python scripts/measure_r42_materials.py
+      - name: R42 shell source contract
+        run: python scripts/test_r42_app_shell.py
+      - name: Child Safety shared policy
+        run: node scripts/test_child_safety_policy.js
+      - name: Child Safety search source contract
+        run: python scripts/test_child_safety_search.py
+
+      - name: Apply Taller material coverage
+        run: python scripts/apply_taller_materials_r43.py --root .
+      - name: Test Taller material coverage source
+        run: python scripts/test_taller_material_coverage.py --root .
+
+      - name: Build isolated site
+        run: python scripts/build_site.py
+
+      - name: Child Safety search dist
+        run: python scripts/test_child_safety_search.py --root dist
+      - name: Child Safety S2 dedicated routes dist
+        run: python scripts/test_child_safe_pages.py --root dist
+      - name: Child Safety Research dist
+        run: python scripts/test_child_safe_research.py --root dist
+      - name: Research deferred browser gate
+        run: cd dist && python ../scripts/test_investigacion_deferred.py
+
+      - name: R42 shell dist contract
+        run: python scripts/test_r42_app_shell.py --root dist
+      - name: Taller material coverage dist
+        run: python scripts/test_taller_material_coverage.py --root dist
+      - name: R42 browser material gate
+        run: cd scripts && python test_r42_materials_browser.py
+      - name: Reading preferences regression
+        run: python scripts/test_reading_preferences.py --phase after
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: r42-materiales-evidencia
+          name: r42-materiales-child-safety-evidencia
           path: |
             reports/r42-materials/
             reports/preferences/
+            reports/publicacion/
+            dist/assets/content-safety/
