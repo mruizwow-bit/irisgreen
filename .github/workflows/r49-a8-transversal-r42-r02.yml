@@ -5,6 +5,7 @@ on:
       - '.github/workflows/r49-a8-transversal-r42-r02.yml'
       - 'assets/ig-r49-transversal.css'
       - 'assets/ig-r49-transversal.js'
+      - 'assets/ig-r49-lang-bootstrap.js'
       - 'assets/ig-r42-materials.css'
       - 'assets/ig-audience.css'
       - 'assets/ig-audience.js'
@@ -31,6 +32,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/apply_r49_transversal_ui.py scripts/test_r49_transversal_ui.py scripts/test_r49_transversal_browser.py
           node --check assets/ig-r49-transversal.js
+          node --check assets/ig-r49-lang-bootstrap.js
           node --check assets/ig-audience.js
           node --check assets/ig-child-safe.js
           node --check assets/buscador-comun.js
