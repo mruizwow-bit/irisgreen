@@ -26,6 +26,24 @@ Siguiente puerta: A2 integra #310 → build/CI → una única Deploy Preview →
 
 # Estado operativo compartido
 
+## Sabik · AUDIO LIBRARY R01 FINAL · 27/09/2026
+
+**Estado: `SABIK_AUDIO_LIBRARY_R01_FINAL_MACHINE_QA_PASS_UPLOAD_VERIFY_NEXT`.**
+
+Postproceso final completado sobre 30 locuciones fijas ES/EN:
+- 30/30 entradas;
+- loudness final uniforme: **-16.5 LUFS**;
+- pico máximo: **-1.0 dBFS**;
+- clipping: **0**;
+- limitador transparente usado solo en 10/30 entradas;
+- reducción máxima del limitador: **2.774 dB**;
+- manifest SHA-256: `dd4a44d222d6fbbade669a32a705d08fe5601ac11c39911105df8cb37d71d4d9`;
+- ZIP SHA-256: `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`.
+
+La política final mantiene pitch y tempo intactos, sin EQ; gain-only cuando basta y limitador lookahead solo cuando el ceiling de -1 dBFS impide alcanzar -16.5 LUFS.
+
+Siguiente gate: recibir/verificar `SABIK_AUDIO_LIBRARY_R01_FINAL.zip`, registrar los hashes de modelos incluidos en su manifest y preparar handoff de integración A2. No publicar masters humanos ni modelos entrenados en GitHub público.
+
 ## Sabik · audio fijo ES/EN · muestra HUMAN QA PASS · 27/09/2026
 
 **Estado: `SABIK_AUDIO_R01_SAMPLE_QA_PASS_FINALIZE_TIMING_NEXT`.**
