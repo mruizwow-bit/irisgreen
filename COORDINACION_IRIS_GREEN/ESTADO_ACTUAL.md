@@ -1,5 +1,18 @@
 # Estado operativo compartido
 
+## Nuevos carriles paralelos · Home child-safe + Cloud Sabik · 27/09/2026
+
+**A8:** `R42_A8_HOME_CHILD_SAFE_ORDERED` · issue #305.  
+Construirá la nueva interfaz de Home e implantará child-safe real sobre el baseline vigente R42/R02. A2 integra; María valida. #294–#297 permanecen históricos/pausados.
+
+**A9:** `R39_A9_SABIK_CLOUD_LIBRARY_ORDERED` · issue #306.  
+Construirá la biblioteca Cloud Sabik bilingüe, versionada y child-safe sobre R38/R39/R06, reutilizando el acceso existente y sin sobrescribir R38. Candidato privado autorizado en `sabik-asistente`; no producción.
+
+**Voz:** continúa entrenándose en carril separado y queda fuera de A8/A9.
+
+Orden emitida != ejecución acreditada; esperar marcadores de lectura/construcción y evidencia.
+
+
 ## Sabik · EN E0 comparado contra referencia exacta V6_12_T01 · 27/09/2026
 
 **Estado: `SABIK_EN_E0_NOT_FINAL_RETRAIN_EXACT_REFERENCE_REQUIRED`.**
