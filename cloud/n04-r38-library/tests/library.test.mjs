@@ -187,13 +187,14 @@ test('QA fails closed on AI flag and backend errors without exposing diagnostics
 test('runtime has no writes, payload logging, chat/provider dependencies or private data storage', async () => {
   const runtimeFiles = ['src/library.mjs', 'src/qa-handler.mjs', 'netlify/functions/n04-library-qa.mjs',
     'src/team-transport-handler.mjs', 'src/cloud-connection.mjs', 'netlify/functions/n04-team-transport.mjs',
-    'src/cloud-library-v2.mjs', 'src/cloud-library-qa-handler.mjs', 'netlify/functions/sabik-cloud-library-qa.mjs'];
+    'src/cloud-library-v2.mjs', 'src/cloud-library-qa-handler.mjs', 'src/cloud-library-team-handler.mjs',
+    'netlify/functions/sabik-cloud-library-qa.mjs', 'netlify/functions/sabik-cloud-library-team.mjs'];
   const code = (await Promise.all(runtimeFiles.map(f => readFile(new URL('../' + f, import.meta.url), 'utf8')))).join('\n');
   assert.doesNotMatch(code, /console\.|store\.(set|setJSON|delete)\s*\(|localStorage|\/api\/chat|context\.ip|context\.geo|openai|anthropic|embedding/i);
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
   assert.deepEqual(Object.keys(pkg.dependencies), ['@netlify/blobs']);
   const functions = await readdir(new URL('../netlify/functions/', import.meta.url));
-  assert.deepEqual(functions.sort(), ['n04-library-qa.mjs', 'n04-team-transport.mjs', 'sabik-cloud-library-qa.mjs']);
+  assert.deepEqual(functions.sort(), ['n04-library-qa.mjs', 'n04-team-transport.mjs', 'sabik-cloud-library-qa.mjs', 'sabik-cloud-library-team.mjs']);
 });
 test('performance targets on frozen corpus: cold < 2s, p95 warm search < 50ms, heap delta <128MiB', async () => {
   const times = [];
