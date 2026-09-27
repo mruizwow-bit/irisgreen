@@ -1,0 +1,41 @@
+{
+  "schema": "R39_A9_ASTRA_REVIEW/1.0",
+  "date": "2026-09-27",
+  "issue": 306,
+  "status": "R39_A9_SABIK_CLOUD_LIBRARY_ASTRA_REVIEW_FIX_REQUIRED",
+  "pass": [
+    "R38_IMMUTABLE",
+    "BILINGUAL_VERSIONED_LIBRARY",
+    "SERVER_ONLY",
+    "S2_FILTER_PRE_RANKING",
+    "PRIVATE_DEPLOY",
+    "TEAM_LOGIN_OUTER_GATE",
+    "NO_USER_DATA",
+    "NO_VOICE_LLM_FRONTEND",
+    "203_TESTS_REPORTED_PASS"
+  ],
+  "blockers": {
+    "safe_variants": "AUTO_DERIVED_NOT_EDITORIALLY_APPROVED_SOME_IDENTICAL_TO_FULL_S2",
+    "citation_urls": {
+      "broken_count": 2,
+      "examples": [
+        "/en/data/employment-and-autism-united-kingdom/",
+        "/en/data/employment-and-autism-australia/"
+      ]
+    },
+    "authenticated_application_http": "PENDING"
+  },
+  "coverage": {
+    "current_release": "PUBLIC_MAIN_SNAPSHOT_R01",
+    "records_source_counts": {
+      "catalog": 372,
+      "data": 49,
+      "everyday": 48,
+      "research": 120
+    },
+    "r42_child_safe_manifest_records": 965,
+    "r42_s2": 16,
+    "sync_with_new_web": "PENDING"
+  },
+  "expected_marker": "R39_A9_SABIK_CLOUD_LIBRARY_FIX_READY_FOR_ASTRA"
+}
