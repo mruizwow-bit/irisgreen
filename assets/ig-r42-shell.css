@@ -304,6 +304,13 @@
       grid-column:1;
       grid-row:1;
       min-height:30rem;
+      scroll-padding-bottom:5rem;
+    }
+    .ig-r42-stage {
+      scroll-padding-bottom:5rem;
+    }
+    body[data-ig-r42-family="games"] :is(.jg-actions-btn,.jg-gamebar,.jg-play) {
+      scroll-margin-bottom:5rem;
     }
     .ig-r42-rail {
       grid-column:1;
