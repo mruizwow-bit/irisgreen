@@ -1,5 +1,13 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · EN V1 seleccionado · 27/09/2026
+
+Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_ES_TRAINING_NEXT`.
+
+Se comparan tres checkpoints del fine-tuning EN sobre seis frases inéditas idénticas y semillas controladas. Resultado final: `checkpoint-epoch-0` seleccionado como `SABIK_EN_V1`; E2 queda como alternativa técnica; E1 se descarta como opción final. El criterio combinado fue conservación de identidad/timbre del master EN V2, naturalidad, ritmo y estabilidad.
+
+Secuencia vigente: canonizar E0 + hashes → auditar corpus ES → preparar codes ES → fine-tuning ES → validar checkpoints ES → solo después retomar copy/audio de producción.
+
 ## Sabik · master EN V2 · 27/09/2026
 
 Estado: `SABIK_EN_MASTER_V2_SELECTED_TRAINING_NEXT`.
