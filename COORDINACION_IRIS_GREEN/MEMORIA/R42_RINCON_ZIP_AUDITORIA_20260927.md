@@ -1,4 +1,4 @@
-# R42 · auditoría Rincon.zip · paquete mixto Design/Rincón/Juegos · 27/09/2026
+# R42 · auditoría Rincon.zip · acción operativa limitada a Rincón · 27/09/2026
 
 ## Estado
 
@@ -23,11 +23,11 @@ Todos los archivos de `SHA256SUMS.txt` verifican correctamente.
 
 **PROHIBIDO integrar el bundle/los cinco patches como una unidad.**
 
-El paquete mezcla trabajo que hoy pertenece a tres estados diferentes:
+El paquete mezcla material histórico de varios carriles, pero por decisión de María **esta auditoría solo genera acciones operativas para Rincón**:
 
-1. sistema material Design R01 → superseded por Design R02 aprobado;
+1. sistema material Design R01 → superseded por Design R02 aprobado; no se actúa desde este handoff;
 2. dos correcciones puntuales de Rincón → siguen siendo necesarias;
-3. 13 juegos R03 + 71 pictogramas + fixes móviles → lote independiente no integrado todavía.
+3. cualquier contenido de Juegos incluido en el ZIP queda **fuera de alcance** porque Claude está actualizando Juegos en su propio carril. No se deriva ninguna tarea a A1, Design ni A2 desde este paquete para Juegos.
 
 ## 1 · Sistema material
 
@@ -108,47 +108,20 @@ No pueden sustituir:
 
 La evidencia R01 sí conserva valor para chrome y controles.
 
-## 4 · Lote de Juegos R03
+## 4 · Contenido de Juegos dentro del ZIP · FUERA DE ALCANCE
 
-El paquete añade 13 juegos sobre los 297 de A1:
-- preparar-una-reunion
-- prioriza-tus-tareas
-- cocina-pasta
-- limpia-la-cocina
-- el-autobus-no-llega
-- preparar-un-examen
-- una-quedada
-- pedir-ayuda
-- volver-a-casa-con-calma
-- el-dia-del-viaje
-- bolsa-de-la-piscina
-- hacer-un-tramite
-- ropa-segun-el-plan
+El ZIP contiene también material de Juegos, pero **no se usa como fuente operativa en esta auditoría**.
 
-Astra comprobó PR/head A1 vigente `8f686098...`: los 13 slugs están ausentes y el dataset sigue declarando 297 juegos.
+Decisión de María:
+- Claude está actualizando Juegos;
+- no derivar tareas de Juegos a A1 desde `Rincon.zip`;
+- no pedir a A2 que integre esos juegos desde este bundle;
+- no mezclar ese material con el carril Rincón;
+- cualquier valor histórico del lote queda únicamente como evidencia del ZIP recibido.
 
-El lote también contiene 71 pictogramas Mulberry R03 con manifest/licencia y pasa sus gates locales según la evidencia recibida.
+Por tanto, los 13 juegos, pictogramas y ajustes móviles de Juegos encontrados quedan **IGNORED_FOR_RINCON_HANDOFF**. Su eventual reutilización o descarte corresponde al carril de Claude/Juegos, no a A7/A2.
 
-No integrar el lote a través del bundle Design R01.
-
-Debe preservarse como handoff independiente para el carril Juegos/Recursos y pasar por el modelo child-safe vigente antes de integración. La propia entrega declara que ningún juego enlaza a contenido S2.
-
-## 5 · Fix móvil de Juegos que sigue ausente
-
-R01 modifica `arriba()` en `assets/juegos-iris.js` para descontar la altura real de una cabecera sticky/fixed al abrir un juego, además de 24 px.
-
-Astra comprobó A1 HEAD `8f686098...`:
-- SHA `a0821606...`;
-- conserva el offset fijo antiguo;
-- no contiene cálculo de `header.hd.getBoundingClientRect().height`.
-
-La entrega R01 lo usó para el gate WCAG 2.4.11 y reporta 273/273 comprobaciones móviles.
-
-Este fix debe evaluarse/portarse en el lote Juegos, no mezclarse con materiales R01.
-
-Los ajustes CSS R01 de 44×44, scroll-padding y títulos móviles deben reconciliarse con Design R02 antes de portar: no copiar literalmente selectores/materiales de la versión R01.
-
-## 6 · QA recibido
+## 5 · QA recibido
 
 - qa navegador: 111/111 PASS;
 - qa móvil: 273/273 PASS;
@@ -160,9 +133,11 @@ Estos resultados cubren el paquete R01 recibido, no el producto integrado actual
 
 ## Próxima acción
 
-1. A7 porta FIX-RINCON-01/02 en PR #300 o sucesor.
-2. A2 NO aplica el bundle Rincon.zip.
-3. Design R02 sigue siendo la fuente material vigente.
-4. Los 13 juegos + pictogramas + fix de foco móvil se preservan como lote separado y se integran solo tras reconciliación con A1/child-safe.
+1. **A7** porta únicamente FIX-RINCON-01/02 en PR #300 o sucesor.
+2. **A2** no aplica el bundle `Rincon.zip`; integra después el Rincón corregido por A7 y ejecuta build/preview/HUMAN QA.
+3. Design R02 sigue siendo la fuente material vigente, pero no recibe ninguna acción desde este handoff.
+4. Juegos queda fuera de este handoff y continúa únicamente en el carril de Claude.
+
+**Responsables operativos de Rincón desde este ZIP: A7 + A2.**
 
 No main. No producción.
