@@ -1,0 +1,119 @@
+{
+  "id": "R49-A8-TRANSVERSAL-R42-R02-READY",
+  "date": "2026-09-27",
+  "owner": "Agente 8",
+  "state": "R49_A8_TRANSVERSAL_R42_R02_READY_FOR_ASTRA",
+  "issue": 311,
+  "pull_request": 312,
+  "base_at_start": {
+    "head": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+    "tree": "b143682a9309ad87574bd4909b5ca28b2da0d26e",
+    "html_source_observed": 1053
+  },
+  "donor": {
+    "pull_request": 310,
+    "head": "4769e223dc5e10f2bdd82a508310a929e94a6bb5",
+    "tree": "7e3db0f4dc4f4c7943f7ce1be266109ca97510c2"
+  },
+  "final": {
+    "branch": "agent8/r49-transversal-r42-r02-20260927",
+    "head": "563ac5f71e4c9c3b19b32ea982a684033ea74f45",
+    "tree": "9ee305eb571b590cb59f524b78b0877160f0e284"
+  },
+  "a2_at_delivery": {
+    "head": "822092d3ae64d39ab421e766d79a83db93dc031b",
+    "tree": "4317d3fc99429e844183c4857cc3ccdc298f8774",
+    "pr310_merged": true
+  },
+  "coverage": {
+    "routes": 1047,
+    "unclassified": 0,
+    "profiles": {
+      "content": 948,
+      "browse": 22,
+      "workspace": 77
+    },
+    "locales": {
+      "es": 531,
+      "en": 516
+    },
+    "owners": {
+      "A8_HOME_DONOR": 2,
+      "R46_RINCON": 2,
+      "R47_TALLER": 54,
+      "R48_INTERESES": 15,
+      "R49_TRANSVERSAL": 974
+    }
+  },
+  "child_safe": {
+    "safe": 365,
+    "intentional_s2": 7,
+    "adult_metadata": 372,
+    "s2_html": 18,
+    "research_s2": 6,
+    "protected_full_requests": 0,
+    "adult_explicit_full_requests": 1,
+    "derived_iris_card_removed_from_initial_s2": true
+  },
+  "qa": {
+    "run": 36338047939,
+    "job": 108672585882,
+    "conclusion": "SUCCESS",
+    "artifact_id": 10937792177,
+    "artifact_name": "r49-a8-transversal-r42-r02-qa",
+    "screenshots_r49": 95,
+    "screenshots_home": 11,
+    "wide_checks": 9
+  },
+  "performance": {
+    "common_raw_bytes": 42836,
+    "common_gzip_bytes": 12283,
+    "html_delta_bytes": 615375,
+    "delta": {
+      "content": {
+        "lcp_ms": -28,
+        "cls": 0.005842
+      },
+      "browse": {
+        "lcp_ms": 8,
+        "cls": -0.07424
+      },
+      "workspace": {
+        "lcp_ms": -80,
+        "cls": 0.039341
+      }
+    }
+  },
+  "gates": {
+    "idempotent": true,
+    "duplicate_common_assets": 0,
+    "reading_width_not_product_width": true,
+    "forced_colors": true,
+    "reduced_motion": true,
+    "reduced_transparency": true,
+    "high_contrast_filter_removed": true,
+    "skip_first_focus": true,
+    "target_44": true,
+    "reflow_320": true
+  },
+  "visual_inspected": [
+    "wide-content-2560x1440",
+    "wide-browse-2560x1440",
+    "wide-workspace-2560x1440",
+    "workshop-320x800",
+    "condition-320x800"
+  ],
+  "next": "Astra reviews PR312 exact validated HEAD; A2 integrates on live HEAD and publishes one preview; Maria HUMAN QA",
+  "guards": [
+    "no main",
+    "no production",
+    "no A8 deploy",
+    "no Cloud A9",
+    "no Sabik voice",
+    "do not rewrite R46/R47/R48 engines"
+  ],
+  "notes": [
+    "1047 navigable public HTML; 6 full S2 chunks excluded from page manifest",
+    "Cuaderno absent from current baseline; prefix-ready, no phantom route"
+  ]
+}
