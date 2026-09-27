@@ -1,0 +1,28 @@
+{
+  "id": "R42-RINCON-ZIP-A7-FIXES",
+  "date": "2026-09-27",
+  "owner": "Agente 7",
+  "source": "Rincon.zip / R42-DESIGN-R01 audit handoff",
+  "state": "R42_RINCON_ZIP_A7_FIXES_READY_FOR_A2",
+  "base_a2": "a0036d541393f103d2dfefd05ec2f66a979f49e2",
+  "branch": "agent7/r42-rincon-fix-clean-hidden-r02-20260927",
+  "head": "2b5db6dfcffa3c17b375abb4629016fd14cc65a7",
+  "tree": "165ac2f3c9f2cc389ef74d67b2b20b414adaf793",
+  "pr": 303,
+  "precheck": "R42_A7_RINCON_TWO_FIXES_PASS",
+  "fixes": [
+    "clean-screen MutationObserver loop made idempotent with setBodyClass",
+    "hidden sceneTouch forced hidden despite display:flex!important"
+  ],
+  "cache_bust": [
+    "ES",
+    "EN"
+  ],
+  "scope_exclusions": [
+    "audio",
+    "scenes",
+    "catalog",
+    "real-media"
+  ],
+  "next": "A2 integrate PR303 -> build/preview -> validate clean screen and absence of empty pill"
+}
