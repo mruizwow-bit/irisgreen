@@ -1,0 +1,40 @@
+/* Iris Green · A5 advanced workshop engines · product-first creative surfaces */
+@layer ig43-workshop {
+.ig43-editor{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:100%;height:100%;background:#0f1d2d;color:#f7fbff;border-radius:18px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.ig43-toolbar{display:flex;align-items:center;gap:7px;min-height:52px;padding:7px 9px;background:#14263a;border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto}
+.ig43-tool{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 11px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#1b3048;color:#f7fbff;font:inherit;white-space:nowrap;cursor:pointer}
+.ig43-tool:hover{background:#23405f}.ig43-tool[aria-pressed=true],.ig43-tool.is-active{background:#e9f2ff;color:#102a43;border-color:#e9f2ff}
+.ig43-tool input[type=color]{width:28px;height:28px;padding:0;border:0;background:transparent}
+.ig43-tool input[type=range]{width:100px}
+.ig43-spacer{flex:1 1 auto}
+.ig43-stage{position:relative;min-height:0;overflow:hidden;background:
+linear-gradient(45deg,#17283a 25%,transparent 25%) 0 0/24px 24px,
+linear-gradient(45deg,transparent 75%,#17283a 75%) 0 0/24px 24px,
+linear-gradient(45deg,transparent 75%,#17283a 75%) 12px -12px/24px 24px,
+linear-gradient(45deg,#17283a 25%,#122235 25%) 12px -12px/24px 24px}
+.ig43-canvas{display:block;width:100%;height:100%;min-height:420px;touch-action:none;outline:none;cursor:crosshair}
+.ig43-canvas:focus-visible{outline:3px solid #ffd166;outline-offset:-3px}
+.ig43-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr);height:100%;min-height:0}
+.ig43-split>section{min-width:0;min-height:0;position:relative}.ig43-split>section+section{border-left:1px solid rgba(255,255,255,.1);background:#0b1725}
+.ig43-hud{position:absolute;left:10px;bottom:10px;z-index:3;display:flex;gap:6px;align-items:center;padding:6px 8px;border-radius:10px;background:rgba(8,20,34,.78);backdrop-filter:blur(8px);font-size:.78rem;color:#dbe9f7;pointer-events:none}
+.ig43-status{min-height:34px;margin:0;padding:8px 12px;background:#14263a;border-top:1px solid rgba(255,255,255,.1);color:#dbe9f7;font-size:.86rem}
+.ig43-timeline{display:grid;grid-template-columns:64px minmax(0,1fr);min-height:0;height:100%;background:#0b1725}
+.ig43-track-labels{display:grid;grid-auto-rows:minmax(52px,1fr);border-right:1px solid rgba(255,255,255,.1);background:#122235}
+.ig43-track-labels span{display:grid;place-items:center;font-size:.78rem;color:#c7d8ea;border-bottom:1px solid rgba(255,255,255,.08)}
+.ig43-stage .ig43-overlay{position:absolute;inset:0;pointer-events:none}
+.ig43-sheet{display:none}
+.ig43-kbd-help{font-size:.78rem;color:#afc2d6;margin-left:auto}
+.ig43-pill{display:inline-flex;align-items:center;min-height:28px;padding:0 9px;border-radius:999px;background:#243c57;color:#dceaff;font-size:.76rem}
+.ig43-meter{width:90px;height:8px;background:#0b1725;border-radius:999px;overflow:hidden}.ig43-meter>i{display:block;height:100%;background:linear-gradient(90deg,#63d7a4,#ffd166,#ff7c7c);transform-origin:left}
+.ig43-a11y-grid{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+.ig43-editor button:focus-visible,.ig43-editor input:focus-visible,.ig43-editor select:focus-visible{outline:3px solid #ffd166;outline-offset:2px}
+@media(max-width:900px){
+  .ig43-editor{border-radius:14px}.ig43-canvas{min-height:340px}
+  .ig43-split{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(170px,34vh)}
+  .ig43-split>section+section{border-left:0;border-top:1px solid rgba(255,255,255,.1)}
+  .ig43-toolbar{min-height:48px;padding:5px 6px}.ig43-tool{min-height:40px}
+  .ig43-kbd-help{display:none}
+}
+@media(prefers-reduced-motion:reduce){.ig43-editor *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media(forced-colors:active){.ig43-editor,.ig43-toolbar,.ig43-stage,.ig43-status,.ig43-tool{forced-color-adjust:auto;background:Canvas;color:CanvasText;border-color:CanvasText}.ig43-tool[aria-pressed=true]{background:Highlight;color:HighlightText}}
+}
