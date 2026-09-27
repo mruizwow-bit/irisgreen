@@ -12,6 +12,7 @@ from pathlib import Path
 
 MATERIALS = "/assets/ig-r42-materials.css?v=r42-design-1"
 CSS = "/assets/ig-r42-shell.css?v=r42-design-1"
+CHILD_SAFETY_JS = "/assets/ig-child-safety.js?v=r42-child-1"
 JS = "/assets/ig-r42-shell.js?v=r42-a3-1"
 LEGACY_CSS = "/assets/ig-r42-shell.css?v=r42-a3-1"
 
@@ -62,6 +63,11 @@ def _inject_assets(text: str) -> str:
             raise AssertionError("R42 pilot page has no </head>")
     if MATERIALS not in text:
         text = text.replace(f'<link rel="stylesheet" href="{CSS}">', f'<link rel="stylesheet" href="{MATERIALS}">\n<link rel="stylesheet" href="{CSS}">', 1)
+    if CHILD_SAFETY_JS not in text:
+        script = f'<script defer src="{CHILD_SAFETY_JS}"></script>\n'
+        text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
+        if count != 1:
+            raise AssertionError("R42 pilot page has no </body>")
     if JS not in text:
         script = f'<script defer src="{JS}"></script>\n'
         text, count = BODY_CLOSE_RE.subn(script + "</body>", text, count=1)
