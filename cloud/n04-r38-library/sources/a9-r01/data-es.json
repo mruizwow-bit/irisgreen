@@ -1,0 +1,4020 @@
+{
+ "cover": {
+  "title": "Neurodiversidad y discapacidad en cifras",
+  "lede": [
+   "No existe una única cifra oficial de «personas neurodivergentes en el mundo». Los grandes organismos internacionales no utilizan neurodivergencia como una categoría estadística homogénea: miden condiciones concretas, discapacidad, funcionamiento, necesidad de apoyo, diagnóstico, identificación o participación social.",
+   "Esta sección reúne cifras que sí pueden citarse con precisión. Cada página indica qué se midió, a quién, dónde, cuándo y con qué fuente. Cuando dos datos parecen contradictorios, antes de compararlos hay que comprobar si realmente están midiendo lo mismo."
+  ],
+  "sections": [
+   {
+    "h": "Ámbitos incluidos",
+    "p": [
+     "Autismo · prevalencia mundial modelizada, diferencias de identificación, diagnóstico y comparación entre países. TDAH y aprendizaje · TDAH infantil y adulto, dislexia, coordinación, Tourette, lenguaje, discalculia y disgrafía. Salud mental · ansiedad, TOC y coexistencia con autismo. Discapacidad e infancia · salud, educación, bienestar, discriminación y acceso a apoyos. Trabajo e ingresos · empleo, participación laboral y brecha salarial. Unión Europea · empleo, educación, formación, pobreza y discriminación. Países · Estados Unidos, Reino Unido, Australia y Canadá con fuentes oficiales nacionales. Comparación metodológica · cómo leer cifras internacionales sin construir rankings falsos."
+    ]
+   },
+   {
+    "h": "Cómo leer esta sección",
+    "p": [
+     "Una cifra alta o baja no dice por sí sola que una condición sea más o menos frecuente en un país. Puede cambiar porque cambian la edad estudiada, el acceso al diagnóstico, los registros disponibles, la definición, la encuesta o el método estadístico. Por eso cada página conserva su contexto y explica qué no debe concluirse de ella."
+    ]
+   },
+   {
+    "h": "Fuentes y mantenimiento",
+    "p": [
+     "Las fuentes principales son OMS, UNICEF, OIT/ILOSTAT, Eurostat, CDC, GOV.UK, Australian Bureau of Statistics, Public Health Agency of Canada y revisiones científicas internacionales seleccionadas en la investigación base.",
+     "Última revisión editorial de este documento: 1 de septiembre de 2026.",
+     "Iris Green",
+     "---"
+    ]
+   }
+  ],
+  "reglas": [
+   "Cada bloque `PÁGINA` puede convertirse en una página independiente dentro de la pestaña Datos.",
+   "Mantener siempre juntos territorio + población + año de los datos + método + fuente.",
+   "No sumar prevalencias de condiciones neurodivergentes: existe solapamiento entre ellas.",
+   "No utilizar discapacidad como sinónimo de neurodivergencia.",
+   "No convertir datos infantiles en cifras de toda la población.",
+   "No mezclar diagnóstico registrado, identificación, encuesta, metaanálisis y prevalencia modelizada.",
+   "No redondear ni cambiar denominadores salvo que la propia ficha lo indique.",
+   "Las cifras de salud mental aparecen porque forman parte de la base de conocimiento y pueden coexistir con condiciones neurodivergentes; no se presentan como sinónimo de neurodivergencia."
+  ]
+ },
+ "territorios": [
+  "Mundo",
+  "Mundo / EE. UU.",
+  "Reino Unido",
+  "61 países",
+  "30 países",
+  "Unión Europea",
+  "Estados Unidos",
+  "Australia",
+  "Canadá",
+  "Comparativa internacional"
+ ],
+ "paginas": [
+  {
+   "n": 1,
+   "territorio": "Mundo",
+   "title": "Autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2021 se estimó que 61,8 millones de personas —aproximadamente 1 de cada 127— eran autistas en el mundo. Es una estimación modelizada del Global Burden of Disease 2021, no un recuento de diagnósticos. La OMS utiliza actualmente esta cifra y advierte de que la prevalencia observada varía mucho entre estudios y sigue siendo desconocida en numerosos países de ingresos bajos y medios."
+    }
+   ],
+   "refTemporal": "2021 · 2025; OMS actualiza la ficha en 2025.",
+   "anioDatos": "2021",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "2025; OMS actualiza la ficha en 2025",
+   "revision": "Cada año",
+   "poblacion": "personas autistas estimadas en 2021",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "61,8 millones",
+     "pie": "personas autistas estimadas en 2021",
+     "b": [
+      {
+       "t": "p",
+       "text": "El estudio Global Burden of Disease 2021 estimó 61,8 millones de personas autistas en el mundo, con un intervalo de incertidumbre de 52,1 a 72,7 millones."
+      },
+      {
+       "t": "p",
+       "text": "Eso equivale aproximadamente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "1 de cada 127 personas",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La prevalencia mundial estandarizada por edad se estimó en 788,3 por cada 100.000 personas."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La cifra intenta estimar la prevalencia de autismo en todas las edades a escala mundial mediante modelización epidemiológica. Por eso puede aproximarse a poblaciones donde no existe un registro diagnóstico completo, pero no debe confundirse con el número de diagnósticos emitidos por los servicios sanitarios o educativos."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cítala como una estimación mundial modelizada, no como un recuento de diagnósticos. Mantén juntos 61,8 millones, 1 de cada 127, el año 2021 y la referencia GBD/OMS."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La estimación anterior del GBD 2019 era mucho menor. El propio estudio explica que una parte importante de la diferencia se debe a cambios metodológicos, incluido dejar de depender de estudios de identificación pasiva que podían infravalorar la prevalencia. Por tanto, no debe presentarse el salto entre GBD 2019 y GBD 2021 como un aumento real de autismo en solo dos años."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Autism · actualización 17-09-2025",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+    },
+    {
+     "label": "OMS · Autismo, versión en español",
+     "url": "https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders"
+    },
+    {
+     "label": "PubMed · GBD 2021 autism",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 2,
+   "territorio": "Mundo",
+   "title": "Autismo: diferencias por sexo en la estimación mundial",
+   "lede": [
+    {
+     "t": "p",
+     "text": "El modelo mundial GBD 2021 estimó 1.064,7 personas autistas por cada 100.000 varones y 508,1 por cada 100.000 mujeres. Son estimaciones epidemiológicas modelizadas y no equivalen a la proporción de diagnósticos registrada por los servicios sanitarios o educativos."
+    }
+   ],
+   "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+   "anioDatos": "2021",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "GBD 2021 / publicación científica 2025",
+   "revision": "Cada 2 años o cuando cambie GBD",
+   "poblacion": "prevalencia estandarizada por edad en varones",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "1.064,7 por 100.000",
+     "pie": "prevalencia estandarizada por edad en varones",
+     "b": []
+    },
+    {
+     "cifra": "508,1 por 100.000",
+     "pie": "prevalencia estandarizada por edad en mujeres",
+     "b": [
+      {
+       "t": "p",
+       "text": "El GBD 2021 estimó una prevalencia modelizada aproximadamente dos veces mayor en varones que en mujeres."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La comparación utiliza tasas estandarizadas por edad del mismo modelo mundial. Sirve para observar una diferencia estimada entre varones y mujeres y, al compararla con ratios de diagnóstico más altas, mostrar que identificación y prevalencia no son exactamente lo mismo."
+    },
+    {
+     "t": "p",
+     "text": "Las ratios de diagnóstico suelen ser más altas que esta diferencia modelizada. Una revisión de 54 estudios y más de 13,7 millones de participantes encontró que la ratio varón:mujer era 4,20:1 al agrupar todos los estudios, pero bajaba a 3,25:1 en los estudios que cribaban a la población general en lugar de partir solo de diagnósticos ya existentes."
+    },
+    {
+     "t": "p",
+     "text": "Esto es compatible con la existencia de sesgo de identificación: las cifras de diagnóstico no miden únicamente prevalencia."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita siempre que las tasas por sexo son estimaciones modelizadas estandarizadas por edad. No las presentes como ratio mundial de diagnósticos ni como una diferencia biológica cerrada."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Autism",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+    },
+    {
+     "label": "PubMed · GBD 2021 autism",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+    },
+    {
+     "label": "Loomes, Hull & Mandy · systematic review/meta-analysis",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28545751/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 3,
+   "territorio": "Mundo",
+   "title": "Autismo: carga de salud poblacional",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2021, el modelo Global Burden of Disease estimó 11,5 millones de DALYs asociados al autismo. Esta medida sirve para estudiar carga de salud a escala poblacional; no describe la experiencia, la calidad de vida ni las necesidades individuales de una persona autista."
+    }
+   ],
+   "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+   "anioDatos": "2021",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "GBD 2021 / publicación científica 2025",
+   "revision": "Cada 2 años o cuando cambie GBD",
+   "poblacion": "Población del modelo GBD para 2021, no un recuento de personas",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "11,5 millones de DALYs",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "El GBD 2021 estimó que el autismo representó 11,5 millones de años de vida ajustados por discapacidad (DALYs) en 2021."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Los DALYs son una medida de carga de salud poblacional. Se usan para comparar condiciones dentro de los modelos GBD; no indican cuántos años pierde una persona concreta ni resumen su calidad de vida, autonomía, apoyos o fortalezas."
+    },
+    {
+     "t": "p",
+     "text": "Un DALY es una medida de carga de salud poblacional. No significa que una persona autista “pierda” literalmente un número concreto de años de vida. Combina años de vida perdidos por mortalidad prematura y años vividos con discapacidad según el modelo GBD."
+    },
+    {
+     "t": "p",
+     "text": "En autismo, esta cifra debe usarse con mucha cautela porque depende de los pesos de discapacidad del modelo y no describe fortalezas, calidad de vida individual ni necesidades concretas de una persona."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Si se utiliza el dato de DALYs, explica qué es un DALY. No lo traduzcas a ‘años de vida perdidos por cada persona autista’ ni lo uses como medida individual de calidad de vida."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · GBD 2021 autism",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "decisión editorial"
+  },
+  {
+   "n": 4,
+   "territorio": "Mundo",
+   "title": "Discapacidad del desarrollo en niños y jóvenes",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2019, aproximadamente 317 millones de niños y jóvenes en el mundo vivían con condiciones de salud que contribuyen a una discapacidad del desarrollo. El informe conjunto de OMS y UNICEF señala además barreras sanitarias, estigma, prejuicio y exclusión social."
+    }
+   ],
+   "refTemporal": "2019 · OMS/UNICEF, 2023.",
+   "anioDatos": "2019",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "OMS/UNICEF, 2023",
+   "revision": "Cada año",
+   "poblacion": "niños, adolescentes y jóvenes afectados en 2019",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "317 millones",
+     "pie": "niños, adolescentes y jóvenes que viven con esas condiciones en 2019",
+     "b": [
+      {
+       "t": "p",
+       "text": "OMS y UNICEF estimaron que en 2019 aproximadamente 317 millones de niños y jóvenes vivían con condiciones de salud que contribuyen a una discapacidad del desarrollo."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El dato agrupa a niños y jóvenes con condiciones de salud que contribuyen a una discapacidad del desarrollo. El marco es más amplio que autismo, TDAH o cualquier otra condición neurodivergente concreta, por lo que no puede convertirse en un recuento mundial de neurodivergencia."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita ‘condiciones de salud que contribuyen a una discapacidad del desarrollo’. No sustituyas esa expresión por ‘317 millones de niños neurodivergentes’."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Esta cifra no significa 317 millones de niños neurodivergentes. El marco incluye un conjunto amplio de condiciones congénitas o adquiridas que pueden producir discapacidad del desarrollo."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · 15-09-2023",
+     "url": "https://www.who.int/news/item/15-09-2023-new-reports-highlights-neglected-health-needs-of-children-with-developmental-disabilities"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 5,
+   "territorio": "Mundo",
+   "title": "Por qué faltan datos comparables sobre desarrollo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "No todas las cifras llamadas «mundiales» representan de la misma forma a todas las regiones. Una revisión internacional de 2023 concluyó que, para varias discapacidades del desarrollo, la cobertura geográfica era insuficiente y los métodos demasiado heterogéneos para considerar las estimaciones plenamente representativas del planeta."
+    }
+   ],
+   "refTemporal": "revisiones incluidas hasta la publicación · revisión paraguas, 2023.",
+   "anioDatos": "revisiones incluidas hasta la publicación",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "revisión paraguas, 2023",
+   "revision": "Cada 2 años",
+   "poblacion": "Estudios de países de ingresos altos, con métodos distintos entre sí",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Una revisión paraguas de 2023 examinó estimaciones mundiales de TDAH, autismo, parálisis cerebral, discapacidad intelectual del desarrollo, epilepsia, pérdida auditiva, pérdida visual y dislexia."
+    },
+    {
+     "t": "p",
+     "text": "Su conclusión es importante para la pestaña Datos:"
+    },
+    {
+     "t": "p",
+     "text": "> Muchas estimaciones denominadas «globales» proceden de muestras concentradas en países de ingresos altos y presentan gran heterogeneidad metodológica."
+    }
+   ],
+   "cifras": [],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Aquí no se cuenta población: se evalúa qué tan representativa es la evidencia disponible. La revisión muestra que una cifra llamada global puede apoyarse sobre todo en estudios de países de ingresos altos y en métodos muy distintos entre sí."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Esta página no aporta una prevalencia: documenta una limitación de la evidencia global. Debe citarse como advertencia metodológica."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · Global prevalence of developmental disabilities in children and adolescents",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/36891340/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 6,
+   "territorio": "Mundo",
+   "title": "TDAH en niños y adolescentes",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Una revisión paraguas internacional que reunió 588 estudios y más de 3,27 millones de participantes estimó una prevalencia agrupada de TDAH del 8,0 % en niños y adolescentes. La cifra fue del 10 % en niños y del 5 % en niñas."
+    }
+   ],
+   "refTemporal": "estudios incluidos en la revisión publicada en 2023 · revisión paraguas, 2023.",
+   "anioDatos": "estudios incluidos en la revisión publicada en 2023",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "revisión paraguas, 2023",
+   "revision": "Cada 2 años",
+   "poblacion": "prevalencia agrupada en una revisión paraguas internacional",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "8,0 %",
+     "pie": "prevalencia agrupada en una revisión paraguas internacional",
+     "b": [
+      {
+       "t": "p",
+       "text": "Una revisión paraguas publicada en 2023 reunió:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "13 revisiones sistemáticas/metaanálisis.",
+        "588 estudios primarios.",
+        "3.277.590 participantes."
+       ]
+      },
+      {
+       "t": "p",
+       "text": "La prevalencia agrupada de TDAH en niños y adolescentes fue 8,0 %, con un IC del 95 % de 6,0 % a 10,0 %."
+      },
+      {
+       "t": "p",
+       "text": "Por sexo:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "10 % en niños.",
+        "5 % en niñas."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El 8,0 % resume resultados de cientos de estudios incluidos en revisiones previas. Es una prevalencia agrupada, útil para conocer el orden de magnitud del TDAH infantil y adolescente, pero no equivale a una tasa administrativa mundial de diagnóstico."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Presenta el 8,0 % como prevalencia agrupada de una revisión paraguas, con su IC del 95 % y el tamaño de la evidencia. No como diagnóstico registrado mundial."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "No es un censo mundial ni una estadística de la OMS. Es una estimación agrupada de estudios con métodos distintos. Debe aparecer como metaanálisis, no como «el 8 % de todos los niños del mundo tiene diagnóstico de TDAH»."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · PMID 37495084",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37495084/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 7,
+   "territorio": "Mundo",
+   "title": "TDAH en adultos",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Un metaanálisis internacional estimó para 2020 una prevalencia del 2,58 % de TDAH adulto persistente desde la infancia, equivalente a unos 139,84 millones de adultos. Cuando se utilizó una definición de TDAH adulto sintomático sin exigir demostrar inicio infantil, la estimación fue del 6,76 %, unos 366,33 millones. Son definiciones diferentes y no deben presentarse como una sola cifra."
+    }
+   ],
+   "refTemporal": "estructura demográfica mundial de 2020 · metaanálisis, 2021.",
+   "anioDatos": "estructura demográfica mundial de 2020",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "metaanálisis, 2021",
+   "revision": "Cada 2 años",
+   "poblacion": "TDAH adulto persistente desde la infancia",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Hay dos cifras distintas y no deben mezclarse."
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "2,58 %",
+     "pie": "TDAH adulto persistente desde la infancia",
+     "b": [
+      {
+       "t": "p",
+       "text": "Estimación ajustada a la estructura demográfica mundial de 2020:"
+      }
+     ]
+    },
+    {
+     "cifra": "139,84 millones de adultos",
+     "pie": "",
+     "b": []
+    },
+    {
+     "cifra": "6,76 %",
+     "pie": "TDAH adulto sintomático, con independencia de demostrar inicio infantil",
+     "b": [
+      {
+       "t": "p",
+       "text": "Equivalente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "366,33 millones de adultos",
+     "pie": "",
+     "b": []
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El metaanálisis construye dos estimaciones porque utiliza dos definiciones de TDAH adulto. Una exige persistencia desde la infancia y la otra se basa en síntomas adultos sin exigir demostrar ese inicio; por eso los porcentajes y los millones resultantes son diferentes."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Mantén separadas las dos definiciones: TDAH persistente desde la infancia (2,58 %) y TDAH adulto sintomático (6,76 %). No sumes ni promedies ambas cifras."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · PMID 33692893",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/33692893/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 8,
+   "territorio": "Mundo",
+   "title": "Dislexia del desarrollo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Un metaanálisis internacional estimó que la dislexia del desarrollo afecta aproximadamente al 7,1 % del alumnado de Primaria. En el conjunto analizado no se encontraron diferencias significativas entre sistemas de escritura alfabéticos y logográficos."
+    }
+   ],
+   "refTemporal": "estudios incluidos hasta 2021 · metaanálisis, 2022.",
+   "anioDatos": "estudios incluidos hasta 2021",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "metaanálisis, 2022",
+   "revision": "Cada 2 años",
+   "poblacion": "prevalencia agrupada en alumnado de Primaria",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "7,10 %",
+     "pie": "prevalencia agrupada en alumnado de Primaria",
+     "b": [
+      {
+       "t": "p",
+       "text": "Metaanálisis publicado en 2022:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "56 estudios en el análisis global.",
+        "Prevalencia agrupada: 7,10 %.",
+        "IC 95 %: 6,27–7,97 %."
+       ]
+      },
+      {
+       "t": "p",
+       "text": "Por sexo en los estudios incluidos:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "Niños: 9,22 %.",
+        "Niñas: 4,66 %."
+       ]
+      },
+      {
+       "t": "p",
+       "text": "Por sistema de escritura:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "Escrituras alfabéticas: 7,26 %.",
+        "Escrituras logográficas: 6,97 %.",
+        "La diferencia no fue estadísticamente significativa."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El indicador resume estudios de alumnado de Primaria y permite comparar, dentro del metaanálisis, sexo y sistema de escritura. No describe automáticamente la prevalencia en adultos ni garantiza la misma tasa en cada lengua o país."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita el 7,10 % como estimación agrupada en alumnado de Primaria. No la extrapoles automáticamente a todas las edades ni a cada país."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La heterogeneidad fue muy alta y las definiciones operativas variaban entre estudios. Es una estimación científica, no un registro administrativo mundial."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · PMID 35204003",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/35204003/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 9,
+   "territorio": "Mundo",
+   "title": "Trastorno del desarrollo de la coordinación",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Una revisión sistemática y metaanálisis publicada en 2024 estimó una prevalencia agrupada del 5 % de trastorno del desarrollo de la coordinación en población infantil general. La variación entre estudios fue elevada, por lo que la cifra debe leerse como síntesis científica y no como una tasa idéntica para todos los países."
+    }
+   ],
+   "refTemporal": "estudios incluidos hasta 2023 · metaanálisis, 2024.",
+   "anioDatos": "estudios incluidos hasta 2023",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "metaanálisis, 2024",
+   "revision": "Cada 2 años",
+   "poblacion": "prevalencia agrupada en niños",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "5 %",
+     "pie": "prevalencia agrupada en niños",
+     "b": [
+      {
+       "t": "p",
+       "text": "Una revisión sistemática y metaanálisis de 2024 incluyó 18 artículos y 31.203 participantes. Para población infantil general, la prevalencia agrupada fue del 5 %."
+      },
+      {
+       "t": "p",
+       "text": "Subgrupos del metaanálisis:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "Niños: 7 %.",
+        "Niñas: 4 %.",
+        "Asia: 4 %.",
+        "Europa: 2 %.",
+        "Norteamérica: 6 %."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La cifra del 5 % es una síntesis de estudios de población infantil general. Los subgrupos por sexo y región ayudan a explorar variación, pero la heterogeneidad alta impide tratarlos como diferencias geográficas definitivas."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita el 5 % como prevalencia agrupada infantil del metaanálisis. Las cifras regionales son subgrupos con alta heterogeneidad y no sirven para un ranking de continentes."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La heterogeneidad entre estudios fue muy elevada. Las diferencias regionales proceden de pocos estudios y no deben utilizarse como ranking geográfico."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · PMID 39391054",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39391054/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 10,
+   "territorio": "Mundo / EE. UU.",
+   "title": "Síndrome de Tourette: prevalencia estimada e identificación",
+   "lede": [
+    {
+     "t": "p",
+     "text": "El síndrome de Tourette muestra bien la diferencia entre prevalencia estimada e identificación registrada. El CDC resume estudios que sitúan la prevalencia en torno al 0,6 % infantil, mientras que el diagnóstico declarado por progenitores en Estados Unidos fue menor."
+    }
+   ],
+   "refTemporal": "síntesis de estudios; diagnóstico declarado en EE. UU. 2016–2019 · CDC, actualización 27-03-2026.",
+   "anioDatos": "síntesis de estudios; diagnóstico declarado en EE. UU. 2016–2019",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "CDC, actualización 27-03-2026",
+   "revision": "Anual",
+   "poblacion": "Las dos cifras no comparten denominador: la de diagnóstico declarado es de 3 a 17 años; la de estudios no acota edad",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "1 de cada 162 niños · 0,6 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "El CDC resume estudios que incluyen niños diagnosticados y no diagnosticados y estima que aproximadamente 1 de cada 162 niños (0,6 %) tiene síndrome de Tourette."
+      },
+      {
+       "t": "p",
+       "text": "En Estados Unidos, los datos de diagnóstico declarado por progenitores fueron menores:"
+      }
+     ],
+     "den": "Niños, sin tramo de edad especificado en la fuente; estimación de estudios que incluyen casos sin diagnosticar"
+    },
+    {
+     "cifra": "1 de cada 333 · 0,3 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "en niños de 3 a 17 años, aproximadamente 174.000 niños en el periodo 2016–2019."
+      }
+     ],
+     "den": "Niños de 3 a 17 años en Estados Unidos, diagnóstico declarado por progenitores, 2016-2019 · unos 174.000 niños"
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La página contrapone dos formas de medir: estudios que intentan captar casos diagnosticados y no diagnosticados, y una encuesta estadounidense basada en diagnóstico declarado por progenitores. La diferencia entre 0,6 % y 0,3 % ilustra por qué prevalencia e identificación registrada no son sinónimos."
+    },
+    {
+     "t": "p",
+     "text": "La prevalencia estimada mediante estudios activos puede ser mayor que el número de diagnósticos registrados. Identificación y prevalencia no son sinónimos."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Distingue entre la estimación de estudios que incluyen casos diagnosticados y no diagnosticados (0,6 %) y el diagnóstico declarado por progenitores en EE. UU. (0,3 %)."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC · Data and Statistics on Tourette Syndrome · actualización 27-03-2026",
+     "url": "https://www.cdc.gov/tourette-syndrome/data/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada"
+  },
+  {
+   "n": 11,
+   "territorio": "Reino Unido",
+   "title": "Trastorno del desarrollo del lenguaje: un estudio poblacional de referencia",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Para el trastorno del desarrollo del lenguaje no se ha seleccionado una prevalencia mundial única. Esta página utiliza un estudio poblacional británico de referencia para mostrar una cifra sólida con población y método definidos, sin convertirla en una estimación global."
+    }
+   ],
+   "refTemporal": "muestra de niños al entrar en la escuela · estudio poblacional británico, 2016.",
+   "anioDatos": "muestra de niños al entrar en la escuela",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "estudio poblacional británico, 2016",
+   "revision": "Cada 2 años; buscar nueva síntesis",
+   "poblacion": "Niños al entrar en la escuela, muestra poblacional británica, 2016",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "7,58 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "Un estudio poblacional británico muy citado estimó una prevalencia del 7,58 % de trastorno del lenguaje de origen entonces desconocido en niños de entrada a la escuela."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El 7,58 % procede de un estudio poblacional británico en niños al entrar en la escuela. Es útil porque define con claridad la población estudiada, pero no fue diseñado como una estimación representativa de todos los países del mundo."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita el 7,58 % como resultado de un estudio poblacional británico de entrada a la escuela. No lo rotules como prevalencia mundial del TDL."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Norbury et al., 2016",
+     "url": "https://doi.org/10.1111/jcpp.12573"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 12,
+   "territorio": "Mundo",
+   "title": "Discalculia y disgrafía: por qué no damos una cifra mundial única",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La literatura usa definiciones, pruebas, edades y umbrales diferentes. Existen rangos ampliamente repetidos, pero la búsqueda realizada para esta ampliación no encontró una estimación internacional reciente con una solidez comparable a las seleccionadas para TDAH, dislexia o trastorno del desarrollo de la coordinación."
+    }
+   ],
+   "refTemporal": "sin año único: no existe una cifra mundial seleccionada · revisión editorial de fuentes, 2026.",
+   "anioDatos": "sin año único: no existe una cifra mundial seleccionada",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "revisión editorial de fuentes, 2026",
+   "revision": "Revisar cada 2 años",
+   "poblacion": "Sin cifra única",
+   "cifrasH": "La conclusión publicable",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "Sin cifra mundial única seleccionada",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La evidencia localizada utiliza definiciones, pruebas, edades y umbrales diferentes. La decisión editorial es no convertir esa variación en un único porcentaje mundial hasta disponer de una síntesis internacional reciente y metodológicamente comparable."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El dato importante de esta página es metodológico: no se ha seleccionado una cifra mundial única suficientemente comparable. Discalculia y disgrafía se estudian con edades, pruebas, definiciones y puntos de corte diferentes; publicar un único porcentaje sin explicar esas diferencias daría una precisión que la evidencia seleccionada no permite."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La conclusión publicable es precisamente que no se selecciona una cifra mundial única. No rellenes este bloque con rangos de páginas divulgativas sin metodología comparable."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [],
+   "notaFuentes": [
+    "La investigación base no seleccionó una fuente única con solidez comparable a las utilizadas para TDAH, dislexia o trastorno del desarrollo de la coordinación. Antes de añadir una cifra, debe localizarse una revisión internacional reciente con definición, población, método y criterio de corte explícitos."
+   ],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "decisión editorial"
+  },
+  {
+   "n": 13,
+   "territorio": "Mundo",
+   "title": "Trastornos de ansiedad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Los trastornos de ansiedad son los trastornos mentales más comunes del mundo. La OMS estima que en 2021 afectaban a 359 millones de personas, incluidas 72 millones de personas menores de edad, y que alrededor del 27,6 % de quienes necesitan tratamiento lo reciben."
+    }
+   ],
+   "refTemporal": "2021 · OMS, actualización 08-09-2025.",
+   "anioDatos": "2021",
+   "metodo": "Organismo internacional",
+   "publicacion": "OMS, actualización 08-09-2025",
+   "revision": "Anual",
+   "poblacion": "personas con un trastorno de ansiedad en 2021",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "359 millones",
+     "pie": "personas con un trastorno de ansiedad en 2021",
+     "b": [
+      {
+       "t": "p",
+       "text": "La OMS estima que:"
+      }
+     ]
+    },
+    {
+     "cifra": "4,4 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de la población mundial vive actualmente con un trastorno de ansiedad."
+      },
+      {
+       "t": "p",
+       "text": "Entre los 359 millones de personas en 2021 había:"
+      }
+     ]
+    },
+    {
+     "cifra": "72 millones de niños y adolescentes",
+     "pie": "",
+     "b": []
+    },
+    {
+     "cifra": "Solo alrededor de 1 de cada 4 recibe tratamiento",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La OMS estima que 27,6 % de las personas que necesitan atención por un trastorno de ansiedad reciben algún tratamiento."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La OMS combina una estimación mundial de personas con trastornos de ansiedad en 2021 con un indicador de brecha de tratamiento. La página diferencia cuántas personas se estiman afectadas de cuántas reciben atención entre quienes la necesitan."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita 359 millones y 4,4 % como estimaciones OMS para 2021. Si se usa el 27,6 %, aclara que se refiere a la proporción de quienes necesitan tratamiento que reciben alguno."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La ansiedad no es sinónimo de neurodivergencia. Se incluye porque aparece con frecuencia como condición coexistente y porque forma parte de la base de conocimiento de Iris Green."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Trastornos de ansiedad · 08-09-2025",
+     "url": "https://www.who.int/es/news-room/fact-sheets/detail/anxiety-disorders"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 14,
+   "territorio": "Mundo",
+   "title": "TOC",
+   "lede": [
+    {
+     "t": "p",
+     "text": "No existe una única cifra de prevalencia mundial del TOC independiente del criterio diagnóstico. Un estudio internacional publicado en 2026 estimó una prevalencia a lo largo de la vida de entre 2,28 % y 3,21 %, según el sistema diagnóstico utilizado."
+    }
+   ],
+   "refTemporal": "estudios hasta 2025 · estudio de modelización, 08-07-2026.",
+   "anioDatos": "estudios hasta 2025",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "estudio de modelización, 08-07-2026",
+   "revision": "Cada 2 años",
+   "poblacion": "Prevalencia a lo largo de la vida, por sistema diagnóstico",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Una revisión sistemática y estudio de modelización publicado online el 8 de julio de 2026 reunió 112 estudios representativos de poblaciones nacionales o subnacionales."
+    },
+    {
+     "t": "p",
+     "text": "La prevalencia mundial a lo largo de la vida estimada dependió de los criterios diagnósticos:"
+    },
+    {
+     "t": "ul",
+     "items": [
+      "2,57 % con criterios CIE-10.",
+      "3,10 % con DSM-III.",
+      "2,28 % con DSM-IV.",
+      "3,21 % con DSM-5."
+     ]
+    }
+   ],
+   "cifras": [],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La revisión estima prevalencia a lo largo de la vida y muestra que el resultado depende del sistema diagnóstico aplicado. Las cuatro cifras no compiten entre sí: cada una corresponde a criterios distintos."
+    },
+    {
+     "t": "p",
+     "text": "Demuestra que hasta una misma condición puede producir cifras diferentes según el criterio usado. La definición estadística importa."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Indica que la prevalencia a lo largo de la vida cambia según el criterio diagnóstico. El rango 2,28–3,21 % no es un intervalo de confianza de una única cifra."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "PubMed · PMID 42415255 · 08-07-2026",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42415255/"
+    },
+    {
+     "label": "DOI",
+     "url": "https://doi.org/10.1176/appi.ajp.20250944"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 15,
+   "territorio": "Mundo",
+   "title": "Autismo y salud mental: coexistencia, no equivalencia",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Un metaanálisis de 2019 que reunió 96 estudios en sus análisis calculó las siguientes prevalencias agrupadas entre personas autistas:"
+    }
+   ],
+   "refTemporal": "estudios incluidos en metaanálisis publicado en 2019 · Lai et al., 2019.",
+   "anioDatos": "estudios incluidos en metaanálisis publicado en 2019",
+   "metodo": "Síntesis científica internacional",
+   "publicacion": "Lai et al., 2019",
+   "revision": "Cada 2 años",
+   "poblacion": "Muestras de personas autistas",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "ul",
+     "items": [
+      "TDAH: 28 %",
+      "Trastornos de ansiedad: 20 %",
+      "Trastornos del sueño-vigilia: 13 %",
+      "Trastornos disruptivos, del control de impulsos y de conducta: 12 %",
+      "Trastornos depresivos: 11 %",
+      "TOC: 9 %",
+      "Trastorno bipolar: 5 %",
+      "Trastornos del espectro de la esquizofrenia: 4 %"
+     ]
+    }
+   ],
+   "cifras": [],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Los porcentajes representan prevalencias agrupadas de condiciones coexistentes dentro de muestras de personas autistas. Sirven para mostrar que la atención no puede reducirse a una sola etiqueta, pero no predicen qué ocurrirá en una persona concreta."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Presenta los porcentajes como prevalencias agrupadas de condiciones coexistentes en un metaanálisis. No son probabilidades individuales y la heterogeneidad fue muy alta."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La heterogeneidad no explicada fue muy alta —I² superior al 95 %— y las cifras cambiaban según edad, sexo, funcionamiento intelectual, país y tipo de muestra. Los estudios clínicos daban prevalencias mayores que los poblacionales o de registros."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Lai et al., *The Lancet Psychiatry*, 2019",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/31447415/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 16,
+   "territorio": "Mundo",
+   "title": "Discapacidad significativa",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Más de 1.300 millones de personas —alrededor del 16 % de la población mundial, 1 de cada 6— viven con una discapacidad significativa."
+    }
+   ],
+   "refTemporal": "estimación mundial vigente · OMS Europa, actualización 10-08-2026.",
+   "anioDatos": "estimación mundial vigente",
+   "metodo": "Organismo internacional",
+   "publicacion": "OMS Europa, actualización 10-08-2026",
+   "revision": "Anual",
+   "poblacion": "personas",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "1.300 millones",
+     "pie": "personas",
+     "b": []
+    },
+    {
+     "cifra": "16 % de la población mundial",
+     "pie": "",
+     "b": []
+    },
+    {
+     "cifra": "1 de cada 6",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La OMS mantiene esta estimación en su actualización europea del 10 de agosto de 2026."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La OMS utiliza una categoría amplia de discapacidad significativa. Es un dato de contexto para estudiar barreras de salud, educación, empleo y participación; no es una estimación de población neurodivergente."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita 1.300 millones, 16 % y 1 de cada 6 como tres formas de expresar la misma estimación. No uses ‘discapacidad’ como sinónimo de ‘neurodivergencia’."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Discapacidad no es sinónimo de neurodivergencia. Esta cifra se utiliza para describir barreras de salud, educación, empleo, movilidad y participación que afectan a la población con discapacidad, dentro de la cual se encuentra una parte de la población neurodivergente."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Disability · 10-08-2026",
+     "url": "https://www.who.int/europe/news-room/fact-sheets/item/disability"
+    },
+    {
+     "label": "OMS · Disability and health",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/disability-and-health"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 17,
+   "territorio": "Mundo",
+   "title": "Desigualdad en salud asociada a discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Las diferencias de salud asociadas a la discapacidad no se explican únicamente por las condiciones de base. La OMS identifica barreras sanitarias, transporte inaccesible, pobreza, estigma y exclusión de la educación y el empleo como factores que producen desigualdad evitable."
+    }
+   ],
+   "refTemporal": "evidencia internacional reunida por OMS · OMS / informe mundial de equidad; actualización 2026.",
+   "anioDatos": "evidencia internacional reunida por OMS",
+   "metodo": "Organismo internacional",
+   "publicacion": "OMS / informe mundial de equidad; actualización 2026",
+   "revision": "Anual",
+   "poblacion": "Comparación entre personas con y sin discapacidad; evidencia internacional reunida por la OMS, sin denominador poblacional único",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "La OMS resume varias brechas:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "Hasta 20 años antes",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "Algunas personas con discapacidad mueren hasta 20 años antes que las personas sin discapacidad como consecuencia de desigualdades y condiciones prevenibles."
+      },
+      {
+       "t": "p",
+       "text": "La actualización europea de 2026 señala además:"
+      }
+     ]
+    },
+    {
+     "cifra": "Mortalidad 2–3 veces mayor",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "en personas con discapacidad en determinados contextos, a menudo por afecciones no relacionadas directamente con la discapacidad."
+      }
+     ]
+    },
+    {
+     "cifra": "Entre 2 y 4 veces mayor probabilidad",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de presentar determinadas enfermedades no transmisibles en adultos con discapacidad, como enfermedad cardiovascular, diabetes, depresión y enfermedades respiratorias crónicas."
+      }
+     ]
+    },
+    {
+     "cifra": "Hasta 6 veces más obstáculo",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "pueden representar los establecimientos sanitarios inaccesibles."
+      }
+     ]
+    },
+    {
+     "cifra": "Hasta 15 veces más limitante",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "puede resultar el transporte inaccesible o inasequible."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Los indicadores resumen desigualdades evitables de salud y acceso asociadas a discapacidad. Incluyen mortalidad, enfermedades no transmisibles y obstáculos físicos o económicos; no describen consecuencias inevitables de una discapacidad."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Estas cifras describen desigualdades de salud y barreras asociadas a discapacidad. No deben interpretarse como efectos inevitables de una condición individual."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Disability · 10-08-2026",
+     "url": "https://www.who.int/europe/news-room/fact-sheets/item/disability"
+    },
+    {
+     "label": "OMS · Disability and health",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/disability-and-health"
+    },
+    {
+     "label": "OMS · Global report on health equity for persons with disabilities",
+     "url": "https://www.who.int/publications/i/item/9789240063600"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 18,
+   "territorio": "Mundo",
+   "title": "Niños con discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Casi 240 millones de niños —aproximadamente 1 de cada 10— viven con alguna discapacidad en el mundo. El análisis de UNICEF utiliza un enfoque funcional amplio y no equivale a contar diagnósticos médicos."
+    }
+   ],
+   "refTemporal": "estimación base de UNICEF; página activa en 2026 · UNICEF.",
+   "anioDatos": "estimación base de UNICEF; página activa en 2026",
+   "metodo": "Organismo internacional",
+   "publicacion": "UNICEF",
+   "revision": "Anual",
+   "poblacion": "Niños y adolescentes del mundo, medidos con el módulo de funcionamiento infantil de UNICEF y el Washington Group, que se aplica de 2 a 17 años",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "Casi 240 millones",
+     "pie": "niños con alguna discapacidad en el mundo, estimación de UNICEF",
+     "b": []
+    },
+    {
+     "cifra": "1 de cada 10 niños",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "UNICEF estima que casi 240 millones de niños viven con alguna discapacidad en el mundo."
+      },
+      {
+       "t": "p",
+       "text": "La página de UNICEF Data sigue utilizando esta estimación en 2026."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "UNICEF utiliza un enfoque funcional amplio para estimar niños con discapacidad. La cifra no depende únicamente de diagnósticos médicos registrados y permite estudiar inclusión y participación en contextos muy distintos."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita ‘casi 240 millones’ y ‘aproximadamente 1 de cada 10’. El enfoque de UNICEF es funcional y no equivale a contar diagnósticos médicos."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "UNICEF Data · Children with disabilities",
+     "url": "https://data.unicef.org/topic/child-disability/overview/"
+    },
+    {
+     "label": "UNICEF · informe Seen, Counted, Included",
+     "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada"
+  },
+  {
+   "n": 19,
+   "territorio": "Mundo",
+   "title": "Educación y discapacidad infantil",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La brecha no termina en entrar en la escuela. UNICEF encontró que los niños con discapacidad eran 42 % menos propensos a alcanzar competencias fundamentales de lectura y aritmética, además de presentar mayor probabilidad de estar fuera del sistema educativo en todas las etapas analizadas."
+    }
+   ],
+   "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+   "anioDatos": "análisis internacional de UNICEF",
+   "metodo": "Organismo internacional",
+   "publicacion": "UNICEF, 10-11-2021",
+   "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+   "poblacion": "Niños con discapacidad comparados con niños sin discapacidad; las cuatro cifras son diferencias relativas",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Comparados con niños sin discapacidad, los niños con discapacidad eran:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "49 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a no haber asistido nunca a la escuela."
+      }
+     ]
+    },
+    {
+     "cifra": "47 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a estar fuera de Primaria."
+      }
+     ]
+    },
+    {
+     "cifra": "33 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a estar fuera del primer ciclo de Secundaria."
+      }
+     ]
+    },
+    {
+     "cifra": "27 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a estar fuera del segundo ciclo de Secundaria."
+      }
+     ]
+    },
+    {
+     "cifra": "42 % menos propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a alcanzar competencias fundamentales de lectura y aritmética."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Los porcentajes comparan la situación educativa de niños con y sin discapacidad mediante diferencias relativas. Describen una brecha entre grupos, no la proporción absoluta de todos los niños con discapacidad que se encuentra en cada situación."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Todos los porcentajes de esta página son diferencias relativas frente a niños sin discapacidad. No significan que ese porcentaje de todos los niños con discapacidad esté fuera de la escuela."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Son diferencias relativas, no porcentajes de todos los niños con discapacidad que están fuera de la escuela."
+    }
+   ],
+   "sources": [
+    {
+     "label": "UNICEF · 10-11-2021",
+     "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 20,
+   "territorio": "Mundo",
+   "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Las desigualdades también aparecen fuera del aula. UNICEF encontró mayor frecuencia de discriminación, infelicidad y castigo corporal grave entre niños con discapacidad y menor acceso a estimulación temprana y cuidados receptivos."
+    }
+   ],
+   "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+   "anioDatos": "análisis internacional de UNICEF",
+   "metodo": "Organismo internacional",
+   "publicacion": "UNICEF, 10-11-2021",
+   "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+   "poblacion": "Diferencias relativas entre grupos, no tasas de toda la infancia con discapacidad",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "En el análisis de UNICEF, frente a niños sin discapacidad:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "51 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a considerarse infelices."
+      }
+     ]
+    },
+    {
+     "cifra": "41 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a sentirse discriminados."
+      }
+     ]
+    },
+    {
+     "cifra": "32 % más propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a sufrir castigo corporal grave."
+      }
+     ]
+    },
+    {
+     "cifra": "24 % menos propensos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "a recibir estimulación temprana y cuidados receptivos."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Los indicadores comparan bienestar, discriminación, violencia y cuidados entre niños con y sin discapacidad. Igual que en educación, expresan diferencias relativas entre grupos, no tasas absolutas de toda la población infantil con discapacidad."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Son comparaciones relativas frente a niños sin discapacidad. Conserva esa comparación cada vez que se reutilice una cifra."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "UNICEF · Seen, Counted, Included",
+     "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 21,
+   "territorio": "Mundo",
+   "title": "Tecnología y productos de apoyo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Más de 2.500 millones de personas necesitan al menos un producto de apoyo. Casi 1.000 millones carecen del acceso que necesitan, y la OMS estima que la necesidad mundial superará los 3.500 millones de personas en 2050."
+    }
+   ],
+   "refTemporal": "base 2021–2022; proyección 2050 · OMS/UNICEF; ficha OMS 02-01-2024.",
+   "anioDatos": "base 2021–2022; proyección 2050",
+   "metodo": "Organismo internacional",
+   "publicacion": "OMS/UNICEF; ficha OMS 02-01-2024",
+   "revision": "Anual",
+   "poblacion": "personas necesitan uno o más productos de apoyo",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "Más de 2.500 millones",
+     "pie": "personas necesitan uno o más productos de apoyo",
+     "b": [
+      {
+       "t": "p",
+       "text": "Estos productos incluyen apoyos físicos y digitales: audífonos, gafas, movilidad, prótesis, reconocimiento de voz, gestión del tiempo, subtitulado y soluciones para comunicación y cognición."
+      }
+     ]
+    },
+    {
+     "cifra": "Casi 1.000 millones",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de personas que los necesitan no tienen acceso."
+      }
+     ]
+    },
+    {
+     "cifra": "Entre 3 % y 90 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "fue el rango de acceso observado en encuestas de países incluidas en el informe global, reflejando una enorme desigualdad."
+      }
+     ]
+    },
+    {
+     "cifra": "3.500 millones en 2050",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La OMS prevé que el número de personas que necesitarán tecnología de apoyo aumente a 3.500 millones en 2050."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La OMS y UNICEF miden tanto necesidad de productos de apoyo como acceso real. La categoría incluye productos físicos y soluciones digitales para comunicación y cognición, de modo que la brecha no se limita a movilidad o audición."
+    },
+    {
+     "t": "p",
+     "text": "La definición de tecnología de apoyo de la OMS incluye expresamente soluciones digitales para cognición y comunicación, por lo que este bloque conecta directamente con CAA, apoyos visuales, gestión del tiempo y accesibilidad."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Distingue necesidad de tecnología de apoyo, falta de acceso y proyección futura. No presentes 3.500 millones como una cifra actual."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OMS · Assistive technology · 02-01-2024",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/assistive-technology"
+    },
+    {
+     "label": "OMS/UNICEF · Global Report on Assistive Technology",
+     "url": "https://www.who.int/news/item/16-05-2022-almost-one-billion-children-and-adults-with-disabilities-and-older-persons-in-need-of-assistive-technology-denied-access--according-to-new-report"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "pie de la cifra"
+  },
+  {
+   "n": 22,
+   "territorio": "61 países",
+   "title": "Empleo y discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En una comparación de ILOSTAT basada en 61 países, alrededor de un tercio de las personas con discapacidad en edad laboral estaba empleada, aproximadamente la mitad de la proporción observada entre personas sin discapacidad. La cifra es una media internacional no ponderada, no una tasa mundial única."
+    }
+   ],
+   "refTemporal": "múltiples años en 61 países · ILOSTAT, 13-06-2022.",
+   "anioDatos": "múltiples años en 61 países",
+   "metodo": "Organización Internacional del Trabajo / comparación internacional",
+   "publicacion": "ILOSTAT, 13-06-2022",
+   "revision": "Anual",
+   "poblacion": "Personas con y sin discapacidad en 61 países",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "Aproximadamente 1 de cada 3",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "personas con discapacidad en edad de trabajar estaba empleada en la base comparativa de ILOSTAT."
+      },
+      {
+       "t": "p",
+       "text": "Esto era aproximadamente la mitad de la proporción observada entre personas sin discapacidad."
+      }
+     ]
+    },
+    {
+     "cifra": "7 de cada 10",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "personas con discapacidad estaban fuera de la población activa, frente a 4 de cada 10 personas sin discapacidad."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "ILOSTAT compara la situación laboral de personas con y sin discapacidad en 61 países. La media es no ponderada: cada país contribuye al promedio sin ajustarse por su tamaño de población."
+    },
+    {
+     "t": "p",
+     "text": "La OIT especifica que estas cifras se basan en la media no ponderada de 61 países. No son una tasa mundial ponderada por población."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La cifra procede de la media no ponderada de 61 países. Debe decirse expresamente: no es una tasa mundial ponderada por población."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "ILOSTAT · 13-06-2022",
+     "url": "https://ilostat.ilo.org/blog/new-ilo-database-highlights-labour-market-challenges-of-persons-with-disabilities/"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 23,
+   "territorio": "30 países",
+   "title": "Brecha salarial y discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La brecha salarial asociada a discapacidad no se limita al acceso al empleo. Un estudio internacional de la OIT encontró una diferencia media en salario por hora incluso después de considerar variables como edad, educación y ocupación."
+    }
+   ],
+   "refTemporal": "submuestra internacional de 30 países · OIT Working Paper 124, 27-08-2024.",
+   "anioDatos": "submuestra internacional de 30 países",
+   "metodo": "Organización Internacional del Trabajo / comparación internacional",
+   "publicacion": "OIT Working Paper 124, 27-08-2024",
+   "revision": "Cada 2 años",
+   "poblacion": "Salario por hora de trabajadores con y sin discapacidad, submuestra internacional",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "12 % menos por hora",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "Un estudio de la OIT publicado en 2024 encontró que, en promedio, los empleados con discapacidad ganaban 12 % menos por hora que los empleados sin discapacidad en la submuestra internacional analizada."
+      }
+     ]
+    },
+    {
+     "cifra": "Tres cuartas partes de la brecha",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "Aproximadamente 9 puntos porcentuales no podían explicarse por diferencias de edad, educación y ocupación incluidas en el modelo."
+      }
+     ]
+    },
+    {
+     "cifra": "Países de ingresos bajos y medio-bajos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "En ese subgrupo, la brecha salarial media alcanzó el 26 %."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La OIT compara salario por hora de trabajadores con y sin discapacidad en una submuestra internacional. El análisis también estima qué parte de la diferencia permanece después de considerar edad, educación y ocupación."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El 12 % es el promedio de una submuestra internacional de 30 países. No lo atribuyas a todos los países del mundo ni a todas las personas con discapacidad."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El resultado del 12 % procede de una submuestra de 30 países, no de todos los países del mundo."
+    }
+   ],
+   "sources": [
+    {
+     "label": "OIT · Working Paper 124 · 27-08-2024",
+     "url": "https://www.ilo.org/publications/study-employment-and-wage-outcomes-people-disabilities"
+    },
+    {
+     "label": "OIT · resumen 28-08-2024",
+     "url": "https://www.ilo.org/resource/news/new-ilo-working-paper-exposes-significant-disability-wage-gap"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 24,
+   "territorio": "Unión Europea",
+   "title": "Brecha de empleo asociada a discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En la Unión Europea, la brecha de empleo entre personas con y sin discapacidad fue de 24,2 puntos porcentuales en la última actualización publicada por Eurostat en mayo de 2026."
+    }
+   ],
+   "refTemporal": "última serie disponible en la actualización de 2026 · Eurostat, 29-05-2026.",
+   "anioDatos": "última serie disponible en la actualización de 2026",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat, 29-05-2026",
+   "revision": "Anual",
+   "poblacion": "Tasa de empleo de personas con discapacidad frente a personas sin discapacidad",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "24,2 puntos porcentuales",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "Eurostat informó en mayo de 2026 que las personas con discapacidad tenían una tasa de empleo 24,2 puntos porcentuales inferior a la de las personas sin discapacidad."
+      },
+      {
+       "t": "p",
+       "text": "Los datos se refieren a población de 20 a 64 años."
+      },
+      {
+       "t": "p",
+       "text": "La edición de 2025, con datos de 2024, situaba la brecha en 24,0 puntos; la actualización de 2026 la sitúa en 24,2 puntos."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La brecha de empleo resta la tasa de empleo de las personas con discapacidad de la tasa de quienes no tienen discapacidad. Por eso la unidad correcta es puntos porcentuales, no un porcentaje relativo."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Usa puntos porcentuales, no ‘24,2 % menos’. Una brecha de 24,2 puntos compara dos tasas de empleo."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Una diferencia expresada en puntos porcentuales no debe convertirse en un porcentaje relativo sin recalcularla."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · 29-05-2026",
+     "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/wdn-20260529-1"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 25,
+   "territorio": "Unión Europea",
+   "title": "Participación laboral y discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Participar en el mercado laboral significa estar trabajando o buscando trabajo. En la Unión Europea, los datos de 2024 muestran una diferencia amplia entre personas con y sin discapacidad, y una participación especialmente baja entre quienes tienen una discapacidad grave."
+    }
+   ],
+   "refTemporal": "2024 · Comisión Europea, ESDE 2025.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Comisión Europea, ESDE 2025",
+   "revision": "Anual",
+   "poblacion": "Población activa: fuera de la población activa no equivale a desempleo",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Con datos de 2024:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "Algo más del 56 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas de 20 a 64 años con discapacidad participaba en el mercado laboral."
+      },
+      {
+       "t": "p",
+       "text": "Frente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "Aproximadamente 84 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas sin discapacidad."
+      },
+      {
+       "t": "p",
+       "text": "Entre personas con discapacidad grave, participaba aproximadamente un tercio; entre quienes tenían limitación moderada, aproximadamente dos tercios."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Este indicador mide participación en el mercado laboral, es decir, estar empleado o buscando activamente empleo. Una persona fuera de la población activa no se clasifica igual que una persona desempleada que sí busca trabajo."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Distingue participación laboral de empleo: participar significa estar trabajando o buscando trabajo. No son la misma tasa."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Participación en el mercado laboral y empleo son indicadores distintos."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Comisión Europea · Employment and Social Developments in Europe 2025, capítulo 2",
+     "url": "https://ec.europa.eu/employment_social/employment_analysis/esde/2025/Chapter%202.html"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 26,
+   "territorio": "Unión Europea",
+   "title": "Abandono temprano de educación y formación",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2024, el 44,2 % de los jóvenes de 18 a 24 años con discapacidad grave eran personas que habían abandonado tempranamente la educación o la formación, frente al 8,0 % de los jóvenes sin discapacidad."
+    }
+   ],
+   "refTemporal": "2024 · Eurostat, 13-11-2025.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat, 13-11-2025",
+   "revision": "Anual",
+   "poblacion": "Jóvenes de 18 a 24 años",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Datos de 2024, población de 18 a 24 años:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "44,2 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre jóvenes con discapacidad grave."
+      }
+     ]
+    },
+    {
+     "cifra": "17,1 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre jóvenes con alguna discapacidad."
+      }
+     ]
+    },
+    {
+     "cifra": "8,0 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre jóvenes sin discapacidad."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Eurostat utiliza el indicador europeo de abandono temprano de educación y formación en jóvenes de 18 a 24 años. La comparación distingue discapacidad grave, alguna discapacidad y ausencia de discapacidad."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita las tres categorías —discapacidad grave, alguna discapacidad y sin discapacidad— y la edad 18–24 años. No conviertas el dato en abandono escolar de toda la población con discapacidad."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · 13-11-2025",
+     "url": "https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20251113-1"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 27,
+   "territorio": "Unión Europea",
+   "title": "Jóvenes fuera del empleo, la educación y la formación",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Datos de 2024, población de 15 a 29 años:"
+    }
+   ],
+   "refTemporal": "2024 · Eurostat.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat",
+   "revision": "Anual",
+   "poblacion": "Jóvenes de 15 a 29 años",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "54,7 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de los jóvenes con discapacidad grave no estaban empleados ni participaban en educación o formación."
+      },
+      {
+       "t": "p",
+       "text": "Frente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "10,0 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de los jóvenes sin discapacidad."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El indicador NEET identifica a jóvenes de 15 a 29 años que no están empleados ni participan en educación o formación. Une dos dimensiones —trabajo y formación— y por eso no debe leerse como una tasa simple de desempleo."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El indicador es NEET: no estar empleado ni participar en educación o formación. Cita la edad 15–29 años."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El indicador combina empleo y participación educativa; no describe por separado cada una de esas dos dimensiones."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · Disability statistics – access to education and training",
+     "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 28,
+   "territorio": "Unión Europea",
+   "title": "Educación superior y discapacidad",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Datos de 2024, población de 25 a 34 años:"
+    }
+   ],
+   "refTemporal": "2024 · Eurostat.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat",
+   "revision": "Anual",
+   "poblacion": "Personas de 25 a 34 años, con y sin discapacidad",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "30,0 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas jóvenes con discapacidad tenían un nivel educativo alto."
+      },
+      {
+       "t": "p",
+       "text": "Frente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "45,9 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas jóvenes sin discapacidad."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La cifra compara el nivel educativo alcanzado por personas de 25 a 34 años con y sin discapacidad. No mide matriculación universitaria actual ni abandono de una titulación concreta."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El indicador describe nivel educativo alto en población de 25–34 años. No mide acceso universitario de estudiantes actuales."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El indicador se refiere a un grupo de edad concreto y a nivel educativo alcanzado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · Disability statistics – access to education and training",
+     "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 29,
+   "territorio": "Unión Europea",
+   "title": "Formación a lo largo de la vida",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2024, entre personas de 25 a 64 años:"
+    }
+   ],
+   "refTemporal": "2024 · Eurostat.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat",
+   "revision": "Anual",
+   "poblacion": "Adultos de 25 a 64 años, cuatro semanas anteriores",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "6,4 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de quienes tenían una discapacidad grave habían participado en educación o formación durante las cuatro semanas anteriores."
+      },
+      {
+       "t": "p",
+       "text": "Frente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "15,4 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas sin discapacidad."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La estadística mide participación de adultos de 25 a 64 años en educación o formación durante las cuatro semanas anteriores. Es un indicador de aprendizaje a lo largo de la vida, no de estudios reglados acumulados."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La participación se refiere a educación o formación en las cuatro semanas anteriores entre personas de 25–64 años."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El periodo de referencia es corto: participación durante las cuatro semanas anteriores."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · Disability statistics – access to education and training",
+     "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 30,
+   "territorio": "Unión Europea",
+   "title": "Pobreza y exclusión social",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En la UE, las personas con discapacidad presentan una mayor exposición a la pobreza y la exclusión social. En 2024, el 28,8 % estaba en riesgo de pobreza o exclusión social, frente al 17,9 % de las personas sin limitación de actividad."
+    }
+   ],
+   "refTemporal": "2024 · Eurostat.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat",
+   "revision": "Anual",
+   "poblacion": "Población de 16 años o más de la Unión Europea, 2024",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Datos de 2024, población de 16 años o más:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "28,8 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre personas con discapacidad/limitación de actividad."
+      }
+     ]
+    },
+    {
+     "cifra": "17,9 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre personas sin limitación."
+      },
+      {
+       "t": "p",
+       "text": "Otros indicadores:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "Riesgo de pobreza: 20,7 % vs 14,2 %.",
+        "Privación material y social grave: 10,4 % vs 4,7 %.",
+        "Hogares con intensidad laboral muy baja, menores de 65 años: 18,4 % vs 5,5 %."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El indicador europeo de riesgo de pobreza o exclusión social reúne distintas dimensiones. Los datos secundarios —riesgo de pobreza, privación material y baja intensidad laboral— ayudan a explicar el conjunto, pero se solapan y no deben sumarse."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita siempre la edad —16 años o más— y distingue riesgo de pobreza/exclusión de sus componentes. No sumes los indicadores secundarios."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Los indicadores de pobreza y exclusión se solapan; no deben sumarse."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · Disability statistics – poverty and income inequalities",
+     "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/34425.pdf"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 31,
+   "territorio": "Unión Europea",
+   "title": "Discriminación percibida en la vida cotidiana",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En la UE, la discriminación percibida por las personas con discapacidad fue más frecuente en todos los ámbitos analizados por Eurostat en 2024, desde los servicios públicos hasta la vivienda y las instituciones educativas."
+    }
+   ],
+   "refTemporal": "2024 · Eurostat, 04-05-2026.",
+   "anioDatos": "2024",
+   "metodo": "Estadística oficial de la Unión Europea",
+   "publicacion": "Eurostat, 04-05-2026",
+   "revision": "Anual",
+   "poblacion": "Personas con y sin discapacidad; no son denuncias ni resoluciones judiciales",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "Datos de 2024."
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "Oficinas administrativas y servicios públicos",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Personas con discapacidad: 9,4 %.",
+        "Personas sin discapacidad: 4,0 %."
+       ]
+      }
+     ]
+    },
+    {
+     "cifra": "Búsqueda de vivienda",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Con discapacidad: 8,2 %.",
+        "Sin discapacidad: 5,2 %."
+       ]
+      }
+     ]
+    },
+    {
+     "cifra": "Espacios públicos",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Con discapacidad: 5,0 %.",
+        "Sin discapacidad: 3,0 %."
+       ]
+      }
+     ]
+    },
+    {
+     "cifra": "Instituciones educativas",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Con discapacidad: 4,1 %.",
+        "Sin discapacidad: 2,3 %."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Eurostat pregunta por discriminación percibida en ámbitos concretos. La comparación permite observar diferencias de experiencia entre personas con y sin discapacidad, pero no sustituye estadísticas de denuncias o resoluciones judiciales."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Son porcentajes de discriminación percibida en ámbitos concretos. No equivalen a sentencias, denuncias o discriminación jurídicamente acreditada."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Eurostat · 04-05-2026",
+     "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260504-1"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 32,
+   "territorio": "Estados Unidos",
+   "title": "Autismo identificado en niños de 8 años",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En 2022, la red ADDM del CDC identificó autismo en 32,2 de cada 1.000 niños de 8 años —aproximadamente 1 de cada 31— en 16 comunidades estadounidenses. Es uno de los datos más citados sobre autismo y también uno de los que más se descontextualizan."
+    }
+   ],
+   "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+   "anioDatos": "2022",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "CDC MMWR publicado en 2025",
+   "revision": "Cuando se publique una nueva ronda ADDM",
+   "poblacion": "Niños de 8 años en comunidades concretas, no encuesta nacional de todas las edades",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "1 de cada 31 · 3,22 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "En 2022, la red ADDM del CDC identificó autismo en 32,2 por cada 1.000 niños de 8 años en 16 comunidades estadounidenses."
+      }
+     ]
+    },
+    {
+     "cifra": "Variación territorial",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "La prevalencia observada osciló entre:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "1 de cada 103 en Laredo, Texas.",
+        "1 de cada 19 en California."
+       ]
+      },
+      {
+       "t": "p",
+       "text": "El CDC indica que las diferencias en evaluación e identificación probablemente explican parte de esta variación."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "ADDM es una red de vigilancia de registros. Busca evidencia de autismo en documentación sanitaria y educativa de niños de una edad concreta y en comunidades concretas; no es una encuesta nacional de todas las edades."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Debe aparecer completo: niños de 8 años, vigilancia 2022, 16 comunidades ADDM y 32,2 por 1.000. No escribas ‘1 de cada 31 personas en EE. UU.’."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "«1 de cada 31 personas en Estados Unidos es autista»."
+    },
+    {
+     "t": "p",
+     "text": "La vigilancia se refiere a:"
+    },
+    {
+     "t": "ul",
+     "items": [
+      "Niños de 8 años.",
+      "Año de vigilancia 2022.",
+      "16 comunidades de la red ADDM.",
+      "Identificación a partir de registros y sistemas de salud/educación.",
+      "No necesariamente representa a toda la población infantil estadounidense."
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC · Data and Statistics on Autism",
+     "url": "https://www.cdc.gov/autism/data-research/"
+    },
+    {
+     "label": "CDC MMWR 2025, datos 2022",
+     "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 33,
+   "territorio": "Estados Unidos",
+   "title": "Diferencia por sexo en identificación de autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En los datos ADDM 2022 de niños de 8 años:"
+    }
+   ],
+   "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+   "anioDatos": "2022",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "CDC MMWR publicado en 2025",
+   "revision": "Cuando se publique una nueva ronda ADDM",
+   "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "49,2 por 1.000",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "en niños."
+      }
+     ]
+    },
+    {
+     "cifra": "14,3 por 1.000",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "en niñas."
+      }
+     ]
+    },
+    {
+     "cifra": "3,4 veces",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "mayor prevalencia identificada en niños que en niñas."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La comparación usa el mismo sistema ADDM, la misma edad y el mismo año para niños y niñas. Mide una diferencia de autismo identificado dentro de esa vigilancia, no una ratio universal de prevalencia biológica."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita como diferencia de identificación en ADDM 2022. No conviertas 3,4 veces en una ratio biológica universal varón:mujer."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Es una diferencia de identificación observada en la red ADDM, no una prueba de que la prevalencia biológica real sea exactamente 3,4 veces mayor."
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC MMWR",
+     "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada"
+  },
+  {
+   "n": 34,
+   "territorio": "Estados Unidos",
+   "title": "Edad del diagnóstico de autismo documentado",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La edad a la que aparece documentado un diagnóstico ayuda a estudiar el acceso a evaluación e identificación. En la vigilancia ADDM 2022, la mediana del diagnóstico más temprano conocido fue de 47 meses entre los niños con información diagnóstica disponible."
+    }
+   ],
+   "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+   "anioDatos": "2022",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "CDC MMWR publicado en 2025",
+   "revision": "Cuando se publique una nueva ronda ADDM",
+   "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022; la mediana de 47 meses solo entre los que tenían un diagnóstico documentado",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "47 meses",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "fue la mediana de edad del diagnóstico de autismo más temprano conocido entre los niños de 8 años con una declaración diagnóstica disponible."
+      },
+      {
+       "t": "p",
+       "text": "Rango entre sitios:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "California: 36 meses.",
+        "Laredo, Texas: 69,5 meses."
+       ]
+      }
+     ]
+    },
+    {
+     "cifra": "50,3 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de los niños de 8 años con autismo y evaluaciones disponibles habían sido evaluados antes o a los 36 meses."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La mediana de 47 meses resume la edad del diagnóstico más temprano conocido entre quienes tenían una declaración diagnóstica disponible. La cifra de evaluados antes de 36 meses responde a otra pregunta y utiliza el grupo con evaluaciones disponibles."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La mediana de 47 meses se refiere al diagnóstico más temprano conocido entre quienes tenían una declaración diagnóstica disponible. Mantén el denominador."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC MMWR 2025, tabla 4",
+     "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada"
+  },
+  {
+   "n": 35,
+   "territorio": "Estados Unidos",
+   "title": "Autismo y discapacidad intelectual en ADDM",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre los niños autistas de 8 años que tenían información cognitiva disponible:"
+    }
+   ],
+   "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+   "anioDatos": "2022",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "CDC MMWR publicado en 2025",
+   "revision": "Cuando se publique una nueva ronda ADDM",
+   "poblacion": "El 61,4 % de los niños identificados, los que tenían esa información disponible",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "39,6 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "fueron clasificados con discapacidad intelectual —IQ ≤70—."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El 39,6 % solo se calcula entre niños autistas con información cognitiva disponible. Como esa información existía para el 61,4 % de los identificados, el denominador debe mantenerse visible para evitar generalizar a todo el conjunto."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El 39,6 % se calcula solo entre los niños con información cognitiva disponible; esa información existía para el 61,4 % de los identificados. Ambos datos deben ir juntos."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Solo 61,4 % de los niños autistas identificados tenía información cognitiva disponible. Por tanto, el 39,6 % no debe presentarse como una proporción de todos los niños autistas estadounidenses sin explicar el denominador."
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC MMWR 2025",
+     "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 36,
+   "territorio": "Estados Unidos",
+   "title": "TDAH infantil",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Datos de la National Survey of Children’s Health 2022:"
+    }
+   ],
+   "refTemporal": "2022 · National Survey of Children’s Health / CDC, publicación 2024.",
+   "anioDatos": "2022",
+   "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+   "publicacion": "National Survey of Children’s Health / CDC, publicación 2024",
+   "revision": "Cuando se publique una nueva encuesta comparable",
+   "poblacion": "Niños y adolescentes de 3 a 17 años en Estados Unidos, diagnóstico declarado por progenitores, 2022",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "11,4 % · 7,1 millones",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de niños de 3 a 17 años habían recibido alguna vez un diagnóstico de TDAH según declaración de progenitores."
+      }
+     ]
+    },
+    {
+     "cifra": "10,5 % · 6,5 millones",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "tenían TDAH actual."
+      },
+      {
+       "t": "p",
+       "text": "Entre quienes tenían TDAH actual:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "58,1 % tenía TDAH moderado o grave.",
+        "77,9 % tenía al menos otra condición coexistente.",
+        "53,6 % recibía medicación para TDAH.",
+        "44,4 % había recibido tratamiento conductual durante el año anterior.",
+        "30,1 % no había recibido tratamiento específico para TDAH."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La National Survey of Children’s Health recoge diagnóstico declarado por progenitores. La página distingue haber recibido alguna vez un diagnóstico de TDAH de tener TDAH actual y, dentro de este último grupo, describe gravedad, coexistencia y tratamiento."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Aclara que el diagnóstico fue declarado por progenitores en la National Survey of Children’s Health y distingue ‘alguna vez diagnosticado’ de ‘TDAH actual’."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "CDC Stacks / Danielson et al.",
+     "url": "https://stacks.cdc.gov/view/cdc/160350"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada"
+  },
+  {
+   "n": 37,
+   "territorio": "Reino Unido",
+   "title": "Empleo y autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En el Reino Unido, la Buckland Review de 2024 señaló que solo alrededor de 3 de cada 10 personas autistas en edad laboral estaban empleadas, frente a aproximadamente 5 de cada 10 personas con discapacidad y 8 de cada 10 personas sin discapacidad."
+    }
+   ],
+   "refTemporal": "principalmente 2021/22–2022/23 · Buckland Review, 28-02-2024.",
+   "anioDatos": "principalmente 2021/22–2022/23",
+   "metodo": "Revisión y datos oficiales del Reino Unido",
+   "publicacion": "Buckland Review, 28-02-2024",
+   "revision": "Buscar actualización anual",
+   "poblacion": "Personas autistas en edad laboral, frente a personas con discapacidad en conjunto y sin discapacidad",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "p",
+     "text": "La Buckland Review, publicada por el Gobierno británico en febrero de 2024, resume que:"
+    }
+   ],
+   "cifras": [
+    {
+     "cifra": "Aproximadamente 3 de cada 10",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "personas autistas en edad laboral estaban empleadas."
+      },
+      {
+       "t": "p",
+       "text": "Comparación incluida en el informe:"
+      },
+      {
+       "t": "ul",
+       "items": [
+        "Autistas: ~3 de cada 10.",
+        "Personas con discapacidad en conjunto: ~5 de cada 10.",
+        "Personas sin discapacidad: ~8 de cada 10."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La Buckland Review compara el empleo de personas autistas en edad laboral con el de personas con discapacidad en conjunto y personas sin discapacidad. Es una fotografía del mercado laboral británico con los últimos datos disponibles para la revisión."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Cita ‘alrededor de 3 de cada 10’ y atribúyelo a la Buckland Review con los años de datos disponibles. No lo conviertas en tasa mundial."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El informe usa las últimas cifras oficiales disponibles en ese momento, principalmente 2021/22 y 2022/23. No convertirlo en «tasa mundial de empleo autista»."
+    }
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK · Buckland Review · 28-02-2024",
+     "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 38,
+   "territorio": "Reino Unido",
+   "title": "Brecha salarial en autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La Buckland Review cita datos de la Office for National Statistics según los cuales las personas autistas presentaban la mayor brecha salarial de los grupos de discapacidad analizados."
+    }
+   ],
+   "refTemporal": "datos ONS citados por la Buckland Review · Buckland Review, 28-02-2024.",
+   "anioDatos": "datos ONS citados por la Buckland Review",
+   "metodo": "Revisión y datos oficiales del Reino Unido",
+   "publicacion": "Buckland Review, 28-02-2024",
+   "revision": "Buscar actualización anual",
+   "poblacion": "Personas autistas ocupadas frente a personas no discapacitadas ocupadas en Reino Unido; comparación relativa",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "Aproximadamente un tercio menos",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de salario medio que las personas sin discapacidad."
+      },
+      {
+       "t": "p",
+       "text": "El informe indica que la brecha se reduce considerablemente al controlar por tipo de ocupación, lo que apunta a una menor representación en puestos de mayor nivel y remuneración."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La brecha salarial compara remuneración de personas autistas con personas sin discapacidad. El hecho de que disminuya al controlar por ocupación sugiere que la distribución entre tipos de puesto forma parte de la diferencia observada."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La comparación salarial procede de datos citados por la revisión gubernamental. Explica que parte de la brecha disminuye al controlar por ocupación."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK · Buckland Review",
+     "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 39,
+   "territorio": "Reino Unido",
+   "title": "Graduados autistas",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Datos de 2022 citados por la Buckland Review:"
+    }
+   ],
+   "refTemporal": "2022 · Buckland Review, 2024.",
+   "anioDatos": "2022",
+   "metodo": "Revisión y datos oficiales del Reino Unido",
+   "publicacion": "Buckland Review, 2024",
+   "revision": "Buscar actualización anual",
+   "poblacion": "Graduados autistas del Reino Unido, quince meses después de graduarse, 2022",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "36 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de los graduados autistas había encontrado trabajo a tiempo completo 15 meses después."
+      },
+      {
+       "t": "p",
+       "text": "El informe señala que eran dos veces más propensos a estar desempleados que los graduados sin discapacidad en ese punto."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La cifra sigue a graduados autistas 15 meses después y pregunta específicamente por trabajo a tiempo completo. No describe a todos los adultos autistas ni todo tipo de empleo."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El 36 % se refiere a graduados autistas con trabajo a tiempo completo 15 meses después. No es una tasa general de empleo autista."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK · Buckland Review",
+     "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 40,
+   "territorio": "Reino Unido",
+   "title": "Revelar el diagnóstico y pedir ajustes en el trabajo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La Buckland Review incorpora resultados del Diverse Minds Employment Survey:"
+    }
+   ],
+   "refTemporal": "Diverse Minds Employment Survey citado por la Buckland Review · Buckland Review, 2024.",
+   "anioDatos": "Diverse Minds Employment Survey citado por la Buckland Review",
+   "metodo": "Revisión y datos oficiales del Reino Unido",
+   "publicacion": "Buckland Review, 2024",
+   "revision": "Buscar actualización anual",
+   "poblacion": "Muestra de encuesta, no censo nacional",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "ul",
+     "items": [
+      "Solo alrededor del 35 % de empleados autistas era completamente abierto sobre ser autista en toda su organización.",
+      "1 de cada 10 no lo había comunicado a nadie en el trabajo.",
+      "Casi un tercio sentía que no podía hablar de sus necesidades de ajuste.",
+      "Entre quienes solicitaron ajustes, más de una cuarta parte recibió una negativa.",
+      "Más de 1 de cada 10 consideró que el ajuste se había aplicado mal."
+     ]
+    }
+   ],
+   "cifras": [],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El Diverse Minds Employment Survey estudia comunicación del diagnóstico, posibilidad de pedir ajustes y respuesta del empleador. Sus resultados aportan experiencia laboral concreta, pero proceden de una muestra de encuesta y no de un censo nacional."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Estas cifras proceden de una encuesta específica incorporada a la Buckland Review. No las presentes como estimaciones de toda la fuerza laboral británica."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Estas cifras proceden de una encuesta específica citada por una revisión gubernamental, no de toda la población laboral británica."
+    }
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK · Buckland Review",
+     "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 41,
+   "territorio": "Australia",
+   "title": "Autismo en la población",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Australian Bureau of Statistics · Survey of Disability, Ageing and Carers 2022:"
+    }
+   ],
+   "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+   "anioDatos": "2022",
+   "metodo": "Estadística oficial de Australia",
+   "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+   "revision": "Cuando se publique un nuevo SDAC",
+   "poblacion": "Todas las edades, con desglose por sexo y edad; comparación entre rondas de la encuesta",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "290.900 personas",
+     "pie": "",
+     "b": []
+    },
+    {
+     "cifra": "1,1 % de la población australiana",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "En 2018 eran 205.200 personas, 0,8 %."
+      },
+      {
+       "t": "p",
+       "text": "El ABS registra un aumento del 41,8 % en el número estimado entre ambas encuestas."
+      }
+     ]
+    },
+    {
+     "cifra": "Por sexo",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Varones: 1,6 %.",
+        "Mujeres: 0,7 %."
+       ]
+      }
+     ]
+    },
+    {
+     "cifra": "Por edad",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Menores de 25 años: 3,1 %.",
+        "25 años o más: 0,3 %."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El ABS estima población autista mediante la Survey of Disability, Ageing and Carers 2022. Los desgloses por sexo y edad forman parte de la misma encuesta; la comparación con 2018 muestra cambio entre rondas, no su causa."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "La cifra procede de la encuesta SDAC 2022. El aumento frente a 2018 no debe interpretarse automáticamente como aumento de incidencia."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El aumento entre encuestas puede reflejar cambios en identificación, diagnóstico, composición de la población y declaración. No debe interpretarse automáticamente como cambio biológico de incidencia."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Australian Bureau of Statistics · Autism in Australia, 2022 · publicado 11-10-2024",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 42,
+   "territorio": "Australia",
+   "title": "Necesidad de apoyo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "En la encuesta australiana 2022:"
+    }
+   ],
+   "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+   "anioDatos": "2022",
+   "metodo": "Estadística oficial de Australia",
+   "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+   "revision": "Cuando se publique un nuevo SDAC",
+   "poblacion": "Personas autistas que viven en hogares, todas las edades, Australia, 2022",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "84 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas autistas necesitaba apoyo en al menos una actividad cotidiana."
+      }
+     ]
+    },
+    {
+     "cifra": "73 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "presentaba una discapacidad profunda o grave según la definición funcional de la encuesta."
+      }
+     ]
+    },
+    {
+     "cifra": "91,4 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de las personas autistas cumplía la definición de discapacidad utilizada por la encuesta."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La encuesta distingue necesidad de apoyo, grado funcional de discapacidad y cumplimiento de la definición de discapacidad. Son tres indicadores relacionados pero no intercambiables."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Las tres cifras utilizan definiciones funcionales de la encuesta australiana. Necesidad de apoyo, discapacidad grave/profunda y cumplimiento de la definición de discapacidad no son categorías idénticas."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Las categorías funcionales de la encuesta no deben tratarse como si fueran diagnósticos clínicos."
+    }
+   ],
+   "sources": [
+    {
+     "label": "ABS · Autism in Australia, 2022",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+    },
+    {
+     "label": "Versión en lenguaje claro",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada",
+   "notaPoblacion": "Esta página y «Empleo y autismo» no comparten población: aquí son todas las edades; allí, 15 a 64 años. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares."
+  },
+  {
+   "n": 43,
+   "territorio": "Australia",
+   "title": "Educación y autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre personas autistas de 15 años o más que vivían en hogares:"
+    }
+   ],
+   "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+   "anioDatos": "2022",
+   "metodo": "Estadística oficial de Australia",
+   "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+   "revision": "Cuando se publique un nuevo SDAC",
+   "poblacion": "Dos poblaciones: personas autistas de 15 años o más en hogares, y de 5 a 20 años escolarizadas",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "45,1 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "había completado el equivalente al último curso de Secundaria —Year 12—."
+      }
+     ]
+    },
+    {
+     "cifra": "5,2 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "tenía un grado universitario o nivel superior."
+      },
+      {
+       "t": "p",
+       "text": "Entre personas autistas de 5 a 20 años que asistían a la escuela:"
+      }
+     ]
+    },
+    {
+     "cifra": "97,3 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "necesitaba algún tipo de apoyo para asistir o estudiar."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La misma fuente utiliza dos poblaciones: personas autistas de 15 años o más que viven en hogares para logro educativo y personas de 5 a 20 años que asisten a la escuela para necesidad de apoyo escolar."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Mantén los denominadores: los datos de logro educativo son de personas autistas de 15 años o más que vivían en hogares; el 97,3 % se refiere a quienes tenían 5–20 años y asistían a la escuela."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Los porcentajes usan poblaciones distintas dentro de la misma encuesta; hay que conservar el denominador de cada uno."
+    }
+   ],
+   "sources": [
+    {
+     "label": "ABS · Autism in Australia, 2022",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 44,
+   "territorio": "Australia",
+   "title": "Empleo y autismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre personas autistas de 15 a 64 años que vivían en hogares:"
+    }
+   ],
+   "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+   "anioDatos": "2022",
+   "metodo": "Estadística oficial de Australia",
+   "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+   "revision": "Cuando se publique un nuevo SDAC",
+   "poblacion": "Personas autistas de 15 a 64 años que viven en hogares, Australia, 2022",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "50,2 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "estaba trabajando o buscando trabajo —participación en la fuerza laboral—."
+      }
+     ]
+    },
+    {
+     "cifra": "42,2 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "tenía empleo."
+      },
+      {
+       "t": "p",
+       "text": "En 2018 la tasa de empleo indicada por la misma serie era 27,3 %."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La participación en la fuerza laboral incluye empleo y búsqueda activa de trabajo; la tasa de empleo cuenta solo a quienes tienen trabajo. Mantener ambas cifras permite ver la diferencia entre participar y estar empleado."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Distingue participación en la fuerza laboral (50,2 %) de empleo (42,2 %). El 27,3 % de 2018 pertenece a la misma serie, pero un cambio entre encuestas no explica por sí solo la causa."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Participación laboral y empleo no son sinónimos."
+    }
+   ],
+   "sources": [
+    {
+     "label": "ABS · Autism in Australia, 2022",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "fuente comprobada",
+   "notaPoblacion": "Esta página no comparte población con «Necesidad de apoyo», que es de todas las edades. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares."
+  },
+  {
+   "n": 45,
+   "territorio": "Canadá",
+   "title": "Autismo en niños y jóvenes",
+   "lede": [
+    {
+     "t": "p",
+     "text": "La estimación nacional más reciente que el Gobierno de Canadá seguía utilizando en su Framework for Autism procede de la Canadian Health Survey on Children and Youth 2019."
+    }
+   ],
+   "refTemporal": "2019 · PHAC; sigue como referencia en Framework for Autism in Canada.",
+   "anioDatos": "2019",
+   "metodo": "Estadística oficial de Canadá",
+   "publicacion": "PHAC; sigue como referencia en Framework for Autism in Canada",
+   "revision": "Cuando se publique una nueva CHSCY comparable",
+   "poblacion": "Niños y jóvenes de 1 a 17 años",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "1 de cada 50",
+     "pie": "",
+     "b": []
+    },
+    {
+     "cifra": "2,0 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "de niños y jóvenes de 1 a 17 años tenía diagnóstico de autismo."
+      }
+     ]
+    },
+    {
+     "cifra": "Por sexo",
+     "pie": "",
+     "b": [
+      {
+       "t": "ul",
+       "items": [
+        "Varones: 3,1 % · 1 de cada 32.",
+        "Mujeres: 0,8 % · 1 de cada 125.",
+        "Ratio observada: aproximadamente 3,9:1."
+       ]
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La CHSCY 2019 estima diagnóstico de autismo declarado en niños y jóvenes de 1 a 17 años. Es una cifra nacional canadiense para esa franja de edad, no para toda la población."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Es diagnóstico declarado en una encuesta nacional de niños y jóvenes de 1–17 años. No es prevalencia de todas las edades de Canadá."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Public Health Agency of Canada",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+    },
+    {
+     "label": "Framework for Autism in Canada",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/framework-autism-canada.html"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 46,
+   "territorio": "Canadá",
+   "title": "Edad de diagnóstico",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre los niños y jóvenes autistas de la encuesta canadiense:"
+    }
+   ],
+   "refTemporal": "2019 · PHAC.",
+   "anioDatos": "2019",
+   "metodo": "Estadística oficial de Canadá",
+   "publicacion": "PHAC",
+   "revision": "Cuando se publique una nueva CHSCY comparable",
+   "poblacion": "Niños y jóvenes autistas incluidos en la encuesta canadiense de 2019",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "53,7 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "había sido diagnosticado antes de los 5 años."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "El 53,7 % describe cuándo se produjo el diagnóstico dentro del grupo autista de la encuesta. No es una tasa de diagnóstico temprano sobre todos los niños canadienses."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "El 53,7 % se calcula entre niños y jóvenes autistas incluidos en la encuesta canadiense; no describe a toda la población autista canadiense."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Es una distribución dentro del grupo autista de la encuesta, no una prevalencia poblacional."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Public Health Agency of Canada",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Cómo citar / cifra"
+  },
+  {
+   "n": 47,
+   "territorio": "Canadá",
+   "title": "Salud general y mental",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre niños y jóvenes autistas:"
+    }
+   ],
+   "refTemporal": "2019 · PHAC.",
+   "anioDatos": "2019",
+   "metodo": "Estadística oficial de Canadá",
+   "publicacion": "PHAC",
+   "revision": "Cuando se publique una nueva CHSCY comparable",
+   "poblacion": "Comparación entre grupos, no recuento de diagnósticos",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "59,3 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "declaraba salud general óptima."
+      },
+      {
+       "t": "p",
+       "text": "Frente a:"
+      }
+     ]
+    },
+    {
+     "cifra": "89,5 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre quienes no eran autistas."
+      },
+      {
+       "t": "p",
+       "text": "En salud mental óptima:"
+      }
+     ]
+    },
+    {
+     "cifra": "39,0 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre autistas."
+      }
+     ]
+    },
+    {
+     "cifra": "84,1 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "entre no autistas."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "Las categorías de salud general y salud mental ‘óptima’ proceden del instrumento de encuesta. La comparación muestra una diferencia entre grupos, pero no equivale a contar diagnósticos médicos o psiquiátricos."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "‘Salud óptima’ y ‘salud mental óptima’ son categorías del instrumento de encuesta. No equivalen a ausencia o presencia de un diagnóstico clínico."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "Son resultados de encuesta y la valoración de «óptima» depende del instrumento utilizado. No equivalen a diagnósticos de enfermedad."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Public Health Agency of Canada",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 48,
+   "territorio": "Canadá",
+   "title": "Condiciones coexistentes y necesidades educativas",
+   "lede": [
+    {
+     "t": "p",
+     "text": "Entre niños y jóvenes autistas:"
+    }
+   ],
+   "refTemporal": "2019 · PHAC.",
+   "anioDatos": "2019",
+   "metodo": "Estadística oficial de Canadá",
+   "publicacion": "PHAC",
+   "revision": "Cuando se publique una nueva CHSCY comparable",
+   "poblacion": "Cada porcentaje tiene su propio denominador",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [],
+   "cifras": [
+    {
+     "cifra": "68,7 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "tenía otra condición de salud de larga duración."
+      },
+      {
+       "t": "p",
+       "text": "Las más frecuentes incluían TDA/TDAH, dificultades o trastornos del aprendizaje y trastornos de ansiedad."
+      },
+      {
+       "t": "p",
+       "text": "Entre quienes asistían a la escuela:"
+      }
+     ]
+    },
+    {
+     "cifra": "78,1 %",
+     "pie": "",
+     "b": [
+      {
+       "t": "p",
+       "text": "tenía necesidades de educación especial."
+      }
+     ]
+    }
+   ],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La página combina dos resultados de la misma encuesta: presencia de otra condición de salud de larga duración y, entre quienes asistían a la escuela, necesidades de educación especial. Cada porcentaje tiene su propio denominador."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "Las cifras se refieren a niños y jóvenes autistas de la encuesta; el 78,1 % corresponde específicamente a quienes asistían a la escuela."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "El porcentaje educativo utiliza como denominador a quienes asistían a la escuela."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Public Health Agency of Canada",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "Qué mide exactamente"
+  },
+  {
+   "n": 49,
+   "territorio": "Comparativa internacional",
+   "title": "Cuatro cifras de autismo que no miden lo mismo",
+   "lede": [
+    {
+     "t": "p",
+     "text": "No es un ranking de prevalencia. Cada país usa edades, fuentes y métodos distintos. Una cifra más alta puede reflejar mejor identificación, diferente cobertura, distinta edad de la población, mayor acceso al diagnóstico o una metodología diferente."
+    }
+   ],
+   "refTemporal": "2021 / 2022 / 2019 / 2022, según la fuente · comparación metodológica preparada en 2026.",
+   "anioDatos": "2021 / 2022 / 2019 / 2022, según la fuente",
+   "metodo": "Comparación metodológica de fuentes oficiales y modelizadas",
+   "publicacion": "comparación metodológica preparada en 2026",
+   "revision": "Revisar cuando cambie cualquiera de las cuatro series",
+   "poblacion": "Cada cifra lleva el suyo en la tabla",
+   "cifrasH": "Las cifras",
+   "cifrasIntro": [
+    {
+     "t": "table",
+     "head": [
+      "Territorio / fuente",
+      "Cifra",
+      "Población",
+      "Año de datos",
+      "Qué mide"
+     ],
+     "rows": [
+      [
+       "Mundo · GBD/OMS",
+       "1 de cada 127",
+       "Todas las edades",
+       "2021",
+       "Prevalencia modelizada"
+      ],
+      [
+       "EE. UU. · CDC ADDM",
+       "1 de cada 31",
+       "Niños de 8 años en 16 comunidades",
+       "2022",
+       "Autismo identificado mediante vigilancia de registros"
+      ],
+      [
+       "Canadá · CHSCY",
+       "1 de cada 50",
+       "1–17 años",
+       "2019",
+       "Diagnóstico declarado en encuesta nacional"
+      ],
+      [
+       "Australia · ABS SDAC",
+       "1,1 %",
+       "Todas las edades",
+       "2022",
+       "Estimación de encuesta poblacional"
+      ]
+     ]
+    }
+   ],
+   "cifras": [],
+   "mide": [
+    {
+     "t": "p",
+     "text": "La tabla coloca juntas cuatro cifras precisamente para mostrar sus diferencias metodológicas: modelización mundial, vigilancia de registros, diagnóstico declarado en encuesta y estimación de encuesta poblacional. Su función es enseñar a comparar, no decidir qué país ‘tiene más autismo’."
+    }
+   ],
+   "citar": [
+    {
+     "t": "p",
+     "text": "No ordenes los países de mayor a menor ni llames ‘prevalencia’ a todas las columnas. Cada cifra usa edades, métodos y denominadores diferentes."
+    }
+   ],
+   "evitar": [
+    {
+     "t": "p",
+     "text": "La cifra debe mantenerse unida a su población, territorio, año y método. Separarla de ese contexto puede cambiar su significado."
+    }
+   ],
+   "sources": [
+    {
+     "label": "Mundo · OMS / GBD 2021",
+     "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+    },
+    {
+     "label": "EE. UU. · CDC ADDM 2022",
+     "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+    },
+    {
+     "label": "Canadá · PHAC / CHSCY 2019",
+     "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+    },
+    {
+     "label": "Australia · ABS SDAC 2022",
+     "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+    }
+   ],
+   "notaFuentes": [],
+   "status": "borrador",
+   "by": "Iris Green",
+   "reviewedBy": "",
+   "reviewed": "",
+   "poblacionOrigen": "decisión editorial"
+  }
+ ]
+}
