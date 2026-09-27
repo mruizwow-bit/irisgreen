@@ -509,3 +509,26 @@ El patch dice 8 retos fechados pero enumera 7 temas; y no incluye los 64 retos i
 
 Memoria: `MEMORIA/R44_RETOS_TALLER_AUDITORIA_ASTRA_20260927.md`.  
 Control: `CONTROL/DELTA_R44_RETOS_TALLER_AUDITORIA_ASTRA_20260927.json`.
+
+## R43 · adaptación Design del Taller · precheck · 27/09/2026
+
+**Estado: `R43_TALLER_DESIGN_ADAPTATION_PRECHECK_PASS_COVERAGE_REQUIRED`.**
+
+Se auditan únicamente los dos paquetes de interfaz recibidos; no se reabre el producto Taller R43.
+
+`Talleer.zip` (SHA-256 `62d338cf6cdd509b9dab6696f1ee6c0aa2c39cd62bcdf465577a40abb8290c89`) conserva byte-idénticos frente al Design R02 aprobado:
+- `ig-r42-materials.css` `90a4342b...`;
+- `preferencias-lectura.js` `8a3dab4d...`;
+- `measure_r42_materials.py` `f65bb50f...`.
+
+Reproducción Astra: 5 Python PASS, Node check PASS, 30/30 mediciones PASS. La integración adicional del R43 es limpia: tokens R02, toolbar de lienzo opaca, sin filtro global, forced-colors/reduced-motion conservados.
+
+`Taller Desing.zip` (SHA-256 `4f2bfec1633d0341bf827bf6136f303be846491295ed05765253370dc8cb3688`) es el Design R01 histórico y no debe usarse.
+
+Corrección pendiente: **cobertura completa del Taller**. La adaptación cubre las 26 páginas de los 13 estudios R43 y el piloto Dibujo, pero no demuestra adaptación de la portada ES/EN ni de todos los estudios legacy aún visibles en el catálogo. Design debe ampliar solo la capa interfaz/material R02 al 100 % de las rutas públicas actuales del Taller, sin tocar motores/contenido/retos.
+
+Marcador esperado:
+`R43_TALLER_DESIGN_ADAPTATION_COVERAGE_FIXED_READY_FOR_ASTRA`
+
+Memoria: `MEMORIA/R43_TALLER_DESIGN_ADAPTACION_PRECHECK_20260927.md`.  
+Control: `CONTROL/DELTA_R43_TALLER_DESIGN_ADAPTACION_20260927.json`.
