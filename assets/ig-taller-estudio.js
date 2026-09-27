@@ -307,8 +307,13 @@
     window.__ig42WorkshopLoading = true;
     if (!document.querySelector('link[data-ig42-taller]')) {
       var css = document.createElement('link');
-      css.rel = 'stylesheet'; css.href = '/assets/ig-taller-r42.css?v=r42-a5-2'; css.setAttribute('data-ig42-taller', 'true');
+      css.rel = 'stylesheet'; css.href = '/assets/ig-taller-r42.css?v=r42-a5-3'; css.setAttribute('data-ig42-taller', 'true');
       document.head.appendChild(css);
+    }
+    if (!document.querySelector('link[data-ig43-advanced]')) {
+      var css43 = document.createElement('link');
+      css43.rel = 'stylesheet'; css43.href = '/assets/ig-taller-r43-advanced.css?v=r43-a5-1'; css43.setAttribute('data-ig43-advanced', 'true');
+      document.head.appendChild(css43);
     }
     function loadShell() {
       if (window.IGTallerR42) { window.IGTallerR42.autoMount(); return; }
@@ -320,15 +325,22 @@
     function loadDirect() {
       if (window.IGTallerR42Direct) { loadShell(); return; }
       var direct = document.createElement('script');
-      direct.src = '/assets/ig-taller-r42-direct.js?v=r42-a5-2';
+      direct.src = '/assets/ig-taller-r42-direct.js?v=r42-a5-3';
       direct.defer = true; direct.onload = loadShell;
       document.head.appendChild(direct);
     }
+    function loadAdvanced() {
+      if (window.IGTallerR43Advanced) { loadDirect(); return; }
+      var advanced = document.createElement('script');
+      advanced.src = '/assets/ig-taller-r43-advanced.js?v=r43-a5-1';
+      advanced.defer = true; advanced.onload = loadDirect;
+      document.head.appendChild(advanced);
+    }
     function loadPlatform() {
-      if (window.IGTallerR42Platform) { loadDirect(); return; }
+      if (window.IGTallerR42Platform) { loadAdvanced(); return; }
       var platform = document.createElement('script');
-      platform.src = '/assets/ig-taller-r42-platform.js?v=r42-a5-2';
-      platform.defer = true; platform.onload = loadDirect;
+      platform.src = '/assets/ig-taller-r42-platform.js?v=r42-a5-3';
+      platform.defer = true; platform.onload = loadAdvanced;
       document.head.appendChild(platform);
     }
     if (window.IGTallerR42Paths) loadPlatform();
