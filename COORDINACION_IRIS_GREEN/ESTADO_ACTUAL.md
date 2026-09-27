@@ -1,5 +1,17 @@
 # Estado operativo compartido
 
+## Sabik · referencias vocales exactas confirmadas por María · 27/09/2026
+
+**Estado: `SABIK_VOICE_EXACT_REFERENCES_CONFIRMED`.**
+
+María confirma como referencias exactas de las voces elegidas:
+- EN: `SABIK_EN_V6_12_T01.wav` · 24 kHz · 6.00 s · SHA-256 `8dabd1ceb126201822d0ccc431bf5087fb276aa49061945d3a37c23ea1be100b`.
+- ES: `SABIK_ES_LONG_REF.wav` / `SABIK_ES_MASTER_V1.wav` · 44.1 kHz · 27.00 s · SHA-256 `c9d18290375d46608d37f65b05788ef552980706161a0eb0e26e2a268059c8fa`.
+
+Corrección de trazabilidad: la elección humana final EN se hizo sobre la familia V6_12 y esta muestra T01 queda como referencia auditiva exacta de identidad. El V4_12 seed 9112 es la referencia padre usada para generar V6_12 y no debe confundirse con el clip exacto que María señala ahora como voz elegida.
+
+No alterar ni sustituir estas dos referencias canónicas. Antes de cualquier nueva fase EN, comparar el modelo entrenado con la referencia exacta V6_12_T01.
+
 ## Sabik · QC muestra ES PASS + ref SFT 24 kHz requerida · 27/09/2026
 
 **Estado: `SABIK_ES_REVIEW_QC_PASS_REF24K_PREFLIGHT_NEXT`.**
