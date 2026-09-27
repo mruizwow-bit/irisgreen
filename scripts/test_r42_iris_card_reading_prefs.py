@@ -55,8 +55,9 @@ def browser(root:Path):
               trigger.focus();trigger.press("Enter")
               panel=page.locator("#a11y")
               assert panel.get_attribute("hidden") is None
+              page.wait_for_function("document.getElementById('a11yBtn').getAttribute('aria-expanded')==='true'")
+              page.wait_for_function("document.activeElement && document.activeElement.closest('#a11y')!==null")
               assert trigger.get_attribute("aria-expanded")=="true"
-              assert page.evaluate("document.activeElement && document.activeElement.closest('#a11y')!==null")
 
               page.locator('#a11y [data-a="fs+"]').click()
               assert page.evaluate("window.IGPreferences.get().scale>1")
