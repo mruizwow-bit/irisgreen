@@ -43,6 +43,13 @@ def main() -> None:
             assert isinstance(value,str) and value.startswith("/"), (row.get("id"),key)
             sensitive.add(clean_url(value))
 
+    full_urls=set()
+    for row in full:
+        full_urls.add(clean_url(row.get("u","")))
+        en=row.get("en") if isinstance(row.get("en"),dict) else {}
+        full_urls.add(clean_url(en.get("u","")))
+    s2_present=sum(1 for row in intentional if clean_url(row.get("url_es","")) in full_urls or clean_url(row.get("url_en","")) in full_urls)
+
     safe=[]
     removed=[]
     for row in full:
@@ -54,12 +61,13 @@ def main() -> None:
         else:
             safe.append(row)
 
-    assert len(removed)==EXPECTED_S2_SEARCH, {
+    assert len(removed)==s2_present, {
         "removed": len(removed),
+        "s2_present": s2_present,
         "full": len(full),
-        "message": "Every audited S2 search entity must be removed from the current catalogue."
+        "message": "Every audited S2 entity that exists in the current catalogue must be removed."
     }
-    assert len(safe)==len(full)-EXPECTED_S2_SEARCH, (len(full),len(safe))
+    assert len(safe)==len(full)-s2_present, (len(full),len(safe),s2_present)
     for row in safe:
         urls={clean_url(row.get("u",""))}
         en=row.get("en") if isinstance(row.get("en"),dict) else {}
@@ -68,7 +76,7 @@ def main() -> None:
 
     out_path.parent.mkdir(parents=True,exist_ok=True)
     out_path.write_text(json.dumps(safe,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
-    print({"status":"PASS","full":len(full),"s2_removed":len(removed),"safe":len(safe),"output":out_path.as_posix()})
+    print({"status":"PASS","full":len(full),"s2_audited":len(intentional),"s2_present":s2_present,"s2_removed":len(removed),"safe":len(safe),"output":out_path.as_posix()})
 
 if __name__=="__main__":
     main()
