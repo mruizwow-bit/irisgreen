@@ -1,7 +1,7 @@
 id,area,state_context,type,es_current,en_current,es_reviewed_r01,en_reviewed_r01,speak_policy,source,editorial_action,note
 sabik.ui.subtitle,panel,identity,fixed,Asistente de Iris Green,Iris Green assistant,Asistente de Iris Green,Iris Green assistant,UI_ONLY,sabik/iris-panel.html + sabik/iris-mount.mjs,KEEP,Identidad visual.
-sabik.status.unavailable,panel,unavailable,fixed,Consultas no disponibles todavía,Queries are not available yet,Las consultas con fuentes todavía no están disponibles.,Source-based queries are not available yet.,SYSTEM_VOICE_OPTIONAL,sabik/iris-mount.mjs,REVISED,Aclara qué tipo de consulta falta.
-sabik.status.available,panel,available,fixed,Consulta de fuentes disponible,Source search available,Búsqueda en fuentes disponible.,Source search is available.,SYSTEM_VOICE_OPTIONAL,sabik/iris-mount.mjs,REVISED,Más natural y breve.
+sabik.status.unavailable,panel,unavailable,fixed,Consultas no disponibles todavía,Queries are not available yet,La búsqueda en fuentes todavía no está disponible.,Source search is not available yet.,SYSTEM_VOICE_OPTIONAL,sabik/iris-mount.mjs,REVISED,Alineado con audio final y terminología de búsqueda.
+sabik.status.available,panel,available,fixed,Consulta de fuentes disponible,Source search available,La búsqueda en fuentes está disponible.,Source search is available.,SYSTEM_VOICE_OPTIONAL,sabik/iris-mount.mjs,REVISED,Alineado con audio final; frase completa.
 sabik.panel.hide,panel,visibility,fixed,Ocultar,Hide,Ocultar,Hide,UI_ONLY,sabik/iris-mount.mjs,KEEP,Control.
 sabik.panel.show,panel,visibility,fixed,Mostrar,Show,Mostrar,Show,UI_ONLY,sabik/iris-mount.mjs,KEEP,Control.
 sabik.welcome,panel,ready,fixed,Estoy aquí si quieres ayuda.,I am here if you need help.,Puedo ayudarte a buscar información.,I can help you find information.,SYSTEM_VOICE,sabik/iris-mount.mjs,REVISED,"Funcional, sin presentar presencia emocional."
