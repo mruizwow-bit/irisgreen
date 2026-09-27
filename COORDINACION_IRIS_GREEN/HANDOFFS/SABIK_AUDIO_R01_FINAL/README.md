@@ -95,3 +95,42 @@ Si el panel todavía no dispone de control de voz propio, A2 debe añadir un con
 - secretos;
 - producción;
 - narración dinámica de artículos/resultados.
+
+## Artefacto físico entregado a A2 · 27/09/2026
+
+El archivo exacto aportado por María y vuelto a verificar por Astra está disponible en la Biblioteca persistente de ChatGPT para recuperación por A2:
+
+`/SABIK/HANDOFFS/SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED.zip`
+
+Identidad obligatoria antes de extraer:
+- tamaño: 5.096.173 bytes;
+- SHA-256: `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`;
+- 36 entradas ZIP;
+- 30 WAV = 15 ES + 15 EN;
+- 15 IDs, cada uno presente en ambos idiomas.
+
+Verificación Astra independiente sobre el ZIP:
+- 30/30 `audio_sha256` coinciden con `manifest.json`;
+- 30/30 `text_sha256` coinciden con el texto locutado;
+- 30/30 textos coinciden con `SABIK_COPY_SPOKEN_R02.json`;
+- 0 clipping;
+- 0 discrepancias.
+
+A2 debe recuperar **este artefacto exacto** por nombre/ruta y verificar SHA-256 antes de montarlo. No usar paquetes anteriores `FINAL`, `LIMITER_FIX`, candidatos E0/E1/E2 ni WAV sueltos de entrenamiento/validación.
+
+### Orden de montaje
+
+1. releer HEAD/tree A2 real;
+2. aplicar primero los 40 registros de `CONTROL/SABIK_COPY_PRODUCCION_R02_20260927.csv`;
+3. comprobar específicamente `sabik.action.low` = `Desactivar movimiento / Turn off motion`;
+4. extraer solo los 30 WAV + metadata necesaria del paquete final verificado;
+5. montar assets versionados preservando nombres y hashes;
+6. enlazar `id + lang -> file + text_sha256 + audio_sha256`;
+7. añadir control `Voz de Sabik / Sabik voice`, OFF al inicio de cada sesión;
+8. sin preload/autoplay antes de activación;
+9. parar audio anterior al cambiar estado, idioma, resetear o iniciar otra acción;
+10. no locutar copy `UI_SCREENREADER` / `SCREENREADER_ONLY`;
+11. no narrar resultados dinámicos ni artículos en este lote;
+12. CI + Deploy Preview + HUMAN QA María.
+
+Los modelos/masters no se copian al producto. Solo se conservan sus hashes de procedencia.
