@@ -1,5 +1,15 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik · voces EN/ES cerradas + loudness de producción · 27/09/2026
+
+María aprueba el nivel final de escucha tras normalizar post-síntesis a **-16.5 LUFS integrados** con pico máximo objetivo **≤ -1 dBFS**. La sensación previa de voz lejana se atribuye al nivel de salida (~-20 LUFS), no al entrenamiento.
+
+Voces vigentes:
+- EN: R02 exacto validado contra V6_12_T01.
+- ES: checkpoint E0 seleccionado como `SABIK_ES_V1`; E2 se conserva como alternativo.
+
+La normalización se incorpora como etapa obligatoria de `SABIK_AUDIO_LIBRARY`, sin alterar pitch, velocidad ni timbre.
+
 ## R39 A9 · Biblioteca Cloud bilingüe child-safe · 27/09/2026
 
 Estado vigente: `R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA`.
