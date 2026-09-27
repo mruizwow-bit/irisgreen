@@ -54,7 +54,7 @@ body[data-ig-r49="1"][data-ig-profile="workspace"] main{width:calc(100% - 2*var(
 body[data-ig-r49="1"][data-ig-profile="workspace"] :where(.ig-r42-shell,#igt-app,#jg-app,#r40Workspace,.r40-workspace,.ig-afondo,.igl-lab,.igl-cuaderno){width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
 body[data-ig-r49="1"][data-ig-profile="workspace"] .ig-r42-stage{max-width:none!important}
 body[data-ig-r49="1"].ig-home-r42 .ig-home-layout,body[data-ig-r49="1"].ig-home-r42 .ig-home-footer{width:calc(100% - 2*var(--ig-layout-gutter))!important;max-width:none!important}
-body[data-ig-r49="1"].ig-home-r42 .ig-home-layout{grid-template-columns:minmax(0,1.65fr) minmax(300px,.55fr)!important}
+body[data-ig-r49="1"].ig-home-r42 .ig-home-layout>*{min-width:0}
 }
 @layer ig-r49-components{
 .ig-r49-dialog{width:min(94vw,46rem);max-height:min(88dvh,54rem);border:1px solid var(--ig-control-border,#91a9bf);border-radius:20px;padding:0;background:var(--ig-surface-content,#fff);color:var(--ig-ink,#17395c);box-shadow:0 30px 80px -42px rgba(9,25,45,.65)}
