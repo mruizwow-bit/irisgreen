@@ -16,6 +16,7 @@
   function btn(text,cls){var b=el('button',cls||'',text);b.type='button';return b;}
   function q(s,c){return (c||D).querySelector(s);}
   function qa(s,c){return Array.prototype.slice.call((c||D).querySelectorAll(s));}
+  function safeInsertBefore(parent,node,before){if(!parent||!node)return node;if(before&&before.parentNode!==parent)before=null;parent.insertBefore(node,before||null);return node;}
   function catalogue(){return root.IGTallerR40Catalog||[];}
   function studyFromApp(app){var id=app&&app.getAttribute('data-study-id');var c=catalogue();for(var i=0;i<c.length;i++)if(c[i].id===id)return c[i];return null;}
   function pathData(id){var p=root.IGTallerR42Paths||{};return p[id]||null;}
@@ -99,7 +100,7 @@
   function extractChallenges(app,body,top,study){
     var c=q('.igt-retos',app);if(c&&!body.contains(c)){body.appendChild(c);c.classList.add('ig42-challenge-content');}
     if(!q('#ig42-stage-brief',body)){var stage=el('section','ig42-stage-brief-wrap');stage.appendChild(el('h3','',T('Sugerencia para esta etapa','Suggestion for this stage')));var p=el('p','');p.id='ig42-stage-brief';stage.appendChild(p);safeInsertBefore(body,stage,body.firstChild);}
-    updateStageBrief(study,(function(){try{return root.sessionStorage.getItem('ig42-stage')||'all';}catch(e){return'all';}})());
+    updateStageBrief(study,'all');
   }
   function makeManagementButton(main){
     var b=btn(T('Mi colección y proyectos','My collection and projects'),'ig42-manage-btn');var dlg=createDialog('ig42-manage',T('Mi colección y proyectos','My collection and projects'));wireDialogClose(dlg);b.addEventListener('click',function(){var body=q('.ig42-dialog-body',dlg);if(!body.dataset.loaded){var old=q('#igt-local-summary');if(old){body.appendChild(old);old.hidden=false;old.classList.add('ig42-local-summary');}else{var app=q('#igt-app'),found=0;qa('.igt-bar button',app).forEach(function(source){var txt=(source.textContent||'').trim();if(!/colecci|collection|progreso|progress|Guardados|Saved projects/i.test(txt))return;var proxy=btn(txt,'ig42-menu-action');proxy.addEventListener('click',function(){safeClick(source);});body.appendChild(proxy);found++;});if(!found)body.appendChild(el('p','ig42-empty',T('Todavía no hay datos locales que gestionar.','There is no local data to manage yet.')));}body.dataset.loaded='true';}showDialog(dlg,b);});
