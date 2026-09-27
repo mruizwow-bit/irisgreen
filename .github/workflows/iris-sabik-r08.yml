@@ -29,6 +29,7 @@ jobs:
       - run: python scripts/test_resources_current.py
       - run: python scripts/test_iris_corrections_r09.py
       - run: python scripts/test_taller_f1_mounted.py
+      - run: python scripts/test_sabik_audio_assets_r01.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

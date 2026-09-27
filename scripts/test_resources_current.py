@@ -107,8 +107,11 @@ def browser_checks(root,out):
                   page.locator('#rv-ready-pdf').click();page.wait_for_function('window.__printCalls>1')
                 if kind==0:
                   # R42 keeps secondary game actions in the explicit Options popover.
-                  page.locator('.jg-actions-btn[popovertarget="jg-game-tools"]').click()
-                  page.locator('[data-k="print"]').click();page.wait_for_function('window.__printCalls>0')
+                  options=page.locator('.jg-actions-btn[popovertarget="jg-game-tools"]')
+                  options.focus();options.press('Enter')
+                  page.locator('#jg-game-tools:popover-open').wait_for(state='visible')
+                  print_action=page.locator('#jg-game-tools [data-k="print"]')
+                  print_action.focus();print_action.press('Enter');page.wait_for_function('window.__printCalls>0')
                 pdf=page.pdf(print_background=True,prefer_css_page_size=True)
                 (out/f'print-{kind}-{lang}-{width}.pdf').write_bytes(pdf);row['print_pdf_bytes']=len(pdf)
                 assert len(pdf)>3000,(path,width,len(pdf))
