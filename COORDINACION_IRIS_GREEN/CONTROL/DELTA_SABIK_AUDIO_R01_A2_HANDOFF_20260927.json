@@ -1,0 +1,40 @@
+{
+  "schema": "SABIK_AUDIO_A2_HANDOFF/1.0",
+  "date": "2026-09-27",
+  "status": "SABIK_AUDIO_R01_A2_INTEGRATION_ORDERED",
+  "source_status": "SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED_HANDOFF_READY",
+  "artifact": {
+    "library_path": "/SABIK/HANDOFFS/SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED.zip",
+    "sha256": "96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c",
+    "bytes": 5096173,
+    "wav_entries": 30,
+    "es": 15,
+    "en": 15,
+    "independent_errors": 0
+  },
+  "copy": {
+    "version": "SABIK_COPY_PRODUCCION_R02_20260927",
+    "records": 40,
+    "keep": 25,
+    "revised": 15,
+    "hold": 0,
+    "low_control": "Desactivar movimiento / Turn off motion"
+  },
+  "models": {
+    "en_sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
+    "es_sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
+    "publish_weights": false
+  },
+  "integration_owner": "A2",
+  "expected_marker": "SABIK_AUDIO_R01_A2_PREVIEW_READY_FOR_ASTRA",
+  "limits": [
+    "NO_RETRAIN",
+    "NO_REGENERATION",
+    "NO_OLD_AUDIO_CANDIDATES",
+    "VOICE_OFF_BY_DEFAULT_PER_SESSION",
+    "NO_AUDIO_PRELOAD_BEFORE_ENABLE",
+    "NO_DYNAMIC_RESULT_NARRATION",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}
