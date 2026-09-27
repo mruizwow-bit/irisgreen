@@ -38,6 +38,7 @@ def main():
     for url in S2_ES[8:]:need(url.rstrip('/') not in lib,'S2 card leaked into safe Everyday-life catalogue '+url)
     research=json.loads((root/'es/investigacion/estudios-textos.json').read_text(encoding='utf-8'))
     tagged={x.get('ig_s2_id') for x in research if x.get('ig_s2_id')};need(tagged==set(RIDS),'Research S2 safe variants mismatch')
+    intentional={int(x.get('n',0) or 0) for x in research if x.get('ig_intentional_only')};need(intentional=={35,42,43,89},'Research INTENTIONAL_ONLY mismatch')
     for rid in RIDS:
         need((root/'assets/safety/full'/f'{rid}-es.html').is_file(),'Missing research full chunk '+rid)
         need((root/'assets/safety/full'/f'{rid}-en.html').is_file(),'Missing research EN full chunk '+rid)
