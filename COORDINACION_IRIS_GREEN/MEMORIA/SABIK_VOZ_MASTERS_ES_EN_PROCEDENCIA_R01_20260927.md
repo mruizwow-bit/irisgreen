@@ -80,6 +80,17 @@ Resultado: PASS para continuar a extracción de audio codes. No clipping detecta
 
 Estado: `SABIK_EN_TRAIN_V1_SAMPLE_QC_PASS_PREPARE_CODES_NEXT`.
 
+
+## 3D. EN V1 entrenado y canonizado
+
+Tras SFT de 3 épocas y validación de 18 WAV inéditos (6 frases × E0/E1/E2), se selecciona `checkpoint-epoch-0` como `SABIK_EN_V1`. E2 queda como alternativa conservada.
+
+Hashes del modelo canonizado:
+- `model.safetensors`: `0346413f078b5f0f982974a35641fa3713bad13a71e9bf3237682acb5641e062`;
+- `config.json`: `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`.
+
+El corpus ES existente queda auditado para la siguiente fase: 133 WAV, 22.56 min, 0 errores de lectura, 133 líneas en `train_raw.jsonl`, manifest presente y audio codes pendientes.
+
 ## 4. Master español aprobado
 
 `SABIK_ES_MASTER_V1.wav` es una copia canónica de `SABIK_ES_LONG_REF.wav`.
