@@ -4,6 +4,14 @@ on:
   pull_request:
     paths:
       - 'assets/ig-r42-materials.css'
+      - 'assets/ig-home-r42.css'
+      - 'assets/ig-home-r42.js'
+      - 'editorial/navigation/home-r42.html'
+      - 'editorial/navigation/manifest.json'
+      - 'scripts/build_approved_navigation.py'
+      - 'scripts/apply_page_finder.py'
+      - 'scripts/apply_iris_brief_r08.py'
+      - 'scripts/test_iris_brief_r08.py'
       - 'assets/ig-r42-shell.css'
       - 'assets/ig-r42-shell.js'
       - 'assets/preferencias-lectura.js'
