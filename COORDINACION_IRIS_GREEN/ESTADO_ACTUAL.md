@@ -1,5 +1,25 @@
 # Estado operativo compartido
 
+## Sabik · COPY PRODUCCIÓN ES/EN R01 · 27/09/2026
+
+**Estado: `SABIK_COPY_PRODUCCION_R01_EXTRACTED_REVIEWED_PENDING_MARIA`.**
+
+Se audita el copy fijo de Sabik sobre PR #244 HEAD `e8cad400a30d5d4857f9f99b0c1070d786958a8b` sin tocar la rama A2. Inventario R01: **40 registros**; 25 KEEP, 14 REVISED y 1 HOLD. Se separan expresamente locución de sistema, UI, anuncios de lector de pantalla y copy opcional.
+
+Regla vigente: `CORPUS_ENTRENAMIENTO_VOZ` no es copy publicable. `SABIK_AUDIO_LIBRARY` solo podrá generarse desde `SABIK_COPY_PRODUCCION` aprobado o desde contenido editorial canónico de la web con ID, versión y hash. Se excluye antropomorfismo emocional y cualquier inferencia no expresada por la persona.
+
+Queda SUPERSEDIDA la arquitectura de voz/proveedor de `MEMORIA/SABIK_BIBLIOTECA_NARRADA_ES_EN_R01_20260925.md`; se conserva solo como historia. La extracción textual de 25/09 sigue siendo evidencia del HEAD histórico, no catálogo final post-R42.
+
+Registros:
+- `MEMORIA/SABIK_COPY_PRODUCCION_R01_20260927.md`
+- `CONTROL/SABIK_COPY_PRODUCCION_R01_20260927.csv`
+- `CONTROL/SABIK_COPY_PRODUCCION_R01_20260927.json`
+- `NORMATIVA/ADDENDUM_SABIK_COPY_PRODUCCION_R01_20260927.md`
+
+Siguiente gate: revisión humana de María del copy revisado; después extracción completa sobre un HEAD A2 congelado post-R42 y generación versionada de audio ES/EN.
+
+No audio generado · no deploy · no main · no modificación de producto.
+
 ## Sabik · voz definitiva ES/EN + procedencia registrada · 27/09/2026
 
 **Estado: `SABIK_VOICE_MASTERS_ES_EN_APPROVED_PROVENANCE_REGISTERED`.**
