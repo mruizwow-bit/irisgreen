@@ -13,3 +13,10 @@
 [data-ig-research-sensitive]{display:grid;gap:14px}.ig-research-s2-card{padding:20px 22px}.ig-research-s2-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#526477}
 .ig-research-s2-card button{min-height:44px;border:1px solid #7a869d;border-radius:12px;background:#fff;color:#17395c;padding:.6rem .8rem;font:700 1rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer}
 .ig-research-full{border:1px solid var(--line,#dfe5ee);border-radius:18px;background:#fff;padding:20px}
+.ig-discovery-safety{margin:0 0 24px}.ig-discovery-safety>.ig-s2-toolbar{margin-bottom:12px}
+.ig-adult-s2-section{border:1px solid var(--line,#dfe5ee);border-radius:20px;background:#f8fafc;padding:18px}
+.ig-adult-s2-section>h2{margin:.1rem 0 .35rem}.ig-adult-s2-section>p{margin:.1rem 0 1rem;color:#526477;max-width:70ch}
+.ig-adult-s2-section .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ig-s2-adult-card{display:grid;gap:7px;border:1px solid var(--line,#dfe5ee);border-radius:16px;background:#fff;padding:16px;color:inherit;text-decoration:none}
+.ig-s2-adult-card strong{font-size:1.05rem}.ig-s2-adult-card span{color:#526477;line-height:1.45}
+[data-ig-s2-link-suppressed="true"]{color:inherit}
