@@ -1,11 +1,12 @@
-name: Astra R43 integrate once
+name: Astra · integrar R43 una vez
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - astra/r43-interface-integration-20260927
     paths:
-      - ".astra/R43_PAYLOAD_READY"
+      - ".astra/R43_GO"
 
 permissions:
   contents: write
@@ -13,68 +14,74 @@ permissions:
 jobs:
   integrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: astra/r43-interface-integration-20260927
           fetch-depth: 0
 
-      - name: Skip if already expanded
-        id: guard
+      - name: Reconstruct exact R43 handoff from canonical coordination
         shell: bash
         run: |
-          if [ -f reports/r43-integration/EXPANDED ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
+          git fetch origin coordinacion/iris-green-canonica-20260924
+          git config user.name "Astra integration"
+          git config user.email "noreply@irisgreen.eu"
+          rm -rf /tmp/iris-r43
+          git worktree add /tmp/iris-r43 e8cad400a30d5d4857f9f99b0c1070d786958a8b
+          git -C /tmp/iris-r43 config user.name "Claude R43 reconstruction"
+          git -C /tmp/iris-r43 config user.email "noreply@irisgreen.eu"
+          git show origin/coordinacion/iris-green-canonica-20260924:COORDINACION_IRIS_GREEN/HANDOFFS/R43_TALLER_CREATIVO_CLAUDE/R43_TALLER_CREATIVO.patch.gz > /tmp/R43_TALLER_CREATIVO.patch.gz
+          gzip -dc /tmp/R43_TALLER_CREATIVO.patch.gz > /tmp/R43_TALLER_CREATIVO.patch
+          git -C /tmp/iris-r43 am /tmp/R43_TALLER_CREATIVO.patch
+          test "$(git -C /tmp/iris-r43 rev-parse HEAD)" = "5e83c489d1f4e35b36294ac0f39eddff6f0e8c14"
 
-      - name: Expand audited R43 source
-        if: steps.guard.outputs.skip != 'true'
+      - name: Import R43 source and pinned local libraries
         shell: bash
         run: |
-          cat .astra/r43-source.b64.* | base64 -d > .astra/r43-source.tar.xz\n          tar -xJf .astra/r43-source.tar.xz -C .
-          python3 .astra/apply_r43_current.py
+          cp /tmp/iris-r43/assets/ig-suite*.js assets/
+          cp /tmp/iris-r43/assets/ig-suite*.css assets/
+          rm -rf assets/vendor/taller
+          mkdir -p assets/vendor
+          cp -a /tmp/iris-r43/assets/vendor/taller assets/vendor/
+          rm -rf scripts/taller_suite
+          cp -a /tmp/iris-r43/scripts/taller_suite scripts/
+          cp /tmp/iris-r43/scripts/build_taller_suite.py scripts/
 
-      - name: Build pinned local vendor libraries
-        if: steps.guard.outputs.skip != 'true'
+      - name: Reconcile R43 with current A2 + Design R02
         shell: bash
         run: |
-          cd scripts/taller_suite/vendor
-          npm install --ignore-scripts --no-audit --no-fund
-          node build-vendor.mjs "$GITHUB_WORKSPACE/assets/vendor/taller"
-          cd "$GITHUB_WORKSPACE"
-          python3 scripts/taller_suite/blockly_es_extra.py
-
-      - name: Generate Workshop and apply Design coverage
-        if: steps.guard.outputs.skip != 'true'
-        shell: bash
-        run: |
+          python3 scripts/astra_apply_r43_integration.py
           python3 scripts/build_taller_suite.py
           python3 scripts/apply_taller_materials_r43.py --root .
-          python3 scripts/test_r43_integrated.py --root .
+
+      - name: Source gates
+        shell: bash
+        run: |
+          find assets -maxdepth 1 -name 'ig-suite*.js' -print0 | xargs -0 -n1 node --check
+          node --check assets/ig-taller-r42.js
           node tools/test-r42-rincon-two-fixes.js
+          python3 scripts/test_r43_integrated.py --root .
           python3 scripts/test_r42_app_shell.py
           python3 scripts/measure_r42_materials.py
 
       - name: Full public build
-        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           python3 scripts/build_site.py
           python3 scripts/test_r43_integrated.py --root dist
+          python3 scripts/check_csp_eval_scope.py --root dist
 
-      - name: Commit expanded integrated candidate
-        if: steps.guard.outputs.skip != 'true'
+      - name: Commit integrated candidate
         shell: bash
         run: |
           mkdir -p reports/r43-integration
-          printf '%s\n' "R43 + Design R02 + Rincón integrated by Astra" > reports/r43-integration/EXPANDED
-          rm -f .astra/r43-source.tar.xz .astra/r43-source.b64.* .astra/R43_PAYLOAD_READY .astra/apply_r43_current.py
-          rm -rf scripts/taller_suite/vendor/node_modules
-          git config user.name "Astra integration"
-          git config user.email "noreply@irisgreen.eu"
+          cat > reports/r43-integration/README.md <<'EOF'
+          R43 creative Workshop reconstructed from the canonical Claude handoff,
+          reconciled onto the current A2 head, Design R02 material system applied
+          to every public Workshop route, and A7 Quiet Space two-fix patch preserved.
+          EOF
+          rm -f .astra/R43_GO
           git add -A
           git commit -m "Astra: integrar Taller R43 + Design R02 + Rincón"
           git push origin HEAD:astra/r43-interface-integration-20260927
