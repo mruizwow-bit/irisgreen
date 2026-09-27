@@ -15,7 +15,9 @@ body[data-ig-home-r42="true"] a{color:inherit}
 .ig-home-header{
   position:sticky;top:0;z-index:80;
   border-bottom:1px solid var(--ig-separator,#d5e1ec);
-  background:rgb(255 255 255 / .96);
+  background-color:var(--ig-chrome-glass-light,#fff);
+  -webkit-backdrop-filter:blur(var(--ig-glass-blur,0px));
+  backdrop-filter:blur(var(--ig-glass-blur,0px));
 }
 .ig-home-header-inner{
   width:min(1440px,calc(100% - 32px));margin:auto;min-height:68px;
@@ -34,7 +36,7 @@ body[data-ig-home-r42="true"] a{color:inherit}
 .ig-home-menu[open]>summary{background:var(--ig-state-selected,#17395c);color:#fff;border-color:var(--ig-state-selected,#17395c)}
 .ig-home-menu-panel{
   position:absolute;right:0;top:calc(100% + 8px);width:min(560px,calc(100vw - 28px));max-height:min(70vh,620px);overflow:auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;border:1px solid var(--ig-control-border,#7a869d);border-radius:18px;background:#fff;box-shadow:0 20px 60px -35px rgba(14,29,53,.5)
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;border:1px solid var(--ig-control-border,#7a869d);border-radius:18px;background-color:var(--ig-chrome-glass-light,#fff);-webkit-backdrop-filter:blur(var(--ig-glass-blur,0px));backdrop-filter:blur(var(--ig-glass-blur,0px));box-shadow:0 20px 60px -35px rgba(14,29,53,.5)
 }
 .ig-home-menu-panel a{min-height:44px;padding:10px 12px;border-radius:12px;text-decoration:none}
 .ig-home-menu-panel a:hover{background:var(--ig-state-hover,#edf5fb)}
