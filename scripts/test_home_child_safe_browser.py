@@ -16,7 +16,9 @@ async def capture(page,path,name,w,h):
     await page.goto(BASE+path,wait_until='networkidle')
     sw=await page.evaluate('document.documentElement.scrollWidth')
     iw=await page.evaluate('innerWidth')
-    need(sw<=iw+1,f'horizontal overflow {path} {w}: {sw}>{iw}')
+    if sw>iw+1:
+        offenders=await page.evaluate("""() => Array.from(document.querySelectorAll('body *')).map((e)=>{const r=e.getBoundingClientRect();return {tag:e.tagName,cls:String(e.className||'').slice(0,100),id:e.id||'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),scrollWidth:e.scrollWidth}}).filter(x=>x.right>innerWidth+1||x.left<-1).sort((a,b)=>b.right-a.right).slice(0,12)""")
+        raise AssertionError(f'horizontal overflow {path} {w}: {sw}>{iw}; offenders={offenders}')
     await page.screenshot(path=str(OUT/f'{name}-{w}x{h}.png'),full_page=True)
 
 async def main():
