@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-09-27",
+  "source_repo": "mruizwow-bit/irisgreen",
+  "source_pr": 244,
+  "source_head": "e8cad400a30d5d4857f9f99b0c1070d786958a8b",
+  "status": "R01_FIXED_SYSTEM_COPY_EXTRACTED_EDITORIALLY_REVIEWED_PENDING_MARIA",
+  "scope": "Fixed Sabik system/UI copy only. Does not duplicate page/article content.",
+  "records": 40,
+  "editorial": {
+    "keep": 25,
+    "revised": 14,
+    "hold": 1
+  },
+  "speak_policy": {
+    "SYSTEM_VOICE": 10,
+    "SYSTEM_VOICE_OPTIONAL": 5,
+    "UI_ONLY": 14,
+    "UI_SCREENREADER": 6,
+    "SCREENREADER_ONLY": 5
+  },
+  "csv_sha256": "d5f4f7209ff132581c70f84264a188b422e5f3aac61f4346a3db5d03000f22cb",
+  "audio_generated": false,
+  "product_modified": false,
+  "deploy": false,
+  "supersedes_voice_architecture_doc": "MEMORIA/SABIK_BIBLIOTECA_NARRADA_ES_EN_R01_20260925.md",
+  "keeps_historical_extraction": "MEMORIA/SABIK_TEXTOS_ES_EN_EXTRAIDOS_R01_20260925.md",
+  "next": "Revisión humana de María del copy R01; después reextracción completa de contenido sobre HEAD A2 congelado post-R42 y generación de SABIK_AUDIO_LIBRARY desde unidades aprobadas."
+}
