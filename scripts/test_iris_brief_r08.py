@@ -104,7 +104,8 @@ def run():
       assert page.locator('#sabik-hologram').get_attribute('data-motion-level')!='NORMAL'
       panel=page.locator('.sabik-panel').bounding_box();content=page.locator('.ig-home-main').bounding_box();assert (panel['x']>=content['x']+content['width']-2) if width==1440 else (panel['y']>=content['y']+content['height']-2)
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')
-      assert page.locator('.ig-home-area[href="/es/taller/"]').count()==1
+      workshop_href='/en/workshop/' if row['lang']=='en' else '/es/taller/'
+      assert page.locator(f'.ig-home-area[href="{workshop_href}"]').count()==1
       assert page.locator('.ig-home-area span').first.bounding_box()['width']>=135
       if i==0:
        page.evaluate("IGPreferences.update({contrast:true,controls:true,scale:1.15,transparency:'opaque'})")
