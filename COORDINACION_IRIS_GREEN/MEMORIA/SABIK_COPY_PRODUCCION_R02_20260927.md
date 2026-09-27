@@ -1,6 +1,6 @@
 # Sabik · Copy de producción R02 · 27/09/2026
 
-Estado: `R02_FIXED_SYSTEM_COPY_REFRESHED_EDITORIALLY_REVIEWED_AUDIO_CANDIDATE`.
+Estado: `SABIK_COPY_PRODUCCION_R02_FINAL_FIXED_AUDIO_BOUND`.
 
 ## Fuente actual
 
@@ -28,8 +28,18 @@ El único HOLD de R01 queda resuelto por inspección del código actual: `lowInt
 - Pico de muestra objetivo: **≤ -1 dBFS**.
 - Sin cambio de pitch, tempo o timbre; sin EQ/compresión por defecto.
 
+## Audio final asociado
+
+- 30 WAV = 15 ES + 15 EN.
+- ZIP original SHA-256: `fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc`.
+- Handoff verificado SHA-256: `96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c`.
+- Manifest SHA-256: `dd4a44d222d6fbbade669a32a705d08fe5601ac11c39911105df8cb37d71d4d9`.
+- EN model SHA-256: `3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df`.
+- ES model SHA-256: `8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291`.
+- Loudness: -16.5 LUFS; peak ≤ -1 dBFS; 0 clipping.
+
 ## Siguiente gate
 
-Generar los 15 textos locutables en ES/EN como `SABIK_AUDIO_LIBRARY_R01_CANDIDATE`, registrar hashes por texto/modelo/audio y pasar HUMAN QA antes de integrar o desplegar.
+A2 integra sobre el HEAD vigente: actualiza el copy fijo a R02, añade assets de audio versionados, enlaza reproducción únicamente bajo control del usuario, mantiene `SCREENREADER_ONLY` fuera de la voz propia de Sabik y ejecuta QA ES/EN en preview.
 
-No se publican masters humanos/modelos en GitHub.
+No main · no producción · no publicación de masters humanos/modelos entrenados.
