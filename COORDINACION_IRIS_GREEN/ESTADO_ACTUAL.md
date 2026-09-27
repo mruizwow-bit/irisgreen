@@ -1,5 +1,24 @@
 # Estado operativo compartido
 
+## R47 · Claude · Taller definitivo · 27/09/2026
+
+**Estado: `R47_CLAUDE_TALLER_ORDERED`.**
+
+Auditoría de los paquetes R43/R44 aportados por María confirma:
+- 27 estudios visibles, pero 13 R43 + Dibujo piloto + 13 legacy;
+- workspace-first incumplido por hero/instrucciones antes de la herramienta;
+- Design R02 no integrado;
+- child-safe no integrado;
+- etapa de vida presente, pero no equivale a child-safe;
+- persistencia local documentada de forma contradictoria.
+
+Issue #308 reconstruye 27/27 bajo una sola arquitectura: cinco perfiles de workbench, workspace primero, Estructura + Inspector ligados al proyecto, mobile con bottom dock/sheets, Design R02 100 %, SAFE_BY_DEFAULT y registro child-safe con 0 items discoverables sin clasificar.
+
+R43 v2 y PR #299 son donantes, no solución final. R44 queda separado.
+
+Claude construye → Astra audita → A2 integra → María HUMAN QA. No main/producción/deploy propio.
+
+
 ## Sabik · copy producción R02 refrescado · 27/09/2026
 
 **Estado: `SABIK_COPY_PRODUCCION_R02_AUDIO_CANDIDATE_NEXT`.**
