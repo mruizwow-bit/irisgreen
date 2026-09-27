@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R47 Taller definitivo · 27/09/2026
+
+Orden: `R47_CLAUDE_TALLER_DEFINITIVO/01_CLAUDE.md` · issue #308.
+
+Claude reconstruye 27/27 estudios del Taller como una única generación de aplicaciones creativas. R43 v2 y PR #299 son donantes. Debe aplicar Design R02 al 100 % del Taller, child-safe real SAFE_BY_DEFAULT y arquitectura workspace-first. Astra revisa antes de A2; A2 integra; María hace HUMAN QA.
+
+R44 permanece separado y no autoriza construcción masiva de sus 64 retos.
+
+
 ## Nuevos carriles por decisión de María · 27/09/2026
 
 ### Agente 8 · Home nueva + child-safe
