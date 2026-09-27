@@ -248,7 +248,7 @@ function createIndex(corpus, release) {
   };
 }
 async function read(store, key, max, missing) {
-  let value; try { value = await store.get(key, { type: 'arrayBuffer' }); }
+  let value; try { value = await store.get(key, { type: 'arrayBuffer', consistency: 'strong' }); }
   catch { fail('storage_unavailable'); }
   if (value == null) fail(missing);
   return asBytes(value, max);
