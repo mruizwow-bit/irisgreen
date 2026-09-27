@@ -14,7 +14,7 @@ var UI={
   bien:'Bien. Sigue.',masAdelante:'Ese va más adelante. Prueba otro.',otroMomento:'Eso va en otro momento. Prueba otra.',noHueco:'Ese no va en el hueco. Prueba otro.',
   noEncaja:'Ahí no acaba de encajar. Prueba otro sitio.',noJuntas:'Esas dos no van juntas. Prueba otra.',primeroIzq:'Primero toca una imagen de la izquierda.',
   anadido:'Añadido.',quitado:'Quitado.',huecosLlenos:'Los huecos están llenos. Quita uno para cambiar.',hechoT:'Ya está.',hechoFin:'Lo has terminado a tu ritmo.',hechoParte:'Esta parte está hecha.',
-  eseEs:'Ese es el primero.',intrusoOk:'Eso es. No va con lo demás.',ayudaOrden:'Mira el que tiene el borde de puntos.',ayudaGen:'Te marco una opción con borde de puntos.',
+  eseEs:'Ese es el primero.',intrusoOk:'Eso es. No va con lo demás.',pista:'Sugerencia',ayudaOrden:'Te marco el siguiente. Pone «Sugerencia».',ayudaGen:'Te marco una opción. Pone «Sugerencia».',
   tiraOrden:'Tu secuencia',tiraSig:'Lo que ya ha pasado',tiraFalta:'La secuencia',tiraMia:'Tu plan',vuelta:'¿Dónde va esto?',
   hechos:function(a,b){return a+' de '+b+' hechos';},elegidos:function(a,m){return a<m?'Llevas '+a+'. Elige al menos '+m+'.':'Llevas '+a+'. Puedes seguir o pulsar «Ya está».';},
   hecho:'Hecho',subir:'Mover antes',bajar:'Mover después',quitar:'Quitar',minL:function(m){return m===1?'1 minuto':m+' minutos';},
@@ -30,7 +30,7 @@ var UI={
   bien:'Good. Keep going.',masAdelante:'That one comes later. Try another.',otroMomento:'That happens at another time. Try another.',noHueco:'That one does not go in the gap. Try another.',
   noEncaja:'It does not quite fit there. Try another place.',noJuntas:'Those two do not go together. Try another.',primeroIzq:'First tap a picture on the left.',
   anadido:'Added.',quitado:'Taken out.',huecosLlenos:'The spaces are full. Take one out to change.',hechoT:'Done.',hechoFin:'You finished it at your own pace.',hechoParte:'This part is done.',
-  eseEs:'That is the first one.',intrusoOk:'That is it. It does not go with the rest.',ayudaOrden:'Look at the one with the dotted border.',ayudaGen:'I have marked one option with a dotted border.',
+  eseEs:'That is the first one.',intrusoOk:'That is it. It does not go with the rest.',pista:'Suggested',ayudaOrden:'I have marked the next one. It says “Suggested”.',ayudaGen:'I have marked one option. It says “Suggested”.',
   tiraOrden:'Your sequence',tiraSig:'What has happened so far',tiraFalta:'The sequence',tiraMia:'Your plan',vuelta:'Where does this go?',
   hechos:function(a,b){return a+' of '+b+' done';},elegidos:function(a,m){return a<m?'You have '+a+'. Choose at least '+m+'.':'You have '+a+'. Keep going or press “Done”.';},
   hecho:'Done',subir:'Move earlier',bajar:'Move later',quitar:'Take out',minL:function(m){return m===1?'1 minute':m+' minutes';},
@@ -60,10 +60,12 @@ function ok(t){return {t:t,k:'ok'};}
 function seed(x){var j=juego();return (j?j.s:'')+'|'+S.fi+'|'+(S.red?1:0)+'|'+(x||'');}
 
 function img(src,cls){return '<img src="'+esc(src)+'" alt=""'+(cls?' class="'+cls+'"':'')+' loading="lazy" decoding="async">';}
-function tile(k,o,fn){o=o||{};var p=pk(k),c='jg-tile'+(o.on?' is-on':'')+(o.hint?' is-hint':'');
+// La pista de «Ayúdame» no puede vivir sólo en el borde: el texto de estado va
+// dentro del botón, así que forma parte de su nombre accesible. WCAG 1.3.3.
+function tile(k,o,fn){o=o||{};var p=pk(k),c='jg-tile'+(o.on?' is-on':'')+(o.hint?' is-hint':''),e=o.estado||(o.hint?U().pista:'');
  return '<button type="button" class="'+c+'" draggable="true" data-a="'+act(fn||function(){})+'" data-k="t-'+esc(k)+'" aria-pressed="'+(o.on?'true':'false')+'">'+
   (o.badge?'<span class="jg-badge" aria-hidden="true">'+esc(o.badge)+'</span>':'')+img(p.img)+'<span class="jg-tile-l">'+esc(p.l)+'</span>'+
-  (o.estado?'<span class="jg-tile-e">'+esc(o.estado)+'</span>':'')+'</button>';}
+  (e?'<span class="jg-tile-e">'+esc(e)+'</span>':'')+'</button>';}
 function grid(html){return '<div class="jg-grid">'+html+'</div>';}
 function slotLleno(k,o){o=o||{};var p=pk(k);return '<li class="jg-slot'+(o.flecha?' has-arrow':'')+'">'+(o.flecha?'<span class="jg-arrow" aria-hidden="true">→</span>':'')+
  '<span class="jg-slot-card">'+(o.n?'<span class="jg-num">'+esc(o.n)+'</span>':'')+(o.etiqueta?'<span class="jg-slot-tag">'+esc(o.etiqueta)+'</span>':'')+img(p.img)+
@@ -120,7 +122,7 @@ function vistaFase(){
   var m=d.m||{},sel=d.sel||null,izq=f.pares.map(function(p){return p[0];}),der=mezcla(f.pares.map(function(p){return p[1];}),seed());
   var num=function(a){return izq.indexOf(a)+1;},par=function(a){return f.pares[izq.indexOf(a)][1];},aDe=function(b){return f.pares.filter(function(p){return p[1]===b;})[0][0];};
   var prim=izq.filter(function(a){return !m[a];})[0];
-  var fila=function(k,o,fn,kk){var p=pk(k);return '<button type="button" class="jg-row'+(o.on?' is-on':'')+(o.hint?' is-hint':'')+'" data-a="'+act(fn)+'" data-k="'+kk+'" aria-pressed="'+(o.on?'true':'false')+'">'+img(p.img)+'<span>'+esc(p.l)+'</span>'+(o.badge?'<span class="jg-badge-in" aria-hidden="true">'+o.badge+'</span>':'')+'</button>';};
+  var fila=function(k,o,fn,kk){var p=pk(k);return '<button type="button" class="jg-row'+(o.on?' is-on':'')+(o.hint?' is-hint':'')+'" data-a="'+act(fn)+'" data-k="'+kk+'" aria-pressed="'+(o.on?'true':'false')+'">'+img(p.img)+'<span>'+esc(p.l)+'</span>'+(o.hint?'<span class="jg-tile-e">'+esc(u.pista)+'</span>':'')+(o.badge?'<span class="jg-badge-in" aria-hidden="true">'+o.badge+'</span>':'')+'</button>';};
   H.push('<div class="jg-cols"><div class="jg-col"><p class="jg-small">'+esc(u.objetos)+'</p>'+izq.map(function(a){
     return fila(a,m[a]?{on:true,badge:String(num(a))}:(a===sel?{on:true}:{hint:ay&&!sel&&a===prim}),function(){if(m[a]||hecha)return;put({sel:a},null);},'l-'+a);}).join('')+
    '</div><div class="jg-col"><p class="jg-small">'+esc(u.conEsto)+'</p>'+der.map(function(b){var a=aDe(b);
@@ -142,7 +144,7 @@ function vistaFase(){
   H.push('<p class="jg-prog">'+esc(u.hechos(Math.min(idx,f.items.length),f.items.length))+'</p>');if(f.libre&&Object.keys(pl).length)hoja={t:u.resumen,items:f.items.map(function(it,n){return pl[n]?[pk(pl[n]).l,it[0]]:null;}).filter(Boolean)};
   H.push('<div class="jg-dests">'+f.destinos.map(function(dk){var p=pk(dk),aqui=cur&&(f.libre||String(cur[1]).split('|').indexOf(dk)>=0);
    return '<div class="jg-destcol"><button type="button" class="jg-row jg-drop-target'+(ay&&aqui?' is-hint':'')+'" data-k="d-'+dk+'" data-a="'+act(function(){
-     if(!cur||hecha)return;if(aqui){var np=Object.assign({},pl);np[idx]=dk;var ni=idx+1,fin=ni>=f.items.length;put({pl:np,idx:ni},ok(fin?(f.libre?u.resumen:u.hechoT):(f.libre?u.libreOk:u.bien)),fin);}else say(u.noEncaja);})+'">'+img(p.img)+'<span>'+esc(p.l)+'</span></button>'+
+     if(!cur||hecha)return;if(aqui){var np=Object.assign({},pl);np[idx]=dk;var ni=idx+1,fin=ni>=f.items.length;put({pl:np,idx:ni},ok(fin?(f.libre?u.resumen:u.hechoT):(f.libre?u.libreOk:u.bien)),fin);}else say(u.noEncaja);})+'">'+img(p.img)+'<span>'+esc(p.l)+'</span>'+(ay&&aqui?'<span class="jg-tile-e">'+esc(u.pista)+'</span>':'')+'</button>'+
     '<span class="jg-mini">'+f.items.map(function(it,n){if(pl[n]!==dk)return '';var q=pk(it[0]);return '<img src="'+esc(q.img)+'" alt="'+esc(q.l)+'" title="'+esc(q.l)+'">';}).join('')+'</span></div>';}).join('')+'</div>');
  }
  else if(f.tipo==='construir'){
