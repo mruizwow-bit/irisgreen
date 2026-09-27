@@ -85,8 +85,16 @@ function renderCategories(){const box=$('#rv-cats'),lang=state.builderLang,t=T[l
   return '<button class="rv-chip rv-cat" type="button" data-cat="'+esc(value)+'" data-k="rv-cat-'+esc(value||'todas')+'" aria-pressed="'+on+'">'+esc(label)+' <span class="rv-cat-n">'+n+'</span></button>';
  }).join('');
  box.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;state.cat=b.dataset.cat;renderCategories();renderLibrary();focusKey(k);}));}
-function renderLibrary(){const lang=state.builderLang,q=($('#rv-search').value||'').trim().toLocaleLowerCase(lang),cat=state.cat||'',t=T[lang];const list=q?PICTOS.filter(p=>!p.hide&&p[lang].toLocaleLowerCase(lang).includes(q))
- :PICTOS.filter(p=>!p.hide&&(!cat||p.cat===cat));$('#rv-library').innerHTML=list.map(p=>'<button type="button" data-add-picto="'+esc(p.id)+'" data-k="rv-pic-'+esc(p.id)+'" aria-label="'+esc(t.addPic(p[lang]))+'"><img class="rv-picto" src="'+BASE+p.file+'" alt="" loading="lazy"><span>'+esc(p[lang])+'</span></button>').join('');$('#rv-library').setAttribute('aria-label',lang==='es'?'Biblioteca de pictogramas':'Symbol library');
+// Índice de búsqueda: identificador + español + inglés, sin diacríticos, para
+// que «bano» encuentre Baño y «shower» encuentre Ducha desde cualquiera de las
+// dos páginas. Se calcula una vez por pictograma y se guarda; loadRoutine()
+// puede añadir pictogramas ocultos más tarde, así que se rellena bajo demanda.
+const HAYSTACK=new Map();
+function fold(s){return String(s==null?'':s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
+function haystack(p){let h=HAYSTACK.get(p.id);if(h===undefined){h=fold(p.id+' '+(p.es||'')+' '+(p.en||''));HAYSTACK.set(p.id,h);}return h;}
+function renderLibrary(){const lang=state.builderLang,q=fold(($('#rv-search').value||'').trim()),cat=state.cat||'',t=T[lang];
+ // Categoría Y texto: el chip sigue diciendo aria-pressed, así que tiene que contar.
+ const list=PICTOS.filter(p=>!p.hide&&(!cat||p.cat===cat)&&(!q||haystack(p).includes(q)));$('#rv-library').innerHTML=list.map(p=>'<button type="button" data-add-picto="'+esc(p.id)+'" data-k="rv-pic-'+esc(p.id)+'" aria-label="'+esc(t.addPic(p[lang]))+'"><img class="rv-picto" src="'+BASE+p.file+'" alt="" loading="lazy"><span>'+esc(p[lang])+'</span></button>').join('');$('#rv-library').setAttribute('aria-label',lang==='es'?'Biblioteca de pictogramas':'Symbol library');
  const nota=$('#rv-library-count');
  if(nota)nota.textContent=(lang==='es'?'Mostrando ':'Showing ')+list.length+(lang==='es'?' de ':' of ')+PICTOS.filter(p=>!p.hide).length+(lang==='es'?' pictogramas.':' symbols.');$('#rv-library').querySelectorAll('[data-add-picto]').forEach(b=>b.addEventListener('click',()=>{const p=pic(b.dataset.addPicto);addStep({id:p.id,text:{es:p.es,en:p.en}});}));}
 let builderPreviewFrame=0,libraryFrame=0;
