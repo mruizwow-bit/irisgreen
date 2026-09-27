@@ -18,6 +18,7 @@ jobs:
       - run: pip install beautifulsoup4 pillow playwright==1.55.0
       - run: python -m playwright install --with-deps chromium
       - run: node tools/test-sabik-motion-r37.js
+      - run: node --check sabik/iris-mount.mjs
       - run: node scripts/test_sabik_audio_r01.mjs
       - run: python scripts/test_sabik_copy_r02.py
       - run: node scripts/taller_estudios/pruebas_node.js
