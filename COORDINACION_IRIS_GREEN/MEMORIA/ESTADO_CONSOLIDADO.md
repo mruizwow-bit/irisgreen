@@ -388,3 +388,54 @@ Memoria: `MEMORIA/R42_TALLER_INTERFAZ_INVESTIGACION_INTENSIVA_20260926.md`.
 Evidencia: `EVIDENCIAS/R42_TALLER_INTERFAZ_INVESTIGACION_20260926/README.md`.  
 Normativa: `NORMATIVA/ADDENDUM_R42_TALLER_INTERFAZ_ACCESIBLE_20260926.md`.  
 Control: `CONTROL/DELTA_R42_TALLER_INTERFAZ_INVESTIGACION_20260926.json`.
+
+## R42 · contenido R01 auditado + child-safe reactivado para nueva web · 27/09/2026
+
+**Estado de fase: `R42_CHILD_SAFE_CONTENT_REACTIVATED_FOR_DESIGN_NEW_WEB`.**  
+**Paquete: `R42_CONTENT_R01_AUDITED_READY_FOR_DESIGN_CHILD_SAFE`.**
+
+Por decisión de María, la protección infantil deja de estar diferida para la migración de contenido a la nueva web.
+
+La reactivación es **Design-first**:
+- #302 adapta contenido, discovery y variantes seguras al nuevo sistema;
+- #294–#297 permanecen pausados como implementaciones del baseline anterior;
+- tras revisión Astra de #302 se emitirán deltas nuevos contra el baseline real de la nueva web.
+
+Paquete fuente auditado:
+`iris-green-contenido-R01-20260924.zip` · SHA-256 `e44633d2c4707e69276c88728a090212f6d791046cc8dbe38399270f5c29551a`.
+
+Paquete preparado para Design:
+`iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip` · SHA-256 `b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23`.
+
+Auditoría:
+- 118 entidades nuevas reales, no 152 fichas;
+- 204 HTML = 102 fichas bilingües;
+- catálogos: 226 Condiciones, 223 Situaciones, 62 Vida diaria, 60 Datos;
+- Investigación 132;
+- directorio ES 262;
+- 204 páginas nuevas con estructura/fuentes ES/EN correcta;
+- 245 enlaces de footer EN→ES: no migrar shell/footer legado;
+- 12 `sample_en` + 4 `authors_en` corregidos;
+- 4 registros jurídicos normalizados.
+
+Child-safe manifest:
+- 965 registros;
+- S0 724;
+- S1 225;
+- S2 16;
+- NORMAL 945;
+- SAFE_VARIANT_REQUIRED 16;
+- INTENTIONAL_ONLY 4.
+
+Regla dura: para DEFAULT/INFANCIA/ADOLESCENCIA, el cuerpo completo S2 no viaja en HTML/payload inicial ni se prefetch/preload. Deep link o búsqueda intencional devuelve variante segura. ADULTEZ carga full solo tras acción explícita.
+
+Esta es protección frente a descubrimiento incidental, no age assurance. No DOB, identidad, cuenta o diagnóstico.
+
+Orden Design: #302.  
+Parent: #293.  
+Puerta A2: #289.
+
+Memoria: `MEMORIA/R42_CONTENIDO_R01_AUDITORIA_CHILD_SAFE_20260927.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R42_CHILD_SAFE_REACTIVADO_NUEVA_WEB_20260927.md`.  
+Control: `CONTROL/DELTA_R42_CONTENIDO_R01_AUDITORIA_CHILD_SAFE_20260927.json`.  
+Handoff: `HANDOFFS/R42_DESIGN_CONTENT_CHILD_SAFE_R01/README.md`.
