@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'editorial/navigation'
-ASSETS = ('assets/navigation-approved.css', 'assets/navigation-approved.js')
+ASSETS = ('assets/navigation-approved.css', 'assets/navigation-approved.js', 'assets/ig-home-r42.css', 'assets/ig-home-r42.js')
 HOME_CORRECTIONS = '''<style id="ig-home-corrections">
 /* Condiciones vuelve al estilo neutro de las tarjetas secundarias. */
 .small-card[data-section="condiciones"]{background:rgba(255,255,255,.8);border-color:#c4cede}
@@ -74,8 +74,9 @@ def build(check: bool = False) -> dict:
         if target == 'index.html':
             # "Secciones" es un ancla normal. No debe depender del router JS.
             text = text.replace(' data-route="secciones"', '')
-            # Condiciones no tiene color propio en la portada.
-            text = text.replace('</head>', HOME_CORRECTIONS + '</head>', 1)
+            # La Home R42 no hereda correcciones visuales de la portada histórica.
+            if 'data-ig-home-r42="true"' not in text:
+                text = text.replace('</head>', HOME_CORRECTIONS + '</head>', 1)
         for asset, version in versions.items():
             text = text.replace('"/'+asset+'"', '"/'+asset+'?v='+version+'"')
         version = digest(text.encode('utf-8'))[:16]
@@ -88,7 +89,7 @@ def build(check: bool = False) -> dict:
             path.write_bytes(raw)
         rendered.append({'path': target, 'template': template, 'sha256': digest(raw), 'bytes': len(raw)})
     report = {'pages':rendered, 'assets':versions, 'original_article_text_preserved':True,
-              'scope':'Homepage and one entry in Spanish and English; all other routes unchanged',
+              'scope':'R42 homepage plus the existing instructions entry in Spanish and English; all other routes unchanged',
               'clinical_review_added':False, 'return_edit_named':True}
     if not check:
         (ROOT/'reports').mkdir(exist_ok=True)
