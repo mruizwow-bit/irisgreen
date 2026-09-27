@@ -11,16 +11,16 @@ A9 ha aplicado el fix acotado pedido por Astra en #306 sin reconstruir R38/R39/R
 - Investigación EN conserva texto/título EN, pero cita temporalmente la fuente pública existente `/es/investigacion/#estudio-N` porque el snapshot fijado y R42 integrado todavía no tienen `/en/research/`; no se inventa una ruta EN inexistente.
 
 Release inmutable válida:
-- HEAD probado/desplegado `c6735f8956c4f79f1017bd51c269ecf8a88a4ed3`, tree `b142f75cb822f5575c64c9b490c53f9f092946f7`;
-- versión `sabik-es-en-20260927-r03-ee7e3e4a1f4b`;
-- corpus SHA-256 `0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249`;
-- manifest SHA-256 `a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f`;
+- HEAD probado/desplegado `be14346d58acbd2c4340149836b9c630feba9279`, tree `500510ea4a49afe9f97eb2b9c8485852e20b2e42`;
+- versión `sabik-es-en-20260927-r03-9216eeee6a32`;
+- corpus SHA-256 `7335fc9ba4992814ff11698e740d6faca3abc0e160f2d2485c214866884add43`;
+- manifest SHA-256 `9dd6a2f1e6458351876a74921d7ed6180ce2660468798a1c5787c047a8bc8a13`;
 - 1.208 fragmentos = 604 ES + 604 EN;
-- CI `36332929849`: **204/204 PASS**;
-- evidence artifact `10935908743`, digest `sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b`.
+- CI `36333077790`: **204/204 PASS**;
+- evidence artifact `10936506830`, digest `sha256:035aef4db871cb0483128a05d7f48e7ebcbb6e3297fce6098811997b795b0581`.
 
 Candidato privado:
-`6ab942ab91d1122477001cc0` · `deploy-preview` · READY · `published_at=null`. Netlify confirma Team Login requerido en todos los contextos. R38 sigue intacto (4.332 fragmentos, SHA histórico esperado). Producción, frontend, DNS, Team Login y secretos no se han modificado.
+`6ab943463d8845250907ab42` · `deploy-preview` · READY · `published_at=null`. Netlify confirma Team Login requerido en todos los contextos. R38 sigue intacto (4.332 fragmentos, SHA histórico esperado). Producción, frontend, DNS, Team Login y secretos no se han modificado.
 
 HTTP de aplicación autenticado **sigue PENDING HUMAN QA**: el HTTP externo sin sesión legítima recibe 401 en Team Login, como debe. No se exportan cookies ni credenciales. La cobertura sigue siendo el snapshot técnico 372 catálogo + 49 Datos + 48 Vida diaria + 120 Investigación; no se declara sincronización completa con los 965 registros de #302. `TEPT complejo` sigue ausente del snapshot público fijado y no se inventa.
 

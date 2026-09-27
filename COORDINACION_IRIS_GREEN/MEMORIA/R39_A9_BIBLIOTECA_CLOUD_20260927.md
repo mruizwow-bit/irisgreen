@@ -15,6 +15,7 @@ Fuente editorial fijada por Astra:
 - paquete: `iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip`;
 - paquete SHA-256: `b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23`;
 - `SAFETY/safe-variants.json` SHA-256: `4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260`;
+- `SAFETY/content-safety-manifest.json` SHA-256: `51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e` (965 registros);
 - `SAFETY/s2-review.csv` SHA-256: `579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55`;
 - clasificación: `HUMAN_REVIEWED_S2`;
 - 16 registros S2 revisados en la fuente aprobada.
@@ -27,16 +28,16 @@ El snapshot público fijado para el corpus A9 contiene 15 de los 16 temas revisa
 
 Código probado y desplegado:
 - branch: `agent9/r39-cloud-library-r01-20260927`;
-- HEAD: `c6735f8956c4f79f1017bd51c269ecf8a88a4ed3`;
-- tree: `b142f75cb822f5575c64c9b490c53f9f092946f7`.
+- HEAD: `be14346d58acbd2c4340149836b9c630feba9279`;
+- tree: `500510ea4a49afe9f97eb2b9c8485852e20b2e42`.
 
 Identidad:
-- versión: `sabik-es-en-20260927-r03-ee7e3e4a1f4b`;
-- corpus SHA-256: `0066243fd682f351752442b6139990661f0bfd1ac36597dc011338444fb5d249`;
+- versión: `sabik-es-en-20260927-r03-9216eeee6a32`;
+- corpus SHA-256: `7335fc9ba4992814ff11698e740d6faca3abc0e160f2d2485c214866884add43`;
 - corpus bytes: 1.623.300;
-- manifest SHA-256: `a4522eb969ab44df434e972c9fc7b149aade70f41b164bd02c1c3af22a2be25f`;
+- manifest SHA-256: `9dd6a2f1e6458351876a74921d7ed6180ce2660468798a1c5787c047a8bc8a13`;
 - source commit: `ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5`;
-- source bundle SHA-256: `5307be32bb4627ed19be087f2c92f9cce1e602b7e2fa26b255702ef5f0230683`;
+- source bundle SHA-256: `5b257218f06f32a770ea2441be7074d66d8ff09abeb792cd92168e79702c678c`;
 - 1.208 fragmentos = 604 ES + 604 EN;
 - 30 full S2 + 30 safe variants.
 
@@ -61,25 +62,25 @@ Investigación EN mantiene título/texto EN pero cita la página fuente pública
 ## QA
 
 GitHub Actions:
-- run `36332929849`: SUCCESS;
+- run `36333077790`: SUCCESS;
 - 204 tests / 204 PASS / 0 FAIL;
-- local cold load: 102,98 ms;
-- warm query p95: 0,25 ms;
-- heap observado: 20,91 MiB;
-- artifact `10935908743`;
-- artifact digest `sha256:0d2bdec2f0d076d1281baa1ae7e59e72a3912291d81bf9699da859141bab5c5b`.
+- local cold load: 123,80 ms;
+- warm query p95: 0,33 ms;
+- heap observado: 54,37 MiB;
+- artifact `10936506830`;
+- artifact digest `sha256:035aef4db871cb0483128a05d7f48e7ebcbb6e3297fce6098811997b795b0581`.
 
 Sellado remoto:
 - proof `A9_EXPLICIT_DEPLOY_STORE_READBACK_AND_CHILD_SAFE_SEARCH`;
 - corpus y manifest `created-and-readback-verified`;
-- cold load con red: 456,13 ms.
+- cold load con red: 392,57 ms.
 
 ## Deploy privado
 
 - site: `sabik-asistente`;
 - site ID: `47b06e68-ff54-4097-8ad8-336b2d71758a`;
-- deploy ID: `6ab942ab91d1122477001cc0`;
-- origin: `https://6ab942ab91d1122477001cc0--sabik-asistente.netlify.app`;
+- deploy ID: `6ab943463d8845250907ab42`;
+- origin: `https://6ab943463d8845250907ab42--sabik-asistente.netlify.app`;
 - state: `ready`;
 - context: `deploy-preview`;
 - `published_at=null`;
