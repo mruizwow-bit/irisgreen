@@ -105,7 +105,6 @@ body[data-ig-materials="r42"] :is(.jg-r41-browserbar,.jg-gamebar){
 }
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd{
   --_rgb:var(--ig-chrome-dark-rgb);--_a:var(--ig-glass-alpha-dark);--_f:var(--ig-glass-floor-dark);--_solid:var(--ig-chrome-solid-dark);
-  background-color:var(--ig-chrome-solid-dark);
   color:var(--ig-ink-on-dark);border-bottom-color:var(--ig-separator-dark);
 }
 body[data-ig-materials="r42"] .ig-r42-rail{--_solid:var(--ig-surface-content-soft)}
@@ -180,7 +179,6 @@ body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd .nav .sep{backgrou
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico,.lang,.ig-menu-button){background:var(--ig-chrome-control-dark);border-color:var(--ig-control-border-dark);color:var(--ig-ink-on-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.ico[aria-expanded=true],.lang.on){background:var(--ig-state-selected-dark);border-color:var(--ig-state-selected-dark);color:var(--ig-state-selected-dark-ink)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :focus-visible{outline-color:var(--ig-focus-on-dark)}
-body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.qrange,.qselect,input[type="checkbox"]):focus-visible{outline:3px solid var(--ig-focus-on-dark);outline-offset:3px}
 
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] :is(.ig-r42-topbar,.ig-r42-context,.ig-r42-rail){background:var(--ig-chrome-solid-dark);color:var(--ig-ink-on-dark);border-color:var(--ig-separator-dark)}
 body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .ig-r42-shell{border-color:var(--ig-separator-dark)}
@@ -227,18 +225,6 @@ body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .r42-more-menu :focus-
 
 /* Modo limpio: controles flotantes sobre la escena (cristal oscuro con suelo). */
 @layer ig-r42-materials-important{
-  /* La cabecera legacy usa background con alta prioridad: en Quiet Space debe ser inequívocamente oscura. */
-  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd{
-    background:var(--ig-chrome-solid-dark)!important;
-    background-image:none!important;
-    color:var(--ig-ink-on-dark)!important;
-    border-bottom-color:var(--ig-separator-dark)!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
-  body[data-ig-materials="r42"][data-ig-r42-family="quiet"] .hd :is(.brand,.nav a){
-    color:var(--ig-ink-on-dark)!important;
-  }
   body[data-ig-materials="r42"].r42-clean #watch>.r40-scene-actions{
     background:var(--ig-chrome-solid-dark)!important;border-color:var(--ig-control-border-dark)!important;
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
