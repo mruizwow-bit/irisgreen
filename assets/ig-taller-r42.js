@@ -10,6 +10,8 @@
   'use strict';
   var D=root.document;
   var WORK_SELECTOR='.igt-r40-canvas,.igt-r40-pixel,.igt-r40-floor,.igt-r40-game,.igt-r40-world,.igt-r40-sim,.igt-r40-board,.igt-r40-sequencer,.igt-r40-piano,.igt-r40-comic,.igt-r40-writing,.igt-r40-photo,.igt-canvas-box,canvas,.igt-arena';
+  // Life-stage is a temporary view for this page only: never persisted or profiled.
+  var currentStage='all';
   function lang(){return D&&String(D.documentElement.lang||'es').slice(0,2)==='en'?'en':'es';}
   function T(es,en){return lang()==='en'?en:es;}
   function el(tag,cls,text){var n=D.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
@@ -35,8 +37,8 @@
     var wrap=el('div','ig42-stage-choice'),label=el('span','ig42-stage-label',T('Ruta de entrada','Entry path'));wrap.appendChild(label);
     var group=el('div','ig42-segmented');group.setAttribute('role','group');group.setAttribute('aria-label',label.textContent);
     var stages=[['all',T('Cualquier edad','Any age')],['child',T('Infancia','Childhood')],['teen',T('Adolescencia','Teens')],['adult',T('Adultez','Adults')]];
-    var key='ig42-stage';var current='all';try{current=root.sessionStorage.getItem(key)||'all';}catch(e){}
-    stages.forEach(function(s){var b=btn(s[1],'ig42-segment');b.dataset.stage=s[0];b.setAttribute('aria-pressed',String(current===s[0]));b.addEventListener('click',function(){current=s[0];try{root.sessionStorage.setItem(key,current);}catch(e){}qa('button',group).forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});updateStageBrief(study,current);});group.appendChild(b);});
+    var current=currentStage;
+    stages.forEach(function(s){var b=btn(s[1],'ig42-segment');b.dataset.stage=s[0];b.setAttribute('aria-pressed',String(current===s[0]));b.addEventListener('click',function(){current=s[0];currentStage=current;qa('button',group).forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});updateStageBrief(study,current);});group.appendChild(b);});
     wrap.appendChild(group);return wrap;
   }
   function updateStageBrief(study,stage){
@@ -96,7 +98,7 @@
   function extractChallenges(app,body,top,study){
     var c=q('.igt-retos',app);if(c&&!body.contains(c)){body.appendChild(c);c.classList.add('ig42-challenge-content');}
     if(!q('#ig42-stage-brief',body)){var stage=el('section','ig42-stage-brief-wrap');stage.appendChild(el('h3','',T('Sugerencia para esta etapa','Suggestion for this stage')));var p=el('p','');p.id='ig42-stage-brief';stage.appendChild(p);body.insertBefore(stage,body.firstChild);}
-    updateStageBrief(study,(function(){try{return root.sessionStorage.getItem('ig42-stage')||'all';}catch(e){return'all';}})());
+    updateStageBrief(study,currentStage);
   }
   function makeManagementButton(main){
     var b=btn(T('Mi colección y proyectos','My collection and projects'),'ig42-manage-btn');var dlg=createDialog('ig42-manage',T('Mi colección y proyectos','My collection and projects'));wireDialogClose(dlg);b.addEventListener('click',function(){var body=q('.ig42-dialog-body',dlg);if(!body.dataset.loaded){var old=q('#igt-local-summary');if(old){body.appendChild(old);old.hidden=false;old.classList.add('ig42-local-summary');}else{var app=q('#igt-app'),found=0;qa('.igt-bar button',app).forEach(function(source){var txt=(source.textContent||'').trim();if(!/colecci|collection|progreso|progress|Guardados|Saved projects/i.test(txt))return;var proxy=btn(txt,'ig42-menu-action');proxy.addEventListener('click',function(){safeClick(source);});body.appendChild(proxy);found++;});if(!found)body.appendChild(el('p','ig42-empty',T('Todavía no hay datos locales que gestionar.','There is no local data to manage yet.')));}body.dataset.loaded='true';}showDialog(dlg,b);});
