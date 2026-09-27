@@ -118,6 +118,33 @@ async def main():
         await page.goto(BASE+'/es/datos/',wait_until='domcontentloaded');await page.wait_for_timeout(250);need(await page.locator('.ig-r49-stage-state').first.inner_text()=='Infancia','audience session state did not persist across areas')
         await page.goto(BASE+'/en/data/',wait_until='domcontentloaded');await page.wait_for_timeout(250);need(await page.locator('[data-ig-r49-search]').first.get_attribute('aria-label')=='Search','EN common chrome label wrong');need(await page.locator('.ig-r49-stage-state').first.inner_text()=='Children','EN audience label wrong')
         report['accessibility']+=['native-dialog-escape','focus-restore','session-audience-cross-area','EN-common-chrome']
+
+        # Landmarks, dialog names, current page, target size and text-spacing/reflow.
+        await page.set_viewport_size({'width':390,'height':844})
+        await page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='domcontentloaded');await page.wait_for_timeout(250)
+        need(await page.locator('main').count()==1,'main landmark missing')
+        need(await page.locator('.ig-r49-global-header').count()==1,'header landmark missing')
+        need(await page.locator('.ig-r49-global-footer').count()==1,'footer landmark missing')
+        need(await page.locator('h1').count()>=1,'h1 missing')
+        need(await page.locator('.ig-r49-global-header a[aria-current="page"]').count()==1,'current-page state missing')
+        need(await page.locator('a.skip,a.ig-r49-skip,a.ig-home-skip').count()>=1,'skip link missing')
+        await page.locator('[data-ig-r49-settings]').first.click()
+        need(await page.get_by_role('dialog',name='Lectura y accesibilidad').count()==1,'settings dialog has no accessible name')
+        await page.keyboard.press('Escape')
+        boxes=await page.locator('.ig-r49-tools > :is(button,a)').evaluate_all("els=>els.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height,visible:!!(e.offsetWidth||e.offsetHeight)}))")
+        need(all((not b['visible']) or (b['w']>=43.5 and b['h']>=43.5) for b in boxes),'common chrome target below 44px')
+        report['accessibility']+=['landmarks','heading-structure-sample','current-page','skip-link','dialog-accessible-name','target-size-44']
+
+        for profile,path in WIDE_ROUTES:
+            await page.set_viewport_size({'width':320,'height':800})
+            await page.goto(BASE+path,wait_until='domcontentloaded');await page.wait_for_timeout(250)
+            await page.evaluate("IGPreferences.update({text:{letter:.12,word:.16,line:1.5,paragraph:2}})")
+            await page.wait_for_timeout(120)
+            sw=await page.evaluate('document.documentElement.scrollWidth');iw=await page.evaluate('innerWidth')
+            need(sw<=iw+1,'text spacing caused horizontal scroll '+profile)
+            await page.evaluate("IGPreferences.reset()")
+        report['accessibility']+=['text-spacing','reflow-320-equivalent-400percent-at-1280']
+
         # R02 transparency and system modes on three profiles.
         for profile,path in WIDE_ROUTES:
             await page.goto(BASE+path,wait_until='domcontentloaded');await page.wait_for_timeout(250)
