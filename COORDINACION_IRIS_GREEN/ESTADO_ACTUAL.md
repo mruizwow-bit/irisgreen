@@ -1,5 +1,27 @@
 # Estado operativo compartido
 
+## Sabik · ES E0 cerrado + normalización de loudness aprobada · 27/09/2026
+
+**Estado: `SABIK_VOICES_EN_ES_FINAL_LOUDNESS_POLICY_APPROVED`.**
+
+Cierre de voces:
+- EN vigente: `SABIK_EN_R02_EXACT_VALIDATED_FINAL`.
+- ES vigente: `SABIK_ES_V1 = checkpoint-epoch-0`; E2 queda como alternativo técnico.
+- No reentrenar por volumen: el problema de “voz lejana” era de nivel de salida, no de identidad/timbre.
+
+Política de audio aprobada por María tras escucha A/B:
+- normalización post-síntesis a **-16.5 LUFS integrados**;
+- pico máximo objetivo **≤ -1 dBFS**;
+- sin cambio de pitch, velocidad ni timbre;
+- sin compresión/EQ como requisito por defecto;
+- aplicar a toda `SABIK_AUDIO_LIBRARY` ES/EN.
+
+Pruebas aprobadas:
+- EN: -20.93 → -16.50 LUFS, pico final -1.20 dBFS.
+- ES: -20.16 → -16.50 LUFS, pico final -1.52 dBFS.
+
+Siguiente fase: cerrar hashes/manifests de ES y retomar `SABIK_COPY_PRODUCCION` + `SABIK_AUDIO_LIBRARY`.
+
 ## R39 · A9 Biblioteca Cloud de Sabik · 27/09/2026
 
 **Estado: `R39_A9_SABIK_CLOUD_LIBRARY_READY_FOR_ASTRA`.**
