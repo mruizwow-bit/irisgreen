@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · ES audio codes completos · 27/09/2026
+
+**Estado: `SABIK_ES_CODES_133_PASS_REVIEW_NEXT`.**
+
+Preparación segura de audio codes completada para `SABIK_ES_TRAIN_V1`: 133/133 filas, batch efectivo 1, UTF-8 explícito, `train_with_codes.jsonl` generado correctamente y muestra estratificada de 12 WAV creada en `SABIK_ES_TRAIN_V1\REVIEW`. La ejecución terminó con ≈13.82 GiB de VRAM libre.
+
+Siguiente gate: revisión humana/técnica de los 12 WAV antes de preflight SFT ES.
+
 ## Sabik · EN V1 canonizado + corpus ES auditado · 27/09/2026
 
 **Estado: `SABIK_EN_V1_CANONICAL_ES_CORPUS_AUDITED_PREPARE_CODES_NEXT`.**
