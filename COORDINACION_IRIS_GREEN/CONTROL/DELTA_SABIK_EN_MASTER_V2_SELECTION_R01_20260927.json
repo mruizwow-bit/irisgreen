@@ -1,0 +1,23 @@
+{
+  "id": "SABIK-EN-MASTER-V2-R01",
+  "date": "2026-09-27",
+  "status": "SABIK_EN_MASTER_V2_SELECTED",
+  "source_file": "SABIK_EN_REG_V4_12_seed9112.wav",
+  "canonical_local_name": "SABIK_EN_MASTER_V2.wav",
+  "seed": 9112,
+  "sha256": "c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede",
+  "ref_text": "Hello. I'm Sabik. I can help you find the information you need. We can go step by step. If something isn't clear, I can explain it in a different way.",
+  "model": "Qwen3-TTS-12Hz-1.7B-Base",
+  "corpus_mode": {
+    "mode": "ICL",
+    "x_vector_only_mode": false,
+    "non_streaming_mode": true,
+    "temperature": 0.9,
+    "top_k": 50,
+    "top_p": 1,
+    "repetition_penalty": 1.05
+  },
+  "provenance": "Derived from the previously approved Sabik English identity; final candidate selected by Maria after comparative listening and cross-text ICL validation.",
+  "next": "Generate SABIK_EN_TRAIN_V1, review sample, then fine-tune single-speaker Qwen3-TTS.",
+  "public_audio": false
+}
