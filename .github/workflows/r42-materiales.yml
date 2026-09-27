@@ -69,6 +69,8 @@ jobs:
         run: python scripts/apply_taller_materials_r43.py --root .
       - name: Test Taller material coverage source
         run: python scripts/test_taller_material_coverage.py --root .
+      - name: R43 advanced Taller source gate
+        run: node scripts/test_r43_a5_advanced_taller.js
 
       - name: Build isolated site
         run: python scripts/build_site.py
