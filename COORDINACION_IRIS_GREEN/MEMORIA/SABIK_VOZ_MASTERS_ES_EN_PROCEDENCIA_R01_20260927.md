@@ -64,6 +64,22 @@ La referencia ralentizada 0.88 queda **DESCARTADA** por sonido robótico y no de
 
 Desde este punto, el master EN vigente para corpus/ICL/fine-tuning es `SABIK_EN_MASTER_V2.wav`; el antiguo `SABIK_EN_MASTER_RETEST_01.wav` se conserva solo como evidencia histórica de la identidad que dio origen a la V2.
 
+
+## 3C. Corpus inglés V1 · generación y QC de muestra
+
+Corpus `SABIK_EN_TRAIN_V1` generado desde `SABIK_EN_MASTER_V2.wav`:
+- 160/160 clips;
+- duración total: 621.76 s = 10.36 min;
+- 24 kHz, mono, PCM 24-bit;
+- modo de generación: Qwen3-TTS Base ICL, `x_vector_only_mode=False`, `non_streaming_mode=True`;
+- parámetros: temperature 0.9, top_k 50, top_p 1.0, repetition_penalty 1.05;
+- mismo `ref_audio` y texto ICL exacto fijado para todo el corpus.
+
+QC de muestra estratificada de 12 clips: 001, 008, 024, 040, 056, 072, 088, 104, 120, 136, 152 y 160.
+Resultado: PASS para continuar a extracción de audio codes. No clipping detectado; RMS consistente; F0 mediana de la muestra 192.98 Hz con desviación 3.74 Hz; ritmo mediano aprox. 173 ppm. Los clips 040 y 136 son más rápidos, pero no presentan por sí solos criterio de descarte y aportan variación prosódica. No se detecta deriva acústica progresiva entre inicio y final de la muestra.
+
+Estado: `SABIK_EN_TRAIN_V1_SAMPLE_QC_PASS_PREPARE_CODES_NEXT`.
+
 ## 4. Master español aprobado
 
 `SABIK_ES_MASTER_V1.wav` es una copia canónica de `SABIK_ES_LONG_REF.wav`.
