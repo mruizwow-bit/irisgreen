@@ -1,6 +1,9 @@
 name: R42 · sistema material (piloto)
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - agent2/r42-design-r02-staging-20260927
   pull_request:
     paths:
       - 'assets/ig-r42-materials.css'
