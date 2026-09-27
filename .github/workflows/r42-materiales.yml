@@ -16,6 +16,7 @@ on:
       - 'assets/ig-child-safety.css'
       - 'assets/ig-child-safety-content.js'
       - 'assets/ig-child-safety-research.js'
+      - 'assets/ig-child-safety-discovery.js'
       - 'assets/content-safety/**'
       - 'assets/buscador-comun.js'
       - 'scripts/apply_r42_app_shell.py'
@@ -31,6 +32,8 @@ on:
       - 'scripts/test_child_safe_pages.py'
       - 'scripts/apply_child_safe_research.py'
       - 'scripts/test_child_safe_research.py'
+      - 'scripts/filter_child_safe_discovery.py'
+      - 'scripts/test_child_safe_discovery.py'
       - 'scripts/test_child_safety_policy.js'
       - 'scripts/defer_investigacion_data.py'
       - 'scripts/test_investigacion_deferred.py'
@@ -73,6 +76,8 @@ jobs:
         run: python scripts/test_child_safe_pages.py --root dist
       - name: Child Safety Research dist
         run: python scripts/test_child_safe_research.py --root dist
+      - name: Child Safety incidental discovery dist
+        run: python scripts/test_child_safe_discovery.py --root dist
       - name: Research deferred browser gate
         run: cd dist && python ../scripts/test_investigacion_deferred.py
 
