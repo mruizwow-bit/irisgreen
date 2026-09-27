@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · EN V1 checkpoint final seleccionado · 27/09/2026
+
+**Estado: `SABIK_EN_V1_CHECKPOINT_E0_SELECTED_ES_TRAINING_NEXT`.**
+
+Tras la validación ciega/controlada de 18 WAV inéditos (6 frases × E0/E1/E2), se selecciona `checkpoint-epoch-0` como modelo EN definitivo. Orden final de preferencia: **E0 > E2 > E1**. E2 se conserva como alternativo técnico y no se borra.
+
+Siguiente fase: canonizar `checkpoint-epoch-0` como `SABIK_EN_V1`, registrar hashes locales y pasar al fine-tuning español. No retomar todavía `SABIK_COPY_PRODUCCION` ni `SABIK_AUDIO_LIBRARY`.
+
 ## Sabik · SFT EN worst-case preflight PASS · 27/09/2026
 
 **Estado: `SABIK_EN_SFT_WORSTCASE_PASS_FULL_TRAIN_READY`.**
