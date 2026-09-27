@@ -35,7 +35,7 @@
     "copy_test": "PASS",
     "build": "PASS",
     "home_child_safe": "PASS",
-    "final_asset_gate": "PENDING_WAV_BINARY_INGESTION"
+    "final_asset_gate": "FAIL_EXPECTED_30_WAV_MISSING_HASH_MISMATCH_0"
   },
   "next_gate": "30/30 WAV present + exact SHA-256 + HTTP 200/MIME audio + HUMAN QA before final marker",
   "final_marker_emitted": false,
@@ -46,5 +46,35 @@
     "audio regeneration",
     "models or masters in public Git",
     "dynamic result narration"
+  ],
+  "web_head": "ed9960011f08e38217eecb4be61e6273d7dbe8b1",
+  "ci": {
+    "run_id": 36339396889,
+    "passed": [
+      "motion-r37",
+      "mount-syntax",
+      "sabik-audio-runtime-r01",
+      "sabik-copy-r02",
+      "taller-node",
+      "rincon-r40",
+      "authorized-transport-r06",
+      "build-site",
+      "iris-r08",
+      "resources-current",
+      "iris-r09",
+      "taller-mounted-20-of-20"
+    ],
+    "failed": [
+      "sabik-audio-assets-r01"
+    ],
+    "audio_asset_gate": {
+      "expected": 30,
+      "missing": 30,
+      "hash_mismatch": 0
+    }
+  },
+  "product_fixes": [
+    "Drawing/Drawing pilot: prevent duplicate R42 workshop shell race",
+    "Specialized Taller R42: restore semantic h1 inside main"
   ]
 }
