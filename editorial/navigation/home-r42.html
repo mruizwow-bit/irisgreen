@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,interactive-widget=resizes-content">
+<meta name="color-scheme" content="light">
+<title>Iris Green · Neurodiversidad, información y recursos</title>
+<meta name="description" content="Información clara, recursos y herramientas sobre neurodiversidad.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://irisgreen.eu/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Iris Green">
+<meta property="og:title" content="Iris Green">
+<meta property="og:description" content="Información clara, recursos y herramientas sobre neurodiversidad.">
+<meta property="og:url" content="https://irisgreen.eu/">
+<link rel="stylesheet" href="/assets/ig-fonts.css">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css">
+<link rel="stylesheet" href="/assets/ig-r42-materials.css">
+<link rel="stylesheet" href="/assets/ig-child-safety.css">
+<link rel="stylesheet" href="/assets/ig-home-r42.css">
+<script defer src="/assets/preferencias-lectura.js"></script>
+</head>
+<body data-ig-home-r42="true" data-ig-materials="r42">
+<a class="ig-home-skip" href="#main">Ir al contenido</a>
+
+<header class="ig-home-header">
+  <div class="ig-home-header-inner">
+    <a class="ig-home-brand" href="/" aria-label="Iris Green, inicio">
+      <img src="/assets/iris-favicon.svg" width="30" height="30" alt="">
+      <span>Iris Green</span>
+    </a>
+
+    <div class="ig-home-header-actions">
+      <details class="ig-home-menu" id="ig-home-menu">
+        <summary data-i18n="explore">Explorar</summary>
+        <nav class="ig-home-menu-panel" id="ig-home-menu-panel" aria-label="Explorar Iris Green">
+          <a href="/es/situaciones/">Situaciones</a>
+          <a href="/es/biblioteca/">Vida diaria</a>
+          <a href="/es/tramites/directorio/">Ayudas</a>
+          <a href="/es/neurodiversidad/condiciones/">Condiciones</a>
+          <a href="/es/investigacion/">Investigación</a>
+          <a href="/es/datos/">Datos</a>
+          <a href="/es/videos/">Vídeos</a>
+          <a href="/es/recursos/">Recursos</a>
+          <a href="/es/intereses/" data-iris-top="interests">Tus intereses</a>
+          <a href="/es/taller/" data-iris-top="workshop">El taller</a>
+          <a href="/es/sitio-tranquilo/">Rincón tranquilo</a>
+          <a href="/es/libros/">Libros</a>
+        </nav>
+      </details>
+
+      <a class="ig-home-link" id="ig-home-quiet" href="/es/sitio-tranquilo/"><span data-i18n="quiet">Rincón tranquilo</span></a>
+      <button class="ig-home-button" type="button" data-ig-music aria-label="Música"><span aria-hidden="true">♫</span><span>Música</span></button>
+      <button class="ig-home-button" id="ig-home-reading-open" type="button" aria-controls="ig-home-reading"><span aria-hidden="true">Aa</span><span data-i18n="reading">Lectura</span></button>
+      <div class="ig-home-language" role="group" data-i18n-label="language" aria-label="Idioma">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="ig-home-main" id="main" tabindex="-1">
+  <div id="home-view">
+    <section class="ig-home-hero" aria-labelledby="ig-home-title">
+      <div class="ig-home-wrap ig-home-hero-inner">
+        <p class="ig-home-eyebrow" data-i18n="eyebrow">Neurodiversidad · Información y recursos</p>
+        <h1 class="ig-home-title" id="ig-home-title" data-i18n="title">Empieza por lo que necesitas</h1>
+        <p class="ig-home-lead" data-i18n="lead">Busca una palabra o entra directamente por una sección.</p>
+
+        <form class="ig-home-search" id="ig-home-search-form" role="search">
+          <label for="ig-home-q" data-i18n="searchLabel">Buscar en Iris Green</label>
+          <div class="ig-home-search-row">
+            <input id="ig-home-q" name="q" type="search" maxlength="160" autocomplete="off" placeholder="Por ejemplo: ruido, instrucciones, transporte…">
+            <button type="submit" data-i18n="search">Buscar</button>
+          </div>
+          <div class="ig-home-examples">
+            <span data-i18n="examples">Por ejemplo:</span>
+            <button class="ig-home-example" type="button" data-example data-es="ruido" data-en="noise" data-i18n="ex1">Ruido</button>
+            <button class="ig-home-example" type="button" data-example data-es="instrucciones" data-en="instructions" data-i18n="ex2">Instrucciones</button>
+            <button class="ig-home-example" type="button" data-example data-es="ayudas" data-en="support" data-i18n="ex3">Ayudas</button>
+          </div>
+          <p id="ig-home-search-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="ig-home-audience" aria-labelledby="ig-home-audience-title">
+          <div class="ig-home-audience-head">
+            <div>
+              <h2 id="ig-home-audience-title" data-i18n="audience">Contenido para…</h2>
+              <p data-i18n="audienceHint">Esta elección es temporal. No pedimos edad, diagnóstico ni cuenta.</p>
+            </div>
+          </div>
+          <div class="ig-home-audience-options" role="group" aria-labelledby="ig-home-audience-title">
+            <button type="button" data-audience="child" aria-pressed="false" data-i18n="child">Infancia</button>
+            <button type="button" data-audience="teen" aria-pressed="false" data-i18n="teen">Adolescencia</button>
+            <button type="button" data-audience="adult" aria-pressed="false" data-i18n="adult">Adultez</button>
+            <button type="button" data-audience="all" aria-pressed="true" data-i18n="all">Cualquier edad</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="ig-home-results" id="ig-home-results" hidden aria-labelledby="ig-home-results-title">
+      <div class="ig-home-wrap">
+        <div class="ig-home-results-head">
+          <div>
+            <h2 id="ig-home-results-title" tabindex="-1" data-i18n="results">Resultados</h2>
+            <p class="ig-home-result-count" id="ig-home-result-count" role="status"></p>
+          </div>
+        </div>
+        <ul class="ig-home-result-list" id="ig-home-result-list"></ul>
+        <div class="ig-home-empty" id="ig-home-empty" hidden>
+          <strong data-i18n="none">No hay coincidencias</strong>
+          <p data-i18n="noneHint">Prueba otra palabra o entra por una sección.</p>
+        </div>
+        <button class="ig-home-more" id="ig-home-more" type="button" hidden data-i18n="more">Ver más resultados</button>
+      </div>
+    </section>
+
+    <section class="ig-home-directory" aria-labelledby="ig-home-sections-title">
+      <div class="ig-home-wrap">
+        <div class="ig-home-directory-head">
+          <div>
+            <p class="ig-home-section-label" data-i18n="start">Empieza por aquí</p>
+            <h2 id="ig-home-sections-title" data-i18n="sections">Explora Iris Green</h2>
+          </div>
+          <p data-i18n="sectionsLead">Elige directamente el tipo de información o herramienta que necesitas.</p>
+        </div>
+
+        <div class="ig-home-featured" id="ig-home-featured">
+          <a class="ig-home-card" data-section="situations" data-priority="1" data-tone="lilac" href="/es/situaciones/"><h3>Situaciones</h3><p>Lo que te pasa, explicado con ejemplos.</p></a>
+          <a class="ig-home-card" data-section="everyday" data-priority="1" data-tone="rose" href="/es/biblioteca/"><h3>Vida diaria</h3><p>Apoyos y recursos para situaciones cotidianas.</p></a>
+          <a class="ig-home-card" data-section="support" data-priority="1" data-tone="blue" href="/es/tramites/directorio/"><h3>Ayudas</h3><p>Qué puedes pedir y dónde solicitarlo.</p></a>
+        </div>
+
+        <p class="ig-home-section-label" data-i18n="also">También puedes explorar</p>
+        <div class="ig-home-grid" id="ig-home-grid">
+          <a class="ig-home-card" data-section="conditions" href="/es/neurodiversidad/condiciones/"><h3>Condiciones</h3><p>Información organizada por temas.</p></a>
+          <a class="ig-home-card" data-section="research" href="/es/investigacion/"><h3>Investigación</h3><p>Estudios y explicaciones con contexto.</p></a>
+          <a class="ig-home-card" data-section="data" href="/es/datos/"><h3>Datos</h3><p>Cifras y fuentes para consultar.</p></a>
+          <a class="ig-home-card" data-section="videos" href="/es/videos/"><h3>Vídeos</h3><p>Experiencias contadas en primera persona.</p></a>
+          <a class="ig-home-card" data-section="resources" href="/es/recursos/"><h3>Recursos</h3><p>Juegos, rutinas y herramientas prácticas.</p></a>
+          <a class="ig-home-card" data-section="interests" href="/es/intereses/"><h3>Tus intereses</h3><p>Explora temas desde lo que te gusta.</p></a>
+          <a class="ig-home-card" data-section="workshop" href="/es/taller/"><h3>El taller</h3><p>Crea, prueba y construye proyectos.</p></a>
+          <a class="ig-home-card" data-section="quiet" href="/es/sitio-tranquilo/"><h3>Rincón tranquilo</h3><p>Elige una imagen, un sonido o una pausa.</p></a>
+          <a class="ig-home-card" data-section="books" href="/es/libros/"><h3>Libros</h3><p>Los libros de Iris Green.</p></a>
+        </div>
+
+        <noscript><p>El buscador necesita JavaScript. Todas las secciones siguen disponibles en los enlaces anteriores.</p></noscript>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="ig-home-footer">
+  <div class="ig-home-footer-inner">
+    <div><strong>Iris Green</strong><div data-i18n="footer">Base de conocimiento sobre neurodiversidad</div></div>
+    <nav aria-label="Información del sitio">
+      <a href="/es/sobre-iris-green/" data-i18n="about">Sobre Iris Green</a>
+      <a href="/es/metodologia/" data-i18n="method">Metodología</a>
+      <a href="/es/lectura-accesible/" data-i18n="accessibility">Accesibilidad</a>
+      <a href="/es/privacidad/" data-i18n="privacy">Privacidad</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog class="ig-home-reading" id="ig-home-reading" aria-labelledby="ig-home-reading-title">
+  <div class="ig-home-reading-inner">
+    <div class="ig-home-reading-head">
+      <div><h2 id="ig-home-reading-title" data-i18n="reading">Lectura</h2></div>
+      <button class="ig-home-close" id="ig-home-reading-close" type="button" data-i18n-label="close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="ig-home-reading-actions">
+      <button type="button" id="ig-home-size-down" data-i18n="smaller">Texto más pequeño</button>
+      <output id="ig-home-size">100%</output>
+      <button type="button" id="ig-home-size-up" data-i18n="bigger">Texto más grande</button>
+      <button type="button" data-pref="spacing" aria-pressed="false" data-i18n="spacing">Más espacio</button>
+      <button type="button" data-pref="contrast" aria-pressed="false" data-i18n="contrast">Más contraste</button>
+      <button type="button" data-pref="controls" aria-pressed="false" data-i18n="controls">Botones grandes</button>
+      <button type="button" data-pref="guide" aria-pressed="false" data-i18n="guide">Guía de lectura</button>
+      <button type="button" data-pref="motion" aria-pressed="false" data-i18n="motion">Reducir movimiento</button>
+    </div>
+    <div id="ig-home-text-options"></div>
+    <div id="ig-home-transparency-options"></div>
+    <div class="ig-home-reading-actions"><button type="button" id="ig-home-reset" data-i18n="reset">Restablecer</button></div>
+  </div>
+</dialog>
+
+<script defer src="/assets/ig-child-safety.js"></script>
+<script defer src="/assets/buscador-comun.js"></script>
+<script defer src="/assets/musica.js"></script>
+<script defer src="/assets/ig-home-r42.js"></script>
+</body></html>
