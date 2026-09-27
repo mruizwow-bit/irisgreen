@@ -38,9 +38,10 @@ function current(item){
 }
 function dialog(id,title){
  var old=D.getElementById(id);if(old)return old;
- var d=h('dialog',{id:id,class:'ig-r49-dialog'});
+ var titleId=id+'-title';
+ var d=h('dialog',{id:id,class:'ig-r49-dialog','aria-labelledby':titleId});
  var close=h('button',{type:'button',class:'ig-r49-close','aria-label':tr().close,text:'×'});
- var head=h('div',{class:'ig-r49-dialog-head'},h('h2',{text:title}),close);
+ var head=h('div',{class:'ig-r49-dialog-head'},h('h2',{id:titleId,text:title}),close);
  var body=h('div',{class:'ig-r49-dialog-body'});
  d.append(head,body);D.body.appendChild(d);
  close.addEventListener('click',function(){d.close();});
@@ -157,7 +158,9 @@ function openMore(trigger){
  routeData().forEach(function(x){nav.appendChild(navLink(x));});body.appendChild(nav);openDialog(d,trigger);
 }
 function updateStage(){
- D.querySelectorAll('.ig-r49-stage-state').forEach(function(x){x.textContent=stageLabel();});
+ var label=stageLabel();
+ D.querySelectorAll('.ig-r49-stage-state').forEach(function(x){x.textContent=label;});
+ D.querySelectorAll('[data-ig-r49-stage]').forEach(function(x){x.setAttribute('aria-label',tr().stageTitle+': '+label);});
 }
 function ensureSkip(){
  if(D.querySelector('a.skip,a.ig-home-skip,a.ig-r49-skip'))return;var main=D.querySelector('main');if(!main)return;if(!main.id)main.id='main';var a=h('a',{class:'ig-r49-skip',href:'#'+main.id,text:en()?'Skip to content':'Ir al contenido'});D.body.insertBefore(a,D.body.firstChild);
