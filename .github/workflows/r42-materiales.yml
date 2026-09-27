@@ -10,6 +10,8 @@ on:
       - 'scripts/test_r42_app_shell.py'
       - 'scripts/measure_r42_materials.py'
       - 'scripts/test_r42_materials_browser.py'
+      - 'assets/ig-suite.css'
+      - 'scripts/build_taller_suite.py'
       - '.github/workflows/r42-materiales.yml'
 permissions:
   contents: read
