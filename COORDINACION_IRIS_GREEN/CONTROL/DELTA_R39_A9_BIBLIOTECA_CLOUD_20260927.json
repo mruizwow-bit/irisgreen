@@ -1,0 +1,46 @@
+{
+  "schema": "R39_A9_CONTROL_DELTA/1.0",
+  "date": "2026-09-27",
+  "issue": 306,
+  "branch": "agent9/r39-cloud-library-r01-20260927",
+  "base_head": "8690e26140f6d513c3592df62bc82b167cbb1d0e",
+  "base_tree": "d257910de08519359d805b1f0b53599595174bdb",
+  "r38": {
+    "fragments": 4332,
+    "version": "n04-es-20260916-56f72c4d3959",
+    "sha256": "56f72c4d3959a67d99d3a90f6dce20558498c4cd7604472d9a7c67147404c41e",
+    "modified": false
+  },
+  "source": {
+    "commit": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
+    "bundle_sha256": "a582b153c173f397ee40e105f09cdcdaf424599984fcf742157adc819b5d2647"
+  },
+  "expected_release": {
+    "version": "sabik-es-en-20260927-r01-a582b153c173",
+    "fragments": 1208,
+    "locale_counts": {
+      "es": 604,
+      "en": 604
+    },
+    "full_s2": 30,
+    "safe_variants": 30,
+    "corpus_sha256": "adddd974a007f74ba3bf86c8f06953cd2d17d68551f2422e4d50165a8d4c4efe"
+  },
+  "invariants": {
+    "team_login_unchanged": true,
+    "secrets_unchanged": true,
+    "production_unchanged": true,
+    "frontend_unchanged": true,
+    "voice_out_of_scope": true,
+    "user_data_in_corpus": false
+  },
+  "evidence": {
+    "base_read_marker": true,
+    "first_ci_run": 36326911821,
+    "first_ci_result": "FAIL_PREDEPLOY_TEST_ONLY",
+    "deploy_created_by_first_run": false,
+    "final_ci_run": null,
+    "private_deploy_id": null,
+    "authenticated_application_http": "PENDING_TEAM_SESSION"
+  }
+}
