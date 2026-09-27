@@ -1,5 +1,20 @@
 ## R42 · A8 · Home nueva + child-safe lista para A2 · 27/09/2026
 
+## R49 · interfaz R42/R02 transversal · 27/09/2026
+
+**Estado: `R49_A8_TRANSVERSAL_R42_R02_ORDERED`.**
+
+Decisión de María: R42/R02 se aplica a toda Iris Green, no solo Home. #305/#310 se conserva como Home + child-safe y donante válido.
+
+R49 clasifica la web en CONTENT / BROWSE / WORKSPACE y comparte header/footer/materiales/preferencias/audience/child-safe, manteniendo arquitectura apropiada por área.
+
+Regla nueva de layout: `READING_WIDTH != PRODUCT_WIDTH`. No se aceptan interfaces centradas en una banda estrecha con laterales enormes vacíos. Texto largo mantiene medida legible; producto/visual/workspace usa grid fluido y el viewport disponible. Rincón/Taller/Intereses quedan expresamente bajo este gate.
+
+Árbol observado: 1.053 HTML. Propagación por build/manifest idempotente, 0 rutas públicas sin clasificar.
+
+A8 construye → Astra revisa → A2 integra → María HUMAN QA. No main/producción.
+
+
 ## Astra review · A9 Biblioteca Cloud · 27/09/2026
 
 **Estado: `R39_A9_SABIK_CLOUD_LIBRARY_ASTRA_REVIEW_FIX_REQUIRED`.**
