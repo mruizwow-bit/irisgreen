@@ -2,6 +2,23 @@
 
 Fecha de esta consolidación: 27/09/2026. Es una síntesis operativa identificada como tal; no reemplaza ni modifica los originales históricos V106/V114. El estado de una tarea posterior requiere evidencia nueva. Consultar también `../ESTADO_ACTUAL.md` y el control antes de escribir.
 
+## Sabik · COPY PRODUCCIÓN ES/EN · R01 · 27/09/2026
+
+Estado: `SABIK_COPY_PRODUCCION_R01_EXTRACTED_REVIEWED_PENDING_MARIA`.
+
+Sobre PR #244 HEAD `e8cad400a30d5d4857f9f99b0c1070d786958a8b` se extraen 40 registros del lenguaje fijo/plantillas de Sabik. La revisión editorial mantiene 25, propone 14 revisiones y deja 1 HOLD. El inventario distingue texto de sistema locutable, locución opcional, UI, UI/lector de pantalla y anuncios exclusivos para tecnologías de apoyo.
+
+Queda adoptada la gobernanza:
+- entrenamiento vocal y copy de producto son conjuntos distintos;
+- solo copy/contenido aprobado alimenta la biblioteca de audio;
+- el contenido editorial de Iris Green conserva su fuente canónica y se vincula a audio por ID + versión + hash;
+- se excluyen suposiciones emocionales, lenguaje terapéutico, infantilización y antropomorfismo innecesario;
+- cada audio futuro conserva master vocal, configuración, hash de texto, hash de audio, versión y estado de vigencia.
+
+El documento histórico de biblioteca narrada del 25/09 queda supersedido en su arquitectura ElevenLabs/dos voces distintas por el cierre de masters Qwen ES/EN del 27/09. No se borra su evidencia histórica.
+
+Ver `MEMORIA/SABIK_COPY_PRODUCCION_R01_20260927.md`, `CONTROL/SABIK_COPY_PRODUCCION_R01_20260927.csv` y `NORMATIVA/ADDENDUM_SABIK_COPY_PRODUCCION_R01_20260927.md`.
+
 ## Voz Sabik ES/EN · cierre de identidad y procedencia · 27/09/2026
 
 Estado vigente: `SABIK_VOICE_MASTERS_ES_EN_APPROVED_PROVENANCE_REGISTERED`.
