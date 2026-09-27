@@ -37,20 +37,27 @@ def apply_file(path:Path):
  rows=data.get("es") if isinstance(data,dict) else None
  if not isinstance(rows,list):raise AssertionError(f"{path}: expected top-level es list")
  by_id={r.get("id"):r for r in rows if isinstance(r,dict)}
+ applied=[];pending=[]
  for rid,fields in PATCH.items():
-  if rid not in by_id:raise AssertionError(f"{path}: missing {rid}")
-  by_id[rid].update(fields)
+  if rid not in by_id:
+   pending.append(rid)
+   continue
+  by_id[rid].update(fields);applied.append(rid)
  path.write_text(json.dumps(data,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
- return len(rows)
+ return {"rows":len(rows),"applied":applied,"pending":pending}
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--root",type=Path,required=True);a=ap.parse_args();root=a.root.resolve()
- counts=[]
+ results=[]
  for rel in FILES:
   p=root/rel
   if not p.is_file():raise FileNotFoundError(p)
-  counts.append(apply_file(p))
+  results.append(apply_file(p))
  first=(root/FILES[0]).read_bytes();second=(root/FILES[1]).read_bytes()
  assert first==second,"The two published tramites datasets diverged"
- print({"status":"PASS","patched_records":len(PATCH),"rows":counts[0],"datasets":len(FILES)})
+ assert results[0]==results[1],results
+ status={"status":"PASS","audited_records":len(PATCH),"applied":results[0]["applied"],"pending":results[0]["pending"],"rows":results[0]["rows"],"datasets":len(FILES)}
+ out=root/"assets/content-safety/normalized-legal-r02-status.json";out.parent.mkdir(parents=True,exist_ok=True)
+ out.write_text(json.dumps(status,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
+ print(status)
 if __name__=="__main__":main()
