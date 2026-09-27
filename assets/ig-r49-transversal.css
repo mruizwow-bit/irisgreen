@@ -43,7 +43,7 @@ body[data-ig-r49="1"] .ig-r49-global-footer[data-ig-r49-upgraded="true"]>:not(.i
 }
 @layer ig-r49-layout{
 body[data-ig-r49="1"] main{box-sizing:border-box;min-width:0}
-body[data-ig-r49="1"][data-ig-profile="content"] main{width:100%;max-width:none!important;margin-inline:0!important;padding-inline:var(--ig-layout-gutter)!important}
+body[data-ig-r49="1"][data-ig-profile="content"] main{width:calc(100% - 2*var(--ig-layout-gutter))!important;max-width:none!important;margin-inline:auto!important;padding-inline:0!important}
 body[data-ig-r49="1"][data-ig-profile="content"] main>article.ficha{width:min(100%,var(--ig-reading-measure));max-width:var(--ig-reading-measure)!important;margin-inline:auto!important}
 body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha){
  display:grid!important;
