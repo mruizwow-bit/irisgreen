@@ -132,3 +132,22 @@ Después de aprobar la reentrega:
 Design corregido → Astra precheck final → A2 CI/build/preview real → HUMAN QA María → decisión de propagación.
 
 No main/producción por este registro.
+
+
+---
+
+## Cierre 27/09/2026 · RESUELTO POR R02
+
+Las tres correcciones obligatorias y los dos ajustes menores fueron revisados en R02.
+
+Astra realizó la reconciliación canónica que Design no pudo hacer desde su entorno y no encontró conflicto de código.
+
+Estado sucesor:
+`R42_DESIGN_CRYSTAL_SYSTEM_READY_FOR_A2`
+
+Registro sucesor:
+- `R42_DESIGN_R02_REVISION_ASTRA_20260927.md`
+- `../CONTROL/DELTA_R42_DESIGN_R02_REVISION_ASTRA_20260927.json`
+- `../NORMATIVA/ADDENDUM_R42_DESIGN_R02_RECONCILIACION_20260927.md`
+
+Este precheck queda histórico/resuelto. No es el estado vigente.
