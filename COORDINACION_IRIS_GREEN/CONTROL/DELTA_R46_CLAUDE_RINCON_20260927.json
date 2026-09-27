@@ -1,0 +1,68 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R46-CLAUDE-RINCON",
+  "date": "2026-09-27",
+  "issue": 307,
+  "status": "R46_CLAUDE_RINCON_ORDERED",
+  "owner": "Claude",
+  "integration_gate": "A2",
+  "human_qa": "Maria",
+  "product_modes": [
+    "Respirar/Breathe",
+    "Paisajes/Landscapes",
+    "Inmersivo/Immersive"
+  ],
+  "audio": {
+    "policy": "REUSE_EXISTING_IRIS_GREEN_AUDIO",
+    "external_new_audio": false,
+    "standalone_audio_mode": false
+  },
+  "landscapes": {
+    "target_session_minutes": "20-30",
+    "presets_minutes": [
+      10,
+      20,
+      30,
+      60
+    ],
+    "continuous": true,
+    "short_loop_as_full_landscape": "FORBIDDEN",
+    "acceptable": "LONG_SOURCE_OR_3_TO_5_PLUS_SEGMENT_PROGRAM_WITH_SMOOTH_TRANSITIONS",
+    "maria_detects_repetition": "FAIL"
+  },
+  "immersive": {
+    "rooms": [
+      "Ocean of light",
+      "Glass rain",
+      "River of light",
+      "Slow aurora",
+      "Breathing room"
+    ],
+    "tiers": [
+      "WebGPU/WGSL",
+      "WebGL2",
+      "Canvas2D",
+      "Static"
+    ],
+    "webxr": "FUTURE_OPTIONAL_NOT_GATE"
+  },
+  "baseline": {
+    "pr300": "MERGED_DONOR",
+    "pr303": "TWO_FIXES_MUST_BE_PRESERVED",
+    "design_r02": "REQUIRED"
+  },
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_NEW_EXTERNAL_AUDIO",
+    "NO_CAMERA",
+    "NO_MICROPHONE",
+    "NO_GEOLOCATION",
+    "NO_TRACKING",
+    "NO_GAMIFICATION",
+    "NO_HOME_A8",
+    "NO_CLOUD_A9",
+    "NO_SABIK_VOICE"
+  ]
+}
