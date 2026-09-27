@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Agente 3 + A2 · R52 Sabik moving presence + voice · 27/09/2026
+
+Issue #315.
+
+A3 restaura desde `sabik-preview@fc5cdfc...` la presencia móvil anterior aprobada, adaptada al panel actual y sin reintroducir la página/semánticas antiguas. A2 integra después la voz final ES/EN y los 30 WAV canónicos.
+
+R37 queda como simplificación intermedia, no como continuidad visual final.
+
+
 ## Agente 9 · R51 Biblioteca Cloud R04 · 27/09/2026
 
 Orden: `R51_A9_SABIK_CLOUD_LIBRARY_R04/01_AGENTE_9.md` · issue #314.
