@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · SFT EN preflight real PASS con memoria ajustada · 27/09/2026
+
+**Estado: `SABIK_EN_SFT_PREFLIGHT_PASS_MEMORY_TIGHT_WORSTCASE_NEXT`.**
+
+Preflight real ejecutado con `sft_sabik_12hz.py`: batch 1, acumulación 4, bf16, SDPA, 1 optimizer step completo. Pérdidas finitas: 1.6352 / 1.5468 / 1.9357 / 1.8812. Pico CUDA observado: allocated final 10.77 GiB, reserved 18.22 GiB, peak allocated 17.92 GiB. No OOM.
+
+Los avisos SoX, TensorBoard no instalado y `torch_dtype` deprecado no bloquearon el preflight. Por el pico alto no se lanza aún entrenamiento completo: siguiente gate = repetir un optimizer step con los 4 ejemplos de mayor longitud del corpus para validar el peor caso de memoria.
+
 ## Sabik · EN audio codes completos · 27/09/2026
 
 **Estado: `SABIK_EN_TRAIN_V1_CODES_READY_SFT_PREFLIGHT_NEXT`.**
