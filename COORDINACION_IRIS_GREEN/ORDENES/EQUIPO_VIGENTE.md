@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Agente 8 · R49 interfaz transversal · 27/09/2026
+
+Orden: `R49_A8_INTERFAZ_TRANSVERSAL/01_AGENTE_8.md` · issue #311.
+
+Tras completar #305/PR #310, A8 industrializa R42/R02 para toda Iris Green. Usa perfiles CONTENT/BROWSE/WORKSPACE, common chrome, IGPreferences, IGAudience y child-safe. R46/R47/R48 consumen el sistema sin ceder sus motores/producto a A8.
+
+Gate nuevo de María: no bandas laterales gigantes vacías; reading width y product width son conceptos distintos.
+
+
 ## Claude · R48 Intereses definitivos · 27/09/2026
 
 Orden: `R48_CLAUDE_INTERESES_DEFINITIVOS/01_CLAUDE.md` · issue #309.
