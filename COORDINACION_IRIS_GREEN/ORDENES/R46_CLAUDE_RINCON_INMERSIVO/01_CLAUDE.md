@@ -1,3 +1,146 @@
+# CORRECCIÓN DE MARÍA · PAISAJES · YOUTUBE, NO PEXELS
+
+Esta corrección **supersede cualquier interpretación anterior** de R46 que lleve a buscar, descargar o montar paisajes desde Pexels como fuente principal.
+
+María rechaza:
+- clips Pexels de cámara en movimiento;
+- tomas cortas;
+- paisajes construidos como montaje de muchas localizaciones;
+- descargar grandes tandas de stock para fabricar una escena;
+- repetir clips de pocos minutos como si fueran una experiencia larga.
+
+## Fuente preferida para Paisajes
+
+**YouTube embebido dentro de Iris Green, siguiendo el patrón ya existente de la Videoteca.**
+
+La web actual ya usa:
+- `https://www.youtube-nocookie.com/embed/...`;
+- iframe creado solo después de pulsar;
+- reproducción dentro de Iris Green;
+- ningún iframe/tercero cargado antes de la acción.
+
+R46 debe reutilizar/adaptar este patrón, no inventar otro sistema.
+
+### Criterio visual obligatorio por vídeo
+
+Aceptar únicamente vídeos que cumplan TODOS:
+- duración larga: preferiblemente 30–60+ min; mejor 1 h o más;
+- un único paisaje/entorno coherente;
+- cámara fija o prácticamente fija;
+- si hay movimiento de cámara, debe ser excepcional, lentísimo y no navegacional;
+- sin dron recorriendo el paisaje;
+- sin travel montage;
+- sin cambio continuo de localización;
+- sin timelapse agresivo;
+- sin zooms/pans repetidos;
+- sin personas hablando;
+- sin texto, logos animados u overlays molestos sobre la imagen;
+- sin flashes/cambios bruscos de luminancia;
+- sin cortes frecuentes;
+- sin sucesos repetitivos fácilmente reconocibles.
+
+Ejemplos de familias adecuadas:
+- playa en plano estable;
+- río/cascada en plano estable;
+- lluvia sobre ventana/bosque en plano estable;
+- acuario/medusas en plano estable;
+- fuego/chimenea si se incorpora posteriormente;
+- cielo/noche en plano estable.
+
+## NO descargar YouTube
+
+No descargar, rippear, rehostear ni editar vídeos de YouTube.
+
+Se usan mediante embed autorizado por el propio vídeo/canal.
+
+Si el vídeo deja de permitir embedding:
+- marcar unavailable;
+- fallback local;
+- sustituir tras revisión editorial.
+
+## Privacidad / carga
+
+Aplicar el mismo principio que Videoteca:
+- poster/miniatura local o first-party antes de pulsar;
+- NO cargar iframe de YouTube al entrar;
+- NO preconnect a YouTube por defecto;
+- tras acción explícita crear iframe `youtube-nocookie.com`;
+- `referrerpolicy="strict-origin-when-cross-origin"`;
+- `playsinline=1`;
+- `rel=0`;
+- mantener controles accesibles;
+- tamaño de player suficiente;
+- nada de autoplay al cargar la página.
+
+YouTube Privacy Enhanced Mode reduce personalización, pero no significa “sin terceros” después de pulsar.
+
+## Audio
+
+El audio de YouTube NO forma parte de la experiencia del Rincón.
+
+- player de YouTube silenciado;
+- audio Iris Green separado;
+- usuario elige imagen sola o imagen + audio Iris Green;
+- nunca mezclar el audio del vídeo con el audio propio;
+- nunca empezar audio automáticamente al entrar.
+
+Si se usa IFrame API:
+- `enablejsapi=1`;
+- `origin=https://irisgreen.eu` en producción;
+- `player.mute()` como estado obligado;
+- timer puede pausar/detener, pero no debe iniciar reproducción sin acción de la persona.
+
+## Anuncios / interrupciones · GATE DE PRODUCTO
+
+YouTube puede servir anuncios también en embeds y Privacy Enhanced Mode puede seguir mostrando anuncios no personalizados.
+
+Por tanto, cada candidato debe probarse en embed real:
+- sesión limpia;
+- no logueada;
+- desktop;
+- móvil;
+- inicio;
+- al menos 20–30 min de reproducción.
+
+Si aparecen:
+- pre-roll;
+- mid-roll;
+- anuncios;
+- promociones;
+- pantallas invasivas;
+- interrupciones que rompan la calma;
+
+=> **REJECT_CANDIDATE**.
+
+No existe permiso para ocultar/recubrir publicidad del player ni saltársela mediante ingeniería.
+
+Si ningún vídeo YouTube de una categoría pasa este gate, esa categoría usa:
+1. otro vídeo embebible aprobado;
+2. otra plataforma embebible compatible;
+3. fallback local/GPU;
+pero NO vuelve automáticamente a Pexels.
+
+## Child-safe / YouTube
+
+El Rincón sirve también a infancia/adolescencia.
+
+Antes de publicar un embed:
+- comprobar que no tiene restricción de edad;
+- comprobar título/canal/miniatura/contenido;
+- no usar comentarios ni recomendaciones como UI propia;
+- `rel=0` limita relacionados al mismo canal, pero no elimina toda UI de YouTube;
+- revisar requisitos de YouTube para superficies dirigidas a menores y self-designation cuando aplique;
+- Privacy Enhanced Mode obligatorio.
+
+## Gate humano
+
+La pregunta no es “¿es 4K?” sino:
+**¿podría dejar esta imagen 20–60 minutos delante de una persona que busca calma sin que la cámara, los cortes o la plataforma le reclamen atención?**
+
+Si la respuesta es no, el vídeo no entra.
+
+---
+
 # ORDEN DE MARÍA · CLAUDE · RINCÓN TRANQUILO DEFINITIVO
 
 Fecha: 27/09/2026  
@@ -320,21 +463,18 @@ Objetivo de experiencia por paisaje:
 
 La persona debe poder permanecer en un paisaje sin notar que el mismo clip vuelve a empezar cada pocos minutos.
 
-### Formas aceptables
+### Forma preferida
 
-A. vídeo fuente largo de 15–30+ minutos; o
+Un vídeo largo embebible de YouTube u otra fuente aprobada:
+- idealmente 30–60+ minutos;
+- preferencia 1 h o más;
+- un solo entorno;
+- cámara fija o casi fija;
+- sin montaje turístico ni cambios de lugar.
 
-B. programa de paisaje construido con varios clips coherentes:
-- mínimo 3–5 segmentos distintos;
-- transiciones lentas;
-- continuidad de color/encuadre/ritmo;
-- crossfade;
-- sin saltos de luz;
-- sin repetición perceptible en ventanas cortas.
+Los programas multi-segmento dejan de ser la solución preferida. Solo pueden estudiarse como excepción editorial si reproducen un único entorno de forma verdaderamente continua y María los aprueba expresamente.
 
-### Si se usa un clip corto como material
-
-Un clip corto solo puede ser **un segmento** del programa. No puede ser el paisaje completo repitiéndose cada 2 minutos.
+Pexels no se usa como fuente principal de Paisajes.
 
 ### Gate humano
 
@@ -692,8 +832,9 @@ Cada clip externo debe registrar:
 - paisaje/programa al que pertenece.
 
 No usar:
-- YouTube/Vimeo embeds para los paisajes;
-- vídeos con anuncios;
+- Pexels como fuente principal de paisajes;
+- descargas/rips/rehosting de YouTube;
+- vídeos con anuncios o interrupciones perceptibles;
 - cookies de terceros;
 - assets sin licencia clara;
 - stock con watermark.
