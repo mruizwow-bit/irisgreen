@@ -1,0 +1,48 @@
+{
+  "schema_version": "2.0",
+  "date": "2026-09-27",
+  "source_repo": "mruizwow-bit/irisgreen",
+  "source_pr": 244,
+  "source_head": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+  "status": "R02_FIXED_SYSTEM_COPY_REFRESHED_EDITORIALLY_REVIEWED_AUDIO_CANDIDATE",
+  "scope": "Fixed Sabik system/UI copy only. Dynamic page/article content remains canonical in the web and is not duplicated.",
+  "runtime_files_scanned": [
+    "sabik/iris-panel.html",
+    "sabik/iris-mount.mjs",
+    "sabik/retrieval-panel.js",
+    "sabik/sabik-web-r01.js",
+    "sabik/authorized-transport.mjs",
+    "sabik/retrieval-bridge.browser.mjs",
+    "sabik/sabik-motion-r37.js",
+    "sabik/mount-config.mjs"
+  ],
+  "records": 40,
+  "editorial": {
+    "keep": 25,
+    "revised": 15,
+    "hold": 0
+  },
+  "speak_policy": {
+    "SYSTEM_VOICE": 10,
+    "SYSTEM_VOICE_OPTIONAL": 5,
+    "UI_ONLY": 14,
+    "UI_SCREENREADER": 6,
+    "SCREENREADER_ONLY": 5
+  },
+  "spoken_audio_candidate_records": 15,
+  "low_intensity_resolution": {
+    "current_effect": "lowIntensity=true -> effectiveLevel SIN_MOVIMIENTO",
+    "reviewed_es": "Desactivar movimiento",
+    "reviewed_en": "Turn off motion"
+  },
+  "voices": {
+    "en": "SABIK_EN_R02_EXACT_VALIDATED_FINAL",
+    "es": "SABIK_ES_V1 checkpoint-epoch-0",
+    "loudness_target_lufs": -16.5,
+    "sample_peak_ceiling_dbfs": -1
+  },
+  "audio_generated": false,
+  "product_modified": false,
+  "deploy": false,
+  "next": "Canonize final model hashes locally; generate 15 spoken fixed entries x ES/EN with loudness normalization; HUMAN QA review set before integration."
+}
