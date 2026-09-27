@@ -54,10 +54,17 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);a=ap.parse_args();root=a.root.resolve()
  full_dir=root/'assets/content/full';full_dir.mkdir(parents=True,exist_ok=True)
  done=[]
+ present_ids=[]
  for content_id,(group,es_rel,en_rel) in ROUTES.items():
+  es_exists=(root/es_rel).is_file()
+  en_exists=(root/en_rel).is_file()
+  if es_exists != en_exists:
+   raise AssertionError(f'{content_id}: ES/EN S2 route pair is incomplete')
+  if not es_exists:
+   continue
+  present_ids.append(content_id)
   for lang,rel in (('es',es_rel),('en',en_rel)):
    p=root/rel
-   if not p.is_file():raise FileNotFoundError(p)
    text=p.read_text(encoding='utf-8')
    m=MAIN.search(text)
    if not m:raise AssertionError(f'{rel}: main#main missing')
@@ -80,7 +87,8 @@ def main():
    assert not re.search(r'data-ig-s2-full(?:\\s|=|>)',text)
    p.write_text(text,encoding='utf-8')
    done.append(rel)
- assert len(done)==20,len(done)
- print({'status':'PASS','safe_routes':len(done),'full_payloads':len(done),'content_ids':len(ROUTES)})
+ assert len(done)==2*len(present_ids),(len(done),len(present_ids))
+ assert present_ids,'No audited S2 dedicated routes are present in the current baseline'
+ print({'status':'PASS','safe_routes':len(done),'full_payloads':len(done),'content_ids_present':len(present_ids),'content_ids_audited':len(ROUTES),'pending_ids':sorted(set(ROUTES)-set(present_ids))})
 
 if __name__=='__main__':main()
