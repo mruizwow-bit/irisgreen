@@ -1,5 +1,26 @@
 # Estado operativo compartido
 
+## Sabik EN · master V2 seleccionado · 27/09/2026
+
+**Estado: `SABIK_EN_MASTER_V2_SELECTED`.**
+
+María selecciona la candidata **12 · seed 9112** como master inglés definitivo de referencia:
+- origen: `SABIK_EN_REG_V4_12_seed9112.wav`;
+- nombre canónico local: `SABIK_EN_MASTER_V2.wav`;
+- SHA-256: `c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede`.
+
+La decisión llega tras comparación de 12 generaciones naturales, finalistas conjuntas 02/06/08/10/11/12 y prueba ICL con textos nuevos. La V2 ralentizada queda descartada por sonido robótico.
+
+Texto exacto de referencia ICL:
+`Hello. I'm Sabik. I can help you find the information you need. We can go step by step. If something isn't clear, I can explain it in a different way.`
+
+Siguiente gate: generar `SABIK_EN_TRAIN_V1` (160 clips), revisar muestra y ejecutar fine-tuning single-speaker Qwen3-TTS. No volver a copy/audio de producción hasta cerrar primero entrenamiento EN y ES.
+
+Memoria: `MEMORIA/SABIK_EN_MASTER_V2_SELECTION_R01_20260927.md`.  
+Control: `CONTROL/DELTA_SABIK_EN_MASTER_V2_SELECTION_R01_20260927.json`.
+
+No publicar master/corpus en GitHub · no producción.
+
 ## Sabik · COPY PRODUCCIÓN ES/EN R01 · 27/09/2026
 
 **Estado: `SABIK_COPY_PRODUCCION_R01_EXTRACTED_REVIEWED_PENDING_MARIA`.**
