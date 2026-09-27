@@ -1,5 +1,17 @@
 # Memoria operativa consolidada · Iris Green / Sabik
 
+## Sabik EN · master V2 seleccionado · 27/09/2026
+
+Estado vigente: `SABIK_EN_MASTER_V2_SELECTED`.
+
+María selecciona la candidata 12, seed 9112, SHA-256 `c5f666cf090d71d81240f6ab0dd514a2da5af082d311cbbcf79dbd2b05794ede`, como nuevo master inglés canónico local `SABIK_EN_MASTER_V2.wav`.
+
+El master procede de la identidad inglesa ya aprobada y fue elegido tras búsqueda natural x-vector-only, comparación frente a Sabik ES y validación ICL con frases inéditas. La referencia ralentizada V2 queda descartada.
+
+Se fija el texto exacto de referencia para ICL y se abre `SABIK_EN_TRAIN_V1` como siguiente fase antes del fine-tuning oficial single-speaker de Qwen3-TTS. El corpus acústico sigue separado de `SABIK_COPY_PRODUCCION`.
+
+Ver `MEMORIA/SABIK_EN_MASTER_V2_SELECTION_R01_20260927.md` y `CONTROL/DELTA_SABIK_EN_MASTER_V2_SELECTION_R01_20260927.json`.
+
 Fecha de esta consolidación: 27/09/2026. Es una síntesis operativa identificada como tal; no reemplaza ni modifica los originales históricos V106/V114. El estado de una tarea posterior requiere evidencia nueva. Consultar también `../ESTADO_ACTUAL.md` y el control antes de escribir.
 
 ## Sabik · COPY PRODUCCIÓN ES/EN · R01 · 27/09/2026
