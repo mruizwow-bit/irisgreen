@@ -305,6 +305,18 @@
   IGT.loadR42 = function () {
     if (window.__ig42WorkshopLoading) return;
     window.__ig42WorkshopLoading = true;
+    /* R43/R42 Design: toda ruta pública del Taller que usa este runtime recibe
+       el mismo sistema material. No cambia motores, retos ni contenido. */
+    if (document.body) {
+      document.body.dataset.igMaterials = 'r42';
+      if (!document.body.dataset.igR42Family) document.body.dataset.igR42Family = 'workshop';
+    }
+    if (!document.querySelector('link[data-ig42-materials]')) {
+      var materials = document.createElement('link');
+      materials.rel = 'stylesheet'; materials.href = '/assets/ig-r42-materials.css?v=r42-design-1';
+      materials.setAttribute('data-ig42-materials', 'true');
+      document.head.appendChild(materials);
+    }
     if (!document.querySelector('link[data-ig42-taller]')) {
       var css = document.createElement('link');
       css.rel = 'stylesheet'; css.href = '/assets/ig-taller-r42.css?v=r42-a5-3'; css.setAttribute('data-ig42-taller', 'true');
