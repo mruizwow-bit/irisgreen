@@ -65,7 +65,11 @@ def main():
       if width>=1440:
        current['header']=check_inner_header(page,route,width)
        if route in ['/','/?lang=en']:
-        home=page.locator('#home-view').bounding_box();assert home['width']>width*.95,(width,home)
+        # R42 Home replaced the legacy #home-view with the approved portal layout.
+        # Verify the current max-width contract instead of forcing the retired >95% rule.
+        home=page.locator('.ig-home-layout').bounding_box();assert home,(width,'missing R42 home layout')
+        expected=min(width-2,1260)
+        assert abs(home['width']-expected)<4,(width,home,expected)
       if width==1920 or width==320:page.screenshot(path=str(OUT/f'{len(rows):02d}-{width}.png'))
       rows.append({**current,'font':family,'passed':True})
       (OUT/'progress.json').write_text(json.dumps(rows,indent=2))
