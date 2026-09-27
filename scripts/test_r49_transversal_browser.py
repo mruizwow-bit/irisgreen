@@ -48,6 +48,12 @@ async def go(page,path,w,h):
     await page.wait_for_timeout(350)
     need(await page.locator('.ig-r49-header-inner').count()==1,'common header missing '+path)
     need(await page.locator('.ig-r49-footer-inner').count()==1,'common footer missing '+path)
+    legacy=await page.evaluate("""() => {
+      const visible=e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0};
+      const h=document.querySelector('.ig-r49-global-header'),f=document.querySelector('.ig-r49-global-footer');
+      return {header:h?Array.from(h.children).filter(e=>!e.classList.contains('ig-r49-header-inner')&&visible(e)).length:99,footer:f?Array.from(f.children).filter(e=>!e.classList.contains('ig-r49-footer-inner')&&visible(e)).length:99};
+    }""")
+    need(legacy['header']==0 and legacy['footer']==0,'legacy common chrome still visible '+path)
     sw=await page.evaluate('document.documentElement.scrollWidth')
     iw=await page.evaluate('innerWidth')
     need(sw<=iw+1,f'horizontal scroll {path} {w}: {sw}>{iw}')
@@ -138,7 +144,21 @@ async def main():
         await page.keyboard.press('Escape')
         boxes=await page.locator('.ig-r49-tools > :is(button,a)').evaluate_all("els=>els.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height,visible:!!(e.offsetWidth||e.offsetHeight)}))")
         need(all((not b['visible']) or (b['w']>=43.5 and b['h']>=43.5) for b in boxes),'common chrome target below 44px')
-        report['accessibility']+=['landmarks','heading-structure-sample','current-page','skip-link','dialog-accessible-name','target-size-44']
+        report['accessibility']+=['landmarks','heading-structure-sample','current-page','skip-link','dialog-accessible-name','target-size-44','legacy-common-chrome-hidden']
+
+        # The transversal header search itself must remain safe before results are built.
+        await page.goto(BASE+'/es/datos/',wait_until='domcontentloaded');await page.wait_for_timeout(250)
+        common_requests=[]
+        page.on('request',lambda r,arr=common_requests:arr.append(r.url))
+        await page.locator('[data-ig-r49-search]').first.click()
+        cq=page.locator('#ig-r49-q');await cq.fill('anorexia');await page.wait_for_timeout(450)
+        need(await page.locator('#ig-r49-search .ig-r49-search-results').get_by_text('Anorexia nerviosa',exact=False).count()==0,'common autocomplete leaked S2')
+        await page.locator('#ig-r49-search .ig-r49-search-form button[type=submit]').click();await page.wait_for_timeout(550)
+        need(await page.locator('#ig-r49-search .ig-r49-search-results').get_by_text('Anorexia nerviosa',exact=False).count()>0,'common intentional S2 result missing')
+        need(await page.locator('#ig-r49-search .ig-r49-search-results').get_by_text('Versión segura',exact=False).count()>0,'common S2 safe marker missing')
+        need(not any('/assets/safety/full/' in u for u in common_requests),'common search requested full S2')
+        await page.keyboard.press('Escape')
+        report['accessibility']+=['transversal-autocomplete-safe','transversal-intentional-search-safe','transversal-search-zero-full-S2']
 
         for profile,path in WIDE_ROUTES:
             await page.set_viewport_size({'width':320,'height':800})
