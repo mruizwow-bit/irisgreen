@@ -12,6 +12,7 @@ on:
       - 'scripts/apply_page_finder.py'
       - 'scripts/apply_iris_brief_r08.py'
       - 'scripts/test_iris_brief_r08.py'
+      - 'scripts/test_r42_home.py'
       - 'assets/ig-r42-shell.css'
       - 'assets/ig-r42-shell.js'
       - 'assets/preferencias-lectura.js'
@@ -82,6 +83,9 @@ jobs:
 
       - name: Build isolated site
         run: python scripts/build_site.py
+
+      - name: R42 Home dist gate
+        run: python scripts/test_r42_home.py --root dist
 
       - name: R02 normalized legal data dist
         run: python scripts/test_normalized_legal_r02.py --root dist
