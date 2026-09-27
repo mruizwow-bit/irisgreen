@@ -12,7 +12,7 @@ CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
 def check_r05_ui(page,lang):
  """Native activated form only; no query, mocked response or auth probe."""
- expected='Source search available' if lang=='en' else 'Consulta de fuentes disponible'
+ expected='Source search is available.' if lang=='en' else 'La búsqueda en fuentes está disponible.'
  page.wait_for_function('(s)=>document.querySelector(".sabik-state").textContent===s',arg=expected)
  field=page.get_by_role('textbox',name='What do you need?' if lang=='en' else '¿Qué necesitas?',exact=True)
  assert field.count()==1 and field.get_attribute('id')=='sabik-input'
@@ -37,7 +37,10 @@ def check_r05_ui(page,lang):
 def static():
  rows=[]
  for p in sorted(DIST.rglob('*.html')):
-  s=BeautifulSoup(p.read_text(),'html.parser');rel=p.relative_to(DIST).as_posix()
+  rel=p.relative_to(DIST).as_posix()
+  if rel.startswith('assets/safety/full/'):
+   continue  # R42 A8 S2 chunks are HTML fragments, not standalone pages.
+  s=BeautifulSoup(p.read_text(),'html.parser')
   assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
   assert not s.select('img[src*="v40-brand-symbol"]'),rel
   assert 'flor de iris' not in p.read_text().lower(),rel
