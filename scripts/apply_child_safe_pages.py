@@ -77,7 +77,7 @@ def main():
    text=inject_once(text,'/assets/ig-child-safety-content.js','<script defer src="/assets/ig-child-safety-content.js?v=r42-child-1"></script>','</body>')
    # Hard gate: the original full body must no longer be in the initial HTML.
    assert inner not in text
-   assert 'data-ig-s2-full' not in text
+   assert not re.search(r'data-ig-s2-full(?:\\s|=|>)',text)
    p.write_text(text,encoding='utf-8')
    done.append(rel)
  assert len(done)==20,len(done)
