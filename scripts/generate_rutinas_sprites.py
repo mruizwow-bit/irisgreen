@@ -8,8 +8,38 @@ import zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-BATCHES = [8,8,8,8,8,8,8,2]
 FORBIDDEN = ('<metadata', 'c2pa', 'com.anthropic', 'id="Layer_1"', "id='Layer_1'")
+
+
+def plan(rows: list[dict]) -> list[tuple[str, list[dict]]]:
+    """Agrupa las filas por la columna `sprite` de sources.csv.
+
+    El reparto vive en los datos, no en el código: cada fila declara a qué
+    archivo pertenece. Así el generador no depende de que haya 58, 93 ni
+    ninguna otra cantidad, y las tandas de tamaños distintos (las primeras de
+    ocho, las últimas de siete) salen solas.
+    """
+    if not rows:
+        raise AssertionError('sources.csv está vacío')
+    if 'sprite' not in rows[0]:
+        raise AssertionError('sources.csv no declara la columna «sprite»')
+    groups: dict[str, list[dict]] = {}
+    order: list[str] = []
+    for row in rows:
+        name = (row.get('sprite') or '').strip()
+        if not name:
+            raise AssertionError(f'La fila «{row.get("id")}» no declara sprite')
+        if not re.fullmatch(r'sprite-\d+\.svg', name):
+            raise AssertionError(f'Nombre de sprite inesperado: {name}')
+        if name not in groups:
+            groups[name] = []
+            order.append(name)
+        groups[name].append(row)
+    ids = [row['id'] for row in rows]
+    duplicated = sorted({i for i in ids if ids.count(i) > 1})
+    if duplicated:
+        raise AssertionError(f'Identificadores repetidos en sources.csv: {duplicated}')
+    return [(name, groups[name]) for name in order]
 
 
 def sanitize(text: str) -> str:
@@ -41,16 +71,12 @@ def inner_svg(text: str) -> tuple[str, str]:
 
 def build(zip_path: Path, sources: Path, dest: Path) -> None:
     rows = list(csv.DictReader(sources.open(encoding='utf-8-sig', newline='')))
-    if len(rows) != 58:
-        raise AssertionError(f'Se esperaban 58 pictogramas y hay {len(rows)}')
-    if sum(BATCHES) != len(rows):
-        raise AssertionError('Reparto de sprites incorrecto')
+    groups = plan(rows)
     dest.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(zip_path) as z:
-        offset = 0
-        for number, size in enumerate(BATCHES, 1):
+        for sprite_name, members in groups:
             parts = ['<svg xmlns="http://www.w3.org/2000/svg">']
-            for row in rows[offset:offset+size]:
+            for row in members:
                 name = 'EN-symbols/' + row['archivo_mulberry']
                 raw = z.read(name).decode('utf-8-sig')
                 clean = sanitize(raw)
@@ -60,19 +86,28 @@ def build(zip_path: Path, sources: Path, dest: Path) -> None:
                 viewbox, inner = inner_svg(clean)
                 parts.append(f'<symbol id="{row["id"]}" viewBox="{viewbox}">{inner}</symbol>')
             parts.append('</svg>\n')
-            (dest / f'sprite-{number}.svg').write_text(''.join(parts), encoding='utf-8')
-            offset += size
+            (dest / sprite_name).write_text(''.join(parts), encoding='utf-8')
 
-    text = ''.join(p.read_text(encoding='utf-8') for p in sorted(dest.glob('sprite-*.svg')))
+    written = sorted(dest.glob('sprite-*.svg'))
+    text = ''.join(p.read_text(encoding='utf-8') for p in written)
     ids = re.findall(r'<symbol\s+id=["\']([^"\']+)["\']', text)
-    if len(ids) != 58 or len(set(ids)) != 58:
-        raise AssertionError(f'Símbolos generados: {len(ids)} / únicos: {len(set(ids))}')
-    if set(ids) != {r['id'] for r in rows}:
-        raise AssertionError('Los IDs generados no coinciden con sources.csv')
+    expected = {row['id'] for row in rows}
+    if len(ids) != len(set(ids)):
+        repeated = sorted({i for i in ids if ids.count(i) > 1})
+        raise AssertionError(f'Símbolos duplicados en la salida: {repeated}')
+    missing = sorted(expected - set(ids))
+    extra = sorted(set(ids) - expected)
+    if missing or extra:
+        raise AssertionError(f'Cobertura incompleta. Faltan: {missing}. Sobran: {extra}')
+    if len(ids) != len(rows):
+        raise AssertionError(f'Se esperaban {len(rows)} símbolos y se generaron {len(ids)}')
     low = text.lower()
     if any(token.lower() in low for token in FORBIDDEN):
         raise AssertionError('Los sprites generados contienen metadatos prohibidos')
-    print({'sprites': 8, 'symbols': 58, 'dest': str(dest)})
+    in_order = sorted(groups, key=lambda g: int(re.search(r'\d+', g[0]).group()))
+    print({'sources': len(rows), 'sprites': len(groups), 'symbols': len(ids),
+           'per_sprite': {name: len(members) for name, members in in_order},
+           'missing': 0, 'duplicated': 0, 'dest': str(dest)})
 
 
 def main() -> None:
