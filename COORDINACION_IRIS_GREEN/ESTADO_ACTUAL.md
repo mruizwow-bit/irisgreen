@@ -1,5 +1,18 @@
 # Estado operativo compartido
 
+## R48 · Claude · Intereses definitivos · 27/09/2026
+
+**Estado: `R48_CLAUDE_INTERESES_ORDERED`.**
+
+Auditoría de A4 R42 confirma que las 72 temáticas son válidas, pero la arquitectura actual es incoherente: 20 objetivos “todo/todos/todas”, 11 firmas de modos repetidas para 72 temas, canvas procedural genérico usado como experiencia profunda, Design R02 ausente y child-safe sin implementación técnica.
+
+R48 conserva 72/72 y 11 grupos, pero cada interés recibe un contrato propio: pregunta central, acción, renderer, subset/query, profundidad, must_not_load, map_role y child-safe. Regla: fuente de datos != alcance de experiencia.
+
+Mapas solo cuando la localización responde a la pregunta. NASA/GBIF/Wikidata/Met/Natural Earth se consultan de forma focalizada, no como dump universal.
+
+A4 pasa a DONOR_NOT_FINAL. Claude construye → Astra revisa → A2 integra → María HUMAN QA.
+
+
 ## R46 · corrección Paisajes · YouTube embebido, no Pexels · 27/09/2026
 
 **Estado: `R46_CLAUDE_RINCON_YOUTUBE_LANDSCAPES_ADOPTED`.**
