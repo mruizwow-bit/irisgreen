@@ -50,7 +50,11 @@ function dialog(id,title){
 }
 function openDialog(d,trigger){returnFocus=trigger||D.activeElement;if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');var first=d.querySelector('input,button,a,select,textarea');if(first)first.focus();}
 function langHref(){
- var target=en()?'es':'en',alt=D.querySelector('link[rel~="alternate"][hreflang="'+target+'"]');
+ var target=en()?'es':'en',path=location.pathname;
+ if(['/es/videos/','/es/investigacion/','/es/libros/','/es/tramites/','/es/tramites/directorio/'].indexOf(path)!==-1){
+  return path+'?lang='+target;
+ }
+ var alt=D.querySelector('link[rel~="alternate"][hreflang="'+target+'"]');
  if(alt&&alt.href)return alt.href;
  if(target==='en')return '/en/';
  return '/';
