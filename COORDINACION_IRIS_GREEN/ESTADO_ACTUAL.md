@@ -1,5 +1,19 @@
 # Estado operativo compartido
 
+## Sabik · audio fijo ES/EN · muestra HUMAN QA PASS · 27/09/2026
+
+**Estado: `SABIK_AUDIO_R01_SAMPLE_QA_PASS_FINALIZE_TIMING_NEXT`.**
+
+Muestra de 10 WAV (5 EN + 5 ES) revisada tras síntesis con los modelos finales y política de loudness:
+- 0 clipping en los 10;
+- loudness integrado: EN ≈ -16.50 a -16.70 LUFS; ES ≈ -16.50 a -17.26 LUFS por techo de pico;
+- picos entre -1.00 y -2.48 dBFS;
+- identidad/timbre estables y volumen de escucha aprobado.
+
+Único ajuste de postproceso antes de congelar la biblioteca: retirar silencio inicial/final excesivo conservando padding breve. En la muestra, varios EN traen ≈0.31–0.68 s de silencio inicial y ES welcome ≈0.51 s. No es un problema de voz ni exige reentrenamiento.
+
+Siguiente gate: finalización máquina de los 30 WAV con trim de silencio + renormalización gain-only a -16.5 LUFS / pico ≤ -1 dBFS, actualización de hashes/manifests y empaquetado final.
+
 ## R48 · Claude · Intereses definitivos · 27/09/2026
 
 **Estado: `R48_CLAUDE_INTERESES_ORDERED`.**
