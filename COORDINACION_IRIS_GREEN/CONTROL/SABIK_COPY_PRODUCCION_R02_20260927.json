@@ -4,7 +4,7 @@
   "source_repo": "mruizwow-bit/irisgreen",
   "source_pr": 244,
   "source_head": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
-  "status": "R02_FIXED_SYSTEM_COPY_REFRESHED_EDITORIALLY_REVIEWED_AUDIO_CANDIDATE",
+  "status": "SABIK_COPY_PRODUCCION_R02_FINAL_FIXED_AUDIO_BOUND",
   "scope": "Fixed Sabik system/UI copy only. Dynamic page/article content remains canonical in the web and is not duplicated.",
   "runtime_files_scanned": [
     "sabik/iris-panel.html",
@@ -41,8 +41,23 @@
     "loudness_target_lufs": -16.5,
     "sample_peak_ceiling_dbfs": -1
   },
-  "audio_generated": false,
+  "audio_generated": true,
   "product_modified": false,
   "deploy": false,
-  "next": "Canonize final model hashes locally; generate 15 spoken fixed entries x ES/EN with loudness normalization; HUMAN QA review set before integration."
+  "next": "A2 integration handoff: patch fixed copy to R02, add versioned fixed audio assets, wire voice playback behind user control, preview/HUMAN QA; no main/production without authorization.",
+  "audio_library": {
+    "original_zip_sha256": "fd6f73544fbd6153c077a302a275b7d893cee4e49104d7140ca7153b2a49eadc",
+    "verified_handoff_zip_sha256": "96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c",
+    "manifest_sha256": "dd4a44d222d6fbbade669a32a705d08fe5601ac11c39911105df8cb37d71d4d9",
+    "entries": 30,
+    "lufs": -16.5,
+    "peak_ceiling_dbfs": -1,
+    "zero_clipping": true
+  },
+  "final_models": {
+    "en_model_sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
+    "en_config_sha256": "6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd",
+    "es_model_sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
+    "es_config_sha256": "6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e"
+  }
 }
