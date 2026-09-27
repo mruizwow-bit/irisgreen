@@ -41,7 +41,10 @@ def static():
   if rel.startswith('assets/safety/full/'):
    continue  # R42 A8 S2 chunks are HTML fragments, not standalone pages.
   s=BeautifulSoup(p.read_text(),'html.parser')
-  assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
+  if rel in {'index.html','en/index.html'}:
+   assert len(s.select('link[href="/assets/home-r42-child-safe.css"]'))==1,rel
+  else:
+   assert len(s.select('link[href^="/assets/iris-brief-r08.css?v="]'))==1,rel
   assert not s.select('img[src*="v40-brand-symbol"]'),rel
   assert 'flor de iris' not in p.read_text().lower(),rel
   rows.append({'path':rel,'language':s.html.get('lang'),'brief':True,'flower':False})
