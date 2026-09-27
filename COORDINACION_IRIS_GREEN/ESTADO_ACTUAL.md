@@ -1,5 +1,13 @@
 # Estado operativo compartido
 
+## Sabik · SFT EN worst-case preflight PASS · 27/09/2026
+
+**Estado: `SABIK_EN_SFT_WORSTCASE_PASS_FULL_TRAIN_READY`.**
+
+Segundo preflight ejecutado con las 4 muestras de mayor longitud del corpus (81, 76, 71 y 69 audio-code frames), batch 1, acumulación 4, bf16 y SDPA. Pérdidas finitas: 1.5488 / 1.6373 / 1.5973 / 1.5710. Pico CUDA observado: allocated final 10.78 GiB, reserved 18.19 GiB, peak allocated 17.93 GiB. No OOM.
+
+Resultado: el peor caso de longitud pasa un optimizer step real. Se autoriza entrenamiento completo EN con configuración conservadora: batch 1, gradient accumulation 4, lr 2e-6, 3 épocas, checkpoints por época. Evaluar checkpoints antes de fijar modelo final.
+
 ## Sabik · SFT EN preflight real PASS con memoria ajustada · 27/09/2026
 
 **Estado: `SABIK_EN_SFT_PREFLIGHT_PASS_MEMORY_TIGHT_WORSTCASE_NEXT`.**
