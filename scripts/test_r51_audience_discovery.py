@@ -39,7 +39,9 @@ def main():
    if not hm:continue
    href=hm.group(2)
    if href.startswith(('#','mailto:','tel:','javascript:')):continue
-   u=urlsplit(urljoin(base,href));path=u.path
+   u=urlsplit(urljoin(base,href))
+   if u.netloc and u.netloc not in ('irisgreen.eu','www.irisgreen.eu'):continue
+   path=u.path
    expected=None
    if path.startswith(('/es/investigacion/','/en/research/')):expected='ADOLESCENCIA ADULTEZ'
    elif path.startswith(('/es/tramites/','/en/support-directory/')):expected='ADULTEZ'
