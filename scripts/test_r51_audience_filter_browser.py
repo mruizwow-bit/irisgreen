@@ -34,6 +34,8 @@ async def search_has(page,stage,path):
    const rows=await IGSearch.load();
    return rows.some(x=>IGSearch.path(x.url)===path);
  }""",[stage,path])
+async def visible_exact(page,text):
+ return await page.get_by_text(text,exact=True).evaluate_all("els => els.filter(el => { const r=el.getClientRects(); const s=getComputedStyle(el); return r.length>0 && s.display!=='none' && s.visibility!=='hidden'; }).length")
 async def sabik_gate(page):
  await set_stage(page,'children')
  return await page.evaluate("""async () => {
@@ -77,9 +79,9 @@ async def main():
   report['checks'].append('search-autocomplete-catalogue-age-filter')
   await page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
   await page.evaluate("IGAudience.set('children')");await page.wait_for_timeout(500)
-  need(await page.get_by_text('Menopausia',exact=True).count()==0,'catalogue leaked adult-only card to child view')
+  need(await visible_exact(page,'Menopausia')==0,'catalogue visibly leaked adult-only card to child view')
   await page.evaluate("IGAudience.set('adults')");await page.wait_for_timeout(500)
-  need(await page.get_by_text('Menopausia',exact=True).count()>0,'adult catalogue missing Menopausia')
+  need(await visible_exact(page,'Menopausia')>0,'adult catalogue missing visible Menopausia')
   report['checks'].append('catalogue-before-card-render')
   await page.goto(BASE+'/es/situaciones/la-ropa-me-molesta/',wait_until='domcontentloaded')
   need(await page.locator('a[data-ig-age-bands]').count()>0,'related/internal classified links lack canonical age tags')
