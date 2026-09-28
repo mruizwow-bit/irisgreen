@@ -15,14 +15,15 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/new-leaf-content-102.json"
       ],
       "route_prefixes": [
         "/es/neurodiversidad/condiciones/",
         "/en/neurodiversity/conditions/"
       ],
       "extractor": "extract_condition_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es",
         "en"
@@ -44,14 +45,15 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/new-leaf-content-102.json"
       ],
       "route_prefixes": [
         "/es/situaciones/",
         "/en/situations/"
       ],
       "extractor": "extract_situation_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es",
         "en"
@@ -73,14 +75,15 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/new-leaf-content-102.json"
       ],
       "route_prefixes": [
         "/es/biblioteca/",
         "/en/everyday-life/"
       ],
       "extractor": "extract_everyday_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es",
         "en"
@@ -102,14 +105,15 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/new-leaf-content-102.json"
       ],
       "route_prefixes": [
         "/es/datos/",
         "/en/data/"
       ],
       "extractor": "extract_data_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es",
         "en"
@@ -131,14 +135,14 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "NORMALIZED/estudios-textos.json",
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/research-132.json"
       ],
       "route_prefixes": [
         "/es/investigacion/"
       ],
       "extractor": "extract_research_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es",
         "en"
@@ -159,14 +163,14 @@
       "authority": "R42_CHILD_SAFE_PACKAGE",
       "source_kind": "approved_package",
       "source_files": [
-        "NORMALIZED/tramites-directorio-datos.json",
-        "SAFETY/content-safety-manifest.json"
+        "sources/r51-r04/package/content-safety-snapshot.json",
+        "sources/r51-r04/package/support-es-262.json"
       ],
       "route_prefixes": [
         "/es/tramites/"
       ],
       "extractor": "extract_support_directory_r04",
-      "safety_source": "SAFETY/content-safety-manifest.json",
+      "safety_source": "sources/r51-r04/package/content-safety-snapshot.json",
       "locales": [
         "es"
       ],

@@ -15,6 +15,14 @@ export function gitShow(sourceSha, path) {
     cwd: REPO_ROOT, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024
   });
 }
+export function gitPathExists(sourceSha, path) {
+  try {
+    execFileSync('git', ['cat-file', '-e', sourceSha + ':' + path], { cwd: REPO_ROOT, stdio:'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export function normalizeRoute(input) {
   let value = String(input || '').trim();
