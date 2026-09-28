@@ -1,3 +1,21 @@
+## R62 · P01 premium render · técnica PASS / E4 rework · 28/09/2026
+
+**Estado: `R62_P01_RENDER_PIPELINE_PASS_VISUAL_E4_REWORK_REQUIRED` · #326.**
+
+El nuevo pipeline híbrido raster first-party + vector es válido y mejora material, luz, sombra y profundidad.
+
+P01 aún no alcanza E4: falta riqueza geométrica/arquitectónica y el layout 390 sigue siendo desktop miniaturizado.
+
+La norma global ya define:
+`IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026`
+y benchmark externo concreto (commit `0e9880bf...`).
+
+Esperado:
+`R62_P01_VISUAL_E4_READY_FOR_ASTRA_MARIA`.
+
+No pasar todavía el renderizador a P02. P03/Codex/A2/main/producción HOLD.
+
+
 ## R59 · R48 coordinación v4 · auto-benchmark visual aceptado · 28/09/2026
 
 **Estado: `R59_ASTRA_R48_V4_COORDINATION_ACCEPTED_VISUAL_REWORK_CONFIRMED_V3_ARTIFACT_PENDING` · #323.**
