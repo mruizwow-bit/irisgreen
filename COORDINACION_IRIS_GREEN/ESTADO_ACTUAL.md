@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R61 · Rincón · piloto Pecera audiovisual · 28/09/2026
+
+**Estado: `R61_CLAUDE_RINCON_AQUARIUM_AV_PILOT_ORDERED` · #325.**
+
+María aprueba `pecera_acuario.mp4` como donor visual del piloto.
+
+Claude debe convertirla en una escena audiovisual first-party de ~10 min con sonido propio integrado, exclusivo de la Pecera.
+
+0 autoplay. Acción principal `Ver y escuchar`; controles Silenciar/Activar sonido, Volumen, Parar y Pantalla completa.
+
+No construir Medusas/Mar/Río/Bosque hasta HUMAN QA del piloto.
+
+
 ## R54 v2 · Astra review seis pilotos · 28/09/2026
 
 **Estado: `R54_ASTRA_6_PILOTS_PARTIAL_PASS_REWORK_BEFORE_SCALE`.**
