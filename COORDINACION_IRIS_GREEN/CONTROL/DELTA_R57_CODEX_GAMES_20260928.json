@@ -1,0 +1,37 @@
+{
+  "schema": "R57_CODEX_GAMES_EXECUTION/1.0",
+  "date": "2026-09-28",
+  "issue": 321,
+  "parent_issue": 320,
+  "status": "R57_CODEX_GAMES_CLASSIFICATION_ORDERED",
+  "owner": "Codex",
+  "review": "Astra",
+  "integration": "A2",
+  "human_qa": "Maria",
+  "phase_now": "P0_CLASSIFY_297",
+  "product_kinds": [
+    "GAME",
+    "ROUTINE_PRACTICE",
+    "TOOL",
+    "INTEREST_MINIGAME"
+  ],
+  "p0_marker": "R57_CODEX_GAMES_297_CLASSIFICATION_READY_FOR_ASTRA",
+  "concept_gate": "R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX",
+  "pilot_marker": "R57_CODEX_PLAY_6_PILOTS_READY_FOR_ASTRA",
+  "scale_gate": "R56_PLAY_SYSTEM_STANDARD_APPROVED_FOR_SCALE",
+  "pilots": [
+    "habitacion-imposible",
+    "terrario-vivo",
+    "rutas-de-luz",
+    "ritmo-de-colores",
+    "pesca-tranquila",
+    "mi-museo"
+  ],
+  "restrictions": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_BULK_SCALE",
+    "NO_DELETE_297",
+    "NO_VISUAL_INVENTION"
+  ]
+}
