@@ -1,3 +1,16 @@
+## R62 · P02 Terrario vivo · Astra PASS · 28/09/2026
+
+**Estado: `R62_P02_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING` · #326.**
+
+Astra revisó patch, concepto, SVG y capturas 1440/390. El generador compila y reproduce ambos SVG byte-identical.
+
+PASS de concepto: mecánica abierta, causalidad luz/humedad, relieve/agua, dirección visual orgánica, simulación delimitada, accesibilidad, etapas, móvil e IP.
+
+Pendiente HUMAN QA de María. Si aprueba: `R62_P02_TERRARIO_CONCEPT_APPROVED` y puede empezar solo P03 · Rutas de luz.
+
+P04–P06 y Codex #321 siguen HOLD.
+
+
 ## R54 · SYNC fuente/output PASS · fingerprint de configuración pendiente · 28/09/2026
 
 **Estado: `R54_ASTRA_SYNC_LOGIC_PASS_RENDER_CONFIG_FINGERPRINT_REQUIRED` · #318.**
