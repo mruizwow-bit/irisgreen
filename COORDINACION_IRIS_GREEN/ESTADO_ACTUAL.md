@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R54 · Taller · calidad gráfica aún no aceptada · 28/09/2026
+
+**Estado: `R54_ASTRA_VISUAL_QUALITY_FAIL_REFINEMENT_REQUIRED`.**
+
+Astra renderiza las 27 escenas reales de R54. Mejora confirmada: ya son escenas y no iconos. Pero el acabado sigue leyendo como vector/infografía educativa plana y no alcanza todavía el nivel gráfico pedido por María.
+
+El gate automático 27/27 PASS solo mide >=15 elementos y <4300 bytes; queda degradado a gate estructural, no artístico.
+
+Antes de tocar 27 de nuevo, Claude entrega 6 pilotos refinados: Dibujo, Estructuras, Programación, Videojuegos, Mundos y Modelado 3D. Calidad > tamaño mínimo de SVG; se permiten assets first-party originales optimizados.
+
+A2 NO integra R54 como cierre visual hasta nuevo Astra PASS.
+
+
 ## R53 · dirección visual final · 6 instalaciones · 28/09/2026
 
 María fija que las Salas se definen por **luz + color + material + volumen + recorrido**, no por efectos digitales.
