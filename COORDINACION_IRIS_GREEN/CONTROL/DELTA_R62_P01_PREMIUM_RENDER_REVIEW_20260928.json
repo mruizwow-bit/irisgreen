@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P01-PREMIUM-RENDER-REVIEW",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_RENDER_PIPELINE_PASS_VISUAL_E4_REWORK_REQUIRED",
+  "artifacts": {
+    "patch_sha256": "86f101db423a28b1606c98c7ba2f6cb49e746e3a3e11fa6b93c57ab93b60e179",
+    "bundle_sha256": "f50359f495b1d20e5b5c1e20040790961f505bc71ee9d684db328cae9fa599e6",
+    "norm_note_sha256": "3514d3de1e958eb9415b9206ce6e577af3f87fac7109727c687c0508c20692a7",
+    "branch_head": "1fceac619cad30e29ec216e65070ee5f643f93ce"
+  },
+  "pass": [
+    "HYBRID_RASTER_VECTOR_PIPELINE",
+    "FIRST_PARTY_PROCEDURAL_MATERIALS",
+    "LIGHTING_SHADOWS_AO",
+    "MECHANIC_UNCHANGED",
+    "ART_SURVIVES_390"
+  ],
+  "rework": [
+    "GEOMETRY_RICHNESS",
+    "ARCHITECTURAL_DETAIL",
+    "SILHOUETTE_BREAKUP",
+    "MATERIAL_DIFFERENTIATION",
+    "ENTRY_EXIT_DEPTH",
+    "FLOOR_BRASS_MATERIALITY",
+    "MOBILE_REAL_LAYOUT"
+  ],
+  "execution_target": "IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026",
+  "benchmark_norm_commit": "0e9880bf1b898363d491f3711cc244717e76f945",
+  "next": "R62_P01_VISUAL_E4_READY_FOR_ASTRA_MARIA",
+  "hold": [
+    "P02_RERENDER",
+    "P03",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
