@@ -1,5 +1,16 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R54 v2 · Astra review seis pilotos · 28/09/2026
+
+**Estado: `R54_ASTRA_6_PILOTS_PARTIAL_PASS_REWORK_BEFORE_SCALE`.**
+
+Mejora real confirmada. Estructuras, Mundos y Modelado 3D fijan bien la dirección. Dibujo, Programación y Videojuegos deben rehacerse antes de escalar.
+
+También quedan obligatorios: pipeline raster reproducible, 2x/srcset, revisión loading/LCP, cache-busting y build estricto para escenas migradas.
+
+No autorizar 21 restantes ni 9 variantes hasta `R54_CLAUDE_TALLER_VISUAL_6_PILOTS_R2_READY_FOR_ASTRA`.
+
+
 ## R60 · Música original Iris Green · 28/09/2026
 
 **Estado: `R60_CLAUDE_IRIS_MUSIC_ORIGINAL_ORDERED` · #324.**
