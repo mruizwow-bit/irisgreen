@@ -60,7 +60,7 @@ async def main():
   await home_stage(page,'Adultez',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':True})
   await home_stage(page,'Cualquier edad',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
   report['checks'].append('home-canonical-surface-gates')
-  adult_path='/es/datos/empleo-y-discapacidad-en-espana/'
+  adult_path='/es/neurodiversidad/condiciones/menopausia/'
   await gate(page,adult_path,False,'default')
   await gate(page,adult_path,True,'children')
   await gate(page,adult_path,True,'teenagers')
