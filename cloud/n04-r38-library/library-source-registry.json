@@ -1,0 +1,363 @@
+{
+  "schema": "R51_A9_LIBRARY_SOURCE_REGISTRY/1.0",
+  "canonical_source": {
+    "repository": "mruizwow-bit/irisgreen",
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+    "source_tree": "776b1118e2e53be82d9a6524d071b32366cc39e6",
+    "update_mode": "CONFIGURED_CANONICAL_ONLY"
+  },
+  "previous_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
+  "domains": [
+    {
+      "domain": "conditions",
+      "content_type": "condition",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/neurodiversidad/condiciones/",
+        "/en/neurodiversity/conditions/"
+      ],
+      "extractor": "extract_condition_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "ROUTE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 226,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "situations",
+      "content_type": "situation",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/situaciones/",
+        "/en/situations/"
+      ],
+      "extractor": "extract_situation_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "ROUTE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 223,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "everyday_life",
+      "content_type": "everyday_life",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/biblioteca/",
+        "/en/everyday-life/"
+      ],
+      "extractor": "extract_everyday_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "ROUTE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 62,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "data",
+      "content_type": "data",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/datos/",
+        "/en/data/"
+      ],
+      "extractor": "extract_data_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "ROUTE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 60,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "research",
+      "content_type": "research",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "NORMALIZED/estudios-textos.json",
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/investigacion/"
+      ],
+      "extractor": "extract_research_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 132,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "support_directory",
+      "content_type": "support_directory",
+      "authority": "R42_CHILD_SAFE_PACKAGE",
+      "source_kind": "approved_package",
+      "source_files": [
+        "NORMALIZED/tramites-directorio-datos.json",
+        "SAFETY/content-safety-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/tramites/"
+      ],
+      "extractor": "extract_support_directory_r04",
+      "safety_source": "SAFETY/content-safety-manifest.json",
+      "locales": [
+        "es"
+      ],
+      "source_language": "es",
+      "allow_cross_locale_retrieval": true,
+      "update_dependency": [
+        "CONTENT",
+        "SAFETY",
+        "ROUTE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 262,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "games",
+      "content_type": "game",
+      "authority": "A2_INTEGRATED_WEB",
+      "source_kind": "git",
+      "source_files": [
+        "assets/data/r42-games-metadata.json",
+        "assets/data/juegos-iris-data.js"
+      ],
+      "route_prefixes": [
+        "/es/recursos/juegos/",
+        "/en/resources/games/"
+      ],
+      "extractor": "extract_games_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 297,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "routines",
+      "content_type": "routine",
+      "authority": "A2_INTEGRATED_WEB",
+      "source_kind": "git",
+      "source_files": [
+        "assets/data/r42-routine-download-manifest.json"
+      ],
+      "route_prefixes": [
+        "/es/recursos/rutinas-imprimibles/",
+        "/en/resources/printable-routines/"
+      ],
+      "extractor": "extract_routines_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 109,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "interests",
+      "content_type": "interest",
+      "authority": "A2_PLUS_APPROVED_R48",
+      "source_kind": "git",
+      "source_files": [
+        "editorial/intereses/estructura-20260924.json"
+      ],
+      "route_prefixes": [
+        "/es/intereses/",
+        "/en/interests/"
+      ],
+      "extractor": "extract_interests_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": null,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "workshop",
+      "content_type": "workshop",
+      "authority": "A2_PLUS_APPROVED_R47",
+      "source_kind": "git",
+      "source_files": [
+        "assets/data/taller-r40-catalog.js",
+        "assets/data/taller-r42-paths.js"
+      ],
+      "route_prefixes": [
+        "/es/taller/",
+        "/en/workshop/"
+      ],
+      "extractor": "extract_workshop_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": 27,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "quiet_space",
+      "content_type": "quiet_space",
+      "authority": "A2_PLUS_APPROVED_R46",
+      "source_kind": "git",
+      "source_files": [
+        "assets/quiet-space/copy-registry.v1.json"
+      ],
+      "route_prefixes": [
+        "/es/sitio-tranquilo/",
+        "/en/quiet-space/"
+      ],
+      "extractor": "extract_quiet_space_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE",
+        "SOURCE"
+      ],
+      "owner": "A9",
+      "expected_records": null,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    },
+    {
+      "domain": "home",
+      "content_type": "home_orientation",
+      "authority": "R50_A2",
+      "source_kind": "git",
+      "source_files": [
+        "index.html",
+        "en/index.html"
+      ],
+      "route_prefixes": [
+        "/",
+        "/en/"
+      ],
+      "extractor": "extract_home_orientation_r04",
+      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "locales": [
+        "es",
+        "en"
+      ],
+      "update_dependency": [
+        "CONTENT",
+        "ROUTE",
+        "LOCALE"
+      ],
+      "owner": "A9",
+      "expected_records": 2,
+      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+    }
+  ]
+}
