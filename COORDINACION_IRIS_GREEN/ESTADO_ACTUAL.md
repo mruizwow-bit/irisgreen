@@ -1,3 +1,22 @@
+## Auditoría child-safe + Cloud R04 · 28/09/2026
+
+**A2: `R51_A2_AGE_FILTER_GLOBAL_FAIL_RECLASSIFICATION_REQUIRED`.**
+
+El selector cambia de estado, pero 223 Situaciones + 226 Condiciones + 62 Vida diaria + 60 Datos están clasificados masivamente como TRANSVERSAL, así que la franja infantil sigue viendo casi todo. El test existente no cubre las 965 fichas una a una.
+
+**A9: `R51_A9_R04_PROGRESS_PASS_AGE_TAXONOMY_RECLASSIFICATION_REQUIRED`.**
+
+R04 está en 5B Rutinas, HEAD `b2c8bec6...`, no sellada. La web A2 sigue usando una biblioteca anterior `n04-es-20260916-56f72...`. R04 hereda la taxonomía legacy y no puede sellarse hasta reclasificar por edad.
+
+Sensibilidad S0/S1/S2 y edad son ejes independientes.
+
+Esperado A2:
+`R51_A2_GLOBAL_AGE_FILTER_965_RECLASSIFIED_READY_FOR_ASTRA`.
+
+Esperado A9:
+`R51_A9_R04_AGE_TAXONOMY_RECLASSIFIED_READY_FOR_ASTRA`.
+
+
 ## Taxonomía global de edad · rangos explícitos · 28/09/2026
 
 **Estado: `IRIS_GREEN_AGE_TAXONOMY_2026_ADOPTED_GLOBAL`.**
