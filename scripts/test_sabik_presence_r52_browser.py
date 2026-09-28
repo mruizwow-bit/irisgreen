@@ -54,7 +54,7 @@ try:
         evidence["motion"]["present_idle"] = idle
 
         # NORMAL: R37 finite transition over the current ORIENTAR master.
-        page.evaluate("window.SabikWebPresentation.setSabikState('orientar',{force:true})")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         normal = page.evaluate("""() => {
           const a=document.querySelector('#sabik-web-master').getAnimations()[0];
@@ -73,7 +73,7 @@ try:
         evidence["motion"]["normal_orientar"] = normal
 
         # TRANSICION is finite and returns to the requested stable current master.
-        page.evaluate("window.SabikWebPresentation.setSabikState('transicion',{to:'presente',force:true})")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('transicion',{to:'presente',force:true}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         transition = page.evaluate("""() => {
           const a=document.querySelector('#sabik-web-master').getAnimations()[0];
@@ -101,7 +101,7 @@ try:
         # SIN_MOVIMIENTO swaps only to the correct state master, without animation.
         page.select_option("#sabik-motion-level", "SIN_MOVIMIENTO")
         page.dispatch_event("#sabik-motion-level", "change")
-        page.evaluate("window.SabikWebPresentation.setSabikState('pausa',{force:true})")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true}); }")
         page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_pausa.png')")
         stopped = page.evaluate("""() => ({
           active: window.SabikWebPresentation.snapshot().active,
