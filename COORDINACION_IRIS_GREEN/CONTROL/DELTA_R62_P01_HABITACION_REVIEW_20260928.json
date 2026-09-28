@@ -1,0 +1,19 @@
+{
+  "id": "R62-P01-HABITACION-ASTRA-REVIEW",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_MECHANIC_PASS_VISUAL_CONCEPT_REWORK_REQUIRED",
+  "patch_sha256": "f1333e8f564810ddc537a4080d49cdab3d6572d157c24e4e37185a111518dd5b",
+  "base": "c119d3297bfa3fadff89a3c0423b2fbf3ff9f633",
+  "source_head_declared_unpushed": "0e414c48",
+  "mechanic": "KEEP",
+  "visual_concept": "REWORK",
+  "next": "R62_P01_HABITACION_CONCEPT_R2_READY_FOR_ASTRA",
+  "hold": [
+    "P02",
+    "Codex #321",
+    "A2",
+    "main",
+    "production"
+  ]
+}
