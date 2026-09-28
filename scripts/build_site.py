@@ -190,6 +190,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_visual_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_visual_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R50 A2 incremental rollout: Printable routines ES/EN only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_printable_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_printable_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R51 A2: audience/discovery filtering from the approved 965-record safety snapshot.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
