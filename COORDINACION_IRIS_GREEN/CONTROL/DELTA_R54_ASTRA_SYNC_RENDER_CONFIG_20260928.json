@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R54-ASTRA-SYNC-REVIEW-RENDER-CONFIG-FINGERPRINT",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_ASTRA_SYNC_LOGIC_PASS_RENDER_CONFIG_FINGERPRINT_REQUIRED",
+  "artifacts": {
+    "patch_sha256": "fd8d6fa89f641cb9e6ba93eabf5b199deef637f5aca426a879e7660ff39beccb",
+    "patch_gz_sha256": "0acae37095ffe42fe275d4f8e403b5dca65f5aee7eea6c3a57e43c738a45affc"
+  },
+  "pass": [
+    "NO_VISUAL_CHANGES",
+    "SVG_FINAL_HASH",
+    "WEBP_1X_2X_HASH",
+    "WEBP_DIMENSIONS",
+    "BUILD_HOOK",
+    "STALE_SOURCE_FAILS_CHECK_AND_BUILD",
+    "RERASTER_PASS",
+    "CHROMIUM_LAUNCH_EXIT2_CLEAN",
+    "PATCH_CHAIN_CORRECTED",
+    "CACHE_BUST_DOC_CORRECTED"
+  ],
+  "blocker": {
+    "code": "R54-SYNC-CONFIG-01",
+    "reason": "manifest stores render settings but checker does not compare current effective render configuration per scene",
+    "required": [
+      "render_config_sha256 per scene",
+      "checker recomputes and fails RENDER_SETTINGS_MISMATCH",
+      "negative test E: mutate effective setting without reraster => fail; reraster => pass"
+    ]
+  },
+  "next": "R54_CLAUDE_RASTER_CONFIG_FINGERPRINT_READY_FOR_ASTRA",
+  "hold": [
+    "SCALE_21",
+    "INFANCIA_9",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
