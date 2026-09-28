@@ -159,10 +159,45 @@ Un «no» en cualquiera de las cinco fue, en P01, motivo de rework.
 
 ---
 
-## Deuda conocida
+## La deuda del motor, saldada por P02
 
-El motor sigue viviendo dentro del script de P01. Intenté extraerlo al aprobarse
-la referencia y lo dejé a medias a propósito: el motor y la escena no se separan
-con un corte limpio, y no merece la pena operar sobre una lámina recién aprobada
-guiándome por suposiciones. **El reparto correcto lo dirá el segundo piloto que
-lo use**, que es cuando se ve qué es de verdad común y qué era de P01.
+Aquí decía que el motor seguía dentro del script de P01 y que **el reparto
+correcto lo diría el segundo piloto que lo usara**. P02 ya lo ha usado, así que
+esto es lo que dijo.
+
+**Motor** (`scripts/ig_render_e4.py`): rasterizado diferido, muestreo de
+textura, sombra, oclusión, atmósfera, composición y capa de chrome.
+**Escena** (cada piloto): cámara, tabla de materiales, geometría, luz y vacío.
+
+El reparto se decide en la **cámara**, que era justo lo que no se veía con un
+solo piloto. P01 es axonométrico: la profundidad de un punto es `x+y+z` y un
+rectángulo alineado se proyecta como paralelogramo. P02 mira de frente a través
+del cristal y su profundidad es la coordenada que se aleja. Las dos cumplen el
+mismo contrato —proyectar, ordenar en profundidad y decir hacia dónde corre la
+luz en pantalla—, así que el rasterizador no necesita saber cuál tiene delante.
+
+Tres cosas se añadieron al motor porque P02 las necesitaba, no por diseño
+previo:
+
+1. **Rasterizado de relieve.** Una celda de terreno con las cuatro esquinas a
+   distinta altura no es plana, así que la bilineal deja de invertirse con un
+   2×2. Con cámara frontal ortográfica sale más corto marchar en profundidad.
+2. **Recorte y dibujo por pieza** (`alpha` y `modula`). Con eso una hoja es un
+   cuadrilátero recortado por su perfil y con su nervio dibujado, sin teselar.
+3. **Curva de contraste** en la composición. El tonemap que sirve a una sala de
+   piedra con una entrada de luz fuerte deja una escena de sombra entera en una
+   banda estrecha de medios.
+
+**Condición que se respetó:** P01 está `HUMAN_APPROVED`, así que la extracción
+sólo valía si sus cuatro láminas salían idénticas byte a byte. Lo comprueba
+`scripts/test_e4_motor_identico.py`, que compara contra los archivos de la rama
+y no contra hashes escritos en el test.
+
+## Lo que P02 añade a la lista de medir
+
+Dos preguntas más, las dos por errores concretos que costaron vueltas:
+
+6. ¿La textura se estira en las superficies inclinadas? Muestrear un terreno
+   por (x, y) funciona mientras sea tendido; en una falda salen chorreones.
+7. ¿El vector de vista es el que de verdad tiene la cámara? En P02 tomarlo por
+   «de frente» a secas puso el Fresnel del agua a 1 en toda la lámina.

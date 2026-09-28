@@ -3,9 +3,16 @@
 **Estado:** `R62_P02_TERRARIO_CONCEPT_READY_FOR_ASTRA`
 **Fecha:** 28/09/2026
 
-Láminas: `gameplay.svg` (principal) y `causalidad.svg` (segundo estado).
-Generador: `scripts/r62_p02_concepto.py`. Capturas 1440 y 390 como handoff, no
-en la rama, según §19.
+**Este documento fija la mecánica, y la mecánica no ha cambiado.** Lo que sí
+ha cambiado es la ejecución visual: el §16 de la norma visual de septiembre
+reabrió la calidad, y el rework está en `RENDER-E4.md`, que es donde se dice
+qué se hizo, qué se midió y qué sigue corto.
+
+Láminas: `gameplay-{navy,claro}.svg` y `gameplay-movil-{navy,claro}.svg`
+(principal, escritorio y móvil, en los dos temas globales) y
+`causalidad-{navy,claro}.svg` (segundo estado).
+Generador: `scripts/r62_p02_render.py` sobre `scripts/ig_render_e4.py`.
+Capturas fuera de la rama, según §19.
 
 ---
 
@@ -214,9 +221,12 @@ sistema hace, sin metáfora:
 
 ---
 
-## Iteraciones
+## Iteraciones del concepto
 
-Cinco pasadas, mirando el render cada vez. Lo que cambió, por si sirve para los
+Cinco pasadas de la versión vectorial, mirando el render cada vez. Se dejan
+escritas porque las decisiones de mecánica salieron de aquí y siguen en pie,
+aunque la técnica de dibujo se haya sustituido entera. Las vueltas del rework
+visual están en `RENDER-E4.md`. Lo que cambió, por si sirve para los
 pilotos siguientes:
 
 1. **Primera versión: una caja plana.** El terreno era un plano y el tanque
