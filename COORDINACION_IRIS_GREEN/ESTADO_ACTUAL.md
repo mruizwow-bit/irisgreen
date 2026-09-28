@@ -1,3 +1,16 @@
+## R62 · P01 Habitación imposible · Astra review · 28/09/2026
+
+**Estado: `R62_P01_MECHANIC_PASS_VISUAL_CONCEPT_REWORK_REQUIRED` · #326.**
+
+La mecánica de cuatro orientaciones de suelo/gravedad se conserva. P01 NO queda aprobado todavía porque las láminas no demuestran visualmente el cambio de suelo y siguen a nivel de blocking.
+
+Correcciones R2: mostrar estado A/B del cambio de suelo, subir materialidad/atmósfera, clarificar entrada→ruta→salida, rediseñar el selector tipo D-pad y corregir los glifos de flechas que renderizan como cuadrados.
+
+Esperado: `R62_P01_HABITACION_CONCEPT_R2_READY_FOR_ASTRA`.
+
+P02 y Codex #321 siguen HOLD.
+
+
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
 ## R59 · handoff pilotos R48 revisado · 28/09/2026
