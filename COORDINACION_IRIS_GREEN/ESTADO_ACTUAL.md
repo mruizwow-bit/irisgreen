@@ -1,3 +1,18 @@
+## R59 · R48 coordinación v4 · auto-benchmark visual aceptado · 28/09/2026
+
+**Estado: `R59_ASTRA_R48_V4_COORDINATION_ACCEPTED_VISUAL_REWORK_CONFIRMED_V3_ARTIFACT_PENDING` · #323.**
+
+Astra verifica en v4 matriz donor 72/72, checker `completo.py` con exit negativo real y cobertura de /img + CSS url(), y acepta el auto-benchmark visual: 45/45 experiencias R48 construidas quedan `VISUAL_REWORK_REQUIRED` bajo la norma global 2026.
+
+La orden R59 ya hereda explícitamente la normativa visual global (commit `9f1fa2ae...`). R48 queda donor técnico/editorial, no referencia gráfica.
+
+Pendiente solo de artefacto: este ZIP de coordinación no contiene el handoff/overlay v3 completos, así que esos claims standalone no están aún independientemente cerrados.
+
+Codex continúa Fase 1 hacia `R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA`.
+
+No construir 72/6 pilotos. No A2/main/producción.
+
+
 ## GLOBAL · estándar visual móvil septiembre 2026 · 28/09/2026
 
 **Estado: `IRIS_GREEN_VISUAL_STANDARD_SEP_2026_ADOPTED_ROLLING`.**
