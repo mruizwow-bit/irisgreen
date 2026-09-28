@@ -1,3 +1,25 @@
+## GLOBAL · estándar visual móvil septiembre 2026 · 28/09/2026
+
+**Estado: `IRIS_GREEN_VISUAL_STANDARD_SEP_2026_ADOPTED_ROLLING`.**
+
+María adopta un único estándar visual premium 2026 para todo Iris Green: Home, Taller, Juegos, Intereses, Rincón, Recursos y nuevas experiencias.
+
+Normativa:
+`COORDINACION_IRIS_GREEN/NORMATIVA/IRIS_GREEN_VISUAL_STANDARD_SEP_2026.md`
+
+La técnica puede ser SVG rico, raster, Canvas, 2.5D, WebGL, WebGPU con fallback o híbrida. Lo obligatorio es el resultado: materialidad, luz, profundidad, composición, atmósfera, microdetalle, identidad, responsive, accesibilidad y rendimiento.
+
+Benchmark móvil: revisar antes de cada gran ola visual/escala y como máximo cada 8 semanas mientras haya trabajo visual activo.
+
+Efectos inmediatos:
+- R54 Taller: rebenchmark de los 6 antes de escalar 21+9; sync técnico no basta para autorizar escala.
+- R62 P01: mecánica KEEP, visual reabierto.
+- R62 P02: mecánica KEEP, visual rework.
+- R62 P03: HOLD hasta tener referencia de Juego que pase el estándar.
+
+No A2/main/producción por estos carriles hasta sus gates.
+
+
 ## R62 · P02 Terrario vivo · Astra PASS · 28/09/2026
 
 **Estado: `R62_P02_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING` · #326.**
