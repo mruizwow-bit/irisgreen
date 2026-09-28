@@ -1,0 +1,38 @@
+{
+  "schema": "R56_GAMES_RESOURCES_PLAY_SYSTEM/1.0",
+  "date": "2026-09-28",
+  "issue": 320,
+  "status": "R56_ASTRA_GAMES_RESOURCES_PLAY_SYSTEM_DESIGN_FROZEN",
+  "product_kinds": [
+    "GAME",
+    "ROUTINE_PRACTICE",
+    "TOOL",
+    "INTEREST_MINIGAME"
+  ],
+  "current_audit": {
+    "metadata_total": 297,
+    "ordering_type_count": 224,
+    "historical_package_unique_games": 249,
+    "historical_derived_from_92_routines": 183
+  },
+  "pilots": [
+    "habitacion-imposible",
+    "terrario-vivo",
+    "rutas-de-luz",
+    "ritmo-de-colores",
+    "pesca-tranquila",
+    "mi-museo"
+  ],
+  "phases": [
+    "R56-P0_CLASSIFY_297",
+    "R56-P1_CONCEPT_6",
+    "R56-P2_BUILD_6",
+    "R56-P3_ASTRA_MARIA_STANDARD",
+    "R56-P4_ROUTINES_MIGRATION",
+    "R56-P5_GAMES_SCALE",
+    "R56-P6_INTEREST_MINIGAMES",
+    "R56-P7_RESOURCES_HOME_PREVIEWS"
+  ],
+  "scale_gate": "R56_PLAY_SYSTEM_STANDARD_APPROVED_FOR_SCALE",
+  "no_bulk_build": true
+}
