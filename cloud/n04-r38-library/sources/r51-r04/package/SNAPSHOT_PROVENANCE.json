@@ -1,0 +1,30 @@
+{
+  "schema": "R51_A9_PACKAGE_SNAPSHOT_PROVENANCE/1.0",
+  "package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+  "upstream_manifest_path": "SAFETY/content-safety-manifest.json",
+  "upstream_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "derived_snapshot": "package/content-safety-snapshot.json",
+  "derivation": "Lossless selection of id/surface/title/url/audience/sensitivity/discovery/safe_variant_group/classification_review for all 965 records.",
+  "records": 965,
+  "counts": {
+    "surface": {
+      "situation": 223,
+      "condition": 226,
+      "library": 62,
+      "data": 60,
+      "research": 132,
+      "support_directory": 262
+    },
+    "sensitivity": {
+      "S0_GENERAL": 724,
+      "S1_SENSITIVE": 225,
+      "S2_HIGH_SENSITIVITY": 16
+    },
+    "discovery": {
+      "NORMAL": 945,
+      "SAFE_VARIANT_REQUIRED": 16,
+      "INTENTIONAL_ONLY": 4
+    }
+  },
+  "safe_variant_source": "../a9-r02-safety/APPROVED_SAFE_VARIANTS_R42.json"
+}
