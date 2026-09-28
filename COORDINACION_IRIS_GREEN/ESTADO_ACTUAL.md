@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R57 · Codex Juegos · clasificación 297 primero · 28/09/2026
+
+**Estado: `R57_CODEX_GAMES_CLASSIFICATION_ORDERED`.**
+
+Codex ejecuta R56 #320.
+
+Fase inmediata: clasificar 297/297 como GAME / ROUTINE_PRACTICE / TOOL / INTEREST_MINIGAME, sin borrar ni migrar.
+
+No construye dirección visual final hasta `R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX`.
+
+Después construirá solo 6 pilotos. No escalado masivo hasta HUMAN QA.
+
+
 ## R56 · Juegos/Recursos/Intereses lúdicos · rediseño Astra · 28/09/2026
 
 **Estado: `R56_ASTRA_GAMES_RESOURCES_PLAY_SYSTEM_DESIGN_FROZEN`.**
