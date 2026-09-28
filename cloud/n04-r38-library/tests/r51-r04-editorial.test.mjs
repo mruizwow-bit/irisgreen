@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildEditorialEntities } from '../src/r04/editorial-adapters.mjs';
+import ageManifest from '../sources/r51-r04/age/age-classification-r51-global.json' with { type: 'json' };
+import { assertCanonicalAgeBands } from '../src/r04/age-taxonomy.mjs';
 
 const built=await buildEditorialEntities();
 const full=built.entities.filter(e=>e.source_type!=='safe_variant');
@@ -35,4 +37,32 @@ test('R04 Spanish support directory is source-only ES with authority and source 
   const support=full.filter(e=>e.content_type==='support_directory');
   assert.equal(support.length,262);
   assert.ok(support.every(e=>e.locale==='es'&&e.source_language==='es'&&e.authority&&e.sources[0]?.url));
+});
+
+test('R04 editorial adapters emit canonical A2 age taxonomy with no fallback',()=>{
+  const unique=new Map();
+  for(const e of full){
+    assertCanonicalAgeBands(e.audience);
+    assert.ok(e.age_classification_review,'age review '+e.entity_id);
+    if(!unique.has(e.content_id)) unique.set(e.content_id,e);
+    else assert.deepEqual(e.audience,unique.get(e.content_id).audience);
+  }
+  assert.equal(unique.size,965);
+  const visible={AGE_0_12:0,AGE_13_17:0,AGE_18_PLUS:0,ALL_AGES:0};
+  for(const e of unique.values()){
+    for(const band of ['AGE_0_12','AGE_13_17','AGE_18_PLUS']){
+      if(e.audience.includes(band)||e.audience.includes('ALL_AGES')) visible[band]++;
+    }
+    if(e.audience.includes('ALL_AGES')) visible.ALL_AGES++;
+  }
+  assert.deepEqual(visible,ageManifest.totals.visible_by_filter);
+  assert.equal(built.report.age_unclassified,0);
+});
+test('R04 safe variants inherit the reviewed content age bands instead of becoming all-age',()=>{
+  for(const safeEntity of safe){
+    const fullEntity=full.find(e=>e.entity_id===safeEntity.derived_from_entity_id);
+    assert.ok(fullEntity);
+    assert.deepEqual(safeEntity.audience,fullEntity.audience);
+    assertCanonicalAgeBands(safeEntity.audience);
+  }
 });

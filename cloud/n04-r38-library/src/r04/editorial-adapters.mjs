@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { normalizeRoute, routeToRepoPath, gitShow, gitPathExists, extractEditorialPage, technicalField, sha256Text } from './source-reader.mjs';
+import { assertCanonicalAgeBands } from './age-taxonomy.mjs';
 
 const ORIGIN='https://irisgreen.eu';
 const PACKAGE_SHA='b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23';
@@ -34,12 +35,15 @@ function sourceStatusFromPage(html){
   return /\bBORRADOR\b/i.test(html) ? 'BORRADOR' : 'PUBLIC_OR_REVIEWED';
 }
 function safetyFields(record){
+  const audience=[...assertCanonicalAgeBands(record.age_bands)];
   return {
-    audience:Array.isArray(record.audience)?record.audience:['TRANSVERSAL'],
+    audience,
     sensitivity:record.sensitivity,
     discovery:record.discovery,
     safe_variant_id:null,
-    review_reason:record.classification_review||null
+    review_reason:record.classification_review||null,
+    age_classification_reason:record.age_classification_reason||null,
+    age_classification_review:record.age_classification_review||null
   };
 }
 function baseEntity({safety,locale,page,source,contentType,canonicalUrl,routeStatus='READY',extra={}}){
@@ -108,7 +112,7 @@ function safeEntity(full,approval,approved){
     source_hash:approved.source_package.safe_variants_sha256,
     library_version:'R04_UNSEALED',
     editorial_status:'HUMAN_REVIEWED_S2_SAFE_VARIANT',
-    audience:['INFANCIA','ADOLESCENCIA','ADULTEZ','TRANSVERSAL'],
+    audience:[...full.audience],
     sensitivity:'S1_SENSITIVE',
     discovery:'NORMAL',
     safe_variant_id:null,
@@ -163,16 +167,31 @@ export async function buildEditorialEntities(){
   const support=await json(new URL('../../sources/r51-r04/package/support-es-262.json',import.meta.url));
   const dataEs=await json(new URL('../../sources/r51-r04/package/data-es-60.json',import.meta.url));
   const approved=await json(new URL('../../sources/a9-r02-safety/APPROVED_SAFE_VARIANTS_R42.json',import.meta.url));
+  const ageManifest=await json(new URL('../../sources/r51-r04/age/age-classification-r51-global.json',import.meta.url));
+  if(ageManifest?.schema!=='R51_A2_GLOBAL_AGE_CLASSIFICATION/1.0'||ageManifest.records?.length!==965||ageManifest.totals?.unclassified!==0){
+    throw new Error('invalid_age_classification_manifest');
+  }
   const sourceSha=freeze.canonical_web_source.head;
   const deltaById=new Map(delta.records.map(r=>[r.id,r]));
   const researchById=new Map(research.records.map(r=>['research-'+String(r.n).padStart(3,'0'),r]));
   const supportById=new Map(support.records.map(r=>['support-'+r.id,r]));
   const dataById=dataMetaById(dataEs);
   const approvalById=new Map(approved.records.map(r=>[r.content_id,r]));
+  const ageById=new Map(ageManifest.records.map(r=>[r.content_id,r]));
+  if(ageById.size!==965) throw new Error('duplicate_age_content_id');
   const entities=[];
   const coreSurfaces=new Set(['condition','situation','library','data']);
 
-  for(const safety of safetySnapshot.records){
+  for(const rawSafety of safetySnapshot.records){
+    const ageRecord=ageById.get(rawSafety.id);
+    if(!ageRecord) throw new Error('missing_age_classification:'+rawSafety.id);
+    const ageBands=[...assertCanonicalAgeBands(ageRecord.age_bands)];
+    const safety={
+      ...rawSafety,
+      age_bands:ageBands,
+      age_classification_reason:ageRecord.classification_reason||null,
+      age_classification_review:ageRecord.review||null
+    };
     if(coreSurfaces.has(safety.surface)){
       const deltaRecord=deltaById.get(safety.id)||null;
       for(const locale of ['es','en']){
@@ -269,7 +288,9 @@ export async function buildEditorialEntities(){
     safe_variant_entities:safeEntities.length,
     full_s2_locale_entities:full.filter(e=>e.sensitivity==='S2_HIGH_SENSITIVITY').length,
     routes_pending_a2:full.filter(e=>e.route_status==='APPROVED_PACKAGE_PENDING_A2').length,
-    en_research_route_fallbacks:full.filter(e=>e.route_status==='EN_ROUTE_NOT_IN_FROZEN_A2_USING_EXISTING_SOURCE_ROUTE').length
+    en_research_route_fallbacks:full.filter(e=>e.route_status==='EN_ROUTE_NOT_IN_FROZEN_A2_USING_EXISTING_SOURCE_ROUTE').length,
+    age_source_sha:ageManifest.source_manifest_sha256||null,
+    age_unclassified:0
   };
   return {entities,report};
 }
