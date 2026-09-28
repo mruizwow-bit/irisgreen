@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R59-R48-V4-COORDINATION-REVIEW",
+  "date": "2026-09-28",
+  "issue": 323,
+  "status": "R59_ASTRA_R48_V4_COORDINATION_ACCEPTED_VISUAL_REWORK_CONFIRMED_V3_ARTIFACT_PENDING",
+  "artifact": {
+    "name": "COORDINACION_R48_MEMORIA_20260928_v4.zip",
+    "sha256": "e348af3eb331ba6089cfa6cfafb3d5d6d83bd08b7fd8f539f3f40e56ddc76e40"
+  },
+  "verified": {
+    "donor_rows": 72,
+    "donor_unique_ids": 72,
+    "r58_decisions": 0,
+    "built_r48": 40,
+    "pending": 27,
+    "previous_deep_pages": 5,
+    "completeness_checker_exit1": true,
+    "completeness_checker_img_webp": true,
+    "completeness_checker_css_url": true,
+    "visual_rework_required": 45,
+    "visual_partial_depth": 14,
+    "visual_flat_vector": 31
+  },
+  "r59_order_visual_standard_commit": "9f1fa2ae78faedfb1c73f1eb723b5c04c98e2316",
+  "artifact_pending": [
+    "HANDOFF_PILOTOS_R59_v3",
+    "IRIS_INTERESES_R48_ES_EN_PARA_SUBIR_v3"
+  ],
+  "codex_phase1": "CONTINUE",
+  "codex_next": "R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA",
+  "hold": [
+    "BUILD_72",
+    "BUILD_6_PILOTS",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
