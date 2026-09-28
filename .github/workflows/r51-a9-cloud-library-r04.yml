@@ -1,0 +1,59 @@
+name: R51 A9 R04 library verify
+
+on:
+  push:
+    branches:
+      - 'agent9/r51-cloud-library-r04-20260927'
+    paths:
+      - 'cloud/n04-r38-library/**'
+      - '.github/workflows/r51-a9-cloud-library-r04.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r51-a9-r04-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: cloud/n04-r38-library/package-lock.json
+
+      - name: Locked install
+        working-directory: cloud/n04-r38-library
+        run: npm ci --ignore-scripts
+
+      - name: R51 source and registry gates
+        working-directory: cloud/n04-r38-library
+        run: |
+          node --test             tests/r51-source-freeze.test.mjs             tests/r51-source-registry.test.mjs             tests/r51-r04-source-reader.test.mjs
+
+      - name: R51 six-domain editorial build and gate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:editorial
+          node --test tests/r51-r04-editorial.test.mjs
+
+      - name: Upload R51 editorial report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r51-a9-r04-editorial-report
+          path: cloud/n04-r38-library/build/r04/editorial-report.json
+          if-no-files-found: ignore
+          retention-days: 14
