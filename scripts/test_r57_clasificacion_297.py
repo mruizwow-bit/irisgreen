@@ -22,8 +22,12 @@ Comprueba:
   9. La lista de confianza baja está publicada y coincide con las filas.
  10. No hay cambios destructivos: las dos fuentes siguen teniendo el sha256
      que la matriz registró al leerlas.
- 11. No hay interfaz pública todavía: respecto de la base, el trabajo sólo
+ 11. No hay interfaz pública todavía: el commit que introdujo la matriz sólo
      toca `editorial/r57/` y `scripts/`. Ni rutas, ni assets, ni sitemap.
+
+     Se mira **ese commit**, no el rango desde una base fija: un rango se
+     ensucia en cuanto aterriza encima trabajo ajeno, y entonces la puerta
+     falla por algo que P0 no ha hecho.
 
 Lo que este test NO certifica:
   - Que cada juego esté en la categoría correcta. La matriz es una propuesta
@@ -31,7 +35,7 @@ Lo que este test NO certifica:
   - Que las categorías de la orden sean las definitivas.
   - Nada sobre los seis pilotos: esta puerta es anterior al gate visual.
 
-Uso:  python3 scripts/test_r57_clasificacion_297.py --base c119d329
+Uso:  python3 scripts/test_r57_clasificacion_297.py
 """
 import argparse
 import hashlib
@@ -75,8 +79,8 @@ def source_ids():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--base', default='c119d329',
-                    help='commit base contra el que se comprueba que P0 no toca interfaz')
+    ap.add_argument('--commit', default=None,
+                    help='commit de P0; por defecto, el que introdujo la matriz')
     args = ap.parse_args()
 
     assert MATRIX.is_file(), f'No existe la matriz: {MATRIX}'
@@ -153,12 +157,19 @@ def main():
               f'{path.name} ha cambiado desde que se generó la matriz')
 
     # 11 · P0 no publica interfaz
-    changed = []
+    def git(*args):
+        out = subprocess.run(['git', *args], cwd=REPO, capture_output=True,
+                             text=True, timeout=60)
+        return out.stdout.split() if out.returncode == 0 else []
+
+    changed, commit = [], args.commit
     try:
-        out = subprocess.run(['git', 'diff', '--name-only', f'{args.base}..HEAD'],
-                             cwd=REPO, capture_output=True, text=True, timeout=60)
-        if out.returncode == 0:
-            changed = [p for p in out.stdout.split() if p]
+        if not commit:
+            found = git('log', '-1', '--format=%H', '--',
+                        'editorial/r57/clasificacion-297.json')
+            commit = found[0] if found else None
+        if commit:
+            changed = git('diff', '--name-only', f'{commit}^', commit)
     except (OSError, subprocess.SubprocessError):
         changed = []
     leaked = [p for p in changed if not p.startswith(ALLOWED_PREFIXES)]
@@ -171,7 +182,8 @@ def main():
         'by_confidence': report.get('by_confidence'),
         'low_confidence': report.get('low_confidence'),
         'needs_human_review': len(report.get('needs_human_review', [])),
-        'files_changed_vs_base': changed,
+        'p0_commit': commit,
+        'files_changed_in_p0_commit': changed,
         'failures': failures,
     }
     print(json.dumps(result, ensure_ascii=False, indent=1))
