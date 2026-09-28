@@ -1,5 +1,16 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R59 · handoff pilotos R48 revisado · 28/09/2026
+
+**Estado: `R59_ASTRA_HANDOFF_DONOR_ACCEPTED_RESTRUCTURE_STILL_REQUIRED` · #323.**
+
+El ZIP de handoff se acepta como donor, no como cierre P0.
+
+La matriz incluida deriva modos/escenas desde el renderer R48 y keep/rework desde el estado de construcción: 40 construidos = 40 keep; 32 no construidos/previos = 32 rework.
+
+Codex debe hacer la decisión R58 real 72/72 y parar en `R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA`.
+
+
 ## R60 · Música · P0 pipeline aceptado · 28/09/2026
 
 **Estado: `R60_ASTRA_MUSIC_PIPELINE_PROOF_ACCEPTED_P1_AUTHORIZED` · #324.**
