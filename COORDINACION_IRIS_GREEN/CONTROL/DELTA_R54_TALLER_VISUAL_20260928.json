@@ -1,0 +1,57 @@
+{
+  "schema": "R54_TALLER_VISUAL_REBUILD/1.0",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_CLAUDE_TALLER_VISUAL_REBUILD_ORDERED",
+  "owner": "Claude",
+  "review_gate": "Astra",
+  "integration_gate": "A2",
+  "human_qa": "Maria",
+  "audited_sources": [
+    "R47_TALLER_DEFINITIVO.patch.gz",
+    "COORDINACION_R47.patch.gz"
+  ],
+  "product_rule": "THE_WORKSHOP_MUST_ENTER_THROUGH_SCENES_NOT_ICONS",
+  "keep": [
+    "R47_27_STUDIOS",
+    "ENGINES",
+    "CHILD_SAFE",
+    "R42_R02",
+    "STORAGE_PRIVACY",
+    "WORKSPACE_ARCHITECTURE",
+    "ES_EN",
+    "EXPORTS",
+    "VALID_FUNCTIONAL_TESTS"
+  ],
+  "rebuild": [
+    "HOME_VISUAL_ART",
+    "INTERIOR_HERO_OR_STARTER_VISUALS",
+    "OVERLY_SCHEMATIC_COMPOSITIONS",
+    "CHILD_VISUAL_VARIANTS_WHERE_NEEDED"
+  ],
+  "qa": {
+    "home_cards": 27,
+    "interiors": 27,
+    "icon_only_forbidden": true,
+    "before_after_required": true,
+    "stage_variants": [
+      "general",
+      "child",
+      "teen",
+      "adult"
+    ],
+    "required_viewports": [
+      "1440x900",
+      "1920x1080",
+      "390x844",
+      "320x800"
+    ]
+  },
+  "expected_marker": "R54_CLAUDE_TALLER_HOME_INTERIORS_VISUAL_READY_FOR_ASTRA",
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_ENGINE_REWRITE_R47"
+  ]
+}
