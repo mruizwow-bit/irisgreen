@@ -1,3 +1,18 @@
+## R60 · Música P1 · HUMAN QA FAIL · 28/09/2026
+
+**Estado: `R60_HUMAN_QA_4_PILOTS_FAIL_REWORK_REQUIRED` · #324.**
+
+María escucha los cuatro pilotos y determina que no funcionan: algunas piezas resultan estridentes desde el inicio y otras presentan dureza/estridencia entre fragmentos o transiciones.
+
+HUMAN QA prevalece sobre métricas y checks automáticos.
+
+M01 REWORK · M02 REWORK · M03 REWORK · M04 REWORK.
+
+Esperado: `R60_CLAUDE_MUSIC_4_PILOTS_R2_READY_FOR_ASTRA_MARIA`.
+
+No largos, A2, sustitución Pixabay, main ni producción.
+
+
 ## R60 · Música P1 · Astra listening review · 28/09/2026
 
 **Estado: `R60_ASTRA_MUSIC_4_PILOTS_LISTENING_REVIEW_READY_FOR_MARIA` · #324.**
