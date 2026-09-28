@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Codex · R59 Intereses · 28/09/2026
+
+Orden: `R59_CODEX_INTERESES/01_CODEX.md` · issue #323.
+
+Codex reestructura 72/72 primero. No construye 72 ni inventa dirección artística. Tras conceptos Astra/María aprobados, construye solo 6 pilotos.
+
+Astra revisa → A2 integra → María HUMAN QA.
+
+
 ## Codex · R57 Juegos · 28/09/2026
 
 Orden: `R57_CODEX_GAMES/01_CODEX.md` · issue #321.
