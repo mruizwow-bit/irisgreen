@@ -1,3 +1,24 @@
+## R53 · Sala 1 Globos · proyección corregida · E4 sigue abierto · 28/09/2026
+
+**Estado: `R53_SALA1_GLOBE_PROJECTION_FIX_PASS_E4_REWORK_CONTINUES` · #317.**
+
+Astra revisa la prueba controlada y la sala real: el fallo que hacía que los globos de los extremos se vieran cortados/deformados queda corregido. Las siluetas fuera de eje ya se leen como globos completos.
+
+Gate parcial:
+`GLOBE_SILHOUETTE_PROJECTION_PASS`.
+
+No reabrir geometría esférica salvo regresión.
+
+Sigue pendiente E4: membrana/material, arquitectura, interacción visible y composición móvil propia.
+
+Mismo patrón registrado en Cloud/Garden, pero esas salas no se tocan todavía.
+
+Esperado:
+`R53_SALA1_GLOBOS_E4_R2_READY_FOR_ASTRA_MARIA`.
+
+Otras 5 salas HOLD. No A2/main/producción.
+
+
 ## R54 · Taller · rebenchmark SEP 2026 · 6 tarjetas PASS Astra · 28/09/2026
 
 **Estado: `R54_ASTRA_6_PILOTS_REBENCHMARK_SEP2026_PASS_HUMAN_QA_PENDING` · #318.**
