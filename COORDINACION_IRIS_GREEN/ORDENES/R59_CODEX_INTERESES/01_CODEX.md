@@ -945,6 +945,55 @@ QA mínimo:
 
 ---
 
+# 12 BIS. NORMA VISUAL GLOBAL 2026 · OBLIGATORIA
+
+R59 hereda de forma obligatoria:
+
+`COORDINACION_IRIS_GREEN/NORMATIVA/IRIS_GREEN_VISUAL_STANDARD_SEP_2026.md`
+
+Estado normativo:
+
+`IRIS_GREEN_VISUAL_STANDARD_SEP_2026_ADOPTED_ROLLING`
+
+Consecuencia para Intereses:
+
+- R48 es donor de datos, fuentes, subconjuntos, lógica, accesibilidad, privacidad y recortes editoriales;
+- **R48 NO es donor de nivel visual final**;
+- ninguna escena R48 construida puede usarse como objetivo gráfico por el mero hecho de existir;
+- `DEPTH`, `CARDS`, `TIMELINE`, `CRYSTAL3D`, `NETWORK` y cualquier otro renderer R48 pueden aportar lógica, pero no fijan el arte final;
+- cada mundo/escena de R58 debe decidirse de forma independiente y alcanzar el estándar visual global vigente antes de escalar.
+
+Auto-benchmark R48 recibido tras la adopción de la norma:
+- 45 experiencias construidas evaluadas;
+- 45/45 = `VISUAL_REWORK_REQUIRED`;
+- 14 con algo de profundidad/atmósfera, pero todavía por debajo del nivel final;
+- 31 como vector plano/color liso;
+- 0 referencias visuales R48 aprobadas como estándar 2026.
+
+Esto NO invalida los donors técnicos/editoriales.
+
+Sí invalida cualquier razonamiento del tipo:
+- “usar el aspecto R48 porque ya está construido”;
+- “mantener el renderer R48 como acabado”;
+- “es suficientemente bueno porque es accesible/ligero”.
+
+Para Fase 1, `proposed_world_scene` y `r58_decision_basis` deben contemplar desde ya:
+- materialidad;
+- iluminación;
+- profundidad;
+- atmósfera;
+- microdetalle;
+- identidad propia;
+- móvil;
+- accesibilidad;
+- rendimiento.
+
+Para Fase 2, ningún piloto pasa por funcionar técnicamente si visualmente queda por debajo del nivel premium global vigente.
+
+El benchmark visual es móvil y debe releerse antes de cada ola de escalado.
+
+---
+
 # 13. LÍMITES
 
 No tocar desde R59:
