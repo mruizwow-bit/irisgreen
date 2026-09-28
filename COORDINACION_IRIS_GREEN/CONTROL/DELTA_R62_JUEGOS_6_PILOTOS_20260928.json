@@ -1,0 +1,23 @@
+{
+  "schema": "R62_GAMES_6_PILOT_CONCEPTS/1.0",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_GAMES_6_PILOT_CONCEPTS_ORDERED",
+  "parent_issues": [
+    320,
+    321
+  ],
+  "pilots": [
+    "habitacion-imposible",
+    "terrario-vivo",
+    "rutas-de-luz",
+    "ritmo-de-colores",
+    "pesca-tranquila",
+    "mi-museo"
+  ],
+  "workflow": "ONE_BY_ONE_CONCEPT_MARIA_APPROVAL_THEN_CODEX",
+  "codex_unlock": "R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX",
+  "codex_hold": true,
+  "migration_260_allowed": false,
+  "tools_26_migration_allowed": false
+}
