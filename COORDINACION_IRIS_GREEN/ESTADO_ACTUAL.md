@@ -1,5 +1,19 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R58/R59 · Intereses · reestructuración antes de build · 28/09/2026
+
+**Producto:** `R58_INTERESTS_RESTRUCTURE_AND_PILOTS_ORDERED` · #322  
+**Ejecución Codex:** `R59_CODEX_INTERESTS_RESTRUCTURE_ORDERED` · #323
+
+Intereses deja de entrar por datasets/APIs/mapas y pasa a mundos visuales propios + exploración + actividad + colección opcional + información real dosificada.
+
+Codex empieza solo con matriz 72/72. STOP en `R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA`.
+
+Después de conceptos Astra/María aprobados, construye solo 6 pilotos: Mar y peces, Aves, Fósiles, Minerales, Trenes/metro y Espacio.
+
+No escalado antes de `R58_INTERESTS_STANDARD_APPROVED_FOR_SCALE`.
+
+
 ## R57 · Codex Juegos · clasificación 297 primero · 28/09/2026
 
 **Estado: `R57_CODEX_GAMES_CLASSIFICATION_ORDERED`.**
