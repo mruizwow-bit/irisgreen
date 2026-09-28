@@ -1,169 +1,142 @@
-# R62 · P01 · Habitación imposible · concepto
+# R62 · P01 · Habitación imposible · concepto R2
 
-**Estado:** propuesta de concepto, pendiente de revisión de Astra y HUMAN QA de María.
-**Gate que persigue:** `R62_P01_HABITACION_CONCEPT_APPROVED`
+**Estado:** `R62_P01_HABITACION_CONCEPT_R2_READY_FOR_ASTRA`
+**Mecánica:** aprobada en R1 (`R62_P01_MECHANIC_PASS`), conservada sin cambios.
 **Fecha:** 28/09/2026
 
-> **Aviso sobre las imágenes.** Las dos láminas adjuntas son SVG autorados en
-> `scripts/r62_p01_concepto.py`: geometría axonométrica calculada, materiales,
-> sombras proyectadas y oclusión de contacto. Comunican **composición, escala,
-> volumen y mecánica**, y sirven para aprobar o rechazar el juego.
-> No son la dirección de arte final: están a nivel de *blocking*. Lo que falta
-> —ilustración rica, materialidad de piedra, atmósfera— se dice en el punto 14,
-> con lo que haría falta para llegar ahí.
+Láminas: `gameplay.svg` (principal) y `cambio-de-suelo.svg` (segundo estado).
+Capturas a 1440 y 390 en `capturas/`. Generador: `scripts/r62_p01_concepto.py`.
 
 ---
 
-## 1 · Imagen principal de gameplay
+## Qué cambió respecto a R1
 
-`gameplay.svg` — la sala a media partida. Arco de entrada a ras de suelo en el
-muro derecho, vano de salida alto en el izquierdo, y entre ambos las cinco
-piezas manipulables: rampa, escalera, columna, plinto y balcón volado. Tres
-losetas frías marcan el tramo de camino ya resuelto.
-
-## 2 · Detalle de interacción
-
-`interaccion.svg` — el momento de decidir. El plinto está seleccionado (marco y
-tiradores en las cuatro esquinas de su cara superior), el fantasma punteado
-muestra dónde caería si se gira, y falta una loseta del camino, marcada por
-relieve hundido y ranura, no por color. Abajo, los controles de teclado.
-
-## 3 · Mecánica
-
-La sala tiene cuatro suelos posibles. La persona elige cuál de las caras
-interiores hace de suelo y la gravedad se reorienta: nada cambia de sitio, pero
-lo que era un alféizar a media altura pasa a ser un escalón a ras, y una rampa
-que subía pasa a bajar. A eso se suma recolocar y girar las piezas.
-
-El objetivo es que exista un camino continuo entre las dos aperturas. Casi
-siempre hay más de una solución, y algunas usan el cambio de suelo mientras
-otras sólo mueven piezas. No hay cronómetro, ni puntuación, ni fallo: una
-combinación que no conecta simplemente no conecta, y se ve por qué.
-
-## 4 · Bucle
-
-`observar la sala → mover una pieza o cambiar el suelo → la sala se reordena y
-el camino se recalcula a la vista → descubrir que dos cosas que no se tocaban
-ahora se tocan → seguir hasta unir las dos aperturas`
-
-## 5 · Qué lo hace juego
-
-La acción principal —reorientar el espacio— es interesante por sí misma y no
-practica ninguna tarea cotidiana. El sistema responde: cada cambio reordena
-visiblemente qué es transitable. Hay descubrimiento, porque las relaciones
-útiles no se ven hasta que se prueban. Y hay razón intrínseca para seguir: la
-sala siguiente plantea una imposibilidad distinta.
-
-## 6 · Qué NO es
-
-No es «recoge tu habitación» ni ninguna rutina doméstica: no hay objetos
-cotidianos, ni orden correcto, ni tarea que ensayar. Tampoco es el tópico del
-género —girar una pieza hasta que dos bordes coinciden en la proyección 2D y se
-vuelven transitables—, que es la mecánica central de una IP muy reconocible y
-que la orden prohíbe. Aquí la geometría es honesta en cada suelo; lo imposible
-es que la sala sea coherente de cuatro maneras incompatibles a la vez.
-
-Y no es un puzle de luz: eso es P03. Aquí la luz es material, no mecánica.
-
-## 7 · Materiales, luz y paleta
-
-Caliza cálida (`#F4E9D6` → `#7C6549`) para la arquitectura y las piezas ligeras.
-Piedra oscura terrosa (`#C08F68` → `#54402F`) para columna y plinto, que es lo
-que se manipula. Piedra fría azulada (`#CFE1E2` → `#5C7A82`) con ranura de latón
-(`#E3C583`) para el camino transitable y el balcón. Todo sobre un vacío oscuro
-(`#241F19` → `#0E0C0A`), para que la sala se lea como un objeto iluminado y no
-como una ficha sobre papel.
-
-Una sola luz rasante desde arriba a la izquierda: sombras largas proyectadas,
-oclusión donde cada volumen toca el suelo, filo claro en las aristas que miran
-a la luz, y un haz que entra por el vano alto y cae sobre el suelo.
-
-## 8 · Qué se mueve
-
-Poco y despacio. La pieza seleccionada se desliza de casilla a casilla (unos
-180 ms, con salida suave). El giro es un cuarto de vuelta en unos 240 ms. El
-cambio de suelo es la única animación grande: la sala rota sobre su eje en unos
-600 ms, y es lo que permite entender que nada se ha movido de sitio. El camino
-se va encendiendo loseta a loseta, en cascada corta.
-
-Nada parpadea. Nada se mueve solo. No hay bucles de animación de fondo.
-
-## 9 · Qué hace la persona
-
-Elige una pieza, la mueve o la gira, y prueba. Cuando se atasca, cambia el
-suelo y vuelve a mirar. Puede deshacer cualquier cantidad de pasos y reiniciar
-la sala entera. No hay nada que perder.
-
-## 10 · Controles equivalentes
-
-| | Teclado | Puntero / táctil |
+| # de la revisión | R1 | R2 |
 | --- | --- | --- |
-| Elegir pieza | `Tab` / `Shift+Tab` recorren las piezas | tocar la pieza |
-| Mover | `↑ ↓ ← →` una casilla | arrastrar **o** tocar pieza y luego tocar destino |
-| Girar | `R` | botón de giro junto a la pieza seleccionada |
-| Cambiar de suelo | `1` `2` `3` `4` | los cuatro rombos del selector |
-| Confirmar / soltar | `Enter` | tocar fuera |
-| Deshacer | `Ctrl+Z` | botón de deshacer |
-| Reiniciar sala | botón, con confirmación | ídem |
+| 1 · mostrar la mecánica central | las dos láminas tenían la misma orientación; la segunda enseñaba selección del plinto | lámina 2 es un díptico Estado A / Estado B con la gravedad cambiada de verdad |
+| 2 · dirección artística | maqueta isométrica plana | sala cúbica, grano de piedra, velo atmosférico, viñeta, oclusión de contacto, luz de rebote fría, haz por el vano alto |
+| 3 · entrada → recorrido → salida | losetas sueltas sin relación legible | vanos rotulados ENTRADA y SALIDA, eje de latón continuo que **toca** los dos vanos, y cota «2,4» sobre el salto que bloquea |
+| 4 · selector de suelo | cuatro rombos que parecían un D-pad | cuatro miniaturas del propio cubo, cada una con su cara-suelo sombreada y un chevrón de gravedad debajo |
+| 5 · controles de flechas | glifos `↑ ↓ ← →` que salían como cuadrados vacíos | teclas dibujadas en vector, más la palabra «Flechas» |
+| 6 · segundo estado dedicado a lo diferencial | gastado en seleccionar el plinto | dedicado entero al cambio de suelo; la selección de pieza pasa a la lámina de construcción, fuera de este entregable |
 
-El arrastre nunca es el único camino: seleccionar→destino cubre todo. Los
-objetivos táctiles son de 44 px, y de 56 px con `html[data-ig-controls="big"]`.
-A 320 px la sala se reencuadra y el selector de suelo pasa a una fila bajo el
-tablero; no hay desplazamiento horizontal.
+**Un cambio estructural que no estaba pedido y que resuelve varios puntos a la
+vez: la sala es ahora un cubo.** En R1 era una habitación de proporción
+arbitraria, y «cualquiera de sus caras puede ser el suelo» había que creérselo.
+Con un cubo la regla se ve sola, y además permite que el selector sea una
+miniatura de la propia sala en lugar de un mando abstracto.
 
-## 11 · Reduced motion
+**Y los cuatro suelos son rotaciones reales, no dibujos distintos.** El
+generador define las piezas y los vanos una sola vez en coordenadas de la sala
+y les aplica una de cuatro rotaciones propias:
 
-Con `prefers-reduced-motion` **o** con `html[data-ig-motion="off"]` —las dos
-señales, como ya hace el resto de la casa— los deslizamientos y el giro pasan a
-cortes secos, y la rotación de sala se sustituye por un fundido de 120 ms entre
-el antes y el después, con el selector de suelo marcando cuál está activo. La
-cascada del camino se convierte en encendido simultáneo.
+```
+d0  identidad                   la cara z=0 hace de suelo
+d1  (x,y,z) → (S−z, y, x)       la cara x=0 hace de suelo
+d2  (x,y,z) → (x, z, S−y)       la cara y=S hace de suelo
+d3  (x,y,z) → (S−x, y, S−z)     la cara z=S hace de suelo
+```
 
-Ningún estado depende sólo de color: el camino se distingue por material y por
-la ranura hundida, la pieza seleccionada por marco y tiradores, el suelo activo
-por relleno del rombo. En `forced-colors` las piezas conservan borde propio y
-la selección pasa a `4px double`, que es el patrón que ya usa Juegos.
+Las cuatro tienen determinante +1, así que la sala nunca se espeja. Esto
+importa para la revisión: el Estado B **no puede mentir**. Es el Estado A con
+otra gravedad, calculado, no ilustrado. Si una pieza queda en un sitio raro, es
+que quedaría ahí en el juego.
 
-## 12 · Adaptación por etapa
+---
+
+## La mecánica (sin cambios respecto a R1)
+
+La sala es un cubo y cualquiera de sus caras puede hacer de suelo. Elegir otra
+cara reorienta la gravedad: las piezas no se mueven ni un milímetro respecto a
+la sala, pero lo que era una repisa alta pasa a ser un escalón a ras, una
+columna que se alzaba pasa a ser una viga que sobresale de la pared, y un vano
+inalcanzable queda a la altura del pie.
+
+A eso se suma recolocar y girar las piezas. El objetivo es que exista un camino
+continuo entre las dos aperturas. Casi siempre hay más de una solución. No hay
+cronómetro, ni puntuación, ni fallo.
+
+**Bucle:** `observar → mover una pieza o cambiar el suelo → la sala se reordena
+y el camino se recalcula a la vista → descubrir que dos cosas que no se tocaban
+ahora se tocan → seguir hasta unir las dos aperturas`.
+
+### Qué cuenta la lámina 2
+
+**Estado A.** Entras por el arco, el recorrido corre pegado a dos paredes y
+muere al pie del muro de la salida. La cota dice por qué: el vano está 2,4 por
+encima, y ninguna pieza colocada así llega.
+
+**Estado B.** Tecla 3. La cara del fondo pasa a ser el suelo. La columna que se
+alzaba es ahora una viga que cruza en alto; la escalera es un voladizo; la
+repisa fría es un tabique. Y la salida —la misma, no otra— queda a la altura
+del pie. El recorrido se rehace por el suelo nuevo y llega.
+
+Nada se ha movido. Sólo ha cambiado qué es «abajo».
+
+---
+
+## Materiales, luz y acabado
+
+Caliza cálida para la arquitectura, caliza clara para las piezas ligeras,
+piedra terrosa oscura para las que se manipulan, piedra fría azulada con eje de
+latón para el recorrido. Todo sobre un vacío oscuro, para que la sala sea un
+objeto iluminado y no una ficha sobre papel.
+
+Una sola luz rasante desde arriba a la izquierda. Sombras proyectadas, también
+bajo las piezas que quedan en el aire —que es lo que permite leer su altura—,
+oclusión de contacto contra el suelo y en el encuentro de los muros, filo claro
+en las aristas que miran a la luz, luz fría de rebote en las que le dan la
+espalda, grano de piedra por turbulencia y viñeta.
+
+## Accesibilidad del concepto
+
+Sin cambios respecto a R1, que pasó: teclado completo con `Flechas`, `R`, `1–4`
+y `Tab`; arrastre nunca como único camino (seleccionar→destino cubre todo);
+objetivos de 44 px y 56 px en modo de controles grandes; `prefers-reduced-motion`
+**y** `data-ig-motion="off"`, las dos señales; ningún estado que dependa sólo
+del color —el recorrido se distingue por material y por la ranura, la pieza
+seleccionada por marco y tiradores, el suelo activo por la cara sombreada del
+cubo y su chevrón—; sin flashes; sin pulsación rápida obligatoria.
+
+**Nota de producto que sale de la captura a 390:** el díptico lado a lado es un
+formato de revisión, no de producto. En la herramienta, a 320–390 px los dos
+estados se ven de uno en uno con el selector debajo, nunca en paralelo.
+
+## Etapas
 
 La etapa cambia la sala de partida, no el aspecto. Infancia arranca con tres
-piezas, un solo suelo alternativo y el camino ya iniciado; adolescencia y
-adultez, con cinco piezas y los cuatro suelos. El copy se acorta en infancia.
-No hay paleta infantil, ni mascotas, ni ojos: es la misma sala.
+piezas, dos suelos posibles y el recorrido ya iniciado; adolescencia y adultez,
+con cinco piezas y los cuatro suelos. Misma paleta, misma arquitectura, mismo
+acabado. Sin mascotas, sin ojos, sin infantilizar.
 
-## 13 · Riesgo de similitud con IP externa
-
-El riesgo real está en el género. Mitigaciones adoptadas:
+## Riesgo de similitud con IP externa
 
 - **La mecánica es otra.** No se usa la coincidencia de bordes en la proyección
   2D, que es el núcleo de la IP más reconocible del género.
-- **Sin personaje.** No hay figura que caminar, así que no hay silueta, ni
-  cámara que la siga, ni lenguaje de animación que pueda parecerse.
-- **Sin arquitectura firmada.** Nada de escaleras entrelazadas ni bucles
-  imposibles calcados de obra concreta; la sala es un interior ortogonal simple.
-- **Paleta propia**, cálida y oscura, lejos del pastel saturado del referente.
+- **Sin personaje.** No hay figura que caminar: ni silueta, ni cámara que la
+  siga, ni lenguaje de animación que pueda parecerse.
+- **Sin arquitectura firmada.** Un cubo con dos vanos; nada de escaleras
+  entrelazadas ni bucles calcados de obra concreta.
+- **Selector resuelto.** El rombo de cuatro posiciones que en R1 podía leerse
+  como D-pad ha desaparecido; ahora es la propia sala en miniatura.
 
-Queda por revisar con Astra si el selector de cuatro suelos evoca demasiado
-algún mando conocido. Es un rombo de cuatro posiciones; si hay duda, se cambia.
+## Criterio de PASS visual
 
-## 14 · Criterio de PASS visual
+A 1440 y a 390:
 
-La lámina pasa cuando, a 1440 y a 390:
+1. Se distinguen las cuatro familias de material a simple vista.
+2. Todo volumen tiene sombra, también el que está en el aire.
+3. El recorrido se lee sin depender del color, también en `forced-colors`.
+4. El cambio de suelo se entiende sin leer el pie de foto.
+5. Ningún elemento puede confundirse con obra de terceros.
 
-1. Se distinguen a simple vista las tres familias de material.
-2. Cada volumen tiene sombra proyectada y oclusión de contacto; ninguno flota.
-3. El camino se lee sin depender del color, también en `forced-colors`.
-4. Ninguna pieza queda ocluida hasta ser irreconocible.
-5. No hay ningún elemento que pueda confundirse con obra de terceros.
+**Lo que sigue sin cumplirse, y lo digo yo antes de que se descubra
+construyendo:** la piedra tiene grano pero no veta ni desgaste, y el haz de luz
+es una insinuación, no una atmósfera. Los puntos 1 a 5 los cumple; el listón de
+«calidad visual magnífica» del §3 pide además una capa de ilustración —texturas
+propias, imperfección, materia— que no sale de geometría calculada en SVG.
 
-**Lo que hoy no cumple, y hay que decirlo:** las láminas están a nivel de
-blocking. La piedra no tiene grano ni veta, el haz de luz apenas se percibe, y
-falta la profundidad atmosférica que separaría el fondo del primer término.
-Para llegar al listón de «calidad visual magnífica» que fija el §3 hacen falta
-texturas propias y una pasada de ilustración que no sale de geometría
-calculada. Eso es trabajo de dirección de arte con herramienta de imagen, no de
-un generador de SVG.
-
-Mi recomendación: aprobar o rechazar **la mecánica** con estas láminas, que
-para eso sirven, y tratar la dirección de arte como un entregable aparte antes
-de soltar a Codex.
+Mi recomendación sigue siendo la misma, ahora con la mecánica ya demostrada:
+aprobar la lámina como **referencia de composición, mecánica y lenguaje
+visual**, y encargar la capa de textura como entregable aparte antes de soltar
+a Codex, para que construya contra algo que sí da el listón.
