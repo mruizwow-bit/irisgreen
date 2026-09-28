@@ -1,63 +1,85 @@
-# R52 · A3 · Sabik moving presence restored
+# R52 · A3 correction · current Sabik + Motion R37
 
-## Final identity
+## Product correction from María · 28/09/2026
 
-Base A2 HEAD: `ebda48b00c4a323408bdf1471c311864635ed39d`  
-Base A2 tree: `40828a7e6da73d09de7710c00a29408b525c7002`  
-A3 HEAD before this documentation-only correction: `e5b31dc5aa6b871793269ea333860b69ade0b30c`  
-A3 tree before this documentation-only correction: `b23856df81acfc5e18bce9b07b8d5f68a4477adb`  
-Branch: `agent3/r52-sabik-moving-presence-20260927`  
-Donor visual: `fc5cdfc2f978c85033de2b07c34309f8a4a7bd18`  
-Donor base asset Git blob: `003a7642840d060a4c53ce6f2776c59ff6e672e7`
+The previous A3 interpretation was wrong: it mounted the historical `sabik-preview` visual donor.
 
-The earlier `23108a893e93939305e1a382150c1b4034f69c82` value was a stale pre-final base reference and is superseded by the final A2 base above.
+The current product rule is:
 
-## Ported by A3
+**keep the current/new Sabik visual identity and restore/preserve Motion R37 on that identity.**
 
-Layered back SVG + approved base WebP + layered front SVG are taken from the exact donor. The donor's continuous precession, base breathing, presence wave and voice ripple are restored. PRESENTE / ORIENTAR / TRANSICION / PAUSA / CONFIRMAR now modulate that living presence instead of swapping static masters. Current retrieval activity is read from `#sabik-results[aria-busy]`; the current panel, retrieval, Safety, audio runtime and approved R02 copy stay authoritative.
+R37 is the motion system that was lost. It is not the visual identity to replace.
 
-The historical donor references `sabikCoreBreath` but does not define `@keyframes sabikCoreBreath`. R52 records that discrepancy and does not invent a missing donor animation.
+## Base
 
-### Exact A3 implementation surfaces
+A2 correction base: `5f759464dfa6f78d1843f9414f5b2207da33700a`  
+A2 base tree: `89927a186c9e9550fe8d996d8904d4274b353eb8`  
+Correction branch: `agent3/r52-correct-new-sabik-r37-motion-20260928`
 
-- `sabik/iris-panel.html`: layered Sabik markup replaces the static-only presentation while preserving the current panel.
-- `sabik/iris-mount.css`: donor-derived orbit/precession, breathing, presence-wave, voice-ripple, B3 modulation, NORMAL/REDUCIDO/SIN_MOVIMIENTO, hidden/panel pause, reduced-motion and forced-colors behavior.
-- `sabik/sabik-web-r01.js`: current-state adaptation, processing activity, render pause, and visual voice hooks.
-- `sabik/assets/sabik-base-640.webp`: exact donor WebP blob `003a7642840d060a4c53ce6f2776c59ff6e672e7`.
-- `scripts/apply_iris_brief_r08.py` + `scripts/test_iris_brief_r08.py`: publish and verify the donor WebP in the built output.
-- `scripts/test_sabik_presence_r52.py` + `scripts/test_sabik_presence_r52_browser.py`: static/regression and temporal browser QA.
-- `.github/workflows/r52-a3-sabik-presence.yml` + `.github/workflows/iris-sabik-r08.yml`: dedicated R52 gate and integration into the broader R08 checks.
+## Current Sabik identity kept byte-exact
 
-## Deliberately not restored
+The five Web R01 masters remain the visual identity:
 
-Old NEA shell/navigation/copy/retrieval/storage/Safety and cognitive-inference semantics are not restored. No `data-cognitive-state`, Hiperfoco, Sobrecarga, Vinculo, VozInterior or Creatividad inference returns.
+- `web_presente.png` · Git blob `c18d8f2aae53c281e02baeeac0ccd832acca4ecb`
+- `web_orientar.png` · Git blob `093abfdb63888f76924f0d50e076bc48314d6b21`
+- `web_transicion.png` · Git blob `66209eee4efb61e71e4bedc8251b45cc93df3080`
+- `web_pausa.png` · Git blob `d2b83e4e5ee66832a26f649674de209b11039485`
+- `web_confirmar.png` · Git blob `7b4e1a22fc4ae00387b48cb5d372e7342af5ce6d`
 
-## A2 voice hook
+No current master is recolored, redrawn or replaced.
 
-A3 exposes both:
+## Motion restored
 
-`SabikWebPresentation.handleVoiceEvent('voice-start'|'voice-end'|'voice-cancel'|'voice-error')`
+`sabik/sabik-motion-r37.js` remains authoritative.
 
-and:
+R37 behavior:
+- PRESENTE: stable/idle;
+- ORIENTAR: finite NORMAL/REDUCIDO transition;
+- TRANSICION: finite transition and return to the requested stable state;
+- PAUSA: finite state transition;
+- CONFIRMAR: finite transition and return to PRESENTE;
+- SIN_MOVIMIENTO: no animation;
+- system reduced motion never forces NORMAL;
+- no continuous wait loop, RAF loop or interval loop.
 
-`SabikWebPresentation.setVoiceActive(boolean)`
+`sabik/sabik-web-r01.js` again loads the current `web_*.png` masters and applies R37 transitions to `#sabik-web-master`.
 
-The existing `createSabikVoice(..., { onState })` already exposes `playing`. A2 can connect the current audio runtime with:
+## Historical donor removed
 
-```js
-window.SabikWebPresentation?.setVoiceActive(Boolean(state.playing));
-```
+The correction removes:
+- `sabik/assets/sabik-base-640.webp`;
+- `sabik-layered-avatar`;
+- donor back/front SVG layers;
+- donor orbit rings and dots;
+- `sabikMeasuredPrecession`;
+- `sabikPresenceWave`;
+- `sabikVoiceRipple`;
+- continuous donor breathing/orbit motion.
 
-This branch does not claim final speech playback because the canonical 30 WAV assets remain A2's binary gate.
+The historical `sabik-preview@fc5cdf...` is not a visual source for the current Sabik.
 
-## Evidence
+## Voice compatibility
 
-`scripts/test_sabik_presence_r52.py` gates structure, donor provenance and regressions.  
-`scripts/test_sabik_presence_r52_browser.py` produces temporal browser evidence for resting motion, processing, voice ripple, reduced/no-motion, hidden panel, frame pacing and 1920/1440/390/320 widths.  
-Dedicated R52 presence workflow run `36343836772`: SUCCESS.  
-CI artifact: `r52-a3-sabik-temporal-evidence` / artifact id `10939593995`.  
-The R08 publisher allowlist includes `.webp`, and the built donor asset is checked byte-for-byte against source.
+A2 already calls:
 
-The broad R08 job reaches the pre-existing `test_iris_corrections_r09.py` failure also present on the exact A2 base; A3 does not alter that unrelated scope.
+`SabikWebPresentation.setVoiceActive(playing)`
 
-Marker: `R52_A3_SABIK_MOVING_PRESENCE_RESTORED_READY_FOR_A2`
+The correction keeps that method as a presentation-neutral compatibility hook. It records voice activity without swapping the master, importing the old donor or inventing a sixth B3 state.
+
+Any future visible voice reaction must be defined on the current Sabik identity, not by restoring the historical donor.
+
+## Regression gates
+
+The R52 tests now fail if:
+- the historical WebP returns;
+- layered donor SVG markup returns;
+- orbit/presence-wave donor keyframes return;
+- current Web R01 master blobs change;
+- R37 stops controlling state motion;
+- R37 becomes a continuous loop;
+- NORMAL/REDUCIDO/SIN_MOVIMIENTO behavior changes;
+- voice activity replaces the current Sabik visual.
+
+Marker:
+
+`R52_A3_CURRENT_SABIK_R37_MOTION_CORRECTION_READY_FOR_A2`
