@@ -51,6 +51,8 @@ REPO = Path(__file__).resolve().parent.parent
 SS = 2                       # supermuestreo
 OUT_W, OUT_H = 1180, 880
 W, H = OUT_W * SS, OUT_H * SS
+TOP_ROOM = 0.0               # banda reservada arriba, en píxeles de salida
+BOT_ROOM = 0.0               # banda reservada abajo
 
 S = 6.0                      # lado de la sala cúbica
 def _fit(margin=0.055):
@@ -59,15 +61,26 @@ def _fit(margin=0.055):
     pts = [((x - y) * c30, (x + y) * s30 - z)
            for x in (-0.34, S) for y in (-0.34, S) for z in (0.0, S)]
     xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    avail_h = H - TOP_ROOM - BOT_ROOM
     u = min(W * (1 - 2 * margin) / (max(xs) - min(xs)),
-            H * (1 - 2 * margin) / (max(ys) - min(ys)))
-    return u, W / 2 - (max(xs) + min(xs)) / 2 * u, H / 2 - (max(ys) + min(ys)) / 2 * u
+            avail_h * (1 - 2 * margin) / (max(ys) - min(ys)))
+    cy = TOP_ROOM + avail_h / 2
+    return u, W / 2 - (max(xs) + min(xs)) / 2 * u, cy - (max(ys) + min(ys)) / 2 * u
 
 
-U, OX, OY = _fit()
-KX = U * math.cos(math.radians(30))
-KY = U * math.sin(math.radians(30))
-KZ = U
+U = OX = OY = KX = KY = KZ = 0.0
+
+
+def configure(out_w, out_h, top=0.0, bot=0.0, margin=0.055):
+    """Fija lienzo y encuadre. El móvil reserva banda para la interfaz."""
+    global OUT_W, OUT_H, W, H, TOP_ROOM, BOT_ROOM, U, OX, OY, KX, KY, KZ
+    OUT_W, OUT_H = out_w, out_h
+    W, H = out_w * SS, out_h * SS
+    TOP_ROOM, BOT_ROOM = top * SS, bot * SS
+    U, OX, OY = _fit(margin)
+    KX = U * math.cos(math.radians(30))
+    KY = U * math.sin(math.radians(30))
+    KZ = U
 
 LIGHT = np.array([-0.46, -0.30, 0.84])
 LIGHT /= np.linalg.norm(LIGHT)
@@ -185,9 +198,10 @@ def blit_quad(buf, world_corners, mat, tint=1.0, emissive=None):
     dta = sample_tex(ta * tscale + 0.05, tb * tscale) - tex
     dtb = sample_tex(ta * tscale, tb * tscale + 0.05) - tex
 
-    # desgaste de arista: la piedra no tiene cantos perfectos
+    # desgaste de arista, desigual: unos sillares están más desportillados
     ew = np.minimum(np.minimum(u, 1 - u) * du_len, np.minimum(v, 1 - v) * dv_len)
-    wear = np.clip(ew / 0.085, 0, 1)
+    chip = 0.55 + 1.15 * sample_grain(ta * 0.85, tb * 0.85)
+    wear = np.clip(ew / (0.085 * chip), 0, 1)
 
     alb = np.stack([np.full_like(tex, base[i]) for i in range(3)], -1)
     alb *= (0.80 + 0.34 * tex)[..., None]
@@ -196,6 +210,11 @@ def blit_quad(buf, world_corners, mat, tint=1.0, emissive=None):
         strat = 0.5 + 0.5 * np.sin(wz * 5.2 + 3.4 * tex + 1.7 * grn)
         alb *= (0.93 + 0.15 * strat)[..., None]
     alb *= (0.86 + 0.16 * wear)[..., None] * tint
+
+    # manchas: humedad que sube del suelo y veladura general
+    stain = sample_tex(ta * 0.30, tb * 0.30)
+    damp = np.clip(1.0 - wz / 2.1, 0.0, 1.0) ** 1.6
+    alb *= (1.0 - 0.34 * stain * damp - 0.09 * stain)[..., None]
 
     joint = None
     cs = COURSING.get(mat)
@@ -343,25 +362,47 @@ def screen_dir_for_light():
     return np.array([(l[0] - l[1]) * KX, (l[0] + l[1]) * KY - l[2] * KZ])
 
 
+JITTER = [(0.0, 0.0), (0.075, -0.045), (-0.062, 0.070), (0.030, 0.085)]
+
+
+SHADOW_DOWN = 2      # la marcha va a media resolución: la penumbra es suave
+
+
 def shadow_mask(buf):
-    sd = screen_dir_for_light()          # desplazamiento en pantalla por unidad de mundo
+    """Sombra de área: varias direcciones cercanas promediadas dan penumbra
+    que se abre con la distancia al ocluyente, en vez de un canto duro."""
+    k = SHADOW_DOWN
+    dep = buf.depth[::k, ::k].copy()
+    msk = buf.mask[::k, ::k].astype(np.float32)
+    total = np.zeros(dep.shape, np.float32)
+    for jx, jy in JITTER:
+        lj = LIGHT + np.array([jx, jy, 0.0])
+        total += _march(dep, msk, lj / np.linalg.norm(lj), k)
+    total = gaussian_filter(total / len(JITTER), 1.4 * SS / k)
+    hh, ww = buf.depth.shape
+    yy, xx = np.mgrid[0:hh, 0:ww].astype(np.float32)
+    return map_coordinates(total, [yy / k, xx / k], order=1, mode='nearest')
+
+
+def _march(dep, msk, L, k):
+    h, w = dep.shape
+    sd = np.array([(L[0] - L[1]) * KX, (L[0] + L[1]) * KY - L[2] * KZ]) / k
     sn = float(np.linalg.norm(sd))
     d = sd / (sn + 1e-9)
-    dd = float(LIGHT.sum())              # ganancia de profundidad por unidad de mundo
-    shade = np.zeros((H, W), np.float32)
-    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
-    for i in range(1, 64):
-        t = (i ** 1.28) * 1.7 * SS       # pasos crecientes: fino cerca, basto lejos
+    dd = float(L.sum())
+    shade = np.zeros((h, w), np.float32)
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    solid = msk > 0.5
+    for i in range(1, 58):
+        t = (i ** 1.30) * 1.6 * SS / k
         world_t = t / sn
-        sx = np.clip(xx + d[0] * t, 0, W - 1)
-        sy = np.clip(yy + d[1] * t, 0, H - 1)
-        samp = map_coordinates(buf.depth, [sy, sx], order=1, mode='nearest')
-        inside = map_coordinates(buf.mask.astype(np.float32), [sy, sx], order=1,
-                                 mode='constant', cval=0.0) > 0.5
-        ray = buf.depth + dd * world_t
-        hit = inside & (samp > ray + 0.035) & buf.mask
-        shade = np.maximum(shade, hit * (1.0 - 0.45 * i / 64.0))
-    return gaussian_filter(shade, 1.8 * SS)
+        sx = np.clip(xx + d[0] * t, 0, w - 1)
+        sy = np.clip(yy + d[1] * t, 0, h - 1)
+        samp = map_coordinates(dep, [sy, sx], order=1, mode='nearest')
+        inside = map_coordinates(msk, [sy, sx], order=1, mode='constant', cval=0.0) > 0.5
+        hit = inside & (samp > dep + dd * world_t + 0.035) & solid
+        shade = np.maximum(shade, hit * (1.0 - 0.45 * i / 58.0))
+    return shade
 
 
 def ambient_occlusion(buf):
@@ -404,8 +445,24 @@ def shade(buf):
     amb = (sky[None, None, :] * up[..., None] + bounce[None, None, :] * (1.0 - up[..., None]))
     amb *= ao[..., None]
 
+    # derrame del vano alto: fuente secundaria en la salida, con caída
+    opening = np.array([0.0, 4.8, 3.4], np.float32)
+    to_op = opening[None, None, :] - buf.world
+    dist = np.linalg.norm(to_op, axis=-1) + 1e-6
+    l2 = to_op / dist[..., None]
+    fall = 1.0 / (1.0 + (dist / 3.2) ** 2)
+    ndl2 = np.clip((n * l2).sum(-1), 0, 1) * fall * buf.mask
+
+    # rebote cálido del suelo hacia las caras que miran hacia abajo
+    down = np.clip(-n[..., 2], 0, 1)
+    bounce_k = np.array([0.36, 0.26, 0.16], np.float32)
+
     key = np.array([1.00, 0.88, 0.70], np.float32)
-    lit = buf.albedo * (amb * 0.34 + key[None, None, :] * (ndl * sh)[..., None] * 0.95)
+    spill = np.array([1.00, 0.86, 0.62], np.float32)
+    lit = buf.albedo * (amb * 0.34
+                        + key[None, None, :] * (ndl * sh)[..., None] * 0.95
+                        + spill[None, None, :] * ndl2[..., None] * 0.55
+                        + bounce_k[None, None, :] * (down * ao)[..., None] * 0.45)
     lit += key[None, None, :] * (spec * sh)[..., None] * 0.55
 
     # niebla por profundidad: lo lejano pierde contraste
@@ -485,6 +542,63 @@ def mini_room(cx, cy, s, datum, active):
     return ''.join(out)
 
 
+def overlay_movil(data_uri):
+    """Composición vertical propia. El §12 permite cambiar la disposición y
+    ocultar detalle secundario; lo que prohíbe es encoger el escritorio."""
+    o = []
+    pts = [po((5.5, 0.0, 0.05))] + [po((cx + 0.5, cy + 0.5, 0.05)) for cx, cy in PATH]
+    o.append('<polyline points="' + ' '.join(f'{a:.1f},{b:.1f}' for a, b in pts) +
+             f'" fill="none" stroke="{LATON}" stroke-width="3" opacity="0.95" '
+             f'stroke-linecap="round" stroke-linejoin="round"/>')
+    a0, end = pts[0], pts[-1]
+    o.append(f'<circle cx="{a0[0]:.1f}" cy="{a0[1]:.1f}" r="6" fill="{LATON}"/>'
+             f'<circle cx="{end[0]:.1f}" cy="{end[1]:.1f}" r="6" fill="none" '
+             f'stroke="{LATON}" stroke-width="2.6"/>')
+
+    lo, hi = po((0.5, 5.5, 0.05)), po((0.5, 5.5, 2.4))
+    o.append(f'<line x1="{lo[0]:.1f}" y1="{lo[1]:.1f}" x2="{hi[0]:.1f}" y2="{hi[1]:.1f}" '
+             f'stroke="{LATON}" stroke-width="2.4" stroke-dasharray="8 6" opacity="0.95"/>'
+             f'<rect x="{hi[0]-24:.1f}" y="{(lo[1]+hi[1])/2-14:.1f}" width="48" height="28" '
+             f'rx="6" fill="#171008" fill-opacity="0.9" stroke="{LATON}" stroke-width="1.2"/>'
+             f'<text x="{hi[0]:.1f}" y="{(lo[1]+hi[1])/2+6:.1f}" font-family="Georgia, serif" '
+             f'font-size="16" fill="{LATON}" text-anchor="middle">2,4</text>')
+
+    for label, wp in (('ENTRADA', (5.15, 0.0, 2.6)), ('SALIDA', (0.0, 4.8, 4.8))):
+        px, py = po(wp)
+        px = min(max(px, 52), OUT_W - 52)
+        o.append(f'<text x="{px:.0f}" y="{py:.0f}" font-family="Georgia, serif" '
+                 f'font-size="15" fill="{LATON}" text-anchor="middle" '
+                 f'letter-spacing="1.4">{label}</text>')
+
+    # selector: fila de objetivos de 60 px bajo la escena, no miniaturas
+    base = OUT_H - 104
+    o.append(f'<text x="{OUT_W/2}" y="{base-16:.0f}" font-family="Georgia, serif" '
+             f'font-size="12.5" fill="#A4937A" text-anchor="middle" letter-spacing="1">'
+             f'QUÉ CARA HACE DE SUELO</text>')
+    for i in range(4):
+        cx = OUT_W / 2 - 133 + i * 89
+        o.append(f'<rect x="{cx-30:.0f}" y="{base:.0f}" width="60" height="60" rx="11" '
+                 f'fill="#FFFFFF" fill-opacity="{0.07 if i == 0 else 0.025}" '
+                 f'stroke="{LATON if i == 0 else "#5B5142"}" '
+                 f'stroke-width="{1.7 if i == 0 else 1}"/>')
+        o.append(mini_room(cx, base + 40, 14, i, i == 0))
+
+    o.append(f'<text x="{OUT_W/2}" y="{OUT_H-16}" font-family="Georgia, serif" font-size="14.5" '
+             f'fill="#A4937A" text-anchor="middle">Toca una pieza y luego su destino</text>')
+
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+            f'viewBox="0 0 {OUT_W} {OUT_H}" width="{OUT_W}" height="{OUT_H}" role="img" '
+            f'aria-label="Habitación imposible en vertical. Sala cúbica de piedra con el '
+            f'recorrido entre la entrada y la salida, y el selector de suelo debajo.">'
+            f'<image href="{data_uri}" xlink:href="{data_uri}" x="0" y="0" '
+            f'width="{OUT_W}" height="{OUT_H}"/>'
+            f'<text x="18" y="36" font-family="Georgia, serif" font-size="24" fill="#F3EAD8">'
+            f'Habitación imposible</text>'
+            f'<text x="18" y="58" font-family="Georgia, serif" font-size="13" fill="#A4937A">'
+            f'La sala es un cubo. Cualquier cara puede ser el suelo.</text>'
+            + ''.join(o) + '</svg>')
+
+
 def overlay_svg(data_uri):
     o = []
     # recorrido: eje de latón que toca los dos vanos
@@ -559,22 +673,25 @@ def main():
     global GRAIN
     TEX = fbm_tile(octaves=5, gain=0.55, lowest=8, seed=7)
     GRAIN = fbm_tile(octaves=5, gain=0.60, lowest=24, seed=23)
-    buf = Buffers()
-    build_scene(buf)
-    img = compose(shade(buf), buf)
 
-    arr = (img * 255 + 0.5).astype(np.uint8)
-    im = Image.fromarray(arr).resize((OUT_W, OUT_H), Image.LANCZOS)
-    im.save(args.out / 'render-gameplay.png', optimize=True)
-    im.save(args.out / 'render-gameplay.webp', quality=92, method=6)
     import base64, io
-    buf_io = io.BytesIO()
-    im.save(buf_io, 'WEBP', quality=90, method=6)
-    uri = 'data:image/webp;base64,' + base64.b64encode(buf_io.getvalue()).decode('ascii')
-    (args.out / 'gameplay-compuesta.svg').write_text(overlay_svg(uri), encoding='utf-8')
-    print(f'Escrito {args.out}/render-gameplay.png ({im.size[0]}×{im.size[1]})')
-    print(f'Escrito {args.out}/gameplay-compuesta.svg (raster + vector)')
 
+    def render(name, w, h, overlay, top=0.0, bot=0.0, margin=0.055):
+        configure(w, h, top, bot, margin)
+        buf = Buffers()
+        build_scene(buf)
+        im = Image.fromarray((compose(shade(buf), buf) * 255 + 0.5).astype(np.uint8))
+        im = im.resize((OUT_W, OUT_H), Image.LANCZOS)
+        im.save(args.out / f'{name}.webp', quality=92, method=6)
+        bio = io.BytesIO()
+        im.save(bio, 'WEBP', quality=90, method=6)
+        uri = 'data:image/webp;base64,' + base64.b64encode(bio.getvalue()).decode('ascii')
+        (args.out / f'{name}.svg').write_text(overlay(uri), encoding='utf-8')
+        print(f'Escrito {args.out}/{name}.svg  ({OUT_W}x{OUT_H})')
+
+    # escritorio y móvil son dos composiciones, no una escalada
+    render('gameplay-compuesta', 1180, 880, overlay_svg, top=104, bot=120)
+    render('gameplay-movil', 390, 730, overlay_movil, top=62, bot=150, margin=0.004)
 
 if __name__ == '__main__':
     main()

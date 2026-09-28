@@ -137,3 +137,59 @@ Las tres son trabajo dentro de este renderizador.
 Sigo sin poder comparar contra un benchmark externo vigente: no tengo acceso ni
 encargo para fijarlo. Lo repito porque el §3 lo exige antes de cada ola y sin
 esa referencia la pregunta 7 no se puede cerrar con criterio, sólo discutir.
+
+---
+
+## Tercera vuelta · tras `..._E4_GEOMETRY_PASS_LIGHTING_MATERIAL_MOBILE_REWORK_REQUIRED`
+
+Geometría aprobada. Tres frentes.
+
+### Luz
+
+- **Sombra de área.** La marcha de rayo se repite con cuatro direcciones
+  ligeramente distintas y se promedia, así que la penumbra se abre con la
+  distancia al ocluyente en vez de tener canto duro. La marcha va a media
+  resolución —una penumbra suave no necesita más— y el render sigue bajo el
+  minuto.
+- **El vano alto derrama.** Fuente secundaria situada en la salida, con caída
+  cuadrática y color más cálido que la clave. Antes el vano era un agujero
+  negro que no afectaba a la sala; ahora la ilumina.
+- **Rebote.** Término cálido desde el suelo hacia las caras que miran hacia
+  abajo, modulado por la oclusión. Es lo que despega las piezas del suelo sin
+  recurrir a una sombra dibujada.
+
+### Material
+
+- **Manchas de humedad** que suben del zócalo, por ruido de baja frecuencia
+  modulado por la altura. La fábrica deja de estar recién puesta.
+- **Desportillado desigual:** el ancho del desgaste de canto se multiplica por
+  ruido, así que unos sillares tienen la arista rota y otros no.
+
+### Móvil
+
+Aquí me equivoqué en la vuelta anterior. Dije que a 390 «aguantaba» y no era
+verdad: era la composición de escritorio encogida, con el selector a 12 px y
+los controles ilegibles. Es exactamente lo que el §12 prohíbe.
+
+Ahora hay **dos composiciones, no una escalada**:
+
+| | Escritorio | Móvil |
+| --- | --- | --- |
+| Lienzo | 1180×880 | 390×730, vertical |
+| Encuadre | sala centrada, bandas para título y pie | sala reencuadrada, banda inferior reservada a la interfaz |
+| Selector | cuatro miniaturas de 19 px | cuatro objetivos de 60 px con marco |
+| Controles | teclas dibujadas más leyenda | «Toca una pieza y luego su destino» |
+| Pie | crédito de lámina | se oculta: detalle secundario |
+
+El §12 permite simplificar composición, ocultar detalle secundario y cambiar
+disposición. Eso es lo que hace la variante vertical; lo que no hace es
+convertir la escena en iconos ni sustituir arte por texto.
+
+Pesos: 45 KB la lámina de escritorio, 26 KB la de móvil, ambas WebP dentro de
+un SVG autocontenido, con el texto en vector y por tanto legible por lector de
+pantalla y nítido a cualquier zoom.
+
+### Lo que sigue abierto
+
+La pregunta 10 del §15 —comparar contra el benchmark externo vigente— sigue sin
+poder contestarse. Nadie ha fijado la referencia y yo no tengo acceso a ella.
