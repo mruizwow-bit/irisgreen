@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R61 Rincón Pecera · 28/09/2026
+
+Orden: `R61_CLAUDE_RINCON_PECERA/01_CLAUDE.md` · issue #325.
+
+Claude crea solo el piloto Pecera audiovisual ~10 min con audio first-party propio integrado.
+
+Astra revisa → María HUMAN QA → después se decide escalar a Medusas/Mar/Río/Bosque.
+
+
 ## Claude · R60 Música original Iris Green · 28/09/2026
 
 Orden: `R60_CLAUDE_MUSICA_ORIGINAL/01_CLAUDE.md` · issue #324.
