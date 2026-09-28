@@ -1,0 +1,29 @@
+{
+  "schema": "R51_A9_AGE_SOURCE/1.0",
+  "source_repository": "mruizwow-bit/irisgreen",
+  "source_branch": "agent2/sabik-iris-r08-20260924",
+  "source_head": "01301c5a4f977c3f042e6c0d02c4671ea1aee7dd",
+  "source_tree": "f031ab4b86e3544b2e9cf7b0e50af927496e86e1",
+  "source_path": "assets/safety/age-classification-r51-global.json",
+  "source_blob_sha1": "29960f6394e9de926006986304491de165fa8b28",
+  "records": 965,
+  "unclassified": 0,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "visible_by_filter": {
+    "AGE_0_12": 334,
+    "AGE_13_17": 623,
+    "AGE_18_PLUS": 955,
+    "ALL_AGES": 321
+  },
+  "band_assignments": {
+    "AGE_0_12": 13,
+    "AGE_13_17": 302,
+    "AGE_18_PLUS": 634,
+    "ALL_AGES": 321
+  }
+}
