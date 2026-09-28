@@ -1,5 +1,16 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R53 · dirección visual final · 6 instalaciones · 28/09/2026
+
+María fija que las Salas se definen por **luz + color + material + volumen + recorrido**, no por efectos digitales.
+
+R53 pasa de 5 a **6 instalaciones**. La sexta queda pendiente de definición final; no se inventa una demo para completar el número.
+
+Gate visual: cada sala debe poder existir físicamente como instalación de museo y funcionar ya en captura fija. Shader/screensaver/fondo procedural/caja negra/cielo/wireframe = FAIL.
+
+Addendum canónico: `MEMORIA/ADDENDUM_R53_6_INSTALACIONES_LUZ_COLOR_MATERIAL_20260928.md`.
+
+
 ## R44 · matriz 64 retos · revisión Astra guardada · 28/09/2026
 
 **Estado: `R44_MATRIZ_64_ASTRA_REVIEWED_CORRECTIONS_REQUIRED_BEFORE_BUILD`.**
