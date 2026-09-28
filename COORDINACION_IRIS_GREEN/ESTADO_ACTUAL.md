@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R44 · matriz 64 retos · revisión Astra guardada · 28/09/2026
+
+**Estado: `R44_MATRIZ_64_ASTRA_REVIEWED_CORRECTIONS_REQUIRED_BEFORE_BUILD`.**
+
+La matriz 64/64 queda guardada como base válida, pero NO autoriza construir los 55 retos de Ola A todavía.
+
+Prerequisito: cerrar y aceptar R54.
+
+Antes del build: separar etapa recomendada de audience/safety, auditar 55/55 contra HEAD final, verificar IO real de proyectos cruzados, corregir criterios problemáticos y heredar el contrato visual R54.
+
+Después de R54, Astra reconcilia la matriz y solo entonces propone a María una primera tanda pequeña.
+
+
 ## R54 · Taller · Home e interiores visualmente ricos · 28/09/2026
 
 **Estado: `R54_CLAUDE_TALLER_VISUAL_REBUILD_ORDERED`.**
