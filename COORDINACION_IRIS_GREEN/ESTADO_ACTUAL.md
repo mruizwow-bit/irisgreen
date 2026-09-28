@@ -1,3 +1,22 @@
+## R52 · Sabik · corrección de precedencia · 28/09/2026
+
+**Estado: `R52_A3_REWORK_NEW_SABIK_WITH_R37_MOTION_REQUIRED` · #315.**
+
+María aclara: R37 es el sistema de movimiento perdido; la identidad visual correcta es el Sabik nuevo ya aprobado en la web.
+
+Contrato correcto:
+**Sabik nuevo + motion R37**.
+
+La entrega A3 previa queda superseded como referencia visual, y el checkpoint A2 `5f759464...` no puede considerarse candidato final R52 mientras use la apariencia antigua.
+
+Esperado:
+`R52_A3_NEW_SABIK_R37_MOTION_READY_FOR_A2`.
+
+Después A2 integra motion corregido + 30 WAV + preview + HUMAN QA.
+
+No main/producción.
+
+
 ## R59 · Fase 1 · 72/72 content PASS / independence-schema fix · 28/09/2026
 
 **Estado: `R59_ASTRA_PHASE1_72_CONTENT_PASS_INDEPENDENCE_SCHEMA_FIX_REQUIRED` · #323.**
