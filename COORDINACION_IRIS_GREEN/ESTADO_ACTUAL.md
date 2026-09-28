@@ -1,5 +1,16 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R62 · Juegos · conceptos 6 pilotos · 28/09/2026
+
+**Estado: `R62_GAMES_6_PILOT_CONCEPTS_ORDERED` · #326.**
+
+Tras aceptar la clasificación 297/297, la siguiente fase es diseñar los 6 pilotos uno a uno con imagen+mecánica antes de que Codex construya.
+
+Orden: Habitación imposible → Terrario vivo → Rutas de luz → Ritmo de colores → Pesca tranquila → Mi museo.
+
+Codex #321 sigue HOLD hasta `R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX`.
+
+
 ## R57 · Juegos · clasificación 297 aceptada por Astra · 28/09/2026
 
 **Estado: `R57_ASTRA_GAMES_297_CLASSIFICATION_ACCEPTED` · #321.**
