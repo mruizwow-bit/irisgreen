@@ -1,0 +1,70 @@
+{
+  "schema": "R51_A2_AUDIENCE_SURFACE_REGISTRY/1.0",
+  "source_snapshot_schema": "R51_A9_APPROVED_SAFETY_SNAPSHOT/1.0",
+  "source_snapshot_file": "r51-safety-snapshot.json",
+  "source_package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+  "upstream_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_record_count": 965,
+  "surfaces": {
+    "situation": {
+      "records": 223,
+      "audience": [
+        "TRANSVERSAL"
+      ]
+    },
+    "condition": {
+      "records": 226,
+      "audience": [
+        "TRANSVERSAL"
+      ]
+    },
+    "library": {
+      "records": 62,
+      "audience": [
+        "TRANSVERSAL"
+      ]
+    },
+    "data": {
+      "records": 60,
+      "audience": [
+        "TRANSVERSAL"
+      ]
+    },
+    "research": {
+      "records": 132,
+      "audience": [
+        "ADOLESCENCIA",
+        "ADULTEZ"
+      ]
+    },
+    "support_directory": {
+      "records": 262,
+      "audience": [
+        "ADULTEZ"
+      ]
+    }
+  },
+  "route_rules": [
+    {
+      "surface": "research",
+      "prefixes": [
+        "/es/investigacion/",
+        "/en/research/"
+      ],
+      "audience": [
+        "ADOLESCENCIA",
+        "ADULTEZ"
+      ]
+    },
+    {
+      "surface": "support_directory",
+      "prefixes": [
+        "/es/tramites/",
+        "/en/support-directory/"
+      ],
+      "audience": [
+        "ADULTEZ"
+      ]
+    }
+  ]
+}
