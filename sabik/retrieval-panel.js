@@ -117,6 +117,22 @@
       groups: Object.freeze(groups), source_language: value.source_language });
   }
 
+
+  async function filterEnvelopeByAge(envelope) {
+    const gate = global && global.IGAudience;
+    if (!gate || typeof gate.get !== 'function' || gate.get() === 'default' || typeof gate.allowedUrl !== 'function') return envelope;
+    const groups = [];
+    const ids = new Set();
+    for (const group of envelope.groups) {
+      if (!(await gate.allowedUrl(group.url))) continue;
+      groups.push(group);
+      group.citations.forEach(citation => ids.add(citation.fragment_id));
+    }
+    const candidates = envelope.candidates.filter(candidate => ids.has(candidate.fragment_id));
+    return Object.freeze({ library_version: envelope.library_version, candidates: Object.freeze(candidates),
+      groups: Object.freeze(groups), source_language: envelope.source_language });
+  }
+
   function setText(node, value) {
     node.textContent = String(value);
     return node;
@@ -302,7 +318,7 @@
       try {
         const raw = await query(request, { signal });
         if (token !== serial) return Object.freeze({ status: 'stale' });
-        const envelope = normalizeEnvelope(raw);
+        const envelope = await filterEnvelopeByAge(normalizeEnvelope(raw));
         lastEnvelope = envelope;
         return renderResults(envelope);
       } catch (error) {

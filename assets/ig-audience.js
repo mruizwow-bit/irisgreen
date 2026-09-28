@@ -1,9 +1,12 @@
-/* Iris Green R51 · life-stage lens and audience discovery filter.
-   Session-only. Audience controls discovery; it is not age assurance. */
+/* Iris Green R51 · canonical age lens.
+   Session-only. Age controls discovery and never replaces sensitivity policy. */
 (function(){
 'use strict';
 if(window.IGAudience)return;
 var KEY='ig-audience-stage-v1',VALUES=['children','teenagers','adults','any'],current='default';
+var AGE=['AGE_0_12','AGE_13_17','AGE_18_PLUS','ALL_AGES'];
+var TARGET={children:'AGE_0_12',teenagers:'AGE_13_17',adults:'AGE_18_PLUS',any:'ALL_AGES'};
+var runtimePromise=null,runtimeCache=null;
 try{var saved=sessionStorage.getItem(KEY);if(VALUES.indexOf(saved)!==-1)current=saved;}catch(_){}
 function values(v){
  if(Array.isArray(v))return v.map(String);
@@ -11,15 +14,54 @@ function values(v){
 }
 function mode(){return current==='adults'?'adult':'safe';}
 function isAdult(){return current==='adults';}
+function selectedBand(){return TARGET[current]||null;}
+function allowedAgeBands(input){
+ if(current==='default')return true;
+ var list=values(input).filter(function(v){return AGE.indexOf(v)!==-1;});
+ if(!list.length)return false;
+ if(current==='any')return list.indexOf('ALL_AGES')!==-1;
+ var target=selectedBand();
+ return list.indexOf(target)!==-1||list.indexOf('ALL_AGES')!==-1;
+}
+/* Migration-only fallback for products outside the 965-record matrix. */
 function allowedAudience(input){
  var list=values(input);
  if(!list.length||current==='default')return true;
+ if(list.some(function(v){return AGE.indexOf(v)!==-1;}))return allowedAgeBands(list);
  if(list.indexOf('TRANSVERSAL')!==-1)return true;
  if(current==='children')return list.indexOf('INFANCIA')!==-1;
  if(current==='teenagers')return list.indexOf('ADOLESCENCIA')!==-1;
  if(current==='adults')return list.indexOf('ADULTEZ')!==-1;
  if(current==='any')return false;
  return true;
+}
+function routeKey(v){
+ try{
+  var u=new URL(v,location.origin),p=(u.pathname||'/').replace(/\/+/g,'/');
+  if(p!=='/'&&/\/$/.test(p))p=p.slice(0,-1);
+  return p+(u.hash||'');
+ }catch(_){return '';}
+}
+function loadAgeMatrix(){
+ if(runtimeCache)return Promise.resolve(runtimeCache);
+ if(runtimePromise)return runtimePromise;
+ runtimePromise=fetch('/assets/safety/age-runtime-r51.json',{cache:'no-cache'}).then(function(r){
+  if(!r.ok)throw new Error('Age matrix '+r.status);
+  return r.json();
+ }).then(function(d){
+  if(!d||d.schema!=='R51_A2_AGE_RUNTIME/1.0'||!d.by_url)throw new Error('Invalid age runtime');
+  runtimeCache=d;
+  window.dispatchEvent(new CustomEvent('ig:age-matrix-ready'));
+  return d;
+ }).catch(function(e){runtimePromise=null;throw e;});
+ return runtimePromise;
+}
+function ageBandsForUrl(url){
+ return loadAgeMatrix().then(function(d){var b=d.by_url[routeKey(url)];return Array.isArray(b)?b.slice():null;});
+}
+function allowedUrl(url){
+ if(current==='default')return Promise.resolve(true);
+ return ageBandsForUrl(url).then(function(b){return Boolean(b&&allowedAgeBands(b));}).catch(function(){return false;});
 }
 function stageName(){
  var en=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
@@ -37,12 +79,14 @@ function syncPicker(root){
  });
  var status=root.querySelector('[data-ig-audience-status]');if(status)status.textContent=stageName();
 }
+function setVisible(node,ok){
+ node.hidden=!ok;
+ if(ok)node.removeAttribute('aria-hidden');else node.setAttribute('aria-hidden','true');
+}
 function syncDiscovery(root){
- (root||document).querySelectorAll('[data-ig-audience-values]').forEach(function(node){
-  var ok=allowedAudience(node.getAttribute('data-ig-audience-values'));
-  node.hidden=!ok;
-  if(ok)node.removeAttribute('aria-hidden');else node.setAttribute('aria-hidden','true');
- });
+ root=root||document;
+ root.querySelectorAll('[data-ig-age-bands]').forEach(function(node){setVisible(node,allowedAgeBands(node.getAttribute('data-ig-age-bands')));});
+ root.querySelectorAll('[data-ig-audience-values]:not([data-ig-age-bands])').forEach(function(node){setVisible(node,allowedAudience(node.getAttribute('data-ig-audience-values')));});
 }
 function blockedCopy(){
  var en=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
@@ -52,7 +96,8 @@ function blockedCopy(){
 }
 function syncPageGate(){
  var body=document.body;if(!body)return;
- var list=values(body.getAttribute('data-ig-page-audience')),blocked=list.length&&!allowedAudience(list);
+ var canonical=body.getAttribute('data-ig-page-age-bands'),legacy=body.getAttribute('data-ig-page-audience');
+ var blocked=canonical!==null?!allowedAgeBands(canonical):(legacy? !allowedAudience(legacy):false);
  body.toggleAttribute('data-ig-audience-blocked',blocked);
  var gate=body.querySelector('[data-ig-audience-blocked-message]');
  if(!blocked){if(gate)gate.remove();return;}
@@ -74,9 +119,12 @@ function apply(){
 function set(value){
  if(VALUES.indexOf(value)===-1)return false;
  current=value;try{sessionStorage.setItem(KEY,value);}catch(_){}
- apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,safetyMode:mode()}}));return true;
+ apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,ageBand:selectedBand(),safetyMode:mode()}}));return true;
 }
-function clear(){current='default';try{sessionStorage.removeItem(KEY);}catch(_){}apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,safetyMode:mode()}}));}
+function clear(){
+ current='default';try{sessionStorage.removeItem(KEY);}catch(_){}
+ apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,ageBand:null,safetyMode:mode()}});
+}
 function mount(root){
  root=root||document;root.querySelectorAll('[data-ig-audience-picker]').forEach(function(picker){
   if(picker.dataset.igAudienceReady)return;picker.dataset.igAudienceReady='true';
@@ -86,5 +134,10 @@ function mount(root){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mount();apply();},{once:true});else{mount();apply();}
 new MutationObserver(function(){document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncPageGate();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-window.IGAudience=Object.freeze({get:function(){return current;},set:set,clear:clear,mode:mode,isAdult:isAdult,isSafe:function(){return !isAdult();},allowedAudience:allowedAudience,mount:mount,refresh:apply});
+if(document.body)new MutationObserver(function(records){records.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)syncDiscovery(n.matches&&n.matches('[data-ig-age-bands],[data-ig-audience-values]')?n.parentNode:n);});});}).observe(document.body,{childList:true,subtree:true});
+window.IGAudience=Object.freeze({
+ get:function(){return current;},set:set,clear:clear,mode:mode,isAdult:isAdult,isSafe:function(){return !isAdult();},
+ selectedBand:selectedBand,allowedAgeBands:allowedAgeBands,allowedAudience:allowedAudience,
+ loadAgeMatrix:loadAgeMatrix,ageBandsForUrl:ageBandsForUrl,allowedUrl:allowedUrl,routeKey:routeKey,mount:mount,refresh:apply
+});
 })();

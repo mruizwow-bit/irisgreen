@@ -28,6 +28,7 @@ function mount(){
  $('#sabik-low').addEventListener('click',()=>{const motion=$('#sabik-motion-level');motion.value='SIN_MOVIMIENTO';$('#sabik-low').setAttribute('aria-pressed','true');motion.dispatchEvent(new Event('change',{bubbles:true}));});
  $('#sabik-motion-level').addEventListener('change',()=>{$('#sabik-low').setAttribute('aria-pressed',String($('#sabik-motion-level').value==='SIN_MOVIMIENTO'));});
  $('#sabik-reset').addEventListener('click',()=>{serial++;panel.cancel();connection?.disconnect();voice.cancel();input.value='';root.replaceChildren();panel=window.SabikRetrievalPanel.createRetrievalPanel({root,query,announcement,language:lang});busy=false;controls();say(strings().cleared,{voiceId:'sabik.reset.confirmation'});visual('transicion');input.focus();});
+ window.addEventListener('ig:audience-change',()=>{serial++;panel.cancel();connection?.disconnect();voice.cancel();busy=false;root.replaceChildren();panel=window.SabikRetrievalPanel.createRetrievalPanel({root,query,announcement,language:lang});controls();});
  window.addEventListener('pagehide',()=>{serial++;panel.cancel();connection?.disconnect();voice.cancel();});
  new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});translate();
 }
