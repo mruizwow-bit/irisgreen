@@ -1,3 +1,19 @@
+## R53 · Sala 1 Globos de luz · HUMAN QA forma FAIL · 28/09/2026
+
+**Estado: `R53_SALA1_GLOBOS_FORM_FAIL_REWORK_REQUIRED` · #317.**
+
+María identifica el fallo raíz: las formas actuales se leen como deformaciones/blobs, no como globos de luz. Esto coincide con el addendum R53, que ya marcaba blobs como FAIL inmediato.
+
+KEEP técnico: quality manager adaptativo y aprendizaje de iluminación/profundidad.
+
+REWORK: cuerpos inflables reconocibles, arquitectura material, composición que cuente la interacción, móvil vertical propio y comparación E4.
+
+Esperado:
+`R53_SALA1_GLOBOS_E4_R2_READY_FOR_ASTRA_MARIA`.
+
+Otras 5 salas HOLD. No A2/main/producción.
+
+
 ## R62 · P01 premium render · técnica PASS / E4 rework · 28/09/2026
 
 **Estado: `R62_P01_RENDER_PIPELINE_PASS_VISUAL_E4_REWORK_REQUIRED` · #326.**
