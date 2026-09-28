@@ -1,0 +1,47 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R54-ASTRA-R2-6-PILOTS-REVIEW",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_ASTRA_6_PILOTS_DIRECTION_PASS_SYNC_GATE_REQUIRED_BEFORE_SCALE",
+  "artifact": {
+    "patch_gz_sha256": "28d92ff87c05b16fc2ac069a8a4db095e990b26cc09e7aba6b58beb059d0b90b",
+    "patch_sha256": "7770e3c2de2ecbace14cbdbd4bfcb73c6fb8b1cfda5c94e2646104fb4bf7b48b",
+    "head": "7aa484ae8657831739ab3ad51bcc6fd3bc49d896"
+  },
+  "visual": {
+    "direction_pass": [
+      "dibujo",
+      "estructuras",
+      "programacion",
+      "videojuegos",
+      "mundos",
+      "modelado-3d"
+    ],
+    "standard_frozen": true,
+    "estructuras_truck": "KEEP_NOT_BLOCKING",
+    "infancia_rule": "SAME_WORKBENCH_LESS_DENSE_LARGER_CLEARER_NOT_CUTER"
+  },
+  "technical_pass": [
+    "VERSIONED_RASTER_SCRIPT",
+    "1X_2X",
+    "DENSITY_SRCSET",
+    "DEFAULT_FIRST_VIEW_PRIORITY",
+    "LAUNCHER_CACHE_BUST",
+    "MIGRADAS_EXISTENCE_STRICT_GATE"
+  ],
+  "blocker": {
+    "id": "R54-SYNC-01",
+    "problem": "No source-to-WebP fingerprint/hash gate; stale raster can still pass build if files exist.",
+    "required": "Manifest/check validates generated SVG hash plus both WebP hashes and fails on stale output."
+  },
+  "robustness_note": "Catch Playwright chromium.launch failure as documented.",
+  "next_marker": "R54_CLAUDE_RASTER_SOURCE_OUTPUT_SYNC_READY_FOR_ASTRA",
+  "hold": [
+    "SCALE_21",
+    "CHILD_VARIANTS_9",
+    "A2_R54",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
