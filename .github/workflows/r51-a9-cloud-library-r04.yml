@@ -55,12 +55,27 @@ jobs:
           npm run build:r04:games
           node --test tests/r51-r04-games.test.mjs
 
+      - name: R51 Routines build and gate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:routines
+          node --test tests/r51-r04-routines.test.mjs
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: r51-a9-r04-editorial-report
           path: cloud/n04-r38-library/build/r04/editorial-report.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload R51 Routines report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r51-a9-r04-routines-report
+          path: cloud/n04-r38-library/build/r04/routines-report.json
           if-no-files-found: ignore
           retention-days: 14
 
