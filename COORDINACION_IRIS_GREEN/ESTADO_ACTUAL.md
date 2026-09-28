@@ -1,3 +1,17 @@
+## R62 · P01 E4 vuelta 2 · geometría PASS / luz-material-móvil REWORK · 28/09/2026
+
+**Estado: `R62_P01_E4_GEOMETRY_PASS_LIGHTING_MATERIAL_MOBILE_REWORK_REQUIRED` · #326.**
+
+La segunda vuelta resuelve el bloqueo geométrico: despiece de muro, losas, zócalo y articulación arquitectónica ya sacan la escena de la maqueta de prismas.
+
+Queda rework localizado: iluminación de área/rebote/derrame, imperfección material controlada, profundidad de vanos, identidad espacial y layout móvil real.
+
+Esperado:
+`R62_P01_VISUAL_E4_R3_READY_FOR_ASTRA_MARIA`.
+
+No P02/P03 todavía. Codex/A2/main/producción HOLD.
+
+
 ## R59 · asignación corregida · Agente activo / Codex HOLD · 28/09/2026
 
 **Estado: `R59_AGENT_ACTIVE_CODEX_HOLD_UNTIL_2026_10_01` · #323.**
