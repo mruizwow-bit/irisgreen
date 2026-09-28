@@ -8,7 +8,7 @@ BASE='http://127.0.0.1:4173';OUT=Path('reports/r51-audience-filter')
 def need(v,m):
  if not v:raise AssertionError(m)
 async def home_stage(page,button,research_visible,support_visible):
- await page.goto(BASE+'/',wait_until='networkidle')
+ await page.goto(BASE+'/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
  await page.get_by_role('button',name=button,exact=True).click()
  research=page.locator('.ig-home-area').filter(has_text='Investigación')
  support=page.locator('.ig-home-area').filter(has_text='Ayudas y trámites')
@@ -17,9 +17,9 @@ async def home_stage(page,button,research_visible,support_visible):
  need(await support.is_visible()==support_visible,f'Support visibility wrong for {button}')
  need(await conditions.is_visible(),f'Transversal Conditions hidden for {button}')
 async def set_stage(page,stage):
- await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate(f"IGAudience.set('{stage}')")
+ await page.goto(BASE+'/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined');await page.evaluate(f"IGAudience.set('{stage}')")
 async def gate(page,path,blocked):
- requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+path,wait_until='networkidle')
+ requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+path,wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
  gate=page.locator('[data-ig-audience-blocked-message]');main=page.locator('main').first
  need((await gate.count()>0)==blocked,f'Gate state wrong {path} blocked={blocked}')
  if blocked:need(await main.is_hidden(),'Blocked main is visible '+path)
