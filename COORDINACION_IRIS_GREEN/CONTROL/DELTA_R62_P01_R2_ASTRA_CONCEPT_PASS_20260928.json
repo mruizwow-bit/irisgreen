@@ -1,0 +1,32 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P01-R2-ASTRA-CONCEPT-PASS",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING",
+  "astra_decision": "PASS_CONCEPT",
+  "pass": [
+    "CUBE_ROOM",
+    "REAL_ROTATIONS",
+    "A_B_MECHANIC_PROOF",
+    "ENTRY_ROUTE_EXIT",
+    "CUBE_FACE_SELECTOR",
+    "VECTOR_ARROW_CONTROLS",
+    "CONCEPT_VISUAL_DIRECTION",
+    "MOBILE_ONE_STATE_AT_A_TIME",
+    "IP_RISK_MITIGATED"
+  ],
+  "not_final_art": [
+    "STONE_TEXTURE_DETAIL",
+    "WEAR_IMPERFECTION",
+    "FINAL_PRODUCTION_MATERIALITY"
+  ],
+  "next_human_gate": "R62_P01_HABITACION_CONCEPT_APPROVED",
+  "hold": [
+    "P02_UNTIL_MARIA_HUMAN_QA",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
