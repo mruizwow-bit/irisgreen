@@ -1,3 +1,19 @@
+## R54 · Taller · rebenchmark SEP 2026 · 6 tarjetas PASS Astra · 28/09/2026
+
+**Estado: `R54_ASTRA_6_PILOTS_REBENCHMARK_SEP2026_PASS_HUMAN_QA_PENDING` · #318.**
+
+Astra revisa las seis juntas al tamaño real móvil 240×150 CSS px. Dibujo, Estructuras, Programación, Videojuegos, Mundos y Modelado 3D pasan como estándar homogéneo de arte de tarjeta del launcher.
+
+R54_NORMA mantiene/expande el contrato sync/config y sirve AVIF+WebP 1x/2x con fallback.
+
+Este PASS NO aprueba automáticamente interiores/starters, cromo ni imprimibles.
+
+Pendiente HUMAN QA María. Si aprueba:
+`R54_TALLER_CARD_STANDARD_SEP2026_HUMAN_APPROVED_SCALE_21_PLUS_9_AUTHORIZED`.
+
+No A2/main/producción.
+
+
 ## R62 · P01 E4 vuelta 2 · geometría PASS / luz-material-móvil REWORK · 28/09/2026
 
 **Estado: `R62_P01_E4_GEOMETRY_PASS_LIGHTING_MATERIAL_MOBILE_REWORK_REQUIRED` · #326.**
