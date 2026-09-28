@@ -1,0 +1,41 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R59-ASTRA-PHASE1-72-REVIEW",
+  "date": "2026-09-28",
+  "issue": 323,
+  "status": "R59_ASTRA_PHASE1_72_CONTENT_PASS_INDEPENDENCE_SCHEMA_FIX_REQUIRED",
+  "artifact": {
+    "name": "R59_FASE1_INTERESES_72_R58.zip",
+    "sha256": "e658e720302144833624cc7f6efeb1edc5e2d9af2c04521b543f07d766f57c93"
+  },
+  "content_pass": {
+    "rows": 72,
+    "keep": 14,
+    "rework": 58,
+    "mundo_nuevo": 23,
+    "reenfoque": 35,
+    "afinar": 14
+  },
+  "tests": {
+    "build": "PASS",
+    "independence_current": "PASS_PARTIAL",
+    "quality": "PASS"
+  },
+  "blockers": [
+    "needs_map copied from donor 72/72",
+    "needs_real_data copied from donor 72/72",
+    "source_pressure copied from donor 72/72",
+    "canonical r48 donor schema fields missing",
+    "r58_experience_decision semantic mismatch",
+    "documentation marker/count mismatch"
+  ],
+  "official_toxicology_phone": "91 562 04 20",
+  "next": "R59_AGENT_INTERESTS_72_RESTRUCTURE_R1_READY_FOR_ASTRA",
+  "hold": [
+    "BUILD_72",
+    "BUILD_6_PILOTS",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
