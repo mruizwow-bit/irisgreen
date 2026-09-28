@@ -1,0 +1,33 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P01-HUMAN-QA-APPROVED",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_HABITACION_CONCEPT_APPROVED",
+  "authority": "Maria HUMAN QA",
+  "decision": "APPROVED",
+  "approved": [
+    "MECHANIC",
+    "CUBE_REAL_ROTATIONS",
+    "A_B_PROOF",
+    "ENTRY_ROUTE_EXIT",
+    "CUBE_FACE_SELECTOR",
+    "CONCEPT_VISUAL_DIRECTION",
+    "STAGE_ADAPTATION",
+    "MOBILE_ONE_STATE_AT_A_TIME"
+  ],
+  "deferred_not_blocking": [
+    "FINAL_PRODUCTION_TEXTURE_MATERIALITY"
+  ],
+  "next": "R62_P02_TERRARIO_CONCEPT_ORDERED",
+  "hold": [
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
