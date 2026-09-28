@@ -1,0 +1,38 @@
+{
+  "schema": "R44_ASTRA_REVIEW_64_CHALLENGES/1.0",
+  "date": "2026-09-28",
+  "issue": 319,
+  "status": "R44_MATRIZ_64_ASTRA_REVIEWED_CORRECTIONS_REQUIRED_BEFORE_BUILD",
+  "source": "R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md",
+  "matrix": {
+    "total": 64,
+    "study": 48,
+    "cross": 8,
+    "calendar": 8,
+    "waveA_proposed": 55,
+    "waveB": 9,
+    "waveC": 0
+  },
+  "prerequisite": "R54_ACCEPTED",
+  "corrections": [
+    "SEPARATE_RECOMMENDED_STAGE_FROM_AUDIENCE_SAFETY",
+    "AUDIT_WAVE_A_55_AGAINST_FINAL_R47_R54_HEAD",
+    "CROSS_STUDIO_IO_VERIFIED",
+    "CORRECT_E09_E18_X03_E35_E41_AND_EQUIVALENT_ABSOLUTE_CRITERIA",
+    "INHERIT_R54_VISUAL_CONTRACT"
+  ],
+  "future_phases": [
+    "A0_FRAMEWORK_8_PILOTS",
+    "A1_INDEPENDENT_STUDY_CHALLENGES",
+    "A2_CROSS_PROJECTS",
+    "A3_CALENDAR_A",
+    "B_AFTER_ANIMATION_MAPS_DECISION"
+  ],
+  "gates": [
+    "SOURCE_RECHECK_BEFORE_RELEASE",
+    "VISUAL_R54_PASS",
+    "CROSS_STUDIO_IO_VERIFIED"
+  ],
+  "expected_next_state": "R44_MATRIZ_64_RECONCILED_AGAINST_FINAL_TALLER_READY_FOR_MARIA",
+  "authorized_to_build": false
+}
