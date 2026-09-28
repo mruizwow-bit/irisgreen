@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Codex · R57 Juegos · 28/09/2026
+
+Orden: `R57_CODEX_GAMES/01_CODEX.md` · issue #321.
+
+Codex clasifica 297/297 y después construye 6 pilotos solo tras concepto aprobado. No diseña dirección artística; implementa referencias aprobadas por Astra/María.
+
+Astra revisa → A2 integra → María HUMAN QA.
+
+
 ## Claude · R54 Taller visual · 28/09/2026
 
 Orden: `R54_CLAUDE_TALLER_VISUAL/01_CLAUDE.md` · issue #318.
