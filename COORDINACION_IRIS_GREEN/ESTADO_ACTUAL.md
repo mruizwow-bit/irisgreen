@@ -1,3 +1,20 @@
+## R54 · seis pilotos R2 · dirección visual PASS · sync gate pendiente · 28/09/2026
+
+**Estado: `R54_ASTRA_6_PILOTS_DIRECTION_PASS_SYNC_GATE_REQUIRED_BEFORE_SCALE` · #318.**
+
+Astra revisó el patch R2 real y las seis escenas finales. PASS visual 6/6: Dibujo, Estructuras, Programación, Videojuegos, Mundos y Modelado 3D. El listón visual queda fijado para los 21 restantes.
+
+Estructuras: KEEP; el camión rojo no reabre la escena.
+
+Infancia: mismo sitio/proceso creativo, menos densidad y objetos más grandes/claros cuando ayude; nunca «lo mismo más mono».
+
+La escala 21 + 9 sigue HOLD por un único bloqueo técnico: el build exige que existan los WebP 1x/2x, pero no verifica que correspondan al SVG/Python actual. Falta fingerprint/hash fuente→output y test de stale raster.
+
+Esperado: `R54_CLAUDE_RASTER_SOURCE_OUTPUT_SYNC_READY_FOR_ASTRA`.
+
+No A2 R54, main ni producción todavía.
+
+
 ## R62 · P01 Habitación imposible · Astra review · 28/09/2026
 
 **Estado: `R62_P01_MECHANIC_PASS_VISUAL_CONCEPT_REWORK_REQUIRED` · #326.**
