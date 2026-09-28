@@ -80,8 +80,10 @@ def main():
    href=hm.group(2)
    if href.startswith(('mailto:','tel:','javascript:')) or '{{' in href:continue
    k=key_for(href,route)
-   if k not in by:continue
-   expected=' '.join(by[k])
+   bands=by.get(k)
+   if not bands and '#' in k:bands=by.get(k.split('#',1)[0])
+   if not bands:continue
+   expected=' '.join(bands)
    if 'data-ig-age-bands="'+expected+'"' not in attrs:missing.append((route,href,expected))
    else:tagged+=1
  need(not missing,'classified links missing pre-render age tags: '+repr(missing[:10]))

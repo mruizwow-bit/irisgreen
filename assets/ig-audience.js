@@ -57,7 +57,7 @@ function loadAgeMatrix(){
  return runtimePromise;
 }
 function ageBandsForUrl(url){
- return loadAgeMatrix().then(function(d){var b=d.by_url[routeKey(url)];return Array.isArray(b)?b.slice():null;});
+ return loadAgeMatrix().then(function(d){var k=routeKey(url),b=d.by_url[k];if(!b&&k.indexOf('#')!==-1)b=d.by_url[k.split('#')[0]];return Array.isArray(b)?b.slice():null;});
 }
 function allowedUrl(url){
  if(current==='default')return Promise.resolve(true);

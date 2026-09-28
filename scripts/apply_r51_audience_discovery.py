@@ -97,6 +97,7 @@ def annotate_html(root,by_url):
    if href.startswith(('mailto:','tel:','javascript:')) or '{{' in href:return m.group(0)
    k=key_for(href,route)
    bands=by_url.get(k)
+   if not bands and '#' in k:bands=by_url.get(k.split('#',1)[0])
    if not bands:return m.group(0)
    new=set_attr(attrs,'data-ig-age-bands',' '.join(bands))
    if new!=attrs:tagged+=1
