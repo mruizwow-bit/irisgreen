@@ -1,3 +1,18 @@
+## R60 · Música P1 · Astra listening review · 28/09/2026
+
+**Estado: `R60_ASTRA_MUSIC_4_PILOTS_LISTENING_REVIEW_READY_FOR_MARIA` · #324.**
+
+Astra escucha los cuatro MP3 y propone: M01 KEEP · M02 KEEP · M03 ADJUST · M04 KEEP.
+
+M03 conserva buena identidad espacial pero necesita reducir/alternar la presencia casi continua de aire/agudos antes de cualquier render largo.
+
+Pendiente HUMAN QA de María por piloto.
+
+No se emite aún `R60_MUSIC_4_PILOTS_APPROVED_FOR_LONG_RENDER`.
+
+No largos, A2, sustitución Pixabay, main ni producción.
+
+
 ## R62 · P01 Habitación imposible · HUMAN QA APROBADO · 28/09/2026
 
 **Gate: `R62_P01_HABITACION_CONCEPT_APPROVED` · #326.**
