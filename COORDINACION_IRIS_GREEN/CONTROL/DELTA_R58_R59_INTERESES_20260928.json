@@ -1,0 +1,31 @@
+{
+  "schema": "R58_R59_INTERESTS_RESTRUCTURE/1.0",
+  "date": "2026-09-28",
+  "product_issue": 322,
+  "execution_issue": 323,
+  "product_status": "R58_INTERESTS_RESTRUCTURE_AND_PILOTS_ORDERED",
+  "execution_status": "R59_CODEX_INTERESTS_RESTRUCTURE_ORDERED",
+  "phase_now": "R59_P0_RESTRUCTURE_72",
+  "target_count": 72,
+  "pilot_count": 6,
+  "pilots": [
+    "mar-y-peces",
+    "aves",
+    "fosiles",
+    "minerales",
+    "trenes-metro",
+    "espacio"
+  ],
+  "first_gate": "R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA",
+  "concept_gate": "R58_INTERESTS_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX",
+  "pilot_gate": "R59_CODEX_INTERESTS_6_PILOTS_READY_FOR_ASTRA",
+  "scale_gate": "R58_INTERESTS_STANDARD_APPROVED_FOR_SCALE",
+  "rules": {
+    "worlds_not_datasets": true,
+    "external_sources_subordinate": true,
+    "no_bulk_build": true,
+    "original_first_party_visuals": true,
+    "no_main": true,
+    "no_production": true
+  }
+}
