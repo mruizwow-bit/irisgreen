@@ -1,3 +1,21 @@
+## R59 · Fase 1 · 72/72 content PASS / independence-schema fix · 28/09/2026
+
+**Estado: `R59_ASTRA_PHASE1_72_CONTENT_PASS_INDEPENDENCE_SCHEMA_FIX_REQUIRED` · #323.**
+
+Astra revisa el ZIP real: las 72 decisiones R58 pasan en contenido y dirección. Build/test calidad PASS; test de independencia PASS parcial.
+
+Bloqueo acotado: `needs_map`, `needs_real_data` y `source_pressure` siguen copiándose 72/72 desde el donor y no entran en la huella de independencia. También falta normalizar el schema canónico y corregir marcador/documentación.
+
+No rehacer las 72 experiencias.
+
+Próximo:
+`R59_AGENT_INTERESTS_72_RESTRUCTURE_R1_READY_FOR_ASTRA`.
+
+Setas: SIT oficial 91 562 04 20 (24h), solo para posible intoxicación.
+
+No build72/build6/A2/main/producción.
+
+
 ## R62 · P01 Habitación imposible · E4 HUMAN QA APROBADO · 28/09/2026
 
 **Gate: `R62_P01_HABITACION_E4_HUMAN_APPROVED` · #326.**
