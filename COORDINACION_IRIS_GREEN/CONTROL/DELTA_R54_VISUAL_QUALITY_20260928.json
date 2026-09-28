@@ -1,0 +1,48 @@
+{
+  "schema": "R54_ASTRA_VISUAL_QUALITY_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_ASTRA_VISUAL_QUALITY_FAIL_REFINEMENT_REQUIRED",
+  "sources": [
+    "R54_TALLER_VISUAL.patch.gz",
+    "COORDINACION_R44_R47_R54.patch.gz"
+  ],
+  "findings": {
+    "scenes_not_icons": true,
+    "semantic_clarity_improved": true,
+    "final_graphic_quality_pass": false,
+    "current_style": "flat_vector_educational",
+    "automated_visual_pass_valid": false,
+    "interiors_directly_changed": 3,
+    "interiors_required_review": 27
+  },
+  "current_gate": {
+    "min_svg_elements": 15,
+    "max_svg_bytes": 4300,
+    "classification": "STRUCTURAL_SCENE_GATE_ONLY"
+  },
+  "pilot_studies": [
+    "dibujo",
+    "estructuras",
+    "programacion",
+    "videojuegos",
+    "mundos",
+    "modelado-3d"
+  ],
+  "allowed_visual_tech": [
+    "RICH_SVG",
+    "CANVAS",
+    "ENGINE_SNAPSHOT",
+    "ORIGINAL_RASTER",
+    "WEBP_AVIF",
+    "VECTOR_RASTER_COMPOSITE"
+  ],
+  "forbidden": [
+    "COPIED_PROTECTED_SCENES",
+    "GENERIC_STOCK",
+    "GENERIC_AI_STYLE"
+  ],
+  "expected_intermediate_marker": "R54_CLAUDE_TALLER_VISUAL_6_PILOTS_READY_FOR_ASTRA",
+  "expected_final_marker": "R54_CLAUDE_TALLER_HOME_INTERIORS_VISUAL_READY_FOR_ASTRA",
+  "integration_allowed": false
+}
