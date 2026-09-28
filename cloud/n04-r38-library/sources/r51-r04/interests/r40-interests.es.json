@@ -1,0 +1,3283 @@
+{
+  "schema": "IRIS_R40_INTERESTS_PUBLIC/1.0",
+  "locale": "es",
+  "generated_at": "2026-09-26",
+  "groups": [
+    {
+      "id": "interest-group-01",
+      "index": 1,
+      "title": "El cielo y el espacio",
+      "description": "Astronomía, sistema solar, eclipses, meteoros, exploración y satélites.",
+      "count": 7,
+      "route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "interest_ids": [
+        "interest-01",
+        "interest-02",
+        "interest-03",
+        "interest-04",
+        "interest-05",
+        "interest-06",
+        "interest-07"
+      ]
+    },
+    {
+      "id": "interest-group-02",
+      "index": 2,
+      "title": "La Tierra",
+      "description": "Minerales, fósiles, volcanes, terremotos, tiempo, océanos, relieve, mapas y banderas.",
+      "count": 9,
+      "route": "/es/intereses/grupos/02-tierra/",
+      "interest_ids": [
+        "interest-08",
+        "interest-09",
+        "interest-10",
+        "interest-11",
+        "interest-12",
+        "interest-13",
+        "interest-14",
+        "interest-15",
+        "interest-16"
+      ]
+    },
+    {
+      "id": "interest-group-03",
+      "index": 3,
+      "title": "Seres vivos",
+      "description": "Aves, insectos, plantas, árboles, setas, vida marina, mamíferos, reptiles y animales domésticos.",
+      "count": 11,
+      "route": "/es/intereses/grupos/03-seres-vivos/",
+      "interest_ids": [
+        "interest-17",
+        "interest-18",
+        "interest-19",
+        "interest-20",
+        "interest-21",
+        "interest-22",
+        "interest-23",
+        "interest-24",
+        "interest-25",
+        "interest-26",
+        "interest-27"
+      ]
+    },
+    {
+      "id": "interest-group-04",
+      "index": 4,
+      "title": "Transporte y máquinas",
+      "description": "Trenes, metros, aviones, barcos, coches, transporte urbano, mecanismos, relojes y señales.",
+      "count": 9,
+      "route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "interest_ids": [
+        "interest-28",
+        "interest-29",
+        "interest-30",
+        "interest-31",
+        "interest-32",
+        "interest-33",
+        "interest-34",
+        "interest-35",
+        "interest-36"
+      ]
+    },
+    {
+      "id": "interest-group-05",
+      "index": 5,
+      "title": "Tecnología",
+      "description": "Programación, robótica, ordenadores, circuitos, internet y videojuegos.",
+      "count": 6,
+      "route": "/es/intereses/grupos/05-tecnologia/",
+      "interest_ids": [
+        "interest-37",
+        "interest-38",
+        "interest-39",
+        "interest-40",
+        "interest-41",
+        "interest-42"
+      ]
+    },
+    {
+      "id": "interest-group-06",
+      "index": 6,
+      "title": "Números, lógica y sistemas",
+      "description": "Matemáticas, ajedrez, rompecabezas, calendarios, códigos y lógica.",
+      "count": 6,
+      "route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "interest_ids": [
+        "interest-43",
+        "interest-44",
+        "interest-45",
+        "interest-46",
+        "interest-47",
+        "interest-48"
+      ]
+    },
+    {
+      "id": "interest-group-07",
+      "index": 7,
+      "title": "Lenguas y escritura",
+      "description": "Lenguas, alfabetos, etimología, lengua de signos, braille y Morse.",
+      "count": 4,
+      "route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "interest_ids": [
+        "interest-49",
+        "interest-50",
+        "interest-51",
+        "interest-52"
+      ]
+    },
+    {
+      "id": "interest-group-08",
+      "index": 8,
+      "title": "Historia y cultura",
+      "description": "Historia, Egipto, mitología, castillos, arquitectura, monedas y sellos.",
+      "count": 7,
+      "route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "interest_ids": [
+        "interest-53",
+        "interest-54",
+        "interest-55",
+        "interest-56",
+        "interest-57",
+        "interest-58",
+        "interest-59"
+      ]
+    },
+    {
+      "id": "interest-group-09",
+      "index": 9,
+      "title": "Arte, música e imagen",
+      "description": "Pintura, música, cine, fotografía y cómic.",
+      "count": 5,
+      "route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "interest_ids": [
+        "interest-60",
+        "interest-61",
+        "interest-62",
+        "interest-63",
+        "interest-64"
+      ]
+    },
+    {
+      "id": "interest-group-10",
+      "index": 10,
+      "title": "Mundos, juegos y colecciones",
+      "description": "Mundos, criaturas, juegos de mesa y colecciones.",
+      "count": 4,
+      "route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "interest_ids": [
+        "interest-65",
+        "interest-66",
+        "interest-67",
+        "interest-68"
+      ]
+    },
+    {
+      "id": "interest-group-11",
+      "index": 11,
+      "title": "Vida diaria",
+      "description": "Cocina, química, deportes, moda y tejidos.",
+      "count": 4,
+      "route": "/es/intereses/grupos/11-vida-diaria/",
+      "interest_ids": [
+        "interest-69",
+        "interest-70",
+        "interest-71",
+        "interest-72"
+      ]
+    }
+  ],
+  "interests": [
+    {
+      "id": "interest-01",
+      "route": "/es/intereses/temas/01-cielo-nocturno/",
+      "alternate_route": "/en/interests/topics/01-night-sky/",
+      "deep_route": "/es/intereses/cielo/",
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Cielo nocturno",
+      "objective": "Todas las estrellas y constelaciones",
+      "experience": "Planetario en directo (hecho)",
+      "data_required": "Datos reales suficientes para sostener: Todas las estrellas y constelaciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "HYG, IAU, d3-celestial",
+        "authority": "HYG + IAU + d3-celestial",
+        "license": "HYG v4.1 CC BY-SA 4.0; IAU web products CC BY 4.0; d3-celestial code BSD-3-Clause",
+        "evidence": "https://github.com/astronexus/HYG-Database/blob/main/LICENSE ; https://www.iau.org/IAU/Iau/Copyright.aspx ; https://github.com/ofrohn/d3-celestial/blob/master/LICENSE",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-23",
+          "title": "Fotografía y composición",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-02",
+      "route": "/es/intereses/temas/02-planetas-y-sistema-solar/",
+      "alternate_route": "/en/interests/topics/02-planets-and-the-solar-system/",
+      "deep_route": "/es/intereses/sistema-solar/",
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Planetas y sistema solar",
+      "objective": "Tamaños, órbitas, lunas, dónde están hoy",
+      "experience": "Sistema solar a escala real que se recorre",
+      "data_required": "Datos reales suficientes para sostener: Tamaños, órbitas, lunas, dónde están hoy. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Elementos del JPL; NASA (a confirmar)",
+        "authority": "NASA/JPL",
+        "license": "Uso de material JPL permitido salvo indicación contraria; crédito NASA/JPL-Caltech; datos/visualización propios",
+        "evidence": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-03",
+      "route": "/es/intereses/temas/03-exoplanetas/",
+      "alternate_route": "/en/interests/topics/03-exoplanets/",
+      "deep_route": "/es/intereses/exoplanetas/",
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Exoplanetas",
+      "objective": "Todos los descubiertos, cómo se encontraron",
+      "experience": "Mapa 3D de estrellas con planetas",
+      "data_required": "Datos reales suficientes para sostener: Todos los descubiertos, cómo se encontraron. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "NASA Exoplanet Archive",
+        "authority": "NASA Exoplanet Archive",
+        "license": "Archivo público con requisitos de reconocimiento y referencias por dataset; no se halló una licencia única de redistribución para todo el agregado",
+        "evidence": "https://exoplanetarchive.ipac.caltech.edu/docs/acknowledge.html",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-04",
+      "route": "/es/intereses/temas/04-eclipses/",
+      "alternate_route": "/en/interests/topics/04-eclipses/",
+      "deep_route": "/es/intereses/eclipses/",
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Eclipses",
+      "objective": "Cuándo y desde dónde se ven (España: 2026, 2027 y 2028)",
+      "experience": "Simulador del eclipse desde tu ciudad",
+      "data_required": "Datos reales suficientes para sostener: Cuándo y desde dónde se ven (España: 2026, 2027 y 2028). Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Cálculo propio con efemérides",
+        "authority": "Iris Green + efemérides no identificadas",
+        "license": "Falta fijar proveedor/versión/licencia de efemérides",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-05",
+      "route": "/es/intereses/temas/05-lluvias-de-estrellas-y-meteoritos/",
+      "alternate_route": "/en/interests/topics/05-meteor-showers-and-meteorites/",
+      "deep_route": null,
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Lluvias de estrellas y meteoritos",
+      "objective": "Fechas, radiantes, meteoritos caídos en España",
+      "experience": "Cielo con el radiante y cuenta de meteoros",
+      "data_required": "Datos reales suficientes para sostener: Fechas, radiantes, meteoritos caídos en España. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Calendario IMO; Meteoritical Bulletin (a confirmar)",
+        "authority": "International Meteor Organization + Meteoritical Bulletin Database",
+        "license": "No hay licencia abierta conjunta demostrada",
+        "evidence": "https://www.imo.net/legal-notice/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-06",
+      "route": "/es/intereses/temas/06-exploracion-espacial/",
+      "alternate_route": "/en/interests/topics/06-space-exploration/",
+      "deep_route": null,
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Exploración espacial",
+      "objective": "Todas las misiones, cohetes y astronautas",
+      "experience": "Línea del tiempo y cohetes a escala",
+      "data_required": "Datos reales suficientes para sostener: Todas las misiones, cohetes y astronautas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata (CC0)",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-07",
+      "route": "/es/intereses/temas/07-satelites-y-estacion-espacial/",
+      "alternate_route": "/en/interests/topics/07-satellites-and-the-international-space-station/",
+      "deep_route": null,
+      "group_id": "interest-group-01",
+      "group_title": "El cielo y el espacio",
+      "group_route": "/es/intereses/grupos/01-cielo-y-espacio/",
+      "title": "Satélites y Estación Espacial",
+      "objective": "Cuándo pasa la estación sobre tu casa",
+      "experience": "Paso por el cielo en el planetario",
+      "data_required": "Datos reales suficientes para sostener: Cuándo pasa la estación sobre tu casa. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Órbitas públicas de CelesTrak (a confirmar)",
+        "authority": "CelesTrak",
+        "license": "Existe política de uso/frecuencia pero no se localizó una licencia explícita de redistribución del dataset",
+        "evidence": "https://celestrak.org/usage-policy.php",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-08",
+      "route": "/es/intereses/temas/08-minerales-y-rocas/",
+      "alternate_route": "/en/interests/topics/08-minerals-and-rocks/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Minerales y rocas",
+      "objective": "Los más de 6.000 minerales reconocidos: fórmula, dureza, sistema cristalino, color",
+      "experience": "Cristales en 3D que se giran; identificador por propiedades",
+      "data_required": "Datos reales suficientes para sostener: Los más de 6.000 minerales reconocidos: fórmula, dureza, sistema cristalino, color. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Lista IMA (a confirmar) + cromos de la web",
+        "authority": "IMA/RRUFF + cromos Iris actuales",
+        "license": "No se localizó licencia abierta explícita para la lista IMA/RRUFF usada y los cromos requieren auditoría de procedencia",
+        "evidence": "https://rruff.info/ima/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-09",
+      "route": "/es/intereses/temas/09-fosiles-y-dinosaurios/",
+      "alternate_route": "/en/interests/topics/09-fossils-and-dinosaurs/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Fósiles y dinosaurios",
+      "objective": "Todas las especies, épocas, dónde se hallaron (también en España)",
+      "experience": "Línea del tiempo geológica y mapa de yacimientos",
+      "data_required": "Datos reales suficientes para sostener: Todas las especies, épocas, dónde se hallaron (también en España). Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Paleobiology Database",
+        "authority": "Paleobiology Database",
+        "license": "Tratar como CC BY 4.0 por el recurso PBDB registrado; conservar cita de registro/contribuidores",
+        "evidence": "https://ipt.vertnet.org/resource?r=pbdb_paleo",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-10",
+      "route": "/es/intereses/temas/10-volcanes/",
+      "alternate_route": "/en/interests/topics/10-volcanoes/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Volcanes",
+      "objective": "Todos los activos, erupciones históricas, Canarias",
+      "experience": "Globo con volcanes y cortes de un volcán",
+      "data_required": "Datos reales suficientes para sostener: Todos los activos, erupciones históricas, Canarias. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Smithsonian GVP (a confirmar)",
+        "authority": "Smithsonian Global Volcanism Program",
+        "license": "Base Volcanoes of the World: producto de empleados US; usar con cita; fotos/gráficos requieren revisión aparte",
+        "evidence": "https://volcano.si.edu/gvp_termsofuse.cfm",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-11",
+      "route": "/es/intereses/temas/11-terremotos/",
+      "alternate_route": "/en/interests/topics/11-earthquakes/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Terremotos",
+      "objective": "Los de España desde 1370 y los del mundo hoy",
+      "experience": "Mapa con profundidad y magnitud",
+      "data_required": "Datos reales suficientes para sostener: Los de España desde 1370 y los del mundo hoy. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Catálogo del IGN; USGS (a confirmar)",
+        "authority": "IGN España + USGS",
+        "license": "IGN: licencia compatible CC BY 4.0; USGS-authored data: U.S. Public Domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-12",
+      "route": "/es/intereses/temas/12-tiempo-y-nubes/",
+      "alternate_route": "/en/interests/topics/12-weather-and-clouds/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Tiempo y nubes",
+      "objective": "Todos los tipos de nubes, fenómenos, récords",
+      "experience": "Cielo con nubes realistas que se clasifican",
+      "data_required": "Datos reales suficientes para sostener: Todos los tipos de nubes, fenómenos, récords. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "AEMET OpenData (a confirmar)",
+        "authority": "AEMET OpenData",
+        "license": "RISP reutilización comercial/no comercial; conservar fuente, fecha y metadatos",
+        "evidence": "https://www.aemet.es/es/datos_abiertos",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-18",
+          "title": "Síntesis y paisajes sonoros",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-13",
+      "route": "/es/intereses/temas/13-oceanos-y-mareas/",
+      "alternate_route": "/en/interests/topics/13-oceans-and-tides/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Océanos y mareas",
+      "objective": "Mareas, corrientes, fondos marinos",
+      "experience": "Puerto con marea del día",
+      "data_required": "Datos reales suficientes para sostener: Mareas, corrientes, fondos marinos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Puertos del Estado (a confirmar)",
+        "authority": "Puertos del Estado / Portus",
+        "license": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+        "evidence": "https://www.puertos.es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-14",
+      "route": "/es/intereses/temas/14-montanas-y-rios/",
+      "alternate_route": "/en/interests/topics/14-mountains-and-rivers/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Montañas y ríos",
+      "objective": "Alturas, recorridos, cuencas",
+      "experience": "Relieve en 3D de España",
+      "data_required": "Datos reales suficientes para sostener: Alturas, recorridos, cuencas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "IGN, Natural Earth",
+        "authority": "IGN España + Natural Earth",
+        "license": "IGN compatible CC BY 4.0; Natural Earth public domain",
+        "evidence": "https://www.ign.es/web/politica-datos ; https://www.naturalearthdata.com/about/terms-of-use/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-15",
+      "route": "/es/intereses/temas/15-mapas-y-geografia/",
+      "alternate_route": "/en/interests/topics/15-maps-and-geography/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Mapas y geografía",
+      "objective": "Países, capitales, fronteras, proyecciones",
+      "experience": "Globo terráqueo y proyecciones comparadas",
+      "data_required": "Datos reales suficientes para sostener: Países, capitales, fronteras, proyecciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Natural Earth",
+        "authority": "Natural Earth",
+        "license": "Public domain",
+        "evidence": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-20",
+          "title": "Mundos",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-16",
+      "route": "/es/intereses/temas/16-banderas/",
+      "alternate_route": "/en/interests/topics/16-flags/",
+      "deep_route": null,
+      "group_id": "interest-group-02",
+      "group_title": "La Tierra",
+      "group_route": "/es/intereses/grupos/02-tierra/",
+      "title": "Banderas",
+      "objective": "Todas las banderas, colores, significado",
+      "experience": "Banderas en alta calidad que se comparan",
+      "data_required": "Datos reales suficientes para sostener: Todas las banderas, colores, significado. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "REAL_DATA"
+      ],
+      "provenance": {
+        "source": "Wikimedia Commons (a confirmar por bandera)",
+        "authority": "Wikimedia Commons",
+        "license": "Licencia por archivo; debe verificarse en cada página de descripción",
+        "evidence": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/licenses",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-17",
+      "route": "/es/intereses/temas/17-aves/",
+      "alternate_route": "/en/interests/topics/17-birds/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Aves",
+      "objective": "Todas las especies de España, cantos, migraciones",
+      "experience": "Cantos grabados y mapa de avistamientos",
+      "data_required": "Datos reales suficientes para sostener: Todas las especies de España, cantos, migraciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "REAL_DATA"
+      ],
+      "provenance": {
+        "source": "GBIF; Xeno-canto (licencia por grabación, a confirmar)",
+        "authority": "GBIF + Xeno-canto",
+        "license": "GBIF varía por dataset y cada grabación Xeno-canto tiene licencia propia",
+        "evidence": "https://www.gbif.org/terms ; https://xeno-canto.org/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-01",
+          "title": "Dibujo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-18",
+          "title": "Síntesis y paisajes sonoros",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-18",
+      "route": "/es/intereses/temas/18-insectos-y-mariposas/",
+      "alternate_route": "/en/interests/topics/18-insects-and-butterflies/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Insectos y mariposas",
+      "objective": "Especies, ciclos, clasificación",
+      "experience": "Metamorfosis paso a paso",
+      "data_required": "Datos reales suficientes para sostener: Especies, ciclos, clasificación. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-19",
+      "route": "/es/intereses/temas/19-plantas-y-flores/",
+      "alternate_route": "/en/interests/topics/19-plants-and-flowers/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Plantas y flores",
+      "objective": "Especies de la península, floración por meses",
+      "experience": "Calendario de floración",
+      "data_required": "Datos reales suficientes para sostener: Especies de la península, floración por meses. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF; Anthos (a confirmar)",
+        "authority": "GBIF + Anthos",
+        "license": "GBIF varía por dataset; Anthos está publicado como CC BY-NC 4.0",
+        "evidence": "https://www.gbif.org/terms ; https://ipt.gbif.es/resource?r=rjb-anthos&v=1.13",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-23",
+          "title": "Fotografía y composición",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-20",
+      "route": "/es/intereses/temas/20-arboles/",
+      "alternate_route": "/en/interests/topics/20-trees/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Árboles",
+      "objective": "Especies, hojas, frutos, árboles singulares",
+      "experience": "Identificador por hoja",
+      "data_required": "Datos reales suficientes para sostener: Especies, hojas, frutos, árboles singulares. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-21",
+      "route": "/es/intereses/temas/21-setas/",
+      "alternate_route": "/en/interests/topics/21-mushrooms/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Setas",
+      "objective": "Especies, cuáles no se tocan",
+      "experience": "Identificador (nunca para comer)",
+      "data_required": "Datos reales suficientes para sostener: Especies, cuáles no se tocan. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-22",
+      "route": "/es/intereses/temas/22-vida-marina-y-peces/",
+      "alternate_route": "/en/interests/topics/22-marine-life-and-fish/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Vida marina y peces",
+      "objective": "Especies, profundidades",
+      "experience": "Corte del mar por profundidad",
+      "data_required": "Datos reales suficientes para sostener: Especies, profundidades. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-23",
+      "route": "/es/intereses/temas/23-mamiferos/",
+      "alternate_route": "/en/interests/topics/23-mammals/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Mamíferos",
+      "objective": "Especies, tamaños, hábitats",
+      "experience": "Comparador a escala",
+      "data_required": "Datos reales suficientes para sostener: Especies, tamaños, hábitats. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-24",
+      "route": "/es/intereses/temas/24-reptiles-y-anfibios/",
+      "alternate_route": "/en/interests/topics/24-reptiles-and-amphibians/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Reptiles y anfibios",
+      "objective": "Especies de España",
+      "experience": "Mapa de distribución",
+      "data_required": "Datos reales suficientes para sostener: Especies de España. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "GBIF",
+        "authority": "GBIF-mediated occurrence data",
+        "license": "Licencia por dataset: CC0, CC BY o CC BY-NC",
+        "evidence": "https://www.gbif.org/terms",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-25",
+      "route": "/es/intereses/temas/25-perros/",
+      "alternate_route": "/en/interests/topics/25-dogs/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Perros",
+      "objective": "Todas las razas reconocidas y sus grupos",
+      "experience": "Comparador de razas",
+      "data_required": "Datos reales suficientes para sostener: Todas las razas reconocidas y sus grupos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Lista de razas de la FCI (a confirmar)",
+        "authority": "Fédération Cynologique Internationale",
+        "license": "No se localizó permiso abierto de reutilización para estándares/listado",
+        "evidence": "https://www.fci.be/es/nomenclature/publication.aspx",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-26",
+      "route": "/es/intereses/temas/26-gatos/",
+      "alternate_route": "/en/interests/topics/26-cats/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Gatos",
+      "objective": "Razas, genética del color",
+      "experience": "Simulador de colores de pelaje",
+      "data_required": "Datos reales suficientes para sostener: Razas, genética del color. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-27",
+      "route": "/es/intereses/temas/27-caballos/",
+      "alternate_route": "/en/interests/topics/27-horses/",
+      "deep_route": null,
+      "group_id": "interest-group-03",
+      "group_title": "Seres vivos",
+      "group_route": "/es/intereses/grupos/03-seres-vivos/",
+      "title": "Caballos",
+      "objective": "Razas, capas, pasos",
+      "experience": "Pasos del caballo en movimiento",
+      "data_required": "Datos reales suficientes para sostener: Razas, capas, pasos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-28",
+      "route": "/es/intereses/temas/28-trenes/",
+      "alternate_route": "/en/interests/topics/28-trains/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Trenes",
+      "objective": "Todas las series, líneas, estaciones y horarios de España",
+      "experience": "Red ferroviaria con trenes en su horario real",
+      "data_required": "Datos reales suficientes para sostener: Todas las series, líneas, estaciones y horarios de España. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Renfe Data (a confirmar); OpenStreetMap (ODbL)",
+        "authority": "Renfe Data + OpenStreetMap",
+        "license": "Renfe: reutilización comercial/no comercial bajo condiciones RISP; OSM ODbL 1.0",
+        "evidence": "https://data.renfe.com/legal ; https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-07",
+          "title": "Estructuras y puentes",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-15",
+          "title": "Simulaciones",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-29",
+      "route": "/es/intereses/temas/29-metros-del-mundo/",
+      "alternate_route": "/en/interests/topics/29-metro-systems-around-the-world/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Metros del mundo",
+      "objective": "Todas las redes, líneas y estaciones",
+      "experience": "Planos de metro dibujados de verdad",
+      "data_required": "Datos reales suficientes para sostener: Todas las redes, líneas y estaciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "OpenStreetMap (ODbL)",
+        "authority": "OpenStreetMap",
+        "license": "ODbL 1.0",
+        "evidence": "https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-30",
+      "route": "/es/intereses/temas/30-aviones-y-aeropuertos/",
+      "alternate_route": "/en/interests/topics/30-aircraft-and-airports/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Aviones y aeropuertos",
+      "objective": "Todos los aeropuertos, pistas y modelos de avión",
+      "experience": "Mapa de aeropuertos con pistas",
+      "data_required": "Datos reales suficientes para sostener: Todos los aeropuertos, pistas y modelos de avión. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "OurAirports",
+        "authority": "OurAirports",
+        "license": "Public Domain",
+        "evidence": "https://ourairports.com/data/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-31",
+      "route": "/es/intereses/temas/31-barcos-y-faros/",
+      "alternate_route": "/en/interests/topics/31-ships-and-lighthouses/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Barcos y faros",
+      "objective": "Faros de España, señales, tipos de barco",
+      "experience": "Faros con su secuencia de luz real",
+      "data_required": "Datos reales suficientes para sostener: Faros de España, señales, tipos de barco. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Puertos del Estado (a confirmar)",
+        "authority": "Puertos del Estado / Portus",
+        "license": "El aviso web general restringe reproducción y no se ha congelado una licencia RISP específica para mareas/faros",
+        "evidence": "https://www.puertos.es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-32",
+      "route": "/es/intereses/temas/32-coches/",
+      "alternate_route": "/en/interests/topics/32-cars/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Coches",
+      "objective": "Modelos, historia, cómo funciona un motor",
+      "experience": "Motor en corte animado",
+      "data_required": "Datos reales suficientes para sostener: Modelos, historia, cómo funciona un motor. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-09",
+          "title": "Máquinas e inventos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-33",
+      "route": "/es/intereses/temas/33-autobuses-y-tranvias/",
+      "alternate_route": "/en/interests/topics/33-buses-and-trams/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Autobuses y tranvías",
+      "objective": "Redes y vehículos",
+      "experience": "Recorridos por ciudad",
+      "data_required": "Datos reales suficientes para sostener: Redes y vehículos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Datos abiertos municipales (a confirmar)",
+        "authority": "Datasets municipales no concretados",
+        "license": "Debe identificarse municipio, dataset, fecha y licencia por red",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-34",
+      "route": "/es/intereses/temas/34-ascensores-y-escaleras-mecanicas/",
+      "alternate_route": "/en/interests/topics/34-lifts-and-escalators/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Ascensores y escaleras mecánicas",
+      "objective": "Marcas, mecanismos, tipos",
+      "experience": "Mecanismo en corte",
+      "data_required": "Datos reales suficientes para sostener: Marcas, mecanismos, tipos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-35",
+      "route": "/es/intereses/temas/35-relojes-y-mecanismos/",
+      "alternate_route": "/en/interests/topics/35-clocks-and-mechanisms/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Relojes y mecanismos",
+      "objective": "Engranajes, escapes, relojes famosos",
+      "experience": "Mecanismo que se desmonta",
+      "data_required": "Datos reales suficientes para sostener: Engranajes, escapes, relojes famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-09",
+          "title": "Máquinas e inventos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-36",
+      "route": "/es/intereses/temas/36-senales-y-semaforos/",
+      "alternate_route": "/en/interests/topics/36-road-signs-and-traffic-lights/",
+      "deep_route": null,
+      "group_id": "interest-group-04",
+      "group_title": "Transporte y máquinas",
+      "group_route": "/es/intereses/grupos/04-transporte-y-maquinas/",
+      "title": "Señales y semáforos",
+      "objective": "Todas las señales de tráfico",
+      "experience": "Catálogo completo",
+      "data_required": "Datos reales suficientes para sostener: Todas las señales de tráfico. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Catálogo oficial de la DGT (a confirmar)",
+        "authority": "Dirección General de Tráfico",
+        "license": "La fuente exacta de catálogo/arte de señales y sus condiciones de reutilización no están congeladas",
+        "evidence": "https://datos.gob.es/es/aviso-legal",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-02",
+          "title": "Diseño gráfico y tipografía",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-37",
+      "route": "/es/intereses/temas/37-programacion/",
+      "alternate_route": "/en/interests/topics/37-programming/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Programación",
+      "objective": "Lenguajes, historia, cómo piensa un ordenador",
+      "experience": "Enlaza con el estudio de programación del Taller",
+      "data_required": "Datos reales suficientes para sostener: Lenguajes, historia, cómo piensa un ordenador. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-38",
+      "route": "/es/intereses/temas/38-robotica/",
+      "alternate_route": "/en/interests/topics/38-robotics/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Robótica",
+      "objective": "Tipos de robots, sensores, robots famosos",
+      "experience": "Enlaza con el estudio de robótica",
+      "data_required": "Datos reales suficientes para sostener: Tipos de robots, sensores, robots famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-13",
+          "title": "Robótica",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-39",
+      "route": "/es/intereses/temas/39-ordenadores-e-informatica/",
+      "alternate_route": "/en/interests/topics/39-computers-and-computing/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Ordenadores e informática",
+      "objective": "Historia, piezas, cómo funciona por dentro",
+      "experience": "Ordenador que se desmonta",
+      "data_required": "Datos reales suficientes para sostener: Historia, piezas, cómo funciona por dentro. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-10",
+          "title": "Circuitos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-40",
+      "route": "/es/intereses/temas/40-electronica-y-circuitos/",
+      "alternate_route": "/en/interests/topics/40-electronics-and-circuits/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Electrónica y circuitos",
+      "objective": "Componentes, leyes, esquemas",
+      "experience": "Simulador de circuitos",
+      "data_required": "Datos reales suficientes para sostener: Componentes, leyes, esquemas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-10",
+          "title": "Circuitos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-41",
+      "route": "/es/intereses/temas/41-internet/",
+      "alternate_route": "/en/interests/topics/41-the-internet/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Internet",
+      "objective": "Cómo viaja un mensaje, cables submarinos",
+      "experience": "Mapa de cables",
+      "data_required": "Datos reales suficientes para sostener: Cómo viaja un mensaje, cables submarinos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-42",
+      "route": "/es/intereses/temas/42-videojuegos/",
+      "alternate_route": "/en/interests/topics/42-video-games/",
+      "deep_route": null,
+      "group_id": "interest-group-05",
+      "group_title": "Tecnología",
+      "group_route": "/es/intereses/grupos/05-tecnologia/",
+      "title": "Videojuegos",
+      "objective": "Historia, géneros, cómo se diseñan",
+      "experience": "Línea del tiempo y diseño de niveles en el Taller",
+      "data_required": "Datos reales suficientes para sostener: Historia, géneros, cómo se diseñan. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-04",
+          "title": "Pixel art y animación",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-14",
+          "title": "Diseño de videojuegos",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-43",
+      "route": "/es/intereses/temas/43-matematicas/",
+      "alternate_route": "/en/interests/topics/43-mathematics/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Matemáticas",
+      "objective": "Primos, sucesiones, geometría, fractales",
+      "experience": "Explorador de fractales y sucesiones",
+      "data_required": "Datos reales suficientes para sostener: Primos, sucesiones, geometría, fractales. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Cálculo propio; OEIS (a confirmar)",
+        "authority": "Iris Green + OEIS",
+        "license": "OEIS CC BY-SA 4.0",
+        "evidence": "https://oeis.org/wiki/The_OEIS_End-User_License_Agreement",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-03",
+          "title": "Patrones y arte generativo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-11",
+          "title": "Papiroflexia y poliedros",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-12",
+          "title": "Programación",
+          "area": "Programar y robótica",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-17",
+          "title": "Composición",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-44",
+      "route": "/es/intereses/temas/44-ajedrez/",
+      "alternate_route": "/en/interests/topics/44-chess/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Ajedrez",
+      "objective": "Aperturas, partidas, problemas",
+      "experience": "Tablero con problemas por nivel",
+      "data_required": "Datos reales suficientes para sostener: Aperturas, partidas, problemas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Lichess",
+        "authority": "Lichess open database",
+        "license": "Exports principales/puzzles/evaluaciones CC0; broadcasts oficiales CC BY-SA 4.0",
+        "evidence": "https://database.lichess.org/",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-22",
+          "title": "Juegos de mesa",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-45",
+      "route": "/es/intereses/temas/45-cubo-de-rubik-y-rompecabezas/",
+      "alternate_route": "/en/interests/topics/45-rubiks-cube-and-puzzles/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Cubo de Rubik y rompecabezas",
+      "objective": "Algoritmos, notación, récords",
+      "experience": "Cubo 3D que se gira",
+      "data_required": "Datos reales suficientes para sostener: Algoritmos, notación, récords. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-46",
+      "route": "/es/intereses/temas/46-calendarios-y-horas/",
+      "alternate_route": "/en/interests/topics/46-calendars-and-time/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Calendarios y horas",
+      "objective": "Calendarios del mundo, husos horarios",
+      "experience": "Reloj mundial y conversor de calendarios",
+      "data_required": "Datos reales suficientes para sostener: Calendarios del mundo, husos horarios. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Base de husos IANA (a confirmar)",
+        "authority": "IANA Time Zone Database",
+        "license": "Public domain para la base tz; fijar versión al ingerir",
+        "evidence": "https://www.iana.org/time-zones",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-47",
+      "route": "/es/intereses/temas/47-codigos-y-criptografia/",
+      "alternate_route": "/en/interests/topics/47-codes-and-cryptography/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Códigos y criptografía",
+      "objective": "Cifrados históricos, Morse",
+      "experience": "Máquinas de cifrado simuladas",
+      "data_required": "Datos reales suficientes para sostener: Cifrados históricos, Morse. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-48",
+      "route": "/es/intereses/temas/48-logica-y-puzles/",
+      "alternate_route": "/en/interests/topics/48-logic-and-puzzles/",
+      "deep_route": null,
+      "group_id": "interest-group-06",
+      "group_title": "Números, lógica y sistemas",
+      "group_route": "/es/intereses/grupos/06-numeros-logica-y-sistemas/",
+      "title": "Lógica y puzles",
+      "objective": "Sudokus, nonogramas, lógica",
+      "experience": "Generador por niveles",
+      "data_required": "Datos reales suficientes para sostener: Sudokus, nonogramas, lógica. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-49",
+      "route": "/es/intereses/temas/49-idiomas-del-mundo/",
+      "alternate_route": "/en/interests/topics/49-languages-of-the-world/",
+      "deep_route": null,
+      "group_id": "interest-group-07",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "title": "Idiomas del mundo",
+      "objective": "Todas las lenguas, familias, dónde se hablan",
+      "experience": "Árbol de familias y mapa",
+      "data_required": "Datos reales suficientes para sostener: Todas las lenguas, familias, dónde se hablan. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Glottolog",
+        "authority": "Glottolog 5.3",
+        "license": "CC BY 4.0",
+        "evidence": "https://glottolog.org/meta/downloads",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-20",
+          "title": "Mundos",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-21",
+          "title": "Lenguas inventadas",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-50",
+      "route": "/es/intereses/temas/50-alfabetos-y-escrituras/",
+      "alternate_route": "/en/interests/topics/50-alphabets-and-writing-systems/",
+      "deep_route": null,
+      "group_id": "interest-group-07",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "title": "Alfabetos y escrituras",
+      "objective": "Todos los sistemas de escritura",
+      "experience": "Cada letra con su trazo",
+      "data_required": "Datos reales suficientes para sostener: Todos los sistemas de escritura. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Unicode (a confirmar)",
+        "authority": "Unicode Consortium",
+        "license": "Unicode data files/software: Unicode License v3; charts/publications tienen restricciones distintas",
+        "evidence": "https://www.unicode.org/policies/licensing_policy.html",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-21",
+          "title": "Lenguas inventadas",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-51",
+      "route": "/es/intereses/temas/51-etimologia/",
+      "alternate_route": "/en/interests/topics/51-etymology/",
+      "deep_route": null,
+      "group_id": "interest-group-07",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "title": "Etimología",
+      "objective": "De dónde viene cada palabra",
+      "experience": "Árbol de una palabra",
+      "data_required": "Datos reales suficientes para sostener: De dónde viene cada palabra. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-52",
+      "route": "/es/intereses/temas/52-lengua-de-signos-braille-y-morse/",
+      "alternate_route": "/en/interests/topics/52-sign-language-braille-and-morse/",
+      "deep_route": null,
+      "group_id": "interest-group-07",
+      "group_title": "Lenguas y escritura",
+      "group_route": "/es/intereses/grupos/07-lenguas-y-escritura/",
+      "title": "Lengua de signos, braille y Morse",
+      "objective": "Signos, códigos, historia",
+      "experience": "Traductor a braille y Morse",
+      "data_required": "Datos reales suficientes para sostener: Signos, códigos, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Creación propia; LSE (a confirmar)",
+        "authority": "Iris Green + fuente LSE aún no congelada",
+        "license": "La parte propia es utilizable; falta fuente/licencia autoritativa de LSE",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-53",
+      "route": "/es/intereses/temas/53-historia/",
+      "alternate_route": "/en/interests/topics/53-history/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Historia",
+      "objective": "Fechas, reinados, batallas, líneas del tiempo",
+      "experience": "Línea del tiempo que se amplía sin límite",
+      "data_required": "Datos reales suficientes para sostener: Fechas, reinados, batallas, líneas del tiempo. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-19",
+          "title": "Escritura con restricciones",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-24",
+          "title": "Moda y textil",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-54",
+      "route": "/es/intereses/temas/54-antiguo-egipto/",
+      "alternate_route": "/en/interests/topics/54-ancient-egypt/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Antiguo Egipto",
+      "objective": "Faraones, jeroglíficos, pirámides",
+      "experience": "Pirámide por dentro",
+      "data_required": "Datos reales suficientes para sostener: Faraones, jeroglíficos, pirámides. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-55",
+      "route": "/es/intereses/temas/55-mitologia/",
+      "alternate_route": "/en/interests/topics/55-mythology/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Mitología",
+      "objective": "Dioses y héroes de todas las culturas",
+      "experience": "Árboles genealógicos",
+      "data_required": "Datos reales suficientes para sostener: Dioses y héroes de todas las culturas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-19",
+          "title": "Escritura con restricciones",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-56",
+      "route": "/es/intereses/temas/56-castillos/",
+      "alternate_route": "/en/interests/topics/56-castles/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Castillos",
+      "objective": "Castillos de España, partes, asedios",
+      "experience": "Castillo en corte",
+      "data_required": "Datos reales suficientes para sostener: Castillos de España, partes, asedios. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata; OpenStreetMap",
+        "authority": "Wikidata + OpenStreetMap",
+        "license": "Wikidata CC0 + OSM ODbL 1.0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing ; https://www.openstreetmap.org/copyright",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-57",
+      "route": "/es/intereses/temas/57-arquitectura-y-puentes/",
+      "alternate_route": "/en/interests/topics/57-architecture-and-bridges/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Arquitectura y puentes",
+      "objective": "Estilos, estructuras, edificios famosos",
+      "experience": "Enlaza con el estudio de construcción",
+      "data_required": "Datos reales suficientes para sostener: Estilos, estructuras, edificios famosos. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-08",
+          "title": "Arquitectura y planos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-58",
+      "route": "/es/intereses/temas/58-monedas/",
+      "alternate_route": "/en/interests/topics/58-coins/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Monedas",
+      "objective": "Monedas de España y del mundo",
+      "experience": "Cromos de la web ampliados",
+      "data_required": "Datos reales suficientes para sostener: Monedas de España y del mundo. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Wikidata; cromos actuales",
+        "authority": "Wikidata + assets de cromos actuales",
+        "license": "Wikidata CC0; procedencia/licencia de cada cromo actual no auditada en R40-A4",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-03",
+          "title": "Patrones y arte generativo",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-07",
+          "title": "Estructuras y puentes",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-08",
+          "title": "Arquitectura y planos",
+          "area": "Construir e inventar",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-59",
+      "route": "/es/intereses/temas/59-sellos/",
+      "alternate_route": "/en/interests/topics/59-stamps/",
+      "deep_route": null,
+      "group_id": "interest-group-08",
+      "group_title": "Historia y cultura",
+      "group_route": "/es/intereses/grupos/08-historia-y-cultura/",
+      "title": "Sellos",
+      "objective": "Series, países, rarezas",
+      "experience": "Álbum de sellos",
+      "data_required": "Datos reales suficientes para sostener: Series, países, rarezas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Fuentes a confirmar",
+        "authority": "Sin fuente congelada",
+        "license": "No hay procedencia/licencia verificable",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-60",
+      "route": "/es/intereses/temas/60-pintura-y-museos/",
+      "alternate_route": "/en/interests/topics/60-painting-and-museums/",
+      "deep_route": null,
+      "group_id": "interest-group-09",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "title": "Pintura y museos",
+      "objective": "Obras, artistas, técnicas",
+      "experience": "Sala de museo con obras en alta calidad",
+      "data_required": "Datos reales suficientes para sostener: Obras, artistas, técnicas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "REAL_DATA"
+      ],
+      "provenance": {
+        "source": "Met Museum (CC0)",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-05",
+          "title": "Color",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-61",
+      "route": "/es/intereses/temas/61-musica-e-instrumentos/",
+      "alternate_route": "/en/interests/topics/61-music-and-instruments/",
+      "deep_route": null,
+      "group_id": "interest-group-09",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "title": "Música e instrumentos",
+      "objective": "Instrumentos, teoría, compositores",
+      "experience": "Instrumentos que suenan",
+      "data_required": "Datos reales suficientes para sostener: Instrumentos, teoría, compositores. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "REAL_DATA"
+      ],
+      "provenance": {
+        "source": "MusicBrainz (a confirmar)",
+        "authority": "MusicBrainz",
+        "license": "Core data CC0; supplementary CC BY-NC-SA 3.0; no aporta grabaciones de instrumentos",
+        "evidence": "https://musicbrainz.org/doc/About/Data_License",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-16",
+          "title": "Ritmo y secuenciador",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-17",
+          "title": "Composición",
+          "area": "Música y sonido",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-62",
+      "route": "/es/intereses/temas/62-cine-y-como-se-hace/",
+      "alternate_route": "/en/interests/topics/62-film-and-filmmaking/",
+      "deep_route": null,
+      "group_id": "interest-group-09",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "title": "Cine y cómo se hace",
+      "objective": "Oficios, técnicas, historia",
+      "experience": "Plató por dentro",
+      "data_required": "Datos reales suficientes para sostener: Oficios, técnicas, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-63",
+      "route": "/es/intereses/temas/63-fotografia/",
+      "alternate_route": "/en/interests/topics/63-photography/",
+      "deep_route": null,
+      "group_id": "interest-group-09",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "title": "Fotografía",
+      "objective": "Cámaras, luz, técnica",
+      "experience": "Simulador de cámara",
+      "data_required": "Datos reales suficientes para sostener: Cámaras, luz, técnica. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Cálculo propio",
+        "authority": "Iris Green",
+        "license": "Cálculo/visualización original",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-64",
+      "route": "/es/intereses/temas/64-comic-y-dibujo-narrativo/",
+      "alternate_route": "/en/interests/topics/64-comics-and-visual-storytelling/",
+      "deep_route": null,
+      "group_id": "interest-group-09",
+      "group_title": "Arte, música e imagen",
+      "group_route": "/es/intereses/grupos/09-arte-musica-e-imagen/",
+      "title": "Cómic y dibujo narrativo",
+      "objective": "Estilos, viñetas, historia",
+      "experience": "Enlaza con el estudio de dibujo",
+      "data_required": "Datos reales suficientes para sostener: Estilos, viñetas, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-65",
+      "route": "/es/intereses/temas/65-mundos-de-ficcion/",
+      "alternate_route": "/en/interests/topics/65-fictional-worlds/",
+      "deep_route": null,
+      "group_id": "interest-group-10",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "title": "Mundos de ficción",
+      "objective": "Crear mundos, mapas, criaturas",
+      "experience": "Estudio de mundos del Taller",
+      "data_required": "Datos reales suficientes para sostener: Crear mundos, mapas, criaturas. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "FICTIONAL"
+      ],
+      "experience_classes": [
+        "FICTIONAL",
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Creación propia (sin personajes con derechos)",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-06",
+          "title": "Cómic y guion gráfico",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-66",
+      "route": "/es/intereses/temas/66-criaturas-para-coleccionar/",
+      "alternate_route": "/en/interests/topics/66-collectible-creatures/",
+      "deep_route": null,
+      "group_id": "interest-group-10",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "title": "Criaturas para coleccionar",
+      "objective": "Coleccionarlas todas, tipos, evoluciones",
+      "experience": "Colección de criaturas inventadas",
+      "data_required": "Datos reales suficientes para sostener: Coleccionarlas todas, tipos, evoluciones. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "FICTIONAL"
+      ],
+      "experience_classes": [
+        "FICTIONAL",
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-04",
+          "title": "Pixel art y animación",
+          "area": "Imagen y diseño",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-67",
+      "route": "/es/intereses/temas/67-juegos-de-mesa/",
+      "alternate_route": "/en/interests/topics/67-board-games/",
+      "deep_route": null,
+      "group_id": "interest-group-10",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "title": "Juegos de mesa",
+      "objective": "Reglas, historia, estrategia",
+      "experience": "Tableros jugables",
+      "data_required": "Datos reales suficientes para sostener: Reglas, historia, estrategia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-68",
+      "route": "/es/intereses/temas/68-colecciones-en-general/",
+      "alternate_route": "/en/interests/topics/68-collections/",
+      "deep_route": null,
+      "group_id": "interest-group-10",
+      "group_title": "Mundos, juegos y colecciones",
+      "group_route": "/es/intereses/grupos/10-mundos-juegos-y-colecciones/",
+      "title": "Colecciones en general",
+      "objective": "Tenerlo todo, ordenado y completo",
+      "experience": "Álbum común a todos los intereses",
+      "data_required": "Datos reales suficientes para sostener: Tenerlo todo, ordenado y completo. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "USER_CREATED"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Mi colección",
+        "authority": "Iris Green local collection",
+        "license": "Contenido/estado local del producto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-22",
+          "title": "Juegos de mesa",
+          "area": "Palabras y mundos",
+          "route": "/es/taller/"
+        },
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-69",
+      "route": "/es/intereses/temas/69-cocina/",
+      "alternate_route": "/en/interests/topics/69-cooking/",
+      "deep_route": null,
+      "group_id": "interest-group-11",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "title": "Cocina",
+      "objective": "Recetas, técnicas, química de la cocina",
+      "experience": "Cocina paso a paso",
+      "data_required": "Datos reales suficientes para sostener: Recetas, técnicas, química de la cocina. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Creación propia",
+        "authority": "Iris Green",
+        "license": "Contenido original del proyecto",
+        "evidence": "",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-70",
+      "route": "/es/intereses/temas/70-quimica-y-elementos/",
+      "alternate_route": "/en/interests/topics/70-chemistry-and-the-elements/",
+      "deep_route": null,
+      "group_id": "interest-group-11",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "title": "Química y elementos",
+      "objective": "La tabla periódica entera",
+      "experience": "Tabla periódica con cada elemento",
+      "data_required": "Datos reales suficientes para sostener: La tabla periódica entera. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "source-review",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "PubChem (a confirmar)",
+        "authority": "PubChem",
+        "license": "Licencia definida por cada fuente contribuyente; no existe licencia única para todo PubChem",
+        "evidence": "https://pubchem.ncbi.nlm.nih.gov/docs/data-sources",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "HOLD"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-71",
+      "route": "/es/intereses/temas/71-deportes/",
+      "alternate_route": "/en/interests/topics/71-sports/",
+      "deep_route": null,
+      "group_id": "interest-group-11",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "title": "Deportes",
+      "objective": "Reglas, récords, historia",
+      "experience": "Línea del tiempo de récords",
+      "data_required": "Datos reales suficientes para sostener: Reglas, récords, historia. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "SIMULATION"
+      ],
+      "provenance": {
+        "source": "Wikidata",
+        "authority": "Wikidata structured data",
+        "license": "CC0",
+        "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    },
+    {
+      "id": "interest-72",
+      "route": "/es/intereses/temas/72-moda-y-tejidos/",
+      "alternate_route": "/en/interests/topics/72-fashion-and-textiles/",
+      "deep_route": null,
+      "group_id": "interest-group-11",
+      "group_title": "Vida diaria",
+      "group_route": "/es/intereses/grupos/11-vida-diaria/",
+      "title": "Moda y tejidos",
+      "objective": "Tejidos, patrones, historia del traje",
+      "experience": "Enlaza con el estudio de diseño",
+      "data_required": "Datos reales suficientes para sostener: Tejidos, patrones, historia del traje. Cuando el estado sea HOLD, no presentarlos como datos publicados hasta cerrar la procedencia indicada.",
+      "availability": "ready",
+      "knowledge_classes": [
+        "REAL_DATA"
+      ],
+      "experience_classes": [
+        "USER_CREATED"
+      ],
+      "provenance": {
+        "source": "Met Museum",
+        "authority": "The Metropolitan Museum of Art Open Access",
+        "license": "CC0 únicamente para obras/datos marcados Open Access",
+        "evidence": "https://www.metmuseum.org/hubs/open-access",
+        "source_date": "2026-09-24",
+        "checked_at": "2026-09-26",
+        "status": "READY"
+      },
+      "workshop": [
+        {
+          "id": "workshop-25",
+          "title": "Ideas e inventos",
+          "area": "Ideas",
+          "route": "/es/taller/"
+        }
+      ]
+    }
+  ]
+}
