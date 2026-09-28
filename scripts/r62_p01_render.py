@@ -85,6 +85,17 @@ MATS = {
 }
 MAT_IDS = {k: i for i, k in enumerate(MATS)}
 
+# Despiece: (ancho de pieza, altura de hilada, traba). None = pieza única.
+COURSING = {
+    'muro': (0.98, 0.44, 0.5),      # sillería a soga
+    'suelo': (1.00, 1.00, 0.0),     # losas a junta corrida
+    'caliza': (0.62, 0.40, 0.5),
+    'clara': None,
+    'umbra': None,
+    'fria': None,
+    'laton': None,
+}
+
 
 def project(p):
     x, y, z = p
@@ -186,10 +197,33 @@ def blit_quad(buf, world_corners, mat, tint=1.0, emissive=None):
         alb *= (0.93 + 0.15 * strat)[..., None]
     alb *= (0.86 + 0.16 * wear)[..., None] * tint
 
+    joint = None
+    cs = COURSING.get(mat)
+    if cs:
+        bw, ch, bond = cs
+        row = np.floor(tb / ch)
+        off = (np.mod(row, 2.0) * bond) * bw
+        colf = (ta + off) / bw
+        col = np.floor(colf)
+        # variación de tono pieza a pieza: hash determinista del índice
+        hsh = np.modf(np.sin(col * 12.9898 + row * 78.233) * 43758.5453)[0]
+        alb *= (0.90 + 0.19 * hsh)[..., None]
+        # junta: distancia al borde de la pieza, en unidades de mundo
+        du_e = np.minimum(colf - col, 1.0 - (colf - col)) * bw
+        dv_e = np.minimum(tb / ch - row, 1.0 - (tb / ch - row)) * ch
+        jw = 0.028
+        joint = np.clip(1.0 - np.minimum(du_e, dv_e) / jw, 0.0, 1.0) ** 1.5
+        alb *= (1.0 - 0.42 * joint)[..., None]
+
     tan_a = np.zeros(3); tan_a[(ax + 1) % 3] = 1.0
     tan_b = np.zeros(3); tan_b[(ax + 2) % 3] = 1.0
     da = 1.3 * dta + 2.6 * dga
     db = 1.3 * dtb + 2.6 * dgb
+    if joint is not None:
+        # la junta rehunde: la normal gira hacia dentro a cada lado del surco
+        gj = 0.55
+        da = da + gj * np.gradient(joint, axis=1) * 34.0
+        db = db + gj * np.gradient(joint, axis=0) * 34.0
     nn = (n[None, None, :] - bump * (da[..., None] * tan_a[None, None, :]
                                      + db[..., None] * tan_b[None, None, :]))
     # bisel: cerca del canto la normal se inclina hacia fuera del plano
@@ -261,12 +295,28 @@ def wall_with_hole(buf, plane, hole, mat='muro'):
 
 
 PIECES = [
+    # escalera, con mamperlán volado en cada peldaño
     ((1.6, 3.5, 0, 0.7, 1.3, 0.62), 'clara'),
+    ((1.56, 3.46, 0.56, 0.78, 1.38, 0.07), 'clara'),
     ((2.3, 3.5, 0, 0.7, 1.3, 1.24), 'clara'),
+    ((2.26, 3.46, 1.18, 0.78, 1.38, 0.07), 'clara'),
     ((3.0, 3.5, 0, 0.7, 1.3, 1.86), 'clara'),
-    ((3.4, 1.9, 0, 1.2, 1.2, 1.3), 'umbra'),
-    ((1.5, 0.9, 0, 0.9, 0.9, 3.6), 'umbra'),
+    ((2.96, 3.46, 1.80, 0.78, 1.38, 0.07), 'clara'),
+    # plinto, con tapa achaflanada
+    ((3.4, 1.9, 0, 1.2, 1.2, 1.30), 'umbra'),
+    ((3.32, 1.82, 1.30, 1.36, 1.36, 0.14), 'umbra'),
+    # columna, con basa y capitel
+    ((1.38, 0.78, 0, 1.14, 1.14, 0.22), 'umbra'),
+    ((1.5, 0.9, 0.22, 0.9, 0.9, 3.16), 'umbra'),
+    ((1.38, 0.78, 3.38, 1.14, 1.14, 0.24), 'umbra'),
+    # repisa fría bajo el vano alto
     ((0, 3.9, 1.55, 1.25, 1.8, 0.32), 'fria'),
+]
+
+# Zócalo corrido al pie de los dos muros: articula el encuentro con el suelo.
+SKIRTING = [
+    ((0.0, 0.0, 0.0, 0.14, S, 0.42), 'muro'),
+    ((0.0, 0.0, 0.0, S, 0.14, 0.42), 'muro'),
 ]
 PATH = [(5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (4, 5), (3, 5), (2, 5), (1, 5)]
 
@@ -280,6 +330,8 @@ def build_scene(buf):
                         (cx + 1, cy + 1, 0.02), (cx, cy + 1, 0.02)], 'fria')
         blit_quad(buf, [(cx + 0.44, cy + 0.08, 0.035), (cx + 0.56, cy + 0.08, 0.035),
                         (cx + 0.56, cy + 0.92, 0.035), (cx + 0.44, cy + 0.92, 0.035)], 'laton')
+    for spec, mat in SKIRTING:
+        box(buf, *spec, mat)
     for spec, mat in PIECES:
         box(buf, *spec, mat)
 

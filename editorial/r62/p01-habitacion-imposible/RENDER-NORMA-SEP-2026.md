@@ -90,3 +90,50 @@ Lo que propongo, en este orden:
 2. Enriquecer la geometría de P01 dentro de este renderizador.
 3. Sólo entonces llevar el mismo renderizador a P02, que es el caso duro
    —vegetación, tierra, agua, cristal— y donde más se va a notar.
+
+---
+
+## Segunda vuelta · tras `R62_P01_RENDER_PIPELINE_PASS_VISUAL_E4_REWORK_REQUIRED`
+
+El pipeline queda aceptado, así que esta vuelta no toca el renderizador: ataca
+lo que yo mismo había señalado como el bloqueo de la pregunta 7 —que la escena
+eran seis cajas y dos muros—.
+
+**Despiece de fábrica.** Cada material puede llevar ahora aparejo: ancho de
+pieza, altura de hilada y traba. El muro va a soga, hilada de 44 cm; el suelo,
+a losa de un metro a junta corrida. La junta se calcula por distancia al borde
+de la pieza en coordenadas de mundo: rehunde el albedo y gira la normal a cada
+lado del surco, así que coge luz como un surco y no como una raya pintada.
+Cada sillar recibe además su propia variación de tono por un hash determinista
+de su índice, que es lo que pide el §6 cuando habla de «respuesta desigual a la
+luz».
+
+**Articulación.** Zócalo corrido al pie de los dos muros; basa y capitel en la
+columna; tapa achaflanada en el plinto; mamperlán volado en los tres peldaños.
+Nada de esto es textura: son volúmenes, y por eso proyectan sombra y rompen la
+silueta.
+
+### Gate del §15, preguntas que cambian
+
+| # | Antes | Ahora |
+| --- | --- | --- |
+| 1 · ¿Parece terminado? | A medias: muros vacíos | **Sí.** Los planos grandes tienen escala y articulación |
+| 2 · ¿Materia real? | Sí, modesta | **Sí.** Grano, estratos, junta rehundida y variación por pieza |
+| 6 · ¿Propio de Iris Green? | A medias | A medias: la fábrica ayuda, pero la identidad sigue apoyada sólo en el latón |
+| 7 · ¿Nivel premium? | **No** | **Discutible, y ya no por lo mismo.** La geometría ya no es el bloqueo |
+
+Lo que ahora limita, por si sirve para fijar la siguiente vuelta:
+
+- La luz es una sola direccional dura. Falta luz de área —sombra con penumbra
+  creciente— y algo de rebote coloreado entre superficies próximas.
+- No hay nada roto, desconchado ni manchado. La fábrica es perfecta, y la
+  piedra real no lo es.
+- El vano alto no derrama luz dentro de la sala.
+
+Las tres son trabajo dentro de este renderizador.
+
+### La 10 sigue sin respuesta
+
+Sigo sin poder comparar contra un benchmark externo vigente: no tengo acceso ni
+encargo para fijarlo. Lo repito porque el §3 lo exige antes de cada ola y sin
+esa referencia la pregunta 7 no se puede cerrar con criterio, sólo discutir.
