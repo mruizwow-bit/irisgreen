@@ -47,7 +47,7 @@ async def assert_catalogue(page,path,adult_title,all_title):
         if allowed is not None:
             rows=await cards.evaluate_all("""nodes => nodes.map(n => ({
               href:n.getAttribute('href'),
-              bands:(n.getAttribute('data-ig-age-bands')||'').split(/\s+/).filter(Boolean)
+              bands:(n.getAttribute('data-ig-age-bands')||'').split(/\\s+/).filter(Boolean)
             }))""")
             bad=[r for r in rows if not set(r['bands']).intersection(allowed)]
             need(not bad,f'incompatible Conditions cards mounted: {path} {stage} {bad[:5]}')

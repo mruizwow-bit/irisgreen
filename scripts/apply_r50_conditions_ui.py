@@ -32,6 +32,7 @@ def apply_one(path,root):
  if not m:raise AssertionError('Conditions page without body: '+route)
  attrs=m.group(1)
  for k,v in [('data-ig-r49','1'),('data-ig-profile',profile),('data-ig-materials','r42'),('data-ig-r49-owner','R50_CONDITIONS')]:attrs=set_attr(attrs,k,v)
+ if profile=='browse':attrs=set_attr(attrs,'data-ig-catalog','conditions')
  after=before[:m.start()]+'<body'+attrs+'>'+before[m.end():]
  mm=MAIN_RE.search(after)
  if mm and not re.search(r'\bid=["\']',mm.group(1),re.I):
@@ -46,6 +47,9 @@ def apply_one(path,root):
    defer=' defer' if any(x in bare for x in ('ig-child-safe.js','interfaz-comun.js','musica.js','ig-r49-transversal.js')) else ''
    inject.append(f'<script{defer} src="{url}"></script>')
  if 'name="ig-r50-section"' not in after:inject.insert(0,'<meta name="ig-r50-section" content="conditions">')
+ if profile=='browse':
+  if '/assets/buscador-comun.js' not in after:inject.append('<script defer src="/assets/buscador-comun.js"></script>')
+  if '/assets/catalogo-comun.js' not in after:inject.append('<script defer src="/assets/catalogo-comun.js"></script>')
  if inject:after=re.sub(r'</head>',''.join(inject)+'</head>',after,count=1,flags=re.I)
  if after!=before:path.write_text(after,encoding='utf-8')
  return {'route':route,'file':path.relative_to(root).as_posix(),'profile':profile,'locale':'en' if route.startswith('/en/') else 'es'}
