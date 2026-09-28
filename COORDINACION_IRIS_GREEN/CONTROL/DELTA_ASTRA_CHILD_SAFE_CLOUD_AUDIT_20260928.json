@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "ASTRA-CHILD-SAFE-CLOUD-AUDIT-20260928",
+  "date": "2026-09-28",
+  "statuses": {
+    "a2": "R51_A2_AGE_FILTER_GLOBAL_FAIL_RECLASSIFICATION_REQUIRED",
+    "a9": "R51_A9_R04_PROGRESS_PASS_AGE_TAXONOMY_RECLASSIFICATION_REQUIRED"
+  },
+  "a2": {
+    "head": "5f759464dfa6f78d1843f9414f5b2207da33700a",
+    "issue": 311,
+    "findings": {
+      "situations_transversal": 223,
+      "conditions_transversal": 226,
+      "everyday_transversal": 62,
+      "data_transversal": 60,
+      "research_teen_adult": 132,
+      "support_adult": 262
+    },
+    "root_cause": "AUDIENCE_CLASSIFICATION_TOO_BROAD",
+    "next": "R51_A2_GLOBAL_AGE_FILTER_965_RECLASSIFIED_READY_FOR_ASTRA"
+  },
+  "a9": {
+    "branch": "agent9/r51-cloud-library-r04-20260927",
+    "head": "b2c8bec660b63fe39f145c71c92129558c281b01",
+    "last_closed_block": "5B_ROUTINES",
+    "r04_sealed": false,
+    "current_a2_library": "n04-es-20260916-56f72c4d3959",
+    "next": "R51_A9_R04_AGE_TAXONOMY_RECLASSIFIED_READY_FOR_ASTRA"
+  },
+  "rule": "SENSITIVITY_AND_AGE_ARE_INDEPENDENT_AXES",
+  "hold": [
+    "R04_SEAL",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
