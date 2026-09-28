@@ -18,6 +18,7 @@ def main():
  need(reg['source_record_count']==965,'approved registry record count mismatch')
  need(reg['surfaces']['research']['audience']==['ADOLESCENCIA','ADULTEZ'],'Research audience mismatch')
  need(reg['surfaces']['support_directory']['audience']==['ADULTEZ'],'Support audience mismatch')
+ need(reg.get('product_constraints',{}).get('questionnaires',{}).get('audience')==['ADULTEZ'],'Questionnaires audience mismatch')
  es=(root/'index.html').read_text(encoding='utf-8');en=(root/'en/index.html').read_text(encoding='utf-8')
  for txt in (es,en):
   need('data-ig-audience-values="ADOLESCENCIA ADULTEZ"' in txt,'Research Home link not audience-tagged')
@@ -26,6 +27,7 @@ def main():
  need('data-ig-page-audience="ADOLESCENCIA ADULTEZ"' in research,'Research direct gate missing')
  for path in [root/'es/tramites/index.html',root/'es/tramites/directorio/index.html']:
   need('data-ig-page-audience="ADULTEZ"' in path.read_text(encoding='utf-8'),'Support direct gate missing '+str(path))
+ need('data-ig-page-audience="ADULTEZ"' in (root/'es/cuestionarios/index.html').read_text(encoding='utf-8'),'Questionnaires direct gate missing')
  missing=[];tagged=0
  pages=[root/'index.html',root/'404.html']
  for lang in ('es','en'):
@@ -45,6 +47,7 @@ def main():
    expected=None
    if path.startswith(('/es/investigacion/','/en/research/')):expected='ADOLESCENCIA ADULTEZ'
    elif path.startswith(('/es/tramites/','/en/support-directory/')):expected='ADULTEZ'
+   elif path.startswith('/es/cuestionarios/'):expected='ADULTEZ'
    if not expected:continue
    if f'data-ig-audience-values="{expected}"' not in attrs:missing.append((route,href,expected))
    else:tagged+=1

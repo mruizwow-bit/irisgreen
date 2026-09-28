@@ -65,6 +65,23 @@
       "audience": [
         "ADULTEZ"
       ]
+    },
+    {
+      "surface": "questionnaires",
+      "prefixes": [
+        "/es/cuestionarios/"
+      ],
+      "audience": [
+        "ADULTEZ"
+      ]
     }
-  ]
+  ],
+  "product_constraints": {
+    "questionnaires": {
+      "audience": [
+        "ADULTEZ"
+      ],
+      "basis": "published_questionnaires_are_validated_for_adults_only"
+    }
+  }
 }
