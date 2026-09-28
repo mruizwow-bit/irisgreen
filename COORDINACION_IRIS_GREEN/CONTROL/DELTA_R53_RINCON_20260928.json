@@ -1,0 +1,43 @@
+{
+  "schema": "R53_RINCON_ASTRA_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 317,
+  "status": "R53_CLAUDE_RINCON_REBUILD_ORDERED",
+  "predecessor_issue": 307,
+  "predecessor_status": "R46_CLAUDE_RINCON_ASTRA_REVIEW_FAIL_REBUILD_REQUIRED",
+  "keep": [
+    "R46_BREATH_ENGINE_BASE",
+    "R46_LANDSCAPES_LOADER",
+    "CLEAN_MODE",
+    "PR303_FIXES",
+    "WIDE_LAYOUT",
+    "R42_R02",
+    "ES_EN"
+  ],
+  "rebuild": [
+    "IMMERSIVE_ROOMS",
+    "ROOM_FALLBACKS",
+    "ROOM_AUDIO",
+    "REDUCED_MOTION",
+    "MEDIA_PROVENANCE",
+    "MEDIA_AD_GATE",
+    "PRODUCT_QA",
+    "HARDWARE_PERFORMANCE_QA"
+  ],
+  "findings": {
+    "one_shader_five_presets": true,
+    "cloud_still_reads_as_sky": true,
+    "breathing_space_repeats_balloons": true,
+    "immersive_only_webgl2": true,
+    "immersive_canvas_static_fallback": false,
+    "room_audio_missing": true,
+    "media_provenance_missing": true,
+    "ad_gate_pending": true,
+    "csp_blocker_claim": false,
+    "qa_112_not_product_complete": true
+  },
+  "csp_base_sha": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+  "csp_youtube_nocookie_already_allowed": true,
+  "expected_code_marker": "R53_CLAUDE_RINCON_INSTALLATIONS_CODE_READY_MEDIA_QA_PENDING",
+  "expected_final_marker": "R53_CLAUDE_RINCON_INSTALLATIONS_READY_FOR_ASTRA"
+}
