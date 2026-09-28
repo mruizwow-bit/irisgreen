@@ -29,7 +29,12 @@ export function canonicalizeAgeBands(input,{allowLegacy=true}={}){
     if(!out.includes(canonical)) out.push(canonical);
   }
   if(!out.length) throw new Error('missing_age_band');
-  if(out.includes('ALL_AGES')&&out.length>1) throw new Error('all_ages_must_be_exclusive');
+  if(out.includes('ALL_AGES')&&out.length>1){
+    const rawHasCanonicalAll=source.some(v=>String(v).trim()==='ALL_AGES');
+    const legacyAll=source.some(v=>['todas','any','TRANSVERSAL','CUALQUIER_EDAD'].includes(String(v).trim()));
+    if(allowLegacy&&!rawHasCanonicalAll&&legacyAll) return Object.freeze(['ALL_AGES']);
+    throw new Error('all_ages_must_be_exclusive');
+  }
   return Object.freeze(out);
 }
 export function assertCanonicalAgeBands(input){
