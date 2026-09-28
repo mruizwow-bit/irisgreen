@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R60-ASTRA-P1-LISTENING-REVIEW",
+  "date": "2026-09-28",
+  "issue": 324,
+  "status": "R60_ASTRA_MUSIC_4_PILOTS_LISTENING_REVIEW_READY_FOR_MARIA",
+  "astra": {
+    "M01": "KEEP",
+    "M02": "KEEP",
+    "M03": "ADJUST",
+    "M04": "KEEP"
+  },
+  "mp3_independent_check": {
+    "sample_rate_hz": 48000,
+    "stereo": true,
+    "lufs_i_approx": {
+      "M01": -20,
+      "M02": -20,
+      "M03": -20,
+      "M04": -20
+    },
+    "true_peak_dbtp_approx": {
+      "M01": -4.95,
+      "M02": -7.67,
+      "M03": -8.31,
+      "M04": -9.21
+    }
+  },
+  "M03_adjust": "Keep airy identity but reduce/alternate persistent 1.7/3.3 kHz presence; no global low-pass.",
+  "next_human_decision": "Maria KEEP_ADJUST_REJECT per pilot",
+  "gate_not_emitted": "R60_MUSIC_4_PILOTS_APPROVED_FOR_LONG_RENDER",
+  "hold": [
+    "LONG_RENDER",
+    "A2",
+    "PIXABAY_REPLACEMENT",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
