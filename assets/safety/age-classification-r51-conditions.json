@@ -1,0 +1,3514 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "condition",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 226,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 9,
+      "AGE_13_17": 83,
+      "AGE_18_PLUS": 83,
+      "ALL_AGES": 136
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 145,
+      "AGE_13_17": 219,
+      "AGE_18_PLUS": 219,
+      "ALL_AGES": 136
+    }
+  },
+  "records": [
+    {
+      "content_id": "global-188",
+      "surface": "condition",
+      "title_es": "Abuso y explotación",
+      "title_en": "Abuse and exploitation",
+      "url_es": "/es/neurodiversidad/condiciones/abuso-y-explotacion/",
+      "url_en": "/en/neurodiversity/conditions/abuse-and-exploitation/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Relevant across ages, but not labelled ALL_AGES because safety/discovery handling remains content-specific.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-189",
+      "surface": "condition",
+      "title_es": "Acceso a apoyos",
+      "title_en": "Access to support",
+      "url_es": "/es/neurodiversidad/condiciones/acceso-a-apoyos/",
+      "url_en": "/en/neurodiversity/conditions/access-to-support/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-190",
+      "surface": "condition",
+      "title_es": "Acoso escolar / bullying",
+      "title_en": "School bullying",
+      "url_es": "/es/neurodiversidad/condiciones/acoso-escolar-bullying/",
+      "url_en": "/en/neurodiversity/conditions/school-bullying/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-191",
+      "surface": "condition",
+      "title_es": "Actividad física y movimiento",
+      "title_en": "Physical activity and movement",
+      "url_es": "/es/neurodiversidad/condiciones/actividad-fisica-y-movimiento/",
+      "url_en": "/en/neurodiversity/conditions/physical-activity-and-movement/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-192",
+      "surface": "condition",
+      "title_es": "Agénero",
+      "title_en": "Agender",
+      "url_es": "/es/neurodiversidad/condiciones/agenero/",
+      "url_en": "/en/neurodiversity/conditions/agender/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-193",
+      "surface": "condition",
+      "title_es": "Agorafobia",
+      "title_en": "Agoraphobia",
+      "url_es": "/es/neurodiversidad/condiciones/agorafobia/",
+      "url_en": "/en/neurodiversity/conditions/agoraphobia/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-194",
+      "surface": "condition",
+      "title_es": "Alexitimia",
+      "title_en": "Alexithymia",
+      "url_es": "/es/neurodiversidad/condiciones/alexitimia/",
+      "url_en": "/en/neurodiversity/conditions/alexithymia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-195",
+      "surface": "condition",
+      "title_es": "Alta sensibilidad / SPS",
+      "title_en": "Sensory processing sensitivity / SPS",
+      "url_es": "/es/neurodiversidad/condiciones/alta-sensibilidad-sps/",
+      "url_en": "/en/neurodiversity/conditions/sensory-processing-sensitivity-sps/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-196",
+      "surface": "condition",
+      "title_es": "Altas capacidades",
+      "title_en": "Giftedness / high ability",
+      "url_es": "/es/neurodiversidad/condiciones/altas-capacidades/",
+      "url_en": "/en/neurodiversity/conditions/giftedness-high-ability/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-197",
+      "surface": "condition",
+      "title_es": "Amistad",
+      "title_en": "Friendship",
+      "url_es": "/es/neurodiversidad/condiciones/amistad/",
+      "url_en": "/en/neurodiversity/conditions/friendship/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-198",
+      "surface": "condition",
+      "title_es": "Amnesia disociativa",
+      "title_en": "Dissociative amnesia",
+      "url_es": "/es/neurodiversidad/condiciones/amnesia-disociativa/",
+      "url_en": "/en/neurodiversity/conditions/dissociative-amnesia/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-199",
+      "surface": "condition",
+      "title_es": "Animales",
+      "title_en": "Animals",
+      "url_es": "/es/neurodiversidad/condiciones/animales/",
+      "url_en": "/en/neurodiversity/conditions/animals/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-200",
+      "surface": "condition",
+      "title_es": "Anorexia nerviosa",
+      "title_en": "Anorexia nervosa",
+      "url_es": "/es/neurodiversidad/condiciones/anorexia-nerviosa/",
+      "url_en": "/en/neurodiversity/conditions/anorexia-nervosa/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-201",
+      "surface": "condition",
+      "title_es": "Ansiedad",
+      "title_en": "Anxiety",
+      "url_es": "/es/neurodiversidad/condiciones/ansiedad/",
+      "url_en": "/en/neurodiversity/conditions/anxiety/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-202",
+      "surface": "condition",
+      "title_es": "Trastorno de ansiedad generalizada (TAG)",
+      "title_en": "Generalised anxiety disorder (GAD)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-generalizada-tag/",
+      "url_en": "/en/neurodiversity/conditions/generalised-anxiety-disorder-gad/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-203",
+      "surface": "condition",
+      "title_es": "Trastorno de ansiedad por separación",
+      "title_en": "Separation anxiety disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-por-separacion/",
+      "url_en": "/en/neurodiversity/conditions/separation-anxiety-disorder/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-204",
+      "surface": "condition",
+      "title_es": "Trastorno de ansiedad social",
+      "title_en": "Social anxiety disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-ansiedad-social/",
+      "url_en": "/en/neurodiversity/conditions/social-anxiety-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-205",
+      "surface": "condition",
+      "title_es": "Apraxia del habla infantil",
+      "title_en": "Childhood apraxia of speech",
+      "url_es": "/es/neurodiversidad/condiciones/apraxia-del-habla-infantil/",
+      "url_en": "/en/neurodiversity/conditions/childhood-apraxia-of-speech/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-206",
+      "surface": "condition",
+      "title_es": "ARFID",
+      "title_en": "ARFID",
+      "url_es": "/es/neurodiversidad/condiciones/arfid/",
+      "url_en": "/en/neurodiversity/conditions/arfid/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-207",
+      "surface": "condition",
+      "title_es": "Aromanticismo",
+      "title_en": "Aromanticism",
+      "url_es": "/es/neurodiversidad/condiciones/aromanticismo/",
+      "url_en": "/en/neurodiversity/conditions/aromanticism/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-208",
+      "surface": "condition",
+      "title_es": "Arte y creación",
+      "title_en": "Art and creativity",
+      "url_es": "/es/neurodiversidad/condiciones/arte-y-creacion/",
+      "url_en": "/en/neurodiversity/conditions/art-and-creativity/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-209",
+      "surface": "condition",
+      "title_es": "Asexualidad",
+      "title_en": "Asexuality",
+      "url_es": "/es/neurodiversidad/condiciones/asexualidad/",
+      "url_en": "/en/neurodiversity/conditions/asexuality/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-210",
+      "surface": "condition",
+      "title_es": "Dificultades de asistencia escolar",
+      "title_en": "School attendance difficulties",
+      "url_es": "/es/neurodiversidad/condiciones/dificultades-de-asistencia-escolar/",
+      "url_en": "/en/neurodiversity/conditions/school-attendance-difficulties/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-211",
+      "surface": "condition",
+      "title_es": "Ataque de pánico",
+      "title_en": "Panic attack",
+      "url_es": "/es/neurodiversidad/condiciones/ataque-de-panico/",
+      "url_en": "/en/neurodiversity/conditions/panic-attack/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-212",
+      "surface": "condition",
+      "title_es": "Trastorno por atracón",
+      "title_en": "Binge-eating disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-por-atracon/",
+      "url_en": "/en/neurodiversity/conditions/binge-eating-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-213",
+      "surface": "condition",
+      "title_es": "AuDHD",
+      "title_en": "AuDHD",
+      "url_es": "/es/neurodiversidad/condiciones/audhd/",
+      "url_en": "/en/neurodiversity/conditions/audhd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-214",
+      "surface": "condition",
+      "title_es": "Autismo",
+      "title_en": "Autism",
+      "url_es": "/es/neurodiversidad/condiciones/autismo/",
+      "url_en": "/en/neurodiversity/conditions/autism/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-215",
+      "surface": "condition",
+      "title_es": "Autoaceptación",
+      "title_en": "Self-acceptance",
+      "url_es": "/es/neurodiversidad/condiciones/autoaceptacion/",
+      "url_en": "/en/neurodiversity/conditions/self-acceptance/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-216",
+      "surface": "condition",
+      "title_es": "Autocompasión",
+      "title_en": "Self-compassion",
+      "url_es": "/es/neurodiversidad/condiciones/autocompasion/",
+      "url_en": "/en/neurodiversity/conditions/self-compassion/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-217",
+      "surface": "condition",
+      "title_es": "Autoconcepto",
+      "title_en": "Self-concept",
+      "url_es": "/es/neurodiversidad/condiciones/autoconcepto/",
+      "url_en": "/en/neurodiversity/conditions/self-concept/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-218",
+      "surface": "condition",
+      "title_es": "Autoconfianza",
+      "title_en": "Self-confidence",
+      "url_es": "/es/neurodiversidad/condiciones/autoconfianza/",
+      "url_en": "/en/neurodiversity/conditions/self-confidence/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-219",
+      "surface": "condition",
+      "title_es": "Autodefensa / self-advocacy",
+      "title_en": "Self-advocacy",
+      "url_es": "/es/neurodiversidad/condiciones/autodefensa-self-advocacy/",
+      "url_en": "/en/neurodiversity/conditions/self-advocacy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-220",
+      "surface": "condition",
+      "title_es": "Autoestima",
+      "title_en": "Self-esteem",
+      "url_es": "/es/neurodiversidad/condiciones/autoestima/",
+      "url_en": "/en/neurodiversity/conditions/self-esteem/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-221",
+      "surface": "condition",
+      "title_es": "Autonomía",
+      "title_en": "Autonomy",
+      "url_es": "/es/neurodiversidad/condiciones/autonomia/",
+      "url_en": "/en/neurodiversity/conditions/autonomy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-222",
+      "surface": "condition",
+      "title_es": "Bigénero",
+      "title_en": "Bigender",
+      "url_es": "/es/neurodiversidad/condiciones/bigenero/",
+      "url_en": "/en/neurodiversity/conditions/bigender/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-223",
+      "surface": "condition",
+      "title_es": "Bisexualidad",
+      "title_en": "Bisexuality",
+      "url_es": "/es/neurodiversidad/condiciones/bisexualidad/",
+      "url_en": "/en/neurodiversity/conditions/bisexuality/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-224",
+      "surface": "condition",
+      "title_es": "Bulimia nerviosa",
+      "title_en": "Bulimia nervosa",
+      "url_es": "/es/neurodiversidad/condiciones/bulimia-nerviosa/",
+      "url_en": "/en/neurodiversity/conditions/bulimia-nervosa/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-225",
+      "surface": "condition",
+      "title_es": "Burnout autista",
+      "title_en": "Autistic burnout",
+      "url_es": "/es/neurodiversidad/condiciones/burnout-autista/",
+      "url_en": "/en/neurodiversity/conditions/autistic-burnout/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-226",
+      "surface": "condition",
+      "title_es": "CAA / comunicación aumentativa y alternativa",
+      "title_en": "AAC / augmentative and alternative communication",
+      "url_es": "/es/neurodiversidad/condiciones/caa-comunicacion-aumentativa-y-alternativa/",
+      "url_en": "/en/neurodiversity/conditions/aac-augmentative-and-alternative-communication/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-227",
+      "surface": "condition",
+      "title_es": "Cambios familiares",
+      "title_en": "Family changes",
+      "url_es": "/es/neurodiversidad/condiciones/cambios-familiares/",
+      "url_en": "/en/neurodiversity/conditions/family-changes/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-228",
+      "surface": "condition",
+      "title_es": "Carga cognitiva",
+      "title_en": "Cognitive load",
+      "url_es": "/es/neurodiversidad/condiciones/carga-cognitiva/",
+      "url_en": "/en/neurodiversity/conditions/cognitive-load/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-229",
+      "surface": "condition",
+      "title_es": "Ciberacoso (cyberbullying)",
+      "title_en": "Cyberbullying",
+      "url_es": "/es/neurodiversidad/condiciones/ciberacoso-cyberbullying/",
+      "url_en": "/en/neurodiversity/conditions/cyberbullying/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-230",
+      "surface": "condition",
+      "title_es": "Cisgénero",
+      "title_en": "Cisgender",
+      "url_es": "/es/neurodiversidad/condiciones/cisgenero/",
+      "url_en": "/en/neurodiversity/conditions/cisgender/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-231",
+      "surface": "condition",
+      "title_es": "Citas médicas",
+      "title_en": "Medical appointments",
+      "url_es": "/es/neurodiversidad/condiciones/citas-medicas/",
+      "url_en": "/en/neurodiversity/conditions/medical-appointments/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-232",
+      "surface": "condition",
+      "title_es": "Cocinar",
+      "title_en": "Cooking",
+      "url_es": "/es/neurodiversidad/condiciones/cocinar/",
+      "url_en": "/en/neurodiversity/conditions/cooking/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-233",
+      "surface": "condition",
+      "title_es": "Compras",
+      "title_en": "Shopping",
+      "url_es": "/es/neurodiversidad/condiciones/compras/",
+      "url_en": "/en/neurodiversity/conditions/shopping/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-234",
+      "surface": "condition",
+      "title_es": "Comunicación en pareja",
+      "title_en": "Communication in a relationship",
+      "url_es": "/es/neurodiversidad/condiciones/comunicacion-en-pareja/",
+      "url_en": "/en/neurodiversity/conditions/communication-in-a-relationship/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-235",
+      "surface": "condition",
+      "title_es": "Comunicación sin habla oral",
+      "title_en": "Communication without spoken language",
+      "url_es": "/es/neurodiversidad/condiciones/comunicacion-sin-habla-oral/",
+      "url_en": "/en/neurodiversity/conditions/communication-without-spoken-language/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-236",
+      "surface": "condition",
+      "title_es": "Conducir",
+      "title_en": "Driving",
+      "url_es": "/es/neurodiversidad/condiciones/conducir/",
+      "url_en": "/en/neurodiversity/conditions/driving/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-237",
+      "surface": "condition",
+      "title_es": "Trastornos de la conducta alimentaria (TCA)",
+      "title_en": "Eating disorders",
+      "url_es": "/es/neurodiversidad/condiciones/trastornos-de-la-conducta-alimentaria-tca/",
+      "url_en": "/en/neurodiversity/conditions/eating-disorders/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-238",
+      "surface": "condition",
+      "title_es": "Conflictos",
+      "title_en": "Conflict",
+      "url_es": "/es/neurodiversidad/condiciones/conflictos/",
+      "url_en": "/en/neurodiversity/conditions/conflict/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-239",
+      "surface": "condition",
+      "title_es": "Consentimiento",
+      "title_en": "Consent",
+      "url_es": "/es/neurodiversidad/condiciones/consentimiento/",
+      "url_en": "/en/neurodiversity/conditions/consent/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-240",
+      "surface": "condition",
+      "title_es": "Creatividad",
+      "title_en": "Creativity",
+      "url_es": "/es/neurodiversidad/condiciones/creatividad/",
+      "url_en": "/en/neurodiversity/conditions/creativity/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-241",
+      "surface": "condition",
+      "title_es": "Culpa",
+      "title_en": "Guilt",
+      "url_es": "/es/neurodiversidad/condiciones/culpa/",
+      "url_en": "/en/neurodiversity/conditions/guilt/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-242",
+      "surface": "condition",
+      "title_es": "Deadnaming",
+      "title_en": "Deadnaming",
+      "url_es": "/es/neurodiversidad/condiciones/deadnaming/",
+      "url_en": "/en/neurodiversity/conditions/deadnaming/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-243",
+      "surface": "condition",
+      "title_es": "Dentista",
+      "title_en": "Dental care",
+      "url_es": "/es/neurodiversidad/condiciones/dentista/",
+      "url_en": "/en/neurodiversity/conditions/dental-care/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-244",
+      "surface": "condition",
+      "title_es": "Dependencia y necesidades de apoyo",
+      "title_en": "Dependence and support needs",
+      "url_es": "/es/neurodiversidad/condiciones/dependencia-y-necesidades-de-apoyo/",
+      "url_en": "/en/neurodiversity/conditions/dependence-and-support-needs/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-245",
+      "surface": "condition",
+      "title_es": "Deporte",
+      "title_en": "Sport",
+      "url_es": "/es/neurodiversidad/condiciones/deporte/",
+      "url_en": "/en/neurodiversity/conditions/sport/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-246",
+      "surface": "condition",
+      "title_es": "Depresión",
+      "title_en": "Depression",
+      "url_es": "/es/neurodiversidad/condiciones/depresion/",
+      "url_en": "/en/neurodiversity/conditions/depression/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-247",
+      "surface": "condition",
+      "title_es": "Discapacidades del desarrollo",
+      "title_en": "Developmental disabilities",
+      "url_es": "/es/neurodiversidad/condiciones/discapacidades-del-desarrollo/",
+      "url_en": "/en/neurodiversity/conditions/developmental-disabilities/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-248",
+      "surface": "condition",
+      "title_es": "Descanso y recuperación",
+      "title_en": "Rest and recovery",
+      "url_es": "/es/neurodiversidad/condiciones/descanso-y-recuperacion/",
+      "url_en": "/en/neurodiversity/conditions/rest-and-recovery/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-249",
+      "surface": "condition",
+      "title_es": "Trastorno de despersonalización-desrealización",
+      "title_en": "Depersonalisation-derealisation disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-despersonalizacion-desrealizacion/",
+      "url_en": "/en/neurodiversity/conditions/depersonalisation-derealisation-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-250",
+      "surface": "condition",
+      "title_es": "Diagnóstico tardío",
+      "title_en": "Late diagnosis",
+      "url_es": "/es/neurodiversidad/condiciones/diagnostico-tardio/",
+      "url_en": "/en/neurodiversity/conditions/late-diagnosis/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-251",
+      "surface": "condition",
+      "title_es": "Diferencias sensoriales",
+      "title_en": "Sensory differences",
+      "url_es": "/es/neurodiversidad/condiciones/diferencias-sensoriales/",
+      "url_en": "/en/neurodiversity/conditions/sensory-differences/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-252",
+      "surface": "condition",
+      "title_es": "Dinero y vida diaria",
+      "title_en": "Money and everyday life",
+      "url_es": "/es/neurodiversidad/condiciones/dinero-y-vida-diaria/",
+      "url_en": "/en/neurodiversity/conditions/money-and-everyday-life/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-253",
+      "surface": "condition",
+      "title_es": "Discalculia",
+      "title_en": "Dyscalculia",
+      "url_es": "/es/neurodiversidad/condiciones/discalculia/",
+      "url_en": "/en/neurodiversity/conditions/dyscalculia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-254",
+      "surface": "condition",
+      "title_es": "Discapacidad",
+      "title_en": "Disability",
+      "url_es": "/es/neurodiversidad/condiciones/discapacidad/",
+      "url_en": "/en/neurodiversity/conditions/disability/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-255",
+      "surface": "condition",
+      "title_es": "Discapacidad intelectual",
+      "title_en": "Intellectual disability",
+      "url_es": "/es/neurodiversidad/condiciones/discapacidad-intelectual/",
+      "url_en": "/en/neurodiversity/conditions/intellectual-disability/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-256",
+      "surface": "condition",
+      "title_es": "Discriminación",
+      "title_en": "Discrimination",
+      "url_es": "/es/neurodiversidad/condiciones/discriminacion/",
+      "url_en": "/en/neurodiversity/conditions/discrimination/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-257",
+      "surface": "condition",
+      "title_es": "Disforia de género",
+      "title_en": "Gender dysphoria",
+      "url_es": "/es/neurodiversidad/condiciones/disforia-de-genero/",
+      "url_en": "/en/neurodiversity/conditions/gender-dysphoria/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-258",
+      "surface": "condition",
+      "title_es": "Disgrafía",
+      "title_en": "Dysgraphia",
+      "url_es": "/es/neurodiversidad/condiciones/disgrafia/",
+      "url_en": "/en/neurodiversity/conditions/dysgraphia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-259",
+      "surface": "condition",
+      "title_es": "Dislexia",
+      "title_en": "Dyslexia",
+      "url_es": "/es/neurodiversidad/condiciones/dislexia/",
+      "url_en": "/en/neurodiversity/conditions/dyslexia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-260",
+      "surface": "condition",
+      "title_es": "Trastorno dismórfico corporal (TDC)",
+      "title_en": "Body dysmorphic disorder (BDD)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-dismorfico-corporal-tdc/",
+      "url_en": "/en/neurodiversity/conditions/body-dysmorphic-disorder-bdd/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-261",
+      "surface": "condition",
+      "title_es": "Disociación",
+      "title_en": "Dissociation",
+      "url_es": "/es/neurodiversidad/condiciones/disociacion/",
+      "url_en": "/en/neurodiversity/conditions/dissociation/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-262",
+      "surface": "condition",
+      "title_es": "Trastorno del desarrollo de la coordinación (DCD) / dispraxia",
+      "title_en": "Developmental coordination disorder (DCD) / dyspraxia",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-del-desarrollo-de-la-coordinacion-dcd-dispraxia/",
+      "url_en": "/en/neurodiversity/conditions/developmental-coordination-disorder-dcd-dyspraxia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-263",
+      "surface": "condition",
+      "title_es": "Doble excepcionalidad",
+      "title_en": "Twice-exceptionality",
+      "url_es": "/es/neurodiversidad/condiciones/doble-excepcionalidad/",
+      "url_en": "/en/neurodiversity/conditions/twice-exceptionality/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-264",
+      "surface": "condition",
+      "title_es": "Dolor persistente (dolor crónico)",
+      "title_en": "Persistent pain / chronic pain",
+      "url_es": "/es/neurodiversidad/condiciones/dolor-persistente-dolor-cronico/",
+      "url_en": "/en/neurodiversity/conditions/persistent-pain-chronic-pain/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-265",
+      "surface": "condition",
+      "title_es": "Dolor: reconocerlo y comunicarlo",
+      "title_en": "Pain: recognising and communicating it",
+      "url_es": "/es/neurodiversidad/condiciones/dolor-reconocerlo-y-comunicarlo/",
+      "url_en": "/en/neurodiversity/conditions/pain-recognising-and-communicating-it/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-266",
+      "surface": "condition",
+      "title_es": "Síndrome de Down",
+      "title_en": "Down syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-down/",
+      "url_en": "/en/neurodiversity/conditions/down-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-267",
+      "surface": "condition",
+      "title_es": "Duelo",
+      "title_en": "Grief",
+      "url_es": "/es/neurodiversidad/condiciones/duelo/",
+      "url_en": "/en/neurodiversity/conditions/grief/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-268",
+      "surface": "condition",
+      "title_es": "Trastorno de duelo prolongado",
+      "title_en": "Prolonged grief disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-duelo-prolongado/",
+      "url_en": "/en/neurodiversity/conditions/prolonged-grief-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-269",
+      "surface": "condition",
+      "title_es": "Ecolalia",
+      "title_en": "Echolalia",
+      "url_es": "/es/neurodiversidad/condiciones/ecolalia/",
+      "url_en": "/en/neurodiversity/conditions/echolalia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-270",
+      "surface": "condition",
+      "title_es": "Educación sexual",
+      "title_en": "Sexuality education",
+      "url_es": "/es/neurodiversidad/condiciones/educacion-sexual/",
+      "url_en": "/en/neurodiversity/conditions/sexuality-education/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-271",
+      "surface": "condition",
+      "title_es": "Empleo y neurodiversidad",
+      "title_en": "Employment and neurodiversity",
+      "url_es": "/es/neurodiversidad/condiciones/empleo-y-neurodiversidad/",
+      "url_en": "/en/neurodiversity/conditions/employment-and-neurodiversity/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-272",
+      "surface": "condition",
+      "title_es": "Enfado e ira",
+      "title_en": "Anger",
+      "url_es": "/es/neurodiversidad/condiciones/enfado-e-ira/",
+      "url_en": "/en/neurodiversity/conditions/anger/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-273",
+      "surface": "condition",
+      "title_es": "Envejecimiento neurodivergente",
+      "title_en": "Neurodivergent ageing",
+      "url_es": "/es/neurodiversidad/condiciones/envejecimiento-neurodivergente/",
+      "url_en": "/en/neurodiversity/conditions/neurodivergent-ageing/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-274",
+      "surface": "condition",
+      "title_es": "Epilepsia",
+      "title_en": "Epilepsy",
+      "url_es": "/es/neurodiversidad/condiciones/epilepsia/",
+      "url_en": "/en/neurodiversity/conditions/epilepsy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-275",
+      "surface": "condition",
+      "title_es": "Espiritualidad, creencias y no creencia",
+      "title_en": "Spirituality, belief and non-belief",
+      "url_es": "/es/neurodiversidad/condiciones/espiritualidad-creencias-y-no-creencia/",
+      "url_en": "/en/neurodiversity/conditions/spirituality-belief-and-non-belief/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-276",
+      "surface": "condition",
+      "title_es": "Evitación",
+      "title_en": "Avoidance",
+      "url_es": "/es/neurodiversidad/condiciones/evitacion/",
+      "url_en": "/en/neurodiversity/conditions/avoidance/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-277",
+      "surface": "condition",
+      "title_es": "Expresión de género",
+      "title_en": "Gender expression",
+      "url_es": "/es/neurodiversidad/condiciones/expresion-de-genero/",
+      "url_en": "/en/neurodiversity/conditions/gender-expression/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-278",
+      "surface": "condition",
+      "title_es": "Fatiga social",
+      "title_en": "Social fatigue",
+      "url_es": "/es/neurodiversidad/condiciones/fatiga-social/",
+      "url_en": "/en/neurodiversity/conditions/social-fatigue/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-279",
+      "surface": "condition",
+      "title_es": "Fobias específicas",
+      "title_en": "Specific phobias",
+      "url_es": "/es/neurodiversidad/condiciones/fobias-especificas/",
+      "url_en": "/en/neurodiversity/conditions/specific-phobias/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-280",
+      "surface": "condition",
+      "title_es": "Fortalezas",
+      "title_en": "Strengths",
+      "url_es": "/es/neurodiversidad/condiciones/fortalezas/",
+      "url_en": "/en/neurodiversity/conditions/strengths/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-281",
+      "surface": "condition",
+      "title_es": "Frustración",
+      "title_en": "Frustration",
+      "url_es": "/es/neurodiversidad/condiciones/frustracion/",
+      "url_en": "/en/neurodiversity/conditions/frustration/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-282",
+      "surface": "condition",
+      "title_es": "Funciones ejecutivas",
+      "title_en": "Executive functions",
+      "url_es": "/es/neurodiversidad/condiciones/funciones-ejecutivas/",
+      "url_en": "/en/neurodiversity/conditions/executive-functions/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-283",
+      "surface": "condition",
+      "title_es": "Gay",
+      "title_en": "Gay",
+      "url_es": "/es/neurodiversidad/condiciones/gay/",
+      "url_en": "/en/neurodiversity/conditions/gay/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-284",
+      "surface": "condition",
+      "title_es": "Género fluido",
+      "title_en": "Gender-fluid",
+      "url_es": "/es/neurodiversidad/condiciones/genero-fluido/",
+      "url_en": "/en/neurodiversity/conditions/gender-fluid/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-285",
+      "surface": "condition",
+      "title_es": "Hermanos",
+      "title_en": "Siblings",
+      "url_es": "/es/neurodiversidad/condiciones/hermanos/",
+      "url_en": "/en/neurodiversity/conditions/siblings/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-286",
+      "surface": "condition",
+      "title_es": "Higiene y autocuidado",
+      "title_en": "Hygiene and self-care",
+      "url_es": "/es/neurodiversidad/condiciones/higiene-y-autocuidado/",
+      "url_en": "/en/neurodiversity/conditions/hygiene-and-self-care/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-287",
+      "surface": "condition",
+      "title_es": "Hiperacusia",
+      "title_en": "Hyperacusis",
+      "url_es": "/es/neurodiversidad/condiciones/hiperacusia/",
+      "url_en": "/en/neurodiversity/conditions/hyperacusis/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-288",
+      "surface": "condition",
+      "title_es": "Hiperfoco",
+      "title_en": "Hyperfocus",
+      "url_es": "/es/neurodiversidad/condiciones/hiperfoco/",
+      "url_en": "/en/neurodiversity/conditions/hyperfocus/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-289",
+      "surface": "condition",
+      "title_es": "Hospital y neurodiversidad",
+      "title_en": "Hospital care and neurodiversity",
+      "url_es": "/es/neurodiversidad/condiciones/hospital-y-neurodiversidad/",
+      "url_en": "/en/neurodiversity/conditions/hospital-care-and-neurodiversity/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-290",
+      "surface": "condition",
+      "title_es": "Identidad de género",
+      "title_en": "Gender identity",
+      "url_es": "/es/neurodiversidad/condiciones/identidad-de-genero/",
+      "url_en": "/en/neurodiversity/conditions/gender-identity/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-291",
+      "surface": "condition",
+      "title_es": "Trastorno de identidad disociativo (TID)",
+      "title_en": "Dissociative identity disorder (DID)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-identidad-disociativo-tid/",
+      "url_en": "/en/neurodiversity/conditions/dissociative-identity-disorder-did/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-292",
+      "surface": "condition",
+      "title_es": "Identificar emociones",
+      "title_en": "Identifying emotions",
+      "url_es": "/es/neurodiversidad/condiciones/identificar-emociones/",
+      "url_en": "/en/neurodiversity/conditions/identifying-emotions/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-293",
+      "surface": "condition",
+      "title_es": "Imagen corporal",
+      "title_en": "Body image",
+      "url_es": "/es/neurodiversidad/condiciones/imagen-corporal/",
+      "url_en": "/en/neurodiversity/conditions/body-image/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-294",
+      "surface": "condition",
+      "title_es": "Inercia autista",
+      "title_en": "Autistic inertia",
+      "url_es": "/es/neurodiversidad/condiciones/inercia-autista/",
+      "url_en": "/en/neurodiversity/conditions/autistic-inertia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-295",
+      "surface": "condition",
+      "title_es": "Insomnio",
+      "title_en": "Insomnia",
+      "url_es": "/es/neurodiversidad/condiciones/insomnio/",
+      "url_en": "/en/neurodiversity/conditions/insomnia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-296",
+      "surface": "condition",
+      "title_es": "Intereses intensos o especiales",
+      "title_en": "Intense or special interests",
+      "url_es": "/es/neurodiversidad/condiciones/intereses-intensos-o-especiales/",
+      "url_en": "/en/neurodiversity/conditions/intense-or-special-interests/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-297",
+      "surface": "condition",
+      "title_es": "Interocepción",
+      "title_en": "Interoception",
+      "url_es": "/es/neurodiversidad/condiciones/interocepcion/",
+      "url_en": "/en/neurodiversity/conditions/interoception/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-298",
+      "surface": "condition",
+      "title_es": "Intersexualidad",
+      "title_en": "Intersex",
+      "url_es": "/es/neurodiversidad/condiciones/intersexualidad/",
+      "url_en": "/en/neurodiversity/conditions/intersex/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-299",
+      "surface": "condition",
+      "title_es": "Trastorno del desarrollo del lenguaje (TDL)",
+      "title_en": "Developmental language disorder (DLD)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-del-desarrollo-del-lenguaje-tdl/",
+      "url_en": "/en/neurodiversity/conditions/developmental-language-disorder-dld/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-300",
+      "surface": "condition",
+      "title_es": "Lesbiana",
+      "title_en": "Lesbian",
+      "url_es": "/es/neurodiversidad/condiciones/lesbiana/",
+      "url_en": "/en/neurodiversity/conditions/lesbian/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-301",
+      "surface": "condition",
+      "title_es": "LGTBI+ y neurodiversidad",
+      "title_en": "LGBTQIA+ and neurodiversity",
+      "url_es": "/es/neurodiversidad/condiciones/lgtbi-y-neurodiversidad/",
+      "url_en": "/en/neurodiversity/conditions/lgbtqia-and-neurodiversity/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-302",
+      "surface": "condition",
+      "title_es": "Límites personales",
+      "title_en": "Personal boundaries",
+      "url_es": "/es/neurodiversidad/condiciones/limites-personales/",
+      "url_en": "/en/neurodiversity/conditions/personal-boundaries/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-303",
+      "surface": "condition",
+      "title_es": "Masking / camuflaje autista",
+      "title_en": "Masking / autistic camouflaging",
+      "url_es": "/es/neurodiversidad/condiciones/masking-camuflaje-autista/",
+      "url_en": "/en/neurodiversity/conditions/masking-autistic-camouflaging/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-304",
+      "surface": "condition",
+      "title_es": "Maternidad y paternidad neurodivergente",
+      "title_en": "Neurodivergent motherhood and fatherhood",
+      "url_es": "/es/neurodiversidad/condiciones/maternidad-y-paternidad-neurodivergente/",
+      "url_en": "/en/neurodiversity/conditions/neurodivergent-motherhood-and-fatherhood/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-305",
+      "surface": "condition",
+      "title_es": "Menopausia",
+      "title_en": "Menopause",
+      "url_es": "/es/neurodiversidad/condiciones/menopausia/",
+      "url_en": "/en/neurodiversity/conditions/menopause/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-306",
+      "surface": "condition",
+      "title_es": "Menstruación",
+      "title_en": "Menstruation",
+      "url_es": "/es/neurodiversidad/condiciones/menstruacion/",
+      "url_en": "/en/neurodiversity/conditions/menstruation/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-307",
+      "surface": "condition",
+      "title_es": "Misofonía",
+      "title_en": "Misophonia",
+      "url_es": "/es/neurodiversidad/condiciones/misofonia/",
+      "url_en": "/en/neurodiversity/conditions/misophonia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-308",
+      "surface": "condition",
+      "title_es": "Monotropismo",
+      "title_en": "Monotropism",
+      "url_es": "/es/neurodiversidad/condiciones/monotropismo/",
+      "url_en": "/en/neurodiversity/conditions/monotropism/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-309",
+      "surface": "condition",
+      "title_es": "Motivación",
+      "title_en": "Motivation",
+      "url_es": "/es/neurodiversidad/condiciones/motivacion/",
+      "url_en": "/en/neurodiversity/conditions/motivation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-310",
+      "surface": "condition",
+      "title_es": "Música",
+      "title_en": "Music",
+      "url_es": "/es/neurodiversidad/condiciones/musica/",
+      "url_en": "/en/neurodiversity/conditions/music/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-311",
+      "surface": "condition",
+      "title_es": "Mutismo selectivo",
+      "title_en": "Selective mutism",
+      "url_es": "/es/neurodiversidad/condiciones/mutismo-selectivo/",
+      "url_en": "/en/neurodiversity/conditions/selective-mutism/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-312",
+      "surface": "condition",
+      "title_es": "Naturaleza y espacios al aire libre",
+      "title_en": "Nature and outdoor spaces",
+      "url_es": "/es/neurodiversidad/condiciones/naturaleza-y-espacios-al-aire-libre/",
+      "url_en": "/en/neurodiversity/conditions/nature-and-outdoor-spaces/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-313",
+      "surface": "condition",
+      "title_es": "Niñas y mujeres autistas",
+      "title_en": "Autistic girls and women",
+      "url_es": "/es/neurodiversidad/condiciones/ninas-y-mujeres-autistas/",
+      "url_en": "/en/neurodiversity/conditions/autistic-girls-and-women/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-314",
+      "surface": "condition",
+      "title_es": "No binario",
+      "title_en": "Non-binary",
+      "url_es": "/es/neurodiversidad/condiciones/no-binario/",
+      "url_en": "/en/neurodiversity/conditions/non-binary/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-315",
+      "surface": "condition",
+      "title_es": "No hablar",
+      "title_en": "Not speaking",
+      "url_es": "/es/neurodiversidad/condiciones/no-hablar/",
+      "url_en": "/en/neurodiversity/conditions/not-speaking/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-316",
+      "surface": "condition",
+      "title_es": "Nombre elegido",
+      "title_en": "Chosen name",
+      "url_es": "/es/neurodiversidad/condiciones/nombre-elegido/",
+      "url_en": "/en/neurodiversity/conditions/chosen-name/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-317",
+      "surface": "condition",
+      "title_es": "Ocio",
+      "title_en": "Leisure",
+      "url_es": "/es/neurodiversidad/condiciones/ocio/",
+      "url_en": "/en/neurodiversity/conditions/leisure/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-318",
+      "surface": "condition",
+      "title_es": "Orientación romántica",
+      "title_en": "Romantic orientation",
+      "url_es": "/es/neurodiversidad/condiciones/orientacion-romantica/",
+      "url_en": "/en/neurodiversity/conditions/romantic-orientation/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-319",
+      "surface": "condition",
+      "title_es": "Orientación sexual",
+      "title_en": "Sexual orientation",
+      "url_es": "/es/neurodiversidad/condiciones/orientacion-sexual/",
+      "url_en": "/en/neurodiversity/conditions/sexual-orientation/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-320",
+      "surface": "condition",
+      "title_es": "Otros trastornos alimentarios especificados (OSFED)",
+      "title_en": "Other specified feeding or eating disorder (OSFED)",
+      "url_es": "/es/neurodiversidad/condiciones/otros-trastornos-alimentarios-especificados-osfed/",
+      "url_en": "/en/neurodiversity/conditions/other-specified-feeding-or-eating-disorder-osfed/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-321",
+      "surface": "condition",
+      "title_es": "Outing",
+      "title_en": "Outing",
+      "url_es": "/es/neurodiversidad/condiciones/outing/",
+      "url_en": "/en/neurodiversity/conditions/outing/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-322",
+      "surface": "condition",
+      "title_es": "Trastorno de pánico",
+      "title_en": "Panic disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-de-panico/",
+      "url_en": "/en/neurodiversity/conditions/panic-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-323",
+      "surface": "condition",
+      "title_es": "Pansexualidad",
+      "title_en": "Pansexuality",
+      "url_es": "/es/neurodiversidad/condiciones/pansexualidad/",
+      "url_en": "/en/neurodiversity/conditions/pansexuality/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-324",
+      "surface": "condition",
+      "title_es": "Parálisis cerebral",
+      "title_en": "Cerebral palsy",
+      "url_es": "/es/neurodiversidad/condiciones/paralisis-cerebral/",
+      "url_en": "/en/neurodiversity/conditions/cerebral-palsy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-325",
+      "surface": "condition",
+      "title_es": "Evitación persistente de demandas (perfil PDA)",
+      "title_en": "Persistent demand avoidance (PDA profile)",
+      "url_es": "/es/neurodiversidad/condiciones/evitacion-persistente-de-demandas-perfil-pda/",
+      "url_en": "/en/neurodiversity/conditions/persistent-demand-avoidance-pda-profile/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-326",
+      "surface": "condition",
+      "title_es": "Perfeccionismo",
+      "title_en": "Perfectionism",
+      "url_es": "/es/neurodiversidad/condiciones/perfeccionismo/",
+      "url_en": "/en/neurodiversity/conditions/perfectionism/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-327",
+      "surface": "condition",
+      "title_es": "Pertenencia",
+      "title_en": "Belonging",
+      "url_es": "/es/neurodiversidad/condiciones/pertenencia/",
+      "url_en": "/en/neurodiversity/conditions/belonging/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-328",
+      "surface": "condition",
+      "title_es": "Pica",
+      "title_en": "Pica",
+      "url_es": "/es/neurodiversidad/condiciones/pica/",
+      "url_en": "/en/neurodiversity/conditions/pica/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-329",
+      "surface": "condition",
+      "title_es": "Planificación diaria",
+      "title_en": "Daily planning",
+      "url_es": "/es/neurodiversidad/condiciones/planificacion-diaria/",
+      "url_en": "/en/neurodiversity/conditions/daily-planning/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-330",
+      "surface": "condition",
+      "title_es": "Pobreza y precariedad",
+      "title_en": "Poverty and financial insecurity",
+      "url_es": "/es/neurodiversidad/condiciones/pobreza-y-precariedad/",
+      "url_en": "/en/neurodiversity/conditions/poverty-and-financial-insecurity/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-331",
+      "surface": "condition",
+      "title_es": "Presión social",
+      "title_en": "Social pressure",
+      "url_es": "/es/neurodiversidad/condiciones/presion-social/",
+      "url_en": "/en/neurodiversity/conditions/social-pressure/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-332",
+      "surface": "condition",
+      "title_es": "Privacidad",
+      "title_en": "Privacy",
+      "url_es": "/es/neurodiversidad/condiciones/privacidad/",
+      "url_en": "/en/neurodiversity/conditions/privacy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-333",
+      "surface": "condition",
+      "title_es": "Trastorno del procesamiento auditivo (TPA)",
+      "title_en": "Auditory processing disorder (APD)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-del-procesamiento-auditivo-tpa/",
+      "url_en": "/en/neurodiversity/conditions/auditory-processing-disorder-apd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-334",
+      "surface": "condition",
+      "title_es": "Procrastinación",
+      "title_en": "Procrastination",
+      "url_es": "/es/neurodiversidad/condiciones/procrastinacion/",
+      "url_en": "/en/neurodiversity/conditions/procrastination/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-335",
+      "surface": "condition",
+      "title_es": "Pronombres",
+      "title_en": "Pronouns",
+      "url_es": "/es/neurodiversidad/condiciones/pronombres/",
+      "url_en": "/en/neurodiversity/conditions/pronouns/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-336",
+      "surface": "condition",
+      "title_es": "Propiocepción",
+      "title_en": "Proprioception",
+      "url_es": "/es/neurodiversidad/condiciones/propiocepcion/",
+      "url_en": "/en/neurodiversity/conditions/proprioception/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-337",
+      "surface": "condition",
+      "title_es": "Queer",
+      "title_en": "Queer",
+      "url_es": "/es/neurodiversidad/condiciones/queer/",
+      "url_en": "/en/neurodiversity/conditions/queer/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-338",
+      "surface": "condition",
+      "title_es": "Questioning / en exploración",
+      "title_en": "Questioning / exploring",
+      "url_es": "/es/neurodiversidad/condiciones/questioning-en-exploracion/",
+      "url_en": "/en/neurodiversity/conditions/questioning-exploring/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-339",
+      "surface": "condition",
+      "title_es": "Racismo",
+      "title_en": "Racism",
+      "url_es": "/es/neurodiversidad/condiciones/racismo/",
+      "url_en": "/en/neurodiversity/conditions/racism/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-340",
+      "surface": "condition",
+      "title_es": "Rechazo y sensibilidad al rechazo",
+      "title_en": "Rejection and rejection sensitivity",
+      "url_es": "/es/neurodiversidad/condiciones/rechazo-y-sensibilidad-al-rechazo/",
+      "url_en": "/en/neurodiversity/conditions/rejection-and-rejection-sensitivity/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-341",
+      "surface": "condition",
+      "title_es": "Regulación emocional",
+      "title_en": "Emotional regulation",
+      "url_es": "/es/neurodiversidad/condiciones/regulacion-emocional/",
+      "url_en": "/en/neurodiversity/conditions/emotional-regulation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-342",
+      "surface": "condition",
+      "title_es": "Relaciones de pareja",
+      "title_en": "Partner relationships",
+      "url_es": "/es/neurodiversidad/condiciones/relaciones-de-pareja/",
+      "url_en": "/en/neurodiversity/conditions/partner-relationships/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-343",
+      "surface": "condition",
+      "title_es": "Relaciones seguras",
+      "title_en": "Safe relationships",
+      "url_es": "/es/neurodiversidad/condiciones/relaciones-seguras/",
+      "url_en": "/en/neurodiversity/conditions/safe-relationships/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Relevant across ages, but not labelled ALL_AGES because safety/discovery handling remains content-specific.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-344",
+      "surface": "condition",
+      "title_es": "Restaurantes y comer fuera",
+      "title_en": "Restaurants and eating out",
+      "url_es": "/es/neurodiversidad/condiciones/restaurantes-y-comer-fuera/",
+      "url_en": "/en/neurodiversity/conditions/restaurants-and-eating-out/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-345",
+      "surface": "condition",
+      "title_es": "Rumiación mental",
+      "title_en": "Rumination",
+      "url_es": "/es/neurodiversidad/condiciones/rumiacion-mental/",
+      "url_en": "/en/neurodiversity/conditions/rumination/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-346",
+      "surface": "condition",
+      "title_es": "Salir del armario",
+      "title_en": "Coming out",
+      "url_es": "/es/neurodiversidad/condiciones/salir-del-armario/",
+      "url_en": "/en/neurodiversity/conditions/coming-out/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-347",
+      "surface": "condition",
+      "title_es": "Salud gastrointestinal",
+      "title_en": "Gastrointestinal health",
+      "url_es": "/es/neurodiversidad/condiciones/salud-gastrointestinal/",
+      "url_en": "/en/neurodiversity/conditions/gastrointestinal-health/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-348",
+      "surface": "condition",
+      "title_es": "Seguridad online",
+      "title_en": "Online safety",
+      "url_es": "/es/neurodiversidad/condiciones/seguridad-online/",
+      "url_en": "/en/neurodiversity/conditions/online-safety/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-349",
+      "surface": "condition",
+      "title_es": "Selectividad alimentaria",
+      "title_en": "Selective eating",
+      "url_es": "/es/neurodiversidad/condiciones/selectividad-alimentaria/",
+      "url_en": "/en/neurodiversity/conditions/selective-eating/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-350",
+      "surface": "condition",
+      "title_es": "Sexualidad",
+      "title_en": "Sexuality",
+      "url_es": "/es/neurodiversidad/condiciones/sexualidad/",
+      "url_en": "/en/neurodiversity/conditions/sexuality/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-351",
+      "surface": "condition",
+      "title_es": "Sistema vestibular",
+      "title_en": "Vestibular system",
+      "url_es": "/es/neurodiversidad/condiciones/sistema-vestibular/",
+      "url_en": "/en/neurodiversity/conditions/vestibular-system/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-352",
+      "surface": "condition",
+      "title_es": "Sobrecarga sensorial",
+      "title_en": "Sensory overload",
+      "url_es": "/es/neurodiversidad/condiciones/sobrecarga-sensorial/",
+      "url_en": "/en/neurodiversity/conditions/sensory-overload/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-353",
+      "surface": "condition",
+      "title_es": "Soledad",
+      "title_en": "Loneliness",
+      "url_es": "/es/neurodiversidad/condiciones/soledad/",
+      "url_en": "/en/neurodiversity/conditions/loneliness/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-354",
+      "surface": "condition",
+      "title_es": "Trastornos de los sonidos del habla",
+      "title_en": "Speech sound disorders",
+      "url_es": "/es/neurodiversidad/condiciones/trastornos-de-los-sonidos-del-habla/",
+      "url_en": "/en/neurodiversity/conditions/speech-sound-disorders/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-355",
+      "surface": "condition",
+      "title_es": "Stimming / autoestimulación",
+      "title_en": "Stimming / self-stimulation",
+      "url_es": "/es/neurodiversidad/condiciones/stimming-autoestimulacion/",
+      "url_en": "/en/neurodiversity/conditions/stimming-self-stimulation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-356",
+      "surface": "condition",
+      "title_es": "Sueño",
+      "title_en": "Sleep",
+      "url_es": "/es/neurodiversidad/condiciones/sueno/",
+      "url_en": "/en/neurodiversity/conditions/sleep/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-357",
+      "surface": "condition",
+      "title_es": "Tartamudez",
+      "title_en": "Stuttering",
+      "url_es": "/es/neurodiversidad/condiciones/tartamudez/",
+      "url_en": "/en/neurodiversity/conditions/stuttering/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-358",
+      "surface": "condition",
+      "title_es": "TDAH",
+      "title_en": "ADHD",
+      "url_es": "/es/neurodiversidad/condiciones/tdah/",
+      "url_en": "/en/neurodiversity/conditions/adhd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-359",
+      "surface": "condition",
+      "title_es": "TEAF / FASD",
+      "title_en": "FASD",
+      "url_es": "/es/neurodiversidad/condiciones/teaf-fasd/",
+      "url_en": "/en/neurodiversity/conditions/fasd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-360",
+      "surface": "condition",
+      "title_es": "TEPT / trastorno por estrés postraumático",
+      "title_en": "PTSD / post-traumatic stress disorder",
+      "url_es": "/es/neurodiversidad/condiciones/tept-trastorno-por-estres-postraumatico/",
+      "url_en": "/en/neurodiversity/conditions/ptsd-post-traumatic-stress-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-361",
+      "surface": "condition",
+      "title_es": "Trastornos de tics",
+      "title_en": "Tic disorders",
+      "url_es": "/es/neurodiversidad/condiciones/trastornos-de-tics/",
+      "url_en": "/en/neurodiversity/conditions/tic-disorders/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-362",
+      "surface": "condition",
+      "title_es": "TOC",
+      "title_en": "OCD",
+      "url_es": "/es/neurodiversidad/condiciones/toc/",
+      "url_en": "/en/neurodiversity/conditions/ocd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-363",
+      "surface": "condition",
+      "title_es": "Toma de decisiones",
+      "title_en": "Decision-making",
+      "url_es": "/es/neurodiversidad/condiciones/toma-de-decisiones/",
+      "url_en": "/en/neurodiversity/conditions/decision-making/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-364",
+      "surface": "condition",
+      "title_es": "Síndrome de Tourette",
+      "title_en": "Tourette syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-tourette/",
+      "url_en": "/en/neurodiversity/conditions/tourette-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-365",
+      "surface": "condition",
+      "title_es": "Trans",
+      "title_en": "Trans",
+      "url_es": "/es/neurodiversidad/condiciones/trans/",
+      "url_en": "/en/neurodiversity/conditions/trans/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-366",
+      "surface": "condition",
+      "title_es": "Transición social",
+      "title_en": "Social transition",
+      "url_es": "/es/neurodiversidad/condiciones/transicion-social/",
+      "url_en": "/en/neurodiversity/conditions/social-transition/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-367",
+      "surface": "condition",
+      "title_es": "Transporte público y desplazamientos",
+      "title_en": "Public transport and travel",
+      "url_es": "/es/neurodiversidad/condiciones/transporte-publico-y-desplazamientos/",
+      "url_en": "/en/neurodiversity/conditions/public-transport-and-travel/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-368",
+      "surface": "condition",
+      "title_es": "Universidad",
+      "title_en": "University",
+      "url_es": "/es/neurodiversidad/condiciones/universidad/",
+      "url_en": "/en/neurodiversity/conditions/university/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-369",
+      "surface": "condition",
+      "title_es": "Vergüenza",
+      "title_en": "Shame",
+      "url_es": "/es/neurodiversidad/condiciones/verguenza/",
+      "url_en": "/en/neurodiversity/conditions/shame/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-370",
+      "surface": "condition",
+      "title_es": "Viajes",
+      "title_en": "Travel",
+      "url_es": "/es/neurodiversidad/condiciones/viajes/",
+      "url_en": "/en/neurodiversity/conditions/travel/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-371",
+      "surface": "condition",
+      "title_es": "Vivienda",
+      "title_en": "Housing",
+      "url_es": "/es/neurodiversidad/condiciones/vivienda/",
+      "url_en": "/en/neurodiversity/conditions/housing/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult-life context is the primary focus.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-372",
+      "surface": "condition",
+      "title_es": "Síndrome X frágil",
+      "title_en": "Fragile X syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-x-fragil/",
+      "url_en": "/en/neurodiversity/conditions/fragile-x-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-373",
+      "surface": "condition",
+      "title_es": "Apnea obstructiva del sueño",
+      "title_en": "Obstructive sleep apnoea",
+      "url_es": "/es/neurodiversidad/condiciones/apnea-obstructiva-del-sueno/",
+      "url_en": "/en/neurodiversity/conditions/obstructive-sleep-apnoea/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-374",
+      "surface": "condition",
+      "title_es": "Síndrome de piernas inquietas",
+      "title_en": "Restless legs syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-piernas-inquietas/",
+      "url_en": "/en/neurodiversity/conditions/restless-legs-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-375",
+      "surface": "condition",
+      "title_es": "Narcolepsia",
+      "title_en": "Narcolepsy",
+      "url_es": "/es/neurodiversidad/condiciones/narcolepsia/",
+      "url_en": "/en/neurodiversity/conditions/narcolepsy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-376",
+      "surface": "condition",
+      "title_es": "Parasomnias: sonambulismo y terrores nocturnos",
+      "title_en": "Parasomnias: sleepwalking and night terrors",
+      "url_es": "/es/neurodiversidad/condiciones/parasomnias-sonambulismo-y-terrores-nocturnos/",
+      "url_en": "/en/neurodiversity/conditions/parasomnias-sleepwalking-and-night-terrors/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-377",
+      "surface": "condition",
+      "title_es": "Bruxismo",
+      "title_en": "Bruxism",
+      "url_es": "/es/neurodiversidad/condiciones/bruxismo/",
+      "url_en": "/en/neurodiversity/conditions/bruxism/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-378",
+      "surface": "condition",
+      "title_es": "Hipermovilidad articular",
+      "title_en": "Joint hypermobility",
+      "url_es": "/es/neurodiversidad/condiciones/hipermovilidad-articular/",
+      "url_en": "/en/neurodiversity/conditions/joint-hypermobility/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-379",
+      "surface": "condition",
+      "title_es": "Síndrome de taquicardia postural (POTS)",
+      "title_en": "Postural tachycardia syndrome (PoTS)",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-taquicardia-postural-pots/",
+      "url_en": "/en/neurodiversity/conditions/postural-tachycardia-syndrome-pots/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-380",
+      "surface": "condition",
+      "title_es": "Migraña",
+      "title_en": "Migraine",
+      "url_es": "/es/neurodiversidad/condiciones/migrana/",
+      "url_en": "/en/neurodiversity/conditions/migraine/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-381",
+      "surface": "condition",
+      "title_es": "Fibromialgia",
+      "title_en": "Fibromyalgia",
+      "url_es": "/es/neurodiversidad/condiciones/fibromialgia/",
+      "url_en": "/en/neurodiversity/conditions/fibromyalgia/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-382",
+      "surface": "condition",
+      "title_es": "EM / síndrome de fatiga crónica",
+      "title_en": "ME / chronic fatigue syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/em-sindrome-de-fatiga-cronica/",
+      "url_en": "/en/neurodiversity/conditions/me-chronic-fatigue-syndrome/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-383",
+      "surface": "condition",
+      "title_es": "COVID persistente",
+      "title_en": "Post COVID-19 condition",
+      "url_es": "/es/neurodiversidad/condiciones/covid-persistente/",
+      "url_en": "/en/neurodiversity/conditions/post-covid-19-condition/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-384",
+      "surface": "condition",
+      "title_es": "Hipotiroidismo",
+      "title_en": "Hypothyroidism",
+      "url_es": "/es/neurodiversidad/condiciones/hipotiroidismo/",
+      "url_en": "/en/neurodiversity/conditions/hypothyroidism/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-385",
+      "surface": "condition",
+      "title_es": "Afantasía",
+      "title_en": "Aphantasia",
+      "url_es": "/es/neurodiversidad/condiciones/afantasia/",
+      "url_en": "/en/neurodiversity/conditions/aphantasia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-386",
+      "surface": "condition",
+      "title_es": "Sinestesia",
+      "title_en": "Synaesthesia",
+      "url_es": "/es/neurodiversidad/condiciones/sinestesia/",
+      "url_en": "/en/neurodiversity/conditions/synaesthesia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-387",
+      "surface": "condition",
+      "title_es": "Prosopagnosia",
+      "title_en": "Prosopagnosia",
+      "url_es": "/es/neurodiversidad/condiciones/prosopagnosia/",
+      "url_en": "/en/neurodiversity/conditions/prosopagnosia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-388",
+      "surface": "condition",
+      "title_es": "Trastorno bipolar",
+      "title_en": "Bipolar disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-bipolar/",
+      "url_en": "/en/neurodiversity/conditions/bipolar-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-389",
+      "surface": "condition",
+      "title_es": "Psicosis",
+      "title_en": "Psychosis",
+      "url_es": "/es/neurodiversidad/condiciones/psicosis/",
+      "url_en": "/en/neurodiversity/conditions/psychosis/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-390",
+      "surface": "condition",
+      "title_es": "Trastorno límite de la personalidad",
+      "title_en": "Borderline personality disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-limite-de-la-personalidad/",
+      "url_en": "/en/neurodiversity/conditions/borderline-personality-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-391",
+      "surface": "condition",
+      "title_es": "Tricotilomanía",
+      "title_en": "Trichotillomania",
+      "url_es": "/es/neurodiversidad/condiciones/tricotilomania/",
+      "url_en": "/en/neurodiversity/conditions/trichotillomania/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-392",
+      "surface": "condition",
+      "title_es": "Dermatilomanía",
+      "title_en": "Skin picking disorder",
+      "url_es": "/es/neurodiversidad/condiciones/dermatilomania/",
+      "url_en": "/en/neurodiversity/conditions/skin-picking-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-393",
+      "surface": "condition",
+      "title_es": "Acumulación compulsiva",
+      "title_en": "Hoarding disorder",
+      "url_es": "/es/neurodiversidad/condiciones/acumulacion-compulsiva/",
+      "url_en": "/en/neurodiversity/conditions/hoarding-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-394",
+      "surface": "condition",
+      "title_es": "Ansiedad por la salud",
+      "title_en": "Health anxiety",
+      "url_es": "/es/neurodiversidad/condiciones/ansiedad-por-la-salud/",
+      "url_en": "/en/neurodiversity/conditions/health-anxiety/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-395",
+      "surface": "condition",
+      "title_es": "TEPT complejo",
+      "title_en": "Complex PTSD",
+      "url_es": "/es/neurodiversidad/condiciones/tept-complejo/",
+      "url_en": "/en/neurodiversity/conditions/complex-ptsd/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-396",
+      "surface": "condition",
+      "title_es": "Trastorno por videojuegos",
+      "title_en": "Gaming disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-por-videojuegos/",
+      "url_en": "/en/neurodiversity/conditions/gaming-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-397",
+      "surface": "condition",
+      "title_es": "Trastorno disfórico premenstrual (TDPM)",
+      "title_en": "Premenstrual dysphoric disorder (PMDD)",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-disforico-premenstrual/",
+      "url_en": "/en/neurodiversity/conditions/premenstrual-dysphoric-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-398",
+      "surface": "condition",
+      "title_es": "Sordera e hipoacusia",
+      "title_en": "Deafness and hearing loss",
+      "url_es": "/es/neurodiversidad/condiciones/sordera-e-hipoacusia/",
+      "url_en": "/en/neurodiversity/conditions/deafness-and-hearing-loss/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-399",
+      "surface": "condition",
+      "title_es": "Discapacidad visual",
+      "title_en": "Vision impairment",
+      "url_es": "/es/neurodiversidad/condiciones/discapacidad-visual/",
+      "url_en": "/en/neurodiversity/conditions/vision-impairment/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-400",
+      "surface": "condition",
+      "title_es": "Sordoceguera y síndrome de Usher",
+      "title_en": "Deafblindness and Usher syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sordoceguera-y-sindrome-de-usher/",
+      "url_en": "/en/neurodiversity/conditions/deafblindness-and-usher-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-401",
+      "surface": "condition",
+      "title_es": "Síndrome de Rett",
+      "title_en": "Rett syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-rett/",
+      "url_en": "/en/neurodiversity/conditions/rett-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-402",
+      "surface": "condition",
+      "title_es": "Síndrome de Williams",
+      "title_en": "Williams syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-williams/",
+      "url_en": "/en/neurodiversity/conditions/williams-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-403",
+      "surface": "condition",
+      "title_es": "Síndrome de Angelman",
+      "title_en": "Angelman syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-angelman/",
+      "url_en": "/en/neurodiversity/conditions/angelman-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-404",
+      "surface": "condition",
+      "title_es": "Síndrome de Prader-Willi",
+      "title_en": "Prader-Willi syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-prader-willi/",
+      "url_en": "/en/neurodiversity/conditions/prader-willi-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-405",
+      "surface": "condition",
+      "title_es": "Síndrome de deleción 22q11.2",
+      "title_en": "22q11.2 deletion syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-22q11/",
+      "url_en": "/en/neurodiversity/conditions/22q11-2-deletion-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-406",
+      "surface": "condition",
+      "title_es": "Síndrome de Smith-Magenis",
+      "title_en": "Smith-Magenis syndrome",
+      "url_es": "/es/neurodiversidad/condiciones/sindrome-de-smith-magenis/",
+      "url_en": "/en/neurodiversity/conditions/smith-magenis-syndrome/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-407",
+      "surface": "condition",
+      "title_es": "Complejo de esclerosis tuberosa",
+      "title_en": "Tuberous sclerosis complex",
+      "url_es": "/es/neurodiversidad/condiciones/esclerosis-tuberosa/",
+      "url_en": "/en/neurodiversity/conditions/tuberous-sclerosis-complex/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-408",
+      "surface": "condition",
+      "title_es": "Neurofibromatosis tipo 1",
+      "title_en": "Neurofibromatosis type 1",
+      "url_es": "/es/neurodiversidad/condiciones/neurofibromatosis-tipo-1/",
+      "url_en": "/en/neurodiversity/conditions/neurofibromatosis-type-1/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-409",
+      "surface": "condition",
+      "title_es": "Afasia",
+      "title_en": "Aphasia",
+      "url_es": "/es/neurodiversidad/condiciones/afasia/",
+      "url_en": "/en/neurodiversity/conditions/aphasia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-410",
+      "surface": "condition",
+      "title_es": "Disfagia",
+      "title_en": "Dysphagia",
+      "url_es": "/es/neurodiversidad/condiciones/disfagia/",
+      "url_en": "/en/neurodiversity/conditions/dysphagia/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General, non-adult-specific topic suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-411",
+      "surface": "condition",
+      "title_es": "Esclerosis múltiple",
+      "title_en": "Multiple sclerosis",
+      "url_es": "/es/neurodiversidad/condiciones/esclerosis-multiple/",
+      "url_en": "/en/neurodiversity/conditions/multiple-sclerosis/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-412",
+      "surface": "condition",
+      "title_es": "Trastorno neurológico funcional",
+      "title_en": "Functional neurological disorder",
+      "url_es": "/es/neurodiversidad/condiciones/trastorno-neurologico-funcional/",
+      "url_en": "/en/neurodiversity/conditions/functional-neurological-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult context or complexity; excluded from 0–12 default discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-413",
+      "surface": "condition",
+      "title_es": "Enuresis nocturna",
+      "title_en": "Bedwetting",
+      "url_es": "/es/neurodiversidad/condiciones/enuresis-nocturna/",
+      "url_en": "/en/neurodiversity/conditions/bedwetting/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/child-development context; relevant to children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}
