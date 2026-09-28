@@ -45,7 +45,7 @@ def apply(root):
   p.write_text(result);families[kind]+=1;inventory.append({'path':rel,'template':kind,'flower_images_removed':removed,'shared_brief':True,'lang':doc.one('html')['attrs'].get('lang')})
  dest=root/'sabik';dest.mkdir(exist_ok=True)
  for p in (ROOT/'sabik').rglob('*'):
-  if p.is_file() and p.suffix in {'.js','.mjs','.png','.svg','.json','.wav'}:
+  if p.is_file() and p.suffix in {'.js','.mjs','.png','.svg','.webp','.json','.wav'}:
    target=dest/p.relative_to(ROOT/'sabik');target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
  shutil.copy2(ROOT/'sabik/iris-mount.css',dest/'iris-mount.css')
  report=ROOT/'reports/iris-brief-r08';report.mkdir(parents=True,exist_ok=True)

@@ -13,7 +13,7 @@ function mount(){
  let voice;
  let panel=window.SabikRetrievalPanel.createRetrievalPanel({root,query,announcement,language:lang});
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
- function syncVoice(state){const on=Boolean(state?.enabled??voiceEnabled());voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=on?strings().voiceOn:strings().voiceOff;voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);}
+ function syncVoice(state){const on=Boolean(state?.enabled??voiceEnabled()),playing=Boolean(state?.playing);voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=on?strings().voiceOn:strings().voiceOff;voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);window.SabikWebPresentation?.setVoiceActive(playing);}
  voice=createSabikVoice({initialLanguage:lang,onState:syncVoice});
  function say(text,{voiceId=null,allowOptional=false}={}){announcement.textContent=text;if(voiceId&&voiceEnabled())void voice.speak(voiceId,text,{allowOptional});}
  function controls(){ $('#sabik-submit').disabled=!connection||!input.value.trim();$('#sabik-cancel').hidden=!busy; }
