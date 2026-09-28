@@ -1,0 +1,984 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "library",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 62,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 3,
+      "AGE_13_17": 14,
+      "AGE_18_PLUS": 23,
+      "ALL_AGES": 37
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 40,
+      "AGE_13_17": 51,
+      "AGE_18_PLUS": 60,
+      "ALL_AGES": 37
+    }
+  },
+  "records": [
+    {
+      "content_id": "library-001",
+      "surface": "library",
+      "title_es": "Viajar en avión con una discapacidad no visible",
+      "title_en": "Flying with a non-visible disability",
+      "url_es": "/es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/",
+      "url_en": "/en/everyday-life/flying-with-a-non-visible-disability/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-002",
+      "surface": "library",
+      "title_es": "Transporte público y desplazamientos",
+      "title_en": "Public transport and getting around",
+      "url_es": "/es/biblioteca/transporte-publico-y-desplazamientos/",
+      "url_en": "/en/everyday-life/public-transport-and-getting-around/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-003",
+      "surface": "library",
+      "title_es": "Compras, recados y esperas",
+      "title_en": "Shopping, errands and waiting",
+      "url_es": "/es/biblioteca/compras-recados-y-esperas/",
+      "url_en": "/en/everyday-life/shopping-errands-and-waiting/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-004",
+      "surface": "library",
+      "title_es": "Restaurantes y comer fuera",
+      "title_en": "Restaurants and eating out",
+      "url_es": "/es/biblioteca/restaurantes-y-comer-fuera/",
+      "url_en": "/en/everyday-life/restaurants-and-eating-out/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-005",
+      "surface": "library",
+      "title_es": "Cine, teatro y museos con menos estímulos",
+      "title_en": "Cinema, theatre and museums with fewer stimuli",
+      "url_es": "/es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/",
+      "url_en": "/en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-006",
+      "surface": "library",
+      "title_es": "Actividad física, deporte y piscina",
+      "title_en": "Physical activity, sport and swimming",
+      "url_es": "/es/biblioteca/actividad-fisica-deporte-y-piscina/",
+      "url_en": "/en/everyday-life/physical-activity-sport-and-swimming/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-007",
+      "surface": "library",
+      "title_es": "Ocio, arte, música, animales y naturaleza",
+      "title_en": "Leisure, art, music, animals and nature",
+      "url_es": "/es/biblioteca/ocio-arte-musica-animales-y-naturaleza/",
+      "url_en": "/en/everyday-life/leisure-art-music-animals-and-nature/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-008",
+      "surface": "library",
+      "title_es": "Perros de asistencia: qué reconoce la ley",
+      "title_en": "Assistance dogs: what the law recognises",
+      "url_es": "/es/biblioteca/perros-de-asistencia-que-reconoce-la-ley/",
+      "url_en": "/en/everyday-life/assistance-dogs-what-the-law-recognises/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-009",
+      "surface": "library",
+      "title_es": "Audición y acceso a la información",
+      "title_en": "Hearing and access to information",
+      "url_es": "/es/biblioteca/audicion-y-acceso-a-la-informacion/",
+      "url_en": "/en/everyday-life/hearing-and-access-to-information/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-010",
+      "surface": "library",
+      "title_es": "Visión y acceso a la información",
+      "title_en": "Vision and access to information",
+      "url_es": "/es/biblioteca/vision-y-acceso-a-la-informacion/",
+      "url_en": "/en/everyday-life/vision-and-access-to-information/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-011",
+      "surface": "library",
+      "title_es": "Colegio e instituto: apoyos, adaptaciones, asistencia y exámenes",
+      "title_en": "School and secondary school: support, adaptations, attendance and exams",
+      "url_es": "/es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes/",
+      "url_en": "/en/everyday-life/school-and-secondary-school-support-adaptations-attendance-and-exams/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School-age education/support context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-012",
+      "surface": "library",
+      "title_es": "La beca del Ministerio para apoyo educativo (NEAE)",
+      "title_en": "The Ministry grant for educational support (NEAE)",
+      "url_es": "/es/biblioteca/la-beca-del-ministerio-para-apoyo-educativo-neae/",
+      "url_en": "/en/everyday-life/the-ministry-grant-for-educational-support-neae/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School-age education/support context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-013",
+      "surface": "library",
+      "title_es": "Estudiar en la universidad con apoyos",
+      "title_en": "Studying at university with support",
+      "url_es": "/es/biblioteca/estudiar-en-la-universidad-con-apoyos/",
+      "url_en": "/en/everyday-life/studying-at-university-with-support/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-014",
+      "surface": "library",
+      "title_es": "Buscar trabajo siendo neurodivergente",
+      "title_en": "Looking for work as a neurodivergent person",
+      "url_es": "/es/biblioteca/buscar-trabajo-siendo-neurodivergente/",
+      "url_en": "/en/everyday-life/looking-for-work-as-a-neurodivergent-person/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-015",
+      "surface": "library",
+      "title_es": "Ajustes razonables en el trabajo",
+      "title_en": "Reasonable adjustments at work",
+      "url_es": "/es/biblioteca/ajustes-razonables-en-el-trabajo/",
+      "url_en": "/en/everyday-life/reasonable-adjustments-at-work/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-016",
+      "surface": "library",
+      "title_es": "Ir al médico, al dentista o a urgencias",
+      "title_en": "Going to the doctor, the dentist or the emergency room",
+      "url_es": "/es/biblioteca/ir-al-medico-al-dentista-o-a-urgencias/",
+      "url_en": "/en/everyday-life/going-to-the-doctor-the-dentist-or-the-emergency-room/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-017",
+      "surface": "library",
+      "title_es": "Hospitalización, pruebas y procedimientos médicos",
+      "title_en": "Hospital stays, tests and medical procedures",
+      "url_es": "/es/biblioteca/hospitalizacion-pruebas-y-procedimientos-medicos/",
+      "url_en": "/en/everyday-life/hospital-stays-tests-and-medical-procedures/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-018",
+      "surface": "library",
+      "title_es": "Crisis de ansiedad, pánico y salud mental: qué hacer y dónde pedir ayuda",
+      "title_en": "Anxiety, panic and mental health crises: what to do and where to ask for help",
+      "url_es": "/es/biblioteca/crisis-de-ansiedad-panico-y-salud-mental-que-hacer-y-donde-pedir-ayuda/",
+      "url_en": "/en/everyday-life/anxiety-panic-and-mental-health-crises-what-to-do-and-where-to-ask-for-help/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-019",
+      "surface": "library",
+      "title_es": "Dolor, salud gastrointestinal y señales corporales",
+      "title_en": "Pain, gastrointestinal health and body signals",
+      "url_es": "/es/biblioteca/dolor-salud-gastrointestinal-y-senales-corporales/",
+      "url_en": "/en/everyday-life/pain-gastrointestinal-health-and-body-signals/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-020",
+      "surface": "library",
+      "title_es": "Epilepsia y otras crisis recurrentes: qué preparar",
+      "title_en": "Epilepsy and other recurrent seizures: what to prepare",
+      "url_es": "/es/biblioteca/epilepsia-y-otras-crisis-recurrentes-que-preparar/",
+      "url_en": "/en/everyday-life/epilepsy-and-other-recurrent-seizures-what-to-prepare/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-021",
+      "surface": "library",
+      "title_es": "Menstruación, menopausia y salud sexual",
+      "title_en": "Menstruation, menopause and sexual health",
+      "url_es": "/es/biblioteca/menstruacion-menopausia-y-salud-sexual/",
+      "url_en": "/en/everyday-life/menstruation-menopause-and-sexual-health/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-022",
+      "surface": "library",
+      "title_es": "ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica",
+      "title_en": "ARFID, eating disorders and pica: when everyday support needs clinical care",
+      "url_es": "/es/biblioteca/arfid-tca-y-pica-cuando-el-apoyo-cotidiano-necesita-atencion-clinica/",
+      "url_en": "/en/everyday-life/arfid-eating-disorders-and-pica-when-everyday-support-needs-clinical-care/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-023",
+      "surface": "library",
+      "title_es": "Comunicación sin habla, mutismo, apraxia, tartamudez y habla difícil",
+      "title_en": "Communication without speech, mutism, apraxia, stuttering and difficult speech",
+      "url_es": "/es/biblioteca/comunicacion-sin-habla-mutismo-apraxia-tartamudez-y-habla-dificil/",
+      "url_en": "/en/everyday-life/communication-without-speech-mutism-apraxia-stuttering-and-difficult-speech/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-024",
+      "surface": "library",
+      "title_es": "Regulación emocional, rumiación, rechazo, culpa y perfeccionismo",
+      "title_en": "Emotional regulation, rumination, rejection, guilt and perfectionism",
+      "url_es": "/es/biblioteca/regulacion-emocional-rumiacion-rechazo-culpa-y-perfeccionismo/",
+      "url_en": "/en/everyday-life/emotional-regulation-rumination-rejection-guilt-and-perfectionism/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-025",
+      "surface": "library",
+      "title_es": "Ciclo menstrual, ánimo y TDPM",
+      "title_en": "Body-focused repetitive behaviours",
+      "url_es": "/es/biblioteca/ciclo-menstrual-animo-y-tdpm/",
+      "url_en": "/en/everyday-life/body-focused-repetitive-behaviours/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-026",
+      "surface": "library",
+      "title_es": "Conductas repetitivas centradas en el cuerpo",
+      "title_en": "Dizziness on standing up",
+      "url_es": "/es/biblioteca/conductas-repetitivas-centradas-en-el-cuerpo/",
+      "url_en": "/en/everyday-life/dizziness-on-standing-up/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-027",
+      "surface": "library",
+      "title_es": "Fatiga que empeora después del esfuerzo",
+      "title_en": "Fatigue that gets worse after effort",
+      "url_es": "/es/biblioteca/fatiga-que-empeora-despues-del-esfuerzo/",
+      "url_en": "/en/everyday-life/fatigue-that-worsens-after-effort/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-028",
+      "surface": "library",
+      "title_es": "Mareos al ponerse de pie",
+      "title_en": "Menstrual cycle, mood and PMDD",
+      "url_es": "/es/biblioteca/mareos-al-ponerse-de-pie/",
+      "url_en": "/en/everyday-life/menstrual-cycle-mood-and-pmdd/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-029",
+      "surface": "library",
+      "title_es": "Migraña y entornos con mucha luz",
+      "title_en": "Migraine and brightly lit places",
+      "url_es": "/es/biblioteca/migrana-y-entornos-con-mucha-luz/",
+      "url_en": "/en/everyday-life/migraine-and-brightly-lit-places/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-030",
+      "surface": "library",
+      "title_es": "Tragar con seguridad",
+      "title_en": "Swallowing safely",
+      "url_es": "/es/biblioteca/tragar-con-seguridad/",
+      "url_en": "/en/everyday-life/swallowing-safely/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-031",
+      "surface": "library",
+      "title_es": "Sobrecarga sensorial, hiperacusia, misofonía y procesamiento auditivo",
+      "title_en": "Sensory overload, hyperacusis, misophonia and auditory processing",
+      "url_es": "/es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo/",
+      "url_en": "/en/everyday-life/sensory-overload-hyperacusis-misophonia-and-auditory-processing/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-032",
+      "surface": "library",
+      "title_es": "Interocepción, propiocepción y sistema vestibular en la vida diaria",
+      "title_en": "Interoception, proprioception and the vestibular system in everyday life",
+      "url_es": "/es/biblioteca/interocepcion-propiocepcion-y-sistema-vestibular-en-la-vida-diaria/",
+      "url_en": "/en/everyday-life/interoception-proprioception-and-the-vestibular-system-in-everyday-life/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-033",
+      "surface": "library",
+      "title_es": "El sueño: qué observar y por dónde empezar",
+      "title_en": "Sleep: what to observe and where to start",
+      "url_es": "/es/biblioteca/el-sueno-que-observar-y-por-donde-empezar/",
+      "url_en": "/en/everyday-life/sleep-what-to-observe-and-where-to-start/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-034",
+      "surface": "library",
+      "title_es": "La comida, explicada desde los sentidos",
+      "title_en": "Food, explained through the senses",
+      "url_es": "/es/biblioteca/la-comida-explicada-desde-los-sentidos/",
+      "url_en": "/en/everyday-life/food-explained-through-the-senses/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-035",
+      "surface": "library",
+      "title_es": "Higiene y autocuidado",
+      "title_en": "Hygiene and self-care",
+      "url_es": "/es/biblioteca/higiene-y-autocuidado/",
+      "url_en": "/en/everyday-life/hygiene-and-self-care/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-036",
+      "surface": "library",
+      "title_es": "Cocinar y seguridad doméstica",
+      "title_en": "Cooking and home safety",
+      "url_es": "/es/biblioteca/cocinar-y-seguridad-domestica/",
+      "url_en": "/en/everyday-life/cooking-and-home-safety/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-037",
+      "surface": "library",
+      "title_es": "Organización, planificación, funciones ejecutivas y tareas diarias",
+      "title_en": "Organisation, planning, executive functions and daily tasks",
+      "url_es": "/es/biblioteca/organizacion-planificacion-funciones-ejecutivas-y-tareas-diarias/",
+      "url_en": "/en/everyday-life/organisation-planning-executive-functions-and-daily-tasks/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-038",
+      "surface": "library",
+      "title_es": "Descanso, fatiga, masking y recuperación",
+      "title_en": "Rest, fatigue, masking and recovery",
+      "url_es": "/es/biblioteca/descanso-fatiga-masking-y-recuperacion/",
+      "url_en": "/en/everyday-life/rest-fatigue-masking-and-recovery/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-039",
+      "surface": "library",
+      "title_es": "Vivienda, convivencia, autonomía y apoyos en casa",
+      "title_en": "Housing, living together, autonomy and support at home",
+      "url_es": "/es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa/",
+      "url_en": "/en/everyday-life/housing-living-together-autonomy-and-support-at-home/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-040",
+      "surface": "library",
+      "title_es": "El respiro familiar: qué es y cómo se pide",
+      "title_en": "Respite care: what it is and how to ask for it",
+      "url_es": "/es/biblioteca/el-respiro-familiar-que-es-y-como-se-pide/",
+      "url_en": "/en/everyday-life/respite-care-what-it-is-and-how-to-ask-for-it/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-041",
+      "surface": "library",
+      "title_es": "Familia: cambios, hermanos, maternidad/paternidad y conciliación",
+      "title_en": "Family: changes, siblings, motherhood/fatherhood and work-life balance",
+      "url_es": "/es/biblioteca/familia-cambios-hermanos-maternidad-paternidad-y-conciliacion/",
+      "url_en": "/en/everyday-life/family-changes-siblings-motherhood-fatherhood-and-work-life-balance/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-042",
+      "surface": "library",
+      "title_es": "Herramientas gratuitas de comunicación y pictogramas",
+      "title_en": "Free communication tools and pictograms",
+      "url_es": "/es/biblioteca/herramientas-gratuitas-de-comunicacion-y-pictogramas/",
+      "url_en": "/en/everyday-life/free-communication-tools-and-pictograms/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-043",
+      "surface": "library",
+      "title_es": "Cuando cuesta desprenderse de las cosas",
+      "title_en": "Restless legs and long nights",
+      "url_es": "/es/biblioteca/cuando-cuesta-desprenderse-de-las-cosas/",
+      "url_en": "/en/everyday-life/restless-legs-and-long-nights/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-044",
+      "surface": "library",
+      "title_es": "Cuando el cansancio no es falta de horas",
+      "title_en": "Screens, games and playing time",
+      "url_es": "/es/biblioteca/cuando-el-cansancio-no-es-falta-de-horas/",
+      "url_en": "/en/everyday-life/screens-games-and-playing-time/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-045",
+      "surface": "library",
+      "title_es": "Pantallas, videojuegos y tiempo de juego",
+      "title_en": "When letting go of things is hard",
+      "url_es": "/es/biblioteca/pantallas-videojuegos-y-tiempo-de-juego/",
+      "url_en": "/en/everyday-life/when-letting-go-of-things-is-hard/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-046",
+      "surface": "library",
+      "title_es": "Piernas inquietas y noches largas",
+      "title_en": "When tiredness is not about hours",
+      "url_es": "/es/biblioteca/piernas-inquietas-y-noches-largas/",
+      "url_en": "/en/everyday-life/when-tiredness-is-not-about-hours/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-047",
+      "surface": "library",
+      "title_es": "Si una persona vulnerable desaparece: qué preparar y qué hacer",
+      "title_en": "If a vulnerable person goes missing: what to prepare and what to do",
+      "url_es": "/es/biblioteca/si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer/",
+      "url_en": "/en/everyday-life/if-a-vulnerable-person-goes-missing-what-to-prepare-and-what-to-do/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-048",
+      "surface": "library",
+      "title_es": "Sacarse el carné siendo neurodivergente",
+      "title_en": "Getting a driving licence as a neurodivergent person",
+      "url_es": "/es/biblioteca/sacarse-el-carne-siendo-neurodivergente/",
+      "url_en": "/en/everyday-life/getting-a-driving-licence-as-a-neurodivergent-person/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-049",
+      "surface": "library",
+      "title_es": "Los apoyos legales al cumplir 18 años",
+      "title_en": "Legal support when turning 18",
+      "url_es": "/es/biblioteca/los-apoyos-legales-al-cumplir-18-anos/",
+      "url_en": "/en/everyday-life/legal-support-when-turning-18/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-050",
+      "surface": "library",
+      "title_es": "Encontrar una asociación por condición y comunidad",
+      "title_en": "Finding an association by condition and community",
+      "url_es": "/es/biblioteca/encontrar-una-asociacion-por-condicion-y-comunidad/",
+      "url_en": "/en/everyday-life/finding-an-association-by-condition-and-community/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-051",
+      "surface": "library",
+      "title_es": "Acoso, discriminación, racismo y cómo actuar",
+      "title_en": "Bullying, discrimination, racism and how to act",
+      "url_es": "/es/biblioteca/acoso-discriminacion-racismo-y-como-actuar/",
+      "url_en": "/en/everyday-life/bullying-discrimination-racism-and-how-to-act/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-052",
+      "surface": "library",
+      "title_es": "Dinero, contratos, formularios y trámites",
+      "title_en": "Money, contracts, forms and paperwork",
+      "url_es": "/es/biblioteca/dinero-contratos-formularios-y-tramites/",
+      "url_en": "/en/everyday-life/money-contracts-forms-and-paperwork/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-053",
+      "surface": "library",
+      "title_es": "LGTBI+ y neurodiversidad: nombre, pronombres, identidad y atención respetuosa",
+      "title_en": "LGBTI+ and neurodiversity: name, pronouns, identity and respectful care",
+      "url_es": "/es/biblioteca/lgtbi-y-neurodiversidad-nombre-pronombres-identidad-y-atencion-respetuosa/",
+      "url_en": "/en/everyday-life/lgbti-and-neurodiversity-name-pronouns-identity-and-respectful-care/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-054",
+      "surface": "library",
+      "title_es": "Diagnóstico tardío, autoaceptación, autodefensa y cómo pedir apoyos",
+      "title_en": "Late diagnosis, self-acceptance, self-advocacy and how to ask for support",
+      "url_es": "/es/biblioteca/diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos/",
+      "url_en": "/en/everyday-life/late-diagnosis-self-acceptance-self-advocacy-and-how-to-ask-for-support/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-055",
+      "surface": "library",
+      "title_es": "Discapacidad, dependencia, pobreza y acceso a apoyos",
+      "title_en": "Disability, dependency, poverty and access to support",
+      "url_es": "/es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos/",
+      "url_en": "/en/everyday-life/disability-dependency-poverty-and-access-to-support/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-056",
+      "surface": "library",
+      "title_es": "Cuidar, envejecer y apoyos a la autonomía",
+      "title_en": "Caring, ageing and support for independence",
+      "url_es": "/es/biblioteca/cuidar-envejecer-y-apoyos-a-la-autonomia/",
+      "url_en": "/en/everyday-life/caring-ageing-and-support-for-independence/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult education, employment, caregiving, legal or administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-057",
+      "surface": "library",
+      "title_es": "Abuso, explotación y relaciones seguras",
+      "title_en": "Abuse, exploitation and safe relationships",
+      "url_es": "/es/biblioteca/abuso-explotacion-y-relaciones-seguras/",
+      "url_en": "/en/everyday-life/abuse-exploitation-and-safe-relationships/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Relevant across ages; S2 discovery still uses the safe-variant policy.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-058",
+      "surface": "library",
+      "title_es": "Seguridad online, privacidad, outing y ciberacoso",
+      "title_en": "Online safety, privacy, outing and cyberbullying",
+      "url_es": "/es/biblioteca/seguridad-online-privacidad-outing-y-ciberacoso/",
+      "url_en": "/en/everyday-life/online-safety-privacy-outing-and-cyberbullying/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-059",
+      "surface": "library",
+      "title_es": "Amistad, soledad, pertenencia y fatiga social",
+      "title_en": "Friendship, loneliness, belonging and social fatigue",
+      "url_es": "/es/biblioteca/amistad-soledad-pertenencia-y-fatiga-social/",
+      "url_en": "/en/everyday-life/friendship-loneliness-belonging-and-social-fatigue/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-060",
+      "surface": "library",
+      "title_es": "Pareja, conflictos, límites y consentimiento",
+      "title_en": "Relationships, conflict, boundaries and consent",
+      "url_es": "/es/biblioteca/pareja-conflictos-limites-y-consentimiento/",
+      "url_en": "/en/everyday-life/relationships-conflict-boundaries-and-consent/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-061",
+      "surface": "library",
+      "title_es": "Sexualidad y educación sexual accesible",
+      "title_en": "Sexuality and accessible sex education",
+      "url_es": "/es/biblioteca/sexualidad-y-educacion-sexual-accesible/",
+      "url_en": "/en/everyday-life/sexuality-and-accessible-sex-education/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adolescent/adult health, identity or relationship context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "library-062",
+      "surface": "library",
+      "title_es": "Comunicación después de una lesión cerebral",
+      "title_en": "Communication after a brain injury",
+      "url_es": "/es/biblioteca/comunicacion-despues-de-una-lesion-cerebral/",
+      "url_en": "/en/everyday-life/communication-after-a-brain-injury/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-life information suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}

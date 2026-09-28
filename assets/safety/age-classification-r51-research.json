@@ -1,0 +1,2131 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "research",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 132,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 112,
+      "AGE_18_PLUS": 132,
+      "ALL_AGES": 0
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 112,
+      "AGE_18_PLUS": 132,
+      "ALL_AGES": 0
+    }
+  },
+  "records": [
+    {
+      "content_id": "research-001",
+      "surface": "research",
+      "title_es": "Desenmascararse en estudiantes universitarios autistas",
+      "title_en": "Unmasking in autistic university students",
+      "url_es": "/es/investigacion/#estudio-1",
+      "url_en": "/en/research/#study-1",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-002",
+      "surface": "research",
+      "title_es": "GGOC-AD y creencias relacionadas con el TOC en adolescentes",
+      "title_en": "GGOC-AD and OCD-related beliefs in adolescents",
+      "url_es": "/es/investigacion/#estudio-2",
+      "url_en": "/en/research/#study-2",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-003",
+      "surface": "research",
+      "title_es": "Sueño y ansiedad en adolescentes",
+      "title_en": "Sleep and anxiety in adolescents",
+      "url_es": "/es/investigacion/#estudio-3",
+      "url_en": "/en/research/#study-3",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-004",
+      "surface": "research",
+      "title_es": "Recibir un diagnóstico de TDAH en la edad adulta",
+      "title_en": "Receiving an ADHD diagnosis in adulthood",
+      "url_es": "/es/investigacion/#estudio-4",
+      "url_en": "/en/research/#study-4",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-005",
+      "surface": "research",
+      "title_es": "ARFID frente a anorexia y bulimia en jóvenes",
+      "title_en": "ARFID compared with anorexia and bulimia in young people",
+      "url_es": "/es/investigacion/#estudio-5",
+      "url_en": "/en/research/#study-5",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-006",
+      "surface": "research",
+      "title_es": "Estigma en adultos con TDAH",
+      "title_en": "Stigma in adults with ADHD",
+      "url_es": "/es/investigacion/#estudio-6",
+      "url_en": "/en/research/#study-6",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-007",
+      "surface": "research",
+      "title_es": "Dislexia del desarrollo y TDL juntos",
+      "title_en": "Developmental dyslexia and DLD together",
+      "url_es": "/es/investigacion/#estudio-7",
+      "url_en": "/en/research/#study-7",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-008",
+      "surface": "research",
+      "title_es": "Obsesiones y compulsiones en adolescentes con TOC",
+      "title_en": "Obsessions and compulsions in adolescents with OCD",
+      "url_es": "/es/investigacion/#estudio-8",
+      "url_en": "/en/research/#study-8",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-009",
+      "surface": "research",
+      "title_es": "Representaciones corporales en personas autistas",
+      "title_en": "Body representations in autistic people",
+      "url_es": "/es/investigacion/#estudio-9",
+      "url_en": "/en/research/#study-9",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-010",
+      "surface": "research",
+      "title_es": "Imágenes mentales, sensibilidad sensorial y rasgos autistas",
+      "title_en": "Mental imagery, sensory sensitivity and autistic traits",
+      "url_es": "/es/investigacion/#estudio-10",
+      "url_en": "/en/research/#study-10",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-011",
+      "surface": "research",
+      "title_es": "Inseguridad alimentaria en familias con niños y jóvenes autistas",
+      "title_en": "Food insecurity in families with autistic children and young people",
+      "url_es": "/es/investigacion/#estudio-11",
+      "url_en": "/en/research/#study-11",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-012",
+      "surface": "research",
+      "title_es": "Función ejecutiva y regulación emocional en autismo, TDAH y coexistencia",
+      "title_en": "Executive function and emotion regulation in autism, ADHD and co-occurrence",
+      "url_es": "/es/investigacion/#estudio-12",
+      "url_en": "/en/research/#study-12",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-013",
+      "surface": "research",
+      "title_es": "Pertenencia y no pertenencia en adultos autistas trans y de género diverso",
+      "title_en": "Belonging and unbelonging in transgender and gender-diverse autistic adults",
+      "url_es": "/es/investigacion/#estudio-13",
+      "url_en": "/en/research/#study-13",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-014",
+      "surface": "research",
+      "title_es": "Burnout autista",
+      "title_en": "Autistic burnout",
+      "url_es": "/es/investigacion/#estudio-14",
+      "url_en": "/en/research/#study-14",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-015",
+      "surface": "research",
+      "title_es": "Acceso sanitario en jóvenes con discapacidad intelectual",
+      "title_en": "Healthcare access in young people with intellectual disability",
+      "url_es": "/es/investigacion/#estudio-15",
+      "url_en": "/en/research/#study-15",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-016",
+      "surface": "research",
+      "title_es": "Intervenciones conductuales en TEAF",
+      "title_en": "Behavioural interventions in FASD",
+      "url_es": "/es/investigacion/#estudio-16",
+      "url_en": "/en/research/#study-16",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-017",
+      "surface": "research",
+      "title_es": "Autismo, diversidad de género, salud y atención sanitaria",
+      "title_en": "Autism, gender diversity, health and healthcare",
+      "url_es": "/es/investigacion/#estudio-17",
+      "url_en": "/en/research/#study-17",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-018",
+      "surface": "research",
+      "title_es": "Prevalencia de ARFID y calidad metodológica",
+      "title_en": "ARFID prevalence and methodological quality",
+      "url_es": "/es/investigacion/#estudio-18",
+      "url_en": "/en/research/#study-18",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-019",
+      "surface": "research",
+      "title_es": "Colaboración entre familia y escuela en mutismo selectivo",
+      "title_en": "Family-school collaboration in selective mutism",
+      "url_es": "/es/investigacion/#estudio-19",
+      "url_en": "/en/research/#study-19",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-020",
+      "surface": "research",
+      "title_es": "Guías europeas de intervenciones psicológicas para tics y Tourette",
+      "title_en": "European guidelines on psychological interventions for tics and Tourette syndrome",
+      "url_es": "/es/investigacion/#estudio-20",
+      "url_en": "/en/research/#study-20",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-021",
+      "surface": "research",
+      "title_es": "Autismo: evaluación, heterogeneidad y tratamiento",
+      "title_en": "Autism: assessment, heterogeneity and treatment",
+      "url_es": "/es/investigacion/#estudio-21",
+      "url_en": "/en/research/#study-21",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-022",
+      "surface": "research",
+      "title_es": "Camuflaje social en personas autistas",
+      "title_en": "Social camouflaging in autistic people",
+      "url_es": "/es/investigacion/#estudio-22",
+      "url_en": "/en/research/#study-22",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-023",
+      "surface": "research",
+      "title_es": "Interocepción en personas autistas",
+      "title_en": "Interoception in autistic people",
+      "url_es": "/es/investigacion/#estudio-23",
+      "url_en": "/en/research/#study-23",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-024",
+      "surface": "research",
+      "title_es": "Procesamiento auditivo y autismo",
+      "title_en": "Auditory processing and autism",
+      "url_es": "/es/investigacion/#estudio-24",
+      "url_en": "/en/research/#study-24",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-025",
+      "surface": "research",
+      "title_es": "Autismo y sueño",
+      "title_en": "Autism and sleep",
+      "url_es": "/es/investigacion/#estudio-25",
+      "url_en": "/en/research/#study-25",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-026",
+      "surface": "research",
+      "title_es": "Melatonina y problemas de sueño en personas autistas",
+      "title_en": "Melatonin and sleep problems in autistic people",
+      "url_es": "/es/investigacion/#estudio-26",
+      "url_en": "/en/research/#study-26",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-027",
+      "surface": "research",
+      "title_es": "Tratamientos para el sueño en niños autistas: comparación indirecta",
+      "title_en": "Sleep treatments in autistic children: indirect comparison",
+      "url_es": "/es/investigacion/#estudio-27",
+      "url_en": "/en/research/#study-27",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-028",
+      "surface": "research",
+      "title_es": "Diferencias sensoriales y problemas emocionales o de conducta en autismo",
+      "title_en": "Sensory differences and emotional or behavioural problems in autism",
+      "url_es": "/es/investigacion/#estudio-28",
+      "url_en": "/en/research/#study-28",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-029",
+      "surface": "research",
+      "title_es": "Alexitimia y autismo",
+      "title_en": "Alexithymia and autism",
+      "url_es": "/es/investigacion/#estudio-29",
+      "url_en": "/en/research/#study-29",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-030",
+      "surface": "research",
+      "title_es": "Evitación persistente de demandas (PDA): qué decía la evidencia de 2021",
+      "title_en": "Persistent demand avoidance (PDA): what the 2021 evidence showed",
+      "url_es": "/es/investigacion/#estudio-30",
+      "url_en": "/en/research/#study-30",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-031",
+      "surface": "research",
+      "title_es": "PDA: revisión del constructo y de sus herramientas de identificación",
+      "title_en": "PDA: review of the construct and its identification tools",
+      "url_es": "/es/investigacion/#estudio-31",
+      "url_en": "/en/research/#study-31",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-032",
+      "surface": "research",
+      "title_es": "Fluidez verbal en autismo y propuesta del monotropismo",
+      "title_en": "Verbal fluency in autism and the monotropism proposal",
+      "url_es": "/es/investigacion/#estudio-32",
+      "url_en": "/en/research/#study-32",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-033",
+      "surface": "research",
+      "title_es": "Qué significa «diagnóstico tardío» en la investigación sobre autismo",
+      "title_en": "What “late diagnosis” means in autism research",
+      "url_es": "/es/investigacion/#estudio-33",
+      "url_en": "/en/research/#study-33",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-034",
+      "surface": "research",
+      "title_es": "Autismo en mujeres: retrasos diagnósticos y sesgo de género",
+      "title_en": "Autism in women: diagnostic delays and gender bias",
+      "url_es": "/es/investigacion/#estudio-34",
+      "url_en": "/en/research/#study-34",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-035",
+      "surface": "research",
+      "title_es": "Masking, salud mental, trauma, autenticidad y autoestima",
+      "title_en": "Masking, mental health, trauma, authenticity and self-esteem",
+      "url_es": "/es/investigacion/#estudio-35",
+      "url_en": "/en/research/#study-35",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "INTENTIONAL_ONLY",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-036",
+      "surface": "research",
+      "title_es": "Pensamientos y conductas suicidas en personas autistas",
+      "title_en": "Suicidal thoughts and behaviours in autistic people",
+      "url_es": "/es/investigacion/#estudio-36",
+      "url_en": "/en/research/#study-36",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-037",
+      "surface": "research",
+      "title_es": "Riesgo de autolesión y suicidabilidad en personas autistas",
+      "title_en": "Risk of self-harm and suicidality in autistic people",
+      "url_es": "/es/investigacion/#estudio-37",
+      "url_en": "/en/research/#study-37",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-038",
+      "surface": "research",
+      "title_es": "Ansiedad y depresión en personas adultas autistas",
+      "title_en": "Anxiety and depression in autistic adults",
+      "url_es": "/es/investigacion/#estudio-38",
+      "url_en": "/en/research/#study-38",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-039",
+      "surface": "research",
+      "title_es": "Ansiedad en niños autistas: comparación entre grupos",
+      "title_en": "Anxiety in autistic children: group comparisons",
+      "url_es": "/es/investigacion/#estudio-39",
+      "url_en": "/en/research/#study-39",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-040",
+      "surface": "research",
+      "title_es": "Ansiedad en alumnado autista: evaluación e intervención en la escuela",
+      "title_en": "Anxiety in autistic students: school assessment and intervention",
+      "url_es": "/es/investigacion/#estudio-40",
+      "url_en": "/en/research/#study-40",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-041",
+      "surface": "research",
+      "title_es": "Ansiedad y rasgos autistas en personas adultas",
+      "title_en": "Anxiety and autistic traits in adults",
+      "url_es": "/es/investigacion/#estudio-41",
+      "url_en": "/en/research/#study-41",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-042",
+      "surface": "research",
+      "title_es": "Prevalencia de TEPT en personas autistas",
+      "title_en": "PTSD prevalence in autistic people",
+      "url_es": "/es/investigacion/#estudio-42",
+      "url_en": "/en/research/#study-42",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "INTENTIONAL_ONLY",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-043",
+      "surface": "research",
+      "title_es": "Evaluación y tratamiento del TEPT en personas autistas",
+      "title_en": "PTSD assessment and treatment in autistic people",
+      "url_es": "/es/investigacion/#estudio-43",
+      "url_en": "/en/research/#study-43",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "INTENTIONAL_ONLY",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-044",
+      "surface": "research",
+      "title_es": "Coexistencia de autismo y ARFID",
+      "title_en": "Co-occurrence of autism and ARFID",
+      "url_es": "/es/investigacion/#estudio-44",
+      "url_en": "/en/research/#study-44",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-045",
+      "surface": "research",
+      "title_es": "Rasgos autistas y anorexia nerviosa",
+      "title_en": "Autistic traits and anorexia nervosa",
+      "url_es": "/es/investigacion/#estudio-45",
+      "url_en": "/en/research/#study-45",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-046",
+      "surface": "research",
+      "title_es": "Tratamiento de los TCA en personas autistas o con rasgos autistas altos",
+      "title_en": "Eating-disorder treatment in autistic people or people with high autistic traits",
+      "url_es": "/es/investigacion/#estudio-46",
+      "url_en": "/en/research/#study-46",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-047",
+      "surface": "research",
+      "title_es": "Inflamación gastrointestinal y autismo",
+      "title_en": "Gastrointestinal inflammation and autism",
+      "url_es": "/es/investigacion/#estudio-47",
+      "url_en": "/en/research/#study-47",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-048",
+      "surface": "research",
+      "title_es": "Microbiota y síntomas gastrointestinales en niños autistas",
+      "title_en": "Gut microbiota and gastrointestinal symptoms in autistic children",
+      "url_es": "/es/investigacion/#estudio-48",
+      "url_en": "/en/research/#study-48",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-049",
+      "surface": "research",
+      "title_es": "Autismo y enfermedades gastrointestinales eosinofílicas",
+      "title_en": "Autism and eosinophilic gastrointestinal diseases",
+      "url_es": "/es/investigacion/#estudio-49",
+      "url_en": "/en/research/#study-49",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-050",
+      "surface": "research",
+      "title_es": "Cómo evaluar el dolor en niños y adolescentes autistas",
+      "title_en": "Pain assessment in autistic children and adolescents",
+      "url_es": "/es/investigacion/#estudio-50",
+      "url_en": "/en/research/#study-50",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-051",
+      "surface": "research",
+      "title_es": "Menstruación y autismo",
+      "title_en": "Menstruation and autism",
+      "url_es": "/es/investigacion/#estudio-51",
+      "url_en": "/en/research/#study-51",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-052",
+      "surface": "research",
+      "title_es": "Prevalencia de epilepsia en personas autistas",
+      "title_en": "Epilepsy prevalence in autistic people",
+      "url_es": "/es/investigacion/#estudio-52",
+      "url_en": "/en/research/#study-52",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-053",
+      "surface": "research",
+      "title_es": "Factores relacionados con epilepsia en personas autistas",
+      "title_en": "Factors associated with epilepsy in autistic people",
+      "url_es": "/es/investigacion/#estudio-53",
+      "url_en": "/en/research/#study-53",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-054",
+      "surface": "research",
+      "title_es": "Rendimiento de la secuenciación genética en epilepsia, autismo y discapacidad intelectual",
+      "title_en": "Diagnostic yield of genetic sequencing in epilepsy, autism and intellectual disability",
+      "url_es": "/es/investigacion/#estudio-54",
+      "url_en": "/en/research/#study-54",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-055",
+      "surface": "research",
+      "title_es": "Funciones ejecutivas en autismo y TDAH durante la infancia y adolescencia",
+      "title_en": "Executive functions in autism and ADHD during childhood and adolescence",
+      "url_es": "/es/investigacion/#estudio-55",
+      "url_en": "/en/research/#study-55",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-056",
+      "surface": "research",
+      "title_es": "Intervenciones dirigidas a funciones ejecutivas en niños autistas",
+      "title_en": "Executive-function interventions in autistic children",
+      "url_es": "/es/investigacion/#estudio-56",
+      "url_en": "/en/research/#study-56",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-057",
+      "surface": "research",
+      "title_es": "Funciones ejecutivas en autismo: diferencias de grupo y límites diagnósticos",
+      "title_en": "Executive function in autism: group differences and diagnostic limits",
+      "url_es": "/es/investigacion/#estudio-57",
+      "url_en": "/en/research/#study-57",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-058",
+      "surface": "research",
+      "title_es": "Rasgos autistas: percepción cotidiana de función ejecutiva frente a tareas",
+      "title_en": "Autistic traits: perceived executive function versus task performance",
+      "url_es": "/es/investigacion/#estudio-58",
+      "url_en": "/en/research/#study-58",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-059",
+      "surface": "research",
+      "title_es": "Actividad física en niños autistas y no autistas",
+      "title_en": "Physical activity in autistic and non-autistic children",
+      "url_es": "/es/investigacion/#estudio-59",
+      "url_en": "/en/research/#study-59",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-060",
+      "surface": "research",
+      "title_es": "Efectos del ejercicio en niños y adolescentes autistas",
+      "title_en": "Effects of exercise in autistic children and adolescents",
+      "url_es": "/es/investigacion/#estudio-60",
+      "url_en": "/en/research/#study-60",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-061",
+      "surface": "research",
+      "title_es": "Deporte y actividad física en autismo",
+      "title_en": "Sport and physical activity in autism",
+      "url_es": "/es/investigacion/#estudio-61",
+      "url_en": "/en/research/#study-61",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-062",
+      "surface": "research",
+      "title_es": "Comparación de distintas actividades físicas en autismo",
+      "title_en": "Comparison of different physical-activity interventions in autism",
+      "url_es": "/es/investigacion/#estudio-62",
+      "url_en": "/en/research/#study-62",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-063",
+      "surface": "research",
+      "title_es": "Ejercicio y control inhibitorio en niños y adolescentes autistas",
+      "title_en": "Exercise and inhibitory control in autistic children and adolescents",
+      "url_es": "/es/investigacion/#estudio-63",
+      "url_en": "/en/research/#study-63",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-064",
+      "surface": "research",
+      "title_es": "Ejercicio y habilidades motoras en niños autistas",
+      "title_en": "Exercise and motor skills in autistic children",
+      "url_es": "/es/investigacion/#estudio-64",
+      "url_en": "/en/research/#study-64",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-065",
+      "surface": "research",
+      "title_es": "Ensayos de ejercicio en personas autistas",
+      "title_en": "Exercise trials in autistic people",
+      "url_es": "/es/investigacion/#estudio-65",
+      "url_en": "/en/research/#study-65",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-066",
+      "surface": "research",
+      "title_es": "Absentismo escolar en niños y adolescentes autistas",
+      "title_en": "School absenteeism in autistic children and adolescents",
+      "url_es": "/es/investigacion/#estudio-66",
+      "url_en": "/en/research/#study-66",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-067",
+      "surface": "research",
+      "title_es": "Ajustes en el trabajo para personas autistas",
+      "title_en": "Workplace accommodations for autistic employees",
+      "url_es": "/es/investigacion/#estudio-67",
+      "url_en": "/en/research/#study-67",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-068",
+      "surface": "research",
+      "title_es": "Experiencias laborales de personas adultas autistas",
+      "title_en": "Employment experiences of autistic adults",
+      "url_es": "/es/investigacion/#estudio-68",
+      "url_en": "/en/research/#study-68",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-069",
+      "surface": "research",
+      "title_es": "Programas de apoyo para universitarios autistas",
+      "title_en": "Support programmes for autistic university students",
+      "url_es": "/es/investigacion/#estudio-69",
+      "url_en": "/en/research/#study-69",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-070",
+      "surface": "research",
+      "title_es": "Apoyos universitarios para salud mental y bienestar de estudiantes neurodivergentes",
+      "title_en": "Higher-education support for neurodivergent students' mental health and wellbeing",
+      "url_es": "/es/investigacion/#estudio-70",
+      "url_en": "/en/research/#study-70",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-071",
+      "surface": "research",
+      "title_es": "Identidad de género, orientación sexual y experiencias sexuales adversas en mujeres autistas",
+      "title_en": "Gender identity, sexual orientation and adverse sexual experiences in autistic women",
+      "url_es": "/es/investigacion/#estudio-71",
+      "url_en": "/en/research/#study-71",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "SAFE_VARIANT_REQUIRED",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-072",
+      "surface": "research",
+      "title_es": "Condiciones de salud mental que coexisten con el autismo",
+      "title_en": "Co-occurring mental-health conditions in autism",
+      "url_es": "/es/investigacion/#estudio-72",
+      "url_en": "/en/research/#study-72",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-073",
+      "surface": "research",
+      "title_es": "Qué sabemos del TDAH a partir de revisiones sistemáticas",
+      "title_en": "What systematic reviews tell us about ADHD",
+      "url_es": "/es/investigacion/#estudio-73",
+      "url_en": "/en/research/#study-73",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-074",
+      "surface": "research",
+      "title_es": "Medicamentos para el TDAH: eficacia y tolerabilidad a corto plazo",
+      "title_en": "ADHD medications: short-term efficacy and tolerability",
+      "url_es": "/es/investigacion/#estudio-74",
+      "url_en": "/en/research/#study-74",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-075",
+      "surface": "research",
+      "title_es": "Tratamiento farmacológico del TDAH y calidad de vida",
+      "title_en": "Pharmacological ADHD treatment and quality of life",
+      "url_es": "/es/investigacion/#estudio-75",
+      "url_en": "/en/research/#study-75",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-076",
+      "surface": "research",
+      "title_es": "Tratamientos farmacológicos y no farmacológicos para el TDAH en adultos",
+      "title_en": "Pharmacological and non-pharmacological treatments for adult ADHD",
+      "url_es": "/es/investigacion/#estudio-76",
+      "url_en": "/en/research/#study-76",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-077",
+      "surface": "research",
+      "title_es": "Qué factores infantiles se relacionan con resultados psiquiátricos posteriores en TDAH",
+      "title_en": "Childhood factors associated with later psychiatric outcomes in ADHD",
+      "url_es": "/es/investigacion/#estudio-77",
+      "url_en": "/en/research/#study-77",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-078",
+      "surface": "research",
+      "title_es": "TDAH en mujeres adultas y diagnóstico tardío",
+      "title_en": "ADHD in adult women and late diagnosis",
+      "url_es": "/es/investigacion/#estudio-78",
+      "url_en": "/en/research/#study-78",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-079",
+      "surface": "research",
+      "title_es": "Qué se ha investigado sobre TDAH en niñas y mujeres",
+      "title_en": "What has been researched about ADHD in girls and women",
+      "url_es": "/es/investigacion/#estudio-79",
+      "url_en": "/en/research/#study-79",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-080",
+      "surface": "research",
+      "title_es": "Entrenamiento informatizado de funciones ejecutivas en jóvenes con TDAH",
+      "title_en": "Computerised executive-function training in young people with ADHD",
+      "url_es": "/es/investigacion/#estudio-80",
+      "url_en": "/en/research/#study-80",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-081",
+      "surface": "research",
+      "title_es": "Teoría de las funciones ejecutivas en el TDAH",
+      "title_en": "Executive-function theory of ADHD",
+      "url_es": "/es/investigacion/#estudio-81",
+      "url_en": "/en/research/#study-81",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-082",
+      "surface": "research",
+      "title_es": "Bipolaridad y TDAH coexistente: funcionamiento cognitivo y psicosocial",
+      "title_en": "Bipolar disorder with co-occurring ADHD: cognitive and psychosocial functioning",
+      "url_es": "/es/investigacion/#estudio-82",
+      "url_en": "/en/research/#study-82",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-083",
+      "surface": "research",
+      "title_es": "Tratamientos para el TOC en niños y adolescentes: revisión de revisiones",
+      "title_en": "Treatments for OCD in children and adolescents: umbrella review",
+      "url_es": "/es/investigacion/#estudio-83",
+      "url_en": "/en/research/#study-83",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-084",
+      "surface": "research",
+      "title_es": "Terapia cognitivo-conductual con exposición y prevención de respuesta para el TOC",
+      "title_en": "CBT with exposure and response prevention for OCD",
+      "url_es": "/es/investigacion/#estudio-84",
+      "url_en": "/en/research/#study-84",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-085",
+      "surface": "research",
+      "title_es": "Exposición y prevención de respuesta para el TOC",
+      "title_en": "Exposure and response prevention for OCD",
+      "url_es": "/es/investigacion/#estudio-85",
+      "url_en": "/en/research/#study-85",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-086",
+      "surface": "research",
+      "title_es": "Tratamiento del TOC en niños y jóvenes",
+      "title_en": "OCD treatment in children and young people",
+      "url_es": "/es/investigacion/#estudio-86",
+      "url_en": "/en/research/#study-86",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-087",
+      "surface": "research",
+      "title_es": "Terapia cognitivo-conductual en trastornos mentales de personas adultas",
+      "title_en": "Cognitive behaviour therapy for mental disorders in adults",
+      "url_es": "/es/investigacion/#estudio-87",
+      "url_en": "/en/research/#study-87",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-088",
+      "surface": "research",
+      "title_es": "Resultados a largo plazo de la TCC para trastornos relacionados con ansiedad",
+      "title_en": "Long-term outcomes of CBT for anxiety-related disorders",
+      "url_es": "/es/investigacion/#estudio-88",
+      "url_en": "/en/research/#study-88",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-089",
+      "surface": "research",
+      "title_es": "TCC centrada en trauma para niños y adolescentes",
+      "title_en": "Trauma-focused CBT for children and adolescents",
+      "url_es": "/es/investigacion/#estudio-89",
+      "url_en": "/en/research/#study-89",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "INTENTIONAL_ONLY",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-090",
+      "surface": "research",
+      "title_es": "Estudios de tratamiento de la dislexia",
+      "title_en": "Dyslexia treatment studies",
+      "url_es": "/es/investigacion/#estudio-90",
+      "url_en": "/en/research/#study-90",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-091",
+      "surface": "research",
+      "title_es": "Procesos cognitivos relacionados con la discalculia del desarrollo",
+      "title_en": "Cognitive processes associated with developmental dyscalculia",
+      "url_es": "/es/investigacion/#estudio-91",
+      "url_en": "/en/research/#study-91",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-092",
+      "surface": "research",
+      "title_es": "Habilidades cognitivas generales en dificultades matemáticas y discalculia",
+      "title_en": "Domain-general cognitive skills in mathematical difficulties and dyscalculia",
+      "url_es": "/es/investigacion/#estudio-92",
+      "url_en": "/en/research/#study-92",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-093",
+      "surface": "research",
+      "title_es": "Diagnóstico y tratamiento de la discalculia",
+      "title_en": "Diagnosis and treatment of dyscalculia",
+      "url_es": "/es/investigacion/#estudio-93",
+      "url_en": "/en/research/#study-93",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-094",
+      "surface": "research",
+      "title_es": "Cómo intensificar intervenciones sobre problemas matemáticos escritos",
+      "title_en": "How to intensify word-problem interventions for students with mathematics difficulty",
+      "url_es": "/es/investigacion/#estudio-94",
+      "url_en": "/en/research/#study-94",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-095",
+      "surface": "research",
+      "title_es": "Trastorno específico del aprendizaje en matemáticas y otras dificultades del desarrollo",
+      "title_en": "Specific learning disorder in mathematics and other developmental difficulties",
+      "url_es": "/es/investigacion/#estudio-95",
+      "url_en": "/en/research/#study-95",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-096",
+      "surface": "research",
+      "title_es": "Intervenciones para disgrafía o dificultades de expresión escrita",
+      "title_en": "Interventions for dysgraphia or written-expression difficulties",
+      "url_es": "/es/investigacion/#estudio-96",
+      "url_en": "/en/research/#study-96",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-097",
+      "surface": "research",
+      "title_es": "Intervenciones para mejorar la escritura a mano",
+      "title_en": "Interventions to improve handwriting",
+      "url_es": "/es/investigacion/#estudio-97",
+      "url_en": "/en/research/#study-97",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-098",
+      "surface": "research",
+      "title_es": "Intervenciones de vocabulario en niños con TDL",
+      "title_en": "Vocabulary interventions for children with DLD",
+      "url_es": "/es/investigacion/#estudio-98",
+      "url_en": "/en/research/#study-98",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-099",
+      "surface": "research",
+      "title_es": "Intervenciones sobre fonología expresiva en trastornos del habla y del lenguaje",
+      "title_en": "Interventions targeting expressive phonology in speech and language disorders",
+      "url_es": "/es/investigacion/#estudio-99",
+      "url_en": "/en/research/#study-99",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-100",
+      "surface": "research",
+      "title_es": "Repetición de frases como parte de la evaluación del TDL",
+      "title_en": "Sentence repetition as part of DLD assessment",
+      "url_es": "/es/investigacion/#estudio-100",
+      "url_en": "/en/research/#study-100",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-101",
+      "surface": "research",
+      "title_es": "Intervenciones de lenguaje oral para toda la clase y alumnado con TDL",
+      "title_en": "Whole-class oral-language interventions for students with DLD",
+      "url_es": "/es/investigacion/#estudio-101",
+      "url_en": "/en/research/#study-101",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-102",
+      "surface": "research",
+      "title_es": "Enseñanza de morfología en niños con TDL",
+      "title_en": "Morphological-awareness intervention in children with DLD",
+      "url_es": "/es/investigacion/#estudio-102",
+      "url_en": "/en/research/#study-102",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-103",
+      "surface": "research",
+      "title_es": "Lenguaje y competencia social en niños con TDL",
+      "title_en": "Language and social competence in children with DLD",
+      "url_es": "/es/investigacion/#estudio-103",
+      "url_en": "/en/research/#study-103",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-104",
+      "surface": "research",
+      "title_es": "Neuroanatomía del trastorno del desarrollo del lenguaje",
+      "title_en": "Neuroanatomy of developmental language disorder",
+      "url_es": "/es/investigacion/#estudio-104",
+      "url_en": "/en/research/#study-104",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-105",
+      "surface": "research",
+      "title_es": "Qué componentes se relacionan con mejores resultados en comprensión oral en TDL",
+      "title_en": "Intervention factors associated with oral-language comprehension outcomes in DLD",
+      "url_es": "/es/investigacion/#estudio-105",
+      "url_en": "/en/research/#study-105",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-106",
+      "surface": "research",
+      "title_es": "Muestras de lenguaje para diferenciar TDL y variación bilingüe",
+      "title_en": "Language samples for distinguishing DLD from bilingual variation",
+      "url_es": "/es/investigacion/#estudio-106",
+      "url_en": "/en/research/#study-106",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-107",
+      "surface": "research",
+      "title_es": "Intervenciones cuando coexisten dificultades de vocabulario y claridad del habla",
+      "title_en": "Interventions when vocabulary and speech-comprehensibility difficulties co-occur",
+      "url_es": "/es/investigacion/#estudio-107",
+      "url_en": "/en/research/#study-107",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-108",
+      "surface": "research",
+      "title_es": "Fisioterapia para niños con trastorno del desarrollo de la coordinación",
+      "title_en": "Physical therapy for children with developmental coordination disorder",
+      "url_es": "/es/investigacion/#estudio-108",
+      "url_en": "/en/research/#study-108",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-109",
+      "surface": "research",
+      "title_es": "Intervenciones motoras en la escuela para alumnado con TDC",
+      "title_en": "School-based motor interventions for students with DCD",
+      "url_es": "/es/investigacion/#estudio-109",
+      "url_en": "/en/research/#study-109",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-110",
+      "surface": "research",
+      "title_es": "Ejercicios de coordinación y función de la mano en niños con TDC",
+      "title_en": "Coordination exercises and hand function in children with DCD",
+      "url_es": "/es/investigacion/#estudio-110",
+      "url_en": "/en/research/#study-110",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-111",
+      "surface": "research",
+      "title_es": "Dificultades académicas en el trastorno del desarrollo de la coordinación",
+      "title_en": "Academic challenges in developmental coordination disorder",
+      "url_es": "/es/investigacion/#estudio-111",
+      "url_en": "/en/research/#study-111",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-112",
+      "surface": "research",
+      "title_es": "Intervenciones motoras en niños con TDC: ensayos aleatorizados",
+      "title_en": "Motor-based interventions in children with DCD: randomised trials",
+      "url_es": "/es/investigacion/#estudio-112",
+      "url_en": "/en/research/#study-112",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-113",
+      "surface": "research",
+      "title_es": "Cómo se evalúa la competencia motora en el TDC",
+      "title_en": "How motor competence is assessed in DCD",
+      "url_es": "/es/investigacion/#estudio-113",
+      "url_en": "/en/research/#study-113",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-114",
+      "surface": "research",
+      "title_es": "Intervención temprana en niños con TDC o riesgo de TDC",
+      "title_en": "Early intervention in children with or at risk of DCD",
+      "url_es": "/es/investigacion/#estudio-114",
+      "url_en": "/en/research/#study-114",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-115",
+      "surface": "research",
+      "title_es": "CAA integrada en el juego para niños con poco o ningún habla oral",
+      "title_en": "Play-integrated AAC for minimally speaking or nonspeaking children",
+      "url_es": "/es/investigacion/#estudio-115",
+      "url_en": "/en/research/#study-115",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-116",
+      "surface": "research",
+      "title_es": "Dispositivos de CAA que generan habla en preescolares autistas",
+      "title_en": "Speech-generating AAC devices in autistic preschoolers",
+      "url_es": "/es/investigacion/#estudio-116",
+      "url_en": "/en/research/#study-116",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-117",
+      "surface": "research",
+      "title_es": "Intervenciones dirigidas a la ecolalia en niños autistas",
+      "title_en": "Interventions targeting echolalia in autistic children",
+      "url_es": "/es/investigacion/#estudio-117",
+      "url_en": "/en/research/#study-117",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-118",
+      "surface": "research",
+      "title_es": "Qué técnicas se han utilizado para modificar la ecolalia",
+      "title_en": "Techniques used to target echolalia",
+      "url_es": "/es/investigacion/#estudio-118",
+      "url_en": "/en/research/#study-118",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-119",
+      "surface": "research",
+      "title_es": "Trastorno del procesamiento auditivo en la infancia: validez diagnóstica y evaluación funcional",
+      "title_en": "Auditory processing disorder in childhood: diagnostic validity and functional assessment",
+      "url_es": "/es/investigacion/#estudio-119",
+      "url_en": "/en/research/#study-119",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-120",
+      "surface": "research",
+      "title_es": "Misofonía: qué sabemos y qué sigue sin estar claro",
+      "title_en": "Misophonia: what is known and what remains unclear",
+      "url_es": "/es/investigacion/#estudio-120",
+      "url_en": "/en/research/#study-120",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-121",
+      "surface": "research",
+      "title_es": "Prevalencia mundial del autismo en la infancia",
+      "title_en": "Global prevalence of autism in children",
+      "url_es": "/es/investigacion/#estudio-121",
+      "url_en": "/en/research/#study-121",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-122",
+      "surface": "research",
+      "title_es": "Intervenciones no farmacológicas para ansiedad y depresión en autismo",
+      "title_en": "Non-pharmacological interventions for anxiety and depression in autism",
+      "url_es": "/es/investigacion/#estudio-122",
+      "url_en": "/en/research/#study-122",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-123",
+      "surface": "research",
+      "title_es": "Intervenciones escolares en TDAH",
+      "title_en": "School-based interventions in ADHD",
+      "url_es": "/es/investigacion/#estudio-123",
+      "url_en": "/en/research/#study-123",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-124",
+      "surface": "research",
+      "title_es": "Camuflaje autista y salud mental",
+      "title_en": "Autistic camouflaging and mental health",
+      "url_es": "/es/investigacion/#estudio-124",
+      "url_en": "/en/research/#study-124",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-125",
+      "surface": "research",
+      "title_es": "Burnout autista: qué se ha descrito hasta ahora",
+      "title_en": "Autistic burnout: what has been described so far",
+      "url_es": "/es/investigacion/#estudio-125",
+      "url_en": "/en/research/#study-125",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-126",
+      "surface": "research",
+      "title_es": "Sueño y conducta en criaturas y adolescentes autistas",
+      "title_en": "Sleep and behaviour in autistic children and adolescents",
+      "url_es": "/es/investigacion/#estudio-126",
+      "url_en": "/en/research/#study-126",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-127",
+      "surface": "research",
+      "title_es": "Envejecer siendo autista",
+      "title_en": "Ageing while autistic",
+      "url_es": "/es/investigacion/#estudio-127",
+      "url_en": "/en/research/#study-127",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-128",
+      "surface": "research",
+      "title_es": "Herramientas para valorar el envejecimiento en personas autistas",
+      "title_en": "Tools for assessing ageing in autistic people",
+      "url_es": "/es/investigacion/#estudio-128",
+      "url_en": "/en/research/#study-128",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-129",
+      "surface": "research",
+      "title_es": "Autismo en mujeres y sesgo de género en el diagnóstico",
+      "title_en": "Autism in women and gender bias in diagnosis",
+      "url_es": "/es/investigacion/#estudio-129",
+      "url_en": "/en/research/#study-129",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-130",
+      "surface": "research",
+      "title_es": "Interocepción en personas autistas",
+      "title_en": "Interoception in autistic people",
+      "url_es": "/es/investigacion/#estudio-130",
+      "url_en": "/en/research/#study-130",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Research summary is adolescent/adult discovery; not child-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-131",
+      "surface": "research",
+      "title_es": "Apoyos al TDAH en el trabajo: lo que falta por investigar",
+      "title_en": "Support for ADHD at work: what remains unstudied",
+      "url_es": "/es/investigacion/#estudio-131",
+      "url_en": "/en/research/#study-131",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "research-132",
+      "surface": "research",
+      "title_es": "Necesidades laborales descritas por personas autistas adultas",
+      "title_en": "Workplace needs described by autistic adults",
+      "url_es": "/es/investigacion/#estudio-132",
+      "url_en": "/en/research/#study-132",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Study population or application is explicitly adult, university or work focused.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}

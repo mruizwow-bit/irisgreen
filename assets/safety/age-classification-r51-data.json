@@ -1,0 +1,983 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "data",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 60,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 44,
+      "AGE_18_PLUS": 60,
+      "ALL_AGES": 0
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 44,
+      "AGE_18_PLUS": 60,
+      "ALL_AGES": 0
+    }
+  },
+  "records": [
+    {
+      "content_id": "data-001",
+      "surface": "data",
+      "title_es": "Alumnado con necesidades educativas especiales en España",
+      "title_en": "Pupils with special educational needs in Spain",
+      "url_es": "../../es/datos/alumnado-con-necesidades-educativas-especiales-en-espana/",
+      "url_en": "../../en/data/pupils-with-special-educational-needs-in-spain/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-002",
+      "surface": "data",
+      "title_es": "Apoyo educativo en España: qué recoge la cifra",
+      "title_en": "Educational support in Spain: what the figure covers",
+      "url_es": "../../es/datos/apoyo-educativo-en-espana-que-recoge-la-cifra/",
+      "url_en": "../../en/data/educational-support-in-spain-what-the-figure-covers/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-003",
+      "surface": "data",
+      "title_es": "Empleo y discapacidad en España",
+      "title_en": "Employment and disability in Spain",
+      "url_es": "../../es/datos/empleo-y-discapacidad-en-espana/",
+      "url_en": "../../en/data/employment-and-disability-in-spain/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-004",
+      "surface": "data",
+      "title_es": "Salario y discapacidad en España",
+      "title_en": "Pay and disability in Spain",
+      "url_es": "../../es/datos/salario-y-discapacidad-en-espana/",
+      "url_en": "../../en/data/pay-and-disability-in-spain/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-005",
+      "surface": "data",
+      "title_es": "Dependencia reconocida y lista de espera en España",
+      "title_en": "Recognised dependency and waiting lists in Spain",
+      "url_es": "../../es/datos/dependencia-reconocida-y-lista-de-espera-en-espana/",
+      "url_en": "../../en/data/recognised-dependency-and-waiting-lists-in-spain/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-006",
+      "surface": "data",
+      "title_es": "Discapacidad en centros residenciales en España",
+      "title_en": "Disability in residential settings in Spain",
+      "url_es": "../../es/datos/discapacidad-en-centros-residenciales-en-espana/",
+      "url_en": "../../en/data/disability-in-residential-settings-in-spain/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-007",
+      "surface": "data",
+      "title_es": "Encuestas de discapacidad en España: qué mide cada una",
+      "title_en": "Disability surveys in Spain: what each one measures",
+      "url_es": "../../es/datos/encuestas-de-discapacidad-en-espana-que-mide-cada-una/",
+      "url_en": "../../en/data/disability-surveys-in-spain-what-each-one-measures/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-008",
+      "surface": "data",
+      "title_es": "México · Población con discapacidad, Censo 2020",
+      "title_en": "Mexico · Population with disability, 2020 Census",
+      "url_es": "../../es/datos/mexico-poblacion-con-discapacidad-censo-2020/",
+      "url_en": "../../en/data/mexico-population-with-disability-2020-census/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-009",
+      "surface": "data",
+      "title_es": "Brasil · Personas con discapacidad, Censo 2022",
+      "title_en": "Brazil · People with disabilities, 2022 Census",
+      "url_es": "../../es/datos/brasil-personas-con-discapacidad-censo-2022/",
+      "url_en": "../../en/data/brazil-people-with-disabilities-2022-census/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-010",
+      "surface": "data",
+      "title_es": "Autismo",
+      "title_en": "Autism",
+      "url_es": "../../es/datos/autismo/",
+      "url_en": "/en/data/autism/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-011",
+      "surface": "data",
+      "title_es": "Autismo: diferencias por sexo en la estimación mundial",
+      "title_en": "Autism: sex differences in the global estimate",
+      "url_es": "../../es/datos/autismo-diferencias-por-sexo-en-la-estimacion-mundial/",
+      "url_en": "/en/data/autism-sex-differences-in-the-global-estimate/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-012",
+      "surface": "data",
+      "title_es": "Autismo: carga de salud poblacional",
+      "title_en": "Autism: population health burden",
+      "url_es": "../../es/datos/autismo-carga-de-salud-poblacional/",
+      "url_en": "/en/data/autism-population-health-burden/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-013",
+      "surface": "data",
+      "title_es": "Discapacidad del desarrollo en niños y jóvenes",
+      "title_en": "Developmental disability in children and young people",
+      "url_es": "../../es/datos/discapacidad-del-desarrollo-en-ninos-y-jovenes/",
+      "url_en": "/en/data/developmental-disability-in-children-and-young-people/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-014",
+      "surface": "data",
+      "title_es": "Por qué faltan datos comparables sobre desarrollo",
+      "title_en": "Why comparable developmental data are missing",
+      "url_es": "../../es/datos/por-que-faltan-datos-comparables-sobre-desarrollo/",
+      "url_en": "/en/data/why-comparable-developmental-data-are-missing/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-015",
+      "surface": "data",
+      "title_es": "TDAH en niños y adolescentes",
+      "title_en": "ADHD in children and adolescents",
+      "url_es": "../../es/datos/tdah-en-ninos-y-adolescentes/",
+      "url_en": "/en/data/adhd-in-children-and-adolescents/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-016",
+      "surface": "data",
+      "title_es": "TDAH en adultos",
+      "title_en": "ADHD in adults",
+      "url_es": "../../es/datos/tdah-en-adultos/",
+      "url_en": "/en/data/adhd-in-adults/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-017",
+      "surface": "data",
+      "title_es": "Dislexia del desarrollo",
+      "title_en": "Developmental dyslexia",
+      "url_es": "../../es/datos/dislexia-del-desarrollo/",
+      "url_en": "/en/data/developmental-dyslexia/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-018",
+      "surface": "data",
+      "title_es": "Trastorno del desarrollo de la coordinación",
+      "title_en": "Developmental coordination disorder",
+      "url_es": "../../es/datos/trastorno-del-desarrollo-de-la-coordinacion/",
+      "url_en": "/en/data/developmental-coordination-disorder/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-019",
+      "surface": "data",
+      "title_es": "Discalculia y disgrafía: por qué no damos una cifra mundial única",
+      "title_en": "Dyscalculia and dysgraphia: why we do not give a single global figure",
+      "url_es": "../../es/datos/discalculia-y-disgrafia-por-que-no-damos-una-cifra-mundial-unica/",
+      "url_en": "/en/data/dyscalculia-and-dysgraphia-why-we-do-not-give-a-single-global-figure/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-020",
+      "surface": "data",
+      "title_es": "Trastornos de ansiedad",
+      "title_en": "Anxiety disorders",
+      "url_es": "../../es/datos/trastornos-de-ansiedad/",
+      "url_en": "/en/data/anxiety-disorders/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-021",
+      "surface": "data",
+      "title_es": "TOC",
+      "title_en": "OCD",
+      "url_es": "../../es/datos/toc/",
+      "url_en": "/en/data/ocd/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-022",
+      "surface": "data",
+      "title_es": "Autismo y salud mental: coexistencia, no equivalencia",
+      "title_en": "Autism and mental health: coexistence, not equivalence",
+      "url_es": "../../es/datos/autismo-y-salud-mental-coexistencia-no-equivalencia/",
+      "url_en": "/en/data/autism-and-mental-health-coexistence-not-equivalence/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-023",
+      "surface": "data",
+      "title_es": "Discapacidad significativa",
+      "title_en": "Significant disability",
+      "url_es": "../../es/datos/discapacidad-significativa/",
+      "url_en": "/en/data/significant-disability/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-024",
+      "surface": "data",
+      "title_es": "Desigualdad en salud asociada a discapacidad",
+      "title_en": "Health inequality associated with disability",
+      "url_es": "../../es/datos/desigualdad-en-salud-asociada-a-discapacidad/",
+      "url_en": "/en/data/health-inequality-associated-with-disability/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-025",
+      "surface": "data",
+      "title_es": "Niños con discapacidad",
+      "title_en": "Children with disabilities",
+      "url_es": "../../es/datos/ninos-con-discapacidad/",
+      "url_en": "/en/data/children-with-disabilities/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-026",
+      "surface": "data",
+      "title_es": "Educación y discapacidad infantil",
+      "title_en": "Education and childhood disability",
+      "url_es": "../../es/datos/educacion-y-discapacidad-infantil/",
+      "url_en": "/en/data/education-and-childhood-disability/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-027",
+      "surface": "data",
+      "title_es": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+      "title_en": "Wellbeing, discrimination and violence in childhood disability",
+      "url_es": "../../es/datos/bienestar-discriminacion-y-violencia-en-la-infancia-con-discapacidad/",
+      "url_en": "/en/data/wellbeing-discrimination-and-violence-in-childhood-disability/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-028",
+      "surface": "data",
+      "title_es": "Tecnología y productos de apoyo",
+      "title_en": "Technology and assistive products",
+      "url_es": "../../es/datos/tecnologia-y-productos-de-apoyo/",
+      "url_en": "/en/data/technology-and-assistive-products/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-029",
+      "surface": "data",
+      "title_es": "Pérdida auditiva discapacitante en el mundo",
+      "title_en": "Disabling hearing loss worldwide",
+      "url_es": "../../es/datos/perdida-auditiva-discapacitante-en-el-mundo/",
+      "url_en": "../../en/data/disabling-hearing-loss-worldwide/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-030",
+      "surface": "data",
+      "title_es": "Discapacidad visual en el mundo",
+      "title_en": "Vision impairment worldwide",
+      "url_es": "../../es/datos/discapacidad-visual-en-el-mundo/",
+      "url_en": "../../en/data/vision-impairment-worldwide/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-031",
+      "surface": "data",
+      "title_es": "Síndrome de Tourette: prevalencia estimada e identificación",
+      "title_en": "Tourette syndrome: estimated prevalence and identification",
+      "url_es": "../../es/datos/sindrome-de-tourette-prevalencia-estimada-e-identificacion/",
+      "url_en": "/en/data/tourette-syndrome-estimated-prevalence-and-identification/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-032",
+      "surface": "data",
+      "title_es": "Trastorno del desarrollo del lenguaje: un estudio poblacional de referencia",
+      "title_en": "Developmental language disorder: a reference population study",
+      "url_es": "../../es/datos/trastorno-del-desarrollo-del-lenguaje-un-estudio-poblacional-de-referencia/",
+      "url_en": "/en/data/developmental-language-disorder-a-reference-population-study/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-033",
+      "surface": "data",
+      "title_es": "Empleo y autismo",
+      "title_en": "Employment and autism",
+      "url_es": "../../es/datos/empleo-y-autismo/",
+      "url_en": "/en/data/employment-and-autism-united-kingdom/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-034",
+      "surface": "data",
+      "title_es": "Brecha salarial en autismo",
+      "title_en": "Autism pay gap",
+      "url_es": "../../es/datos/brecha-salarial-en-autismo/",
+      "url_en": "/en/data/autism-pay-gap/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-035",
+      "surface": "data",
+      "title_es": "Graduados autistas",
+      "title_en": "Autistic graduates",
+      "url_es": "../../es/datos/graduados-autistas/",
+      "url_en": "/en/data/autistic-graduates/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-036",
+      "surface": "data",
+      "title_es": "Revelar el diagnóstico y pedir ajustes en el trabajo",
+      "title_en": "Disclosing a diagnosis and asking for adjustments at work",
+      "url_es": "../../es/datos/revelar-el-diagnostico-y-pedir-ajustes-en-el-trabajo/",
+      "url_en": "/en/data/disclosing-a-diagnosis-and-asking-for-adjustments-at-work/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-037",
+      "surface": "data",
+      "title_es": "Empleo y discapacidad",
+      "title_en": "Employment and disability",
+      "url_es": "../../es/datos/empleo-y-discapacidad/",
+      "url_en": "/en/data/employment-and-disability/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-038",
+      "surface": "data",
+      "title_es": "Brecha salarial y discapacidad",
+      "title_en": "Pay gap and disability",
+      "url_es": "../../es/datos/brecha-salarial-y-discapacidad/",
+      "url_en": "/en/data/pay-gap-and-disability/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-039",
+      "surface": "data",
+      "title_es": "Brecha de empleo asociada a discapacidad",
+      "title_en": "Employment gap associated with disability",
+      "url_es": "../../es/datos/brecha-de-empleo-asociada-a-discapacidad/",
+      "url_en": "/en/data/employment-gap-associated-with-disability/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-040",
+      "surface": "data",
+      "title_es": "Participación laboral y discapacidad",
+      "title_en": "Labour-force participation and disability",
+      "url_es": "../../es/datos/participacion-laboral-y-discapacidad/",
+      "url_en": "/en/data/labour-force-participation-and-disability/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-041",
+      "surface": "data",
+      "title_es": "Abandono temprano de educación y formación",
+      "title_en": "Early leaving from education and training",
+      "url_es": "../../es/datos/abandono-temprano-de-educacion-y-formacion/",
+      "url_en": "/en/data/early-leaving-from-education-and-training/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-042",
+      "surface": "data",
+      "title_es": "Jóvenes fuera del empleo, la educación y la formación",
+      "title_en": "Young people not in employment, education or training",
+      "url_es": "../../es/datos/jovenes-fuera-del-empleo-la-educacion-y-la-formacion/",
+      "url_en": "/en/data/young-people-not-in-employment-education-or-training/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-043",
+      "surface": "data",
+      "title_es": "Educación superior y discapacidad",
+      "title_en": "Higher education and disability",
+      "url_es": "../../es/datos/educacion-superior-y-discapacidad/",
+      "url_en": "/en/data/higher-education-and-disability/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-044",
+      "surface": "data",
+      "title_es": "Formación a lo largo de la vida",
+      "title_en": "Lifelong learning",
+      "url_es": "../../es/datos/formacion-a-lo-largo-de-la-vida/",
+      "url_en": "/en/data/lifelong-learning/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-045",
+      "surface": "data",
+      "title_es": "Pobreza y exclusión social",
+      "title_en": "Poverty and social exclusion",
+      "url_es": "../../es/datos/pobreza-y-exclusion-social/",
+      "url_en": "/en/data/poverty-and-social-exclusion/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-046",
+      "surface": "data",
+      "title_es": "Discriminación percibida en la vida cotidiana",
+      "title_en": "Perceived discrimination in everyday life",
+      "url_es": "../../es/datos/discriminacion-percibida-en-la-vida-cotidiana/",
+      "url_en": "/en/data/perceived-discrimination-in-everyday-life/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-047",
+      "surface": "data",
+      "title_es": "Autismo identificado en niños de 8 años",
+      "title_en": "Autism identified in 8-year-old children",
+      "url_es": "../../es/datos/autismo-identificado-en-ninos-de-8-anos/",
+      "url_en": "/en/data/autism-identified-in-8-year-old-children/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-048",
+      "surface": "data",
+      "title_es": "Diferencia por sexo en identificación de autismo",
+      "title_en": "Sex difference in autism identification",
+      "url_es": "../../es/datos/diferencia-por-sexo-en-identificacion-de-autismo/",
+      "url_en": "/en/data/sex-difference-in-autism-identification/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-049",
+      "surface": "data",
+      "title_es": "Edad del diagnóstico de autismo documentado",
+      "title_en": "Age of documented autism diagnosis",
+      "url_es": "../../es/datos/edad-del-diagnostico-de-autismo-documentado/",
+      "url_en": "/en/data/age-of-documented-autism-diagnosis/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-050",
+      "surface": "data",
+      "title_es": "Autismo y discapacidad intelectual en ADDM",
+      "title_en": "Autism and intellectual disability in ADDM",
+      "url_es": "../../es/datos/autismo-y-discapacidad-intelectual-en-addm/",
+      "url_en": "/en/data/autism-and-intellectual-disability-in-addm/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-051",
+      "surface": "data",
+      "title_es": "TDAH infantil",
+      "title_en": "Childhood ADHD",
+      "url_es": "../../es/datos/tdah-infantil/",
+      "url_en": "/en/data/childhood-adhd/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-052",
+      "surface": "data",
+      "title_es": "Autismo en la población",
+      "title_en": "Autism in the population",
+      "url_es": "../../es/datos/autismo-en-la-poblacion/",
+      "url_en": "/en/data/autism-in-the-population/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-053",
+      "surface": "data",
+      "title_es": "Necesidad de apoyo",
+      "title_en": "Support needs",
+      "url_es": "../../es/datos/necesidad-de-apoyo/",
+      "url_en": "/en/data/support-needs/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-054",
+      "surface": "data",
+      "title_es": "Educación y autismo",
+      "title_en": "Education and autism",
+      "url_es": "../../es/datos/educacion-y-autismo/",
+      "url_en": "/en/data/education-and-autism/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-055",
+      "surface": "data",
+      "title_es": "Empleo y autismo",
+      "title_en": "Employment and autism",
+      "url_es": "../../es/datos/empleo-y-autismo-australia/",
+      "url_en": "/en/data/employment-and-autism-australia/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult employment, income, higher-education or adult-service statistics.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-056",
+      "surface": "data",
+      "title_es": "Autismo en niños y jóvenes",
+      "title_en": "Autism in children and young people",
+      "url_es": "../../es/datos/autismo-en-ninos-y-jovenes/",
+      "url_en": "/en/data/autism-in-children-and-young-people/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-057",
+      "surface": "data",
+      "title_es": "Edad de diagnóstico",
+      "title_en": "Age at diagnosis",
+      "url_es": "../../es/datos/edad-de-diagnostico/",
+      "url_en": "/en/data/age-at-diagnosis/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-058",
+      "surface": "data",
+      "title_es": "Salud general y mental",
+      "title_en": "General and mental health",
+      "url_es": "../../es/datos/salud-general-y-mental/",
+      "url_en": "/en/data/general-and-mental-health/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-059",
+      "surface": "data",
+      "title_es": "Condiciones coexistentes y necesidades educativas",
+      "title_en": "Coexisting conditions and educational needs",
+      "url_es": "../../es/datos/condiciones-coexistentes-y-necesidades-educativas/",
+      "url_en": "/en/data/coexisting-conditions-and-educational-needs/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "data-060",
+      "surface": "data",
+      "title_es": "Cuatro cifras de autismo que no miden lo mismo",
+      "title_en": "Four autism figures that do not measure the same thing",
+      "url_es": "../../es/datos/cuatro-cifras-de-autismo-que-no-miden-lo-mismo/",
+      "url_en": "/en/data/four-autism-figures-that-do-not-measure-the-same-thing/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Statistical/epidemiological material for teenagers and adults; not 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}

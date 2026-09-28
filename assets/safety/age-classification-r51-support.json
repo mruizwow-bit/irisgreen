@@ -1,0 +1,3969 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "support_directory",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 262,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 0,
+      "AGE_18_PLUS": 262,
+      "ALL_AGES": 0
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 0,
+      "AGE_13_17": 0,
+      "AGE_18_PLUS": 262,
+      "ALL_AGES": 0
+    }
+  },
+  "records": [
+    {
+      "content_id": "support-es-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y PIA",
+      "title_en": "Reconocimiento de dependencia y PIA",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento del grado de discapacidad",
+      "title_en": "Reconocimiento del grado de discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-neae",
+      "surface": "support_directory",
+      "title_es": "Ayudas NEAE 2026-2027",
+      "title_en": "Ayudas NEAE 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-nacimiento-discapacidad-ampliacion",
+      "surface": "support_directory",
+      "title_es": "Ampliación del descanso por nacimiento o adopción de un menor con discapacidad",
+      "title_en": "Ampliación del descanso por nacimiento o adopción de un menor con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-nacimiento-1000",
+      "surface": "support_directory",
+      "title_es": "Pago único por nacimiento o adopción en determinados supuestos",
+      "title_en": "Pago único por nacimiento o adopción en determinados supuestos",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa",
+      "title_en": "Título de familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-irpf-numerosa",
+      "surface": "support_directory",
+      "title_es": "Deducción estatal por familia numerosa",
+      "title_en": "Deducción estatal por familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-maternidad-guarderia",
+      "surface": "support_directory",
+      "title_es": "Deducción por maternidad y gastos de guardería",
+      "title_en": "Deducción por maternidad y gastos de guardería",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-irpf-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Deducción por persona con discapacidad a cargo",
+      "title_en": "Deducción por persona con discapacidad a cargo",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-impuesto-matriculacion-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Exención o no sujeción del impuesto de matriculación por discapacidad",
+      "title_en": "Exención o no sujeción del impuesto de matriculación por discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-iva-vehiculo-discapacidad",
+      "surface": "support_directory",
+      "title_es": "IVA del 4 % para determinados vehículos de personas con discapacidad",
+      "title_en": "IVA del 4 % para determinados vehículos de personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-irpf-minimo-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Mínimo por discapacidad en el IRPF",
+      "title_en": "Mínimo por discapacidad en el IRPF",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-incapacidad-permanente-contributiva",
+      "surface": "support_directory",
+      "title_es": "Incapacidad permanente contributiva",
+      "title_en": "Incapacidad permanente contributiva",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-imv-cai",
+      "surface": "support_directory",
+      "title_es": "Ingreso Mínimo Vital y Complemento de Ayuda para la Infancia",
+      "title_en": "Ingreso Mínimo Vital y Complemento de Ayuda para la Infancia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-pnc-incapacidad-2026",
+      "surface": "support_directory",
+      "title_es": "Pensión no contributiva de incapacidad (PNC) 2026",
+      "title_en": "Pensión no contributiva de incapacidad (PNC) 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-hijo-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Prestación por hijo o menor con discapacidad",
+      "title_en": "Prestación por hijo o menor con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-pnc-alquiler-2026",
+      "surface": "support_directory",
+      "title_es": "Complemento de PNC por vivienda alquilada 2026",
+      "title_en": "Complemento de PNC por vivienda alquilada 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-vivienda-accesibilidad",
+      "surface": "support_directory",
+      "title_es": "Plan Estatal de Vivienda 2026-2030 · accesibilidad",
+      "title_en": "Plan Estatal de Vivienda 2026-2030 · accesibilidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-bono-social",
+      "surface": "support_directory",
+      "title_es": "Bono social eléctrico 2026",
+      "title_en": "Bono social eléctrico 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-bono-social-termico",
+      "surface": "support_directory",
+      "title_es": "Bono social térmico",
+      "title_en": "Bono social térmico",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-transporte-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Bonificaciones de transporte para familias numerosas",
+      "title_en": "Bonificaciones de transporte para familias numerosas",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-smgt-2026",
+      "surface": "support_directory",
+      "title_es": "Subsidio de movilidad y compensación por gastos de transporte (SMGT)",
+      "title_en": "Subsidio de movilidad y compensación por gastos de transporte (SMGT)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-tarjeta-estacionamiento",
+      "surface": "support_directory",
+      "title_es": "Tarjeta de estacionamiento para personas con discapacidad y movilidad reducida",
+      "title_en": "Tarjeta de estacionamiento para personas con discapacidad y movilidad reducida",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-salud-mental",
+      "surface": "support_directory",
+      "title_es": "Atención de salud mental infantil y adolescente en el SNS",
+      "title_en": "Atención de salud mental infantil y adolescente en el SNS",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-ortoprotesica-sns",
+      "surface": "support_directory",
+      "title_es": "Prestación ortoprotésica del Sistema Nacional de Salud",
+      "title_en": "Prestación ortoprotésica del Sistema Nacional de Salud",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-cume",
+      "surface": "support_directory",
+      "title_es": "Prestación por cuidado de menor con cáncer u otra enfermedad grave (CUME)",
+      "title_en": "Prestación por cuidado de menor con cáncer u otra enfermedad grave (CUME)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-empleo-ordinario-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Derechos y medidas de empleo ordinario para personas con discapacidad",
+      "title_en": "Derechos y medidas de empleo ordinario para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-oep-discapacidad-2026",
+      "surface": "support_directory",
+      "title_es": "Empleo público 2026: reserva de plazas para personas con discapacidad",
+      "title_en": "Empleo público 2026: reserva de plazas para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-universidad-discapacidad-matricula",
+      "surface": "support_directory",
+      "title_es": "Bonificación total de matrícula universitaria para estudiantes con discapacidad",
+      "title_en": "Bonificación total de matrícula universitaria para estudiantes con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-lgtbi-rectificacion-registro",
+      "surface": "support_directory",
+      "title_es": "Rectificación registral de la mención relativa al sexo y adecuación de documentos",
+      "title_en": "Rectificación registral de la mención relativa al sexo y adecuación de documentos",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-lgtbi-028",
+      "surface": "support_directory",
+      "title_es": "Servicio Arcoíris 028: información, apoyo psicosocial y asesoramiento jurídico",
+      "title_en": "Servicio Arcoíris 028: información, apoyo psicosocial y asesoramiento jurídico",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de la situación de dependencia y acceso al PIA",
+      "title_en": "Reconocimiento de la situación de dependencia y acceso al PIA",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-discapacidad-individual",
+      "surface": "support_directory",
+      "title_es": "Subvenciones individuales para personas con discapacidad",
+      "title_en": "Subvenciones individuales para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-comedor",
+      "surface": "support_directory",
+      "title_es": "Bonificación de comedor, aula matinal y extraescolares",
+      "title_en": "Bonificación de comedor, aula matinal y extraescolares",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-libros",
+      "surface": "support_directory",
+      "title_es": "Programa de Gratuidad de Libros de Texto",
+      "title_en": "Programa de Gratuidad de Libros de Texto",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Infantil Temprana 0-6",
+      "title_en": "Atención Infantil Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-familias",
+      "surface": "support_directory",
+      "title_es": "Ayudas por tercer hijo y parto múltiple",
+      "title_en": "Ayudas por tercer hijo y parto múltiple",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Andalucía",
+      "title_en": "Título de familia numerosa de Andalucía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-monoparental",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental de Andalucía",
+      "title_en": "Título de familia monoparental de Andalucía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-rmisa",
+      "surface": "support_directory",
+      "title_es": "Renta Mínima de Inserción Social en Andalucía",
+      "title_en": "Renta Mínima de Inserción Social en Andalucía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas al alquiler de vivienda",
+      "title_en": "Ayudas al alquiler de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas individualizadas para transporte escolar",
+      "title_en": "Ayudas individualizadas para transporte escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-infantil-03",
+      "surface": "support_directory",
+      "title_es": "Ayudas a las familias para escolarización de 0 a 3 años",
+      "title_en": "Ayudas a las familias para escolarización de 0 a 3 años",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-and-universidad-99",
+      "surface": "support_directory",
+      "title_es": "Bonificación del 99 % de créditos universitarios aprobados",
+      "title_en": "Bonificación del 99 % de créditos universitarios aprobados",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-disc-dep-individual",
+      "surface": "support_directory",
+      "title_es": "Ayudas individuales por discapacidad o dependencia",
+      "title_en": "Ayudas individuales por discapacidad o dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-comedor",
+      "surface": "support_directory",
+      "title_es": "Becas de comedor escolar 2026-2027",
+      "title_en": "Becas de comedor escolar 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-material",
+      "surface": "support_directory",
+      "title_es": "Ayudas para material curricular 2026-2027",
+      "title_en": "Ayudas para material curricular 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-temprana-espera",
+      "surface": "support_directory",
+      "title_es": "Ayuda privada mientras se espera plaza de Atención Temprana",
+      "title_en": "Ayuda privada mientras se espera plaza de Atención Temprana",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Aragón",
+      "title_en": "Título de familia numerosa de Aragón",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-monoparental",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental de Aragón",
+      "title_en": "Título de familia monoparental de Aragón",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-pacimv",
+      "surface": "support_directory",
+      "title_es": "Prestación Aragonesa Complementaria del Ingreso Mínimo Vital",
+      "title_en": "Prestación Aragonesa Complementaria del Ingreso Mínimo Vital",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-vivienda-ayudas",
+      "surface": "support_directory",
+      "title_es": "Ayudas y subvenciones de vivienda en Aragón",
+      "title_en": "Ayudas y subvenciones de vivienda en Aragón",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-transporte-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas individualizadas de transporte y comedor escolar",
+      "title_en": "Ayudas individualizadas de transporte y comedor escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ara-infantil-publica",
+      "surface": "support_directory",
+      "title_es": "Plaza en la red pública de escuelas infantiles 0-3",
+      "title_en": "Plaza en la red pública de escuelas infantiles 0-3",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-productos",
+      "surface": "support_directory",
+      "title_es": "Ayudas para productos de apoyo",
+      "title_en": "Ayudas para productos de apoyo",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y derecho a prestaciones del SAAD",
+      "title_en": "Reconocimiento de dependencia y derecho a prestaciones del SAAD",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-cuidados-entorno",
+      "surface": "support_directory",
+      "title_es": "Prestación para cuidados en el entorno familiar",
+      "title_en": "Prestación para cuidados en el entorno familiar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-libros-prestamo-2026-27",
+      "surface": "support_directory",
+      "title_es": "Préstamo de libros de texto 2026-2027",
+      "title_en": "Préstamo de libros de texto 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Infantil Temprana 0-6",
+      "title_en": "Atención Infantil Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-monoparental",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de familia monoparental en Asturias",
+      "title_en": "Reconocimiento de familia monoparental en Asturias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Asturias",
+      "title_en": "Título de familia numerosa de Asturias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-salario-social",
+      "surface": "support_directory",
+      "title_es": "Salario Social Básico",
+      "title_en": "Salario Social Básico",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-complemento-vital",
+      "surface": "support_directory",
+      "title_es": "Complemento vital por dependencia o discapacidad",
+      "title_en": "Complemento vital por dependencia o discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas directas al alquiler de vivienda",
+      "title_en": "Ayudas directas al alquiler de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-concilia-03",
+      "surface": "support_directory",
+      "title_es": "Ayuda Concilia 0 a 3 años 2026",
+      "title_en": "Ayuda Concilia 0 a 3 años 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ast-concilia-cuidados",
+      "surface": "support_directory",
+      "title_es": "Ayuda 2026 para gastos de cuidado de menores hasta 12 años",
+      "title_en": "Ayuda 2026 para gastos de cuidado de menores hasta 12 años",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mallorca-ayudas-discapacidad-2026",
+      "surface": "support_directory",
+      "title_es": "Mallorca: ayudas económicas para personas con discapacidad 2026",
+      "title_en": "Mallorca: ayudas económicas para personas con discapacidad 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eivissa-prestaciones-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Eivissa: prestaciones económicas para personas con discapacidad",
+      "title_en": "Eivissa: prestaciones económicas para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mallorca-ayudas-mayores-autonomia-2026",
+      "surface": "support_directory",
+      "title_es": "Mallorca: ayudas 2026 para autonomía de personas mayores",
+      "title_en": "Mallorca: ayudas 2026 para autonomía de personas mayores",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-formentera-dependencia-pia",
+      "surface": "support_directory",
+      "title_es": "Formentera: orientación, valoración y PIA de dependencia",
+      "title_en": "Formentera: orientación, valoración y PIA de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-menorca-ayudas-individuales-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Menorca: ayudas individuales para necesidades sociosanitarias por discapacidad",
+      "title_en": "Menorca: ayudas individuales para necesidades sociosanitarias por discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-dependencia",
+      "surface": "support_directory",
+      "title_es": "Derecho a prestaciones y servicios de dependencia",
+      "title_en": "Derecho a prestaciones y servicios de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento del grado de discapacidad en Illes Balears",
+      "title_en": "Reconocimiento del grado de discapacidad en Illes Balears",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-alimentacion",
+      "surface": "support_directory",
+      "title_es": "Ayuda de alimentación si el instituto no tiene comedor",
+      "title_en": "Ayuda de alimentación si el instituto no tiene comedor",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas de comedor 2026-2027",
+      "title_en": "Ayudas de comedor 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-temprana",
+      "surface": "support_directory",
+      "title_es": "Servei d'Atenció Primerenca 0-6",
+      "title_en": "Servei d'Atenció Primerenca 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-formentera-tarjeta-nado-multiple",
+      "surface": "support_directory",
+      "title_es": "Formentera: Tarjeta Nadó para partos o adopciones múltiples",
+      "title_en": "Formentera: Tarjeta Nadó para partos o adopciones múltiples",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa en Illes Balears",
+      "title_en": "Título de familia numerosa en Illes Balears",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-formentera-emergencia-social",
+      "surface": "support_directory",
+      "title_es": "Formentera: bonos y ayudas de emergencia social",
+      "title_en": "Formentera: bonos y ayudas de emergencia social",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-renta-social",
+      "surface": "support_directory",
+      "title_es": "Renta Social Garantizada de Illes Balears",
+      "title_en": "Renta Social Garantizada de Illes Balears",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mallorca-vivienda-discapacidad-2026",
+      "surface": "support_directory",
+      "title_es": "Mallorca: Plan de Acceso a la Vivienda para Personas con Discapacidad",
+      "title_en": "Mallorca: Plan de Acceso a la Vivienda para Personas con Discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas autonómicas a la vivienda y al alquiler",
+      "title_en": "Ayudas autonómicas a la vivienda y al alquiler",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-formentera-tarjeta-aparcamiento",
+      "surface": "support_directory",
+      "title_es": "Formentera: tarjeta de estacionamiento para movilidad reducida",
+      "title_en": "Formentera: tarjeta de estacionamiento para movilidad reducida",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-menorca-tjove-transporte",
+      "surface": "support_directory",
+      "title_es": "Menorca: tarjeta TJOVE y descuentos de familia numerosa",
+      "title_en": "Menorca: tarjeta TJOVE y descuentos de familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Servicio de transporte escolar de Illes Balears",
+      "title_en": "Servicio de transporte escolar de Illes Balears",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-formentera-sad-teleasistencia",
+      "surface": "support_directory",
+      "title_es": "Formentera: ayuda a domicilio y teleasistencia",
+      "title_en": "Formentera: ayuda a domicilio y teleasistencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bal-conciliacion",
+      "surface": "support_directory",
+      "title_es": "Ayudas para conciliación de la vida personal, laboral y familiar",
+      "title_en": "Ayudas para conciliación de la vida personal, laboral y familiar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eivissa-empleo-apoyo-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Eivissa: orientación y empleo con apoyo para personas con discapacidad",
+      "title_en": "Eivissa: orientación y empleo con apoyo para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-la-palma-autonomia-discapacidad-dependencia",
+      "surface": "support_directory",
+      "title_es": "La Palma: ayudas para autonomía, ayudas técnicas y adaptación de vivienda",
+      "title_en": "La Palma: ayudas para autonomía, ayudas técnicas y adaptación de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-dependencia-prestaciones",
+      "surface": "support_directory",
+      "title_es": "Prestaciones económicas de dependencia en Canarias",
+      "title_en": "Prestaciones económicas de dependencia en Canarias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-tenerife-cheque-guarderia-2026",
+      "surface": "support_directory",
+      "title_es": "Tenerife: Cheque Guardería 2026-2027",
+      "title_en": "Tenerife: Cheque Guardería 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-grancanaria-inmersion-ingles-2026",
+      "surface": "support_directory",
+      "title_es": "Gran Canaria: 63 becas de inmersión lingüística para 4.º de ESO · 2026",
+      "title_en": "Gran Canaria: 63 becas de inmersión lingüística para 4.º de ESO · 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-neae-2026",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: becas insulares NEAE 2026",
+      "title_en": "Fuerteventura: becas insulares NEAE 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-becas-educacion",
+      "surface": "support_directory",
+      "title_es": "Becas y ayudas del Gobierno de Canarias para alumnado y familias",
+      "title_en": "Becas y ayudas del Gobierno de Canarias para alumnado y familias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-libros",
+      "surface": "support_directory",
+      "title_es": "Libros y material escolar 2026-2027",
+      "title_en": "Libros y material escolar 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento y título de familia numerosa en Canarias",
+      "title_en": "Reconocimiento y título de familia numerosa en Canarias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-renta-ciudadania",
+      "surface": "support_directory",
+      "title_es": "Renta Canaria de Ciudadanía",
+      "title_en": "Renta Canaria de Ciudadanía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-tenerife-transporte-estudios-2026",
+      "surface": "support_directory",
+      "title_es": "Tenerife: ayuda al transporte para estudios fuera de la isla 2026-2027",
+      "title_en": "Tenerife: ayuda al transporte para estudios fuera de la isla 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-transporte-estudiante",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: bono de transporte para estudiantes",
+      "title_en": "Fuerteventura: bono de transporte para estudiantes",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-transporte-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: bono social de transporte por discapacidad",
+      "title_en": "Fuerteventura: bono social de transporte por discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-transporte-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: descuentos de transporte para familia numerosa",
+      "title_en": "Fuerteventura: descuentos de transporte para familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-carne-bienestar-naviera",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: carné de Bienestar Social y Juventud para transporte marítimo",
+      "title_en": "Fuerteventura: carné de Bienestar Social y Juventud para transporte marítimo",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-lanzarote-transporte-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Lanzarote: descuento de transporte para personas con discapacidad",
+      "title_en": "Lanzarote: descuento de transporte para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-lanzarote-transporte-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Lanzarote: bono de transporte para familia numerosa",
+      "title_en": "Lanzarote: bono de transporte para familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-la-palma-bono-residente-discapacidad",
+      "surface": "support_directory",
+      "title_es": "La Palma: Bono Residente Canario para personas con discapacidad",
+      "title_en": "La Palma: Bono Residente Canario para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-el-hierro-becas-transporte-2026-27",
+      "surface": "support_directory",
+      "title_es": "El Hierro: becas de transporte para estudiantes 2026-2027",
+      "title_en": "El Hierro: becas de transporte para estudiantes 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-el-hierro-bono-especial-transporte",
+      "surface": "support_directory",
+      "title_es": "El Hierro: Bono Residente Canario especial",
+      "title_en": "El Hierro: Bono Residente Canario especial",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas individualizadas al transporte escolar",
+      "title_en": "Ayudas individualizadas al transporte escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-la-gomera-ayudas-sanitarias-extraordinarias-2026",
+      "surface": "support_directory",
+      "title_es": "La Gomera: ayudas sanitarias y extraordinarias 2026",
+      "title_en": "La Gomera: ayudas sanitarias y extraordinarias 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-el-hierro-servicio-atencion-domiciliaria",
+      "surface": "support_directory",
+      "title_es": "El Hierro: Servicio de Atención Domiciliaria",
+      "title_en": "El Hierro: Servicio de Atención Domiciliaria",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-bono-infantil",
+      "surface": "support_directory",
+      "title_es": "Bono Infantil para escolarización de 0 a 3 años",
+      "title_en": "Bono Infantil para escolarización de 0 a 3 años",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-tenerife-becas-universidad-2026",
+      "surface": "support_directory",
+      "title_es": "Tenerife: becas universitarias 2026-2027",
+      "title_en": "Tenerife: becas universitarias 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-grancanaria-becas-postobligatorios-2026",
+      "surface": "support_directory",
+      "title_es": "Gran Canaria: becas del Cabildo para estudios postobligatorios 2025-2026",
+      "title_en": "Gran Canaria: becas del Cabildo para estudios postobligatorios 2025-2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-fuerteventura-becas-estudios-isla-2026-27",
+      "surface": "support_directory",
+      "title_es": "Fuerteventura: becas para estudios oficiales en la isla 2026-2027",
+      "title_en": "Fuerteventura: becas para estudios oficiales en la isla 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-la-palma-becas-estudio-2025-26",
+      "surface": "support_directory",
+      "title_es": "La Palma: becas al estudio para el curso 2025-2026",
+      "title_en": "La Palma: becas al estudio para el curso 2025-2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-la-gomera-becas-estudio-transporte-alquiler-2025-26",
+      "surface": "support_directory",
+      "title_es": "La Gomera: becas de estudio, transporte y alquiler para estudiantes",
+      "title_en": "La Gomera: becas de estudio, transporte y alquiler para estudiantes",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-can-universidad-becas",
+      "surface": "support_directory",
+      "title_es": "Becas universitarias del Gobierno de Canarias",
+      "title_en": "Becas universitarias del Gobierno de Canarias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y acceso a prestaciones",
+      "title_en": "Reconocimiento de dependencia y acceso a prestaciones",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-libros",
+      "surface": "support_directory",
+      "title_es": "Banco de Recursos Educativos",
+      "title_en": "Banco de Recursos Educativos",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-mono",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental",
+      "title_en": "Título de familia monoparental",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Cantabria",
+      "title_en": "Título de familia numerosa de Cantabria",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-renta-social",
+      "surface": "support_directory",
+      "title_es": "Renta Social Básica de Cantabria",
+      "title_en": "Renta Social Básica de Cantabria",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas al pago del alquiler de vivienda",
+      "title_en": "Ayudas al pago del alquiler de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-vivienda-protegida",
+      "surface": "support_directory",
+      "title_es": "Programas autonómicos de vivienda protegida y acceso residencial",
+      "title_en": "Programas autonómicos de vivienda protegida y acceso residencial",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cant-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Transporte escolar y ayudas asociadas",
+      "title_en": "Transporte escolar y ayudas asociadas",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y derecho a prestaciones",
+      "title_en": "Reconocimiento de dependencia y derecho a prestaciones",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-dep-economicas",
+      "surface": "support_directory",
+      "title_es": "Prestaciones económicas del sistema de dependencia",
+      "title_en": "Prestaciones económicas del sistema de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas de comedor y libros 2026-2027",
+      "title_en": "Ayudas de comedor y libros 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-becas-ayudas",
+      "surface": "support_directory",
+      "title_es": "Portal de becas y ayudas educativas de Castilla-La Mancha",
+      "title_en": "Portal de becas y ayudas educativas de Castilla-La Mancha",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-numerosa",
+      "surface": "support_directory",
+      "title_es": "Ayuda económica autonómica a familias numerosas",
+      "title_en": "Ayuda económica autonómica a familias numerosas",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-prestaciones-sociales",
+      "surface": "support_directory",
+      "title_es": "Prestaciones económicas del sistema público de servicios sociales",
+      "title_en": "Prestaciones económicas del sistema público de servicios sociales",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-alquiler-2026",
+      "surface": "support_directory",
+      "title_es": "Ayudas al alquiler de vivienda · convocatoria 2026",
+      "title_en": "Ayudas al alquiler de vivienda · convocatoria 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-clm-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas individuales de transporte escolar",
+      "title_en": "Ayudas individuales de transporte escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y prestaciones",
+      "title_en": "Reconocimiento de dependencia y prestaciones",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas de comedor escolar",
+      "title_en": "Ayudas de comedor escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-releo",
+      "surface": "support_directory",
+      "title_es": "RELEO PLUS 2026-2027",
+      "title_en": "RELEO PLUS 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Castilla y León",
+      "title_en": "Título de familia numerosa de Castilla y León",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-renta-garantizada",
+      "surface": "support_directory",
+      "title_es": "Renta Garantizada de Ciudadanía",
+      "title_en": "Renta Garantizada de Ciudadanía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-vivienda",
+      "surface": "support_directory",
+      "title_es": "Ayudas de vivienda y alquiler de Castilla y León",
+      "title_en": "Ayudas de vivienda y alquiler de Castilla y León",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cyl-conciliacion",
+      "surface": "support_directory",
+      "title_es": "Ayudas autonómicas de conciliación familiar",
+      "title_en": "Ayudas autonómicas de conciliación familiar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-pua",
+      "surface": "support_directory",
+      "title_es": "PUA · Prestación de atención social a personas con discapacidad",
+      "title_en": "PUA · Prestación de atención social a personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de la situación de dependencia",
+      "title_en": "Reconocimiento de la situación de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas individuales de comedor escolar",
+      "title_en": "Ayudas individuales de comedor escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-motxilles",
+      "surface": "support_directory",
+      "title_es": "Motxilles escolars",
+      "title_en": "Motxilles escolars",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-cdiap",
+      "surface": "support_directory",
+      "title_es": "CDIAP · Atención temprana 0-6",
+      "title_en": "CDIAP · Atención temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Cataluña",
+      "title_en": "Título de familia numerosa de Cataluña",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-monoparental",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental de Cataluña",
+      "title_en": "Título de familia monoparental de Cataluña",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-nacimiento-2026",
+      "surface": "support_directory",
+      "title_es": "Prestación 2026 para familias con hijos por nacimiento, adopción, tutela o acogimiento",
+      "title_en": "Prestación 2026 para familias con hijos por nacimiento, adopción, tutela o acogimiento",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-rgc",
+      "surface": "support_directory",
+      "title_es": "Renta Garantizada de Ciudadanía",
+      "title_en": "Renta Garantizada de Ciudadanía",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-alquiler-2026",
+      "surface": "support_directory",
+      "title_es": "Subvenciones 2026 para el pago del alquiler o cesión de uso",
+      "title_en": "Subvenciones 2026 para el pago del alquiler o cesión de uso",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-cat-equitat-2627",
+      "surface": "support_directory",
+      "title_es": "Becas Equidad 2026-2027",
+      "title_en": "Becas Equidad 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y acceso a prestaciones",
+      "title_en": "Reconocimiento de dependencia y acceso a prestaciones",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas de comedor 2026-2027",
+      "title_en": "Ayudas de comedor 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-libros",
+      "surface": "support_directory",
+      "title_es": "Banco de Libros 2026-2027",
+      "title_en": "Banco de Libros 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-monoparental",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental de la Comunitat Valenciana",
+      "title_en": "Título de familia monoparental de la Comunitat Valenciana",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-renta-inclusion",
+      "surface": "support_directory",
+      "title_es": "Renta Valenciana de Inclusión",
+      "title_en": "Renta Valenciana de Inclusión",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-vivienda",
+      "surface": "support_directory",
+      "title_es": "Ayudas y programas de vivienda de la Generalitat",
+      "title_en": "Ayudas y programas de vivienda de la Generalitat",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas individuales de transporte escolar 2026-2027",
+      "title_en": "Ayudas individuales de transporte escolar 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-copago",
+      "surface": "support_directory",
+      "title_es": "Ayudas al copago farmacéutico y productos sanitarios",
+      "title_en": "Ayudas al copago farmacéutico y productos sanitarios",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-val-infantil-03",
+      "surface": "support_directory",
+      "title_es": "Ayudas para escolarización de 0 a 3 años",
+      "title_en": "Ayudas para escolarización de 0 a 3 años",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de dependencia y acceso a prestaciones",
+      "title_en": "Reconocimiento de dependencia y acceso a prestaciones",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-familia-dep-disc",
+      "surface": "support_directory",
+      "title_es": "Recursos para familias con una persona dependiente o con discapacidad",
+      "title_en": "Recursos para familias con una persona dependiente o con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-03",
+      "surface": "support_directory",
+      "title_es": "Ayudas de escolarización 0-3 2026-2027",
+      "title_en": "Ayudas de escolarización 0-3 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-becas",
+      "surface": "support_directory",
+      "title_es": "Becas y ayudas educativas de Extremadura",
+      "title_en": "Becas y ayudas educativas de Extremadura",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-libros",
+      "surface": "support_directory",
+      "title_es": "Préstamo gratuito de libros y material 2026-2027",
+      "title_en": "Préstamo gratuito de libros y material 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Extremadura",
+      "title_en": "Título de familia numerosa de Extremadura",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-renta-garantizada",
+      "surface": "support_directory",
+      "title_es": "Renta Extremeña Garantizada",
+      "title_en": "Renta Extremeña Garantizada",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ext-vivienda",
+      "surface": "support_directory",
+      "title_es": "Ayudas y programas de vivienda de Extremadura",
+      "title_en": "Ayudas y programas de vivienda de Extremadura",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-dependencia-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento conjunto de dependencia y discapacidad",
+      "title_en": "Reconocimiento conjunto de dependencia y discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-comedor",
+      "surface": "support_directory",
+      "title_es": "Comedores escolares",
+      "title_en": "Comedores escolares",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-03",
+      "surface": "support_directory",
+      "title_es": "Gratuidad de escuelas infantiles 0-3",
+      "title_en": "Gratuidad de escuelas infantiles 0-3",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-libros",
+      "surface": "support_directory",
+      "title_es": "Fondo solidario y ayudas para libros/material 2026-2027",
+      "title_en": "Fondo solidario y ayudas para libros/material 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa y Carné Familiar Galego",
+      "title_en": "Título de familia numerosa y Carné Familiar Galego",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-monoparental",
+      "surface": "support_directory",
+      "title_es": "Certificado de familia monoparental",
+      "title_en": "Certificado de familia monoparental",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-tarxeta-benvida-2026",
+      "surface": "support_directory",
+      "title_es": "Tarxeta Benvida · apoyo a la natalidad 2026",
+      "title_en": "Tarxeta Benvida · apoyo a la natalidad 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-risga",
+      "surface": "support_directory",
+      "title_es": "Renta de Inclusión Social de Galicia (RISGA)",
+      "title_en": "Renta de Inclusión Social de Galicia (RISGA)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-bono-alquiler-social",
+      "surface": "support_directory",
+      "title_es": "Bono de alquiler social 2022-2026",
+      "title_en": "Bono de alquiler social 2022-2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gal-movilidad-apoyo",
+      "surface": "support_directory",
+      "title_es": "Servicio Gallego de Apoyo a la Movilidad Personal",
+      "title_en": "Servicio Gallego de Apoyo a la Movilidad Personal",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de la situación de dependencia",
+      "title_en": "Reconocimiento de la situación de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-infantil",
+      "surface": "support_directory",
+      "title_es": "Becas de Educación Infantil 0-3 2026-2027",
+      "title_en": "Becas de Educación Infantil 0-3 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-comedor",
+      "surface": "support_directory",
+      "title_es": "Becas de comedor escolar 2026-2027",
+      "title_en": "Becas de comedor escolar 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-accede",
+      "surface": "support_directory",
+      "title_es": "Programa ACCEDE",
+      "title_en": "Programa ACCEDE",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana pública 0-6",
+      "title_en": "Atención Temprana pública 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de la Comunidad de Madrid",
+      "title_en": "Título de familia numerosa de la Comunidad de Madrid",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-rmi",
+      "surface": "support_directory",
+      "title_es": "Renta Mínima de Inserción",
+      "title_en": "Renta Mínima de Inserción",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas al alquiler de vivienda",
+      "title_en": "Ayudas al alquiler de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-madrid-agua-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Madrid: bonificación del agua para familia o vivienda numerosa",
+      "title_en": "Madrid: bonificación del agua para familia o vivienda numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-madrid-agua-exencion-social",
+      "surface": "support_directory",
+      "title_es": "Madrid: bonificación por exención social en la factura del agua",
+      "title_en": "Madrid: bonificación por exención social en la factura del agua",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mad-transporte-escolar",
+      "surface": "support_directory",
+      "title_es": "Ayudas individualizadas de transporte escolar",
+      "title_en": "Ayudas individualizadas de transporte escolar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-dependencia",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de la situación de dependencia",
+      "title_en": "Reconocimiento de la situación de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas asistenciales de comedor 2026-2027",
+      "title_en": "Ayudas asistenciales de comedor 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6",
+      "title_en": "Atención Temprana 0-6",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-2500",
+      "surface": "support_directory",
+      "title_es": "Ayuda familiar de hasta 2.500 €",
+      "title_en": "Ayuda familiar de hasta 2.500 €",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-monoparental",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de familia monoparental",
+      "title_en": "Reconocimiento de familia monoparental",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de la Región de Murcia",
+      "title_en": "Título de familia numerosa de la Región de Murcia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-familias-especiales",
+      "surface": "support_directory",
+      "title_es": "Ayudas a familias en situaciones especiales",
+      "title_en": "Ayudas a familias en situaciones especiales",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-renta-basica",
+      "surface": "support_directory",
+      "title_es": "Renta Básica de Inserción",
+      "title_en": "Renta Básica de Inserción",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mur-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas al alquiler de vivienda",
+      "title_en": "Ayudas al alquiler de vivienda",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-dependencia-valoracion",
+      "surface": "support_directory",
+      "title_es": "Valoración y reconocimiento de la dependencia",
+      "title_en": "Valoración y reconocimiento de la dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-libros",
+      "surface": "support_directory",
+      "title_es": "Programa de Gratuidad de Libros de Texto",
+      "title_en": "Programa de Gratuidad de Libros de Texto",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-temprana",
+      "surface": "support_directory",
+      "title_es": "Centro de Atención Temprana",
+      "title_en": "Centro de Atención Temprana",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de Navarra",
+      "title_en": "Título de familia numerosa de Navarra",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-monoparental",
+      "surface": "support_directory",
+      "title_es": "Acreditación de familia monoparental",
+      "title_en": "Acreditación de familia monoparental",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-renta-garantizada",
+      "surface": "support_directory",
+      "title_es": "Renta Garantizada de Navarra",
+      "title_en": "Renta Garantizada de Navarra",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-vivienda",
+      "surface": "support_directory",
+      "title_es": "Apoyos de vivienda para personas y familias vulnerables",
+      "title_en": "Apoyos de vivienda para personas y familias vulnerables",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-transporte-dep",
+      "surface": "support_directory",
+      "title_es": "Transporte adaptado y asistido para personas con dependencia",
+      "title_en": "Transporte adaptado y asistido para personas con dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-transporte-disc",
+      "surface": "support_directory",
+      "title_es": "Transporte adaptado y asistido para personas con discapacidad",
+      "title_en": "Transporte adaptado y asistido para personas con discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-transporte-escolar-2627",
+      "surface": "support_directory",
+      "title_es": "Ayudas individualizadas de transporte escolar 2026-2027",
+      "title_en": "Ayudas individualizadas de transporte escolar 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-protesis",
+      "surface": "support_directory",
+      "title_es": "Ayudas para gafas, audífonos y ortodoncia",
+      "title_en": "Ayudas para gafas, audífonos y ortodoncia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-concilia-mono-2026",
+      "surface": "support_directory",
+      "title_es": "Ayuda 2026 de conciliación para familias monoparentales",
+      "title_en": "Ayuda 2026 de conciliación para familias monoparentales",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-nav-universidad",
+      "surface": "support_directory",
+      "title_es": "Becas y ayudas universitarias de Navarra",
+      "title_en": "Becas y ayudas universitarias de Navarra",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gipuzkoa-valoracion-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Gipuzkoa: valoración y reconocimiento de discapacidad",
+      "title_en": "Gipuzkoa: valoración y reconocimiento de discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bizkaia-dependencia-valoracion",
+      "surface": "support_directory",
+      "title_es": "Bizkaia: valoración de la dependencia",
+      "title_en": "Bizkaia: valoración de la dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gipuzkoa-dependencia-valoracion",
+      "surface": "support_directory",
+      "title_es": "Gipuzkoa: valoración de la dependencia (BVD)",
+      "title_en": "Gipuzkoa: valoración de la dependencia (BVD)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-alava-dependencia-valoracion",
+      "surface": "support_directory",
+      "title_es": "Álava: valoración y reconocimiento de la dependencia",
+      "title_en": "Álava: valoración y reconocimiento de la dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-pv-becas",
+      "surface": "support_directory",
+      "title_es": "Becas no universitarias 2026-2027",
+      "title_en": "Becas no universitarias 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-pv-hijos",
+      "surface": "support_directory",
+      "title_es": "Ayudas mensuales a la crianza",
+      "title_en": "Ayudas mensuales a la crianza",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-monoparental",
+      "surface": "support_directory",
+      "title_es": "Reconocimiento de la condición de familia monoparental",
+      "title_en": "Reconocimiento de la condición de familia monoparental",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Familia numerosa en Euskadi",
+      "title_en": "Familia numerosa en Euskadi",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bizkaia-irpf-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Bizkaia: deducción de IRPF por discapacidad",
+      "title_en": "Bizkaia: deducción de IRPF por discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-gipuzkoa-irpf-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Gipuzkoa: deducción de IRPF por discapacidad o dependencia",
+      "title_en": "Gipuzkoa: deducción de IRPF por discapacidad o dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-rgi",
+      "surface": "support_directory",
+      "title_es": "Renta de Garantía de Ingresos (RGI)",
+      "title_en": "Renta de Garantía de Ingresos (RGI)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bizkaia-irpf-alquiler-colectivos",
+      "surface": "support_directory",
+      "title_es": "Bizkaia: deducción reforzada por alquiler de vivienda habitual",
+      "title_en": "Bizkaia: deducción reforzada por alquiler de vivienda habitual",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-alava-irpf-alquiler-colectivos",
+      "surface": "support_directory",
+      "title_es": "Álava: deducción reforzada por alquiler de vivienda habitual",
+      "title_en": "Álava: deducción reforzada por alquiler de vivienda habitual",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-alava-irpf-compra-vivienda-colectivos",
+      "surface": "support_directory",
+      "title_es": "Álava: deducción reforzada por compra de vivienda habitual",
+      "title_en": "Álava: deducción reforzada por compra de vivienda habitual",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-gaztelagun",
+      "surface": "support_directory",
+      "title_es": "Gaztelagun · ayuda al alquiler para jóvenes",
+      "title_en": "Gaztelagun · ayuda al alquiler para jóvenes",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-emantzipa",
+      "surface": "support_directory",
+      "title_es": "Programa Emantzipa para emancipación juvenil",
+      "title_en": "Programa Emantzipa para emancipación juvenil",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-pv-conciliacion",
+      "surface": "support_directory",
+      "title_es": "Ayudas de conciliación 2026",
+      "title_en": "Ayudas de conciliación 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-bizkaia-irpf-cuidados",
+      "surface": "support_directory",
+      "title_es": "Bizkaia: deducción por contratar cuidado de menores o personas dependientes",
+      "title_en": "Bizkaia: deducción por contratar cuidado de menores o personas dependientes",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-eus-universidad-2627",
+      "surface": "support_directory",
+      "title_es": "Becas universitarias 2026-2027",
+      "title_en": "Becas universitarias 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-dependencia",
+      "surface": "support_directory",
+      "title_es": "Prestaciones económicas por situación de dependencia",
+      "title_en": "Prestaciones económicas por situación de dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-comedor",
+      "surface": "support_directory",
+      "title_es": "Ayudas de comedor 2026-2027",
+      "title_en": "Ayudas de comedor 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-libros",
+      "surface": "support_directory",
+      "title_es": "Ayudas para libros de texto 2026-2027",
+      "title_en": "Ayudas para libros de texto 2026-2027",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-temprana",
+      "surface": "support_directory",
+      "title_es": "Atención Temprana 0-6 · UDIAT",
+      "title_en": "Atención Temprana 0-6 · UDIAT",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-monoparental",
+      "surface": "support_directory",
+      "title_es": "Título de familia monoparental de La Rioja",
+      "title_en": "Título de familia monoparental de La Rioja",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-familia-numerosa",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa de La Rioja",
+      "title_en": "Título de familia numerosa de La Rioja",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-alquiler",
+      "surface": "support_directory",
+      "title_es": "Ayudas autonómicas de vivienda y alquiler",
+      "title_en": "Ayudas autonómicas de vivienda y alquiler",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-bono-joven",
+      "surface": "support_directory",
+      "title_es": "Ayuda joven al alquiler",
+      "title_en": "Ayuda joven al alquiler",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-transporte-descuentos",
+      "surface": "support_directory",
+      "title_es": "Carnés y descuentos de transporte por situación personal o familiar",
+      "title_en": "Carnés y descuentos de transporte por situación personal o familiar",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-rio-universidad",
+      "surface": "support_directory",
+      "title_es": "Becas, ayudas y subvenciones universitarias",
+      "title_en": "Becas, ayudas y subvenciones universitarias",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-libros",
+      "surface": "support_directory",
+      "title_es": "Gratuidad y reposición de libros y material didáctico",
+      "title_en": "Gratuidad y reposición de libros y material didáctico",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-familia",
+      "surface": "support_directory",
+      "title_es": "Título de familia numerosa",
+      "title_en": "Título de familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-apoyo-familiar-2026",
+      "surface": "support_directory",
+      "title_es": "Ayudas 2026 de apoyo familiar y conciliación",
+      "title_en": "Ayudas 2026 de apoyo familiar y conciliación",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-adaptacion-vivienda",
+      "surface": "support_directory",
+      "title_es": "Ayudas para adaptación de vivienda por discapacidad o dependencia",
+      "title_en": "Ayudas para adaptación de vivienda por discapacidad o dependencia",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-bono-alquiler-joven",
+      "surface": "support_directory",
+      "title_es": "Bono Alquiler Joven 2026",
+      "title_en": "Bono Alquiler Joven 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-ayuda-domicilio",
+      "surface": "support_directory",
+      "title_es": "Servicio de ayuda a domicilio",
+      "title_en": "Servicio de ayuda a domicilio",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-ceu-teleasistencia",
+      "surface": "support_directory",
+      "title_es": "Servicio de teleasistencia domiciliaria",
+      "title_en": "Servicio de teleasistencia domiciliaria",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-eso",
+      "surface": "support_directory",
+      "title_es": "Ayuda 2026-2027 para libros, material y transporte en ESO",
+      "title_en": "Ayuda 2026-2027 para libros, material y transporte en ESO",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-familia",
+      "surface": "support_directory",
+      "title_es": "Beneficios de familia numerosa",
+      "title_en": "Beneficios de familia numerosa",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-imi",
+      "surface": "support_directory",
+      "title_es": "Ingreso Melillense de Integración (IMI)",
+      "title_en": "Ingreso Melillense de Integración (IMI)",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-alquiler-2026",
+      "surface": "support_directory",
+      "title_es": "Ayudas al alquiler de vivienda privada 2026",
+      "title_en": "Ayudas al alquiler de vivienda privada 2026",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-universidad-2026",
+      "surface": "support_directory",
+      "title_es": "Ayudas 2026 para matrícula universitaria",
+      "title_en": "Ayudas 2026 para matrícula universitaria",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-mel-master-2026",
+      "surface": "support_directory",
+      "title_es": "Becas 2026 para estudios de máster",
+      "title_en": "Becas 2026 para estudios de máster",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-tarjeta-europea-discapacidad",
+      "surface": "support_directory",
+      "title_es": "Tarjeta Europea de Discapacidad",
+      "title_en": "Tarjeta Europea de Discapacidad",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-tarjeta-europea-estacionamiento",
+      "surface": "support_directory",
+      "title_es": "Tarjeta Europea de Estacionamiento",
+      "title_en": "Tarjeta Europea de Estacionamiento",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-perro-de-asistencia-acceso",
+      "surface": "support_directory",
+      "title_es": "Acceso con perro de asistencia en todo el Estado",
+      "title_en": "Acceso con perro de asistencia en todo el Estado",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "support-es-accesibilidad-cognitiva-rd-707-2026",
+      "surface": "support_directory",
+      "title_es": "Accesibilidad cognitiva: información comprensible y apoyos",
+      "title_en": "Accesibilidad cognitiva: información comprensible y apoyos",
+      "url_es": "/es/tramites/directorio/",
+      "url_en": "/en/support-directory/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Official benefit/application procedure intended for an adult applicant or legal representative.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}
