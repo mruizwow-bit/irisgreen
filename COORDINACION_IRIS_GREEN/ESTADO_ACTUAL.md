@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R57 · Juegos · clasificación 297 aceptada por Astra · 28/09/2026
+
+**Estado: `R57_ASTRA_GAMES_297_CLASSIFICATION_ACCEPTED` · #321.**
+
+Resultado: 260 ROUTINE_PRACTICE · 26 TOOL · 11 GAME · 0 INTEREST_MINIGAME.
+
+Los 11 GAME son todos memoria/parejas; tras 2 merges equivalen a 1 motor + 9 barajas, no a variedad suficiente de juegos.
+
+260 prácticas se preservan para futura migración a Rutinas → Practicar; 154 aún necesitan mapping de rutina destino.
+
+Codex queda HOLD hasta `R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX`.
+
+
 ## R61 · Rincón · piloto Pecera audiovisual · 28/09/2026
 
 **Estado: `R61_CLAUDE_RINCON_AQUARIUM_AV_PILOT_ORDERED` · #325.**
