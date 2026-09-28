@@ -51,8 +51,9 @@ REPO = Path(__file__).resolve().parent.parent
 SS = 2                       # supermuestreo
 OUT_W, OUT_H = 1180, 880
 W, H = OUT_W * SS, OUT_H * SS
-TOP_ROOM = 0.0               # banda reservada arriba, en píxeles de salida
+TOP_ROOM = 0.0               # banda reservada arriba, en píxeles internos
 BOT_ROOM = 0.0               # banda reservada abajo
+TOP_OUT = BOT_OUT = 0.0      # las mismas bandas, en píxeles de salida
 
 S = 6.0                      # lado de la sala cúbica
 def _fit(margin=0.055):
@@ -73,10 +74,11 @@ U = OX = OY = KX = KY = KZ = 0.0
 
 def configure(out_w, out_h, top=0.0, bot=0.0, margin=0.055):
     """Fija lienzo y encuadre. El móvil reserva banda para la interfaz."""
-    global OUT_W, OUT_H, W, H, TOP_ROOM, BOT_ROOM, U, OX, OY, KX, KY, KZ
+    global OUT_W, OUT_H, W, H, TOP_ROOM, BOT_ROOM, TOP_OUT, BOT_OUT, U, OX, OY, KX, KY, KZ
     OUT_W, OUT_H = out_w, out_h
     W, H = out_w * SS, out_h * SS
     TOP_ROOM, BOT_ROOM = top * SS, bot * SS
+    TOP_OUT, BOT_OUT = top, bot
     U, OX, OY = _fit(margin)
     KX = U * math.cos(math.radians(30))
     KY = U * math.sin(math.radians(30))
@@ -512,14 +514,26 @@ def shade(buf):
 
 
 def compose(lit, buf):
-    base = hx(THEME['bg-page'])
-    dark = base.mean() < 0.4
+    """Compone la escena sobre su propio vacío.
+
+    El vacío es obra, no interfaz. Lo probé atado a `bg-page` y el resultado
+    fue peor de las dos maneras: el exponente y el tonemap se aplican también
+    al fondo, así que `#0B1A2B` salía convertido en un gris azulado que no
+    coincidía con el fondo de la página y dejaba una costura visible en el
+    borde de la lámina. Y aunque coincidiera, repintar una lámina ya aprobada
+    para que siga el tema no es lo que pide la norma: la §2 permite
+    explícitamente que un stage inmersivo tenga su propia iluminación, y la §6
+    dice que el arte no cambia con el tema. Lo que cambia con el tema es el
+    texto, las placas, el selector y el borde de la lámina, que sí son chrome.
+
+    Consecuencia buscada: en LIGHT la lámina sigue siendo oscura. Es lo mismo
+    que ya hace Rincón por la §8.
+    """
     bg = np.zeros((H, W, 3), np.float32)
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     r = np.sqrt(((xx - W * 0.44) / (W * 0.74)) ** 2 + ((yy - H * 0.42) / (H * 0.74)) ** 2)
-    halo = np.clip(1.25 - r, 0, 1)[..., None]
-    # el halo aclara sobre fondo oscuro y oscurece sobre fondo claro
-    bg += base[None, None, :] + (0.055 if dark else -0.030) * halo
+    bg += np.array([0.062, 0.052, 0.040])[None, None, :] * np.clip(1.25 - r, 0, 1)[..., None]
+    bg += np.array([0.013, 0.012, 0.010])[None, None, :]
 
     img = np.where(buf.mask[..., None], lit, bg)
 
@@ -535,11 +549,9 @@ def compose(lit, buf):
     rng = np.random.default_rng(11)
     img += (rng.random((H, W, 1)).astype(np.float32) - 0.5) * 0.020
 
-    v = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2) ** 1.7
-    if hx(THEME['bg-page']).mean() < 0.4:
-        img *= np.clip(1.22 - 0.62 * v, 0, 1)[..., None]
-    else:
-        img *= np.clip(1.04 - 0.14 * v, 0, 1)[..., None]
+    vig = np.clip(1.22 - 0.62 * np.sqrt(((xx - W / 2) / (W / 2)) ** 2
+                                        + ((yy - H / 2) / (H / 2)) ** 2) ** 1.7, 0, 1)
+    img *= vig[..., None]
     return np.clip(img, 0, 1)
 
 
@@ -549,10 +561,45 @@ def compose(lit, buf):
 # la luz; el vector, el texto y la interfaz, que deben quedar nítidos a
 # cualquier tamaño y ser legibles por lectores de pantalla.
 
-LATON = '#E8CB8A'   # latón: material del suelo, no token de interfaz
+# El latón vive en la tabla de materiales del render, dentro de la escena. La
+# capa vectorial no lo usa: aquí todo es chrome, y el chrome sale de tokens.
 
 def T(k):
     return THEME[k]
+
+
+def chrome_bands():
+    """Pinta las bandas de chrome con el token, sobre el raster.
+
+    La lámina representa una pantalla entera, y una pantalla tiene dos cosas
+    distintas: el stage —obra, con su luz y su vacío, §2— y el chrome que lo
+    rodea —título, entradilla, teclas, selector, crédito—, que es interfaz y
+    sale de los tokens.
+
+    Antes las bandas eran el propio vacío de la escena, así que el texto de
+    interfaz iba sobre obra y había que elegir entre placa o mala lectura. Con
+    la banda en `bg-page`, el título vuelve a ser texto sobre su propio fondo:
+    11,1:1 en claro y 15,8:1 en navy, sin placa y sin tocar el render.
+
+    Las placas siguen haciendo falta, pero sólo donde tienen que estar: los
+    rótulos que van DENTRO del stage, encima de la piedra.
+
+    El filo entre banda y stage lleva un `separator`: así el corte se lee como
+    un inset deliberado y no como una costura.
+    """
+    if not (TOP_OUT or BOT_OUT):
+        return ''
+    b = []
+    if TOP_OUT:
+        b.append(f'<rect x="0" y="0" width="{OUT_W}" height="{TOP_OUT:.0f}" fill="{T("bg-page")}"/>'
+                 f'<line x1="0" y1="{TOP_OUT:.0f}" x2="{OUT_W}" y2="{TOP_OUT:.0f}" '
+                 f'stroke="{T("separator")}" stroke-width="1"/>')
+    if BOT_OUT:
+        y = OUT_H - BOT_OUT
+        b.append(f'<rect x="0" y="{y:.0f}" width="{OUT_W}" height="{BOT_OUT:.0f}" fill="{T("bg-page")}"/>'
+                 f'<line x1="0" y1="{y:.0f}" x2="{OUT_W}" y2="{y:.0f}" '
+                 f'stroke="{T("separator")}" stroke-width="1"/>')
+    return ''.join(b)
 
 
 def po(p):
@@ -637,10 +684,17 @@ def overlay_movil(data_uri):
              f'QUÉ CARA HACE DE SUELO</text>')
     for i in range(4):
         cx = OUT_W / 2 - 133 + i * 89
+        # Objetivo táctil de 60 px. El seleccionado se marca con acento y no con
+        # latón: el latón es el material del suelo dentro de la escena, y aquí
+        # esto es un control. Medido sobre la banda clara, el anillo de latón
+        # daba 1,48:1 —por debajo del 3:1 que pide el 1.4.11— mientras que el
+        # acento da 6,68:1 en claro y 9,71:1 en navy. El blanco al 7 % que había
+        # de relleno también se va: la §3 lo retira como superficie.
+        sel = i == 0
         o.append(f'<rect x="{cx-30:.0f}" y="{base:.0f}" width="60" height="60" rx="11" '
-                 f'fill="#FFFFFF" fill-opacity="{0.07 if i == 0 else 0.025}" '
-                 f'stroke="{LATON if i == 0 else T("text-muted")}" '
-                 f'stroke-width="{1.7 if i == 0 else 1}"/>')
+                 f'fill="{T("bg-surface-soft") if sel else T("bg-surface")}" '
+                 f'stroke="{T("accent") if sel else T("border-control")}" '
+                 f'stroke-width="{2 if sel else 1}"/>')
         o.append(mini_room(cx, base + 40, 14, i, i == 0))
 
     o.append(f'<text x="{OUT_W/2}" y="{OUT_H-16}" font-family="Georgia, serif" font-size="14.5" '
@@ -652,6 +706,7 @@ def overlay_movil(data_uri):
             f'recorrido entre la entrada y la salida, y el selector de suelo debajo.">'
             f'<image href="{data_uri}" xlink:href="{data_uri}" x="0" y="0" '
             f'width="{OUT_W}" height="{OUT_H}"/>'
+            + chrome_bands() +
             f'<text x="18" y="36" font-family="Georgia, serif" font-size="24" fill="{T("text")}">'
             f'Habitación imposible</text>'
             f'<text x="18" y="58" font-family="Georgia, serif" font-size="13" fill="{T("text-muted")}">'
@@ -688,9 +743,12 @@ def overlay_svg(data_uri):
         px, py = po(wp)
         o.append(label_plate(px, py, label, 19, 1.8))
 
-    # selector espacial
-    o.append(f'<text x="{OUT_W-186}" y="{OUT_H-150}" font-family="Georgia, serif" font-size="12.5" '
-             f'fill="{T("text-muted")}" text-anchor="middle" letter-spacing="1.1">QUÉ CARA HACE DE SUELO</text>')
+    # Selector espacial. El rótulo va al lado de los cubos y no encima: encima
+    # caía dentro del stage, o sea texto de interfaz sobre la piedra, que es
+    # justo lo que la placa existe para evitar. Al lado cabe en la banda de
+    # chrome, donde `text-muted` tiene su propio fondo detrás.
+    o.append(f'<text x="{OUT_W-362}" y="{OUT_H-88}" font-family="Georgia, serif" font-size="12.5" '
+             f'fill="{T("text-muted")}" text-anchor="end" letter-spacing="1.1">QUÉ CARA HACE DE SUELO</text>')
     for i in range(4):
         o.append(mini_room(OUT_W - 300 + i * 76, OUT_H - 94, 19, i, i == 0))
 
@@ -712,6 +770,7 @@ def overlay_svg(data_uri):
             f'de piedra con el recorrido marcado entre la entrada y la salida.">'
             f'<image href="{data_uri}" xlink:href="{data_uri}" x="0" y="0" '
             f'width="{OUT_W}" height="{OUT_H}"/>'
+            + chrome_bands() +
             f'<text x="44" y="58" font-family="Georgia, serif" font-size="33" fill="{T("text")}" '
             f'letter-spacing="0.3">Habitación imposible</text>'
             f'<text x="44" y="86" font-family="Georgia, serif" font-size="16" fill="{T("text-muted")}">'

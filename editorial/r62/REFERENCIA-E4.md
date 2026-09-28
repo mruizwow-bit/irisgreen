@@ -51,6 +51,51 @@ así era P01 en la vuelta que se rechazó.
 con color plano, y ninguna imperfección puede ser uniforme. Si el desgaste es
 igual en todas las piezas, se lee como patrón y no como uso.
 
+### Arte y chrome dentro de la misma lámina
+
+Una lámina representa una pantalla entera, y una pantalla tiene dos regiones
+que no obedecen a la misma regla:
+
+| | De dónde sale el color |
+| --- | --- |
+| **Stage** · la sala, su piedra, su luz, su vacío | de la escena. La §2 lo permite y la §6 dice que el arte no cambia con el tema |
+| **Chrome** · título, entradilla, teclas, selector, crédito | de los tokens, y cambia con el tema |
+
+En P01 el chrome ocupa dos bandas —104 px arriba y 120 abajo en escritorio,
+62 y 150 en móvil— pintadas con `--ig-bg-page` y separadas del stage por una
+línea de `--ig-separator`. Consecuencia buscada: **en tema claro la lámina
+sigue siendo oscura**, igual que ya hace Rincón por la §8.
+
+Dos errores que cometí aquí y que el siguiente piloto no necesita repetir:
+
+1. **Atar el vacío de la escena al fondo de página.** No funciona ni cuando
+   quieres que funcione: la exposición y el tonemap se aplican también al
+   fondo, así que `#0B1A2B` salía convertido en un gris azulado que no
+   coincidía con el fondo real y dejaba costura en el borde.
+2. **Dejar texto de interfaz cayendo dentro del stage.** El rótulo del
+   selector quedaba sobre la piedra. Si el texto es chrome, va en la banda; si
+   tiene que ir encima de la obra —los rótulos de los vanos, la cota— lleva
+   placa.
+
+La regla corta: **un token garantiza contraste contra el fondo de SU tema,
+nunca contra la obra que haya debajo.**
+
+Medido en esta lámina:
+
+| | Claro | Navy |
+| --- | --- | --- |
+| Título sobre su banda | 11,11:1 | 15,82:1 |
+| Secundario sobre su banda | 7,46:1 | 11,74:1 |
+| Rótulo con placa sobre la piedra | 6,61:1 | 7,48:1 |
+| El mismo rótulo sin placa | **1,17:1** | **2,82:1** |
+| Cubo del selector, sin seleccionar | 3,45:1 | 5,67:1 |
+| Cubo del selector, seleccionado | 6,68:1 | 9,71:1 |
+
+El anillo de latón que marcaba el seleccionado daba 1,48:1 sobre la banda
+clara. El latón es el material del suelo dentro de la escena; el selector es un
+control, así que pasa a acento. Es el mismo criterio de la tabla, aplicado a un
+color que parecía obra y era interfaz.
+
 ### Composición y móvil
 
 **Dos composiciones, no una escalada.** Es la parte que fallé y que más conviene
@@ -72,7 +117,12 @@ escritorio encogida.
 - Raster con la materia y la luz; **texto e interfaz en vector encima**, para
   que escale y lo lea un lector de pantalla.
 - SVG autocontenido con el raster incrustado como WebP en base64.
-- Pesos de referencia: **45 KB** escritorio, **26 KB** móvil.
+- Pesos de referencia, y conviene dar los dos porque base64 infla un tercio:
+  el raster WebP pesa **46 KB** en escritorio y **26 KB** en móvil; el SVG ya
+  autocontenido, **112 KB** y **65 KB**. Escribí aquí sólo la primera cifra al
+  redactar la referencia, junto a la frase del SVG, y así leída daba a entender
+  que una lámina de 112 KB se pasaba del presupuesto. No se pasa: es la misma
+  lámina contada de otra manera.
 - Determinista: semilla fija, sin reloj. El mismo escenario da el mismo píxel,
   así que una lámina se puede regenerar y comparar.
 
