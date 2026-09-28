@@ -1,5 +1,11 @@
 # R59 · CODEX · INTERESES R58 · ORDEN CANÓNICA MODIFICADA
 
+> **HISTÓRICO / PAUSADO · 28/09/2026**  
+> Esta orden ya NO es la orden activa. Codex está inhabilitado hasta el 01/10/2026.  
+> Ejecutor actual del carril: **Agente R59**.  
+> Orden activa: `COORDINACION_IRIS_GREEN/ORDENES/R59_AGENTE_INTERESES/01_AGENTE.md`.  
+> No ejecutar esta orden histórica mientras esté vigente la orden del Agente R59.
+>
 > Esta orden incorpora físicamente el bloque normativo obligatorio R42 y sustituye la versión corta anterior tras la revisión Astra del handoff R48/R59.
 
 ## BLOQUE NORMATIVO OBLIGATORIO EMBEBIDO
