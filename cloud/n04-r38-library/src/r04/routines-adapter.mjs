@@ -1,10 +1,10 @@
 import vm from 'node:vm';
 import { gitShow, sha256Text } from './source-reader.mjs';
+import { canonicalizeAgeBands, assertCanonicalAgeBands } from './age-taxonomy.mjs';
 import freeze from '../../sources/r51-r04/SOURCE_FREEZE.json' with { type: 'json' };
 
 const SOURCE_SHA=freeze.canonical_web_source.head;
 const ORIGIN='https://irisgreen.eu';
-const STAGE={inf:'INFANCIA',ado:'ADOLESCENCIA',adu:'ADULTEZ',todas:'TRANSVERSAL'};
 
 function parsePictograms(){
   const code=gitShow(SOURCE_SHA,'assets/data/pictogramas-iris.js');
@@ -41,8 +41,8 @@ export function buildRoutineEntities(){
       if(!Array.isArray(p)||p.length<3||!p[1]||!p[2]) throw new Error('routine_step_unresolved:'+row.id+':'+step);
       return {id:step,file:p[0],es:p[1],en:p[2]};
     });
-    const stages=[...new Set((row.stages||[]).map(x=>STAGE[x]).filter(Boolean))];
-    if(!stages.length) throw new Error('routine_missing_stage:'+row.id);
+    const stages=[...canonicalizeAgeBands(row.stages||[])];
+    assertCanonicalAgeBands(stages);
     for(const locale of ['es','en']){
       const title=row.title?.[locale];
       if(!title) throw new Error('routine_missing_title:'+row.id+':'+locale);

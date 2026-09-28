@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildRoutineEntities } from '../src/r04/routines-adapter.mjs';
+import { assertCanonicalAgeBands } from '../src/r04/age-taxonomy.mjs';
 
 const {entities,report}=buildRoutineEntities();
 
@@ -29,5 +30,21 @@ test('R51 5B keeps formats, watermark and attribution without embedding pictogra
     assert.equal(Object.hasOwn(e,'pictogram_bytes'),false);
     assert.equal(Object.hasOwn(e,'pdf_bytes'),false);
     assert.equal(Object.hasOwn(e,'png_bytes'),false);
+  }
+});
+
+test('R51 5B Routines emits canonical AGE_* bands only',()=>{
+  const legacy=new Set(['INFANCIA','ADOLESCENCIA','ADULTEZ','TRANSVERSAL','CUALQUIER_EDAD','children','teenagers','adults','any']);
+  for(const e of entities){
+    assertCanonicalAgeBands(e.audience);
+    assert.deepEqual(e.life_stage,e.audience);
+    assert.ok(e.audience.every(x=>!legacy.has(x)));
+  }
+});
+test('R51 5B legacy inf+todas collapses to ALL_AGES only',()=>{
+  const mixedIds=new Set(['routine:rutina-ponerse-y-quitarse-los-zapatos','routine:rutina-ponerse-y-quitarse-el-abrigo','routine:rutina-ponerse-y-quitarse-los-calcetines','routine:rutina-ponerse-y-quitarse-la-chaqueta']);
+  const observed=entities.filter(e=>mixedIds.has(e.content_id));
+  if(observed.length){
+    for(const e of observed) assert.deepEqual(e.audience,['ALL_AGES']);
   }
 });
