@@ -1,0 +1,1210 @@
+{
+  "schema": "R51_A9_DATA_ES_SOURCE/1.0",
+  "source_package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+  "records": [
+    {
+      "n": 1,
+      "title": "Autismo",
+      "territorio": "Mundo",
+      "refTemporal": "2021 · 2025; OMS actualiza la ficha en 2025.",
+      "anioDatos": "2021",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "2025; OMS actualiza la ficha en 2025",
+      "revision": "Cada año",
+      "poblacion": "personas autistas estimadas en 2021",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · Autism · actualización 17-09-2025",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+        },
+        {
+          "label": "OMS · Autismo, versión en español",
+          "url": "https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders"
+        },
+        {
+          "label": "PubMed · GBD 2021 autism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Autismo: diferencias por sexo en la estimación mundial",
+      "territorio": "Mundo",
+      "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+      "anioDatos": "2021",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "GBD 2021 / publicación científica 2025",
+      "revision": "Cada 2 años o cuando cambie GBD",
+      "poblacion": "prevalencia estandarizada por edad en varones",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · Autism",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+        },
+        {
+          "label": "PubMed · GBD 2021 autism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+        },
+        {
+          "label": "Loomes, Hull & Mandy · systematic review/meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28545751/"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Autismo: carga de salud poblacional",
+      "territorio": "Mundo",
+      "refTemporal": "2021 · GBD 2021 / publicación científica 2025.",
+      "anioDatos": "2021",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "GBD 2021 / publicación científica 2025",
+      "revision": "Cada 2 años o cuando cambie GBD",
+      "poblacion": "Población del modelo GBD para 2021, no un recuento de personas",
+      "status": "borrador",
+      "poblacionOrigen": "decisión editorial",
+      "sources": [
+        {
+          "label": "PubMed · GBD 2021 autism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39709974/"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Discapacidad del desarrollo en niños y jóvenes",
+      "territorio": "Mundo",
+      "refTemporal": "2019 · OMS/UNICEF, 2023.",
+      "anioDatos": "2019",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "OMS/UNICEF, 2023",
+      "revision": "Cada año",
+      "poblacion": "niños, adolescentes y jóvenes afectados en 2019",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · 15-09-2023",
+          "url": "https://www.who.int/news/item/15-09-2023-new-reports-highlights-neglected-health-needs-of-children-with-developmental-disabilities"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Por qué faltan datos comparables sobre desarrollo",
+      "territorio": "Mundo",
+      "refTemporal": "revisiones incluidas hasta la publicación · revisión paraguas, 2023.",
+      "anioDatos": "revisiones incluidas hasta la publicación",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "revisión paraguas, 2023",
+      "revision": "Cada 2 años",
+      "poblacion": "Estudios de países de ingresos altos, con métodos distintos entre sí",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "PubMed · Global prevalence of developmental disabilities in children and adolescents",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36891340/"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "TDAH en niños y adolescentes",
+      "territorio": "Mundo",
+      "refTemporal": "estudios incluidos en la revisión publicada en 2023 · revisión paraguas, 2023.",
+      "anioDatos": "estudios incluidos en la revisión publicada en 2023",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "revisión paraguas, 2023",
+      "revision": "Cada 2 años",
+      "poblacion": "prevalencia agrupada en una revisión paraguas internacional",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "PubMed · PMID 37495084",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37495084/"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "TDAH en adultos",
+      "territorio": "Mundo",
+      "refTemporal": "estructura demográfica mundial de 2020 · metaanálisis, 2021.",
+      "anioDatos": "estructura demográfica mundial de 2020",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "metaanálisis, 2021",
+      "revision": "Cada 2 años",
+      "poblacion": "TDAH adulto persistente desde la infancia",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "PubMed · PMID 33692893",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33692893/"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Dislexia del desarrollo",
+      "territorio": "Mundo",
+      "refTemporal": "estudios incluidos hasta 2021 · metaanálisis, 2022.",
+      "anioDatos": "estudios incluidos hasta 2021",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "metaanálisis, 2022",
+      "revision": "Cada 2 años",
+      "poblacion": "prevalencia agrupada en alumnado de Primaria",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "PubMed · PMID 35204003",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35204003/"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Trastorno del desarrollo de la coordinación",
+      "territorio": "Mundo",
+      "refTemporal": "estudios incluidos hasta 2023 · metaanálisis, 2024.",
+      "anioDatos": "estudios incluidos hasta 2023",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "metaanálisis, 2024",
+      "revision": "Cada 2 años",
+      "poblacion": "prevalencia agrupada en niños",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "PubMed · PMID 39391054",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39391054/"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Síndrome de Tourette: prevalencia estimada e identificación",
+      "territorio": "Mundo / EE. UU.",
+      "refTemporal": "síntesis de estudios; diagnóstico declarado en EE. UU. 2016–2019 · CDC, actualización 27-03-2026.",
+      "anioDatos": "síntesis de estudios; diagnóstico declarado en EE. UU. 2016–2019",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "CDC, actualización 27-03-2026",
+      "revision": "Anual",
+      "poblacion": "Las dos cifras no comparten denominador: la de diagnóstico declarado es de 3 a 17 años; la de estudios no acota edad",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "sources": [
+        {
+          "label": "CDC · Data and Statistics on Tourette Syndrome · actualización 27-03-2026",
+          "url": "https://www.cdc.gov/tourette-syndrome/data/"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Trastorno del desarrollo del lenguaje: un estudio poblacional de referencia",
+      "territorio": "Reino Unido",
+      "refTemporal": "muestra de niños al entrar en la escuela · estudio poblacional británico, 2016.",
+      "anioDatos": "muestra de niños al entrar en la escuela",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "estudio poblacional británico, 2016",
+      "revision": "Cada 2 años; buscar nueva síntesis",
+      "poblacion": "Niños al entrar en la escuela, muestra poblacional británica, 2016",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "Norbury et al., 2016",
+          "url": "https://doi.org/10.1111/jcpp.12573"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title": "Discalculia y disgrafía: por qué no damos una cifra mundial única",
+      "territorio": "Mundo",
+      "refTemporal": "sin año único: no existe una cifra mundial seleccionada · revisión editorial de fuentes, 2026.",
+      "anioDatos": "sin año único: no existe una cifra mundial seleccionada",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "revisión editorial de fuentes, 2026",
+      "revision": "Revisar cada 2 años",
+      "poblacion": "Sin cifra única",
+      "status": "borrador",
+      "poblacionOrigen": "decisión editorial"
+    },
+    {
+      "n": 13,
+      "title": "Trastornos de ansiedad",
+      "territorio": "Mundo",
+      "refTemporal": "2021 · OMS, actualización 08-09-2025.",
+      "anioDatos": "2021",
+      "metodo": "Organismo internacional",
+      "publicacion": "OMS, actualización 08-09-2025",
+      "revision": "Anual",
+      "poblacion": "personas con un trastorno de ansiedad en 2021",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · Trastornos de ansiedad · 08-09-2025",
+          "url": "https://www.who.int/es/news-room/fact-sheets/detail/anxiety-disorders"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "title": "TOC",
+      "territorio": "Mundo",
+      "refTemporal": "estudios hasta 2025 · estudio de modelización, 08-07-2026.",
+      "anioDatos": "estudios hasta 2025",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "estudio de modelización, 08-07-2026",
+      "revision": "Cada 2 años",
+      "poblacion": "Prevalencia a lo largo de la vida, por sistema diagnóstico",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "PubMed · PMID 42415255 · 08-07-2026",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42415255/"
+        },
+        {
+          "label": "DOI",
+          "url": "https://doi.org/10.1176/appi.ajp.20250944"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "title": "Autismo y salud mental: coexistencia, no equivalencia",
+      "territorio": "Mundo",
+      "refTemporal": "estudios incluidos en metaanálisis publicado en 2019 · Lai et al., 2019.",
+      "anioDatos": "estudios incluidos en metaanálisis publicado en 2019",
+      "metodo": "Síntesis científica internacional",
+      "publicacion": "Lai et al., 2019",
+      "revision": "Cada 2 años",
+      "poblacion": "Muestras de personas autistas",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Lai et al., *The Lancet Psychiatry*, 2019",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31447415/"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "title": "Discapacidad significativa",
+      "territorio": "Mundo",
+      "refTemporal": "estimación mundial vigente · OMS Europa, actualización 10-08-2026.",
+      "anioDatos": "estimación mundial vigente",
+      "metodo": "Organismo internacional",
+      "publicacion": "OMS Europa, actualización 10-08-2026",
+      "revision": "Anual",
+      "poblacion": "personas",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · Disability · 10-08-2026",
+          "url": "https://www.who.int/europe/news-room/fact-sheets/item/disability"
+        },
+        {
+          "label": "OMS · Disability and health",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/disability-and-health"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "title": "Desigualdad en salud asociada a discapacidad",
+      "territorio": "Mundo",
+      "refTemporal": "evidencia internacional reunida por OMS · OMS / informe mundial de equidad; actualización 2026.",
+      "anioDatos": "evidencia internacional reunida por OMS",
+      "metodo": "Organismo internacional",
+      "publicacion": "OMS / informe mundial de equidad; actualización 2026",
+      "revision": "Anual",
+      "poblacion": "Comparación entre personas con y sin discapacidad; evidencia internacional reunida por la OMS, sin denominador poblacional único",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "OMS · Disability · 10-08-2026",
+          "url": "https://www.who.int/europe/news-room/fact-sheets/item/disability"
+        },
+        {
+          "label": "OMS · Disability and health",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/disability-and-health"
+        },
+        {
+          "label": "OMS · Global report on health equity for persons with disabilities",
+          "url": "https://www.who.int/publications/i/item/9789240063600"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "title": "Niños con discapacidad",
+      "territorio": "Mundo",
+      "refTemporal": "estimación base de UNICEF; página activa en 2026 · UNICEF.",
+      "anioDatos": "estimación base de UNICEF; página activa en 2026",
+      "metodo": "Organismo internacional",
+      "publicacion": "UNICEF",
+      "revision": "Anual",
+      "poblacion": "Niños y adolescentes del mundo, medidos con el módulo de funcionamiento infantil de UNICEF y el Washington Group, que se aplica de 2 a 17 años",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "sources": [
+        {
+          "label": "UNICEF Data · Children with disabilities",
+          "url": "https://data.unicef.org/topic/child-disability/overview/"
+        },
+        {
+          "label": "UNICEF · informe Seen, Counted, Included",
+          "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "title": "Educación y discapacidad infantil",
+      "territorio": "Mundo",
+      "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+      "anioDatos": "análisis internacional de UNICEF",
+      "metodo": "Organismo internacional",
+      "publicacion": "UNICEF, 10-11-2021",
+      "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+      "poblacion": "Niños con discapacidad comparados con niños sin discapacidad; las cuatro cifras son diferencias relativas",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "UNICEF · 10-11-2021",
+          "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "title": "Bienestar, discriminación y violencia en la infancia con discapacidad",
+      "territorio": "Mundo",
+      "refTemporal": "análisis internacional de UNICEF · UNICEF, 10-11-2021.",
+      "anioDatos": "análisis internacional de UNICEF",
+      "metodo": "Organismo internacional",
+      "publicacion": "UNICEF, 10-11-2021",
+      "revision": "Anual; sustituir si UNICEF publica una serie comparable nueva",
+      "poblacion": "Diferencias relativas entre grupos, no tasas de toda la infancia con discapacidad",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "UNICEF · Seen, Counted, Included",
+          "url": "https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "title": "Tecnología y productos de apoyo",
+      "territorio": "Mundo",
+      "refTemporal": "base 2021–2022; proyección 2050 · OMS/UNICEF; ficha OMS 02-01-2024.",
+      "anioDatos": "base 2021–2022; proyección 2050",
+      "metodo": "Organismo internacional",
+      "publicacion": "OMS/UNICEF; ficha OMS 02-01-2024",
+      "revision": "Anual",
+      "poblacion": "personas necesitan uno o más productos de apoyo",
+      "status": "borrador",
+      "poblacionOrigen": "pie de la cifra",
+      "sources": [
+        {
+          "label": "OMS · Assistive technology · 02-01-2024",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/assistive-technology"
+        },
+        {
+          "label": "OMS/UNICEF · Global Report on Assistive Technology",
+          "url": "https://www.who.int/news/item/16-05-2022-almost-one-billion-children-and-adults-with-disabilities-and-older-persons-in-need-of-assistive-technology-denied-access--according-to-new-report"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "title": "Empleo y discapacidad",
+      "territorio": "61 países",
+      "refTemporal": "múltiples años en 61 países · ILOSTAT, 13-06-2022.",
+      "anioDatos": "múltiples años en 61 países",
+      "metodo": "Organización Internacional del Trabajo / comparación internacional",
+      "publicacion": "ILOSTAT, 13-06-2022",
+      "revision": "Anual",
+      "poblacion": "Personas con y sin discapacidad en 61 países",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "ILOSTAT · 13-06-2022",
+          "url": "https://ilostat.ilo.org/blog/new-ilo-database-highlights-labour-market-challenges-of-persons-with-disabilities/"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "title": "Brecha salarial y discapacidad",
+      "territorio": "30 países",
+      "refTemporal": "submuestra internacional de 30 países · OIT Working Paper 124, 27-08-2024.",
+      "anioDatos": "submuestra internacional de 30 países",
+      "metodo": "Organización Internacional del Trabajo / comparación internacional",
+      "publicacion": "OIT Working Paper 124, 27-08-2024",
+      "revision": "Cada 2 años",
+      "poblacion": "Salario por hora de trabajadores con y sin discapacidad, submuestra internacional",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "OIT · Working Paper 124 · 27-08-2024",
+          "url": "https://www.ilo.org/publications/study-employment-and-wage-outcomes-people-disabilities"
+        },
+        {
+          "label": "OIT · resumen 28-08-2024",
+          "url": "https://www.ilo.org/resource/news/new-ilo-working-paper-exposes-significant-disability-wage-gap"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "title": "Brecha de empleo asociada a discapacidad",
+      "territorio": "Unión Europea",
+      "refTemporal": "última serie disponible en la actualización de 2026 · Eurostat, 29-05-2026.",
+      "anioDatos": "última serie disponible en la actualización de 2026",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat, 29-05-2026",
+      "revision": "Anual",
+      "poblacion": "Tasa de empleo de personas con discapacidad frente a personas sin discapacidad",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · 29-05-2026",
+          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/wdn-20260529-1"
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "title": "Participación laboral y discapacidad",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Comisión Europea, ESDE 2025.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Comisión Europea, ESDE 2025",
+      "revision": "Anual",
+      "poblacion": "Población activa: fuera de la población activa no equivale a desempleo",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Comisión Europea · Employment and Social Developments in Europe 2025, capítulo 2",
+          "url": "https://ec.europa.eu/employment_social/employment_analysis/esde/2025/Chapter%202.html"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "title": "Abandono temprano de educación y formación",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat, 13-11-2025.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat, 13-11-2025",
+      "revision": "Anual",
+      "poblacion": "Jóvenes de 18 a 24 años",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · 13-11-2025",
+          "url": "https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20251113-1"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "title": "Jóvenes fuera del empleo, la educación y la formación",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat",
+      "revision": "Anual",
+      "poblacion": "Jóvenes de 15 a 29 años",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · Disability statistics – access to education and training",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "title": "Educación superior y discapacidad",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat",
+      "revision": "Anual",
+      "poblacion": "Personas de 25 a 34 años, con y sin discapacidad",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · Disability statistics – access to education and training",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "title": "Formación a lo largo de la vida",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat",
+      "revision": "Anual",
+      "poblacion": "Adultos de 25 a 64 años, cuatro semanas anteriores",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · Disability statistics – access to education and training",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf"
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "title": "Pobreza y exclusión social",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat",
+      "revision": "Anual",
+      "poblacion": "Población de 16 años o más de la Unión Europea, 2024",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "Eurostat · Disability statistics – poverty and income inequalities",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/34425.pdf"
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "title": "Discriminación percibida en la vida cotidiana",
+      "territorio": "Unión Europea",
+      "refTemporal": "2024 · Eurostat, 04-05-2026.",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial de la Unión Europea",
+      "publicacion": "Eurostat, 04-05-2026",
+      "revision": "Anual",
+      "poblacion": "Personas con y sin discapacidad; no son denuncias ni resoluciones judiciales",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Eurostat · 04-05-2026",
+          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260504-1"
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "title": "Autismo identificado en niños de 8 años",
+      "territorio": "Estados Unidos",
+      "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+      "anioDatos": "2022",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "CDC MMWR publicado en 2025",
+      "revision": "Cuando se publique una nueva ronda ADDM",
+      "poblacion": "Niños de 8 años en comunidades concretas, no encuesta nacional de todas las edades",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "CDC · Data and Statistics on Autism",
+          "url": "https://www.cdc.gov/autism/data-research/"
+        },
+        {
+          "label": "CDC MMWR 2025, datos 2022",
+          "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "title": "Diferencia por sexo en identificación de autismo",
+      "territorio": "Estados Unidos",
+      "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+      "anioDatos": "2022",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "CDC MMWR publicado en 2025",
+      "revision": "Cuando se publique una nueva ronda ADDM",
+      "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "sources": [
+        {
+          "label": "CDC MMWR",
+          "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+        }
+      ]
+    },
+    {
+      "n": 34,
+      "title": "Edad del diagnóstico de autismo documentado",
+      "territorio": "Estados Unidos",
+      "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+      "anioDatos": "2022",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "CDC MMWR publicado en 2025",
+      "revision": "Cuando se publique una nueva ronda ADDM",
+      "poblacion": "Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022; la mediana de 47 meses solo entre los que tenían un diagnóstico documentado",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "sources": [
+        {
+          "label": "CDC MMWR 2025, tabla 4",
+          "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+        }
+      ]
+    },
+    {
+      "n": 35,
+      "title": "Autismo y discapacidad intelectual en ADDM",
+      "territorio": "Estados Unidos",
+      "refTemporal": "2022 · CDC MMWR publicado en 2025.",
+      "anioDatos": "2022",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "CDC MMWR publicado en 2025",
+      "revision": "Cuando se publique una nueva ronda ADDM",
+      "poblacion": "El 61,4 % de los niños identificados, los que tenían esa información disponible",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "CDC MMWR 2025",
+          "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "title": "TDAH infantil",
+      "territorio": "Estados Unidos",
+      "refTemporal": "2022 · National Survey of Children’s Health / CDC, publicación 2024.",
+      "anioDatos": "2022",
+      "metodo": "Estadística o vigilancia oficial de Estados Unidos",
+      "publicacion": "National Survey of Children’s Health / CDC, publicación 2024",
+      "revision": "Cuando se publique una nueva encuesta comparable",
+      "poblacion": "Niños y adolescentes de 3 a 17 años en Estados Unidos, diagnóstico declarado por progenitores, 2022",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "sources": [
+        {
+          "label": "CDC Stacks / Danielson et al.",
+          "url": "https://stacks.cdc.gov/view/cdc/160350"
+        }
+      ]
+    },
+    {
+      "n": 37,
+      "title": "Empleo y autismo",
+      "territorio": "Reino Unido",
+      "refTemporal": "principalmente 2021/22–2022/23 · Buckland Review, 28-02-2024.",
+      "anioDatos": "principalmente 2021/22–2022/23",
+      "metodo": "Revisión y datos oficiales del Reino Unido",
+      "publicacion": "Buckland Review, 28-02-2024",
+      "revision": "Buscar actualización anual",
+      "poblacion": "Personas autistas en edad laboral, frente a personas con discapacidad en conjunto y sin discapacidad",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "GOV.UK · Buckland Review · 28-02-2024",
+          "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+        }
+      ]
+    },
+    {
+      "n": 38,
+      "title": "Brecha salarial en autismo",
+      "territorio": "Reino Unido",
+      "refTemporal": "datos ONS citados por la Buckland Review · Buckland Review, 28-02-2024.",
+      "anioDatos": "datos ONS citados por la Buckland Review",
+      "metodo": "Revisión y datos oficiales del Reino Unido",
+      "publicacion": "Buckland Review, 28-02-2024",
+      "revision": "Buscar actualización anual",
+      "poblacion": "Personas autistas ocupadas frente a personas no discapacitadas ocupadas en Reino Unido; comparación relativa",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "GOV.UK · Buckland Review",
+          "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+        }
+      ]
+    },
+    {
+      "n": 39,
+      "title": "Graduados autistas",
+      "territorio": "Reino Unido",
+      "refTemporal": "2022 · Buckland Review, 2024.",
+      "anioDatos": "2022",
+      "metodo": "Revisión y datos oficiales del Reino Unido",
+      "publicacion": "Buckland Review, 2024",
+      "revision": "Buscar actualización anual",
+      "poblacion": "Graduados autistas del Reino Unido, quince meses después de graduarse, 2022",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "GOV.UK · Buckland Review",
+          "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+        }
+      ]
+    },
+    {
+      "n": 40,
+      "title": "Revelar el diagnóstico y pedir ajustes en el trabajo",
+      "territorio": "Reino Unido",
+      "refTemporal": "Diverse Minds Employment Survey citado por la Buckland Review · Buckland Review, 2024.",
+      "anioDatos": "Diverse Minds Employment Survey citado por la Buckland Review",
+      "metodo": "Revisión y datos oficiales del Reino Unido",
+      "publicacion": "Buckland Review, 2024",
+      "revision": "Buscar actualización anual",
+      "poblacion": "Muestra de encuesta, no censo nacional",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "GOV.UK · Buckland Review",
+          "url": "https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations"
+        }
+      ]
+    },
+    {
+      "n": 41,
+      "title": "Autismo en la población",
+      "territorio": "Australia",
+      "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+      "anioDatos": "2022",
+      "metodo": "Estadística oficial de Australia",
+      "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+      "revision": "Cuando se publique un nuevo SDAC",
+      "poblacion": "Todas las edades, con desglose por sexo y edad; comparación entre rondas de la encuesta",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Australian Bureau of Statistics · Autism in Australia, 2022 · publicado 11-10-2024",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+        }
+      ]
+    },
+    {
+      "n": 42,
+      "title": "Necesidad de apoyo",
+      "territorio": "Australia",
+      "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+      "anioDatos": "2022",
+      "metodo": "Estadística oficial de Australia",
+      "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+      "revision": "Cuando se publique un nuevo SDAC",
+      "poblacion": "Personas autistas que viven en hogares, todas las edades, Australia, 2022",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "notaPoblacion": "Esta página y «Empleo y autismo» no comparten población: aquí son todas las edades; allí, 15 a 64 años. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares.",
+      "sources": [
+        {
+          "label": "ABS · Autism in Australia, 2022",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+        },
+        {
+          "label": "Versión en lenguaje claro",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+        }
+      ]
+    },
+    {
+      "n": 43,
+      "title": "Educación y autismo",
+      "territorio": "Australia",
+      "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+      "anioDatos": "2022",
+      "metodo": "Estadística oficial de Australia",
+      "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+      "revision": "Cuando se publique un nuevo SDAC",
+      "poblacion": "Dos poblaciones: personas autistas de 15 años o más en hogares, y de 5 a 20 años escolarizadas",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "ABS · Autism in Australia, 2022",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+        }
+      ]
+    },
+    {
+      "n": 44,
+      "title": "Empleo y autismo",
+      "territorio": "Australia",
+      "refTemporal": "2022 · Australian Bureau of Statistics, 11-10-2024.",
+      "anioDatos": "2022",
+      "metodo": "Estadística oficial de Australia",
+      "publicacion": "Australian Bureau of Statistics, 11-10-2024",
+      "revision": "Cuando se publique un nuevo SDAC",
+      "poblacion": "Personas autistas de 15 a 64 años que viven en hogares, Australia, 2022",
+      "status": "borrador",
+      "poblacionOrigen": "fuente comprobada",
+      "notaPoblacion": "Esta página no comparte población con «Necesidad de apoyo», que es de todas las edades. El ABS restringe el análisis de empleo a población en edad de trabajar que vive en hogares.",
+      "sources": [
+        {
+          "label": "ABS · Autism in Australia, 2022",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language"
+        }
+      ]
+    },
+    {
+      "n": 45,
+      "title": "Autismo en niños y jóvenes",
+      "territorio": "Canadá",
+      "refTemporal": "2019 · PHAC; sigue como referencia en Framework for Autism in Canada.",
+      "anioDatos": "2019",
+      "metodo": "Estadística oficial de Canadá",
+      "publicacion": "PHAC; sigue como referencia en Framework for Autism in Canada",
+      "revision": "Cuando se publique una nueva CHSCY comparable",
+      "poblacion": "Niños y jóvenes de 1 a 17 años",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Public Health Agency of Canada",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+        },
+        {
+          "label": "Framework for Autism in Canada",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/framework-autism-canada.html"
+        }
+      ]
+    },
+    {
+      "n": 46,
+      "title": "Edad de diagnóstico",
+      "territorio": "Canadá",
+      "refTemporal": "2019 · PHAC.",
+      "anioDatos": "2019",
+      "metodo": "Estadística oficial de Canadá",
+      "publicacion": "PHAC",
+      "revision": "Cuando se publique una nueva CHSCY comparable",
+      "poblacion": "Niños y jóvenes autistas incluidos en la encuesta canadiense de 2019",
+      "status": "borrador",
+      "poblacionOrigen": "Cómo citar / cifra",
+      "sources": [
+        {
+          "label": "Public Health Agency of Canada",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+        }
+      ]
+    },
+    {
+      "n": 47,
+      "title": "Salud general y mental",
+      "territorio": "Canadá",
+      "refTemporal": "2019 · PHAC.",
+      "anioDatos": "2019",
+      "metodo": "Estadística oficial de Canadá",
+      "publicacion": "PHAC",
+      "revision": "Cuando se publique una nueva CHSCY comparable",
+      "poblacion": "Comparación entre grupos, no recuento de diagnósticos",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Public Health Agency of Canada",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+        }
+      ]
+    },
+    {
+      "n": 48,
+      "title": "Condiciones coexistentes y necesidades educativas",
+      "territorio": "Canadá",
+      "refTemporal": "2019 · PHAC.",
+      "anioDatos": "2019",
+      "metodo": "Estadística oficial de Canadá",
+      "publicacion": "PHAC",
+      "revision": "Cuando se publique una nueva CHSCY comparable",
+      "poblacion": "Cada porcentaje tiene su propio denominador",
+      "status": "borrador",
+      "poblacionOrigen": "Qué mide exactamente",
+      "sources": [
+        {
+          "label": "Public Health Agency of Canada",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+        }
+      ]
+    },
+    {
+      "n": 49,
+      "title": "Cuatro cifras de autismo que no miden lo mismo",
+      "territorio": "Comparativa internacional",
+      "refTemporal": "2021 / 2022 / 2019 / 2022, según la fuente · comparación metodológica preparada en 2026.",
+      "anioDatos": "2021 / 2022 / 2019 / 2022, según la fuente",
+      "metodo": "Comparación metodológica de fuentes oficiales y modelizadas",
+      "publicacion": "comparación metodológica preparada en 2026",
+      "revision": "Revisar cuando cambie cualquiera de las cuatro series",
+      "poblacion": "Cada cifra lleva el suyo en la tabla",
+      "status": "borrador",
+      "poblacionOrigen": "decisión editorial",
+      "sources": [
+        {
+          "label": "Mundo · OMS / GBD 2021",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders"
+        },
+        {
+          "label": "EE. UU. · CDC ADDM 2022",
+          "url": "https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm"
+        },
+        {
+          "label": "Canadá · PHAC / CHSCY 2019",
+          "url": "https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html"
+        },
+        {
+          "label": "Australia · ABS SDAC 2022",
+          "url": "https://www.abs.gov.au/articles/autism-australia-2022"
+        }
+      ]
+    },
+    {
+      "n": 50,
+      "title": "Alumnado con necesidades educativas especiales en España",
+      "territorio": "España",
+      "refTemporal": "curso 2023-2024 · publicación de 12 de mayo de 2025",
+      "anioDatos": "curso 2023-2024",
+      "metodo": "Registro administrativo educativo",
+      "publicacion": "Ministerio de Educación, Formación Profesional y Deportes, mayo de 2025",
+      "revision": "Anual",
+      "poblacion": "Alumnado de enseñanzas no universitarias identificado con necesidades educativas especiales",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "La Moncloa · Más de un millón de estudiantes recibieron apoyo educativo en el curso 2023-2024 · 12 de mayo de 2025",
+          "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/educacion-fp-deportes/Paginas/2025/120525-estudiantes-necesidades-apoyo-educativo.aspx"
+        }
+      ]
+    },
+    {
+      "n": 51,
+      "title": "Apoyo educativo en España: qué recoge la cifra",
+      "territorio": "España",
+      "refTemporal": "curso 2023-2024 · publicación de 12 de mayo de 2025",
+      "anioDatos": "curso 2023-2024",
+      "metodo": "Registro administrativo educativo",
+      "publicacion": "Ministerio de Educación, Formación Profesional y Deportes, mayo de 2025",
+      "revision": "Anual",
+      "poblacion": "Alumnado de enseñanzas no universitarias con necesidad específica de apoyo educativo",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "La Moncloa · Más de un millón de estudiantes recibieron apoyo educativo en el curso 2023-2024 · 12 de mayo de 2025",
+          "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/educacion-fp-deportes/Paginas/2025/120525-estudiantes-necesidades-apoyo-educativo.aspx"
+        }
+      ]
+    },
+    {
+      "n": 52,
+      "title": "Empleo y discapacidad en España",
+      "territorio": "España",
+      "refTemporal": "datos de 2024 · publicación de 12 de diciembre de 2025",
+      "anioDatos": "2024",
+      "metodo": "Estadística oficial a partir de registros administrativos y encuesta",
+      "publicacion": "INE, diciembre de 2025",
+      "revision": "Anual",
+      "poblacion": "Personas de 16 a 64 años con discapacidad reconocida administrativamente",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "INE · Estadística de Discapacidad en el Mercado Laboral. EPD (2024), SPD y VLPD (2023) · 12 de diciembre de 2025",
+          "url": "https://www.ine.es/dyngs/Prensa/EDML20242023.htm"
+        }
+      ]
+    },
+    {
+      "n": 53,
+      "title": "Salario y discapacidad en España",
+      "territorio": "España",
+      "refTemporal": "datos de 2023 · publicación de 12 de diciembre de 2025",
+      "anioDatos": "2023",
+      "metodo": "Estadística oficial a partir de registros administrativos",
+      "publicacion": "INE, diciembre de 2025",
+      "revision": "Anual",
+      "poblacion": "Personas asalariadas con discapacidad reconocida administrativamente",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "INE · Estadística de Discapacidad en el Mercado Laboral. EPD (2024), SPD y VLPD (2023) · 12 de diciembre de 2025",
+          "url": "https://www.ine.es/dyngs/Prensa/EDML20242023.htm"
+        }
+      ]
+    },
+    {
+      "n": 54,
+      "title": "Dependencia reconocida y lista de espera en España",
+      "territorio": "España",
+      "refTemporal": "datos a 31 de marzo de 2026 · publicación de 10 de abril de 2026",
+      "anioDatos": "31 de marzo de 2026",
+      "metodo": "Registro administrativo del SAAD",
+      "publicacion": "Imserso · Ministerio de Derechos Sociales, Consumo y Agenda 2030, abril de 2026",
+      "revision": "Mensual",
+      "poblacion": "Personas con solicitud y resolución en el Sistema para la Autonomía y Atención a la Dependencia",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "Imserso · El número de personas beneficiarias de la Dependencia alcanza su mayor cifra histórica · 10 de abril de 2026",
+          "url": "https://imserso.es/detalle-actualidad/-/asset_publisher/n1oS8lWfrx6m/content/el-numero-de-personas-beneficiarias-de-la-dependencia-alcanza-su-mayor-cifra-historica-y-las-prestaciones-en-entornos-de-proximidad-rozan-ya-el-60-por-ciento/20123"
+        }
+      ]
+    },
+    {
+      "n": 55,
+      "title": "Discapacidad en centros residenciales en España",
+      "territorio": "España",
+      "refTemporal": "año 2023 · publicación de 30 de abril de 2024",
+      "anioDatos": "2023",
+      "metodo": "Encuesta oficial a población residente en centros",
+      "publicacion": "INE, abril de 2024",
+      "revision": "Según calendario del INE",
+      "poblacion": "Personas residentes en centros con alguna discapacidad",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "INE · Encuesta de Discapacidad, Autonomía personal y Situaciones de Dependencia. Población residente en centros. Año 2023 · 30 de abril de 2024",
+          "url": "https://www.ine.es/dyngs/Prensa/EDAD2023.htm"
+        }
+      ]
+    },
+    {
+      "n": 56,
+      "title": "Encuestas de discapacidad en España: qué mide cada una",
+      "territorio": "España",
+      "refTemporal": "serie de encuestas de discapacidad del INE · consulta de septiembre de 2026",
+      "anioDatos": "1986, 1999, 2008, 2020 (hogares) y 2023 (centros)",
+      "metodo": "Encuestas oficiales con cuestionario y población distintos por edición",
+      "publicacion": "INE",
+      "revision": "Según calendario del INE",
+      "poblacion": "Población con discapacidad en viviendas familiares y en centros, según la edición",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "INE · Encuestas de discapacidad, últimos datos y metodología · consulta de 24 de septiembre de 2026",
+          "url": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176782&menu=ultiDatos&idp=1254735573175"
+        }
+      ]
+    },
+    {
+      "n": 57,
+      "title": "México · Población con discapacidad, Censo 2020",
+      "territorio": "México",
+      "refTemporal": "Censo de Población y Vivienda 2020 · comunicado de 3 de diciembre de 2021",
+      "anioDatos": "2020",
+      "metodo": "Censo de población",
+      "publicacion": "INEGI, diciembre de 2021",
+      "revision": "Decenal",
+      "poblacion": "Población que declara discapacidad o condición mental en el censo",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "INEGI · Estadísticas a propósito del Día Internacional de las Personas con Discapacidad, comunicado 713/21 · 3 de diciembre de 2021",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/aproposito/2021/EAP_PersDiscap21.pdf"
+        }
+      ]
+    },
+    {
+      "n": 58,
+      "title": "Brasil · Personas con discapacidad, Censo 2022",
+      "territorio": "Brasil",
+      "refTemporal": "Censo 2022 · publicación de 24 de junio de 2025",
+      "anioDatos": "2022",
+      "metodo": "Censo de población",
+      "publicacion": "IBGE, junio de 2025",
+      "revision": "Decenal",
+      "poblacion": "Población de 2 años o más que declara alguna dificultad funcional",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "IBGE Educa · Censo 2022: 7,3% da população com 2 anos ou mais tinha alguma deficiência · 24 de junio de 2025",
+          "url": "https://educa.ibge.gov.br/jovens/materias-especiais/22695-censo-2022-7-3-da-populacao-com-2-anos-ou-mais-tinha-alguma-deficiencia.html"
+        }
+      ]
+    },
+    {
+      "n": 59,
+      "title": "Pérdida auditiva discapacitante en el mundo",
+      "territorio": "Mundo",
+      "refTemporal": "nota descriptiva de 3 de marzo de 2026",
+      "anioDatos": "estimación vigente a 2026",
+      "metodo": "Estimación modelizada a partir de datos poblacionales",
+      "publicacion": "Organización Mundial de la Salud, marzo de 2026",
+      "revision": "Según actualización de la OMS",
+      "poblacion": "Personas con pérdida auditiva superior a 35 dB en el oído que mejor oye",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "Organización Mundial de la Salud · Deafness and hearing loss · 3 de marzo de 2026",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss"
+        }
+      ]
+    },
+    {
+      "n": 60,
+      "title": "Discapacidad visual en el mundo",
+      "territorio": "Mundo",
+      "refTemporal": "nota descriptiva de 10 de febrero de 2026",
+      "anioDatos": "estimación vigente a 2026",
+      "metodo": "Estimación modelizada a partir de datos poblacionales",
+      "publicacion": "Organización Mundial de la Salud, febrero de 2026",
+      "revision": "Según actualización de la OMS",
+      "poblacion": "Personas con discapacidad visual de cerca o de lejos",
+      "status": "revisada",
+      "poblacionOrigen": "ficha técnica",
+      "sources": [
+        {
+          "label": "Organización Mundial de la Salud · Blindness and vision impairment · 10 de febrero de 2026",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment"
+        }
+      ]
+    }
+  ]
+}
