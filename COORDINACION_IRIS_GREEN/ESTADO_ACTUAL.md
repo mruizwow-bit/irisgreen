@@ -1,3 +1,17 @@
+## R54 · SYNC fuente/output PASS · fingerprint de configuración pendiente · 28/09/2026
+
+**Estado: `R54_ASTRA_SYNC_LOGIC_PASS_RENDER_CONFIG_FINGERPRINT_REQUIRED` · #318.**
+
+Astra revisó el patch real R54_SYNC. Pasa la sincronización de SVG generado + hashes WebP 1x/2x + dimensiones, el hook en build, la prueba source-stale y el fallo limpio de Chromium. No toca visuales.
+
+Queda un único blocker técnico: el manifest registra settings de render/calidad, pero el checker no los compara contra la configuración efectiva actual. Falta fingerprint por escena de settings y prueba negativa de cambio de configuración sin reraster.
+
+Esperado:
+`R54_CLAUDE_RASTER_CONFIG_FINGERPRINT_READY_FOR_ASTRA`
+
+No escalar 21+9 todavía. No A2/main/producción.
+
+
 ## R59 · handoff R48 v2 revisado · donor schema PASS / standalone QA REWORK · 28/09/2026
 
 **Estado: `R59_ASTRA_HANDOFF_V2_DONOR_SCHEMA_PASS_STANDALONE_QA_REWORK` · #323.**
