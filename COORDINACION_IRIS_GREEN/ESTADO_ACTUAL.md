@@ -1,3 +1,18 @@
+## R59 · handoff R48 v2 revisado · donor schema PASS / standalone QA REWORK · 28/09/2026
+
+**Estado: `R59_ASTRA_HANDOFF_V2_DONOR_SCHEMA_PASS_STANDALONE_QA_REWORK` · #323.**
+
+La matriz 72/72 v2 ya queda correctamente separada como DONOR R48 y puede usarse como input de Codex Fase 1. Los CSS depth/cards que faltaban en v1 ya están.
+
+Pendiente solo del handoff standalone: `completo.py` no retorna fallo, no cubre todos los assets, faltan el brand symbol/otros WebP referenciados y el generador de matriz no se reproduce desde el handoff porque faltan g03b..g09.
+
+Claude corrige packaging y para en `R59_CLAUDE_HANDOFF_V3_STANDALONE_QA_READY_FOR_ASTRA`.
+
+Codex NO espera: sigue Fase 1 y para en `R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA`.
+
+No construir 72 ni 6 pilotos. No A2/main/producción.
+
+
 ## R60 · Música P1 · HUMAN QA FAIL · 28/09/2026
 
 **Estado: `R60_HUMAN_QA_4_PILOTS_FAIL_REWORK_REQUIRED` · #324.**
