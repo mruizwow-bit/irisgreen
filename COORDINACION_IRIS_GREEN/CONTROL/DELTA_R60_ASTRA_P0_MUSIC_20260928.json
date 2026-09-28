@@ -1,0 +1,30 @@
+{
+  "schema": "R60_ASTRA_P0_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 324,
+  "status": "R60_ASTRA_MUSIC_PIPELINE_PROOF_ACCEPTED_P1_AUTHORIZED",
+  "p0": {
+    "accepted": true,
+    "duration_s": 78,
+    "first_party": true,
+    "external_samples": 0,
+    "integrated_lufs": -20,
+    "sample_peak_dbfs": -4.64,
+    "approx_true_peak_dbtp": -4.63,
+    "reproducible_pipeline": true
+  },
+  "musical_direction": {
+    "p0_keep": true,
+    "m01_status": "ADJUST",
+    "freeze_identity": false
+  },
+  "p1_authorized": [
+    "M01_LUZ_TRANQUILA",
+    "M02_CONCENTRACION_SUAVE",
+    "M03_FLOTAR",
+    "M04_NOCHE_CLARA"
+  ],
+  "next_marker": "R60_CLAUDE_MUSIC_4_PILOTS_READY_FOR_ASTRA",
+  "long_render_allowed": false,
+  "a2_allowed": false
+}
