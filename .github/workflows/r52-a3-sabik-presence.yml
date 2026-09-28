@@ -1,7 +1,7 @@
-name: R52 A3 Sabik Moving Presence
+name: R52 A3 New Sabik + R37 Motion
 on:
   push:
-    branches: ['agent3/r52-sabik-moving-presence-20260927']
+    branches: ['agent3/r52-correct-new-sabik-r37-motion-20260928']
   pull_request:
     paths:
       - 'sabik/**'

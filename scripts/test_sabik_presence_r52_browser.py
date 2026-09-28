@@ -31,15 +31,7 @@ class Quiet(SimpleHTTPRequestHandler):
 server = ThreadingHTTPServer(("127.0.0.1", 0), Quiet)
 threading.Thread(target=server.serve_forever, daemon=True).start()
 url = f"http://127.0.0.1:{server.server_address[1]}/reports/sabik-r52/fixture.html"
-evidence = {"samples": {}, "responsive": {}}
-
-def seconds(value: str) -> float:
-    first = value.split(",")[0].strip()
-    if first.endswith("ms"):
-        return float(first[:-2]) / 1000.0
-    if first.endswith("s"):
-        return float(first[:-1])
-    return 0.0
+evidence = {"motion": {}, "responsive": {}}
 
 try:
     with sync_playwright() as p:
@@ -48,105 +40,104 @@ try:
         page.goto(url, wait_until="networkidle")
         page.wait_for_function("window.SabikWebPresentation && document.querySelector('#sabik-hologram')?.dataset.motionLevel")
 
-        def ring_style():
-            return page.eval_on_selector("#rings-back", """el => {
-              const s=getComputedStyle(el); return {
-                transform:s.transform, animationName:s.animationName,
-                animationDuration:s.animationDuration, animationPlayState:s.animationPlayState
-              };
-            }""")
+        # PRESENTE is the current master and intentionally idle until a finite R37 state change.
+        src = page.locator("#sabik-web-master").get_attribute("src")
+        assert src.endswith("/sabik/assets/web-r01/web_presente.png"), src
+        idle = page.evaluate("""() => ({
+          state: document.querySelector('#sabik-hologram').dataset.webState,
+          active: window.SabikWebPresentation.snapshot().active,
+          animations: document.querySelector('#sabik-web-master').getAnimations().length
+        })""")
+        assert idle["state"] == "PRESENTE", idle
+        assert idle["active"] is False, idle
+        assert idle["animations"] == 0, idle
+        evidence["motion"]["present_idle"] = idle
 
-        normal0 = ring_style()
-        time.sleep(0.45)
-        normal1 = ring_style()
-        assert "sabikMeasuredPrecession" in normal0["animationName"], normal0
-        assert normal0["animationPlayState"] == "running", normal0
-        assert normal0["transform"] != normal1["transform"], (normal0, normal1)
-        evidence["samples"]["normal"] = {"t0":normal0, "t450ms":normal1}
-
-        page.eval_on_selector("#sabik-results", "el => el.setAttribute('aria-busy','true')")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.operation === 'processing'")
-        processing = ring_style()
-        assert seconds(processing["animationDuration"]) < seconds(normal0["animationDuration"])
-        evidence["samples"]["processing"] = processing
-        page.eval_on_selector("#sabik-results", "el => el.setAttribute('aria-busy','false')")
-
-        page.evaluate("window.SabikWebPresentation.handleVoiceEvent('voice-start')")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.voiceActive === 'true'")
-        voice_start = page.eval_on_selector("#sabik-hologram", """el => {
-          const s=getComputedStyle(el,'::before'); return {
-            animationName:s.animationName, animationDuration:s.animationDuration,
-            animationPlayState:s.animationPlayState, opacity:s.opacity
+        # NORMAL: R37 finite transition over the current ORIENTAR master.
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
+        normal = page.evaluate("""() => {
+          const a=document.querySelector('#sabik-web-master').getAnimations()[0];
+          return {
+            state: document.querySelector('#sabik-hologram').dataset.webState,
+            src: document.querySelector('#sabik-web-master').getAttribute('src'),
+            duration: a?.effect?.getTiming().duration,
+            iterations: a?.effect?.getTiming().iterations
           };
         }""")
-        assert "sabikVoiceRipple" in voice_start["animationName"], voice_start
-        page.evaluate("window.SabikWebPresentation.handleVoiceEvent('voice-end')")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.voiceActive === 'false'")
-        voice_end = page.eval_on_selector("#sabik-hologram", "el => ({duration:getComputedStyle(el,'::before').animationDuration})")
-        assert seconds(voice_start["animationDuration"]) < seconds(voice_end["duration"])
-        evidence["samples"]["voice"] = {"start":voice_start, "end":voice_end}
+        assert normal["state"] == "ORIENTAR", normal
+        assert normal["src"].endswith("/sabik/assets/web-r01/web_orientar.png"), normal
+        assert normal["duration"] == 380, normal
+        assert normal["iterations"] == 1, normal
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
+        evidence["motion"]["normal_orientar"] = normal
 
+        # TRANSICION is finite and returns to the requested stable current master.
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('transicion',{to:'presente',force:true}); }")
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
+        transition = page.evaluate("""() => {
+          const a=document.querySelector('#sabik-web-master').getAnimations()[0];
+          return {duration:a?.effect?.getTiming().duration,iterations:a?.effect?.getTiming().iterations};
+        }""")
+        assert transition["duration"] == 500, transition
+        assert transition["iterations"] == 1, transition
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false && document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_presente.png')")
+        evidence["motion"]["transition"] = transition
+
+        # REDUCIDO shortens the same R37 movement.
         page.select_option("#sabik-motion-level", "REDUCIDO")
         page.dispatch_event("#sabik-motion-level", "change")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.motionLevel === 'REDUCIDO'")
-        reduced = ring_style()
-        assert seconds(reduced["animationDuration"]) > seconds(normal0["animationDuration"])
-        evidence["samples"]["reduced"] = reduced
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
+        reduced = page.evaluate("""() => {
+          const a=document.querySelector('#sabik-web-master').getAnimations()[0];
+          return {duration:a?.effect?.getTiming().duration, level:window.SabikWebPresentation.snapshot().level};
+        }""")
+        assert reduced["duration"] == 140, reduced
+        assert reduced["level"] == "REDUCIDO", reduced
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
+        evidence["motion"]["reduced"] = reduced
 
+        # SIN_MOVIMIENTO swaps only to the correct state master, without animation.
         page.select_option("#sabik-motion-level", "SIN_MOVIMIENTO")
         page.dispatch_event("#sabik-motion-level", "change")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.motionLevel === 'SIN_MOVIMIENTO'")
-        stopped_ring = ring_style()
-        stopped_base = page.eval_on_selector(".sabik-avatar-base", "el => getComputedStyle(el).animationPlayState")
-        assert stopped_ring["animationPlayState"] == "paused", stopped_ring
-        assert stopped_base == "paused", stopped_base
-        evidence["samples"]["no_motion"] = {"ring":stopped_ring, "basePlayState":stopped_base}
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true}); }")
+        page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_pausa.png')")
+        stopped = page.evaluate("""() => ({
+          active: window.SabikWebPresentation.snapshot().active,
+          animations: document.querySelector('#sabik-web-master').getAnimations().length,
+          level: window.SabikWebPresentation.snapshot().level
+        })""")
+        assert stopped["active"] is False, stopped
+        assert stopped["animations"] == 0, stopped
+        assert stopped["level"] == "SIN_MOVIMIENTO", stopped
+        evidence["motion"]["no_motion"] = stopped
 
-        page.select_option("#sabik-motion-level", "NORMAL")
-        page.dispatch_event("#sabik-motion-level", "change")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.motionLevel === 'NORMAL'")
-        page.eval_on_selector("#sabik-widget-body", "el => el.hidden=true")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.renderActive === 'false'")
-        hidden = ring_style()
-        assert hidden["animationPlayState"] == "paused", hidden
-        page.eval_on_selector("#sabik-widget-body", "el => el.hidden=false")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.renderActive === 'true'")
-        visible = ring_style()
-        assert visible["animationPlayState"] == "running", visible
-        evidence["samples"]["panel_visibility"] = {"hidden":hidden, "visible":visible}
-
-        page.emulate_media(reduced_motion="reduce")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.motionLevel === 'REDUCIDO'")
-        system_reduced = ring_style()
-        assert seconds(system_reduced["animationDuration"]) >= seconds(reduced["animationDuration"])
-        evidence["samples"]["prefers_reduced_motion"] = system_reduced
-        page.emulate_media(reduced_motion="no-preference")
-        page.wait_for_function("document.querySelector('#sabik-hologram').dataset.motionLevel === 'NORMAL'")
-
-        frame_metrics = page.evaluate("""async () => {
-          const stamps=[]; const start=performance.now();
-          await new Promise(resolve => {
-            function tick(t){ stamps.push(t); if(t-start>=700) resolve(); else requestAnimationFrame(tick); }
-            requestAnimationFrame(tick);
-          });
-          const d=stamps.slice(1).map((v,i)=>v-stamps[i]);
-          return {frames:stamps.length, meanMs:d.reduce((a,b)=>a+b,0)/Math.max(1,d.length),
-                  maxMs:Math.max(0,...d), over50ms:d.filter(v=>v>50).length};
-        }""")
-        assert frame_metrics["frames"] >= 8, frame_metrics
-        evidence["samples"]["frame_pacing_700ms"] = frame_metrics
+        # Voice hook is compatible but does not replace the visual with the historical donor.
+        page.evaluate("window.SabikWebPresentation.setVoiceActive(true)")
+        voice = page.evaluate("""() => ({
+          voice: document.querySelector('#sabik-hologram').dataset.voiceActive,
+          src: document.querySelector('#sabik-web-master').getAttribute('src'),
+          layered: document.querySelector('.sabik-layered-avatar') !== null
+        })""")
+        assert voice["voice"] == "true", voice
+        assert voice["src"].endswith("/sabik/assets/web-r01/web_pausa.png"), voice
+        assert voice["layered"] is False, voice
+        page.evaluate("window.SabikWebPresentation.setVoiceActive(false)")
+        evidence["motion"]["voice_hook"] = voice
 
         for width,height in ((1920,1080),(1440,900),(390,844),(320,800)):
             page.set_viewport_size({"width":width,"height":height})
-            time.sleep(0.08)
+            time.sleep(0.05)
             metrics = page.evaluate("""() => {
               const r=document.querySelector('#sabik-hologram').getBoundingClientRect();
-              return {innerWidth, scrollWidth:document.documentElement.scrollWidth,
-                      visualWidth:r.width, visualRight:r.right};
+              return {innerWidth,scrollWidth:document.documentElement.scrollWidth,
+                      visualWidth:r.width,visualRight:r.right};
             }""")
-            assert metrics["scrollWidth"] <= width + 1, (width,metrics)
-            assert metrics["visualRight"] <= width + 1, (width,metrics)
+            assert metrics["scrollWidth"] <= width + 1, (width, metrics)
+            assert metrics["visualRight"] <= width + 1, (width, metrics)
             evidence["responsive"][f"{width}x{height}"] = metrics
+
         browser.close()
 finally:
     server.shutdown()
@@ -155,4 +146,4 @@ finally:
 (REPORT / "temporal-evidence.json").write_text(
     json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
 )
-print("R52_A3_SABIK_PRESENCE_TEMPORAL_EVIDENCE_PASS")
+print("R52_A3_NEW_SABIK_R37_BROWSER_PASS")
