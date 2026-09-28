@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R52-PRECEDENCE-CORRECTION-NEW-SABIK-R37-MOTION",
+  "date": "2026-09-28",
+  "issue": 315,
+  "status": "R52_A3_REWORK_NEW_SABIK_WITH_R37_MOTION_REQUIRED",
+  "authority": "Maria HUMAN QA",
+  "correct_contract": {
+    "identity": "NEW_SABIK_ALREADY_APPROVED",
+    "motion": "R37_LOST_MOTION_TO_RESTORE"
+  },
+  "supersedes": [
+    "R52_A3_SABIK_MOVING_PRESENCE_RESTORED_READY_FOR_A2",
+    "A2 checkpoint 5f759464 as final R52 candidate"
+  ],
+  "keep_from_old_donor": [
+    "MOTION_BEHAVIOR",
+    "ORBITS",
+    "WAVES",
+    "RHYTHM",
+    "NORMAL_REDUCED_STILL",
+    "HIDDEN_TAB_PAUSE",
+    "VOICE_VISUAL_HOOK"
+  ],
+  "reject_from_old_donor": [
+    "OLD_VISUAL_IDENTITY",
+    "OLD_WEBP_MASTER",
+    "OLD_COMPOSITION"
+  ],
+  "next": "R52_A3_NEW_SABIK_R37_MOTION_READY_FOR_A2",
+  "hold": [
+    "A2_FINAL_R52",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
