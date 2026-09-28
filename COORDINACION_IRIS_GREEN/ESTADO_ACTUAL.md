@@ -1,3 +1,22 @@
+## Tokens visuales globales · una sola interfaz · 28/09/2026
+
+**Estado: `IRIS_GREEN_GLOBAL_UI_TOKENS_2026_ADOPTED`.**
+
+María decide que ninguna sección/agente puede elegir su propia paleta.
+
+LIGHT y DARK NAVY son temas globales, no colores por página. Home, CONTENT,
+BROWSE, Taller, Intereses, Juegos, Sabik y shell de Rincón consumen los mismos
+tokens de fondo, superficies, botones, texto, enlaces, bordes, foco y estados.
+
+El arte/escena sí puede variar.
+
+Norma:
+`NORMATIVA/IRIS_GREEN_GLOBAL_UI_TOKENS_2026.md`.
+
+Gate:
+`IRIS_GREEN_GLOBAL_VISUAL_TOKENS_UNIFIED_GATE`.
+
+
 ## Superficies de baja estimulación · blanco puro prohibido · 28/09/2026
 
 **Estado: `IRIS_GREEN_LOW_STIMULATION_SURFACE_STANDARD_2026_ADOPTED`.**
