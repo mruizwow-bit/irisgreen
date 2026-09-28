@@ -1,0 +1,122 @@
+/* Iris Green · tokens visuales globales 2026 · hoja fuente única.
+   IRIS_GREEN_GLOBAL_UI_TOKENS_2026_ADOPTED · §10 pide una sola hoja.
+
+   Reglas que esta hoja implementa:
+   - §1 ninguna sección elige su paleta de interfaz;
+   - §2 dos temas globales; una ruta no cambia de tema por su cuenta;
+   - §3 #FFFFFF no es superficie extensa del tema claro;
+   - §4 #000000 no es fondo general del tema oscuro;
+   - §5 nombres semánticos, nunca colores a mano.
+
+   Cómo se aplica el tema, y por qué en este orden:
+     1. :root lleva LIGHT, que es el predeterminado.
+     2. prefers-color-scheme: dark aplica NAVY a quien lo tenga puesto en el
+        sistema y no haya elegido nada.
+     3. [data-ig-theme] gana sobre las dos, para que un selector explícito
+        mande sobre la preferencia del sistema.
+   El atributo va en <html> y lo pone una sola pieza global: si lo pusiera cada
+   sección volveríamos a tener una web por ruta, que es lo que la §1 prohíbe.
+
+   IMPORTANTE · alto contraste. Ningún token lleva !important y esta hoja no
+   fija color sobre forced-colors. En ese modo mandan los colores del sistema,
+   y 33 archivos del repositorio ya dependen de ello. Un !important aquí los
+   rompería a todos. */
+
+:root {
+  /* --- superficies --- */
+  --ig-bg-page:             #F6F8FB;
+  --ig-bg-surface:          #F4F7FA;
+  --ig-bg-surface-soft:     #EEF2F6;
+
+  /* --- texto --- */
+  --ig-text:                #17395C;
+  --ig-text-muted:          #435268;
+
+  /* --- acciones --- */
+  --ig-button-primary-bg:   #17395C;
+  --ig-button-primary-fg:   #EEF4F8;
+  --ig-button-secondary-bg: #E6F1F8;
+  --ig-button-secondary-fg: #17395C;
+
+  /* --- enlaces y acentos --- */
+  --ig-link:                #1F5F8B;
+  --ig-accent:              #5A49A8;
+  --ig-accent-secondary:    #197991;
+
+  /* --- líneas y foco --- */
+  --ig-border-control:      #7A869D;
+  --ig-separator:           #D5E1EC;
+  --ig-focus:               #5A49A8;
+
+  /* --- estado --- */
+  --ig-error:               #8A2942;
+  --ig-success:             #1D6B3A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ig-theme="claro"]) {
+    --ig-bg-page:             #0B1A2B;
+    --ig-bg-surface:          #15304A;
+    --ig-bg-surface-soft:     #1D3D5C;
+    --ig-text:                #EEF4F8;
+    --ig-text-muted:          #C9D5DD;
+    --ig-button-primary-bg:   #DCE8F2;
+    --ig-button-primary-fg:   #0B1A2B;
+    --ig-button-secondary-bg: #15304A;
+    --ig-button-secondary-fg: #EEF4F8;
+    --ig-link:                #9FDCEA;
+    --ig-accent:              #C3B8FF;
+    --ig-accent-secondary:    #9FDCEA;
+    --ig-border-control:      #8494A8;
+    --ig-separator:           #2A4460;
+    --ig-focus:               #C3B8FF;
+    --ig-error:               #FFB3C1;
+    --ig-success:             #9BE0B4;
+  }
+}
+
+:root[data-ig-theme="navy"] {
+  --ig-bg-page:             #0B1A2B;
+  --ig-bg-surface:          #15304A;
+  --ig-bg-surface-soft:     #1D3D5C;
+  --ig-text:                #EEF4F8;
+  --ig-text-muted:          #C9D5DD;
+  --ig-button-primary-bg:   #DCE8F2;
+  --ig-button-primary-fg:   #0B1A2B;
+  --ig-button-secondary-bg: #15304A;
+  --ig-button-secondary-fg: #EEF4F8;
+  --ig-link:                #9FDCEA;
+  --ig-accent:              #C3B8FF;
+  --ig-accent-secondary:    #9FDCEA;
+  --ig-border-control:      #8494A8;
+  --ig-separator:           #2A4460;
+  --ig-focus:               #C3B8FF;
+  --ig-error:               #FFB3C1;
+  --ig-success:             #9BE0B4;
+}
+
+/* --- Alias heredados · §10 ------------------------------------------------
+   Temporales, para que el CSS antiguo siga funcionando mientras se migra. No
+   son estado final: la §10 dice que no se mantienen dos paletas en paralelo.
+
+   Dos de ellos corrigen incoherencias reales encontradas en el repositorio:
+
+   --papel valía #ffffff, y la §3 dice que el blanco deja de ser superficie
+   extensa del tema claro. Pasa a --ig-bg-surface.
+
+   --suave estaba definido con tres valores distintos: #5c7391 en site-v23.css,
+   #5a6675 en ig-taller-lab.css —donde Taller redefine la paleta entera para sí
+   mismo, que es justo lo que prohíbe la §1— y #2c4a66 en el override de alto
+   contraste, que sí es legítimo. Ninguno era el texto secundario global.
+   Pasa a --ig-text-muted. */
+
+:root {
+  --papel:  var(--ig-bg-surface);
+  --niebla: var(--ig-bg-page);
+  --tinta:  var(--ig-text);
+  --suave:  var(--ig-text-muted);
+  --azul:   var(--ig-link);
+  --lila:   var(--ig-accent);
+  --turq:   var(--ig-accent-secondary);
+  --linea:  var(--ig-separator);
+}

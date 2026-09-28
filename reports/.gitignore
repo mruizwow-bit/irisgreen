@@ -1,0 +1,8 @@
+# Salida generada del barrido de la §9. Se regenera con
+# scripts/audit_tokens_hardcode.py, así que no se versiona.
+#
+# El ignore vive aquí y no en el .gitignore raíz a propósito: otro delta de
+# esta misma entrega también añade una línea al final de ese archivo, y dos
+# líneas añadidas en el mismo sitio chocan al aplicarlos.
+*
+!.gitignore

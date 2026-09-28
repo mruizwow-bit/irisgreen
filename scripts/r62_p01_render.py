@@ -82,6 +82,41 @@ def configure(out_w, out_h, top=0.0, bot=0.0, margin=0.055):
     KY = U * math.sin(math.radians(30))
     KZ = U
 
+# ---------------------------------------------------------------- tokens ---
+# IRIS_GREEN_GLOBAL_UI_TOKENS_2026_ADOPTED. Gobiernan el cromo de la lámina:
+# fondo, texto, texto secundario y acento. NO gobiernan la materia representada
+# —la caliza, su luz, su latón—, que es obra y responde al §6 y §10 de la norma
+# visual. La frontera está declarada en el informe; si hay que moverla, se mueve
+# aquí y se vuelve a renderizar.
+THEMES = {
+    # IRIS_GREEN_GLOBAL_UI_TOKENS_2026, §3 y §4. Nombres canónicos sin el
+    # prefijo --ig-, para que el mapeo a CSS sea uno a uno.
+    'claro': {
+        'bg-page': '#F6F8FB', 'bg-surface': '#F4F7FA', 'bg-surface-soft': '#EEF2F6',
+        'text': '#17395C', 'text-muted': '#435268',
+        'button-primary-bg': '#17395C', 'button-primary-fg': '#EEF4F8',
+        'button-secondary-bg': '#E6F1F8', 'button-secondary-fg': '#17395C',
+        'link': '#1F5F8B', 'accent': '#5A49A8', 'accent-secondary': '#197991',
+        'border-control': '#7A869D', 'separator': '#D5E1EC', 'focus': '#5A49A8',
+        'error': '#8A2942', 'success': '#1D6B3A',
+    },
+    'navy': {
+        'bg-page': '#0B1A2B', 'bg-surface': '#15304A', 'bg-surface-soft': '#1D3D5C',
+        'text': '#EEF4F8', 'text-muted': '#C9D5DD',
+        'button-primary-bg': '#DCE8F2', 'button-primary-fg': '#0B1A2B',
+        'button-secondary-bg': '#15304A', 'button-secondary-fg': '#EEF4F8',
+        'link': '#9FDCEA', 'accent': '#C3B8FF', 'accent-secondary': '#9FDCEA',
+        'border-control': '#8494A8', 'separator': '#2A4460', 'focus': '#C3B8FF',
+        'error': '#FFB3C1', 'success': '#9BE0B4',
+    },
+}
+THEME = THEMES['navy']
+
+
+def hx(h):
+    return np.array([int(h[i:i + 2], 16) / 255.0 for i in (1, 3, 5)], np.float32)
+
+
 LIGHT = np.array([-0.46, -0.30, 0.84])
 LIGHT /= np.linalg.norm(LIGHT)
 VIEW = np.array([1.0, 1.0, 1.0]) / math.sqrt(3.0)
@@ -469,17 +504,22 @@ def shade(buf):
     dep = np.where(buf.mask, buf.depth, 0)
     lo, hi = np.percentile(dep[buf.mask], [2, 98])
     f = np.clip((hi - dep) / (hi - lo + 1e-6), 0, 1) ** 1.9
+    # Atmósfera de la sala. NO es el fondo de página: el interior está iluminado
+    # y su profundidad no puede depender del tema de la web.
     fog = np.array([0.055, 0.046, 0.038], np.float32)
     k = 0.30 * f[..., None]
     return lit * (1 - k) + fog[None, None, :] * k
 
 
 def compose(lit, buf):
+    base = hx(THEME['bg-page'])
+    dark = base.mean() < 0.4
     bg = np.zeros((H, W, 3), np.float32)
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     r = np.sqrt(((xx - W * 0.44) / (W * 0.74)) ** 2 + ((yy - H * 0.42) / (H * 0.74)) ** 2)
-    bg += np.array([0.062, 0.052, 0.040])[None, None, :] * np.clip(1.25 - r, 0, 1)[..., None]
-    bg += np.array([0.013, 0.012, 0.010])[None, None, :]
+    halo = np.clip(1.25 - r, 0, 1)[..., None]
+    # el halo aclara sobre fondo oscuro y oscurece sobre fondo claro
+    bg += base[None, None, :] + (0.055 if dark else -0.030) * halo
 
     img = np.where(buf.mask[..., None], lit, bg)
 
@@ -495,9 +535,11 @@ def compose(lit, buf):
     rng = np.random.default_rng(11)
     img += (rng.random((H, W, 1)).astype(np.float32) - 0.5) * 0.020
 
-    vig = np.clip(1.22 - 0.62 * np.sqrt(((xx - W / 2) / (W / 2)) ** 2
-                                        + ((yy - H / 2) / (H / 2)) ** 2) ** 1.7, 0, 1)
-    img *= vig[..., None]
+    v = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2) ** 1.7
+    if hx(THEME['bg-page']).mean() < 0.4:
+        img *= np.clip(1.22 - 0.62 * v, 0, 1)[..., None]
+    else:
+        img *= np.clip(1.04 - 0.14 * v, 0, 1)[..., None]
     return np.clip(img, 0, 1)
 
 
@@ -507,7 +549,10 @@ def compose(lit, buf):
 # la luz; el vector, el texto y la interfaz, que deben quedar nítidos a
 # cualquier tamaño y ser legibles por lectores de pantalla.
 
-LATON = '#E8CB8A'
+LATON = '#E8CB8A'   # latón: material del suelo, no token de interfaz
+
+def T(k):
+    return THEME[k]
 
 
 def po(p):
@@ -520,11 +565,12 @@ def mini_room(cx, cy, s, datum, active):
     kx, ky, kz = s * 0.866, s * 0.5, s
     c = {(i, j, k): (cx + (i - j) * kx, cy + (i + j) * ky - k * kz - s * 0.2)
          for i in (0, 1) for j in (0, 1) for k in (0, 1)}
-    ink = LATON if active else '#6E6250'
+    ink = T("accent") if active else T("border-control")
     faces = {0: [(0,0,0),(1,0,0),(1,1,0),(0,1,0)], 1: [(0,0,0),(0,1,0),(0,1,1),(0,0,1)],
              2: [(0,1,0),(1,1,0),(1,1,1),(0,1,1)], 3: [(0,0,1),(1,0,1),(1,1,1),(0,1,1)]}
     pts = ' '.join(f'{c[v][0]:.1f},{c[v][1]:.1f}' for v in faces[datum])
-    out = [f'<polygon points="{pts}" fill="{LATON}" opacity="{0.42 if active else 0.20}"/>']
+    out = [f'<polygon points="{pts}" fill="{T("accent")}" '
+           f'opacity="{0.42 if active else 0.20}"/>']
     edges = [((0,0,0),(1,0,0)),((1,0,0),(1,1,0)),((1,1,0),(0,1,0)),((0,1,0),(0,0,0)),
              ((0,0,1),(1,0,1)),((1,0,1),(1,1,1)),((1,1,1),(0,1,1)),((0,1,1),(0,0,1)),
              ((0,0,0),(0,0,1)),((1,0,0),(1,0,1)),((1,1,0),(1,1,1)),((0,1,0),(0,1,1))]
@@ -542,49 +588,63 @@ def mini_room(cx, cy, s, datum, active):
     return ''.join(out)
 
 
+def label_plate(px, py, text, size, ls):
+    """Rótulo sobre la escena: siempre con plaquita de superficie.
+
+    Un token de acento garantiza contraste contra el fondo de SU tema, no
+    contra la obra que hay debajo. Medido en esta lámina, el acento sobre la
+    caliza daba 1,17:1 en claro; sobre bg-surface da 6,6:1.
+    """
+    w = len(text) * (size * 0.60 + ls) + 22
+    return (f'<rect x="{px - w / 2:.1f}" y="{py - size:.1f}" width="{w:.1f}" '
+            f'height="{size * 1.45:.1f}" rx="{size * 0.42:.1f}" '
+            f'fill="{T("bg-surface")}" fill-opacity="0.94"/>'
+            f'<text x="{px:.0f}" y="{py:.0f}" font-family="Georgia, serif" '
+            f'font-size="{size}" fill="{T("accent")}" text-anchor="middle" '
+            f'letter-spacing="{ls}">{text}</text>')
+
+
 def overlay_movil(data_uri):
     """Composición vertical propia. El §12 permite cambiar la disposición y
     ocultar detalle secundario; lo que prohíbe es encoger el escritorio."""
     o = []
     pts = [po((5.5, 0.0, 0.05))] + [po((cx + 0.5, cy + 0.5, 0.05)) for cx, cy in PATH]
     o.append('<polyline points="' + ' '.join(f'{a:.1f},{b:.1f}' for a, b in pts) +
-             f'" fill="none" stroke="{LATON}" stroke-width="3" opacity="0.95" '
+             f'" fill="none" stroke="{T("accent")}" stroke-width="3" opacity="0.95" '
              f'stroke-linecap="round" stroke-linejoin="round"/>')
     a0, end = pts[0], pts[-1]
-    o.append(f'<circle cx="{a0[0]:.1f}" cy="{a0[1]:.1f}" r="6" fill="{LATON}"/>'
+    o.append(f'<circle cx="{a0[0]:.1f}" cy="{a0[1]:.1f}" r="6" fill="{T("accent")}"/>'
              f'<circle cx="{end[0]:.1f}" cy="{end[1]:.1f}" r="6" fill="none" '
-             f'stroke="{LATON}" stroke-width="2.6"/>')
+             f'stroke="{T("accent")}" stroke-width="2.6"/>')
 
     lo, hi = po((0.5, 5.5, 0.05)), po((0.5, 5.5, 2.4))
     o.append(f'<line x1="{lo[0]:.1f}" y1="{lo[1]:.1f}" x2="{hi[0]:.1f}" y2="{hi[1]:.1f}" '
-             f'stroke="{LATON}" stroke-width="2.4" stroke-dasharray="8 6" opacity="0.95"/>'
+             f'stroke="{T("accent")}" stroke-width="2.4" stroke-dasharray="8 6" opacity="0.95"/>'
              f'<rect x="{hi[0]-24:.1f}" y="{(lo[1]+hi[1])/2-14:.1f}" width="48" height="28" '
-             f'rx="6" fill="#171008" fill-opacity="0.9" stroke="{LATON}" stroke-width="1.2"/>'
+             f'rx="6" fill="{T("bg-surface")}" fill-opacity="0.92" stroke="{T("accent")}" stroke-width="1.2"/>'
              f'<text x="{hi[0]:.1f}" y="{(lo[1]+hi[1])/2+6:.1f}" font-family="Georgia, serif" '
-             f'font-size="16" fill="{LATON}" text-anchor="middle">2,4</text>')
+             f'font-size="16" fill="{T("accent")}" text-anchor="middle">2,4</text>')
 
     for label, wp in (('ENTRADA', (5.15, 0.0, 2.6)), ('SALIDA', (0.0, 4.8, 4.8))):
         px, py = po(wp)
-        px = min(max(px, 52), OUT_W - 52)
-        o.append(f'<text x="{px:.0f}" y="{py:.0f}" font-family="Georgia, serif" '
-                 f'font-size="15" fill="{LATON}" text-anchor="middle" '
-                 f'letter-spacing="1.4">{label}</text>')
+        px = min(max(px, 62), OUT_W - 62)
+        o.append(label_plate(px, py, label, 15, 1.4))
 
     # selector: fila de objetivos de 60 px bajo la escena, no miniaturas
     base = OUT_H - 104
     o.append(f'<text x="{OUT_W/2}" y="{base-16:.0f}" font-family="Georgia, serif" '
-             f'font-size="12.5" fill="#A4937A" text-anchor="middle" letter-spacing="1">'
+             f'font-size="12.5" fill="{T("text-muted")}" text-anchor="middle" letter-spacing="1">'
              f'QUÉ CARA HACE DE SUELO</text>')
     for i in range(4):
         cx = OUT_W / 2 - 133 + i * 89
         o.append(f'<rect x="{cx-30:.0f}" y="{base:.0f}" width="60" height="60" rx="11" '
                  f'fill="#FFFFFF" fill-opacity="{0.07 if i == 0 else 0.025}" '
-                 f'stroke="{LATON if i == 0 else "#5B5142"}" '
+                 f'stroke="{LATON if i == 0 else T("text-muted")}" '
                  f'stroke-width="{1.7 if i == 0 else 1}"/>')
         o.append(mini_room(cx, base + 40, 14, i, i == 0))
 
     o.append(f'<text x="{OUT_W/2}" y="{OUT_H-16}" font-family="Georgia, serif" font-size="14.5" '
-             f'fill="#A4937A" text-anchor="middle">Toca una pieza y luego su destino</text>')
+             f'fill="{T("text-muted")}" text-anchor="middle">Toca una pieza y luego su destino</text>')
 
     return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
             f'viewBox="0 0 {OUT_W} {OUT_H}" width="{OUT_W}" height="{OUT_H}" role="img" '
@@ -592,9 +652,9 @@ def overlay_movil(data_uri):
             f'recorrido entre la entrada y la salida, y el selector de suelo debajo.">'
             f'<image href="{data_uri}" xlink:href="{data_uri}" x="0" y="0" '
             f'width="{OUT_W}" height="{OUT_H}"/>'
-            f'<text x="18" y="36" font-family="Georgia, serif" font-size="24" fill="#F3EAD8">'
+            f'<text x="18" y="36" font-family="Georgia, serif" font-size="24" fill="{T("text")}">'
             f'Habitación imposible</text>'
-            f'<text x="18" y="58" font-family="Georgia, serif" font-size="13" fill="#A4937A">'
+            f'<text x="18" y="58" font-family="Georgia, serif" font-size="13" fill="{T("text-muted")}">'
             f'La sala es un cubo. Cualquier cara puede ser el suelo.</text>'
             + ''.join(o) + '</svg>')
 
@@ -604,34 +664,33 @@ def overlay_svg(data_uri):
     # recorrido: eje de latón que toca los dos vanos
     pts = [po((5.5, 0.0, 0.05))] + [po((cx + 0.5, cy + 0.5, 0.05)) for cx, cy in PATH]
     o.append('<polyline points="' + ' '.join(f'{a:.1f},{b:.1f}' for a, b in pts) +
-             f'" fill="none" stroke="{LATON}" stroke-width="3.2" opacity="0.92" '
+             f'" fill="none" stroke="{T("accent")}" stroke-width="3.2" opacity="0.92" '
              f'stroke-linecap="round" stroke-linejoin="round"/>')
     a0 = pts[0]
-    o.append(f'<circle cx="{a0[0]:.1f}" cy="{a0[1]:.1f}" r="6.5" fill="{LATON}"/>')
+    o.append(f'<circle cx="{a0[0]:.1f}" cy="{a0[1]:.1f}" r="6.5" fill="{T("accent")}"/>')
     end = pts[-1]
     o.append(f'<circle cx="{end[0]:.1f}" cy="{end[1]:.1f}" r="6.5" fill="none" '
-             f'stroke="{LATON}" stroke-width="2.8"/>')
+             f'stroke="{T("accent")}" stroke-width="2.8"/>')
 
     # la cota del salto que bloquea
     lo, hi = po((0.5, 5.5, 0.05)), po((0.5, 5.5, 2.4))
     o.append(f'<line x1="{lo[0]:.1f}" y1="{lo[1]:.1f}" x2="{hi[0]:.1f}" y2="{hi[1]:.1f}" '
-             f'stroke="{LATON}" stroke-width="2.6" stroke-dasharray="9 7" opacity="0.95"/>'
+             f'stroke="{T("accent")}" stroke-width="2.6" stroke-dasharray="9 7" opacity="0.95"/>'
              f'<path d="M{lo[0]-9:.1f} {lo[1]:.1f} h18 M{hi[0]-9:.1f} {hi[1]:.1f} h18" '
-             f'stroke="{LATON}" stroke-width="2.6" stroke-linecap="round"/>'
+             f'stroke="{T("accent")}" stroke-width="2.6" stroke-linecap="round"/>'
              f'<rect x="{hi[0]+12:.1f}" y="{(lo[1]+hi[1])/2-15:.1f}" width="52" height="30" '
-             f'rx="6" fill="#171008" fill-opacity="0.88" stroke="{LATON}" stroke-width="1.2"/>'
+             f'rx="6" fill="{T("bg-surface")}" fill-opacity="0.92" stroke="{T("accent")}" stroke-width="1.2"/>'
              f'<text x="{hi[0]+38:.1f}" y="{(lo[1]+hi[1])/2+6:.1f}" font-family="Georgia, serif" '
-             f'font-size="17" fill="{LATON}" text-anchor="middle">2,4</text>')
+             f'font-size="17" fill="{T("accent")}" text-anchor="middle">2,4</text>')
 
     # rótulos de los vanos
     for label, wp in (('ENTRADA', (5.15, 0.0, 2.55)), ('SALIDA', (0.0, 4.8, 4.75))):
         px, py = po(wp)
-        o.append(f'<text x="{px:.0f}" y="{py:.0f}" font-family="Georgia, serif" font-size="19" '
-                 f'fill="{LATON}" text-anchor="middle" letter-spacing="1.8">{label}</text>')
+        o.append(label_plate(px, py, label, 19, 1.8))
 
     # selector espacial
     o.append(f'<text x="{OUT_W-186}" y="{OUT_H-150}" font-family="Georgia, serif" font-size="12.5" '
-             f'fill="#A4937A" text-anchor="middle" letter-spacing="1.1">QUÉ CARA HACE DE SUELO</text>')
+             f'fill="{T("text-muted")}" text-anchor="middle" letter-spacing="1.1">QUÉ CARA HACE DE SUELO</text>')
     for i in range(4):
         o.append(mini_room(OUT_W - 300 + i * 76, OUT_H - 94, 19, i, i == 0))
 
@@ -639,13 +698,13 @@ def overlay_svg(data_uri):
     kx = 44
     for ang in (180, 0, 90, -90):
         o.append(f'<rect x="{kx}" y="{OUT_H-76}" width="24" height="24" rx="5" fill="none" '
-                 f'stroke="#6B5F4C" stroke-width="1.2"/>'
-                 f'<path d="M-5.5 -4 L0 3 L5.5 -4" fill="none" stroke="#A4937A" stroke-width="2" '
+                 f'stroke="{T("text-muted")}" stroke-width="1.2"/>'
+                 f'<path d="M-5.5 -4 L0 3 L5.5 -4" fill="none" stroke="{T("text-muted")}" stroke-width="2" '
                  f'stroke-linecap="round" stroke-linejoin="round" '
                  f'transform="translate({kx+12} {OUT_H-63}) rotate({ang})"/>')
         kx += 28
     o.append(f'<text x="{kx+8}" y="{OUT_H-57}" font-family="Georgia, serif" font-size="14.5" '
-             f'fill="#A4937A">Flechas: mover la pieza · R: girar · 1–4: cambiar de suelo</text>')
+             f'fill="{T("text-muted")}">Flechas: mover la pieza · R: girar · 1–4: cambiar de suelo</text>')
 
     return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
             f'viewBox="0 0 {OUT_W} {OUT_H}" width="{OUT_W}" height="{OUT_H}" role="img" '
@@ -653,13 +712,13 @@ def overlay_svg(data_uri):
             f'de piedra con el recorrido marcado entre la entrada y la salida.">'
             f'<image href="{data_uri}" xlink:href="{data_uri}" x="0" y="0" '
             f'width="{OUT_W}" height="{OUT_H}"/>'
-            f'<text x="44" y="58" font-family="Georgia, serif" font-size="33" fill="#F3EAD8" '
+            f'<text x="44" y="58" font-family="Georgia, serif" font-size="33" fill="{T("text")}" '
             f'letter-spacing="0.3">Habitación imposible</text>'
-            f'<text x="44" y="86" font-family="Georgia, serif" font-size="16" fill="#A4937A">'
+            f'<text x="44" y="86" font-family="Georgia, serif" font-size="16" fill="{T("text-muted")}">'
             f'La sala es un cubo. Cualquiera de sus caras puede hacer de suelo.</text>'
             + ''.join(o) +
             f'<text x="{OUT_W-44}" y="{OUT_H-26}" font-family="Georgia, serif" font-size="14" '
-            f'fill="#8B7C66" text-anchor="end">P01 · render first-party · norma visual sep 2026</text>'
+            f'fill="{T("text-muted")}" text-anchor="end">P01 · render first-party · norma visual sep 2026</text>'
             f'</svg>')
 
 
@@ -690,8 +749,14 @@ def main():
         print(f'Escrito {args.out}/{name}.svg  ({OUT_W}x{OUT_H})')
 
     # escritorio y móvil son dos composiciones, no una escalada
-    render('gameplay-compuesta', 1180, 880, overlay_svg, top=104, bot=120)
-    render('gameplay-movil', 390, 730, overlay_movil, top=62, bot=150, margin=0.004)
+    global THEME
+    for tema in ('navy', 'claro'):
+        THEME = THEMES[tema]
+        render(f'gameplay-{tema}', 1180, 880, overlay_svg, top=104, bot=120)
+    THEME = THEMES['navy']
+    render('gameplay-movil-navy', 390, 730, overlay_movil, top=62, bot=150, margin=0.004)
+    THEME = THEMES['claro']
+    render('gameplay-movil-claro', 390, 730, overlay_movil, top=62, bot=150, margin=0.004)
 
 if __name__ == '__main__':
     main()
