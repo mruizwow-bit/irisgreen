@@ -1,0 +1,26 @@
+{
+  "schema": "R54_ASTRA_6_PILOTS_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_ASTRA_6_PILOTS_PARTIAL_PASS_REWORK_BEFORE_SCALE",
+  "input_patch_sha256": "ba9368ad0f4884973eda10612a8fd9ef7a168c8cd61f7d13e3f75bdd62fde757",
+  "direction_keep": [
+    "estructuras",
+    "mundos",
+    "modelado-3d"
+  ],
+  "rework": [
+    "dibujo",
+    "programacion",
+    "videojuegos"
+  ],
+  "technical_required": [
+    "REPRODUCIBLE_RASTER_PIPELINE",
+    "2X_SRCSET",
+    "ABOVE_FOLD_LOADING_REVIEW",
+    "ASSET_CACHE_BUST",
+    "STRICT_RICH_SCENE_BUILD_GATE"
+  ],
+  "scale_allowed": false,
+  "expected_marker": "R54_CLAUDE_TALLER_VISUAL_6_PILOTS_R2_READY_FOR_ASTRA"
+}
