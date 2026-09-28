@@ -1,0 +1,46 @@
+{
+  "schema": "R51_A9_INTERESTS_DONOR_SOURCE/1.0",
+  "authority_status": "R48_DONOR_EDITORIAL_DATA_ONLY",
+  "source_repository": "mruizwow-bit/irisgreen",
+  "source_branch": "agent4/r40-intereses-72-campo-20260926",
+  "source_commit": "c9c5941a2f12811908d2ea508e92134f26826119",
+  "files": {
+    "r40-interests.es.json": {
+      "git_blob_sha1": "b313e62f6beb688ad241b32d6c55628b8011c7b0",
+      "records": 72
+    },
+    "r40-interests.en.json": {
+      "git_blob_sha1": "97e854d3d6d0a0ee52f52487cbfb294858f7a4b3",
+      "records": 72
+    },
+    "r40-interest-routes.json": {
+      "git_blob_sha1": "a1e95fb17aff5f2951ce055db385e345b0169f05"
+    }
+  },
+  "astra_review": {
+    "issue": 309,
+    "state": "R48_ASTRA_HANDOFF_ACCEPTED_AS_DONOR_NOT_FOR_DIRECT_UPLOAD",
+    "successor_product_issue": 322,
+    "successor_execution_issue": 323
+  },
+  "allowed_use": [
+    "bilingual titles",
+    "curated objective/focus",
+    "curated exploration description",
+    "knowledge/experience classes",
+    "source authority/license/evidence",
+    "workshop connections",
+    "route provenance"
+  ],
+  "prohibited_inheritance": [
+    "R48 visual layout",
+    "R48 renderer as product decision",
+    "raw external datasets",
+    "maps/tiles/GeoJSON dumps",
+    "live unfrozen external results",
+    "age classification inference",
+    "automatic ALL_AGES fallback"
+  ],
+  "age_status": "PENDING_R58_R59_CANONICAL_CLASSIFICATION",
+  "active_for_sealed_r04": false
+}
