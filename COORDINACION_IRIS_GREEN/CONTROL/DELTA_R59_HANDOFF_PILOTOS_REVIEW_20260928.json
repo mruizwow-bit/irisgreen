@@ -1,0 +1,38 @@
+{
+  "schema": "R59_ASTRA_HANDOFF_PILOTS_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 323,
+  "status": "R59_ASTRA_HANDOFF_DONOR_ACCEPTED_RESTRUCTURE_STILL_REQUIRED",
+  "zip_sha256": "b7f1ef320b16406b77aeafe8192c19c3d4c4161726d779ace4d19daf9144f029",
+  "donor": {
+    "built_r48": 40,
+    "pending": 27,
+    "previous_deep_pages": 5,
+    "accepted_for": [
+      "DATA",
+      "LOGIC",
+      "SUBSETS",
+      "ROUTES",
+      "STORAGE",
+      "INTERACTIONS"
+    ]
+  },
+  "matrix_problem": {
+    "mode_from_renderer_r48": true,
+    "keep_from_build_state": true,
+    "cross_tab": {
+      "construido_keep": 40,
+      "pendiente_rework": 27,
+      "previa_rework": 5
+    }
+  },
+  "standalone_package_complete": false,
+  "missing_referenced_assets": [
+    "assets/ig-r48-m-depth.css",
+    "assets/ig-r48-m-cards.css"
+  ],
+  "next_marker": "R59_CODEX_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA",
+  "build_six_allowed": false,
+  "build_72_allowed": false,
+  "a2_allowed": false
+}
