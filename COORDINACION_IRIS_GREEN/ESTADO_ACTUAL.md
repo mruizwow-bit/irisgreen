@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R53 · Rincón · ASTRA REVIEW FAIL · 28/09/2026
+
+**Estado: `R53_CLAUDE_RINCON_REBUILD_ORDERED`.**
+
+Astra audita el ZIP R46 de Claude y rechaza el marcador `R46_CLAUDE_RINCON_REBUILD_READY_FOR_ASTRA`.
+
+Fallo raíz: las cinco salas son presets de un único shader/field, no cinco instalaciones con gramática espacial propia. Nube sigue leyendo como cielo; Respiración repite Globos; Jardín/Papel no alcanzan el material buscado.
+
+Además: Salas solo WebGL2 sin Canvas/static fallback, reduced-motion incompleto, audio de Salas ausente pese a documentarse, provenance/ad gate incompletos, QA 112 PASS no cubre producto, claim CSP bloqueante incorrecto porque la base A2 ya permite youtube-nocookie.
+
+#317 conserva Respirar/Paisajes loader/Pantalla limpia/#303/layout y reconstruye únicamente lo necesario. Solo `R53_CLAUDE_RINCON_INSTALLATIONS_READY_FOR_ASTRA` podrá pasar a A2.
+
+
 ## R52 · restaurar Sabik móvil aprobado + voz final · 27/09/2026
 
 **Estado: `R52_SABIK_MOVING_PRESENCE_RESTORE_ORDERED`.**
