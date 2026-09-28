@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R60 · Música · P0 pipeline aceptado · 28/09/2026
+
+**Estado: `R60_ASTRA_MUSIC_PIPELINE_PROOF_ACCEPTED_P1_AUTHORIZED` · #324.**
+
+P0 técnico PASS: síntesis first-party, reproducible, master/web assets/manifest/medición correctos.
+
+La pieza P0 NO queda congelada como identidad musical. Como posible M01: ADJUST.
+
+Claude queda autorizado a crear únicamente los 4 pilotos cortos M01–M04 y debe parar en `R60_CLAUDE_MUSIC_4_PILOTS_READY_FOR_ASTRA`.
+
+No piezas 10–12 min, no A2, no sustitución de biblioteca externa todavía.
+
+
 ## R62 · Juegos · conceptos 6 pilotos · 28/09/2026
 
 **Estado: `R62_GAMES_6_PILOT_CONCEPTS_ORDERED` · #326.**
