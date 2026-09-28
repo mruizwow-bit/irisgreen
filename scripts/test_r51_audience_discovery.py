@@ -65,6 +65,7 @@ def main():
  need(body_attr(support,'data-ig-page-age-bands')=='AGE_18_PLUS','Support page gate is not canonical adult-only')
  adult=(root/'es/neurodiversidad/condiciones/menopausia/index.html').read_text(encoding='utf-8')
  need(body_attr(adult,'data-ig-page-age-bands')=='AGE_18_PLUS','adult-only deep-link gate missing')
+ need('/assets/ig-age-gate-r51.css' in adult,'final pre-render gate stylesheet missing')
  # Every static link that points to a classified record or classified surface is annotated.
  missing=[];tagged=0
  pages=[root/'index.html',root/'404.html']

@@ -1,0 +1,11 @@
+/* R51 A2 · final canonical age gate. Loaded after section layout CSS. */
+[data-ig-age-bands][hidden]{display:none!important}
+html[data-ig-audience="children"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_0_12"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="teenagers"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_13_17"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="adults"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_18_PLUS"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="any"] [data-ig-age-bands]:not([data-ig-age-bands~="ALL_AGES"]){display:none!important}
+html[data-ig-audience="children"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_0_12"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="teenagers"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_13_17"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="adults"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_18_PLUS"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="any"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience] body[data-ig-audience-blocked] main{display:none!important;visibility:hidden!important}

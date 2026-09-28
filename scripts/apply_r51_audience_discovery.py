@@ -103,6 +103,8 @@ def annotate_html(root,by_url):
    if new!=attrs:tagged+=1
    return '<a'+new+'>'
   after=A_RE.sub(repl,after)
+  if ('data-ig-age-bands' in after or 'data-ig-page-age-bands' in after) and '/assets/ig-age-gate-r51.css' not in after:
+   after=re.sub(r'</head>','<link rel="stylesheet" href="/assets/ig-age-gate-r51.css?v=r51-age-965"></head>',after,count=1,flags=re.I)
   if after!=before:p.write_text(after,encoding='utf-8')
  return tagged,gated
 

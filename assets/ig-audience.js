@@ -99,6 +99,7 @@ function syncPageGate(){
  var canonical=body.getAttribute('data-ig-page-age-bands'),legacy=body.getAttribute('data-ig-page-audience');
  var blocked=canonical!==null?!allowedAgeBands(canonical):(legacy? !allowedAudience(legacy):false);
  body.toggleAttribute('data-ig-audience-blocked',blocked);
+ body.querySelectorAll('main').forEach(function(main){main.toggleAttribute('inert',blocked);if(blocked)main.setAttribute('aria-hidden','true');else main.removeAttribute('aria-hidden');});
  var gate=body.querySelector('[data-ig-audience-blocked-message]');
  if(!blocked){if(gate)gate.remove();return;}
  var copy=blockedCopy();

@@ -5,6 +5,7 @@ on:
     paths:
       - 'assets/ig-audience.js'
       - 'assets/ig-audience.css'
+      - 'assets/ig-age-gate-r51.css'
       - 'assets/buscador-comun.js'
       - 'assets/safety/age-classification-r51-*.json'
       - 'sabik/retrieval-panel.js'
