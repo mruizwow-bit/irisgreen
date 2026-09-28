@@ -123,7 +123,7 @@ function set(value){
 }
 function clear(){
  current='default';try{sessionStorage.removeItem(KEY);}catch(_){}
- apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,ageBand:null,safetyMode:mode()}});
+ apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{stage:current,ageBand:null,safetyMode:mode()}}));
 }
 function mount(root){
  root=root||document;root.querySelectorAll('[data-ig-audience-picker]').forEach(function(picker){
@@ -132,9 +132,9 @@ function mount(root){
   syncPicker(picker);
  });syncDiscovery(root);
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mount();apply();},{once:true});else{mount();apply();}
+function observeBody(){if(!document.body)return;new MutationObserver(function(records){records.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)syncDiscovery(n.matches&&n.matches('[data-ig-age-bands],[data-ig-audience-values]')?n.parentNode:n);});});}).observe(document.body,{childList:true,subtree:true});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mount();apply();observeBody();},{once:true});else{mount();apply();observeBody();}
 new MutationObserver(function(){document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncPageGate();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-if(document.body)new MutationObserver(function(records){records.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)syncDiscovery(n.matches&&n.matches('[data-ig-age-bands],[data-ig-audience-values]')?n.parentNode:n);});});}).observe(document.body,{childList:true,subtree:true});
 window.IGAudience=Object.freeze({
  get:function(){return current;},set:set,clear:clear,mode:mode,isAdult:isAdult,isSafe:function(){return !isAdult();},
  selectedBand:selectedBand,allowedAgeBands:allowedAgeBands,allowedAudience:allowedAudience,
