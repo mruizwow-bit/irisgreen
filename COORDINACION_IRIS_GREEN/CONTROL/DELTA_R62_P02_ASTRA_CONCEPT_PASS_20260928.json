@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P02-ASTRA-CONCEPT-PASS",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P02_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING",
+  "artifact": {
+    "patch_sha256": "d27d164f47716f9d8b63e110753f45bf4a386727300cf7fb56c4d93a600bd4d0",
+    "gameplay_svg_sha256": "a540b3157725bc8cefd999de12da2519103635a518c275c0df496cf2c601f85b",
+    "causalidad_svg_sha256": "6527003d4e1ae0be2930798456fcafea3f30166972857da8ebcf196c8f8db3ac"
+  },
+  "astra_decision": "PASS_CONCEPT",
+  "pass": [
+    "OPEN_TOY_MECHANIC",
+    "RELIEF_AND_WATER_CAUSALITY",
+    "BEFORE_AFTER_CAUSALITY",
+    "VISUAL_DEPTH_AND_MATERIALITY",
+    "SIMULATION_SCOPE_DEFINED",
+    "ACCESSIBILITY_CONCEPT",
+    "STAGE_ADAPTATION",
+    "MOBILE_DIRECTION",
+    "IP_ORIGINALITY"
+  ],
+  "next_human_gate": "R62_P02_TERRARIO_CONCEPT_APPROVED",
+  "hold": [
+    "P03_UNTIL_MARIA_HUMAN_QA",
+    "P04",
+    "P05",
+    "P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
