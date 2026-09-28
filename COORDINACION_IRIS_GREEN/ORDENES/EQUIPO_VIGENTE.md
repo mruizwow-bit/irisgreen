@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R54 Taller visual · 28/09/2026
+
+Orden: `R54_CLAUDE_TALLER_VISUAL/01_CLAUDE.md` · issue #318.
+
+Claude no reescribe los motores R47. Enriquecerá la Home y los interiores para que cada estudio entre por una mini-escena/escena visual, no por iconografía mínima. Infancia recibe dirección visual más inmediata y cálida sin infantilización.
+
+Astra revisa → A2 integra → María HUMAN QA.
+
+
 ## Agente 3 + A2 · R52 Sabik moving presence + voice · 27/09/2026
 
 Issue #315.
