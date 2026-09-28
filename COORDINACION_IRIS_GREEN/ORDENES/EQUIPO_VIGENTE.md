@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R60 Música original Iris Green · 28/09/2026
+
+Orden: `R60_CLAUDE_MUSICA_ORIGINAL/01_CLAUDE.md` · issue #324.
+
+Claude demuestra primero pipeline de render original y después crea 4 pilotos cortos. No produce biblioteca masiva sin escucha Astra/María.
+
+A2 integra solo tras gate. María HUMAN QA auditiva final.
+
+
 ## Codex · R59 Intereses · 28/09/2026
 
 Orden: `R59_CODEX_INTERESES/01_CODEX.md` · issue #323.
