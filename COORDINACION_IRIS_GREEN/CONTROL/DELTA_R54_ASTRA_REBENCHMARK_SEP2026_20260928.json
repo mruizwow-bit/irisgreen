@@ -1,0 +1,43 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R54-ASTRA-REBENCHMARK-SEP2026-6-CARDS-PASS",
+  "date": "2026-09-28",
+  "issue": 318,
+  "status": "R54_ASTRA_6_PILOTS_REBENCHMARK_SEP2026_PASS_HUMAN_QA_PENDING",
+  "artifacts": {
+    "patch_sha256": "c54ecf3e945598416f1d9061a5f7c8f49b1a7b918609bf2dc49712ee6c7716db",
+    "patch_gz_sha256": "e2999d63a995d330fbc6ad9f3dab86915a93384507ac7ea76e1c83a706e9000f",
+    "six_mobile_sha256": "fc9c097b1046e260d968a6e16ec1d8e1da09387312c2e126b532d9f75d19b12b",
+    "before_after_sha256": "732664331dca10ccc0daa7f9f62109e3cd5e9307ff6e39aeb49f3bf2ebe28c62",
+    "head_reported": "5e302f193fda2a99e0a54ab09589ff488fa7be2b",
+    "base_reported": "2541351a"
+  },
+  "astra_card_visual": {
+    "dibujo": "PASS",
+    "estructuras": "PASS",
+    "programacion": "PASS",
+    "videojuegos": "PASS",
+    "mundos": "PASS",
+    "modelado_3d": "PASS"
+  },
+  "technique": [
+    "AVIF_WEBP_PICTURE_FALLBACK",
+    "1X_2X",
+    "SYNC_CONFIG_PER_SCENE",
+    "BUILD_STRICT_4_OUTPUTS"
+  ],
+  "scope": "TALLER_LAUNCHER_CARD_ART_ONLY",
+  "not_approved": [
+    "27_INTERIORS",
+    "STARTERS",
+    "LAUNCHER_CHROME",
+    "PRINTABLES"
+  ],
+  "next_human_gate": "R54_TALLER_CARD_STANDARD_SEP2026_HUMAN_APPROVED_SCALE_21_PLUS_9_AUTHORIZED",
+  "hold": [
+    "SCALE_21_PLUS_9_UNTIL_MARIA",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
