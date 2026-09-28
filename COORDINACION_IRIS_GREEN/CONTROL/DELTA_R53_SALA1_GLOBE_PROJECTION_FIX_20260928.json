@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R53-SALA1-GLOBE-PROJECTION-FIX",
+  "date": "2026-09-28",
+  "issue": 317,
+  "status": "R53_SALA1_GLOBE_PROJECTION_FIX_PASS_E4_REWORK_CONTINUES",
+  "pass": [
+    "GLOBE_SILHOUETTE_PROJECTION",
+    "CIRCULAR_OFF_AXIS_SILHOUETTES",
+    "NO_STRAIGHT_EDGE_IMPOSTOR_CLIPPING"
+  ],
+  "keep": [
+    "SPHERE_ELLIPSOID_FAMILY",
+    "OFF_AXIS_CENTER_RADIUS_CORRECTION",
+    "ADAPTIVE_QUALITY_MANAGER"
+  ],
+  "rework": [
+    "INFLATABLE_MEMBRANE_MATERIAL",
+    "ARCHITECTURAL_MATERIALITY",
+    "INTERACTION_READS_FROM_COMPOSITION",
+    "MOBILE_VERTICAL_COMPOSITION",
+    "E4_FINAL_BENCHMARK"
+  ],
+  "transversal_observation": [
+    "rincon-r53-room-cloud.js same impostor pattern",
+    "rincon-r53-room-garden.js same impostor pattern"
+  ],
+  "next": "R53_SALA1_GLOBOS_E4_R2_READY_FOR_ASTRA_MARIA",
+  "hold": [
+    "OTHER_5_ROOMS",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
