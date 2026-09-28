@@ -1,3 +1,21 @@
+## Taxonomía global de edad · rangos explícitos · 28/09/2026
+
+**Estado: `IRIS_GREEN_AGE_TAXONOMY_2026_ADOPTED_GLOBAL`.**
+
+María decide que el cambio es también interno, no solo de copy.
+
+IDs canónicos:
+`AGE_0_12` · `AGE_13_17` · `AGE_18_PLUS` · `ALL_AGES`.
+
+`GENERAL` solo significa “sin filtro elegido”.
+
+Se sustituyen como taxonomía canónica: Infancia/Adolescencia/Adultez/Transversal y children/teenagers/adults/any.
+
+Aplica a toda Iris Green, incluido child-safe, search, Sabik y Cloud.
+
+Norma: `NORMATIVA/IRIS_GREEN_AGE_TAXONOMY_2026.md`.
+
+
 ## R52 · Sabik · corrección de precedencia · 28/09/2026
 
 **Estado: `R52_A3_REWORK_NEW_SABIK_WITH_R37_MOTION_REQUIRED` · #315.**
