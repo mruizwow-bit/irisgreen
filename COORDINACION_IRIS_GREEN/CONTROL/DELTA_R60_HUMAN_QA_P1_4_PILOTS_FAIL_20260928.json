@@ -1,0 +1,27 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R60-HUMAN-QA-P1-4-PILOTS-FAIL",
+  "date": "2026-09-28",
+  "issue": 324,
+  "status": "R60_HUMAN_QA_4_PILOTS_FAIL_REWORK_REQUIRED",
+  "authority": "Maria HUMAN QA",
+  "decision": {
+    "M01": "REWORK",
+    "M02": "REWORK",
+    "M03": "REWORK",
+    "M04": "REWORK"
+  },
+  "reason": [
+    "STRIDENT_FROM_START",
+    "STRIDENT_OR_HARSH_BETWEEN_FRAGMENTS_TRANSITIONS"
+  ],
+  "supersedes_as_product_gate": "R60_ASTRA_MUSIC_4_PILOTS_LISTENING_REVIEW_READY_FOR_MARIA",
+  "next_marker": "R60_CLAUDE_MUSIC_4_PILOTS_R2_READY_FOR_ASTRA_MARIA",
+  "hold": [
+    "LONG_RENDER",
+    "A2",
+    "PIXABAY_REPLACEMENT",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
