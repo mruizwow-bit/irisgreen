@@ -81,15 +81,31 @@ la luz y la otra a la sombra.
 albedo —es correcto— pero con un lóbulo ancho convierte una hoja oscura en
 chapa gris. Hubo que bajarlo y subir la rugosidad del follaje.
 
-## Cómo va contra las cinco preguntas de la referencia
+## Medido contra la referencia
 
-| | |
-| --- | --- |
-| ¿La sombra tiene penumbra? | Sí. Cuatro direcciones promediadas, la misma del motor. |
-| ¿Hay imperfección desigual? | Sí: contorno de los cantos perturbado por ruido, grumos y hojarasca a escala de palmo, tono por planta, tapiz irregular. |
-| ¿Alguna superficie grande plana? | **La sección frontal del sustrato sigue siendo la más floja.** Lleva el nivel freático dibujado, que ayuda y además es verdad del sistema, pero es la zona que menos aguanta el listón. |
-| ¿Hay segunda fuente? | Sí: el charco devuelve luz verdosa a lo que tiene encima, y el ambiente es hemisférico. |
-| A 390, ¿composición propia? | Sí: el terrario a ancho completo, la bandeja en tira horizontal debajo, objetivos de 60 px y sin etiquetas, que es lo que pide el §10 del concepto. |
+`scripts/test_r62_p02_e4.py`. El listón de la tercera sale de medir igual la
+lámina aprobada de P01, que es lo único que evita inventarse un umbral.
+
+| Pregunta de la referencia | Medida | P02 | Listón |
+| --- | --- | --- | --- |
+| ¿La sombra tiene penumbra? | parte de la sombra en valores intermedios | **75 %** | ≥ 30 % |
+| ¿La imperfección es desigual? | desviación gruesa ÷ fina del albedo | **1,37** | ≥ 0,45 |
+| ¿Alguna superficie grande plana? | mayor región contigua de varianza baja | **4,1 %** | ≤ 12 % · P01 da 2,0 % |
+| ¿Hay segunda fuente? | escena alcanzada por el derrame del charco | **59 %** | ≥ 4 % |
+| A 390, ¿composición propia? | ventana y rango de cota distintos | sí | distintos |
+| ¿Se ve la consecuencia? | musgo con roca vs sin roca, mismo encuadre | **+42 %** | ≥ +15 % |
+
+Dos avisos sobre cómo está medida la tercera, porque las dos formas obvias de
+medirla dan números falsos. Sobre el **albedo** da 64 %, y es mentira: la
+tierra tiene poco contraste de color y todo su relieve se lo da la luz, que en
+el albedo todavía no está. Sobre la **imagen entera sin máscara** P01 da 71 %,
+porque su vacío oscuro es liso de verdad; un fondo no es una superficie que
+represente materia. Se mide sobre la imagen compuesta y dentro de la escena.
+
+**Lo que el test no mide, y por eso no declara:** si parece un terrario y no
+una ficha; si tierra, roca, madera, musgo, hoja y agua se reconocen como
+materiales distintos; si algo recuerda a obra de terceros. Es el §14 del
+concepto y necesita ojos.
 
 ## Pesos
 
@@ -107,9 +123,13 @@ escritorio se iba a 638 KB. Comparadas a 1440 no se distingue cuál es cuál.
 
 No declaro esto a la altura de P01. Tres cosas concretas:
 
-1. **La sección frontal** ocupa la franja baja y se resuelve con poca cosa. Lo
-   honesto sería darle raíces, grava visible y un gradiente de saturación
-   propio, o bajar el suelo del vaso para que ocupe menos.
+1. **La sección frontal** ocupa la franja baja y se resuelve con poca cosa. La
+   medida de superficie plana la deja pasar —4,1 % frente al 12 % del listón—,
+   y aun así mirándola creo que es la zona más floja de la lámina. Las dos
+   cosas pueden ser verdad a la vez, y es exactamente por eso que la revisión
+   humana no la sustituye ningún número. Lo honesto sería darle raíces, grava
+   visible y un gradiente propio, o bajar el suelo del vaso para que ocupe
+   menos.
 2. **El follaje** ya no es papel, pero repite pocas siluetas. Hacen falta dos o
    tres especies más con hoja de otra forma, no sólo de otro tono.
 3. **La vegetación colgante** se lee como cadenas contra la pared. Debería
