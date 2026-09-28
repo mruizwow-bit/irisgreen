@@ -1,0 +1,63 @@
+{
+  "schema": "R51_A9_SOURCE_FREEZE/1.0",
+  "phase": "A_ADAPTERS_INVENTORY",
+  "observed_at": "2026-09-28",
+  "canonical_web_source": {
+    "repository": "mruizwow-bit/irisgreen",
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "head": "727808b41121bdcafb33d9bc05466460376c1521",
+    "tree": "776b1118e2e53be82d9a6524d071b32366cc39e6",
+    "status": "OBSERVED_A2_LIVE_SOURCE",
+    "note": "Phase B re-reads A2 immediately before sealing R04."
+  },
+  "base_library": {
+    "version": "sabik-es-en-20260927-r03-9216eeee6a32",
+    "corpus_sha256": "7335fc9ba4992814ff11698e740d6faca3abc0e160f2d2485c214866884add43",
+    "manifest_sha256": "9dd6a2f1e6458351876a74921d7ed6180ce2660468798a1c5787c047a8bc8a13",
+    "immutable": true
+  },
+  "child_safe_source": {
+    "package": "iris-green-contenido-R02-DESIGN-CHILD-SAFE-20260927.zip",
+    "sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+    "records": 965,
+    "files": {
+      "SAFETY/content-safety-manifest.json": {
+        "sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+        "bytes": 992674
+      },
+      "SAFETY/safe-variants.json": {
+        "sha256": "4167fe9cf767623c1188b5796297b4f83a89b0c2928a55bcc0f765690bfb3260",
+        "bytes": 27060
+      },
+      "SAFETY/s2-review.csv": {
+        "sha256": "579c4274d1de97b24ea39f9296ea66d9c61a50b1cad15a0da89e91736cdeab55",
+        "bytes": 4406
+      },
+      "NORMALIZED/estudios-textos.json": {
+        "sha256": "3ba5565cd8057435b5f92aa501df57138c5bed0ecd27e6ca395a78c13c44c5c6",
+        "bytes": 309817
+      },
+      "NORMALIZED/tramites-directorio-datos.json": {
+        "sha256": "496f30fa9c77e7d5f00a4027bea4fa36fe0cd195b9a6f27775b414d81eddac30",
+        "bytes": 2618598
+      },
+      "AUDIT/package-inventory-audit.json": {
+        "sha256": "37d35122fa33c0c724cb61fa107c90991669d0da0ff02e8d40d407837b164e7a",
+        "bytes": 1716
+      }
+    }
+  },
+  "invariants": {
+    "r38_overwrite": false,
+    "r03_overwrite": false,
+    "production": false,
+    "dns": false,
+    "team_login_changes": false,
+    "secrets": false,
+    "frontend": false,
+    "voice": false,
+    "embeddings": false,
+    "llm": false,
+    "user_data": false
+  }
+}

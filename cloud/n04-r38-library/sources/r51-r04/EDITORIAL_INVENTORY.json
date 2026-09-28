@@ -1,0 +1,38 @@
+{
+  "schema": "R51_A9_EDITORIAL_INVENTORY/1.0",
+  "source_package_sha256": "b24998fbdb5fab9b59135237ba5c5edb5d67167d8aa31b413656eb53459f6f23",
+  "total_records": 965,
+  "domains": {
+    "condition": 226,
+    "situation": 223,
+    "everyday_life": 62,
+    "data": 60,
+    "research": 132,
+    "support_directory_es": 262
+  },
+  "additions_over_a2_observed": {
+    "condition": 41,
+    "situation": 36,
+    "everyday_life": 14,
+    "data": 11,
+    "research": 12,
+    "support_directory": 4
+  },
+  "sensitivity": {
+    "S0_GENERAL": 724,
+    "S1_SENSITIVE": 225,
+    "S2_HIGH_SENSITIVITY": 16
+  },
+  "discovery": {
+    "NORMAL": 945,
+    "SAFE_VARIANT_REQUIRED": 16,
+    "INTENTIONAL_ONLY": 4
+  },
+  "rules": {
+    "bilingual_when_approved_source_exists": true,
+    "no_silent_translation_for_support_directory": true,
+    "no_slug_from_title": true,
+    "safety_before_ranking": true,
+    "public_site_not_equal_cloud_corpus": true
+  }
+}
