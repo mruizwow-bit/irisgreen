@@ -9,6 +9,9 @@ def need(v,m):
 async def check(page,path,access,music):
  req=[];page.on('request',lambda r:req.append(r.url));await page.goto(BASE+path,wait_until='networkidle')
  need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'overflow '+path)
+ canvas=await page.evaluate("()=>{const s=getComputedStyle(document.body);return {color:s.backgroundColor,image:s.backgroundImage}}")
+ need(canvas['color']=='rgb(246, 248, 251)','page canvas mismatch '+path+' '+canvas['color'])
+ need(canvas['image']=='none','legacy gradient still active '+path+' '+canvas['image'])
  h=page.locator('.ig-r49-global-header');need(await h.count()==1,'header '+path);need(await h.get_by_text('Iris Green',exact=True).count()==1,'brand '+path);need(await h.get_by_role('button',name=access,exact=True).count()==1,'a11y '+path);need(await h.get_by_role('button',name=music,exact=True).count()==1,'music '+path)
  for n in ['Condiciones','Conditions','Situaciones','Situations','Vida diaria','Everyday life','Investigación','Research','Recursos','Resources','Buscar','Search','Contenido','Content','Explorar','Explore']:need(await h.get_by_text(n,exact=True).count()==0,'forbidden '+n+' '+path)
  m=h.get_by_role('button',name=music,exact=True);await m.click();await page.wait_for_timeout(100);need(not any('/audio/' in u for u in req),'audio autoplay '+path);await page.keyboard.press('Escape');need(await m.evaluate('(e)=>document.activeElement===e'),'music focus '+path)
@@ -24,5 +27,5 @@ async def main():
     await page.set_viewport_size({'width':w,'height':h});await page.goto(BASE+path,wait_until='networkidle');need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),f'overflow {path} {w}')
     await page.screenshot(path=str(OUT/f'{name}-{w}x{h}.png'),full_page=True);report['screenshots'].append(f'{name}-{w}x{h}.png')
   await b.close()
- report['checks']=['header-contract','music-no-autoplay','accessibility','es-en','browse','1440-1920-390-320'];(OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report))
+ report['checks']=['palette-canvas-home-match','header-contract','music-no-autoplay','accessibility','es-en','browse','1440-1920-390-320'];(OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report))
 if __name__=='__main__':asyncio.run(main())
