@@ -133,7 +133,8 @@ def enrich_research(root,by_id):
   bands=by_id.get(cid)
   if not bands:raise AssertionError('Research record missing age bands '+cid)
   r['ig_age_bands']=bands;seen.add(cid)
- if len(seen)!=132:raise AssertionError(f'Research age coverage {len(seen)}/132')
+ matrix_total=sum(1 for cid in by_id if cid.startswith('research-'))
+ if len(seen)!=len(rows):raise AssertionError(f'Research published age coverage {len(seen)}/{len(rows)}')
  p.write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  htmlp=root/'es/investigacion/index.html';text=htmlp.read_text(encoding='utf-8')
  hook="      if (window.IGAudience && !window.IGAudience.allowedAgeBands(s.ig_age_bands || [])) return false;"
@@ -142,7 +143,7 @@ def enrich_research(root,by_id):
   if needle not in text:raise AssertionError('Research renderer hook not found')
   text=text.replace(needle,needle+'\n'+hook,1)
   htmlp.write_text(text,encoding='utf-8')
- return len(seen)
+ return {'published':len(seen),'matrix':matrix_total,'classified_not_materialized':matrix_total-len(seen)}
 
 def write_runtime(root,g,by_url,surface):
  payload={
