@@ -1,0 +1,46 @@
+{
+  "schema": "R60_IRIS_MUSIC/1.0",
+  "date": "2026-09-28",
+  "issue": 324,
+  "status": "R60_CLAUDE_IRIS_MUSIC_ORIGINAL_ORDERED",
+  "current_library": {
+    "external_track_count": 24,
+    "runtime_source": "assets/musica.js",
+    "external_credit": "Pixabay",
+    "final_accepted": false
+  },
+  "strategy": [
+    "PIPELINE_PROOF",
+    "FOUR_SHORT_PILOTS",
+    "HUMAN_LISTENING",
+    "FOUR_LONG_10_12_MIN_TRACKS",
+    "FINAL_LIBRARY"
+  ],
+  "pilots": [
+    "luz-tranquila",
+    "concentracion-suave",
+    "flotar",
+    "noche-clara"
+  ],
+  "rules": {
+    "first_party_only": true,
+    "autoplay": false,
+    "third_party_samples_default": false,
+    "no_streaming": true,
+    "no_external_embeds": true,
+    "no_therapeutic_claims": true,
+    "no_vocals": true,
+    "human_audio_qa_required": true
+  },
+  "integration_owner": "A2",
+  "creation_owner": "Claude",
+  "human_qa": "Maria",
+  "markers": {
+    "pipeline": "R60_CLAUDE_MUSIC_PIPELINE_PROOF_READY_FOR_ASTRA",
+    "pilots": "R60_CLAUDE_MUSIC_4_PILOTS_READY_FOR_ASTRA",
+    "long_gate": "R60_MUSIC_4_PILOTS_APPROVED_FOR_LONG_RENDER",
+    "long_ready": "R60_CLAUDE_MUSIC_4_LONG_TRACKS_READY_FOR_ASTRA",
+    "integration": "R60_IRIS_MUSIC_LIBRARY_READY_FOR_A2",
+    "accepted": "R60_IRIS_MUSIC_FIRST_PARTY_HUMAN_ACCEPTED"
+  }
+}
