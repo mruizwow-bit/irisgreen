@@ -1,0 +1,32 @@
+{
+  "schema": "R61_RINCON_AQUARIUM_AV_PILOT/1.0",
+  "date": "2026-09-28",
+  "issue": 325,
+  "status": "R61_CLAUDE_RINCON_AQUARIUM_AV_PILOT_ORDERED",
+  "donor": "pecera_acuario.mp4",
+  "duration_target_minutes": 10,
+  "audio_model": "EMBEDDED_UNIQUE_AUDIO_PER_SCENE",
+  "autoplay": false,
+  "initial_volume_percent": [
+    25,
+    30
+  ],
+  "controls": [
+    "PLAY_WITH_SOUND",
+    "MUTE_UNMUTE",
+    "VOLUME",
+    "STOP",
+    "FULLSCREEN"
+  ],
+  "future_scenes_blocked_until_human_qa": [
+    "medusas",
+    "mar",
+    "rio",
+    "bosque"
+  ],
+  "first_party_visual": true,
+  "first_party_audio": true,
+  "no_streaming": true,
+  "no_external_embeds": true,
+  "expected_marker": "R61_CLAUDE_RINCON_AQUARIUM_10MIN_PILOT_READY_FOR_ASTRA"
+}
