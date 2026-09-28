@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "GLOBAL-VISUAL-STANDARD-SEP-2026",
+  "date": "2026-09-28",
+  "status": "IRIS_GREEN_VISUAL_STANDARD_SEP_2026_ADOPTED_ROLLING",
+  "scope": [
+    "HOME",
+    "TALLER",
+    "JUEGOS",
+    "INTERESES",
+    "RINCON",
+    "RECURSOS",
+    "FUTURE_VISUAL_PRODUCTS"
+  ],
+  "principle": "PREMIUM_2026_QUALITY_OVER_RENDER_TECHNIQUE",
+  "rolling_review": {
+    "before_major_visual_wave": true,
+    "before_pilot_scale": true,
+    "max_active_interval_weeks": 8
+  },
+  "immediate_effects": {
+    "R54": "REBENCHMARK_6_BEFORE_SCALE_21_PLUS_9",
+    "R62_P01": "MECHANIC_KEEP_VISUAL_REOPENED",
+    "R62_P02": "MECHANIC_KEEP_VISUAL_REWORK",
+    "R62_P03": "HOLD_UNTIL_REFERENCE_PASSES_NEW_STANDARD"
+  },
+  "allowed_techniques": [
+    "SVG_RICH",
+    "RASTER_FIRST_PARTY",
+    "CANVAS2D",
+    "2_5D",
+    "WEBGL",
+    "WEBGPU_WITH_FALLBACK",
+    "HYBRID"
+  ],
+  "human_visual_gate": true
+}
