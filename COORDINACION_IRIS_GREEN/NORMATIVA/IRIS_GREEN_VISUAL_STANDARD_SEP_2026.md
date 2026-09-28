@@ -305,6 +305,114 @@ Preguntas mínimas:
 Si alguna respuesta crítica es NO:
 `VISUAL_REWORK_REQUIRED`
 
+
+## 15 BIS. NIVEL DE EJECUCIÓN Y BENCHMARK EXTERNO VIGENTE · SEPTIEMBRE 2026
+
+### Nivel de ejecución
+
+Escala común:
+
+- **E1 · Blocking**: geometría/layout/mecánica demostrada.
+- **E2 · Concepto pulido**: composición y dirección artística claras, todavía no arte final.
+- **E3 · Producción web estándar**: arte técnicamente terminado, responsive y optimizado, pero sin el acabado perceptivo exigido a una experiencia principal premium.
+- **E4 · Premium interactivo 2026**: objetivo mínimo de las experiencias visuales principales de Iris Green.
+- **E5 · Showcase inmersivo**: uso selectivo cuando la experiencia lo justifique; no es obligatorio de forma transversal.
+
+Estado normativo:
+
+`IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026`
+
+E1/E2 sirven para decidir concepto.  
+E3 puede ser suficiente para UI secundaria.  
+Una experiencia visual principal NO está terminada hasta E4.
+
+### Qué demuestra E4
+
+E4 requiere conjuntamente:
+
+1. **acabado perceptivo**: no debe parecer blocking, maqueta, SVG educativo, render técnico ni conjunto de primitivas;
+2. **materia**: materiales diferenciados con microdetalle e imperfección apropiada;
+3. **luz**: iluminación que construye forma, volumen, contacto y separación de planos;
+4. **geometría/silueta**: suficiente riqueza para que el sombreado no esté intentando salvar formas demasiado básicas;
+5. **profundidad/atmósfera**;
+6. **composición funcional**: la escena explica qué ocurre o qué puede hacerse;
+7. **identidad propia**;
+8. **móvil real**: remaquetado cuando haga falta; NO desktop reducido en miniatura;
+9. **accesibilidad y rendimiento**;
+10. **comparación real contra benchmark externo vigente**.
+
+### Benchmark externo vigente · septiembre 2026
+
+Estas referencias NO se copian estética, layout, assets ni IP. Se usan para calibrar **nivel de acabado, integración arte/tecnología, interacción y móvil**.
+
+#### A · National Gallery Imaginarium
+- Webby Winner 2026 · Cultural Institutions.
+- Experiencia 3D web accesible desde navegadores desktop y móviles.
+- Stack público: Three.js, React Three Fiber y herramientas de imagen de alta resolución.
+- Benchmark para Iris Green: mundo digital con carácter propio, profundidad, interacción integrada y experiencia web inmersiva sin convertirse en videojuego AAA.
+
+Referencia pública:
+- https://www.nationalgallery.org.uk/visiting/virtual-gallery/national-gallery-imaginarium
+- https://www.q42.nl/en/work/imaginarium-national-gallery
+
+#### B · Igloo Inc
+- Webby Winner 2026 · Best Visual Design - Aesthetic.
+- Nominee 2026 · Technical Achievement.
+- Benchmark: excelencia visual y logro técnico deben aparecer juntos; no basta con que una escena sea técnicamente compleja.
+
+Referencia:
+- https://winners.webbyawards.com/2026/websites-and-mobile-sites/features-design/best-visual-design-aesthetic/361001/igloo-inc
+
+#### C · FOLLOW.ART
+- Webby Winner 2026 · Best Visual Design - Function.
+- Benchmark: el arte visual forma parte de la función y la UX, no una capa decorativa separada.
+
+Referencia:
+- https://winners.webbyawards.com/2026/websites-and-mobile-sites/features-design/best-visual-design-function/383443/followart
+- https://videinfra.com/work/follow-art
+
+#### D · Dunes & Stars
+- Webby Winner 2026 · Best Mobile Visual Design - Aesthetic.
+- Benchmark específico de móvil: una experiencia visual premium mantiene dirección artística en pantalla pequeña; no se limita a escalar desktop.
+
+Referencia:
+- https://winners.webbyawards.com/2026/websites-and-mobile-sites/mobile-features-design/best-mobile-visual-design-aesthetic/365026/dunes--stars--brand-experience
+
+#### E · Webby Best Practices 2026
+La propia categoría se define como benchmark de las prácticas web más actuales, innovadoras y avanzadas, y evalúa contenido, estructura, navegación, diseño visual, interactividad, funcionalidad y experiencia global.
+
+Referencia:
+- https://winners.webbyawards.com/winners/websites-and-mobile-sites/features-design/best-practices
+
+### Techo técnico, no requisito
+
+El navegador en 2026 ya puede superar ampliamente el nivel de una lámina raster estática:
+
+- Three.js publica ejemplos WebGPU con PBR, environment maps, transmission, clearcoat y luces dinámicas.
+- PlayCanvas/SuperSplat 2026 usa WebGPU y LOD/streaming para escenas complejas y experiencias interactivas en navegador.
+- Babylon Lite publica demos WebGPU de PBR, iluminación, física, océano y escenas de juego.
+
+Esto NO obliga a Iris Green a usar WebGPU ni escenas pesadas.
+
+Sí elimina la excusa de que “en web no se puede” cuando una superficie principal queda visualmente en E2/E3.
+
+WebGPU requiere fallback donde no esté disponible.
+
+### Cómo se usa el benchmark
+
+No comparar píxel a píxel ni copiar estilos.
+
+Antes de PASS, responder:
+
+- ¿La experiencia parece un producto terminado al lado de trabajo digital premiado/actual de 2026?
+- ¿Arte e interacción están integrados?
+- ¿La técnica desaparece y queda la experiencia, o todavía se ve el truco/renderizador?
+- ¿Móvil conserva dirección artística sin miniaturizar desktop?
+- ¿Existe una diferencia perceptiva clara respecto a una maqueta/prototipo?
+
+Si no:
+`VISUAL_REWORK_REQUIRED`
+
 ## 16. Implicaciones inmediatas
 
 ### Taller R54
