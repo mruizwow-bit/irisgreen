@@ -1,3 +1,16 @@
+## R62 · P01 Habitación imposible · HUMAN QA APROBADO · 28/09/2026
+
+**Gate: `R62_P01_HABITACION_CONCEPT_APPROVED` · #326.**
+
+María aprueba las imágenes R2. P01 queda cerrado como concepto: mecánica, cubo/rotaciones reales, demostración A/B, ruta, selector, dirección visual, etapas y dirección móvil.
+
+La textura/materialidad final de producción queda separada y no reabre el concepto.
+
+Se autoriza únicamente **P02 · Terrario vivo · concepto**.
+
+P03–P06 y Codex #321 siguen HOLD.
+
+
 ## R62 · P01 Habitación imposible R2 · Astra PASS · 28/09/2026
 
 **Estado: `R62_P01_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING` · #326.**
