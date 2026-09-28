@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R60 · Música original Iris Green · 28/09/2026
+
+**Estado: `R60_CLAUDE_IRIS_MUSIC_ORIGINAL_ORDERED` · #324.**
+
+La biblioteca global actual de 24 pistas externas/Pixabay no es final.
+
+Claude crea pipeline first-party → 4 pilotos cortos → Astra/María escuchan → solo después 4 piezas de 10–12 min.
+
+El reproductor global se conserva. A2 reemplaza la biblioteca únicamente tras aceptación.
+
+Objetivo final: 100 % música Iris Green local/first-party, 0 autoplay, 0 streaming/embeds, 0 crédito Pixabay en runtime.
+
+
 ## R58/R59 · Intereses · reestructuración antes de build · 28/09/2026
 
 **Producto:** `R58_INTERESTS_RESTRUCTURE_AND_PILOTS_ORDERED` · #322  
