@@ -87,7 +87,7 @@ try:
         # REDUCIDO shortens the same R37 movement.
         page.select_option("#sabik-motion-level", "REDUCIDO")
         page.dispatch_event("#sabik-motion-level", "change")
-        page.evaluate("window.SabikWebPresentation.setSabikState('orientar',{force:true})")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         reduced = page.evaluate("""() => {
           const a=document.querySelector('#sabik-web-master').getAnimations()[0];
