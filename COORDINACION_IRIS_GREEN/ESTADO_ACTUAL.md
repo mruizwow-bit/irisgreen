@@ -1,5 +1,20 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R56 · Juegos/Recursos/Intereses lúdicos · rediseño Astra · 28/09/2026
+
+**Estado: `R56_ASTRA_GAMES_RESOURCES_PLAY_SYSTEM_DESIGN_FROZEN`.**
+
+Astra rediseña el sistema antes de construir: separar GAME / ROUTINE_PRACTICE / TOOL / INTEREST_MINIGAME.
+
+Rutinas absorbe las prácticas cotidianas mediante `Ver · Practicar · Crear la mía · Imprimir`. Juegos pasa a juego real. Intereses recibe minijuegos solo cuando el tema los justifique. Recursos queda como hub de herramientas prácticas.
+
+Regla transversal: **pilotos → estándar aprobado → escalado**.
+
+Seis pilotos: Habitación imposible, Terrario vivo, Rutas de luz, Ritmo de colores, Pesca tranquila y Mi museo.
+
+No build masivo ni integración A2 hasta aprobar estándar.
+
+
 ## R54 · Taller · calidad gráfica aún no aceptada · 28/09/2026
 
 **Estado: `R54_ASTRA_VISUAL_QUALITY_FAIL_REFINEMENT_REQUIRED`.**
