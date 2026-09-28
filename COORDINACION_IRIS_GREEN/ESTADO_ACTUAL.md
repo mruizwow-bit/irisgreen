@@ -1,3 +1,22 @@
+## Superficies de baja estimulación · blanco puro prohibido · 28/09/2026
+
+**Estado: `IRIS_GREEN_LOW_STIMULATION_SURFACE_STANDARD_2026_ADOPTED`.**
+
+María confirma como regla global: `#FFFFFF` no se usa como fondo ni superficie extensa.
+
+R42/R02 contiene una contradicción vigente: `--ig-surface-content:#ffffff`. Home usa canvas `#f6f8fb` pero conserva múltiples superficies blancas puras.
+
+Opaco no significa blanco. Se mantiene contraste WCAG, pero con luminancia controlada y paleta suave/desaturada.
+
+R54: arte 6/6 KEEP; chasis/material de tarjeta se revisa si usa blanco puro.
+
+Norma:
+`NORMATIVA/IRIS_GREEN_LOW_STIMULATION_SURFACES_2026.md`.
+
+Gate:
+`IRIS_GREEN_NO_PURE_WHITE_SURFACE_GATE`.
+
+
 ## Auditoría child-safe + Cloud R04 · 28/09/2026
 
 **A2: `R51_A2_AGE_FILTER_GLOBAL_FAIL_RECLASSIFICATION_REQUIRED`.**
