@@ -1,5 +1,18 @@
 ## R49 · A8 · interfaz R42/R02 transversal lista para Astra · 27/09/2026
 
+## R54 · Taller · Home e interiores visualmente ricos · 28/09/2026
+
+**Estado: `R54_CLAUDE_TALLER_VISUAL_REBUILD_ORDERED`.**
+
+Astra audita los patches R47 y confirma que muchas tarjetas de Home usan SVG inline demasiado esquemáticos (bloques, líneas, cuadrículas). María fija la regla: **El Taller no puede entrar por iconos; tiene que entrar por escenas.**
+
+#318 conserva motores/27 estudios/child-safe/R42-R02/storage/ES-EN y reconstruye únicamente el lenguaje visual de Home e interiores.
+
+Infancia requiere una experiencia más inmediata, cálida y visual; adolescencia/adultez pueden ser más sobrias, nunca vacías ni iconográficas.
+
+Claude entrega 27/27 visual matrix + before/after + interiores + desktop/móvil. Astra revisa antes de A2.
+
+
 ## R53 · Rincón · ASTRA REVIEW FAIL · 28/09/2026
 
 **Estado: `R53_CLAUDE_RINCON_REBUILD_ORDERED`.**
