@@ -1,0 +1,44 @@
+{
+  "schema": "R57_ASTRA_GAMES_297_CLASSIFICATION_REVIEW/1.0",
+  "date": "2026-09-28",
+  "issue": 321,
+  "status": "R57_ASTRA_GAMES_297_CLASSIFICATION_ACCEPTED",
+  "totals": {
+    "records": 297,
+    "unique_ids": 297,
+    "routine_practice": 260,
+    "tool": 26,
+    "game": 11,
+    "interest_minigame": 0
+  },
+  "normalized_games": {
+    "mechanic_family": "MEMORY_MATCHING",
+    "raw_records": 11,
+    "merges": 2,
+    "thematic_decks_after_merge": 9,
+    "game_engines": 1
+  },
+  "routine_practice": {
+    "total": 260,
+    "linked_routine_id": 106,
+    "unlinked_routine_id": 154,
+    "migration_allowed": false
+  },
+  "human_review": {
+    "total": 32,
+    "medium_accepted": 27,
+    "low": 5,
+    "low_intruso": [
+      "intruso-ducha",
+      "intruso-compra",
+      "intruso-escritorio"
+    ],
+    "low_visual_search": [
+      "busca-lo-que-necesitas-para-salir",
+      "busca-lo-del-bano"
+    ]
+  },
+  "next_gate": "R56_PLAY_6_PILOT_CONCEPTS_APPROVED_FOR_CODEX",
+  "codex_hold": true,
+  "a2_hold": true
+}
