@@ -336,8 +336,7 @@
       "authority": "R50_A2",
       "source_kind": "git",
       "source_files": [
-        "index.html",
-        "en/index.html"
+        "index.html"
       ],
       "route_prefixes": [
         "/",
@@ -357,7 +356,8 @@
       "owner": "A9",
       "expected_records": 2,
       "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
-      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
+      "note": "The frozen A2 source has one bilingual Home source at root; no en/index.html route is invented."
     }
   ]
 }
