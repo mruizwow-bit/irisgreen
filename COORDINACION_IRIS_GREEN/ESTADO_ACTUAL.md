@@ -1,3 +1,25 @@
+## R59 · asignación corregida · Agente activo / Codex HOLD · 28/09/2026
+
+**Estado: `R59_AGENT_ACTIVE_CODEX_HOLD_UNTIL_2026_10_01` · #323.**
+
+María corrige la asignación: Codex está inhabilitado hasta el 01/10/2026 y no ejecuta R59 ahora.
+
+Ejecutor activo: **Agente R59**.
+
+Orden activa:
+`COORDINACION_IRIS_GREEN/ORDENES/R59_AGENTE_INTERESES/01_AGENTE.md`
+
+Orden Codex anterior: histórica/pausada.
+
+Gate Fase 1:
+`R59_AGENT_INTERESTS_72_RESTRUCTURE_READY_FOR_ASTRA`
+
+Aclaración:
+`DONOR_MAY_DERIVE_FROM_R48__R58_DECISIONS_MUST_NOT`.
+
+No esperar a Codex. No trabajo Codex antes del 01/10/2026.
+
+
 ## R53 · Sala 1 Globos de luz · HUMAN QA forma FAIL · 28/09/2026
 
 **Estado: `R53_SALA1_GLOBOS_FORM_FAIL_REWORK_REQUIRED` · #317.**
