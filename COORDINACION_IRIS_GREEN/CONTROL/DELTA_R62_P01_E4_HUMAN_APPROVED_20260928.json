@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P01-E4-HUMAN-APPROVED",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_HABITACION_E4_HUMAN_APPROVED",
+  "authority": "Maria HUMAN QA",
+  "artifacts": {
+    "desktop_sha256": "9091c3e8cb0115f6fbf5d5129775dd112896cca992fd3f98cd5b8fe0f6d2d022",
+    "mobile_sha256": "a1ed2199739a3f744f6c583a9ba7e0b81219e8f6c3c28c2da9100f411c6f3dc1",
+    "note_sha256": "b8e14a2ec664c2211a02a8c9b65795f541499ed021f85fb367ae2043a9d370e0",
+    "bundle_sha256": "b47b066e6a50d189451fe49d0020fa89b5f4d56143184b23e0948e22d90d5c9f",
+    "branch_head": "8f3f0875ebfa4bc538c85c89e7320f1b617bb5c6"
+  },
+  "approved": [
+    "MECHANIC",
+    "VISUAL_E4",
+    "MATERIAL",
+    "LIGHTING",
+    "ARCHITECTURE",
+    "DESKTOP_LAYOUT",
+    "MOBILE_LAYOUT",
+    "HYBRID_RENDER_PIPELINE"
+  ],
+  "reference_role": "FIRST_APPROVED_E4_GAME_REFERENCE",
+  "next": "R62_P02_TERRARIO_E4_REWORK_AUTHORIZED",
+  "hold": [
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "FINAL_BUILD",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
