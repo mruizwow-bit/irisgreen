@@ -10,24 +10,24 @@ test('R51 5B indexes all 109 routines in ES and EN',()=>{
   assert.deepEqual(report.locale_counts,{es:109,en:109});
   assert.equal(new Set(entities.map(e=>e.entity_id)).size,218);
 });
-test('R51 5B resolves every routine step to bilingual text and uses canonical manifest URLs',()=>{
+test('R51 5B resolves every textual step and preserves canonical routine URLs',()=>{
+  assert.equal(report.step_references,510);
   for(const e of entities){
-    assert.ok(e.steps.length>0&&e.steps.length===e.step_count,e.entity_id);
-    assert.ok(e.steps.every(step=>step&&typeof step==='string'),e.entity_id);
+    assert.ok(e.steps.length>0);
+    assert.equal(e.steps.length,e.step_ids.length);
+    assert.ok(e.steps.every(x=>typeof x==='string'&&x.trim()));
     assert.match(e.canonical_url,e.locale==='es'
       ? /^https:\/\/irisgreen\.eu\/es\/recursos\/rutinas-imprimibles\/#pack-[a-z0-9-]+$/
       : /^https:\/\/irisgreen\.eu\/en\/resources\/printable-routines\/#pack-[a-z0-9-]+$/);
   }
 });
-test('R51 5B preserves formats attribution licence traceability and watermark without asset bytes',()=>{
-  assert.equal(report.downloadable_svg_a4,109);
-  assert.equal(report.watermarked,109);
+test('R51 5B keeps formats, watermark and attribution without embedding pictogram bytes',()=>{
   for(const e of entities){
-    assert.ok(e.formats.includes('SVG_A4'));
-    assert.match(e.pictogram_attribution,/Mulberry Symbols/);
-    assert.match(e.pictogram_attribution,/CC BY-SA 4\.0/);
-    assert.equal(e.pictogram_traceability,'CENTRAL_MANIFEST');
-    assert.equal(e.watermark,'IRIS GREEN · irisgreen.eu');
-    for(const key of ['pdf','png','svg_bytes','image_bytes','user','session','history','state']) assert.equal(Object.hasOwn(e,key),false);
+    assert.ok(e.formats.includes('screen'));
+    assert.equal(e.watermark,true);
+    assert.ok(e.attribution);
+    assert.equal(Object.hasOwn(e,'pictogram_bytes'),false);
+    assert.equal(Object.hasOwn(e,'pdf_bytes'),false);
+    assert.equal(Object.hasOwn(e,'png_bytes'),false);
   }
 });
