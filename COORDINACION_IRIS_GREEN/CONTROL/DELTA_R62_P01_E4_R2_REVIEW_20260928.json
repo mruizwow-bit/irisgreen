@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P01-E4-R2-REVIEW",
+  "date": "2026-09-28",
+  "issue": 326,
+  "status": "R62_P01_E4_GEOMETRY_PASS_LIGHTING_MATERIAL_MOBILE_REWORK_REQUIRED",
+  "artifact": {
+    "image_1440_sha256": "372392841feb1e004d187aa264f23838f4aae5641b1814560e0e89452d1f8052",
+    "image_390_sha256": "cb7c2ca81630634798c960a25d74bcf565543a3161c81771e68c4ac6cd4b9a92",
+    "note_sha256": "49d48fdc570a054bbc56329838c2ed43e65f47bb35a644454e724aab17bf6e5d",
+    "bundle_sha256": "e0585ff0e038d8f9f12e930537fa5d590ab3c70ca4d80caab4e5dec7f8604388",
+    "branch_head": "ec8fbf705694340597e76bf511867f0b76b0dc33"
+  },
+  "pass": [
+    "GEOMETRY_RICHNESS",
+    "MASONRY_JOINTS",
+    "FLOOR_TILING",
+    "ARCHITECTURAL_ARTICULATION",
+    "HYBRID_RENDER_PIPELINE"
+  ],
+  "rework": [
+    "AREA_LIGHT_AND_PENUMBRA",
+    "LOCAL_COLOR_BOUNCE",
+    "LIGHT_SPILL_FROM_HIGH_OPENING",
+    "CONTROLLED_MATERIAL_IMPERFECTION",
+    "OPENING_DEPTH",
+    "IRIS_GREEN_SPATIAL_IDENTITY",
+    "MOBILE_REAL_LAYOUT"
+  ],
+  "execution_target": "IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026",
+  "next": "R62_P01_VISUAL_E4_R3_READY_FOR_ASTRA_MARIA",
+  "hold": [
+    "P02_RERENDER",
+    "P03",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
