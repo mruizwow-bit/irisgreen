@@ -1,10 +1,10 @@
 import vm from 'node:vm';
 import { gitShow, sha256Text } from './source-reader.mjs';
+import { canonicalizeAgeBands, assertCanonicalAgeBands } from './age-taxonomy.mjs';
 import freeze from '../../sources/r51-r04/SOURCE_FREEZE.json' with { type: 'json' };
 
 const SOURCE_SHA=freeze.canonical_web_source.head;
 const ORIGIN='https://irisgreen.eu';
-const STAGE={inf:'INFANCIA',ado:'ADOLESCENCIA',adu:'ADULTEZ',todas:'TRANSVERSAL'};
 
 function parseGameDataset(){
   const code=gitShow(SOURCE_SHA,'assets/data/juegos-iris-data.js');
@@ -43,8 +43,8 @@ export function buildGameEntities(){
       const purpose=meta.description?.[locale];
       if(!title||!purpose) throw new Error('game_missing_bilingual_metadata:'+meta.id+':'+locale);
       const path=locale==='es'?'/es/recursos/juegos/':'/en/resources/games/';
-      const stages=[...new Set((meta.stages||[]).map(x=>STAGE[x]).filter(Boolean))];
-      if(!stages.length) throw new Error('game_missing_stage:'+meta.id);
+      const stages=[...canonicalizeAgeBands(meta.stages||[])];
+      assertCanonicalAgeBands(stages);
       const skillLabel=metadata.skills?.[meta.skill]?.[locale]||meta.skill;
       const durationLabel=metadata.durations?.[meta.duration_bucket]?.[locale]||null;
       const sourcePayload={meta,game:{s:game.s,c:game.c,t:game.t,d:game.d,f:game.f,e:game.e,min:game.min}};

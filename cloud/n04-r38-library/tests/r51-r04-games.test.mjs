@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildGameEntities } from '../src/r04/games-adapter.mjs';
+import { assertCanonicalAgeBands } from '../src/r04/age-taxonomy.mjs';
 
 const {entities,report}=buildGameEntities();
 
@@ -25,5 +26,14 @@ test('R51 5A excludes interactive/user state from the Cloud game entities',()=>{
     for(const key of banned) assert.equal(Object.hasOwn(e,key),false,key+' leaked in '+e.entity_id);
     assert.equal(e.sensitivity,'S0_GENERAL');
     assert.equal(e.discovery,'NORMAL');
+  }
+});
+
+test('R51 5A Games emits canonical AGE_* bands only',()=>{
+  const legacy=new Set(['INFANCIA','ADOLESCENCIA','ADULTEZ','TRANSVERSAL','CUALQUIER_EDAD','children','teenagers','adults','any']);
+  for(const e of entities){
+    assertCanonicalAgeBands(e.audience);
+    assert.deepEqual(e.life_stage,e.audience);
+    assert.ok(e.audience.every(x=>!legacy.has(x)));
   }
 });
