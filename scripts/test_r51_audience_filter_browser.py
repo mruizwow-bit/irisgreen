@@ -18,12 +18,15 @@ async def home_stage(page,button,research_visible,support_visible):
  need(await conditions.is_visible(),f'Transversal Conditions hidden for {button}')
 async def set_stage(page,stage):
  await page.goto(BASE+'/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined');await page.evaluate(f"IGAudience.set('{stage}')")
-async def gate(page,path,blocked):
- requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+path,wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
- gate=page.locator('[data-ig-audience-blocked-message]');main=page.locator('main').first
- need((await gate.count()>0)==blocked,f'Gate state wrong {path} blocked={blocked}')
- if blocked:need(await main.is_hidden(),'Blocked main is visible '+path)
- else:need(await main.is_visible(),'Allowed main is hidden '+path)
+async def gate(page,path,blocked,stage):
+ requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+path,wait_until='domcontentloaded')
+ need(await page.locator('html').get_attribute('data-ig-audience')==stage,'Audience bootstrap mismatch '+path+' '+stage)
+ main=page.locator('main').first
+ if blocked:
+  await page.wait_for_selector('[data-ig-audience-blocked-message]',state='attached',timeout=5000)
+  need(await main.is_hidden(),'Blocked main is visible '+path)
+ else:
+  need(await main.is_visible(),'Allowed main is hidden '+path)
  need(not any('/assets/safety/full/' in u for u in requests),'full S2 requested while audience gate active '+path)
 async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'checks':[]}
@@ -33,10 +36,10 @@ async def main():
   await home_stage(page,'Adolescencia',True,False)
   await home_stage(page,'Adultez',True,True)
   await home_stage(page,'Cualquier edad',False,False)
-  await set_stage(page,'children');await gate(page,'/es/investigacion/',True);await gate(page,'/es/tramites/directorio/',True)
-  await set_stage(page,'teenagers');await gate(page,'/es/investigacion/',False);await gate(page,'/es/tramites/directorio/',True)
-  await set_stage(page,'adults');await gate(page,'/es/investigacion/',False);await gate(page,'/es/tramites/directorio/',False)
-  await set_stage(page,'any');await gate(page,'/es/investigacion/',True);await gate(page,'/es/tramites/directorio/',True)
+  await set_stage(page,'children');await gate(page,'/es/investigacion/',True,'children');await gate(page,'/es/tramites/directorio/',True,'children')
+  await set_stage(page,'teenagers');await gate(page,'/es/investigacion/',False,'teenagers');await gate(page,'/es/tramites/directorio/',True,'teenagers')
+  await set_stage(page,'adults');await gate(page,'/es/investigacion/',False,'adults');await gate(page,'/es/tramites/directorio/',False,'adults')
+  await set_stage(page,'any');await gate(page,'/es/investigacion/',True,'any');await gate(page,'/es/tramites/directorio/',True,'any')
   await b.close()
  report['checks']=['home-infant-filter','home-teen-filter','home-adult-filter','home-any-age-transversal-only','research-direct-gate','support-direct-gate','zero-full-s2-gate-requests']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
