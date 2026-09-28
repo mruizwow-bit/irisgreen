@@ -1,3 +1,15 @@
+## R62 · P01 Habitación imposible · E4 HUMAN QA APROBADO · 28/09/2026
+
+**Gate: `R62_P01_HABITACION_E4_HUMAN_APPROVED` · #326.**
+
+María aprueba la V3. P01 queda cerrado como primera referencia E4 aprobada de Juegos: mecánica, material, iluminación, arquitectura, desktop, móvil y pipeline híbrido.
+
+Se autoriza únicamente:
+`R62_P02_TERRARIO_E4_REWORK_AUTHORIZED`.
+
+P03–P06 y build final siguen HOLD. No A2/main/producción.
+
+
 ## R53 · Sala 1 Globos · proyección corregida · E4 sigue abierto · 28/09/2026
 
 **Estado: `R53_SALA1_GLOBE_PROJECTION_FIX_PASS_E4_REWORK_CONTINUES` · #317.**
