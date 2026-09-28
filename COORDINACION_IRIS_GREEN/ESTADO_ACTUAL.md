@@ -1,3 +1,16 @@
+## R62 · P01 Habitación imposible R2 · Astra PASS · 28/09/2026
+
+**Estado: `R62_P01_ASTRA_CONCEPT_PASS_HUMAN_QA_PENDING` · #326.**
+
+Astra revisó la R2 real. PASS de concepto: cubo, rotaciones reales, mecánica A/B legible, ruta/entrada/salida, selector de caras y dirección visual.
+
+No es arte final: textura/materialidad de producción queda como entregable separado antes del build final.
+
+Pendiente HUMAN QA de María. Si aprueba: `R62_P01_HABITACION_CONCEPT_APPROVED` y puede empezar P02.
+
+Codex #321 sigue HOLD hasta los seis conceptos.
+
+
 ## R54 · seis pilotos R2 · dirección visual PASS · sync gate pendiente · 28/09/2026
 
 **Estado: `R54_ASTRA_6_PILOTS_DIRECTION_PASS_SYNC_GATE_REQUIRED_BEFORE_SCALE` · #318.**
