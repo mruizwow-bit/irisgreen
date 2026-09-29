@@ -1,0 +1,34 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R64-A2-R54-6-CARDS-PREVIEW-20260929",
+  "issue": 329,
+  "date": "2026-09-29",
+  "status": "R64_A2_6_CARDS_INTEGRATION_ORDERED",
+  "input": {
+    "marker": "R54_CLAUDE_6_CARDS_HANDOFF_R2_VERIFIED_READY_FOR_A2",
+    "zip": "R54_HANDOFF_A2_R2.zip",
+    "sha256": "6d23b00e4f2f5fdb2c92c0bec486d4582e03f2ea44ed7eeab037510b2751066f",
+    "hashes": "36/36 OK",
+    "assets": 24,
+    "qa_files": 7,
+    "art": "KEEP_6_OF_6"
+  },
+  "approval": "HUMAN_APPROVED_FOR_A2_PREVIEW_NOT_FINAL",
+  "canonical_tokens": "assets/ig-global-ui-tokens-2026.css",
+  "default_theme": "DARK_NAVY",
+  "alternative_theme": "LIGHT",
+  "canonical_age_ids": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "legacy_age_values": "TEMPORARY_INPUT_COMPATIBILITY_ONLY",
+  "expected_marker": "R64_A2_6_CARDS_DEPLOY_PREVIEW_READY_FOR_MARIA",
+  "normative_change": false,
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_21_PLUS_9_SCALE_BEFORE_FINAL_HUMAN_QA"
+  ]
+}
