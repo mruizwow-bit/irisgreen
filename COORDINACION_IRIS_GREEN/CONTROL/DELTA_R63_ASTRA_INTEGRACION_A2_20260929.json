@@ -1,0 +1,25 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R63_ASTRA_A2_INTEGRATION",
+  "issue": 328,
+  "pull_request": 338,
+  "estado": "R63_ASTRA_INTEGRATED_IN_A2_HEAD_7AC554B",
+  "base_a2": "2fcb193feaecaa6934e96c14e0eda06d016d0250",
+  "integration_branch": "astra/r63-sakura-a2-integration-20260929",
+  "integration_head": "a29e385f2be5e2560e15377469e9a5b527cf9e9f",
+  "merge_commit_a2": "7ac554b85edc256bd85c36271e5e5f6a86ef115a",
+  "product_files": 22,
+  "masters_exact": 8,
+  "token_file_replaced": false,
+  "ci_run": 36610159984,
+  "ci_status_at_record": "in_progress",
+  "pending": [
+    "R67 zero external requests",
+    "PENDING_HARDWARE_QA",
+    "Deploy Preview",
+    "HUMAN QA Maria"
+  ],
+  "no_main": true,
+  "no_production": true
+}
