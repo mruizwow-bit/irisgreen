@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "status": "SPEC_ONLY_WAIT_A2_FREEZE_AND_A4_PROVENANCE",
+  "observed_a2_head": "bb1efb8608681b138e5ce8029a6d425eddcaed98",
+  "rules": {
+    "autoplay": false,
+    "primary_action": {
+      "es": "Ver y escuchar",
+      "en": "Watch and listen"
+    },
+    "image_only": {
+      "es": "Solo imagen",
+      "en": "Image only"
+    },
+    "visible_controls": [
+      "mute",
+      "volume",
+      "image_only",
+      "stop"
+    ],
+    "visual_crossfade_ms": 800,
+    "audio_fade_out_ms": 1500,
+    "audio_fade_in_ms": 2000,
+    "reduced_motion_visual_transition_ms_max": 120,
+    "reduced_motion_speed_factor_max": 0.25,
+    "initial_volume_control": 40,
+    "effective_gain_note": "Current scene level maps control/100 * 0.6; 40 => ~0.24 before per-sound trim."
+  },
+  "scenes": [
+    {
+      "id": "sea",
+      "poster": "/img/rincon-tranquilo/escenas/mar.webp",
+      "engine": "webgl",
+      "sound": "sea_or_generated_labeled",
+      "text_es": "Olas suaves llegan a la orilla con el sol bajo sobre el agua.",
+      "text_en": "Gentle waves reach the shore with the sun low over the water.",
+      "restrictions": [
+        "no_sudden_events"
+      ]
+    },
+    {
+      "id": "rain",
+      "poster": "/img/rincon-tranquilo/escenas/lluvia-ventana.webp",
+      "engine": "webgl",
+      "sound": "rain_on_glass",
+      "text_es": "Gotas resbalan despacio por el cristal; no hay truenos.",
+      "text_en": "Drops slide slowly down the glass; there is no thunder.",
+      "restrictions": [
+        "no_thunder",
+        "no_flash"
+      ]
+    },
+    {
+      "id": "river",
+      "poster": "/img/rincon-tranquilo/escenas/rio-bosque.webp",
+      "engine": "webgl",
+      "sound": "stream_breeze_distant_birds",
+      "text_es": "El agua corre entre piedras; la vegetación se mueve despacio.",
+      "text_en": "Water runs over stones; the plants move slowly.",
+      "restrictions": [
+        "birds_distant",
+        "no_sudden_calls"
+      ]
+    },
+    {
+      "id": "night",
+      "poster": "/img/rincon-tranquilo/escenas/cielo-nocturno.webp",
+      "engine": "webgl",
+      "sound": "crickets_soft_wind",
+      "text_es": "Estrellas y una aurora suave sobre un lago oscuro.",
+      "text_en": "Stars and a soft aurora over a dark lake.",
+      "restrictions": [
+        "no_sudden_events",
+        "no_auto_shooting_star"
+      ]
+    },
+    {
+      "id": "aquarium",
+      "poster": "/img/rincon-tranquilo/escenas/acuario.webp",
+      "engine": "webgl_with_canvas2d_fallback",
+      "sound": "filtered_water_soft_bubbles",
+      "text_es": "Peces nadan despacio entre plantas y burbujas.",
+      "text_en": "Fish swim slowly among plants and bubbles.",
+      "restrictions": [
+        "no_sudden_fish_motion"
+      ]
+    },
+    {
+      "id": "bubbles",
+      "poster": "/img/rincon-tranquilo/escenas/tubo-burbujas.webp",
+      "engine": "webgl_with_canvas2d_fallback",
+      "sound": "low_soft_bubbles",
+      "text_es": "Burbujas suben despacio por una columna de luz.",
+      "text_en": "Bubbles rise slowly through a column of light.",
+      "restrictions": [
+        "no_flash"
+      ]
+    },
+    {
+      "id": "jellies",
+      "poster": "/img/rincon-tranquilo/escenas/medusas.webp",
+      "engine": "webgl",
+      "sound": "deep_stable_underwater_ambience",
+      "text_es": "Medusas luminosas flotan y laten despacio en agua oscura.",
+      "text_en": "Glowing jellyfish float and pulse slowly in dark water.",
+      "restrictions": [
+        "no_animal_vocalization",
+        "no_sudden_pulse"
+      ]
+    },
+    {
+      "id": "fibre",
+      "poster": "/img/rincon-tranquilo/escenas/fibra-optica.webp",
+      "engine": "webgl",
+      "sound": "near_silence_or_minimal_tone",
+      "text_es": "Hilos de luz cambian de color lentamente.",
+      "text_en": "Strands of light change colour slowly.",
+      "restrictions": [
+        "no_flash",
+        "no_fast_colour_cycle"
+      ]
+    }
+  ]
+}
