@@ -2,6 +2,10 @@
 
 Esta carpeta reúne la documentación operativa del proyecto. No forma parte de la web publicada. La documentación no autoriza por sí sola cambios de producto, publicación ni activación de servicios.
 
+## Addendum R62 P03 · HUMAN QA rework · 29/09/2026
+
+P03 Rutas de luz pasa a `R62_P03_HUMAN_QA_REWORK_REQUIRED` en #326. La autorización de concepto anterior se conserva como histórico, pero la siguiente acción obligatoria es `ORDENES/R62_ASTRA_JUEGOS_6_PILOTOS/05_ASTRA_P03_HUMAN_QA_REWORK.md`. P04–P06 y Codex siguen HOLD. El rework aplica el estándar E4 existente; no crea una regla transversal nueva.
+
 ## Reparto vigente R06 · 25/09/2026 · Codex → Agente 3
 
 **María comunica que Codex está inoperativo y ordena pasar sus pendientes al agente 3.** A3 asume sus cinco comprobaciones reales y toda la continuidad técnica de Codex en Sabik/Cloud: correlación HTTP, correcciones, integración y entrega verificable. No esperar a Codex. Esta disposición sustituye las atribuciones incompatibles anteriores, incluidas las que figuran en el estado/CSV históricos y en la entrega R05.
