@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R61 Pecera · burbujas PASS / render 10 min · 29/09/2026
+
+Orden: `R61_CLAUDE_RINCON_PECERA/04_ASTRA_BURBUJAS_PASS_RENDER_10MIN.md` · issue #325.
+
+Estado: `R61_PECERA_BUBBLES_PROTOTYPE_HUMAN_APPROVED_RENDER_10MIN_AUTHORIZED`.
+
+Claude puede renderizar el máster ≈10 min y ejecutar remux/QA final. No mover roca, no reabrir composición y no subir densidad por defecto. Tras entregar `R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA`, STOP para Astra/HUMAN QA.
+
+
 ## Claude · R62 P03 Rutas de luz · HUMAN QA rework · 29/09/2026
 
 Orden: `R62_ASTRA_JUEGOS_6_PILOTOS/05_ASTRA_P03_HUMAN_QA_REWORK.md` · issue #326.
