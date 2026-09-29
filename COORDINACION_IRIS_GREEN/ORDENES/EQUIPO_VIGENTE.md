@@ -1,5 +1,14 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R42 Contenido R02 · rebase final sobre A2 vivo · 29/09/2026
+
+Orden: `R42_CONTENT_R02_REBASE_CURRENT_A2/01_CLAUDE.md` · issue #302.
+
+Estado: `R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED`.
+
+La entrega R02 conserva contenido, child-safe, Investigación 132 y clasificación AGE de A2, pero el ZIP se cerró sobre `9c721a79` y A2 ya está cinco commits por delante en `2fcb193f...`. `scripts/build_site.py` colisiona con R67 Taller shell. Claude debe rebasar de nuevo sobre el HEAD A2 vivo y repetir QA. No ampliar contenido hasta cerrar este gate.
+
+
 ## Claude · R61 Pecera · burbujas PASS / render 10 min · 29/09/2026
 
 Orden: `R61_CLAUDE_RINCON_PECERA/04_ASTRA_BURBUJAS_PASS_RENDER_10MIN.md` · issue #325.
