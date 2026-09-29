@@ -151,6 +151,10 @@ jobs:
         working-directory: cloud/n04-r38-library
         run: npm run build:r04:candidate-manifest
 
+      - name: Build R51 immutable private partial release
+        working-directory: cloud/n04-r38-library
+        run: npm run build:r04:private-partial-release
+
       - name: Verify protected Netlify candidate site
         working-directory: cloud/n04-r38-library
         env:
@@ -298,6 +302,14 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           R51_CANDIDATE_NAME: r04-incremental-benchmark
           R51_CANDIDATE_FILE: build/r04/r04-incremental-performance.json
+        run: npm run publish:r04:candidate
+
+      - name: Publish R51 immutable private partial release
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-private-partial-release
+          R51_CANDIDATE_FILE: build/r04/r04-private-partial-release.json
         run: npm run publish:r04:candidate
 
       - name: Upload R51 editorial report
