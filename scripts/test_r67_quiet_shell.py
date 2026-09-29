@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""R67 A2 · static gate for Quiet Space outer-shell migration."""
+"""R67 A2 · static gate for Quiet Space outer-shell migration.\n\nR63 supersedes the historical R40 inner controls; this gate verifies that the\nR67 shell transform preserves the current R46/R53/R63 product controls.\n"""
 from __future__ import annotations
 import argparse
 from pathlib import Path
@@ -13,7 +13,7 @@ REQ=(
     "/assets/ig-audience.js",
     "/assets/ig-r49-transversal.js",
 )
-QUIET_CONTROLS=("r40Workspace","r40StartAV","r40ImageOnly","r40Mute","stopVideo","stopAudio","startBreath","stopBreath")
+QUIET_CONTROLS=("r40Workspace","r46ModeSelect","r46BreathStart","r46BreathStop","r46LandStart","r46LandStop","r46RoomMotion","r46RoomLevel","r46RoomStart","r46RoomStop","r46ExitClean")
 
 def need(v:bool,msg:str)->None:
     if not v:
