@@ -1,0 +1,46 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R63_SAKURA_A2_POST_INTEGRATION_CI",
+  "issue": 328,
+  "estado": "R63_SAKURA_IN_A2_R63_GATES_PASS_R67_TALLER_BLOCKS_GLOBAL_BUILD",
+  "a2_head": "e07a45b354ed393699186eca03980626e2046440",
+  "merges": [
+    {
+      "pr": 338,
+      "sha": "7ac554b85edc256bd85c36271e5e5f6a86ef115a",
+      "purpose": "Sakura runtime + exact masters"
+    },
+    {
+      "pr": 339,
+      "sha": "f4eb0cbf2f2e0ee3986356421f3041f25cfb6057",
+      "purpose": "update stale R40 Rincon CI gate"
+    },
+    {
+      "pr": 340,
+      "sha": "e07a45b354ed393699186eca03980626e2046440",
+      "purpose": "update R67 Quiet preservation gate to current controls"
+    }
+  ],
+  "ci": {
+    "run": 36611229681,
+    "r63_gate": "PASS",
+    "overall": "FAIL",
+    "blocker": "scripts/apply_r67_taller_shell.py: Workshop hub has no body",
+    "blocker_class": "PREEXISTING_R67_TALLER_INTEGRATION_BLOCKER",
+    "preexisting_evidence": {
+      "run": 36606448186,
+      "head": "2fcb193feaecaa6934e96c14e0eda06d016d0250"
+    }
+  },
+  "pending": [
+    "R67 Taller build fix",
+    "R67 zero external requests",
+    "PENDING_HARDWARE_QA",
+    "Deploy Preview",
+    "HUMAN QA Maria"
+  ],
+  "no_more_r63_code_fix_for_current_ci": true,
+  "no_main": true,
+  "no_production": true
+}
