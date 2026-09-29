@@ -1,0 +1,46 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P02-E4-R3-ASTRA-REVIEW-20260929",
+  "issue": 326,
+  "date": "2026-09-29",
+  "status": "R62_P02_TERRARIO_E4_ASTRA_PASS_HUMAN_QA_PENDING",
+  "astra_visual_pass": true,
+  "causal_chain": "ROCK_TO_SHADOW_TO_HUMIDITY_TO_MOSS_READS_AT_A_GLANCE",
+  "measured": {
+    "moss_delta_pct": 278.7,
+    "panel_change_pct": 16,
+    "change_in_rock_shadow_zone_pct": 84.3,
+    "rock_scene_luminance_ratio": 1.64,
+    "failures": 0
+  },
+  "keep": [
+    "E4_ENGINE",
+    "DESKTOP_LIGHT_NAVY",
+    "MOBILE_LIGHT_NAVY",
+    "FOLIAGE",
+    "HANGING_PLANTS",
+    "SUBSTRATE",
+    "WATER",
+    "WOOD",
+    "ROCK",
+    "TRAY_LABELS",
+    "MOBILE_COMPOSITION"
+  ],
+  "scope_note": "R3 regenerated gameplay assets although prior order requested causal-only; no visible regression; latest R3 changes do not touch shared engine",
+  "bundle": {
+    "head": "0e8e365248dd61f9f17a76d326bb1ed766143372",
+    "prerequisite": "c119d3297bfa3fadff89a3c0423b2fbf3ff9f633",
+    "self_contained": false,
+    "fix_before_final_handoff": "DOCUMENT_PREREQUISITE_OR_CREATE_SELF_CONTAINED_BUNDLE"
+  },
+  "next_human_marker": "R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03",
+  "normative_change": false,
+  "holds": [
+    "P03",
+    "P04_P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
