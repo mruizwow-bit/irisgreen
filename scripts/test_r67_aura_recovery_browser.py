@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """R67 Aura · browser QA for global shell, Home child-safe AGE, and Sabik text conversation."""
 from __future__ import annotations
-import asyncio,json
+import asyncio,json,os
 from pathlib import Path
 from playwright.async_api import async_playwright
 
-BASE='http://127.0.0.1:4173'
+BASE=os.environ.get('IG_BASE_URL','http://127.0.0.1:4173').rstrip('/')
 OUT=Path('reports/r67-aura-recovery')
 def need(v,m):
  if not v: raise AssertionError(m)
