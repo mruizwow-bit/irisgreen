@@ -58,13 +58,31 @@ MATS = {
     'turba':     ((0.098, 0.068, 0.046), 0.95, 1.55, 2.90),
     'arena':     ((0.215, 0.180, 0.130), 0.88, 1.30, 3.60),
     'grava':     ((0.165, 0.163, 0.152), 0.70, 1.80, 4.20),
-    'roca':      ((0.125, 0.138, 0.126), 0.46, 1.40, 3.30),
+    'roca':      ((0.104, 0.116, 0.092), 0.54, 1.40, 3.30),
+    # Piedra recién puesta en una orilla húmeda: más oscura que la seca, porque
+    # el agua le rellena el microrrelieve.
+    #
+    # La primera vez la hice además muy pulida, pensando en el brillo mojado, y
+    # salió peor: un domo liso con un especular ancho es una mancha blanca. Y
+    # medido, el problema no era el brillo sino el **color**: el difuso de la
+    # roca valía lo mismo que el del sustrato, pero la roca era gris neutra en
+    # un mundo verde y marrón, así que saltaba por saturación y no por
+    # luminosidad. Lleva verde y tierra dentro, que es lo que la integra.
+    'roca-humeda':((0.064, 0.076, 0.058), 0.44, 1.30, 3.30),
+    # Musgo recién prendido: más claro y más ralo que el establecido. Da un
+    # gradiente de densidad en vez de una mancha de sí/no.
+    'musgo-joven':((0.105, 0.190, 0.082), 0.95, 2.70, 8.60),
     'pared':     ((0.062, 0.078, 0.074), 0.76, 1.25, 2.40),
     'madera':    ((0.40, 0.30, 0.195), 0.68, 1.35, 2.60),
     'musgo':     ((0.072, 0.135, 0.058), 0.96, 2.90, 7.80),
     'hoja':      ((0.085, 0.215, 0.098), 0.58, 0.85, 4.20),
     'hoja-clara':((0.155, 0.315, 0.120), 0.55, 0.80, 4.60),
     'hoja-honda':((0.026, 0.062, 0.035), 0.78, 0.95, 3.60),
+    # Las familias nuevas llevan su propio verde, pero poco: lo que las
+    # distingue a distancia tiene que ser la silueta. El tono sólo evita que
+    # dos especies vecinas parezcan la misma mata cortada de otra manera.
+    'hoja-cinta':((0.072, 0.190, 0.115), 0.60, 0.85, 4.80),
+    'hoja-disco':((0.118, 0.248, 0.098), 0.52, 0.75, 3.90),
     'agua':      ((0.06, 0.15, 0.16),  0.05, 0.22, 6.00),
 }
 
@@ -76,12 +94,16 @@ FEATURES = {
     'arena':    {'humedad', 'estratos'},
     'grava':    {'humedad'},
     'roca':     {'humedad'},
+    'roca-humeda': {'humedad'},
+    'musgo-joven': set(),
     'pared':    {'humedad', 'estratos'},
     'madera':   {'humedad'},
     'musgo':    set(),
     'hoja':     set(),
     'hoja-clara': set(),
     'hoja-honda': set(),
+    'hoja-cinta': set(),
+    'hoja-disco': set(),
     'agua':     set(),
 }
 
@@ -99,7 +121,7 @@ LUZ /= np.linalg.norm(LUZ)
 # retiene, el musgo que prende— sale solo de haberla añadido, porque esas tres
 # cosas ya se calculan a partir de la lista de rocas. La cadena causal no está
 # dibujada: está computada.
-ROCA_DEMO = (6.38, 1.58, 0.92, 0.60, 0.74)
+ROCA_DEMO = (6.38, 1.58, 0.88, 0.58, 0.60)
 
 ROCAS = [
     # (cx, cy, radio x, radio y, altura)
@@ -234,7 +256,7 @@ def configure(out_w, out_h, top=0.0, bot=0.0, margen=0.012, rise=0.46,
     ox = W * margen - x0 * u
     # encuadre vertical: desde algo por debajo del punto bajo del terreno hasta
     # bien entrada la vegetación colgante
-    z_lo, z_hi = z_rango or ((1.46, 4.86) if ventana is None else (1.05, 3.35))
+    z_lo, z_hi = z_rango or ((1.62, 4.92) if ventana is None else (1.05, 3.35))
     alto = (z_hi - z_lo) * u + TD * u * rise
     banda_sup = top * SS
     oy = banda_sup + (H - banda_sup - bot * SS - alto) / 2 + z_hi * u + TD * u * rise
@@ -272,8 +294,12 @@ def _humedad(x, y, z):
         # ladera abajo y a la derecha de cada roca, que es donde cae su sombra
         d = np.sqrt(((x - cx - 0.62) / (rx * 2.4)) ** 2 + ((y - cy - 0.34) / (ry * 2.6)) ** 2)
         sombra = np.maximum(sombra, np.clip(1.0 - d, 0, 1))
-    k = np.clip(mojado + 0.42 * sombra, 0, 1)[..., None]
-    oscuro = np.array([0.55, 0.60, 0.58], np.float32)[None, None, :]
+    # El R2 pide que la cadena se lea sin explicación. El eslabón que menos se
+    # veía era el segundo: la sombra de la roca apenas oscurecía la tierra. Se
+    # sube su peso y el tono mojado se enfría, porque tierra húmeda y en sombra
+    # no es sólo tierra más oscura: también pierde el rojo.
+    k = np.clip(mojado + 0.78 * sombra, 0, 1)[..., None]
+    oscuro = np.array([0.44, 0.53, 0.56], np.float32)[None, None, :]
     humedo = (1.0 - k) + k * oscuro
 
     # Grumos y hojarasca. El grano fino del material solo daba una moqueta
@@ -287,47 +313,149 @@ def _humedad(x, y, z):
     return humedo * calido
 
 
+def _en_roca_demo(x, y):
+    cx, cy, rx, ry, _ = ROCA_DEMO
+    k = _radio_roto(x, y, cx, cy)
+    return ((x - cx) / (rx * k)) ** 2 + ((y - cy) / (ry * k)) ** 2 <= 1.0
+
+
 def sustrato(buf):
-    """El terreno, y las rocas que son parte de él."""
+    """El terreno, y las rocas que son parte de él.
+
+    La roca de demostración se pinta con el material mojado, no con el seco.
+    El R2 decía que salía blanquecina y robaba protagonismo, y tenía razón:
+    una piedra recién puesta en una orilla húmeda está mojada, y mojada es más
+    oscura. Lo que la sigue identificando como nueva es que el musgo todavía no
+    la ha alcanzado.
+    """
+    demo = ROCA_DEMO in ROCAS
     blit_heightfield(buf, 'sustrato', terreno, 0, TW, 0, TD, steps=150,
                      tint=_humedad, alpha=lambda x, y, z: ~en_roca(x, y))
     blit_heightfield(buf, 'roca', terreno, 0, TW, 0, TD, steps=150,
-                     alpha=lambda x, y, z: en_roca(x, y))
+                     alpha=lambda x, y, z: en_roca(x, y)
+                                           & (~_en_roca_demo(x, y) if demo else True))
+    if demo:
+        blit_heightfield(buf, 'roca-humeda', terreno, 0, TW, 0, TD, steps=150,
+                         alpha=lambda x, y, z: _en_roca_demo(x, y))
+
+
+def _cantos(u, v, densidad, radio, semilla):
+    """Cantos rodados en la sección: rejilla desplazada, con relieve fingido.
+
+    Cada celda lleva un canto con su centro y su radio propios, sacados de un
+    hash de la celda, así que el resultado es determinista y no se repite a
+    ojo. El relieve no viene del motor —esto es una cara plana— sino de
+    aclarar el cuarto superior izquierdo de cada canto y oscurecer el inferior
+    derecho, que es de donde viene la luz de la escena. A este tamaño basta.
+    """
+    gx, gy = u * densidad, v * densidad * 0.62
+    cx, cy = np.floor(gx), np.floor(gy)
+    h1 = np.modf(np.sin(cx * 12.9898 + cy * 78.233 + semilla) * 43758.5453)[0]
+    h2 = np.modf(np.sin(cx * 39.3468 + cy * 11.135 + semilla) * 24634.6345)[0]
+    h3 = np.modf(np.sin(cx * 7.1234 + cy * 53.771 + semilla) * 15731.7431)[0]
+    fx = gx - cx - 0.18 - 0.64 * h1
+    fy = gy - cy - 0.18 - 0.64 * h2
+    rr = radio * (0.55 + 0.75 * h3)
+    d = np.sqrt((fx / rr) ** 2 + (fy / (rr * 0.82)) ** 2)
+    dentro = np.clip(1.0 - d, 0, 1)
+    # el cuarto que mira a la luz se aclara; el opuesto se hunde
+    luz = np.clip(-(fx + fy) / (rr * 1.6), -1, 1)
+    return 1.0 + dentro * (0.30 * luz + 0.16 * (h3 - 0.5))
+
+
+def _raices(buf):
+    """Raíces bajando desde el terreno por la cara del cristal.
+
+    Salen de la planta que tienen encima, no de sitios al azar: se reparten
+    alrededor de las posiciones plantadas que caen cerca del frente. Por eso
+    hay más donde hay más planta, que es lo que uno ve en un terrario de
+    verdad y lo que evita que esto sea ruido decorativo.
+    """
+    r = np.random.default_rng(613)
+    # Pocas y agrupadas. La primera versión sacaba tres o cuatro por cada
+    # planta cercana al frente y el resultado era una hilera de puntadas
+    # verticales de lado a lado: un patrón, que es justo lo que el R2 llama
+    # ruido gratuito. Con una de cada tres plantas y una o dos raíces por
+    # planta, se leen como raíces sueltas que asoman.
+    focos = [(x, alto) for x, y, alto in MATAS if y < 1.2][::3] + \
+            [(x, alto * 0.7) for x, y, alto, _ in HELECHOS if y < 1.3][::2]
+    for fx, fuerza in focos:
+        for _ in range(1 + int(r.random() * 2)):
+            x0 = fx + (r.random() - 0.5) * 1.15
+            z0 = float(np.ravel(terreno(np.array([x0]), np.array([0.0])))[0]) - 0.02
+            largo = (0.22 + 1.45 * r.random() ** 1.8) * (0.6 + fuerza)
+            tramos = 6
+            px, pz = x0, z0
+            deriva = (r.random() - 0.5) * 1.35
+            for t in range(tramos):
+                dz = -largo / tramos
+                dx = deriva * largo / tramos + (r.random() - 0.5) * 0.14
+                g = 0.011 * (1.0 - 0.75 * t / tramos)
+                blit_quad(buf, [(px - g, 0, pz), (px + dx - g, 0, pz + dz),
+                                (px + dx + g, 0, pz + dz), (px + g, 0, pz)],
+                          'madera', 0.26)
+                px, pz = px + dx, pz + dz
 
 
 def seccion_frontal(buf):
     """Las capas del sustrato, vistas en sección a través del cristal.
 
     Es lo que distingue un terrario de un decorado: se ve de qué está hecho.
-    Cada capa es un cuadrilátero recortado por arriba con la curva del terreno,
-    así que la sección sigue el relieve en vez de ser una franja recta.
 
-    Y lleva el nivel freático dibujado, que no es adorno: bajo el charco el
-    sustrato está saturado y se ve más oscuro, y la mancha se va apagando al
-    alejarse. Es el mismo campo de humedad que decide dónde prende el musgo,
-    enseñado por su corte. Sin esto la sección era una banda plana ocupando el
-    tercio inferior de la lámina.
+    El R2 la señaló como la zona más floja, y tenía razón: cuatro bandas de
+    tono plano con el canto superior siguiendo una curva suave se leen como lo
+    que eran, un degradado por tramos. Lo que la arregla no es más ruido, es
+    **estructura**:
+
+      - los límites entre capas ondulan, porque un sustrato se asienta;
+      - la capa de drenaje tiene cantos con su propio relieve;
+      - la de arena, grano más fino y más claro;
+      - bajan raíces desde las plantas que están cerca del frente;
+      - y sigue el nivel freático, que ya estaba y no es adorno: bajo el charco
+        el sustrato está saturado y se ve más oscuro.
+
+    Además la franja ocupa menos: el encuadre sube y le quita altura, que es la
+    otra salida que el R2 dejaba abierta.
     """
+    def limite(z, amp, fase):
+        """Un límite de capa que ondula en vez de ser una recta."""
+        return lambda u: z + amp * (_ruido(np.array(u) * TW * 0.55 + fase,
+                                           np.full_like(np.array(u), fase)) - 0.5)
+
     def freatico(u, v):
         x = u * TW
         z = v * TH
         moja = 1.0 - dist_agua(x, np.zeros_like(x))
-        # la saturación sube desde el fondo del vaso y se desvanece con la cota
         alto = np.clip(1.0 - (z - 0.25) / 1.35, 0.0, 1.0)
         veta = 0.86 + 0.28 * e4.sample_tex(x * 1.15, z * 2.1)
-        return veta * (1.0 - 0.42 * moja * alto)
+        # gradación de profundidad: lo más hondo recibe menos luz por el canto
+        hondo = 0.78 + 0.22 * np.clip(z / 1.6, 0, 1)
+        return veta * hondo * (1.0 - 0.46 * moja * alto)
 
-    def capa(mat, z0, z1, oscuro=1.0):
+    def capa(mat, z0f, z1f, oscuro=1.0, extra=None):
+        def mod(u, v):
+            base = freatico(u, v)
+            return base if extra is None else base * extra(u, v)
         blit_quad(buf, [(0, 0, 0), (TW, 0, 0), (TW, 0, TH), (0, 0, TH)], mat, oscuro,
-                  alpha=lambda u, v, a=z0, b=z1:
-                      (v * TH >= a) & (v * TH < np.minimum(b, terreno(u * TW, 0.0))),
-                  modula=freatico)
+                  alpha=lambda u, v: (v * TH >= z0f(u))
+                                     & (v * TH < np.minimum(z1f(u), terreno(u * TW, 0.0))),
+                  modula=mod)
+
+    suelo = lambda u: np.zeros_like(np.array(u, float))
+    techo = lambda u: np.full_like(np.array(u, float), TH)
+    l1 = limite(0.60, 0.16, 3.0)
+    l2 = limite(0.94, 0.13, 8.5)
+    l3 = limite(1.46, 0.19, 1.7)
 
     # Tras el cristal no entra luz directa: la sección va oscurecida.
-    capa('grava', 0.00, 0.62, 0.30)
-    capa('arena', 0.62, 0.95, 0.28)
-    capa('turba', 0.95, 1.45, 0.32)
-    capa('sustrato', 1.45, TH, 0.38)
+    capa('grava', suelo, l1, 0.30,
+         extra=lambda u, v: _cantos(u, v, 46.0, 0.52, 3.0))
+    capa('arena', l1, l2, 0.28,
+         extra=lambda u, v: _cantos(u, v, 128.0, 0.42, 17.0))
+    capa('turba', l2, l3, 0.32)
+    capa('sustrato', l3, techo, 0.38,
+         extra=lambda u, v: _cantos(u, v, 34.0, 0.30, 41.0))
+    _raices(buf)
 
 
 def agua(lit, buf):
@@ -519,23 +647,163 @@ def mata(buf, x, y, alto, mat, mat_clara, hojas=11, seed=0, tono=1.0):
         hoja(buf, (x, y, z0), eje, ancho, m, tono * (0.82 + 0.3 * r.random()))
 
 
-def colgante(buf, x, y, z, largo, mat, mat_clara, seed=0):
-    """Vegetación que cuelga desde el borde superior del tanque."""
+def cinta(buf, x, y, alto, mat, mat_clara, hojas=9, seed=0, tono=1.0):
+    """Planta de hoja acintada: hojas largas y estrechas que arquean y caen.
+
+    Primera de las tres familias nuevas. Se distingue de la mata a distancia
+    por la silueta —larga, fina, colgando— y no por el tono, que es lo que el
+    R2 pide: con tamaño, tono y orientación el mundo seguía leyéndose como la
+    misma planta repetida.
+
+    La hoja no es recta: se dibuja por tramos y cada tramo cae un poco más,
+    porque una cinta sostiene su propio peso hasta que deja de hacerlo.
+    """
     r = np.random.default_rng(seed)
-    n = 18
-    for i in range(n):
-        t = (i + 1) / n
-        pz = z - largo * t
-        px = x + math.sin(t * 2.4 + seed) * largo * 0.22
+    z0 = float(np.ravel(terreno(np.array([float(x)]), np.array([float(y)])))[0])
+    for i in range(hojas):
+        ang = 2 * math.pi * i / hojas + 0.6 * r.random()
+        largo = alto * (0.95 + 0.55 * r.random())
+        tramos = 4
+        px, py, pz = x, y, z0
+        subida = 1.05 + 0.45 * r.random()
+        for t in range(tramos):
+            f = t / tramos
+            # el arco: sube al principio y se vence al final
+            dz = largo / tramos * (subida - 2.35 * f ** 1.6)
+            dr = largo / tramos * (0.30 + 0.85 * f)
+            eje = np.array([math.cos(ang) * dr, math.sin(ang) * dr * 0.5, dz])
+            ancho = np.array([-math.sin(ang), math.cos(ang) * 0.55, 0.22])
+            ancho = ancho / np.linalg.norm(ancho) * largo * (0.085 - 0.045 * f)
+            m = mat_clara if i % 4 == 0 else mat
+            hoja(buf, (px, py, pz), eje, ancho, m,
+                 tono * (0.86 + 0.24 * r.random()), pliegue=0.45)
+            px, py, pz = px + eje[0], py + eje[1], pz + eje[2]
+
+
+def _perfil_disco(u, v):
+    """Media hoja redonda: el ancho máximo está a media hoja, no en la punta."""
+    return v <= np.sqrt(np.clip(1.0 - (2 * np.clip(u, 0, 1) - 1) ** 2, 0, 1))
+
+
+def redonda(buf, x, y, alto, mat, mat_clara, hojas=8, seed=0, tono=1.0):
+    """Planta de hoja redonda sobre peciolo: discos a distintas alturas.
+
+    Segunda familia. Rompe la lectura de todo-lanceolado, y además da masas
+    claras en medio del follaje fino, que es lo que hace que un grupo de
+    plantas no parezca un solo arbusto.
+    """
+    r = np.random.default_rng(seed + 991)
+    z0 = float(np.ravel(terreno(np.array([float(x)]), np.array([float(y)])))[0])
+    for i in range(hojas):
+        ang = 2 * math.pi * i / hojas + 0.5 * r.random()
+        h = alto * (0.45 + 0.75 * r.random())
+        rad = alto * (0.26 + 0.16 * r.random())
+        cx = x + math.cos(ang) * alto * 0.30 * (0.5 + r.random())
+        cy = y + math.sin(ang) * alto * 0.20 * (0.5 + r.random())
+        # peciolo
+        blit_quad(buf, [(x, y, z0), (cx, cy, z0 + h),
+                        (cx + 0.022, cy, z0 + h), (x + 0.022, y, z0)], 'madera', 0.7)
+        # el disco, casi horizontal y con una caída leve
+        caida = 0.18 + 0.22 * r.random()
+        e_ = np.array([math.cos(ang) * rad * 2, math.sin(ang) * rad * 1.1, -caida * rad])
+        a_ = np.array([-math.sin(ang) * rad * 2, math.cos(ang) * rad * 1.9, 0.0])
+        m = mat_clara if i % 3 == 0 else mat
+        b = np.array([cx, cy, z0 + h]) - e_ / 2
+        alza = np.cross(e_, a_)
+        n = np.linalg.norm(alza)
+        alza = alza / n * np.linalg.norm(a_) * 0.16 if n > 1e-9 else a_ * 0.0
         for lado in (-1, 1):
-            lh = largo * 0.155 * (0.7 + 0.5 * r.random())
-            ang = lado * (1.2 + 0.4 * r.random())
-            eje = np.array([math.cos(ang) * lh, 0.35 * (r.random() - 0.5) * lh,
-                            -lh * (0.3 + 0.5 * r.random())])
-            ancho = np.array([-math.sin(ang) * 0.8, 0.55, 0.25])
-            ancho = ancho / np.linalg.norm(ancho) * lh * 0.66
-            m = mat_clara if i % 3 == 1 else mat
-            hoja(buf, (px, y, pz), eje, ancho, m, 0.80 + 0.3 * r.random())
+            d = a_ / 2 * lado + alza
+            blit_quad(buf, [b, b + e_, b + e_ + d, b + d], m,
+                      tono * (0.88 + 0.22 * r.random()),
+                      alpha=_perfil_disco, modula=_dibujo_hoja)
+
+
+def cojin(buf, x, y, ancho_, mat, mat_clara, hojas=46, seed=0, tono=1.0):
+    """Cojín tapizante: muchas hojas diminutas formando un montículo bajo.
+
+    Tercera familia. No tiene estructura visible, y esa es su gracia: al lado
+    de una fronda o de una cinta da una masa compacta que descansa la vista y
+    marca el suelo como ocupado.
+    """
+    r = np.random.default_rng(seed + 4423)
+    for i in range(hojas):
+        a = 2 * math.pi * r.random()
+        rr = ancho_ * math.sqrt(r.random())
+        px, py = x + math.cos(a) * rr, y + math.sin(a) * rr * 0.62
+        pz = float(np.ravel(terreno(np.array([px]), np.array([py])))[0])
+        alto_h = ancho_ * (0.22 + 0.26 * r.random()) * (1.0 - 0.55 * rr / ancho_)
+        ang = 2 * math.pi * r.random()
+        eje = np.array([math.cos(ang) * alto_h * 0.55, math.sin(ang) * alto_h * 0.35,
+                        alto_h])
+        anc = np.array([-math.sin(ang), math.cos(ang) * 0.6, 0.35])
+        anc = anc / np.linalg.norm(anc) * alto_h * 0.52
+        m = mat_clara if i % 4 == 0 else mat
+        hoja(buf, (px, py, pz), eje, anc, m, tono * (0.80 + 0.30 * r.random()))
+
+
+def _rama(buf, p0, dir0, largo, grueso, mat, mat_clara, r, nivel=0, tono=1.0):
+    """Un tallo que cae, se curva, engorda desigual y echa hojas y ramas.
+
+    Recursiva hasta dos niveles. Lo que el R2 señalaba —«cuerdas verdes contra
+    la pared»— venía de tres cosas a la vez: una sola vertical sin ramificar,
+    grosor constante y todo a la misma profundidad. Aquí el tallo avanza por
+    tramos con la dirección girando poco a poco, el grueso cae con el recorrido,
+    las hojas salen alternas a lado y lado, y cada rama hija arranca con su
+    propia desviación en profundidad, así que unas pasan por delante de otras.
+    """
+    tramos = 9 if nivel == 0 else 6
+    pos = np.array(p0, float)
+    d = np.array(dir0, float)
+    d /= np.linalg.norm(d)
+    paso = largo / tramos
+    for i in range(tramos):
+        f = i / tramos
+        # la dirección gira: la gravedad tira, y el tallo serpentea
+        # el arco: deriva lateral fuerte al principio y caída al final, para
+        # que el tallo describa una curva y no una vertical con temblor
+        d = d + np.array([(r.random() - 0.5) * 0.52 + 0.16 * math.sin(f * 3.1 + nivel),
+                          (r.random() - 0.5) * 0.44,
+                          -0.10 - 0.34 * f])
+        d /= np.linalg.norm(d)
+        sig = pos + d * paso
+        g0 = grueso * (1.0 - 0.55 * f) * (0.85 + 0.3 * r.random())
+        g1 = grueso * (1.0 - 0.55 * (f + 1 / tramos))
+        # Dos caras y no una: una cinta plana de una sola cara se lee como un
+        # listón visto de frente, que es en lo que se me convirtieron los
+        # tallos al engordarlos. Y el tallo va oscuro: es tallo tierno a la
+        # sombra, no una estaca de madera clara contra la pared.
+        blit_quad(buf, [pos - (g0, 0, 0), sig - (g1, 0, 0),
+                        sig + (g1, 0, 0), pos + (g0, 0, 0)], 'madera', 0.30 * tono)
+        blit_quad(buf, [pos - (0, g0, 0), sig - (0, g1, 0),
+                        sig + (0, g1, 0), pos + (0, g0, 0)], 'madera', 0.22 * tono)
+        # hojas alternas
+        for lado in (-1, 1):
+            if r.random() > (0.96 if nivel == 0 else 0.88):
+                continue
+            lh = largo * (0.135 + 0.095 * r.random()) * (1.0 - 0.25 * f)
+            ang = math.atan2(d[1], d[0]) + lado * (1.15 + 0.5 * r.random())
+            eje = np.array([math.cos(ang) * lh, math.sin(ang) * lh * 0.55,
+                            -lh * (0.25 + 0.45 * r.random())])
+            anc = np.array([-math.sin(ang) * 0.8, 0.55, 0.28])
+            anc = anc / np.linalg.norm(anc) * lh * 0.70
+            m = mat_clara if r.random() < 0.28 else mat
+            hoja(buf, tuple(sig), eje, anc, m, tono * (0.82 + 0.28 * r.random()))
+        # ramas hijas, con su propia desviación en profundidad
+        if nivel == 0 and 1 <= i <= tramos - 2 and r.random() < 0.72:
+            desv = np.array([(r.random() - 0.5) * 1.5,
+                             (r.random() - 0.5) * 1.9,     # cruza planos
+                             -0.35 - 0.4 * r.random()])
+            _rama(buf, tuple(sig), d + desv, largo * (0.42 + 0.22 * r.random()),
+                  grueso * 0.62, mat, mat_clara, r, nivel + 1, tono)
+        pos = sig
+
+
+def colgante(buf, x, y, z, largo, mat, mat_clara, seed=0, tono=1.0):
+    """Vegetación que cuelga del borde superior del tanque."""
+    r = np.random.default_rng(seed + 77)
+    _rama(buf, (x, y, z), (0.18 * (r.random() - 0.5), 0.12 * (r.random() - 0.5), -1.0),
+          largo, 0.017, mat, mat_clara, r, 0, tono)
 
 
 def tapiz(buf):
@@ -543,8 +811,7 @@ def tapiz(buf):
 
     Sin esto la tierra es un campo continuo, y un campo continuo de un solo
     material es exactamente lo que la tercera pregunta de la referencia E4
-    señala: una superficie grande resuelta de una sola manera. En un terrario
-    plantado el suelo casi nunca se ve limpio.
+    señala. En un terrario plantado el suelo casi nunca se ve limpio.
     """
     def donde(x, y, z):
         n1 = e4.sample_tex(x * 0.95 + 3.0, y * 0.95)
@@ -556,25 +823,41 @@ def tapiz(buf):
                      tint=0.85)
 
 
-def musgo_parches(buf):
-    """El musgo prende donde hay sombra y humedad: es estado, no decoración.
+def _favorable(x, y):
+    """Cuánto le conviene el sitio al musgo: sombra y humedad, de 0 a 1.
 
-    Se pinta como relieve propio ligeramente por encima del terreno, recortado
-    por la misma condición que lo hace prender. Donde no se cumple no hay
-    musgo, y eso se ve sin leer nada.
+    Es el campo que el concepto describe, y se usa dos veces: para decidir
+    dónde prende el musgo y con qué densidad. Sacarlo a una función es lo que
+    permite que las dos láminas —la de gameplay y la de causalidad— hablen del
+    mismo cálculo y no de dos aproximaciones parecidas.
     """
-    def prende(x, y, z):
-        humedo = 1.0 - dist_agua(x, y)
-        sombra = np.zeros(np.shape(x), np.float32)
-        for cx, cy, rx, ry, _ in ROCAS:
-            d = np.sqrt(((x - cx - 0.62) / (rx * 2.4)) ** 2
-                        + ((y - cy - 0.34) / (ry * 2.6)) ** 2)
-            sombra = np.maximum(sombra, np.clip(1.0 - d, 0, 1))
-        moteado = e4.sample_grain(x * 1.7, y * 1.7)
-        return (humedo * 0.62 + sombra * 1.25 + moteado * 0.30 > 0.80) & (~hay_agua(x, y))
+    humedo = 1.0 - dist_agua(x, y)
+    sombra = np.zeros(np.shape(x), np.float32)
+    for cx, cy, rx, ry, _ in ROCAS:
+        d = np.sqrt(((x - cx - 0.62) / (rx * 2.4)) ** 2
+                    + ((y - cy - 0.34) / (ry * 2.6)) ** 2)
+        sombra = np.maximum(sombra, np.clip(1.0 - d, 0, 1))
+    moteado = e4.sample_grain(x * 1.7, y * 1.7)
+    return humedo * 0.62 + sombra * 1.25 + moteado * 0.30
+
+
+def musgo_parches(buf):
+    """El musgo prende donde hay sombra y humedad, y prende más donde más hay.
+
+    Dos capas y no una. La de abajo es el musgo establecido, con su umbral; la
+    de arriba es musgo joven, más claro y con un umbral más alto, así que sólo
+    sale en el corazón de la zona favorable. El resultado es un gradiente de
+    densidad, que es lo que hace que un cambio en el microentorno se vea a
+    simple vista: con una sola capa el musgo estaba o no estaba, y el ojo sólo
+    registraba el contorno.
+    """
+    def prende(umbral):
+        return lambda x, y, z: (_favorable(x, y) > umbral) & (~hay_agua(x, y))
 
     blit_heightfield(buf, 'musgo', lambda x, y: terreno(x, y) + 0.030,
-                     0, TW, 0, TD, steps=130, alpha=prende, bump_scale=1.7)
+                     0, TW, 0, TD, steps=130, alpha=prende(0.80), bump_scale=1.7)
+    blit_heightfield(buf, 'musgo-joven', lambda x, y: terreno(x, y) + 0.042,
+                     0, TW, 0, TD, steps=130, alpha=prende(1.04), bump_scale=2.1)
 
 
 HELECHOS = ((1.05, 2.95, 1.15, 0.6), (2.35, 2.55, 1.42, -0.5),
@@ -640,12 +923,15 @@ MATAS = ((2.47, 0.66, 0.48),
          (3.43, 2.88, 0.68),
          (6.37, 3.51, 0.54))
 
-COLGANTES = ((1.75, 5.20, 1.55), (4.55, 5.35, 1.25),
-             (7.05, 5.25, 1.70), (9.10, 5.10, 1.30),
-             (0.60, 5.05, 1.85), (3.15, 5.30, 1.05),
-             (5.85, 5.15, 1.45), (8.20, 5.35, 1.15))
-# Primer plano: hojas cortadas por el marco. Son la capa más cercana y la más
-# oscura, y su trabajo es enmarcar, no lucirse.
+# (x, cota de arranque, largo, profundidad). La profundidad va repartida a
+# propósito: una colgando a 0,55 pasa por delante de las plantas del suelo, y
+# es lo que quita la lectura de cuerdas pegadas al fondo.
+COLGANTES = ((1.75, 5.20, 1.75, 2.35), (4.55, 5.35, 1.45, 0.62),
+             (7.05, 5.25, 1.95, 1.85), (9.10, 5.10, 1.50, 0.95),
+             (0.60, 5.05, 2.05, 1.25), (3.15, 5.30, 1.25, 3.05),
+             (5.85, 5.15, 1.65, 2.60), (8.20, 5.35, 1.35, 0.55),
+             (2.45, 5.28, 1.55, 1.55), (6.35, 5.32, 1.20, 3.35))
+
 PRIMER_PLANO = ((-0.15, 1.35, 0.42, 1.85), (0.35, 1.95, 0.72, 1.35),
                 (10.10, 1.65, 2.62, 1.95), (9.55, 2.25, 2.25, 1.30),
                 (4.75, 1.02, 1.28, 1.25), (6.45, 1.05, 1.85, 1.15))
@@ -722,6 +1008,28 @@ def elemento_en_vuelo(buf):
 MOSTRAR_EN_VUELO = True
 
 
+MOSTRAR_EN_VUELO = True
+
+
+def familia(x, y):
+    """Qué especie va en un punto. Por manchas, no alternando.
+
+    El R2 avisa de que el mundo se leía como «estrella + helecho + estrella +
+    helecho». Repartir las familias por turnos no lo arregla: lo cambia por
+    otro patrón. Lo que hace que un plantado parezca natural es que las
+    especies salgan **agrupadas**, porque en un sitio prende una y al lado otra.
+    Así que la familia la decide un ruido de baja frecuencia sobre el terreno:
+    vecinos comparten especie y los límites entre manchas son irregulares.
+    """
+    n = float(np.ravel(_ruido(np.array([x * 0.34]), np.array([y * 0.34])))[0])
+    m = float(np.ravel(_ruido(np.array([x * 0.71 + 5.0]), np.array([y * 0.71])))[0])
+    if n < 0.44:
+        return 'cojin' if m < 0.46 else 'mata'
+    if n < 0.58:
+        return 'redonda' if m > 0.38 else 'mata'
+    return 'cinta' if m > 0.36 else 'redonda'
+
+
 def vegetacion(buf):
     madera(buf, 2.95, 0.95, 4.05, 2.15, 2.95, 0.115)
     madera(buf, 8.05, 0.70, 7.15, 1.55, 1.85, 0.085)
@@ -732,14 +1040,21 @@ def vegetacion(buf):
     for i, (x, y, alto) in enumerate(MATAS):
         if not _en_seco(x, y):
             continue
-        # tono por planta: un terrario tiene especies distintas, y sin esta
-        # variación todas las matas salen del mismo verde y se leen como
-        # copias del mismo recorte
-        mata(buf, x, y, alto, 'hoja', 'hoja-clara', seed=7 + i,
-             tono=0.72 + 0.62 * ((i * 37 % 19) / 19.0))
-    for i, (x, z, largo) in enumerate(COLGANTES):
-        # cuelgan por delante de la pared, no pegadas a ella
-        colgante(buf, x, 0.95 + 0.36 * (i % 4), z, largo, 'hoja', 'hoja-clara', seed=3 + i)
+        # tono por planta, además de la familia: dos ejemplares de la misma
+        # especie tampoco son idénticos
+        tono = 0.78 + 0.46 * ((i * 37 % 19) / 19.0)
+        f = familia(x, y)
+        if f == 'cinta':
+            cinta(buf, x, y, alto * 1.15, 'hoja-cinta', 'hoja-clara', seed=7 + i, tono=tono)
+        elif f == 'redonda':
+            redonda(buf, x, y, alto * 1.05, 'hoja-disco', 'hoja-clara', seed=7 + i, tono=tono)
+        elif f == 'cojin':
+            cojin(buf, x, y, alto * 0.95, 'hoja', 'hoja-clara', seed=7 + i, tono=tono)
+        else:
+            mata(buf, x, y, alto, 'hoja', 'hoja-clara', seed=7 + i, tono=tono)
+    for i, (x, z, largo, prof) in enumerate(COLGANTES):
+        colgante(buf, x, prof, z, largo, 'hoja-disco' if i % 3 == 0 else 'hoja',
+                 'hoja-clara', seed=3 + i, tono=0.86 + 0.24 * ((i * 29 % 11) / 11.0))
     # primer plano: hojas grandes y oscuras cortadas por el marco
     if MOSTRAR_EN_VUELO:
         elemento_en_vuelo(buf)
@@ -785,7 +1100,8 @@ def lighting(buf):
         spill=(np.array([6.4, 1.5, NIVEL_AGUA], np.float32),
                np.array([0.52, 0.86, 0.80], np.float32), 2.6, 0.40),
         fog_k=0.52, amb_k=0.105, key_k=1.55, spec_k=0.16, shadow_k=0.92,
-        translucent=([e4.MAT_IDS[m] for m in ('hoja', 'hoja-clara', 'hoja-honda')],
+        translucent=([e4.MAT_IDS[m] for m in ('hoja', 'hoja-clara', 'hoja-honda',
+                                              'hoja-cinta', 'hoja-disco')],
                      np.array([0.55, 0.95, 0.40], np.float32), 0.85))
 
 
@@ -888,29 +1204,57 @@ def _icono(cx, cy, r, clase, ink):
             f'stroke="{ink}" stroke-width="1.6" stroke-linejoin="round"/>')
 
 
-def bandeja(x0, y0, lado, paso, sel=4, etiquetas=True):
+def bandeja(x0, y0, lado, paso, sel=4, etiquetas=True, tam_etiqueta=9.5):
     """Bandeja de elementos. Objetivos de `lado` px, nunca menos de 44.
 
     El §10 del concepto lo fija: el arrastre no puede ser la única vía, así que
     esto es una lista de opciones que se recorre y se activa, y el terrario es
     el segundo paso. Lo seleccionado se marca con acento y con marco, no sólo
     con color.
+
+    **El nombre va en tres sitios, y por tres motivos distintos.** El R2 avisó
+    de que a 390 px los elementos se identificaban sólo por un glifo abstracto,
+    y un glifo abstracto no es un nombre: obliga a aprenderse siete dibujos
+    antes de poder jugar.
+
+      1. Etiqueta breve dentro de la casilla, mientras quepa a un tamaño que se
+         lea. Es lo que resuelve el caso normal.
+      2. `<title>` en cada casilla, siempre, quepa o no la etiqueta. Es el
+         nombre accesible, y no depende de que haya sitio en pantalla.
+      3. El nombre del seleccionado, grande y fuera de la bandeja, que lo pone
+         `nombre_seleccionado()`. Es lo que contesta «¿qué estoy colocando?»
+         sin tener que localizar cuál de las siete casillas está marcada.
     """
     o = []
     for i, (nombre, clase) in enumerate(BANDEJA):
         x = x0 + i * paso
         activo = i == sel
+        o.append(f'<g role="img"><title>{nombre}'
+                 f'{" · seleccionado" if activo else ""}</title>')
         o.append(f'<rect x="{x:.0f}" y="{y0:.0f}" width="{lado}" height="{lado}" rx="9" '
                  f'fill="{T("bg-surface-soft") if activo else T("bg-surface")}" '
                  f'stroke="{T("accent") if activo else T("border-control")}" '
                  f'stroke-width="{2 if activo else 1}"/>')
-        o.append(_icono(x + lado / 2, y0 + lado * 0.44, lado * 0.24, clase,
+        cy = y0 + lado * (0.40 if etiquetas else 0.44)
+        o.append(_icono(x + lado / 2, cy, lado * (0.21 if etiquetas else 0.24), clase,
                         T('accent') if activo else T('text-muted')))
         if etiquetas:
             o.append(f'<text x="{x + lado / 2:.0f}" y="{y0 + lado - 7:.0f}" '
-                     f'font-family="Georgia, serif" font-size="9.5" text-anchor="middle" '
+                     f'font-family="Georgia, serif" font-size="{tam_etiqueta}" '
+                     f'text-anchor="middle" '
                      f'fill="{T("accent") if activo else T("text-muted")}">{nombre}</text>')
+        o.append('</g>')
     return ''.join(o)
+
+
+def nombre_seleccionado(x, y, sel=4, tam=17, anchor='start'):
+    """El nombre del elemento cogido, fuera de la bandeja y permanente."""
+    nombre = BANDEJA[sel][0]
+    return (f'<text x="{x:.0f}" y="{y:.0f}" font-family="Georgia, serif" '
+            f'font-size="{tam}" fill="{T("accent")}" text-anchor="{anchor}">{nombre}</text>'
+            f'<text x="{x:.0f}" y="{y + tam * 0.98:.0f}" font-family="Georgia, serif" '
+            f'font-size="{tam * 0.66:.1f}" fill="{T("text-muted")}" '
+            f'text-anchor="{anchor}">en la mano</text>')
 
 
 def destino():
@@ -940,6 +1284,9 @@ def overlay_svg(data_uri):
                  + EN_VUELO[2] + 0.95))
     o.append(label_plate(px, py, 'HELECHO', 17, 1.6))
     o.append(bandeja(44, OUT_H - 96, 62, 78))
+    # a la derecha de la bandeja y con aire: pegado al borde de la última
+    # casilla el nombre se comía el rótulo de «Refugio»
+    o.append(nombre_seleccionado(44 + 6 * 78 + 62 + 26, OUT_H - 66, tam=19))
     o.append(f'<text x="{OUT_W-44}" y="{OUT_H-64}" font-family="Georgia, serif" font-size="13.5" '
              f'fill="{T("text-muted")}" text-anchor="end">Elige un elemento · elige un sitio · '
              f'coloca</text>')
@@ -974,12 +1321,13 @@ def overlay_movil(data_uri):
     aquí se tocan con el dedo.
     """
     o = [destino()]
-    o.append(bandeja(9, OUT_H - 126, 60, 58, etiquetas=False))
-    o.append(f'<text x="{OUT_W/2:.0f}" y="{OUT_H-142}" font-family="Georgia, serif" '
-             f'font-size="12" fill="{T("text-muted")}" text-anchor="middle" '
-             f'letter-spacing="1">QUÉ VAS A COLOCAR</text>')
-    o.append(f'<text x="{OUT_W/2:.0f}" y="{OUT_H-34}" font-family="Georgia, serif" '
-             f'font-size="14.5" fill="{T("text-muted")}" text-anchor="middle">'
+    o.append(bandeja(9, OUT_H - 122, 60, 58, etiquetas=True, tam_etiqueta=8.5))
+    o.append(f'<text x="14" y="{OUT_H-142}" font-family="Georgia, serif" '
+             f'font-size="11.5" fill="{T("text-muted")}" letter-spacing="1">'
+             f'QUÉ VAS A COLOCAR</text>')
+    o.append(nombre_seleccionado(OUT_W - 14, OUT_H - 148, tam=17, anchor='end'))
+    o.append(f'<text x="{OUT_W/2:.0f}" y="{OUT_H-26}" font-family="Georgia, serif" '
+             f'font-size="14" fill="{T("text-muted")}" text-anchor="middle">'
              f'Toca el sitio y suéltalo</text>')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
             f'viewBox="0 0 {OUT_W} {OUT_H}" width="{OUT_W}" height="{OUT_H}" role="img" '
@@ -1089,15 +1437,20 @@ def main():
                                  contraste=0.34, pivote=0.38))
         im = Image.fromarray((img * 255 + 0.5).astype(np.uint8))
         im = im.resize((OUT_W, OUT_H), Image.LANCZOS)
-        im.save(args.out / f'{nombre}.webp', quality=92, method=6)
+        # El .webp de disco y el incrustado en el SVG son **los mismos bytes**.
+        # Antes el suelto iba a 92 y el incrustado a 76, y entonces rehacer
+        # sólo la capa vectorial desde el .webp metía una generación más de
+        # compresión: la lámina salía parecida pero no idéntica, y eso rompe
+        # que la entrega sea reproducible. Una sola codificación y se acabó.
+        #
+        # 76 y no 90: P02 tiene mucho más detalle de alta frecuencia que P01
+        # —follaje, grano, musgo— y a 90 la lámina de escritorio se iba a
+        # 638 KB. Comparadas a 1440 no se distingue cuál es cuál.
         bio = io.BytesIO()
-        # El raster incrustado va a calidad 76 y no 90. P02 tiene mucho más
-        # detalle de alta frecuencia que P01 —follaje, grano, musgo—, y a 90 la
-        # lámina de escritorio se iba a 638 KB. A 76 pesa 257 KB y, comparadas
-        # a 1440, no se distingue cuál es cuál. El .webp suelto se queda en 92,
-        # que es el archivo del que se parte si hay que recomponer.
         im.save(bio, 'WEBP', quality=76, method=6)
-        uri = 'data:image/webp;base64,' + base64.b64encode(bio.getvalue()).decode('ascii')
+        crudo = bio.getvalue()
+        (args.out / f'{nombre}.webp').write_bytes(crudo)
+        uri = 'data:image/webp;base64,' + base64.b64encode(crudo).decode('ascii')
         (args.out / f'{nombre}.svg').write_text(overlay(uri), encoding='utf-8')
         print(f'Escrito {args.out}/{nombre}.svg  ({OUT_W}x{OUT_H})')
 

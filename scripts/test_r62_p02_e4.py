@@ -22,6 +22,19 @@ Se mide:
   5. **Composición propia a 390.** Se comprueba que el encuadre de móvil no es
      el de escritorio: ventana y rango de cota distintos.
 
+Y, desde la R2, cuatro medidas más, una por cada punto del rework que admite
+número:
+
+  6. **Variedad de follaje.** Cuántas familias distintas se plantan de verdad y
+     si alguna acapara. Contar familias declaradas no vale: lo que importa es
+     el reparto que sale sobre el terreno.
+  7. **Colgantes ramificadas.** Cuántas ramas hijas salen por planta. Una
+     colgante sin ramas es la cuerda verde que el R2 rechaza.
+  8. **La roca nueva pertenece al mundo.** Su luminancia comparada con la del
+     resto de la escena. Si dobla largamente a lo que la rodea, es un marcador.
+  9. **La bandeja tiene nombres.** Que los siete elementos tengan etiqueta
+     visible en móvil y nombre accesible en las dos composiciones.
+
 No se mide, y por eso no se declara:
 
   - si la lámina «parece un terrario» y no una ficha;
@@ -142,20 +155,97 @@ def main():
         p.configure(560, 512, ventana=(3.95, 8.35))
         b2 = e4.Buffers()
         p.build_scene(b2)
-        musgo[con] = int((b2.matid == e4.MAT_IDS['musgo']).sum())
+        # las dos densidades: el musgo joven es donde más se nota el cambio,
+        # y contar sólo el establecido se dejaba fuera dos tercios del efecto
+        musgo[con] = int((b2.matid == e4.MAT_IDS['musgo']).sum()
+                         + (b2.matid == e4.MAT_IDS['musgo-joven']).sum())
     p.con_roca_demo(False)
     p.MOSTRAR_EN_VUELO = True
     delta = 100.0 * (musgo[True] - musgo[False]) / max(musgo[False], 1)
     r['musgo_sin_roca'] = musgo[False]
     r['musgo_con_roca'] = musgo[True]
+    r['musgo_dos_capas'] = True
     r['musgo_delta_pct'] = round(delta, 1)
     if delta < 15.0:
         fallos.append(f'causalidad: la roca sólo cambia el musgo un {delta:.0f}%; '
                       f'la consecuencia no se verá sin leer el pie')
 
+    # 6 · variedad de follaje, por reparto real y no por catálogo
+    import collections
+    rep = collections.Counter(p.familia(x, y) for x, y, _ in p.MATAS)
+    r['familias'] = dict(rep)
+    dominante = max(rep.values()) / max(sum(rep.values()), 1)
+    r['familia_dominante_pct'] = round(100 * dominante, 1)
+    if len(rep) < 3:
+        fallos.append(f'follaje: sólo {len(rep)} familias sobre el terreno')
+    if dominante > 0.45:
+        fallos.append(f'follaje: una familia acapara el {100*dominante:.0f}% del plantado')
+
+    # 7 · las colgantes ramifican
+    ramas = []
+    for i, (x, z, largo, prof) in enumerate(p.COLGANTES):
+        cuenta = {'n': 0}
+        real = p._rama
+
+        def contar(buf_, p0, dir0, l, g, m, mc, rr, nivel=0, tono=1.0):
+            if nivel > 0:
+                cuenta['n'] += 1
+            return real(buf_, p0, dir0, l, g, m, mc, rr, nivel, tono)
+
+        p._rama = contar
+        b3 = e4.Buffers()
+        p.colgante(b3, x, prof, z, largo, 'hoja', 'hoja-clara', seed=3 + i)
+        p._rama = real
+        ramas.append(cuenta['n'])
+    r['ramas_por_colgante'] = ramas
+    r['colgantes_sin_ramificar'] = sum(1 for n in ramas if n == 0)
+    if sum(1 for n in ramas if n == 0) > 1:
+        fallos.append(f'colgantes: {sum(1 for n in ramas if n == 0)} no ramifican')
+
+    # 8 · la roca nueva no puede robar la lámina
+    p.MOSTRAR_EN_VUELO = False
+    p.con_roca_demo(True)
+    p.configure(560, 512, ventana=(3.95, 8.35))
+    b4 = e4.Buffers()
+    p.build_scene(b4)
+    img4 = p.cristal(e4.compose(p.agua(p.lighting(b4), b4), b4, p.backdrop,
+                                exposure=1.95, vignette=(1.12, 0.38, 1.55),
+                                contraste=0.34, pivote=0.38))
+    roca = b4.matid == e4.MAT_IDS['roca-humeda']
+    resto = b4.mask & ~roca
+    lr = float(img4[roca].mean()) if roca.any() else 0.0
+    le = float(np.median(img4[resto]))
+    r['luminancia_roca_nueva'] = round(lr, 3)
+    r['luminancia_escena'] = round(le, 3)
+    r['razon_roca_escena'] = round(lr / max(le, 1e-6), 2)
+    if lr / max(le, 1e-6) > 2.2:
+        fallos.append(f'roca nueva: {lr/le:.1f}× más clara que la escena; '
+                      f'se lee como marcador')
+    p.con_roca_demo(False)
+    p.MOSTRAR_EN_VUELO = True
+
+    # 9 · la bandeja tiene nombres, visibles y accesibles
+    d = REPO / 'editorial/r62/p02-terrario-vivo'
+    nombres = [n for n, _ in p.BANDEJA]
+    for f in ('gameplay-movil-navy.svg', 'gameplay-navy.svg'):
+        ruta = d / f
+        if not ruta.is_file():
+            fallos.append(f'bandeja: falta {f} para comprobar los nombres')
+            continue
+        txt = ruta.read_text(encoding='utf-8')
+        sin_titulo = [n for n in nombres if f'<title>{n}' not in txt]
+        if sin_titulo:
+            fallos.append(f'bandeja {f}: sin nombre accesible {sin_titulo}')
+        if 'movil' in f:
+            sin_etiqueta = [n for n in nombres if f'>{n}</text>' not in txt]
+            if sin_etiqueta:
+                fallos.append(f'bandeja móvil: sin etiqueta visible {sin_etiqueta}')
+    r['bandeja_elementos'] = len(nombres)
+
     r['no_medido'] = [
         'si parece un terrario y no una ficha',
         'si tierra, roca, madera, musgo, hoja y agua se reconocen como materiales distintos',
+        'si la cadena roca → sombra → humedad → musgo se entiende de un vistazo',
         'si algún elemento recuerda a obra de terceros',
     ]
     r['fallos'] = fallos
