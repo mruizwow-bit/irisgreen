@@ -8,6 +8,11 @@ on:
       - 'cloud/n04-r38-library/**'
       - '.github/workflows/r51-a9-cloud-library-r04.yml'
   workflow_dispatch:
+    inputs:
+      source_sha:
+        description: 'Canonical web source commit SHA to evaluate incrementally'
+        required: false
+        type: string
 
 permissions:
   contents: read
