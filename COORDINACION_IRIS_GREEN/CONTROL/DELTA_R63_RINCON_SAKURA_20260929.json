@@ -1,0 +1,102 @@
+{
+  "schema": "R63_RINCON_SAKURA/1.0",
+  "date": "2026-09-29",
+  "issue": 328,
+  "status": "R63_CLAUDE_RINCON_SAKURA_CANDIDATE_ORDERED",
+  "owner": "Claude",
+  "review": "Astra",
+  "integration": "A2",
+  "human_qa": "Maria",
+  "precedence": {
+    "source": "Maria 2026-09-29 RINCON_SALAS_SENSORIALES_RESELECTION_READY_FOR_ASTRA",
+    "balloons": "RETIRED_FROM_CATALOG_AND_GENERATOR",
+    "frozen": [
+      "Jardin de luz",
+      "Papel y viento",
+      "Dentro de una nube",
+      "Respiracion del espacio"
+    ],
+    "next_rooms_hold": [
+      "Faroles flotantes",
+      "Lluvia de luz",
+      "Agua y reflejos",
+      "Bosque bioluminiscente"
+    ],
+    "aquarium_r61": "SEPARATE_KEEP"
+  },
+  "sakura": {
+    "current": "PROTOTYPE_EXISTS_EVIDENCE_FOUND_SOURCE_HANDOFF_NOT_FOUND",
+    "evidence": [
+      "sakura_en_la_pagina.png",
+      "sakura_dos_horas.png"
+    ],
+    "source_rebuild_from_screenshots": false,
+    "missing_source_marker": "R63_SAKURA_SOURCE_ARTIFACT_MISSING_BLOCKED",
+    "direction_gate": "CONTINUE_NOT_FINAL_ACCEPTANCE"
+  },
+  "observed_a2": {
+    "pr": 244,
+    "head_at_audit": "9800661d7b7a085acaf593d9f432b2ec426151b8",
+    "use_live_head_at_start": true,
+    "main_substitute": false,
+    "global_token_sheet": "assets/ig-global-ui-tokens-2026.css"
+  },
+  "mandatory_global": [
+    "IRIS_GREEN_VISUAL_STANDARD_SEP_2026",
+    "IRIS_GREEN_AGE_TAXONOMY_2026",
+    "IRIS_GREEN_LOW_STIMULATION_SURFACES_2026",
+    "IRIS_GREEN_GLOBAL_UI_TOKENS_2026",
+    "R42_R02",
+    "ES_EN"
+  ],
+  "age_ids": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "motion": [
+    "NORMAL",
+    "REDUCED",
+    "NO_MOTION"
+  ],
+  "inherited_fix": {
+    "pr303_merged": false,
+    "port_semantically": [
+      "idempotent clean-mode body class mutation",
+      "[hidden] display none despite display flex important"
+    ]
+  },
+  "audio": {
+    "autoplay": false,
+    "silence_allowed": true,
+    "generic_shared_sound_forbidden": true,
+    "r60_music_forbidden": true,
+    "external_audio": false
+  },
+  "evidence_required": [
+    "exact source and hashes",
+    "branch base head tree",
+    "final head tree draft PR to A2",
+    "1440 ES EN",
+    "390 ES EN",
+    "LIGHT and DARK chrome",
+    "NORMAL REDUCED NO_MOTION",
+    "real fallback tiers",
+    "zero external request",
+    "zero autoplay",
+    "repeat start stop cleanup",
+    "performance or PENDING_HARDWARE_QA"
+  ],
+  "expected_marker": "R63_CLAUDE_SAKURA_REPRODUCIBLE_READY_FOR_ASTRA",
+  "human_unlock_marker": "R63_SAKURA_HUMAN_APPROVED_UNLOCK_NEXT_ROOM",
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_NEXT_ROOM_BEFORE_HUMAN_QA",
+    "NO_GLOBAL_HEADER_THEME_EDIT",
+    "NO_R61_AQUARIUM",
+    "NO_SABIK_CLOUD_VOICE"
+  ]
+}
