@@ -1,0 +1,52 @@
+{
+  "schema": "W02_R2_FREEZE_MANIFEST/1.0",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "r1_freeze": {
+    "pr": 222,
+    "head": "7c2fd9cc85ee06b107452c01e7e2600c964c2d07",
+    "tree": "cfeee637dabeaf0868863b84dabb8b1fe05e3b06",
+    "runner_blob": "4245c0c23f29a208e37463a0091e0a7671a13e1f",
+    "contract_blob": "32e5488a342f6733525687c7c893aae3dffcf916",
+    "manifest_blob": "1cb439ab64d4c5fe4a44fedb0c50ce702e49a38d"
+  },
+  "contract_id": "W02-R2-CONTRAST-FREEZE-V2",
+  "artifacts": [
+    {
+      "path": ".github/workflows/w02-r2-contrast-freeze.yml",
+      "blob_sha": "41f96f3189f48932208accb3722ebc17effa3784"
+    },
+    {
+      "path": "qa/w02-r2/README.md",
+      "blob_sha": "7ccf0ba17d1254a847f763ffa4921be0f2a759b4"
+    },
+    {
+      "path": "qa/w02-r2/run-w02-contrast-gate-v2.py",
+      "blob_sha": "c814fab11609bb701cccb1423d9ddc159ed0439b"
+    },
+    {
+      "path": "qa/w02-r2/verify-freeze-manifest-v2.py",
+      "blob_sha": "3dbf7ce6e16a160f54f44ad73dc402a975e9e6ec"
+    },
+    {
+      "path": "qa/w02-r2/w02-contrast-contract-v2.json",
+      "blob_sha": "9baa3ff1f82119a8bb078424266a10562fbe4ac0"
+    }
+  ],
+  "upstream_audit": {
+    "workflow_blob_sha": "df9f626be0f897ffcd43944cd3ea16622186af28",
+    "script_blob_sha": "d931470e783b968f6ecdf4c81a0930bd6c42ca6d",
+    "evidence_artifact_id": 10678998016,
+    "evidence_artifact_digest": "sha256:de34bffb624229dd645e304eb4d14a237f17af4592a6733de936eec68a215128"
+  },
+  "rules": {
+    "baseline_first": true,
+    "candidate_head_not_executed": "38fdc142ff554b5bc1f00ec5dd5ec41fdaf7fbdd",
+    "normal_text_threshold": 4.5,
+    "expected_zoom_records": 54,
+    "product_files_allowed": 0,
+    "freeze_may_be_edited_after_ready": false,
+    "merge": false,
+    "deploy": false,
+    "production": false
+  }
+}
