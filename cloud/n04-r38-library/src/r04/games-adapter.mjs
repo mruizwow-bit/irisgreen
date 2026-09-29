@@ -23,7 +23,8 @@ function firstInstruction(game,locale){
   return null;
 }
 
-export function buildGameEntities(){
+export function buildGameEntities(options={}){
+  const requestedIds=Array.isArray(options.ids)&&options.ids.length?new Set(options.ids):null;
   const metadata=JSON.parse(gitShow(SOURCE_SHA,'assets/data/r42-games-metadata.json'));
   const {data,code}=parseGameDataset();
   if(metadata?.schema!=='IRIS_R42_GAMES_METADATA/1.0'||metadata.games?.length!==297||data.juegos.length!==297){
@@ -34,6 +35,7 @@ export function buildGameEntities(){
 
   const entities=[];
   for(const meta of metadata.games){
+    if(requestedIds&&!requestedIds.has(meta.id)) continue;
     const game=publicById.get(meta.id);
     if(!game) throw new Error('game_missing_from_public_dataset:'+meta.id);
     for(const locale of ['es','en']){
@@ -89,7 +91,8 @@ export function buildGameEntities(){
   const report={
     schema:'R51_A9_GAMES_ADAPTER_REPORT/1.0',
     source_sha:SOURCE_SHA,
-    game_ids:metadata.games.length,
+    game_ids:new Set(entities.map(e=>e.content_id)).size,
+    requested_game_ids:requestedIds?[...requestedIds].sort():null,
     entities:entities.length,
     locale_counts:{es:entities.filter(e=>e.locale==='es').length,en:entities.filter(e=>e.locale==='en').length},
     metadata_sha256:sha256Text(gitShow(SOURCE_SHA,'assets/data/r42-games-metadata.json')),
