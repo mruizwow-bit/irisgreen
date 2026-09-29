@@ -1,0 +1,61 @@
+{
+  "schema": "R51_A9_INCREMENTAL_IMPACT_CONTRACT/1.0",
+  "css_only": {
+    "changed_paths": [
+      "assets/site-v23.css"
+    ],
+    "affected_domains": [],
+    "status": "NO_CONTENT_CHANGE",
+    "rebuild_required": false
+  },
+  "ui_js_only": {
+    "changed_paths": [
+      "assets/rincon-r42.js"
+    ],
+    "affected_domains": [],
+    "status": "NO_CONTENT_CHANGE",
+    "rebuild_required": false
+  },
+  "game_data": {
+    "changed_paths": [
+      "assets/data/juegos-iris-data.js"
+    ],
+    "affected_domains": [
+      "games"
+    ],
+    "status": "CONTENT_CHANGE",
+    "rebuild_required": true
+  },
+  "editorial_age": {
+    "changed_paths": [
+      "assets/safety/age-classification-r51-global.json"
+    ],
+    "affected_domains": [
+      "conditions",
+      "data",
+      "everyday_life",
+      "research",
+      "situations",
+      "support_directory"
+    ],
+    "reason": "AGE_CHANGED",
+    "status": "CONTENT_CHANGE",
+    "rebuild_required": true
+  },
+  "editorial_safety": {
+    "changed_paths": [
+      "cloud/n04-r38-library/sources/r51-r04/package/content-safety-snapshot.json"
+    ],
+    "affected_domains": [
+      "conditions",
+      "data",
+      "everyday_life",
+      "research",
+      "situations",
+      "support_directory"
+    ],
+    "reason": "SAFETY_CHANGED",
+    "status": "CONTENT_CHANGE",
+    "rebuild_required": true
+  }
+}
