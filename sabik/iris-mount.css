@@ -45,8 +45,7 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
   animation-name:sabikWebPresenceReduced;
   animation-duration:8.5s;
 }
-.sabik-web-visual[data-motion-level="SIN_MOVIMIENTO"],
-html[data-ig-motion="off"] .sabik-web-visual{
+.sabik-web-visual[data-motion-level="SIN_MOVIMIENTO"]{
   animation:none!important;
   transform:none!important;
 }
