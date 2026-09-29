@@ -2109,3 +2109,27 @@ No bloquea:
 Si aparece una corrección humana posterior, se aplica a lo afectado. STOP global solo por fallo sistémico del estándar/pipeline, cambio normativo transversal o STOP explícito Astra.
 
 No cambia normativa transversal.
+
+## R61 · Pecera · burbujas visuales obligatorias · 29/09/2026
+
+Estado:
+`R61_PECERA_ILLUSTRATED_PASS_BUBBLES_VISUAL_REWORK_REQUIRED`.
+
+María detecta que la versión ilustrada ha perdido las burbujas visuales del donor, aunque el audio sí conserva burbujas.
+
+KEEP todo el trabajo actual. Única corrección:
+- añadir burbujas pequeñas, lentas y de baja densidad;
+- NORMAL suave;
+- REDUCIDO con menos/menor velocidad;
+- SIN_MOVIMIENTO estático o sin burbujas animadas.
+
+Antes de volver a renderizar 10 min:
+- frame 1440;
+- clip 20–30 s NORMAL;
+- evidencia REDUCIDO;
+- evidencia SIN_MOVIMIENTO.
+
+Marcador:
+`R61_PECERA_BUBBLES_VISUAL_READY_FOR_ASTRA_MARIA`.
+
+No segunda sala/A2/main/producción.
