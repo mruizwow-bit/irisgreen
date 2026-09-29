@@ -326,17 +326,20 @@
     {
       "domain": "quiet_space",
       "content_type": "quiet_space",
-      "authority": "A2_PLUS_APPROVED_R46",
-      "source_kind": "git",
+      "authority": "A2_INTEGRATED_EDITORIAL_COPY_PLUS_R53_MEDIA_PENDING",
+      "source_kind": "git_integrated_copy_plus_pending_media",
       "source_files": [
-        "assets/quiet-space/copy-registry.v1.json"
+        "assets/quiet-space/copy-registry.v1.json",
+        "assets/quiet-space/help-sources.v1.1.json",
+        "es/sitio-tranquilo/index.html",
+        "en/quiet-space/index.html"
       ],
       "route_prefixes": [
         "/es/sitio-tranquilo/",
         "/en/quiet-space/"
       ],
-      "extractor": "extract_quiet_space_r04",
-      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "extractor": "extract_quiet_space_editorial_r04",
+      "safety_source": "R42_CHILD_SAFE_CONTRACT_PLUS_CRISIS_COPY_REVIEW_GATE",
       "locales": [
         "es",
         "en"
@@ -350,7 +353,22 @@
       "owner": "A9",
       "expected_records": null,
       "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
-      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
+      "expected_editorial_modules": 6,
+      "active_editorial_modules": 5,
+      "held_editorial_modules": [
+        "M-04"
+      ],
+      "pending_media_scope": [
+        "Respirar R46/R53",
+        "Paisajes R46/R53",
+        "Salas inmersivas R53"
+      ],
+      "activation_gate": [
+        "CRISIS_COPY_REVIEW_FOR_M04",
+        "R53_APPROVED_MEDIA_SOURCE",
+        "FINAL_A2_SOURCE_FREEZE"
+      ]
     },
     {
       "domain": "home",
