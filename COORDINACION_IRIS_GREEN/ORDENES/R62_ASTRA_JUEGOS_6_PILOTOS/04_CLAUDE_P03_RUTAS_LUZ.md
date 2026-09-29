@@ -1,5 +1,10 @@
 # R62 · CLAUDE · P03 · RUTAS DE LUZ · CONCEPTO AUTORIZADO
 
+
+> **PRECEDENCIA · 29/09/2026**  
+> La primera entrega visual P03 ha fallado HUMAN QA/E4. El estado operativo vigente ya no es solo `R62_P03_RUTAS_LUZ_CONCEPT_AUTHORIZED`, sino `R62_P03_HUMAN_QA_REWORK_REQUIRED`.  
+> Ejecutar `05_ASTRA_P03_HUMAN_QA_REWORK.md`. Esta orden 04 se conserva como autorización/origen del concepto y no debe usarse para saltar el rework.
+
 Fecha: 29/09/2026  
 Issue: #326  
 Autoridad: María  
