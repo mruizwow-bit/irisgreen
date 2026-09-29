@@ -1,0 +1,52 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R63-SAKURA-VISUAL-REFERENCE-20260929",
+  "issue": 328,
+  "date": "2026-09-29",
+  "status": "R63_SAKURA_VISUAL_REFERENCE_APPROVED",
+  "reference": "same sensory room, same architecture, LIGHT and DARK_NAVY climates",
+  "keep": [
+    "circular geometry",
+    "oculus",
+    "projection wall",
+    "sensory tube",
+    "low furniture",
+    "light orbs",
+    "cove",
+    "runtime petals",
+    "gobos/reflections",
+    "controls/lifecycle",
+    "reduced motion",
+    "fallbacks"
+  ],
+  "canopy_masters": [
+    "SAKURA_CANOPY_NAVY",
+    "SAKURA_CANOPY_LIGHT"
+  ],
+  "canopy_rules": [
+    "recognizable branches",
+    "clusters",
+    "background gaps",
+    "depth",
+    "same source composition",
+    "no confetti",
+    "no wallpaper"
+  ],
+  "procedural_runtime": [
+    "petals",
+    "light/cove",
+    "reflections",
+    "gobos",
+    "tube particles",
+    "slow motion"
+  ],
+  "expected_marker": "R63_SAKURA_VISUAL_REFERENCE_INTEGRATED_READY_FOR_ASTRA",
+  "normative_change": false,
+  "limits": [
+    "NO_ZIP_YET",
+    "NO_PUSH",
+    "NO_NEXT_ROOM",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}
