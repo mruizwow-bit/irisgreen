@@ -1,0 +1,49 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R65-ASTRA-REVIEW-21-PLUS-9-20260929",
+  "issue": 330,
+  "date": "2026-09-29",
+  "status": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING",
+  "astra_visual_pass": true,
+  "base_cards": {
+    "total": 27,
+    "migrated": 27,
+    "keep_6_intact": true,
+    "new_21_pass": true
+  },
+  "age_0_12": {
+    "variants": 9,
+    "pass": true,
+    "rule": "LESS_DENSITY_LARGER_OBJECTS_MORE_IMMEDIATE_ACTION_NO_BABY_AESTHETIC"
+  },
+  "child_safe_visual": {
+    "scenes": 36,
+    "pass": true,
+    "scope": "R65_ART_ONLY_NOT_GLOBAL_SITE_SAFETY"
+  },
+  "patch": {
+    "sha256": "a72d9fd1e53c98d055298d5fd042be7df64c72a49ef922c5c961d18806a44ca5",
+    "scope": "TALLER_ONLY",
+    "external_product_dependencies": false
+  },
+  "integration": {
+    "gate": "R67_PHASE_3_ONLY",
+    "forbid": [
+      "R64_QA_FIXTURE",
+      "MAIN_INNERHTML_HUMAN_QA",
+      "FINAL_DATA_URI_ASSETS",
+      "LOCAL_DECORATIVE_AGE_SELECTOR"
+    ],
+    "require": [
+      "REAL_AVIF_WEBP_ASSETS",
+      "IGAUDIENCE",
+      "R67_GLOBAL_SHELL"
+    ]
+  },
+  "next_human_marker": "R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION",
+  "normative_change": false,
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}
