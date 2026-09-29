@@ -408,5 +408,37 @@
         "CANONICAL_965_AGE_SOURCE"
       ]
     }
+  ],
+  "global_dependencies": [
+    {
+      "id": "EDITORIAL_AGE_965",
+      "paths": [
+        "assets/safety/age-classification-r51-global.json"
+      ],
+      "domains": [
+        "conditions",
+        "situations",
+        "everyday_life",
+        "data",
+        "research",
+        "support_directory"
+      ],
+      "reason": "AGE_CHANGED"
+    },
+    {
+      "id": "EDITORIAL_SAFETY_965",
+      "paths": [
+        "cloud/n04-r38-library/sources/r51-r04/package/content-safety-snapshot.json"
+      ],
+      "domains": [
+        "conditions",
+        "situations",
+        "everyday_life",
+        "data",
+        "research",
+        "support_directory"
+      ],
+      "reason": "SAFETY_CHANGED"
+    }
   ]
 }
