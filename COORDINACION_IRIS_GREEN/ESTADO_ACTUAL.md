@@ -1,3 +1,21 @@
+## R62 · P03 Rutas de luz · HUMAN QA REWORK · 29/09/2026
+
+**Estado: `R62_P03_HUMAN_QA_REWORK_REQUIRED` · #326.**
+
+La primera propuesta P03 no pasa E4/HUMAN QA. No se lee como sala tridimensional: domina un alzado de muro sin suelo/testeros/volumen suficientes. La pared se percibe como retícula plana; la luz no produce incidencia/contacto/sombra/reflejo legibles; el bastidor vertical añade una segunda cuadrícula en vez de arquitectura.
+
+KEEP: producto Rutas de luz, bucle conectar→desviar→observar→comparar→rehacer, varias soluciones, luz como material, accesibilidad y AGE_*.
+
+REWORK R2: sala espacial real, pared/material menos regular, luz que actúe físicamente sobre superficies, soportes integrados en arquitectura y móvil propio.
+
+Siguiente marcador:
+`R62_P03_RUTAS_LUZ_E4_R2_READY_FOR_ASTRA_MARIA`.
+
+P04–P06, Codex #321, A2, main y producción siguen HOLD.
+
+Orden: `ORDENES/R62_ASTRA_JUEGOS_6_PILOTOS/05_ASTRA_P03_HUMAN_QA_REWORK.md`.  
+Normativa de aplicación: `NORMATIVA/ADDENDUM_R62_P03_E4_APPLICATION_20260929.md` (sin norma transversal nueva).
+
 ## Tokens visuales globales · una sola interfaz · 28/09/2026
 
 **Estado: `IRIS_GREEN_GLOBAL_UI_TOKENS_2026_ADOPTED`.**
