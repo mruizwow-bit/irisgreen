@@ -1,5 +1,16 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R62 P03 Rutas de luz · HUMAN QA rework · 29/09/2026
+
+Orden: `R62_ASTRA_JUEGOS_6_PILOTOS/05_ASTRA_P03_HUMAN_QA_REWORK.md` · issue #326.
+
+Estado: `R62_P03_HUMAN_QA_REWORK_REQUIRED`.
+
+Claude conserva la mecánica y rehace únicamente la ejecución espacial/lumínica: sala tridimensional, pared/material, interacción física de la luz, bastidor integrado y móvil propio. Siguiente gate: `R62_P03_RUTAS_LUZ_E4_R2_READY_FOR_ASTRA_MARIA`.
+
+P04–P06, Codex, A2, main y producción siguen HOLD.
+
+
 ## Claude · R61 Rincón Pecera · 28/09/2026
 
 Orden: `R61_CLAUDE_RINCON_PECERA/01_CLAUDE.md` · issue #325.
