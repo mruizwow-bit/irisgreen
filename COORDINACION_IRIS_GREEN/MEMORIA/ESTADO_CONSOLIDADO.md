@@ -809,3 +809,17 @@ Si aprueba:
 `R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03`.
 
 Nota de paquete: bundle incremental con prerequisite `c119d329...`, a documentar o convertir en autocontenido antes de integración final.
+
+## R65 · Astra PASS 27 + 9 · 29/09/2026
+
+`R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING`.
+
+R65 completa visualmente 27 tarjetas base + 9 variantes AGE_0_12. KEEP 6/6 intacto y 21 nuevas PASS. Child-safe visual de arte: 36/36.
+
+Patch SHA-256:
+`a72d9fd1e53c98d055298d5fd042be7df64c72a49ef922c5c961d18806a44ca5`.
+
+La integración no se entrega directamente a A2: R67 Fase 3 es la única puerta para materializar el Taller definitivo sobre shell/safety ya reparados.
+
+Pendiente HUMAN QA María:
+`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`.
