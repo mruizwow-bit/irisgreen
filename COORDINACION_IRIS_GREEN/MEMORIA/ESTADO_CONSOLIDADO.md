@@ -697,7 +697,7 @@ R65 prepara el escalado de 21 tarjetas restantes + 9 variantes AGE_0_12, pero no
 
 Se congelan las 6 tarjetas piloto como estándar y se conserva `THE_CARD_SHOWS_THE_WORKBENCH_NOT_THE_FINISHED_PRODUCT`.
 
-La ejecución será en 7 tandas de 3 estudios, seguida de las 9 variantes canónicas AGE_0_12. No se abren interiores ni starters en R65.
+La ejecución será en 7 tandas de 3 estudios, seguida de las 9 variantes canónicas AGE_0_12: `circuitos`, `arquitectura`, `composicion`, `sintesis-sonido`, `videomapping`, `color`, `fotografia`, `lenguas-inventadas`, `escritura-restricciones`. No se abren interiores ni starters en R65.
 
 Marcador de salida:
 `R65_CLAUDE_TALLER_21_PLUS_9_READY_FOR_ASTRA`.
