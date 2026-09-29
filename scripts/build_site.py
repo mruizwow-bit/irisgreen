@@ -154,6 +154,10 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_interests_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_interests_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R67 A2 phase 1: migrate only the Quiet Space outer shell; preserve its immersive runtime.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_quiet_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_quiet_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R42 A8: Home final ES/EN + child safety before public evidence is computed.
     # S2 full bodies are extracted from initial HTML/JSON and never prefetched.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
