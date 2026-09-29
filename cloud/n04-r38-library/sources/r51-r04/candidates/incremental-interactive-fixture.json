@@ -1,0 +1,28 @@
+{
+  "schema": "R51_A9_INCREMENTAL_INTERACTIVE_FIXTURE/1.0",
+  "status": "PASS_SINGLE_ID_REBUILD_CONTRACT",
+  "game": {
+    "id": "los-cordones",
+    "entities": 2,
+    "locales": [
+      "en",
+      "es"
+    ]
+  },
+  "routine": {
+    "id": "manana-para-salir",
+    "entities": 2,
+    "locales": [
+      "en",
+      "es"
+    ],
+    "steps": 8,
+    "canonical_age": [
+      "ALL_AGES"
+    ]
+  },
+  "full_rebuild_avoided": {
+    "games_total": 297,
+    "routines_total": 109
+  }
+}
