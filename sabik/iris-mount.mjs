@@ -20,7 +20,7 @@ const TEXT={
   browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La conversación de esta sesión se ha borrado.',
   busy:'Estoy buscando información en Iris Green.',error:'No he podido completar la respuesta. Puedes intentarlo de nuevo.',
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
-  voice:'Mensajes por voz',voiceOn:'Activados',voiceOff:'Desactivados',
+  voice:'Voz de Sabik',voiceOn:'Activados',voiceOff:'Desactivados',
   voiceHelp:'Los mensajes fijos usan la voz aprobada de Sabik. Las respuestas conversacionales dinámicas por voz todavía no sustituyen al texto.',
   voiceError:'La voz no se pudo activar.',sources:'Fuentes'
  },
@@ -36,7 +36,7 @@ const TEXT={
   browse:'Explore resources',placeholder:'For example: noise drains me',cleared:'This session conversation has been cleared.',
   busy:'I am looking through Iris Green information.',error:'I could not complete the answer. You can try again.',
   empty:'Write what you need.',spanish:'Some original sources are in Spanish.',
-  voice:'Voice messages',voiceOn:'On',voiceOff:'Off',
+  voice:'Sabik voice',voiceOn:'On',voiceOff:'Off',
   voiceHelp:'Fixed system messages use Sabik’s approved voice. Dynamic spoken conversational answers do not replace the text yet.',
   voiceError:'Sabik voice could not be turned on.',sources:'Sources'
  }
