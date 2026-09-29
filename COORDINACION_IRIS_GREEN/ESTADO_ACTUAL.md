@@ -2158,3 +2158,33 @@ Marcador final:
 Los READY parciales anteriores dejan de ser gate de producto integrado.
 
 No main. No producción.
+
+## R62 · P02 Terrario E4 R3 · Astra PASS · 29/09/2026
+
+Estado:
+`R62_P02_TERRARIO_E4_ASTRA_PASS_HUMAN_QA_PENDING`.
+
+El único bloqueo de R2 queda resuelto: la cadena `roca → sombra → humedad → musgo` se entiende visualmente en el díptico R3 sin depender del texto numerado.
+
+KEEP:
+- motor E4;
+- desktop LIGHT/NAVY;
+- móvil LIGHT/NAVY;
+- escena, follaje, colgantes, sustrato, agua, madera, roca;
+- bandeja/labels y composición 390.
+
+Gate R3:
+- musgo +278,7 %;
+- panel cambiado 16 %;
+- 84,3 % del cambio en zona roca+sombra;
+- roca/escena 1,64×;
+- 0 fallos.
+
+No R4.
+
+Bundle P02 sigue incremental y requiere prerequisite `c119d329...`; corregir/documentar antes del handoff final.
+
+Siguiente gate humano:
+`R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03`.
+
+Hasta ese marcador P03–P06 y Codex #321 HOLD.
