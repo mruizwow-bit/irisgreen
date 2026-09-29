@@ -1,0 +1,69 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R42-CONTENT-R02-REBASE-CURRENT-A2-20260929",
+  "issue": 302,
+  "date": "2026-09-29",
+  "status": "R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED",
+  "package": {
+    "file": "iris-green-contenido-R42-20260929.zip",
+    "sha256": "aa3649a821da1226dd84bda70f35ee8c8e286cb81c1bd5711af97e71761e8961",
+    "base": "9c721a793060979903e77c31b69c8c01cac49c92",
+    "claimed_candidate": "2eb4d887"
+  },
+  "a2_live": {
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "head_at_audit": "2fcb193feaecaa6934e96c14e0eda06d016d0250",
+    "ahead_of_package_base": 5,
+    "overlap_blocker": "scripts/build_site.py",
+    "new_a2_feature_to_preserve": "R67_TALLER_SHELL"
+  },
+  "keep": {
+    "new_html": 204,
+    "conditions": 226,
+    "situations": 223,
+    "everyday_life": 62,
+    "data": 60,
+    "research": 132,
+    "support_es": 262,
+    "canonical_age_records": 965,
+    "unclassified": 0,
+    "legacy_age_bands": 0,
+    "tept_complex": "global-395_S2_SAFE_VARIANT_REQUIRED"
+  },
+  "source_traceability": {
+    "nhs_osa_published": "2023-11-16",
+    "nhs_osa_updated": "2024-09-16",
+    "who_gaming_faq_publication_date": null,
+    "who_gaming_rule": "DO_NOT_REUSE_2018_NEWS_DATE_AS_FAQ_DATE",
+    "r01_distinct_urls": 66,
+    "r02_fuentes_csv_rows": 60,
+    "source_delta_documentation_required": true,
+    "fuentes_json_claimed_but_not_in_zip": true
+  },
+  "classification_route_debt": {
+    "claimed_in_package": 405,
+    "observed_anomalous_fields": 465,
+    "relative_fields": 71,
+    "nonexistent_en_research_fields": 132,
+    "nonexistent_en_support_fields": 262,
+    "unique_raw_strings": 204,
+    "reconciliation_required": true
+  },
+  "required": [
+    "REBASE_ON_CURRENT_A2_HEAD",
+    "PRESERVE_R67_TALLER_SHELL",
+    "REGENERATE_BUILD_ARTIFACTS",
+    "RERUN_ALL_RELEVANT_QA",
+    "BASELINE_VS_CANDIDATE_NEW_FAILURES_ZERO",
+    "FIX_SOURCE_TRACEABILITY_DOCUMENTATION",
+    "RECONCILE_CLASSIFICATION_URL_COUNT"
+  ],
+  "expected_marker": "R42_CONTENT_R01_REBASED_CHILD_SAFE_READY_FOR_ASTRA",
+  "holds": [
+    "NEW_CONTENT_EXPANSION",
+    "A2_INTEGRATION_OF_CURRENT_ZIP",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
