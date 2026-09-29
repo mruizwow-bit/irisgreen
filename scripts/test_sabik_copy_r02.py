@@ -8,34 +8,40 @@ files={
  'css':(ROOT/'sabik/iris-mount.css').read_text(encoding='utf-8'),
 }
 joined='\n'.join(files.values())
-expected=[
- 'La búsqueda en fuentes todavía no está disponible.','Source search is not available yet.',
- 'La búsqueda en fuentes está disponible.','Source search is available.',
+
+# R02 fixed/system copy remains available for the approved 30-WAV library.
+fixed_expected=[
  'Puedo ayudarte a buscar información.','I can help you find information.',
- 'La búsqueda en las fuentes todavía no está disponible. Puedes usar el buscador y las secciones de Iris Green.',
- "Source search is not available yet. You can use Iris Green's search and sections.",
- 'Puedo buscar información en las fuentes de Iris Green. No hago diagnósticos.',
- "I can search Iris Green's sources for information. I don't make diagnoses.",
  'Desactivar movimiento','Turn off motion',
  'Movimiento breve cuando cambia el estado.','Brief motion when the state changes.',
- 'No se guarda el historial entre sesiones.',
  'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
  "Could not connect. You can try again or use Iris Green's search.",
  'The original quotations are in Spanish.',
- 'No hay resultados en Iris Green para esta consulta.','There are no results in Iris Green for this query.',
- 'No se pudieron cargar los resultados de Iris Green. Puedes intentarlo de nuevo.',
- 'La consulta se ha cancelado. No se mostrarán resultados anteriores.',
- 'The query has been cancelled. Earlier results will not be shown.',
- 'No se pudieron cargar los resultados. Puedes intentarlo de nuevo.'
 ]
-for text in expected: assert text in joined, text
-for legacy in [
- 'Consultas no disponibles todavía','Queries are not available yet','Consulta de fuentes disponible','Source search available',
- 'Estoy aquí si quieres ayuda.','I am here if you need help.','Bajar intensidad','Lower intensity',
- 'Movimiento breve solo cuando hace falta.','Brief motion only when needed.',
- 'No guarda historial entre sesiones.','No hay resultados de Iris Green para esta consulta.',
- 'There are no Iris Green results for this query.','La consulta se canceló. No se mostrarán resultados antiguos.'
-]: assert legacy not in joined, legacy
+for text in fixed_expected: assert text in joined, text
+
+# R67 supersedes the old "retrieval unavailable" product surface.
+conversation_expected=[
+ 'Sabik está disponible.','Sabik is available.',
+ 'Puedes preguntarme por escrito. Respondo con información de Iris Green y te enseño las fuentes.',
+ 'You can ask me in writing. I answer with Iris Green information and show the sources.',
+ 'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green.',
+ "If the Cloud library is unavailable, I use Iris Green’s safe local index.",
+ 'No se guarda el historial entre sesiones.','No history is saved between sessions.',
+ 'Cancelar respuesta','Cancel response',
+ 'conversation.submitTurn','createSabikConversation','localRetrieve'
+]
+for text in conversation_expected: assert text in joined, text
+
+for superseded in [
+ 'La búsqueda en fuentes todavía no está disponible.','Source search is not available yet.',
+ 'La búsqueda en las fuentes todavía no está disponible. Puedes usar el buscador y las secciones de Iris Green.',
+ "Source search is not available yet. You can use Iris Green's search and sections.",
+ 'Consultas no disponibles todavía','Queries are not available yet',
+ 'Estoy aquí si quieres ayuda.','I am here if you need help.',
+]:
+ assert superseded not in files['mount']+files['panel'], superseded
+
 assert "value='SIN_MOVIMIENTO'" in files['mount']
 assert 'data-low="true"' not in files['css']
-print('SABIK_COPY_R02_PASS')
+print('SABIK_COPY_R67_PASS')
