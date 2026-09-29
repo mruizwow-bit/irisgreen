@@ -15,8 +15,9 @@ def main():
  for txt,labels in [(es,['Empieza por tu parte','Entra y úsalo','Pregunta a Sabik','Entiende y encuentra','0–12 años','13–17 años','18 años o más','Todas las edades']),(en,['Start with your part','Open and use','Ask Sabik','Understand and find','Ages 0–12','Ages 13–17','Ages 18+','All ages'])]:
   need('data-ig-home-version="v4"' in txt,'Home v4 marker missing')
   for label in labels: need(label in txt,'Home v4 missing '+label)
-  for asset in ['/assets/ig-global-ui-tokens-2026.css','/assets/ig-theme.js','/assets/ig-audience.js','/assets/buscador-comun.js','/assets/home-r42-child-safe.js','/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/iris-mount.mjs']:
+  for asset in ['/assets/ig-global-ui-tokens-2026.css','/assets/ig-theme.js','/assets/ig-audience.js','/assets/buscador-comun.js','/assets/home-r42-child-safe.js','/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/iris-mount.mjs']:
    need(txt.count(asset)==1,'Home v4 asset count !=1: '+asset)
+  need('class="ig-uh"' not in txt,'Legacy ig-uh header leaked into built Home')
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
   for token in ['id="sabik-form"','id="sabik-voice"','id="sabik-low"','id="sabik-motion-level"','id="sabik-reset"']:
