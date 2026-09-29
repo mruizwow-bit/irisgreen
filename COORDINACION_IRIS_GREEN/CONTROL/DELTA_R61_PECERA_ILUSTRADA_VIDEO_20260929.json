@@ -1,0 +1,49 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R61-PECERA-ILLUSTRATED-VIDEO-20260929",
+  "issue": 325,
+  "date": "2026-09-29",
+  "status": "R61_PECERA_ILLUSTRATED_DIRECTION_PASS_CONTINUE",
+  "keep": [
+    "7 species",
+    "plants",
+    "composition",
+    "caustics",
+    "first-party audio",
+    "player",
+    "10min engine",
+    "fixed camera"
+  ],
+  "reject": [
+    "physical underwater simulation as primary visual language",
+    "DOF",
+    "volumetric fog",
+    "physical absorption",
+    "dominant physical specular",
+    "short obvious loop"
+  ],
+  "required": [
+    "organic branch",
+    "rock highlights/contact shadows",
+    "simpler plant masses",
+    "calmer sand",
+    "depth by layers/value",
+    "NORMAL",
+    "REDUCED",
+    "NO_MOTION",
+    "1440",
+    "390",
+    "320",
+    "ES",
+    "EN",
+    "performance or PENDING_HARDWARE_QA"
+  ],
+  "expected_marker": "R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA",
+  "normative_change": false,
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY",
+    "NO_SECOND_SCENE"
+  ]
+}
