@@ -1,0 +1,34 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R63_ASTRA_RUNTIME_HANDOFF_REVIEW",
+  "issue": 328,
+  "estado": "R63_ASTRA_RUNTIME_HANDOFF_REWORK_NARROW_REQUIRED",
+  "visual_pass_preserved": true,
+  "head_manifest": "888f52f28c3e7cf16db9e0bbab934a6595338ded",
+  "passes": [
+    "SIN_MOVIMIENTO 0 RAF",
+    "late-resource one repaint then 0 RAF",
+    "start/stop/start no GL accumulation",
+    "shader and texture failure diagnostics",
+    "1440/390/320 reflow",
+    "keyboard focus clean-mode forced-colors",
+    "ES/EN lang",
+    "no autoplay/audio",
+    "performance honestly PENDING_HARDWARE_QA"
+  ],
+  "blockers_before_astra_pass": [
+    "NORMAL and REDUCED videos are 4.0s; contract requires 15-30s",
+    "REDUCED is still global speed/drift scaling and keeps same petal population",
+    "Sakura room tiers remain B/C/D with A absent; contract reconciliation not closed",
+    "handoff identity mismatch: LEEME 33 commits/106 files vs manifest 34/111"
+  ],
+  "a2_integration_blocker": [
+    "external Google Fonts request in ES and EN; R63 must not patch global header"
+  ],
+  "next_marker": "R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_R2_READY_FOR_ASTRA",
+  "no_visual_rework": true,
+  "no_next_room": true,
+  "no_main": true,
+  "no_production": true
+}
