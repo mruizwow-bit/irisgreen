@@ -1,0 +1,31 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R65_ASTRA_REVIEW_20260929",
+  "source_issue": 330,
+  "source_marker": "R65_CLAUDE_TALLER_21_PLUS_9_READY_FOR_ASTRA",
+  "estado": "R65_ASTRA_VISUAL_DIRECTION_PASS_CARD_STATE_FIX_EXACT_SIZE_GATE_REQUIRED",
+  "keep": {
+    "bases_21": true,
+    "age_0_12_9": true,
+    "total_estudios_27": true,
+    "escenas_manifest_36": true,
+    "keep_6": true,
+    "pipeline_reproducible": true,
+    "direccion_arte": true,
+    "child_safe_direction": true,
+    "es_en": true,
+    "dark_navy_light": true
+  },
+  "blockers": [
+    "cerrar estados link/visited/hover/focus-visible/active de títulos y tarjetas",
+    "QA exacta 240x150 CSS o reconciliación formal del tamaño canónico",
+    "prueba título-off 27/27; foco Simulaciones, Ideas, Lenguas inventadas y Escritura con restricciones",
+    "verificar en navegador filtros móviles desbordados/horizontales"
+  ],
+  "no_rebuild_wholesale": true,
+  "no_a2_yet": true,
+  "no_main": true,
+  "no_production": true,
+  "next_marker": "R65_CLAUDE_CARD_STATE_AND_EXACT_SIZE_QA_READY_FOR_ASTRA"
+}
