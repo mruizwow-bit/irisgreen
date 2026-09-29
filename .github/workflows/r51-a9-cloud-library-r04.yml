@@ -151,6 +151,27 @@ jobs:
           })().catch(e=>{console.error(e.message);process.exit(1);});
           NODE
 
+      - name: Create private R04 candidate carrier deploy
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_SITE_ID: 47b06e68-ff54-4097-8ad8-336b2d71758a
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          printf '{"schema":"R51_A9_CANDIDATE_CARRIER/1.0","github_sha":"%s"}\n' "$GITHUB_SHA" > dist/r51-r04-candidate.json
+          ./node_modules/.bin/netlify deploy --no-build --dir dist --site "$NETLIFY_SITE_ID" --message "R51 A9 R04 candidates $GITHUB_SHA" --json > /tmp/r51-candidate-deploy.json
+          node <<'NODE'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/r51-candidate-deploy.json','utf8'));
+          const deployId=d.deploy_id||d.id||null;
+          const deployUrl=d.deploy_url||d.deploy_ssl_url||null;
+          if(!/^[a-f0-9]{24}$/.test(deployId||'')) throw new Error('Missing deploy id');
+          if(!String(deployUrl||'').includes('--sabik-asistente.netlify.app')) throw new Error('Unexpected deploy origin');
+          fs.appendFileSync(process.env.GITHUB_ENV,'N04_DEPLOY_ID='+deployId+'\nR51_CANDIDATE_DEPLOY_URL='+deployUrl+'\n');
+          console.log(JSON.stringify({status:'PASS',deploy_id:deployId,private_candidate_url:deployUrl}));
+          NODE
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
