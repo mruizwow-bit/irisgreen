@@ -157,8 +157,7 @@ jobs:
           NETLIFY_SITE_ID: 47b06e68-ff54-4097-8ad8-336b2d71758a
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          rm -rf dist
-          mkdir -p dist
+          npm run build
           printf '{"schema":"R51_A9_CANDIDATE_CARRIER/1.0","github_sha":"%s"}\n' "$GITHUB_SHA" > dist/r51-r04-candidate.json
           ./node_modules/.bin/netlify deploy --no-build --dir dist --site "$NETLIFY_SITE_ID" --message "R51 A9 R04 candidates $GITHUB_SHA" --json > /tmp/r51-candidate-deploy.json
           node <<'NODE'
