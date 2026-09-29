@@ -57,7 +57,7 @@ jobs:
 
       - name: R51 canonical age taxonomy gate
         working-directory: cloud/n04-r38-library
-        run: node --test tests/r51-r04-age-taxonomy.test.mjs
+        run: node --test tests/r51-r04-age-taxonomy.test.mjs tests/r51-r04-age-retrieval.test.mjs
 
       - name: R51 six-domain editorial build and gate
         working-directory: cloud/n04-r38-library
