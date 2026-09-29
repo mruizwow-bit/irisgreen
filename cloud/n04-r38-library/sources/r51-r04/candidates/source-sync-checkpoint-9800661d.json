@@ -1,0 +1,22 @@
+{
+  "schema": "R51_A9_SOURCE_SYNC_CHECKPOINT/1.0",
+  "previous_registry_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+  "observed_a2_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
+  "changed_path_count": 139,
+  "impact_detected": [
+    "conditions",
+    "data",
+    "everyday_life",
+    "research",
+    "situations",
+    "support_directory"
+  ],
+  "trigger": "assets/safety/age-classification-r51-global.json",
+  "trigger_reason": "AGE_CHANGED",
+  "live_age_blob_sha1": "29960f6394e9de926006986304491de165fa8b28",
+  "pinned_age_blob_sha1": "29960f6394e9de926006986304491de165fa8b28",
+  "dependency_bytes_equal": true,
+  "resolution": "NO_REBUILD_DEPENDENCY_ALREADY_ABSORBED",
+  "create_library_version": false,
+  "production_activation": false
+}
