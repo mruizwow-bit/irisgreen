@@ -34,7 +34,7 @@ def set_attr(attrs:str,name:str,value:str)->str:
 def add_head_asset(text:str,html:str,bare:str)->str:
     if bare in text:
         return text
-    out,n=re.subn(r"</head\\s*>",html+"</head>",text,count=1,flags=re.I)
+    out,n=re.subn(r"</head\s*>",html+"</head>",text,count=1,flags=re.I)
     if n!=1:
         raise AssertionError("Workshop hub has no </head>")
     return out
