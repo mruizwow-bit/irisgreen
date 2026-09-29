@@ -159,7 +159,9 @@ function supportPage(row){
   return {title:row.name,reviewed_at:PACKAGE_REVIEWED_AT,sections,sources:[{url:row.fuente,label:row.org}]};
 }
 
-export async function buildEditorialEntities(){
+export async function buildEditorialEntities(options={}){
+  const requestedIds=Array.isArray(options.contentIds)&&options.contentIds.length?new Set(options.contentIds):null;
+  const requestedDomains=Array.isArray(options.domains)&&options.domains.length?new Set(options.domains):null;
   const freeze=await json(new URL('../../sources/r51-r04/SOURCE_FREEZE.json',import.meta.url));
   const safetySnapshot=await json(new URL('../../sources/r51-r04/package/content-safety-snapshot.json',import.meta.url));
   const delta=await json(new URL('../../sources/r51-r04/package/new-leaf-content-102.json',import.meta.url));
@@ -183,6 +185,9 @@ export async function buildEditorialEntities(){
   const coreSurfaces=new Set(['condition','situation','library','data']);
 
   for(const rawSafety of safetySnapshot.records){
+    const domainName=rawSafety.surface==='library'?'everyday_life':rawSafety.surface;
+    if(requestedIds&&!requestedIds.has(rawSafety.id)) continue;
+    if(requestedDomains&&!requestedDomains.has(domainName)) continue;
     const ageRecord=ageById.get(rawSafety.id);
     if(!ageRecord) throw new Error('missing_age_classification:'+rawSafety.id);
     const ageBands=[...assertCanonicalAgeBands(ageRecord.age_bands)];
@@ -280,6 +285,8 @@ export async function buildEditorialEntities(){
   const report={
     schema:'R51_A9_EDITORIAL_ADAPTER_REPORT/1.0',
     source_sha:sourceSha,
+    requested_domains:requestedDomains?[...requestedDomains].sort():null,
+    requested_content_ids:requestedIds?[...requestedIds].sort():null,
     source_tree:freeze.canonical_web_source.tree,
     content_ids:contentIds.size,
     full_locale_entities:full.length,
