@@ -15,7 +15,17 @@ function mount(){
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
  function syncVoice(state){const on=Boolean(state?.enabled??voiceEnabled()),playing=Boolean(state?.playing);voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=on?strings().voiceOn:strings().voiceOff;voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);window.SabikWebPresentation?.setVoiceActive(playing);if(playing)void visual('confirmar',{force:true});}
  voice=createSabikVoice({initialLanguage:lang,onState:syncVoice});
- function say(text,{voiceId=null,allowOptional=false}={}){announcement.textContent=text;if(voiceId&&voiceEnabled())void voice.speak(voiceId,text,{allowOptional});}
+ async function speakFixed(id,text,options={}){
+  if(!id||!voiceEnabled())return {status:'disabled'};
+  const result=await voice.speak(id,text,options);
+  if(['play-error','missing','text-mismatch'].includes(result.status)){
+   await voice.setEnabled(false);
+   announcement.textContent=strings().voiceError;
+   void visual('pausa',{force:true});
+  }
+  return result;
+ }
+ function say(text,{voiceId=null,allowOptional=false}={}){announcement.textContent=text;if(voiceId&&voiceEnabled())void speakFixed(voiceId,text,{allowOptional});}
  function controls(){ $('#sabik-submit').disabled=!connection||!input.value.trim();$('#sabik-cancel').hidden=!busy; }
  function translate(){const next=document.documentElement.lang.startsWith('en')?'en':'es';lang=next;voice.setLanguage(lang);aside.lang=lang;announcement.lang=lang;aside.querySelectorAll('[data-sabik-text]').forEach(el=>el.textContent=strings()[el.dataset.sabikText]);$('#sabik-toggle').textContent=$('#sabik-widget-body').hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;$('#sabik-browse').href=lang==='en'?'/en/resources/':'/es/recursos/';if(connection){aside.querySelector('.sabik-state').textContent=strings().available;$('#sabik-availability').textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');}panel.setLanguage(lang);syncVoice();controls();}
  async function submit(event){event.preventDefault();if(!input.value.trim()){void visual('orientar',{force:true});say(strings().empty,{voiceId:'sabik.input.empty'});input.focus();return;}void visual('transicion',{to:'presente',force:true});if(!connection){say(strings().explanation,{voiceId:'sabik.capability.offline'});return;}const ticket=++serial;panel.cancel();busy=true;controls();say(strings().busy,{voiceId:'sabik.search.busy'});try{await connection.connect(lang);if(ticket!==serial)return;await panel.run({query:input.value.trim(),limit:10});if(ticket===serial)void visual('confirmar',{force:true});}catch{if(ticket===serial){void visual('pausa',{force:true});say(strings().error,{voiceId:'sabik.connection.error'});}}finally{if(ticket===serial){busy=false;controls();}}}
@@ -25,7 +35,7 @@ function mount(){
  $('#sabik-cancel').addEventListener('click',()=>{serial++;panel.cancel();connection?.disconnect();voice.cancel();busy=false;controls();void visual('pausa',{force:true});input.focus();});
  $('#sabik-toggle').addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;$('#sabik-toggle').setAttribute('aria-expanded',String(!body.hidden));$('#sabik-toggle').textContent=body.hidden?strings().show:strings().hide;if(!body.hidden)visual('transicion');});
  settingsToggle.addEventListener('click',()=>{settings.hidden=!settings.hidden;settingsToggle.setAttribute('aria-expanded',String(!settings.hidden));if(!settings.hidden)visual('transicion');});
- voiceButton.addEventListener('click',async()=>{voiceButton.disabled=true;try{if(voiceEnabled())await voice.setEnabled(false);else{await voice.setEnabled(true);await voice.speak('sabik.welcome',strings().welcome);}}catch{await voice.setEnabled(false);announcement.textContent=strings().voiceError;}finally{voiceButton.disabled=false;syncVoice();}});
+ voiceButton.addEventListener('click',async()=>{voiceButton.disabled=true;try{if(voiceEnabled())await voice.setEnabled(false);else{await voice.setEnabled(true);const result=await speakFixed('sabik.welcome',strings().welcome);if(result.status!=='playing'&&result.status!=='disabled')throw new Error('VOICE_PLAYBACK_'+result.status);}}catch{await voice.setEnabled(false);announcement.textContent=strings().voiceError;void visual('pausa',{force:true});}finally{voiceButton.disabled=false;syncVoice();}});
  $('#sabik-low').addEventListener('click',()=>{const motion=$('#sabik-motion-level');motion.value='SIN_MOVIMIENTO';$('#sabik-low').setAttribute('aria-pressed','true');motion.dispatchEvent(new Event('change',{bubbles:true}));});
  $('#sabik-motion-level').addEventListener('change',()=>{$('#sabik-low').setAttribute('aria-pressed',String($('#sabik-motion-level').value==='SIN_MOVIMIENTO'));});
  $('#sabik-reset').addEventListener('click',()=>{serial++;panel.cancel();connection?.disconnect();voice.cancel();input.value='';root.replaceChildren();panel=window.SabikRetrievalPanel.createRetrievalPanel({root,query,announcement,language:lang});busy=false;controls();say(strings().cleared,{voiceId:'sabik.reset.confirmation'});visual('transicion');input.focus();});
