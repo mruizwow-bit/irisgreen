@@ -18,7 +18,7 @@ const manifest={
   status:'CANDIDATE_PARTIAL_VERIFIED_NOT_ACTIVE',
   library_version:'R04_CANDIDATE_UNSEALED',
   candidates:{
-    editorial_965:{status:'READY_CANDIDATE',content_ids:editorial.content_ids,entities:editorial.full_locale_entities+editorial.safe_variant_entities},
+    editorial_965:{status:editorial.held_pending_a2_entities?'PARTIAL_ROUTES_PENDING_A2':'READY_CANDIDATE',content_ids:editorial.content_ids,entities:editorial.full_locale_entities+editorial.safe_variant_entities,active_entities:editorial.active_entities,held_pending_a2_entities:editorial.held_pending_a2_entities,routes_pending_a2:editorial.routes_pending_a2},
     games_297:{status:'READY_CANDIDATE',content_ids:games.game_ids,entities:games.entities},
     routines_109:{status:'READY_CANDIDATE',content_ids:routines.routine_ids,entities:routines.entities},
     interests_72:{status:'HELD_PENDING_R59_AGE_SAFETY',content_ids:interests.interest_ids,entities:interests.entities,retrieval_eligible:interests.retrieval_eligible},
@@ -27,6 +27,7 @@ const manifest={
     home:{status:home.status,entities:home.entities}
   },
   blockers:[
+    'EDITORIAL_APPROVED_PACKAGE_ROUTES_PENDING_A2',
     'INTERESTS_CANONICAL_AGE_AND_SAFETY',
     'WORKSHOP_2_R47_DONOR_ITEMS',
     'HOME_CANONICAL_V4',
