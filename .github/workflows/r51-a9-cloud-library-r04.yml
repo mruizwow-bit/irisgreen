@@ -83,6 +83,12 @@ jobs:
           npm run build:r04:quiet-space
           node --test tests/r51-r04-quiet-space.test.mjs
 
+      - name: R51 Home source hold gate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:home-gate
+          node --test tests/r51-r04-home-gate.test.mjs
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -141,5 +147,14 @@ jobs:
           path: |
             cloud/n04-r38-library/build/r04/quiet-space-editorial-entities.json
             cloud/n04-r38-library/build/r04/quiet-space-editorial-report.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload R51 Home source hold
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r51-a9-r04-home-source-hold
+          path: cloud/n04-r38-library/build/r04/home-source-hold-report.json
           if-no-files-found: error
           retention-days: 14
