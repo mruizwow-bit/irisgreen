@@ -58,6 +58,18 @@ async def main():
   need(await page.locator('#sabik-reset').is_visible(),'Sabik reset control must be visible')
   need(await page.locator('#sabik-motion-level').is_visible(),'Sabik motion selector must be visible')
   need(await page.locator('#sabik-motion-level option').evaluate_all("els=>els.map(e=>e.value)")==['NORMAL','REDUCIDO','SIN_MOVIMIENTO'],'Sabik motion levels missing')
+  voice_requests=[]
+  page.on('request',lambda r,arr=voice_requests:arr.append(r.url))
+  await page.wait_for_timeout(120)
+  need(not any('/sabik/assets/audio-r01/' in u and u.endswith('.wav') for u in voice_requests),'Sabik WAV requested before explicit voice activation')
+  await page.locator('#sabik-voice').click()
+  await page.wait_for_timeout(650)
+  need(any('/sabik/assets/audio-r01/es/sabik__welcome.wav' in u for u in voice_requests),'Sabik welcome WAV not requested after explicit voice activation')
+  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='true','Sabik voice did not remain enabled after successful playback start')
+  await page.locator('#sabik-voice').click()
+  await page.wait_for_timeout(80)
+  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='false','Sabik voice did not turn off')
+  report['network']['sabik_welcome_requests']=sum('/sabik/assets/audio-r01/es/sabik__welcome.wav' in u for u in voice_requests)
   # Theme alternative lives inside Accessibility and persists globally.
   await page.get_by_role('button',name='Accesibilidad',exact=True).click()
   await page.get_by_role('button',name='Claro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='light','LIGHT alternative did not apply')
@@ -89,6 +101,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','sabik-donor-proportion','css-render-integrity','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','sabik-donor-proportion','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
