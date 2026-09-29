@@ -1,0 +1,85 @@
+name: W07 R1 QA freeze
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/specs/build-hygiene/**'
+      - 'docs/qa/W07_R1_**'
+      - '.github/workflows/w07-r1-qa-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Prepare route checker environment
+        run: |
+          python3 -m venv /tmp/ig-w07
+          /tmp/ig-w07/bin/pip -q install playwright==1.55.0 beautifulsoup4==4.13.4 lxml==6.0.1
+          /tmp/ig-w07/bin/python -m playwright install --with-deps chromium >/tmp/ig-w07-install.log 2>&1
+
+      - name: Source freeze
+        run: |
+          mkdir -p /tmp/w07-freeze
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py \
+            --phase source \
+            --mode baseline \
+            --out /tmp/w07-freeze/source.json
+
+      - name: Linux build 1
+        run: python3 scripts/build_site.py
+
+      - name: Baseline artifact manifest 1
+        run: |
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py \
+            --phase dist \
+            --mode baseline \
+            --manifest-out /tmp/w07-freeze/manifest-1.json \
+            --out /tmp/w07-freeze/dist-1.json
+
+      - name: Linux build 2
+        run: python3 scripts/build_site.py
+
+      - name: Reproducibility and artifact manifest 2
+        run: |
+          python3 tests/specs/build-hygiene/run-w07-r1-freeze.py \
+            --phase dist \
+            --mode baseline \
+            --manifest-out /tmp/w07-freeze/manifest-2.json \
+            --compare-manifest /tmp/w07-freeze/manifest-1.json \
+            --out /tmp/w07-freeze/dist-2.json
+
+      - name: W06 W03 SEC01 gates on same dist
+        run: |
+          /tmp/ig-w07/bin/python tests/specs/build-hygiene/run-w07-r1-freeze.py \
+            --phase gates \
+            --mode baseline \
+            --out /tmp/w07-freeze/gates.json
+
+      - name: Diff check
+        run: git diff --check
+
+      - name: Preserve QA evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: w07-r1-freeze-baseline
+          path: |
+            /tmp/w07-freeze
+            reports/routes/tests.json
+            dist/reports/publicacion/privacidad-almacenamiento.json
+            dist/reports/publicacion/privacidad.json
+            dist/reports/publicacion/csp-inventario.json
+            dist/reports/publicacion/security-headers.json
+          if-no-files-found: warn
+          retention-days: 90
