@@ -252,6 +252,14 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: npm run probe:r04:candidate-store
 
+      - name: Publish R51 private retrieval proof
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-retrieval-proof
+          R51_CANDIDATE_FILE: build/r04/r04-private-retrieval-proof.json
+        run: npm run publish:r04:candidate
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
