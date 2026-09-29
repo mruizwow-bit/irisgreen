@@ -1856,3 +1856,40 @@ Memoria: `MEMORIA/R63_RINCON_SAKURA_20260929.md`.
 Control: `CONTROL/DELTA_R63_RINCON_SAKURA_20260929.json`.
 
 No main. No producción. No deploy propio.
+
+## 29/09/2026 · R61 / R63 / R64 · cierre de órdenes, memoria y control
+
+### R61 · Pecera ilustrada
+Estado: `R61_PECERA_ILLUSTRATED_DIRECTION_PASS_CONTINUE`.
+
+El donor original fija el lenguaje visual: ilustración plana, nítida, saturada y legible. Se descarta la simulación física submarina como dirección principal. Próxima entrega: vídeo ≈10 min, cámara fija, audio first-party exclusivo, NORMAL/REDUCIDO/SIN_MOVIMIENTO, responsive y performance real o `PENDING_HARDWARE_QA`.
+
+Marcador: `R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA`.
+
+Orden: `ORDENES/R61_CLAUDE_RINCON_PECERA/02_CLAUDE_VIDEO_FINAL_ILUSTRADO.md`.
+Control: `CONTROL_MASTER_SYNC_DELTA_R61_PECERA_ILUSTRADA_VIDEO_20260929.csv`.
+
+### R63 · Sakura
+Estado: `R63_SAKURA_VISUAL_REFERENCE_APPROVED`.
+
+La referencia aprobada es una sala sensorial circular, misma arquitectura en DARK NAVY y LIGHT. La floración principal pasa a masters first-party coordinados `SAKURA_CANOPY_NAVY` / `SAKURA_CANOPY_LIGHT`; runtime procedural solo para pétalos, luz, reflejos, gobos y partículas.
+
+Marcador: `R63_SAKURA_VISUAL_REFERENCE_INTEGRATED_READY_FOR_ASTRA`.
+
+Orden: `ORDENES/R63_CLAUDE_RINCON_SAKURA/02_CLAUDE_REFERENCIA_VISUAL_SALA.md`.
+Control: `CONTROL_MASTER_SYNC_DELTA_R63_SAKURA_VISUAL_20260929.csv`.
+
+### R64 · A2 · Taller R54
+Issue: #329.
+Estado: `R64_A2_6_CARDS_INTEGRATION_ORDERED`.
+
+Handoff R54 R2 verificado. Arte KEEP 6/6. María autoriza integración y Deploy Preview, NO aceptación final. A2 reconcilia sobre HEAD vivo, conserva Home/header actuales, usa una sola hoja global de tokens, aplica taxonomía AGE_* con compatibilidad legacy temporal y repite QA.
+
+Marcador: `R64_A2_6_CARDS_DEPLOY_PREVIEW_READY_FOR_MARIA`.
+
+Orden: `ORDENES/R64_A2_R54_6_CARDS_PREVIEW/01_AGENTE_2.md`.
+Control: `CONTROL_MASTER_SYNC_DELTA_R64_A2_R54_6_CARDS_20260929.csv`.
+
+### Normativa
+
+Ninguna de estas tres órdenes introduce una regla transversal nueva. Se consumen las normas globales vigentes de visual premium, taxonomía de edad, baja estimulación, tokens, R42/R02 y marco WCAG/ISO/EN/COGA. Por tanto NO se abre un addendum normativo artificial para cambios de producto locales.
