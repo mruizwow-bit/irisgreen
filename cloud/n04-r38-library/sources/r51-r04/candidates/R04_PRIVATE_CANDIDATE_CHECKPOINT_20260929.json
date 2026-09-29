@@ -1,0 +1,94 @@
+{
+  "schema": "R51_A9_R04_PRIVATE_CANDIDATE_CHECKPOINT/1.0",
+  "status": "PRIVATE_CANDIDATE_VERIFIED_INCREMENTAL_READY",
+  "branch": "agent9/r51-cloud-library-r04-20260927",
+  "verified_head": "7816781685d3568b21ddced9338d0f3e06a88062",
+  "ci": {
+    "workflow": "R51 A9 R04 library verify",
+    "run_id": 36533602541,
+    "conclusion": "success"
+  },
+  "cloud": {
+    "site": "sabik-asistente",
+    "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
+    "deploy_id": "6abb60f346062fb1a8dfd750",
+    "context": "private non-production candidate",
+    "team_login": true,
+    "store": "sabik-r04-candidates",
+    "production_changed": false
+  },
+  "corpus": {
+    "library_version": "R04_CANDIDATE_PARTIAL_UNSEALED",
+    "entity_count": 2718,
+    "active_entity_count": 2572,
+    "held_entity_count": 146,
+    "components": {
+      "editorial_965": {
+        "entities": 1700,
+        "status": "READY_CANDIDATE"
+      },
+      "games_297": {
+        "entities": 594,
+        "status": "READY_CANDIDATE"
+      },
+      "routines_109": {
+        "entities": 218,
+        "status": "READY_CANDIDATE"
+      },
+      "interests_72": {
+        "entities": 144,
+        "status": "HOLD_PENDING_R59_AGE_SAFETY"
+      },
+      "workshop_25": {
+        "entities": 50,
+        "status": "READY_CANDIDATE_25_OF_27"
+      },
+      "quiet_space": {
+        "entities": 12,
+        "active": 10,
+        "held": 2,
+        "status": "CRISIS_MODULE_HELD"
+      }
+    }
+  },
+  "private_keys": {
+    "corpus": "r51-r04-candidates/r04-partial-corpus/7816781685d3568b21ddced9338d0f3e06a88062/r04-partial-corpus.json",
+    "manifest": "r51-r04-candidates/r04-manifest/7816781685d3568b21ddced9338d0f3e06a88062/r04-candidate-manifest.json",
+    "retrieval_proof": "r51-r04-candidates/r04-retrieval-proof/7816781685d3568b21ddced9338d0f3e06a88062/r04-private-retrieval-proof.json"
+  },
+  "retrieval": {
+    "readback_verified": true,
+    "age_filter_before_ranking": true,
+    "safety_filter_before_ranking": true,
+    "general_safe_by_default": true,
+    "adult_full_s2_only_with_explicit_intent": true,
+    "held_interests_excluded": true
+  },
+  "incremental": {
+    "delta_types": [
+      "ADDED",
+      "MODIFIED",
+      "UNCHANGED",
+      "REMOVED",
+      "SAFETY_CHANGED",
+      "AGE_CHANGED",
+      "ROUTE_CHANGED",
+      "LOCALE_CHANGED",
+      "SOURCE_CHANGED"
+    ],
+    "tombstones": true,
+    "no_content_change_for_ui_only": true,
+    "single_record_rebuild": true,
+    "single_game_rebuild": true,
+    "single_routine_rebuild": true,
+    "manual_source_sha_input": true
+  },
+  "blockers": [
+    "HOME_CANONICAL_V4_R2_NOT_YET_ACCEPTED",
+    "INTERESTS_CANONICAL_AGE_AND_SAFETY_NOT_RELEASED",
+    "WORKSHOP_MODELADO_3D_AND_VIDEOMAPPING_NOT_IN_A2_SOURCE",
+    "QUIET_SPACE_CRISIS_COPY_REVIEW_PENDING"
+  ],
+  "final_r04_sealed": false,
+  "production_activation": false
+}
