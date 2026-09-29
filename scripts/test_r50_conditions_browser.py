@@ -16,8 +16,12 @@ async def check(page,path,access,music):
  need(await h.get_by_text('Iris Green',exact=True).count()==1,'brand missing '+path)
  need(await h.get_by_role('button',name=access,exact=True).count()==1,'accessibility missing '+path)
  need(await h.get_by_role('button',name=music,exact=True).count()==1,'music missing '+path)
- for name in ['Condiciones','Conditions','Situaciones','Situations','Vida diaria','Everyday life','Investigación','Research','Recursos','Resources','Buscar','Search','Contenido','Content','Explorar','Explore']:
-  need(await h.get_by_text(name,exact=True).count()==0,'forbidden top-bar label '+name+' on '+path)
+ is_en=access=='Accessibility';search='Search' if is_en else 'Buscar';content='Content' if is_en else 'Contenido';explore='Explore' if is_en else 'Explorar'
+ for name in ['Condiciones','Conditions','Situaciones','Situations','Vida diaria','Everyday life','Investigación','Research','Recursos','Resources']:
+  need(await h.get_by_text(name,exact=True).count()==0,'legacy primary label '+name+' on '+path)
+ sb=h.get_by_role('button',name=search,exact=True);need(await sb.count()==1,'search missing '+path);await sb.click();need(await page.locator('#ig-r49-search[open]').count()==1,'search dialog missing '+path);await page.keyboard.press('Escape');need(await sb.evaluate('(e)=>document.activeElement===e'),'search focus not restored '+path)
+ cb=h.locator('[data-ig-r49-stage]');need(await cb.count()==1 and await cb.get_by_text(content,exact=True).count()==1,'content missing '+path);await cb.click();need(await page.locator('#ig-r49-audience[open]').count()==1,'content dialog missing '+path);await page.keyboard.press('Escape');need(await cb.evaluate('(e)=>document.activeElement===e'),'content focus not restored '+path)
+ eb=h.get_by_role('button',name=explore,exact=True);need(await eb.count()==1,'explore missing '+path);await eb.click();need(await page.locator('#ig-r49-more[open]').count()==1,'explore dialog missing '+path);await page.keyboard.press('Escape');need(await eb.evaluate('(e)=>document.activeElement===e'),'explore focus not restored '+path)
  m=h.get_by_role('button',name=music,exact=True);await m.click();await page.wait_for_timeout(100)
  need(await page.locator('#ig-music-panel').count()==1,'music panel missing '+path)
  need(not any('/audio/' in u for u in req),'audio requested before Play '+path)
