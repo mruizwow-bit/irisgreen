@@ -1,0 +1,44 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R61-PECERA-BUBBLES-VISUAL-20260929",
+  "issue": 325,
+  "date": "2026-09-29",
+  "status": "R61_PECERA_ILLUSTRATED_PASS_BUBBLES_VISUAL_REWORK_REQUIRED",
+  "keep": [
+    "ILLUSTRATED_DIRECTION",
+    "7_SPECIES",
+    "PLANTS",
+    "BRANCH",
+    "ROCKS",
+    "SAND",
+    "WATER",
+    "FIXED_CAMERA",
+    "AUDIO",
+    "PLAYER",
+    "10MIN_ENGINE"
+  ],
+  "missing_element": "VISUAL_BUBBLES",
+  "rule": {
+    "style": "ILLUSTRATED",
+    "density": "LOW",
+    "speed": "SLOW",
+    "normal": "FLOW",
+    "reduced": "FEWER_SLOWER",
+    "no_motion": "STATIC_OR_NONE"
+  },
+  "pre_render_gate": [
+    "FRAME_1440",
+    "CLIP_20_30S_NORMAL",
+    "REDUCED_EVIDENCE",
+    "NO_MOTION_EVIDENCE"
+  ],
+  "expected_marker": "R61_PECERA_BUBBLES_VISUAL_READY_FOR_ASTRA_MARIA",
+  "long_render_allowed_after_review": false,
+  "normative_change": false,
+  "holds": [
+    "SECOND_ROOM",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
