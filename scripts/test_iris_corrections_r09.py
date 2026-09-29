@@ -8,37 +8,46 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'reports/iris-r09';OUT.mkdir(p
 
 
 def check_inner_header(page,route,width):
- """The post-R09 desktop header intentionally has controls above navigation.
+ """Verify the current R49 global header contract.
 
- Keep alignment checks on the first row and verify the separate navigation row
- is contained, non-overlapping, visible and reachable in DOM keyboard order.
- This checks the recorded layout; it does not imply Maria's visual acceptance.
+ The current header intentionally contains only brand + Accessibility + Music +
+ language. The thematic navigation lives elsewhere and must not be required here.
  """
- header=page.locator('header.hd')
+ header=page.locator('.ig-r49-global-header[data-ig-r49-upgraded="true"]')
  if not header.count():return None
  geometry=header.evaluate('''(h)=>{
   const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom,center:r.y+r.height/2}};
-  const visible=e=>{const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)!==0&&r.width>0&&r.height>0};
-  return {header:rect(h),top:[...h.children].filter(e=>e.matches('.brand,.tools,.langs')&&visible(e)).map(rect),nav:rect(h.querySelector('.nav')),links:[...h.querySelectorAll('.nav a')].map(e=>({href:e.getAttribute('href'),visible:visible(e),...rect(e)}))};
+  const visible=e=>{if(!e)return false;const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)!==0&&r.width>0&&r.height>0};
+  const inner=h.querySelector('.ig-r49-header-inner');
+  const brand=h.querySelector('.ig-r49-brand');
+  const settings=h.querySelector('[data-ig-r49-settings]');
+  const music=h.querySelector('[data-ig-music]');
+  const lang=h.querySelector('.ig-r49-lang');
+  return {
+    header:rect(h),inner:inner?rect(inner):null,
+    brand:brand&&visible(brand)?rect(brand):null,
+    settings:settings&&visible(settings)?rect(settings):null,
+    music:music&&visible(music)?rect(music):null,
+    lang:lang&&visible(lang)?rect(lang):null,
+    permanentNav:[...h.querySelectorAll('.nav,.ig-r49-primary')].filter(visible).length
+  };
  }''')
- top=geometry['top'];nav=geometry['nav'];outer=geometry['header'];links=geometry['links']
- assert len(top)==3,(route,width,'missing top-row group',geometry)
- assert max(r['center'] for r in top)-min(r['center'] for r in top)<3,(route,width,'top-row alignment',geometry)
- assert nav['y']>=max(r['bottom'] for r in top)-1,(route,width,'navigation overlaps controls',geometry)
- assert nav['height']>0 and nav['width']>0,(route,width,'empty navigation')
- assert nav['x']>=outer['x']-1 and nav['right']<=outer['right']+1 and nav['bottom']<=outer['bottom']+1,(route,width,'navigation outside header',geometry)
- assert links,(route,width,'missing links')
- for link in links:
-  assert link['visible'] and link['height']>=44,(route,width,'hidden or short navigation link',link)
-  assert link['x']>=nav['x']-1 and link['right']<=nav['right']+1 and link['y']>=nav['y']-1 and link['bottom']<=nav['bottom']+1,(route,width,'clipped link',link)
- for index,a in enumerate(links):
-  for b in links[index+1:]:
-   assert not (min(a['right'],b['right'])-max(a['x'],b['x'])>1 and min(a['bottom'],b['bottom'])-max(a['y'],b['y'])>1),(route,width,'overlapping links',a,b)
- anchors=header.locator('.nav a');anchors.first.focus()
- for index in range(anchors.count()):
-  assert anchors.nth(index).evaluate('(e)=>document.activeElement===e'),(route,width,'keyboard skipped link',index)
-  if index+1<anchors.count():page.keyboard.press('Tab')
- geometry['keyboard_links_checked']=anchors.count()
+ outer=geometry['header'];inner=geometry['inner']
+ assert inner,(route,width,'missing R49 header inner',geometry)
+ assert inner['x']>=outer['x']-1 and inner['right']<=outer['right']+1,(route,width,'header inner outside shell',geometry)
+ assert geometry['brand'],(route,width,'missing brand',geometry)
+ for key in ('settings','music','lang'):
+  item=geometry[key];assert item,(route,width,'missing header control',key,geometry)
+  assert item['height']>=44,(route,width,'short header control',key,item)
+  assert item['x']>=outer['x']-1 and item['right']<=outer['right']+1,(route,width,'header control clipped',key,item)
+ assert geometry['permanentNav']==0,(route,width,'retired permanent thematic nav visible',geometry)
+ controls=header.locator('.ig-r49-brand,[data-ig-r49-settings],[data-ig-music],.ig-r49-lang')
+ assert controls.count()==4,(route,width,'unexpected header control count',controls.count())
+ controls.first.focus()
+ for index in range(controls.count()):
+  assert controls.nth(index).evaluate('(e)=>document.activeElement===e'),(route,width,'keyboard skipped header control',index)
+  if index+1<controls.count():page.keyboard.press('Tab')
+ geometry['keyboard_controls_checked']=controls.count()
  return geometry
 
 
