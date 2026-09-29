@@ -1893,3 +1893,34 @@ Control: `CONTROL_MASTER_SYNC_DELTA_R64_A2_R54_6_CARDS_20260929.csv`.
 ### Normativa
 
 Ninguna de estas tres órdenes introduce una regla transversal nueva. Se consumen las normas globales vigentes de visual premium, taxonomía de edad, baja estimulación, tokens, R42/R02 y marco WCAG/ISO/EN/COGA. Por tanto NO se abre un addendum normativo artificial para cambios de producto locales.
+
+## R65 · Claude · Taller · 21 tarjetas + 9 AGE_0_12 · 29/09/2026
+
+Issue: #330  
+Estado: `R65_WAIT_HUMAN_QA_R64`.
+
+R65 queda preparado pero BLOQUEADO hasta que María revise la Deploy Preview de R64/#329 y emita:
+
+`R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65`
+
+Tras desbloqueo:
+- KEEP 6/6 pilotos;
+- construir exactamente 21 tarjetas restantes;
+- construir las 9 variantes AGE_0_12 ya congeladas en R54;
+- no redefinir esas 9;
+- si no existe una lista canónica única, STOP con `R65_AGE_0_12_VARIANT_SET_NOT_CANONICAL_BLOCKED`;
+- trabajar en 7 tandas de 3 estudios;
+- mantener target E4 premium 2026;
+- mantener pipeline reproducible AVIF/WebP 1x/2x + hashes + render_config_sha256 + build-strict;
+- no tocar interiores/starters todavía.
+
+Marcador de entrega:
+`R65_CLAUDE_TALLER_21_PLUS_9_READY_FOR_ASTRA`
+
+Orden:
+`ORDENES/R65_CLAUDE_TALLER_21_PLUS_9/01_CLAUDE.md`
+
+Control:
+`CONTROL_MASTER_SYNC_DELTA_R65_TALLER_21_PLUS_9_20260929.csv`
+
+Normativa: no cambia; consume los canónicos globales vigentes.
