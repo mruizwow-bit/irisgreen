@@ -86,7 +86,11 @@ def run():
      page.goto(base+route,wait_until='networkidle');page.locator('main').first.wait_for()
      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(route,width,'overflow')
      headers=page.locator('body > header').count()
-     if route in R42_PILOT_ROUTES:
+     is_r49=page.locator('body').get_attribute('data-ig-r49')=='1'
+     if is_r49:
+      assert headers==1,(route,'R49 headers',headers)
+      assert page.locator('header.ig-r49-global-header').count()==1,(route,'R49 global header')
+     elif route in R42_PILOT_ROUTES:
       assert headers==2,(route,'R42 headers',headers)
       assert page.locator('header.ig-r42-topbar').count()==1,(route,'R42 topbar')
      else:
