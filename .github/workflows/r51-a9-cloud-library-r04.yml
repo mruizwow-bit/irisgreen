@@ -89,6 +89,12 @@ jobs:
           npm run build:r04:home-gate
           node --test tests/r51-r04-home-gate.test.mjs
 
+      - name: R51 incremental delta contract gate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:delta-contract
+          node --test tests/r51-r04-incremental-delta.test.mjs
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -156,5 +162,14 @@ jobs:
         with:
           name: r51-a9-r04-home-source-hold
           path: cloud/n04-r38-library/build/r04/home-source-hold-report.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload R51 incremental delta contract
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r51-a9-r04-incremental-delta-contract
+          path: cloud/n04-r38-library/build/r04/incremental-delta-contract.json
           if-no-files-found: error
           retention-days: 14
