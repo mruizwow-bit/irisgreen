@@ -25,7 +25,8 @@
     "build:r04:delta-contract": "node scripts/build-r04-delta-contract.mjs",
     "build:r04:impact-contract": "node scripts/build-r04-impact-contract.mjs",
     "build:r04:editorial-incremental-fixture": "node scripts/build-r04-editorial-incremental-fixture.mjs",
-    "build:r04:interactive-incremental-fixture": "node scripts/build-r04-interactive-incremental-fixture.mjs"
+    "build:r04:interactive-incremental-fixture": "node scripts/build-r04-interactive-incremental-fixture.mjs",
+    "plan:r04:update": "node scripts/plan-r04-update.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
