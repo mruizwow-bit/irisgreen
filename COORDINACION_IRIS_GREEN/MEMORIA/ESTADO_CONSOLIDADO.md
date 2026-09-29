@@ -756,3 +756,13 @@ Visual PASS: la sala sensorial Sakura queda congelada. No se persigue fotorealis
 Claude puede preparar ZIP cuando esos checks pasen; no push propio. A2 integra después de verificación Astra. Siguiente sala solo tras HUMAN QA María.
 
 Marcador: `R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_READY_FOR_ASTRA_A2`.
+
+## R65 · ejecución paralela · 29/09/2026
+
+`R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64`.
+
+R65 deja de esperar a R64. Claude puede continuar inmediatamente las 21 tarjetas restantes en 7 tandas de 3 y después las 9 variantes AGE_0_12.
+
+R64 HUMAN QA bloquea únicamente el cierre/handoff final, no la producción. Las correcciones humanas posteriores se aplican de forma acotada salvo fallo sistémico.
+
+No cambio normativo.
