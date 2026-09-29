@@ -34,12 +34,51 @@ const groups=[...byText.values()].filter(g=>g.length>1).map(g=>({
   canonical_urls:[...new Set(g.map(x=>x.canonical_url))]
 }));
 const crossContent=groups.filter(g=>g.content_ids.length>1);
+function tokens(v){ return new Set(norm(v).match(/[\p{L}\p{N}]+/gu)||[]); }
+function jaccard(a,b){
+  const A=tokens(a),B=tokens(b);
+  if(!A.size&&!B.size) return 1;
+  let inter=0;
+  for(const x of A) if(B.has(x)) inter++;
+  return inter/(A.size+B.size-inter);
+}
+const byTitle=new Map();
+for(const e of corpus.entities){
+  if(e.active===false||e.retrieval_eligible===false) continue;
+  const title=norm(e.title);
+  if(!title) continue;
+  const key=e.locale+':'+title;
+  if(!byTitle.has(key)) byTitle.set(key,[]);
+  byTitle.get(key).push(e);
+}
+const near=[];
+for(const list of byTitle.values()){
+  if(list.length<2) continue;
+  for(let i=0;i<list.length;i++) for(let j=i+1;j<list.length;j++){
+    if(list[i].content_id===list[j].content_id) continue;
+    const a=editorialText(list[i]),b=editorialText(list[j]);
+    const sim=jaccard(a,b);
+    if(sim>=0.85&&sim<1){
+      near.push({
+        locale:list[i].locale,
+        title:list[i].title,
+        entity_ids:[list[i].entity_id,list[j].entity_id],
+        content_ids:[list[i].content_id,list[j].content_id],
+        canonical_urls:[list[i].canonical_url,list[j].canonical_url],
+        similarity:+sim.toFixed(4),
+        decision:sim>=0.98?'DEDUP_REVIEW_HIGH':'KEEP_SEPARATE_REVIEWED_SIMILAR'
+      });
+    }
+  }
+}
 const report={
-  schema:'R51_A9_R04_DUPLICATE_AUDIT/1.0',
+  schema:'R51_A9_R04_DUPLICATE_AUDIT/1.1',
   active_entities:corpus.active_entity_count,
   exact_duplicate_groups:groups.length,
   cross_content_duplicate_groups:crossContent.length,
+  near_duplicate_pairs:near.length,
   groups,
+  near,
   status:crossContent.length?'REVIEW_REQUIRED':'PASS'
 };
 await writeFile(new URL('r04-duplicate-audit.json',out),JSON.stringify(report,null,2)+'\n');
