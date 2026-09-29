@@ -1,0 +1,73 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R66-A2-SABIK-CONVERSATIONAL-20260929",
+  "issue": 332,
+  "date": "2026-09-29",
+  "status": "R66_A2_SABIK_CONVERSATIONAL_INTEGRATION_ORDERED",
+  "owner": "A2",
+  "product_contract": "VOICE_OR_TEXT_TO_SAME_CORE_TO_CLOUD_KNOWLEDGE_TO_RESPONSE_TO_TEXT_SOURCES_AND_DYNAMIC_SABIK_TTS",
+  "current_a2_head_observed": "a7e65891872dd3597b37c2f612fd64f5cc6a4ddd",
+  "core_baseline": "efa4ed9b71d9e766f7b32830793f6b711aa5574a",
+  "core_modules": [
+    "intent",
+    "retrieval",
+    "decision",
+    "response",
+    "risk",
+    "corrections",
+    "session",
+    "knowledge"
+  ],
+  "cloud": {
+    "role": "KNOWLEDGE",
+    "partial_version": "sabik-r04-private-partial-20260929-f3f72e4e075b",
+    "deploy_id": "6abb66029456439c4426d0ca",
+    "active_entities": 2366,
+    "held_entities": 352,
+    "final_required_for_final_gate": true
+  },
+  "voice": {
+    "fixed_wav_library": "SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED",
+    "fixed_wav_role": "SYSTEM_AND_FALLBACK",
+    "dynamic_tts_required": true,
+    "identity": "SABIK_APPROVED_ES_EN",
+    "browser_speechsynthesis_final": false
+  },
+  "input": {
+    "text": true,
+    "microphone": true,
+    "explicit_gesture": true,
+    "always_listening": false,
+    "wake_word": false,
+    "stt_required": true
+  },
+  "b3": [
+    "PRESENTE",
+    "ORIENTAR",
+    "TRANSICION",
+    "PAUSA",
+    "CONFIRMAR"
+  ],
+  "age_ids": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "privacy": [
+    "NO_AUDIO_PERSISTENCE_DEFAULT",
+    "NO_TRANSCRIPT_PERSISTENCE_DEFAULT",
+    "NO_CHAT_PERSISTENCE_DEFAULT",
+    "NO_TRAINING_ON_TURNS",
+    "NO_STORE"
+  ],
+  "expected_intermediate": "R66_A2_SABIK_CONVERSATIONAL_PRIVATE_PREVIEW_READY_FOR_ASTRA",
+  "expected_final": "R66_A2_SABIK_ALEXA_STYLE_ES_EN_PREVIEW_READY_FOR_MARIA",
+  "normative_change": true,
+  "normative_file": "NORMATIVA/ADDENDUM_R66_SABIK_CONVERSATIONAL_VOICE_20260929.md",
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "HUMAN_QA_REQUIRED"
+  ]
+}
