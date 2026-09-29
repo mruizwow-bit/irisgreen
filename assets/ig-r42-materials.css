@@ -13,8 +13,8 @@
 body[data-ig-materials="r42"]{
   --ig-ink:var(--ig-text,#17395c);
   --ig-ink-muted:var(--ig-text-muted,#435268);
-  --ig-ink-on-dark:var(--ig-text,#eef4f8);
-  --ig-ink-muted-on-dark:var(--ig-text-muted,#c9d5dd);
+  --ig-ink-on-dark:#eef4f8;
+  --ig-ink-muted-on-dark:#c9d5dd;
 
   --ig-surface-content:var(--ig-bg-surface,#f4f7fa);
   --ig-surface-content-soft:var(--ig-bg-surface-soft,#eef2f6);
@@ -22,6 +22,7 @@ body[data-ig-materials="r42"]{
   --ig-chrome-light-rgb:244 247 250;
   --ig-chrome-dark-rgb:11 26 43;
   --ig-chrome-solid-light:var(--ig-bg-surface,#f4f7fa);
+  --ig-chrome-control-light:var(--ig-button-secondary-bg,#e6f1f8);
   --ig-chrome-solid-dark:#0b1a2b;
   --ig-chrome-control-dark:#15304a;
 
@@ -39,21 +40,21 @@ body[data-ig-materials="r42"]{
   --ig-chrome-glass-light:var(--ig-chrome-solid-light);
   --ig-chrome-glass-dark:var(--ig-chrome-solid-dark);
 
-  --ig-control-border:#7a869d;
+  --ig-control-border:var(--ig-border-control,#7a869d);
   --ig-control-border-dark:#8494a8;
-  --ig-separator:#d5e1ec;
+  --ig-separator-ui:var(--ig-separator,#d5e1ec);
   --ig-separator-dark:#2a4460;
   --ig-overlay-backdrop:rgb(14 29 53 / .42);
   --ig-overlay-backdrop-dark:rgb(2 8 18 / .62);
   --ig-link-on-dark:#9fdcea;
   --ig-focus:var(--ig-focus-global,#5a49a8);
-  --ig-focus-on-dark:var(--ig-focus-global,#c3b8ff);
+  --ig-focus-on-dark:#c3b8ff;
 
-  --ig-state-hover:#edf5fb;
+  --ig-state-hover:var(--ig-bg-surface-soft,#edf5fb);
   --ig-state-hover-dark:#1d3d5c;
-  --ig-state-selected:#17395c;
-  --ig-state-selected-ink:#ffffff;
-  --ig-state-selected-soft:#e6f1f8;
+  --ig-state-selected:var(--ig-button-primary-bg,#17395c);
+  --ig-state-selected-ink:var(--ig-button-primary-fg,#ffffff);
+  --ig-state-selected-soft:var(--ig-button-secondary-bg,#e6f1f8);
   --ig-state-selected-dark:#dce8f2;
   --ig-state-selected-dark-ink:#0b1a2b;
   --ig-state-disabled-ink:#5f6b80;
