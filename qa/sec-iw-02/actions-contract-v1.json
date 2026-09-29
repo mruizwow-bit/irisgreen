@@ -1,0 +1,157 @@
+{
+  "schema": "SEC_IW_02_ACTIONS_FREEZE/1.0",
+  "contract_id": "SEC-IW-02-ACTIONS-FREEZE-V1",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "preferred_checkout_sha": "11d5960a326750d5838078e36cf38b85af677262",
+  "target_workflows": [
+    {
+      "path": ".github/workflows/diagnostico-build-investigacion.yml",
+      "baseline_blob": "b2cc7eb5349937c84f908c6652bc1fdfbe259ce5",
+      "baseline_permissions": {
+        "contents": "read"
+      },
+      "candidate_permissions": {
+        "contents": "read"
+      },
+      "baseline_uses": [
+        {
+          "job": "reproducir",
+          "index": 0,
+          "name": null,
+          "uses": "actions/checkout@v4"
+        }
+      ],
+      "baseline_repo_write_steps": [],
+      "baseline_on": {
+        "push": {
+          "paths": [
+            ".github/workflows/diagnostico-build-investigacion.yml",
+            "netlify.toml",
+            "scripts/build_site.py",
+            "scripts/finalize_validation_labels.py",
+            "scripts/publish_investigacion.py"
+          ]
+        },
+        "workflow_dispatch": null
+      },
+      "expected_jobs": [
+        "reproducir"
+      ]
+    },
+    {
+      "path": ".github/workflows/publicar-investigacion-120.yml",
+      "baseline_blob": "36933b66b55cca48660fc5fbe920389095cd3322",
+      "baseline_permissions": {
+        "contents": "write"
+      },
+      "candidate_permissions": {
+        "contents": "write"
+      },
+      "baseline_uses": [
+        {
+          "job": "publicar",
+          "index": 0,
+          "name": "Descargar repositorio",
+          "uses": "actions/checkout@v4"
+        }
+      ],
+      "baseline_repo_write_steps": [
+        {
+          "job": "publicar",
+          "index": 2,
+          "name": "Guardar cambios publicados",
+          "git_ops": [
+            "add",
+            "commit",
+            "push"
+          ]
+        }
+      ],
+      "baseline_on": {
+        "push": {
+          "paths": [
+            "es/investigacion/_import/**",
+            ".github/workflows/publicar-investigacion-120.yml"
+          ]
+        },
+        "workflow_dispatch": null
+      },
+      "expected_jobs": [
+        "publicar"
+      ]
+    },
+    {
+      "path": ".github/workflows/rutinas-visuales.yml",
+      "baseline_blob": "f50b9fff58e966a1026b0c36d70cd915a14512c9",
+      "baseline_permissions": null,
+      "candidate_permissions": {
+        "contents": "read"
+      },
+      "baseline_uses": [
+        {
+          "job": "comprobar",
+          "index": 0,
+          "name": null,
+          "uses": "actions/checkout@v4"
+        }
+      ],
+      "baseline_repo_write_steps": [],
+      "baseline_on": {
+        "pull_request": {
+          "paths": [
+            "es/recursos/**",
+            "assets/rutinas-visuales*",
+            "assets/mulberry-rutinas/**",
+            "scripts/test_rutinas_visuales.py",
+            "scripts/generate_rutinas_sprites.py",
+            ".github/workflows/rutinas-visuales.yml"
+          ]
+        }
+      },
+      "expected_jobs": [
+        "comprobar"
+      ]
+    }
+  ],
+  "candidate_rules": {
+    "exact_changed_files": [
+      ".github/workflows/diagnostico-build-investigacion.yml",
+      ".github/workflows/publicar-investigacion-120.yml",
+      ".github/workflows/rutinas-visuales.yml"
+    ],
+    "mutable_checkout_refs_allowed": 0,
+    "required_checkout_uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+    "explicit_permissions_all": true,
+    "no_new_external_actions": true,
+    "preserve_semantics_except_checkout_ref_and_top_level_permissions": true,
+    "product_files_allowed": 0,
+    "merge": false,
+    "deploy": false,
+    "production": false
+  },
+  "baseline_expected_candidate_gate_failures": [
+    "S06",
+    "S07",
+    "S11"
+  ],
+  "cases": {
+    "S01": "3 mutable checkout refs exact baseline",
+    "S02": "inventory all uses in the 3 workflows",
+    "S03": "exact baseline permissions per workflow",
+    "S04": "repository write-capable steps inventory",
+    "S05": "branch/trigger inventory",
+    "S06": "future candidate has 0 mutable refs in these 3",
+    "S07": "future candidate has explicit permissions in all 3",
+    "S08": "future candidate has no new write permission",
+    "S09": "publication workflow still can perform intended controlled push",
+    "S10": "diagnostic workflow remains read-only",
+    "S11": "rutinas workflow minimum privilege",
+    "S12": "no new external actions",
+    "S13": "workflow YAML parses",
+    "S14": "GitHub Actions semantics/static lint if available",
+    "S15": "no product files changed",
+    "S16": "git diff --check",
+    "S17": "rollback exact",
+    "S18": "no merge/deploy"
+  }
+}

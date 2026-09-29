@@ -1,0 +1,113 @@
+name: SEC-IW-02 Actions QA Freeze
+'on':
+  push:
+    branches:
+      - qa/sec-iw-02-actions-freeze-20260922
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+
+      - name: Verify QA-only freeze scope and target immutability
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=e48b51814afed825a92e83a2f6e51ee8a1c85e45
+          git merge-base --is-ancestor "$BASE" HEAD
+          git diff --check "$BASE"...HEAD
+          python3 - <<'PY'
+          import subprocess
+          base='e48b51814afed825a92e83a2f6e51ee8a1c85e45'
+          files=subprocess.check_output(['git','diff','--name-only',base+'...HEAD'],text=True).splitlines()
+          allowed=lambda p: p=='.github/workflows/sec-iw-02-actions-freeze.yml' or p.startswith('qa/sec-iw-02/')
+          bad=[p for p in files if not allowed(p)]
+          targets={
+            '.github/workflows/diagnostico-build-investigacion.yml',
+            '.github/workflows/publicar-investigacion-120.yml',
+            '.github/workflows/rutinas-visuales.yml',
+          }
+          touched=sorted(targets.intersection(files))
+          print({'changed_files':files,'disallowed':bad,'productive_workflows_touched':touched,'product_files':[] if not bad else bad})
+          if bad:
+              raise SystemExit('freeze contains non-QA files: '+repr(bad))
+          if touched:
+              raise SystemExit('freeze modified productive workflows: '+repr(touched))
+          PY
+
+      - name: Verify exact target baseline blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse e48b51814afed825a92e83a2f6e51ee8a1c85e45:.github/workflows/diagnostico-build-investigacion.yml)" = "b2cc7eb5349937c84f908c6652bc1fdfbe259ce5"
+          test "$(git rev-parse e48b51814afed825a92e83a2f6e51ee8a1c85e45:.github/workflows/publicar-investigacion-120.yml)" = "36933b66b55cca48660fc5fbe920389095cd3322"
+          test "$(git rev-parse e48b51814afed825a92e83a2f6e51ee8a1c85e45:.github/workflows/rutinas-visuales.yml)" = "f50b9fff58e966a1026b0c36d70cd915a14512c9"
+
+      - name: Prepare YAML parser
+        run: python3 -m pip -q install pyyaml==6.0.2
+
+      - name: Execute immutable baseline freeze
+        run: |
+          mkdir -p /tmp/sec-iw-02
+          python3 qa/sec-iw-02/run-actions-gate-v1.py \
+            --phase baseline \
+            --contract qa/sec-iw-02/actions-contract-v1.json \
+            --root . \
+            --output /tmp/sec-iw-02/baseline-report.json
+
+      - name: Verify expected baseline red
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/sec-iw-02/baseline-report.json').read_text())
+          expected=['S06','S07','S11']
+          got=d['baseline_expected_candidate_gate_failures']
+          print({
+            'baseline_expected_red':got,
+            'mutable_checkout_refs':d['cases']['S01']['mutable_refs'],
+            'explicit_permissions_count':d['cases']['S07']['explicit_permissions_count'],
+            'errors':d['errors'],
+          })
+          if got!=expected:
+              raise SystemExit('baseline red drift')
+          if len(d['cases']['S01']['mutable_refs'])!=3:
+              raise SystemExit('expected exactly 3 mutable checkout refs')
+          if d['errors']:
+              raise SystemExit('freeze report errors: '+repr(d['errors']))
+          PY
+
+      - name: Static lint if available
+        shell: bash
+        run: |
+          if command -v actionlint >/dev/null 2>&1; then
+            actionlint \
+              .github/workflows/diagnostico-build-investigacion.yml \
+              .github/workflows/publicar-investigacion-120.yml \
+              .github/workflows/rutinas-visuales.yml
+            echo '{"actionlint":"PASS"}' | tee /tmp/sec-iw-02/actionlint.json
+          else
+            echo '{"actionlint":"NOT_AVAILABLE","internal_static":"PASS"}' | tee /tmp/sec-iw-02/actionlint.json
+          fi
+
+      - name: Verify freeze manifest
+        run: python3 qa/sec-iw-02/verify-freeze-manifest-v1.py
+
+      - name: Upload freeze evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sec-iw-02-actions-qa-freeze
+          path: /tmp/sec-iw-02
+          retention-days: 14
