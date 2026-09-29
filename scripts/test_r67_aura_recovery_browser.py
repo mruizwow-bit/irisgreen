@@ -50,7 +50,9 @@ async def main():
   need(await page.locator('[data-ig-home-results]').get_by_text('Anorexia nerviosa',exact=False).count()>0,'safe intentional S2 result missing for AGE_13_17')
   report['home']={'age_safe_search':'PASS','s2_payload':'SAFE_VARIANT_ONLY'}
 
-  await page.route('**/*sabik-asistente.netlify.app/**',lambda route: route.abort())
+  async def block_cloud(route):
+   await route.abort()
+  await page.route('**/*sabik-asistente.netlify.app/**',block_cloud)
   await page.evaluate("IGAudience.clear()")
   input_=page.locator('#sabik-input')
   await input_.fill('ruido')
