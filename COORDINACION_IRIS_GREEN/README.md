@@ -10,6 +10,10 @@ P03 Rutas de luz pasa a `R62_P03_HUMAN_QA_REWORK_REQUIRED` en #326. La autorizac
 
 #325 pasa a `R61_PECERA_BUBBLES_PROTOTYPE_HUMAN_APPROVED_RENDER_10MIN_AUTHORIZED`. El prototipo de burbujas pasa HUMAN QA y se autoriza render largo + remux + QA. No se reabre composición/roca ni se aumenta densidad por defecto. Siguiente gate: `R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA`. Sin cambio normativo transversal.
 
+## Addendum R42 Contenido R02 · rebase A2 vivo · 29/09/2026
+
+#302 pasa temporalmente a `R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED`. El ZIP R02 auditado conserva dirección/contenido válido pero fue construido sobre `9c721a79`; A2 ya está en `2fcb193f...` y ha vuelto a tocar `scripts/build_site.py` para R67 Taller. No aplicar el ZIP actual. Rebase final + QA nuevo antes de `R42_CONTENT_R01_REBASED_CHILD_SAFE_READY_FOR_ASTRA`. Sin cambio normativo transversal.
+
 ## Reparto vigente R06 · 25/09/2026 · Codex → Agente 3
 
 **María comunica que Codex está inoperativo y ordena pasar sus pendientes al agente 3.** A3 asume sus cinco comprobaciones reales y toda la continuidad técnica de Codex en Sabik/Cloud: correlación HTTP, correcciones, integración y entrega verificable. No esperar a Codex. Esta disposición sustituye las atribuciones incompatibles anteriores, incluidas las que figuran en el estado/CSV históricos y en la entrega R05.
