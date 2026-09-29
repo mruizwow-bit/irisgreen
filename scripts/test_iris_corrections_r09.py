@@ -55,7 +55,7 @@ def main():
    if os.environ.get('IRIS_AUDIT_BROWSER'):launch['executable_path']=os.environ['IRIS_AUDIT_BROWSER']
    browser=p.chromium.launch(**launch)
    for width in [1920,1440,320]:
-    for route in ['/','/?lang=en','/es/recursos/','/en/resources/','/es/intereses/','/en/interests/','/es/taller/','/en/workshop/','/es/biblioteca/','/es/libros/']:
+    for route in ['/','/en/','/es/recursos/','/en/resources/','/es/intereses/','/en/interests/','/es/taller/','/en/workshop/','/es/biblioteca/','/es/libros/']:
      current={'route':route,'width':width}
      ctx=browser.new_context(viewport={'width':width,'height':1000},reduced_motion='reduce');page=ctx.new_page()
      try:
@@ -64,12 +64,14 @@ def main():
       family=page.locator('main h1').first.evaluate('(e)=>getComputedStyle(e).fontFamily');assert 'Newsreader' in family,(route,family)
       if width>=1440:
        current['header']=check_inner_header(page,route,width)
-       if route in ['/','/?lang=en']:
-        # R42 Home replaced the legacy #home-view with the approved portal layout.
-        # Verify the current max-width contract instead of forcing the retired >95% rule.
-        home=page.locator('.ig-home-layout').bounding_box();assert home,(width,'missing R42 home layout')
-        expected=min(width-2,1260)
+       if route in ['/','/en/']:
+        # Home v4 is the canonical donor-backed Home.
+        assert page.locator('body[data-ig-home-version="v4"]').count()==1,(route,width,'missing Home v4 marker')
+        home=page.locator('.ig-home-v4-wrap').bounding_box();assert home,(width,'missing Home v4 wrap')
+        expected=1240
         assert abs(home['width']-expected)<4,(width,home,expected)
+        sabik=page.locator('#sabik-web-master').bounding_box();assert sabik,(route,width,'missing Sabik master')
+        assert sabik['width']<=151,(route,width,'Sabik exceeds approved donor size',sabik)
       if width==1920 or width==320:page.screenshot(path=str(OUT/f'{len(rows):02d}-{width}.png'))
       rows.append({**current,'font':family,'passed':True})
       (OUT/'progress.json').write_text(json.dumps(rows,indent=2))
