@@ -1,6 +1,6 @@
 # ORDEN CANÓNICA · R65 · CLAUDE · TALLER · 21 + 9
 
-Issue operativo: #330  
+Issue operativo: #330 · canónico  
 Fecha: 29/09/2026
 
 # R65 · CLAUDE · TALLER · ESCALAR 21 TARJETAS RESTANTES + 9 VARIANTES AGE_0_12
@@ -93,26 +93,28 @@ No añadir ni quitar estudios.
 
 # 3. 9 VARIANTES AGE_0_12
 
-Construir únicamente las **nueve variantes ya definidas/congeladas en el sistema R54**.
+Construir exactamente estas nueve variantes ya identificadas en R54:
 
-No elegir nueve nuevas por iniciativa propia.
+1. Circuitos — `circuitos`
+2. Arquitectura — `arquitectura`
+3. Composición — `composicion`
+4. Síntesis — `sintesis-sonido`
+5. Videomapping — `videomapping`
+6. Color — `color`
+7. Fotografía — `fotografia`
+8. Lenguas inventadas — `lenguas-inventadas`
+9. Escritura con restricciones — `escritura-restricciones`
 
-Antes de construir:
-- localizar en manifest/registry/handoff R54 el conjunto exacto de 9;
-- registrar sus IDs;
-- comparar contra Control/Memoria.
+No elegir nueve nuevas.
 
-Si no existe una única lista canónica o dos fuentes discrepan:
-
-`R65_AGE_0_12_VARIANT_SET_NOT_CANONICAL_BLOCKED`
-
-y STOP para Astra.
+Usar internamente `AGE_0_12`.
+No emitir nuevos valores legacy `infancia` / `childhood`.
 
 ## Regla visual AGE_0_12
 
 Mismo estudio.
 Mismo proceso creativo.
-Misma calidad.
+Misma o mayor calidad.
 
 Puede cambiar:
 - menos densidad;
@@ -127,9 +129,6 @@ NO:
 - cartoon genérico;
 - “lo mismo más mono”;
 - rebajar detalle/calidad.
-
----
-
 # 4. TRABAJO POR TANDAS PEQUEÑAS
 
 No construir 21 estudios en una sola tanda monolítica.
