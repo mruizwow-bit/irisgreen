@@ -1,112 +1,109 @@
-# R51 A9 · Biblioteca Cloud Sabik R04 · checkpoint privado incremental · 29/09/2026
+# R51 A9 · Biblioteca Cloud Sabik R04 · release privado parcial verificado · 29/09/2026
 
-Estado: `R51_A9_R04_PRIVATE_CANDIDATE_VERIFIED_INCREMENTAL_READY`.
+Estado: `R51_A9_R04_PRIVATE_PARTIAL_RELEASE_VERIFIED_HOLDS_ISOLATED`.
 
-## Resumen
+## Identidad verificada
 
-A9 ya no depende de reconstrucciones completas para cada cambio ordinario. Se ha construido y probado un carril incremental con:
-- detección de delta por source SHA;
-- impacto por dominio;
-- separación `SAFETY_CHANGED` / `AGE_CHANGED`;
-- tombstones;
-- `NO_CONTENT_CHANGE` para CSS/UI-only;
-- rebuild por content_id, juego o rutina individual;
-- entrada manual/reusable `source_sha`;
-- candidatos versionados en Cloud privado;
-- retrieval privado con edad + safety antes del ranking;
-- 0 datos de usuario.
+- branch: `agent9/r51-cloud-library-r04-20260927`
+- HEAD verificado: `3e9a7fc3b9cd4cd3312e89a59e7505b6dd56e662`
+- GitHub Actions: run `36535666347` · SUCCESS
+- versión privada parcial: `sabik-r04-private-partial-20260929-f3f72e4e075b`
+- corpus SHA-256: `f3f72e4e075b9653e3fe934e19232c25ebb943ea55eda39db40e623cbd0e5659`
+- manifest SHA-256: `e5f21b259eb4b790bbc3d46fae6a2bf93f4c4e393427d7ea5f3d54b399380b36`
 
-## Cloud privado verificado
+## Cloud privado
 
-Run verificado:
-- workflow: `R51 A9 R04 library verify`;
-- run: `36533602541`;
-- HEAD verificado: `7816781685d3568b21ddced9338d0f3e06a88062`;
-- resultado: SUCCESS.
+- site: `sabik-asistente`
+- site ID: `47b06e68-ff54-4097-8ad8-336b2d71758a`
+- deploy ID: `6abb66029456439c4426d0ca`
+- origin: `https://6abb66029456439c4426d0ca--sabik-asistente.netlify.app`
+- Team Login: activo
+- store: `sabik-r04-candidates`
+- producción: sin cambios
+- readback: verificado en todos los objetos publicados
 
-Netlify:
-- site: `sabik-asistente`;
-- site ID: `47b06e68-ff54-4097-8ad8-336b2d71758a`;
-- deploy privado: `6abb60f346062fb1a8dfd750`;
-- Team Login: requerido en todos los contextos;
-- producción: sin cambios;
-- store candidato: `sabik-r04-candidates`.
+## Corpus privado parcial
 
-## Corpus candidato parcial unificado
+- 2.718 entidades totales
+- 2.366 activas/recuperables
+- 352 held/inactivas
 
-- 2.718 entidades totales;
-- 2.572 activas/recuperables;
-- 146 held/inactivas.
+Desglose de HOLD:
+- 206 entidades editoriales ligadas a 204 rutas del paquete #302 aún no presentes en A2;
+- 144 entidades de Intereses, pendientes de clasificación canónica R59;
+- 2 entidades del módulo de crisis M-04 del Rincón.
 
-Composición:
-- Editorial 965: 1.700 entidades · READY_CANDIDATE;
-- Juegos 297: 594 entidades · READY_CANDIDATE;
-- Rutinas 109: 218 entidades · READY_CANDIDATE;
-- Intereses 72: 144 entidades · HOLD;
-- Taller: 25/27 = 50 entidades · READY_CANDIDATE;
-- Rincón: 12 entidades = 10 activas + 2 held por crisis;
-- Home: 0 entidades · HOLD.
+Componentes construidos:
+- Editorial 965: 1.700 entidades; 1.494 activas; 206 held por ruta pendiente A2.
+- Juegos 297: 594 entidades · READY.
+- Rutinas 109: 218 entidades · READY.
+- Intereses 72: 144 entidades · HOLD.
+- Taller: 25/27 = 50 entidades · READY; faltan Modelado 3D + Videomapping en source A2.
+- Rincón: 12 entidades; 10 activas + 2 held.
+- Home: 0 entidades; Home v4 R2 sigue HOLD.
 
-## Retrieval
+## QA global
 
-Probado por readback real desde Netlify Blobs:
+Citas/rutas:
+- invalid URLs: 0
+- missing routes entre entidades activas: 0
+
+Duplicados:
+- exact duplicate groups: 0
+- cross-content exact duplicate groups: 0
+- near duplicate pairs: 1
+- caso: dependencia Valencia vs Extremadura · similitud 0,8871 · decisión KEEP_SEPARATE_REVIEWED_SIMILAR por jurisdicción distinta.
+
+Retrieval:
+- edad antes del ranking;
+- safety antes del ranking;
 - GENERAL = safe-by-default;
-- AGE_0_12 / AGE_13_17 / AGE_18_PLUS / ALL_AGES;
 - full S2 fuera de GENERAL;
-- full S2 permitido solo con AGE_18_PLUS + explicit intent;
-- Intereses held fuera del ranking;
-- active/retrieval flags aplicados antes del ranking.
-
-Prueba persistida:
-`r51-r04-candidates/r04-retrieval-proof/7816781685d3568b21ddced9338d0f3e06a88062/r04-private-retrieval-proof.json`.
+- full S2 solo AGE_18_PLUS + explicit intent;
+- held excluido;
+- readback real desde Netlify Blobs PASS.
 
 ## Incremental
 
-Tipos:
+Delta:
 `ADDED · MODIFIED · UNCHANGED · REMOVED · SAFETY_CHANGED · AGE_CHANGED · ROUTE_CHANGED · LOCALE_CHANGED · SOURCE_CHANGED`.
 
-Cobertura:
-- cambio textual de una ficha;
-- URL;
-- S1→S2;
-- safe variant;
-- borrado + tombstone;
-- alta;
-- locale añadido/retirado;
-- CSS-only → NO_CONTENT_CHANGE;
-- UI JS-only → NO_CONTENT_CHANGE;
-- fuente/cita;
-- títulos duplicados con rutas distintas;
-- single-ID Juegos;
-- single-ID Rutinas.
+- tombstones;
+- CSS/UI-only → NO_CONTENT_CHANGE;
+- single-content editorial rebuild;
+- single-game rebuild;
+- single-routine rebuild;
+- `workflow_dispatch source_sha`;
+- `workflow_call source_sha` para A2.
 
-El checkpoint A2 se avanza solo cuando el delta editorial ya está absorbido. Cambios posteriores en Sabik/UI no reabren corpus.
+Rendimiento medido:
+- Editorial full: 5.368,91 ms; 1 content_id: 23,69 ms; reducción entidades 99,88%; reducción bytes 99,88%.
+- Juegos full: 18,11 ms; 1 juego: 12,48 ms; reducción entidades 99,66%; reducción bytes 99,68%.
+- Rutinas full: 14,29 ms; 1 rutina: 11,10 ms; reducción entidades 99,08%; reducción bytes 99,04%.
 
-## Políticas
+## Retención / observabilidad
 
-Retención:
-- releases verificadas: metadata/deltas/source SHA/hashes/corpus inmutables;
-- candidatos privados verificados: metadata 365 días; blobs 90 días salvo promoción;
-- candidatos fallidos: 14 días;
-- CI artifacts: 14 días.
+- releases verificadas: inmutables;
+- metadata/deltas/source SHA/hashes de release: indefinidos;
+- candidatos privados verificados: metadata 365 días, blobs 90 días salvo promoción;
+- fallidos y artifacts CI: 14 días;
+- permitido: versión, SHA, duración, conteos, delta, bytes, tests, readback, deploy ID;
+- prohibido: queries, IP, usuario, conversaciones, diagnóstico, etapa individual y datos personales.
 
-Observabilidad permitida:
-versiones, SHA, duración, conteos, delta, bytes, tests, readback y deploy IDs.
-Prohibido: queries, IP, usuario, conversación, diagnóstico, etapa individual o datos personales.
+## HOLDs externos
 
-## HOLDs reales
+1. 204 rutas editoriales aprobadas del paquete #302 todavía no existen en A2.
+2. Home v4 R2 todavía no está aceptada.
+3. Intereses 72 aún no tienen clasificación canónica de edad/safety liberada por R59.
+4. Taller: Modelado 3D + Videomapping aún fuera del source A2 consumible.
+5. Rincón M-04: copy crisis pendiente de review.
 
-1. Home v4 R2 todavía no aceptada por HUMAN QA.
-2. Intereses 72 sin clasificación canónica de edad/safety liberada por R59.
-3. Taller: Modelado 3D + Videomapping aún fuera del source A2 consumible.
-4. Rincón M-04: copy crisis pendiente de revisión.
-
-Estos HOLDs no invalidan ni bloquean el corpus privado ya construido.
+No se declara R04 final sellada hasta cerrar esos puntos.
 
 ## Invariantes
 
-- R38 no se modifica.
-- R03 no se sobrescribe.
+- R38 intacto.
+- R03 intacto.
 - no producción;
 - no DNS;
 - no cambios Team Login;
