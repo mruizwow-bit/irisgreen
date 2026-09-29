@@ -7,7 +7,7 @@
   var SENS = { S0_GENERAL: 0, S1_SENSITIVE: 1, S2_HIGH_SENSITIVITY: 2 };
   var STAGES = { '': 'DEFAULT', any: 'DEFAULT', child: 'INFANCIA', teen: 'ADOLESCENCIA', adult: 'ADULTEZ',
     infancia: 'INFANCIA', adolescencia: 'ADOLESCENCIA', adultez: 'ADULTEZ',
-    childhood: 'INFANCIA', adolescence: 'ADOLESCENCIA', adulthood: 'ADULTEZ' };
+    childhood: 'INFANCIA', adolescence: 'ADOLESCENCIA', adulthood: 'ADULTEZ', age_0_12:'INFANCIA', age_13_17:'ADOLESCENCIA', age_18_plus:'ADULTEZ', all_ages:'DEFAULT' };
 
   function stage(value) { return STAGES[String(value == null ? '' : value).toLowerCase()] || 'DEFAULT'; }
 
