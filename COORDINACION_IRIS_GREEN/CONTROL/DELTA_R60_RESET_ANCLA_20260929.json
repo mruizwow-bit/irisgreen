@@ -1,0 +1,24 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R60_RESET_SINGLE_ANCHOR",
+  "issue": 324,
+  "estado": "R60_HUMAN_QA_RESET_SINGLE_ANCHOR_REQUIRED",
+  "human_qa_precedence": true,
+  "external_reference_required": false,
+  "reference_if_available": "Mist - Palle1958 - optional study only",
+  "root_cause": {
+    "failed_delivery": "stereo width concentrated in attack; tail nearly mono; perceptual double attack/flam",
+    "required_direction": "single centered attack; stereo width emerges after attack"
+  },
+  "build_scope": "one 60-90s anchor only",
+  "next_marker": "R60_CLAUDE_SINGLE_ATTACK_LATE_STEREO_ANCHOR_READY_FOR_ASTRA_MARIA",
+  "blocked": [
+    "M01-M04 R2",
+    "long renders",
+    "A2 integration",
+    "Pixabay removal",
+    "main",
+    "production"
+  ]
+}
