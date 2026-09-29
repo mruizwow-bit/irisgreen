@@ -10,15 +10,15 @@ const TEXT={
   unavailable:'Sabik está disponible con las fuentes seguras locales de Iris Green.',
   available:'Sabik está disponible.',
   hide:'Ocultar',show:'Mostrar',
-  welcome:'Puedes preguntarme por escrito. Respondo con información de Iris Green y te enseño las fuentes.',
+  welcome:'Puedo ayudarte a buscar información.',conversationWelcome:'Puedes preguntarme por escrito. Respondo con información de Iris Green y te enseño las fuentes.',
   explanation:'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green. No invento una respuesta cuando no encuentro información suficiente.',
   connected:'Puedo responder con las fuentes de Iris Green. No hago diagnósticos.',
   label:'¿Qué necesitas?',help:'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.',send:'Enviar',
   cancel:'Cancelar respuesta',low:'Desactivar movimiento',reset:'Empezar de nuevo',
   motion:'Movimiento de Sabik',normal:'Normal',reduced:'Reducido',still:'Sin movimiento',motionHelp:'Movimiento breve cuando cambia el estado.',
   memory:'No se guarda el historial entre sesiones.',limits:'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
-  browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La conversación de esta sesión se ha borrado.',
-  busy:'Estoy buscando información en Iris Green.',error:'No he podido completar la respuesta. Puedes intentarlo de nuevo.',
+  browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La consulta y los resultados se han borrado.',
+  busy:'Buscando en las fuentes de Iris Green.',error:'No se pudo conectar. Puedes intentarlo de nuevo o usar el buscador de Iris Green.',
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
   voice:'Voz de Sabik',voiceOn:'Activados',voiceOff:'Desactivados',
   voiceHelp:'Los mensajes fijos usan la voz aprobada de Sabik. Las respuestas conversacionales dinámicas por voz todavía no sustituyen al texto.',
@@ -27,14 +27,14 @@ const TEXT={
  en:{
   subtitle:'Iris Green assistant',
   unavailable:'Sabik is available with Iris Green’s safe local sources.',available:'Sabik is available.',hide:'Hide',show:'Show',
-  welcome:'You can ask me in writing. I answer with Iris Green information and show the sources.',
+  welcome:'I can help you find information.',conversationWelcome:'You can ask me in writing. I answer with Iris Green information and show the sources.',
   explanation:'If the Cloud library is unavailable, I use Iris Green’s safe local index. I do not invent an answer when there is not enough information.',
   connected:"I can answer using Iris Green's sources. I don't make diagnoses.",
   label:'What do you need?',help:'Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.',send:'Send',
   cancel:'Cancel response',low:'Turn off motion',reset:'Start again',motion:'Sabik motion',normal:'Normal',reduced:'Reduced',still:'No motion',motionHelp:'Brief motion when the state changes.',
   memory:'No history is saved between sessions.',limits:'Check important information against the sources. Sabik does not make diagnoses.',
-  browse:'Explore resources',placeholder:'For example: noise drains me',cleared:'This session conversation has been cleared.',
-  busy:'I am looking through Iris Green information.',error:'I could not complete the answer. You can try again.',
+  browse:'Explore resources',placeholder:'For example: noise drains me',cleared:'Your query and results have been cleared.',
+  busy:'Searching Iris Green sources.',error:"Could not connect. You can try again or use Iris Green's search.",
   empty:'Write what you need.',spanish:'Some original sources are in Spanish.',
   voice:'Sabik voice',voiceOn:'On',voiceOff:'Off',
   voiceHelp:'Fixed system messages use Sabik’s approved voice. Dynamic spoken conversational answers do not replace the text yet.',
@@ -142,7 +142,7 @@ function mount(){
   aside.querySelectorAll('[data-sabik-text]').forEach(el=>{if(strings()[el.dataset.sabikText]!=null)el.textContent=strings()[el.dataset.sabikText];});
   $('#sabik-toggle').textContent=$('#sabik-widget-body').hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;
   $('#sabik-browse').href=lang==='en'?'/en/resources/':'/es/recursos/';
-  aside.querySelector('.sabik-state').textContent=strings().available;$('#sabik-availability').textContent=strings().connected;
+  aside.querySelector('.sabik-state').textContent=strings().available;$('#sabik-availability').textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');
   syncVoice();controls();
  }
  async function submit(event){
