@@ -51,7 +51,18 @@ try:
         assert idle["state"] == "PRESENTE", idle
         assert idle["active"] is False, idle
         assert idle["animations"] == 0, idle
-        evidence["motion"]["present_idle"] = idle
+        presence = page.evaluate("""() => {
+          const v=document.querySelector('#sabik-hologram');
+          const a=v.getAnimations()[0];
+          return {count:v.getAnimations().length,name:getComputedStyle(v).animationName,
+                  duration:a?.effect?.getTiming().duration,playState:a?.playState,
+                  level:v.dataset.motionLevel};
+        }""")
+        assert presence["count"] >= 1, presence
+        assert presence["name"] == "sabikWebPresence", presence
+        assert presence["duration"] == 5800, presence
+        assert presence["playState"] == "running", presence
+        evidence["motion"]["present_idle"] = {**idle,"presence":presence}
 
         # NORMAL: R37 finite transition over the current ORIENTAR master.
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
@@ -101,7 +112,13 @@ try:
         assert reduced["duration"] == 140, reduced
         assert reduced["level"] == "REDUCIDO", reduced
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
-        evidence["motion"]["reduced"] = reduced
+        reduced_presence=page.evaluate("""() => {
+          const v=document.querySelector('#sabik-hologram'),a=v.getAnimations()[0];
+          return {name:getComputedStyle(v).animationName,duration:a?.effect?.getTiming().duration};
+        }""")
+        assert reduced_presence["name"]=="sabikWebPresenceReduced", reduced_presence
+        assert reduced_presence["duration"]==8500, reduced_presence
+        evidence["motion"]["reduced"] = {**reduced,"presence":reduced_presence}
 
         # SIN_MOVIMIENTO swaps only to the correct state master, without animation.
         page.select_option("#sabik-motion-level", "SIN_MOVIMIENTO")
@@ -116,7 +133,11 @@ try:
         assert stopped["active"] is False, stopped
         assert stopped["animations"] == 0, stopped
         assert stopped["level"] == "SIN_MOVIMIENTO", stopped
-        evidence["motion"]["no_motion"] = stopped
+        idle_stopped=page.evaluate("""() => ({name:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
+          count:document.querySelector('#sabik-hologram').getAnimations().length})""")
+        assert idle_stopped["name"]=="none", idle_stopped
+        assert idle_stopped["count"]==0, idle_stopped
+        evidence["motion"]["no_motion"] = {**stopped,"presence":idle_stopped}
 
         # Voice hook is compatible but does not replace the visual with the historical donor.
         page.evaluate("window.SabikWebPresentation.setVoiceActive(true)")
@@ -128,8 +149,14 @@ try:
         assert voice["voice"] == "true", voice
         assert voice["src"].endswith("/sabik/assets/web-r01/web_pausa.png"), voice
         assert voice["layered"] is False, voice
+        voice_anim=page.evaluate("""() => ({
+          active:document.querySelector('#sabik-hologram').dataset.voiceActive,
+          name:getComputedStyle(document.querySelector('#sabik-web-master')).animationName
+        })""")
+        assert voice_anim["active"]=="true", voice_anim
+        assert voice_anim["name"]=="sabikWebVoiceGlow", voice_anim
         page.evaluate("window.SabikWebPresentation.setVoiceActive(false)")
-        evidence["motion"]["voice_hook"] = voice
+        evidence["motion"]["voice_hook"] = {**voice,"animation":voice_anim}
 
         for width,height in ((1920,1080),(1440,900),(390,844),(320,800)):
             page.set_viewport_size({"width":width,"height":height})

@@ -62,11 +62,13 @@
     snapshot() { return {...(ensureController()?.snapshot() || {}), voiceActive: document.querySelector('#sabik-hologram')?.dataset.voiceActive === 'true'}; }});
   window.setSabikState = (state, options) => window.SabikWebPresentation.setSabikState(state, options);
   function refresh() { return ensureController()?.refresh(); }
+  function syncVisibility(){const visual=document.querySelector('#sabik-hologram');if(visual)visual.dataset.documentHidden=String(document.hidden);}
   document.addEventListener('DOMContentLoaded', () => {
-    ensureController();
+    ensureController();syncVisibility();
     for (const state of motion.STATES) readyMaster(state).catch(() => {});
     document.querySelector('#sabik-motion-level')?.addEventListener('change', refresh);
   }, {once: true});
+  document.addEventListener('visibilitychange',syncVisibility);
   media.addEventListener('change', refresh);
   new MutationObserver(refresh).observe(document.documentElement, {attributes: true, attributeFilter: ['data-ig-motion']});
 })();
