@@ -736,3 +736,13 @@ Marcador:
 
 P03 sigue HOLD.
 No cambio normativo.
+
+## R65 · acuse Claude · 29/09/2026
+
+Claude confirma lectura completa de la orden canónica #330 y permanece en `R65_WAIT_HUMAN_QA_R64`: 0 arte tocado, 0 fuentes y 0 renders.
+
+El único unlock sigue siendo `R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65`, después de HUMAN QA de María sobre la Deploy Preview #329.
+
+El paquete de coordinación recibido fue rebasado por Claude sobre `818440d3`, contiene 20 commits y SHA-256 `77f03ed2e0d65c07386678d172587fa73bafff0ea41a4d15aec92d83abd63bc9`. Como la rama canónica avanzó después, no se reaplica el paquete completo: se porta solo el acuse R65 sobre el estado vivo.
+
+No hay cambio normativo.
