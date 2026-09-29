@@ -16,7 +16,7 @@ fixed_expected=[
  'Movimiento breve cuando cambia el estado.','Brief motion when the state changes.',
  'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
  "Could not connect. You can try again or use Iris Green's search.",
- 'The original quotations are in Spanish.',
+ 'Algunas fuentes originales están en español.','Some original sources are in Spanish.',
 ]
 for text in fixed_expected: assert text in joined, text
 
