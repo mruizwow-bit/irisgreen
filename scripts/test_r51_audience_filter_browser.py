@@ -11,12 +11,12 @@ async def home_stage(page,button,expect):
  await page.goto(BASE+'/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
  await page.get_by_role('button',name=button,exact=True).click();await page.wait_for_timeout(50)
  for label,want in expect.items():
-  node=page.locator('.ig-home-area').filter(has=page.get_by_text(label,exact=True))
+  node=page.locator('.ig-home-v4-card').filter(has=page.get_by_text(label,exact=True))
   need(await node.count()==1,'Home area not found '+label)
   need(await node.is_visible()==want,'Home visibility wrong for '+button+' / '+label)
 async def set_stage(page,stage):
  await page.goto(BASE+'/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
- if stage=='default':await page.evaluate('IGAudience.clear()')
+ if stage=='GENERAL':await page.evaluate('IGAudience.clear()')
  else:await page.evaluate("IGAudience.set("+json.dumps(stage)+")")
 async def gate(page,path,blocked,stage):
  await set_stage(page,stage);requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url))
@@ -37,7 +37,7 @@ async def search_has(page,stage,path):
 async def visible_exact(page,text):
  return await page.get_by_text(text,exact=True).evaluate_all("els => els.filter(el => { const r=el.getClientRects(); const s=getComputedStyle(el); return r.length>0 && s.display!=='none' && s.visibility!=='hidden'; }).length")
 async def sabik_gate(page):
- await set_stage(page,'children')
+ await set_stage(page,'AGE_0_12')
  return await page.evaluate("""async () => {
    const runtime=await IGAudience.loadAgeMatrix();
    const allKey=Object.keys(runtime.by_url).find(k=>k.startsWith('/es/neurodiversidad/condiciones/')&&runtime.by_url[k].includes('ALL_AGES'));
@@ -57,30 +57,30 @@ async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'checks':[]}
  async with async_playwright() as p:
   b=await p.chromium.launch();page=await b.new_page()
-  await home_stage(page,'Infancia',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
-  await home_stage(page,'Adolescencia',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':False})
-  await home_stage(page,'Adultez',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':True})
-  await home_stage(page,'Cualquier edad',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
+  await home_stage(page,'0–12 años',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
+  await home_stage(page,'13–17 años',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':False})
+  await home_stage(page,'18 años o más',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':True})
+  await home_stage(page,'Todas las edades',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
   report['checks'].append('home-canonical-surface-gates')
   adult_path='/es/neurodiversidad/condiciones/menopausia/'
-  await gate(page,adult_path,False,'default')
-  await gate(page,adult_path,True,'children')
-  await gate(page,adult_path,True,'teenagers')
-  await gate(page,adult_path,False,'adults')
-  await gate(page,adult_path,True,'any')
-  await gate(page,'/es/tramites/directorio/',True,'teenagers')
-  await gate(page,'/es/tramites/directorio/',False,'adults')
+  await gate(page,adult_path,False,'GENERAL')
+  await gate(page,adult_path,True,'AGE_0_12')
+  await gate(page,adult_path,True,'AGE_13_17')
+  await gate(page,adult_path,False,'AGE_18_PLUS')
+  await gate(page,adult_path,True,'ALL_AGES')
+  await gate(page,'/es/tramites/directorio/',True,'AGE_13_17')
+  await gate(page,'/es/tramites/directorio/',False,'AGE_18_PLUS')
   report['checks'].append('deep-link-pre-render-gates')
   menopause='/es/neurodiversidad/condiciones/menopausia'
-  need(not await search_has(page,'children',menopause),'child search leaked adult-only condition')
-  need(not await search_has(page,'teenagers',menopause),'teen search leaked adult-only condition')
-  need(await search_has(page,'adults',menopause),'adult search lost adult-only condition')
-  need(not await search_has(page,'any',menopause),'ALL_AGES search leaked adult-only condition')
+  need(not await search_has(page,'AGE_0_12',menopause),'child search leaked adult-only condition')
+  need(not await search_has(page,'AGE_13_17',menopause),'teen search leaked adult-only condition')
+  need(await search_has(page,'AGE_18_PLUS',menopause),'adult search lost adult-only condition')
+  need(not await search_has(page,'ALL_AGES',menopause),'ALL_AGES search leaked adult-only condition')
   report['checks'].append('search-autocomplete-catalogue-age-filter')
   await page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='domcontentloaded');await page.wait_for_function('window.IGAudience !== undefined')
-  await page.evaluate("IGAudience.set('children')");await page.wait_for_timeout(500)
+  await page.evaluate("IGAudience.set('AGE_0_12')");await page.wait_for_timeout(500)
   need(await visible_exact(page,'Menopausia')==0,'catalogue visibly leaked adult-only card to child view')
-  await page.evaluate("IGAudience.set('adults')");await page.wait_for_timeout(500)
+  await page.evaluate("IGAudience.set('AGE_18_PLUS')");await page.wait_for_timeout(500)
   need(await visible_exact(page,'Menopausia')>0,'adult catalogue missing visible Menopausia')
   report['checks'].append('catalogue-before-card-render')
   await page.goto(BASE+'/es/situaciones/la-ropa-me-molesta/',wait_until='domcontentloaded')
