@@ -1,27 +1,20 @@
-.ig-audience{display:grid;gap:.65rem;padding:1rem;border:1px solid var(--ig-separator,rgba(23,57,92,.14));border-radius:18px;background:var(--ig-surface-content,#fff)}
-.ig-audience-title{margin:0;font-weight:700}.ig-audience-options{display:flex;flex-wrap:wrap;gap:.5rem}.ig-audience button{min-height:44px;padding:.55rem .9rem;border:1px solid var(--ig-control-border,rgba(23,57,92,.2));border-radius:999px;background:var(--ig-surface-content,#fff);color:inherit;font:inherit;cursor:pointer}
-.ig-audience button[aria-pressed=true]{background:#17395c;color:#fff;border-color:#17395c}.ig-audience-note{margin:0;color:#526175;font-size:.92rem}.ig-audience-status{font-weight:700}
-.ig-safety-kicker{margin:0 0 .35rem;color:#7a365e;font-weight:700}.ig-s2-safe{background:#fff}.ig-s2-actions{margin:1rem 0}.ig-s2-full-button{min-height:44px;padding:.65rem 1rem;border:1px solid #17395c;border-radius:12px;background:#17395c;color:#fff;font:inherit;font-weight:700;cursor:pointer}.ig-s2-note{color:#526175;font-size:.94rem}
-@media(forced-colors:active){.ig-audience,.ig-audience button{border-color:CanvasText}.ig-audience button[aria-pressed=true],.ig-s2-full-button{background:Highlight;color:HighlightText;border-color:Highlight;forced-color-adjust:none}}
-/* R51 · canonical age filter is applied by CSS before discovery/render. */
+.ig-audience{display:grid;gap:.7rem;padding:0;background:transparent;color:var(--ig-text)}
+.ig-audience-title{margin:0;font-weight:700}.ig-audience-options{display:flex;flex-wrap:wrap;gap:.5rem}.ig-audience button{min-height:44px;padding:.55rem .9rem;border:1px solid var(--ig-border-control);border-radius:999px;background:var(--ig-button-secondary-bg);color:var(--ig-button-secondary-fg);font:inherit;font-weight:700;cursor:pointer}
+.ig-audience button[aria-pressed=true]{background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);border-color:var(--ig-button-primary-bg)}.ig-audience-note,.ig-audience-status{margin:0;color:var(--ig-text-muted);font-size:.92rem}.ig-audience-status{font-weight:700}
+.ig-safety-kicker{margin:0 0 .35rem;color:var(--ig-error);font-weight:700}.ig-s2-safe{background:var(--ig-bg-surface)}.ig-s2-actions{margin:1rem 0}.ig-s2-full-button{min-height:44px;padding:.65rem 1rem;border:1px solid var(--ig-button-primary-bg);border-radius:12px;background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);font:inherit;font-weight:700;cursor:pointer}.ig-s2-note{color:var(--ig-text-muted);font-size:.94rem}
 [data-ig-age-bands][hidden],[data-ig-audience-values][hidden]{display:none!important}
-html[data-ig-audience="children"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_0_12"]):not([data-ig-age-bands~="ALL_AGES"]),
-html[data-ig-audience="teenagers"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_13_17"]):not([data-ig-age-bands~="ALL_AGES"]),
-html[data-ig-audience="adults"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_18_PLUS"]):not([data-ig-age-bands~="ALL_AGES"]),
-html[data-ig-audience="any"] [data-ig-age-bands]:not([data-ig-age-bands~="ALL_AGES"]){display:none!important}
-html[data-ig-audience="children"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_0_12"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
-html[data-ig-audience="teenagers"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_13_17"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
-html[data-ig-audience="adults"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_18_PLUS"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
-html[data-ig-audience="any"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="ALL_AGES"]) main{display:none!important}
-/* Migration-only fallback for products not represented in the 965-record matrix. */
-html[data-ig-audience="children"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="INFANCIA"]),
-html[data-ig-audience="teenagers"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="ADOLESCENCIA"]),
-html[data-ig-audience="adults"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="ADULTEZ"]),
-html[data-ig-audience="any"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]){display:none!important}
-html[data-ig-audience="children"] body:not([data-ig-page-age-bands])[data-ig-page-audience]:not([data-ig-page-audience~="TRANSVERSAL"]):not([data-ig-page-audience~="INFANCIA"]) main,
-html[data-ig-audience="teenagers"] body:not([data-ig-page-age-bands])[data-ig-page-audience]:not([data-ig-page-audience~="TRANSVERSAL"]):not([data-ig-page-audience~="ADOLESCENCIA"]) main,
-html[data-ig-audience="adults"] body:not([data-ig-page-age-bands])[data-ig-page-audience]:not([data-ig-page-audience~="TRANSVERSAL"]):not([data-ig-page-audience~="ADULTEZ"]) main,
-html[data-ig-audience="any"] body:not([data-ig-page-age-bands])[data-ig-page-audience]:not([data-ig-page-audience~="TRANSVERSAL"]) main,
-body[data-ig-audience-blocked] main{display:none!important}
-.ig-audience-blocked-message{width:min(92%,54rem);margin:clamp(2rem,7vw,6rem) auto;padding:clamp(1.2rem,3vw,2rem);border:1px solid var(--ig-separator,#d5e1ec);border-radius:20px;background:var(--ig-surface-content,#fff);color:var(--ig-ink,#17395c)}
-.ig-audience-blocked-message h1{margin:0 0 .6rem;font:500 clamp(1.8rem,4vw,2.6rem)/1.1 'Newsreader',Georgia,serif}.ig-audience-blocked-message p{color:var(--ig-ink-muted,#435268)}.ig-audience-blocked-message a{min-height:44px;display:inline-flex;align-items:center;padding:.55rem .85rem;border:1px solid var(--ig-control-border,#7a869d);border-radius:999px;color:inherit;text-decoration:none}
+html[data-ig-audience="AGE_0_12"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_0_12"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="AGE_13_17"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_13_17"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="AGE_18_PLUS"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_18_PLUS"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="ALL_AGES"] [data-ig-age-bands]:not([data-ig-age-bands~="ALL_AGES"]){display:none!important}
+html[data-ig-audience="AGE_0_12"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_0_12"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="AGE_13_17"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_13_17"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="AGE_18_PLUS"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="AGE_18_PLUS"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="ALL_AGES"] body[data-ig-page-age-bands]:not([data-ig-page-age-bands~="ALL_AGES"]) main{display:none!important}
+/* Migration-only fallback for legacy metadata outside the canonical matrices. */
+html[data-ig-audience="AGE_0_12"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="INFANCIA"]),
+html[data-ig-audience="AGE_13_17"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="ADOLESCENCIA"]),
+html[data-ig-audience="AGE_18_PLUS"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="ADULTEZ"]),
+html[data-ig-audience="ALL_AGES"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]){display:none!important}
+body[data-ig-audience-blocked] main{display:none!important}.ig-audience-blocked-message{width:min(92%,54rem);margin:clamp(2rem,7vw,6rem) auto;padding:clamp(1.2rem,3vw,2rem);border:1px solid var(--ig-separator);border-radius:20px;background:var(--ig-bg-surface);color:var(--ig-text)}.ig-audience-blocked-message p{color:var(--ig-text-muted)}.ig-audience-blocked-message a{min-height:44px;display:inline-flex;align-items:center;padding:.55rem .85rem;border:1px solid var(--ig-border-control);border-radius:999px;color:var(--ig-link);text-decoration:none}
+@media(forced-colors:active){.ig-audience,.ig-audience button{border-color:CanvasText}.ig-audience button[aria-pressed=true],.ig-s2-full-button{background:Highlight;color:HighlightText;border-color:Highlight;forced-color-adjust:none}}
