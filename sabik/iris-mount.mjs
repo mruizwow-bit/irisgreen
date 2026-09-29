@@ -20,7 +20,7 @@ const TEXT={
   browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La consulta y los resultados se han borrado.',
   busy:'Buscando en las fuentes de Iris Green.',error:'No se pudo conectar. Puedes intentarlo de nuevo o usar el buscador de Iris Green.',
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
-  voice:'Voz de Sabik',voiceOn:'Activados',voiceOff:'Desactivados',
+  voice:'Voz de Sabik',voiceOn:'Activada',voiceOff:'Desactivada',
   voiceHelp:'Los mensajes fijos usan la voz aprobada de Sabik. Las respuestas conversacionales dinámicas por voz todavía no sustituyen al texto.',
   voiceError:'La voz no se pudo activar.',sources:'Fuentes'
  },
