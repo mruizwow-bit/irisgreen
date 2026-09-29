@@ -2,6 +2,8 @@
 
 Estado: `R63_CLAUDE_RINCON_SAKURA_CANDIDATE_ORDERED`
 
+Issue operativo: #328
+
 ## Decisión vigente
 
 La reselección de salas sensoriales ordenada por María el 29/09/2026 sustituye la dirección anterior de Globos en todo lo que contradiga este addendum.
