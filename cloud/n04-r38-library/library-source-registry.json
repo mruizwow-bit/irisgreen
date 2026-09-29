@@ -3,8 +3,8 @@
   "canonical_source": {
     "repository": "mruizwow-bit/irisgreen",
     "branch": "agent2/sabik-iris-r08-20260924",
-    "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
-    "source_tree": "776b1118e2e53be82d9a6524d071b32366cc39e6",
+    "source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
+    "source_tree": "0897e7886e633d1aefacce2ed545064e58ec1712",
     "update_mode": "CONFIGURED_CANONICAL_ONLY"
   },
   "previous_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
@@ -36,7 +36,7 @@
       ],
       "owner": "A9",
       "expected_records": 226,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -66,7 +66,7 @@
       ],
       "owner": "A9",
       "expected_records": 223,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -96,7 +96,7 @@
       ],
       "owner": "A9",
       "expected_records": 62,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -126,7 +126,7 @@
       ],
       "owner": "A9",
       "expected_records": 60,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -154,7 +154,7 @@
       ],
       "owner": "A9",
       "expected_records": 132,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -184,7 +184,7 @@
       ],
       "owner": "A9",
       "expected_records": 262,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -214,7 +214,7 @@
       ],
       "owner": "A9",
       "expected_records": 297,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -243,7 +243,7 @@
       ],
       "owner": "A9",
       "expected_records": 109,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
     },
     {
@@ -275,7 +275,7 @@
       ],
       "owner": "A9",
       "expected_records": 72,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
       "activation_gate": [
         "R59_CANONICAL_AGE_CLASSIFICATION",
@@ -311,7 +311,7 @@
       ],
       "owner": "A9",
       "expected_records": 27,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
       "integrated_records": 25,
       "pending_donor_records": [
@@ -352,7 +352,7 @@
       ],
       "owner": "A9",
       "expected_records": null,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
       "expected_editorial_modules": 6,
       "active_editorial_modules": 5,
@@ -395,7 +395,7 @@
       ],
       "owner": "A9",
       "expected_records": 1,
-      "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+      "last_source_sha": "9800661d7b7a085acaf593d9f432b2ec426151b8",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
       "note": "The frozen A2 source has one bilingual Home source at root; no en/index.html route is invented.",
       "active_records": 0,
