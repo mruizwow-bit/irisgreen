@@ -1989,3 +1989,38 @@ Normativa:
 `NORMATIVA/ADDENDUM_R66_SABIK_CONVERSATIONAL_VOICE_20260929.md`.
 
 No main. No producción.
+
+## R62 · P02 Terrario E4 R2 · review Astra · 29/09/2026
+
+Estado: `R62_P02_E4_SCENE_PASS_CAUSALITY_VISUAL_REWORK_REQUIRED`.
+
+PASS/KEEP:
+- motor E4;
+- mecánica;
+- gameplay desktop/móvil;
+- sección frontal;
+- follaje con 4 familias;
+- colgantes ramificadas;
+- roca integrada;
+- bandeja móvil;
+- LIGHT/NAVY;
+- métricas técnicas R2.
+
+Bloqueo único:
+la lámina causal todavía no hace inmediata la cadena `roca → sombra → humedad → musgo`. La roca añadida ocupa/oculta parte de la zona donde debería leerse la consecuencia.
+
+R3 se limita a causalidad LIGHT/NAVY; no rerenderizar gameplay.
+
+Marcador esperado:
+`R62_P02_TERRARIO_E4_R3_CAUSALITY_READY_FOR_ASTRA_MARIA`.
+
+P03–P06 y Codex #321 continúan HOLD.
+No A2/main/producción.
+
+Orden:
+`ORDENES/R62_ASTRA_JUEGOS_6_PILOTOS/02_ASTRA_P02_E4_R2_CAUSALIDAD.md`.
+
+Control:
+`CONTROL_MASTER_SYNC_DELTA_R62_P02_E4_R2_20260929.csv`.
+
+No cambia normativa transversal.
