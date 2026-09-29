@@ -1,0 +1,28 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R59_FOSSILS_R2V2_PROVENANCE_REVIEW",
+  "issue": 323,
+  "estado": "R59_FOSSILS_R2V2_PROVENANCE_STILL_BLOCKED_QA_HARNESS_REPRO_CONTRACT_EXECUTOR",
+  "product_pass_preserved": true,
+  "blockers": [
+    "qa/shots.py still declares idx but never uses it to select/assert the named fossil before capture",
+    "reproducir.py promises decoded-image fallback in PROCEDENCIA.md but only compares byte hashes",
+    "branch/executor provenance still says codex/r59-intereses-fase1 while canonical control says Agent R59 active / Codex HOLD"
+  ],
+  "independent_repro": {
+    "environment": "Python 3.13.5 / numpy 2.3.5 / scipy 1.17.0 / Pillow 12.3.0",
+    "iguales": 29,
+    "distintos": 30,
+    "faltan": 0,
+    "webp_byte_identical": "29/29",
+    "avif_byte_identical": "0/29",
+    "interpretation": "codec/version variance; generator logic appears stable via WebP exactness"
+  },
+  "next_marker": "R59_FOSSILS_PILOT_R2V3_QA_REPRO_EXECUTOR_FIXED_READY_FOR_ASTRA_MARIA",
+  "no_visual_rework": true,
+  "no_minerals_yet": true,
+  "no_a2": true,
+  "no_main": true,
+  "no_production": true
+}
