@@ -47,6 +47,7 @@ function safetyFields(record){
   };
 }
 function baseEntity({safety,locale,page,source,contentType,canonicalUrl,routeStatus='READY',extra={}}){
+  const routeReady=routeStatus!=='APPROVED_PACKAGE_PENDING_A2';
   return {
     entity_id:safety.id+':'+locale+':full',
     content_id:safety.id,
@@ -64,7 +65,8 @@ function baseEntity({safety,locale,page,source,contentType,canonicalUrl,routeSta
     editorial_status:source.editorial_status,
     ...safetyFields(safety),
     published_or_reviewed_at:source.reviewed_at||null,
-    active:true,
+    active:routeReady,
+    retrieval_eligible:routeReady,
     provenance:source.provenance,
     source_language:locale,
     route_status:routeStatus,
@@ -118,7 +120,8 @@ function safeEntity(full,approval,approved){
     safe_variant_id:null,
     review_reason:'HUMAN_REVIEWED_S2',
     published_or_reviewed_at:PACKAGE_REVIEWED_AT,
-    active:true,
+    active:full.active!==false,
+    retrieval_eligible:full.retrieval_eligible!==false,
     provenance:[{authority:'R42_CHILD_SAFE_PACKAGE',path:approved.source_package.safe_variants_path,sha256:approved.source_package.safe_variants_sha256,safety_content_id:approval.content_id}],
     source_language:full.locale,
     route_status:full.route_status,
@@ -295,6 +298,8 @@ export async function buildEditorialEntities(options={}){
     safe_variant_entities:safeEntities.length,
     full_s2_locale_entities:full.filter(e=>e.sensitivity==='S2_HIGH_SENSITIVITY').length,
     routes_pending_a2:full.filter(e=>e.route_status==='APPROVED_PACKAGE_PENDING_A2').length,
+    held_pending_a2_entities:entities.filter(e=>e.route_status==='APPROVED_PACKAGE_PENDING_A2'&&(e.active===false||e.retrieval_eligible===false)).length,
+    active_entities:entities.filter(e=>e.active!==false&&e.retrieval_eligible!==false).length,
     en_research_route_fallbacks:full.filter(e=>e.route_status==='EN_ROUTE_NOT_IN_FROZEN_A2_USING_EXISTING_SOURCE_ROUTE').length,
     age_source_sha:ageManifest.source_manifest_sha256||null,
     age_unclassified:0
