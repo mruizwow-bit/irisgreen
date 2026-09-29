@@ -1,0 +1,2645 @@
+{
+  "schema": "R51_A9_WORKSHOP_25_ENTITIES/1.0",
+  "entities": [
+    {
+      "entity_id": "workshop:workshop-01:es",
+      "content_id": "workshop:workshop-01",
+      "fragment_id": "workshop:workshop-01:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Dibujo",
+      "heading": "Imagen y diseño",
+      "text": "Empieza por el lienzo. Dibuja libremente o abre un reto cuando te apetezca.\nLienzo con capas, pinceles, goma, simetría y guías de perspectiva\nDibujar solo con una línea\nluz con tres tonos\nescena en perspectiva de dos puntos\nserie de 10 dibujos con reglas propias",
+      "canonical_url": "https://irisgreen.eu/es/taller/dibujo/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Lienzo con capas, pinceles, goma, simetría y guías de perspectiva",
+      "starters": [
+        "Dibujar solo con una línea",
+        "luz con tres tonos",
+        "escena en perspectiva de dos puntos",
+        "serie de 10 dibujos con reglas propias"
+      ],
+      "export_formats": "Imagen PNG y proyecto",
+      "connects": "Cielo nocturno, aves, minerales",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Prueba formas, capas y simetría para construir una imagen que puedas cambiar sin miedo a estropearla.",
+        "AGE_13_17": "Trabaja una ilustración con perspectiva, luz y capas como si prepararas una pieza para un portfolio.",
+        "AGE_18_PLUS": "Usa el lienzo como estudio visual: boceto, composición, capas, variaciones y exportación final.",
+        "ALL_AGES": "Empieza por el lienzo. Dibuja libremente o abre un reto cuando te apetezca."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-01:en",
+      "content_id": "workshop:workshop-01",
+      "fragment_id": "workshop:workshop-01:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Drawing",
+      "heading": "Image and design",
+      "text": "Start on the canvas. Draw freely or open a challenge whenever you want.\nCanvas with layers, brushes, eraser, symmetry and perspective guides\nDraw with one line\nlight using three tones\na two-point-perspective scene\na series of 10 drawings with your own rules",
+      "canonical_url": "https://irisgreen.eu/en/workshop/drawing/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Canvas with layers, brushes, eraser, symmetry and perspective guides",
+      "starters": [
+        "Draw with one line",
+        "light using three tones",
+        "a two-point-perspective scene",
+        "a series of 10 drawings with your own rules"
+      ],
+      "export_formats": "PNG image and project",
+      "connects": "Night sky, birds, minerals",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Try shapes, layers and symmetry to build an image you can change without worrying about ruining it.",
+        "AGE_13_17": "Build an illustration with perspective, light and layers as if you were preparing a portfolio piece.",
+        "AGE_18_PLUS": "Use the canvas as a visual studio: sketch, composition, layers, variations and final export.",
+        "ALL_AGES": "Start on the canvas. Draw freely or open a challenge whenever you want."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-02:es",
+      "content_id": "workshop:workshop-02",
+      "fragment_id": "workshop:workshop-02:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Diseño gráfico y tipografía",
+      "heading": "Imagen y diseño",
+      "text": "Diseña con rejilla, tipografía, formas y color.\nRejilla, formas, textos y paletas\nLogo con una sola forma\ncartel con 2 colores\nsistema de señales para un edificio",
+      "canonical_url": "https://irisgreen.eu/es/taller/diseno-grafico/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Rejilla, formas, textos y paletas",
+      "starters": [
+        "Logo con una sola forma",
+        "cartel con 2 colores",
+        "sistema de señales para un edificio"
+      ],
+      "export_formats": "SVG, PNG",
+      "connects": "Transporte, señales",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea un símbolo o cartel sencillo con pocas formas y colores.",
+        "AGE_13_17": "Diseña una identidad para un club, evento o proyecto personal.",
+        "AGE_18_PLUS": "Resuelve una pieza real: señalética, cartel, identidad o sistema visual coherente.",
+        "ALL_AGES": "Diseña con rejilla, tipografía, formas y color."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-02:en",
+      "content_id": "workshop:workshop-02",
+      "fragment_id": "workshop:workshop-02:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Graphic design and typography",
+      "heading": "Image and design",
+      "text": "Design with grids, type, shapes and colour.\nGrid, shapes, text and palettes\nLogo with a single shape\ntwo-colour poster\nwayfinding system for a building",
+      "canonical_url": "https://irisgreen.eu/en/workshop/graphic-design/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Grid, shapes, text and palettes",
+      "starters": [
+        "Logo with a single shape",
+        "two-colour poster",
+        "wayfinding system for a building"
+      ],
+      "export_formats": "SVG, PNG",
+      "connects": "Transport, signs",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create a simple symbol or poster with a few shapes and colours.",
+        "AGE_13_17": "Design an identity for a club, event or personal project.",
+        "AGE_18_PLUS": "Solve a real brief: wayfinding, poster, identity or coherent visual system.",
+        "ALL_AGES": "Design with grids, type, shapes and colour."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-03:es",
+      "content_id": "workshop:workshop-03",
+      "fragment_id": "workshop:workshop-03:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Patrones y arte generativo",
+      "heading": "Imagen y diseño",
+      "text": "Define una regla y deja que el sistema genere variaciones.\nReglas de repetición, simetrías, teselados y fractales\nMosaico con un solo azulejo\n17 tipos de simetría plana\nfractal con reglas propias",
+      "canonical_url": "https://irisgreen.eu/es/taller/patrones/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Reglas de repetición, simetrías, teselados y fractales",
+      "starters": [
+        "Mosaico con un solo azulejo",
+        "17 tipos de simetría plana",
+        "fractal con reglas propias"
+      ],
+      "export_formats": "SVG, reglas",
+      "connects": "Matemáticas, arquitectura",
+      "kind": "pattern",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Construye mosaicos y simetrías jugando con una forma base.",
+        "AGE_13_17": "Crea un patrón generativo y cambia sus reglas para comparar resultados.",
+        "AGE_18_PLUS": "Diseña un sistema visual paramétrico reutilizable en textil, identidad o arquitectura.",
+        "ALL_AGES": "Define una regla y deja que el sistema genere variaciones."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-03:en",
+      "content_id": "workshop:workshop-03",
+      "fragment_id": "workshop:workshop-03:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Patterns and generative art",
+      "heading": "Image and design",
+      "text": "Define a rule and let the system generate variations.\nRules for repetition, symmetry, tessellations and fractals\nMosaic using one tile\nthe 17 wallpaper symmetry groups\na fractal with your own rules",
+      "canonical_url": "https://irisgreen.eu/en/workshop/patterns-generative-art/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Rules for repetition, symmetry, tessellations and fractals",
+      "starters": [
+        "Mosaic using one tile",
+        "the 17 wallpaper symmetry groups",
+        "a fractal with your own rules"
+      ],
+      "export_formats": "SVG, rules",
+      "connects": "Mathematics, architecture",
+      "kind": "pattern",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build mosaics and symmetries by playing with one base shape.",
+        "AGE_13_17": "Create a generative pattern and change its rules to compare outcomes.",
+        "AGE_18_PLUS": "Design a parametric visual system reusable in textiles, identity or architecture.",
+        "ALL_AGES": "Define a rule and let the system generate variations."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-04:es",
+      "content_id": "workshop:workshop-04",
+      "fragment_id": "workshop:workshop-04:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Pixel art y animación",
+      "heading": "Imagen y diseño",
+      "text": "Dibuja píxel a píxel y prueba cómo cambia entre fotogramas.\nRejilla de píxeles, paletas, fotogramas\nIcono de 16×16\nanimación de 8 fotogramas\npersonaje con 4 movimientos",
+      "canonical_url": "https://irisgreen.eu/es/taller/pixel-art/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Rejilla de píxeles, paletas, fotogramas",
+      "starters": [
+        "Icono de 16×16",
+        "animación de 8 fotogramas",
+        "personaje con 4 movimientos"
+      ],
+      "export_formats": "PNG, GIF",
+      "connects": "Videojuegos, criaturas",
+      "kind": "pixel",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea un icono y anímalo con dos o tres poses.",
+        "AGE_13_17": "Diseña un personaje con una pequeña animación de movimiento.",
+        "AGE_18_PLUS": "Trabaja una microanimación o set de iconos consistente para una interfaz o juego.",
+        "ALL_AGES": "Dibuja píxel a píxel y prueba cómo cambia entre fotogramas."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-04:en",
+      "content_id": "workshop:workshop-04",
+      "fragment_id": "workshop:workshop-04:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Pixel art and animation",
+      "heading": "Image and design",
+      "text": "Draw pixel by pixel and test how it changes between frames.\nPixel grid, palettes and frames\n16×16 icon\n8-frame animation\ncharacter with four movements",
+      "canonical_url": "https://irisgreen.eu/en/workshop/pixel-art/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Pixel grid, palettes and frames",
+      "starters": [
+        "16×16 icon",
+        "8-frame animation",
+        "character with four movements"
+      ],
+      "export_formats": "PNG, GIF",
+      "connects": "Video games, creatures",
+      "kind": "pixel",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create an icon and animate it with two or three poses.",
+        "AGE_13_17": "Design a character with a short movement animation.",
+        "AGE_18_PLUS": "Build a micro-animation or consistent icon set for an interface or game.",
+        "ALL_AGES": "Draw pixel by pixel and test how it changes between frames."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-05:es",
+      "content_id": "workshop:workshop-05",
+      "fragment_id": "workshop:workshop-05:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Color",
+      "heading": "Imagen y diseño",
+      "text": "Experimenta con paletas, mezclas y contraste.\nRueda, mezclas, contraste, paletas\nPaleta de 5 colores con contraste accesible\nmisma escena de día y de noche",
+      "canonical_url": "https://irisgreen.eu/es/taller/color/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Rueda, mezclas, contraste, paletas",
+      "starters": [
+        "Paleta de 5 colores con contraste accesible",
+        "misma escena de día y de noche"
+      ],
+      "export_formats": "Paleta",
+      "connects": "Pintura, diseño",
+      "kind": "colour",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea una paleta que cuente una estación, lugar o emoción sin depender solo del color para entenderla.",
+        "AGE_13_17": "Diseña dos versiones de la misma escena: día y noche.",
+        "AGE_18_PLUS": "Construye una paleta accesible para una interfaz, cartel o identidad y comprueba el contraste.",
+        "ALL_AGES": "Experimenta con paletas, mezclas y contraste."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-05:en",
+      "content_id": "workshop:workshop-05",
+      "fragment_id": "workshop:workshop-05:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Colour",
+      "heading": "Image and design",
+      "text": "Experiment with palettes, mixes and contrast.\nColour wheel, mixes, contrast and palettes\nFive-colour palette with accessible contrast\nthe same scene by day and by night",
+      "canonical_url": "https://irisgreen.eu/en/workshop/colour/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Colour wheel, mixes, contrast and palettes",
+      "starters": [
+        "Five-colour palette with accessible contrast",
+        "the same scene by day and by night"
+      ],
+      "export_formats": "Palette",
+      "connects": "Painting, design",
+      "kind": "colour",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create a palette for a season, place or mood without relying on colour alone for meaning.",
+        "AGE_13_17": "Design two versions of the same scene: day and night.",
+        "AGE_18_PLUS": "Build an accessible palette for an interface, poster or identity and check contrast.",
+        "ALL_AGES": "Experiment with palettes, mixes and contrast."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-06:es",
+      "content_id": "workshop:workshop-06",
+      "fragment_id": "workshop:workshop-06:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Cómic y guion gráfico",
+      "heading": "Imagen y diseño",
+      "text": "Cuenta visualmente una secuencia usando viñetas y planos.\nViñetas, bocadillos, planos\nHistoria en 4 viñetas sin texto\npágina completa con ritmo",
+      "canonical_url": "https://irisgreen.eu/es/taller/comic/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Viñetas, bocadillos, planos",
+      "starters": [
+        "Historia en 4 viñetas sin texto",
+        "página completa con ritmo"
+      ],
+      "export_formats": "PNG, PDF",
+      "connects": "Escritura, mundos",
+      "kind": "comic",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Cuenta una acción en cuatro viñetas aunque no uses texto.",
+        "AGE_13_17": "Planifica una escena con cambios de plano, ritmo y diálogo.",
+        "AGE_18_PLUS": "Construye un storyboard claro para vídeo, presentación, campaña o narrativa.",
+        "ALL_AGES": "Cuenta visualmente una secuencia usando viñetas y planos."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-06:en",
+      "content_id": "workshop:workshop-06",
+      "fragment_id": "workshop:workshop-06:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Comics and storyboarding",
+      "heading": "Image and design",
+      "text": "Tell a sequence visually using panels and shots.\nPanels, speech balloons and shots\nFour-panel story without text\na complete page with visual rhythm",
+      "canonical_url": "https://irisgreen.eu/en/workshop/comics-storyboarding/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Panels, speech balloons and shots",
+      "starters": [
+        "Four-panel story without text",
+        "a complete page with visual rhythm"
+      ],
+      "export_formats": "PNG, PDF",
+      "connects": "Writing, worlds",
+      "kind": "comic",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Tell one action in four panels even without text.",
+        "AGE_13_17": "Plan a scene with shot changes, pacing and dialogue.",
+        "AGE_18_PLUS": "Build a clear storyboard for video, presentation, campaign or narrative.",
+        "ALL_AGES": "Tell a sequence visually using panels and shots."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-07:es",
+      "content_id": "workshop:workshop-07",
+      "fragment_id": "workshop:workshop-07:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Estructuras y puentes",
+      "heading": "Construir e inventar",
+      "text": "Construye y prueba una estructura; cambia piezas y observa qué ocurre.\nPiezas con física: aguanta o se cae\nPuente de 2 m con 12 piezas\ncarga de 5 kg\nel más ligero que aguante un tren",
+      "canonical_url": "https://irisgreen.eu/es/taller/estructuras/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Piezas con física: aguanta o se cae",
+      "starters": [
+        "Puente de 2 m con 12 piezas",
+        "carga de 5 kg",
+        "el más ligero que aguante un tren"
+      ],
+      "export_formats": "Proyecto",
+      "connects": "Trenes, arquitectura",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Haz un puente corto que aguante peso con pocas piezas.",
+        "AGE_13_17": "Optimiza una estructura: más luz, menos material, mayor luz o carga.",
+        "AGE_18_PLUS": "Trabaja con restricciones de coste, material y carga como en un proyecto real.",
+        "ALL_AGES": "Construye y prueba una estructura; cambia piezas y observa qué ocurre."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-07:en",
+      "content_id": "workshop:workshop-07",
+      "fragment_id": "workshop:workshop-07:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Structures and bridges",
+      "heading": "Build and invent",
+      "text": "Build and test a structure; change pieces and observe what happens.\nPhysics-based pieces: it holds or it falls\nTwo-metre bridge with 12 pieces\nfive-kilogram load\nthe lightest bridge that can hold a train",
+      "canonical_url": "https://irisgreen.eu/en/workshop/structures/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Physics-based pieces: it holds or it falls",
+      "starters": [
+        "Two-metre bridge with 12 pieces",
+        "five-kilogram load",
+        "the lightest bridge that can hold a train"
+      ],
+      "export_formats": "Project",
+      "connects": "Trains, architecture",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Make a short bridge that holds weight using few pieces.",
+        "AGE_13_17": "Optimise a structure: longer span, less material or greater load.",
+        "AGE_18_PLUS": "Work with cost, material and load constraints like a real project.",
+        "ALL_AGES": "Build and test a structure; change pieces and observe what happens."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-08:es",
+      "content_id": "workshop:workshop-08",
+      "fragment_id": "workshop:workshop-08:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Arquitectura y planos",
+      "heading": "Construir e inventar",
+      "text": "Dibuja una planta y conviértela en volumen.\nPlano en planta que se levanta en 3D\nHabitación\ncasa con luz natural\nedificio con reglas de accesibilidad",
+      "canonical_url": "https://irisgreen.eu/es/taller/arquitectura/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Plano en planta que se levanta en 3D",
+      "starters": [
+        "Habitación",
+        "casa con luz natural",
+        "edificio con reglas de accesibilidad"
+      ],
+      "export_formats": "Plano PNG y proyecto",
+      "connects": "Castillos, arquitectura",
+      "kind": "architecture",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Diseña una habitación o refugio y decide por dónde se entra, se mira y se mueve.",
+        "AGE_13_17": "Crea una vivienda pequeña con luz, circulación y uso real del espacio.",
+        "AGE_18_PLUS": "Resuelve una planta con medidas, accesibilidad, circulación y exportación de proyecto.",
+        "ALL_AGES": "Dibuja una planta y conviértela en volumen."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-08:en",
+      "content_id": "workshop:workshop-08",
+      "fragment_id": "workshop:workshop-08:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Architecture and plans",
+      "heading": "Build and invent",
+      "text": "Draw a floor plan and turn it into volume.\nFloor plan that rises into 3D\nRoom\nhouse with natural light\nbuilding with accessibility rules",
+      "canonical_url": "https://irisgreen.eu/en/workshop/architecture-plans/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Floor plan that rises into 3D",
+      "starters": [
+        "Room",
+        "house with natural light",
+        "building with accessibility rules"
+      ],
+      "export_formats": "PNG plan and project",
+      "connects": "Castles, architecture",
+      "kind": "architecture",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Design a room or shelter and decide how people enter, look and move.",
+        "AGE_13_17": "Create a small home with light, circulation and realistic use of space.",
+        "AGE_18_PLUS": "Solve a plan with dimensions, accessibility, circulation and project export.",
+        "ALL_AGES": "Draw a floor plan and turn it into volume."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-09:es",
+      "content_id": "workshop:workshop-09",
+      "fragment_id": "workshop:workshop-09:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Máquinas e inventos",
+      "heading": "Construir e inventar",
+      "text": "Combina mecanismos para conseguir un movimiento.\nEngranajes, palancas, poleas, rampas\nSubir un peso con una polea\nreloj con engranajes\nmáquina en cadena de 10 pasos",
+      "canonical_url": "https://irisgreen.eu/es/taller/maquinas/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Engranajes, palancas, poleas, rampas",
+      "starters": [
+        "Subir un peso con una polea",
+        "reloj con engranajes",
+        "máquina en cadena de 10 pasos"
+      ],
+      "export_formats": "Proyecto",
+      "connects": "Relojes, coches",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Construye una máquina de dos pasos con palanca, rueda o polea.",
+        "AGE_13_17": "Diseña una cadena mecánica que transforme velocidad, fuerza o dirección.",
+        "AGE_18_PLUS": "Prototipa un mecanismo con relaciones, restricciones y comportamiento medible.",
+        "ALL_AGES": "Combina mecanismos para conseguir un movimiento."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-09:en",
+      "content_id": "workshop:workshop-09",
+      "fragment_id": "workshop:workshop-09:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Machines and inventions",
+      "heading": "Build and invent",
+      "text": "Combine mechanisms to achieve a movement.\nGears, levers, pulleys and ramps\nLift a weight with a pulley\ngeared clock\nten-step chain machine",
+      "canonical_url": "https://irisgreen.eu/en/workshop/machines/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Gears, levers, pulleys and ramps",
+      "starters": [
+        "Lift a weight with a pulley",
+        "geared clock",
+        "ten-step chain machine"
+      ],
+      "export_formats": "Project",
+      "connects": "Clocks, cars",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build a two-step machine using a lever, wheel or pulley.",
+        "AGE_13_17": "Design a mechanical chain that changes speed, force or direction.",
+        "AGE_18_PLUS": "Prototype a mechanism with ratios, constraints and measurable behaviour.",
+        "ALL_AGES": "Combine mechanisms to achieve a movement."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-10:es",
+      "content_id": "workshop:workshop-10",
+      "fragment_id": "workshop:workshop-10:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Circuitos",
+      "heading": "Construir e inventar",
+      "text": "Conecta componentes y comprueba qué hace el circuito.\nSimulador de pilas, luces, interruptores y puertas lógicas\nEncender una luz\nsemáforo\nsumador binario",
+      "canonical_url": "https://irisgreen.eu/es/taller/circuitos/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Simulador de pilas, luces, interruptores y puertas lógicas",
+      "starters": [
+        "Encender una luz",
+        "semáforo",
+        "sumador binario"
+      ],
+      "export_formats": "Proyecto",
+      "connects": "Electrónica, ordenadores",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Construye un circuito que encienda una luz con un interruptor.",
+        "AGE_13_17": "Crea un semáforo o sistema lógico con varias condiciones.",
+        "AGE_18_PLUS": "Diseña y depura una lógica funcional documentando entradas, salidas y estados.",
+        "ALL_AGES": "Conecta componentes y comprueba qué hace el circuito."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-10:en",
+      "content_id": "workshop:workshop-10",
+      "fragment_id": "workshop:workshop-10:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Circuits",
+      "heading": "Build and invent",
+      "text": "Connect components and see what the circuit does.\nSimulator with batteries, lights, switches and logic gates\nLight a lamp\ntraffic light\nbinary adder",
+      "canonical_url": "https://irisgreen.eu/en/workshop/circuits/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Simulator with batteries, lights, switches and logic gates",
+      "starters": [
+        "Light a lamp",
+        "traffic light",
+        "binary adder"
+      ],
+      "export_formats": "Project",
+      "connects": "Electronics, computers",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build a circuit that turns on a light with a switch.",
+        "AGE_13_17": "Create a traffic light or logic system with several conditions.",
+        "AGE_18_PLUS": "Design and debug functional logic, documenting inputs, outputs and states.",
+        "ALL_AGES": "Connect components and see what the circuit does."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-11:es",
+      "content_id": "workshop:workshop-11",
+      "fragment_id": "workshop:workshop-11:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Papiroflexia y poliedros",
+      "heading": "Construir e inventar",
+      "text": "Explora cómo una superficie plana se convierte en un sólido.\nDiagramas paso a paso y sólidos que se despliegan\nGrulla\ncubo de piezas\npoliedro propio para imprimir",
+      "canonical_url": "https://irisgreen.eu/es/taller/papiroflexia/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Diagramas paso a paso y sólidos que se despliegan",
+      "starters": [
+        "Grulla",
+        "cubo de piezas",
+        "poliedro propio para imprimir"
+      ],
+      "export_formats": "PDF para imprimir",
+      "connects": "Matemáticas",
+      "kind": "origami",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Monta un cubo o figura plegable siguiendo sus caras.",
+        "AGE_13_17": "Compara redes distintas y diseña una plantilla imprimible.",
+        "AGE_18_PLUS": "Crea un desarrollo optimizado para prototipado, embalaje o fabricación.",
+        "ALL_AGES": "Explora cómo una superficie plana se convierte en un sólido."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-11:en",
+      "content_id": "workshop:workshop-11",
+      "fragment_id": "workshop:workshop-11:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Origami and polyhedra",
+      "heading": "Build and invent",
+      "text": "Explore how a flat surface becomes a solid.\nStep-by-step diagrams and unfoldable solids\nCrane\nmodular cube\nyour own printable polyhedron",
+      "canonical_url": "https://irisgreen.eu/en/workshop/origami-polyhedra/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Step-by-step diagrams and unfoldable solids",
+      "starters": [
+        "Crane",
+        "modular cube",
+        "your own printable polyhedron"
+      ],
+      "export_formats": "Printable PDF",
+      "connects": "Mathematics",
+      "kind": "origami",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build a cube or foldable shape by following its faces.",
+        "AGE_13_17": "Compare different nets and design a printable template.",
+        "AGE_18_PLUS": "Create an optimised net for prototyping, packaging or fabrication.",
+        "ALL_AGES": "Explore how a flat surface becomes a solid."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-12:es",
+      "content_id": "workshop:workshop-12",
+      "fragment_id": "workshop:workshop-12:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Programación",
+      "heading": "Programar y robótica",
+      "text": "Construye con bloques y mira el código equivalente.\nBloques que se pueden ver como texto; lenguaje propio seguro\nDibujar una estrella\nbucles y variables\nfunciones y recursividad",
+      "canonical_url": "https://irisgreen.eu/es/taller/programacion/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Bloques que se pueden ver como texto; lenguaje propio seguro",
+      "starters": [
+        "Dibujar una estrella",
+        "bucles y variables",
+        "funciones y recursividad"
+      ],
+      "export_formats": "Programa",
+      "connects": "Matemáticas, arte generativo",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Programa una figura o recorrido usando secuencias y bucles.",
+        "AGE_13_17": "Pasa de bloques a funciones, variables y pequeños sistemas interactivos.",
+        "AGE_18_PLUS": "Usa bloques o texto para modelar una solución clara, modular y reutilizable.",
+        "ALL_AGES": "Construye con bloques y mira el código equivalente."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-12:en",
+      "content_id": "workshop:workshop-12",
+      "fragment_id": "workshop:workshop-12:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Programming",
+      "heading": "Programming and robotics",
+      "text": "Build with blocks and inspect the equivalent code.\nBlocks that can also be viewed as text; a safe custom language\nDraw a star\nloops and variables\nfunctions and recursion",
+      "canonical_url": "https://irisgreen.eu/en/workshop/coding/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Blocks that can also be viewed as text; a safe custom language",
+      "starters": [
+        "Draw a star",
+        "loops and variables",
+        "functions and recursion"
+      ],
+      "export_formats": "Program",
+      "connects": "Mathematics, generative art",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Program a shape or route using sequences and loops.",
+        "AGE_13_17": "Move from blocks to functions, variables and small interactive systems.",
+        "AGE_18_PLUS": "Use blocks or text to model a clear, modular and reusable solution.",
+        "ALL_AGES": "Build with blocks and inspect the equivalent code."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-13:es",
+      "content_id": "workshop:workshop-13",
+      "fragment_id": "workshop:workshop-13:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Robótica",
+      "heading": "Programar y robótica",
+      "text": "Programa un robot virtual con motores y sensores.\nRobot en un escenario con motores y sensores\nSalir de una habitación\nseguir una línea\nlaberinto desconocido\nvarios robots juntos",
+      "canonical_url": "https://irisgreen.eu/es/taller/robotica/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Robot en un escenario con motores y sensores",
+      "starters": [
+        "Salir de una habitación",
+        "seguir una línea",
+        "laberinto desconocido",
+        "varios robots juntos"
+      ],
+      "export_formats": "Programa y escenario",
+      "connects": "Robótica, transporte",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Haz que el robot llegue a un objetivo evitando obstáculos.",
+        "AGE_13_17": "Combina sensores para seguir líneas, resolver laberintos o coordinar tareas.",
+        "AGE_18_PLUS": "Diseña una misión, calibra sensores y compara estrategias de control.",
+        "ALL_AGES": "Programa un robot virtual con motores y sensores."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-13:en",
+      "content_id": "workshop:workshop-13",
+      "fragment_id": "workshop:workshop-13:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Robotics",
+      "heading": "Programming and robotics",
+      "text": "Program a virtual robot with motors and sensors.\nRobot in a scene with motors and sensors\nLeave a room\nfollow a line\nunknown maze\nseveral robots working together",
+      "canonical_url": "https://irisgreen.eu/en/workshop/robotics/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Robot in a scene with motors and sensors",
+      "starters": [
+        "Leave a room",
+        "follow a line",
+        "unknown maze",
+        "several robots working together"
+      ],
+      "export_formats": "Program and scene",
+      "connects": "Robotics, transport",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Make the robot reach a target while avoiding obstacles.",
+        "AGE_13_17": "Combine sensors to follow lines, solve mazes or coordinate tasks.",
+        "AGE_18_PLUS": "Design a mission, calibrate sensors and compare control strategies.",
+        "ALL_AGES": "Program a virtual robot with motors and sensors."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-14:es",
+      "content_id": "workshop:workshop-14",
+      "fragment_id": "workshop:workshop-14:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Diseño de videojuegos",
+      "heading": "Programar y robótica",
+      "text": "Diseña un nivel que se pueda jugar y probar.\nEditor de niveles, reglas y personajes\nNivel con 3 reglas\njuego de puzles de 10 niveles\njuego completo",
+      "canonical_url": "https://irisgreen.eu/es/taller/videojuegos/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Editor de niveles, reglas y personajes",
+      "starters": [
+        "Nivel con 3 reglas",
+        "juego de puzles de 10 niveles",
+        "juego completo"
+      ],
+      "export_formats": "Proyecto jugable",
+      "connects": "Videojuegos, pixel art",
+      "kind": "game",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Construye un nivel corto con una meta y pocos obstáculos.",
+        "AGE_13_17": "Crea una mecánica, prueba la dificultad e itera con varios niveles.",
+        "AGE_18_PLUS": "Prototipa un juego con reglas, estados, feedback y una pequeña experiencia completa.",
+        "ALL_AGES": "Diseña un nivel que se pueda jugar y probar."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-14:en",
+      "content_id": "workshop:workshop-14",
+      "fragment_id": "workshop:workshop-14:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Video game design",
+      "heading": "Programming and robotics",
+      "text": "Design a level that can be played and tested.\nLevel, rule and character editor\nLevel with three rules\nten-level puzzle game\ncomplete game",
+      "canonical_url": "https://irisgreen.eu/en/workshop/video-game-design/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Level, rule and character editor",
+      "starters": [
+        "Level with three rules",
+        "ten-level puzzle game",
+        "complete game"
+      ],
+      "export_formats": "Playable project",
+      "connects": "Video games, pixel art",
+      "kind": "game",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build a short level with a goal and a few obstacles.",
+        "AGE_13_17": "Create a mechanic, test difficulty and iterate across several levels.",
+        "AGE_18_PLUS": "Prototype a game with rules, states, feedback and a small complete experience.",
+        "ALL_AGES": "Design a level that can be played and tested."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-15:es",
+      "content_id": "workshop:workshop-15",
+      "fragment_id": "workshop:workshop-15:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Simulaciones",
+      "heading": "Programar y robótica",
+      "text": "Cambia reglas y observa cómo evoluciona el sistema.\nSistemas con reglas: ecosistemas, tráfico, autómatas\nJuego de la vida\nred de tráfico\necosistema equilibrado",
+      "canonical_url": "https://irisgreen.eu/es/taller/simulaciones/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Sistemas con reglas: ecosistemas, tráfico, autómatas",
+      "starters": [
+        "Juego de la vida",
+        "red de tráfico",
+        "ecosistema equilibrado"
+      ],
+      "export_formats": "Proyecto",
+      "connects": "Seres vivos, trenes",
+      "kind": "simulation",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Prueba un autómata sencillo y descubre patrones que aparecen solos.",
+        "AGE_13_17": "Modela tráfico, población o recursos y compara escenarios.",
+        "AGE_18_PLUS": "Construye un modelo, explicita supuestos y analiza cómo cambian los resultados.",
+        "ALL_AGES": "Cambia reglas y observa cómo evoluciona el sistema."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-15:en",
+      "content_id": "workshop:workshop-15",
+      "fragment_id": "workshop:workshop-15:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Simulations",
+      "heading": "Programming and robotics",
+      "text": "Change rules and observe how the system evolves.\nRule-based systems: ecosystems, traffic and cellular automata\nGame of Life\ntraffic network\nbalanced ecosystem",
+      "canonical_url": "https://irisgreen.eu/en/workshop/simulations/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Rule-based systems: ecosystems, traffic and cellular automata",
+      "starters": [
+        "Game of Life",
+        "traffic network",
+        "balanced ecosystem"
+      ],
+      "export_formats": "Project",
+      "connects": "Living things, trains",
+      "kind": "simulation",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Try a simple cellular system and discover patterns that emerge.",
+        "AGE_13_17": "Model traffic, population or resources and compare scenarios.",
+        "AGE_18_PLUS": "Build a model, state assumptions and analyse how outcomes change.",
+        "ALL_AGES": "Change rules and observe how the system evolves."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-16:es",
+      "content_id": "workshop:workshop-16",
+      "fragment_id": "workshop:workshop-16:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Ritmo y secuenciador",
+      "heading": "Música y sonido",
+      "text": "Construye ritmo directamente sobre la cuadrícula y escúchalo.\nCuadrícula de pasos con instrumentos\nRitmo de 4 tiempos\npieza con 3 partes\npoliritmos",
+      "canonical_url": "https://irisgreen.eu/es/taller/ritmo/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Cuadrícula de pasos con instrumentos",
+      "starters": [
+        "Ritmo de 4 tiempos",
+        "pieza con 3 partes",
+        "poliritmos"
+      ],
+      "export_formats": "Proyecto; audio WAV",
+      "connects": "Música",
+      "kind": "rhythm",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea un patrón de cuatro tiempos con dos sonidos.",
+        "AGE_13_17": "Combina pistas, silencios y variaciones para una pieza con secciones.",
+        "AGE_18_PLUS": "Trabaja groove, capas y polirritmia como en un secuenciador.",
+        "ALL_AGES": "Construye ritmo directamente sobre la cuadrícula y escúchalo."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-16:en",
+      "content_id": "workshop:workshop-16",
+      "fragment_id": "workshop:workshop-16:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Rhythm and sequencer",
+      "heading": "Music and sound",
+      "text": "Build rhythm directly on the grid and hear it.\nStep grid with instruments\nFour-beat rhythm\nthree-part piece\npolyrhythms",
+      "canonical_url": "https://irisgreen.eu/en/workshop/rhythm-sequencer/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Step grid with instruments",
+      "starters": [
+        "Four-beat rhythm",
+        "three-part piece",
+        "polyrhythms"
+      ],
+      "export_formats": "Project; WAV audio",
+      "connects": "Music",
+      "kind": "rhythm",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create a four-beat pattern with two sounds.",
+        "AGE_13_17": "Combine tracks, rests and variations into a piece with sections.",
+        "AGE_18_PLUS": "Work with groove, layers and polyrhythm like a sequencer.",
+        "ALL_AGES": "Build rhythm directly on the grid and hear it."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-17:es",
+      "content_id": "workshop:workshop-17",
+      "fragment_id": "workshop:workshop-17:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Composición",
+      "heading": "Música y sonido",
+      "text": "Coloca notas, escucha y edita la frase musical.\nPentagrama y teclado con reglas de armonía\nMelodía con 5 notas\ncanon\npieza con forma A-B-A",
+      "canonical_url": "https://irisgreen.eu/es/taller/composicion/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Pentagrama y teclado con reglas de armonía",
+      "starters": [
+        "Melodía con 5 notas",
+        "canon",
+        "pieza con forma A-B-A"
+      ],
+      "export_formats": "Partitura, MIDI",
+      "connects": "Música, matemáticas",
+      "kind": "composition",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Construye una melodía breve con pocas notas y repeticiones.",
+        "AGE_13_17": "Crea una forma musical con contraste entre secciones.",
+        "AGE_18_PLUS": "Trabaja motivo, armonía, estructura y exportación como boceto de composición.",
+        "ALL_AGES": "Coloca notas, escucha y edita la frase musical."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-17:en",
+      "content_id": "workshop:workshop-17",
+      "fragment_id": "workshop:workshop-17:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Composition",
+      "heading": "Music and sound",
+      "text": "Place notes, listen and edit the musical phrase.\nStaff and keyboard with harmony rules\nFive-note melody\ncanon\nA-B-A form",
+      "canonical_url": "https://irisgreen.eu/en/workshop/composition/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Staff and keyboard with harmony rules",
+      "starters": [
+        "Five-note melody",
+        "canon",
+        "A-B-A form"
+      ],
+      "export_formats": "Score, MIDI",
+      "connects": "Music, mathematics",
+      "kind": "composition",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Build a short melody with a small set of notes and repeats.",
+        "AGE_13_17": "Create a musical form with contrast between sections.",
+        "AGE_18_PLUS": "Work on motif, harmony, structure and export as a composition sketch.",
+        "ALL_AGES": "Place notes, listen and edit the musical phrase."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-18:es",
+      "content_id": "workshop:workshop-18",
+      "fragment_id": "workshop:workshop-18:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Síntesis y paisajes sonoros",
+      "heading": "Música y sonido",
+      "text": "Diseña un sonido y escucha cómo cambian sus parámetros.\nOsciladores, filtros y sonidos de la naturaleza\nImitar la lluvia\npaisaje de una ciudad",
+      "canonical_url": "https://irisgreen.eu/es/taller/sintesis-sonido/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Osciladores, filtros y sonidos de la naturaleza",
+      "starters": [
+        "Imitar la lluvia",
+        "paisaje de una ciudad"
+      ],
+      "export_formats": "Audio WAV",
+      "connects": "Tiempo, aves",
+      "kind": "synthesis",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Explora ondas y filtros para crear sonidos suaves, brillantes o graves.",
+        "AGE_13_17": "Diseña una textura o paisaje sonoro con varias capas.",
+        "AGE_18_PLUS": "Construye un patch sonoro, automatiza parámetros y prepara una pieza exportable.",
+        "ALL_AGES": "Diseña un sonido y escucha cómo cambian sus parámetros."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-18:en",
+      "content_id": "workshop:workshop-18",
+      "fragment_id": "workshop:workshop-18:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Synthesis and soundscapes",
+      "heading": "Music and sound",
+      "text": "Design a sound and hear how its parameters change.\nOscillators, filters and nature sounds\nImitate rain\na city soundscape",
+      "canonical_url": "https://irisgreen.eu/en/workshop/synthesis-soundscapes/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Oscillators, filters and nature sounds",
+      "starters": [
+        "Imitate rain",
+        "a city soundscape"
+      ],
+      "export_formats": "WAV audio",
+      "connects": "Weather, birds",
+      "kind": "synthesis",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Explore waves and filters to create soft, bright or low sounds.",
+        "AGE_13_17": "Design a texture or soundscape with several layers.",
+        "AGE_18_PLUS": "Build a sound patch, automate parameters and prepare an exportable piece.",
+        "ALL_AGES": "Design a sound and hear how its parameters change."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-19:es",
+      "content_id": "workshop:workshop-19",
+      "fragment_id": "workshop:workshop-19:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Escritura con restricciones",
+      "heading": "Palabras y mundos",
+      "text": "Escribe con una regla elegida y úsala como motor creativo.\nEditor con reglas: sin una letra, número fijo de palabras, formas poéticas\nMicrorrelato de 50 palabras\ntexto sin la letra e\ncuento con estructura fija",
+      "canonical_url": "https://irisgreen.eu/es/taller/escritura-restricciones/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Editor con reglas: sin una letra, número fijo de palabras, formas poéticas",
+      "starters": [
+        "Microrrelato de 50 palabras",
+        "texto sin la letra e",
+        "cuento con estructura fija"
+      ],
+      "export_formats": "Texto, PDF",
+      "connects": "Historia, mitología",
+      "kind": "writing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Escribe una historia muy breve con un número limitado de palabras.",
+        "AGE_13_17": "Prueba restricciones que obliguen a encontrar vocabulario y estructuras nuevas.",
+        "AGE_18_PLUS": "Usa restricciones formales para editar, experimentar o desbloquear una pieza.",
+        "ALL_AGES": "Escribe con una regla elegida y úsala como motor creativo."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-19:en",
+      "content_id": "workshop:workshop-19",
+      "fragment_id": "workshop:workshop-19:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Constraint-based writing",
+      "heading": "Words and worlds",
+      "text": "Write with a chosen constraint and use it as a creative engine.\nEditor with constraints: forbidden letters, fixed word counts and poetic forms\n50-word micro-story\ntext without the letter e\nstory with a fixed structure",
+      "canonical_url": "https://irisgreen.eu/en/workshop/constraint-writing/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Editor with constraints: forbidden letters, fixed word counts and poetic forms",
+      "starters": [
+        "50-word micro-story",
+        "text without the letter e",
+        "story with a fixed structure"
+      ],
+      "export_formats": "Text, PDF",
+      "connects": "History, mythology",
+      "kind": "writing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Write a very short story with a limited word count.",
+        "AGE_13_17": "Try constraints that force new vocabulary and structures.",
+        "AGE_18_PLUS": "Use formal constraints to edit, experiment or unlock a piece.",
+        "ALL_AGES": "Write with a chosen constraint and use it as a creative engine."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-20:es",
+      "content_id": "workshop:workshop-20",
+      "fragment_id": "workshop:workshop-20:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Mundos",
+      "heading": "Palabras y mundos",
+      "text": "Construye un mundo conectando mapa, especies, historia y lugares.\nMapa, especies, lenguas, historia y personajes enlazados\nIsla con 3 especies\ncultura con calendario propio\nmundo completo con atlas",
+      "canonical_url": "https://irisgreen.eu/es/taller/mundos/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Mapa, especies, lenguas, historia y personajes enlazados",
+      "starters": [
+        "Isla con 3 especies",
+        "cultura con calendario propio",
+        "mundo completo con atlas"
+      ],
+      "export_formats": "Atlas en archivo propio",
+      "connects": "Geografía, idiomas",
+      "kind": "worlds",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea una isla con lugares, criaturas y una pequeña historia.",
+        "AGE_13_17": "Relaciona geografía, cultura, calendario, conflictos y cambios del mundo.",
+        "AGE_18_PLUS": "Desarrolla un atlas coherente con sistemas, relaciones y continuidad interna.",
+        "ALL_AGES": "Construye un mundo conectando mapa, especies, historia y lugares."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-20:en",
+      "content_id": "workshop:workshop-20",
+      "fragment_id": "workshop:workshop-20:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Worlds",
+      "heading": "Words and worlds",
+      "text": "Build a world by connecting map, species, history and places.\nLinked maps, species, languages, history and characters\nIsland with three species\nculture with its own calendar\ncomplete world with an atlas",
+      "canonical_url": "https://irisgreen.eu/en/workshop/worlds/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Linked maps, species, languages, history and characters",
+      "starters": [
+        "Island with three species",
+        "culture with its own calendar",
+        "complete world with an atlas"
+      ],
+      "export_formats": "Atlas in its own file",
+      "connects": "Geography, languages",
+      "kind": "worlds",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create an island with places, creatures and a short history.",
+        "AGE_13_17": "Connect geography, culture, calendar, conflicts and changes in the world.",
+        "AGE_18_PLUS": "Develop a coherent atlas with systems, relationships and internal continuity.",
+        "ALL_AGES": "Build a world by connecting map, species, history and places."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-21:es",
+      "content_id": "workshop:workshop-21",
+      "fragment_id": "workshop:workshop-21:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Lenguas inventadas",
+      "heading": "Palabras y mundos",
+      "text": "Construye sonidos, palabras y reglas para una lengua propia.\nSonidos, alfabeto, gramática y diccionario\nAlfabeto de 20 signos\n100 palabras\ntexto traducido",
+      "canonical_url": "https://irisgreen.eu/es/taller/lenguas-inventadas/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Sonidos, alfabeto, gramática y diccionario",
+      "starters": [
+        "Alfabeto de 20 signos",
+        "100 palabras",
+        "texto traducido"
+      ],
+      "export_formats": "Diccionario",
+      "connects": "Idiomas, escrituras",
+      "kind": "conlang",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Inventa símbolos y palabras para objetos o personajes.",
+        "AGE_13_17": "Crea un sistema de sonidos, gramática sencilla y un diccionario útil.",
+        "AGE_18_PLUS": "Diseña fonología, morfología, sintaxis y corpus de ejemplo con consistencia.",
+        "ALL_AGES": "Construye sonidos, palabras y reglas para una lengua propia."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-21:en",
+      "content_id": "workshop:workshop-21",
+      "fragment_id": "workshop:workshop-21:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Invented languages",
+      "heading": "Words and worlds",
+      "text": "Build sounds, words and rules for your own language.\nSounds, alphabet, grammar and dictionary\n20-sign alphabet\n100 words\ntranslated text",
+      "canonical_url": "https://irisgreen.eu/en/workshop/invented-languages/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Sounds, alphabet, grammar and dictionary",
+      "starters": [
+        "20-sign alphabet",
+        "100 words",
+        "translated text"
+      ],
+      "export_formats": "Dictionary",
+      "connects": "Languages, writing systems",
+      "kind": "conlang",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Invent symbols and words for objects or characters.",
+        "AGE_13_17": "Create a sound system, simple grammar and useful dictionary.",
+        "AGE_18_PLUS": "Design phonology, morphology, syntax and a consistent example corpus.",
+        "ALL_AGES": "Build sounds, words and rules for your own language."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-22:es",
+      "content_id": "workshop:workshop-22",
+      "fragment_id": "workshop:workshop-22:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Juegos de mesa",
+      "heading": "Palabras y mundos",
+      "text": "Diseña tablero, piezas y reglas y pruébalas.\nTablero, cartas y reglas imprimibles\nJuego para 2 con 5 reglas\njuego equilibrado con cartas",
+      "canonical_url": "https://irisgreen.eu/es/taller/juegos-de-mesa/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Tablero, cartas y reglas imprimibles",
+      "starters": [
+        "Juego para 2 con 5 reglas",
+        "juego equilibrado con cartas"
+      ],
+      "export_formats": "PDF para imprimir",
+      "connects": "Ajedrez, colecciones",
+      "kind": "board",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea un juego corto para dos personas con una meta clara.",
+        "AGE_13_17": "Equilibra decisiones, azar y estrategia probando varias partidas.",
+        "AGE_18_PLUS": "Prototipa un sistema de juego con economía de acciones, reglas y material imprimible.",
+        "ALL_AGES": "Diseña tablero, piezas y reglas y pruébalas."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-22:en",
+      "content_id": "workshop:workshop-22",
+      "fragment_id": "workshop:workshop-22:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Board games",
+      "heading": "Words and worlds",
+      "text": "Design a board, pieces and rules, then test them.\nBoard, cards and printable rules\nTwo-player game with five rules\nbalanced card game",
+      "canonical_url": "https://irisgreen.eu/en/workshop/board-games/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Board, cards and printable rules",
+      "starters": [
+        "Two-player game with five rules",
+        "balanced card game"
+      ],
+      "export_formats": "Printable PDF",
+      "connects": "Chess, collections",
+      "kind": "board",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create a short two-player game with a clear goal.",
+        "AGE_13_17": "Balance decisions, chance and strategy through repeated playtests.",
+        "AGE_18_PLUS": "Prototype a game system with action economy, rules and printable material.",
+        "ALL_AGES": "Design a board, pieces and rules, then test them."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-23:es",
+      "content_id": "workshop:workshop-23",
+      "fragment_id": "workshop:workshop-23:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Fotografía y composición",
+      "heading": "Ideas",
+      "text": "Trabaja con tus propias fotos sin subirlas.\nTus fotos, sin subirlas: encuadre, luz, series\nSerie de 5 fotos de un color\nmisma cosa en 10 encuadres",
+      "canonical_url": "https://irisgreen.eu/es/taller/fotografia/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Tus fotos, sin subirlas: encuadre, luz, series",
+      "starters": [
+        "Serie de 5 fotos de un color",
+        "misma cosa en 10 encuadres"
+      ],
+      "export_formats": "Serie",
+      "connects": "Cielo, plantas",
+      "kind": "photo",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Haz una serie de imágenes buscando formas, colores o encuadres.",
+        "AGE_13_17": "Construye una serie coherente y compara luz, punto de vista y ritmo visual.",
+        "AGE_18_PLUS": "Edita una secuencia fotográfica con intención narrativa o documental y privacidad local.",
+        "ALL_AGES": "Trabaja con tus propias fotos sin subirlas."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-23:en",
+      "content_id": "workshop:workshop-23",
+      "fragment_id": "workshop:workshop-23:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Photography and composition",
+      "heading": "Ideas",
+      "text": "Work with your own photos without uploading them.\nYour photos without uploading them: framing, light and series\nSeries of five photos of one colour\nthe same subject in ten framings",
+      "canonical_url": "https://irisgreen.eu/en/workshop/photography-composition/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Your photos without uploading them: framing, light and series",
+      "starters": [
+        "Series of five photos of one colour",
+        "the same subject in ten framings"
+      ],
+      "export_formats": "Series",
+      "connects": "Sky, plants",
+      "kind": "photo",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Make a photo series looking for shapes, colours or framing.",
+        "AGE_13_17": "Build a coherent series and compare light, viewpoint and visual rhythm.",
+        "AGE_18_PLUS": "Edit a photographic sequence with narrative or documentary intent and local privacy.",
+        "ALL_AGES": "Work with your own photos without uploading them."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-24:es",
+      "content_id": "workshop:workshop-24",
+      "fragment_id": "workshop:workshop-24:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Moda y textil",
+      "heading": "Ideas",
+      "text": "Diseña forma, color, patrón y material de una prenda.\nPatrones, tejidos y estampados\nEstampado con un motivo\ncolección de 5 prendas",
+      "canonical_url": "https://irisgreen.eu/es/taller/moda-textil/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Patrones, tejidos y estampados",
+      "starters": [
+        "Estampado con un motivo",
+        "colección de 5 prendas"
+      ],
+      "export_formats": "PNG",
+      "connects": "Diseño, historia",
+      "kind": "fashion",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Crea un estampado y aplícalo a una prenda sencilla.",
+        "AGE_13_17": "Diseña una pequeña colección con lenguaje visual común.",
+        "AGE_18_PLUS": "Trabaja silueta, repetición, color y sistema textil como un proyecto de diseño.",
+        "ALL_AGES": "Diseña forma, color, patrón y material de una prenda."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-24:en",
+      "content_id": "workshop:workshop-24",
+      "fragment_id": "workshop:workshop-24:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Fashion and textiles",
+      "heading": "Ideas",
+      "text": "Design shape, colour, pattern and material for a garment.\nPatterns, fabrics and prints\nPrint made from one motif\ncollection of five garments",
+      "canonical_url": "https://irisgreen.eu/en/workshop/fashion-textiles/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Patterns, fabrics and prints",
+      "starters": [
+        "Print made from one motif",
+        "collection of five garments"
+      ],
+      "export_formats": "PNG",
+      "connects": "Design, history",
+      "kind": "fashion",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Create a print and apply it to a simple garment.",
+        "AGE_13_17": "Design a small collection with a shared visual language.",
+        "AGE_18_PLUS": "Work with silhouette, repeat, colour and textile system as a design project.",
+        "ALL_AGES": "Design shape, colour, pattern and material for a garment."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-25:es",
+      "content_id": "workshop:workshop-25",
+      "fragment_id": "workshop:workshop-25:es:main",
+      "locale": "es",
+      "content_type": "workshop",
+      "title": "Ideas e inventos",
+      "heading": "Ideas",
+      "text": "Parte de una necesidad y conviértela en un prototipo.\nLaboratorio de ideas: usos distintos, combinar, cambiar el punto de vista, SCAMPER\nLas 6 actividades actuales\ninvento con restricciones reales de coste y tamaño",
+      "canonical_url": "https://irisgreen.eu/es/taller/ideas/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Laboratorio de ideas: usos distintos, combinar, cambiar el punto de vista, SCAMPER",
+      "starters": [
+        "Las 6 actividades actuales",
+        "invento con restricciones reales de coste y tamaño"
+      ],
+      "export_formats": "Mi cuaderno",
+      "connects": "Todos",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Inventa una solución para algo cotidiano y dibuja cómo funcionaría.",
+        "AGE_13_17": "Combina ideas, impón restricciones y construye un prototipo explicable.",
+        "AGE_18_PLUS": "Formula problema, restricciones, coste/tamaño y prueba una solución iterativa.",
+        "ALL_AGES": "Parte de una necesidad y conviértela en un prototipo."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    },
+    {
+      "entity_id": "workshop:workshop-25:en",
+      "content_id": "workshop:workshop-25",
+      "fragment_id": "workshop:workshop-25:en:main",
+      "locale": "en",
+      "content_type": "workshop",
+      "title": "Ideas and inventions",
+      "heading": "Ideas",
+      "text": "Start from a need and turn it into a prototype.\nIdea laboratory: alternative uses, combinations, viewpoint changes and SCAMPER\nThe six current activities\nan invention with real cost and size constraints",
+      "canonical_url": "https://irisgreen.eu/en/workshop/ideas/",
+      "source_type": "workshop_catalog",
+      "source_commit": "727808b41121bdcafb33d9bc05466460376c1521",
+      "source_version": "a2@727808b41121bdcafb33d9bc05466460376c1521:assets/data/taller-r40-catalog.js+assets/data/taller-r42-paths.js",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "A2_INTEGRATED_WEB",
+      "audience": [
+        "ALL_AGES"
+      ],
+      "age_classification_reason": "R42_PATHS_EXPLICIT_ALL_PLUS_STAGE_CONTEXTS_TOOLS_NOT_GATED",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "active": true,
+      "retrieval_eligible": true,
+      "artifact_type": "creative_workshop",
+      "tool_description": "Idea laboratory: alternative uses, combinations, viewpoint changes and SCAMPER",
+      "starters": [
+        "The six current activities",
+        "an invention with real cost and size constraints"
+      ],
+      "export_formats": "My notebook",
+      "connects": "All",
+      "kind": "existing",
+      "status": "READY",
+      "stage_contexts": {
+        "AGE_0_12": "Invent a solution for something everyday and draw how it would work.",
+        "AGE_13_17": "Combine ideas, add constraints and build a prototype you can explain.",
+        "AGE_18_PLUS": "Frame the problem, constraints, cost/size and test an iterative solution.",
+        "ALL_AGES": "Start from a need and turn it into a prototype."
+      },
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r40-catalog.js"
+        },
+        {
+          "authority": "A2_INTEGRATED_WEB",
+          "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+          "path": "assets/data/taller-r42-paths.js"
+        }
+      ]
+    }
+  ]
+}
