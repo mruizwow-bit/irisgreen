@@ -1,0 +1,21 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R68_FAROLES_PARALLEL_AUTHORIZATION",
+  "estado": "R68_FAROLES_PARALLEL_BUILD_AUTHORIZED_PENDING_SAKURA_HUMAN_QA",
+  "issue": 335,
+  "supersedes_only": "R63 no-next-room operational hold",
+  "preserves": [
+    "Sakura A2 integration gate",
+    "Sakura HUMAN QA",
+    "no main",
+    "no production"
+  ],
+  "next_room": "Faroles flotantes",
+  "held": [
+    "Lluvia de luz",
+    "Agua y reflejos",
+    "Bosque bioluminiscente"
+  ],
+  "next_marker": "R68_CLAUDE_FAROLES_REPRODUCIBLE_READY_FOR_ASTRA"
+}
