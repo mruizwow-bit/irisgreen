@@ -794,3 +794,18 @@ Solo cuenta como READY integrado:
 `R67_A2_IRIS_GREEN_INTEGRATED_PREVIEW_READY_FOR_MARIA`.
 
 No cambia normativa; hace cumplir contratos ya aprobados.
+
+## R62 P02 · Terrario R3 · Astra PASS · 29/09/2026
+
+`R62_P02_TERRARIO_E4_ASTRA_PASS_HUMAN_QA_PENDING`.
+
+R3 corrige la causalidad visual: roca, sombra, humedad y musgo coinciden espacialmente y el antes/después se entiende sin explicación numerada.
+
+No se pide R4. La escena principal y móvil permanecen KEEP.
+
+Pendiente únicamente HUMAN QA María.
+
+Si aprueba:
+`R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03`.
+
+Nota de paquete: bundle incremental con prerequisite `c119d329...`, a documentar o convertir en autocontenido antes de integración final.
