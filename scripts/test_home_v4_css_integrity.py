@@ -17,10 +17,10 @@ CONTROL_ALLOWED={9,10,13}
 def need(v,m):
     if not v: raise AssertionError(m)
 
-def block(css,selector):
-    m=re.search(re.escape(selector)+r'\s*\{([^{}]*)\}',css,re.S)
-    need(m is not None,'Missing CSS block '+selector)
-    return re.sub(r'\s+','',m.group(1))
+def blocks(css,selector):
+    matches=re.findall(re.escape(selector)+r'\s*\{([^{}]*)\}',css,re.S)
+    need(matches,'Missing CSS block '+selector)
+    return ''.join(re.sub(r'\s+','',m) for m in matches)
 
 def check(root:Path):
     path=root/'assets/home-r42-child-safe.css'
@@ -35,7 +35,7 @@ def check(root:Path):
     need(css.count('{')==css.count('}'),f'Unbalanced CSS braces: {css.count("{")} / {css.count("}")}')
     need(len(css)>9000,'Home v4 CSS unexpectedly short/truncated')
     for selector,props in REQUIRED.items():
-        b=block(css,selector)
+        b=blocks(css,selector)
         for prop in props: need(prop in b,f'{selector} missing required rule {prop}')
     for legacy in ['#ffffff','#fff;','background:white','background: white']:
         need(legacy not in css.lower(),'Pure white UI hardcode in Home v4 CSS: '+legacy)
