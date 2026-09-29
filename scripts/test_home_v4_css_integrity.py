@@ -11,6 +11,7 @@ REQUIRED={
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
     '.ig-home-v4-age-state':('color:var(--ig-text-muted)','font-size:.92rem'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:150px','aspect-ratio:auto','margin:0'),
 }
 CONTROL_ALLOWED={9,10,13}
 
@@ -40,6 +41,7 @@ def check(root:Path):
     for legacy in ['#ffffff','#fff;','background:white','background: white']:
         need(legacy not in css.lower(),'Pure white UI hardcode in Home v4 CSS: '+legacy)
     need('.ig-home-v4 .sabik-widget' in css,'Sabik Home chassis rule missing')
+    need('grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))' in css,'Approved Sabik two-column donor layout missing')
     need('html[data-ig-theme="light"]' in css,'LIGHT alternate theme integration missing')
     print({'css':'PASS','bytes':len(raw),'controls':0,'braces':css.count('{'),'required':len(REQUIRED)})
 

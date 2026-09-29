@@ -40,6 +40,14 @@ async def main():
   need(visual['sabik'] and visual['sabik']['display']=='grid' and visual['sabik']['bg']!='rgba(0, 0, 0, 0)','Sabik chassis CSS not rendered '+repr(visual))
   need(visual['discover'] and visual['discover']['display']=='grid','Entiende y encuentra layout CSS not rendered '+repr(visual))
   need(visual['footer'] and visual['footer']['display']=='flex','Home footer CSS not rendered '+repr(visual))
+  sabik_geom=await page.evaluate("""() => {
+    const img=document.querySelector('#sabik-web-master');
+    const widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget');
+    const r=img.getBoundingClientRect(), c=getComputedStyle(widget);
+    return {width:r.width,height:r.height,columns:c.gridTemplateColumns,widgetWidth:widget.getBoundingClientRect().width};
+  }""")
+  need(sabik_geom['width']<=151,'Sabik visual larger than approved donor cap '+repr(sabik_geom))
+  need(len([x for x in sabik_geom['columns'].split(' ') if x])>=2,'Sabik desktop donor must render as two columns '+repr(sabik_geom))
   need(await page.get_by_role('button',name='Ajustes de Sabik',exact=True).count()==1,'real Sabik settings control missing')
   await page.get_by_role('button',name='Ajustes de Sabik',exact=True).click();need(await page.locator('#sabik-settings').is_visible(),'Sabik settings did not open')
   need(await page.get_by_role('button',name='Voz de Sabik: Desactivada',exact=False).count()==1,'Sabik voice control missing inside settings')
@@ -74,6 +82,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','css-render-integrity','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','sabik-donor-proportion','css-render-integrity','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())

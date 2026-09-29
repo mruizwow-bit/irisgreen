@@ -208,10 +208,8 @@ html[data-ig-contrast="on"] .ig-home-header{
 .ig-home-v4-use-card .ig-home-v4-media{min-height:132px}
 
 .ig-home-v4-sabik{
-  display:grid;
-  grid-template-columns:minmax(0,1fr);
-  gap:.8rem;
-  padding:clamp(1rem,2.5vw,1.5rem);
+  display:block;
+  padding:clamp(1.2rem,3vw,2rem);
 }
 .ig-home-v4-sabik>.sabik-panel{
   width:100%;
@@ -220,6 +218,42 @@ html[data-ig-contrast="on"] .ig-home-header{
   padding:0;
   grid-column:auto;
 }
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));
+  gap:clamp(1rem,3vw,2.2rem);
+  align-items:start;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.ig-home-v4-sabik-left,.ig-home-v4-sabik-right{min-width:0;display:flex;flex-direction:column;gap:.8rem}
+.ig-home-v4-sabik-right{gap:.7rem}
+.ig-home-v4-sabik-identity-row{display:flex;align-items:center;gap:1rem}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:none}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{
+  width:clamp(96px,14vw,150px);
+  max-width:150px;
+  aspect-ratio:auto;
+  margin:0;
+}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{
+  width:100%;
+  max-width:150px;
+  height:auto;
+}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{display:block;height:30px;width:auto}
+.ig-home-v4-sabik-form-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.ig-home-v4-sabik-form-head label{font-weight:700}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-input{min-height:0;height:auto;resize:vertical}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget-body{display:flex;flex-direction:column;gap:.7rem}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-capability,
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-memory-note,
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-limits{margin:0}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-settings{margin-top:0}
+
 
 .ig-home-v4-footer{
   width:min(100%,1240px);
@@ -343,6 +377,10 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 }
 @media(max-width:600px){
   .ig-home-header{align-items:flex-start}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:clamp(88px,30vw,132px)}
+  .ig-home-v4-sabik-form-head{align-items:flex-start}
+
   .ig-home-tools{gap:.35rem}
   .ig-home-tools button,.ig-home-lang{padding-inline:.7rem}
   .ig-home-v4-wrap{padding-inline:1rem}
