@@ -722,3 +722,17 @@ Marcadores:
 - `R66_A2_SABIK_ALEXA_STYLE_ES_EN_PREVIEW_READY_FOR_MARIA`.
 
 No main. No producción.
+
+## 29/09/2026 · R62 P02 · Terrario E4 R2
+
+Estado: `R62_P02_E4_SCENE_PASS_CAUSALITY_VISUAL_REWORK_REQUIRED`.
+
+La R2 supera el refinado visual de escena principal: motor, sección frontal, diversidad de follaje, colgantes, roca, móvil y temas globales quedan KEEP.
+
+El gate medido pasa, incluido musgo +37,7 %, pero la revisión humana mantiene un único bloqueo: la cadena causal `roca → sombra → humedad → musgo` aún no se reconoce de un vistazo en el díptico. La siguiente vuelta se limita a recolocar la roca demostrativa y dejar visible la franja de suelo afectada, sin rehacer gameplay.
+
+Marcador:
+`R62_P02_TERRARIO_E4_R3_CAUSALITY_READY_FOR_ASTRA_MARIA`.
+
+P03 sigue HOLD.
+No cambio normativo.
