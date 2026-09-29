@@ -2188,3 +2188,32 @@ Siguiente gate humano:
 `R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03`.
 
 Hasta ese marcador P03–P06 y Codex #321 HOLD.
+
+## R62 · P02 aprobado / P03 autorizado · 29/09/2026
+
+María aprueba P02 Terrario E4 R3.
+
+Gate:
+`R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03`.
+
+P02:
+- HUMAN APPROVED;
+- no R4;
+- arte/mecánica/móvil/tokens KEEP.
+
+Siguiente trabajo autorizado:
+`R62_P03_RUTAS_LUZ_CONCEPT_AUTHORIZED`.
+
+P03 empieza únicamente en concepto visual+mecánico, ya bajo target E4:
+- gameplay principal;
+- segundo estado;
+- móvil 390;
+- mecánica;
+- accesibilidad;
+- AGE_*;
+- originalidad.
+
+Marcador esperado:
+`R62_P03_RUTAS_LUZ_CONCEPT_READY_FOR_ASTRA_MARIA`.
+
+P04–P06, Codex #321, A2, main y producción siguen HOLD.
