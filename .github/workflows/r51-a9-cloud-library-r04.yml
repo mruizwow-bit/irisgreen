@@ -131,6 +131,12 @@ jobs:
           npm run build:r04:partial-corpus
           node --test tests/r51-r04-partial-corpus.test.mjs tests/r51-r04-candidate-search.test.mjs
 
+      - name: Audit R51 partial R04 corpus
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run audit:r04:duplicates
+          npm run audit:r04:citations
+
       - name: Build R51 R04 candidate manifest
         working-directory: cloud/n04-r38-library
         run: npm run build:r04:candidate-manifest
