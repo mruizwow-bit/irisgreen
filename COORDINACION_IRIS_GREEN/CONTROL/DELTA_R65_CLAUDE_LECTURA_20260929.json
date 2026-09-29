@@ -1,0 +1,49 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R65-CLAUDE-LECTURA-20260929",
+  "issue": 330,
+  "date": "2026-09-29",
+  "owner": "Claude",
+  "refs": {
+    "orden": "ORDENES/R65_CLAUDE_TALLER_21_PLUS_9/01_CLAUDE.md",
+    "control": "CONTROL/DELTA_R65_TALLER_21_PLUS_9_20260929.json",
+    "memoria": "MEMORIA/R65_LECTURA_ORDEN_CANONICA_20260929.md"
+  },
+  "status": "R65_WAIT_HUMAN_QA_R64",
+  "read_from": "coordination_branch_versioned_document",
+  "read_from_chat_summary": false,
+  "unlock_marker": "R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65",
+  "unlock_owner": "Maria",
+  "unlock_depends_on": "deploy_preview_329_integrada_por_A2",
+  "work_started": false,
+  "art_touched": false,
+  "renders_produced": 0,
+  "sources_created": 0,
+  "scope_observation": {
+    "note": "el bloque normativo embebido arrastra material de otros carriles, entre otros la entrega R03 de Design",
+    "action": "anotado, no ejecutado",
+    "rule": "STOP_Y_RECONCILIAR_CON_ASTRA"
+  },
+  "branch_historical_receipt": {
+    "rebased_onto_at_delivery": "818440d3",
+    "previous_base": "3ea7e310",
+    "own_commits_before_receipt": 19,
+    "patch_commits_total": 20,
+    "patch_gz_sha256": "77f03ed2e0d65c07386678d172587fa73bafff0ea41a4d15aec92d83abd63bc9",
+    "conflicts_resolved": [
+      "CONTROL/ESTADO_TRABAJOS.csv",
+      "ESTADO_ACTUAL.md",
+      "MEMORIA/ESTADO_CONSOLIDADO.md"
+    ],
+    "conflict_markers_left": 0,
+    "note": "historical receipt only; do not reset current canonical branch to 818440d3"
+  },
+  "expected_marker_when_unlocked": "R65_CLAUDE_TALLER_21_PLUS_9_READY_FOR_ASTRA",
+  "limits": [
+    "WAIT_UNTIL_R64_HUMAN_QA",
+    "NO_A2_YET",
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_OWN_DEPLOY"
+  ]
+}
