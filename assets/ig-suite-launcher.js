@@ -14,11 +14,11 @@
   function fmt(s, v) { return String(s || '').replace(/\{(\w+)\}/g, function (_, k) { return v[k] == null ? '' : v[k]; }); }
 
   /* ---------- Etapa (solo en la dirección) ---------- */
-  var ALIAS = { infancia: 1, adolescencia: 1, adultez: 1, childhood: 1, adolescence: 1, adulthood: 1 };
+  var ALIAS = { infancia:1, adolescencia:1, adultez:1, childhood:1, adolescence:1, adulthood:1, age_0_12:1, age_13_17:1, age_18_plus:1, all_ages:1 };
   var TO_EN = { infancia: 'childhood', adolescencia: 'adolescence', adultez: 'adulthood' };
   var TO_ES = { childhood: 'infancia', adolescence: 'adolescencia', adulthood: 'adultez' };
   var q = new URLSearchParams(location.search), raw = fold(q.get(key) || q.get(en ? 'para' : 'for') || '');
-  var stage = ALIAS[raw] ? (en ? (TO_EN[raw] || raw) : (TO_ES[raw] || raw)) : '';
+  var stage = ALIAS[raw] ? ((raw.indexOf('age_')===0 || raw==='all_ages') ? raw.toUpperCase() : (en ? (TO_EN[raw] || raw) : (TO_ES[raw] || raw))) : '';
   main.querySelectorAll('.igk-seg').forEach(function (a) {
     if (a.getAttribute('data-para') === stage) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
   });
