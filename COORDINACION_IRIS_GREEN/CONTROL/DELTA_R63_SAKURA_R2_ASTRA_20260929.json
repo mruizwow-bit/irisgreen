@@ -1,0 +1,56 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R63_SAKURA_R2_ASTRA_REVIEW",
+  "issue": 328,
+  "estado": "R63_ASTRA_SAKURA_RUNTIME_HANDOFF_PASS_READY_FOR_A2",
+  "temporal_evidence": {
+    "normal": {
+      "duration_s": 20,
+      "fps": 15,
+      "frames": 300
+    },
+    "reduced": {
+      "duration_s": 20,
+      "fps": 15,
+      "frames": 300
+    },
+    "method": "deterministic freeze(t) sequence",
+    "performance_certification": false
+  },
+  "reduced_motion": {
+    "structural": true,
+    "petals_normal": 170,
+    "petals_reduced": 64,
+    "cove_breathing_removed": true
+  },
+  "tiers": {
+    "rooms": [
+      "B_WEBGL2",
+      "C_CANVAS2D",
+      "D_STATIC"
+    ],
+    "A_exists": false,
+    "contract_reduction_accepted": true
+  },
+  "external_network": {
+    "current_es": 1,
+    "current_en": 1,
+    "source": "global Google Fonts template",
+    "without_global_link_es": 0,
+    "without_global_link_en": 0,
+    "owner_to_fix": "A2"
+  },
+  "handoff": {
+    "base": "bf44d6ae7aa362b81fadb16b44bdef358cc31bcc",
+    "head": "e4437e51d84d673df746cf1d6be1fa21fb2e58da",
+    "commits": 37,
+    "overlap": 1,
+    "merge_test": "clean"
+  },
+  "hardware_qa": "PENDING_HARDWARE_QA",
+  "next_gate": "A2 integration -> Deploy Preview -> HUMAN QA Maria",
+  "no_next_room": true,
+  "no_main": true,
+  "no_production": true
+}
