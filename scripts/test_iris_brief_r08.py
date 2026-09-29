@@ -85,7 +85,7 @@ def run():
      cloud_requests=[];page.on('request',lambda request:cloud_requests.append(True) if request.url.startswith(CLOUD_ORIGIN) else None)
      page.goto(base+route,wait_until='networkidle');page.locator('main').first.wait_for()
      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(route,width,'overflow')
-     headers=page.locator('header').count()
+     headers=page.locator('body > header').count()
      if route in R42_PILOT_ROUTES:
       assert headers==2,(route,'R42 headers',headers)
       assert page.locator('header.ig-r42-topbar').count()==1,(route,'R42 topbar')
