@@ -678,3 +678,13 @@ El candidato debe partir del A2 vivo, consumir `ig-global-ui-tokens-2026.css`, r
 Secuencia: Claude → Astra → A2 → Deploy Preview → HUMAN QA María. R61 Pecera #325 permanece separado.
 
 Orden: `ORDENES/R63_CLAUDE_RINCON_SAKURA/01_CLAUDE.md`.
+
+## 29/09/2026 · R61 Pecera / R63 Sakura / R64 A2 Taller
+
+**R61:** `R61_PECERA_ILLUSTRATED_DIRECTION_PASS_CONTINUE`. Donor original = lenguaje ilustrado aprobado. Próximo gate: vídeo 10 min + audio propio + 3 estados de movimiento + responsive/performance. Sin segunda escena.
+
+**R63:** `R63_SAKURA_VISUAL_REFERENCE_APPROVED`. Sakura se fija como sala sensorial en dos climas; proyección principal con masters first-party coordinados de dosel, no patrón procedural. Próximo gate: integración visual + QA 1440/390 + B/C/D.
+
+**R64 / #329:** `R64_A2_6_CARDS_INTEGRATION_ORDERED`. Handoff R54 R2 verificado; 6/6 arte aprobado para preview. A2 integra sobre HEAD vivo, usa tokens globales únicos y taxonomía AGE_* y sube Deploy Preview. HUMAN QA final María sigue pendiente.
+
+No hay normativa transversal nueva en estas tres decisiones; se aplican los canónicos ya adoptados.
