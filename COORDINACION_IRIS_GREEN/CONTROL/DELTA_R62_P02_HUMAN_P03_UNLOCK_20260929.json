@@ -1,0 +1,27 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P02-HUMAN-APPROVED-P03-UNLOCK-20260929",
+  "issue": 326,
+  "date": "2026-09-29",
+  "p02": {
+    "status": "R62_P02_TERRARIO_E4_HUMAN_APPROVED_UNLOCK_P03",
+    "human_approved": true,
+    "rework_required": false
+  },
+  "p03": {
+    "status": "R62_P03_RUTAS_LUZ_CONCEPT_AUTHORIZED",
+    "stage": "CONCEPT_VISUAL_MECHANIC",
+    "target": "IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026",
+    "expected_marker": "R62_P03_RUTAS_LUZ_CONCEPT_READY_FOR_ASTRA_MARIA"
+  },
+  "holds": [
+    "P04",
+    "P05",
+    "P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
