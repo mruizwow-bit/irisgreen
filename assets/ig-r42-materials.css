@@ -11,17 +11,17 @@
 
 /* 1 · Tokens semánticos únicos */
 body[data-ig-materials="r42"]{
-  --ig-ink:#17395c;
-  --ig-ink-muted:#435268;
-  --ig-ink-on-dark:#eef4f8;
-  --ig-ink-muted-on-dark:#c9d5dd;
+  --ig-ink:var(--ig-text,#17395c);
+  --ig-ink-muted:var(--ig-text-muted,#435268);
+  --ig-ink-on-dark:var(--ig-text,#eef4f8);
+  --ig-ink-muted-on-dark:var(--ig-text-muted,#c9d5dd);
 
-  --ig-surface-content:#ffffff;
-  --ig-surface-content-soft:#f4f7fa;
+  --ig-surface-content:var(--ig-bg-surface,#f4f7fa);
+  --ig-surface-content-soft:var(--ig-bg-surface-soft,#eef2f6);
 
-  --ig-chrome-light-rgb:255 255 255;
+  --ig-chrome-light-rgb:244 247 250;
   --ig-chrome-dark-rgb:11 26 43;
-  --ig-chrome-solid-light:#ffffff;
+  --ig-chrome-solid-light:var(--ig-bg-surface,#f4f7fa);
   --ig-chrome-solid-dark:#0b1a2b;
   --ig-chrome-control-dark:#15304a;
 
@@ -46,8 +46,8 @@ body[data-ig-materials="r42"]{
   --ig-overlay-backdrop:rgb(14 29 53 / .42);
   --ig-overlay-backdrop-dark:rgb(2 8 18 / .62);
   --ig-link-on-dark:#9fdcea;
-  --ig-focus:#5a49a8;
-  --ig-focus-on-dark:#c3b8ff;
+  --ig-focus:var(--ig-focus-global,#5a49a8);
+  --ig-focus-on-dark:var(--ig-focus-global,#c3b8ff);
 
   --ig-state-hover:#edf5fb;
   --ig-state-hover-dark:#1d3d5c;
